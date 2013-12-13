@@ -1,0 +1,47 @@
+<div>
+
+    <div id="popup" onmouseout="$(this).closest('.correcter').correcter('popout', true);"
+                    onmouseover="$(this).closest('.correcter').correcter('popout', false);" >
+    </div>
+
+    <div id="exercice">
+    </div>
+    <div id="board">
+        <div id="data"></div>
+    </div>
+
+    <div id="submit" ontouchstart="$(this).closest('.correcter').find('#valid').toggle();event.preventDefault();"
+                         onclick="$(this).closest('.correcter').find('#valid').toggle();">
+        <img src="res/img/icon/swvalid.svg" id="subvalid"/>
+        <img src="res/img/icon/swgood.svg" id="subgood"/>
+        <img src="res/img/icon/swwrong.svg" id="subwrong"/>
+    </div>
+
+    <div id="valid" >
+        <table>
+            <tr>
+                <td><div class="button" ontouchstart="$(this).closest('.correcter').find('#valid').hide();event.preventDefault();"
+                                        onclick="$(this).closest('.correcter').find('#valid').hide();">
+                    <img src="res/img/icon/cancel.svg" alt="no"/>
+                </div></td>
+                <td><div class="button" ontouchstart="$(this).closest('.correcter').correcter('valid');event.preventDefault();"
+                                        onclick="$(this).closest('.correcter').correcter('valid');">
+                    <img src="res/img/icon/ok.svg" alt="yes"/>
+                </div></td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="intro" ontouchstart="$(this).closest('.correcter').correcter('next');event.preventDefault();"
+                    onclick="$(this).closest('.correcter').correcter('next');"><div>
+        <div class="text">
+            <h1 id="label">Correcter</h1>
+            <ul>
+                <li id="default1"></li>
+                <li id="default2"></li>
+            </ul>
+        </div>
+    </div></div>
+
+</div>
+

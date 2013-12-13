@@ -1,0 +1,50 @@
+<div>
+    <div id="board"></div>
+
+    <div id="keypad">
+        <table>
+            <tr>
+                <td ontouchstart="$(this).closest('.operation').operation('key', 7);event.preventDefault();"
+                    onclick="$(this).closest('.operation').operation('key', 7)">7</td>
+                <td ontouchstart="$(this).closest('.operation').operation('key', 8);event.preventDefault();"
+                    onclick="$(this).closest('.operation').operation('key', 8)">8</td>
+                <td ontouchstart="$(this).closest('.operation').operation('key', 9);event.preventDefault();"
+                    onclick="$(this).closest('.operation').operation('key', 9)">9</td>
+            </tr>
+            <tr>
+                <td ontouchstart="$(this).closest('.operation').operation('key', 4);event.preventDefault();"
+                    onclick="$(this).closest('.operation').operation('key', 4)">4</td>
+                <td ontouchstart="$(this).closest('.operation').operation('key', 5);event.preventDefault();"
+                    onclick="$(this).closest('.operation').operation('key', 5)">5</td>
+                <td ontouchstart="$(this).closest('.operation').operation('key', 6);event.preventDefault();"
+                    onclick="$(this).closest('.operation').operation('key', 6)">6</td>
+            </tr>
+            <tr>
+                <td ontouchstart="$(this).closest('.operation').operation('key', 1);event.preventDefault();"
+                    onclick="$(this).closest('.operation').operation('key', 1)">1</td>
+                <td ontouchstart="$(this).closest('.operation').operation('key', 2);event.preventDefault();"
+                    onclick="$(this).closest('.operation').operation('key', 2)">2</td>
+                <td ontouchstart="$(this).closest('.operation').operation('key', 3);event.preventDefault();"
+                    onclick="$(this).closest('.operation').operation('key', 3)">3</td>
+            </tr>
+            <tr>
+                <td ontouchstart="$(this).closest('.operation').operation('key', 0);event.preventDefault();"
+                    onclick="$(this).closest('.operation').operation('key', 0)">0</td>
+                <td ontouchstart="$(this).closest('.operation').operation('key', -2);event.preventDefault();"
+                    onclick="$(this).closest('.operation').operation('key',-2)">_</td>
+                <td ontouchstart="$(this).closest('.operation').operation('key', -1);event.preventDefault();"
+                    onclick="$(this).closest('.operation').operation('key',-1)">X</td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="intro" ontouchstart="$(this).closest('.operation').operation('next');event.preventDefault();"
+                    onclick="$(this).closest('.operation').operation('next');"><div>
+        <div class="text">
+            <h1 id="label">Operation</h1>
+            <p id="guide"></p>
+        </div>
+    </div></div>
+
+</div>
+

@@ -1,0 +1,23 @@
+<div id="background">
+
+    <div id="board">
+        <div id="exercice"></div>
+        <div id="interactive"></div>
+    </div>
+    <div id="submit" ontouchstart="$(this).closest('.sorting').sorting('check');event.preventDefault();"
+                     onclick="$(this).closest('.sorting').sorting('check');">
+        <img src="res/img/icon/swvalid.svg" id="subvalid"/>
+        <img src="res/img/icon/swgood.svg" id="subgood"/>
+        <img src="res/img/icon/swwrong.svg" id="subwrong"/>
+    </div>
+
+    <div id="intro" ontouchstart="$(this).closest('.sorting').sorting('next');event.preventDefault();"
+                    onclick="$(this).closest('.sorting').sorting('next');"><div>
+        <div class="text">
+            <h1 id="label">Sorting</h1>
+            <div id="guide"></div>
+        </div>
+    </div></div>
+
+</div>
+

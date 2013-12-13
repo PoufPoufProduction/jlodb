@@ -1,0 +1,39 @@
+.correcter                                { background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat;}
+.correcter div#intro>div                  { background-image:url("../../res/img/banners/correcter.svg"); }
+.correcter div#intro .text                { width:48%; float:right; }
+.correcter div#intro .text h1             { text-align:right; padding-right:.5em; }
+.correcter div#intro .text ul             { list-style-type:none; margin:.5em; }
+.correcter div#intro .text li             { margin:.5em 0 .5em 0; }
+.correcter div#exercice                   { margin:.5em .5em .5em 2em; font-size:.8em; text-align:justify; font-style:italic; }
+.correcter div#board                      { margin-top:.5em; height:14em; }
+.correcter div#data                       { font-size:.6em; width:90%; overflow:hidden; background-repeat:repeat;
+                                            border:1px solid black; border-width:1px 0 1px 0; text-align:justify; padding:2px 5% 2px 5%;
+                                            display:none; background-image:url("../../res/img/background/book02.svg"); }
+.correcter div#data p                     { margin:.2em 0; overflow:visible; }
+.correcter div#data span                  { cursor:pointer; }
+.correcter div#data span.blank            { border:1px solid gray; padding:0 2px 0 2px; }
+.correcter div#data span.bold             { font-weight:bold; }
+.correcter div#data span.wrong            { background-color:rgba(255,80,65,1.0); color:rgb(220, 240, 256); }
+.correcter div#key                        { width:5em; height:5em; margin:0 auto; cursor:pointer; }
+.correcter div#popup                      { position:absolute; top:0; left:0; font-size:.6em; background-color:rgba(255,255,255,1);
+                                            border:1px solid black; display:none; padding:5px; z-index:2;}
+.correcter div#popup .current             { background-color:rgba(255,231,184,0.8); }
+.correcter div#popup div                  { cursor:pointer; }
+.correcter div#submit                     { font-size:2.5em; height:1em;width:1em; cursor:pointer;
+                                            position:absolute; top:5.46em; left:0em; }
+.correcter div#submit>img                 { display:none; }
+.correcter div#submit #subvalid           { display:inline; }
+.correcter div#submit.good #subvalid      { display:none; }
+.correcter div#submit.wrong #subvalid     { display:none; }
+.correcter div#submit.good #subgood       { display:inline; }
+.correcter div#submit.wrong #subwrong     { display:inline; }
+
+.correcter div#valid                      { position:absolute; background-color:rgba(255,255,255,0.8);
+                                            display:none; top:1em; left:3em; font-size:2.2em; border-radius:.25em; }
+.correcter div#valid div.button           { width:1.8em; height:1.8em; margin:.1em; cursor:pointer; }
+
+.correcter.big div#data                   { font-size:1em ; }
+.correcter.big div#popup                  { font-size:1em ; }
+.correcter.huge div#data                  { font-size:2em ; }
+.correcter.huge div#popup                 { font-size:2em ; }
+

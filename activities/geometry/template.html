@@ -1,0 +1,67 @@
+<div>
+    <div id="buttons">
+        <div id="actions">
+            <table>
+                <tr><td><div id="segment" class="action" onclick="$(this).closest('.geometry').geometry('click', this);"
+                             ontouchstart="$(this).closest('.geometry').geometry('click', this);event.preventDefault();"
+                             style="background-image:url('res/img/svginventoryicons/background/border/square01.svg')">
+                            <img src="res/img/icon/geometry/segment.svg" alt=""/></div></td>
+                    <td><div id="line" class="action" onclick="$(this).closest('.geometry').geometry('click', this);"
+                             ontouchstart="$(this).closest('.geometry').geometry('click', this);event.preventDefault();"
+                             style="background-image:url('res/img/svginventoryicons/background/border/square02.svg')">
+                            <img src="res/img/icon/geometry/line.svg" alt=""/></div></td> </tr>
+                <tr><td><div id="circle" class="action" onclick="$(this).closest('.geometry').geometry('click', this);"
+                             ontouchstart="$(this).closest('.geometry').geometry('click', this);event.preventDefault();"
+                             style="background-image:url('res/img/svginventoryicons/background/border/square01.svg')">
+                            <img src="res/img/icon/geometry/circle.svg" alt=""/></div></td>
+                    <td><div id="bisector" class="action" onclick="$(this).closest('.geometry').geometry('click', this);"
+                             ontouchstart="$(this).closest('.geometry').geometry('click', this);event.preventDefault();"
+                             style="background-image:url('res/img/svginventoryicons/background/border/square01.svg')">
+                            <img src="res/img/icon/geometry/bisector.svg" alt=""/></div></td></tr>
+                <tr><td><div id="intersection" class="action" onclick="$(this).closest('.geometry').geometry('click', this);"
+                             ontouchstart="$(this).closest('.geometry').geometry('click', this);event.preventDefault();"
+                             style="background-image:url('res/img/svginventoryicons/background/border/square02.svg')">
+                            <img src="res/img/icon/geometry/intersection.svg" alt=""/></div></td>
+                    <td><div id="midpoint" class="action" onclick="$(this).closest('.geometry').geometry('click', this);"
+                             ontouchstart="$(this).closest('.geometry').geometry('click', this);event.preventDefault();"
+                             style="background-image:url('res/img/svginventoryicons/background/border/square01.svg')">
+                            <img src="res/img/icon/geometry/midpoint.svg" alt=""/></div></td></tr>
+                <tr><td><div id="parallel" class="action" onclick="$(this).closest('.geometry').geometry('click', this);"
+                             ontouchstart="$(this).closest('.geometry').geometry('click', this);event.preventDefault();"
+                             style="background-image:url('res/img/svginventoryicons/background/border/square02.svg')">
+                            <img src="res/img/icon/geometry/parallel.svg" alt=""/></div></td>
+                    <td><div id="perpendicular" class="action" onclick="$(this).closest('.geometry').geometry('click', this);"
+                             ontouchstart="$(this).closest('.geometry').geometry('click', this);event.preventDefault();"
+                             style="background-image:url('res/img/svginventoryicons/background/border/square02.svg')">
+                            <img src="res/img/icon/geometry/perpendicular.svg" alt=""/></div></td></tr>
+                <tr><td><div id="stroke" class="simple" onclick="$(this).closest('.geometry').geometry('stroke', this);"
+                             ontouchstart="$(this).closest('.geometry').geometry('click', this);event.preventDefault();"
+                             style="background-image:url('res/img/svginventoryicons/background/border/square02.svg')">
+                            <img src="res/img/generic/dice01big.svg" alt=""/></div></td>
+                    <td><div id="color" class="simple" onclick="$(this).closest('.geometry').geometry('color', this);"
+                             ontouchstart="$(this).closest('.geometry').geometry('click', this);event.preventDefault();"
+                            style="background-image:url('res/img/svginventoryicons/background/border/square02.svg')">
+                        <div></div></div></td></tr>
+            </table>
+        </div>
+        <div id="log">LOG</div>
+    </div>
+
+    <div id="boardframe"><div id="board"></div></div>
+
+    <div id="text">
+        <div id="statement"></div>
+        <table id="objectives">
+        </table>
+    </div>
+
+    <div id="intro" ontouchstart="$(this).closest('.geometry').geometry('next');event.preventDefault();"
+                    onclick="$(this).closest('.geometry').geometry('next');"><div>
+        <div class="text">
+            <h1 id="label">Geometry</h1>
+            <p id="guide"></p>
+        </div>
+    </div></div>
+
+</div>
+

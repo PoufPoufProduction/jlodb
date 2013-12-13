@@ -1,0 +1,54 @@
+.toggleswitch                               { }
+.toggleswitch div.icon                      { width:1em; height:1em; text-align:center; }
+.toggleswitch div.dice                      { width:1em; height:1em;
+                                              background-image:url("../../res/img/svginventoryicons/background/border/yellow01.svg");
+                                              background-size:100%;}
+.toggleswitch div.left                      { float:left; }
+.toggleswitch div.center                    { margin:0 auto; }
+.toggleswitch>div.main                      { background:url("../../res/img/background/book04.svg") repeat; }
+.toggleswitch div#intro>div                 { background-image:url("../../res/img/banners/toggleswitch.svg"); }
+.toggleswitch div#intro .text               { font-size:.8em; width:60%; float:right; }
+.toggleswitch div#intro .text h1            { text-align:right; padding-right:.5em; }
+.toggleswitch div#intro .text #guide        { margin:.5em 1em .5em 0; }
+
+.toggleswitch div#submit                    { font-size:2.5em; height:1em;width:1em; cursor:pointer;
+                                              position:absolute; top:5.4em; left:0em; z-index:3; }
+.toggleswitch div#submit>img                { display:none; }
+.toggleswitch div#submit #subvalid          { display:inline; }
+.toggleswitch div#submit.good #subvalid     { display:none; }
+.toggleswitch div#submit.wrong #subvalid    { display:none; }
+.toggleswitch div#submit.good #subgood      { display:inline; }
+.toggleswitch div#submit.wrong #subwrong    { display:inline; }
+.toggleswitch div#board                     { height:16em; }
+.toggleswitch div#exercice                  { height:2.6em; font-style:italic;
+                                              background-color:rgba(255,255,255,0.8); padding:0 0.5em 0 1.5em;
+                                              display:none; font-size:0.8em;}
+
+
+.toggleswitch .t                            { cursor:pointer; }
+
+.toogleswitch div#data>.abs                 { position:relative; height:14em;width:100%; }
+.toggleswitch div#data>.abs>div             { position:absolute; }
+.toggleswitch div#data .f20                 { font-size:2em; }
+.toggleswitch div#data .f30                 { font-size:3em; }
+.toggleswitch div#data .f40                 { font-size:4em; }
+.toggleswitch div#data .f50                 { font-size:5em; }
+.toggleswitch div#data .f60                 { font-size:6em; }
+.toggleswitch div#data .f70                 { font-size:7em; }
+.toggleswitch div#data .f80                 { font-size:8em; }
+.toggleswitch div#data .icon                { width:1em; height:1em; }
+.toggleswitch div#data .h10                 { height:1em; overflow:hidden; }
+.toggleswitch div#data .h12                 { height:1.2em; overflow:hidden; }
+.toggleswitch div#data .w10                 { width:1em; overflow:hidden; text-align:center; }
+.toggleswitch div#data .w20                 { width:2em; overflow:hidden; text-align:center; }
+.toggleswitch div#data .w30                 { width:3em; overflow:hidden; text-align:center; }
+.toggleswitch div#data .w50                 { width:5em; overflow:hidden; text-align:center; }
+.toggleswitch div#data .w20>div             { float:left; }
+.toggleswitch div#data .w30>div             { float:left; }
+.toggleswitch div#data .w50>div             { float:left; }
+.toggleswitch div#data .r                   { border-radius:.2em; }
+.toggleswitch div#data .rl                  { border-radius:.2em 0 0 .2em; }
+.toggleswitch div#data .rr                  { border-radius:0 .2em .2em 0; }
+
+.toggleswitch div#data .blue                { background-color:#5599FF; }
+.toggleswitch div#data .lightblue           { background-color:#99DDFF; }

@@ -1,0 +1,98 @@
+@keyframes anim                 {  0% {margin-top:0;    }  8% {margin-top:-1em; } 17% {margin-top:-2em; }
+                                  25% {margin-top:-3em; } 33% {margin-top:-4em; } 42% {margin-top:-5em; }
+                                  50% {margin-top:-6em; } 58% {margin-top:-7em; } 67% {margin-top:-8em; }
+                                  75% {margin-top:-9em; } 83% {margin-top:-10em;} 92% {margin-top:-11em;} }
+@-webkit-keyframes anim         {  0% {margin-top:0;    }  8% {margin-top:-1em; } 17% {margin-top:-2em; }
+                                  25% {margin-top:-3em; } 33% {margin-top:-4em; } 42% {margin-top:-5em; }
+                                  50% {margin-top:-6em; } 58% {margin-top:-7em; } 67% {margin-top:-8em; }
+                                  75% {margin-top:-9em; } 83% {margin-top:-10em;} 92% {margin-top:-11em;} }
+/*---------------------------------------------------------------------------------------------------------------------------*/
+*                               { margin:0; padding:0; overflow:hidden; outline:none;
+                                  -webkit-touch-callout: none;
+                                  -webkit-tap-highlight-color: rgba(0,0,0,0);
+                                  -webkit-text-size-adjust: none; }
+body                            { font-size:14px; background-color:black; overflow:hidden; }
+a                               { color:inherit; text-decoration:none; }
+body>div                        { background-color: white; margin:0 auto; width:16em; height:12em; position:relative; display:none;}
+select                          { appearance:none; -webkit-appearance:none; -moz-appearance:none; }
+.icon                           { width:1em; height:1em; }
+/*---------------------------------------------------------------------------------------------------------------------------*/
+#waiting                        { position:absolute; top:2.9em; left:0.05em; font-size:2.8em; width:1em; height:1em; display:none; }
+#waiting div                    { position:relative; width:1em; height:12em;
+                                  animation-duration: 1s; animation-name:anim;
+                                  animation-timing-function:step-start; animation-iteration-count:infinite;
+                                  animation-play-state:paused;
+                                  -webkit-animation-duration: 1s; -webkit-animation-name:anim;
+                                  -webkit-animation-timing-function:step-start; -webkit-animation-iteration-count:infinite;
+                                  -webkit-animation-play-state:paused; }
+#waiting div.running            { animation-play-state:running; -webkit-animation-play-state:running; }
+/*---------------------------------------------------------------------------------------------------------------------------*/
+#launcher                       { width:100%; height:100%; background-color:black; position:absolute; top:0; left:0; display:none;
+                                  z-index:2000;}
+#launcher #quit                 { font-size:.8em; width:1em; height:1em; position:absolute; top:0; left:0; cursor:pointer; z-index:2001;}
+#launcher #activity             { width:100%; height:100%; position:relative;
+                                  -webkit-touch-callout: none;
+                                  -webkit-user-select: none;
+                                  -khtml-user-select: none;
+                                  -moz-user-select: none;
+                                  -ms-user-select: none;
+                                  user-select: none;
+                                }
+#jscore                         { width:100%; height:100%; position:absolute; top:0; left:0; background-color:rgba(0,0,0,0.1);
+                                  z-index:2002; display:none; }
+#jscore>div                     { background-color:white; margin:2em 1.5em;
+                                  padding:.1em;  width:12.9em; height:4.8em; border-radius:.25em; }
+#jscore .content                { background-color:rgb(120,200,255); background-image:url("../res/img/banners/score.svg");
+                                  border-radius:.1em; height:100%; width:12.9em; height:4.8em; position:relative; }
+#jscore .value                  { width:1em; height:1em; text-align:center; font-size:2em; position:relative; top:.2em; left:1.45em; }
+#jscore.s5 .value:before        { content:"A"; color:red;}
+#jscore.s4 .value:before        { content:"B"; color:orange;}
+#jscore.s3 .value:before        { content:"C"; color:green;}
+#jscore.s2 .value:before        { content:"D"; color:blue;}
+#jscore.s1 .value:before        { content:"E"; color:purple;}
+#jscore.s0 .value:before        { content:"F"; color:rgb(64,64,64);}
+#jscore .stars                  { width:100%; height:100%; position:absolute; top:0; left:0; }
+#jscore.s5 .stars               { background-image:url("../res/img/banners/score3.svg"); }
+#jscore.s4 .stars               { background-image:url("../res/img/banners/score2.svg"); }
+#jscore.s3 .stars               { background-image:url("../res/img/banners/score1.svg"); }
+#jscore .icon                   { width:1em; height:1em; font-size:1.8em; position:absolute; cursor:pointer; top:1.7em;}
+#jscore #reload                 { left:4em; }
+#jscore #menu                   { left:5.1em; }
+#jscore #next                   { left:6.2em; }
+#close                          { position:absolute; background-color:rgba(255,255,255,0.8); display:none; top:1em; left:1.7em;
+                                  font-size:2.2em; border-radius:.25em; z-index:2000; }
+#close .button                  { width:1.8em; height:1.8em; margin:.1em; cursor:pointer; }
+/*---------------------------------------------------------------------------------------------------------------------------*/
+div#intro                       { font-size:.5em; height:40%; width:80%; top:25%; left:10%; position:absolute; z-index:2000;
+                                  background-color:rgba(255,255,255,0.9); text-align:justify; overflow:hidden;
+                                  cursor: pointer; padding:1%; border-radius:1em; color:#003366;}
+div#intro>div                   { background-color:rgb(120,200,255); border-radius:1em; height:100%;
+                                  background-size:100%; font-family: Times, serif; }
+div#intro .text h1              { border:1px solid white; border-width:0 0 1px 0; }
+#splash                         { position:absolute; top:0; left:0; width:100%; height:100%;
+                                  background-color:rgba(0,0,0,0.8); z-index:10;}
+#splash>div                     { width:16em; height:6em; margin-top:15%; background-color:rgb(160,240,255); cursor:pointer;
+                                  background-size:100%; background-repeat:no-repeat;}
+/*---------------------------------------------------------------------------------------------------------------------------*/
+.jmenu                          { position:relative; height:100%; overflow:hidden;}
+.jmenu .slider                  { font-size:.6em; width:1em; height:96%; background-color:rgba(0,0,0,0.5); float:right;
+                                  border-radius:.5em; position:relative; z-index:3; margin-top:1%; margin-right:1%;}
+.jmenu .slider .cursor          { width:1em; height:1em; background-color:white; border-radius:.5em; cursor:move;}
+.jmenu .menu                    { margin:.1em; position:relative;}
+.jmenu .menu .icon.gtc          { letter-spacing:-.1em;}
+.jmenu .menu .icon              { background-image:url("../res/img/icon/menu01bg.svg"); background-size:100%; font-weight:bold;
+                                  margin:.01em; float:left; cursor:pointer; width:1em; height:1em; }
+.jmenu .menu .icon.gtc .legend  { text-align:left; margin-left:.1em; }
+.jmenu .menu .icon .legend      { position:relative; color:white; font-size:.66em; width:1.5em; text-align:center;}
+.jmenu .menu .icon .legend.s    { font-size:.5em; width:2em;}
+.jmenu .menu .icon .state       { position:relative; top:-.8em;  background-size:100%; height:1em; width:1em; }
+.jmenu .icon .state.sl          { background-image:url("../res/img/icon/menu01lock.svg"); }
+.jmenu .icon .state.s2          { background-image:url("../res/img/icon/menu01st0.svg"); }
+.jmenu .icon .state.s3          { background-image:url("../res/img/icon/menu01st1.svg"); }
+.jmenu .icon .state.s4          { background-image:url("../res/img/icon/menu01st2.svg"); }
+.jmenu .icon .state.s5          { background-image:url("../res/img/icon/menu01st3.svg"); }
+.jmenu .header                  { width:100%; height:10%; background-color:rgba(0,0,0,0.5); position:absolute;top:0;
+                                  z-index:2; display:none;}
+.jmenu .footer                  { width:100%; height:10%; background-color:rgba(0,0,0,0.5); position:absolute;top:90%;
+                                  z-index:2; display:none;}
+

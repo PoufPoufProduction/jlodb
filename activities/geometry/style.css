@@ -1,0 +1,39 @@
+.geometry                                       { font-family: "Courier New" Courier monospace; 
+                                                  background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat;}
+.geometry table                                 { border-collapse:collapse; border-spacing:0;  font-size:1em; }
+.geometry td                                    { margin:0; padding:0; }
+.geometry div#key                               { width:5em; height:5em; margin:0 auto; cursor:pointer; }
+.geometry div#buttons                           { background-color:rgb(53,34,34);overflow:hidden;
+                                                  float:left; margin:.1em; padding:.05em; margin-top:4.8em; font-size:.8em; }
+.geometry div#actions table                     { }
+.geometry div#actions td                        { width:1em; height:1em; overflow:hidden; background-color:white;}
+.geometry div#actions div.action                { width:1em; height:1em; cursor:pointer; }
+.geometry div#actions div.action.disable img    { opacity:.3; cursor:default; }
+.geometry div#actions div.action.s              { background-color:rgba(196,184,255,1); }
+.geometry div#actions div.simple                { width:1em; height:1em; cursor:pointer; }
+.geometry div#actions div.simple.disable *      { opacity:.3; }
+.geometry div#actions div.simple#color div      { width:1em; height:1em; background-color:black; }
+.geometry div#buttons div#log                   { font-size:.2em; color:#555555; height:1em; width:10em; overflow:hidden;
+                                                  white-space: nowrap; opacity:1; }
+.geometry div#boardframe                        { width:13.8em; height:8em; overflow:hidden; float:right; margin:.08em;
+                                                  border-radius:.5em; background-image:url("../../res/img/background/book01.svg");
+                                                  background-size:100%;}
+.geometry div#board                             { width:13.8em; height:10.35em; overflow:hidden;   }
+.geometry div#text                              { width:40.1em; height:9.3em; overflow:hidden;
+                                                  margin:.2em; border-radius:.25em; font-size:.4em; clear:both;
+                                                  background-image:url("../../res/img/background/book02.svg");
+                                                  background-repeat:repeat; text-align:justify;  }
+.geometry div#text #statement                   { margin:0 .5em; }
+.geometry table#objectives                      { margin-left:1em; }
+.geometry table#objectives div.icon             { width:1em; height:1em; }
+.geometry div#intro>div                         { background-image:url("../../res/img/banners/geometry.svg"); }
+.geometry div#intro .text                       { font-size:1em; width:48%; }
+.geometry div#intro .text h1                    { padding-left:.5em; }
+.geometry div#intro .text p                     { margin:.5em; }
+
+
+.geometry.blank div#boardframe                  { background-image:none; background-color:#dcf9f5; }
+.geometry.white div#boardframe                  { background-image:none; background-color:white; }
+.geometry.large div#boardframe                  { height:10.35em; }
+.geometry.hide  div#buttons                     { display:none; }
+.geometry.large div#text                        { height:2.8em; }

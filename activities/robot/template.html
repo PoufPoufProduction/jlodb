@@ -1,0 +1,627 @@
+<div>
+    <div id="board">
+        <div id="effects">
+            <div id="warnfx"><img src="res/img/effects/alertrobot01.svg"/></div>
+            <div id="robotfx"><img src="res/img/tileset/iso/robot/draft1.svg"/></div>
+            <div id="tilefx"><img src="res/img/tileset/iso/set1/000.svg"/></div>
+        </div>
+        <div id="tiles"></div>
+    </div>
+    <div id="menu">
+        <div id="action">
+            <div id="tab">
+                <div id="r1" ontouchstart="$('.robot #tabs>div').hide();$('.robot #tabs #t1').show();event.preventDefault();"
+                              onclick="$('.robot #tabs>div').hide();$('.robot #tabs #t1').show();">1</div>
+                <div id="r2" ontouchstart="$('.robot #tabs>div').hide();$('.robot #tabs #t2').show();event.preventDefault();"
+                              onclick="$('.robot #tabs>div').hide();$('.robot #tabs #t2').show();">2</div>
+                <div id="r3" ontouchstart="$('.robot #tabs>div').hide();$('.robot #tabs #t3').show();event.preventDefault();"
+                              onclick="$('.robot #tabs>div').hide();$('.robot #tabs #t3').show();">3</div>
+                <div id="r4" ontouchstart="$('.robot #tabs>div').hide();$('.robot #tabs #t4').show();event.preventDefault();"
+                              onclick="$('.robot #tabs>div').hide();$('.robot #tabs #t4').show();">4</div>
+            </div>
+            <div id="tabs">
+                <div class="both" id="t1">
+                    <div class="source">
+                        <div class="slider">
+                            <div class="up" ontouchstart="$(this).closest('.robot').robot('up',0);event.preventDefault();"
+                                            onclick="$(this).closest('.robot').robot('up',0);">-</div>
+                            <div class="down" ontouchstart="$(this).closest('.robot').robot('down',0);event.preventDefault();"
+                                            onclick="$(this).closest('.robot').robot('down',0);">+</div>
+                        </div>
+                        <div class="code">
+                            <table><tr>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                            </tr><tr>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                            </tr><tr>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                            </tr><tr>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                            </tr><tr>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                            </tr><tr>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                            </tr><tr>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                            </tr><tr>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                            </tr><tr>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                            </tr></table>
+                        </div>
+                    </div>
+                    <div class="dest">
+                        <div class="f0">
+                            <table>
+                                <tr>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                </tr>
+                                <tr>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                </tr>
+                                <tr>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="f1">
+                            <table>
+                                <tr>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                </tr>
+                                <tr>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="f2">
+                            <table>
+                                <tr>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                </tr>
+                                <tr>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="both" id="t2">
+                    <div class="source">
+                        <div class="slider">
+                            <div class="up" ontouchstart="$(this).closest('.robot').robot('up',1);event.preventDefault();"
+                                            onclick="$(this).closest('.robot').robot('up',1);">-</div>
+                            <div class="down" ontouchstart="$(this).closest('.robot').robot('down',1);event.preventDefault();"
+                                            onclick="$(this).closest('.robot').robot('down',1);">+</div>
+                        </div>
+                        <div class="code">
+                            <table><tr>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                            </tr><tr>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                            </tr><tr>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                            </tr><tr>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                            </tr><tr>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                            </tr><tr>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                            </tr><tr>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                            </tr><tr>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                            </tr><tr>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                            </tr></table>
+                        </div>
+                    </div>
+                    <div class="dest">
+                        <div class="f0">
+                            <table>
+                                <tr>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                </tr>
+                                <tr>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                </tr>
+                                <tr>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="f1">
+                            <table>
+                                <tr>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                </tr>
+                                <tr>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="f2">
+                            <table>
+                                <tr>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                </tr>
+                                <tr>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="both" id="t3">
+                    <div class="source">
+                        <div class="slider">
+                            <div class="up" ontouchstart="$(this).closest('.robot').robot('up',2);event.preventDefault();"
+                                            onclick="$(this).closest('.robot').robot('up',2);">-</div>
+                            <div class="down" ontouchstart="$(this).closest('.robot').robot('down',2);event.preventDefault();"
+                                            onclick="$(this).closest('.robot').robot('down',2);">+</div>
+                        </div>
+                        <div class="code">
+                            <table><tr>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                            </tr><tr>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                            </tr><tr>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                            </tr><tr>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                            </tr><tr>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                            </tr><tr>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                            </tr><tr>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                            </tr><tr>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                            </tr><tr>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                            </tr></table>
+                        </div>
+                    </div>
+                    <div class="dest">
+                        <div class="f0">
+                            <table>
+                                <tr>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                </tr>
+                                <tr>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                </tr>
+                                <tr>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="f1">
+                            <table>
+                                <tr>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                </tr>
+                                <tr>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="f2">
+                            <table>
+                                <tr>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                </tr>
+                                <tr>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="both" id="t4">
+                    <div class="source">
+                        <div class="slider">
+                            <div class="up" ontouchstart="$(this).closest('.robot').robot('up',3);event.preventDefault();"
+                                            onclick="$(this).closest('.robot').robot('up',3);">-</div>
+                            <div class="down" ontouchstart="$(this).closest('.robot').robot('down',3);event.preventDefault();"
+                                            onclick="$(this).closest('.robot').robot('down',3);">+</div>
+                        </div>
+                        <div class="code">
+                            <table><tr>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                            </tr><tr>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                            </tr><tr>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                            </tr><tr>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                            </tr><tr>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                            </tr><tr>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                            </tr><tr>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                            </tr><tr>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                            </tr><tr>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                                <td><div class="z"></div></td>
+                            </tr></table>
+                        </div>
+                    </div>
+                    <div class="dest">
+                        <div class="f0">
+                            <table>
+                                <tr>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                </tr>
+                                <tr>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                </tr>
+                                <tr>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="f1">
+                            <table>
+                                <tr>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                </tr>
+                                <tr>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="f2">
+                            <table>
+                                <tr>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                </tr>
+                                <tr>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                    <td><div class="z"></div></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="buttons">
+            <div id="speed" ontouchstart="$(this).closest('.robot').robot('speed');event.preventDefault();"
+                            onclick="$(this).closest('.robot').robot('speed');">
+                <img src="res/img/control/x1.svg" alt=""/>
+            </div>
+            <div id="stop" ontouchstart="$(this).closest('.robot').robot('stop');event.preventDefault();"
+                            onclick="$(this).closest('.robot').robot('stop');">
+                <img src="res/img/control/stop.svg" alt=""/>
+            </div>
+            <div id="play" ontouchstart="$(this).closest('.robot').robot('play');event.preventDefault();"
+                            onclick="$(this).closest('.robot').robot('play');">
+                <img src="res/img/control/play.svg" alt=""/>
+            </div>
+        </div>
+        <div id="cache"></div>
+    </div>
+
+    <div id="intro" ontouchstart="$(this).closest('.robot').robot('next');event.preventDefault();"
+                    onclick="$(this).closest('.robot').robot('next');"><div>
+        <div class="text">
+            <h1 id="label">robot</h1>
+            <div>
+                <div id="legend"><ul></ul>
+                    <div id="preload">
+<!--
+                        <div>
+                            <div class="icon"><img src="res/img/tileset/iso/robot/robot01.svg"/></div>
+                            <div class="icon"><img src="res/img/tileset/iso/robot/robot02.svg"/></div>
+                            <div class="icon"><img src="res/img/tileset/iso/robot/robot03.svg"/></div>
+                            <div class="icon"><img src="res/img/tileset/iso/robot/robot04.svg"/></div>
+                            <div class="icon"><img src="res/img/tileset/iso/robot/robot11.svg"/></div>
+                            <div class="icon"><img src="res/img/tileset/iso/robot/robot12.svg"/></div>
+                            <div class="icon"><img src="res/img/tileset/iso/robot/robot13.svg"/></div>
+                            <div class="icon"><img src="res/img/tileset/iso/robot/robot14.svg"/></div>
+                        </div>
+                        <div>
+                            <div class="icon"><img src="res/img/tileset/iso/robot/robot21.svg"/></div>
+                            <div class="icon"><img src="res/img/tileset/iso/robot/robot22.svg"/></div>
+                            <div class="icon"><img src="res/img/tileset/iso/robot/robot23.svg"/></div>
+                            <div class="icon"><img src="res/img/tileset/iso/robot/robot24.svg"/></div>
+                            <div class="icon"><img src="res/img/tileset/iso/robot/robot31.svg"/></div>
+                            <div class="icon"><img src="res/img/tileset/iso/robot/robot32.svg"/></div>
+                            <div class="icon"><img src="res/img/tileset/iso/robot/robot33.svg"/></div>
+                            <div class="icon"><img src="res/img/tileset/iso/robot/robot34.svg"/></div>
+                        </div>
+-->
+                    </div>
+                </div>
+                <div id="guide"></div>
+            </div>
+        </div>
+    </div></div>
+
+</div>
+

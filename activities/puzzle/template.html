@@ -1,0 +1,43 @@
+<div>
+    <div id="timg" class="t"></div>
+    <div id="ttext" class="t">
+        <div id="tcomment"></div>
+        <div id="ttxt"></div>
+    </div>
+
+    <div id="board">
+    </div>
+
+    <div id="submit" ontouchstart="$(this).closest('.puzzle').find('#valid').toggle();event.preventDefault();"
+                     onclick="$(this).closest('.puzzle').find('#valid').toggle();">
+        <img src="res/img/icon/swvalid.svg" id="subvalid"/>
+        <img src="res/img/icon/swgood.svg" id="subgood"/>
+        <img src="res/img/icon/swwrong.svg" id="subwrong"/>
+    </div>
+    <div id="norot"><img src="res/img/icon/norot.svg"/></div>
+
+    <div id="valid" >
+        <table>
+            <tr>
+                <td><div class="button" ontouchstart="$(this).closest('.puzzle').find('#valid').hide();event.preventDefault();"
+                                        onclick="$(this).closest('.puzzle').find('#valid').hide();">
+                    <img src="res/img/icon/cancel.svg" alt="no"/>
+                </div></td>
+                <td><div class="button" ontouchstart="$(this).closest('.puzzle').puzzle('submit');event.preventDefault();"
+                                        onclick="$(this).closest('.puzzle').puzzle('submit');">
+                    <img src="res/img/icon/ok.svg" alt="yes"/>
+                </div></td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="intro" ontouchstart="$(this).hide();$(this).closest('.puzzle').puzzle('next');event.preventDefault();"
+                    onclick="$(this).hide();$(this).closest('.puzzle').puzzle('next');"><div>
+        <div class="text">
+            <h1 id="label"></h1>
+            <div id="guide"></div>
+        </div>
+    </div></div>
+
+</div>
+

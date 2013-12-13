@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Alchemist</title>
+    <script type="text/javascript" src="js/jquery-1.8.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.8.23.custom.min.js"></script>
+    <script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="js/jquery.svg.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/jlodb.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/jlodb.css" media="all" />
+    <link rel="apple-touch-icon-precomposed" href="res/img/activity/icon/alchemist144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="res/img/activity/icon/alchemist72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="res/img/activity/icon/alchemist114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="res/img/activity/icon/alchemist144.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <style>
+        #jscore                  { overflow:visible; }
+        #jscore>div              { overflow:visible;  }
+        #jscore #table           { font-size:.7em; font-weight:bold; font-family: "Courier New" Courier monospace;
+                                   position:relative; top:-2.8em;  left:8em; color:#003366;}
+        #jscore #table .alabel   { width:5em; text-align:right; padding-right:.5em; }
+        #jscore #table .avalue   { text-align: left; }
+        #jscore .effect          { font-size:3em; position:absolute; top:0em; left:0.05em; width:1em; height:1em; display:none; }
+        #jscore #new             { position:absolute; width:1em; height:1em; font-size:3.5em; top:0.5em; left:2.6em; display:none; }
+    </style>
+    <script>
+
+
+jlodb = $.extend(jlodb,{});
+
+jlodb.context.onquit = function(_ret) {
+    var name="webapp-alchemist";
+    var best = $.cookie(name);
+    if (!best) { best = 0; }
+    $("#jscore #new").toggle(_ret.points>best);
+    if (_ret.points>best) {
+        best = _ret.points;
+        $.cookie(name, best, { expires : 365 });
+    }
+
+    $("#jscore #good").toggle(_ret.status=="success");
+    $("#jscore #wrong").toggle(_ret.status!="success");
+
+    $("#jscore #points").html(_ret.points);
+    $("#jscore #pieces").html(_ret.pieces);
+    $("#jscore #best").html(best);
+
+    jlodb.score.show(_ret.score);
+};
+
+jlodb.score.l.menu = 0;
+
+var app = {
+    cookie      : function() { return "webapp-alchemist"; },
+    update      : function(_state) { $.cookie(app.cookie(), _state, { expires : 365 }); }
+};
+
+window.onload = function() {
+    // GET AND RESIZE THE BEST PANEL
+    var x = Math.floor($(window).width()/16);
+    var y = Math.floor($(window).height()/12);
+    $("body").css("font-size", (Math.min(x,y))+"px");
+    $("#main").css("margin-top", Math.floor(($(window).height()-$("#main").height())/2)+"px").show();
+
+    jlodb.launcher.exercice({id:"atal1"});
+
+};
+    </script>
+</head>
+
+<body>
+    <div id="main">
+        <div id="launcher">
+            <div id="activity"></div>
+
+            <div id="jscore"><div>
+                <div class="content">
+                    <div class="value"></div>
+                    <div class="stars"></div>
+                    <div class="icon" id="reload" ontouchstart="jlodb.score.reload();event.preventDefault();"
+                         onclick="jlodb.score.reload();" ><img src="res/img/icon/reload.svg"/></div>
+                    <div class="icon" id="menu" ontouchstart="jlodb.score.close();event.preventDefault();"
+                         onclick="jlodb.score.close();" ><img src="res/img/icon/menu.svg"/></div>
+                    <div class="icon" id="next" ontouchstart="jlodb.score.next();event.preventDefault();"
+                         onclick="jlodb.score.next();"><img src="res/img/icon/next.svg"/></div>
+                    <div id="table">
+                        <table>
+                            <tr><td class="alabel">Pieces</td><td id="pieces" class="avalue">0</td></tr>
+                            <tr><td class="alabel">Score</td><td id="points" class="avalue">0</td></tr>
+                            <tr><td class="alabel">Record</td><td id="best" class="avalue">0</td></tr>
+                        </table>
+                    </div>
+                    <div id="new"><img src="res/img/effects/new01.svg"/></div>
+                    <div class="effect" id="wrong"><img src="res/img/effects/alert01.svg"/></div>
+                    <div class="effect" id="good"><img src="res/img/effects/alert02.svg"/></div>
+                </div>
+            </div></div>
+        </div>
+
+        <div id="waiting"><div><img src="res/img/generic/waiting.svg"/></div></div>
+    </div>
+</body>
+</html>

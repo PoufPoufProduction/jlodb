@@ -1,0 +1,18 @@
+<ul>
+    <li onclick="jlodb.home();"><div>Accueil</div></li>
+    <li><div onclick="$('#nav #navigation').toggle();">Navigation</div>
+        <ul id="navigation" class="sub">
+            <li onclick="jlodb.page.classification.load();"><div>Disciplines</div></li>
+            <li onclick="jlodb.page.activities.load();"><div>Activités</div></li>
+            <li onclick="jlodb.page.browser.load();"><div>Recherche</div></li>
+        </ul>
+    </li>
+    <li onclick="jlodb.page.edition.load();"><div>Edition</div></li>
+    <li onclick="jlodb.launcher.exercice();"><div>Exercice au hasard</div></li>
+    <li><div onclick="$('#nav #plugs').toggle();">Plugins</div>
+        <ul id="plugs" class="sub">
+            <li onclick="jlodb.page.mods.load();"><div>Mods</div></li>
+            <li onclick="jlodb.page.apps.load();"><div>Apps</div></li>
+        </ul>
+    </li>
+</ul>

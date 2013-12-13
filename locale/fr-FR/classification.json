@@ -1,0 +1,83 @@
+{ "id"      : "root",
+  "label"   : "Tout",
+  "abstract": "Ensemble des connaissances dont l'aprentissage est automatisable",
+  "children": [
+    { "id"      : "languages",
+      "label"   : "Langues",
+      "abstract": "Etude des langues vivantes ou anciennes, linguistique et compréhension",
+      "children" : [
+        { "id"      : "french",
+          "label"   : "Français",
+          "abstract": "La langue française : orthographe, grammaire, etc.",
+          "children": [
+            { "id"      : "frword",
+              "label"   : "Orthographe",
+              "abstract": "Orthographe et lecture du français"},
+            { "id"      : "frconj",
+              "label"   : "Conjugaison",
+              "abstract": "Conjugaison des verbes à tous les temps"},
+            { "id"      : "frgram",
+              "label"   : "Grammaire",
+              "abstract": "Grammaire de la langue française"
+        }]}]},
+    { "id"      : "sciences",
+      "label"   : "Sciences",
+      "abstract": "Sciences exactes et naturelles",
+      "children": [
+        { "id"      : "mathematics",
+          "label"   : "Mathématiques",
+          "abstract": "Domaine de connaissances abstraites construites à l'aide de raisonnements logiques sur des concepts tels que les nombres, les figures, les structures et les transformations.",
+          "children": [
+            { "id"      : "arithmetic",
+              "label"   : "Arithmétique",
+              "abstract": "La science des nombres",
+              "children": [
+                { "id"      : "numeration",
+                  "label"   : "Numération" ,
+                  "abstract": "Mode de représentation des nombres" },
+                { "id"      : "operations",
+                  "label"   : "Opérations",
+                  "abstract": "Une opération est un processus visant à obtenir un résultat à partir d'un ou plusieurs objets appelés opérandes.",
+                  "children": [
+                    { "id"      : "addition",
+                      "label"   : "Addition" ,
+                      "abstract": "L'addition est une opération élémentaire, permettant notamment de décrire la réunion de quantités ou l'adjonction de grandeurs extensives de même nature, comme les longueurs, les aires, ou les volumes."},
+                    { "id"      : "subtraction",
+                      "label"   : "Soustraction",
+                      "abstract": "La soustraction combine deux ou plusieurs grandeurs du même type, appelées opérandes, pour donner un seul nombre, appelé la différence." },
+                    { "id"      : "multiplication",
+                      "label"   : "Multiplication",
+                      "abstract": "La multiplication de deux entiers peut être vue comme une addition répétée plusieurs fois."},
+                    { "id"      : "division",
+                      "label"   : "Division",
+                      "abstract": "La division est une loi de composition qui à deux nombres associe le produit du premier par l'inverse du second."}]}]},
+            { "id"      : "geometry",
+              "label"   : "Géométrie" ,
+              "abstract": "La géométrie est la partie des mathématiques qui étudie les figures du plan et de l'espace"}]}]},
+    { "id"      : "social",
+      "label"   : "Sciences humaines",
+      "abstract": "Sciences humaines et sociales",
+      "children": [
+        { "id"      : "geography",
+          "label"   : "Géographie",
+          "abstract": "Etude de la planète, ses terres, ses caractéristiques, ses habitants, et ses phénomènes" }
+      ]},
+    { "id"      : "health",
+      "label"   : "Sciences de la vie",
+      "abstract": "Sciences de la vie et de la santé" },
+    { "id"      : "technology",
+      "label"   : "Technologie",
+      "abstract": "Technologie et sciences appliquées",
+      "children": [
+        { "id"      : "it",
+          "label"   : "Informatique",
+          "abstract": "Traitement automatique de l'information via l'exécution de programmes informatiques par des machines."
+          }]},
+    { "id"      : "arts",
+      "label"   : "Etudes artistiques",
+      "abstract": "Etudes artistiques" },
+    { "id"      : "game",
+      "label"   : "Jeux et loisirs",
+      "abstract": "Jeux et loisirs"}]
+}
+ 

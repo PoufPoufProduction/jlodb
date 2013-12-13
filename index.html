@@ -1,0 +1,455 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>jLoDB - Javascript Learning Objects DataBase</title>
+    <script type="text/javascript" src="js/jquery-1.8.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.8.23.custom.min.js"></script>
+    <script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="js/jquery.svg.min.js"></script>
+    <script type="text/javascript" src="js/jlodb.js"></script>
+    <script type="text/javascript" src="js/jlodb-jquery-browser.js"></script>
+    <script type="text/javascript" src="js/jlodb-midi.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/jlodb.css" media="all" />
+    <link type="text/css" rel="stylesheet" href="css/browser.css" media="all"/>
+    <style>
+        #jlodb .left                        { float:left; }
+        #jlodb .right                       { float:right; }
+        #jlodb .clear                       { clear:both; }
+        #jlodb .small                       { font-size:.6em; }
+        #jlodb .help                        { cursor:help; }
+        #jlodb .id                          { width:3em; }
+        #jlodb .icon                        { width:1em; height:1em; }
+
+        #jlodb #popup                       { position:absolute; top:0; left:0; border-radius:.5em; font-size:.25em;
+                                              background-color:#221500; color:#FFDD99; z-index:1000; display:none;
+                                              width:20em; opacity:.9; padding:.1em .4em; text-align:justify;}
+        #jlodb #popup h1                    { font-size:1.2em; text-align:right; text-transform:uppercase;}
+        #jlodb #popup h2                    { font-size:1.1em; text-align:center;}
+
+        #jlodb #header                      { width:100%; height:2em; overflow:hidden; background-color:#EEEEEE; position:relative; }
+        #jlodb #header img.background       { width:100%; height:100%; position:absolute; }
+        #jlodb #header ul                   { position:absolute; top:.1em; left:15.3em; list-style-type:none;}
+        #jlodb #header li                   { font-size:.6em; }
+        #jlodb #header li img               { cursor:pointer; }
+
+        #nav                    { float:left; width:3em; height:9em; overflow:hidden; background-color:#DDDDDD; }
+        #nav ul                 { font-size:.35em; list-style-type: none; }
+        #nav li div             { margin:.2em; padding:.1em .1em .1em .3em; cursor:pointer; border-radius:.2em;
+                                  background-color:#888;color:#DDD;}
+        #nav .sub               { display:none; }
+        #nav ul.sub             { font-size:.8em; padding-left:1em; }
+        #footer                 { clear:both; width:100%; height:1em; overflow:hidden; background-color:#EEEEEE; position:relative; }
+        div#console             { font-size:.2em; color:#444444; font-family: "Courier New", Courier, mono; position:absolute; top:0; }
+        div#content             { float:left; width:13em; height:9em; overflow:hidden; background-color:#FFFFFF; color:#333333;}
+        div#content>div.text    { font-size:.3em; }
+        div#content ul          { list-style-type:none; }
+        div#content li          { position:relative; margin: .1em 0 .25em .2em; }
+        div#content li .icon    { position:absolute; top:0; width:1.5em; height:1.5em; }
+
+        #jlodb #buildlog        { font-size:.2em; margin:1em; }
+
+        #jlodb .button          { background-color:#888; font-size:1em; border-radius:.2em;
+                                  color:#EEE; width:10em; text-align:center; cursor:pointer; margin:0.5em 0 0 .2em; }
+        #jlodb .button12        {  background-color:#555; font-size:1em; border-radius:.2em 0 0 .2em; float:left;
+                                  color:#EEE; width:3em; text-align:center; cursor:pointer; margin:0.5em 0 0 .2em; }
+        #jlodb .button22        {  background-color:#888; font-size:1em; border-radius:.0 .2em .2em 0; float:left;
+                                  color:#EEE; width:7em; text-align:center; cursor:pointer; margin:0.5em 0 0 0; }
+
+        #jlodb input            { background-color:#888; font-size:1em; border-radius:.2em; color:#EEE; width:8em; padding-left:2em; }
+
+
+        div#content .banner     { padding:0 .3em 0 .3em; margin:.5em; line-height:1.4em; }
+        div#home h1             { font-size:1.6em; overflow:visible; }
+        div#home #overview      { text-align:right; ont-size:.8em; font-family: "Courier New", Courier, mono; line-height:1em;}
+        div#home #overview span { color:black; }
+        div#home #right         { font-size:.8em; width:28em; overflow:hidden; float:left; }
+        div#home #left          { font-size:.8em; width:25em; overflow:hidden; float:left; }
+        div#content .border         { padding:0 .4em 0 .4em; margin:.5em; border:1px solid gray; border-radius:.5em;
+                                  text-align:justify; }
+        div#home .border p       { margin-bottom:.5em; }
+        div#home #math          { border:1px solid gray;padding-left:7em;margin-bottom:.1em;border-radius:.5em; }
+
+        div#database            { font-size:.8em; }
+        div#unavailable         { font-size:.5em; }
+        div#unavailable p       { border:1px solid gray; margin:.5em 0 .5em 0; text-align:center;}
+        #jlodb #mods                        { font-size:.25em; }
+        #jlodb #mods .mod                   { clear:both; margin:.5em; }
+        #jlodb #mods .mod>div               { float:left; }
+        #jlodb #mods .mod .icon             { font-size:8em; }
+        #jlodb #mods .mod .text             { width:40em; height:7em; text-align:justify; overflow:hidden; vertical-align:top;
+                                              padding:.5em; background-color: #888; border-radius:1.5em; color:white; margin-left:.5em;}
+
+        #jlodb #apps                        { font-size:.25em; text-align:justify; }
+        #jlodb #apps .icon                  { width:1em; height:1em; float:left; cursor:pointer; margin:.1em; font-size:5em; }
+
+        /*-------------------------------------------------- EDITION PAGE ---------------------------------------------------------*/
+        #jlodb #edition textarea            { resize:none; margin:.5em; width:50em; height:25em; font-size:.25em;
+                                              background-image:url("res/img/background/book02.svg"); background-repeat:repeat;}
+        #jlodb #edition>div                 { height:2em; }
+        #jlodb #edition #activities         { font-size:.5em; margin-left:1em; width:24em; display:block; text-align:center; }
+        #jlodb #edition .button             { width:12em; font-size:1em; margin:.1em .5em;}
+
+        /*-------------------------------------------------- NAVIGATION PAGES -----------------------------------------------------*/
+        #jlodb .navigation                  { font-size:.25em;  }
+        #jlodb .navigation table            { width:100%; border:1px solid white; border-width:0 0 1px 0; }
+        #jlodb .navigation td.icon          { font-size:8em; cursor:pointer; }
+        #jlodb .navigation td.text          { width:24em; height:4em; text-align:justify; overflow:hidden; vertical-align:top;
+                                              padding:.5em; background-color: #888; border-radius:1.5em; color:white; }
+        #jlodb .navigation td.text p        { font-style:italic; }
+        #jlodb .navigation .scroll          { height:36em; width:34em; float:left; overflow:scroll;}
+        #jlodb .navigation .details         { height:35.8em; width:17.6em; overflow:hidden; margin-top:.2em;
+                                              background-color: #DDD; border-radius:1.5em; }
+        #jlodb .navigation .details>div     { display:none; }
+        #jlodb .navigation .details h1      { font-size:1.2em; font-weight:bold; text-align:right; border:1px solid white;
+                                              border-width:0 0 1px 0; padding-right:1em;  }
+        #jlodb .navigation .details .legend { width:12em; text-align:right; padding-right:.5em; font-weight:bold; }
+        #jlodb .navigation li               { margin:1px 1em; background-color:#888; color:white; padding-left:.5em; border-radius:.5em;
+                                              cursor:pointer; font-size:1.3em;}
+        #jlodb .navigation .files           { font-size:.8em; height:4.2em;
+                                              border:1px solid white; border-width:0 0 1px 0; }
+        #jlodb .navigation .files div       { cursor:pointer; padding:0 .5em; display:inline-block; }
+
+        /*-------------------------------------------------- LOGIN PAGE ----------------------------------------------------------*/
+        #jlodb .iflogged                    { display:none; }
+        #jlodb .ifnotlogged                 { display:inline; }
+        body>div.logged #jlodb .iflogged    { display:inline; }
+        body>div.logged #jlodb .ifnotlogged { display:none; }
+        body>div.logged #jlodb #header      { background-color:#555555; }
+
+        ul.special li                        { overflow:visible; }
+
+        #jlodb #mask                        { position:absolute; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5);
+                                              display:none; }
+
+    </style>
+    <script>
+
+
+jlodb = $.extend(jlodb,{
+    version         : "0.0-1",
+    checkdb         : 0,
+    classification  : {
+        data        : 0,
+        find: function(_root,_id) {
+            var ret = {parent:0, node:0};
+            if (_root.attr("id")==_id) { ret= {parent:0, node:_root}; }
+            else {
+                if (_root.attr("children")) {
+                    for (var i=0; i<_root.attr("children").length; i++) {
+                        ret = jlodb.classification.find($(_root.attr("children")[i]), _id);
+                        if (ret.node) {
+                            if (!ret.parent) { ret.parent = _root; }
+                            break;
+            }   }   }   }
+            return ret;
+        },
+        getsubnodes: function(_obj) {
+            var ret="'"+_obj.attr("id")+"'";
+            if (_obj.attr("children")) {
+                for (var i=0; i<_obj.attr("children").length; i++) {
+                    ret += ","+jlodb.classification.getsubnodes($(_obj.attr("children")[i]));
+                }
+            }
+            return ret;
+        }
+    },
+    constants       : {
+        level       : { min : 1, max : 5 },
+        diff        : { min : 1, max : 5 },
+        extend      : { min : 1, max : 60 }
+    },
+    page            : {
+        mods : {
+            load: function() {
+                $("#content").load("locale/"+jlodb.checkdb.lang+"/mods.html"+"?debug="+Math.floor(Math.random()*99999),
+                    function(response, status, xhr) {
+                        $.getJSON("api/mods.php", function (data) {
+                            for (var i=0; i<data.mods.length; i++) {
+                                var html ="<div class='mod'><div class='icon'><a href='"+data.mods[i].id+".html' target='blank'>";
+                                html    +="<img src='mods/"+data.mods[i].id+"/icon.svg'/></a></div>";
+                                html    +="<div class='text'><h2>"+data.mods[i].name+"</h2><p>"+data.mods[i].abstract+"</p></div>";
+                                html    +="</div>";
+                                $("#mods #list").append(html);
+                            }
+                        });
+                });
+            }
+        },
+        apps : {
+            load: function() {
+                $("#content").load("locale/"+jlodb.checkdb.lang+"/apps.html"+"?debug="+Math.floor(Math.random()*99999),
+                    function(response, status, xhr) {});
+            }
+        },
+        activities : {
+            name: "",
+            load: function() {
+                $("#content").load("locale/"+jlodb.checkdb.lang+"/activities.html"+"?debug="+Math.floor(Math.random()*99999),
+                    function(response, status, xhr) {
+                    $.getJSON("api/activities.php", function (data) {
+                        for (var i=0; i<data.activities.length; i++) {
+                            var html="<tr><td class='icon'><div class='icon' onclick='jlodb.page.activities.detail(\"";
+                            html += data.activities[i].name+"\");'><img src='res/img/activity/";
+                            html += data.activities[i].name+".svg' alt=''/></div></td>";
+                            html += "<td class='text'><h1>"+data.activities[i].label+"</h1><p>";
+                            html += data.activities[i].description+"</p></td></tr>";
+                            $("#activities table.list").append(html);
+                        }
+                    });
+                });
+            },
+            detail: function(name) {
+                this.name = name;
+                $.getJSON("api/activity.php?name="+name, function(data) {
+                    if (data.status=="success") {
+                        $("#jlodb #activities .details h1").html(data.label);
+                        $("#jlodb #activities .details #number").html(data.exercices);
+                        $("#jlodb #activities .details #class").html(data.classification.length);
+
+                        $("#activities .files").html("");
+                        for (var i=0; i<data.files.length; i++) {
+                            var html="<div><a href='activities/"+name+"/data/"+data.files[i]+"'>"+data.files[i]+"</a></div>";
+                            $("#activities .files").append(html);
+                        }
+
+                        $("#jlodb #activities .details>div").show();
+                    }
+                });
+            }
+        },
+        classification : {
+            elt: 0,
+            build: function() {
+                var node = jlodb.classification.find(jlodb.classification.data, this.elt);
+                $("#classification table.list").html("");
+                if (node.parent) {
+                    var html ="<tr><td class='icon'><div class='icon' onclick='jlodb.page.classification.moveto(\"";
+                    html += node.parent.attr("id")+"\");'><img src='res/img/classification/up.svg' alt=''/></div></td>";
+                    html += "<td class='text'><h1>"+node.node.attr("label")+"</h1><p>";
+                    html += node.node.attr("abstract")+"</p></td></tr>";
+                    $("#classification table.list").append(html);
+                }
+                $(node.node.attr("children")).each(function() {
+                    var html="<tr><td class='icon'><div class='icon' onclick='jlodb.page.classification.moveto(\"";
+                    html += this.id+"\");'><img src='res/img/classification/";
+                    html += this.id+".svg' alt=''/></div></td>";
+                    html += "<td class='text'><h1>"+this.label+"</h1><p>";
+                    html += this.abstract+"</p></td></tr>";
+                    $("#classification table.list").append(html);
+                });
+                $.getJSON("api/exercices.php?classification='"+node.node.attr("id")+"'", function(data) {
+                        $("#classification #nbexercices").html(data.exercices.length);
+                    });
+
+            },
+            load: function() {
+                $("#content").load("locale/"+jlodb.checkdb.lang+"/classification.html"+"?debug="+Math.floor(Math.random()*99999),
+                    function(response, status, xhr) { jlodb.page.classification.build(); $("#classification .details>div").show()});
+            },
+            moveto: function(_id) {
+                jlodb.page.classification.elt = _id;
+                this.build();
+            }
+        },
+        login: {
+            load: function() { $("#content").load("locale/zxx/logon.html"+"?debug="+Math.floor(Math.random()*99999)); },
+            perform: function(_login) {
+                $.getJSON("api/login.php"+
+                    (_login?"?username="+$("input[name=username]").val()+"&password="+$("input[name=password]").val():""),
+                    function (data) { $("body>div").toggleClass("logged", (data.status=="success")); });
+            },
+            install: function() {
+                $("#jlodb #mask").show(); $("#waiting div").addClass("running"); $("#waiting").show();
+                $.getJSON("api/builddb.php", function(data) {
+                    $("#jlodb #mask").hide(); $("#waiting div").removeClass("running"); $("#waiting").hide();
+                    if (data.status=="success") {
+                        if (data.warnings && data.warnings.length) {
+                            $("#jlodb #buildlog").html("");
+                            for (var i in data.warnings) {
+                                $("#jlodb #buildlog").append("<p>"+data.warnings[i]+"</p>");
+                            }
+                        } else { jlodb.home(); }
+                    } else { alert("ERROR: "+data.textStatus); }
+                });
+            }
+        },
+        edition: {
+            open: function(_id) {
+                $.getJSON("api/exercice.php?id="+_id, function(data) {
+                    jlodb.page.edition.load(JSON.stringify(data.data), data.activity);
+                });
+            },
+            load: function(_content, _activity) {
+                $.getJSON("api/activities.php", function(data) {
+                    $("#content").load("locale/"+jlodb.checkdb.lang+"/edition.html"+"?debug="+Math.floor(Math.random()*99999),
+                    function(response, status, xhr) {
+                        $("#jlodb #edition textarea").val(_content);
+                        $("#jlodb #edition select").html("");
+                        for (var i=0; i<data.activities.length; i++) {
+                            var option = "<option value='"+data.activities[i].name+"'";
+                            if (data.activities[i].name==_activity) { option+=" selected='selected'"; }
+                            option +=">"+data.activities[i].label+"</option>";
+                            $("#jlodb #edition select").append(option);
+                        }
+                    });
+                });
+            },
+            submit: function() {
+                jlodb.launcher.run($("#jlodb #edition select").val(), JSON.parse($("#jlodb #edition textarea").val()));
+            }
+        },
+        browser: {
+            load: function() {
+                $("#content").browser({lang:"fr-FR", classification:jlodb.classification.data, context:{
+                    Lancer:function(_id){ jlodb.launcher.exercice({id:_id}); }, Editer:function(_id){jlodb.page.edition.open(_id); } }
+                });
+            }
+        }
+    },
+    content     : function(_url) { $("#content").load(_url+"?debug="+Math.floor(Math.random()*99999)); },
+    popup       : {
+        timer   : 0,
+        show    : function(_elt,_html) {
+            if (this.timer) { clearTimeout(this.timer); this.timer=0; }
+            var vLeft = $(_elt).offset().left-$(_elt).width();
+            if (vLeft+$("#popup").width()>$("body>div").width()+$("body>div").offset().left) {
+                vLeft = $("body>div").width()+$("body>div").offset().left-$("#popup").width();
+            }
+            this.timer = setTimeout(function() {
+                $("#popup").html(_html).css("left",vLeft+"px")
+                                       .css("top",($(_elt).offset().top+$(_elt).height())+"px").show(); }, 800);
+        },
+        hide    : function() {
+            if (this.timer) { clearTimeout(this.timer); this.timer=0; }
+            $("#popup").hide();
+        }
+    },
+    // LOAD JLODB HOME'S PAGE
+    home        : function() {
+        // IS USER LOGGED
+        $.getJSON("api/islogged.php", function(data) { $("body>div").toggleClass("logged", (data.status=="success")); });
+
+        var results = new RegExp('[?]id=([^&]*)').exec(window.location.href);
+
+        // CHECK THE DATABASE
+        $.getJSON("api/checkdb.php", function (data) {
+            jlodb.checkdb = data;
+            if (data.error) {
+                $("#content").load( "locale/zxx/unavailable.html", function(response, status, xhr) {
+            });
+            }
+            else {
+                if (!results) {
+                    $("#content").load("locale/"+data.lang+"/home.html", function(response, status, xhr) {
+                        $("div#home #nbActivities").html(data.activities);
+                        $("div#home #nbExercices").html(data.exercices);
+                    });
+                }
+
+                // LOAD THE MENU
+                $("#nav").load("locale/"+data.lang+"/menu.html", function(response, status, xhr) {});
+
+                // GET THE CLASSIFICATION
+                $.getJSON("locale/"+data.lang+"/classification.json", function(data) {
+                    jlodb.classification.data = $(data);
+                    jlodb.page.classification.elt=$(data).attr("id");
+                    jlodb.page.browser.elt=$(data).attr("id");
+
+                    if (results) { jlodb.page.browser.load(results[1]); }
+                });
+            }
+        });
+
+    }
+
+});
+
+// OVERRIDE METHODS
+jlodb.context.refresh = function(_begin) { $("#page").toggle(!_begin);}
+
+jlodb.score.l.menu = {
+    more:function() { return false; },
+    update:function(_state) {}
+};
+
+window.onload = function() {
+    // SPECIAL STUFF
+    $("#activity").ontouchmove = function(e) { e.preventDefault(); }
+
+    // GET AND RESIZE THE BEST PANEL
+    var x = Math.floor($(window).width()/16);
+    var y = Math.floor($(window).height()/12);
+    $("body").css("font-size", (Math.min(x,y))+"px");
+    $("body>div").css("margin-top", Math.floor(($(window).height()-$("body>div").height())/2)+"px").show();
+
+    jlodb.home();
+}
+
+
+    </script>
+</head>
+
+<body><div>
+    <div id="jlodb">
+        <div id="page">
+            <div id="popup"></div>
+            <div id="header">
+                <img src="res/img/site/jlodb.svg" alt="" class="background" />
+                <ul>
+                    <li><div class="icon"></div></li>
+                    <li><div class="icon"></div></li>
+                    <li><div class="icon"><img src="res/img/icon/home.svg" alt="H" onclick="jlodb.page.login.load();"/></div></li>
+                </ul>
+            </div>
+
+            <div id="nav"></div>
+
+            <div id="content"></div>
+
+            <div id="footer">
+                <div id="console"></div>
+            </div>
+        </div>
+        <div id="mask"></div>
+    </div>
+    <div id="waiting"><div><img src="res/img/generic/waiting.svg"/></div></div>
+
+    <div id="launcher">
+        <div id="quit" ontouchstart="$('#launcher #close').show();event.preventDefault();"
+                           onclick="$('#launcher #close').show();"><img src="res/img/icon/quit.svg"/></div>
+        <div id="activity"></div>
+
+            <div id="jscore"><div>
+                <div class="content">
+                    <div class="value"></div>
+                    <div class="stars"></div>
+                    <div class="icon" id="reload" ontouchstart="jlodb.score.reload();event.preventDefault();"
+                         onclick="jlodb.score.reload();" ><img src="res/img/icon/reload.svg"/></div>
+                    <div class="icon" id="menu" ontouchstart="jlodb.score.close();event.preventDefault();"
+                         onclick="jlodb.score.close();" ><img src="res/img/icon/menu.svg"/></div>
+                    <div class="icon" id="next" ontouchstart="jlodb.score.next();event.preventDefault();"
+                         onclick="jlodb.score.next();"><img src="res/img/icon/next.svg"/></div>
+                </div>
+            </div></div>
+
+        <div id="close" >
+            <table>
+                <tr>
+                    <td><div class="button" ontouchstart="$('#launcher #close').hide();event.preventDefault();"
+                                            onclick="$('#launcher #close').hide();">
+                        <img src="res/img/icon/cancel.svg" alt="no"/>
+                    </div></td>
+                    <td><div class="button" ontouchstart="$('#launcher #close').hide();jlodb.launcher.quit();event.preventDefault();"
+                                            onclick="$('#launcher #close').hide();jlodb.launcher.quit();">
+                        <img src="res/img/icon/ok.svg" alt="yes"/>
+                    </div></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+</div></body>
+</html>

@@ -1,0 +1,56 @@
+<div>
+
+    <div id="board">
+        <div id="data"></div>
+        <div id="exercice">
+            <div id="c1">
+                <div class="color" ontouchstart="$(this).closest('.marker').marker('color',0);event.preventDefault();"
+                                   onclick="$(this).closest('.marker').marker('color',0);"><div></div></div>
+                <div class="legend"></div>
+            </div>
+            <div id="c2" class="odd">
+                <div class="color" ontouchstart="$(this).closest('.marker').marker('color',1);event.preventDefault();"
+                                   onclick="$(this).closest('.marker').marker('color',1);"><div></div></div>
+                <div class="legend"></div>
+            </div>
+            <div id="c3">
+                <div class="color" ontouchstart="$(this).closest('.marker').marker('color',2);event.preventDefault();"
+                                   onclick="$(this).closest('.marker').marker('color',2);"><div></div></div>
+                <div class="legend"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="submit" ontouchstart="$(this).closest('.marker').find('#valid').toggle();event.preventDefault();"
+                     onclick="$(this).closest('.marker').find('#valid').toggle();">
+        <img src="res/img/icon/swvalid.svg" id="subvalid"/>
+        <img src="res/img/icon/swgood.svg" id="subgood"/>
+        <img src="res/img/icon/swwrong.svg" id="subwrong"/>
+    </div>
+
+    <div id="valid" >
+        <table>
+            <tr>
+                <td><div class="button" ontouchstart="$(this).closest('.marker').find('#valid').hide();event.preventDefault();"
+                                        onclick="$(this).closest('.marker').find('#valid').hide();">
+                    <img src="res/img/icon/cancel.svg" alt="no"/>
+                </div></td>
+                <td><div class="button" ontouchstart="$(this).closest('.marker').marker('valid');event.preventDefault();"
+                                        onclick="$(this).closest('.marker').marker('valid');">
+                    <img src="res/img/icon/ok.svg" alt="yes"/>
+                </div></td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="intro" ontouchstart="$(this).closest('.marker').marker('next');event.preventDefault();"
+                    onclick="$(this).closest('.marker').marker('next');"><div>
+        <div class="text">
+            <h1 id="label"></h1>
+            <p id="guide"></p>
+        </div>
+    </div></div>
+
+</div>
+

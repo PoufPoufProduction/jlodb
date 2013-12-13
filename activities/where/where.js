@@ -1,0 +1,509 @@
+(function($) {
+    // Activity default parameters
+    var defaults = {
+        name        : "where",                  // The activity name
+        template    : "template.html",          // Activity html template
+        css         : "style.css",              // Activity css style sheet
+        lang        : "fr-FR",                  // Current localization
+        number      : 20,                       // Number of questions
+        time        : 1,                        // Sequence time reference
+        shuffle     : true,                     // Shuffle the questions
+        len         : 0,                        // The fixed length of question
+        evaluation  : [4,0.8],                  // The evaluation from the score average (4 for A, 3.5 for B, 3 for C, etc.)
+        effects     : true,                     // Display effects
+        debug       : false                     // Debug mode
+    };
+
+    // private methods
+    var helpers = {
+        // @generic: Check the context
+        checkContext: function(_settings){
+            var ret         = "";
+            if (!_settings.context)         { ret = "no context is provided in the activity call."; } else
+            if (!_settings.context.onQuit)  { ret = "mandatory callback onQuit not available."; }
+
+            if (ret.length) {
+                ret+="\n\nUsage: $(\"target\")."+_settings.name+"({'onQuit':function(_ret){}})";
+            }
+            return ret;
+        },
+        // Quit the activity by calling the context callback
+        end: function($this) {
+            var settings = $this.data("settings");
+            settings.context.onQuit({'status':'success', 'score':settings.score});
+        },
+        // Update the timer
+        timer:function($this) {
+            var settings = $this.data("settings");
+            settings.timer.value++;
+            var vS = settings.timer.value%60;
+            var vM = Math.floor(settings.timer.value/60)%60;
+            var vH = Math.floor(settings.timer.value/3600);
+            if (vH>99) { vS=99; vM=99; vH=99; }
+            //$this.find("#time").text((vH<10?"0":"")+vH+(vM<10?":0":":")+vM+(vS<10?":0":":")+vS);
+            settings.timer.id = setTimeout(function() { helpers.timer($this); }, 1000);
+        },
+        move: function($this, _anim) {
+            var settings = $this.data("settings");
+            var vHeight=Math.floor(($this.find("#values").height()-$this.find("#values li").height())/2);
+            $this.find("#values li").each(function(index) { if (index<settings.it) { vHeight = vHeight - $(this).outerHeight(); } });
+            if (_anim)  { $this.find("#values ul").animate({top: vHeight+"px"}, 250, function() { helpers.next($this); }); }
+            else        { $this.find("#values ul").css("top", vHeight+"px"); }
+        },
+        next: function($this) {
+            var settings = $this.data("settings");
+            $($this.find("#values li").get(settings.it)).addClass("select");
+        },
+        // Handle the elements sizes and show the activity
+        resize: function($this, len) {
+            var settings = $this.data("settings");
+
+            // Send the onLoad callback
+            if (settings.context.onLoad) { settings.context.onLoad(false); }
+
+            $this.css("font-size", Math.floor($this.width()/10)+"px");
+            setTimeout(function() { helpers.resizeAfterShow($this, len); }, 100 );
+
+        },
+        // Resize but after the show event
+        resizeAfterShow: function($this, len) {
+            var settings = $this.data("settings");
+
+            var vWidth = Math.floor($this.find("#values").width());
+            if (settings.len) { len = settings.len; }
+            $this.find("#values").css("font-size", Math.floor(1.2*vWidth/len)+"px");
+
+            // COMPUTE RATIO
+            var vReg = new RegExp("[ ]", "g");
+            var vSize = $(settings.svg.root()).attr("title").split(vReg);
+            var vWidth = $this.find("#keypad").width();
+            settings.ratio = vWidth/(vSize[2]-vSize[0]);
+            if (settings.ratio<=0) { settings.ratio=1; }
+
+            // LOCALE HANDLING
+            $this.find("h1#label").html(settings.label);
+            $this.find("#guide").html(settings.guide);
+            $this.find("#comment").html(settings.comment);
+            $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); });
+
+            settings.interactive = true;
+        },
+        // Build the questions
+        build: function($this) {
+            var settings = $this.data("settings");
+
+            // BUILD THE CURSORS LIST
+            for (var i=0; i<settings.cursor.length; i++)
+            {
+                var vCursor = $.extend({
+                        constraint  : [0,0],            // The translation constraint
+                        step        : -1,               // The proximity step from the target (if -1, we use the radius)
+                        steps       : [0,1,2,3,4],      // The linear step mode
+                        color       : "blue",           // The color effects
+                        opacity     : .2,               // The opacitiy effects
+                        init        : [0,0],            // Initial position of the cursor
+                        id          : "cursor",         // Cursor id
+                        translate   : [0,0],            // The current position of the cursor
+                        boundaries  : [-1,-1,-1,-1],    // The translation boundaries
+                        targettype  : "circle",         // The target type (circle, rect)
+                        effects     : [0,0,0,0]         // Parameter for the effects
+                    }, settings.cursor[i]);
+                settings.cursors[vCursor.id] = vCursor;
+
+                // HANDLE THE CURSOR DRAG
+                var $cursor = $("#"+vCursor.id, settings.svg.root());
+                vCursor.translate=[vCursor.init[0], vCursor.init[1]];
+                $cursor.show().attr("transform", "translate("+vCursor.translate[0]+" "+vCursor.translate[1]+")");
+
+                $cursor.bind('touchstart mousedown', function(event) {
+                    var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
+                              event.originalEvent.touches[0]:event;
+
+                    if (!settings.timer.id) { settings.timer.id = setTimeout(function() { helpers.timer($this); }, 1000); }
+                    if (settings.interactive) {
+                        settings.elt = this;
+                        $(this).attr("class","drag");
+                        $this.addClass("active");
+                        settings.mouse = [ vEvent.clientX, vEvent.clientY];
+                    }
+                    event.preventDefault();
+                });
+            }
+
+            $(settings.svg.root()).bind('touchend mouseup', function() {
+                $(settings.elt).attr("class","");
+                var vCursor = settings.cursors[settings.elt.id];
+                $this.removeClass("active");
+
+
+                // RELEASE THE DISPLACEMENT
+                if ($(settings.elt).attr("transform")) {
+                    var reg = new RegExp("[( )]","g");
+                    var vSplit = $(settings.elt).attr("transform").split(reg);
+
+                    if (vCursor.constraint[0]>0) {
+                        vSplit[1] = vCursor.init[0]+Math.round((vSplit[1]-vCursor.init[0])/vCursor.constraint[0])*vCursor.constraint[0];
+                    }
+                    if (vCursor.constraint[1]>0) {
+                        vSplit[2] = vCursor.init[1]+Math.round((vSplit[2]-vCursor.init[1])/vCursor.constraint[1])*vCursor.constraint[1];
+                    }
+                    $(settings.elt).attr("transform", "translate("+vSplit[1]+" "+vSplit[2]+")");
+                    vCursor[vSplit[0]]=[parseFloat(vSplit[1]),parseFloat(vSplit[2])];
+                }
+                else {
+                }
+                settings.elt = 0;
+            });
+            $(settings.svg.root()).bind('touchmove mousemove', function(event) {
+                var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
+                              event.originalEvent.touches[0]:event;
+
+                if (settings.interactive && settings.elt) {
+                    // COMPUTE TRANSLATION_X
+                    var vCursor = settings.cursors[settings.elt.id];
+                    var vX = vCursor.translate[0];
+                    if (vCursor.constraint[0]==0) {
+                        vX += (vEvent.clientX-settings.mouse[0])/settings.ratio;
+                    }
+                    else if (vCursor.constraint[0]>0) {
+                        var vValue = ((vEvent.clientX-settings.mouse[0])/settings.ratio)/vCursor.constraint[0];
+                        var vStep = Math.round(vValue);
+                        var vOffset = Math.pow((vValue-vStep)*2,5)/2;
+                        vX += (vStep+vOffset) * vCursor.constraint[0];
+                    }
+                    // COMPUTE TRANSLATION_Y
+                    var vY = vCursor.translate[1];
+                    if (vCursor.constraint[1]==0) {
+                        vY += (vEvent.clientY-settings.mouse[1])/settings.ratio;
+                    }
+                    else if (vCursor.constraint[1]>0) {
+                        var vValue = ((vEvent.clientY-settings.mouse[1])/settings.ratio)/vCursor.constraint[1]
+                        var vStep = Math.round(vValue);
+                        var vOffset = Math.pow((vValue-vStep)*2,5)/2;
+                        vY += (vStep+vOffset)  * vCursor.constraint[1];
+                    }
+                    if (vCursor.boundaries[0]>=0 && vX<vCursor.boundaries[0]) { vX = vCursor.boundaries[0]; }
+                    if (vCursor.boundaries[1]>=0 && vY<vCursor.boundaries[1]) { vY = vCursor.boundaries[1]; }
+                    if (vCursor.boundaries[2]>=0 && vX>vCursor.boundaries[2]) { vX = vCursor.boundaries[2]; }
+                    if (vCursor.boundaries[3]>=0 && vY>vCursor.boundaries[3]) { vY = vCursor.boundaries[3]; }
+                    $(settings.elt).attr("transform", "translate("+vX+" "+vY+")");
+                }
+                event.preventDefault();
+            });
+
+            var vLen = 0;
+
+            // BUILD THE QUESTIONS
+            var vLast = -1, vNew;
+            var vRegexp = (settings.regexp)?new RegExp(settings.regexp.from, "g"):0;
+            var $ul = $this.find("#values ul").hide();
+
+            // FILL THE UL LIST
+            for (var i=0; i<settings.number; i++) {
+                var $li = $("<li></li>").appendTo($ul), vValue;
+                $li.bind('touchstart click', function(event) { helpers.submit($this); event.preventDefault(); });
+
+                // GET THE QUESTION
+                if (settings.gen) { vValue = eval('('+settings.gen+')')(); }
+                else {
+                    do  {
+                        vNew = (settings.shuffle)?Math.floor(Math.random()*settings.values.length):i;
+                    }
+                    while ((settings.values.length>2)&&(vNew==vLast));
+                    vValue = settings.values[vNew];
+                }
+
+                // FILL THE DOM ELEMENT, USE A REGEXP IF NEEDED
+                if (vRegexp)    { $li.html(vValue[0].replace(vRegexp, settings.regexp.to)); }
+                else            { $li.html(vValue[0]); }
+
+                // HANDLE THE SIZE
+                vLen=Math.max(vLen, $li.text().length);
+
+                // STORE THE QUESTION
+                settings.questions.push(vValue);
+                vLast = vNew;
+            }
+
+            // Resize the activity
+            var vLen = 12;
+            helpers.resize($this, vLen);
+        },
+        // Load the svg if require
+        loadsvg:function($this) {
+            var settings = $this.data("settings");
+            // Load the svg if needed
+            var debug = "";
+            if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
+            var elt= $("<div id='svg'></div>").appendTo($this.find("#keypad"));
+            elt.svg();
+            settings.svg = elt.svg('get');
+            $(settings.svg).attr("class",settings.class);
+            settings.svg.load(
+                'res/img/'+settings.url + debug,
+                { addTo: true, changeSize: true, onLoad:function() {
+                    helpers.build($this);
+                }
+            });
+        },
+        // Load the different elements of the activity
+        load: function($this) {
+            var settings = $this.data("settings");
+            var debug = "";
+            if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
+
+            // Send the onLoad callback
+            if (settings.context.onLoad) { settings.context.onLoad(true); }
+
+            // Load the template
+            var templatepath = "activities/"+settings.name+"/"+settings.template+debug;
+            $this.load( templatepath, function(response, status, xhr) {
+                if (status=="error") {
+                    settings.context.onQuit({'status':'error', 'statusText':templatepath+": "+xhr.status+" "+xhr.statusText});
+                }
+                else {
+                    var cssAlreadyLoaded = false;
+                    $("head").find("link").each(function() {
+                        if ($(this).attr("href").indexOf("activities/"+settings.name+"/"+settings.css) != -1) { cssAlreadyLoaded = true; }
+                    });
+
+                    if(cssAlreadyLoaded) {
+                        helpers.loadsvg($this);
+                    }
+                    else {
+                        // Load the css
+                        $("head").append("<link>");
+                        var css = $("head").children(":last");
+                        var csspath = "activities/"+settings.name+"/"+settings.css+debug;
+                        css.attr({ rel:  "stylesheet", type: "text/css", href: csspath }).ready(function() {
+                            helpers.loadsvg($this);
+                        });
+                    }
+                }
+            });
+        },
+        createEffects: function($this, value) {
+            var settings = $this.data("settings");
+            var $group = $("#effects", settings.svg.root());
+            for (var i in settings.cursors) {
+                var vCursor = settings.cursors[i];
+                if (vCursor.targettype=="circle") {
+                    // ADD CIRCLE EFFECT
+                    settings.effects.push(settings.svg.circle($group,
+                        vCursor.effects[0],vCursor.effects[1],vCursor.effects[2]+vCursor.effects[3]*vCursor.steps[value],
+                        {fill:vCursor.color, opacity:vCursor.opacity }));
+                } else {
+                    // RECTANGLE EFFECT
+                    // WIDTH MAY BE DIFFERENT THAN HEIGHT
+                    var vStepX = vCursor.steps[value], vStepY = vCursor.steps[value];
+                    if ($.isArray(vCursor.steps[value])) {
+                        vStepX = vCursor.steps[value][0];
+                        vStepY = vCursor.steps[value][1];
+                    }
+                    // CONSTRAINT HANDLING
+                    var vX = (vCursor.constraint[0]<0)?vCursor.effects[2]:vCursor.effects[2]+vCursor.effects[2]*vStepX;
+                    var vY = (vCursor.constraint[1]<0)?vCursor.effects[3]:vCursor.effects[3]+vCursor.effects[3]*vStepY;
+
+                    // ADD RECTANGLE EFFECT
+                    settings.effects.push(settings.svg.rect($group,
+                        vCursor.effects[0]-vX/2,
+                        vCursor.effects[1]-vY/2,
+                        vX,vY,0,0, {fill:vCursor.color, opacity:vCursor.opacity }));
+                }
+            }
+        },
+        compute: function($this) {
+            var settings = $this.data("settings");
+
+            // REMOVE EFFECTS
+            while (settings.effects.length) {
+                settings.svg.remove(settings.effects[0]);
+                settings.effects.shift();
+            };
+            $this.find("#values").attr("class","");
+            $this.find("#effects>div").hide();
+            settings.interactive = true;
+
+            // GO TO NEXT QUESTION IF ANY
+            if (++settings.it==settings.number) {
+                settings.interactive = false;
+                settings.finish = true;
+                clearTimeout(settings.timer.id);
+
+                var score = settings.score/(settings.number*settings.cursor.length);
+                if (score>=settings.evaluation[0]-0*settings.evaluation[1])     { settings.score = 5; } else
+                if (score>=settings.evaluation[0]-1*settings.evaluation[1])     { settings.score = 4; } else
+                if (score>=settings.evaluation[0]-2*settings.evaluation[1])     { settings.score = 3; } else
+                if (score>=settings.evaluation[0]-3*settings.evaluation[1])     { settings.score = 2; } else
+                if (score>=settings.evaluation[0]-4*settings.evaluation[1])     { settings.score = 1; } else
+                                                                                { settings.score = 0; }
+                setTimeout(function() { helpers.end($this); }, 1000);
+            }
+            helpers.move($this, true);
+        },
+        submit: function($this) {
+            var settings = $this.data("settings");
+            if (settings.interactive && !settings.finish) {
+                settings.interactive=false;
+                var it=0;
+                var vScore = 0;
+                for (var i in settings.cursors) {
+                    var vResponse;
+                    var vCursor = settings.cursors[i];
+
+                    // GET THE RESPONSE FOR EACH CURSOR
+                    if (settings.cursor.length>1)   { vResponse = settings.questions[settings.it][1][it]; } else
+                                                    { vResponse = settings.questions[settings.it][1]; }
+
+                    // NEED TO MOVE THE RESPONSE?
+                    var vTransX = 0, vTransY = 0;
+                    if ($.isArray(vResponse)) { vTransX = vResponse[1]; vTransY = vResponse[2]; vResponse = vResponse[0];  }
+
+                    var $response = $("#"+vResponse, settings.svg.root());
+                    if ($response.attr("r")) {
+                        // MOVE RESPONSE
+                        if (vTransX||vTransY) { $response.attr("cx",vTransX); $response.attr("cy",vTransY); }
+
+                        // GET VALUES FROM RESPONSE
+                        var vR  = parseFloat($response.attr("r"));
+                        var vS  = parseFloat((vCursor.step>=0)?vCursor.step:vR);
+                        var vCx = $response.attr("cx");
+                        var vCy = $response.attr("cy");
+                        var vDist = Math.sqrt((vCx-vCursor.translate[0])*(vCx-vCursor.translate[0]) +
+                                              (vCy-vCursor.translate[1])*(vCy-vCursor.translate[1]));
+                        if (settings.scorefct) {
+                            vScore = eval('('+settings.scorefct+')')(vCx-vCursor.translate[0], vCy-vCursor.translate[1]);
+                        }
+                        else {
+                            if (vDist<vR+vS*vCursor.steps[0])  { vScore+=5; } else
+                            if (vDist<vR+vS*vCursor.steps[1])  { vScore+=4; } else
+                            if (vDist<vR+vS*vCursor.steps[2])  { vScore+=3; } else
+                            if (vDist<vR+vS*vCursor.steps[3])  { vScore+=2; } else
+                            if (vDist<vR+vS*vCursor.steps[4])  { vScore+=1; }
+                        }
+
+                        vCursor.effects=[vCx, vCy, vR, vS];
+                        vCursor.targettype="circle";
+                    }
+                    else {
+                        // MOVE RESPONSE
+                        if (vTransX||vTransY) { $response.attr("x",vTransX); $response.attr("y",vTransY); }
+
+                        // GET VALUES FROM RESPONSE
+                        // COMPUTE DISTANCE FROM THE FAREST AXIS
+                        var vR = [ parseFloat($response.attr("width")), parseFloat($response.attr("height")) ];
+                        var vC = [ parseFloat($response.attr("x"))+(vR[0]/2), parseFloat($response.attr("y"))+(vR[1]/2) ];
+                        var vDist = [ Math.sqrt((vC[0]-vCursor.translate[0])*(vC[0]-vCursor.translate[0])),
+                                      Math.sqrt((vC[1]-vCursor.translate[1])*(vC[1]-vCursor.translate[1])) ];
+                        var k=(vDist[0]/vR[0]>vDist[1]/vR[1])?0:1;
+                        var vS = parseFloat((vCursor.step>=0)?vCursor.step:vR[k]/2);
+
+                        if (settings.scorefct) {
+                            vScore = eval('('+settings.scorefct+')')(vC[0]-vCursor.translate[0], vC[1]-vCursor.translate[1]);
+                        }
+                        else {
+                            if (vDist[k]<vR[k]+vS*vCursor.steps[0])  { vScore+=5; } else
+                            if (vDist[k]<vR[k]+vS*vCursor.steps[1])  { vScore+=4; } else
+                            if (vDist[k]<vR[k]+vS*vCursor.steps[2])  { vScore+=3; } else
+                            if (vDist[k]<vR[k]+vS*vCursor.steps[3])  { vScore+=2; } else
+                            if (vDist[k]<vR[k]+vS*vCursor.steps[4])  { vScore+=1; }
+                        }
+
+                        vCursor.effects=[vC[0],vC[1],vR[0],vR[1]];
+                        vCursor.targettype="rect";
+                    }
+                    it++;
+                }
+
+                // NOT NECESSARY ANYMORE
+                $this.find("#show").hide();
+
+                // DISPLAY ALERT
+                $this.find("#effects>div").hide();
+
+
+                if (settings.effects) {
+                    if (Math.floor(vScore/it)==5) { $this.find("#effects #good").show(); } else
+                    if (Math.floor(vScore/it)==0) { $this.find("#effects #wrong").show(); }
+                }
+
+                // COMPUTE SCORE AND SHOW EFFECTS
+                settings.score += vScore;
+
+                $this.find("#values").attr("class","nh s"+Math.floor(vScore/it));
+                setTimeout(function() { helpers.createEffects($this, 4); }, 100 );
+                setTimeout(function() { helpers.createEffects($this, 3); }, 250 );
+                setTimeout(function() { helpers.createEffects($this, 2); }, 400 );
+                setTimeout(function() { helpers.createEffects($this, 1); }, 550 );
+                setTimeout(function() { helpers.createEffects($this, 0); }, 700 );
+                setTimeout(function() { helpers.compute($this); }, 1500 );
+            }
+        },
+    };
+
+    // The plugin
+    $.fn.where = function(method) {
+
+        // public methods
+        var methods = {
+            init: function(options) {
+                // The settings
+                var settings = {
+                    it              : 0,                        // Current question index
+                    questions       : [],                       // Questions array
+                    response        : { value:0, digit: 0 },    // Current response
+                    keypadtimer     : 0,                        // Keypadtimer (in case of more than one digit)
+                    timer: {                                    // The general timer
+                        id      : 0,                            // The timer id
+                        value   : 0                             // The timer value
+                    },
+                    score           : 0,                        // The score
+                    interactive     : false,                    // Entry allowed or not
+                    finish          : false,                    // Exercice is finished
+                    effects         : [],                       // The proximity effects svg objects
+                    mouse           : [0,0],                    // The position of the mouse when button down
+                    cursors         : {},                       // The list of cursors (indexed by id)
+                    ratio           : 1,                        // Ratio from mouse to svg
+                    elt             : 0                         // The moving svg element (elt.id is the key for cursors)
+                };
+
+                 // Check the context and send the load
+                return this.each(function() {
+                    var $this = $(this);
+                    $(document).unbind("keypress");
+                    this.onselectstart = function() { return false; }
+
+                    var $settings = $.extend({}, defaults, options, settings);
+                    var checkContext = helpers.checkContext($settings);
+                    if (checkContext.length) {
+                        alert("CONTEXT ERROR:\n"+checkContext);
+                    }
+                    else {
+                        $this.removeClass();
+                        if ($settings.class) { $this.addClass($settings.class); }
+                        helpers.load($this.addClass(defaults.name).addClass("activity").data("settings", $settings));
+                    }
+                });
+            },
+            next: function() {
+                var settings = $(this).data("settings");
+                // Hide instruction
+                $(this).find("#values ul").show();
+                settings.interactive=true;
+                helpers.move($(this), true);
+            },
+            quit: function() {
+                var $this = $(this) , settings = $this.data("settings");
+                if (settings.timer.id) { clearTimeout(settings.timer.id); settings.timer.id=0; }
+                settings.finish = true;
+                settings.context.onQuit({'status':'abort'});
+            },
+            submit: function() { helpers.submit($(this)); }
+        };
+
+        if (methods[method])    { return methods[method].apply(this, Array.prototype.slice.call(arguments, 1)); } 
+        else if (typeof method === 'object' || !method) { return methods.init.apply(this, arguments); }
+        else { $.error( 'Method "' +  method + '" does not exist in where plugin!'); }
+    };
+})(jQuery);
+

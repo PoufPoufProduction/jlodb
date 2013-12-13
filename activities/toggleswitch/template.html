@@ -1,0 +1,25 @@
+<div class="main">
+
+    <div id="board">
+        <div id="exercice"></div>
+        <div id="data"></div>
+    </div>
+
+    <div id="submit" ontouchstart="$(this).closest('.toggleswitch').toggleswitch('valid');event.preventDefault();"
+                     onclick="$(this).closest('.toggleswitch').toggleswitch('valid');">
+        <img src="res/img/icon/swvalid.svg" id="subvalid"/>
+        <img src="res/img/icon/swgood.svg" id="subgood"/>
+        <img src="res/img/icon/swwrong.svg" id="subwrong"/>
+    </div>
+
+
+    <div id="intro" ontouchstart="$(this).closest('.toggleswitch').toggleswitch('next');event.preventDefault();"
+                    onclick="$(this).closest('.toggleswitch').toggleswitch('next');"><div>
+        <div class="text">
+            <h1 id="label">toggleswitch</h1>
+            <p id="guide"></p>
+        </div>
+    </div>
+
+</div>
+

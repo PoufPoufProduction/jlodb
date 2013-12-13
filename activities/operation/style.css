@@ -1,0 +1,36 @@
+.operation                                      { background-image:url("../../res/img/background/book03.svg"); background-repeat:repeat;}
+.operation div#intro>div                        { background-image:url("../../res/img/banners/operation.svg"); }
+.operation div#intro .text                      { font-size:.8em; width:48%; float:right; }
+.operation div#intro .text h1                   { text-align:right; padding-right:.5em; }
+.operation div#intro .text p                    { margin:.5em; }
+.operation #board                               { width:100%; height:100%; display:none; }
+.operation #board table div                     { width:1em; height:1em; }
+.operation #board table                         { margin:0 auto; margin-top:2px; font-size:1em; border:2px solid rgb(53,34,34);
+                                                  border-collapse:collapse; table-layout:fixed;}
+.operation #board table td                      { width:1em; height:1em; overflow:hidden; color:rgb(30,63,128);
+                                                  font-family:"times new roman", times, serif;
+                                                  text-align:center; padding:0; margin:0;
+                                                  background-size: 1em; background-repeat:no-repeat; 
+                                                  background-color:rgba(255,252,246,0.8); }
+.operation #board table td.active               { background-color:rgba(255,231,184,0.8); cursor:pointer; }
+.operation #board table td.inactive             { background-color:rgba(255,255,255,0.8); }
+.operation #board table td.help div             { width:2em; height:1em; overflow:hidden; }
+.operation #board table td.help                 { font-size:.5em; background-color:none; text-align:center; color:rgb(53,34,34);
+                                                  cursor:pointer; }
+.operation #board table td.help.clear           { background-color:rgba(53,34,34,0.8); color:rgb(255,220,162);  }
+.operation #board table td.help.clear div       { font-size:.5em; width:4em; height:2em; letter-spacing:-.1em; text-align:center; }
+.operation #board tr.line                       { border-style:solid; border-width:0 0 1px 0; border-color:rgb(53,34,34); }
+.operation #board td.line                       { border-style:solid; border-width:0 3px 0 0; border-color:rgb(53,34,34); }
+.operation #board table td.result               { background-color:rgba(255,220,162,0.8); }
+.operation #board table td.modulo               { background-color:rgba(255,220,162,0.8); }
+.operation #board table.good td.modulo          { background-color:rgba(80,255,65,1.0); }
+.operation #board table.good td.result          { background-color:rgba(80,255,65,1.0); }
+.operation #board table #result td              { background-color:rgba(255,220,162,0.8); }
+.operation #board table.good #result td         { background-color:rgba(80,255,65,1.0); }
+.operation #keypad                              { display:none; position:absolute; background-color:rgba(42, 68, 92,0.75);
+                                                  border-radius:.2em; top:0; left:0; }
+.operation #keypad td                           { width:1.2em; overflow:hidden; cursor:pointer; text-align:center; font-weight:bold;
+                                                  font-family: "Courier New" Courier monospace; background-color:rgba(84,137,184,0.9);
+                                                  border-radius:.2em; color:rgb(220,231,241);   }
+.operation #keypad td.screen                    { background-color:rgba(15, 15, 30, 0.75); color:#DDDDFF; }
+
