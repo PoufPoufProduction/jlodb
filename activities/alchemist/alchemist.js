@@ -22,21 +22,23 @@
             }
             return ret;
         },
+        // Get the settings
+        settings: function($this, _val) { if (_val) { $this.data("settings", _val); } return $this.data("settings"); },
         // Quit the activity by calling the context callback
         end: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             settings.context.onquit({'status':'success', 'score':settings.score, 'points':settings.points, 'pieces':settings.pieces});
         },
         // Display the discovered elements
         overview: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             $this.find("#overview div img").each(function(index) {
                 if (index<=settings.level && !$(this).children().length) { $(this).show(); }
             });
         },
         // Handle the elements sizes and show the activity
         resize: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
 
             // Send the onLoad callback
             if (settings.context.onload) { settings.context.onload(false); }
@@ -50,7 +52,7 @@
         },
         // Load the different elements of the activity
         load: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             var debug = "";
             if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
 
@@ -86,7 +88,7 @@
         },
         // Choose a new preview pair randomly (regarding the current level) and display it
         preview: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             var val = [ Math.floor(Math.random()*settings.level), val2 = Math.floor(Math.random()*settings.level) ];
             $this.find("#preview div").each(function(index) {
                 $(this).css("background-image", "url('res/img/svginventoryicons/background/noborder/transmut01.svg')")
@@ -95,7 +97,7 @@
             });
         },
         addpoints: function($this, _val) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             settings.points+=_val;
             var str="";
             for (var i=0; i<7-settings.points.toString().length; i++) { str+="0"; }
@@ -104,7 +106,7 @@
         },
         // Detach the preview pair and use it as current tile. Call for a new preview pair
         next: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             settings.tile.posx = 2;
             settings.tile.orientation = 0;
             settings.tile.div1 = $("<div class='tile'></div>").appendTo($this.find("#board")).css("left", "2em").css("top", "1em").
@@ -124,7 +126,7 @@
         },
         // Handle the interactive inputs
         key:function($this, value) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             if (settings.interactive) {
                 // Move the current tile in the upper area
                 if (value==37 || value=="left") {
@@ -159,10 +161,11 @@
                     helpers.drop($this);
                 }
             }
+            else if ($this.find("#intro").is(":visible")) { $this.alchemist('next'); }
         },
         // Drop the current tile to the top of the stack
         drop:function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             for (var i=0; i<6; i++) for (var j=7; j>=0; j--) {
                 var vElt = settings.board[j][i];
                 if (vElt!=0) {
@@ -179,14 +182,14 @@
         },
         // Return false if a pair is still in the upper area
         check: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             var vRet = true;
             for (var i=0; i<6; i++) for (var j=0; j<2; j++) { if (settings.board[j][i]!=0) { vRet = false; } }
             return vRet;
         },
         // Check the number of neighbours
         neighbourhood: function($this, n) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             var vModif = false;
             for (var i=0; i<6; i++) for (var j=0; j<9; j++) {
                 if (n[j][i]) {
@@ -303,7 +306,8 @@
                     else {
                         $this.removeClass();
                         if ($settings.class) { $this.addClass($settings.class); }
-                        helpers.load($(this).addClass(defaults.name).data("settings", $settings));
+                        helpers.settings($this.addClass(defaults.name), $settings);
+                        helpers.load($this);
                     }
                 });
             },
