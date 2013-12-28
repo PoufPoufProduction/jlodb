@@ -46,24 +46,47 @@
                 var settings = helpers.settings($this);
                 var tile = this.get($this, _elt.pos);
                 if (this["t"+(tile%100)]) {
-                    var action = this["t"+(tile%100)]($this, _elt);
+                    var action = this["t"+(tile%100)]($this, _elt, tile);
                     if (action) {
                         if (_elt.isrobot)   { helpers.updrobot($this, _elt.id, false); }
                         else                { helpers.updbox($this, _elt.id, false); }
                     }
                 }
             },
-            t1 : function($this, _elt) {
+            isfalling: function($this, _elt) {
+                var settings = helpers.settings($this);
+                var tile = this.get($this, _elt.pos);
+                var ret = false;
+                if (!tile || (tile%100==9 && !settings.tiles.tile9[Math.floor(tile/100)])) {
+                    this.t0($this, _elt,0);
+                    if (_elt.isrobot)   { helpers.updrobot($this, _elt.id, false); }
+                    else                { helpers.updbox($this, _elt.id, false); }
+                    ret = true;
+                }
+                return ret;
+            },
+            t0 : function($this, _elt, _tile) {
+                _elt.active = false;
+                _elt.speed = 0;
+                return true;
+            },
+            t1 : function($this, _elt, _tile) {
                 var ret = (!_elt.isrobot && _elt.isclosed);
                 if  (ret) { _elt.isclosed = false; }
                 return ret;
             },
-            t2 : function($this, _elt) {
+            t2 : function($this, _elt, _tile) {
                 var ret = (!_elt.isrobot && !_elt.isopened && !_elt.isclosed);
                 if  (ret) { _elt.isclosed = true; }
                 return ret;
             },
-            t24: function($this, _elt) {
+            t9 : function($this, _elt, _tile) {
+                var settings = helpers.settings($this);
+                var ret = !settings.tiles.tile9[Math.floor(_tile/100)];
+                if (ret) { this.t0($this, _elt, _tile); }
+                return ret;
+            },
+            t24: function($this, _elt, _tile) {
                 var ret = (!_elt.isrobot && _elt.isopened);
                 if  (ret) { _elt.isopened = false; }
                 return ret;
@@ -125,70 +148,65 @@
         // UPDATE ROBOT POSITION
         updrobot : function($this, _id, _anim) {
             var settings = helpers.settings($this);
-            if (!settings.synchro) {
-                var $robot      = $this.find("#robot"+_id);
-                var pos = settings.robots[_id].active?settings.robots[_id].pos:0;
+            var $robot      = $this.find("#robot"+_id);
+            var pos = settings.robots[_id].active?settings.robots[_id].pos:0;
 
-                $this.find("#robot"+_id+" #invert").toggle(typeof(settings.robots[_id].invert)!='undefined' &&
-                                                           settings.robots[_id].invert);
+            if (pos) {
+                var zindex      = 10+parseInt(pos[0])+parseInt(pos[1]);
 
-                if (pos) {
-                    var zindex      = 10+parseInt(pos[0])+parseInt(pos[1]);
+                $this.find("#robot"+_id+" #img img").attr("src","res/img/tileset/iso/robot/robot"+_id+(pos[2]+1)+".svg");
+                if (!_anim || zindex>$robot.css("z-index")) { $robot.css("z-index", zindex); }
 
-                    $this.find("#robot"+_id+" #img img").attr("src","res/img/tileset/iso/robot/robot"+_id+(pos[2]+1)+".svg");
-                    if (!_anim || zindex>$robot.css("z-index")) { $robot.css("z-index", zindex); }
-
-                    if (_anim) {
-                        $robot.animate({
-                            "left":(settings.offset[0]+((pos[0]*2)+(settings.tiles.size[1]-pos[1]-1)*2))+"em",
-                            "top":(settings.offset[1]+(1.0*pos[0]+1.0*pos[1]))+"em",}, settings.delay,function(){
-                                helpers.zindex(settings.robots[parseInt($(this).attr("id").substr(5))], $(this)); });
-                    }
-                    else {
-                        $robot.css("left", (settings.offset[0]+((pos[0]*2)+(settings.tiles.size[1]-pos[1]-1)*2))+"em")
-                            .css("top",  (settings.offset[1]+(1.0*pos[0]+1.0*pos[1]))+"em")
-                            .css("zindex", zindex);
-                    }
+                if (_anim) {
+                    $robot.animate({
+                        "left":(settings.offset[0]+((pos[0]*2)+(settings.tiles.size[1]-pos[1]-1)*2))+"em",
+                        "top":(settings.offset[1]+(1.0*pos[0]+1.0*pos[1]))+"em",}, settings.delay,function(){
+                            helpers.zindex(settings.robots[parseInt($(this).attr("id").substr(5))], $(this)); });
                 }
                 else {
-                    $robot.animate({"top":Math.floor(20/settings.scale)+"em"},4*settings.delay,function(){});
+                    $robot.css("left", (settings.offset[0]+((pos[0]*2)+(settings.tiles.size[1]-pos[1]-1)*2))+"em")
+                          .css("top",  (settings.offset[1]+(1.0*pos[0]+1.0*pos[1]))+"em")
+                          .css("zindex", zindex);
                 }
             }
+            else {
+                $robot.animate({"top":Math.floor(20/settings.scale)+"em"},4*settings.delay,function(){});
+            }
+
+            $this.find("#robot"+_id+" #invert").toggle(settings.robots[_id].isinverted);
         },
         // UPDATE BOX POSITION
         updbox : function($this, _id, _anim) {
             var settings = helpers.settings($this);
-            if (!settings.synchro) {
-                var $box      = $this.find("#b"+_id);
-                var pos      = settings.boxes[_id].active?settings.boxes[_id].pos:0;
+            var $box      = $this.find("#b"+_id);
+            var pos      = settings.boxes[_id].active?settings.boxes[_id].pos:0;
 
-                if (pos) {
-                    var zindex      = 10+parseInt(pos[0])+parseInt(pos[1]);
+            if (pos) {
+                var zindex      = 10+parseInt(pos[0])+parseInt(pos[1]);
 
-                    if (!_anim || zindex>$box.css("z-index")) { $box.css("z-index", zindex); }
+                if (!_anim || zindex>$box.css("z-index")) { $box.css("z-index", zindex); }
 
-                    var value = settings.boxes[_id].value*10;
-                    if (settings.boxes[_id].isopened) { value += 1; } else
-                    if (settings.boxes[_id].isclosed) { value += 3; } else
-                                                      { value += 2; }
-                    $this.find("#b"+_id+" img").attr("src", "res/img/tileset/iso/object/box"+
-                            (value<10?"00":(value<100?"0":""))+value+".svg");
+                var value = settings.boxes[_id].value*10;
+                if (settings.boxes[_id].isopened) { value += 1; } else
+                if (settings.boxes[_id].isclosed) { value += 3; } else
+                                                  { value += 2; }
+                $this.find("#b"+_id+" img").attr("src", "res/img/tileset/iso/object/box"+
+                        (value<10?"00":(value<100?"0":""))+value+".svg");
 
-                    if (_anim) {
-                        $box.animate({
-                            "left":(settings.offset[0]+((pos[0]*2)+(settings.tiles.size[1]-pos[1]-1)*2))+"em",
-                            "top":(settings.offset[1]+(1.0*pos[0]+1.0*pos[1]-3.2))+"em", }, settings.delay,function(){
-                                helpers.zindex(settings.boxes[parseInt($(this).attr("id").substr(1))], $(this)); });
-                    }
-                    else {
-                        $box.css("left", (settings.offset[0]+((pos[0]*2)+(settings.tiles.size[1]-pos[1]-1)*2))+"em")
-                            .css("top",  (settings.offset[1]+(1.0*pos[0]+1.0*pos[1]-3.2))+"em")
-                            .css("zindex", zindex);
-                    }
+                if (_anim) {
+                    $box.animate({
+                        "left":(settings.offset[0]+((pos[0]*2)+(settings.tiles.size[1]-pos[1]-1)*2))+"em",
+                        "top":(settings.offset[1]+(1.0*pos[0]+1.0*pos[1]-3.2))+"em", }, settings.delay*0.9,function(){
+                             helpers.zindex(settings.boxes[parseInt($(this).attr("id").substr(1))], $(this)); });
                 }
                 else {
-                    $box.animate({"top":Math.floor(20/settings.scale)+"em"},4*settings.delay,function(){});
+                    $box.css("left", (settings.offset[0]+((pos[0]*2)+(settings.tiles.size[1]-pos[1]-1)*2))+"em")
+                        .css("top",  (settings.offset[1]+(1.0*pos[0]+1.0*pos[1]-3.2))+"em")
+                        .css("zindex", zindex);
                 }
+            }
+            else {
+                $box.animate({"top":Math.floor(20/settings.scale)+"em"},4*settings.delay,function(){});
             }
         },
         // Handle the elements sizes and show the activity
@@ -271,16 +289,16 @@
                 var html="<div class='engine' id='robot"+i+"'><div id='img'><img src=''/></div><div id='invert'><img src='res/img/tileset/iso/robot/statinvert.svg'/></div></div>";
                 $this.find("#tiles").append(html);
                 settings.robots[i].pos = [ settings.robots[i].origin[0], settings.robots[i].origin[1], settings.robots[i].origin[2]];
-                settings.robots[i].update = helpers.updrobot;
-                settings.robots[i].isrobot  = true;
-                settings.robots[i].active   = true;
-                settings.robots[i].invert   = false;
-                settings.robots[i].id       = i;
-                settings.robots[i].speed    = -1;
-                settings.robots[i].weight   = 1;
-                settings.robots[i].rolling  = false;
-                settings.robots[i].count    = 0;
-                settings.robots[i].active   = true;
+                settings.robots[i].update       = helpers.updrobot;
+                settings.robots[i].isrobot      = true;
+                settings.robots[i].active       = true;
+                settings.robots[i].isinverted   = (typeof(settings.robots[i].invert)=="undefined")?false:settings.robots[i].invert;
+                settings.robots[i].id           = i;
+                settings.robots[i].speed        = -1;
+                settings.robots[i].weight       = 9;
+                settings.robots[i].rolling      = false;
+                settings.robots[i].count        = 0;
+                settings.robots[i].active       = true;
                 settings.robots[i].update($this, i);
             }
             helpers.togglerobot($this, 0);
@@ -295,8 +313,9 @@
                 settings.boxes[i].isrobot   = false;
                 settings.boxes[i].id        = i;
                 settings.boxes[i].speed     = -1;
-                settings.boxes[i].weight    = 1;
-                settings.boxes[i].rolling   = false;
+                settings.boxes[i].weight    = 2*(settings.boxes[i].value==3||settings.boxes[i].value==13?2:1) -
+                                              (settings.boxes[i].value>=10?1:0);
+                settings.boxes[i].rolling   = (settings.boxes[i].value>=10);
                 settings.boxes[i].update    = helpers.updbox;
                 settings.boxes[i].count     = 0;
                 settings.boxes[i].active   = true;
@@ -358,32 +377,58 @@
 
             for (var i in settings.robots) {
                 if (settings.robots[i].active) {
-                    var tile = helpers.tiles.get($this, settings.robots[i].pos);
-                    if (!tile) {
-                        settings.robots[i].active = false;
-                        helpers.updrobot($this, i, true);
-                    }
-                    else {
-                        if (settings.robots[i].speed>=0) { nbmove += helpers.run($this, settings.robots[i], 0); }
-                    }
+                    if (helpers.tiles.isfalling($this, settings.robots[i])) { nbmove += 1; }
+                    else if (settings.robots[i].speed>=0)                   { nbmove += helpers.run($this, settings.robots[i], 0); }
                 }
             }
             for (var i in settings.boxes) {
-                if (settings.boxes[i].count<settings.count) {
-                    helpers.tiles.execute($this, settings.boxes[i]);
-                    if (settings.boxes[i].speed>=0) { nbmove += helpers.run($this, settings.boxes[i], 0); }
-                }
-                else {
-                    var tile = helpers.tiles.get($this, settings.boxes[i].pos);
-                    if (!tile) {
-                        settings.boxes[i].active = false;
-                        helpers.updbox($this, i, true);
+                if (settings.boxes[i].active) {
+                    if (settings.boxes[i].count<settings.count) {
+                        helpers.tiles.execute($this, settings.boxes[i]);
+                        if (settings.boxes[i].speed>=0) { nbmove += helpers.run($this, settings.boxes[i], 0); }
                     }
+                    else { if (helpers.tiles.isfalling($this, settings.boxes[i])) { nbmove += 1; } }
                 }
             }
+
+            // END OF TURN, DID ANYTHING MOVE THIS TIME?
             if (nbmove) { setTimeout(function() { helpers.endturn($this); }, settings.delay); }
             else        {
-                // IS IT THE END
+
+                // TOGGLE TILES
+                var withdelay = false;
+                for (var j=0; j<4; j++) {
+                    var on23 = false;
+                    for (var i in settings.robots) { if (helpers.tiles.get($this, settings.robots[i].pos)==23+j*100) { on23 = true; } }
+                    for (var i in settings.boxes) { if (helpers.tiles.get($this, settings.boxes[i].pos)==23+j*100) { on23 = true; } }
+                    if (settings.tiles.tile9[j]!=on23) {
+                        settings.tiles.tile9[j]=on23;
+                        if (on23) {
+                            $("#tiles .t"+j+"09 img").attr("src","res/img/tileset/iso/set1/"+j+"01.svg");
+                        }
+                        else {
+                            $("#tiles .t"+j+"09 img").attr("src","res/img/tileset/iso/set1/"+j+"09.svg");
+                            // IS A ROBOT OR A BOX ON A DISAPPEARING TILES?
+                            // IF YES, ADD DELAY FOR THE FALLING ANIMATION
+                            for (var i in settings.robots) {
+                                if (helpers.tiles.get($this, settings.robots[i].pos)==9+j*100) {
+                                    settings.robots[i].active = false;
+                                    helpers.updrobot($this, i, true);
+                                    withdelay = true;
+                                }
+                            }
+                            for (var i in settings.boxes) {
+                                if (helpers.tiles.get($this, settings.boxes[i].pos)==9+j*100) {
+                                    settings.boxes[i].active = false;
+                                    helpers.updbox($this, i, true);
+                                    withdelay = true;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // IS IT THE END?
                 var isend = true;
                 for (var i in settings.boxes) { isend&=(settings.boxes[i].active&settings.boxes[i].isclosed); }
                 if (isend)  {
@@ -395,9 +440,13 @@
                     }
                     if (settings.score>5) { settings.score = 5; }
                     if (settings.score<0) { settings.score = 0; }
-                    setTimeout(function() { helpers.end($this); }, 4*settings.delay);
+                    setTimeout(function() { helpers.end($this); }, 6*settings.delay);
                 }
-                else { settings.interactive = true; }
+                else {
+                    // WAIT FOR USER INPUT
+                    if (withdelay)  { setTimeout(function() { settings.interactive = true; }, settings.delay); }
+                    else            { settings.interactive = true; }
+                }
             }
         },
         // END OF TURN
@@ -410,28 +459,64 @@
         run: function($this, _elt, _level) {
             var settings    = helpers.settings($this);
             var nbmove      = 1;
+            var isstopped   = false;
 
             // COMPUTE THE MOVE
             var pos = [_elt.pos[0], _elt.pos[1]];
             switch(_elt.speed) { case 0:pos[0]++;break; case 1:pos[1]++;break; case 2:pos[0]--;break; case 3:pos[1]--;break; }
 
             // CHECK THE WALL
-            if (helpers.tiles.get($this, pos)%100>50) { nbmove = 0; }
+            if (helpers.tiles.get($this, pos)%100>50) {
+                nbmove = 0;
+                if ((!_elt.isrobot) && (_elt.value==12) && _level==0 && helpers.tiles.get($this, pos)!=482) {
+                    _elt.isopened = true;
+                    _elt.isclosed = false;
+                    _elt.update($this, _elt.id, nbmove);
+                }
+            }
 
             // CHECK THE OTHER OBJECTS (BOXES AND ROBOTS)
             if (nbmove) {
                 for (var i in settings.robots) {
                     if (settings.robots[i].active && settings.robots[i].pos[0] == pos[0] && settings.robots[i].pos[1] == pos[1] ) {
                         nbmove = 0;
+
+                        // IF A FRAGILE ROLLING BOX MET A ROBOT, IT OPENS
+                        if ((!_elt.isrobot) && (_elt.value==12) && _level==0) {
+                            _elt.isopened = true;
+                            _elt.isclosed = false;
+                            _elt.update($this, _elt.id, nbmove);
+                        }
                     }
                 }
                 for (var i in settings.boxes) {
                     if (settings.boxes[i].active && settings.boxes[i].pos[0] == pos[0] && settings.boxes[i].pos[1] == pos[1] ) {
-                        if (_level==0) {
+
+                        // IF A BOX TRY TO PUSH A FRAGILE ONE, IT OPENS
+                        if (!_elt.isrobot && settings.boxes[i].value%10==2 ) {
+                            settings.boxes[i].isopened = true; settings.boxes[i].isclosed = false;
+                            settings.boxes[i].update($this, settings.boxes[i].id, false);}
+
+                        if ( (_elt.isrobot) ||
+                             (!_elt.isrobot && settings.boxes[i].weight<_elt.weight)) {
+
+
                             settings.boxes[i].speed = _elt.speed;
                             nbmove = helpers.run($this, settings.boxes[i], _level+1);
+
+                            // THE ROLLING BOX FORWARD ITS ENERGY
+                            if (!_elt.isrobot && _elt.rolling) { isstopped = true; _elt.speed = -1; }
                         }
-                        else { nbmove = 0; }
+                        else {
+                            nbmove = 0;
+
+                            // IF A FRAGILE ROLLING BOX MET A ROBOT, IT OPENS
+                            if ((!_elt.isrobot) && (_elt.value==12) && _level==0) {
+                                _elt.isopened = true;
+                                _elt.isclosed = false;
+                                _elt.update($this, _elt.id, nbmove);
+                            }
+                        }
                     }
                 }
             }
@@ -440,9 +525,11 @@
             if (!_elt.rolling || (nbmove==0)) { _elt.speed = -1; }
 
             if (nbmove) {
-                _elt.pos[0] = pos[0]; _elt.pos[1] = pos[1];
-                _elt.count = settings.count;
-                _elt.update($this, _elt.id, nbmove);
+                if (!isstopped) {
+                    _elt.pos[0] = pos[0]; _elt.pos[1] = pos[1];
+                    _elt.count = settings.count;
+                    _elt.update($this, _elt.id, nbmove);
+                }
 
                 if (_level>0 && !settings.countpush) {
                     settings.countpush=true;
@@ -456,15 +543,18 @@
             var settings = helpers.settings($this);
             if (settings.interactive) {
                 if (_value==37 || _value=="left") {
-                    settings.robots[settings.robotid].pos[2] = (settings.robots[settings.robotid].pos[2]+3)%4;
+                    var v = settings.robots[settings.robotid].isinverted?1:3;
+                    settings.robots[settings.robotid].pos[2] = (settings.robots[settings.robotid].pos[2]+v)%4;
                     helpers.updrobot($this, settings.robotid);
                 }
                 else if (_value==39 || _value=="right"){
-                    settings.robots[settings.robotid].pos[2] = (settings.robots[settings.robotid].pos[2]+1)%4;
+                    var v = settings.robots[settings.robotid].isinverted?3:1;
+                    settings.robots[settings.robotid].pos[2] = (settings.robots[settings.robotid].pos[2]+v)%4;
                     helpers.updrobot($this, settings.robotid);
                 }
                 else if ((_value==38 || _value=="up") && settings.robots[settings.robotid].active) {
-                    settings.robots[settings.robotid].speed = settings.robots[settings.robotid].pos[2];
+                    var v = settings.robots[settings.robotid].isinverted?2:0;
+                    settings.robots[settings.robotid].speed = (settings.robots[settings.robotid].pos[2]+v)%4;
                     $this.find("#nbmoves .value").html(++settings.nbmoves);
                     settings.countpush = false;
                     helpers.prepare($this);
