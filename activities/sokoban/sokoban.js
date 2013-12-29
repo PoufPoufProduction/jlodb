@@ -46,7 +46,7 @@
                 var settings = helpers.settings($this);
                 var tile = this.get($this, _elt.pos);
                 if (this["t"+(tile%100)]) {
-                    var action = this["t"+(tile%100)]($this, _elt, tile);
+                    var action = this["t"+(tile%100)]($this, _elt, Math.floor(tile/100));
                     if (action) {
                         if (_elt.isrobot)   { helpers.updrobot($this, _elt.id, false); }
                         else                { helpers.updbox($this, _elt.id, false); }
@@ -65,30 +65,42 @@
                 }
                 return ret;
             },
-            t0 : function($this, _elt, _tile) {
+            t0 : function($this, _elt, _color) {
                 _elt.active = false;
                 _elt.speed = 0;
                 return true;
             },
-            t1 : function($this, _elt, _tile) {
+            t1 : function($this, _elt, _color) {
                 var ret = (!_elt.isrobot && _elt.isclosed);
-                if  (ret) { _elt.isclosed = false; }
+                if (ret) { _elt.isclosed = false; }
                 return ret;
             },
-            t2 : function($this, _elt, _tile) {
-                var ret = (!_elt.isrobot && !_elt.isopened && !_elt.isclosed);
-                if  (ret) { _elt.isclosed = true; }
+            t2 : function($this, _elt, _color) {
+                var ret = false;
+                if (!_elt.isrobot && !_elt.isopened) {
+                    if (_elt.color==-1 || _elt.color==_color) {
+                        ret = (!_elt.isclosed);
+                        if  (ret) { _elt.isclosed = true; }
+                    }
+                    else { ret = this.t1($this, _elt, _color); }
+                }
+                
                 return ret;
             },
-            t9 : function($this, _elt, _tile) {
+            t9 : function($this, _elt, _color) {
                 var settings = helpers.settings($this);
-                var ret = !settings.tiles.tile9[Math.floor(_tile/100)];
-                if (ret) { this.t0($this, _elt, _tile); }
+                var ret = !settings.tiles.tile9[color];
+                if (ret) { this.t0($this, _elt, _color); }
                 return ret;
             },
-            t24: function($this, _elt, _tile) {
-                var ret = (!_elt.isrobot && _elt.isopened);
-                if  (ret) { _elt.isopened = false; }
+            t24: function($this, _elt, _color) {
+                var ret = false;
+                if (!_elt.isrobot)
+                {
+                    ret = _elt.isopened;
+                    ret&= (_elt.color==-1 || _elt.color==_color);
+                    if  (ret) { _elt.isopened = false; }
+                }
                 return ret;
             }
         },
@@ -318,9 +330,11 @@
                 settings.boxes[i].rolling   = (settings.boxes[i].value>=10);
                 settings.boxes[i].update    = helpers.updbox;
                 settings.boxes[i].count     = 0;
-                settings.boxes[i].active   = true;
-                settings.boxes[i].isopened = (typeof(settings.boxes[i].opened)=="undefined")?false:settings.boxes[i].opened;
+                settings.boxes[i].active    = true;
+                settings.boxes[i].isopened  = (typeof(settings.boxes[i].opened)=="undefined")?false:settings.boxes[i].opened;
                 settings.boxes[i].isclosed  = (helpers.tiles.get($this, settings.boxes[i].origin)%100==2);
+                settings.boxes[i].color     = (settings.boxes[i].value>=4 && settings.boxes[i].value<=7)?
+                                                settings.boxes[i].value-4:-1;
                 settings.boxes[i].update($this, i);
             }
 
