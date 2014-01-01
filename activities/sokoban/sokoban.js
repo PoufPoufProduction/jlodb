@@ -84,12 +84,11 @@
                     }
                     else { ret = this.t1($this, _elt, _color); }
                 }
-                
                 return ret;
             },
             t9 : function($this, _elt, _color) {
                 var settings = helpers.settings($this);
-                var ret = !settings.tiles.tile9[color];
+                var ret = !settings.tiles.tile9[_color];
                 if (ret) { this.t0($this, _elt, _color); }
                 return ret;
             },
@@ -325,14 +324,13 @@
                 settings.boxes[i].isrobot   = false;
                 settings.boxes[i].id        = i;
                 settings.boxes[i].speed     = -1;
-                settings.boxes[i].weight    = 2*(settings.boxes[i].value==3||settings.boxes[i].value==13?2:1) -
-                                              (settings.boxes[i].value>=10?1:0);
+                settings.boxes[i].weight    = 2*(settings.boxes[i].value==3||settings.boxes[i].value==13?2:1);
                 settings.boxes[i].rolling   = (settings.boxes[i].value>=10);
                 settings.boxes[i].update    = helpers.updbox;
                 settings.boxes[i].count     = 0;
                 settings.boxes[i].active    = true;
                 settings.boxes[i].isopened  = (typeof(settings.boxes[i].opened)=="undefined")?false:settings.boxes[i].opened;
-                settings.boxes[i].isclosed  = (helpers.tiles.get($this, settings.boxes[i].origin)%100==2);
+                settings.boxes[i].isclosed  = (!settings.boxes[i].isopened && helpers.tiles.get($this, settings.boxes[i].origin)%100==2);
                 settings.boxes[i].color     = (settings.boxes[i].value>=4 && settings.boxes[i].value<=7)?
                                                 settings.boxes[i].value-4:-1;
                 settings.boxes[i].update($this, i);
@@ -444,7 +442,8 @@
 
                 // IS IT THE END?
                 var isend = true;
-                for (var i in settings.boxes) { isend&=(settings.boxes[i].active&settings.boxes[i].isclosed); }
+                for (var i in settings.boxes) {
+                    isend&=(settings.boxes[i].active&settings.boxes[i].isclosed); }
                 if (isend)  {
                     settings.score = 5-settings.nbgames;
                     if (settings.mp) {
