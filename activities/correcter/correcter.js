@@ -27,14 +27,16 @@
             }
             return ret;
         },
+        // Get the settings
+        settings: function($this, _val) { if (_val) { $this.data("settings", _val); } return $this.data("settings"); },
         // Quit the activity by calling the context callback
         end: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             settings.context.onQuit({'status':'success','score':settings.score});
         },
         // Handle the elements sizes and show the activity
         resize: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
 
             $this.children().hide()
 
@@ -111,11 +113,15 @@
             $this.find("#exercice").html(settings.exercice);
             if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
 
+            // Handle spash panel
+            if (settings.nosplash) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+            else                   { $this.find("#intro").show(); }
+
             $this.children().show()
         },
         // Load the different elements of the activity
         load: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             var debug = "";
             if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
 
@@ -182,12 +188,13 @@
                     else {
                         $this.removeClass();
                         if ($settings.class) { $this.addClass($settings.class); }
-                        helpers.load($(this).addClass(defaults.name).data("settings", $settings));
+                        helpers.settings($this.addClass(defaults.name), $settings);
+                        helpers.load($this);
                     }
                 });
             },
             click: function(elt, value) {
-                var $this = $(this) , settings = $this.data("settings"), $popup = $(this).find("#popup");
+                var $this = $(this) , settings = helpers.settings($this), $popup = $(this).find("#popup");
 
                 if (settings.style=="default" || $(elt).hasClass("blank") || $(elt).hasClass("bold") ) {
                     if (settings.keypad) { clearTimeout(settings.keypad); settings.keypad=0; }
@@ -232,18 +239,18 @@
                 }
             },
             key: function(value) {
-                var $this = $(this) , settings = $this.data("settings"), $popup = $(this).find("#popup");
+                var $this = $(this) , settings = helpers.settings($this), $popup = $(this).find("#popup");
                 if (settings.elt) { settings.elt.html(value); }
                 $popup.hide();
                 settings.elt = 0;
             },
             quit: function() {
-                var $this = $(this) , settings = $this.data("settings");
+                var $this = $(this) , settings = helpers.settings($this);
                 settings.finish = true;
                 settings.context.onQuit({'status':'abort'});
             },
             popout: function(out) {
-                var $this = $(this) , settings = $this.data("settings"), $popup = $(this).find("#popup");
+                var $this = $(this) , settings = helpers.settings($this), $popup = $(this).find("#popup");
                 if (out) {
                     if (!settings.keypad) { settings.keypad = setTimeout(function() { $popup.hide() }, 1000); }
                 }
@@ -256,7 +263,7 @@
                 $(this).find("#data").show();
             },
             valid: function() {
-                var $this = $(this) , settings = $this.data("settings");
+                var $this = $(this) , settings = helpers.settings($this);
                 if (!settings.finish) {
                     settings.finish = true;
                     var nbErrors = 0;

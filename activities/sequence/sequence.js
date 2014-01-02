@@ -30,9 +30,11 @@
             }
             return ret;
         },
+        // Get the settings
+        settings: function($this, _val) { if (_val) { $this.data("settings", _val); } return $this.data("settings"); },
         // Quit the activity by calling the context callback
         end: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             settings.context.onQuit({'status':'success', 'score':settings.score});
         },
         formattime: function(_val) {
@@ -44,7 +46,7 @@
         },
         // Update the timer
         timer:function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             var $time = $this.find("#time");
             settings.timer.value++;
             if (settings.time) {
@@ -55,7 +57,7 @@
             settings.timer.id = setTimeout(function() { helpers.timer($this); }, 1000);
         },
         move: function($this, _anim) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             var vHeight=Math.floor(($this.find("#values").height()-$this.find("#values li").height())/settings.vertical);
             $this.find("#values li").each(function(index) { if (index<settings.it) { vHeight = vHeight - $(this).outerHeight(); } });
             if (_anim)  { $this.find("#values ul").animate({top: vHeight+"px"}, 250, function() { helpers.next($this); }); }
@@ -63,14 +65,14 @@
         },
         hidefx: function($this) { $this.find("#effects>div").hide(); },
         next: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             $($this.find("#values li").get(settings.it)).addClass("select");
             if (settings.screenc) { $this.find("#screen").html("&nbsp;"); }
             setTimeout(function() { helpers.hidefx($this); }, 200 );
         },
         // Handle the elements sizes and show the activity
         resize: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
 
             // Send the onLoad callback
             if (settings.context.onLoad) { settings.context.onLoad(false); }
@@ -82,12 +84,14 @@
             $this.find("#comment").html(settings.comment);
             if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
 
-            $this.show();
+            // Handle spash panel
+            if (settings.nosplash) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+            else                   { $this.find("#intro").show(); }
 
         },
         // Add callback to the svg elements
         buildsvg: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             if (settings.input.class) { $(settings.svg.root()).attr("class",settings.input.class); }
             for (var i in settings.values) {
                 var vData = settings.values[i][1];
@@ -117,7 +121,7 @@
         },
         // Build the questions
         build: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
 
             // Build the response if need
             if (settings.input && settings.input.values) {
@@ -182,7 +186,7 @@
         },
         // Load the svg if require
         loadex:function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             // Load the svg if needed
             if (settings.input && settings.input.svg) {
                 var debug = "";
@@ -202,7 +206,7 @@
         },
         // Load the different elements of the activity
         load: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             var debug = "";
             if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
 
@@ -238,7 +242,7 @@
         },
         // Handle the key input
         key: function($this, value, fromkeyboard) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             if (!fromkeyboard || settings.keyboard) {
 
                 // Launch the timer if didn't
@@ -280,13 +284,13 @@
         },
         // Keypad time out is finished, force the check
         timeout: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             settings.keypadtimer=0;
             helpers.check($this,true);
         },
         // Check the user entry
         check:function($this, force) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             var vRet = false;
 
             if (settings.interactive) {
@@ -373,11 +377,12 @@
                     else {
                         $this.removeClass();
                         if ($settings.class) { $this.addClass($settings.class); }
-                        helpers.load($this.addClass(defaults.name).addClass("activity").data("settings", $settings));
+                        helpers.settings($this.addClass(defaults.name), $settings);
+                        helpers.load($this);
                     }
                 });
             },
-            go: function() {
+            next: function() {
                 var settings = $(this).data("settings");
                 // Hide instruction
                 $(this).find(".instruction").hide();
@@ -388,7 +393,7 @@
             key: function(value) { helpers.key($(this), value, false); },
             click: function(value) { helpers.key($(this), value, false); },
             quit: function() {
-                var $this = $(this) , settings = $this.data("settings");
+                var $this = $(this) , settings = helpers.settings($this);
                 if (settings.timer.id) { clearTimeout(settings.timer.id); settings.timer.id=0; }
                 settings.finish = true;
                 settings.context.onQuit({'status':'abort'});

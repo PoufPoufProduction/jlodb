@@ -24,14 +24,16 @@
             }
             return ret;
         },
+        // Get the settings
+        settings: function($this, _val) { if (_val) { $this.data("settings", _val); } return $this.data("settings"); },
         // Quit the activity by calling the context callback
         end: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             settings.context.onQuit({'status':'success', 'score':settings.score});
         },
         // Handle the elements sizes and show the activity
         resize: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
 
             // Send the onLoad callback
             if (settings.context.onLoad) { settings.context.onLoad(false); }
@@ -80,10 +82,13 @@
             $this.find("h1#label").html(settings.label);
             if (settings.locale) {$.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); });}
 
+            // Handle spash panel
+            if (settings.nosplash) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+            else                   { $this.find("#intro").show(); }
         },
         // Load the different elements of the activity
         load: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             var debug = "";
             if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
 
@@ -135,7 +140,7 @@
         },
         // Check if the grid is done
         check:function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             var finish = true;
             $this.find("div.fill").each(function(index) {
                 var vY = Math.floor(index/9) + (Math.floor((index%9)/3)) - Math.floor((index%27)/9);
@@ -146,7 +151,7 @@
         },
         // Update the timer
         timer:function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             settings.timer.value++;
             var vS = settings.timer.value%60;
             var vM = Math.floor(settings.timer.value/60)%60;
@@ -167,7 +172,7 @@
         },
         // Handle the key pressed (or the value selected from the wheel)
         key:function($this, value) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             if (!settings.elt && settings.elthover) { settings.elt = settings.elthover; }
             if (settings.keypad)    { clearTimeout(settings.keypad); settings.keypad=0; }
             if (!settings.timer.id) { helpers.timer($this); }
@@ -229,13 +234,14 @@
                     else {
                         $this.removeClass();
                         if ($settings.class) { $this.addClass($settings.class); }
-                        helpers.load($this.addClass(defaults.name).addClass("activity").data("settings", $settings));
+                        helpers.settings($this.addClass(defaults.name), $settings);
+                        helpers.load($this);
                     }
                 });
             },
             // Handle the click event
             click:function(elt, event, data) {
-                var $this = $(this) , settings = $this.data("settings"), $keypad = $this.find("#keypad");
+                var $this = $(this) , settings = helpers.settings($this), $keypad = $this.find("#keypad");
                 if (data) { helpers.highlight($this, data.posX, data.posY); }
 
                 if (settings.keypad) { clearTimeout(settings.keypad); settings.keypad=0; }
@@ -274,7 +280,7 @@
             },
             // Pause the game, hide the grid and display the help
             pause: function() {
-                var $this = $(this) , settings = $this.data("settings");
+                var $this = $(this) , settings = helpers.settings($this);
                 if (settings.timer.id) {
                     clearTimeout(settings.timer.id); settings.timer.id=0;
                     $this.find("#grid9x9").hide();
@@ -286,7 +292,7 @@
             },
             // Toggle the game mode
             toggle: function() {
-                var $this = $(this) , settings = $this.data("settings");
+                var $this = $(this) , settings = helpers.settings($this);
                 if (!settings.finish) {
                     var mode = $this.find("#grid").hasClass("f");
                     if (!mode) {
@@ -308,14 +314,14 @@
             },
             // Close the help and display the grid
             next: function() {
-                var $this = $(this) , settings = $this.data("settings");
+                var $this = $(this) , settings = helpers.settings($this);
                 $(this).find("#intro").hide();
                 $(this).find("#grid9x9").show();
                 if (settings.timer.value) {helpers.timer($this);}
             },
             // Abort the game from the confirmation panel
             quit: function() {
-                var $this = $(this) , settings = $this.data("settings");
+                var $this = $(this) , settings = helpers.settings($this);
                 settings.finish = true;
                 if (settings.timer.id) { clearTimeout(settings.timer.id); settings.timer.id=0; }
                 settings.context.onQuit({'status':'abort'});

@@ -25,14 +25,16 @@
             }
             return ret;
         },
+        // Get the settings
+        settings: function($this, _val) { if (_val) { $this.data("settings", _val); } return $this.data("settings"); },
         // Quit the activity by calling the context callback
         end: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             settings.context.onQuit({'status':'success','score':settings.score});
         },
         // Update the timer
         timer:function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             settings.timer.value++;
             var vS = settings.timer.value%60;
             var vM = Math.floor(settings.timer.value/60)%60;
@@ -44,7 +46,7 @@
         },
         // Handle the elements sizes and show the activity
         resize: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
 
             // Send the onLoad callback
             if (settings.context.onLoad) { settings.context.onLoad(false); }
@@ -74,10 +76,14 @@
 
             // Decoration
             if (settings.fgl) { $this.find("#fgl").html("<img src='res/img/"+settings.fgl+".svg'/>"); }
+
+            // Handle spash panel
+            if (settings.nosplash) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+            else                   { $this.find("#intro").show(); }
         },
         // Build the question
         build: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             var classvalue="";
             if (settings.data[settings.it].class) { classvalue= settings.data[settings.it].class; }
 
@@ -103,7 +109,7 @@
         },
         // Load the different elements of the activity
         load: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             var debug = "";
             if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
 
@@ -172,19 +178,20 @@
                     else {
                         $this.removeClass();
                         if ($settings.class) { $this.addClass($settings.class); }
-                        helpers.load($(this).addClass(defaults.name).data("settings", $settings));
+                        helpers.settings($this.addClass(defaults.name), $settings);
+                        helpers.load($this);
                     }
                 });
             },
             click: function(elt) {
-                var $this = $(this) , settings = $this.data("settings");
+                var $this = $(this) , settings = helpers.settings($this);
                 if (!settings.finish && !$this.find("#board").hasClass("inactive")) {
                     if (!settings.questmul) { $this.find("#responses div").removeClass("selected"); }
                     $(elt).toggleClass("selected");
                 }
             },
             submit: function(elt) {
-                var $this = $(this) , settings = $this.data("settings");
+                var $this = $(this) , settings = helpers.settings($this);
                 if (!settings.finish && !$this.find("#board").hasClass("inactive")) {
                     $this.find("#board").addClass("inactive");
 
@@ -216,7 +223,7 @@
                 }
             },
             quit: function() {
-                var $this = $(this) , settings = $this.data("settings");
+                var $this = $(this) , settings = helpers.settings($this);
                 if (settings.timer.id) { clearTimeout(settings.timer.id); settings.timer.id=0; }
                 settings.finish = true;
                 settings.context.onQuit({'status':'abort'});

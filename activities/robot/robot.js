@@ -28,14 +28,16 @@
             }
             return ret;
         },
+        // Get the settings
+        settings: function($this, _val) { if (_val) { $this.data("settings", _val); } return $this.data("settings"); },
         // Quit the activity by calling the context callback
         end: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             settings.context.onQuit({'status':'success','score':settings.score});
         },
         // Handle the elements sizes and show the activity
         resize: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
 
             // Send the onLoad callback
             if (settings.context.onLoad) { settings.context.onLoad(false); }
@@ -145,10 +147,14 @@
                 $this.find("#legend ul").append("<li>"+list[i]+" "+settings.locale.legend[i]+"</li>");
             }
             $this.find("#guide").html(settings.locale.guide);
+
+            // Handle spash panel
+            if (settings.nosplash) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+            else                   { $this.find("#intro").show(); }
         },
         // Load the different elements of the activity
         load: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             var debug = "";
             if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
 
@@ -183,10 +189,10 @@
             });
         },
         // GET THE DELAY ACCORDING TO THE SPEED VALUE
-        delay: function($this) { var settings = $this.data("settings"); return Math.floor(1000/Math.pow(2,settings.speed)); },
+        delay: function($this) { var settings = helpers.settings($this); return Math.floor(1000/Math.pow(2,settings.speed)); },
         // GET AN ACTION FROM THE METHODS
         get: function($this, _robot, _fct, _id) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             var ret = 0;
             var $elt = $($this.find("#tabs #t"+(_robot+1)+" .f"+_fct+" .z").get(_id));
             if ($elt.children().length) { ret = $elt.find("img").attr("alt"); }
@@ -194,12 +200,12 @@
         },
         // GET THE WORST SCENARIO TODO
         worst: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             return [[0]];
         },
         // UPDATE THE SOURCE CODE DISPLAY
         updatesource: function($this) {
-            var settings    = $this.data("settings");
+            var settings    = helpers.settings($this);
             $this.find(".code tr").each(function(_index) {
                 var robotid = Math.floor(_index/9);
                 var rowid = _index%9;
@@ -208,7 +214,7 @@
         },
         // UPDATE ROBOT POSITION
         update : function($this, _id, _pos, _anim) {
-            var settings    = $this.data("settings");
+            var settings    = helpers.settings($this);
             if (!settings.synchro) {
                 var $robot      = $this.find("#robot"+_id);
 
@@ -238,7 +244,7 @@
         },
         // UPDATE THE ZINDEX OF EVERY ROBOTS
         zindex: function($this) {
-            var settings    = $this.data("settings");
+            var settings    = helpers.settings($this);
             if (!settings.synchro) for (var i in settings.robots) {
                 var zindex = 10+parseInt(settings.robots[i].pos[0])+parseInt(settings.robots[i].pos[1]);
                 var $robot = $this.find("#robot"+i);
@@ -249,7 +255,7 @@
         actions : {
             f01 : {
                 execute     : function($this, _id, _invert) {
-                    var settings = $this.data("settings");
+                    var settings = helpers.settings($this);
                     var value = _invert?(settings.robots[_id].pos[2]+2)%4:settings.robots[_id].pos[2];
                     switch(value) {
                         case 0: settings.robots[_id].pos[0]++; break;
@@ -261,7 +267,7 @@
             },
             b01 : {
                 execute     : function($this, _id, _invert) {
-                    var settings = $this.data("settings");
+                    var settings = helpers.settings($this);
                     var value = _invert?(settings.robots[_id].pos[2]+2)%4:settings.robots[_id].pos[2];
                     switch(value) {
                         case 0: settings.robots[_id].pos[0]--; break;
@@ -273,29 +279,29 @@
             },
             turnright: {
                 execute     : function($this, _id, _invert) {
-                    var settings = $this.data("settings");
+                    var settings = helpers.settings($this);
                     settings.robots[_id].pos[2]=(settings.robots[_id].pos[2]+(_invert?3:1))%4;
                 }
             },
             turnleft: {
                 execute     : function($this, _id, _invert) {
-                    var settings = $this.data("settings");
+                    var settings = helpers.settings($this);
                     settings.robots[_id].pos[2]=(settings.robots[_id].pos[2]+(_invert?1:3))%4;
                 }
             },
             invert: {
                 execute     : function($this, _id, _invert) {
-                    var settings = $this.data("settings");
+                    var settings = helpers.settings($this);
                     settings.robots[_id].invert=!settings.robots[_id].invert;
                 }
             },
             nothing: { execute     : function($this, _id, _invert) { } },
             num: {
                 execute     : function($this, _id, _invert) {
-                    var settings = $this.data("settings");
-                    var val = helpers.tiles.get($this, $this.data("settings").robots[_id].pos)%100;
+                    var settings = helpers.settings($this);
+                    var val = helpers.tiles.get($this, helpers.settings($this).robots[_id].pos)%100;
                     if (val>=10&&val<=19) {
-                        $this.data("settings").tiles.number = val-10;
+                        helpers.settings($this).tiles.number = val-10;
                         if (!settings.synchro) for (var i=0; i<10; i++) {
                             $this.find(".t6"+(i+50)+" img").attr("src","res/img/tileset/iso/set1/6"+(val-10+50)+".svg");
                         }
@@ -304,8 +310,8 @@
             },
             blue: {
                 execute     : function($this, _id, _invert) {
-                    var settings = $this.data("settings");
-                    $this.data("settings").tiles.light[0] = true;
+                    var settings = helpers.settings($this);
+                    helpers.settings($this).tiles.light[0] = true;
                     if (!settings.synchro) {
                         $this.find(".t051 img").attr("src","res/img/tileset/iso/set1/052.svg");
                         $this.find(".t052 img").attr("src","res/img/tileset/iso/set1/052.svg");
@@ -314,8 +320,8 @@
             },
             red: {
                 execute     : function($this, _id, _invert) {
-                    var settings = $this.data("settings");
-                    $this.data("settings").tiles.light[1] = true;
+                    var settings = helpers.settings($this);
+                    helpers.settings($this).tiles.light[1] = true;
                     if (!settings.synchro) {
                         $this.find(".t151 img").attr("src","res/img/tileset/iso/set1/152.svg");
                         $this.find(".t152 img").attr("src","res/img/tileset/iso/set1/152.svg");
@@ -324,8 +330,8 @@
             },
             green: {
                 execute     : function($this, _id, _invert) {
-                    var settings = $this.data("settings");
-                    $this.data("settings").tiles.light[2] = true;
+                    var settings = helpers.settings($this);
+                    helpers.settings($this).tiles.light[2] = true;
                     if (!settings.synchro) {
                         $this.find(".t251 img").attr("src","res/img/tileset/iso/set1/252.svg");
                         $this.find(".t252 img").attr("src","res/img/tileset/iso/set1/252.svg");
@@ -334,8 +340,8 @@
             },
             purple: {
                 execute     : function($this, _id, _invert) {
-                    var settings = $this.data("settings");
-                    $this.data("settings").tiles.light[3] = true;
+                    var settings = helpers.settings($this);
+                    helpers.settings($this).tiles.light[3] = true;
                     if (!settings.synchro) {
                         $this.find(".t351 img").attr("src","res/img/tileset/iso/set1/352.svg");
                         $this.find(".t352 img").attr("src","res/img/tileset/iso/set1/352.svg");
@@ -344,8 +350,8 @@
             },
             notblue: {
                 execute     : function($this, _id, _invert) {
-                    var settings = $this.data("settings");
-                    $this.data("settings").tiles.light[0] = false;
+                    var settings = helpers.settings($this);
+                    helpers.settings($this).tiles.light[0] = false;
                     if (!settings.synchro) {
                         $this.find(".t051 img").attr("src","res/img/tileset/iso/set1/051.svg");
                         $this.find(".t052 img").attr("src","res/img/tileset/iso/set1/051.svg");
@@ -354,8 +360,8 @@
             },
             notred: {
                 execute     : function($this, _id, _invert) {
-                    var settings = $this.data("settings");
-                    $this.data("settings").tiles.light[1] = false;
+                    var settings = helpers.settings($this);
+                    helpers.settings($this).tiles.light[1] = false;
                     if (!settings.synchro) {
                         $this.find(".t151 img").attr("src","res/img/tileset/iso/set1/151.svg");
                         $this.find(".t152 img").attr("src","res/img/tileset/iso/set1/151.svg");
@@ -364,8 +370,8 @@
             },
             notgreen: {
                 execute     : function($this, _id, _invert) {
-                    var settings = $this.data("settings");
-                    $this.data("settings").tiles.light[2] = false;
+                    var settings = helpers.settings($this);
+                    helpers.settings($this).tiles.light[2] = false;
                     if (!settings.synchro) {
                         $this.find(".t251 img").attr("src","res/img/tileset/iso/set1/251.svg");
                         $this.find(".t252 img").attr("src","res/img/tileset/iso/set1/251.svg");
@@ -374,8 +380,8 @@
             },
             notpurple: {
                 execute     : function($this, _id, _invert) {
-                    var settings = $this.data("settings");
-                    $this.data("settings").tiles.light[3] = false;
+                    var settings = helpers.settings($this);
+                    helpers.settings($this).tiles.light[3] = false;
                     if (!settings.synchro) {
                         $this.find(".t351 img").attr("src","res/img/tileset/iso/set1/351.svg");
                         $this.find(".t352 img").attr("src","res/img/tileset/iso/set1/351.svg");
@@ -384,48 +390,48 @@
             },
             ifblue: {
                 test        : function($this, _id) {
-                    return (Math.floor(helpers.tiles.get($this, $this.data("settings").robots[_id].pos)/100)==0);
+                    return (Math.floor(helpers.tiles.get($this, helpers.settings($this).robots[_id].pos)/100)==0);
                 }
             },
             ifred: {
                 test        : function($this, _id) {
-                    return (Math.floor(helpers.tiles.get($this, $this.data("settings").robots[_id].pos)/100)==1);
+                    return (Math.floor(helpers.tiles.get($this, helpers.settings($this).robots[_id].pos)/100)==1);
                 }
             },
             ifgreen: {
                 test        : function($this, _id) {
-                    return (Math.floor(helpers.tiles.get($this, $this.data("settings").robots[_id].pos)/100)==2);
+                    return (Math.floor(helpers.tiles.get($this, helpers.settings($this).robots[_id].pos)/100)==2);
                 }
             },
             ifpurple: {
                 test        : function($this, _id) {
-                    return (Math.floor(helpers.tiles.get($this, $this.data("settings").robots[_id].pos)/100)==3);
+                    return (Math.floor(helpers.tiles.get($this, helpers.settings($this).robots[_id].pos)/100)==3);
                 }
             },
             ifblueend: {
                 test        : function($this, _id) {
-                    return (helpers.tiles.get($this, $this.data("settings").robots[_id].pos)==2);
+                    return (helpers.tiles.get($this, helpers.settings($this).robots[_id].pos)==2);
                 }
             },
             ifredend: {
                 test        : function($this, _id) {
-                    return (helpers.tiles.get($this, $this.data("settings").robots[_id].pos)==102);
+                    return (helpers.tiles.get($this, helpers.settings($this).robots[_id].pos)==102);
                 }
             },
             ifgreenend: {
                 test        : function($this, _id) {
-                    return (helpers.tiles.get($this, $this.data("settings").robots[_id].pos)==202);
+                    return (helpers.tiles.get($this, helpers.settings($this).robots[_id].pos)==202);
                 }
             },
             ifpurpleend: {
                 test        : function($this, _id) {
-                    return (helpers.tiles.get($this, $this.data("settings").robots[_id].pos)==302);
+                    return (helpers.tiles.get($this, helpers.settings($this).robots[_id].pos)==302);
                 }
             },
-            iflblue:        { test: function($this, _id) { return $this.data("settings").tiles.light[0]; } },
-            iflred:         { test: function($this, _id) { return $this.data("settings").tiles.light[1]; } },
-            iflgreen:       { test: function($this, _id) { return $this.data("settings").tiles.light[2]; } },
-            iflpurple:      { test: function($this, _id) { return $this.data("settings").tiles.light[3]; } },
+            iflblue:        { test: function($this, _id) { return helpers.settings($this).tiles.light[0]; } },
+            iflred:         { test: function($this, _id) { return helpers.settings($this).tiles.light[1]; } },
+            iflgreen:       { test: function($this, _id) { return helpers.settings($this).tiles.light[2]; } },
+            iflpurple:      { test: function($this, _id) { return helpers.settings($this).tiles.light[3]; } },
             ifnotblue:      { test: function($this, _id) { return !helpers.actions.ifblue.test($this,_id); } },
             ifnotred:       { test: function($this, _id) { return !helpers.actions.ifred.test($this,_id); } },
             ifnotgreen:     { test: function($this, _id) { return !helpers.actions.ifgreen.test($this,_id); } },
@@ -439,34 +445,34 @@
             iflnotgreen:    { test: function($this, _id) { return !helpers.actions.iflgreen.test($this,_id); } },
             iflnotpurple:   { test: function($this, _id) { return !helpers.actions.iflpurple.test($this,_id); } },
             ifeq0:       { test: function($this, _id) {
-                return (helpers.tiles.get($this, $this.data("settings").robots[_id].pos)%100==10);
+                return (helpers.tiles.get($this, helpers.settings($this).robots[_id].pos)%100==10);
             }},
             ifeq1:       { test: function($this, _id) {
-                return (helpers.tiles.get($this, $this.data("settings").robots[_id].pos)%100==11);
+                return (helpers.tiles.get($this, helpers.settings($this).robots[_id].pos)%100==11);
             }},
             ifeq2:       { test: function($this, _id) {
-                return (helpers.tiles.get($this, $this.data("settings").robots[_id].pos)%100==12);
+                return (helpers.tiles.get($this, helpers.settings($this).robots[_id].pos)%100==12);
             }},
             ifeq3:       { test: function($this, _id) {
-                return (helpers.tiles.get($this, $this.data("settings").robots[_id].pos)%100==13);
+                return (helpers.tiles.get($this, helpers.settings($this).robots[_id].pos)%100==13);
             }},
             ifeq4:       { test: function($this, _id) {
-                return (helpers.tiles.get($this, $this.data("settings").robots[_id].pos)%100==14);
+                return (helpers.tiles.get($this, helpers.settings($this).robots[_id].pos)%100==14);
             }},
             ifeq5:       { test: function($this, _id) {
-                return (helpers.tiles.get($this, $this.data("settings").robots[_id].pos)%100==15);
+                return (helpers.tiles.get($this, helpers.settings($this).robots[_id].pos)%100==15);
             }},
             ifeq6:       { test: function($this, _id) {
-                return (helpers.tiles.get($this, $this.data("settings").robots[_id].pos)%100==16);
+                return (helpers.tiles.get($this, helpers.settings($this).robots[_id].pos)%100==16);
             }},
             ifeq7:       { test: function($this, _id) {
-                return (helpers.tiles.get($this, $this.data("settings").robots[_id].pos)%100==17);
+                return (helpers.tiles.get($this, helpers.settings($this).robots[_id].pos)%100==17);
             }},
             ifeq8:       { test: function($this, _id) {
-                return (helpers.tiles.get($this, $this.data("settings").robots[_id].pos)%100==18);
+                return (helpers.tiles.get($this, helpers.settings($this).robots[_id].pos)%100==18);
             }},
             ifeq9:       { test: function($this, _id) {
-                return (helpers.tiles.get($this, $this.data("settings").robots[_id].pos)%100==19);
+                return (helpers.tiles.get($this, helpers.settings($this).robots[_id].pos)%100==19);
             }},
             ifnoteq0:   { test: function($this, _id) { return !helpers.actions.ifeq0.test($this,_id); } },
             ifnoteq1:   { test: function($this, _id) { return !helpers.actions.ifeq1.test($this,_id); } },
@@ -478,23 +484,23 @@
             ifnoteq7:   { test: function($this, _id) { return !helpers.actions.ifeq7.test($this,_id); } },
             ifnoteq8:   { test: function($this, _id) { return !helpers.actions.ifeq8.test($this,_id); } },
             ifnoteq9:   { test: function($this, _id) { return !helpers.actions.ifeq9.test($this,_id); } },
-            ifinvert:   { test: function($this, _id) { return $this.data("settings").robots[_id].invert; } },
-            ifnotinvert:{ test: function($this, _id) { return !$this.data("settings").robots[_id].invert; } },
-            ifnum0:     { test: function($this, _id) { return ($this.data("settings").tiles.number==0); } },
-            ifnum1:     { test: function($this, _id) { return ($this.data("settings").tiles.number==1); } },
-            ifnum2:     { test: function($this, _id) { return ($this.data("settings").tiles.number==2); } },
-            ifnum3:     { test: function($this, _id) { return ($this.data("settings").tiles.number==3); } },
-            ifnum4:     { test: function($this, _id) { return ($this.data("settings").tiles.number==4); } },
-            ifnum5:     { test: function($this, _id) { return ($this.data("settings").tiles.number==5); } },
-            ifnum6:     { test: function($this, _id) { return ($this.data("settings").tiles.number==6); } },
-            ifnum7:     { test: function($this, _id) { return ($this.data("settings").tiles.number==7); } },
-            ifnum8:     { test: function($this, _id) { return ($this.data("settings").tiles.number==8); } },
-            ifnum9:     { test: function($this, _id) { return ($this.data("settings").tiles.number==9); } },
+            ifinvert:   { test: function($this, _id) { return helpers.settings($this).robots[_id].invert; } },
+            ifnotinvert:{ test: function($this, _id) { return !helpers.settings($this).robots[_id].invert; } },
+            ifnum0:     { test: function($this, _id) { return (helpers.settings($this).tiles.number==0); } },
+            ifnum1:     { test: function($this, _id) { return (helpers.settings($this).tiles.number==1); } },
+            ifnum2:     { test: function($this, _id) { return (helpers.settings($this).tiles.number==2); } },
+            ifnum3:     { test: function($this, _id) { return (helpers.settings($this).tiles.number==3); } },
+            ifnum4:     { test: function($this, _id) { return (helpers.settings($this).tiles.number==4); } },
+            ifnum5:     { test: function($this, _id) { return (helpers.settings($this).tiles.number==5); } },
+            ifnum6:     { test: function($this, _id) { return (helpers.settings($this).tiles.number==6); } },
+            ifnum7:     { test: function($this, _id) { return (helpers.settings($this).tiles.number==7); } },
+            ifnum8:     { test: function($this, _id) { return (helpers.settings($this).tiles.number==8); } },
+            ifnum9:     { test: function($this, _id) { return (helpers.settings($this).tiles.number==9); } },
             x2:         { loop : function($this, _id, _val) { return _val?_val-1:2; }},
             x3:         { loop : function($this, _id, _val) { return _val?_val-1:3; }},
             x4:         { loop : function($this, _id, _val) { return _val?_val-1:4; }},
             x5:         { loop : function($this, _id, _val) { return _val?_val-1:5; }},
-            xnum:       { loop : function($this, _id, _val) { return _val?_val-1:$this.data("settings").tiles.number; }},
+            xnum:       { loop : function($this, _id, _val) { return _val?_val-1:helpers.settings($this).tiles.number; }},
             whileblue:  { loop : function($this, _id, _val) { return (helpers.actions.ifblue.test($this,_id)?99:0); } },
             whilered:   { loop : function($this, _id, _val) { return (helpers.actions.ifred.test($this,_id)?99:0); } },
             whilegreen: { loop : function($this, _id, _val) { return (helpers.actions.ifgreen.test($this,_id)?99:0); } },
@@ -521,7 +527,7 @@
         // HANDLE THE TILES AND THEIR BEHAVIOUR
         tiles : {
             get: function($this, _pos) {
-                var settings = $this.data("settings");
+                var settings = helpers.settings($this);
                 var ret = 0;
                 if (_pos[0]>=0 && _pos[0]<settings.tiles.size[0] && _pos[1]>=0 && _pos[1]<settings.tiles.size[1]) {
                     ret = settings.tiles.data[_pos[0]+_pos[1]*settings.tiles.size[0]];
@@ -529,7 +535,7 @@
                 return ret;
             },
             execute: function($this, _id) {
-                var settings = $this.data("settings");
+                var settings = helpers.settings($this);
                 var ret = false;
                 var alreadydone = ((settings.robots[_id].pos[0]==settings.robots[_id].sav[0]) &&
                                    (settings.robots[_id].pos[1]==settings.robots[_id].sav[1]));
@@ -544,7 +550,7 @@
                 return ret;
             },
             quit: function($this, _id) {
-                var settings = $this.data("settings");
+                var settings = helpers.settings($this);
                 var tile = parseInt(helpers.tiles.get($this, settings.robots[_id].sav));
                 if (tile) {
                     if (helpers.tiles["q"+(tile%100)]) {
@@ -560,26 +566,26 @@
             f8: function($this, _robots, _tile) { _robots.pos[0]--; return true; },
             f20:function($this, _robots, _tile) {
                 var c = Math.floor(_tile/100);
-                var ret = $this.data("settings").tiles.tile9[c];
-                if (!$this.data("settings").synchro && !ret) {
+                var ret = helpers.settings($this).tiles.tile9[c];
+                if (!helpers.settings($this).synchro && !ret) {
                     $this.find(".t"+c+"09 img").attr("src","res/img/tileset/iso/set1/"+c+"01.svg");
                     $this.find(".t"+c+"20 img").attr("src","res/img/tileset/iso/set1/"+c+"21.svg");
                 }
-                $this.data("settings").tiles.tile9[c]=true;
+                helpers.settings($this).tiles.tile9[c]=true;
                 return false;
             },
             f23:function($this, _robots, _tile) { return helpers.tiles.f20($this, _robots, _tile); },
             f22:function($this, _robots, _tile) { _robots.invert = !_robots.invert; return true; },
             q23:function($this, _robots, _tile) { 
                 var c = Math.floor(_tile/100);
-                if (!$this.data("settings").synchro) {
+                if (!helpers.settings($this).synchro) {
                     $this.find(".t"+c+"09 img").attr("src","res/img/tileset/iso/set1/"+c+"09.svg");
                 }
-                $this.data("settings").tiles.tile9[c]=false;
+                helpers.settings($this).tiles.tile9[c]=false;
             }
         },
         restore: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             helpers.execute.init($this);
             for (var i in settings.robots) helpers.update($this, i, settings.robots[i].pos, false);
             for (var c=0; c<4; c++) {
@@ -598,14 +604,14 @@
             settings.wrong++;
         },
         success: function($this, _count) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             var ret = (_count<settings.max);
             for (var i in settings.robots)
                 if (parseInt(helpers.tiles.get($this, settings.robots[i].pos))!=i*100+2) { ret = false; }
             return ret;
         },
         endanimation: function($this, _count) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             if (!settings.stop && helpers.success($this, _count)) {
                 settings.score = 5-settings.wrong;
                 if (settings.score<0) { settings.score = 0; }
@@ -616,7 +622,7 @@
             }
         },
         endtest: function($this, _count) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
 
             // TAKE CARE: WE TEST THE WORST BUT THE AVERAGE IS SHOWN IF THE WORST IS GOOD
             if (helpers.success($this, _count)) {
@@ -639,12 +645,12 @@
         execute: {
             // LAUNCH THE CURRENT PROGRAM
             launch: function($this, _robotsorder, _fct, _synchro) {
-                $this.data("settings").synchro = _synchro;
+                helpers.settings($this).synchro = _synchro;
                 helpers.execute.init($this);
                 helpers.execute.run($this, _robotsorder, 0, _fct);
             },
             run: function($this, _robotsorder, _count, _fct) {
-                var settings = $this.data("settings");
+                var settings = helpers.settings($this);
                 helpers.zindex($this);
                 $this.find("#effects>div").hide();
                 // ARE THE ROBOTS STILL IN GAME
@@ -689,7 +695,7 @@
             },
             // INITIALISATION OF THE PROGRAM
             init: function($this) {
-                var settings = $this.data("settings");
+                var settings = helpers.settings($this);
                 // INITIALIZE THE ROBOTS
                 for (var i in settings.robots) {
                     settings.robots[i].pos=[settings.robots[i].origin[0], settings.robots[i].origin[1], settings.robots[i].origin[2]];
@@ -708,7 +714,7 @@
             },
             // NEXT OPERATION
             next: function($this, id) {
-                var settings = $this.data("settings");
+                var settings = helpers.settings($this);
                 var isaction    = false;
                 var execute     = false;
                 var testval     = true;
@@ -834,7 +840,7 @@
                 return isaction;
             },
             active: function($this) {
-                var settings = $this.data("settings");
+                var settings = helpers.settings($this);
                 for (var i in settings.robots) if (settings.robots[i].active) {
 
                     var active = helpers.tiles.get($this,settings.robots[i].pos);
@@ -855,7 +861,7 @@
             tiles: function($this, _robotsorder, _count, _fct) {
                 helpers.zindex($this);
                 $this.find("#effects>div").hide();
-                var settings = $this.data("settings");
+                var settings = helpers.settings($this);
                 var toupdate = helpers.execute.active($this);
 
                 for (var i in settings.robots) if (helpers.tiles.execute($this, i)) {
@@ -928,12 +934,13 @@
                     else {
                         $this.removeClass();
                         if ($settings.class) { $this.addClass($settings.class); }
-                        helpers.load($(this).addClass(defaults.name).data("settings", $settings));
+                        helpers.settings($this.addClass(defaults.name), $settings);
+                        helpers.load($this);
                     }
                 });
             },
             quit: function() {
-                var $this = $(this) , settings = $this.data("settings");
+                var $this = $(this) , settings = helpers.settings($this);
                 settings.finish = true;
                 settings.context.onQuit({'status':'abort'});
             },
@@ -941,12 +948,12 @@
                 $(this).find("#intro").hide();
             },
             speed: function() {
-                var $this = $(this) , settings = $this.data("settings");
+                var $this = $(this) , settings = helpers.settings($this);
                 settings.speed=(settings.speed+1)%3;
                 $this.find("#speed img").attr("src","res/img/control/x"+(1+settings.speed)+".svg");
             },
             play: function() {
-                var $this = $(this) , settings = $this.data("settings");
+                var $this = $(this) , settings = helpers.settings($this);
                 if (!$this.find("#cache").is(":visible")) {
                     settings.stop = false;
                     $this.find("#cache").show();
@@ -972,17 +979,17 @@
                 }
             },
             down: function(_id) {
-                var $this = $(this) , settings = $this.data("settings");
+                var $this = $(this) , settings = helpers.settings($this);
                 if (settings.sourceid[_id]<settings.sourcemax[_id]) { settings.sourceid[_id]++; }
                 helpers.updatesource($this);
             },
             up: function(_id) {
-                var $this = $(this) , settings = $this.data("settings");
+                var $this = $(this) , settings = helpers.settings($this);
                 if (settings.sourceid[_id]>0) { settings.sourceid[_id]--; }
                 helpers.updatesource($this);
             },
             stop: function() {
-                var $this = $(this) , settings = $this.data("settings");
+                var $this = $(this) , settings = helpers.settings($this);
                 settings.stop = true;
                 if (settings.pause.state) { helpers.restore($this); }
             },

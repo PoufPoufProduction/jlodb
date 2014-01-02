@@ -24,9 +24,11 @@
             }
             return ret;
         },
+        // Get the settings
+        settings: function($this, _val) { if (_val) { $this.data("settings", _val); } return $this.data("settings"); },
         // Quit the activity by calling the context callback
         end: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             settings.context.onQuit({'status':'success', 'score':settings.score});
         },
         // compute the score regarding the actual time and the time refence
@@ -44,7 +46,7 @@
         },
         // get the timer value
         timer:function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             var $time = $this.find("#time");
             settings.timer.value++;
             if (settings.time) {
@@ -56,7 +58,7 @@
         },
         // Handle the elements sizes and show the activity
         resize: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
 
             // Send the onLoad callback
             if (settings.context.onLoad) { settings.context.onLoad(false); }
@@ -71,10 +73,14 @@
             $this.find("h1#label").html(settings.label);
             if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
 
+            // Handle spash panel
+            if (settings.nosplash) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+            else                   { $this.find("#intro").show(); }
+
         },
         // Build the response table regarding the question
         build:function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             var $board = $this.find("#board").html("");
 
             // Get the operation
@@ -252,7 +258,7 @@
         },
         // Load the different elements of the activity
         load:function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             var debug = "";
             if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
 
@@ -287,7 +293,7 @@
             });
         },
         key: function($this, value) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             if (!settings.timer.id) { settings.timer.id = setTimeout(function() { helpers.timer($this); }, 1000); }
             if (settings.keypad) { clearTimeout(settings.keypad); settings.keypad=0; }
             $this.find("#keypad").fadeOut("fast");
@@ -314,7 +320,7 @@
         },
         // Check the result
         check: function($this) {
-            var settings = $this.data("settings"), vResult = "", vModulo = "";
+            var settings = helpers.settings($this), vResult = "", vModulo = "";
             var ret = false;
             if (settings.type=="/") {
                 $this.find(".result div").each(function(index) { vResult+=$(this).text(); });
@@ -367,7 +373,8 @@
                     else {
                         $this.removeClass();
                         if ($settings.class) { $this.addClass($settings.class); }
-                        helpers.load($this.addClass(defaults.name).addClass("activity").data("settings", $settings));
+                        helpers.settings($this.addClass(defaults.name), $settings);
+                        helpers.load($this);
                     }
                 });
             },
@@ -376,7 +383,7 @@
                 var $this = $(this) , settings = $(this).data("settings");
                 if (!settings.timer.id) { settings.timer.id = setTimeout(function() { helpers.timer($this); }, 1000); }
                 if (!settings.finish) {
-                    
+
                     if (settings.keypad) { clearTimeout(settings.keypad); settings.keypad=0; }
                     settings.keypad = setTimeout(function() { $this.operation('key', -1); }, 3000);
 
@@ -406,7 +413,7 @@
                 $(this).find("#board").show();
             },
             quit: function() {
-                var $this = $(this) , settings = $this.data("settings");
+                var $this = $(this) , settings = helpers.settings($this);
                 if (settings.timer.id) { clearTimeout(settings.timer.id); settings.timer.id=0; }
                 settings.finish = true;
                 settings.context.onQuit({'status':'abort'});

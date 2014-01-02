@@ -32,14 +32,16 @@
             }
             return ret;
         },
+        // Get the settings
+        settings: function($this, _val) { if (_val) { $this.data("settings", _val); } return $this.data("settings"); },
         // Quit the activity by calling the context callback
         end: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             settings.context.onQuit({'status':'success','score':settings.score});
         },
         // Update the timer
         timer:function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             settings.timer.value++;
             var vS = settings.timer.value%60;
             var vM = Math.floor(settings.timer.value/60)%60;
@@ -50,7 +52,7 @@
             settings.timer.id = setTimeout(function() { helpers.timer($this); }, 1000);
         },
         resizeAfterShow: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
 
             // COMPUTE RATIO
             var vWidth = $this.find("#board").width();
@@ -69,11 +71,13 @@
             $this.find("#guide").html(settings.locale.guide);
             //$.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); });
 
-            settings.interactive = true;
+            // Handle spash panel
+            if (settings.nosplash) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+            else                   { $this.find("#intro").show(); }
         },
         // Handle the elements sizes and show the activity
         resize: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
 
             // Send the onLoad callback
             if (settings.context.onLoad) { settings.context.onLoad(false); }
@@ -86,7 +90,7 @@
             setTimeout(function() { helpers.resizeAfterShow($this); }, 100 );
         },
         rebuild: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             for (var i in settings.origin.translate) {
                 $("#"+settings.pieces+">g#"+settings.origin.translate[i][0],settings.svg.root()).attr("transform",
                     "translate("+settings.origin.translate[i][1]+","+settings.origin.translate[i][2]+")");
@@ -95,7 +99,7 @@
         },
         // Build the question
         build: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             settings.origin.translate = [];
             settings.origin.rotate    = {};
             $this.find("#submit").removeClass();
@@ -293,7 +297,7 @@
         },
         // Load the svg
         loadsvg:function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
 
             var debug = "";
             if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
@@ -309,7 +313,7 @@
         },
         // Load the different elements of the activity
         load: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             var debug = "";
             if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
 
@@ -385,12 +389,13 @@
                     else {
                         $this.removeClass();
                         if ($settings.class) { $this.addClass($settings.class); }
-                        helpers.load($(this).addClass(defaults.name).data("settings", $settings));
+                        helpers.settings($this.addClass(defaults.name), $settings);
+                        helpers.load($this);
                     }
                 });
             },
             submit: function() {
-                var $this = $(this) , settings = $this.data("settings");
+                var $this = $(this) , settings = helpers.settings($this);
                 var wrongs =0;
                 if (!settings.finish) {
                     for (var i in settings.origin.translate) {
@@ -453,13 +458,13 @@
                 }
             },
             quit: function() {
-                var $this = $(this) , settings = $this.data("settings");
+                var $this = $(this) , settings = helpers.settings($this);
                 if (settings.timer.id) { clearTimeout(settings.timer.id); settings.timer.id=0; }
                 settings.finish = true;
                 settings.context.onQuit({'status':'abort'});
             },
             next: function() {
-                var $this = $(this) , settings = $this.data("settings");
+                var $this = $(this) , settings = helpers.settings($this);
                 settings.interactive = true;
             }
         };

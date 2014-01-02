@@ -22,13 +22,15 @@
             }
             return ret;
         },
+        // Get the settings
+        settings: function($this, _val) { if (_val) { $this.data("settings", _val); } return $this.data("settings"); },
         // Quit the activity by calling the context callback
         end: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             settings.context.onQuit({'status':'success','score':settings.score});
         },
         word: function($this, _word,_t) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             var ret = "<span id='s"+(settings.it++)+"' ";
             ret+="onmousedown='$(this).closest(\".marker\").marker(\"mousedown\", $(this));' ";
             ret+="ontouchstart='$(this).closest(\".marker\").marker(\"mousedown\", $(this));event.preventDefault();' ";
@@ -39,7 +41,7 @@
             return ret;
         },
         mouseup: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             if (settings.m.id == settings.m.first) {
                 if (settings.words[settings.m.id][1]==settings.color) {
                     settings.words[settings.m.id][0]=-1;
@@ -49,13 +51,13 @@
             settings.m.first = -1;
         },
         color: function($this, _color) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             settings.color = _color;
             $this.find("#exercice .color").removeClass("s");
             $this.find("#exercice #c"+(settings.color+1)+" .color").addClass("s");
         },
         update: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             for (var i=0; i<settings.words.length; i++) {
                 var $elt = $this.find("#s"+i);
                 $elt.removeClass();
@@ -72,7 +74,7 @@
         },
         // Handle the elements sizes and show the activity
         resize: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
 
             // Send the onLoad callback
             if (settings.context.onLoad) { settings.context.onLoad(false); }
@@ -137,10 +139,14 @@
             $this.find("#exercice").html(settings.exercice);
             if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
 
+            // Handle spash panel
+            if (settings.nosplash) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+            else                   { $this.find("#intro").show(); }
+
         },
         // Load the different elements of the activity
         load: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             var debug = "";
             if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
 
@@ -211,12 +217,13 @@
                     else {
                         $this.removeClass();
                         if ($settings.class) { $this.addClass($settings.class); }
-                        helpers.load($(this).addClass(defaults.name).data("settings", $settings));
+                        helpers.settings($this.addClass(defaults.name), $settings);
+                        helpers.load($this);
                     }
                 });
             },
             mousedown:function($elt) {
-                var $this = $(this) , settings = $this.data("settings");
+                var $this = $(this) , settings = helpers.settings($this);
                 if (!settings.finish) {
                     id = parseInt($elt.attr("id").substr(1));
                     settings.m.first = id;
@@ -245,7 +252,7 @@
 
             },
             mousemove:function($elt) {
-                var $this = $(this) , settings = $this.data("settings");
+                var $this = $(this) , settings = helpers.settings($this);
 
 
                 if (settings.m.first!=-1 && !settings.finish)  {
@@ -297,7 +304,7 @@
                 $(this).find("#board").show();
             },
             valid: function() {
-                var $this = $(this) , settings = $this.data("settings");
+                var $this = $(this) , settings = helpers.settings($this);
                 if (!settings.finish) {
                     settings.finish = true;
                     settings.score = 5;
@@ -325,7 +332,7 @@
             },
             color: function(_val) { helpers.color($(this), _val); },
             quit: function() {
-                var $this = $(this) , settings = $this.data("settings");
+                var $this = $(this) , settings = helpers.settings($this);
                 settings.finish = true;
                 settings.context.onQuit({'status':'abort'});
             }

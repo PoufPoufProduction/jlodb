@@ -25,14 +25,16 @@
             }
             return ret;
         },
+        // Get the settings
+        settings: function($this, _val) { if (_val) { $this.data("settings", _val); } return $this.data("settings"); },
         // Quit the activity by calling the context callback
         end: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             settings.context.onQuit({'status':'success', 'score':settings.score});
         },
         // Handle the elements sizes and show the activity
         resize: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
 
             // Send the onLoad callback
             if (settings.context.onLoad) { settings.context.onLoad(false); }
@@ -50,20 +52,24 @@
             // Locale handling
             $this.find("h1#label").html(settings.label);
             if(settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
+
+            // Handle spash panel
+            if (settings.nosplash) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+            else                   { $this.find("#intro").show(); }
         },
         stop: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             for (var i in settings.buttons) { $("#"+settings.buttons[i].id, settings.svg.root()).attr("class",""); }
             jlodb.midi.noteOff(0,0,0);
         },
         play: function($this,_i) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             for (var i in settings.buttons) { $("#"+settings.buttons[i].id, settings.svg.root()).attr("class",""); }
             $("#"+settings.buttons[_i].id, settings.svg.root()).attr("class","s");
             jlodb.midi.noteOn(0,settings.buttons[_i].note,0,0);
         },
         demo: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             if (settings.count<settings.buttons.length) {
                 helpers.play($this, settings.count++);
                 setTimeout(function() { helpers.demo($this); },250);
@@ -71,13 +77,13 @@
             else { helpers.stop($this); setTimeout(function() { helpers.next($this); },500); }
         },
         next: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             settings.sequence.push(Math.floor(Math.random()*settings.buttons.length));
             settings.count = 0;
             helpers.sequence($this);
         },
         sequence: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             if (settings.count<settings.sequence.length) {
                 helpers.play($this, settings.sequence[settings.count++]);
                 var delay = Math.floor(settings.speed[0]/(1+settings.sequence.length/settings.speed[1]));
@@ -92,7 +98,7 @@
             jlodb.midi.load('acoustic_grand_piano', function() { helpers.resize($this); });
         },
         loadsvg:function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             // Load the svg if needed
             var debug = "";
             if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
@@ -107,7 +113,7 @@
 
         },
         load: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             var debug = "";
             if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
 
@@ -172,7 +178,8 @@
                     else {
                         $this.removeClass();
                         if ($settings.class) { $this.addClass($settings.class); }
-                        helpers.load($this.addClass(defaults.name).addClass("activity").data("settings", $settings));
+                        helpers.settings($this.addClass(defaults.name), $settings);
+                        helpers.load($this);
                     }
                 });
             },
@@ -217,7 +224,7 @@
                 }
             },
             quit: function() {
-                var $this = $(this) , settings = $this.data("settings");
+                var $this = $(this) , settings = helpers.settings($this);
                 settings.finish = true;
                 settings.context.onQuit({'status':'abort'});
             }

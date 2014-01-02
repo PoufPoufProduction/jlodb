@@ -25,14 +25,16 @@
             }
             return ret;
         },
+        // Get the settings
+        settings: function($this, _val) { if (_val) { $this.data("settings", _val); } return $this.data("settings"); },
         // Quit the activity by calling the context callback
         end: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             settings.context.onQuit({'status':'success','score':settings.score});
         },
         // Handle the elements sizes and show the activity
         resize: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
 
             // Send the onLoad callback
             if (settings.context.onLoad) { settings.context.onLoad(false); }
@@ -44,10 +46,14 @@
             $this.find("h1#label").html(settings.label);
             $this.find("#guide").html(settings.guide);
             $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); });
+
+            // Handle spash panel
+            if (settings.nosplash) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+            else                   { $this.find("#intro").show(); }
         },
         // REFRESH A TOGGLE ELEMENT
         refresh: function($this, elt) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             if (settings.states.css) {
                 var o = elt.state;
                 if (o<0 && settings.states.css.length>settings.states.nb && settings.show) { o = settings.states.nb; }
@@ -62,7 +68,7 @@
         },
         // CHANGE A STATUT
         click: function($this, id) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             var elt = settings.current.values[id];
 
             var isOk = true;
@@ -74,7 +80,7 @@
             }
         },
         fill: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             settings.current.values = [];
             $this.find(".t").each(function(index) {
                 var elt={ elt:$(this), state:0 };
@@ -95,7 +101,7 @@
         },
         // Build the question
         build: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             $this.find("#submit").removeClass("good").removeClass("wrong");
 
             if (!settings.number)   { settings.number = (settings.values)?settings.values.length:1; }
@@ -141,7 +147,7 @@
         },
         // Load the different elements of the activity
         load: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             var debug = "";
             if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
 
@@ -210,12 +216,13 @@
                     else {
                         $this.removeClass();
                         if ($settings.class) { $this.addClass($settings.class); }
-                        helpers.load($(this).addClass(defaults.name).data("settings", $settings));
+                        helpers.settings($this.addClass(defaults.name), $settings);
+                        helpers.load($this);
                     }
                 });
             },
             valid: function() {
-                var $this   = $(this) , settings = $this.data("settings");
+                var $this   = $(this) , settings = helpers.settings($this);
                 if (!settings.finish) {
                     settings.finish = true;
                     var result  = "";
@@ -246,7 +253,7 @@
                 }
             },
             quit: function() {
-                var $this = $(this) , settings = $this.data("settings");
+                var $this = $(this) , settings = helpers.settings($this);
                 settings.finish = true;
                 settings.context.onQuit({'status':'abort'});
             },

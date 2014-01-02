@@ -256,6 +256,10 @@
             $this.find("h1#label").html(settings.label);
             if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
 
+            // Handle spash panel
+            if (settings.nosplash) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+            else                   { $this.find("#intro").show(); }
+
             helpers.build($this);
         },
         build: function($this) {

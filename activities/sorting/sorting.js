@@ -29,14 +29,16 @@
             }
             return ret;
         },
+        // Get the settings
+        settings: function($this, _val) { if (_val) { $this.data("settings", _val); } return $this.data("settings"); },
         // Quit the activity by calling the context callback
         end: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             settings.context.onQuit({'status':'success', 'score':settings.score});
         },
         // Handle the elements sizes and show the activity
         resize: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
 
             // SEND THE ONLOAD CALLBACK
             if (settings.context.onLoad) { settings.context.onLoad(false); }
@@ -52,10 +54,14 @@
 
             // ADD BACKGROUND
             $this.find("#background").css("background-image", "url('res/img/"+settings.background+"')");
+
+            // Handle spash panel
+            if (settings.nosplash) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+            else                   { $this.find("#intro").show(); }
         },
         // Update the timer
         timer:function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             settings.timer.value++;
             var vS = settings.timer.value%60;
             var vM = Math.floor(settings.timer.value/60)%60;
@@ -67,7 +73,7 @@
         },
         // Load the different elements of the activity
         load: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             var debug = "";
             if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
 
@@ -102,7 +108,7 @@
             });
         },
         build:function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             $this.find("#interactive").html("").removeClass("inactive");
             settings.elts   = [];
             settings.labels = [];
@@ -277,7 +283,8 @@
                     else {
                         $this.removeClass();
                         if ($settings.class) { $this.addClass($settings.class); }
-                        helpers.load($(this).addClass(defaults.name).data("settings", $settings));
+                        helpers.settings($this.addClass(defaults.name), $settings);
+                        helpers.load($this);
                     }
                 });
             },
@@ -318,7 +325,7 @@
                 helpers.timer($(this));
             },
             quit: function() {
-                var $this = $(this) , settings = $this.data("settings");
+                var $this = $(this) , settings = helpers.settings($this);
                 if (settings.timer.id) { clearTimeout(settings.timer.id); settings.timer.id=0; }
                 settings.finish = true;
                 settings.context.onQuit({'status':'abort'});

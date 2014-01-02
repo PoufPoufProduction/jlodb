@@ -35,14 +35,16 @@
             }
             return ret;
         },
+        // Get the settings
+        settings: function($this, _val) { if (_val) { $this.data("settings", _val); } return $this.data("settings"); },
         // Quit the activity by calling the context callback
         end: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             settings.context.onQuit({'status':'success','score':settings.score});
         },
         // Check if a new element matches an objective
         check: function($this, elt) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             var ret = false;
             settings.nbobjects++;
             // Remove objectives with matches the new elements
@@ -101,7 +103,7 @@
             return ret;
         },
         closer: function($this, i, j) {
-            var settings    = $this.data("settings");
+            var settings    = helpers.settings($this);
             var o           = 0;                                // THE CLOSER OBJECT
             var dist        = -1;                               // THE DISTANCE*DISTANCE FROM THE CLOSER OBJECT
 
@@ -146,7 +148,7 @@
             return o;
         },
         mousemove: function($this, event) {
-            var settings    = $this.data("settings"); if (settings.finish) { return; }
+            var settings    = helpers.settings($this); if (settings.finish) { return; }
             var x           = event.clientX-$this.find("#board").offset().left;     // THE X AXIS MOUSE PIXEL COORDINATE
             var y           = event.clientY-$this.find("#board").offset().top;      // THE Y AXIS MOUSE PIXEL COORDINATE
             var i           = helpers.utility.XtoI($this, x);                       // THE I AXIS MOUSE COORDINATE
@@ -167,7 +169,7 @@
             if (o) { $(o.highlight).attr("display","inline"); settings.controls.current = o; }
         },
         mousedown: function($this) {
-            var settings    = $this.data("settings"); if (settings.finish) { return; }
+            var settings    = helpers.settings($this); if (settings.finish) { return; }
 
             if (settings.controls.preview) {
                 settings.svg.remove(settings.controls.preview);
@@ -181,7 +183,7 @@
             }
         },
         mouseup: function($this) {
-            var settings    = $this.data("settings"); if (settings.finish) { return; }
+            var settings    = helpers.settings($this); if (settings.finish) { return; }
 
             // BUILD THE NEW ELEMENT
             // SPECIAL CASE OF THE CIRCLE WITH ONLY ITS CENTER
@@ -283,13 +285,13 @@
             helpers.clear($this);
         },
         mouseout: function($this, event) {
-            var settings    = $this.data("settings"); if (settings.finish) { return; }
+            var settings    = helpers.settings($this); if (settings.finish) { return; }
             var x           = event.clientX-$this.find("#board").offset().left;
             var y           = event.clientY-$this.find("#board").offset().top;
             if (x<0 || y<0 || x>$this.find("#board").width() || y>$this.find("#board").height()) { helpers.clear($this); }
         },
         clear: function($this) {
-            var settings    = $this.data("settings");
+            var settings    = helpers.settings($this);
             // HIDE ELEMENTS
             if (settings.controls.first)    { $(settings.controls.first.highlight).attr("display", "none"); }
             if (settings.controls.current)  { $(settings.controls.current.highlight).attr("display", "none"); }
@@ -307,7 +309,7 @@
         },
         preview : {
             segment: function($this, i, j, o) {
-                var settings    = $this.data("settings");
+                var settings    = helpers.settings($this);
                 if (o && o!=settings.controls.first && settings.controls.preview) {
                     $(settings.controls.preview).attr("x2", o.coord[0]);
                     $(settings.controls.preview).attr("y2", o.coord[1]);
@@ -330,7 +332,7 @@
             line : function($this, i, j, o) { helpers.preview.segment($this, i, j, o); },
             midpoint: function($this, i, j, o) { helpers.preview.segment($this, i, j, o); },
             circle: function($this, i, j, o) {
-                var settings    = $this.data("settings");
+                var settings    = helpers.settings($this);
                 var ci = settings.controls.first.coord[0];
                 var cj = settings.controls.first.coord[1];
                 if (o && o!=settings.controls.first && settings.controls.preview && settings.circle!="1point") {
@@ -353,7 +355,7 @@
             perpendicular: function($this, i, j, o) { this.paraperp($this, i, j, o , 90); },
             parallel: function($this, i, j, o)      { this.paraperp($this, i, j, o, 0); },
             paraperp: function($this, i, j, o, angle) {
-                var settings    = $this.data("settings");
+                var settings    = helpers.settings($this);
                 if (o) {
                     var pos = helpers.utility.line.convert3($this, o.coord[0], o.coord[1], settings.controls.misc);
                     helpers.utility.line.update(settings.controls.preview, pos.i1, pos.j1, pos.i2, pos.j2);
@@ -375,7 +377,7 @@
                 }
             },
             intersection: function($this, x, y, o) {
-                var settings    = $this.data("settings");
+                var settings    = helpers.settings($this);
                 if (!settings.controls.preview) {
                     settings.controls.preview = $(settings.controls.first.highlight).clone().appendTo(settings.layers.highlight);
                 }
@@ -384,7 +386,7 @@
         },
         factory : {
             build : function($this, name, coord, attr) {
-                var settings = $this.data("settings");
+                var settings = helpers.settings($this);
                 var ret = {
                     highlight   : helpers.factory[name]($this, settings.layers.highlight, coord, { display:'none' }),
                     svg         : helpers.factory[name]($this, settings.layers.active, coord, attr),
@@ -396,7 +398,7 @@
                 return ret;
             },
             point : function($this, group, coord, attr) {
-                var settings = $this.data("settings");
+                var settings = helpers.settings($this);
                 var path = settings.svg.createPath();
                 var ret=settings.svg.path(group, path.move(coord[0], coord[1]).line(coord[0]+0.001, coord[1]),attr);
                 $(ret).attr("class","point");
@@ -404,13 +406,13 @@
                 return ret;
             },
             circle : function($this, group, coord, attr) {
-                var settings = $this.data("settings");
+                var settings = helpers.settings($this);
                 $this.find("#log").html("C("+helpers.utility.round(coord[0])+","+helpers.utility.round(coord[1])
                                         +","+helpers.utility.round(coord[2])+")");
                 return settings.svg.circle(group, coord[0], coord[1], coord[2], attr);
             },
             segment : function($this, group, coord, attr) {
-                var settings = $this.data("settings");
+                var settings = helpers.settings($this);
                 var ret = settings.svg.line(group, coord[0], coord[1], coord[2], coord[3], attr);
                 var pos = helpers.utility.line.topairex(coord[0], coord[1], coord[2], coord[3]);
                 $this.find("#log").html("L("+helpers.utility.round(pos[0])+","+helpers.utility.round(pos[1])+")");
@@ -420,13 +422,13 @@
         },
         utility : {
             // (X,Y) ARE THE PIXEL COORDINATES, (I,J) ARE THE MATHEMATIQUES COORDINATES
-            ItoX: function($this, i) { var s = $this.data("settings");
+            ItoX: function($this, i) { var s = helpers.settings($this);
                                        return ((i+s.translate[0])/s.board.svgWidth)*s.board.pixelWidth; },
-            JtoY: function($this, j) { var s = $this.data("settings");
+            JtoY: function($this, j) { var s = helpers.settings($this);
                                        return ((j+s.translate[1])/s.board.svgHeight)*s.board.pixelHeight; },
-            XtoI: function($this, x) { var s = $this.data("settings");
+            XtoI: function($this, x) { var s = helpers.settings($this);
                                        return (x/s.board.pixelWidth)*s.board.svgWidth-s.translate[0]; },
-            YtoJ: function($this, y) { var s = $this.data("settings");
+            YtoJ: function($this, y) { var s = helpers.settings($this);
                                        return (y/s.board.pixelHeight)*s.board.svgHeight-s.translate[1]; },
             line : {
                 topairex: function(x1, y1, x2, y2) {
@@ -443,7 +445,7 @@
                     $(l).attr("x1", i1); $(l).attr("y1", j1); $(l).attr("x2", i2); $(l).attr("y2", j2);
                 },
                 convert4: function($this,i1,j1,i2,j2) {
-                    var settings = $this.data("settings");
+                    var settings = helpers.settings($this);
                     var ret = { i1:i1,j1:j1,i2:i2,j2:j2 };
                     if ((i1==i2)&&(j1==j2)) { ret = 0; }
                     else {
@@ -568,7 +570,7 @@
             }
         },
         build: function($this){
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
 
             // ADD THE CLASSES
             settings.svg.style(
@@ -659,7 +661,7 @@
         },
         // HANDLE THE ELEMENTS SIZES AND SHOW THE ACTIVITY
         resize: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
 
             // SEND THE ONLOAD CALLBACK
             if (settings.context.onLoad) { settings.context.onLoad(false); }
@@ -690,10 +692,14 @@
             $this.find("h1#label").html(settings.label);
             if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
 
+            // Handle spash panel
+            if (settings.nosplash) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+            else                   { $this.find("#intro").show(); }
+
         },
         // Load the different elements of the activity
         load: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             var debug = "";
             if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
 
@@ -800,12 +806,13 @@
                     else {
                         $this.removeClass();
                         if ($settings.class) { $this.addClass($settings.class); }
-                        helpers.load($(this).addClass(defaults.name).data("settings", $settings));
+                        helpers.settings($this.addClass(defaults.name), $settings);
+                        helpers.load($this);
                     }
                 });
             },
             stroke: function(elt) {
-                var $this = $(this) , settings = $this.data("settings");
+                var $this = $(this) , settings = helpers.settings($this);
                 if (!$(elt).hasClass("disable") && !settings.finish) {
                     settings.small = !settings.small;
                     if (settings.small)    { $this.find("#stroke img").attr("src", "res/img/generic/dice01.svg") }
@@ -813,7 +820,7 @@
                 }
             },
             color: function(elt) {
-                var $this = $(this) , settings = $this.data("settings");
+                var $this = $(this) , settings = helpers.settings($this);
                 if (!$(elt).hasClass("disable") && !settings.finish) {
                     settings.colorid = (settings.colorid+1)%settings.colors.length;
                     settings.color = settings.colors[settings.colorid];
@@ -821,7 +828,7 @@
                 }
             },
             click: function(elt) {
-                var $this = $(this) , settings = $this.data("settings");
+                var $this = $(this) , settings = helpers.settings($this);
                 if (!$(elt).hasClass("disable") && !settings.finish) {
                      $this.find(".action").removeClass("s");
                     if (settings.controls.action != $(elt).attr("id")) {
@@ -844,7 +851,7 @@
                 }
             },
             next: function() {
-                var $this = $(this) , settings = $this.data("settings");
+                var $this = $(this) , settings = helpers.settings($this);
                 $(this).find("#intro").hide();
 
                 $(this).find("#board").bind("mousemove", function(e) { helpers.mousemove($this, e); });
@@ -869,7 +876,7 @@
 
             },
             quit: function() {
-                var $this = $(this) , settings = $this.data("settings");
+                var $this = $(this) , settings = helpers.settings($this);
                 settings.finish = true;
                 settings.context.onQuit({'status':'abort'});
             }
