@@ -19,6 +19,7 @@
         color       : "black",                  // The current color
         translate   : [0,0],                    // The translation values
         style       : false,                    // The style changing is disable
+        nosplash    : true,
         debug       : true                      // Debug mode
     };
 
@@ -97,7 +98,7 @@
                 settings.score = helpers.score(settings.nbobjects, settings.number);
                 $(settings.svg.root()).attr("class",$(settings.svg.root()).attr("class")+" done");
 
-                setTimeout(function() { helpers.end($this); }, 3000);
+                setTimeout(function() { helpers.end($this); }, 2000);
             }
 
             return ret;
@@ -652,11 +653,20 @@
                 }
             }
 
+            // SHOW SVG ELEMENTS
             if (settings.show) {
                 if ($.isArray(settings.show)) {
                     for (var i in settings.show) { $("#"+settings.show[i], settings.svg.root()).css("display","inline"); }
                 }
                 else { $("#"+settings.show, settings.svg.root()).css("display","inline"); }
+            }
+
+            // UPDATE SVG TEXT
+            if (settings.text) {
+                if ($.isArray(settings.text)) {
+                    for (var i in settings.text) { $("#text"+i, settings.svg.root()).text(settings.text[i]); }
+                }
+                else { $("#text", settings.svg.root()).text(settings.text); }
             }
         },
         // HANDLE THE ELEMENTS SIZES AND SHOW THE ACTIVITY
@@ -691,6 +701,15 @@
             // LOCALE HANDLING
             $this.find("h1#label").html(settings.label);
             if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
+
+            // LOAD SVG
+            var debug = "";
+            if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
+            $this.find("#board").svg();
+            settings.svg = $this.find("#board").svg('get');
+            settings.svg.load(
+                'res/img/'+settings.filename + debug, { addTo: true, changeSize: true, onLoad:function() { helpers.build($this); }
+            });
 
             // Handle spash panel
             if (settings.nosplash) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
@@ -864,15 +883,6 @@
                 $(this).find("#board").bind("touchstart", function(e) {
                     helpers.mousemove($this, e.originalEvent.touches[0]); helpers.mousedown($this); e.preventDefault(); });
                 $(this).find("#board").bind("touchend", function() { helpers.mouseup($this); });
-
-                var debug = "";
-                if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
-                $(this).find("#board").svg();
-                settings.svg = $(this).find("#board").svg('get');
-                settings.svg.load(
-                    'res/img/'+settings.filename + debug,
-                    { addTo: true, changeSize: true, onLoad:function() { helpers.build($this); }
-                });
 
             },
             quit: function() {

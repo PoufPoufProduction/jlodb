@@ -17,7 +17,7 @@
                                                   white-space: nowrap; opacity:1; }
 .geometry div#boardframe                        { width:13.8em; height:8em; overflow:hidden; float:right; margin:.08em;
                                                   border-radius:.5em; background-image:url("../../res/img/background/book01.svg");
-                                                  background-size:100%;}
+                                                  background-repeat:repeat;}
 .geometry div#board                             { width:13.8em; height:10.35em; overflow:hidden;   }
 .geometry div#text                              { width:40.1em; height:9.3em; overflow:hidden;
                                                   margin:.2em; border-radius:.25em; font-size:.4em; clear:both;
@@ -34,6 +34,13 @@
 
 .geometry.blank div#boardframe                  { background-image:none; background-color:#dcf9f5; }
 .geometry.white div#boardframe                  { background-image:none; background-color:white; }
+.geometry.black div#boardframe                  { background-image:none; background-color:black; }
 .geometry.large div#boardframe                  { height:10.35em; }
 .geometry.hide  div#buttons                     { display:none; }
 .geometry.large div#text                        { height:2.8em; }
+
+.geometry.full  div#buttons                     { display:none; }
+.geometry.full  div#text                        { display:none; }
+.geometry.full  div#boardframe                  { width:16em; height:12em; margin:0; border-radius:0; background-image:none; }
+.geometry.full  div#board                       { width:16em; height:12em; overflow:hidden;}
+.geometry.full                                  { background-image:none; }
