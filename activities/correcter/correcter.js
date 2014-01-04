@@ -10,6 +10,7 @@
         proba       : 2,                                        // Change a word each 'proba' words
         style       : "default",                                // Style of the words (default, blank or bold)
         multiple    : 0,                                        // The multiple occurence separator
+        font        : 1,                                        // The font-size multiplicator
         first       : false,                                    // Don't choose randomly the wrong words, use the first one
         debug       : false                                     // Debug mode
     };
@@ -107,6 +108,8 @@
 
             $this.find("#data").html(content);
             $this.css("font-size", Math.floor($this.height()/16)+"px");
+            $this.find("#options").css("font-size",settings.font+"em");
+            $this.find("#data").css("font-size",settings.font+"em");
 
             // Locale handling
             $this.find("h1#label").html(settings.label);
@@ -231,7 +234,7 @@
                                     response[i].replace(reg,"\\'")+"')\">"+response[i]+"</div>";
                             }
                         }
-                        $popup.html(content).show();
+                        $popup.show().find("#options").html(content);
 
                         // Save the current element
                         settings.elt = $(elt);
