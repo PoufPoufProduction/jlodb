@@ -1,0 +1,126 @@
+<div>
+    <div id="board">
+        <div id="detail">
+            <div id="source">
+                <div id="header"></div>
+                <div id="labels"></div>
+                <div id="ops">
+                    <div class="a op" id="adc">ADC</div>
+                    <div class="a op" id="and">AND</div>
+                    <div class="a op" id="asl">ASL</div>
+                    <div class="a op" id="bit">BIT</div>
+                    <div class="a op" id="bpl">BPL</div>
+                    <div class="a op" id="bmi">BMI</div>
+                    <div class="a op" id="bvc">BVC</div>
+                    <div class="a op" id="bvs">BVS</div>
+                    <div class="a op" id="bcc">BCC</div>
+                    <div class="a op" id="bcs">BCS</div>
+                    <div class="a op" id="bne">BNE</div>
+                    <div class="a op" id="beq">BEQ</div>
+                    <div class="a op" id="brk">BRK</div>
+                    <div class="a op" id="cmp">CMP</div>
+                    <div class="a op" id="cpx">CPX</div>
+                    <div class="a op" id="cpy">CPY</div>
+                    <div class="a op" id="dec">DEC</div>
+                    <div class="a op" id="eor">EOR</div>
+                    <div class="a op" id="clc">CLC</div>
+                    <div class="a op" id="sec">SEC</div>
+                    <div class="a op" id="cli">CLI</div>
+                    <div class="a op" id="sei">SEI</div>
+                    <div class="a op" id="clv">CLV</div>
+                    <div class="a op" id="cld">CLD</div>
+                    <div class="a op" id="sed">SED</div>
+                    <div class="a op" id="inc">INC</div>
+                    <div class="a op" id="jmp">JMP</div>
+                    <div class="a op" id="lda">LDA</div>
+                    <div class="a op" id="ldx">LDX</div>
+                    <div class="a op" id="ldy">LDY</div>
+                    <div class="a op" id="lsr">LSR</div>
+                    <div class="a op" id="nop">NOP</div>
+                    <div class="a op" id="ora">ORA</div>
+                    <div class="a op" id="tax">TAX</div>
+                    <div class="a op" id="txa">TXA</div>
+                    <div class="a op" id="dex">DEX</div>
+                    <div class="a op" id="inx">INX</div>
+                    <div class="a op" id="tay">TAY</div>
+                    <div class="a op" id="tya">TYA</div>
+                    <div class="a op" id="dey">DEY</div>
+                    <div class="a op" id="iny">INY</div>
+                    <div class="a op" id="ror">ROR</div>
+                    <div class="a op" id="rol">ROL</div>
+                    <div class="a op" id="rti">RTI</div>
+                    <div class="a op" id="rts">RTS</div>
+                    <div class="a op" id="sbc">SBC</div>
+                    <div class="a op" id="sta">STA</div>
+                    <div class="a op" id="txs">TXS</div>
+                    <div class="a op" id="tsx">TSX</div>
+                    <div class="a op" id="pha">PHA</div>
+                    <div class="a op" id="pla">PLA</div>
+                    <div class="a op" id="php">PHP</div>
+                    <div class="a op" id="plp">PLP</div>
+                    <div class="a op" id="stx">STX</div>
+                    <div class="a op" id="sty">STY</div>
+                </div>
+                <div id="args"></div>
+            </div>
+            <div id="register">
+                <div id="abcs">
+                    <div id="rega"><div class="label">A</div><div class="value"></div></div>
+                    <div id="regx"><div class="label">X</div><div class="value"></div></div>
+                    <div id="regy"><div class="label">Y</div><div class="value"></div></div>
+                    <div id="regs"><div class="label">S</div><div class="value"></div></div>
+                </div>
+                <div id="regpc"><div class="label">PC</div><div class="value"></div></div>
+                <div id="flags">
+                    <div id="f0"><div class="label">N</div><div class="value"></div></div>
+                    <div id="f1"><div class="label">V</div><div class="value"></div></div>
+                    <div id="f2"><div class="label">&nbsp;</div><div class="value"></div></div>
+                    <div id="f3"><div class="label">B</div><div class="value"></div></div>
+                    <div id="f4"><div class="label">D</div><div class="value"></div></div>
+                    <div id="f5"><div class="label">I</div><div class="value"></div></div>
+                    <div id="f6"><div class="label">Z</div><div class="value"></div></div>
+                    <div id="f7"><div class="label">C</div><div class="value"></div></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="central">
+            <div id="code"><div id="lines"></div></div>
+            <div id="exercice"></div>
+        </div>
+
+        <div id="screens">
+            <div id="output"><pre></pre></div>
+            <div id="canvas"><canvas></canvas></div>
+            <div id="keypad">
+                <img src="res/img/control/keypad01.svg"/>
+                <div id="left"></div>
+                <div id="down"></div>
+                <div id="right"></div>
+                <div id="up"></div>
+                <div id="a" class="b"></div>
+                <div id="b" class="b"></div>
+            </div>
+            <div id="controls">
+                <div id="debug"></div>
+                <div id="buttons">
+                    <div id="speed"><img src="res/img/control/x3.svg"/></div>
+                    <div id="stop"><img src="res/img/control/stop.svg"/></div>
+                    <div id="play"><img src="res/img/control/play.svg"/></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="intro" ontouchstart="$(this).closest('.asm').asm('next');event.preventDefault();"
+                    onclick="$(this).closest('.asm').asm('next');"><div>
+        <div class="text">
+            <h1 id="label">assembler</h1>
+            <div id="guide">
+            </div>
+        </div>
+    </div></div>
+
+</div>
+
