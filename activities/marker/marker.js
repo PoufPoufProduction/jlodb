@@ -6,6 +6,7 @@
         template    : "template.html",                          // Activity's html template
         css         : "style.css",                              // Activity's css style sheet
         lang        : "en-US",                                  // Current localization
+        font        : 1,                                        // The font-size multiplicator
         debug       : false                                     // Debug mode
     };
 
@@ -116,8 +117,8 @@
                     // HANDLE SEPARATOR
                     tnext = t;
                     for (var k in settings.questions) {
-                        if (text[j][begin]==settings.questions[k].comma) { beginx++; t = (t==k)?-1:k; tnext = t;}
-                        if (text[j][end-1]==settings.questions[k].comma) { endx--; tnext = (t==k)?-1:k; }
+                        if (text[j][begin]==settings.questions[k].s) { beginx++; t = (t==k)?-1:k; tnext = t;}
+                        if (text[j][end-1]==settings.questions[k].s) { endx--; tnext = (t==k)?-1:k; }
                     }
 
                     if (begin) { content+=helpers.word($this,text[j][0], 9); }
@@ -130,7 +131,7 @@
             }
             helpers.color($this,0);
 
-            $this.find("#data").html(content);
+            $this.find("#data").css("font-size",settings.font+"em").html(content);
             $("body").bind("mouseup", function() { helpers.mouseup($this); })
                      .bind("touchend", function() { helpers.mouseup($this); });
 
