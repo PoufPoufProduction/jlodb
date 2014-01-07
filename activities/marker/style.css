@@ -1,12 +1,13 @@
 .marker                                 { background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat;}
-.marker div#intro>div                   { background-image:url("../../res/img/banners/marker.svg"); }
-.marker div#intro .text                 { width:48%; float:right; }
-.marker div#intro .text h1              { text-align:right; padding-right:.5em; }
-.marker div#intro .text #guide          { margin:.5em; }
-.marker div#board                       { margin-top:.5em; height:15.5em; display:none;}
-.marker div#data                        { font-size:1em; width:96%; overflow:hidden; background-repeat:repeat;
-                                          border:1px solid black; border-width:1px 0 1px 0; text-align:justify; padding:2px 4% 2px 4%;
-                                          background-image:url("../../res/img/background/book02.svg"); height:70%; line-height:1.1em; }
+.marker div#splash>div                  { background-image:url("../../res/img/banners/marker.svg"); }
+.marker div#splash .text                { width:48%; float:right; }
+.marker div#splash .text h1             { text-align:right; padding-right:.5em; }
+.marker div#splash .text #guide         { margin:.5em; }
+.marker div#board                       { margin-top:.5em; height:12em; display:none;}
+.marker div#data                        { width:15em; height:8em; overflow:hidden; background-repeat:repeat;
+                                          border:1px solid black; border-width:1px 0 1px 0; padding:0.1em 0.5em 0.1em 0.5em;
+                                          background-image:url("../../res/img/background/book02.svg"); }
+.marker div#data>div                    { text-align:justify; line-height:1.1em; }
 .marker div#data p                      { margin:.2em 0; overflow:visible; }
 .marker div#data p span                 { display:inline-block; overflow:visible; }
 .marker div#data p span.wrong           { color:white; background-color:red !important;}
@@ -16,9 +17,9 @@
 .marker div#data p span.c1              { border-radius:.25em 0 0 .25em; }
 .marker div#data p span.c2              { border-radius:0 .25em .25em 0; }
 .marker div#data p span.c3              { border-radius:.25em; }
-.marker div#exercice                    { width:85%; height:25%; background-color:white; border-radius:.5em 0 0 .5em;
-                                          margin-top:.25em; margin-left:15%;}
-.marker div#exercice>div                { width:100%; background-color:white; padding:.05em 0; clear:both;}
+.marker div#exercice                    { width:19em; height:3.8em; background-color:white; border-radius:.5em;
+                                          margin-top:.25em; margin-left:15%; font-size:.7em;}
+.marker div#exercice>div                { background-color:white; padding:.05em 0; clear:both;}
 .marker div#exercice>div.odd            { background-color:#DDD; }
 .marker #exercice .color                { padding:.1em; border-radius:.25em; float:left; margin-left:.5em;}
 .marker #exercice .color.s              { background-color:black; }
@@ -26,10 +27,10 @@
 .marker #exercice #c1 .color>div        { background-color:blue;  }
 .marker #exercice #c2 .color>div        { background-color:red;}
 .marker #exercice #c3 .color>div        { background-color:green; }
-.marker #exercice .legend               { margin-left:.25em; float:left; width:85%; }
+.marker #exercice .legend               { margin-left:.25em; float:left;  }
 .marker.e05 #exercice .legend           { margin-left:.5em; font-size:.5em; }
-.marker div#submit                      { font-size:2.5em; height:1em;width:1em; cursor:pointer;
-                                          position:absolute; top:5.46em; left:0em; }
+.marker div#submit                      { font-size:1.5em; height:1em;width:1em; cursor:pointer;
+                                          position:absolute; top:7em; left:0em; z-index:3; }
 .marker div#submit>img                  { display:none; }
 .marker div#submit #subvalid            { display:inline; }
 .marker div#submit.good #subvalid       { display:none; }
@@ -37,7 +38,7 @@
 .marker div#submit.good #subgood        { display:inline; }
 .marker div#submit.wrong #subwrong      { display:inline; }
 
-.marker div#valid                       { position:absolute; background-color:rgba(255,255,255,0.8);
-                                          display:none; top:1em; left:3em; font-size:2.2em; border-radius:.25em; }
+.marker div#valid                       { font-size:1.6em; position:absolute; background-color:rgba(255,255,255,0.8);
+                                          display:none; top:1em; left:3em; border-radius:.25em; }
 .marker div#valid div.button            { width:1.8em; height:1.8em; margin:.1em; cursor:pointer; }
 

@@ -19,7 +19,6 @@
         color       : "black",                  // The current color
         translate   : [0,0],                    // The translation values
         style       : false,                    // The style changing is disable
-        nosplash    : true,
         debug       : true                      // Debug mode
     };
 
@@ -42,6 +41,84 @@
         end: function($this) {
             var settings = helpers.settings($this);
             settings.context.onQuit({'status':'success','score':settings.score});
+        },
+        loader: {
+            css: function($this) {
+                var settings = helpers.settings($this), cssAlreadyLoaded = false, debug = "";
+                if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
+
+                if (settings.context.onload) { settings.context.onload(true); }
+
+                $("head").find("link").each(function() {
+                    if ($(this).attr("href").indexOf("activities/"+settings.name+"/"+settings.css) != -1) { cssAlreadyLoaded = true; }
+                });
+
+                if(cssAlreadyLoaded) { helpers.loader.template($this); }
+                else {
+                    $("head").append("<link>");
+                    var css = $("head").children(":last");
+                    var csspath = "activities/"+settings.name+"/"+settings.css+debug;
+
+                    css.attr({ rel:  "stylesheet", type: "text/css", href: csspath }).ready(
+                        function() { helpers.loader.template($this); });
+                }
+            },
+            template: function($this) {
+                var settings = helpers.settings($this), debug = "";
+                if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
+
+                // Load the template
+                var templatepath = "activities/"+settings.name+"/"+settings.template+debug;
+                $this.load( templatepath, function(response, status, xhr) {
+                    if (status=="error") {
+                        settings.context.onquit({'status':'error', 'statusText':templatepath+": "+xhr.status+" "+xhr.statusText});
+                    }
+                    else { helpers.loader.build($this); }
+                });
+            },
+            build: function($this) {
+                var settings = helpers.settings($this);
+
+                // SEND THE ONLOAD CALLBACK
+                if (settings.context.onLoad) { settings.context.onLoad(false); }
+
+                // RESIZE THE TEMPLATE
+                $this.css("font-size", Math.floor($this.height()/12)+"px");
+
+                // HANDLE THE BUTTONS
+                if (settings.available) {
+                    $this.find(".action").addClass("disable");
+                    for (var i in settings.available) { $this.find("#"+settings.available[i]).removeClass("disable"); }
+                }
+                if (!settings.style) { $this.find(".simple").addClass("disable"); }
+                if (settings.selected) {
+                    settings.controls.action = settings.selected;
+                    settings.controls.mask = settings.mask[settings.controls.action][0];
+                }
+
+                // MANAGE THE OBJECTIVES
+                $this.find("#statement").html(settings.statement);
+                for (var i in settings.labels) {
+                    $this.find("#objectives").append("<tr><td><div class='icon' style='cursor:default;'>"+
+                        "<img src='res/img/icon/cancel.svg' alt='x'/></div></td><td>&nbsp;"+
+                        settings.labels[i]+"</td></tr>");
+                }
+
+                // LOCALE HANDLING
+                $this.find("h1#label").html(settings.label);
+                if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
+
+                // LOAD SVG
+                var debug = "";
+                if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
+                $this.find("#board").svg();
+                settings.svg = $this.find("#board").svg('get');
+                settings.svg.load(
+                    'res/img/'+settings.filename + debug, { addTo: true, changeSize: true, onLoad:function() { helpers.build($this); }
+                });
+
+                if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+            }
         },
         // Check if a new element matches an objective
         check: function($this, elt) {
@@ -669,90 +746,6 @@
                 else { $("#text", settings.svg.root()).text(settings.text); }
             }
         },
-        // HANDLE THE ELEMENTS SIZES AND SHOW THE ACTIVITY
-        resize: function($this) {
-            var settings = helpers.settings($this);
-
-            // SEND THE ONLOAD CALLBACK
-            if (settings.context.onLoad) { settings.context.onLoad(false); }
-
-            // RESIZE THE TEMPLATE
-            $this.css("font-size", Math.floor($this.height()/12)+"px");
-
-            // HANDLE THE BUTTONS
-            if (settings.available) {
-                $this.find(".action").addClass("disable");
-                for (var i in settings.available) { $this.find("#"+settings.available[i]).removeClass("disable"); }
-            }
-            if (!settings.style) { $this.find(".simple").addClass("disable"); }
-            if (settings.selected) {
-                settings.controls.action = settings.selected;
-                settings.controls.mask = settings.mask[settings.controls.action][0];
-            }
-
-            // MANAGE THE OBJECTIVES
-            $this.find("#statement").html(settings.statement);
-            for (var i in settings.labels) {
-                $this.find("#objectives").append("<tr><td><div class='icon' style='cursor:default;'>"+
-                    "<img src='res/img/icon/cancel.svg' alt='x'/></div></td><td>&nbsp;"+
-                    settings.labels[i]+"</td></tr>");
-            }
-
-            // LOCALE HANDLING
-            $this.find("h1#label").html(settings.label);
-            if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
-
-            // LOAD SVG
-            var debug = "";
-            if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
-            $this.find("#board").svg();
-            settings.svg = $this.find("#board").svg('get');
-            settings.svg.load(
-                'res/img/'+settings.filename + debug, { addTo: true, changeSize: true, onLoad:function() { helpers.build($this); }
-            });
-
-            // Handle spash panel
-            if (settings.nosplash) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
-            else                   { $this.find("#intro").show(); }
-
-        },
-        // Load the different elements of the activity
-        load: function($this) {
-            var settings = helpers.settings($this);
-            var debug = "";
-            if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
-
-            // Send the onLoad callback
-            if (settings.context.onLoad) { settings.context.onLoad(true); }
-
-            // Load the template
-            var templatepath = "activities/"+settings.name+"/"+settings.template+debug;
-            $this.load( templatepath, function(response, status, xhr) {
-                if (status=="error") {
-                    settings.context.onQuit({'status':'error', 'statusText':templatepath+": "+xhr.status+" "+xhr.statusText});
-                }
-                else {
-                    var cssAlreadyLoaded = false;
-                    $("head").find("link").each(function() {
-                        if ($(this).attr("href").indexOf("activities/"+settings.name+"/"+settings.css) != -1)
-                            { cssAlreadyLoaded = true; }
-                    });
-
-                    if(cssAlreadyLoaded) {
-                        helpers.resize($this);
-                    }
-                    else {
-                        // Load the css
-                        $("head").append("<link>");
-                        var css = $("head").children(":last");
-                        var csspath = "activities/"+settings.name+"/"+settings.css+debug;
-                        css.attr({ rel:  "stylesheet", type: "text/css", href: csspath }).ready(function() {
-                            helpers.resize($this);
-                        });
-                    }
-                }
-            });
-        },
         // compute the score
         score:function(number, reference) {
             var ret = 5 - Math.floor(.5+(number-reference)/2);
@@ -826,7 +819,7 @@
                         $this.removeClass();
                         if ($settings.class) { $this.addClass($settings.class); }
                         helpers.settings($this.addClass(defaults.name), $settings);
-                        helpers.load($this);
+                        helpers.loader.css($this);
                     }
                 });
             },
@@ -871,7 +864,7 @@
             },
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                $(this).find("#intro").hide();
+                $(this).find("#splash").hide();
 
                 $(this).find("#board").bind("mousemove", function(e) { helpers.mousemove($this, e); });
                 $(this).find("#board").bind("mousedown", function() { helpers.mousedown($this); });

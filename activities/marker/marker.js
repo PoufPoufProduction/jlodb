@@ -30,6 +30,105 @@
             var settings = helpers.settings($this);
             settings.context.onQuit({'status':'success','score':settings.score});
         },
+        loader: {
+            css: function($this) {
+                var settings = helpers.settings($this), cssAlreadyLoaded = false, debug = "";
+                if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
+
+                if (settings.context.onload) { settings.context.onload(true); }
+
+                $("head").find("link").each(function() {
+                    if ($(this).attr("href").indexOf("activities/"+settings.name+"/"+settings.css) != -1) { cssAlreadyLoaded = true; }
+                });
+
+                if(cssAlreadyLoaded) { helpers.loader.template($this); }
+                else {
+                    $("head").append("<link>");
+                    var css = $("head").children(":last");
+                    var csspath = "activities/"+settings.name+"/"+settings.css+debug;
+
+                    css.attr({ rel:  "stylesheet", type: "text/css", href: csspath }).ready(
+                        function() { helpers.loader.template($this); });
+                }
+            },
+            template: function($this) {
+                var settings = helpers.settings($this), debug = "";
+                if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
+
+                // Load the template
+                var templatepath = "activities/"+settings.name+"/"+settings.template+debug;
+                $this.load( templatepath, function(response, status, xhr) {
+                    if (status=="error") {
+                        settings.context.onquit({'status':'error', 'statusText':templatepath+": "+xhr.status+" "+xhr.statusText});
+                    }
+                    else { helpers.loader.build($this); }
+                });
+            },
+            build: function($this) {
+                var settings = helpers.settings($this);
+
+                // Send the onLoad callback
+                if (settings.context.onLoad) { settings.context.onLoad(false); }
+                $this.css("font-size", Math.floor($this.height()/12)+"px");
+
+                //
+                $this.find("#exercice>div").hide();
+                for (var i in settings.questions) {
+                    $this.find("#exercice #c"+(parseInt(i)+1)+" .legend").html(settings.questions[i].label);
+                    $this.find("#exercice #c"+(parseInt(i)+1)).show();
+                }
+
+                var content ="";
+                var reg = new RegExp("[ ]", "g");
+                var t = -1, tnext;
+
+                // PARSE EACH PARAGRAPH
+                for (var i=0; i<settings.text.length; i++) {
+                    content+="<p>";
+                    var text = settings.text[i].split(reg);
+                    // BROWSE EACH WORD
+                    for (var j=0; j<text.length; j++) {
+                        // ADD A SPACE
+                        if (j) content+=helpers.word($this,"&nbsp;", 9);
+
+                        // HANDLE PUNCTUATION
+                        var begin = 0, end = text[j].length;
+                        if (text[j][0]=='"') { begin=1; }
+
+                        for (var k=end; k>begin; k--) {
+                            if ((text[j][k-1]=='.')||(text[j][k-1]==',')||(text[j][k-1]==':')||(text[j][k-1]==';')||(text[j][k-1]=='"'))
+                                { end=k-1; }
+                            else { k=begin; }
+                        }
+                        var endx = end, beginx = begin;
+                        // HANDLE SEPARATOR
+                        tnext = t;
+                        for (var k in settings.questions) {
+                            if (text[j][begin]==settings.questions[k].s) { beginx++; t = (t==k)?-1:k; tnext = t;}
+                            if (text[j][end-1]==settings.questions[k].s) { endx--; tnext = (t==k)?-1:k; }
+                        }
+
+                        if (begin) { content+=helpers.word($this,text[j][0], 9); }
+                        content+=helpers.word($this,text[j].substring(beginx,endx), t);
+                        if (end!=text[j].length) { content+=helpers.word($this,text[j].substring(end), 9); }
+
+                        t = tnext;
+                    }
+                    content+="</p>";
+                }
+                helpers.color($this,0);
+
+                $this.find("#data>div").css("font-size",settings.font+"em").html(content);
+                $("body").bind("mouseup", function() { helpers.mouseup($this); })
+                        .bind("touchend", function() { helpers.mouseup($this); });
+
+                // Locale handling
+                $this.find("h1#label").html(settings.label);
+                $this.find("#exercice").html(settings.exercice);
+                if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
+                if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+            }
+        },
         word: function($this, _word,_t) {
             var settings = helpers.settings($this);
             var ret = "<span id='s"+(settings.it++)+"' ";
@@ -72,114 +171,6 @@
                     if (corner) { $elt.addClass("c"+corner); }
                 }
             }
-        },
-        // Handle the elements sizes and show the activity
-        resize: function($this) {
-            var settings = helpers.settings($this);
-
-            // Send the onLoad callback
-            if (settings.context.onLoad) { settings.context.onLoad(false); }
-
-
-            $this.css("font-size", Math.floor($this.height()/16)+"px");
-
-            //
-            $this.find("#exercice>div").hide();
-            for (var i in settings.questions) {
-                $this.find("#exercice #c"+(parseInt(i)+1)+" .legend").html(settings.questions[i].label);
-                $this.find("#exercice #c"+(parseInt(i)+1)).show();
-            }
-
-
-            var content ="";
-            var reg = new RegExp("[ ]", "g");
-            var t = -1, tnext;
-
-            // PARSE EACH PARAGRAPH
-            for (var i=0; i<settings.text.length; i++) {
-                content+="<p>";
-                var text = settings.text[i].split(reg);
-                // BROWSE EACH WORD
-                for (var j=0; j<text.length; j++) {
-                    // ADD A SPACE
-                    if (j) content+=helpers.word($this,"&nbsp;", 9);
-
-                    // HANDLE PUNCTUATION
-                    var begin = 0, end = text[j].length;
-                    if (text[j][0]=='"') { begin=1; }
-
-                    for (var k=end; k>begin; k--) {
-                        if ((text[j][k-1]=='.')||(text[j][k-1]==',')||(text[j][k-1]==':')||(text[j][k-1]==';')||(text[j][k-1]=='"'))
-                             { end=k-1; }
-                        else { k=begin; }
-                    }
-                    var endx = end, beginx = begin;
-                    // HANDLE SEPARATOR
-                    tnext = t;
-                    for (var k in settings.questions) {
-                        if (text[j][begin]==settings.questions[k].s) { beginx++; t = (t==k)?-1:k; tnext = t;}
-                        if (text[j][end-1]==settings.questions[k].s) { endx--; tnext = (t==k)?-1:k; }
-                    }
-
-                    if (begin) { content+=helpers.word($this,text[j][0], 9); }
-                    content+=helpers.word($this,text[j].substring(beginx,endx), t);
-                    if (end!=text[j].length) { content+=helpers.word($this,text[j].substring(end), 9); }
-
-                    t = tnext;
-                }
-                content+="</p>";
-            }
-            helpers.color($this,0);
-
-            $this.find("#data").css("font-size",settings.font+"em").html(content);
-            $("body").bind("mouseup", function() { helpers.mouseup($this); })
-                     .bind("touchend", function() { helpers.mouseup($this); });
-
-            // Locale handling
-            $this.find("h1#label").html(settings.label);
-            $this.find("#exercice").html(settings.exercice);
-            if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
-
-            // Handle spash panel
-            if (settings.nosplash) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
-            else                   { $this.find("#intro").show(); }
-
-        },
-        // Load the different elements of the activity
-        load: function($this) {
-            var settings = helpers.settings($this);
-            var debug = "";
-            if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
-
-            // Send the onLoad callback
-            if (settings.context.onLoad) { settings.context.onLoad(true); }
-
-            // Load the template
-            var templatepath = "activities/"+settings.name+"/"+settings.template+debug;
-            $this.load( templatepath, function(response, status, xhr) {
-                if (status=="error") {
-                    settings.context.onQuit({'status':'error', 'statusText':templatepath+": "+xhr.status+" "+xhr.statusText});
-                }
-                else {
-                    var cssAlreadyLoaded = false;
-                    $("head").find("link").each(function() {
-                        if ($(this).attr("href").indexOf("activities/"+settings.name+"/"+settings.css) != -1) { cssAlreadyLoaded = true; }
-                    });
-
-                    if(cssAlreadyLoaded) {
-                        helpers.resize($this);
-                    }
-                    else {
-                        // Load the css
-                        $("head").append("<link>");
-                        var css = $("head").children(":last");
-                        var csspath = "activities/"+settings.name+"/"+settings.css+debug;
-                        css.attr({ rel:  "stylesheet", type: "text/css", href: csspath }).ready(function() {
-                            helpers.resize($this);
-                        });
-                    }
-                }
-            });
         }
     };
 
@@ -219,7 +210,7 @@
                         $this.removeClass();
                         if ($settings.class) { $this.addClass($settings.class); }
                         helpers.settings($this.addClass(defaults.name), $settings);
-                        helpers.load($this);
+                        helpers.loader.css($this);
                     }
                 });
             },
@@ -301,7 +292,7 @@
                 }
             },
             next: function() {
-                $(this).find("#intro").hide();
+                $(this).find("#splash").hide();
                 $(this).find("#board").show();
             },
             valid: function() {

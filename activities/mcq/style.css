@@ -1,11 +1,11 @@
-.mcq                                    { background-color:blue; }
+.mcq                                    {  }
 .mcq>div                                { background:url("../../res/img/background/book04.svg") repeat; height:100%; }
 .mcq .icon                              { width:1em; height:1em; display:inline-block; }
-.mcq div#intro>div                      { background-image:url("../../res/img/banners/mcq.svg"); }
-.mcq div#intro .text                    { font-size:.7em; width:60%; float:right; }
-.mcq div#intro .text #guide             { font-size:1.2em; margin:.5em 1em .5em 0; }
-.mcq div#submit                         { font-size:2.5em; height:1em;width:1em; cursor:pointer;
-                                          position:absolute; top:5.46em; left:0em; z-index:3; }
+.mcq div#splash>div                     { background-image:url("../../res/img/banners/mcq.svg"); }
+.mcq div#splash .text                   { font-size:.7em; width:60%; float:right; }
+.mcq div#splash .text #guide            { font-size:1.2em; margin:.5em 1em .5em 0; }
+.mcq div#submit                         { font-size:1.5em; height:1em;width:1em; cursor:pointer;
+                                          position:absolute; top:7em; left:0em; z-index:3; }
 .mcq div#submit>img                     { display:none; }
 .mcq div#submit #subvalid               { display:inline; }
 .mcq div#submit.good #subvalid          { display:none; }
@@ -13,9 +13,16 @@
 .mcq div#submit.good #subgood           { display:inline; }
 .mcq div#submit.wrong #subwrong         { display:inline; }
 .mcq div#board                          { overflow:visible; }
-.mcq div#board #question                { height:10.5em; width:105%; position:relative; }
-.mcq div#board #question #text          { margin-top:6em; background:url("../../res/img/background/book02.svg") repeat;
-                                          height:3.2em; padding:0 1em; }
+.mcq div#board #question                { height:7.5em; width:100%; position:relative; overflow:visible; }
+.mcq div#board #question #bg            { background:url("../../res/img/background/book02.svg") repeat; }
+.mcq div#board #question #fgl           { position:absolute; top:0; left:0; width:16em; height:12em; }
+.mcq       div#board #question .format  { width:100%; height:3em; position:absolute; top:3em; }
+.mcq.up    div#board #question          { height:4em; }
+.mcq.up    div#board #question .format  { top:0; }
+.mcq.large div#board #question .format  { top:2em; height:4.5em; }
+.mcq.full  div#board #question .format  { top:0em; height:7em; }
+.mcq div#board #question #text          { padding:0 1em; width:15em; }
+.mcq div#board #question #text>div      { font-size:.8em; }
 .mcq div#board #question #text .f2      { font-size:2em; }
 .mcq div#board #question #text .f3      { font-size:3em; }
 .mcq div#board #question #text .f4      { font-size:4em; }
@@ -23,31 +30,22 @@
                                           font-size:.7em; font-style:italic; border:1px solid black; border-radius:.5em;
                                           text-align:justify; background-color:rgba(255,255,255,0.5);}
 
-.mcq div#board #question #fgl           { position:absolute; top:0; left:0; width:10em; height:10em; }
 
-.mcq div#board #interactive             { height:6em; overflow:visible;}
+.mcq div#board #interactive             { height:10em; overflow:visible; position:relative;}
 
-.mcq div#board #responses               { height:4em; width:105%; overflow:visible; }
+.mcq div#board #responses               { font-size:.8em; height:6em; padding-left:1em; width:100%; overflow:visible; }
 .mcq div#board #responses>div>div       { margin:0 auto; }
-.mcq div#board #responses>div           { display:inline-block; background-color:rgba(255,252,246,0.8);
+.mcq    div#board #responses>div        { display:inline-block; background-color:rgba(255,252,246,0.8);
                                           overflow:hidden; text-align:center; cursor:pointer; font-size:1em; margin:.2em;
-                                          border-radius:.5em; padding:0 .1em;}
-.mcq div#board #responses.nb3>div       { width:3em; font-size:2em; }
-.mcq div#board #responses.nb6>div       { width:6.5em; }
-.mcq div#board #responses.nb4>div       { width:10em; }
-.mcq div#board #responses.nb2>div       { width:4.75em; font-size:2em; }
-.mcq div#board #responses.nb1>div       { width:10em; font-size:2em; }
+                                          border-radius:.5em; padding:0 .1em; height:2em;}
+.mcq.up div#board #responses>div        { height:3em; }
+.mcq div#board #responses.nb1>div       { width:17em; }
+.mcq div#board #responses.nb2>div       { width:8.5em; }
+.mcq div#board #responses.nb3>div       { width:5.5em; }
+.mcq div#board #responses.nb4>div       { width:8.5em; }
+.mcq div#board #responses.nb6>div       { width:5.5em; }
 
 .mcq div#board #responses>div.selected  { background-color:rgba(84,137,184,0.9); }
 
-.mcq.t0 div#board #question             { height:5.5em; }
-.mcq.t0 div#board #question #text       { margin-top:1em; height:3.2em; }
-.mcq.t2 div#board #question #text       { margin-top:3em; height:6.2em; }
-.mcq.t3 div#board #question #text       { margin-top:0em; height:9.2em; }
 
-.mcq.l10 div#board #question #text      { padding-left:10%; }
-.mcq.l20 div#board #question #text      { padding-left:20%; }
-.mcq.l30 div#board #question #text      { padding-left:30%; }
-.mcq.l40 div#board #question #text      { padding-left:40%; }
-.mcq.l50 div#board #question #text      { padding-left:50%; }
 

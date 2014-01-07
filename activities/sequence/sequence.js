@@ -37,6 +37,155 @@
             var settings = helpers.settings($this);
             settings.context.onQuit({'status':'success', 'score':settings.score});
         },
+        loader: {
+            css: function($this) {
+                var settings = helpers.settings($this), cssAlreadyLoaded = false, debug = "";
+                if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
+
+                if (settings.context.onload) { settings.context.onload(true); }
+
+                $("head").find("link").each(function() {
+                    if ($(this).attr("href").indexOf("activities/"+settings.name+"/"+settings.css) != -1) { cssAlreadyLoaded = true; }
+                });
+
+                if(cssAlreadyLoaded) { helpers.loader.template($this); }
+                else {
+                    $("head").append("<link>");
+                    var css = $("head").children(":last");
+                    var csspath = "activities/"+settings.name+"/"+settings.css+debug;
+
+                    css.attr({ rel:  "stylesheet", type: "text/css", href: csspath }).ready(
+                        function() { helpers.loader.template($this); });
+                }
+            },
+            template: function($this) {
+                var settings = helpers.settings($this), debug = "";
+                if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
+
+                // Load the template
+                var templatepath = "activities/"+settings.name+"/template/"+settings.template+debug;
+                $this.load( templatepath, function(response, status, xhr) {
+                    if (status=="error") {
+                        settings.context.onquit({'status':'error', 'statusText':templatepath+": "+xhr.status+" "+xhr.statusText});
+                    }
+                    else { helpers.loader.svg($this); }
+                });
+            },        // Load the svg if require
+            svg:function($this) {
+                var settings = helpers.settings($this);
+                if (settings.input && settings.input.svg) {
+                    var debug = "";
+                    if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
+                    var elt= $("<div id='svg' style='width:100%; height:100%'></div>").appendTo($this.find("#keypad"));
+                    elt.svg();
+                    settings.svg = elt.svg('get');
+                    settings.svg.load( settings.input.svg + debug,
+                        {addTo: true, changeSize: true, onLoad:function() {
+                            if (settings.input.class) { $(settings.svg.root()).attr("class",settings.input.class); }
+                            for (var i in settings.values) {
+                                var vData = settings.values[i][1];
+                                if ($.isArray(vData)) {
+                                    for (var j in vData) {
+                                        var $svg = $("#"+vData[j], settings.svg.root());
+                                        var vClass = $svg.attr("class");
+                                        if (!vClass || vClass.indexOf("interactive")<0) {
+                                            if (vClass) { vClass+=" interactive"; } else { vClass="interactive"; }
+                                            $svg.bind("click touchstart", function(event) {
+                                                        $this.sequence('key',this.id); event.preventDefault(); })
+                                                .css("cursor", "pointer").attr("class",vClass);
+                                        }
+                                    }
+                                }
+                                else {
+                                    var $svg = $("#"+vData, settings.svg.root());
+                                    var vClass = $svg.attr("class");
+                                    if (!vClass || vClass.indexOf("interactive")<0) {
+                                        if (vClass) { vClass+=" interactive"; } else { vClass="interactive"; }
+                                        $svg.bind("click touchstart",function(event) {
+                                                    $this.sequence('key',this.id); event.preventDefault();})
+                                            .css("cursor", "pointer").attr("class",vClass);
+                                    }
+                                }
+                            }
+                            helpers.loader.build($this);
+                        }
+                    });
+                }
+                else { helpers.loader.build($this); }
+            },
+            build: function($this) {
+                var settings = helpers.settings($this);
+
+                // Build the response if need
+                if (settings.input && settings.input.values) {
+                    $this.find(".input").each( function(_index) {
+                        if (_index < settings.input.values.length) {
+                            var vLabel, vValue;
+                            if ($.isArray(settings.input.values[_index])) {
+                                vLabel = settings.input.values[_index][0];
+                                vValue = settings.input.values[_index][1];
+                            }
+                            else {
+                                vLabel = settings.input.values[_index];
+                                vValue = settings.input.values[_index];
+                            }
+                            $(this).html(vLabel).bind("click touchstart",function(event) {
+                                $this.sequence('click',vValue); event.preventDefault(); });
+                            if (settings.input.css) { for (var i in settings.input.css) { $(this).css(i, settings.input.css[i]); } }
+                        }
+                        else { $(this).hide(); }
+                    });
+                }
+
+                // Build the questions
+                var vLast = -1, vNew;
+                var vRegexp = (settings.regexp&&settings.regexp.input)?new RegExp(settings.regexp.input.from, "g"):0;
+                var $ul = $this.find("#values ul").hide();
+
+                // Fill the UL list
+                for (var i=0; i<settings.number; i++) {
+                    var $li = $("<li></li>").appendTo($ul), vNewValue, vValue = { question:0, response:0};
+
+                    // Get the question
+                    if (settings.gen) { vNewValue = eval('('+settings.gen+')')(); }
+                    else {
+                        do  {
+                            vNew = (settings.shuffle)?Math.floor(Math.random()*settings.values.length):i;
+                        }
+                        while ((settings.values.length>2)&&(vNew==vLast));
+                        vNewValue = settings.values[vNew];
+                    }
+
+                    // The question may be an array [question, response], otherwise response is evaluated from the question
+                    if ($.isArray(vNewValue))   { vValue.question = vNewValue[0]; vValue.response = vNewValue[1]; }
+                    else                        { vValue.question = vNewValue; vValue.response = eval(vNewValue); }
+
+                    // Fill the dom element, use a regexp if needed
+                    if (vRegexp)    { $li.html(vValue.question.replace(vRegexp, settings.regexp.input.to)); }
+                    else            { $li.html(vValue.question); }
+
+                    // Store the question
+                    settings.questions.push(vValue);
+                    vLast = vNew;
+                }
+
+                // Handle some elements
+                var vScreen = $this.find("#screen");
+                if (vScreen) { vScreen.html("&nbsp;"); }
+                if (!settings.time) { $this.find("#time").html("&nbsp;"); }
+                else                { $this.find("#time").html(helpers.formattime(settings.time*settings.number)); }
+
+                if (settings.context.onLoad) { settings.context.onLoad(false); }
+                 $this.css("font-size", Math.floor($this.width()/10)+"px");
+
+                // Locale handling
+                $this.find("h1#label").html(settings.label);
+                $this.find("#comment").html(settings.comment);
+                if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
+
+                if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+            }
+        },
         formattime: function(_val) {
             var vS = _val%60;
             var vM = Math.floor(_val/60)%60;
@@ -69,176 +218,6 @@
             $($this.find("#values li").get(settings.it)).addClass("select");
             if (settings.screenc) { $this.find("#screen").html("&nbsp;"); }
             setTimeout(function() { helpers.hidefx($this); }, 200 );
-        },
-        // Handle the elements sizes and show the activity
-        resize: function($this) {
-            var settings = helpers.settings($this);
-
-            // Send the onLoad callback
-            if (settings.context.onLoad) { settings.context.onLoad(false); }
-
-            $this.css("font-size", Math.floor($this.width()/10)+"px");
-
-            // Locale handling
-            $this.find("h1#label").html(settings.label);
-            $this.find("#comment").html(settings.comment);
-            if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
-
-            // Handle spash panel
-            if (settings.nosplash) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
-            else                   { $this.find("#intro").show(); }
-
-        },
-        // Add callback to the svg elements
-        buildsvg: function($this) {
-            var settings = helpers.settings($this);
-            if (settings.input.class) { $(settings.svg.root()).attr("class",settings.input.class); }
-            for (var i in settings.values) {
-                var vData = settings.values[i][1];
-                if ($.isArray(vData)) {
-                    for (var j in vData) {
-                        var $svg = $("#"+vData[j], settings.svg.root());
-                        var vClass = $svg.attr("class");
-                        if (!vClass || vClass.indexOf("interactive")<0) {
-                            if (vClass) { vClass+=" interactive"; } else { vClass="interactive"; }
-                            $svg.bind("click touchstart", function(event) {
-                                        $this.sequence('key',this.id); event.preventDefault(); })
-                                .css("cursor", "pointer").attr("class",vClass);
-                        }
-                    }
-                }
-                else {
-                    var $svg = $("#"+vData, settings.svg.root());
-                    var vClass = $svg.attr("class");
-                    if (!vClass || vClass.indexOf("interactive")<0) {
-                        if (vClass) { vClass+=" interactive"; } else { vClass="interactive"; }
-                        $svg.bind("click touchstart",function(event) {
-                                    $this.sequence('key',this.id); event.preventDefault();})
-                            .css("cursor", "pointer").attr("class",vClass);
-                    }
-                }
-            }
-        },
-        // Build the questions
-        build: function($this) {
-            var settings = helpers.settings($this);
-
-            // Build the response if need
-            if (settings.input && settings.input.values) {
-                $this.find(".input").each( function(_index) {
-                    if (_index < settings.input.values.length) {
-                        var vLabel, vValue;
-                        if ($.isArray(settings.input.values[_index])) {
-                            vLabel = settings.input.values[_index][0];
-                            vValue = settings.input.values[_index][1];
-                        }
-                        else {
-                            vLabel = settings.input.values[_index];
-                            vValue = settings.input.values[_index];
-                        }
-                        $(this).html(vLabel).bind("click touchstart",function(event) { $this.sequence('click',vValue); event.preventDefault(); });
-                        if (settings.input.css) { for (var i in settings.input.css) { $(this).css(i, settings.input.css[i]); } }
-                    }
-                    else { $(this).hide(); }
-                });
-            }
-
-            // Build the questions
-            var vLast = -1, vNew;
-            var vRegexp = (settings.regexp&&settings.regexp.input)?new RegExp(settings.regexp.input.from, "g"):0;
-            var $ul = $this.find("#values ul").hide();
-
-            // Fill the UL list
-            for (var i=0; i<settings.number; i++) {
-                var $li = $("<li></li>").appendTo($ul), vNewValue, vValue = { question:0, response:0};
-
-                // Get the question
-                if (settings.gen) { vNewValue = eval('('+settings.gen+')')(); }
-                else {
-                    do  {
-                        vNew = (settings.shuffle)?Math.floor(Math.random()*settings.values.length):i;
-                    }
-                    while ((settings.values.length>2)&&(vNew==vLast));
-                    vNewValue = settings.values[vNew];
-                }
-
-                // The question may be an array [question, response], otherwise response is evaluated from the question
-                if ($.isArray(vNewValue))   { vValue.question = vNewValue[0]; vValue.response = vNewValue[1]; }
-                else                        { vValue.question = vNewValue; vValue.response = eval(vNewValue); }
-
-                // Fill the dom element, use a regexp if needed
-                if (vRegexp)    { $li.html(vValue.question.replace(vRegexp, settings.regexp.input.to)); }
-                else            { $li.html(vValue.question); }
-
-                // Store the question
-                settings.questions.push(vValue);
-                vLast = vNew;
-            }
-
-            // Handle some elements
-            var vScreen = $this.find("#screen");
-            if (vScreen) { vScreen.html("&nbsp;"); }
-            if (!settings.time) { $this.find("#time").html("&nbsp;"); }
-            else                { $this.find("#time").html(helpers.formattime(settings.time*settings.number)); }
-
-            // Resize the activity
-            helpers.resize($this);
-        },
-        // Load the svg if require
-        loadex:function($this) {
-            var settings = helpers.settings($this);
-            // Load the svg if needed
-            if (settings.input && settings.input.svg) {
-                var debug = "";
-                if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
-                var elt= $("<div id='svg' style='width:100%; height:100%'></div>").appendTo($this.find("#keypad"));
-                elt.svg();
-                settings.svg = elt.svg('get');
-                settings.svg.load(
-                    settings.input.svg + debug,
-                    {addTo: true, changeSize: true, onLoad:function() {
-                        helpers.buildsvg($this);
-                        helpers.build($this);
-                    }
-                });
-            }
-            else { helpers.build($this); }
-        },
-        // Load the different elements of the activity
-        load: function($this) {
-            var settings = helpers.settings($this);
-            var debug = "";
-            if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
-
-            // Send the onLoad callback
-            if (settings.context.onLoad) { settings.context.onLoad(true); }
-
-            // Load the template
-            var templatepath = "activities/"+settings.name+"/template/"+settings.template+debug;
-            $this.load( templatepath, function(response, status, xhr) {
-                if (status=="error") {
-                    settings.context.onQuit({'status':'error', 'statusText':templatepath+": "+xhr.status+" "+xhr.statusText});
-                }
-                else {
-                    var cssAlreadyLoaded = false;
-                    $("head").find("link").each(function() {
-                        if ($(this).attr("href").indexOf("activities/"+settings.name+"/"+settings.css) != -1) { cssAlreadyLoaded = true; }
-                    });
-
-                    if(cssAlreadyLoaded) {
-                        helpers.loadex($this);
-                    }
-                    else {
-                        // Load the css
-                        $("head").append("<link>");
-                        var css = $("head").children(":last");
-                        var csspath = "activities/"+settings.name+"/"+settings.css+debug;
-                        css.attr({ rel:  "stylesheet", type: "text/css", href: csspath }).ready(function() {
-                            helpers.loadex($this);
-                        });
-                    }
-                }
-            });
         },
         // Handle the key input
         key: function($this, value, fromkeyboard) {
@@ -378,14 +357,14 @@
                         $this.removeClass();
                         if ($settings.class) { $this.addClass($settings.class); }
                         helpers.settings($this.addClass(defaults.name), $settings);
-                        helpers.load($this);
+                        helpers.loader.css($this);
                     }
                 });
             },
             next: function() {
                 var settings = $(this).data("settings");
                 // Hide instruction
-                $(this).find(".instruction").hide();
+                $(this).find("#splash").hide();
                 $(this).find("#values ul").show();
                 settings.interactive=true;
                 helpers.move($(this), true);

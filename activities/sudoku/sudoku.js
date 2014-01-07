@@ -31,96 +31,91 @@
             var settings = helpers.settings($this);
             settings.context.onQuit({'status':'success', 'score':settings.score});
         },
-        // Handle the elements sizes and show the activity
-        resize: function($this) {
-            var settings = helpers.settings($this);
+        loader: {
+            css: function($this) {
+                var settings = helpers.settings($this), cssAlreadyLoaded = false, debug = "";
+                if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
 
-            // Send the onLoad callback
-            if (settings.context.onLoad) { settings.context.onLoad(false); }
+                if (settings.context.onload) { settings.context.onload(true); }
 
-            // Resize the template
-            var fontSize= Math.floor(($this.height()-11)/27);
-            $this.css("font-size", fontSize+"px");
-            $this.find("#menu").css("font-size", Math.floor(($this.width()-$this.height())/6)+"px");
-            $this.find("#keypad").css("font-size", Math.floor(2*fontSize)+"px");
+                $("head").find("link").each(function() {
+                    if ($(this).attr("href").indexOf("activities/"+settings.name+"/"+settings.css) != -1) { cssAlreadyLoaded = true; }
+                });
 
-            // Update the grid
-            $this.find("div.border").each(function(index) {
-                var r = Math.floor(Math.random()*2)+1;
-                $(this).css("background-image", "url('res/img/svginventoryicons/background/border/square0"+r+".svg')");
-            });
-
-            $this.find("div.fill").each(function(index) {
-                var vY = Math.floor(index/9) + (Math.floor((index%9)/3)) - Math.floor((index%27)/9);
-                var vX = index%3 + 3*Math.floor((index%27)/9);
-                if (settings.data[vY][vX]>10) {
-                    $(this).text(settings.data[vY][vX]%10).addClass("final");
-                }
+                if(cssAlreadyLoaded) { helpers.loader.template($this); }
                 else {
-                    $(this).bind("click touchstart",function(event) {
-                        var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
-                              event.originalEvent.touches[0]:event;
-                        $(this).closest('.'+settings.name).sudoku('click', $(this), vEvent, { posX:vX, posY:vY });
-                        event.preventDefault();
-                    }).hover(
-                        function() {if (!settings.elt) { settings.elthover = $(this);} },
-                        function() {if (settings.elthover==$(this)) { settings.elthover=0; } });
+                    $("head").append("<link>");
+                    var css = $("head").children(":last");
+                    var csspath = "activities/"+settings.name+"/"+settings.css+debug;
 
-                    $(this).next().find("div").each(function(_index) { $(this).bind("click touchstart",function(event) {
-                        var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
-                              event.originalEvent.touches[0]:event;
-                        $(this).closest('.'+settings.name).sudoku('click', $(this), vEvent);
-                        event.preventDefault();
-                        }).hover(
-                            function() {if (!settings.elt) { settings.elthover = $(this); }},
-                            function() {if (settings.elthover==$(this)) { settings.elt=0; } });
-                    });
+                    css.attr({ rel:  "stylesheet", type: "text/css", href: csspath }).ready(
+                        function() { helpers.loader.template($this); });
                 }
-            });
+            },
+            template: function($this) {
+                var settings = helpers.settings($this), debug = "";
+                if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
 
-            // LOCALE HANDLING
-            $this.find("h1#label").html(settings.label);
-            if (settings.locale) {$.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); });}
+                // Load the template
+                var templatepath = "activities/"+settings.name+"/"+settings.template+debug;
+                $this.load( templatepath, function(response, status, xhr) {
+                    if (status=="error") {
+                        settings.context.onquit({'status':'error', 'statusText':templatepath+": "+xhr.status+" "+xhr.statusText});
+                    }
+                    else { helpers.loader.build($this); }
+                });
+            },
+            build: function($this) {
+                var settings = helpers.settings($this);
+                if (settings.context.onLoad) { settings.context.onLoad(false); }
 
-            // Handle spash panel
-            if (settings.nosplash) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
-            else                   { $this.find("#intro").show(); }
-        },
-        // Load the different elements of the activity
-        load: function($this) {
-            var settings = helpers.settings($this);
-            var debug = "";
-            if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
+                // Resize the template
+                var fontSize= Math.floor(($this.height()-11)/27);
+                $this.css("font-size", fontSize+"px");
+                $this.find("#menu").css("font-size", Math.floor(($this.width()-$this.height())/6)+"px");
+                $this.find("#keypad").css("font-size", Math.floor(2*fontSize)+"px");
 
-            // Send the onLoad callback
-            if (settings.context.onLoad) { settings.context.onLoad(true); }
+                // Update the grid
+                $this.find("div.border").each(function(index) {
+                    var r = Math.floor(Math.random()*2)+1;
+                    $(this).css("background-image", "url('res/img/svginventoryicons/background/border/square0"+r+".svg')");
+                });
 
-            // Load the template
-            var templatepath = "activities/"+settings.name+"/"+settings.template+debug;
-            $this.load( templatepath, function(response, status, xhr) {
-                if (status=="error") {
-                    settings.context.onQuit({'status':'error', 'statusText':templatepath+": "+xhr.status+" "+xhr.statusText});
-                }
-                else {
-                    var cssAlreadyLoaded = false;
-                    $("head").find("link").each(function() {
-                        if ($(this).attr("href").indexOf("activities/"+settings.name+"/"+settings.css) != -1) { cssAlreadyLoaded = true; }
-                    });
-
-                    if(cssAlreadyLoaded) {
-                        helpers.resize($this);
+                $this.find("div.fill").each(function(index) {
+                    var vY = Math.floor(index/9) + (Math.floor((index%9)/3)) - Math.floor((index%27)/9);
+                    var vX = index%3 + 3*Math.floor((index%27)/9);
+                    if (settings.data[vY][vX]>10) {
+                        $(this).text(settings.data[vY][vX]%10).addClass("final");
                     }
                     else {
-                    // Load the css
-                        $("head").append("<link>");
-                        var css = $("head").children(":last");
-                        var csspath = "activities/"+settings.name+"/"+settings.css+debug;
-                        css.attr({ rel:  "stylesheet", type: "text/css", href: csspath }).ready(function() {
-                            helpers.resize($this);
+                        $(this).bind("click touchstart",function(event) {
+                            var vEvent = (event && event.originalEvent &&
+                                          event.originalEvent.touches && event.originalEvent.touches.length)?
+                                event.originalEvent.touches[0]:event;
+                            $(this).closest('.'+settings.name).sudoku('click', $(this), vEvent, { posX:vX, posY:vY });
+                            event.preventDefault();
+                        }).hover(
+                            function() {if (!settings.elt) { settings.elthover = $(this);} },
+                            function() {if (settings.elthover==$(this)) { settings.elthover=0; } });
+
+                        $(this).next().find("div").each(function(_index) { $(this).bind("click touchstart",function(event) {
+                            var vEvent = (event && event.originalEvent && event.originalEvent.touches &&
+                                          event.originalEvent.touches.length)?
+                                event.originalEvent.touches[0]:event;
+                            $(this).closest('.'+settings.name).sudoku('click', $(this), vEvent);
+                            event.preventDefault();
+                            }).hover(
+                                function() {if (!settings.elt) { settings.elthover = $(this); }},
+                                function() {if (settings.elthover==$(this)) { settings.elt=0; } });
                         });
                     }
-                }
-            });
+                });
+
+                // LOCALE HANDLING
+                $this.find("h1#label").html(settings.label);
+                if (settings.locale) {$.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); });}
+                if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+            }
         },
         // Highlight the row, the col and the subgrid which contain the selected cell
         highlight:function($this, _posX, _posY) {
@@ -235,7 +230,7 @@
                         $this.removeClass();
                         if ($settings.class) { $this.addClass($settings.class); }
                         helpers.settings($this.addClass(defaults.name), $settings);
-                        helpers.load($this);
+                        helpers.loader.css($this);
                     }
                 });
             },
@@ -315,7 +310,7 @@
             // Close the help and display the grid
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                $(this).find("#intro").hide();
+                $(this).find("#splash").hide();
                 $(this).find("#grid9x9").show();
                 if (settings.timer.value) {helpers.timer($this);}
             },

@@ -35,158 +35,148 @@
             var settings = helpers.settings($this);
             settings.context.onQuit({'status':'success','score':settings.score});
         },
-        // Handle the elements sizes and show the activity
-        resize: function($this) {
-            var settings = helpers.settings($this);
+        loader: {
+            css: function($this) {
+                var settings = helpers.settings($this), cssAlreadyLoaded = false, debug = "";
+                if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
 
-            // Send the onLoad callback
-            if (settings.context.onLoad) { settings.context.onLoad(false); }
+                if (settings.context.onload) { settings.context.onload(true); }
 
-            // Resize the template
-            $this.css("font-size", Math.floor($this.height()/16)+"px");
+                $("head").find("link").each(function() {
+                    if ($(this).attr("href").indexOf("activities/"+settings.name+"/"+settings.css) != -1) { cssAlreadyLoaded = true; }
+                });
 
-            // compute scale and offset if not given
-            var xmin=0, xmax=0, ymin=0, ymax=0;
-            for (var j=0; j<settings.board.length; j++) for (var i=0; i<settings.board[j].length; i++) if (settings.board[j][i]) {
-                if (i+j<xmin) { xmin = i+j; }
-                if (i+j>xmax) { xmax = i+j; }
-                if (i-j<ymin) { ymin = i-j; }
-                if (i-j>ymax) { ymax = i-j; }
-            }
-            ymin+=settings.board.length-1; ymax+=settings.board.length-1;
-
-            // +8 : 4 for the tile thickness, 4 for the robot head in the top of the board
-            var vx = ((xmax-xmin)*2)+8+settings.padding, vy = (ymax-ymin+2)*4, vv = Math.max(vx,vy);
-            settings.offset=[-2*ymin+(vv-vy)/4+settings.margin/2,1+settings.padding/2-2*xmin+(vv-vx)/6+settings.margin/2];
-            settings.scale=(28/(vv+settings.margin*2));
-            $this.find("#tiles").css("font-size", settings.scale+"em");
-
-            // Update the gui
-            for (var i=0; i<4; i++) {
-                if (i<settings.robots.length) {
-                    for (var j=0; j<3; j++) {
-                        $this.find("#tabs #t"+(i+1)+" .f"+j+" div.z").each(function(_index) {
-                            $(this).toggle(_index<settings.robots[i].code[j]);
-                        });
-                    }
-                }
+                if(cssAlreadyLoaded) { helpers.loader.template($this); }
                 else {
-                    $this.find("#tab #r"+(i+1)).hide();
+                    $("head").append("<link>");
+                    var css = $("head").children(":last");
+                    var csspath = "activities/"+settings.name+"/"+settings.css+debug;
+
+                    css.attr({ rel:  "stylesheet", type: "text/css", href: csspath }).ready(
+                        function() { helpers.loader.template($this); });
                 }
-            }
+            },
+            template: function($this) {
+                var settings = helpers.settings($this), debug = "";
+                if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
 
-            // Build the board
-            settings.tiles.size=[settings.board[0].length,settings.board.length];
-
-            for (var j=0; j<settings.board.length; j++) for (var i=0; i<settings.board[j].length; i++) if (settings.board[j][i]) {
-                // TURN OFF THE LIGHT
-                if (settings.board[j][i]<500 && (settings.board[j][i]%100) == 52) { settings.board[j][i]=51; }
-
-                // STORE THE NUMBER IF ANY
-                if (settings.board[j][i]>=650 && settings.board[j][i]<660) { settings.numberinit = settings.board[j][i]-650; }
-
-                // TODO: useless for the moment, but for changing tiles
-                var tile = {
-                    top     :   j,
-                    left    :   i,
-                    value   :   settings.board[j][i],
-                    id      :   (i+j*settings.tiles.size[0]),
-                    html    :   function() {
-                        var ret = "<div style='";
-                        ret+="left:"+(settings.offset[0]+((this.left*2)+(settings.tiles.size[1]-this.top-1)*2))+"em;";
-                        ret+="top:"+(settings.offset[1]+this.left+this.top)+"em;";
-                        ret+="z-index:"+(10+this.left+this.top+(this.value%100>=50?1:0))+";' ";
-                        ret+="id='"+(this.left+this.top*settings.tiles.size[0])+"' ";
-                        ret+="class='tile t"+(this.value<10?"00":(this.value<100?"0":""))+this.value+" s"+(this.value%100>=50?"1":"0")+"'";
-                        ret+="><img src='res/img/tileset/iso/set1/";
-                        ret+=(this.value<10?"00":(this.value<100?"0":""))+this.value;
-                        ret+=".svg'/></div>";
-                        return ret;
+                // Load the template
+                var templatepath = "activities/"+settings.name+"/"+settings.template+debug;
+                $this.load( templatepath, function(response, status, xhr) {
+                    if (status=="error") {
+                        settings.context.onquit({'status':'error', 'statusText':templatepath+": "+xhr.status+" "+xhr.statusText});
                     }
-                };
+                    else { helpers.loader.build($this); }
+                });
+            },
+            build: function($this) {
+                var settings = helpers.settings($this);
+                if (settings.context.onLoad) { settings.context.onLoad(false); }
+                $this.css("font-size", Math.floor($this.height()/16)+"px");
 
-                $this.find("#tiles").append(tile.html());
-                settings.tiles.data.push(settings.board[j][i]);
-            }
-            else { settings.tiles.data.push(0); }
-
-            // Initialize the robots
-            for (var i in settings.robots) {
-                var html="<div class='engine' id='robot"+i+"'><div id='img'><img src=''/></div><div id='invert'><img src='res/img/tileset/iso/robot/statinvert.svg'/></div></div>";
-                $this.find("#tiles").append(html);
-                helpers.update($this, i, settings.robots[i].origin);
-
-                // Initialize the action cards
-                for (var j in settings.robots[i].actions) {
-                    var $elt = $($this.find("#tabs #t"+(parseInt(i)+1)+" .code .z").get(parseInt(j)));
-                    var $html=$("<div class='a'><img src='res/img/action/"+settings.robots[i].actions[j]+".svg' alt='"+settings.robots[i].actions[j]+"'/></div>");
-                    $elt.html($html);
-                    $html.draggable({ containment:$this.find("#t"+(parseInt(i)+1)), revert:true, stack:".a"});
+                // compute scale and offset if not given
+                var xmin=0, xmax=0, ymin=0, ymax=0;
+                for (var j=0; j<settings.board.length; j++) for (var i=0; i<settings.board[j].length; i++) if (settings.board[j][i]) {
+                    if (i+j<xmin) { xmin = i+j; }
+                    if (i+j>xmax) { xmax = i+j; }
+                    if (i-j<ymin) { ymin = i-j; }
+                    if (i-j>ymax) { ymax = i-j; }
                 }
+                ymin+=settings.board.length-1; ymax+=settings.board.length-1;
 
-                // Check the up and down button
-                $this.find(".source .slider>div").toggle((settings.robots[i].actions.length>15));
-                settings.sourceid[i]=0;
-                settings.sourcemax[i]=Math.floor((settings.robots[i].actions.length-1)/5)-2;
-            }
+                // +8 : 4 for the tile thickness, 4 for the robot head in the top of the board
+                var vx = ((xmax-xmin)*2)+8+settings.padding, vy = (ymax-ymin+2)*4, vv = Math.max(vx,vy);
+                settings.offset=[-2*ymin+(vv-vy)/4+settings.margin/2,1+settings.padding/2-2*xmin+(vv-vx)/6+settings.margin/2];
+                settings.scale=(28/(vv+settings.margin*2));
+                $this.find("#tiles").css("font-size", settings.scale+"em");
 
-            helpers.updatesource($this);
-
-            $this.find(".z").droppable({accept:".a",
-                drop:function(event, ui) {
-                    if ($(this).children().size()) { $(this).children().detach().appendTo(ui.draggable.parent()); }
-                    $(ui.draggable).detach().css("top",0).css("left",0);
-                    $(this).append(ui.draggable);
-            } });
-
-
-            // Locale handling
-            $this.find("h1#label").html(settings.label);
-            var list=["a","b","c","d","e","f","g"];
-            for (var i in settings.locale.legend) {
-                $this.find("#legend ul").append("<li>"+list[i]+" "+settings.locale.legend[i]+"</li>");
-            }
-            $this.find("#guide").html(settings.locale.guide);
-
-            // Handle spash panel
-            if (settings.nosplash) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
-            else                   { $this.find("#intro").show(); }
-        },
-        // Load the different elements of the activity
-        load: function($this) {
-            var settings = helpers.settings($this);
-            var debug = "";
-            if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
-
-            // Send the onLoad callback
-            if (settings.context.onLoad) { settings.context.onLoad(true); }
-
-            // Load the template
-            var templatepath = "activities/"+settings.name+"/"+settings.template+debug;
-            $this.load( templatepath, function(response, status, xhr) {
-                if (status=="error") {
-                    settings.context.onQuit({'status':'error', 'statusText':templatepath+": "+xhr.status+" "+xhr.statusText});
-                }
-                else {
-                    var cssAlreadyLoaded = false;
-                    $("head").find("link").each(function() {
-                        if ($(this).attr("href").indexOf("activities/"+settings.name+"/"+settings.css) != -1) { cssAlreadyLoaded = true; }
-                    });
-
-                    if(cssAlreadyLoaded) {
-                        helpers.resize($this);
+                // Update the gui
+                for (var i=0; i<4; i++) {
+                    if (i<settings.robots.length) {
+                        for (var j=0; j<3; j++) {
+                            $this.find("#tabs #t"+(i+1)+" .f"+j+" div.z").each(function(_index) {
+                                $(this).toggle(_index<settings.robots[i].code[j]);
+                            });
+                        }
                     }
                     else {
-                        // Load the css
-                        $("head").append("<link>");
-                        var css = $("head").children(":last");
-                        var csspath = "activities/"+settings.name+"/"+settings.css+debug;
-                        css.attr({ rel:  "stylesheet", type: "text/css", href: csspath }).ready(function() {
-                            helpers.resize($this);
-                        });
+                        $this.find("#tab #r"+(i+1)).hide();
                     }
                 }
-            });
+
+                // Build the board
+                settings.tiles.size=[settings.board[0].length,settings.board.length];
+
+                for (var j=0; j<settings.board.length; j++) for (var i=0; i<settings.board[j].length; i++) if (settings.board[j][i]) {
+                    // TURN OFF THE LIGHT
+                    if (settings.board[j][i]<500 && (settings.board[j][i]%100) == 52) { settings.board[j][i]=51; }
+
+                    // STORE THE NUMBER IF ANY
+                    if (settings.board[j][i]>=650 && settings.board[j][i]<660) { settings.numberinit = settings.board[j][i]-650; }
+
+                    // NOT REALLY USEFUL
+                    var tile = {
+                        top     :   j,
+                        left    :   i,
+                        value   :   settings.board[j][i],
+                        id      :   (i+j*settings.tiles.size[0]),
+                        html    :   function() {
+                            var ret = "<div style='";
+                            ret+="left:"+(settings.offset[0]+((this.left*2)+(settings.tiles.size[1]-this.top-1)*2))+"em;";
+                            ret+="top:"+(settings.offset[1]+this.left+this.top)+"em;";
+                            ret+="z-index:"+(10+this.left+this.top+(this.value%100>=50?1:0))+";' ";
+                            ret+="id='"+(this.left+this.top*settings.tiles.size[0])+"' ";
+                            ret+="class='tile t"+(this.value<10?"00":(this.value<100?"0":""))+this.value+" s"+(this.value%100>=50?"1":"0")+"'";
+                            ret+="><img src='res/img/tileset/iso/set1/";
+                            ret+=(this.value<10?"00":(this.value<100?"0":""))+this.value;
+                            ret+=".svg'/></div>";
+                            return ret;
+                        }
+                    };
+
+                    $this.find("#tiles").append(tile.html());
+                    settings.tiles.data.push(settings.board[j][i]);
+                }
+                else { settings.tiles.data.push(0); }
+
+                // Initialize the robots
+                for (var i in settings.robots) {
+                    var html="<div class='engine' id='robot"+i+"'><div id='img'><img src=''/></div><div id='invert'><img src='res/img/tileset/iso/robot/statinvert.svg'/></div></div>";
+                    $this.find("#tiles").append(html);
+                    helpers.update($this, i, settings.robots[i].origin);
+
+                    // Initialize the action cards
+                    for (var j in settings.robots[i].actions) {
+                        var $elt = $($this.find("#tabs #t"+(parseInt(i)+1)+" .code .z").get(parseInt(j)));
+                        var $html=$("<div class='a'><img src='res/img/action/"+settings.robots[i].actions[j]+".svg' alt='"+settings.robots[i].actions[j]+"'/></div>");
+                        $elt.html($html);
+                        $html.draggable({ containment:$this.find("#t"+(parseInt(i)+1)), revert:true, stack:".a"});
+                    }
+
+                    // Check the up and down button
+                    $this.find(".source .slider>div").toggle((settings.robots[i].actions.length>15));
+                    settings.sourceid[i]=0;
+                    settings.sourcemax[i]=Math.floor((settings.robots[i].actions.length-1)/5)-2;
+                }
+
+                helpers.updatesource($this);
+
+                $this.find(".z").droppable({accept:".a",
+                    drop:function(event, ui) {
+                        if ($(this).children().size()) { $(this).children().detach().appendTo(ui.draggable.parent()); }
+                        $(ui.draggable).detach().css("top",0).css("left",0);
+                        $(this).append(ui.draggable);
+                } });
+
+                // Locale handling
+                $this.find("h1#label").html(settings.label);
+                var list=["a","b","c","d","e","f","g"];
+                for (var i in settings.locale.legend) {
+                    $this.find("#legend ul").append("<li>"+list[i]+" "+settings.locale.legend[i]+"</li>");
+                }
+                $this.find("#guide").html(settings.locale.guide);
+                if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+            }
         },
         // GET THE DELAY ACCORDING TO THE SPEED VALUE
         delay: function($this) { var settings = helpers.settings($this); return Math.floor(1000/Math.pow(2,settings.speed)); },
@@ -935,7 +925,7 @@
                         $this.removeClass();
                         if ($settings.class) { $this.addClass($settings.class); }
                         helpers.settings($this.addClass(defaults.name), $settings);
-                        helpers.load($this);
+                        helpers.loader.css($this);
                     }
                 });
             },
@@ -945,7 +935,7 @@
                 settings.context.onQuit({'status':'abort'});
             },
             next: function() {
-                $(this).find("#intro").hide();
+                $(this).find("#splash").hide();
             },
             speed: function() {
                 var $this = $(this) , settings = helpers.settings($this);

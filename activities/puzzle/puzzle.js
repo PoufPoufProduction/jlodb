@@ -39,6 +39,78 @@
             var settings = helpers.settings($this);
             settings.context.onQuit({'status':'success','score':settings.score});
         },
+        loader: {
+            css: function($this) {
+                var settings = helpers.settings($this), cssAlreadyLoaded = false, debug = "";
+                if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
+
+                if (settings.context.onload) { settings.context.onload(true); }
+
+                $("head").find("link").each(function() {
+                    if ($(this).attr("href").indexOf("activities/"+settings.name+"/"+settings.css) != -1) { cssAlreadyLoaded = true; }
+                });
+
+                if(cssAlreadyLoaded) { helpers.loader.template($this); }
+                else {
+                    $("head").append("<link>");
+                    var css = $("head").children(":last");
+                    var csspath = "activities/"+settings.name+"/"+settings.css+debug;
+
+                    css.attr({ rel:  "stylesheet", type: "text/css", href: csspath }).ready(
+                        function() { helpers.loader.template($this); });
+                }
+            },
+            template: function($this) {
+                var settings = helpers.settings($this), debug = "";
+                if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
+
+                // Load the template
+                var templatepath = "activities/"+settings.name+"/"+settings.template+debug;
+                $this.load( templatepath, function(response, status, xhr) {
+                    if (status=="error") {
+                        settings.context.onquit({'status':'error', 'statusText':templatepath+": "+xhr.status+" "+xhr.statusText});
+                    }
+                    else { helpers.loader.svg($this); }
+                });
+            },
+            svg:function($this) {
+                var settings = helpers.settings($this), debug = "";
+                if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
+                var elt= $("<div id='svg'></div>").appendTo($this.find("#board"));
+                elt.svg();
+                settings.svg = elt.svg('get');
+                settings.svg.load( 'res/img/'+settings.url + debug,
+                    { addTo: true, changeSize: true, onLoad:function() { helpers.loader.build($this); }
+                });
+            },
+            build: function($this) {
+                var settings = helpers.settings($this);
+                if (settings.context.onLoad) { settings.context.onLoad(false); }
+
+                // Resize the template
+                $this.css("font-size", Math.floor($this.height()/16)+"px");
+                if (settings.rotation==0) { $this.find("#norot").show(); }
+
+                // COMPUTE RATIO
+                var vWidth = $this.find("#board").width();
+                if ($(settings.svg.root()).attr("title")) {
+                    var vReg = new RegExp("[ ]", "g");
+                    var vSize = $(settings.svg.root()).attr("title").split(vReg);
+                    settings.ratio = vWidth/(vSize[2]-vSize[0]);
+                }
+                else { settings.ratio = vWidth/640; }
+                if (settings.ratio<=0) { settings.ratio=1; }
+
+                // LOCALE HANDLING
+                $this.find("h1#label").html(settings.label);
+                $this.find("#guide").html(settings.locale.guide);
+                //$.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); });
+
+                helpers.build($this);
+
+                if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+            },
+        },
         // Update the timer
         timer:function($this) {
             var settings = helpers.settings($this);
@@ -50,44 +122,6 @@
             $this.find("#time").text((vH<10?"0":"")+vH+(vM<10?":0":":")+vM+(vS<10?":0":":")+vS);
             if (settings.context.onSeconds) { settings.context.onSeconds(settings.timer.value); }
             settings.timer.id = setTimeout(function() { helpers.timer($this); }, 1000);
-        },
-        resizeAfterShow: function($this) {
-            var settings = helpers.settings($this);
-
-            // COMPUTE RATIO
-            var vWidth = $this.find("#board").width();
-            if ($(settings.svg.root()).attr("title")) {
-                var vReg = new RegExp("[ ]", "g");
-                var vSize = $(settings.svg.root()).attr("title").split(vReg);
-                settings.ratio = vWidth/(vSize[2]-vSize[0]);
-            }
-            else {
-                settings.ratio = vWidth/640;
-            }
-            if (settings.ratio<=0) { settings.ratio=1; }
-
-            // LOCALE HANDLING
-            $this.find("h1#label").html(settings.label);
-            $this.find("#guide").html(settings.locale.guide);
-            //$.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); });
-
-            // Handle spash panel
-            if (settings.nosplash) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
-            else                   { $this.find("#intro").show(); }
-        },
-        // Handle the elements sizes and show the activity
-        resize: function($this) {
-            var settings = helpers.settings($this);
-
-            // Send the onLoad callback
-            if (settings.context.onLoad) { settings.context.onLoad(false); }
-
-            // Resize the template
-            $this.css("font-size", Math.floor($this.height()/16)+"px");
-
-             if (settings.rotation==0) { $this.find("#norot").show(); }
-
-            setTimeout(function() { helpers.resizeAfterShow($this); }, 100 );
         },
         rebuild: function($this) {
             var settings = helpers.settings($this);
@@ -110,7 +144,7 @@
                 $(settings.svg.root()).attr("class",$.isArray(settings.svgclass)?settings.svgclass[settings.puzzleid]:settings.svgclass);
             }
 
-
+            // HANDLE THE FOREGROUND IMAGE AND TEXTS
             if (settings.img) {
                 var img = $.isArray(settings.img)?settings.img[settings.puzzleid]:settings.img;
                 if (img) { $this.find("#timg").html("<img src='res/img/"+img+"'/>").show(); }
@@ -291,61 +325,7 @@
                     settings.elt.id = 0;
                 }
             });
-
-
-            helpers.resize($this);
-        },
-        // Load the svg
-        loadsvg:function($this) {
-            var settings = helpers.settings($this);
-
-            var debug = "";
-            if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
-            var elt= $("<div id='svg'></div>").appendTo($this.find("#board"));
-            elt.svg();
-            settings.svg = elt.svg('get');
-            settings.svg.load(
-                'res/img/'+settings.url + debug,
-                { addTo: true, changeSize: true, onLoad:function() {
-                    helpers.build($this);
-                }
-            });
-        },
-        // Load the different elements of the activity
-        load: function($this) {
-            var settings = helpers.settings($this);
-            var debug = "";
-            if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
-
-            // Send the onLoad callback
-            if (settings.context.onLoad) { settings.context.onLoad(true); }
-
-            // Load the template
-            var templatepath = "activities/"+settings.name+"/"+settings.template+debug;
-            $this.load( templatepath, function(response, status, xhr) {
-                if (status=="error") {
-                    settings.context.onQuit({'status':'error', 'statusText':templatepath+": "+xhr.status+" "+xhr.statusText});
-                }
-                else {
-                    var cssAlreadyLoaded = false;
-                    $("head").find("link").each(function() {
-                        if ($(this).attr("href").indexOf("activities/"+settings.name+"/"+settings.css) != -1) { cssAlreadyLoaded = true; }
-                    });
-
-                    if(cssAlreadyLoaded) {
-                        helpers.loadsvg($this);
-                    }
-                    else {
-                        // Load the css
-                        $("head").append("<link>");
-                        var css = $("head").children(":last");
-                        var csspath = "activities/"+settings.name+"/"+settings.css+debug;
-                        css.attr({ rel:  "stylesheet", type: "text/css", href: csspath }).ready(function() {
-                            helpers.loadsvg($this);
-                        });
-                    }
-                }
-            });
+            settings.interactive = true;
         }
     };
 
@@ -390,7 +370,7 @@
                         $this.removeClass();
                         if ($settings.class) { $this.addClass($settings.class); }
                         helpers.settings($this.addClass(defaults.name), $settings);
-                        helpers.load($this);
+                        helpers.loader.css($this);
                     }
                 });
             },
@@ -465,7 +445,7 @@
             },
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                settings.interactive = true;
+                $this.find("#splash").hide();
             }
         };
 

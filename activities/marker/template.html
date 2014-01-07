@@ -1,7 +1,7 @@
 <div>
 
     <div id="board">
-        <div id="data"></div>
+        <div id="data"><div></div></div>
         <div id="exercice">
             <div id="c1">
                 <div class="color" ontouchstart="$(this).closest('.marker').marker('color',0);event.preventDefault();"
@@ -44,8 +44,8 @@
         </table>
     </div>
 
-    <div id="intro" ontouchstart="$(this).closest('.marker').marker('next');event.preventDefault();"
-                    onclick="$(this).closest('.marker').marker('next');"><div>
+    <div id="splash" ontouchstart="$(this).closest('.marker').marker('next');event.preventDefault();"
+                     onclick="$(this).closest('.marker').marker('next');"><div>
         <div class="text">
             <h1 id="label"></h1>
             <p id="guide"></p>

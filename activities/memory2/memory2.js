@@ -32,30 +32,72 @@
             var settings = helpers.settings($this);
             settings.context.onQuit({'status':'success', 'score':settings.score});
         },
-        // Handle the elements sizes and show the activity
-        resize: function($this) {
-            var settings = helpers.settings($this);
+        loader: {
+            css: function($this) {
+                var settings = helpers.settings($this), cssAlreadyLoaded = false, debug = "";
+                if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
 
-            // Send the onLoad callback
-            if (settings.context.onLoad) { settings.context.onLoad(false); }
+                if (settings.context.onload) { settings.context.onload(true); }
 
-            // Resize the template
-            $this.css("font-size", Math.floor((Math.min($this.width(),$this.height())-7)/5)+"px");
+                $("head").find("link").each(function() {
+                    if ($(this).attr("href").indexOf("activities/"+settings.name+"/"+settings.css) != -1) { cssAlreadyLoaded = true; }
+                });
 
-            // Check the buttons
-            for (var i in settings.buttons) {
-                var $b = $("#"+settings.buttons[i].id, settings.svg.root());
-                $b.bind("click touchstart", function(event) {$this.memory2('key',this.id); event.preventDefault(); })
-                  .css("cursor", "pointer");
+                if(cssAlreadyLoaded) { helpers.loader.template($this); }
+                else {
+                    $("head").append("<link>");
+                    var css = $("head").children(":last");
+                    var csspath = "activities/"+settings.name+"/"+settings.css+debug;
+
+                    css.attr({ rel:  "stylesheet", type: "text/css", href: csspath }).ready(
+                        function() { helpers.loader.template($this); });
+                }
+            },
+            template: function($this) {
+                var settings = helpers.settings($this), debug = "";
+                if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
+
+                // Load the template
+                var templatepath = "activities/"+settings.name+"/"+settings.template+debug;
+                $this.load( templatepath, function(response, status, xhr) {
+                    if (status=="error") {
+                        settings.context.onquit({'status':'error', 'statusText':templatepath+": "+xhr.status+" "+xhr.statusText});
+                    }
+                    else { helpers.loader.svg($this); }
+                });
+            },
+            svg: function($this) {
+                var settings = helpers.settings($this), debug = "";
+                if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
+                var elt= $("<div id='svg'></div>").appendTo($this.find("#mem2"));
+                elt.svg();
+                settings.svg = elt.svg('get');
+                $(settings.svg).attr("class",settings.class);
+                settings.svg.load(
+                    'res/img/'+settings.url + debug,
+                    { addTo: true, changeSize: true, onLoad:function() { helpers.loader.midi($this); }
+                });
+            },
+            midi: function($this) {
+                jlodb.midi.load('acoustic_grand_piano', function() { helpers.loader.build($this); });
+            },
+            build: function($this) {
+                var settings = helpers.settings($this);
+                if (settings.context.onLoad) { settings.context.onLoad(false); }
+                $this.css("font-size", Math.floor((Math.min($this.width(),$this.height())-7)/5)+"px");
+
+                // Check the buttons
+                for (var i in settings.buttons) {
+                    var $b = $("#"+settings.buttons[i].id, settings.svg.root());
+                    $b.bind("click touchstart", function(event) {$this.memory2('key',this.id); event.preventDefault(); })
+                    .css("cursor", "pointer");
+                }
+
+                // Locale handling
+                $this.find("h1#label").html(settings.label);
+                if(settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
+                if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
-
-            // Locale handling
-            $this.find("h1#label").html(settings.label);
-            if(settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
-
-            // Handle spash panel
-            if (settings.nosplash) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
-            else                   { $this.find("#intro").show(); }
         },
         stop: function($this) {
             var settings = helpers.settings($this);
@@ -93,60 +135,6 @@
             else {
                 $("#count", settings.svg.root()).text(settings.sequence.length);
                 helpers.stop($this); settings.count = 0; settings.interactive = true; }
-        },
-        loadmidi: function($this) {
-            jlodb.midi.load('acoustic_grand_piano', function() { helpers.resize($this); });
-        },
-        loadsvg:function($this) {
-            var settings = helpers.settings($this);
-            // Load the svg if needed
-            var debug = "";
-            if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
-            var elt= $("<div id='svg'></div>").appendTo($this.find("#mem2"));
-            elt.svg();
-            settings.svg = elt.svg('get');
-            $(settings.svg).attr("class",settings.class);
-            settings.svg.load(
-                'res/img/'+settings.url + debug,
-                { addTo: true, changeSize: true, onLoad:function() { helpers.loadmidi($this); }
-            });
-
-        },
-        load: function($this) {
-            var settings = helpers.settings($this);
-            var debug = "";
-            if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
-
-            // Send the onLoad callback
-            if (settings.context.onLoad) { settings.context.onLoad(true); }
-
-            // Load the template
-            var templatepath = "activities/"+settings.name+"/"+settings.template+debug;
-
-            $this.load( templatepath, function(response, status, xhr) {
-                if (status=="error") {
-                    settings.context.onQuit({'status':'error', 'statusText':templatepath+": "+xhr.status+" "+xhr.statusText});
-                }
-                else {
-                    var cssAlreadyLoaded = false;
-                    $("head").find("link").each(function() {
-                        if ($(this).attr("href").indexOf("activities/"+settings.name+"/"+settings.css) != -1) { cssAlreadyLoaded = true; }
-                    });
-
-                    if(cssAlreadyLoaded) {
-                        helpers.loadsvg($this);
-                    }
-                    else {
-                        // Load the css
-                        $("head").append("<link>");
-                        var css = $("head").children(":last");
-                        var csspath = "activities/"+settings.name+"/"+settings.css+debug;
-                        css.attr({ rel:  "stylesheet", type: "text/css", href: csspath }).ready(function() {
-                            helpers.loadsvg($this);
-                        });
-                    }
-                }
-            });
         }
     };
 
@@ -179,7 +167,7 @@
                         $this.removeClass();
                         if ($settings.class) { $this.addClass($settings.class); }
                         helpers.settings($this.addClass(defaults.name), $settings);
-                        helpers.load($this);
+                        helpers.loader.css($this);
                     }
                 });
             },
@@ -187,7 +175,7 @@
             next: function() {
                 var $this=$(this),settings = $(this).data("settings");
                 // Hide instruction
-                $this.find("#intro").hide();
+                $this.find("#splash").hide();
                 // Check stuff
                 setTimeout(function() { helpers.demo($this); }, 500);
 

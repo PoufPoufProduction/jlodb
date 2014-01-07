@@ -35,128 +35,126 @@
             var settings = helpers.settings($this);
             settings.context.onQuit({'status':'success','score':settings.score});
         },
-        // Handle the elements sizes and show the activity
-        resize: function($this) {
-            var settings = helpers.settings($this);
+        loader: {
+            css: function($this) {
+                var settings = helpers.settings($this), cssAlreadyLoaded = false, debug = "";
+                if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
 
-            $this.children().hide()
+                if (settings.context.onload) { settings.context.onload(true); }
 
-            // Send the onLoad callback
-            if (settings.context.onLoad) { settings.context.onLoad(false); }
+                $("head").find("link").each(function() {
+                    if ($(this).attr("href").indexOf("activities/"+settings.name+"/"+settings.css) != -1) { cssAlreadyLoaded = true; }
+                });
 
-            // Build the data the data
-            var content ="";
-            var reg = new RegExp("[ ]", "g");
-            var index = 0;
-
-            // PARSE EACH PARAGRAPH
-            for (var i=0; i<settings.text.length; i++) {
-                content+="<p>";
-                var text = settings.text[i].split(reg);
-                // BROWSE EACH WORD
-                for (var j=0; j<text.length; j++) {
-
-                    // GET THE WORD
-                    var begin = 0, end = text[j].length;
-                    for (var k=0; k<end; k++) {
-                        if (text[j][k]=='"') { begin=k+1; }
-                        else { k=end; }
-                    }
-                    for (var k=end; k>begin; k--) {
-                        if ((text[j][k-1]=='.')||(text[j][k-1]==',')||(text[j][k-1]==':')||(text[j][k-1]==';')||(text[j][k-1]=='"'))
-                             { end=k-1; }
-                        else { k=begin; }
-                    }
-                    var goodWord = text[j].substring(begin, end);
-                    var word = goodWord;
-                    var classTxt="";
-
-                    // check if the word is in the dictionary
-                    if (settings.dictionary[goodWord]) {
-                        if (!Math.floor(Math.random()*settings.proba)) {
-                            var id = 0;
-                            if (!settings.first) { id = Math.floor(Math.random()*settings.dictionary[goodWord].length); }
-                            word = settings.dictionary[goodWord][id];
-
-                            if (settings.style=="blank") {
-                                var len = settings.dictionary[goodWord][
-                                    Math.floor(Math.random()*settings.dictionary[goodWord].length)].length;
-                                word = "";
-                                for (var count=0; count<len*1.5; count++) { word+="&nbsp;"; }
-                            }
-
-                            classTxt = settings.style;
-                        }
-                    }
-
-                    // MULTIPLE OCCURENCE
-                    if (settings.multiple && word.search(settings.multiple)>0) word = word.substring(0,word.search(settings.multiple));
-
-                    if (begin>0) { content+=text[j].substring(0, begin); }
-                    content+="<span class='"+classTxt+"' onclick=\"$(this).closest('.correcter').correcter('click', this, "+index+");\"";
-                    content+=" ontouchstart=\"$(this).closest('.correcter').correcter('click', this, "+index+");event.preventDefault();\"";
-                    content+=">"+word+"</span>";
-                    if (end<text[j].length) { content+=text[j].substring(end); }
-                    content+=" ";
-
-                    // store the good work
-                    settings.responses.push(goodWord);
-                    index++;
-                }
-                content+="</p>";
-            }
-
-            $this.find("#data").html(content);
-            $this.css("font-size", Math.floor($this.height()/16)+"px");
-            $this.find("#options").css("font-size",settings.font+"em");
-            $this.find("#data").css("font-size",settings.font+"em");
-
-            // Locale handling
-            $this.find("h1#label").html(settings.label);
-            $this.find("#exercice").html(settings.exercice);
-            if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
-
-            // Handle spash panel
-            if (settings.nosplash) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
-            else                   { $this.find("#intro").show(); }
-
-            $this.children().show()
-        },
-        // Load the different elements of the activity
-        load: function($this) {
-            var settings = helpers.settings($this);
-            var debug = "";
-            if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
-
-            // Send the onLoad callback
-            if (settings.context.onLoad) { settings.context.onLoad(true); }
-
-            // Load the template
-            var templatepath = "activities/"+settings.name+"/"+settings.template+debug;
-            $this.load( templatepath, function(response, status, xhr) {
-                if (status=="error") {
-                    settings.context.onQuit({'status':'error', 'statusText':templatepath+": "+xhr.status+" "+xhr.statusText});
-                }
+                if(cssAlreadyLoaded) { helpers.loader.template($this); }
                 else {
-                    var cssAlreadyLoaded = false;
-                    $("head").find("link").each(function() {
-                        if ($(this).attr("href").indexOf("activities/"+settings.name+"/"+settings.css) != -1) { cssAlreadyLoaded = true; }
-                    });
+                    $("head").append("<link>");
+                    var css = $("head").children(":last");
+                    var csspath = "activities/"+settings.name+"/"+settings.css+debug;
 
-                    if(cssAlreadyLoaded) {
-                        helpers.resize($this);
-                    }
-                    else {
-                        // Load the css
-                        $("head").append("<link>");
-                        var css = $("head").children(":last");
-                        var csspath = "activities/"+settings.name+"/"+settings.css+debug;
-                        css.attr({ rel:  "stylesheet", type: "text/css", href: csspath }).ready(function() {
-                            helpers.resize($this);
-                        });
-                    }
+                    css.attr({ rel:  "stylesheet", type: "text/css", href: csspath }).ready(
+                        function() { helpers.loader.template($this); });
                 }
-            });
+            },
+            template: function($this) {
+                var settings = helpers.settings($this), debug = "";
+                if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
+
+                // Load the template
+                var templatepath = "activities/"+settings.name+"/"+settings.template+debug;
+                $this.load( templatepath, function(response, status, xhr) {
+                    if (status=="error") {
+                        settings.context.onquit({'status':'error', 'statusText':templatepath+": "+xhr.status+" "+xhr.statusText});
+                    }
+                    else { helpers.loader.build($this); }
+                });
+            },
+            build: function($this) {
+                var settings = helpers.settings($this);
+
+                $this.children().hide()
+
+                // Send the onLoad callback
+                if (settings.context.onLoad) { settings.context.onLoad(false); }
+
+                // Build the data the data
+                var content ="";
+                var reg = new RegExp("[ ]", "g");
+                var index = 0;
+
+                // PARSE EACH PARAGRAPH
+                for (var i=0; i<settings.text.length; i++) {
+                    content+="<p>";
+                    var text = settings.text[i].split(reg);
+                    // BROWSE EACH WORD
+                    for (var j=0; j<text.length; j++) {
+
+                        // GET THE WORD
+                        var begin = 0, end = text[j].length;
+                        for (var k=0; k<end; k++) {
+                            if (text[j][k]=='"') { begin=k+1; }
+                            else { k=end; }
+                        }
+                        for (var k=end; k>begin; k--) {
+                            if ((text[j][k-1]=='.')||(text[j][k-1]==',')||(text[j][k-1]==':')||(text[j][k-1]==';')||(text[j][k-1]=='"'))
+                                { end=k-1; }
+                            else { k=begin; }
+                        }
+                        var goodWord = text[j].substring(begin, end);
+                        var word = goodWord;
+                        var classTxt="";
+
+                        // check if the word is in the dictionary
+                        if (settings.dictionary[goodWord]) {
+                            if (!Math.floor(Math.random()*settings.proba)) {
+                                var id = 0;
+                                if (!settings.first) { id = Math.floor(Math.random()*settings.dictionary[goodWord].length); }
+                                word = settings.dictionary[goodWord][id];
+
+                                if (settings.style=="blank") {
+                                    var len = settings.dictionary[goodWord][
+                                        Math.floor(Math.random()*settings.dictionary[goodWord].length)].length;
+                                    word = "";
+                                    for (var count=0; count<len*1.5; count++) { word+="&nbsp;"; }
+                                }
+
+                                classTxt = settings.style;
+                            }
+                        }
+
+                        // MULTIPLE OCCURENCE
+                        if (settings.multiple && word.search(settings.multiple)>0)
+                            word = word.substring(0,word.search(settings.multiple));
+
+                        if (begin>0) { content+=text[j].substring(0, begin); }
+                        content+="<span class='"+classTxt+
+                                 "' onclick=\"$(this).closest('.correcter').correcter('click', this, "+index+");\"";
+                        content+=" ontouchstart=\"$(this).closest('.correcter').correcter('click', this, "+
+                                 index+");event.preventDefault();\"";
+                        content+=">"+word+"</span>";
+                        if (end<text[j].length) { content+=text[j].substring(end); }
+                        content+=" ";
+
+                        // store the good work
+                        settings.responses.push(goodWord);
+                        index++;
+                    }
+                    content+="</p>";
+                }
+
+                $this.find("#data").html(content);
+                $this.css("font-size", Math.floor($this.height()/12)+"px");
+                $this.find("#options").css("font-size",settings.font+"em");
+                $this.find("#data").css("font-size",settings.font+"em");
+
+                // Locale handling
+                $this.find("h1#label").html(settings.label);
+                $this.find("#exercice").html(settings.exercice);
+                if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
+
+                $this.children().show()
+                if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+            }
         }
     };
 
@@ -192,7 +190,7 @@
                         $this.removeClass();
                         if ($settings.class) { $this.addClass($settings.class); }
                         helpers.settings($this.addClass(defaults.name), $settings);
-                        helpers.load($this);
+                        helpers.loader.css($this);
                     }
                 });
             },
@@ -262,7 +260,7 @@
                 }
             },
             next: function() {
-                $(this).find("#intro").hide();
+                $(this).find("#splash").hide();
                 $(this).find("#data").show();
             },
             valid: function() {

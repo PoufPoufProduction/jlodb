@@ -1,22 +1,24 @@
 <div>
     <div id="board">
         <div id="question">
-            <div id="text"></div>
+            <div id="bg" class="format"></div>
             <div id="fgl"></div>
+            <div id="text" class="format"><div></div></div>
         </div>
         <div id="interactive">
             <div id="responses"></div>
-            <div id="submit" ontouchstart="$(this).closest('.mcq').mcq('submit', this);event.preventDefault();"
-                             onclick="$(this).closest('.mcq').mcq('submit', this);">
-                <img src="res/img/icon/swvalid.svg" id="subvalid"/>
-                <img src="res/img/icon/swgood.svg" id="subgood"/>
-                <img src="res/img/icon/swwrong.svg" id="subwrong"/>
-            </div>
+        </div>
+
+        <div id="submit" ontouchstart="$(this).closest('.mcq').mcq('submit', this);event.preventDefault();"
+                         onclick="$(this).closest('.mcq').mcq('submit', this);">
+            <img src="res/img/icon/swvalid.svg" id="subvalid"/>
+            <img src="res/img/icon/swgood.svg" id="subgood"/>
+            <img src="res/img/icon/swwrong.svg" id="subwrong"/>
         </div>
     </div>
 
-    <div id="intro" ontouchstart="$(this).closest('.mcq').mcq('next');event.preventDefault();"
-                    onclick="$(this).closest('.mcq').mcq('next');"><div>
+    <div id="splash" ontouchstart="$(this).closest('.mcq').mcq('next');event.preventDefault();"
+                     onclick="$(this).closest('.mcq').mcq('next');"><div>
         <div class="text">
             <h1 id="label"></h1>
             <div id="guide"></div>

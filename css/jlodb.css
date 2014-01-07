@@ -64,15 +64,16 @@ select                          { appearance:none; -webkit-appearance:none; -moz
                                   font-size:2.2em; border-radius:.25em; z-index:2000; }
 #close .button                  { width:1.8em; height:1.8em; margin:.1em; cursor:pointer; }
 /*---------------------------------------------------------------------------------------------------------------------------*/
-div#intro                       { font-size:.5em; height:40%; width:80%; top:25%; left:10%; position:absolute; z-index:2000;
+div#splash                      { font-size:.5em; height:40%; width:80%; top:25%; left:10%; position:absolute; z-index:2000;
                                   background-color:rgba(255,255,255,0.9); text-align:justify; overflow:hidden;
-                                  cursor: pointer; padding:1%; border-radius:1em; color:#003366;}
-div#intro>div                   { background-color:rgb(120,200,255); border-radius:1em; height:100%;
+                                  cursor: pointer; padding:1%; border-radius:1em; color:#003366; }
+div#splash>div                  { background-color:rgb(120,200,255); border-radius:1em; height:100%;
                                   background-size:100%; font-family: Times, serif; }
-div#intro .text h1              { border:1px solid white; border-width:0 0 1px 0; }
-#splash                         { position:absolute; top:0; left:0; width:100%; height:100%;
+div#splash .text h1             { border:1px solid white; border-width:0 0 1px 0; }
+.nosplash div#splash            { display:none; }
+#appsplash                      { position:absolute; top:0; left:0; width:100%; height:100%;
                                   background-color:rgba(0,0,0,0.8); z-index:10;}
-#splash>div                     { width:16em; height:6em; margin-top:15%; background-color:rgb(160,240,255); cursor:pointer;
+#appsplash>div                  { width:16em; height:6em; margin-top:15%; background-color:rgb(160,240,255); cursor:pointer;
                                   background-size:100%; background-repeat:no-repeat;}
 /*---------------------------------------------------------------------------------------------------------------------------*/
 .jmenu                          { position:relative; height:100%; overflow:hidden;}

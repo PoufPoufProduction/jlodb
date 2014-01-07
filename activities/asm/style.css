@@ -1,13 +1,13 @@
 .asm .both *                        { overflow:visible; }
 .asm                                { background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat;}
-.asm div#intro>div                  { /* background-image:url("../../res/img/banners/sokoban.svg");*/ }
-.asm div#intro .text                { width:35%; float:right; }
-.asm div#intro .text h1             { text-align:right; padding-right:.5em; }
-.asm div#intro #guide               { font-size:.9em; margin-right:.5em; }
+.asm div#splash>div                 { /* background-image:url("../../res/img/banners/sokoban.svg");*/ }
+.asm div#splash .text               { width:35%; float:right; }
+.asm div#splash .text h1            { text-align:right; padding-right:.5em; }
+.asm div#splash #guide              { font-size:.9em; margin-right:.5em; }
 .asm div#board                      { font-size:.5em; width:105%; }
 .asm div#board>div                  { float:left; }
 /*---------------------------------------------------------------------------------------------------------------------------*/
-.asm div#board #screens>*           { margin:.1em; }
+.asm div#board #screens>*           { font-size:.75em; margin:.1em; }
 .asm #screens #output               { width:11.6em; height:5.6em; background-color:#030; color:#0F0; font-weight:bold;
                                       padding:.2em; border-radius:.5em; line-height:.8em; }
 .asm #screens #output pre           { overflow:visible; }
@@ -30,15 +30,15 @@
 .asm #screens #buttons              { margin-left:.5em; }
 .asm #screens #buttons>div          { font-size:3em; width:1em; height:1em; margin:.1em; float:left; cursor:pointer;}
 /*---------------------------------------------------------------------------------------------------------------------------*/
-.asm div#board #central>*           { margin:.1em; width:20em; border-radius:.5em; }
+.asm div#board #central>*           { font-size:.75em; margin:.1em; width:20em; border-radius:.5em; }
 .asm #central #code                 { height:25em; background-color:black; overflow:auto;}
-.asm #central #code #lines          { font-size:1.5em;  }
+.asm #central #code #lines          { font-size:1.5em; }
 .asm #central #code #lines .line.i  { background-color:#152A15; }
-.asm #central #code #lines .line    { position:relative; height:1.5em; background-color:#112211;}
+.asm #central #code #lines .line    { position:relative; height:1.5em; background-color:#112211; }
 .asm #central #exercice             { width:19.8em !important; height:6.3em; background-repeat:repeat; padding:.1em;
                                       background-image:url("../../res/img/background/book02.svg"); }
 /*---------------------------------------------------------------------------------------------------------------------------*/
-.asm div#board #detail>*            { margin:.1em; width:10em; border-radius:.5em;}
+.asm div#board #detail>*            { font-size:.75em;margin:.1em; width:10em; border-radius:.5em;}
 .asm #detail #source                { height:25em; background-color:#112211; }
 .asm #detail #source>div            { clear:both; }
 .asm #detail #source .a             { float:left; cursor:pointer; }
@@ -46,28 +46,6 @@
 .asm #detail #source #labels        { background-color:#f88;}
 .asm #detail #source #ops           { width:11em; background-color:#90cce0; }
 .asm #detail #source #args          { width:11em; background-color:#82ca82; }
-.asm #detail #register              { height:6.5em; background-color:gray; font-weight:bold; }
-.asm #detail #register .label       { font-size:.6em; text-align:center; width:100%; }
-.asm #detail #register .value       { background-color:#030; color:#0f0; text-align:center; height:1.4em;}
-.asm #detail #abcs                  { margin:.2em .5em; }
-.asm #detail #abcs>div              { width:2.1em; height:2em; background-color:yellow; border-radius:.5em;
-                                      float:left; margin-right:.1em; }
-.asm #detail #regpc                 { margin-left:.5em; width:8.7em; height:1.2em; background-color:yellow; border-radius:.25em; }
-.asm #detail #regpc .label          { width:2em; margin-top:.5em; float:left; }
-.asm #detail #flags                 { margin:.2em .5em;}
-.asm #detail #flags>div             { width:1em; height:2em; background-color:yellow; border-radius:.25em; float:left;
-                                      margin-right:.1em; }
-
-.asm .a                             { text-align:center; font-size:1em; }
-.asm .a.arg.v:before                { content:'#'; }
-.asm .a.arg.x:after                 { content:',X'; }
-.asm .a.arg.y:after                 { content:',Y'; }
-.asm .a.arg.i:before                { content:'('; }
-.asm .a.arg.i:after                 { content:')'; }
-.asm .a.arg.ix:before               { content:'('; }
-.asm .a.arg.ix:after                { content:',X)'; }
-.asm .a.arg.iy:before               { content:'('; }
-.asm .a.arg.iy:after                { content:'),Y'; }
 .asm #detail #source .a             { padding:0; color:black; font-weight:normal; }
 .asm #detail #source #labels .a     { width:3em; }
 .asm #detail #source #ops  .a       { font-size:.8em; width:2.5em; margin:.2em 0; }
@@ -76,8 +54,38 @@
 .asm #detail #source #args .a       { width:4.8em; }
 .asm #central #code #lines .label   { margin:.1em; background-color:#f88; border-radius:.25em; padding:.1em; width:3.8em;
                                       color:#fee; font-weight:bold; position:absolute; top:0; left:0;}
+.asm #central #code #lines .label.e { background-color:#f88; width:5em; color:#fee; left:7.3em;}
 .asm #central #code #lines .op      { margin:.1em; background-color:#90cce0; border-radius:.25em; padding:.1em; width:3em;
                                       color:#eff; font-weight:bold; position:absolute; top:0; left:4em;
                                       text-transform:lowercase;}
 .asm #central #code #lines .arg     { margin:.1em; background-color:#82ca82; border-radius:.25em; padding:.1em; width:5em;
                                       color:#efe; font-weight:bold; position:absolute; top:0; left:7.3em; }
+.asm .a                             { text-align:center; font-size:1em; }
+.asm .a.arg:before                  { content:'0x'; }
+.asm .a.arg.v:before                { content:'#0x'; }
+.asm .a.arg.x:after                 { content:',X'; }
+.asm .a.arg.y:after                 { content:',Y'; }
+.asm .a.arg.i:before                { content:'(0x'; }
+.asm .a.arg.i:after                 { content:')'; }
+.asm .a.arg.ix:before               { content:'(0x'; }
+.asm .a.arg.ix:after                { content:',X)'; }
+.asm .a.arg.iy:before               { content:'(0x'; }
+.asm .a.arg.iy:after                { content:'),Y'; }
+.asm #detail #register              { height:6.5em; background-color:gray; font-weight:bold; cursor:pointer;}
+.asm #detail #register .label       { font-size:.6em; text-align:center; width:100%; }
+.asm #detail #register .value       { background-color:#030; color:#0f0; text-align:center; height:1.4em;}
+.asm #detail #abcs                  { margin:.2em .5em; }
+.asm #detail #abcs>div              { width:2.1em; height:2em; background-color:yellow; border-radius:.5em;
+                                      float:left; margin-right:.1em; }
+.asm #detail #regpc                 { margin-left:.5em; width:8.7em; height:1.2em; background-color:yellow; border-radius:.25em;}
+.asm #detail #regpc .label          { width:2em; margin-top:.5em; float:left; }
+.asm #detail #flags                 { margin:.2em .5em;}
+.asm #detail #flags>div             { width:1em; height:2em; background-color:yellow; border-radius:.25em; float:left;
+                                      margin-right:.1em; }
+/*---------------------------------------------------------------------------------------------------------------------------*/
+.asm #binary                        { width:100%; height:100%; position:absolute; top:0; left:0; background-color:rgba(0,0,0,0.8);
+                                      display:none;}
+.asm #binary>div                    { width:80%; height:80%; margin:5% 10%; background-color:rgba(0,50,10,0.8); color:#0F0;
+                                      font-weight:bold; font-size:.4em; font-family: "Courier New" Courier monospace; border-radius:.5em;
+                                      overflow:auto; cursor:pointer;  }
+.asm #binary p                      { white-space:nowrap; margin:0 .5em;}

@@ -32,6 +32,84 @@
             var settings = helpers.settings($this);
             settings.context.onQuit({'status':'success','score':settings.score});
         },
+        loader: {
+            css: function($this) {
+                var settings = helpers.settings($this), cssAlreadyLoaded = false, debug = "";
+                if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
+
+                if (settings.context.onload) { settings.context.onload(true); }
+
+                $("head").find("link").each(function() {
+                    if ($(this).attr("href").indexOf("activities/"+settings.name+"/"+settings.css) != -1) { cssAlreadyLoaded = true; }
+                });
+
+                if(cssAlreadyLoaded) { helpers.loader.template($this); }
+                else {
+                    $("head").append("<link>");
+                    var css = $("head").children(":last");
+                    var csspath = "activities/"+settings.name+"/"+settings.css+debug;
+
+                    css.attr({ rel:  "stylesheet", type: "text/css", href: csspath }).ready(
+                        function() { helpers.loader.template($this); });
+                }
+            },
+            template: function($this) {
+                var settings = helpers.settings($this), debug = "";
+                if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
+
+                // Load the template
+                var templatepath = "activities/"+settings.name+"/"+settings.template+debug;
+                $this.load( templatepath, function(response, status, xhr) {
+                    if (status=="error") {
+                        settings.context.onquit({'status':'error', 'statusText':templatepath+": "+xhr.status+" "+xhr.statusText});
+                    }
+                    else { helpers.loader.build($this); }
+                });
+            },
+            build: function($this) {
+                var settings = helpers.settings($this);
+                if (settings.context.onLoad) { settings.context.onLoad(false); }
+
+                // Prepare the questions
+                if (!settings.number || settings.number>settings.data.length) { settings.number = settings.data.length; }
+                for (var i=0; i<settings.number; i++) {
+                    var questionid = i;
+                    if (settings.number!=settings.data.length) {
+                        do {
+                            questionid = Math.floor(Math.random()*settings.data.length);
+                            var vAlreadyUsed = false;
+                            for (var j=0; j<settings.questions.length; j++) {
+                                    if (settings.questions[j]==questionid) { vAlreadyUsed = true; }
+                            }
+                        } while (vAlreadyUsed);
+                    }
+                    settings.questions.push(questionid);
+                }
+
+                // Resize the template
+                $this.css("font-size", Math.floor($this.height()/12)+"px");
+
+                if (settings.question) {
+                    if (settings.question.format) { $this.find("#text").css("padding-left",settings.question.format[0]+"%")
+                                                                       .css("width",settings.question.format[1]+"%"); }
+                    if (settings.question.font) { $this.find("#text>div").css("font-size",settings.question.font+"em"); }
+                }
+
+                // Locale handling
+                $this.find("h1#label").html(settings.label);
+                $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); });
+
+                if (settings.dataloc) {
+                    for (var i=0; i<settings.dataloc.length; i++) {
+                        settings.data[i].question = settings.dataloc[i].question;
+                    }
+                }
+
+                // Decoration
+                if (settings.fgl) { $this.find("#fgl").html("<img src='res/img/"+settings.fgl+".svg'/>"); }
+                if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+            }
+        },
         // Update the timer
         timer:function($this) {
             var settings = helpers.settings($this);
@@ -44,43 +122,6 @@
             if (settings.context.onSeconds) { settings.context.onSeconds(settings.timer.value); }
             settings.timer.id = setTimeout(function() { helpers.timer($this); }, 1000);
         },
-        // Handle the elements sizes and show the activity
-        resize: function($this) {
-            var settings = helpers.settings($this);
-
-            // Send the onLoad callback
-            if (settings.context.onLoad) { settings.context.onLoad(false); }
-
-            // Prepare the questions
-            if (!settings.number || settings.number>settings.data.length) { settings.number = settings.data.length; }
-            for (var i=0; i<settings.number; i++) {
-                var questionid = i;
-                if (settings.number!=settings.data.length) {
-                    do {
-                        questionid = Math.floor(Math.random()*settings.data.length);
-                        var vAlreadyUsed = false;
-                        for (var j=0; j<settings.questions.length; j++) {
-                                if (settings.questions[j]==questionid) { vAlreadyUsed = true; }
-                        }
-                    } while (vAlreadyUsed);
-                }
-                settings.questions.push(questionid);
-            }
-
-            // Resize the template
-            $this.css("font-size", Math.floor($this.height()/16)+"px");
-
-            // Locale handling
-            $this.find("h1#label").html(settings.label);
-            $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); });
-
-            // Decoration
-            if (settings.fgl) { $this.find("#fgl").html("<img src='res/img/"+settings.fgl+".svg'/>"); }
-
-            // Handle spash panel
-            if (settings.nosplash) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
-            else                   { $this.find("#intro").show(); }
-        },
         // Build the question
         build: function($this) {
             var settings = helpers.settings($this);
@@ -90,7 +131,7 @@
             $this.find("#submit").show().attr("class","");
             $this.find("#board").attr("class",classvalue);
             $this.find("#board #responses").html("");
-            $this.find("#board #text").html(settings.data[settings.it].question);
+            $this.find("#board #text>div").html(settings.data[settings.it].question);
 
             settings.questmul = settings.multiple;
             if (settings.data[settings.it].good.length>1) { settings.questmul = true; }
@@ -102,45 +143,10 @@
             $(settings.r).each(function(_index) {
                 var html = "<div id=\""+_index+"\" ";
                 html+="onclick=\"$(this).closest('.mcq').mcq('click',this);\" ";
-                html+="ontouchstart=\"$(this).closest('.mcq').mcq('click',this);event.preventDefault();\" ";
-                html+=">"+this+"</div>";
+                html+="ontouchstart=\"$(this).closest('.mcq').mcq('click',this);event.preventDefault();\">";
+                html+="<div style='font-size:"+(settings.data[settings.it].font?settings.data[settings.it].font:1)+"em;'>";
+                html+=this+"</div></div>";
                 $this.find("#board #responses").append(html);
-            });
-        },
-        // Load the different elements of the activity
-        load: function($this) {
-            var settings = helpers.settings($this);
-            var debug = "";
-            if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
-
-            // Send the onLoad callback
-            if (settings.context.onLoad) { settings.context.onLoad(true); }
-
-            // Load the template
-            var templatepath = "activities/"+settings.name+"/"+settings.template+debug;
-            $this.load( templatepath, function(response, status, xhr) {
-                if (status=="error") {
-                    settings.context.onQuit({'status':'error', 'statusText':templatepath+": "+xhr.status+" "+xhr.statusText});
-                }
-                else {
-                    var cssAlreadyLoaded = false;
-                    $("head").find("link").each(function() {
-                        if ($(this).attr("href").indexOf("activities/"+settings.name+"/"+settings.css) != -1) { cssAlreadyLoaded = true; }
-                    });
-
-                    if(cssAlreadyLoaded) {
-                        helpers.resize($this);
-                    }
-                    else {
-                        // Load the css
-                        $("head").append("<link>");
-                        var css = $("head").children(":last");
-                        var csspath = "activities/"+settings.name+"/"+settings.css+debug;
-                        css.attr({ rel:  "stylesheet", type: "text/css", href: csspath }).ready(function() {
-                            helpers.resize($this);
-                        });
-                    }
-                }
             });
         }
     };
@@ -179,7 +185,7 @@
                         $this.removeClass();
                         if ($settings.class) { $this.addClass($settings.class); }
                         helpers.settings($this.addClass(defaults.name), $settings);
-                        helpers.load($this);
+                        helpers.loader.css($this);
                     }
                 });
             },
@@ -229,7 +235,7 @@
                 settings.context.onQuit({'status':'abort'});
             },
             next: function() {
-                $(this).find("#intro").hide();
+                $(this).find("#splash").hide();
                 // CHECK IF THERE IS AN EVENT BEFORE QUESTION
                 if (false) {
                 }

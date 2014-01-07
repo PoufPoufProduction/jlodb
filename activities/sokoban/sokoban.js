@@ -33,6 +33,74 @@
             var settings = helpers.settings($this);
             settings.context.onQuit({'status':'success','score':settings.score});
         },
+        loader: {
+            css: function($this) {
+                var settings = helpers.settings($this), cssAlreadyLoaded = false, debug = "";
+                if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
+
+                if (settings.context.onload) { settings.context.onload(true); }
+
+                $("head").find("link").each(function() {
+                    if ($(this).attr("href").indexOf("activities/"+settings.name+"/"+settings.css) != -1) { cssAlreadyLoaded = true; }
+                });
+
+                if(cssAlreadyLoaded) { helpers.loader.template($this); }
+                else {
+                    $("head").append("<link>");
+                    var css = $("head").children(":last");
+                    var csspath = "activities/"+settings.name+"/"+settings.css+debug;
+
+                    css.attr({ rel:  "stylesheet", type: "text/css", href: csspath }).ready(
+                        function() { helpers.loader.template($this); });
+                }
+            },
+            template: function($this) {
+                var settings = helpers.settings($this), debug = "";
+                if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
+
+                // Load the template
+                var templatepath = "activities/"+settings.name+"/"+settings.template+debug;
+                $this.load( templatepath, function(response, status, xhr) {
+                    if (status=="error") {
+                        settings.context.onquit({'status':'error', 'statusText':templatepath+": "+xhr.status+" "+xhr.statusText});
+                    }
+                    else { helpers.loader.build($this); }
+                });
+            },
+            build: function($this) {
+                var settings = helpers.settings($this);
+                if (settings.context.onLoad) { settings.context.onLoad(false); }
+                $this.css("font-size", Math.floor($this.height()/16)+"px");
+
+                // Convert from xsb
+                if (!settings.board && settings.xsb) { helpers.xsb($this); }
+
+                // compute scale and offset if not given
+                var xmin=0, xmax=0, ymin=0, ymax=0;
+                for (var j=0; j<settings.board.length; j++) for (var i=0; i<settings.board[j].length; i++) if (settings.board[j][i]) {
+                    if (i+j<xmin) { xmin = i+j; }
+                    if (i+j>xmax) { xmax = i+j; }
+                    if (i-j<ymin) { ymin = i-j; }
+                    if (i-j>ymax) { ymax = i-j; }
+                }
+                ymin+=settings.board.length-1; ymax+=settings.board.length-1;
+
+                // +8 : 4 for the tile thickness, 4 for the robot head in the top of the board
+                var vx = ((xmax-xmin)*2)+8+settings.padding, vy = (ymax-ymin+2)*4, vv = Math.max(vx,vy);
+                settings.offset=[-2*ymin+(vv-vy)/4+settings.margin/2,1+settings.padding/2-2*xmin+(vv-vx)/6+settings.margin/2];
+                settings.scale=(28/(vv+settings.margin*2));
+                $this.find("#tiles").css("font-size", settings.scale+"em");
+
+                // Build the board
+                settings.tiles.size=[settings.board[0].length,settings.board.length];
+
+                // Locale handling
+                $this.find("h1#label").html(settings.label);
+                if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
+                if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                helpers.build($this);
+            }
+        },
         tiles : {
             get: function($this, _pos) {
                 var settings = helpers.settings($this);
@@ -220,48 +288,6 @@
                 $box.animate({"top":Math.floor(20/settings.scale)+"em"},4*settings.delay,function(){});
             }
         },
-        // Handle the elements sizes and show the activity
-        resize: function($this) {
-            var settings = helpers.settings($this);
-
-            // Send the onLoad callback
-            if (settings.context.onLoad) { settings.context.onLoad(false); }
-
-            // Resize the template
-            $this.css("font-size", Math.floor($this.height()/16)+"px");
-
-            // Convert from xsb
-            if (!settings.board && settings.xsb) { helpers.xsb($this); }
-
-            // compute scale and offset if not given
-            var xmin=0, xmax=0, ymin=0, ymax=0;
-            for (var j=0; j<settings.board.length; j++) for (var i=0; i<settings.board[j].length; i++) if (settings.board[j][i]) {
-                if (i+j<xmin) { xmin = i+j; }
-                if (i+j>xmax) { xmax = i+j; }
-                if (i-j<ymin) { ymin = i-j; }
-                if (i-j>ymax) { ymax = i-j; }
-            }
-            ymin+=settings.board.length-1; ymax+=settings.board.length-1;
-
-            // +8 : 4 for the tile thickness, 4 for the robot head in the top of the board
-            var vx = ((xmax-xmin)*2)+8+settings.padding, vy = (ymax-ymin+2)*4, vv = Math.max(vx,vy);
-            settings.offset=[-2*ymin+(vv-vy)/4+settings.margin/2,1+settings.padding/2-2*xmin+(vv-vx)/6+settings.margin/2];
-            settings.scale=(28/(vv+settings.margin*2));
-            $this.find("#tiles").css("font-size", settings.scale+"em");
-
-            // Build the board
-            settings.tiles.size=[settings.board[0].length,settings.board.length];
-
-            // Locale handling
-            $this.find("h1#label").html(settings.label);
-            if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
-
-            // Handle spash panel
-            if (settings.nosplash) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
-            else                   { $this.find("#intro").show(); }
-
-            helpers.build($this);
-        },
         build: function($this) {
             var settings = helpers.settings($this);
 
@@ -286,7 +312,8 @@
                         ret+="top:"+(settings.offset[1]+this.left+this.top)+"em;";
                         ret+="z-index:"+(10+this.left+this.top+(this.value%100>=50?1:0))+";' ";
                         ret+="id='"+(this.left+this.top*settings.tiles.size[0])+"' ";
-                        ret+="class='tile t"+(this.value<10?"00":(this.value<100?"0":""))+this.value+" s"+(this.value%100>=50?"1":"0")+"'";
+                        ret+="class='tile t"+(this.value<10?"00":(this.value<100?"0":""))+this.value+" s"+
+                             (this.value%100>=50?"1":"0")+"'";
                         ret+="><img src='res/img/tileset/iso/set1/";
                         ret+=(this.value<10?"00":(this.value<100?"0":""))+this.value;
                         ret+=".svg'/></div>";
@@ -301,7 +328,8 @@
 
             // Initialize the robots
             for (var i in settings.robots) {
-                var html="<div class='engine' id='robot"+i+"'><div id='img'><img src=''/></div><div id='invert'><img src='res/img/tileset/iso/robot/statinvert.svg'/></div></div>";
+                var html="<div class='engine' id='robot"+i+"'><div id='img'><img src=''/></div><div id='invert'>"+
+                         "<img src='res/img/tileset/iso/robot/statinvert.svg'/></div></div>";
                 $this.find("#tiles").append(html);
                 settings.robots[i].pos = [ settings.robots[i].origin[0], settings.robots[i].origin[1], settings.robots[i].origin[2]];
                 settings.robots[i].update       = helpers.updrobot;
@@ -343,42 +371,6 @@
             // INITIALIZE THE TILES
             settings.tiles.tile9=[false,false,false,false];
 
-        },
-        // Load the different elements of the activity
-        load: function($this) {
-            var settings = helpers.settings($this);
-            var debug = "";
-            if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
-
-            // Send the onLoad callback
-            if (settings.context.onLoad) { settings.context.onLoad(true); }
-
-            // Load the template
-            var templatepath = "activities/"+settings.name+"/"+settings.template+debug;
-            $this.load( templatepath, function(response, status, xhr) {
-                if (status=="error") {
-                    settings.context.onQuit({'status':'error', 'statusText':templatepath+": "+xhr.status+" "+xhr.statusText});
-                }
-                else {
-                    var cssAlreadyLoaded = false;
-                    $("head").find("link").each(function() {
-                        if ($(this).attr("href").indexOf("activities/"+settings.name+"/"+settings.css) != -1) { cssAlreadyLoaded = true; }
-                    });
-
-                    if(cssAlreadyLoaded) {
-                        helpers.resize($this);
-                    }
-                    else {
-                        // Load the css
-                        $("head").append("<link>");
-                        var css = $("head").children(":last");
-                        var csspath = "activities/"+settings.name+"/"+settings.css+debug;
-                        css.attr({ rel:  "stylesheet", type: "text/css", href: csspath }).ready(function() {
-                            helpers.resize($this);
-                        });
-                    }
-                }
-            });
         },
         // UPDATE THE ZINDEX OF EVERY ROBOTS
         zindex: function(_elt, _dom) {
@@ -622,7 +614,7 @@
                         $this.removeClass();
                         if ($settings.class) { $this.addClass($settings.class); }
                         helpers.settings($this.addClass(defaults.name), $settings);
-                        helpers.load($this);
+                        helpers.loader.css($this);
                     }
                 });
             },
@@ -637,7 +629,7 @@
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 settings.interactive = true;
-                $this.find("#intro").hide();
+                $this.find("#splash").hide();
             },
             reset: function() {
                 var $this = $(this) , settings = helpers.settings($this);

@@ -63,14 +63,16 @@
                 </div>
                 <div id="args"></div>
             </div>
-            <div id="register">
+            <div id="register" ontouchstart="$(this).closest('.asm').asm('code');event.preventDefault();"
+                               onclick="$(this).closest('.asm').asm('code');">
                 <div id="abcs">
                     <div id="rega"><div class="label">A</div><div class="value"></div></div>
                     <div id="regx"><div class="label">X</div><div class="value"></div></div>
                     <div id="regy"><div class="label">Y</div><div class="value"></div></div>
                     <div id="regs"><div class="label">S</div><div class="value"></div></div>
                 </div>
-                <div id="regpc"><div class="label">PC</div><div class="value"></div></div>
+                <div id="regpc">
+                    <div class="label">PC</div><div class="value"></div></div>
                 <div id="flags">
                     <div id="f0"><div class="label">N</div><div class="value"></div></div>
                     <div id="f1"><div class="label">V</div><div class="value"></div></div>
@@ -110,11 +112,13 @@
                 </div>
             </div>
         </div>
-
     </div>
 
-    <div id="intro" ontouchstart="$(this).closest('.asm').asm('next');event.preventDefault();"
-                    onclick="$(this).closest('.asm').asm('next');"><div>
+    <div id="binary"><div ontouchstart="$(this).parent().hide();event.preventDefault();"
+                          onclick="$(this).parent().hide();"></div></div>
+
+    <div id="splash" ontouchstart="$(this).closest('.asm').asm('next');event.preventDefault();"
+                     onclick="$(this).closest('.asm').asm('next');"><div>
         <div class="text">
             <h1 id="label">assembler</h1>
             <div id="guide">
