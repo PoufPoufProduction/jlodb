@@ -32,6 +32,7 @@
                     <div class="a op" id="sed">SED</div>
                     <div class="a op" id="inc">INC</div>
                     <div class="a op" id="jmp">JMP</div>
+                    <div class="a op" id="jsr">JSR</div>
                     <div class="a op" id="lda">LDA</div>
                     <div class="a op" id="ldx">LDX</div>
                     <div class="a op" id="ldy">LDY</div>
@@ -63,15 +64,15 @@
                 </div>
                 <div id="args"></div>
             </div>
-            <div id="register" ontouchstart="$(this).closest('.asm').asm('code');event.preventDefault();"
-                               onclick="$(this).closest('.asm').asm('code');">
+            <div id="register">
                 <div id="abcs">
                     <div id="rega"><div class="label">A</div><div class="value"></div></div>
                     <div id="regx"><div class="label">X</div><div class="value"></div></div>
                     <div id="regy"><div class="label">Y</div><div class="value"></div></div>
                     <div id="regs"><div class="label">S</div><div class="value"></div></div>
                 </div>
-                <div id="regpc">
+                <div id="regpc" ontouchstart="$(this).closest('.asm').asm('code');event.preventDefault();"
+                                onclick="$(this).closest('.asm').asm('code');">
                     <div class="label">PC</div><div class="value"></div></div>
                 <div id="flags">
                     <div id="f0"><div class="label">N</div><div class="value"></div></div>
@@ -82,6 +83,14 @@
                     <div id="f5"><div class="label">I</div><div class="value"></div></div>
                     <div id="f6"><div class="label">Z</div><div class="value"></div></div>
                     <div id="f7"><div class="label">C</div><div class="value"></div></div>
+                </div>
+                <div id="check">
+                    <div id="agood" class="a"><img src="res/img/icon/checkgood.svg"/></div>
+                    <div id="awrong" class="a"><img src="res/img/icon/checkwrong.svg"/></div>
+                    <div id="xgood" class="x"><img src="res/img/icon/checkgood.svg"/></div>
+                    <div id="xwrong" class="x"><img src="res/img/icon/checkwrong.svg"/></div>
+                    <div id="ygood" class="y"><img src="res/img/icon/checkgood.svg"/></div>
+                    <div id="ywrong" class="y"><img src="res/img/icon/checkwrong.svg"/></div>
                 </div>
             </div>
         </div>
@@ -108,11 +117,14 @@
                 <div id="buttons">
                     <div id="speed"><img src="res/img/control/x3.svg"/></div>
                     <div id="stop"><img src="res/img/control/stop.svg"/></div>
-                    <div id="play"><img src="res/img/control/play.svg"/></div>
+                    <div id="play" ontouchstart="$(this).closest('.asm').asm('play');event.preventDefault();"
+                                   onclick="$(this).closest('.asm').asm('play');"><img src="res/img/control/play.svg"/></div>
                 </div>
             </div>
         </div>
     </div>
+
+    <div id="mask"></div>
 
     <div id="binary"><div ontouchstart="$(this).parent().hide();event.preventDefault();"
                           onclick="$(this).parent().hide();"></div></div>
