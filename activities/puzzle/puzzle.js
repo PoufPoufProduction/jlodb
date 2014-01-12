@@ -88,7 +88,7 @@
                 if (settings.context.onLoad) { settings.context.onLoad(false); }
 
                 // Resize the template
-                $this.css("font-size", Math.floor($this.height()/16)+"px");
+                $this.css("font-size", Math.floor($this.height()/12)+"px");
                 if (settings.rotation==0) { $this.find("#norot").show(); }
 
                 // COMPUTE RATIO

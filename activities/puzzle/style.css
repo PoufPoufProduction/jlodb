@@ -3,25 +3,25 @@
 .puzzle div#splash>div                  { background-image:url("../../res/img/banners/puzzle.svg"); }
 .puzzle div#splash .text                { width:50%; float:right; }
 .puzzle div#splash .text #guide         { font-size:.8em; margin:.5em 1em .5em 0; }
-.puzzle div#timg                        { position:absolute; width:1em; height:1em; font-size:10em; top:.05em; left:.15em;
+.puzzle div#timg                        { position:absolute; width:1em; height:1em; font-size:7.5em; top:.05em; left:.1em;
                                           border:.01em solid #e1a94b; background-color:rgba(255,255,255,0.5); border-radius:.1em;
                                           display:none; overflow:hidden;}
-.puzzle div#ttext                       { position:absolute; width:9em; height:9em; font-size:1em; top:.5em; left:1.5em;
+.puzzle div#ttext                       { position:absolute; width:9em; height:9em; font-size:0.75em; top:.5em; left:1em;
                                           border:.1em solid #e1a94b; background-color:rgba(255,255,255,0.5); border-radius:1em;
                                           overflow:hidden; padding:.5em; display:none;}
 .puzzle div#board                       { position:relative; z-index:2;}
-.puzzle div#submit                      { font-size:2em; height:1em;width:1em; cursor:pointer;
-                                          position:absolute; top:7.04em; left:0em; z-index:3; }
-.puzzle div#norot                       { font-size:2em; height:1em;width:1em; cursor:help;
-                                          position:absolute; top:7.04em; left:1.05em; z-index:3; display:none; }
+.puzzle div#submit                      { font-size:1.5em; height:1em;width:1em; cursor:pointer;
+                                          position:absolute; top:7em; left:0em; z-index:3; }
+.puzzle div#norot                       { font-size:1.5em; height:1em;width:1em; cursor:help;
+                                          position:absolute; top:7em; left:1.1em; z-index:3; display:none; }
 .puzzle div#submit>img                  { display:none; }
 .puzzle div#submit #subvalid            { display:inline; }
 .puzzle div#submit.good #subvalid       { display:none; }
 .puzzle div#submit.wrong #subvalid      { display:none; }
 .puzzle div#submit.good #subgood        { display:inline; }
 .puzzle div#submit.wrong #subwrong      { display:inline; }
-.puzzle div#valid                       { position:absolute; background-color:rgba(255,255,255,0.8);
-                                          display:none; top:1em; left:3em; font-size:2.2em; border-radius:.25em;z-index:4; }
+.puzzle div#valid                       { font-size:1.6em; position:absolute; background-color:rgba(255,255,255,0.8);
+                                          display:none; top:1em; left:3em;  border-radius:.25em; z-index:5; }
 .puzzle div#valid div.button            { width:1.8em; height:1.8em; margin:.1em; cursor:pointer; }
 
 
