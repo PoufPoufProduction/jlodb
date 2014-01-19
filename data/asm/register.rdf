@@ -1,0 +1,403 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dct="http://purl.org/dc/terms/">
+
+    <rdf:Description>
+        <dct:identifier>001</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comprendre le fonctionnement des registres.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["lda"],"args":[{"value":"01","type":"v"}],"nblines":1,"valid":{"a":"01"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Un registre est une petite case du processeur qui peut contenir une valeur numérique entière comprise entre 0 et 255 (0x00 et 0xFF en hexadécimal).","","L'opérateur LDA stocke une valeur dans le registre A. Elle s'utilise avec la syntaxe suivante :","LDA [valeur]","","Chargez la valeur 0x01 dans le registre A.","A la fin de l'exécution du programme, le registre A doit contenir la valeur 0x01."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>002</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comprendre le fonctionnement des registres.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["lda"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"}],"nblines":2,"valid":{"a":"02","mem":{"1000":"a901a902"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["En chargeant une valeur dans le registre A, l'opérateur LDA écrase la valeur précédente.","","Chargez la valeur 0x01 dans le registre A, puis la valeur 0x02 dans ce même registre.","","A la fin de l'exécution, le registre A contient la valeur 0x02 : la valeur 0x01, précédemment stockée, a disparu."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>003</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comprendre le fonctionnement des registres.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["lda"],"args":[{"value":"00","type":"v"}],"nblines":1,"header":[{"label":"init","value":"LDA #0x05","code":"A905","rts":false}],"valid":{"a":"00"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["La première ligne du programme est un code précompilé imposé par l'exercice. Dans le cas présent, la ligne 'init' change la valeur du registre A.","","Ecrasez la valeur du registre A imposée par la ligne 'init' en l'initialisant à 0x00."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>004</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comprendre le fonctionnement des registres.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["ldx"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":1,"valid":{"x":"02"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["De la même façon que LDA charge une valeur dans le registre A, l'opérateur LDX charge une valeur dans le registre X.","","Chargez la valeur 0x02 dans le registre X."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>005</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comprendre le fonctionnement des registres.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["lda","ldx"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":2,"valid":{"a":"ff","x":"02"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez les valeurs suivantes :",". 0xFF dans le registre A",". 0x02 dans le registre X."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>006</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comprendre le fonctionnement des registres.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["ldy"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":1,"valid":{"y":"02"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["De la même façon que LDX charge une valeur dans le registre X, l'opérateur LDY charge une valeur dans le registre Y.","","Chargez la valeur 0x02 dans le registre Y."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>007</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comprendre le fonctionnement des registres.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["lda","ldx","ldy"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":3,"valid":{"a":"a8","x":"01","y":"02"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez les 3 registres du processeur.",". 0xA8 dans le registre A",". 0x01 dans le registre X",". 0x02 dans le registre Y."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>008</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comprendre le fonctionnement des registres.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["lda","ldx","ldy"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":3,"valid":{"a":"ff","x":"ff","y":"ff"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez les 3 registres du processeur.",". 0xFF dans le registre A",". 0xFF dans le registre X",". 0xFF dans le registre Y."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>010</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comprendre le fonctionnement des registres.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["lda","tax"],"args":[{"value":"ff","type":"v"}],"nblines":2,"valid":{"a":"ff","x":"ff"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Contrairement à l'opérateur LDA qui s'utilise avec une valeur, l'instruction TAX s'utilise sans argument, c'est à dire que l'opérateur TAX est seul sur sa ligne.","","TAX copie la valeur contenue dans le registre A vers le registre X.","","Chargez la valeur 0xFF dans le registre A puis copiez cette valeur vers le registre X."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>011</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comprendre le fonctionnement des registres.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["lda","tax"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":2,"valid":{"x":"a8"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez la valeur 0xA8 dans le registre X."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>012</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comprendre le fonctionnement des registres.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["lda","tax"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":3,"valid":{"a":"02","x":"01"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez les valeurs suivantes :",". 0x01 dans le registre X.",". 0x02 dans le registre A"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>013</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comprendre le fonctionnement des registres.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["lda","tax"],"args":[{"value":"00","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":3,"valid":{"a":"00","x":"ff"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez les valeurs suivantes :",". 0x00 dans le registre A",". 0xFF dans le registre X.","","Si le registre A ne contient pas la bonne valeur à la fin de l'exécution, pensez à l'ordre des opérations."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>014</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comprendre le fonctionnement des registres.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["lda","tax"],"args":[{"value":"00","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":3,"valid":{"a":"02","x":"ff"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez les valeurs suivantes :",". 0x02 dans le registre A",". 0xFF dans le registre X."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>020</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comprendre le fonctionnement des registres.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["lda","tay"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":2,"valid":{"a":"01","y":"01"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["L'instruction TAY copie la valeur du registre A vers le registre Y.","","Chargez les valeurs suivantes :",". 0x01 dans le registre A",". 0x01 dans le registre Y."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>021</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comprendre le fonctionnement des registres.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["lda","tay"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":3,"valid":{"a":"02","y":"01"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez les valeurs suivantes :",". 0x02 dans le registre A",". 0x01 dans le registre Y."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>022</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comprendre le fonctionnement des registres.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["lda","tay","tax"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":4,"valid":{"a":"02","x":"01","y":"01"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez les valeurs suivantes :",". 0x02 dans le registre A",". 0x01 dans le registre X.",". 0x01 dans le registre Y."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>023</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comprendre le fonctionnement des registres.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["lda","tay","tax"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":4,"valid":{"a":"02","x":"01","y":"02"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez les valeurs suivantes :",". 0x02 dans le registre A",". 0x01 dans le registre X.",". 0x02 dans le registre Y."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>024</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comprendre le fonctionnement des registres.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["lda","tay","tax"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":5,"valid":{"a":"FF","x":"01","y":"02"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez les valeurs suivantes :",". 0xFF dans le registre A",". 0x01 dans le registre X.",". 0x02 dans le registre Y."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>030</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comprendre le fonctionnement des registres.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["ldx","txa"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":2,"valid":{"a":"FF","x":"FF"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["L'instruction TXA copie la valeur du registre X vers le registre A.","","Chargez les valeurs suivantes :",". 0xFF dans le registre A",". 0xFF dans le registre X."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>031</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comprendre le fonctionnement des registres.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["ldx","txa"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":3,"valid":{"a":"A8","x":"FF"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez les valeurs suivantes :",". 0xA8 dans le registre A",". 0xFF dans le registre X."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>032</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comprendre le fonctionnement des registres.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["ldx","tay","txa"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":3,"valid":{"a":"02","x":"02","y":"02"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Il n'existe pas d'opération pour transférer une valeur depuis le registre X vers le registre Y. Il faut passer par une variable intermédiaire.","","Dans le cas présent, nous proposons d'utiliser le registre A comme valeur intermédiaire.","","Chargez, dans cet ordre, les valeurs suivantes :",". 0x02 dans le registre X.",". 0x02 dans le registre A.",". 0x02 dans le registre Y."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>033</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comprendre le fonctionnement des registres.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["ldx","tay","txa"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":3,"valid":{"y":"a8"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez les valeurs suivantes :",". 0xA8 dans le registre Y."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>034</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comprendre le fonctionnement des registres.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["ldx","tay","txa"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":4,"valid":{"y":"01","x":"ff"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez les valeurs suivantes :",". 0xFF dans le registre X",". 0x01 dans le registre Y."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>035</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comprendre le fonctionnement des registres.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["ldx","tay","txa"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":5,"valid":{"y":"02","a":"A8"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez les valeurs suivantes :",". 0xA8 dans le registre A",". 0x02 dans le registre Y."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>036</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comprendre le fonctionnement des registres.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["ldx","tay","txa"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":6,"valid":{"a":"02","x":"ff","y":"a8"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez les valeurs suivantes :",". 0x02 dans le registre A",". 0xFF dans le registre X.",". 0xA8 dans le registre Y."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>040</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comprendre le fonctionnement des registres.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["ldy","tax","tya"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":2,"valid":{"a":"A8"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["L'instruction TYA copie la valeur contenue dans le registre Y vers le registre A.","","Chargez les valeurs suivantes :",". 0xA8 dans le registre A."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>041</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comprendre le fonctionnement des registres.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["ldy","tax","tya"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":3,"valid":{"x":"A8"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez les valeurs suivantes :",". 0xA8 dans le registre X."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>042</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comprendre le fonctionnement des registres.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["ldy","tax","tya"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":5,"valid":{"x":"02","a":"ff"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez les valeurs suivantes :",". 0xFF dans le registre A.",". 0x02 dans le registre X."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>043</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comprendre le fonctionnement des registres.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["ldy","tax","tya"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":6,"valid":{"a":"02","x":"ff","y":"a8"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez les valeurs suivantes :",". 0x02 dans le registre A",". 0xFF dans le registre X.",". 0xA8 dans le registre Y."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>044</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comprendre le fonctionnement des registres.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["ldy","tax","tya"],"args":[{"value":"00","type":"v"},{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"}],"nblines":3,"header":[{"label":"init","value":["LDA #0x01","LDX #0xFF","LDY #0xA8"],"code":"A9 01 A0 A8 A2 FF","rts":false}],"valid":{"a":"00","x":"00","y":"00"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["La ligne 'init' change la valeurs des différents registres.","","Initialisez tous les registres à 0x00."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>045</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comprendre le fonctionnement des registres.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["lda","tax","tya","txa","tay"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":5,"valid":{"a":"ff","x":"02","y":"a8"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez les valeurs suivantes :",". 0xFF dans le registre A",". 0x02 dans le registre X.",". 0xA8 dans le registre Y."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>046</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comprendre le fonctionnement des registres.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["ldx","tax","tya","txa","tay"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":6,"valid":{"a":"ff","x":"02","y":"a8"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez les valeurs suivantes :",". 0xFF dans le registre A",". 0x02 dans le registre X.",". 0xA8 dans le registre Y."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>047</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comprendre le fonctionnement des registres.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["ldy","tax","tya","txa","tay"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":6,"valid":{"a":"ff","x":"02","y":"a8"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez les valeurs suivantes :",". 0xFF dans le registre A",". 0x02 dans le registre X.",". 0xA8 dans le registre Y."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+
+</rdf:RDF>
+

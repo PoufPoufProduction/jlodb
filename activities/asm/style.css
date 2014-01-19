@@ -1,9 +1,9 @@
 .asm .both *                        { overflow:visible; }
 .asm                                { background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat;}
-.asm div#splash>div                 { /* background-image:url("../../res/img/banners/sokoban.svg");*/ }
-.asm div#splash .text               { width:35%; float:right; }
-.asm div#splash .text h1            { text-align:right; padding-right:.5em; }
-.asm div#splash #guide              { font-size:.9em; margin-right:.5em; }
+.asm div#splash>div                 { background-image:url("../../res/img/banners/asm.svg"); }
+.asm div#splash .text               { width:45%; float:right; }
+.asm div#splash .text h1            { font-size:1.2em; text-align:right; padding-right:.5em; }
+.asm div#splash #guide              { font-size:.8em; margin-right:.5em; }
 .asm div#board                      { font-size:.5em; width:105%; }
 .asm div#board>div                  { float:left; }
 /*---------------------------------------------------------------------------------------------------------------------------*/
@@ -12,9 +12,8 @@
                                       padding:.2em; border-radius:.5em; line-height:.8em; }
 .asm #screens #output pre           { overflow:visible; }
 .asm #screens #canvas               { width:12em; height:12em; background-color:black; border-radius:.5em; }
-.asm #screens canvas                { width:100%; height:100%; }
-.asm #screens .hp #canvas           { height:8em; }
-.asm #screens .gb #canvas           { height:10.8em; }
+.asm #screens.s2 #canvas            { height:8em; }
+.asm #screens.s3 #canvas            { height:10.8em; }
 .asm #screens #keypad               { width:12em; height:4em; background-color:white; border-radius:.5em; position:relative; }
 .asm #screens #keypad>div           { position:absolute; width:1.7em; height:1.7em; cursor:pointer; }
 .asm #screens #keypad>div.b         { width:2em; height:2em; border-radius:1em; }
@@ -25,8 +24,9 @@
 .asm #screens #keypad #a            { top:1em; left:7em; }
 .asm #screens #keypad #b            { top:1em; left:9.4em; }
 .asm #screens #controls             { width:12em; height:9.4em; background-color:#AAA; border-radius:.5em; }
-.asm #screens .hp #controls         { height:13.4em; }
-.asm #screens .gb #controls         { height:10.6em; }
+.asm #screens #controls.running     { background-color:#5BB; }
+.asm #screens.s2 #controls          { height:13.4em; }
+.asm #screens.s3 #controls          { height:10.6em; }
 .asm #screens #buttons              { margin-left:.5em; }
 .asm #screens #buttons>div          { font-size:3em; width:1em; height:1em; margin:.1em; float:left; cursor:pointer;}
 /*---------------------------------------------------------------------------------------------------------------------------*/
@@ -35,14 +35,17 @@
 .asm #central #code #lines          { font-size:1.5em; }
 .asm #central #code #lines .line.i  { background-color:#152A15; }
 .asm #central #code #lines .line    { position:relative; height:1.5em; background-color:#112211; }
+.asm #central #code #lines .line.c  { background-color:yellow !important; }
 .asm #central #lines .code          { margin:.1em; background-color:#da5; border-radius:.25em; padding:.1em; width:12.25em;
                                       color:#fea; font-weight:bold; position:absolute; top:0; left:0;}
 .asm #central #lines .code>div      { float:left; }
 .asm #central #lines .codelabel     { width:3.7em; text-align:center; }
 .asm #central #lines .codevalue     { margin-left:1em; font-size:.3em; width:22em; font-family: "Courier New" Courier monospace;}
-.asm #central #exercice             { width:24.75em !important; height:7.9em; background-repeat:repeat; padding:.1em .2em;
+.asm #central #exercice             { width:29.7em !important; height:9.6em; background-repeat:repeat; padding:.1em .2em;
                                       background-image:url("../../res/img/background/book02.svg"); text-align:justify;
-                                      font-family: "Courier New" Courier monospace; font-size:.6em !important;}
+                                      font-family: "Courier New" Courier monospace; font-size:.5em !important;}
+.asm.large #central #exercice       { height:17em; }
+.asm.large #central #code           { height:20em; }
 
 /*---------------------------------------------------------------------------------------------------------------------------*/
 .asm div#board #detail>*            { font-size:.75em;margin:.1em; width:10em; border-radius:.5em;}
@@ -50,24 +53,27 @@
 .asm #detail #source>div            { clear:both; }
 .asm #detail #source .a             { float:left; cursor:pointer; }
 .asm #detail #source #header        { height:2em; }
-.asm #detail #source #labels        { background-color:#f88;}
 .asm #detail #source #ops           { width:11em; background-color:#90cce0; }
-.asm #detail #source #args          { width:11em; background-color:#82ca82; }
-.asm #detail #source .a             { padding:0; color:black; font-weight:normal; }
-.asm #detail #source #labels .a     { width:3em; }
-.asm #detail #source #ops  .a       { font-size:.8em; width:2.5em; margin:.2em 0; }
+.asm #detail #source #args          { width:11em; background-color:#828282; }
+.asm #detail #source .a             { padding:0;  }
+.asm #detail #source #ops  .a       { font-size:.8em; width:2.5em; margin:.2em 0; color:black; font-weight:normal; }
 .asm.hide #detail #source #ops .a.d { display:none; }
 .asm #detail #source #ops  .a.d     { cursor:default; opacity:0.3; }
-.asm #detail #source #args .a       { width:4.8em; }
-.asm #central #code #lines .label   { margin:.1em; background-color:#f88; border-radius:.25em; padding:.1em; width:3.8em;
-                                      color:#fee; font-weight:bold; position:absolute; top:0; left:0;}
-.asm #central #code #lines .label.e { background-color:#f88; width:5em; color:#fee; left:7.3em;}
-.asm #central #code #lines .op      { margin:.1em; background-color:#90cce0; border-radius:.25em; padding:.1em; width:3em;
-                                      color:#eff; font-weight:bold; position:absolute; top:0; left:4em;
-                                      text-transform:lowercase;}
-.asm #central #code #lines .arg     { margin:.1em; background-color:#82ca82; border-radius:.25em; padding:.1em; width:5em;
-                                      color:#efe; font-weight:bold; position:absolute; top:0; left:7.3em; }
-.asm .a                             { text-align:center; font-size:1em; }
+
+.asm #detail #source #args .a       { width:5.0em; }
+
+
+.asm #central #code #lines .label       { margin:.1em; background-color:#f88; border-radius:.25em; padding:.1em; width:3.8em;
+                                          color:#fee; font-weight:bold; position:absolute; top:0; left:0;}
+.asm #central #code #lines .label.arg   { background-color:#f88; width:5em; color:#fee; left:7.3em;}
+.asm #central #code #lines .op          { margin:.1em; background-color:#90cce0; border-radius:.25em; padding:.1em; width:3em;
+                                          color:#eff; font-weight:bold; position:absolute; top:0; left:4em;
+                                          text-transform:lowercase;}
+.asm #central #code #lines .arg         { margin:.1em; background-color:#82ca82; border-radius:.25em; padding:.1em; width:5em;
+                                          color:#efe; font-weight:bold; position:absolute; top:0; left:7.3em; }
+.asm .a                                 { text-align:center; font-size:1em; }
+
+.asm .a.arg                         { background-color:#82ca82; color:#efe; font-weight:bold; }
 .asm .a.arg:before                  { content:'0x'; }
 .asm .a.arg.v:before                { content:'#0x'; }
 .asm .a.arg.x:after                 { content:',X'; }
@@ -78,6 +84,13 @@
 .asm .a.arg.ix:after                { content:',X)'; }
 .asm .a.arg.iy:before               { content:'(0x'; }
 .asm .a.arg.iy:after                { content:'),Y'; }
+.asm .a.arg.label                   { background-color:#f88; color:#fee;}
+.asm .a.arg.label:before            { content:''; }
+.asm .a.arg.label.i:before          { content:'('; }
+.asm .a.arg.label.ix:before         { content:'('; }
+.asm .a.arg.label.iy:before         { content:'('; }
+
+
 .asm #detail #register              { height:6.5em; background-color:gray; font-weight:bold; cursor:pointer; position:relative;}
 .asm #detail #register .label       { font-size:.6em; text-align:center; width:100%; }
 .asm #detail #register .value       { background-color:#030; color:#0f0; text-align:center; height:1.4em;}
@@ -95,10 +108,18 @@
 .asm #detail #check .x              { left:1.34em;  }
 .asm #detail #check .y              { left:2.42em;  }
 /*---------------------------------------------------------------------------------------------------------------------------*/
-.asm #mask                          { width:71%; height:100%; position:absolute; top:0; left:0; background-color:rgba(0,0,0,0); }
+.asm #effects                       { width:25%; height:25%; position:absolute; top:5%; left:50%; display:none; }
+.asm #effects>div                   { font-size:3em; width:1em; height:1em; display:none; }
+
+
+.asm .mask                          { position:absolute; top:0; background-color:rgba(0,0,0,0); }
+.asm #m1.mask                       { width:24%; height:78%; position:absolute; left:0;  }
+.asm #m2.mask                       { width:47%; height:100%; position:absolute; left:24%;  }
+
+
 .asm #binary                        { width:100%; height:100%; position:absolute; top:0; left:0; background-color:rgba(0,0,0,0.8);
                                       display:none;}
-.asm #binary>div                    { width:80%; height:80%; margin:5% 10%; background-color:rgba(0,50,10,0.8); color:#0F0;
+.asm #binary>div                    { width:82%; height:80%; margin:5% 10%; background-color:rgba(0,50,10,0.8); color:#0F0;
                                       font-weight:bold; font-size:.4em; font-family: "Courier New" Courier monospace; border-radius:.5em;
                                       overflow:auto; cursor:pointer;  }
 .asm #binary p                      { white-space:nowrap; margin:0 .5em;}

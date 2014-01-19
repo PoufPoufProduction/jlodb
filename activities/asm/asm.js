@@ -6,12 +6,14 @@
         template    : "template.html",                          // Activity's html template
         css         : "style.css",                              // Activity's css style sheet
         lang        : "en-US",                                  // Current localization
-        screen      : "default",                                // The screen id
-        littleindian: true,                                     // Little indian
+        screen      : 0,                                        // The screen id
         labels      : [],                                       // Labels
         ops         : [],                                       // Available operation (empty=all)
         args        : [],                                       // Args
         nblines     : 5,                                        // Number of lines
+        header      : 0,
+        footer      : 0,
+        export      : false,                                    // Show code
         debug       : false                                     // Debug mode
     };
 
@@ -140,9 +142,6 @@
                 $this.css("font-size", Math.floor($this.height()/12)+"px");
 
                 // Build source code
-                for (var i in settings.labels) {
-                    $this.find("#source #labels").append("<div class='a label'>"+settings.labels[i]+"</div>");
-                }
                 if (settings.ops.length) {
                     $this.find("#source #ops .a").addClass("d");
                     for (var i in settings.ops) { $this.find("#source #ops #"+settings.ops[i]).removeClass("d"); }
@@ -161,11 +160,16 @@
                 var headlen = 0;
                 if (settings.header) {
                     for (var i in settings.header) {
-                        $this.find("#code #lines").append("<div class='line"+(i%2?" i":"")+"'><div class='code'>"+
-                            "<div class='codelabel'>"+settings.header[i].label+"</div>"+
-                            "<div class='codevalue'>"+settings.header[i].value+"</div>"+
-                            "<div class='coderts'>"+(settings.header[i].rts?"rts":"")+"</div>"+
-                            "</div></div>");
+                        var html = "<div class='line"+(i%2?" i":"")+"'><div class='code'>";
+                        html +="<div class='codelabel'>"+settings.header[i].label+"</div>";
+                        html +="<div class='codevalue'>";
+                        if ($.isArray(settings.header[i].value)) {
+                            for (var j in settings.header[i].value) { html+="<p>"+settings.header[i].value[j]+"</p>"; }
+                        }
+                        else { html+=settings.header[i].value; }
+                        html +="</div>";
+                        html += "<div class='coderts'>"+(settings.header[i].rts?"rts":"")+"</div></div></div>";
+                        $this.find("#code #lines").append(html);
                         headlen++;
                     }
                 }
@@ -179,51 +183,82 @@
                         var $elt = $(ui.draggable).clone();
                         var children=[false,false,false];
                         $(this).children().each(function() {
-                            if ($(this).hasClass("label") && !$(this).hasClass("e"))  { children[0] = true; } else
+                            if ($(this).hasClass("label") && !$(this).hasClass("arg"))  { children[0] = true; } else
                             if ($(this).hasClass("op"))     { children[1] = true; } else
-                            if ($(this).hasClass("arg") || $(this).hasClass("e"))  { children[2] = true; }
+                            if ($(this).hasClass("arg"))    { children[2] = true; }
                         });
-                        var append = false;
                         if ($elt.hasClass("label")) {
-                            append = !children[2];
-                            if (append && children[1]) { $elt.addClass("e"); } else
-                            if (append && children[0]) { $(this).find(".label").detach(); }
+                            if ( !children[1] && !children[2] && !$elt.hasClass("x")) {
+                                $(this).find(".label").detach(); $elt.removeClass("arg");
+                            }
+                            else { $(this).find(".arg").detach(); }
                         } else
-                        if ($elt.hasClass("op")) {
-                            append = !children[0];
-                            if (append && children[1]) { $(this).find(".op").detach(); }
-                        } else
-                        if ($elt.hasClass("arg")) {
-                            append = !children[0];
-                            if (append && children[2]) { $(this).find(".arg").detach(); $(this).find(".e").detach(); }
-                        }
-                        if (append) {
-                            $(this).append($elt);
-                            $elt.draggable({ containment:$this, helper:"clone", appendTo:$this.find("#lines"), cursor:"move",
-                                start:function() {
-                                    settings.data.compiled = false;
-                                    if ($elt.hasClass("label")) { $elt.removeClass("e"); } $elt.detach();} });
-                        }
+                        if ($elt.hasClass("op")) { $(this).find(".op").detach(); $(this).find(".label").addClass("arg"); } else
+                        if ($elt.hasClass("arg")) { $(this).find(".arg").detach(); $(this).find(".label").detach(); }
+
+                        $(this).append($elt);
+                        $elt.draggable({ containment:$this, helper:"clone", appendTo:$this.find("#lines"), cursor:"move",
+                            start:function() {
+                                settings.data.compiled = false;
+                                if ($elt.hasClass("label")) { $elt.addClass("arg"); } $elt.detach();} });
                 } });
 
-                settings.data.$this = $this;
+                // Build the footer
+                if (settings.footer) {
+                    for (var i in settings.footer) {
+                        var html = "<div class='line"+(i%2?" i":"")+"'><div class='code'>";
+                        html +="<div class='codelabel'>"+settings.footer[i].label+"</div>";
+                        html +="<div class='codevalue'>";
+                        if ($.isArray(settings.footer[i].value)) {
+                            for (var j in settings.footer[i].value) { html+="<p>"+settings.footer[i].value[j]+"</p>"; }
+                        }
+                        else { html+=settings.footer[i].value; }
+                        html +="</div>";
+                        html += "<div class='coderts'>"+(settings.footer[i].rts?"rts":"")+"</div></div></div>";
+                        $this.find("#code #lines").append(html);
+                    }
+                }
 
-                helpers.stdout.splash($this);
+                settings.data.$this = $this;
+                settings.data.random = settings.random;
+
+                helpers.loader.speed($this);
+
                 helpers.process.init(settings.data);
                 helpers.memory.init(settings.data);
+                helpers.memory.clear(settings.data);
+                helpers.screen.init($this);
                 helpers.process.display(settings.data);
+                helpers.stdout.splash($this);
                 if ($.isArray(settings.exercice)) {
                     $this.find("#exercice").html("");
                     for (var i in settings.exercice) {
                         $this.find("#exercice").append("<p>"+(settings.exercice[i].length?settings.exercice[i]:"&nbsp;")+"</p>"); }
                 } else { $this.find("#exercice").html(settings.exercice); }
+
+                // Locale handling
+                $this.find("h1#label").html(settings.label);
+                if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
+
+
                 if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+            },
+            speed: function($this) {
+                var settings = helpers.settings($this);
+                var src=["debug","x1","x2","x3"];
+                $this.find("#controls #speed img").attr("src","res/img/control/"+src[settings.data.speed]+".svg");
             }
         },
         // ASM CONSTANTS AND UTILS
         c: {
             offset: { random:0x00fd, stdout:0x00fe, key:0x00ff, stack:0x0100, screen:0x0200, code:0x1000, end:0x2000 },
-            hex: function(_value, _16bits) { var r=_value.toString(16); while (r.length<(_16bits?4:2)) { r="0"+r; } return r; }
+            hex: function(_value, _16bits) { var r=_value.toString(16); while (r.length<(_16bits?4:2)) { r="0"+r; } return r; },
+            token: function(_code) {
+                var codheader = [];
+                if (_code.indexOf(" ")>=0) { codheader = _code.split(" "); }
+                else { for (var i=0; i<Math.floor(_code.length/2); i++) { codheader.push(_code[i*2]+_code[i*2+1]); } }
+                return codheader;
+            }
         },
         // HANDLE THE STDOUT
         stdout: {
@@ -237,6 +272,8 @@
                 if (_char!='\n')    { this.lines[this.pos]+=_char; }
                 if (!_donotdisplay) { this.display($this); }
             },
+            ascii   : function($this, _ascii, _donotdisplay) {
+                this.add($this, (_ascii==10||(_ascii>=32&&_ascii<127))?String.fromCharCode(_ascii):".", _donotdisplay); },
             line    : function($this, _line, _noteof) {
                 for (var i in _line) { this.add($this,_line[i],true); }
                 if (_noteof) { this.display($this);} else { this.add($this, '\n'); }
@@ -248,7 +285,7 @@
                 this.lines[this.pos++]="0x"+c.hex(c.offset.stdout,true)+" stdout";
                 this.lines[this.pos++]="0x"+c.hex(c.offset.key,true)+" keypressed";
                 this.lines[this.pos++]="0x"+c.hex(c.offset.stack,true)+" stack";
-                this.lines[this.pos++]="0x"+c.hex(c.offset.screen,true)+" screen"; //TODO Change for screen's name 32x32x8
+                this.lines[this.pos++]="0x"+c.hex(c.offset.screen,true)+" "+helpers.screen.name($this);
                 this.lines[this.pos++]="0x"+c.hex(c.offset.code,true)+" code";
                 //this.lines[this.pos++]=(settings.littleindian?"[Little indian]":"[Big indian]");
                 this.display($this);
@@ -256,6 +293,57 @@
             export  : function() {
                 return this.lines[0]+'\n'+this.lines[1]+'\n'+this.lines[2]+'\n'+this.lines[3]+'\n'+
                        this.lines[4]+'\n'+this.lines[5]+'\n'+this.lines[6];
+            },
+            get : function() {  return this.lines[this.pos]; }
+        },
+        screen: {
+            models  : [[16,16,8],[32,32,4],[48,32,1],[40,36,2]],
+            colors  : [[],
+                       ["#000000", "#ffffff", "#880000", "#aaffee","#cc44cc", "#00cc55", "#0000aa", "#eeee77",
+                        "#dd8855", "#664400", "#ff7777", "#333333","#777777", "#aaff66", "#0088ff", "#bbbbbb"],
+                       ["#ffffff", "#000000"],
+                       ["#081820", "#346856", "#88c070", "#e0f8d0"]],
+            modelid : 0,
+            p       : 1,
+            ctxt    : 0,
+            init: function($this) {
+                var settings = helpers.settings($this);
+                for (var i=0; i<256; i++) { this.colors[0].push("#"+helpers.c.hex(i)+helpers.c.hex(i)+helpers.c.hex(i)); }
+
+                this.modelid = settings.screen;
+                var model = this.models[this.modelid];
+
+                $this.find("#screens").addClass("s"+this.modelid);
+
+                this.p = Math.floor($this.find("#canvas").width()/model[0]);
+                $this.find("#canvas canvas").attr("width",(model[0]*this.p)+"px")
+                                            .attr("height",(model[1]*this.p)+"px")
+                                            .css("width",(model[0]*this.p)+"px")
+                                            .css("height",(model[1]*this.p)+"px")
+                                            .css("margin-left",Math.floor(($this.find("#canvas").width()%model[0])/2)+"px")
+                                            .css("margin-top",Math.floor(($this.find("#canvas").height()%model[1])/2)+"px");
+
+                this.ctxt = $this.find("#canvas canvas")[0].getContext('2d');
+                this.clear($this);
+            },
+            clear: function($this) {
+                this.ctxt.fillStyle = this.colors[this.modelid][0];
+                this.ctxt.fillRect(0, 0, this.models[this.modelid][0]*this.p, this.models[this.modelid][1]*this.p);
+            },
+            name: function($this) { var model = this.models[this.modelid]; return model[0]+"x"+model[1]+"x"+(1<<model[2]); },
+            set: function(_data, _addr, _val) {
+                var nb = 8/this.models[this.modelid][2];
+                var offset = (_addr-helpers.c.offset.screen)*nb;
+                var mask = (1<<this.models[this.modelid][2])-1;
+                for (var i=0; i<nb; i++) {
+                    var pixel = offset+i;
+                    var s = ((nb-i-1)*this.models[this.modelid][2]);
+                    var color = (_val&(mask<<s))>>s;
+                    var x = pixel%this.models[this.modelid][0];
+                    var y = Math.floor(pixel/this.models[this.modelid][0]);
+                    this.ctxt.fillStyle = this.colors[this.modelid][color];
+                    this.ctxt.fillRect(x*this.p, y*this.p, this.p, this.p);
+                }
             }
         },
         // MEMORY
@@ -264,12 +352,13 @@
             getb: function(_data, _addr)        { return _data.mem[_addr]; },
             getw: function(_data, _addr)        { return this.getb(_data,_addr) + (this.getb(_data,_addr + 1) << 8); },
             setb: function(_data, _addr, _val)  { this.set(_data, _addr, _val & 0xff);
-                                                  if ((_addr >= helpers.c.offset.screen) && (_addr < helpers.c.offset.code)) { }
-                                                  if (_addr== helpers.c.offset.stdout) { helpers.stdout.add(_data, _val); } },
+                                                  if ((_addr >= helpers.c.offset.screen) && (_addr < helpers.c.offset.code)) {
+                                                    helpers.screen.set(_data, _addr, _val);
+                                                  }
+                                                  if (_addr== helpers.c.offset.stdout) { helpers.stdout.ascii(_data.$this, _val); } },
             key:  function(_data, _val)         { this.setb(_data,0, helpers.c.offset.key, _val); },
-            rand: function(_data)               { this.set(_data,helpers.c.offset.random, Math.floor(Math.random() * 256)); },
             init: function(_data)               { if (!_data.mem) { _data.mem = new Array(helpers.c.offset.end);} },
-            clear:function(_data)               { for (var i = 0; i < helpers.c.offset.code; i++) { this.set(_data,i, 0x00); } }
+            clear:function(_data)               { for (var i = 0; i < helpers.c.offset.code; i++) { this.set(_data,i, 0x00);} }
         },
         // COMPILER
         compiler: {
@@ -292,48 +381,55 @@
                 var settings = helpers.settings(_data.$this);
                 if (settings.header) {
                     for (var i in settings.header) {
-                        var codheader = settings.header[i].code.split(" ");
+                        labels.get(settings.header[i].label).pos = _data.pc;
+                        var codheader = helpers.c.token(settings.header[i].code);
                         for (var j in codheader) { helpers.compiler.pushb(_data, parseInt(codheader[j],16)); }
                     }
                 }
 
+                _data.range[0] = _data.pc;
+                _data.address  = {};
+
                 // SCREEN
                 _data.$this.find(".line.x").each(function(_index) {
                     if (_data.compiled) {
+
                         // PARSE EACH LINE
-                        var line = { isempty:true, label:"", op:"", arg:{value:"", type:11}};
+                        var line = { isempty:true, label:"", op:"", arg:{value:"", type:11, sub:0}};
                         $(this).find("div").each(function() {
-                            if ($(this).hasClass("label")) {
-                                if ($(this).hasClass("e")) { line.arg.value=$(this).html(); line.arg.type=12; }
-                                else                       { line.label = $(this).html(); }
-                                line.isempty = false;
+                            if ($(this).hasClass("label") && ! $(this).hasClass("arg")) {
+                                line.label = $(this).html(); line.isempty = false;
                             } else
-                            if ($(this).hasClass("op")) { line.op=$(this).html(); line.isempty = false;} else
+                            if ($(this).hasClass("op")) { line.op=$(this).html(); line.isempty = false;}            else
                             if ($(this).hasClass("arg")) {
-                                line.arg.value = $(this).html(); line.isempty = false;
+                                line.arg.value = $(this).html(); line.isempty = false; line.arg.sub = 0;
                                 // GET THE TYPE OF THE ARG
-                                if ($(this).hasClass("v")) { line.arg.type=1; } else
-                                if ($(this).hasClass("x")) { line.arg.type= ($(this).html().length==2)?3:6; } else
-                                if ($(this).hasClass("y")) { line.arg.type= ($(this).html().length==2)?4:7; } else
-                                if ($(this).hasClass("i")) { line.arg.type=8; } else
-                                if ($(this).hasClass("ix")){ line.arg.type=9; } else
-                                if ($(this).hasClass("iy")){ line.arg.type=10; } else
+                                if ($(this).hasClass("v"))      { line.arg.type=1; }                                else
+                                if ($(this).hasClass("label"))  { line.arg.type=12;
+                                    if ($(this).hasClass("x"))  { line.arg.sub = 6; } else
+                                    if ($(this).hasClass("y"))  { line.arg.sub = 7; } else
+                                    if ($(this).hasClass("i"))  { line.arg.sub = 8; }
+                                }                                                                                   else
+                                if ($(this).hasClass("x"))      { line.arg.type= ($(this).html().length==2)?3:6; }  else
+                                if ($(this).hasClass("y"))      { line.arg.type= ($(this).html().length==2)?4:7; }  else
+                                if ($(this).hasClass("i"))      { line.arg.type=8; }                                else
+                                if ($(this).hasClass("ix"))     { line.arg.type=9; }                                else
+                                if ($(this).hasClass("iy"))     { line.arg.type=10; }                               else
                                 line.arg.type=($(this).html().length==2)?2:5;
                             }
                         });
                         // COMPILE THE LINE
                         if (!line.isempty) {
-                            if (line.label.length) {
-                                var label = labels.get(line.label);
-                                label.pos = _data.pc;
-                            }
+                            if (line.label.length) { labels.get(line.label).pos = _data.pc; }
                             else {
                                 var opid = -1;
                                 for (var i in opcodes) { if (opcodes[i][0]==line.op) { opid=i; } }
-                                var opcode = opcodes[opid][line.arg.type], branchabs = false;
-                                if (opcode==null && line.arg.type==12) { opcode=opcodes[opid][5]; branchabs = true;}
+                                var opcode = opcodes[opid][line.arg.sub?line.arg.sub:line.arg.type], branchabs = false;
+                                if (opcode==null && line.arg.type==12 && line.arg.sub==0) { opcode=opcodes[opid][5]; branchabs = true;}
 
-                                if (opid!=-1 && opcode) {
+                                if (opid!=-1 && opcode!=null) {
+                                    _data.address[_data.pc] = _index;
+
                                     helpers.compiler.pushb(_data,opcode);
                                     switch(line.arg.type) {
                                         case 0: case 1: case 2: case 3:
@@ -344,7 +440,7 @@
                                             helpers.compiler.pushw(_data, parseInt(line.arg.value,16));
                                             break;
                                         case 12:
-                                            if (branchabs) {
+                                            if (branchabs || line.arg.sub!=0 ) {
                                                 labels.get(line.arg.value).callabs.push(_data.pc);
                                                 helpers.compiler.pushw(_data, 0);
                                             }
@@ -358,12 +454,23 @@
                                 else {
                                     _data.compiled = false;
                                     if (opid==-1) { error = "("+_index+") "+line.op+" unknown"; }
-                                    else          { error = "("+_index+") "+line.op+" no "+addr[line.arg.type]; }
+                                    else          { error = "("+_index+") "+line.op+" no "+addr[line.arg.sub?line.arg.sub:line.arg.type]; }
                                 }
                             }
                         }
                     }
                 });
+                _data.range[1] = _data.pc;
+
+                // FOOTER
+                if (settings.footer) {
+                    for (var i in settings.footer) {
+                        labels.get(settings.footer[i].label).pos = _data.pc;
+                        var codfooter = helpers.c.token(settings.footer[i].code);
+                        for (var j in codfooter) { helpers.compiler.pushb(_data, parseInt(codfooter[j],16)); }
+                    }
+                }
+
                 // UPDATE THE LABELS
                 for (var i in labels.data) {
                     if (_data.compiled) {
@@ -379,7 +486,6 @@
                     }
                 }
 
-
                 if (_data.compiled) { helpers.stdout.line(_data.$this, "OK"); } else
                                     { helpers.stdout.line(_data.$this, "KO");
                                       helpers.stdout.line(_data.$this, error); }
@@ -390,8 +496,9 @@
         },
         // PROCESS
         process: {
-            init    : function(_data) { _data.reg.A = 0; _data.reg.X = 0; _data.reg.Y = 0; _data.reg.F = 0, 
-                                        _data.reg.PC = helpers.c.offset.code, _data.reg.SP=0xFF; },
+            init    : function(_data) { _data.reg.A = 0; _data.reg.X = 0; _data.reg.Y = 0; _data.reg.P = 0, 
+                                        _data.reg.PC = helpers.c.offset.code, _data.reg.SP=0xFF; _data.count = 0;
+                                        _data.timer = 0; },
             display : function(_data) {
                 _data.$this.find("#rega .value").html(helpers.c.hex(_data.reg.A, false));
                 _data.$this.find("#regx .value").html(helpers.c.hex(_data.reg.X, false));
@@ -399,53 +506,171 @@
                 _data.$this.find("#regs .value").html(helpers.c.hex(_data.reg.SP, false));
                 _data.$this.find("#regpc .value").html("0x"+helpers.c.hex(_data.reg.PC, true));
                 for (var i=0; i<8; i++) {
-                    _data.$this.find("#f"+(7-i)+" .value").html(_data.reg.F&(1<<i)?"1":"0");
+                    _data.$this.find("#f"+(7-i)+" .value").html(_data.reg.P&(1<<i)?"1":"0");
                 }
             },
             run: function(_data) {
-                if (_data.reg.PC<_data.pc) {
-                    var i = helpers.c.hex(this.getb(_data),false);
-                    if (helpers.process["i"+i]) {
-                        helpers.process["i"+i](_data);
-                        this.display(_data);
-                        setTimeout(function() { helpers.process.run(_data) }, 100);
+                var donotstop;
+                var debug = (_data.speed==0);
+                var inside= (_data.reg.PC>=_data.range[0] && _data.reg.PC<_data.range[1]);
+                var speed = 3-_data.speed;
+                speed = 200*speed*speed;
+
+                do {
+                    donotstop = false;
+                    if (_data.reg.PC<_data.pc) {
+                        // RANDOM
+                        helpers.memory.set(_data,helpers.c.offset.random,
+                            (_data.random?parseInt(_data.random[_data.count%_data.random.length],16):Math.floor(Math.random() * 256)));
+                        _data.count++;
+
+                        // SPEED
+                        if (_data.speed<3 && inside) {
+                            _data.$this.find(".line.x").removeClass("c");
+                            if (typeof(_data.address[_data.reg.PC])!='undefined') {
+                                $(_data.$this.find(".line.x").get(_data.address[_data.reg.PC])).addClass("c");
+                            }
+                        }
+
+                        var i = helpers.c.hex(this.getb(_data),false);
+                        if (i==0) { helpers.check.process(_data.$this, true); }
+                        else if (helpers.process["i"+i]) {
+                            helpers.process["i"+i](_data);
+                            if (_data.speed!=3 ) this.display(_data);
+
+                            if (inside && ( debug || _data.paused))
+                                    { _data.$this.find("#controls #play img").attr("src","res/img/control/play.svg"); }
+                            else    {
+                                if (inside && speed) { _data.timer = setTimeout(function() { helpers.process.run(_data) }, speed); }
+                                else                 {
+                                    // AT MAXIMUM SPEED, LAUNCH A TIMER SOME TIME TO HANDLE EVENTS AND DISPLAY STUFF
+                                    if (_data.count%97) { donotstop = true; }
+                                    else                { _data.timer = setTimeout(function() { helpers.process.run(_data) }, 0); }
+                                }
+                            }
+                        }
+                        else {
+                            helpers.stdout.line(_data.$this, i+" unknown");
+                            helpers.check.process(_data.$this, false);
+                        }
                     }
-                    else { helpers.stdout.line(_data.$this, i+" unknown"); _data.$this.find("#mask").hide(); }
-                }
-                else {
-                    helpers.stdout.line(_data.$this, "Done");
-                    helpers.check.process(_data.$this);
-                }
+                    else { helpers.check.process(_data.$this, true); }
+                } while (donotstop);
             },
             getb: function(_data) { var ret = helpers.memory.getb(_data, _data.reg.PC); _data.reg.PC+=1; return ret; },
             getw: function(_data) { var ret = helpers.memory.getw(_data, _data.reg.PC); _data.reg.PC+=2; return ret; },
             f: {
                 nv: function(_data, _value) {
-                    if (_value)         { _data.reg.F &= 0xfd; } else { _data.reg.F |= 0x02; }
-                    if (_value & 0x80)  { _data.reg.F |= 0x80; } else { _data.reg.F &= 0x7f; }
+                    if (_value)                 { _data.reg.P &= 0xfd; } else { _data.reg.P |= 0x02; }
+                    if (_value & 0x80)          { _data.reg.P |= 0x80; } else { _data.reg.P &= 0x7f; }
+                },
+                bit: function(_data, _value) {
+                    if (_value & 0x80)          { _data.reg.P |= 0x80; } else { _data.reg.P &= 0x7f; }
+                    if (_value & 0x40)          { _data.reg.P |= 0x40; } else { _data.reg.P &= ~0x40;}
+                    if (_data.reg.A & _value)   { _data.reg.P &= 0xfd; } else { _data.reg.P |= 0x02; }
+                },
+                clc: function(_data)            { _data.reg.P &= 0xfe; },
+                sec: function(_data)            { _data.reg.P |= 1; },
+                clv: function(_data)            { _data.reg.P &= 0xbf; },
+                ph: function (_data, _value) {
+                    helpers.memory.setb(_data, (_data.reg.SP & 0xff) + 0x100, _value & 0xff);
+                    if (--_data.reg.SP < 0) { _data.reg.SP &= 0xff; helpers.stdout.line(_data.$this, "Stack filled..."); }
+                },
+                pl: function(_data) {
+                    if (++_data.reg.SP >= 0x100) { _data.reg.SP &= 0xff; helpers.stdout.line(_data.$this,"Stack emptied..."); }
+                    return helpers.memory.getb(_data, (_data.reg.SP & 0xff) + 0x100);
+                },
+                jp: function(_data, _offset)        { _data.reg.PC+=(_offset>0x7f)?(_offset-0x100):_offset; },
+                cmp: function(_data, _reg, _val)    { if (_reg >= _val) { this.sec(_data); } else { this.clc(_data); }
+                                                      this.nv(_data, _reg-_val);
                 },
                 a: function(_data) { this.nv(_data, _data.reg.A); },
                 x: function(_data) { this.nv(_data, _data.reg.X); },
                 y: function(_data) { this.nv(_data, _data.reg.Y); }
             },
+            i01: function(_data) { _data.reg.A|= helpers.memory.getb(_data, helpers.memory.getw(_data, (this.getb(_data)+_data.reg.X)&0xff));
+                                   this.f.a(_data); },
+            i05: function(_data) { _data.reg.A|= helpers.memory.getb(_data, this.getb(_data)); this.f.a(_data); },
+            i08: function(_data) { this.f.ph(_data, _data.reg.P | 0x30); },
+            i09: function(_data) { _data.reg.A|= this.getb(_data); this.f.a(_data);  },
+            i0d: function(_data) { _data.reg.A|= helpers.memory.getb(_data, this.getw(_data)); this.f.a(_data); },
+            i11: function(_data) { _data.reg.A|= helpers.memory.getb(_data, helpers.memory.getw(_data, (this.getb(_data)+_data.reg.Y)&0xff));
+                                   this.f.a(_data); },
+            i15: function(_data) { _data.reg.A|= helpers.memory.getb(_data, (this.getb(_data)+_data.reg.X)&0xff); this.f.a(_data); },
+            i18: function(_data) { this.f.clc(_data); },
+            i19: function(_data) { _data.reg.A|= helpers.memory.getb(_data, this.getw(_data)+_data.reg.Y); this.f.a(_data); },
+            i1d: function(_data) { _data.reg.A|= helpers.memory.getb(_data, this.getw(_data)+_data.reg.X); this.f.a(_data); },
+            i20: function(_data) { this.f.ph(_data, ((_data.reg.PC+1)>>8)&0xff); this.f.ph(_data, (_data.reg.PC+1)&0xff);
+                                   _data.reg.PC = this.getw(_data); },
+            i28: function(_data) { _data.reg.P = this.f.pl(_data) | 0x30; },
+            i41: function(_data) { _data.reg.A^= helpers.memory.getb(_data, helpers.memory.getw(_data, (this.getb(_data)+_data.reg.X)&0xff));
+                                   this.f.a(_data); },
+            i45: function(_data) { _data.reg.A^= helpers.memory.getb(_data, this.getb(_data)); this.f.a(_data); },
+            i48: function(_data) { this.f.ph(_data, _data.reg.A); },
+            i49: function(_data) { _data.reg.A^= this.getb(_data); this.f.a(_data);  },
+            i4c: function(_data) { _data.reg.PC = this.getw(_data); },
+            i4d: function(_data) { _data.reg.A^= helpers.memory.getb(_data, this.getw(_data)); this.f.a(_data); },
+            i51: function(_data) { _data.reg.A^= helpers.memory.getb(_data, helpers.memory.getw(_data, (this.getb(_data)+_data.reg.Y)&0xff));
+                                   this.f.a(_data); },
+            i55: function(_data) { _data.reg.A^= helpers.memory.getb(_data, (this.getb(_data)+_data.reg.X)&0xff); this.f.a(_data); },
+            i59: function(_data) { _data.reg.A^= helpers.memory.getb(_data, this.getw(_data)+_data.reg.Y); this.f.a(_data); },
+            i5d: function(_data) { _data.reg.A^= helpers.memory.getb(_data, this.getw(_data)+_data.reg.X); this.f.a(_data); },
+            i60: function(_data) { _data.reg.PC = (this.f.pl(_data) | (this.f.pl(_data) << 8)) + 1;},
+            i68: function(_data) { _data.reg.A = this.f.pl(_data); this.f.a(_data); },
+            i6c: function(_data) { _data.reg.PC = helpers.memory.getw(_data, this.getw(_data)); },
+            i84: function(_data) { helpers.memory.setb(_data, this.getb(_data), _data.reg.Y); },
+            i85: function(_data) { helpers.memory.setb(_data, this.getb(_data), _data.reg.A); },
+            i86: function(_data) { helpers.memory.setb(_data, this.getb(_data), _data.reg.X); },
             i88: function(_data) { _data.reg.Y = ( _data.reg.Y - 1) & 0xff; this.f.y(_data); },
             i8a: function(_data) { _data.reg.A = _data.reg.X; this.f.a(_data);  },
+            i8c: function(_data) { helpers.memory.setb(_data, this.getw(_data), _data.reg.Y); },
+            i8d: function(_data) { helpers.memory.setb(_data, this.getw(_data), _data.reg.A); },
+            i8e: function(_data) { helpers.memory.setb(_data, this.getw(_data), _data.reg.X); },
+            i94: function(_data) { helpers.memory.setb(_data, (this.getw(_data)+_data.reg.X)&0xff, _data.reg.Y); },
+            i95: function(_data) { helpers.memory.setb(_data, (this.getw(_data)+_data.reg.X)&0xff, _data.reg.A); },
+            i96: function(_data) { helpers.memory.setb(_data, (this.getw(_data)+_data.reg.Y)&0xff, _data.reg.X); },
             i98: function(_data) { _data.reg.A = _data.reg.Y; this.f.a(_data);  },
+            i99: function(_data) { helpers.memory.setb(_data, this.getw(_data)+_data.reg.Y,  _data.reg.A); },
+            i9a: function(_data) { _data.reg.SP = _data.reg.X & 0xff; },
+            i9d: function(_data) { helpers.memory.setb(_data, this.getw(_data)+_data.reg.X,  _data.reg.A); },
             ia0: function(_data) { _data.reg.Y = this.getb(_data); this.f.y(_data);  },
+            ia1: function(_data) { _data.reg.A = helpers.memory.getb(_data, helpers.memory.getw(_data, (this.getb(_data)+_data.reg.X)&0xff));
+                                   this.f.a(_data); },
             ia2: function(_data) { _data.reg.X = this.getb(_data); this.f.x(_data);  },
+            ia4: function(_data) { _data.reg.Y = helpers.memory.getb(_data, this.getb(_data)); this.f.y(_data); },
             ia5: function(_data) { _data.reg.A = helpers.memory.getb(_data, this.getb(_data)); this.f.a(_data); },
+            ia6: function(_data) { _data.reg.X = helpers.memory.getb(_data, this.getb(_data)); this.f.x(_data); },
             ia8: function(_data) { _data.reg.Y = _data.reg.A; this.f.y(_data);  },
             ia9: function(_data) { _data.reg.A = this.getb(_data); this.f.a(_data);  },
             iaa: function(_data) { _data.reg.X = _data.reg.A; this.f.x(_data);  },
+            iac: function(_data) { _data.reg.Y = helpers.memory.getb(_data, this.getw(_data)); this.f.y(_data); },
+            iad: function(_data) { _data.reg.A = helpers.memory.getb(_data, this.getw(_data)); this.f.a(_data); },
+            iae: function(_data) { _data.reg.X = helpers.memory.getb(_data, this.getw(_data)); this.f.x(_data); },
+            ib1: function(_data) { _data.reg.A = helpers.memory.getb(_data, helpers.memory.getw(_data, (this.getb(_data)+_data.reg.Y)&0xff));
+                                   this.f.a(_data); },
+            ib4: function(_data) { _data.reg.Y = helpers.memory.getb(_data, (this.getb(_data)+_data.reg.X)&0xff); this.f.y(_data); },
+            ib5: function(_data) { _data.reg.A = helpers.memory.getb(_data, (this.getb(_data)+_data.reg.X)&0xff); this.f.a(_data); },
+            ib6: function(_data) { _data.reg.X = helpers.memory.getb(_data, (this.getb(_data)+_data.reg.Y)&0xff); this.f.x(_data); },
+            ib9: function(_data) { _data.reg.A = helpers.memory.getb(_data, this.getw(_data)+_data.reg.Y); this.f.a(_data); },
+            iba: function(_data) { _data.reg.X = _data.reg.SP & 0xff; this.f.x(_data); },
+            ibc: function(_data) { _data.reg.Y = helpers.memory.getb(_data, this.getw(_data)+_data.reg.X); this.f.y(_data); },
+            ibd: function(_data) { _data.reg.A = helpers.memory.getb(_data, this.getw(_data)+_data.reg.X); this.f.a(_data); },
+            ibe: function(_data) { _data.reg.X = helpers.memory.getb(_data, this.getw(_data)+_data.reg.Y); this.f.x(_data); },
             ic8: function(_data) { _data.reg.Y = ( _data.reg.Y + 1) & 0xff; this.f.y(_data); },
+            ic9: function(_data) { this.f.cmp(_data, _data.reg.A, this.getb(_data)); },
             ica: function(_data) { _data.reg.X = ( _data.reg.X - 1) & 0xff; this.f.x(_data); },
-            ie8: function(_data) { _data.reg.X = ( _data.reg.X + 1) & 0xff; this.f.x(_data); }
+            id0: function(_data) { var offset = this.getb(_data); if (!(_data.reg.P & 0x02)) { this.f.jp(_data,offset); } },
+            ie0: function(_data) { this.f.cmp(_data, _data.reg.X, this.getb(_data)); },
+            ie8: function(_data) { _data.reg.X = ( _data.reg.X + 1) & 0xff; this.f.x(_data); },
+            if0: function(_data) { var offset = this.getb(_data); if (_data.reg.P & 0x02) { this.f.jp(_data,offset); } }
         },
         // CHECK THE PROGRAM
         check: {
-            process: function($this){
+            process: function($this, _finished){
                 var settings = helpers.settings($this);
                 var success = true;
+
+                helpers.process.display(settings.data);
 
                 $this.find("#check>div").hide();
                 $this.find("#check").show();
@@ -455,20 +680,39 @@
                         success&=good;
                         if (good) { $this.find("#check #"+i+"good").show(); }
                         else      { $this.find("#check #"+i+"wrong").show(); }
-                }}
+                    }
+                }
 
-                if (success) { setTimeout(function(){helpers.end($this);}, 2000); }
-                else         { setTimeout(function(){helpers.next($this);},2000); }
+                $this.find("#effects>div").hide();
+                if (success && _finished) { $this.find("#effects #good").show(); setTimeout(function(){helpers.end($this);}, 2000); }
+                else                      { $this.find("#effects #wrong").show(); setTimeout(function(){helpers.next($this);},2000); }
+                $this.find("#effects").show();
+                $this.find("#controls #play img").attr("src","res/img/control/play.svg");
+                $this.find("#controls").removeClass("running");
+                settings.data.running = false;
             },
-            ca : function(_data, _value) { return (_data.reg.A==parseInt(_value,16)); },
-            cx : function(_data, _value) { return (_data.reg.X==parseInt(_value,16)); },
-            cy : function(_data, _value) { return (_data.reg.Y==parseInt(_value,16)); }
+            ca  : function(_data, _value) { return (_data.reg.A==parseInt(_value,16)); },
+            cx  : function(_data, _value) { return (_data.reg.X==parseInt(_value,16)); },
+            cy  : function(_data, _value) { return (_data.reg.Y==parseInt(_value,16)); },
+            cmem: function(_data, _value) {
+                var ret = true;
+                for (var j in _value) {
+                    var mem  = helpers.c.token(_value[j]);
+                    var addr = parseInt(j, 16);
+                    for (var k=0; k<mem.length; k++) { ret&=(helpers.memory.getb(_data,addr+k)==parseInt(mem[k],16)); }
+                }
+                return ret; },
+            cout: function(_data, _value) { return (_value==helpers.stdout.get()); }
         },
         next: function($this) {
-            $this.find("#mask").hide();
+            $this.find(".mask").hide();
             $this.find("#check>div").hide();
             $this.find("#check").hide();
-        }
+            $this.find("#effects").hide();
+            $this.find("#effects #wrong").hide();
+            $this.find(".line.x").removeClass("c");
+        },
+        key:function($this, _value) { helpers.memory.set(helpers.settings($this).data, helpers.c.offset.key, _value & 0xff); }
     };
 
     // The plugin
@@ -483,15 +727,24 @@
                     data : {
                         $this       : 0,
                         compiled    : false,
+                        running     : false,
+                        paused      : false,
                         reg         : { A:0, X:0, Y:0, F:0, PC:0, SP:0 },
                         mem         : 0,
-                        pc          : 0
+                        pc          : 0,
+                        range       : [0,0],
+                        random      : [],
+                        speed       : 2,
+                        count       : 0,
+                        address     : {},
+                        timer       : 0
                     }
                 };
 
                 return this.each(function() {
                     var $this = $(this);
                     $(document).unbind("keydown");
+                    $(document).keydown(function(_e) { helpers.key($this, _e.which); });
 
                     var $settings = $.extend({}, defaults, options, settings);
                     var checkContext = helpers.checkContext($settings);
@@ -508,39 +761,87 @@
             },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                $this.find("#mask").show();
+                $this.find(".mask").show();
                 settings.context.onQuit({'status':'abort'});
             },
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                $this.find("#mask").hide();
+                $this.find(".mask").hide();
                 $this.find("#splash").hide();
             },
             code: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 if (!settings.data.compiled) { helpers.compiler.process(settings.data); }
                 if (settings.data.compiled) {
+                    var code="";
                     var html="";
                     for (var i=helpers.c.offset.code; i<settings.data.pc; i++){
                         html+=(i%16)?" ":("<p>0x"+helpers.c.hex(i,true)+" ");
                         html+=helpers.c.hex(settings.data.mem[i],false);
+                        code+=helpers.c.hex(settings.data.mem[i],false);
                         if (i%16==15) { html+="</p>"; }
                     }
                     $this.find("#binary div").html(html+"</p>");
-                    $this.find("#binary").show();
+                    if (settings.export) { alert(code); } else { $this.find("#binary").show(); }
                 }
             },
+            stack: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+                var html="";
+                for (var i=helpers.c.offset.stack; i<helpers.c.offset.stack+256; i++){
+                    html+=(i%16)?" ":("<p>0x"+helpers.c.hex(i,true)+" ");
+                    html+=helpers.c.hex(settings.data.mem[i],false);
+                    if (i%16==15) { html+="</p>"; }
+                }
+                $this.find("#binary div").html(html+"</p>");
+                $this.find("#binary").show();
+            },
+            click: function(_value) { helpers.key($(this), _value); },
             play: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                if (!settings.data.compiled) { helpers.compiler.process(settings.data); }
-                if (settings.data.compiled) {
-                    $this.find("#mask").show();
-                    helpers.process.init(settings.data);
-                    helpers.process.display(settings.data);
-                    helpers.memory.clear(settings.data);
-                    helpers.process.run(settings.data);
+                if (settings.data.running) {
+                    if (settings.data.speed==0 || settings.data.paused ) {
+                        settings.data.paused = false;
+                        $this.find("#controls #play img").attr("src","res/img/control/pause.svg");
+                        helpers.process.run(settings.data);
+                    }
+                    else {
+                        settings.data.paused = true;
+                    }
                 }
-            }
+                else {
+                    if (!settings.data.compiled) { helpers.compiler.process(settings.data); }
+                    if (settings.data.compiled) {
+                        helpers.stdout.clear($this);
+                        $this.find(".mask").show();
+                        $this.find("#controls").addClass("running");
+                        $this.find("#controls #play img").attr("src","res/img/control/pause.svg");
+                        settings.data.running = true;
+                        settings.data.paused = false;
+                        helpers.screen.clear($this);
+                        helpers.process.init(settings.data);
+                        helpers.process.display(settings.data);
+                        helpers.memory.clear(settings.data);
+                        setTimeout(function(){ helpers.process.run(settings.data);}, 200);
+                    }
+                }
+            },
+            speed: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+                if (settings.data.running && settings.data.speed==0 ) { settings.data.paused = true; }
+                if (settings.data.running && settings.data.speed==2 ) { $this.find(".line.x").removeClass("c"); }
+
+                settings.data.speed = (settings.data.speed+1)%4;
+                helpers.loader.speed($this);
+            },
+            stop: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+                if (settings.data.running) {
+                    if (settings.data.timer) { clearTimeout(settings.data.timer); settings.data.timer = 0; }
+                    helpers.check.process($this, false);
+                }
+            },
+            stdout: function() { helpers.stdout.splash($(this)); }
 
         };
 

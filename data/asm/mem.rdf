@@ -1,0 +1,243 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dct="http://purl.org/dc/terms/">
+
+    <!-- ZERO PAGE AND ABSOLUTE -->
+
+    <rdf:Description>
+        <dct:identifier>001</dct:identifier>
+        <dct:title xml:lang="fr-FR">Accéder à la mémoire du processeur.</dct:title>
+        <dct:description><![CDATA["header":[{"label":"init","value":"","code":"A9A88501","rts":false}],"ops":["lda"],"args":[{"value":"01","type":"v"}],"nblines":1,"valid":{"a":"01"},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["La syntaxe de cette activité fait que les valeurs numériques sont toujours précédés du signe #","","Chargez la valeur 0xFD dans le registre A."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>002</dct:identifier>
+        <dct:title xml:lang="fr-FR">Accéder à la mémoire du processeur.</dct:title>
+        <dct:description><![CDATA["header":[{"label":"init","value":"","code":"A9A88501","rts":false}],"ops":["lda"],"args":[{"value":"01"}],"nblines":1,"valid":{"a":"A8"},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Lorsqu'un argument n'est pas précédé du signe #, il ne représente plus une valeur numérique, mais une adresse mémoire.","","Chargez la valeur contenue à l'adresse mémoire 0x01 dans le registre A.","","Dans le cas présent, la zone mémoire 0x01 contient la valeur 0xA8."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>003</dct:identifier>
+        <dct:title xml:lang="fr-FR">Accéder à la mémoire du processeur.</dct:title>
+        <dct:description><![CDATA["header":[{"label":"init","value":"","code":"A9A88501","rts":false}],"ops":["lda","ldx"],"args":[{"value":"01","type":"v"},{"value":"01"}],"nblines":2,"valid":{"a":"A8","x":"01"},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Les opérateurs LDA,LDX et LDY permettent de charger une valeur numérique dans leur registre respectif mais aussi, suivant l'argument utilisé, de charger une valeur de la mémoire.","","Ainsi, LDA #0xA8 charge la valeur numérique 0XA8 dans le registre A tandis que LDA 0xA8 va chercher la valeur contenue dans la zone mémoire 0xA8 et copie celle-ci dans le registre A.","","Chargez la valeur numérique 0x01 dans le registre X et la valeur contenue à l'adresse mémoire 0x01 dans le registre A."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>005</dct:identifier>
+        <dct:title xml:lang="fr-FR">Accéder à la mémoire du processeur.</dct:title>
+        <dct:description><![CDATA["ops":["lda"],"args":[{"value":"FD"}],"nblines":1,"valid":{"mem":{"1000":"A5FD"}},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Parmi toutes les adresses accessibles depuis ce simulateur de langage assembleur, certaines d'entre elles ont des comportements spécifiques.","","Ainsi l'adresse mémoire 0xFD contient un nombre aléatoire constament renouvellé.","","Chargez un nombre aléatoire dans le registre A."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>050</dct:identifier>
+        <dct:title xml:lang="fr-FR">Accéder à la mémoire du processeur.</dct:title>
+        <dct:description><![CDATA["ops":["lda"],"args":[{"value":"FD"},{"value":"00FD"}],"nblines":2,"valid":{"mem":{"1000":"a5fdadfd00"}},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Même si cela ne fait aucune différence dans la façon de programmer, il est important de savoir que le processeur n'accède pas de la même façon à une zone mémoire selon que son adresse est codée sur 1 ou 2 octets.","","Copiez dans le registre A la valeur contenue à l'adresse 0xFD puis copiez dans le même registre la valeur contenue à l'adresse 0x00FD.","","Ces 2 lignes font la même chose et utilisent la même zone mémoire (car bien sûr 0xFD = 0x00FD) mais elles ne sont pourtant pas compilées de la même manière."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>051</dct:identifier>
+        <dct:title xml:lang="fr-FR">Accéder à la mémoire du processeur.</dct:title>
+        <dct:description><![CDATA["header":[{"label":"init","value":["LDA 0xFD","LDA 0x00FD"],"code":"a5fdadfd00","rts":false}],"ops":["none"],"nblines":0,"valid":{"mem":{"1000":"a5fdadfd00"}},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["La ligne init contient le programme écrit dans l'exercice précédent.","","Affichez le code compilé du programme en cliquant sur PC en bas à gauche de l'écran.","","Le code machine correspondant à l'instruction LDA 0xFD est A5 FD, tandis que celui de LDA 0x00FD est AD FD 00. Même instruction, même zone mémoire mais code différent.","","Une fois la fenêtre refermée, lancez simplement le programme."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>052</dct:identifier>
+        <dct:title xml:lang="fr-FR">Accéder à la mémoire du processeur.</dct:title>
+        <dct:description><![CDATA["ops":["ldx","ldy"],"args":[{"value":"FD"},{"value":"00FD"},{"value":"1000"}],"nblines":2,"valid":{"mem":{"1000":"a6fdac0010"}},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Utiliser une adresse codée sur 1 octet est plus économique que de choisir une adresse codée sur 2 octets. Malheureusement, la première ne permet d'accéder qu'aux zones mémoires situées entre 0x00 et 0xFF tandisque la deuxième offre un spectre plus large compris entre 0x0000 et 0xFFFF.","","En utilisant les adresses les plus adéquates (c'est à dire, en réduisant sur 1 octet celles qui peuvent l'être), chargez, dans cet ordre, les zones mémoires suivantes :",". 0x00FD dans X",". 0x1000 dans Y"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <!-- STDOUT -->
+
+    <rdf:Description>
+        <dct:identifier>100</dct:identifier>
+        <dct:title xml:lang="fr-FR">Accéder à la mémoire du processeur.</dct:title>
+        <dct:description><![CDATA["ops":["lda","sta"],"args":[{"value":"FF","type":"v"},{"value":"01"}],"nblines":2,"valid":{"a":"FF","mem":{"01":"FF"}},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Si LDA copie la valeur contenue dans une zone mémoire vers le registre A, l'opérateur STA exécute l'opération inverse, c'est à dire, qu'il copie la valeur contenue dans le registre A vers une zone mémoire.","","Ainsi STA 0x01 copie la valeur du registre A vers la zone mémoire d'adresse 0x01.","","Chargez la valeur 0xFF dans le registre A et copiez celle-ci dans la zone mémoire 0x01."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>101</dct:identifier>
+        <dct:title xml:lang="fr-FR">Accéder à la mémoire du processeur.</dct:title>
+        <dct:description><![CDATA["ops":["lda","sta"],"args":[{"value":"41","type":"v"},{"value":"fe"}],"nblines":2,"valid":{"a":"41","mem":{"FE":"41"}},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Copiez la valeur 0x41 vers la zone mémoire 0xFE et observez ce qu'il se passe sur l'écran en haut à droite.","","Pour information, STA ne s'utilisant qu'avec une adresse mémoire, l'opération STA #0x41 n'a aucun sens et crée un erreur de compilation."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>102</dct:identifier>
+        <dct:title xml:lang="fr-FR">Accéder à la mémoire du processeur.</dct:title>
+        <dct:description><![CDATA["ops":["lda","sta"],"args":[{"value":"41","type":"v"},{"value":"42","type":"v"},{"value":"43","type":"v"},{"value":"fe"}],"nblines":6,"valid":{"out":"ABC"},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["L'adresse mémoire 0xFE a un comportement particulier : toute valeur stockée dans cet espace mémoire est affichée suivant son code ASCII dans l'écran en haut à droite.","","Le code ASCII fait correspondre un caractère à une valeur. Ainsi A=0x41, B=0x42, C=0x43, etc.","","Affichez ABC dans l'écran de sortie standard"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>103</dct:identifier>
+        <dct:title xml:lang="fr-FR">Accéder à la mémoire du processeur.</dct:title>
+        <dct:description><![CDATA["ops":["lda","sta"],"args":[{"value":"45","type":"v"},{"value":"48","type":"v"},{"value":"4C","type":"v"},{"value":"4F","type":"v"},{"value":"fe"}],"nblines":9,"valid":{"out":"HELLO"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["0x45 = E","0x48 = H","0x4C = L","0x4F = O","","Ecrivez 'HELLO' dans la sortie standard."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+
+    <!-- SCREEN -->
+
+    <rdf:Description>
+        <dct:identifier>150</dct:identifier>
+        <dct:title xml:lang="fr-FR">Accéder à la mémoire du processeur.</dct:title>
+        <dct:description><![CDATA["ops":["lda","sta"],"args":[{"value":"FF","type":"v"},{"value":"0200"},{"value":"0201"},{"value":"0210"},{"value":"0211"}],"nblines":5,"valid":{"mem":{"200":"FFFF","210":"FFFF"}},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["La zone mémoire commençant à l'adresse 0x0200 correspond à l'écran graphique situé à droite. Les couleurs des pixels de cet écran sont définies grâce aux valeurs stockées dans cette zone mémoire.","","Stockez la valeur 0xFF dans les adresses mémoires suivante : 0x0200, 0x0201, 0x0210, 0x0211","","Observez le résultat sur l'écran de droite." ]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>151</dct:identifier>
+        <dct:title xml:lang="fr-FR">Accéder à la mémoire du processeur.</dct:title>
+        <dct:description><![CDATA["ops":["lda","sta"],"args":[{"value":"FF","type":"v"},{"value":"BB","type":"v"},{"value":"66","type":"v"},{"value":"11","type":"v"},{"value":"0200"},{"value":"0201"},{"value":"0202"},{"value":"0203"}],"nblines":8,"valid":{"mem":{"200":"FFBB6611"}},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["L'écran actuel permet d'afficher 256 nuances de gris. Le blanc est codé 0xFF tandisque le noir est égal à 0x00. Toutes les valeurs intermédiaires correspondent à un gris plus ou moins prononcé.","","Sur la première ligne de l'écran, utilisez les différentes nuances de gris ainsi:",". Blanc (0xFF) sur le premier pixel",". Gris clair (0xBB) sur le deuxième",". Gris foncé (0x66) sur le troisième",". Presque noir (0x11) sur le quatrième"  ]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>152</dct:identifier>
+        <dct:title xml:lang="fr-FR">Accéder à la mémoire du processeur.</dct:title>
+        <dct:description><![CDATA["ops":["lda","sta"],"args":[{"value":"FF","type":"v"},{"value":"0200"},{"value":"0201"},{"value":"020F"},{"value":"0210"},{"value":"0211"},{"value":"021F"},{"value":"02F0"},{"value":"02FF"}],"nblines":5,"valid":{"mem":{"200":"FF","20F":"FF","2F0":"FF","2FF":"FF"}},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["La zone mémoire de l'écran graphique commence à l'adresse 0x0200. Sa taille varie selon la nature de l'écran. Ici, l'écran permet d'afficher 256 nuances de gris sur une résolution de 16x16. La zone mémoire utilisées est 0x0200-0x02FF et chaque pixel est codé sur 1 octet.","","Coloriez en blanc les 4 coins de l'écran." ]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <!-- CODE -->
+
+    <rdf:Description>
+        <dct:identifier>300</dct:identifier>
+        <dct:title xml:lang="fr-FR">Accéder à la mémoire du processeur.</dct:title>
+        <dct:description><![CDATA["ops":["ldx"],"args":[{"value":"1000"}],"nblines":1,"valid":{"x":"ae"},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["La zone mémoire commençant à l'adresse 0x1000 correspond au code compilée. Celui-là même que vous écrivez à chaque exercice.","","Chargez dans le registre X, la valeur contenue à l'adresse 0x1000.","","Le registre X va prendre la valeur 0xAE. Cette valeur correspond a la première instruction de votre code. Elle est égale au code de compilation de l'opérateur LDX."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>320</dct:identifier>
+        <dct:title xml:lang="fr-FR">Accéder à la mémoire du processeur.</dct:title>
+        <dct:description><![CDATA["header":[{"label":"init","value":"JMP 0x1004","code":"4C0410","rts":false},{"label":"idx","value":"[0xFF]","code":"FF","rts":false}],"ops":["ldx"],"args":[{"value":"1003"}],"nblines":1,"valid":{"x":"ff"},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Puisque l'on peut accéder à la mémoire correspondant au code source, on peut aisément créer des variables locales. Dans cet exemple, la ligne 'idx' définie une zone mémoire d'un octet que l'on va pouvoir utiliser sans contrainte. Cette zone mémoire est à l'adresse 0x1003 et elle est initialisée à 0xFF.","","La ligne init permet simplement de 'sauter' par dessus la ligne 'idx' afin de ne pas l'exécuter (son exécution ne correspondrait à rien).","","Chargez dans le registre X la valeur définie par la ligne 'idx'."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>321</dct:identifier>
+        <dct:title xml:lang="fr-FR">Accéder à la mémoire du processeur.</dct:title>
+        <dct:description><![CDATA["header":[{"label":"init","value":"JMP 0x1004","code":"4C0410","rts":false},{"label":"idx","value":"[0xFF]","code":"FF","rts":false}],"ops":["ldx"],"args":[{"value":"idx","type":"label"}],"nblines":1,"valid":{"x":"ff"},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Utiliser un adressage direct pour accéder au code source est extrèmement dangeureux. Si 0x1003 correspond bien actuellement au code 'idx', il est tout à fait possible que, suite à une insertion de code, cette valeur change. Le programme serait alors faux et buggué. Heureusement, le compilateur permet l'utilisation de libellés. Au lieu d'utiliser directement l'adresse 0x1003, on peut se servir du libellé 'idx' correspondant. C'est le compilateur qui remplacera cette référence par l'adresse mémoire correspondante.","","Chargez la valeur de idx dans le registre X." ]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>322</dct:identifier>
+        <dct:title xml:lang="fr-FR">Accéder à la mémoire du processeur.</dct:title>
+        <dct:description><![CDATA["header":[{"label":"init","value":"JMP 0x1004","code":"4C0410","rts":false},{"label":"idx","value":"[0xFF]","code":"FF","rts":false}],"footer":[{"label":"end","value":"LDA idx","code":"AD0310","rts":false}],"ops":["ldx","stx"],"args":[{"value":"AE","type":"v"},{"value":"idx","type":"label"}],"nblines":2,"valid":{"mem":{"1003":"AE"},"a":"AE"},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["S'il est possible d'accéder à une zone mémoire du code, il est également possible de modifier celle-ci.","","Modifiez la zone mémoire 'idx' en y stockant la valeur 0xAE."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>323</dct:identifier>
+        <dct:title xml:lang="fr-FR">Accéder à la mémoire du processeur.</dct:title>
+        <dct:description><![CDATA["header":[{"label":"init","value":["LDX 0x01","LDA 0x02","JMP 0x1008"],"code":"A201A9024C0810","rts":false},{"label":"tmp","value":"[0x00]","code":"00","rts":false}],"ops":["stx","tax","lda"],"args":[{"value":"tmp","type":"label"}],"nblines":3,"valid":{"a":"01","x":"02"},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Le code 'init' initialise le registre X à 0x01 et le registre A à 0x02.","","Echangez les valeurs de ces 2 registres en procédant ainsi :","",". Stockez la valeur du registre X dans 'tmp'",". Copiez le registre A vers X",". Chargez la valeur de 'tmp' dans le registre A"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+</rdf:RDF>
+

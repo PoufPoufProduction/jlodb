@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dct="http://purl.org/dc/terms/">
+
+    <rdf:Description>
+        <dct:identifier>001</dct:identifier>
+        <dct:title xml:lang="fr-FR">Gérer le pointeur de code.</dct:title>
+        <dct:description><![CDATA["ops":["jmp"],"args":[{"value":"finish","type":"label"}],"nblines":1,"footer":[{"label":"xxx","value":"LDA #0x10","code":"A9 10","rts":false},{"label":"finish","value":"LDX #0x01","code":"A2 01","rts":false}],"valid":{"a":"00","x":"01"},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["L'opérateur JMP permet de faire un saut dans l'exécution du programme et s'utilise ainsi :","","JMP [destination]","","Le processeur, au lieu d'exécuter l'instruction suivante, va exécuter l'instruction située dans la zone mémoire spécifiée par JMP. Concrètement, le registre PC prend la valeur [destination]","","Pour que le registre A garde sa valeur nulle, évitez l'instruction xxx en sautant directement à la ligne finish."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>002</dct:identifier>
+        <dct:title xml:lang="fr-FR">Gérer le pointeur de code.</dct:title>
+        <dct:description><![CDATA["ops":["jmp"],"args":[{"value":"1005"}],"nblines":1,"footer":[{"label":"xxx","value":"LDA #0x10","code":"A9 10","rts":false},{"label":"finish","value":"LDX #0x01","code":"A2 01","rts":false}],"valid":{"a":"00","x":"01"},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Un label, lorsqu'il est utilisé en tant qu'argument d'une instruction, est équivalent à l'adresse mémoire où celui-ci est utilisé en tant que prédicat.","","Ainsi l'instruction 'JMP finish' est équivalent à 'JMP 0x1005' puisque le code correspondant au label 'finish' sera, au final, à l'adresse mémoire 0x1005.","","Evitez l'instruction xxx en sautant directement à finish."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>500</dct:identifier>
+        <dct:title xml:lang="fr-FR">Gérer le pointeur de code.</dct:title>
+        <dct:description><![CDATA["ops":["jsr","stx"],"args":[{"value":"0200"},{"value":"f1","type":"label"}],"nblines":2,"footer":[{"label":"end","value":"BRK","code":"00","rts":false},{"label":"f1","value":"LDX #0xFF","code":"a2ff60","rts":true}],"valid":{"x":"ff","mem":{"200":"ff"}},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":[". JSR [destination] permet, comme l'opérateur JMP, de sauter vers la partie du code définie par l'argument [destination]. En plus de cela, il sauve dans la pile la valeur courante du registre PC.","",". RTS qui s'utilise sans paramètre, dépile la valeur du registre PC d'origine et retourne vers cette valeur.","","En appelant la fonction 'f1' qui charge la valeur 0xFF dans le registre X, colorier en blanc le premier pixel de l'écran."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+</rdf:RDF>
+
