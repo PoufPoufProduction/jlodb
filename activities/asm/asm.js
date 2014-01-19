@@ -180,7 +180,7 @@
                 }
                 $this.find("#code #lines .line.x").droppable({accept:".a",
                     drop:function(event, ui) {
-                        var $elt = $(ui.draggable).clone();
+                        var $elt = $(ui.draggable).clone().css("opacity", 1);
                         var children=[false,false,false];
                         $(this).children().each(function() {
                             if ($(this).hasClass("label") && !$(this).hasClass("arg"))  { children[0] = true; } else
@@ -200,7 +200,9 @@
                         $elt.draggable({ containment:$this, helper:"clone", appendTo:$this.find("#lines"), cursor:"move",
                             start:function() {
                                 settings.data.compiled = false;
-                                if ($elt.hasClass("label")) { $elt.addClass("arg"); } $elt.detach();} });
+                                if ($elt.hasClass("label")) { $elt.addClass("arg"); }
+                                $elt.css("opacity",0.2);},
+                            stop: function( event, ui ) { $(this).detach(); } });
                 } });
 
                 // Build the footer
