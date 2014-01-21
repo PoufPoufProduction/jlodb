@@ -143,7 +143,7 @@
             },
             // Next level
             next: function() {
-                var settings = $(this).data("settings");
+                var $this = $(this) , settings = helpers.settings($this);
                 // Hide instruction
                 $(this).find("#splash").hide();
 
@@ -175,7 +175,7 @@
             },
             // click on a cell for showing the value
             click: function(elt, value) {
-               var settings = $(this).data("settings");
+               var $this = $(this) , settings = helpers.settings($this);
                var $elt=$(elt), $this=$(this);
                if ($this.hasClass("active") && $elt.hasClass("active")) {
                     $elt.removeClass("active").children().text(settings.soluce[value-1]);
