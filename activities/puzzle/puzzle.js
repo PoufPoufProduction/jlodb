@@ -15,6 +15,7 @@
         radius      : 20,                                       // The magnetic radius
         zhandling   : true,                                     // Handle the z-index
         fix         : false,                                    // Fix the well-placed pieces (work with no rotation or doubles)
+        fullscreen  : false,                                    // Fullscreen
         pieces      : "pieces",                                 // The pieces group name
         debug       : false                                     // Debug mode
     };
@@ -85,11 +86,14 @@
             },
             build: function($this) {
                 var settings = helpers.settings($this);
+
+                if (settings.rotation==0) { $this.find("#norot").show(); }
+                if (settings.fullscreen) { settings.fix = true; $this.find("#submit").hide(); $this.find("#norot").hide(); }
+
                 if (settings.context.onLoad) { settings.context.onLoad(false); }
 
                 // Resize the template
                 $this.css("font-size", Math.floor($this.height()/12)+"px");
-                if (settings.rotation==0) { $this.find("#norot").show(); }
 
                 // COMPUTE RATIO
                 var vWidth = $this.find("#board").width();
@@ -136,8 +140,12 @@
             var settings = helpers.settings($this);
             settings.origin.translate = [];
             settings.origin.rotate    = {};
+            settings.nbfixed          = 0;
             $this.find("#submit").removeClass();
             $this.find(".t").hide();
+            var inituse               = [];
+            var ids                   = [];
+            var nbpieces              = 0;
 
             // PREPARE THE SCREEN
             if (settings.svgclass) {
@@ -155,15 +163,19 @@
                 if (settings.comment) { $this.find("#tcomment").html(settings.comment); }
             }
 
+            // GET PIECES AND NB PIECES
+            if (settings.id) {
+                ids = ($.isArray(settings.id[0]))?settings.id[settings.puzzleid]:settings.id;
+                nbpieces = ids.length;
+            }
+            else { nbpieces = $("#"+settings.pieces+">g",settings.svg.root()).length; }
+            for (var i=0; i<nbpieces; i++) { inituse.push(false); }
+
             // PARSE ALL THE PIECES
             $("#"+settings.pieces+">g",settings.svg.root()).each(function(_index) {
                 $(this).attr("class","");
                 var vOK = true;
-                if (settings.id) {
-                    var ids = ($.isArray(settings.id[0]))?settings.id[settings.puzzleid]:settings.id;
-                    vOK = false;
-                    for (var i in ids) { vOK = vOK || (ids[i]==$(this).attr("id")); }
-                }
+                if (ids.length) { vOK = false; for (var i in ids) { vOK = vOK || (ids[i]==$(this).attr("id")); } }
 
                 if (vOK) {
                     // CHECK IF THERE IS A TEXT TO CHANGE
@@ -217,14 +229,34 @@
                     });
 
                     // MOVE THE PIECE
-                    var vX = settings.area[0]+Math.floor(Math.random()*(settings.area[2]-settings.area[0]));
-                    var vY = settings.area[1]+Math.floor(Math.random()*(settings.area[3]-settings.area[1]));
-                    $(this).attr("transform", "translate("+vX+" "+vY+")");
+                    if (settings.init) {
+                        if ($.isArray(settings.init)) {
+                            var initid = 0;
+                            do { initid = Math.floor(Math.random()*nbpieces); } while(inituse[initid]);
+                            inituse[initid]=true;
+                            $(this).attr("transform", "translate("+settings.init[initid][0]+" "+settings.init[initid][1]+")");
+                            if (settings.init[initid].length>2) {
+                                $(this).find(".rot").attr("transform","rotate("+settings.init[initid][2]+")");
+                            }
+                        }
+                        else if (settings.init[$(this).attr("id")]) {
+                            $(this).attr("transform", "translate("+settings.init[$(this).attr("id")][0]+
+                                                      " "+settings.init[$(this).attr("id")][1]+")");
+                            if (settings.init[$(this).attr("id")].length>2) {
+                                $(this).find(".rot").attr("transform","rotate("+settings.init[$(this).attr("id")][2]+")");
+                            }
+                        }
+                    }
+                    else {
+                        var vX = settings.area[0]+Math.floor(Math.random()*(settings.area[2]-settings.area[0]));
+                        var vY = settings.area[1]+Math.floor(Math.random()*(settings.area[3]-settings.area[1]));
+                        $(this).attr("transform", "translate("+vX+" "+vY+")");
 
-                    // ROTATE THE PIECES
-                    if (settings.rotation>0 && $(this).find(".rot")) {
-                        $(this).find(".rot").attr("transform","rotate("+
-                            (settings.rotation*Math.floor(Math.random()*(360/settings.rotation)))+")");
+                        // ROTATE THE PIECES
+                        if (settings.rotation>0 && $(this).find(".rot")) {
+                            $(this).find(".rot").attr("transform","rotate("+
+                                (settings.rotation*Math.floor(Math.random()*(360/settings.rotation)))+")");
+                        }
                     }
                 }
                 else {
@@ -286,11 +318,17 @@
                     $(settings.elt.id).attr("class","");
 
                     // ROTATION ?
-                    var now = new Date();
-                    if (now.getTime()-settings.elt.tick<settings.tthreshold&&settings.rotation>0&&$(settings.elt.id).find(".rot")) {
+                    var now         = new Date();
+                    var rotation    = -1;
+                    if (settings.rotation>0 && $(settings.elt.id).find(".rot")) {
                         var reg = new RegExp("[( ),]","g");
                         var vSplit = $(settings.elt.id).find(".rot").attr("transform").split(reg);
-                        $(settings.elt.id).find(".rot").attr("transform","rotate("+((parseInt(vSplit[1])+settings.rotation)%360)+")");
+                        var rotation = parseInt(vSplit[1]);
+
+                        if (now.getTime()-settings.elt.tick<settings.tthreshold) {
+                            rotation = (rotation+settings.rotation)%360;
+                            $(settings.elt.id).find(".rot").attr("transform","rotate("+rotation+")");
+                        }
                     }
 
                     // CHECK MAGNETIC
@@ -316,9 +354,17 @@
                     for (var i in settings.origin.translate) {
                         vOK= vOK || (settings.origin.translate[i][0] == $(settings.elt.id).attr("id") &&
                             settings.origin.translate[i][1] == settings.elt.translate.current[0] &&
-                            settings.origin.translate[i][2] == settings.elt.translate.current[1] );
+                            settings.origin.translate[i][2] == settings.elt.translate.current[1] &&
+                            (rotation==-1 || rotation == settings.origin.rotate[settings.origin.translate[i][0]]) );
                     }
-                    if (vOK && settings.fix) { $(settings.elt.id).unbind('touchstart mousedown').attr("class","fixed"); }
+                    if (vOK && settings.fix) {
+                        $(settings.elt.id).unbind('touchstart mousedown').attr("class","fixed");
+                        $this.addClass("fix"+$(settings.elt.id).attr("id"));
+                        if (++settings.nbfixed>=settings.origin.translate.length ) {
+                            $this.addClass("fixall");
+                            if (settings.fullscreen) { helpers.submit($this); }
+                        }
+                    }
 
                     // END MOVE
                     $(settings.elt.id).find(".scale").attr("transform","scale(1)");
@@ -326,6 +372,68 @@
                 }
             });
             settings.interactive = true;
+        },
+        submit: function($this) {
+            var settings = helpers.settings($this);
+            var wrongs =0;
+            if (!settings.finish) {
+                for (var i in settings.origin.translate) {
+                    var translate = [0,0];
+
+                    // BUILD THE LIST OF PIECES PUZZLE WHICH CAN USE THE CURRENT POSITION
+                    var pieces = [ settings.origin.translate[i][0] ];
+                    if (settings.same) {
+                        for (var si in settings.same) for (var sj in settings.same[si]) {
+                            if (settings.same[si][sj]==settings.origin.translate[i][0]) { pieces = settings.same[si]; } }
+                    }
+
+                    // CHECK IF THE POSITION OF EACH PIECES IN THE LIST IS MATCHING THE CURRENT POSITION
+                    var findone = false;
+                    for (var p in pieces) {
+                        var isgood = false;
+                        var $piece = $("#"+settings.pieces+">g#"+pieces[p],settings.svg.root());
+                        if ($piece.attr("transform")) {
+                            var reg = new RegExp("[( ),]","g");
+                            var vSplit = $piece.attr("transform").split(reg);
+                            translate = [vSplit[1], vSplit[2]];
+                        }
+                        if ((settings.origin.translate[i][1]==translate[0])&&(settings.origin.translate[i][2]==translate[1])) {
+                            isgood = true;
+                            // CHECK THE ROTATION
+                            if (settings.rotation && $piece.find(".rot") && $piece.find(".rot").attr("transform")) {
+                                var reg = new RegExp("[( ),]","g");
+                                var vSplit = $piece.find(".rot").attr("transform").split(reg);
+                                var diff = 360+parseInt(settings.origin.rotate[settings.origin.translate[i][0]])-parseInt(vSplit[1]);
+                                var modulo = (settings.sym&&settings.sym[pieces[p]])?settings.sym[pieces[p]]:360;
+                                if (diff%modulo!=0) { isgood = false; }
+                            }
+                        }
+                        findone |= isgood;
+                        if (isgood && !settings.fix) { $piece.attr("class","good"); }
+                    }
+                    if (!findone) { wrongs++;}
+                    settings.all++;
+                }
+
+                settings.wrongs+=wrongs;
+                settings.interactive = false;
+                settings.puzzleid++;
+
+                if (wrongs) { $this.find("#submit").addClass("wrong"); } else { $this.find("#submit").addClass("good"); }
+
+                if ( (settings.id && $.isArray(settings.id[0]) && settings.puzzleid<settings.id.length) ||
+                     (settings.values && $.isArray(settings.values) && settings.puzzleid<settings.values.length) ) {
+                    setTimeout(function() { helpers.rebuild($this); }, 1000);
+                }
+                else {
+                    settings.finish = true;
+                    var ratio = (settings.all<6)?Math.floor(6/settings.all):1;
+                    settings.score = 5-ratio*settings.wrongs;
+                    if (settings.score<0) { settings.score = 0; }
+                    clearTimeout(settings.timer.id);
+                    setTimeout(function() { helpers.end($this); }, 1000);
+                }
+            }
         }
     };
 
@@ -352,6 +460,7 @@
                         translate   : [],
                         rotate      : []
                     },
+                    nbfixed         : 0,
                     puzzleid        : 0,
                     wrongs          : 0,
                     all             : 0,
@@ -374,69 +483,7 @@
                     }
                 });
             },
-            submit: function() {
-                var $this = $(this) , settings = helpers.settings($this);
-                var wrongs =0;
-                if (!settings.finish) {
-                    for (var i in settings.origin.translate) {
-                        var translate = [0,0];
-
-                        // BUILD THE LIST OF PIECES PUZZLE WHICH CAN USE THE CURRENT POSITION
-                        var pieces = [ settings.origin.translate[i][0] ];
-                        if (settings.same) {
-                            for (var si in settings.same) for (var sj in settings.same[si]) {
-                                if (settings.same[si][sj]==settings.origin.translate[i][0]) { pieces = settings.same[si]; } }
-                        }
-
-                        // CHECK IF THE POSITION OF EACH PIECES IN THE LIST IS MATCHING THE CURRENT POSITION
-                        var findone = false;
-                        for (var p in pieces) {
-                            var isgood = false;
-                            var $piece = $("#"+settings.pieces+">g#"+pieces[p],settings.svg.root());
-                            if ($piece.attr("transform")) {
-                                var reg = new RegExp("[( ),]","g");
-                                var vSplit = $piece.attr("transform").split(reg);
-                                translate = [vSplit[1], vSplit[2]];
-                            }
-                            if ((settings.origin.translate[i][1]==translate[0])&&(settings.origin.translate[i][2]==translate[1])) {
-                                isgood = true;
-                                // CHECK THE ROTATION
-                                if (settings.rotation && $piece.find(".rot") && $piece.find(".rot").attr("transform")) {
-                                    var reg = new RegExp("[( ),]","g");
-                                    var vSplit = $piece.find(".rot").attr("transform").split(reg);
-                                    var diff = 360+parseInt(settings.origin.rotate[settings.origin.translate[i][0]])-parseInt(vSplit[1]);
-                                    var modulo = (settings.sym&&settings.sym[pieces[p]])?settings.sym[pieces[p]]:360;
-                                    if (diff%modulo!=0) { isgood = false; }
-                                }
-                            }
-                            findone |= isgood;
-                            if (isgood) { $piece.attr("class","good"); }
-                        }
-                        if (!findone) { wrongs++;}
-                        settings.all++;
-                    }
-
-                    settings.wrongs+=wrongs;
-                    settings.interactive = false;
-                    settings.puzzleid++;
-                    $(this).find('#valid').hide();
-
-                    if (wrongs) { $this.find("#submit").addClass("wrong"); } else { $this.find("#submit").addClass("good"); }
-
-                    if ( (settings.id && $.isArray(settings.id[0]) && settings.puzzleid<settings.id.length) ||
-                         (settings.values && $.isArray(settings.values) && settings.puzzleid<settings.values.length) ) {
-                        setTimeout(function() { helpers.rebuild($this); }, 1000);
-                    }
-                    else {
-                        settings.finish = true;
-                        var ratio = (settings.all<6)?Math.floor(6/settings.all):1;
-                        settings.score = 5-ratio*settings.wrongs;
-                        if (settings.score<0) { settings.score = 0; }
-                        clearTimeout(settings.timer.id);
-                        helpers.end($this);
-                    }
-                }
-            },
+            submit: function() { helpers.submit($(this)); },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 if (settings.timer.id) { clearTimeout(settings.timer.id); settings.timer.id=0; }

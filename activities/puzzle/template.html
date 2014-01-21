@@ -19,12 +19,13 @@
     <div id="valid" >
         <table>
             <tr>
-                <td><div class="button" ontouchstart="$(this).closest('.puzzle').find('#valid').hide();event.preventDefault();"
-                                        onclick="$(this).closest('.puzzle').find('#valid').hide();">
+                <td><div class="button" ontouchstart="$(this).closest('#valid').hide();event.preventDefault();"
+                                        onclick="$(this).closest('#valid').hide();">
                     <img src="res/img/icon/cancel.svg" alt="no"/>
                 </div></td>
-                <td><div class="button" ontouchstart="$(this).closest('.puzzle').puzzle('submit');event.preventDefault();"
-                                        onclick="$(this).closest('.puzzle').puzzle('submit');">
+                <td><div class="button"
+                    ontouchstart="$(this).closest('.puzzle').puzzle('submit');$(this).closest('#valid').hide();event.preventDefault();"
+                    onclick="$(this).closest('.puzzle').puzzle('submit');$(this).closest('#valid').hide();">
                     <img src="res/img/icon/ok.svg" alt="yes"/>
                 </div></td>
             </tr>
