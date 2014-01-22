@@ -1,0 +1,17 @@
+<div >
+    <div id="figure"></div>
+    <div id="svg"></div>
+    <div id="exercice"><p></p></div>
+    <div id="submit" ontouchstart="$(this).closest('.equation').where('equation');event.preventDefault();"
+                     onclick="$(this).closest('.equation').where('equation');toggle();">
+        <img src="res/img/icon/swvalid.svg"/>
+    </div>
+
+    <div id="splash" ontouchstart="$(this).hide().closest('.equation').equation('next');event.preventDefault();"
+                     onclick="$(this).hide().closest('.equation').equation('next');"><div>
+        <div class="text">
+            <h1 id="label"></h1>
+            <p id="guide"></p>
+        </div>
+    </div></div>
+</div>
