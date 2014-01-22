@@ -2,11 +2,18 @@
     <div id="keypad"></div>
     <div id="comment"></div>
     <div id="values"><ul></ul></div>
-    <div id="show"><img src="res/img/effects/cursor01.svg"/></div>
     <div id="effects">
         <div id="good"><img src="res/img/effects/alert02.svg"/></div>
         <div id="wrong"><img src="res/img/effects/alert01.svg"/></div>
     </div>
+
+    <div id="submit" ontouchstart="$(this).closest('.where').where('submit');event.preventDefault();"
+                     onclick="$(this).closest('.where').where('submit');toggle();">
+        <img src="res/img/icon/swvalid.svg" id="subvalid"/>
+        <img src="res/img/icon/swgood.svg"  id="subgood"/>
+        <img src="res/img/icon/swwrong.svg" id="subwrong"/>
+    </div>
+
     <div id="splash" ontouchstart="$(this).hide().closest('.where').where('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.where').where('next');"><div>
         <div class="text">

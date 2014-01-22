@@ -8,8 +8,8 @@
         number      : 20,                       // Number of questions
         time        : 1,                        // Sequence time reference
         shuffle     : true,                     // Shuffle the questions
-        len         : 0,                        // The fixed length of question
         evaluation  : [4,0.8],                  // The evaluation from the score average (4 for A, 3.5 for B, 3 for C, etc.)
+        font        : 1,                        // Font size
         effects     : true,                     // Display effects
         debug       : false                     // Debug mode
     };
@@ -83,11 +83,10 @@
             build: function($this) {
                 var settings = helpers.settings($this);
                 if (settings.context.onLoad) { settings.context.onLoad(false); }
-                $this.css("font-size", Math.floor($this.width()/10)+"px");
+                $this.css("font-size", Math.floor($this.height()/12)+"px");
 
                 var vWidth = Math.floor($this.find("#values").width());
-                if (settings.len) { len = settings.len; }
-                $this.find("#values").css("font-size", Math.floor(1.2*vWidth/len)+"px");
+                $this.find("#values").css("font-size", settings.font+"em");
 
                 // COMPUTE RATIO
                 var vReg = new RegExp("[ ]", "g");
@@ -296,6 +295,7 @@
             var settings = helpers.settings($this);
 
             // REMOVE EFFECTS
+            $this.find("#submit>img").hide(); $this.find("#subvalid").show();
             while (settings.effects.length) {
                 settings.svg.remove(settings.effects[0]);
                 settings.effects.shift();
@@ -400,11 +400,13 @@
 
                 // DISPLAY ALERT
                 $this.find("#effects>div").hide();
-
-
-                if (settings.effects) {
-                    if (Math.floor(vScore/it)==5) { $this.find("#effects #good").show(); } else
-                    if (Math.floor(vScore/it)==0) { $this.find("#effects #wrong").show(); }
+                if (Math.floor(vScore/it)==5) {
+                    $this.find("#submit>img").hide(); $this.find("#subgood").show();
+                    if (settings.effects) { $this.find("#effects #good").show(); }
+                }
+                if (Math.floor(vScore/it)==0) {
+                    $this.find("#submit>img").hide(); $this.find("#subwrong").show();
+                    if (settings.effects) { $this.find("#effects #wrong").show(); }
                 }
 
                 // COMPUTE SCORE AND SHOW EFFECTS
