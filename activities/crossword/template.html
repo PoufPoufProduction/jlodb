@@ -1,0 +1,160 @@
+<div id="main">
+
+    <div id="board">
+    </div>
+
+    <div id="menu">
+        <div id="title"></div>
+        <div id="exercice"></div>
+        <div id="definition"></div>
+        <div id="buttons">
+            <div class="bg s">
+                <div class="icon" ontouchstart="$(this).closest('.crossword').crossword('mode',this,true);event.preventDefault();"
+                                  onclick="$(this).closest('.crossword').crossword('mode',this,true);">
+                    <img src="res/img/svginventoryicons/pencil/pen01.svg"/></div>
+            </div>
+            <div class="bg">
+                <div class="icon" ontouchstart="$(this).closest('.crossword').crossword('mode',this,false);event.preventDefault();"
+                                  onclick="$(this).closest('.crossword').crossword('mode',this,false);">
+                    <img src="res/img/svginventoryicons/pencil/pencil01.svg"/></div>
+            </div>
+        </div>
+        <div id="input">
+            <div id="abc" class="input">
+                <table>
+                    <tr>
+                        <td><div ontouchstart="$(this).closest('.crossword').crossword('key',this);event.preventDefault();"
+                                 onclick="$(this).closest('.crossword').crossword('key',this);">A</div></td>
+                        <td><div ontouchstart="$(this).closest('.crossword').crossword('key',this);event.preventDefault();"
+                                 onclick="$(this).closest('.crossword').crossword('key',this);">B</div></td>
+                        <td><div ontouchstart="$(this).closest('.crossword').crossword('key',this);event.preventDefault();"
+                                 onclick="$(this).closest('.crossword').crossword('key',this);">C</div></td>
+                        <td><div ontouchstart="$(this).closest('.crossword').crossword('key',this);event.preventDefault();"
+                                 onclick="$(this).closest('.crossword').crossword('key',this);">D</div></td>
+                        <td><div ontouchstart="$(this).closest('.crossword').crossword('key',this);event.preventDefault();"
+                                 onclick="$(this).closest('.crossword').crossword('key',this);">E</div></td>
+                    </tr>
+                    <tr>
+                        <td><div ontouchstart="$(this).closest('.crossword').crossword('key',this);event.preventDefault();"
+                                 onclick="$(this).closest('.crossword').crossword('key',this);">F</div></td>
+                        <td><div ontouchstart="$(this).closest('.crossword').crossword('key',this);event.preventDefault();"
+                                 onclick="$(this).closest('.crossword').crossword('key',this);">G</div></td>
+                        <td><div ontouchstart="$(this).closest('.crossword').crossword('key',this);event.preventDefault();"
+                                 onclick="$(this).closest('.crossword').crossword('key',this);">H</div></td>
+                        <td><div ontouchstart="$(this).closest('.crossword').crossword('key',this);event.preventDefault();"
+                                 onclick="$(this).closest('.crossword').crossword('key',this);">I</div></td>
+                        <td><div ontouchstart="$(this).closest('.crossword').crossword('key',this);event.preventDefault();"
+                                 onclick="$(this).closest('.crossword').crossword('key',this);">J</div></td>
+                    </tr>
+                    <tr>
+                        <td><div ontouchstart="$(this).closest('.crossword').crossword('key',this);event.preventDefault();"
+                                 onclick="$(this).closest('.crossword').crossword('key',this);">K</div></td>
+                        <td><div ontouchstart="$(this).closest('.crossword').crossword('key',this);event.preventDefault();"
+                                 onclick="$(this).closest('.crossword').crossword('key',this);">L</div></td>
+                        <td><div ontouchstart="$(this).closest('.crossword').crossword('key',this);event.preventDefault();"
+                                 onclick="$(this).closest('.crossword').crossword('key',this);">M</div></td>
+                        <td><div ontouchstart="$(this).closest('.crossword').crossword('key',this);event.preventDefault();"
+                                 onclick="$(this).closest('.crossword').crossword('key',this);">N</div></td>
+                        <td><div ontouchstart="$(this).closest('.crossword').crossword('key',this);event.preventDefault();"
+                                 onclick="$(this).closest('.crossword').crossword('key',this);">O</div></td>
+                    </tr>
+                    <tr>
+                        <td><div ontouchstart="$(this).closest('.crossword').crossword('key',this);event.preventDefault();"
+                                 onclick="$(this).closest('.crossword').crossword('key',this);">P</div></td>
+                        <td><div ontouchstart="$(this).closest('.crossword').crossword('key',this);event.preventDefault();"
+                                 onclick="$(this).closest('.crossword').crossword('key',this);">Q</div></td>
+                        <td><div ontouchstart="$(this).closest('.crossword').crossword('key',this);event.preventDefault();"
+                                 onclick="$(this).closest('.crossword').crossword('key',this);">R</div></td>
+                        <td><div ontouchstart="$(this).closest('.crossword').crossword('key',this);event.preventDefault();"
+                                 onclick="$(this).closest('.crossword').crossword('key',this);">S</div></td>
+                        <td><div ontouchstart="$(this).closest('.crossword').crossword('key',this);event.preventDefault();"
+                                 onclick="$(this).closest('.crossword').crossword('key',this);">T</div></td>
+                    </tr>
+                    <tr>
+                        <td><div ontouchstart="$(this).closest('.crossword').crossword('key',this);event.preventDefault();"
+                                 onclick="$(this).closest('.crossword').crossword('key',this);">U</div></td>
+                        <td><div ontouchstart="$(this).closest('.crossword').crossword('key',this);event.preventDefault();"
+                                 onclick="$(this).closest('.crossword').crossword('key',this);">V</div></td>
+                        <td><div ontouchstart="$(this).closest('.crossword').crossword('key',this);event.preventDefault();"
+                                 onclick="$(this).closest('.crossword').crossword('key',this);">W</div></td>
+                        <td><div ontouchstart="$(this).closest('.crossword').crossword('key',this);event.preventDefault();"
+                                 onclick="$(this).closest('.crossword').crossword('key',this);">X</div></td>
+                        <td><div ontouchstart="$(this).closest('.crossword').crossword('key',this);event.preventDefault();"
+                                 onclick="$(this).closest('.crossword').crossword('key',this);">Y</div></td>
+                    </tr>
+                    <tr>
+                        <td><div ontouchstart="$(this).closest('.crossword').crossword('key',this);event.preventDefault();"
+                                 onclick="$(this).closest('.crossword').crossword('key',this);">Z</div></td>
+                        <td colspan="4"><div style="width:100%"
+                                 ontouchstart="$(this).closest('.crossword').crossword('key',this);event.preventDefault();"
+                                 onclick="$(this).closest('.crossword').crossword('key',this);">&nbsp;</div></td>
+                    </tr>
+                </table>
+            </div>
+            <div id="num" class="input">
+                <table>
+                    <tr>
+                        <td><div ontouchstart="$(this).closest('.crossword').crossword('key',this);event.preventDefault();"
+                                 onclick="$(this).closest('.crossword').crossword('key',this);">1</div></td>
+                        <td><div ontouchstart="$(this).closest('.crossword').crossword('key',this);event.preventDefault();"
+                                 onclick="$(this).closest('.crossword').crossword('key',this);">2</div></td>
+                        <td><div ontouchstart="$(this).closest('.crossword').crossword('key',this);event.preventDefault();"
+                                 onclick="$(this).closest('.crossword').crossword('key',this);">3</div></td>
+                    </tr>
+                    <tr>
+                        <td><div ontouchstart="$(this).closest('.crossword').crossword('key',this);event.preventDefault();"
+                                 onclick="$(this).closest('.crossword').crossword('key',this);">4</div></td>
+                        <td><div ontouchstart="$(this).closest('.crossword').crossword('key',this);event.preventDefault();"
+                                 onclick="$(this).closest('.crossword').crossword('key',this);">5</div></td>
+                        <td><div ontouchstart="$(this).closest('.crossword').crossword('key',this);event.preventDefault();"
+                                 onclick="$(this).closest('.crossword').crossword('key',this);">6</div></td>
+                    </tr>
+                    <tr>
+                        <td><div ontouchstart="$(this).closest('.crossword').crossword('key',this);event.preventDefault();"
+                                 onclick="$(this).closest('.crossword').crossword('key',this);">7</div></td>
+                        <td><div ontouchstart="$(this).closest('.crossword').crossword('key',this);event.preventDefault();"
+                                 onclick="$(this).closest('.crossword').crossword('key',this);">8</div></td>
+                        <td><div ontouchstart="$(this).closest('.crossword').crossword('key',this);event.preventDefault();"
+                                 onclick="$(this).closest('.crossword').crossword('key',this);">9</div></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><div style="width:100%"
+                                 ontouchstart="$(this).closest('.crossword').crossword('key',this);event.preventDefault();"
+                                 onclick="$(this).closest('.crossword').crossword('key',this);"> </div></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="submit" ontouchstart="$(this).closest('.crossword').find('#valid').toggle();event.preventDefault();"
+                     onclick="$(this).closest('.crossword').find('#valid').toggle();">
+        <img src="res/img/icon/swvalid.svg"/>
+    </div>
+
+    <div id="valid" >
+        <table>
+            <tr>
+                <td><div class="button" ontouchstart="$(this).closest('.crossword').find('#valid').hide();event.preventDefault();"
+                                        onclick="$(this).closest('.crossword').find('#valid').hide();">
+                    <img src="res/img/icon/cancel.svg" alt="no"/>
+                </div></td>
+                <td><div class="button" ontouchstart="$(this).closest('.crossword').crossword('valid');event.preventDefault();"
+                                        onclick="$(this).closest('.crossword').crossword('valid');">
+                    <img src="res/img/icon/ok.svg" alt="yes"/>
+                </div></td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="splash" ontouchstart="$(this).closest('.crossword').crossword('next');event.preventDefault();"
+                     onclick="$(this).closest('.crossword').crossword('next');"><div>
+        <div class="text">
+            <h1 id="label">crossword</h1>
+            <p id="guide"></p>
+            <p id="guide2"></p>
+        </div>
+    </div></div>
+
+</div>
+

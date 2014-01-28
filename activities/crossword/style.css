@@ -1,0 +1,69 @@
+.crossword                                { background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat; }
+.crossword #main                          { width:16.2em;}
+.crossword div#splash                  { font-size:.8em; }
+.crossword div#splash>div              { background-image:url("../../res/img/banners/crossword.svg"); }
+.crossword div#splash .text            { font-size:.5em; width:65%; }
+.crossword div#splash .text h1         { padding-left:.5em; }
+.crossword div#splash .text p          { margin:.5em; }
+.crossword div#splash .text #guide2    { font-size:.7em; font-style:italic; margin-left:2em;  border-radius:.5em;
+                                         background-color:rgba(255,255,255,0.2); padding:.5em; }
+.crossword div#splash div.icon         { border:0; border-radius:.5em;}
+
+.crossword div#submit                     { font-size:1.5em; height:1em;width:1em; cursor:pointer;
+                                            position:absolute; top:7em; left:0em; z-index:3; }
+.crossword div#board                      { width:12em; float:left; height:12em; }
+.crossword div#board>table                { background-color:rgb(53,34,34); border: 1px solid rgb(53,34,34);
+                                            border-spacing:0; }
+.crossword div#board div.bg               { background-color:rgb(255,252,246); color:rgb(53,34,34); height:1em; width:1em; cursor:pointer; }
+.crossword div#board div.bg.wrong         { background-color:rgb(200,100,100); color:red; }
+.crossword div#board div.l1               { background-color:rgb(255,231,184); }
+.crossword.nol1 div#board div.l1          { background-color:rgb(255,252,246); }
+.crossword div#board div.l2               { background-color:rgb(255,210,140); }
+.crossword div#board div.fixed            { color:black; cursor:auto; }
+.crossword.fixed div#board div.fixed      { background-color:rgb(53,34,34); color:rgb(255,252,246); }
+.crossword div#board div.bg0              { background-color:rgb(53,34,34); height:1em; width:1em; cursor:auto; }
+.crossword div#board div.bg1              { background-image:url("../../res/img/svginventoryicons/background/border/square01.svg"); }
+.crossword div#board div.bg2              { background-image:url("../../res/img/svginventoryicons/background/border/square02.svg"); }
+.crossword div#board div.v                { width:1em; height:1em; text-align:center; text-transform:uppercase; margin-top:-.1em; }
+.crossword div#board table.hint           { font-size:0.31em; }
+.crossword div#board table.hint div       { width:1em; height:1em; text-align:center; text-transform:uppercase; border-radius:0.25em; }
+.crossword div#board table.hint div.s     { background-color:rgba(53,34,34,0.2); }
+
+.crossword div#menu                       { width:3.9em; float:left; background-color:rgba(255,255,255,0.8); border-radius:0.2em;
+                                            margin-top:0.2em; }
+.crossword div#menu>div                   { clear:both; border:1px solid black; border-width:0 0 1px 0; }
+.crossword div#menu #title                { font-size:0.8em; text-align:center; height:1em; }
+.crossword.tinytitle div#menu #title      { font-size:0.6em; height:1.2em; }
+.crossword.notitle div#menu #title        { display:none; }
+.crossword div#menu #exercice             { font-size:0.35em; text-align:justify; padding:.1em .5em; height:2.4em;
+                                            background-image:url("../../res/img/background/book02.svg"); background-repeat:repeat; }
+.crossword.noex div#menu #exercice        { display:none; }
+.crossword div#definition                 { font-size:.5em; padding:0 .2em; height:3.4em; background-color:white;  }
+.crossword div#definition p               { text-align:justify;  }
+.crossword div#definition.center p        { text-align:center; }
+.crossword.notitle div#definition         { height:5.2em; }
+.crossword.noex div#definition            { height:5.2em; }
+.crossword.noex.notitle div#definition    { height:7em; }
+.crossword div#menu .bg                   { float:left; font-size:1.5em; border-radius:.3em; margin:.05em .1em; padding:.05em; opacity:0.6; }
+.crossword div#menu .bg.s                 { background-color:black; opacity:1; }
+.crossword div#menu .icon                 { background-color:white; border-radius:.25em; cursor:pointer; }
+
+.crossword div#menu #input                { border:0; }
+.crossword div#menu #num                  { font-size:1.2em; margin:.1em 0 .1em .1em; display:none; }
+.crossword div#menu #num table div        { width:1em; height:1em; cursor:pointer; text-align:center; font-weight:bold;
+                                          font-family: "Courier New" Courier monospace; background-color:rgba(84,137,184,0.9);
+                                          color:rgb(220,231,241); border-radius:.25em; }
+
+.crossword div#menu #abc                  { font-size:.8em; margin:.12em 0 .12em .1em; }
+.crossword div#menu #abc table div        { width:0.9em; height:1em; cursor:pointer; text-align:center; font-weight:bold;
+                                          font-family: "Courier New" Courier monospace; background-color:rgba(84,137,184,0.9);
+                                          color:rgb(220,231,241); border-radius:.25em; }
+.crossword.num div#menu #num              { display:inherit; }
+.crossword.num div#menu #abc              { display:none; }
+
+
+.crossword div#valid                      { font-size:1.6em; position:absolute; background-color:rgba(255,255,255,0.8);
+                                            display:none; top:1em; left:3em;  border-radius:.25em; }
+.crossword div#valid div.button           { width:1.8em; height:1.8em; margin:.1em; cursor:pointer; }
+
+
