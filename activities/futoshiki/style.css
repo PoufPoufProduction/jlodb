@@ -1,0 +1,57 @@
+.futoshiki                                { background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat; }
+.futoshiki #main                          { width:16.2em;}
+.futoshiki div#splash                  { font-size:.75em; }
+.futoshiki div#splash>div              { background-image:url("../../res/img/banners/futoshiki.svg"); }
+.futoshiki div#splash .text            { font-size:.5em; width:65%; }
+.futoshiki div#splash .text h1         { padding-left:.5em; }
+.futoshiki div#splash .text p          { margin:.5em; }
+.futoshiki div#splash .text #guide2    { font-size:.7em; font-style:italic; margin-left:2em;  border-radius:.5em;
+                                         background-color:rgba(255,255,255,0.2); padding:.5em; }
+.futoshiki div#splash div.icon         { border:0; border-radius:.5em;}
+
+.futoshiki div#submit                     { font-size:1.5em; height:1em;width:1em; cursor:pointer;
+                                            position:absolute; top:7em; left:0em; z-index:3; }
+.futoshiki div#board                      { width:12em; height:12em; float:left;}
+
+.futoshiki div#board table#t                { background-color:rgb(53,34,34); border: 1px solid rgb(53,34,34);
+                                            border-spacing:0; margin:1% auto; }
+.futoshiki div#board table td.t>div       { background-color:rgb(255,252,246); color:rgb(53,34,34); }
+
+.futoshiki div#board table td.t>div.l1    { background-color:rgb(255,231,184); }
+.futoshiki div#board table td.t>div.l2    { background-color:rgb(255,210,140); }
+.futoshiki div#board table td.t>div.wrong { background-color:rgb(200,100,100); color:red; }
+
+.futoshiki div#board .f00               { width:3em; height:3em;  text-align:center; cursor:pointer;
+                                          background-image:url("../../res/img/svginventoryicons/background/border/square01.svg"); }
+.futoshiki div#board .f00 v2            { background-image:url("../../res/img/svginventoryicons/background/border/square02.svg"); }
+.futoshiki div#board .f00>div           { width:1em; height:1em; font-size:3em;}
+.futoshiki div#board .f01               { width:3em; height:.75em; background-image:url("../../res/img/generic/futoshiki01.svg"); }
+.futoshiki div#board .f02               { width:3em; height:.75em; background-image:url("../../res/img/generic/futoshiki02.svg"); }
+.futoshiki div#board .f03               { width:3em; height:.75em; background-image:url("../../res/img/generic/futoshiki03.svg"); }
+.futoshiki div#board .f04               { width:.75em; height:3em; background-image:url("../../res/img/generic/futoshiki04.svg"); }
+.futoshiki div#board .f05               { width:.75em; height:3em; background-image:url("../../res/img/generic/futoshiki05.svg"); }
+.futoshiki div#board .f06               { width:.75em; height:3em; background-image:url("../../res/img/generic/futoshiki06.svg"); }
+.futoshiki div#board .f07               { width:.75em; height:.75em; background-image:url("../../res/img/generic/futoshiki07.svg"); }
+
+.futoshiki div#board .hint              { font-size:1em; border-spacing:0; background-color:none;}
+.futoshiki div#board .hint div          { width:1em; height:1em; background-color:none; border-radius:.3em; }
+.futoshiki div#board .hint div.s        { background-color:rgba(53,34,34,0.2); }
+
+.futoshiki #keypad                     { position:absolute; overflow:visible; display:none; font-weight:bold; }
+.futoshiki #keypad div.k                 { width:1em; height:1em; overflow:hidden; text-align:center;
+                                         background-image:url("../../res/img/icon/round.svg");
+                                         background-size:100%; color:#115588; background-position:0 0; cursor:pointer;
+                                         position:absolute; display:none; }
+.futoshiki #keypad #bg1                 { background-image:url("../../res/img/icon/round2.svg");
+                                         font-size:3em; position:absolute; width:1em; height:1em;
+                                         top:-0.5em; left:-0.5em; font-size:2.4em; }
+
+.futoshiki div#menu .bg                   { font-size:3em; width:1em; border-radius:.3em; margin:.05em .1em; padding:.05em; opacity:0.6; }
+.futoshiki div#menu .bg.s                 { background-color:black; opacity:1; }
+.futoshiki div#menu .icon                 { background-color:white; border-radius:.25em; cursor:pointer; }
+
+.futoshiki div#valid                      { font-size:1.6em; position:absolute; background-color:rgba(255,255,255,0.8);
+                                            display:none; top:1em; left:3em;  border-radius:.25em; }
+.futoshiki div#valid div.button           { width:1.8em; height:1.8em; margin:.1em; cursor:pointer; }
+
+

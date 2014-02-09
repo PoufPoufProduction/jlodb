@@ -1,0 +1,76 @@
+<div id="main">
+
+    <div id="board">
+    </div>
+
+    <div id="menu">
+        <div id="buttons">
+            <div class="bg s">
+                <div class="icon" ontouchstart="$(this).closest('.futoshiki').futoshiki('mode',this,true);event.preventDefault();"
+                                  onclick="$(this).closest('.futoshiki').futoshiki('mode',this,true);">
+                    <img src="res/img/svginventoryicons/pencil/pen01.svg"/></div>
+            </div>
+            <div class="bg">
+                <div class="icon" ontouchstart="$(this).closest('.futoshiki').futoshiki('mode',this,false);event.preventDefault();"
+                                  onclick="$(this).closest('.futoshiki').futoshiki('mode',this,false);">
+                    <img src="res/img/svginventoryicons/pencil/pencil01.svg"/></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="keypad">
+        <div id="bg1"></div>
+        <div class="k" id="key0" ontouchstart="$(this).closest('.futoshiki').futoshiki('key', 0);event.preventDefault();"
+                    onclick="$(this).closest('.futoshiki').futoshiki('key', 0)"> </div>
+        <div class="k" id="key1" ontouchstart="$(this).closest('.futoshiki').futoshiki('key', 1);event.preventDefault();"
+                    onclick="$(this).closest('.futoshiki').futoshiki('key', 1)">1</div>
+        <div class="k" id="key2" ontouchstart="$(this).closest('.futoshiki').futoshiki('key', 2);event.preventDefault();"
+                    onclick="$(this).closest('.futoshiki').futoshiki('key', 2)">2</div>
+        <div class="k" id="key3" ontouchstart="$(this).closest('.futoshiki').futoshiki('key', 3);event.preventDefault();"
+                    onclick="$(this).closest('.futoshiki').futoshiki('key', 3)">3</div>
+        <div class="k" id="key4" ontouchstart="$(this).closest('.futoshiki').futoshiki('key', 4);event.preventDefault();"
+                    onclick="$(this).closest('.futoshiki').futoshiki('key', 4)">4</div>
+        <div class="k" id="key5" ontouchstart="$(this).closest('.futoshiki').futoshiki('key', 5);event.preventDefault();"
+                    onclick="$(this).closest('.futoshiki').futoshiki('key', 5)">5</div>
+        <div class="k" id="key6" ontouchstart="$(this).closest('.futoshiki').futoshiki('key', 6);event.preventDefault();"
+                    onclick="$(this).closest('.futoshiki').futoshiki('key', 6)">6</div>
+        <div class="k" id="key7" ontouchstart="$(this).closest('.futoshiki').futoshiki('key', 7);event.preventDefault();"
+                    onclick="$(this).closest('.futoshiki').futoshiki('key', 7)">7</div>
+        <div class="k" id="key8" ontouchstart="$(this).closest('.futoshiki').futoshiki('key', 8);event.preventDefault();"
+                    onclick="$(this).closest('.futoshiki').futoshiki('key', 8)">8</div>
+        <div class="k" id="key9" ontouchstart="$(this).closest('.futoshiki').futoshiki('key', 9);event.preventDefault();"
+                    onclick="$(this).closest('.futoshiki').futoshiki('key', 9)">9</div>
+    </div>
+
+
+    <div id="submit" ontouchstart="$(this).closest('.futoshiki').find('#valid').toggle();event.preventDefault();"
+                     onclick="$(this).closest('.futoshiki').find('#valid').toggle();">
+        <img src="res/img/icon/swvalid.svg"/>
+    </div>
+
+    <div id="valid" >
+        <table>
+            <tr>
+                <td><div class="button" ontouchstart="$(this).closest('.futoshiki').find('#valid').hide();event.preventDefault();"
+                                        onclick="$(this).closest('.futoshiki').find('#valid').hide();">
+                    <img src="res/img/icon/cancel.svg" alt="no"/>
+                </div></td>
+                <td><div class="button" ontouchstart="$(this).closest('.futoshiki').futoshiki('valid');event.preventDefault();"
+                                        onclick="$(this).closest('.futoshiki').futoshiki('valid');">
+                    <img src="res/img/icon/ok.svg" alt="yes"/>
+                </div></td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="splash" ontouchstart="$(this).closest('.futoshiki').futoshiki('next');event.preventDefault();"
+                     onclick="$(this).closest('.futoshiki').futoshiki('next');"><div>
+        <div class="text">
+            <h1 id="label">futoshiki</h1>
+            <p id="guide"></p>
+            <p id="guide2"></p>
+        </div>
+    </div></div>
+
+</div>
+
