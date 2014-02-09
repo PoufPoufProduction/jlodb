@@ -96,6 +96,7 @@
 
                 for (var i=0; i<nb; i++) {
                     var html="<div class='card' id='"+i+"' onclick=\"$(this).closest('.memory3').memory3('click',this);\"";
+                    html+=" ontouchstart=\"$(this).closest('.memory3').memory3('click',this);event.preventDefault();\"";
                     html+="><div class='content'>";
                     if (settings.cards[i].src.indexOf("svg")!=-1)   { html+="<img src='"+settings.cards[i].src+"'/>"; }
                     else  {
