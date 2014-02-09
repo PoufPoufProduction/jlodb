@@ -111,6 +111,13 @@
                     }
                 });
 
+                // Keypad
+                for (var i=0; i<10; i++) {
+                    $this.find("#keypad #key"+i).css("top",(1.5*Math.cos(2*Math.PI*(i/10))-0.5)+"em")
+                                       .css("left",(1.5*Math.sin(2*Math.PI*(i/10))-0.5)+"em")
+                                       .show();
+                }
+
                 // LOCALE HANDLING
                 $this.find("h1#label").html(settings.label);
                 if (settings.locale) {$.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); });}
@@ -255,15 +262,14 @@
                     else {
                         settings.keypad = setTimeout(function() { $this.sudoku('key', -1); }, 2000);
 
-                        var vTop = event.clientY - $this.offset().top - $keypad.height()/2;
-                        var vLeft = event.clientX - $this.offset().left - $keypad.width()/2;
-
-                        if (vTop<0)     { vTop=0;}
-                        if (vLeft<0)    { vLeft=0; }
-                        if (vTop+$keypad.height()>$this.height())   { vTop=$this.height()-$keypad.height(); }
-                        if (vLeft+$keypad.width()>$this.width())    { vLeft=$this.width()-$keypad.width(); }
-
-                        $keypad.css("top", vTop).css("left", vLeft).show();
+                        var vTop    = event.clientY - $this.offset().top;
+                        var vLeft   = event.clientX - $this.offset().left;
+                        var tmp     = $this.find("#bg1").height()/1.5;
+                        if (vTop<tmp)                   { vTop = tmp; }
+                        if (vLeft<tmp)                  { vLeft = tmp; }
+                        if (vTop+tmp>$this.height())    { vTop=$this.height()-tmp; }
+                        if (vLeft+tmp>$this.width())    { vLeft=$this.width()-tmp; }
+                        $keypad.css("top", vTop+"px").css("left", vLeft+"px").show();
 
                         settings.elt = elt;
                     }

@@ -10,21 +10,14 @@
                                       text-align:center; cursor:pointer; background-color:rgba(255,255,255,0.5);
                                       font-weight:bold; color:rgb(53,34,34); }
 .sudoku #grid                       { padding-top:2px; }
-.sudoku #keypad                     { position:absolute; width:4.1em; height:4.1em; display:none; font-weight:bold; }
-.sudoku #keypad>div                 { width:1em; height:1em; overflow:hidden; text-align:center;
-                                      background-image:url("../../res/img/icon/round.svg");
-                                      background-size:100%; color:#115588; background-position:0 0; cursor:pointer;
-                                      position:absolute; }
-.sudoku #keypad div#key0            { top:0.05em; left:1.55em;}
-.sudoku #keypad div#key1            { top:0.33em; left:2.47em; }
-.sudoku #keypad div#key2            { top:1.065em; left:3.1em; }
-.sudoku #keypad div#key3            { top:2.035em; left:3.1em; }
-.sudoku #keypad div#key4            { top:2.77em; left:2.47em; }
-.sudoku #keypad div#key5            { top:3.05em; left:1.55em; }
-.sudoku #keypad div#key6            { top:2.77em; left:0.63em; }
-.sudoku #keypad div#key7            { top:2.035em; left:0em; }
-.sudoku #keypad div#key8            { top:1.065em; left:0em; }
-.sudoku #keypad div#key9            { top:0.33em; left:0.63em; }
+.sudoku #keypad                     { position:absolute; overflow:visible; display:none; font-weight:bold; }
+.sudoku #keypad div.k                 { width:1em; height:1em; overflow:hidden; text-align:center;
+                                         background-image:url("../../res/img/icon/round.svg");
+                                         background-size:100%; color:#115588; background-position:0 0; cursor:pointer;
+                                         position:absolute; display:none; }
+.sudoku #keypad #bg1                 { background-image:url("../../res/img/icon/round2.svg");
+                                         font-size:3em; position:absolute; width:1em; height:1em;
+                                         top:-0.5em; left:-0.5em; font-size:2.4em; }
 .sudoku td.cell                     { width:3em; height:3em; overflow:hidden;}
 .sudoku td.cell div.border          { width:3em; height:3em; overflow:hidden; position:relative; }
 .sudoku td.cell div.fill            { width:1em; height:1em; font-size:3em; text-align:center; cursor:pointer; position:absolute; }
