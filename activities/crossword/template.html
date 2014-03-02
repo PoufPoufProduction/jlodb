@@ -127,24 +127,9 @@
         </div>
     </div>
 
-    <div id="submit" ontouchstart="$(this).closest('.crossword').find('#valid').toggle();event.preventDefault();"
-                     onclick="$(this).closest('.crossword').find('#valid').toggle();">
+    <div id="submit" ontouchstart="$(this).closest('.crossword').crossword('valid');event.preventDefault();"
+                     onclick="$(this).closest('.crossword').crossword('valid');">
         <img src="res/img/icon/swvalid.svg"/>
-    </div>
-
-    <div id="valid" >
-        <table>
-            <tr>
-                <td><div class="button" ontouchstart="$(this).closest('.crossword').find('#valid').hide();event.preventDefault();"
-                                        onclick="$(this).closest('.crossword').find('#valid').hide();">
-                    <img src="res/img/icon/cancel.svg" alt="no"/>
-                </div></td>
-                <td><div class="button" ontouchstart="$(this).closest('.crossword').crossword('valid');event.preventDefault();"
-                                        onclick="$(this).closest('.crossword').crossword('valid');">
-                    <img src="res/img/icon/ok.svg" alt="yes"/>
-                </div></td>
-            </tr>
-        </table>
     </div>
 
     <div id="splash" ontouchstart="$(this).closest('.crossword').crossword('next');event.preventDefault();"

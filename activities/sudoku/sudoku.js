@@ -100,8 +100,7 @@
 
                         $(this).next().find("div").each(function(_index) { $(this).bind("click touchstart",function(event) {
                             var vEvent = (event && event.originalEvent && event.originalEvent.touches &&
-                                          event.originalEvent.touches.length)?
-                                event.originalEvent.touches[0]:event;
+                                          event.originalEvent.touches.length)? event.originalEvent.touches[0]:event;
                             $(this).closest('.'+settings.name).sudoku('click', $(this), vEvent);
                             event.preventDefault();
                             }).hover(
@@ -246,6 +245,9 @@
                 var $this = $(this) , settings = helpers.settings($this), $keypad = $this.find("#keypad");
                 if (data) { helpers.highlight($this, data.posX, data.posY); }
 
+                var vEvent = (event && event.originalEvent && event.originalEvent.touches &&
+                              event.originalEvent.touches.length)? event.originalEvent.touches[0]:event;
+
                 if (settings.keypad) { clearTimeout(settings.keypad); settings.keypad=0; }
                 if (!settings.finish) {
 
@@ -262,8 +264,8 @@
                     else {
                         settings.keypad = setTimeout(function() { $this.sudoku('key', -1); }, 2000);
 
-                        var vTop    = event.clientY - $this.offset().top;
-                        var vLeft   = event.clientX - $this.offset().left;
+                        var vTop    = vEvent.clientY - $this.offset().top;
+                        var vLeft   = vEvent.clientX - $this.offset().left;
                         var tmp     = $this.find("#bg1").height()/1.5;
                         if (vTop<tmp)                   { vTop = tmp; }
                         if (vLeft<tmp)                  { vLeft = tmp; }

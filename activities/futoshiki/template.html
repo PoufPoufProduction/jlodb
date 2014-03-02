@@ -42,25 +42,9 @@
                     onclick="$(this).closest('.futoshiki').futoshiki('key', 9)">9</div>
     </div>
 
-
-    <div id="submit" ontouchstart="$(this).closest('.futoshiki').find('#valid').toggle();event.preventDefault();"
-                     onclick="$(this).closest('.futoshiki').find('#valid').toggle();">
+    <div id="submit" ontouchstart="$(this).closest('.futoshiki').futoshiki('valid');event.preventDefault();"
+                     onclick="$(this).closest('.futoshiki').futoshiki('valid');">
         <img src="res/img/icon/swvalid.svg"/>
-    </div>
-
-    <div id="valid" >
-        <table>
-            <tr>
-                <td><div class="button" ontouchstart="$(this).closest('.futoshiki').find('#valid').hide();event.preventDefault();"
-                                        onclick="$(this).closest('.futoshiki').find('#valid').hide();">
-                    <img src="res/img/icon/cancel.svg" alt="no"/>
-                </div></td>
-                <td><div class="button" ontouchstart="$(this).closest('.futoshiki').futoshiki('valid');event.preventDefault();"
-                                        onclick="$(this).closest('.futoshiki').futoshiki('valid');">
-                    <img src="res/img/icon/ok.svg" alt="yes"/>
-                </div></td>
-            </tr>
-        </table>
     </div>
 
     <div id="splash" ontouchstart="$(this).closest('.futoshiki').futoshiki('next');event.preventDefault();"

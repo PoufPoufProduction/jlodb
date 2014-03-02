@@ -186,6 +186,9 @@
                 var $this = $(this) , settings = helpers.settings($this), $keypad = $this.find("#keypad");
 
                 if ($this.find("#"+_col+"x"+_row+">div").attr("class")!="fixed" && settings.interactive) {
+                    var vEvent = (event && event.originalEvent && event.originalEvent.touches &&
+                                  event.originalEvent.touches.length)? event.originalEvent.touches[0]:event;
+
                     settings.current.row = _row;
                     settings.current.col = _col;
                     settings.current.hint = _hint;
@@ -203,8 +206,8 @@
 
                     if (k) {
                         settings.keypad = setTimeout(function() { $this.futoshiki('key', -1); }, 1500);
-                        var vTop = event.clientY - $this.offset().top;
-                        var vLeft = event.clientX - $this.offset().left;
+                        var vTop = vEvent.clientY - $this.offset().top;
+                        var vLeft = vEvent.clientX - $this.offset().left;
                         var tmp = $this.find("#bg1").height()/1.5;
                         if (vTop<tmp)   { vTop = tmp; }
                         if (vLeft<tmp)  { vLeft = tmp; }
