@@ -52,8 +52,9 @@ if (!$error) {
                             '`Exercice_Difficulty`      INT             NOT NULL , '.
                             '`Exercice_Classification`  VARCHAR( 64 )   NOT NULL , '.
                             '`Exercice_Duration`        INT             NOT NULL, '.
-                            '`Exercice_Tags`            VARCHAR( 64 ) , '.
+                            '`Exercice_Tags`            VARCHAR( 128 ) , '.
                             '`Exercice_Variant`         VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_bin , '.
+                            '`Exercice_Reference`       VARCHAR( 64 ) , '.
                             '`Exercice_Nb`              INT , '.
                        'PRIMARY KEY (  `Exercice_Id` ), '.
                        'FOREIGN KEY ( `Exercice_Activity` ) REFERENCES '.$_SESSION['prefix'].'activity(`Activity_Name`))',

@@ -61,7 +61,11 @@
         },
         loadTags: function($this) {
             var settings = $this.data("settings");
-            $.getJSON("api/tags.php", function (data) { settings.tags = data.tags; helpers.build($this); });
+            $.getJSON("api/tags.php", function (data) {
+                for (var i=0; i<data.tags.length; i++) { settings.tagsbyid[data.tags[i]] = i; }
+                settings.tags = data.tags;
+                helpers.build($this);
+            });
         },
         updateSlider: function($this,_cursor) {
             var settings = $this.data("settings");
@@ -149,15 +153,30 @@
                 var e=data.exercices[i];
                 var html="<tr class='data'>";
                 html+="<td><div class=";
-                if (e.nb) { html+="'c7 s' onclick=\"$(this).closest('.browser').browser('setid','"+e.id+"');\">"+(parseInt(e.nb)+1); }
-                else if (e.variant) { html+="'c7 s' onclick=\"$(this).closest('.browser').browser('setid','"+e.variant+"');\">^"; }
+                if (e.nb) { html+="'c7 s' onclick=\"$(this).closest('.browser').browser('id','"+e.id+"');\">"+(parseInt(e.nb)+1); }
+                else if (e.variant) { html+="'c7 s' onclick=\"$(this).closest('.browser').browser('id','"+e.variant+"');\">^"; }
                 else { html+="'c7'>"; }
                 html+="</div></td>";
-                html+="<td><div class='c0' "+
-                      "onclick=\"$(this).closest('.browser').browser('click',this);\">"+e.id+"</div></td>";
+                html+="<td><div class='c0' onclick=\"$(this).closest('.browser').browser('click',this,'"+e.id+"');\">"+e.id;
+                if (e.reference) {
+                    html+="<div onclick=\"$(this).closest('.browser').browser('reference','"+
+                          e.reference+"');event.stopPropagation();\">"+e.reference+"</div>";
+                };
+                html+="</div></td>";
                 html+="<td><div class='c1' onclick=\"$(this).closest('.browser').browser('classification','"+e.classification+"',true);\"><img src='res/img/classification/"+e.classification+".svg'/></div></td>";
                 html+="<td><div class='c2' onclick=\"$(this).closest('.browser').browser('activity','"+e.activity+"');\"><img src='res/img/activity/"+e.activity+".svg'/></div></td>";
-                html+="<td><div class='c3'>"+e.label+"</div></td>";
+
+                var txt = e.label;
+                if (e.tag.length) {
+                    var tags = e.tag.split(",");
+                    for (var t in tags) {
+                        txt+=" <span class='tag' ";
+                        txt+="onclick=\"$(this).closest('.browser').browser('tag','"+settings.tagsbyid[tags[t]]+"');\"";
+                        txt+=">#"+tags[t]+"</span>";
+                    }
+                }
+
+                html+="<td><div class='c3'>"+txt+"</div></td>";
                 html+="<td><div class='c4'>"+e.level+"</div></td>";
                 html+="<td><div class='c5'><img src='res/img/star/star"+e.diff+".svg'/></div></td>";
                 html+="<td><div class='c6'>"+e.extend+"</div></td>";
@@ -224,6 +243,10 @@
                 var tags="";
                 if ($this.find("#tags").val()!=-1) { tags = "&tag="+settings.tags[$this.find("#tags").val()]; }
 
+                //GET THE REFERENCE
+                var ref=$this.find("#reference").val();
+                if (ref) { ref = "&reference="+ref; }
+
                 //GET THE ORDER
                 var order="";
                 if (settings.sorting.elt && settings.sorting[settings.sorting.elt]) {
@@ -231,8 +254,19 @@
                             "&by="+settings.sorting.elt;
                 }
 
+                //GET THE NUMBER
+                var n=[500,100,25,5];
+                var number = n[$this.find("#number").attr("class").substr(-1)];
+                if (number==500) { number=""; } else { number="&limit="+number; }
+
+                // TEST THE ALT
+                var alt=$this.find("#alternative").hasClass("s")?"&alt=1":"";
+
+                var args = activities+classification+sliders+id+tags+ref+order+number+alt;
+                if (args.length) { args = args.substr(1); }
+
                 //SEND THE REQUEST AND SHOW THE RESULTS
-                $.getJSON("api/exercices.php?"+activities+classification+sliders+id+tags+order, function (data) {
+                $.getJSON("api/exercices.php?"+args, function (data) {
                     if (data.status=="success") { helpers.buildExercices($this, data); }
                     _fct();
                 });
@@ -261,6 +295,7 @@
                         extend      : 60
                     },
                     tags            : [],
+                    tagsbyid        : {},
                     sorting         : { elt:"", Id:1, Difficulty:1, Level:1, Duration:1},
                     elt             : { timer: 0, id:"" }
                 };
@@ -298,8 +333,21 @@
                 helpers.updateSlider($(this), $(this).find("#diff #min"));
                 helpers.updateSlider($(this), $(this).find("#extend #min"));
             },
-            id: function() { $(this).find("#exerciceid").val(""); helpers.update($(this)); },
-            tag:function() { $(this).find("#tags").val(-1); helpers.update($(this)); },
+            id: function(_val) {
+                var $this = $(this);
+                $this.find("#exerciceid").val(_val?_val:"");
+                helpers.update($(this));
+            },
+            tag:function(_val) {
+                var $this = $(this);
+                $this.find("#tags").val(_val?_val:-1);
+                helpers.update($(this));
+            },
+            reference: function(_val) {
+                var $this = $(this);
+                $this.find("#reference").val(_val?_val:"");
+                helpers.update($(this));
+            },
             submit: function() { var $this=$(this); helpers.submit($this, function() { $this.removeClass("upd"); }, false); },
             sort: function(_elt) {
                 var $this = $(this), settings = $this.data("settings");
@@ -318,7 +366,7 @@
 
                 helpers.update($this);
             },
-            click:function(_elt) {
+            click:function(_elt, _val) {
                 var $this = $(this), settings = $this.data("settings"), $popup = $(this).find("#jpopup");
                  if (settings.elt.timer) { clearTimeout(settings.elt.timer); settings.elt.timer = 0; }
 
@@ -328,16 +376,11 @@
                       .show();
                 $(_elt).addClass("s");
                 settings.elt.timer = setTimeout(function() { helpers.popup($this); }, 1500);
-                settings.elt.id = $(_elt).html();
+                settings.elt.id = _val;
             },
             callback:function(_fct) {
                 var $this = $(this), settings = $this.data("settings");
                 if (settings.context&&settings.context[_fct]&&settings.elt.id) { settings.context[_fct](settings.elt.id); }
-            },
-            setid: function(_val) {
-                var $this = $(this), settings = $this.data("settings");
-                $(this).find("#exerciceid").val(_val);
-                helpers.submit($this, function() { $this.removeClass("upd"); }, true);
             }
         };
 

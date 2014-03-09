@@ -31,6 +31,7 @@ function insertIntoDB($link,$activity,$key,$file,$lang,&$warnings, &$tags) {
         $exerciceId     = "";
         $exerciceVar    = "";
         $exerciceTag    = "";
+        $exerciceRef    = "";
         if (strcmp($childName,"rdf_Description")==0) {
             foreach ($child->children() as $dcName=>$dc) {
                 if (strcmp($dcName,"dct_title")==0) {
@@ -47,6 +48,7 @@ function insertIntoDB($link,$activity,$key,$file,$lang,&$warnings, &$tags) {
                     if (strcmp($dcName,"dct_type")==0)                  { $exerciceDiff     = $dc; } else
                     if (strcmp($dcName,"dct_identifier")==0)            { $exerciceId       = $dc; } else
                     if (strcmp($dcName,"dct_alternative")==0)           { $exerciceVar      = $dc; } else
+                    if (strcmp($dcName,"dct_isPartOf")==0)              { $exerciceRef      = $dc; } else
                 if (strcmp($dcName,"dct_coverage")==0 && strcmp($dc->attributes()->xml_lang, $lang)==0)
                                                                         { $exerciceTag      = $dc; }
             }
@@ -60,9 +62,17 @@ function insertIntoDB($link,$activity,$key,$file,$lang,&$warnings, &$tags) {
 
             $sql = "INSERT INTO `".$_SESSION['prefix']."exercice` (`Exercice_Id`,`Exercice_Activity`,".
                 "`Exercice_Title`,`Exercice_Parameters`,`Exercice_Level`,`Exercice_Difficulty`,".
-                "`Exercice_Classification`, `Exercice_Duration`, `Exercice_Tags`, `Exercice_Variant`, `Exercice_Nb`) VALUES ('".
+                "`Exercice_Classification`,`Exercice_Duration`,`Exercice_Tags`,`Exercice_Variant`,".
+                "`Exercice_Reference`,`Exercice_Nb`) VALUES ('".
                 $exerciceId."','".$activity."','".$exerciceTitle."','".$exerciceDesc."',".
-                $exerciceLevel.",".$exerciceDiff.",'".$exerciceClass."',".$exerciceTime.",'".$exerciceTag."','".$exerciceVar."',0)";
+                $exerciceLevel.",".$exerciceDiff.",'".$exerciceClass."',".$exerciceTime.",'".
+                $exerciceTag."','".$exerciceVar."','".$exerciceRef."',0) ".
+
+                "ON DUPLICATE KEY UPDATE `Exercice_Title`='".$exerciceTitle."', `Exercice_Parameters`='".$exerciceDesc."', ".
+                "`Exercice_Level`='".$exerciceLevel."', `Exercice_Difficulty`='".$exerciceDiff."', ".
+                "`Exercice_Classification`='".$exerciceClass."', `Exercice_Duration`='".$exerciceTime."', ".
+                "`Exercice_Tags`='".$exerciceTag."', `Exercice_Variant`='".$exerciceVar."', ".
+                "`Exercice_Reference`='".$exerciceRef."'";
 
             if (!mysql_query($sql , $link)) {
                 array_push($warnings, "(W) Can not insert #".$count." exercice [".$exerciceId."] from ".$file." for activity ".$activity);

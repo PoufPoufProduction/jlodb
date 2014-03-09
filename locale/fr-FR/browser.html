@@ -34,11 +34,25 @@
                     </div>
                     </td>
                     <td class="small" onclick="$(this).closest('.browser').browser('slider','extend');"><div>Durée</div></td></tr>
-                <tr><td><div class="input"><input type="text" id="exerciceid" onkeyup="$(this).closest('.browser').browser('update');"/></div></td><td class="small" onclick="$(this).closest('.browser').browser('id');"><div>Identifiant</div></td></tr>
-                <tr><td><div class="input"><select id="tags" onchange="$(this).closest('.browser').browser('update');"><option value="-1"></option></select></div></td><td class="small" onclick="$(this).closest('.browser').browser('tag');"><div>Tag</div></td></tr>
+                <tr><td>
+                    <div class="input"><input type="text" id="exerciceid" onkeyup="$(this).closest('.browser').browser('update');"/></div></td>
+                    <td class="small" onclick="$(this).closest('.browser').browser('id');"><div>Identifiant</div></td>
+                </tr>
+                <tr><td>
+                    <div class="input"><input type="text" id="reference" onkeyup="$(this).closest('.browser').browser('update');"/></div></td>
+                    <td class="small" onclick="$(this).closest('.browser').browser('reference');"><div>Référence</div></td>
+                </tr>
+                <tr><td>
+                    <div class="input"><select id="tags" onchange="$(this).closest('.browser').browser('update');"><option value="-1"></option></select></div></td>
+                    <td class="small" onclick="$(this).closest('.browser').browser('tag');"><div>Tag</div></td>
+                </tr>
             </table>
             </div>
             <div id="jfooter">
+                <div id="jbuttons">
+                    <div id="alternative" onclick="$(this).toggleClass('s');$(this).closest('.browser').browser('update');">ALT</div>
+                    <div id="number" class="s2" onclick="$(this).attr('class','s'+((parseInt($(this).attr('class').substr(-1))+1)%4));$(this).closest('.browser').browser('update');"></div>
+                </div>
                 <div id="jcount">0</div>
                 <div id="jsubmit" onclick="$(this).closest('.browser').browser('submit');"><img src="res/img/icon/sesearch.svg"/></div>
             </div>

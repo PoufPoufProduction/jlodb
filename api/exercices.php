@@ -74,18 +74,25 @@ if (!$error) {
         $where.= " `Exercice_Tags` = '".$_GET["tag"]."'";
     }
 
+    // THE REFERENCE
+    if (strlen($_GET["reference"])) {
+        if (strlen($where)) { $where.=" AND"; }
+        $where.= " `Exercice_Reference` = '".$_GET["reference"]."'";
+    }
+
     // THE ID
     if (strlen($_GET["id"])) {
         if (strlen($where)) { $where.=" AND"; }
         $where.=" (`Exercice_Id`='".$_GET["id"]."' OR `Exercice_Variant`='".$_GET["id"]."')";
     }
 
-    // COUNT THE STUFF
+    // COUNT THE NUMBER OF MATCHING EXERCICES (WITHOU ORDER, LIMIT NOR ALTERNATIVE GROUP)
     $sql = "SELECT COUNT(*) FROM `".$_SESSION['prefix']."exercice`";
     if (strlen($where)) { $sql.=" WHERE".$where; }
     $count = mysql_fetch_array(mysql_query($sql));
 
-    if (!strlen($_GET["id"])) {
+    // THE VARIANT
+    if (!strlen($_GET["id"]) && !strlen($_GET["alt"])) {
         if (strlen($where)) { $where.=" AND"; }
         $where.=" `Exercice_Variant`=''";
     }
@@ -100,7 +107,10 @@ if (!$error) {
     // BUILD THE REQUEST
     $sql = "SELECT * FROM `".$_SESSION['prefix']."exercice`";
     if (strlen($where)) { $sql.=" WHERE".$where; }
-    $sql.= $order." LIMIT 250";
+
+    $limit = "500";
+    if (strlen($_GET["limit"])) { $limit = $_GET["limit"]; }
+    $sql.= $order." LIMIT ".$limit;
 
     $exercice = mysql_query($sql);
     $json = "";
@@ -109,7 +119,8 @@ if (!$error) {
         $json.='{ "id":"'.$row["Exercice_Id"].'","label":"'.$row["Exercice_Title"].'",'.
                '"activity":"'.$row["Exercice_Activity"].'","classification":"'.$row["Exercice_Classification"].'",'.
                '"level":'.$row["Exercice_Level"].',"diff":'.$row["Exercice_Difficulty"].',"extend":'.
-               $row["Exercice_Duration"].',"variant":"'.$row["Exercice_Variant"].'","nb":'.$row["Exercice_Nb"].'}';
+               $row["Exercice_Duration"].',"variant":"'.$row["Exercice_Variant"].'","nb":'.$row["Exercice_Nb"].','.
+               '"tag":"'.$row["Exercice_Tags"].'","reference":"'.$row["Exercice_Reference"].'"}';
     }
     $status     = "success";
 }

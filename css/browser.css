@@ -42,7 +42,8 @@
 #jbrowser #jresults .header             { font-family: "Courier New", Courier, mono; cursor:pointer;}
 #jbrowser #jresults .header .asc:after  { content:"^"; }
 #jbrowser #jresults .header .desc:after { content:"v"; }
-#jbrowser #jresults .c0                 { width:4.5em; }
+#jbrowser #jresults .c0                 { width:4.5em; position:relative; overflow:visible;}
+#jbrowser #jresults .c0>div             { font-size:.5em; position:absolute; top:1.7em; width:9em; text-align:right; overflow:visible;}
 #jbrowser #jresults .c7                 { width:1em; }
 #jbrowser #jresults .c1                 { width:2em; }
 #jbrowser #jresults .c2                 { width:2em; }
@@ -50,6 +51,7 @@
 #jbrowser #jresults .c4                 { width:2em; }
 #jbrowser #jresults .c5                 { width:2em; }
 #jbrowser #jresults .c6                 { width:2em; }
+#jbrowser #jresults span.tag            { font-weight:bold; cursor:pointer; }
 #jbrowser #jresults .data .c7.s         { display:block;}
 #jbrowser #jresults .data .c7           { height:1.2em; width:2em; font-size:.5em; text-align:center; border:1px solid black;
                                           border-radius:.5em; display:none; cursor:pointer; }
@@ -65,6 +67,14 @@
 #jbrowser #jresults .data .c6           { font-size:2em; width:1em; text-align:center; color:#30251c;
                                           height:1em; background-image:url("../res/img/icon/icon.svg"); background-size:100%; }
 #jbrowser #jfooter                      { width:100%; font-size:2.5em; position:relative; }
+#jbrowser #jbuttons                     { font-size:0.2em; width:2em; float:left; overflow:visible; margin-top:0.5em; }
+#jbrowser #jbuttons #alternative        { overflow:visible; cursor:pointer; }
+#jbrowser #jbuttons #alternative.s      { opacity:0.2; }
+#jbrowser #jbuttons #number             { cursor:pointer; }
+#jbrowser #jbuttons #number.s0:after    { content:"500"; }
+#jbrowser #jbuttons #number.s1:after    { content:"100"; }
+#jbrowser #jbuttons #number.s2:after    { content:"025"; }
+#jbrowser #jbuttons #number.s3:after    { content:"005"; }
 #jbrowser #jcount                       { margin-left:.1em; }
 #jbrowser #jsubmit                      { width:1em; height:1em; position:absolute; top:0; left:3.65em; opacity:0.1; }
 .upd #jbrowser #jsubmit                 { cursor:pointer; opacity: 1; }

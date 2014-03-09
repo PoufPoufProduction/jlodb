@@ -70,7 +70,7 @@ jlodb = {
         quit        : function() { $("#"+jlodb.launcher.id.activity)[jlodb.launcher.private.activity]('quit'); },
 
         // GET EXERCICE AND LAUNCH
-        exercice    : function(_args) {
+        exercice    : function(_args, _cbk) {
             // HANDLE ARGS
             var args    = "";
             for (var i in _args) { if (args) { args+="&"; } args+=i+"="+_args[i]; }
@@ -83,6 +83,7 @@ jlodb = {
                 if (data.locale) { if (d.locale) { d.locale = $.extend(d.locale, data.locale); } else { d.locale = data.locale; } }
                 d.label = data.label;
                 jlodb.launcher.run(data.activity, d);
+                if (_cbk) { _cbk(data.id); }
             });
         }
     },
