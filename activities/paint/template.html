@@ -1,0 +1,26 @@
+<div>
+
+    <div id="board"></div>
+    <div id="exercice"></div>
+
+    <div id="submit" ontouchstart="$(this).closest('.paint').paint('valid');event.preventDefault();"
+                     onclick="$(this).closest('.paint').paint('valid');">
+        <img src="res/img/icon/swvalid.svg" id="subvalid"/>
+        <img src="res/img/icon/swgood.svg" id="subgood"/>
+        <img src="res/img/icon/swwrong.svg" id="subwrong"/>
+    </div>
+
+    <div id="splash" ontouchstart="$(this).closest('.paint').paint('next');event.preventDefault();"
+                     onclick="$(this).closest('.paint').paint('next');"><div>
+        <div class="text" id="default">
+            <h1 id="label">paint</h1>
+            <div id="guide"></div>
+        </div>
+        <div class="text" id="picross">
+            <h1 id="pilabel"></h1>
+            <div id="piguide"></div>
+        </div>
+    </div></div>
+
+</div>
+

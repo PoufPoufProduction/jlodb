@@ -1,0 +1,21 @@
+.paint                                { background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat;
+                                        position:relative;}
+.paint.picross div#splash>div         { background-image:url("../../res/img/banners/paint.svg"); }
+.paint.picross div#splash .text       { display:none; }
+.paint.picross div#splash #picross    { display:block; }
+.paint div#splash>div                 { background-image:url("../../res/img/banners/paint.svg"); }
+.paint div#splash .text               { width:48%; float:right; font-size:.8em;  }
+.paint div#splash .#picross           { display:none; }
+.paint div#splash .text h1            { text-align:right; padding-right:.5em;}
+.paint div#splash .text ul            { list-style-type:none; margin:.5em; font-size:.9em; }
+.paint div#splash .text li            { margin:.5em 0 .5em 0; }
+.paint div#exercice                   { position:absolute; top:0; font-size:.5em; text-align:justify; font-style:italic; }
+.paint div#board                      { position:absolute; top:0; width:16em; height:12em; }
+.paint div#submit                     { font-size:1.5em; height:1em;width:1em; cursor:pointer; position:absolute;
+                                        top:7em; left:0em; z-index:3; }
+.paint div#submit>img                 { display:none; }
+.paint div#submit #subvalid           { display:inline; }
+.paint div#submit.good #subvalid      { display:none; }
+.paint div#submit.wrong #subvalid     { display:none; }
+.paint div#submit.good #subgood       { display:inline; }
+.paint div#submit.wrong #subwrong     { display:inline; }
