@@ -1,36 +1,62 @@
-.operation                                      { background-image:url("../../res/img/background/book03.svg"); background-repeat:repeat;}
+.operation                                      { background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat;}
 .operation div#splash>div                       { background-image:url("../../res/img/banners/operation.svg"); }
 .operation div#splash .text                     { font-size:.8em; width:48%; float:right; }
 .operation div#splash .text h1                  { text-align:right; padding-right:.5em; }
 .operation div#splash .text p                   { margin:.5em; }
-.operation #board                               { width:100%; height:100%; display:none; }
-.operation #board table div                     { width:1em; height:1em; }
-.operation #board table                         { margin:0 auto; margin-top:2px; font-size:1em; border:2px solid rgb(53,34,34);
-                                                  border-collapse:collapse; table-layout:fixed;}
-.operation #board table td                      { width:1em; height:1em; overflow:hidden; color:rgb(30,63,128);
-                                                  font-family:"times new roman", times, serif;
-                                                  text-align:center; padding:0; margin:0;
-                                                  background-size: 1em; background-repeat:no-repeat; 
-                                                  background-color:rgba(255,252,246,0.8); }
-.operation #board table td.active               { background-color:rgba(255,231,184,0.8); cursor:pointer; }
-.operation #board table td.inactive             { background-color:rgba(255,255,255,0.8); }
-.operation #board table td.help div             { width:2em; height:1em; overflow:hidden; }
-.operation #board table td.help                 { font-size:.5em; background-color:none; text-align:center; color:rgb(53,34,34);
-                                                  cursor:pointer; }
-.operation #board table td.help.clear           { background-color:rgba(53,34,34,0.8); color:rgb(255,220,162);  }
-.operation #board table td.help.clear div       { font-size:.5em; width:4em; height:2em; letter-spacing:-.1em; text-align:center; }
-.operation #board tr.line                       { border-style:solid; border-width:0 0 1px 0; border-color:rgb(53,34,34); }
-.operation #board td.line                       { border-style:solid; border-width:0 3px 0 0; border-color:rgb(53,34,34); }
-.operation #board table td.result               { background-color:rgba(255,220,162,0.8); }
-.operation #board table td.modulo               { background-color:rgba(255,220,162,0.8); }
-.operation #board table.good td.modulo          { background-color:rgba(80,255,65,1.0); }
-.operation #board table.good td.result          { background-color:rgba(80,255,65,1.0); }
-.operation #board table #result td              { background-color:rgba(255,220,162,0.8); }
-.operation #board table.good #result td         { background-color:rgba(80,255,65,1.0); }
-.operation #keypad                              { display:none; position:absolute; background-color:rgba(42, 68, 92,0.75);
-                                                  border-radius:.2em; top:0; left:0; }
-.operation #keypad td                           { width:1.2em; overflow:hidden; cursor:pointer; text-align:center; font-weight:bold;
-                                                  font-family: "Courier New" Courier monospace; background-color:rgba(84,137,184,0.9);
-                                                  border-radius:.2em; color:rgb(220,231,241);   }
-.operation #keypad td.screen                    { background-color:rgba(15, 15, 30, 0.75); color:#DDDDFF; }
+
+.operation div.tab                              { width:1em; height:1em; background-color:rgba(255,255,255,0.5); position:absolute;
+                                                  font-size:1.8em; color:rgb(53,34,34);  text-align:center; }
+.operation div.tab span                         { font-size:.8em; top:-.2em; position:relative;}
+.operation div#base                             { border-radius:0 0.5em 0.5em 0; top:1.2em; }
+.operation div.tab .label                       { font-size:.2em; height:.5em; overflow:visible; text-align:left; margin-left:.5em; }
+.operation div#nbdec                            { border-radius:0 0.5em 0.5em 0; top:2.4em; }
+.operation #board                               { width:14em; height:12em; position:absolute; top:0; left:2em;}
+.operation #data                                { position:relative; width:100%; height:100%; overflow:visible;}
+.operation #data>div                            { position:absolute; background-color:rgb(255,255,255); z-index:1;}
+.operation #data .active                        { cursor:pointer; }
+.operation #data .bg                            { background-color:rgb(53,34,34); z-index:0;}
+.operation #data .op                            { width:0.75em; height:1em; background-color:inherit; font-weight:bold;color:rgb(53,34,34); }
+.operation #data .l2                            { background-color:rgb(255,231,184); }
+.operation #data .l3                            { background-color:rgb(255,220,162); }
+.operation #data .move                          { width:0.25em; height:1em; }
+.operation #data .corner                        { width:0.25em; height:0.5em; background-color:rgb(53,34,34);  }
+.operation #data .corner p                   { font-size:0.5em; color:white;  }
+.operation #data .carry                         { width:1em; height:0.5em;
+                                                  background-color:rgb(255,220,162);
+                                                  background-image:url("../../res/img/generic/doublesquare.svg"); background-size:100%; }
+.operation #data .carry>div                    { font-size:0.5em; text-align:center; width:100%; height:100%;}
+.operation #data .value                         { width:1em; height:1em; text-align:center; color:rgb(53,34,34);
+                                                  background-image:url("../../res/img/svginventoryicons/background/border/square01.svg");
+                                                  background-size:100%; }
+.operation #data .value.s1                      { background-image:url("../../res/img/svginventoryicons/background/border/square02.svg"); }
+.operation #data .value.wrong                   { background-color:rgb(200,100,100); color:red;}
+.operation #data .dec                           { overflow:visible; background-color:red;  z-index:10; width:0; height:0; }
+.operation #data .dec>div                       { margin-top:0.70em; margin-left:0.85em; width:.3em; height:.3em; background-color:rgba(53,34,34,0.25);
+                                                  border-radius:.15em; cursor:pointer;  }
+.operation #data .dec.s>div                     { background-color:rgb(53,34,34); cursor:auto; }
+.operation #data .dec.wrong>div                 { background-color:red; cursor:auto; }
+
+.operation #keypad                              { position:absolute; overflow:visible; display:none; font-weight:bold; z-index:20;}
+.operation #keypad div.k                        { width:1em; height:1em; overflow:hidden; text-align:center;
+                                                  background-image:url("../../res/img/icon/round.svg");
+                                                  background-size:100%; color:#115588; background-position:0 0; cursor:pointer;
+                                                  position:absolute; display:none; }
+.operation #keypad div.k.small                  { font-size:.7em; }
+.operation #keypad #bg1                         { background-image:url("../../res/img/icon/round2.svg");
+                                                  font-size:3em; position:absolute; width:1em; height:1em;
+                                                  top:-0.5em; left:-0.5em; font-size:2.4em; }
+
+.operation div#submit                           { font-size:1.5em; height:1em;width:1em; cursor:pointer;
+                                                  position:absolute; top:7em; left:0em; z-index:3; }
+.operation div#submit>img                       { display:none; }
+.operation div#submit #subvalid                 { display:inline; }
+.operation div#submit.good #subvalid            { display:none; }
+.operation div#submit.wrong #subvalid           { display:none; }
+.operation div#submit.good #subgood             { display:inline; }
+.operation div#submit.wrong #subwrong           { display:inline; }
+
+.operation #effects                             { width:5em; height:5em; position:absolute; top:0.5em; left:10.5em;  z-index:20;}
+.operation #effects.division                    { top:5em;}
+.operation #effects>div                         { font-size:5em; width:1em; height:1em; display:none;}
+
 

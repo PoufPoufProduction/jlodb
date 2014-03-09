@@ -5,8 +5,11 @@
         template    : "template.html",      // Activity's html template
         css         : "style.css",          // Activity's css style sheet
         locale      : "fr",                 // Current localization
-        score       : 1,                    // The score (from 1 to 5)
         number      : 4,                    // Number of exercices
+        base        : 10,                   // Base of the exercice
+        nbdec       : 0,                    // Number of decimal for division
+        withmove    : true,                 // Does user need to move the decimal value
+        removezero  : true,                 // No space allowed for 0 multiplicator
         time        : 1,                    // Perfect time to solve the operation
         debug       : false                 // Debug mode
     };
@@ -72,8 +75,26 @@
                 // Generic resize
                 $this.css("font-size", Math.floor($this.height()/12)+"px");
 
-                // Build the first operation
-                helpers.build($this);
+                // Base and nbdec
+                $this.find("#base").toggle(settings.base!=10).find("span").html(settings.base);
+                $this.find("#nbdec").toggle(settings.nbdec!=0).find("span").html(settings.nbdec);
+
+                // Keypad
+                var nb = Math.min(settings.base,10);
+                var r = settings.base>10?1.8:1.5;
+                for (var i=0; i<nb; i++) {
+                    $this.find("#keypad #key"+i).css("top",(r*Math.pow(nb/10,0.3)*Math.cos(2*Math.PI*(i/nb))-0.5)+"em")
+                        .css("left",(r*Math.pow(nb/10,0.3)*Math.sin(2*Math.PI*(i/nb))-0.5)+"em")
+                        .addClass(settings.base>10?"small":"normal")
+                        .show();
+                }
+                nb=settings.base - 10;
+                if (nb>0) for (var i=0; i<nb; i++) {
+                    $this.find("#keypad #key"+(i+10)).css("top",(1.2*Math.pow(nb/10,0.3)*Math.cos(2*Math.PI*(i/nb))-0.5)+"em")
+                        .css("left",(1.2*Math.pow(nb/10,0.3)*Math.sin(2*Math.PI*(i/nb))-0.5)+"em")
+                        .addClass(settings.base>10?"small":"normal")
+                        .show();
+                }
 
                 // Locale handling
                 $this.find("h1#label").html(settings.label);
@@ -81,35 +102,36 @@
                 if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
-        // compute the score regarding the actual time and the time refence
-        score:function(timeref, time) {
-            var s = Math.floor(5*timeref/time);
-            if (s>5) { s = 5; }
-            return s;
-        },
-        formattime: function(_val) {
-            var vS = _val%60;
-            var vM = Math.floor(_val/60)%60;
-            var vH = Math.floor(_val/3600);
-            if (vH>99) { vS=99; vM=99; vH=99; }
-            return (vH<10?"0":"")+vH+(vM<10?":0":":")+vM+(vS<10?":0":":")+vS;
-        },
-        // get the timer value
-        timer:function($this) {
+        showop: function($this) {
             var settings = helpers.settings($this);
-            var $time = $this.find("#time");
-            settings.timer.value++;
-            if (settings.time) {
-                var diff = Math.floor(Math.abs(settings.time*settings.number-settings.timer.value));
-                $time.text(helpers.formattime(diff));
-                $time.toggleClass("late", (settings.timer.value>settings.time*settings.number));
+            $this.find(".value.l1").html("");
+            for (var i=0; i<settings.op.length; i++) {
+
+                var v=(settings.type=="*")?settings.op[i].value.toString(settings.base):
+                        settings.op[i].value[0].toString(settings.base) + 
+                        settings.op[i].value[1].toString(settings.base).substr(0, settings.op[i].dec);
+
+                if (settings.type=="*") { while(v.length<=settings.op[i].dec) { v = "0"+v; } }
+
+                for (var j=0; j<v.length; j++) {
+                    var $cell = $this.find("#c"+(j+settings.size[0]-v.length-settings.op[i].pos)+"x"+i).html(v[j]);
+
+                    if (settings.op[i].dec && j==v.length-settings.op[i].dec-1) {
+                        if (settings.op[i].$elt) { settings.op[i].$elt.detach(); }
+                        settings.op[i].$elt =
+                            $("<div class='dec s' style='top:"+$cell.css("top")+";left:"+$cell.css("left")+";'><div></div></div>");
+                        $this.find("#data").append(settings.op[i].$elt);
+                    }
+
+                }
             }
-            settings.timer.id = setTimeout(function() { helpers.timer($this); }, 1000);
         },
         // Build the response table regarding the question
         build:function($this) {
             var settings = helpers.settings($this);
-            var $board = $this.find("#board").html("");
+            var $board = $this.find("#data").html("");
+            $this.find("#effects").hide();
+            $this.find("#effects>div").hide();
 
             // Get the operation
             var vOpTmp;
@@ -118,213 +140,308 @@
             }
             else {
                 var vNew;
-                do  { vNew = Math.floor(Math.random()*settings.values.length); }
+                do  { vNew = settings.values.length==settings.number?settings.count:Math.floor(Math.random()*settings.values.length); }
                     while ((settings.values.length>1)&&(vNew==settings.last));
                     vOpTmp = settings.values[vNew];
                     settings.last = vNew;
             }
 
+
             // Split the operation regarding the operation type
-            var vType = "+";
-            if (vOpTmp.indexOf("*")>=0) { vType = "*"; } else
-            if (vOpTmp.indexOf("/")>=0) { vType = "/"; } else
-            if (vOpTmp.indexOf("-")>=0) { vType = "-"; }
-            var vReg = new RegExp("["+vType+"]", "g");
+            if (vOpTmp.indexOf("*")>=0) { settings.type = "*"; } else
+            if (vOpTmp.indexOf("/")>=0) { settings.type = "/"; } else
+            if (vOpTmp.indexOf("-")>=0) { settings.type = "-"; } else
+                                        { settings.type = "+"; }
+            var vReg = new RegExp("["+settings.type+"]", "g");
             var vOperation = vOpTmp.split(vReg);
+            settings.op=[];
 
             // Compute the size of the table
-            var height = 0 , width = 0;
-            if (vType=="*") {
-                settings.result = vOperation[0]*vOperation[1];
-                width = 1+ String(settings.result).length;
-                height = 2+String(vOperation[1]).length + 1;
+            var height = 0 , width = 0;         // HEIGHT AND WIDTH OF THE TABLE
+            var dec = false;                    // DOES THE RESULT HAS DECIMAL
+            var wtmp = [0,0];                   // temporary width : unit width, decimal width
+            if (settings.type=="*") {
+                for (var i=0; i<2; i++) {
+                    var comma = vOperation[i].indexOf(".");
+                    var op = { value:0, dec:0, pos:0, $elt:0 };
+                    if (comma!=-1) {
+                        var tmp = vOperation[i].substr(0,comma)+vOperation[i].substr(comma+1);
+                        op.value = parseInt(tmp, settings.base);
+                        op.dec = vOperation[i].length-comma-1;
+                        dec = true;
+                    }
+                    else { op.value = parseInt(vOperation[i], settings.base); }
+                    settings.op.push(op);
+                }
+
+                settings.withmove = false;
+                settings.result = (settings.op[0].value * settings.op[1].value).toString(settings.base);
+                settings.dec    = settings.op[0].dec+settings.op[1].dec;
+                while (settings.result.length<=settings.dec) { settings.result="0"+settings.result; }
+                width = settings.result.length;
+                var tmp = Math.max(settings.op[1].value.toString(settings.base).length,settings.op[1].dec);
+                height = 2+ (tmp>1?tmp:0) + 1;
             }
-            else if (vType=="/") {
-                settings.result = Math.floor(vOperation[0]/vOperation[1]);
-                settings.modulo = vOperation[0]%vOperation[1];
-                width = String(vOperation[0]).length+Math.max(String(vOperation[1]).length, String(settings.result).length);
-                height = 2*(String(settings.result).length)+1;
+            else if (settings.type=="/") {
+                for (var i=0; i<2; i++) {
+                    var comma = vOperation[i].indexOf(".");
+                    var op = { value:0, dec:0, pos:0, $elt:0 };
+                    if (comma!=-1) {
+                        var tmp = vOperation[i].substr(0,comma)+vOperation[i].substr(comma+1);
+                        op.value = parseInt(tmp, settings.base);
+                        op.dec = vOperation[i].length-comma-1;
+                        dec = true;
+                    }
+                    else { op.value = parseInt(vOperation[i], settings.base); }
+                    settings.op.push(op);
+                }
+
+                settings.withmove = false;
+                var tmp = (settings.op[0].value/settings.op[1].value).toString(settings.base);
+                var comma = tmp.indexOf(".");
+                if (comma!=-1) { tmp = tmp.substr(0,comma)+tmp.substr(comma+1); } else { comma = tmp.length; }
+
+                var delta = settings.op[0].dec-settings.op[1].dec;
+                if (delta>0)      { for (var i=0; i<delta; i++) { if (comma>1) { comma--; } else { tmp = "0"+tmp; } } }
+                else if (delta<0) { for (var i=0; i<-delta;i++) { if (tmp[0]=='0') { tmp=tmp.substr(1);} else
+                                                                  if (comma<tmp.length) { comma++; } else { tmp+="0"; comma++;} } }
+                settings.dec = Math.min(tmp.length-comma, settings.nbdec);
+                settings.result = tmp.substr(0,comma+settings.dec);
+                if (settings.dec>0) { dec=true; }
+
+                var op2 = parseInt(settings.result, settings.base)*settings.op[1].value;
+                var dec2= settings.dec+settings.op[1].dec;
+                var op1 = settings.op[0].value;
+                var dec1= settings.op[0].dec;
+                if (dec2>dec1) { for (var i=dec1; i<dec2; i++) { op1*=10; } }
+                settings.modulo = (op1-op2).toString(settings.base);
+
+                wtmp[0] = settings.op[0].value.toString(settings.base).length + settings.nbdec - settings.op[0].dec + settings.op[1].dec;
+                wtmp[1] = Math.max(settings.op[1].value.toString(settings.base).length, settings.result.length);
+
+                width = wtmp[0] + wtmp[1];
+
+                height = (settings.result.length - (settings.removezero?settings.result.split("0").length:0) )*2+3;
             }
             else {
-                settings.result = vOperation[0];
+                var rtmp = [0,0]; // temporary result: settings.base^0 (units), settings.base^-10 decimals
+                settings.dec = 0;
                 for (var i=0; i<vOperation.length; i++) {
-                    width = Math.max(width, String(vOperation[i]).length);
-                    if (i>0) {
-                        if (vType=="+")         { settings.result = parseInt(settings.result)+parseInt(vOperation[i]); }
-                        else if (vType=="-")    { settings.result -= vOperation[i]; }
+                    var comma = vOperation[i].indexOf(".");
+                    var op = { value:[0,0], dec:0, pos:0, $elt:0 };
+                    if (comma!=-1) {
+                        var zero = ""; for (var j=(vOperation[i].length-comma); j<10; j++) { zero+="0"; }
+                        op.value[0] = parseInt(vOperation[i].substr(0, comma),settings.base);
+                        op.value[1] = parseInt(vOperation[i].substr(comma+1)+zero, settings.base);
+                        op.dec = vOperation[i].length-comma-1;
+                        if (op.dec>settings.dec) { settings.dec = op.dec; }
+                        dec = true;
+                    }
+                    else { op.value[0] = parseInt(vOperation[i], settings.base); }
+
+                    wtmp[0] = Math.max(wtmp[0], comma);
+                    wtmp[1] = Math.max(wtmp[1], op.dec);
+
+                    if (settings.type=="+") {             rtmp = [rtmp[0]+op.value[0],rtmp[1]+op.value[1]]; } else
+                    if (settings.type=="-") { if (i==0) { rtmp = [op.value[0], op.value[1]];}
+                                              else      { rtmp = [rtmp[0]-op.value[0],rtmp[1]-op.value[1]];}}
+                    settings.op.push(op);
+                }
+
+                if (!settings.withmove) for (var i in settings.op) { settings.op[i].pos = settings.dec - settings.op[i].dec; }
+
+                // handle the decimal part and the carry
+                var decimal = rtmp[1].toString(settings.base);
+                if (decimal[0]=='-') {
+                    while(decimal[0]=='-') {
+                        rtmp[0]--;
+                        rtmp[1]+=parseInt("1000000000",settings.base);
+                        decimal = rtmp[1].toString(settings.base);
                     }
                 }
-                width++;
+                else
+                while (decimal.length>9) {
+                    rtmp[0]++;
+                    rtmp[1]-=parseInt("1000000000",settings.base);
+                    decimal = rtmp[1].toString(settings.base);
+                }
+                decimal = rtmp[1].toString(settings.base);
+                while (decimal.length<9) { decimal = "0"+decimal; }
+
+                // build the real result;
+                settings.result = rtmp[0].toString(settings.base) + decimal.substr(0,settings.dec);
+                wtmp[0] = Math.max(wtmp[0], rtmp[0].toString(settings.base).length);
+                wtmp[1] = Math.max(wtmp[1], rtmp[1].toString(settings.base).substr(0,settings.dec).length);
+                width = wtmp[0]+wtmp[1];
                 height = vOperation.length+1;
+
             }
-            settings.type = vType;
 
             // BUILD THE TABLE FOR THE DIVISION OPERATION
-            var vTable = '<table>';
-            if (vType=="/") {
+            var html = "", top = 0, left = 0;
+            if (settings.type=="/") {
+                for (var j=0; j<height; j++) {
+                    left = 0;
 
-                // TIME AND HEADER
-                vTable+='<tr><td class="help clear"><div id="time">'+
-                        (settings.time?helpers.formattime(Math.floor(Math.abs(settings.time*settings.number-settings.timer.value))):"")
-                        +'</div></td>';
-                for (var j=1; j<width; j++) { vTable+='<td class="help"><div></div></td>'; }
-                vTable+='</tr>';
+                    for (var i=0; i<width; i++) {
+                        var opclass="";
+                        var opcontent = "";
+                        var add = true;
+                        var offset = 0;
 
-                // INITIALISATION
-                var vModulo = vOperation[0];
-                var vPow = 1;
-                for (var i = 0; i<String(settings.result).length-1; i++) { vPow *= 10; }
-
-                // FOR EACH LINE
-                for (var i=0; i<height; i++) {
-                    vTable+='<tr>';
-
-                    // COMPUTE THE OFFSET OF THE LEFT VALUE
-                    var offset=0;
-                    var vLineContent="";
-                    if (i>0) {
-                        if (i%2) {
-                            vLineContent = vOperation[1]*vPow*(Math.floor(settings.result/vPow)%10);
-                            vModulo -= vLineContent;
-                            vPow = vPow/10;
-                            offset = String(vLineContent).length;
-                         } else {
-                            offset = String(vModulo).length;
-                         }
-                    }
-
-                    for (var j=0; j<width; j++) {
-                        // FIRST LINE WITH DIVISION VALUES
-                        if (i==0) {
-                            if (j==String(vOperation[0]).length-1) { vTable+='<td class="line"><div>'; }
-                            else { vTable+='<td><div>'; }
-                            if (j<String(vOperation[0]).length) { vTable+=String(vOperation[0])[j]; }
-                            else if (j<String(vOperation[0]).length+String(vOperation[1]).length){
-                                vTable+=String(vOperation[1])[j-String(vOperation[0]).length]; }
-                            vTable+='</div></td>';
+                        // TYPE AND CONTENT OF THE CELL
+                        if (j==0) {
+                            if (i<settings.op[0].value.toString(settings.base).length) {
+                                opcontent = settings.op[0].value.toString(settings.base)[i]; }
+                            else if (i>=wtmp[0] && i-wtmp[0]<settings.op[1].value.toString(settings.base).length) {
+                                opcontent = settings.op[1].value.toString(settings.base)[i-wtmp[0]]; }
                         }
-                        // OTHER LINES
-                        else {
-                            var vClass = "";
-                            if (j==String(vOperation[0]).length-1) { vClass = " line"; }
-                            if (i==height-1) { vClass+=" modulo";}
-                            if ((j<String(vOperation[0]).length && j>=String(vOperation[0]).length-offset)||
-                                (j>=String(vOperation[0]).length && i==1)) {
-                                if ((i==1) && (j>=String(vOperation[0]).length)) { vClass +=" result"; }
-                                vTable+='<td class="active'+vClass+'">';
-                                vTable+='<div onclick="$(this).closest(\'.operation\').operation(\'click\',this, event);" ';
-                                vTable+='ontouchstart="$(this).closest(\'.operation\').operation(\'click\',this, event);event.preventDefault();" ';
-                                vTable+='onmouseover="$(this).closest(\'.operation\').operation(\'onmouseover\',this, true);" ';
-                                vTable+='onmouseout="$(this).closest(\'.operation\').operation(\'onmouseover\',this, false);">';
-                                vTable+='</div></td>';
+                        if (i<wtmp[0]) { opclass=j?(j%2?" active l3":" active l2"):" l1"; }
+                        else { if (j>1) { add = false; } else { opclass=j?" result active l2":" l1"; offset=j?0.1:0; } }
+
+                        // BUILD THE CELL
+                        if (add) {
+                            html+="<div id='c"+i+"x"+j+"' class='value s"+Math.floor(Math.random()*2)+opclass+
+                                "' style='top:"+(top+offset)+"em;left:"+left+"em;'>"+opcontent+"</div>";
+                        }
+
+                        // STATIC COMMA IF NEEDED
+                        if (j==0) {
+                            if (settings.op[0].dec && i==settings.op[0].value.toString(settings.base).length-settings.op[0].dec-1) {
+                                html+="<div class='dec s' style='top:"+top+"em;left:"+left+"em;'><div></div></div>";
                             }
-                            else {
-                                vTable+='<td class="inactive"><div></div></td>';
+                            if (settings.op[1].dec &&
+                                i-wtmp[0]== settings.op[1].value.toString(settings.base).length-settings.op[1].dec-1) {
+                                html+="<div class='dec s' style='top:"+top+"em;left:"+left+"em;'><div></div></div>";
                             }
                         }
+
+                        // DYNAMIC COMMA
+                        if (j==1 && i>=wtmp[0] && dec && i<width-1) {
+                            html+="<div class='dec result' style='top:"+top+"em;left:"+left+"em;'><div></div></div>";
+                        }
+
+
+                        left+=1;
+                        if (i==wtmp[0]-1) { left+=0.1; }
                     }
-                    vTable+='</tr>';
+                    top+=1;
                 }
-
+                // BG
+                html+="<div class='bg' style='top:-0.1em;left:-0.1em;width:"+(wtmp[0]+0.2)+"em;height:"+(top+0.2)+"em;'></div>";
+                html+="<div class='bg' style='top:-0.1em;left:"+(wtmp[0]-0.95)+"em;width:"+(wtmp[1]+1.15)+"em;height:2.3em;'></div>";
             }
             // BUILD THE TABLE FOR ALL OPERATIONS BUT DIVISION
             else {
-                vTable+='<tr>';
-                vTable+='<td class="help clear"><div id="time" onclick="$(this).closest(\'.operation\').operation(\'clear\');">'
-                            +(settings.time?helpers.formattime(Math.floor(Math.abs(settings.time*settings.number-settings.timer.value))):"")
-                            +'</div></td>';
-                for (var j=1; j<width; j++) {
-                    vTable+='<td class="help"><div onclick="$(this).closest(\'.operation\').operation(\'click\',this, event);" ';
-                    vTable+='ontouchstart="$(this).closest(\'.operation\').operation(\'click\',this, event);event.preventDefault();" ';
-                    vTable+='onmouseover="$(this).closest(\'.operation\').operation(\'onmouseover\',this, true); "';
-                    vTable+='onmouseout="$(this).closest(\'.operation\').operation(\'onmouseover\',this, false);">';
-                    vTable+='</div></td>';
-                }
-                vTable+='</tr>';
-                for (var i=0; i<height; i++) {
-                    vTable+='<tr';
-                    if (i==height-1) { vTable+=" id='result'"; }
-                    if ((i==vOperation.length-1)||(i==height-2)) { vTable+=' class="line"'; } 
-                    vTable+='>';
-                    for (var j=0; j<width; j++) {
-                        if (i<vOperation.length) {
-                            vTable+='<td><div>';
-                            if ((j==0)&&(i>0)) { vTable+=vType; }
-                            else if (j>=width-String(vOperation[i]).length) {
-                                vTable+=String(vOperation[i])[(j+String(vOperation[i]).length)-width]; }
-                            vTable+='</div></td>';
-                        }
-                        else {
-                            vTable+='<td class="active">';
-                            vTable+='<div onclick="$(this).closest(\'.operation\').operation(\'click\',this, event);" ';
-                            vTable+='ontouchstart="$(this).closest(\'.operation\').operation(\'click\',this, event);event.preventDefault();" ';
-                            vTable+='onmouseover="$(this).closest(\'.operation\').operation(\'onmouseover\',this, true);" ';
-                            vTable+='onmouseout="$(this).closest(\'.operation\').operation(\'onmouseover\',this, false);">';
-                            vTable+='</div></td>';
-                        }
-                    }
-                    vTable+='</tr>';
-                }
-            }
 
-            vTable+='</table>';
-            $board.append(vTable);
-            $board.find("td").each(function(index) {
-                if (!$(this).hasClass("help")) {
-                    var r = index%2+1;
-                    $(this).css("background-image", "url('res/img/svginventoryicons/background/border/square0"+r+".svg')");
+                // HEADER
+                left+=0.75;
+                html+="<div class='corner' style='top:"+top+"em;left:"+left+"em;'></div>"; left+=.25;
+                for (var i=0; i<width; i++) {
+                    html+="<div class='carry' style='top:"+top+"em;left:"+left+"em;'><div class='active'></div></div>";
+                    left+=1;
+                }
+                html+="<div class='corner' style='top:"+top+"em;left:"+left+"em;'></div>"; left+=.25;
+                top+=0.55;
+
+                // DATA
+                for (var j=0; j<height; j++) {
+                    left = 0;
+
+                    // UPDATE DATA
+                    var optxt = "", opclass="", opdec = false;
+                    if (j>=0 && j<settings.op.length)               { opclass = " l1"; opdec = true; if (j>0) { optxt = settings.type; } }
+                    else if (j>=settings.op.length && j<height-1)   { opclass = " l2 active"; if (j>settings.op.length) optxt = "+"; }
+                    else if (j==height-1)                           { opclass = " result active"; }
+
+                    html+="<div class='op' style='top:"+top+"em;left:"+left+"em;'>"+optxt+"</div>";
+                    left+=0.75;
+
+                    if (dec && settings.withmove && opdec) {
+                        html+="<div id='"+j+"' class='move"+opclass+"' style='top:"+top+"em;left:"+left+"em;' ";
+                        html+="onclick=\"$(this).closest('.operation').operation('move', this, true);\" ";
+                        html+="ontouchstart=\"$(this).closest('.operation').operation('move', this, true);event.preventDefault();\" ";
+                        html+="><img src='res/img/generic/futoshiki05.svg'/></div>";
+                    }
+                    else {
+                        html+="<div class='move"+opclass+"' style='top:"+top+"em;left:"+left+"em;'>";
+                        html+="<img src='res/img/generic/futoshiki04.svg'/></div>";
+                    }
+                    left+=.25;
+
+                    for (var i=0; i<width; i++) {
+                        html+="<div id='c"+i+"x"+j+"' class='value s"+Math.floor(Math.random()*2)+opclass+
+                              "' style='top:"+top+"em;left:"+left+"em;'></div>";
+
+                        if (dec && i<width-1 && j==height-1) {
+                            html+="<div id='d"+i+"x"+j+"' class='dec result' style='top:"+top+"em;left:"+left+"em;'><div></div></div>";
+                        }
+                        left+=1;
+                    }
+
+                    if (dec && settings.withmove && opdec) {
+                        html+="<div id='"+j+"' class='move"+opclass+"' style='top:"+top+"em;left:"+left+"em;' ";
+                        html+="onclick=\"$(this).closest('.operation').operation('move', this, false);\" ";
+                        html+="ontouchstart=\"$(this).closest('.operation').operation('move', this, false);event.preventDefault();\" ";
+                        html+="><img src='res/img/generic/futoshiki06.svg'/></div>";
+                    }
+                    else {
+                        html+="<div class='move"+opclass+"' style='top:"+top+"em;left:"+left+"em;'>";
+                        html+="<img src='res/img/generic/futoshiki04.svg'/></div>";
+                    }
+                    left+=.25;
+
+                    top+=1;
+                    if (j==height-2) { top+=0.05; }
+                    if (j==settings.op.length-1) { top+=0.05; }
+                }
+
+                // BG
+                html+="<div class='bg' style='top:-0.1em;left:0.675em;width:"+(width+0.67)+"em;height:"+(top+0.15)+"em;'></div>";
+            }
+            $board.append(html);
+
+            $this.find(".active").bind("mousedown touchstart", function(e) {
+                var $this = $(this).closest(".operation") , settings = helpers.settings($this), $keypad = $this.find("#keypad");
+
+                if (settings.interactive && !$(this).hasClass("move") ) {
+                    var vEvent = (event && event.originalEvent && event.originalEvent.touches &&
+                                  event.originalEvent.touches.length)? event.originalEvent.touches[0]:event;
+
+                    if (settings.keypad) { clearTimeout(settings.keypad); settings.keypad=0; }
+                    settings.keypad = setTimeout(function() { $this.find("#keypad").hide(); }, 3000);
+                    var vTop = vEvent.clientY - $this.offset().top;
+                    var vLeft = vEvent.clientX - $this.offset().left;
+                    var tmp = $this.find("#bg1").height()/1.5;
+                    if (vTop<tmp)   { vTop = tmp; }
+                    if (vLeft<tmp)  { vLeft = tmp; }
+                    if (vTop+tmp>$this.height())    { vTop=$this.height()-tmp; }
+                    if (vLeft+tmp>$this.width())    { vLeft=$this.width()-tmp; }
+                    $keypad.css("top", vTop+"px").css("left", vLeft+"px").show();
+                    settings.elt = this;
                 }
             });
 
+            $this.find(".dec.result").bind("mousedown touchstart", function(e) {
+                var $this = $(this).closest(".operation") , settings = helpers.settings($this);
+
+                $this.find(".dec.result").removeClass("s");
+                $(this).addClass("s");
+
+            });
+
             // Resize
-            var vFont = Math.floor(Math.min(($this.width()-3)/width, ($this.height()-8)/(height+.5)));
-            $this.find("#board").css("font-size", vFont+"px");
-            $this.find("#keypad").css("font-size", Math.floor(($this.height()-8)/8)+"px");
+            settings.size= [width, height];
+            var off = settings.type=="/"?0.2:2;
+            var vFont = Math.floor(Math.min($board.width()/(width+off), $board.height()/(height+1)));
+            vFont = Math.floor(vFont/4)*4;
+            $board.css("font-size", vFont+"px")
+                  .css("top", Math.floor(($board.height()-(height+1)*vFont)/2)+"px")
+                  .css("left", Math.floor(($board.width()-((width+off)*vFont))/2)+"px");
+            if (settings.type!="/") helpers.showop($this);
 
-            settings.finish = false;
+            settings.interactive = true;
 
-        },
-        key: function($this, value) {
-            var settings = helpers.settings($this);
-            if (!settings.timer.id) { settings.timer.id = setTimeout(function() { helpers.timer($this); }, 1000); }
-            if (settings.keypad) { clearTimeout(settings.keypad); settings.keypad=0; }
-            $this.find("#keypad").fadeOut("fast");
-            if (!settings.elt && settings.elthover) { settings.elt = settings.elthover; }
-            if (settings.elt) {
-                if (value==-2)   { $(settings.elt).text(""); } else
-                if (value>=0)    {
-                    $(settings.elt).text(value);
-                    settings.elt = 0;
-                    settings.finish = helpers.check($this);
-                    if (settings.finish) {
-                        $this.find("#board table").addClass("good");
-                        if (++settings.count >= settings.number) {
-                            clearTimeout(settings.timer.id);
-                            settings.score = settings.time?helpers.score((settings.time+1)*settings.number, settings.timer.value):5;
-                            setTimeout(function() { helpers.end($this); }, 1000);
-                        }
-                        else {
-                            setTimeout(function() { helpers.build($this); }, 1000);
-                        }
-                    }
-                }
-            }
-        },
-        // Check the result
-        check: function($this) {
-            var settings = helpers.settings($this), vResult = "", vModulo = "";
-            var ret = false;
-            if (settings.type=="/") {
-                $this.find(".result div").each(function(index) { vResult+=$(this).text(); });
-                $this.find(".modulo div").each(function(index) { vModulo+=$(this).text(); });
-                ret = ( (parseInt(vResult)==parseInt(settings.result)) &&
-                        (parseInt(vModulo)==parseInt(settings.modulo)) );
-            }
-            else {
-                $this.find("#result div").each(function(index) { vResult+=$(this).text(); });
-                ret = (parseInt(vResult)==parseInt(settings.result));
-            }
-            return ret;
         }
     };
 
@@ -337,25 +454,23 @@
                 // The settings
                 var settings = {
                     last        : -1,
+                    size        : [0,0],
                     result      : 0,
+                    dec         : 0,
                     modulo      : 0,
+                    score       : 5,
                     elt         : 0,
-                    elthover    : 0,
                     keypad      : 0,
-                    finish      : false,
-                    timer: {                // the general timer
-                        id      : 0,        // the timer id
-                        value   : 0         // the timer value
-                    },
-                    count       : 0,        // the operation number
-                    type        : '+'
+                    interactive : false,
+                    count       : 0,
+                    type        : '+',
+                    op          : []
                 };
 
                 // Check the context and send the load
                 return this.each(function() {
                     var $this = $(this);
                     $(document).unbind("keypress");
-                    $(document).keypress(function(_e) { helpers.key($this, String.fromCharCode(_e.which)); });
 
                     var $settings = $.extend({}, defaults, options, settings);
                     var checkContext = helpers.checkContext($settings);
@@ -370,45 +485,76 @@
                     }
                 });
             },
-            key: function(value) { helpers.key($(this), value); },
-            click: function(elt, event) {
-                var $this = $(this) , settings = $(this).data("settings");
-                if (!settings.timer.id) { settings.timer.id = setTimeout(function() { helpers.timer($this); }, 1000); }
-                if (!settings.finish) {
-
-                    if (settings.keypad) { clearTimeout(settings.keypad); settings.keypad=0; }
-                    settings.keypad = setTimeout(function() { $this.operation('key', -1); }, 3000);
-
-                    var $keypad = $(this).find("#keypad");
-                    var vTop = Math.floor(event.pageY - $(this).offset().top -  $keypad.height()/2);
-                    var vLeft = Math.floor(event.pageX - $(this).offset().left - $keypad.width()/2);
-                    if (vTop+$keypad.height()>$(this).height()) { vTop= $(this).height() - $keypad.height() - 1; }
-                    if (vLeft+$keypad.width()>$(this).width()) { vLeft= $(this).width() - $keypad.width() - 1; }
-                    $keypad.css("top", (vTop>0?vTop:0)).css("left", (vLeft>0?vLeft:0)).fadeIn("fast");
-
-                    settings.elt = elt;
-                }
-            },
-            onmouseover: function(elt, over) {
-                var $this = $(this) , settings = $(this).data("settings");
-                if (over) {
-                    settings.elthover = elt;
-                } else {
-                    if (settings.elthover ==elt) { settings.elthover= 0; }
-                }
-            },
-            clear: function() {
-                $(this).find("td.help div").each(function(index) { if (index>0) { $(this).text(""); } });
+            key: function(_val) {
+                var $this = $(this) , settings = helpers.settings($this);
+                if (settings.keypad) { clearTimeout(settings.keypad); settings.keypad=0; }
+                $this.find("#keypad").fadeOut("fast");
+                $(settings.elt).html(($(settings.elt).html()==_val&&$(settings.elt).html().length)?"":_val);
             },
             next: function() {
+                var $this = $(this) , settings = helpers.settings($this);
                 $(this).find("#splash").hide();
-                $(this).find("#board").show();
+                helpers.build($(this));
             },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                if (settings.timer.id) { clearTimeout(settings.timer.id); settings.timer.id=0; }
                 settings.finish = true;
                 settings.context.onQuit({'status':'abort'});
+            },
+            move: function(elt, side) {
+                var $this = $(this) , settings = helpers.settings($this);
+                if (settings.interactive) {
+                    var op = settings.op[$(elt).attr("id")];
+                    var val = op.value[0].toString(settings.base) + op.value[1].toString(settings.base).substr(0, op.dec);
+                    if (side)   { if (op.pos+val.length<settings.size[0]) { settings.op[$(elt).attr("id")].pos++; } }
+                    else        { if (op.pos>0) { settings.op[$(elt).attr("id")].pos--; }
+                    }
+                    helpers.showop($this);
+                }
+            },
+            valid: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+                if (settings.interactive) {
+                    var error = 0;
+                    settings.interactive = false;
+
+                    $this.find(".value.result").each(function(_index) {
+                        if (_index<settings.result.length && settings.result[_index]!=$(this).html()) {
+                            error++; $(this).addClass("wrong"); }
+                    });
+
+                    var indexdec = settings.type=="/"?settings.result.length-settings.dec-1:settings.size[0]-settings.dec-1;
+                    $this.find(".dec.result").each(function(_index) {
+                        if ($(this).hasClass("s")) {
+                            if (_index!=indexdec)       { $(this).removeClass("s").addClass("wrong"); error++; }
+                        } else if (_index==indexdec)    { $(this).addClass("wrong"); }
+                    });
+
+                    if (settings.type=="/" && settings.nbdec == 0) {
+                        var k = settings.modulo.length-1;
+                        for (var i=settings.size[0]; i>=0; i--) {
+                            $elt = this.find("#c"+i+"x"+(settings.size[1]-1));
+                            if ($elt.length) {
+                                if (k>=0){ if ($elt.html()!=settings.modulo[k]) { $elt.addClass("wrong"); error++; } }
+                                else     { if ($elt.html().length) { $elt.addClass("wrong"); error++; } }
+                                k--;
+                            }
+                        }
+                    }
+
+                    settings.score-=error;
+                    if (settings.score<0) { settings.score = 0; }
+                    $this.find("#effects").toggleClass("division", settings.type=="/").show();
+                    $this.find("#good").toggle(!error);
+                    $this.find("#wrong").toggle(error);
+
+                    settings.count++;
+
+                    if (settings.count>=settings.number) { setTimeout(function() { helpers.end($this); }, 1000 ); }
+                    else                                 { setTimeout(function() { helpers.build($this);},1000 ); }
+
+                }
+
             }
         };
 
