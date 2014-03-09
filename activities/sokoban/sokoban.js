@@ -89,7 +89,7 @@
                 var vx = ((xmax-xmin)*2)+8+settings.padding, vy = (ymax-ymin+2)*4, vv = Math.max(vx,vy);
                 settings.offset=[-2*ymin+(vv-vy)/4+settings.margin/2,1+settings.padding/2-2*xmin+(vv-vx)/6+settings.margin/2];
                 settings.scale=(28/(vv+settings.margin*2));
-                $this.find("#tiles").css("font-size", settings.scale+"em");
+                $this.find("#tiles").css("font-size", Math.floor($this.height()*settings.scale/16)+"px");
 
                 // Build the board
                 settings.tiles.size=[settings.board[0].length,settings.board.length];
