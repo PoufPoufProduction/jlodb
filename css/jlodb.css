@@ -32,37 +32,30 @@ select                          { appearance:none; -webkit-appearance:none; -moz
                                   z-index:2000;}
 #launcher #quit                 { font-size:.8em; width:1em; height:1em; position:absolute; top:0; left:0; cursor:pointer; z-index:2001;}
 #launcher #activity             { width:100%; height:100%; position:relative;
-                                  -webkit-touch-callout: none;
-                                  -webkit-user-select: none;
-                                  -khtml-user-select: none;
-                                  -moz-user-select: none;
-                                  -ms-user-select: none;
-                                  user-select: none;
+                                  -webkit-touch-callout: none;  -webkit-user-select: none;  -khtml-user-select: none;
+                                  -moz-user-select: none;       -ms-user-select: none;      user-select: none;
                                 }
-#jscore                         { width:100%; height:100%; position:absolute; top:0; left:0; background-color:rgba(0,0,0,0.1);
+#score                          { width:100%; height:100%; position:absolute; top:0; left:0; background-color:rgba(0,0,0,0.1);
                                   z-index:2002; display:none; }
-#jscore>div                     { background-color:white; margin:2em 1.5em;
+#score>div                      { background-color:white; margin:2em 1.5em;
                                   padding:.1em;  width:12.9em; height:4.8em; border-radius:.25em; }
-#jscore .content                { background-color:rgb(120,200,255); background-image:url("../res/img/banners/score.svg");
+#score .content                 { background-color:rgb(120,200,255); background-image:url("../res/img/banners/score.svg");
                                   border-radius:.1em; height:100%; width:12.9em; height:4.8em; position:relative; }
-#jscore .value                  { width:1em; height:1em; text-align:center; font-size:2em; position:relative; top:.2em; left:1.45em; }
-#jscore.s5 .value:before        { content:"A"; color:red;}
-#jscore.s4 .value:before        { content:"B"; color:orange;}
-#jscore.s3 .value:before        { content:"C"; color:green;}
-#jscore.s2 .value:before        { content:"D"; color:blue;}
-#jscore.s1 .value:before        { content:"E"; color:purple;}
-#jscore.s0 .value:before        { content:"F"; color:rgb(64,64,64);}
-#jscore .stars                  { width:100%; height:100%; position:absolute; top:0; left:0; }
-#jscore.s5 .stars               { background-image:url("../res/img/banners/score3.svg"); }
-#jscore.s4 .stars               { background-image:url("../res/img/banners/score2.svg"); }
-#jscore.s3 .stars               { background-image:url("../res/img/banners/score1.svg"); }
-#jscore .icon                   { width:1em; height:1em; font-size:1.8em; position:absolute; cursor:pointer; top:1.7em;}
-#jscore #reload                 { left:4em; }
-#jscore #menu                   { left:5.1em; }
-#jscore #next                   { left:6.2em; }
-#close                          { position:absolute; background-color:rgba(255,255,255,0.8); display:none; top:1em; left:1.7em;
-                                  font-size:2.2em; border-radius:.25em; z-index:2000; }
-#close .button                  { width:1.8em; height:1.8em; margin:.1em; cursor:pointer; }
+#score .value                   { width:1em; height:1em; text-align:center; font-size:2em; position:relative; top:.2em; left:1.45em; }
+#score.s5 .value:before         { content:"A"; color:red;}
+#score.s4 .value:before         { content:"B"; color:orange;}
+#score.s3 .value:before         { content:"C"; color:green;}
+#score.s2 .value:before         { content:"D"; color:blue;}
+#score.s1 .value:before         { content:"E"; color:purple;}
+#score.s0 .value:before         { content:"F"; color:rgb(64,64,64);}
+#score .stars                   { width:100%; height:100%; position:absolute; top:0; left:0; }
+#score.s5 .stars                { background-image:url("../res/img/banners/score3.svg"); }
+#score.s4 .stars                { background-image:url("../res/img/banners/score2.svg"); }
+#score.s3 .stars                { background-image:url("../res/img/banners/score1.svg"); }
+#score .icon                    { width:1em; height:1em; font-size:1.8em; position:absolute; cursor:pointer; top:1.7em;}
+#score #reload                  { left:4em; }
+#score #menu                    { left:5.1em; }
+#score #next                    { left:6.2em; }
 /*---------------------------------------------------------------------------------------------------------------------------*/
 div#splash                      { font-size:.5em; height:40%; width:80%; top:25%; left:10%; position:absolute; z-index:2000;
                                   background-color:rgba(255,255,255,0.9); text-align:justify; overflow:hidden;

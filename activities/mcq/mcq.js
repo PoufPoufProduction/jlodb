@@ -18,10 +18,10 @@
         checkContext: function(_settings){
             var ret         = "";
             if (!_settings.context)         { ret = "no context is provided in the activity call."; } else
-            if (!_settings.context.onQuit)  { ret = "mandatory callback onQuit not available."; }
+            if (!_settings.context.onquit)  { ret = "mandatory callback onquit not available."; }
 
             if (ret.length) {
-                ret+="\n\nUsage: $(\"target\")."+_settings.name+"({'onQuit':function(_ret){}})";
+                ret+="\n\nUsage: $(\"target\")."+_settings.name+"({'onquit':function(_ret){}})";
             }
             return ret;
         },
@@ -30,14 +30,12 @@
         // Quit the activity by calling the context callback
         end: function($this) {
             var settings = helpers.settings($this);
-            settings.context.onQuit({'status':'success','score':settings.score});
+            settings.context.onquit($this,{'status':'success','score':settings.score});
         },
         loader: {
             css: function($this) {
                 var settings = helpers.settings($this), cssAlreadyLoaded = false, debug = "";
                 if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
-
-                if (settings.context.onload) { settings.context.onload(true); }
 
                 $("head").find("link").each(function() {
                     if ($(this).attr("href").indexOf("activities/"+settings.name+"/"+settings.css) != -1) { cssAlreadyLoaded = true; }
@@ -59,16 +57,11 @@
 
                 // Load the template
                 var templatepath = "activities/"+settings.name+"/"+settings.template+debug;
-                $this.load( templatepath, function(response, status, xhr) {
-                    if (status=="error") {
-                        settings.context.onquit({'status':'error', 'statusText':templatepath+": "+xhr.status+" "+xhr.statusText});
-                    }
-                    else { helpers.loader.build($this); }
-                });
+                $this.load( templatepath, function(response, status, xhr) { helpers.loader.build($this); });
             },
             build: function($this) {
                 var settings = helpers.settings($this);
-                if (settings.context.onLoad) { settings.context.onLoad(false); }
+                if (settings.context.onload) { settings.context.onload($this); }
 
                 // Prepare the questions
                 if (!settings.number || settings.number>settings.data.length) { settings.number = settings.data.length; }
@@ -232,7 +225,7 @@
                 var $this = $(this) , settings = helpers.settings($this);
                 if (settings.timer.id) { clearTimeout(settings.timer.id); settings.timer.id=0; }
                 settings.finish = true;
-                settings.context.onQuit({'status':'abort'});
+                settings.context.onquit($this,{'status':'abort'});
             },
             next: function() {
                 $(this).find("#splash").hide();

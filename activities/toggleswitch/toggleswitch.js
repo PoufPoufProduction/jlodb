@@ -9,6 +9,9 @@
         score       : 1,                                        // The score (from 1 to 5)
         number      : 0,                                        // Pages number
         show        : true,                                     // Show the wrong responses
+        toggle      : ".a",                                     // Active class
+        result      : "",
+        init        : "",
         debug       : false                                     // Debug mode
     };
 
@@ -18,10 +21,10 @@
         checkContext: function(_settings){
             var ret         = "";
             if (!_settings.context)         { ret = "no context is provided in the activity call."; } else
-            if (!_settings.context.onQuit)  { ret = "mandatory callback onQuit not available."; }
+            if (!_settings.context.onquit)  { ret = "mandatory callback onquit not available."; }
 
             if (ret.length) {
-                ret+="\n\nUsage: $(\"target\")."+_settings.name+"({'onQuit':function(_ret){}})";
+                ret+="\n\nUsage: $(\"target\")."+_settings.name+"({'onquit':function(_ret){}})";
             }
             return ret;
         },
@@ -30,14 +33,12 @@
         // Quit the activity by calling the context callback
         end: function($this) {
             var settings = helpers.settings($this);
-            settings.context.onQuit({'status':'success','score':settings.score});
+            settings.context.onquit($this,{'status':'success','score':settings.score});
         },
         loader: {
             css: function($this) {
                 var settings = helpers.settings($this), cssAlreadyLoaded = false, debug = "";
                 if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
-
-                if (settings.context.onload) { settings.context.onload(true); }
 
                 $("head").find("link").each(function() {
                     if ($(this).attr("href").indexOf("activities/"+settings.name+"/"+settings.css) != -1) { cssAlreadyLoaded = true; }
@@ -59,17 +60,12 @@
 
                 // Load the template
                 var templatepath = "activities/"+settings.name+"/"+settings.templateX+debug;
-                $this.load( templatepath, function(response, status, xhr) {
-                    if (status=="error") {
-                        settings.context.onquit({'status':'error', 'statusText':templatepath+": "+xhr.status+" "+xhr.statusText});
-                    }
-                    else { helpers.loader.build($this); }
-                });
+                $this.load( templatepath, function(response, status, xhr) { helpers.loader.build($this); });
             },
             build: function($this) {
                 var settings = helpers.settings($this);
-                if (settings.context.onLoad) { settings.context.onLoad(false); }
-                $this.css("font-size", Math.floor($this.height()/16)+"px");
+                if (settings.context.onload) { settings.context.onload($this); }
+                $this.css("font-size", Math.floor($this.height()/12)+"px");
 
                 // Locale handling
                 $this.find("h1#label").html(settings.label);
@@ -80,51 +76,57 @@
         },
         // REFRESH A TOGGLE ELEMENT
         refresh: function($this, elt) {
-            var settings = helpers.settings($this);
-            if (settings.states.css) {
-                var o = elt.state;
-                if (o<0 && settings.states.css.length>settings.states.nb && settings.show) { o = settings.states.nb; }
-                if (o>=0) { for (var i in settings.states.css[o]) { elt.elt.css(i, settings.states.css[o][i]); } }
+            var settings = helpers.settings($this), o = elt.state;
+            if (settings.states.style) {
+                var style   = {};
+                if (o<0 && settings.show && settings.wrong && settings.wrong.style ) { style = settings.wrong.style; }
+                if (o>=0) { style = settings.states.style[o%settings.states.style.length]; }
+                for (var i in style) { elt.elt.css(i, style[i]); }
             }
-            if (settings.states.html)
+
+            if (settings.states.content)
             {
-                var o = elt.state;
-                if (o<0 && settings.states.html.length>settings.states.nb && settings.show) { o = settings.states.nb; }
-                elt.elt.html(settings.states.html[o]);
+                var content = "";
+                if (o<0 && settings.show && settings.wrong && settings.wrong.content ) { content = settings.wrong.content; }
+                if (o>=0) { content = settings.states.content[o%settings.states.content.length]; }
+
+                if (content.length) { elt.elt.html(content); }
+            }
+            if (settings.states.class) {
+                var cl = "";
+
+                if (o<0 && settings.show && settings.wrong && settings.wrong.class ) { cl = settings.wrong.class; }
+                if (o>=0) { cl = settings.states.class[o%settings.states.class.length]; }
+
+                if (cl.length) { elt.elt.attr("class",cl); }
             }
         },
         // CHANGE A STATUT
         click: function($this, id) {
             var settings = helpers.settings($this);
-            var elt = settings.current.values[id];
+            if (settings.interactive) {
+                var elt = settings.current.values[id];
 
-            var isOk = true;
-            if (settings.current.elt.check) { isOk = eval('('+settings.current.elt.check+')')(id, settings.current.values); }
+                var isOk = true;
+                if (settings.current.elt.onclick) {
+                    isOk = eval('('+settings.current.elt.onclick+')')($this, settings.current.values, id); }
 
-            if (isOk) {
-                elt.state=(elt.state+1)%((settings.states.nb)?settings.states.nb:2);
-                helpers.refresh($this, elt);
+                if (isOk) {
+                    elt.state=(elt.state+1)%((settings.states.nb)?settings.states.nb:2);
+                    helpers.refresh($this, elt);
+                }
             }
         },
         fill: function($this) {
             var settings = helpers.settings($this);
             settings.current.values = [];
-            $this.find(".t").each(function(index) {
+            $this.find(settings.toggle).each(function(index) {
                 var elt={ elt:$(this), state:0 };
+                if (settings.init.length>index) { elt.state = parseInt(settings.init[index]); }
                 settings.current.values.push(elt);
                 helpers.refresh($this,elt);
-                $(this).bind("click touchstart",function(event){ helpers.click($this,index); event.preventDefault();});
+                $(this).bind("mousedown touchstart",function(event){ helpers.click($this,index); event.preventDefault();});
             });
-
-            if (settings.states.css) {
-                for (var i=0; i<settings.states.css.length; i++) {
-                    for (var j in settings.states.css[i]) {
-                        $this.find(".css"+i).css(j, settings.states.css[i][j]);
-                    }
-                }
-            }
-
-            settings.finish = false;
         },
         // Build the question
         build: function($this) {
@@ -137,11 +139,11 @@
             settings.current.elt=settings.values?settings.values[settings.it%settings.values.length]:settings;
             if (settings.gen) {
                 var gen = eval('('+settings.current.elt.gen+')')();
-                settings.current.data = gen.data;
+                settings.current.t      = gen.t;
                 settings.current.result = gen.result;
             }
             else {
-                settings.current.data   = settings.current.elt.data;
+                settings.current.t      = settings.current.elt.t;
                 settings.current.result = settings.current.elt.result;
             }
 
@@ -152,22 +154,30 @@
             if (settings.current.elt.template) {
                 var debug = "";
                 if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
-                var templatepath = "activities/"+settings.name+"/template/"+settings.current.elt.template+".html"+debug;
-                $this.find("#data").load(templatepath, function(response, status, xhr) {
-                    if (status=="error") {
-                        settings.context.onQuit({'status':'error', 'statusText':templatepath+": "+xhr.status+" "+xhr.statusText});
-                    }
-                    else {
-                        $this.find("#data .data").each(function(index) {
-                            if (settings.current.data && settings.current.data.length>index) {
-                                $(this).html(settings.current.data[index]);
-                        }});
+
+                if (settings.current.elt.template.indexOf(".svg")!=-1) {
+                    var templatepath = "res/img/"+settings.current.elt.template+debug;
+                    var elt= $("<div id='svg'></div>").appendTo($this.find("#data"));
+                    elt.svg();
+                    settings.svg = elt.svg('get');
+                    $(settings.svg).attr("class",settings.class);
+                    settings.svg.load(templatepath, { addTo: true, changeSize: true, onLoad:function() {
+                        $this.find(".t").each(function(index) {
+                            if (settings.current.t && settings.current.t.length>index) { $(this).text(settings.current.t[index]); }});
+                        helpers.fill($this); }
+                    });
+                }
+                else {
+                    var templatepath = "activities/"+settings.name+"/template/"+settings.current.elt.template+".html"+debug;
+                    $this.find("#data").load(templatepath, function(response, status, xhr) {
+                        $this.find(".t").each(function(index) {
+                            if (settings.current.t && settings.current.t.length>index) { $(this).html(settings.current.t[index]); }});
                         helpers.fill($this);
-                    }
-                });
+                    });
+                }
             }
             else {
-                $this.find("#data").html(data);
+                $this.find("#data").html(settings.data);
                 helpers.fill($this);
             }
 
@@ -182,15 +192,16 @@
             init: function(options) {
                 // The settings
                 var settings = {
-                    finish          : false,
+                    interactive : false,
                     it          : 0,
                     wrongs      : 0,        // number of false response
                     current     : {         // the current page
                         elt     : "",
-                        data    : [],
+                        t       : [],
                         result  : "",
                         values  : []
-                    }
+                    },
+                    svg         : 0
                 };
 
                 return this.each(function() {
@@ -214,13 +225,13 @@
             },
             valid: function() {
                 var $this   = $(this) , settings = helpers.settings($this);
-                if (!settings.finish) {
-                    settings.finish = true;
+                if (settings.interactive) {
+                    settings.interactive = false;
                     var result  = "";
                     var wrongs  = 0;
                     for (var i=0; i<settings.current.values.length; i++) {
                         result+=settings.current.values[i].state;
-                        if(settings.current.values[i].state!=settings.current.result[i]) {
+                        if(settings.current.result.length<i || settings.current.values[i].state!=settings.current.result[i]) {
                             wrongs++;
                             settings.current.values[i].state = -1;
                             helpers.refresh($this, settings.current.values[i]);
@@ -245,14 +256,20 @@
             },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                settings.finish = true;
-                settings.context.onQuit({'status':'abort'});
+                settings.interactive = false;
+                settings.context.onquit($this,{'status':'abort'});
             },
             next: function() {
+                var $this = $(this) , settings = helpers.settings($this);
                 $(this).find("#splash").hide();
                 $(this).find("#submit").show();
+                settings.interactive = true;
                 // CHECK IF THERE IS AN EVENT BEFORE QUESTION
-                helpers.build($(this));
+                helpers.build($this);
+            },
+            refresh: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+                for (var i in settings.current.values) { helpers.refresh($this, settings.current.values[i]); }
             }
         };
 

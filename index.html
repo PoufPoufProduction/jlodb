@@ -8,8 +8,8 @@
     <script type="text/javascript" src="js/jquery-ui-1.8.23.custom.min.js"></script>
     <script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
     <script type="text/javascript" src="js/jquery.svg.min.js"></script>
-    <script type="text/javascript" src="js/jlodb.js"></script>
-    <script type="text/javascript" src="js/jlodb-jquery-browser.js"></script>
+    <script type="text/javascript" src="js/jquery.jlodb.js"></script>
+    <script type="text/javascript" src="js/jquery.jlodb.browser.js"></script>
     <script type="text/javascript" src="js/jlodb-midi.js"></script>
     <link type="text/css" rel="stylesheet" href="css/jlodb.css" media="all" />
     <link type="text/css" rel="stylesheet" href="css/browser.css" media="all"/>
@@ -326,7 +326,7 @@ jlodb = $.extend(jlodb,{
                 });
             },
             submit: function() {
-                jlodb.launcher.run($("#jlodb #edition select").val(), JSON.parse($("#jlodb #edition textarea").val()));
+                jlodb.run({ activity : $("#jlodb #edition select").val(), args: JSON.parse($("#jlodb #edition textarea").val()) });
             }
         },
         browser: {
@@ -337,8 +337,13 @@ jlodb = $.extend(jlodb,{
             }
         }
     },
-    random      : function(_arg) {
-        jlodb.launcher.exercice(_arg, function(_id) { $("#contentb").browser("id",_id); });
+    run        : function(_args) {
+        $("#waiting").show().find("div").addClass("running");
+        $("#launcher").jlodb({ onstart:    function($this)       { $("#jlodb").hide();
+                                                                   $("#waiting").hide().find("div").removeClass("running"); },
+                               onfinish:   function($this)       { $("#jlodb").show(); $("#score").removeClass().hide(); },
+                               onscore:    function($this, _ret) { $("#score").attr("class","s"+_ret.score).show(); return true; },
+                               onexercice: function($this, _id)  { $("#contentb").browser("id",_id); } },_args);
     },
     content     : function(_url) { $("#content").load(_url+"?debug="+Math.floor(Math.random()*99999)); },
     popup       : {
@@ -399,7 +404,8 @@ jlodb = $.extend(jlodb,{
                     if (results) { jlodb.page.browser.load(results[1]); }
 
                     $("#contentb").browser({lang:"fr-FR", classification:jlodb.classification.data, context:{
-                        Lancer:function(_id){ jlodb.launcher.exercice({id:_id}); }, Editer:function(_id){jlodb.page.edition.open(_id); } }
+                        Lancer:function(_id){ jlodb.run({id:_id}); },
+                        Editer:function(_id){ jlodb.page.edition.open(_id); } }
                 });
 
                 });
@@ -411,12 +417,14 @@ jlodb = $.extend(jlodb,{
 });
 
 // OVERRIDE METHODS
+/*
 jlodb.context.refresh = function(_begin) { $("#page").toggle(!_begin);}
 
 jlodb.score.l.menu = {
     more:function() { return false; },
     update:function(_state) {}
 };
+*/
 
 window.onload = function() {
     // SPECIAL STUFF
@@ -451,7 +459,7 @@ window.onload = function() {
             <div id="nav"></div>
 
             <div id="content" class="content"></div>
-            <div id="contentb" class="content">yop</div>
+            <div id="contentb" class="content"></div>
 
             <div id="footer">
                 <div id="console"></div>
@@ -461,38 +469,24 @@ window.onload = function() {
     </div>
     <div id="waiting"><div><img src="res/img/generic/waiting.svg"/></div></div>
 
-    <div id="launcher">
-        <div id="quit" ontouchstart="$('#launcher #close').show();event.preventDefault();"
-                           onclick="$('#launcher #close').show();"><img src="res/img/icon/quit.svg"/></div>
-        <div id="activity"></div>
-
-            <div id="jscore"><div>
-                <div class="content">
-                    <div class="value"></div>
-                    <div class="stars"></div>
-                    <div class="icon" id="reload" ontouchstart="jlodb.score.reload();event.preventDefault();"
-                         onclick="jlodb.score.reload();" ><img src="res/img/icon/reload.svg"/></div>
-                    <div class="icon" id="menu" ontouchstart="jlodb.score.close();event.preventDefault();"
-                         onclick="jlodb.score.close();" ><img src="res/img/icon/menu.svg"/></div>
-                    <div class="icon" id="next" ontouchstart="jlodb.score.next();event.preventDefault();"
-                         onclick="jlodb.score.next();"><img src="res/img/icon/next.svg"/></div>
-                </div>
-            </div></div>
-
-        <div id="close" >
-            <table>
-                <tr>
-                    <td><div class="button" ontouchstart="$('#launcher #close').hide();event.preventDefault();"
-                                            onclick="$('#launcher #close').hide();">
-                        <img src="res/img/icon/cancel.svg" alt="no"/>
-                    </div></td>
-                    <td><div class="button" ontouchstart="$('#launcher #close').hide();jlodb.launcher.quit();event.preventDefault();"
-                                            onclick="$('#launcher #close').hide();jlodb.launcher.quit();">
-                        <img src="res/img/icon/ok.svg" alt="yes"/>
-                    </div></td>
-                </tr>
-            </table>
+    <div id="score"><div>
+        <div class="content">
+            <div class="value"></div><div class="stars"></div>
+            <div class="icon" id="reload" ontouchstart="$('#launcher').jlodb('reload');event.preventDefault();"
+                 onclick="$('#launcher').jlodb('reload');" ><img src="res/img/icon/reload.svg"/></div>
+            <div class="icon" id="menu" ontouchstart="$('#launcher').jlodb('close');event.preventDefault();"
+                 onclick="$('#launcher').jlodb('close', true);" ><img src="res/img/icon/menu.svg"/></div>
+            <!--
+            <div class="icon" id="next" ontouchstart="$('#launcher').jlodb('next');event.preventDefault();"
+                 onclick="$('#launcher').jlodb('next');"><img src="res/img/icon/next.svg"/></div>
+            -->
         </div>
+    </div></div>
+
+    <div id="launcher">
+        <div id="quit" ontouchstart="$('#launcher').jlodb('quit');event.preventDefault();"
+                       onclick="$('#launcher').jlodb('quit');"><img src="res/img/icon/quit.svg"/></div>
+        <div id="activity"></div>
     </div>
 
 

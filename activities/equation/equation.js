@@ -38,10 +38,10 @@
         checkContext: function(_settings){
             var ret         = "";
             if (!_settings.context)         { ret = "no context is provided in the activity call."; } else
-            if (!_settings.context.onQuit)  { ret = "mandatory callback onQuit not available."; }
+            if (!_settings.context.onquit)  { ret = "mandatory callback onquit not available."; }
 
             if (ret.length) {
-                ret+="\n\nUsage: $(\"target\")."+_settings.name+"({'onQuit':function(_ret){}})";
+                ret+="\n\nUsage: $(\"target\")."+_settings.name+"({'onquit':function(_ret){}})";
             }
             return ret;
         },
@@ -50,14 +50,12 @@
         // Quit the activity by calling the context callback
         end: function($this) {
             var settings = helpers.settings($this);
-            settings.context.onQuit({'status':'success', 'score':settings.score});
+            settings.context.onquit($this,{'status':'success', 'score':settings.score});
         },
         loader: {
             css: function($this) {
                 var settings = helpers.settings($this), cssAlreadyLoaded = false, debug = "";
                 if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
-
-                if (settings.context.onload) { settings.context.onload(true); }
 
                 $("head").find("link").each(function() {
                     if ($(this).attr("href").indexOf("activities/"+settings.name+"/"+settings.css) != -1) { cssAlreadyLoaded = true; }
@@ -79,12 +77,7 @@
 
                 // Load the template
                 var templatepath = "activities/"+settings.name+"/"+settings.template+debug;
-                $this.load( templatepath, function(response, status, xhr) {
-                    if (status=="error") {
-                        settings.context.onquit({'status':'error', 'statusText':templatepath+": "+xhr.status+" "+xhr.statusText});
-                    }
-                    else { helpers.loader.svg($this); }
-                });
+                $this.load( templatepath, function(response, status, xhr) { helpers.loader.svg($this); });
             },
             // Load the svg if require
             svg:function($this) {
@@ -100,7 +93,7 @@
             },
             build: function($this) {
                 var settings = helpers.settings($this);
-                if (settings.context.onLoad) { settings.context.onLoad(false); }
+                if (settings.context.onload) { settings.context.onload($this); }
                 $this.css("font-size", Math.floor($this.height()/12)+"px");
 
                 // LOCALE HANDLING
@@ -1457,7 +1450,6 @@ helpers.equations.get($this).label();
                     ratio           : 1,                        // SVG pixel size/HTML pixel size
                     nodes           : []                        // List of value nodes
                 };
-
                  // Check the context and send the load
                 return this.each(function() {
                     var $this = $(this);
@@ -1485,7 +1477,7 @@ helpers.equations.get($this).label();
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 settings.interactive = false;
-                settings.context.onQuit({'status':'abort'});
+                settings.context.onquit($this,{'status':'abort'});
             },
             submit: function() { helpers.submit($(this)); },
             dump: function() {

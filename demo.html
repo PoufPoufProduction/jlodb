@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>jLoDB - Javascript Learning Objects DataBase</title>
+    <script type="text/javascript" src="js/jquery-1.8.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.8.23.custom.min.js"></script>
+    <script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="js/jquery.svg.min.js"></script>
+    <script type="text/javascript" src="js/jquery.jlodb.js"></script>
+    <script type="text/javascript" src="js/jlodb-midi.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/jlodb.css" media="all" />
+
+    <style>
+        #all>#launcher      { width:16em; height:12em; float:left; position:inherit; z-index:2000; display:inherit; }
+        #all.nb4 #launcher  { width:8em; height:6em; }
+        #all.nb16 #launcher  { width:4em; height:3em; }
+    </style>
+    <script>
+
+var options = {};
+var jlodb = function($elt) {
+    $elt.jlodb({ isvisible:true, onfinish:function($this) { jlodb($this); }}, options);
+}
+
+window.onload = function() {
+    // SPECIAL STUFF
+    document.ontouchmove = function(e) { e.preventDefault(); }
+
+    // GET AND RESIZE THE BEST PANEL
+    var x = Math.floor($(window).width()/16);
+    var y = Math.floor($(window).height()/12);
+    $("body").css("font-size", (Math.min(x,y))+"px");
+    $("body>div").css("margin-top", Math.floor(($(window).height()-$("body>div").height())/2)+"px").show();
+
+    var args = {}
+    var a = location.search.substring(1).split('&');
+    for (var i in a) { var p= a[i].split('='); args[p[0]]=p[1]; }
+    if (!args.nb || ( args.nb!=4 && args.nb!=16) ) { args.nb = 1; }
+
+    for (var i=0; i<args.nb; i++) { $("#all").append('<div id="launcher"><div id="activity"></div></div>'); }
+    $("#all").addClass("nb"+args.nb);
+
+    if (args.id)       { options.id = args.id; } else {
+        if (args.activity)          { options.activity = args.activity; }
+        if (args.classification)    { options.classification = args.classification; }
+    }
+
+    $("#all>div").each( function() { jlodb($(this)); });
+}
+
+    </script>
+</head>
+
+<body><div>
+    <div id="all" class="nosplash"></div>
+</div></body>
+</html>

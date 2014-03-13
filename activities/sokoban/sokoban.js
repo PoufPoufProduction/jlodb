@@ -19,10 +19,10 @@
         checkContext: function(_settings){
             var ret         = "";
             if (!_settings.context)         { ret = "no context is provided in the activity call."; } else
-            if (!_settings.context.onQuit)  { ret = "mandatory callback onQuit not available."; }
+            if (!_settings.context.onquit)  { ret = "mandatory callback onquit not available."; }
 
             if (ret.length) {
-                ret+="\n\nUsage: $(\"target\")."+_settings.name+"({'onQuit':function(_ret){}})";
+                ret+="\n\nUsage: $(\"target\")."+_settings.name+"({'onquit':function(_ret){}})";
             }
             return ret;
         },
@@ -31,14 +31,12 @@
         // Quit the activity by calling the context callback
         end: function($this) {
             var settings = helpers.settings($this);
-            settings.context.onQuit({'status':'success','score':settings.score});
+            settings.context.onquit($this,{'status':'success','score':settings.score});
         },
         loader: {
             css: function($this) {
                 var settings = helpers.settings($this), cssAlreadyLoaded = false, debug = "";
                 if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
-
-                if (settings.context.onload) { settings.context.onload(true); }
 
                 $("head").find("link").each(function() {
                     if ($(this).attr("href").indexOf("activities/"+settings.name+"/"+settings.css) != -1) { cssAlreadyLoaded = true; }
@@ -60,17 +58,12 @@
 
                 // Load the template
                 var templatepath = "activities/"+settings.name+"/"+settings.template+debug;
-                $this.load( templatepath, function(response, status, xhr) {
-                    if (status=="error") {
-                        settings.context.onquit({'status':'error', 'statusText':templatepath+": "+xhr.status+" "+xhr.statusText});
-                    }
-                    else { helpers.loader.build($this); }
-                });
+                $this.load( templatepath, function(response, status, xhr) { helpers.loader.build($this); });
             },
             build: function($this) {
                 var settings = helpers.settings($this);
-                if (settings.context.onLoad) { settings.context.onLoad(false); }
-                $this.css("font-size", Math.floor($this.height()/16)+"px");
+                if (settings.context.onload) { settings.context.onload($this); }
+                $this.css("font-size", Math.floor($this.height()/12)+"px");
 
                 // Convert from xsb
                 if (!settings.board && settings.xsb) { helpers.xsb($this); }
@@ -87,9 +80,13 @@
 
                 // +8 : 4 for the tile thickness, 4 for the robot head in the top of the board
                 var vx = ((xmax-xmin)*2)+8+settings.padding, vy = (ymax-ymin+2)*4, vv = Math.max(vx,vy);
-                settings.offset=[-2*ymin+(vv-vy)/4+settings.margin/2,1+settings.padding/2-2*xmin+(vv-vx)/6+settings.margin/2];
-                settings.scale=(28/(vv+settings.margin*2));
-                $this.find("#tiles").css("font-size", Math.floor($this.height()*settings.scale/16)+"px");
+                settings.scale=(22/(vv+settings.margin*2));
+                var font = Math.floor($this.height()*settings.scale/12);
+                $this.find("#tiles").css("font-size", font+"px");
+                var around = Math.floor(($this.height() - font*12/settings.scale)/2);
+
+                settings.offset=[-2*ymin+(vv-vy)/4+settings.margin/2 + around/font,
+                                 1+settings.padding/2-2*xmin+(vv-vx)/6+settings.margin/2 + around/font];
 
                 // Build the board
                 settings.tiles.size=[settings.board[0].length,settings.board.length];
@@ -624,7 +621,7 @@
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 settings.finish = true;
-                settings.context.onQuit({'status':'abort'});
+                settings.context.onquit($this,{'status':'abort'});
             },
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);

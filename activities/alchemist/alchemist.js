@@ -27,14 +27,13 @@
         // Quit the activity by calling the context callback
         end: function($this) {
             var settings = helpers.settings($this);
-            settings.context.onquit({'status':'success', 'score':settings.score, 'points':settings.points, 'pieces':settings.pieces});
+            settings.context.onquit($this,
+                {'status':'success', 'score':settings.score, 'points':settings.points, 'pieces':settings.pieces});
         },
         loader: {
             css: function($this) {
                 var settings = helpers.settings($this), cssAlreadyLoaded = false, debug = "";
                 if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
-
-                if (settings.context.onload) { settings.context.onload(true); }
 
                 $("head").find("link").each(function() {
                     if ($(this).attr("href").indexOf("activities/"+settings.name+"/"+settings.css) != -1) { cssAlreadyLoaded = true; }
@@ -56,16 +55,11 @@
 
                 // Load the template
                 var templatepath = "activities/"+settings.name+"/"+settings.template+debug;
-                $this.load( templatepath, function(response, status, xhr) {
-                    if (status=="error") {
-                        settings.context.onquit({'status':'error', 'statusText':templatepath+": "+xhr.status+" "+xhr.statusText});
-                    }
-                    else { helpers.loader.build($this); }
-                });
+                $this.load( templatepath, function(response, status, xhr) { helpers.loader.build($this); });
             },
             build: function($this) {
                 var settings = helpers.settings($this);
-                if (settings.context.onload) { settings.context.onload(false); }
+                if (settings.context.onload) { settings.context.onload($this); }
                 $this.css("font-size", Math.floor(($this.height()-7)/9)+"px");
 
                 // Locale handling
@@ -322,7 +316,8 @@
             quit: function() {
                 var $this = $(this) , settings = $this.data("settings");
                 settings.finish = true;
-                settings.context.onquit({'status':'abort', 'score':settings.score, 'points':settings.points, 'pieces':settings.pieces});
+                settings.context.onquit($this,
+                    {'status':'abort', 'score':settings.score, 'points':settings.points, 'pieces':settings.pieces});
             }
         };
 
