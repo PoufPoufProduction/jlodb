@@ -4,21 +4,9 @@
 
     <rdf:Description>
         <dct:identifier>001</dct:identifier>
-        <dct:title xml:lang="fr-FR">Maitriser les différents types de branchements : l'instruction BRK.</dct:title>
+        <dct:title xml:lang="fr-FR">Utiliser l'instruction BRK pour forcer l'arrêt du programme.</dct:title>
         <dct:description><![CDATA["ops":["ldx","brk"],"args":[{"value":"01","type":"v"}],"nblines":2,"footer":[{"label":"finish","value":"LDX #0x10","code":"A2 10","rts":false}],"valid":{"x":"01"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["L'instruction BRK s'utilise sans argument et permet de terminer l'exécution du programme.","","En remarquant que la ligne précompilée modifie la valeur du registre X, cloturez le programme afin de ne pas exécuter cette dernière ligne, pour qu'au final le registre X contienne la valeur 0x01."]]]></dct:description>
-        <dct:extent>2</dct:extent>
-        <dct:subject>it</dct:subject>
-        <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>010</dct:identifier>
-        <dct:title xml:lang="fr-FR">Maitriser les différents types de branchements : l'instruction BEQ.</dct:title>
-        <dct:description><![CDATA["ops":["ldx","beq","bne","cmp","lda","cpx"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"finish","type":"label"}],"nblines":6,"footer":[{"label":"finish","value":"LDX #0x10","code":"A2 10","rts":false}],"valid":{"x":"01"}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":[""]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>

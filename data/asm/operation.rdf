@@ -4,7 +4,7 @@
 
     <rdf:Description>
         <dct:identifier>001</dct:identifier>
-        <dct:title xml:lang="fr-FR">Réaliser des opérations sur les registres.</dct:title>
+        <dct:title xml:lang="fr-FR">Utiliser l'opération INX (1x) pour incrémenter la valeur du registre X.</dct:title>
         <dct:description><![CDATA["ops":["ldx","inx"],"args":[{"value":"A8","type":"v"}],"nblines":2,"valid":{"x":"A9"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["L'opérateur INX s'utilise sans argument et permet d'incrémenter de 1 la valeur contenue dans le registre X.","","A l'aide des opérateurs disponibles, faites en sorte que le registre X contienne 0xA9 à la fin du programme."]]]></dct:description>
         <dct:extent>2</dct:extent>
@@ -16,7 +16,7 @@
 
     <rdf:Description>
         <dct:identifier>022</dct:identifier>
-        <dct:title xml:lang="fr-FR">Réaliser des opérations sur les registres.</dct:title>
+        <dct:title xml:lang="fr-FR">Utiliser l'opération INX (3x) pour incrémenter la valeur du registre X.</dct:title>
         <dct:description><![CDATA["ops":["ldx","inx"],"args":[{"value":"A8","type":"v"}],"nblines":4,"valid":{"x":"AB"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Mettez la valeur 0xAB dans le registre X ."]]]></dct:description>
         <dct:extent>2</dct:extent>
@@ -28,7 +28,7 @@
 
     <rdf:Description>
         <dct:identifier>023</dct:identifier>
-        <dct:title xml:lang="fr-FR">Réaliser des opérations sur les registres.</dct:title>
+        <dct:title xml:lang="fr-FR">Utiliser l'opération INX (4x) pour incrémenter la valeur du registre X.</dct:title>
         <dct:description><![CDATA["ops":["ldx","inx"],"args":[{"value":"A8","type":"v"}],"nblines":11,"valid":{"x":"AC"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Incrémentez le registre X le bon nombre de fois pour mettre sa valeur à 0xAC."]]]></dct:description>
         <dct:extent>2</dct:extent>
@@ -40,7 +40,7 @@
 
     <rdf:Description>
         <dct:identifier>024</dct:identifier>
-        <dct:title xml:lang="fr-FR">Réaliser des opérations sur les registres.</dct:title>
+        <dct:title xml:lang="fr-FR">Après avoir incrémenter une valeur grâce à l'instruction INX, transférer celle-ci vers le registre Y.</dct:title>
         <dct:description><![CDATA["ops":["ldx","inx","txa","tay","tax","tya"],"args":[{"value":"01","type":"v"},{"value":"A8","type":"v"}],"nblines":6,"header":[{"label":"init","value":"LDX #0x10","code":"A2 10","rts":false}],"valid":{"y":"04"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Remplissez les registres ainsi :",". 0x04 dans le registre Y"]]]></dct:description>
         <dct:extent>2</dct:extent>
@@ -52,7 +52,7 @@
 
     <rdf:Description>
         <dct:identifier>025</dct:identifier>
-        <dct:title xml:lang="fr-FR">Réaliser des opérations sur les registres.</dct:title>
+        <dct:title xml:lang="fr-FR">Renseigner correctement les registres A,X et Y grâce aux instructions de transfert et des instructions LDX et INX.</dct:title>
         <dct:description><![CDATA["ops":["ldx","inx","txa","tay","tax","tya"],"args":[{"value":"01","type":"v"},{"value":"A8","type":"v"}],"nblines":7,"header":[{"label":"init","value":"LDX #0x10","code":"A2 10","rts":false}],"valid":{"a":"A8","x":"A9","y":"02"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Remplissez les registres ainsi :",". 0xA8 dans le registre A",". 0xA9 dans le registre X",". 0x02 dans le registre Y"]]]></dct:description>
         <dct:extent>2</dct:extent>
@@ -64,7 +64,7 @@
 
     <rdf:Description>
         <dct:identifier>026</dct:identifier>
-        <dct:title xml:lang="fr-FR">Réaliser des opérations sur les registres.</dct:title>
+        <dct:title xml:lang="fr-FR">Renseigner correctement les registres A,X et Y grâce aux instructions de transfert et des instructions LDX et INX.</dct:title>
         <dct:description><![CDATA["ops":["ldx","inx"],"args":[{"value":"FF","type":"v"}],"nblines":2,"header":[{"label":"init","value":"LDX #0xA8","code":"A2 A8","rts":false}],"valid":{"x":"00"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Un registre peut contenir une valeur comprise entre 0 et 255 (0xFF en hexadécimal). Si l'on incrémente d'1 la valeur 255, celle-ci revient à 0, car 256 est trop grand pour être stocké dans le registre.","Mettez la valeur 0x00 dans le registre X."]]]></dct:description>
         <dct:extent>2</dct:extent>
@@ -76,7 +76,7 @@
 
     <rdf:Description>
         <dct:identifier>027</dct:identifier>
-        <dct:title xml:lang="fr-FR">Réaliser des opérations sur les registres.</dct:title>
+        <dct:title xml:lang="fr-FR">Renseigner correctement les registres A,X et Y grâce aux instructions de transfert et des instructions LDX et INX.</dct:title>
         <dct:description><![CDATA["ops":["ldx","inx","txa","tay","tax","tya"],"args":[{"value":"FF","type":"v"},{"value":"55","type":"v"}],"nblines":9,"header":[{"label":"init","value":"LDX #0xA8","code":"A2 A8","rts":false}],"valid":{"a":"FF","x":"02","y":"56"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Remplissez les registres ainsi :",". 0xFF dans le registre A",". 0x02 dans le registre X",". 0x56 dans le registre Y"]]]></dct:description>
         <dct:extent>2</dct:extent>
@@ -88,7 +88,7 @@
 
     <rdf:Description>
         <dct:identifier>028</dct:identifier>
-        <dct:title xml:lang="fr-FR">Réaliser des opérations sur les registres.</dct:title>
+        <dct:title xml:lang="fr-FR">Renseigner correctement les registres A,X et Y grâce aux instructions de transfert et des instructions LDA,INX et INY.</dct:title>
         <dct:description><![CDATA["ops":["lda","inx","iny","tay","tax"],"args":[{"value":"A8","type":"v"}],"nblines":6,"valid":{"x":"A9","y":"AA"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Comme INX incrémente de 1 la valeur contenue dans le registre X. INY incrémente de 1 la valeur contenue dans Y.","","Remplissez les registres ainsi :",". 0xA9 dans le registre X",". 0xAA dans le registre Y"]]]></dct:description>
         <dct:extent>2</dct:extent>
@@ -100,7 +100,7 @@
 
     <rdf:Description>
         <dct:identifier>029</dct:identifier>
-        <dct:title xml:lang="fr-FR">Réaliser des opérations sur les registres.</dct:title>
+        <dct:title xml:lang="fr-FR">Renseigner correctement le registre A grâce aux instructions de transfert et des instructions LDX et INY.</dct:title>
         <dct:description><![CDATA["ops":["ldx","iny","txa","tay","tax","tya"],"args":[{"value":"A8","type":"v"}],"nblines":5,"valid":{"a":"A9"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Remplissez les registres ainsi :",". 0xA9 dans le registre A"]]]></dct:description>
         <dct:extent>2</dct:extent>
@@ -112,7 +112,7 @@
 
     <rdf:Description>
         <dct:identifier>040</dct:identifier>
-        <dct:title xml:lang="fr-FR">Réaliser des opérations sur les registres.</dct:title>
+        <dct:title xml:lang="fr-FR">Utiliser l'opération DEX (1x) pour décrémenter la valeur du registre X.</dct:title>
         <dct:description><![CDATA["ops":["ldx","dex"],"args":[{"value":"A8","type":"v"}],"nblines":2,"valid":{"x":"A7"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Si INX incrémente de 1 la valeur contenue dans le registre X, DEX décrémente de 1 cette même valeur.","","Remplissez les registres ainsi :",". 0xA7 dans le registre X"]]]></dct:description>
         <dct:extent>2</dct:extent>
@@ -124,9 +124,9 @@
 
     <rdf:Description>
         <dct:identifier>041</dct:identifier>
-        <dct:title xml:lang="fr-FR">Réaliser des opérations sur les registres.</dct:title>
+        <dct:title xml:lang="fr-FR">Utiliser l'opération DEX (2x) pour décrémenter la valeur du registre X en gardant en tête que sur un octet #0x00 - 1 donne #0xFF</dct:title>
         <dct:description><![CDATA["ops":["ldx","dex"],"args":[{"value":"A8","type":"v"}],"nblines":2,"valid":{"x":"FE"}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Lorsque que l'on décrémente de 1 la valeur 0x00, on n'obtient pas -1 mais 0xFF.","","Remplissez les registres ainsi :",". 0xFE dans le registre X"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Lorsque que l'on décrémente de 1 la valeur #0x00 sur un octet, on n'obtient pas -1 mais #0xFF.","","Remplissez les registres ainsi :",". 0xFE dans le registre X"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -136,7 +136,7 @@
 
     <rdf:Description>
         <dct:identifier>045</dct:identifier>
-        <dct:title xml:lang="fr-FR">Réaliser des opérations sur les registres.</dct:title>
+        <dct:title xml:lang="fr-FR">Renseigner correctement les registres X et Y grâce aux instructions de transfert et des instructions LDA et DEX.</dct:title>
         <dct:description><![CDATA["ops":["lda","dex","dey","tay","tax"],"args":[{"value":"A8","type":"v"}],"nblines":6,"valid":{"x":"A6","y":"A7"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Remplissez les registres ainsi :",". 0xA6 dans le registre X",". 0xA7 dans le registre Y"]]]></dct:description>
         <dct:extent>2</dct:extent>

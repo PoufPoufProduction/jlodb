@@ -4,7 +4,7 @@
 
     <rdf:Description>
         <dct:identifier>001</dct:identifier>
-        <dct:title xml:lang="fr-FR">Comprendre la pile.</dct:title>
+        <dct:title xml:lang="fr-FR">En utilisant la pile grâce aux instruction PHA et PLA, sauvegarder et restaurer la valeur de A avant et après son écrasement.</dct:title>
         <dct:description><![CDATA["ops":["pha","pla","lda","tax"],"args":[{"value":"FF","type":"v"}],"nblines":4,"header":[{"label":"init","value":"LDA #0xA8","code":"A9 A8","rts":false}],"valid":{"a":"a8","x":"ff"},"class":"large"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["La pile est une zone de la mémoire. Elle permet de stocker des valeurs pour les récupérer ensuite. L'opérateur sans argument PHA stocke la valeur du registre A au sommet de la pile tandisque PLA décharge le sommet de la pile vers le registre A.","","En utilisant la pile pour restaurer la valeur initiale du registre A, chargez la valeur 0xFF dans le registre X. A la fin de l'exécution, le registre A doit contenir la valeur 0xA8 définie par le code précompilé 'init'."]]]></dct:description>
         <dct:extent>2</dct:extent>
@@ -13,20 +13,6 @@
         <dct:type>1</dct:type>
         <dct:alternative>001</dct:alternative>
     </rdf:Description>
-
-
-    <rdf:Description>
-        <dct:identifier>500</dct:identifier>
-        <dct:title xml:lang="fr-FR">Comprendre la pile.</dct:title>
-        <dct:description><![CDATA["ops":["php","plp","lda"],"args":[{"value":"FF","type":"v"},{"value":"00","type":"v"}],"nblines":4,"valid":{"a":"a8","x":"ff"},"class":"large"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":[""]]]></dct:description>
-        <dct:extent>2</dct:extent>
-        <dct:subject>it</dct:subject>
-        <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
-    </rdf:Description>
-
 
 </rdf:RDF>
 

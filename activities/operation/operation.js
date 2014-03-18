@@ -394,7 +394,7 @@
             }
             $board.append(html);
 
-            $this.find(".active").bind("mousedown touchstart", function(e) {
+            $this.find(".active").bind("mousedown touchstart", function(event) {
                 var $this = $(this).closest(".operation") , settings = helpers.settings($this), $keypad = $this.find("#keypad");
 
                 if (settings.interactive && !$(this).hasClass("move") ) {

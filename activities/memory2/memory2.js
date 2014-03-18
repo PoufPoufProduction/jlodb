@@ -72,12 +72,15 @@
                 });
             },
             midi: function($this) {
-                jlodb.midi.load('acoustic_grand_piano', function() { helpers.loader.build($this); });
+                jlodbext.midi.load({ soundfontUrl: "ext/MIDI/soundfont/", instrument: "acoustic_grand_piano",
+                                      callback: function() { helpers.loader.build($this); }});
             },
             build: function($this) {
                 var settings = helpers.settings($this);
                 if (settings.context.onload) { settings.context.onload($this); }
                 $this.css("font-size", Math.floor((Math.min($this.width(),$this.height())-7)/5)+"px");
+
+                jlodbext.midi.setVolume(0, 127);
 
                 // Check the buttons
                 for (var i in settings.buttons) {
@@ -92,24 +95,28 @@
                 if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
-        stop: function($this) {
+        stop: function($this, _i) {
             var settings = helpers.settings($this);
             for (var i in settings.buttons) { $("#"+settings.buttons[i].id, settings.svg.root()).attr("class",""); }
-            jlodb.midi.noteOff(0,0,0);
+            jlodbext.midi.noteOff(0,settings.last,0);
+            settings.last = 0;
         },
         play: function($this,_i) {
             var settings = helpers.settings($this);
+            if (settings.last!=0) { helpers.stop($this); }
             for (var i in settings.buttons) { $("#"+settings.buttons[i].id, settings.svg.root()).attr("class",""); }
             $("#"+settings.buttons[_i].id, settings.svg.root()).attr("class","s");
-            jlodb.midi.noteOn(0,settings.buttons[_i].note,0,0);
+            settings.last = settings.buttons[_i].note;
+            jlodbext.midi.noteOn(0,settings.last,127,0);
         },
         demo: function($this) {
             var settings = helpers.settings($this);
             if (settings.count<settings.buttons.length) {
                 helpers.play($this, settings.count++);
+                setTimeout(function() { helpers.stop($this); },230);
                 setTimeout(function() { helpers.demo($this); },250);
             }
-            else { helpers.stop($this); setTimeout(function() { helpers.next($this); },500); }
+            else { setTimeout(function() { helpers.next($this); },500); }
         },
         next: function($this) {
             var settings = helpers.settings($this);
@@ -127,7 +134,7 @@
             }
             else {
                 $("#count", settings.svg.root()).text(settings.sequence.length);
-                helpers.stop($this); settings.count = 0; settings.interactive = true; }
+                settings.count = 0; settings.interactive = true; }
         }
     };
 
@@ -144,7 +151,8 @@
                     count       : 0,
                     sequence    : [],
                     timerid     : 0,
-                    score       : 0
+                    score       : 0,
+                    last        : 0
                 };
 
                 return this.each(function() {

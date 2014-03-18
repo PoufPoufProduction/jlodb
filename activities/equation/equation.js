@@ -13,7 +13,9 @@
                         equation    : false,    // Authorization : equation
                         move        : false,    // Authorization : move a value
                         target      : 0,        // Authorization : local target on value (bitset: 0 none, 1 left righ, 2 top down)
-                        minus1      : false     // Authorization : transform x into -1*-x
+                        bracket     : false,    // Authorization : distribution
+                        minus1      : false,    // Authorization : transform x into -1*-x
+                        decompose   : false     // Authorization : transform 6 into 2*3
                       },
         top         : 5,                        // top position of the first equation
         debug       : true                      // Debug mode
@@ -246,7 +248,7 @@
                                     settings.action.coord[0]+","+settings.action.coord[1]+")");
 
                                 // FIND THE CLOSEST TARGET
-                                var coord   = eq.html2svg($this, [ve.clientX, ve.clientY]);
+                                var coord   = eq.html2svg($this, [ve.clientX-$this.offset().left, ve.clientY-$this.offset().top]);
                                 settings.action.target = 0;
 
                                 if (settings.action.source!=1) {
@@ -417,8 +419,11 @@ if (!settings.action.helper) {
             }
         }
         else {
-            if (settings.a.all || settings.a.minus1) {
-                var val = parseInt(settings.action.node.value);
+            var val = parseInt(settings.action.node.value);
+            var d = 0; if (!isNaN(val) && settings.a.decompose) { for (var i=2; i<val && !d; i++) { if (val%i==0) { d=i; } } }
+            var authorized = settings.a.all | (isNaN(val) || val<0 || (d==0))?settings.a.minus1:settings.a.decompose;
+
+            if (authorized) {
 
                 // DECOMPOSE THE VALUE INTO A MULTIPLICATION
                 var elt = helpers.element(settings.action.node.parent);
@@ -436,7 +441,6 @@ if (!settings.action.helper) {
                 else {
                     if (val<0)  { settings.action.node.value=settings.action.node.value.substr(1); }
                     else {
-                        var d = 0; for (var i=2; i<val && !d; i++) { if (val%i==0) { d=i; } }
                         if (d)  { settings.action.node.value=Math.floor(val/d); child.value = d; }
                         else    { settings.action.node.value="-"+settings.action.node.value; }
                     }
@@ -527,7 +531,14 @@ else {
                     }
                     else
                     if (settings.action.target.parent.value=="+") {
-                        if (!isNaN(vnode) && !isNaN(vtarget))         { settings.action.target.value = (vnode+vtarget).toString(); a = true; }
+                        if (!isNaN(vnode) && !isNaN(vtarget))         { settings.action.target.value = (vnode+vtarget).toString(); a = true; } else
+                        if (isNaN(vnode) && isNaN(vtarget)) {
+                            var val1 = settings.action.node.value;      if (val1[0]=='-') { val1 = val1.substr(1); }
+                            var val2 = settings.action.target.value;    if (val2[0]=='-') { val2 = val2.substr(1); }
+                            if (settings.action.node.value!=settings.action.target.value && val1==val2) {
+                                settings.action.target.value = 0; a=true;
+                            }
+                        }
                     }
                 }
                 else {
@@ -549,7 +560,7 @@ else {
                         }
                     }
 
-                    if (!operator) {
+                    if (!operator && (settings.a.bracket || settings.a.all)) {
                         // HANDLE INSERTION INTO A BRACKET
                         var bratarget = settings.action.target;
                         while (bratarget!=eq.tree && bratarget.type!=c.bra) { bratarget = bratarget.parent; }
@@ -953,7 +964,7 @@ helpers.equations.get($this).label();
                     if (!done) {
                         if ((done=((_value[0]=='(')&&(_value[_value.length-1]==')')))) {
                             var elttmp = this.process(_value.substr(1,_value.length-2), elt, (_parent.type==c.div)?_div:div.root);
-                            if (_parent.type==c.div) { elt = elttmp; elt.parent = _parent; }
+                            if (_parent.type==c.div || _value[1]=='-') { elt = elttmp; elt.parent = _parent; }
                             else {
                                 elt.type = c.bra; elt.value = '(';
                                 elt.children=[elttmp];
@@ -1176,6 +1187,8 @@ helpers.equations.get($this).label();
                         if (_node.value.length==0) { _node.elt[0].$svg.attr("class","val empty type"+_node.type); }
                         else                       { _node.elt[0].$svg.attr("class","val type"+_node.type); }
                         _node.elt[0].$svg.find("text").text(_node.value);
+                        if (_node.value.length>=3) { _node.elt[0].$svg.find("text").attr("transform","scale(0.75,1)"); }
+                        else                       { _node.elt[0].$svg.find("text").attr("transform","scale(1,1)"); }
                         _node.elt[0].pos.to = [_pos[0],_pos[1]];
                     break;
                     case c.op :

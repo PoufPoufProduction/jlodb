@@ -10,7 +10,7 @@
     <script type="text/javascript" src="js/jquery.svg.min.js"></script>
     <script type="text/javascript" src="js/jquery.jlodb.js"></script>
     <script type="text/javascript" src="js/jquery.jlodb.browser.js"></script>
-    <script type="text/javascript" src="js/jlodb-midi.js"></script>
+    <script type="text/javascript" src="js/jlodb-ext.js"></script>
     <link type="text/css" rel="stylesheet" href="css/jlodb.css" media="all" />
     <link type="text/css" rel="stylesheet" href="css/browser.css" media="all"/>
     <style>
@@ -134,7 +134,7 @@
     <script>
 
 
-jlodb = $.extend(jlodb,{
+jlodb = {
     version         : "0.0-1",
     checkdb         : 0,
     classification  : {
@@ -413,8 +413,7 @@ jlodb = $.extend(jlodb,{
         });
 
     }
-
-});
+};
 
 // OVERRIDE METHODS
 /*

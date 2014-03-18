@@ -127,6 +127,7 @@
                 helpers.refresh($this,elt);
                 $(this).bind("mousedown touchstart",function(event){ helpers.click($this,index); event.preventDefault();});
             });
+            settings.interactive = true;
         },
         // Build the question
         build: function($this) {
@@ -180,7 +181,6 @@
                 $this.find("#data").html(settings.data);
                 helpers.fill($this);
             }
-
         }
     };
 
@@ -263,7 +263,6 @@
                 var $this = $(this) , settings = helpers.settings($this);
                 $(this).find("#splash").hide();
                 $(this).find("#submit").show();
-                settings.interactive = true;
                 // CHECK IF THERE IS AN EVENT BEFORE QUESTION
                 helpers.build($this);
             },

@@ -19,7 +19,7 @@
         color       : "black",                  // The current color
         translate   : [0,0],                    // The translation values
         style       : false,                    // The style changing is disable
-        debug       : true                      // Debug mode
+        debug       : false                     // Debug mode
     };
 
     // private methods

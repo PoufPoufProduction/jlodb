@@ -89,10 +89,11 @@ if (!$error) {
                         $activityName = str_replace("urn:activity:", "", $child->attributes()->rdf_about);
                         foreach ($child->children() as $dcName=>$dc) {
                             if (strcmp($dc->attributes()->xml_lang, $lang)==0) {
-                                if (strcmp($dcName,"dct_title")==0)         { $activityTitle=$dc; }
-                                if (strcmp($dcName,"dct_abstract")==0)      { $activityDescription=$dc; }
+                                if (strcmp($dcName,"dct_title")==0)         { $activityTitle=$dc; }         else
+                                if (strcmp($dcName,"dct_abstract")==0)      { $activityDescription=$dc; }   else
                                 if (strcmp($dcName,"dct_description")==0)   { $activityLocale=$dc; }
                             }
+                            if (strcmp($dcName,"dct_requires")==0)      { $activityExternal=$dc; }
                         }
                     }
 

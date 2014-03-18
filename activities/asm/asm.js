@@ -6,7 +6,7 @@
         template    : "template.html",                          // Activity's html template
         css         : "style.css",                              // Activity's css style sheet
         lang        : "en-US",                                  // Current localization
-        screen      : 0,                                        // The screen id
+        model       : 0,                                        // The screen model id
         labels      : [],                                       // Labels
         ops         : [],                                       // Available operation (empty=all)
         args        : [],                                       // Args
@@ -256,15 +256,17 @@
         },
         // HANDLE THE STDOUT
         stdout: {
-            lines   : ["","","","","","",""], pos: 0,
-            clear   : function($this) { this.lines = ["","","","","","",""]; this.pos = 0; this.display($this); },
-            display : function($this) { $this.find("pre").html(this.export()); },
+            clear   : function($this) { var settings = helpers.settings($this);
+                                        settings.stdout.lines = ["","","","","","",""]; settings.stdout.pos = 0; this.display($this); },
+            display : function($this) { $this.find("pre").html(this.export($this)); },
             add     : function($this, _char, _donotdisplay) {
-                if (this.pos<7 && this.lines[this.pos].length>=19) { this.pos++; }
-                if (_char=='\n')    { this.pos++; }
-                if (this.pos==7)    { for (var i=0; i<6; i++) { this.lines[i]=this.lines[i+1]; } this.lines[6]=""; this.pos=6; }
-                if (_char!='\n')    { this.lines[this.pos]+=_char; }
-                if (!_donotdisplay) { this.display($this); }
+                var settings = helpers.settings($this);
+                if (settings.stdout.pos<7 && settings.stdout.lines[settings.stdout.pos].length>=19) { settings.stdout.pos++; }
+                if (_char=='\n')                { settings.stdout.pos++; }
+                if (settings.stdout.pos==7)     { for (var i=0; i<6; i++) { settings.stdout.lines[i]=settings.stdout.lines[i+1]; }
+                                                  settings.stdout.lines[6]=""; settings.stdout.pos=6; }
+                if (_char!='\n')                { settings.stdout.lines[settings.stdout.pos]+=_char; }
+                if (!_donotdisplay)             { this.display($this); }
             },
             ascii   : function($this, _ascii, _donotdisplay) {
                 this.add($this, (_ascii==10||(_ascii>=32&&_ascii<127))?String.fromCharCode(_ascii):".", _donotdisplay); },
@@ -275,68 +277,70 @@
             splash  : function($this) {
                 var settings = helpers.settings($this), c = helpers.c;
                 this.clear($this);
-                this.lines[this.pos++]="0x"+c.hex(c.offset.random,true)+" random";
-                this.lines[this.pos++]="0x"+c.hex(c.offset.stdout,true)+" stdout";
-                this.lines[this.pos++]="0x"+c.hex(c.offset.key,true)+" keypressed";
-                this.lines[this.pos++]="0x"+c.hex(c.offset.stack,true)+" stack";
-                this.lines[this.pos++]="0x"+c.hex(c.offset.screen,true)+" "+helpers.screen.name($this);
-                this.lines[this.pos++]="0x"+c.hex(c.offset.code,true)+" code";
-                //this.lines[this.pos++]=(settings.littleindian?"[Little indian]":"[Big indian]");
+                settings.stdout.lines[settings.stdout.pos++]="0x"+c.hex(c.offset.random,true)+" random";
+                settings.stdout.lines[settings.stdout.pos++]="0x"+c.hex(c.offset.stdout,true)+" stdout";
+                settings.stdout.lines[settings.stdout.pos++]="0x"+c.hex(c.offset.key,true)+" keypressed";
+                settings.stdout.lines[settings.stdout.pos++]="0x"+c.hex(c.offset.stack,true)+" stack";
+                settings.stdout.lines[settings.stdout.pos++]="0x"+c.hex(c.offset.screen,true)+" "+helpers.screen.name($this);
+                settings.stdout.lines[settings.stdout.pos++]="0x"+c.hex(c.offset.code,true)+" code";
                 this.display($this);
             },
-            export  : function() {
-                return this.lines[0]+'\n'+this.lines[1]+'\n'+this.lines[2]+'\n'+this.lines[3]+'\n'+
-                       this.lines[4]+'\n'+this.lines[5]+'\n'+this.lines[6];
+            export  : function($this) {
+                var settings = helpers.settings($this);
+                return settings.stdout.lines[0]+'\n'+settings.stdout.lines[1]+'\n'+settings.stdout.lines[2]+'\n'+
+                       settings.stdout.lines[3]+'\n'+settings.stdout.lines[4]+'\n'+settings.stdout.lines[5]+'\n'+
+                       settings.stdout.lines[6];
             },
-            get : function() {  return this.lines[this.pos]; }
+            get : function($this) { var settings = helpers.settings($this); return settings.stdout.lines[settings.stdout.pos]; }
         },
         screen: {
-            models  : [[16,16,8],[32,32,4],[48,32,1],[40,36,2]],
             colors  : [[],
                        ["#000000", "#ffffff", "#880000", "#aaffee","#cc44cc", "#00cc55", "#0000aa", "#eeee77",
                         "#dd8855", "#664400", "#ff7777", "#333333","#777777", "#aaff66", "#0088ff", "#bbbbbb"],
                        ["#ffffff", "#000000"],
                        ["#081820", "#346856", "#88c070", "#e0f8d0"]],
-            modelid : 0,
-            p       : 1,
-            ctxt    : 0,
+            models  : [[16,16,8],[32,32,4],[48,32,1],[40,36,2]],
             init: function($this) {
                 var settings = helpers.settings($this);
                 for (var i=0; i<256; i++) { this.colors[0].push("#"+helpers.c.hex(i)+helpers.c.hex(i)+helpers.c.hex(i)); }
 
-                this.modelid = settings.screen;
-                var model = this.models[this.modelid];
+                var model = this.models[settings.model];
 
-                $this.find("#screens").addClass("s"+this.modelid);
+                $this.find("#screens").addClass("s"+settings.model);
 
-                this.p = Math.floor($this.find("#canvas").width()/model[0]);
-                $this.find("#canvas canvas").attr("width",(model[0]*this.p)+"px")
-                                            .attr("height",(model[1]*this.p)+"px")
-                                            .css("width",(model[0]*this.p)+"px")
-                                            .css("height",(model[1]*this.p)+"px")
+                settings.screen.p = Math.floor($this.find("#canvas").width()/model[0]);
+                $this.find("#canvas canvas").attr("width",(model[0]*settings.screen.p)+"px")
+                                            .attr("height",(model[1]*settings.screen.p)+"px")
+                                            .css("width",(model[0]*settings.screen.p)+"px")
+                                            .css("height",(model[1]*settings.screen.p)+"px")
                                             .css("margin-left",Math.floor(($this.find("#canvas").width()%model[0])/2)+"px")
                                             .css("margin-top",Math.floor(($this.find("#canvas").height()%model[1])/2)+"px");
 
-                this.ctxt = $this.find("#canvas canvas")[0].getContext('2d');
+                settings.screen.ctxt = $this.find("#canvas canvas")[0].getContext('2d');
                 this.clear($this);
             },
             clear: function($this) {
-                this.ctxt.fillStyle = this.colors[this.modelid][0];
-                this.ctxt.fillRect(0, 0, this.models[this.modelid][0]*this.p, this.models[this.modelid][1]*this.p);
+                var settings = helpers.settings($this);
+                settings.screen.ctxt.fillStyle = this.colors[settings.model][0];
+                settings.screen.ctxt.fillRect(0, 0, this.models[settings.model][0]*settings.screen.p,
+                                                    this.models[settings.model][1]*settings.screen.p);
             },
-            name: function($this) { var model = this.models[this.modelid]; return model[0]+"x"+model[1]+"x"+(1<<model[2]); },
-            set: function(_data, _addr, _val) {
-                var nb = 8/this.models[this.modelid][2];
+            name: function($this) {
+                var settings = helpers.settings($this);
+                var model = this.models[settings.model]; return model[0]+"x"+model[1]+"x"+(1<<model[2]); },
+            set: function($this, _data, _addr, _val) {
+                var settings = helpers.settings($this);
+                var nb = 8/this.models[settings.model][2];
                 var offset = (_addr-helpers.c.offset.screen)*nb;
-                var mask = (1<<this.models[this.modelid][2])-1;
+                var mask = (1<<this.models[settings.model][2])-1;
                 for (var i=0; i<nb; i++) {
                     var pixel = offset+i;
-                    var s = ((nb-i-1)*this.models[this.modelid][2]);
+                    var s = ((nb-i-1)*this.models[settings.model][2]);
                     var color = (_val&(mask<<s))>>s;
-                    var x = pixel%this.models[this.modelid][0];
-                    var y = Math.floor(pixel/this.models[this.modelid][0]);
-                    this.ctxt.fillStyle = this.colors[this.modelid][color];
-                    this.ctxt.fillRect(x*this.p, y*this.p, this.p, this.p);
+                    var x = pixel%this.models[settings.model][0];
+                    var y = Math.floor(pixel/this.models[settings.model][0]);
+                    settings.screen.ctxt.fillStyle = this.colors[settings.model][color];
+                    settings.screen.ctxt.fillRect(x*settings.screen.p, y*settings.screen.p, settings.screen.p, settings.screen.p);
                 }
             }
         },
@@ -347,9 +351,9 @@
             getw: function(_data, _addr)        { return this.getb(_data,_addr) + (this.getb(_data,_addr + 1) << 8); },
             setb: function(_data, _addr, _val)  { this.set(_data, _addr, _val & 0xff);
                                                   if ((_addr >= helpers.c.offset.screen) && (_addr < helpers.c.offset.code)) {
-                                                    helpers.screen.set(_data, _addr, _val);
+                                                    helpers.screen.set(_data.$this,_data, _addr, _val);
                                                   }
-                                                  if (_addr== helpers.c.offset.stdout) { helpers.stdout.ascii(_data.$this, _val); } },
+                                                  if (_addr== helpers.c.offset.stdout) { helpers.stdout.ascii(_data.$this,_val,false);}},
             key:  function(_data, _val)         { this.setb(_data,0, helpers.c.offset.key, _val); },
             init: function(_data)               { if (!_data.mem) { _data.mem = new Array(helpers.c.offset.end);} },
             clear:function(_data)               { for (var i = 0; i < helpers.c.offset.code; i++) { this.set(_data,i, 0x00);} }
@@ -863,7 +867,7 @@
                     for (var k=0; k<mem.length; k++) { ret&=(helpers.memory.getb(_data,addr+k)==parseInt(mem[k],16)); }
                 }
                 return ret; },
-            cout: function(_data, _value) { return (_value==helpers.stdout.get()); }
+            cout: function(_data, _value) { return (_value==helpers.stdout.get(_data.$this)); }
         },
         next: function($this) {
             $this.find(".mask").hide();
@@ -899,7 +903,9 @@
                         count       : 0,
                         address     : {},
                         timer       : 0
-                    }
+                    },
+                    stdout: { lines : ["","","","","","",""], pos: 0 },
+                    screen: { p : 1, ctxt : 0 }
                 };
 
                 return this.each(function() {

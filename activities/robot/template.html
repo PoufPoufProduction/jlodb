@@ -10,14 +10,14 @@
     <div id="menu">
         <div id="action">
             <div id="tab">
-                <div id="r1" ontouchstart="$('.robot #tabs>div').hide();$('.robot #tabs #t1').show();event.preventDefault();"
-                              onclick="$('.robot #tabs>div').hide();$('.robot #tabs #t1').show();">1</div>
-                <div id="r2" ontouchstart="$('.robot #tabs>div').hide();$('.robot #tabs #t2').show();event.preventDefault();"
-                              onclick="$('.robot #tabs>div').hide();$('.robot #tabs #t2').show();">2</div>
-                <div id="r3" ontouchstart="$('.robot #tabs>div').hide();$('.robot #tabs #t3').show();event.preventDefault();"
-                              onclick="$('.robot #tabs>div').hide();$('.robot #tabs #t3').show();">3</div>
-                <div id="r4" ontouchstart="$('.robot #tabs>div').hide();$('.robot #tabs #t4').show();event.preventDefault();"
-                              onclick="$('.robot #tabs>div').hide();$('.robot #tabs #t4').show();">4</div>
+                <div id="r1" ontouchstart="$(this).closest('.robot').find('#tabs>div').hide();$(this).closest('.robot').find('#tabs #t1').show();event.preventDefault();"
+                              onclick="$(this).closest('.robot').find('#tabs>div').hide();$(this).closest('.robot').find('#tabs #t1').show();">1</div>
+                <div id="r2" ontouchstart="$(this).closest('.robot').find('#tabs>div').hide();$(this).closest('.robot').find'.robot #tabs #t2').show();event.preventDefault();"
+                              onclick="$(this).closest('.robot').find('#tabs>div').hide();$(this).closest('.robot').find('#tabs #t2').show();">2</div>
+                <div id="r3" ontouchstart="$(this).closest('.robot').find('#tabs>div').hide();$(this).closest('.robot').find('#tabs #t3').show();event.preventDefault();"
+                              onclick="$(this).closest('.robot').find('#tabs>div').hide();$(this).closest('.robot').find('#tabs #t3').show();">3</div>
+                <div id="r4" ontouchstart="$(this).closest('.robot').find('#tabs>div').hide();$(this).closest('.robot').find('#tabs #t4').show();event.preventDefault();"
+                              onclick="$(this).closest('.robot').find('#tabs>div').hide();$(this).closest('.robot').find('#tabs #t4').show();">4</div>
             </div>
             <div id="tabs">
                 <div class="both" id="t1">

@@ -76,6 +76,7 @@ if (!$error) {
         $time       = $row["Exercice_Duration"];
         $class      = $row["Exercice_Classification"];
         $locale     = $row["Activity_Locale"];
+        $ext        = $row["Activity_External"];
         $status     = "success";
     }
     else {
@@ -98,6 +99,7 @@ echo '  "level": "'.$level.'",';
 echo '  "difficulty": "'.$diff.'",';
 echo '  "time": "'.$time.'",';
 echo '  "classification": "'.$class.'",';
+echo '  "ext": "'.$ext.'",';
 echo '  "data": {'.$param.'},';
 echo '  "locale": {'.$locale.'}';
 echo '}';
