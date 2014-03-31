@@ -13,6 +13,7 @@
         vertical    : 2,                        // The vertical position of the current question
         filter      : [],                       // Filter the entry
         erase       : '.',                      // The erase caracter
+        font        : 1,                        // Questions font factor
         screenc     : false,                    // Clear the screen between question
         debug       : false                     // Debug mode
     };
@@ -133,7 +134,7 @@
                 // Build the questions
                 var vLast = -1, vNew;
                 var vRegexp = (settings.regexp&&settings.regexp.input)?new RegExp(settings.regexp.input.from, "g"):0;
-                var $ul = $this.find("#values ul").hide();
+                var $ul = $this.find("#values ul").css("font-size",settings.font+"em").hide();
 
                 // Fill the UL list
                 for (var i=0; i<settings.number; i++) {

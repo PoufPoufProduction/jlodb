@@ -30,11 +30,10 @@
             $this.html("<div class='jmenu'><div class='slider'><div class='cursor'></div></div><div class='header'></div>"+
                         "<div class='footer'></div><div class='menu'></div></div>");
             for (var i in settings.list) {
-                $this.find(".menu").append("<div class='icon"+(i>=99?" gtc":"")+"' id='"+i+"' onclick='$(this).closest(\".jmenu\").parent().menu(\"click\", "+i+");' ontouchstart='$(this).closest(\".jmenu\").parent().menu(\"click\","+i+");event.preventDefault();'><div class='legend'>"+(parseInt(i)+1)+"</div><div class='state sl'></div></div>");
+                $this.find(".menu").append("<div class='icon"+(i>=99?" gtc":"")+"' id='"+i+"' onclick='$(this).closest(\".jmenu\").parent().menu(\"click\", "+i+");event.stopPropagation();' ontouchstart='$(this).closest(\".jmenu\").parent().menu(\"click\","+i+");event.stopPropagation();event.preventDefault();'><div class='legend'>"+(parseInt(i)+1)+"</div><div class='state sl'></div></div>");
             }
 
             for (var i=0; i<settings.state.length; i++) { helpers.state($this,i); }
-
 
             if ($this.height()<$this.find(".menu").height()) {
                 $this.find(".slider").css("opacity",1);

@@ -90,6 +90,11 @@
                 if (o<0 && settings.show && settings.wrong && settings.wrong.content ) { content = settings.wrong.content; }
                 if (o>=0) { content = settings.states.content[o%settings.states.content.length]; }
 
+                if (settings.regexp) {
+                    vRegexp = new RegExp(settings.regexp.from, "g");
+                    content = content.replace(vRegexp, settings.regexp.to);
+                }
+
                 if (content.length) { elt.elt.html(content); }
             }
             if (settings.states.class) {
@@ -148,13 +153,26 @@
                 settings.current.result = settings.current.elt.result;
             }
 
-            if (settings.comment)               { $this.find("#exercice").html(settings.comment).show(); } else
-            if (settings.current.elt.comment)   { $this.find("#exercice").html(settings.current.elt.comment).show(); } else
-                                                { $this.find("#exercice").hide(); }
+            if (settings.exercice) {
+                if ($.type(settings.exercice)=="string") {
+                    $this.find("#exercice #content").html(settings.exercice);
+                } else {
+                    $this.find("#exercice #content").html(settings.exercice.value);
+                    if (settings.exercice.label) { $this.find("#exercice #label").html(settings.exercice.label).show(); }
+                }
+                $this.find("#exercice").show();
+            } else
+            if (settings.current.elt.exercice) {
+                $this.find("#exercice #content").html(settings.current.elt.comment);
+                $this.find("#exercice").show(); }
+            else { $this.find("#exercice").hide(); }
 
             if (settings.current.elt.template) {
                 var debug = "";
                 if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
+
+                var vRegexp = 0;
+                if (settings.regexp) { vRegexp = new RegExp(settings.regexp.from, "g"); }
 
                 if (settings.current.elt.template.indexOf(".svg")!=-1) {
                     var templatepath = "res/img/"+settings.current.elt.template+debug;
@@ -164,7 +182,9 @@
                     $(settings.svg).attr("class",settings.class);
                     settings.svg.load(templatepath, { addTo: true, changeSize: true, onLoad:function() {
                         $this.find(".t").each(function(index) {
-                            if (settings.current.t && settings.current.t.length>index) { $(this).text(settings.current.t[index]); }});
+                            var value = settings.current.t[index];
+                            if (vRegexp) { value = value.replace(vRegexp, settings.regexp.to); }
+                            if (settings.current.t && settings.current.t.length>index) { $(this).text(value); }});
                         helpers.fill($this); }
                     });
                 }
@@ -172,7 +192,9 @@
                     var templatepath = "activities/"+settings.name+"/template/"+settings.current.elt.template+".html"+debug;
                     $this.find("#data").load(templatepath, function(response, status, xhr) {
                         $this.find(".t").each(function(index) {
-                            if (settings.current.t && settings.current.t.length>index) { $(this).html(settings.current.t[index]); }});
+                            var value = settings.current.t[index];
+                            if (vRegexp) { value = value.replace(vRegexp, settings.regexp.to); }
+                            if (settings.current.t && settings.current.t.length>index) { $(this).html(value); }});
                         helpers.fill($this);
                     });
                 }

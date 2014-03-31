@@ -23,15 +23,20 @@ if ($handle = opendir("../mods")) {
 
                 $name="";
                 $abstract="";
+                $requires="";
+                $source="";
 
                 // PARSE THE ACTIVITIES RDF FILE FOR FILLING THE ACTIVITY TABLE
                 foreach ($xml->children()->children() as $childName=>$child) {
                     if (strcmp($childName,"dct_title")==0)         { $name=$child; }
                     if (strcmp($childName,"dct_abstract")==0)      { $abstract=$child; }
+                    if (strcmp($childName,"dct_requires")==0)      { $requires=$child; }
+                    if (strcmp($childName,"dct_source")==0)        { $source=$child; }
                 }
  
                 if (strlen($json)) { $json.=","; }
-                $json.='{"id" :"'.$file.'", "name" :"'.$name.'", "abstract" :"'.$abstract.'"}';
+                $json.='{"id" :"'.$file.'", "name" :"'.$name.'", "abstract" :"'.$abstract.
+                       '", "requires" :"'.$requires.'", "source" : "'.$source.'"}';
             }
         }
     }

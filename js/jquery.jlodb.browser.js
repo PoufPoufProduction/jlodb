@@ -11,6 +11,9 @@
 
     // private methods
     var helpers = {
+        // Get the settings
+        settings: function($this, _val) { if (_val) { $this.data("settings", _val); } return $this.data("settings"); },
+
         getNodeFromJSON: function(_root,_id) {
             var ret = {parent:0, node:0};
             if (_root.attr("id")==_id) { ret= {parent:0, node:_root}; }
@@ -35,7 +38,7 @@
         },
         // Load the different elements of the activity
         loadTemplate: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             var debug = "";
             if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
 
@@ -54,13 +57,13 @@
             });
         },
         loadActivities: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             if (settings.activities) { helpers.loadTags($this); } else {
                 $.getJSON("api/activities.php", function (data) { settings.activities = data.activities; helpers.loadTags($this); });
             }
         },
         loadTags: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             $.getJSON("api/tags.php", function (data) {
                 for (var i=0; i<data.tags.length; i++) { settings.tagsbyid[data.tags[i]] = i; }
                 settings.tags = data.tags;
@@ -68,7 +71,7 @@
             });
         },
         updateSlider: function($this,_cursor) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
 
             var $slide          = $(_cursor).parent();
             var vWidthCursor    = $(_cursor).width();
@@ -89,7 +92,7 @@
             $(_cursor).parent().find(".bar").width((l2-l1+vWidthCursor)+"px").css("margin-left",l1+"px");
         },
         buildSliders: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             // HANDLE THE SLIDERS
             $("#patab .slide .cursor").each(function() {
                 $(this).draggable({ axis:"x", containment:"parent",
@@ -102,7 +105,7 @@
             });
         },
         buildClassification: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             var node = helpers.getNodeFromJSON(settings.classification, settings.classId);
             $("#ontab .content").html("");
             $("#ontab .label").html(node.node.attr("label"));
@@ -118,7 +121,7 @@
             });
         },
         buildActivities: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             var nbrows   = 4;
             var reg      = new RegExp("(')" ,"g");
             var nbcols   = Math.ceil(settings.activities.length/nbrows);
@@ -139,13 +142,13 @@
             $("#jbrowser #actab").html(html);
         },
         buildTags: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             for (var t in settings.tags) {
                 $this.find("#tags").append("<option value='"+t+"'>"+settings.tags[t]+"</option>");
             }
         },
         buildExercices: function($this, data) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             $this.find("#jresults table tr.data").remove();
             $this.find("#jcount").html(data.nb);
 
@@ -186,12 +189,12 @@
 
         },
         buildPopup: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             for (var i in settings.context) { $this.find("#jpopup").
                 append("<div onclick=\"$(this).closest('.browser').browser('callback','"+i+"');\">"+i+"</div>"); }
         },
         build: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             helpers.buildActivities($this);
             helpers.buildClassification($this);
             helpers.buildTags($this);
@@ -200,7 +203,7 @@
         },
         update: function($this) { $this.addClass("upd"); },
         submit: function($this, _fct, _force) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             if (_force || ($this.hasClass("upd") && parseInt($this.find("#level div#max").html()))) {
 
                 //GET THE ACTIVITIES
@@ -274,7 +277,7 @@
             }
         },
         popup: function($this) {
-            var settings = $this.data("settings");
+            var settings = helpers.settings($this);
             $this.find("#jpopup").hide();
             if (settings.elt.timer) { clearTimeout(settings.elt.timer); settings.elt.timer = 0; }
         }
@@ -303,21 +306,23 @@
                 return this.each(function() {
                     var $this = $(this);
 
+
                     var $settings = $.extend({}, defaults, options, settings);
                     $this.removeClass();
                     if ($settings.class) { $this.addClass($settings.class); }
-                    helpers.loadTemplate($(this).addClass("browser").data("settings", $settings));
+                    helpers.settings($this, $settings);
+                    helpers.loadTemplate($this.addClass("browser"));
                 });
             },
             update: function() { helpers.update($(this)); },
             activity: function(_val) {
-                var $this = $(this), settings = $this.data("settings");
+                var $this = $(this), settings = helpers.settings($this);
                 $this.find("#actab .icon").removeClass("s");
                 $this.find("#actab #"+_val).addClass("s");
                 helpers.submit($this, function() { $this.removeClass("upd"); }, true);
             },
             classification: function(_val, _update) {
-                var $this = $(this), settings = $this.data("settings");
+                var $this = $(this), settings = helpers.settings($this);
                 settings.classId = _val;
                 helpers.buildClassification($this);
                 if (_update) { helpers.submit($this, function() { $this.removeClass("upd"); }, true); }
@@ -350,7 +355,7 @@
             },
             submit: function() { var $this=$(this); helpers.submit($this, function() { $this.removeClass("upd"); }, false); },
             sort: function(_elt) {
-                var $this = $(this), settings = $this.data("settings");
+                var $this = $(this), settings = helpers.settings($this);
                 $this.find("#jresults .header div").removeClass("asc").removeClass("desc");
 
                 if (_elt) {
@@ -379,7 +384,7 @@
                 settings.elt.id = _val;
             },
             callback:function(_fct) {
-                var $this = $(this), settings = $this.data("settings");
+                var $this = $(this), settings = helpers.settings($this);
                 if (settings.context&&settings.context[_fct]&&settings.elt.id) { settings.context[_fct](settings.elt.id); }
             }
         };

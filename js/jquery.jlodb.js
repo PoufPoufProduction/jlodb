@@ -21,22 +21,23 @@
 
         rerun       : function($this) {
             var settings = helpers.settings($this);
-            helpers.run($this, launcher.last, launcher.args);
+            helpers.run($this, settings.last, settings.args);
         },
 
         // RUN THE EXERCICE REGARDING THE ACTIVITY NAME AND ITS ARGUMENTS
         run         : function($this, _name, _args) {
             var settings = helpers.settings($this);
 
-            launcher.last = _name;
-            launcher.args = $.extend(true, {},_args);
+            settings.last = _name;
+            settings.args = $.extend(true, {},_args);
 
             var args = $.extend({ 'context': settings.context } , _args);
             args.debug   = settings.debug;
             args.context = settings.context;
 
             if (typeof($this[_name])=='undefined') {
-                $.getScript('activities/'+_name+'/'+_name+'.js', function() { $this.find("#"+settings.id)[_name](args); });
+                $.getScript('activities/'+_name+'/'+_name+'.js', function() {
+                    $this.find("#"+settings.id)[_name](args); });
             }
             else { $this.find("#"+settings.id)[_name](args); }
         },
@@ -44,7 +45,7 @@
         // FORCE QUIT FROM THE CURRENT EXERCICE
         quit        : function($this) {
             var settings = helpers.settings($this);
-            $this.find("#"+settings.id)[launcher.last]('quit');
+            $this.find("#"+settings.id)[settings.last]('quit');
         },
 
             // GET EXERCICE AND LAUNCH
@@ -61,7 +62,7 @@
                 var d = data.data;
                 if (data.locale) { if (d.locale) { d.locale = $.extend(d.locale, data.locale); } else { d.locale = data.locale; } }
                 d.label = data.label;
-                if (settings.onexercice && (!_args || !_args.id)) { settings.onexercice($this, data.id); }
+                if (settings.onexercice) { settings.onexercice($this, data.id, data.activity); }
 
                 if (data.ext && jlodbext && jlodbext[data.ext]) {
                     jlodbext[data.ext].js(function() { helpers.run($this,data.activity, d); });

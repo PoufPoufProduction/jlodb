@@ -253,9 +253,16 @@
                     if (settings.def && settings.def[settings.elt.horiz?"horiz":"vert"] &&
                         settings.def[settings.elt.horiz?"horiz":"vert"][ref]) {
                         def = settings.def[settings.elt.horiz?"horiz":"vert"][ref];
+
+                        if (settings.regexp) {
+                            var vRegexp = new RegExp(settings.regexp.from, "g");
+                            def = def.replace(vRegexp, settings.regexp.to);
+                        }
+
                     }
+
                     var $def = $this.find("#definition");
-                    $def.html("<p style='font-size:"+settings.font+"em;'>"+def+"<p>").toggleClass("center",(def.length<5));
+                    $def.html("<div style='font-size:"+settings.font+"em;'>"+def+"</div>").toggleClass("center",(def.length<5));
 
                     if (_hint) {
                         if (settings.mode) {

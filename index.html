@@ -78,6 +78,11 @@
         #jlodb #mods                        { font-size:.25em; }
         #jlodb #mods .mod                   { clear:both; margin:.5em; }
         #jlodb #mods .mod>div               { float:left; }
+        #jlodb #mods .action                { float:right; color:white; background-color:#555; border-radius:.5em;
+                                              padding:0 1em; margin-right:1em; cursor:pointer; display:none; }
+        #jlodb #mods .action.success        { background-color:green; }
+        #jlodb #mods .action.failed         { background-color:red; }
+        body>div.logged #jlodb #mods .action { display:inherit; }
         #jlodb #mods .mod .icon             { font-size:8em; }
         #jlodb #mods .mod .text             { width:40em; height:7em; text-align:justify; overflow:hidden; vertical-align:top;
                                               padding:.5em; background-color: #888; border-radius:1.5em; color:white; margin-left:.5em;}
@@ -175,14 +180,26 @@ jlodb = {
                     function(response, status, xhr) {
                         $.getJSON("api/mods.php", function (data) {
                             for (var i=0; i<data.mods.length; i++) {
-                                var html ="<div class='mod'><div class='icon'><a href='"+data.mods[i].id+".html' target='blank'>";
+                                var html ="<div class='mod' id='"+data.mods[i].id+"'><div class='icon'><a href='"+
+                                          data.mods[i].id+".html' target='blank'>";
                                 html    +="<img src='mods/"+data.mods[i].id+"/icon.svg'/></a></div>";
-                                html    +="<div class='text'><h2>"+data.mods[i].name+"</h2><p>"+data.mods[i].abstract+"</p></div>";
+                                html    +="<div class='text'>";
+                                if (data.mods[i].source.length) {
+                                    html+="<div class='action' id='"+data.mods[i].source+
+                                          "' onclick='jlodb.page.mods.build(this);'>+</div>";
+                                }
+                                html    +="<h2>"+data.mods[i].name+"</h2>";
+                                html    +="<p>"+data.mods[i].abstract+"</p></div>";
                                 html    +="</div>";
                                 $("#mods #list").append(html);
                             }
                         });
                 }).show();
+            },
+            build: function(_elt) {
+                $.getJSON("mods/"+$(_elt).closest(".mod").attr("id")+"/api/"+$(_elt).attr("id")+".php", function (data) {
+                    $(_elt).removeClass("success").removeClass("failed").addClass(data.status);
+                });
             }
         },
         apps : {
@@ -326,7 +343,7 @@ jlodb = {
                 });
             },
             submit: function() {
-                jlodb.run({ activity : $("#jlodb #edition select").val(), args: JSON.parse($("#jlodb #edition textarea").val()) });
+                jlodb.run({ activity : $("#jlodb #edition select").val(), args: JSON.parse($("#jlodb #edition textarea").val()) }, false);
             }
         },
         browser: {
@@ -337,13 +354,15 @@ jlodb = {
             }
         }
     },
-    run        : function(_args) {
+    ubr  : true,
+    run        : function(_args, _update) {
+        jlodb.ubr = _update;
         $("#waiting").show().find("div").addClass("running");
         $("#launcher").jlodb({ onstart:    function($this)       { $("#jlodb").hide();
                                                                    $("#waiting").hide().find("div").removeClass("running"); },
                                onfinish:   function($this)       { $("#jlodb").show(); $("#score").removeClass().hide(); },
                                onscore:    function($this, _ret) { $("#score").attr("class","s"+_ret.score).show(); return true; },
-                               onexercice: function($this, _id)  { $("#contentb").browser("id",_id); } },_args);
+                               onexercice: function($this,_id,_a){ if (jlodb.ubr) { $("#contentb").browser("id",_id); } } },_args);
     },
     content     : function(_url) { $("#content").load(_url+"?debug="+Math.floor(Math.random()*99999)); },
     popup       : {
@@ -404,7 +423,7 @@ jlodb = {
                     if (results) { jlodb.page.browser.load(results[1]); }
 
                     $("#contentb").browser({lang:"fr-FR", classification:jlodb.classification.data, context:{
-                        Lancer:function(_id){ jlodb.run({id:_id}); },
+                        Lancer:function(_id){ jlodb.run({id:_id}, false); },
                         Editer:function(_id){ jlodb.page.edition.open(_id); } }
                 });
 
