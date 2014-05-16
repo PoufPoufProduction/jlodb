@@ -1,0 +1,322 @@
+<div>
+<div id="screen"></div>
+<div id="board">
+    <div class="tabs">
+        <ul>
+            <li onclick="$(this).closest('.gonz').gonz('tab',this, '#bgtab');"
+                ontouchstart="$(this).closest('.gonz').gonz('tab',this, '#bgtab');event.preventDefault();">
+                <div class="icon"><img src="gonz/res/img/icons/background.svg" alt="H"/></div>
+            </li>
+            <li onclick="$(this).closest('.gonz').gonz('tab',this, '#headtab');"
+                ontouchstart="$(this).closest('.gonz').gonz('tab',this, '#headtab');event.preventDefault();">
+                <div class="icon"><img src="gonz/res/img/icons/head.svg" alt="H"/></div>
+            </li>
+            <li onclick="$(this).closest('.gonz').gonz('tab',this, '#mouthtab');"
+                ontouchstart="$(this).closest('.gonz').gonz('tab',this, '#mouthtab');event.preventDefault();">
+                <div class="icon"><img src="gonz/res/img/icons/mouth.svg" alt="M"/></div>
+            </li>
+            <li onclick="$(this).closest('.gonz').gonz('tab',this, '#nosetab');"
+                ontouchstart="$(this).closest('.gonz').gonz('tab',this, '#nosetab');event.preventDefault();">
+                <div class="icon"><img src="gonz/res/img/icons/nose.svg" alt="N"/></div>
+            </li>
+            <li onclick="$(this).closest('.gonz').gonz('tab',this, '#eartab');"
+                ontouchstart="$(this).closest('.gonz').gonz('tab',this, '#eartab');event.preventDefault();">
+                <div class="icon"><img src="gonz/res/img/icons/ear.svg" alt="H"/></div>
+            </li>
+            <li onclick="$(this).closest('.gonz').gonz('tab',this, '#eyetab');"
+                ontouchstart="$(this).closest('.gonz').gonz('tab',this, '#eyetab');event.preventDefault();">
+                <div class="icon"><img src="gonz/res/img/icons/eye.svg" alt="H"/></div>
+            </li>
+            <li onclick="$(this).closest('.gonz').gonz('tab',this, '#eyebrowtab');"
+                ontouchstart="$(this).closest('.gonz').gonz('tab',this, '#eyebrowtab');event.preventDefault();">
+                <div class="icon"><img src="gonz/res/img/icons/eyebrow.svg" alt="H"/></div>
+            </li>
+            <li onclick="$(this).closest('.gonz').gonz('tab',this, '#hairtab');"
+                ontouchstart="$(this).closest('.gonz').gonz('tab',this, '#hairtab');event.preventDefault();">
+                <div class="icon"><img src="gonz/res/img/icons/hair.svg" alt="H"/></div>
+            </li>
+            <li onclick="$(this).closest('.gonz').gonz('tab',this, '#clothestab');"
+                ontouchstart="$(this).closest('.gonz').gonz('tab',this, '#clothestab');event.preventDefault();">
+                <div class="icon"><img src="gonz/res/img/icons/clothes.svg" alt="H"/></div>
+            </li>
+        </ul>
+    </div>
+    <div class="tabs">
+        <ul>
+            <li><div class="icon"><img src="gonz/res/img/icons/background.svg" alt="H"/></div></li>
+            <li><div class="icon"><img src="gonz/res/img/icons/background.svg" alt="H"/></div></li>
+            <li><div class="icon"><img src="gonz/res/img/icons/background.svg" alt="H"/></div></li>
+            <li><div class="icon"><img src="gonz/res/img/icons/background.svg" alt="H"/></div></li>
+            <li><div class="icon"><img src="gonz/res/img/icons/background.svg" alt="H"/></div></li>
+            <li><div class="icon"><img src="gonz/res/img/icons/background.svg" alt="H"/></div></li>
+            <li><div class="icon"><img src="gonz/res/img/icons/background.svg" alt="H"/></div></li>
+            <li><div class="icon"><img src="gonz/res/img/icons/background.svg" alt="H"/></div></li>
+            <li><div class="icon"><img src="gonz/res/img/icons/background.svg" alt="H"/></div></li>
+        </ul>
+    </div>
+    <div class="tab" id="bgtab">
+        <div class="nav">
+            <div class="p1" onclick="$(this).closest('.gonz').gonz('updateid', 'bg', false);"
+                            ontouchstart="$(this).closest('.gonz').gonz('updateid', 'bg', false);event.preventDefault();">-</div>
+            <div class="p2"></div>
+            <div class="p3" onclick="$(this).closest('.gonz').gonz('updateid', 'bg', true);"
+                            ontouchstart="$(this).closest('.gonz').gonz('updateid', 'bg', true);event.preventDefault();">+</div>
+        </div>
+        <table class="colors">
+            <tr><td><div class="color bg1" onclick="$(this).closest('.gonz').gonz('values', 'bg', 0);"
+                                           ontouchstart="$(this).closest('.gonz').gonz('values', 'bg', 0);event.preventDefault();">
+                    </div></td>
+                <td><div class="color bg2" onclick="$(this).closest('.gonz').gonz('values', 'bg', 1);"
+                                           ontouchstart="$(this).closest('.gonz').gonz('values', 'bg', 1);event.preventDefault();">
+                    </div></td>
+                <td><div class="color bg3" onclick="$(this).closest('.gonz').gonz('values', 'bg', 2);"
+                                           ontouchstart="$(this).closest('.gonz').gonz('values', 'bg', 2);event.preventDefault();">
+                    </div></td>
+                <td><div class="color bg4" onclick="$(this).closest('.gonz').gonz('values', 'bg', 3);"
+                                           ontouchstart="$(this).closest('.gonz').gonz('values', 'bg', 3);event.preventDefault();">
+                    </div></td></tr>
+            <tr><td><div class="color bg5" onclick="$(this).closest('.gonz').gonz('values', 'bg', 4);"
+                                           ontouchstart="$(this).closest('.gonz').gonz('values', 'bg', 4);event.preventDefault();">
+                    </div></td>
+                <td><div class="color bg6" onclick="$(this).closest('.gonz').gonz('values', 'bg', 5);"
+                                           ontouchstart="$(this).closest('.gonz').gonz('values', 'bg', 5);event.preventDefault();">
+                    </div></td>
+                <td><div class="color bg7" onclick="$(this).closest('.gonz').gonz('values', 'bg', 6);"
+                                           ontouchstart="$(this).closest('.gonz').gonz('values', 'bg', 6);event.preventDefault();">
+                    </div></td>
+                <td><div class="color bg8" onclick="$(this).closest('.gonz').gonz('values', 'bg', 7);"
+                                           ontouchstart="$(this).closest('.gonz').gonz('values', 'bg', 7);event.preventDefault();">
+                    </div></td></tr>
+        </table>
+    </div>
+    <div class="tab" id="headtab">
+        <div class="nav">
+            <div class="p1" onclick="$(this).closest('.gonz').gonz('updateid', 'head', false);"
+                            ontouchstart="$(this).closest('.gonz').gonz('updateid', 'head', false);event.preventDefault();">-</div>
+            <div class="p2"></div>
+            <div class="p3" onclick="$(this).closest('.gonz').gonz('updateid', 'head', true);"
+                            ontouchstart="$(this).closest('.gonz').gonz('updateid', 'head', true);event.preventDefault();">+</div>
+        </div>
+        <table class="colors">
+            <tr><td><div class="color skin1" onclick="$(this).closest('.gonz').gonz('values', 'head', 0);"
+                                             ontouchstart="$(this).closest('.gonz').gonz('values', 'head', 0);event.preventDefault();">
+                    </div></td>
+                <td><div class="color skin2" onclick="$(this).closest('.gonz').gonz('values', 'head', 1);"
+                                             ontouchstart="$(this).closest('.gonz').gonz('values', 'head', 1);event.preventDefault();">
+                    </div></td>
+                <td><div class="color skin3" onclick="$(this).closest('.gonz').gonz('values', 'head', 2);"
+                                             ontouchstart="$(this).closest('.gonz').gonz('values', 'head', 2);event.preventDefault();">
+                    </div></td>
+                <td><div class="color skin4" onclick="$(this).closest('.gonz').gonz('values', 'head', 3);"
+                                             ontouchstart="$(this).closest('.gonz').gonz('values', 'head', 3);event.preventDefault();">
+                    </div></td></tr>
+            <tr><td><div class="color skin5" onclick="$(this).closest('.gonz').gonz('values', 'head', 4);"
+                                             ontouchstart="$(this).closest('.gonz').gonz('values', 'head', 4);event.preventDefault();">
+                    </div></td>
+                <td><div class="color skin6" onclick="$(this).closest('.gonz').gonz('values', 'head', 5);"
+                                             ontouchstart="$(this).closest('.gonz').gonz('values', 'head', 5);event.preventDefault();">
+                    </div></td>
+                <td><div class="color skin7" onclick="$(this).closest('.gonz').gonz('values', 'head', 6);"
+                                             ontouchstart="$(this).closest('.gonz').gonz('values', 'head', 6);event.preventDefault();">
+                    </div></td>
+                <td><div class="color skin8" onclick="$(this).closest('.gonz').gonz('values', 'head', 7);"
+                                             ontouchstart="$(this).closest('.gonz').gonz('values', 'head', 7);event.preventDefault();">
+                    </div></td></tr>
+        </table>
+    </div>
+    <div class="tab" id="mouthtab">
+        <div class="nav">
+            <div class="p1" onclick="$(this).closest('.gonz').gonz('updateid', 'mouth', false);"
+                            ontouchstart="$(this).closest('.gonz').gonz('updateid', 'mouth', false);event.preventDefault();">-</div>
+            <div class="p2"></div>
+            <div class="p3" onclick="$(this).closest('.gonz').gonz('updateid', 'mouth', true);"
+                            ontouchstart="$(this).closest('.gonz').gonz('updateid', 'mouth', true);event.preventDefault();">+</div>
+        </div>
+        <div class="slider" id="mouthvert" onclick="$(this).closest('.gonz').gonz('slider','mouthvert');">
+            <div class="icon"><img src="gonz/res/img/icons/vert.svg" alt="N"/></div>
+            <div class="bar"><div class="cursor"></div></div>
+        </div>
+        <div class="slider" id="mouthhoriz" onclick="$(this).closest('.gonz').gonz('slider','mouthhoriz');">
+            <div class="icon"><img src="gonz/res/img/icons/horiz.svg" alt="N"/></div>
+            <div class="bar"><div class="cursor"></div></div>
+        </div>
+        <div class="slider" id="mouthrotate" onclick="$(this).closest('.gonz').gonz('slider','mouthrotate');">
+            <div class="icon"><img src="gonz/res/img/icons/rotate.svg" alt="N"/></div>
+            <div class="bar"><div class="cursor"></div></div>
+        </div>
+    </div>
+    <div class="tab" id="nosetab">
+        <div class="nav">
+            <div class="p1" onclick="$(this).closest('.gonz').gonz('updateid', 'nose', false);"
+                            ontouchstart="$(this).closest('.gonz').gonz('updateid', 'nose', false);event.preventDefault();">-</div>
+            <div class="p2"></div>
+            <div class="p3" onclick="$(this).closest('.gonz').gonz('updateid', 'nose', true);"
+                            ontouchstart="$(this).closest('.gonz').gonz('updateid', 'nose', true);event.preventDefault();">+</div>
+        </div>
+        <div class="slider" id="nosevert" onclick="$(this).closest('.gonz').gonz('slider','nosevert');">
+            <div class="icon"><img src="gonz/res/img/icons/vert.svg" alt="N"/></div>
+            <div class="bar"><div class="cursor"></div></div>
+        </div>
+    </div>
+    <div class="tab" id="eartab">
+        <div class="nav">
+            <div class="p1" onclick="$(this).closest('.gonz').gonz('updateid', 'ear', false);"
+                            ontouchstart="$(this).closest('.gonz').gonz('updateid', 'ear', false);event.preventDefault();">-</div>
+            <div class="p2"></div>
+            <div class="p3" onclick="$(this).closest('.gonz').gonz('updateid', 'ear', true);"
+                            ontouchstart="$(this).closest('.gonz').gonz('updateid', 'ear', true);event.preventDefault();">+</div>
+        </div>
+    </div>
+
+    <div class="tab" id="eyetab">
+        <div class="nav">
+            <div class="p1" onclick="$(this).closest('.gonz').gonz('updateid', 'eye', false);"
+                            ontouchstart="$(this).closest('.gonz').gonz('updateid', 'eye', false);event.preventDefault();">-</div>
+            <div class="p2"></div>
+            <div class="p3" onclick="$(this).closest('.gonz').gonz('updateid', 'eye', true);"
+                            ontouchstart="$(this).closest('.gonz').gonz('updateid', 'eye', true);event.preventDefault();">+</div>
+        </div>
+        <table class="colors">
+            <tr><td><div class="color eye1" onclick="$(this).closest('.gonz').gonz('values', 'eye', 0);"
+                                            ontouchstart="$(this).closest('.gonz').gonz('values', 'eye', 0);event.preventDefault();">
+                    </div></td>
+                <td><div class="color eye2" onclick="$(this).closest('.gonz').gonz('values', 'eye', 1);"
+                                            ontouchstart="$(this).closest('.gonz').gonz('values', 'eye', 1);event.preventDefault();">
+                    </div></td>
+                <td><div class="color eye3" onclick="$(this).closest('.gonz').gonz('values', 'eye', 2);"
+                                            ontouchstart="$(this).closest('.gonz').gonz('values', 'eye', 2);event.preventDefault();">
+                    </div></td>
+                <td><div class="color eye4" onclick="$(this).closest('.gonz').gonz('values', 'eye', 3);"
+                                            ontouchstart="$(this).closest('.gonz').gonz('values', 'eye', 3);event.preventDefault();">
+                    </div></td></tr>
+            <tr><td><div class="color eye5" onclick="$(this).closest('.gonz').gonz('values', 'eye', 4);"
+                                            ontouchstart="$(this).closest('.gonz').gonz('values', 'eye', 4);event.preventDefault();">
+                    </div></td>
+                <td><div class="color eye6" onclick="$(this).closest('.gonz').gonz('values', 'eye', 5);"
+                                            ontouchstart="$(this).closest('.gonz').gonz('values', 'eye', 5);event.preventDefault();">
+                    </div></td>
+                <td><div class="color eye7" onclick="$(this).closest('.gonz').gonz('values', 'eye', 6);"
+                                            ontouchstart="$(this).closest('.gonz').gonz('values', 'eye', 6);event.preventDefault();">
+                    </div></td>
+                <td><div class="color eye8" onclick="$(this).closest('.gonz').gonz('values', 'eye', 7);"
+                                            ontouchstart="$(this).closest('.gonz').gonz('values', 'eye', 7);event.preventDefault();">
+                    </div></td></tr>
+        </table>
+        <div class="slider" id="eyevert" onclick="$(this).closest('.gonz').gonz('slider','eyevert');">
+            <div class="icon"><img src="gonz/res/img/icons/vert.svg" alt="N"/></div>
+            <div class="bar"><div class="cursor"></div></div>
+        </div>
+        <div class="slider" id="eyehoriz" onclick="$(this).closest('.gonz').gonz('slider','eyehoriz');">
+            <div class="icon"><img src="gonz/res/img/icons/horiz.svg" alt="N"/></div>
+            <div class="bar"><div class="cursor"></div></div>
+        </div>
+    </div>
+
+    <div class="tab" id="eyebrowtab">
+        <div class="nav">
+            <div class="p1" onclick="$(this).closest('.gonz').gonz('updateid', 'eyebrow', false);"
+                            ontouchstart="$(this).closest('.gonz').gonz('updateid', 'eyebrow', false);event.preventDefault();">-</div>
+            <div class="p2"></div>
+            <div class="p3" onclick="$(this).closest('.gonz').gonz('updateid', 'eyebrow', true);"
+                            ontouchstart="$(this).closest('.gonz').gonz('updateid', 'eyebrow', true);event.preventDefault();">+</div>
+        </div>
+        <div class="slider" id="eyebrowvert" onclick="$(this).closest('.gonz').gonz('slider','eyebrowvert');">
+            <div class="icon"><img src="gonz/res/img/icons/vert.svg" alt="N"/></div>
+            <div class="bar"><div class="cursor"></div></div>
+        </div>
+        <div class="slider" id="eyebrowrotate" onclick="$(this).closest('.gonz').gonz('slider','eyebrowrotate');">
+            <div class="icon"><img src="gonz/res/img/icons/rotate.svg" alt="N"/></div>
+            <div class="bar"><div class="cursor"></div></div>
+        </div>
+    </div>
+
+    <div class="tab" id="hairtab">
+        <div class="nav">
+            <div class="p1" onclick="$(this).closest('.gonz').gonz('updateid', 'hair', false);$(this).closest('.gonz').gonz('updateid', 'hairb', false);" ontouchstart="$(this).closest('.gonz').gonz('updateid', 'hair', false);$(this).closest('.gonz').gonz('updateid', 'hairb', false);event.preventDefault();">-</div>
+            <div class="p2"></div>
+            <div class="p3" onclick="$(this).closest('.gonz').gonz('updateid', 'hair', true);$(this).closest('.gonz').gonz('updateid', 'hairb', true);" ontouchstart="$(this).closest('.gonz').gonz('updateid', 'hair', true);$(this).closest('.gonz').gonz('updateid', 'hairb', true);event.preventDefault();">+</div>
+        </div>
+        <table class="colors">
+            <tr><td><div class="color hair1" onclick="$(this).closest('.gonz').gonz('values', 'hair', 0);"
+                                             ontouchstart="$(this).closest('.gonz').gonz('values', 'hair', 0);event.preventDefault();">
+                    </div></td>
+                <td><div class="color hair2" onclick="$(this).closest('.gonz').gonz('values', 'hair', 1);"
+                                             ontouchstart="$(this).closest('.gonz').gonz('values', 'hair', 1);event.preventDefault();">
+                    </div></td>
+                <td><div class="color hair3" onclick="$(this).closest('.gonz').gonz('values', 'hair', 2);"
+                                             ontouchstart="$(this).closest('.gonz').gonz('values', 'hair', 2);event.preventDefault();">
+                    </div></td>
+                <td><div class="color hair4" onclick="$(this).closest('.gonz').gonz('values', 'hair', 3);"
+                                             ontouchstart="$(this).closest('.gonz').gonz('values', 'hair', 3);event.preventDefault();">
+                    </div></td></tr>
+            <tr><td><div class="color hair5" onclick="$(this).closest('.gonz').gonz('values', 'hair', 4);"
+                                             ontouchstart="$(this).closest('.gonz').gonz('values', 'hair', 4);event.preventDefault();">
+                    </div></td>
+                <td><div class="color hair6" onclick="$(this).closest('.gonz').gonz('values', 'hair', 5);"
+                                             ontouchstart="$(this).closest('.gonz').gonz('values', 'hair', 5);event.preventDefault();">
+                    </div></td>
+                <td><div class="color hair7" onclick="$(this).closest('.gonz').gonz('values', 'hair', 6);"
+                                             ontouchstart="$(this).closest('.gonz').gonz('values', 'hair', 6);event.preventDefault();">
+                    </div></td>
+                <td><div class="color hair8" onclick="$(this).closest('.gonz').gonz('values', 'hair', 7);"
+                                             ontouchstart="$(this).closest('.gonz').gonz('values', 'hair', 7);event.preventDefault();">
+                    </div></td></tr>
+        </table>
+    </div>
+
+    <div class="tab" id="clothestab">
+        <div class="nav">
+            <div class="p1" onclick="$(this).closest('.gonz').gonz('updateid', 'clothes', false);"
+                            ontouchstart="$(this).closest('.gonz').gonz('updateid', 'clothes', false);event.preventDefault();">-</div>
+            <div class="p2"></div>
+            <div class="p3" onclick="$(this).closest('.gonz').gonz('updateid', 'clothes', true);"
+                            ontouchstart="$(this).closest('.gonz').gonz('updateid', 'clothes', true);event.preventDefault();">+</div>
+        </div>
+        <table class="colors">
+            <tr><td><div class="color clothes1" onclick="$(this).closest('.gonz').gonz('values', 'clothes', 0);"
+                                      ontouchstart="$(this).closest('.gonz').gonz('values', 'clothes', 0);event.preventDefault();">
+                    </div></td>
+                <td><div class="color clothes2" onclick="$(this).closest('.gonz').gonz('values', 'clothes', 1);"
+                                      ontouchstart="$(this).closest('.gonz').gonz('values', 'clothes', 1);event.preventDefault();">
+                    </div></td>
+                <td><div class="color clothes3" onclick="$(this).closest('.gonz').gonz('values', 'clothes', 2);"
+                                      ontouchstart="$(this).closest('.gonz').gonz('values', 'clothes', 2);event.preventDefault();">
+                    </div></td>
+                <td><div class="color clothes4" onclick="$(this).closest('.gonz').gonz('values', 'clothes', 3);"
+                                      ontouchstart="$(this).closest('.gonz').gonz('values', 'clothes', 3);event.preventDefault();">
+                    </div></td></tr>
+            <tr><td><div class="color clothes5" onclick="$(this).closest('.gonz').gonz('values', 'clothes', 4);"
+                                      ontouchstart="$(this).closest('.gonz').gonz('values', 'clothes', 4);event.preventDefault();">
+                    </div></td>
+                <td><div class="color clothes6" onclick="$(this).closest('.gonz').gonz('values', 'clothes', 5);"
+                                      ontouchstart="$(this).closest('.gonz').gonz('values', 'clothes', 5);event.preventDefault();">
+                    </div></td>
+                <td><div class="color clothes7" onclick="$(this).closest('.gonz').gonz('values', 'clothes', 6);"
+                                      ontouchstart="$(this).closest('.gonz').gonz('values', 'clothes', 6);event.preventDefault();">
+                    </div></td>
+                <td><div class="color clothes8" onclick="$(this).closest('.gonz').gonz('values', 'clothes', 7);"
+                                      ontouchstart="$(this).closest('.gonz').gonz('values', 'clothes', 7);event.preventDefault();">
+                    </div></td></tr>
+        </table>
+    </div>
+
+</div>
+
+<div id="menu">
+    <div class="icon" id="snapshot" onclick="$(this).closest('.gonz').gonz('export');"
+                                    ontouchstart="$(this).closest('.gonz').gonz('export');event.preventDefault();">
+        <img src="gonz/res/img/icons/snapshot.svg" alt="H"/>
+    </div>
+    <textarea id="code"></textarea>
+    <div class="icon" onclick="$(this).closest('.gonz').gonz('valid');"
+                      ontouchstart="$(this).closest('.gonz').gonz('valid');event.preventDefault();">
+        <img src="gonz/res/img/icons/valid.svg" alt="H"/>
+    </div>
+</div>
+<div id="export" onclick="$(this).hide();" ontouchstart="$(this).hide();event.preventDefault();">
+    <div id="exportsvg">
+</div>
+
+</div>
+</div>
+

@@ -884,7 +884,7 @@
             init: function(options) {
                 // The settings
                 var settings = {
-                    finish          : false,
+                    interactive     : false,
                     tiles           : {
                         size        : [0,0],
                         data        : [],
@@ -929,52 +929,62 @@
             },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                settings.finish = true;
+                settings.interactive = false;
                 settings.context.onquit($this,{'status':'abort'});
             },
             next: function() {
-                $(this).find("#splash").hide();
+                var $this = $(this) , settings = helpers.settings($this);
+                $this.find("#splash").hide();
+                settings.interactive = true;
             },
             speed: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                settings.speed=(settings.speed+1)%3;
-                $this.find("#speed img").attr("src","res/img/control/x"+(1+settings.speed)+".svg");
+                if (settings.interactive) {
+                    settings.speed=(settings.speed+1)%3;
+                    $this.find("#speed img").attr("src","res/img/control/x"+(1+settings.speed)+".svg");
+                }
             },
             play: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                if (!$this.find("#cache").is(":visible")) {
-                    settings.stop = false;
-                    $this.find("#cache").show();
-                    $this.find("#play img").attr("src","res/img/control/pause.svg");
-                    settings.pause.state = false;
+                if (settings.interactive) {
+                    if (!$this.find("#cache").is(":visible")) {
+                        settings.stop = false;
+                        $this.find("#cache").show();
+                        $this.find("#play img").attr("src","res/img/control/pause.svg");
+                        settings.pause.state = false;
 
-                    // TEST THE WORST SCENARIO
-                    if (!settings.worst || !settings.worst.length) {settings.worst = helpers.worst($this); }
-                    settings.testid = 0;
-                    helpers.execute.launch($this, settings.worst[settings.testid], helpers.endtest, true);
-                }
-                else {
-                    if (!settings.synchro) {
-                        settings.pause.state = !settings.pause.state;
-                        if (settings.pause.state) {
-                            $this.find("#play img").attr("src","res/img/control/play.svg");
-                        }
-                        else {
-                            $this.find("#play img").attr("src","res/img/control/pause.svg");
-                            helpers.execute.run($this, settings.pause.order, settings.pause.count, settings.pause.fct);
+                        // TEST THE WORST SCENARIO
+                        if (!settings.worst || !settings.worst.length) {settings.worst = helpers.worst($this); }
+                        settings.testid = 0;
+                        helpers.execute.launch($this, settings.worst[settings.testid], helpers.endtest, true);
+                    }
+                    else {
+                        if (!settings.synchro) {
+                            settings.pause.state = !settings.pause.state;
+                            if (settings.pause.state) {
+                                $this.find("#play img").attr("src","res/img/control/play.svg");
+                            }
+                            else {
+                                $this.find("#play img").attr("src","res/img/control/pause.svg");
+                                helpers.execute.run($this, settings.pause.order, settings.pause.count, settings.pause.fct);
+                            }
                         }
                     }
                 }
             },
             down: function(_id) {
                 var $this = $(this) , settings = helpers.settings($this);
-                if (settings.sourceid[_id]<settings.sourcemax[_id]) { settings.sourceid[_id]++; }
-                helpers.updatesource($this);
+                if (settings.interactive) {
+                    if (settings.sourceid[_id]<settings.sourcemax[_id]) { settings.sourceid[_id]++; }
+                    helpers.updatesource($this);
+                }
             },
             up: function(_id) {
                 var $this = $(this) , settings = helpers.settings($this);
-                if (settings.sourceid[_id]>0) { settings.sourceid[_id]--; }
-                helpers.updatesource($this);
+                if (settings.interactive) {
+                    if (settings.sourceid[_id]>0) { settings.sourceid[_id]--; }
+                    helpers.updatesource($this);
+                }
             },
             stop: function() {
                 var $this = $(this) , settings = helpers.settings($this);

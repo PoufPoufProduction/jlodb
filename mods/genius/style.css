@@ -1,0 +1,38 @@
+.genius #map                      { background-color:#241f1c; width:16em; height:12em; position:relative;}
+.genius #map #svg                 { position:absolute; width:16em; height:12em; }
+
+.genius>#nav                      { position:absolute; font-size:.5em; width:4em; left:.5em; top:19em; }
+.genius>#nav>div                  { background-color:rgba(128,200,255,0.5); }
+.genius>#nav .slider              { width:1em; height:1em; background-color:#AAEEFF; border-radius:.5em; cursor:move;}
+.genius>#nav>#header              { height:0.5em; border-radius:.5em .5em 0 0;}
+.genius>#nav>#header>div          { font-size:0.4em; color:#AAEEFF; margin-left:1em;}
+.genius>#nav>#move                { height:3em; }
+.genius>#nav>#move .slider        { width:4em; height:3em; border-radius:0; }
+.genius>#nav>#zoom                { height:1em; border-radius:0 0 .5em .5em; }
+
+.genius>#node                     { position:absolute; top:0; left:0; width:16em; height:12em;
+                                    display:none; background-color:rgba(0,0,0,0.8);}
+.genius>#node #header             { width:16em; height:1.5em; position:relative;}
+.genius>#node #header #quit       { position:absolute; top:.1em; left:.2em; width:1em; height:1em; cursor:pointer; }
+
+.genius>#node #header h1.blue     { background-color:rgba(100,200,255,0.2); }
+.genius>#node #header h1.green    { background-color:rgba(100,255,50,0.2); }
+.genius>#node #header h1.yellow   { background-color:rgba(255,255,90,0.2); }
+.genius>#node #header h1.orange   { background-color:rgba(255,150,30,0.2); }
+.genius>#node #header h1.red      { background-color:rgba(255,80,60,0.2); }
+.genius>#node #header h1          { color:white; font-size:0.8em;
+                                    width:20em; text-align:center; margin-top:.1em; float:left; margin-left:.5em; }
+.genius>#node #content            { width:16em; height:8em; }
+.genius>#node #content #nav       { width:8em; height:16em; font-size:0.5em; margin-left:.4em; float:left;
+                                    background-color:rgba(255,255,255,0.2); color:white; border-radius:.5em; }
+.genius>#node #content #nav .links div   { margin:.2em .5em; background-color:black; font-size:.8em; text-align:center;}
+.genius>#node #content #abstract    { font-size:.5em; font-style:italic; margin:.7em; text-align:justify; }
+.genius>#node #content #abstract p  { margin-bottom:.4em; }
+.genius>#node #menu                 { float:left; margin-left:.1em; width:11.2em; height:8em; }
+
+.genius #menu .slider               { background-color:rgba(255,255,255,0.2); }
+
+.genius>#finish                     { position:absolute;  top:0; left:0; width:16em; height:12em;
+                                      display:none; background-color:rgba(0,0,0,0.8);}
+.genius>#finish>div                 { width:12em; height:6em; margin:3em 2em; background-color:rgba(255,255,255,0.9); border-radius:.5em; }
+.genius>#finish>div .icon           { font-size:2em; margin-top:2em; margin-left:5em; cursor:pointer; }

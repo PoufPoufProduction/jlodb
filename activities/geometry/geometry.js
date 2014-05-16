@@ -464,7 +464,7 @@
                     coord       : coord,
                     name        : name
                 };
-                $(ret.svg).css("stroke",settings.color);
+                if (!$(ret.svg).css("stroke").length) { $(ret.svg).css("stroke",settings.color); }
                 if (settings.small) { $(ret.svg).attr("class","small "+$(ret.svg).attr("class")); }
                 return ret;
             },
@@ -534,7 +534,7 @@
                     return this.convert4($this,i1,j1,i1+Math.cos(dir*Math.PI/180),j1+Math.sin(dir*Math.PI/180));
                 }
             },
-            round: function(x) { return Math.round(x*1000)/1000; },
+            round: function(x) { return Math.round(x*100)/100; },
             equal: function(x,y) { return (this.round(x)==this.round(y)); },
             samepoint: function(p1, p2) { return this.equal($(p1).attr("cx"), $(p2).attr("cx")) &&
                                                  this.equal($(p1).attr("cy"), $(p2).attr("cy")); },
@@ -697,18 +697,32 @@
                             elt.id, { fontSize:settings.sizepoint*2, fontWeight:"bold" });
                     }
                 }
+                else if (elt.type=="grid") {
+                    for (var gi=0; gi<elt.value[2]; gi++) for (var gj=0; gj<elt.value[3]; gj++) {
+                        var object = helpers.factory.build($this, "point",
+                            [elt.value[0]+gi*elt.value[4], elt.value[1]+gj*elt.value[5]], elt.attr);
+                        if (elt.active==true) { settings.points.push(object); }
+                    }
+                }
                 // ----------------------- CIRCLE ----------------------------
-                if (elt.type=="circle") {
+                else if (elt.type=="circle") {
                     var object = helpers.factory.build($this, "circle", elt.value, elt.attr);
                     if (elt.active==true) { settings.circles.push(object); }
                 }
                 // ----------------------- SEGMENT ----------------------------
-                if (elt.type=="segment") {
+                else if (elt.type=="segment") {
                     var object = helpers.factory.build($this, "segment", elt.value, elt.attr);
                     if (elt.active==true) { settings.lines.push(object); }
                 }
+                else if (elt.type=="path") {
+                    for (var gi=0; gi<Math.floor((elt.value.length-2)/2); gi++) {
+                        var object = helpers.factory.build($this, "segment",
+                            [elt.value[gi*2], elt.value[gi*2+1], elt.value[gi*2+2], elt.value[gi*2+3]], elt.attr);
+                        if (elt.active==true) { settings.points.push(object); }
+                    }
+                }
                 // ----------------------- LINE ----------------------------
-                if (elt.type=="line") {
+                else if (elt.type=="line") {
                     var pos = 0;
                     if (elt.value.length==4) {
                         pos = helpers.utility.line.convert4($this, elt.value[0], elt.value[1], elt.value[2], elt.value[3]);

@@ -4,7 +4,7 @@
  *   drop jlodb tables and re-build every thing from rdf files
  */
 
-include "database.php";
+include_once "database.php";
 include "_insert.php";
 
 if (!$error) {
@@ -18,7 +18,7 @@ if (!$error) {
     else {
         if (strlen($_GET["filename"])==0 || strlen($_GET["activity"])==0) {
             $textstatus = "parameter 'filename' or 'activity' is missing";
-            $error = 404;
+            $error = 11;
         }
         else {
             $result = mysql_query("SELECT * FROM `".$_SESSION['prefix']."activity` WHERE `Activity_Name`='".$_GET["activity"]."'");

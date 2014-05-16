@@ -1,0 +1,187 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Genius</title>
+    <script type="text/javascript" src="js/jquery-1.8.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.8.23.custom.min.js"></script>
+    <script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="js/jquery.svg.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/jquery.jlodb.js"></script>
+    <script type="text/javascript" src="js/jquery.jlodb.menu.js"></script>
+    <script type="text/javascript" src="js/jlodb-ext.js"></script>
+    <script type="text/javascript" src="mods/genius/js/jquery.jlodb.genius.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/jlodb.css" media="all" />
+    <link rel="apple-touch-icon-precomposed" href="mods/genius/res/img/icon/icon144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="mods/genius/res/img/icon/icon72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="mods/genius/res/img/icon/icon114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="mods/genius/res/img/icon/icon144.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <style>
+        .icon                               { width:1em; height:1em; }
+        #gsplash                            { font-size:1em; height:12em; width:16em; top:0; left:0; position:absolute; z-index:2000;
+                                              background-color:rgba(0,0,0,0.1); }
+        #gsplash>div                       { height:5em; width:16em; margin-top:2em; overflow:visible;
+                                              cursor: pointer;  background-image:url("mods/genius/res/img/banner01.svg");
+                                              background-color:rgba(255,255,255,0.2); background-repeat:no-repeat;}
+        #gsplash #cookies                   { font-size:1.5em; width:1em; height:1em; position:relative; top:2.2em; left:9em;}
+        #main #waiting                      { top:0.2em; left:0.6em; font-size:7em; }
+    </style>
+    <script>
+
+var genius = {
+    lang    : "",
+    cookie  : false,
+    activity: "",
+    finished: false,
+    max     : 500,
+    menu    : function() { genius.activity=""; if (genius.finished) { var state = $("#genius #board").genius('finish'); } },
+    state   : function() {
+        if (genius.cookie) {
+            $.getJSON("mods/genius/api/state.php",function(data){
+                $("#genius #board").genius('states',{nodes:data.nodes});
+
+                if ($.cookie("genius-nodes0") ) {
+                    var i=0, value ="";
+                    while($.cookie("genius-nodes"+i)) { value+=$.cookie("genius-nodes"+i); i++; }
+                    $("#genius #board").genius('states',{nodes:value});
+                }
+
+            });
+        }
+        else { $("#genius #board").genius('states'); }
+    }
+};
+
+window.onload = function() {
+    // SPECIAL STUFF
+    document.ontouchmove = function(e) { e.preventDefault(); }
+
+    $.getJSON("api/checkdb.php", function (_check) {
+      if (_check.status=="success") {
+        $.getJSON("mods/genius/api/checkdb.php", function(_check) {
+          if (_check.status=="success") {
+            genius.lang=_check.lang;
+
+            // GET AND RESIZE THE BEST PANEL
+            var x = Math.floor($(window).width()/16);
+            var y = Math.floor($(window).height()/12);
+            $("body").css("font-size", (Math.min(x,y))+"px");
+            $("#main").css("margin-top", Math.floor(($(window).height()-$("#main").height())/2)+"px").show();
+
+            // DEBUG MODE
+            var a = location.search.substring(1).split('&');
+            $("body").toggleClass("debug",(a.length&& a[0]=="debug"));
+
+            $("#genius #board").genius({
+                state: function($this, _id, _ex, _cbk) {
+                    var state=".";
+                    if (genius.cookie) { if ($.cookie("node"+_id)) { state = $.cookie("node"+_id); } }
+                    else               { for (var i=1; i<_ex.length; i++) { state+="."; } }
+                    _cbk($this, _ex, state);
+                },
+                onnode: function($this, _id, _available) {
+                    if (_available) { $("#waiting").show().find("div").addClass("running"); } return true; },
+                onshow: function($this) { $("#waiting").hide().find("div").removeClass("running"); },
+                onclick: function($this, $menu, _args) {
+                    $("#launcher").jlodb({
+                        onstart:    function($this) { $("#genius").hide();  },
+                        onfinish:   function($this) { $("#genius").show(); $("#score").removeClass().hide(); },
+                        onscore:    function($this, _ret) {
+                            var isnext = false;
+                            if (_ret.score>=2) {
+                                isnext = $menu.menu('score', _ret.score).menu('more');
+                                genius.finished = !isnext;
+                            }
+                            $("#score #next").toggle(isnext);
+                            $("#score").attr("class","s"+_ret.score).show();
+                            return true; },
+                        onexercice: function($this,_id,_a){
+                            $("body").toggleClass("nosplash",(_a==genius.activity)); genius.activity=_a; }
+                        },_args);
+
+                },
+                onupdate: function($this, $menu, _id, _state) { if (genius.cookie) { $.cookie("node"+_id, _state, { expires : 365 }); }},
+                onheader: function($this, _id) {
+                     $.getJSON("mods/genius/api/node.php?id="+_id+"&verbose=1", function(_data) {
+                        var c="\t";
+                        var csv = " "+c+"id"+c+"title"+c+"level"+c+"difficulty\n";
+                        for (var i in _data.detail) {
+                            csv+=(parseInt(i)+1)+c+_data.detail[i].id+c+_data.detail[i].title;
+                            csv+=c+(_data.detail[i].level?_data.detail[i].level:"0");
+                            csv+=c+(_data.detail[i].difficulty?_data.detail[i].difficulty:"0");
+                            csv+="\n";
+                        }
+
+                        alert(csv);
+                        /*
+                        var a = document.createElement('a');
+                        a.setAttribute("href", "data:text/csv;charset=utf-8,"+encodeURI(csv));
+                        a.setAttribute("target",'_blank');
+                        a.setAttribute("download", 'node'+_id+'.csv') ;
+                        document.body.appendChild(a);
+                        a.click();
+                        */
+                    });
+                },
+                onstate: function($this, _nodes) {
+                    var i=0;
+                    while(_nodes.length) {
+                        var len = _nodes.length>genius.max?genius.max:_nodes.length;
+                        $.cookie("genius-nodes"+i, _nodes.substr(0,len), { expires : 365 });
+                        _nodes=_nodes.substr(len);
+                        i++;
+                    }
+                }
+            });
+          }
+          else { alert(_check.status+": "+_check.textStatus); } });
+        }
+        else { alert(_check.status+": "+_check.textStatus); } });
+
+}
+
+
+
+    </script>
+</head>
+
+<body>
+    <div id="main">
+        <div id="genius">
+            <div id="board"></div>
+
+            <div id="waiting"><div><img src="res/img/generic/waiting.svg"/></div></div>
+            <div id="gsplash"><div onclick="$('#gsplash').hide(); genius.state();"
+                                ontouchstart="$('#gsplash').hide(); genius.state(); event.preventDefault();">
+                <div id="cookies" onclick="$('#gsplash').hide(); genius.cookie=true;genius.state(); event.stopPropagation();"
+                    ontouchstart="$('#gsplash').hide();genius.cookie=true;genius.state();event.preventDefault();event.stopPropagation();">
+                    <img src="mods/genius/res/img/cookies.svg"/>
+                </div>
+            </div></div>
+        </div>
+
+
+        <div id="launcher">
+            <div id="quit" ontouchstart="genius.activity='';$('#launcher').jlodb('quit');event.preventDefault();"
+                        onclick="genius.activity='';$('#launcher').jlodb('quit');"><img src="res/img/icon/quit.svg"/></div>
+            <div id="activity"></div>
+        </div>
+
+        <div id="score"><div>
+            <div class="content">
+                <div class="value"></div><div class="stars"></div>
+                <div class="icon" id="reload" ontouchstart="$('#launcher').jlodb('reload');event.preventDefault();"
+                    onclick="$('#launcher').jlodb('reload');" ><img src="res/img/icon/reload.svg"/></div>
+                <div class="icon" id="menu" ontouchstart="genius.menu();$('#launcher').jlodb('close',true);event.preventDefault();"
+                    onclick="genius.menu();$('#launcher').jlodb('close',true);" ><img src="res/img/icon/menu.svg"/></div>
+                <div class="icon" id="next" ontouchstart="$('#launcher').jlodb('close', false);$('#menu').menu('next');event.preventDefault();"
+                    onclick="$('#launcher').jlodb('close', false);$('#menu').menu('next');"><img src="res/img/icon/next.svg"/></div>
+            </div>
+        </div></div>
+
+    </div>
+
+</body>

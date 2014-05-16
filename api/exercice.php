@@ -60,6 +60,9 @@ if (!$error) {
     if (strlen($_GET["id"])) {
         $where.= " AND `Exercice_Id` = '".$_GET["id"]."'";
     }
+    else {
+        $where.= " AND `Exercice_Tags` NOT LIKE '%debug%'";
+    }
 
     $exercice = mysql_query("SELECT * FROM `".$_SESSION['prefix']."exercice`, `".$_SESSION['prefix']."activity` WHERE ".
                             " `Exercice_Activity` = `Activity_Name`".$where." ORDER BY RAND( ) LIMIT 1");
@@ -80,7 +83,7 @@ if (!$error) {
         $status     = "success";
     }
     else {
-        $error = 404;
+        $error = 10;
         $textstatus = "can not find exercice";
     }
 }

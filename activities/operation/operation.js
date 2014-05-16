@@ -139,7 +139,6 @@
                     settings.last = vNew;
             }
 
-
             // Split the operation regarding the operation type
             if (vOpTmp.indexOf("*")>=0) { settings.type = "*"; } else
             if (vOpTmp.indexOf("/")>=0) { settings.type = "/"; } else
@@ -230,7 +229,7 @@
                         if (op.dec>settings.dec) { settings.dec = op.dec; }
                         dec = true;
                     }
-                    else { op.value[0] = parseInt(vOperation[i], settings.base); }
+                    else { op.value[0] = parseInt(vOperation[i], settings.base); comma = vOperation[i].length; }
 
                     wtmp[0] = Math.max(wtmp[0], comma);
                     wtmp[1] = Math.max(wtmp[1], op.dec);
@@ -268,6 +267,7 @@
                 width = wtmp[0]+wtmp[1];
                 height = vOperation.length+1;
 
+                settings.offset = wtmp[0] - rtmp[0].toString(settings.base).length;
             }
 
             // BUILD THE TABLE FOR THE DIVISION OPERATION
@@ -449,6 +449,7 @@
                     last        : -1,
                     size        : [0,0],
                     result      : 0,
+                    offset      : 0,
                     dec         : 0,
                     modulo      : 0,
                     score       : 5,
@@ -512,7 +513,8 @@
                     settings.interactive = false;
 
                     $this.find(".value.result").each(function(_index) {
-                        if (_index<settings.result.length && settings.result[_index]!=$(this).html()) {
+                        var it = _index-settings.offset;
+                        if (it>=0 && it<settings.result.length && settings.result[it]!=$(this).html()) {
                             error++; $(this).addClass("wrong"); }
                     });
 

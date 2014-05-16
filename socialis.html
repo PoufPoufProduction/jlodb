@@ -1,0 +1,1158 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Genius Socialis</title>
+    <script type="text/javascript" src="js/jquery-1.8.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.8.23.custom.min.js"></script>
+    <script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="js/jquery.svg.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/jquery.jlodb.js"></script>
+    <script type="text/javascript" src="js/jquery.jlodb.menu.js"></script>
+    <script type="text/javascript" src="js/jlodb-ext.js"></script>
+    <script type="text/javascript" src="mods/genius/js/jquery.jlodb.genius.js"></script>
+    <script type="text/javascript" src="gonz/jquery.gonz.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/jlodb.css" media="all" />
+    <link type="text/css" rel="stylesheet" href="css/user.css" media="all" />
+    <link rel="apple-touch-icon-precomposed" href="mods/socialis/res/img/icon/icon144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="mods/socialis/res/img/icon/icon72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="mods/socialis/res/img/icon/icon114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="mods/socialis/res/img/icon/icon144.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <style>
+.mask                           { top:0; left:0; position:absolute; width:16em; height:12em; background-color:rgba(0,0,0,0.5);
+                                  display:none; z-index:10; }
+.icon.del                       { background-color:#222233; border-radius:.25em;}
+.icon.del.s                     { background-color:red;}
+.filler                         { width:6.5em; height:1em; }
+#avatar>div                     { width:100%; height:100%; overflow:hidden;}
+#footer #cancel                 { float:left; margin-left:.2em; }
+#footer #valid                  { float:right; margin-right:.2em; }
+
+#genius>#waiting                { top:0.2em; left:0.6em; font-size:7em; z-index:100;}
+
+#genius>#user                   { position:absolute; top:9.6em; left:10em; width:5.9em; height:2.3em;
+                                  background-color:rgba(120,100,80,0.6); border-radius:0.25em;}
+#genius>#user #avatar           { float:left;width:2.1em;height:2.1em;margin:.1em;background-color:black;border-radius:0.25em;}
+#genius>#user #details          { font-size:.2em; color:white; }
+#genius>#user h1                { font-weight:bold; width:8.7em; height:1.4em; background-color:rgba(255,255,255,0.1);
+                                  border-radius:.25em; margin-top:.3em; text-align:center; color:#FFDDAA; }
+#genius>#user .stars            { font-size:2em; margin-right:0.5em; }
+#genius>#user .stars>div        { float:right; }
+#genius>#user #stars            { color:yellow; }
+#genius>#user #buttons          { font-size:3em; width:6em; }
+#genius>#user #buttons>div      { float:left; margin:.1em; cursor:pointer; overflow:visible;}
+#genius>#user #buttons .l       { background-color:red;color:white; position:relative; border-radius:.5em; display:none;
+                                  font-size:.5em; top:-1.5em; left:1em; width:1em; height:1em; text-align:center; opacity:0.9; }
+
+#main>#edit>div                 { font-size:.5em; width:20em; height:16em; margin:2em 6em; background-color:rgba(128,120,100,0.9);
+                                  border-radius:.5em; }
+#main>#edit .icon               { cursor:pointer; margin:.1em; }
+#main>#edit input               { border:0; width:13.8em; height:1.2em; margin:.1em; border-radius:0 .5em .5em 0; font-size:.8em; }
+#main>#edit input.empty         { color:#BBBBBB; }
+#main>#edit #header             { height:11.2em; }
+#main>#edit #footer             { font-size:4em; }
+#main>#edit #settings           { margin:.1em; }
+#main>#edit #error              { clear:both;color:red;margin-right:1em;text-align:right;font-weight:bold;font-style:italic;font-size:.8em;}
+#main>#edit #avatar             { float:left;width:8.3em;height:8.3em;margin:.25em .2em;background-color:black;border-radius:1em 0 0 1em;}
+#main>#edit #gonz               { background-color:rgba(255,240,200,0.9); width:100%; height:70%; margin-top:2em; padding:.5em;}
+
+#board #node                    { z-index:50; }
+
+
+#main>#friend>div               { font-size:.5em; width:30em; height:20em; margin:1em 1em; background-color:rgba(255,240,200,0.8);
+                                  border-radius:.5em;}
+#main>#friend #popup            { z-index:11; }
+#main>#friend #popup>div        { font-size:.8em; width:15em; background-color:#555; border-radius:.75em; padding:.5em;
+                                  margin-top:3em; margin-left:2em; }
+#main>#friend #popup>div>div    { width:16em; }
+#main>#friend #popup input      { float:left; font-size:1em; height:1.19em; width:13.3em; border:0;
+                                  padding-left:.5em; background-color:#AAA; color:white; border-radius:.5em 0 0 .5em;}
+#main>#friend #popup .icon      { padding:.1em; margin-left:1em; background-color:#333;  border-radius:0 .5em .5em 0;}
+#main>#friend #menu             { width:6em; height:20em; float:left; background-color:rgba(255,255,255,0.1); }
+#main>#friend #menu #quit       { font-size:2em; width:1em; height:1em; cursor:pointer; }
+#main>#friend #group            { height:17em; color:white; }
+#main>#friend #group>.e         { margin:.25em;background-color:#333;padding:.4em .25em;border-radius:.5em;cursor:pointer;
+                                  font-size:.8em;height:1.2em;}
+#main>#friend #group>.e.o       { background-color:blue;  }
+#main>#friend #group>.e.s       { background-color:red; }
+#main>#friend .popup            { height:19em; overflow:auto; display:none; }
+#main>#friend #list             { height:17.8em; overflow:auto; }
+#main>#friend .mask             { opacity:0.98; font-size:2em;}
+#main>#friend .mask #quit       { font-size:1em; width:1em; height:1em; position:absolute; top:0; left:0; cursor:pointer; }
+#main>#friend #genius>div       { font-size:.8em; width:16em; height:12em; margin:1em 2em; position:relative; border-radius:.25em;}
+#main>#friend #genius #board    { width:100%; height:100%; }
+#main>#friend #genius #avatar   { width:3em;height:3em;border-radius:.5em;overflow:hidden;position:absolute;left:12.75em;top:8.75em; }
+#main>#friend #course>div       { font-size:.8em; width:10em; height:9.5em; margin:1em 5em; position:relative; border-radius:.25em;
+                                  background-color:#444466; }
+#main>#friend #course .h1       { border:1px solid white; border-width:0 0 1px 0; font-size:1.2em; text-align:center; color:white; }
+#main>#friend #course #select   { margin:.5em 0 .5em .5em;  }
+#main>#friend #course select    { float:left;height:1.2em;width:7.5em;border:0;background-color:#222233;color:white;font-size:1em;
+                                  margin-right:.5em;}
+#main>#friend #course .icon     { cursor:pointer; }
+#main>#friend #course select.s  { width:9em; }
+#main>#friend #course textarea  { margin:0 0 .3em 1em;border:0;background-color:#222233;color:white;font-size:.5em;width:18em; height:6em; }
+#main>#friend #course #footer   {font-size:2em; }
+
+#main>#friend #menu #footer       { background-color:#444466; color:white; height:1.2em;}
+#main>#friend #menu #footer>div   { float:right; cursor:pointer; opacity:0.1; }
+#main>#friend #menu #footer.s>div { opacity:1; }
+#main>#friend #menu #addgroup     { opacity:1 !important; }
+#main>#friend #menu #delgroup     { display:none; border-radius:.5em;}
+#main>#friend #menu #delgroup.s   { background-color:red; }
+#main>#friend.del #menu #delgroup { display:inherit; }
+#main>#friend.del #menu #addgroup { display:none; }
+#main>#friend #view #input      { background-color:#444466; padding:.1em; width:24em; height:1em; }
+#main>#friend #view #input>*    { float:right; margin:0 .2em;}
+#main>#friend #view #search     { margin:0 .5em 0 .2em; }
+#main>#friend #view select      { font-size:0.75em; color:#444466; border:0; width:4em; height:1.2em; margin:.1em; }
+#main>#friend #view input       { font-size:0.75em; color:#444466; border:0; width:9.8em; height:1.2em; margin:.1em; }
+#main>#friend #view .icon       { cursor:pointer;  }
+#main>#friend #view #ask        { background-color:#222233; color:white; text-align:center; border-radius:.25em; }
+#main>#friend #view #ask.s      { background-color:red; }
+#main>#friend #view             { float:left; width:24em; }
+
+#main>#friend .user                       { font-size:1.1em; width:10em; height:4em; margin:.1em; padding:.1em; background-color:#444466;
+                                            color:white; border-radius:.5em; float:left; }
+#main>#friend .user.small                 { font-size:.9em; width:6em; }
+#main>#friend .user .legend               { float:left; width:6em; }
+#main>#friend .user .avatar               { width:4em; height:4em; border-radius:.5em; float:left; }
+#main>#friend .user .id                   { text-align:right; width:5.9em; padding-right:.1em; height:1.2em; cursor:move;
+                                            border:1px solid white; border-width:0 0 1px 0;}
+#main>#friend .user .name                 { margin-left:.5em; clear:both; font-size:.6em; font-style:italic; height:1.2em; overflow:visible;}
+#main>#friend .user .icon                 { float:right; cursor:pointer; }
+#main>#friend .user .icon.s               { background-color:red; border-radius:.5em; }
+#main>#friend .user .friendstar           { font-size:.8em; margin-right:.25em; }
+#main>#friend .user .friendstar>div       { float:right; }
+#main>#friend .user .friendstar .icon     { font-size:1em; }
+#main>#friend .user .nbstars              { color:yellow; }
+#main>#friend .user .fdel                 { display:none; }
+#main>#friend.del .user .fdel             { display:inherit; }
+#main>#friend .user.ui-draggable-dragging             { background-color:rgba(255,0,0,0.3) !important;  height:1em; width:6em;
+                                                        border:1px solid red; margin:0 2em;}
+#main>#friend .user.ui-draggable-dragging .avatar     { display:none; }
+#main>#friend .user.ui-draggable-dragging .icon       { display:none; }
+#main>#friend .user.ui-draggable-dragging .friendstar { display:none; }
+#main>#friend .user.ui-draggable-dragging .nbstars    { display:none; }
+#main>#friend .user.ui-draggable-dragging .name       { display:none; }
+
+#main>#tibibi>div               { font-size:.5em; width:22em; height:20em; margin:1em 5em; background-color:rgba(255,240,200,0.8);
+                                  border-radius:.5em;}
+#tibibi #header                 { height:2em; position:relative; }
+#tibibi #header #menu           { height:1.1em; background-color:#444466; padding:.1em 0 0 3em; }
+#tibibi #menu>div               { float:left; }
+#tibibi #recv                   { overflow:auto; height:18em; }
+#tibibi #send                   { display:none; overflow:auto; height:18em;}
+#tibibi .icon                   { cursor:pointer; }
+#tibibi .filler                 { width:2em; }
+#tibibi #menu #toggle .icon     { border-radius:.25em; float:left; }
+#tibibi #menu #toggle .icon.s   { background-color:#222233; }
+#tibibi #r.icon                 { margin:0 .1em; }
+#tibibi #s.icon                 { margin:0 .1em; }
+#tibibi #quit                   { font-size:2em; width:1em; height:1em; position:absolute; top:0; left:0; cursor:pointer; }
+#tibibi .course                 { background-color:#444466; width:20em; height:5em; border-radius:.5em; color:white; margin:.5em; }
+#tibibi .course .h1             { border:1px solid white; border-width:0 0 1px 0; font-size:1.2em; text-align:center; color:white; }
+#tibibi .course .h1 .state      { float:left; font-size:.5em; border:1px solid white; border-radius:.5em; margin:.5em .4em; padding:0 .5em;
+                                  width:5em; text-align:center; }
+#tibibi .course .h1 #del        { margin-top:.1em; border-radius:.5em; display:none; }
+#tibibi.del .course .h1 #del    { display:inherit; }
+#tibibi .course .h1 #del.s      { background-color:red; }
+#tibibi .course .state.none     { border:0; }
+#tibibi .course .value          { float:left; width:12em; }
+#tibibi .course .avatar         { font-size:3em; float:left; width:1em; height:1em; border-radius:.1em; margin:.1em; }
+#tibibi .course .legend         { font-size:.8em; font-style:italic; float:left; width:15em; height:4.5em; margin-left:.25em; }
+#tibibi .course .target         { height:1em; }
+#tibibi .course .group          { float:left; margin-left:.5em;  }
+#tibibi .course .nb             { background-color:#222233; width:1em; height:1em; text-align:center; border-radius:.25em; float:left;}
+#tibibi .course .action         { font-size:3.5em; }
+#tibibi #details                { font-size:2em; }
+#tibibi #details>div            { font-size:.5em; width:30em; height:22em; margin:1em 1em; background-color:rgba(0,0,0,0.8); color:Lime;
+                                  border-radius:.5em; font-family: "Courier New", Courier, mono; font-weight:bold;}
+#tibibi #details tr.done        { background-color:lime; color:black; }
+#tibibi #details td .id         { width:5em; display:none; }
+#tibibi #details td .first      { width:7em; }
+#tibibi #details td .last       { width:7em; }
+#tibibi #details td .nb         { width:1.5em; }
+#tibibi #details td .done       { width:1.5em; }
+#tibibi #details td .lA         { opacity:1; }
+#tibibi #details td .lB         { opacity:0.8; }
+#tibibi #details td .lC         { opacity:0.5; }
+#tibibi #details td .lD         { opacity:0.2; }
+
+    </style>
+    <script>
+
+var socialis = {
+    settings: {
+        lang    : "",       // Current langage
+        user    : {},       // User settings (id, first name, last name, email, avatar)
+        avatar  : "",       // Modified avatar (before save)
+        ask     : 0,        // Number of ask for friendship
+        logout  : 0         // Logout timer
+    },
+    activity: "",
+    finished: false,
+    locale  : {},
+    menu    : function() { socialis.activity=""; if (socialis.finished) { var state = $("#genius #board").genius('finish'); } },
+    state   : function() { $("#genius #board").genius('states'); },
+    getJSON : function(_url, _args, _post, _cbk) {
+        var cross = (_url.indexOf("http")==0);
+        var url = _url+"?username="+socialis.settings.user.name+
+                    (cross?("&host="+document.URL.substr(0,document.URL.lastIndexOf("/")+1)):"&code="+socialis.settings.user.code);
+
+        if (typeof(_args)=="object") {  for (var i in _args) { url+="&"+i+"="+_args[i]; } }
+        else if (_args.length) { url+=(_args[0]=='&'?"":"&")+_args; }
+
+        //alert(url);
+        if (_post || cross) {
+            $.post(url, _post, function(_data) {if(_data.error==102){location.reload();} else { _cbk(_data); } }, "json");
+        }
+        else {
+            $.getJSON(url, function(_data)     {if(_data.error==102){location.reload();} else { _cbk(_data); } });
+        }
+    },
+    cyclic  : {
+        timer   : 0,
+        process: function() {
+            if (socialis.cyclic.timer) { clearTimeout(socialis.cyclic.timer); socialis.cyclic.timer = 0; }
+            socialis.getJSON("mods/socialis/api/friend.php", {action:"ask"}, "", function(_data) {
+                var ask = _data.value?parseInt(_data.value):0;
+                if (_data.status=="success" && _data.value) {
+                    var value = ask<100?ask:"?";
+                    if (ask!=socialis.settings.ask) {
+                        $("#friend #asks").html("");
+                        for (var i in _data.users) {
+                            $("#friend #asks").append(socialis.friend.elt(_data.users[i], (_data.users.length<20), "accept"));
+                        }
+                        socialis.settings.ask = ask;
+                    }
+                }
+                socialis.friend.ask();
+            });
+
+            socialis.getJSON("mods/socialis/api/tibibi.php", {action:"new"}, "", function(_data) {
+                if (_data.status=="success") {
+                    $("#user #details #new").html(_data.value?_data.value:0).toggle(_data.value?true:false);
+                }
+            });
+
+            socialis.cyclic.timer = setTimeout(socialis.cyclic.process, 30000);
+        }
+    },
+    friend: {
+        group: {
+            settings: {
+                name:""
+            },
+            timer: 0,
+            del: function(_elt) {
+                if (socialis.friend.group.timer==0) {
+                    $(_elt).addClass("s");
+                    socialis.friend.group.timer = setTimeout(function(){
+                        $("#friend #delgroup").removeClass("s"); socialis.friend.group.timer = 0; }, 800);
+                }
+                else {
+                    clearTimeout(socialis.friend.group.timer); socialis.friend.group.timer = 0;
+                    $("#friend #delgroup").removeClass("s");
+                    if (socialis.friend.group.settings.name) {
+                        socialis.getJSON("mods/socialis/api/group.php", {action:"del", value:socialis.friend.group.settings.name}, 0, function(_data) {
+                            socialis.friend.group.list( function() { socialis.friend.list(false); }); });
+                    }
+                }
+            },
+            empty: function() { return ($("#friend #group").html().length==0);},
+            add: function(_val) {
+                if (_val && _val.length) {
+                    socialis.getJSON("mods/socialis/api/group.php",{action:"new",value:_val}, "",
+                        function(_data) { socialis.friend.group.list(function() {
+                            $("#friend #group>div").each(function() {
+                                if ($(this).html()==socialis.friend.group.settings.name) socialis.friend.group.click(this); });
+                    }); });
+                }
+            },
+            edit: function(_val) {
+                if (_val && _val.length) {
+                    socialis.getJSON("mods/socialis/api/group.php",{action:"upd",group:socialis.friend.group.settings.name,value:_val}, "",
+                        function(_data) { socialis.friend.group.list(function() {
+                            socialis.friend.group.settings.name = _val;
+                            $("#friend #group>div").each(function() {
+                                if ($(this).html()==socialis.friend.group.settings.name) socialis.friend.group.click(this); });
+                    }); });
+                }
+            },
+            list: function(_cbk) {
+                socialis.getJSON("mods/socialis/api/group.php", "", 0, function(_data) {
+                    if (_data.status=="success") {
+                        $("#friend #group").html("");
+                        for (var i in _data.groups) {
+                            var html="<div class='e' onclick='socialis.friend.group.click(this);'>"+_data.groups[i]+"</div>";
+                            $("#friend #group").append(html);
+                        }
+
+                        $("#friend #group .e").droppable({
+                            drop:function(event, ui) {
+                                if (!$(this).hasClass("s")) {
+                                    var group = $(this).html();
+                                    var friend = $(ui.helper).find(".id").html();
+                                    $(ui.helper).detach();
+                                    socialis.getJSON("mods/socialis/api/friend.php", { action:"group", group:group, value:friend}, "",
+                                        function(_data) {
+                                            if (_data.status=="success") { $(ui.draggable).detach(); }
+                                    });
+                                }
+                            },
+                            out:function(event, ui) { $(this).removeClass("o"); },
+                            over:function(event, ui) { $(this).addClass("o"); }
+                        });
+
+                        if (_cbk) { _cbk(); }
+                    }
+                });
+            },
+            click: function(_elt) {
+                if ($(_elt).hasClass("s")) {
+                    $(_elt).removeClass("s");
+                    $("#friend #menu #footer").removeClass("s");
+                }
+                else {
+                    $("#friend #group>div").removeClass("s");
+                    $(_elt).addClass("s");
+                    $("#friend #menu #footer").addClass("s");
+                }
+                socialis.friend.list(false);
+            },
+            move: function(_up) {
+                if ($("#friend #menu #footer").hasClass("s")) {
+                    socialis.getJSON("mods/socialis/api/group.php", {action:_up?"up":"down",value:socialis.friend.group.settings.name}, 0,
+                        function(_data) {
+                            socialis.friend.group.list(function() {
+                                $("#friend #group>div").each(function() {
+                                    if ($(this).html()==socialis.friend.group.settings.name) socialis.friend.group.click(this);
+                                });
+                            });
+                        });
+                }
+            }
+        },
+        accept:function()   { socialis.friend.refuse(); socialis.friend.list(socialis.friend.group.settings.name==""); },
+        refuse:function()   { socialis.settings.ask--; socialis.friend.ask(); },
+        del: function()     { },
+        ask: function() {
+            if (socialis.settings.ask) {
+                $("#user #ask.l").html(socialis.settings.ask).show();
+                $("#friend #view #ask").html(socialis.settings.ask).addClass("s");
+            }
+            else {
+                $("#friend #asks").hide();
+                $("#user #ask.l").html("").hide();
+                $("#friend #view #ask").html("0").removeClass("s");
+            }
+        },
+        list: function(_force) {
+            var group = $("#friend #group>div.s").html(); if (!group) { group=""; }
+
+            if (group!=socialis.friend.group.settings.name || _force) {
+                socialis.friend.group.settings.name = group;
+                socialis.getJSON("mods/socialis/api/friend.php",{ group:group }, "", function(_data) {
+                    if (_data.status=="success") {
+                        if (!_data.users || !_data.value) { $("#friend #list").html(""); }
+                        else {
+                            $("#friend #list").html("");
+                            for (var i in _data.users) {
+                                $("#friend #list").append(socialis.friend.elt(_data.users[i], (_data.users.length<20), "friend"));
+                            }
+
+                            $("#friend #list .user").draggable({
+                                distance:10, handle:".id", revert:true, stack:".user", appendTo:"#friend #group", helper:"clone",
+                                start:function() { $(this).css("opacity",0.5); },
+                                stop:function()  { $(this).css("opacity",1); $("#group>.e").removeClass("o"); }});
+                        }
+                    }
+                });
+            }
+        },
+        genius: function(_elt,_id) {
+            $("#friend #genius #avatar").html("");
+            $(_elt).closest(".user").find("img").clone().appendTo("#friend #genius #avatar");
+            $("#friend #genius").show();
+            $("#friend #genius #board").genius({
+                onbuild: function($this) {
+                    $.getJSON("mods/genius/api/state.php",function(data){
+                        $this.genius('states',{nodes:data.nodes});
+
+                        socialis.getJSON("mods/socialis/api/genius.php", {value:_id}, 0, function(_genius) {
+                            if (_genius.genius.length) { $this.genius('states',{nodes:_genius.genius}); }
+                        });
+                    });
+                },
+                onnode:function ($this, _id, _available) { return false; }
+            });
+
+        },
+        op: {
+            timer: 0,
+            id   : "",
+            process: function(_elt, _id, _action, _cbk) {
+                if (socialis.friend.op.timer==0) {
+                    socialis.friend.op.id = _id;
+                    $(_elt).addClass("s");
+                    socialis.friend.op.timer = setTimeout(function(){
+                        $("#friend .user .icon").removeClass("s"); socialis.friend.op.timer = 0; }, 800);
+                }
+                else if (_id==socialis.friend.op.id) {
+                    clearTimeout(socialis.friend.op.timer); socialis.friend.op.timer = 0;
+
+                    socialis.getJSON("mods/socialis/api/friend.php", {action:_action,value:_id}, 0, function(_data) {
+                        $(_elt).closest(".user").detach();
+                        if (_cbk) { _cbk(); }
+                    });
+
+
+                }
+            }
+        },
+        elt: function(_user, _large, _type) {
+            var ret=$("<div class='user"+(_large?"":" small")+"'></div>");
+            if (_large) {
+                var avatar = $("<div class='avatar'><div></div></div>");
+                avatar.find("div").gonz({interactive:false, code:_user.avatar, context:{onclick:function($this){},onquit:function($this, _ret){}}});
+                ret.append(avatar);
+            }
+            var legend=$("<div class='legend'></div>");
+            legend.append("<div class='id'>"+_user.id+"</div>");
+            legend.append("<div class='name'>"+_user.first+" "+_user.last+"</div>");
+            legend.append("<div class='friendstar'><div class='icon'><img src='mods/socialis/res/img/star.svg'/></div>" +
+                          "<div class='nbstars'>"+(_user.stars?_user.stars:0)+"</div></div>");
+            if (_type=="add") {
+                legend.append("<div class='icon' onclick='socialis.friend.op.process(this,\""+_user.id+"\",\"new\");'>"+
+                              "<img src='mods/socialis/res/img/add.svg'/></div>");
+            }
+            else if (_type=="accept") {
+                legend.append("<div class='icon' onclick='socialis.friend.op.process(this,\""+_user.id+"\",\"ok\",socialis.friend.accept);'>"+
+                              "<img src='mods/socialis/res/img/valid.svg'/></div>");
+                legend.append("<div class='icon'></div>");
+                legend.append("<div class='icon' onclick='socialis.friend.op.process(this,\""+_user.id+"\",\"del\",socialis.friend.refuse);'>"+
+                              "<img src='mods/socialis/res/img/cancel.svg'/></div>");
+            }
+            else if (_type=="friend") {
+                legend.append("<div class='icon fdel' "+
+                              "onclick='socialis.friend.op.process(this,\""+_user.id+"\",\"del\",socialis.friend.del);' "+
+                              "ontouchstart='socialis.friend.op.process(this,\""+_user.id+"\",\"del\",socialis.friend.del);"+
+                                            "event.preventDefault();'>"+
+                              "<img src='mods/socialis/res/img/cancel.svg'/></div>");
+                legend.append("<div class='icon' onclick='socialis.friend.genius(this,\""+_user.id+"\");' "+
+                               "ontouchstart='socialis.friend.genius(this,\""+_user.id+"\");event.preventDefault();'>"+
+                              "<img src='mods/socialis/res/img/look.svg'/></div>");
+                legend.append("<div class='icon tibibi' onclick='socialis.open.course(\""+_user.id+"\");' "+
+                                "ontouchstart='socialis.open.course(\""+_user.id+"\");event.preventDefault();'>"+
+                                "<img src='mods/socialis/res/img/courses.svg'/></div>");
+            }
+            ret.append(legend);
+            return ret;
+        },
+        search: function() {
+            var name = $("#friend #view #input input").val();
+            var pod = $("#friend #view #input select").attr("disabled")?"":$("#friend #view #input select").val();
+            $("#friend #results").html("");
+            if (name && name.length) {
+                socialis.getJSON(pod+"mods/socialis/api/user.php",{value:name}, 0,function(_data){
+                    for (var i in _data.users) {
+                        $("#friend #results").append(socialis.friend.elt(_data.users[i], (_data.users.length<20), "add"));
+                    }
+                    if (_data.users && _data.users.length) {
+                        $("#friend .popup").hide();
+                        $("#friend #results").show();
+                    }
+                });
+            }
+        }
+    },
+    login   : function() {
+        if ($("#logpanel").hasClass("s")) {
+            $.getJSON("api/mods/usernew.php"+
+                "?username="+$("input[name=username]").val()+"&password="+$("input[name=password]").val()+"&confirm="+$("input[name=password2]").val(),socialis.onlogin);
+        }
+        else {
+            $.getJSON("api/mods/login.php"+
+                "?username="+$("input[name=username]").val()+"&password="+$("input[name=password]").val(),socialis.onlogin);
+        }
+    },
+    logout : function() {
+        if (socialis.settings.logout) {
+            clearTimeout(socialis.settings.logout); socialis.settings.logout=0;
+            $.getJSON("api/mods/login.php?username="+socialis.settings.user.name, function(_data) {
+                $.cookie("jlodb-code", null); location.reload();
+            });
+        }
+        else {
+            socialis.settings.logout = setTimeout(function() { socialis.settings.logout=0; }, 500);
+        }
+    },
+    onlogin  : function(_data) {
+        if (_data.status=="success"&& _data.code && _data.code.length) {
+            $("#logpanel").hide();
+            socialis.settings.user = _data;
+            $.cookie("jlodb-name", _data.name, { expires : 1 });
+            $.cookie("jlodb-code", _data.code, { expires : 1 });
+
+            $("#user #stars").html(_data.stars);
+
+            $.getJSON("mods/genius/api/state.php",function(data){
+                $("#genius #board").genius('states',{nodes:data.nodes});
+
+                socialis.getJSON("mods/socialis/api/genius.php", "", 0, function(_genius) {
+                    if (_genius.genius.length) { $("#genius #board").genius('states',{nodes:_genius.genius}); }
+                });
+            });
+            $("#user h1").html(socialis.settings.user.name);
+            if ($("#user #avatar>div").children().length==0) {
+                $("#user #avatar>div").gonz({interactive:false, code:socialis.settings.user.avatar, context:{
+                    onclick:function($this){  },
+                    onquit:function($this, _ret){}}});
+            } else { $("#user #avatar>div").gonz('import',socialis.settings.user.avatar); }
+
+            socialis.cyclic.process();
+        }
+        else {
+            $.cookie("jlodb-code", null);
+            if ($("#logpanel").is(":visible")) {
+                $("#logpanel").show().addClass("wrong");
+                setTimeout(function(){$("#logpanel").removeClass("wrong");}, 800);
+            }
+            else { $("#logpanel").show(); }
+        }
+    },
+    user    : {
+        update: function() {
+            var args="";
+            var error="";
+            if (!$("#upln").hasClass("empty") && $("#upln").attr("value")!=socialis.settings.user.last) {
+                args+="&last="+$("#upln").attr("value");
+            }
+            if (!$("#upfn").hasClass("empty") && $("#upfn").attr("value")!=socialis.settings.user.first) {
+                args+="&first="+$("#upfn").attr("value");
+            }
+            if (!$("#upem").hasClass("empty") && $("#upem").attr("value")!=socialis.settings.user.email) {
+                if ( $("#upem").attr("value").indexOf("@")==-1 ) {
+                    error = socialis.locale.email?socialis.locale.email:"Invalid e-mail";
+                }
+                else {
+                    args+="&email="+$("#upem").attr("value");
+                }
+            }
+
+            if ($("#upopr").attr("value").length) { args+="&old="+$("#upopr").attr("value"); }
+            if ($("#upnpr").attr("value").length) { args+="&new="+$("#upnpr").attr("value"); }
+            if ($("#upcpr").attr("value").length) { args+="&con="+$("#upcpr").attr("value"); }
+
+            if (socialis.settings.avatar.length && socialis.settings.avatar!=socialis.settings.user.avatar) {
+                args+="&avatar="+encodeURIComponent(socialis.settings.avatar);
+            }
+
+            $("#edit #error").html(error);
+            if (!error.length) {
+                if (args.length) {
+                    socialis.getJSON("api/mods/userupd.php", args, 0, function (_data) {
+                        if (_data.status=="success") { $("#edit").hide(); socialis.onlogin(_data);
+                        }
+                        else {
+                            $("#edit #error").html(socialis.locale["err"+_data.error]?socialis.locale["err"+_data.error]:_data.textStatus);
+                        }
+                    });
+                }
+                else { $("#edit").hide(); }
+            }
+        }
+    },
+    tibibi : {
+        settings: {
+            name: "",
+            group: false,
+            course: 0
+        },
+        menu: function(_course, _name) {
+            socialis.tibibi.settings.course = _course;
+            $("#board #node #abstract").html("");
+            $("#board #node h1").html(_name).removeClass().addClass("blue node");
+            socialis.getJSON("mods/socialis/api/tibibi.php", { action:"details", value:_course}, {}, function(_data) {
+                $("#board #node #menu").menu({
+                    list    : _data.value.split(","),
+                    state   : _data.description?_data.description:".",
+                    onupdate: function($this, _state) {
+                        socialis.getJSON("mods/socialis/api/tibibi.php",
+                            { action:"upd", value:socialis.tibibi.settings.course, state:_state},{},
+                            function(_data) { });
+                    },
+                    onclick : function($this, _args) {
+                        $("#waiting").show().find("div").addClass("running");
+                        $("#launcher").jlodb({
+                            onstart:    function($this) {
+                                $("#waiting").hide().find("div").removeClass("running"); $("#genius").hide();  },
+                            onfinish:   function($this) { $("#genius").show(); $("#score").removeClass().hide(); },
+                            onscore:    function($this, _ret) {
+                                var isnext = false;
+                                if (_ret.score>=2) { isnext = $("#board #node #menu").menu('score', _ret.score).menu('more'); }
+                                $("#score #next").toggle(isnext);
+                                $("#score").attr("class","s"+_ret.score).show();
+                                return true; } },_args);
+                    }
+                });
+            });
+            $("#board #node").show();
+        },
+        toggle: function(_recv) {
+            if (_recv) {
+                $("#tibibi .icon#r").addClass("s");
+                $("#tibibi .icon#s").removeClass("s");
+                $("#tibibi #recv").show();
+                $("#tibibi #send").hide();
+            }
+            else {
+                $("#tibibi .icon#r").removeClass("s");
+                $("#tibibi .icon#s").addClass("s");
+                $("#tibibi #recv").hide();
+                $("#tibibi #send").show();
+            }
+        },
+        send: function() {
+            $("#friend #course").hide();
+            var course = $("#friend #course select").val();
+            if (course) {
+                socialis.getJSON("mods/socialis/api/tibibi.php",
+                    { action:"send", course:course, value: socialis.tibibi.settings.name, group: socialis.tibibi.settings.group?1:0},
+                    { label: $("#friend #course textarea").val() },
+                    function (_data) {
+                    });
+            }
+        },
+        del: {
+            timer:0,
+            process: function(_elt, _send_id) {
+                if (socialis.tibibi.del.timer==0) {
+                    $(_elt).addClass("s");
+                    socialis.tibibi.del.timer = setTimeout(function(){ $(_elt).removeClass("s"); socialis.tibibi.del.timer = 0; }, 800);
+                }
+                else {
+                    clearTimeout(socialis.tibibi.del.timer); socialis.tibibi.del.timer = 0;
+
+                    socialis.getJSON("mods/socialis/api/tibibi.php", {action:"del",value:_send_id}, 0, function(_data) {
+                        $(_elt).closest(".course").detach();
+                    });
+                }
+            }
+        },
+        details: {
+            timer:0,
+            show: function(_send_id) {
+                socialis.getJSON("mods/socialis/api/tibibi.php", {action:"data",value:_send_id}, {}, function(_data) {
+                    socialis.tibibi.details.timer = 0;
+                    $("#tibibi #details>div").html("<table>");
+                    for (var i in _data.courses) {
+                        state = "";
+                        for (var j=0; j<_data.courses[i].done; j++) {
+                            var val = String.fromCharCode(70-parseInt(_data.courses[i].state[j]));
+                            state+="<span class='l"+val+"'>"+val+"</span>";
+                        }
+
+                        var html=   "<tr"+(_data.courses[i].done==_data.courses[i].nb?" class='done'":"")+">"+
+                                        "<td><div class='id'>"+_data.courses[i].id+"</div></td>"+
+                                        "<td><div class='last'>"+_data.courses[i].last+"</div></td>"+
+                                        "<td><div class='first'>"+_data.courses[i].first+"</div></td>"+
+                                        "<td><div class='done'>"+_data.courses[i].done+"</div></td>"+
+                                        "<td><div class='nb'>"+_data.courses[i].nb+"</div></td>"+
+                                        "<td><div class='state'>"+state+"</div></td>"+
+                                    "</tr>";
+                        $("#tibibi #details>div").append(html);
+                    }
+                    $("#tibibi #details>div").append("</table>");
+                    $("#tibibi #details").show();
+                    if (socialis.tibibi.details.timer==0) {
+                        socialis.tibibi.details.timer = setTimeout(function() { socialis.tibibi.details.show(_send_id); }, 10000);
+                    }
+                });
+            },
+            hide: function() {
+                if (socialis.tibibi.details.timer!=0) {
+                    clearTimeout(socialis.tibibi.details.timer);
+                    socialis.tibibi.details.timer=0;
+                }
+                $("#tibibi #details").hide();
+            }
+        }
+    },
+    open    : {
+        friend: function() {
+            if (socialis.friend.group.empty()) { socialis.friend.group.list( function() { socialis.friend.list(true); } ); }
+            $("#main>#friend").show();
+        },
+        tibibi: function() {
+            socialis.getJSON("mods/socialis/api/tibibi.php", {}, {}, function(_data) {
+                $("#tibibi #send").html("");
+                for (var i in _data.send) {
+                    var html="<div class='course'>"+
+                                "<div class='h1'>"+
+                                    (_data.send[i].group?"<div class='state'>"+_data.send[i].group:"<div class='state none'>")+"</div>"+
+                                    "<div class='value'>"+_data.send[i].name+"</div>"+
+                                    "<div class='icon' id='del' onclick='socialis.tibibi.del.process(this,\""+_data.send[i].id+"\");' ontouchstart='socialis.tibibi.del.process(this,\""+_data.send[i].id+"\");event.preventDefault();'>"+
+                                        "<img src='mods/socialis/res/img/cancel.svg'/></div>"+
+                                "</div>"+
+                                "<div class='avatar'></div>"+
+                                "<div class='legend'>"+_data.send[i].label+"</div>"+
+                                "<div class='icon action' onclick='socialis.tibibi.details.show(\""+_data.send[i].id+"\");'>"+
+                                    "<img src='mods/socialis/res/img/look.svg'/></div>"+
+                             "</div>";
+                    $("#tibibi #send").append(html);
+                }
+
+                $("#tibibi #recv").html("");
+                for (var i in _data.recv) {
+                    var html="<div class='course'  id='"+_data.recv[i].id+"'>"+
+                                "<div class='h1'>"+
+                                    "<div class='state'>"+_data.recv[i].status[0]+"/"+_data.recv[i].status[1]+"</div>"+
+                                    "<div class='value'>"+_data.recv[i].name+"</div>"+
+                                "</div>"+
+                                "<div class='avatar' id='avatar"+i+"'><div></div></div>"+
+                                "<div class='legend'>"+_data.recv[i].label+"</div>"+
+                                "<div class='icon action' onclick='socialis.tibibi.menu(\""+_data.recv[i].id+"\",\""+_data.recv[i].name+"\");' ontouchstart='socialis.tibibi.menu(\""+_data.recv[i].id+"\",\""+_data.recv[i].name+"\");event.preventDefault();'><img src='mods/socialis/res/img/run.svg'/></div>"+
+                             "</div>";
+                    $("#tibibi #recv").append(html);
+                }
+                for (var i in _data.recv) {
+                    $("#tibibi #recv #avatar"+i+">div").gonz({interactive:false, code:_data.recv[i].avatar,
+                                                       context:{onclick:function($this){},onquit:function($this, _ret){}}});
+                }
+            });
+            $("#main>#tibibi").show();
+        },
+        course: function(_name) {
+                if (_name) {
+                    socialis.tibibi.settings.name = _name;
+                    socialis.tibibi.settings.group= false;
+                }
+                else {
+                    socialis.tibibi.settings.name = socialis.friend.group.settings.name;
+                    socialis.tibibi.settings.group= true;
+                }
+                $("#friend #course .h1").html(socialis.tibibi.settings.name);
+                $("#friend #course textarea").val("");
+
+                socialis.getJSON("mods/socialis/api/tibibi.php", { action:"courses"}, 0, function (_data) {
+                    $("#friend #course select").html("");
+                    for (var i in _data.courses) {
+                        $("#friend #course select").append("<option value='"+_data.courses[i]+"'>"+_data.courses[i]+"</option>");
+                    }
+                });
+
+                $("#friend #course").show();
+        },
+        user : function() {
+            if ($("#edit #avatar>div").children().length==0) {
+                $("#edit #avatar>div").gonz({interactive:false, code:socialis.settings.user.avatar, context:{
+                        onclick:function($this){ socialis.open.avatar(); },
+                        onquit:function($this, _ret){}}});
+            }
+            else if (socialis.settings.user.avatar) {
+                $("#edit #avatar>div").gonz('import',socialis.settings.user.avatar);
+            }
+
+            socialis.settings.avatar = socialis.settings.user.avatar;
+
+            $("#upid").attr("value",socialis.settings.user.name);
+
+            if (socialis.settings.user.last)  { $("#upln").attr("value", socialis.settings.user.last).removeClass(); }
+            else                     { $("#upln").attr("value", socialis.locale.template.upln).addClass("empty"); }
+
+            if (socialis.settings.user.first) { $("#upfn").attr("value", socialis.settings.user.first).removeClass(); }
+            else                     { $("#upfn").attr("value", socialis.locale.template.upfn).addClass("empty"); }
+
+            if (socialis.settings.user.email) { $("#upem").attr("value", socialis.settings.user.email).removeClass(); }
+            else                     { $("#upem").attr("value", socialis.locale.template.upem).addClass("empty"); }
+
+            $("#upop").show();$("#upopr").attr("value","").hide();
+            $("#upnp").show();$("#upnpr").attr("value","").hide();
+            $("#upcp").show();$("#upcpr").attr("value","").hide();
+            $("#edit #error").html("");
+            $("#edit").show();
+
+        },
+        avatar : function() {
+            if ($("#edit #gonz").children().length==0) {
+                $("#edit #gonz").gonz({class:"nosnapshot", code:socialis.settings.avatar,
+                    context:{onquit:function($this, _ret){
+                        $("#edit #header").show(); $("#edit #footer").show(); $this.hide();
+                        socialis.settings.avatar = _ret.code;
+                        $("#edit #avatar>div").gonz('import',socialis.settings.avatar);
+                }}});
+            } else if (socialis.settings.user.avatar) { $("#edit #gonz").gonz('import',socialis.settings.avatar); }
+
+            $("#edit #header").hide(); $("#edit #footer").hide(); $("#edit #gonz").show();
+        }
+    }
+};
+
+window.onload = function() {
+    // SPECIAL STUFF
+    document.ontouchmove = function(e) { e.preventDefault(); }
+
+    $.getJSON("api/checkdb.php", function (_check) {
+      if (_check.status=="success") {
+        $.getJSON("mods/genius/api/checkdb.php", function(_checkGenius) {
+         if (_checkGenius.status=="success") {
+         $.getJSON("mods/socialis/api/checkdb.php", function(_checkSocialis) {
+           if (_checkSocialis.status=="success") {
+
+/*
+            if (!_checkSocialis.course) { $("#friend .tibibi").hide(); $("#user #courses").hide(); }
+            if (!_checkSocialis.tibibi) { $("#friend #course #select .icon").hide(); $("#friend #course select").addClass("s"); }
+*/
+            socialis.settings.lang=_check.lang;
+
+            $.getJSON("mods/socialis/locale/"+socialis.settings.lang+"/text.json", function(_locale) {
+                socialis.locale = _locale;
+                for (var i in _locale.template) { var $elt = $("#"+i);
+                    if ($elt.attr("value") && $elt.attr("value").length) { $elt.attr("value", _locale.template[i]); }
+                    else { $elt.html(_locale.template[i]); }
+                }
+            });
+
+            $("#friend #view select").attr("disabled","disabled");
+            $.getJSON("mods/socialis/conf/pods.json", function(_pods) {
+                for (var p in _pods) {
+                    $("#friend #view select").append("<option value='"+_pods[p]+"'>"+p+"</option>");
+                }
+                if (_pods.length) { $("#friend #view select").removeAttr("disabled"); }
+            });
+
+            // GET AND RESIZE THE BEST PANEL
+            var x = Math.floor($(window).width()/16);
+            var y = Math.floor($(window).height()/12);
+            $("body").css("font-size", (Math.min(x,y))+"px");
+            $("#main").css("margin-top", Math.floor(($(window).height()-$("#main").height())/2)+"px").show();
+
+            $("#main>#genius #board").genius({
+                state: function($this, _id, _ex, _cbk) {
+                    socialis.getJSON("mods/socialis/api/state.php","node="+_id, 0, function(_state) {
+                        var state = _state.state;
+                        if (!state.length) { state = "."; }
+                        _cbk($this, _ex, state);
+                    });
+                },
+                onnode: function($this, _id, _available) {
+                    if (_available) { $("#waiting").show().find("div").addClass("running"); } return true; },
+                onshow: function($this) { $("#waiting").hide().find("div").removeClass("running"); },
+                onbuild: function($this) {
+                    // LOG PANEL
+                    if ($.cookie("jlodb-name") && $.cookie("jlodb-code") && $.cookie("jlodb-code")!=0) {
+                        $.getJSON("api/mods/login.php?username="+$.cookie("jlodb-name")+"&code="+$.cookie("jlodb-code"),socialis.onlogin);
+                    }
+                    else { $("#logpanel").show(); }
+                },
+                onclick: function($this, $menu, _args) {
+                    $("#launcher").jlodb({
+                        onstart:    function($this) { $("#genius").hide();  },
+                        onfinish:   function($this) { $("#genius").show(); $("#score").removeClass().hide(); },
+                        onscore:    function($this, _ret) {
+                            var isnext = false;
+                            if (_ret.score>=2) {
+                                isnext = $menu.menu('score', _ret.score).menu('more');
+                                socialis.finished = !isnext;
+                            }
+                            $("#score #next").toggle(isnext);
+                            $("#score").attr("class","s"+_ret.score).show();
+                            return true; },
+                        onexercice: function($this,_id,_a){
+                            $("body").toggleClass("nosplash",(_a==socialis.activity)); socialis.activity=_a; }
+                        },_args);
+
+                },
+                onupdate: function($this, $menu, _id, _state) {
+                    socialis.getJSON("mods/socialis/api/state.php","node="+_id, { state: _state} , function(_state) {
+                        if (_state.stars) { $("#user #stars").html(_state.stars); }
+                    });
+                },
+                onstate: function($this, _nodes) {
+                    socialis.post("mods/socialis/api/genius.php", "", {genius:_nodes}, function(_genius) {});
+                },
+                onclosenode: function($this) {
+                    if (socialis.tibibi.settings.course) {
+                        var state = $("#board #node #menu").menu('state');
+                        var i=0; for (i=0; i<state.length; i++) { if (state[i]=='.' || state[i]=='l') break; }
+                        var $elt = $(".course#"+socialis.tibibi.settings.course+" .state");
+                        $(".course#"+socialis.tibibi.settings.course+" .state").html(i+$elt.html().substr($elt.html().indexOf('/')));
+                } }
+            });
+          }});
+         }});
+        }});
+
+}
+
+
+
+    </script>
+</head>
+
+<body>
+    <div id="main">
+        <div id="genius">
+            <div id="board"></div>
+
+            <!-- USER PANEL (BOTTOM-RIGHT): NAME,STARS,AVATAR AND MENU -->
+            <div id="user">
+                <div id="avatar"><div></div></div>
+                <div id="details">
+                    <h1></h1>
+                    <div class="stars">
+                        <div class="icon"><img src="mods/socialis/res/img/star.svg"/></div>
+                        <div id="stars">0</div>
+                    </div>
+                    <div id="buttons">
+                        <div class="icon" id="courses" onclick="socialis.open.tibibi();"
+                                                       ontouchstart="socialis.open.tibibi();event.preventDefault();">
+                            <img src="mods/socialis/res/img/courses.svg"/>
+                            <div class="l" id="new"></div>
+                        </div>
+                        <div class="icon" onclick="socialis.open.friend();" ontouchstart="socialis.open.friend();event.preventDefault();">
+                            <img src="mods/socialis/res/img/people.svg"/>
+                            <div class="l" id="ask"></div>
+                        </div>
+                        <div class="icon" onclick="socialis.open.user();" ontouchstart="socialis.open.user();event.preventDefault();">
+                            <img src="mods/socialis/res/img/edit.svg"/>
+                        </div>
+                        <div class="icon" onclick="socialis.logout();" ontouchstart="socialis.logout();event.preventDefault();">
+                            <img src="mods/socialis/res/img/logout.svg"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="waiting"><div><img src="res/img/generic/waiting.svg"/></div></div>
+        </div>
+
+        <!-- EXERCICE PANEL -->
+        <div id="launcher">
+            <div id="quit" ontouchstart="socialis.activity='';$('#launcher').jlodb('quit');event.preventDefault();"
+                           onclick="socialis.activity='';$('#launcher').jlodb('quit');">
+                <img src="res/img/icon/quit.svg"/>
+            </div>
+            <div id="activity"></div>
+        </div>
+
+        <!-- SCORE -->
+        <div id="score"><div>
+            <div class="content">
+                <div class="value"></div><div class="stars"></div>
+                <div class="icon" id="reload" ontouchstart="$('#launcher').jlodb('reload');event.preventDefault();"
+                    onclick="$('#launcher').jlodb('reload');" ><img src="res/img/icon/reload.svg"/></div>
+                <div class="icon" id="menu" ontouchstart="socialis.menu();$('#launcher').jlodb('close',true);event.preventDefault();"
+                    onclick="socialis.menu();$('#launcher').jlodb('close',true);" ><img src="res/img/icon/menu.svg"/></div>
+                <div class="icon" id="next" ontouchstart="$('#launcher').jlodb('close', false);$('#menu').menu('next');event.preventDefault();"
+                    onclick="$('#launcher').jlodb('close', false);$('#menu').menu('next');"><img src="res/img/icon/next.svg"/></div>
+            </div>
+        </div></div>
+
+        <!-- LOGIN PANEL -->
+        <div id="logpanel">
+            <div><div>
+                <div class="param" id="ll">
+                    <div class="label" id="loclog"></div><div class="input"><input type="text" name="username"/></div>
+                    <div class="icon" onclick="$('#logpanel').toggleClass('s');"
+                                      ontouchstart="$('#logpanel').toggleClass('s');event.preventDefault();">
+                        <img src="mods/tibibi/res/img/new.svg"/></div>
+                </div>
+                <div class="param">
+                    <div class="label" id="locpwd"></div><div><input type="password" name="password"/></div>
+                </div>
+                <div class="param" id="lp">
+                    <div class="label" id="locconf"></div><div><input type="password" name="password2"/></div>
+                </div>
+                <div class="button" id="logvalid" onclick="socialis.login();"
+                                                  ontouchstart="socialis.login();event.preventDefault();">Valid</div>
+            </div></div>
+        </div>
+
+        <!-- EDIT PANEL -->
+        <div id="edit" class="mask"><div>
+          <div id="header">
+            <div id="avatar"><div></div></div>
+            <div id="settings">
+                <input value="id" id="upid" disabled="disabled"/>
+                <input value="last name" id="upln" onfocus="if ($(this).hasClass('empty')) { $(this).removeClass().attr('value',''); }"/>
+                <input value="first name" id="upfn" onfocus="if ($(this).hasClass('empty')) { $(this).removeClass().attr('value',''); }"/>
+                <input value="email" id="upem" onfocus="if ($(this).hasClass('empty')) { $(this).removeClass().attr('value',''); }"/>
+                <input value="old password" id="upop" class="empty" onfocus="$(this).hide();$('#upopr').show().focus();" />
+                <input value="" type="password" id="upopr" style="display:none;"/>
+                <input value="new password" id="upnp" class="empty" onfocus="$(this).hide();$('#upnpr').show().focus();" />
+                <input value="" type="password" id="upnpr" style="display:none;"/>
+                <input value="confirmation" id="upcp" class="empty" onfocus="$(this).hide();$('#upcpr').show().focus();" />
+                <input value="" type="password" id="upcpr" style="display:none;"/>
+            </div>
+            <div id="error"></div>
+          </div>
+          <div id="footer">
+                <div class="icon" id="cancel" onclick="$('#edit').hide();" ontouchstart="$('#edit').hide();event.preventDefault();">
+                    <img src="mods/socialis/res/img/cancel.svg"/>
+                </div>
+                <div class="icon" id="valid" onclick="socialis.user.update();" ontouchstart="socialis.user.update();event.preventDefault();">
+                    <img src="mods/socialis/res/img/valid.svg"/>
+                </div>
+          </div>
+          <div id="gonz"></div>
+        </div></div>
+
+
+        <div id="friend" class="mask"><div>
+
+            <div id="menu">
+                <div id="quit" ontouchstart="$('#friend').hide();event.preventDefault();"
+                               onclick="$('#friend').hide();"><img src="res/img/icon/quit.svg"/></div>
+                <div id="group"></div>
+                <div id="footer">
+                    <div class="icon" id="addgroup"
+                        onclick="$('#popup input').val('');$('#popup .icon').hide();$('#popup #new').show();$('#popup').show();"
+                        ontouchstart="$('#popup input').val('');$('#popup .icon').hide();$('#popup #new').show();$('#popup').show();event.preventDefault();">
+                        <img src="mods/socialis/res/img/add.svg"/>
+                    </div>
+                    <div class="icon" id="delgroup"
+                        onclick="socialis.friend.group.del(this);"
+                        ontouchstart="socialis.friend.group.del(this);event.preventDefault();">
+                        <img src="mods/socialis/res/img/cancel.svg"/>
+                    </div>
+                    <div class="icon"
+                        onclick="$('#popup input').val($('#friend #group .e.s').html());$('#popup .icon').hide();$('#popup #edit').show();$('#popup').show();"
+                        ontouchstart="$('#popup input').val($('#friend #group .e.s').html());$('#popup .icon').hide();$('#popup #edit').show();$('#popup').show();event.preventDefault();">
+                        <img src="mods/socialis/res/img/edit.svg"/>
+                    </div>
+                    <div class="icon"
+                        onclick="socialis.friend.group.move(true);"
+                        ontouchstart="socialis.friend.group.move(true);event.preventDefault();">
+                        <img src="mods/socialis/res/img/up.svg"/>
+                    </div>
+                    <div class="icon"
+                        onclick="socialis.friend.group.move(false);"
+                        ontouchstart="socialis.friend.group.move(false);event.preventDefault();">
+                        <img src="mods/socialis/res/img/down.svg"/>
+                    </div>
+                    <div class="icon tibibi"
+                        onclick="socialis.open.course();"
+                        ontouchstart="socialis.open.course();event.preventDefault();">
+                        <img src="mods/socialis/res/img/courses.svg"/>
+                    </div>
+                </div>
+            </div>
+
+            <div id="view">
+                <div id="input">
+                    <div class="icon" id="search" onclick="socialis.friend.search();"
+                                      ontouchstart="socialis.friend.search();event.preventDefault();">
+                        <img src="mods/socialis/res/img/look.svg"/>
+                    </div>
+                    <input type="text"/>
+                    <select></select>
+                    <div class="filler"></div>
+                    <div class="icon del" onclick="$('#friend').toggleClass('del');$(this).toggleClass('s');"
+                                      ontouchstart="$('#friend').toggleClass('del');$(this).toggleClass('s');event.preventDefault();">
+                        <img src="mods/socialis/res/img/delete.svg"/>
+                    </div>
+                    <div id="ask" class="icon"
+                             onclick="$('#friend .popup').hide();$('#friend #asks').show();"
+                        ontouchstart="$('#friend .popup').hide();$('#friend #asks').show();event.preventDefault();">0</div>
+                    <div class="icon"
+                             onclick="$('#friend .popup').hide();" ontouchstart="$('#friend .popup').hide();event.preventDefault();">
+                        <img src="mods/socialis/res/img/people.svg"/>
+                    </div>
+                </div>
+                <div id="results" class="popup"></div>
+                <div id="asks" class="popup"></div>
+                <div id="list"></div>
+            </div>
+
+            <div id="genius" class="mask"><div>
+                <div id="board"></div>
+                <div id="quit" ontouchstart="$('#friend #genius').hide();$('#friend #genius #board').html('');event.preventDefault();"
+                                onclick="$('#friend #genius').hide();$('#friend #genius #board').html('');">
+                    <img src="res/img/icon/quit.svg"/>
+                </div>
+                <div id="avatar"></div>
+            </div></div>
+
+            <div id="course" class="mask"><div>
+                <div class="h1"></div>
+                <div id="select">
+                    <select></select>
+                    <div class="icon"
+                        onclick="window.location='tibibi.html?socialis';"
+                        ontouchstart="window.location='tibibi.html?socialis';event.preventDefault();">
+                        <img src="mods/socialis/res/img/add.svg"/>
+                    </div>
+                </div>
+                <textarea spellcheck="false"></textarea>
+                <div id="footer">
+                    <div class="icon" id="cancel" onclick="$('#friend #course').hide();"
+                                                  ontouchstart="$('#friend #course').hide();event.preventDefault();">
+                        <img src="mods/socialis/res/img/cancel.svg"/>
+                    </div>
+                    <div class="icon" id="valid" onclick="socialis.tibibi.send();"
+                                                 ontouchstart="socialis.tibibi.send();event.preventDefault();">
+                        <img src="mods/socialis/res/img/valid.svg"/>
+                    </div>
+                </div>
+            </div></div>
+
+            <div id="popup" class="mask" onclick="$(this).hide();" ontouchstart="$(this).hide();event.preventDefault();"><div>
+                <div>
+                    <input type="text" onclick="event.stopPropagation();" ontouchstart="event.stopPropagation();">
+                    </input>
+                    <div id="new" class="icon"
+                        onclick="socialis.friend.group.add($('#popup input').val());$('#popup').hide();event.stopPropagation();"
+                        ontouchstart="socialis.friend.group.add($('#popup input').val());$('#popup').hide();event.stopPropagation();event.preventDefault();">
+                        <img src="mods/socialis/res/img/add.svg"/>
+                    </div>
+                    <div id="edit" class="icon"
+                        onclick="socialis.friend.group.edit($('#popup input').val());$('#popup').hide();event.stopPropagation();"
+                        ontouchstart="socialis.friend.group.edit($('#popup input').val());$('#popup').hide();event.stopPropagation();event.preventDefault();">
+                        <img src="mods/socialis/res/img/edit.svg"/>
+                    </div>
+                </div>
+            </div></div>
+
+        </div></div>
+
+
+        <div id="tibibi" class="mask"><div>
+            <div id="header">
+                <div id="menu">
+                    <div id="toggle">
+                        <div class="icon s" id="r" onclick="socialis.tibibi.toggle(true);"
+                                ontouchstart="socialis.tibibi.toggle(true);event.preventDefault();">
+                            <img src="mods/socialis/res/img/import.svg"/>
+                        </div>
+                        <div class="icon" id="s" onclick="socialis.tibibi.toggle(false);"
+                                ontouchstart="socialis.tibibi.toggle(false);event.preventDefault();">
+                            <img src="mods/socialis/res/img/export.svg"/>
+                        </div>
+                    </div>
+                    <div class="filler"></div>
+                    <div class="icon del" onclick="$('#tibibi').toggleClass('del');$(this).toggleClass('s');"
+                                      ontouchstart="$('#tibibi').toggleClass('del');$(this).toggleClass('s');event.preventDefault();">
+                        <img src="mods/socialis/res/img/delete.svg"/>
+                    </div>
+                </div>
+                <div id="quit" ontouchstart="socialis.tibibi.settings.course=0;$('#tibibi').hide();event.preventDefault();"
+                               onclick="socialis.tibibi.settings.course=0;$('#tibibi').hide();"><img src="res/img/icon/quit.svg"/></div>
+            </div>
+            <div id="send"></div>
+            <div id="recv"></div>
+
+            <div id="details" class="mask" onclick="socialis.tibibi.details.hide();" ontouchstart="socialis.tibibi.details.hide();event.preventDefault();"><div>
+            </div></div>
+
+        </div></div>
+
+
+    </div>
+
+
+</body>

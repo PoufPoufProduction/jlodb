@@ -1,0 +1,35 @@
+<div id="map"></div>
+
+<div id="nav">
+    <div id="header"><div></div></div>
+    <div id="move"><div class="slider"></div></div>
+    <div id="zoom"><div class="slider"></div></div>
+</div>
+
+<div id="node" >
+    <div id="header" ontouchstart="$(this).closest('.genius').genius('header');event.stopPropagation();event.preventDefault();"
+                     onclick="$(this).closest('.genius').genius('header');event.stopPropagation();">
+        <h1></h1>
+        <div id="quit" ontouchstart="$(this).closest('.genius').genius('closenode');$(this).closest('#node').hide();event.stopPropagation();event.preventDefault();"
+                        onclick="$(this).closest('.genius').genius('closenode');$(this).closest('#node').hide();event.stopPropagation();"><img src="res/img/icon/quit.svg"/></div>
+    </div>
+    <div id="content">
+        <div id="nav">
+            <div id="from" class="links"></div>
+            <div id="abstract"></div>
+            <div id="to" class="links"></div>
+        </div>
+        <div id="menu"></div>
+    </div>
+</div>
+
+<div id="finish">
+    <div>
+        <div class="icon" id="next" ontouchstart="$(this).closest('#finish').hide();event.stopPropagation();event.preventDefault();"
+                                    onclick="$(this).closest('#finish').hide();event.stopPropagation();">
+            <img src="res/img/icon/next.svg"/>
+        </div>
+    </div>
+</div>
+
+

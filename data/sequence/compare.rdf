@@ -215,6 +215,28 @@
         <dct:alternative>20b</dct:alternative>
     </rdf:Description>
 
+    <rdf:Description>
+        <dct:identifier>10Ka</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comparer, en moins de 40 secondes, 2 entiers compris entre 0 et 10,000</dct:title>
+        <dct:description><![CDATA["time":2,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=10001,a=Math.floor(Math.random()*max),p=Math.floor(Math.random()*5),b=(p)?Math.floor(Math.random()*max):a; return [a+\\\"...\\\"+b, (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha","font":1.2]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>20b</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>10Kb</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comparer, en moins de 20 secondes, 2 entiers compris entre 0 et 10,000</dct:title>
+        <dct:description><![CDATA["time":1,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=10001,a=Math.floor(Math.random()*max),p=Math.floor(Math.random()*5),b=(p)?Math.floor(Math.random()*max):a; return [a+\\\"...\\\"+b, (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha","font":1.2]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:alternative>20b</dct:alternative>
+    </rdf:Description>
+
     <!-- 2 compares [cde][1-9][a-z] -->
     <rdf:Description>
         <dct:identifier>c10a</dct:identifier>

@@ -76,6 +76,7 @@
         div#unavailable         { font-size:.5em; }
         div#unavailable p       { border:1px solid gray; margin:.5em 0 .5em 0; text-align:center;}
         #jlodb #mods                        { font-size:.25em; }
+        #jlodb #mods #list                  { overflow:auto; height:26em; width:52em; }
         #jlodb #mods .mod                   { clear:both; margin:.5em; }
         #jlodb #mods .mod>div               { float:left; }
         #jlodb #mods .action                { float:right; color:white; background-color:#555; border-radius:.5em;
@@ -84,7 +85,7 @@
         #jlodb #mods .action.failed         { background-color:red; }
         body>div.logged #jlodb #mods .action { display:inherit; }
         #jlodb #mods .mod .icon             { font-size:8em; }
-        #jlodb #mods .mod .text             { width:40em; height:7em; text-align:justify; overflow:hidden; vertical-align:top;
+        #jlodb #mods .mod .text             { width:39em; height:7em; text-align:justify; overflow:hidden; vertical-align:top;
                                               padding:.5em; background-color: #888; border-radius:1.5em; color:white; margin-left:.5em;}
 
         #jlodb #apps                        { font-size:.25em; text-align:justify; }
@@ -199,6 +200,7 @@ jlodb = {
             build: function(_elt) {
                 $.getJSON("mods/"+$(_elt).closest(".mod").attr("id")+"/api/"+$(_elt).attr("id")+".php", function (data) {
                     $(_elt).removeClass("success").removeClass("failed").addClass(data.status);
+                    setTimeout(function() { $(_elt).removeClass("success").removeClass("failed"); }, 500);
                 });
             }
         },
@@ -279,7 +281,7 @@ jlodb = {
                     $("#classification table.list").append(html);
                 });
                 $.getJSON("api/exercices.php?classification='"+node.node.attr("id")+"'", function(data) {
-                        $("#classification #nbexercices").html(data.exercices.length);
+                        $("#classification #nbexercices").html(data.nb);
                     });
 
             },
@@ -310,6 +312,7 @@ jlodb = {
                 $.getJSON("api/builddb.php", function(data) {
                     $("#jlodb #mask").hide(); $("#waiting div").removeClass("running"); $("#waiting").hide();
                     if (data.status=="success") {
+                        // No warning anymore because of the "ON DUPLICATE KEY UPDATE" in API
                         if (data.warnings && data.warnings.length) {
                             $("#jlodb #buildlog").html("");
                             for (var i in data.warnings) {

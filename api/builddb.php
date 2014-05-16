@@ -68,7 +68,7 @@ if (!$error) {
             $activities = "../activities/activities.rdf";
             if (!file_exists($activities)) {
                 $textstatus = "$activities: file is missing";
-                $error = 404;
+                $error = 5;
             }
             else {
                 // READ THE RDF FILE
@@ -152,7 +152,7 @@ if (!$error) {
             }
         }
         else {
-            $error = 100;
+            $error = 6;
             $textstatus = mysql_error();
         }
     }

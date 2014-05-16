@@ -17,7 +17,7 @@ session_start();
 if (!$_SESSION['database'] || $forceReadFile ) {
     if (!file_exists($filename)) {
         $textstatus = "$filename: configuration file is missing";
-        $error = 404;
+        $error = 1;
     }
     else {
          // GET THE CONFIGURATION FILE
@@ -34,7 +34,7 @@ if (!$_SESSION['database'] || $forceReadFile ) {
 $link = @mysql_connect($_SESSION['host'], $_SESSION['username'], $_SESSION['password']);
 if (!$link) {
     $textstatus = mysql_error();
-    $error = 503;
+    $error = 2;
 }
 else {
     // CONNECT TO THE DATABASE. CREATE IT IF NECESSARY
@@ -47,7 +47,7 @@ else {
     // CHECK THE DATABASE
     if (!$db) {
         $textstatus = mysql_error();
-        $error = 503;
+        $error = 3;
     }
     else {
         // GET THE LANG

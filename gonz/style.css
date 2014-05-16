@@ -1,0 +1,88 @@
+table                           { border-spacing:.1em; }
+ul                              { list-style-type: none; }
+.gonz                         { position:relative; }
+.gonz .icon                   { width:1em; height:1em; }
+.gonz #screen                 { width:10em; height:10em; border-radius:.5em; float:left;}
+.gonz #menu                   { clear:both; font-size:2em; width:102%; }
+.gonz #menu .icon             { border-radius:.1em; margin:.05em; cursor:pointer;}
+.gonz.nosnapshot #snapshot    { display:none; }
+.gonz #menu>*                 { float:left; }
+.gonz.nosnapshot  #menu textarea    { width:17.5em; }
+.gonz #menu textarea          { font-size:.5em; color:#4d4d4d; border:0; width:15em; height:2em; resize:none;
+                                margin:.1em; border-radius:.25em; -webkit-appearance: none; padding-left:.5em; font-weight:bold; }
+.gonz #menu textarea:focus    { outline:none; }
+.gonz #export                 { position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.8);
+                                  cursor:pointer; display:none; }
+.gonz #exportsvg                  { width:12em; height:12em; margin:.1em 5em; border-radius:1em; }
+.gonz .tabs                   { float:left; }
+.gonz .tabs li                { cursor:pointer; }
+.gonz .tabs .icon             { border-radius:.1em; background-color:none; margin:.05em; }
+.gonz .tabs .icon.s           { background-color:yellow; }
+.gonz .tab                    { display:none; }
+.gonz .color                  { width:2em; height:2em; border-radius:.2em; cursor:pointer; }
+.gonz .color.skin1            { background-color:#ebddce; }
+.gonz .color.skin2            { background-color:#f2c97d; }
+.gonz .color.skin3            { background-color:#eccc64; }
+.gonz .color.skin4            { background-color:#91653b; }
+.gonz .color.skin5            { background-color:#523b21; }
+.gonz .color.skin6            { background-color:#39290c; }
+.gonz .color.skin7            { background-color:#ba4126; }
+.gonz .color.skin8            { background-color:#4a8750; }
+
+.gonz .color.mouth1           { background-color:#e7996e; }
+.gonz .color.mouth2           { background-color:#a16045; }
+.gonz .color.mouth3           { background-color:#d7a97e; }
+.gonz .color.mouth4           { background-color:#9a3120; }
+.gonz .color.mouth5           { background-color:#815035; }
+.gonz .color.mouth6           { background-color:#302005; }
+.gonz .color.mouth7           { background-color:#20319a; }
+.gonz .color.mouth8           { background-color:#306a41; }
+
+.gonz .color.bg1              { background-color:#aaffee; }
+.gonz .color.bg2              { background-color:#ffaabb; }
+.gonz .color.bg3              { background-color:#ffeeaa; }
+.gonz .color.bg4              { background-color:#aaffaa; }
+.gonz .color.bg5              { background-color:#aaaaff; }
+.gonz .color.bg6              { background-color:#eeeeee; }
+.gonz .color.bg7              { background-color:#aaaaaa; }
+.gonz .color.bg8              { background-color:#444444; }
+
+.gonz .color.eye1             { background-color:#4681c7; }
+.gonz .color.eye2             { background-color:#46c761; }
+.gonz .color.eye3             { background-color:#663721; }
+.gonz .color.eye4             { background-color:#604731; }
+.gonz .color.eye5             { background-color:#668761; }
+.gonz .color.eye6             { background-color:#6671a7; }
+.gonz .color.eye7             { background-color:#2651c7; }
+.gonz .color.eye8             { background-color:#EE1111; }
+
+.gonz .color.hair1            { background-color:#2a1d03; }
+.gonz .color.hair2            { background-color:#503505; }
+.gonz .color.hair3            { background-color:#905520; }
+.gonz .color.hair4            { background-color:#ddcc00; }
+.gonz .color.hair5            { background-color:#888888; }
+.gonz .color.hair6            { background-color:#dddddd; }
+.gonz .color.hair7            { background-color:#cc5520; }
+.gonz .color.hair8            { background-color:#aa33aa; }
+
+.gonz .color.clothes1         { background-color:#882222; }
+.gonz .color.clothes2         { background-color:#228822; }
+.gonz .color.clothes3         { background-color:#222288; }
+.gonz .color.clothes4         { background-color:#DDDD22; }
+.gonz .color.clothes5         { background-color:#FF8822; }
+.gonz .color.clothes6         { background-color:#228888; }
+.gonz .color.clothes7         { background-color:#999999; }
+.gonz .color.clothes8         { background-color:#222222; }
+
+.gonz .nav                    { clear:both; margin:0 .1em; }
+.gonz .nav>*                  { float:left; background-color:gray; color:white;
+                                  font-weight:bold; text-align:center; height:1.2em; }
+.gonz .nav .p1                { width:1em; border-radius: .2em 0 0 .2em; margin-right:.1em; cursor:pointer; }
+.gonz .nav .p2                { font-size:1em; width:6.1em; }
+.gonz .nav .p3                { width:1em; border-radius: 0 .2em .2em 0; margin-left:.1em; cursor:pointer; }
+
+.gonz .slider                 { clear:both; margin:.1em; }
+.gonz .slider>*               { float:left; height:1em;}
+.gonz .slider .icon           { border-radius:.1em; cursor:pointer; }
+.gonz .slider .bar            { background-color:gray; width:7.2em; margin-left:.1em; border-radius:.2em; }
+.gonz .slider .bar .cursor    { background-color:#BBB; width:1em; height:1em; border-radius:.2em; cursor:move; }

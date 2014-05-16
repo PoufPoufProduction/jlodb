@@ -146,6 +146,306 @@
     </rdf:Description>
 
     <rdf:Description>
+        <dct:identifier>07</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier le nombre 7 à partir d'une somme de 2 nombres (compris entre 0 et 7)</dct:title>
+        <dct:description><![CDATA["number":4,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var chance=Math.floor(Math.random()*2), max=7, val=7, a=Math.floor(Math.random()*(max+1)), b=(chance==0)?val-a:Math.floor(Math.random()*(max+1)); result+=(a+b==val)?\\\"1\\\":\\\"0\\\"; ret.push(a+\\\"+\\\"+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"yellowgreen","color":"green"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:yellowgreen;'><b>VERT</b></span>, les additions dont la somme vaut <b>7</b>.","label":"7"}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>A</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>08</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier le nombre 8 à partir d'une somme de 2 nombres (compris entre 0 et 8)</dct:title>
+        <dct:description><![CDATA["number":4,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var chance=Math.floor(Math.random()*2), max=8, val=8, a=Math.floor(Math.random()*(max+1)), b=(chance==0)?val-a:Math.floor(Math.random()*(max+1)); result+=(a+b==val)?\\\"1\\\":\\\"0\\\"; ret.push(a+\\\"+\\\"+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"green","color":"darkgreen"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:green;'><b>VERT</b></span>, les additions dont la somme vaut <b>8</b>.","label":"8"}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>A</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>09</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier le nombre 9 à partir d'une somme de 2 nombres (compris entre 0 et 9)</dct:title>
+        <dct:description><![CDATA["number":4,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var chance=Math.floor(Math.random()*2), max=9, val=9, a=Math.floor(Math.random()*(max+1)), b=(chance==0)?val-a:Math.floor(Math.random()*(max+1)); result+=(a+b==val)?\\\"1\\\":\\\"0\\\"; ret.push(a+\\\"+\\\"+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"blue","color":"darkblue"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:blue;'><b>BLEU</b></span>, les additions dont la somme vaut <b>9</b>.","label":"9"}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>A</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>010</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier le nombre 10 à partir d'une somme de 2 nombres (compris entre 0 et 10)</dct:title>
+        <dct:description><![CDATA["number":4,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var chance=Math.floor(Math.random()*2), max=10, val=10, a=Math.floor(Math.random()*(max+1)), b=(chance==0)?val-a:Math.floor(Math.random()*((a<10?max+1:10))); result+=(a+b==val)?\\\"1\\\":\\\"0\\\"; ret.push(a+\\\"+\\\"+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"purple","color":"#400040"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:purple;'><b>VIOLET</b></span>, les additions dont la somme vaut <b>10</b>.","label":"10"}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>A</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>011</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier le nombre 11 à partir d'une somme de 2 nombres (compris entre 0 et 10)</dct:title>
+        <dct:description><![CDATA["number":4,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var chance=Math.floor(Math.random()*2), max=10, val=11, a=Math.floor(Math.random()*(max+1)), b=(chance==0)?val-a:Math.floor(Math.random()*((a<10?max+1:10))); result+=(a+b==val)?\\\"1\\\":\\\"0\\\"; ret.push(a+\\\"+\\\"+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"red","color":"#800000"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:red;'><b>ROUGE</b></span>, les additions dont la somme vaut <b>11</b>.","label":"11"}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>A</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>012</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier le nombre 12 à partir d'une somme de 2 nombres (compris entre 0 et 10)</dct:title>
+        <dct:description><![CDATA["number":4,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var chance=Math.floor(Math.random()*2), max=10, val=12, a=Math.floor(Math.random()*(max+1)), b=(chance==0)?val-a:Math.floor(Math.random()*((a<10?max+1:10))); result+=(a+b==val)?\\\"1\\\":\\\"0\\\"; ret.push(a+\\\"+\\\"+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"yellow","color":"orange"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:yellow;'><b>JAUNE</b></span>, les additions dont la somme vaut <b>12</b>.","label":"12"}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>A</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>013</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier le nombre 13 à partir d'une somme de 2 nombres (compris entre 0 et 10)</dct:title>
+        <dct:description><![CDATA["number":4,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var chance=Math.floor(Math.random()*2), max=10, val=13, a=Math.floor(Math.random()*(max+1)), b=(chance==0)?val-a:Math.floor(Math.random()*((a<10?max+1:10))); result+=(a+b==val)?\\\"1\\\":\\\"0\\\"; ret.push(a+\\\"+\\\"+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"lightgreen","color":"green"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:lightgreen;'><b>VERT CLAIR</b></span>, les additions dont la somme vaut <b>13</b>.","label":"13"}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>A</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>014</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier le nombre 14 à partir d'une somme de 2 nombres (compris entre 0 et 10)</dct:title>
+        <dct:description><![CDATA["number":4,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var chance=Math.floor(Math.random()*2), max=10, val=14, a=Math.floor(Math.random()*(max+1)), b=(chance==0)?val-a:Math.floor(Math.random()*((a<10?max+1:10))); result+=(a+b==val)?\\\"1\\\":\\\"0\\\"; ret.push(a+\\\"+\\\"+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"cyan","color":"blue"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:cyan;'><b>BLEU CLAIR</b></span>, les additions dont la somme vaut <b>14</b>.","label":"14"}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>A</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>015</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier le nombre 15 à partir d'une somme de 2 nombres (compris entre 0 et 10)</dct:title>
+        <dct:description><![CDATA["number":4,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var chance=Math.floor(Math.random()*2), max=10, val=15, a=Math.floor(Math.random()*(max+1)), b=(chance==0)?val-a:Math.floor(Math.random()*((a<10?max+1:10))); result+=(a+b==val)?\\\"1\\\":\\\"0\\\"; ret.push(a+\\\"+\\\"+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"pink","color":"red"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:pink;'><b>ROSE</b></span>, les additions dont la somme vaut <b>15</b>.","label":"15"}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>A</dct:alternative>
+    </rdf:Description>
+
+     <rdf:Description>
+        <dct:identifier>wa</dct:identifier>
+        <dct:title xml:lang="fr-FR">Vérifier le résultat de l'addition de 2 nombres, compris entre 1 et 5.</dct:title>
+        <dct:description><![CDATA["number":4,"template":"array2x4","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var chance=Math.floor(Math.random()*2), max=5, a=Math.floor(Math.random()*max)+1, b=Math.floor(Math.random()*max)+1, c=(chance==0)?a+b:Math.floor(Math.random()*(max*2))+1; result+=(a+b==c)?\\\"0\\\":\\\"1\\\"; ret.push(a+\\\"+\\\"+b+\\\"=\\\"+c);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Barrez les opérations erronées."}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>A</dct:alternative>
+    </rdf:Description>
+
+     <rdf:Description>
+        <dct:identifier>wb</dct:identifier>
+        <dct:title xml:lang="fr-FR">Vérifier le résultat de l'addition de 2 nombres, compris entre 0 et 10.</dct:title>
+        <dct:description><![CDATA["number":4,"template":"array2x4","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var chance=Math.floor(Math.random()*2), max=10, a=Math.floor(Math.random()*(max+1)), b=Math.floor(Math.random()*((a<10?max+1:10))), c=(chance==0)?a+b:Math.floor(Math.random()*(max*2+1)); result+=(a+b==c)?\\\"0\\\":\\\"1\\\"; ret.push(a+\\\"+\\\"+b+\\\"=\\\"+c);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Barrez les opérations erronées."}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>A</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>st07</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier les additions (dont les opérandes sont compris entre 0 et 10) et dont le résultat est inférieur à 7.</dct:title>
+        <dct:description><![CDATA["number":4,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var max=10, val=7, a=Math.floor(Math.random()*(max+1)), b=Math.floor(Math.random()*((a<10?max+1:10))); result+=(a+b<val)?\\\"1\\\":\\\"0\\\"; ret.push(a+\\\"+\\\"+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"yellowgreen","color":"green"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:yellowgreen;'><b>VERT</b></span>, les additions dont la somme est <b> strictement inférieure à 7</b>.","label":"<7"}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>A</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>st08</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier les additions (dont les opérandes sont compris entre 0 et 10) et dont le résultat est inférieur à 8.</dct:title>
+        <dct:description><![CDATA["number":4,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var max=10, val=8, a=Math.floor(Math.random()*(max+1)), b=Math.floor(Math.random()*((a<10?max+1:10))); result+=(a+b<val)?\\\"1\\\":\\\"0\\\"; ret.push(a+\\\"+\\\"+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"green","color":"darkgreen"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:green;'><b>VERT</b></span>, les additions dont la somme est <b> strictement inférieure à 8</b>.","label":"<8"}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>A</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>st09</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier les additions (dont les opérandes sont compris entre 0 et 10) et dont le résultat est inférieur à 8.</dct:title>
+        <dct:description><![CDATA["number":4,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var max=10, val=9, a=Math.floor(Math.random()*(max+1)), b=Math.floor(Math.random()*((a<10?max+1:10))); result+=(a+b<val)?\\\"1\\\":\\\"0\\\"; ret.push(a+\\\"+\\\"+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"blue","color":"darkblue"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:blue;'><b>BLEU</b></span>, les additions dont la somme est <b> strictement inférieure à 9</b>.","label":"<9"}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>A</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>st010</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier les additions (dont les opérandes sont compris entre 0 et 10) et dont le résultat est inférieur à 8.</dct:title>
+        <dct:description><![CDATA["number":4,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var max=10, val=10, a=Math.floor(Math.random()*(max+1)), b=Math.floor(Math.random()*((a<10?max+1:10))); result+=(a+b<val)?\\\"1\\\":\\\"0\\\"; ret.push(a+\\\"+\\\"+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"purple","color":"#400040"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:purple;'><b>VIOLET</b></span>, les additions dont la somme est <b> strictement inférieure à 10</b>.","label":"<10"}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>A</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>st011</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier les additions (dont les opérandes sont compris entre 0 et 10) et dont le résultat est inférieur à 8.</dct:title>
+        <dct:description><![CDATA["number":4,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var max=10, val=11, a=Math.floor(Math.random()*(max+1)), b=Math.floor(Math.random()*((a<10?max+1:10))); result+=(a+b<val)?\\\"1\\\":\\\"0\\\"; ret.push(a+\\\"+\\\"+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"red","color":"#800000"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:red;'><b>ROUGE</b></span>, les additions dont la somme est <b> strictement inférieure à 11</b>.","label":"<11"}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>A</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>st012</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier les additions (dont les opérandes sont compris entre 0 et 10) et dont le résultat est inférieur à 12.</dct:title>
+        <dct:description><![CDATA["number":4,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var max=10, val=12, a=Math.floor(Math.random()*(max+1)), b=Math.floor(Math.random()*((a<10?max+1:10))); result+=(a+b<val)?\\\"1\\\":\\\"0\\\"; ret.push(a+\\\"+\\\"+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"yellow","color":"orange"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:yellow;'><b>JAUNE</b></span>, les additions dont la somme est <b> strictement inférieure à 12</b>.","label":"<12"}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>A</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>st013</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier les additions (dont les opérandes sont compris entre 0 et 10) et dont le résultat est inférieur à 13.</dct:title>
+        <dct:description><![CDATA["number":4,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var max=10, val=13, a=Math.floor(Math.random()*(max+1)), b=Math.floor(Math.random()*((a<10?max+1:10))); result+=(a+b<val)?\\\"1\\\":\\\"0\\\"; ret.push(a+\\\"+\\\"+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"lightgreen","color":"green"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:lightgreen;'><b>VERT CLAIR</b></span>, les additions dont la somme est <b> strictement inférieure à 13</b>.","label":"<13"}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>A</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>gt07</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier les additions (dont les opérandes sont compris entre 0 et 10) et dont le résultat est supérieur à 7.</dct:title>
+        <dct:description><![CDATA["number":4,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var max=10, val=7, a=Math.floor(Math.random()*(max+1)), b=Math.floor(Math.random()*((a<10?max+1:10))); result+=(a+b>val)?\\\"1\\\":\\\"0\\\"; ret.push(a+\\\"+\\\"+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"yellowgreen","color":"green"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:yellowgreen;'><b>VERT</b></span>, les additions dont la somme est <b> strictement supérieure à 7</b>.","label":">7"}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>A</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>gt08</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier les additions (dont les opérandes sont compris entre 0 et 10) et dont le résultat est supérieur à 8.</dct:title>
+        <dct:description><![CDATA["number":4,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var max=10, val=8, a=Math.floor(Math.random()*(max+1)), b=Math.floor(Math.random()*((a<10?max+1:10))); result+=(a+b>val)?\\\"1\\\":\\\"0\\\"; ret.push(a+\\\"+\\\"+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"green","color":"darkgreen"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:green;'><b>VERT</b></span>, les additions dont la somme est <b> strictement supérieure à 8</b>.","label":">8"}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>A</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>gt09</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier les additions (dont les opérandes sont compris entre 0 et 10) et dont le résultat est supérieur à 8.</dct:title>
+        <dct:description><![CDATA["number":4,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var max=10, val=9, a=Math.floor(Math.random()*(max+1)), b=Math.floor(Math.random()*((a<10?max+1:10))); result+=(a+b>val)?\\\"1\\\":\\\"0\\\"; ret.push(a+\\\"+\\\"+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"blue","color":"darkblue"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:blue;'><b>BLEU</b></span>, les additions dont la somme est <b> strictement supérieure à 9</b>.","label":">9"}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>A</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>gt010</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier les additions (dont les opérandes sont compris entre 0 et 10) et dont le résultat est supérieur à 8.</dct:title>
+        <dct:description><![CDATA["number":4,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var max=10, val=10, a=Math.floor(Math.random()*(max+1)), b=Math.floor(Math.random()*((a<10?max+1:10))); result+=(a+b>val)?\\\"1\\\":\\\"0\\\"; ret.push(a+\\\"+\\\"+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"purple","color":"#400040"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:purple;'><b>VIOLET</b></span>, les additions dont la somme est <b> strictement supérieure à 10</b>.","label":">10"}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>A</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>gt011</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier les additions (dont les opérandes sont compris entre 0 et 10) et dont le résultat est supérieur à 8.</dct:title>
+        <dct:description><![CDATA["number":4,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var max=10, val=11, a=Math.floor(Math.random()*(max+1)), b=Math.floor(Math.random()*((a<10?max+1:10))); result+=(a+b>val)?\\\"1\\\":\\\"0\\\"; ret.push(a+\\\"+\\\"+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"red","color":"#800000"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:red;'><b>ROUGE</b></span>, les additions dont la somme est <b> strictement supérieure à 11</b>.","label":">11"}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>A</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>gt012</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier les additions (dont les opérandes sont compris entre 0 et 10) et dont le résultat est supérieur à 12.</dct:title>
+        <dct:description><![CDATA["number":4,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var max=10, val=12, a=Math.floor(Math.random()*(max+1)), b=Math.floor(Math.random()*((a<10?max+1:10))); result+=(a+b>val)?\\\"1\\\":\\\"0\\\"; ret.push(a+\\\"+\\\"+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"yellow","color":"orange"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:yellow;'><b>JAUNE</b></span>, les additions dont la somme est <b> strictement supérieure à 12</b>.","label":">12"}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>A</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>gt013</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier les additions (dont les opérandes sont compris entre 0 et 10) et dont le résultat est supérieur à 13.</dct:title>
+        <dct:description><![CDATA["number":4,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var max=10, val=13, a=Math.floor(Math.random()*(max+1)), b=Math.floor(Math.random()*((a<10?max+1:10))); result+=(a+b>val)?\\\"1\\\":\\\"0\\\"; ret.push(a+\\\"+\\\"+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"lightgreen","color":"green"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:lightgreen;'><b>VERT CLAIR</b></span>, les additions dont la somme est <b> strictement supérieure à 13</b>.","label":">13"}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>A</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
         <dct:identifier>a2</dct:identifier>
         <dct:title xml:lang="fr-FR">Additionner 2 nombres compris entre 1 et 2</dct:title>
         <dct:description><![CDATA["values":[{"template":"table3.1x3","result":"123","t":["1+1","1+2","2+2"]},{"template":"table3.1x3","result":"222","t":["1+2","2+1","1+2"]},{"template":"table3.1x3","result":"313","t":["2+2","1+1","2+2"]}],"states":{ "nb":4, "content":["1","2","3","4"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>

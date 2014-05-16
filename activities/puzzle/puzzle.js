@@ -403,6 +403,7 @@
                         }
                         findone |= isgood;
                         if (isgood && !settings.fix) { $piece.attr("class","good"); }
+                        if (!isgood) { $piece.attr("class","wrong"); }
                     }
                     if (!findone) { wrongs++;}
                     settings.all++;

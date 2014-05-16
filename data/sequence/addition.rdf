@@ -429,6 +429,17 @@
     <!-- NUMBERS: a[a-zA-Z0-9] -->
 
     <rdf:Description>
+        <dct:identifier>0a</dct:identifier>
+        <dct:title xml:lang="fr-FR">Ajouter, sans contrainte de temps, 0 à un nombre inférieur à 10</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"gen":"function() { return Math.floor(1+Math.random()*9)+\\\"+0\\\"; }","font":3]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>a10c</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
         <dct:identifier>1a</dct:identifier>
         <dct:title xml:lang="fr-FR">Ajouter, sans contrainte de temps, 1 à un nombre inférieur à 10</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"gen":"function() { return Math.floor(1+Math.random()*9)+\\\"+1\\\"; }","font":3]]></dct:description>
@@ -1429,7 +1440,40 @@
         <dct:alternative>a10c</dct:alternative>
     </rdf:Description>
 
+    <!-- INVERSE: i[1-10][abc] -->
 
+    <rdf:Description>
+        <dct:identifier>i10a</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter, sans contrainte de temps, l'addition de 2 nombres compris entre 0 et 10.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\?" },"gen":"function() { var a = Math.floor(Math.random()*11), b=Math.floor(Math.random()*11); return [\\\"\\\"+a+\\\"+?=\\\"+(a+b),b]; }","font":1.7]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>i10a</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>i10b</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter, en moins de 40 secondes, l'addition de 2 nombres compris entre 0 et 10.</dct:title>
+        <dct:description><![CDATA["time":2,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\?" },"gen":"function() { var a = Math.floor(Math.random()*11), b=Math.floor(Math.random()*11); return [\\\"\\\"+a+\\\"+?=\\\"+(a+b),b]; }","font":1.7]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>i10a</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>i10c</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter, en moins de 20 secondes, l'addition de 2 nombres compris entre 0 et 10.</dct:title>
+        <dct:description><![CDATA["time":1,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\?" },"gen":"function() { var a = Math.floor(Math.random()*11), b=Math.floor(Math.random()*11); return [\\\"\\\"+a+\\\"+?=\\\"+(a+b),b]; }","font":1.7]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:alternative>i10a</dct:alternative>
+    </rdf:Description>
     <!-- CARDS: c[1-10][abc] -->
 
     <rdf:Description>

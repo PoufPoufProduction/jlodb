@@ -41,13 +41,13 @@ if (!$error) {
             $status     = "success";
         }
         else {
-            $error = 404;
+            $error = 8;
             $textstatus = "can not find activity";
         }
 
     } else {
         $status = "error";
-        $error = 100;
+        $error = 9;
         $textstatus = "activity name is missing";
     }
 }

@@ -8,7 +8,7 @@
 .sorting div#board                      { width:100%; height:10.6em;}
 .sorting div#board .icon                { width:1em; height:1em; display:inline-block; }
 .sorting div#board td div               { overflow:hidden; }
-.sorting div#interactive                { }
+.sorting div#interactive                { padding-top:0.1em; }
 .sorting div#submit                     { font-size:1.5em; height:1em;width:1em; cursor:pointer;
                                             position:absolute; top:7em; left:0em; z-index:3; }
 .sorting div#submit>img                 { display:none; }
@@ -17,37 +17,16 @@
 .sorting div#submit.wrong #subvalid     { display:none; }
 .sorting div#submit.good #subgood       { display:inline; }
 .sorting div#submit.wrong #subwrong     { display:inline; }
-.sorting .response                      { border-radius:0 .25em .25em 0;
-                                          background-color:rgba(255,252,246,0.8); padding-left:.1em; padding-right:.2em;
+.sorting .response                      { border-radius:0 .25em .25em 0; padding-left:.1em; padding-right:.2em;
                                           cursor:move; white-space:nowrap; height:1em; }
 .sorting .response.wrong                { background-color:rgba(255,80,65,1.0); color:rgb(220, 240, 256); background-image:none !important;}
 .sorting .response.good                 { background-color:rgba(80,255,65,1.0); background-image:none !important; }
-.sorting .question                      { border-radius:.25em 0 0 .25em;
-                                          background-color:rgba(196,184,255,0.8); padding-left:.1em; padding-right:.2em;
+.sorting .question                      { border-radius:.25em 0 0 .25em; padding-left:.1em; padding-right:.2em;
                                           white-space:nowrap; text-align:right; height:1em; }
 .sorting .move .response                { white-space:normal; border-radius:.25em; padding-left:.2em; height:auto;
                                           background-image:url("../../res/img/background/book02.svg"); background-repeat:repeat;}
 .sorting .move .question                { display:none; }
-.sorting div#exercice                   { padding:.25em .5em; font-size:.8em; text-align:justify; font-style:italic; display:none; }
+.sorting div#exercice                   { margin-left:1em; padding:.25em .5em; font-size:.8em; text-align:justify; font-style:italic; display:none; }
 
-.sorting.f05 div#interactive            { font-size:0.5em; }
-.sorting.f06 div#interactive            { font-size:0.6em; }
-.sorting.f07 div#interactive            { font-size:0.7em; }
-.sorting.f08 div#interactive            { font-size:0.8em; }
-.sorting.f13 div#interactive            { font-size:1.3em; }
-.sorting.f14 div#interactive            { font-size:1.4em; }
-.sorting.f15 div#interactive            { font-size:1.5em; }
-.sorting.f16 div#interactive            { font-size:1.6em; }
-.sorting.f20 div#interactive            { font-size:2em; }
-.sorting.f25 div#interactive            { font-size:2.5em; }
-.sorting.f30 div#interactive            { font-size:3em; }
-.sorting.p01 div#interactive            { padding-top:0.1em; }
-.sorting.p02 div#interactive            { padding-top:0.2em; }
-.sorting.p03 div#interactive            { padding-top:0.3em; }
-.sorting.p04 div#interactive            { padding-top:0.4em; }
-.sorting.p05 div#interactive            { padding-top:0.5em; }
-.sorting.p10 div#interactive            { padding-top:1.0em; }
-.sorting.p15 div#interactive            { padding-top:1.5em; }
-.sorting.p20 div#interactive            { padding-top:2.0em; }
 .sorting.h12 .response                  { height:1.2em; }
 .sorting.h12 .question                  { height:1.2em; }

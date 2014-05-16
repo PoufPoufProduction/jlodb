@@ -11,7 +11,7 @@ if ($handle = opendir("../mods")) {
             $modrdf = "../mods/".$file."/".$file.".rdf";
             if (!file_exists($modrdf)) {
                 $textstatus = "$activities: file is missing";
-                $error = 404;
+                $error = 12;
             }
             else {
                 // READ THE RDF FILE

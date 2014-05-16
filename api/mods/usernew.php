@@ -1,7 +1,5 @@
 <?php
-
-session_start();
-include "../database.php";
+include_once "../database.php";
 
 if (!$error && strlen($_GET["username"])) {
 
@@ -10,13 +8,13 @@ if (!$error && strlen($_GET["username"])) {
               $_GET["username"]."','".md5($_GET["confirm"])."')");
     }
     else {
-        $error = 3;
-        $textstatus="Password confirmation error";
+        $error = 106;
+        $textstatus="password confirmation error";
     }
 
 }
 
-include "userget.php";
+include "login.php";
 
 ?>
 

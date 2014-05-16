@@ -13,6 +13,8 @@
         type        : "swap",                                   // swap: swap 2 elements, move: move all the elements for inserting
         nbpages     : 0,                                        // number of values arrays (0 for no array but element)
         len         : [0,0],                                    // text length (0:auto)
+        colors      : [[196,184,255,0.8],[255,252,246,0.8]],    // question and response colors
+        font        : 1,
         background  : ""
     };
 
@@ -70,6 +72,7 @@
                 // RESIZE THE TEMPLATE
                 $this.find("#board").addClass(settings.type);
                 $this.css("font-size", Math.floor($this.height()/12)+"px");
+                $this.find("#interactive").css("font-size",settings.font+"em");
 
                 // LOCALE HANDLING
                 $this.find("h1#label").html(settings.label);
@@ -117,6 +120,8 @@
             // BUILD THE REGEXP
             var vRegexpResp = (settings.regexp&&settings.regexp.response)?
                                 new RegExp(settings.regexp.response.from, "g"):0;
+            var vRegexpQuest= (settings.regexp&&settings.regexp.question)?
+                                new RegExp(settings.regexp.question.from, "g"):0;
 
             // CREATE AN ELEMENT
             for (var i=0; i<settings.nbvalues; i++) {
@@ -154,17 +159,26 @@
             var vTable='<table>';
             for (var i=0; i<settings.elts.length; i++) {
                 // QUESTION
+                var vLabel = settings.labels[i][0];
+                if (vRegexpQuest) { vLabel=vLabel.replace(vRegexpQuest, settings.regexp.question.to); }
                 vTable+='<tr><td><div class="question" ';
-                if (settings.len[0]) { vTable+='style="width:'+settings.len[0]+'em;" '; }
-                vTable+='>'+settings.labels[i][0]+'</div></td>';
-
-                var vValue = settings.elts[i][1];
-                // HANDLE THE REGEXP
-                if (vRegexpResp) { vValue=vValue.replace(vRegexpResp, settings.regexp.response.to); }
+                var vStyleQuest="background-color:rgba("+settings.colors[0][0]+","+settings.colors[0][1]+","+
+                                                         settings.colors[0][2]+","+settings.colors[0][3]+");";
+                if (settings.len[0]) { vStyleQuest+="width:'+settings.len[0]+'em;";}
+                vTable+="style=\" "+vStyleQuest+"\" ";
+                vTable+='>'+vLabel+'</div></td>';
 
                 // RESPONSE
+                var vValue = settings.elts[i][1];
+                if (vRegexpResp) { vValue=vValue.replace(vRegexpResp, settings.regexp.response.to); }
+
                 vTable+='<td class="dropzone" id="dz'+i+'"><div class="response" ';
-                if (settings.len[1]) { vTable+='style="width:'+settings.len[1]+'em;" '; }
+
+                var vStyleResp="background-color:rgba("+settings.colors[1][0]+","+settings.colors[1][1]+","+
+                                                         settings.colors[1][2]+","+settings.colors[1][3]+");";
+                if (settings.len[1]) { vStyleResp+="width:'+settings.len[1]+'em;";}
+                vTable+="style=\""+vStyleResp+"\" ";
+
                 vTable+='id="'+i+'">'+vValue+'</div></td></tr>';
 
                 settings.elts[i][2] = i;
@@ -177,7 +191,9 @@
             $this.find("#interactive table").css("margin-left", margin+"px");
 
             // DISPLAY STUFF
-            if (settings.exercice) { $this.find("#exercice").show(); }
+            if (settings.exercice) {
+                $this.find("#exercice").css("font-size",(settings.fontex?settings.fontex:"1")+"em").show();
+            }
 
             // HANDLE THE DRAGGABLE
             $this.find("#interactive .response").each(function(index) {
@@ -285,9 +301,9 @@
                         if (settings.labels[i][1]!=settings.elts[id][1]) {
                             vGood = false;
                             settings.wrong++;
-                            $(elt).addClass("wrong");
+                            $(elt).css("background-color","").addClass("wrong");
                         }
-                        else { $(elt).addClass("good"); }
+                        else { $(elt).css("background-color","").addClass("good"); }
                     }
 
                     $this.find("#submit").addClass(vGood?"good":"wrong");

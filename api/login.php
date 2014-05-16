@@ -10,7 +10,7 @@ $_SESSION['admin'] = false;
 // CHECK IF THE CONFIGURATION FILE IS HERE
 if (!file_exists($filename)) {
     $textstatus = "$filename: configuration file is missing";
-    $error = 404;
+    $error = 1;
 }
 else
 {
@@ -25,8 +25,8 @@ else
         $_SESSION['admin'] = true;
     }
     else {
-        $error = 400;
-        $textstatus = "wrong login";
+        $error = 101;
+        $textstatus = "wrong administration login";
     }
 
 }
