@@ -11,9 +11,11 @@
         source      : [],                       // Source element
         a           : { all         : true,     // Authorization : everything
                         equation    : false,    // Authorization : equation
-                        move        : false,    // Authorization : move a value
+                        move        : 0,        // Authorization : move a value (bitset: 0 none, 1 equation, 2 source, 4 bracket)
                         target      : 0,        // Authorization : local target on value (bitset: 0 none, 1 left righ, 2 top down)
+                        source      : 0,        // Authorization : source to equation (bitset: 1 add, 2 multiply, 4 divide)
                         bracket     : false,    // Authorization : distribution
+                        delbracket  : false,    // Authorization : delete brackets
                         minus1      : false,    // Authorization : transform x into -1*-x
                         decompose   : false     // Authorization : transform 6 into 2*3
                       },
@@ -115,9 +117,14 @@
 
                 // SOURCE
                 for (var i in settings.source) {
-                    var $val = $("#template .val.type"+c.val, settings.svg.root()).clone().appendTo($("#source", settings.svg.root()));
-                    $val.attr("transform","translate(40,"+(40+i*50)+")").attr("class","val source").attr("id",i);
-                    $("text",$val).text(settings.source[i]);
+                    var $val    = $("#template .val.type"+c.val, settings.svg.root()).clone().appendTo($("#source", settings.svg.root()));
+                    var vClass  ="";
+                    var vSource = settings.source[i];
+                    if (!vSource.length)    { vClass=" bracket"; }
+                    else if (vSource=="!")  { vClass=" newvar"; vSource="";}
+                    $val.attr("transform","translate(40,"+(40+i*50)+")").attr("id",i).attr("class","val source"+vClass);
+                    $("text",$val).text(vSource);
+
                     $val.bind("mousedown touchstart", function(e) {
                         var settings = helpers.settings($(this).closest(".equation"));
                         if (settings.interactive) {
@@ -281,12 +288,16 @@
 
                                 if (!settings.action.target && settings.action.source==1) {
                                     if (coord[0]>0 && coord[1]>0 && coord[1]<40) {
-                                        eq.$svg.find("#header").attr("class","banner");
+                                        if (settings.a.all || settings.a.source&0x02) {
+                                            eq.$svg.find("#header").attr("class","banner");
+                                        }
                                     }
                                     else {
                                         eq.$svg.find("#header").attr("class","banner hide");
                                         if (coord[0]>0 && coord[1]>200 && coord[1]<240) {
-                                            eq.$svg.find("#footer").attr("class","banner");
+                                            if (settings.a.all || settings.a.source&0x04) {
+                                                eq.$svg.find("#footer").attr("class","banner");
+                                            }
                                         }
                                         else {
                                             eq.$svg.find("#footer").attr("class","banner hide");
@@ -303,12 +314,17 @@
                                         eq.margin.now[0]+settings.action.node.elt[0].pos.now[0]*40,
                                         eq.margin.now[1]+settings.action.node.elt[0].pos.now[1]*40 ];
                                     if (settings.action.source!=0) {
-                                        settings.action.helper = settings.action.node.elt[0].$svg.clone().attr("class","val type0")
-                                            .attr("transform","translate("+settings.action.coord[0]+","+settings.action.coord[1]+")")
-                                            .appendTo(eq.$svg.find("#content"));
+                                        if (( settings.a.move&0x02 && settings.action.source==1 ) ||
+                                            ( settings.a.move&0x04 && settings.action.source==2 ) ) {
+                                            var vClass = settings.action.node.elt[0].$svg.attr("class").replace("source","type0");
+                                            settings.action.helper = settings.action.node.elt[0].$svg.clone().attr("class",vClass)
+                                                .attr("transform","translate("+settings.action.coord[0]+","+settings.action.coord[1]+")")
+                                                .appendTo(eq.$svg.find("#content"));
+                                        }
                                     }
                                     else {
-                                        if (settings.a.move || settings.a.all) {
+                                        if ( (settings.a.move&0x01 && settings.action.source==0) ||
+                                              settings.a.all) {
                                             if (settings.a.target || settings.a.all) {
                                                 eq.$svg.find("#target")
                                                     .attr("transform","translate("+settings.action.coord[0]+","+settings.action.coord[1]+")")
@@ -316,7 +332,8 @@
                                             }
 
                                             settings.action.node.elt[0].$svg.detach().appendTo(eq.$svg.find("#content"));
-                                            settings.action.helper = settings.action.node.elt[0].$svg.clone().appendTo(eq.$svg.find("#content"));
+                                            settings.action.helper =
+                                                settings.action.node.elt[0].$svg.clone().appendTo(eq.$svg.find("#content"));
                                             settings.action.node.elt[0].$svg.attr("class","val type0 source");
                                         }
                                     }
@@ -331,360 +348,379 @@
                             var ve = (e && e.originalEvent && e.originalEvent.touches && e.originalEvent.touches.length)?
                                       e.originalEvent.touches[0]:e;
                             if (settings.action.node!=0) {
-
                                 var anim = true;
-                                var eq = helpers.equations.get($this);
+                                var eq   = helpers.equations.get($this);
 
+//-------------- PERFORM ACTION (CHANGE IDENTATION : RESET AND TAB=2) -------------------------------------------------------------
+
+// SOME NODES ARE EMPTY (CREATING A FRACTION FROM 1)... FILL THEM THANKS TO THE CURRENT NODE
 if (settings.emptymode) {
-    if (settings.action.node.value!="0" && !isNaN(parseInt(settings.action.node.value))) {
-        eq.$svg.find(".empty").each( function() { settings.nodes[$(this).attr("id")].value = settings.action.node.value; });
-        settings.emptymode = false;
-    }
+  if (settings.action.node.value!="0" && !isNaN(parseInt(settings.action.node.value))) {
+    eq.$svg.find(".empty").each( function() { settings.nodes[$(this).attr("id")].value = settings.action.node.value; });
+    settings.emptymode = false;
+  }
 }
+// MOVE AND EQUATION TO ANOTHER ONE
 else if (settings.action.equation) {
-    if (settings.action.target) {
-        var id = settings.action.node-1;
+  if (settings.action.target) {
+    var id = settings.action.node-1;
 
-        if (settings.action.helper==2) {
-            for (var i=0; i<2; i++) {
-                var elt = helpers.element(eq.tree);
-                elt.type = c.op; elt.value = "+";
-                var child = settings.data[id].tree.children[i].clone();
-                elt.children=[eq.tree.children[i],child];
-                eq.replace(eq.tree.children[i], elt);
-                elt.parent = eq.tree;
-                elt.children[0].parent = elt;
-                elt.children[1].parent = elt;
-            }
-        }
-        else {
-            eq.searchandreplace(settings.data[id].tree.children[settings.action.helper],
-                                settings.data[id].tree.children[1-settings.action.helper]);
-        }
+    if (settings.action.helper==2) {
+      // ADDITION MODE
+      for (var i=0; i<2; i++) {
+        var elt = helpers.element();
+        elt.type = c.op; elt.value = "+";
+        var child = settings.data[id].tree.children[i].clone();
+        elt.children=[eq.tree.children[i],child];
+        eq.replace(eq.tree.children[i], elt);
+        elt.parent = eq.tree;
+        elt.children[0].parent = elt;
+        elt.children[1].parent = elt;
+      }
     }
-
-    anim = false;
-    settings.action.equation = 0;
-    settings.action.target = 0;
-    $this.find("#arrow path").hide();
+    else {
+      // REMPLACEMENT MODE (MOVED EQUATION IS LIKE 'X=VALUE')
+      eq.searchandreplace(settings.data[id].tree.children[settings.action.helper],
+                          settings.data[id].tree.children[1-settings.action.helper]);
+    }
+  }
+  anim = false;
+  settings.action.equation = 0;
+  settings.action.target = 0;
+  $this.find("#arrow path").hide();
 }
 else
 {
+  eq.$svg.find("#target").hide();
+  var t     = new Date(), delta = t.getTime() - settings.action.time;           // TIME DELTA
+  var distx = Math.pow(ve.clientX-settings.action.pos[0],2);                    // DISTANCE FROM DOWN IN X-AXIS
+  var disty = Math.pow(ve.clientY-settings.action.pos[1],2);                    // DISTANCE FROM DOWN IN Y-AXIS
+  var dist  = 100* Math.sqrt(distx + disty) / ($this.width()*eq.scale.now);     // DISTANCE FROM DOWN
 
-
-
-
-                                eq.$svg.find("#target").hide();
-                                var t = new Date(), delta = t.getTime() - settings.action.time;
-                                var distx = Math.pow(ve.clientX-settings.action.pos[0],2);
-                                var disty = Math.pow(ve.clientY-settings.action.pos[1],2);
-                                var dist = 100* Math.sqrt(distx + disty) / ($this.width()*eq.scale.now);
-
-//----------------------------------------------
-if (!settings.action.helper) {
-    // SIMPLE CLICK
+  // NO HELPER MEANS THERE HASN'T BEEN ANY MOVEMENT, JUST A MERE CLICK
+  if (!settings.action.helper) {
 
     var done = false;
 
     // LOOKING FOR A PARENT BRACKET
     var bra = settings.action.node;
     while (bra!=eq.tree && bra.type!=c.bra) { bra = bra.parent; }
-    if (bra.type==c.bra) {
-        var cbra = bra.children[0];
-        // CURRENT NODE IS INSIDE A BRACKET : CAN WE REMOVE IT
-        if (cbra.value=="*" || cbra.type==c.val || cbra.type==c.bra || bra.parent.value=="+" || bra.parent.value=="=") {
-            eq.remove(cbra);
-            eq.replace(eq.hide(bra), cbra);
-            done = true;
-        }
+    if (bra.type==c.bra && (settings.a.delbracket || settings.a.all )) {
+      var cbra = bra.children[0];
+      // CURRENT NODE IS INSIDE A BRACKET : CAN WE REMOVE IT
+      if (cbra.value=="*" || cbra.type==c.val || cbra.type==c.bra || cbra.value=="/" ||
+          bra.parent==0 || bra.parent.value=="+" || bra.parent.value=="=" || bra.parent.value=="/" ) {
+        eq.remove(cbra);
+        eq.replace(eq.hide(bra), cbra);
+        done = true;
+      }
     }
 
     if (!done) {
-        if (settings.action.node.value=="0") {
-            if (settings.action.node.parent.value=="+") { eq.hide(eq.remove(settings.action.node)); } else
-            if (settings.action.node.parent.value=="*") {
-                eq.remove(settings.action.node);
-                eq.replace(eq.hide(settings.action.node.parent), settings.action.node);
-            } else
-            if (settings.action.node.parent.value=="/" && settings.action.node.parent.children[0]==settings.action.node) {
-                eq.remove(settings.action.node);
-                eq.replace(eq.hide(settings.action.node.parent), settings.action.node);
-            }
+      // CLICKED ELEMENT IS A 0: ABSORB IN * AND /, REMOVE IN +
+      if (settings.action.node.value=="0") {
+        if (settings.action.node.parent.value=="+") { eq.hide(eq.remove(settings.action.node)); } else
+        if (settings.action.node.parent.value=="*") {
+          eq.remove(settings.action.node);
+          eq.replace(eq.hide(settings.action.node.parent), settings.action.node);
+        } else
+        if (settings.action.node.parent.value=="/" && settings.action.node.parent.children[0]==settings.action.node) {
+          eq.remove(settings.action.node);
+          eq.replace(eq.hide(settings.action.node.parent), settings.action.node);
         }
-        else
-        if (settings.action.node.value=="1") {
-            if (settings.action.node.parent.value=="*") { eq.hide(eq.remove(settings.action.node)); } else
-            if (settings.action.node.parent.value=="/" && settings.action.node.parent.children[1]==settings.action.node) {
-            eq.hide(eq.remove(settings.action.node));
-            }
+      }
+      else
+      // CLICKED ELEMENT IS A 1
+      if (settings.action.node.value=="1") {
+        if (settings.action.node.parent.value=="*") { eq.hide(eq.remove(settings.action.node)); } else
+        if (settings.action.node.parent.value=="/" && settings.action.node.parent.children[1]==settings.action.node) {
+          eq.hide(eq.remove(settings.action.node));
         }
-        else {
-            var val = parseInt(settings.action.node.value);
-            var d = 0; if (!isNaN(val) && settings.a.decompose) { for (var i=2; i<val && !d; i++) { if (val%i==0) { d=i; } } }
-            var authorized = settings.a.all | (isNaN(val) || val<0 || (d==0))?settings.a.minus1:settings.a.decompose;
+      }
+      else {
+        var val = parseInt(settings.action.node.value);
+        var d = 0; if (!isNaN(val) && (settings.a.decompose||settings.a.all)) { for (var i=2; i<val && !d; i++) { if (val%i==0) { d=i; } } }
+        var authorized = settings.a.all || ((isNaN(val) || val<0 || (d==0))?settings.a.minus1:settings.a.decompose);
 
-            if (authorized) {
+        if (authorized) {
 
-                // DECOMPOSE THE VALUE INTO A MULTIPLICATION
-                var elt = helpers.element(settings.action.node.parent);
-                elt.type = c.op; elt.value = "*";
-                elt.origin = [settings.action.node.elt[0].pos.now[0], settings.action.node.elt[0].pos.now[1]];
-                var child = helpers.element(elt);
-                child.type = c.val; child.value = "-1";
-                child.origin = [settings.action.node.elt[0].pos.now[0], settings.action.node.elt[0].pos.now[1]];
-                elt.children=[child,settings.action.node];
+          // DECOMPOSE THE VALUE INTO A MULTIPLICATION (X BECOMES -1*-X OR A*B IF IT IS POSSIBLE)
+          var elt = helpers.element();
+          elt.type = c.op; elt.value = "*";
+          elt.origin = [settings.action.node.elt[0].pos.now[0], settings.action.node.elt[0].pos.now[1]];
+          var child = helpers.element();
+          child.type = c.val; child.value = "-1";
+          child.origin = [settings.action.node.elt[0].pos.now[0], settings.action.node.elt[0].pos.now[1]];
+          elt.children=[child,settings.action.node];
 
-                if (isNaN(val)) {
-                    if (settings.action.node.value[0]=='-') { settings.action.node.value=settings.action.node.value.substr(1); }
-                    else                                    { settings.action.node.value="-"+settings.action.node.value; }
-                }
-                else {
-                    if (val<0)  { settings.action.node.value=settings.action.node.value.substr(1); }
-                    else {
-                        if (d)  { settings.action.node.value=Math.floor(val/d); child.value = d; }
-                        else    { settings.action.node.value="-"+settings.action.node.value; }
-                    }
-                }
-
-                eq.replace(settings.action.node, elt);
-                settings.action.node.parent = elt;
+          if (isNaN(val)) {
+            if (settings.action.node.value[0]=='-') { settings.action.node.value=settings.action.node.value.substr(1); }
+            else                                    { settings.action.node.value="-"+settings.action.node.value; }
+          }
+          else {
+            if (val<0)  { settings.action.node.value=settings.action.node.value.substr(1); }
+            else {
+              if (d)  { settings.action.node.value=Math.floor(val/d); child.value = d; }
+              else    { settings.action.node.value="-"+settings.action.node.value; }
             }
+          }
+
+          eq.replace(settings.action.node, elt);
+          settings.action.node.parent = elt;
         }
+      }
     }
-}
-else {
-    // A VALUE HAS BEEN MOVED
-
+  }
+  else {
+    // THERE IS AN HELPER, THAT MEANS A VALUE HAS BEEN MOVED
     var coord   = eq.html2svg($this, [ve.clientX, ve.clientY]);
     if (settings.action.source==1) {
-        // VALUE COMES FROM SOURCE ZONE (BUT ITS NOT A BRACKET NOR A SAVE)
+      // VALUE COMES FROM SOURCE ZONE (BUT ITS NOT A BRACKET NOR A SAVE)
+      // 3 OPERATIONS ARE POSSIBLE: + (DROP IN MAIN ZONE), * (DROP IN HEADER), / (DROP IN FOOTER)
+      var op = "";
+      if (eq.$svg.find("#header").attr("class").indexOf("hide")==-1) { eq.$svg.find("#header").attr("class","banner hide"); op="*";
+      } else
+      if (eq.$svg.find("#footer").attr("class").indexOf("hide")==-1) { eq.$svg.find("#footer").attr("class","banner hide"); op="/";
+      } else if (coord[0]>0&&coord[0]<540&&coord[1]>0&&coord[1]<240
+                 && (settings.a.all || settings.a.source&0x01))      { op = "+"; }
 
-        var op = "";
-        if (eq.$svg.find("#header").attr("class").indexOf("hide")==-1) { eq.$svg.find("#header").attr("class","banner hide"); op="*";
-        } else
-        if (eq.$svg.find("#footer").attr("class").indexOf("hide")==-1) { eq.$svg.find("#footer").attr("class","banner hide"); op="/";
-        } else if (coord[0]>0&&coord[0]<540&&coord[1]>0&&coord[1]<240) { op = "+"; }
+      if (op!="") {
+        for (var i=0; i<eq.tree.children.length; i++) {
+          var node = eq.tree.children[i];
+          operator = op;
+          // DIVIDE A FRACTION IS MULTIPLE THE DENOMINATOR
+          if (operator=="/" && node.value==operator) { operator="*"; node = eq.tree.children[i].children[1]; }
 
-        if (op!="") {
-            for (var i=0; i<eq.tree.children.length; i++) {
-                var node = eq.tree.children[i];
-
-                operator = op;
-                if (operator=="/" && node.value==operator) { operator="*"; node = eq.tree.children[i].children[1]; }
-
-                if (node.value==operator) {
-                    var elt = helpers.element(node);
-                    elt.type = c.val; elt.value = settings.action.helper.find("text").text();
-                    elt.origin = [(coord[0]/eq.scale.now-eq.margin.now[0])/40,(coord[1]/eq.scale.now-eq.margin.now[1])/40];
-                    node.origin = [(coord[0]/eq.scale.now-eq.margin.now[0])/40,(coord[1]/eq.scale.now-eq.margin.now[1])/40];
-                    node.children.push(elt);
-                }
-                else {
-                    var elt = helpers.element(node.parent);
-                    elt.type = (operator=="/")?c.div:c.op; elt.value = operator;
-                    elt.origin = [(coord[0]/eq.scale.now-eq.margin.now[0])/40,(coord[1]/eq.scale.now-eq.margin.now[1])/40];
-                    var child = helpers.element(elt);
-                    child.type = c.val; child.value = settings.action.helper.find("text").text();
-                    child.origin = [(coord[0]/eq.scale.now-eq.margin.now[0])/40,(coord[1]/eq.scale.now-eq.margin.now[1])/40];
-                    elt.children=[node,child];
-                    eq.replace(node, elt);
-                    elt.parent = node.parent;
-                    elt.children[0].parent = elt;
-                    elt.children[1].parent = elt;
-                }
-            }
+          var elt = helpers.element();
+          elt.type = (operator=="/")?c.div:c.op; elt.value = operator;
+          elt.origin = [(coord[0]/eq.scale.now-eq.margin.now[0])/40,(coord[1]/eq.scale.now-eq.margin.now[1])/40];
+          var child = helpers.element();
+          child.type = c.val; child.value = settings.action.helper.find("text").text();
+          child.origin = [(coord[0]/eq.scale.now-eq.margin.now[0])/40,(coord[1]/eq.scale.now-eq.margin.now[1])/40];
+          elt.children=[node,child];
+          eq.replace(node, elt);
         }
-        settings.action.helper.detach();
-        settings.action.helper = 0;
+      }
+      settings.action.helper.detach();
+      settings.action.helper = 0;
     }
     else {
-        settings.action.node.elt[0].$svg.attr("class","val type0");
-        eq.$svg.find("#over").attr("class","");
-        var a = false;          // REMOVE settings.action.node IF TRUE
-        var helper = true;      // REMOVEE helper IF TRUE
+      // A NODE FROM THE EQUATION HAS BEEN MOVED INSIDE THE EQUATION
+      if (settings.action.source==0) settings.action.node.elt[0].$svg.attr("class","val type0");
+      eq.$svg.find("#over").attr("class","");
+      var a         = false;    // AT THE END, REMOVE settings.action.node IF TRUE
+      var helper    = true;     // AT THE END REMOVEE helper IF TRUE
 
-        if (settings.action.target) {
+      // THE VALUE HAS BEEN MOVED OVER ANOTHER VALUE
+      if (settings.action.target) {
+        // THE VALUE IS NOT A BRACKET FROM SOURCE
+        if (settings.action.source==0) {
+          var vnode     = parseInt(settings.action.node.value);
+          var vtarget   = parseInt(settings.action.target.value);
 
-            // THE VALUE HAS BEEN MOVED OVER ANOTHER VALUE
+          if (settings.action.target.parent==settings.action.node.parent && settings.action.target.parent.value!="/") {
+            // NODE AND SOURCE HAVE THE SAME PARENT (BUT NOT A DIVISION, WE DEAL WITH IT IN A MORE GENERIC WAY LATER)
 
-            if (settings.action.source==0) {
-
-                var vnode = parseInt(settings.action.node.value);
-                var vtarget = parseInt(settings.action.target.value);
-
-                if (settings.action.target.parent==settings.action.node.parent && settings.action.target.parent.value!="/") {
-
-                    // NODE AND SOURCE HAVE THE SAME PARENT (EASY CASE)
-
-                    if (settings.action.target.parent.value=="*") {
-                        if (isNaN(vnode) && vtarget == -1) {
-                            if (settings.action.node.value[0]=='-')   { settings.action.target.value=settings.action.node.value.substr(1); }
-                            else                                      { settings.action.target.value="-"+settings.action.node.value; }
-                            a = true;
-                        } else
-                        if (vnode == -1 && isNaN(vtarget)) {
-                            if (settings.action.target.value[0]=='-') { settings.action.target.value=settings.action.target.value.substr(1); }
-                            else                                      { settings.action.target.value="-"+settings.action.target.value; }
-                            a = true;
-                        } else
-                        if (!isNaN(vnode) && !isNaN(vtarget))         { settings.action.target.value = (vnode*vtarget).toString(); a = true; }
-                    }
-                    else
-                    if (settings.action.target.parent.value=="+") {
-                        if (!isNaN(vnode) && !isNaN(vtarget))         { settings.action.target.value = (vnode+vtarget).toString(); a = true; } else
-                        if (isNaN(vnode) && isNaN(vtarget)) {
-                            var val1 = settings.action.node.value;      if (val1[0]=='-') { val1 = val1.substr(1); }
-                            var val2 = settings.action.target.value;    if (val2[0]=='-') { val2 = val2.substr(1); }
-                            if (settings.action.node.value!=settings.action.target.value && val1==val2) {
-                                settings.action.target.value = 0; a=true;
-                            }
-                        }
-                    }
-                }
-                else {
-                    var operator = 0;
-
-                    // REMOVE TWO SAME VALUE ON THE SAME DIVISION
-                    if (settings.action.node.value==settings.action.target.value) {
-                        var divnode = eq.isindiv(settings.action.node);
-                        var divtarget = eq.isindiv(settings.action.target);
-
-                        for (var i in divnode) for (var j in divtarget)
-                            if (divnode[i].node==divtarget[j].node && divnode[i].div!=divtarget[j].div) { operator = divnode[i].node; }
-
-                        if (operator!=0) {
-                            settings.action.target.value = "1";
-                            settings.action.node.value = "1";
-                            a = true;
-                            if (settings.action.node.div==div.numerator) { settings.action.node = settings.action.target; }
-                        }
-                    }
-
-                    if (!operator && (settings.a.bracket || settings.a.all)) {
-                        // HANDLE INSERTION INTO A BRACKET
-                        var bratarget = settings.action.target;
-                        while (bratarget!=eq.tree && bratarget.type!=c.bra) { bratarget = bratarget.parent; }
-
-
-                        if (bratarget.type==c.bra) {
-                            // TRY TO INSERT THE VALUE NODE (OR ITS OWN BRACKET) INTO THE TARGET BRACKET
-                            var n = [ settings.action.node ];
-                            var branode = settings.action.node;
-                            while (branode!=eq.tree && branode.parent!=bratarget.parent) { branode = branode.parent; }
-                            if (branode.parent == bratarget.parent) { n.push(branode); }
-
-                            for (var i in n) {
-                                if (!operator && n[i].parent==bratarget.parent) {
-                                    var pos = [-1,-1];
-                                    for (var j in bratarget.parent.children) {
-                                            if (bratarget.parent.children[j]==n[i]) { pos[0] = parseInt(j); } else
-                                            if (bratarget.parent.children[j]==bratarget) { pos[1] = parseInt(j); }
-                                    }
-
-                                    if (pos[0]!=-1 && pos[1]!=-1) {
-                                        var side = pos[0]>pos[1], isdiv = (n[i].parent.value=="/");
-
-                                        if ( n[i].parent.value == "+" || bratarget.children[0].value!="+" ) {
-                                            var elt = helpers.element(bratarget);
-                                            elt.type = n[i].parent.type; elt.value = n[i].parent.value;
-                                            elt.origin = [bratarget.parent.elt[side?pos[0]-1:pos[0]].pos.now[0],
-                                                          bratarget.parent.elt[side?pos[0]-1:pos[0]].pos.now[1]];
-                                            eq.remove(n[i]);
-                                            eq.insert(elt, bratarget.children[0]);
-                                            if (side)  { elt.children= [elt.children[0], n[i]]; }
-                                            else       { elt.children= [n[i], elt.children[0]]; }
-                                            n[i].parent = elt;
-                                            operator = true;
-                                        }
-                                        else if (!isdiv || side) {
-                                            for (var i in bratarget.children[0].children) {
-                                                var elt = helpers.element(bratarget);
-                                                elt.type = n[i].parent.type; elt.value = n[i].parent.value;
-                                                elt.origin = [bratarget.parent.elt[side?pos[0]-1:pos[0]].pos.now[0],
-                                                              bratarget.parent.elt[side?pos[0]-1:pos[0]].pos.now[1]];
-                                                var child = n[i].clone();
-                                                child.origin = [ n[i].elt[0].pos.now[0], n[i].elt[0].pos.now[1] ];
-                                                if (side)  { elt.children= [bratarget.children[0].children[i], child]; }
-                                                else       { elt.children= [child, bratarget.children[0].children[i]]; }
-                                                eq.replace(bratarget.children[0].children[i], elt);
-                                                elt.parent = bratarget.children[0];
-                                                elt.children[0].parent = elt;
-                                                elt.children[1].parent = elt;
-                                                }
-                                            eq.remove(eq.hide(n[i]));
-                                            operator = true;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                    if (!operator) {
-                        // TRY TO MOVE A MULTIPLICATION IN A DIVISION NUMERATOR
-                        var n = [ settings.action.node ];
-                        var branode = settings.action.node;
-                        while (branode!=eq.tree) { if (branode.type==c.bra) { n.push(branode); } branode = branode.parent; }
-
-                        for (var i in n) {
-                            if (n[i].parent && n[i].parent.value=="*") {
-                                var tarnode = settings.action.target;
-                                while (tarnode!=eq.tree && tarnode.parent!=n[i].parent) { tarnode = tarnode.parent; }
-
-                                if (tarnode.parent == n[i].parent && tarnode.value=="/") {
-
-                                    var pos = [-1,-1];
-                                    for (var j in tarnode.parent.children) {
-                                            if (tarnode.parent.children[j]==n[i]) { pos[0] = parseInt(j); } else
-                                            if (tarnode.parent.children[j]==tarnode) { pos[1] = parseInt(j); }
-                                    }
-                                    var side = pos[0]>pos[1];
-
-                                    var elt = helpers.element(tarnode);
-                                    elt.type = c.op; elt.value = "*";
-                                    elt.origin = [n[i].parent.elt[side?pos[0]-1:pos[0]].pos.now[0],
-                                                  n[i].parent.elt[side?pos[0]-1:pos[0]].pos.now[1]];
-
-                                    eq.remove(n[i]);
-                                    eq.insert(elt, tarnode.children[0]);
-                                    if (side)  { elt.children= [elt.children[0], n[i]]; }
-                                    else       { elt.children= [n[i], elt.children[0]]; }
-
-                                    n[i].parent = elt;
-
-                                    operator = true;
-                                }
-                            }
-                        }
-
-                    }
-
-
-                }
+            // MULTIPLICATION
+            if (settings.action.target.parent.value=="*") {
+              if (isNaN(vnode) && vtarget == -1) {
+                if (settings.action.node.value[0]=='-')   { settings.action.target.value=settings.action.node.value.substr(1); }
+                else                                      { settings.action.target.value="-"+settings.action.node.value; }
+                a = true;
+              } else
+              if (vnode == -1 && isNaN(vtarget)) {
+                if (settings.action.target.value[0]=='-') { settings.action.target.value=settings.action.target.value.substr(1); }
+                else                                      { settings.action.target.value="-"+settings.action.target.value; }
+                a = true;
+              } else
+              if (!isNaN(vnode) && !isNaN(vtarget))         { settings.action.target.value = (vnode*vtarget).toString(); a = true; }
             }
-            else {
-                // ADD A BRACKET
-                var vtarget = settings.action.target;
-                if (vtarget.parent && vtarget.parent.type!=c.bra) {
-                    var elt = helpers.element(vtarget);
-                    elt.type = c.bra; elt.value = '(';
-                    elt.origin=[settings.action.target.elt[0].pos.now[0],settings.action.target.elt[0].pos.now[1]];
-                    eq.insert(elt, vtarget);
+            else
+            // ADDITION
+            if (settings.action.target.parent.value=="+") {
+              if (!isNaN(vnode) && !isNaN(vtarget))         { settings.action.target.value = (vnode+vtarget).toString(); a = true; }
+              else if (isNaN(vnode) && isNaN(vtarget)) {
+                var val1 = settings.action.node.value;      if (val1[0]=='-') { val1 = val1.substr(1); }
+                var val2 = settings.action.target.value;    if (val2[0]=='-') { val2 = val2.substr(1); }
+                if (settings.action.node.value!=settings.action.target.value && val1==val2) {
+                  settings.action.target.value = 0; a=true;
                 }
+              }
             }
+          }
+          else {
+            var operator = 0;
+
+            // 1. REMOVE TWO SAME VALUES ON THE SAME DIVISION
+            if (settings.action.node.value==settings.action.target.value) {
+              var divnode   = eq.isindiv(settings.action.node);
+              var divtarget = eq.isindiv(settings.action.target);
+
+              for (var i in divnode) for (var j in divtarget) {
+                if (divnode[i].node==divtarget[j].node && divnode[i].div!=divtarget[j].div) { operator = divnode[i].node; }
+              }
+
+              if (operator!=0) {
+                settings.action.target.value = "1";
+                settings.action.node.value   = "1";
+                a = true;
+                if (settings.action.node.div==div.numerator) { settings.action.node = settings.action.target; }
+              }
+            }
+
+            // 2. INSERT INTO A BRACKET
+            if (!operator && (settings.a.bracket || settings.a.all)) {
+              // HANDLE INSERTION INTO A BRACKET
+              var bratarget = settings.action.target;
+              while (bratarget!=eq.tree && bratarget.type!=c.bra) { bratarget = bratarget.parent; }
+
+              if (bratarget.type==c.bra) {
+                // TRY TO INSERT THE VALUE NODE (OR ITS OWN BRACKET) INTO THE TARGET BRACKET
+                var n = [ settings.action.node ];
+                var branode = settings.action.node;
+                while (branode!=eq.tree && branode.parent!=bratarget.parent) { branode = branode.parent; }
+                if (branode.parent == bratarget.parent) { n.push(branode); }
+
+                for (var i in n) {
+                  if (!operator && n[i].parent==bratarget.parent) {
+                    // FIND AN INSERT OF n[i] INTO BRATARGET
+                    // COMPUTE POSITION
+                    var pos = [-1,-1];
+                    for (var j in bratarget.parent.children) {
+                      if (bratarget.parent.children[j]==n[i])      { pos[0] = parseInt(j); } else
+                      if (bratarget.parent.children[j]==bratarget) { pos[1] = parseInt(j); }
+                    }
+
+                    if (pos[0]!=-1 && pos[1]!=-1) {
+                      var side = pos[0]>pos[1], isdiv = (n[i].parent.value=="/");
+
+                      // IT IS JUST A MOVE
+                      if ( n[i].parent.value == "+" || bratarget.children[0].value!="+" ) {
+                        var elt = helpers.element();
+                        elt.type = n[i].parent.type; elt.value = n[i].parent.value;
+                        elt.origin = [bratarget.parent.elt[side?pos[0]-1:pos[0]].pos.now[0],
+                                      bratarget.parent.elt[side?pos[0]-1:pos[0]].pos.now[1]];
+                        eq.remove(n[i]);
+                        eq.insert(elt, bratarget.children[0]);
+                        if (side)  { elt.children= [elt.children[0], n[i]]; }
+                        else       { elt.children= [n[i], elt.children[0]]; }
+                        operator = true;
+                      }
+                      // IT IS A DISTRIBUTION FROM n[i]*(a+b+c), (a+b+c)*n[i] or (a+b+c)/n[i]
+                      else if (!isdiv || side) {
+                        // BROWSE EVERY CHILDREN OF THE BRATARGET
+                        for (var j in bratarget.children[0].children) {
+                          var elt = helpers.element();
+                          elt.type = n[i].parent.type; elt.value = n[i].parent.value;
+                          elt.origin = [bratarget.parent.elt[side?pos[0]-1:pos[0]].pos.now[0],
+                                        bratarget.parent.elt[side?pos[0]-1:pos[0]].pos.now[1]];
+                          var child = n[i].clone();
+                          child.origin = [ n[i].elt[0].pos.now[0], n[i].elt[0].pos.now[1] ];
+                          if (side)  { elt.children= [bratarget.children[0].children[j], child]; }
+                          else       { elt.children= [child, bratarget.children[0].children[j]]; }
+                          eq.replace(bratarget.children[0].children[j], elt);
+                          elt.parent = bratarget.children[0];
+                        }
+                        eq.remove(eq.hide(n[i]));
+                        operator = true;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            // 3. ADD OR MULTIPLY A FRACTION (THE ACTION NODE MAY BE NOT BE FRACTION)
+            if (!operator) {
+              var n         = [ ];                      // ALL PARENTS OF THE ACTION NODE UNTIL THE TREE ROOT
+              var t         = [ ];                      // ALL PARENTS OF THE TARGET NODE UNTIL A COMMON ANCESTOR WITH ACTION
+              var common    = -1;                       // ID OF THE COMMON ANCESTOR IN THE N ARRAY
+              var dnode     = settings.action.node;
+              var dtarget   = settings.action.target;
+              while (dnode!=0) { n.push(dnode); dnode = dnode.parent; }
+              while (dtarget!=0 && common==-1)  {
+                t.push(dtarget); for (var i in n) { if (dtarget==n[i]) { common=i; } } dtarget = dtarget.parent;
+              }
+
+
+              // TWO DIVISIONS ARE SEPARATED BY AN OPERATION (+ OR *)
+              if (common>0 && t.length>2 && n.length>1 && t[t.length-2].value=='/') {
+                // COMPUTE SIDE
+                var pos    = [0,0];
+                for (var i in n[common].children) {
+                    if (n[common].children[i]==n[common-1])   pos[0] = i;
+                    if (n[common].children[i]==t[t.length-2]) pos[1] = i;
+                }
+                var side   = (pos[0]<pos[1]);
+
+                // MULTIPLICATION
+                if (n[common].value=="*") {
+                  var actionIsDiv = (n[common-1].value=='/');
+
+                  // MULTIPLY NUMERATORS AND DENOMINATOR (IF ANY)
+                  for (var i=0; i<(actionIsDiv?2:1); i++) {
+                    var elt    = helpers.element();
+                    elt.type   = c.op; elt.value = "*";
+                    elt.origin = [n[common].elt[side?pos[0]:pos[0]-1].pos.now[0],
+                                  n[common].elt[side?pos[0]:pos[0]-1].pos.now[1]];
+                    var actelt = (actionIsDiv)?n[common-1].children[i]:n[common-1];
+                    var tarelt = t[t.length-2].children[i];
+                    if (side)  { elt.children= [actelt, tarelt]; }
+                    else       { elt.children= [tarelt, actelt]; }
+                    eq.remove(actelt);
+                    eq.replace(tarelt, elt);
+                  }
+                  if (actionIsDiv) { n[common-1].children=[]; eq.remove(eq.hide(n[common-1])); }
+                  operator = true;
+                }
+                // ADDITION (ACTION HAS TO BE A DIVISION)
+                else if (n[common].value=="+" && n[common-1].value=='/' &&
+                         eq.tree2value(n[common-1].children[1]) == eq.tree2value(t[t.length-2].children[1])) {
+                    var elt    = helpers.element();
+                    elt.type   = c.op; elt.value = "+";
+                    if (side)  { elt.children= [n[common-1].children[0], t[t.length-2].children[0]]; }
+                    else       { elt.children= [t[t.length-2].children[0], n[common-1].children[0]]; }
+                    eq.remove(n[common-1].children[0]);
+                    eq.replace(t[t.length-2].children[0], elt);
+                    eq.remove(eq.hide(n[common-1].children[1]));
+                    eq.remove(eq.hide(n[common-1]));
+                    operator = true;
+                }
+              }
+            }
+
+            // END OF THE PART 'THE VALUE HAS BEEN MOVED OVER ANOTHER VALUE'
+          }
         }
         else {
+          // ADD A BRACKET FROM THE SOURCE
+          var vtarget = settings.action.target;
+          if (settings.action.node.elt[0].$svg.attr("class").indexOf("bracket")!=-1) {
+            if (vtarget.parent && vtarget.parent.type!=c.bra) {
+              var elt = helpers.element();
+              elt.type = c.bra; elt.value = '(';
+              elt.origin=[settings.action.target.elt[0].pos.now[0],settings.action.target.elt[0].pos.now[1]];
+              eq.insert(elt, vtarget);
+            }
+          }
+          // SAVE AND REPLACE A NEW VARIABLE
+          else if (settings.action.node.elt[0].$svg.attr("class").indexOf("newvar")!=-1) {
+            //TO DO
+          }
+        }
+      }
+      else {
 
-            // NO TARGET SO WE ONLY LOOK AT THE MOVEMENT
+        // NO TARGET SO WE ONLY LOOK AT THE MOVEMENT
 
-            var $class = eq.$svg.find("#target").attr("class");
-
+        var $class = eq.$svg.find("#target").attr("class");
+        if ($class) {
             if ($class.indexOf("left")!=-1 || $class.indexOf("right")!=-1) {
                 // ADD *1 TO THE ELEMENT
-                var elt = helpers.element(settings.action.node.parent);
+                var elt = helpers.element();
                 elt.type = c.op; elt.value = "*";
                 elt.origin = [settings.action.node.elt[0].pos.now[0], settings.action.node.elt[0].pos.now[1]];
-                var child = helpers.element(elt);
+                var child = helpers.element();
                 child.type = c.val; child.value = "1";
                 child.origin = [settings.action.node.elt[0].pos.now[0], settings.action.node.elt[0].pos.now[1]];
                 elt.children=($class.indexOf("right")!=-1)?[child,settings.action.node]:[settings.action.node,child];
@@ -694,21 +730,19 @@ else {
             else if ($class.indexOf("top")!=-1 || $class.indexOf("bottom")!=-1) {
                 if (settings.action.node.value=="1") {
                     // TRANSFORM 1 INTO A FRACTION (ENTER IN EMPTY MODE TO CHOOSE THE FRACTION VALUE)
-                    var elt = helpers.element(settings.action.node.parent);
+                    var elt = helpers.element();
                     elt.type = c.div; elt.value = "/";
                     elt.origin = [settings.action.node.elt[0].pos.now[0], settings.action.node.elt[0].pos.now[1]];
-                    var child = helpers.element(elt);
+                    var child = helpers.element();
                     child.type = c.val; child.value = "";
                     child.origin = [settings.action.node.elt[0].pos.now[0], settings.action.node.elt[0].pos.now[1]];
                     elt.children=[settings.action.node,child];
                     eq.replace(settings.action.node, elt);
-                    settings.action.node.parent = elt;
-                    settings.action.node.div = div.numerator;
                     settings.action.node.value = "";
+                    settings.action.node.parent = elt; child.parent = elt; // IN THIS CASE, UPDATING THE PARENT IS MANDATORY
                     settings.emptymode = true;
                 }
                 else {
-                    //
                     var branode = settings.action.node;
                     while (branode!=eq.tree && branode.type!=c.bra) { branode = branode.parent; }
                     if (branode.type==c.bra) {
@@ -729,14 +763,12 @@ else {
                             if (tofactorize.length==branode.children[0].children.length) {
                                 for (var i=0; i<tofactorize.length; i++) {
                                     if (i==0) {
-                                        var elt = helpers.element(branode.parent);
+                                        var elt = helpers.element();
                                         elt.type = mult?c.op:c.div; elt.value = mult?"*":"/";
                                         eq.remove(tofactorize[i]);
                                         elt.origin = [settings.action.node.elt[0].pos.now[0], settings.action.node.elt[0].pos.now[1]];
                                         elt.children=mult?[tofactorize[i],branode]:[branode,tofactorize[i]];
                                         eq.replace(branode, elt);
-                                        branode.parent = elt;
-                                        tofactorize[i].parent = elt;
                                     }
                                     else {
                                         eq.remove(eq.hide(tofactorize[i]));
@@ -747,8 +779,8 @@ else {
                     }
                 }
             }
-
         }
+      }
 
         if (a) { eq.remove(eq.hide(settings.action.node)); }
 
@@ -779,12 +811,12 @@ helpers.equations.get($this).label();
                 if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
-        element: function(_parent) {
-            return { type : 0, value : "", children : [], elt: [], div:div.root, parent: _parent, origin:[0,0],
+        element: function() {
+            return { type : 0, value : "", children : [], elt: [], div:div.root, parent: 0, origin:[0,0],
 
             clone: function(_node) {
                 if (!_node) { _node = this; }
-                var ret     = helpers.element(_node.parent);
+                var ret     = helpers.element();
                 ret.type    = _node.type;
                 ret.value   = _node.value;
                 ret.origin  = [ _node.origin[0], _node.origin[1]]
@@ -923,7 +955,7 @@ helpers.equations.get($this).label();
 
                 // BUILD THE TREE
                 process : function(_value, _parent, _div) {
-                    var elt = helpers.element(_parent);
+                    var elt = helpers.element();
                     var done = false;
 
                     // EQUALITY
@@ -1066,6 +1098,9 @@ helpers.equations.get($this).label();
                 if (_node.parent.type==c.div) { _node.div = (_node==_node.parent.children[0])?div.numerator:div.denominator; }
                 else { _node.div = _node.parent.div; }
 
+                // UPDATE PARENT VALUE
+                for (var i in _node.children) { _node.children[i].parent=_node; }
+
                 // OPERATION WITH SINGLE OPERAND
                 if (_node.type==c.op  && _node.children.length==1) {
                     this.replace(_node, _node.children[0]); return this.check(_node.parent);
@@ -1075,7 +1110,7 @@ helpers.equations.get($this).label();
                     for (var i=0; i<_node.children.length; i++) {
                         if (_node.children[i].value=="+") {
                             // ADD BRACKET IF NEED
-                            var elt = helpers.element(_node);
+                            var elt = helpers.element();
                             elt.type = c.bra; elt.value = '(';
                             this.insert(elt, _node.children[i]);
                         }
@@ -1087,7 +1122,7 @@ helpers.equations.get($this).label();
                             _node.children.splice(i, 1);
                             for (var j=children.length-1; j>=0; j--) {
                                 _node.children.splice(i,0, children[j]);
-                                children[j].parent = _node;
+                                // children[j].parent = _node;
                                 if (j!=0) { if (elt.length) { _node.elt.splice(i,0, elt[j-1]); }
                                             else            { _node.elt.splice(i,0, 0);} }
                             }
@@ -1112,7 +1147,7 @@ helpers.equations.get($this).label();
                             _node.children.splice(i, 1);
                             for (var j=children.length-1; j>=0; j--) {
                                 _node.children.splice(i,0, children[j]);
-                                children[j].parent = _node;
+                                // children[j].parent = _node;
                                 if (j!=0) { if (elt.length) { _node.elt.splice(i,0, elt[j-1]); }
                                             else            { _node.elt.splice(i,0, 0);} }
                             }
@@ -1135,22 +1170,22 @@ helpers.equations.get($this).label();
                             var elt1 = _node.children[i].children[0], elt2 = _node.children[i].children[1];
                             this.remove(elt1); this.remove(elt2);
 
-                            var elt = helpers.element(_node);
+                            var elt = helpers.element();
                             elt.type = c.op; elt.value = "*";
                             elt.children = [ elt2, other ];
 
                             this.replace(other, elt);
-                            other.parent = elt;
-                            elt2.parent = elt;
+                            // other.parent = elt; elt2.parent = elt;
                             this.replace(this.hide(_node.children[i]), elt1);
 
                             return this.check(_node);
                         }
                     }
+
                 }
 
                 // CHECK CHILDREN
-                for (var i in _node.children) {  _node.children[i].parent=_node; this.check(_node.children[i]); }
+                for (var i in _node.children) { this.check(_node.children[i]); }
             },
 
             // COMPUTE THE POSITION OF THE ELEMENTS
@@ -1322,9 +1357,9 @@ helpers.equations.get($this).label();
                 for (var i in _node.parent.children) { if (_node.parent.children[i]==_node) { pos = parseInt(i); }}
                 if (pos!=-1) {
                     if (pos==0 && _node.parent.type==c.div) {
-                        var elt = helpers.element(_node.parent);
+                        var elt = helpers.element();
                         elt.type=c.val; elt.value="1";
-                        elt.origin = [_node.elt[0].pos.now[0], _node.elt[0].pos.now[1]];
+                        if (_node.elt && _node.elt[0]) { elt.origin = [_node.elt[0].pos.now[0], _node.elt[0].pos.now[1]]; }
                         _node.parent.children[0] = elt;
                     }
                     else {
@@ -1338,6 +1373,7 @@ helpers.equations.get($this).label();
                     }
 
                 }
+                else { alert("DEBUG : remove error ("+_node.parent.children.length+")"); }
                 return _node;
             },
 
