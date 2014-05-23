@@ -160,7 +160,7 @@
                 else if (e.variant) { html+="'c7 s' onclick=\"$(this).closest('.browser').browser('id','"+e.variant+"');\">^"; }
                 else { html+="'c7'>"; }
                 html+="</div></td>";
-                html+="<td><div class='c0' onclick=\"$(this).closest('.browser').browser('click',this,'"+e.id+"');\">"+e.id;
+                html+="<td><div class='c0' onclick=\"$(this).closest('.browser').browser('click',this,'"+e.id+"');\"><span>"+e.id+"</span>";
                 if (e.reference) {
                     html+="<div onclick=\"$(this).closest('.browser').browser('reference','"+
                           e.reference+"');event.stopPropagation();\">"+e.reference+"</div>";
@@ -200,6 +200,8 @@
             helpers.buildTags($this);
             helpers.buildPopup($this);
             helpers.submit($this, function() { $this.find("#jbrowser").show(); helpers.buildSliders($this);}, true);
+
+            if (settings.onReady) { settings.onReady($this); }
         },
         update: function($this) { $this.addClass("upd"); },
         submit: function($this, _fct, _force) {
@@ -305,7 +307,6 @@
 
                 return this.each(function() {
                     var $this = $(this);
-
 
                     var $settings = $.extend({}, defaults, options, settings);
                     $this.removeClass();

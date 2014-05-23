@@ -14,10 +14,15 @@
                         move        : 0,        // Authorization : move a value (bitset: 0 none, 1 equation, 2 source, 4 bracket)
                         target      : 0,        // Authorization : local target on value (bitset: 0 none, 1 left righ, 2 top down)
                         source      : 0,        // Authorization : source to equation (bitset: 1 add, 2 multiply, 4 divide)
+                        jump        : false,    // Authorization : jump over the equal sign
+                        fraction    : false,    // Authorization : fractions addition and multiplication
+                        addition    : false,    // Authorization : direct factorization for 2*x+3*x = 5*x
                         bracket     : false,    // Authorization : distribution
                         delbracket  : false,    // Authorization : delete brackets
                         minus1      : false,    // Authorization : transform x into -1*-x
-                        decompose   : false     // Authorization : transform 6 into 2*3
+                        decompose   : false,    // Authorization : transform 6 into 2*3
+
+                        addeq       : false     // Authorization : add equations (blue arrow). Not conceirned by a.all
                       },
         top         : 5,                        // top position of the first equation
         debug       : true                      // Debug mode
@@ -27,6 +32,7 @@
         val         : 0,
         op          : 1,
         div         : 2,
+        user        : 3,
         bra         : 5
     };
 
@@ -116,46 +122,7 @@
                 $this.find("#exercice p").css("font-size",(0.6*settings.font)+"em");
 
                 // SOURCE
-                for (var i in settings.source) {
-                    var $val    = $("#template .val.type"+c.val, settings.svg.root()).clone().appendTo($("#source", settings.svg.root()));
-                    var vClass  ="";
-                    var vSource = settings.source[i];
-                    if (!vSource.length)    { vClass=" bracket"; }
-                    else if (vSource=="!")  { vClass=" newvar"; vSource="";}
-                    $val.attr("transform","translate(40,"+(40+i*50)+")").attr("id",i).attr("class","val source"+vClass);
-                    $("text",$val).text(vSource);
-
-                    $val.bind("mousedown touchstart", function(e) {
-                        var settings = helpers.settings($(this).closest(".equation"));
-                        if (settings.interactive) {
-                            var ve = (e && e.originalEvent && e.originalEvent.touches && e.originalEvent.touches.length)?
-                                      e.originalEvent.touches[0]:e;
-                            var eq = helpers.equations.get($this);
-                            var now= new Date();
-                            settings.action.pos=[ve.clientX,ve.clientY];
-                            settings.action.node={elt:[{$svg:$(this), pos:{now:[-eq.margin.now[0]/40 - 1.1/eq.scale.now,
-                                (-eq.margin.now[1]-eq.top/eq.scale.now)/40+(1+1.25*parseInt($(this).attr("id")))/eq.scale.now]}}]};
-                            settings.action.node.value = $(this).find("text").text();
-                            settings.action.time = now.getTime();
-                            settings.action.source = ($(this).find("text").text().length?1:2);
-                            settings.action.helper = 0;
-                            settings.action.equation = 0;
-                        }
-                        e.preventDefault();
-                    });
-                }
-
-                // BUILD RESULTS AS TREE (USELESS FOR THE MOMENT)
-                for (var i=0; i<settings.result.length; i++) {
-                    var r = helpers.equation();
-                    r.value = settings.result[i];
-                    if (!r.init($this)) {
-                        for (var j in r.value2tree.errors) { $this.find("#error div").append("<p>- "+r.value2tree.errors[j]); }
-                        $this.find("#error").show();
-                        settings.result[i]=0;
-                    }
-                    else settings.result[i]=r;
-                }
+                for (var i in settings.source) { helpers.addSource($this, settings.source[i], 0); }
 
                 // EQUATIONS
                 settings.ratio = 640/$this.width();
@@ -181,11 +148,12 @@
                             var ve = (e && e.originalEvent && e.originalEvent.touches && e.originalEvent.touches.length)?
                                       e.originalEvent.touches[0]:e;
 
-                            settings.action.node = 0;
-                            settings.action.target = 0;
-                            settings.action.pos=[ve.clientX,ve.clientY];
-                            settings.action.time = 0;
-                            settings.action.equation = 1;
+                            settings.action.client      = [ve.clientX,ve.clientY];
+                            settings.action.node        = 0;
+                            settings.action.target      = 0;
+                            settings.action.pos         = [ve.clientX,ve.clientY];
+                            settings.action.time        = 0;
+                            settings.action.equation    = 1;
                             var id = parseInt($(this).closest(".equ").attr("id"));
 
                             if (settings.data[id].tree.value=="=") {
@@ -194,13 +162,15 @@
                                 settings.action.helper = 2;
                                 for (var i=0; i<2; i++) {
                                     if (settings.data[id].tree.children[i].type==c.val &&
-                                        /^[a-zA-Z()]+$/.test(settings.data[id].tree.children[i].value) ) { settings.action.helper=i; }
+                                        /^[a-zA-Z()]+$/.test(settings.data[id].tree.children[i].value) ) { settings.action.helper=i; break;}
                                 }
 
-                                $("#arrow path", settings.svg.root()).css("fill",(settings.action.helper==2)?"blue":"red");
-                                settings.action.node = id+1;
-                                $("#arrow", settings.svg.root()).attr("transform",
-                                                "translate(0,"+settings.data[id].top+")");
+                                if (settings.action.helper!=2 || settings.a.addeq) {
+                                    $("#arrow path", settings.svg.root()).css("fill",(settings.action.helper==2)?"blue":"red");
+                                    settings.action.node = id+1;
+                                    $("#arrow", settings.svg.root()).attr("transform",
+                                                    "translate(0,"+settings.data[id].top+")");
+                                } else { settings.action.equation = -1; }
                             }
                         }
                         e.preventDefault();
@@ -227,13 +197,17 @@
                         if (settings.interactive && settings.action.node!=0 && !settings.emptymode) {
                             var ve = (e && e.originalEvent && e.originalEvent.touches && e.originalEvent.touches.length)?
                                       e.originalEvent.touches[0]:e;
+                            // EVENT.CLIENTX NOT AVAILABLE IN TOUCHEND (JUST STORE IT)
+                            settings.action.client = [ ve.clientX, ve.clientY ];
 
                             var eq = helpers.equations.get($this);
                             if (settings.action.equation) {
                                 // MOVE A MINIMIZED EQUATION TO ANOTHER ONE
-                                settings.action.coord = [ ve.clientX*settings.ratio-85, ve.clientY*settings.ratio-eq.top ];
+                                settings.action.coord = [ settings.action.client[0]*settings.ratio-85,
+                                                          settings.action.client[1]*settings.ratio-eq.top ];
 
-                                if (settings.action.coord[0]>0 && settings.action.coord[0]<540 &&
+                                if (settings.action.equation==1 &&
+                                    settings.action.coord[0]>0 && settings.action.coord[0]<540 &&
                                     settings.action.coord[1]>0 && settings.action.coord[1]<240) {
                                     var id = settings.action.node-1;
                                     var up = (helpers.equations.id<id);
@@ -245,17 +219,17 @@
                             else
                             if (settings.action.helper) {
                                 // MOVE THE HELPER
-
                                 settings.action.coord = [
                                     ((eq.margin.now[0]+settings.action.node.elt[0].pos.now[0]*40)+
-                                    (ve.clientX-settings.action.pos[0])*settings.ratio/eq.scale.now),
+                                    (settings.action.client[0]-settings.action.pos[0])*settings.ratio/eq.scale.now),
                                     ((eq.margin.now[1]+settings.action.node.elt[0].pos.now[1]*40)+
-                                    (ve.clientY-settings.action.pos[1])*settings.ratio/eq.scale.now) ];
+                                    (settings.action.client[1]-settings.action.pos[1])*settings.ratio/eq.scale.now) ];
                                 settings.action.helper.attr("transform","translate("+
                                     settings.action.coord[0]+","+settings.action.coord[1]+")");
 
                                 // FIND THE CLOSEST TARGET
-                                var coord   = eq.html2svg($this, [ve.clientX-$this.offset().left, ve.clientY-$this.offset().top]);
+                                var coord   = eq.html2svg($this, [ settings.action.client[0]-$this.offset().left,
+                                                                   settings.action.client[1]-$this.offset().top ]);
                                 settings.action.target = 0;
 
                                 if (settings.action.source!=1) {
@@ -265,18 +239,18 @@
                                     if (!settings.action.target) {
                                         eq.$svg.find("#over").attr("class","");
 
-                                        var dx = Math.pow((ve.clientX-settings.action.pos[0])*settings.ratio/(40*eq.scale.now),2);
-                                        var dy = Math.pow((ve.clientY-settings.action.pos[1])*settings.ratio/(40*eq.scale.now),2);
+                                        var dx = Math.pow((settings.action.client[0]-settings.action.pos[0])*settings.ratio/(40*eq.scale.now),2);
+                                        var dy = Math.pow((settings.action.client[1]-settings.action.pos[1])*settings.ratio/(40*eq.scale.now),2);
                                         var d2 = dx + dy;
                                         if (d2>0.05 && d2<0.5) {
                                             if (dy==0 || dx/dy>1.5) {
                                                 if (settings.a.all || settings.a.target&0x01) {
                                                     eq.$svg.find("#target").
-                                                        attr("class",(ve.clientX>settings.action.pos[0])?"left":"right"); } } else
+                                                        attr("class",(settings.action.client[0]>settings.action.pos[0])?"left":"right"); } } else
                                             if (dx==0 || dy/dx>1.5) {
                                                 if (settings.a.all || settings.a.target&0x02) {
                                                     eq.$svg.find("#target").
-                                                        attr("class",(ve.clientY>settings.action.pos[1])?"top":"bottom"); } }
+                                                        attr("class",(settings.action.client[1]>settings.action.pos[1])?"top":"bottom"); } }
                                         }
                                         else { eq.$svg.find("#target").attr("class",""); }
                                     }
@@ -315,7 +289,7 @@
                                         eq.margin.now[1]+settings.action.node.elt[0].pos.now[1]*40 ];
                                     if (settings.action.source!=0) {
                                         if (( settings.a.move&0x02 && settings.action.source==1 ) ||
-                                            ( settings.a.move&0x04 && settings.action.source==2 ) ) {
+                                            ( settings.a.move&0x04 && settings.action.source==2 ) || settings.a.all ) {
                                             var vClass = settings.action.node.elt[0].$svg.attr("class").replace("source","type0");
                                             settings.action.helper = settings.action.node.elt[0].$svg.clone().attr("class",vClass)
                                                 .attr("transform","translate("+settings.action.coord[0]+","+settings.action.coord[1]+")")
@@ -330,11 +304,12 @@
                                                     .attr("transform","translate("+settings.action.coord[0]+","+settings.action.coord[1]+")")
                                                     .detach().appendTo(eq.$svg.find("#content")).show();
                                             }
-
+                                            settings.action.fromleft = (settings.action.coord[0]<eq.sep+eq.margin.now[0]);
                                             settings.action.node.elt[0].$svg.detach().appendTo(eq.$svg.find("#content"));
                                             settings.action.helper =
                                                 settings.action.node.elt[0].$svg.clone().appendTo(eq.$svg.find("#content"));
-                                            settings.action.node.elt[0].$svg.attr("class","val type0 source");
+                                            var vClass = settings.action.node.elt[0].$svg.attr("class");
+                                            settings.action.node.elt[0].$svg.attr("class",vClass+" source");
                                         }
                                     }
                                 }
@@ -355,8 +330,11 @@
 
 // SOME NODES ARE EMPTY (CREATING A FRACTION FROM 1)... FILL THEM THANKS TO THE CURRENT NODE
 if (settings.emptymode) {
-  if (settings.action.node.value!="0" && !isNaN(parseInt(settings.action.node.value))) {
-    eq.$svg.find(".empty").each( function() { settings.nodes[$(this).attr("id")].value = settings.action.node.value; });
+  if (settings.action.node.value!="0" && (settings.action.node.type==c.user || !isNaN(parseInt(settings.action.node.value)))) {
+    eq.$svg.find(".empty").each( function() {
+        settings.nodes[$(this).attr("id")].type  = settings.action.node.type;
+        settings.nodes[$(this).attr("id")].value = settings.action.node.value;
+    });
     settings.emptymode = false;
   }
 }
@@ -393,87 +371,116 @@ else
 {
   eq.$svg.find("#target").hide();
   var t     = new Date(), delta = t.getTime() - settings.action.time;           // TIME DELTA
-  var distx = Math.pow(ve.clientX-settings.action.pos[0],2);                    // DISTANCE FROM DOWN IN X-AXIS
-  var disty = Math.pow(ve.clientY-settings.action.pos[1],2);                    // DISTANCE FROM DOWN IN Y-AXIS
+  var distx = Math.pow(settings.action.client[0]-settings.action.pos[0],2);     // DISTANCE FROM DOWN IN X-AXIS
+  var disty = Math.pow(settings.action.client[1]-settings.action.pos[1],2);     // DISTANCE FROM DOWN IN Y-AXIS
   var dist  = 100* Math.sqrt(distx + disty) / ($this.width()*eq.scale.now);     // DISTANCE FROM DOWN
 
   // NO HELPER MEANS THERE HASN'T BEEN ANY MOVEMENT, JUST A MERE CLICK
   if (!settings.action.helper) {
-
-    var done = false;
-
-    // LOOKING FOR A PARENT BRACKET
-    var bra = settings.action.node;
-    while (bra!=eq.tree && bra.type!=c.bra) { bra = bra.parent; }
-    if (bra.type==c.bra && (settings.a.delbracket || settings.a.all )) {
-      var cbra = bra.children[0];
-      // CURRENT NODE IS INSIDE A BRACKET : CAN WE REMOVE IT
-      if (cbra.value=="*" || cbra.type==c.val || cbra.type==c.bra || cbra.value=="/" ||
-          bra.parent==0 || bra.parent.value=="+" || bra.parent.value=="=" || bra.parent.value=="/" ) {
-        eq.remove(cbra);
-        eq.replace(eq.hide(bra), cbra);
-        done = true;
+    if (settings.action.source!=0) {
+      if (settings.action.node.value.length!=0) {
+        if (settings.action.node.elt[0].$svg.attr("class").indexOf("type"+c.user)!=-1) {
+          // CLICK ON A SOURCE USER VALUE TO REPLACE SAME VALUE IN THE EQUATION
+          eq.changeForUser(settings.action.node.value);
+        }
+        else {
+          if (settings.a.minus1||settings.a.all) {
+            // CHANGE SIGN OF THE SOURCE VALUE
+            var value = settings.action.node.value;
+            if (value[0]=='-') { value = value.substr(1); } else { value = "-"+value; }
+            $("text", settings.action.node.elt[0].$svg).text(value);
+          }
+        }
       }
     }
+    else {
+      var done = false;
 
-    if (!done) {
-      // CLICKED ELEMENT IS A 0: ABSORB IN * AND /, REMOVE IN +
-      if (settings.action.node.value=="0") {
-        if (settings.action.node.parent.value=="+") { eq.hide(eq.remove(settings.action.node)); } else
-        if (settings.action.node.parent.value=="*") {
-          eq.remove(settings.action.node);
-          eq.replace(eq.hide(settings.action.node.parent), settings.action.node);
-        } else
-        if (settings.action.node.parent.value=="/" && settings.action.node.parent.children[0]==settings.action.node) {
-          eq.remove(settings.action.node);
-          eq.replace(eq.hide(settings.action.node.parent), settings.action.node);
+      // LOOKING FOR A PARENT BRACKET
+      var bra = settings.action.node;
+      while (bra!=eq.tree && bra.type!=c.bra) { bra = bra.parent; }
+      if (bra.type==c.bra && (settings.a.delbracket || settings.a.all )) {
+        var cbra = bra.children[0];
+        // CURRENT NODE IS INSIDE A BRACKET : CAN WE REMOVE IT
+        if (cbra.value=="*" || cbra.type==c.val || cbra.type==c.bra || cbra.value=="/" ||
+            bra.parent==0 || bra.parent.value=="+" || bra.parent.value=="=" || bra.parent.value=="/" || bra.parent.value=="(" ) {
+          eq.remove(cbra);
+          eq.replace(eq.hide(bra), cbra);
+          done = true;
         }
       }
-      else
-      // CLICKED ELEMENT IS A 1
-      if (settings.action.node.value=="1") {
-        if (settings.action.node.parent.value=="*") { eq.hide(eq.remove(settings.action.node)); } else
-        if (settings.action.node.parent.value=="/" && settings.action.node.parent.children[1]==settings.action.node) {
-          eq.hide(eq.remove(settings.action.node));
-        }
-      }
-      else {
-        var val = parseInt(settings.action.node.value);
-        var d = 0; if (!isNaN(val) && (settings.a.decompose||settings.a.all)) { for (var i=2; i<val && !d; i++) { if (val%i==0) { d=i; } } }
-        var authorized = settings.a.all || ((isNaN(val) || val<0 || (d==0))?settings.a.minus1:settings.a.decompose);
 
-        if (authorized) {
-
-          // DECOMPOSE THE VALUE INTO A MULTIPLICATION (X BECOMES -1*-X OR A*B IF IT IS POSSIBLE)
-          var elt = helpers.element();
-          elt.type = c.op; elt.value = "*";
-          elt.origin = [settings.action.node.elt[0].pos.now[0], settings.action.node.elt[0].pos.now[1]];
-          var child = helpers.element();
-          child.type = c.val; child.value = "-1";
-          child.origin = [settings.action.node.elt[0].pos.now[0], settings.action.node.elt[0].pos.now[1]];
-          elt.children=[child,settings.action.node];
-
-          if (isNaN(val)) {
-            if (settings.action.node.value[0]=='-') { settings.action.node.value=settings.action.node.value.substr(1); }
-            else                                    { settings.action.node.value="-"+settings.action.node.value; }
+      if (!done) {
+        // CLIKED ELEMENT IS AN USER VARIABLE : JUST EXPEND IT
+        if (settings.action.node.elt[0].$svg.attr("class").indexOf("type"+c.user)!=-1) {
+          var sid = -1; for (var i in settings.sourcedef) { if (settings.sourcedef[i].value==settings.action.node.value) { sid = i; } }
+          if (sid!=-1) {
+            var elt = settings.sourcedef[sid].elt.clone();
+            elt.origin=[settings.action.node.elt[0].pos.now[0], settings.action.node.elt[0].pos.now[1]];
+            eq.replace(eq.hide(settings.action.node), elt);
           }
-          else {
-            if (val<0)  { settings.action.node.value=settings.action.node.value.substr(1); }
-            else {
-              if (d)  { settings.action.node.value=Math.floor(val/d); child.value = d; }
-              else    { settings.action.node.value="-"+settings.action.node.value; }
+          done = true;
+        }
+      }
+
+      if (!done) {
+        // CLICKED ELEMENT IS A 0: ABSORB IN * AND /, REMOVE IN +
+        if (settings.action.node.value=="0") {
+          if (settings.action.node.parent.value=="+") { eq.hide(eq.remove(settings.action.node)); } else
+          if (settings.action.node.parent.value=="*") {
+            eq.remove(settings.action.node);
+            eq.replace(eq.hide(settings.action.node.parent), settings.action.node);
+          } else
+          if (settings.action.node.parent.value=="/" && settings.action.node.parent.children[0]==settings.action.node) {
+            eq.remove(settings.action.node);
+            eq.replace(eq.hide(settings.action.node.parent), settings.action.node);
+          }
+        }
+        else
+        // CLICKED ELEMENT IS A 1
+        if (settings.action.node.value=="1") {
+          if (settings.action.node.parent.value=="*") { eq.hide(eq.remove(settings.action.node)); } else
+          if (settings.action.node.parent.value=="/" && settings.action.node.parent.children[1]==settings.action.node) {
+            eq.hide(eq.remove(settings.action.node));
+          }
+        }
+        else {
+          var val = parseInt(settings.action.node.value);
+          var d = 0; if (!isNaN(val) && (settings.a.decompose||settings.a.all)) { for (var i=2; i<val && !d; i++) { if (val%i==0) { d=i; } } }
+          var authorized = settings.a.all || ((isNaN(val) || val<0 || (d==0))?settings.a.minus1:settings.a.decompose);
+
+          if (authorized) {
+            // DECOMPOSE THE VALUE INTO A MULTIPLICATION (X BECOMES -1*-X OR A*B IF IT IS POSSIBLE)
+            var elt = helpers.element();
+            elt.type = c.op; elt.value = "*";
+            elt.origin = [settings.action.node.elt[0].pos.now[0], settings.action.node.elt[0].pos.now[1]];
+            var child = helpers.element();
+            child.type = c.val; child.value = "-1";
+            child.origin = [settings.action.node.elt[0].pos.now[0], settings.action.node.elt[0].pos.now[1]];
+            elt.children=[child,settings.action.node];
+
+            if (isNaN(val)) {
+              if (settings.action.node.value[0]=='-') { settings.action.node.value=settings.action.node.value.substr(1); }
+              else                                    { settings.action.node.value="-"+settings.action.node.value; }
             }
-          }
+            else {
+              if (val<0)  { settings.action.node.value=settings.action.node.value.substr(1); }
+              else {
+                if (d)  { settings.action.node.value=Math.floor(val/d); child.value = d; }
+                else    { settings.action.node.value="-"+settings.action.node.value; }
+              }
+            }
 
-          eq.replace(settings.action.node, elt);
-          settings.action.node.parent = elt;
+            eq.replace(settings.action.node, elt);
+            settings.action.node.parent = elt;
+          }
         }
       }
     }
   }
   else {
     // THERE IS AN HELPER, THAT MEANS A VALUE HAS BEEN MOVED
-    var coord   = eq.html2svg($this, [ve.clientX, ve.clientY]);
+    var coord   = eq.html2svg($this, settings.action.client);
     if (settings.action.source==1) {
       // VALUE COMES FROM SOURCE ZONE (BUT ITS NOT A BRACKET NOR A SAVE)
       // 3 OPERATIONS ARE POSSIBLE: + (DROP IN MAIN ZONE), * (DROP IN HEADER), / (DROP IN FOOTER)
@@ -495,7 +502,8 @@ else
           elt.type = (operator=="/")?c.div:c.op; elt.value = operator;
           elt.origin = [(coord[0]/eq.scale.now-eq.margin.now[0])/40,(coord[1]/eq.scale.now-eq.margin.now[1])/40];
           var child = helpers.element();
-          child.type = c.val; child.value = settings.action.helper.find("text").text();
+          child.type = settings.action.node.elt[0].$svg.attr("class").indexOf("type"+c.user)!=-1?c.user:c.val;
+          child.value = settings.action.helper.find("text").text();
           child.origin = [(coord[0]/eq.scale.now-eq.margin.now[0])/40,(coord[1]/eq.scale.now-eq.margin.now[1])/40];
           elt.children=[node,child];
           eq.replace(node, elt);
@@ -518,7 +526,8 @@ else
           var vnode     = parseInt(settings.action.node.value);
           var vtarget   = parseInt(settings.action.target.value);
 
-          if (settings.action.target.parent==settings.action.node.parent && settings.action.target.parent.value!="/") {
+          if (settings.action.target.parent==settings.action.node.parent && settings.action.target.parent.value!="/" &&
+              settings.action.target.type!=c.user && settings.action.node.type!=c.user ) {
             // NODE AND SOURCE HAVE THE SAME PARENT (BUT NOT A DIVISION, WE DEAL WITH IT IN A MORE GENERIC WAY LATER)
 
             // MULTIPLICATION
@@ -545,6 +554,15 @@ else
                 if (settings.action.node.value!=settings.action.target.value && val1==val2) {
                   settings.action.target.value = 0; a=true;
                 }
+                else if (settings.action.node.value==settings.action.target.value) {
+                  var mul = helpers.element();  mul.type  = c.val;  mul.value  = "2";
+                  var elt = helpers.element();  elt.type  = c.op;   elt.value  = "*";
+                  elt.children = [mul, settings.action.target];
+                  elt.origin = [settings.action.node.elt[0].pos.now[0], settings.action.node.elt[0].pos.now[1]];
+                  mul.origin = [settings.action.node.elt[0].pos.now[0], settings.action.node.elt[0].pos.now[1]];
+                  eq.replace(settings.action.target, elt);
+                  a=true;
+                }
               }
             }
           }
@@ -562,7 +580,9 @@ else
 
               if (operator!=0) {
                 settings.action.target.value = "1";
+                settings.action.target.type  = c.val;
                 settings.action.node.value   = "1";
+                settings.action.node.type    = c.val;
                 a = true;
                 if (settings.action.node.div==div.numerator) { settings.action.node = settings.action.target; }
               }
@@ -631,7 +651,7 @@ else
             }
 
             // 3. ADD OR MULTIPLY A FRACTION (THE ACTION NODE MAY BE NOT BE FRACTION)
-            if (!operator) {
+            if (!operator && (settings.a.fraction || settings.a.all)) {
               var n         = [ ];                      // ALL PARENTS OF THE ACTION NODE UNTIL THE TREE ROOT
               var t         = [ ];                      // ALL PARENTS OF THE TARGET NODE UNTIL A COMMON ANCESTOR WITH ACTION
               var common    = -1;                       // ID OF THE COMMON ANCESTOR IN THE N ARRAY
@@ -689,6 +709,63 @@ else
               }
             }
 
+            // 4. AUTOMATIC FACTORIZATION: MOVE AN UNKNOWN VALUE ON THE SAME UNKNOWN VALUE(Ex: 5*X+4*X)
+            if (!operator && (settings.a.addition || settings.a.all)) {
+              if (settings.action.node.value == settings.action.target.value &&
+                  (isNaN(parseInt(settings.action.target.value))||settings.action.target.type==c.user) ) {
+                var isOK    = true;
+                var otarget = 0;
+                var ptarget = settings.action.target.parent;
+                if (ptarget.value=="*") {
+                  ptarget = settings.action.target.parent.parent;
+                  isOK = (settings.action.target.parent.children.length==2);
+                  if (isOK) {
+                    for (var i in settings.action.target.parent.children) {
+                      if (settings.action.target.parent.children[i]!=settings.action.target) {
+                        otarget = settings.action.target.parent.children[i];
+                      }
+                    }
+                    isOK=(otarget && otarget.type==c.val && !isNaN(parseInt(otarget.value)));
+                  }
+                }
+
+                var onode = 0;
+                var pnode = settings.action.node.parent;
+                if (isOK) {
+                  if (pnode.value=="*") {
+                    pnode = settings.action.node.parent.parent;
+                    isOK = (settings.action.node.parent.children.length==2);
+                    if (isOK) {
+                      for (var i in settings.action.node.parent.children) {
+                        if (settings.action.node.parent.children[i]!=settings.action.node) {
+                          onode = settings.action.node.parent.children[i];
+                        }
+                      }
+                      isOK=(onode && onode.type==c.val && !isNaN(parseInt(onode.value)));
+                    }
+                  }
+                }
+
+                isOK &= (pnode.value=='+' && pnode==ptarget);
+                if (isOK) {
+                  var value =  (otarget?parseInt(otarget.value):1)+(onode?parseInt(onode.value):1);
+                  eq.remove(eq.hide(onode?settings.action.node.parent:settings.action.node));
+                  var parent = settings.action.target.parent;
+                  var mul = helpers.element();  mul.type  = c.val;  mul.value  = value;
+                  var elt = helpers.element();  elt.type  = c.op;   elt.value  = "*";
+                  elt.children = [mul, settings.action.target];
+                  elt.origin = [settings.action.target.elt[0].pos.now[0], settings.action.target.elt[0].pos.now[1]];
+                  mul.origin = [settings.action.target.elt[0].pos.now[0], settings.action.target.elt[0].pos.now[1]];
+                  if (otarget) { eq.remove(settings.action.target); }
+                  eq.replace(otarget?parent:settings.action.target, elt);
+                  if (otarget) { eq.hide(parent); }
+
+                  a = false;
+                  operator = true;
+                }
+              }
+            }
+
             // END OF THE PART 'THE VALUE HAS BEEN MOVED OVER ANOTHER VALUE'
           }
         }
@@ -705,7 +782,17 @@ else
           }
           // SAVE AND REPLACE A NEW VARIABLE
           else if (settings.action.node.elt[0].$svg.attr("class").indexOf("newvar")!=-1) {
-            //TO DO
+            // FIND THE PARENT BRACKET
+            var elt=0;
+            while (vtarget!=eq.tree && elt==0) { if (vtarget.type==c.bra) { elt = vtarget; } vtarget = vtarget.parent; }
+
+            if (elt && elt.children[0].children.length) {
+              var value     = eq.tree2value(elt.children[0]);
+              var already   = false;
+              for (var i in settings.sourcedef) { if (settings.sourcedef[i].value==value) { already = true;} }
+              if (!already) { helpers.addSource($this,value, elt.children[0]); }
+              eq.changeForUser(value);
+            }
           }
         }
       }
@@ -751,7 +838,6 @@ else
                         if ( (branode.children[0].value =="+") &&
                              ( (mult && (settings.action.node.div==div.numerator||settings.action.node.div==div.root)) ||
                                (divi && settings.action.node.div==div.denominator)) ) {
-
                             var tofactorize = [];
                             for (var i in branode.children[0].children) {
                                 var vals = eq.getvals(branode.children[0].children[i], mult);
@@ -779,6 +865,35 @@ else
                     }
                 }
             }
+        }
+        else {
+          // NO TARGET NODE NOR TARGET ELEMENT... MAYBE A JUMP
+          if (!settings.action.source && eq.tree.value=="=" && settings.action.fromleft !=(settings.action.coord[0]<eq.sep+eq.margin.now[0]) ) {
+            var node = settings.action.node;
+            var son  = 0;
+            while (node.parent!=eq.tree) { son=node; node=node.parent; }
+              // JUMP OF UNIQUE VALUE IS NOT ALLOWED
+            if (son && node.value=="+") {
+                eq.remove(son);
+                var elt = helpers.element(); elt.type = c.op; elt.value = "+";
+                elt.origin = [settings.action.node.elt[0].pos.now[0], settings.action.node.elt[0].pos.now[1]];
+
+                if (son.type==c.val) {
+                  if (son.value[0]=='-') {  son.value=son.value.substr(1); } else { son.value="-"+son.value; }
+                  elt.children=[eq.tree.children[settings.action.fromleft?1:0],son];
+                  eq.replace(eq.tree.children[settings.action.fromleft?1:0], elt);
+                }
+                else {
+                  var min = helpers.element(); min.type = c.val; min.value = "-1";
+                  min.origin = [settings.action.node.elt[0].pos.now[0], settings.action.node.elt[0].pos.now[1]];
+                  var mul = helpers.element(); mul.type = c.op; mul.value = "*";
+                  mul.origin = [settings.action.node.elt[0].pos.now[0], settings.action.node.elt[0].pos.now[1]];
+                  mul.children = [ min, son ];
+                  elt.children=[eq.tree.children[settings.action.fromleft?1:0],mul];
+                  eq.replace(eq.tree.children[settings.action.fromleft?1:0], elt);
+                }
+            }
+          }
         }
       }
 
@@ -909,7 +1024,7 @@ helpers.equations.get($this).label();
                     _pos = [ (_pos[0]/this.scale.now-this.margin.now[0])/40, (_pos[1]/this.scale.now - this.margin.now[1])/40];
                 }
                 var ret = 0;
-                if (_node.type==c.val) {
+                if (_node.type==c.val || _node.type==c.user) {
                     ret= ( _node.elt[0].pos.now[0]-0.5+_offset[0] < _pos[0] && _node.elt[0].pos.now[0]+0.5+_offset[0] > _pos[0] &&
                            _node.elt[0].pos.now[1]-0.5+_offset[1] < _pos[1] && _node.elt[0].pos.now[1]+0.5+_offset[1] > _pos[1] )?_node:0;
                 }
@@ -1027,6 +1142,7 @@ helpers.equations.get($this).label();
                         break;
                     case c.bra: ret = "("+this.tree2value(_node.children[0])+")"; break;
                     case c.val: ret = (_node.value[0]=='-')?"("+_node.value+")":_node.value; break;
+                    case c.user: ret = "("+_node.value+")"; break;
                 }
                 return ret.toString();
             },
@@ -1196,7 +1312,7 @@ helpers.equations.get($this).label();
                 if (!_pos)  { _pos = [0,0]; }
 
                 switch(_node.type) {
-                    case c.val :
+                    case c.val : case c.user :
                         if (_node.elt.length==0) {
                             var elt = { $svg: $("#template .val.type"+_node.type, settings.svg.root()).clone()
                                                     .attr("id", settings.nodes.length).appendTo(this.$svg.find("#content")),
@@ -1206,6 +1322,7 @@ helpers.equations.get($this).label();
                                 if (settings.interactive) {
                                     var ve = (e && e.originalEvent && e.originalEvent.touches && e.originalEvent.touches.length)?
                                                 e.originalEvent.touches[0]:e;
+                                    settings.action.client=[ve.clientX,ve.clientY];
                                     settings.action.pos=[ve.clientX,ve.clientY];
                                     settings.action.node=settings.nodes[$(this).attr("id")];
                                     var now = new Date();
@@ -1222,23 +1339,26 @@ helpers.equations.get($this).label();
                         if (_node.value.length==0) { _node.elt[0].$svg.attr("class","val empty type"+_node.type); }
                         else                       { _node.elt[0].$svg.attr("class","val type"+_node.type); }
                         _node.elt[0].$svg.find("text").text(_node.value);
-                        if (_node.value.length>=3) { _node.elt[0].$svg.find("text").attr("transform","scale(0.75,1)"); }
+                        if (_node.value.length>2)  { _node.elt[0].$svg.find("text").attr("transform",
+                                                        "scale("+(2/_node.value.length)+","+(2/_node.value.length)+")"); }
                         else                       { _node.elt[0].$svg.find("text").attr("transform","scale(1,1)"); }
                         _node.elt[0].pos.to = [_pos[0],_pos[1]];
                     break;
                     case c.op :
                         ret = [0,1,0];
+                        var w = (_node.value=='*')?0.2:0.5;
+                        var o = [(_node.value=='*')?0.39:0.25,(_node.value=='*')?0.28:0];
                         for (var i=0; i<_node.children.length; i++) {
                             if (i!=0) {
                                 if (_node.elt.length<i || !_node.elt[i-1]) {
                                     var elt = { $svg : $("#template .val.type"+_node.type, settings.svg.root()).clone()
                                                     .attr("class","val type"+_node.type).appendTo(this.$svg.find("#content")),
                                                 pos : { now:[_node.origin[0],_node.origin[1]], to:[_node.origin[0],_node.origin[1]] } };
-                                    elt.$svg.find("text").text(_node.value);
+                                    elt.$svg.find("text").text(_node.value=='*'?'.':_node.value);
                                     if (_node.elt.length<i) { _node.elt.push(elt); } else { _node.elt.splice(i-1, 1, elt); }
                                 }
-                                _node.elt[i-1].pos.to = [_pos[0]+ret[0]-.25,_pos[1]];
-                                ret[0]+=.5;
+                                _node.elt[i-1].pos.to = [_pos[0]+ret[0]-o[0],_pos[1]-o[1]];
+                                ret[0]+=w;
                             }
                             var size=this.update($this, _node.children[i], [_pos[0]+ret[0], _pos[1]]);
                             ret[0]+=size[0]; if (size[1]>ret[1]) { ret[1] = size[1]; } if (size[2]>ret[2]) { ret[2] = size[2]; }
@@ -1330,8 +1450,8 @@ helpers.equations.get($this).label();
             },
 
             dump : function(_node, _level) {
-                if (!_node) { _node = this.tree; _level=0;}
                 var ret = "";
+                if (!_node) { _node = this.tree; _level=0; ret = this.tree2value()+"\n";}
                 for (var i=0; i<_level; i++) { ret+="  "; }
                 ret += "["+_node.value+"] ("+_node.elt.length+"/"+_node.children.length+") ("+_node.div+")\n";
                 for (var i in _node.children) { ret+=this.dump(_node.children[i], _level+1); }
@@ -1419,15 +1539,32 @@ helpers.equations.get($this).label();
                 }
             },
 
+            changeForUser: function(_value, _node) {
+                if (!_node) { _node = this.tree; }
+                var current = this.tree2value(_node);
+                if ( current==_value) {
+                    var elt = helpers.element(); elt.type = c.user; elt.value = _value;
+                    elt.origin = [_node.elt[0].pos.now[0], _node.elt[0].pos.now[1]];
+                    var node = _node;
+                    if (node.parent && node.parent.type == c.bra) { node = node.parent; }
+                    this.replace(node, elt);
+                    this.hide(node);
+                }
+                else if (_node.children.length && current.indexOf(_value)!=-1) {
+                    for (var i in _node.children) { this.changeForUser(_value, _node.children[i]); }
+                }
+            },
+
             getvals: function(_node, _side) {
                 var ret = [];
-                if (_node.type==c.val) {
+                if (_node.type==c.val || _node.type==c.user) {
                     if (_side && (_node.div==div.numerator || _node.div==div.root)) { ret.push(_node); } else
                     if (!_side && _node.div==div.denominator) { ret.push(_node); }
                 }
                 else {
                     for (var i=0; i<_node.children.length; i++) {
-                        var check = (_node.children[i].type == c.val || _node.children[i].value=="*" || _node.children[i].value=="/");
+                        var check = (_node.children[i].type == c.val || _node.children[i].type == c.user ||
+                                     _node.children[i].value=="*" || _node.children[i].value=="/");
                         if (check) {
                             var child = this.getvals(_node.children[i], _side);
                             for (var j in child) { ret.push(child[j]); }
@@ -1436,10 +1573,11 @@ helpers.equations.get($this).label();
                     }
                 }
                 return ret;
-            },
+            }
 
-            levenshtein: function distance(_cmp) {
-                var a = _cmp.value, b=this.value;
+        }},
+
+        levenshtein: function distance(a,b) {
                 var n = a.length, m = b.length, matrice = [];
                 for(var i=-1; i < n; i++) { matrice[i]=[]; matrice[i][-1]=i+1; }
                 for(var j=-1; j < m; j++) { matrice[-1][j]=j+1; }
@@ -1450,19 +1588,21 @@ helpers.equations.get($this).label();
                         }
                 }
                 return matrice[n-1][m-1];
-            }
-
-        }},
+        },
         submit: function($this) {
             var settings    = helpers.settings($this);
             settings.interactive = false;
 
             // TO ENHANCE
             for (var i in settings.result) {
-                var eq = settings.result[i];
+                var reg = (settings.result[i][0]=='|')?new RegExp(settings.result[i].substr(1,settings.result[i].length-2)):0;
                 var dist = -1;
                 for (var j in settings.data) {
-                    var d=settings.data[j].levenshtein(eq);
+                    var d=5;
+                    if (reg) { if (settings.data[j].value.match(reg,"g")) { d=0; } }
+                    else     { d = helpers.levenshtein(settings.data[j].value, settings.result[i]); }
+
+
                     if (settings.data[j].dist == -1 || d<settings.data[j].dist) { settings.data[j].dist = d; }
                     if (dist == -1 || d<dist) { dist = d; }
                 }
@@ -1471,7 +1611,43 @@ helpers.equations.get($this).label();
             for (var j in settings.data) { total+=settings.data[j].dist;
                                            settings.data[j].$svg.attr("class", "equ s"+settings.data[j].dist); }
             settings.score=total>5?0:5-total;
+            $this.find("#submit").addClass(total?"wrong":"good");
+
             setTimeout(function() { helpers.end($this)}, 1000);
+        },
+        addSource: function($this, _source, _elt) {
+            var settings    = helpers.settings($this);
+            var $val    = $("#template .val.type"+c.val, settings.svg.root()).clone().appendTo($("#source", settings.svg.root()));
+            var vClass  ="";
+            var id      = settings.sourcedef.length;
+            if (!_source.length)    { vClass=" bracket"; }
+            else if (_source=="!")  { vClass=" newvar"; _source="";}
+            if (_elt!=0)            { vClass=" type3"; }
+            $val.attr("transform","translate(40,"+(50+id*50)+")").attr("id",id).attr("class","val source"+vClass);
+            $("text",$val).text(_source);
+            if (_source.length>2) { $("text",$val).attr("transform","scale("+(2/_source.length)+","+(2/_source.length)+")"); }
+            settings.sourcedef.push({elt: _elt, value: _source });
+
+            $val.bind("mousedown touchstart", function(e) {
+                var settings = helpers.settings($(this).closest(".equation"));
+                if (settings.interactive) {
+                    var ve = (e && e.originalEvent && e.originalEvent.touches && e.originalEvent.touches.length)?
+                            e.originalEvent.touches[0]:e;
+                    var eq = helpers.equations.get($this);
+                    var now= new Date();
+                    settings.action.client      = [ve.clientX,ve.clientY];
+                    settings.action.pos         = [ve.clientX,ve.clientY];
+                    settings.action.node        = {elt:[{$svg:$(this), pos:{now:[-eq.margin.now[0]/40 - 1.1/eq.scale.now,
+                                    (-eq.margin.now[1]-eq.top/eq.scale.now)/40+(1+1.25*parseInt($(this).attr("id")))/eq.scale.now]}}]};
+                    settings.action.node.value  = $(this).find("text").text();
+                    settings.action.node.type   = $(this).attr("class").indexOf("type"+c.user)!=-1?c.user:c.val;
+                    settings.action.time        = now.getTime();
+                    settings.action.source      = ($(this).find("text").text().length?1:2);
+                    settings.action.helper      = 0;
+                    settings.action.equation    = 0;
+                }
+                e.preventDefault();
+            });
         }
     };
 
@@ -1496,6 +1672,7 @@ helpers.equations.get($this).label();
                         pos         : 0,                        // Position of origin
                         coord       : 0                         // Coordinate of the helper
                     },
+                    sourcedef       : [],                       // Definition of the source (static or not)
                     ratio           : 1,                        // SVG pixel size/HTML pixel size
                     nodes           : []                        // List of value nodes
                 };

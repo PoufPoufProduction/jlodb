@@ -80,7 +80,9 @@
 .upd #jbrowser #jsubmit                 { cursor:pointer; opacity: 1; }
 #jbrowser #jbrmenu                      { width:31.5em;  height:1.4em; background-color:gray; color:white;
                                           border-radius:.4em; font-size:.4em; margin-left:.15em;}
-#jbrowser #jexport                      { float:right; margin-right:1em; cursor:pointer; }
+
+#jbrowser #jbrmenu>div                  { margin:.1em; cursor:pointer; font-size:.8em; border:1px solid white; color:white;
+                                          width:4em; height:1.2em; float:left; text-align:center; border-radius:.2em;}
 #jbrowser.reduce #jhstab:after          { content:"+"; }
 #jbrowser.reduce #jtab                  { display:none; }
 #jbrowser.reduce #jresults              { height:19.3em; }

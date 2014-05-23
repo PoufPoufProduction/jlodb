@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Equation</title>
+    <script type="text/javascript" src="js/jquery-1.8.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.8.23.custom.min.js"></script>
+    <script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="js/jquery.svg.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/jquery.jlodb.js"></script>
+    <script type="text/javascript" src="js/jquery.jlodb.menu.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/jlodb.css" media="all" />
+    <link rel="apple-touch-icon-precomposed" href="res/img/activity/icon/equation144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="res/img/activity/icon/equation72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="res/img/activity/icon/equation114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="res/img/activity/icon/equation144.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <style>
+    #main>#rmenu                { background-color:#99DDFF; width:100%; height:100%;
+                                  background-size:100%; }
+    #main.p1>#rmenu             { background-color:#FFFF99; }
+    #main.p2>#rmenu             { background-color:#FFFF99; }
+    #main.p3>#rmenu             { background-color:#FF9999; }
+    #main.p4>#rmenu             { background-color:#99FF99; }
+    #main.p5>#rmenu             { background-color:#99FF99; }
+    #main.p6>#rmenu             { background-color:#FF99FF; }
+    #main>#rmenu .content       { font-size:2.4em; width:6em; height:3.6em; margin:0 auto; margin-top:0.1em;
+                                  background-color:rgba(255,255,255,0.6); border-radius:.1em;}
+    #main>#rmenu>.tabs          { margin:.2em .5em; font-size:1.5em; width:100%; height:1.2em; }
+    #main>#rmenu>.tabs div      { width:1em; height:1em; margin:.05em; cursor:pointer; float:left; }
+    #main>#rmenu>.tabs div.s    { background-color:gray; }
+    #main>#appsplash>div        { background-image:url("res/img/webapp/equation/banner01.svg"); background-color:rgba(255,255,255,0.2);}
+    </style>
+    <script>
+
+var app = {
+    cookie      : function() { return "webapp-equation"+(app.page+1); },
+    data        : [
+        ["enze0ad01","enze0ad02","enze0ad03","enze0ad04","enze0ad05","enze0di01","enze0di02","enze0di03","enze0mu01","enze0mu02","enze0mu03","enze0mu04","enze0mu05","enze0op01","enze0op02","enze0op03","enze0op04","enze0op05","enze1di01","enze1di02","enze1mu01","enze1mu02","enze1mu03","enze1mu04","enze1mu05","enzeop01","enzeop02","enzeop03","enzeop04","enzeop05","enzeop06","enzeop07","enzeop10","enzeop11","enzeop12","enzeop13"],
+        ["enad001","enad002","enad003","enad004","enad005","enad006","enad010","enad011","enad012","enad013","enad014","enad015","enad016","enad017","enad101","enad102","enad103","enad104","enad105","enad106","enmu001","enmu002","enmu003","enmu004","enmu101","enmu102","enmu103","enmu104","enmu110","enmu111","enmu112","enmu113","enmu114","enmu115","enmu116","enmu117","enmu201","enmu202","enmu203","enmu204","enmu301","enmu302","enmu303","enmu304","enmu305","enmu401","enmu402","enpr001","enpr002","enpr003","enpr004","enpr101","enpr102","enpr103","enpr104","enpr105","enpr106","enpr110"],
+        ["enfr001","enfr002","enfr003","enfr004","enfr005","enfr010","enfr011","enfr012","enfr013","enfr014","enfr015","enfr016","enfr101","enfr102","enfr103","enfr104","enfr105","enfr106","enfr107","enfr108","enfr201","enfr202","enfr203","enfr204","enfr205","enfr206","enfr207","enfr208","enfr301","enfr310","enfr401","enfr402","enfr403","enfr404","enfr405","enfr406","enfr407","enfr408","enfr409","enfr410","enfr411","enfr412","enfr501","enfr502","enfr503","enfr504","enfr505","enfr506","enfr507","enfr508","enfr509","enfr510","enfr511","enfr512"],
+        ["enfa001","enfa002","enfa003","enfa004","enfa005","enfa301","enfa302","enfa303","enfa101","enfa102","enfa103","enfa104","enfa105","enfa106","enfa107","enfa108","enfa109","enfa120","enfa121","enfa122","enfa125","enfa126","enfa127","enfa128","enfa151","enfa152","enfa201","enfa202","enfa203","enfa205","enfa206","enfa401"],
+        ["eneq1001","eneq1002","eneq1003","eneq1004","eneq1005","eneq1006","eneq1007","eneq1008","eneq1009","eneq1010","eneq1011","eneq1012","eneq1013","eneq1014","eneq1015","eneq1016","eneq1017","eneq1021","eneq1022","eneq1023","eneq1024","eneq1025","eneq1031","eneq1032","eneq1041","eneq1051","eneq1061","eneq1062","eneq1101","eneq1102","eneq1103","eneq1104","eneq1105","eneq1106","eneq1107","eneq1108","eneq1109","eneq1110","eneq1111","eneq1112","eneq1113","eneq1114","eneq1115","eneq1116","eneq1117","eneq1118","eneq1119","eneq1120","eneq1121","eneq1201","eneq1202","eneq1203","eneq1211","eneq1212","eneq1213","eneq1214","eneq1301","eneq1302","eneq1303","eneq1304","eneq1305","eneq1306","eneq1501","eneq1502"],
+        ["eneq2001","eneq2011","eneq2012","eneq2013","eneq2014","eneq2015","eneq2016","eneq2021","eneq2101","eneq2102","eneq2103","eneq2104","eneq2105","eneq2106","eneq2107","eneq2108","eneq2109","eneq2110","eneq2111","eneq2121","eneq2122","eneq2123","eneq2124","eneq2125","eneq2126","eneq2127","eneq2199"],
+        ["eneq3001"]
+    ],
+    page        : 0,
+    toggle      : function(_page) {
+        app.page = _page;
+        $("#main").removeClass().addClass("p"+_page);
+        var c = $.cookie(app.cookie());
+        if (!c) { c="."; for (var i=0; i<app.data[app.page].length; i++) { c+="l"; } }
+
+        $("#rmenu>.content").menu({
+            list    : app.data[app.page],
+            state   : c,
+            onupdate: function($this, _state) { $.cookie(app.cookie(),_state, { expires : 365 }); },
+            onclick : function($this, _args) {
+                $("#waiting").show().find("div").addClass("running");
+                $("#launcher").jlodb({
+                    onstart:    function($this) { $("#rmenu").hide(); $("#waiting").hide().find("div").removeClass("running"); },
+                    onfinish:   function($this) { $("#main").addClass("nosplash"); $("#rmenu").show(); $("#score").removeClass().hide(); },
+                    onscore:    function($this, _ret) {
+                        var isnext = false;
+                        if (_ret.score>2) { isnext = $("#rmenu>.content").menu('score', _ret.score).menu('more'); }
+                        $("#score #next").toggle(isnext);
+                        $("#score").attr("class","s"+_ret.score).show();
+                        return true; } },_args);
+            }
+        });
+    }
+};
+
+window.onload = function() {
+    // GET AND RESIZE THE BEST PANEL
+    var x = Math.floor($(window).width()/16);
+    var y = Math.floor($(window).height()/12);
+    $("body").css("font-size", (Math.min(x,y))+"px");
+    $("#main").css("margin-top", Math.floor(($(window).height()-$("#main").height())/2)+"px").show();
+
+    app.toggle(0);
+
+};
+    </script>
+</head>
+
+<body>
+    <div id="main">
+        <div id="rmenu">
+            <div class="content"></div>
+            <div class="tabs">
+                <div ontouchstart="app.toggle(0);event.preventDefault();" onclick="app.toggle(0);">
+                    <img src="res/img/webapp/equation/b01.svg"/>
+                </div>
+                <div ontouchstart="app.toggle(1);event.preventDefault();" onclick="app.toggle(1);">
+                    <img src="res/img/webapp/equation/b02.svg"/>
+                </div>
+                <div ontouchstart="app.toggle(2);event.preventDefault();" onclick="app.toggle(2);">
+                    <img src="res/img/webapp/equation/b02.svg"/>
+                </div>
+                <div ontouchstart="app.toggle(3);event.preventDefault();" onclick="app.toggle(3);">
+                    <img src="res/img/webapp/equation/b03.svg"/>
+                </div>
+                <div ontouchstart="app.toggle(4);event.preventDefault();" onclick="app.toggle(4);">
+                    <img src="res/img/webapp/equation/b04.svg"/>
+                </div>
+                <div ontouchstart="app.toggle(5);event.preventDefault();" onclick="app.toggle(5);">
+                    <img src="res/img/webapp/equation/b04.svg"/>
+                </div>
+                <div ontouchstart="app.toggle(6);event.preventDefault();" onclick="app.toggle(6);">
+                    <img src="res/img/webapp/equation/b05.svg"/>
+                </div>
+            </div>
+        </div>
+
+        <div id="waiting"><div><img src="res/img/generic/waiting.svg"/></div></div>
+
+        <div id="score"><div>
+            <div class="content">
+                <div class="value"></div><div class="stars"></div>
+                <div class="icon" id="reload" ontouchstart="$('#launcher').jlodb('reload');event.preventDefault();"
+                    onclick="$('#launcher').jlodb('reload');" ><img src="res/img/icon/reload.svg"/></div>
+                <div class="icon" id="menu" ontouchstart="$('#launcher').jlodb('close',true);event.preventDefault();"
+                    onclick="$('#launcher').jlodb('close',true);" ><img src="res/img/icon/menu.svg"/></div>
+                <div class="icon" id="next" ontouchstart="$('#launcher').jlodb('close',false);$('#rmenu>.content').menu('next');event.preventDefault();"
+                    onclick="$('#launcher').jlodb('close',false);$('#rmenu>.content').menu('next');"><img src="res/img/icon/next.svg"/></div>
+            </div>
+        </div></div>
+
+        <div id="launcher">
+            <div id="quit" ontouchstart="$('#launcher').jlodb('quit');event.preventDefault();"
+                        onclick="$('#launcher').jlodb('quit');"><img src="res/img/icon/quit.svg"/></div>
+            <div id="activity"></div>
+        </div>
+
+        <div id="appsplash"><div onclick="$(this).parent().hide();" ontouchstart="$(this).parent().hide();event.preventDefault();"></div></div>
+    </div>
+</body>
+</html>

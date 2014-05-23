@@ -4,7 +4,9 @@
     <div id="exercice" onclick="$(this).closest('.equation').equation('dump');"><p></p></div>
     <div id="submit" ontouchstart="$(this).closest('.equation').equation('submit');event.preventDefault();"
                      onclick="$(this).closest('.equation').equation('submit');">
-        <img src="res/img/icon/swvalid.svg"/>
+        <img src="res/img/icon/swvalid.svg" id="subvalid"/>
+        <img src="res/img/icon/swgood.svg" id="subgood"/>
+        <img src="res/img/icon/swwrong.svg" id="subwrong"/>
     </div>
 
     <div id="output" style="width:16em; height:1em;top:0; left:0; position:absolute; background-color:white;opacity:0.8;text-align:center;display:none;"></div>

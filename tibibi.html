@@ -436,10 +436,13 @@ window.onload = function() {
     $("body").css("font-size", (Math.min(x,y))+"px");
     $("#main").css("margin-top", Math.floor(($(window).height()-$("#main").height())/2)+"px").show();
 
-    if ($.cookie("jlodb-name") && $.cookie("jlodb-code")) {
-        $.getJSON("api/mods/login.php?username="+$.cookie("jlodb-name")+"&code="+$.cookie("jlodb-code"),tibibi.onlogin);
-    }
-    else { $("#logpanel").show(); }
+    // WORKS BETTER ON IPAD WITH A TIMER (ELSE COOKIES MAY BE UNDEFINED... I DON'T KNOW WHY)
+    setTimeout(function() {
+        if ($.cookie("jlodb-name") && $.cookie("jlodb-code")) {
+            $.getJSON("api/mods/login.php?username="+$.cookie("jlodb-name")+"&code="+$.cookie("jlodb-code"),tibibi.onlogin);
+        }
+        else { $("#logpanel").show(); }
+    },500);
 
 }
     </script>
@@ -502,7 +505,7 @@ window.onload = function() {
                 <div class="value"></div><div class="stars"></div>
                 <div class="icon" id="reload" ontouchstart="$('#launcher').jlodb('reload');event.preventDefault();"
                     onclick="$('#launcher').jlodb('reload');" ><img src="res/img/icon/reload.svg"/></div>
-                <div class="icon" id="menu" ontouchstart="$('#launcher').jlodb('close');event.preventDefault();"
+                <div class="icon" id="menu" ontouchstart="$('#launcher').jlodb('close',true);event.preventDefault();"
                     onclick="$('#launcher').jlodb('close', true);" ><img src="res/img/icon/menu.svg"/></div>
                 <div class="icon" id="next"
                     ontouchstart="$('#launcher').jlodb('close',false);$('#tmenu').menu('next');event.preventDefault();"
