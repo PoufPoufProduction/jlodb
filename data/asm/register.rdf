@@ -2,6 +2,8 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dct="http://purl.org/dc/terms/">
 
+    <!-- LDA, LDX, LDY (immediate) [000-020] -->
+
     <rdf:Description>
         <dct:identifier>001</dct:identifier>
         <dct:title xml:lang="fr-FR">Charger la valeur 0x01 dans le registre A grâce à l'instruction LDA.</dct:title>
@@ -11,7 +13,7 @@
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
+        <dct:alternative>059</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
@@ -23,7 +25,7 @@
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
+        <dct:alternative>059</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
@@ -35,7 +37,7 @@
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
+        <dct:alternative>059</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
@@ -47,7 +49,7 @@
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
+        <dct:alternative>059</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
@@ -59,7 +61,7 @@
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
+        <dct:alternative>059</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
@@ -71,7 +73,7 @@
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
+        <dct:alternative>059</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
@@ -83,7 +85,7 @@
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
+        <dct:alternative>059</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
@@ -95,11 +97,133 @@
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
+        <dct:alternative>059</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>009</dct:identifier>
+        <dct:title xml:lang="fr-FR">Charger la valeur 0x00 dans les registres A,X et Y à la suite d'un code précompilé.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["lda","ldx","ldy"],"args":[{"value":"00","type":"v"}],"nblines":3,"header":[{"label":"init","value":["LDA #0x05","LDX #0xFF","LDY #0xFF"],"code":"A9FFA2FFA0FF","rts":false}],"valid":{"a":"00","x":"00","y":"00"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Initialisez tous les registres à 0x00 après que ces derniers aient été modifié par le code précompilé 'init'."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>059</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>010</dct:identifier>
+        <dct:title xml:lang="fr-FR">Etudier un code compilé et charger la valeur 0x00 dans le bon registre .</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["lda","ldx","ldy"],"args":[{"value":"00","type":"v"}],"nblines":1,"header":[{"label":"init","value":["..."],"code":"A2FF","rts":false}],"valid":{"a":"00","x":"00","y":"00"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Le code précompilée modifie un des registres en y chargeant la valeur 0xFF. Initialisez ce registre en chargeant la valeur 0x00.","","Pour trouver quel registre doit-être modifié, examinez le code compilé en cliquant sur le registre 'PC' en bas à gauche de l'écran (laissez de côté le 0x1000 de début de ligne, nous y reviendrons).","a2 ff est la traduction en langage machine de 'LDX 0xFF'. Vous pouvez désormais initialiser le registre modifié."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>059</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>011</dct:identifier>
+        <dct:title xml:lang="fr-FR">Etudier un code compilé et charger la valeur 0x00 dans le bon registre .</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["lda","ldx","ldy"],"args":[{"value":"00","type":"v"}],"nblines":1,"header":[{"label":"init","value":["..."],"code":"A0FF","rts":false}],"valid":{"a":"00","x":"00","y":"00"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Le code précompilée modifie un des registres en y chargeant la valeur 0xFF. Initialisez ce registre en chargeant la valeur 0x00.","","Afin d'obtenir la note maximale, ne lancez l'exécution que lorsque vous êtes certain de votre programme. Ici, privilégiez l'affichage du code compilé par le bouton 'PC'.","Pour répondre à l'exercice, il faut rajouter 'A0 00' au code déjà compilé 'A0 FF'. Tester les différents opérateurs de chargement pour voir lequel des 3 correspond au code machine 'A0'."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>059</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>012</dct:identifier>
+        <dct:title xml:lang="fr-FR">Etudier un code compilé et charger la valeur 0x00 dans les bons registres.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["lda","ldx","ldy"],"args":[{"value":"00","type":"v"}],"nblines":2,"header":[{"label":"init","value":["..."],"code":"A9FFA0FF","rts":false}],"valid":{"a":"00","x":"00","y":"00"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["A la compilation, les différentes instructions de chargement correspondent aux valeurs suivantes :"," . LDA : 0xA9"," . LDX : 0xA2"," . LDY : 0xA0","","Grâce au code compilé affichable grâce au bouton 'PC', initialisez à 0x00 les 2 registres modifiés."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>059</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>013</dct:identifier>
+        <dct:title xml:lang="fr-FR">Etudier un code compilé et charger la bonne valeur dans le registre X.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["ldx"],"args":[{"value":"00","type":"v"},{"value":"41","type":"v"},{"value":"A9","type":"v"},{"value":"FF","type":"v"}],"nblines":1,"header":[{"label":"init","value":["..."],"code":"A941","rts":false}],"valid":{"a":"41","x":"41","y":"00"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["La ligne 'init' charge une valeur dans le registre A grâce à l'instruction LDA (0xA9).","","Grâce au code compilé affichable grâce au bouton 'PC', trouvez cette valeur et chargez celle-ci dans le registre X."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>059</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>014</dct:identifier>
+        <dct:title xml:lang="fr-FR">Etudier un code compilé et charger la bonne valeur dans le registre X.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["ldx"],"args":[{"value":"00","type":"v"},{"value":"41","type":"v"},{"value":"A9","type":"v"},{"value":"FF","type":"v"}],"nblines":1,"header":[{"label":"init","value":["..."],"code":"A9A9","rts":false}],"valid":{"a":"A9","x":"A9","y":"00"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["La ligne 'init' charge une valeur dans le registre A grâce à l'instruction LDA (0xA9).","","Grâce au code compilé affichable grâce au bouton 'PC', trouvez cette valeur et chargez celle-ci dans le registre X.","","Remarque : 2 mêmes valeurs compilées peuvent avoir des fonctions différentes. Ici, le premier octet est la traduction de l'instruction 'LDA', le deuxième est la valeur chargée dans le registre A."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>059</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>015</dct:identifier>
+        <dct:title xml:lang="fr-FR">Etudier un code compilé et charger la bonne valeur dans le registre X.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["ldx"],"args":[{"value":"00","type":"v"},{"value":"10","type":"v"},{"value":"41","type":"v"},{"value":"A0","type":"v"},{"value":"A2","type":"v"},{"value":"A9","type":"v"},{"value":"FE","type":"v"},{"value":"FF","type":"v"}],"nblines":1,"header":[{"label":"init","value":["..."],"code":"A9FFA010","rts":false}],"valid":{"a":"FF","x":"FF","y":"10"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["La ligne 'init' charge une valeur dans le registre A grâce à l'instruction LDA (0xA9) et une valeur dans le registre Y grâce à l'instruction LDY (0xA0).","","Grâce au code compilé affichable grâce au bouton 'PC', trouvez la valeur chargée dans le registre A et chargez celle-ci dans le registre X."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>059</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>016</dct:identifier>
+        <dct:title xml:lang="fr-FR">Etudier un code compilé et charger la bonne valeur dans le registre X.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["ldx"],"args":[{"value":"00","type":"v"},{"value":"10","type":"v"},{"value":"41","type":"v"},{"value":"A0","type":"v"},{"value":"A2","type":"v"},{"value":"A9","type":"v"},{"value":"FE","type":"v"},{"value":"FF","type":"v"}],"nblines":1,"header":[{"label":"init","value":["..."],"code":"A9FFA010","rts":false}],"valid":{"a":"FF","x":"10","y":"10"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["La ligne 'init' charge une valeur dans le registre A grâce à l'instruction LDA (0xA9) et une valeur dans le registre Y grâce à l'instruction LDY (0xA0).","","Grâce au code compilé affichable grâce au bouton 'PC', trouvez la valeur chargée dans le registre Y et chargez celle-ci dans le registre X."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>059</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>017</dct:identifier>
+        <dct:title xml:lang="fr-FR">Etudier un code compilé et charger la bonne valeur dans le registre X.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["ldx"],"args":[{"value":"00","type":"v"},{"value":"10","type":"v"},{"value":"41","type":"v"},{"value":"A0","type":"v"},{"value":"A2","type":"v"},{"value":"A9","type":"v"},{"value":"FE","type":"v"},{"value":"FF","type":"v"}],"nblines":1,"header":[{"label":"init","value":["..."],"code":"A9A9A0A0","rts":false}],"valid":{"a":"A9","x":"A9","y":"A0"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["La ligne 'init' charge une valeur dans le registre A grâce à l'instruction LDA (0xA9) et une valeur dans le registre Y grâce à l'instruction LDY (0xA0).","","Grâce au code compilé affichable grâce au bouton 'PC', trouvez la valeur chargée dans le registre A et chargez celle-ci dans le registre X."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:alternative>059</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>018</dct:identifier>
+        <dct:title xml:lang="fr-FR">Etudier un code compilé et charger la bonne valeur dans le registre X.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["ldx"],"args":[{"value":"00","type":"v"},{"value":"10","type":"v"},{"value":"41","type":"v"},{"value":"A0","type":"v"},{"value":"A2","type":"v"},{"value":"A9","type":"v"},{"value":"FE","type":"v"},{"value":"FF","type":"v"}],"nblines":1,"header":[{"label":"init","value":["..."],"code":"A9A0A0A9","rts":false}],"valid":{"a":"A0","x":"A9","y":"A9"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["La ligne 'init' charge une valeur dans le registre A grâce à l'instruction LDA (0xA9) et une valeur dans le registre Y grâce à l'instruction LDY (0xA0).","","Grâce au code compilé affichable grâce au bouton 'PC', trouvez la valeur chargée dans le registre Y et chargez celle-ci dans le registre X."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:alternative>059</dct:alternative>
+    </rdf:Description>
+
+    <!-- TAX [020-030] -->
+
+    <rdf:Description>
+        <dct:identifier>021</dct:identifier>
         <dct:title xml:lang="fr-FR">Transférer une valeur depuis le registre A vers le registre X grâce à l'instruction TAX.</dct:title>
         <dct:description><![CDATA["class":"large","ops":["lda","tax"],"args":[{"value":"ff","type":"v"}],"nblines":2,"valid":{"a":"ff","x":"ff"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Contrairement à l'opérateur LDA qui s'utilise avec une valeur, l'instruction TAX s'utilise sans argument, c'est à dire que l'opérateur TAX est seul sur sa ligne.","","TAX copie la valeur contenue dans le registre A vers le registre X.","","Chargez la valeur 0xFF dans le registre A puis copiez cette valeur vers le registre X."]]]></dct:description>
@@ -107,11 +231,11 @@
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
+        <dct:alternative>059</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>011</dct:identifier>
+        <dct:identifier>022</dct:identifier>
         <dct:title xml:lang="fr-FR">Transférer une valeur depuis le registre A vers le registre X grâce à l'instruction TAX.</dct:title>
         <dct:description><![CDATA["class":"large","ops":["lda","tax"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":2,"valid":{"x":"a8"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez la valeur 0xA8 dans le registre X."]]]></dct:description>
@@ -119,11 +243,11 @@
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
+        <dct:alternative>059</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>012</dct:identifier>
+        <dct:identifier>023</dct:identifier>
         <dct:title xml:lang="fr-FR">Renseigner correctement les registres A et X grâce aux instructions LDA et TAX.</dct:title>
         <dct:description><![CDATA["class":"large","ops":["lda","tax"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":3,"valid":{"a":"02","x":"01"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez les valeurs suivantes :",". 0x01 dans le registre X.",". 0x02 dans le registre A"]]]></dct:description>
@@ -131,11 +255,11 @@
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
+        <dct:alternative>059</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>013</dct:identifier>
+        <dct:identifier>024</dct:identifier>
         <dct:title xml:lang="fr-FR">Renseigner correctement les registres A et X grâce aux instructions LDA et TAX.</dct:title>
         <dct:description><![CDATA["class":"large","ops":["lda","tax"],"args":[{"value":"00","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":3,"valid":{"a":"00","x":"ff"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez les valeurs suivantes :",". 0x00 dans le registre A",". 0xFF dans le registre X.","","Si le registre A ne contient pas la bonne valeur à la fin de l'exécution, pensez à l'ordre des opérations."]]]></dct:description>
@@ -143,11 +267,11 @@
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
+        <dct:alternative>059</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>014</dct:identifier>
+        <dct:identifier>025</dct:identifier>
         <dct:title xml:lang="fr-FR">Renseigner correctement les registres A et X grâce aux instructions LDA et TAX.</dct:title>
         <dct:description><![CDATA["class":"large","ops":["lda","tax"],"args":[{"value":"00","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":3,"valid":{"a":"02","x":"ff"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez les valeurs suivantes :",". 0x02 dans le registre A",". 0xFF dans le registre X."]]]></dct:description>
@@ -155,11 +279,73 @@
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
+        <dct:alternative>059</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>020</dct:identifier>
+        <dct:identifier>026</dct:identifier>
+        <dct:title xml:lang="fr-FR">Etudier un code compilé utilisant l'instruction TAX et renseigner correctement le registre Y grâce à l'opérateur LDY.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["ldy"],"args":[{"value":"00","type":"v"},{"value":"41","type":"v"},{"value":"A0","type":"v"},{"value":"A2","type":"v"},{"value":"A9","type":"v"},{"value":"AA","type":"v"},{"value":"FE","type":"v"},{"value":"FF","type":"v"}],"header":[{"label":"init","value":["LDA 0xFF","TAX"],"code":"A9FFAA","rts":false}],"nblines":1,"valid":{"a":"ff","x":"ff","y":"ff"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Une fois compilé, l'instruction LDA (0xA9) est TOUJOURS suivi par un autre octet qui indique la valeur à charger dans le registre A. L'instruction TAX (0xAA) n'est suivi d'aucune valeur propre à son exécution.","","Etudiez le code compilé affichable grâce au bouton 'PC' et chargez dans Y la même valeur que celle transférée dans le registre X.","","Pour cet exercice, la traduction du code compilé est affichée dans la ligne init. Ce ne sera pas toujours aussi facile."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>059</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>027</dct:identifier>
+        <dct:title xml:lang="fr-FR">Etudier un code compilé utilisant l'instruction TAX et renseigner correctement le registre Y grâce à l'opérateur LDY.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["ldy"],"args":[{"value":"00","type":"v"},{"value":"41","type":"v"},{"value":"A0","type":"v"},{"value":"A2","type":"v"},{"value":"A9","type":"v"},{"value":"AA","type":"v"},{"value":"FE","type":"v"},{"value":"FF","type":"v"}],"header":[{"label":"init","value":["..."],"code":"A941AA","rts":false}],"nblines":1,"valid":{"a":"41","x":"41","y":"41"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Une fois compilé, l'instruction LDA (0xA9) est TOUJOURS suivi par un autre octet qui indique la valeur à charger dans le registre A. L'instruction TAX (0xAA) n'est suivi d'aucune valeur propre à son exécution.","","Etudiez le code compilé affichable grâce au bouton 'PC' et chargez dans Y la même valeur que celle transférée dans le registre X."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>059</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>028</dct:identifier>
+        <dct:title xml:lang="fr-FR">Etudier un code compilé utilisant l'instruction TAX et renseigner correctement le registre Y grâce à l'opérateur LDY.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["ldy"],"args":[{"value":"00","type":"v"},{"value":"41","type":"v"},{"value":"A0","type":"v"},{"value":"A2","type":"v"},{"value":"A9","type":"v"},{"value":"AA","type":"v"},{"value":"FE","type":"v"},{"value":"FF","type":"v"}],"header":[{"label":"init","value":["..."],"code":"A9AAAA","rts":false}],"nblines":1,"valid":{"a":"AA","x":"AA","y":"AA"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Une fois compilé, l'instruction LDA (0xA9) est TOUJOURS suivi par un autre octet qui indique la valeur à charger dans le registre A. L'instruction TAX (0xAA) n'est suivi d'aucune valeur propre à son exécution.","","Etudiez le code compilé affichable grâce au bouton 'PC' et chargez dans Y la même valeur que celle transférée dans le registre X.","","Ici, la valeur '0xAA' peut avoir des significations différentes selon qu'elle suit l'instruction 0xA9 ou non."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>059</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>029</dct:identifier>
+        <dct:title xml:lang="fr-FR">Etudier un code compilé utilisant l'instruction TAX et renseigner correctement le registre Y grâce à l'opérateur LDY.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["ldy"],"args":[{"value":"00","type":"v"},{"value":"41","type":"v"},{"value":"A0","type":"v"},{"value":"A2","type":"v"},{"value":"A9","type":"v"},{"value":"AA","type":"v"},{"value":"FE","type":"v"},{"value":"FF","type":"v"}],"header":[{"label":"init","value":["LDA 0xFF","TAX","LDA 0x41"],"code":"A9FFAAA941","rts":false}],"nblines":1,"valid":{"a":"41","x":"FF","y":"FF"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Une fois compilé, l'instruction LDA (0xA9) est TOUJOURS suivi par un autre octet qui indique la valeur à charger dans le registre A. L'instruction TAX (0xAA) n'est suivi d'aucune valeur propre à son exécution.","","Etudiez le code compilé affichable grâce au bouton 'PC' et chargez dans Y la même valeur que celle transférée dans le registre X.","","Pour cet exercice, la traduction du code compilé est affichée dans la ligne init. C'est la dernière fois."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>059</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>030</dct:identifier>
+        <dct:title xml:lang="fr-FR">Etudier un code compilé utilisant l'instruction TAX et renseigner correctement le registre Y grâce à l'opérateur LDY.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["ldy"],"args":[{"value":"00","type":"v"},{"value":"41","type":"v"},{"value":"A0","type":"v"},{"value":"A2","type":"v"},{"value":"A9","type":"v"},{"value":"AA","type":"v"},{"value":"FE","type":"v"},{"value":"FF","type":"v"}],"header":[{"label":"init","value":["..."],"code":"A9AAAAA9A9","rts":false}],"nblines":1,"valid":{"a":"A9","x":"AA","y":"AA"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Une fois compilé, l'instruction LDA (0xA9) est TOUJOURS suivi par un autre octet qui indique la valeur à charger dans le registre A. L'instruction TAX (0xAA) n'est suivi d'aucune valeur propre à son exécution.","","Etudiez le code compilé affichable grâce au bouton 'PC' et chargez dans Y la même valeur que celle transférée dans le registre X."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>5</dct:type>
+        <dct:alternative>059</dct:alternative>
+    </rdf:Description>
+
+    <!-- TAY [031-040] -->
+
+    <rdf:Description>
+        <dct:identifier>031</dct:identifier>
         <dct:title xml:lang="fr-FR">Transférer une valeur depuis le registre A vers le registre Y grâce à l'instruction TAY.</dct:title>
         <dct:description><![CDATA["class":"large","ops":["lda","tay"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":2,"valid":{"a":"01","y":"01"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["L'instruction TAY copie la valeur du registre A vers le registre Y.","","Chargez les valeurs suivantes :",". 0x01 dans le registre A",". 0x01 dans le registre Y."]]]></dct:description>
@@ -167,11 +353,11 @@
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
+        <dct:alternative>059</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>021</dct:identifier>
+        <dct:identifier>032</dct:identifier>
         <dct:title xml:lang="fr-FR">Renseigner correctement les registres A et Y grâce aux instructions LDA et TAY.</dct:title>
         <dct:description><![CDATA["class":"large","ops":["lda","tay"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":3,"valid":{"a":"02","y":"01"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez les valeurs suivantes :",". 0x02 dans le registre A",". 0x01 dans le registre Y."]]]></dct:description>
@@ -179,11 +365,11 @@
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
+        <dct:alternative>059</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>022</dct:identifier>
+        <dct:identifier>033</dct:identifier>
         <dct:title xml:lang="fr-FR">Renseigner correctement les registres A,X et Y grâce aux instructions LDA, TAX et TAY.</dct:title>
         <dct:description><![CDATA["class":"large","ops":["lda","tay","tax"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":4,"valid":{"a":"02","x":"01","y":"01"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez les valeurs suivantes :",". 0x02 dans le registre A",". 0x01 dans le registre X.",". 0x01 dans le registre Y."]]]></dct:description>
@@ -191,35 +377,50 @@
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
+        <dct:alternative>059</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>023</dct:identifier>
+        <dct:identifier>034</dct:identifier>
         <dct:title xml:lang="fr-FR">Renseigner correctement les registres A,X et Y grâce aux instructions LDA, TAX et TAY.</dct:title>
         <dct:description><![CDATA["class":"large","ops":["lda","tay","tax"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":4,"valid":{"a":"02","x":"01","y":"02"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez les valeurs suivantes :",". 0x02 dans le registre A",". 0x01 dans le registre X.",". 0x02 dans le registre Y."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
+        <dct:type>2</dct:type>
+        <dct:alternative>059</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>024</dct:identifier>
+        <dct:identifier>035</dct:identifier>
         <dct:title xml:lang="fr-FR">Renseigner correctement les registres A,X et Y grâce aux instructions LDA, TAX et TAY.</dct:title>
         <dct:description><![CDATA["class":"large","ops":["lda","tay","tax"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":5,"valid":{"a":"FF","x":"01","y":"02"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez les valeurs suivantes :",". 0xFF dans le registre A",". 0x01 dans le registre X.",". 0x02 dans le registre Y."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
+        <dct:type>3</dct:type>
+        <dct:alternative>059</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>030</dct:identifier>
+        <dct:identifier>040</dct:identifier>
+        <dct:title xml:lang="fr-FR">Etudier un code compilé utilisant l'instruction TAY et renseigner correctement le registre Y grâce à l'opérateur LDY.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["ldx"],"args":[{"value":"00","type":"v"},{"value":"41","type":"v"},{"value":"A0","type":"v"},{"value":"A2","type":"v"},{"value":"A9","type":"v"},{"value":"AA","type":"v"},{"value":"FE","type":"v"},{"value":"FF","type":"v"}],"header":[{"label":"init","value":["..."],"code":"A9FEA8","rts":false}],"nblines":1,"valid":{"a":"FE","x":"FE","y":"FE"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Une fois compilé, l'instruction LDA (0xA9) est TOUJOURS suivi par un autre octet qui indique la valeur à charger dans le registre A. L'instruction TAX (0xAA) et TAY (0xA8) ne sont suivis d'aucune valeur propre à leur exécution.","","Etudiez le code compilé affichable grâce au bouton 'PC' et chargez dans X la même valeur que celle transférée dans le registre Y."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>059</dct:alternative>
+    </rdf:Description>
+
+
+    <!-- TXA [041-050] -->
+
+    <rdf:Description>
+        <dct:identifier>041</dct:identifier>
         <dct:title xml:lang="fr-FR">Transférer une valeur depuis le registre X vers le registre A grâce à l'instruction TXA.</dct:title>
         <dct:description><![CDATA["class":"large","ops":["ldx","txa"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":2,"valid":{"a":"FF","x":"FF"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["L'instruction TXA copie la valeur du registre X vers le registre A.","","Chargez les valeurs suivantes :",". 0xFF dans le registre A",". 0xFF dans le registre X."]]]></dct:description>
@@ -227,83 +428,86 @@
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
+        <dct:alternative>059</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>031</dct:identifier>
+        <dct:identifier>042</dct:identifier>
         <dct:title xml:lang="fr-FR">Renseigner correctement les registres A et X grâce aux instructions LDX et TXA.</dct:title>
         <dct:description><![CDATA["class":"large","ops":["ldx","txa"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":3,"valid":{"a":"A8","x":"FF"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez les valeurs suivantes :",". 0xA8 dans le registre A",". 0xFF dans le registre X."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
+        <dct:type>2</dct:type>
+        <dct:alternative>059</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>032</dct:identifier>
+        <dct:identifier>043</dct:identifier>
         <dct:title xml:lang="fr-FR">Renseigner correctement les registres A,X et Y grâce aux instructions LDX, TXA et TAY.</dct:title>
         <dct:description><![CDATA["class":"large","ops":["ldx","tay","txa"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":3,"valid":{"a":"02","x":"02","y":"02"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Il n'existe pas d'opération pour transférer une valeur depuis le registre X vers le registre Y. Il faut passer par une variable intermédiaire.","","Dans le cas présent, nous proposons d'utiliser le registre A comme valeur intermédiaire.","","Chargez, dans cet ordre, les valeurs suivantes :",". 0x02 dans le registre X.",". 0x02 dans le registre A.",". 0x02 dans le registre Y."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
+        <dct:type>2</dct:type>
+        <dct:alternative>059</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>033</dct:identifier>
+        <dct:identifier>044</dct:identifier>
         <dct:title xml:lang="fr-FR">Renseigner correctement le registre Y grâce aux instructions LDX, TXA et TAY.</dct:title>
         <dct:description><![CDATA["class":"large","ops":["ldx","tay","txa"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":3,"valid":{"y":"a8"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez les valeurs suivantes :",". 0xA8 dans le registre Y."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
+        <dct:type>2</dct:type>
+        <dct:alternative>059</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>034</dct:identifier>
+        <dct:identifier>045</dct:identifier>
         <dct:title xml:lang="fr-FR">Renseigner correctement les registres X et Y grâce aux instructions LDX, TXA et TAY.</dct:title>
         <dct:description><![CDATA["class":"large","ops":["ldx","tay","txa"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":4,"valid":{"y":"01","x":"ff"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez les valeurs suivantes :",". 0xFF dans le registre X",". 0x01 dans le registre Y."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
+        <dct:type>3</dct:type>
+        <dct:alternative>059</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>035</dct:identifier>
+        <dct:identifier>046</dct:identifier>
         <dct:title xml:lang="fr-FR">Renseigner correctement les registres A et Y grâce aux instructions LDX, TXA et TAY.</dct:title>
         <dct:description><![CDATA["class":"large","ops":["ldx","tay","txa"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":5,"valid":{"y":"02","a":"A8"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez les valeurs suivantes :",". 0xA8 dans le registre A",". 0x02 dans le registre Y."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
+        <dct:type>4</dct:type>
+        <dct:alternative>059</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>036</dct:identifier>
+        <dct:identifier>047</dct:identifier>
         <dct:title xml:lang="fr-FR">Renseigner correctement les registres A,X et Y grâce aux instructions LDX, TXA et TAY.</dct:title>
         <dct:description><![CDATA["class":"large","ops":["ldx","tay","txa"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":6,"valid":{"a":"02","x":"ff","y":"a8"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez les valeurs suivantes :",". 0x02 dans le registre A",". 0xFF dans le registre X.",". 0xA8 dans le registre Y."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
+        <dct:type>4</dct:type>
+        <dct:alternative>059</dct:alternative>
     </rdf:Description>
 
+
+    <!-- TYA [051-060] -->
+
     <rdf:Description>
-        <dct:identifier>040</dct:identifier>
+        <dct:identifier>051</dct:identifier>
         <dct:title xml:lang="fr-FR">Transférer une valeur depuis le registre Y vers le registre A grâce à l'instruction TYA.</dct:title>
         <dct:description><![CDATA["class":"large","ops":["ldy","tax","tya"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":2,"valid":{"a":"A8"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["L'instruction TYA copie la valeur contenue dans le registre Y vers le registre A.","","Chargez les valeurs suivantes :",". 0xA8 dans le registre A."]]]></dct:description>
@@ -311,91 +515,103 @@
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
+        <dct:alternative>059</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>041</dct:identifier>
+        <dct:identifier>052</dct:identifier>
         <dct:title xml:lang="fr-FR">Renseigner correctement le registre X grâce aux instructions LDY, TYA et TAX.</dct:title>
         <dct:description><![CDATA["class":"large","ops":["ldy","tax","tya"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":3,"valid":{"x":"A8"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez les valeurs suivantes :",". 0xA8 dans le registre X."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
+        <dct:type>2</dct:type>
+        <dct:alternative>059</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>042</dct:identifier>
+        <dct:identifier>053</dct:identifier>
         <dct:title xml:lang="fr-FR">Renseigner correctement les registres A et X grâce aux instructions LDY, TYA et TAX.</dct:title>
         <dct:description><![CDATA["class":"large","ops":["ldy","tax","tya"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":5,"valid":{"x":"02","a":"ff"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez les valeurs suivantes :",". 0xFF dans le registre A.",". 0x02 dans le registre X."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
+        <dct:type>3</dct:type>
+        <dct:alternative>059</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>043</dct:identifier>
+        <dct:identifier>054</dct:identifier>
         <dct:title xml:lang="fr-FR">Renseigner correctement les registres A,X et Y grâce aux instructions LDY, TYA et TAX.</dct:title>
         <dct:description><![CDATA["class":"large","ops":["ldy","tax","tya"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":6,"valid":{"a":"02","x":"ff","y":"a8"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez les valeurs suivantes :",". 0x02 dans le registre A",". 0xFF dans le registre X.",". 0xA8 dans le registre Y."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
+        <dct:type>3</dct:type>
+        <dct:alternative>059</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>044</dct:identifier>
+        <dct:identifier>055</dct:identifier>
         <dct:title xml:lang="fr-FR">A la suite d'un code précompilé, initialiser à 0 les registres A,X et Y grâce aux instructions LDY, TYA et TAX.</dct:title>
         <dct:description><![CDATA["class":"large","ops":["ldy","tax","tya"],"args":[{"value":"00","type":"v"},{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"}],"nblines":3,"header":[{"label":"init","value":["LDA #0x01","LDX #0xFF","LDY #0xA8"],"code":"A9 01 A0 A8 A2 FF","rts":false}],"valid":{"a":"00","x":"00","y":"00"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["La ligne 'init' change la valeurs des différents registres.","","Initialisez tous les registres à 0x00."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
+        <dct:type>3</dct:type>
+        <dct:alternative>059</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>045</dct:identifier>
+        <dct:identifier>056</dct:identifier>
         <dct:title xml:lang="fr-FR">Renseigner correctement les registres A,X et Y grâce aux instructions de transfert et de l'instruction LDA.</dct:title>
         <dct:description><![CDATA["class":"large","ops":["lda","tax","tya","txa","tay"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":5,"valid":{"a":"ff","x":"02","y":"a8"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez les valeurs suivantes :",". 0xFF dans le registre A",". 0x02 dans le registre X.",". 0xA8 dans le registre Y."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
+        <dct:type>4</dct:type>
+        <dct:alternative>059</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>046</dct:identifier>
+        <dct:identifier>057</dct:identifier>
         <dct:title xml:lang="fr-FR">Renseigner correctement les registres A,X et Y grâce aux instructions de transfert et de l'instruction LDX.</dct:title>
         <dct:description><![CDATA["class":"large","ops":["ldx","tax","tya","txa","tay"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":6,"valid":{"a":"ff","x":"02","y":"a8"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez les valeurs suivantes :",". 0xFF dans le registre A",". 0x02 dans le registre X.",". 0xA8 dans le registre Y."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
+        <dct:type>4</dct:type>
+        <dct:alternative>059</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>047</dct:identifier>
+        <dct:identifier>058</dct:identifier>
         <dct:title xml:lang="fr-FR">Renseigner correctement les registres A,X et Y grâce aux instructions de transfert et de l'instruction LDY.</dct:title>
         <dct:description><![CDATA["class":"large","ops":["ldy","tax","tya","txa","tay"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":6,"valid":{"a":"ff","x":"02","y":"a8"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez les valeurs suivantes :",". 0xFF dans le registre A",". 0x02 dans le registre X.",". 0xA8 dans le registre Y."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
+        <dct:type>4</dct:type>
+        <dct:alternative>059</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>059</dct:identifier>
+        <dct:title xml:lang="fr-FR">Renseigner correctement les registres A,X et Y grâce aux instructions de transfert et de l'instruction LDY.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["ldy","tax","tya","txa","tay"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"A8","type":"v"},{"value":"FF","type":"v"}],"nblines":6,"valid":{"a":"01","x":"ff","y":"ff"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez les valeurs suivantes :",". 0x01 dans le registre A",". 0xFF dans le registre X.",". 0xFF dans le registre Y."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:alternative>059</dct:alternative>
     </rdf:Description>
 
 
