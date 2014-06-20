@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dct="http://purl.org/dc/terms/">
+
+
+    <rdf:Description>
+        <dct:identifier>oct01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Associer chaque valeur (comprise entre 1 et 64) en base 10 à son équivalent en base 8.</dct:title>
+        <dct:description><![CDATA["gen":"function(i){var a = Math.floor(Math.random()*64)+1; return [\\\"0\\\"+a.toString(8),a];}","nbvalues":5,"number":5,"len":[3,1],"font":2,"fontex":0.5]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Associez chaque valeur en base 10 à son équivalent en base 8."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>oct01</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>hex01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Associer chaque valeur (comprise entre 1 et 256) en base 10 à son équivalent en base 16.</dct:title>
+        <dct:description><![CDATA["gen":"function(i){var a = Math.floor(Math.random()*256)+1; return [\\\"0x\\\"+a.toString(16),a];}","nbvalues":5,"number":5,"len":[3,1],"font":2,"fontex":0.5]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Associez chaque valeur en base 10 à son équivalent en base 16."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>oct01</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>bin01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Associer chaque valeur (comprise entre 0 et 7) en base 10 à son équivalent en base 8.</dct:title>
+        <dct:description><![CDATA["gen":"function(i){var n=3, a = Math.floor(Math.random()*Math.pow(2,n)), b = a.toString(2); while (b.length<n) { b=\\\"0\\\"+b; } return [b,a];}","nbvalues":5,"number":5,"len":[3,1],"font":2,"fontex":0.5]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Associez chaque valeur en base 10 à son équivalent en base 2."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>oct01</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>bin02</dct:identifier>
+        <dct:title xml:lang="fr-FR">Associer chaque valeur (comprise entre 0 et 15) en base 10 à son équivalent en base 8.</dct:title>
+        <dct:description><![CDATA["gen":"function(i){var n=4, a = Math.floor(Math.random()*Math.pow(2,n)), b = a.toString(2); while (b.length<n) { b=\\\"0\\\"+b; } return [b,a];}","nbvalues":5,"number":5,"len":[3,1],"font":2,"fontex":0.5]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Associez chaque valeur en base 10 à son équivalent en base 2."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>oct01</dct:alternative>
+    </rdf:Description>
+
+</rdf:RDF>

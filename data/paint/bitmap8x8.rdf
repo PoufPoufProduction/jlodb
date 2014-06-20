@@ -102,11 +102,12 @@
         <dct:alternative>a001</dct:alternative>
     </rdf:Description>
 
+    <!-- hexadecimal -->
 
     <rdf:Description>
         <dct:identifier>a101</dct:identifier>
-        <dct:title xml:lang="fr-FR">Reproduire le sprite à partir de son bitmap hexadécimal 8x8x2 [deux traits verticaux].</dct:title>
-        <dct:description><![CDATA["url":"desktop/paint/bitmap8x8.svg","result":"   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1","t":["11","11","11","11","11","11","11","11"],"data":[{},{"toggle":true}],"selected":1,"class":"bitmap hex","cbk":"function(_root,_result,_id){ var offset=Math.floor(_id/8)*8, val=0; for (var i=0; i<8; i++) { $('#l'+i).attr('class','bg'+((i%2)+1)+(i==Math.floor(_id/8)?' s':'')); if (_result[i+offset]!='0' && _result[i+offset]!=' ') val+=(1<<(7-i)); } var rc =val.toString(16); while(rc.length < 2) { rc='0'+rc; }  $('#output text', _root).text(rc); $('#output', _root).attr('transform','translate(0,'+52*Math.floor(_id/8)+')'); }"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Reproduire le sprite à partir de son bitmap hexadécimal 8x8x2 [une diagonale].</dct:title>
+        <dct:description><![CDATA["url":"desktop/paint/bitmap8x8.svg","result":"       1      1      1      1      1      1      1      1       ","t":["01","02","04","08","10","20","40","80"],"data":[{},{"toggle":true}],"selected":1,"class":"bitmap hex ww","cbk":"function(_root,_result,_id){ var offset=Math.floor(_id/8)*8, val=0; for (var i=0; i<8; i++) { $('#l'+i).attr('class','bg'+((i%2)+1)+(i==Math.floor(_id/8)?' s':'')); if (_result[i+offset]!='0' && _result[i+offset]!=' ') val+=(1<<(7-i)); } var rc =val.toString(16); while(rc.length < 2) { rc='0'+rc; }  $('#output text', _root).text(rc); $('#output', _root).attr('transform','translate(0,'+52*Math.floor(_id/8)+')'); }"]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -115,7 +116,40 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>a108</dct:identifier>
+        <dct:identifier>a102</dct:identifier>
+        <dct:title xml:lang="fr-FR">Reproduire le sprite à partir de son bitmap hexadécimal 8x8x2 [une croix].</dct:title>
+        <dct:description><![CDATA["url":"desktop/paint/bitmap8x8.svg","result":"1      1 1    1   1  1     11      11     1  1   1    1 1      1","t":["81","42","24","18","18","24","42","81"],"data":[{},{"toggle":true}],"selected":1,"class":"bitmap hex","cbk":"function(_root,_result,_id){ var offset=Math.floor(_id/8)*8, val=0; for (var i=0; i<8; i++) { $('#l'+i).attr('class','bg'+((i%2)+1)+(i==Math.floor(_id/8)?' s':'')); if (_result[i+offset]!='0' && _result[i+offset]!=' ') val+=(1<<(7-i)); } var rc =val.toString(16); while(rc.length < 2) { rc='0'+rc; }  $('#output text', _root).text(rc); $('#output', _root).attr('transform','translate(0,'+52*Math.floor(_id/8)+')'); }"]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>a001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>a103</dct:identifier>
+        <dct:title xml:lang="fr-FR">Reproduire le sprite à partir de son bitmap hexadécimal 8x8x2 [3 carrés].</dct:title>
+        <dct:description><![CDATA["url":"desktop/paint/bitmap8x8.svg","result":"1111    1  1    1  111  1111 1    1  111  1111 1    1  1    1111","t":["f0","90","9c","f4","27","3d","09","0f"],"data":[{},{"toggle":true}],"selected":1,"class":"bitmap hex","cbk":"function(_root,_result,_id){ var offset=Math.floor(_id/8)*8, val=0; for (var i=0; i<8; i++) { $('#l'+i).attr('class','bg'+((i%2)+1)+(i==Math.floor(_id/8)?' s':'')); if (_result[i+offset]!='0' && _result[i+offset]!=' ') val+=(1<<(7-i)); } var rc =val.toString(16); while(rc.length < 2) { rc='0'+rc; }  $('#output text', _root).text(rc); $('#output', _root).attr('transform','translate(0,'+52*Math.floor(_id/8)+')'); }"]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>a001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>a104</dct:identifier>
+        <dct:title xml:lang="fr-FR">Reproduire le sprite à partir de son bitmap hexadécimal 8x8x2 [une tête].</dct:title>
+        <dct:description><![CDATA["url":"desktop/paint/bitmap8x8.svg","result":"  1111   11  11 11    111 1  1 11      111 11 11 1    1  111111 ","t":["3c","66","c3","a5","81","db","42","7e"],"data":[{},{"toggle":true}],"selected":1,"class":"bitmap hex","cbk":"function(_root,_result,_id){ var offset=Math.floor(_id/8)*8, val=0; for (var i=0; i<8; i++) { $('#l'+i).attr('class','bg'+((i%2)+1)+(i==Math.floor(_id/8)?' s':'')); if (_result[i+offset]!='0' && _result[i+offset]!=' ') val+=(1<<(7-i)); } var rc =val.toString(16); while(rc.length < 2) { rc='0'+rc; }  $('#output text', _root).text(rc); $('#output', _root).attr('transform','translate(0,'+52*Math.floor(_id/8)+')'); }"]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>a001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>a105</dct:identifier>
         <dct:title xml:lang="fr-FR">Reproduire le sprite à partir de son bitmap hexadécimal 8x8x2 [un monstre].</dct:title>
         <dct:description><![CDATA["url":"desktop/paint/bitmap8x8.svg","result":"1 1 1 1 1 111 1 1111111 11 1 11  11111   11111   1   1  1     1 ","t":["aa","ba","fe","d6","7c","7c","44","82"],"data":[{},{"toggle":true}],"selected":1,"class":"bitmap hex","cbk":"function(_root,_result,_id){ var offset=Math.floor(_id/8)*8, val=0; for (var i=0; i<8; i++) { $('#l'+i).attr('class','bg'+((i%2)+1)+(i==Math.floor(_id/8)?' s':'')); if (_result[i+offset]!='0' && _result[i+offset]!=' ') val+=(1<<(7-i)); } var rc =val.toString(16); while(rc.length < 2) { rc='0'+rc; }  $('#output text', _root).text(rc); $('#output', _root).attr('transform','translate(0,'+52*Math.floor(_id/8)+')'); }"]]></dct:description>
         <dct:extent>2</dct:extent>

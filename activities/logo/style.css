@@ -1,45 +1,52 @@
 .logo                                { background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat;}
-.logo div#splash>div                 { background-image:url("../../res/img/banners/asm.svg"); }
-.logo div#splash .text               { width:48%; float:right; font-size:.8em;  }
+.logo div#splash>div                 { background-image:url("../../res/img/banners/logo.svg"); background-repeat:no-repeat;}
+.logo div#splash .text               { width:47%; float:left; font-size:.8em;  }
 .logo div#splash .text h1            { text-align:right; padding-right:.5em;}
 .logo div#splash .text ul            { list-style-type:none; margin:.5em; font-size:.9em; }
 .logo div#splash .text li            { margin:.5em 0 .5em 0; }
+.logo div#splash .text #guide        { font-size:0.8em; margin-left:.2em;}
 .logo div.mask                       { position:absolute; width:7.8em; height:12em; top:0; left:0; display:none; }
 .logo div#export                     { position:absolute; width:16em; height:12em; top:0; left:0; display:none; }
 
 .logo div#output>div                 { margin:.1em; }
-.logo div#board                      { width:8em; height:6em; border-radius:0 .5em 0 0; }
+.logo div#board                      { cursor:crosshair; width:8em; height:6em; border-radius:0 .5em 0 0; }
 .logo div#controls                   { width:8em; height:1em; padding:.1em 0; background-color:#cccccc; }
 .logo div#controls.running           { background-color:#5BB; }
 .logo div#controls #debug            { display:none; }
-.logo div#buttons>div                { float:left; margin-left:.2em; cursor:pointer; }
+.logo div#buttons>div                { float:left; margin-left:.2em; cursor:pointer;}
+.logo div#buttons #submit            { float:right; margin-right:.2em; opacity:0.2; cursor:auto;}
+.logo div#buttons #submit.s          { opacity:1; cursor:pointer; }
 .logo div#exercice                   { width:7.8em; height:4.3em; border-radius:0 0 .5em 0;
                                        text-align:justify; font-style:italic; background-repeat:repeat; padding:.05em .1em;
                                       background-image:url("../../res/img/background/book02.svg"); }
-.logo div#exercice>div               { font-size:.5em; }
+.logo div#exercice>div               { font-size:.3em; }
 .logo div#menu                       { float:left; background-color:#90cce0; border-radius:.5em 0 0 .5em; margin:.1em 0 .1em .1em;
                                        width:7.7em; height:11.8em; }
 
 .logo div#source                     { margin:.1em .1em 0 .1em; width:7.5em; height:5em; background-color:rgba(255,255,255,0.2);
                                        border-radius:.5em 0 0 0; }
 .logo div#tabs                       { float:left; width:1em; height:5em; background-color:#609cc0; }
-.logo div#tabs>div                   { width:1em; min-width:1em; height:1em; background-color:#80bcd0; border-radius:.5em 0 0 .5em;
+.logo div#tabs>div                   { width:1em; height:1em; background-color:#80bcd0; border-radius:.5em 0 0 .5em;
                                        cursor:pointer; text-align:center; color:#aaeeff; font-weight:bold; }
-.logo div#panels>div                 { width:16em; height:12.5em; overflow:auto; font-size:0.4em;}
+.logo div#tabs>div.s                 { background-color:#334466; }
+.logo div#panels                     { background-color:white; }
+.logo div#panels>div                 { width:15.9em; height:12.2em; overflow:auto; font-size:0.4em; margin:.2em;
+                                       background-color:#90cce0; background-image:url("../../res/img/background/book05.svg");
+                                       background-repeat:repeat; }
 
 .logo .op                            { background-color:#446688; color:#DDEEFF; }
 .logo .va                            { background-color:#777777; color:#EEEEEE; min-width:1.8em; }
 .logo .ma                            { background-color:#555555; color:#EEEEEE; }
-.logo .cl                            { background-color:#334466; color:#DDEEFF; }
+.logo .cl                            { background-color:#334466; color:#DDEEFF; clear:both;}
 .logo .label                         { margin:0 .1em; text-align:center; float:left; }
 .logo .a                             { margin:.1em; padding-left:.2em; float:left; font-weight:bold; opacity:0.2;
                                        font-family: "Courier New" Courier monospace; border-radius:.25em; cursor:move; }
 .logo .a.s                           { opacity:1; }
 .logo .d                             { float:left; margin:.1em .1em .1em .2em;  min-height:1em; min-width:1.8em; border-radius:.25em; }
+.logo .ui-draggable-dragging .d.op   { display:none; }
 
-
-.logo div#code                       { margin:.22em; width:18.8em; height:16.3em; background-color:#222222; border-radius:0 0 0 1.2em;
-                                       overflow:auto; font-size:0.4em;}
+.logo div#code                       { margin:.22em; width:18.8em; height:15.3em; background-color:#222222; border-radius:0 0 0 1.2em;
+                                       overflow:auto; font-size:0.4em; padding-bottom:1em;}
 .logo div#code .line                 { width:100%; min-height:1em;
                                        background-color:#567; border:1px solid #334466; border-width:0 0 1px 0;}
 .logo div#code .line.s               { background:yellow; }

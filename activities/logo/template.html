@@ -4,14 +4,14 @@
     <div id="source">
         <div id="tabs">
             <div></div>
-            <div onclick="$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#op').show();"
-                 ontouchstart="$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#op').show();event.preventDefault();">!</div>
-            <div onclick="$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#va').show();"
-                 ontouchstart="$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#va').show();event.preventDefault();">1</div>
-            <div onclick="$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#ma').show();"
-                 ontouchstart="$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#ma').show();event.preventDefault();">+</div>
-            <div onclick="$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#cl').show();"
-                 ontouchstart="$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#cl').show();event.preventDefault();">*</div>
+            <div onclick="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#op').show();"
+                 ontouchstart="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#op').show();event.preventDefault();" class="s"><img src="res/img/icon/tab01.svg"/></div>
+            <div onclick="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#va').show();"
+                 ontouchstart="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#va').show();event.preventDefault();"><img src="res/img/icon/tab02.svg"/></div>
+            <div onclick="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#ma').show();"
+                 ontouchstart="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#ma').show();event.preventDefault();"><img src="res/img/icon/tab03.svg"/></div>
+            <div onclick="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#cl').show();"
+                 ontouchstart="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#cl').show();event.preventDefault();"><img src="res/img/icon/tab04.svg"/></div>
         </div>
         <div id="panels">
             <div id="op">
@@ -38,60 +38,68 @@
                 <div class="a op o" id="jj"><div class="label">J=</div><div class="d va"></div></div>
             </div>
             <div id="va">
-                <div class="a va v" id="v000"><div class="label">0</div></div>
-                <div class="a va v" id="v001"><div class="label">1</div></div>
-                <div class="a va v" id="v002"><div class="label">2</div></div>
-                <div class="a va v" id="v003"><div class="label">3</div></div>
-                <div class="a va v" id="v0PI"><div class="label">PI</div></div>
-                <div class="a va v" id="v004"><div class="label">4</div></div>
-                <div class="a va v" id="v005"><div class="label">5</div></div>
-                <div class="a va v" id="v006"><div class="label">6</div></div>
-                <div class="a va v" id="v007"><div class="label">7</div></div>
-                <div class="a va v" id="v008"><div class="label">8</div></div>
-                <div class="a va v" id="v009"><div class="label">9</div></div>
-                <div class="a va v" id="v010"><div class="label">10</div></div>
-                <div class="a va v" id="v015"><div class="label">15</div></div>
-                <div class="a va v" id="v020"><div class="label">20</div></div>
-                <div class="a va v" id="v030"><div class="label">30</div></div>
-                <div class="a va v" id="v040"><div class="label">40</div></div>
-                <div class="a va v" id="v045"><div class="label">45</div></div>
-                <div class="a va v" id="v050"><div class="label">50</div></div>
-                <div class="a va v" id="v060"><div class="label">60</div></div>
-                <div class="a va v" id="v070"><div class="label">70</div></div>
-                <div class="a va v" id="v075"><div class="label">75</div></div>
-                <div class="a va v" id="v080"><div class="label">80</div></div>
-                <div class="a va v" id="v090"><div class="label">90</div></div>
-                <div class="a va v" id="v100"><div class="label">100</div></div>
-                <div class="a va v" id="v120"><div class="label">120</div></div>
-                <div class="a va v" id="v135"><div class="label">135</div></div>
-                <div class="a va v" id="v180"><div class="label">180</div></div>
-                <div class="a va v" id="v200"><div class="label">200</div></div>
-                <div class="a va v" id="v225"><div class="label">225</div></div>
-                <div class="a va v" id="v250"><div class="label">250</div></div>
-                <div class="a va v" id="v270"><div class="label">270</div></div>
-                <div class="a va v" id="v300"><div class="label">300</div></div>
-                <div class="a va v" id="v325"><div class="label">325</div></div>
-                <div class="a va v" id="v360"><div class="label">360</div></div>
+                <div class="a va v" id="V000"><div class="label">0</div></div>
+                <div class="a va v" id="V001"><div class="label">1</div></div>
+                <div class="a va v" id="V002"><div class="label">2</div></div>
+                <div class="a va v" id="V003"><div class="label">3</div></div>
+                <!-- <div class="a va v" id="PI">  <div class="label">PI</div></div> -->
+                <div class="a va v" id="V004"><div class="label">4</div></div>
+                <div class="a va v" id="V005"><div class="label">5</div></div>
+                <div class="a va v" id="V006"><div class="label">6</div></div>
+                <div class="a va v" id="V007"><div class="label">7</div></div>
+                <div class="a va v" id="V008"><div class="label">8</div></div>
+                <div class="a va v" id="V009"><div class="label">9</div></div>
+                <div class="a va v" id="V010"><div class="label">10</div></div>
+                <div class="a va v" id="V030"><div class="label">30</div></div>
+                <div class="a va v" id="V040"><div class="label">40</div></div>
+                <div class="a va v" id="V045"><div class="label">45</div></div>
+                <div class="a va v" id="V050"><div class="label">50</div></div>
+                <div class="a va v" id="V060"><div class="label">60</div></div>
+                <div class="a va v" id="V075"><div class="label">75</div></div>
+                <div class="a va v" id="V090"><div class="label">90</div></div>
+                <div class="a va v" id="V100"><div class="label">100</div></div>
+                <div class="a va v" id="V120"><div class="label">120</div></div>
+                <div class="a va v" id="V135"><div class="label">135</div></div>
+                <div class="a va v" id="V180"><div class="label">180</div></div>
+                <div class="a va v" id="V200"><div class="label">200</div></div>
+                <div class="a va v" id="V225"><div class="label">225</div></div>
+                <div class="a va v" id="V240"><div class="label">240</div></div>
+                <div class="a va v" id="V250"><div class="label">250</div></div>
+                <div class="a va v" id="V270"><div class="label">270</div></div>
+                <div class="a va v" id="V300"><div class="label">300</div></div>
+                <div class="a va v" id="V320"><div class="label">320</div></div>
+                <div class="a va v" id="V315"><div class="label">315</div></div>
+                <div class="a va v" id="V360"><div class="label">360</div></div>
+                <div class="a va v" id="V400"><div class="label">400</div></div>
+                <div class="a va v" id="V480"><div class="label">480</div></div>
+                <div class="a va v" id="V640"><div class="label">640</div></div>
                 <div style="clear:both"></div>
-                <div class="a va v" id="v00X"><div class="label">X</div></div>
-                <div class="a va v" id="v00Y"><div class="label">Y</div></div>
-                <div class="a va v" id="v00Z"><div class="label">Z</div></div>
-                <div class="a va v" id="v00I"><div class="label">I</div></div>
-                <div class="a va v" id="v00J"><div class="label">J</div></div>
+                <div class="a va v" id="X"><div class="label">X</div></div>
+                <div class="a va v" id="Y"><div class="label">Y</div></div>
+                <div class="a va v" id="Z"><div class="label">Z</div></div>
+                <div class="a va v" id="I"><div class="label">I</div></div>
+                <div class="a va v" id="J"><div class="label">J</div></div>
+                <div style="clear:both"></div>
+                <div class="a va v" id="black"><div class="label"></div></div>
+                <div class="a va v" id="white"><div class="label"></div></div>
+                <div class="a va v" id="red"><div class="label"></div></div>
+                <div class="a va v" id="green"><div class="label"></div></div>
+                <div class="a va v" id="blue"><div class="label"></div></div>
             </div>
             <div id="ma">
                 <div class="a ma v" id="plus"><div class="d va"></div><div class="label">+</div><div class="d va"></div></div>
                 <div class="a ma v" id="minus"><div class="d va"></div><div class="label">-</div><div class="d va"></div></div>
+                <div class="a ma v" id="neg"><div class="label">-</div><div class="d va"></div></div>
                 <div class="a ma v" id="mult"><div class="d va"></div><div class="label">*</div><div class="d va"></div></div>
                 <div class="a ma v" id="div"><div class="d va"></div><div class="label">/</div><div class="d va"></div></div>
-                <div class="a ma v" id="rad"><div class="label">RAD</div><div class="d va"></div></div>
                 <div class="a ma v" id="divint"><div class="d va"></div><div class="label">:</div><div class="d va"></div></div>
                 <div class="a ma v" id="modulo"><div class="d va"></div><div class="label">%</div><div class="d va"></div></div>
-                <div class="a ma v" id="deg"><div class="label">DEG</div><div class="d va"></div></div>
+                <div class="a ma v" id="pow2"><div class="d va"></div><div class="label">²</div></div>
                 <div style="clear:both"></div>
                 <div class="a ma v" id="int"><div class="label"></div><div class="d va"></div></div>
                 <div class="a ma v" id="round"><div class="label"></div><div class="d va"></div></div>
-                <div class="a ma v" id="rand"><div class="label"></div><div class="d va"></div></div>
+                <div class="a ma v" id="rad"><div class="label">RAD</div><div class="d va"></div></div>
+                <div class="a ma v" id="deg"><div class="label">DEG</div><div class="d va"></div></div>
                 <div class="a ma v" id="sqrt"><div class="label"></div><div class="d va"></div></div>
                 <div style="clear:both"></div>
                 <div class="a ma v" id="log"><div class="label">LOG</div><div class="d va"></div></div>
@@ -103,15 +111,13 @@
             </div>
             <div id="cl">
                 <div class="a cl o" id="rep"><div class="label"></div><div class="d va"></div><div class="d op"></div></div>
-                <div style="clear:both"></div>
                 <div class="a cl o" id="call1"><div class="label"></div></div>
-                <div class="a cl o" id="fct1"><div class="label"></div><div class="d op"></div></div>
-                <div style="clear:both"></div>
                 <div class="a cl o" id="call2"><div class="label"></div><div class="d va"></div></div>
-                <div class="a cl o" id="fct2"><div class="label"></div><div class="d op"></div></div>
-                <div style="clear:both"></div>
                 <div class="a cl o" id="call3"><div class="label"></div><div class="d va"></div><div class="d va"></div></div>
+                <div class="a cl o" id="fct1"><div class="label"></div><div class="d op"></div></div>
+                <div class="a cl o" id="fct2"><div class="label"></div><div class="d op"></div></div>
                 <div class="a cl o" id="fct3"><div class="label"></div><div class="d op"></div></div>
+                <div class="a cl o" id="if"><div class="label"></div><div style="float:left;">(X&gt;</div><div class="d va"></div><div style="float:left;">) [STOP]</div></div>
             </div>
         </div>
     </div>
@@ -123,6 +129,8 @@
                     onclick="$(this).closest('.logo').logo('board');"></div>
     <div id="controls">
       <div id="buttons">
+        <div id="submit" ontouchstart="$(this).closest('.logo').logo('submit');event.preventDefault();"
+                        onclick="$(this).closest('.logo').logo('submit');" class="icon"><img src="res/img/control/valid.svg"/></div>
         <div id="speed" ontouchstart="$(this).closest('.logo').logo('speed');event.preventDefault();"
                         onclick="$(this).closest('.logo').logo('speed');" class="icon"><img src="res/img/control/x2.svg"/></div>
         <div id="stop" ontouchstart="$(this).closest('.logo').logo('stop');event.preventDefault();"
@@ -148,6 +156,7 @@
                      onclick="$(this).closest('.logo').logo('next');"><div>
         <div class="text">
             <h1 id="label"></h1>
+            <div id="guide"></div>
         </div>
     </div></div>
 

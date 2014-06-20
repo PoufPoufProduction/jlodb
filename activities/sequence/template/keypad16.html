@@ -1,0 +1,73 @@
+<div class="keypad">
+    <div id="values"><div id="comment"></div><ul></ul></div>
+    <div id="board">
+        <div id="time" class="time">00:00:00</div>
+        <div id="keypad" class="tiny">
+            <table>
+                <tr><td ontouchstart="$(this).closest('.sequence').sequence('key', -1);event.preventDefault();"
+                        onclick="$(this).closest('.sequence').sequence('key', -1);" colspan="3" id="screen" >00</td></tr>
+                <tr>
+                    <td ontouchstart="$(this).closest('.sequence').sequence('key', 'd');event.preventDefault();"
+                        onclick="$(this).closest('.sequence').sequence('key', 'd');">D</td>
+                    <td ontouchstart="$(this).closest('.sequence').sequence('key', 'e');event.preventDefault();"
+                        onclick="$(this).closest('.sequence').sequence('key', 'e');">E</td>
+                    <td ontouchstart="$(this).closest('.sequence').sequence('key', 'f');event.preventDefault();"
+                        onclick="$(this).closest('.sequence').sequence('key', 'f');">F</td>
+                </tr>
+                <tr>
+                    <td ontouchstart="$(this).closest('.sequence').sequence('key', 'a');event.preventDefault();"
+                        onclick="$(this).closest('.sequence').sequence('key', 'a');">A</td>
+                    <td ontouchstart="$(this).closest('.sequence').sequence('key', 'b');event.preventDefault();"
+                        onclick="$(this).closest('.sequence').sequence('key', 'b');">B</td>
+                    <td ontouchstart="$(this).closest('.sequence').sequence('key', 'c');event.preventDefault();"
+                        onclick="$(this).closest('.sequence').sequence('key', 'c');">C</td>
+                </tr>
+                <tr>
+                    <td ontouchstart="$(this).closest('.sequence').sequence('key', 7);event.preventDefault();"
+                        onclick="$(this).closest('.sequence').sequence('key', 7);">7</td>
+                    <td ontouchstart="$(this).closest('.sequence').sequence('key', 8);event.preventDefault();"
+                        onclick="$(this).closest('.sequence').sequence('key', 8);">8</td>
+                    <td ontouchstart="$(this).closest('.sequence').sequence('key', 9);event.preventDefault();"
+                        onclick="$(this).closest('.sequence').sequence('key', 9);">9</td>
+                </tr>
+                <tr>
+                    <td ontouchstart="$(this).closest('.sequence').sequence('key', 4);event.preventDefault();"
+                        onclick="$(this).closest('.sequence').sequence('key', 4);">4</td>
+                    <td ontouchstart="$(this).closest('.sequence').sequence('key', 5);event.preventDefault();"
+                        onclick="$(this).closest('.sequence').sequence('key', 5);">5</td>
+                    <td ontouchstart="$(this).closest('.sequence').sequence('key', 6);event.preventDefault();"
+                        onclick="$(this).closest('.sequence').sequence('key', 6);">6</td>
+                </tr>
+                <tr>
+                    <td ontouchstart="$(this).closest('.sequence').sequence('key', 1);event.preventDefault();"
+                        onclick="$(this).closest('.sequence').sequence('key', 1);">1</td>
+                    <td ontouchstart="$(this).closest('.sequence').sequence('key', 2);event.preventDefault();"
+                        onclick="$(this).closest('.sequence').sequence('key', 2);">2</td>
+                    <td ontouchstart="$(this).closest('.sequence').sequence('key', 3);event.preventDefault();"
+                        onclick="$(this).closest('.sequence').sequence('key', 3);">3</td>
+                </tr>
+                <tr>
+                    <td ontouchstart="$(this).closest('.sequence').sequence('key', 0);event.preventDefault();"
+                        onclick="$(this).closest('.sequence').sequence('key', 0);">0</td>
+                    <td ontouchstart="$(this).closest('.sequence').sequence('key', '.');event.preventDefault();"
+                        onclick="$(this).closest('.sequence').sequence('key', '.');" colspan="2">X</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="effects">
+        <div id="good1"><img src="res/img/effects/alert02.svg"/></div>
+        <div id="good2"><img src="res/img/effects/alert03.svg"/></div>
+        <div id="good5"><img src="res/img/effects/alert04.svg"/></div>
+        <div id="good10"><img src="res/img/effects/alert05.svg"/></div>
+        <div id="good20"><img src="res/img/effects/alert06.svg"/></div>
+        <div id="wrong"><img src="res/img/effects/alert01.svg"/></div>
+    </div>
+    <div id="splash" ontouchstart="$(this).hide().closest('.sequence').sequence('next');event.preventDefault();"
+                     onclick="$(this).hide().closest('.sequence').sequence('next');"><div>
+        <div class="text">
+            <h1 id="label">Sequence</h1>
+            <p id="guide_keypad"></p>
+        </div>
+    </div></div>
+</div>

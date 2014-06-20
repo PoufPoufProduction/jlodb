@@ -46,6 +46,7 @@ window.onload = function() {
         if (args.activity)          { options.activity = args.activity; }
         if (args.classification)    { options.classification = args.classification; }
     }
+    if (args.splash) { $("#all").removeClass(); }
 
     $("#all>div").each( function() { jlodb($(this)); });
 }

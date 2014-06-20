@@ -69,12 +69,35 @@
         .white  #lightskin      { fill:#eeeeee; }
         .white  #lines path     { fill:none;stroke:#606060;stroke-width:0.60;stroke-linecap:butt;stroke-linejoin:miter; }
         .white  #borders path   { fill:none;stroke:#606060;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter; }
+
+        #background *           { fill:none;stroke:#dd8833;stroke-width:2.5; stroke-dasharray:10,10; }
+        #background .hide       { display:none; }
+        #background .tiny       { stroke-width:0.8; stroke-dasharray:none; }
+        #background text        { font-size:30px;stroke:none;fill:#dd8833;}
     </style>
 </defs>
 
 <rect width="640" height="480" ry="0" x="0" y="0" id="bg" class="white"/>
 
 <g id="background">
+    <line x1="0" y1="0" x2="0" y2="0" class="hide" id="line"/>
+    <rect x="0" y="0" width="0" height="0" class="hide" id="rect"/>
+    <circle cx="0" cy="0" r="0" class="hide" id="circle"/>
+    <text class="hide" id="text"></text>
+    <g id="grid100" class="hide">
+        <line x1="0" y1="40" x2="640" y2="40"   class="tiny"/>
+        <line x1="0" y1="140" x2="640" y2="140" class="tiny"/>
+        <line x1="0" y1="240" x2="640" y2="240" class="tiny"/>
+        <line x1="0" y1="340" x2="640" y2="340" class="tiny"/>
+        <line x1="0" y1="440" x2="640" y2="440" class="tiny"/>
+        <line x1="20" y1="0" x2="20" y2="480"   class="tiny"/>
+        <line x1="120" y1="0" x2="120" y2="480" class="tiny"/>
+        <line x1="220" y1="0" x2="220" y2="480" class="tiny"/>
+        <line x1="320" y1="0" x2="320" y2="480" class="tiny"/>
+        <line x1="420" y1="0" x2="420" y2="480" class="tiny"/>
+        <line x1="520" y1="0" x2="520" y2="480" class="tiny"/>
+        <line x1="620" y1="0" x2="620" y2="480" class="tiny"/>
+    </g>
 </g>
 
 <g id="board" >

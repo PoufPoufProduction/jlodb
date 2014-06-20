@@ -167,12 +167,17 @@
                 } });
 
                 // Locale handling
+                if (settings.exercice) { $this.find("#exercice").html(settings.exercice); }
                 $this.find("h1#label").html(settings.label);
                 var list=["a","b","c","d","e","f","g"];
                 for (var i in settings.locale.legend) {
                     $this.find("#legend ul").append("<li>"+list[i]+" "+settings.locale.legend[i]+"</li>");
                 }
-                $this.find("#guide").html(settings.locale.guide);
+                if ($.isArray(settings.locale.guide)) {
+                    $this.find("#guide").html("");
+                    for (var i in settings.locale.guide) { $this.find("#guide").append("<p>"+settings.locale.guide[i]+"</p>"); }
+                }
+                else { $this.find("#guide").html(settings.locale.guide); }
                 if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },

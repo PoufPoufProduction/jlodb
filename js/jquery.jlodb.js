@@ -1,6 +1,6 @@
 (function($) {
     var defaults = {
-        debug       : true,
+        debug       : false,
         url         : "",               // cross platform json (not available for the moment)
         id          : "activity",       // activity id
         isvisible   : false,            // is visible
@@ -32,7 +32,6 @@
             settings.args = $.extend(true, {},_args);
 
             var args = $.extend({ 'context': settings.context } , _args);
-            args.debug   = settings.debug;
             args.context = settings.context;
 
             if (typeof($this[_name])=='undefined') {

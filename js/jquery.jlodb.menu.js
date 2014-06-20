@@ -32,7 +32,6 @@
             for (var i in settings.list) {
                 $this.find(".menu").append("<div class='icon"+(i>=99?" gtc":"")+"' id='"+i+"' onclick='$(this).closest(\".jmenu\").parent().menu(\"click\", "+i+");event.stopPropagation();' ontouchstart='$(this).closest(\".jmenu\").parent().menu(\"click\","+i+");event.stopPropagation();event.preventDefault();'><div class='legend'>"+(parseInt(i)+1)+"</div><div class='state sl'></div></div>");
             }
- 
 
             for (var i=0; i<settings.state.length; i++) { helpers.state($this,i); }
 
