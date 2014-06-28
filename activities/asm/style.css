@@ -53,8 +53,8 @@
 .asm #detail #source>div            { clear:both; }
 .asm #detail #source .a             { float:left; cursor:pointer; }
 .asm #detail #source #header        { height:2em; }
-.asm #detail #source #ops           { width:11em; background-color:#90cce0; }
-.asm #detail #source #args          { width:11em; background-color:#828282; }
+.asm #detail #source #ops           { background-color:#90cce0; }
+.asm #detail #source #args          { background-color:#828282; }
 .asm #detail #source .a             { padding:0;  }
 .asm #detail #source #ops  .a       { font-size:.8em; width:2.5em; margin:.2em 0; color:black; font-weight:normal; }
 .asm.hide #detail #source #ops .a.d { display:none; }
@@ -68,7 +68,7 @@
 .asm #central #code #lines .label.arg   { background-color:#f88; width:5em; color:#fee; left:7.3em;}
 .asm #central #code #lines .op          { margin:.1em; background-color:#90cce0; border-radius:.25em; padding:.1em; width:3em;
                                           color:#eff; font-weight:bold; position:absolute; top:0; left:4em;
-                                          text-transform:lowercase;}
+                                          /* text-transform:lowercase; */}
 .asm #central #code #lines .arg         { margin:.1em; background-color:#82ca82; border-radius:.25em; padding:.1em; width:5em;
                                           color:#efe; font-weight:bold; position:absolute; top:0; left:7.3em; }
 .asm .a                                 { text-align:center; font-size:1em; }

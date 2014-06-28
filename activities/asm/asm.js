@@ -13,6 +13,7 @@
         nblines     : 5,                                        // Number of lines
         header      : 0,
         footer      : 0,
+        font        : 0,                                        // Font-size of the source
         export      : false,                                    // Show code
         debug       : false                                     // Debug mode
     };
@@ -148,6 +149,7 @@
                             start:function() { settings.data.compiled = false;}});
                     }
                 });
+                if (settings.font) { $this.find("#detail #source>div").css("font-size",settings.font+"em"); }
 
                 // Build the header
                 var headlen = 0;
@@ -298,8 +300,9 @@
                        ["#000000", "#ffffff", "#880000", "#aaffee","#cc44cc", "#00cc55", "#0000aa", "#eeee77",
                         "#dd8855", "#664400", "#ff7777", "#333333","#777777", "#aaff66", "#0088ff", "#bbbbbb"],
                        ["#ffffff", "#000000"],
+                       ["#081820", "#346856", "#88c070", "#e0f8d0"],
                        ["#081820", "#346856", "#88c070", "#e0f8d0"]],
-            models  : [[16,16,8],[32,32,4],[48,32,1],[40,36,2]],
+            models  : [[16,16,8],[32,32,4],[48,32,1],[40,36,2],[80,72,2]],
             init: function($this) {
                 var settings = helpers.settings($this);
                 for (var i=0; i<256; i++) { this.colors[0].push("#"+helpers.c.hex(i)+helpers.c.hex(i)+helpers.c.hex(i)); }
@@ -356,7 +359,7 @@
                                                   if (_addr== helpers.c.offset.stdout) { helpers.stdout.ascii(_data.$this,_val,false);}},
             key:  function(_data, _val)         { this.setb(_data,0, helpers.c.offset.key, _val); },
             init: function(_data)               { if (!_data.mem) { _data.mem = new Array(helpers.c.offset.end);} },
-            clear:function(_data)               { for (var i = 0; i < helpers.c.offset.code; i++) { this.set(_data,i, 0x00);} }
+            clear:function(_data)               { for (var i = 0; i < helpers.c.offset.code; i++) { this.set(_data,i,i==0xfc?0xff:0x00);} }
         },
         // COMPILER
         compiler: {
