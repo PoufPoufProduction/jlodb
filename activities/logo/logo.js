@@ -218,9 +218,9 @@
                 upd: function($this) {
                     var settings = helpers.settings($this);
                     $("#turtle",settings.svg.root()).attr("transform","translate("+
-                        (settings.data.pos[0]+320)+","+(settings.data.pos[1]+240)+")").
+                        (320+settings.data.pos[0])+","+(240+settings.data.pos[1])+")").
                         attr("class",helpers.process.color[settings.data.color%helpers.process.color.length]);
-                    $("#rotturtle",settings.svg.root()).attr("transform","rotate("+((90+settings.data.cap)%360)+")");
+                    $("#rotturtle",settings.svg.root()).attr("transform","rotate("+(settings.data.cap%360)+")");
                     $("#bg",settings.svg.root()).attr("class",helpers.process.color[settings.data.bg%helpers.process.color.length]);
                 }
             },
@@ -322,14 +322,14 @@
             av: function($this, $elt) {
                 var settings = helpers.settings($this);
                 var value = helpers.process.value.get($this, $elt.find(".d.va").first());
-                var move=[ value*Math.cos(settings.data.cap*Math.PI/180), value*Math.sin(settings.data.cap*Math.PI/180) ];
+                var move=[ value*Math.sin(settings.data.cap*Math.PI/180), -value*Math.cos(settings.data.cap*Math.PI/180) ];
                 this.turtle.add($this, move, 0);
                 return true;
             },
             re: function($this, $elt) {
                 var settings = helpers.settings($this);
                 var value = helpers.process.value.get($this, $elt.find(".d.va").first());
-                var move=[ -value*Math.cos(settings.data.cap*Math.PI/180), -value*Math.sin(settings.data.cap*Math.PI/180) ];
+                var move=[ -value*Math.sin(settings.data.cap*Math.PI/180), value*Math.cos(settings.data.cap*Math.PI/180) ];
                 this.turtle.add($this, move, 0);
                 return true;
             },
@@ -381,21 +381,21 @@
             },
             or: function($this, $elt) {
                 var settings = helpers.settings($this);
-                this.turtle.equ($this, [0,0], -90);
+                this.turtle.equ($this, [0,0], 0);
                 return true;
             },
             ca: function($this, $elt) {
                 var settings = helpers.settings($this);
                 var value = Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first()));
-                while (value<0) { value+=360; }
-                this.turtle.equ($this, [settings.data.pos[0],settings.data.pos[1]], (value+270)%360);
+                value = (90-value)%360;
+                this.turtle.equ($this, [settings.data.pos[0],settings.data.pos[1]], value);
                 return true;
             },
             po: function($this, $elt) {
                 var settings = helpers.settings($this);
                 var x = Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first()));
                 var y = Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first().next()));
-                this.turtle.equ($this, [x,y], settings.data.cap);
+                this.turtle.equ($this, [x,-y], settings.data.cap);
                 return true;
             },
             xx: function($this, $elt) {
@@ -488,7 +488,7 @@
             settings.data.X = 0; settings.data.Y = 0; settings.data.Z = 0; settings.data.I = 0; settings.data.J = 0;
             settings.data.stack=[{$elt:$this.find("#code").children().first(), $first:0, count:1, sav:0}];
             settings.data.pos = [0,0];
-            settings.data.cap = -90;
+            settings.data.cap = 0;
             settings.data.color = 0;
             settings.data.pencil = true;
             settings.data.bg = helpers.process.color.length-1;
