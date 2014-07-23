@@ -118,7 +118,7 @@
         <dct:identifier>054</dct:identifier>
         <dct:title xml:lang="fr-FR">Echanger la valeur du registre A et du registre Y en utilisant une zone de la mémoire.</dct:title>
         <dct:description><![CDATA["header":[{"label":"init","value":"","code":"A955A066","rts":false}],"ops":["sta","ldy","tay","tya"],"args":[{"value":"01"}],"nblines":3,"valid":{"y":"55","a":"66"},"class":"large"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Echangez la valeur contenue dans le registre A avec celle contenue dans le registre Y.","","L'algorithme utilisé pour échanger 2 valeurs est toujours le même :",". Copier la valeur du registre A dans une variable temporaire. Ici, la zone mémoire 0x01.",". Transférer la valeur du registre Y vers le registre A. La valeur du registre A est écrasée. Heureusement elle a été sauvé en 0x01.",". Copier la valeur de la variable temporaire vers le registre Y."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Echangez la valeur contenue dans le registre A avec celle contenue dans le registre Y.","","Pour échanger ces 2 valeurs :",". Copier la valeur du registre A dans une variable temporaire. Ici, la zone mémoire 0x01.",". Transférer la valeur du registre Y vers le registre A. La valeur du registre A est écrasée. Heureusement elle a été sauvé en 0x01.",". Copier la valeur de la variable temporaire vers le registre Y."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -433,6 +433,8 @@
 
     <!-- CODE -->
 
+        <!-- CODE: ABSOLUTE READ -->
+
     <rdf:Description>
         <dct:identifier>301</dct:identifier>
         <dct:title xml:lang="fr-FR">Copier la valeur de la zone mémoire 0x1000 dans le registre X, et récupérer ainsi la valeur de la première instruction du programme.</dct:title>
@@ -447,6 +449,18 @@
 
     <rdf:Description>
         <dct:identifier>302</dct:identifier>
+        <dct:title xml:lang="fr-FR">Copier la valeur de la zone mémoire 0x1000 dans le registre X, et récupérer ainsi la valeur de l'instruction LDA une fois compilée.</dct:title>
+        <dct:description><![CDATA["header":[{"label":"init","value":"LDA #0xA8","code":"A9A8","rts":false}],"ops":["ldx"],"args":[{"value":"1000"},{"value":"1001"}],"nblines":1,"valid":{"x":"A9"},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["La ligne précompilé 'init' exécute l'instruction LDA #0x48. Hackez le code pour charger dans le registre X la valeur correspondant à l'instruction LDA une fois compilé."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>303</dct:identifier>
         <dct:title xml:lang="fr-FR">Copier la valeur de la zone mémoire 0x1001 dans le registre X, et récupérer ainsi la valeur chargée par l'instruction LDA.</dct:title>
         <dct:description><![CDATA["header":[{"label":"init","value":"LDA #0xA8","code":"A9A8","rts":false}],"ops":["ldx"],"args":[{"value":"1000"},{"value":"1001"}],"nblines":1,"valid":{"a":"A8","x":"A8"},"class":"large"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Hackez le code pour charger dans le registre X la valeur contenue dans le registre A.","","Il est conseillé de cliquer sur le registre PC pour voir le code compilé ainsi que son emplacement mémoire. Pour rappel, l'instruction LDA suivi d'une valeur numérique à comme valeur une fois compilée 0xA9.","","Important : ceci est un exercice, ne faites jamais cela en programmation normale !"]]]></dct:description>
@@ -458,22 +472,10 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>303</dct:identifier>
-        <dct:title xml:lang="fr-FR">Utiliser la zone mémoire du code compilé, et échanger les valeurs des registres X et Y.</dct:title>
-        <dct:description><![CDATA["header":[{"label":"init","value":["LDX #0xFF","LDY #0xEE"],"code":"A2FFA0EE","rts":false}],"ops":["ldx","ldy"],"args":[{"value":"1000"},{"value":"1001"},{"value":"1002"},{"value":"1003"}],"nblines":2,"valid":{"x":"EE","y":"FF"},"class":"large"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Hackez le code pour échanger les valeurs des registres X et Y. Au départ X=0xFF et Y=0xEE.","","Dans le code source compilé (accessible par une simple pression sur le registre PC), on a LDX=0xA2 et LDY=0xA0 lorsqu'ils sont utilisés avec une valeur numérique comme c'est le cas ici.","","Important : ceci est un exercice, ne faites jamais cela en programmation normale !"]]]></dct:description>
-        <dct:extent>2</dct:extent>
-        <dct:subject>it</dct:subject>
-        <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
         <dct:identifier>304</dct:identifier>
         <dct:title xml:lang="fr-FR">Envoyer vers la sortie standard une valeur précompilée.</dct:title>
-        <dct:description><![CDATA["header":[{"label":"init","value":"JMP 0x1004","code":"4C0410","rts":false},{"label":"c","value":"","code":"58","rts":false}],"ops":["lda","sta"],"args":[{"value":"fe"},{"value":"1003"}],"nblines":2,"valid":{"a":"58","out":"X"},"class":"large"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Envoyez vers la sortie standard l'octet défini à l'adresse 0x1003." ]]]></dct:description>
+        <dct:description><![CDATA["header":[{"label":"init","value":"","code":"4C041058","rts":false}],"ops":["lda","sta"],"args":[{"value":"fe"},{"value":"1003"}],"nblines":2,"valid":{"a":"58","out":"X"},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["S'il est possible d'accéder à n'importe quelle zone du code source, on peut utiliser cette fonctionalité pour stocker des informations dans le programme comme des textes, des images, des valeurs utiles, etc.","","Grâce au code précompilé 'init' un caractère particulier est stocké à l'adresse 0x1003. Affichez celui-ci dans la sortie standard pour le voir apparaître." ]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -484,7 +486,7 @@
     <rdf:Description>
         <dct:identifier>305</dct:identifier>
         <dct:title xml:lang="fr-FR">Envoyer vers la sortie standard 3 valeurs précompilées.</dct:title>
-        <dct:description><![CDATA["header":[{"label":"init","value":"JMP 0x1004","code":"4C0610","rts":false},{"label":"c","value":"","code":"414243","rts":false}],"ops":["lda","sta"],"args":[{"value":"fe"},{"value":"1003"},{"value":"1004"},{"value":"1005"}],"nblines":6,"valid":{"a":"43","out":"ABC"},"class":"large"]]></dct:description>
+        <dct:description><![CDATA["header":[{"label":"init","value":"","code":"4C0610414243","rts":false}],"ops":["lda","sta"],"args":[{"value":"fe"},{"value":"1003"},{"value":"1004"},{"value":"1005"}],"nblines":6,"valid":{"a":"43","out":"ABC"},"class":"large"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Envoyez successivement vers la sortie standard les octets définis aux adresses 0x1003, 0x1004 et 0x1005." ]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
@@ -496,7 +498,7 @@
     <rdf:Description>
         <dct:identifier>306</dct:identifier>
         <dct:title xml:lang="fr-FR">Envoyer vers l'écran graphique 1 valeur précompilée.</dct:title>
-        <dct:description><![CDATA["header":[{"label":"init","value":"JMP 0x1004","code":"4C0410","rts":false},{"label":"c","value":"","code":"55","rts":false}],"ops":["lda","sta"],"args":[{"value":"200"},{"value":"1003"}],"nblines":2,"valid":{"a":"55","mem":{"200":"55"}},"class":"large","model":2]]></dct:description>
+        <dct:description><![CDATA["header":[{"label":"init","value":"","code":"4C041055","rts":false}],"ops":["lda","sta"],"args":[{"value":"200"},{"value":"1003"}],"nblines":2,"valid":{"a":"55","mem":{"200":"55"}},"class":"large","model":2]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Envoyez vers le premier octet de l'écran graphique l'octet défini à l'adresse 0x1003." ]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
@@ -505,11 +507,14 @@
         <dct:alternative>001</dct:alternative>
     </rdf:Description>
 
+
+        <!-- CODE: ABSOLUTE WRITE -->
+
     <rdf:Description>
-        <dct:identifier>321</dct:identifier>
-        <dct:title xml:lang="fr-FR">Grâce à un adressage absolue, copier dans le registre X la valeur d'un code précompilé.</dct:title>
-        <dct:description><![CDATA["header":[{"label":"init","value":"JMP 0x1004","code":"4C0410","rts":false},{"label":"idx","value":"[0xFF]","code":"FF","rts":false}],"ops":["ldx"],"args":[{"value":"1003"}],"nblines":1,"valid":{"x":"ff"},"class":"large"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Puisque l'on peut accéder à la mémoire correspondant au code source, on peut aisément créer des variables locales. Dans cet exemple, la ligne 'idx' définie une zone mémoire d'un octet que l'on va pouvoir utiliser sans contrainte. Cette zone mémoire est à l'adresse 0x1003 et elle est initialisée à 0xFF.","","La ligne init permet simplement de 'sauter' par dessus la ligne 'idx' afin de ne pas l'exécuter (son exécution ne correspondrait à rien).","","Chargez dans le registre X la valeur définie par la ligne 'idx'."]]]></dct:description>
+        <dct:identifier>351</dct:identifier>
+        <dct:title xml:lang="fr-FR">Modifier un octet du programme</dct:title>
+        <dct:description><![CDATA["header":[{"label":"init","value":"","code":"ea","rts":false}],"ops":["lda","sta"],"args":[{"value":"01","type":"v"},{"value":"1000"}],"nblines":2,"valid":{"a":"01","mem":{"1000":"01"}},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["S'il est possible de récupérer n'importe quelle valeur contenu dans le code source, il est également possible de modifier ces valeurs.","","Chargez la valeur 0x01 dans le premier octet du programme c'est à dire à l'adresse 0x1000."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -518,10 +523,10 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>322</dct:identifier>
-        <dct:title xml:lang="fr-FR">Grâce à un adressage par label, copier dans le registre X la valeur d'un code précompilé.</dct:title>
-        <dct:description><![CDATA["header":[{"label":"init","value":"JMP 0x1004","code":"4C0410","rts":false},{"label":"idx","value":"[0xFF]","code":"FF","rts":false}],"ops":["ldx"],"args":[{"value":"idx","type":"label"}],"nblines":1,"valid":{"x":"ff"},"class":"large"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Utiliser un adressage direct pour accéder au code source est extrèmement dangeureux. Si 0x1003 correspond bien actuellement au code 'idx', il est tout à fait possible que, suite à une insertion de code, cette valeur change. Le programme serait alors faux et buggué. Heureusement, le compilateur permet l'utilisation de libellés. Au lieu d'utiliser directement l'adresse 0x1003, on peut se servir du libellé 'idx' correspondant. C'est le compilateur qui remplacera cette référence par l'adresse mémoire correspondante.","","Chargez la valeur de idx dans le registre X." ]]]></dct:description>
+        <dct:identifier>352</dct:identifier>
+        <dct:title xml:lang="fr-FR">Hacker une valeur précompilée.</dct:title>
+        <dct:description><![CDATA["header":[{"label":"init","value":"","code":"4C081048454C4C4F","rts":false}],"footer":[{"label":"out","value":"","code":"ad031085fead041085fead051085fead061085fead071085fe","rts":false}],"ops":["lda","sta"],"args":[{"value":"41","type":"v"},{"value":"1007"}],"nblines":2,"valid":{"a":"41","out":"HELLA"},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Le code précompilé 'init' contient la chaine de caractère 'HELLO' que le code 'out' affiche sur la sortie standard. Le but de cet exercice est de hacker le programme pour qu'au final la chaine de caractère affichée soit HELLA.","","Ouvrez le code compilé en cliquant sur le bouton PC. Le caractère 'O' a pour code ASCII 0x4F. On peut le trouver à l'adresse 0x1007. La valeur ASCII du caracètre 'A' est 0x41. Chargez cette valeur là où se trouve le 'O'." ]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -530,10 +535,10 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>323</dct:identifier>
-        <dct:title xml:lang="fr-FR">Hacker le programme en modifiant la valeur d'un code précompilé.</dct:title>
-        <dct:description><![CDATA["header":[{"label":"init","value":"JMP 0x1004","code":"4C0410","rts":false},{"label":"idx","value":"[0xFF]","code":"FF","rts":false}],"footer":[{"label":"end","value":"LDA idx","code":"AD0310","rts":false}],"ops":["ldx","stx"],"args":[{"value":"AE","type":"v"},{"value":"idx","type":"label"}],"nblines":2,"valid":{"mem":{"1003":"AE"},"a":"AE"},"class":"large"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["S'il est possible d'accéder à une zone mémoire du code, il est également possible de modifier celle-ci.","","Modifiez la zone mémoire 'idx' en y stockant la valeur 0xAE."]]]></dct:description>
+        <dct:identifier>353</dct:identifier>
+        <dct:title xml:lang="fr-FR">Utiliser une zone mémoire pour échanger le contenu des registres X et A.</dct:title>
+        <dct:description><![CDATA["header":[{"label":"init","value":["LDX 0x01","LDA 0x02"],"code":"A201A902EA","rts":false}],"ops":["stx","tax","lda"],"args":[{"value":"1004"}],"nblines":3,"valid":{"a":"01","x":"02"},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Le code 'init' initialise le registre X à 0x01 et le registre A à 0x02. Il définit aussi une zone mémoire d'un octet librement utilisable à l'adresse 0x1004","","Echangez les valeurs des 2 registres A et X en procédant ainsi :","",". Stockez la valeur du registre X à l'adresse 0x1004",". Ecrasez la valeur du registre X en copiant la valeur du registre A vers X",". Chargez la valeur de 0x1004 dans le registre A"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -542,10 +547,122 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>324</dct:identifier>
+        <dct:identifier>354</dct:identifier>
+        <dct:title xml:lang="fr-FR">Utiliser une zone mémoire pour échanger le contenu des registres X et A.</dct:title>
+        <dct:description><![CDATA["header":[{"label":"init","value":["LDX 0x11","LDA 0x22"],"code":"A211A922EA","rts":false}],"ops":["stx","tax","lda"],"args":[{"value":"1004"}],"nblines":3,"valid":{"a":"11","x":"22"},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Le code 'init' initialise le registre X à 0x11 et le registre A à 0x22. Il définit aussi une zone mémoire d'un octet librement utilisable à l'adresse 0x1004","","Echangez les valeurs des 2 registres A et X."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+        <!-- CODE: CREATE VAR FOR ABSOLUTE READING/WRITING -->
+
+    <rdf:Description>
+        <dct:identifier>401</dct:identifier>
+        <dct:title xml:lang="fr-FR">Créer une zone mémoire utilisable comme variable et y charger la valeur 0x10.</dct:title>
+        <dct:description><![CDATA["ops":["sta","lda","nop"],"args":[{"value":"1000"},{"value":"10","type":"v"}],"nblines":3,"valid":{"mem":{"1000":"10A910"}},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Une des manières possibles de créer un zone mémoire librement utilisable est d'utiliser l'instruction NOP (no operation). Lorsqu'elle est exécutée, celle-ci ne fait rien et le processeur passe à l'instruction suivante. Placé en DEBUT de programme (c'est à dire à l'adresse 0x1000), cet opérateur permet de réserver un octet utilisable par le reste du programme.","","Utilisez NOP pour créer une zone mémoire et chargez-y la valeur 0x10."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>402</dct:identifier>
+        <dct:title xml:lang="fr-FR">Créer une zone mémoire pour échanger le contenu des registres X et A.</dct:title>
+        <dct:description><![CDATA["header":[{"label":"init","value":["LDX 0x33","LDA 0x44"],"code":"A233A944","rts":false}],"ops":["stx","tax","lda","nop"],"args":[{"value":"1004"}],"nblines":4,"valid":{"a":"33","x":"44"},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Le code 'init' initialise le registre X à 0x33 et le registre A à 0x44.","","Grâce à l'instruction NOP, créez une zone mémoire librement utilisable en début de programme (à l'adresse 0x1004 puisque les instruction LDX et LDA du code précompilé 'init' prennent déjà 4 octets en mémoire) puis échangez les valeurs des 2 registres A et X en utilisant cette zone."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>403</dct:identifier>
+        <dct:title xml:lang="fr-FR">Créer deux zones mémoires utilisables comme variables et y charger les valeurs 0x41 et 0x4F.</dct:title>
+        <dct:description><![CDATA["ops":["sta","lda","nop"],"args":[{"value":"1000"},{"value":"1001"},{"value":"41","type":"v"},{"value":"4F","type":"v"}],"nblines":6,"valid":{"mem":{"1000":"414FA9"}},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Créez deux zones mémoires en DEBUT de programme (c'est à dire aux adresses 0x1000 et 0x1001) et chargez-y respectivement les valeurs 0x41 et 0x4F."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+        <!-- CODE: LABEL USAGE -->
+
+    <rdf:Description>
+        <dct:identifier>451</dct:identifier>
+        <dct:title xml:lang="fr-FR">Créer une zone mémoire utilisable comme variable et y charger la valeur 0x10 en utilisant un label.</dct:title>
+        <dct:description><![CDATA["header":[{"label":"init","value":"","code":"A9FF","rts":false}],"ops":["sta","lda","nop"],"args":[{"value":"label","type":"label"},{"value":"10","type":"v"}],"nblines":4,"valid":{"mem":{"1002":"10A910"}},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["A l'aide de l'opérateur NOP, créez une zone mémoire en début de programme et chargez-y la valeur 0x10.","","Il est parfois compliqué de connaître l'emplacement mémoire exact d'une instruction au sein du programme. C'est pour cela qu'il est souvent pratique d'utiliser une étiquette. Une étiquette ne modifie en rien un programme assembleur mais permet de faire correspondre une adresse mémoire à un nom.","Insérez l'étiquette 'label' en première ligne du programme. Dans cet exercice, compte tenu de la longueur du code 'init', 'label' est désormais équivalent à l'adresse mémoire 0x1002."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>452</dct:identifier>
+        <dct:title xml:lang="fr-FR">Créer une zone mémoire labellisée pour échanger le contenu des registres X et A.</dct:title>
+        <dct:description><![CDATA["header":[{"label":"init","value":["LDX 0x33","LDA 0x44"],"code":"A233A944","rts":false}],"ops":["stx","tax","lda","nop"],"args":[{"value":"label","type":"label"}],"nblines":5,"valid":{"a":"33","x":"44"},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Après avoir placé un libellé, et à l'aide de l'opérateur NOP, créez une zone mémoire en début de programme. Utilisez celle-ci pour échanger les valeurs des registres X et A."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>453</dct:identifier>
+        <dct:title xml:lang="fr-FR">Créer deux zones mémoires labellisées utilisables comme variables et y charger les valeurs 0x41 et 0x4F.</dct:title>
+        <dct:description><![CDATA["ops":["sta","lda","nop"],"args":[{"value":"label1","type":"label"},{"value":"label2","type":"label"},{"value":"41","type":"v"},{"value":"4F","type":"v"}],"nblines":8,"valid":{"mem":{"1000":"414FA9"}},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Créez deux zones mémoires en DEBUT de programme, chacune étant précédée d'un libellé, et chargez-y respectivement les valeurs 0x41 et 0x4F."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>454</dct:identifier>
+        <dct:title xml:lang="fr-FR">Modifier une zone mémoire issue d'un code précompilé.</dct:title>
+        <dct:description><![CDATA["header":[{"label":"label","value":"NOP","code":"EA","rts":false}],"ops":["lda","sta"],"args":[{"value":"99","type":"v"},{"value":"label","type":"label"}],"nblines":2,"valid":{"mem":{"1000":"99"},"a":"99"},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Les différentes codes précompilés possèdent tous un libellé définissant l'octet de début du code. Ici, le code précompilé 'label' commence à l'octet 0x1000 (puisqu'il est en début de programme) et correspond à la simple instruction NOP.","","Modifiez cette zone mémoire 'label' en y stockant la valeur 0x88."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>455</dct:identifier>
+        <dct:title xml:lang="fr-FR">Modifier une zone mémoire issue d'un code précompilé.</dct:title>
+        <dct:description><![CDATA["header":[{"label":"label1","value":"NOP","code":"EA","rts":false},{"label":"label2","value":"NOP","code":"EA","rts":false}],"ops":["lda","sta"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"label1","type":"label"},{"value":"label2","type":"label"}],"nblines":4,"valid":{"mem":{"1000":"0102A9"}},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez respectivement les valeurs 0x01 et 0x02 dans les zones mémoire labellisées 'label1' et 'label2'."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>456</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser une variable définie par un code précompilé pour échanger le contenu des registres X et A.</dct:title>
-        <dct:description><![CDATA["header":[{"label":"init","value":["LDX 0x01","LDA 0x02","JMP 0x1008"],"code":"A201A9024C0810","rts":false},{"label":"tmp","value":"[0x00]","code":"00","rts":false}],"ops":["stx","tax","lda"],"args":[{"value":"tmp","type":"label"}],"nblines":3,"valid":{"a":"01","x":"02"},"class":"large"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Le code 'init' initialise le registre X à 0x01 et le registre A à 0x02.","","Echangez les valeurs de ces 2 registres en procédant ainsi :","",". Stockez la valeur du registre X dans 'tmp'",". Copiez le registre A vers X",". Chargez la valeur de 'tmp' dans le registre A"]]]></dct:description>
+        <dct:description><![CDATA["header":[{"label":"init","value":["LDX 0x01","LDA 0x02"],"code":"A201A902","rts":false},{"label":"tmp","value":"NOP","code":"EA","rts":false}],"ops":["stx","tax","lda"],"args":[{"value":"tmp","type":"label"}],"nblines":3,"valid":{"a":"01","x":"02"},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Le code 'init' initialise le registre X à 0x01 et le registre A à 0x02.","","Echangez les valeurs de ces 2 registres en utilisant le label 'tmp' comme variable temporaire."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -554,21 +671,9 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>325</dct:identifier>
-        <dct:title xml:lang="fr-FR">Utiliser une variable définie par un code précompilé pour échanger le contenu des registres X et A.</dct:title>
-        <dct:description><![CDATA["header":[{"label":"init","value":["LDX 0x01","LDA 0x02","JMP 0x1008"],"code":"A201A9024C0810","rts":false},{"label":"tmp","value":"[0x00]","code":"00","rts":false}],"ops":["stx","sta","txa","tax","lda","ldx"],"args":[{"value":"tmp","type":"label"}],"nblines":3,"valid":{"a":"01","x":"02"},"class":"large"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Echangez les valeurs des registres A et X."]]]></dct:description>
-        <dct:extent>2</dct:extent>
-        <dct:subject>it</dct:subject>
-        <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>326</dct:identifier>
+        <dct:identifier>471</dct:identifier>
         <dct:title xml:lang="fr-FR">Envoyer vers la sortie standard une valeur précompilée.</dct:title>
-        <dct:description><![CDATA["header":[{"label":"init","value":"JMP 0x1004","code":"4C0410","rts":false},{"label":"c","value":"","code":"41","rts":false}],"ops":["lda","sta"],"args":[{"value":"fe"},{"value":"c","type":"label"}],"nblines":2,"valid":{"a":"41","out":"A"},"class":"large"]]></dct:description>
+        <dct:description><![CDATA["header":[{"label":"init","value":"","code":"4C0410","rts":false},{"label":"c","value":"","code":"41","rts":false}],"ops":["lda","sta"],"args":[{"value":"fe"},{"value":"c","type":"label"}],"nblines":2,"valid":{"a":"41","out":"A"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Envoyez vers la sortie standard l'octet défini dans la partie de code labellisée 'c'." ]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
@@ -578,9 +683,9 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>327</dct:identifier>
+        <dct:identifier>472</dct:identifier>
         <dct:title xml:lang="fr-FR">Envoyer vers la sortie standard une valeur précompilée.</dct:title>
-        <dct:description><![CDATA["header":[{"label":"init","value":"JMP 0x1008","code":"4C0810","rts":false},{"label":"c1","value":"","code":"48","rts":false},{"label":"c2","value":"","code":"45","rts":false},{"label":"c3","value":"","code":"4C","rts":false},{"label":"c4","value":"","code":"4C","rts":false},{"label":"c5","value":"","code":"4F","rts":false}],"ops":["lda","sta"],"args":[{"value":"fe"},{"value":"c1","type":"label"},{"value":"c2","type":"label"},{"value":"c3","type":"label"},{"value":"c4","type":"label"},{"value":"c5","type":"label"}],"nblines":10,"valid":{"a":"4F","out":"HELLO"},"class":"large"]]></dct:description>
+        <dct:description><![CDATA["header":[{"label":"init","value":"","code":"4C0810","rts":false},{"label":"c1","value":"","code":"48","rts":false},{"label":"c2","value":"","code":"45","rts":false},{"label":"c3","value":"","code":"4C","rts":false},{"label":"c4","value":"","code":"4C","rts":false},{"label":"c5","value":"","code":"4F","rts":false}],"ops":["lda","sta"],"args":[{"value":"fe"},{"value":"c1","type":"label"},{"value":"c2","type":"label"},{"value":"c3","type":"label"},{"value":"c4","type":"label"},{"value":"c5","type":"label"}],"nblines":10,"valid":{"a":"4F","out":"HELLO"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Envoyez vers la sortie standard chaque octet des labels c1, c2, c3, c4 et c5. Dans cet ordre." ]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
@@ -590,10 +695,10 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>328</dct:identifier>
-        <dct:title xml:lang="fr-FR">Envoyer vers la sortie standard une valeur précompilée.</dct:title>
-        <dct:description><![CDATA["header":[{"label":"init","value":"JMP 0x1008","code":"4C0810","rts":false},{"label":"c1","value":"","code":"48","rts":false},{"label":"c2","value":"","code":"45","rts":false},{"label":"c3","value":"","code":"4C","rts":false},{"label":"c4","value":"","code":"4C","rts":false},{"label":"c5","value":"","code":"4F","rts":false}],"footer":[{"label":"out","value":"","code":"ad031085fead041085fead051085fead061085fead071085fe","rts":false}],"ops":["lda","sta"],"args":[{"value":"41","type":"v"},{"value":"c1","type":"label"},{"value":"c2","type":"label"},{"value":"c3","type":"label"},{"value":"c4","type":"label"},{"value":"c5","type":"label"}],"nblines":2,"valid":{"a":"41","out":"HELLA"},"class":"large"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Le code précompilé 'out' envoie l'octet des différents labels c1, c2, c3, c4 et c5 vers la sortie standard et affiche le mot HELLO. Hackez le programme, pour qu'au final, ce soit le mot HELLA qui soit affiché.","","En ASCII la lettre A = 0x41." ]]]></dct:description>
+        <dct:identifier>473</dct:identifier>
+        <dct:title xml:lang="fr-FR">Envoyer vers la sortie standard le texte 'Hello world'.</dct:title>
+        <dct:description><![CDATA["header":[{"label":"var1","value":"","code":"eaa9488d0010a900207010a9658d0010a900207010a96C8d0010a900207010a96C8d0010a900207010a96F8d0010a900207010a9208d0010a900207010a9778d0010a900207010a96F8d0010a900207010a9728d0010a900207010a96C8d0010a900207010a9648d0010a90020701000","rts":false}],"footer":[{"label":"end","value":"","code":"60","rts":false}],"ops":["lda","sta","ldx","stx","ldy","sty"],"args":[{"value":"fe"},{"value":"var1","type":"label"}],"nblines":2,"valid":{"out":"Hello world"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Le programme précompilé crée une boucle qui, à chaque itération, change la valeur de l'octet situé à l'adresse 'var1'.","","Chargez 'var1' dans le registre A et envoyez celui-ci vers la sortie standard."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -602,9 +707,9 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>331</dct:identifier>
+        <dct:identifier>474</dct:identifier>
         <dct:title xml:lang="fr-FR">Envoyer un bitmap 8x8 vers l'écran graphique 48x32x2.</dct:title>
-        <dct:description><![CDATA["header":[{"label":"init","value":"JMP 0x1008","code":"4C0B10","rts":false},{"label":"c200","value":"","code":"3c","rts":false},{"label":"c206","value":"","code":"66","rts":false},{"label":"c20C","value":"","code":"c3","rts":false},{"label":"c212","value":"","code":"a5","rts":false},{"label":"c218","value":"","code":"81","rts":false},{"label":"c21E","value":"","code":"db","rts":false},{"label":"c224","value":"","code":"42","rts":false},{"label":"c22A","value":"","code":"7e","rts":false}],"ops":["lda","sta"],"args":[{"value":"200"},{"value":"206"},{"value":"20C"},{"value":"212"},{"value":"218"},{"value":"21E"},{"value":"224"},{"value":"22A"},{"value":"c200","type":"label"},{"value":"c206","type":"label"},{"value":"c20C","type":"label"},{"value":"c212","type":"label"},{"value":"c218","type":"label"},{"value":"c21E","type":"label"},{"value":"c224","type":"label"},{"value":"c22A","type":"label"}],"nblines":16,"valid":{"mem":{"200":"3c","206":"66","20C":"c3","212":"a5","218":"81","21e":"db","224":"42","22A":"7e"}},"class":"large","model":2,"font":0.9]]></dct:description>
+        <dct:description><![CDATA["header":[{"label":"init","value":"","code":"4C0B10","rts":false},{"label":"c200","value":"","code":"3c","rts":false},{"label":"c206","value":"","code":"66","rts":false},{"label":"c20C","value":"","code":"c3","rts":false},{"label":"c212","value":"","code":"a5","rts":false},{"label":"c218","value":"","code":"81","rts":false},{"label":"c21E","value":"","code":"db","rts":false},{"label":"c224","value":"","code":"42","rts":false},{"label":"c22A","value":"","code":"7e","rts":false}],"ops":["lda","sta"],"args":[{"value":"200"},{"value":"206"},{"value":"20C"},{"value":"212"},{"value":"218"},{"value":"21E"},{"value":"224"},{"value":"22A"},{"value":"c200","type":"label"},{"value":"c206","type":"label"},{"value":"c20C","type":"label"},{"value":"c212","type":"label"},{"value":"c218","type":"label"},{"value":"c21E","type":"label"},{"value":"c224","type":"label"},{"value":"c22A","type":"label"}],"nblines":16,"valid":{"mem":{"200":"3c","206":"66","20C":"c3","212":"a5","218":"81","21e":"db","224":"42","22A":"7e"}},"model":2,"font":0.9]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Envoyez l'octet contenu dans chaque label vers la zone mémoire correspondante (c200 vers 0x200, c206 vers 0x206, etc.) et affichez ainsi un sprite 8x8." ]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
@@ -614,10 +719,182 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>332</dct:identifier>
+        <dct:identifier>475</dct:identifier>
         <dct:title xml:lang="fr-FR">Envoyer un bitmap 8x8 vers l'écran graphique 48x32x2.</dct:title>
-        <dct:description><![CDATA["header":[{"label":"init","value":"JMP 0x1008","code":"4C0B10","rts":false},{"label":"c231","value":"","code":"aa","rts":false},{"label":"c237","value":"","code":"ba","rts":false},{"label":"c23D","value":"","code":"fe","rts":false},{"label":"c243","value":"","code":"d6","rts":false},{"label":"c249","value":"","code":"7c","rts":false},{"label":"c24F","value":"","code":"7c","rts":false},{"label":"c255","value":"","code":"44","rts":false},{"label":"c25B","value":"","code":"82","rts":false}],"ops":["lda","sta"],"args":[{"value":"231"},{"value":"237"},{"value":"23D"},{"value":"243"},{"value":"249"},{"value":"24F"},{"value":"255"},{"value":"25B"},{"value":"c231","type":"label"},{"value":"c237","type":"label"},{"value":"c23D","type":"label"},{"value":"c243","type":"label"},{"value":"c249","type":"label"},{"value":"c24F","type":"label"},{"value":"c255","type":"label"},{"value":"c25B","type":"label"}],"nblines":16,"valid":{"mem":{"231":"aa","237":"ba","23D":"fe","243":"d6","249":"7c","24F":"7c","255":"44","25B":"82"}},"class":"large","model":2,"font":0.9]]></dct:description>
+        <dct:description><![CDATA["header":[{"label":"init","value":"","code":"4C0B10","rts":false},{"label":"c231","value":"","code":"aa","rts":false},{"label":"c237","value":"","code":"ba","rts":false},{"label":"c23D","value":"","code":"fe","rts":false},{"label":"c243","value":"","code":"d6","rts":false},{"label":"c249","value":"","code":"7c","rts":false},{"label":"c24F","value":"","code":"7c","rts":false},{"label":"c255","value":"","code":"44","rts":false},{"label":"c25B","value":"","code":"82","rts":false}],"ops":["lda","sta"],"args":[{"value":"231"},{"value":"237"},{"value":"23D"},{"value":"243"},{"value":"249"},{"value":"24F"},{"value":"255"},{"value":"25B"},{"value":"c231","type":"label"},{"value":"c237","type":"label"},{"value":"c23D","type":"label"},{"value":"c243","type":"label"},{"value":"c249","type":"label"},{"value":"c24F","type":"label"},{"value":"c255","type":"label"},{"value":"c25B","type":"label"}],"nblines":16,"valid":{"mem":{"231":"aa","237":"ba","23D":"fe","243":"d6","249":"7c","24F":"7c","255":"44","25B":"82"}},"model":2,"font":0.9]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Envoyez l'octet contenu dans chaque label vers la zone mémoire correspondante (c231 vers 0x231, c237 vers 0x237, etc.) et affichez ainsi un sprite 8x8." ]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+
+    <!-- DIRECT INDEXED -->
+
+    <rdf:Description>
+        <dct:identifier>501</dct:identifier>
+        <dct:title xml:lang="fr-FR">Envoyer vers la sortie standard une valeur précompilée en utilisant un adressage direct indexé.</dct:title>
+        <dct:description><![CDATA["footer":[{"label":"end","value":"","code":"00","rts":false},{"label":"data","value":"ABCD","code":"4142434445","rts":false}],"ops":["lda","sta","ldx"],"args":[{"value":"02","type":"v"},{"value":"fe"},{"value":"data","type":"label x"}],"nblines":3,"valid":{"out":"C"},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Le code précompilé data contient la chaine de caractères 'ABCD'. Chargez dans le registre A la valeur du 3ème caractère ('C') et affichez-le sur la sortie standard.","","Le label 'data' fournit un adressage mémoire direct vers le premier octet du bloc de données 'data'. Ici, ce premier octet correspond à la lettre 'A'. Il est cependant possible d'utiliser un adressage direct indexé avec 'data,X'. Cette adresse mémoire correpond à la Xème valeur à partir de l'adresse 'data', où X est la valeur du registre X."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>502</dct:identifier>
+        <dct:title xml:lang="fr-FR">Envoyer vers la sortie standard une valeur précompilée en utilisant un adressage direct indexé.</dct:title>
+        <dct:description><![CDATA["footer":[{"label":"end","value":"","code":"00","rts":false},{"label":"data","value":"ABCD","code":"4142434445","rts":false}],"ops":["lda","sta","ldx"],"args":[{"value":"00","type":"v"},{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"03","type":"v"},{"value":"fe"},{"value":"data","type":"label x"}],"nblines":9,"valid":{"out":"BAD"},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Le code précompilé data contient la chaine de caractères 'ABCD'. En utilisant l'adressage direct indexé avec 'data,X', affichez 'BAD' sur la sortie standard.","","Ici, les différents caractères sont accessibles aux adresses indexées suivantes :",".'data,X' avec X=0 pointe sur 'A'",".'data,X' avec X=1 pointe sur 'B'",".'data,X' avec X=2 pointe sur 'C'",".'data,X' avec X=3 pointe sur 'D'"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>503</dct:identifier>
+        <dct:title xml:lang="fr-FR">Envoyer vers la sortie standard une valeur précompilée en utilisant un adressage direct indexé.</dct:title>
+        <dct:description><![CDATA["footer":[{"label":"end","value":"","code":"00","rts":false},{"label":"data","value":"ABCD","code":"4142434445","rts":false}],"ops":["lda","sta","ldy"],"args":[{"value":"00","type":"v"},{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"03","type":"v"},{"value":"fe"},{"value":"data","type":"label y"}],"nblines":9,"valid":{"out":"CAB"},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Le code précompilé data contient la chaine de caractères 'ABCD'. En utilisant l'adressage directe indexée avec 'data,Y', affichez 'CAB' sur la sortie standard.","","Ici, les différents caractères sont accessibles aux adresses indexées suivantes :",".'data,Y' avec Y=0 pointe sur 'A'",".'data,Y' avec Y=1 pointe sur 'B'",".'data,Y' avec Y=2 pointe sur 'C'",".'data,Y' avec Y=3 pointe sur 'D'"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>504</dct:identifier>
+        <dct:title xml:lang="fr-FR">Envoyer vers la sortie standard une valeur précompilée en utilisant un adressage direct indexé.</dct:title>
+        <dct:description><![CDATA["footer":[{"label":"end","value":"","code":"00","rts":false},{"label":"data","value":"ABCD","code":"4142434445","rts":false}],"ops":["lda","sta","ldy","dey"],"args":[{"value":"03","type":"v"},{"value":"fe"},{"value":"data","type":"label y"}],"nblines":12,"valid":{"out":"DCBA"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Le code précompilé data contient la chaine de caractères 'ABCD'. En utilisant l'adressage directe indexée avec 'data,Y', affichez 'DCBA' sur la sortie standard."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>505</dct:identifier>
+        <dct:title xml:lang="fr-FR">Envoyer vers la sortie standard une valeur précompilée en utilisant un adressage direct indexé.</dct:title>
+        <dct:description><![CDATA["footer":[{"label":"end","value":"","code":"00","rts":false},{"label":"data","value":"ABCD","code":"4142434445","rts":false}],"ops":["lda","sta","ldx","dex"],"args":[{"value":"03","type":"v"},{"value":"fe"},{"value":"data","type":"label x"}],"nblines":10,"valid":{"out":"DCA"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Le code précompilé 'data' contient la chaine de caractères 'ABCD'. En utilisant l'adressage directe indexée avec 'data,X', affichez 'DCA' sur la sortie standard."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>511</dct:identifier>
+        <dct:title xml:lang="fr-FR">Modifier la valeur de plusieurs octets de la mémoire en utilisant un adressage direct indexé.</dct:title>
+        <dct:description><![CDATA["header":[{"label":"data","value":"","code":"EAEAEAEAA255A955","rts":false}],"ops":["lda","sta","ldx","inx"],"args":[{"value":"00","type":"v"},{"value":"data","type":"label x"}],"nblines":9,"valid":{"mem":{"1000":"00000000A255"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Le code précompilé 'data' propose en début de bloc, 4 octets accessibles librement. Grâce à un adressage direct indexé sur l'opérateur STA, initialisez ces 4 octets à 0x00.","","Attention, les registres X et A ne sont pas forcément initialisés à 0 au départ." ]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>512</dct:identifier>
+        <dct:title xml:lang="fr-FR">Envoyer vers l'écran graphique 48x32x2 des valeurs prédéfinies en utilisant un adressage direct indexé.</dct:title>
+        <dct:description><![CDATA["header":[{"label":"init","value":["LDX 0x55","LDA 0x55"],"code":"A255A955","rts":false}],"ops":["lda","sta","ldx","inx"],"args":[{"value":"00","type":"v"},{"value":"55","type":"v"},{"value":"200","type":"x"}],"nblines":7,"valid":{"mem":{"200":"55555500"}},"model":2]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Envoyez la valeur 0x55 sur les 3 premiers octets de l'écran graphique.","","L'adressage direct indexé fonctionne avec des étiquettes mais également avec des adresses absolues comme 0x200."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>513</dct:identifier>
+        <dct:title xml:lang="fr-FR">Envoyer vers l'écran graphique 48x32x2  des valeurs prédéfinies en utilisant un adressage direct indexé.</dct:title>
+        <dct:description><![CDATA["header":[{"label":"init","value":["LDX 0x55","LDA 0x55"],"code":"A255A955","rts":false}],"footer":[{"label":"end","value":"","code":"00","rts":false},{"label":"data","value":"","code":"F0550F","rts":false}],"ops":["lda","sta","ldx","inx"],"args":[{"value":"00","type":"v"},{"value":"200","type":"x"},{"value":"data","type":"label x"}],"nblines":9,"valid":{"mem":{"200":"F0550F"}},"model":2]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Copiez les 3 octets contenus dans 'data' vers les 3 premiers octets de l'écran graphique."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>514</dct:identifier>
+        <dct:title xml:lang="fr-FR">Envoyer vers l'écran graphique 48x32x2  des valeurs prédéfinies en utilisant un adressage direct indexé.</dct:title>
+        <dct:description><![CDATA["footer":[{"label":"loop","value":"","code":"E8E0C0D001004C0010","rts":false},{"label":"data","value":"","code":"555555555555AAAAAAAAAAAA555555555555AAAAAAAAAAAA555555555555AAAAAAAAAAAA555555555555AAAAAAAAAAAA555555555555AAAAAAAAAAAA555555555555AAAAAAAAAAAA555555555555AAAAAAAAAAAA555555555555AAAAAAAAAAAA555555555555AAAAAAAAAAAA555555555555AAAAAAAAAAAA555555555555AAAAAAAAAAAA555555555555AAAAAAAAAAAA555555555555AAAAAAAAAAAA555555555555AAAAAAAAAAAA555555555555AAAAAAAAAAAA555555555555AAAAAAAAAAAA","rts":false}],"ops":["lda","sta"],"args":[{"value":"200","type":"x"},{"value":"data","type":"label x"}],"nblines":2,"valid":{"mem":{"200":"555555555555AAAAAAAAAAAA555555555555AAAAAAAAAAAA555555555555"}},"class":"large","model":2]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Le programme précompilé 'loop' effectue une boucle sur les 2 premières lignes du programme. Ces 2 premières lignes vont être exécutées 192 fois. A chaque itération, la valeur du registre X est incrémenté d'1, passant de 0x00 à 0xC0 (192).","","Transférez le Xème octet du code 'data' vers le Xème octet de l'écran graphique."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>515</dct:identifier>
+        <dct:title xml:lang="fr-FR">Envoyer vers l'écran graphique 48x32x2  des valeurs prédéfinies en utilisant un adressage direct indexé.</dct:title>
+        <dct:description><![CDATA["footer":[{"label":"loop","value":"","code":"E8E0C0D001004C0010","rts":false},{"label":"data","value":"","code":"00001c000000001fffc000000ffffff000007ffffff800007ffffffc3ff87ff0007dfffc7c00003ffffc3c01f03ffffe3f81f01fe07e3f81f83f001e3fc1f83e1c1f3fc1f83c1c0f03c0f83c1e0f03c0f83c1e0f03c0f07e3c0f03c0c0fff00f03c003ffc60703c07fff0e0703e0fffe0f0701e0ffbc0f0701e07e3c0f0701e07f3c0e0101e07f3c00010fe07f3e01c70fe07f9f07ff0fe00f9fffff0fc00f8fffff0f83ff87ff7c07ffff81fc0007ffff80000007fffc00000007fe00000000","rts":false}],"ops":["lda","sta"],"args":[{"value":"200","type":"x"},{"value":"data","type":"label x"}],"nblines":2,"valid":{"mem":{"200":"00001c000000001fffc000000ffffff000007ffffff800007ffffffc3ff8"}},"class":"large","model":2]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Le programme précompilé 'loop' effectue une boucle sur les 2 premières lignes du programme. Ces 2 premières lignes vont être exécutées 192 fois. A chaque itération, la valeur du registre X est incrémenté d'1, passant de 0x00 à 0xC0 (192).","","Transférez le Xème octet du code 'data' vers le Xème octet de l'écran graphique."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>516</dct:identifier>
+        <dct:title xml:lang="fr-FR">Envoyer vers l'écran graphique 16x16x256 l'index de chaque octet en utilisant un adressage direct indexé.</dct:title>
+        <dct:description><![CDATA["footer":[{"label":"loop","value":"","code":"E8E000D001004C0010","rts":false}],"ops":["txa","sta"],"args":[{"value":"200","type":"x"}],"nblines":2,"valid":{"mem":{"200":"00010203","2FF":"FF"}},"class":"large","model":0]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Le programme précompilé 'loop' effectue une boucle sur les 2 premières lignes du programme. Ces 2 premières lignes vont être exécutées 256 fois. A chaque itération, la valeur du registre X est incrémenté d'1, passant de 0x00 à 0xFF (255).","","Stockez la valeur du registre X dans le Xème octet de l'écran 16x16x256.","","A noter que STX 0x200,X n'est pas une opération valide en assembleur 6502. Pour résoudre cet exercice il est nécessaire d'utiliser le registre A."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>521</dct:identifier>
+        <dct:title xml:lang="fr-FR">Envoyer vers l'écran graphique 40x36x4 des valeurs prédéfinies en utilisant un adressage direct indexé.</dct:title>
+        <dct:description><![CDATA["footer":[{"label":"loop","value":"","code":"E8E000D001004C0010","rts":false},{"label":"data","value":"","code":"66666666666666666666999999999999999999996666666666666666666699999999999999999999666666666666666666669999999999999999999966666666666666666666999999999999999999996666666666666666666699999999999999999999666666666666666666669999999999999999999966666666666666666666999999999999999999996666666666666666666699999999999999999999666666666666666666669999999999999999999966666666666666666666999999999999999999996666666666666666666699999999999999999999666666666666666666669999999999999999999966666666666666666666999999999999","rts":false}],"ops":["lda","sta"],"args":[{"value":"200","type":"x"},{"value":"data","type":"label x"}],"nblines":2,"valid":{"mem":{"200":"666666666666666666669999999999999999999966"}},"class":"large","model":3]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Puisque les registres X et Y ont une taille d'un octet, l'adressage indexé ne permet d'accéder qu'au 256 octets situés après l'adresse de base. Par exemple, l'adresse directe indexée 200,X permet d'accéder aux octets 0x200 et 0x2FF mais pas à 0x300 qui est hors de portée.","Le code précompilé 'loop' effectue une boucle qui va exécuter le 2 premières lignes 256 fois. A chaque itération, la valeur du registre X est incrémenté d'1, passant de 0x00 à 0xFF (255). Transférez le Xème octet du code 'data' vers le Xème octet de l'écran graphique 40x36x4 et remarquez que cet écran est trop grand pour être rempli avec une seule et même adresse indexée."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>522</dct:identifier>
+        <dct:title xml:lang="fr-FR">Envoyer vers l'écran graphique 40x36x4 des valeurs prédéfinies en utilisant un adressage direct indexé.</dct:title>
+        <dct:description><![CDATA["footer":[{"label":"loop","value":"","code":"E8E0B4D001004C0010","rts":false},{"label":"data","value":"","code":"666666666666666666669999999999999999999966666666666666666666999999999999999999996666666666666666666699999999999999999999666666666666666666669999999999999999999966666666666666666666999999999999999999996666666666666666666699999999999999999999666666666666666666669999999999999999999966666666666666666666999999999999999999996666666666666666666699999999999999999999","rts":false}],"ops":["lda","sta"],"args":[{"value":"200","type":"x"},{"value":"2B4","type":"x"},{"value":"data","type":"label x"}],"nblines":3,"valid":{"mem":{"200":"666666666666666666669999999999999999999966","2B4":"666666666666666666669999999999999999999966"}},"class":"large","model":3]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Grâce au code précompilé 'loop', les 3 premières lignes du programme vont être exécutées 180 fois (0xB4). Sachant que l'écran 40x36x4 est codé sur 360 octets, que 'data' contient la définition des 180 premiers octets à afficher et que cette définition est identique pour les 180 derniers octets, remplissez intégralement l'écran."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+
+    <rdf:Description>
+        <dct:identifier>523</dct:identifier>
+        <dct:title xml:lang="fr-FR">Envoyer vers l'écran graphique 40x36x4 des valeurs prédéfinies en utilisant un adressage direct indexé.</dct:title>
+        <dct:description><![CDATA["footer":[{"label":"loop","value":"","code":"E8E0B4D001004C0010","rts":false},{"label":"data1","value":"","code":"00000000000000000000100000000000000000001000000000010000000000000000004000000000000000000000000000004000000000000000000000040005000000000000000aaaaa9a5559000000002aaaaaaaaaaa4000000055aaaaaaaaaa9000000159aaaaaaaaaaa40000016efaaaaaaaaaaa000005bffe555696aaaa400005ffff955406a555000001faebe958695568000001faebf96459157c000006f9e7f86915657c00001af9e7f82a15a57d0000","rts":false},{"label":"data2","value":"","code":"15fafffeaa55aabd000056fffffffebe6ffd1555aafeffffaaa929a95055aaaaaa95555555555555aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa6aaaaaaaaa9aaaaaaaa66aaaaaaaa99aaaaaaaaa6aaaaaaaaa9aaaaaaaa9aaaaaaaaaaaaaaaaaaa9556a6aa6aaaaaaaaaaa5556aaaaaaaaaaa6aa695a959aaaaaaaaaaaaaa95a559969aaaaa9aa6a69555696aaaaa9a96aaa9555a565aa9aaaa966999","rts":false}],"ops":["lda","sta"],"args":[{"value":"200","type":"x"},{"value":"2B4","type":"x"},{"value":"data1","type":"label x"},{"value":"data2","type":"label x"}],"nblines":4,"valid":{"mem":{"200":"00000000000000000000100000000000000000001000","2B4":"15fafffeaa55aabd000056fffffffebe6ffd1555aafeffffaaa929"}},"class":"large","model":3]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Grâce au code précompilé 'loop', les 4 premières lignes du programme vont être exécutées 180 fois (0xB4). Sachant que l'écran 40x36x4 est codé sur 360 octets, que 'data1' contient la définition des 180 premiers octets à afficher et que 'data2' contient la définition des 180 octets suivants, remplissez intégralement l'écran."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>

@@ -2,6 +2,8 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dct="http://purl.org/dc/terms/">
 
+    <!-- INX & INY -->
+
     <rdf:Description>
         <dct:identifier>001</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser l'opération INX (1x) pour incrémenter la valeur du registre X.</dct:title>
@@ -15,10 +17,10 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>022</dct:identifier>
+        <dct:identifier>002</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser l'opération INX (3x) pour incrémenter la valeur du registre X.</dct:title>
         <dct:description><![CDATA["ops":["ldx","inx"],"args":[{"value":"A8","type":"v"}],"nblines":4,"valid":{"x":"AB"}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Mettez la valeur 0xAB dans le registre X ."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["A l'aide de l'opérateur INX, chargez la valeur 0xAB dans le registre X ."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -27,10 +29,10 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>023</dct:identifier>
+        <dct:identifier>003</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser l'opération INX (4x) pour incrémenter la valeur du registre X.</dct:title>
         <dct:description><![CDATA["ops":["ldx","inx"],"args":[{"value":"A8","type":"v"}],"nblines":11,"valid":{"x":"AC"}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Incrémentez le registre X le bon nombre de fois pour mettre sa valeur à 0xAC."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Incrémentez le registre X pour mettre sa valeur à 0xAC."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -39,9 +41,9 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>024</dct:identifier>
+        <dct:identifier>004</dct:identifier>
         <dct:title xml:lang="fr-FR">Après avoir incrémenter une valeur grâce à l'instruction INX, transférer celle-ci vers le registre Y.</dct:title>
-        <dct:description><![CDATA["ops":["ldx","inx","txa","tay","tax","tya"],"args":[{"value":"01","type":"v"},{"value":"A8","type":"v"}],"nblines":6,"header":[{"label":"init","value":"LDX #0x10","code":"A2 10","rts":false}],"valid":{"y":"04"}]]></dct:description>
+        <dct:description><![CDATA["ops":["ldx","inx","txa","tay","tax","tya"],"args":[{"value":"01","type":"v"},{"value":"A8","type":"v"}],"nblines":6,"header":[{"label":"init","value":"LDX 0x10","code":"A2 10","rts":false}],"valid":{"y":"04"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Remplissez les registres ainsi :",". 0x04 dans le registre Y"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
@@ -51,9 +53,9 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>025</dct:identifier>
+        <dct:identifier>005</dct:identifier>
         <dct:title xml:lang="fr-FR">Renseigner correctement les registres A,X et Y grâce aux instructions de transfert et des instructions LDX et INX.</dct:title>
-        <dct:description><![CDATA["ops":["ldx","inx","txa","tay","tax","tya"],"args":[{"value":"01","type":"v"},{"value":"A8","type":"v"}],"nblines":7,"header":[{"label":"init","value":"LDX #0x10","code":"A2 10","rts":false}],"valid":{"a":"A8","x":"A9","y":"02"}]]></dct:description>
+        <dct:description><![CDATA["ops":["ldx","inx","txa","tay","tax","tya"],"args":[{"value":"01","type":"v"},{"value":"A8","type":"v"}],"nblines":7,"header":[{"label":"init","value":"LDX 0x10","code":"A2 10","rts":false}],"valid":{"a":"A8","x":"A9","y":"02"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Remplissez les registres ainsi :",". 0xA8 dans le registre A",". 0xA9 dans le registre X",". 0x02 dans le registre Y"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
@@ -63,9 +65,9 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>026</dct:identifier>
+        <dct:identifier>006</dct:identifier>
         <dct:title xml:lang="fr-FR">Renseigner correctement les registres A,X et Y grâce aux instructions de transfert et des instructions LDX et INX.</dct:title>
-        <dct:description><![CDATA["ops":["ldx","inx"],"args":[{"value":"FF","type":"v"}],"nblines":2,"header":[{"label":"init","value":"LDX #0xA8","code":"A2 A8","rts":false}],"valid":{"x":"00"}]]></dct:description>
+        <dct:description><![CDATA["ops":["ldx","inx"],"args":[{"value":"FF","type":"v"}],"nblines":2,"header":[{"label":"init","value":"LDX 0xA8","code":"A2 A8","rts":false}],"valid":{"x":"00"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Un registre peut contenir une valeur comprise entre 0 et 255 (0xFF en hexadécimal). Si l'on incrémente d'1 la valeur 255, celle-ci revient à 0, car 256 est trop grand pour être stocké dans le registre.","Mettez la valeur 0x00 dans le registre X."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
@@ -75,9 +77,9 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>027</dct:identifier>
+        <dct:identifier>007</dct:identifier>
         <dct:title xml:lang="fr-FR">Renseigner correctement les registres A,X et Y grâce aux instructions de transfert et des instructions LDX et INX.</dct:title>
-        <dct:description><![CDATA["ops":["ldx","inx","txa","tay","tax","tya"],"args":[{"value":"FF","type":"v"},{"value":"55","type":"v"}],"nblines":9,"header":[{"label":"init","value":"LDX #0xA8","code":"A2 A8","rts":false}],"valid":{"a":"FF","x":"02","y":"56"}]]></dct:description>
+        <dct:description><![CDATA["ops":["ldx","inx","txa","tay","tax","tya"],"args":[{"value":"FF","type":"v"},{"value":"55","type":"v"}],"nblines":9,"header":[{"label":"init","value":"LDX 0xA8","code":"A2 A8","rts":false}],"valid":{"a":"FF","x":"02","y":"56"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Remplissez les registres ainsi :",". 0xFF dans le registre A",". 0x02 dans le registre X",". 0x56 dans le registre Y"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
@@ -87,7 +89,7 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>028</dct:identifier>
+        <dct:identifier>008</dct:identifier>
         <dct:title xml:lang="fr-FR">Renseigner correctement les registres A,X et Y grâce aux instructions de transfert et des instructions LDA,INX et INY.</dct:title>
         <dct:description><![CDATA["ops":["lda","inx","iny","tay","tax"],"args":[{"value":"A8","type":"v"}],"nblines":6,"valid":{"x":"A9","y":"AA"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Comme INX incrémente de 1 la valeur contenue dans le registre X. INY incrémente de 1 la valeur contenue dans Y.","","Remplissez les registres ainsi :",". 0xA9 dans le registre X",". 0xAA dans le registre Y"]]]></dct:description>
@@ -99,7 +101,7 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>029</dct:identifier>
+        <dct:identifier>009</dct:identifier>
         <dct:title xml:lang="fr-FR">Renseigner correctement le registre A grâce aux instructions de transfert et des instructions LDX et INY.</dct:title>
         <dct:description><![CDATA["ops":["ldx","iny","txa","tay","tax","tya"],"args":[{"value":"A8","type":"v"}],"nblines":5,"valid":{"a":"A9"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Remplissez les registres ainsi :",". 0xA9 dans le registre A"]]]></dct:description>
@@ -111,7 +113,45 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>040</dct:identifier>
+        <dct:identifier>010</dct:identifier>
+        <dct:title xml:lang="fr-FR">Afficher ABC sur la sortie standard grâce à l'opérateur INX.</dct:title>
+        <dct:description><![CDATA["ops":["ldx","stx","inx"],"args":[{"value":"41","type":"v"},{"value":"fe"}],"nblines":6,"valid":{"out":"ABC"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Envoyez vers la sortie standard les caractères ASCII 0x41, 0x42 et 0x43 et affichez ainsi le mot 'ABC'."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>021</dct:identifier>
+        <dct:title xml:lang="fr-FR">Renseigner correctement les registres A et Y grâce à une variable et l'opérateur INX.</dct:title>
+        <dct:description><![CDATA["header":[{"label":"label","value":"","code":"EA","rts":false}],"ops":["ldx","inx","stx","lda","ldy"],"args":[{"value":"12","type":"v"},{"value":"label","type":"label"}],"nblines":7,"valid":{"a":"14","y":"13"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Utilisez la zone mémoire 'label' et remplissez les registres ainsi :",". 0x14 dans le registre A",". 0x13 dans le registre Y"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>022</dct:identifier>
+        <dct:title xml:lang="fr-FR">Créer une variable et renseigner correctement les registres A et Y grâce à l'opérateur INX.</dct:title>
+        <dct:description><![CDATA["ops":["nop","ldx","inx","stx","lda","ldy"],"args":[{"value":"0F","type":"v"},{"value":"label","type":"label"}],"nblines":10,"valid":{"a":"10","y":"12"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["A l'aide de l'instruction NOP, créez en DEBUT de programme une zone mémoire libre précédé d'une étiquette et remplissez les registres ainsi :",". 0x10 dans le registre A",". 0x12 dans le registre Y"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <!-- DEX & DEY -->
+
+    <rdf:Description>
+        <dct:identifier>101</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser l'opération DEX (1x) pour décrémenter la valeur du registre X.</dct:title>
         <dct:description><![CDATA["ops":["ldx","dex"],"args":[{"value":"A8","type":"v"}],"nblines":2,"valid":{"x":"A7"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Si INX incrémente de 1 la valeur contenue dans le registre X, DEX décrémente de 1 cette même valeur.","","Remplissez les registres ainsi :",". 0xA7 dans le registre X"]]]></dct:description>
@@ -123,10 +163,10 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>041</dct:identifier>
-        <dct:title xml:lang="fr-FR">Utiliser l'opération DEX (2x) pour décrémenter la valeur du registre X en gardant en tête que sur un octet #0x00 - 1 donne #0xFF</dct:title>
+        <dct:identifier>102</dct:identifier>
+        <dct:title xml:lang="fr-FR">Utiliser l'opération DEX (2x) pour décrémenter la valeur du registre X en gardant en tête que sur un octet 0x00 - 1 donne 0xFF</dct:title>
         <dct:description><![CDATA["ops":["ldx","dex"],"args":[{"value":"A8","type":"v"}],"nblines":2,"valid":{"x":"FE"}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Lorsque que l'on décrémente de 1 la valeur #0x00 sur un octet, on n'obtient pas -1 mais #0xFF.","","Remplissez les registres ainsi :",". 0xFE dans le registre X"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Lorsque que l'on décrémente de 1 la valeur 0x00 sur un octet, on n'obtient pas -1 mais 0xFF.","","Remplissez les registres ainsi :",". 0xFE dans le registre X"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -135,10 +175,405 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>045</dct:identifier>
+        <dct:identifier>103</dct:identifier>
         <dct:title xml:lang="fr-FR">Renseigner correctement les registres X et Y grâce aux instructions de transfert et des instructions LDA et DEX.</dct:title>
         <dct:description><![CDATA["ops":["lda","dex","dey","tay","tax"],"args":[{"value":"A8","type":"v"}],"nblines":6,"valid":{"x":"A6","y":"A7"}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Remplissez les registres ainsi :",". 0xA6 dans le registre X",". 0xA7 dans le registre Y"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>104</dct:identifier>
+        <dct:title xml:lang="fr-FR">Renseigner correctement les registres X et Y grâce aux instructions de transfert et des instructions LDA et DEX et INY.</dct:title>
+        <dct:description><![CDATA["ops":["lda","dex","iny","tay","tax"],"args":[{"value":"10","type":"v"}],"nblines":5,"valid":{"x":"A6","y":"A7"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Remplissez les registres ainsi :",". 0x0F dans le registre X",". 0x11 dans le registre Y"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>105</dct:identifier>
+        <dct:title xml:lang="fr-FR">Afficher ZYX sur la sortie standard grâce à l'opérateur DEY.</dct:title>
+        <dct:description><![CDATA["ops":["ldy","sty","dey"],"args":[{"value":"5A","type":"v"},{"value":"fe"}],"nblines":6,"valid":{"out":"ZYX"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Envoyez vers la sortie standard les caractères ASCII 0x5A, 0x59 et 0x58 et affichez ainsi le mot 'ZYX'."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>106</dct:identifier>
+        <dct:title xml:lang="fr-FR">Afficher BAC sur la sortie standard grâce à l'opérateur DEX et INY.</dct:title>
+        <dct:description><![CDATA["ops":["ldy","sty","dey","ldx","stx","inx"],"args":[{"value":"42","type":"v"},{"value":"fe"}],"nblines":7,"valid":{"out":"BAC"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Envoyez vers la sortie standard les caractères ASCII 0x42, 0x41 et 0x43 et affichez ainsi le mot 'BAC'."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>121</dct:identifier>
+        <dct:title xml:lang="fr-FR">Renseigner correctement les registres A et X grâce à une variable et l'opérateur DEY.</dct:title>
+        <dct:description><![CDATA["header":[{"label":"label","value":"","code":"EA","rts":false}],"ops":["ldy","dey","sty","lda","ldx"],"args":[{"value":"AA","type":"v"},{"value":"label","type":"label"}],"nblines":8,"valid":{"a":"A9","x":"A7"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Utilisez la zone mémoire 'label' et remplissez les registres ainsi :",". 0xA9 dans le registre A",". 0xA7 dans le registre X"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>122</dct:identifier>
+        <dct:title xml:lang="fr-FR">Créer une variable et renseigner correctement les registres A et X grâce à l'opérateur DEY.</dct:title>
+        <dct:description><![CDATA["ops":["nop","ldx","dey","sty","lda","ldy"],"args":[{"value":"BD","type":"v"},{"value":"label","type":"label"}],"nblines":9,"valid":{"a":"BB","x":"BC"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["A l'aide de l'instruction NOP, créez en DEBUT de programme une zone mémoire libre précédé d'une étiquette et remplissez les registres ainsi :",". 0xBB dans le registre A",". 0xBC dans le registre X"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>123</dct:identifier>
+        <dct:title xml:lang="fr-FR">Créer une variable et renseigner correctement les registres A et X grâce aux opérateurs DEY et INY.</dct:title>
+        <dct:description><![CDATA["ops":["nop","ldx","dey","iny","sty","lda","ldy"],"args":[{"value":"15","type":"v"},{"value":"label","type":"label"}],"nblines":10,"valid":{"a":"14","x":"16"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Remplissez les registres ainsi :",". 0x14 dans le registre A",". 0x16 dans le registre X"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <!-- INC & DEC -->
+
+    <rdf:Description>
+        <dct:identifier>151</dct:identifier>
+        <dct:title xml:lang="fr-FR">Incrémenter une zone de la mémoire grâce à l'opérateur INC.</dct:title>
+        <dct:description><![CDATA["class":"large","header":[{"label":"i","value":"","code":"ea","rts":false}],"ops":["lda","sta","inc"],"args":[{"value":"10","type":"v"},{"value":"i","type":"label"}],"nblines":3,"valid":{"mem":{"1000":"11"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["L'opérateur INC permet d'incrémenter la valeur d'un octet de la mémoire. Il s'utilise avec un argument : INC ADR où ADR peut être une adresse absolue (0x1000 par exemple) ou un label.","","Stockez la valeur 0x11 à l'adresse mémoire 0x1000 labellisé 'i' dans cet exercice."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>152</dct:identifier>
+        <dct:title xml:lang="fr-FR">Incrémenter une zone de la mémoire de l'écran graphique grâce à l'opérateur INC.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["inc"],"args":[{"value":"200"}],"nblines":1,"valid":{"mem":{"200":"01"}},"model":2]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Incrémentez la valeur contenue à l'adresse 0x0200 et observez le résultat sur l'écran graphique.","","Explication : l'écran 48x32 utilise 2 couleurs (noir et blanc). Chaque pixel, ne pouvant prendre que 2 valeurs possibles, est donc codé sur 1 bit. Un octet est composé de 8 bits, par conséquent, un octet représente 8 pixels. En incrémentant le premier octet de l'écran graphique, on met celui-ci à 1 et c'est donc le 8ème pixel de l'écran qui change de couleur."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>153</dct:identifier>
+        <dct:title xml:lang="fr-FR">Incrémenter une zone de la mémoire grâce à l'opérateur INC et charger le registre X.</dct:title>
+        <dct:description><![CDATA["class":"large","header":[{"label":"i","value":"","code":"ea","rts":false}],"ops":["lda","sta","inc","ldx"],"args":[{"value":"70","type":"v"},{"value":"i","type":"label"}],"nblines":4,"valid":{"x":"71"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Utilisez la zone mémoire 'i' pour charger la valeur 0x71 dans le registre X."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>154</dct:identifier>
+        <dct:title xml:lang="fr-FR">Créer une variable et renseigner correctement le registre X grâce à l'opérateur INC.</dct:title>
+        <dct:description><![CDATA["ops":["inc","ldx","stx","nop"],"args":[{"value":"12","type":"v"},{"value":"i","type":"label"}],"nblines":6,"valid":{"x":"13"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["A l'aide de l'instruction NOP, créez en DEBUT de programme une zone mémoire libre précédé de l'étiquette 'i' et charger la valeur 0x13 dans le registre X."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>155</dct:identifier>
+        <dct:title xml:lang="fr-FR">Créer une variable et renseigner correctement les registres A, X et Y grâce à l'opérateur INC.</dct:title>
+        <dct:description><![CDATA["ops":["inc","ldx","sta","lda","ldy","nop"],"args":[{"value":"41","type":"v"},{"value":"i","type":"label"}],"nblines":10,"valid":{"a":"43","x":"42","y":"44"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Remplissez les registres ainsi :",". 0x43 dans le registre A",". 0x42 dans le registre X",". 0x44 dans le registre Y"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>161</dct:identifier>
+        <dct:title xml:lang="fr-FR">Décrémenter une zone de la mémoire grâce à l'opérateur DEC.</dct:title>
+        <dct:description><![CDATA["class":"large","header":[{"label":"i","value":"","code":"ea","rts":false}],"ops":["lda","sta","dec"],"args":[{"value":"10","type":"v"},{"value":"i","type":"label"}],"nblines":3,"valid":{"mem":{"1000":"0F"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["L'opérateur DEC permet de décrementer la valeur d'un octet de la mémoire. Il s'utilise avec un argument : DEC ADDR où ADDR peut être une adresse absolue (0x1000 par exemple) ou un label.","","Stockez la valeur 0x0F à l'adresse mémoire 0x1000 labellisé 'i' dans cet exercice.","","Pour rappel : 0x0F = 0x10 - 1."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>162</dct:identifier>
+        <dct:title xml:lang="fr-FR">Décrémenter une zone de la mémoire de l'écran graphique grâce à l'opérateur DEC.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["dec"],"args":[{"value":"200"}],"nblines":1,"valid":{"mem":{"200":"FF"}},"model":2]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Décrémentez la valeur contenue à l'adresse 0x0200 et observez le résultat sur l'écran graphique.","","Explication : l'écran 48x32 utilise 2 couleurs (noir et blanc). Chaque pixel, ne pouvant prendre que 2 valeurs possibles, est donc codé sur 1 bit. Un octet est composé de 8 bits, par conséquent, un octet représente 8 pixels. En décrémentant le premier octet de l'écran graphique, on met celui-ci à 0xFF et c'est donc les 8 pixels de cet octet qui changent de couleur."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>163</dct:identifier>
+        <dct:title xml:lang="fr-FR">Décrémenter une zone de la mémoire grâce à l'opérateur DEC.</dct:title>
+        <dct:description><![CDATA["class":"large","header":[{"label":"i","value":"","code":"ea","rts":false}],"ops":["lda","sta","dec","ldy"],"args":[{"value":"72","type":"v"},{"value":"i","type":"label"}],"nblines":4,"valid":{"y":"71"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Utilisez la zone mémoire 'i' pour charger la valeur 0x71 dans le registre Y."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>171</dct:identifier>
+        <dct:title xml:lang="fr-FR">Créer une zone de la mémoire grâce à l'opérateur NOP et utiliser celle-ci pour incrémenter une valeur.</dct:title>
+        <dct:description><![CDATA["ops":["nop","lda","sta","inc"],"args":[{"value":"25","type":"v"},{"value":"label","type":"label"}],"nblines":6,"valid":{"a":"26"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez la valeur 0x26 dans le registre A.","","Pour ce faire, créez en DEBUT de programme une zone mémoire libre avec l'opérateur NOP et précédé d'un libellé. Utilisez cette variable pour procéder au calcul adéquat."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>172</dct:identifier>
+        <dct:title xml:lang="fr-FR">Créer une zone de la mémoire grâce à l'opérateur NOP et utiliser celle-ci pour incrémenter une valeur.</dct:title>
+        <dct:description><![CDATA["ops":["nop","lda","sta","inc"],"args":[{"value":"64","type":"v"},{"value":"200"},{"value":"label","type":"label"}],"nblines":8,"valid":{"mem":{"200":"66"}},"model":1]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Stockez la valeurx 0x66 dans le premier octet de l'écran graphique pour afficher deux pixels bleus."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>173</dct:identifier>
+        <dct:title xml:lang="fr-FR">Créer une zone de la mémoire grâce à l'opérateur NOP et utiliser celle-ci pour incrémenter et décrémenter une valeur.</dct:title>
+        <dct:description><![CDATA["ops":["nop","lda","sta","inc","dec","ldx","ldy"],"args":[{"value":"32","type":"v"},{"value":"label","type":"label"}],"nblines":10,"valid":{"x":"33","y":"31"},"model":1]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez la valeur 0x33 dans le registre X puis 0x31 dans le registre Y."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <!-- ADC -->
+
+    <rdf:Description>
+        <dct:identifier>201</dct:identifier>
+        <dct:title xml:lang="fr-FR">Utiliser l'opérateur ADC avec une valeur numérique.</dct:title>
+        <dct:description><![CDATA["ops":["lda","adc"],"args":[{"value":"01","type":"v"}],"nblines":2,"valid":{"a":"02"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["L'opérateur ADC ajoute une valeur au registre A.","","En réalisant l'addition de 0x01+0x01, chargez 0x02 dans le registre A."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>202</dct:identifier>
+        <dct:title xml:lang="fr-FR">Utiliser l'opérateur ADC avec une valeur numérique.</dct:title>
+        <dct:description><![CDATA["ops":["lda","adc"],"args":[{"value":"01","type":"v"},{"value":"20","type":"v"}],"nblines":3,"valid":{"a":"41"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez la valeur 0x41 dans le registre A."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>203</dct:identifier>
+        <dct:title xml:lang="fr-FR">Utiliser l'opérateur ADC avec une adresse directe.</dct:title>
+        <dct:description><![CDATA["header":[{"label":"init","value":"","code":"A9028501A900","rts":false}],"ops":["lda","adc"],"args":[{"value":"01","type":"v"},{"value":"01"}],"nblines":2,"valid":{"a":"03"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Comme LDA, l'opérateur ADC peut être utilisé avec une valeur numérique ou avec une adresse mémoire. Dans ce dernier cas, ADC ajoute au registre A la valeur contenue à cette adresse.","","Ajoutez la valeur 0x01 à la valeur contenue en 0x01 (en l'occurent 0x03)."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>204</dct:identifier>
+        <dct:title xml:lang="fr-FR">Utiliser l'opérateur ADC avec une valeur numérique.</dct:title>
+        <dct:description><![CDATA["ops":["lda","adc","tax","inx","tay","dey"],"args":[{"value":"18","type":"v"},{"value":"03","type":"v"}],"nblines":6,"valid":{"a":"1B","x":"19","y":"17"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez les valeurs suivantes :",". 0x19 dans X",". 0x17 dans Y",". 0x1B dans A" ]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>205</dct:identifier>
+        <dct:title xml:lang="fr-FR">Utiliser l'opérateur ADC avec une valeur numérique.</dct:title>
+        <dct:description><![CDATA["ops":["lda","adc"],"args":[{"value":"FF","type":"v"},{"value":"02","type":"v"}],"nblines":2,"valid":{"a":"01"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez la valeur 0x01 dans le registre A.","","Pour rappel, les différents registres ne peuvent contenir qu'un octet, aussi, le nombre suivant 0xFF n'est pas 0x100 (car celui est trop grand) mais 0x00.","Cela ne sera étudié que plus tard, mais remarquez l'état du drapeau 'C' après l'exécution d'ADC." ]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <!-- ADC and decimal mode -->
+
+    <rdf:Description>
+        <dct:identifier>251</dct:identifier>
+        <dct:title xml:lang="fr-FR">Utiliser l'opérateur ADC avec une valeur numérique.</dct:title>
+        <dct:description><![CDATA["ops":["lda","adc"],"args":[{"value":"09","type":"v"},{"value":"02","type":"v"}],"nblines":2,"valid":{"a":"0B","d":false}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez la valeur 0x0B dans le registre A. Par défaut, l'opérateur ADC, comme tous les opérateurs, fonctionne en hexadécimal."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>252</dct:identifier>
+        <dct:title xml:lang="fr-FR">Utiliser l'opérateur ADC avec une valeur numérique en mode décimal.</dct:title>
+        <dct:description><![CDATA["ops":["sed","lda","adc"],"args":[{"value":"09","type":"v"},{"value":"02","type":"v"}],"nblines":3,"valid":{"a":"11","d":true}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Il est possible de faire fonctionner ADC en mode décimal. Pour cela, utilisez l'opération SED (sans argument) et exécutez l'opération 0x09 + 0x02 pour obtenir... 0x11.","Le mode décimal est signifié par un 1 dans le drapeau 'D' à gauche." ]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>253</dct:identifier>
+        <dct:title xml:lang="fr-FR">Utiliser l'opérateur ADC avec une valeur numérique en mode décimal.</dct:title>
+        <dct:description><![CDATA["ops":["sed","lda","adc","tax","inx"],"args":[{"value":"09","type":"v"},{"value":"02","type":"v"}],"nblines":5,"valid":{"a":"11","x":"0A","d":true}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["INX et INY fonctionnent toujours en mode hexadécimal et ne sont pas concernés par l'opérateur SED.","Chargez les valeurs suivantes :",". 0x0A dans X",". 0x11 dans A" ]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>254</dct:identifier>
+        <dct:title xml:lang="fr-FR">Utiliser l'opérateur ADC avec une valeur numérique en mode décimal.</dct:title>
+        <dct:description><![CDATA["ops":["sed","lda","adc"],"args":[{"value":"99","type":"v"},{"value":"02","type":"v"}],"nblines":3,"valid":{"a":"01","d":true}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez la valeur 0x01 dans le registre A.","","En mode hexadécimal, chaque registre peut prendre 256 valeurs possibles (0 à 0xFF). En mode décimal, seules 100 sont utilisables (0 à 99)." ]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>255</dct:identifier>
+        <dct:title xml:lang="fr-FR">Utiliser l'opérateur ADC avec une valeur numérique en mode décimal et hexadécimal.</dct:title>
+        <dct:description><![CDATA["ops":["sed","lda","adc","tax","cld"],"args":[{"value":"29","type":"v"},{"value":"04","type":"v"}],"nblines":7,"valid":{"a":"2D","x":"33"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["L'opérateur CLD permet de désactiver le mode décimal et de retourner dans le mode hexadécimal. Il est l'inverse de SED.","","Chargez les valeurs suivantes :",".0x33 dans le registre X",".0x2D dans le registre A"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+
+    <!-- SBC -->
+
+    <rdf:Description>
+        <dct:identifier>301</dct:identifier>
+        <dct:title xml:lang="fr-FR">Utiliser l'opérateur SBC avec une valeur numérique.</dct:title>
+        <dct:description><![CDATA["header":[{"label":"init","value":"","code":"38","rts":false}],"ops":["lda","sbc"],"args":[{"value":"09","type":"v"},{"value":"03","type":"v"}],"nblines":2,"valid":{"a":"06"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["L'opérateur SBC soustrait une valeur au registre A.","","En réalisant la soustraction de 0x09-0x03, chargez 0x06 dans le registre A."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>302</dct:identifier>
+        <dct:title xml:lang="fr-FR">Utiliser l'opérateur SBC avec une adresse directe.</dct:title>
+        <dct:description><![CDATA["header":[{"label":"init","value":"","code":"A9038501A90038","rts":false}],"ops":["lda","sbc"],"args":[{"value":"01","type":"v"},{"value":"01"}],"nblines":2,"valid":{"a":"02"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Comme ADC, l'opérateur SBC peut être utilisé avec une valeur numérique ou avec une adresse mémoire. Dans ce dernier cas, SBC soustrait au registre A la valeur contenue à cette adresse.","Otez la valeur 0x01 à la valeur contenue en 0x01 (en l'occurent 0x03) pour qu'au final le registre A contienne la valeur 0x02."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>303</dct:identifier>
+        <dct:title xml:lang="fr-FR">Utiliser l'opérateur SBC avec une valeur numérique.</dct:title>
+        <dct:description><![CDATA["header":[{"label":"init","value":"","code":"38","rts":false}],"ops":["lda","sbc"],"args":[{"value":"01","type":"v"},{"value":"05","type":"v"}],"nblines":2,"valid":{"a":"FC","n":true}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez la valeur 0xFC dans le registre A."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <!-- SBC and negative numbers -->
+
+    <rdf:Description>
+        <dct:identifier>401</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comprendre les valeurs négatives grâce à l'opérateur SBC.</dct:title>
+        <dct:description><![CDATA["class":"large","header":[{"label":"init","value":"","code":"38A955","rts":false}],"ops":["lda","sbc"],"args":[{"value":"01","type":"v"},{"value":"00","type":"v"}],"nblines":2,"valid":{"a":"FF","n":true}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Lorsque l'on soustrait 0x01 à 0x00, on obtient la valeur 0xFF. Cette valeur peut être vue, selon le contexte, de deux façons différentes :","",". une valeur positive égale à 255 en décimal.",". une valeur négative égale à -1. Car après tout, elle est le résultat de 0x00 - 0x01.","","Chargez -0x01 (ou 0xFF) dans le registre A. Au passage, veillez à initialiser le registre A, car il se peut que le code précompilé init le modifie."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>402</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comprendre les valeurs négatives grâce à l'opérateur SBC.</dct:title>
+        <dct:description><![CDATA["class":"large","header":[{"label":"init","value":"","code":"38A955","rts":false}],"ops":["lda","sbc"],"args":[{"value":"80","type":"v"},{"value":"7F","type":"v"},{"value":"00","type":"v"}],"nblines":2,"valid":{"a":"81","n":true}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["En régle général, tout nombre compris entre 0x80 et 0xFF (c'est à dire, dont le premier bit est à 1) peut-être vu comme un nombre positif compris entre 128 et 255 OU comme un nombre négatif compris entre -127 et -1. Tout dépend du contexte dans lequel le nombre est utilisé.","","Chargez -126 (0x81) dans le registre A."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
