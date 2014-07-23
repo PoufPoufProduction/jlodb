@@ -38,6 +38,7 @@ if (!$error) {
             // MISC
             $name       = $row["Activity_Name"];
             $label      = $row["Activity_Title"];
+            $locale     = $row["Activity_Locale"];
             $status     = "success";
         }
         else {
@@ -62,7 +63,8 @@ echo '  "lang": "'.$_SESSION['lang'].'",';
 echo '  "label": "'.$label.'",';
 echo '  "exercices": '.$number[0].',';
 echo '  "classification": ['.$class.'],';
-echo '  "files": ['.$files.']';
+echo '  "files": ['.$files.'],';
+echo '  "locale": {'.$locale.'}';
 }
 echo '}';
 
