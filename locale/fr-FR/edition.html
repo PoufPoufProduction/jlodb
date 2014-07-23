@@ -1,7 +1,22 @@
 <div id="edition">
-    <textarea></textarea>
-    <div>
-        <select id="activities"></select>
-        <div class="button" onclick="jlodb.page.edition.submit();">Lancer</div>
+    <div id="edmenu">
+        <div id="edactivity" class="icon"><img src="res/img/activity/alchemist.svg"/></div>
+        <select id="activities" onchange="jlodb.page.edition.activity();"></select>
+        <div id="edlevel" class="icon" onclick="jlodb.page.edition.level(true);"
+                                       ontouchstart="jlodb.page.edition.level(true);event.preventDefault();">1</div>
+        <div id="eddiff" class="icon" onclick="jlodb.page.edition.diff(true);"
+                                       ontouchstart="jlodb.page.edition.diff(true);event.preventDefault();">
+            <img src="res/img/star/star1.svg"/></div>
+        <div id="edduration" class="icon" onclick="jlodb.page.edition.duration(true);"
+                                          ontouchstart="jlodb.page.edition.duration(true);event.preventDefault();">1</div>
+        <div id="edclass" class="icon"><img src="res/img/classification/root.svg"/></div>
+        <select id="edcl" onchange="jlodb.page.edition.classification();"></select>
+    </div>
+    <textarea id="edargs">{}</textarea>
+    <textarea id="edlabel">Décrire ici, la nature de l'exercice en utilisant un verbe à l'infinitif.</textarea>
+    <div id="edfooter">
+        <div onclick="jlodb.page.edition.doc();" class="icon"><img src="res/img/icon/about.svg"/></div>
+        <div class="edbutton" onclick="jlodb.page.edition.submit();">Tester</div>
+        <div class="edbutton" onclick="jlodb.page.edition.publish();">Publier</div>
     </div>
 </div> 

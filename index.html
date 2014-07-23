@@ -42,11 +42,11 @@
         #nav ul.sub             { font-size:.8em; padding-left:1em; }
         #footer                 { clear:both; width:100%; height:1em; overflow:hidden; background-color:#EEEEEE; position:relative; }
         div#console             { font-size:.2em; color:#444444; font-family: "Courier New", Courier, mono; position:absolute; top:0; }
-        #page>.content             { float:left; width:13em; height:9em; overflow:hidden; background-color:#FFFFFF; color:#333333;}
-        #page>.content>div.text    { font-size:.3em; }
-        #page>.content ul          { list-style-type:none; }
-        #page>.content li          { position:relative; margin: .1em 0 .25em .2em; }
-        #page>.content li .icon    { position:absolute; top:0; width:1.5em; height:1.5em; }
+        #contentdiv>.content             { float:left; width:13em; height:9em; overflow:hidden; background-color:#FFFFFF; color:#333333;}
+        #contentdiv>.content>div.text    { font-size:.3em; }
+        #contentdiv>.content ul          { list-style-type:none; }
+        #contentdiv>.content li          { position:relative; margin: .1em 0 .25em .2em; }
+        #contentdiv>.content li .icon    { position:absolute; top:0; width:1.5em; height:1.5em; }
         div#contentb            { display:none; }
 
         #jlodb #buildlog        { font-size:.2em; margin:1em; }
@@ -58,16 +58,16 @@
         #jlodb .button22        {  background-color:#888; font-size:1em; border-radius:.0 .2em .2em 0; float:left;
                                   color:#EEE; width:7em; text-align:center; cursor:pointer; margin:0.5em 0 0 0; }
 
-        #jlodb input            { background-color:#888; font-size:1em; border-radius:.2em; color:#EEE; width:8em; padding-left:2em; }
+        #jlodb .ifnotlogged input            { background-color:#888; font-size:1em; border-radius:.2em; color:#EEE; width:8em; padding-left:2em; }
 
 
-        #page>.content .banner     { padding:0 .3em 0 .3em; margin:.5em; line-height:1.4em; }
+        #contentdiv>.content .banner     { padding:0 .3em 0 .3em; margin:.5em; line-height:1.4em; }
         div#home h1             { font-size:1.6em; overflow:visible; }
         div#home #overview      { text-align:right; ont-size:.8em; font-family: "Courier New", Courier, mono; line-height:1em;}
         div#home #overview span { color:black; }
         div#home #right         { font-size:.8em; width:28em; overflow:hidden; float:left; }
         div#home #left          { font-size:.8em; width:25em; overflow:hidden; float:left; }
-        #page>.content .border         { padding:0 .4em 0 .4em; margin:.5em; border:1px solid gray; border-radius:.5em;
+        #contentdiv>.content .border         { padding:0 .4em 0 .4em; margin:.5em; border:1px solid gray; border-radius:.5em;
                                   text-align:justify; }
         div#home .border p       { margin-bottom:.5em; }
         div#home #math          { border:1px solid gray;padding-left:7em;margin-bottom:.1em;border-radius:.5em; }
@@ -92,11 +92,20 @@
         #jlodb #apps .icon                  { width:1em; height:1em; float:left; cursor:pointer; margin:.1em; font-size:5em; }
 
         /*-------------------------------------------------- EDITION PAGE ---------------------------------------------------------*/
-        #jlodb #edition textarea            { resize:none; margin:.5em; width:50em; height:25em; font-size:.25em;
-                                              background-image:url("res/img/background/book02.svg"); background-repeat:repeat;}
-        #jlodb #edition>div                 { height:2em; }
-        #jlodb #edition #activities         { font-size:.5em; margin-left:1em; width:24em; display:block; text-align:center; }
-        #jlodb #edition .button             { width:12em; font-size:1em; margin:.1em .5em;}
+        #jlodb #edition textarea            { resize:none; margin:.5em; width:50em; font-size:.25em; }
+        #jlodb #edition .icon               { text-align:center; margin-left:.1em; cursor:pointer; }
+        #jlodb #edition #edargs             { height:20em; }
+        #jlodb #edition #edlabel            { height:4em; background-image:url("res/img/background/book02.svg"); background-repeat:repeat;}
+        #jlodb #edition #edmenu             { height:1em; font-size:.8em; }
+        #jlodb #edition #edmenu>*           { float:left; }
+        #jlodb #edition #edmenu #edlevel    { background-image:url("res/img/icon/icon.svg"); background-size:100%; }
+        #jlodb #edition #edmenu #edduration { background-image:url("res/img/icon/duration.svg"); background-size:100%; }
+        #jlodb #edition #edmenu select      { height:2em; width:12em; font-size:.5em; margin-left:.1em; text-align:center; }
+        #jlodb #edition #edmenu #edcl       { width:18em; height:4em; font-size:.25em; margin-left:.2em;}
+        #jlodb #edition .edbutton           { width:9em; height:1.25em; font-size:.8em; margin:0 0 0 .1em; border:1px solid black;
+                                              border-radius:.25em; text-align:center; cursor:pointer; }
+        #jlodb #edition #edfooter           { height:1em; font-size:.8em; overflow:visible;}
+        #jlodb #edition #edfooter>*         { float:left; }
 
         /*-------------------------------------------------- NAVIGATION PAGES -----------------------------------------------------*/
         #jlodb .navigation                  { font-size:.25em;  }
@@ -150,6 +159,15 @@ jlodb = {
     checkdb         : 0,
     classification  : {
         data        : 0,
+        list        : [],
+        build       : function(_node, _level) {
+            if (!_node) { this.list=[]; _node = this.data; _level=0; }
+            var label = ""; for (var i=0; i<_level; i++) { label+="&nbsp;&nbsp;"; } label+=_node.attr("label");
+            this.list.push({id:_node.attr("id"), label:label});
+            if (_node.attr("children")) {
+                for (var i=0; i<_node.attr("children").length; i++) { this.build($(_node.attr("children")[i]), _level+1); }
+            }
+        },
         find: function(_root,_id) {
             var ret = {parent:0, node:0};
             if (_root.attr("id")==_id) { ret= {parent:0, node:_root}; }
@@ -181,7 +199,7 @@ jlodb = {
     page            : {
         mods : {
             load: function() {
-                $("#contentb").hide();
+                $("#contentdiv>div").hide();
                 $("#content").load("locale/"+jlodb.checkdb.lang+"/mods.html"+"?debug="+Math.floor(Math.random()*99999),
                     function(response, status, xhr) {
                         $.getJSON("api/mods.php", function (data) {
@@ -211,7 +229,7 @@ jlodb = {
         },
         apps : {
             load: function() {
-                $("#contentb").hide();
+                $("#contentdiv>div").hide();
                 $("#content").load("locale/"+jlodb.checkdb.lang+"/apps.html"+"?debug="+Math.floor(Math.random()*99999),
                     function(response, status, xhr) {}).show();
             }
@@ -220,7 +238,7 @@ jlodb = {
             name: "",
             load: function() {
                 jlodb.islogged(function() {
-                    $("#contentb").hide();
+                    $("#contentdiv>div").hide();
                     $("#content").load("locale/"+jlodb.checkdb.lang+"/activities.html"+"?debug="+Math.floor(Math.random()*99999),
                         function(response, status, xhr) {
                         $.getJSON("api/activities.php", function (data) {
@@ -291,7 +309,7 @@ jlodb = {
 
             },
             load: function() {
-                $("#contentb").hide();
+                $("#contentdiv>div").hide();
                 $("#content").load("locale/"+jlodb.checkdb.lang+"/classification.html"+"?debug="+Math.floor(Math.random()*99999),
                     function(response, status, xhr) { jlodb.page.classification.build(); $("#classification .details>div").show()})
                              .show();
@@ -304,7 +322,7 @@ jlodb = {
         login: {
             load: function() {
                 jlodb.islogged(function() {
-                    $("#contentb").hide();
+                    $("#contentdiv>div").hide();
                     $("#content").load("locale/zxx/logon.html").show(); });
             },
             perform: function(_login) {
@@ -329,34 +347,102 @@ jlodb = {
             }
         },
         edition: {
+            data: { level: 1, diff:1, duration:0, d:[1,2,3,4,5,7,10,15,20,30,45,60] },
+            level: function(_inc) {
+                if (_inc) { this.data.level=this.data.level%5+1; }
+                $("#jlodb #edition #edlevel").html(this.data.level);
+            },
+            diff: function(_inc) {
+                if (_inc) { this.data.diff=this.data.diff%5+1; }
+                $("#jlodb #edition #eddiff img").attr("src","res/img/star/star"+this.data.diff+".svg");
+            },
+            duration: function(_inc) {
+                if (_inc) { this.data.duration=(this.data.duration+1)%this.data.d.length; }
+                $("#jlodb #edition #edduration").html(this.data.d[this.data.duration]);
+            },
+            doc: function() {
+                window.open("locale/"+jlodb.checkdb.lang+"/documentation.html","_blank");
+            },
+            classification:function() {
+                $("#jlodb #edition #edclass img").attr("src","res/img/classification/"+$("#jlodb #edition select#edcl").val()+".svg");
+            },
+            activity:function() {
+                $("#jlodb #edition #edactivity img").attr("src","res/img/activity/"+$("#jlodb #edition select#activities").val()+".svg");
+            },
             open: function(_id) {
                 $.getJSON("api/exercice.php?id="+_id, function(data) {
-                    jlodb.page.edition.load(JSON.stringify(data.data), data.activity);
+                    $("#jlodb #edition textarea#edargs").val(JSON.stringify(data.data));
+                    $("#jlodb #edition textarea#edlabel").val(data.title);
+                    jlodb.page.edition.data.level = data.level;     jlodb.page.edition.level(false);
+                    jlodb.page.edition.data.diff = data.difficulty; jlodb.page.edition.diff(false);
+                    for (var i in jlodb.page.edition.data.d) {
+                        if (jlodb.page.edition.data.d[i]==data.time) { jlodb.page.edition.data.duration = parseInt(i); } }
+                    jlodb.page.edition.duration(false);
+                    $("#jlodb #edition select#activities").val(data.activity);
+                    jlodb.page.edition.activity();
+
+                    $("#jlodb #edition select#edcl").val(data.classification);
+                    jlodb.page.edition.classification();
+
+                    jlodb.page.edition.load();
                 });
             },
-            load: function(_content, _activity) {
+            build: function() {
                 $.getJSON("api/activities.php", function(data) {
-                    $("#contentb").hide();
-                    $("#content").load("locale/"+jlodb.checkdb.lang+"/edition.html"+"?debug="+Math.floor(Math.random()*99999),
+                    $("#contentc").load("locale/"+jlodb.checkdb.lang+"/edition.html"+"?debug="+Math.floor(Math.random()*99999),
                     function(response, status, xhr) {
-                        $("#jlodb #edition textarea").val(_content);
                         $("#jlodb #edition select").html("");
                         for (var i=0; i<data.activities.length; i++) {
-                            var option = "<option value='"+data.activities[i].name+"'";
-                            if (data.activities[i].name==_activity) { option+=" selected='selected'"; }
+                            var option = "<option value='"+data.activities[i].id+"'";
                             option +=">"+data.activities[i].label+"</option>";
-                            $("#jlodb #edition select").append(option);
+                            $("#jlodb #edition select#activities").append(option);
                         }
-                    }).show();
+                        for (var i in jlodb.classification.list) {
+                            var option = "<option value='"+jlodb.classification.list[i].id+"'";
+                            option +=">"+jlodb.classification.list[i].label+"</option>";
+                            $("#jlodb #edition select#edcl").append(option);
+                        }
+                    });
                 });
             },
+            load: function() {
+                $("#contentdiv>div").hide();
+                $("#contentc").show();
+            },
             submit: function() {
-                jlodb.run({ activity : $("#jlodb #edition select").val(), args: JSON.parse($("#jlodb #edition textarea").val()) }, false);
+                $.getJSON("api/activity.php?name="+$("#jlodb #edition select").val(), function(data) {
+                    var json={};
+                    try { json = jQuery.parseJSON($("#jlodb #edition textarea#edargs").val()); }
+                    catch (e) { alert("[JSON ERROR] "+e.message); return; }
+
+                    var args = $.extend({}, json, {locale: data.locale });
+                    jlodb.run({ activity : $("#jlodb #edition select").val(), args: args }, false);
+                });
+            },
+            publish: function() {
+                var json={};
+                try { json = jQuery.parseJSON($("#jlodb #edition textarea#edargs").val()); }
+                catch (e) { alert("[JSON ERROR] "+e.message); return; }
+                var data = JSON.stringify(json).substr(1);
+                data = data.substr(0,data.length-1);
+
+                var rdf="";
+                rdf+="<!-- "+$("#jlodb #edition select#activities").val()+"-->"+"\n";
+                rdf+="<rdf:Description>"+"\n";
+                rdf+="  <dct:title xml:lang=\""+jlodb.checkdb.lang+"\">"+$("#jlodb #edition textarea#edlabel").val()+"</dct:title>"+"\n";
+                rdf+="  <dct:description><![CDATA["+data+"]]></dct:description>"+"\n";
+                rdf+="  <dct:extent>"+jlodb.page.edition.data.d[jlodb.page.edition.data.duration]+"</dct:extent>"+"\n";
+                rdf+="  <dct:subject>"+$("#jlodb #edition select#edcl").val()+"</dct:subject>"+"\n";
+                rdf+="  <dct:educationLevel>"+jlodb.page.edition.data.level+"</dct:educationLevel>"+"\n";
+                rdf+="  <dct:type>"+jlodb.page.edition.data.diff+"</dct:type>"+"\n";
+                rdf+="</rdf:Description>"+"\n";
+
+                alert(rdf);
             }
         },
         browser: {
             load: function() {
-                $("#content").hide();
+                $("#contentdiv>div").hide();
                 $("#contentb").show();
                 $("#contentb").browser("onshow");
             },
@@ -420,7 +506,7 @@ jlodb = {
         jlodb.islogged();
         var results = new RegExp('[?]id=([^&]*)').exec(window.location.href);
 
-        $("#contentb").hide();
+        $("#contentdiv>div").hide();
         $("#content").show();
 
         // CHECK THE DATABASE
@@ -444,6 +530,8 @@ jlodb = {
                 // GET THE CLASSIFICATION
                 $.getJSON("locale/"+data.lang+"/classification.json", function(data) {
                     jlodb.classification.data = $(data);
+                    jlodb.classification.build();
+                    jlodb.page.edition.build();
                     jlodb.page.classification.elt=$(data).attr("id");
                     jlodb.page.browser.elt=$(data).attr("id");
 
@@ -506,9 +594,11 @@ window.onload = function() {
             </div>
 
             <div id="nav"></div>
-
-            <div id="content" class="content"></div>
-            <div id="contentb" class="content"></div>
+            <div id="contentdiv">
+                <div id="content" class="content"></div>
+                <div id="contentb" class="content"></div>
+                <div id="contentc" class="content"></div>
+            </div>
 
             <div id="footer">
                 <div id="console"></div>

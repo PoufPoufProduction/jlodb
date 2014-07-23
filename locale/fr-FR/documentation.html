@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="../../js/jquery-1.8.1.min.js"></script>
+    <title>jLoDB - Documentation</title>
+    <style>
+        body        { font-size:12px; }
+        textarea    { resize:none; }
+        .margin     { margin-left:1em; }
+        .button     { cursor:pointer; border:1px solid black; margin:.1em; padding:.1em; border-radius:.25em;
+                      text-align:center;}
+    </style>
+    <script>
+var t001 = {
+    process:function() {
+        var d=$("#t001").val().split("|");
+        var l=0,s=0,p=[12,12,12,12],n=[0,0,0,0];
+        for (var i in d) {
+            var si=Math.ceil(d[i].length/2); if (si>5) { si=5;}
+            if (s+si>12) { s=si; l++; } else { s+=si; }
+            p[l]-=si; n[l]++;
+        }
+
+        if (p[l]/n[l]>3) { n[l]++; p[l]=n[l]; d.push(" "); }
+
+        var ret="";
+        i=0;
+        for (var li=0; li<=l; li++) {
+            s=0;
+            for (var ni=0; ni<n[li]; ni++) {
+                var si=Math.ceil(d[i].length/2); if (si>5) { si=5;}
+                if (ni==n[li]-1) { si=12-s; if (si>5) { si=5; } } else {var o=Math.round(p[li]/(n[li]-ni-1));
+                    if (si+o>5) { o=5-si; } if (o>0) { si+=o; p[li]-=o; } }
+                ret+=(li||ni?",":"")+"\""+(li+1)+"-"+(s<10?"0":"")+s+"-"+si+"\":\""+d[i]+"\"";
+                s+=si; i++;
+            }
+        }
+
+        ret="{\"svgclass\":\"l"+(l+1)+"\",\"values\":{"+ret+"},\"area\":[220,350,480,450],\"url\":\"puzzle/sentence.svg\"}";
+        alert(ret);
+    }
+};
+
+
+    </script>
+</head>
+
+<body>
+    <h1>Guide du développeur jLoDB.</h1>
+    <div>En cours de construction...</div>
+    <h2>Activités</h2>
+    <h3>Puzzle</h3>
+    <h4>Reconstruction de phrases</h4>
+    <div class="margin">
+        <ul>
+            <li><b>"url":"puzzle/sentence.svg"</b></li>
+            <li><b>"svgclass"</b> peut prendre les valeurs "l1","l2","l3" ou "l4" en fonction du nombre de lignes nécessaires à l'exercice.</li>
+            <li><b>"values":{"1-00-2":"Mot1","1-02-5":"Mot2","1-07-5":"Mot3"}</b>. L'ensemble des pièces du puzzle sont définies par 3 nombres successifs [numéro de ligne-position-taille]. Ainsi 1-00-2 représente la pièce de taille 2 qui se trouve à la position 0 de la ligne 1. Ainsi, la pièce suivante 1-02-5 se trouve à la position 2 de la ligne 1 (juste derrière la première pièce). La taille des pièces peut être compris entre 1 et 5 inclus, et la taille d'une ligne est de 12. Par conséquent, la triplette définissant la dernière pièce d'une ligne doit vérifier [position]+[taille] = 12. Dans notre exemple, la dernière pièce est en position 7 et a une taille de 5 ; on a bien 7+5=12 : la ligne est remplie entièrement.</li>
+        </ul>
+        <div>
+            <p><b>Générateur</b> : entrez la phrase en séparant les différentes parties par le caractère | et cliquez sur le bouton de publication. Attention : ce générateur vite codé n'est pas parfait, il est important de bien tester le résultat obtenu avec l'outil d'édition de jlodb.</p>
+            <textarea style="width:30em;height:4em;" id="t001"></textarea>
+            <div class="button" style="width:5em;" onclick="t001.process();">Publier</div>
+    <div>
+</body>
+
+</html>
