@@ -1,0 +1,209 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dct="http://purl.org/dc/terms/">
+
+    <rdf:Description>
+        <dct:identifier>001</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier la valeur 1 à partir d'opérations logiques (¬).</dct:title>
+        <dct:description><![CDATA["values":[{"template":"array3x2","result":"110001","t":["1","¬0","0","¬(¬0)","¬1","¬(¬1)"]},{"template":"array3x2","result":"010101","t":["0","¬0","¬(¬0)","1","¬1","¬(¬1)"]}],"states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"red","color":"pink"}]},"wrong":{"style":{"background-color":"black","color":"red"}},"font":0.4]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:red;'><b>ROUGE</b></span>, les opérations dont le résultat vaut <b>1</b>.","label":"1"}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>002</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier la valeur 1 à partir d'opérations logiques (∧∨¬).</dct:title>
+        <dct:description><![CDATA["values":[{"template":"array3x3","result":"110100101","t":["1∨0","¬0","1∧0","1∧¬0","¬(1∨0)","1∧¬1","1∨1","¬1","¬(0∧0)"]},{"template":"array3x3","result":"101111110","t":["0∨¬0","¬(1∧1)","1∧1","0∨¬0","¬(¬1)","¬(1∧0)","¬1∨¬0","0∨1","¬(1∨0)"]}],"states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"red","color":"pink"}]},"wrong":{"style":{"background-color":"black","color":"red"}},"font":0.6]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:red;'><b>ROUGE</b></span>, les opérations dont le résultat vaut <b>1</b>.","label":"1"}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>003</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier la valeur 1 à partir d'opérations logiques (∧∨¬⊕).</dct:title>
+        <dct:description><![CDATA["values":[{"template":"array3x3","result":"110100011","t":["1⊕0","¬(0∧1)","1⊕1","¬1∨1","¬(1⊕0)","¬1⊕¬1","¬1∨0","¬0","¬(0⊕0)"]},{"template":"array3x3","result":"101000110","t":["0⊕¬0","¬(1∨1)","1∨0","0⊕0","¬(¬0)","¬(1⊕0)","¬1⊕¬0","¬0∧1","¬(0∨1)"]}],"states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"red","color":"pink"}]},"wrong":{"style":{"background-color":"black","color":"red"}},"font":0.6]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:red;'><b>ROUGE</b></span>, les opérations dont le résultat vaut <b>1</b>.","label":"1"}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>004</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier la valeur 1 à partir d'opérations logiques (∧∨¬⊕⇒).</dct:title>
+        <dct:description><![CDATA["values":[{"template":"array3x3","result":"110011101","t":["1⇒1","0⇒1","1⇒0","¬0⇒0","0⇒0","¬(1⇒0)","¬1⇒0","¬(0⇒0)","1⇒¬0"]},{"template":"array3x3","result":"110010010","t":["(1∧0)⇒0","¬1⇒(0∨1)","¬(0⇒1)","0⊕(1⇒0)","1⊕(1⇒0)","1⊕(1⇒1)","(0⊕1)⇒0","(0∧1)⇒1","¬(0⇒0)"]}],"states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"red","color":"pink"}]},"wrong":{"style":{"background-color":"black","color":"red"}},"font":0.4]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:red;'><b>ROUGE</b></span>, les opérations dont le résultat vaut <b>1</b>.","label":"1"}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>005</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier la valeur 1 à partir d'opérations logiques (∧∨¬⊕⇒⇔).</dct:title>
+        <dct:description><![CDATA["values":[{"template":"array3x3","result":"110101010","t":["1⇔1","0⇒1","1⇔¬1","(0∨1)⇔1","(0⇒1)⇔0","¬(1⇔0)","(1⇒0)⇔1","1⇔(0⊕1)","0⊕(1⇔0)"]},{"template":"array3x3","result":"101101011","t":["(1⇔0)⊕1","¬0⇒(0⇔1)","¬(0⇔1)","(0⇔1)⊕1","0⇔(1⊕0)","1⇔(1⇒1)","(1⇔1)⇒0","(0⇔1)⇒1","¬(1⇔0)"]}],"states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"red","color":"pink"}]},"wrong":{"style":{"background-color":"black","color":"red"}},"font":0.4]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:red;'><b>ROUGE</b></span>, les opérations dont le résultat vaut <b>1</b>.","label":"1"}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>101</dct:identifier>
+        <dct:title xml:lang="fr-FR">Vérifier que ¬(A∧B) ⇔ ¬A∨¬B.</dct:title>
+        <dct:description><![CDATA["template":"desktop/logic2x5.svg","result":"11001010111000011110","t":["A","B","¬A","¬B","¬A∨¬B","A∧B","¬(A∧B)"],"states":{ "nb":2, "class":["c0","c1"]},"font":0.6,"class":"r05 r07"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Complétez la table de vérité et vérifiez que ¬(A∧B)est équivalent à ¬A∨¬B."}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>102</dct:identifier>
+        <dct:title xml:lang="fr-FR">Vérifier que ¬(A∨B) ⇔ ¬A∧¬B.</dct:title>
+        <dct:description><![CDATA["template":"desktop/logic2x5.svg","result":"01111000110010101000","t":["A","B","A∨B","¬(A∨B)","¬A","¬B","¬A∧¬B"],"states":{ "nb":2, "class":["c0","c1"]},"font":0.6,"class":"r04 r07"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Complétez la table de vérité et vérifiez que ¬(A∨B)est équivalent à ¬A∧¬B."}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>121</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier le ou exclusif par (A∨B)∧¬(A∧B).</dct:title>
+        <dct:description><![CDATA["template":"desktop/logic2x5.svg","result":"01110001111001100000","t":["A","B","A∨B","A∧B","¬(A∧B)","f(A,B)"],"states":{ "nb":2, "class":["c0","c1"]},"font":0.6,"class":"h07 r06"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Définissons un nouvel opérateur nommé f et défini par f(A,B)=(A∨B)∧¬(A∧B). Complétez la table de vérité. L'opérateur f est une définition possible du OU Exclusif (XOR ou ⊕). Il vaut 1 lorsque A ou B est égal à 1 mais pas les deux. ","font":0.7}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>122</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier le ou exclusif par (A∧¬B)∨(¬A∧B).</dct:title>
+        <dct:description><![CDATA["template":"desktop/logic2x5.svg","result":"10100010110001000110","t":["A","B","¬B","A∧¬B","¬A","¬A∧B","g(A,B)"],"states":{ "nb":2, "class":["c0","c1"]},"font":0.6,"class":"r07"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Définissons un nouvel opérateur nommé g et défini par g(A,B)=(A∧¬B)∨(¬A∧B). Complétez la table de vérité. L'opérateur g est une définition possible de l'opérateur OU Exclusif (XOR).","font":0.7}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>123</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier le ou exclusif par (A∨B)∧(¬A∨¬B).</dct:title>
+        <dct:description><![CDATA["template":"desktop/logic2x5.svg","result":"01111010110011100110","t":["A","B","A∨B","¬B","¬A","¬A∨¬B","h(A,B)"],"states":{ "nb":2, "class":["c0","c1"]},"font":0.6,"class":"r07"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Définissons un nouvel opérateur nommé h et défini par h(A,B)=(A∨B)∧(¬A∨¬B). Complétez la table de vérité. L'opérateur h est une définition possible de l'opérateur OU Exclusif (XOR).","font":0.7}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>124</dct:identifier>
+        <dct:title xml:lang="fr-FR">Vérifier que A⊕0⇔A, A⊕1⇔¬A, A⊕A⇔0, A⊕¬A⇔1.</dct:title>
+        <dct:description><![CDATA["template":"desktop/logic2x5.svg","result":"00111100110000001111","t":["A","B","A⊕0","A⊕1","¬A","A⊕A","A⊕¬A"],"states":{ "nb":2, "class":["c0","c1"]},"font":0.6]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Etudiez les différentes propriétés de l'opérateur XOR (ou logique). Pour rappel, A⊕B=1 lorsque A=1 ou B=1 mais pas les 2 en même temps. A noter également que 1 est tout le temps vrai et 0 est tout le temps faux.","font":0.7}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>125</dct:identifier>
+        <dct:title xml:lang="fr-FR">Vérifier que A⊕B ⇔ (A∨B)⊕(A∧B).</dct:title>
+        <dct:description><![CDATA["template":"desktop/logic2x5.svg","result":"0110011100010110","t":["A","B","A⊕B","A∨B","A∧B","o(A,B)"],"states":{ "nb":2, "class":["c0","c1"]},"font":0.6,"class":"h07 r06 r03"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Définissons l'opérateur o(A,B)=(A∨B)⊕(A∧B). Montrez que o(A,B) est équivalent à A⊕B.","font":1}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>126</dct:identifier>
+        <dct:title xml:lang="fr-FR">Vérifier que ¬(A⊕B) ⇔ ¬A⊕B=A⊕¬B.</dct:title>
+        <dct:description><![CDATA["template":"desktop/logic2x5.svg","result":"0110011100010110","t":["A","B","¬A","¬B","¬(A⊕B)","¬A⊕B","A⊕¬B"],"states":{ "nb":2, "class":["c0","c1"]},"font":0.6,"class":"r05"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Complétez la table de vérité.","font":1}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>141</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier l'implication par ¬A∨B et ¬(A∧¬B).</dct:title>
+        <dct:description><![CDATA["template":"desktop/logic2x5.svg","result":"11001010110100101101","t":["A","B","¬A","¬B","¬A∨B","A∧¬B","¬(A∧¬B)"],"states":{ "nb":2, "class":["c0","c1"]},"font":0.6,"class":"r07 r05"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"On appelle implication ⇒ l'opérateur tel que A⇒B est vrai sauf lorsque A est vrai et B est faux. Complétez la table de vérité et prouvez que A⇒B, ¬A∨B et ¬(A∧¬B) sont équivalents.","font":0.7}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>142</dct:identifier>
+        <dct:title xml:lang="fr-FR">Vérifier que A⇒B ⇔ ¬A⇒¬B.</dct:title>
+        <dct:description><![CDATA["template":"desktop/logic2x5.svg","result":"1101110010101101","t":["A","B","A⇒B","¬A","¬B","¬A⇒¬B"],"states":{ "nb":2, "class":["c0","c1"]},"font":0.6,"class":"h07 r03 r06"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Complétez la table de vérité et prouvez que A⇒B est équivalent à ¬A⇒¬B.","font":1}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>161</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier l'équivalence par (A⇒B)∧(B⇒A).</dct:title>
+        <dct:description><![CDATA["template":"desktop/logic2x5.svg","result":"11001010110100101101","t":["A","B","A⇒B","B⇒A","e(A,B)"],"states":{ "nb":2, "class":["c0","c1"]},"font":0.6,"class":"h07 h06"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Définissons un nouvel opérateur nommé e et défini par e(A,B)=(A⇒B)∧(B⇒A). Complétez la table de vérité. L'opérateur e est une définition possible de l'opérateur d'équivalence ⇔. Littéralement, si A implique B et B implique A, alors A et B sont équivalents.","font":0.6}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>162</dct:identifier>
+        <dct:title xml:lang="fr-FR">Vérifier que A⇔B ⇔ (A⇒B)∧(¬A⇒¬B).</dct:title>
+        <dct:description><![CDATA["template":"desktop/logic2x5.svg","result":"11001010110110111001","t":["A","B","¬A","¬B","A⇒B","¬A⇒¬B","f(A,B)"],"states":{ "nb":2, "class":["c0","c1"]},"font":0.6,"class":"r07"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Définissons un nouvel opérateur nommé f et défini par f(A,B)=(A⇒B)∧(¬A⇒¬B). Complétez la table de vérité et montrez que f(A,B) est équivalent à A⇔B","font":0.6}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+</rdf:RDF>

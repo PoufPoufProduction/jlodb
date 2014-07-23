@@ -15,6 +15,7 @@
         erase       : '.',                      // The erase caracter
         font        : 1,                        // Questions font factor
         screenc     : false,                    // Clear the screen between question
+        strict      : false,                    // Strictly test the values
         debug       : false                     // Debug mode
     };
 
@@ -270,12 +271,17 @@
 
                 // Check the response
                 if ($.isArray(settings.questions[settings.it].response)) {
-                    for (var i in settings.questions[settings.it].response) {
-                            if (settings.questions[settings.it].response[i]==settings.response.value) { vRet = true; }
+                  for (var i in settings.questions[settings.it].response) {
+                    if ((!settings.strict&&settings.questions[settings.it].response[i]==settings.response.value) ||
+                         (settings.strict&&settings.questions[settings.it].response[i].toString()==settings.response.value.toString()))
+                    {
+                      vRet = true;
                     }
+                  }
                 }
                 else {
-                    vRet = (settings.questions[settings.it].response == settings.response.value);
+                    vRet=((!settings.strict && settings.questions[settings.it].response == settings.response.value) ||
+                          ( settings.strict && settings.questions[settings.it].response.toString()==settings.response.value.toString()));
                 }
 
                 if (vRet || force) {

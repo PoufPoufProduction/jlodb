@@ -12,6 +12,7 @@
         toggle      : ".a",                                     // Active class
         result      : "",
         init        : "",
+        font        : 1,                                        // Template font
         debug       : false                                     // Debug mode
     };
 
@@ -138,6 +139,7 @@
         build: function($this) {
             var settings = helpers.settings($this);
             $this.find("#submit").removeClass("good").removeClass("wrong");
+            $this.removeClass("end");
 
             if (!settings.number)   { settings.number = (settings.values)?settings.values.length:1; }
 
@@ -159,6 +161,7 @@
                 } else {
                     $this.find("#exercice #content").html(settings.exercice.value);
                     if (settings.exercice.label) { $this.find("#exercice #label").html(settings.exercice.label).show(); }
+                    if (settings.exercice.font) { $this.find("#exercice #content").css("font-size",settings.exercice.font+"em"); }
                 }
                 $this.find("#exercice").show();
             } else
@@ -194,7 +197,9 @@
                         $this.find(".t").each(function(index) {
                             var value = settings.current.t[index];
                             if (vRegexp) { value = value.replace(vRegexp, settings.regexp.to); }
-                            if (settings.current.t && settings.current.t.length>index) { $(this).html(value); }});
+                            if (settings.current.t && settings.current.t.length>index) {
+                                $(this).html("<div style='font-size:"+settings.font+"em;margin-top:"+
+                                             (1-settings.font)/(2*settings.font)+"em;'>"+value+"</div>"); }});
                         helpers.fill($this);
                     });
                 }
@@ -263,6 +268,7 @@
                     $this.find("#submit").addClass(value);
                     settings.wrongs+=wrongs;
                     settings.it++;
+                    $this.addClass("end");
 
                     if (settings.it>=settings.number) {
 
