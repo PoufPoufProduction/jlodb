@@ -162,6 +162,11 @@
                 nbpieces = ids.length;
             }
             else { nbpieces = $("#"+settings.pieces+">g",settings.svg.root()).length; }
+            if (!ids.length && settings.values) {
+                var values = ($.isArray(settings.values))?settings.values[settings.puzzleid]:settings.values;
+                for (var i in values) { ids.push(i); }
+                nbpieces = ids.length;
+            }
             for (var i=0; i<nbpieces; i++) { inituse.push(false); }
 
             // PARSE ALL THE PIECES
