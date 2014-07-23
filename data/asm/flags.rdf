@@ -1,0 +1,245 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dct="http://purl.org/dc/terms/">
+
+    <!-- FLAG D : décimal -->
+
+    <rdf:Description>
+        <dct:identifier>001</dct:identifier>
+        <dct:title xml:lang="fr-FR">Mettre à 1 le flag de décimal D.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["dex","dey","brk","sed","cld"],"args":[{"value":"7F","type":"v"},{"value":"0F","type":"v"}],"nblines":1,"valid":{"d":true}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Le processeur 6502 possède un registre spécial composé d'un ensemble de drapeaux (ou flags en anglais). Chacun de ces drapeaux fournissent des informations sur l'état du processeur et sur les différentes instructions exécutées par ce dernier.","","Les 2 états possibles du flag 'D' (pour décimal) sont :",".0 : le processeur fonctionne en mode hexadécimal",".1 : le processeur fonctionne en mode décimal","","Trouvez le bon opérateur pour passer en mode décimal. Observez ce qu'il se passe au niveau du flag 'D'." ]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>002</dct:identifier>
+        <dct:title xml:lang="fr-FR">Utiliser l'opérateur ADC avec une valeur numérique en mode décimal et hexadécimal.</dct:title>
+        <dct:description><![CDATA["ops":["sed","lda","adc","tax","tay","iny","cld"],"args":[{"value":"89","type":"v"},{"value":"06","type":"v"}],"nblines":9,"valid":{"a":"8F","x":"95","y":"8A"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Pour rappel, quelque soit la valeur du drapeau 'D', l'opérateur INY fonctionne toujours en mode hexadécimal. Chargez les valeurs suivantes:",".0x95 dans le registre X",".0x8A dans le registre Y",".0x8F dans le registre A"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <!-- FLAG Z : zéro -->
+
+    <rdf:Description>
+        <dct:identifier>051</dct:identifier>
+        <dct:title xml:lang="fr-FR">Mettre à 1 le flag zéro 'Z'.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["lda"],"args":[{"value":"00","type":"v"},{"value":"01","type":"v"},{"value":"F0","type":"v"},{"value":"FF","type":"v"}],"nblines":1,"valid":{"z":true}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Le drapeau 'Z' (pour zéro) est mis à 1 lorsque la dernière opération exéctuée a renvoyé 0 comme résultat. Ce peut être après une opération arithmétique, logique ou bien une simple affectation avec LDA par exemple.","","Choisissez la bonne valeur pour qu'après exécution le drapeau 'Z' soit à 1."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>052</dct:identifier>
+        <dct:title xml:lang="fr-FR">Mettre à 1 le flag zéro 'Z' avec l'opérateur ADC.</dct:title>
+        <dct:description><![CDATA["ops":["adc","lda"],"args":[{"value":"71","type":"v"},{"value":"82","type":"v"},{"value":"8F","type":"v"},{"value":"FF","type":"v"}],"nblines":2,"valid":{"z":true}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Utiliser les opérateurs LDA et ADC afin de réaliser une addition dont le résultat soit 0. Ainsi le drapeau 'Z' sera mis à 1 par le processeur."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>053</dct:identifier>
+        <dct:title xml:lang="fr-FR">Mettre à 1 le flag zéro 'Z' avec l'opérateur INX.</dct:title>
+        <dct:description><![CDATA["ops":["tax","lda","inx"],"args":[{"value":"71","type":"v"},{"value":"82","type":"v"},{"value":"8F","type":"v"},{"value":"FF","type":"v"}],"nblines":3,"valid":{"z":true}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Utiliser l'opérateur INX afin positionner le drapeau 'Z' à 1."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>071</dct:identifier>
+        <dct:title xml:lang="fr-FR">Mettre à 1 les flags zéro 'Z' et décimal 'D' grâce aux opérateurs SED et ADC.</dct:title>
+        <dct:description><![CDATA["ops":["sed","adc","lda"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"82","type":"v"},{"value":"99","type":"v"}],"nblines":3,"valid":{"z":true,"d":true}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Grâce aux valeurs et aux opérations fournies par l'énoncé, mettez les drapeaux 'D' (mode décimal) et 'Z' (zéro) à 1."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>072</dct:identifier>
+        <dct:title xml:lang="fr-FR">Mettre à 1 les flags zéro 'Z' et décimal 'D' grâce aux opérateurs SED et SBC.</dct:title>
+        <dct:description><![CDATA["ops":["sed","sbc","lda"],"header":[{"label":"init","value":"","code":"38","rts":false}],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"82","type":"v"},{"value":"99","type":"v"}],"nblines":3,"valid":{"z":true,"d":true}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Grâce aux valeurs et aux opérations fournies par l'énoncé, mettez les drapeaux 'D' (mode décimal) et 'Z' (zéro) à 1."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <!-- flag N : negative -->
+
+    <rdf:Description>
+        <dct:identifier>101</dct:identifier>
+        <dct:title xml:lang="fr-FR">Mettre à 1 le flag zéro N avec l'opérateur SBC.</dct:title>
+        <dct:description><![CDATA["class":"large","header":[{"label":"init","value":"","code":"38A955A255A055","rts":false}],"ops":["inx","dex","lda","sbc","adc","txa","tax","tay","tya"],"args":[{"value":"00","type":"v"},{"value":"01","type":"v"},{"value":"40","type":"v"}],"nblines":2,"valid":{"n":true}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Tout nombre compris entre 0x80 et 0xFF (c'est à dire, dont le premier bit est à 1) peut-être vu comme un nombre positif compris entre 128 et 255 OU comme un nombre négatif compris entre -127 et -1. Tout dépend du contexte dans lequel le nombre est utilisé.","","Lorsque le résultat d'une opération génère une valeur négative (ou pouvant être vu comme telle), le drapeau 'N' (pour négatif) est mis à 1.","","Avec les opérations disponibles, mettez le drapeau 'N' à 1. Attention, les 3 registres sont initialisés à des valeurs peu arrangeantes."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>102</dct:identifier>
+        <dct:title xml:lang="fr-FR">Mettre à 1 le flag zéro N avec l'opérateur ADC.</dct:title>
+        <dct:description><![CDATA["class":"large","header":[{"label":"init","value":"","code":"A911A211A011","rts":false}],"ops":["inx","dex","lda","adc","txa","tax","tay","tya"],"args":[{"value":"00","type":"v"},{"value":"01","type":"v"},{"value":"40","type":"v"}],"nblines":2,"valid":{"n":true}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Il est à noter que même un nombre positif (obtenu par addition par exemple), s'il est supérieur à 0x80, c'est à dire que si son premier bit est à 1, le drapeau 'N' est quand même mis à 1. La valeur peut être vu, malgré tout, comme négative (même si elle ne l'est pas vraiment).","","Pour faire simple, le drapeau 'N' teste le bit de poids fort du dernier résultat."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>121</dct:identifier>
+        <dct:title xml:lang="fr-FR">Mettre à 1 les flags négatifs 'N' et décimal 'D' grâce aux opérateurs SED et ADC.</dct:title>
+        <dct:description><![CDATA["ops":["sed","adc","lda"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"29","type":"v"},{"value":"41","type":"v"}],"nblines":3,"valid":{"n":true,"d":true}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Grâce aux valeurs et aux opérations fournies par l'énoncé, mettez les drapeaux 'D' (mode décimal) et 'N' (négatif) à 1. Que le processeur soit en mode décimal ou non, le drapeau 'N' renvoie toujours 1 si le premier bit du résultat est à 1, c'est à dire si le nombre est supérieur ou égal à 0x80."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>122</dct:identifier>
+        <dct:title xml:lang="fr-FR">Mettre à 1 les flags négatifs 'N' et décimal 'D' grâce aux opérateurs SED et SBC.</dct:title>
+        <dct:description><![CDATA["ops":["sed","sbc","lda"],"header":[{"label":"init","value":"","code":"38A979","rts":false}],"args":[{"value":"00","type":"v"},{"value":"01","type":"v"},{"value":"02","type":"v"}],"nblines":3,"valid":{"n":true,"d":true}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Grâce aux valeurs et aux opérations fournies par l'énoncé, mettez les drapeaux 'D' (mode décimal) et 'N' (négatif) à 1.","","Attention, le code précompilé initialise le registre A avec une valeur inconnue et évidemment peu pratique pour cet exercice."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <!-- flag C : carry -->
+
+    <rdf:Description>
+        <dct:identifier>151</dct:identifier>
+        <dct:title xml:lang="fr-FR">Mettre à 1 le flag de retenu 'C' avec l'opérateur ADC.</dct:title>
+        <dct:description><![CDATA["class":"large","header":[{"label":"init","value":"","code":"A955A255A055","rts":false}],"ops":["lda","adc"],"args":[{"value":"0F","type":"v"},{"value":"FF","type":"v"}],"nblines":2,"valid":{"c":true}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Le drapeau de retenu 'C' est mis à 1 lorsque le résultat d'une opération sort des limites de l'octet.","","Utilisez l'opérateur ADC pour mettre le drapeau de retenu 'C' à 1."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>161</dct:identifier>
+        <dct:title xml:lang="fr-FR">Mettre à 1 le flag de retenu 'C' avec l'opérateur SEC.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["sec"],"nblines":1,"valid":{"c":true}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["La plupart des drapeaux ne peuvent pas être manipulés directement. Ils sont le résultat de calculs de la part du processeur. Cela étant, il existe des exceptions.","","Le drapeau 'D' du mode décimal peut être modifié grâce aux instructions SED (SEt D) et CLD (CLear D).","De même, le drapeau de retenu 'C' peut être modifié grâce aux instructions SEC (SEt C) et CLC (CLear C).","","Mettez le drapeau de retenu 'C' à 1."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>162</dct:identifier>
+        <dct:title xml:lang="fr-FR">Mettre à 0 le flag de retenu 'C' avec l'opérateur CLC.</dct:title>
+        <dct:description><![CDATA["header":[{"label":"init","value":"","code":"38","rts":false}],"ops":["clc"],"nblines":1,"valid":{"c":false}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Le drapeau de retenu 'C' peut être modifié grâce aux instructions SEC (SEt C) et CLC (CLear C).","","Mettez le drapeau de retenu 'C' à 0 après qu'il ait été modifié par le code précompilé 'init'."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>171</dct:identifier>
+        <dct:title xml:lang="fr-FR">Mettre à 1 les flags de retenu 'C' et de zéro 'Z' avec l'opérateur ADC.</dct:title>
+        <dct:description><![CDATA["class":"large","header":[{"label":"init","value":"","code":"A955A255A055","rts":false}],"ops":["lda","adc"],"args":[{"value":"00","type":"v"},{"value":"01","type":"v"},{"value":"0F","type":"v"},{"value":"F1","type":"v"}],"nblines":2,"valid":{"c":true,"z":true}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Grâce aux valeurs et aux opérations fournies par l'énoncé, mettez les drapeaux 'Z' (zéro) et 'C' (retenu) à 1."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>172</dct:identifier>
+        <dct:title xml:lang="fr-FR">Mettre à 1 les flags de retenu 'C' et de zéro 'N' avec l'opérateur ADC.</dct:title>
+        <dct:description><![CDATA["class":"large","header":[{"label":"init","value":"","code":"A955A255A055","rts":false}],"ops":["lda","adc"],"args":[{"value":"00","type":"v"},{"value":"01","type":"v"},{"value":"0F","type":"v"},{"value":"F1","type":"v"}],"nblines":2,"valid":{"c":true,"n":true}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Grâce aux valeurs et aux opérations fournies par l'énoncé, mettez les drapeaux 'N' (négatif) et 'C' (retenu) à 1."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>173</dct:identifier>
+        <dct:title xml:lang="fr-FR">Mettre à 1 les flags de retenu 'C' et de mode décimal 'D' avec l'opérateur ADC.</dct:title>
+        <dct:description><![CDATA["class":"large","header":[{"label":"init","value":"","code":"A955A255A055","rts":false}],"ops":["sed","lda","adc"],"args":[{"value":"00","type":"v"},{"value":"01","type":"v"},{"value":"10","type":"v"},{"value":"98","type":"v"}],"nblines":3,"valid":{"c":true,"d":true}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Grâce aux valeurs et aux opérations fournies par l'énoncé, mettez les drapeaux 'D' (mode décimal) et 'C' (retenu) à 1."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>174</dct:identifier>
+        <dct:title xml:lang="fr-FR">Mettre à 1 les flags de retenu 'C', de mode décimal 'D' et de zéro 'Z' avec l'opérateur ADC.</dct:title>
+        <dct:description><![CDATA["class":"large","header":[{"label":"init","value":"","code":"A955A255A055","rts":false}],"ops":["sed","lda","adc"],"args":[{"value":"00","type":"v"},{"value":"02","type":"v"},{"value":"10","type":"v"},{"value":"98","type":"v"}],"nblines":3,"valid":{"c":true,"d":true,"z":true}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Grâce aux valeurs et aux opérations fournies par l'énoncé, mettez les drapeaux 'D' (mode décimal), 'Z' (zéro) et 'C' (retenu) à 1."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>175</dct:identifier>
+        <dct:title xml:lang="fr-FR">Mettre à 1 les flags de retenu 'C', de mode décimal 'D' et de négatif 'N' avec l'opérateur ADC.</dct:title>
+        <dct:description><![CDATA["class":"large","header":[{"label":"init","value":"","code":"A955A255A055","rts":false}],"ops":["sed","lda","adc"],"args":[{"value":"00","type":"v"},{"value":"02","type":"v"},{"value":"10","type":"v"},{"value":"98","type":"v"}],"nblines":3,"valid":{"c":true,"d":true,"n":true}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Grâce aux valeurs et aux opérations fournies par l'énoncé, mettez les drapeaux 'D' (mode décimal), 'N' (négatif) et 'C' (retenu) à 1."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <!-- flag C : ADC & SBC -->
+
+
+</rdf:RDF>
+

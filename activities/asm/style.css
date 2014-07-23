@@ -52,7 +52,8 @@
 .asm #detail #source                { height:25em; background-color:#112211; }
 .asm #detail #source>div            { clear:both; }
 .asm #detail #source .a             { float:left; cursor:pointer; }
-.asm #detail #source #header        { height:2em; }
+.asm #detail #source #header        { font-size:2em; height:1em;}
+.asm #detail #source #header .icon  { float:right; cursor:pointer; margin:.1em; font-size:.8em; }
 .asm #detail #source #ops           { background-color:#90cce0; }
 .asm #detail #source #args          { background-color:#828282; }
 .asm #detail #source .a             { padding:0;  }
@@ -102,11 +103,17 @@
 .asm #detail #flags                 { margin:.2em .5em;}
 .asm #detail #flags>div             { width:1em; height:2em; background-color:yellow; border-radius:.25em; float:left;
                                       margin-right:.1em; }
-.asm #detail #check                 { position:absolute; top:0; height:6.5em; width:10em; display:none; }
-.asm #detail #check>div             { position:absolute; width:1em; height:1em; top:.24em; font-size:2em; display:none; }
-.asm #detail #check .a              { left:.26em;  }
-.asm #detail #check .x              { left:1.34em;  }
-.asm #detail #check .y              { left:2.42em;  }
+.asm #detail #check                 { position:absolute; top:0; height:6.5em; width:10em; display:none;}
+.asm #detail #check>div             { position:absolute; width:1em; height:1em; font-size:2em; display:none; }
+.asm #detail #check .a              { left:.26em;  top:.24em; }
+.asm #detail #check .x              { left:1.34em; top:.24em;  }
+.asm #detail #check .y              { left:2.42em; top:.24em;  }
+.asm #detail #check .n              { left:0em; top:2em; }
+.asm #detail #check .v              { left:0.5em; top:2em; }
+.asm #detail #check .d              { left:2em; top:2em; }
+.asm #detail #check .z              { left:3em; top:2em; }
+.asm #detail #check .c              { left:3.5em; top:2em; }
+
 /*---------------------------------------------------------------------------------------------------------------------------*/
 .asm #effects                       { width:25%; height:25%; position:absolute; top:5%; left:50%; display:none; }
 .asm #effects>div                   { font-size:3em; width:1em; height:1em; display:none; }
@@ -115,6 +122,11 @@
 .asm .mask                          { position:absolute; top:0; background-color:rgba(0,0,0,0); }
 .asm #m1.mask                       { width:24%; height:78%; position:absolute; left:0;  }
 .asm #m2.mask                       { width:47%; height:100%; position:absolute; left:24%;  }
+
+.asm #doc                           { position:absolute; top:0; background-color:rgba(0,0,0,0); display:none; }
+.asm #doc>div                       { background-color:rgba(255,255,255,0.9); font-size:.4em; width:38em; height:28em; margin:1em;  }
+.asm #doc #top                      { background-color:gray; font-size:1.5em; color:white; text-align:center;}
+.asm #doc #top .icon                { float:left; cursor:pointer;}
 
 
 .asm #binary                        { width:100%; height:100%; position:absolute; top:0; left:0; background-color:rgba(0,0,0,0.8);

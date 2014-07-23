@@ -358,7 +358,8 @@
                                                   }
                                                   if (_addr== helpers.c.offset.stdout) { helpers.stdout.ascii(_data.$this,_val,false);}},
             key:  function(_data, _val)         { this.setb(_data,0, helpers.c.offset.key, _val); },
-            init: function(_data)               { if (!_data.mem) { _data.mem = new Array(helpers.c.offset.end);} },
+            init: function(_data)               { if (!_data.mem) { _data.mem = new Array(helpers.c.offset.end);
+                                                  for (var i = 0; i < helpers.c.offset.end; i++) { _data.mem[i]=0; } } },
             clear:function(_data)               { for (var i = 0; i < helpers.c.offset.code; i++) { this.set(_data,i,i==0xfc?0xff:0x00);} }
         },
         // COMPILER
@@ -513,11 +514,11 @@
             run: function(_data) {
                 var donotstop;
                 var debug = (_data.speed==0);
-                var inside= (_data.reg.PC>=_data.range[0] && _data.reg.PC<_data.range[1]);
                 var speed = 3-_data.speed;
                 speed = 200*speed*speed;
 
                 do {
+                    var inside= (_data.reg.PC>=_data.range[0] && _data.reg.PC<_data.range[1]);
                     donotstop = false;
                     if (_data.reg.PC<_data.pc) {
                         // RANDOM
@@ -609,14 +610,14 @@
                         var tmp = 0xf + (_data.reg.A & 0xf) - (_value & 0xf) + this.iscarry(_data);
                         if (tmp<0x10) { w=0; tmp-=6; } else { w = 0x10; tmp-=0x10; }
                         w += 0xf0 + (_data.reg.A & 0xf0) - (_value & 0xf0);
-                        if (w<0x100) { this.clc(_data); if (this.isover() && w<0x80) { this.clv(_data); } w-=0x60; }
-                        else         { this.sec(_data); if (this.isover() && w>=0x180) { this.clv(_data); } }
+                        if (w<0x100) { this.clc(_data); if (this.isover(_data) && w<0x80) { this.clv(_data); } w-=0x60; }
+                        else         { this.sec(_data); if (this.isover(_data) && w>=0x180) { this.clv(_data); } }
                         w+=tmp;
                     }
                     else {
                         w = 0xff + _data.reg.A - _value + this.iscarry(_data);
-                        if (w<0x100) { this.clc(_data); if (this.isover() && w<0x80) { this.clv(_data); } }
-                        else         { this.sec(_data); if (this.isover() && w>=0x180) { this.clv(_data); } }
+                        if (w<0x100) { this.clc(_data); if (this.isover(_data) && w<0x80) { this.clv(_data); } }
+                        else         { this.sec(_data); if (this.isover(_data) && w>=0x180) { this.clv(_data); } }
                     }
                     _data.reg.A = w & 0xff;
                     this.a(_data);
@@ -629,12 +630,12 @@
                         if (tmp >= 10) { tmp = 0x10 | ((tmp + 6) & 0xf); }
                         tmp += (_data.reg.A & 0xf0) + (_value & 0xf0);
                         if (tmp >= 160) { this.sec(_data); if (this.isover(_data) && tmp >= 0x180) { this.clv(_data); } tmp += 0x60; }
-                        else            { this.clc(_data); if (this.isover() && tmp<0x80) { this.clv(_data); } }
+                        else            { this.clc(_data); if (this.isover(_data) && tmp<0x80) { this.clv(_data); } }
                     }
                     else {
                         tmp = _data.reg.A + _value + this.iscarry(_data);
                         if (tmp >= 0x100) { this.sec(_data); if (this.isover(_data) && tmp >= 0x180) { this.clv(_data); } }
-                        else { this.clc(_data); if (this.isover() && tmp<0x80) { this.clv(_data); } }
+                        else { this.clc(_data); if (this.isover(_data) && tmp<0x80) { this.clv(_data); } }
                     }
                     _data.reg.A = tmp & 0xff;
                     this.a(_data);
@@ -668,29 +669,29 @@
                                    this.f.a(_data); },
             i24: function(_data) { this.f.bit(_data,helpers.memory.getb(_data, this.getb(_data))); },
             i25: function(_data) { _data.reg.A&=helpers.memory.getb(_data, this.getb(_data)); this.f.a(_data); },
-            i26: function(_data) { var sf=this.f.iscarry(), zp=this.getb(_data); var val=helpers.memory.getb(_data, zp);
+            i26: function(_data) { var sf=this.f.iscarry(_data), zp=this.getb(_data); var val=helpers.memory.getb(_data, zp);
                                    this.f.carry7(_data, val); val = val<<1; val|=sf; helpers.memory.setb(_data, zp, val);
                                    this.nv(_data, val); },
             i28: function(_data) { _data.reg.P = this.f.pl(_data) | 0x30; },
             i29: function(_data) { _data.reg.A &= this.getb(_data); this.f.a(_data); },
-            i2a: function(_data) { var sf = this.f.iscarry(); this.f.carry7(_data, _data.reg.A);
+            i2a: function(_data) { var sf = this.f.iscarry(_data); this.f.carry7(_data, _data.reg.A);
                                    _data.reg.A = (_data.reg.A<<1)&0xff; _data.reg.A|=sf; this.f.a(_data); },
             i2c: function(_data) { this.f.bit(helpers.memory.getb(this.getw(_data))); },
             i2d: function(_data) { _data.reg.A &= helpers.memory.getb(this.getw(_data)); this.f.a(_data); },
-            i2e: function(_data) { var sf=this.f.iscarry(), addr=this.getw(_data); var val=helpers.memory.getb(_data, addr);
+            i2e: function(_data) { var sf=this.f.iscarry(_data), addr=this.getw(_data); var val=helpers.memory.getb(_data, addr);
                                    this.f.carry7(_data, val); val = val<<1; val|=sf; helpers.memory.setb(_data, addr, val);
                                    this.nv(_data, val); },
             i30: function(_data) { var offset = this.getb(_data); if (this.f.isneg(_data)) { this.f.jp(_data,offset); } },
             i31: function(_data) { _data.reg.A &= helpers.memory.getb(_data, helpers.memory.getw(_data,this.getp(_data))+_data.reg.Y);
                                    this.f.a(_data); },
             i35: function(_data) { _data.reg.A &= helpers.memory.getb((this.getb(_data)+_data.reg.X)&0xff); this.f.a(_data); },
-            i36: function(_data) { var sf=this.f.iscarry(), zp=(this.getb(_data)+_data.reg.X)&0xff; var val=helpers.memory.getb(_data, zp);
+            i36: function(_data) { var sf=this.f.iscarry(_data), zp=(this.getb(_data)+_data.reg.X)&0xff; var val=helpers.memory.getb(_data, zp);
                                    this.f.carry7(_data, val); val = val<<1; val|=sf; helpers.memory.setb(_data, zp, val);
                                    this.nv(_data, val); },
             i38: function(_data) { this.f.sec(_data); },
             i39: function(_data) { _data.reg.A &= helpers.memory.getb(this.getw(_data)+_data.reg.Y); this.f.a(_data); },
             i3d: function(_data) { _data.reg.A &= helpers.memory.getb(this.getw(_data)+_data.reg.X); this.f.a(_data); },
-            i3e: function(_data) { var sf=this.f.iscarry(), addr=this.getw(_data)+_data.reg.X; var val=helpers.memory.getb(_data, addr);
+            i3e: function(_data) { var sf=this.f.iscarry(_data),addr=this.getw(_data)+_data.reg.X;var val=helpers.memory.getb(_data, addr);
                                    this.f.carry7(_data, val); val = val<<1; val|=sf; helpers.memory.setb(_data, addr, val);
                                    this.nv(_data, val); },
             i40: function(_data) { _data.reg.P = this.f.pl(_data) | 0x30; _data.reg.PC = this.f.pl(_data) | (this.f.pl(_data) << 8); },
@@ -721,29 +722,29 @@
             i61: function(_data) { this.f.adc(_data, helpers.memory.getb(_data,
                                                         helpers.memory.getw(_data, (this.getb(_data)+_data.reg.X)&0xff))); },
             i65: function(_data) { this.f.adc(_data, helpers.memory.getb(_data,this.getb(_data))); },
-            i66: function(_data) { var sf=this.f.iscarry(), zp=this.getb(_data); var val=helpers.memory.getb(_data, zp);
+            i66: function(_data) { var sf=this.f.iscarry(_data), zp=this.getb(_data); var val=helpers.memory.getb(_data, zp);
                                    this.f.carry0(_data, val); val = val>>1; if (sf) {val|=0x80;} helpers.memory.setb(_data, zp, val);
                                    this.nv(_data, val); },
             i68: function(_data) { _data.reg.A = this.f.pl(_data); this.f.a(_data); },
             i69: function(_data) { this.f.adc(_data, this.getb(_data)); },
-            i6a: function(_data) { var sf=this.f.iscarry(); this.f.carry0(_data, _data.reg.A);
+            i6a: function(_data) { var sf=this.f.iscarry(_data); this.f.carry0(_data, _data.reg.A);
                                    _data.reg.A = _data.reg.A>>1; if (sf) {_data.reg.A|=0x80;} this.f.a(_data); },
             i6c: function(_data) { _data.reg.PC = helpers.memory.getw(_data, this.getw(_data)); },
             i6d: function(_data) { this.f.adc(_data, helpers.memory.getb(_data,this.getw(_data))); },
-            i6e: function(_data) { var sf=this.f.iscarry(), addr=this.getw(_data); var val=helpers.memory.getb(_data, addr);
+            i6e: function(_data) { var sf=this.f.iscarry(_data), addr=this.getw(_data); var val=helpers.memory.getb(_data, addr);
                                    this.f.carry0(_data, val); val = val>>1; if (sf) {val|=0x80;} helpers.memory.setb(_data, addr, val);
                                    this.nv(_data, val); },
             i70: function(_data) { var offset = this.getb(_data); if (this.f.isover(_data)) { this.f.jp(_data,offset); } },
             i71: function(_data) { this.f.adc(_data, helpers.memory.getb(_data,
                                                         helpers.memory.getw(_data, this.getb(_data))+_data.reg.Y)); },
             i75: function(_data) { this.f.adc(_data, helpers.memory.getb(_data,(this.getb(_data)+_data.reg.X)&0xff)); },
-            i76: function(_data) { var sf=this.f.iscarry(), zp=(this.getb(_data)+_data.reg.X)&0xff; var val=helpers.memory.getb(_data, zp);
+            i76: function(_data) { var sf=this.f.iscarry(_data), zp=(this.getb(_data)+_data.reg.X)&0xff; var val=helpers.memory.getb(_data, zp);
                                    this.f.carry0(_data, val); val = val>>1; if (sf) {val|=0x80;} helpers.memory.setb(_data, zp, val);
                                    this.nv(_data, val); },
             i78: function(_data) { _data.reg.P |= 0x04; },
             i79: function(_data) { this.f.adc(_data, helpers.memory.getb(_data,this.getw(_data)+_data.reg.Y)); },
             i7d: function(_data) { this.f.adc(_data, helpers.memory.getb(_data,this.getw(_data)+_data.reg.X)); },
-            i7e: function(_data) { var sf=this.f.iscarry(), addr=this.getw(_data)+_data.reg.X; var val=helpers.memory.getb(_data, addr);
+            i7e: function(_data) { var sf=this.f.iscarry(_data), addr=this.getw(_data)+_data.reg.X; var val=helpers.memory.getb(_data, addr);
                                    this.f.carry0(_data, val); val = val>>1; if (sf) {val|=0x80;} helpers.memory.setb(_data, addr, val);
                                    this.nv(_data, val); },
             i81: function(_data) { helpers.memory.setb(_data,helpers.memory.getw(_data,(this.getb(_data)+_data.reg.X)&0xff),_data.reg.A);},
@@ -794,43 +795,43 @@
                                         helpers.memory.getw(_data, (this.getb(_data)+_data.reg.X)&0xff))); },
             ic4: function(_data) { this.f.cmp(_data, _data.reg.Y, helpers.memory.getb(this.getb(_data))); },
             ic5: function(_data) { this.f.cmp(_data, _data.reg.A, helpers.memory.getb(this.getb(_data))); },
-            ic6: function(_data) { this.f.dec(this.getb(_data)); },
+            ic6: function(_data) { this.f.dec(_data, this.getb(_data)); },
             ic8: function(_data) { _data.reg.Y = ( _data.reg.Y + 1) & 0xff; this.f.y(_data); },
             ic9: function(_data) { this.f.cmp(_data, _data.reg.A, this.getb(_data)); },
             ica: function(_data) { _data.reg.X = ( _data.reg.X - 1) & 0xff; this.f.x(_data); },
             icc: function(_data) { this.f.cmp(_data, _data.reg.Y, helpers.memory.getb(this.getw(_data))); },
             icd: function(_data) { this.f.cmp(_data, _data.reg.A, helpers.memory.getb(this.getw(_data))); },
-            ice: function(_data) { this.f.dec(this.getw(_data)); },
+            ice: function(_data) { this.f.dec(_data, this.getw(_data)); },
             id0: function(_data) { var offset = this.getb(_data); if (!this.f.iszero(_data)) { this.f.jp(_data,offset); } },
             id1: function(_data) { this.f.cmp(_data, _data.reg.A, helpers.memory.getb(_data,
                                         helpers.memory.getw(_data, this.getb(_data))+_data.reg.Y)); },
             id5: function(_data) { this.f.cmp(_data, _data.reg.A, helpers.memory.getb((this.getb(_data)+_data.reg.X)&0xff)); },
-            id6: function(_data) { this.f.dec((this.getb(_data)+_data.reg.X)&0xff); },
-            id8: function(_data) { this.reg.P &= 0xf7; },
+            id6: function(_data) { this.f.dec(_data, (this.getb(_data)+_data.reg.X)&0xff); },
+            id8: function(_data) { _data.reg.P &= 0xf7; },
             id9: function(_data) { this.f.cmp(_data, _data.reg.A, helpers.memory.getb(this.getw(_data)+_data.reg.Y)); },
             idd: function(_data) { this.f.cmp(_data, _data.reg.A, helpers.memory.getb(this.getw(_data)+_data.reg.X)); },
-            ide: function(_data) { this.f.dec(this.getw(_data)+_data.reg.X); },
+            ide: function(_data) { this.f.dec(_data, this.getw(_data)+_data.reg.X); },
             ie0: function(_data) { this.f.cmp(_data, _data.reg.X, this.getb(_data)); },
             ie1: function(_data) { this.f.sbc(_data, helpers.memory.getb(_data,
                                                         helpers.memory.getw(_data, (this.getb(_data)+_data.reg.X)&0xff))); },
             ie4: function(_data) { this.f.cmp(_data, _data.reg.X, helpers.memory.getb(this.getb(_data))); },
             ie5: function(_data) { this.f.sbc(_data, helpers.memory.getb(_data,this.getb(_data))); },
-            ie6: function(_data) { this.f.inc(this.getb(_data)); },
+            ie6: function(_data) { this.f.inc(_data, this.getb(_data)); },
             ie8: function(_data) { _data.reg.X = ( _data.reg.X + 1) & 0xff; this.f.x(_data); },
             ie9: function(_data) { this.f.sbc(_data, this.getb(_data)); },
             iea: function(_data) { },
             iec: function(_data) { this.f.cmp(_data, _data.reg.X, helpers.memory.getb(this.getw(_data))); },
             ied: function(_data) { this.f.sbc(_data, helpers.memory.getb(_data,this.getw(_data))); },
-            iee: function(_data) { this.f.inc(this.getw(_data)); },
+            iee: function(_data) { this.f.inc(_data, this.getw(_data)); },
             if0: function(_data) { var offset = this.getb(_data); if (this.f.iszero(_data)) { this.f.jp(_data,offset); } },
             if1: function(_data) { this.f.sbc(_data, helpers.memory.getb(_data,
                                                         helpers.memory.getw(_data, this.getb(_data))+_data.reg.Y)); },
             if5: function(_data) { this.f.sbc(_data, helpers.memory.getb(_data,(this.getb(_data)+_data.reg.X)&0xff)); },
-            if6: function(_data) { this.f.inc((this.getb(_data)+_data.reg.X)&0xff); },
+            if6: function(_data) { this.f.inc(_data, (this.getb(_data)+_data.reg.X)&0xff); },
             if8: function(_data) { _data.reg.P |= 8; },
             if9: function(_data) { this.f.sbc(_data, helpers.memory.getb(_data,this.getw(_data)+_data.reg.Y)); },
             ifd: function(_data) { this.f.sbc(_data, helpers.memory.getb(_data,this.getw(_data)+_data.reg.X)); },
-            ife: function(_data) { this.f.inc(this.getw(_data)+_data.reg.X); }
+            ife: function(_data) { this.f.inc(_data, this.getw(_data)+_data.reg.X); }
         },
         // CHECK THE PROGRAM
         check: {
@@ -870,7 +871,12 @@
                     for (var k=0; k<mem.length; k++) { ret&=(helpers.memory.getb(_data,addr+k)==parseInt(mem[k],16)); }
                 }
                 return ret; },
-            cout: function(_data, _value) { return (_value==helpers.stdout.get(_data.$this)); }
+            cout: function(_data, _value) { return (_value==helpers.stdout.get(_data.$this)); },
+            cn : function(_data, _value) { return ( ((_data.reg.P&0x80)!=0)==_value); },
+            cv : function(_data, _value) { return ( ((_data.reg.P&0x40)!=0)==_value); },
+            cd : function(_data, _value) { return ( ((_data.reg.P&0x08)!=0)==_value); },
+            cz : function(_data, _value) { return ( ((_data.reg.P&0x02)!=0)==_value); },
+            cc : function(_data, _value) { return ( ((_data.reg.P&0x01)!=0)==_value); }
         },
         next: function($this) {
             $this.find(".mask").hide();
@@ -897,7 +903,7 @@
                         compiled    : false,
                         running     : false,
                         paused      : false,
-                        reg         : { A:0, X:0, Y:0, F:0, PC:0, SP:0 },
+                        reg         : { A:0, X:0, Y:0, P:0, PC:0, SP:0 },
                         mem         : 0,
                         pc          : 0,
                         range       : [0,0],
