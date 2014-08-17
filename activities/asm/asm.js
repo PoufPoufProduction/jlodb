@@ -175,6 +175,8 @@
                 }
                 $this.find("#code #lines .line.x").droppable({accept:".a",
                     drop:function(event, ui) {
+                        var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
+                                    event.originalEvent.touches[0]:event;
                         var $elt = $(ui.draggable).clone().css("opacity", 1);
                         var children=[false,false,false];
                         $(this).children().each(function() {
@@ -190,6 +192,15 @@
                         } else
                         if ($elt.hasClass("op")) { $(this).find(".op").detach(); $(this).find(".label").addClass("arg"); } else
                         if ($elt.hasClass("arg")) { $(this).find(".arg").detach(); $(this).find(".label").detach(); }
+
+                        var x           = event.clientX-$this.offset().left;
+                        var y           = event.clientY-$this.offset().top;
+                        var $old        = $this.find("#touch01>div").detach();
+                        var $new        = $old.clone();
+                        $this.find("#touch01").css("left",Math.floor(x - $this.find("#touch01").width()/2)+"px")
+                                              .css("top",Math.floor(y - $this.find("#touch01").height()/2)+"px")
+                                              .append($new.addClass("running")).show();
+                        setTimeout(function(){$this.find("#touch01>div").removeClass("running").parent().hide(); },800);
 
                         $(this).append($elt);
                         $elt.draggable({ containment:$this, helper:"clone", appendTo:$this.find("#lines"), cursor:"move",
@@ -213,6 +224,12 @@
                         html += "<div class='coderts'>"+(settings.footer[i].rts?"rts":"")+"</div></div></div>";
                         $this.find("#code #lines").append(html);
                     }
+                }
+
+                if ($this.find("#code #lines").height()<$this.find("#code").height()) {
+                    var html="<div class='filler' style='height:"+($this.find("#code").height()-$this.find("#code #lines").height()-2)+
+                             "px;margin-top:2px;'></div>";
+                    $this.find("#code #lines").append(html);
                 }
 
                 settings.data.$this = $this;

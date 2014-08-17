@@ -857,13 +857,27 @@
         <dct:identifier>516</dct:identifier>
         <dct:title xml:lang="fr-FR">Envoyer vers l'écran graphique 16x16x256 l'index de chaque octet en utilisant un adressage direct indexé.</dct:title>
         <dct:description><![CDATA["footer":[{"label":"loop","value":"","code":"E8E000D001004C0010","rts":false}],"ops":["txa","sta"],"args":[{"value":"200","type":"x"}],"nblines":2,"valid":{"mem":{"200":"00010203","2FF":"FF"}},"class":"large","model":0]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Le programme précompilé 'loop' effectue une boucle sur les 2 premières lignes du programme. Ces 2 premières lignes vont être exécutées 256 fois. A chaque itération, la valeur du registre X est incrémenté d'1, passant de 0x00 à 0xFF (255).","","Stockez la valeur du registre X dans le Xème octet de l'écran 16x16x256.","","A noter que STX 0x200,X n'est pas une opération valide en assembleur 6502. Pour résoudre cet exercice il est nécessaire d'utiliser le registre A."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["La partie précompilée 'loop' effectue une boucle sur les 2 premières lignes du programme. Ces 2 premières lignes vont être exécutées 256 fois. A chaque itération, la valeur du registre X est incrémenté d'1, passant de 0x00 à 0xFF (255).","","Stockez la valeur du registre X dans le Xème octet de l'écran 16x16x256.","","A noter que STX 0x200,X n'est pas une opération valide en assembleur 6502. Pour résoudre cet exercice il est nécessaire d'utiliser le registre A."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>001</dct:alternative>
     </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>517</dct:identifier>
+        <dct:title xml:lang="fr-FR">Envoyer vers l'écran graphique 16x16x256 l'index de chaque octet en utilisant un adressage direct indexé.</dct:title>
+        <dct:description><![CDATA["header":[{"label":"init","value":"LDY #0x00","code":"A000","rts":false}],"footer":[{"label":"loop","value":"","code":"E8E000D001004C0210","rts":false}],"ops":["tya","sta","iny"],"args":[{"value":"200","type":"x"}],"nblines":4,"valid":{"mem":{"200":"00020406","2FF":"FE"}},"class":"large","model":0]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["La partie précompilée 'loop' effectue une boucle sur les 4 lignes du programme. Celles-ci vont être exécutées 256 fois. A chaque itération, la valeur du registre X est incrémenté d'1, passant de 0x00 à 0xFF (255).","","Le but de cet exercice est d'afficher 2 nuanciers de gris dans l'écran graphique. Pour ce faire, à chaque itération, transférez la valeur du registre Y vers le Xème octet de l'écran graphique puis incrémentez cette valeur 2 fois."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+
 
     <rdf:Description>
         <dct:identifier>521</dct:identifier>
@@ -881,7 +895,7 @@
         <dct:identifier>522</dct:identifier>
         <dct:title xml:lang="fr-FR">Envoyer vers l'écran graphique 40x36x4 des valeurs prédéfinies en utilisant un adressage direct indexé.</dct:title>
         <dct:description><![CDATA["footer":[{"label":"loop","value":"","code":"E8E0B4D001004C0010","rts":false},{"label":"data","value":"","code":"666666666666666666669999999999999999999966666666666666666666999999999999999999996666666666666666666699999999999999999999666666666666666666669999999999999999999966666666666666666666999999999999999999996666666666666666666699999999999999999999666666666666666666669999999999999999999966666666666666666666999999999999999999996666666666666666666699999999999999999999","rts":false}],"ops":["lda","sta"],"args":[{"value":"200","type":"x"},{"value":"2B4","type":"x"},{"value":"data","type":"label x"}],"nblines":3,"valid":{"mem":{"200":"666666666666666666669999999999999999999966","2B4":"666666666666666666669999999999999999999966"}},"class":"large","model":3]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Grâce au code précompilé 'loop', les 3 premières lignes du programme vont être exécutées 180 fois (0xB4). Sachant que l'écran 40x36x4 est codé sur 360 octets, que 'data' contient la définition des 180 premiers octets à afficher et que cette définition est identique pour les 180 derniers octets, remplissez intégralement l'écran."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Grâce au code précompilé 'loop', les 3 premières lignes du programme vont être exécutées 180 fois (0xB4). Sachant que l'écran 40x36x4 est codé sur 360 octets, que 'data' contient la définition des 180 premiers octets à afficher et que cette définition est identique pour les 180 octets suivants, remplissez intégralement l'écran."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>

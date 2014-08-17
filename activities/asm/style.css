@@ -9,7 +9,8 @@
 /*---------------------------------------------------------------------------------------------------------------------------*/
 .asm div#board #screens>*           { font-size:.75em; margin:.1em; }
 .asm #screens #output               { width:11.6em; height:5.6em; background-color:#030; color:#0F0; font-weight:bold;
-                                      padding:.2em; border-radius:.5em; line-height:.8em; }
+                                      padding:.2em; border-radius:.5em; line-height:.8em;
+                                      background-image:url("../../res/img/background/book05.svg"); background-repeat:repeat;}
 .asm #screens #output pre           { overflow:visible; }
 .asm #screens #canvas               { width:12em; height:12em; background-color:black; border-radius:.5em; position:relative; }
 .asm #screens.s2 #canvas            { height:8em; }
@@ -23,7 +24,8 @@
 .asm #screens #keypad #up           { top:0.3em; left:2.5em; }
 .asm #screens #keypad #a            { top:1em; left:7em; }
 .asm #screens #keypad #b            { top:1em; left:9.4em; }
-.asm #screens #controls             { width:12em; height:9.4em; background-color:#AAA; border-radius:.5em; }
+.asm #screens #controls             { width:12em; height:9.4em; background-color:#AAA; border-radius:.5em;
+                                      background-image:url("../../res/img/background/steel01.svg"); background-repeat:repeat; }
 .asm #screens #controls.running     { background-color:#5BB; }
 .asm #screens.s2 #controls          { height:13.4em; }
 .asm #screens.s3 #controls          { height:10.6em; }
@@ -31,25 +33,28 @@
 .asm #screens #buttons>div          { font-size:3em; width:1em; height:1em; margin:.1em; float:left; cursor:pointer;}
 /*---------------------------------------------------------------------------------------------------------------------------*/
 .asm div#board #central>*           { font-size:.75em; margin:.1em; width:20em; border-radius:.5em; }
-.asm #central #code                 { height:25em; background-color:black; overflow:auto;}
+.asm #central #code                 { height:25em; background-color:black; overflow:auto;
+                                      background-image:url("../../res/img/background/asm45.svg"); background-repeat:no-repeat; }
 .asm #central #code #lines          { font-size:1.5em; }
-.asm #central #code #lines .line.i  { background-color:#152A15; }
-.asm #central #code #lines .line    { position:relative; height:1.5em; background-color:#112211; }
+.asm #central #code #lines .line.i  { background-color:rgba(100,200,100,0.1); }
+.asm #central #code #lines .line    { position:relative; height:1.5em; background-color:rgba(180,255,180,0.12); }
 .asm #central #code #lines .line.c  { background-color:yellow !important; }
+.asm #central #code #lines .filler  { background-image:url("../../res/img/background/border01.svg"); background-repeat:repeat-x; }
 .asm #central #lines .code          { margin:.1em; background-color:#da5; border-radius:.25em; padding:.1em; width:12.25em;
                                       color:#fea; font-weight:bold; position:absolute; top:0; left:0;}
 .asm #central #lines .code>div      { float:left; }
 .asm #central #lines .codelabel     { width:3.7em; text-align:center; }
 .asm #central #lines .codevalue     { margin-left:1em; font-size:.3em; width:22em; font-family: "Courier New" Courier monospace;}
-.asm #central #exercice             { width:29.7em !important; height:9.6em; background-repeat:repeat; padding:.1em .2em;
+.asm #central #exercice             { width:29.1em !important; height:9.4em; background-repeat:repeat; padding:.2em .5em;
                                       background-image:url("../../res/img/background/book02.svg"); text-align:justify;
                                       font-family: "Courier New" Courier monospace; font-size:.5em !important;}
-.asm.large #central #exercice       { height:17em; }
+.asm.large #central #exercice       { height:16.8em; }
 .asm.large #central #code           { height:20em; }
 
 /*---------------------------------------------------------------------------------------------------------------------------*/
 .asm div#board #detail>*            { font-size:.75em;margin:.1em; width:10em; border-radius:.5em;}
-.asm #detail #source                { height:25em; background-color:#112211; }
+.asm #detail #source                { height:25em; background-color:#112211; 
+                                      background-image:url("../../res/img/background/book05.svg"); background-repeat:repeat;}
 .asm #detail #source>div            { clear:both; }
 .asm #detail #source .a             { float:left; cursor:pointer; }
 .asm #detail #source #header        { font-size:2em; height:1em;}
@@ -123,15 +128,14 @@
 .asm #m1.mask                       { width:24%; height:78%; position:absolute; left:0;  }
 .asm #m2.mask                       { width:47%; height:100%; position:absolute; left:24%;  }
 
-.asm #doc                           { position:absolute; top:0; background-color:rgba(0,0,0,0); display:none; }
-.asm #doc>div                       { background-color:rgba(255,255,255,0.9); font-size:.4em; width:38em; height:28em; margin:1em;  }
-.asm #doc #top                      { background-color:gray; font-size:1.5em; color:white; text-align:center;}
-.asm #doc #top .icon                { float:left; cursor:pointer;}
-
-
 .asm #binary                        { width:100%; height:100%; position:absolute; top:0; left:0; background-color:rgba(0,0,0,0.8);
                                       display:none;}
 .asm #binary>div                    { width:82%; height:80%; margin:5% 10%; background-color:rgba(0,50,10,0.8); color:#0F0;
                                       font-weight:bold; font-size:.35em; font-family: "Courier New" Courier monospace; border-radius:.5em;
                                       overflow:auto; cursor:pointer;  }
 .asm #binary p                      { white-space:nowrap; margin:0 .5em;}
+
+.asm #touch01                          { top:0; left:0; font-size:2em; }
+
+
+

@@ -2,8 +2,7 @@
     <div id="board">
         <div id="detail">
             <div id="source">
-                <div id="header"><div class="icon" ontouchstart="$(this).closest('.asm').find('#doc').show();event.preventDefault();"
-                                onclick="$(this).closest('.asm').find('#doc').show();"><img src="res/img/icon/about.svg"></div></div>
+                <div id="header"></div>
                 <div id="ops">
                     <div class="a op" id="adc">ADC</div>
                     <div class="a op" id="and">AND</div>
@@ -149,19 +148,13 @@
         <div id="wrong"><img src="res/img/effects/alert01.svg"/></div>
     </div>
 
+    <div id="touch01" ><div><img src="res/img/effects/touch01.svg"/></div></div>
+
     <div id="m1" class="mask"></div>
     <div id="m2" class="mask"></div>
 
     <div id="binary"><div ontouchstart="$(this).parent().hide();event.preventDefault();"
                           onclick="$(this).parent().hide();"></div></div>
-
-    <div id="doc"><div>
-        <div id="top">
-            <div class="icon" ontouchstart="$(this).closest('#doc').hide();event.preventDefault();"
-                              onclick="$(this).closest('#doc').hide();"><img src="res/img/icon/quit.svg"/></div>
-            <span id="title"></span>
-        </div>
-    </div></div>
 
     <div id="splash" ontouchstart="$(this).closest('.asm').asm('next');event.preventDefault();"
                      onclick="$(this).closest('.asm').asm('next');"><div>
