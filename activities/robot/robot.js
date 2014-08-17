@@ -161,6 +161,18 @@
 
                 $this.find(".z").droppable({accept:".a",
                     drop:function(event, ui) {
+                        var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
+                                    event.originalEvent.touches[0]:event;
+                        var x           = event.clientX-$this.offset().left;
+                        var y           = event.clientY-$this.offset().top;
+                        var $old        = $this.find("#touch01>div").detach();
+                        var $new        = $old.clone();
+                        $this.find("#touch01").css("left",Math.floor(x - $this.find("#touch01").width()/2)+"px")
+                                              .css("top",Math.floor(y - $this.find("#touch01").height()/2)+"px")
+                                              .append($new.addClass("running")).show();
+                        setTimeout(function(){$this.find("#touch01>div").removeClass("running").parent().hide(); },800);
+
+
                         if ($(this).children().size()) { $(this).children().detach().appendTo(ui.draggable.parent()); }
                         $(ui.draggable).detach().css("top",0).css("left",0);
                         $(this).append(ui.draggable);
@@ -187,8 +199,8 @@
         get: function($this, _robot, _fct, _id) {
             var settings = helpers.settings($this);
             var ret = 0;
-            var $elt = $($this.find("#tabs #t"+(_robot+1)+" .f"+_fct+" .z").get(_id));
-            if ($elt.children().length) { ret = $elt.find("img").attr("alt"); }
+            settings.lastelt = $($this.find("#tabs #t"+(_robot+1)+" .f"+_fct+" .z").get(_id));
+            if (settings.lastelt.children().length) { ret = settings.lastelt.find("img").attr("alt"); }
             return ret;
         },
         // GET THE WORST SCENARIO TODO
@@ -593,6 +605,7 @@
             $this.find(".t251 img").attr("src","res/img/tileset/iso/set1/251.svg");
             $this.find(".t351 img").attr("src","res/img/tileset/iso/set1/351.svg");
             $this.find("#cache").hide();
+            $this.find(".target").hide();
             $this.find("#play img").attr("src","res/img/control/play.svg");
             settings.wrong++;
         },
@@ -605,6 +618,7 @@
         },
         endanimation: function($this, _count) {
             var settings = helpers.settings($this);
+            $this.find(".target").hide();
             if (!settings.stop && helpers.success($this, _count)) {
                 settings.score = 5-settings.wrong;
                 if (settings.score<0) { settings.score = 0; }
@@ -677,6 +691,17 @@
                         helpers.execute.tiles($this, _robotsorder,_count,_fct);
                     }
                     else {
+                        // TODO
+                        var rid = _robotsorder[(_count-1)%_robotsorder.length];
+                        var $t = $this.find("#target"+(rid+1));
+                        if ($this.find("#t"+(rid+1)).is(":visible")) {
+                            var o = Math.floor(($this.find("#target"+(rid+1)).width() - settings.lastelt.height())/2);
+                            $t.css("top",(settings.lastelt.position().top-o)+"px")
+                              .css("left",(settings.lastelt.position().left-o)+"px").show();
+                        }
+                        else { $t.hide(); }
+
+
                         $this.find("#robotfx").show();
                         setTimeout( function() {
                                 helpers.execute.tiles($this, _robotsorder,_count,_fct);
@@ -704,6 +729,7 @@
                 settings.tiles.light=[false,false,false,false];
                 settings.tiles.number=settings.numberinit;
                 settings.lastcount = -1;
+                settings.lastelt = 0;
             },
             // NEXT OPERATION
             next: function($this, id) {
@@ -898,7 +924,7 @@
                         number      : 0
                     },
                     wrong           : 0,
-                    speed           : 0,
+                    speed           : 1,
                     synchro         : false,
                     pause           : {
                         state       : false,
@@ -912,6 +938,7 @@
                     testid          : 0,
                     numberinit      : 0,
                     lastcount       : -1,
+                    lastelt         : 0,
                     scale           : 1
                 };
 

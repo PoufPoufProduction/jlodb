@@ -29,6 +29,15 @@ textarea                        { resize:none; }
                                   -webkit-animation-timing-function:step-start; -webkit-animation-iteration-count:infinite;
                                   -webkit-animation-play-state:paused; }
 #waiting div.running            { animation-play-state:running; -webkit-animation-play-state:running; }
+
+#touch01                        { position:absolute; width:1em; height:1em; font-size:4em; display:none; }
+#touch01 div                    { position:relative; width:1em; height:12em; margin-top:1em;
+                                  animation-duration: 0.5s; animation-name:anim;
+                                  animation-play-state:paused; animation-timing-function:step-start;
+                                  -webkit-animation-duration: 0.5s; -webkit-animation-name:anim;
+                                  -webkit-animation-timing-function:step-start; -webkit-animation-play-state:paused; }
+#touch01 div.running            { animation-play-state:running; -webkit-animation-play-state:running; }
+
 /*---------------------------------------------------------------------------------------------------------------------------*/
 #launcher                       { width:100%; height:100%; background-color:black; position:absolute; top:0; left:0; display:none;
                                   z-index:2000;}
