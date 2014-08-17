@@ -51,13 +51,38 @@ var t001 = {
     <h1>Guide du développeur jLoDB.</h1>
     <div>En cours de construction...</div>
     <h2>Activités</h2>
+    <h3>LOGO</h3>
+    <h4>Paramètres</h4>
+    <ul>
+        <li><b>"a":{}</b> permet de définir les commandes autorisées par l'exercice.
+            <ul>
+                <li><b>"op":[]</b> liste les opérations ["av", "re", "td", "tr", "co", "fo", "ct", "mt", "lc", "bc", "or", "ca", "po", "xx", "yy", "zz", "ii", "jj"]</li>
+                <li><b>"va":[]</b> liste les valeurs ["V000", "V001", "V002", ..., "V090", ..., "V200", ..., "X","Y","Z","I","J","black","white","green","red","blue" ]</li>
+                <li><b>"ma":[]</b> liste les opérations mathématiques ["plus", "minus", "neg", "mult", "div", "modulo", "pow2", "sqrt", "log", "exp", "cos", "sin", "tan", "atan"]</li>
+                <li><b>"cl":[]</b> liste les opérateurs de contrôle ["rep", "call1", "call2", "call3", "fct1", "fct2", "fct3", "if"]</li>
+            </ul>
+        </li>
+        <li><b>"bg":[]</b> liste les éléments présents dans le fond de l'image (grille, indications textuelles, figure en pointillé).</li>
+        <li><b>"result":{}</b> définit les critères d'évaluation de l'exercice.
+            <ul>
+                <li><b>"nb":int</b> définit le nombre de segments à tracer.</li>
+                <li><b>"values":[]</b> liste les segments à tracer. Chaque segment est défini ainsi [x1,y1,x2,y2,couleur].</li>
+                <li><b>"ct":bool</b> (facultatif) précise l'état final de la tortue (caché ou non).</li>
+                <li><b>"bg":int</b> (facultatif) précise la couleur finale du fond de l'écran.</li>
+            </ul>
+        </li>
+    </ul>
+    <h4>Autres</h4>
+    <ul>
+        <li><b>Générateur</b> : l'exercice <a href="../../demo.html?id=lox"><b>lox</b></a> permet d'accéder à l'ensemble des opérateurs ainsi qu'à un bouton "debug" permettant de générer les paramètres "bg" et "result".</li>
+    </ul>
     <h3>Puzzle</h3>
     <h4>Reconstruction de phrases</h4>
     <div class="margin">
         <ul>
             <li><b>"url":"puzzle/sentence.svg"</b></li>
             <li><b>"svgclass"</b> peut prendre les valeurs "l1","l2","l3" ou "l4" en fonction du nombre de lignes nécessaires à l'exercice.</li>
-            <li><b>"values":{"1-00-2":"Mot1","1-02-5":"Mot2","1-07-5":"Mot3"}</b>. L'ensemble des pièces du puzzle sont définies par 3 nombres successifs [numéro de ligne-position-taille]. Ainsi 1-00-2 représente la pièce de taille 2 qui se trouve à la position 0 de la ligne 1. Ainsi, la pièce suivante 1-02-5 se trouve à la position 2 de la ligne 1 (juste derrière la première pièce). La taille des pièces peut être compris entre 1 et 5 inclus, et la taille d'une ligne est de 12. Par conséquent, la triplette définissant la dernière pièce d'une ligne doit vérifier [position]+[taille] = 12. Dans notre exemple, la dernière pièce est en position 7 et a une taille de 5 ; on a bien 7+5=12 : la ligne est remplie entièrement.</li>
+            <li><b>"values":{"1-00-2":"Mot1","1-02-5":"Mot2","1-07-5":"Mot3"}</b>. L'ensemble des pièces du puzzle sont définies par 3 nombres successifs [numéro de ligne-position-taille]. Ainsi 1-00-2 représente la pièce de taille 2 qui se trouve à la position 0 de la ligne 1.La pièce suivante 1-02-5 se trouve à la position 2 de la ligne 1 (juste derrière la première pièce). La taille des pièces peut être comprise entre 1 et 5 inclus, et la taille d'une ligne est de 12. Par conséquent, la triplette définissant la dernière pièce d'une ligne doit vérifier [position]+[taille] = 12. Dans notre exemple, la dernière pièce est en position 7 et a une taille de 5 ; on a bien 7+5=12 : la ligne est remplie entièrement.</li>
         </ul>
         <div>
             <p><b>Générateur</b> : entrez la phrase en séparant les différentes parties par le caractère | et cliquez sur le bouton de publication. Attention : ce générateur vite codé n'est pas parfait, il est important de bien tester le résultat obtenu avec l'outil d'édition de jlodb.</p>
