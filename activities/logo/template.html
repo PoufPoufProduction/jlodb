@@ -17,13 +17,16 @@
             <div id="op">
                 <div class="a op o" id="av"><div class="label"></div><div class="d va"></div></div>
                 <div class="a op o" id="re"><div class="label"></div><div class="d va"></div></div>
+                <div style="clear:both"></div>
                 <div class="a op o" id="td"><div class="label"></div><div class="d va"></div></div>
                 <div class="a op o" id="tg"><div class="label"></div><div class="d va"></div></div>
+                <div style="clear:both"></div>
                 <div class="a op o" id="co"><div class="label"></div><div class="d va"></div></div>
                 <div class="a op o" id="fo"><div class="label"></div><div class="d va"></div></div>
                 <div style="clear:both"></div>
                 <div class="a op o" id="lc"><div class="label"></div></div>
                 <div class="a op o" id="bc"><div class="label"></div></div>
+                <div style="clear:both"></div>
                 <div class="a op o" id="ct"><div class="label"></div></div>
                 <div class="a op o" id="mt"><div class="label"></div></div>
                 <div style="clear:both"></div>
@@ -89,9 +92,10 @@
             <div id="ma">
                 <div class="a ma v" id="plus"><div class="d va"></div><div class="label">+</div><div class="d va"></div></div>
                 <div class="a ma v" id="minus"><div class="d va"></div><div class="label">-</div><div class="d va"></div></div>
-                <div class="a ma v" id="neg"><div class="label">-</div><div class="d va"></div></div>
                 <div class="a ma v" id="mult"><div class="d va"></div><div class="label">*</div><div class="d va"></div></div>
                 <div class="a ma v" id="div"><div class="d va"></div><div class="label">/</div><div class="d va"></div></div>
+                <div style="clear:both"></div>
+                <div class="a ma v" id="neg"><div class="label">-</div><div class="d va"></div></div>
                 <!-- <div class="a ma v" id="divint"><div class="d va"></div><div class="label">:</div><div class="d va"></div></div> -->
                 <div class="a ma v" id="modulo"><div class="d va"></div><div class="label">%</div><div class="d va"></div></div>
                 <div class="a ma v" id="pow2"><div class="d va"></div><div class="label">²</div></div>
@@ -100,8 +104,10 @@
                 <!-- <div class="a ma v" id="rad"><div class="label">RAD</div><div class="d va"></div></div> -->
                 <!-- <div class="a ma v" id="deg"><div class="label">DEG</div><div class="d va"></div></div> -->
                 <div class="a ma v" id="sqrt"><div class="label"></div><div class="d va"></div></div>
+                <div style="clear:both"></div>
                 <div class="a ma v" id="log"><div class="label">LOG</div><div class="d va"></div></div>
                 <div class="a ma v" id="exp"><div class="label">EXP</div><div class="d va"></div></div>
+                <div style="clear:both"></div>
                 <div class="a ma v" id="cos"><div class="label">COS</div><div class="d va"></div></div>
                 <div class="a ma v" id="sin"><div class="label">SIN</div><div class="d va"></div></div>
                 <div class="a ma v" id="tan"><div class="label">TAN</div><div class="d va"></div></div>
@@ -109,17 +115,32 @@
             </div>
             <div id="cl">
                 <div class="a cl o" id="rep"><div class="label"></div><div class="d va"></div><div class="d op"></div></div>
+                <div class="a cl o" id="stop"><div class="label">STOP</div></div>
+                <div style="clear:both"></div>
                 <div class="a cl o" id="call1"><div class="label"></div></div>
-                <div class="a cl o" id="call2"><div class="label"></div><div class="d va"></div></div>
-                <div class="a cl o" id="call3"><div class="label"></div><div class="d va"></div><div class="d va"></div></div>
                 <div class="a cl o" id="fct1"><div class="label"></div><div class="d op"></div></div>
+                <div style="clear:both"></div>
+                <div class="a cl o" id="call2"><div class="label"></div><div class="d va"></div></div>
                 <div class="a cl o" id="fct2"><div class="label"></div><div class="d op"></div></div>
+                <div style="clear:both"></div>
+                <div class="a cl o" id="call3"><div class="label"></div><div class="d va"></div><div class="d va"></div></div>
+                <div style="clear:both"></div>
                 <div class="a cl o" id="fct3"><div class="label"></div><div class="d op"></div></div>
-                <div class="a cl o" id="if"><div class="label"></div><div style="float:left;">(X&gt;</div><div class="d va"></div><div style="float:left;">) [STOP]</div></div>
+                <div style="clear:both"></div>
+                <div class="a cl o" id="gt"><div class="label"></div><div class="d va"></div><div style="float:left;">&gt;</div><div class="d va"></div><div class="d op"></div></div>
+                <div class="a cl o" id="gte"><div class="label"></div><div class="d va"></div><div style="float:left;">&gt;=</div><div class="d va"></div><div class="d op"></div></div>
+                <div style="clear:both"></div>
+                <div class="a cl o" id="lt"><div class="label"></div><div class="d va"></div><div style="float:left;">&lt;</div><div class="d va"></div><div class="d op"></div></div>
+                <div class="a cl o" id="lte"><div class="label"></div><div class="d va"></div><div style="float:left;">&lt;=</div><div class="d va"></div><div class="d op"></div></div>
+                <div style="clear:both"></div>
+                <div class="a cl o" id="eq"><div class="label"></div><div class="d va"></div><div style="float:left;">==</div><div class="d va"></div><div class="d op"></div></div>
+                <div class="a cl o" id="no"><div class="label"></div><div class="d va"></div><div style="float:left;">!=</div><div class="d va"></div><div class="d op"></div></div>
             </div>
         </div>
     </div>
     <div id="code">
+        <div id="lines"></div>
+        <div id="footer"></div>
     </div>
   </div>
   <div id="output">
@@ -144,10 +165,14 @@
 
   </div>
 
+  <div id="touch01" ><div><img src="res/img/effects/touch01.svg"/></div></div>
+
   <div class="mask"></div>
 
   <div id="export" ontouchstart="$(this).hide();event.preventDefault();"
                    onclick="$(this).hide();"></div>
+  <div id="dbg" ontouchstart="$(this).hide();event.preventDefault();"
+                   onclick="$(this).hide();"><pre></pre></div>
 
 
     <div id="splash" ontouchstart="$(this).closest('.logo').logo('next');event.preventDefault();"

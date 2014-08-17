@@ -12,7 +12,7 @@
         #bg.green               { fill:green; }
         #bg.red                 { fill:red; }
 
-        #board line             { fill:none; stroke-width:3; stroke-linecap:round; }
+        #board>line             { fill:none; stroke-width:3; stroke-linecap:round; }
         #board line.black       { stroke:black; }
         #board line.white       { stroke:white; }
         #board line.blue        { stroke:blue; }
@@ -73,6 +73,7 @@
         #background *           { fill:none;stroke:#dd8833;stroke-width:2.5; stroke-dasharray:10,10; }
         #background .hide       { display:none; }
         #background .tiny       { stroke-width:0.8; stroke-dasharray:none; }
+        #background .plain      { stroke-width:2; stroke-dasharray:none; }
         #background text        { font-size:30px;stroke:none;fill:#dd8833;}
     </style>
 </defs>
@@ -83,6 +84,7 @@
     <line x1="0" y1="0" x2="0" y2="0" class="hide" id="line"/>
     <rect x="0" y="0" width="0" height="0" class="hide" id="rect"/>
     <circle cx="0" cy="0" r="0" class="hide" id="circle"/>
+    <path d="" class="hide" id="path"/>
     <text class="hide" id="text"></text>
     <g id="grid100" class="hide">
         <line x1="0" y1="40" x2="640" y2="40"   class="tiny"/>

@@ -101,8 +101,8 @@
                     }
                 }
 
-                $this.find(".a.s").draggable({ containment:$this, helper:"clone", appendTo:$this.find("#code"), cursor:"move"});
-                helpers.addline($this,$this.find("#code"));
+                $this.find(".a.s").draggable({ containment:$this, helper:"clone", appendTo:$this.find("#code #lines"), cursor:"move"});
+                helpers.addline($this,$this.find("#code #lines"));
 
                 for (var i in settings.bg) {
                     var $clone = $("#background #"+settings.bg[i].id+".hide", settings.svg.root()).clone();
@@ -131,11 +131,25 @@
             var settings = helpers.settings($this);
             $e.find(".d.va").droppable({greedy:true, accept:".v",
                 drop:function(event, ui) {
+                  if ($(this).offset().top>=$this.find("#code").offset().top)
+                  {
+                    var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
+                                    event.originalEvent.touches[0]:event;
                     var $elt = $(ui.draggable).clone().addClass("cc");
                     $(this).html($elt);
                     helpers.dropvalue($this, $elt);
 
+                    var x           = event.clientX-$this.offset().left;
+                    var y           = event.clientY-$this.offset().top;
+                    var $old        = $this.find("#touch01>div").detach();
+                    var $new        = $old.clone();
+                    $this.find("#touch01").css("left",Math.floor(x - $this.find("#touch01").width()/2)+"px")
+                                          .css("top",Math.floor(y - $this.find("#touch01").height()/2)+"px")
+                                          .append($new.addClass("running")).show();
+                    setTimeout(function(){$this.find("#touch01>div").removeClass("running").parent().hide(); },800);
+
                     $this.find("#submit").removeClass("s");
+                  }
             }});
         },
         addline: function($this, $elt, $_line) {
@@ -144,10 +158,22 @@
             var $html=$_line?$_line:$("<div class='line' id='"+(settings.codeid++)+"'></div>");
             $html.droppable({greedy:true, accept:".o",
                 drop:function(event, ui) {
+                  if ($(this).offset().top>=$this.find("#code").offset().top)
+                  {
+                    var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
+                                    event.originalEvent.touches[0]:event;
                     var $e = $(ui.draggable).clone().addClass("cc").css("opacity",1);
                     var ok = !($(this).parent().hasClass("op") && $e.attr("id").substr(0,3)=="fct");
                     if (ok) {
                         $(this).html($e);
+                        var x           = event.clientX-$this.offset().left;
+                        var y           = event.clientY-$this.offset().top;
+                        var $old        = $this.find("#touch01>div").detach();
+                        var $new        = $old.clone();
+                        $this.find("#touch01").css("left",Math.floor(x - $this.find("#touch01").width()/2)+"px")
+                                              .css("top",Math.floor(y - $this.find("#touch01").height()/2)+"px")
+                                              .append($new.addClass("running")).show();
+                        setTimeout(function(){$this.find("#touch01>div").removeClass("running").parent().hide(); },800);
 
                         $this.find("#code").scrollTop(500);
 
@@ -156,7 +182,7 @@
                         if ($last.html().length) { helpers.addline($this, $(this).parent()); }
 
                         // MAKE THE NEW OPERATION DRAGGABLE
-                        $e.draggable({ containment:$this, helper:"clone", appendTo:$this.find("#code"), cursor:"move",
+                        $e.draggable({ containment:$this, helper:"clone", appendTo:$this.find("#code #lines"), cursor:"move",
                             start:function( event, ui) { ui.helper.removeClass("cc"); $e.css("opacity",0.2);},
                             stop: function( event, ui) { $(this).detach(); } });
 
@@ -174,6 +200,7 @@
 
                         $this.find("#submit").removeClass("s");
                     }
+                  }
             }});
             if (!$_line) { $elt.append($html); }
         },
@@ -473,6 +500,25 @@
                 }
                 return !ret;
             },
+            stop: function($this, $elt) { helpers.popstack($this); return false; },
+            cmp: function($this, $elt, _cmp) {
+                var settings = helpers.settings($this);
+                var v1 = Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first()));
+                var v2 = Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first().next().next()));
+                var ret = _cmp(v1,v2);
+                if (ret) {
+                    settings.data.stack.push({$elt:$elt.find(".d.op").children().first(),
+                                              $first:$elt.find(".d.op").children().first(),
+                                              count:0, sav:0 });
+                }
+                return !ret;
+            },
+            gt:  function($this, $elt) { return this.cmp($this, $elt, function(a,b) { return (a>b); }); },
+            gte: function($this, $elt) { return this.cmp($this, $elt, function(a,b) { return (a>=b); }); },
+            lt:  function($this, $elt) { return this.cmp($this, $elt, function(a,b) { return (a<b); }); },
+            lte: function($this, $elt) { return this.cmp($this, $elt, function(a,b) { return (a<=b); }); },
+            eq:  function($this, $elt) { return this.cmp($this, $elt, function(a,b) { return (a==b); }); },
+            no:  function($this, $elt) { return this.cmp($this, $elt, function(a,b) { return (a!=b); }); },
             if: function($this, $elt) {
                 var settings = helpers.settings($this);
                 var value = helpers.process.value.get($this, $elt.find(".d.va").first());
@@ -486,7 +532,7 @@
             settings.data.count = 0;
             settings.data.timer = 0;
             settings.data.X = 0; settings.data.Y = 0; settings.data.Z = 0; settings.data.I = 0; settings.data.J = 0;
-            settings.data.stack=[{$elt:$this.find("#code").children().first(), $first:0, count:1, sav:0}];
+            settings.data.stack=[{$elt:$this.find("#code #lines").children().first(), $first:0, count:1, sav:0}];
             settings.data.pos = [0,0];
             settings.data.cap = 0;
             settings.data.color = 0;
@@ -499,7 +545,7 @@
             $("#rotturtle", settings.svg.root()).attr("class","");
             helpers.process.turtle.upd($this);
 
-            $this.find("#code .line").removeClass("s");
+            $this.find("#code #lines .line").removeClass("s");
             $this.find("#submit").removeClass("s");
 
         },
@@ -528,10 +574,15 @@
                 donostop = false;
                 settings.data.count++;
 
+                if (settings.data.stack.length>=50) {
+                    setTimeout(function() { helpers.finish($this, false); }, 1000);
+                    return;
+                }
+
                 if (settings.data.stack.length) {
                     var current = settings.data.stack[settings.data.stack.length-1];
 
-                    if (speed) {  $this.find("#code .line").removeClass("s"); }
+                    if (speed) {  $this.find("#code #lines .line").removeClass("s"); }
 
                     if (current.$elt.length) {
                         if (speed) { current.$elt.addClass("s"); }
@@ -559,6 +610,7 @@
                             }
                         }
                 }
+                else { setTimeout(function() { helpers.finish($this, false); }, 1000); return; }
             } while (donotstop);
         },
         finish: function($this, _stopped) {
@@ -665,6 +717,7 @@
                 }
             },
             stop: function() {
+                var $this = $(this) , settings = helpers.settings($this);
                 if (settings.interactive) {
                     var $this = $(this) , settings = helpers.settings($this);
                     if (settings.data.running) {
@@ -682,29 +735,56 @@
                 var ratio = nb?9/nb:0;
                 var ret = "";
                 var svg = "";
+                var last = [-1, -1, 0];
+                var path = "";
+                var line = "";
 
                 $("#board line", settings.svg.root()).each(function(_index) {
                     if ($(this).attr("class")!="hide") {
+                        if ( (helpers.round($(this).attr("x1")) == last[0]) && (helpers.round($(this).attr("y1")) == last[1]) &&
+                             ($(this).attr("class") == last[2]) )
+                        {
+                            line="";
+                            path+=" L "+ helpers.round($(this).attr("x2"))+ ","+helpers.round($(this).attr("y2"));
+                        }
+                        else
+                        {
+                            if (svg.length) { svg+=","; }
+                            if (line) { svg+=line; line = ""; }
+                            else if (path) {  svg+="{\"id\":\"path\",\"attr\":{\"d\":\""+path+"\"}}"; path = ""; last=[-1,-1, 0]; }
+
+                            path = "M "+helpers.round($(this).attr("x1"))+ ","+helpers.round($(this).attr("y1"))+
+                                  " L "+helpers.round($(this).attr("x2"))+ ","+helpers.round($(this).attr("y2"));
+                            line = "{\"id\":\"line\",\"attr\":{\"x1\":"+helpers.round($(this).attr("x1"))+ ",\"y1\":"+
+                                helpers.round($(this).attr("y1"))+",\"x2\":"+helpers.round($(this).attr("x2"))+",\"y2\":"+
+                                helpers.round($(this).attr("y2"))+"}}";
+                        }
+                        last = [ helpers.round($(this).attr("x2")), helpers.round($(this).attr("y2")), $(this).attr("class") ];
+
+
                         if (nbret/(_index+1)<ratio) {
                             if (ret.length) { ret+=","; }
                             ret+="["+helpers.round($(this).attr("x1"))+","+helpers.round($(this).attr("y1"))+","+
                                     helpers.round($(this).attr("x2"))+","+helpers.round($(this).attr("y2"))+","+
                                     c[$(this).attr("class")]+"]";
-
-                            if (svg.length) { svg+=","; }
-                            svg+="{\"id\":\"line\",\"attr\":{\"x1\":"+helpers.round($(this).attr("x1"))+ ",\"y1\":"+
-                                    helpers.round($(this).attr("y1"))+",\"x2\":"+helpers.round($(this).attr("x2"))+",\"y2\":"+
-                                    helpers.round($(this).attr("y2"))+"}}";
-
                             nbret++;
                         }
                     }
                 });
+                if (svg.length) { svg+=","; } 
+                if (line) { svg+=line; line = ""; }
+                else if (path) { svg+="{\"id\":\"path\",\"attr\":{\"d\":\""+path+"\"}}"; path = ""; last=[-1,-1, 0]; }
 
-                if (settings.debug) { alert(svg+"\n\n\"result\":{\"nb\":"+nb+",\"values\":["+ret+"],\"fo\":\""+
+                svg+="\n\n\"result\":{\"nb\":"+nb+",\"values\":["+ret+"],\"fo\":\""+
                                             $("#bg",settings.svg.root()).attr("class")+"\",\"mt\":"+
                                             (!$("#rotturtle", settings.svg.root()).attr("class") ||
-                                             !$("#rotturtle", settings.svg.root()).attr("class").length)+"}"); }
+                                             !$("#rotturtle", settings.svg.root()).attr("class").length)+"}";
+
+                if (settings.debug) {
+                    //$this.find("#dbg>pre").html(svg);
+                    //$this.find("#dbg").show();
+                    alert(svg);
+                }
             },
             submit: function() {
                 var $this = $(this), settings = helpers.settings($this);
