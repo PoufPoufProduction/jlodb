@@ -101,7 +101,7 @@
                     }
                 }
 
-                $this.find(".a.s").draggable({ containment:$this, helper:"clone", appendTo:$this.find("#code #lines"), cursor:"move"});
+                $this.find(".a.s").draggable({ containment:$this, helper:"clone", appendTo:$this.find("#code #lines")});
                 helpers.addline($this,$this.find("#code #lines"));
 
                 for (var i in settings.bg) {
@@ -130,7 +130,10 @@
         dropvalue: function($this, $e) {
             var settings = helpers.settings($this);
             $e.find(".d.va").droppable({greedy:true, accept:".v",
+                over: function(event, ui) { $(this).addClass("over"); },
+                out: function(event, ui) { $(this).removeClass("over"); },
                 drop:function(event, ui) {
+                  $this.find(".over").removeClass("over");
                   if ($(this).offset().top>=$this.find("#code").offset().top)
                   {
                     var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
@@ -182,7 +185,7 @@
                         if ($last.html().length) { helpers.addline($this, $(this).parent()); }
 
                         // MAKE THE NEW OPERATION DRAGGABLE
-                        $e.draggable({ containment:$this, helper:"clone", appendTo:$this.find("#code #lines"), cursor:"move",
+                        $e.draggable({ containment:$this, helper:"clone", appendTo:$this.find("#code #lines"),
                             start:function( event, ui) { ui.helper.removeClass("cc"); $e.css("opacity",0.2);},
                             stop: function( event, ui) { $(this).detach(); } });
 
@@ -258,71 +261,28 @@
                     var ret = 0;
                     if ($elt.html().length) {
                         var $current = $elt.children().first();
+                        var $first = $current.find(".d.va").first();
                         if ($current.hasClass("ma")) {
                           switch($current.attr("id")) {
-                            case "plus":
-                                ret = this.get($this, $current.find(">.d.va").eq(0)) +
-                                      this.get($this, $current.find(">.d.va").eq(1));
-                                break;
-                            case "minus":
-                                ret = this.get($this, $current.find(">.d.va").eq(0)) -
-                                      this.get($this, $current.find(">.d.va").eq(1));
-                                break;
-                            case "mult":
-                                ret = this.get($this, $current.find(">.d.va").eq(0)) *
-                                      this.get($this, $current.find(">.d.va").eq(1));
-                                break;
-                            case "div":
-                                ret = this.get($this, $current.find(">.d.va").first()) /
-                                      this.get($this, $current.find(">.d.va").eq(1));
-                                break;
-                            case "modulo":
-                                ret = this.get($this, $current.find(">.d.va").first()) %
-                                      this.get($this, $current.find(">.d.va").eq(1));
-                                break;
-                            case "divint":
-                                ret = Math.floor(this.get($this, $current.find(">.d.va").first()) /
-                                      this.get($this, $current.find(">.d.va").eq(1)));
-                                break;
-                            case "neg":
-                                ret = - this.get($this, $current.find(">.d.va").first());
-                                break;
-                            case "pow2":
-                                ret = Math.pow(this.get($this, $current.find(">.d.va").first()),2);
-                                break;
-                            case "cos":
-                                ret = Math.cos(Math.PI*this.get($this, $current.find(">.d.va").first())/180);
-                                break;
-                            case "sin":
-                                ret = Math.sin(Math.PI*this.get($this, $current.find(">.d.va").first())/180);
-                                break;
-                            case "tan":
-                                ret = Math.tan(Math.PI*this.get($this, $current.find(">.d.va").first())/180);
-                                break;
-                            case "int":
-                                ret = Math.floor(this.get($this, $current.find(">.d.va").first()));
-                                break;
-                            case "round":
-                                ret = Math.round(this.get($this, $current.find(">.d.va").first()));
-                                break;
-                            case "sqrt":
-                                ret = Math.sqrt(this.get($this, $current.find(">.d.va").first()));
-                                break;
-                            case "rad":
-                                ret = helpers.round(Math.PI*this.get($this, $current.find(">.d.va").first())/180);
-                                break;
-                            case "deg":
-                                ret = helpers.round(180*this.get($this, $current.find(">.d.va").first())/Math.PI);
-                                break;
-                            case "log":
-                                ret = Math.log(this.get($this, $current.find(">.d.va").first()));
-                                break;
-                            case "exp":
-                                ret = Math.exp(this.get($this, $current.find(">.d.va").first()));
-                                break;
-                            case "atan":
-                                ret = 180*Math.atan(this.get($this, $current.find(">.d.va").first()))/Math.PI;
-                                break;
+                            case "plus":    ret = this.get($this, $first) + this.get($this, $first.next().next());      break;
+                            case "minus":   ret = this.get($this, $first) - this.get($this, $first.next().next());      break;
+                            case "mult":    ret = this.get($this, $first) * this.get($this, $first.next().next());      break;
+                            case "div":     ret = this.get($this, $first) / this.get($this, $first.next().next());      break;
+                            case "modulo":  ret = this.get($this, $first) % this.get($this, $first.next().next());      break;
+                            case "divint":  ret = Math.floor(this.get($this, $first)/this.get($this, $first.next().next())); break;
+                            case "neg":     ret = - this.get($this, $first);                        break;
+                            case "pow2":    ret = Math.pow(this.get($this, $first),2);              break;
+                            case "cos":     ret = Math.cos(Math.PI*this.get($this, $first)/180);    break;
+                            case "sin":     ret = Math.sin(Math.PI*this.get($this, $first)/180);    break;
+                            case "tan":     ret = Math.tan(Math.PI*this.get($this, $first)/180);    break;
+                            case "int":     ret = Math.floor(this.get($this, $first));              break;
+                            case "round":   ret = Math.round(this.get($this, $first));              break;
+                            case "sqrt":    ret = Math.sqrt(this.get($this, $first));               break;
+                            case "log":     ret = Math.log(this.get($this, $first));                break;
+                            case "exp":     ret = Math.exp(this.get($this, $first));                break;
+                            case "atan":    ret = 180*Math.atan(this.get($this, $first))/Math.PI;   break;
+                            case "rad":     ret = helpers.round(Math.PI*this.get($this, $first)/180); break;
+                            case "deg":     ret = helpers.round(180*this.get($this, $first)/Math.PI); break;
                           }
                         }
                         else {
@@ -571,7 +531,7 @@
             speed = 200*speed*speed;
 
             do {
-                donostop = false;
+                donotstop = false;
                 settings.data.count++;
 
                 if (settings.data.stack.length>=50) {
@@ -579,10 +539,10 @@
                     return;
                 }
 
+                if (speed) {  $this.find("#code #lines .line").removeClass("s"); }
+
                 if (settings.data.stack.length) {
                     var current = settings.data.stack[settings.data.stack.length-1];
-
-                    if (speed) {  $this.find("#code #lines .line").removeClass("s"); }
 
                     if (current.$elt.length) {
                         if (speed) { current.$elt.addClass("s"); }
@@ -595,10 +555,6 @@
                     else {
                         if (--current.count>0) { current.$elt = current.$first; }
                         else                   { helpers.popstack($this); }
-                        if (!settings.data.stack.length) {
-                            setTimeout(function() { helpers.finish($this, false); }, 1000);
-                            return;
-                        }
                     }
 
                         if (debug || settings.data.paused) { $this.find("#controls #play img").attr("src","res/img/control/play.svg"); }
