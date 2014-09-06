@@ -9,6 +9,10 @@
 .puzzle div#ttext                       { position:absolute; width:9em; height:9em; font-size:0.75em; top:.5em; left:1em;
                                           border:.1em solid #e1a94b; background-color:rgba(255,255,255,0.5); border-radius:1em;
                                           overflow:hidden; padding:.5em; display:none;}
+.puzzle div#exercice                    { position:absolute; width:12.5em; height:1.5em; top:10.5em; left:3.5em; border-radius:.5em 0 0 0;
+                                          background-image:url("../../res/img/background/book02.svg"); background-repeat:repeat;
+                                          display:none;}
+.puzzle div#exercice>div                { font-size:.5em; margin:.2em 1em; }
 .puzzle div#board                       { position:relative; z-index:2;}
 .puzzle div#submit                      { font-size:1.5em; height:1em;width:1em; cursor:pointer;
                                           position:absolute; top:7em; left:0em; z-index:3; }
@@ -23,5 +27,4 @@
 .puzzle div#valid                       { font-size:1.6em; position:absolute; background-color:rgba(255,255,255,0.8);
                                           display:none; top:1em; left:3em;  border-radius:.25em; z-index:5; }
 .puzzle div#valid div.button            { width:1.8em; height:1.8em; margin:.1em; cursor:pointer; }
-
-
+.puzzle #touch01                        { top:0; left:0; font-size:2em; z-index:3;}

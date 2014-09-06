@@ -1,12 +1,13 @@
 <div>
     <div id="timg" class="t"></div>
     <div id="ttext" class="t">
-        <div id="tcomment"></div>
         <div id="ttxt"></div>
     </div>
+    <div id="exercice"><div></div></div>
 
     <div id="board">
     </div>
+
 
     <div id="submit" ontouchstart="$(this).closest('.puzzle').puzzle('submit');event.preventDefault();"
                      onclick="$(this).closest('.puzzle').puzzle('submit');">
@@ -15,6 +16,8 @@
         <img src="res/img/icon/swwrong.svg" id="subwrong"/>
     </div>
     <div id="norot"><img src="res/img/icon/norot.svg"/></div>
+
+    <div id="touch01" ><div><img src="res/img/effects/touch01.svg"/></div></div>
 
     <div id="splash" ontouchstart="$(this).closest('.puzzle').puzzle('next');event.preventDefault();"
                      onclick="$(this).closest('.puzzle').puzzle('next');"><div>

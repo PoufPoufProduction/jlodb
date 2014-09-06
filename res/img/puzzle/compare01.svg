@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 
-<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.0" width="100%" height="100%" viewBox="0 0 640 480" id="svg2383">
+<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="100%" height="100%" viewBox="0 0 640 480" id="svg2383">
 <defs id="defs2385">
  <style type="text/css">
     .disable { display:none; }
     .box    { fill:#553300; fill-opacity:0.95;}
-    
-    .good .box { fill:green; }
+    #pieces>.wrong  { opacity:0.2; }
 
-    #target rect    { fill:#e1a94b; stroke:#352b00;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round; }
-    text    { font-size:48px;text-anchor:middle;fill:white;font-family:Times New Roman;-inkscape-font-specification:Times New Roman; }
+    text    { font-size:48px;text-anchor:middle;fill:white;font-family:Times New Roman; }
 
     #up         { display:none; }
-    #up text    { fill:black; }
+    #up text    { fill:black; font-weight:bold; }
     #down       { display:none; }
-    #down text  { fill:black; }
+    #down text  { fill:black;font-weight:bold; }
 
     .up #up     { display:inline; }
     .down #down { display:inline; }
@@ -24,18 +22,48 @@
     .l3 .e4     { display:none; }
  </style>
 </defs>
+
+<g class="disable">
+    <g id="tt">
+        <rect width="100" height="50" ry="6.24" x="0" y="0" id="r3253" style="opacity:1;fill:#ffffff;fill-opacity:0.31;fill-rule:nonzero;stroke:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"/>
+        <path d="M 6.25,0 C 2.78,0 -3.11e-17,2.78 0,6.25 L 0,43.75 C 0,47.21 2.78,50 6.25,50 L 93.75,50 C 97.21,50 100,47.21 100,43.75 L 100,6.25 C 100,2.78 97.21,-3.11e-17 93.75,0 L 6.25,0 z M 7.25,3.62 L 92.75,3.62 C 94.64,3.62 96.18,5.13 96.18,7.03 L 96.18,42.96 C 96.18,44.86 94.64,46.37 92.75,46.37 L 7.25,46.37 C 5.35,46.37 3.81,44.86 3.81,42.96 L 3.81,7.03 C 3.81,5.13 5.35,3.62 7.25,3.62 z" id="r3324" style="opacity:1;fill:#3576b5;fill-opacity:1;fill-rule:nonzero;stroke:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"/>
+        <path d="M 8.40,0 L 12.03,3.62 L 16.56,3.62 L 12.93,0 L 8.40,0 z M 17.46,0 L 21.09,3.62 L 25.59,3.62 L 21.96,0 L 17.46,0 z M 26.46,0 L 30.09,3.62 L 34.62,3.62 L 31,0 L 26.46,0 z M 35.5,0 L 39.12,3.62 L 43.65,3.62 L 40.03,0 L 35.5,0 z M 44.53,0 L 48.15,3.62 L 52.65,3.62 L 49.03,0 L 44.53,0 z M 53.56,0 L 57.18,3.62 L 61.68,3.62 L 58.06,0 L 53.56,0 z M 62.59,0 L 66.21,3.62 L 70.71,3.62 L 67.09,0 L 62.59,0 z M 71.59,0 L 75.21,3.62 L 79.75,3.62 L 76.12,0 L 71.59,0 z M 80.65,0 L 84.28,3.62 L 88.78,3.62 L 85.15,0 L 80.65,0 z M 89.65,0 L 93.34,3.68 C 94.76,3.93 95.88,5.04 96.12,6.46 L 100,10.34 L 100,6.25 C 100,6.10 99.97,5.95 99.96,5.81 L 94.18,0.03 C 94.04,0.02 93.89,-1.30e-18 93.75,0 L 89.65,0 z M 4.25,0.34 C 3.18,0.69 2.28,1.33 1.56,2.15 L 4.46,5.06 C 5.09,4.19 6.09,3.62 7.25,3.62 L 7.53,3.62 L 4.25,0.34 z M 0.09,5.18 C 0.03,5.53 -3.28e-18,5.88 0,6.25 L 0,9.62 L 3.81,13.43 L 3.81,8.90 L 0.09,5.18 z M 96.18,11.03 L 96.18,15.53 L 100,19.34 L 100,14.84 L 96.18,11.03 z M 0,14.15 L 0,18.65 L 3.81,22.46 L 3.81,17.96 L 0,14.15 z M 96.18,20.06 L 96.18,24.59 L 100,28.40 L 100,23.87 L 96.18,20.06 z M 0,23.15 L 0,27.65 L 3.81,31.46 L 3.81,26.96 L 0,23.15 z M 96.18,29.09 L 96.18,33.59 L 100,37.40 L 100,32.90 L 96.18,29.09 z M 0,32.18 L 0,36.71 L 3.81,40.53 L 3.81,36 L 0,32.18 z M 96.18,38.12 L 96.18,42.62 L 99.56,46 C 99.83,45.30 100,44.54 100,43.75 L 100,41.93 L 96.18,38.12 z M 0,41.21 L 0,43.75 C 0,44.61 0.18,45.43 0.5,46.18 L 0.53,46.25 L 3.75,49.46 C 3.77,49.47 3.79,49.49 3.81,49.5 C 4.56,49.81 5.38,50 6.25,50 L 8.78,50 L 0,41.21 z M 94.75,45.71 C 94.18,46.12 93.50,46.37 92.75,46.37 L 90.90,46.37 L 94.5,49.96 C 95.69,49.82 96.76,49.33 97.65,48.62 L 94.75,45.71 z M 9.65,46.37 L 13.28,50 L 17.81,50 L 14.18,46.37 L 9.65,46.37 z M 18.71,46.37 L 22.34,50 L 26.84,50 L 23.21,46.37 L 18.71,46.37 z M 27.71,46.37 L 31.34,50 L 35.84,50 L 32.21,46.37 L 27.71,46.37 z M 36.75,46.37 L 40.37,50 L 44.90,50 L 41.28,46.37 L 36.75,46.37 z M 45.78,46.37 L 49.40,50 L 53.90,50 L 50.28,46.37 L 45.78,46.37 z M 54.78,46.37 L 58.40,50 L 62.93,50 L 59.31,46.37 L 54.78,46.37 z M 63.84,46.37 L 67.46,50 L 71.96,50 L 68.34,46.37 L 63.84,46.37 z M 72.84,46.37 L 76.46,50 L 81,50 L 77.37,46.37 L 72.84,46.37 z M 81.87,46.37 L 85.5,50 L 90.03,50 L 86.40,46.37 L 81.87,46.37 z" id="r2383" style="opacity:1;fill:#2d457e;fill-opacity:1;fill-rule:nonzero;stroke:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"/>
+        <rect width="88.10" height="44.05" ry="5.50" x="5.94" y="2.97" id="r3249" style="opacity:1;fill:#ffffff;fill-opacity:0;fill-rule:nonzero;stroke:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"/>
+        <path d="M 18.46,5.40 L 8.56,5.40 C 7.04,5.40 5.81,6.63 5.81,8.15 L 5.81,16.75" id="p3321" style="opacity:1;fill:none;fill-opacity:0.31;fill-rule:nonzero;stroke:#2d457e;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;marker:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"/>
+        <path d="M 94.18,16.75 L 94.18,8.15 C 94.18,6.63 92.95,5.40 91.43,5.40 L 81.53,5.40" id="p3319" style="opacity:1;fill:none;fill-opacity:0.31;fill-rule:nonzero;stroke:#2d457e;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;marker:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"/>
+        <path d="M 5.81,33.25 L 5.81,41.84 C 5.81,43.36 7.04,44.59 8.56,44.59 L 18.46,44.59" id="p3317" style="opacity:1;fill:none;fill-opacity:0.31;fill-rule:nonzero;stroke:#2d457e;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;marker:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"/>
+        <path d="M 81.53,44.59 L 91.43,44.59 C 92.95,44.59 94.18,43.36 94.18,41.84 L 94.18,33.25" id="r3259" style="opacity:1;fill:none;fill-opacity:0.31;fill-rule:nonzero;stroke:#2d457e;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;marker:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"/>
+    </g>
+
+    <g id="tp">
+        <rect width="100" height="50" ry="7.00" x="-50" y="-25" id="r3432" style="opacity:1;fill:#3b4e5d;fill-opacity:1;fill-rule:nonzero;stroke:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"/>
+        <rect width="96" height="46" ry="6.13" x="-48" y="-23" id="r3435" style="opacity:1;fill:#1f2931;fill-opacity:1;fill-rule:nonzero;stroke:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"/>
+        <path d="M -41.87,-23 C -45.27,-23 -48,-20.27 -48,-16.87 L -48,-7.15 C -36.78,-2.39 -19.45,0.65 0,0.65 C 19.45,0.65 36.78,-2.39 48,-7.15 L 48,-16.87 C 48,-20.27 45.27,-23 41.87,-23 L -41.87,-23 z" id="p3437" style="opacity:1;fill:#919fd7;fill-opacity:0.12;fill-rule:nonzero;stroke:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"/>
+    </g>
+</g>
+
 <g id="bg">
 
-    <rect width="600" height="100" ry="25" x="20" y="270" id="r3813" style="fill:none;stroke:#e1a94b;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:4, 8;"/>
-    <rect width="590" height="90" ry="25" x="25" y="275" id="r3815" style="fill:#e1a94b;stroke:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"/>
+    <rect x="0" y="0" width="640" height="240" style="fill:cyan;fill-opacity:0.1;"/>
+    <line x1="0" y1="240" x2="640" y2="240" style="fill:none;stroke:blue;stroke-width:1px;"/>
 
 
     <g id="target">
-        <rect id="t01" class="e4" width="100" height="50" x="10" y="100"/>
-        <rect id="t02" width="100" height="50" x="140" y="100"/>
-        <rect id="t03" width="100" height="50" x="270" y="100"/>
-        <rect id="t04" width="100" height="50" x="400" y="100"/>
-        <rect id="t05" class="e5" width="100" height="50" x="530" y="100"/>
+        <g id="t01" class="e4" transform="translate(10,100)">
+            <use x="0" y="0" xlink:href="#tt"/>
+        </g>
+        <g id="t02" transform="translate(140,100)">
+            <use x="0" y="0" xlink:href="#tt"/>
+        </g>
+        <g id="t03" transform="translate(270,100)">
+            <use x="0" y="0" xlink:href="#tt"/>
+        </g>
+        <g id="t04" transform="translate(400,100)">
+            <use x="0" y="0" xlink:href="#tt"/>
+        </g>
+        <g id="t05" class="e5" transform="translate(530,100)">
+            <use x="0" y="0" xlink:href="#tt"/>
+        </g>
     </g>
 
     <g id="up">
@@ -54,11 +82,26 @@
 </g>
 <g id="pieces">
 
-    <g id="a" transform="translate(60,125) "><g class="scale"><g class="rot"><rect width="98"  height="48" ry="10" x="-49" y="-24" class="box"/><text y="16">1</text></g></g></g>
-    <g id="b" transform="translate(190,125) "><g class="scale"><g class="rot"><rect width="98"  height="48" ry="10" x="-49" y="-24" class="box"/><text y="16">2</text></g></g></g>
-    <g id="c" transform="translate(320,125) "><g class="scale"><g class="rot"><rect width="98"  height="48" ry="10" x="-49" y="-24" class="box"/><text y="16">3</text></g></g></g>
-    <g id="d" transform="translate(450,125) "><g class="scale"><g class="rot"><rect width="98"  height="48" ry="10" x="-49" y="-24" class="box"/><text y="16">4</text></g></g></g>
-    <g id="e" transform="translate(580,125) "><g class="scale"><g class="rot"><rect width="98"  height="48" ry="10" x="-49" y="-24" class="box"/><text y="16">5</text></g></g></g>
+    <g id="a" transform="translate(60,125) "><g class="scale"><g class="rot">
+        <use x="0" y="0" xlink:href="#tp"/>
+        <text y="16"></text>
+    </g></g></g>
+    <g id="b" transform="translate(190,125) "><g class="scale"><g class="rot">
+        <use x="0" y="0" xlink:href="#tp"/>
+        <text y="16"></text>
+    </g></g></g>
+    <g id="c" transform="translate(320,125) "><g class="scale"><g class="rot">
+        <use x="0" y="0" xlink:href="#tp"/>
+        <text y="16"></text>
+    </g></g></g>
+    <g id="d" transform="translate(450,125) "><g class="scale"><g class="rot">
+        <use x="0" y="0" xlink:href="#tp"/>
+        <text y="16"></text>
+    </g></g></g>
+    <g id="e" transform="translate(580,125) "><g class="scale"><g class="rot">
+        <use x="0" y="0" xlink:href="#tp"/>
+        <text y="16"></text>
+    </g></g></g>
 
 </g>
 </svg>

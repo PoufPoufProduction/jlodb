@@ -103,6 +103,8 @@
                 $this.find("#guide").html(settings.locale.guide);
                 //$.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); });
 
+                if (settings.exercice) { $this.find("#exercice>div").html(settings.exercice).parent().show(); }
+
                 helpers.build($this);
 
                 if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
@@ -145,15 +147,20 @@
                 $(settings.svg.root()).attr("class",$.isArray(settings.svgclass)?settings.svgclass[settings.puzzleid]:settings.svgclass);
             }
 
-            // HANDLE THE FOREGROUND IMAGE AND TEXTS
-            if (settings.img) {
-                var img = $.isArray(settings.img)?settings.img[settings.puzzleid]:settings.img;
+            // HANDLE THE TEMPLATE IMAGE AND TEXTS
+            if (settings.timg) {
+                var img = $.isArray(settings.timg)?settings.timg[settings.puzzleid]:settings.timg;
                 if (img) { $this.find("#timg").html("<img src='res/img/"+img+"'/>").show(); }
             }
-            else if (settings.txt) {
-                var txt = $.isArray(settings.txt)?settings.txt[settings.puzzleid]:settings.txt;
+            else if (settings.ttxt) {
+                var txt = $.isArray(settings.ttxt)?settings.ttxt[settings.puzzleid]:settings.ttxt;
                 if (txt) { $this.find("#ttxt").html(txt).parent().show(); }
-                if (settings.comment) { $this.find("#tcomment").html(settings.comment); }
+            }
+
+            // HANDLE TEXT IN SVG
+            if (settings.txt) {
+                var txt = $.isArray(settings.txt)?settings.txt[settings.puzzleid]:settings.txt;
+                for (var i in txt) { $("#"+i,settings.svg.root()).text(txt[i]); }
             }
 
             // GET PIECES AND NB PIECES
@@ -313,6 +320,7 @@
             $(settings.svg.root()).bind('touchend mouseup', function() {
                 $this.removeClass("active");
                 if (settings.interactive && settings.elt.id) {
+
                     $(settings.elt.id).attr("class","");
 
                     // ROTATION ?
@@ -377,7 +385,6 @@
             if (!settings.finish) {
                 for (var i in settings.origin.translate) {
                     var translate = [0,0];
-
                     // BUILD THE LIST OF PIECES PUZZLE WHICH CAN USE THE CURRENT POSITION
                     var pieces = [ settings.origin.translate[i][0] ];
                     if (settings.same) {
@@ -408,10 +415,14 @@
                         }
                         findone |= isgood;
                         if (isgood && !settings.fix) { $piece.attr("class","good"); }
-                        if (!isgood) { $piece.attr("class","wrong"); }
                     }
                     if (!findone) { wrongs++;}
                     settings.all++;
+                }
+
+                for (var i in settings.origin.translate) {
+                    var $piece = $("#"+settings.pieces+">g#"+settings.origin.translate[i][0],settings.svg.root());
+                    if (!$piece.attr("class").length) { $piece.attr("class","wrong"); }
                 }
 
                 settings.wrongs+=wrongs;
