@@ -139,6 +139,7 @@
         build: function($this) {
             var settings = helpers.settings($this);
             $this.find("#submit").removeClass("good").removeClass("wrong");
+            $this.find("#effects").hide();
             $this.removeClass("end");
 
             if (!settings.number)   { settings.number = (settings.values)?settings.values.length:1; }
@@ -269,6 +270,11 @@
                     settings.wrongs+=wrongs;
                     settings.it++;
                     $this.addClass("end");
+
+                    $this.find("#effects>div").hide();
+                    if (!wrongs) { $this.find("#effects #good").show(); }
+                    else         { $this.find("#effects #wrong").show(); }
+                    $this.find("#effects").show();
 
                     if (settings.it>=settings.number) {
 
