@@ -1,0 +1,234 @@
+<div>
+    <div id="board">
+        <div id="detail">
+            <div id="source">
+                <div id="header"></div>
+                <div id="tabs">
+                    <div class="icon s" ontouchstart="$(this).closest('.code').code('tab', this, 'op');event.preventDefault();"
+                                      onclick="$(this).closest('.code').code('tab', this, 'op');"><img src="res/img/icon/tab00.svg"/></div>
+                    <div class="icon" ontouchstart="$(this).closest('.code').code('tab', this, 'va');event.preventDefault();"
+                                      onclick="$(this).closest('.code').code('tab', this, 'va');"><img src="res/img/icon/tab02.svg"/></div>
+                    <div class="icon" ontouchstart="$(this).closest('.code').code('tab', this, 'ma');event.preventDefault();"
+                                      onclick="$(this).closest('.code').code('tab', this, 'ma');"><img src="res/img/icon/tab03.svg"/></div>
+                    <div class="icon" ontouchstart="$(this).closest('.code').code('tab', this, 'cl');event.preventDefault();"
+                                      onclick="$(this).closest('.code').code('tab', this, 'cl');"><img src="res/img/icon/tab04.svg"/></div>
+                    <div class="icon" ontouchstart="$(this).closest('.code').code('tab', this, 'no');event.preventDefault();"
+                                      onclick="$(this).closest('.code').code('tab', this, 'no');"><img src="res/img/icon/tab00.svg"/></div>
+                </div>
+                <div class="filler"></div>
+                <div id="ops"><div>
+                    <div id="op" class="tab">
+                        <div class="a op o" id="draw"><div class="label">DRAW</div><div class="d va"></div><div class="d va"></div><div class="d va"></div><div class="d va"></div><div class="d va"></div></div>
+                        <div class="a op o" id="dump"><div class="label">DUMP</div><div class="d va"></div></div>
+                        <div class="a op o" id="pixel"><div class="label">PIXEL</div><div class="d va"></div><div class="d va"></div></div>
+                        <div class="a op o" id="print"><div class="label">PRINT</div><div class="d va"></div></div>
+                        <div class="a op o" id="rect"><div class="label">RECT</div><div class="d va"></div><div class="d va"></div><div class="d va"></div><div class="d va"></div></div>
+                        <div class="a op o" id="ret"><div class="label">RETURN</div></div>
+                        <div class="a op o" id="return"><div class="label">RETURN</div><div class="d va"></div></div>
+                        <div class="a op o" id="rgb"><div class="label">RGB</div><div class="d va"></div><div class="d va"></div><div class="d va"></div></div>
+                        <div class="a op o" id="xx"><div class="label">X =</div><div class="d va"></div></div>
+                        <div class="a op o" id="yy"><div class="label">Y =</div><div class="d va"></div></div>
+                        <div class="a op o" id="zz"><div class="label">Z =</div><div class="d va"></div></div>
+                        <div class="a op o" id="ii"><div class="label">I =</div><div class="d va"></div></div>
+                        <div class="a op o" id="jj"><div class="label">J =</div><div class="d va"></div></div>
+                        <div class="a op o" id="kk"><div class="label">K =</div><div class="d va"></div></div>
+                        <div class="a op o" id="rr"><div class="label">R =</div><div class="d va"></div></div>
+                        <div class="a op o" id="gg"><div class="label">G =</div><div class="d va"></div></div>
+                        <div class="a op o" id="bb"><div class="label">B =</div><div class="d va"></div></div>
+                        <div class="a op o" id="call1"><div class="label">F1</div></div>
+                        <div class="a op o" id="call2"><div class="label">F2</div><div class="d va"></div></div>
+                        <div class="a op o" id="call3"><div class="label">F3</div><div class="d va"></div><div class="d va"></div></div>
+                    </div>
+                    <div id="va" class="tab">
+                        <div class="a va v" id="V000">0</div>
+                        <div class="a va v" id="V001">1</div>
+                        <div class="a va v" id="V002">2</div>
+                        <div class="a va v" id="V003">3</div>
+                        <div class="a va v" id="V004">4</div>
+                        <div class="a va v" id="V005">5</div>
+                        <div class="a va v" id="V006">6</div>
+                        <div class="a va v" id="V007">7</div>
+                        <div class="a va v" id="V008">8</div>
+                        <div class="a va v" id="V009">9</div>
+                        <div class="a va v" id="V010">10</div>
+                        <div class="a va v" id="V013">13</div>
+                        <div class="a va v" id="V016">16</div>
+                        <div class="a va v" id="V020">20</div>
+                        <div class="a va v" id="V024">24</div>
+                        <div class="a va v" id="V026">26</div>
+                        <div class="a va v" id="V030">30</div>
+                        <div class="a va v" id="V031">31</div>
+                        <div class="a va v" id="V032">32</div>
+                        <div class="a va v" id="V040">40</div>
+                        <div class="a va v" id="V045">45</div>
+                        <div class="a va v" id="V048">48</div>
+                        <div class="a va v" id="V050">50</div>
+                        <div class="a va v" id="V060">60</div>
+                        <div class="a va v" id="V063">63</div>
+                        <div class="a va v" id="V064">64</div>
+                        <div class="a va v" id="V065">65</div>
+                        <div class="a va v" id="V070">70</div>
+                        <div class="a va v" id="V080">80</div>
+                        <div class="a va v" id="V090">90</div>
+                        <div class="a va v" id="V100">100</div>
+                        <div class="a va v" id="V255">255</div>
+                        <div class="a va v" id="V256">256</div>
+                        <div class="a va v char" id="VA"><div class="label">A</div></div>
+                        <div class="a va v char" id="VB"><div class="label">B</div></div>
+                        <div class="a va v char" id="VC"><div class="label">C</div></div>
+                        <div class="a va v char" id="VD"><div class="label">D</div></div>
+                        <div class="a va v char" id="VE"><div class="label">E</div></div>
+                        <div class="a va v char" id="VF"><div class="label">F</div></div>
+                        <div class="a va v char" id="VG"><div class="label">G</div></div>
+                        <div class="a va v char" id="VH"><div class="label">H</div></div>
+                        <div class="a va v char" id="VI"><div class="label">I</div></div>
+                        <div class="a va v char" id="VJ"><div class="label">J</div></div>
+                        <div class="a va v char" id="VK"><div class="label">K</div></div>
+                        <div class="a va v char" id="VL"><div class="label">L</div></div>
+                        <div class="a va v char" id="VM"><div class="label">M</div></div>
+                        <div class="a va v char" id="VN"><div class="label">N</div></div>
+                        <div class="a va v char" id="VO"><div class="label">O</div></div>
+                        <div class="a va v char" id="VP"><div class="label">P</div></div>
+                        <div class="a va v char" id="VQ"><div class="label">Q</div></div>
+                        <div class="a va v char" id="VR"><div class="label">R</div></div>
+                        <div class="a va v char" id="VS"><div class="label">S</div></div>
+                        <div class="a va v char" id="VT"><div class="label">T</div></div>
+                        <div class="a va v char" id="VU"><div class="label">U</div></div>
+                        <div class="a va v char" id="VV"><div class="label">V</div></div>
+                        <div class="a va v char" id="VW"><div class="label">W</div></div>
+                        <div class="a va v char" id="VX"><div class="label">X</div></div>
+                        <div class="a va v char" id="VY"><div class="label">Y</div></div>
+                        <div class="a va v char" id="VZ"><div class="label">Z</div></div>
+                        <div class="a va v char" id="VSP"><div class="label"> </div></div>
+                        <div class="a va v char" id="V0"><div class="label">0</div></div>
+                        <div class="a va v char" id="V1"><div class="label">1</div></div>
+                        <div class="a va v char" id="V2"><div class="label">2</div></div>
+                        <div class="a va v char" id="V3"><div class="label">3</div></div>
+                        <div class="a va v char" id="V4"><div class="label">4</div></div>
+                        <div class="a va v char" id="V5"><div class="label">5</div></div>
+                        <div class="a va v char" id="V6"><div class="label">6</div></div>
+                        <div class="a va v char" id="V7"><div class="label">7</div></div>
+                        <div class="a va v char" id="V8"><div class="label">8</div></div>
+                        <div class="a va v char" id="V9"><div class="label">9</div></div>
+                        <div class="a va v" id="TRUE"><div class="label">true</div></div>
+                        <div class="a va v" id="FALSE"><div class="label">false</div></div>
+                        <div class="a va v" id="PI"><div class="label">PI</div></div>
+                        <div class="a va v" id="X">X</div>
+                        <div class="a va v" id="Y">Y</div>
+                        <div class="a va v" id="Z">Z</div>
+                        <div class="a va v" id="I">I</div>
+                        <div class="a va v" id="J">J</div>
+                        <div class="a va v" id="K">K</div>
+                        <div class="a va v" id="R">R</div>
+                        <div class="a va v" id="G">G</div>
+                        <div class="a va v" id="B">B</div>
+                    </div>
+                    <div id="ma" class="tab">
+                        <div class="a ma v" id="plus"><div class="d va"></div><div class="label">+</div><div class="d va"></div></div>
+                        <div class="a ma v" id="minus"><div class="d va"></div><div class="label">-</div><div class="d va"></div></div>
+                        <div class="a ma v" id="mult"><div class="d va"></div><div class="label">*</div><div class="d va"></div></div>
+                        <div class="a ma v" id="div"><div class="d va"></div><div class="label">/</div><div class="d va"></div></div>
+                        <div class="a ma v" id="modulo"><div class="d va"></div><div class="label">%</div><div class="d va"></div></div>
+                        <div class="a ma v" id="neg"><div class="label">-</div><div class="d va"></div></div>
+                        <div class="a ma v" id="pow2"><div class="d va"></div><div class="label">²</div></div>
+                        <div class="a ma v" id="floor"><div class="label">FLOOR</div><div class="d va"></div></div>
+                        <div class="a ma v" id="sqrt"><div class="label">SQRT</div><div class="d va"></div></div>
+                        <div class="a ma v" id="cos"><div class="label">COS</div><div class="d va"></div></div>
+                        <div class="a ma v" id="sin"><div class="label">SIN</div><div class="d va"></div></div>
+                        <div class="a ma v" id="tan"><div class="label">TAN</div><div class="d va"></div></div>
+                        <div class="a ma v" id="abs"><div class="label">ABS</div><div class="d va"></div></div>
+                        <div class="a ma v" id="and"><div class="d va"></div><div class="label">AND</div><div class="d va"></div></div>
+                        <div class="a ma v" id="or"><div class="d va"></div><div class="label">OR</div><div class="d va"></div></div>
+                        <div class="a ma v" id="lt"><div class="d va"></div><div class="label">&lt;</div><div class="d va"></div></div>
+                        <div class="a ma v" id="gt"><div class="d va"></div><div class="label">&gt;</div><div class="d va"></div></div>
+                        <div class="a ma v" id="lte"><div class="d va"></div><div class="label">&lt;=</div><div class="d va"></div></div>
+                        <div class="a ma v" id="gte"><div class="d va"></div><div class="label">&gt;=</div><div class="d va"></div></div>
+                        <div class="a ma v" id="eq"><div class="d va"></div><div class="label">==</div><div class="d va"></div></div>
+                        <div class="a ma v" id="neq"><div class="d va"></div><div class="label">!=</div><div class="d va"></div></div>
+                        <div class="a ma v" id="len"><div class="label">LENGTH</div><div class="d va c"></div></div>
+                        <div class="a ma v" id="get"><div class="label">GET</div><div class="d va c"></div><div class="d va"></div></div>
+                        <div class="a ma v" id="find"><div class="label">FIND</div><div class="d va c"></div><div class="d va"></div></div>
+                        <div class="a ma v" id="sub"><div class="label">SUBSTR</div><div class="d va c"></div><div class="d va"></div><div class="d va"></div></div>
+                        <div class="a ma v" id="sub2"><div class="label">SUBSTR</div><div class="d va c"></div><div class="d va"></div></div>
+                        <div class="a ma v" id="match"><div class="label">MATCH</div><div class="d va c"></div><div class="d va c"></div></div>
+                        <div class="a ma v" id="rep"><div class="label">REPLACE</div><div class="d va c"></div><div class="d va c"></div><div class="d va c"></div></div>
+                        <div class="a ma v" id="read"><div class="label">READ</div></div>
+                        <div class="a ma v" id="call1"><div class="label">F1</div></div>
+                        <div class="a ma v" id="call2"><div class="label">F2</div><div class="d va"></div></div>
+                        <div class="a ma v" id="call3"><div class="label">F3</div><div class="d va"></div><div class="d va"></div></div>
+                    </div>
+                    <div id="cl" class="tab">
+                        <div class="a cl o" id="rep"><div class="label">REPEAT</div><div class="d va"></div><div class="d op"></div></div>
+                        <div class="a cl o" id="fct1"><div class="label">F1</div><div class="d op"></div></div>
+                        <div class="a cl o" id="fct2"><div class="label">F2</div><div class="d va"></div><div class="d op"></div></div>
+                        <div class="a cl o" id="fct3"><div class="label">F3</div><div class="d va"></div><div class="d va"></div><div class="d op"></div></div>
+                        <div class="a cl o" id="if"><div class="label">IF</div><div class="d va"></div><div class="d op"></div></div>
+                        <div class="a cl o" id="else"><div class="label">IF</div><div class="d va"></div><div class="d op"></div><div class="label r">ELSE</div><div class="d op"></div></div>
+                        <div class="a cl o" id="while"><div class="label">WHILE</div><div class="d va"></div><div class="d op"></div></div>
+                        <div class="a cl o" id="do"><div class="label">DO</div><div class="d op"></div><div class="label r">WHILE</div><div class="d va"></div></div>
+                    </div>
+                </div></div>
+            </div>
+        </div>
+
+        <div id="central">
+            <div id="code">
+                <div id="lines"></div>
+                <div class="filler"></div>
+            </div>
+            <div id="exercice"><div></div></div>
+        </div>
+
+        <div id="screens">
+            <div id="output" ontouchstart="$(this).closest('.code').code('stdout');event.preventDefault();"
+                             onclick="$(this).closest('.code').code('stdout');"><pre></pre></div>
+            <div id="canvas"><canvas></canvas></div>
+            <div id="keypad">
+                <img src="res/img/control/keypad01.svg"/>
+                <div id="left"  ontouchstart="$(this).closest('.code').code('click', 37);event.preventDefault();"
+                                onclick="$(this).closest('.code').code('click', 37);"></div>
+                <div id="down"  ontouchstart="$(this).closest('.code').code('click', 40);event.preventDefault();"
+                                onclick="$(this).closest('.code').code('click', 40);"></div>
+                <div id="right" ontouchstart="$(this).closest('.code').code('click', 39);event.preventDefault();"
+                                onclick="$(this).closest('.code').code('click', 39);"></div>
+                <div id="up"    ontouchstart="$(this).closest('.code').code('click', 38);event.preventDefault();"
+                                onclick="$(this).closest('.code').code('click', 38);"></div>
+                <div id="a" class="b" ontouchstart="$(this).closest('.code').code('click', 65);event.preventDefault();"
+                                      onclick="$(this).closest('.code').code('click', 65);"></div>
+                <div id="b" class="b" ontouchstart="$(this).closest('.code').code('click', 66);event.preventDefault();"
+                                      onclick="$(this).closest('.code').code('click', 66);"></div>
+            </div>
+            <div id="controls">
+                <div id="buttons">
+                    <div id="speed" ontouchstart="$(this).closest('.code').code('speed');event.preventDefault();"
+                                    onclick="$(this).closest('.code').code('speed');"><img src="res/img/control/x2.svg"/></div>
+                    <div id="stop" ontouchstart="$(this).closest('.code').code('stop');event.preventDefault();"
+                                   onclick="$(this).closest('.code').code('stop');"><img src="res/img/control/stop.svg"/></div>
+                    <div id="play" ontouchstart="$(this).closest('.code').code('play');event.preventDefault();"
+                                   onclick="$(this).closest('.code').code('play');"><img src="res/img/control/play.svg"/></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="effects">
+        <div id="good"><img src="res/img/effects/alert02.svg"/></div>
+        <div id="wrong"><img src="res/img/effects/alert01.svg"/></div>
+    </div>
+
+    <div id="touch01" ><div><img src="res/img/effects/touch01.svg"/></div></div>
+
+    <div id="mask" class="mask"></div>
+
+
+    <div id="splash" ontouchstart="$(this).closest('.code').code('next');event.preventDefault();"
+                     onclick="$(this).closest('.code').code('next');"><div>
+        <div class="text">
+            <h1 id="label">assembler</h1>
+            <div id="guide">
+            </div>
+        </div>
+    </div></div>
+
+</div>
+

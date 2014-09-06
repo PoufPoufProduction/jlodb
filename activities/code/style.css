@@ -1,0 +1,124 @@
+.code .both *                        { overflow:visible; }
+.code                                { background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat;}
+.code div#splash>div                 { background-image:url("../../res/img/banners/code.svg"); }
+.code div#splash .text               { width:45%; float:right; }
+.code div#splash .text h1            { font-size:1.2em; text-align:right; padding-right:.5em; }
+.code div#splash #guide              { font-size:.8em; margin-right:.5em; }
+.code div#board                      { font-size:.5em; width:105%; }
+.code div#board>div                  { float:left; }
+/*---------------------------------------------------------------------------------------------------------------------------*/
+.code div#board #screens>*           { font-size:.75em; margin:.1em; }
+.code #screens #output               { width:11.6em; height:5.6em; background-color:#030; color:#0F0; font-weight:bold;
+                                      padding:.2em; border-radius:.5em; line-height:.8em;
+                                      background-image:url("../../res/img/background/book05.svg"); background-repeat:repeat;}
+.code #screens #output pre           { overflow:visible; }
+.code #screens #canvas               { width:12em; height:12em; background-color:black; border-radius:.5em; position:relative; }
+.code #screens.s2 #canvas            { height:8em; }
+.code #screens.s3 #canvas            { height:10.8em; }
+.code #screens #keypad               { width:12em; height:4em; background-color:white; border-radius:.5em; position:relative; }
+.code #screens #keypad>div           { position:absolute; width:1.7em; height:1.7em; cursor:pointer; }
+.code #screens #keypad>div.b         { width:2em; height:2em; border-radius:1em; }
+.code #screens #keypad #left         { top:2.1em; left:.7em; }
+.code #screens #keypad #down         { top:2.1em; left:2.5em; }
+.code #screens #keypad #right        { top:2.1em; left:4.3em; }
+.code #screens #keypad #up           { top:0.3em; left:2.5em; }
+.code #screens #keypad #a            { top:1em; left:7em; }
+.code #screens #keypad #b            { top:1em; left:9.4em; }
+.code #screens #controls             { width:12em; height:9.4em; background-color:#AAA; border-radius:.5em;
+                                      background-image:url("../../res/img/background/steel01.svg"); background-repeat:repeat; }
+.code #screens #controls.running     { background-color:#5BB; }
+.code #screens.s2 #controls          { height:13.4em; }
+.code #screens.s3 #controls          { height:10.6em; }
+.code #screens #buttons              { margin-left:.5em; }
+.code #screens #buttons>div          { font-size:3em; width:1em; height:1em; margin:.1em; float:left; cursor:pointer;}
+/*---------------------------------------------------------------------------------------------------------------------------*/
+.code div#board #central>*           { font-size:.75em; margin:.1em; width:20em; border-radius:.5em; }
+.code #central #code                 { height:25em; background-color:#222; overflow:auto;
+                                      background-image:url("../../res/img/background/asm45.svg"); background-repeat:no-repeat; }
+.code #central #code #lines          { font-size:1em; }
+.code.small #central #code #lines    { font-size:.8em; }
+.code #central #code #lines .line    { position:relative; width:100%; min-height:1em;
+                                       background-color:rgba(20,40,50,0.9); border:1px solid #334466; border-width:0 0 1px 0;}
+.code #central #code #lines .line.s  { background-color:yellow !important; }
+.code #central #code .filler         { width:100%; height:2em; border:1px solid #334466; border-width:4px 0 0 0;
+                                       background-image:linear-gradient(to bottom, rgba(51,68,102,1), rgba(51,68,102,0)); }
+.code #central #lines .code          { margin:.1em; background-color:#da5; border-radius:.25em; padding:.1em; width:12.25em;
+                                      color:#fea; font-weight:bold; position:absolute; top:0; left:0;}
+.code #central #lines .code>div      { float:left; }
+.code #central #lines .codelabel     { width:3.7em; text-align:center; }
+.code #central #lines .codevalue     { margin-left:1em; font-size:.3em; width:22em; font-family: "Courier New" Courier monospace;}
+.code #central #exercice             { width:29.1em !important; height:9.4em; background-repeat:repeat; padding:.2em .5em;
+                                      background-image:url("../../res/img/background/book02.svg"); text-align:justify;
+                                      font-family: "Courier New" Courier monospace; font-size:.5em !important;}
+.code.large #central #exercice       { height:16.8em; }
+.code.large #central #code           { height:20em; }
+
+/*---------------------------------------------------------------------------------------------------------------------------*/
+.code div#board #detail>*            { font-size:.75em;margin:.1em; width:10em; border-radius:.5em;}
+.code #detail #source                { height:31.5em; background-color:#112211;}
+.code #detail #source>div            { clear:both; }
+.code #detail #source #header        { font-size:2em; height:1em; }
+.code #detail #source #tabs          { font-size:2em; height:1em; }
+.code #detail #source #tabs .icon    { float:left; border-radius:.5em .5em 0 0; cursor:pointer; background-color:#aee2e6; }
+.code #detail #source #tabs .icon.s  { background-color:red; }
+.code #detail #source .filler        { height:.5em; background-color:white; }
+.code #detail #source #ops           { background-color:white; }
+.code #detail #source #ops>div       { margin:.2em .2em 5em .2em; background-color:#90cce0; height:25em;
+                                      background-image:url("../../res/img/background/book05.svg"); background-repeat:repeat;}
+.code #detail #source #ops .tab      { font-size:.75em; display:none; }
+.code #detail #source #ops #op       { display:inherit; }
+.code #detail #source .a             { padding:0;  }
+
+/*---------------------------------------------------------------------------------------------------------------------------*/
+.code #effects                       { width:25%; height:25%; position:absolute; top:5%; left:50%; display:none; }
+.code #effects>div                   { font-size:3em; width:1em; height:1em; display:none; }
+
+.code #mask                          { width:71%; height:100%; position:absolute; left:0; top:0; background-color:rgba(0,0,0,0);
+                                       display:none; }
+
+.code #binary                        { width:100%; height:100%; position:absolute; top:0; left:0; background-color:rgba(0,0,0,0.8);
+                                      display:none;}
+.code #binary>div                    { width:82%; height:80%; margin:5% 10%; background-color:rgba(0,50,10,0.8); color:#0F0;
+                                      font-weight:bold; font-size:.35em; font-family: "Courier New" Courier monospace; border-radius:.5em;
+                                      overflow:auto; cursor:pointer;  }
+.code #binary p                      { white-space:nowrap; margin:0 .5em;}
+
+.code #touch01                       { top:0; left:0; font-size:2em; }
+
+
+.code #board .a                      { cursor:move; margin:.1em; text-align:center; font-size:1em; opacity:0.2;}
+.code #board  .d.va.over                     { background-color:red !important; }
+.code #board  .a.s                           { opacity:1; }
+.code #board  .va.c                          { background-color:#888 !important; }
+.code #board  .ui-draggable-dragging         { cursor:none !important; }
+.code #board  .va.ui-draggable-dragging      { opacity:0.8 !important; }
+.code #board  .ma.ui-draggable-dragging      { opacity:0.8 !important; }
+.code #board  .ui-draggable-dragging .d.op   { display:none; }
+
+.code #board  .op                            { background-color:#446688; color:#DDEEFF; border-radius:.5em; min-width:12.5em;  }
+.code #board  .op>.label                     { margin:0 .2em; text-align:right; float:left; width:4em; }
+.code #board  .op>.va                        { margin:.1em; min-width:1.2em; min-height:1em; height:inherit;}
+
+.code #board  .va                            { background-color:#777777; color:#EEEEEE; float:left; border-radius:.25em; height:1em;
+                                       min-width:2.2em; }
+.code #board  .va>.label                     { margin:0 .4em; }
+.code #board  .va.char .label:before         { content:"'"; }
+.code #board  .va.char .label:after          { content:"'"; }
+
+.code #board  .ma                            { background-color:#555555; color:#EEEEEE; border-radius:.25em; float:left; }
+.code #board  .ma>.va                        { margin:.1em .2em; min-width:1.2em; min-height:1em; height:inherit;}
+.code #board  .ma>.label                     { float:left; margin:0 .2em; }
+
+.code .cl                            { background-color:#334466; color:#DDEEFF; border-radius:.5em; min-width:12.5em;  }
+.code #board  .cl>.label                     { margin:0 .2em; text-align:right; float:left; width:4em; }
+.code #board  .cl>.label.r                   { width:auto; }
+.code #board  .cl>.va                        { margin:.1em; min-width:1.2em; min-height:1em; height:inherit;}
+.code #board  .cl>.op                        { float:left; margin:.1em; min-height:1em; min-width:1.8em; border-radius:.25em; }
+.code #lines .cl>.op                 { clear:both; width:98%; border-radius:0; }
+.code #lines .cl>.label.r            { width:4em; font-size:1em; }
+.code #lines .op>.va                 { min-width:1.8em; }
+.code #lines .cl>.va                 { min-width:1.8em; }
+.code #lines .ma>.va                 { min-width:1.8em; }
+
+
+
