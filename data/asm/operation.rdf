@@ -517,6 +517,18 @@
     </rdf:Description>
 
 
+    <rdf:Description>
+        <dct:identifier>256</dct:identifier>
+        <dct:title xml:lang="fr-FR">Utiliser l'opérateur ADC pour transformer en ASCII une valeur comprise entre 0 et 9.</dct:title>
+        <dct:description><![CDATA["ops":["adc","sta"],"args":[{"value":"30","type":"v"},{"value":"fe"}],"nblines":2,"valid":{"out":"024680"},"footer":[{"label":"loop","value":"","code":"e8e006d001004c0b10","rts":false}],"header":[{"label":"init","value":"024680","code":"a2004c0b10000204060800bd0510","rts":false}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Envoyez sous forme ASCII la valeur de l'accumulateur A vers la sortie standard.","","Pour convertir une valeur comprise entre 0 et 9 (inclus) en caractère ASCII, il suffit d'ajouter la valeur 0x30. En effet, le caractère ASCII 0x30 est le '0', le caractère 0x31 est le '1', etc."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
     <!-- SBC -->
 
     <rdf:Description>

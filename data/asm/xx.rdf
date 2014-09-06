@@ -5,7 +5,7 @@
     <rdf:Description>
         <dct:identifier>x</dct:identifier>
         <dct:title xml:lang="fr-FR">Programmer librement à l'aide de l'ensemble des opérateurs.</dct:title>
-        <dct:description><![CDATA["args":[{"value":"00","type":"v"},{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"09","type":"v"},{"value":"0f","type":"v"},{"value":"41","type":"v"},{"value":"42","type":"v"},{"value":"79","type":"v"},{"value":"7F","type":"v"},{"value":"80","type":"v"},{"value":"99","type":"v"},{"value":"f0","type":"v"},{"value":"ff","type":"v"},{"value":"01"},{"value":"02"},{"value":"fc"},{"value":"fd"},{"value":"fe"},{"value":"ff"},{"value":"200"},{"value":"201"},{"value":"20F"},{"value":"2F0"},{"value":"var1","type":"label"},{"value":"var2","type":"label"},{"value":"label1","type":"label"},{"value":"label2","type":"label"},{"value":"loop1","type":"label"},{"value":"loop2","type":"label"},{"value":"hello","type":"label x"},{"value":"hello","type":"label y"},{"value":"0200","type":"x"},{"value":"0200","type":"y"}],"nblines":50,"valid":{"mem":{"200":"3141"}},"footer":[{"label":"wait","value":"brk","code":"a90085ffa5ffc900f0fa00","rts":false},{"label":"hello","value":"","code":"0000000000000","rts":false}],"class":"hide","debug":true,"model":4,"font":0.5]]></dct:description>
+        <dct:description><![CDATA["args":[{"value":"00","type":"v"},{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"03","type":"v"},{"value":"04","type":"v"},{"value":"05","type":"v"},{"value":"06","type":"v"},{"value":"07","type":"v"},{"value":"08","type":"v"},{"value":"09","type":"v"},{"value":"0a","type":"v"},{"value":"0b","type":"v"},{"value":"0c","type":"v"},{"value":"0d","type":"v"},{"value":"0e","type":"v"},{"value":"0f","type":"v"},{"value":"10","type":"v"},{"value":"11","type":"v"},{"value":"30","type":"v"},{"value":"41","type":"v"},{"value":"42","type":"v"},{"value":"79","type":"v"},{"value":"7F","type":"v"},{"value":"80","type":"v"},{"value":"99","type":"v"},{"value":"f0","type":"v"},{"value":"ff","type":"v"},{"value":"01"},{"value":"02"},{"value":"fc"},{"value":"fd"},{"value":"fe"},{"value":"ff"},{"value":"200"},{"value":"201"},{"value":"20F"},{"value":"2F0"},{"value":"var1","type":"label"},{"value":"var2","type":"label"},{"value":"label1","type":"label"},{"value":"label2","type":"label"},{"value":"loop1","type":"label"},{"value":"loop2","type":"label"},{"value":"data1","type":"label"},{"value":"data2","type":"label"},{"value":"hello","type":"label x"},{"value":"hello","type":"label y"},{"value":"0200","type":"x"},{"value":"0200","type":"y"},{"value":"data1","type":"label x"},{"value":"data2","type":"label x"}],"nblines":50,"valid":{"mem":{"200":"3141"}},"footer":[{"label":"wait","value":"brk","code":"a90085ffa5ffc900f0fa00","rts":false},{"label":"hello","value":"","code":"0000000000000","rts":false}],"class":"hide","debug":true,"model":4,"font":0.5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Programmation libre : pas d'objectif."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
@@ -14,6 +14,27 @@
         <dct:coverage xml:lang="fr-FR">debug</dct:coverage>
     </rdf:Description>
 
+
+    <!--
+        LDX 00
+        JUMP LABEL1
+        DATA (5 bytes)
+        LABEL1
+        LDA DATA,X
+        a2004c0b10eaeaeaeaeaeabd0510
+
+        .../...
+
+        INX
+        CMP #0x06
+        BNE +1
+        BRK
+        JUMP LABEL1
+        e8e006d001004c0b10
+
+        if change the DATA size, increase 0b
+
+    -->
 
 </rdf:RDF>
 

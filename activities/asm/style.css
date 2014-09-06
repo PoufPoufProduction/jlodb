@@ -56,7 +56,7 @@
 .asm #detail #source                { height:25em; background-color:#112211; 
                                       background-image:url("../../res/img/background/book05.svg"); background-repeat:repeat;}
 .asm #detail #source>div            { clear:both; }
-.asm #detail #source .a             { float:left; cursor:pointer; }
+.asm #detail #source .a             { float:left; }
 .asm #detail #source #header        { font-size:2em; height:1em;}
 .asm #detail #source #header .icon  { float:right; cursor:pointer; margin:.1em; font-size:.8em; }
 .asm #detail #source #ops           { background-color:#90cce0; }
@@ -77,7 +77,7 @@
                                           /* text-transform:lowercase; */}
 .asm #central #code #lines .arg         { margin:.1em; background-color:#82ca82; border-radius:.25em; padding:.1em; width:5em;
                                           color:#efe; font-weight:bold; position:absolute; top:0; left:7.3em; }
-.asm .a                                 { text-align:center; font-size:1em; }
+.asm .a                                 { text-align:center; font-size:1em; cursor:move; }
 
 .asm .a.arg                         { background-color:#82ca82; color:#efe; font-weight:bold; }
 .asm .a.arg:before                  { content:'0x'; }
@@ -95,6 +95,9 @@
 .asm .a.arg.label.i:before          { content:'('; }
 .asm .a.arg.label.ix:before         { content:'('; }
 .asm .a.arg.label.iy:before         { content:'('; }
+
+
+.asm .ui-draggable-dragging         { cursor:none !important; }
 
 
 .asm #detail #register              { height:6.5em; background-color:gray; font-weight:bold; cursor:pointer; position:relative;}

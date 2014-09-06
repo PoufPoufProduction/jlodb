@@ -145,7 +145,7 @@
                 }
                 $this.find("#source .a").each( function() {
                     if (!$(this).hasClass("d")) {
-                        $(this).draggable({ containment:$this, helper:"clone", appendTo:$this.find("#lines"), cursor:"move",
+                        $(this).draggable({ containment:$this, helper:"clone", appendTo:$this.find("#lines"),
                             start:function() { settings.data.compiled = false;}});
                     }
                 });
@@ -175,6 +175,8 @@
                 }
                 $this.find("#code #lines .line.x").droppable({accept:".a",
                     drop:function(event, ui) {
+                      if (($(this).offset().top+$(this).height()) < ($this.find("#code").offset().top+$this.find("#code").height()))
+                      {
                         var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
                                     event.originalEvent.touches[0]:event;
                         var $elt = $(ui.draggable).clone().css("opacity", 1);
@@ -203,11 +205,12 @@
                         setTimeout(function(){$this.find("#touch01>div").removeClass("running").parent().hide(); },800);
 
                         $(this).append($elt);
-                        $elt.draggable({ containment:$this, helper:"clone", appendTo:$this.find("#lines"), cursor:"move",
+                        $elt.draggable({ containment:$this, helper:"clone", appendTo:$this.find("#lines"),
                             start:function() {
                                 settings.data.compiled = false;
                                 $elt.css("opacity",0.2);},
                             stop: function( event, ui ) { $(this).detach(); } });
+                      }
                 } });
 
                 // Build the footer
