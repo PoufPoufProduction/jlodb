@@ -426,10 +426,10 @@
                 var ret = ($this.find("#code #fct1").length==1);
                 if (ret) {
                     settings.data.stack.push({$elt:$this.find("#code #fct1 .d.op").children().first(),
-                                              $first:0, count:0, sav:{X:settings.data.X, Y:settings.data.Y, Z:settings.data.Z} });
-                    settings.data.X = 0;
-                    settings.data.Y = 0;
-                    settings.data.Z = 0;
+                                              $first:0, count:0, sav:{X:settings.data.X, Y:settings.data.Y, Z:settings.data.Z,
+                                                                      I:settings.data.I, J:settings.data.J } });
+                    settings.data.X = 0; settings.data.Y = 0; settings.data.Z = 0;
+                    settings.data.I = 0; settings.data.J = 0;
                 }
                 return !ret;
             },
@@ -439,10 +439,12 @@
                 if (ret) {
                     var valueX = helpers.process.value.get($this, $elt.find(".d.va").first());
                     settings.data.stack.push({$elt:$this.find("#code #fct2 .d.op").children().first(),
-                                              $first:0, count:0, sav:{X:settings.data.X, Y:settings.data.Y, Z:settings.data.Z} });
+                                              $first:0, count:0, sav:{X:settings.data.X, Y:settings.data.Y, Z:settings.data.Z,
+                                                                      I:settings.data.I, J:settings.data.J } });
                     settings.data.X = valueX;
                     settings.data.Y = 0;
                     settings.data.Z = 0;
+                    settings.data.I = 0; settings.data.J = 0;
                 }
                 return !ret;
             },
@@ -453,10 +455,12 @@
                     var valueX = helpers.process.value.get($this, $elt.find(".d.va").first());
                     var valueY = helpers.process.value.get($this, $elt.find(".d.va").first().next());
                     settings.data.stack.push({$elt:$this.find("#code #fct3 .d.op").children().first(),
-                                              $first:0, count:0, sav:{X:settings.data.X, Y:settings.data.Y, Z:settings.data.Z} });
+                                              $first:0, count:0, sav:{X:settings.data.X, Y:settings.data.Y, Z:settings.data.Z,
+                                                                      I:settings.data.I, J:settings.data.J } });
                     settings.data.X = valueX;
                     settings.data.Y = valueY;
                     settings.data.Z = 0;
+                    settings.data.I = 0; settings.data.J = 0;
                 }
                 return !ret;
             },
