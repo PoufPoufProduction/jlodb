@@ -92,7 +92,10 @@
 
                 // Locale handling
                 $this.find("h1#label").html(settings.label);
-                if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
+                if (settings.locale) { $.each(settings.locale, function(id,value) {
+                    if ($.isArray(value)) {  for (var i in value) { $this.find("#"+id).append("<p>"+value[i]+"</p>"); } }
+                    else { $this.find("#"+id).html(value); }
+                }); }
                 if ($.isArray(settings.exercice)) {
                     $this.find("#exercice>div").html("");
                     for (var i in settings.exercice) { $this.find("#exercice>div").append(
@@ -468,6 +471,55 @@
                                             Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first().next().next())),
                                             Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first().next().next().next())));
                 return true;
+            },
+            call1: function($this, $elt) {
+                var settings = helpers.settings($this);
+                var ret = ($this.find("#code #fct1").length==1);
+                if (ret) {
+                    settings.data.stack.push({$elt:$this.find("#code #fct1 .d.op").children().first(),
+                                              $first:0, count:0, sav:{X:settings.data.X, Y:settings.data.Y, Z:settings.data.Z,
+                                                                      I:settings.data.I, J:settings.data.J, K:settings.data.K,
+                                                                      R:settings.data.R, G:settings.data.G, B:settings.data.B } });
+                    settings.data.X = 0; settings.data.Y = 0; settings.data.Z = 0;
+                    settings.data.I = 0; settings.data.J = 0; settings.data.K = 0;
+                    settings.data.R = 0; settings.data.G = 0; settings.data.B = 0;
+                }
+                return !ret;
+            },
+            call2: function($this, $elt) {
+                var settings = helpers.settings($this);
+                var ret = ($this.find("#code #fct2").length==1);
+                if (ret) {
+                    var valueX = helpers.process.value.get($this, $elt.find(".d.va").first());
+                    settings.data.stack.push({$elt:$this.find("#code #fct2 .d.op").children().first(),
+                                              $first:0, count:0, sav:{X:settings.data.X, Y:settings.data.Y, Z:settings.data.Z,
+                                                                      I:settings.data.I, J:settings.data.J, K:settings.data.K,
+                                                                      R:settings.data.R, G:settings.data.G, B:settings.data.B } });
+                    settings.data.X = valueX;
+                    settings.data.Y = 0;
+                    settings.data.Z = 0;
+                    settings.data.I = 0; settings.data.J = 0; settings.data.K = 0;
+                    settings.data.R = 0; settings.data.G = 0; settings.data.B = 0;
+                }
+                return !ret;
+            },
+            call3: function($this, $elt) {
+                var settings = helpers.settings($this);
+                var ret = ($this.find("#code #fct3").length==1);
+                if (ret) {
+                    var valueX = helpers.process.value.get($this, $elt.find(".d.va").first());
+                    var valueY = helpers.process.value.get($this, $elt.find(".d.va").first().next());
+                    settings.data.stack.push({$elt:$this.find("#code #fct3 .d.op").children().first(),
+                                              $first:0, count:0, sav:{X:settings.data.X, Y:settings.data.Y, Z:settings.data.Z,
+                                                                      I:settings.data.I, J:settings.data.J, K:settings.data.K,
+                                                                      R:settings.data.R, G:settings.data.G, B:settings.data.B } });
+                    settings.data.X = valueX;
+                    settings.data.Y = valueY;
+                    settings.data.Z = 0;
+                    settings.data.I = 0; settings.data.J = 0; settings.data.K = 0;
+                    settings.data.R = 0; settings.data.G = 0; settings.data.B = 0;
+                }
+                return !ret;
             },
             rep: function($this, $elt) {
                 var settings = helpers.settings($this);
