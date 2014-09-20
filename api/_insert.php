@@ -53,7 +53,8 @@ function insertIntoDB($link,$activity,$key,$file,$lang,&$warnings, &$tags) {
                                                                         { $exerciceTag      = $dc; }
             }
             $exerciceId = exName($file, $key, $exerciceId);
-            if ($exerciceVar) { $exerciceVar = exName($file, $key, $exerciceVar); }
+            if (strlen($exerciceVar)) { $exerciceVar = exName($file, $key, $exerciceVar); }
+
             if ($exerciceVar == $exerciceId) { $exerciceVar =""; }
 
             // FILL THE TABLE

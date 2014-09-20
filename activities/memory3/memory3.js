@@ -102,8 +102,7 @@
                 // Locale handling
                 $this.find("h1#label").html(settings.label);
                 if(settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
-
-                if (settings.exercice) { $this.find("#exercice").html(settings.exercice).show(); }
+                if (settings.exercice) { $this.find("#exercice").show().find(">div").html(settings.exercice); }
 
                 if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
@@ -146,9 +145,6 @@
                 var $this=$(this), settings = helpers.settings($this);
                 // Hide instruction
                 $(this).find("#splash").hide();
-                if ($this.find("#exercice").is(":visible")) {
-                    $(this).find("#exercice").animate({opacity:0},1000, function(){ $(this).hide(); });
-                }
                 settings.interactive = true;
 
             },

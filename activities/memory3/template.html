@@ -2,7 +2,7 @@
     <div id="board">
     </div>
 
-    <div id="exercice"></div>
+    <div id="exercice" ontouchstart="$(this).hide();event.preventDefault();" onclick="$(this).hide();"><div></div></div>
     <div id="effects"><div id="wrong"><img src="res/img/effects/alert01.svg"/></div></div>
 
     <div id="splash" ontouchstart="$(this).closest('.memory3').memory3('next');event.preventDefault();"
