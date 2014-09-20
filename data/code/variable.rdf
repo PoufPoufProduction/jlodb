@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dct="http://purl.org/dc/terms/">
+
+    <!-- GET, LENGTH, OPERATOR ARE KNOWN -->
+
+    <rdf:Description>
+        <dct:identifier>001</dct:identifier>
+        <dct:title xml:lang="fr-FR">Afficher 5 fois le dernier caractère d'une chaîne de caractères en utilisant une variable.</dct:title>
+        <dct:description><![CDATA["class":"l1","a":{"op":["print","xx"],"va":["V001","X"],"ma":["get","len","minus"]},"values":{"\\\"HELLO\\\"":"HELLO"},"valid":{"stdout":1211029905}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez 'O', le dernier caractère du mot \\\"HELLO\\\", sur la sortie standard.","","Plutôt que de réécrire 5 fois l'opération PRINT(GET(\\\"HELLO\\\",LENGTH(\\\"HELLO\\\")-1)), il est fortement conseillé d'utiliser la variable X comme ceci :",". X = GET(\\\"HELLO\\\",LENGTH(\\\"HELLO\\\")-1)",". PRINT(X) [x5]"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>006</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">tutorial</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>002</dct:identifier>
+        <dct:title xml:lang="fr-FR">Afficher 3 fois la dernière valeur d'un tableau en utilisant une variable.</dct:title>
+        <dct:description><![CDATA["class":"l1","a":{"op":["dump","xx"],"va":["V001","X"],"ma":["get","len","minus"]},"values":{"DATA":[4,8,15,16,23,42]},"valid":{"stdout":1254702314}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez 3 fois la dernière valeur du tableau DATA sur la sortie standard.","","Il est fortement conseillé d'utiliser ici une variable. Une variable est une zone de la mémoire dans laquelle il est possible de sauver une valeur afin de l'utiliser plus tard."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>006</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">tutorial</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>003</dct:identifier>
+        <dct:title xml:lang="fr-FR">Incrémenter et afficher 4 fois la dernière valeur d'un tableau en utilisant une variable.</dct:title>
+        <dct:description><![CDATA["debug":true,"class":"l2","a":{"op":["dump","xx"],"va":["V001","X"],"ma":["get","len","minus","plus"]},"values":{"DATA":[4,8,15,16,23,42]},"valid":{"stdout":-1685991242}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Copiez la dernière valeur du tableau DATA dans la variable X, incrémentez de 1 cette valeur puis affichez celle-ci 4 fois sur la sortie standard.","","En informatique, la commande utilisée pour incrémenter une variable est presque toujours :","","   X = X + 1","","A l'exécution, l'ordinateur va commencer par évaluer l'expression de droite 'X+1'. Si, par exemple, X vaut 23, alors 'X+1' est égal à 24. L'instruction 'X = X + 1' se résume donc, dans cet exemple, à 'X = 24'. L'instruction à donc incrémenté la variable X d'une unité faisant passer celle-ci de 23 à 24."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>006</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">tutorial</dct:coverage>
+    </rdf:Description>
+
+     <rdf:Description>
+        <dct:identifier>004</dct:identifier>
+        <dct:title xml:lang="fr-FR">En utilisant l'addition et une varibale, afficher le texte \\\"ABCD\\\" à partir du caractère 'A'.</dct:title>
+        <dct:description><![CDATA["class":"l1","a":{"op":["print","xx"],"va":["V001","VA","X"],"ma":["plus"]},"valid":{"stdout":-1469842180}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez le texte \\\"ABCD\\\" sur la sortie standard.","","Dans cet exercice, seule la valeur numérique 1 est autorisée. Après avoir correctement initialisé la variable X, utilisez la commande X = X + 1 pour atteindre les autres lettres à afficher."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>006</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>005</dct:identifier>
+        <dct:title xml:lang="fr-FR">Afficher la lettre 'M' à partir de l'avant dernière lettre du mot \\\"WORLD\\\".</dct:title>
+        <dct:description><![CDATA["debug":true,"class":"l1","a":{"op":["print","xx"],"va":["V001","V002","X"],"ma":["get","len","minus","plus"]},"values":{"\\\"WORLD\\\"":"WORLD"},"valid":{"stdout":-1289679751}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["A partir du mot \\\"WORLD\\\", affichez la lettre 'M' sur la sortie standard.","","Dans l'ordre alphabétique, 'M' est la lettre suivant 'L' qui se trouve être l'avant-dernière lettre du mot \\\"WORLD\\\".","","Pour rappel, la dernière lettre d'un MOT est à la position LENGTH(MOT)-1. Par conséquent, l'avant-dernière lettre d'un mot est à la position LENGTH(MOT)-..."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>006</dct:alternative>
+    </rdf:Description>
+
+     <rdf:Description>
+        <dct:identifier>006</dct:identifier>
+        <dct:title xml:lang="fr-FR">Afficher les 5 premières puissances de 2 \\\"1 2 4 8 16\\\" en utilisant une variable.</dct:title>
+        <dct:description><![CDATA["class":"l1","a":{"op":["dump","xx"],"va":["V001","V002","X"],"ma":["mult"]},"valid":{"stdout":1235119986}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez les 5 premières puissances de 2 \\\"1 2 4 8 16\\\" sur la sortie standard.","","X = X + 1 n'est évidemment pas la seule façon d'incrémenter la variable X. Toutes les opérations sont possibles comme, par exemple, X = X * 2. Avec cette opération, si X = 1 alors le programme va calculer la partie droite de l'opération X * 2 = 1 * 2 = 2 puis il va charger ce résultat dans la variable X."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>006</dct:alternative>
+    </rdf:Description>
+
+     <rdf:Description>
+        <dct:identifier>007</dct:identifier>
+        <dct:title xml:lang="fr-FR">Afficher différentes valeurs entières en utilisant une variable et les opérations appropriées.</dct:title>
+        <dct:description><![CDATA["debug":true,"class":"l1","a":{"op":["dump","xx"],"va":["V001","V006","V003","V004","X"],"ma":["mult","plus","minus","div"]},"valid":{"stdout":-131397747}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez les valeurs suivantes 1 7 21 20 5 sur la sortie standard en utilisant les différentes valeurs fournies par l'exercice."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>006</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>101</dct:identifier>
+        <dct:title xml:lang="fr-FR">Afficher la somme d'un tableau de 3 valeurs en utilisant une variable et en recopiant un programme.</dct:title>
+        <dct:description><![CDATA["class":"l1","a":{"op":["dump","xx"],"va":["V000","V001","V002","X"],"ma":["get","plus"]},"values":{"DATA":[4,8,15]},"valid":{"stdout":1328017123}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Soit DATA, un tableau contenant 3 valeurs [4,8,15], affichez la somme de ces 3 nombres.","","Pour répondre à l'exercice, votre programme devrait ressembler à :"," X = GET(DATA,0)"," X = X + GET(DATA,1)"," X = X + GET(DATA,2)"," PRINT(X)"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>006</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>102</dct:identifier>
+        <dct:title xml:lang="fr-FR">Afficher la somme d'un tableau de 3 valeurs non consécutives en utilisant une variable.</dct:title>
+        <dct:description><![CDATA["class":"l1","a":{"op":["dump","xx"],"va":["V000","V002","V004","X"],"ma":["get","plus"]},"values":{"DATA":[4,8,15,16,23,42]},"valid":{"stdout":1343964342}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Soit DATA, un tableau contenant 6 valeurs [4,8,15,16,23,42], affichez la somme des 3 nombres 4, 15 et 23 (respectivement aux positions 0, 2 et 4 du tableau)."]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>006</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>103</dct:identifier>
+        <dct:title xml:lang="fr-FR">Afficher la somme d'un tableau de 4 valeurs en utilisant 2 variables en recopiant un programme.</dct:title>
+        <dct:description><![CDATA["class":"l2 small","a":{"op":["dump","xx","ii"],"va":["V000","V001","X","I"],"ma":["get","plus"]}, "values":{"DATA":[4,8,15,16]},"valid":{"stdout":763248294}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Soit DATA, un tableau contenant 6 valeurs [4,8,15,16], affichez la somme des 4 nombres du tableau.","","Attention, ici, les valeurs des positions 2 et 3 ne sont pas disponibles. Il vous faut utiliser une variable I pour sauver la position à utiliser au sein du tableau : "," I = 0"," X = GET( DATA, I )"," I = I + 1"," X = X + GET( DATA, I )"," I = I + 1"," X = X + GET( DATA,I )"," I = I + 1"," X = X + GET( DATA,I )","","On dit que, dans ce cas, I est un itérateur."]]]></dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>006</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>104</dct:identifier>
+        <dct:title xml:lang="fr-FR">Afficher la somme d'un tableau de 4 valeurs non consécutives en utilisant 2 variables.</dct:title>
+        <dct:description><![CDATA["class":"l1","a":{"op":["dump","xx","ii"],"va":["V000","V002","X","I"],"ma":["get","plus"]},"values":{"DATA":[12,0,13,0,14,0,15]},"valid":{"stdout":-1711330423}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Soit DATA, un tableau contenant 7 valeurs [12,0,13,0,14,0,15], affichez la somme des 4 nombres 12,13,14 et 15 (respectivement aux positions 0,2,4 et 6 du tableau).","","Seules les valeurs numériques 0 et 2 sont disponibles. Il est donc impératif d'utiliser un itérateur I et de le faire varier de 2 en 2 pour pouvoir extraire et ajouter les valeurs demandées par l'énoncé."]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>006</dct:alternative>
+    </rdf:Description>
+
+</rdf:RDF>
+

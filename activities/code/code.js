@@ -342,6 +342,7 @@
                             case "sin":     ret = Math.sin(Math.PI*this.get($this, $first)/180);    break;
                             case "tan":     ret = Math.tan(Math.PI*this.get($this, $first)/180);    break;
                             case "floor":   ret = Math.floor(this.get($this, $first));              break;
+                            case "ceil":    ret = Math.ceil(this.get($this, $first));               break;
                             case "round":   ret = Math.round(this.get($this, $first));              break;
                             case "sqrt":    ret = Math.sqrt(this.get($this, $first));               break;
                             case "log":     ret = Math.log(this.get($this, $first));                break;

@@ -53,6 +53,54 @@
     </rdf:Description>
 
     <rdf:Description>
+        <dct:identifier>005</dct:identifier>
+        <dct:title xml:lang="fr-FR">Afficher la valeur de PI suivie de sa partie entière.</dct:title>
+        <dct:description><![CDATA["class":"l1","a":{"op":["dump"],"va":["VPI"],"ma":["floor"]},"valid":{"stdout":-67213464}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez sur la sortie standard la valeur du nombre PI suivie de sa partie entière.","","L'opérateur FLOOR (le 'sol' ou la 'terre' en anglais) fournit le plus grand entier inférieur à la valeur fournie en paramètre. Dans le cas d'un nombre positif comme PI, l'opérateur FLOOR renvoie sa partie entière."]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>013</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>006</dct:identifier>
+        <dct:title xml:lang="fr-FR">Afficher la valeur de PI suivie de sa partie entière.</dct:title>
+        <dct:description><![CDATA["class":"l1","a":{"op":["dump"],"va":["VPI"],"ma":["floor"]},"valid":{"stdout":-67213464}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez sur la sortie standard la valeur du nombre PI suivie de sa partie entière.","","L'opérateur FLOOR (le 'sol' ou la 'terre' en anglais) renvoie le plus grand entier inférieur à la valeur fournie en paramètre. Dans le cas d'un nombre positif comme PI, l'opérateur FLOOR renvoie sa partie entière."]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>013</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>007</dct:identifier>
+        <dct:title xml:lang="fr-FR">Afficher la valeur de -PI suivie de l'entier inférieur le plus grand.</dct:title>
+        <dct:description><![CDATA["class":"l1","a":{"op":["dump"],"va":["VPI"],"ma":["floor","neg"]},"valid":{"stdout":-724617246}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez sur la sortie standard la valeur du nombre -PI suivie de l'entier inférieur le plus grand grâce à la commande FLOOR.","","Ici FLOOR(-PI) renvoie le résultat -4, ce qui ne correspond pas à la partie entière du nombre -3.1415... mais bien au nombre entier tout juste inférieur."]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>013</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>008</dct:identifier>
+        <dct:title xml:lang="fr-FR">Afficher les valeurs 3,4,-3 et -4 à partir du nombre PI grâce aux opérateurs FLOOR et CEIL.</dct:title>
+        <dct:description><![CDATA["class":"l1","a":{"op":["dump"],"va":["VPI"],"ma":["floor","ceil","neg"]},"valid":{"stdout":-1720423821}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez sur la sortie standard les valeurs 3,4,-3 et -4 à partir du nombre PI (3.1415...).","","FLOOR renvoie le plus grand entier inférieur à la valeur fournie en paramètre (c'est à dire l'entier 'juste au dessous').","","Inversement, CEIL ('plafond' en anglais) renvoie le plus petit entier supérieur à la valeur fournie en paramètre (c'est à dire l'entier 'juste au dessus')."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>013</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
         <dct:identifier>011</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher la valeur 49 à l'aide d'une addition d'un caractère avec une valeur numérique.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["dump"],"va":["V001","V0"],"ma":["plus"]},"valid":{"stdout":-1971513724}]]></dct:description>
@@ -78,9 +126,21 @@
 
     <rdf:Description>
         <dct:identifier>013</dct:identifier>
-        <dct:title xml:lang="fr-FR">En utilisant l'addition, afficher le texte 'ABC' à partir du caractère A.</dct:title>
+        <dct:title xml:lang="fr-FR">En utilisant l'addition, afficher le texte \\\"ABC\\\" à partir du caractère 'A'.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["print"],"va":["V001","V002","VA"],"ma":["plus"]},"valid":{"stdout":-99706748}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez le texte 'ABC' sur la sortie standard."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez le texte \\\"ABC\\\" sur la sortie standard."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>013</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>014</dct:identifier>
+        <dct:title xml:lang="fr-FR">En utilisant l'addition, afficher le texte \\\"0123\\\" à partir du caractère '0'.</dct:title>
+        <dct:description><![CDATA["class":"l1","a":{"op":["print"],"va":["V000","V001","V002","V003","V0"],"ma":["plus"]},"valid":{"stdout":-1073303177}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez le texte \\\"0123\\\" sur la sortie standard.","","Pour rappel, il est important de bien différencier, d'un côté, les nombres 0, 1, 2 et 3 qui sont affichables grâce à la commande DUMP mais correspondent à des caractères ASCII non affichables avec PRINT, avec, de l'autre, les caractères '0', '1', '2' et '3' qui sont affichables tels quels par PRINT et qui correspondent aux valeurs 48, 49, 50 et 51."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -94,7 +154,7 @@
         <dct:identifier>201</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher la longueur d'une chaîne de caractères.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["dump"],"ma":["len"]},"values":{"\\\"HELLO\\\"":"HELLO"},"valid":{"stdout":-435719001}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Grâce à l'opérateur LENGTH (longueur en anglais), affichez sur la sortie standard, la longueur du mot 'HELLO'."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Grâce à l'opérateur LENGTH (longueur en anglais), affichez sur la sortie standard, la longueur du mot \\\"HELLO\\\"."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -107,7 +167,7 @@
         <dct:identifier>202</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher la longueur d'un tableau.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["dump"],"ma":["len"]},"values":{"array":[4,8,15,16,23,42]},"valid":{"stdout":-1067848827}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Grâce à l'opérateur LENGTH, affichez sur la sortie standard, la longueur du tableau 'array', c'est à dire le nombre d'éléments contenus dans ce tableau, indépendament de leur type."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Grâce à l'opérateur LENGTH, affichez sur la sortie standard, la longueur du tableau array, c'est à dire le nombre d'éléments contenus dans ce tableau, indépendamment de leur type."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -122,7 +182,7 @@
         <dct:identifier>211</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher la 2ème valeur d'un tableau.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["dump"],"va":["V002"],"ma":["get"]},"values":{"array":[4,8,15,16,23,42]},"valid":{"stdout":-1816951327}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez sur la sortie standard, la 3ème valeur du tableau 'array'","","L'opérateur GET(TABLEAU,POSITION) retourne la valeur du TABLEAU située à la place n°POSITION. Le premier élément du tableau est à la position 0."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Grâce à l'opérateur GET, affichez sur la sortie standard, la 3ème valeur du tableau array","","L'opérateur GET(TABLEAU,POSITION) retourne la valeur du TABLEAU située à la place n°POSITION. Le premier élément du tableau est à la position 0."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -135,7 +195,7 @@
         <dct:identifier>212</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher le 4ème caractère d'une chaine de caractères.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["print"],"va":["V003","V004"],"ma":["get"]},"values":{"\\\"HELLO\\\"":"HELLO"},"valid":{"stdout":-1360299673}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez sur la sortie standard, le 4ème caractère du mot 'HELLO'","","L'opérateur GET(TABLEAU,POSITION) fonctionne également avec une chaine de caractère en premier argument. Dans ce cas-là, comme la valeur, extraite d'un texte, est lisible, elle peut être affichée par la commande PRINT."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez sur la sortie standard, le 4ème caractère du mot \\\"HELLO\\\"","","L'opérateur GET(TABLEAU,POSITION) fonctionne également avec une chaîne de caractères en premier argument. Dans ce cas-là, comme la valeur est extraite d'un texte, elle est lisible et peut être affichée par la commande PRINT."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -145,9 +205,9 @@
 
     <rdf:Description>
         <dct:identifier>213</dct:identifier>
-        <dct:title xml:lang="fr-FR">Afficher WELL WORLD à partir des mots HELLO et WORLD.</dct:title>
+        <dct:title xml:lang="fr-FR">Afficher \\\"WELL WORLD\\\" à partir des mots \\\"HELLO\\\" et \\\"WORLD\\\".</dct:title>
         <dct:description><![CDATA["a":{"op":["print"],"va":["V000","V001","V002","V003","V004","VSP"],"ma":["get"]},"values":{"\\\"HELLO\\\"":"HELLO","\\\"WORLD\\\"":"WORLD"},"valid":{"stdout":85513327}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Sans oublier l'espace, affichez les mots WELL WORLD sur la sortie standard."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Sans oublier l'espace, affichez les mots \\\"WELL WORLD\\\" sur la sortie standard."]]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -161,7 +221,7 @@
         <dct:identifier>221</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher le dernier caractère d'une chaîne de caractères.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["print"],"va":["V001"],"ma":["get","len","minus"]},"values":{"\\\"HELLO\\\"":"HELLO"},"valid":{"stdout":-2001344955}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez 'O' sur la sortie standard.","","Pour résoudre l'exercice il faut afficher la dernière lettre du mot 'HELLO' en utilisant la commande PRINT sur l'élément situé à la position LONGUEUR-1, où LONGUEUR est la longueur de la chaîne de caractère."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez 'O' sur la sortie standard.","","Pour résoudre l'exercice il faut afficher la dernière lettre du mot \\\"HELLO\\\" en récupérant l'élément situé à la position LONGUEUR-1, où LONGUEUR est la longueur de la chaîne de caractère."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -181,114 +241,13 @@
         <dct:alternative>201</dct:alternative>
     </rdf:Description>
 
-    <!-- VARIABLE -->
-
-    <rdf:Description>
-        <dct:identifier>301</dct:identifier>
-        <dct:title xml:lang="fr-FR">Afficher 5 fois le dernier caractère d'une chaîne de caractères en utilisant une variable.</dct:title>
-        <dct:description><![CDATA["class":"l1","a":{"op":["print","xx"],"va":["V001","X"],"ma":["get","len","minus"]},"values":{"\\\"HELLO\\\"":"HELLO"},"valid":{"stdout":1211029905}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez 'O', le dernier caractère du mot \\\"HELLO\\\", sur la sortie standard.","","Plutôt que de réécrire 5 fois l'opération PRINT(GET(\\\"HELLO\\\",LENGTH(\\\"HELLO\\\")-1)), il est fortement conseillé d'utiliser la variable X comme ceci :",". X = GET(\\\"HELLO\\\",LENGTH(\\\"HELLO\\\")-1)",". PRINT(X) [x5]"]]]></dct:description>
-        <dct:extent>2</dct:extent>
-        <dct:subject>it</dct:subject>
-        <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>201</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">tutorial</dct:coverage>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>302</dct:identifier>
-        <dct:title xml:lang="fr-FR">Afficher 3 fois la dernière valeur d'un tableau en utilisant une variable.</dct:title>
-        <dct:description><![CDATA["class":"l1","a":{"op":["dump","xx"],"va":["V001","X"],"ma":["get","len","minus"]},"values":{"DATA":[4,8,15,16,23,42]},"valid":{"stdout":1254702314}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez 3 fois la dernière valeur du tableau DATA sur la sortie standard.","","Il est fortement conseillé d'utiliser ici une variable. Une variable est une zone de la mémoire dans laquelle il est possible de sauver une valeur afin de l'utiliser plus tard."]]]></dct:description>
-        <dct:extent>2</dct:extent>
-        <dct:subject>it</dct:subject>
-        <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>201</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">tutorial</dct:coverage>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>303</dct:identifier>
-        <dct:title xml:lang="fr-FR">Incrémenter et afficher 4 fois la dernière valeur d'un tableau en utilisant une variable.</dct:title>
-        <dct:description><![CDATA["debug":true,"class":"l2","a":{"op":["dump","xx"],"va":["V001","X"],"ma":["get","len","minus","plus"]},"values":{"DATA":[4,8,15,16,23,42]},"valid":{"stdout":-1685991242}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Copiez la dernière valeur du tableau DATA dans la variable X, incrémentez de 1 cette valeur puis affichez celle-ci 4 fois sur la sortie standard.","","En informatique, la commande utilisée pour incrémenter une variable est presque toujours :","","   X = X + 1","","A l'exécution, l'ordinateur va commencer par évaluer l'expression de droite 'X+1'. Si, par exemple, X vaut 23, alors 'X+1' est égal à 24. L'instruction 'X = X + 1' se résume donc, dans cet exemple, à 'X = 24'. L'instruction à donc incrémenté la variable X d'une unité faisant passer celle-ci de 23 à 24."]]]></dct:description>
-        <dct:extent>2</dct:extent>
-        <dct:subject>it</dct:subject>
-        <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>201</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">tutorial</dct:coverage>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>304</dct:identifier>
-        <dct:title xml:lang="fr-FR">Afficher la lettre 'M' à partir de l'avant dernière lettre du mot 'WORLD'.</dct:title>
-        <dct:description><![CDATA["debug":true,"class":"l1","a":{"op":["print","xx"],"va":["V001","V002","X"],"ma":["get","len","minus","plus"]},"values":{"\\\"WORLD\\\"":"WORLD"},"valid":{"stdout":-1289679751}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["A partir du mot \\\"WORLD\\\", affichez la lettre 'M' sur la sortie standard.","","Dans l'ordre alphabétique, 'M' est la lettre suivant 'L' qui se trouve être l'avant-dernière lettre du mot 'WORLD'.","","Pour rappel, la dernière lettre d'un MOT est à la position LENGTH(MOT)-1. Par conséquent, l'avant-dernière lettre d'un mot est à la position LENGTH(MOT)-..."]]]></dct:description>
-        <dct:extent>2</dct:extent>
-        <dct:subject>it</dct:subject>
-        <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>3</dct:type>
-        <dct:alternative>201</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>305</dct:identifier>
-        <dct:title xml:lang="fr-FR">Afficher la somme d'un tableau de 3 valeurs en utilisant une variable et en recopiant un programme.</dct:title>
-        <dct:description><![CDATA["class":"l1","a":{"op":["dump","xx"],"va":["V000","V001","V002","X"],"ma":["get","plus"]},"values":{"DATA":[4,8,15]},"valid":{"stdout":1328017123}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Soit DATA, un tableau contenant 3 valeurs [4,8,15], affichez la somme de ces 3 nombres.","","Pour répondre à l'exercice, votre programme devrait ressembler à :"," X = GET(DATA,0)"," X = X + GET(DATA,1)"," X = X + GET(DATA,2)"," PRINT(X)"]]]></dct:description>
-        <dct:extent>2</dct:extent>
-        <dct:subject>it</dct:subject>
-        <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>201</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>306</dct:identifier>
-        <dct:title xml:lang="fr-FR">Afficher la somme d'un tableau de 3 valeurs non consécutives en utilisant une variable.</dct:title>
-        <dct:description><![CDATA["class":"l1","a":{"op":["dump","xx"],"va":["V000","V002","V004","X"],"ma":["get","plus"]},"values":{"DATA":[4,8,15,16,23,42]},"valid":{"stdout":1343964342}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Soit DATA, un tableau contenant 6 valeurs [4,8,15,16,23,42], affichez la somme des 3 nombres 4,15 et 23 (respectivement aux positions 0,2 et 4 du tableau)."]]]></dct:description>
-        <dct:extent>3</dct:extent>
-        <dct:subject>it</dct:subject>
-        <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>201</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>307</dct:identifier>
-        <dct:title xml:lang="fr-FR">Afficher la somme d'un tableau de 4 valeurs en utilisant 2 variables en recopiant un programme.</dct:title>
-        <dct:description><![CDATA["class":"l2 small","a":{"op":["dump","xx","ii"],"va":["V000","V001","X","I"],"ma":["get","plus"]}, "values":{"DATA":[4,8,15,16]},"valid":{"stdout":763248294}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Soit DATA, un tableau contenant 6 valeurs [4,8,15,16], affichez la somme des 4 nombres du tableau.","","Attention, ici, les valeurs des positions 2 et 3 ne sont pas disponibles. Il vous faut utiliser une variable I pour sauver la position à utiliser au sein du tableau : "," I = 0"," X = GET( DATA, I )"," I = I + 1"," X = X + GET( DATA, I )"," I = I + 1"," X = X + GET( DATA,I )"," I = I + 1"," X = X + GET( DATA,I )","","On dit que, dans ce cas, I est un itérateur."]]]></dct:description>
-        <dct:extent>4</dct:extent>
-        <dct:subject>it</dct:subject>
-        <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>201</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>308</dct:identifier>
-        <dct:title xml:lang="fr-FR">Afficher la somme d'un tableau de 4 valeurs non consécutives en utilisant 2 variables.</dct:title>
-        <dct:description><![CDATA["class":"l1","a":{"op":["dump","xx","ii"],"va":["V000","V002","X","I"],"ma":["get","plus"]},"values":{"DATA":[12,0,13,0,14,0,15]},"valid":{"stdout":-1711330423}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Soit DATA, un tableau contenant 7 valeurs [12,0,13,0,14,0,15], affichez la somme des 4 nombres 12,13,14 et 15 (respectivement aux positions 0,2,4 et 6 du tableau).","","Seules les valeurs numériques 0 et 2 sont disponibles. Il est donc impératif d'utiliser un itérateur I et de le faire varier de 2 en 2 pour pouvoir extraire et ajouter les valeurs demandées par l'énoncé."]]]></dct:description>
-        <dct:extent>3</dct:extent>
-        <dct:subject>it</dct:subject>
-        <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>3</dct:type>
-        <dct:alternative>201</dct:alternative>
-    </rdf:Description>
-
     <!-- FIND -->
 
     <rdf:Description>
         <dct:identifier>401</dct:identifier>
-        <dct:title xml:lang="fr-FR">Afficher la position du caractère 'O' dans la chaîne de caractères 'WORLD'.</dct:title>
+        <dct:title xml:lang="fr-FR">Afficher la position du caractère 'O' dans la chaîne de caractères \\\"WORLD\\\".</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["dump"],"va":["VO"],"ma":["find"]},"values":{"\\\"WORLD\\\"":"WORLD"},"valid":{"stdout":-1859215137}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez la position de la lettre 'O' dans le mot 'WORLD' sur la sortie standard.","","La commande FIND ('trouver' en anglais) permet de rechercher la position d'une lettre dans une chaîne de caractères. Elle s'utilise avec la syntaxe suivante : FIND CHAINE_DE_CARACTERES LETTRE_A_TROUVER. Si la valeur n'est pas trouvée, la méthode renvoit -1, sinon la valeur retournée est comprise entre 0 (première position) et LENGTH-1 (dernière position)."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez la position de la lettre 'O' dans le mot \\\"WORLD\\\" sur la sortie standard.","","La commande FIND ('trouver' en anglais) permet de rechercher la position d'une lettre dans une chaîne de caractères. Elle s'utilise avec la syntaxe suivante : FIND CHAINE_DE_CARACTERES LETTRE_A_TROUVER. Si la valeur n'est pas trouvée, la méthode renvoit -1, sinon la valeur retournée est comprise entre 0 (première position) et LENGTH-1 (dernière position)."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -298,9 +257,9 @@
 
     <rdf:Description>
         <dct:identifier>402</dct:identifier>
-        <dct:title xml:lang="fr-FR">Afficher la position du premier caractère 'L' dans la chaîne de caractères 'HELLO'.</dct:title>
+        <dct:title xml:lang="fr-FR">Afficher la position du premier caractère 'L' dans la chaîne de caractères \\\"HELLO\\\".</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["dump"],"va":["VL"],"ma":["find"]},"values":{"\\\"HELLO\\\"":"HELLO"},"valid":{"stdout":-1217380355}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez la position de la première lettre 'L' dans le mot 'HELLO' sur la sortie standard.","","La commande FIND renvoit toujours la première occurence de l'élément. Dans cet exemple, la commande renvoit la position de la première lettre 'L'."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez la position de la première lettre 'L' dans le mot \\\"HELLO\\\" sur la sortie standard.","","La commande FIND renvoit toujours la première occurence de l'élément. Dans cet exemple, la commande renvoit la position de la première lettre 'L'."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -310,9 +269,9 @@
 
     <rdf:Description>
         <dct:identifier>403</dct:identifier>
-        <dct:title xml:lang="fr-FR">Afficher la position du caractère 'A' dans la chaîne de caractères 'WORLD'.</dct:title>
+        <dct:title xml:lang="fr-FR">Afficher la position du caractère 'A' dans la chaîne de caractères \\\"WORLD\\\".</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["dump"],"va":["VA"],"ma":["find"]},"values":{"\\\"WORLD\\\"":"WORLD"},"valid":{"stdout":603668681}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez la position de la lettre 'A' dans le mot 'WORLD' sur la sortie standard.","","Si la valeur n'a pas pu être trouvée, la méthode FIND renvoit -1."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez la position de la lettre 'A' dans le mot \\\"WORLD\\\" sur la sortie standard.","","Si la valeur n'a pas pu être trouvée, la méthode FIND renvoit -1."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -386,7 +345,7 @@
         <dct:identifier>452</dct:identifier>
         <dct:title xml:lang="fr-FR">Extraire et afficher la fin d'une chaîne de caractères grâce aux commande SUBSTR et LENGTH.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["print"],"va":["V002"],"ma":["sub2","len","minus"]},"values":{"\\\"WORLD\\\"":"WORLD"},"valid":{"stdout":64126389}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez sur la sortie standard la chaine de caractères 'LD'.","","Pour information, ces 2 caractères représentent une sous-chaine du mot 'WORLD' commençant à la position LONGUEUR de 'WORLD' - 2."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez sur la sortie standard la chaine de caractères 'LD'.","","Pour information, ces 2 caractères représentent une sous-chaine du mot \\\"WORLD\\\" commençant à la position LONGUEUR de \\\"WORLD\\\" - 2."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -422,7 +381,7 @@
         <dct:identifier>455</dct:identifier>
         <dct:title xml:lang="fr-FR">Extraire et afficher la fin d'une chaîne de caractères grâce aux commandes SUBSTR et FIND et à l'utilisation d'une variable.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["print","xx"],"va":["VT","X","V001"],"ma":["sub2","find","plus"]},"values":{"\\\"OO...OTHELLO\\\"":"OOOOOOOOOOOOOOOTHELLO"},"valid":{"stdout":1404283036}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez sur la sortie standard la chaine de caractères 'HELLO'."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez sur la sortie standard la chaine de caractères \\\"HELLO\\\"."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -436,7 +395,7 @@
         <dct:identifier>501</dct:identifier>
         <dct:title xml:lang="fr-FR">Extraire et afficher une sous-chaîne de caractères.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["print"],"va":["V002"],"ma":["sub"]},"values":{"\\\"WORLD\\\"":"WORLD"},"valid":{"stdout":-81567582}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez sur la sortie standard la chaine de caractères 'RL'.","","La commande SUBSTR CHAINE_DE_CARACTERES POSITION_DE_DEPART LONGUEUR_A_EXTRAIRE permet d'extraire de la chaîne de caractères fournie en premier paramètre, une sous-chaine commençant à une position donnée par le second paramètre et ayant une longueur donnée par le dernier paramètre. Aussi, comme ici, plusieurs fonctions peuvent avoir le même nom mais des paramètres différents : on appelle cela du POLYMORPHISME."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez sur la sortie standard la chaine de caractères \\\"RL\\\".","","La commande SUBSTR CHAINE_DE_CARACTERES POSITION_DE_DEPART LONGUEUR_A_EXTRAIRE permet d'extraire de la chaîne de caractères fournie en premier paramètre, une sous-chaine commençant à une position donnée par le second paramètre et ayant une longueur donnée par le dernier paramètre. Aussi, comme ici, plusieurs fonctions peuvent avoir le même nom mais des paramètres différents : on appelle cela du POLYMORPHISME."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -448,7 +407,7 @@
         <dct:identifier>502</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher un groupe nominal (en anglais) à partir d'autres chaînes de caractères en utilisant SUBSTR et GET.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["print"],"va":["V000","V001","V003","VSP"],"ma":["sub","get"]},"values":{"\\\"HELLO\\\"":"HELLO","\\\"WORLD\\\"":"WORLD"},"valid":{"stdout":85513327}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Sans oublier l'espace, affichez les mots 'WELL WORLD' sur la sortie standard."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Sans oublier l'espace, affichez les mots \\\"WELL WORLD\\\" sur la sortie standard."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -460,7 +419,7 @@
         <dct:identifier>503</dct:identifier>
         <dct:title xml:lang="fr-FR">Extraire et afficher le début d'une chaîne de caractères.</dct:title>
         <dct:description><![CDATA["class":"l1 small","a":{"op":["print"],"va":["V000","V003"],"ma":["sub"]},"values":{"\\\"POPCORN\\\"":"POPCORN"},"valid":{"stdout":-779610356}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez le mot 'POP' à partir de la chaîne de caractères 'POPCORN'."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez le mot \\\"POP\\\" à partir de la chaîne de caractères \\\"POPCORN\\\"."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -472,7 +431,7 @@
         <dct:identifier>504</dct:identifier>
         <dct:title xml:lang="fr-FR">Extraire et afficher le début d'une chaîne de caractères à l'aide des commandes SUBSTR et FIND.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["print"],"va":["V000","VV"],"ma":["sub","find"]},"values":{"\\\"DEJAVU\\\"":"DEJAVU"},"valid":{"stdout":2007338482}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez le mot 'DEJA' à partir de la chaîne de caractères 'DEJAVU'."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez le mot \\\"DEJA\\\" à partir de la chaîne de caractères \\\"DEJAVU\\\"."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -484,7 +443,7 @@
         <dct:identifier>505</dct:identifier>
         <dct:title xml:lang="fr-FR">Extraire et afficher la fin d'une chaîne de caractères à l'aide de la commande SUBSTR et d'une position négative.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["print"],"va":["V003"],"ma":["sub","neg"]},"values":{"\\\"HELLO\\\"":"HELLO"},"valid":{"stdout":108910518}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez le mot 'LLO' à partir de la chaîne de caractères 'HELLO'.","","Pour rappel, l'argument de position de la fonction SUBSTR peut être négatif. Dans ce cas, la position de départ de la sous-chaine est calculée à partir de la fin de la chaine de caractères de départ."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez le mot \\\"LLO\\\" à partir de la chaîne de caractères \\\"HELLO\\\".","","Pour rappel, l'argument de position de la fonction SUBSTR peut être négatif. Dans ce cas, la position de départ de la sous-chaine est calculée à partir de la fin de la chaine de caractères de départ."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -539,7 +498,7 @@
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>201</dct:alternative>
+        <dct:alternative>601</dct:alternative>
     </rdf:Description>
 
    <rdf:Description>
@@ -551,7 +510,7 @@
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>201</dct:alternative>
+        <dct:alternative>601</dct:alternative>
     </rdf:Description>
 
    <rdf:Description>
@@ -563,19 +522,43 @@
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>201</dct:alternative>
+        <dct:alternative>601</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>604</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher le 2ème caractère de la 5ème valeur d'un tableau de chaînes de caractères.</dct:title>
         <dct:description><![CDATA["class":"l2","a":{"op":["print","xx"],"va":["V001","V004","X"],"ma":["get"]},"values":{"DATA":["MAY","THE","FORCE","BE","WITH","YOU."]},"valid":{"stdout":-1006053375}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez le 2ème caractère de la 5ème valeur du tableau de chaînes de caractères.","","Il est tout à fait possible d'utiliser l'instruction X = GET(DATA,4). On a vu que X pouvait être utilisé pour stocker des valeurs numériques, mais aussi des lettres. Ici X reçoit une chaîne de caractères (\\\"WITH\\\" en l'occurence). On dit que X n'est pas typé. C'est le cas pour toutes les variables de cette activité qui peuvent contenir n'importe quelle type de valeur (des nombres entiers, des nombres décimaux, des lettres, des chaînes de caractères, des tableaux, etc.).","Ce n'est pas le cas pour les langages dits 'typés' (comme le C/C++) qui ne proposent que des variables dont le type est prédéfini (une variable ne pourra stocker que des entiers, une autre ne pourra stocker que des caractères, etc.)."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez le 2ème caractère de la 5ème valeur du tableau de chaînes de caractères.","","Il est tout à fait possible d'utiliser l'instruction X = GET(DATA,4). On a vu que X pouvait être utilisé pour stocker des valeurs numériques, mais aussi des lettres (ce qui est un peu la même chose). Ici X reçoit une chaîne de caractères (\\\"WITH\\\" en l'occurence). On dit que X n'est pas typée, c'est à dire que la variable n'est pas limitée à un seul type de donnée. C'est le cas pour toutes les variables de cette activité (X,Y,Z,I,J,etc.).","Inversement, les langages dits 'typés' (comme le C/C++) ne proposent que des variables dont le type est prédéfini à l'avance (une variable ne pourra stocker que des entiers, une autre ne pourra stocker que des caractères, etc.)."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>201</dct:alternative>
+        <dct:alternative>601</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>605</dct:identifier>
+        <dct:title xml:lang="fr-FR">Afficher \\\"DEH\\\" à partir du tableau [ \\\"HELLO\\\", \\\"WORLD\\\" ].</dct:title>
+        <dct:description><![CDATA["class":"l1","a":{"op":["print","xx"],"va":["V000","V001","X"],"ma":["get","len","minus"]},"values":{"DATA":["HELLO","THE","WORLD"]},"valid":{"stdout":1061993400}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["A partir du tableau de chaînes de caractères DATA défini par [ \\\"HELLO\\\", \\\"WORLD\\\" ], affichez le mot \\\"DEH\\\"."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>601</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>606</dct:identifier>
+        <dct:title xml:lang="fr-FR">Afficher 5 à partir du tableau [ \\\"HELLO\\\", \\\"WORLD\\\" ].</dct:title>
+        <dct:description><![CDATA["class":"l1","a":{"op":["dump","xx"],"va":["V000","V001","X"],"ma":["get","len"]},"values":{"DATA":["HELLO","THE","WORLD"]},"valid":{"stdout":-435719001}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["A partir du tableau de chaînes de caractères DATA défini par [ \\\"HELLO\\\", \\\"WORLD\\\" ], affichez la valeur 5."]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>601</dct:alternative>
     </rdf:Description>
 
     <!-- ARRAY OF ARRAYS -->
@@ -589,7 +572,7 @@
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>201</dct:alternative>
+        <dct:alternative>601</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
@@ -601,7 +584,7 @@
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>201</dct:alternative>
+        <dct:alternative>601</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
@@ -613,7 +596,7 @@
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>201</dct:alternative>
+        <dct:alternative>601</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
@@ -625,7 +608,7 @@
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>201</dct:alternative>
+        <dct:alternative>601</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
@@ -637,7 +620,7 @@
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>3</dct:type>
-        <dct:alternative>201</dct:alternative>
+        <dct:alternative>601</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
@@ -649,7 +632,37 @@
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>3</dct:type>
-        <dct:alternative>201</dct:alternative>
+        <dct:alternative>601</dct:alternative>
     </rdf:Description>
+
+    <!-- TRUE AND FALSE -->
+
+    <rdf:Description>
+        <dct:identifier>801</dct:identifier>
+        <dct:title xml:lang="fr-FR">Afficher \\\"0 1 0 1\\\" grâce aux valeurs de TRUE et FALSE.</dct:title>
+        <dct:description><![CDATA["class":"l1","a":{"op":["dump"],"va":["TRUE","FALSE"]},"valid":{"stdout":1060612633}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez \\\"0 1 0 1\\\" sur la sortie standard.","","Comme PI qui est égal 3.1415, FALSE et TRUE sont deux constantes prédéfinies dont les valeurs sont respectivement 0 et 1."]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>601</dct:alternative>
+    </rdf:Description>
+
+
+    <rdf:Description>
+        <dct:identifier>802</dct:identifier>
+        <dct:title xml:lang="fr-FR">Afficher la valeur 1 grâce à l'opérateur d'égalité.</dct:title>
+        <dct:description><![CDATA["class":"l1","a":{"op":["dump"],"va":["V003","V004","V005"],"ma":["eq"]},"valid":{"stdout":-1859215137}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez 1 sur la sortie standard","","La condition d'égalité == renvoie TRUE lorsque les deux valeurs passées en paramètre sont égales et FALSE dans le cas contraire.","","Pour rappel, TRUE vaut 1 tandisque FALSE vaut 0."]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>601</dct:alternative>
+    </rdf:Description>
+
+
+
 </rdf:RDF>
 
