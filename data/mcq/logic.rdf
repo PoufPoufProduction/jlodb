@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dct="http://purl.org/dc/terms/">
+
+
+    <rdf:Description>
+        <dct:identifier>001</dct:identifier>
+        <dct:title xml:lang="fr-FR">Appréhender l'algèbre de Boole</dct:title>
+        <dct:description><![CDATA["data":[{"question":"<p>Un élément (ou un nombre) appartenant à un algèbre \\\"traditionnel\\\" peut prendre une infinité de valeurs : positive ou négative, entière ou décimale. Les éléments d'un algèbre de Boole ne peuvent prendre, quant à eux, que 2 valeurs : <b>0</b> ou <b>1</b>.</p><p>Cochez les éléments appartenant à l'algèbre de <b>Boole</b></p>", "good":["0","1"], "wrong":["3.14","-1","2","0.5"]},{"question":"<p>Selon le contexte, les propositions <b>VRAI</b> ou <b>FAUX</b> (TRUE ou FALSE en anglais) peuvent être utilisés en lieu et place de <b>1</b> et de <b>0</b></p><p>Quelles valeurs sont compatibles avec l'algèbre de Boole ?", "good":["1","VRAI","FAUX"],"wrong":["2","HELLO","3"]},{"question":"<p>L'algèbre de <b>Boole</b> propose plusieurs opérateurs que l'on nomme opérateurs booléens, opérateurs logiques, fonctions logiques ou portes logiques suivant le contexte.</p><p>La <b>négation</b> est l'une d'elles. Elle se note <b>¬</b> et inverse les valeurs logiques. C'est à dire que <b>¬(1) = 0</b> (0 est la négation de 1) et que <b>¬(0) = ...</b></p>", "good":["1"],"wrong":["0"]},{"question":"<p>Quelles sont, parmi les valeurs ci-dessous, celles qui sont équivalentes à 1 (ou VRAI) suivant l'algèbre de Boole ?</p>", "good":["1","¬(0)","¬(FAUX)"],"wrong":["0","¬(VRAI)","¬(1)"]},{"question":"<p>La négation d'une négation est l'identité, c'est à dire une opération qui ne change pas la valeur de départ.</p><p>Ainsi que vaut <b>¬(¬(VRAI))</b> ?</p>", "good":["VRAI"],"wrong":["FAUX"]},{"question":"<p>Quelles sont, parmi les valeurs ci-dessous, celles qui sont équivalentes à 1 (ou VRAI) suivant l'algèbre de Boole ?</p>", "good":["¬(0)","¬(¬(1))","¬(¬(VRAI))"],"wrong":["¬(VRAI)","¬(1)","¬(¬(0))"]}],"class":"full","question":{"format":[2,93],"font":0.6}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>logic</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>002</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comprendre la conjonction et la disjonction logiques</dct:title>
+        <dct:description><![CDATA["data":[{"question":"<p>La <b>conjonction</b> est une opération logique de l'algèbre de Boole et se note ∧. Elle est communément appelée \\\"ET\\\".</p><p>Par définition A ∧ B = 1 si A = 1 <b>et</b> B = 1. Dans les autres cas, c'est à dire, si au moins l'une des 2 valeurs est nulles, on a A ∧ B = 0.</p><p>Combien vaut <b>1 ∧ 0</b> ?</p>", "good":["0"],"wrong":["1"]},{"question":"Sélectionnez les expressions dont la valeur vaut 1.", "good":["1 ∧ 1"],"wrong":["1 ∧ 0","0 ∧ 0","0 ∧ 1"]},{"question":"Sélectionnez les expressions dont la valeur vaut 1.", "good":["1 ∧ ¬(0)","¬(0) ∧ 1"],"wrong":["0 ∧ ¬(0)","¬(0) ∧ ¬(1)"]},{"question":"<p>Soit A une valeur de l'algèbre de Boole, c'est à dire que A est une inconnue dont les valeurs possibles sont 0 ou 1, que vaut <b>A ∧ ¬(A)</b> ?</p><p>Pour que l'opération A ∧ ¬(A) donne comme résultat 1, il faudrait que les opérandes A et sa négation ¬(A) soient toutes les 2 égales à 1. Mais est-ce possible ?</p>", "good":["0"],"wrong":["1"]},{"question":"<p>La <b>disjonction</b> est une opération logique de l'algèbre de Boole et se note ∨. Elle est communément appelée \\\"OU\\\".</p><p>Par définition A ∨ B = 1 si A = 1 <b>ou</b> B = 1. A l'inverse, si les 2 valeurs A et B sont nulles, on a A ∨ B = 0.</p><p>Combien vaut <b>1 ∨ 0</b> ?</p>", "good":["1"],"wrong":["0"]},{"question":"Sélectionnez les expressions dont la valeur vaut 1.", "good":["1 ∨ 1","0 ∨ 1","1 ∨ 0"],"wrong":["0 ∨ 0"]},{"question":"<p>Soit A une valeur de l'algèbre de Boole, que vaut <b>A ∨ ¬(A)</b> ?</p>", "good":["1"],"wrong":["0"]},{"question":"Sélectionnez les expressions dont la valeur vaut 1.", "good":["¬(0) ∨ 0","¬(1) ∨ 1","¬(0) ∨ ¬(1)"],"wrong":["¬(1) ∨ 0"]},{"question":"On sait par définition que 1 ∨ 0 est égale à 1. Que vaut la valeur inverse ¬(1 ∨ 0) ?", "good":["0"],"wrong":["1"]}],"class":"full","question":{"format":[2,93],"font":0.6}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>logic</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+
+</rdf:RDF>
+

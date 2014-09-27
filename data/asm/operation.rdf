@@ -454,6 +454,18 @@
         <dct:alternative>001</dct:alternative>
     </rdf:Description>
 
+    <rdf:Description>
+        <dct:identifier>206</dct:identifier>
+        <dct:title xml:lang="fr-FR">Utiliser l'opérateur ADC pour transformer en ASCII une valeur comprise entre 0 et 9.</dct:title>
+        <dct:description><![CDATA["ops":["adc","sta"],"args":[{"value":"30","type":"v"},{"value":"fe"}],"nblines":2,"valid":{"out":"024680"},"footer":[{"label":"loop","value":"","code":"e8e006d001004c0b10","rts":false}],"header":[{"label":"init","value":"024680","code":"a2004c0b10000204060800bd0510","rts":false}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Envoyez sous forme ASCII la valeur de l'accumulateur A vers la sortie standard.","","Pour convertir une valeur comprise entre 0 et 9 (inclus) en caractère ASCII, il suffit d'ajouter la valeur 0x30. En effet, le caractère ASCII 0x30 est le '0', le caractère 0x31 est le '1', etc."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
     <!-- ADC and decimal mode -->
 
     <rdf:Description>
@@ -472,7 +484,7 @@
         <dct:identifier>252</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser l'opérateur ADC avec une valeur numérique en mode décimal.</dct:title>
         <dct:description><![CDATA["ops":["sed","lda","adc"],"args":[{"value":"09","type":"v"},{"value":"02","type":"v"}],"nblines":3,"valid":{"a":"11","d":true}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Il est possible de faire fonctionner ADC en mode décimal. Pour cela, utilisez l'opération SED (sans argument) et exécutez l'opération 0x09 + 0x02 pour obtenir... 0x11.","Le mode décimal est signifié par un 1 dans le drapeau 'D' à gauche." ]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Il est possible de faire fonctionner ADC en mode décimal (en base 10). Pour cela, utilisez l'opération SED (SET DECIMAL) sans argument et exécutez l'opération 0x09 + 0x02 pour obtenir... 0x11.","Le mode décimal est signifié par un 1 dans le drapeau 'D' en bas à gauche." ]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -508,7 +520,7 @@
         <dct:identifier>255</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser l'opérateur ADC avec une valeur numérique en mode décimal et hexadécimal.</dct:title>
         <dct:description><![CDATA["ops":["sed","lda","adc","tax","cld"],"args":[{"value":"29","type":"v"},{"value":"04","type":"v"}],"nblines":7,"valid":{"a":"2D","x":"33"}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["L'opérateur CLD permet de désactiver le mode décimal et de retourner dans le mode hexadécimal. Il est l'inverse de SED.","","Chargez les valeurs suivantes :",".0x33 dans le registre X",".0x2D dans le registre A"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["L'opérateur CLD (CLEAR DECIMAL) permet de désactiver le mode décimal et de retourner dans le mode hexadécimal. Il est l'inverse de SED.","","Chargez les valeurs suivantes :",".0x33 dans le registre X",".0x2D dans le registre A"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -516,16 +528,15 @@
         <dct:alternative>001</dct:alternative>
     </rdf:Description>
 
-
     <rdf:Description>
         <dct:identifier>256</dct:identifier>
-        <dct:title xml:lang="fr-FR">Utiliser l'opérateur ADC pour transformer en ASCII une valeur comprise entre 0 et 9.</dct:title>
-        <dct:description><![CDATA["ops":["adc","sta"],"args":[{"value":"30","type":"v"},{"value":"fe"}],"nblines":2,"valid":{"out":"024680"},"footer":[{"label":"loop","value":"","code":"e8e006d001004c0b10","rts":false}],"header":[{"label":"init","value":"024680","code":"a2004c0b10000204060800bd0510","rts":false}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Envoyez sous forme ASCII la valeur de l'accumulateur A vers la sortie standard.","","Pour convertir une valeur comprise entre 0 et 9 (inclus) en caractère ASCII, il suffit d'ajouter la valeur 0x30. En effet, le caractère ASCII 0x30 est le '0', le caractère 0x31 est le '1', etc."]]]></dct:description>
+        <dct:title xml:lang="fr-FR">Utiliser l'opérateur ADC avec une valeur numérique en mode décimal et hexadécimal.</dct:title>
+        <dct:description><![CDATA["ops":["sed","lda","adc","tax","tay","cld"],"args":[{"value":"98","type":"v"},{"value":"07","type":"v"}],"nblines":9,"valid":{"a":"9F","x":"05","y":"0D"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["A l'aide du mode décimal, chargez les valeurs suivantes :",".0x05 dans le registre X",".0x0D dans le registre Y",".0x9F dans le registre A"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>2</dct:type>
         <dct:alternative>001</dct:alternative>
     </rdf:Description>
 
@@ -535,7 +546,7 @@
         <dct:identifier>301</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser l'opérateur SBC avec une valeur numérique.</dct:title>
         <dct:description><![CDATA["header":[{"label":"init","value":"","code":"38","rts":false}],"ops":["lda","sbc"],"args":[{"value":"09","type":"v"},{"value":"03","type":"v"}],"nblines":2,"valid":{"a":"06"}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["L'opérateur SBC soustrait une valeur au registre A.","","En réalisant la soustraction de 0x09-0x03, chargez 0x06 dans le registre A."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["L'opérateur SBC soustrait une valeur au registre A.","","En réalisant la soustraction de #0x09 - #0x03, chargez #0x06 dans le registre A."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -547,11 +558,11 @@
         <dct:identifier>302</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser l'opérateur SBC avec une adresse directe.</dct:title>
         <dct:description><![CDATA["header":[{"label":"init","value":"","code":"A9038501A90038","rts":false}],"ops":["lda","sbc"],"args":[{"value":"01","type":"v"},{"value":"01"}],"nblines":2,"valid":{"a":"02"}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Comme ADC, l'opérateur SBC peut être utilisé avec une valeur numérique ou avec une adresse mémoire. Dans ce dernier cas, SBC soustrait au registre A la valeur contenue à cette adresse.","Otez la valeur 0x01 à la valeur contenue en 0x01 (en l'occurent 0x03) pour qu'au final le registre A contienne la valeur 0x02."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Comme ADC, l'opérateur SBC peut être utilisé avec une valeur numérique ou avec une adresse mémoire. Dans ce dernier cas, SBC soustrait au registre A la valeur contenue à cette adresse.","Otez la valeur #0x01 à la valeur contenue en 0x01 (en l'occurent #0x03) pour qu'au final le registre A contienne la valeur #0x02."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>2</dct:type>
         <dct:alternative>001</dct:alternative>
     </rdf:Description>
 
@@ -559,11 +570,23 @@
         <dct:identifier>303</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser l'opérateur SBC avec une valeur numérique.</dct:title>
         <dct:description><![CDATA["header":[{"label":"init","value":"","code":"38","rts":false}],"ops":["lda","sbc"],"args":[{"value":"01","type":"v"},{"value":"05","type":"v"}],"nblines":2,"valid":{"a":"FC","n":true}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez la valeur 0xFC dans le registre A."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez la valeur #0xFC dans le registre A."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>2</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>304</dct:identifier>
+        <dct:title xml:lang="fr-FR">Utiliser l'opérateur SBC en mode décimal.</dct:title>
+        <dct:description><![CDATA["header":[{"label":"init","value":"","code":"38","rts":false}],"ops":["sed","lda","sbc"],"args":[{"value":"01","type":"v"},{"value":"90","type":"v"}],"nblines":3,"valid":{"a":"89"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez la valeur #0x89 dans le registre A."]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
         <dct:alternative>001</dct:alternative>
     </rdf:Description>
 

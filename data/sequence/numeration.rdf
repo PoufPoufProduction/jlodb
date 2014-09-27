@@ -495,6 +495,7 @@
         <dct:identifier>b15a</dct:identifier>
         <dct:title xml:lang="fr-FR">Quantifier, sans contrainte de temps, le nombre de cubes (entre 1 et 15)</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"regexp":{"input": { "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/numbers/box$1.svg\\\"/></div>"} },"values":[["01",1],["02",2],["03",3],["04",4],["05",5],["06",6],["07",7],["08",8],["09",9],["10",10],["10 01",11],["10 02",12],["10 03",13],["10 04",14],["10 05",15]],"class":"wrong gray","font":3]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Combien de cubes ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -506,6 +507,7 @@
         <dct:identifier>b20a</dct:identifier>
         <dct:title xml:lang="fr-FR">Quantifier, sans contrainte de temps, le nombre de cubes (entre 1 et 20)</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"regexp":{"input": { "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/numbers/box$1.svg\\\"/></div>"} },"values":[["01",1],["02",2],["03",3],["04",4],["05",5],["06",6],["07",7],["08",8],["09",9],["10",10],["10 01",11],["10 02",12],["10 03",13],["10 04",14],["10 05",15],["10 06",16],["10 07",17],["10 08",18],["10 09",19],["20",20]],"class":"wrong gray","font":3]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Combien de cubes ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -517,6 +519,7 @@
         <dct:identifier>b100a</dct:identifier>
         <dct:title xml:lang="fr-FR">Quantifier, sans contrainte de temps, le nombre de cubes (entre 1 et 99)</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"regexp":{"input": { "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/numbers/box$1.svg\\\"/></div>"} },"gen":"function(){var a=Math.floor(Math.random()*99)+1, b=a, ret=\\\"\\\"; while(a>0) { if (ret.length) { ret+=\\\" \\\"; } if (a>=100) { ret+=\\\"100\\\"; a-=100; } else if (a>=50) { ret+=\\\"50\\\"; a-=50; } else if (a>=40) { ret+=\\\"40\\\"; a-=40; } else if (a>=30) { ret+=\\\"30\\\"; a-=30; } else if (a>=20) { ret+=\\\"20\\\"; a-=20; } else if (a>=10) { ret+=\\\"10\\\"; a-=10; } else { ret+=\\\"0\\\"+a; a=0; } } return [ret, b];}","class":"wrong gray","font":2]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Combien de cubes ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -528,6 +531,7 @@
         <dct:identifier>b100b</dct:identifier>
         <dct:title xml:lang="fr-FR">Quantifier, en moins de 40 secondes, le nombre de cubes (entre 1 et 99)</dct:title>
         <dct:description><![CDATA["time":2,"input":{"digit":2,"speed":1000},"regexp":{"input": { "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/numbers/box$1.svg\\\"/></div>"} },"gen":"function(){var a=Math.floor(Math.random()*99)+1, b=a, ret=\\\"\\\"; while(a>0) { if (ret.length) { ret+=\\\" \\\"; } if (a>=100) { ret+=\\\"100\\\"; a-=100; } else if (a>=50) { ret+=\\\"50\\\"; a-=50; } else if (a>=40) { ret+=\\\"40\\\"; a-=40; } else if (a>=30) { ret+=\\\"30\\\"; a-=30; } else if (a>=20) { ret+=\\\"20\\\"; a-=20; } else if (a>=10) { ret+=\\\"10\\\"; a-=10; } else { ret+=\\\"0\\\"+a; a=0; } } return [ret, b];}","class":"wrong gray","font":2]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Combien de cubes ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -539,6 +543,7 @@
         <dct:identifier>b100c</dct:identifier>
         <dct:title xml:lang="fr-FR">Quantifier, en moins de 20 secondes, le nombre de cubes (entre 1 et 99)</dct:title>
         <dct:description><![CDATA["time":1,"input":{"digit":2,"speed":1000},"regexp":{"input": { "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/numbers/box$1.svg\\\"/></div>"} },"gen":"function(){var a=Math.floor(Math.random()*99)+1, b=a, ret=\\\"\\\"; while(a>0) { if (ret.length) { ret+=\\\" \\\"; } if (a>=100) { ret+=\\\"100\\\"; a-=100; } else if (a>=50) { ret+=\\\"50\\\"; a-=50; } else if (a>=40) { ret+=\\\"40\\\"; a-=40; } else if (a>=30) { ret+=\\\"30\\\"; a-=30; } else if (a>=20) { ret+=\\\"20\\\"; a-=20; } else if (a>=10) { ret+=\\\"10\\\"; a-=10; } else { ret+=\\\"0\\\"+a; a=0; } } return [ret, b];}","class":"wrong gray","font":2]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Combien de cubes ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -550,6 +555,7 @@
         <dct:identifier>b200a</dct:identifier>
         <dct:title xml:lang="fr-FR">Quantifier, sans contrainte de temps, le nombre de cubes (entre 1 et 199)</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":3,"speed":1000},"regexp":{"input": { "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/numbers/box$1.svg\\\"/></div>"} },"gen":"function(){var a=Math.floor(Math.random()*199)+1, b=a, ret=\\\"\\\"; while(a>0) { if (ret.length) { ret+=\\\" \\\"; } if (a>=100) { ret+=\\\"100\\\"; a-=100; } else if (a>=50) { ret+=\\\"50\\\"; a-=50; } else if (a>=40) { ret+=\\\"40\\\"; a-=40; } else if (a>=30) { ret+=\\\"30\\\"; a-=30; } else if (a>=20) { ret+=\\\"20\\\"; a-=20; } else if (a>=10) { ret+=\\\"10\\\"; a-=10; } else { ret+=\\\"0\\\"+a; a=0; } } return [ret, b];}","class":"wrong gray","font":1.6]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Combien de cubes ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -561,6 +567,7 @@
         <dct:identifier>b200b</dct:identifier>
         <dct:title xml:lang="fr-FR">Quantifier, en moins de 40 secondes, le nombre de cubes (entre 1 et 199)</dct:title>
         <dct:description><![CDATA["time":2,"input":{"digit":3,"speed":1000},"regexp":{"input": { "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/numbers/box$1.svg\\\"/></div>"} },"gen":"function(){var a=Math.floor(Math.random()*199)+1, b=a, ret=\\\"\\\"; while(a>0) { if (ret.length) { ret+=\\\" \\\"; } if (a>=100) { ret+=\\\"100\\\"; a-=100; } else if (a>=50) { ret+=\\\"50\\\"; a-=50; } else if (a>=40) { ret+=\\\"40\\\"; a-=40; } else if (a>=30) { ret+=\\\"30\\\"; a-=30; } else if (a>=20) { ret+=\\\"20\\\"; a-=20; } else if (a>=10) { ret+=\\\"10\\\"; a-=10; } else { ret+=\\\"0\\\"+a; a=0; } } return [ret, b];}","class":"wrong gray","font":1.6]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Combien de cubes ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -572,6 +579,7 @@
         <dct:identifier>b200c</dct:identifier>
         <dct:title xml:lang="fr-FR">Quantifier, en moins de 20 secondes, le nombre de cubes (entre 1 et 199)</dct:title>
         <dct:description><![CDATA["time":1,"input":{"digit":3,"speed":1000},"regexp":{"input": { "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/numbers/box$1.svg\\\"/></div>"} },"gen":"function(){var a=Math.floor(Math.random()*199)+1, b=a, ret=\\\"\\\"; while(a>0) { if (ret.length) { ret+=\\\" \\\"; } if (a>=100) { ret+=\\\"100\\\"; a-=100; } else if (a>=50) { ret+=\\\"50\\\"; a-=50; } else if (a>=40) { ret+=\\\"40\\\"; a-=40; } else if (a>=30) { ret+=\\\"30\\\"; a-=30; } else if (a>=20) { ret+=\\\"20\\\"; a-=20; } else if (a>=10) { ret+=\\\"10\\\"; a-=10; } else { ret+=\\\"0\\\"+a; a=0; } } return [ret, b];}","class":"wrong gray","font":1.6]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Combien de cubes ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -583,6 +591,7 @@
         <dct:identifier>b20A</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier, sans contrainte de temps, le nombre décomposé en chiffres (entre 1 et 20)</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"values":[["0d+1u",1],["0d+2u",2],["0d+3u",3],["0d+4u",4],["0d+5u",5],["0d+6u",6],["0d+7u",7],["0d+8u",8],["0d+9u",9],["1d+0u",10],["1d+1u",11],["1d+2u",12],["1d+3u",13],["1d+4u",14],["1d+5u",15],["1d+6u",16],["1d+7u",17],["1d+8u",18],["1d+9u",19],["2d+0u",20]],"class":"wrong gray","font":2]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Combien de cubes ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>

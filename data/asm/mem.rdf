@@ -600,6 +600,18 @@
 
     <rdf:Description>
         <dct:identifier>451</dct:identifier>
+        <dct:title xml:lang="fr-FR">Créer une zone mémoire utilisable comme variable et y charger la valeur 0xFF en recopiant un programme faisant usage d'un label.</dct:title>
+        <dct:description><![CDATA["ops":["sta","lda","nop"],"args":[{"value":"label","type":"label"},{"value":"FF","type":"v"}],"nblines":4,"valid":{"mem":{"1000":"FFA9FF8D0010"}},"class":"huge"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Recopiez le programme suivant :","LABEL","&nbsp;&nbsp;&nbsp;&nbsp;NOP","&nbsp;&nbsp;&nbsp;&nbsp;LDA #0xFF","&nbsp;&nbsp;&nbsp;&nbsp;STA LABEL","","Un label peut être utilisé de 2 façons différentes :","1) Seul sur une ligne, il crée une correspondance entre son nom et l'adresse mémoire où il se trouve. Ici, placé en début de programme il crée l'égalité LABEL = 0x1000.","2) En paramètre de fonction, il est remplacé par cette valeur. Ici, STA LABEL revient à écrire STA 0x1000. A noter que LABEL ne compte pas comme une instruction, aussi, 0x1000 est l'adresse de LABEL mais aussi de NOP."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>452</dct:identifier>
         <dct:title xml:lang="fr-FR">Créer une zone mémoire utilisable comme variable et y charger la valeur 0x10 en utilisant un label.</dct:title>
         <dct:description><![CDATA["header":[{"label":"init","value":"","code":"A9FF","rts":false}],"ops":["sta","lda","nop"],"args":[{"value":"label","type":"label"},{"value":"10","type":"v"}],"nblines":4,"valid":{"mem":{"1002":"10A910"}},"class":"large"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["A l'aide de l'opérateur NOP, créez une zone mémoire en début de programme et chargez-y la valeur 0x10.","","Il est parfois compliqué de connaître l'emplacement mémoire exact d'une instruction au sein du programme. C'est pour cela qu'il est souvent pratique d'utiliser une étiquette. Une étiquette ne modifie en rien un programme assembleur mais permet de faire correspondre une adresse mémoire à un nom.","Insérez l'étiquette 'label' en première ligne du programme. Dans cet exercice, compte tenu de la longueur du code 'init', 'label' est désormais équivalent à l'adresse mémoire 0x1002."]]]></dct:description>
@@ -611,7 +623,7 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>452</dct:identifier>
+        <dct:identifier>453</dct:identifier>
         <dct:title xml:lang="fr-FR">Créer une zone mémoire labellisée pour échanger le contenu des registres X et A.</dct:title>
         <dct:description><![CDATA["header":[{"label":"init","value":["LDX 0x33","LDA 0x44"],"code":"A233A944","rts":false}],"ops":["stx","tax","lda","nop"],"args":[{"value":"label","type":"label"}],"nblines":5,"valid":{"a":"33","x":"44"},"class":"large"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Après avoir placé un libellé, et à l'aide de l'opérateur NOP, créez une zone mémoire en début de programme. Utilisez celle-ci pour échanger les valeurs des registres X et A."]]]></dct:description>
@@ -623,7 +635,7 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>453</dct:identifier>
+        <dct:identifier>454</dct:identifier>
         <dct:title xml:lang="fr-FR">Créer deux zones mémoires labellisées utilisables comme variables et y charger les valeurs 0x41 et 0x4F.</dct:title>
         <dct:description><![CDATA["ops":["sta","lda","nop"],"args":[{"value":"label1","type":"label"},{"value":"label2","type":"label"},{"value":"41","type":"v"},{"value":"4F","type":"v"}],"nblines":8,"valid":{"mem":{"1000":"414FA9"}},"class":"large"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Créez deux zones mémoires en DEBUT de programme, chacune étant précédée d'un libellé, et chargez-y respectivement les valeurs 0x41 et 0x4F."]]]></dct:description>
@@ -635,7 +647,7 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>454</dct:identifier>
+        <dct:identifier>455</dct:identifier>
         <dct:title xml:lang="fr-FR">Modifier une zone mémoire issue d'un code précompilé.</dct:title>
         <dct:description><![CDATA["header":[{"label":"label","value":"NOP","code":"EA","rts":false}],"ops":["lda","sta"],"args":[{"value":"99","type":"v"},{"value":"label","type":"label"}],"nblines":2,"valid":{"mem":{"1000":"99"},"a":"99"},"class":"large"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Les différentes codes précompilés possèdent tous un libellé définissant l'octet de début du code. Ici, le code précompilé 'label' commence à l'octet 0x1000 (puisqu'il est en début de programme) et correspond à la simple instruction NOP.","","Modifiez cette zone mémoire 'label' en y stockant la valeur 0x88."]]]></dct:description>
@@ -647,7 +659,7 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>455</dct:identifier>
+        <dct:identifier>456</dct:identifier>
         <dct:title xml:lang="fr-FR">Modifier une zone mémoire issue d'un code précompilé.</dct:title>
         <dct:description><![CDATA["header":[{"label":"label1","value":"NOP","code":"EA","rts":false},{"label":"label2","value":"NOP","code":"EA","rts":false}],"ops":["lda","sta"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"label1","type":"label"},{"value":"label2","type":"label"}],"nblines":4,"valid":{"mem":{"1000":"0102A9"}},"class":"large"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez respectivement les valeurs 0x01 et 0x02 dans les zones mémoire labellisées 'label1' et 'label2'."]]]></dct:description>
@@ -659,7 +671,7 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>456</dct:identifier>
+        <dct:identifier>457</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser une variable définie par un code précompilé pour échanger le contenu des registres X et A.</dct:title>
         <dct:description><![CDATA["header":[{"label":"init","value":["LDX 0x01","LDA 0x02"],"code":"A201A902","rts":false},{"label":"tmp","value":"NOP","code":"EA","rts":false}],"ops":["stx","tax","lda"],"args":[{"value":"tmp","type":"label"}],"nblines":3,"valid":{"a":"01","x":"02"},"class":"large"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Le code 'init' initialise le registre X à 0x01 et le registre A à 0x02.","","Echangez les valeurs de ces 2 registres en utilisant le label 'tmp' comme variable temporaire."]]]></dct:description>
