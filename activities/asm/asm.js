@@ -668,7 +668,7 @@
                                    this.f.carry7(_data, val); val = val<<1; helpers.memory.setb(_data, zp, val); this.nv(_data, val); },
             i08: function(_data) { this.f.ph(_data, _data.reg.P | 0x30); },
             i09: function(_data) { _data.reg.A|= this.getb(_data); this.f.a(_data);  },
-            i0a: function(_data) { this.f.carry7(_data_,_data.reg.A); _data.reg.A = (_data.reg.A << 1) & 0xff; this.f.a(_data); },
+            i0a: function(_data) { this.f.carry7(_data,_data.reg.A); _data.reg.A = (_data.reg.A << 1) & 0xff; this.f.a(_data); },
             i0d: function(_data) { _data.reg.A|= helpers.memory.getb(_data, this.getw(_data)); this.f.a(_data); },
             i0e: function(_data) { var addr = this.getw(_data); var val = helpers.memory.getb(_data, addr);
                                    this.f.carry7(_data, val); val = val<<1; helpers.memory.setb(_data, addr, val); this.nv(_data, val); },
@@ -696,8 +696,8 @@
             i29: function(_data) { _data.reg.A &= this.getb(_data); this.f.a(_data); },
             i2a: function(_data) { var sf = this.f.iscarry(_data); this.f.carry7(_data, _data.reg.A);
                                    _data.reg.A = (_data.reg.A<<1)&0xff; _data.reg.A|=sf; this.f.a(_data); },
-            i2c: function(_data) { this.f.bit(helpers.memory.getb(this.getw(_data))); },
-            i2d: function(_data) { _data.reg.A &= helpers.memory.getb(this.getw(_data)); this.f.a(_data); },
+            i2c: function(_data) { this.f.bit(helpers.memory.getb(_data, this.getw(_data))); },
+            i2d: function(_data) { _data.reg.A &= helpers.memory.getb(_data, this.getw(_data)); this.f.a(_data); },
             i2e: function(_data) { var sf=this.f.iscarry(_data), addr=this.getw(_data); var val=helpers.memory.getb(_data, addr);
                                    this.f.carry7(_data, val); val = val<<1; val|=sf; helpers.memory.setb(_data, addr, val);
                                    this.nv(_data, val); },

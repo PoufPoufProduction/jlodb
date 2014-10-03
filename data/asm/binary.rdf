@@ -2,15 +2,165 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dct="http://purl.org/dc/terms/">
 
+    <!-- AND -->
+
     <rdf:Description>
         <dct:identifier>001</dct:identifier>
-        <dct:title xml:lang="fr-FR">Utiliser l'opération AND.</dct:title>
+        <dct:title xml:lang="fr-FR">Masquer une valeur grâce à l'opérateur logique AND.</dct:title>
         <dct:description><![CDATA["ops":["lda","and"],"args":[{"value":"A8","type":"v"},{"value":"0F","type":"v"}],"nblines":2,"valid":{"a":"08"}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Utilisez l'opérateur AND (et logique) et chargez dans le registre A la valeur 0x08."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Utilisez l'opérateur AND ('ET' en anglais) et le masque #0x0F pour charger dans le registre A la valeur #0x08."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>logic</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>002</dct:identifier>
+        <dct:title xml:lang="fr-FR">Masquer une valeur grâce à l'opérateur logique AND.</dct:title>
+        <dct:description><![CDATA["ops":["lda","and"],"args":[{"value":"A8","type":"v"},{"value":"F0","type":"v"}],"nblines":2,"valid":{"a":"A0"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Utilisez l'opérateur AND (et logique) pour charger dans le registre A la valeur #0xA0."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>logic</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>003</dct:identifier>
+        <dct:title xml:lang="fr-FR">Masquer puis modifier une valeur.</dct:title>
+        <dct:description><![CDATA["ops":["lda","and","tax","inx","txa"],"args":[{"value":"A8","type":"v"},{"value":"F0","type":"v"},{"value":"0F","type":"v"}],"nblines":5,"valid":{"a":"A1"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez la valeur #0xA1 dans le registre A."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>logic</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>004</dct:identifier>
+        <dct:title xml:lang="fr-FR">Afficher la parité d'une suite de 10 nombres sur la sortie standard.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["and","adc","sta"],"args":[{"value":"01","type":"v"},{"value":"30","type":"v"},{"value":"FE"}],"header":[{"label":"loop","value":"","code":"A2004C0A1001FFFE1523BD0010","rts":false}],"footer":[{"label":"end","value":"","code":"E8E00AD001004C0A10","rts":false}],"nblines":3,"valid":{"out":"0000011011"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Suivant la valeur contenue dans le registre A, affichez '0' (pair) ou '1' (impair).","","La parité d'un nombre peut s'obtenir aisément avec un masque sur le bit de poids faible : VALEUR AND #0x01 renvoie #0x00 si VALEUR est paire et #0x01 si VALEUR est impaire.","","De plus, n'oubliez pas que la sortie standard n'accepte que des caractères ASCII. Aussi il est important de distinguer la valeur #0x01 du caractère '1' (égal à #0x31)."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>logic</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>005</dct:identifier>
+        <dct:title xml:lang="fr-FR">Afficher sur la sortie standard la valeur des 3 bits de poids faible d'une suite de 10 nombres.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["and","adc","sta"],"args":[{"value":"07","type":"v"},{"value":"30","type":"v"},{"value":"FE"}],"header":[{"label":"loop","value":"","code":"A2004C0A1001FFFE1523BD0010","rts":false}],"footer":[{"label":"end","value":"","code":"E8E00AD001004C0A10","rts":false}],"nblines":3,"valid":{"out":"2042017653"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Utilisez le masque #0x07 pour afficher sur la sortie standard la valeur des 3 bits de poids faible du registre A."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>logic</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>006</dct:identifier>
+        <dct:title xml:lang="fr-FR">Utiliser l'opérateur AND et une variable pour masquer le valeur du registre A par celle du registre X.</dct:title>
+        <dct:description><![CDATA["ops":["and","stx","nop"],"args":[{"value":"TMP","type":"label"}],"nblines":4,"valid":{"a":"08"},"header":[{"label":"init","value":"","code":"A978A20F","rts":false}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["En créant et utilisant la variable temporaire TMP, masquez la valeur du registre A (initialement définie à #0x78) par la valeur du registre X (#0x0F)."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <!-- OR -->
+
+    <rdf:Description>
+        <dct:identifier>051</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter une valeur grâce à l'opérateur logique OR.</dct:title>
+        <dct:description><![CDATA["ops":["lda","ora"],"args":[{"value":"A0","type":"v"},{"value":"0A","type":"v"}],"nblines":2,"valid":{"a":"AA"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Utilisez l'opérateur ORA ('OR' = 'OU' en anglais) pour charger dans le registre A la valeur #0xAA.","","Dans cet exemple, l'opérateur d'addition ADC donne le même résultat."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>logic</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>052</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter une valeur grâce à l'opérateur logique OR.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["lda","ora"],"args":[{"value":"A2","type":"v"},{"value":"0A","type":"v"}],"nblines":2,"valid":{"a":"AA"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Utilisez l'opérateur ORA pour charger dans le registre A la valeur #0xAA.","","Dans le cas présent, l'opérateur d'addition ADC ne donne pas le même résultat car #0xA2 + #0x0A = #0xAC tandisque #0xA2 ∨ #0x0A = 1010 0010 ∨ 1010 1010 = 1010 1010 = #0xAA. Les bits à 1 communs aux 2 opérandes ne s'ajoutent mais \\\"s'écrasent\\\"."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>logic</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>053</dct:identifier>
+        <dct:title xml:lang="fr-FR">A partir des puissances de 2, charger une valeur grâce à l'opérateur logique OR.</dct:title>
+        <dct:description><![CDATA["ops":["lda","ora"],"args":[{"value":"01","type":"v"},{"value":"02","type":"v"},{"value":"04","type":"v"},{"value":"08","type":"v"},{"value":"10","type":"v"},{"value":"20","type":"v"},{"value":"40","type":"v"},{"value":"80","type":"v"}],"nblines":6,"valid":{"a":"5F"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Un \\\"bitset\\\" est une valeur (un octet par exemple) dont chaque bit est une information indépendante. En chargeant chaque bit séparément grâce à l'opérateur ORA, insérez dans le registre A le bitset 0101 1111 soit #0X5F en hexadécimal."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>logic</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>054</dct:identifier>
+        <dct:title xml:lang="fr-FR">Utiliser l'opérateur ORA et une variable pour réaliser une disjonction sur les valeurs des registres A et X.</dct:title>
+        <dct:description><![CDATA["ops":["ora","stx","nop"],"args":[{"value":"TMP","type":"label"}],"nblines":4,"valid":{"a":"7A"},"header":[{"label":"init","value":"","code":"A972A20A","rts":false}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["En créant et utilisant la variable temporaire TMP, réalisez une disjonction logique des valeurs du registre A (initialement définie à #0x72) et du registre X (#0x0A). Au final, le registre A doit contenir la valeur #0x7A."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>055</dct:identifier>
+        <dct:title xml:lang="fr-FR">Utiliser l'opérateur ORA et une variable pour réaliser une disjonction sur les valeurs des registres A, X et Y.</dct:title>
+        <dct:description><![CDATA["ops":["ora","stx","sty","nop"],"args":[{"value":"TMP","type":"label"}],"nblines":6,"valid":{"a":"FA"},"header":[{"label":"init","value":"","code":"A972A20AA088","rts":false}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["En créant et utilisant la variable temporaire TMP, réalisez une disjonction logique des valeurs du registre A (initialement définie à #0x72), du registre X (#0x0A) et du registre Y (0x88)."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>056</dct:identifier>
+        <dct:title xml:lang="fr-FR">Charger une valeur grâce à l'opérateur logique OR.</dct:title>
+        <dct:description><![CDATA["ops":["ora","lda"],"args":[{"value":"51","type":"v"},{"value":"72","type":"v"},{"value":"F4","type":"v"},{"value":"75","type":"v"},{"value":"88","type":"v"},{"value":"0A","type":"v"}],"nblines":3,"valid":{"a":"FA"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chargez la valeur #0xFA (1111 1010) dans le registre A.","","Pour résoudre l'exercice, il faut éviter les valeurs dont le 1er et 3ème bit sont à 1."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <!-- XOR -->
+
+    <rdf:Description>
+        <dct:identifier>101</dct:identifier>
+        <dct:title xml:lang="fr-FR">Utiliser l'opérateur XOR et une variable pour réaliser une disjonction exclusive sur les valeurs des registres A et X.</dct:title>
+        <dct:description><![CDATA["class":"large","ops":["eor","stx","nop"],"args":[{"value":"TMP","type":"label"}],"nblines":4,"valid":{"a":"78"},"header":[{"label":"init","value":"","code":"A972A20A","rts":false}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["En créant et utilisant la variable temporaire TMP et à l'aide de l'opérateur EOR ('Exclusive OR' ou 'OU exclusif' en français), réalisez une disjonction exclusive des valeurs du registre A (initialement définie à #0x72) et du registre X (#0x0A).","","Au final, le registre A doit contenir la valeur #0x78 (le bit #0x02 commun aux deux valeurs est mis à 0 dans le résultat de la disjonction exclusive)."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
         <dct:alternative>001</dct:alternative>
     </rdf:Description>
 
