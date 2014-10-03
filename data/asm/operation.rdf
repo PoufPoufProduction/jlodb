@@ -466,6 +466,30 @@
         <dct:alternative>001</dct:alternative>
     </rdf:Description>
 
+    <rdf:Description>
+        <dct:identifier>207</dct:identifier>
+        <dct:title xml:lang="fr-FR">Utiliser l'opérateur ADC et une variable pour additionner les valeurs des registres A et X.</dct:title>
+        <dct:description><![CDATA["ops":["adc","stx","nop"],"args":[{"value":"TMP","type":"label"}],"nblines":4,"valid":{"a":"78"},"header":[{"label":"init","value":"","code":"A970A208","rts":false}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["En créant et utilisant la variable temporaire TMP, ajoutez au registre A (initialement définie à #0x70) la valeur du registre X (#0x08)."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>208</dct:identifier>
+        <dct:title xml:lang="fr-FR">Utiliser l'opérateur ADC et une variable pour additionner les valeurs des registres A, X et Y.</dct:title>
+        <dct:description><![CDATA["ops":["adc","stx","sty","nop"],"args":[{"value":"TMP","type":"label"}],"nblines":6,"valid":{"a":"88"},"header":[{"label":"init","value":"","code":"A970A208A010","rts":false}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["En créant et utilisant la variable temporaire TMP, ajoutez au registre A (initialement définie à #0x70) la valeur du registre X (#0x08) et celle du registre Y (0x10)."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
     <!-- ADC and decimal mode -->
 
     <rdf:Description>

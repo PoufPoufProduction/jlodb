@@ -44,7 +44,7 @@
         <dct:identifier>004</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher la valeur de COS(45) et de 1/SQRT(2).</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["dump"],"va":["V001","V002","V045"],"ma":["div","sqrt","cos"]},"valid":{"stdout":-1784803650}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez successivement sur la sortie standard les valeurs de COS(45) et de 1/SQRT(2)."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez successivement sur la sortie standard les valeurs de COS(45) et de 1/SQRT(2).","","SQRT est le terme anglais utilisé pour l'opération RACINE CARREE."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -55,7 +55,7 @@
     <rdf:Description>
         <dct:identifier>005</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher la valeur de PI suivie de sa partie entière.</dct:title>
-        <dct:description><![CDATA["class":"l1","a":{"op":["dump"],"va":["VPI"],"ma":["floor"]},"valid":{"stdout":-67213464}]]></dct:description>
+        <dct:description><![CDATA["class":"l1","a":{"op":["dump"],"va":["PI"],"ma":["floor"]},"valid":{"stdout":-67213464}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez sur la sortie standard la valeur du nombre PI suivie de sa partie entière.","","L'opérateur FLOOR (le 'sol' ou la 'terre' en anglais) fournit le plus grand entier inférieur à la valeur fournie en paramètre. Dans le cas d'un nombre positif comme PI, l'opérateur FLOOR renvoie sa partie entière."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
@@ -66,20 +66,8 @@
 
     <rdf:Description>
         <dct:identifier>006</dct:identifier>
-        <dct:title xml:lang="fr-FR">Afficher la valeur de PI suivie de sa partie entière.</dct:title>
-        <dct:description><![CDATA["class":"l1","a":{"op":["dump"],"va":["VPI"],"ma":["floor"]},"valid":{"stdout":-67213464}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez sur la sortie standard la valeur du nombre PI suivie de sa partie entière.","","L'opérateur FLOOR (le 'sol' ou la 'terre' en anglais) renvoie le plus grand entier inférieur à la valeur fournie en paramètre. Dans le cas d'un nombre positif comme PI, l'opérateur FLOOR renvoie sa partie entière."]]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>it</dct:subject>
-        <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>013</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>007</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher la valeur de -PI suivie de l'entier inférieur le plus grand.</dct:title>
-        <dct:description><![CDATA["class":"l1","a":{"op":["dump"],"va":["VPI"],"ma":["floor","neg"]},"valid":{"stdout":-724617246}]]></dct:description>
+        <dct:description><![CDATA["class":"l1","a":{"op":["dump"],"va":["PI"],"ma":["floor","neg"]},"valid":{"stdout":-724617246}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez sur la sortie standard la valeur du nombre -PI suivie de l'entier inférieur le plus grand grâce à la commande FLOOR.","","Ici FLOOR(-PI) renvoie le résultat -4, ce qui ne correspond pas à la partie entière du nombre -3.1415... mais bien au nombre entier tout juste inférieur."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
@@ -89,14 +77,26 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>008</dct:identifier>
+        <dct:identifier>007</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher les valeurs 3,4,-3 et -4 à partir du nombre PI grâce aux opérateurs FLOOR et CEIL.</dct:title>
-        <dct:description><![CDATA["class":"l1","a":{"op":["dump"],"va":["VPI"],"ma":["floor","ceil","neg"]},"valid":{"stdout":-1720423821}]]></dct:description>
+        <dct:description><![CDATA["class":"l1","a":{"op":["dump"],"va":["PI"],"ma":["floor","ceil","neg"]},"valid":{"stdout":-1720423821}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez sur la sortie standard les valeurs 3,4,-3 et -4 à partir du nombre PI (3.1415...).","","FLOOR renvoie le plus grand entier inférieur à la valeur fournie en paramètre (c'est à dire l'entier 'juste au dessous').","","Inversement, CEIL ('plafond' en anglais) renvoie le plus petit entier supérieur à la valeur fournie en paramètre (c'est à dire l'entier 'juste au dessus')."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>2</dct:type>
+        <dct:alternative>013</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>008</dct:identifier>
+        <dct:title xml:lang="fr-FR">Afficher les valeur -7 et -8 à partir de COS(45) et de l'un des opérateurs FLOOR et CEIL.</dct:title>
+        <dct:description><![CDATA["class":"l1","a":{"op":["dump"],"va":["V045","V010"],"ma":["ceil","neg","mult","cos"]},"valid":{"stdout":1013895194}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Sachant que COS(45)=0.7071, affichez les valeurs -7 et -8 sur la sortie standard ."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
         <dct:alternative>013</dct:alternative>
     </rdf:Description>
 
@@ -165,9 +165,9 @@
 
     <rdf:Description>
         <dct:identifier>202</dct:identifier>
-        <dct:title xml:lang="fr-FR">Afficher la longueur d'un tableau.</dct:title>
-        <dct:description><![CDATA["class":"l1","a":{"op":["dump"],"ma":["len"]},"values":{"array":[4,8,15,16,23,42]},"valid":{"stdout":-1067848827}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Grâce à l'opérateur LENGTH, affichez sur la sortie standard, la longueur du tableau array, c'est à dire le nombre d'éléments contenus dans ce tableau, indépendamment de leur type."]]]></dct:description>
+        <dct:title xml:lang="fr-FR">Afficher un tableau suivi de sa longueur.</dct:title>
+        <dct:description><![CDATA["class":"l1","a":{"op":["dump"],"ma":["len"]},"values":{"ARRAY":[4,8,15,16,23,42]},"valid":{"stdout":-771897627}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez le tableau ARRAY [4,8,15,16,23,42] sur la sortie standard suivi de la longueur de celui-ci, c'est à dire son nombre d'éléments. En l'occurence 6."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -181,8 +181,8 @@
     <rdf:Description>
         <dct:identifier>211</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher la 2ème valeur d'un tableau.</dct:title>
-        <dct:description><![CDATA["class":"l1","a":{"op":["dump"],"va":["V002"],"ma":["get"]},"values":{"array":[4,8,15,16,23,42]},"valid":{"stdout":-1816951327}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Grâce à l'opérateur GET, affichez sur la sortie standard, la 3ème valeur du tableau array","","L'opérateur GET(TABLEAU,POSITION) retourne la valeur du TABLEAU située à la place n°POSITION. Le premier élément du tableau est à la position 0."]]]></dct:description>
+        <dct:description><![CDATA["class":"l1","a":{"op":["dump"],"va":["V002"],"ma":["get"]},"values":{"ARRAY":[4,8,15,16,23,42]},"valid":{"stdout":-1816951327}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Grâce à l'opérateur GET, affichez sur la sortie standard, la 3ème valeur du tableau ARRAY","","L'opérateur GET(TABLEAU,POSITION) retourne la valeur du TABLEAU située à la place n°POSITION. Le premier élément du tableau est à la position 0."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
