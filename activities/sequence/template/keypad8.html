@@ -4,8 +4,7 @@
         <div id="time" class="time">00:00:00</div>
         <div id="keypad">
             <table>
-                <tr><td ontouchstart="$(this).closest('.sequence').sequence('key', -1);event.preventDefault();"
-                        onclick="$(this).closest('.sequence').sequence('key', -1);" colspan="3" id="screen" >00</td></tr>
+                <tr><td colspan="3" id="screen" >00</td></tr>
                 <tr>
                     <td ontouchstart="$(this).closest('.sequence').sequence('key', 7);event.preventDefault();"
                         onclick="$(this).closest('.sequence').sequence('key', 7);">7</td>
@@ -32,7 +31,7 @@
                     <td ontouchstart="$(this).closest('.sequence').sequence('key', 0);event.preventDefault();"
                         onclick="$(this).closest('.sequence').sequence('key', 0);">0</td>
                     <td ontouchstart="$(this).closest('.sequence').sequence('key', '.');event.preventDefault();"
-                        onclick="$(this).closest('.sequence').sequence('key', '.');" colspan="2">X</td>
+                        onclick="$(this).closest('.sequence').sequence('key', '.');" colspan="2">⊗</td>
                 </tr>
             </table>
         </div>

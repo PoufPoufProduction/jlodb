@@ -2,16 +2,74 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dct="http://purl.org/dc/terms/">
 
+    <!-- KANKURO LIGHT -->
+
     <rdf:Description>
-        <dct:identifier>000</dct:identifier>
-        <dct:title xml:lang="fr-FR">Addition</dct:title>
-        <dct:description><![CDATA["data":["13 29"," 82 3","7 45 ","16 37"],"def":{"horiz":{"0x0":"4+9","3x0":"12+17","1x1":"41+41","2x2":"19+26","0x3":"14+2","3x3":"15+22"},"vert":{"0x2":"36+35","1x0":"11+27","2x1":"15+9","3x2":"17+36","4x0":"45+48"}},"font":2.5,"class":"num","exercice":"Résolvez les additions"]]></dct:description>
-        <dct:extent>10</dct:extent>
+        <dct:identifier>k001</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter les additions (jusqu'à 20) d'une grille 3x3</dct:title>
+        <dct:description><![CDATA["keypad":"num","data":["374","629","463"],"fixed":[[0,0],[1,0],[1,1]],"def":{"horiz":{"0x0":"14","0x1":"17","0x2":"13"},"vert":{"0x0":"13","1x0":"15","2x0":"16"}},"font":5]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Compléter les additions"]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>4</dct:type>
-        <dct:alternative>000</dct:alternative>
+        <dct:alternative>k001</dct:alternative>
     </rdf:Description>
+
+    <!-- STEP -->
+
+    <rdf:Description>
+        <dct:identifier>s5100</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter un tableau de 5 nombres (compris entre 100 et 1000) variant de 100 en 100.</dct:title>
+        <dct:description><![CDATA["keypad":"num0","hint":false,"horiz":true,"gen":"function(){var a=Math.floor(Math.random()*500)+100,data=[];for (var i=0;i<5;i++){data.push((a+i*100).toString());} return {\\\"data\\\":data,\\\"fixed\\\":[[0,0],[1,0],[2,0],[0,2],[1,2],[2,2]]}}","font":1]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Les nombres varient de 100 en 100."]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>s8500</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>s8100</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter un tableau de 8 nombres (compris entre 1000 et 10000) variant de 100 en 100.</dct:title>
+        <dct:description><![CDATA["keypad":"num0","hint":false,"horiz":true,"gen":"function(){var a=Math.floor(Math.random()*8200)+1000,data=[];for (var i=0;i<8;i++){data.push((a+i*100).toString());} return {\\\"data\\\":data,\\\"fixed\\\":[[0,0],[1,0],[2,0],[3,0],[0,2],[1,2],[2,2],[3,2]]}}","font":1]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Les nombres varient de 100 en 100."]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>s8500</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>s8250</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter un tableau de 8 nombres (compris entre 1000 et 10000) variant de 250 en 250.</dct:title>
+        <dct:description><![CDATA["keypad":"num0","hint":false,"horiz":true,"gen":"function(){var a=Math.floor(Math.random()*7500)+1000,data=[];for (var i=0;i<8;i++){data.push((a+i*250).toString());} return {\\\"data\\\":data,\\\"fixed\\\":[[0,0],[1,0],[2,0],[3,0],[0,2],[1,2],[2,2],[3,2]]}}","font":1]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Les nombres varient de 250 en 250."]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:alternative>s8500</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>s8500</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter un tableau de 8 nombres (compris entre 1000 et 10000) variant de 500 en 500.</dct:title>
+        <dct:description><![CDATA["keypad":"num0","hint":false,"horiz":true,"gen":"function(){var a=Math.floor(Math.random()*5000)+1000,data=[];for (var i=0;i<8;i++){data.push((a+i*500).toString());} return {\\\"data\\\":data,\\\"fixed\\\":[[0,0],[1,0],[2,0],[3,0],[0,2],[1,2],[2,2],[3,2]]}}","font":1]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Les nombres varient de 500 en 500."]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>s8500</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+    </rdf:Description>
+
 
 
 </rdf:RDF>

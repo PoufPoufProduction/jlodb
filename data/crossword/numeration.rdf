@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dct="http://purl.org/dc/terms/">
+
+    <rdf:Description>
+        <dct:identifier>5100</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter un tableau de 5 nombres successifs (compris entre 10 et 100) avec changement de dizaines.</dct:title>
+        <dct:description><![CDATA["keypad":"num0","hint":false,"horiz":true,"gen":"function(){var a=Math.floor(Math.random()*75)+10,data=[];while (a%10<6){a+=3;} if (a%10==8) { a--; } for (var i=0;i<5;i++){data.push((a+i).toString());} return {\\\"data\\\":data,\\\"fixed\\\":[[0,0],[1,0],[0,2],[1,2]]}}","font":1,"number":3]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Complétez la suite de nombres."]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>81000</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>81000</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter un tableau de 8 nombres successifs (compris entre 100 et 1000) avec changement de centaines.</dct:title>
+        <dct:description><![CDATA["keypad":"num0","hint":false,"horiz":true,"gen":"function(){var a=Math.floor(Math.random()*795)+100,data=[];while (a%100<96){a+=3;} if (a%10==8) { a--; } for (var i=0;i<8;i++){data.push((a+i).toString());} return {\\\"data\\\":data,\\\"fixed\\\":[[0,0],[1,0],[2,0],[0,2],[1,2],[2,2]]}}","font":1,"number":2]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Complétez la suite de nombres."]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>81000</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>n120</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver le nombre suivant (compris entre 10 et 20)</dct:title>
+        <dct:description><![CDATA["keypad":"num0","hint":false,"horiz":true,"gen":"function(){var data=[],horiz={}; for (var i=0;i<8;i++){var a=Math.floor(Math.random()*8)+10; data.push((a+1).toString()); horiz['0x'+i]=a.toString();} return {\\\"data\\\":data,\\\"fixed\\\":[[0,0],[1,0]],\\\"def\\\":{\\\"horiz\\\":horiz}}}","font":4,"number":3]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Trouvez le nombre suivant..."]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>81000</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>n1100</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver le nombre suivant (compris entre 10 et 100)</dct:title>
+        <dct:description><![CDATA["keypad":"num0","hint":false,"horiz":true,"gen":"function(){var data=[],horiz={}; for (var i=0;i<8;i++){var a=Math.floor(Math.random()*88)+10; data.push((a+1).toString()); horiz['0x'+i]=a.toString();} return {\\\"data\\\":data,\\\"fixed\\\":[[0,0],[1,0]],\\\"def\\\":{\\\"horiz\\\":horiz}}}","font":4,"number":3]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Trouvez le nombre suivant..."]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>81000</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+    </rdf:Description>
+
+</rdf:RDF>
+

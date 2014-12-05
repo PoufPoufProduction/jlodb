@@ -1,0 +1,43 @@
+<div>
+    <div id="header" style="width:110%">
+        <div id="board">
+            <div id="data"></div>
+        </div>
+        <div id="popup">
+            <div id="border"></div>
+            <div id="a0" class="arrow"><div><img src="res/img/generic/arrow02.svg"/></div></div>
+            <div id="a1" class="arrow"><div><img src="res/img/generic/arrow02.svg"/></div></div>
+            <div id="a2" class="arrow e"><div><img src="res/img/generic/arrow02.svg"/></div></div>
+            <div id="a3" class="arrow e"><div><img src="res/img/generic/arrow02.svg"/></div></div>
+        </div>
+    </div>
+    <div id="footer">
+        <div id="exercice"><div></div></div>
+    </div>
+
+
+    <div id="submit" ontouchstart="$(this).closest('.numbers').numbers('valid');event.preventDefault();"
+                     onclick="$(this).closest('.numbers').numbers('valid');">
+        <img src="res/img/icon/swvalid.svg" id="subvalid"/>
+        <img src="res/img/icon/swgood.svg" id="subgood"/>
+        <img src="res/img/icon/swwrong.svg" id="subwrong"/>
+    </div>
+
+    <div id="effects">
+        <div id="good"><img src="res/img/effects/alert02.svg"/></div>
+        <div id="wrong"><img src="res/img/effects/alert01.svg"/></div>
+    </div>
+
+    <div id="splash" ontouchstart="$(this).closest('.numbers').numbers('next');event.preventDefault();"
+                     onclick="$(this).closest('.numbers').numbers('next');"><div>
+        <div class="text">
+            <h1 id="label">numbers</h1>
+            <ul>
+                <li id="default1"></li>
+                <li id="default2"></li>
+            </ul>
+        </div>
+    </div></div>
+
+</div>
+

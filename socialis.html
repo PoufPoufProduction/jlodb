@@ -47,17 +47,20 @@
 #genius>#user #buttons .l       { background-color:red;color:white; position:relative; border-radius:.5em; display:none;
                                   font-size:.5em; top:-1.5em; left:1em; width:1em; height:1em; text-align:center; opacity:0.9; }
 
-#main>#edit>div                 { font-size:.5em; width:20em; height:16em; margin:2em 6em; background-color:rgba(128,120,100,0.9);
+#main>#edit>div                 { font-size:.5em; width:20em; height:18em; margin:2em 6em; background-color:rgba(128,120,100,0.9);
                                   border-radius:.5em; }
 #main>#edit .icon               { cursor:pointer; margin:.1em; }
 #main>#edit input               { border:0; width:13.8em; height:1.2em; margin:.1em; border-radius:0 .5em .5em 0; font-size:.8em; }
+#main>#edit select              { border:0; width:13.8em; height:1.2em; margin:.1em; border-radius:0 .5em .5em 0; font-size:.8em; }
 #main>#edit input.empty         { color:#BBBBBB; }
-#main>#edit #header             { height:11.2em; }
+#main>#edit #header             { height:13.2em; }
+#main>#edit #misc               { height:2em; clear:both;}
+#main>#edit #misc .label        { float:left;width:8.3em; margin:.05em .2em; text-align:right; color:white; }
 #main>#edit #footer             { font-size:4em; }
 #main>#edit #settings           { margin:.1em; }
 #main>#edit #error              { clear:both;color:red;margin-right:1em;text-align:right;font-weight:bold;font-style:italic;font-size:.8em;}
 #main>#edit #avatar             { float:left;width:8.3em;height:8.3em;margin:.25em .2em;background-color:black;border-radius:1em 0 0 1em;}
-#main>#edit #gonz               { background-color:rgba(255,240,200,0.9); width:100%; height:70%; margin-top:2em; padding:.5em;}
+#main>#edit #gonz               { background-color:rgba(255,240,200,0.9); width:100%; height:62%; margin-top:2em; padding:.5em;}
 
 #board #node                    { z-index:50; }
 
@@ -498,6 +501,7 @@ var socialis = {
             $.cookie("jlodb-code", _data.code, { expires : 1 });
 
             $("#user #stars").html(_data.stars);
+            if (_data.theme) { $("#genius").attr("class",_data.theme); }
 
             $.getJSON("mods/genius/api/state.php",function(data){
                 $("#genius #board").genius('states',{nodes:data.nodes});
@@ -546,6 +550,8 @@ var socialis = {
             if ($("#upopr").attr("value").length) { args+="&old="+$("#upopr").attr("value"); }
             if ($("#upnpr").attr("value").length) { args+="&new="+$("#upnpr").attr("value"); }
             if ($("#upcpr").attr("value").length) { args+="&con="+$("#upcpr").attr("value"); }
+
+            args+="&theme="+$("#edit #theme").attr("value");
 
             if (socialis.settings.avatar.length && socialis.settings.avatar!=socialis.settings.user.avatar) {
                 args+="&avatar="+encodeURIComponent(socialis.settings.avatar);
@@ -770,6 +776,8 @@ var socialis = {
             if (socialis.settings.user.email) { $("#upem").attr("value", socialis.settings.user.email).removeClass(); }
             else                     { $("#upem").attr("value", socialis.locale.template.upem).addClass("empty"); }
 
+            if (socialis.settings.user.theme)  { $("#edit #theme").attr("value", socialis.settings.user.theme); }
+
             $("#upop").show();$("#upopr").attr("value","").hide();
             $("#upnp").show();$("#upnpr").attr("value","").hide();
             $("#upcp").show();$("#upcpr").attr("value","").hide();
@@ -988,6 +996,10 @@ window.onload = function() {
                 <input value="" type="password" id="upnpr" style="display:none;"/>
                 <input value="confirmation" id="upcp" class="empty" onfocus="$(this).hide();$('#upcpr').show().focus();" />
                 <input value="" type="password" id="upcpr" style="display:none;"/>
+            </div>
+            <div id="misc">
+                <div><div class="label">Theme</div>
+                     <select id="theme"><option>Kraken</option><option>Nemo</option><option>Ulysse</option></select></div>
             </div>
             <div id="error"></div>
           </div>

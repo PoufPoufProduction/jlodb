@@ -34,7 +34,13 @@
               "children": [
                 { "id"      : "numeration",
                   "label"   : "Numération" ,
-                  "abstract": "Mode de représentation des nombres" },
+                  "abstract": "Mode de représentation des nombres",
+                  "children": [
+                    { "id"      : "negative",
+                      "label"   : "Nombres négatifs" ,
+                      "abstract": "Nombres négatifs"}
+                  ]
+                },
                 { "id"      : "operations",
                   "label"   : "Opérations",
                   "abstract": "Une opération est un processus visant à obtenir un résultat à partir d'un ou plusieurs objets appelés opérandes.",
@@ -50,7 +56,10 @@
                       "abstract": "La multiplication de deux entiers peut être vue comme une addition répétée plusieurs fois."},
                     { "id"      : "division",
                       "label"   : "Division",
-                      "abstract": "La division est une loi de composition qui à deux nombres associe le produit du premier par l'inverse du second."}]}]},
+                      "abstract": "La division est une loi de composition qui à deux nombres associe le produit du premier par l'inverse du second."},
+                    { "id"      : "logic",
+                      "label"   : "Algèbre de Boole",
+                      "abstract": "L'algèbre de Boole, ou calcul booléen, est la partie des mathématiques qui s'intéresse aux opérations et aux fonctions sur les variables logiques."}]}]},
             { "id"      : "geometry",
               "label"   : "Géométrie" ,
               "abstract": "La géométrie est la partie des mathématiques qui étudie les figures du plan et de l'espace",

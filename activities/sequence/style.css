@@ -59,6 +59,9 @@
 .sequence #values li.select             { background-color:rgba(2,20,88, 0.9); color:rgb(220, 240, 256); }
 .sequence #values li.good               { color:green; border-color:green; }
 .sequence #values li.wrong              { color:red; border-color:red; }
+.sequence #values li .bg                { background-color:gray; }
+.sequence #values li.good .bg           { background-color:rgba(80,255,65,1.0); }
+.sequence #values li.wrong .bg          { background-color:rgba(255,80,65,1.0); }
 .sequence #values .icon                 { float:left; }
 .sequence #values .icon.center          { float:none; margin-left:.5em;}
 .sequence #values .dice                 { width:.9em; height:.9em; background-size:.9em; overflow:hidden;

@@ -29,9 +29,15 @@
         },
         // Get the settings
         settings: function($this, _val) { if (_val) { $this.data("settings", _val); } return $this.data("settings"); },
+        // Binding clear
+        unbind: function($this) {
+            $(document).unbind("keypress keydown");
+            $this.unbind("mouseup mousedown mousemove mouseout touchstart touchmove touchend touchleave");
+        },
         // Quit the activity by calling the context callback
         end: function($this) {
             var settings = helpers.settings($this);
+            helpers.unbind($this);
             settings.context.onquit($this,{'status':'success', 'score':settings.score});
         },
         loader: {
@@ -88,6 +94,11 @@
                 settings.ratio = vWidth/(vSize[2]-vSize[0]);
                 if (settings.ratio<=0) { settings.ratio=1; }
 
+                // USER TEXT
+                if (settings.txt) {
+                    for (var i in settings.txt) { $("#"+i,settings.svg.root()).text(settings.txt[i]); }
+                }
+
                 // LOCALE HANDLING
                 $this.find("h1#label").html(settings.label);
                 $this.find("#guide").html(settings.guide);
@@ -108,14 +119,26 @@
                             translate   : [0,0],            // The current position of the cursor
                             boundaries  : [-1,-1,-1,-1],    // The translation boundaries
                             targettype  : "circle",         // The target type (circle, rect)
-                            effects     : [0,0,0,0]         // Parameter for the effects
+                            effects     : [0,0,0,0],        // Parameter for the effects
+                            offset      : [0,0],            // Offset for the effects
+                            center      : 0                 // Rotation center
                         }, settings.cursor[i]);
                     settings.cursors[vCursor.id] = vCursor;
 
                     // HANDLE THE CURSOR DRAG
                     var $cursor = $("#"+vCursor.id, settings.svg.root());
-                    vCursor.translate=[vCursor.init[0], vCursor.init[1]];
-                    $cursor.show().attr("transform", "translate("+vCursor.translate[0]+" "+vCursor.translate[1]+")");
+
+                    if (vCursor.center) {
+                        if ($.isArray(vCursor.init))        { vCursor.init = vCursor.init[0]; }
+                        if ($.isArray(vCursor.constraint))  { vCursor.constraint = vCursor.constraint[0]; }
+
+                        vCursor.translate=vCursor.init;
+                        $cursor.show().attr("transform", "rotate("+vCursor.translate+")");
+                    }
+                    else {
+                        vCursor.translate=[vCursor.init[0], vCursor.init[1]];
+                        $cursor.show().attr("transform", "translate("+vCursor.translate[0]+" "+vCursor.translate[1]+")");
+                    }
 
                     $cursor.bind('touchstart mousedown', function(event) {
                         var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
@@ -130,67 +153,103 @@
                         }
                         event.preventDefault();
                     });
+
+                    if (vCursor.onmove) { eval('('+vCursor.onmove+')')($this, settings.svg.root(), vCursor.translate); }
                 }
 
-                $(settings.svg.root()).bind('touchend mouseup', function() {
+                $this.bind('touchend mouseup', function() { //mouseleave touchleave
                     $(settings.elt).attr("class","");
-                    var vCursor = settings.cursors[settings.elt.id];
-                    $this.removeClass("active");
+                    if (settings.elt) {
+                        var vCursor = settings.cursors[settings.elt.id];
+                        $this.removeClass("active");
 
+                        // RELEASE THE DISPLACEMENT
+                        if (vCursor.center) {
+                            var reg = new RegExp("[( )]","g");
+                            var vSplit = $(settings.elt).attr("transform").split(reg);
 
-                    // RELEASE THE DISPLACEMENT
-                    if ($(settings.elt).attr("transform")) {
-                        var reg = new RegExp("[( )]","g");
-                        var vSplit = $(settings.elt).attr("transform").split(reg);
-
-                        if (vCursor.constraint[0]>0) {
-                            vSplit[1] = vCursor.init[0]+
-                                        Math.round((vSplit[1]-vCursor.init[0])/vCursor.constraint[0])*vCursor.constraint[0];
+                            if (vCursor.constraint>0) {
+                                vSplit[1] = vCursor.init+
+                                            Math.round((vSplit[1]-vCursor.init)/vCursor.constraint)*vCursor.constraint;
+                            }
+                            $(settings.elt).attr("transform", "rotate("+vSplit[1]+")");
+                            vCursor.translate=parseFloat(vSplit[1]);
                         }
-                        if (vCursor.constraint[1]>0) {
-                            vSplit[2] = vCursor.init[1]+
-                                        Math.round((vSplit[2]-vCursor.init[1])/vCursor.constraint[1])*vCursor.constraint[1];
+                        else {
+                            var reg = new RegExp("[( )]","g");
+                            var vSplit = $(settings.elt).attr("transform").split(reg);
+
+                            if (vCursor.constraint[0]>0) {
+                                vSplit[1] = vCursor.init[0]+
+                                            Math.round((vSplit[1]-vCursor.init[0])/vCursor.constraint[0])*vCursor.constraint[0];
+                            }
+                            if (vCursor.constraint[1]>0) {
+                                vSplit[2] = vCursor.init[1]+
+                                            Math.round((vSplit[2]-vCursor.init[1])/vCursor.constraint[1])*vCursor.constraint[1];
+                            }
+                            $(settings.elt).attr("transform", "translate("+vSplit[1]+" "+vSplit[2]+")");
+                            vCursor.translate=[parseFloat(vSplit[1]),parseFloat(vSplit[2])];
                         }
-                        $(settings.elt).attr("transform", "translate("+vSplit[1]+" "+vSplit[2]+")");
-                        vCursor[vSplit[0]]=[parseFloat(vSplit[1]),parseFloat(vSplit[2])];
-                    }
-                    else {
+                        if (vCursor.onmove) { eval('('+vCursor.onmove+')')($this, settings.svg.root(), vCursor.translate); }
                     }
                     settings.elt = 0;
                 });
-                $(settings.svg.root()).bind('touchmove mousemove', function(event) {
+                $this.bind('touchmove mousemove', function(event) {
                     var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
                                 event.originalEvent.touches[0]:event;
 
                     if (settings.interactive && settings.elt) {
                         // COMPUTE TRANSLATION_X
                         var vCursor = settings.cursors[settings.elt.id];
-                        var vX = vCursor.translate[0];
-                        if (vCursor.constraint[0]==0) {
-                            vX += (vEvent.clientX-settings.mouse[0])/settings.ratio;
+                        var vOnmoveArgs=0;
+                        if (vCursor.center) {
+                            var vCenter = [vCursor.center[0]*settings.ratio + $this.offset().left,
+                                           vCursor.center[1]*settings.ratio + $this.offset().top];
+                            var vA = [ settings.mouse[0]-vCenter[0], settings.mouse[1]-vCenter[1] ];
+                            var vB = [ vEvent.clientX - vCenter[0], vEvent.clientY - vCenter[1] ];
+                            var lA = Math.sqrt(vA[0]*vA[0] + vA[1]*vA[1]);
+                            var lB = Math.sqrt(vB[0]*vB[0] + vB[1]*vB[1]);
+                            vA[0] = vA[0]/lA; vA[1] = vA[1]/lA;
+                            vB[0] = vB[0]/lB; vB[1] = vB[1]/lB;
+                            var det = vA[0]*vB[1] - vA[1]*vB[0];
+                            var sign = det>0?1:-1;
+
+                            var vRot = vCursor.translate+sign*(Math.acos(vA[0]*vB[0]+vA[1]*vB[1])*180/Math.PI);
+                            if (vCursor.boundaries && vRot<vCursor.boundaries[0]) { vRot = vCursor.boundaries[0]; }
+                            if (vCursor.boundaries && vRot>vCursor.boundaries[1]) { vRot = vCursor.boundaries[1]; }
+                            $(settings.elt).attr("transform", "rotate("+vRot+")");
+                            vOnmoveArgs=vRot;
                         }
-                        else if (vCursor.constraint[0]>0) {
-                            var vValue = ((vEvent.clientX-settings.mouse[0])/settings.ratio)/vCursor.constraint[0];
-                            var vStep = Math.round(vValue);
-                            var vOffset = Math.pow((vValue-vStep)*2,5)/2;
-                            vX += (vStep+vOffset) * vCursor.constraint[0];
+                        else {
+                            var vX = vCursor.translate[0];
+                            if (vCursor.constraint[0]==0) {
+                                vX += (vEvent.clientX-settings.mouse[0])/settings.ratio;
+                            }
+                            else if (vCursor.constraint[0]>0) {
+                                var vValue = ((vEvent.clientX-settings.mouse[0])/settings.ratio)/vCursor.constraint[0];
+                                var vStep = Math.round(vValue);
+                                var vOffset = Math.pow((vValue-vStep)*2,5)/2;
+                                vX += (vStep+vOffset) * vCursor.constraint[0];
+                            }
+                            // COMPUTE TRANSLATION_Y
+                            var vY = vCursor.translate[1];
+                            if (vCursor.constraint[1]==0) {
+                                vY += (vEvent.clientY-settings.mouse[1])/settings.ratio;
+                            }
+                            else if (vCursor.constraint[1]>0) {
+                                var vValue = ((vEvent.clientY-settings.mouse[1])/settings.ratio)/vCursor.constraint[1]
+                                var vStep = Math.round(vValue);
+                                var vOffset = Math.pow((vValue-vStep)*2,5)/2;
+                                vY += (vStep+vOffset)  * vCursor.constraint[1];
+                            }
+                            if (vCursor.boundaries && vX<vCursor.boundaries[0]) { vX = vCursor.boundaries[0]; }
+                            if (vCursor.boundaries && vY<vCursor.boundaries[1]) { vY = vCursor.boundaries[1]; }
+                            if (vCursor.boundaries && vX>vCursor.boundaries[2]) { vX = vCursor.boundaries[2]; }
+                            if (vCursor.boundaries && vY>vCursor.boundaries[3]) { vY = vCursor.boundaries[3]; }
+                            $(settings.elt).attr("transform", "translate("+vX+" "+vY+")");
+                            vOnmoveArgs=[vX,vY];
                         }
-                        // COMPUTE TRANSLATION_Y
-                        var vY = vCursor.translate[1];
-                        if (vCursor.constraint[1]==0) {
-                            vY += (vEvent.clientY-settings.mouse[1])/settings.ratio;
-                        }
-                        else if (vCursor.constraint[1]>0) {
-                            var vValue = ((vEvent.clientY-settings.mouse[1])/settings.ratio)/vCursor.constraint[1]
-                            var vStep = Math.round(vValue);
-                            var vOffset = Math.pow((vValue-vStep)*2,5)/2;
-                            vY += (vStep+vOffset)  * vCursor.constraint[1];
-                        }
-                        if (vCursor.boundaries[0]>=0 && vX<vCursor.boundaries[0]) { vX = vCursor.boundaries[0]; }
-                        if (vCursor.boundaries[1]>=0 && vY<vCursor.boundaries[1]) { vY = vCursor.boundaries[1]; }
-                        if (vCursor.boundaries[2]>=0 && vX>vCursor.boundaries[2]) { vX = vCursor.boundaries[2]; }
-                        if (vCursor.boundaries[3]>=0 && vY>vCursor.boundaries[3]) { vY = vCursor.boundaries[3]; }
-                        $(settings.elt).attr("transform", "translate("+vX+" "+vY+")");
+                        if (vCursor.onmove) { eval('('+vCursor.onmove+')')($this, settings.svg.root(), vOnmoveArgs); }
                     }
                     event.preventDefault();
                 });
@@ -249,6 +308,13 @@
             $this.find("#values li").each(function(index) { if (index<settings.it) { vHeight = vHeight - $(this).outerHeight(); } });
             if (_anim)  { $this.find("#values ul").animate({top: vHeight+"px"}, 250, function() { helpers.next($this); }); }
             else        { $this.find("#values ul").css("top", vHeight+"px"); }
+
+            if (settings.it<settings.questions.length && settings.questions[settings.it] && settings.questions[settings.it][2]) {
+                for (var i in settings.questions[settings.it][2]) {
+                    $("#"+i,settings.svg.root()).text(settings.questions[settings.it][2][i]);
+                }
+            }
+
         },
         next: function($this) {
             var settings = helpers.settings($this);
@@ -259,28 +325,37 @@
             var $group = $("#effects", settings.svg.root());
             for (var i in settings.cursors) {
                 var vCursor = settings.cursors[i];
-                if (vCursor.targettype=="circle") {
-                    // ADD CIRCLE EFFECT
-                    settings.effects.push(settings.svg.circle($group,
-                        vCursor.effects[0],vCursor.effects[1],vCursor.effects[2]+vCursor.effects[3]*vCursor.steps[value],
-                        {fill:vCursor.color, opacity:vCursor.opacity }));
-                } else {
-                    // RECTANGLE EFFECT
-                    // WIDTH MAY BE DIFFERENT THAN HEIGHT
-                    var vStepX = vCursor.steps[value], vStepY = vCursor.steps[value];
-                    if ($.isArray(vCursor.steps[value])) {
-                        vStepX = vCursor.steps[value][0];
-                        vStepY = vCursor.steps[value][1];
-                    }
-                    // CONSTRAINT HANDLING
-                    var vX = (vCursor.constraint[0]<0)?vCursor.effects[2]:vCursor.effects[2]+vCursor.effects[2]*vStepX;
-                    var vY = (vCursor.constraint[1]<0)?vCursor.effects[3]:vCursor.effects[3]+vCursor.effects[3]*vStepY;
+                if (vCursor.center) {
+                    var vX = vCursor.center[2]*Math.sin(Math.PI*vCursor.effects[0]/180);
+                    var vY = vCursor.center[2]*Math.cos(Math.PI*vCursor.effects[0]/180);
+                    settings.effects.push(settings.svg.line($group,
+                            vCursor.center[0],vCursor.center[1],vCursor.center[0]+vX,vCursor.center[1]-vY,
+                            {fill:"none",stroke:vCursor.color,opacity:vCursor.opacity,strokeWidth:value*5 }));
+                }
+                else {
+                    if (vCursor.targettype=="circle") {
+                        // ADD CIRCLE EFFECT
+                        settings.effects.push(settings.svg.circle($group,
+                            vCursor.effects[0],vCursor.effects[1],vCursor.effects[2]+vCursor.effects[3]*vCursor.steps[value],
+                            {fill:vCursor.color, opacity:vCursor.opacity }));
+                    } else {
+                        // RECTANGLE EFFECT
+                        // WIDTH MAY BE DIFFERENT THAN HEIGHT
+                        var vStepX = vCursor.steps[value], vStepY = vCursor.steps[value];
+                        if ($.isArray(vCursor.steps[value])) {
+                            vStepX = vCursor.steps[value][0];
+                            vStepY = vCursor.steps[value][1];
+                        }
+                        // CONSTRAINT HANDLING
+                        var vX = (vCursor.constraint[0]<0)?vCursor.effects[2]:vCursor.effects[2]+vCursor.effects[2]*vStepX;
+                        var vY = (vCursor.constraint[1]<0)?vCursor.effects[3]:vCursor.effects[3]+vCursor.effects[3]*vStepY;
 
-                    // ADD RECTANGLE EFFECT
-                    settings.effects.push(settings.svg.rect($group,
-                        vCursor.effects[0]-vX/2,
-                        vCursor.effects[1]-vY/2,
-                        vX,vY,0,0, {fill:vCursor.color, opacity:vCursor.opacity }));
+                        // ADD RECTANGLE EFFECT
+                        settings.effects.push(settings.svg.rect($group,
+                            vCursor.effects[0]-vX/2+vCursor.offset[0],
+                            vCursor.effects[1]-vY/2+vCursor.offset[1],
+                            vX,vY,0,0, {fill:vCursor.color, opacity:vCursor.opacity }));
+                    }
                 }
             }
         },
@@ -328,62 +403,83 @@
                     if (settings.cursor.length>1)   { vResponse = settings.questions[settings.it][1][it]; } else
                                                     { vResponse = settings.questions[settings.it][1]; }
 
-                    // NEED TO MOVE THE RESPONSE?
-                    var vTransX = 0, vTransY = 0;
-                    if ($.isArray(vResponse)) { vTransX = vResponse[1]; vTransY = vResponse[2]; vResponse = vResponse[0];  }
+                    if (vCursor.center) {
+                        var vValue = vCursor.translate;
+                        while(vValue<0) { vValue+=360; }
+                        vValue=vValue%360;
+                        var vDist = Math.abs(vValue-vResponse);
 
-                    var $response = $("#"+vResponse, settings.svg.root());
-                    if ($response.attr("r")) {
-                        // MOVE RESPONSE
-                        if (vTransX||vTransY) { $response.attr("cx",vTransX); $response.attr("cy",vTransY); }
-
-                        // GET VALUES FROM RESPONSE
-                        var vR  = parseFloat($response.attr("r"));
-                        var vS  = parseFloat((vCursor.step>=0)?vCursor.step:vR);
-                        var vCx = $response.attr("cx");
-                        var vCy = $response.attr("cy");
-                        var vDist = Math.sqrt((vCx-vCursor.translate[0])*(vCx-vCursor.translate[0]) +
-                                              (vCy-vCursor.translate[1])*(vCy-vCursor.translate[1]));
                         if (settings.scorefct) {
-                            vScore = eval('('+settings.scorefct+')')(vCx-vCursor.translate[0], vCy-vCursor.translate[1]);
+                            vScore = eval('('+settings.scorefct+')')(vCursor.translate, vResponse);
                         }
                         else {
-                            if (vDist<vR+vS*vCursor.steps[0])  { vScore+=5; } else
-                            if (vDist<vR+vS*vCursor.steps[1])  { vScore+=4; } else
-                            if (vDist<vR+vS*vCursor.steps[2])  { vScore+=3; } else
-                            if (vDist<vR+vS*vCursor.steps[3])  { vScore+=2; } else
-                            if (vDist<vR+vS*vCursor.steps[4])  { vScore+=1; }
+                            if (vDist<=vCursor.steps[0])  { vScore+=5; } else
+                            if (vDist<=vCursor.steps[1])  { vScore+=4; } else
+                            if (vDist<=vCursor.steps[2])  { vScore+=3; } else
+                            if (vDist<=vCursor.steps[3])  { vScore+=2; } else
+                            if (vDist<=vCursor.steps[4])  { vScore+=1; }
                         }
-
-                        vCursor.effects=[vCx, vCy, vR, vS];
-                        vCursor.targettype="circle";
+                        vCursor.effects=[vResponse];
                     }
                     else {
-                        // MOVE RESPONSE
-                        if (vTransX||vTransY) { $response.attr("x",vTransX); $response.attr("y",vTransY); }
+                        // NEED TO MOVE THE RESPONSE?
+                        var vTransX = -9999, vTransY = 0;
+                        if ($.isArray(vResponse)) { vTransX = vResponse[1]; vTransY = vResponse[2]; vResponse = vResponse[0];  }
 
-                        // GET VALUES FROM RESPONSE
-                        // COMPUTE DISTANCE FROM THE FAREST AXIS
-                        var vR = [ parseFloat($response.attr("width")), parseFloat($response.attr("height")) ];
-                        var vC = [ parseFloat($response.attr("x"))+(vR[0]/2), parseFloat($response.attr("y"))+(vR[1]/2) ];
-                        var vDist = [ Math.sqrt((vC[0]-vCursor.translate[0])*(vC[0]-vCursor.translate[0])),
-                                      Math.sqrt((vC[1]-vCursor.translate[1])*(vC[1]-vCursor.translate[1])) ];
-                        var k=(vDist[0]/vR[0]>vDist[1]/vR[1])?0:1;
-                        var vS = parseFloat((vCursor.step>=0)?vCursor.step:vR[k]/2);
+                        var $response = $("#"+vResponse, settings.svg.root());
+                        if ($response.attr("r")) {
+                            // MOVE RESPONSE
+                            if (vTransX!=-9999) { $response.attr("cx",vTransX); $response.attr("cy",vTransY); }
 
-                        if (settings.scorefct) {
-                            vScore = eval('('+settings.scorefct+')')(vC[0]-vCursor.translate[0], vC[1]-vCursor.translate[1]);
+                            // GET VALUES FROM RESPONSE
+                            var vR  = parseFloat($response.attr("r"));
+                            var vS  = parseFloat((vCursor.step>=0)?vCursor.step:vR);
+                            var vCx = $response.attr("cx");
+                            var vCy = $response.attr("cy");
+                            var vDist = Math.sqrt((vCx-vCursor.translate[0])*(vCx-vCursor.translate[0]) +
+                                                (vCy-vCursor.translate[1])*(vCy-vCursor.translate[1]));
+                            if (settings.scorefct) {
+                                vScore = eval('('+settings.scorefct+')')(vCx-vCursor.translate[0], vCy-vCursor.translate[1]);
+                            }
+                            else {
+                                if (vDist<vR+vS*vCursor.steps[0])  { vScore+=5; } else
+                                if (vDist<vR+vS*vCursor.steps[1])  { vScore+=4; } else
+                                if (vDist<vR+vS*vCursor.steps[2])  { vScore+=3; } else
+                                if (vDist<vR+vS*vCursor.steps[3])  { vScore+=2; } else
+                                if (vDist<vR+vS*vCursor.steps[4])  { vScore+=1; }
+                            }
+
+                            vCursor.effects=[vCx, vCy, vR, vS];
+                            vCursor.targettype="circle";
                         }
                         else {
-                            if (vDist[k]<vR[k]+vS*vCursor.steps[0])  { vScore+=5; } else
-                            if (vDist[k]<vR[k]+vS*vCursor.steps[1])  { vScore+=4; } else
-                            if (vDist[k]<vR[k]+vS*vCursor.steps[2])  { vScore+=3; } else
-                            if (vDist[k]<vR[k]+vS*vCursor.steps[3])  { vScore+=2; } else
-                            if (vDist[k]<vR[k]+vS*vCursor.steps[4])  { vScore+=1; }
-                        }
+                            // MOVE RESPONSE
+                            if (vTransX!=-9999) { $response.attr("x",vTransX); $response.attr("y",vTransY); }
 
-                        vCursor.effects=[vC[0],vC[1],vR[0],vR[1]];
-                        vCursor.targettype="rect";
+                            // GET VALUES FROM RESPONSE
+                            // COMPUTE DISTANCE FROM THE FAREST AXIS
+                            var vR = [ parseFloat($response.attr("width")), parseFloat($response.attr("height")) ];
+                            var vC = [ parseFloat($response.attr("x"))+(vR[0]/2), parseFloat($response.attr("y"))+(vR[1]/2) ];
+                            var vDist = [ Math.sqrt((vC[0]-vCursor.translate[0])*(vC[0]-vCursor.translate[0])),
+                                        Math.sqrt((vC[1]-vCursor.translate[1])*(vC[1]-vCursor.translate[1])) ];
+                            var k=(vDist[0]/vR[0]>vDist[1]/vR[1])?0:1;
+                            var vS = parseFloat((vCursor.step>=0)?vCursor.step:vR[k]/2);
+
+
+                            if (settings.scorefct) {
+                                vScore = eval('('+settings.scorefct+')')(vC[0]-vCursor.translate[0], vC[1]-vCursor.translate[1]);
+                            }
+                            else {
+                                if (vDist[k]<vR[k]+vS*vCursor.steps[0])  { vScore+=5; } else
+                                if (vDist[k]<vR[k]+vS*vCursor.steps[1])  { vScore+=4; } else
+                                if (vDist[k]<vR[k]+vS*vCursor.steps[2])  { vScore+=3; } else
+                                if (vDist[k]<vR[k]+vS*vCursor.steps[3])  { vScore+=2; } else
+                                if (vDist[k]<vR[k]+vS*vCursor.steps[4])  { vScore+=1; }
+                            }
+
+                            vCursor.effects=[vC[0],vC[1],vR[0],vR[1]];
+                            vCursor.targettype="rect";
+                        }
                     }
                     it++;
                 }
@@ -445,7 +541,7 @@
                  // Check the context and send the load
                 return this.each(function() {
                     var $this = $(this);
-                    $(document).unbind("keypress");
+                    helpers.unbind($this);
                     this.onselectstart = function() { return false; }
 
                     var $settings = $.extend({}, defaults, options, settings);

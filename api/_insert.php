@@ -54,7 +54,6 @@ function insertIntoDB($link,$activity,$key,$file,$lang,&$warnings, &$tags) {
             }
             $exerciceId = exName($file, $key, $exerciceId);
             if (strlen($exerciceVar)) { $exerciceVar = exName($file, $key, $exerciceVar); }
-
             if ($exerciceVar == $exerciceId) { $exerciceVar =""; }
 
             // FILL THE TABLE

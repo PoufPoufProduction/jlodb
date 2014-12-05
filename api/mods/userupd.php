@@ -25,6 +25,11 @@ if (!$error) {
         $FIELDS.="`User_Avatar`='".$_GET["avatar"]."'";
     }
 
+    if (strlen($_GET["theme"])) {
+        if (strlen($FIELDS)) { $FIELDS.=",";   }
+        $FIELDS.="`User_Theme`='".$_GET["theme"]."'";
+    }
+
     if (strlen($_GET["old"])) {
         if (strcmp($u['User_Password'],md5($_GET["old"]))) { $error = 104; $textstatus="Wrong old password"; } else {
 

@@ -12,9 +12,12 @@
         debug       : true,                                     // Debug mode
         type        : "swap",                                   // swap: swap 2 elements, move: move all the elements for inserting
         nbpages     : 0,                                        // number of values arrays (0 for no array but element)
-        len         : [0,0],                                    // text length (0:auto)
-        colors      : [[196,184,255,0.8],[255,252,246,0.8]],    // question and response colors
+        len         : 1,                                        // text length (0:auto)
+        bgcolor     : ["gray","rgba(255,252,246,0.9)"],    // question and response colors
+        bg          : ["",""],                                  // background image
+        color       : ["white","black"],
         font        : 1,
+        fontex      : 0.7,
         background  : ""
     };
 
@@ -33,9 +36,15 @@
         },
         // Get the settings
         settings: function($this, _val) { if (_val) { $this.data("settings", _val); } return $this.data("settings"); },
+        // Binding clear
+        unbind: function($this) {
+            $(document).unbind("keypress keydown");
+            $this.unbind("mouseup mousedown mousemove mouseout touchstart touchmove touchend touchleave");
+        },
         // Quit the activity by calling the context callback
         end: function($this) {
             var settings = helpers.settings($this);
+            helpers.unbind($this);
             settings.context.onquit($this,{'status':'success', 'score':settings.score});
         },
         loader: {
@@ -72,11 +81,14 @@
                 // RESIZE THE TEMPLATE
                 $this.find("#board").addClass(settings.type);
                 $this.css("font-size", Math.floor($this.height()/12)+"px");
-                $this.find("#interactive").css("font-size",settings.font+"em");
+                $this.find("#interactive>div").css("font-size",settings.font+"em");
+
+                // DISPLAY STUFF
+                if (settings.exercice) { $this.find("#exercice").html(settings.exercice); }
+                $this.find("#exercice").css("font-size",settings.fontex+"em").show();
 
                 // LOCALE HANDLING
                 $this.find("h1#label").html(settings.label);
-                if (settings.exercice) { $this.find("#exercice").html(settings.exercice); }
                 if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
 
                 // ADD BACKGROUND
@@ -98,7 +110,6 @@
         },
         build:function($this) {
             var settings = helpers.settings($this);
-            $this.find("#interactive").html("").removeClass("inactive");
             settings.elts   = [];
             settings.labels = [];
 
@@ -155,73 +166,53 @@
                 settings.elts[vSecond] = vTmp;
             }
 
-            // Build the table
-            var vTable='<table>';
+            $this.find("#interactive #question").html("");
             for (var i=0; i<settings.elts.length; i++) {
-                // QUESTION
                 var vLabel = settings.labels[i][0];
                 if (vRegexpQuest) { vLabel=vLabel.replace(vRegexpQuest, settings.regexp.question.to); }
-                vTable+='<tr><td><div class="question" ';
-                var vStyleQuest="background-color:rgba("+settings.colors[0][0]+","+settings.colors[0][1]+","+
-                                                         settings.colors[0][2]+","+settings.colors[0][3]+");";
-                if (settings.len[0]) { vStyleQuest+="width:'+settings.len[0]+'em;";}
-                vTable+="style=\" "+vStyleQuest+"\" ";
-                vTable+='>'+vLabel+'</div></td>';
+                var html = "<div class='question' style='background-color:"+settings.bgcolor[0]+";color:"+settings.color[0]+";";
+                if (settings.bg[0].length) { html+="background-image:url("+settings.bg[0]+");" }
+                if (settings.len) { html+="width:"+settings.len+"em;"}
+                html+="'>"+vLabel+"</div>";
+                $this.find("#interactive #question").append(html);
+            }
 
-                // RESPONSE
+            $this.find("#interactive #response").html("");
+            for (var i=0; i<settings.elts.length; i++) {
                 var vValue = settings.elts[i][1];
                 if (vRegexpResp) { vValue=vValue.replace(vRegexpResp, settings.regexp.response.to); }
-
-                vTable+='<td class="dropzone" id="dz'+i+'"><div class="response" ';
-
-                var vStyleResp="background-color:rgba("+settings.colors[1][0]+","+settings.colors[1][1]+","+
-                                                         settings.colors[1][2]+","+settings.colors[1][3]+");";
-                if (settings.len[1]) { vStyleResp+="width:'+settings.len[1]+'em;";}
-                vTable+="style=\""+vStyleResp+"\" ";
-
-                vTable+='id="'+i+'">'+vValue+'</div></td></tr>';
+                var html = "<div class='response' id='"+i+"'>"+
+                           "<div style='background-color:"+settings.bgcolor[1]+";color:"+settings.color[1]+";";
+                if (settings.bg[1].length) { html+="background-image:url("+settings.bg[1]+");" }
+                html+="'>"+vValue+"</div></div>";
+                $this.find("#interactive #response").append(html);
 
                 settings.elts[i][2] = i;
             }
-            vTable+='</table>';
-            $this.find("#interactive").append(vTable);
 
-            // CENTER THE TABLE
-            var margin = ($this.width() - $this.find("#interactive table").width())/2;
-            $this.find("#interactive table").css("margin-left", margin+"px");
-
-            // DISPLAY STUFF
-            if (settings.exercice) {
-                $this.find("#exercice").css("font-size",(settings.fontex?settings.fontex:"1")+"em").show();
-            }
-
-            // HANDLE THE DRAGGABLE
-            $this.find("#interactive .response").each(function(index) {
-                $(this).draggable({
-                    containment:$this.find('#interactive table'), opacity: 0.95, scroll:false,
-                    appendTo:$this.find('#interactive'), axis:'y', stack:".response",
-                    start:function(event, ui) { },
-                    stop:function(event, ui) { $(this).css("top",0).css("left",0); },
-                });
+            $this.find(".response").draggable({containment:"parent", scroll:false, axis:"y", stack:".response",helper:"clone",
+                start:function(event, ui) { $(this).addClass("switch"); },
+                stop:function(event, ui) { $(this).removeClass("switch"); }
             });
 
-            $this.find("#interactive .dropzone").each(function(index) {
-                $(this).droppable({
-                    drop: function(e, ui) {
-                        var eltId   = parseInt(ui.draggable.attr("id"));
-                        var posId   = parseInt(settings.elts[eltId][2]);
-                        var drop    = $(this).children().get(0);
-                        var dropId  = parseInt($(drop).attr("id"));
-                        var parentId= settings.elts[dropId][2];
+            $this.find(".response").droppable({
+                drop:function(e, ui) {
+                    var eltId   = parseInt(ui.draggable.attr("id"));
+                    var dropId  = parseInt($(this).attr("id"));
 
-                        if (settings.type=="swap") {
-                            settings.elts[eltId][2] = settings.elts[dropId][2];
-                            settings.elts[dropId][2] = posId;
+                    var posId   = parseInt(settings.elts[eltId][2]);
+                    var parentId= settings.elts[dropId][2];
 
-                            $(drop).detach().appendTo(ui.draggable.parent());
-                            ui.draggable.detach().appendTo($(this));
-                        }
-                        else {
+                    if (settings.type=="swap") {
+                        settings.elts[eltId][2] = settings.elts[dropId][2];
+                        settings.elts[dropId][2] = posId;
+
+                        var html=$(this).html();
+                        $(this).html(ui.draggable.html()).attr("id",eltId);
+                        ui.draggable.html(html).attr("id",dropId);;
+                    }
+                    /*
+                    else {
                             if (posId!=parentId) {
                                 var moveup = (parentId>posId), min = moveup?posId+1:parentId, max = moveup?parentId:posId;
 
@@ -242,10 +233,11 @@
 
                             }
                         }
-                    },
-                    hoverClass: 'drophover'
-                });
+                      */
+                },
+                hoverClass: "switch"
             });
+            settings.interactive = true;
         }
     };
 
@@ -258,7 +250,7 @@
             init: function(options) {
                 // The settings
                 var settings = {
-                    finish          : false,
+                    interactive : false,
                     timer: {                // the general timer
                         id      : 0,        // the timer id
                         value   : 0         // the timer value
@@ -272,8 +264,7 @@
 
                 return this.each(function() {
                     var $this = $(this);
-                    $(document).unbind("keypress");
-
+                    helpers.unbind($this);
 
                     var $settings = $.extend({}, defaults, options, settings);
                     if (settings.type=="match") { settings.mode==1; }
@@ -292,7 +283,7 @@
             },
             check: function() {
                 var settings = $(this).data("settings"), vGood = true, $this=$(this);
-                if (!$this.find("#interactive").hasClass("inactive")) {
+                if (settings.interactive) {
 
                     for (var i in settings.elts) {
                         var elt = $this.find("#interactive .response").get(i);
@@ -307,7 +298,7 @@
                     }
 
                     $this.find("#submit").addClass(vGood?"good":"wrong");
-                    $this.find("#interactive").addClass("inactive");
+                    settings.interactive = false;
                     if (++settings.it >= settings.number) {
                         settings.score = Math.floor(5-settings.wrong/2);
                         if (settings.score<0) { settings.score = 0; }
@@ -329,7 +320,7 @@
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 if (settings.timer.id) { clearTimeout(settings.timer.id); settings.timer.id=0; }
-                settings.finish = true;
+                settings.interactive = false;
                 settings.context.onquit($this,{'status':'abort'});
             }
         };

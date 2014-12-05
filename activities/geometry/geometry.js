@@ -37,9 +37,15 @@
         },
         // Get the settings
         settings: function($this, _val) { if (_val) { $this.data("settings", _val); } return $this.data("settings"); },
+        // Binding clear
+        unbind: function($this) {
+            $(document).unbind("keypress keydown");
+            $this.unbind("mouseup mousedown mousemove mouseout touchstart touchmove touchend touchleave");
+        },
         // Quit the activity by calling the context callback
         end: function($this) {
             var settings = helpers.settings($this);
+            helpers.unbind($this);
             settings.context.onquit($this,{'status':'success','score':settings.score});
         },
         loader: {
@@ -353,15 +359,15 @@
                 }
             }
 
-            helpers.clear($this);
+            helpers.restore($this);
         },
         mouseout: function($this, event) {
             var settings    = helpers.settings($this); if (settings.finish) { return; }
             var x           = event.clientX-$this.find("#board").offset().left;
             var y           = event.clientY-$this.find("#board").offset().top;
-            if (x<0 || y<0 || x>$this.find("#board").width() || y>$this.find("#board").height()) { helpers.clear($this); }
+            if (x<0 || y<0 || x>$this.find("#board").width() || y>$this.find("#board").height()) { helpers.restore($this); }
         },
-        clear: function($this) {
+        restore: function($this) {
             var settings    = helpers.settings($this);
             // HIDE ELEMENTS
             if (settings.controls.first)    { $(settings.controls.first.highlight).attr("display", "none"); }
@@ -814,7 +820,7 @@
 
                 return this.each(function() {
                     var $this = $(this);
-                    $(document).unbind("keypress");
+                    helpers.unbind($this);
                     this.onselectstart = function() { return false; }
 
                     var $settings = $.extend({}, defaults, options, settings);

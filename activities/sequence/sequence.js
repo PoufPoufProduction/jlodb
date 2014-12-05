@@ -15,7 +15,8 @@
         erase       : '.',                      // The erase caracter
         font        : 1,                        // Questions font factor
         screenc     : false,                    // Clear the screen between question
-        strict      : false,                    // Strictly test the values
+        strict      : false,                    // Strictly test the values (Not sure is still mandatory)
+        negative    : false,                    // Accept negative value
         debug       : false                     // Debug mode
     };
 
@@ -34,9 +35,15 @@
         },
         // Get the settings
         settings: function($this, _val) { if (_val) { $this.data("settings", _val); } return $this.data("settings"); },
+        // Binding clear
+        unbind: function($this) {
+            $(document).unbind("keypress keydown");
+            $this.unbind("mouseup mousedown mousemove mouseout touchstart touchmove touchend touchleave");
+        },
         // Quit the activity by calling the context callback
         end: function($this) {
             var settings = helpers.settings($this);
+            helpers.unbind($this);
             settings.context.onquit($this,{'status':'success', 'score':settings.score});
         },
         loader: {
@@ -168,7 +175,7 @@
                 var vScreen = $this.find("#screen");
                 if (vScreen) { vScreen.html("&nbsp;"); }
                 if (!settings.time) { $this.find("#time").html("&nbsp;"); }
-                else                { $this.find("#time").html(helpers.formattime(settings.time*settings.number)); }
+                else                { $this.find("#time").html(helpers.formattime(Math.floor(settings.time*settings.number))); }
 
                 if (settings.context.onload) { settings.context.onload($this); }
                  $this.css("font-size", Math.floor($this.width()/10)+"px");
@@ -219,6 +226,8 @@
             var settings = helpers.settings($this);
             if (!fromkeyboard || settings.keyboard) {
 
+                value = value.toString();
+
                 // Launch the timer if didn't
                 if (!settings.timer.id) { helpers.timer($this); }
 
@@ -226,13 +235,20 @@
                 if (settings.keypadtimer) { window.clearTimeout(settings.keypadtimer); settings.keypadtimer=0; }
 
                 if (settings.interactive) {
-                    if (value==settings.erase ){ settings.response.value = 0; settings.response.digit = 0; }
+                    if (value==settings.erase ){ settings.response.value = ""; settings.response.digit = 0; }
+                    else if (value=='-' && settings.negative) {
+                        if (settings.response.digit!=0) {
+                            if (settings.response.value[0]=='-') { settings.response.value = settings.response.value.substr(1); }
+                            else                                 { settings.response.value = "-"+settings.response.value; }
+                        }
+                        else { settings.response.value = "-"; }
+                    }
                     else            {
                         if (settings.response.digit==0 || settings.response.digit == settings.input.digit) {
-                            settings.response.value = value; settings.response.digit = 1;
+                            settings.response.value += value.toString(); settings.response.digit = 1;
                         }
                         else {
-                            settings.response.value += ""+value; settings.response.digit++;
+                            settings.response.value += value.toString(); settings.response.digit++;
                         }
                     }
                     $this.find("#screen").html(settings.response.digit?settings.response.value:"&nbsp;");
@@ -313,6 +329,7 @@
                         setTimeout(function() { helpers.end($this); }, 1000);
                     }
                     settings.response.digit = 0;
+                    settings.response.value = "";
                     helpers.move($this, true);
                 }
             }
@@ -330,7 +347,7 @@
                 var settings = {
                     it              : 0,                        // Current question index
                     questions       : [],                       // Questions array
-                    response        : { value:0, digit: 0 },    // Current response
+                    response        : { value:"", digit: 0 },   // Current response
                     keypadtimer     : 0,                        // Keypadtimer (in case of more than one digit)
                     timer: {                                    // The general timer
                         id      : 0,                            // The timer id
@@ -345,7 +362,7 @@
                  // Check the context and send the load
                 return this.each(function() {
                     var $this = $(this);
-                    $(document).unbind("keypress");
+                    helpers.unbind($this);
                     $(document).keypress(function(_e) { helpers.key($this, String.fromCharCode(_e.which), true); });
 
                     var $settings = $.extend({}, defaults, options, settings);

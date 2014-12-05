@@ -57,9 +57,15 @@
         },
         // Get the settings
         settings: function($this, _val) { if (_val) { $this.data("settings", _val); } return $this.data("settings"); },
+        // Binding clear
+        unbind: function($this) {
+            $(document).unbind("keypress keydown");
+            $this.unbind("mouseup mousedown mousemove mouseout touchstart touchmove touchend touchleave");
+        },
         // Quit the activity by calling the context callback
         end: function($this) {
             var settings = helpers.settings($this);
+            helpers.unbind($this);
             settings.context.onquit($this,{'status':'success', 'score':settings.score});
         },
         loader: {
@@ -1679,7 +1685,7 @@ helpers.equations.get($this).label();
                  // Check the context and send the load
                 return this.each(function() {
                     var $this = $(this);
-                    $(document).unbind("keypress");
+                    helpers.unbind($this);
                     this.onselectstart = function() { return false; }
 
                     var $settings = $.extend({}, defaults, options, settings);

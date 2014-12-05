@@ -2,7 +2,10 @@
 
     <div id="board">
         <div id="exercice"></div>
-        <div id="interactive"></div>
+        <div id="interactive">
+            <div id="question"></div>
+            <div id="response"></div>
+        </div>
     </div>
     <div id="submit" ontouchstart="$(this).closest('.sorting').sorting('check');event.preventDefault();"
                      onclick="$(this).closest('.sorting').sorting('check');">

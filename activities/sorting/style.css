@@ -1,32 +1,42 @@
 .sorting                                { background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat;}
-.sorting *                              { overflow:visible !important; }
 .sorting div#background                 { background-size:100%; width:100%; height:100%; }
 .sorting div#splash>div                 { background-image:url("../../res/img/banners/sorting.svg"); }
 .sorting div#splash .text               { font-size:1em; width:45%; float:right; }
 .sorting div#splash .text h1            { text-align:right; padding-right:.5em; }
 .sorting div#splash .text #guide        { margin:.5em 1em .5em 0; }
-.sorting div#board                      { width:100%; height:10.6em;}
 .sorting div#board .icon                { width:1em; height:1em; display:inline-block; }
-.sorting div#board td div               { overflow:hidden; }
-.sorting div#interactive                { padding-top:0.1em; }
-.sorting div#submit                     { font-size:1.5em; height:1em;width:1em; cursor:pointer;
-                                            position:absolute; top:7em; left:0em; z-index:3; }
-.sorting div#submit>img                 { display:none; }
-.sorting div#submit #subvalid           { display:inline; }
-.sorting div#submit.good #subvalid      { display:none; }
-.sorting div#submit.wrong #subvalid     { display:none; }
-.sorting div#submit.good #subgood       { display:inline; }
-.sorting div#submit.wrong #subwrong     { display:inline; }
-.sorting .response                      { border-radius:0 .25em .25em 0; padding-left:.1em; padding-right:.2em;
-                                          cursor:move; white-space:nowrap; height:1em; }
-.sorting .response.wrong                { background-color:rgba(255,80,65,1.0); color:rgb(220, 240, 256); background-image:none !important;}
-.sorting .response.good                 { background-color:rgba(80,255,65,1.0); background-image:none !important; }
-.sorting .question                      { border-radius:.25em 0 0 .25em; padding-left:.1em; padding-right:.2em;
-                                          white-space:nowrap; text-align:right; height:1em; }
-.sorting .move .response                { white-space:normal; border-radius:.25em; padding-left:.2em; height:auto;
-                                          background-image:url("../../res/img/background/book02.svg"); background-repeat:repeat;}
-.sorting .move .question                { display:none; }
-.sorting div#exercice                   { margin-left:1em; padding:.25em .5em; font-size:.8em; text-align:justify; font-style:italic; display:none; }
+
+.sorting div#interactive                { width:200%;}
+.sorting div#interactive>div            { float:left; }
+.sorting div#interactive #response      { width:50%; }
+
+
+.sorting div#exercice                   { padding:.25em .5em .25em 2em; font-size:.8em; text-align:justify; min-height:1.2em;
+                                          font-style:italic; background-image:url("../../res/img/background/book02.svg");}
+
+.sorting .response                              { height:1em;  cursor:move; white-space:nowrap; margin:.1em 0; width:100%; }
+.sorting .response.switch>div                   { background-color:rgba(255,0,0,0.5) !important; }
+.sorting .response>div                          { padding-left:.2em; }
+.sorting .response.ui-draggable-dragging        { border:5px solid red; }
+.sorting .response.ui-draggable-dragging>div    { display:none; }
+.sorting .response.wrong>div                    { background-color:rgba(255,80,65,1.0) !important;
+                                                  color:rgb(256, 240, 240) !important; background-image:none !important;}
+.sorting .response.good>div                     { background-color:rgba(80,255,65,1.0) !important;
+                                                  color:rgb(0, 80, 20) !important; background-image:none !important; }
+
+.sorting .question                      { height:1em; padding-right:.2em; white-space:nowrap; text-align:right;
+                                          margin:.1em .05em .1em 0; }
+
+
+.sorting div#submit                     { font-size:1.5em; height:1em;width:1em; cursor:pointer; position:absolute;
+                                          top:7em; left:0em; z-index:3; }
+.sorting div#submit>img                 { display:none;     }
+.sorting div#submit #subvalid           { display:inline;   }
+.sorting div#submit.good #subvalid      { display:none;     }
+.sorting div#submit.wrong #subvalid     { display:none;     }
+.sorting div#submit.good #subgood       { display:inline;   }
+.sorting div#submit.wrong #subwrong     { display:inline;   }
 
 .sorting.h12 .response                  { height:1.2em; }
 .sorting.h12 .question                  { height:1.2em; }
+.sorting.noquestion .question           { display:none; }

@@ -2,466 +2,911 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dct="http://purl.org/dc/terms/">
 
-    <!-- Number a[a-z] -->
+    <!-- Number  -->
 
     <rdf:Description>
-        <dct:identifier>a</dct:identifier>
-        <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, 2 entiers compris entre 1 et 3</dct:title>
-        <dct:description><![CDATA["time":0,"len":10,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=3,a=Math.floor(Math.random()*max)+1,p=1,b=(p)?Math.floor(Math.random()*max)+1:a; return [a+\\\"...\\\"+b, (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha","font":2]]></dct:description>
+        <dct:identifier>13</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, 2 entiers compris entre 1 et 3.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=3,a=Math.floor(Math.random()*max)+1,p=1,b=(p)?Math.floor(Math.random()*max)+1:a; return [\\\"<div style='width:2.7em;margin-left:.2em;'><div style='width:1em;'>\\\"+a+\\\"</div><div style='width:0.7em;'>...</div><div style='width:1em;'>\\\"+b+\\\"</div></div>\\\", (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha left","font":2]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>20b</dct:alternative>
+        <dct:alternative>01000x</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>b</dct:identifier>
-        <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, 2 entiers compris entre 1 et 4</dct:title>
-        <dct:description><![CDATA["time":0,"len":10,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=4,a=Math.floor(Math.random()*max)+1,p=1,b=(p)?Math.floor(Math.random()*max)+1:a; return [a+\\\"...\\\"+b, (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha","font":2]]></dct:description>
+        <dct:identifier>14</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, 2 entiers compris entre 1 et 4.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=4,a=Math.floor(Math.random()*max)+1,p=1,b=(p)?Math.floor(Math.random()*max)+1:a; return [\\\"<div style='width:2.7em;margin-left:.2em;'><div style='width:1em;'>\\\"+a+\\\"</div><div style='width:0.7em;'>...</div><div style='width:1em;'>\\\"+b+\\\"</div></div>\\\", (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha left","font":2]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>20b</dct:alternative>
+        <dct:alternative>01000x</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>c</dct:identifier>
-        <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, 2 entiers compris entre 1 et 5</dct:title>
-        <dct:description><![CDATA["time":0,"len":10,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=5,a=Math.floor(Math.random()*max)+1,p=Math.floor(Math.random()*10),b=(p)?Math.floor(Math.random()*max)+1:a; return [a+\\\"...\\\"+b, (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha","font":2]]></dct:description>
+        <dct:identifier>15</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, 2 entiers compris entre 1 et 5.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=5,a=Math.floor(Math.random()*max)+1,p=Math.floor(Math.random()*10),b=(p)?Math.floor(Math.random()*max)+1:a; return [\\\"<div style='width:2.7em;margin-left:.2em;'><div style='width:1em;'>\\\"+a+\\\"</div><div style='width:0.7em;'>...</div><div style='width:1em;'>\\\"+b+\\\"</div></div>\\\", (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha left","font":2]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>20b</dct:alternative>
+        <dct:alternative>01000x</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>d</dct:identifier>
-        <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, 2 entiers compris entre 1 et 6</dct:title>
-        <dct:description><![CDATA["time":0,"len":10,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=6,a=Math.floor(Math.random()*max)+1,p=Math.floor(Math.random()*6),b=(p)?Math.floor(Math.random()*max)+1:a; return [a+\\\"...\\\"+b, (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha","font":2]]></dct:description>
+        <dct:identifier>16</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, 2 entiers compris entre 1 et 6.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=6,a=Math.floor(Math.random()*max)+1,p=Math.floor(Math.random()*6),b=(p)?Math.floor(Math.random()*max)+1:a; return [\\\"<div style='width:2.7em;margin-left:.2em;'><div style='width:1em;'>\\\"+a+\\\"</div><div style='width:0.7em;'>...</div><div style='width:1em;'>\\\"+b+\\\"</div></div>\\\", (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha left","font":2]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>20b</dct:alternative>
+        <dct:alternative>01000x</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>e</dct:identifier>
-        <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, 2 entiers compris entre 1 et 7</dct:title>
-        <dct:description><![CDATA["time":0,"len":10,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=7,a=Math.floor(Math.random()*max)+1,p=Math.floor(Math.random()*5),b=(p)?Math.floor(Math.random()*max)+1:a; return [a+\\\"...\\\"+b, (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha","font":2]]></dct:description>
+        <dct:identifier>17</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, 2 entiers compris entre 1 et 7.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=7,a=Math.floor(Math.random()*max)+1,p=Math.floor(Math.random()*5),b=(p)?Math.floor(Math.random()*max)+1:a; return [\\\"<div style='width:2.7em;margin-left:.2em;'><div style='width:1em;'>\\\"+a+\\\"</div><div style='width:0.7em;'>...</div><div style='width:1em;'>\\\"+b+\\\"</div></div>\\\", (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha left","font":2]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>20b</dct:alternative>
+        <dct:alternative>01000x</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>f</dct:identifier>
-        <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, 2 entiers compris entre 1 et 8</dct:title>
-        <dct:description><![CDATA["time":0,"len":10,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=8,a=Math.floor(Math.random()*max)+1,p=Math.floor(Math.random()*4),b=(p)?Math.floor(Math.random()*max)+1:a; return [a+\\\"...\\\"+b, (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha","font":2]]></dct:description>
+        <dct:identifier>18</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, 2 entiers compris entre 1 et 8.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=8,a=Math.floor(Math.random()*max)+1,p=Math.floor(Math.random()*4),b=(p)?Math.floor(Math.random()*max)+1:a; return [\\\"<div style='width:2.7em;margin-left:.2em;'><div style='width:1em;'>\\\"+a+\\\"</div><div style='width:0.7em;'>...</div><div style='width:1em;'>\\\"+b+\\\"</div></div>\\\", (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha left","font":2]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>20b</dct:alternative>
+        <dct:alternative>01000x</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>g</dct:identifier>
-        <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, 2 entiers compris entre 1 et 9</dct:title>
-        <dct:description><![CDATA["time":0,"len":10,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=9,a=Math.floor(Math.random()*max)+1,p=Math.floor(Math.random()*4),b=(p)?Math.floor(Math.random()*max)+1:a; return [a+\\\"...\\\"+b, (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha","font":2]]></dct:description>
+        <dct:identifier>19</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, 2 entiers compris entre 1 et 9.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=9,a=Math.floor(Math.random()*max)+1,p=Math.floor(Math.random()*4),b=(p)?Math.floor(Math.random()*max)+1:a; return [\\\"<div style='width:2.7em;margin-left:.2em;'><div style='width:1em;'>\\\"+a+\\\"</div><div style='width:0.7em;'>...</div><div style='width:1em;'>\\\"+b+\\\"</div></div>\\\", (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha left","font":2]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>20b</dct:alternative>
+        <dct:alternative>01000x</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>h</dct:identifier>
-        <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, 2 entiers compris entre 1 et 10</dct:title>
-        <dct:description><![CDATA["time":0,"len":10,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=10,a=Math.floor(Math.random()*max)+1,p=Math.floor(Math.random()*4),b=(p)?Math.floor(Math.random()*max)+1:a; return [a+\\\"...\\\"+b, (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha","font":2]]></dct:description>
+        <dct:identifier>110</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, 2 entiers compris entre 1 et 10.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=10,a=Math.floor(Math.random()*max)+1,p=Math.floor(Math.random()*4),b=(p)?Math.floor(Math.random()*max)+1:a; return [\\\"<div style='width:2.7em;margin-left:.2em;'><div style='width:1em;'>\\\"+a+\\\"</div><div style='width:0.7em;'>...</div><div style='width:1em;'>\\\"+b+\\\"</div></div>\\\", (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha left","font":2]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>3</dct:type>
-        <dct:alternative>20b</dct:alternative>
+        <dct:alternative>01000x</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>i</dct:identifier>
-        <dct:title xml:lang="fr-FR">Comparer, en moins de 40 secondes, 2 entiers compris entre 1 et 10</dct:title>
-        <dct:description><![CDATA["time":2,"len":10,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=10,a=Math.floor(Math.random()*max)+1,p=Math.floor(Math.random()*4),b=(p)?Math.floor(Math.random()*max)+1:a; return [a+\\\"...\\\"+b, (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha","font":2]]></dct:description>
+        <dct:identifier>110x</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comparer, en moins de 40 secondes, 2 entiers compris entre 1 et 10.</dct:title>
+        <dct:description><![CDATA["time":2,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=10,a=Math.floor(Math.random()*max)+1,p=Math.floor(Math.random()*4),b=(p)?Math.floor(Math.random()*max)+1:a; return [\\\"<div style='width:2.7em;margin-left:.2em;'><div style='width:1em;'>\\\"+a+\\\"</div><div style='width:0.7em;'>...</div><div style='width:1em;'>\\\"+b+\\\"</div></div>\\\", (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha left","font":2]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>4</dct:type>
-        <dct:alternative>20b</dct:alternative>
+        <dct:alternative>01000x</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>j</dct:identifier>
-        <dct:title xml:lang="fr-FR">Comparer, en moins de 20 secondes, 2 entiers compris entre 1 et 10</dct:title>
-        <dct:description><![CDATA["time":1,"len":10,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=10,a=Math.floor(Math.random()*max)+1,p=Math.floor(Math.random()*4),b=(p)?Math.floor(Math.random()*max)+1:a; return [a+\\\"...\\\"+b, (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha","font":2]]></dct:description>
+        <dct:identifier>110y</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comparer, en moins de 20 secondes, 2 entiers compris entre 1 et 10.</dct:title>
+        <dct:description><![CDATA["time":1,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=10,a=Math.floor(Math.random()*max)+1,p=Math.floor(Math.random()*4),b=(p)?Math.floor(Math.random()*max)+1:a; return [\\\"<div style='width:2.7em;margin-left:.2em;'><div style='width:1em;'>\\\"+a+\\\"</div><div style='width:0.7em;'>...</div><div style='width:1em;'>\\\"+b+\\\"</div></div>\\\", (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha left","font":2]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>5</dct:type>
-        <dct:alternative>20b</dct:alternative>
+        <dct:alternative>01000x</dct:alternative>
     </rdf:Description>
 
     <!-- Number with 0: 0[a-z] -->
 
     <rdf:Description>
-        <dct:identifier>0a</dct:identifier>
-        <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, 2 entiers compris entre 0 et 3</dct:title>
-        <dct:description><![CDATA["time":0,"len":10,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=4,a=Math.floor(Math.random()*max),p=1,b=(p)?Math.floor(Math.random()*max):a; return [a+\\\"...\\\"+b, (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha","font":2]]></dct:description>
+        <dct:identifier>03</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, 2 entiers compris entre 0 et 3.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=4,a=Math.floor(Math.random()*max),p=1,b=(p)?Math.floor(Math.random()*max):a; return [\\\"<div style='width:2.7em;margin-left:.2em;'><div style='width:1em;'>\\\"+a+\\\"</div><div style='width:0.7em;'>...</div><div style='width:1em;'>\\\"+b+\\\"</div></div>\\\", (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha left","font":2]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>20b</dct:alternative>
+        <dct:alternative>01000x</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>0b</dct:identifier>
-        <dct:title xml:lang="fr-FR">Comparer, en moins de 40 secondes, 2 entiers compris entre 0 et 3</dct:title>
-        <dct:description><![CDATA["time":2,"len":10,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=4,a=Math.floor(Math.random()*max),p=1,b=(p)?Math.floor(Math.random()*max):a; return [a+\\\"...\\\"+b, (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha","font":2]]></dct:description>
+        <dct:identifier>03x</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comparer, en moins de 40 secondes, 2 entiers compris entre 0 et 3.</dct:title>
+        <dct:description><![CDATA["time":2,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=4,a=Math.floor(Math.random()*max),p=1,b=(p)?Math.floor(Math.random()*max):a; return [\\\"<div style='width:2.7em;margin-left:.2em;'><div style='width:1em;'>\\\"+a+\\\"</div><div style='width:0.7em;'>...</div><div style='width:1em;'>\\\"+b+\\\"</div></div>\\\", (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha left","font":2]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>20b</dct:alternative>
+        <dct:alternative>01000x</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>0c</dct:identifier>
-        <dct:title xml:lang="fr-FR">Comparer, en moins de 20 secondes, 2 entiers compris entre 0 et 3</dct:title>
-        <dct:description><![CDATA["time":1,"len":10,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=4,a=Math.floor(Math.random()*max),p=1,b=(p)?Math.floor(Math.random()*max):a; return [a+\\\"...\\\"+b, (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha","font":2]]></dct:description>
+        <dct:identifier>03y</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comparer, en moins de 20 secondes, 2 entiers compris entre 0 et 3.</dct:title>
+        <dct:description><![CDATA["time":1,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=4,a=Math.floor(Math.random()*max),p=1,b=(p)?Math.floor(Math.random()*max):a; return [\\\"<div style='width:2.7em;margin-left:.2em;'><div style='width:1em;'>\\\"+a+\\\"</div><div style='width:0.7em;'>...</div><div style='width:1em;'>\\\"+b+\\\"</div></div>\\\", (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha left","font":2]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>20b</dct:alternative>
+        <dct:alternative>01000x</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>15a</dct:identifier>
-        <dct:title xml:lang="fr-FR">Comparer, en moins de 40 secondes, 2 entiers compris entre 0 et 15</dct:title>
-        <dct:description><![CDATA["time":2,"len":10,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=16,a=Math.floor(Math.random()*max),p=Math.floor(Math.random()*5),b=(p)?Math.floor(Math.random()*max):a; return [a+\\\"...\\\"+b, (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha","font":2]]></dct:description>
+        <dct:identifier>015x</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comparer, en moins de 40 secondes, 2 entiers compris entre 0 et 15.</dct:title>
+        <dct:description><![CDATA["time":2,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=16,a=Math.floor(Math.random()*max),p=Math.floor(Math.random()*5),b=(p)?Math.floor(Math.random()*max):a; return [\\\"<div style='width:2.7em;margin-left:.2em;'><div style='width:1em;'>\\\"+a+\\\"</div><div style='width:0.7em;'>...</div><div style='width:1em;'>\\\"+b+\\\"</div></div>\\\", (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha left","font":2]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>20b</dct:alternative>
+        <dct:alternative>01000x</dct:alternative>
      </rdf:Description>
 
      <rdf:Description>
-         <dct:identifier>15b</dct:identifier>
-         <dct:title xml:lang="fr-FR">Comparer, en moins de 20 secondes, 2 entiers compris entre 0 et 15</dct:title>
-         <dct:description><![CDATA["time":1,"len":10,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=16,a=Math.floor(Math.random()*max),p=Math.floor(Math.random()*5),b=(p)?Math.floor(Math.random()*max):a; return [a+\\\"...\\\"+b, (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha","font":2]]></dct:description>
+         <dct:identifier>015y</dct:identifier>
+         <dct:title xml:lang="fr-FR">Comparer, en moins de 20 secondes, 2 entiers compris entre 0 et 15.</dct:title>
+         <dct:description><![CDATA["time":1,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=16,a=Math.floor(Math.random()*max),p=Math.floor(Math.random()*5),b=(p)?Math.floor(Math.random()*max):a; return [\\\"<div style='width:2.7em;margin-left:.2em;'><div style='width:1em;'>\\\"+a+\\\"</div><div style='width:0.7em;'>...</div><div style='width:1em;'>\\\"+b+\\\"</div></div>\\\", (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha left","font":2]]></dct:description>
          <dct:extent>1</dct:extent>
          <dct:subject>numeration</dct:subject>
          <dct:educationLevel>2</dct:educationLevel>
          <dct:type>3</dct:type>
-        <dct:alternative>20b</dct:alternative>
+         <dct:alternative>01000x</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>20a</dct:identifier>
-        <dct:title xml:lang="fr-FR">Comparer, en moins de 40 secondes, 2 entiers compris entre 0 et 20</dct:title>
-        <dct:description><![CDATA["time":2,"len":10,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=21,a=Math.floor(Math.random()*max),p=Math.floor(Math.random()*5),b=(p)?Math.floor(Math.random()*max):a; return [a+\\\"...\\\"+b, (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha","font":2]]></dct:description>
+        <dct:identifier>020x</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comparer, en moins de 40 secondes, 2 entiers compris entre 0 et 20.</dct:title>
+        <dct:description><![CDATA["time":2,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=21,a=Math.floor(Math.random()*max),p=Math.floor(Math.random()*5),b=(p)?Math.floor(Math.random()*max):a; return [\\\"<div style='width:2.7em;margin-left:.2em;'><div style='width:1em;'>\\\"+a+\\\"</div><div style='width:0.7em;'>...</div><div style='width:1em;'>\\\"+b+\\\"</div></div>\\\", (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha left","font":2]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>20b</dct:alternative>
+        <dct:alternative>01000x</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>20b</dct:identifier>
-        <dct:title xml:lang="fr-FR">Comparer, en moins de 20 secondes, 2 entiers compris entre 0 et 20</dct:title>
-        <dct:description><![CDATA["time":1,"len":10,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=21,a=Math.floor(Math.random()*max),p=Math.floor(Math.random()*5),b=(p)?Math.floor(Math.random()*max):a; return [a+\\\"...\\\"+b, (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha","font":2]]></dct:description>
+        <dct:identifier>020y</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comparer, en moins de 20 secondes, 2 entiers compris entre 0 et 20.</dct:title>
+        <dct:description><![CDATA["time":1,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=21,a=Math.floor(Math.random()*max),p=Math.floor(Math.random()*5),b=(p)?Math.floor(Math.random()*max):a; return [\\\"<div style='width:2.7em;margin-left:.2em;'><div style='width:1em;'>\\\"+a+\\\"</div><div style='width:0.7em;'>...</div><div style='width:1em;'>\\\"+b+\\\"</div></div>\\\", (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha left","font":2]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
-        <dct:alternative>20b</dct:alternative>
+        <dct:alternative>01000x</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>1000a</dct:identifier>
-        <dct:title xml:lang="fr-FR">Comparer, en moins de 40 secondes, 2 entiers compris entre 0 et 1000</dct:title>
-        <dct:description><![CDATA["time":2,"len":10,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=1001,a=Math.floor(Math.random()*max),p=Math.floor(Math.random()*5),b=(p)?Math.floor(Math.random()*max):a; return [a+\\\"...\\\"+b, (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha","font":1.5]]></dct:description>
+        <dct:identifier>0100</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, 2 entiers compris entre 0 et 100.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=101,a=Math.floor(Math.random()*max),p=Math.floor(Math.random()*5),b=(p)?Math.floor(Math.random()*max):a; return [\\\"<div style='width:4em;margin-left:.2em;'><div style='width:1.5em;'>\\\"+a+\\\"</div><div style='width:1em;'>...</div><div style='width:1.5em;'>\\\"+b+\\\"</div></div>\\\", (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha left","font":1.5]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>01000x</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>0100x</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comparer, en moins de 40 secondes, 2 entiers compris entre 0 et 100.</dct:title>
+        <dct:description><![CDATA["time":2,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=101,a=Math.floor(Math.random()*max),p=Math.floor(Math.random()*5),b=(p)?Math.floor(Math.random()*max):a; return [\\\"<div style='width:4em;margin-left:.2em;'><div style='width:1.5em;'>\\\"+a+\\\"</div><div style='width:1em;'>...</div><div style='width:1.5em;'>\\\"+b+\\\"</div></div>\\\", (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha left","font":1.5]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>01000x</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>0100y</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comparer, en moins de 20 secondes, 2 entiers compris entre 0 et 100.</dct:title>
+        <dct:description><![CDATA["time":1,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=101,a=Math.floor(Math.random()*max),p=Math.floor(Math.random()*5),b=(p)?Math.floor(Math.random()*max):a; return [\\\"<div style='width:4em;margin-left:.2em;'><div style='width:1.5em;'>\\\"+a+\\\"</div><div style='width:1em;'>...</div><div style='width:1.5em;'>\\\"+b+\\\"</div></div>\\\", (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha left","font":1.5]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>01000x</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>01000x</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comparer, en moins de 40 secondes, 2 entiers compris entre 0 et 1000.</dct:title>
+        <dct:description><![CDATA["time":2,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=1001,a=Math.floor(Math.random()*max),p=Math.floor(Math.random()*5),b=(p)?Math.floor(Math.random()*max):a; return [\\\"<div style='width:4em;margin-left:.2em;'><div style='width:1.5em;'>\\\"+a+\\\"</div><div style='width:1em;'>...</div><div style='width:1.5em;'>\\\"+b+\\\"</div></div>\\\", (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha left","font":1.5]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
-        <dct:alternative>20b</dct:alternative>
+        <dct:alternative>01000x</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>1000b</dct:identifier>
-        <dct:title xml:lang="fr-FR">Comparer, en moins de 20 secondes, 2 entiers compris entre 0 et 1000</dct:title>
-        <dct:description><![CDATA["time":1,"len":10,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=1001,a=Math.floor(Math.random()*max),p=Math.floor(Math.random()*5),b=(p)?Math.floor(Math.random()*max):a; return [a+\\\"...\\\"+b, (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha","font":1.5]]></dct:description>
+        <dct:identifier>01000y</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comparer, en moins de 20 secondes, 2 entiers compris entre 0 et 1000.</dct:title>
+        <dct:description><![CDATA["time":1,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=1001,a=Math.floor(Math.random()*max),p=Math.floor(Math.random()*5),b=(p)?Math.floor(Math.random()*max):a; return [\\\"<div style='width:4em;margin-left:.2em;'><div style='width:1.5em;'>\\\"+a+\\\"</div><div style='width:1em;'>...</div><div style='width:1.5em;'>\\\"+b+\\\"</div></div>\\\", (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha left","font":1.5]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>4</dct:type>
-        <dct:alternative>20b</dct:alternative>
+        <dct:alternative>01000x</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>10Ka</dct:identifier>
-        <dct:title xml:lang="fr-FR">Comparer, en moins de 40 secondes, 2 entiers compris entre 0 et 10,000</dct:title>
-        <dct:description><![CDATA["time":2,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=10001,a=Math.floor(Math.random()*max),p=Math.floor(Math.random()*5),b=(p)?Math.floor(Math.random()*max):a; return [a+\\\"...\\\"+b, (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha","font":1.2]]></dct:description>
+        <dct:identifier>010Kx</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comparer, en moins de 40 secondes, 2 entiers compris entre 0 et 10,000.</dct:title>
+        <dct:description><![CDATA["time":2,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=10001,a=Math.floor(Math.random()*max),p=Math.floor(Math.random()*5),b=(p)?Math.floor(Math.random()*max):a; return [\\\"<div style='width:5em;margin-left:.2em;'><div style='width:2em;'>\\\"+a+\\\"</div><div style='width:1em;'>...</div><div style='width:2em;'>\\\"+b+\\\"</div></div>\\\", (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha left","font":1.2]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
-        <dct:alternative>20b</dct:alternative>
+        <dct:alternative>01000x</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>10Kb</dct:identifier>
-        <dct:title xml:lang="fr-FR">Comparer, en moins de 20 secondes, 2 entiers compris entre 0 et 10,000</dct:title>
-        <dct:description><![CDATA["time":1,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=10001,a=Math.floor(Math.random()*max),p=Math.floor(Math.random()*5),b=(p)?Math.floor(Math.random()*max):a; return [a+\\\"...\\\"+b, (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha","font":1.2]]></dct:description>
+        <dct:identifier>010Ky</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comparer, en moins de 20 secondes, 2 entiers compris entre 0 et 10,000.</dct:title>
+        <dct:description><![CDATA["time":1,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=10001,a=Math.floor(Math.random()*max),p=Math.floor(Math.random()*5),b=(p)?Math.floor(Math.random()*max):a; return [\\\"<div style='width:5em;margin-left:.2em;'><div style='width:2em;'>\\\"+a+\\\"</div><div style='width:1em;'>...</div><div style='width:2em;'>\\\"+b+\\\"</div></div>\\\", (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha left","font":1.2]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>4</dct:type>
-        <dct:alternative>20b</dct:alternative>
+        <dct:alternative>01000x</dct:alternative>
     </rdf:Description>
 
-    <!-- 2 compares [cde][1-9][a-z] -->
+    <!-- Negative -->
+
     <rdf:Description>
-        <dct:identifier>c10a</dct:identifier>
-        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre 2 et 9 complétant la double inégalité</dct:title>
-        <dct:description><![CDATA["time":0,"len":10,"input":{"digit":1,"speed":0},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*8)+1; return [a+\\\"<...<\\\"+(a+2),(a+1)]}","class":"alpha","font":2]]></dct:description>
+        <dct:identifier>n010</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, 2 entiers compris entre -10 et 0.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=11,a=Math.floor(Math.random()*max)-10,p=Math.floor(Math.random()*5),b=(p)?Math.floor(Math.random()*max)-10:a; return [\\\"<div style='width:4em;margin-left:.2em;'><div style='width:1.5em;'>\\\"+a+\\\"</div><div style='width:1em;'>...</div><div style='width:1.5em;'>\\\"+b+\\\"</div></div>\\\", (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha left","font":1.5]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>negative</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>n010</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>n010x</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comparer, en moins de 40 secondes, 2 entiers compris entre -10 et 0.</dct:title>
+        <dct:description><![CDATA["time":2,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=11,a=Math.floor(Math.random()*max)-10,p=Math.floor(Math.random()*5),b=(p)?Math.floor(Math.random()*max)-10:a; return [\\\"<div style='width:4em;margin-left:.2em;'><div style='width:1.5em;'>\\\"+a+\\\"</div><div style='width:1em;'>...</div><div style='width:1.5em;'>\\\"+b+\\\"</div></div>\\\", (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha left","font":1.5]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>negative</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>n010</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>n0100</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, 2 entiers compris entre -100 et 0.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=100,a=Math.floor(Math.random()*max)-99,p=Math.floor(Math.random()*5),b=(p)?Math.floor(Math.random()*max)-99:a; return [\\\"<div style='width:4em;margin-left:.2em;'><div style='width:1.5em;'>\\\"+a+\\\"</div><div style='width:1em;'>...</div><div style='width:1.5em;'>\\\"+b+\\\"</div></div>\\\", (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha left","font":1.5]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>negative</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>n010</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>n0100x</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comparer, en moins de 40 secondes, 2 entiers compris entre -100 et 0.</dct:title>
+        <dct:description><![CDATA["time":2,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=100,a=Math.floor(Math.random()*max)-99,0p=Math.floor(Math.random()*5),b=(p)?Math.floor(Math.random()*max)-99:a; return [\\\"<div style='width:4em;margin-left:.2em;'><div style='width:1.5em;'>\\\"+a+\\\"</div><div style='width:1em;'>...</div><div style='width:1.5em;'>\\\"+b+\\\"</div></div>\\\", (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha left","font":1.5]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>negative</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>n010</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>n100</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, 2 entiers compris entre -100 et 100.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=199,a=Math.floor(Math.random()*max)-99,p=Math.floor(Math.random()*5),b=(p)?Math.floor(Math.random()*max)-99:a; return [\\\"<div style='width:4em;margin-left:.2em;'><div style='width:1.5em;'>\\\"+a+\\\"</div><div style='width:1em;'>...</div><div style='width:1.5em;'>\\\"+b+\\\"</div></div>\\\", (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha left","font":1.5]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>negative</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>n010</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>n100x</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comparer, en moins de 40 secondes, 2 entiers compris entre -100 et 100.</dct:title>
+        <dct:description><![CDATA["time":2,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=199,a=Math.floor(Math.random()*max)-99,p=Math.floor(Math.random()*5),b=(p)?Math.floor(Math.random()*max)-99:a; return [\\\"<div style='width:4em;margin-left:.2em;'><div style='width:1.5em;'>\\\"+a+\\\"</div><div style='width:1em;'>...</div><div style='width:1.5em;'>\\\"+b+\\\"</div></div>\\\", (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha left","font":1.5]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>negative</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>n010</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>n100y</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comparer, en moins de 20 secondes, 2 entiers compris entre -100 et 100.</dct:title>
+        <dct:description><![CDATA["time":1,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=199,a=Math.floor(Math.random()*max)-99,p=Math.floor(Math.random()*5),b=(p)?Math.floor(Math.random()*max)-99:a; return [\\\"<div style='width:4em;margin-left:.2em;'><div style='width:1.5em;'>\\\"+a+\\\"</div><div style='width:1em;'>...</div><div style='width:1.5em;'>\\\"+b+\\\"</div></div>\\\", (a==b)?\\\"=\\\":((a<b)?\\\"<\\\":\\\">\\\")]}","class":"alpha left","font":1.5]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>negative</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:alternative>n010</dct:alternative>
+    </rdf:Description>
+
+    <!-- 2 compares -->
+ 
+    <rdf:Description>
+        <dct:identifier>st29</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre 2 et 9 complétant la double inégalité d'infériorité.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":0},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*8)+1; return [\\\"<div style='margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:.6em;'>&lt;</div><div style='width:.7em;'>...</div><div style='width:.6em;'>&lt;</div><div>\\\"+(a+2)+\\\"</div>\\\",(a+1)]}","class":"alpha left","font":2]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>e20c</dct:alternative>
+        <dct:alternative>t119x</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>c10b</dct:identifier>
-        <dct:title xml:lang="fr-FR">Trouver, en moins de 40 secondes, le nombre compris entre 2 et 9 complétant la double inégalité</dct:title>
-        <dct:description><![CDATA["time":2,"len":10,"input":{"digit":1,"speed":0},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*8)+1; return [a+\\\"<...<\\\"+(a+2),(a+1)]}","class":"alpha","font":2]]></dct:description>
+        <dct:identifier>st29x</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, en moins de 40 secondes, le nombre compris entre 2 et 9 complétant la double inégalité d'infériorité.</dct:title>
+        <dct:description><![CDATA["time":2,"input":{"digit":1,"speed":0},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*8)+1; return [\\\"<div style='margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:.6em;'>&lt;</div><div style='width:.7em;'>...</div><div style='width:.6em;'>&lt;</div><div>\\\"+(a+2)+\\\"</div>\\\",(a+1)]}","class":"alpha left","font":2]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>e20c</dct:alternative>
+        <dct:alternative>t119x</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>c10c</dct:identifier>
-        <dct:title xml:lang="fr-FR">Trouver, en moins de 20 secondes, le nombre compris entre 2 et 9 complétant la double inégalité</dct:title>
-        <dct:description><![CDATA["time":1,"len":10,"input":{"digit":1,"speed":0},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*8)+1; return [a+\\\"<...<\\\"+(a+2),(a+1)]}","class":"alpha","font":2]]></dct:description>
+        <dct:identifier>st29y</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, en moins de 20 secondes, le nombre compris entre 2 et 9 complétant la double inégalité d'infériorité.</dct:title>
+        <dct:description><![CDATA["time":1,"input":{"digit":1,"speed":0},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*8)+1; return [\\\"<div style='margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:.6em;'>&lt;</div><div style='width:.7em;'>...</div><div style='width:.6em;'>&lt;</div><div>\\\"+(a+2)+\\\"</div>\\\",(a+1)]}","class":"alpha left","font":2]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>e20c</dct:alternative>
+        <dct:alternative>t119x</dct:alternative>
      </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>c20a</dct:identifier>
-        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre 1 et 19 complétant la double inégalité</dct:title>
-        <dct:description><![CDATA["time":0,"len":10,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*19); return [a+\\\"<...<\\\"+(a+2),(a+1)]}","class":"alpha","font":1.5]]></dct:description>
+        <dct:identifier>st119</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre 1 et 19 complétant la double inégalité d'infériorité.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*19); return [\\\"<div style='margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:.6em;'>&lt;</div><div style='width:1.2em;'>...</div><div style='width:.6em;'>&lt;</div><div>\\\"+(a+2)+\\\"</div>\\\",(a+1)]}","class":"alpha left","font":1.5]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>e20c</dct:alternative>
+        <dct:alternative>t119x</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>c20b</dct:identifier>
-        <dct:title xml:lang="fr-FR">Trouver, en moins de 40 secondes, le nombre compris entre 1 et 19 complétant la double inégalité</dct:title>
-        <dct:description><![CDATA["time":2,"len":10,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*19); return [a+\\\"<...<\\\"+(a+2),(a+1)]}","class":"alpha","font":1.5]]></dct:description>
+        <dct:identifier>st119x</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, en moins de 40 secondes, le nombre compris entre 1 et 19 complétant la double inégalité d'infériorité.</dct:title>
+        <dct:description><![CDATA["time":2,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*19); return [\\\"<div style='margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:.6em;'>&lt;</div><div style='width:1.2em;'>...</div><div style='width:.6em;'>&lt;</div><div>\\\"+(a+2)+\\\"</div>\\\",(a+1)]}","class":"alpha left","font":1.5]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>e20c</dct:alternative>
+        <dct:alternative>t119x</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>c20c</dct:identifier>
-        <dct:title xml:lang="fr-FR">Trouver, en moins de 20 secondes, le nombre compris entre 1 et 19 complétant la double inégalité</dct:title>
-        <dct:description><![CDATA["time":1,"len":10,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*19); return [a+\\\"<...<\\\"+(a+2),(a+1)]}","class":"alpha","font":1.5]]></dct:description>
+        <dct:identifier>st19y</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, en moins de 20 secondes, le nombre compris entre 1 et 19 complétant la double inégalité d'infériorité.</dct:title>
+        <dct:description><![CDATA["time":1,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*19); return [\\\"<div style='margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:.6em;'>&lt;</div><div style='width:1.2em;'>...</div><div style='width:.6em;'>&lt;</div><div>\\\"+(a+2)+\\\"</div>\\\",(a+1)]}","class":"alpha left","font":1.5]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>e20c</dct:alternative>
+        <dct:alternative>t119x</dct:alternative>
      </rdf:Description>
 
 
     <rdf:Description>
-        <dct:identifier>d10a</dct:identifier>
-        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre 2 et 9 complétant la double inégalité</dct:title>
-        <dct:description><![CDATA["time":0,"len":10,"input":{"digit":1,"speed":0},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*8)+1; return [(a+2)+\\\">...>\\\"+a,(a+1)]}","class":"alpha","font":2]]></dct:description>
+        <dct:identifier>gt29</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre 2 et 9 complétant la double inégalité de supériorité.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":0},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*8)+1; return [\\\"<div style='margin-left:.1em;'>\\\"+(a+2)+\\\"</div><div style='width:.6em;'>&gt;</div><div style='width:.7em;'>...</div><div style='width:.6em;'>&gt;</div><div>\\\"+a+\\\"</div>\\\",(a+1)]}","class":"alpha left","font":2]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>e20c</dct:alternative>
+        <dct:alternative>t119x</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>d10b</dct:identifier>
-        <dct:title xml:lang="fr-FR">Trouver, en moins de 40 secondes, le nombre compris entre 2 et 9 complétant la double inégalité</dct:title>
-        <dct:description><![CDATA["time":2,"len":10,"input":{"digit":1,"speed":0},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*8)+1; return [(a+2)+\\\">...>\\\"+a,(a+1)]}","class":"alpha","font":2]]></dct:description>
+        <dct:identifier>gt29x</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, en moins de 40 secondes, le nombre compris entre 2 et 9 complétant la double inégalité de supériorité.</dct:title>
+        <dct:description><![CDATA["time":2,"input":{"digit":1,"speed":0},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*8)+1; return [\\\"<div style='margin-left:.1em;'>\\\"+(a+2)+\\\"</div><div style='width:.6em;'>&gt;</div><div style='width:.7em;'>...</div><div style='width:.6em;'>&gt;</div><div>\\\"+a+\\\"</div>\\\",(a+1)]}","class":"alpha left","font":2]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>e20c</dct:alternative>
+        <dct:alternative>t119x</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>d10c</dct:identifier>
-        <dct:title xml:lang="fr-FR">Trouver, en moins de 20 secondes, le nombre compris entre 2 et 9 complétant la double inégalité</dct:title>
-        <dct:description><![CDATA["time":1,"len":10,"input":{"digit":1,"speed":0},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*8)+1; return [(a+2)+\\\">...>\\\"+a,(a+1)]}","class":"alpha","font":2]]></dct:description>
+        <dct:identifier>gt29y</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, en moins de 20 secondes, le nombre compris entre 2 et 9 complétant la double inégalité de supériorité.</dct:title>
+        <dct:description><![CDATA["time":1,"input":{"digit":1,"speed":0},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*8)+1; return [\\\"<div style='margin-left:.1em;'>\\\"+(a+2)+\\\"</div><div style='width:.6em;'>&gt;</div><div style='width:.7em;'>...</div><div style='width:.6em;'>&gt;</div><div>\\\"+a+\\\"</div>\\\",(a+1)]}","class":"alpha left","font":2]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>e20c</dct:alternative>
+        <dct:alternative>t119x</dct:alternative>
      </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>d20a</dct:identifier>
-        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre 1 et 19 complétant la double inégalité</dct:title>
-        <dct:description><![CDATA["time":0,"len":10,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*19); return [(a+2)+\\\">...>\\\"+a,(a+1)]}","class":"alpha","font":1.5]]></dct:description>
+        <dct:identifier>gt119</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre 1 et 19 complétant la double inégalité de supériorité.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*19); return [\\\"<div style='margin-left:.1em;'>\\\"+(a+2)+\\\"</div><div style='width:.6em;'>&gt;</div><div style='width:1.2em;'>...</div><div style='width:.6em;'>&gt;</div><div>\\\"+a+\\\"</div>\\\",(a+1)]}","class":"alpha left","font":1.5]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>e20c</dct:alternative>
+        <dct:alternative>t119x</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>d20b</dct:identifier>
-        <dct:title xml:lang="fr-FR">Trouver, en moins de 40 secondes, le nombre compris entre 1 et 19 complétant la double inégalité</dct:title>
-        <dct:description><![CDATA["time":2,"len":10,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*19); return [(a+2)+\\\">...>\\\"+a,(a+1)]}","class":"alpha","font":1.5]]></dct:description>
+        <dct:identifier>gt119x</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, en moins de 40 secondes, le nombre compris entre 1 et 19 complétant la double inégalité de supériorité.</dct:title>
+        <dct:description><![CDATA["time":2,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*19); return [\\\"<div style='margin-left:.1em;'>\\\"+(a+2)+\\\"</div><div style='width:.6em;'>&gt;</div><div style='width:1.2em;'>...</div><div style='width:.6em;'>&gt;</div><div>\\\"+a+\\\"</div>\\\",(a+1)]}","class":"alpha left","font":1.5]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>e20c</dct:alternative>
+        <dct:alternative>t119x</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>d20c</dct:identifier>
-        <dct:title xml:lang="fr-FR">Trouver, en moins de 20 secondes, le nombre compris entre 1 et 19 complétant la double inégalité</dct:title>
-        <dct:description><![CDATA["time":1,"len":10,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*19); return [(a+2)+\\\">...>\\\"+a,(a+1)]}","class":"alpha","font":1.5]]></dct:description>
+        <dct:identifier>gt119y</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, en moins de 20 secondes, le nombre compris entre 1 et 19 complétant la double inégalité de supériorité.</dct:title>
+        <dct:description><![CDATA["time":1,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*19); return [\\\"<div style='margin-left:.1em;'>\\\"+(a+2)+\\\"</div><div style='width:.6em;'>&gt;</div><div style='width:1.2em;'>...</div><div style='width:.6em;'>&gt;</div><div>\\\"+a+\\\"</div>\\\",(a+1)]}","class":"alpha left","font":1.5]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>e20c</dct:alternative>
+        <dct:alternative>t119x</dct:alternative>
      </rdf:Description>
 
 
     <rdf:Description>
-        <dct:identifier>e10a</dct:identifier>
-        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre 2 et 9 complétant la double inégalité</dct:title>
-        <dct:description><![CDATA["time":0,"len":10,"input":{"digit":1,"speed":0},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*8)+1, b=Math.floor(Math.random()*2); return [(b?((a+2)+\\\">...>\\\"+a):(a+\\\"<...<\\\"+(a+2))),(a+1)]}","class":"alpha","font":2]]></dct:description>
+        <dct:identifier>t29</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre 2 et 9 complétant la double inégalité.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":0},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*8)+1, b=Math.floor(Math.random()*2); return [b?\\\"<div style='margin-left:.1em;'>\\\"+(a+2)+\\\"</div><div style='width:.6em;'>&gt;</div><div style='width:.7em;'>...</div><div style='width:.6em;'>&gt;</div><div>\\\"+a+\\\"</div>\\\":\\\"<div style='margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:.6em;'>&lt;</div><div style='width:.7em;'>...</div><div style='width:.6em;'>&lt;</div><div>\\\"+(a+2)+\\\"</div>\\\",(a+1)]}","class":"alpha left","font":2]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>e20c</dct:alternative>
+        <dct:alternative>t119x</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>e10b</dct:identifier>
-        <dct:title xml:lang="fr-FR">Trouver, en moins de 40 secondes, le nombre compris entre 2 et 9 complétant la double inégalité</dct:title>
-        <dct:description><![CDATA["time":2,"len":10,"input":{"digit":1,"speed":0},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*8)+1, b=Math.floor(Math.random()*2); return [(b?((a+2)+\\\">...>\\\"+a):(a+\\\"<...<\\\"+(a+2))),(a+1)]}","class":"alpha","font":2]]></dct:description>
+        <dct:identifier>t29x</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, en moins de 40 secondes, le nombre compris entre 2 et 9 complétant la double inégalité.</dct:title>
+        <dct:description><![CDATA["time":2,"input":{"digit":1,"speed":0},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*8)+1, b=Math.floor(Math.random()*2); return [b?\\\"<div style='margin-left:.1em;'>\\\"+(a+2)+\\\"</div><div style='width:.6em;'>&gt;</div><div style='width:.7em;'>...</div><div style='width:.6em;'>&gt;</div><div>\\\"+a+\\\"</div>\\\":\\\"<div style='margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:.6em;'>&lt;</div><div style='width:.7em;'>...</div><div style='width:.6em;'>&lt;</div><div>\\\"+(a+2)+\\\"</div>\\\",(a+1)]}","class":"alpha left","font":2]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>e20c</dct:alternative>
+        <dct:alternative>t119x</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>e10c</dct:identifier>
-        <dct:title xml:lang="fr-FR">Trouver, en moins de 20 secondes, le nombre compris entre 2 et 9 complétant la double inégalité</dct:title>
-        <dct:description><![CDATA["time":1,"len":10,"input":{"digit":1,"speed":0},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*8)+1, b=Math.floor(Math.random()*2); return [(b?((a+2)+\\\">...>\\\"+a):(a+\\\"<...<\\\"+(a+2))),(a+1)]}","class":"alpha","font":2]]></dct:description>
+        <dct:identifier>t29y</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, en moins de 20 secondes, le nombre compris entre 2 et 9 complétant la double inégalité.</dct:title>
+        <dct:description><![CDATA["time":1,"input":{"digit":1,"speed":0},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*8)+1, b=Math.floor(Math.random()*2); return [b?\\\"<div style='margin-left:.1em;'>\\\"+(a+2)+\\\"</div><div style='width:.6em;'>&gt;</div><div style='width:.7em;'>...</div><div style='width:.6em;'>&gt;</div><div>\\\"+a+\\\"</div>\\\":\\\"<div style='margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:.6em;'>&lt;</div><div style='width:.7em;'>...</div><div style='width:.6em;'>&lt;</div><div>\\\"+(a+2)+\\\"</div>\\\",(a+1)]}","class":"alpha left","font":2]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>e20c</dct:alternative>
+        <dct:alternative>t119x</dct:alternative>
      </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>e20a</dct:identifier>
-        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre 1 et 19 complétant la double inégalité</dct:title>
-        <dct:description><![CDATA["time":0,"len":10,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*19), b=Math.floor(Math.random()*2); return [(b?((a+2)+\\\">...>\\\"+a):(a+\\\"<...<\\\"+(a+2))),(a+1)]}","class":"alpha","font":1.5]]></dct:description>
+        <dct:identifier>t119</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre 1 et 19 complétant la double inégalité.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*19), b=Math.floor(Math.random()*2); return [b?\\\"<div style='margin-left:.1em;'>\\\"+(a+2)+\\\"</div><div style='width:.6em;'>&gt;</div><div style='width:1.2em;'>...</div><div style='width:.6em;'>&gt;</div><div>\\\"+a+\\\"</div>\\\":\\\"<div style='margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:.6em;'>&lt;</div><div style='width:1.2em;'>...</div><div style='width:.6em;'>&lt;</div><div>\\\"+(a+2)+\\\"</div>\\\",(a+1)]}","class":"alpha left","font":1.5]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>e20c</dct:alternative>
+        <dct:alternative>t119x</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>e20b</dct:identifier>
-        <dct:title xml:lang="fr-FR">Trouver, en moins de 40 secondes, le nombre compris entre 1 et 19 complétant la double inégalité</dct:title>
-        <dct:description><![CDATA["time":2,"len":10,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*19), b=Math.floor(Math.random()*2); return [(b?((a+2)+\\\">...>\\\"+a):(a+\\\"<...<\\\"+(a+2))),(a+1)]}","class":"alpha","font":1.5]]></dct:description>
+        <dct:identifier>t119x</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, en moins de 40 secondes, le nombre compris entre 1 et 19 complétant la double inégalité.</dct:title>
+        <dct:description><![CDATA["time":2,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*19), b=Math.floor(Math.random()*2); return [b?\\\"<div style='margin-left:.1em;'>\\\"+(a+2)+\\\"</div><div style='width:.6em;'>&gt;</div><div style='width:1.2em;'>...</div><div style='width:.6em;'>&gt;</div><div>\\\"+a+\\\"</div>\\\":\\\"<div style='margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:.6em;'>&lt;</div><div style='width:1.2em;'>...</div><div style='width:.6em;'>&lt;</div><div>\\\"+(a+2)+\\\"</div>\\\",(a+1)]}","class":"alpha left","font":1.5]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>e20c</dct:alternative>
+        <dct:alternative>t119x</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>e20c</dct:identifier>
-        <dct:title xml:lang="fr-FR">Trouver, en moins de 20 secondes, le nombre compris entre 1 et 19 complétant la double inégalité</dct:title>
-        <dct:description><![CDATA["time":1,"len":10,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*19), b=Math.floor(Math.random()*2); return [(b?((a+2)+\\\">...>\\\"+a):(a+\\\"<...<\\\"+(a+2))),(a+1)]}","class":"alpha","font":1.5]]></dct:description>
+        <dct:identifier>t119y</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, en moins de 20 secondes, le nombre compris entre 1 et 19 complétant la double inégalité.</dct:title>
+        <dct:description><![CDATA["time":1,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*19), b=Math.floor(Math.random()*2); return [b?\\\"<div style='margin-left:.1em;'>\\\"+(a+2)+\\\"</div><div style='width:.6em;'>&gt;</div><div style='width:1.2em;'>...</div><div style='width:.6em;'>&gt;</div><div>\\\"+a+\\\"</div>\\\":\\\"<div style='margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:.6em;'>&lt;</div><div style='width:1.2em;'>...</div><div style='width:.6em;'>&lt;</div><div>\\\"+(a+2)+\\\"</div>\\\",(a+1)]}","class":"alpha left","font":1.5]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>e20c</dct:alternative>
+        <dct:alternative>t119x</dct:alternative>
      </rdf:Description>
+
+    <!-- Negative -->
+
+
+    <rdf:Description>
+        <dct:identifier>stn29</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre -2 et -9 complétant la double inégalité d'infériorité.</dct:title>
+        <dct:description><![CDATA["time":0,"template":"keypadneg","negative":true,"input":{"digit":1,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=-(Math.floor(Math.random()*8)+2); return [\\\"<div style='margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:.6em;'>&lt;</div><div style='width:.9em;text-align:center;'>...</div><div style='width:.6em;'>&lt;</div><div>\\\"+(a+2)+\\\"</div>\\\",(a+1)]}","class":"alpha left","font":1.7]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>negative</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>tn99</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>stn299</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre -2 et -9 complétant la double inégalité d'infériorité.</dct:title>
+        <dct:description><![CDATA["time":0,"template":"keypadneg","negative":true,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=-(Math.floor(Math.random()*98)+2); return [\\\"<div style='margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:.6em;'>&lt;</div><div style='width:1.4em;text-align:center;'>...</div><div style='width:.6em;'>&lt;</div><div>\\\"+(a+2)+\\\"</div>\\\",(a+1)]}","class":"alpha left","font":1.2]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>negative</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>tn99</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>stn9</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre -9 et 9 complétant la double inégalité d'infériorité.</dct:title>
+        <dct:description><![CDATA["time":0,"template":"keypadneg","negative":true,"input":{"digit":1,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*17)-9; return [\\\"<div style='margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:.6em;'>&lt;</div><div style='width:.9em;text-align:center;'>...</div><div style='width:.6em;'>&lt;</div><div>\\\"+(a+2)+\\\"</div>\\\",(a+1)]}","class":"alpha left","font":1.7]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>negative</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>tn99</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>stn99</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre -9 et 9 complétant la double inégalité d'infériorité.</dct:title>
+        <dct:description><![CDATA["time":0,"template":"keypadneg","negative":true,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*197)-99; return [\\\"<div style='margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:.6em;'>&lt;</div><div style='width:1.4em;text-align:center;'>...</div><div style='width:.6em;'>&lt;</div><div>\\\"+(a+2)+\\\"</div>\\\",(a+1)]}","class":"alpha left","font":1.2]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>negative</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>tn99</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>gtn29</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre -2 et -9 complétant la double inégalité de supériorité.</dct:title>
+        <dct:description><![CDATA["time":0,"template":"keypadneg","negative":true,"input":{"digit":1,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=-(Math.floor(Math.random()*8)+2); return [\\\"<div style='margin-left:.1em;'>\\\"+(a+2)+\\\"</div><div style='width:.6em;'>&gt;</div><div style='width:.9em;text-align:center;'>...</div><div style='width:.6em;'>&gt;</div><div>\\\"+a+\\\"</div>\\\",(a+1)]}","class":"alpha left","font":1.7]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>negative</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>tn99</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>gtn299</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre -2 et -9 complétant la double inégalité de supériorité.</dct:title>
+        <dct:description><![CDATA["time":0,"template":"keypadneg","negative":true,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=-(Math.floor(Math.random()*98)+2); return [\\\"<div style='margin-left:.1em;'>\\\"+(a+2)+\\\"</div><div style='width:.6em;'>&gt;</div><div style='width:1.4em;text-align:center;'>...</div><div style='width:.6em;'>&gt;</div><div>\\\"+a+\\\"</div>\\\",(a+1)]}","class":"alpha left","font":1.2]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>negative</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>tn99</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>gtn9</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre -9 et 9 complétant la double inégalité de supériorité.</dct:title>
+        <dct:description><![CDATA["time":0,"template":"keypadneg","negative":true,"input":{"digit":1,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*17)-9; return [\\\"<div style='margin-left:.1em;'>\\\"+(a+2)+\\\"</div><div style='width:.6em;'>&gt;</div><div style='width:.9em;text-align:center;'>...</div><div style='width:.6em;'>&gt;</div><div>\\\"+a+\\\"</div>\\\",(a+1)]}","class":"alpha left","font":1.7]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>negative</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>tn99</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>gtn99</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre -9 et 9 complétant la double inégalité de supériorité.</dct:title>
+        <dct:description><![CDATA["time":0,"template":"keypadneg","negative":true,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*197)-99; return [\\\"<div style='margin-left:.1em;'>\\\"+(a+2)+\\\"</div><div style='width:.6em;'>&gt;</div><div style='width:1.4em;text-align:center;'>...</div><div style='width:.6em;'>&gt;</div><div>\\\"+a+\\\"</div>\\\",(a+1)]}","class":"alpha left","font":1.2]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>negative</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>tn99</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>tn29</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre -2 et -9 complétant la double inégalité.</dct:title>
+        <dct:description><![CDATA["time":0,"template":"keypadneg","negative":true,"input":{"digit":1,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=-(Math.floor(Math.random()*8)+2), b=Math.floor(Math.random()*2); return [b?\\\"<div style='margin-left:.1em;'>\\\"+(a+2)+\\\"</div><div style='width:.6em;'>&gt;</div><div style='width:0.9em;'>...</div><div style='width:.6em;'>&gt;</div><div>\\\"+a+\\\"</div>\\\":\\\"<div style='margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:.6em;'>&lt;</div><div style='width:0.9em;'>...</div><div style='width:.6em;'>&lt;</div><div>\\\"+(a+2)+\\\"</div>\\\",(a+1)]}","class":"alpha left","font":1.7]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>negative</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>tn99</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>tn299</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre -2 et -9 complétant la double inégalité.</dct:title>
+        <dct:description><![CDATA["time":0,"template":"keypadneg","negative":true,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=-(Math.floor(Math.random()*98)+2), b=Math.floor(Math.random()*2); return [b?\\\"<div style='margin-left:.1em;'>\\\"+(a+2)+\\\"</div><div style='width:.6em;'>&gt;</div><div style='width:1.4em;'>...</div><div style='width:.6em;'>&gt;</div><div>\\\"+a+\\\"</div>\\\":\\\"<div style='margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:.6em;'>&lt;</div><div style='width:1.4em;'>...</div><div style='width:.6em;'>&lt;</div><div>\\\"+(a+2)+\\\"</div>\\\",(a+1)]}","class":"alpha left","font":1.2]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>negative</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>tn99</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>tn9</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre -9 et 9 complétant la double inégalité.</dct:title>
+        <dct:description><![CDATA["time":0,"template":"keypadneg","negative":true,"input":{"digit":1,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*17)-9, b=Math.floor(Math.random()*2); return [b?\\\"<div style='margin-left:.1em;'>\\\"+(a+2)+\\\"</div><div style='width:.6em;'>&gt;</div><div style='width:0.9em;'>...</div><div style='width:.6em;'>&gt;</div><div>\\\"+a+\\\"</div>\\\":\\\"<div style='margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:.6em;'>&lt;</div><div style='width:0.9em;'>...</div><div style='width:.6em;'>&lt;</div><div>\\\"+(a+2)+\\\"</div>\\\",(a+1)]}","class":"alpha left","font":1.7]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>negative</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>tn99</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>tn99</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre -9 et 9 complétant la double inégalité.</dct:title>
+        <dct:description><![CDATA["time":0,"template":"keypadneg","negative":true,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*197)-99, b=Math.floor(Math.random()*2); return [b?\\\"<div style='margin-left:.1em;'>\\\"+(a+2)+\\\"</div><div style='width:.6em;'>&gt;</div><div style='width:1.4em;'>...</div><div style='width:.6em;'>&gt;</div><div>\\\"+a+\\\"</div>\\\":\\\"<div style='margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:.6em;'>&lt;</div><div style='width:1.4em;'>...</div><div style='width:.6em;'>&lt;</div><div>\\\"+(a+2)+\\\"</div>\\\",(a+1)]}","class":"alpha left","font":1.2]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>negative</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>tn99</dct:alternative>
+    </rdf:Description>
+
+
+     <!-- 2D boxes -->
+
+     <rdf:Description>
+         <dct:identifier>214</dct:identifier>
+         <dct:title xml:lang="fr-FR">Différencier, sans contrainte de temps, deux groupes de carrés (de 1 à 4).</dct:title>
+         <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["=","&ne;"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var n=2,eq=(Math.floor(Math.random()*5)==0),ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:1;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*n*n)+1,val2=eq?val1:Math.floor(Math.random()*n*n)+1,b1=[],b2=[]; for(var i=0;i<n*n;i++){ b1.push(false);b2.push(false);}for(var i=0;i<val1;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b1[x]);b1[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div><div style='width:1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:1;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\"; for(var i=0;i<val2;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b2[x]);b2[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div>\\\"; return [ret, val1==val2?'=':'&ne;'];}","class":"alpha left p02","font":1.7]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Comparez le nombre de carrés dans chaque groupe."]]></dct:description>
+         <dct:extent>1</dct:extent>
+         <dct:subject>numeration</dct:subject>
+         <dct:educationLevel>2</dct:educationLevel>
+         <dct:type>1</dct:type>
+         <dct:alternative>2110x</dct:alternative>
+    </rdf:Description>
+
+     <rdf:Description>
+         <dct:identifier>214x</dct:identifier>
+         <dct:title xml:lang="fr-FR">Différencier, en moins de 20 secondes, deux groupes de carrés (de 1 à 4).</dct:title>
+         <dct:description><![CDATA["time":1,"input":{"digit":1,"values":["=","&ne;"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var n=2,eq=(Math.floor(Math.random()*5)==0),ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:1;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*n*n)+1,val2=eq?val1:Math.floor(Math.random()*n*n)+1,b1=[],b2=[]; for(var i=0;i<n*n;i++){ b1.push(false);b2.push(false);}for(var i=0;i<val1;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b1[x]);b1[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div><div style='width:1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:1;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\"; for(var i=0;i<val2;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b2[x]);b2[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div>\\\"; return [ret, val1==val2?'=':'&ne;'];}","class":"alpha left p02","font":1.7]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Comparez le nombre de carrés dans chaque groupe."]]></dct:description>
+         <dct:extent>1</dct:extent>
+         <dct:subject>numeration</dct:subject>
+         <dct:educationLevel>2</dct:educationLevel>
+         <dct:type>2</dct:type>
+         <dct:alternative>2110x</dct:alternative>
+    </rdf:Description>
+
+     <rdf:Description>
+         <dct:identifier>2t14</dct:identifier>
+         <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, deux groupes de carrés (de 1 à 4).</dct:title>
+         <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var n=2,eq=(Math.floor(Math.random()*10)==0),ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:1;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*n*n)+1,val2=eq?val1:Math.floor(Math.random()*n*n)+1,b1=[],b2=[]; for(var i=0;i<n*n;i++){ b1.push(false);b2.push(false);}for(var i=0;i<val1;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b1[x]);b1[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div><div style='width:1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:1;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\"; for(var i=0;i<val2;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b2[x]);b2[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div>\\\"; return [ret, val1==val2?'=':(val1<val2?'<':'>')];}","class":"alpha left p02","font":1.7]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Comparez le nombre de carrés dans chaque groupe."]]></dct:description>
+         <dct:extent>1</dct:extent>
+         <dct:subject>numeration</dct:subject>
+         <dct:educationLevel>2</dct:educationLevel>
+         <dct:type>1</dct:type>
+         <dct:alternative>2110x</dct:alternative>
+    </rdf:Description>
+
+     <rdf:Description>
+         <dct:identifier>2t14x</dct:identifier>
+         <dct:title xml:lang="fr-FR">Comparer, en moins de 20 secondes, deux groupes de carrés (de 1 à 4).</dct:title>
+         <dct:description><![CDATA["time":1,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var n=2,eq=(Math.floor(Math.random()*10)==0),ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:1;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*n*n)+1,val2=eq?val1:Math.floor(Math.random()*n*n)+1,b1=[],b2=[]; for(var i=0;i<n*n;i++){ b1.push(false);b2.push(false);}for(var i=0;i<val1;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b1[x]);b1[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div><div style='width:1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:1;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\"; for(var i=0;i<val2;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b2[x]);b2[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div>\\\"; return [ret, val1==val2?'=':(val1<val2?'<':'>')];}","class":"alpha left p02","font":1.7]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Comparez le nombre de carrés dans chaque groupe."]]></dct:description>
+         <dct:extent>1</dct:extent>
+         <dct:subject>numeration</dct:subject>
+         <dct:educationLevel>2</dct:educationLevel>
+         <dct:type>2</dct:type>
+         <dct:alternative>2110x</dct:alternative>
+    </rdf:Description>
+
+     <rdf:Description>
+         <dct:identifier>219</dct:identifier>
+         <dct:title xml:lang="fr-FR">Différencier, sans contrainte de temps, deux groupes de carrés (de 1 à 9).</dct:title>
+         <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["=","&ne;"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var n=3,eq=(Math.floor(Math.random()*2.2)==0),ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*n*n)+1,val2=eq?val1:Math.floor(Math.random()*n*n)+1,b1=[],b2=[]; for(var i=0;i<n*n;i++){ b1.push(false);b2.push(false);}for(var i=0;i<val1;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b1[x]);b1[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div><div style='width:1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\"; for(var i=0;i<val2;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b2[x]);b2[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div>\\\"; return [ret, val1==val2?'=':'&ne;'];}","class":"alpha left p02","font":1.7]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Comparez le nombre de carrés dans chaque groupe."]]></dct:description>
+         <dct:extent>1</dct:extent>
+         <dct:subject>numeration</dct:subject>
+         <dct:educationLevel>2</dct:educationLevel>
+         <dct:type>2</dct:type>
+         <dct:alternative>2110x</dct:alternative>
+    </rdf:Description>
+
+     <rdf:Description>
+         <dct:identifier>219x</dct:identifier>
+         <dct:title xml:lang="fr-FR">Différencier, en moins de 30 secondes, deux groupes de carrés (de 1 à 9).</dct:title>
+         <dct:description><![CDATA["time":1.5,"input":{"digit":1,"values":["=","&ne;"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var n=3,eq=(Math.floor(Math.random()*2.2)==0),ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*n*n)+1,val2=eq?val1:Math.floor(Math.random()*n*n)+1,b1=[],b2=[]; for(var i=0;i<n*n;i++){ b1.push(false);b2.push(false);}for(var i=0;i<val1;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b1[x]);b1[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div><div style='width:1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\"; for(var i=0;i<val2;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b2[x]);b2[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div>\\\"; return [ret, val1==val2?'=':'&ne;'];}","class":"alpha left p02","font":1.7]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Comparez le nombre de carrés dans chaque groupe."]]></dct:description>
+         <dct:extent>1</dct:extent>
+         <dct:subject>numeration</dct:subject>
+         <dct:educationLevel>2</dct:educationLevel>
+         <dct:type>3</dct:type>
+         <dct:alternative>2110x</dct:alternative>
+    </rdf:Description>
+
+     <rdf:Description>
+         <dct:identifier>2t19</dct:identifier>
+         <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, deux groupes de carrés (de 1 à 9).</dct:title>
+         <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var n=3,eq=(Math.floor(Math.random()*3.5)==0),ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*n*n)+1,val2=eq?val1:Math.floor(Math.random()*n*n)+1,b1=[],b2=[]; for(var i=0;i<n*n;i++){ b1.push(false);b2.push(false);}for(var i=0;i<val1;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b1[x]);b1[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div><div style='width:1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\"; for(var i=0;i<val2;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b2[x]);b2[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div>\\\"; return [ret, val1==val2?'=':(val1<val2?'<':'>')];}","class":"alpha left p02","font":1.7]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Comparez le nombre de carrés dans chaque groupe."]]></dct:description>
+         <dct:extent>1</dct:extent>
+         <dct:subject>numeration</dct:subject>
+         <dct:educationLevel>2</dct:educationLevel>
+         <dct:type>2</dct:type>
+         <dct:alternative>2110x</dct:alternative>
+    </rdf:Description>
+
+     <rdf:Description>
+         <dct:identifier>2t19x</dct:identifier>
+         <dct:title xml:lang="fr-FR">Comparer, en moins de 30 secondes, deux groupes de carrés (de 1 à 9).</dct:title>
+         <dct:description><![CDATA["time":1.5,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var n=3,eq=(Math.floor(Math.random()*3.5)==0),ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*n*n)+1,val2=eq?val1:Math.floor(Math.random()*n*n)+1,b1=[],b2=[]; for(var i=0;i<n*n;i++){ b1.push(false);b2.push(false);}for(var i=0;i<val1;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b1[x]);b1[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div><div style='width:1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\"; for(var i=0;i<val2;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b2[x]);b2[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div>\\\"; return [ret, val1==val2?'=':(val1<val2?'<':'>')];}","class":"alpha left p02","font":1.7]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Comparez le nombre de carrés dans chaque groupe."]]></dct:description>
+         <dct:extent>1</dct:extent>
+         <dct:subject>numeration</dct:subject>
+         <dct:educationLevel>2</dct:educationLevel>
+         <dct:type>3</dct:type>
+         <dct:alternative>2110x</dct:alternative>
+    </rdf:Description>
+
+     <rdf:Description>
+         <dct:identifier>2110</dct:identifier>
+         <dct:title xml:lang="fr-FR">Différencier, sans contrainte de temps, deux groupes de carrés (de 1 à 10).</dct:title>
+         <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["=","&ne;"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var n=4,eq=(Math.floor(Math.random()*2.1)==0),ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*10)+1,val2=eq?val1:Math.floor(Math.random()*10)+1,b1=[],b2=[]; for(var i=0;i<n*n;i++){ b1.push(false);b2.push(false);}for(var i=0;i<val1;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b1[x]);b1[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div><div style='width:1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\"; for(var i=0;i<val2;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b2[x]);b2[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div>\\\"; return [ret, val1==val2?'=':'&ne;'];}","class":"alpha left p02","font":1.7]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Comparez le nombre de carrés dans chaque groupe."]]></dct:description>
+         <dct:extent>1</dct:extent>
+         <dct:subject>numeration</dct:subject>
+         <dct:educationLevel>2</dct:educationLevel>
+         <dct:type>2</dct:type>
+         <dct:alternative>2110x</dct:alternative>
+    </rdf:Description>
+
+     <rdf:Description>
+         <dct:identifier>2110x</dct:identifier>
+         <dct:title xml:lang="fr-FR">Différencier, en moins de 40 secondes, deux groupes de carrés (de 1 à 10).</dct:title>
+         <dct:description><![CDATA["time":2,"input":{"digit":1,"values":["=","&ne;"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var n=4,eq=(Math.floor(Math.random()*2.1)==0),ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*10)+1,val2=eq?val1:Math.floor(Math.random()*10)+1,b1=[],b2=[]; for(var i=0;i<n*n;i++){ b1.push(false);b2.push(false);}for(var i=0;i<val1;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b1[x]);b1[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div><div style='width:1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\"; for(var i=0;i<val2;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b2[x]);b2[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div>\\\"; return [ret, val1==val2?'=':'&ne;'];}","class":"alpha left p02","font":1.7]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Comparez le nombre de carrés dans chaque groupe."]]></dct:description>
+         <dct:extent>1</dct:extent>
+         <dct:subject>numeration</dct:subject>
+         <dct:educationLevel>2</dct:educationLevel>
+         <dct:type>4</dct:type>
+         <dct:alternative>2110x</dct:alternative>
+    </rdf:Description>
+
+     <rdf:Description>
+         <dct:identifier>2t110</dct:identifier>
+         <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, deux groupes de carrés (de 1 à 10).</dct:title>
+         <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var n=4,eq=(Math.floor(Math.random()*3.1)==0),ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*10)+1,val2=eq?val1:Math.floor(Math.random()*10)+1,b1=[],b2=[]; for(var i=0;i<n*n;i++){ b1.push(false);b2.push(false);}for(var i=0;i<val1;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b1[x]);b1[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div><div style='width:1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\"; for(var i=0;i<val2;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b2[x]);b2[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div>\\\"; return [ret, val1==val2?'=':(val1<val2?'<':'>')];}","class":"alpha left p02","font":1.7]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Comparez le nombre de carrés dans chaque groupe."]]></dct:description>
+         <dct:extent>1</dct:extent>
+         <dct:subject>numeration</dct:subject>
+         <dct:educationLevel>2</dct:educationLevel>
+         <dct:type>2</dct:type>
+         <dct:alternative>2110x</dct:alternative>
+    </rdf:Description>
+
+     <rdf:Description>
+         <dct:identifier>2t110x</dct:identifier>
+         <dct:title xml:lang="fr-FR">Comparer, en moins de 40 secondes, deux groupes de carrés (de 1 à 10).</dct:title>
+         <dct:description><![CDATA["time":2,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var n=4,eq=(Math.floor(Math.random()*3.1)==0),ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*10)+1,val2=eq?val1:Math.floor(Math.random()*10)+1,b1=[],b2=[]; for(var i=0;i<n*n;i++){ b1.push(false);b2.push(false);}for(var i=0;i<val1;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b1[x]);b1[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div><div style='width:1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\"; for(var i=0;i<val2;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b2[x]);b2[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div>\\\"; return [ret, val1==val2?'=':(val1<val2?'<':'>')];}","class":"alpha left p02","font":1.7]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Comparez le nombre de carrés dans chaque groupe."]]></dct:description>
+         <dct:extent>1</dct:extent>
+         <dct:subject>numeration</dct:subject>
+         <dct:educationLevel>2</dct:educationLevel>
+         <dct:type>4</dct:type>
+         <dct:alternative>2110x</dct:alternative>
+    </rdf:Description>
+
+     <rdf:Description>
+         <dct:identifier>2116</dct:identifier>
+         <dct:title xml:lang="fr-FR">Différencier, sans contrainte de temps, deux groupes de carrés (de 1 à 16).</dct:title>
+         <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["=","&ne;"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var n=4,eq=(Math.floor(Math.random()*2.1)==0),ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*n*n)+1,val2=eq?val1:Math.floor(Math.random()*n*n)+1,b1=[],b2=[]; for(var i=0;i<n*n;i++){ b1.push(false);b2.push(false);}for(var i=0;i<val1;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b1[x]);b1[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div><div style='width:1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\"; for(var i=0;i<val2;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b2[x]);b2[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div>\\\"; return [ret, val1==val2?'=':'&ne;'];}","class":"alpha left p02","font":1.7]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Comparez le nombre de carrés dans chaque groupe."]]></dct:description>
+         <dct:extent>1</dct:extent>
+         <dct:subject>numeration</dct:subject>
+         <dct:educationLevel>2</dct:educationLevel>
+         <dct:type>2</dct:type>
+         <dct:alternative>2110x</dct:alternative>
+    </rdf:Description>
+
+     <rdf:Description>
+         <dct:identifier>2116x</dct:identifier>
+         <dct:title xml:lang="fr-FR">Différencier, en moins de 40 secondes, deux groupes de carrés (de 1 à 16).</dct:title>
+         <dct:description><![CDATA["time":2,"input":{"digit":1,"values":["=","&ne;"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var n=4,eq=(Math.floor(Math.random()*2.1)==0),ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*n*n)+1,val2=eq?val1:Math.floor(Math.random()*n*n)+1,b1=[],b2=[]; for(var i=0;i<n*n;i++){ b1.push(false);b2.push(false);}for(var i=0;i<val1;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b1[x]);b1[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div><div style='width:1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\"; for(var i=0;i<val2;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b2[x]);b2[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div>\\\"; return [ret, val1==val2?'=':'&ne;'];}","class":"alpha left p02","font":1.7]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Comparez le nombre de carrés dans chaque groupe."]]></dct:description>
+         <dct:extent>1</dct:extent>
+         <dct:subject>numeration</dct:subject>
+         <dct:educationLevel>2</dct:educationLevel>
+         <dct:type>4</dct:type>
+         <dct:alternative>2110x</dct:alternative>
+    </rdf:Description>
+
+     <rdf:Description>
+         <dct:identifier>2t116</dct:identifier>
+         <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, deux groupes de carrés (de 1 à 16).</dct:title>
+         <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var n=4,eq=(Math.floor(Math.random()*3.1)==0),ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*n*n)+1,val2=eq?val1:Math.floor(Math.random()*n*n)+1,b1=[],b2=[]; for(var i=0;i<n*n;i++){ b1.push(false);b2.push(false);}for(var i=0;i<val1;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b1[x]);b1[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div><div style='width:1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\"; for(var i=0;i<val2;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b2[x]);b2[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div>\\\"; return [ret, val1==val2?'=':(val1<val2?'<':'>')];}","class":"alpha left p02","font":1.7]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Comparez le nombre de carrés dans chaque groupe."]]></dct:description>
+         <dct:extent>1</dct:extent>
+         <dct:subject>numeration</dct:subject>
+         <dct:educationLevel>2</dct:educationLevel>
+         <dct:type>2</dct:type>
+         <dct:alternative>2110x</dct:alternative>
+    </rdf:Description>
+
+     <rdf:Description>
+         <dct:identifier>2t116x</dct:identifier>
+         <dct:title xml:lang="fr-FR">Comparer, en moins de 40 secondes, deux groupes de carrés (de 1 à 16).</dct:title>
+         <dct:description><![CDATA["time":2,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var n=4,eq=(Math.floor(Math.random()*3.1)==0),ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*n*n)+1,val2=eq?val1:Math.floor(Math.random()*n*n)+1,b1=[],b2=[]; for(var i=0;i<n*n;i++){ b1.push(false);b2.push(false);}for(var i=0;i<val1;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b1[x]);b1[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div><div style='width:1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\"; for(var i=0;i<val2;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b2[x]);b2[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div>\\\"; return [ret, val1==val2?'=':(val1<val2?'<':'>')];}","class":"alpha left p02","font":1.7]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Comparez le nombre de carrés dans chaque groupe."]]></dct:description>
+         <dct:extent>1</dct:extent>
+         <dct:subject>numeration</dct:subject>
+         <dct:educationLevel>2</dct:educationLevel>
+         <dct:type>4</dct:type>
+         <dct:alternative>2110x</dct:alternative>
+    </rdf:Description>
+
+
 
     <!-- Number a[a-z] -->
 
     <rdf:Description>
-        <dct:identifier>aa</dct:identifier>
+        <dct:identifier>o12</dct:identifier>
         <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, 2 entiers compris entre 1 et 2</dct:title>
-        <dct:description><![CDATA["time":0,"len":10,"input":{"digit":1,"values":["=","&ne;"]},"regexp": { "input": { "from": "([a-z]+[0-9]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/svginventoryicons/vegetable/$1.svg\\\"/></div>"}, "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var v=[\\\"apple01\\\",\\\"banana01\\\",\\\"tomato01\\\",\\\"pepper01\\\",\\\"apricot01\\\",\\\"strawberry01\\\",\\\"pear01\\\",\\\"cherry01\\\",\\\"kiwi01\\\"], max=2,a=Math.floor(Math.random()*max)+1,p=Math.floor(Math.random()*3),b=(p)?Math.floor(Math.random()*max)+1:a; var ta=\\\"\\\",tb=\\\"\\\"; for (var i=0; i<a;i++) { ta+=v[Math.floor(Math.random()*v.length)]; } for (var i=0; i<b;i++) { tb+=v[Math.floor(Math.random()*v.length)]; } return [ta+\\\"<p>...</p>\\\"+tb, (a==b)?\\\"=\\\":\\\"&ne;\\\"]}","class":"alpha left","font":1.4]]></dct:description>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["=","&ne;"]},"regexp": { "input": { "from": "([a-z]+[0-9]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/svginventoryicons/vegetable/$1.svg\\\"/></div>"}, "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var v=[\\\"apple01\\\",\\\"banana01\\\",\\\"tomato01\\\",\\\"pepper01\\\",\\\"apricot01\\\",\\\"strawberry01\\\",\\\"pear01\\\",\\\"cherry01\\\",\\\"kiwi01\\\"], max=2,a=Math.floor(Math.random()*max)+1,p=Math.floor(Math.random()*3),b=(p)?Math.floor(Math.random()*max)+1:a; var ta=\\\"\\\",tb=\\\"\\\"; for (var i=0; i<a;i++) { ta+=v[Math.floor(Math.random()*v.length)]; } for (var i=0; i<b;i++) { tb+=v[Math.floor(Math.random()*v.length)]; } return [ta+\\\"<div style='width:1em;'>...</div>\\\"+tb, (a==b)?\\\"=\\\":\\\"&ne;\\\"]}","class":"alpha left","font":1.4]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Comparez le nombre de fruits de part et d'autre."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>ab</dct:alternative>
+        <dct:alternative>o13</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>ab</dct:identifier>
+        <dct:identifier>o13</dct:identifier>
         <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, 2 entiers compris entre 1 et 3</dct:title>
-        <dct:description><![CDATA["time":0,"len":10,"input":{"digit":1,"values":["=","&ne;"]},"regexp": { "input": { "from": "([a-z]+[0-9]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/svginventoryicons/vegetable/$1.svg\\\"/></div>"}, "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var v=[\\\"apple01\\\",\\\"banana01\\\",\\\"tomato01\\\",\\\"pepper01\\\",\\\"apricot01\\\",\\\"strawberry01\\\",\\\"pear01\\\",\\\"cherry01\\\",\\\"kiwi01\\\"], max=3,a=Math.floor(Math.random()*max)+1,p=Math.floor(Math.random()*3.5),b=(p)?Math.floor(Math.random()*max)+1:a; var ta=\\\"\\\",tb=\\\"\\\"; for (var i=0; i<a;i++) { ta+=v[Math.floor(Math.random()*v.length)]; } for (var i=0; i<b;i++) { tb+=v[Math.floor(Math.random()*v.length)]; } return [ta+\\\"<p>...</p>\\\"+tb, (a==b)?\\\"=\\\":\\\"&ne;\\\"]}","class":"alpha left","font":1]]></dct:description>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["=","&ne;"]},"regexp": { "input": { "from": "([a-z]+[0-9]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/svginventoryicons/vegetable/$1.svg\\\"/></div>"}, "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var v=[\\\"apple01\\\",\\\"banana01\\\",\\\"tomato01\\\",\\\"pepper01\\\",\\\"apricot01\\\",\\\"strawberry01\\\",\\\"pear01\\\",\\\"cherry01\\\",\\\"kiwi01\\\"], max=3,a=Math.floor(Math.random()*max)+1,p=Math.floor(Math.random()*3.5),b=(p)?Math.floor(Math.random()*max)+1:a; var ta=\\\"\\\",tb=\\\"\\\"; for (var i=0; i<a;i++) { ta+=v[Math.floor(Math.random()*v.length)]; } for (var i=0; i<b;i++) { tb+=v[Math.floor(Math.random()*v.length)]; } return [ta+\\\"<div style='width:1em;'>...</div>\\\"+tb, (a==b)?\\\"=\\\":\\\"&ne;\\\"]}","class":"alpha left","font":1]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Comparez le nombre de fruits de part et d'autre."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>ab</dct:alternative>
+        <dct:alternative>o13</dct:alternative>
     </rdf:Description>
 
 </rdf:RDF>

@@ -35,9 +35,15 @@
         },
         // Get the settings
         settings: function($this, _val) { if (_val) { $this.data("settings", _val); } return $this.data("settings"); },
+        // Binding clear
+        unbind: function($this) {
+            $(document).unbind("keypress keydown");
+            $this.unbind("mouseup mousedown mousemove mouseout touchstart touchmove touchend touchleave");
+        },
         // Quit the activity by calling the context callback
         end: function($this) {
             var settings = helpers.settings($this);
+            helpers.unbind($this);
             settings.context.onquit($this,{'status':'success','score':settings.score});
         },
         loader: {
@@ -97,6 +103,9 @@
                 }
                 else { settings.ratio = vWidth/640; }
                 if (settings.ratio<=0) { settings.ratio=1; }
+
+                // GENERATE VALUES
+                if (settings.gen) { settings.values = eval('('+settings.gen+')')(); }
 
                 // LOCALE HANDLING
                 $this.find("h1#label").html(settings.label);
@@ -186,7 +195,7 @@
                     // CHECK IF THERE IS A TEXT TO CHANGE
                     if (settings.values) {
                         var values = ($.isArray(settings.values))?settings.values[settings.puzzleid]:settings.values;
-                        if (values[$(this).attr("id")]) {$(this).find("text").text(values[$(this).attr("id")]); }
+                        if (typeof(values[$(this).attr("id")])!="undefined") {$(this).find("text").text(values[$(this).attr("id")]); }
                     }
 
                     // SAVE THE ORIGINALE POSITION AND ROTATION
@@ -478,7 +487,7 @@
 
                 return this.each(function() {
                     var $this = $(this);
-                    $(document).unbind("keypress");
+                    helpers.unbind($this);
 
                     var $settings = $.extend({}, defaults, options, settings);
                     var checkContext = helpers.checkContext($settings);

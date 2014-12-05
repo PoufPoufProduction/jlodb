@@ -4,7 +4,6 @@
         name        : "sudoku",             // The activity name
         template    : "template.html",      // Activity html template
         css         : "style.css",          // Activity css style sheet
-        intro       : "intro.html",         // Activity introduction page
         lang        : "fr-FR",              // Current localization
         level       : 1,                    // Grid level
         score       : 1,                    // The score (from 1 to 5)
@@ -26,9 +25,15 @@
         },
         // Get the settings
         settings: function($this, _val) { if (_val) { $this.data("settings", _val); } return $this.data("settings"); },
+        // Binding clear
+        unbind: function($this) {
+            $(document).unbind("keypress keydown");
+            $this.unbind("mouseup mousedown mousemove mouseout touchstart touchmove touchend touchleave");
+        },
         // Quit the activity by calling the context callback
         end: function($this) {
             var settings = helpers.settings($this);
+            helpers.unbind($this);
             settings.context.onquit($this,{'status':'success', 'score':settings.score});
         },
         loader: {
@@ -74,6 +79,13 @@
                     $(this).css("background-image", "url('res/img/svginventoryicons/background/border/square0"+r+".svg')");
                 });
 
+                // Keypad
+                for (var i=0; i<10; i++) {
+                    settings.$keys.push($this.find("#keypad #key"+i).css("top",(1.5*Math.cos(2*Math.PI*(i/10))-0.5)+"em")
+                                       .css("left",(1.5*Math.sin(2*Math.PI*(i/10))-0.5)+"em")
+                                       .show());
+                }
+
                 $this.find("div.fill").each(function(index) {
                     var vY = Math.floor(index/9) + (Math.floor((index%9)/3)) - Math.floor((index%27)/9);
                     var vX = index%3 + 3*Math.floor((index%27)/9);
@@ -81,34 +93,125 @@
                         $(this).text(settings.data[vY][vX]%10).addClass("final");
                     }
                     else {
-                        $(this).bind("click touchstart",function(event) {
-                            var vEvent = (event && event.originalEvent &&
-                                          event.originalEvent.touches && event.originalEvent.touches.length)?
-                                event.originalEvent.touches[0]:event;
-                            $(this).closest('.'+settings.name).sudoku('click', $(this), vEvent, { posX:vX, posY:vY });
-                            event.preventDefault();
-                        }).hover(
-                            function() {if (!settings.elt) { settings.elthover = $(this);} },
-                            function() {if (settings.elthover==$(this)) { settings.elthover=0; } });
+                        $(this).bind("mousedown touchstart",function(event) {
+                            if (settings.interactive) {
+                                var $keypad = $this.find("#keypad");
+                                var vEvent = (event && event.originalEvent &&
+                                            event.originalEvent.touches && event.originalEvent.touches.length)?
+                                                event.originalEvent.touches[0]:event;
 
-                        $(this).next().find("div").each(function(_index) { $(this).bind("click touchstart",function(event) {
-                            var vEvent = (event && event.originalEvent && event.originalEvent.touches &&
-                                          event.originalEvent.touches.length)? event.originalEvent.touches[0]:event;
-                            $(this).closest('.'+settings.name).sudoku('click', $(this), vEvent);
+                                helpers.highlight($this, vX, vY);
+
+                                var vTop = vEvent.clientY - $this.offset().top;
+                                var vLeft = vEvent.clientX - $this.offset().left;
+
+                                $this.find("#keypad .k").removeClass("s");
+                                settings.keypad = $(this);
+                                settings.key    = -1;
+
+                                var tmp = $this.find("#bg1").height()/1.5;
+                                if (vTop<tmp)   { vTop = tmp; }
+                                if (vLeft<tmp)  { vLeft = tmp; }
+                                if (vTop+tmp>$this.height())    { vTop=$this.height()-tmp; }
+                                if (vLeft+tmp>$this.width())    { vLeft=$this.width()-tmp; }
+                                $keypad.css("top", vTop+"px").css("left", vLeft+"px").show();
+                            }
                             event.preventDefault();
-                            }).hover(
-                                function() {if (!settings.elt) { settings.elthover = $(this); }},
-                                function() {if (settings.elthover==$(this)) { settings.elt=0; } });
+                        })
+
+                        $(this).next().find("div").each(function(_index) { $(this).bind("mousedown touchstart",function(event) {
+                            if (settings.interactive) {
+                                var mode = $this.find("#grid").hasClass("f");
+                                if (mode) {
+                                    $(this).closest('.hint').hide().prev().text($(this).text()).show();
+                                    $(this).closest('.cell').removeClass("h");
+                                    if (helpers.check($this)) {
+                                        settings.interactive = false;
+                                        if (settings.timer.id) { clearTimeout(settings.timer.id); settings.timer.id=0; }
+                                        settings.score = helpers.score(settings.level, settings.timer.value);
+                                        setTimeout(function() { helpers.end($this); }, 1000);
+                                    }
+                                }
+                                else {
+
+                                    var $keypad = $this.find("#keypad");
+                                    var vEvent = (event && event.originalEvent &&
+                                                event.originalEvent.touches && event.originalEvent.touches.length)?
+                                                    event.originalEvent.touches[0]:event;
+
+                                    var vTop = vEvent.clientY - $this.offset().top;
+                                    var vLeft = vEvent.clientX - $this.offset().left;
+
+                                    $this.find("#keypad .k").removeClass("s");
+                                    settings.keypad = $(this);
+                                    settings.key    = -1;
+
+                                    var tmp = $this.find("#bg1").height()/1.5;
+                                    if (vTop<tmp)   { vTop = tmp; }
+                                    if (vLeft<tmp)  { vLeft = tmp; }
+                                    if (vTop+tmp>$this.height())    { vTop=$this.height()-tmp; }
+                                    if (vLeft+tmp>$this.width())    { vLeft=$this.width()-tmp; }
+                                    $keypad.css("top", vTop+"px").css("left", vLeft+"px").show();
+                                }
+                            }
+                            event.preventDefault();
+                            })
                         });
                     }
                 });
 
-                // Keypad
-                for (var i=0; i<10; i++) {
-                    $this.find("#keypad #key"+i).css("top",(1.5*Math.cos(2*Math.PI*(i/10))-0.5)+"em")
-                                       .css("left",(1.5*Math.sin(2*Math.PI*(i/10))-0.5)+"em")
-                                       .show();
-                }
+                $this.bind("mousemove touchmove", function(event) {
+                    var settings = helpers.settings($this), $keypad = $this.find("#keypad");
+                    if (settings.keypad) {
+                        var vEvent = (event && event.originalEvent && event.originalEvent.touches &&
+                                    event.originalEvent.touches.length)? event.originalEvent.touches[0]:event;
+                        var vTop = vEvent.clientY;
+                        var vLeft = vEvent.clientX;
+                        var vSize = settings.$keys[0].width();
+                        var vAlready = false;
+                        settings.key = -1;
+                        for (var i in settings.$keys) {
+                            settings.$keys[i].removeClass("s");
+                            if (!vAlready) {
+                                var vOffset = settings.$keys[i].offset();
+                                vAlready = ( vTop>=vOffset.top && vLeft>=vOffset.left &&
+                                            vTop<vOffset.top+vSize && vLeft<vOffset.left+vSize );
+                                if (vAlready) { settings.key = i; settings.$keys[i].addClass("s"); }
+                            }
+                        }
+                    }
+                    event.preventDefault();
+                });
+
+                $this.bind("mouseup touchend", function(event) {
+                    var settings = helpers.settings($this), $keypad = $this.find("#keypad");
+
+                    if (settings.key!=-1 && settings.keypad) {
+                        var vVal = settings.$keys[settings.key].text();
+                        settings.keypad.text(vVal==0?"":vVal);
+                        if (vVal!=0) {
+
+                            if (settings.keypad.hasClass("fill")) {
+                                if (helpers.check($this)) {
+                                    settings.interactive = false;
+                                    settings.score = helpers.score(settings.level, settings.timer.value);
+                                    if (settings.timer.id) { clearTimeout(settings.timer.id); settings.timer.id=0; }
+                                    setTimeout(function() { helpers.end($this); }, 1000);
+                                }
+                            }
+                            else
+                            {
+                                settings.keypad.closest('.cell').addClass("h");
+                            }
+
+                        }
+                    }
+
+                    $this.find(".active").removeClass("s");
+                    $keypad.hide();
+                    settings.keypad = 0;
+                    event.preventDefault();
+                });
 
                 // LOCALE HANDLING
                 $this.find("h1#label").html(settings.label);
@@ -141,17 +244,18 @@
                 var vX = index%3 + 3*Math.floor((index%27)/9);
                 if (settings.data[vY][vX]%10 != $(this).text()) { finish= false; }
             });
+            if (finish) { $this.find("#effects").show(); }
             return finish;
         },
         // Update the timer
         timer:function($this) {
             var settings = helpers.settings($this);
-            settings.timer.value++;
             var vS = settings.timer.value%60;
             var vM = Math.floor(settings.timer.value/60)%60;
             var vH = Math.floor(settings.timer.value/3600);
             if (vH>99) { vS=99; vM=99; vH=99; }
             $this.find("#time").text((vH<10?"0":"")+vH+(vM<10?":0":":")+vM+(vS<10?":0":":")+vS);
+            settings.timer.value++;
             settings.timer.id = setTimeout(function() { helpers.timer($this); }, 1000);
         },
         // compute the score regarding the time and the grid level
@@ -163,35 +267,6 @@
             if (time<timeref*1.5)   { score = 3; } else
             if (time<timeref*2)     { score = 2; }
             return score;
-        },
-        // Handle the key pressed (or the value selected from the wheel)
-        key:function($this, value) {
-            var settings = helpers.settings($this);
-            if (!settings.elt && settings.elthover) { settings.elt = settings.elthover; }
-            if (settings.keypad)    { clearTimeout(settings.keypad); settings.keypad=0; }
-            if (!settings.timer.id) { helpers.timer($this); }
-            $this.find("div#keypad").hide();
-
-            if (value==0)   {
-                settings.elt.text("");
-            }
-            else
-            if (value>0)    {
-                settings.elt.text(value);
-                if (settings.elt.hasClass("fill")) {
-                    settings.finish = helpers.check($this);
-                    if (settings.finish) {
-                        clearTimeout(settings.timer.id);
-                        settings.score = helpers.score(settings.level, settings.timer.value);
-                        setTimeout(function() { helpers.end($this); }, 1000);
-                    }
-                }
-                else
-                {
-                    settings.elt.closest('.cell').addClass("h");
-                }
-            }
-            settings.elt = 0;
         }
     };
 
@@ -203,22 +278,21 @@
             init: function(options) {
                 // The SUDOKU initial settings
                 var settings = {
-                    elt         : 0,
-                    elthover    : 0,
+                    interactive : false,
                     fillmode    : true,     // false in the hint mode
-                    complete    : false,    // the game is finished
                     timer: {                // the general timer
                         id      : 0,        // the timer id
                         value   : 0         // the timer value
                     },
-                    keypad      : 0
+                    keypad      : 0,
+                    key         : -1,
+                    $keys       : []
                 };
 
                 // Check the context and send the load
                 return this.each(function() {
                     var $this = $(this);
-                    $(document).unbind("keypress");
-                    $(document).keypress(function(_e) { helpers.key($this, String.fromCharCode(_e.which)); });
+                    helpers.unbind($this);
 
                     var $settings = $.extend({}, defaults, options, settings);
                     var checkContext = helpers.checkContext($settings);
@@ -232,47 +306,6 @@
                         helpers.loader.css($this);
                     }
                 });
-            },
-            // Handle the click event
-            click:function(elt, event, data) {
-                var $this = $(this) , settings = helpers.settings($this), $keypad = $this.find("#keypad");
-                if (data) { helpers.highlight($this, data.posX, data.posY); }
-
-                var vEvent = (event && event.originalEvent && event.originalEvent.touches &&
-                              event.originalEvent.touches.length)? event.originalEvent.touches[0]:event;
-
-                if (settings.keypad) { clearTimeout(settings.keypad); settings.keypad=0; }
-                if (!settings.finish) {
-
-                    var mode = $this.find("#grid").hasClass("f");
-                    if (mode && !elt.hasClass("fill")) {
-                        elt.closest('.hint').hide().prev().text(elt.text()).show();
-                        elt.closest('.cell').removeClass("h");
-                        settings.finish = helpers.check($this);
-                        if (settings.finish) {
-                            clearTimeout(settings.timer.id);
-                            setTimeout(function() { helpers.end($this); }, 1000);
-                        }
-                    }
-                    else {
-                        settings.keypad = setTimeout(function() { $this.sudoku('key', -1); }, 2000);
-
-                        var vTop    = vEvent.clientY - $this.offset().top;
-                        var vLeft   = vEvent.clientX - $this.offset().left;
-                        var tmp     = $this.find("#bg1").height()/1.5;
-                        if (vTop<tmp)                   { vTop = tmp; }
-                        if (vLeft<tmp)                  { vLeft = tmp; }
-                        if (vTop+tmp>$this.height())    { vTop=$this.height()-tmp; }
-                        if (vLeft+tmp>$this.width())    { vLeft=$this.width()-tmp; }
-                        $keypad.css("top", vTop+"px").css("left", vLeft+"px").show();
-
-                        settings.elt = elt;
-                    }
-                }
-            },
-            // Forward the click event from the popup keypad
-            key:function(value) {
-                helpers.key($(this), value);
             },
             // Pause the game, hide the grid and display the help
             pause: function() {
@@ -289,7 +322,7 @@
             // Toggle the game mode
             toggle: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                if (!settings.finish) {
+                if (settings.interactive) {
                     var mode = $this.find("#grid").hasClass("f");
                     if (!mode) {
                         $this.find("#grid").addClass("f");
@@ -313,12 +346,13 @@
                 var $this = $(this) , settings = helpers.settings($this);
                 $(this).find("#splash").hide();
                 $(this).find("#grid9x9").show();
-                if (settings.timer.value) {helpers.timer($this);}
+                settings.interactive = true;
+                helpers.timer($this);
             },
             // Abort the game from the confirmation panel
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                settings.finish = true;
+                settings.interactive = false;
                 if (settings.timer.id) { clearTimeout(settings.timer.id); settings.timer.id=0; }
                 settings.context.onquit($this,{'status':'abort'});
             }

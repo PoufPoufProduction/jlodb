@@ -4,25 +4,25 @@
 
 
     <rdf:Description>
-        <dct:identifier>10a</dct:identifier>
+        <dct:identifier>100</dct:identifier>
         <dct:title xml:lang="fr-FR">Soustraire, additionner et multiplier, sans contrainte de temps, des valeurs comprises entre 1 et 100.</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"gen":"function() { var ret=\\\"\\\"; var op=Math.random()*3; if (op<1) { var a=Math.floor(Math.random()*95)+6; ret=\\\"\\\"+a+\\\"-\\\"+(Math.floor(Math.random()*a)+1);} else if (op<2) { var a=Math.floor(Math.random()*99)+1; ret=\\\"\\\"+a+\\\"+\\\"+(Math.floor(Math.random()*(99-a))+1); } else { ret=\\\"\\\"+(Math.floor(Math.random()*10)+1)+\\\"*\\\"+(Math.floor(Math.random()*10)+1); } return ret;}","font":2]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>operation</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>10a</dct:alternative>
+        <dct:alternative>100</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>10b</dct:identifier>
+        <dct:identifier>100x</dct:identifier>
         <dct:title xml:lang="fr-FR">Soustraire, additionner et multiplier, en moins de 30 secondes, des valeurs comprises entre 1 et 100.</dct:title>
         <dct:description><![CDATA["time":1.5,"input":{"digit":2,"speed":1000},"gen":"function() { var ret=\\\"\\\"; var op=Math.random()*3; if (op<1) { var a=Math.floor(Math.random()*95)+6; ret=\\\"\\\"+a+\\\"-\\\"+(Math.floor(Math.random()*a)+1);} else if (op<2) { var a=Math.floor(Math.random()*99)+1; ret=\\\"\\\"+a+\\\"+\\\"+(Math.floor(Math.random()*(99-a))+1); } else { ret=\\\"\\\"+(Math.floor(Math.random()*10)+1)+\\\"*\\\"+(Math.floor(Math.random()*10)+1); } return ret;}","font":2]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>operation</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>4</dct:type>
-        <dct:alternative>10a</dct:alternative>
+        <dct:alternative>100</dct:alternative>
     </rdf:Description>
 
 </rdf:RDF>

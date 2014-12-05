@@ -27,7 +27,28 @@
                                               cursor: pointer;  background-image:url("mods/genius/res/img/banner01.svg");
                                               background-color:rgba(255,255,255,0.2); background-repeat:no-repeat;}
         #gsplash #cookies                   { font-size:1.5em; width:1em; height:1em; position:relative; top:2.2em; left:9em;}
-        #main #waiting                      { top:0.2em; left:0.6em; font-size:7em; }
+        #main>#waiting                      { top:0.2em; left:0.6em; font-size:7em; }
+
+        #main>#screen                      { position:absolute; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5);
+                                              display:none; z-index:3;}
+        #main>#screen>textarea             { font-size:.25em; width:61em; height:40em; margin:3.5em 1em; padding:.5em;
+                                             background-color:black; color:limegreen; overflow:auto;}
+        #main>#screen>div                   { position:absolute; top:0; left:0; font-size:1.2em; width:1em; height:1em; cursor:pointer; }
+
+        #main>#info                         { position:absolute; top:9.5em; left:2.5em; 
+                                              display:none; z-index:3; width:13.25em; height:2.25em; overflow:hide;}
+        #main>#info>div                     { float:left; height:2.25em; width:4.3em; background-color:rgba(60,45,15,0.8);}
+        #main>#info>#source                 {  border-radius:.25em 0 0 .25em; }
+        #main>#info>#current                 {  margin:0 .1em; }
+        #main>#info>#dest                 {  border-radius:0 .25em .25em 0; }
+        #main>#info .item                   { margin:.1em; font-size:.5em; color:#DDAA55; height:1.3em;
+                                              border:1px solid black; border-radius:.25em;}
+        #main>#info>#source .item          { border-color:#FF5555; }
+        #main>#info>#current .item         { border-color:#EEEE88; }
+        #main>#info>#dest .item            { border-color:#80EEEE; }
+        #main>#info .item>#id               { width:3em; text-align:right; padding-right:.2em;
+                                              font-family: "Courier New" Courier monospace; float:left; }
+        #main>#info .item>#legend           { font-size:.5em; width:9.5em; height:2.6em; padding-left:.2em; color:#EECC88;}
     </style>
     <script>
 
@@ -74,6 +95,7 @@ window.onload = function() {
             // DEBUG MODE
             var a = location.search.substring(1).split('&');
             $("body").toggleClass("debug",(a.length&& a[0]=="debug"));
+            if (a.length) { $("#genius").addClass(a[0]); }
 
             $("#genius #board").genius({
                 state: function($this, _id, _ex, _cbk) {
@@ -81,6 +103,65 @@ window.onload = function() {
                     if (genius.cookie) { if ($.cookie("node"+_id)) { state = $.cookie("node"+_id); } }
                     else               { for (var i=1; i<_ex.length; i++) { state+="."; } }
                     _cbk($this, _ex, state);
+                },
+                onhover: function($this, _id) {
+                    $("#info>#current").html("<div class='item'><div id='id'>"+_id+"</div><div id='legend'></div></div>");
+                    $.getJSON("mods/genius/api/node.php?id="+_id, function(_data) {
+                        $("#info>#current #legend").html(_data.name);
+                    });
+                    var $c = $this.genius("svg","#"+_id);
+                    var cClass = $c.attr("class");
+                    $c.attr("class",cClass+" current");
+
+                    $this.genius("svg",".s"+_id).each(function() {
+                        var sClass = $(this).attr("class");
+                        $(this).attr("class", sClass + " dest");
+
+                        var d = sClass.match("link s[0-9]+ d([0-9]+) ");
+                        var $elt = $this.genius("svg","#"+d[1]);
+                        var eltClass = $elt.attr("class");
+                        $elt.attr("class",eltClass+" dest");
+
+                        $("#info>#dest").append("<div id='i"+d[1]+"' class='item'><div id='id'>"+d[1]+"</div><div id='legend'></div></div>");
+
+                         $.getJSON("mods/genius/api/node.php?id="+d[1], function(_data) {
+                            $("#info>#dest #i"+_data.id+" #legend").html(_data.name);
+                        });
+                    });
+
+                    $this.genius("svg",".d"+_id).each(function() {
+                        var dClass = $(this).attr("class") + " source";
+                        $(this).attr("class", dClass);
+
+                        var s = dClass.match("link s([0-9]+) d[0-9]+ ");
+                        var $elt = $this.genius("svg","#"+s[1]);
+                        var eltClass = $elt.attr("class");
+                        $elt.attr("class",eltClass+" source");
+
+                        $("#info>#source").append("<div id='i"+s[1]+"' class='item'><div id='id'>"+s[1]+"</div><div id='legend'></div></div>");
+
+                         $.getJSON("mods/genius/api/node.php?id="+s[1], function(_data) {
+                            $("#info>#source #i"+_data.id+" #legend").html(_data.name);
+                        });
+                    });
+
+                    $("#info").show();
+                },
+                onendhover:function($this) {
+                    $("#info>div").html("");
+                    $this.genius("svg",".current").each(function() {
+                        var sClass = $(this).attr("class");
+                        $(this).attr("class",sClass.substr(0, sClass.length-8));
+                    });
+                    $this.genius("svg",".dest").each(function() {
+                        var sClass = $(this).attr("class");
+                        $(this).attr("class",sClass.substr(0, sClass.length-5));
+                    });
+                    $this.genius("svg",".source").each(function() {
+                        var sClass = $(this).attr("class");
+                        $(this).attr("class",sClass.substr(0, sClass.length-6));
+                    });
+                    $("#info").hide();
                 },
                 onnode: function($this, _id, _available) {
                     if (_available) { $("#waiting").show().find("div").addClass("running"); } return true; },
@@ -107,23 +188,18 @@ window.onload = function() {
                 onheader: function($this, _id) {
                      $.getJSON("mods/genius/api/node.php?id="+_id+"&verbose=1", function(_data) {
                         var c="\t";
+                        var list = "";
                         var csv = " "+c+"id"+c+"title"+c+"level"+c+"difficulty\n";
                         for (var i in _data.detail) {
+                            list+=(list.length?",":"")+_data.detail[i].id;
                             csv+=(parseInt(i)+1)+c+_data.detail[i].id+c+_data.detail[i].title;
                             csv+=c+(_data.detail[i].level?_data.detail[i].level:"0");
                             csv+=c+(_data.detail[i].difficulty?_data.detail[i].difficulty:"0");
                             csv+="\n";
                         }
 
-                        alert(csv);
-                        /*
-                        var a = document.createElement('a');
-                        a.setAttribute("href", "data:text/csv;charset=utf-8,"+encodeURI(csv));
-                        a.setAttribute("target",'_blank');
-                        a.setAttribute("download", 'node'+_id+'.csv') ;
-                        document.body.appendChild(a);
-                        a.click();
-                        */
+                        $("#main #screen").show();
+                        $("#main #screen textarea").val(list+"\n\n"+csv);
                     });
                 },
                 onstate: function($this, _nodes) {
@@ -163,6 +239,17 @@ window.onload = function() {
             </div></div>
         </div>
 
+        <div id="screen">
+            <textarea></textarea>
+            <div id="quit" ontouchstart="$('#main #screen').hide();event.preventDefault();"
+                           onclick="$('#main #screen').hide();"><img src="res/img/icon/quit.svg"/></div>
+        </div>
+
+        <div id="info">
+            <div id="source"></div>
+            <div id="current"></div>
+            <div id="dest"></div>
+        </div>
 
         <div id="launcher">
             <div id="quit" ontouchstart="genius.activity='';$('#launcher').jlodb('quit');event.preventDefault();"

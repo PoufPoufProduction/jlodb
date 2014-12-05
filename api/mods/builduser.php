@@ -17,19 +17,25 @@ if (!$error) {
                             '`User_FirstName`           VARCHAR( 128) , '.
                             '`User_LastName`            VARCHAR( 128) , '.
                             '`User_eMail`               VARCHAR( 128) , '.
+                            '`User_Stars`               INT DEFAULT 0 , '.
+                            '`User_Theme`               VARCHAR( 128) , '.
                             '`User_Date`                DATETIME DEFAULT NULL, '.
                             'PRIMARY KEY (  `User_Id` ) )', $link);
         }
 
+        // UPDATE COLUMN WITHOUT DELETING TABLE
         if (mysql_query("SELECT * FROM `".$_SESSION['prefix']."user`")) {
             // GET THE COLUMN NAMES
             $userStars = false;
+            $userTheme = false;
             $columns = mysql_query('SHOW COLUMNS FROM `'.$_SESSION['prefix'].'user`');
             while($row = mysql_fetch_array($columns)) {
                 if ($row[0]=="User_Stars") { $userStars = true; }
+                if ($row[0]=="User_Theme") { $userTheme = true; }
             }
             // ADD COLUMNS
             if (!$userStars) { mysql_query('ALTER TABLE `'.$_SESSION['prefix'].'user` ADD `User_Stars` INT DEFAULT 0 AFTER `User_eMail`'); }
+            if (!$userTheme) { mysql_query('ALTER TABLE `'.$_SESSION['prefix'].'user` ADD `User_Theme` VARCHAR( 128) AFTER `User_Stars`'); }
         }
         else {
             $textstatus = "can not create `".$_SESSION['prefix']."user` table";

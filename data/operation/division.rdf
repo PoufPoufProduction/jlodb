@@ -3,26 +3,58 @@
          xmlns:dct="http://purl.org/dc/terms/">
 
     <rdf:Description>
-        <dct:identifier>a102</dct:identifier>
-        <dct:title xml:lang="fr-FR">Effectuer la division entière de reste nul</dct:title>
-        <dct:description><![CDATA["time":0,"gen":"function() { var l =Math.floor(11+Math.random()*88); return \\\"\\\"+(l*Math.floor(11+Math.random()*88))+\\\"/\\\"+l; }"]]></dct:description>
+        <dct:identifier>050</dct:identifier>
+        <dct:title xml:lang="fr-FR">Effectuer la division entière de reste nul dont les diviseurs sont inférieurs à 50.</dct:title>
+        <dct:description><![CDATA["time":0,"gen":"function() { var l =Math.floor(11+Math.random()*38); return \\\"\\\"+(l*Math.floor(11+Math.random()*38))+\\\"/\\\"+l; }"]]></dct:description>
         <dct:extent>4</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>4</dct:educationLevel>
-        <dct:type>4</dct:type>
-        <dct:alternative>a102</dct:alternative>
+        <dct:type>3</dct:type>
+        <dct:alternative>100</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>b102</dct:identifier>
-        <dct:title xml:lang="fr-FR">Effectuer la division entière de reste non nul</dct:title>
-        <dct:description><![CDATA["time":20,"gen":"function() { var l =Math.floor(11+Math.random()*88), m = Math.floor(1+Math.random()*(l-1)); return \\\"\\\"+(m+l*Math.floor(11+Math.random()*88))+\\\"/\\\"+l; }"]]></dct:description>
+        <dct:identifier>0100</dct:identifier>
+        <dct:title xml:lang="fr-FR">Effectuer la division entière de reste nul dont les diviseurs sont inférieurs à 100.</dct:title>
+        <dct:description><![CDATA["time":0,"gen":"function() { var l =Math.floor(11+Math.random()*88); return \\\"\\\"+(l*Math.floor(11+Math.random()*88))+\\\"/\\\"+l; }","number":3]]></dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>4</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>100</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>50</dct:identifier>
+        <dct:title xml:lang="fr-FR">Effectuer la division entière de reste non nul dont les diviseurs sont inférieurs à 50.</dct:title>
+        <dct:description><![CDATA["time":20,"gen":"function() { var l =Math.floor(11+Math.random()*38), m = Math.floor(1+Math.random()*(l-1)); return \\\"\\\"+(m+l*Math.floor(11+Math.random()*38))+\\\"/\\\"+l; }"]]></dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>4</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>100</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>100</dct:identifier>
+        <dct:title xml:lang="fr-FR">Effectuer la division entière de reste non nul dont les diviseurs sont inférieurs à 100.</dct:title>
+        <dct:description><![CDATA["time":20,"gen":"function() { var l =Math.floor(11+Math.random()*88), m = Math.floor(1+Math.random()*(l-1)); return \\\"\\\"+(m+l*Math.floor(11+Math.random()*88))+\\\"/\\\"+l; }","number":3]]></dct:description>
         <dct:extent>4</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>4</dct:educationLevel>
         <dct:type>4</dct:type>
-        <dct:alternative>a102</dct:alternative>
+        <dct:alternative>100</dct:alternative>
     </rdf:Description>
 
+    <rdf:Description>
+        <dct:identifier>500</dct:identifier>
+        <dct:title xml:lang="fr-FR">Effectuer la division entière de reste non nul dont les diviseurs sont inférieurs à 500.</dct:title>
+        <dct:description><![CDATA["time":20,"gen":"function() { var l =Math.floor(11+Math.random()*488), m = Math.floor(1+Math.random()*(l-1)); return \\\"\\\"+(m+l*Math.floor(11+Math.random()*488))+\\\"/\\\"+l; }","number":3]]></dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>4</dct:educationLevel>
+        <dct:type>5</dct:type>
+        <dct:alternative>100</dct:alternative>
+    </rdf:Description>
 </rdf:RDF>
 

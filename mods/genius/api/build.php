@@ -17,8 +17,8 @@ if (!$error) {
         mysql_query('DROP TABLE '.$_SESSION['prefix'].'node');
 
         if (mysql_query('CREATE TABLE `'.$_SESSION['prefix'].'node` (`Node_Id` INT NOT NULL, '.
-                       '`Node_Title` char(255) NOT NULL, `Node_Description` TEXT NOT NULL, `Node_Level` INT, '.
-                       '`Node_Exercices` TEXT NOT NULL, '.
+                       '`Node_Title` char(255) NOT NULL, `Node_Description` TEXT NOT NULL, `Node_Subject` TEXT NOT NULL, '.
+                       '`Node_Level` INT, `Node_Exercices` TEXT NOT NULL, '.
                        'PRIMARY KEY (`Node_Id`))', $link)  ) {
 
             $error = 0;
@@ -41,6 +41,7 @@ if (!$error) {
                             $nodeTitle          = "";
                             $nodeDescription    = "";
                             $nodeExercices      = "";
+                            $nodeSubject        = "";
                             $nodeLevel          = 0;
                             $levelId            = 0;
                             if (strcmp($childName,"rdf_Description")==0) {
@@ -50,16 +51,19 @@ if (!$error) {
                                     if (strcmp($dcName,"dct_educationLevel")==0)     { $nodeLevel=$dc; }        else
                                     if (strcmp($dc->attributes()->xml_lang, $_SESSION['lang'])==0) {
                                         if (strcmp($dcName,"dct_title")==0)         { $nodeTitle=$dc; }         else
-                                        if (strcmp($dcName,"dct_abstract")==0)      { $nodeDescription=$dc; }
+                                        if (strcmp($dcName,"dct_abstract")==0)      { $nodeDescription=$dc; }else
+                                        if (strcmp($dcName,"dct_subject")==0)       { $nodeSubject=$dc; }
                                     }
                                 }
 
                                 $nodeDescription = str_replace("'", "\'", $nodeDescription);
                                 $nodeTitle = str_replace("'", "\'", $nodeTitle);
+                                $nodeSubject = str_replace("'", "\'", $nodeSubject);
 
                                 $sql = "INSERT INTO `".$_SESSION['prefix']."node` (`Node_Id`, `Node_Title`, `Node_Description`, ".
-                                    "`Node_Exercices`, `Node_Level` ) VALUES (".
-                                    $nodeId.",'".$nodeTitle."','".$nodeDescription."','".$nodeExercices."','".$nodeLevel."')";
+                                    "`Node_Subject`, `Node_Exercices`, `Node_Level` ) VALUES (".
+                                    $nodeId.",'".$nodeTitle."','".$nodeDescription."','".$nodeSubject."','".$nodeExercices."','".
+                                    $nodeLevel."')";
                                 mysql_query($sql , $link);
 
                             }

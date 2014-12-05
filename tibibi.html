@@ -39,7 +39,7 @@
         #content.s #tedit           { display:inherit; }
         #tlist                      { float:left; background-color:#555; width:6em; height:100%; font-size:.5em;}
         #tlist #telts               { width:100%; height:25.8em; font-size:.8em; overflow:auto;}
-        #tlist #telts .elt          { height:1.4em; margin-top:.1em; cursor:pointer; }
+        #tlist #telts .elt          { width:6.5em; height:1.4em; margin-top:.1em; cursor:pointer; }
         #tlist #telts .l            { clear:both; float:left; background-color:#447; border-radius:.5em 0 0 .5em; width:1em;
                                       text-align:center; color:white; margin-left:.1em; }
         #tlist #telts .v            { float:left; background-color:#222; color:white; width:5em; padding-left:.2em;
@@ -69,6 +69,20 @@
         #jbrowser #jresults         { height: 15.7em; }
         #jbrowser.reduce #jresults  { height: 25.5em; }
         #tmenu .menu                { font-size:1.3em !important; }
+
+        #main>#screen                      { position:absolute; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5);
+                                              display:none; z-index:3; color:limegreen; }
+        #main>#screen>div#quit      { position:absolute; top:0; left:0; font-size:1.2em; width:1em; height:1em; cursor:pointer; }
+        #main>#screen>div#list    { font-size:.25em; width:61em; height:41em; margin:4em 1em; padding:.5em; background-color:black;
+                                              overflow:auto; }
+        #main>#screen #list .drop   { width:100%; height:2.4em; margin:.25em; background-color:rgba(200,220,255,0.1); overflow:visible;}
+        #main>#screen #list .drag   { height:2.4em; }
+        #main>#screen #list .drag>div   { float:left; background-color:rgba(0,20,10,0.9); }
+        #main>#screen #list .drag #exid { font-size:2em; height:1.2em; width:4em; color:yellowgreen;}
+        #main>#screen #list .drag #extitle { width:46em; height:2.4em; }
+        #main>#screen #list .drag #exlevel { font-size:2em; height:1.2em; width:1em;}
+        #main>#screen #list .drag #exdiff { font-size:2em; height:1.2em; width:1em;}
+
     </style>
     <script>
 
@@ -257,7 +271,7 @@ var tibibi = {
                 if ($("#popup1 input").val().length) {
                     tibibi.getJSON("mods/tibibi/api/course.php",{action:"new",value:$("#popup1 input").val()}, "", function(_data){
                         tibibi.course.list(_data.value);
-                        tibibi.course.load($("#popup1 input").val(),false);
+                        tibibi.course.load($("#popup1 input").val(),false,true);
                     });
                 }
             }
@@ -265,30 +279,38 @@ var tibibi = {
         },
         update: function() {
             tibibi.getJSON("mods/tibibi/api/course.php",{action:"upd",course:$("#gcourses").val(), description:tibibi.course.ex}, "", function(_data){
-                tibibi.course.load($("#gcourses").val(),true);
+                tibibi.course.load($("#gcourses").val(),true,false);
             });
         },
         select: function(_id) {
-            $(".elt").removeClass("s");
             if (_id!=-1) {
-                $($(".elt").get(_id)).addClass("s");
-                $("#teltact").addClass("s");
+                if ($($(".elt").get(_id)).hasClass("s")) {
+                    $(".elt").removeClass("s");
+                    $("#teltact").removeClass("s");
+                    _id = -1;
+                }
+                else {
+                    $(".elt").removeClass("s");
+                    $($(".elt").get(_id)).addClass("s");
+                    $("#teltact").addClass("s");
+                }
             }
             else {
+                $(".elt").removeClass("s");
                 $("#teltact").removeClass("s");
             }
             tibibi.course.selected=_id;
         },
-        load: function(_value, _select) {
+        load: function(_value, _select, _menu) {
             if (_value) {
                 tibibi.getJSON("mods/tibibi/api/course.php",{value:_value}, "", function(_data){
                     var ex=[];
                     if (_data.description && _data.description.length) { ex = _data.description.split(","); }
-                    tibibi.menu.build();
+                    if (_menu) { tibibi.menu.build(); }
                     $("#telts").html("");
                     for (var e in ex) {
                         $("#telts").append(
-                            "<div class='elt' onclick='tibibi.course.select("+e+")'>"+
+                            "<div class='elt' id='"+e+"' onclick='tibibi.course.select("+e+")'>"+
                             "<div class='l'>"+(parseInt(e)+1)+"</div>"+
                             "<div class='v'>"+ex[e]+"</div></div>");
                     }
@@ -308,7 +330,7 @@ var tibibi = {
             if (tibibi.course.timer) {
                 clearTimeout(tibibi.course.timer); tibibi.course.timer = 0; $("#gdc").removeClass("s");
                 tibibi.getJSON("mods/tibibi/api/course.php",{action:"del",value:$("#gcourses").val()}, "", function(_data){
-                    tibibi.course.list(); tibibi.course.load("",false);
+                    tibibi.course.list(); tibibi.course.load("",false,false);
                 });
             }
             else {
@@ -359,22 +381,43 @@ var tibibi = {
                 $("#popup2").hide();
             }
         },
+        updover: function() {
+            var html="";
+            tibibi.course.ex=[];
+            $("#main #screen #list .drop").each(function(){ if (!$(this).html().length) { $(this).detach(); }});
+            $("#main #screen #list #exid").each(function(_index){
+                if (_index) { html+=","; } html+=$(this).text(); tibibi.course.ex.push($(this).text()); });
+            tibibi.course.update();
+        },
+        droppable: function($elt) {
+            $elt.droppable({accept:".drag",
+                        drop:function(event, ui) {
+                            var $d = $("<div class='drop'></div>");
+                            $d.insertBefore(this);
+                            $(ui.draggable).detach().css("top",0).appendTo($d);
+                            tibibi.course.droppable($d);
+                            tibibi.course.updover();
+                    } });
+        },
         overview: function() {
             var html="";
             for (var i in tibibi.course.ex) { if (html) { html+=","; } html+=tibibi.course.ex[i]; }
              $.getJSON("mods/tibibi/api/exercice.php?value="+html, function(data2) {
-                var c="\t";
-                var csv = " "+c+"id"+c+"titre"+c+"niveau"+c+"difficulté\n";
+                $("#main #screen #list").html("");
                 for (var i in data2.exercices) {
-                    csv+=(parseInt(i)+1)+c+data2.exercices[i].id+c+data2.exercices[i].title;
-                    csv+=c+(data2.exercices[i].level?data2.exercices[i].level:"0");
-                    csv+=c+(data2.exercices[i].difficulty?data2.exercices[i].difficulty:"0");
-                    csv+="\n";
+                    var $drop = $("<div class='drop'></div>");
+                    var $drag = $("<div class='drag'></div>");
+                    $drag.append("<div id='exid'>"+data2.exercices[i].id+"</div>");
+                    $drag.append("<div id='extitle'>"+data2.exercices[i].title+"</div>");
+                    $drag.append("<div id='exlevel'>"+data2.exercices[i].level+"</div>");
+                    $drag.append("<div id='exdiff'>"+data2.exercices[i].difficulty+"</div>");
+                    $drop.append($drag);
+                    $drag.draggable({ containment:$("#screen #list"), appendTo:$("#screen #list"), axis:"y", revert:"invalid", stack:".drag"});
+                    tibibi.course.droppable($drop);
+                    $("#main #screen #list").append($drop);
                 }
-                var w=window.open();
-                w.document.open();
-                w.document.write("<pre>"+csv+"</pre>");
-                w.document.close();
+                tibibi.course.updover();
+                $("#main #screen").show();
             });
         }
     },
@@ -382,6 +425,7 @@ var tibibi = {
         if ($("#gde").hasClass("s")) {
             $("#gde").removeClass("s");
             $("#content").removeClass("s");
+            tibibi.menu.build();
         }
         else {
             if ($("#gcourses").val()) {
@@ -420,7 +464,16 @@ window.onload = function() {
                 tibibi.classification = $(data);
                 $("#tbrowser").browser({lang:tibibi.settings.lang, classification:tibibi.classification, context:{
                     Test:function(_id){ tibibi.run({id:_id}); },
-                    Insert:function(_id){ $("#tbrowser").find("#jpopup").hide();tibibi.course.ex.push(_id);tibibi.course.update(); } }
+                    Insert:function(_id){
+                        $("#tbrowser").find("#jpopup").hide();
+                        if ($("#telts .elt.s").length) {
+                            tibibi.course.ex.splice($("#telts .elt.s").attr("id"),0,_id);
+                        }
+                        else {
+                            tibibi.course.ex.push(_id);
+                        }
+                        tibibi.course.update();
+                    } }
                 });
             });
 
@@ -462,7 +515,7 @@ window.onload = function() {
 
             <div class="icon l" onclick="tibibi.course.open();" ontouchstart="tibibi.course.open();event.preventDefault();">
                 <img src="mods/tibibi/res/img/courses.svg"/></div>
-            <select id="gcourses" onchange="tibibi.course.load($(this).val(),false);"></select>
+            <select id="gcourses" onchange="tibibi.course.load($(this).val(),false,true);"></select>
             <div class="icon e" onclick="tibibi.course.edit();" ontouchstart="tibibi.course.edit();event.preventDefault();">
                 <img src="mods/tibibi/res/img/edit.svg"/></div>
             <div id="gdc" class="icon d" onclick="tibibi.course.remove();" 
@@ -512,6 +565,12 @@ window.onload = function() {
                     onclick="$('#launcher').jlodb('close',false);$('#tmenu').menu('next');"><img src="res/img/icon/next.svg"/></div>
             </div>
         </div></div>
+
+        <div id="screen">
+            <div id="list"></div>
+            <div id="quit" ontouchstart="$('#main #screen').hide();event.preventDefault();"
+                           onclick="$('#main #screen').hide();"><img src="res/img/icon/quit.svg"/></div>
+        </div>
  
         <div id="launcher">
             <div id="quit" ontouchstart="$('#launcher').jlodb('quit');event.preventDefault();"

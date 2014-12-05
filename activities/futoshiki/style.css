@@ -37,11 +37,13 @@
 .futoshiki div#board .hint div          { width:1em; height:1em; background-color:none; border-radius:.3em; }
 .futoshiki div#board .hint div.s        { background-color:rgba(53,34,34,0.2); }
 
-.futoshiki #keypad                     { position:absolute; overflow:visible; display:none; font-weight:bold; }
-.futoshiki #keypad div.k                 { width:1em; height:1em; overflow:hidden; text-align:center;
-                                         background-image:url("../../res/img/icon/round.svg");
-                                         background-size:100%; color:#115588; background-position:0 0; cursor:pointer;
-                                         position:absolute; display:none; }
+
+.futoshiki #keypad                 { position:absolute; overflow:visible; display:none; font-weight:bold; }
+.futoshiki #keypad div.k           { width:1em; height:1em; overflow:hidden; text-align:center;
+                                  background-image:url("../../res/img/icon/round.svg"); border-radius:0.5em;
+                                  background-size:100%; color:rgb(17,95,130); background-position:0 0; cursor:pointer;
+                                  position:absolute; display:none; background-color:rgba(200,235,235,0.8);}
+.futoshiki #keypad div.k.s         { background-color:rgba(17,95,130,0.8); color:rgb(200,235,235); }
 .futoshiki #keypad #bg1                 { background-image:url("../../res/img/icon/round2.svg");
                                          font-size:3em; position:absolute; width:1em; height:1em;
                                          top:-0.5em; left:-0.5em; font-size:2.4em; }
@@ -49,6 +51,3 @@
 .futoshiki div#menu .bg                   { font-size:3em; width:1em; border-radius:.3em; margin:.05em .1em; padding:.05em; opacity:0.6; }
 .futoshiki div#menu .bg.s                 { background-color:black; opacity:1; }
 .futoshiki div#menu .icon                 { background-color:white; border-radius:.25em; cursor:pointer; }
-
-
-

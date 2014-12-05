@@ -2,6 +2,74 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dct="http://purl.org/dc/terms/">
 
+    <!-- Writing: A+[0-9] -->
+
+    <rdf:Description>
+        <dct:identifier>w19x</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, en moins de 20 secondes, les nombres de 1 à 9</dct:title>
+        <dct:description><![CDATA["time":1,"input":{"digit":1,"speed":0},"class":"alpha h14","values":[["un",1],["deux",2],["trois",3],["quatre",4],["cinq",5],["six",6],["sept",7],["huit",8],["neuf",9]]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>w09999x</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>w120x</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, en moins de 20 secondes, les nombres de 1 à 20</dct:title>
+        <dct:description><![CDATA["time":1,"input":{"digit":2,"speed":1000},"class":"alpha h14","values":[["un",1],["deux",2],["trois",3],["quatre",4],["cinq",5],["six",6],["sept",7],["huit",8],["neuf",9],["dix",10],["onze",11],["douze",12],["treize",13],["quatorze",14],["quinze",15],["seize",16],["dix-sept",17],["dix-huit",18],["dix-neuf",19],["vingt",20]]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>w09999x</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>w050x</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, en moins de 25 secondes, les nombres de 0 à 50</dct:title>
+        <dct:description><![CDATA["time":1.25,"input":{"digit":2,"speed":1000},"class":"alpha h14","gen":"function(){var values=[\\\"zéro\\\",\\\"un\\\",\\\"deux\\\",\\\"trois\\\",\\\"quatre\\\",\\\"cinq\\\",\\\"six\\\",\\\"sept\\\",\\\"huit\\\",\\\"neuf\\\",\\\"dix\\\",\\\"onze\\\",\\\"douze\\\",\\\"treize\\\",\\\"quatorze\\\",\\\"quinze\\\",\\\"seize\\\",\\\"dix-sept\\\",\\\"dix-huit\\\",\\\"dix-neuf\\\",\\\"vingt\\\",\\\"vingt et un\\\",\\\"vingt-deux\\\",\\\"vingt-trois\\\",\\\"vingt-quatre\\\",\\\"vingt-cinq\\\",\\\"vingt-six\\\",\\\"vingt-sept\\\",\\\"vingt-huit\\\",\\\"vingt-neuf\\\",\\\"trente\\\",\\\"trente et un\\\",\\\"trente-deux\\\",\\\"trente-trois\\\",\\\"trente-quatre\\\",\\\"trente-cinq\\\",\\\"trente-six\\\",\\\"trente-sept\\\",\\\"trente-huit\\\",\\\"trente-neuf\\\",\\\"quarante\\\",\\\"quarante et un\\\",\\\"quarante-deux\\\",\\\"quarante-trois\\\",\\\"quarante-quatre\\\",\\\"quarante-cinq\\\",\\\"quarante-six\\\",\\\"quarante-sept\\\",\\\"quarante-huit\\\",\\\"quarante-neuf\\\",\\\"cinquante\\\"], a = Math.floor(Math.random()*50); return [values[a],a]; }"]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>w09999x</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>w0100x</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, en moins de 30 secondes, les nombres de 0 à 100</dct:title>
+        <dct:description><![CDATA["time":1.5,"input":{"digit":2,"speed":1000},"class":"alpha h14","gen":"function(){var values=[\\\"zéro\\\",\\\"un\\\",\\\"deux\\\",\\\"trois\\\",\\\"quatre\\\",\\\"cinq\\\",\\\"six\\\",\\\"sept\\\",\\\"huit\\\",\\\"neuf\\\",\\\"dix\\\",\\\"onze\\\",\\\"douze\\\",\\\"treize\\\",\\\"quatorze\\\",\\\"quinze\\\",\\\"seize\\\",\\\"dix-sept\\\",\\\"dix-huit\\\",\\\"dix-neuf\\\",\\\"vingt\\\",\\\"vingt et un\\\",\\\"vingt-deux\\\",\\\"vingt-trois\\\",\\\"vingt-quatre\\\",\\\"vingt-cinq\\\",\\\"vingt-six\\\",\\\"vingt-sept\\\",\\\"vingt-huit\\\",\\\"vingt-neuf\\\",\\\"trente\\\",\\\"trente et un\\\",\\\"trente-deux\\\",\\\"trente-trois\\\",\\\"trente-quatre\\\",\\\"trente-cinq\\\",\\\"trente-six\\\",\\\"trente-sept\\\",\\\"trente-huit\\\",\\\"trente-neuf\\\",\\\"quarante\\\",\\\"quarante et un\\\",\\\"quarante-deux\\\",\\\"quarante-trois\\\",\\\"quarante-quatre\\\",\\\"quarante-cinq\\\",\\\"quarante-six\\\",\\\"quarante-sept\\\",\\\"quarante-huit\\\",\\\"quarante-neuf\\\",\\\"cinquante\\\",\\\"cinquante et un\\\",\\\"cinquante-deux\\\",\\\"cinquante-trois\\\",\\\"cinquante-quatre\\\",\\\"cinquante-cinq\\\",\\\"cinquante-six\\\",\\\"cinquante-sept\\\",\\\"cinquante-huit\\\",\\\"cinquante-neuf\\\",\\\"soixante\\\",\\\"soixante et un\\\",\\\"soixante-deux\\\",\\\"soixante-trois\\\",\\\"soixante-quatre\\\",\\\"soixante-cinq\\\",\\\"soixante-six\\\",\\\"soixante-sept\\\",\\\"soixante-huit\\\",\\\"soixante-neuf\\\",\\\"soixante-dix\\\",\\\"soixante et onze\\\",\\\"soixante-douze\\\",\\\"soixante-treize\\\",\\\"soixante-quatorze\\\",\\\"soixante-quinze\\\",\\\"soixante-seize\\\",\\\"soixante-dix-sept\\\",\\\"soixante-dix-huit\\\",\\\"soixante-dix-neuf\\\",\\\"quatre-vingts\\\",\\\"quatre-vingt-un\\\",\\\"quatre-vingt-deux\\\",\\\"quatre-vingt-trois\\\",\\\"quatre-vingt-quatre\\\",\\\"quatre-vingt-cinq\\\",\\\"quatre-vingt-six\\\",\\\"quatre-vingt-sept\\\",\\\"quatre-vingt-huit\\\",\\\"quatre-vingt-neuf\\\",\\\"quatre-vingt-dix\\\",\\\"quatre-vingt-onze\\\",\\\"quatre-vingt-douze\\\",\\\"quatre-vingt-treize\\\",\\\"quatre-vingt-quatorze\\\",\\\"quatre-vingt-quinze\\\",\\\"quatre-vingt-seize\\\",\\\"quatre-vingt-dix-sept\\\",\\\"quatre-vingt-dix-huit\\\",\\\"quatre-vingt-dix-neuf\\\"], a = Math.floor(Math.random()*100); return [values[a],a]; }"]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>w09999x</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>w0999x</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, en moins d'une minute, les nombres de 0 à 999</dct:title>
+        <dct:description><![CDATA["time":3,"input":{"digit":3,"speed":1500},"class":"alpha h14","gen":"function(){var values=[\\\"zéro\\\",\\\"un\\\",\\\"deux\\\",\\\"trois\\\",\\\"quatre\\\",\\\"cinq\\\",\\\"six\\\",\\\"sept\\\",\\\"huit\\\",\\\"neuf\\\",\\\"dix\\\",\\\"onze\\\",\\\"douze\\\",\\\"treize\\\",\\\"quatorze\\\",\\\"quinze\\\",\\\"seize\\\",\\\"dix-sept\\\",\\\"dix-huit\\\",\\\"dix-neuf\\\",\\\"vingt\\\",\\\"vingt et un\\\",\\\"vingt-deux\\\",\\\"vingt-trois\\\",\\\"vingt-quatre\\\",\\\"vingt-cinq\\\",\\\"vingt-six\\\",\\\"vingt-sept\\\",\\\"vingt-huit\\\",\\\"vingt-neuf\\\",\\\"trente\\\",\\\"trente et un\\\",\\\"trente-deux\\\",\\\"trente-trois\\\",\\\"trente-quatre\\\",\\\"trente-cinq\\\",\\\"trente-six\\\",\\\"trente-sept\\\",\\\"trente-huit\\\",\\\"trente-neuf\\\",\\\"quarante\\\",\\\"quarante et un\\\",\\\"quarante-deux\\\",\\\"quarante-trois\\\",\\\"quarante-quatre\\\",\\\"quarante-cinq\\\",\\\"quarante-six\\\",\\\"quarante-sept\\\",\\\"quarante-huit\\\",\\\"quarante-neuf\\\",\\\"cinquante\\\",\\\"cinquante et un\\\",\\\"cinquante-deux\\\",\\\"cinquante-trois\\\",\\\"cinquante-quatre\\\",\\\"cinquante-cinq\\\",\\\"cinquante-six\\\",\\\"cinquante-sept\\\",\\\"cinquante-huit\\\",\\\"cinquante-neuf\\\",\\\"soixante\\\",\\\"soixante et un\\\",\\\"soixante-deux\\\",\\\"soixante-trois\\\",\\\"soixante-quatre\\\",\\\"soixante-cinq\\\",\\\"soixante-six\\\",\\\"soixante-sept\\\",\\\"soixante-huit\\\",\\\"soixante-neuf\\\",\\\"soixante-dix\\\",\\\"soixante et onze\\\",\\\"soixante-douze\\\",\\\"soixante-treize\\\",\\\"soixante-quatorze\\\",\\\"soixante-quinze\\\",\\\"soixante-seize\\\",\\\"soixante-dix-sept\\\",\\\"soixante-dix-huit\\\",\\\"soixante-dix-neuf\\\",\\\"quatre-vingts\\\",\\\"quatre-vingt-un\\\",\\\"quatre-vingt-deux\\\",\\\"quatre-vingt-trois\\\",\\\"quatre-vingt-quatre\\\",\\\"quatre-vingt-cinq\\\",\\\"quatre-vingt-six\\\",\\\"quatre-vingt-sept\\\",\\\"quatre-vingt-huit\\\",\\\"quatre-vingt-neuf\\\",\\\"quatre-vingt-dix\\\",\\\"quatre-vingt-onze\\\",\\\"quatre-vingt-douze\\\",\\\"quatre-vingt-treize\\\",\\\"quatre-vingt-quatorze\\\",\\\"quatre-vingt-quinze\\\",\\\"quatre-vingt-seize\\\",\\\"quatre-vingt-dix-sept\\\",\\\"quatre-vingt-dix-huit\\\",\\\"quatre-vingt-dix-neuf\\\"], a = Math.floor(Math.random()*100), b = 1+Math.floor(Math.random()*9); return [((b>1)?values[b]:\\\"\\\")+((a==0 && b>1)?\\\" cents \\\":\\\" cent \\\")+((a>0)?values[a]:\\\"\\\"),b*100+a]; }"]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:alternative>w09999x</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>w09999x</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, en moins de 2 minutes, les nombres de 0 à 9999</dct:title>
+        <dct:description><![CDATA["time":6,"input":{"digit":4,"speed":2000},"class":"alpha h14","gen":"function(){var values=[\\\"zéro\\\",\\\"un\\\",\\\"deux\\\",\\\"trois\\\",\\\"quatre\\\",\\\"cinq\\\",\\\"six\\\",\\\"sept\\\",\\\"huit\\\",\\\"neuf\\\",\\\"dix\\\",\\\"onze\\\",\\\"douze\\\",\\\"treize\\\",\\\"quatorze\\\",\\\"quinze\\\",\\\"seize\\\",\\\"dix-sept\\\",\\\"dix-huit\\\",\\\"dix-neuf\\\",\\\"vingt\\\",\\\"vingt et un\\\",\\\"vingt-deux\\\",\\\"vingt-trois\\\",\\\"vingt-quatre\\\",\\\"vingt-cinq\\\",\\\"vingt-six\\\",\\\"vingt-sept\\\",\\\"vingt-huit\\\",\\\"vingt-neuf\\\",\\\"trente\\\",\\\"trente et un\\\",\\\"trente-deux\\\",\\\"trente-trois\\\",\\\"trente-quatre\\\",\\\"trente-cinq\\\",\\\"trente-six\\\",\\\"trente-sept\\\",\\\"trente-huit\\\",\\\"trente-neuf\\\",\\\"quarante\\\",\\\"quarante et un\\\",\\\"quarante-deux\\\",\\\"quarante-trois\\\",\\\"quarante-quatre\\\",\\\"quarante-cinq\\\",\\\"quarante-six\\\",\\\"quarante-sept\\\",\\\"quarante-huit\\\",\\\"quarante-neuf\\\",\\\"cinquante\\\",\\\"cinquante et un\\\",\\\"cinquante-deux\\\",\\\"cinquante-trois\\\",\\\"cinquante-quatre\\\",\\\"cinquante-cinq\\\",\\\"cinquante-six\\\",\\\"cinquante-sept\\\",\\\"cinquante-huit\\\",\\\"cinquante-neuf\\\",\\\"soixante\\\",\\\"soixante et un\\\",\\\"soixante-deux\\\",\\\"soixante-trois\\\",\\\"soixante-quatre\\\",\\\"soixante-cinq\\\",\\\"soixante-six\\\",\\\"soixante-sept\\\",\\\"soixante-huit\\\",\\\"soixante-neuf\\\",\\\"soixante-dix\\\",\\\"soixante et onze\\\",\\\"soixante-douze\\\",\\\"soixante-treize\\\",\\\"soixante-quatorze\\\",\\\"soixante-quinze\\\",\\\"soixante-seize\\\",\\\"soixante-dix-sept\\\",\\\"soixante-dix-huit\\\",\\\"soixante-dix-neuf\\\",\\\"quatre-vingts\\\",\\\"quatre-vingt-un\\\",\\\"quatre-vingt-deux\\\",\\\"quatre-vingt-trois\\\",\\\"quatre-vingt-quatre\\\",\\\"quatre-vingt-cinq\\\",\\\"quatre-vingt-six\\\",\\\"quatre-vingt-sept\\\",\\\"quatre-vingt-huit\\\",\\\"quatre-vingt-neuf\\\",\\\"quatre-vingt-dix\\\",\\\"quatre-vingt-onze\\\",\\\"quatre-vingt-douze\\\",\\\"quatre-vingt-treize\\\",\\\"quatre-vingt-quatorze\\\",\\\"quatre-vingt-quinze\\\",\\\"quatre-vingt-seize\\\",\\\"quatre-vingt-dix-sept\\\",\\\"quatre-vingt-dix-huit\\\",\\\"quatre-vingt-dix-neuf\\\"], a = Math.floor(Math.random()*100), b = 1+Math.floor(Math.random()*9), c = 1+Math.floor(Math.random()*9); return [((c>1)?values[c]:\\\"\\\")+\\\" mille \\\"+((b>1)?values[b]:\\\"\\\")+((a==0 && b>1)?\\\" cents \\\":\\\" cent \\\")+((a>0)?values[a]:\\\"\\\"),c*1000+b*100+a]; }"]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>5</dct:type>
+        <dct:alternative>w09999x</dct:alternative>
+    </rdf:Description>
+
     <!-- SYNONYMIE wa[.] -->
 
     <rdf:Description>

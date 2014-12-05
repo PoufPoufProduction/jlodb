@@ -25,9 +25,15 @@
         },
         // Get the settings
         settings: function($this, _val) { if (_val) { $this.data("settings", _val); } return $this.data("settings"); },
+        // Binding clear
+        unbind: function($this) {
+            $(document).unbind("keypress keydown");
+            $this.unbind("mouseup mousedown mousemove mouseout touchstart touchmove touchend touchleave");
+        },
         // Quit the activity by calling the context callback
         end: function($this) {
             var settings = helpers.settings($this);
+            helpers.unbind($this);
             settings.context.onquit($this,{'status':'success','score':settings.score});
         },
         loader: {
@@ -84,15 +90,15 @@
                         }
                         html+="'>";
                         if (i%2==0 && j%2==0) {
-                            html+="<div onclick='$(this).closest(\".futoshiki\").futoshiki(\"click\",event,"+j+","+i+");'";
-                            html+=" ontouchstart='$(this).closest(\".futoshiki\").futoshiki(\"click\",event,"+j+","+i+");";
+                            html+="<div onmousedown='$(this).closest(\".futoshiki\").futoshiki(\"click\",event,"+j+","+i+",this);'";
+                            html+=" ontouchstart='$(this).closest(\".futoshiki\").futoshiki(\"click\",event,"+j+","+i+",this);";
                             html+="event.preventDefault();'></div>";
                             html+="<table class='hint'>";
                             for (var k=0; k<9; k++) {
                                 if (k%3==0) { html+="<tr>"; }
                                 html+="<td><div id='c"+i+"'";
-                                html+=" onclick='$(this).closest(\".futoshiki\").futoshiki(\"click\",event,"+j+","+i+",this);'";
-                                html+=" ontouchstart='$(this).closest(\".futoshiki\").futoshiki(\"click\",event,"+j+","+i+",this);";
+                                html+=" onmousedown='$(this).closest(\".futoshiki\").futoshiki(\"click\",event,"+j+","+i+",this,true);'";
+                                html+=" ontouchstart='$(this).closest(\".futoshiki\").futoshiki(\"click\",event,"+j+","+i+",this,true);";
                                 html+="event.preventDefault();'></div></td>";
                                 if (k%3==2) { html+="</tr>"; }
                             }
@@ -113,10 +119,63 @@
                 // Keypad
                 var nb = 1+(settings.data[0].length+1)/2;
                 for (var i=0; i<nb; i++) {
-                    $this.find("#keypad #key"+i).css("top",(1.5*Math.pow(nb/10,0.3)*Math.cos(2*Math.PI*(i/nb))-0.5)+"em")
-                                       .css("left",(1.5*Math.pow(nb/10,0.3)*Math.sin(2*Math.PI*(i/nb))-0.5)+"em")
-                                       .show();
+                    settings.$keys.push($this.find("#keypad #key"+i)
+                        .css("top",(1.5*Math.pow(nb/10,0.3)*Math.cos(2*Math.PI*(i/nb))-0.5)+"em")
+                        .css("left",(1.5*Math.pow(nb/10,0.3)*Math.sin(2*Math.PI*(i/nb))-0.5)+"em")
+                        .show());
                 }
+
+                $this.bind("mousemove touchmove", function(event) {
+                    var settings = helpers.settings($this), $keypad = $this.find("#keypad");
+                    if (settings.keypad) {
+                        var vEvent = (event && event.originalEvent && event.originalEvent.touches &&
+                                    event.originalEvent.touches.length)? event.originalEvent.touches[0]:event;
+                        var vTop = vEvent.clientY;
+                        var vLeft = vEvent.clientX;
+                        var vSize = settings.$keys[0].width();
+                        var vAlready = false;
+                        settings.key = -1;
+                        for (var i in settings.$keys) {
+                            settings.$keys[i].removeClass("s");
+                            if (!vAlready) {
+                                var vOffset = settings.$keys[i].offset();
+                                vAlready = ( vTop>=vOffset.top && vLeft>=vOffset.left &&
+                                            vTop<vOffset.top+vSize && vLeft<vOffset.left+vSize );
+                                if (vAlready) { settings.key = i; settings.$keys[i].addClass("s"); }
+                            }
+                        }
+                    }
+                    event.preventDefault();
+                });
+
+                $this.bind("mouseup touchend", function(event) {
+                    var settings = helpers.settings($this), $keypad = $this.find("#keypad");
+
+                    if (settings.key!=-1 && settings.keypad) {
+                        var vVal = settings.$keys[settings.key].text();
+                        settings.keypad.text(vVal==0?"":vVal);
+                        if (vVal!=0) {
+
+                            if (settings.keypad.hasClass("fill")) {
+                                if (helpers.check($this)) {
+                                    settings.interactive = false;
+                                    settings.score = helpers.score(settings.level, settings.timer.value);
+                                    setTimeout(function() { helpers.end($this); }, 1000);
+                                }
+                            }
+                            else
+                            {
+                                settings.keypad.closest('.cell').addClass("h");
+                            }
+
+                        }
+                    }
+
+                    $this.find(".active").removeClass("s");
+                    $keypad.hide();
+                    settings.keypad = 0;
+                    event.preventDefault();
+                });
 
                 // Locale handling
                 $this.find("h1#label").html(settings.label);
@@ -127,18 +186,18 @@
                 if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
-        highlight: function($this) {
+        highlight: function($this, _posX, _posY, _hint) {
             var settings = helpers.settings($this);
             var nb=settings.data.length;
             $this.find("div#board>table td.t>div").removeClass("l1").removeClass("l2");
             for (var i=0; i<nb; i++) {
-                $this.find("div#"+i+"x"+settings.current.row).addClass("l1");
-                $this.find("div#"+settings.current.col+"x"+i).addClass("l1");
+                $this.find("div#"+i+"x"+_posY).addClass("l1");
+                $this.find("div#"+_posX+"x"+i).addClass("l1");
             }
-            $this.find("div#"+settings.current.col+"x"+settings.current.row).removeClass("l1").addClass("l2");
+            $this.find("div#"+_posX+"x"+_posY).removeClass("l1").addClass("l2");
 
             $this.find(".hint .s").removeClass("s");
-            if (settings.current.hint) { $(settings.current.hint).addClass("s"); }
+            if (_hint) { $(_hint).addClass("s"); }
 
         }
     };
@@ -153,13 +212,15 @@
                 var settings = {
                     mode    : true,
                     interactive : false,
-                    current : { col:-1, row:-1, hint:0 },
-                    score   : 5
+                    score   : 5,
+                    keypad      : 0,
+                    key         : -1,
+                    $keys       : []
                 };
 
                 return this.each(function() {
                     var $this = $(this);
-                    $(document).unbind("keypress");
+                    helpers.unbind($this);
 
                     var $settings = $.extend({}, defaults, options, settings);
                     var checkContext = helpers.checkContext($settings);
@@ -175,30 +236,23 @@
                 });
             },
             // Handle the click event
-            click:function(event,_col,_row,_hint) {
+            click:function(event,_col,_row,_elt, _hint) {
                 var $this = $(this) , settings = helpers.settings($this), $keypad = $this.find("#keypad");
 
                 if ($this.find("#"+_col+"x"+_row+">div").attr("class")!="fixed" && settings.interactive) {
                     var vEvent = (event && event.originalEvent && event.originalEvent.touches &&
                                   event.originalEvent.touches.length)? event.originalEvent.touches[0]:event;
+                    helpers.highlight($this, _col, _row, _hint?_elt:0);
 
-                    settings.current.row = _row;
-                    settings.current.col = _col;
-                    settings.current.hint = _hint;
-                    helpers.highlight($this);
-
-                    if (settings.keypad) { clearTimeout(settings.keypad); settings.keypad=0; }
-
-                    var k = true;
-                    if (_hint) {
-                        if (settings.mode) {
-                            $(_hint).closest(".f00").find(">div").html($(_hint).html()).show();
-                            k=false;
-                        }
+                    if (settings.mode && _hint) {
+                        $(_elt).closest(".f00").find(">div").text($(_elt).text()).show();
+                        $(_elt).closest('.cell').removeClass("h");
                     }
+                    else {
+                        $this.find("#keypad .k").removeClass("s");
+                        settings.keypad = $(_elt);
+                        settings.key    = -1;
 
-                    if (k) {
-                        settings.keypad = setTimeout(function() { $this.futoshiki('key', -1); }, 1500);
                         var vTop = vEvent.clientY - $this.offset().top;
                         var vLeft = vEvent.clientX - $this.offset().left;
                         var tmp = $this.find("#bg1").height()/1.5;
@@ -208,15 +262,6 @@
                         if (vLeft+tmp>$this.width())    { vLeft=$this.width()-tmp; }
                         $keypad.css("top", vTop+"px").css("left", vLeft+"px").show();
                     }
-                }
-            },
-            key: function(_value) {
-                var $this = $(this) , settings = helpers.settings($this);
-                if (settings.keypad) { clearTimeout(settings.keypad); settings.keypad=0; }
-                $this.find("#keypad").hide();
-                if (_value>=0 && _value<=9) {
-                    if (settings.current.hint) { $(settings.current.hint).html(_value?_value:"");
-                    } else { $this.find("#"+settings.current.col+"x"+settings.current.row+">div").html(_value?_value:""); }
                 }
             },
             quit: function() {
@@ -248,7 +293,6 @@
                 var $this = $(this) , settings = helpers.settings($this);
                 if (settings.mode!=_val) {
                     settings.mode = _val;
-                    settings.current.hint = 0;
                     $this.find("#buttons .bg").removeClass("s");
                     $this.find(".hint .s").removeClass("s");
                     $this.find("#keypad").hide();

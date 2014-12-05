@@ -106,8 +106,8 @@ if (!$error) {
                         $sql = "INSERT INTO `".$_SESSION['prefix']."activity` (`Activity_Name`, `Activity_Title`, `Activity_Key`, ".
                                "`Activity_Description`, `Activity_External`, `Activity_Locale` ) VALUES ('".
                                $activityName."','".$activityTitle."','".substr($activityName,0,1).substr($activityName, -1)."','".
-                               $activityDescription."',".($activityExternal?("'".$activityExternal."'"):"NULL").",".
-                               ($activityLocale?("'".$activityLocale."'"):"NULL").")";
+                               $activityDescription."',".(strlen($activityExternal)?("'".$activityExternal."'"):"NULL").",".
+                               (strlen($activityLocale)?("'".$activityLocale."'"):"NULL").")";
                         mysql_query($sql , $link);
                     }
                 }

@@ -29,9 +29,15 @@
         },
         // Get the settings
         settings: function($this, _val) { if (_val) { $this.data("settings", _val); } return $this.data("settings"); },
+        // Binding clear
+        unbind: function($this) {
+            $(document).unbind("keypress keydown");
+            $this.unbind("mouseup mousedown mousemove mouseout touchstart touchmove touchend touchleave");
+        },
         // Quit the activity by calling the context callback
         end: function($this) {
             var settings = helpers.settings($this);
+            helpers.unbind($this);
             settings.context.onquit($this,{'status':'success', 'score':settings.score});
         },
         loader: {
@@ -76,17 +82,21 @@
                 var nb = Math.min(settings.base,10);
                 var r = settings.base>10?1.8:1.5;
                 for (var i=0; i<nb; i++) {
-                    $this.find("#keypad #key"+i).css("top",(r*Math.pow(nb/10,0.3)*Math.cos(2*Math.PI*(i/nb))-0.5)+"em")
-                        .css("left",(r*Math.pow(nb/10,0.3)*Math.sin(2*Math.PI*(i/nb))-0.5)+"em")
-                        .addClass(settings.base>10?"small":"normal")
-                        .show();
+                    settings.$keys.push(
+                        $this.find("#keypad #key"+i).css("top",(r*Math.pow(nb/10,0.3)*Math.cos(2*Math.PI*(i/nb))-0.5)+"em")
+                            .css("left",(r*Math.pow(nb/10,0.3)*Math.sin(2*Math.PI*(i/nb))-0.5)+"em")
+                            .addClass(settings.base>10?"small":"normal")
+                            .show()
+                    );
                 }
                 nb=settings.base - 10;
                 if (nb>0) for (var i=0; i<nb; i++) {
-                    $this.find("#keypad #key"+(i+10)).css("top",(1.2*Math.pow(nb/10,0.3)*Math.cos(2*Math.PI*(i/nb))-0.5)+"em")
-                        .css("left",(1.2*Math.pow(nb/10,0.3)*Math.sin(2*Math.PI*(i/nb))-0.5)+"em")
-                        .addClass(settings.base>10?"small":"normal")
-                        .show();
+                    settings.$keys.push(
+                        $this.find("#keypad #key"+(i+10)).css("top",(1.2*Math.pow(nb/10,0.3)*Math.cos(2*Math.PI*(i/nb))-0.5)+"em")
+                            .css("left",(1.2*Math.pow(nb/10,0.3)*Math.sin(2*Math.PI*(i/nb))-0.5)+"em")
+                            .addClass(settings.base>10?"small":"normal")
+                            .show()
+                    );
                 }
 
                 // Locale handling
@@ -397,14 +407,17 @@
             $this.find(".active").bind("mousedown touchstart", function(event) {
                 var $this = $(this).closest(".operation") , settings = helpers.settings($this), $keypad = $this.find("#keypad");
 
+                $this.find("#keypad .k").removeClass("s");
+
                 if (settings.interactive && !$(this).hasClass("move") ) {
                     var vEvent = (event && event.originalEvent && event.originalEvent.touches &&
                                   event.originalEvent.touches.length)? event.originalEvent.touches[0]:event;
-
-                    if (settings.keypad) { clearTimeout(settings.keypad); settings.keypad=0; }
-                    settings.keypad = setTimeout(function() { $this.find("#keypad").hide(); }, 3000);
                     var vTop = vEvent.clientY - $this.offset().top;
                     var vLeft = vEvent.clientX - $this.offset().left;
+
+                    settings.keypad = $(this);
+                    settings.key    = -1;
+
                     var tmp = $this.find("#bg1").height()/1.5;
                     if (vTop<tmp)   { vTop = tmp; }
                     if (vLeft<tmp)  { vLeft = tmp; }
@@ -412,7 +425,47 @@
                     if (vLeft+tmp>$this.width())    { vLeft=$this.width()-tmp; }
                     $keypad.css("top", vTop+"px").css("left", vLeft+"px").show();
                     settings.elt = this;
+
+                    $(this).addClass("s");
                 }
+                event.preventDefault();
+            });
+
+            $this.bind("mouseup touchend", function(event) {
+                var settings = helpers.settings($this), $keypad = $this.find("#keypad");
+
+                if (settings.key!=-1 && settings.keypad) {
+                    var vVal = settings.$keys[settings.key].text();
+                    settings.keypad.html((settings.keypad.html()==vVal&&settings.keypad.html().length)?"":vVal);
+                }
+
+                $this.find(".active").removeClass("s");
+                $keypad.hide();
+                settings.keypad = 0;
+                event.preventDefault();
+            });
+
+            $this.bind("mousemove touchmove", function(event) {
+                var settings = helpers.settings($this), $keypad = $this.find("#keypad");
+                if (settings.keypad) {
+                    var vEvent = (event && event.originalEvent && event.originalEvent.touches &&
+                                  event.originalEvent.touches.length)? event.originalEvent.touches[0]:event;
+                    var vTop = vEvent.clientY;
+                    var vLeft = vEvent.clientX;
+                    var vSize = settings.$keys[0].width();
+                    var vAlready = false;
+                    settings.key = -1;
+                    for (var i in settings.$keys) {
+                        settings.$keys[i].removeClass("s");
+                        if (!vAlready) {
+                            var vOffset = settings.$keys[i].offset();
+                            vAlready = ( vTop>=vOffset.top && vLeft>=vOffset.left &&
+                                         vTop<vOffset.top+vSize && vLeft<vOffset.left+vSize );
+                            if (vAlready) { settings.key = i; settings.$keys[i].addClass("s"); }
+                        }
+                    }
+                }
+                event.preventDefault();
             });
 
             $this.find(".dec.result").bind("mousedown touchstart", function(e) {
@@ -455,6 +508,8 @@
                     score       : 5,
                     elt         : 0,
                     keypad      : 0,
+                    key         : -1,
+                    $keys       : [],
                     interactive : false,
                     count       : 0,
                     type        : '+',
@@ -464,7 +519,7 @@
                 // Check the context and send the load
                 return this.each(function() {
                     var $this = $(this);
-                    $(document).unbind("keypress");
+                    helpers.unbind($this);
 
                     var $settings = $.extend({}, defaults, options, settings);
                     var checkContext = helpers.checkContext($settings);
@@ -478,12 +533,6 @@
                         helpers.loader.css($this);
                     }
                 });
-            },
-            key: function(_val) {
-                var $this = $(this) , settings = helpers.settings($this);
-                if (settings.keypad) { clearTimeout(settings.keypad); settings.keypad=0; }
-                $this.find("#keypad").fadeOut("fast");
-                $(settings.elt).html(($(settings.elt).html()==_val&&$(settings.elt).html().length)?"":_val);
             },
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);

@@ -1,0 +1,55 @@
+.numbers                                { background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat;}
+.numbers div#splash>div                 { background-image:url("../../res/img/banners/correcter.svg"); }
+.numbers div#splash .text               { width:48%; float:right; font-size:.8em;  }
+.numbers div#splash .text h1            { text-align:right; padding-right:.5em;}
+.numbers div#board                      { width:16em; height:10em; }
+.numbers div#board>div#data             { padding:.05em; background-color:rgb(53,34,34); }
+.numbers div#board .line .cell          { float:left; height:1.1em; background-color:rgb(53,34,34); text-align:center;  }
+.numbers div#board .line .cell>div      { margin:.05em; background-color:rgb(255,252,246); color:rgb(53,34,34); cursor:move;
+                                          height:1em;  }
+.numbers div#board .line .cell>div.wrong    { background-color:rgb(200,100,100); color:red; }
+.numbers div#board .line .cell.fixed>div        { cursor:inherit; }
+
+
+.numbers.blank div#board .line .cell.fixed>div  { margin:0; height:1.1em; }
+.numbers.blank div#board .line .cell            { background-color:rgb(180,150,150); }
+.numbers.noempty div#board .line .cell.empty>div        { display:none; }
+
+
+.numbers.fixed div#board .line .cell.fixed>div  { background-color:rgb(53,34,34); color:rgb(255,252,246); }
+
+.numbers div#menu                       { float:left; width:4em; height:10em; }
+.numbers div#footer                     { clear:both;width:16em; height:2em;  }
+
+.numbers div#popup            { position:absolute; top:0; left:0; font-size:1.2em; overflow:visible; display:none;}
+.numbers div#popup #border    { margin:.2em; width:1em; height:1em; background-image:url("../../res/img/icon/round.svg")}
+.numbers div#popup .arrow     { position:absolute; width:1em; height:1em; font-size:.5em;}
+.numbers div#popup .arrow>div { width:4em; height:4em; }
+.numbers div#popup #a0        { top:-0.3em; left:.9em; }
+.numbers div#popup #a0>div    { margin-top:0em;}
+.numbers div#popup #a1      { top:2.1em; left:.9em; }
+.numbers div#popup #a1>div  { margin-top:-2em; }
+.numbers div#popup #a3      { top:0.9em; left:-.3em; }
+.numbers div#popup #a3>div  { margin-top:-3em; }
+.numbers div#popup #a2     { top:0.9em; left:2.1em; }
+.numbers div#popup #a2>div { margin-top:-1em; }
+
+.numbers div#popup .arrow.s>div { margin-left:-1em; opacity:1 !important; }
+
+.numbers div#submit                     { font-size:1.5em; height:1em;width:1em; cursor:pointer;
+                                            position:absolute; top:7em; left:0em; z-index:3; }
+.numbers div#submit>img                 { display:none; }
+.numbers div#submit #subvalid           { display:inline; }
+.numbers div#submit.good #subvalid      { display:none; }
+.numbers div#submit.wrong #subvalid     { display:none; }
+.numbers div#submit.good #subgood       { display:inline; }
+.numbers div#submit.wrong #subwrong     { display:inline; }
+
+.numbers div#exercice                    { font-size:.5em; width:29em; height:3em; margin-top:1em; margin-left:3.5em;
+                                           border-radius:.5em 0 0 0; font-style:italic;
+                                          background-image:url("../../res/img/background/book02.svg"); background-repeat:repeat;
+                                          display:none;}
+.numbers div#exercice>div               { margin:.2em .5em; }
+
+.numbers #effects                       { width:50%; height:50%; position:absolute; top:5%; left:60%; display:none; }
+.numbers #effects>div                   { font-size:6em; width:1em; height:1em; display:none; }

@@ -108,11 +108,27 @@
                 }});
 
                 $(".node",settings.svg.root()).each(function() {
-                $(this).unbind("click touchstart").bind("click touchstart",function(event) {
+                $(this).unbind("mousedown touchstart").bind("mousedown touchstart",function(event) {
+                    var $this=$(this).closest(".genius"), settings = helpers.settings($this);
+                    settings.id     = $(this).attr("id");
+                    settings.overtimer = settings.onhover?
+                        setTimeout(function() { settings.overtimer = -1;
+                                                settings.onendhover($this); settings.onhover($this, settings.id); }, 500):0;
+                    event.stopPropagation();
+                    event.preventDefault()
+                });
+                $(this).unbind("mouseup touchend").bind("mouseup touchend",function(event) {
                     // CLICK HANDLER: CALL LISTENER OR OPEN MENU ACCORDING TO THE NODE ID
                     var $this=$(this).closest(".genius"), settings = helpers.settings($this);
                     var available   = ($(this).attr("class").indexOf("available")!=-1);
                     settings.id     = $(this).attr("id");
+
+                    if (settings.onendhover) { settings.onendhover($this); }
+
+                    if (settings.overtimer>0) { clearTimeout(settings.overtimer); settings.overtimer = 0; }
+                    else if (settings.overtimer==-1 && settings.onendhover) {
+                        settings.overtimer = 0; event.stopPropagation(); event.preventDefault(); return;
+                    }
 
                     if (settings.onnode) { available &= settings.onnode($this, settings.id, available); }
 
@@ -125,6 +141,14 @@
                                 var html="";
                                 for (var i in abstracts) { html+="<p>"+abstracts[i]+"</p>"; }
                                 $this.find("#node #nav #abstract").html(html);
+
+                                if (data.subject) {
+                                    var subject = data.subject.split('|');
+                                    html="";
+                                    for (var i in subject) { html+="<li>"+subject[i]+"</li>"; }
+                                    $this.find("#node #nav #subject ul").html(html);
+                                }
+                                else { $this.find("#node #nav #subject ul").html(""); }
 
                                 var ex = [];
                                 if (data.exercices.length) { ex = data.exercices.split(","); }
@@ -198,7 +222,8 @@
                 var settings = {
                     nav: { zoom : 1, max : 3, x : 0, y : 0 },
                     nodes: "",
-                    id: 0
+                    id: 0,
+                    overtimer: 0
                 };
 
                 return this.each(function() {
@@ -253,6 +278,10 @@
                 helpers.states($this);
                 if (settings.onstate) { settings.onstate($this, settings.nodes); }
 
+            },
+            svg : function(_val) {
+                var $this = $(this), settings = helpers.settings($this);
+                return $(_val, settings.svg.root());
             }
         };
 

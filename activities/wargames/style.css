@@ -6,32 +6,53 @@
 .wargames div#splash .text li            { margin:.5em 0 .5em 0; }
 
 .wargames #main                          { width:16.5em; }
-.wargames #main>#menu                    { margin:.1em; width:4.2em; height:11.8em; float:left; }
-.wargames #main>#action                  { float:left; width:11.6em; height:12em; }
-.wargames #action>#board                 { margin:.1em .1em 0 .1em; width:11.2em; height:11.2em; background-color:white; }
-.wargames #action>#board>div             { margin:.1em; width:11em; height:11em; position:relative;}
+.wargames #main>#menu                    { margin:.1em; width:5.2em; height:11.8em; float:left; }
+.wargames #main>#action                  { float:left; width:10.6em; height:12em; }
+.wargames #action>#board                 { margin:.1em .1em 0 .1em; width:10.2em; height:10.2em; background-color:white; }
+.wargames #action>#board>div             { margin:.1em; width:10em; height:10em; position:relative;}
 .wargames #action>#board #grounds        { position:absolute; }
-.wargames #action>#board #bg             { position:relative; width:100%; height:100%; }
-.wargames #action>#board #bg>div         { position:absolute; width:1em; height:1em;
-                                           background-image:url("../../res/img/tileset/ortho/set1/tileset.svg");
+.wargames #action>#board .tileset        { position:absolute; width:100%; height:100%; top:0; left:0;}
+.wargames #action>#board .tileset>div    { position:absolute; width:1em; height:1em; }
+.wargames #action>#board #bg>div         { background-image:url("../../res/img/tileset/ortho/set1/tileset.svg");
                                            background-repeat:no-repeat; background-size:1000%; }
 
-.wargames #action>#board #bg>div.t      { cursor:move; }
-.wargames #action>#board #bg>div.t000      { background-position:0 0;}
-.wargames #action>#board #bg>div.t001      { background-position:0 -1em;}
-.wargames #action>#board #bg>div.t002      { background-position:0 -2em;}
-.wargames #action>#board #bg>div.t003      { background-position:0 -3em;}
+.wargames #action>#board #bg>div.t         { cursor:move; }
 
-.wargames #action>#footer #zoom           { margin-left:.2em; font-size:.5em; width:22.4em; height:1em;  }
+.wargames #action>#board #fg>div.m       { background-color:rgba(0,20,40,0.3); }
+.wargames #action>#board #fg>div.m.m0     { background-color:rgba(0,20,40,0.1); }
+.wargames #action>#board #fg>div.m>.a       { width:2em; height:7em; opacity:0.7;
+                                             background-image:url("../../res/img/generic/arrow01.svg"); position:relative; }
+.wargames #action>#board #fg>div.m>.a.a10   { top:-3em; left:0; }
+.wargames #action>#board #fg>div.m>.a.a20   { top:-4em; left:0; }
+.wargames #action>#board #fg>div.m>.a.a30   { top:-4em; left:-1em; }
+.wargames #action>#board #fg>div.m>.a.a40   { top:-3em; left:-1em; }
+.wargames #action>#board #fg>div.m>.a.a11   { top:0; left:0; }
+.wargames #action>#board #fg>div.m>.a.a22   { top:0; left:-1em; }
+.wargames #action>#board #fg>div.m>.a.a33   { top:0; left:0; }
+.wargames #action>#board #fg>div.m>.a.a44   { top:0; left:-1em; }
+.wargames #action>#board #fg>div.m>.a.a12   { top:-1em; left:0; }
+.wargames #action>#board #fg>div.m>.a.a23   { top:-1em; left:-1em; }
+.wargames #action>#board #fg>div.m>.a.a34   { top:-2em; left:0; }
+.wargames #action>#board #fg>div.m>.a.a41   { top:-2em; left:-1em; }
+.wargames #action>#board #fg>div.m>.a.a14   { top:-1em; left:-1em; }
+.wargames #action>#board #fg>div.m>.a.a21   { top:-2em; left:0; }
+.wargames #action>#board #fg>div.m>.a.a32   { top:-2em; left:-1em; }
+.wargames #action>#board #fg>div.m>.a.a43   { top:-1em; left:0; }
+.wargames #action>#board #fg>div.m>.a.a01   { top:-6em; left:-1em; }
+.wargames #action>#board #fg>div.m>.a.a02   { top:-6em; left:0; }
+.wargames #action>#board #fg>div.m>.a.a03   { top:-5em; left:0; }
+.wargames #action>#board #fg>div.m>.a.a04   { top:-5em; left:-1em; }
+
+.wargames #action>#board #people          { position:absolute; width:100%; height:100%;  top:0; left:0;}
+.wargames #action>#board #people>div      { position:absolute; width:1em; height:1em; cursor:pointer;}
+.wargames #action>#board #people>div>div  { position:relative;}
+
+.wargames #action>#footer #zoom           { margin-left:.2em; font-size:.5em; width:20.4em; height:1em;  }
 .wargames #action>#footer #zoom #cursor   { width:1em; height:1em; background-color:white; border-radius:0  0 .5em .5em;
                                             cursor:move; display:none;}
 
-
-.wargames #action>#board #effects          { position:absolute; }
-.wargames #action>#board #effects>div      { position:relative; width:11em; height:11em; top:0; left:0; }
-
-.wargames #action>#board #effects #enav>div{ background-color:rgba(255,255,255,0.5); position:absolute;display:none; }
-.wargames #action>#board #effects #eleft   { width:0.4em; height:11em; }
-.wargames #action>#board #effects #eright  { width:0.4em; height:11em; left:10.6em;}
-.wargames #action>#board #effects #etop    { width:11em; height:0.4em; }
-.wargames #action>#board #effects #ebottom { width:11em; height:0.4em; top:10.6em;}
+.wargames #action>#board .fx               { background-color:rgba(255,255,255,0.5); position:absolute; top:0; left:0; display:none; }
+.wargames #action>#board #eleft            { width:0.4em; height:11em; }
+.wargames #action>#board #eright           { width:0.4em; height:11em; left:9.6em;}
+.wargames #action>#board #etop             { width:11em; height:0.4em; }
+.wargames #action>#board #ebottom          { width:11em; height:0.4em; top:9.6em;}

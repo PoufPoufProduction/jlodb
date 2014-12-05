@@ -13,6 +13,7 @@ if (!$error) {
             // MISC
             $name       = $row["Node_Title"];
             $abstract   = $row["Node_Description"];
+            $subject    = $row["Node_Subject"];
             $exercices  = $row["Node_Exercices"];
 
             if ($_GET["verbose"]) {
@@ -54,9 +55,11 @@ echo '{';
 echo '  "status" : "'.$status.'",';
 echo '  "textStatus" : "'.$textstatus.'",';
 if ($error)     { echo '  "error" : '.$error; } else {
+echo '  "id": "'.$_GET["id"].'",';
 echo '  "name": "'.$name.'",';
 echo '  "lang": "'.$_SESSION['lang'].'",';
 echo '  "abstract": "'.$abstract.'",';
+echo '  "subject": "'.$subject.'",';
 echo '  "exercices": "'.$exercices.'"';
 if ($_GET["verbose"]) {
     echo ',  "detail": ['.$all.']';
