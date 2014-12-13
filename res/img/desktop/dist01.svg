@@ -7,24 +7,32 @@
         .results *              { display:none; }
         #result                 { display:none; }
         .bg                     { opacity:1;fill:#e2ce91;fill-opacity:1;stroke:none;marker:none; }
-        #to2                    { display:inline; }
-        #to3                    { display:none; }
-        #to4                    { display:none; }
-        #to5                    { display:none; }
-        .to3 #to2               { display:none; }
+        .to                     { display:none; }
+        .to2 #to2               { display:inline; }
         .to3 #to3               { display:inline; }
-        .to4 #to2               { display:none; }
         .to4 #to4               { display:inline; }
-        .to5 #to2               { display:none; }
         .to5 #to5               { display:inline; }
+        .to10 #to10             { display:inline; }
+        .fract                  { display:none; }
+        .f2 #f2                 { display:inline; }
+        .f3 #f3                 { display:inline; }
+        .f4 #f4                 { display:inline; }
+        .f5 #f5                 { display:inline; }
+        .f6 #f6                 { display:inline; }
+        .f7 #f7                 { display:inline; }
+        .f8 #f8                 { display:inline; }
+        .f9 #f9                 { display:inline; }
+        .f10 #f10               { display:inline; }
+        .fraction #circle       { display:none; }
+        svg text                { font-size:50px;text-anchor:middle;fill:#241c1c;font-family:Times New Roman;font-weight:bold;fill:#513d2e;}
     </style>
 </defs>
 <rect width="640" height="480" x="0" y="0" id="background" class="bg"/>
-<line x1="0" y1="200" x2="640" y2="200" style="stroke:black;stroke-width:1.5;stroke-linecap:round;stroke-dasharray:20,10,15;"/>
-<line x1="50" y1="150" x2="50" y2="350" style="stroke:black;stroke-width:1;"/>
-<circle cx="50" cy="200" r="40" style="fill:white;stroke:black;stroke-width:2;"/>
+<line x1="0" y1="200" x2="640" y2="200" style="stroke:#241c1c;stroke-width:1.5;stroke-linecap:round;stroke-dasharray:20,10,15;"/>
+<line x1="50" y1="150" x2="50" y2="350" style="stroke:#241c1c;stroke-width:1;"/>
+<circle cx="50" cy="200" r="40" style="fill:white;stroke:#241c1c;stroke-width:2;" id="circle"/>
 
-<g id="to2">
+<g id="to2" class="to">
     <rect x="55"  y="300" width="255" height="50" ry="10" style="fill:red;stroke:#FF8888;stroke-width:2;"/>
     <rect x="320" y="300" width="255" height="50" ry="10" style="fill:red;stroke:#FF8888;stroke-width:2;"/>
     <g class="results">
@@ -34,7 +42,7 @@
     </g>
 </g>
 
-<g id="to3">
+<g id="to3" class="to">
     <rect x="55"  y="300" width="165" height="50" ry="10" style="fill:red;stroke:#FF8888;stroke-width:2;"/>
     <rect x="230" y="300" width="165" height="50" ry="10" style="fill:red;stroke:#FF8888;stroke-width:2;"/>
     <rect x="405" y="300" width="165" height="50" ry="10" style="fill:red;stroke:#FF8888;stroke-width:2;"/>
@@ -46,7 +54,7 @@
     </g>
 </g>
 
-<g id="to4">
+<g id="to4" class="to">
     <rect x="55"  y="300" width="125" height="50" ry="10" style="fill:red;stroke:#FF8888;stroke-width:2;"/>
     <rect x="190" y="300" width="125" height="50" ry="10" style="fill:red;stroke:#FF8888;stroke-width:2;"/>
     <rect x="325" y="300" width="125" height="50" ry="10" style="fill:red;stroke:#FF8888;stroke-width:2;"/>
@@ -60,7 +68,7 @@
     </g>
 </g>
 
-<g id="to5">
+<g id="to5" class="to">
     <rect x="55"  y="300" width="95" height="50" ry="10" style="fill:red;stroke:#FF8888;stroke-width:2;"/>
     <rect x="160" y="300" width="95" height="50" ry="10" style="fill:red;stroke:#FF8888;stroke-width:2;"/>
     <rect x="265" y="300" width="95" height="50" ry="10" style="fill:red;stroke:#FF8888;stroke-width:2;"/>
@@ -76,11 +84,76 @@
     </g>
 </g>
 
+<g id="to10" class="to">
+    <rect x="55"  y="300" width="45" height="50" ry="10" style="fill:red;stroke:#FF8888;stroke-width:2;"/>
+    <rect x="107.5"  y="300" width="45" height="50" ry="10" style="fill:red;stroke:#FF8888;stroke-width:2;"/>
+    <rect x="160" y="300" width="45" height="50" ry="10" style="fill:red;stroke:#FF8888;stroke-width:2;"/>
+    <rect x="212.5"  y="300" width="45" height="50" ry="10" style="fill:red;stroke:#FF8888;stroke-width:2;"/>
+    <rect x="265" y="300" width="45" height="50" ry="10" style="fill:red;stroke:#FF8888;stroke-width:2;"/>
+    <rect x="317.5"  y="300" width="45" height="50" ry="10" style="fill:red;stroke:#FF8888;stroke-width:2;"/>
+    <rect x="370" y="300" width="45" height="50" ry="10" style="fill:red;stroke:#FF8888;stroke-width:2;"/>
+    <rect x="422.5"  y="300" width="45" height="50" ry="10" style="fill:red;stroke:#FF8888;stroke-width:2;"/>
+    <rect x="475" y="300" width="45" height="50" ry="10" style="fill:red;stroke:#FF8888;stroke-width:2;"/>
+    <rect x="527.5"  y="300" width="45" height="50" ry="10" style="fill:red;stroke:#FF8888;stroke-width:2;"/>
+    <g transform="translate(50,420)">
+        <line x1="0" y1="-40" x2="0" y2="-70" style="stroke:#241c1c;stroke-width:1;"/>
+        <text>0</text>
+    </g>
+    <g transform="translate(155,420)" class="fract" id="f2">
+        <line x1="0" y1="-40" x2="0" y2="-70" style="stroke:#241c1c;stroke-width:1;"/>
+        <text>1</text>
+    </g>
+    <g transform="translate(207.5,420)" class="fract" id="f3">
+        <line x1="0" y1="-40" x2="0" y2="-70" style="stroke:#241c1c;stroke-width:1;"/>
+        <text>1</text>
+    </g>
+    <g transform="translate(260,420)" class="fract" id="f4">
+        <line x1="0" y1="-40" x2="0" y2="-70" style="stroke:#241c1c;stroke-width:1;"/>
+        <text>1</text>
+    </g>
+    <g transform="translate(312.5,420)" class="fract" id="f5">
+        <line x1="0" y1="-40" x2="0" y2="-70" style="stroke:#241c1c;stroke-width:1;"/>
+        <text>1</text>
+    </g>
+    <g transform="translate(365,420)" class="fract" id="f6">
+        <line x1="0" y1="-40" x2="0" y2="-70" style="stroke:#241c1c;stroke-width:1;"/>
+        <text>1</text>
+    </g>
+    <g transform="translate(417.5,420)" class="fract" id="f7">
+        <line x1="0" y1="-40" x2="0" y2="-70" style="stroke:#241c1c;stroke-width:1;"/>
+        <text>1</text>
+    </g>
+    <g transform="translate(470,420)" class="fract" id="f8">
+        <line x1="0" y1="-40" x2="0" y2="-70" style="stroke:#241c1c;stroke-width:1;"/>
+        <text>1</text>
+    </g>
+    <g transform="translate(522.5,420)" class="fract" id="f9">
+        <line x1="0" y1="-40" x2="0" y2="-70" style="stroke:#241c1c;stroke-width:1;"/>
+        <text>1</text>
+    </g>
+    <g transform="translate(575,420)" class="fract" id="f10">
+        <line x1="0" y1="-40" x2="0" y2="-70" style="stroke:#241c1c;stroke-width:1;"/>
+        <text>1</text>
+    </g>
+    <g class="results">
+        <circle id="0to10" cx="50" cy="200" r="30"/>
+        <circle id="1to10" cx="102.5" cy="200" r="30"/>
+        <circle id="2to10" cx="155" cy="200" r="30"/>
+        <circle id="3to10" cx="207.5" cy="200" r="30"/>
+        <circle id="4to10" cx="260" cy="200" r="30"/>
+        <circle id="5to10" cx="312.5" cy="200" r="30"/>
+        <circle id="6to10" cx="365" cy="200" r="30"/>
+        <circle id="7to10" cx="417.5" cy="200" r="30"/>
+        <circle id="8to10" cx="470" cy="200" r="30"/>
+        <circle id="9to10" cx="522.5" cy="200" r="30"/>
+        <circle id="10to10" cx="575" cy="200" r="30"/>
+    </g>
+</g>
 <g id="cursor">
     <rect x="0" y="95" width="640" height="60" class="bg" style="fill-opacity:0.8;"/>
-    <line x1="0" y1="-50" x2="0" y2="150" style="stroke:black;stroke-width:1;"/>
-    <circle cx="0" cy="0" r="35" style="fill:black"/>
-    <path d="M -35,-15 L -45,0 L -35,15 M 35,-15 L 45,0 L 35,15" style="fill:none;stroke:black;stroke-width:1;stroke-linecap:round;"/>
+    <line x1="0" y1="-50" x2="0" y2="150" style="stroke:#241c1c;stroke-width:1;"/>
+    <circle cx="0" cy="0" r="35" style="fill:#241c1c"/>
+    <path d="M -35,-15 L -45,0 L -35,15 M 35,-15 L 45,0 L 35,15" style="fill:none;stroke:#241c1c;stroke-width:1;stroke-linecap:round;"/>
 </g>
 
 </svg>

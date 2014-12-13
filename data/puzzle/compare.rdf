@@ -364,5 +364,110 @@
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
     </rdf:Description>
 
+    <!-- FRACTION -->
+
+    <rdf:Description>
+        <dct:identifier>fu1no</dct:identifier>
+        <dct:title xml:lang="fr-FR">Ordonner 5 fractions (inférieures à 1) aux dénominateurs identiques, du plus petit au plus grand.</dct:title>
+        <dct:description><![CDATA["init":[[120,320],[220,320],[320,320],[420,320],[520,320]],"url":"puzzle/compare01.svg","svgclass":"up", "gen":"function(){var ret=[]; for (var i=0; i<3;i++) { var val=[]; var de=Math.floor(Math.random()*4)+7; for (var j=0;j<5;j++) { var num=1, already; do { num=Math.floor(Math.random()*de)+1; already=false; for (var k=0;k<val.length;k++){ if ((val[k].de==de && val[k].num==num) || val[k].num/val[k].de==num/de) { already=true;}} } while(already); val.push({de:de,num:num}); } val.sort(function(a,b){return (a.num/a.de)-(b.num/b.de);}); ret.push({\\\"a\\\":val[0].num+\\\"/\\\"+val[0].de,\\\"b\\\":val[1].num+\\\"/\\\"+val[1].de,\\\"c\\\":val[2].num+\\\"/\\\"+val[2].de,\\\"d\\\":val[3].num+\\\"/\\\"+val[3].de,\\\"e\\\":val[4].num+\\\"/\\\"+val[4].de});} return ret;}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Placez les fractions proposées en veillant à respecter les inégalités présentes."]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>520</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>fu1do</dct:identifier>
+        <dct:title xml:lang="fr-FR">Ordonner 5 fractions (inférieures à 1) aux numérateurs identiques, du plus petit au plus grand.</dct:title>
+        <dct:description><![CDATA["init":[[120,320],[220,320],[320,320],[420,320],[520,320]],"url":"puzzle/compare01.svg","svgclass":"up", "gen":"function(){var ret=[]; for (var i=0; i<3;i++) { var val=[]; var num=Math.floor(Math.random()*5)+1; for (var j=0;j<5;j++) { var de=1, already; do { de=Math.floor(Math.random()*10)+num; already=false; for (var k=0;k<val.length;k++){ if ((val[k].de==de && val[k].num==num) || val[k].num/val[k].de==num/de) { already=true;}} } while(already); val.push({de:de,num:num}); } val.sort(function(a,b){return (a.num/a.de)-(b.num/b.de);}); ret.push({\\\"a\\\":val[0].num+\\\"/\\\"+val[0].de,\\\"b\\\":val[1].num+\\\"/\\\"+val[1].de,\\\"c\\\":val[2].num+\\\"/\\\"+val[2].de,\\\"d\\\":val[3].num+\\\"/\\\"+val[3].de,\\\"e\\\":val[4].num+\\\"/\\\"+val[4].de});} return ret;}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Placez les fractions proposées en veillant à respecter les inégalités présentes."]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>520</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>fu110o</dct:identifier>
+        <dct:title xml:lang="fr-FR">Ordonner 5 fractions (inférieures à 1) dont les dénominateurs sont compris entre 0 et 10, du plus petit au plus grand.</dct:title>
+        <dct:description><![CDATA["init":[[120,320],[220,320],[320,320],[420,320],[520,320]],"url":"puzzle/compare01.svg","svgclass":"up", "gen":"function(){var ret=[]; for (var i=0; i<3;i++) { var val=[]; for (var j=0;j<5;j++) { var de=1,num=1, already; do { de=Math.floor(Math.random()*9)+2; num=Math.floor(Math.random()*de)+1; already=false; for (var k=0;k<val.length;k++){ if ((val[k].de==de && val[k].num==num) || val[k].num/val[k].de==num/de) { already=true;}} } while(already); val.push({de:de,num:num}); } val.sort(function(a,b){return (a.num/a.de)-(b.num/b.de);}); ret.push({\\\"a\\\":val[0].num+\\\"/\\\"+val[0].de,\\\"b\\\":val[1].num+\\\"/\\\"+val[1].de,\\\"c\\\":val[2].num+\\\"/\\\"+val[2].de,\\\"d\\\":val[3].num+\\\"/\\\"+val[3].de,\\\"e\\\":val[4].num+\\\"/\\\"+val[4].de});} return ret;}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Placez les fractions proposées en veillant à respecter les inégalités présentes."]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>520</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>fu210o</dct:identifier>
+        <dct:title xml:lang="fr-FR">Ordonner 5 fractions (inférieures à 2) dont les dénominateurs sont compris entre 0 et 10, du plus petit au plus grand.</dct:title>
+        <dct:description><![CDATA["init":[[120,320],[220,320],[320,320],[420,320],[520,320]],"url":"puzzle/compare01.svg","svgclass":"up", "gen":"function(){var ret=[]; for (var i=0; i<3;i++) { var val=[]; for (var j=0;j<5;j++) { var de=1,num=1, already; do { de=Math.floor(Math.random()*9)+2; num=Math.floor(Math.random()*de*2)+1; already=false; for (var k=0;k<val.length;k++){ if ((val[k].de==de && val[k].num==num) || val[k].num/val[k].de==num/de) { already=true;}} } while(already); val.push({de:de,num:num}); } val.sort(function(a,b){return (a.num/a.de)-(b.num/b.de);}); ret.push({\\\"a\\\":val[0].num+\\\"/\\\"+val[0].de,\\\"b\\\":val[1].num+\\\"/\\\"+val[1].de,\\\"c\\\":val[2].num+\\\"/\\\"+val[2].de,\\\"d\\\":val[3].num+\\\"/\\\"+val[3].de,\\\"e\\\":val[4].num+\\\"/\\\"+val[4].de});} return ret;}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Placez les fractions proposées en veillant à respecter les inégalités présentes."]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>520</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>fd1no</dct:identifier>
+        <dct:title xml:lang="fr-FR">Ordonner 5 fractions (inférieures à 1) aux dénominateurs identiques, du plus grand au plus petit.</dct:title>
+        <dct:description><![CDATA["init":[[120,320],[220,320],[320,320],[420,320],[520,320]],"url":"puzzle/compare01.svg","svgclass":"down", "gen":"function(){var ret=[]; for (var i=0; i<3;i++) { var val=[]; var de=Math.floor(Math.random()*4)+7; for (var j=0;j<5;j++) { var num=1, already; do { num=Math.floor(Math.random()*de)+1; already=false; for (var k=0;k<val.length;k++){ if ((val[k].de==de && val[k].num==num) || val[k].num/val[k].de==num/de) { already=true;}} } while(already); val.push({de:de,num:num}); } val.sort(function(a,b){return (a.num/a.de)-(b.num/b.de);}); ret.push({\\\"a\\\":val[4].num+\\\"/\\\"+val[4].de,\\\"b\\\":val[3].num+\\\"/\\\"+val[3].de,\\\"c\\\":val[2].num+\\\"/\\\"+val[2].de,\\\"d\\\":val[1].num+\\\"/\\\"+val[1].de,\\\"e\\\":val[0].num+\\\"/\\\"+val[0].de});} return ret;}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Placez les fractions proposées en veillant à respecter les inégalités présentes."]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>520</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>fd1do</dct:identifier>
+        <dct:title xml:lang="fr-FR">Ordonner 5 fractions (inférieures à 1) aux numérateurs identiques, du plus grand au plus petit.</dct:title>
+        <dct:description><![CDATA["init":[[120,320],[220,320],[320,320],[420,320],[520,320]],"url":"puzzle/compare01.svg","svgclass":"down", "gen":"function(){var ret=[]; for (var i=0; i<3;i++) { var val=[]; var num=Math.floor(Math.random()*5)+1; for (var j=0;j<5;j++) { var de=1, already; do { de=Math.floor(Math.random()*10)+num; already=false; for (var k=0;k<val.length;k++){ if ((val[k].de==de && val[k].num==num) || val[k].num/val[k].de==num/de) { already=true;}} } while(already); val.push({de:de,num:num}); } val.sort(function(a,b){return (a.num/a.de)-(b.num/b.de);}); ret.push({\\\"a\\\":val[4].num+\\\"/\\\"+val[4].de,\\\"b\\\":val[3].num+\\\"/\\\"+val[3].de,\\\"c\\\":val[2].num+\\\"/\\\"+val[2].de,\\\"d\\\":val[1].num+\\\"/\\\"+val[1].de,\\\"e\\\":val[0].num+\\\"/\\\"+val[0].de});} return ret;}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Placez les fractions proposées en veillant à respecter les inégalités présentes."]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>520</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>fd110o</dct:identifier>
+        <dct:title xml:lang="fr-FR">Ordonner 5 fractions (inférieures à 1) dont les dénominateurs sont compris entre 0 et 10, du plus grand au plus petit.</dct:title>
+        <dct:description><![CDATA["init":[[120,320],[220,320],[320,320],[420,320],[520,320]],"url":"puzzle/compare01.svg","svgclass":"down", "gen":"function(){var ret=[]; for (var i=0; i<3;i++) { var val=[]; for (var j=0;j<5;j++) { var de=1,num=1, already; do { de=Math.floor(Math.random()*9)+2; num=Math.floor(Math.random()*de)+1; already=false; for (var k=0;k<val.length;k++){ if ((val[k].de==de && val[k].num==num) || val[k].num/val[k].de==num/de) { already=true;}} } while(already); val.push({de:de,num:num}); } val.sort(function(a,b){return (a.num/a.de)-(b.num/b.de);}); ret.push({\\\"a\\\":val[4].num+\\\"/\\\"+val[4].de,\\\"b\\\":val[3].num+\\\"/\\\"+val[3].de,\\\"c\\\":val[2].num+\\\"/\\\"+val[2].de,\\\"d\\\":val[1].num+\\\"/\\\"+val[1].de,\\\"e\\\":val[0].num+\\\"/\\\"+val[0].de});} return ret;}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Placez les fractions proposées en veillant à respecter les inégalités présentes."]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>520</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>fd210o</dct:identifier>
+        <dct:title xml:lang="fr-FR">Ordonner 5 fractions (inférieures à 2) dont les dénominateurs sont compris entre 0 et 10, du plus grand au plus petit.</dct:title>
+        <dct:description><![CDATA["init":[[120,320],[220,320],[320,320],[420,320],[520,320]],"url":"puzzle/compare01.svg","svgclass":"down", "gen":"function(){var ret=[]; for (var i=0; i<3;i++) { var val=[]; for (var j=0;j<5;j++) { var de=1,num=1, already; do { de=Math.floor(Math.random()*9)+2; num=Math.floor(Math.random()*de*2)+1; already=false; for (var k=0;k<val.length;k++){ if ((val[k].de==de && val[k].num==num) || val[k].num/val[k].de==num/de) { already=true;}} } while(already); val.push({de:de,num:num}); } val.sort(function(a,b){return (a.num/a.de)-(b.num/b.de);}); ret.push({\\\"a\\\":val[4].num+\\\"/\\\"+val[4].de,\\\"b\\\":val[3].num+\\\"/\\\"+val[3].de,\\\"c\\\":val[2].num+\\\"/\\\"+val[2].de,\\\"d\\\":val[1].num+\\\"/\\\"+val[1].de,\\\"e\\\":val[0].num+\\\"/\\\"+val[0].de});} return ret;}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Placez les fractions proposées en veillant à respecter les inégalités présentes."]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>520</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+    </rdf:Description>
 </rdf:RDF>
 

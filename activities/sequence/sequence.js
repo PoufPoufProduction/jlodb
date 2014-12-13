@@ -225,7 +225,6 @@
         key: function($this, value, fromkeyboard) {
             var settings = helpers.settings($this);
             if (!fromkeyboard || settings.keyboard) {
-
                 value = value.toString();
 
                 // Launch the timer if didn't
@@ -244,8 +243,12 @@
                         else { settings.response.value = "-"; }
                     }
                     else            {
-                        if (settings.response.digit==0 || settings.response.digit == settings.input.digit) {
+                        if (settings.response.digit==0 ) {
+                            // IN CASE OF INITIAL NEGATIVE STUFF
                             settings.response.value += value.toString(); settings.response.digit = 1;
+                        }
+                        else if ( settings.response.digit == settings.input.digit) {
+                            settings.response.value = value.toString(); settings.response.digit = 1;
                         }
                         else {
                             settings.response.value += value.toString(); settings.response.digit++;

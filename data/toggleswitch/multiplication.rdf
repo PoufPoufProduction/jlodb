@@ -278,4 +278,28 @@
         <dct:type>4</dct:type>
         <dct:alternative>w29</dct:alternative>
     </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>n2gt0</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier les multiplications dont les opérandes sont compris entre -10 et 10 et dont le résultat est strictement supérieur à 0.</dct:title>
+        <dct:description><![CDATA["number":5,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var a=(Math.floor(Math.random()*2)*2-1)*(Math.floor(Math.random()*9)+1),b=(Math.floor(Math.random()*2)*2-1)*(Math.floor(Math.random()*9)+1); result+=(a*b>0)?\\\"1\\\":\\\"0\\\"; ret.push((a<0?\\\"(\\\"+a+\\\")\\\":a.toString())+\\\"*\\\"+(b<0?\\\"(\\\"+b+\\\")\\\":b.toString()));} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"gray","color":"white"}]},"wrong":{"style":{"background-color":"black","color":"red"}},"font":0.5]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Surlignez les résultats <b>strictement supérieurs à 0</b>.","label":">0"}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>negative</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>n3gt0</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>n3gt0</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier les multiplications dont les opérandes sont compris entre -10 et 10 et dont le résultat est strictement supérieur à 0.</dct:title>
+        <dct:description><![CDATA["number":5,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var a=(Math.floor(Math.random()*2)*2-1)*(Math.floor(Math.random()*9)+1),b=(Math.floor(Math.random()*2)*2-1)*(Math.floor(Math.random()*9)+1),c=(Math.floor(Math.random()*2)*2-1)*(Math.floor(Math.random()*9)+1); result+=(a*b*c>0)?\\\"1\\\":\\\"0\\\"; ret.push((a<0?\\\"(\\\"+a+\\\")\\\":a.toString())+\\\"*\\\"+(b<0?\\\"(\\\"+b+\\\")\\\":b.toString())+\\\"*\\\"+(c<0?\\\"(\\\"+c+\\\")\\\":c.toString()));} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"gray","color":"white"}]},"wrong":{"style":{"background-color":"black","color":"red"}},"font":0.3]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Surlignez les résultats <b>strictement supérieurs à 0</b>.","label":">0"}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>negative</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>n3gt0</dct:alternative>
+    </rdf:Description>
 </rdf:RDF>

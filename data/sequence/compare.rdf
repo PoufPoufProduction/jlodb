@@ -349,6 +349,28 @@
         <dct:alternative>n010</dct:alternative>
     </rdf:Description>
 
+    <rdf:Description>
+        <dct:identifier>na10</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, 2 entiers compris entre -10 et 10 avec présence de valeurs absolues.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=11,a=Math.floor(Math.random()*max)-10,p=Math.floor(Math.random()*5),b=(p)?Math.floor(Math.random()*max)-10:a,aa=Math.floor(Math.random()*2),ba=Math.floor(Math.random()*2),ar=(aa==0)?a:Math.abs(a),br=(ba==0)?b:Math.abs(b); return [\\\"<div style='width:5em;margin-left:.2em;'><div style='width:1.8em;'>\\\"+(aa==0?a.toString():\\\"|\\\"+a+\\\"|\\\")+\\\"</div><div style='width:1em;'>...</div><div style='width:1.8em;'>\\\"+(ba==0?b.toString():\\\"|\\\"+b+\\\"|\\\")+\\\"</div></div>\\\", (ar==br)?\\\"=\\\":((ar<br)?\\\"<\\\":\\\">\\\")]}","class":"alpha left","font":1.4]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>negative</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>n010</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>na100</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, 2 entiers compris entre -100 et 100 avec présence de valeurs absolues.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=199,a=Math.floor(Math.random()*max)-99,p=Math.floor(Math.random()*5),b=(p)?Math.floor(Math.random()*max)-99:a,aa=Math.floor(Math.random()*2),ba=Math.floor(Math.random()*2),ar=(aa==0)?a:Math.abs(a),br=(ba==0)?b:Math.abs(b); return [\\\"<div style='width:6em;margin-left:.2em;'><div style='width:2.2em;'>\\\"+(aa==0?a.toString():\\\"|\\\"+a+\\\"|\\\")+\\\"</div><div style='width:1em;'>...</div><div style='width:2.2em;'>\\\"+(ba==0?b.toString():\\\"|\\\"+b+\\\"|\\\")+\\\"</div></div>\\\", (ar==br)?\\\"=\\\":((ar<br)?\\\"<\\\":\\\">\\\")]}","class":"alpha left","font":1.2]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>negative</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>n010</dct:alternative>
+    </rdf:Description>
+
     <!-- 2 compares -->
  
     <rdf:Description>
@@ -567,7 +589,7 @@
 
     <rdf:Description>
         <dct:identifier>stn299</dct:identifier>
-        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre -2 et -9 complétant la double inégalité d'infériorité.</dct:title>
+        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre -2 et -99 complétant la double inégalité d'infériorité.</dct:title>
         <dct:description><![CDATA["time":0,"template":"keypadneg","negative":true,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=-(Math.floor(Math.random()*98)+2); return [\\\"<div style='margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:.6em;'>&lt;</div><div style='width:1.4em;text-align:center;'>...</div><div style='width:.6em;'>&lt;</div><div>\\\"+(a+2)+\\\"</div>\\\",(a+1)]}","class":"alpha left","font":1.2]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>negative</dct:subject>
@@ -633,7 +655,7 @@
 
     <rdf:Description>
         <dct:identifier>gtn99</dct:identifier>
-        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre -9 et 9 complétant la double inégalité de supériorité.</dct:title>
+        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre -99 et 99 complétant la double inégalité de supériorité.</dct:title>
         <dct:description><![CDATA["time":0,"template":"keypadneg","negative":true,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*197)-99; return [\\\"<div style='margin-left:.1em;'>\\\"+(a+2)+\\\"</div><div style='width:.6em;'>&gt;</div><div style='width:1.4em;text-align:center;'>...</div><div style='width:.6em;'>&gt;</div><div>\\\"+a+\\\"</div>\\\",(a+1)]}","class":"alpha left","font":1.2]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>negative</dct:subject>
@@ -655,7 +677,7 @@
 
     <rdf:Description>
         <dct:identifier>tn299</dct:identifier>
-        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre -2 et -9 complétant la double inégalité.</dct:title>
+        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre -2 et -99 complétant la double inégalité.</dct:title>
         <dct:description><![CDATA["time":0,"template":"keypadneg","negative":true,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=-(Math.floor(Math.random()*98)+2), b=Math.floor(Math.random()*2); return [b?\\\"<div style='margin-left:.1em;'>\\\"+(a+2)+\\\"</div><div style='width:.6em;'>&gt;</div><div style='width:1.4em;'>...</div><div style='width:.6em;'>&gt;</div><div>\\\"+a+\\\"</div>\\\":\\\"<div style='margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:.6em;'>&lt;</div><div style='width:1.4em;'>...</div><div style='width:.6em;'>&lt;</div><div>\\\"+(a+2)+\\\"</div>\\\",(a+1)]}","class":"alpha left","font":1.2]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>negative</dct:subject>
@@ -677,7 +699,7 @@
 
     <rdf:Description>
         <dct:identifier>tn99</dct:identifier>
-        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre -9 et 9 complétant la double inégalité.</dct:title>
+        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre -99 et 99 complétant la double inégalité.</dct:title>
         <dct:description><![CDATA["time":0,"template":"keypadneg","negative":true,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*197)-99, b=Math.floor(Math.random()*2); return [b?\\\"<div style='margin-left:.1em;'>\\\"+(a+2)+\\\"</div><div style='width:.6em;'>&gt;</div><div style='width:1.4em;'>...</div><div style='width:.6em;'>&gt;</div><div>\\\"+a+\\\"</div>\\\":\\\"<div style='margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:.6em;'>&lt;</div><div style='width:1.4em;'>...</div><div style='width:.6em;'>&lt;</div><div>\\\"+(a+2)+\\\"</div>\\\",(a+1)]}","class":"alpha left","font":1.2]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>negative</dct:subject>

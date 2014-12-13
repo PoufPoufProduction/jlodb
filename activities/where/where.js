@@ -117,7 +117,7 @@
                             init        : [0,0],            // Initial position of the cursor
                             id          : "cursor",         // Cursor id
                             translate   : [0,0],            // The current position of the cursor
-                            boundaries  : [-1,-1,-1,-1],    // The translation boundaries
+                            boundaries  : 0,                // The translation boundaries
                             targettype  : "circle",         // The target type (circle, rect)
                             effects     : [0,0,0,0],        // Parameter for the effects
                             offset      : [0,0],            // Offset for the effects
@@ -150,6 +150,18 @@
                             $(this).attr("class","drag");
                             $this.addClass("active");
                             settings.mouse = [ vEvent.clientX, vEvent.clientY];
+
+                            var vCursor = settings.cursors[this.id];
+                            if (vCursor.center) {
+                                settings.control.center = [ vCursor.center[0]*settings.ratio + $this.offset().left,
+                                                            vCursor.center[1]*settings.ratio + $this.offset().top];
+                                var vA =  [ settings.mouse[0]-settings.control.center[0],
+                                            settings.mouse[1]-settings.control.center[1]];
+                                var lA = Math.sqrt(vA[0]*vA[0] + vA[1]*vA[1]);
+                                settings.control.begin   = [ vA[0]/lA, vA[1]/lA ];
+                                settings.control.current = [ vA[0]/lA, vA[1]/lA ];
+                                settings.control.rot     = vCursor.translate;
+                            }
                         }
                         event.preventDefault();
                     });
@@ -203,22 +215,24 @@
                         var vCursor = settings.cursors[settings.elt.id];
                         var vOnmoveArgs=0;
                         if (vCursor.center) {
-                            var vCenter = [vCursor.center[0]*settings.ratio + $this.offset().left,
-                                           vCursor.center[1]*settings.ratio + $this.offset().top];
-                            var vA = [ settings.mouse[0]-vCenter[0], settings.mouse[1]-vCenter[1] ];
-                            var vB = [ vEvent.clientX - vCenter[0], vEvent.clientY - vCenter[1] ];
-                            var lA = Math.sqrt(vA[0]*vA[0] + vA[1]*vA[1]);
+                            var vB = [ vEvent.clientX - settings.control.center[0], vEvent.clientY - settings.control.center[1] ];
                             var lB = Math.sqrt(vB[0]*vB[0] + vB[1]*vB[1]);
-                            vA[0] = vA[0]/lA; vA[1] = vA[1]/lA;
                             vB[0] = vB[0]/lB; vB[1] = vB[1]/lB;
-                            var det = vA[0]*vB[1] - vA[1]*vB[0];
+                            var det = settings.control.current[0]*vB[1] - settings.control.current[1]*vB[0];
                             var sign = det>0?1:-1;
 
-                            var vRot = vCursor.translate+sign*(Math.acos(vA[0]*vB[0]+vA[1]*vB[1])*180/Math.PI);
+                            var vRot = settings.control.rot + sign*(Math.acos(settings.control.current[0]*vB[0]+
+                                                              settings.control.current[1]*vB[1])*180/Math.PI);
+
+
+
                             if (vCursor.boundaries && vRot<vCursor.boundaries[0]) { vRot = vCursor.boundaries[0]; }
                             if (vCursor.boundaries && vRot>vCursor.boundaries[1]) { vRot = vCursor.boundaries[1]; }
+
                             $(settings.elt).attr("transform", "rotate("+vRot+")");
                             vOnmoveArgs=vRot;
+                            settings.control.rot = vRot;
+                            settings.control.current = [ vB[0],vB[1] ];
                         }
                         else {
                             var vX = vCursor.translate[0];
@@ -405,8 +419,7 @@
 
                     if (vCursor.center) {
                         var vValue = vCursor.translate;
-                        while(vValue<0) { vValue+=360; }
-                        vValue=vValue%360;
+                        if (!vCursor.boundaries) { while(vValue<0) { vValue+=360; } vValue=vValue%360; }
                         var vDist = Math.abs(vValue-vResponse);
 
                         if (settings.scorefct) {
@@ -533,6 +546,7 @@
                     finish          : false,                    // Exercice is finished
                     effects         : [],                       // The proximity effects svg objects
                     mouse           : [0,0],                    // The position of the mouse when button down
+                    control         : {},                       // Rotation controls
                     cursors         : {},                       // The list of cursors (indexed by id)
                     ratio           : 1,                        // Ratio from mouse to svg
                     elt             : 0                         // The moving svg element (elt.id is the key for cursors)

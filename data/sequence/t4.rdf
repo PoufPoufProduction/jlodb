@@ -2,60 +2,6 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dct="http://purl.org/dc/terms/">
 
-    <rdf:Description>
-        <dct:identifier>1</dct:identifier>
-        <dct:title xml:lang="fr-FR">Critère de divisibilité par 2</dct:title>
-        <dct:description><![CDATA["time":0.75,"len":10,"input":{"digit":1,"values":["oui","non"]},"template":"template.html","gen":"function() { var a=Math.floor(Math.random()*999)+1; return [a, (a%2)?\\\"non\\\":\\\"oui\\\"]}","comment":"Le nombre est-il divisible par 2 ?","class":"h2"]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>arithmetic</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>1</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>2</dct:identifier>
-        <dct:title xml:lang="fr-FR">Critère de divisibilité par 5</dct:title>
-        <dct:description><![CDATA["time":0.9,"len":10,"input":{"digit":1,"values":["oui","non"]},"template":"template.html","gen":"function() { var r=Math.floor(Math.random()*2.2), a=r?Math.floor(Math.random()*999)+1:(Math.floor(Math.random()*199)+1)*5; return [a, (a%5)?\\\"non\\\":\\\"oui\\\"]}","comment":"Le nombre est-il divisible par 5 ?","class":"h2"]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>arithmetic</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>1</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>3</dct:identifier>
-        <dct:title xml:lang="fr-FR">Critère de divisibilité par 3</dct:title>
-        <dct:description><![CDATA["time":1.5,"len":10,"input":{"digit":1,"values":["oui","non"]},"template":"template.html","gen":"function() { var r=Math.floor(Math.random()*3), a=r?Math.floor(Math.random()*999)+1:(Math.floor(Math.random()*332)+1)*3; return [a, (a%3)?\\\"non\\\":\\\"oui\\\"]}","comment":"Le nombre est-il divisible par 3 ?","class":"h2"]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>arithmetic</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>1</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>4</dct:identifier>
-        <dct:title xml:lang="fr-FR">Critère de divisibilité par 3</dct:title>
-        <dct:description><![CDATA["time":2,"len":10,"input":{"digit":1,"values":["oui","non"]},"template":"template.html","gen":"function() { var r=Math.floor(Math.random()*3), a=r?Math.floor(Math.random()*89999)+10001:(Math.floor(Math.random()*23332)+10001)*3; return [a, (a%3)?\\\"non\\\":\\\"oui\\\"]}","comment":"Le nombre est-il divisible par 3 ?","class":"h2"]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>arithmetic</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>4</dct:type>
-        <dct:alternative>1</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>5</dct:identifier>
-        <dct:title xml:lang="fr-FR">Critère de divisibilité par 9</dct:title>
-        <dct:description><![CDATA["time":1.6,"len":10,"input":{"digit":1,"values":["oui","non"]},"template":"template.html","gen":"function() { var r=Math.floor(Math.random()*2.1), a=r?Math.floor(Math.random()*999)+1:(Math.floor(Math.random()*110)+1)*9; return [a, (a%9)?\\\"non\\\":\\\"oui\\\"]}","comment":"Le nombre est-il divisible par 9 ?","class":"h2"]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>arithmetic</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>5</dct:type>
-        <dct:alternative>1</dct:alternative>
-    </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>6</dct:identifier>
