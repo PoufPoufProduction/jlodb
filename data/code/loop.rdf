@@ -325,7 +325,7 @@
         <dct:identifier>055</dct:identifier>
         <dct:title xml:lang="fr-FR">Réaliser un dégradé horizontal de couleur jaune.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["rect","ii","rgb"],"va":["V000","V001","V032","V008","I"],"ma":["plus","mult"],"cl":["rep"]},"valid":{"screen":-1233514559}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Réalisez un dégradé horizontal de couleur jaune.","","Tracez 32 colonnes de l1ur 1 grâce à la commande RECT. La couleur de chaque colonne est définie par RGB (I*8, I*8, 0) où I est le numéro de la colonne."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Réalisez un dégradé horizontal de couleur jaune.","","Tracez 32 colonnes de largeur 1 grâce à la commande RECT. La couleur de chaque colonne est définie par RGB (I*8, I*8, 0) où I est le numéro de la colonne."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -337,7 +337,7 @@
         <dct:identifier>056</dct:identifier>
         <dct:title xml:lang="fr-FR">Réaliser un dégradé horizontal inversé de couleur rouge.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["rect","ii","rgb"],"va":["V000","V001","V032","V008","V255","I"],"ma":["plus","mult","minus"],"cl":["rep"]},"valid":{"screen":-776120451}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Réalisez un dégradé horizontal inversé de couleur rouge.","","Tracez 32 colonnes de l1ur 1 grâce à la commande RECT. La couleur de chaque colonne est définie par RGB (255-I*8, 0, 0) où I est le numéro de la colonne. Ainsi la première colonne (numéro 0) aura une couleur correspondant à un rouge totalement saturé (255,0,255) tandis que la dernière sera équivalente à un rouge très foncé (7,0,7)."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Réalisez un dégradé horizontal inversé de couleur rouge.","","Tracez 32 colonnes de largeur 1 grâce à la commande RECT. La couleur de chaque colonne est définie par RGB (255-I*8, 0, 0) où I est le numéro de la colonne. Ainsi la première colonne (numéro 0) aura une couleur correspondant à un rouge totalement saturé (255,0,255) tandis que la dernière sera équivalente à un rouge très foncé (7,0,7)."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -373,7 +373,7 @@
         <dct:identifier>059</dct:identifier>
         <dct:title xml:lang="fr-FR">Réaliser une série de rayures verticales vertes et jaunes grâce à l'opérateur MODULO.</dct:title>
         <dct:description><![CDATA["class":"l1 small","a":{"op":["rect","ii","rgb"],"va":["V000","V001","V032","V002","V255","I"],"ma":["plus","mult","modulo"],"cl":["rep"]},"valid":{"screen":997149702}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Réalisez une série de rayures verticales vertes et jaunes.","","Tracez 32 colonnes de l1ur 1 grâce à la commande RECT. La couleur de chaque colonne est définie par RGB (255*(I%2), 255, 0) où I est le numéro de la colonne.","","L'opérateur MODULO % renvoit le reste de la division entière de ces 2 opérandes. Concrêtement I%2 renvoit 0 lorsque I est pair et 1 lorsque I est impair."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Réalisez une série de rayures verticales vertes et jaunes.","","Tracez 32 colonnes de largeur 1 grâce à la commande RECT. La couleur de chaque colonne est définie par RGB (255*(I%2), 255, 0) où I est le numéro de la colonne.","","L'opérateur MODULO % renvoit le reste de la division entière de ces 2 opérandes. Concrêtement I%2 renvoit 0 lorsque I est pair et 1 lorsque I est impair."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -457,7 +457,7 @@
         <dct:identifier>066</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher un histogramme vertical de couleur verte à partir de données fournies par un tableau.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["rect","jj","rgb","xx"],"va":["V000","V001","V255","J","X"],"ma":["plus","get","len"],"cl":["rep"]},"values":{"DATA":[15,15,15,15,14,14,14,14,13,13,13,12,12,11,10,9,8,7,6,5,5,4,4,4,4,4,5,5,6,7,8,9]},"valid":{"screen":1553789210}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez un histogramme vertical de couleur verte à partir de données fournies par le tableau DATA.","","Pour tracer cet histogramme, les X premiers pixels de chaque ligne J doivent être peints en vert grâce à la commande RECT. La valeur de cette l1ur de rectangle X correspond à la Jème valeur de DATA.","","Pour des raisons d'affichage et de visibilité, il est conseillé de définir une variable X = GET( DATA, J ) avant d'utiliser RECT."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez un histogramme vertical de couleur verte à partir de données fournies par le tableau DATA.","","Pour tracer cet histogramme, les X premiers pixels de chaque ligne J doivent être peints en vert grâce à la commande RECT. La valeur de cette largeur de rectangle X correspond à la Jème valeur de DATA.","","Pour des raisons d'affichage et de visibilité, il est conseillé de définir une variable X = GET( DATA, J ) avant d'utiliser RECT."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -469,7 +469,7 @@
         <dct:identifier>067</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher un histogramme vertical double de couleurs verte et jaunes à partir de données fournies par un tableau.</dct:title>
         <dct:description><![CDATA["class":"l1 small","a":{"op":["rect","jj","xx","yy","rgb"],"va":["V000","V001","V002","V255","J","X","Y"],"ma":["plus","get","mult","div","len"],"cl":["rep"]},"values":{"DATA":[15,4,15,4,15,4,15,4,14,4,14,4,14,4,14,4,13,4,13,4,13,4,12,4,12,4,11,4,10,4,9,4,8,4,7,4,6,4,5,4,5,4,4,4,4,4,4,4,4,4,4,4,5,4,5,4,6,4,7,4,8,4,9,4]},"valid":{"screen":-443782538}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez un histogramme vertical double de couleur verte et jaune à partir de données fournies par le tableau DATA.","","Pour tracer cet histogramme, les X premiers pixels de chaque ligne J doivent être peints en vert, tandisque que les Y pixels suivants (de la même ligne J) doivent être peints en jaune. La valeur de cette l1ur de rectangle X correspond à la valeur 2*J de DATA, tandisque Y correspond à la valeur 2*J+1. Par exemple, [ 12,4 ] définit une première ligne où les 12 premiers pixels sont verts et les 4 suivants sont jaunes."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Affichez un histogramme vertical double de couleur verte et jaune à partir de données fournies par le tableau DATA.","","Pour tracer cet histogramme, les X premiers pixels de chaque ligne J doivent être peints en vert, tandisque que les Y pixels suivants (de la même ligne J) doivent être peints en jaune. La valeur de cette largeur de rectangle X correspond à la valeur 2*J de DATA, tandisque Y correspond à la valeur 2*J+1. Par exemple, [ 12,4 ] définit une première ligne où les 12 premiers pixels sont verts et les 4 suivants sont jaunes."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>

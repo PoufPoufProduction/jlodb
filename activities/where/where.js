@@ -325,7 +325,8 @@
 
             if (settings.it<settings.questions.length && settings.questions[settings.it] && settings.questions[settings.it][2]) {
                 for (var i in settings.questions[settings.it][2]) {
-                    $("#"+i,settings.svg.root()).text(settings.questions[settings.it][2][i]);
+                    if (i=="class") { $("#svgclass",settings.svg.root()).attr("class",settings.questions[settings.it][2][i]); }
+                    else { $("#"+i,settings.svg.root()).text(settings.questions[settings.it][2][i]); }
                 }
             }
 

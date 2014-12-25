@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dct="http://purl.org/dc/terms/">
+
+
+    <rdf:Description>
+        <dct:identifier>p10</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier les nombres premiers inférieurs à 10.</dct:title>
+        <dct:description><![CDATA["number":4,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[],v1=[2,3,5,7],v2=[4,6,8,9,10]; for (var i=0; i<9; i++) { var c=Math.floor(Math.random()*2),v=(c==0)?v1:v2, a=v[Math.floor(Math.random()*v.length)]; result+=(c==0)?\\\"1\\\":\\\"0\\\"; ret.push(a);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"red","color":"orange"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Surlignez les nombres premiers."}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>p10</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>p20</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier les nombres premiers inférieurs à 20.</dct:title>
+        <dct:description><![CDATA["number":4,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[],v1=[2,3,5,7,11,13,17,19],v2=[4,6,8,9,10,12,14,15,16,18,20]; for (var i=0; i<9; i++) { var c=Math.floor(Math.random()*2),v=(c==0)?v1:v2, a=v[Math.floor(Math.random()*v.length)]; result+=(c==0)?\\\"1\\\":\\\"0\\\"; ret.push(a);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"red","color":"orange"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Surlignez les nombres premiers."}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>p10</dct:alternative>
+    </rdf:Description>
+
+</rdf:RDF>

@@ -377,9 +377,42 @@
 
 
     <rdf:Description>
+        <dct:identifier>36</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le numérateur vérifiant l'égalité entre 2 fractions (dont les dénominateurs sont respectivement 3 et 6).</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":1000},"regexp": {"output":"\\\\?"},"gen":"function(){ var a=(Math.random()*2<1), de1=3, de2=6,num1,num2; do { num1=Math.floor(Math.random()*de1+1); num2=num1*de2/de1; } while (num2!=Math.floor(num2)); var ret=\\\"<div style='height:2em;font-size:.7em;margin-left:.2em;'><math><mrow><mfrac><mrow><mi>\\\"+(a?num1:\\\"?\\\")+\\\"</mi></mrow><mrow><mi>\\\"+de1+\\\"</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>\\\"+(a?\\\"?\\\":num2)+\\\"</mi></mrow><mrow><mi>\\\"+de2+\\\"</mi></mrow></mfrac></mrow></math></div>\\\"; return [ret, a?num2:num1];}","class":"alpha p02 blank","font":3]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>277</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>39</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le numérateur vérifiant l'égalité entre 2 fractions (dont les dénominateurs sont respectivement 3 et 9).</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":1000},"regexp": {"output":"\\\\?"},"gen":"function(){ var a=(Math.random()*2<1), de1=3, de2=9,num1,num2; do { num1=Math.floor(Math.random()*de1+1); num2=num1*de2/de1; } while (num2!=Math.floor(num2)); var ret=\\\"<div style='height:2em;font-size:.7em;margin-left:.2em;'><math><mrow><mfrac><mrow><mi>\\\"+(a?num1:\\\"?\\\")+\\\"</mi></mrow><mrow><mi>\\\"+de1+\\\"</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>\\\"+(a?\\\"?\\\":num2)+\\\"</mi></mrow><mrow><mi>\\\"+de2+\\\"</mi></mrow></mfrac></mrow></math></div>\\\"; return [ret, a?num2:num1];}","class":"alpha p02 blank","font":3]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>277</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
         <dct:identifier>48</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le numérateur vérifiant l'égalité entre 2 fractions (dont les dénominateurs sont respectivement 4 et 8).</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":1000},"regexp": {"output":"\\\\?"},"gen":"function(){ var a=(Math.random()*2<1), de1=4, de2=8,num1,num2; do { num1=Math.floor(Math.random()*de1+1); num2=num1*de2/de1; } while (num2!=Math.floor(num2)); var ret=\\\"<div style='height:2em;font-size:.7em;margin-left:.2em;'><math><mrow><mfrac><mrow><mi>\\\"+(a?num1:\\\"?\\\")+\\\"</mi></mrow><mrow><mi>\\\"+de1+\\\"</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>\\\"+(a?\\\"?\\\":num2)+\\\"</mi></mrow><mrow><mi>\\\"+de2+\\\"</mi></mrow></mfrac></mrow></math></div>\\\"; return [ret, a?num2:num1];}","class":"alpha p02 blank","font":3]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>277</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>29</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le numérateur vérifiant l'égalité entre 2 fractions (dont le dénominateur de l'un est multiple de l'autre).</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"regexp": {"output":"\\\\?"},"gen":"function(){ var a=(Math.random()*2<1), de1=Math.floor(Math.random()*8+2),de2=de1*(Math.floor(Math.random()*3)+2),num1,num2; do { num1=Math.floor(Math.random()*de1+1); num2=num1*de2/de1; } while (num1==de1 || num2!=Math.floor(num2)); var ret=\\\"<div style='height:2em;font-size:.7em;margin-left:.2em;'><math><mrow><mfrac><mrow><mi>\\\"+(a?num1:\\\"?\\\")+\\\"</mi></mrow><mrow><mi>\\\"+de1+\\\"</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>\\\"+(a?\\\"?\\\":num2)+\\\"</mi></mrow><mrow><mi>\\\"+de2+\\\"</mi></mrow></mfrac></mrow></math></div>\\\"; return [ret, a?num2:num1];}","class":"alpha p02 blank","font":3]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -394,7 +427,7 @@
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>2</dct:type>
+        <dct:type>3</dct:type>
         <dct:alternative>277</dct:alternative>
     </rdf:Description>
 
