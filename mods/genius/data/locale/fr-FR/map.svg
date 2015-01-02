@@ -13,7 +13,7 @@
         .c3                                 { fill:#241f1c; }
         .star                               { stroke:#241f1c;stroke-width:0.1;}
         #nodes text                         { font-size:4px;font-weight:bold;text-anchor:middle;
-                                              font-family:Times New Roman;stroke:#241f1c;stroke-width:0.1; fill:#4c4237;}
+                                              font-family:arial;stroke:#241f1c;stroke-width:0.1; fill:#4c4237;}
         #nodes text.nb                      { stroke:none; }
         .available.blue .c2                 { fill:#44BBFF; }
         .available.green .c2                { fill:#55EE22; }
@@ -74,20 +74,20 @@
 
         /* THEME : Ulysse */
         .Ulysse .background rect              { fill:white; }
-        .Ulysse .c1                           { fill:#ddd; }
-        .Ulysse .available .c1                { fill:red; }
+        .Ulysse .c1                           { fill:black; }
+        .Ulysse .available .c1                { fill:red;stroke:red;stroke-width:1; }
         .Ulysse .c2                           { fill:gray; }
         .Ulysse .c3                           { fill:#eee; }
-        .Ulysse .link>*                       { stroke:#ddd; }
-        .Ulysse #nodes text                   { stroke:black;fill:#eee;}
+        .Ulysse .link>*                       { stroke:black; }
+        .Ulysse #nodes text                   { stroke:none;fill:black;}
         .Ulysse #nodes .available text        { fill:black; }
-        .Ulysse .available.link>*             { stroke:red; }
+        .Ulysse .available.link>*             { stroke:red; stroke-width:1.2;}
         .Ulysse .available .c2                { fill:#F88 !important; }
-        .Ulysse .rbg                          { stroke:gray; }
-        .Ulysse .rgg                          { fill:gray; }
-        .Ulysse .rfg                          { stroke:gray; }
-        .Ulysse .rbd                          { stroke:gray; }
-        .Ulysse .rbb                          { stroke:gray; }
+        .Ulysse .rbg                          { stroke:gray; stroke-width:0.5; stroke-opacity:1; }
+        .Ulysse .rgg                          { fill:none;stroke:gray;stroke-width:0.5; stroke-opacity:1; }
+        .Ulysse .rfg                          { stroke:gray; stroke-width:0.5; stroke-opacity:1; }
+        .Ulysse .rbd                          { stroke:gray; stroke-width:0.5; stroke-opacity:1; }
+        .Ulysse .rbb                          { stroke:gray; stroke-width:0.5; stroke-opacity:1; }
 
 
     </style>
@@ -384,7 +384,7 @@
 
         <g id="8" transform="translate(17.32,-10)" class="green node">
             <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
-            <text y="1">N+</text>
+            <text y="1">N</text>
         </g>
 
         <g id="9" transform="translate(-10,-17.32)" class="yellow node">
@@ -414,12 +414,12 @@
 
         <g id="14" transform="translate(5,8.66)" class="orange node">
             <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
-            <text y="1">+-*/</text>
+            <text y="1">+-x/</text>
         </g>
 
         <g id="15" transform="translate(-5,8.66)" class="red node">
             <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
-            <text y="1">+-*/</text>
+            <text y="1">+-x/</text>
         </g>
     </g>
 
@@ -432,7 +432,7 @@
         <g class="link s62 d74"><path d="M 16,13.5 L 35,13.5"/></g>
         <g id="31" transform="translate(0,-10)" class="blue node">
             <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
-            <text y="1">+*</text>
+            <text y="1">+x</text>
         </g>
         <g transform="translate(-10,20)">
             <use x="0" y="0" xlink:href="#r1"/>
@@ -476,7 +476,7 @@
         </g>
         <g id="72" transform="translate(0,-7)" class="green node">
             <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
-            <text y="1">*</text>
+            <text y="1">x</text>
         </g>
         <g id="73" transform="translate(6.06,3.5)" class="green node">
             <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
@@ -497,6 +497,7 @@
         <use x="0" y="0" xlink:href="#r1"/>
         <g class="link s21 d22"><path d="M 0,7 C 3.864,7 7,3.864 7,0 C 7,-3.864 3.864,-7 0,-7" transform="rotate(90)"/></g>
         <g class="link s21 d1501"><path d="M -7,0 C -7,-3.864 -3.864,-7 0,-7 L 0,-30"/></g>
+        <g class="link s22 d1504"><path d="M 7,0 L 7,-26 Q 16,-31 16,-40 L 10,-40"/></g>
 
         <g id="21" transform="translate(-7,0)" class="green node">
             <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
@@ -504,7 +505,7 @@
         </g>
         <g id="22" transform="translate(7,0)" class="green node">
             <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
-            <text y="1">OR</text>
+            <text y="1">or</text>
         </g>
     </g>
 
@@ -513,12 +514,20 @@
         <use x="0" y="0" xlink:href="#r2"/>
 
         <!-- ROBOT -->
-      <g transform="translate(-4,-40)">
+      <g transform="translate(-4,-50)">
         <use x="0" y="0" xlink:href="#r1"/>
-        <g class="link s1001 d1002" transform="rotate(-120)"><path d="M 6.06,3.5 C 6.66,2.47 7,1.27 7,0 C 7,-3.864 3.864,-7 0,-7"/></g>
-        <g class="link s1002 d1003" transform="rotate(120)"><path d="M 6.06,3.5 C 6.66,2.47 7,1.27 7,0 C 7,-3.864 3.864,-7 0,-7"/></g>
-        <g class="link s1002 d1501"><path d="M -6.06,3.5 L -12,3.5 Q -17,3.5 -17,8.5 L -17,45 C -12,46 -4,53 -2,57 L 4,50"/></g>
-        <g class="link s1001 d1101"><path d="M 0,-7 L 0,-14 Q 0,-24 10,-24 L 54,-24 Q 64,-24 64,-14"/></g>
+        <use x="25" y="3.5" xlink:href="#r1"/>
+        <use x="25" y="20" xlink:href="#r1"/>
+        <use x="0" y="23.5" xlink:href="#r1"/>
+        <g class="link s1001 d1002"><path d="M 6.06,3.5 C 6.66,2.47 7,1.27 7,0 C 7,-3.864 3.864,-7 0,-7" transform="rotate(-120)"/></g>
+        <g class="link s1002 d1003"><path d="M 6.06,3.5 C 6.66,2.47 7,1.27 7,0 C 7,-3.864 3.864,-7 0,-7" transform="rotate(120)"/></g>
+        <g class="link s1003 d1004"><path d="M 6.06,3.5 L 19,3.5"/></g>
+        <g class="link s1004 d1005" transform="translate(25,3.5)"><path d="M 0,7 C 3.864,7 7,3.864 7,0 C 7,-3.864 3.864,-7 0,-7" transform="rotate(-90)"/></g>
+        <g class="link s1005 d1006"><path d="M 32,3.5 L 32,20"/></g>
+        <g class="link s1006 d1007" transform="translate(25,20)"><path d="M 0,7 C 3.864,7 7,3.864 7,0 C 7,-3.864 3.864,-7 0,-7" transform="rotate(90)"/></g>
+        <g class="link s1007 d1008"><path d="M 6.06,20 L 19,20"/></g>
+        <g class="link s1002 d1501"><path d="M -6.06,3.5 L -12,3.5 Q -17,3.5 -17,13.5 L -17,55 C -12,56 -4,63 -2,67 L 4,60"/></g>
+        <g class="link s1001 d1101"><path d="M 0,-7 L 0,-14 Q 0,-24 10,-24 L 54,-24 Q 64,-24 64,-14 L 64,-4"/></g>
 
         <g id="1001" transform="translate(0,-7)" class="blue node">
             <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
@@ -531,6 +540,26 @@
         <g id="1003" transform="translate(6.06,3.5)" class="blue node">
             <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
             <text y="1">for</text>
+        </g>
+        <g id="1004" transform="translate(19,3.5)" class="green node">
+            <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
+            <text y="1">f1</text>
+        </g>
+        <g id="1005" transform="translate(32,3.5)" class="green node">
+            <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
+            <text y="1">if</text>
+        </g>
+        <g id="1006" transform="translate(32,20)" class="green node">
+            <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
+            <text y="1">do</text>
+        </g>
+        <g id="1007" transform="translate(19,20)" class="yellow node">
+            <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
+            <text y="1">rec</text>
+        </g>
+        <g id="1008" transform="translate(6.06,20)" class="orange node">
+            <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
+            <text y="1">//</text>
         </g>
       </g>
 
@@ -551,11 +580,11 @@
         </g>
         <g id="1103" transform="translate(-20,0)" class="green node">
             <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
-            <text y="1">rep</text>
+            <text y="1">for</text>
         </g>
         <g id="1104" transform="translate(-14.14,14.14)" class="green node">
             <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
-            <text y="1" class="nb">fct</text>
+            <text y="1">f1</text>
         </g>
       </g>
 
@@ -563,17 +592,27 @@
       <g transform="translate(0,0)">
         <g class="link s1501 d1502"><path d="M 10,0 C 10,-5.52 5.52,-10 0,-10" transform="rotate(180)"/></g>
         <g class="link s1502 d1503"><path d="M -10,0 L 0,0"/></g>
+        <g class="link s1503 d1504"><path d="M 10,0 L 0,0"/></g>
+        <g class="link s1504 d1505"><path d="M 10,0 C 10,-5.52 5.52,-10 0,-10" transform="rotate(0)"/></g>
         <g id="1501" transform="translate(0,10)" class="blue node">
             <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
-            <text y="1">A9</text>
+            <text y="1">lda</text>
         </g>
         <g id="1502" transform="translate(-10,0)" class="blue node">
             <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
-            <text y="1">8D</text>
+            <text y="1">sta</text>
         </g>
         <g id="1503" transform="translate(0,0)" class="blue node">
             <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
-            <text y="1">69</text>
+            <text y="1">adc</text>
+        </g>
+        <g id="1504" transform="translate(10,0)" class="green node">
+            <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
+            <text y="1">and</text>
+        </g>
+        <g id="1505" transform="translate(0,-10)" class="green node">
+            <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
+            <text y="1">Z</text>
         </g>
       </g>
 
@@ -592,7 +631,7 @@
         </g>
         <g id="1203" transform="translate(10,0)" class="green node">
             <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
-            <text y="1">rep</text>
+            <text y="1">for</text>
         </g>
       </g>
 
