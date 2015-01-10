@@ -73,15 +73,15 @@
         .Nemo .rbb                          { stroke:white; }
 
         /* THEME : Ulysse */
-        .Ulysse .background rect              { fill:white; }
+        .Ulysse .background rect              { fill:none; }
         .Ulysse .c1                           { fill:black; }
-        .Ulysse .available .c1                { fill:red;stroke:red;stroke-width:1; }
+        .Ulysse .available .c1                { fill:red;stroke:red;stroke-width:0.5; }
         .Ulysse .c2                           { fill:gray; }
         .Ulysse .c3                           { fill:#eee; }
         .Ulysse .link>*                       { stroke:black; }
         .Ulysse #nodes text                   { stroke:none;fill:black;}
-        .Ulysse #nodes .available text        { fill:black; }
-        .Ulysse .available.link>*             { stroke:red; stroke-width:1.2;}
+        .Ulysse #nodes .available text        { fill:red; }
+        .Ulysse .available.link>*             { stroke:red; }
         .Ulysse .available .c2                { fill:#F88 !important; }
         .Ulysse .rbg                          { stroke:gray; stroke-width:0.5; stroke-opacity:1; }
         .Ulysse .rgg                          { fill:none;stroke:gray;stroke-width:0.5; stroke-opacity:1; }
@@ -191,9 +191,23 @@
         </g>
     </g>
 
+    <!-- PICROSS -->
+    <g transform="translate(70,120)">
+        <use x="0" y="0" xlink:href="#r3"/>
+        <g class="link s11 d9051"><path d="M 40,0 L 14,0"/></g>
+        <g class="link s9051 d9052" transform="rotate(45)"><path d="M 9.9,-9.9 C 7.37,-12.44 3.86,-14 0,-14"/></g>
+        <g id="9051" transform="translate(14,0)"  class="blue node">
+            <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
+            <text y="1">5x5</text>
+        </g>
+        <g id="9052" transform="translate(9.9,-9.9)" class="green node">
+            <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
+            <text y="1">10²</text>
+        </g>
+    </g>
 
     <!-- FRENCH -->
-    <g transform="translate(40,120)">
+    <g transform="translate(80,200)">
 
         <g transform="translate(-20,0)">
             <use x="0" y="0" xlink:href="#r1"/>
@@ -222,11 +236,11 @@
             <g class="link s10012 d10013" transform="rotate(-45)"><path d="M 9.9,-9.9 C 7.37,-12.44 3.86,-14 0,-14"/></g>
             <g class="link s10013 d10014" transform="rotate(0)"><path d="M 9.9,-9.9 C 7.37,-12.44 3.86,-14 0,-14"/></g>
             <g class="link s10014 d10018" transform="rotate(45)"><path d="M 9.9,-9.9 C 7.37,-12.44 3.86,-14 0,-14"/></g>
+            <g class="link s8 d10014"><path d="M 9.9,-9.9 L 20,-9.9 Q 25,-9.9 25,-14.9 L 25,-30"/></g>
             <g class="link s10011 d10015" transform="rotate(-135)"><path d="M 9.9,-9.9 C 7.37,-12.44 3.86,-14 0,-14"/></g>
             <g class="link s10015 d10016" transform="rotate(180)"><path d="M 9.9,-9.9 C 7.37,-12.44 3.86,-14 0,-14"/></g>
             <g class="link s10016 d10017" transform="rotate(135)"><path d="M 9.9,-9.9 C 7.37,-12.44 3.86,-14 0,-14"/></g>
             <g class="link s10017 d10018" transform="rotate(90)"><path d="M 9.9,-9.9 C 7.37,-12.44 3.86,-14 0,-14"/></g>
-            <g class="link s8 d10014"><path d="M 9.9,-9.9 L 9.9,-20 Q 9.9,-30 20,-30 L 105,-30 Q 127,-30 133,-10 L 123,-10"/></g>
             <g class="link s10018 d10051"><path d="M 14,0 L 20,0 Q 25,0 25,5 L 25,10"/></g>
             <g id="10011" transform="translate(-14,0)"  class="blue node">
                 <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
@@ -323,101 +337,89 @@
     </g>
 
 
-    <!-- [10] numeration until 10 -->
-    <g transform="translate(160,120)">
-        <use x="0" y="0" xlink:href="#r4"/>
-        <g class="link s1 d2"><line x1="0" y1="0" x2="-10" y2="0"/></g>
-        <g class="link s1 d3"><line x1="0" y1="0" x2="10" y2="0"/></g>
-        <g class="link s2 d5"><path d="M 8.65,-5 C 6.92,-7.98 3.7,-10 0,-10" transform="rotate(270)"/></g>
-        <g class="link s3 d4"><path d="M 8.65,-5 C 6.92,-7.98 3.7,-10 0,-10" transform="rotate(30)"/></g>
-        <g class="link s4 d5"><path d="M 8.65,-5 C 6.92,-7.98 3.7,-10 0,-10" transform="rotate(330)"/></g>
-        <g class="link s12 d13"><path d="M 14.125,-14.125 C 10.505,-17.745 5.52,-20 0,-20" transform="rotate(135)"/></g>
-        <g class="link s5 d10"><line x1="-17.32" y1="-10" x2="-5" y2="-8.66"/></g>
-        <g class="link s4 d8"><line x1="17.32" y1="-10" x2="5" y2="-8.66"/></g>
-        <g class="link s13 d14"><line x1="14.14" y1="14.14" x2="5" y2="8.66"/></g>
-        <g class="link s14 d15"><path d="M 8.65,-5 C 6.92,-7.98 3.7,-10 0,-10" transform="rotate(150)"/></g>
-        <g class="link s6 d7"><path d="M 10,-17.31 C 7.05,-19.01 3.64,-20 0,-20" transform="rotate(0)"/></g>
-        <g class="link s8 d6"><path d="M 10,-17.31 C 7.05,-19.01 3.64,-20 0,-20" transform="rotate(30)"/></g>
-        <g class="link s7 d9"><path d="M 10,-17.31 C 7.05,-19.01 3.64,-20 0,-20" transform="rotate(-30)"/></g>
-        <g class="link s10 d9"><path d="M 10,-17.31 C 7.05,-19.01 3.64,-20 0,-20" transform="rotate(-60)"/></g>
-        <g class="link s10 d11"><path d="M 17.31,-10 C 13.62,-16.26 7.13,-19.79 0,-20" transform="rotate(-120)"/></g>
-        <g class="link s11 d12"><path d="M 17.31,-10 C 13.62,-16.26 7.13,-19.79 0,-20" transform="rotate(180)"/></g>
-        <g class="link s8 d21"><path d="M 17.32,-10 Q 20,-5 20,0 L 28,0"/></g>
-        <g class="link s13 d22"><path d="M 14.14,14.14 L 43,14.14 Q 50,14.14 50,7 L50,0 L 42,0"/></g>
-        <g class="link s9 d12"><path d="M -10,-17.31 L -15,-25.97 C -23.96,-20.78 -30,-11.1 -30,0 C -30,16.56 -16.56,30 0,30 L 0,20"/></g>
-        <g class="link s13 d31"><line x1="14.14" y1="14.14" x2="14.14" y2="30"/></g>
 
+    <!-- [10] numeration until 10 -->
+    <g transform="translate(110,150)">
+        <use x="0" y="0" xlink:href="#r2"/>
+        <use x="40" y="-30" xlink:href="#r2"/>
+        <use x="10" y="-30" xlink:href="#r2"/>
+        <use x="-10" y="-50" xlink:href="#r1"/>
+        <g class="link s1 d2"><line x1="0" y1="0" x2="-10" y2="0"/></g>
+        <g class="link s1 d3"><line x1="0" y1="0" x2="0" y2="10"/></g>
+        <g class="link s2 d5"><path d="M 10,0 C 10,-5.52 5.52,-10 0,-10" transform="rotate(-90)"/></g>
+        <g class="link s3 d4"><path d="M 10,0 C 10,-5.52 5.52,-10 0,-10" transform="rotate(90)"/></g>
+        <g class="link s4 d5"><path d="M 10,0 C 10,-5.52 5.52,-10 0,-10" transform="rotate(0)"/></g>
+        <g class="link s4 d8"><path d="M 10,0 Q 20,0 20,10 Q 20,20 10,20"/></g>
+        <g class="link s4 d6"><path d="M 10,0 Q 10,-10 20,-10 L 30,-10 Q 40,-10 40,-20"/></g>
+        <g class="link s8 d10"><path d="M 10,-20 L 0,-20 C -11.04,-20 -20,-11.04 -20,0 C -20,11.04 -11.04,20 0,20 L 10,20"/></g>
+        <g class="link s6 d7" transform="translate(40,-30)"><path d="M 10,0 C 10,-5.52 5.52,-10 0,-10" transform="rotate(90)"/></g>
+        <g class="link s7 d9" transform="translate(40,-30)">
+            <path d="M 0,10 C 5.52,10 10,5.52 10,0 C 10,-5.52 5.52,-10 0,-10" transform="rotate(-90)"/>
+        </g>
+        <g class="link s5 d10" transform="translate(0,-20)"><path d="M 10,0 C 10,-5.52 5.52,-10 0,-10" transform="rotate(90)"/></g>
+        <g class="link s10 d9"><path d="M 10,-20 L 25,-20 Q 30,-20 30,-25 L 30,-30"/></g>
+        <g class="link s10 d11" transform="translate(0,-20)"><path d="M 10,0 C 10,-5.52 5.52,-10 0,-10" /></g>
+        <g class="link s11 d12" transform="translate(0,-40)"><path d="M 10,0 C 10,-5.52 5.52,-10 0,-10" transform="rotate(90)"/></g>
+        <g class="link s9 d12" transform="translate(10,-30)"><path d="M 20,0 L 10,0 C 10,-5.52 5.52,-10 0,-10"/></g>
+        <g class="link s12 d13"><path d="M 10,-40 L 10,-45 Q 10,-50 15,-50 L 40,-50"/></g>
+        <g class="link s12 d14"><path d="M 10,-40 L -5,-40 Q -10,-40 -10,-45 L -10,-50"/></g>
+        <g class="link s13 d31"><path d="M 40,-50 L 45,-50 Q 65,-50 65,-30 L 65,0"/></g>
+        <g class="link s13 d21"><path d="M 40,-50 L 40,-55 L 45,-55 Q 70,-55 70,-30 L 78,-30"/></g>
+
+ 
         <g id="1" transform="translate(0,0)"  class="blue node">
             <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
             <text y="1">10</text>
         </g>
-
         <g id="2" transform="translate(-10,0)" class="blue node">
             <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
             <text y="1">+5</text>
         </g>
-
-        <g id="3" transform="translate(10,0)" class="blue node">
+        <g id="3" transform="translate(0,10)" class="blue node">
             <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
             <text y="1" class="nb">0</text>
         </g>
-
-        <g id="4" transform="translate(5,-8.66)" class="blue node">
+        <g id="4" transform="translate(10,0)" class="blue node">
             <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
             <text y="1">100</text>
         </g>
-
-        <g id="5" transform="translate(-5,-8.66)" class="blue node">
+        <g id="5" transform="translate(0,-10)" class="blue node">
             <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
             <text y="1">+10</text>
         </g>
-
-        <g id="6" transform="translate(10,-17.32)" class="blue node">
+        <g id="6" transform="translate(40,-20)" class="blue node">
             <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
             <text y="1" class="nb">x</text>
         </g>
-
-        <g id="7" transform="translate(0,-20)" class="green node">
+        <g id="7" transform="translate(50,-30)" class="green node">
             <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
             <text y="1" class="nb">x</text>
         </g>
-
-        <g id="8" transform="translate(17.32,-10)" class="green node">
+        <g id="8" transform="translate(10,20)" class="green node">
             <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
             <text y="1">N</text>
         </g>
-
-        <g id="9" transform="translate(-10,-17.32)" class="yellow node">
+        <g id="9" transform="translate(30,-30)" class="yellow node">
             <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
             <text y="1" class="nb">x</text>
         </g>
-
-        <g id="10" transform="translate(-17.32,-10)" class="blue node">
+        <g id="10" transform="translate(10,-20)" class="blue node">
             <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
             <text y="1" class="nb">+</text>
         </g>
-
-        <g id="11" transform="translate(-17.32,10)" class="green node">
+        <g id="11" transform="translate(0,-30)" class="green node">
             <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
             <text y="1" class="nb">-</text>
         </g>
-
-        <g id="12" transform="translate(0,20)" class="green node">
+        <g id="12" transform="translate(10,-40)" class="green node">
             <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
             <text y="1" class="nb">/</text>
         </g>
-
-        <g id="13" transform="translate(14.14,14.14)" class="yellow node">
+        <g id="13" transform="translate(40,-50)" class="yellow node">
             <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
             <path class="star" d="M 0,-2.9 C 0.02,-2.9 0.80,-1.04 0.82,-1.03 C 0.84,-1.02 2.84,-0.84 2.85,-0.82 C 2.86,-0.81 1.34,0.51 1.33,0.53 C 1.32,0.55 1.78,2.51 1.76,2.52 C 1.74,2.54 0.02,1.5 0,1.5 C -0.02,1.5 -1.74,2.54 -1.76,2.53 C -1.78,2.51 -1.32,0.55 -1.33,0.53 C -1.34,0.51 -2.86,-0.80 -2.85,-0.83 C -2.84,-0.84 -0.84,-1.02 -0.82,-1.03 C -0.80,-1.04 -0.02,-2.9 0,-2.9 z"/>
         </g>
-
-        <g id="14" transform="translate(5,8.66)" class="orange node">
-            <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
-            <text y="1">+-x/</text>
-        </g>
-
-        <g id="15" transform="translate(-5,8.66)" class="red node">
+        <g id="14" transform="translate(-10,-50)" class="orange node">
             <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
             <text y="1">+-x/</text>
         </g>

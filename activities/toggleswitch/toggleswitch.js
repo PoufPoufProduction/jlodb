@@ -9,7 +9,7 @@
         score       : 1,                                        // The score (from 1 to 5)
         number      : 0,                                        // Pages number
         show        : true,                                     // Show the wrong responses
-        toggle      : ".a",                                     // Active class
+        toggle      : "a",                                      // Active class
         result      : "",
         init        : "",
         font        : 1,                                        // Template font
@@ -117,11 +117,11 @@
         click: function($this, id) {
             var settings = helpers.settings($this);
             if (settings.interactive) {
-                var elt = settings.current.values[id];
+                var elt = settings.current.elts[id];
 
                 var isOk = true;
-                if (settings.current.elt.onclick) {
-                    isOk = eval('('+settings.current.elt.onclick+')')($this, settings.current.values, id); }
+                if (settings.current.onclick) {
+                    isOk = eval('('+settings.current.onclick+')')($this, settings.current.elts, id); }
 
                 if (isOk) {
                     elt.state=(elt.state+1)%((settings.states.nb)?settings.states.nb:2);
@@ -131,11 +131,11 @@
         },
         fill: function($this) {
             var settings = helpers.settings($this);
-            settings.current.values = [];
-            $this.find(settings.toggle).each(function(index) {
+            settings.current.elts = [];
+            $this.find("."+settings.toggle).each(function(index) {
                 var elt={ elt:$(this), state:0 };
                 if (settings.init.length>index) { elt.state = parseInt(settings.init[index]); }
-                settings.current.values.push(elt);
+                settings.current.elts.push(elt);
                 helpers.refresh($this,elt);
                 $(this).bind("mousedown touchstart",function(event){ helpers.click($this,index); event.preventDefault();});
             });
@@ -151,15 +151,12 @@
             if (!settings.number)   { settings.number = (settings.values)?settings.values.length:1; }
 
             // 3 CASES : GEN (FUNCTION), VALUES (ARRAY), DATA (SINGLE)
-            settings.current.elt=settings.values?settings.values[settings.it%settings.values.length]:settings;
-            if (settings.gen) {
-                var gen = eval('('+settings.current.elt.gen+')')();
+            settings.current=settings.values?settings.values[settings.it%settings.values.length]:settings;
+            if (settings.current.gen) {
+                var gen = eval('('+settings.current.gen+')')();
                 settings.current.t      = gen.t;
                 settings.current.result = gen.result;
-            }
-            else {
-                settings.current.t      = settings.current.elt.t;
-                settings.current.result = settings.current.elt.result;
+                if (gen.data) { settings.current.data   = gen.data; }
             }
 
             if (settings.exercice) {
@@ -172,20 +169,20 @@
                 }
                 $this.find("#exercice").show();
             } else
-            if (settings.current.elt.exercice) {
-                $this.find("#exercice #content").html(settings.current.elt.comment);
+            if (settings.current.exercice) {
+                $this.find("#exercice #content").html(settings.current.comment);
                 $this.find("#exercice").show(); }
             else { $this.find("#exercice").hide(); }
 
-            if (settings.current.elt.template) {
+            if (settings.current.template) {
                 var debug = "";
                 if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
 
                 var vRegexp = 0;
                 if (settings.regexp) { vRegexp = new RegExp(settings.regexp.from, "g"); }
 
-                if (settings.current.elt.template.indexOf(".svg")!=-1) {
-                    var templatepath = "res/img/"+settings.current.elt.template+debug;
+                if (settings.current.template.indexOf(".svg")!=-1) {
+                    var templatepath = "res/img/"+settings.current.template+debug;
                     var elt= $("<div id='svg'></div>").appendTo($this.find("#data"));
                     elt.svg();
                     settings.svg = elt.svg('get');
@@ -199,7 +196,7 @@
                     });
                 }
                 else {
-                    var templatepath = "activities/"+settings.name+"/template/"+settings.current.elt.template+".html"+debug;
+                    var templatepath = "activities/"+settings.name+"/template/"+settings.current.template+".html"+debug;
                     $this.find("#data").load(templatepath, function(response, status, xhr) {
                         $this.find(".t").each(function(index) {
                             var value = settings.current.t[index];
@@ -212,10 +209,15 @@
                 }
             }
             else {
-                $this.find("#data").html(settings.data);
+                $this.find("#data").html(settings.current.data);
+                $this.find(".t").each(function(index) {
+                    var value = settings.current.t[index];
+                    if (vRegexp) { value = value.replace(vRegexp, settings.regexp.to); }
+                    if (settings.current.t && settings.current.t.length>index) { $(this).text(value); }});
                 helpers.fill($this);
             }
         }
+
     };
 
     // The plugin
@@ -263,12 +265,12 @@
                     settings.interactive = false;
                     var result  = "";
                     var wrongs  = 0;
-                    for (var i=0; i<settings.current.values.length; i++) {
-                        result+=settings.current.values[i].state;
-                        if(settings.current.result.length<i || settings.current.values[i].state!=settings.current.result[i]) {
+                    for (var i=0; i<settings.current.elts.length; i++) {
+                        result+=settings.current.elts[i].state;
+                        if(settings.current.result.length<i || settings.current.elts[i].state!=settings.current.result[i]) {
                             wrongs++;
-                            settings.current.values[i].state = -1;
-                            helpers.refresh($this, settings.current.values[i]);
+                            settings.current.elts[i].state = -1;
+                            helpers.refresh($this, settings.current.elts[i]);
                         }
                     }
                     var value = wrongs?"wrong":"good";
@@ -308,7 +310,7 @@
             },
             refresh: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                for (var i in settings.current.values) { helpers.refresh($this, settings.current.values[i]); }
+                for (var i in settings.current.elts) { helpers.refresh($this, settings.current.elts[i]); }
             }
         };
 

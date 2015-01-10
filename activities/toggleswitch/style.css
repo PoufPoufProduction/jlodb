@@ -19,12 +19,14 @@
 .toggleswitch div#submit.good #subgood      { display:inline; }
 .toggleswitch div#submit.wrong #subwrong    { display:inline; }
 .toggleswitch div#board                     { height:16em; }
-.toggleswitch div#exercice                  { height:2.6em; font-style:italic;
-                                              background-color:rgba(255,255,255,0.8); padding:0 0.5em 0 1.5em;
-                                              display:none; font-size:0.6em; position:absolute; top:0; width:25em; }
+.toggleswitch div#exercice                  { position:absolute; width:14.2em; height:1.5em; top:10.5em; left:1.8em;
+                                              border-radius:.5em 0 0 0; display:none;
+                                              background-image:url("../../res/img/background/book02.svg"); background-repeat:repeat; }
+.toggleswitch div#exercice>div              { font-size:0.5em; }
+.toggleswitch div#exercice #content         { margin:.2em 1em; text-align:justify; font-style:italic; }
 .toggleswitch div#exercice #label           { font-size:2em; float:right; width:2.0em; height:1.2em; font-weight:bold;
                                               color:white; background-color:black; border-radius:.2em; text-align:center;
-                                              margin:.05em; display:none; }
+                                              margin:.1em; display:none; }
 .toggleswitch .a                            { cursor:pointer; }
 .toggleswitch div#data                      { overflow:visible; position:absolute; width:16em; height:12em; top:0; }
 .toggleswitch div#data>div                  { overflow:visible; }

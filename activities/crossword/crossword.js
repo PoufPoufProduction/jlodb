@@ -318,20 +318,22 @@
             next: function()    { $(this).find("#splash").hide(); helpers.settings($(this)).interactive = true; },
             valid: function() {
                 var $this = $(this) , settings = helpers.settings($this);
+                var error = 0;
                 $this.find(".bg").removeClass("l1").removeClass("l2");
                 $this.find(".bg .v").show();
                 $this.find(".hint div").removeClass("s");
                 for (var row=0; row<settings.data.length; row++) for (var col=0; col<settings.data[row].length; col++) {
                     if (settings.data[row][col]!=settings.empty &&
                         settings.data[row][col]!=this.find("#"+col+"x"+row+" .v").text()) {
-                        settings.score--;
+                        error++;
                         this.find("#"+col+"x"+row).addClass("wrong");
                     }
                 }
+                settings.score-=error;
                 if (settings.score<0) settings.score=0;
 
-                if (settings.score==5) { $this.find("#effects #good").show(); }
-                else                   { $this.find("#effects #wrong").show(); }
+                if (error==0) { $this.find("#effects #good").show(); }
+                else          { $this.find("#effects #wrong").show(); }
                 $this.find("#effects").show();
 
                 if (++settings.id<settings.number && settings.gen) {

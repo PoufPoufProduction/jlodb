@@ -175,6 +175,7 @@ window.onload = function() {
                             if (_ret.score>=2) {
                                 isnext = $menu.menu('score', _ret.score).menu('more');
                                 genius.finished = !isnext;
+                                $("#score #reload").toggle(isnext);
                             }
                             $("#score #next").toggle(isnext);
                             $("#score").attr("class","s"+_ret.score).show();

@@ -96,7 +96,13 @@
                 }
 
                 // MANAGE THE OBJECTIVES
-                $this.find("#statement").html(settings.statement);
+                if (settings.statement) {
+                    if ($.isArray(settings.statement)) {
+                        var html=""; for (var i in settings.statement) { html+="<div>"+settings.statement[i]+"</div>"; }
+                        $this.find("#statement").html(html);
+                    }
+                    else { $this.find("#statement").html(settings.statement); }
+                }
                 for (var i in settings.labels) {
                     $this.find("#objectives").append("<tr><td><div class='icon' style='cursor:default;'>"+
                         "<img src='res/img/icon/cancel.svg' alt='x'/></div></td><td>&nbsp;"+

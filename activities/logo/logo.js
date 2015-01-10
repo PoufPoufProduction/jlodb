@@ -74,7 +74,7 @@
             svg:function($this) {
                 var settings = helpers.settings($this), debug = "";
                 if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
-                var elt= $("<div id='svg'></div>").appendTo($this.find("#board"));
+                var elt= $this.find("#board");
                 elt.svg();
                 settings.svg = elt.svg('get');
                 settings.svg.load( 'res/img/'+settings.url + debug,

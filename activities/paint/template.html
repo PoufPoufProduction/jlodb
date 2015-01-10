@@ -1,7 +1,7 @@
 <div>
 
     <div id="board"></div>
-    <div id="exercice"></div>
+    <div id="exercice"><div></div></div>
 
     <div id="submit" ontouchstart="$(this).closest('.paint').paint('valid');event.preventDefault();"
                      onclick="$(this).closest('.paint').paint('valid');">
@@ -9,6 +9,7 @@
         <img src="res/img/icon/swgood.svg" id="subgood"/>
         <img src="res/img/icon/swwrong.svg" id="subwrong"/>
     </div>
+
 
     <div id="splash" ontouchstart="$(this).closest('.paint').paint('next');event.preventDefault();"
                      onclick="$(this).closest('.paint').paint('next');"><div>

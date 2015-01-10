@@ -138,7 +138,7 @@
             for (var i=0; i<settings.nbvalues; i++) {
                 var vValue;
                 do {
-                    if (settings.gen)  { vValue = eval('('+settings.gen+')')(i); }
+                    if (settings.gen)  { vValue = eval('('+settings.gen+')')(i,settings.elts); }
                     else {
                         if (settings.nbvalues==vValues.length) { vValue = vValues[i]; }
                         else { vValue = vValues[Math.floor(Math.random()*vValues.length)]; }

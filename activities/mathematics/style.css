@@ -1,0 +1,42 @@
+.mathematics                                { background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat;}
+
+.mathematics table.zz                       { font-size:1em; border-collapse:collapse; border-spacing:0;}
+.mathematics .z                             { width:1em; height:1em; background-image:url("../../res/img/generic/cell01.svg");
+                                              background-size:100%; }
+.mathematics .a                             { width:1em;height:1em;text-align:center;
+                                              color:#444; background-color:#acacac; border-radius:.2em;
+                                              background-image:url("../../res/img/action/nothing.svg"); }
+.mathematics .a.move                        { background-image:none; color:#eee;}
+.mathematics .a>div                         { font-size:.8em;margin-top:0.12em;cursor:move; }
+
+.mathematics div#splash>div                 { background-image:url("../../res/img/banners/mathematics.svg"); }
+.mathematics div#splash .text               { width:48%; float:right; font-size:.8em;  }
+.mathematics div#splash .text h1            { text-align:right; padding-right:.5em;}
+
+.mathematics>div                            { width:16.2em;height:12em; }
+.mathematics #leftmenu                      { margin:.1em;width:7em;height:11.8em;float:left; }
+.mathematics #leftmenu>#figure              { width:7em;height:5.25em;background-color:white; border-radius:.25em .25em 0 0;}
+.mathematics #leftmenu>#exercice            { width:7em;height:3.5em; background-repeat:repeat;
+                                              background-image:url("../../res/img/background/book02.svg"); text-align:justify;
+                                              font-family: "Courier New" Courier monospace; }
+.mathematics #leftmenu>#exercice>div        { font-size:.3em; margin:.2em;}
+.mathematics.nofig #leftmenu>#figure        { display:none; }
+.mathematics.nofig #leftmenu>#exercice      { margin-top:1em;height:7.75em;  border-radius:.25em .25em 0 0; }
+.mathematics.nofig #leftmenu>#exercice>div  { margin:.5em; }
+.mathematics #leftmenu>#inventory           { width:7em;height:3em;border-radius:0 0 .25em .25em;
+                                              background-color:#90cce0;
+                                              background-image:url("../../res/img/background/book05.svg"); background-repeat:repeat;}
+
+.mathematics #rightmenu                     { margin:.1em .1em .1em 0;width:8.7em;height:12em;float:left; }
+.mathematics #rightmenu>#board              { width:8.7em;height:8em;background-color:white; border-radius:.25em .25em 0 0;
+                                              background-color:#030; background-image:url("../../res/img/background/book06.svg");
+                                              background-repeat:repeat;}
+.mathematics #rightmenu>#screen             { width:8.7em;height:2em;background-color:white; }
+.mathematics #rightmenu>#menu               { width:8.7em;height:1.8em;background-color:gray; border-radius:0 0 .25em .25em;
+                                              background-image:url("../../res/img/background/steel01.svg"); background-repeat:repeat; }
+.mathematics #rightmenu>#menu>div           { float:left;}
+.mathematics #rightmenu>#menu .bar          { width:.1em;height:1.8em;background-color:rgba(255,255,255,0.2); }
+.mathematics #rightmenu>#menu #bar1         { margin:0 .3em 0 2em; }
+.mathematics #rightmenu>#menu #bar2         { margin:0 1em 0 .3em; }
+.mathematics #rightmenu>#menu #result       { margin-top:.4em; }
+.mathematics #rightmenu>#menu #submit       { width:1em; height:1em; font-size:1.4em; margin-top:.15em; }

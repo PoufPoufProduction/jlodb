@@ -11,6 +11,8 @@
         font        : 1,                                        // The font-size multiplicator
         result      : "",                                       // The result
         source      : ["source",""],                            // The source group + prefix
+        canvas      : "canvas",                                 // Toggle element group
+        toggle      : "c",                                      // Toggle element class
         debug       : false                                     // Debug mode
     };
 
@@ -111,8 +113,7 @@
                 $this.find("#board").bind('touchstart mousedown', function() { settings.down=true; event.preventDefault();})
                                     .bind('touchend mouseup', function() { settings.elt=0; settings.down=false; event.preventDefault();});
 
-
-                $("#canvas .c", settings.svg.root()).each(function(_index) {
+                $("#"+settings.canvas+" ."+settings.toggle, settings.svg.root()).each(function(_index) {
                     $(this).bind('touchmove mousemove', function() {
                         if (settings.interactive && settings.color[0]!=-1 && settings.down && settings.elt!=this) {
                             helpers.paint($this, $(this), false);
@@ -132,36 +133,55 @@
                     $(this).attr("id","c"+_index);
                 });
 
-                if (settings.t) {
-                    $("text.t", settings.svg.root()).each(function(_index) {
-                        if (_index<settings.t.length) {
-                            if ($.isArray(settings.t)) { $(this).text(settings.t[_index]); }
-                            else $(this).text(settings.t[_index].charCodeAt(0)>60?settings.t[_index].charCodeAt(0)-55:settings.t[_index]); }
-                    });
-                }
-                if (settings.o) {
-                    $(".o", settings.svg.root()).each(function(_index) {
-                        if (_index<settings.o.length) {
-                            var val = settings.o[_index]; if (val==' ') val = '0';
-                            $(this).attr("class","o c"+val);
-                        }
-                    });
-                }
+                $this.find("#exercice>div").css("font-size",settings.font+"em");
+
+                helpers.build($this);
 
                 // Locale handling
                 $this.find("h1#label").html(settings.label);
-                $this.find("#exercice").html(settings.exercice);
                 if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
 
                 $this.children().show()
                 if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
+        build: function($this) {
+            var settings = helpers.settings($this);
+            var t = settings.t;
+            if (!t && settings.values) { t = settings.values[settings.id].t; }
+            if (t) {
+                $("text.t", settings.svg.root()).each(function(_index) {
+                    if (_index<t.length) {
+                        if ($.isArray(t)) { $(this).text(t[_index]); }
+                        else { $(this).text(t[_index].charCodeAt(0)>60?t[_index].charCodeAt(0)-55:t[_index]); }
+                    }
+                });
+            }
+
+            var o = settings.o;
+            if (!o && settings.values) { o = settings.values[settings.id].o; }
+            if (o) {
+                $(".o", settings.svg.root()).each(function(_index) {
+                    if (_index<o.length) { var val = o[_index]; if (val==' ') val = '0'; $(this).attr("class","o c"+val); }
+                });
+            }
+
+            var exercice = settings.exercice;
+            if (!exercice && settings.values) { exercice = settings.values[settings.id].exercice; }
+            if (exercice) {
+                if ($.isArray(exercice)) {
+                    var html=""; for (var i in exercice) { html+="<div>"+exercice[i]+"</div>"; }
+                    $this.find("#exercice>div").html(html);
+                }
+                else { $this.find("#exercice>div").html(exercice); }
+                $this.find("#exercice").show();
+            }
+        },
         result: function($this) {
             var result="", settings = helpers.settings($this);
-            $("#canvas .c", settings.svg.root()).each(function(_index) {
+            $("#"+settings.canvas+" ."+settings.toggle, settings.svg.root()).each(function(_index) {
                 var val = $(this).attr("class").substr(-1);
-                if (val=="c") { val=" "; } else
+                if (val==settings.toggle) { val=" "; } else
                 if (settings.data&&settings.data[val]&&settings.data[val].skip) { val =" "; }
                 result+=val;
             });
@@ -270,7 +290,8 @@
                     down            : false,
                     score           : 5,
                     color           : [-1,-1],
-                    elt             : 0
+                    elt             : 0,
+                    id              : 0
                 };
 
                 return this.each(function() {
@@ -311,8 +332,8 @@
                         var r1 = settings.result[i];    if (r1==' ') { r1='0'; }
                         var r2 = result[i];             if (r2==' ') { r2='0'; }
                         if (r1!=r2) {
-                             $("#canvas #c"+i, settings.svg.root()).attr("class",
-                                $("#canvas #c"+i, settings.svg.root()).attr("class")+" wrong");
+                             $("#"+settings.canvas+" #c"+i, settings.svg.root()).attr("class",
+                                $("#"+settings.canvas+" #c"+i, settings.svg.root()).attr("class")+" wrong");
                             settings.score--;
                         }
                     }

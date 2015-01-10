@@ -233,7 +233,6 @@
 
     <!-- Negative -->
 
-
     <rdf:Description>
         <dct:identifier>na10</dct:identifier>
         <dct:title xml:lang="en-US"></dct:title>
@@ -245,6 +244,69 @@
         <dct:educationLevel>1</dct:educationLevel>
         <dct:alternative>na10</dct:alternative>
         <dct:type>1</dct:type>
+    </rdf:Description>
+
+    <!-- EXTRACT DIZAINES, CENTAINES a:1, b:10, c:100, etc. -->
+
+
+    <rdf:Description>
+        <dct:identifier>eb1K</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier le nombre de dizaines dans chaque nombre compris entre 0 et 1 000</dct:title>
+        <dct:description><![CDATA["gen":"function(i,_prev){ var f=10,max=1000; var p=i>0?Math.floor(parseInt(_prev[Math.floor(Math.random()*_prev.length)][0].replace(' ',''))/10):0; var a = ((i>0&&Math.random()>0.7&&p>f)?p:Math.floor(Math.random()*(max-f))+f),a2=a,i,aa=\\\"\\\"; i=0; while(a2>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a2%10).toString()+aa; a2=Math.floor(a2/10); i++; }; var b=Math.floor(a/f),i,bb=\\\"\\\"; i=0; while(b>0) { if (i!=0 && i%3==0) { bb=\\\" \\\"+bb; } bb=(b%10).toString()+bb; b=Math.floor(b/10); i++; }; return [aa,bb];}","nbvalues":6,"number":5,"font":1.5,"len":5]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Associez chaque valeur à son <b>nombre de dizaines</b>.","fontex":0.5]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>ec1M</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>eb10K</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier le nombre de dizaines dans chaque nombre compris entre 0 et 10 000</dct:title>
+        <dct:description><![CDATA["gen":"function(i,_prev){ var f=10,max=10000; var p=i>0?Math.floor(parseInt(_prev[Math.floor(Math.random()*_prev.length)][0].replace(' ',''))/10):0; var a = ((i>0&&Math.random()>0.7&&p>f)?p:Math.floor(Math.random()*(max-f))+f),a2=a,i,aa=\\\"\\\"; i=0; while(a2>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a2%10).toString()+aa; a2=Math.floor(a2/10); i++; }; var b=Math.floor(a/f),i,bb=\\\"\\\"; i=0; while(b>0) { if (i!=0 && i%3==0) { bb=\\\" \\\"+bb; } bb=(b%10).toString()+bb; b=Math.floor(b/10); i++; }; return [aa,bb];}","nbvalues":6,"number":5,"font":1.5,"len":5]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Associez chaque valeur à son <b>nombre de dizaines</b>.","fontex":0.5]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>ec1M</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>eb1M</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier le nombre de dizaines dans chaque nombre compris entre 0 et 1 000 000</dct:title>
+        <dct:description><![CDATA["gen":"function(i,_prev){ var f=10,max=1000000; var p=i>0?Math.floor(parseInt(_prev[Math.floor(Math.random()*_prev.length)][0].replace(' ',''))/10):0; var a = ((i>0&&Math.random()>0.7&&p>f)?p:Math.floor(Math.random()*(max-f))+f),a2=a,i,aa=\\\"\\\"; i=0; while(a2>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a2%10).toString()+aa; a2=Math.floor(a2/10); i++; }; var b=Math.floor(a/f),i,bb=\\\"\\\"; i=0; while(b>0) { if (i!=0 && i%3==0) { bb=\\\" \\\"+bb; } bb=(b%10).toString()+bb; b=Math.floor(b/10); i++; }; return [aa,bb];}","nbvalues":6,"number":5,"font":1.5,"len":5]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Associez chaque valeur à son <b>nombre de dizaines</b>.","fontex":0.5]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>ec1M</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>ec10K</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier le nombre de centaines dans chaque nombre compris entre 0 et 10 000</dct:title>
+        <dct:description><![CDATA["gen":"function(i,_prev){ var f=100,max=10000; var p=i>0?Math.floor(parseInt(_prev[Math.floor(Math.random()*_prev.length)][0].replace(' ',''))/10):0; var a = ((i>0&&Math.random()>0.5&&p>f)?p:Math.floor(Math.random()*(max-f))+f),a2=a,i,aa=\\\"\\\"; i=0; while(a2>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a2%10).toString()+aa; a2=Math.floor(a2/10); i++; }; var b=Math.floor(a/f),i,bb=\\\"\\\"; i=0; while(b>0) { if (i!=0 && i%3==0) { bb=\\\" \\\"+bb; } bb=(b%10).toString()+bb; b=Math.floor(b/10); i++; }; return [aa,bb];}","nbvalues":6,"number":5,"font":1.5,"len":5]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Associez chaque valeur à son <b>nombre de centaines</b>.","fontex":0.5]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>ec1M</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>ec1M</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier le nombre de centaines dans chaque nombre compris entre 0 et 1 000 000</dct:title>
+        <dct:description><![CDATA["gen":"function(i,_prev){ var f=100,max=1000000; var p=i>0?Math.floor(parseInt(_prev[Math.floor(Math.random()*_prev.length)][0].replace(' ',''))/10):0; var a = ((i>0&&Math.random()>0.5&&p>f)?p:Math.floor(Math.random()*(max-f))+f),a2=a,i,aa=\\\"\\\"; i=0; while(a2>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a2%10).toString()+aa; a2=Math.floor(a2/10); i++; }; var b=Math.floor(a/f),i,bb=\\\"\\\"; i=0; while(b>0) { if (i!=0 && i%3==0) { bb=\\\" \\\"+bb; } bb=(b%10).toString()+bb; b=Math.floor(b/10); i++; }; return [aa,bb];}","nbvalues":6,"number":5,"font":1.5,"len":5]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Associez chaque valeur à son <b>nombre de centaines</b>.","fontex":0.5]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>ec1M</dct:alternative>
     </rdf:Description>
 
 </rdf:RDF>
