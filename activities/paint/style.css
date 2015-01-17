@@ -13,7 +13,10 @@
 .paint div#exercice                   { position:absolute; width:14.2em; height:1.5em; top:10.5em; left:1.8em; border-radius:.5em 0 0 0;
                                         background-image:url("../../res/img/background/book02.svg"); background-repeat:repeat;
                                         display:none; }
-.paint div#exercice>div               { font-size:1em; margin:.2em 1em; text-align:justify; font-style:italic; }
+.paint div#exercice #content          { margin:.2em 1em; text-align:justify; font-style:italic; }
+.paint div#exercice #label            { font-size:1em; float:right; width:2.5em; height:1.2em; font-weight:bold;
+                                        color:white; background-color:black; border-radius:.2em; text-align:center;
+                                        margin:.1em; display:none; }
 .paint div#board                      { position:absolute; top:0; width:16em; height:12em; }
 .paint div#submit                     { font-size:1.5em; height:1em;width:1em; cursor:pointer; position:absolute;
                                         top:7em; left:0em; z-index:3; }
@@ -23,3 +26,6 @@
 .paint div#submit.wrong #subvalid     { display:none; }
 .paint div#submit.good #subgood       { display:inline; }
 .paint div#submit.wrong #subwrong     { display:inline; }
+
+.paint #effects                     { position:absolute; font-size:6em; top:2%; left:60%; width:1em; height:1em; display:none; }
+.paint #effects>div                 { width:1em; height:1em; display:none; }

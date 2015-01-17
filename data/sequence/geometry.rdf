@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dct="http://purl.org/dc/terms/">
+
+
+    <!-- PREFIX LIST
+    -->
+
+    <!-- FIGURE -->
+
+    <rdf:Description>
+        <dct:identifier>fs01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Différencier, sans contrainte de temps, un carré d'un rectangle (sans rotation).</dct:title>
+        <dct:description><![CDATA["time":0,"template":"template.html","gen":"function(){var a=Math.floor(Math.random()*2),w=5*(Math.floor(Math.random()*7)+1), h=w; if (a) { do { h=5*(Math.floor(Math.random()*7)+1); } while(h==w); } var ret=\\\"<div style='width:1em;height=1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;fill-opacity:0.2;stroke:black;stroke-width:0.5;}.wrong rect {stroke:red;fill:red;fill-opacity:0.5;}.good rect {stroke:green;fill:green;fill-opacity:0.5;}</style></def><g transform='translate(24,24)'><g transform='rotate(0)'><rect x='\\\"+(-w/2)+\\\"' y='\\\"+(-h/2)+\\\"' width='\\\"+w+\\\"' height='\\\"+h+\\\"'/></g></g></svg></div>\\\"; return [ret, a];}","class":"alpha p02 blank","font":3]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"input":{"digit":1,"css":{"font-size":"2.5em","width":"6.0em"},"values":[["Carré",0],["Rectangle",1]]}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>fs01</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>fs02</dct:identifier>
+        <dct:title xml:lang="fr-FR">Différencier, sans contrainte de temps, un carré d'un rectangle (avec rotation).</dct:title>
+        <dct:description><![CDATA["time":0,"template":"template.html","gen":"function(){var a=Math.floor(Math.random()*2),w=5*(Math.floor(Math.random()*6)+1), h=w; if (a) { do { h=5*(Math.floor(Math.random()*6)+1); } while(h==w); } var ret=\\\"<div style='width:1em;height=1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;fill-opacity:0.2;stroke:black;stroke-width:0.5;}.wrong rect {stroke:red;fill:red;fill-opacity:0.5;}.good rect {stroke:green;fill:green;fill-opacity:0.5;}</style></def><g transform='translate(24,24)'><g transform='rotate(\\\"+Math.floor(Math.random()*90)+\\\")'><rect x='\\\"+(-w/2)+\\\"' y='\\\"+(-h/2)+\\\"' width='\\\"+w+\\\"' height='\\\"+h+\\\"'/></g></g></svg></div>\\\"; return [ret, a];}","class":"alpha p02 blank","font":3]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"input":{"digit":1,"css":{"font-size":"2.5em","width":"6.0em"},"values":[["Carré",0],["Rectangle",1]]}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>fs01</dct:alternative>
+    </rdf:Description>
+
+
+    <!-- LINES -->
+
+    <rdf:Description>
+        <dct:identifier>lp01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier, sans contrainte de temps, deux droites parallèles.</dct:title>
+        <dct:description><![CDATA["time":0,"template":"template.html","gen":"function(){var a=Math.random()*Math.PI,ax=Math.random()*20+62,ay=Math.random()*20+14,r=Math.floor(Math.random()*2),b=a,bx=Math.random()*20+62,by=Math.random()*20+14; if (r) { do { by=Math.random()*20+14; bx=Math.random()*20+62; } while(Math.abs(by-ay)<5 || Math.abs(bx-ax)<5); } else { do { b=Math.random()*Math.PI; }while(Math.abs(b-a)<Math.PI/10); } var ret=\\\"<div style='width:3em;height=1em;margin-left:.2em;'><svg width='100%' height='100%' viewBox='0 0 144 48'><def><style>rect {fill-opacity:0;stroke:black;stroke-width:0.5;}.wrong rect {stroke:red;fill:red;fill-opacity:0.5;}.good rect {stroke:green;fill:green;fill-opacity:0.5;}line {stroke:black;stroke-width:1;}</style></def><line x1='\\\"+(ax+200*Math.cos(a))+\\\"' y1='\\\"+(ay+200*Math.sin(a))+\\\"' x2='\\\"+(ax-200*Math.cos(a))+\\\"' y2='\\\"+(ay-200*Math.sin(a))+\\\"'/><line x1='\\\"+(bx+200*Math.cos(b))+\\\"' y1='\\\"+(by+200*Math.sin(b))+\\\"' x2='\\\"+(bx-200*Math.cos(b))+\\\"' y2='\\\"+(by-200*Math.sin(b))+\\\"'/><rect x='0' y='0' width='144' height='48'/></svg></div>\\\"; return [ret, r];}","class":"alpha p02 blank","font":3]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"input":{"digit":1,"css":{"font-size":"5em","width":"3em"},"values":[["OUI",1],["NON",0]]},"comment":"Les deux droites sont-elles <b>parallèles</b> ?"]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>lp01</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>lp51</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier, sans contrainte de temps, deux droites prependiculaires.</dct:title>
+        <dct:description><![CDATA["time":0,"template":"template.html","gen":"function(){var a=Math.random()*Math.PI,ax=Math.random()*20+62,ay=Math.random()*20+14,r=Math.floor(Math.random()*2),b=(a+Math.PI/2)%Math.PI,bx=Math.random()*20+62,by=Math.random()*20+14; if (!r) { do { b=Math.random()*Math.PI; }while(Math.abs(b-a)>Math.PI/3); } var ret=\\\"<div style='width:3em;height=1em;margin-left:.2em;'><svg width='100%' height='100%' viewBox='0 0 144 48'><def><style>rect {fill-opacity:0;stroke:black;stroke-width:0.5;}.wrong rect {stroke:red;fill:red;fill-opacity:0.5;}.good rect {stroke:green;fill:green;fill-opacity:0.5;}line {stroke:black;stroke-width:1;}</style></def><line x1='\\\"+(ax+200*Math.cos(a))+\\\"' y1='\\\"+(ay+200*Math.sin(a))+\\\"' x2='\\\"+(ax-200*Math.cos(a))+\\\"' y2='\\\"+(ay-200*Math.sin(a))+\\\"'/><line x1='\\\"+(bx+200*Math.cos(b))+\\\"' y1='\\\"+(by+200*Math.sin(b))+\\\"' x2='\\\"+(bx-200*Math.cos(b))+\\\"' y2='\\\"+(by-200*Math.sin(b))+\\\"'/><rect x='0' y='0' width='144' height='48'/></svg></div>\\\"; return [ret, r];}","class":"alpha p02 blank","font":3]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"input":{"digit":1,"css":{"font-size":"5em","width":"3em"},"values":[["OUI",1],["NON",0]]},"comment":"Les deux droites sont-elles <b>perpendiculaires</b> ?"]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>lp01</dct:alternative>
+    </rdf:Description>
+</rdf:RDF>

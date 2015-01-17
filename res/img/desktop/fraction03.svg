@@ -10,6 +10,10 @@
         .c0         { fill:white !important; }
         .c1         { fill:red !important; }
         .c          { fill:white; }
+
+        .fraction rect  { stroke:black;stroke-width:1px; }
+        .fraction   { display:none; }
+        .square4x4  #square4x4  { display:inline; }
     </style>
 </defs>
 
@@ -22,25 +26,177 @@
 <path d="M 7.5,-172.12 L 7.5,-18.12 L 116.37,-127 C 87.40,-153.57 49.45,-170.31 7.5,-172.12 z" id="d8" class="f"/>
 </g>
 
-<g transform="translate(200,100)" id="square4x4">
-    <rect x="0" y="0" height="75" width="75" class="c" style="stroke:black;stroke-width:1px;"/>
-    <rect x="75" y="0" height="75" width="75" class="c" style="stroke:black;stroke-width:1px;"/>
-    <rect x="150" y="0" height="75" width="75" class="c" style="stroke:black;stroke-width:1px;"/>
-    <rect x="225" y="0" height="75" width="75" class="c" style="stroke:black;stroke-width:1px;"/>
-    <rect x="0" y="75" height="75" width="75" class="c" style="stroke:black;stroke-width:1px;"/>
-    <rect x="75" y="75" height="75" width="75" class="c" style="stroke:black;stroke-width:1px;"/>
-    <rect x="150" y="75" height="75" width="75" class="c" style="stroke:black;stroke-width:1px;"/>
-    <rect x="225" y="75" height="75" width="75" class="c" style="stroke:black;stroke-width:1px;"/>
-    <rect x="0" y="150" height="75" width="75" class="c" style="stroke:black;stroke-width:1px;"/>
-    <rect x="75" y="150" height="75" width="75" class="c" style="stroke:black;stroke-width:1px;"/>
-    <rect x="150" y="150" height="75" width="75" class="c" style="stroke:black;stroke-width:1px;"/>
-    <rect x="225" y="150" height="75" width="75" class="c" style="stroke:black;stroke-width:1px;"/>
-    <rect x="0" y="225" height="75" width="75" class="c" style="stroke:black;stroke-width:1px;"/>
-    <rect x="75" y="225" height="75" width="75" class="c" style="stroke:black;stroke-width:1px;"/>
-    <rect x="150" y="225" height="75" width="75" class="c" style="stroke:black;stroke-width:1px;"/>
-    <rect x="225" y="225" height="75" width="75" class="c" style="stroke:black;stroke-width:1px;"/>
+<g transform="translate(200,100)" id="square2x4" class="fraction">
+    <rect x="0" y="0" height="75" width="75" class="c"/>
+    <rect x="75" y="0" height="75" width="75" class="c"/>
+    <rect x="0" y="75" height="75" width="75" class="c"/>
+    <rect x="75" y="75" height="75" width="75" class="c"/>
+    <rect x="0" y="150" height="75" width="75" class="c"/>
+    <rect x="75" y="150" height="75" width="75" class="c"/>
+    <rect x="0" y="225" height="75" width="75" class="c"/>
+    <rect x="75" y="225" height="75" width="75" class="c"/>
+    <rect x="0" y="0" height="300" width="150" style="fill:none;stroke-width:2px;"/>
+</g>
 
-    <rect x="0" y="0" height="300" width="300" style="fill:none;stroke:black;stroke-width:2px;"/>
+<g transform="translate(200,100)" id="square3x4" class="fraction">
+    <rect x="0" y="0" height="75" width="75" class="c"/>
+    <rect x="75" y="0" height="75" width="75" class="c"/>
+    <rect x="150" y="0" height="75" width="75" class="c"/>
+    <rect x="0" y="75" height="75" width="75" class="c"/>
+    <rect x="75" y="75" height="75" width="75" class="c"/>
+    <rect x="150" y="75" height="75" width="75" class="c"/>
+    <rect x="0" y="150" height="75" width="75" class="c"/>
+    <rect x="75" y="150" height="75" width="75" class="c"/>
+    <rect x="150" y="150" height="75" width="75" class="c"/>
+    <rect x="0" y="225" height="75" width="75" class="c"/>
+    <rect x="75" y="225" height="75" width="75" class="c"/>
+    <rect x="150" y="225" height="75" width="75" class="c"/>
+    <rect x="0" y="0" height="300" width="225" style="fill:none;stroke-width:2px;"/>
+</g>
+
+<g transform="translate(200,100)" id="square4x4" class="fraction">
+    <rect x="0" y="0" height="75" width="75" class="c"/>
+    <rect x="75" y="0" height="75" width="75" class="c"/>
+    <rect x="150" y="0" height="75" width="75" class="c"/>
+    <rect x="225" y="0" height="75" width="75" class="c"/>
+    <rect x="0" y="75" height="75" width="75" class="c"/>
+    <rect x="75" y="75" height="75" width="75" class="c"/>
+    <rect x="150" y="75" height="75" width="75" class="c"/>
+    <rect x="225" y="75" height="75" width="75" class="c"/>
+    <rect x="0" y="150" height="75" width="75" class="c"/>
+    <rect x="75" y="150" height="75" width="75" class="c"/>
+    <rect x="150" y="150" height="75" width="75" class="c"/>
+    <rect x="225" y="150" height="75" width="75" class="c"/>
+    <rect x="0" y="225" height="75" width="75" class="c"/>
+    <rect x="75" y="225" height="75" width="75" class="c"/>
+    <rect x="150" y="225" height="75" width="75" class="c"/>
+    <rect x="225" y="225" height="75" width="75" class="c"/>
+    <rect x="0" y="0" height="300" width="300" style="fill:none;stroke-width:2px;"/>
+</g>
+
+<g transform="translate(150,100)" id="square5x4" class="fraction">
+    <rect x="0" y="0" height="75" width="75" class="c"/>
+    <rect x="75" y="0" height="75" width="75" class="c"/>
+    <rect x="150" y="0" height="75" width="75" class="c"/>
+    <rect x="225" y="0" height="75" width="75" class="c"/>
+    <rect x="300" y="0" height="75" width="75" class="c"/>
+    <rect x="0" y="75" height="75" width="75" class="c"/>
+    <rect x="75" y="75" height="75" width="75" class="c"/>
+    <rect x="150" y="75" height="75" width="75" class="c"/>
+    <rect x="225" y="75" height="75" width="75" class="c"/>
+    <rect x="300" y="75" height="75" width="75" class="c"/>
+    <rect x="0" y="150" height="75" width="75" class="c"/>
+    <rect x="75" y="150" height="75" width="75" class="c"/>
+    <rect x="150" y="150" height="75" width="75" class="c"/>
+    <rect x="225" y="150" height="75" width="75" class="c"/>
+    <rect x="300" y="150" height="75" width="75" class="c"/>
+    <rect x="0" y="225" height="75" width="75" class="c"/>
+    <rect x="75" y="225" height="75" width="75" class="c"/>
+    <rect x="150" y="225" height="75" width="75" class="c"/>
+    <rect x="225" y="225" height="75" width="75" class="c"/>
+    <rect x="300" y="225" height="75" width="75" class="c"/>
+    <rect x="0" y="0" height="300" width="375" style="fill:none;stroke-width:2px;"/>
+</g>
+
+
+<g id="square2x4x2" class="fraction">
+    <g transform="translate(100,100)">
+        <rect x="0" y="0" height="75" width="75" class="c"/>
+        <rect x="75" y="0" height="75" width="75" class="c"/>
+        <rect x="0" y="75" height="75" width="75" class="c"/>
+        <rect x="75" y="75" height="75" width="75" class="c"/>
+        <rect x="0" y="150" height="75" width="75" class="c"/>
+        <rect x="75" y="150" height="75" width="75" class="c"/>
+        <rect x="0" y="225" height="75" width="75" class="c"/>
+        <rect x="75" y="225" height="75" width="75" class="c"/>
+        <rect x="0" y="0" height="300" width="150" style="fill:none;stroke-width:2px;"/>
+    </g>
+    <g transform="translate(300,100)">
+        <rect x="0" y="0" height="75" width="75" class="c"/>
+        <rect x="75" y="0" height="75" width="75" class="c"/>
+        <rect x="0" y="75" height="75" width="75" class="c"/>
+        <rect x="75" y="75" height="75" width="75" class="c"/>
+        <rect x="0" y="150" height="75" width="75" class="c"/>
+        <rect x="75" y="150" height="75" width="75" class="c"/>
+        <rect x="0" y="225" height="75" width="75" class="c"/>
+        <rect x="75" y="225" height="75" width="75" class="c"/>
+        <rect x="0" y="0" height="300" width="150" style="fill:none;stroke-width:2px;"/>
+    </g>
+</g>
+
+<g id="square4x4x2" class="fraction">
+    <g transform="translate(15,100)">
+        <rect x="0" y="0" height="75" width="75" class="c"/>
+        <rect x="75" y="0" height="75" width="75" class="c"/>
+        <rect x="150" y="0" height="75" width="75" class="c"/>
+        <rect x="225" y="0" height="75" width="75" class="c"/>
+        <rect x="0" y="75" height="75" width="75" class="c"/>
+        <rect x="75" y="75" height="75" width="75" class="c"/>
+        <rect x="150" y="75" height="75" width="75" class="c"/>
+        <rect x="225" y="75" height="75" width="75" class="c"/>
+        <rect x="0" y="150" height="75" width="75" class="c"/>
+        <rect x="75" y="150" height="75" width="75" class="c"/>
+        <rect x="150" y="150" height="75" width="75" class="c"/>
+        <rect x="225" y="150" height="75" width="75" class="c"/>
+        <rect x="0" y="225" height="75" width="75" class="c"/>
+        <rect x="75" y="225" height="75" width="75" class="c"/>
+        <rect x="150" y="225" height="75" width="75" class="c"/>
+        <rect x="225" y="225" height="75" width="75" class="c"/>
+        <rect x="0" y="0" height="300" width="300" style="fill:none;stroke-width:2px;"/>
+    </g>
+    <g transform="translate(325,100)">
+        <rect x="0" y="0" height="75" width="75" class="c"/>
+        <rect x="75" y="0" height="75" width="75" class="c"/>
+        <rect x="150" y="0" height="75" width="75" class="c"/>
+        <rect x="225" y="0" height="75" width="75" class="c"/>
+        <rect x="0" y="75" height="75" width="75" class="c"/>
+        <rect x="75" y="75" height="75" width="75" class="c"/>
+        <rect x="150" y="75" height="75" width="75" class="c"/>
+        <rect x="225" y="75" height="75" width="75" class="c"/>
+        <rect x="0" y="150" height="75" width="75" class="c"/>
+        <rect x="75" y="150" height="75" width="75" class="c"/>
+        <rect x="150" y="150" height="75" width="75" class="c"/>
+        <rect x="225" y="150" height="75" width="75" class="c"/>
+        <rect x="0" y="225" height="75" width="75" class="c"/>
+        <rect x="75" y="225" height="75" width="75" class="c"/>
+        <rect x="150" y="225" height="75" width="75" class="c"/>
+        <rect x="225" y="225" height="75" width="75" class="c"/>
+        <rect x="0" y="0" height="300" width="300" style="fill:none;stroke-width:2px;"/>
+    </g>
+</g>
+
+
+<g id="square3x4x2" class="fraction">
+    <g transform="translate(60,100)">
+        <rect x="0" y="0" height="75" width="75" class="c"/>
+        <rect x="75" y="0" height="75" width="75" class="c"/>
+        <rect x="150" y="0" height="75" width="75" class="c"/>
+        <rect x="0" y="75" height="75" width="75" class="c"/>
+        <rect x="75" y="75" height="75" width="75" class="c"/>
+        <rect x="150" y="75" height="75" width="75" class="c"/>
+        <rect x="0" y="150" height="75" width="75" class="c"/>
+        <rect x="75" y="150" height="75" width="75" class="c"/>
+        <rect x="150" y="150" height="75" width="75" class="c"/>
+        <rect x="0" y="225" height="75" width="75" class="c"/>
+        <rect x="75" y="225" height="75" width="75" class="c"/>
+        <rect x="150" y="225" height="75" width="75" class="c"/>
+        <rect x="0" y="0" height="300" width="225" style="fill:none;stroke-width:2px;"/>
+    </g>
+    <g transform="translate(350,100)">
+        <rect x="0" y="0" height="75" width="75" class="c"/>
+        <rect x="75" y="0" height="75" width="75" class="c"/>
+        <rect x="150" y="0" height="75" width="75" class="c"/>
+        <rect x="0" y="75" height="75" width="75" class="c"/>
+        <rect x="75" y="75" height="75" width="75" class="c"/>
+        <rect x="150" y="75" height="75" width="75" class="c"/>
+        <rect x="0" y="150" height="75" width="75" class="c"/>
+        <rect x="75" y="150" height="75" width="75" class="c"/>
+        <rect x="150" y="150" height="75" width="75" class="c"/>
+        <rect x="0" y="225" height="75" width="75" class="c"/>
+        <rect x="75" y="225" height="75" width="75" class="c"/>
+        <rect x="150" y="225" height="75" width="75" class="c"/>
+        <rect x="0" y="0" height="300" width="225" style="fill:none;stroke-width:2px;"/>
+    </g>
 </g>
 
 </svg>

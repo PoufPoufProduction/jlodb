@@ -70,6 +70,16 @@
 
                 $this.css("font-size", Math.floor($this.height()/12)+"px");
 
+                // Build panel droppable
+                $this.find("#f001").droppable({accept:".a.op",
+                    drop:function(event, ui) {
+                        $this.find("#f001").html("");
+                        var $elt = $(ui.draggable).clone().removeClass("move");
+                        settings.root=helpers.data.node($this,true,$elt);
+                        helpers.data.display($this);
+                    }
+                });
+
                 // Locale handling
                 $this.find("h1#label").html(settings.label);
                 if (settings.locale) { $.each(settings.locale, function(id,value) {
@@ -82,7 +92,74 @@
             }
         },
         data : {
-            label: function(_elt) { return _elt.value; }
+            label: function(_elt) {
+                var ret=_elt.value;
+                if (_elt.type=="op") switch(_elt.value) {
+                    case "plus" : ret = "+"; break;
+                    case "mult" : ret = "*"; break;
+                    case "div"  : ret = "/"; break;
+                    case "minus": ret = "-"; break;
+                    default: break;
+                }
+                return ret;
+            },
+            node: function($this,_root,$elt) {
+                var settings = helpers.settings($this);
+                var ret = { id:         "n"+settings.nodecounter,
+                            $html:      $("<div class='d' id='n"+settings.nodecounter+"'></div>"),
+                            children:   0,
+                            width:      0,
+                            pos:        0
+                          };
+                settings.nodecounter++;
+
+                ret.$html.droppable({accept:_root?".a.op":".a", greedy:true,
+                    drop:function(event,ui) {
+                        var $elt = $(ui.draggable).clone().removeClass("move");
+                        var node = helpers.data.get($(this).attr("id"), settings.root);
+                        node.$html.html($elt);
+                        if (node.children) {
+                            helpers.data.remove(node.children[0]);
+                            helpers.data.remove(node.children[1]);
+                        }
+                        if ($elt.hasClass("op")) {
+                            node.children=[helpers.data.node($this,false,0),helpers.data.node($this,false,0)];
+                        }
+                        else { node.children=0; }
+                        helpers.data.width(node);
+                        helpers.data.display($this);
+                    }
+                });
+                if ($elt) {
+                    ret.$html.html($elt);
+                    ret.children=[helpers.data.node($this,false,0),helpers.data.node($this,false,0)];
+                }
+                return ret;
+            },
+            get: function(_id,_node) {
+                if (_node.id==_id) { return _node; }
+                else if (_node.children) { return helpers.data.get(_id,_node.children[0]) || helpers.data.get(_id,_node.children[1]); }
+                else { return 0; }
+            },
+            remove: function(_node) {
+                _node.$html.detach();
+                if (_node.children) { helpers.data.remove(_node.children[0]); helpers.data.remove(_node.children[1]);}
+            },
+            width: function(_node) {
+                if (_node.children) { _node.len=helpers.data.width(_node.children[0]) + helpers.data.width(_node.children[1]); }
+                else { _node.width=1; }
+                return _node.width;
+            },
+            display: function($this,_node) {
+                var settings = helpers.settings($this);
+                var node = _node;
+                if (!node) {  node=settings.root; }
+                if (!node.pos) { $this.find("#f001").append(node.$html); node.pos=1; }
+                if (node.children) {
+                    helpers.data.display($this,node.children[0]);
+                    helpers.data.display($this,node.children[1]);
+                }
+            }
         },
         build: function($this) {
             var settings = helpers.settings($this);
@@ -103,11 +180,12 @@
             $this.find("#inventory .z").each(function(_index) {
                 var html="";
                 if (data.values && _index<data.values.length) {
-                    html="<div class='a'><div class='label'>"+helpers.data.label(data.values[_index])+"</div></div>";
+                    html="<div class='a "+data.values[_index].type+"'>"+
+                            "<div class='label'>"+helpers.data.label(data.values[_index])+"</div></div>";
                 }
                 $(this).html(html);
             });
-            $this.find("#inventory .a").draggable({containment:$this, helper:"clone", appendTo:$this, revert:true,
+            $this.find("#inventory .a").draggable({containment:$this, helper:"clone", appendTo:$this, /* revert:true, */
                 start:function( event, ui) { $(this).addClass("move");},
                 stop: function( event, ui) { $(this).removeClass("move"); } });
         }
@@ -122,7 +200,9 @@
                 // The settings
                 var settings = {
                     interactive     : false,
-                    dataid          : 0             // data index
+                    dataid          : 0,                // data index
+                    nodecounter     : 0,                // node counter
+                    root            : {}                // build tree
                 };
 
                 return this.each(function() {

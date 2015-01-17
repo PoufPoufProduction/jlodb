@@ -1,7 +1,12 @@
 <div>
 
     <div id="board"></div>
-    <div id="exercice"><div></div></div>
+    <div id="exercice"><div><div id="label"></div><div id="content"></div></div></div>
+
+    <div id="effects">
+        <div id="good"><img src="res/img/effects/alert02.svg"/></div>
+        <div id="wrong"><img src="res/img/effects/alert01.svg"/></div>
+    </div>
 
     <div id="submit" ontouchstart="$(this).closest('.paint').paint('valid');event.preventDefault();"
                      onclick="$(this).closest('.paint').paint('valid');">
@@ -14,7 +19,7 @@
     <div id="splash" ontouchstart="$(this).closest('.paint').paint('next');event.preventDefault();"
                      onclick="$(this).closest('.paint').paint('next');"><div>
         <div class="text" id="default">
-            <h1 id="label">paint</h1>
+            <h1 id="label"></h1>
             <div id="guide"></div>
         </div>
         <div class="text" id="picross">

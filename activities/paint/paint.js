@@ -13,6 +13,8 @@
         source      : ["source",""],                            // The source group + prefix
         canvas      : "canvas",                                 // Toggle element group
         toggle      : "c",                                      // Toggle element class
+        number      : 1,                                        // Number of exercices
+        effects     : true,                                     // Show effects
         debug       : false                                     // Debug mode
     };
 
@@ -113,6 +115,7 @@
                 $this.find("#board").bind('touchstart mousedown', function() { settings.down=true; event.preventDefault();})
                                     .bind('touchend mouseup', function() { settings.elt=0; settings.down=false; event.preventDefault();});
 
+                $("#"+settings.canvas, settings.svg.root()).css("display","inline");
                 $("#"+settings.canvas+" ."+settings.toggle, settings.svg.root()).each(function(_index) {
                     $(this).bind('touchmove mousemove', function() {
                         if (settings.interactive && settings.color[0]!=-1 && settings.down && settings.elt!=this) {
@@ -133,7 +136,7 @@
                     $(this).attr("id","c"+_index);
                 });
 
-                $this.find("#exercice>div").css("font-size",settings.font+"em");
+                $this.find("#exercice #content").css("font-size",settings.font+"em");
 
                 helpers.build($this);
 
@@ -148,7 +151,7 @@
         build: function($this) {
             var settings = helpers.settings($this);
             var t = settings.t;
-            if (!t && settings.values) { t = settings.values[settings.id].t; }
+            if (!t && settings.values) { number=settings.values.length; t = settings.values[settings.id].t; }
             if (t) {
                 $("text.t", settings.svg.root()).each(function(_index) {
                     if (_index<t.length) {
@@ -167,15 +170,27 @@
             }
 
             var exercice = settings.exercice;
+            var label    = settings.exlabel;
+            if (settings.gen) {
+                var vValue = eval('('+settings.gen+')')();
+                if (vValue.exercice) { exercice = vValue.exercice; }
+                if (vValue.arg)      { settings.scoreArg = vValue.arg; }
+                if (vValue.label)    { label = vValue.label; }
+            }
             if (!exercice && settings.values) { exercice = settings.values[settings.id].exercice; }
             if (exercice) {
                 if ($.isArray(exercice)) {
                     var html=""; for (var i in exercice) { html+="<div>"+exercice[i]+"</div>"; }
-                    $this.find("#exercice>div").html(html);
+                    $this.find("#exercice #content").html(html);
                 }
-                else { $this.find("#exercice>div").html(exercice); }
+                else { $this.find("#exercice #content").html(exercice); }
                 $this.find("#exercice").show();
             }
+            if (label) { $this.find("#exercice #label").html(label).show(); }
+
+            $this.find("#submit>img").hide(); $this.find("#subvalid").show();
+            $this.find("#effects>div").hide(); $this.find("#effects").hide();
+
         },
         result: function($this) {
             var result="", settings = helpers.settings($this);
@@ -291,7 +306,8 @@
                     score           : 5,
                     color           : [-1,-1],
                     elt             : 0,
-                    id              : 0
+                    id              : 0,
+                    scoreArg        : 0
                 };
 
                 return this.each(function() {
@@ -327,21 +343,43 @@
                     settings.interactive = false;
 
                     var result=helpers.result($this);
+                    var nbErrors = 0;
 
-                    for (var i=0; i<settings.result.length; i++) {
-                        var r1 = settings.result[i];    if (r1==' ') { r1='0'; }
-                        var r2 = result[i];             if (r2==' ') { r2='0'; }
-                        if (r1!=r2) {
-                             $("#"+settings.canvas+" #c"+i, settings.svg.root()).attr("class",
-                                $("#"+settings.canvas+" #c"+i, settings.svg.root()).attr("class")+" wrong");
-                            settings.score--;
+                    if (settings.scorefct) {
+                        nbErrors = eval('('+settings.scorefct+')')($this,result,settings.scoreArg);
+                    }
+                    else {
+                        for (var i=0; i<settings.result.length; i++) {
+                            var r1 = settings.result[i];    if (r1==' ') { r1='0'; }
+                            var r2 = result[i];             if (r2==' ') { r2='0'; }
+                            if (r1!=r2) {
+                                $("#"+settings.canvas+" #c"+i, settings.svg.root()).attr("class",
+                                    $("#"+settings.canvas+" #c"+i, settings.svg.root()).attr("class")+" wrong");
+                                nbErrors++;
+                            }
                         }
                     }
+                    settings.score-=nbErrors;
+
+                    // DISPLAY ALERT
+                    $this.find("#effects>div").hide();
+                    if (nbErrors) {
+                        $this.find("#submit>img").hide(); $this.find("#subwrong").show();
+                        if (settings.effects) { $this.find("#effects #wrong").show(); $this.find("#effects").show(); }
+                        }
+                    else {
+                        $this.find("#submit>img").hide(); $this.find("#subgood").show();
+                        if (settings.effects) { $this.find("#effects #good").show(); $this.find("#effects").show(); }
+                    }
+
                     // Developper mode
                     if (settings.dev) { helpers.dev[settings.dev.mode]($this,result); }
 
                     if (settings.score<0) { settings.score = 0; }
-                    setTimeout(function() { helpers.end($this); }, 500);
+                    if (++settings.id<settings.number) {
+                        setTimeout(function() { settings.interactive=true; helpers.build($this); }, 500);
+                    }
+                    else                               { setTimeout(function() { helpers.end($this); }, 500); }
                 }
             }
         };

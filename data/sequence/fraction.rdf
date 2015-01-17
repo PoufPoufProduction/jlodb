@@ -999,5 +999,17 @@
         <dct:alternative>tsc25</dct:alternative>
     </rdf:Description>
 
+
+    <rdf:Description>
+        <dct:identifier>t1100</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comparer à 1 et sans contrainte de temps, une fraction dont les valeurs sont compris entre 1 et 100.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){ var a=(Math.random()*5<1), max=100, de1=Math.floor(Math.random()*max+1), num1=a?de1:Math.floor(Math.random()*max+1), ret=\\\"<div style='height:2em;margin-left:.3em;font-size:.8em;'><math><mrow><mfrac><mrow><mi>\\\"+num1+\\\"</mi></mrow><mrow><mi>\\\"+de1+\\\"</mi></mrow></mfrac><mo>...</mo><mi>1</mi></mrow></math></div>\\\"; return [ret, (num1==de1)?\\\"=\\\":((num1<de1)?\\\"<\\\":\\\">\\\")];}","class":"alpha p02 blank","font":3]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>tsc25</dct:alternative>
+    </rdf:Description>
+
 </rdf:RDF>
 
