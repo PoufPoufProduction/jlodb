@@ -22,6 +22,11 @@
         </div>
         <div id="screen"></div>
         <div id="menu">
+            <div id="submit" ontouchstart="$(this).closest('.mathematics').mathematics('valid');event.preventDefault();"
+                     onclick="$(this).closest('.mathematics').mathematics('valid');">
+                <img src="res/img/control/valid.svg"/>
+            </div>
+            <!--
             <div id="bar1" class="bar"></div>
             <div id="result">
                 <table class="zz">
@@ -29,10 +34,11 @@
                 </table>
             </div>
             <div id="bar2" class="bar"></div>
-            <div id="submit"><img src="res/img/control/valid.svg"/></div>
+            -->
         </div>
     </div>
 
+    <div id="touch01" ><div><img src="res/img/effects/touch01.svg"/></div></div>
 
     <div id="splash" ontouchstart="$(this).closest('.mathematics').mathematics('next');event.preventDefault();"
                      onclick="$(this).closest('.mathematics').mathematics('next');"><div>
