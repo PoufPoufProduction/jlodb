@@ -7,6 +7,9 @@
 
 .wargames #main                          { width:16.5em; }
 .wargames #main>#menu                    { margin:.1em; width:5.2em; height:11.8em; float:left; }
+.wargames #main>#menu #header            { height:1em; font-size:.8em; padding:.1em; background-color:#AAA; 
+                                           background-image:url("../../res/img/background/steel01.svg"); background-repeat:repeat; }
+.wargames #main>#menu #header>.icon      { float:right; margin:0 0 0 .1em; cursor:help; }
 .wargames #main>#action                  { float:left; width:10.6em; height:12em; }
 .wargames #action>#board                 { margin:.1em .1em 0 .1em; width:10.2em; height:10.2em; background-color:white; }
 .wargames #action>#board>div             { margin:.1em; width:10em; height:10em; position:relative;}
@@ -56,3 +59,9 @@
 .wargames #action>#board #eright           { width:0.4em; height:11em; left:9.6em;}
 .wargames #action>#board #etop             { width:11em; height:0.4em; }
 .wargames #action>#board #ebottom          { width:11em; height:0.4em; top:9.6em;}
+
+.wargames #popups>div                       { position:absolute; font-size:.4em; width:15em; padding:.5em;
+                                              border-radius:.5em; background-color:rgba(0,80,40,0.9); color:#5F6;
+                                              border:2px solid #5F6; text-align:justify; display:none; }
+.wargames #popups>div.mode                  { top:2.5em; left:3em; }
+.wargames #popups>div.fog                   { top:2.5em; left:2em; }

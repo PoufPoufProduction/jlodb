@@ -242,7 +242,10 @@
                     ret.$html = $("<div class='d' id='"+ret.id+"'></div>");
                     ret.attach = false;
                     ret.$html.droppable({accept:_root?".a.op":".a", greedy:true,
-                        drop:function(event,ui) {
+                        over: function(event, ui) { $(this).addClass("over"); },
+                        out: function(event, ui) { $(this).removeClass("over"); },
+                        drop:function(event, ui) {
+                            $this.find(".over").removeClass("over");
                             var $elt = $(ui.draggable).clone().removeClass("move");
                             var v = values[parseInt($elt.attr("id"))];
                             var node = settings.root.find($(this).attr("id"));

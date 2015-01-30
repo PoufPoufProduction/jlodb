@@ -19,17 +19,19 @@ img                             { border:none; outline: none; }
 body>div                        { background-color: white; margin:0 auto; width:16em; height:12em; position:relative; display:none;}
 select                          { appearance:none; -webkit-appearance:none; -moz-appearance:none; }
 textarea                        { resize:none; }
+math                            { display: block; text-align: center; }
+
 .icon                           { width:1em; height:1em; }
 /*---------------------------------------------------------------------------------------------------------------------------*/
-#waiting                        { position:absolute; top:2.9em; left:0.05em; font-size:2.8em; width:1em; height:1em; display:none; }
-#waiting div                    { position:relative; width:1em; height:12em;
+.anim12                         { width:1em; height:1em; position:absolute; display:none; }
+.anim12 div                     { position:relative; width:1em; height:12em;
                                   animation-duration: 1s; animation-name:anim;
                                   animation-timing-function:step-start; animation-iteration-count:infinite;
                                   animation-play-state:paused;
                                   -webkit-animation-duration: 1s; -webkit-animation-name:anim;
                                   -webkit-animation-timing-function:step-start; -webkit-animation-iteration-count:infinite;
                                   -webkit-animation-play-state:paused; }
-#waiting div.running            { animation-play-state:running; -webkit-animation-play-state:running; }
+.anim12 div.running             { animation-play-state:running; -webkit-animation-play-state:running; }
 
 #touch01                        { position:absolute; width:1em; height:1em; font-size:4em; display:none; }
 #touch01 div                    { position:relative; width:1em; height:12em; margin-top:1em;

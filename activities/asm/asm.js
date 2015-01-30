@@ -235,6 +235,9 @@
                     }
                 }
 
+                var vRunning = Math.floor($this.find("#running").width()/12)*12;
+                $this.find("#running").css("font-size",vRunning+"px");
+
                 if ($this.find("#code #lines").height()<$this.find("#code").height()) {
                     var html="<div class='filler' style='height:"+($this.find("#code").height()-$this.find("#code #lines").height()-2)+
                              "px;margin-top:2px;'></div>";
@@ -884,6 +887,7 @@
                 $this.find("#effects").show();
                 $this.find("#controls #play img").attr("src","res/img/control/play.svg");
                 $this.find("#controls").removeClass("running");
+                $this.find("#controls #running div").removeClass("running").parent().hide();
                 settings.data.running = false;
             },
             ca  : function(_data, _value) { return (_data.reg.A==parseInt(_value,16)); },
@@ -1016,6 +1020,7 @@
                         helpers.stdout.clear($this);
                         $this.find(".mask").show();
                         $this.find("#controls").addClass("running");
+                        $this.find("#controls #running div").addClass("running").parent().show();
                         $this.find("#controls #play img").attr("src","res/img/control/pause.svg");
                         settings.data.running = true;
                         settings.data.paused = false;

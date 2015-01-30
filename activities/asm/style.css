@@ -24,12 +24,13 @@
 .asm #screens #keypad #up           { top:0.3em; left:2.5em; }
 .asm #screens #keypad #a            { top:1em; left:7em; }
 .asm #screens #keypad #b            { top:1em; left:9.4em; }
-.asm #screens #controls             { width:12em; height:9.4em; background-color:#AAA; border-radius:.5em;
+.asm #screens #controls             { width:12em; height:9.4em; background-color:#AAA; border-radius:.5em; position:relative;
                                       background-image:url("../../res/img/background/steel01.svg"); background-repeat:repeat; }
+.asm #screens #controls #running    { top:.09em; left:.02em; font-size:15em;opacity:0.2; }
 .asm #screens #controls.running     { background-color:#5BB; }
 .asm #screens.s2 #controls          { height:13.4em; }
 .asm #screens.s3 #controls          { height:10.6em; }
-.asm #screens #buttons              { margin-left:.5em; }
+.asm #screens #buttons              { position:absolute; top:0; left:.5em; }
 .asm #screens #buttons>div          { font-size:3em; width:1em; height:1em; margin:.1em; float:left; cursor:pointer;}
 /*---------------------------------------------------------------------------------------------------------------------------*/
 .asm div#board #central>*           { font-size:.75em; margin:.1em; width:20em; border-radius:.5em; }

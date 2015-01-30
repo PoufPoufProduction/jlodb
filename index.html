@@ -22,6 +22,8 @@
         #jlodb .id                          { width:3em; }
         #jlodb .icon                        { width:1em; height:1em; }
 
+        #waiting                            { position:absolute; top:2.9em; left:0.05em; font-size:2.8em; }
+
         #jlodb #popup                       { position:absolute; top:0; left:0; border-radius:.5em; font-size:.25em;
                                               background-color:#221500; color:#FFDD99; z-index:1000; display:none;
                                               width:20em; opacity:.9; padding:.1em .4em; text-align:justify;}
@@ -611,7 +613,7 @@ window.onload = function() {
                            onclick="$('#jlodb #screen').hide();"><img src="res/img/icon/quit.svg"/></div>
         </div>
     </div>
-    <div id="waiting"><div><img src="res/img/generic/waiting.svg"/></div></div>
+    <div id="waiting" class="anim12"><div><img src="res/img/generic/waiting.svg"/></div></div>
 
     <div id="score"><div>
         <div class="content">

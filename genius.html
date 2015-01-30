@@ -23,11 +23,11 @@
         .icon                               { width:1em; height:1em; }
         #gsplash                            { font-size:1em; height:12em; width:16em; top:0; left:0; position:absolute; z-index:2000;
                                               background-color:rgba(0,0,0,0.1); }
-        #gsplash>div                       { height:5em; width:16em; margin-top:2em; overflow:visible;
+        #gsplash>div                        { height:5em; width:16em; margin-top:2em; overflow:visible;
                                               cursor: pointer;  background-image:url("mods/genius/res/img/banner01.svg");
                                               background-color:rgba(255,255,255,0.2); background-repeat:no-repeat;}
         #gsplash #cookies                   { font-size:1.5em; width:1em; height:1em; position:relative; top:2.2em; left:9em;}
-        #main>#waiting                      { top:0.2em; left:0.6em; font-size:7em; }
+        #genius #waiting                    { top:0.2em; left:0.6em; font-size:7em; }
 
         #main>#screen                      { position:absolute; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5);
                                               display:none; z-index:3;}
@@ -230,7 +230,7 @@ window.onload = function() {
         <div id="genius">
             <div id="board"></div>
 
-            <div id="waiting"><div><img src="res/img/generic/waiting.svg"/></div></div>
+            <div id="waiting" class="anim12"><div><img src="res/img/generic/waiting.svg"/></div></div>
             <div id="gsplash"><div onclick="$('#gsplash').hide(); genius.state();"
                                 ontouchstart="$('#gsplash').hide(); genius.state(); event.preventDefault();">
                 <div id="cookies" onclick="$('#gsplash').hide(); genius.cookie=true;genius.state(); event.stopPropagation();"

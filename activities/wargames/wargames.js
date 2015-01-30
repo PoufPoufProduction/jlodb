@@ -9,11 +9,13 @@
         font        : 1,                                        // The font-size multiplicator
         mintiles    : 5,                                        // The minimum tiles in board
         zoom        : 0,                                        // The current zoom value (0=see all)
+        playmode    : 0,                                        // Mode (0:group, 1:single)
+        hasfog      : true,                                    // Fog of war
         debug       : false                                     // Debug mode
     };
 
     var people = {
-        soldier : {  img:"cromagnon01", imgsize:[4,3], look:0,  move:10,
+        soldier : {  img:"red01", imgsize:[4,6], look:0,  move:10,
                      speed: { ground:4, road:1, flood:6, wood:3, hill:6, mountain:8, sea:-1 } }
     };
     var tile = {
@@ -135,6 +137,41 @@
 
                 $this.css("font-size", Math.floor($this.height()/12)+"px");
 
+                // Mode
+                $this.find("#header #playmode").html("<img src='res/img/control/"+
+                    (settings.playmode==0?"group01.svg":"single01.svg")+"'/>");
+                $this.find("#header #hasfog").html("<img src='res/img/control/"+
+                    (settings.hasfog?"fog.svg":"nofog.svg")+"'/>");
+
+                // Popup
+                $this.find(".onpopup").bind("mousedown touchstart", function(event) {
+                    var $this = $(this).closest('.wargames'), settings = helpers.settings($this);
+                    if (settings.popuptimer) {
+                        $this.find(".popup").hide();
+                        clearTimeout(settings.popuptimer);
+                        settings.popuptimer=0;
+                    }
+                    switch($(this).attr("id")) {
+                        case "playmode":
+                            if (settings.playmode==0)   { $this.find("#group.popup").show(); }
+                            else                        { $this.find("#single.popup").show(); }
+                        break;
+                        case "hasfog":
+                            if (settings.hasfog)        { $this.find("#fog.popup").show(); }
+                            else                        { $this.find("#nofog.popup").show(); }
+                        break;
+                    };
+                    event.stopPropagation();
+                    event.preventDefault();
+                });
+                $this.find(".onpopup").bind("mouseup touchend mouseout touchleave", function(event) {
+                    var $this = $(this).closest('.wargames'), settings = helpers.settings($this);
+                    settings.popuptimer = setTimeout(function(){
+                        if (settings.popuptimer) { $this.find(".popup").hide(); } settings.popuptimer=0; },500);
+                    event.stopPropagation();
+                    event.preventDefault();
+                });
+                // Board
                 for (var j in settings.board) for (var i in settings.board[j]) {
                     var val = settings.board[j][i];
                     if (tile[val]) {
@@ -417,7 +454,8 @@
                     command         : 0,        // THE CURRENT COMMAND (LIST OF MOVES, ...)
                     action          : 0,        // THE CURRENT ACTION (1:translate board, 2:move people)
                     area            : [],       // THE CURRENT ACTION AREA DATA
-                    nav             : { mouse: 0, focus:[0,0], rt:[0,0], zoom:0, size:[0,0], xy:[0,0] }
+                    nav             : { mouse: 0, focus:[0,0], rt:[0,0], zoom:0, size:[0,0], xy:[0,0] },
+                    popuptimer      : 0
                 };
 
                 return this.each(function() {
