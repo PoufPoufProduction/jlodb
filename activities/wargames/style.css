@@ -10,6 +10,27 @@
 .wargames #main>#menu #header            { height:1em; font-size:.8em; padding:.1em; background-color:#AAA; 
                                            background-image:url("../../res/img/background/steel01.svg"); background-repeat:repeat; }
 .wargames #main>#menu #header>.icon      { float:right; margin:0 0 0 .1em; cursor:help; }
+.wargames #main>#menu #nav               { background-color:white; height:10em; }
+.wargames #main>#menu #nav>div           { margin:.1em; height:9.8em; background-color:gray; }
+.wargames #main>#menu #nav #detail       { height:3.9em; background-color:white; }
+.wargames #detail #stats                 { height:2.6em; background-color:#90cce0; }
+.wargames #detail #stats>div             { float:left; }
+.wargames #detail #stats #portrait       { margin:.05em; font-size:2em; width:1em; height:1em; border-radius:.2em;
+                                           background-image:url("../../res/img/background/book02.svg"); background-repeat:repeat;
+                                           border:.05em solid white; }
+.wargames #detail #stats #data           { margin-top:.05em; width:2.6em; }
+.wargames #detail #stats .skill          { font-size:.5em; width:2.4em;height:1em; background-color:#222; border-radius:.5em;
+                                           margin:.1em; float:left; cursor:help; }
+.wargames #detail #stats .skill>div      { float:left;  }
+.wargames #detail #stats .skill .label   { text-align:right; width:1.2em; margin-right:.2em; color:#DD9933; }
+.wargames #detail #stats .skill .label.bonus    { color:limegreen; }
+.wargames #detail #stats .skill .label.malus    { color:red; }
+.wargames #detail #option               { padding:.1em; font-size:0.9em; }
+.wargames #detail #option>div           { float:left; margin:0 .05em; padding:0.1em; border-radius:.2em; background-color:#CCC;
+                                          cursor:pointer; }
+.wargames #detail #option>div.s         { background-color:red; }
+.wargames #main>#menu #nav #other        { height:5em; background-color:green; }
+.wargames #main>#menu #nav #submit       { font-size:0.8em; height:1em;width:1em; cursor:pointer; }
 .wargames #main>#action                  { float:left; width:10.6em; height:12em; }
 .wargames #action>#board                 { margin:.1em .1em 0 .1em; width:10.2em; height:10.2em; background-color:white; }
 .wargames #action>#board>div             { margin:.1em; width:10em; height:10em; position:relative;}
@@ -21,6 +42,7 @@
 
 .wargames #action>#board #bg>div.t         { cursor:move; }
 
+.wargames #action>#board #fogg>div.s      { background-color:rgba(200,200,200,0.8); }
 .wargames #action>#board #fg>div.m       { background-color:rgba(0,20,40,0.3); }
 .wargames #action>#board #fg>div.m.m0     { background-color:rgba(0,20,40,0.1); }
 .wargames #action>#board #fg>div.m>.a       { width:2em; height:7em; opacity:0.7;
@@ -47,7 +69,11 @@
 .wargames #action>#board #fg>div.m>.a.a04   { top:-5em; left:-1em; }
 
 .wargames #action>#board #people          { position:absolute; width:100%; height:100%;  top:0; left:0;}
-.wargames #action>#board #people>div      { position:absolute; width:1em; height:1em; cursor:pointer;}
+.wargames #action>#board #people>div      { position:absolute; width:1em; height:1em; cursor:pointer; }
+.wargames #action>#board #people>div.d    { display:none; }
+.wargames #action>#board #people>div.a    { background-image:url("../../res/img/icon/round.svg"); }
+.wargames #action>#board #people>div.s    { background-color:rgba(0,0,128,0.2); }
+.wargames #action>#board #people>div.t    { background-color:rgba(255,0,0,0.2); background-image:url("../../res/img/icon/target01.svg"); }
 .wargames #action>#board #people>div>div  { position:relative;}
 
 .wargames #action>#footer #zoom           { margin-left:.2em; font-size:.5em; width:20.4em; height:1em;  }
@@ -63,5 +89,14 @@
 .wargames #popups>div                       { position:absolute; font-size:.4em; width:15em; padding:.5em;
                                               border-radius:.5em; background-color:rgba(0,80,40,0.9); color:#5F6;
                                               border:2px solid #5F6; text-align:justify; display:none; }
+.wargames #popups h1                        { font-size:1.2em; }
 .wargames #popups>div.mode                  { top:2.5em; left:3em; }
 .wargames #popups>div.fog                   { top:2.5em; left:2em; }
+.wargames #popups>div#plife                 { top:4.4em; left:2em; }
+.wargames #popups>div#pmunition             { top:4.4em; left:2em; }
+.wargames #popups>div#parmor                { top:5.9em; left:2em; }
+.wargames #popups>div#pattack               { top:5.9em; left:2em; }
+.wargames #popups>div#pmove                 { top:7.2em; left:2em; }
+.wargames #popups>div#pvision               { top:7.2em; left:2em; }
+.wargames #popups>div#pluck                 { top:8.5em; left:2em; }
+.wargames #popups>div#pspeed                { top:8.5em; left:2em; }

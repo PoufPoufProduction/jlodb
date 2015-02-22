@@ -5,11 +5,48 @@
                 <div class="icon onpopup" id="playmode"></div>
                 <div class="icon onpopup" id="hasfog"></div>
             </div>
+            <div id="nav"><div>
+                <div id="detail">
+                    <div id="stats">
+                        <div id="portrait"></div>
+                        <div id="data">
+                            <div class="skill onpopup" id="life"><div class="icon"><img src="res/img/icon/life01.svg"/></div>
+                                               <div class="label"></div></div>
+                            <div class="skill onpopup" id="munition"><div class="icon"><img src="res/img/icon/munition01.svg"/></div>
+                                               <div class="label"></div></div>
+                            <div class="skill onpopup" id="attack"><div class="icon"><img src="res/img/icon/attack01.svg"/></div>
+                                               <div class="label"></div></div>
+                            <div class="skill onpopup" id="armor"><div class="icon"><img src="res/img/icon/armor01.svg"/></div>
+                                               <div class="label"></div></div>
+                            <div class="skill onpopup" id="vision"><div class="icon"><img src="res/img/icon/vision01.svg"/></div>
+                                               <div class="label"></div></div>
+                            <div class="skill onpopup" id="move"><div class="icon"><img src="res/img/icon/move01.svg"/></div>
+                                               <div class="label"></div></div>
+                            <div class="skill onpopup" id="luck"><div class="icon"><img src="res/img/icon/luck01.svg"/></div>
+                                               <div class="label"></div></div>
+                            <div class="skill onpopup" id="speed"><div class="icon"><img src="res/img/icon/speed01.svg"/></div>
+                                               <div class="label"></div></div>
+                        </div>
+                    </div>
+                    <div id="option">
+                        <div><div class="icon"><img src="res/img/action/move01.svg"/></div></div>
+                        <div><div class="icon"><img src="res/img/action/attack01.svg"/></div></div>
+                        <div><div class="icon"><img src="res/img/action/block01.svg"/></div></div>
+                        <div><div class="icon"><img src="res/img/action/heal01.svg"/></div></div>
+                    </div>
+                </div>
+                <div id="other"></div>
+                <div id="submit" ontouchstart="$(this).closest('.wargames').wargames('endturn');event.preventDefault();"
+                     onclick="$(this).closest('.wargames').wargames('endturn');">
+                    <img src="res/img/icon/swvalid.svg" id="subvalid"/>
+                </div>
+            </div></div>
         </div>
         <div id="action">
             <div id="board"><div>
                 <div id="grounds">
                     <div id="bg" class="tileset"></div>
+                    <div id="fogg" class="tileset"></div>
                     <div id="fg" class="tileset"></div>
                     <div id="people"></div>
                 </div>
@@ -28,6 +65,14 @@
         <div id="group" class="mode popup"></div>
         <div id="fog" class="fog popup"></div>
         <div id="nofog" class="fog popup"></div>
+        <div id="plife" class="popup"></div>
+        <div id="pmunition" class="popup"></div>
+        <div id="parmor" class="popup"></div>
+        <div id="pattack" class="popup"></div>
+        <div id="pmove" class="popup"></div>
+        <div id="pvision" class="popup"></div>
+        <div id="pluck" class="popup"></div>
+        <div id="pspeed" class="popup"></div>
     </div>
 
     <div id="story">
