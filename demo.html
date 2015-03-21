@@ -12,16 +12,16 @@
     <script type="text/javascript" src="js/jlodb-ext.js"></script>
     <link type="text/css" rel="stylesheet" href="css/jlodb.css" media="all" />
 
-    <style>
-        #all>#launcher      { width:16em; height:12em; float:left; position:inherit; z-index:2000; display:inherit; }
-        #all.nb4 #launcher  { width:8em; height:6em; }
-        #all.nb16 #launcher  { width:4em; height:3em; }
-    </style>
     <script>
 
 var options = {};
 var jlodb = function($elt) {
-    $elt.jlodb({ isvisible:true, onfinish:function($this) { jlodb($this); }}, options);
+    $elt.show().parent().find("#score").removeClass().hide();
+    $elt.jlodb({ isvisible:true,
+                onfinish:   function($this)       { $this.parent().find("#score").removeClass().hide(); },
+                onscore:    function($this, _ret) { $this.parent().find("#score").attr("class","s"+_ret.score).show(); 
+                                                    setTimeout(function() { $this.parent().find("#score").addClass("active"); },0); return true; }
+                }, options);
 }
 
 window.onload = function() {
@@ -37,24 +37,34 @@ window.onload = function() {
     var args = {}
     var a = location.search.substring(1).split('&');
     for (var i in a) { var p= a[i].split('='); args[p[0]]=p[1]; }
-    if (!args.nb || ( args.nb!=4 && args.nb!=16) ) { args.nb = 1; }
-
-    for (var i=0; i<args.nb; i++) { $("#all").append('<div id="launcher"><div id="activity"></div></div>'); }
-    $("#all").addClass("nb"+args.nb);
 
     if (args.id)       { options.id = args.id; } else {
         if (args.activity)          { options.activity = args.activity; }
         if (args.classification)    { options.classification = args.classification; }
     }
-    if (args.splash) { $("#all").removeClass(); }
 
-    $("#all>div").each( function() { jlodb($(this)); });
+    jlodb($("#launcher"));
 }
 
     </script>
 </head>
 
 <body><div>
-    <div id="all" class="nosplash"></div>
-</div></body>
+<div id="launcher">
+    <div id="activity"></div>
+    <div id="score"><div>
+        <div class="content">
+            <div class="value"></div>
+            <div class="stars"></div>
+            <div class="icon" id="reload" ontouchstart="$(this).closest('#launcher').jlodb('reload');event.preventDefault();"
+                 onclick="$(this).closest('#launcher').jlodb('reload');" ><img src="res/img/icon/reload.svg"/></div>
+
+            <div class="icon" id="next" ontouchstart="event.preventDefault();"
+                 onclick="jlodb($('#launcher'));"><img src="res/img/icon/next.svg"/></div>
+
+    </div></div></div>
+    </div>
+
+</div>
+</body>
 </html>

@@ -3,11 +3,11 @@
     <div id="comment"></div>
     <div id="values"><ul></ul></div>
     <div id="board"><div id="time" class="time">00:00:00</div></div>
-    <div id="splash" ontouchstart="$(this).hide().closest('.sequence').sequence('next');event.preventDefault();"
+    <div id="splashex" ontouchstart="$(this).hide().closest('.sequence').sequence('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.sequence').sequence('next');"><div>
-        <div class="text">
-            <h1 id="label">Sequence</h1>
-            <p id="guide_svg"></p>
-        </div>
+            <h1 id="label"></h1>
+            <p id="guide_svg" class="guide"></div>
+        <p id="guide_time"></p>
+        <p id="guide_number"></p>
     </div></div>
 </div>

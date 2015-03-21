@@ -196,7 +196,7 @@
                     for (var i in settings.locale.guide) { $this.find("#guide").append("<p>"+settings.locale.guide[i]+"</p>"); }
                 }
                 else { $this.find("#guide").html(settings.locale.guide); }
-                if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         // GET THE DELAY ACCORDING TO THE SPEED VALUE
@@ -959,7 +959,7 @@
                     }
                     else {
                         $this.removeClass();
-                        if ($settings.class) { $this.addClass($settings.class); }
+                        if ($settings["class"]) { $this.addClass($settings["class"]); }
                         helpers.settings($this.addClass(defaults.name), $settings);
                         helpers.loader.css($this);
                     }
@@ -972,7 +972,6 @@
             },
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                $this.find("#splash").hide();
                 settings.interactive = true;
             },
             speed: function() {

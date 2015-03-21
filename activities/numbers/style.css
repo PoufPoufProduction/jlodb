@@ -21,20 +21,30 @@
 .numbers div#menu                       { float:left; width:4em; height:10em; }
 .numbers div#footer                     { clear:both;width:16em; height:2em;  }
 
-.numbers div#popup            { position:absolute; top:0; left:0; font-size:1.2em; overflow:visible; display:none;}
-.numbers div#popup #border    { margin:.2em; width:1em; height:1em; background-image:url("../../res/img/icon/round.svg")}
-.numbers div#popup .arrow     { position:absolute; width:1em; height:1em; font-size:.5em;}
-.numbers div#popup .arrow>div { width:4em; height:4em; }
-.numbers div#popup #a0        { top:-0.3em; left:.9em; }
-.numbers div#popup #a0>div    { margin-top:0em;}
-.numbers div#popup #a1      { top:2.1em; left:.9em; }
-.numbers div#popup #a1>div  { margin-top:-2em; }
-.numbers div#popup #a3      { top:0.9em; left:-.3em; }
-.numbers div#popup #a3>div  { margin-top:-3em; }
-.numbers div#popup #a2     { top:0.9em; left:2.1em; }
-.numbers div#popup #a2>div { margin-top:-1em; }
+.numbers div#popup                      { position:absolute; top:0; left:0; font-size:1.2em; overflow:visible; display:none;}
+.numbers div#popup #border              { margin:.2em; width:1em; height:1em; background-image:url("../../res/img/icon/round.svg")}
+.numbers div#popup .arrow               { position:absolute; width:1em; height:1em; font-size:.5em;}
+.numbers div#popup .arrow>div           { width:4em; height:4em; }
+.numbers div#popup #a0                  { top:-0.3em; left:.9em; }
+.numbers div#popup #a0>div              { margin-top:0em;}
+.numbers div#popup #a1                  { top:2.1em; left:.9em; }
+.numbers div#popup #a1>div              { margin-top:-2em; }
+.numbers div#popup #a3                  { top:0.9em; left:-.3em; }
+.numbers div#popup #a3>div              { margin-top:-3em; }
+.numbers div#popup #a2                  { top:0.9em; left:2.1em; }
+.numbers div#popup #a2>div              { margin-top:-1em; }
+.numbers div#popup .arrow.s>div         { margin-left:-1em; opacity:1 !important; }
 
-.numbers div#popup .arrow.s>div { margin-left:-1em; opacity:1 !important; }
+
+.numbers div#keypad                    { position:absolute; top:0; left:0; font-size:1em; background-color:rgba(255,255,255,0.8);
+                                         border-radius:.3em; display:none;}
+.numbers div#keypad td                 { width:1.2em; overflow:hidden; cursor:pointer; text-align:center; font-weight:bold;
+                                          font-family: "Courier New" Courier monospace;
+                                          color:rgb(220,231,241); border-radius:.25em; }
+.numbers div#keypad.tiny td            { font-size:.8em; }
+.numbers #screen                       { padding-top:.1em; background-color:rgba(15, 15, 30, 0.75) !important; color:#DDDDFF !important; }
+.numbers #screen>div                   { width:3.6em; height:1.2em; }
+.numbers #screen #val                   { font-size:1em; }
 
 .numbers div#submit                     { font-size:1.5em; height:1em;width:1em; cursor:pointer;
                                             position:absolute; top:7em; left:0em; z-index:3; }
@@ -53,3 +63,16 @@
 
 .numbers #effects                       { width:50%; height:50%; position:absolute; top:5%; left:60%; display:none; }
 .numbers #effects>div                   { font-size:6em; width:1em; height:1em; display:none; }
+
+.numbers .bluekeypad                   { background-color:rgba(84,137,184,0.9);
+                                  -webkit-transition: background-color 1000ms ease-in;
+                                  -moz-transition: background-color 1000ms ease-in;
+                                  -o-transition: background-color 1000ms ease-in;
+                                  -ms-transition: background-color 1000ms ease-in;
+                                  transition: background-color 1000ms ease-in; }
+.numbers .bluekeypad.touch             { background-color:rgba(256,220,50,0.9);
+                                  -webkit-transition: none;
+                                  -moz-transition: none;
+                                  -o-transition: none;
+                                  -ms-transition: none;
+                                  transition: none; }

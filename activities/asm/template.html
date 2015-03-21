@@ -157,12 +157,10 @@
     <div id="binary"><div ontouchstart="$(this).parent().hide();event.preventDefault();"
                           onclick="$(this).parent().hide();"></div></div>
 
-    <div id="splash" ontouchstart="$(this).closest('.asm').asm('next');event.preventDefault();"
-                     onclick="$(this).closest('.asm').asm('next');"><div>
-        <div class="text">
-            <h1 id="label">assembler</h1>
+    <div id="splashex" ontouchstart="$(this).hide().closest('.asm').asm('next');event.preventDefault();"
+                     onclick="$(this).hide().closest('.asm').asm('next');"><div>
+            <h1 id="label"></h1>
             <div id="guide">
-            </div>
         </div>
     </div></div>
 

@@ -108,7 +108,7 @@
                     else { $this.find("#"+id).html(value); }
                 }); }
 
-                if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         newline: function($this) {
@@ -255,14 +255,13 @@
                     }
                     else {
                         $this.removeClass();
-                        if ($settings.class) { $this.addClass($settings.class); }
+                        if ($settings["class"]) { $this.addClass($settings["class"]); }
                         helpers.settings($this.addClass(defaults.name), $settings);
                         helpers.loader.css($this);
                     }
                 });
             },
             next: function() {
-                $(this).find("#splash").hide();
                 helpers.build($(this));
             },
             quit: function() {

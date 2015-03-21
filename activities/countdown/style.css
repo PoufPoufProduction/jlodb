@@ -1,8 +1,8 @@
 .countdown                                { background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat;}
-.countdown div#splash>div                 { background-image:url("../../res/img/banners/countdown.svg"); }
-.countdown div#splash .text               { width:60%; float:right; font-size:.8em;  }
-.countdown div#splash .text h1            { text-align:right; padding-right:.5em;}
-.countdown div#splash .text div           { margin:.5em .5em .5em 3em; }
+.countdown div#splashex                   { background-image:url("../../res/img/banners/countdown.svg"); }
+.countdown div#splashex  h1               { position:absolute; top:51%; left:10%; font-size:1.5em; color:#432;}
+.countdown div#splashex #guide               { position:absolute; top:61%; left:12%; width:22em; color:#321;
+                                               font-size:.7em; font-style:italic; text-align:justify; }
 
 .countdown #header                        { width:100%; font-size:.8em; height:1.4em; padding:.1em 0; background-color:#aaa;
                                             background-image:url("../../res/img/background/steel01.svg");
@@ -21,7 +21,7 @@
 .countdown #board .line .r              { width:.8em; height:.8em; background-color:red; margin: .3em 1.6em 0 0;
                                           border-radius:0 .5em .5em 0; cursor:pointer; }
 .countdown #board .line .r.rr           { background-color:gray; cursor:auto;}
-.countdown #board .line .r>div          { position:relative; top:-.22em; color:white; }
+.countdown #board .line .r>div          { font-size:.7em; color:white; margin:.1em;}
 .countdown #board .line .d              { padding:.1em; border:1px dashed gray; border-radius:.25em; width:2em; height:1.1em; 
                                           background-color:rgba(255,255,255,0.3); }
 .countdown #board .line .dd.over        { background-color:#FF8877; }

@@ -11,7 +11,6 @@
         showscore   : true,                                     // Show the score at the end
         debug       : true,                                     // Debug mode
         type        : "swap",                                   // swap: swap 2 elements, move: move all the elements for inserting
-        nbpages     : 0,                                        // number of values arrays (0 for no array but element)
         len         : 1,                                        // text length (0:auto)
         bgcolor     : ["gray","rgba(255,252,246,0.9)"],    // question and response colors
         bg          : ["",""],                                  // background image
@@ -117,13 +116,10 @@
 
             // IS THERE MORE THAN ONE PAGE
             var vValues = settings.values;
-            if (!(settings.gen) && $.isArray(vValues[0][0])) {
-                settings.nbpages = vValues.length;
-                vValues = vValues[settings.pageit];
-            }
+            if (!(settings.gen) && $.isArray(vValues[0][0])) { vValues = vValues[settings.number%vValues.length]; }
 
             // GET AND COMPUTE THE VALUES
-            if (!(settings.gen) && (settings.nbvalues>vValues.length) || (settings.type=="move")) {
+            if (!(settings.gen) && (settings.nbvalues>vValues.length)) {
                 settings.nbvalues = vValues.length;
                 settings.number = 1;
             }
@@ -201,7 +197,7 @@
                     var dropId  = parseInt($(this).attr("id"));
 
                     var posId   = parseInt(settings.elts[eltId][2]);
-                    var parentId= settings.elts[dropId][2];
+                    var parentId= parseInt(settings.elts[dropId][2]);
 
                     if (settings.type=="swap") {
                         settings.elts[eltId][2] = settings.elts[dropId][2];
@@ -209,31 +205,30 @@
 
                         var html=$(this).html();
                         $(this).html(ui.draggable.html()).attr("id",eltId);
-                        ui.draggable.html(html).attr("id",dropId);;
+                        ui.draggable.html(html).attr("id",dropId);
                     }
-                    /*
+
                     else {
-                            if (posId!=parentId) {
-                                var moveup = (parentId>posId), min = moveup?posId+1:parentId, max = moveup?parentId:posId;
+                        if (posId!=parentId) {
 
-                                // UPDATE THE INDEX
-                                for (var i=min; i<=max; i++) {
-                                    var j=i+ (moveup?-1:1);
-                                    var other   = $this.find("#interactive .response").get(i);
-                                    var otherId = parseInt($(other).attr("id"));
-                                    settings.elts[otherId][2] = j;
-                                }
-                                settings.elts[eltId][2]=parentId;
-
-                                // REBUILD THE ELEMENTS
-                                for (var i in settings.elts) {
-                                    $this.find("#interactive .response#"+i).detach()
-                                        .appendTo($this.find("#interactive #dz"+settings.elts[i][2]));
-                                }
-
+                            var moveup = (parentId>posId), min = moveup?posId:parentId+1, max = moveup?parentId-1:posId;
+                            var vIds = [];
+                            $this.find("#interactive .response").each(function() { vIds.push(parseInt($(this).attr("id"))); });
+                            // UPDATE THE INDEX
+                            for (var i=min; i<=max; i++) {
+                                $($this.find("#interactive .response").get(i)).attr("id", vIds[i+(moveup?1:-1)]);
                             }
+                            $($this.find("#interactive .response").get(parentId)).attr("id",eltId);
+
+                            $this.find("#interactive .response").each(function(_index) {
+                                var vId = $(this).attr("id");
+                                if (vId) {
+                                    $(this).children().first().html(settings.elts[vId][1]);
+                                    settings.elts[vId][2] = _index;
+                                }
+                            });
                         }
-                      */
+                    }
                 },
                 hoverClass: "switch"
             });
@@ -275,7 +270,7 @@
                     }
                     else {
                         $this.removeClass();
-                        if ($settings.class) { $this.addClass($settings.class); }
+                        if ($settings["class"]) { $this.addClass($settings["class"]); }
                         helpers.settings($this.addClass(defaults.name), $settings);
                         helpers.loader.css($this);
                     }
@@ -307,7 +302,6 @@
 
                     }
                     else {
-                        if (settings.nbpages) { settings.pageit = (settings.pageit+1)%settings.nbpages; }
                         setTimeout(function() { helpers.build($this); }, vGood?1000:2000);
                     }
                 }

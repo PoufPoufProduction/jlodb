@@ -1,9 +1,12 @@
 .asm .both *                        { overflow:visible; }
 .asm                                { background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat;}
-.asm div#splash>div                 { background-image:url("../../res/img/banners/asm.svg"); }
-.asm div#splash .text               { width:45%; float:right; }
-.asm div#splash .text h1            { font-size:1.2em; text-align:right; padding-right:.5em; }
-.asm div#splash #guide              { font-size:.8em; margin-right:.5em; }
+.asm div#splashex                 { background-image:url("../../res/img/banners/asm.svg");
+                                      font-family: "Courier New" Courier monospace; }
+.asm div#splashex  h1             { position:absolute; top:90%; left:-1%; font-size:1.5em; background-color:#030;
+                                      width:45%; color:#0F0; padding-left:1em; border-radius:0 .5em .5em 0;
+                                      border:.1em solid #0F0; }
+
+.asm div#splashex #guide          { position:absolute; top:40%; left:62%; width:36%; text-align:justify; font-size:.6em;}
 .asm div#board                      { font-size:.5em; width:105%; }
 .asm div#board>div                  { float:left; }
 /*---------------------------------------------------------------------------------------------------------------------------*/
@@ -62,7 +65,7 @@
 .asm #detail #source .a             { float:left; }
 .asm #detail #source #header        { font-size:2em; height:1em;}
 .asm #detail #source #header .icon  { float:right; cursor:pointer; margin:.1em; font-size:.8em; }
-.asm #detail #source #ops           { background-color:#90cce0; }
+.asm #detail #source #ops           { background-color:#90cce0; width:10.5em; }
 .asm #detail #source #args          { background-color:#828282; }
 .asm #detail #source .a             { padding:0;  }
 .asm #detail #source #ops  .a       { font-size:.8em; width:2.5em; margin:.2em 0; color:black; font-weight:normal; }

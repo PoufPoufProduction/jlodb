@@ -87,9 +87,12 @@
                 $this.find("h1#label").html(settings.label);
                 $this.find("#guide").html(settings.guide);
                 $this.find("#guide2").html(settings.guide2);
-                $this.find("#exercice").html(settings.exercice);
                 if (settings.title) { $this.find("#title").html(settings.title); } else { $this.addClass("notitle"); }
-                if (settings.exercice) { $this.find("#exercice").html(settings.title); } else { $this.addClass("noex"); }
+                if (settings.exercice) {
+                    if ($.isArray(settings.exercice)) {
+                        for (var i in settings.exercice) { $this.find("#exercice").append("<p>"+settings.exercice[i]+"</p>"); }
+                    } else { $this.find("#exercice").html(settings.exercice); }
+                } else { $this.addClass("noex"); }
                 if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
 
                 if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
@@ -238,7 +241,7 @@
                     }
                     else {
                         $this.removeClass();
-                        if ($settings.class) { $this.addClass($settings.class); }
+                        if ($settings["class"]) { $this.addClass($settings["class"]); }
                         helpers.settings($this.addClass(defaults.name), $settings);
                         helpers.loader.css($this);
                     }

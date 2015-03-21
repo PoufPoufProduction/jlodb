@@ -4,15 +4,40 @@
 .geometry td                                    { margin:0; padding:0; }
 .geometry div#key                               { width:5em; height:5em; margin:0 auto; cursor:pointer; }
 .geometry div#buttons                           { background-color:rgb(53,34,34);overflow:hidden;
-                                                  float:left; margin:.1em; padding:.05em; margin-top:4.8em; font-size:.8em; }
+                                                  float:left; margin:.1em; padding:.05em; margin-top:3.8em; font-size:.8em; }
 .geometry div#actions table                     { }
 .geometry div#actions td                        { width:1em; height:1em; overflow:hidden; background-color:white;}
-.geometry div#actions div.action                { width:1em; height:1em; cursor:pointer; }
+.geometry div#actions div.action                { width:1em; height:1em; cursor:pointer;
+                                                  background-image:url('../../res/img/svginventoryicons/background/border/square01.svg'); }
+.geometry div#actions div.action.a2             { background-image:url('../../res/img/svginventoryicons/background/border/square02.svg'); }
 .geometry div#actions div.action.disable img    { opacity:.3; cursor:default; }
 .geometry div#actions div.action.s              { background-color:rgba(196,184,255,1); }
-.geometry div#actions div.simple                { width:1em; height:1em; cursor:pointer; }
+.geometry div#actions div.simple                { width:1em; height:1em; cursor:pointer;
+                                                  background-image:url('../../res/img/svginventoryicons/background/border/square01.svg'); }
 .geometry div#actions div.simple.disable *      { opacity:.3; }
 .geometry div#actions div.simple#color div      { width:1em; height:1em; background-color:black; }
+.geometry div#actions #nbelts                   { font-size:.25em; width:4em; text-align:center;}
+.geometry div#actions #cancel                   { font-size:.75em; width:1.3em; text-align:center; }
+.geometry div#actions #info                     { background-color:white;
+                                                    -webkit-transition: background-color 1000ms ease-in;
+                                                    -moz-transition: background-color 1000ms ease-in;
+                                                    -o-transition: background-color 1000ms ease-in;
+                                                    -ms-transition: background-color 1000ms ease-in;
+                                                    transition: background-color 1000ms ease-in; }
+.geometry div#actions #info.wrong               { background-color:rgb(128,50,50); color:rgb(255,200,200);}
+
+.geometry div#actions #info.touch               { background-color:rgba(100,200,255,0.8);
+                                                    -webkit-transition: none;
+                                                    -moz-transition: none;
+                                                    -o-transition: none;
+                                                    -ms-transition: none;
+                                                    transition: none;}
+.geometry div#actions #info.wrong.touch         { background-color:rgba(40,0,0,1);
+                                                    -webkit-transition: none;
+                                                    -moz-transition: none;
+                                                    -o-transition: none;
+                                                    -ms-transition: none;
+                                                    transition: none;}
 .geometry div#buttons div#log                   { font-size:.2em; color:#555555; height:1em; width:10em; overflow:hidden;
                                                   white-space: nowrap; opacity:1; }
 .geometry div#boardframe                        { width:13.8em; height:8em; overflow:hidden; float:right; margin:.08em;
@@ -26,10 +51,13 @@
 .geometry div#text #statement                   { margin:0 .5em; }
 .geometry table#objectives                      { margin-left:1em; }
 .geometry table#objectives div.icon             { width:1em; height:1em; }
-.geometry div#splash>div                        { background-image:url("../../res/img/banners/geometry.svg"); }
-.geometry div#splash .text                      { font-size:1em; width:48%; }
-.geometry div#splash .text h1                   { padding-left:.5em; }
-.geometry div#splash .text p                    { margin:.5em; }
+.geometry div#splashex                          { background-image:url("../../res/img/banners/geometry.svg"); color:#432;}
+.geometry div#splashex h1                       { position:absolute; top:28%; left:10%; font-size:1.5em; }
+.geometry div#splashex .guide                   { position:absolute; font-size:.7em; font-weight:bold; font-style:italic; text-align:justify; }
+.geometry div#splashex #guide                   { top:36%; left:8%; width:40%; }
+.geometry div#splashex #guide2                  { top:48%; left:8%; width:32%; }
+.geometry div#splashex #gnote                   { position:absolute; top:74%; left:77%; color:white; font-size:4em; font-weight:bold;
+                                                  width:2em; text-align:center; }
 
 
 .geometry.blank div#boardframe                  { background-image:none; background-color:#dcf9f5; }
@@ -37,7 +65,7 @@
 .geometry.black div#boardframe                  { background-image:none; background-color:black; }
 .geometry.large div#boardframe                  { height:10.35em; }
 .geometry.hide  div#buttons                     { display:none; }
-.geometry.large div#text                        { height:2.8em; }
+.geometry.large div#text                        { height:3.2em; }
 
 .geometry.full  div#buttons                     { display:none; }
 .geometry.full  div#text                        { display:none; }

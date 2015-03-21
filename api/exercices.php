@@ -108,14 +108,19 @@ if (!$error) {
     $sql = "SELECT * FROM `".$_SESSION['prefix']."exercice`";
     if (strlen($where)) { $sql.=" WHERE".$where; }
 
+
     $limit = "500";
     if (strlen($_GET["limit"])) { $limit = $_GET["limit"]; }
     $sql.= $order." LIMIT ".$limit;
 
+    if (strlen($_GET["raw"])) {
+        $sql = "SELECT * FROM `".$_SESSION['prefix']."exercice`";
+    }
+
     $exercice = mysql_query($sql);
     $json = "";
     while($row = mysql_fetch_array($exercice)) {
-        if (strlen($json)) { $json.=","; }
+        if (strlen($json)) { $json.=strlen($_GET["raw"])?"\n":","; }
         $json.='{ "id":"'.$row["Exercice_Id"].'","label":"'.$row["Exercice_Title"].'",'.
                '"activity":"'.$row["Exercice_Activity"].'","classification":"'.$row["Exercice_Classification"].'",'.
                '"level":'.$row["Exercice_Level"].',"diff":'.$row["Exercice_Difficulty"].',"extend":'.
@@ -126,12 +131,16 @@ if (!$error) {
 }
 
 // PUBLISH DATA UNDER JSON FORMAT
-echo '{';
-echo '  "status" : "'.$status.'",';
-if ($error)     { echo '  "error" : '.$error.','; }
-echo '  "textStatus" : "'.$textstatus.'",';
-echo '  "nb" : '.$count[0].',';
-echo '  "exercices" : ['.$json.']';
-echo '}';
-
+if (strlen($_GET["raw"])) {
+    echo $json;
+}
+else {
+    echo '{';
+    echo '  "status" : "'.$status.'",';
+    if ($error)     { echo '  "error" : '.$error.','; }
+    echo '  "textStatus" : "'.$textstatus.'",';
+    echo '  "nb" : '.$count[0].',';
+    echo '  "exercices" : ['.$json.']';
+    echo '}';
+}
 ?>

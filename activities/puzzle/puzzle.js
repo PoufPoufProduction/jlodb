@@ -116,7 +116,7 @@
 
                 helpers.build($this);
 
-                if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             },
         },
         // Update the timer
@@ -496,7 +496,7 @@
                     }
                     else {
                         $this.removeClass();
-                        if ($settings.class) { $this.addClass($settings.class); }
+                        if ($settings["class"]) { $this.addClass($settings["class"]); }
                         helpers.settings($this.addClass(defaults.name), $settings);
                         helpers.loader.css($this);
                     }
@@ -509,10 +509,7 @@
                 settings.finish = true;
                 settings.context.onquit($this,{'status':'abort'});
             },
-            next: function() {
-                var $this = $(this) , settings = helpers.settings($this);
-                $this.find("#splash").hide();
-            }
+            next: function() { }
         };
 
         if (methods[method])    { return methods[method].apply(this, Array.prototype.slice.call(arguments, 1)); } 

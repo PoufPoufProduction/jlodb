@@ -108,6 +108,10 @@
                         "<img src='res/img/icon/cancel.svg' alt='x'/></div></td><td>&nbsp;"+
                         settings.labels[i]+"</td></tr>");
                 }
+                for (var i in settings.objectives) for (var j in settings.objectives[i]) {
+                    settings.objectives[i][j].done = false;
+                }
+                $this.find("#gnote").html(settings.number);
 
                 // LOCALE HANDLING
                 $this.find("h1#label").html(settings.label);
@@ -122,14 +126,25 @@
                     'res/img/'+settings.filename + debug, { addTo: true, changeSize: true, onLoad:function() { helpers.build($this); }
                 });
 
-                if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                helpers.update($this, false);
+
+                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+            }
+        },
+        update: function($this, _anim) {
+            var settings = helpers.settings($this);
+            $this.find("#nbelts").html(settings.histo.length+"/"+settings.number);
+            $this.find("#info").toggleClass("wrong",settings.histo.length>settings.number);
+            if (_anim) {
+                $this.find("#info").addClass("touch");
+                setTimeout(function() { $this.find("#info").removeClass("touch"); }, 50);
             }
         },
         // Check if a new element matches an objective
-        check: function($this, elt) {
+        check: function($this, elt, _anim) {
             var settings = helpers.settings($this);
             var ret = false;
-            settings.nbobjects++;
+            helpers.update($this, _anim);
             // Remove objectives with matches the new elements
             for (var i in settings.objectives) {
                 for (var j in settings.objectives[i]) {
@@ -140,27 +155,27 @@
                                  helpers.utility.equal(e.values[(1+k*2)%4], elt.coord[1]) &&
                                  helpers.utility.equal(e.values[(2+k*2)%4], elt.coord[2]) &&
                                  helpers.utility.equal(e.values[(3+k*2)%4], elt.coord[3]) )
-                                     { e.type=""; ret = true;}
+                                     { e.done=true; ret = true;}
                         }
                     }
                     else
                     if ( e.type == "point" && elt.name=="point") {
                         if ( helpers.utility.equal(e.values[0], elt.coord[0]) &&
                              helpers.utility.equal(e.values[1], elt.coord[1]) )
-                                     { e.type=""; ret = true;}
+                                     { e.done=true; ret = true;}
                     }
                     else
                     if ( e.type == "circle" && elt.name=="circle") {
                         if ( helpers.utility.equal(e.values[0], elt.coord[0]) &&
                              helpers.utility.equal(e.values[1], elt.coord[1]) &&
                              helpers.utility.equal(e.values[2], elt.coord[2]) )
-                                     { e.type=""; ret = true;}
+                                     { e.done=true; ret = true;}
                     }
                     else
                     if ( e.type == "line" && elt.name=="line") {
                         var pos = helpers.utility.line.topairex(elt.coord[0], elt.coord[1], elt.coord[2], elt.coord[3]);
                         if ( helpers.utility.equal(e.values[0], pos[0]) && helpers.utility.equal(e.values[1], pos[1]))
-                                     { e.type=""; ret = true;}
+                                     { e.done=true; ret = true;}
                     }
                 }
             }
@@ -170,14 +185,14 @@
             for (var i in settings.objectives) {
                 var complete = true;
                 for (var j in settings.objectives[i]) {
-                    if (settings.objectives[i][j].type) { complete = false; settings.finish = false; }
+                    if (!settings.objectives[i][j].done) { complete = false; settings.finish = false; }
                 }
                 if (complete) {
                     $($this.find("#objectives .icon img")[i]).attr("src", "res/img/icon/ok.svg");
                 }
             }
             if (settings.finish) {
-                settings.score = helpers.score(settings.nbobjects, settings.number);
+                settings.score = helpers.score(settings.histo.length, settings.number);
                 $(settings.svg.root()).attr("class",$(settings.svg.root()).attr("class")+" done");
 
                 setTimeout(function() { helpers.end($this); }, 2000);
@@ -277,7 +292,8 @@
                     var object = helpers.factory.build($this, "circle",
                                 [settings.controls.first.coord[0],settings.controls.first.coord[1], settings.radius] );
                     settings.circles.push(object);
-                    helpers.check($this, object);
+                    settings.histo.push("circles");
+                    helpers.check($this, object, true);
                 }
             }
             else
@@ -288,7 +304,8 @@
                         [ settings.controls.first.coord[0],settings.controls.first.coord[1],
                           settings.controls.current.coord[0], settings.controls.current.coord[1] ] );
                     settings.lines.push(object);
-                    helpers.check($this, object);
+                    settings.histo.push("lines");
+                    helpers.check($this, object, true);
                     break;
                 case "line":
                     pos = helpers.utility.line.convert4($this,
@@ -296,7 +313,8 @@
                             settings.controls.current.coord[0], settings.controls.current.coord[1]);
                     var object = helpers.factory.build($this, "line", [pos.i1, pos.j1, pos.i2, pos.j2] );
                     settings.lines.push(object);
-                    helpers.check($this, object);
+                    settings.histo.push("lines");
+                    helpers.check($this, object, true);
                     break;
                 case "circle":
                     if (settings.circle!="1point") {
@@ -304,7 +322,8 @@
                         var object = helpers.factory.build($this, "circle",
                                     [settings.controls.first.coord[0],settings.controls.first.coord[1], settings.radius] );
                         settings.circles.push(object);
-                        helpers.check($this, object);
+                        settings.histo.push("circles");
+                        helpers.check($this, object, true);
                     }
                     break;
                 case "perpendicular":
@@ -313,14 +332,16 @@
                             settings.controls.current.coord[0], settings.controls.current.coord[1], settings.controls.misc);
                     var object = helpers.factory.build($this, "line", [pos.i1, pos.j1, pos.i2, pos.j2] );
                     settings.lines.push(object);
-                    helpers.check($this, object);
+                    settings.histo.push("lines");
+                    helpers.check($this, object, true);
                     break;
                 case "midpoint":
                     var object = helpers.factory.build($this, "point",
                         [ (settings.controls.first.coord[0]+settings.controls.current.coord[0])/2,
                           (settings.controls.first.coord[1]+settings.controls.current.coord[1])/2 ] );
                     settings.points.push(object);
-                    helpers.check($this, object);
+                    settings.histo.push("points");
+                    helpers.check($this, object, true);
                     break;
                 case "intersection":
                     var nbCircles = 0;
@@ -341,11 +362,12 @@
                     }
                     if (inter) {
                         var count = 0;
+                        settings.histo.push("inter"+inter.length);
                         while (count<inter.length) {
                             var object = helpers.factory.build($this, "point", [ inter[count],inter[count+1] ] );
                             settings.points.push(object);
                             count+=2;
-                            helpers.check($this, object);
+                            helpers.check($this, object, true);
                         }
                     }
                     break;
@@ -359,7 +381,8 @@
                         var pos = helpers.utility.line.convert3($this, inter[0], inter[1], angle);
                         var object = helpers.factory.build($this, "line", [pos.i1, pos.j1, pos.i2, pos.j2] );
                         settings.lines.push(object);
-                        helpers.check($this, object);
+                        settings.histo.push("lines");
+                        helpers.check($this, object, true);
                     }
                     break;
                 }
@@ -388,7 +411,7 @@
             }
 
             // RESTORE STUFF
-            settings.controls.mask = settings.mask[settings.controls.action][0];
+            if (settings.controls.action) { settings.controls.mask = settings.mask[settings.controls.action][0]; }
         },
         preview : {
             segment: function($this, i, j, o) {
@@ -476,7 +499,7 @@
                     coord       : coord,
                     name        : name
                 };
-                if (!$(ret.svg).css("stroke").length) { $(ret.svg).css("stroke",settings.color); }
+                if (! (attr && attr.style && attr.style.indexOf("stroke")!=-1)) { $(ret.svg).css("stroke",settings.color); }
                 if (settings.small) { $(ret.svg).attr("class","small "+$(ret.svg).attr("class")); }
                 return ret;
             },
@@ -814,10 +837,10 @@
                         highlight   : 0,
                         active      : 0
                     },
-                    nbobjects       : 0,
                     colorid         : 0,
                     colors          : [ "black", "blue", "red", "green"],
                     svg             : 0,
+                    histo           : [],
                     points          : [],
                     lines           : [],
                     circles         : []
@@ -836,7 +859,7 @@
                     }
                     else {
                         $this.removeClass();
-                        if ($settings.class) { $this.addClass($settings.class); }
+                        if ($settings["class"]) { $this.addClass($settings["class"]); }
                         helpers.settings($this.addClass(defaults.name), $settings);
                         helpers.loader.css($this);
                     }
@@ -883,7 +906,6 @@
             },
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                $(this).find("#splash").hide();
 
                 $(this).find("#board").bind("mousemove", function(e) { helpers.mousemove($this, e); });
                 $(this).find("#board").bind("mousedown", function() { helpers.mousedown($this); });
@@ -896,6 +918,36 @@
                     helpers.mousemove($this, e.originalEvent.touches[0]); helpers.mousedown($this); e.preventDefault(); });
                 $(this).find("#board").bind("touchend", function() { helpers.mouseup($this); });
 
+            },
+            cancel: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+                if (settings.histo.length) {
+                    var vElt = settings.histo.pop();
+                    switch(vElt)
+                    {
+                        case "points": case "lines": case "circles":
+                            var vObject = settings[vElt].pop();
+                            $(vObject.svg).detach(); $(vObject.highlight).detach();
+                            break;
+                        case "inter2":
+                            var vObject = settings.points.pop();
+                            $(vObject.svg).detach(); $(vObject.highlight).detach();
+                        break;
+                        case "inter4":
+                            for (var i=0; i<2; i++) {
+                                var vObject = settings.points.pop();
+                                $(vObject.svg).detach(); $(vObject.highlight).detach();
+                            }
+                        break;
+                    }
+                    for (var i in settings.objectives) {
+                        for (var j in settings.objectives[i]) { settings.objectives[i][j].done = false; }
+                        $($this.find("#objectives .icon img")[i]).attr("src", "res/img/icon/cancel.svg");
+                    }
+                    for (var i in settings.points) { helpers.check($this, settings.points[i], false); }
+                    for (var i in settings.lines) { helpers.check($this, settings.lines[i], false); }
+                    for (var i in settings.circles) { helpers.check($this, settings.circles[i], false); }
+                }
             },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);

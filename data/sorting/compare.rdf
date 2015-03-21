@@ -1,0 +1,175 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dct="http://purl.org/dc/terms/">
+
+    <rdf:Description>
+        <dct:identifier>u1K</dct:identifier>
+        <dct:title xml:lang="fr-FR">Classez dans l'ordre croissant 6 nombres positifs inférieurs à 1 000.</dct:title>
+        <dct:description><![CDATA["gen":"function(j,elts){var limit=1000,nb=6,min=elts.length?parseInt(elts[elts.length-1][1].replace(/ /g,'')):0,max=limit*(1-(nb-j-1)/nb),a=Math.floor(Math.random()*(max-min))+min,aa=\\\"\\\",i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a%10).toString()+aa; a=Math.floor(a/10); i++; };return aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.4,"color":["transparent","black"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Classez de haut en bas et dans l'ordre <b>croissant</b> les nombres ci-dessous.","fontex":0.6]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:alternative>u10K</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+        <dct:type>2</dct:type>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>u10K</dct:identifier>
+        <dct:title xml:lang="fr-FR">Classez dans l'ordre croissant 6 nombres positifs inférieurs à 10 000.</dct:title>
+        <dct:description><![CDATA["gen":"function(j,elts){var limit=10000,nb=6,min=elts.length?parseInt(elts[elts.length-1][1].replace(/ /g,'')):0,max=limit*(1-(nb-j-1)/nb),a=Math.floor(Math.random()*(max-min))+min,aa=\\\"\\\",i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a%10).toString()+aa; a=Math.floor(a/10); i++; };return aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.4,"color":["transparent","black"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Classez de haut en bas et dans l'ordre <b>croissant</b> les nombres ci-dessous.","fontex":0.6]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:alternative>u10K</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+        <dct:type>2</dct:type>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>u10M</dct:identifier>
+        <dct:title xml:lang="fr-FR">Classez dans l'ordre croissant 6 nombres positifs inférieurs à 1 000 000.</dct:title>
+        <dct:description><![CDATA["gen":"function(j,elts){var limit=10000000,nb=6,min=elts.length?parseInt(elts[elts.length-1][1].replace(/ /g,'')):0,max=limit*(1-(nb-j-1)/nb),a=Math.floor(Math.random()*(max-min))+min,aa=\\\"\\\",i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a%10).toString()+aa; a=Math.floor(a/10); i++; };return aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.4,"color":["transparent","black"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Classez de haut en bas et dans l'ordre <b>croissant</b> les nombres ci-dessous.","fontex":0.6]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:alternative>u10K</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+        <dct:type>2</dct:type>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>u9502</dct:identifier>
+        <dct:title xml:lang="fr-FR">Classez dans l'ordre décroissant les différents nombres [9502,9205,5902,5209,2905,2509].</dct:title>
+        <dct:description><![CDATA["values":["9 502","9 205","5 902","5 209","2 905","2 509"],"nbvalues":6,"type":"move","len":2,"font":1.4,"color":["transparent","black"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Classez de haut en bas et dans l'ordre <b>décroissant</b> les nombres ci-dessous.","fontex":0.6]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:alternative>u10K</dct:alternative>
+        <dct:type>2</dct:type>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>d1K</dct:identifier>
+        <dct:title xml:lang="fr-FR">Classez dans l'ordre décroissant 6 nombres positifs inférieurs à 1 000.</dct:title>
+        <dct:description><![CDATA["gen":"function(j,elts){var limit=1000,nb=6,max=elts.length?parseInt(elts[elts.length-1][1].replace(/ /g,'')):limit,min=limit*(nb-j-1)/nb,a=Math.floor(Math.random()*(max-min)+min),aa=\\\"\\\",i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a%10).toString()+aa; a=Math.floor(a/10); i++; };return aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.4,"color":["transparent","black"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Classez de haut en bas et dans l'ordre <b>décroissant</b> les nombres ci-dessous.","fontex":0.6]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:alternative>u10K</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+        <dct:type>2</dct:type>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>d10K</dct:identifier>
+        <dct:title xml:lang="fr-FR">Classez dans l'ordre décroissant 6 nombres positifs inférieurs à 10 000.</dct:title>
+        <dct:description><![CDATA["gen":"function(j,elts){var limit=10000,nb=6,max=elts.length?parseInt(elts[elts.length-1][1].replace(/ /g,'')):limit,min=limit*(nb-j-1)/nb,a=Math.floor(Math.random()*(max-min)+min),aa=\\\"\\\",i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a%10).toString()+aa; a=Math.floor(a/10); i++; };return aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.4,"color":["transparent","black"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Classez de haut en bas et dans l'ordre <b>décroissant</b> les nombres ci-dessous.","fontex":0.6]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:alternative>u10K</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+        <dct:type>2</dct:type>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>d1M</dct:identifier>
+        <dct:title xml:lang="fr-FR">Classez dans l'ordre décroissant 6 nombres positifs inférieurs à 1 000 000.</dct:title>
+        <dct:description><![CDATA["gen":"function(j,elts){var limit=1000000,nb=6,max=elts.length?parseInt(elts[elts.length-1][1].replace(/ /g,'')):limit,min=limit*(nb-j-1)/nb,a=Math.floor(Math.random()*(max-min)+min),aa=\\\"\\\",i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a%10).toString()+aa; a=Math.floor(a/10); i++; };return aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.4,"color":["transparent","black"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Classez de haut en bas et dans l'ordre <b>décroissant</b> les nombres ci-dessous.","fontex":0.6]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:alternative>u10K</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+        <dct:type>2</dct:type>
+    </rdf:Description>
+
+    <!-- NEGATIVE -->
+
+    <rdf:Description>
+        <dct:identifier>un1K</dct:identifier>
+        <dct:title xml:lang="fr-FR">Classez dans l'ordre croissant 6 nombres dont la valeur absolue est inférieure à 1 000.</dct:title>
+        <dct:description><![CDATA["gen":"function(j,elts){var limit=1000,nb=6,min=elts.length?parseInt(elts[elts.length-1][1].replace(/ /g,'')):-limit,max=2*limit*(1-(nb-j-1)/nb)-limit,a=Math.floor(Math.random()*(max-min))+min,neg=(a<0),aa=\\\"\\\",a=Math.abs(a),i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(Math.abs(a)%10).toString()+aa; a=Math.floor(a/10); i++; };return (neg?\\\"-\\\":\\\"\\\")+aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.4,"color":["transparent","black"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Classez de haut en bas et dans l'ordre <b>croissant</b> les nombres ci-dessous.","fontex":0.6]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:alternative>u10K</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+        <dct:type>2</dct:type>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>un10K</dct:identifier>
+        <dct:title xml:lang="fr-FR">Classez dans l'ordre croissant 6 nombres dont la valeur absolue est inférieure à 10 000.</dct:title>
+        <dct:description><![CDATA["gen":"function(j,elts){var limit=10000,nb=6,min=elts.length?parseInt(elts[elts.length-1][1].replace(/ /g,'')):-limit,max=2*limit*(1-(nb-j-1)/nb)-limit,a=Math.floor(Math.random()*(max-min))+min,neg=(a<0),aa=\\\"\\\",a=Math.abs(a),i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(Math.abs(a)%10).toString()+aa; a=Math.floor(a/10); i++; };return (neg?\\\"-\\\":\\\"\\\")+aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.4,"color":["transparent","black"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Classez de haut en bas et dans l'ordre <b>croissant</b> les nombres ci-dessous.","fontex":0.6]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:alternative>u10K</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+        <dct:type>3</dct:type>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>un1M</dct:identifier>
+        <dct:title xml:lang="fr-FR">Classez dans l'ordre croissant 6 nombres dont la valeur absolue est inférieure à 1 000 000.</dct:title>
+        <dct:description><![CDATA["gen":"function(j,elts){var limit=1000000,nb=6,min=elts.length?parseInt(elts[elts.length-1][1].replace(/ /g,'')):-limit,max=2*limit*(1-(nb-j-1)/nb)-limit,a=Math.floor(Math.random()*(max-min))+min,neg=(a<0),aa=\\\"\\\",a=Math.abs(a),i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(Math.abs(a)%10).toString()+aa; a=Math.floor(a/10); i++; };return (neg?\\\"-\\\":\\\"\\\")+aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.4,"color":["transparent","black"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Classez de haut en bas et dans l'ordre <b>croissant</b> les nombres ci-dessous.","fontex":0.6]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:alternative>u10K</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+        <dct:type>3</dct:type>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>dn1K</dct:identifier>
+        <dct:title xml:lang="fr-FR">Classez dans l'ordre décroissant 6 nombres dont la valeur absolue est inférieure à 1 000.</dct:title>
+        <dct:description><![CDATA["gen":"function(j,elts){var limit=1000,nb=6,max=elts.length?parseInt(elts[elts.length-1][1].replace(/ /g,'')):limit,min=2*limit*(nb-j-1)/nb-limit,a=Math.floor(Math.random()*(max-min)+min),neg=(a<0),aa=\\\"\\\",a=Math.abs(a),aa=\\\"\\\",i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a%10).toString()+aa; a=Math.floor(a/10); i++; };return (neg?\\\"-\\\":\\\"\\\")+aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.4,"color":["transparent","black"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Classez de haut en bas et dans l'ordre <b>décroissant</b> les nombres ci-dessous.","fontex":0.6]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:alternative>u10K</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+        <dct:type>2</dct:type>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>dn10K</dct:identifier>
+        <dct:title xml:lang="fr-FR">Classez dans l'ordre décroissant 6 nombres dont la valeur absolue est inférieure à 10 000.</dct:title>
+        <dct:description><![CDATA["gen":"function(j,elts){var limit=10000,nb=6,max=elts.length?parseInt(elts[elts.length-1][1].replace(/ /g,'')):limit,min=2*limit*(nb-j-1)/nb-limit,a=Math.floor(Math.random()*(max-min)+min),neg=(a<0),aa=\\\"\\\",a=Math.abs(a),aa=\\\"\\\",i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a%10).toString()+aa; a=Math.floor(a/10); i++; };return (neg?\\\"-\\\":\\\"\\\")+aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.4,"color":["transparent","black"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Classez de haut en bas et dans l'ordre <b>décroissant</b> les nombres ci-dessous.","fontex":0.6]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:alternative>u10K</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+        <dct:type>3</dct:type>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>dn1M</dct:identifier>
+        <dct:title xml:lang="fr-FR">Classez dans l'ordre décroissant 6 nombres dont la valeur absolue est inférieure à 1 000 000.</dct:title>
+        <dct:description><![CDATA["gen":"function(j,elts){var limit=1000000,nb=6,max=elts.length?parseInt(elts[elts.length-1][1].replace(/ /g,'')):limit,min=2*limit*(nb-j-1)/nb-limit,a=Math.floor(Math.random()*(max-min)+min),neg=(a<0),aa=\\\"\\\",a=Math.abs(a),aa=\\\"\\\",i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a%10).toString()+aa; a=Math.floor(a/10); i++; };return (neg?\\\"-\\\":\\\"\\\")+aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.4,"color":["transparent","black"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Classez de haut en bas et dans l'ordre <b>décroissant</b> les nombres ci-dessous.","fontex":0.6]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:alternative>u10K</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+        <dct:type>3</dct:type>
+    </rdf:Description>
+
+</rdf:RDF>

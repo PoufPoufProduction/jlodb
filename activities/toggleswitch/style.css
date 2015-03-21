@@ -6,11 +6,16 @@
 .toggleswitch div.left                      { float:left; }
 .toggleswitch div.center                    { margin:0 auto; }
 .toggleswitch>div.main                      { background:url("../../res/img/background/book04.svg") repeat; }
+.toggleswitch div#splashex                  { background-image:url("../../res/img/banners/toggleswitch.svg"); }
+.toggleswitch div#splashex h1               { position:absolute; top:2%; left:5%; font-size:1.6em; color:white; width:90%;
+                                              padding:.5em 1em; background-color:black; border-radius:.5em; }
+.toggleswitch div#splashex #guide           { position:absolute; top:8%; left:65%; color:white; width:32%; font-size:.9em;
+                                              text-align:justify; font-style:italic; }
 .toggleswitch div#splash>div                { background-image:url("../../res/img/banners/toggleswitch.svg"); }
 .toggleswitch div#splash .text              { font-size:.8em; width:60%; float:right; }
 .toggleswitch div#splash .text h1           { text-align:right; padding-right:.5em; }
 .toggleswitch div#splash .text #guide       { margin:.5em 1em .5em 0; }
-.toggleswitch div#submit                    { font-size:1.5em; height:1em;width:1em; cursor:pointer;
+.toggleswitch div#submit                    { font-size:1.5em; height:1em;width:1em; cursor:pointer; display:none;
                                               position:absolute; top:7em; left:0em; z-index:3; }
 .toggleswitch div#submit>img                { display:none; }
 .toggleswitch div#submit #subvalid          { display:inline; }

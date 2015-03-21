@@ -19,12 +19,10 @@
 
     <div id="touch01" ><div><img src="res/img/effects/touch01.svg"/></div></div>
 
-    <div id="splash" ontouchstart="$(this).closest('.puzzle').puzzle('next');event.preventDefault();"
-                     onclick="$(this).closest('.puzzle').puzzle('next');"><div>
-        <div class="text">
-            <h1 id="label"></h1>
-            <div id="guide"></div>
-        </div>
+    <div id="splashex" ontouchstart="$(this).hide().closest('.puzzle').puzzle('next');event.preventDefault();"
+                     onclick="$(this).hide().closest('.puzzle').puzzle('next');"><div>
+        <h1 id="label"></h1>
+        <div id="guide"></div>
     </div></div>
 
 </div>

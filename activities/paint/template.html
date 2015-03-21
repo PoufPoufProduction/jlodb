@@ -16,15 +16,15 @@
     </div>
 
 
-    <div id="splash" ontouchstart="$(this).closest('.paint').paint('next');event.preventDefault();"
-                     onclick="$(this).closest('.paint').paint('next');"><div>
+    <div id="splashex" ontouchstart="$(this).hide().closest('.paint').paint('next');event.preventDefault();"
+                     onclick="$(this).hide().closest('.paint').paint('next');"><div>
         <div class="text" id="default">
             <h1 id="label"></h1>
-            <div id="guide"></div>
+            <div id="guide" class="guide"></div>
         </div>
         <div class="text" id="picross">
+            <div id="piguide" class="guide"></div>
             <h1 id="pilabel"></h1>
-            <div id="piguide"></div>
         </div>
     </div></div>
 

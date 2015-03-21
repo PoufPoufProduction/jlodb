@@ -78,7 +78,7 @@
                 var elt= $("<div id='svg'></div>").appendTo($this.find("#board"));
                 elt.svg();
                 settings.svg = elt.svg('get');
-                $(settings.svg).attr("class",settings.class);
+                $(settings.svg).attr("class",settings["class"]);
 
                 settings.svg.load('res/img/'+settings.url + debug,
                     { addTo: true, changeSize: true, onLoad:function() { helpers.loader.build($this); }
@@ -145,7 +145,7 @@
                 if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
 
                 $this.children().show()
-                if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         build: function($this) {
@@ -321,7 +321,7 @@
                     }
                     else {
                         $this.removeClass();
-                        if ($settings.class) { $this.addClass($settings.class); }
+                        if ($settings["class"]) { $this.addClass($settings["class"]); }
                         helpers.settings($this.addClass(defaults.name), $settings);
                         helpers.loader.css($this);
                     }
@@ -334,7 +334,6 @@
             },
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                $(this).find("#splash").hide();
                 settings.interactive = true;
             },
             valid: function() {
@@ -350,8 +349,8 @@
                     }
                     else {
                         for (var i=0; i<settings.result.length; i++) {
-                            var r1 = settings.result[i];    if (r1==' ') { r1='0'; }
-                            var r2 = result[i];             if (r2==' ') { r2='0'; }
+                            var r1 = settings.result[i];
+                            var r2 = result[i];
                             if (r1!=r2) {
                                 $("#"+settings.canvas+" #c"+i, settings.svg.root()).attr("class",
                                     $("#"+settings.canvas+" #c"+i, settings.svg.root()).attr("class")+" wrong");

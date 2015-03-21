@@ -1,15 +1,25 @@
 .paint                                { background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat;
                                         position:relative;}
-.paint.picross div#splash>div         { background-image:url("../../res/img/banners/paint.svg"); }
-.paint.picross div#splash .text       { display:none; }
-.paint div#splash #picross            { display:none; }
-.paint.picross div#splash #picross    { display:block; }
-.paint div#splash>div                 { background-image:url("../../res/img/banners/paint.svg"); }
-.paint div#splash .text               { width:48%; float:right; font-size:.8em;  }
-.paint div#splash .#picross           { display:none; }
-.paint div#splash .text h1            { text-align:right; padding-right:.5em;}
-.paint div#splash .text ul            { list-style-type:none; margin:.5em; font-size:.9em; }
-.paint div#splash .text li            { margin:.5em 0 .5em 0; }
+
+
+.paint div#splashex                     { background-color:rgba(0,0,0,0.2); background-image:url("../../res/img/banners/paint.svg");}
+
+.paint.picross div#splashex             { background-image:url("../../res/img/banners/picross.svg");}
+.paint div#splashex #picross            { display:none; }
+.paint.picross div#splashex #picross    { display:block; }
+.paint.picross div#splashex #default    { display:none; }
+
+.paint div#splashex  h1                 { position:absolute; top:10%; left:60%; font-size:2em; background-color:red;
+                                          width:55%; color:white; text-align:center; border-radius:0 .5em .5em 0;
+                                          border:.3em solid white;
+                                          -ms-transform: rotate(45deg); -webkit-transform: rotate(45deg); transform: rotate(45deg); }
+
+.paint div#splashex .guide   { position:absolute; top:65%; left:68%; width:26%; height:26%; text-align:justify; font-size:.8em;
+                                          background-color:#ccc; color:#333;
+                                          background-image:url("../../res/img/background/book05.svg"); background-repeat:repeat;
+                                          border-radius:.5em; border:.7em solid white;
+                                          padding:.5em; font-style:italic; font-weight:bold; }
+
 .paint div#exercice                   { position:absolute; width:14.2em; height:1.5em; top:10.5em; left:1.8em; border-radius:.5em 0 0 0;
                                         background-image:url("../../res/img/background/book02.svg"); background-repeat:repeat;
                                         display:none; }

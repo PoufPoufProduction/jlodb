@@ -6,13 +6,13 @@
             <table>
                 <tr><td colspan="3" id="screen">00</td></tr>
                 <tr>
-                    <td ontouchstart="$(this).closest('.sequence').sequence('key', 0);event.preventDefault();"
-                        onclick="$(this).closest('.sequence').sequence('key', 0);">0</td>
-                    <td ontouchstart="$(this).closest('.sequence').sequence('key', 1);event.preventDefault();"
-                        onclick="$(this).closest('.sequence').sequence('key', 1);">1</td>
-                    <td ontouchstart="$(this).closest('.sequence').sequence('key', .);event.preventDefault();"
-                        onclick="$(this).closest('.sequence').sequence('key', '.');" style="height:1.1em;">
-                            <div style="height:1.2em;margin-top:-0.3em;">⊗</div>
+                    <td class="bluekeypad" ontouchstart="$(this).closest('.sequence').sequence('key', 0, this);event.preventDefault();"
+                        onclick="$(this).closest('.sequence').sequence('key', 0, this);">0</td>
+                    <td class="bluekeypad" ontouchstart="$(this).closest('.sequence').sequence('key', 1, this);event.preventDefault();"
+                        onclick="$(this).closest('.sequence').sequence('key', 1, this);">1</td>
+                    <td class="bluekeypad" ontouchstart="$(this).closest('.sequence').sequence('key', '.', this);event.preventDefault();"
+                        onclick="$(this).closest('.sequence').sequence('key', '.', this);">
+                            <div class="icon" style="margin:0 auto;"><img src="res/img/icon/cancel2.svg"/></div>
                     </td>
                 </tr>
             </table>
@@ -26,12 +26,12 @@
         <div id="good20"><img src="res/img/effects/alert06.svg"/></div>
         <div id="wrong"><img src="res/img/effects/alert01.svg"/></div>
     </div>
-    <div id="splash" ontouchstart="$(this).closest('.sequence').sequence('next');event.preventDefault();"
-                    onclick="$(this).closest('.sequence').sequence('next');"><div>
-        <div class="text">
-            <h1 id="label">Sequence</h1>
-            <p id="guide_keypad"></p>
-        </div>
+    <div id="splashex" ontouchstart="$(this).hide().closest('.sequence').sequence('next');event.preventDefault();"
+                    onclick="$(this).hide().closest('.sequence').sequence('next');"><div>
+            <h1 id="label"></h1>
+            <p id="guide_keypad" class="guide"></div>
+        <p id="guide_time"></p>
+        <p id="guide_number"></p>
     </div></div>
 </div>
 

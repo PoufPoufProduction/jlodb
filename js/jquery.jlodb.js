@@ -35,7 +35,7 @@
             args.context = settings.context;
 
             if (typeof($this[_name])=='undefined') {
-                $.getScript('activities/'+_name+'/'+_name+'.js', function() {
+                $.getScript('activities/'+_name+'/'+_name+'.js', function() { 
                     $this.find("#"+settings.id)[_name](args); });
             }
             else { $this.find("#"+settings.id)[_name](args); }
@@ -57,6 +57,7 @@
 
             // GET EXERCICE FROM DATABASE AND LAUNCH
             var url     = "api/exercice.php"+args;
+
             $.getJSON(url, function (data) {
                 var d = data.data;
                 if (data.locale) { if (d.locale) { d.locale = $.extend(d.locale, data.locale); } else { d.locale = data.locale; } }

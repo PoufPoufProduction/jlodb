@@ -310,7 +310,7 @@
 
                     var $settings = $.extend({}, defaults, options, settings);
                     $this.removeClass();
-                    if ($settings.class) { $this.addClass($settings.class); }
+                    if ($settings["class"]) { $this.addClass($settings["class"]); }
                     helpers.settings($this, $settings);
                     helpers.loadTemplate($this.addClass("browser"));
                 });

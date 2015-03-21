@@ -125,7 +125,7 @@
         build: function($this) {
             var settings = helpers.settings($this);
             var classvalue="";
-            if (settings.data[settings.it].class) { classvalue= settings.data[settings.it].class; }
+            if (settings.data[settings.it]["class"]) { classvalue= settings.data[settings.it]["class"]; }
 
             $this.find("#submit").show().attr("class","");
             $this.find("#board").attr("class",classvalue);
@@ -182,7 +182,7 @@
                     }
                     else {
                         $this.removeClass();
-                        if ($settings.class) { $this.addClass($settings.class); }
+                        if ($settings["class"]) { $this.addClass($settings["class"]); }
                         helpers.settings($this.addClass(defaults.name), $settings);
                         helpers.loader.css($this);
                     }

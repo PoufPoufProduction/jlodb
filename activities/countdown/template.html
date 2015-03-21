@@ -7,7 +7,8 @@
     <div id="board">
         <div id="template" class="line" style="display:none;">
             <div class="r" ontouchstart="$(this).closest('.countdown').countdown('del',this);event.preventDefault();"
-                           onclick="$(this).closest('.countdown').countdown('del',this);"><div style="margin-top:-0.2em;">⊗</div></div>
+                           onclick="$(this).closest('.countdown').countdown('del',this);">
+                <div class="icon"><img src="res/img/icon/cancel2.svg"/></div></div>
             <div class="d dd"></div><div class="o oo"><div>+</div></div><div class="d dd"></div><div class="oo">=</div><div class="d c"><div class="icon" ontouchstart="$(this).closest('.countdown').countdown('compute',this);event.preventDefault();"
                            onclick="$(this).closest('.countdown').countdown('compute',this);">
                     <img src="res/img/icon/valid.svg"/></div></div>
@@ -32,13 +33,10 @@
 
     <div id="touch01" ><div><img src="res/img/effects/touch01.svg"/></div></div>
 
-    <div id="splash" ontouchstart="$(this).closest('.countdown').countdown('next');event.preventDefault();"
-                     onclick="$(this).closest('.countdown').countdown('next');"><div>
-        <div class="text">
-            <h1 id="label">countdown</h1>
-            <div id="guide">
-            </div>
-        </div>
+    <div id="splashex" ontouchstart="$(this).hide().closest('.countdown').countdown('next');event.preventDefault();"
+                     onclick="$(this).hide().closest('.countdown').countdown('next');"><div>
+            <h1 id="label"></h1>
+            <div id="guide"></div>
     </div></div>
 
 </div>

@@ -74,7 +74,7 @@
                 var elt= $("<div id='svg'></div>").appendTo($this.find("#keypad"));
                 elt.svg();
                 settings.svg = elt.svg('get');
-                $(settings.svg).attr("class",settings.class);
+                $(settings.svg).attr("class",settings["class"]);
                 settings.svg.load('res/img/'+settings.url + debug,
                     { addTo: true, changeSize: true, onLoad:function() { helpers.loader.build($this); }
                 });
@@ -566,7 +566,7 @@
                     }
                     else {
                         $this.removeClass();
-                        if ($settings.class) { $this.addClass($settings.class); }
+                        if ($settings["class"]) { $this.addClass($settings["class"]); }
                         helpers.settings($this.addClass(defaults.name), $settings);
                         helpers.loader.css($this);
                     }

@@ -78,7 +78,8 @@
                 $this.find("h1#label").html(settings.label);
                 $this.find("#guide").html(settings.guide);
                 $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); });
-                if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                setTimeout(function() { helpers.build($this); }, 500);
+                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         // REFRESH A TOGGLE ELEMENT
@@ -104,11 +105,11 @@
 
                 if (content.length) { elt.elt.html(content); }
             }
-            if (settings.states.class) {
+            if (settings.states["class"]) {
                 var cl = "";
 
-                if (o<0 && settings.show && settings.wrong && settings.wrong.class ) { cl = settings.wrong.class; }
-                if (o>=0) { cl = settings.states.class[o%settings.states.class.length]; }
+                if (o<0 && settings.show && settings.wrong && settings.wrong["class"] ) { cl = settings.wrong["class"]; }
+                if (o>=0) { cl = settings.states["class"][o%settings.states["class"].length]; }
 
                 if (cl.length) { elt.elt.attr("class",cl); }
             }
@@ -186,7 +187,7 @@
                     var elt= $("<div id='svg'></div>").appendTo($this.find("#data"));
                     elt.svg();
                     settings.svg = elt.svg('get');
-                    $(settings.svg).attr("class",settings.class);
+                    $(settings.svg).attr("class",settings["class"]);
                     settings.svg.load(templatepath, { addTo: true, changeSize: true, onLoad:function() {
                         $this.find(".t").each(function(index) {
                             var value = settings.current.t[index];
@@ -253,7 +254,7 @@
                     }
                     else {
                         $this.removeClass();
-                        if ($settings.class) { $this.addClass($settings.class); }
+                        if ($settings["class"]) { $this.addClass($settings["class"]); }
                         helpers.settings($this.addClass(defaults.name), $settings);
                         helpers.loader.css($this);
                     }
@@ -303,10 +304,7 @@
             },
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                $(this).find("#splash").hide();
                 $(this).find("#submit").show();
-                // CHECK IF THERE IS AN EVENT BEFORE QUESTION
-                helpers.build($this);
             },
             refresh: function() {
                 var $this = $(this) , settings = helpers.settings($this);

@@ -107,7 +107,7 @@
                     for (var i in settings.exercice) { $this.find("#exercice>div").append(
                         "<p>"+(settings.exercice[i].length?settings.exercice[i]:"&nbsp;")+"</p>"); }
                 } else { $this.find("#exercice>div").html(settings.exercice); }
-                if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             },
             speed: function($this) {
                 var settings = helpers.settings($this);
@@ -734,7 +734,7 @@
                     }
                     else {
                         $this.removeClass();
-                        if ($settings.class) { $this.addClass($settings.class); }
+                        if ($settings["class"]) { $this.addClass($settings["class"]); }
                         helpers.settings($this.addClass(defaults.name), $settings);
                         helpers.loader.css($this);
                     }
@@ -743,7 +743,6 @@
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 settings.interactive = true;
-                $(this).find("#splash").hide();
             },
             tab: function(_elt, _id) {
                 var $this = $(this) , settings = helpers.settings($this);

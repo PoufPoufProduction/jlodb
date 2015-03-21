@@ -201,8 +201,8 @@
                         if ($elt.hasClass("op")) { $(this).find(".op").detach(); $(this).find(".label").addClass("arg"); } else
                         if ($elt.hasClass("arg")) { $(this).find(".arg").detach(); $(this).find(".label").detach(); }
 
-                        var x           = event.clientX-$this.offset().left;
-                        var y           = event.clientY-$this.offset().top;
+                        var x           = vEvent.clientX-$this.offset().left;
+                        var y           = vEvent.clientY-$this.offset().top;
                         var $old        = $this.find("#touch01>div").detach();
                         var $new        = $old.clone();
                         $this.find("#touch01").css("left",Math.floor(x - $this.find("#touch01").width()/2)+"px")
@@ -266,7 +266,7 @@
                 if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
 
 
-                if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             },
             speed: function($this) {
                 var settings = helpers.settings($this);
@@ -958,7 +958,7 @@
                     }
                     else {
                         $this.removeClass();
-                        if ($settings.class) { $this.addClass($settings.class); }
+                        if ($settings["class"]) { $this.addClass($settings["class"]); }
                         helpers.settings($this.addClass(defaults.name), $settings);
                         helpers.loader.css($this);
                     }
@@ -972,7 +972,6 @@
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 $this.find(".mask").hide();
-                $this.find("#splash").hide();
             },
             code: function() {
                 var $this = $(this) , settings = helpers.settings($this);

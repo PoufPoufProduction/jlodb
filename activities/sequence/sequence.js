@@ -83,7 +83,7 @@
                     settings.svg = elt.svg('get');
                     settings.svg.load( settings.input.svg + debug,
                         {addTo: true, changeSize: true, onLoad:function() {
-                            if (settings.input.class) { $(settings.svg.root()).attr("class",settings.input.class); }
+                            if (settings.input["class"]) { $(settings.svg.root()).attr("class",settings.input["class"]); }
                             for (var i in settings.values) {
                                 var vData = settings.values[i][1];
                                 if ($.isArray(vData)) {
@@ -131,8 +131,8 @@
                                 vLabel = settings.input.values[_index];
                                 vValue = settings.input.values[_index];
                             }
-                            $(this).html(vLabel).bind("click touchstart",function(event) {
-                                $this.sequence('click',vValue); event.preventDefault(); });
+                            $(this).html(vLabel).addClass("bluekeypad").bind("click touchstart",function(event) {
+                                $this.sequence('key',vValue, this); event.preventDefault(); });
                             if (settings.input.css) { for (var i in settings.input.css) { $(this).css(i, settings.input.css[i]); } }
                         }
                         else { $(this).hide(); }
@@ -174,8 +174,16 @@
                 // Handle some elements
                 var vScreen = $this.find("#screen");
                 if (vScreen) { vScreen.html("&nbsp;"); }
-                if (!settings.time) { $this.find("#time").html("&nbsp;"); }
-                else                { $this.find("#time").html(helpers.formattime(Math.floor(settings.time*settings.number))); }
+                $this.find("#guide_number").html(settings.number);
+                if (!settings.time) {
+                    $this.find("#time").html("&nbsp;");
+                    $this.find("#guide_time").html("........");
+                }
+                else {
+                    var vTime = helpers.formattime(Math.floor(settings.time*settings.number));
+                    $this.find("#time").html(vTime);
+                    $this.find("#guide_time").html(vTime);
+                }
 
                 if (settings.context.onload) { settings.context.onload($this); }
                  $this.css("font-size", Math.floor($this.width()/10)+"px");
@@ -185,7 +193,8 @@
                 $this.find("#comment").html(settings.comment);
                 if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
 
-                if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                setTimeout(function() { $this.find("#values ul").show(); helpers.move($this, true);}, 500);
+                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         formattime: function(_val) {
@@ -375,7 +384,7 @@
                     }
                     else {
                         $this.removeClass();
-                        if ($settings.class) { $this.addClass($settings.class); }
+                        if ($settings["class"]) { $this.addClass($settings["class"]); }
                         helpers.settings($this.addClass(defaults.name), $settings);
                         helpers.loader.css($this);
                     }
@@ -384,12 +393,15 @@
             next: function() {
                 var settings = $(this).data("settings");
                 // Hide instruction
-                $(this).find("#splash").hide();
-                $(this).find("#values ul").show();
                 settings.interactive=true;
-                helpers.move($(this), true);
             },
-            key: function(value) { helpers.key($(this), value, false); },
+            key: function(value, _elt) {
+                var $this = $(this);
+                if (_elt) { $(_elt).addClass("touch");
+                    setTimeout(function() { $(_elt).removeClass("touch"); }, 50);
+                }
+                helpers.key($(this), value, false);
+            },
             click: function(value) { helpers.key($(this), value, false); },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);

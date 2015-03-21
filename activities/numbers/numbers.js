@@ -12,6 +12,7 @@
         step1       : [10,10],                                  // Vertical step
         step2       : [1,1],                                    // Horizontal step
         fontex      : 1,                                        // Exercice font size
+        mode        : "keypad",                                 // Filling mode : keypad, neg, decimal, negdec, popup
         debug       : false                                     // Debug mode
     };
 
@@ -160,12 +161,61 @@
             $this.find("#effects").hide();
             $this.find("#effects>div").hide();
             for (var j in vSettings.values) {
-                var html="<div class='line'>";
+                var $html=$("<div class='line'></div>");
                 for (var i in vSettings.values[j]) {
-                    html+="<div class='cell' id='"+i+"x"+j+"' style='width:"+settings.width+"em;'><div onmousedown='$(this).closest(\".numbers\").numbers(\"down\",event,this);' ontouchstart='$(this).closest(\".numbers\").numbers(\"down\",event,this);event.preventDefault();'></div></div>";
+                    var $elt=$("<div class='cell' id='"+i+"x"+j+"' style='width:"+settings.width+"em;'><div></div></div>");
+                    $elt.children().first().bind("mousedown touchstart",function(_event) {
+                        if (settings.interactive && !$(this).parent().hasClass("fixed")) {
+                            var vEvent = (_event && _event.originalEvent &&
+                                        _event.originalEvent.touches && _event.originalEvent.touches.length)?
+                                        _event.originalEvent.touches[0]:_event;
+                            if (settings.mode=="popup") {
+                                var $keypad = $this.find("#popup ");
+
+                                settings.popup.s = $keypad.height();
+                                var vTop = vEvent.clientY - $this.offset().top-settings.popup.s/2;
+                                var vLeft = vEvent.clientX - $this.offset().left-settings.popup.s/2;
+
+                                settings.popup.active = true;
+                                settings.popup.x = vEvent.clientX;
+                                settings.popup.y = vEvent.clientY;
+                                settings.popup.$elt = $(this);
+                                settings.popup.timer= 0;
+                                settings.popup.direction = -1;
+                                settings.popup.count = 0;
+
+                                if (!$(this).html().length) { $(this).html(settings.init); }
+
+                                if (vTop<0)   { vTop = 0; }
+                                if (vLeft<0)  { vLeft = 0; }
+                                if (vTop+settings.popup.s>$this.height())    { vTop=$this.height()-settings.popup.s; }
+                                if (vLeft+settings.popup.s>$this.width())    { vLeft=$this.width()-settings.popup.s; }
+                                $keypad.find("#border").show().css("opacity",1).animate({opacity:0},1000);
+                                $keypad.find(".arrow").css("opacity",1);
+                                $keypad.css("top", vTop+"px").css("left", vLeft+"px").show();
+                            }
+                            else {
+                                settings.keypad.$keypad = $this.find("#"+settings.mode);
+                                settings.keypad.$elt = $(this);
+                                var vTop = vEvent.clientY - $this.offset().top- settings.keypad.$keypad.height()/2;
+                                var vLeft = vEvent.clientX - $this.offset().left- settings.keypad.$keypad.width()/2;
+
+                                if (vTop<0)   { vTop = 0; }
+                                if (vLeft<0)  { vLeft = 0; }
+                                if (vTop+settings.keypad.$keypad.height()>$this.height()) {
+                                            vTop=$this.height()-settings.keypad.$keypad.height(); }
+                                if (vLeft+settings.keypad.$keypad.width()>$this.width())  {
+                                            vLeft=$this.width()-settings.keypad.$keypad.width(); }
+
+                                settings.keypad.$keypad.css("top", vTop+"px").css("left", vLeft+"px").show();
+                                settings.keypad.val="";
+                                settings.keypad.update();
+                            }
+                        }
+                    });
+                    $html.append($elt);
                 }
-                html+="</div>";
-                $this.find("#board>div#data").append(html);
+                $this.find("#board>div#data").append($html);
             }
             for (var i in vSettings.fixed) {
                 var vValue = vSettings.values[vSettings.fixed[i][1]][vSettings.fixed[i][0]];
@@ -221,7 +271,8 @@
                     interactive     : false,
                     score           : 5,
                     id              : 0,
-                    popup: { active:false, x:0, y:0, s:0, $elt:0, timer:0 }
+                    popup: { active:false, x:0, y:0, s:0, $elt:0, timer:0 },
+                    keypad: { $elt:0, $keypad:0, val:"", update:function() { this.$keypad.find("#screen #val").html(this.val);} }
                 };
 
                 return this.each(function() {
@@ -235,7 +286,7 @@
                     }
                     else {
                         $this.removeClass();
-                        if ($settings.class) { $this.addClass($settings.class); }
+                        if ($settings["class"]) { $this.addClass($settings["class"]); }
                         helpers.settings($this.addClass(defaults.name), $settings);
                         helpers.loader.css($this);
                     }
@@ -249,37 +300,6 @@
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 settings.context.onquit($this,{'status':'abort'});
-            },
-            down: function(_event, _elt) {
-                var $this = $(this) , settings = helpers.settings($this);
-                if (settings.interactive && !$(_elt).parent().hasClass("fixed")) {
-                    var $keypad = $this.find("#popup ");
-                    var vEvent = (_event && _event.originalEvent &&
-                                _event.originalEvent.touches && _event.originalEvent.touches.length)?
-                                _event.originalEvent.touches[0]:_event;
-
-                    settings.popup.s = $keypad.height();
-                    var vTop = vEvent.clientY - $this.offset().top-settings.popup.s/2;
-                    var vLeft = vEvent.clientX - $this.offset().left-settings.popup.s/2;
-
-                    settings.popup.active = true;
-                    settings.popup.x = vEvent.clientX;
-                    settings.popup.y = vEvent.clientY;
-                    settings.popup.$elt = $(_elt);
-                    settings.popup.timer= 0;
-                    settings.popup.direction = -1;
-                    settings.popup.count = 0;
-
-                    if (!$(_elt).html().length) { $(_elt).html(settings.init); }
-
-                    if (vTop<0)   { vTop = 0; }
-                    if (vLeft<0)  { vLeft = 0; }
-                    if (vTop+settings.popup.s>$this.height())    { vTop=$this.height()-settings.popup.s; }
-                    if (vLeft+settings.popup.s>$this.width())    { vLeft=$this.width()-settings.popup.s; }
-                    $keypad.find("#border").show().css("opacity",1).animate({opacity:0},1000);
-                    $keypad.find(".arrow").css("opacity",1);
-                    $keypad.css("top", vTop+"px").css("left", vLeft+"px").show();
-                }
             },
             valid: function() {
                 var $this = $(this) , settings = helpers.settings($this);
@@ -309,6 +329,24 @@
                     else {
                         if (settings.score<0) { settings.score = 0; }
                         setTimeout(function() { helpers.end($this); }, 1000);
+                    }
+                }
+            },
+            key: function(_val, _elt) {
+                var $this = $(this) , settings = helpers.settings($this);
+                if (_elt) { $(_elt).addClass("touch");
+                    setTimeout(function() { $(_elt).removeClass("touch"); }, 50);
+                }
+                if (_val=="v") {
+                    settings.keypad.$keypad.hide();
+                    settings.keypad.$elt.html(settings.keypad.val);
+                }
+                else if (_val=="c") { settings.keypad.val = ""; settings.keypad.update(); }
+                else {
+                    var val = settings.keypad.val + _val;
+                    if (parseInt(val)>=settings.range[0] && parseInt(val)<settings.range[1]) {
+                        settings.keypad.val+=_val;
+                        settings.keypad.update();
                     }
                 }
             }
