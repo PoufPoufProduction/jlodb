@@ -22,20 +22,36 @@
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="mods/socialis/res/img/icon/icon144.png" />
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <style>
-.mask                           { top:0; left:0; position:absolute; width:16em; height:12em; background-color:rgba(0,0,0,0.5);
+.mask                           { top:0; left:0; position:absolute; width:16em; height:12em; background-color:rgba(0,0,0,0);
                                   display:none; z-index:10; }
 .icon.del                       { background-color:#222233; border-radius:.25em;}
 .icon.del.s                     { background-color:red;}
-.filler                         { width:6.5em; height:1em; }
+.mask.filler                    { width:6.5em; height:1em; }
 #avatar>div                     { width:100%; height:100%; overflow:hidden;}
 #footer #cancel                 { float:left; margin-left:.2em; }
 #footer #valid                  { float:right; margin-right:.2em; }
 
+#main #score .splash01          { top:5%;left:16%; font-size:3em; }
+#main #score .splash02          { top:25%;left:40%; font-size:2em; }
+
 #genius>#waiting                { top:0.2em; left:0.6em; font-size:7em; z-index:100;}
+
+#genius #boardmask #quit        { font-size:1em; width:1em; height:1em; position:absolute; top:0; left:0; cursor:pointer; }
+#genius #boardmask>div          { position:relative; top:9.5em; left:2.4em; width:7.5em; height:2.2em;
+                                  background-color:rgba(120,100,80,0.6);}
+#genius #boardmask h1           { font-size:.3em; color:white; padding-left:4em; background-color:rgba(255,220,200,0.1);
+                                   border:1px solid white; border-width:0 0 1px 0; }
+#genius #boardmask #example     { width:1em; height:1em; font-size:1.6em; color:white;
+                                  background-image:url("res/img/icon/menu01bg.svg"); background-size:100%;
+                                  font-weight:bold; float:right; cursor:pointer;}
+#genius #boardmask #example>div { font-size:.5em;width:2em; text-align:center; margin-top:.2em; }
+#genius #boardmask #source>div  { padding-left:3.5em; border:1px solid #FF5555; font-size:.3em;color:#FF5555; cursor:pointer;
+                                  margin:.2em; background-color:rgba(0,0,0,0.2);}
+#genius.Ulysse #boardmask>div   { background-color:rgba(0,0,0,0.8);}
 
 #genius.Ulysse>#user           { background-color:rgba(0,0,0,0.75); }
 
-#genius>#user                   { position:absolute; top:9.6em; left:10em; width:5.9em; height:2.3em;
+#genius>#user                   { position:absolute; top:9.5em; left:10em; width:5.9em; height:2.3em;
                                   background-color:rgba(120,100,80,0.6); border-radius:0.25em;}
 #genius>#user #avatar           { float:left;width:2.1em;height:2.1em;margin:.1em;background-color:black;border-radius:0.25em;}
 #genius>#user #details          { font-size:.2em; color:white; }
@@ -49,8 +65,9 @@
 #genius>#user #buttons .l       { background-color:red;color:white; position:relative; border-radius:.5em; display:none;
                                   font-size:.5em; top:-1.5em; left:1em; width:1em; height:1em; text-align:center; opacity:0.9; }
 
-#main>#edit>div                 { font-size:.5em; width:20em; height:18em; margin:2em 6em; background-color:rgba(128,120,100,0.9);
-                                  border-radius:.5em; }
+#main>#edit>div                 { position:relative; font-size:.5em; width:20em; height:18em; top:2em; left:6em; 
+                                  background-color:rgba(128,120,100,0.9);
+                                  border-radius:.5em; background-image:url("res/img/background/book06.svg"); background-repeat:repeat; }
 #main>#edit .icon               { cursor:pointer; margin:.1em; }
 #main>#edit input               { border:0; width:13.8em; height:1.2em; margin:.1em; border-radius:0 .5em .5em 0; font-size:.8em; }
 #main>#edit select              { border:0; width:13.8em; height:1.2em; margin:.1em; border-radius:0 .5em .5em 0; font-size:.8em; }
@@ -67,8 +84,8 @@
 #board #node                    { z-index:50; }
 #board #finish                  { z-index:50; }
 
-#main>#friend>div               { font-size:.5em; width:30em; height:20em; margin:1em 1em; background-color:rgba(255,240,200,0.8);
-                                  border-radius:.5em;}
+#main>#friend>div               { position:relative; font-size:.5em; width:30em; height:20em; top:1em; left:1em;
+                                  background-color:rgba(255,240,200,0.8); border-radius:.5em;}
 #main>#friend #popup            { z-index:11; }
 #main>#friend #popup>div        { font-size:.8em; width:15em; background-color:#555; border-radius:.75em; padding:.5em;
                                   margin-top:3em; margin-left:2em; }
@@ -246,7 +263,121 @@ var socialis = {
             socialis.cyclic.timer = setTimeout(socialis.cyclic.process, 30000);
         }
     },
+    score: {
+        effect: function(_score) {
+            $("#score .value").css("font-size","12em").css("opacity",0.1)
+                                          .css("top",-0.4*$("#launcher").height())
+                                          .css("left",0.04*$("#launcher").width())
+                                          .animate({"font-size":"3em","opacity":1,
+                                            "top":0.08*$("#launcher").height(),"left":0.25*$("#launcher").width()}, 500);
+                        if (_score>2) {
+                            setTimeout(function() {
+                                var $old        = $("#score .splash01>div").detach();
+                                var $new        = $old.clone();
+                                $("#score .splash01").append($new.addClass("running")).show();
+                                setTimeout(function(){$("#score .splash01>div").removeClass("running").parent().hide(); },800);
+                                }, 500);
+                            setTimeout(function() {
+                                var $old        = $("#score .splash02>div").detach();
+                                var $new        = $old.clone();
+                                $("#score .splash02").append($new.addClass("running")).show();
+                                setTimeout(function(){$("#score .splash02>div").removeClass("running").parent().hide(); },800);
+                                }, 1000);
+                        }
+        }
+    },
+    example: {
+        data: [],
+        $this: 0,
+        open: function($this, _id, _anim) {
+                        $("#boardmask").css("opacity",1);
+                        if (_anim)  { $("#boardmask>div").css("top","12em").css("opacity",0).animate({top:"9.5em",opacity:1},250); }
+                        else        { $("#boardmask>div").css("top","9.5em").css("opacity",1); }
+                        $("#boardmask h1").html("&nbsp;");
+                        $("#boardmask #legend").html("");
+                        $("#boardmask #source").html("");
+                        $("#boardmask").show();
+
+                        socialis.example.$this = $this;
+                        var $c = $this.genius("svg","#"+_id);
+                        var cClass = $c.attr("class");
+                        $c.attr("class",cClass+" current");
+
+                        $this.genius("svg",".d"+_id).each(function() {
+                            var dClass = $(this).attr("class") + " source";
+                            $(this).attr("class", dClass);
+
+                            var s = dClass.match("link s([0-9]+) d[0-9]+ ");
+                            var $elt = $this.genius("svg","#"+s[1]);
+                            var eltClass = $elt.attr("class");
+                            $elt.attr("class",eltClass+" source");
+
+                            var html="<div id='i"+s[1]+"' class='item' ";
+                            html+="onclick='socialis.example.close(false);socialis.example.open(socialis.example.$this,"+s[1]+",false);' ";
+                            html+="ontouchstart='socialis.example.close(false);socialis.example.open(socialis.example.$this,"+s[1]+",false);event.preventDefault();'" ;
+                            html+="></div>";
+                            $("#boardmask #source").append(html);
+
+                            $.getJSON("mods/genius/api/node.php?id="+s[1], function(_data) {
+                                $("#boardmask #source #i"+_data.id).html(_data.name);
+                            });
+
+                        });
+
+
+                        $.getJSON("mods/genius/api/node.php?id="+_id, function(data) {
+                            if(data.status=="success") {
+                                $("#boardmask h1").html(data.name);
+
+                                socialis.example.data = [];
+                                if (data.exercices.length) { socialis.example.data = data.exercices.split(","); }
+
+                                $("#boardmask #legend").html(socialis.example.data.length)
+                            }
+                        });
+        },
+        close: function(_hide) {
+            if (_hide) { $("#boardmask").animate({opacity:0},500, function(){$("#boardmask").hide()}); }
+            if (socialis.example.$this) {
+                socialis.example.$this.genius("svg",".current").each(function() {
+                    var sClass = $(this).attr("class");
+                    $(this).attr("class",sClass.substr(0, sClass.length-8));
+                });
+                socialis.example.$this.genius("svg",".source").each(function() {
+                    var sClass = $(this).attr("class");
+                    $(this).attr("class",sClass.substr(0, sClass.length-6));
+                });
+            }
+        },
+        launch: function() {
+            if (socialis.example.data.length) {
+                var args = { id: socialis.example.data[Math.floor(Math.random()*socialis.example.data.length)] };
+                $("body").removeClass("nosplash");
+                $("#launcher").jlodb({
+                    onstart:    function($this) {
+                        setTimeout(function(){ if ($("#launcher").is(":visible")) { $("#genius").hide(); } },2000);
+                    },
+                    onfinish:   function($this) { $("#genius").show(); $("#score").removeClass().hide(); },
+                    onscore:    function($this, _ret) {
+                        $("#score #reload").show();
+                        $("#score #next").hide();
+                        socialis.score.effect(_ret.score);
+
+                        $("#score").attr("class","s"+_ret.score).show();
+                        return true; }
+                    },args);
+                }
+        }
+    },
     friend: {
+        open: function() {
+            if (socialis.friend.group.empty()) { socialis.friend.group.list( function() { socialis.friend.list(true); } ); }
+            $("#main>#friend>div").css("left","30em").css("opacity",0).animate({left:"1em",opacity:1},500);
+            $("#main>#friend").show();
+        },
+        close: function() {
+            $("#main>#friend>div").animate({left:"30em",opacity:0},500, function() {$("#main>#friend").hide(); });
+        },
         group: {
             settings: {
                 name:""
@@ -531,6 +662,39 @@ var socialis = {
         }
     },
     user    : {
+        open : function() {
+            if ($("#edit #avatar>div").children().length==0) {
+                $("#edit #avatar>div").gonz({interactive:false, code:socialis.settings.user.avatar, context:{
+                        onclick:function($this){ socialis.open.avatar(); },
+                        onquit:function($this, _ret){}}});
+            }
+            else if (socialis.settings.user.avatar) {
+                $("#edit #avatar>div").gonz('import',socialis.settings.user.avatar);
+            }
+
+            socialis.settings.avatar = socialis.settings.user.avatar;
+
+            $("#upid").attr("value",socialis.settings.user.name);
+
+            if (socialis.settings.user.last)  { $("#upln").attr("value", socialis.settings.user.last).removeClass(); }
+            else                     { $("#upln").attr("value", socialis.locale.template.upln).addClass("empty"); }
+
+            if (socialis.settings.user.first) { $("#upfn").attr("value", socialis.settings.user.first).removeClass(); }
+            else                     { $("#upfn").attr("value", socialis.locale.template.upfn).addClass("empty"); }
+
+            if (socialis.settings.user.email) { $("#upem").attr("value", socialis.settings.user.email).removeClass(); }
+            else                     { $("#upem").attr("value", socialis.locale.template.upem).addClass("empty"); }
+
+            if (socialis.settings.user.theme)  { $("#edit #theme").attr("value", socialis.settings.user.theme); }
+
+            $("#upop").show();$("#upopr").attr("value","").hide();
+            $("#upnp").show();$("#upnpr").attr("value","").hide();
+            $("#upcp").show();$("#upcpr").attr("value","").hide();
+            $("#edit #error").html("");
+            $("#edit>div").css("top","25em").css("opacity",0).animate({top:"2em",opacity:1}, 1000 );
+            $("#edit").show();
+
+        },
         update: function() {
             var args="";
             var error="";
@@ -570,8 +734,11 @@ var socialis = {
                         }
                     });
                 }
-                else { $("#edit").hide(); }
+                else { socialis.user.close(); }
             }
+        },
+        close: function() {
+            $("#edit>div").animate({opacity:0}, 500, function() {$("#edit").hide();} );
         }
     },
     tibibi : {
@@ -597,7 +764,9 @@ var socialis = {
                         $("#waiting").show().find("div").addClass("running");
                         $("#launcher").jlodb({
                             onstart:    function($this) {
-                                $("#waiting").hide().find("div").removeClass("running"); $("#genius").hide();  },
+                                $("#waiting").hide().find("div").removeClass("running");
+                                setTimeout(function(){ if ($("#launcher").is(":visible")) { $("#genius").hide(); } },2000);
+                            },
                             onfinish:   function($this) { $("#genius").show(); $("#score").removeClass().hide(); },
                             onscore:    function($this, _ret) {
                                 var isnext = false;
@@ -691,10 +860,6 @@ var socialis = {
         }
     },
     open    : {
-        friend: function() {
-            if (socialis.friend.group.empty()) { socialis.friend.group.list( function() { socialis.friend.list(true); } ); }
-            $("#main>#friend").show();
-        },
         tibibi: function() {
             socialis.getJSON("mods/socialis/api/tibibi.php", {}, {}, function(_data) {
                 $("#tibibi #send").html("");
@@ -754,38 +919,6 @@ var socialis = {
                 });
 
                 $("#friend #course").show();
-        },
-        user : function() {
-            if ($("#edit #avatar>div").children().length==0) {
-                $("#edit #avatar>div").gonz({interactive:false, code:socialis.settings.user.avatar, context:{
-                        onclick:function($this){ socialis.open.avatar(); },
-                        onquit:function($this, _ret){}}});
-            }
-            else if (socialis.settings.user.avatar) {
-                $("#edit #avatar>div").gonz('import',socialis.settings.user.avatar);
-            }
-
-            socialis.settings.avatar = socialis.settings.user.avatar;
-
-            $("#upid").attr("value",socialis.settings.user.name);
-
-            if (socialis.settings.user.last)  { $("#upln").attr("value", socialis.settings.user.last).removeClass(); }
-            else                     { $("#upln").attr("value", socialis.locale.template.upln).addClass("empty"); }
-
-            if (socialis.settings.user.first) { $("#upfn").attr("value", socialis.settings.user.first).removeClass(); }
-            else                     { $("#upfn").attr("value", socialis.locale.template.upfn).addClass("empty"); }
-
-            if (socialis.settings.user.email) { $("#upem").attr("value", socialis.settings.user.email).removeClass(); }
-            else                     { $("#upem").attr("value", socialis.locale.template.upem).addClass("empty"); }
-
-            if (socialis.settings.user.theme)  { $("#edit #theme").attr("value", socialis.settings.user.theme); }
-
-            $("#upop").show();$("#upopr").attr("value","").hide();
-            $("#upnp").show();$("#upnpr").attr("value","").hide();
-            $("#upcp").show();$("#upcpr").attr("value","").hide();
-            $("#edit #error").html("");
-            $("#edit").show();
-
         },
         avatar : function() {
             if ($("#edit #gonz").children().length==0) {
@@ -854,7 +987,10 @@ window.onload = function() {
                     });
                 },
                 onnode: function($this, _id, _available) {
-                    if (_available) { $("#waiting").show().find("div").addClass("running"); } return true; },
+                    if (_available) { $("#waiting").show().find("div").addClass("running"); }
+                    else            { socialis.example.open($this, _id, true); }
+
+                    return true; },
                 onshow: function($this) { $("#waiting").hide().find("div").removeClass("running"); },
                 onbuild: function($this) {
                     // LOG PANEL
@@ -865,7 +1001,9 @@ window.onload = function() {
                 },
                 onclick: function($this, $menu, _args) {
                     $("#launcher").jlodb({
-                        onstart:    function($this) { $("#genius").hide();  },
+                        onstart:    function($this) {
+                            setTimeout(function(){ if ($("#launcher").is(":visible")) { $("#genius").hide(); } },2000);
+                        },
                         onfinish:   function($this) { $("#genius").show(); $("#score").removeClass().hide(); },
                         onscore:    function($this, _ret) {
                             var isnext = false;
@@ -875,6 +1013,7 @@ window.onload = function() {
                                 $("#score #reload").toggle(isnext);
                             }
                             $("#score #next").toggle(isnext);
+                            socialis.score.effect(_ret.score);
                             $("#score").attr("class","s"+_ret.score).show();
                             return true; },
                         onexercice: function($this,_id,_a){
@@ -912,6 +1051,18 @@ window.onload = function() {
 <body>
     <div id="main">
         <div id="genius">
+
+            <div id="boardmask" class="mask">
+                <div>
+                    <div id="quit" ontouchstart="socialis.example.close(true);event.preventDefault();"
+                                   onclick="socialis.example.close(true);"><img src="res/img/icon/quit.svg"/></div>
+                    <h1></h1>
+                    <div id="example" ontouchstart="socialis.example.launch();event.preventDefault();"
+                                      onclick="socialis.example.launch();"><div id="legend"></div></div>
+                    <div id="source"></div>
+                </div>
+            </div>
+
             <div id="board"></div>
 
             <!-- USER PANEL (BOTTOM-RIGHT): NAME,STARS,AVATAR AND MENU -->
@@ -924,16 +1075,18 @@ window.onload = function() {
                         <div id="stars">0</div>
                     </div>
                     <div id="buttons">
+<!--
                         <div class="icon" id="courses" onclick="socialis.open.tibibi();"
                                                        ontouchstart="socialis.open.tibibi();event.preventDefault();">
                             <img src="mods/socialis/res/img/courses.svg"/>
                             <div class="l" id="new"></div>
                         </div>
-                        <div class="icon" onclick="socialis.open.friend();" ontouchstart="socialis.open.friend();event.preventDefault();">
+-->
+                        <div class="icon" onclick="socialis.friend.open();" ontouchstart="socialis.open.friend();event.preventDefault();">
                             <img src="mods/socialis/res/img/people.svg"/>
                             <div class="l" id="ask"></div>
                         </div>
-                        <div class="icon" onclick="socialis.open.user();" ontouchstart="socialis.open.user();event.preventDefault();">
+                        <div class="icon" onclick="socialis.user.open();" ontouchstart="socialis.user.open();event.preventDefault();">
                             <img src="mods/socialis/res/img/edit.svg"/>
                         </div>
                         <div class="icon" onclick="socialis.logout();" ontouchstart="socialis.logout();event.preventDefault();">
@@ -966,6 +1119,8 @@ window.onload = function() {
                 <div class="icon" id="next" ontouchstart="$('#launcher').jlodb('close', false);$('#menu').menu('next');event.preventDefault();"
                     onclick="$('#launcher').jlodb('close', false);$('#menu').menu('next');"><img src="res/img/icon/next.svg"/></div>
             </div>
+            <div id="touch01" class="splash01"><div><img src="res/img/effects/touch01.svg"/></div></div>
+            <div id="touch01" class="splash02"><div><img src="res/img/effects/touch01.svg"/></div></div>
         </div></div>
 
         <!-- LOGIN PANEL -->
@@ -1011,10 +1166,12 @@ window.onload = function() {
             <div id="error"></div>
           </div>
           <div id="footer">
-                <div class="icon" id="cancel" onclick="$('#edit').hide();" ontouchstart="$('#edit').hide();event.preventDefault();">
+                <div class="icon" id="cancel" onclick="socialis.user.close();" 
+                                              ontouchstart="socialis.user.close();event.preventDefault();">
                     <img src="mods/socialis/res/img/cancel.svg"/>
                 </div>
-                <div class="icon" id="valid" onclick="socialis.user.update();" ontouchstart="socialis.user.update();event.preventDefault();">
+                <div class="icon" id="valid" onclick="socialis.user.update();" 
+                                             ontouchstart="socialis.user.update();event.preventDefault();">
                     <img src="mods/socialis/res/img/valid.svg"/>
                 </div>
           </div>
@@ -1025,8 +1182,8 @@ window.onload = function() {
         <div id="friend" class="mask"><div>
 
             <div id="menu">
-                <div id="quit" ontouchstart="$('#friend').hide();event.preventDefault();"
-                               onclick="$('#friend').hide();"><img src="res/img/icon/quit.svg"/></div>
+                <div id="quit" ontouchstart="socialis.friend.close();event.preventDefault();"
+                               onclick="socialis.friend.close();"><img src="res/img/icon/quit.svg"/></div>
                 <div id="group"></div>
                 <div id="footer">
                     <div class="icon" id="addgroup"

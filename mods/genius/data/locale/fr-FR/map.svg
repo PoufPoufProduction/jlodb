@@ -48,11 +48,11 @@
         .debug .dbg                         { display:inline; }
         .debug #release                     { display:none; }
         .dbg                                { display:none; }
-        .available.current .c1              { fill:#EEEE88; stroke:#EEEE88; stroke-width:1; }
-        .available.source .c1               { fill:#FF5555; stroke:#FF5555; stroke-width:1; }
-        .available.dest .c1                 { fill:#80EEEE; stroke:#80EEEE; stroke-width:1; }
-        .available.source.link>*            { stroke:#FF5555; stroke-width:1; }
-        .available.dest.link>*              { stroke:#80EEEE; stroke-width:1; }
+        .current .c1                        { fill:#EEEE88; stroke:#EEEE88; stroke-width:1; }
+        .source .c1                         { fill:#FF5555; stroke:#FF5555; stroke-width:1; }
+        .dest .c1                           { fill:#80EEEE; stroke:#80EEEE; stroke-width:1; }
+        .source.link>*                      { stroke:#FF5555; stroke-width:1; }
+        .dest.link>*                        { stroke:#80EEEE; stroke-width:1; }
 
         /* THEME : NEMO */
 
@@ -88,6 +88,7 @@
         .Ulysse .rfg                          { stroke:gray; stroke-width:0.5; stroke-opacity:1; }
         .Ulysse .rbd                          { stroke:gray; stroke-width:0.5; stroke-opacity:1; }
         .Ulysse .rbb                          { stroke:gray; stroke-width:0.5; stroke-opacity:1; }
+        .Ulysse .source.link>*                { stroke:#FF5555; stroke-width:1; }
 
 
     </style>
@@ -148,7 +149,7 @@
         <g class="link s9003 d9013"><path d="M 17.32,-10 L 8.66,-5"/></g>
         <g class="link s9004 d9014"><path d="M 0,-20 L 0,-10"/></g>
         <g class="link s9005 d9015"><path d="M -17.32,-10 L -8.66,-5"/></g>
-        <g class="link s8 d9001"><path d="M -40,-50 L -30,-40 L -30,10 Q -30,20 -20,20 L 0,20"/></g>
+        <g class="link s8 d9001"><path d="M -40,-50 Q -30,-50 -30,-40 L -30,10 Q -30,20 -20,20 L 0,20"/></g>
 
         <g id="9001" transform="translate(0,20)"  class="blue node">
             <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>

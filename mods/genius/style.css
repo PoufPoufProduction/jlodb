@@ -24,8 +24,8 @@
 .genius>#node #header #quit       { position:absolute; top:0; left:0; width:1em; height:1em; cursor:pointer; font-size:1.1em;}
 .genius>#node #header h1          { color:white; font-size:0.8em;
                                     width:20em; text-align:center; margin-top:.1em; float:left; margin-left:.5em; }
-.genius>#node #content            { width:16em; height:8em; }
-.genius>#node #content #nav       { width:8em; height:16em; font-size:0.5em; margin-left:.4em; float:left;
+.genius>#node #content            { width:16em; height:8em; position:relative; }
+.genius>#node #content #nav       { position:absolute; width:8em; height:16em; font-size:0.5em; top:0; left:.4em;
                                     background-color:rgba(255,255,255,0.2); color:white; border-radius:.5em;
                                     background-image:url("../../res/img/background/book06.svg"); background-repeat:repeat; }
 .genius>#node #content #nav .links div   { margin:.2em .5em; background-color:black; font-size:.8em; text-align:center;}
@@ -35,7 +35,7 @@
 .genius>#node #content #subject     { font-size:0.6em; text-align:right; color:gold;
                                       width:100%; height:6em; background-color:rgba(255,0,0,0.5);}
 .genius>#node #content #subject>ul  { margin-right:.5em; }
-.genius>#node #menu                 { float:left; margin-left:.1em; width:11.2em; height:8em;
+.genius>#node #menu                 { position:absolute; top:0; left:4.5em; width:11.2em; height:8em;
                                       background-color:rgba(255,255,255,0.1); border-radius:.2em;}
 
 .genius #menu .slider               { background-color:rgba(255,255,255,0.2); }

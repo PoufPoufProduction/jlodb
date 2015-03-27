@@ -1,5 +1,6 @@
 <div>
     <div id="menu">
+        <div id="comment"><div></div></div>
         <div id="toggle" ontouchstart="$(this).closest('.sudoku').sudoku('toggle');event.preventDefault();"
                          onclick="$(this).closest('.sudoku').sudoku('toggle');">
             <img src="res/img/svginventoryicons/pencil/pen01.svg" alt=""/>
@@ -206,10 +207,9 @@
 
 <div id="effects"><img src="res/img/effects/alert02.svg"/></div>
 
-<div id="splash" ontouchstart="$(this).closest('.sudoku').sudoku('next');event.preventDefault();"
-                 onclick="$(this).closest('.sudoku').sudoku('next');"><div>
-    <div class="text">
-        <h1 id="label">Sudoku</h1>
+<div id="splashex" ontouchstart="$(this).hide().closest('.sudoku').sudoku('next');event.preventDefault();"
+                 onclick="$(this).hide().closest('.sudoku').sudoku('next');"><div>
+        <h1 id="label"></h1>
         <p id="guide"></p>
         <table>
             <tr><td><div class="icon"><img src="res/img/svginventoryicons/pencil/pen01.svg" alt=""/></div></td>
@@ -217,7 +217,6 @@
             <tr><td><div class="icon"><img src="res/img/svginventoryicons/pencil/pencil01.svg" alt=""/></div></td>
                 <td id="pencilguide"></td></tr>
         </table>
-    </div>
 </div></div>
 
 </div>

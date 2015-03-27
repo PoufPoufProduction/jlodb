@@ -6,7 +6,8 @@
         css         : "style.css",          // Activity css style sheet
         lang        : "fr-FR",              // Current localization
         level       : 1,                    // Grid level
-        score       : 1,                    // The score (from 1 to 5)
+        highlight   : [],                   // Elements to highlight for tutorial
+        comment     : "",
         debug       : false                 // Debug mode
     };
 
@@ -84,6 +85,31 @@
                     settings.$keys.push($this.find("#keypad #key"+i).css("top",(1.5*Math.cos(2*Math.PI*(i/10))-0.5)+"em")
                                        .css("left",(1.5*Math.sin(2*Math.PI*(i/10))-0.5)+"em")
                                        .show());
+                }
+
+                // HIGHLIGHT
+                for (var i in settings.highlight) {
+                    switch (settings.highlight[i][0]) {
+                        case "col":
+                            for (var j=0; j<3; j++) for (var k=0; k<3; k++) {
+                                $($this.find("#grid.f td.cell")
+                                    .get(Math.floor(settings.highlight[i][1]/3)*9+settings.highlight[i][1]%3+k*3+j*27))
+                                    .addClass(settings.highlight[i][2]);
+                            }
+                        break;
+                        case "row":
+                            for (var j=0; j<3; j++) for (var k=0; k<3; k++) {
+                                $($this.find("#grid.f td.cell")
+                                    .get(Math.floor(settings.highlight[i][1]/3)*27+3*(settings.highlight[i][1]%3)+k*9+j))
+                                    .addClass(settings.highlight[i][2]);
+                            }
+                        break;
+                        case "box":
+                            for (var j=0; j<9; j++) {
+                                $($this.find("#grid.f td.cell").get(j+settings.highlight[i][1]*9)).addClass(settings.highlight[i][2]);
+                            }
+                        break;
+                    }
                 }
 
                 $this.find("div.fill").each(function(index) {
@@ -213,10 +239,18 @@
                     event.preventDefault();
                 });
 
+
+                // COMMENT
+                if ($.isArray(settings.comment)) {
+                    $this.find("#comment>div").html("");
+                    for (var i in settings.comment) {
+                        $this.find("#comment>div").append("<p>"+(settings.comment[i].length?settings.comment[i]:"&nbsp;")+"</p>"); }
+                } else { $this.find("#comment>div").html(settings.comment); }
+
                 // LOCALE HANDLING
                 $this.find("h1#label").html(settings.label);
                 if (settings.locale) {$.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); });}
-                if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         // Highlight the row, the col and the subgrid which contain the selected cell
@@ -284,6 +318,7 @@
                         id      : 0,        // the timer id
                         value   : 0         // the timer value
                     },
+                    score       : 1,        // The score (from 1 to 5)
                     keypad      : 0,
                     key         : -1,
                     $keys       : []
@@ -344,7 +379,6 @@
             // Close the help and display the grid
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                $(this).find("#splash").hide();
                 $(this).find("#grid9x9").show();
                 settings.interactive = true;
                 helpers.timer($this);

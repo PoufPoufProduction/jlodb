@@ -178,6 +178,9 @@
         },
         menu : function($this, _ex, _state) {
             var settings = helpers.settings($this);
+            $this.find("#node #nav").css("left","-10em").css("opacity",0);
+            $this.find("#node #menu").css("left","20em").css("opacity",0);
+            $this.find("#node #header").css("opacity",0);
             $this.find("#node").show();
             $this.find("#"+settings.menu).menu({
                 list    : _ex,
@@ -186,6 +189,9 @@
                 onclick : function($menu, _args)  { if (settings.onclick)  { settings.onclick($this, $menu, _args); } }
             });
             if (settings.onshow) { settings.onshow($this); }
+            $this.find("#node #nav").animate({left:".4em",opacity:1},1000);
+            $this.find("#node #menu").animate({left:"4.5em",opacity:1},500);
+            $this.find("#node #header").animate({opacity:1},2000);
         },
         states: function($this) {
             var settings = helpers.settings($this);

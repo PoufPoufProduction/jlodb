@@ -6,10 +6,6 @@
                                   25% {margin-top:-3em; } 33% {margin-top:-4em; } 42% {margin-top:-5em; }
                                   50% {margin-top:-6em; } 58% {margin-top:-7em; } 67% {margin-top:-8em; }
                                   75% {margin-top:-9em; } 83% {margin-top:-10em;} 92% {margin-top:-11em;} }
-@keyframes score                { 0%   { font-size:12em; opacity:0; top:-30%;  left:8%; }
-                                  100% { font-size:3em; opacity:1; top:8%;    left:25%; } }
-@-webkit-keyframes score        { 0%   { font-size:12em; opacity:0; top:-30%;  left:8%; }
-                                  100% { font-size:3em; opacity:1; top:8%;    left:25%; } }
 /*---------------------------------------------------------------------------------------------------------------------------*/
 *                               { margin:0; padding:0; overflow:hidden; outline:none;
                                   -webkit-touch-callout: none;
@@ -19,7 +15,7 @@ body                            { font-size:14px; background-color:black; overfl
                                   font-family:"Times New Roman", Times, serif;}
 a                               { color:inherit; text-decoration:none; border:none; outline:none; }
 img                             { border:none; outline: none; }
-body>div                        { background-color: white; margin:0 auto; width:16em; height:12em; position:relative; display:none;}
+body>div                        { background-color: black; margin:0 auto; width:16em; height:12em; position:relative; display:none;}
 select                          { appearance:none; -webkit-appearance:none; -moz-appearance:none; }
 textarea                        { resize:none; }
 math                            { display: block; text-align: center; }
@@ -55,13 +51,7 @@ math                            { display: block; text-align: center; }
 #score                          { width:100%; height:100%; position:absolute; top:0; left:0;
                                   z-index:2002; background-image:url("../res/img/banners/score.svg");display:none; }
 #score .value                   { width:1em; height:1em; text-align:center; position:absolute; font-weight:bold; overflow:visible;
-                                  font-size:3em; opacity:1; top:8%; left:25%;
-                                  animation-duration: 0.5s;                 animation-name:score;
-                                  animation-play-state:running;             animation-timing-function:linear;
-
-                                  -webkit-animation-duration: 0.5s;         -webkit-animation-name:score;
-                                  -webkit-animation-play-state:running;     -webkit-animation-timing-function:linear;
-                                }
+                                  font-size:3em; opacity:1; top:8%; left:25%; }
 
 
 #score.s5 .value:before         { content:"A"; color:red;}

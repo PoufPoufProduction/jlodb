@@ -3,7 +3,6 @@
         debug       : false,
         url         : "",               // cross platform json (not available for the moment)
         id          : "activity",       // activity id
-        isvisible   : false,            // is visible
         // OVERWRITABLE METHODS
         onevent     : function($this, _begin)   { if (_begin) { helpers.settings($this).onstart($this); }
                                                   else        { helpers.settings($this).onfinish($this); } },
@@ -76,7 +75,7 @@
             var settings = helpers.settings($this);
             if (_hide) {
                 $this.find("#"+settings.id).html("").hide();
-                if (!settings.isvisible) { $this.hide(); }
+                $this.hide();
             }
             settings.onevent($this,false);
         }
@@ -100,7 +99,7 @@
                         },
                         onload: function($activity) {
                             var $this = $activity.closest(".jlodb"), settings = helpers.settings($this);
-                            if (!settings.isvisible) { $this.show(); }
+                            if (!$this.is(":visible")) { $this.css("opacity",0).show().animate({opacity:1},1000); }
                             $this.find("#"+settings.id).show();
                             settings.onevent($this,true);
                         }

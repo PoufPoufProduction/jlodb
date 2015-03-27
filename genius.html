@@ -168,7 +168,9 @@ window.onload = function() {
                 onshow: function($this) { $("#waiting").hide().find("div").removeClass("running"); },
                 onclick: function($this, $menu, _args) {
                     $("#launcher").jlodb({
-                        onstart:    function($this) { $("#genius").hide();  },
+                        onstart:    function($this) {
+                            setTimeout(function(){ if ($("#launcher").is(":visible")) { $("#genius").hide(); } },2000);
+                        },
                         onfinish:   function($this) { $("#genius").show(); $("#score").removeClass().hide(); },
                         onscore:    function($this, _ret) {
                             var isnext = false;
@@ -253,8 +255,9 @@ window.onload = function() {
         </div>
 
         <div id="launcher">
-            <div id="quit" ontouchstart="genius.activity='';$('#launcher').jlodb('quit');event.preventDefault();"
-                        onclick="genius.activity='';$('#launcher').jlodb('quit');"><img src="res/img/icon/quit.svg"/></div>
+            <div id="quit"
+    ontouchstart="genius.activity='';$('#launcher').jlodb('quit');event.preventDefault();"
+    onclick="genius.activity='';$('#launcher').jlodb('quit');"><img src="res/img/icon/quit.svg"/></div>
             <div id="activity"></div>
         </div>
 
