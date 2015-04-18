@@ -397,7 +397,8 @@
             }
 
             if ($.isArray(exercice)) {
-                var html=""; for (var i in exercice) { html+="<div style='font-size:"+settings.font+"em;'>"+exercice[i]+"</div>"; }
+                var html=""; for (var i in exercice) {
+                    html+="<div style='font-size:"+settings.font+"em;'>"+(exercice[i].length?exercice[i]:"&nbsp;")+"</div>"; }
                 $this.find("#exercice>div").html(html);
             }
             else { $this.find("#exercice>div").html(exercice); }

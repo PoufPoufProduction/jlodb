@@ -125,7 +125,7 @@
                 $this.find("h1#label").html(settings.label);
                 $this.find("#exercice").html(settings.exercice);
                 if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
-                if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         word: function($this, _word,_t) {
@@ -290,10 +290,7 @@
                     helpers.update($this);
                 }
             },
-            next: function() {
-                $(this).find("#splash").hide();
-                $(this).find("#board").show();
-            },
+            next: function() { settings.interactive = true; },
             valid: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 if (!settings.finish) {

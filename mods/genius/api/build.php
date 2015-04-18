@@ -13,13 +13,14 @@ if (!$error) {
         $error = 100;
     }
     else {
-
+        // BUILD THE NODE TABLE FROM XML STATIC FILES
+        // LINKS BETWEEN NODES ARE DEFINED DIRECTLY IN THE SVG MAP THANKS TO THE .link CLASS
         mysql_query('DROP TABLE '.$_SESSION['prefix'].'node');
 
         if (mysql_query('CREATE TABLE `'.$_SESSION['prefix'].'node` (`Node_Id` INT NOT NULL, '.
                        '`Node_Title` char(255) NOT NULL, `Node_Description` TEXT NOT NULL, `Node_Subject` TEXT NOT NULL, '.
                        '`Node_Level` INT, `Node_Exercices` TEXT NOT NULL, '.
-                       'PRIMARY KEY (`Node_Id`))', $link)  ) {
+                       'PRIMARY KEY (`Node_Id`)) ENGINE=InnoDB', $link)  ) {
 
             $error = 0;
             $status= "success";

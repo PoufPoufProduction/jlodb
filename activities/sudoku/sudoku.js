@@ -94,20 +94,25 @@
                             for (var j=0; j<3; j++) for (var k=0; k<3; k++) {
                                 $($this.find("#grid.f td.cell")
                                     .get(Math.floor(settings.highlight[i][1]/3)*9+settings.highlight[i][1]%3+k*3+j*27))
-                                    .addClass(settings.highlight[i][2]);
+                                    .addClass(settings.highlight[i][2]).addClass("hl"+i);
                             }
                         break;
                         case "row":
                             for (var j=0; j<3; j++) for (var k=0; k<3; k++) {
                                 $($this.find("#grid.f td.cell")
                                     .get(Math.floor(settings.highlight[i][1]/3)*27+3*(settings.highlight[i][1]%3)+k*9+j))
-                                    .addClass(settings.highlight[i][2]);
+                                    .addClass(settings.highlight[i][2]).addClass("hl"+i);
                             }
                         break;
                         case "box":
                             for (var j=0; j<9; j++) {
-                                $($this.find("#grid.f td.cell").get(j+settings.highlight[i][1]*9)).addClass(settings.highlight[i][2]);
+                                $($this.find("#grid.f td.cell").get(j+settings.highlight[i][1]*9))
+                                    .addClass(settings.highlight[i][2]).addClass("hl"+i);
                             }
+                        break;
+                        case "cell":
+                                $($this.find("#grid.f td.cell").get(settings.highlight[i][1]))
+                                    .addClass(settings.highlight[i][2]).addClass("hl"+i);
                         break;
                     }
                 }
@@ -117,6 +122,12 @@
                     var vX = index%3 + 3*Math.floor((index%27)/9);
                     if (settings.data[vY][vX]>10) {
                         $(this).text(settings.data[vY][vX]%10).addClass("final");
+                        $(this).bind("mousedown touchstart",function(event) {
+                            var val=$(this).text();
+                            $this.find("div.fill").each(function() {
+                                $(this).toggleClass("value", ($(this).text()==val));
+                            });
+                        });
                     }
                     else {
                         $(this).bind("mousedown touchstart",function(event) {
@@ -125,6 +136,13 @@
                                 var vEvent = (event && event.originalEvent &&
                                             event.originalEvent.touches && event.originalEvent.touches.length)?
                                                 event.originalEvent.touches[0]:event;
+
+                                var val=$(this).text();
+                                if (val.length) {
+                                    $this.find("div.fill").each(function() {
+                                        $(this).toggleClass("value", ($(this).text()==val));
+                                    });
+                                } else $this.find("div.fill.value").removeClass("value");
 
                                 helpers.highlight($this, vX, vY);
 
@@ -218,6 +236,24 @@
                         if (vVal!=0) {
 
                             if (settings.keypad.hasClass("fill")) {
+
+                                for (var i in settings.highlight) {
+                                    if (settings.highlight[i].length>3) {
+                                        var done = true;
+                                        for (var j in settings.highlight[i][3]) {
+                                            if (!$($this.find("#grid.f td.cell .fill").get(settings.highlight[i][3][j])).html()) {
+                                                done = false;
+                                            }
+                                        }
+                                        if (done) {
+                                            $this.find("#grid.f .hl"+i).removeClass(".hl"+i).removeClass(settings.highlight[i][2]);
+                                        }
+                                    }
+                                }
+
+
+
+
                                 if (helpers.check($this)) {
                                     settings.interactive = false;
                                     settings.score = helpers.score(settings.level, settings.timer.value);

@@ -442,15 +442,15 @@
 
                 if ( (settings.id && $.isArray(settings.id[0]) && settings.puzzleid<settings.id.length) ||
                      (settings.values && $.isArray(settings.values) && settings.puzzleid<settings.values.length) ) {
-                    setTimeout(function() { helpers.rebuild($this); }, 1000);
+                    setTimeout(function() { helpers.rebuild($this); }, wrongs?3000:1000);
                 }
                 else {
                     settings.finish = true;
                     var ratio = (settings.all<6)?Math.floor(6/settings.all):1;
-                    settings.score = 5-ratio*settings.wrongs;
+                    settings.score = 5-Math.ceil(ratio*settings.wrongs/2);
                     if (settings.score<0) { settings.score = 0; }
                     clearTimeout(settings.timer.id);
-                    setTimeout(function() { helpers.end($this); }, 1000);
+                    setTimeout(function() { helpers.end($this); }, wrongs?3000:1000);
                 }
             }
         }

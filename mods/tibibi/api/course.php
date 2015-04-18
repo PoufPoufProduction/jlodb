@@ -13,13 +13,10 @@ if (!$error) {
     if ($_GET["action"]=="upd") {
         $value = $_GET["value"];
         if (strlen($_GET["value"])) {
-            if ( mysql_query("UPDATE `".$_SESSION['prefix']."course` SET `Course_Name`='".$_GET["value"]."' ".
-                            "WHERE `Course_Name`='".$_GET["course"]."' AND User_Id='".$_GET["username"]."'") )
-            {
-                mysql_query("UPDATE `".$_SESSION['prefix']."coursebytibibi` SET `Course_Name`='".$_GET["value"]."' ".
-                            "WHERE `Course_Name`='".$_GET["course"]."' AND User_Id='".$_GET["username"]."'");
+            if (! mysql_query("UPDATE `".$_SESSION['prefix']."course` SET `Course_Name`='".$_GET["value"]."' ".
+                            "WHERE `Course_Name`='".$_GET["course"]."' AND User_Id='".$_GET["username"]."'") ) {
+                $value = $_GET["course"];
             }
-            else { $value = $_GET["course"]; }
         }
         else {
             mysql_query("UPDATE `".$_SESSION['prefix']."course` SET Course_Description='".$_GET["description"]."' ".
@@ -28,12 +25,8 @@ if (!$error) {
     }
     else
     if ($_GET["action"]=="del") {
-        if ( mysql_query("DELETE FROM `".$_SESSION['prefix']."course` WHERE `Course_Name`='".$_GET["value"]."' ".
-                        "AND User_Id='".$_GET["username"]."'") )
-        {
-            mysql_query("DELETE FROM `".$_SESSION['prefix']."coursebytibibi` WHERE `Course_Name`='".$_GET["value"]."' ".
+        mysql_query("DELETE FROM `".$_SESSION['prefix']."course` WHERE `Course_Name`='".$_GET["value"]."' ".
                         "AND User_Id='".$_GET["username"]."'");
-        }
     }
     else
     if ($_GET["action"]=="list") {

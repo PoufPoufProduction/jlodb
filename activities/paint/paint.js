@@ -13,6 +13,7 @@
         source      : ["source",""],                            // The source group + prefix
         canvas      : "canvas",                                 // Toggle element group
         toggle      : "c",                                      // Toggle element class
+        remove      : false,                                    // Remove previous painting
         number      : 1,                                        // Number of exercices
         effects     : true,                                     // Show effects
         debug       : false                                     // Debug mode
@@ -94,6 +95,8 @@
 
                 $this.css("font-size", Math.floor($this.height()/12)+"px");
 
+                if (settings.data) { settings.nbcolor = settings.data.length; }
+
                 for (var i=0; i<settings.nbcolor; i++) {
                     var $elt = $("#"+settings.source[0]+" #"+settings.source[1]+i, settings.svg.root());
                     $elt.bind('touchstart mousedown', function(event) {
@@ -150,6 +153,27 @@
         },
         build: function($this) {
             var settings = helpers.settings($this);
+
+            for (var i=0; i<settings.result.length; i++) {
+                var vClass=$("#"+settings.canvas+" #c"+i, settings.svg.root()).attr("class");
+                vClass=vClass.replace(" wrong","");
+                if (settings.remove) { vClass=vClass.replace(/ c[0-9]/g,""); }
+                $("#"+settings.canvas+" #c"+i, settings.svg.root()).attr("class",vClass);
+            }
+
+
+
+            var exercice = settings.exercice;
+            var label    = settings.exlabel;
+            if (settings.gen) {
+                var vValue = eval('('+settings.gen+')')();
+                if (vValue.exercice) { exercice = vValue.exercice; }
+                if (vValue.arg)      { settings.scoreArg = vValue.arg; }
+                if (vValue.label)    { label = vValue.label; }
+                if (vValue.result)   { settings.result = vValue.result; }
+                if (vValue.t)        { settings.t = vValue.t; }
+            }
+
             var t = settings.t;
             if (!t && settings.values) { number=settings.values.length; t = settings.values[settings.id].t; }
             if (t) {
@@ -169,14 +193,6 @@
                 });
             }
 
-            var exercice = settings.exercice;
-            var label    = settings.exlabel;
-            if (settings.gen) {
-                var vValue = eval('('+settings.gen+')')();
-                if (vValue.exercice) { exercice = vValue.exercice; }
-                if (vValue.arg)      { settings.scoreArg = vValue.arg; }
-                if (vValue.label)    { label = vValue.label; }
-            }
             if (!exercice && settings.values) { exercice = settings.values[settings.id].exercice; }
             if (exercice) {
                 if ($.isArray(exercice)) {
@@ -376,9 +392,9 @@
 
                     if (settings.score<0) { settings.score = 0; }
                     if (++settings.id<settings.number) {
-                        setTimeout(function() { settings.interactive=true; helpers.build($this); }, 500);
+                        setTimeout(function() { settings.interactive=true; helpers.build($this); }, nbErrors?3000:500);
                     }
-                    else                               { setTimeout(function() { helpers.end($this); }, 500); }
+                    else  { setTimeout(function() { helpers.end($this); }, nbErrors?3000:500); }
                 }
             }
         };

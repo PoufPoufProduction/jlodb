@@ -1,9 +1,13 @@
 .marker                                 { background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat;}
-.marker div#splash>div                  { background-image:url("../../res/img/banners/marker.svg"); }
-.marker div#splash .text                { width:48%; float:right; }
-.marker div#splash .text h1             { text-align:right; padding-right:.5em; }
-.marker div#splash .text #guide         { margin:.5em; }
-.marker div#board                       { margin-top:.5em; height:12em; display:none;}
+
+.marker div#splashex                  { background-image:url("../../res/img/banners/marker.svg"); }
+.marker div#splashex h1               { position:absolute; top:15%; left:62%; font-size:2em;
+                                        width:35%; padding:.2em 1em; background-color:white; border-radius:.5em;
+                                        border:.1em solid black; }
+.marker div#splashex #guide           { position:absolute; top:32%; left:62%; font-size:1em; width:30%; font-style:italic;
+                                          padding:.4em 2em; background-color:white; border-radius:1em;
+                                            border:.2em solid black; text-align:justify; }
+.marker div#board                       { margin-top:.5em; height:12em; }
 .marker div#data                        { width:15em; height:8em; overflow:hidden; background-repeat:repeat;
                                           border:1px solid black; border-width:1px 0 1px 0; padding:0.1em 0.5em 0.1em 0.5em;
                                           background-image:url("../../res/img/background/book02.svg"); font-style:italic; }

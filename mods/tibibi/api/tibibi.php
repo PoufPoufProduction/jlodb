@@ -13,22 +13,14 @@ if (!$error) {
     else
     if ($_GET["action"]=="upd") {
         $value = $_GET["value"];
-        if (mysql_query("UPDATE `".$_SESSION['prefix']."tibibi` SET `Tibibi_Name`='".$_GET["value"]."' ".
-                        "WHERE `Tibibi_Name`='".$_GET["tibibi"]."' AND User_Id='".$_GET["username"]."'") )
-        {
-            mysql_query("UPDATE `".$_SESSION['prefix']."coursebytibibi` SET `Tibibi_Name`='".$_GET["value"]."' ".
-                        "WHERE `Tibibi_Name`='".$_GET["tibibi"]."' AND User_Id='".$_GET["username"]."'");
-        }
-        else { $value = $_GET["tibibi"]; }
+        if (!mysql_query("UPDATE `".$_SESSION['prefix']."tibibi` SET `Tibibi_Name`='".$_GET["value"]."' ".
+                        "WHERE `Tibibi_Name`='".$_GET["tibibi"]."' AND User_Id='".$_GET["username"]."'") ) {
+            $value = $_GET["tibibi"]; }
     }
     else
     if ($_GET["action"]=="del") {
-        if (mysql_query("DELETE FROM `".$_SESSION['prefix']."tibibi` ".
-                        "WHERE `Tibibi_Name`='".$_GET["value"]."' AND User_Id='".$_GET["username"]."'"))
-        {
-            mysql_query("DELETE FROM `".$_SESSION['prefix']."coursebytibibi` ".
+        mysql_query("DELETE FROM `".$_SESSION['prefix']."tibibi` ".
                         "WHERE `Tibibi_Name`='".$_GET["value"]."' AND User_Id='".$_GET["username"]."'");
-        }
     }
     else {
         $groups = mysql_query("SELECT * FROM `".$_SESSION['prefix']."tibibi` ".

@@ -190,7 +190,11 @@
 
                 // Locale handling
                 $this.find("h1#label").html(settings.label);
-                $this.find("#comment").html(settings.comment);
+                if ($.isArray(settings.comment)) {
+                    $this.find("#comment").html("");
+                    for (var i in settings.comment) { $this.find("#comment").append("<p>"+settings.comment[i]+"</p>"); }
+                }
+                else { $this.find("#comment").html(settings.comment); }
                 if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
 
                 setTimeout(function() { $this.find("#values ul").show(); helpers.move($this, true);}, 500);

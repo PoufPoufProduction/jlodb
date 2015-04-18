@@ -5,7 +5,7 @@ include $apipath."database.php";
 if (!$error) {
 
     // GET THE INITIAL STATE OF THE NODES ACCORDING TO THEIR Node_Level
-    // NODES ARE CODED ON 2 bits (0: Open, 1:Finished)
+    // NODES ARE CODED ON 2 bits (0: Closed, 1: Open, 2: Finished, 3: Unused for the moment)
     // THAT DOES 4 NODES BY BYTE AND 3 NODES BY BASE64 CODED BYTE
     $nodes = "";
     $node = mysql_query("SELECT * FROM `".$_SESSION['prefix']."node` ORDER BY `Node_Id` DESC");
@@ -27,7 +27,8 @@ echo '{';
 echo '  "status" : "'.$status.'",';
 echo '  "textStatus" : "'.$textstatus.'",';
 if ($error)     { echo '  "error" : '.$error; } else {
-echo '  "nodes": "'.$nodes64.'"';
+echo '  "nodes": "'.$nodes64.'",';
+echo '  "len": '.strlen($nodes64);
 }
 echo '}';
 

@@ -11,6 +11,9 @@ if (!$error) {
                     "ON DUPLICATE KEY UPDATE `Genius` = '".$_POST["genius"]."'");
 
         $value = $_POST["genius"];
+
+        // HANDLE AWARDS
+
     }
     else {
 

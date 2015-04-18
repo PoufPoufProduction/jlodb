@@ -5,8 +5,8 @@
 
     <rdf:Description>
         <dct:identifier>01</dct:identifier>
-        <dct:title xml:lang="fr-FR">Compléter 3 groupes de nombres (ligne, colonne et sous-groupe)</dct:title>
-        <dct:description><![CDATA["level":1,"data":[[11,14,18,15,17,13,12,19,16],[15,13,19,12,18,16,11,7,14],[12,17,16,19,11,14,15,13,18 ],[18,11,14,17,16,15,19,12,13],[16,15,12,13,4,19,17,18,11],[17,19,13,11,12,18,14,16,15],[19,18,11,14,13,17,16,15,12],[13,2,17,16,15,11,18,14,19],[14,16,15,18,19,12,13,11,17]],"highlight":[["row",1,"blue"],["col",1,"red"],["box",4,"green"]]]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter 3 groupes de nombres (ligne, colonne et sous-groupe) - principe du singleton</dct:title>
+        <dct:description><![CDATA["level":1,"data":[[11,14,18,15,17,13,12,19,16],[15,13,19,12,18,16,11,7,14],[12,17,16,19,11,14,15,13,18 ],[18,11,14,17,16,15,19,12,13],[16,15,12,13,4,19,17,18,11],[17,19,13,11,12,18,14,16,15],[19,18,11,14,13,17,16,15,12],[13,2,17,16,15,11,18,14,19],[14,16,15,18,19,12,13,11,17]],"highlight":[["row",1,"blue",[22]],["col",1,"red",[58]],["box",4,"green",[40]]]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":["Chaque ligne, chaque colonne et chaque sous-groupe 3x3 d'une grille de sudoku, contient, une seule fois, tous les nombres compris entre 1 et 9","","Complétez les éléments sur-lignés en trouvant le nombre manquant dans chacun des cas."]]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>game</dct:subject>
@@ -31,9 +31,22 @@
 
     <rdf:Description>
         <dct:identifier>03</dct:identifier>
-        <dct:title xml:lang="fr-FR">Compléter une première grille</dct:title>
-        <dct:description><![CDATA["level":1,"data":[[14,12,5,13,17,18,6,11,19],[16,17,11,15,19,14,13,18,12],[3,19,8,1,16,2,7,15,4],[19,14,7,6,12,1,5,13,18],[12,15,16,18,13,17,14,19,11],[11,18,3,4,15,9,2,17,16],[7,11,4,2,18,5,9,16,3],[15,16,12,19,11,13,18,14,17],[18,13,9,17,14,16,1,12,15]],"highlight":[["row",0,"blue"],["box",3,"green"]]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":["Dans le sous-groupe vert, il ne manque que les valeurs 3 et 7. Or 3 ne peut être sur la case du haut car il est déjà présent sur cette même ligne. Il est donc sur la case du bas du sous-groupe.","","Dans la ligne bleue, 5 et 7 sont manquants. Or 7 est dans le sous-groupe de gauche, il ne peut donc être qu'à droite."]]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter une première grille - principe du singleton caché et/ou nu</dct:title>
+        <dct:description><![CDATA["level":1,"data":[[14,12,5,13,17,18,6,11,19],[16,17,11,15,19,14,13,18,12],[3,19,8,1,16,2,7,15,4],[19,14,7,6,12,1,5,13,18],[12,15,16,18,13,17,14,19,11],[11,18,3,4,15,9,2,17,16],[7,11,4,2,18,5,9,16,3],[15,16,12,19,11,13,18,14,17],[18,13,9,17,14,16,1,12,15]],"highlight":[["row",0,"blue",[2,18]],["box",3,"green",[29,35]]]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":["Dans le sous-groupe vert, il ne manque que les valeurs 3 et 7. Or 3 ne peut être sur la case du haut car il est déjà présent sur cette même ligne. Il est donc sur la case du bas du sous-groupe.","","Dans la ligne bleue, 5 et 6 sont manquants. Or 6 est dans le sous-groupe de gauche, il ne peut donc être qu'à droite."]]]></dct:description>
+        <dct:extent>5</dct:extent>
+        <dct:subject>game</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:type>1</dct:type>
+        <dct:alternative>01</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>04</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter une première grille - principe du singleton caché et/ou nu</dct:title>
+        <dct:description><![CDATA["level":1,"data":[[16,7,12,15,19,18,11,4,13],[5,8,4,13,1,12,9,7,6],[11,3,9,14,17,16,2,8,15],[18,12,11,16,14,19,13,15,17],[17,4,13,18,2,15,16,9,11],[19,16,15,11,13,17,14,12,18],[13,5,8,19,16,14,7,1,12],[2,9,6,17,8,11,5,3,4],[14,1,17,12,15,13,18,6,19]],"highlight":[["row",6,"blue",[76]],["row",8,"blue",[76]],["col",6,"blue",[76]],["col",8,"blue",[76]],["cell",20,"red",[76]],["cell",45,"red",[76]],["cell",54,"red",[76]],["cell",71,"red",[76]],["cell",76,"red",[76]]]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":["En traçant mentalement pour chaque nombre, les lignes et les colonnes où, déjà présent, il ne peut plus apparaître, il est possible de faire apparaître des singletons au sein de sous-groupe.","","Dans cet exemple, dans le sous-groupe en bas à droite, la valeur 3 ne peut être qu'au centre."]]]></dct:description>
         <dct:extent>5</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>

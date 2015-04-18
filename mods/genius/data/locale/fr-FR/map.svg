@@ -49,47 +49,36 @@
         .debug #release                     { display:none; }
         .dbg                                { display:none; }
         .current .c1                        { fill:#EEEE88; stroke:#EEEE88; stroke-width:1; }
+
         .source .c1                         { fill:#FF5555; stroke:#FF5555; stroke-width:1; }
-        .dest .c1                           { fill:#80EEEE; stroke:#80EEEE; stroke-width:1; }
         .source.link>*                      { stroke:#FF5555; stroke-width:1; }
+
+        .dest .c1                           { fill:#80EEEE; stroke:#80EEEE; stroke-width:1; }
         .dest.link>*                        { stroke:#80EEEE; stroke-width:1; }
 
-        /* THEME : NEMO */
+        .highlight .c1                     { fill:#FF5555; stroke:#FF5555; stroke-width:1; }
+        .highlight.link>*                  { stroke:#6c4237; }
 
-        .Nemo .background rect              { fill:#66BBFF; }
-        .Nemo .c1                           { fill:#88CCFF; }
-        .Nemo .available .c1                { fill:white; }
-        .Nemo .c2                           { fill:#66BBFF; }
-        .Nemo .c3                           { fill:#336688; }
-        .Nemo #nodes text                   { stroke:gray;fill:#336688;}
-        .Nemo #nodes .available text        { fill:white; }
-        .Nemo .link>*                       { stroke:#88CCFF; }
-        .Nemo .available.link>*             { stroke:white;stroke-width:0.8; }
+        /* THEME : theme2 */
+        .theme2 .background rect              { fill:none; }
+        .theme2 .c1                           { fill:black; }
+        .theme2 .available .c1                { fill:red;stroke:red;stroke-width:0.5; }
+        .theme2 .c2                           { fill:gray; }
+        .theme2 .c3                           { fill:#eee; }
+        .theme2 .link>*                       { stroke:black; }
+        .theme2 #nodes text                   { stroke:none;fill:black;}
+        .theme2 #nodes .available text        { fill:red; }
+        .theme2 .available.link>*             { stroke:red; }
+        .theme2 .available .c2                { fill:#F88 !important; }
+        .theme2 .rbg                          { stroke:gray; stroke-width:0.5; stroke-opacity:1; }
+        .theme2 .rgg                          { fill:none;stroke:gray;stroke-width:0.5; stroke-opacity:1; }
+        .theme2 .rfg                          { stroke:gray; stroke-width:0.5; stroke-opacity:1; }
+        .theme2 .rbd                          { stroke:gray; stroke-width:0.5; stroke-opacity:1; }
+        .theme2 .rbb                          { stroke:gray; stroke-width:0.5; stroke-opacity:1; }
+        .theme2 .source.link>*                { stroke:#FF5555; stroke-width:1; }
 
-        .Nemo .rbg                          { stroke:white; }
-        .Nemo .rgg                          { fill:white; }
-        .Nemo .rfg                          { stroke:white; }
-        .Nemo .rbd                          { stroke:white; }
-        .Nemo .rbb                          { stroke:white; }
-
-        /* THEME : Ulysse */
-        .Ulysse .background rect              { fill:none; }
-        .Ulysse .c1                           { fill:black; }
-        .Ulysse .available .c1                { fill:red;stroke:red;stroke-width:0.5; }
-        .Ulysse .c2                           { fill:gray; }
-        .Ulysse .c3                           { fill:#eee; }
-        .Ulysse .link>*                       { stroke:black; }
-        .Ulysse #nodes text                   { stroke:none;fill:black;}
-        .Ulysse #nodes .available text        { fill:red; }
-        .Ulysse .available.link>*             { stroke:red; }
-        .Ulysse .available .c2                { fill:#F88 !important; }
-        .Ulysse .rbg                          { stroke:gray; stroke-width:0.5; stroke-opacity:1; }
-        .Ulysse .rgg                          { fill:none;stroke:gray;stroke-width:0.5; stroke-opacity:1; }
-        .Ulysse .rfg                          { stroke:gray; stroke-width:0.5; stroke-opacity:1; }
-        .Ulysse .rbd                          { stroke:gray; stroke-width:0.5; stroke-opacity:1; }
-        .Ulysse .rbb                          { stroke:gray; stroke-width:0.5; stroke-opacity:1; }
-        .Ulysse .source.link>*                { stroke:#FF5555; stroke-width:1; }
-
+        .theme2 .highlight .c1                { fill:#DDDD00; stroke:#DDDD00; stroke-width:1; }
+        .theme2 .highlight.link>*             { stroke:#DDDD00; }
 
     </style>
 </defs>

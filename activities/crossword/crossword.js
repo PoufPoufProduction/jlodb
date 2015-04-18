@@ -95,7 +95,7 @@
                 } else { $this.addClass("noex"); }
                 if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
 
-                if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         build:function($this) {
@@ -318,7 +318,7 @@
                 }
             },
             key: function(_elt) { helpers.key($(this), $(_elt).text()); },
-            next: function()    { $(this).find("#splash").hide(); helpers.settings($(this)).interactive = true; },
+            next: function()    { helpers.settings($(this)).interactive = true; },
             valid: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 var error = 0;

@@ -1714,7 +1714,7 @@ helpers.equations.get($this).label();
             submit: function() { helpers.submit($(this)); },
             dump: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                alert(helpers.equations.get($this).dump());
+                //alert(helpers.equations.get($this).dump());
             }
         };
 

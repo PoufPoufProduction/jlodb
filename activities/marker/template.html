@@ -29,12 +29,10 @@
         <img src="res/img/icon/swwrong.svg" id="subwrong"/>
     </div>
 
-    <div id="splash" ontouchstart="$(this).closest('.marker').marker('next');event.preventDefault();"
-                     onclick="$(this).closest('.marker').marker('next');"><div>
-        <div class="text">
+    <div id="splashex" ontouchstart="$(this).hide().closest('.marker').marker('next');event.preventDefault();"
+                     onclick="$(this).hide().closest('.marker').marker('next');"><div>
             <h1 id="label"></h1>
-            <p id="guide"></p>
-        </div>
+            <div id="guide"></div>
     </div></div>
 
 </div>

@@ -132,40 +132,43 @@
 
                     if (settings.onnode) { available &= settings.onnode($this, settings.id, available); }
 
-                    if (available) {
-                        $.getJSON("mods/genius/api/node.php?id="+settings.id, function(data) {
-                            if(data.status=="success") {
-                                $this.find("#node #header h1").html(data.name);
+                    if (available) { helpers.node($this, settings.id); }
 
-                                var abstracts = data.abstract.split('|');
-                                var html="";
-                                for (var i in abstracts) { html+="<p>"+abstracts[i]+"</p>"; }
-                                $this.find("#node #nav #abstract").html(html);
-
-                                if (data.subject) {
-                                    var subject = data.subject.split('|');
-                                    html="";
-                                    for (var i in subject) { html+="<li>"+subject[i]+"</li>"; }
-                                    $this.find("#node #nav #subject ul").html(html);
-                                }
-                                else { $this.find("#node #nav #subject ul").html(""); }
-
-                                var ex = [];
-                                if (data.exercices.length) { ex = data.exercices.split(","); }
-
-                                if (settings.state) { settings.state($this, settings.id, ex, helpers.menu ); }
-                                else                { helpers.menu($this, ex, ""); }
-                            }
-                        });
-
-                        $this.find("#node #header h1").removeClass().addClass($(this).attr("class"));
-                    }
                     event.stopPropagation();
                     event.preventDefault(); });
                 });
 
                 if (settings.onbuild) { settings.onbuild($this); }
             }
+        },
+        // OPEN A NODE
+        node: function($this, _id) {
+            var settings = helpers.settings($this);
+            $.getJSON("mods/genius/api/node.php?id="+_id, function(data) {
+                if(data.status=="success") {
+                    $this.find("#node #header h1").html(data.name);
+
+                    var abstracts = data.abstract.split('|');
+                    var html="";
+                    for (var i in abstracts) { html+="<p>"+abstracts[i]+"</p>"; }
+                    $this.find("#node #nav #abstract").html(html);
+
+                    if (data.subject) {
+                        var subject = data.subject.split('|');
+                        html="";
+                        for (var i in subject) { html+="<li>"+subject[i]+"</li>"; }
+                        $this.find("#node #nav #subject ul").html(html);
+                    }
+                    else { $this.find("#node #nav #subject ul").html(""); }
+
+                    var ex = [];
+                    if (data.exercices.length) { ex = data.exercices.split(","); }
+
+                    if (settings.state) { settings.state($this, _id, ex, helpers.menu ); }
+                    else                { helpers.menu($this, ex, ""); }
+                }
+            });
+            $this.find("#node #header h1").removeClass().addClass($(this).attr("class"));
         },
         nav  : function($this) {
             var settings = helpers.settings($this);
@@ -241,6 +244,7 @@
                     helpers.loader.css($this);
                 });
             },
+            // UPDATE THE NODE STATES IN BASE 64 (IF A STATES ALREADY EXIST, PERFORM A CONJONCTION)
             states: function(_args) {
                 var $this = $(this), settings = helpers.settings($this);
                 if (_args && _args.nodes) {
@@ -257,6 +261,7 @@
                 }
                 helpers.states($this);
             },
+            // SIMULATE A CLICK ON THE HEADER
             header: function() {
                 var $this = $(this), settings = helpers.settings($this);
                 if (settings.onheader) { settings.onheader($this, settings.id); }
@@ -265,6 +270,7 @@
                 var $this = $(this), settings = helpers.settings($this);
                 if (settings.onclosenode) { settings.onclosenode($this); }
             },
+            // A NODE IS FINISHED, SO OPEN THE FOLLOWINGS
             finish: function() {
                 var $this = $(this), settings = helpers.settings($this);
                 $(this).find("#finish").show();
@@ -285,10 +291,13 @@
                 if (settings.onstate) { settings.onstate($this, settings.nodes); }
 
             },
+            // GET AN SVG ELEMENT FROM THE GRAPH
             svg : function(_val) {
                 var $this = $(this), settings = helpers.settings($this);
                 return $(_val, settings.svg.root());
-            }
+            },
+            // FORCE TO OPEN A NODE
+            node: function(_id) { helpers.node($(this), _id); }
         };
 
         if (methods[method])    { return methods[method].apply(this, Array.prototype.slice.call(arguments, 1)); } 

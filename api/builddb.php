@@ -34,17 +34,17 @@ if (!$error) {
                             '`Date`                     DATE            NOT NULL, '.
                             '`Language`                 VARCHAR(50)     NOT NULL, '.
                             '`Lock`                     CHAR'.
-                        ')', $link) &&
+                        ') ENGINE=InnoDB', $link) &&
            mysql_query('CREATE TABLE `'.$_SESSION['prefix'].'activity` ('.
-                            '`Activity_Name`            VARCHAR( 64 )   NOT NULL UNIQUE, '.
+                            '`Activity_Name`            VARCHAR( 64 )   NOT NULL , '.
                             '`Activity_Title`           VARCHAR( 64 )   NOT NULL , '.
                             '`Activity_Key`             VARCHAR( 4 )    NOT NULL , '.
                             '`Activity_Description`     TEXT            NOT NULL , '.
                             '`Activity_External`        VARCHAR( 255 ) , '.
                             '`Activity_Locale`          TEXT , '.
-                       'PRIMARY KEY (  `Activity_Name` ) )', $link) &&
+                       'PRIMARY KEY (  `Activity_Name` ) ) ENGINE=InnoDB', $link) &&
            mysql_query('CREATE TABLE  `'.$_SESSION['prefix'].'exercice` ('.
-                            '`Exercice_Id`              VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL UNIQUE, '.
+                            '`Exercice_Id`              VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL , '.
                             '`Exercice_Activity`        VARCHAR( 64 )   NOT NULL , '.
                             '`Exercice_Title`           VARCHAR( 255 )  NOT NULL , '.
                             '`Exercice_Parameters`      TEXT , '.
@@ -57,11 +57,10 @@ if (!$error) {
                             '`Exercice_Reference`       VARCHAR( 64 ) , '.
                             '`Exercice_Nb`              INT , '.
                        'PRIMARY KEY (  `Exercice_Id` ), '.
-                       'FOREIGN KEY ( `Exercice_Activity` ) REFERENCES '.$_SESSION['prefix'].'activity(`Activity_Name`))',
+                       'FOREIGN KEY ( `Exercice_Activity` ) REFERENCES '.$_SESSION['prefix'].'activity(`Activity_Name`)) '.
+                       'ENGINE=InnoDB',
                        $link) &&
-            mysql_query('CREATE TABLE `'.$_SESSION['prefix'].'tags` ('.
-                            '`Tag`                      VARCHAR(50)     NOT NULL '.
-                        ')', $link)
+            mysql_query('CREATE TABLE `'.$_SESSION['prefix'].'tags` (`Tag` VARCHAR(50) NOT NULL ) ENGINE=InnoDB', $link)
             ) {
 
             // FILL THE ACTIVITY TABLE THANKS TO THE ACTIVITIES.RDF FILE

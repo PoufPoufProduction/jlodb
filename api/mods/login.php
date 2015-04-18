@@ -9,7 +9,7 @@ if (!$error && strlen($_GET["username"])) {
 
         $param = ',"avatar":"'.$u["User_Avatar"].'", "first":"'.$u["User_FirstName"].'",'.
                  ' "last":"'.$u["User_LastName"].'", "email":"'.$u["User_eMail"].'",'.
-                 ' "stars":"'.$u["User_Stars"].'", "theme":"'.$u["User_Theme"].'"';
+                 ' "theme":"'.$u["User_Theme"].'"';
 
         if (strlen($_GET["password"])) {
             if (strcmp($u['User_Password'],md5($_GET["password"]))==0)

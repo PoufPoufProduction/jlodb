@@ -255,13 +255,18 @@
         <div id="wrong"><img src="res/img/effects/alert01.svg"/></div>
     </div>
 
-    <div id="splash" ontouchstart="$(this).closest('.crossword').crossword('next');event.preventDefault();"
-                     onclick="$(this).closest('.crossword').crossword('next');"><div>
-        <div class="text">
-            <h1 id="label">crossword</h1>
+    <div id="splashex" ontouchstart="$(this).hide().closest('.crossword').crossword('next');event.preventDefault();"
+                     onclick="$(this).hide().closest('.crossword').crossword('next');"><div>
+            <h1 id="label"></h1>
             <p id="guide"></p>
-            <p id="guide2"></p>
-        </div>
+            <div id="guiguide">
+                <div id="illus">
+                    <div class="icon hide"><img src="res/img/svginventoryicons/pencil/pen01.svg"/></div>
+                    <div class="icon show"><img src="res/img/svginventoryicons/pencil/pencil01.svg"/></div>
+                </div>
+                <p id="guide2"></p>
+            </div>
+
     </div></div>
 
 </div>

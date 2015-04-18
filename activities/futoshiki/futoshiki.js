@@ -183,7 +183,7 @@
                 $this.find("#guide2").html(settings.guide2);
                 if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
 
-                if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         highlight: function($this, _posX, _posY, _hint) {
@@ -269,7 +269,7 @@
                 settings.finish = true;
                 settings.context.onquit($this,{'status':'abort'});
             },
-            next: function()  { $(this).find("#splash").hide(); helpers.settings($(this)).interactive = true; },
+            next: function()  { helpers.settings($(this)).interactive = true; },
             valid: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 if (settings.interactive) {

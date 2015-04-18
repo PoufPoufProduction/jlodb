@@ -1,13 +1,7 @@
 .futoshiki                                { background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat; }
 .futoshiki #main                          { width:16.2em;}
-.futoshiki div#splash                  { font-size:.75em; }
-.futoshiki div#splash>div              { background-image:url("../../res/img/banners/futoshiki.svg"); }
-.futoshiki div#splash .text            { font-size:.5em; width:65%; }
-.futoshiki div#splash .text h1         { padding-left:.5em; }
-.futoshiki div#splash .text p          { margin:.5em; }
-.futoshiki div#splash .text #guide2    { font-size:.7em; font-style:italic; margin-left:2em;  border-radius:.5em;
-                                         background-color:rgba(255,255,255,0.2); padding:.5em; }
-.futoshiki div#splash div.icon         { border:0; border-radius:.5em;}
+
+
 
 .futoshiki div#submit                     { font-size:1.5em; height:1em;width:1em; cursor:pointer;
                                             position:absolute; top:7em; left:0em; z-index:3; }
@@ -20,6 +14,21 @@
 .futoshiki div#board table td.t>div.l1    { background-color:rgb(255,231,184); }
 .futoshiki div#board table td.t>div.l2    { background-color:rgb(255,210,140); }
 .futoshiki div#board table td.t>div.wrong { background-color:rgb(200,100,100); color:red; }
+
+
+.futoshiki div#board td.t.blue div.fill         { background-color:rgba(0,0,200,0.3); }
+.futoshiki div#board td.t.red div.fill          { background-color:rgba(200,0,0,0.3); }
+.futoshiki div#board td.t.green div.fill        { background-color:rgba(0,200,0,0.3); }
+.futoshiki div#board td.t.blue.red div.fill     { background-color:rgba(200,0,200,0.3); }
+.futoshiki div#board td.t.red.green div.fill    { background-color:rgba(200,200,0,0.3); }
+.futoshiki div#board td.t.green.blue div.fill   { background-color:rgba(0,200,200,0.3); }
+
+.futoshiki div#board td.t.blue table.hint       { background-color:rgba(0,0,200,0.3); }
+.futoshiki div#board td.t.red table.hint        { background-color:rgba(200,0,0,0.3); }
+.futoshiki div#board td.t.green table.hint      { background-color:rgba(0,200,0,0.3); }
+.futoshiki div#board td.t.blue.red table.hint   { background-color:rgba(200,0,200,0.3); }
+.futoshiki div#board td.t.red.green table.hint  { background-color:rgba(200,200,0,0.3); }
+.futoshiki div#board td.t.green.blue table.hint { background-color:rgba(0,200,200,0.3); }
 
 .futoshiki div#board .f00               { width:3em; height:3em;  text-align:center; cursor:pointer;
                                           background-image:url("../../res/img/svginventoryicons/background/border/square01.svg"); }
@@ -51,3 +60,14 @@
 .futoshiki div#menu .bg                   { font-size:3em; width:1em; border-radius:.3em; margin:.05em .1em; padding:.05em; opacity:0.6; }
 .futoshiki div#menu .bg.s                 { background-color:black; opacity:1; }
 .futoshiki div#menu .icon                 { background-color:white; border-radius:.25em; cursor:pointer; }
+
+
+.futoshiki div#splashex                 { background-color:rgba(0,0,0,0.3); background-image:url("../../res/img/banners/futoshiki.svg");
+                                      font-family: "Courier New" Courier monospace; font-size:.2em; }
+.futoshiki div#splashex  h1             { position:absolute; top:75%; left:0; font-size:5em; background-color:rgba(70,40,20,0.8);
+                                      width:100%; color:white; text-align:center;  text-transform:uppercase;
+                                      border:.5em solid white; border-width:.2em 0;}
+
+.futoshiki div#splashex #guide          { position:absolute; font-size:1.8em; top:2%; left:2%; width:40%;text-align:justify;
+                                       border:.5em solid white; padding:.5em;
+                                    background-image:url("../../res/img/background/book02.svg"); background-repeat:repeat; }

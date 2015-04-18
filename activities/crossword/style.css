@@ -1,13 +1,19 @@
 .crossword                                { background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat; }
 .crossword #main                          { width:16.2em;}
-.crossword div#splash                  { font-size:.8em; }
-.crossword div#splash>div              { background-image:url("../../res/img/banners/crossword.svg"); }
-.crossword div#splash .text            { font-size:.5em; width:65%; }
-.crossword div#splash .text h1         { padding-left:.5em; }
-.crossword div#splash .text p          { margin:.5em; }
-.crossword div#splash .text #guide2    { font-size:.7em; font-style:italic; margin-left:2em;  border-radius:.5em;
-                                         background-color:rgba(255,255,255,0.2); padding:.5em; }
-.crossword div#splash div.icon         { border:0; border-radius:.5em;}
+.crossword div#splashex                   { background-color:rgba(0,0,0,0.3); background-image:url("../../res/img/banners/crossword.svg");
+                                            font-family: "Courier New" Courier monospace; }
+.crossword div#splashex  h1               { position:absolute; top:78%; left:0; font-size:2em; background-color:rgba(70,40,20,0.8);
+                                            width:100%; color:white; text-align:center;  text-transform:uppercase;
+                                            border:.5em solid white; border-width:.2em 0;}
+.crossword div#splashex #guide            { position:absolute; font-size:0.7em; top:3%; left:2%; width:40%;text-align:justify;
+                                            border:.5em solid white; padding:.5em;
+                                            background-image:url("../../res/img/background/book02.svg"); background-repeat:repeat; }
+.crossword div#splashex #guiguide         { position:absolute; font-size:.7em; font-style:italic; border:.5em solid white;                                                             text-align:justify;
+                                            background-color:rgba(255,255,255,0.8); padding:.5em; top:30%; left:2%; width:40%; }
+.crossword div#splashex #guiguide #illus  { font-size:4em; float:left; }
+.crossword div#splashex #guiguide .icon   { border-radius:.2em; margin:.1em; }
+.crossword div#splashex #guiguide .hide   { border:2px solid white; opacity:0.6; }
+.crossword div#splashex #guiguide .show   { border:2px solid black; }
 
 .crossword div#submit                     { font-size:1.5em; height:1em;width:1em; cursor:pointer;
                                             position:absolute; top:7em; left:0em; z-index:3; }

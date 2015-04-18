@@ -26,6 +26,7 @@
 .sudoku td.cell                 { width:3em; height:3em; overflow:hidden;}
 .sudoku td.cell div.border      { width:3em; height:3em; overflow:hidden; position:relative; }
 .sudoku td.cell div.fill        { width:1em; height:1em; font-size:3em; text-align:center; cursor:pointer; position:absolute; }
+.sudoku td.cell div.fill.value  { color:red; }
 
 .sudoku #grid td.cell.blue div.fill         { background-color:rgba(0,0,200,0.3); }
 .sudoku #grid td.cell.red div.fill          { background-color:rgba(200,0,0,0.3); }
@@ -61,7 +62,7 @@
 .sudoku div#splashex #guide          { position:absolute; font-size:2em; top:2%; left:2%; width:40%;text-align:justify;
                                        border:.5em solid white; padding:.5em;
                                     background-image:url("../../res/img/background/book02.svg"); background-repeat:repeat; }
-.sudoku div#splashex table          { position:absolute; font-size:1.5em; top:40%; left:2%; width:45%; 
+.sudoku div#splashex table          { position:absolute; font-size:1.5em; top:45%; left:2%; width:45%; 
                                        border:.5em solid white; padding:.5em;
                                     background-image:url("../../res/img/background/book02.svg"); background-repeat:repeat; }
 

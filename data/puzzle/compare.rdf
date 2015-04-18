@@ -75,6 +75,68 @@
     </rdf:Description>
 
     <rdf:Description>
+        <dct:identifier>5u10</dct:identifier>
+        <dct:title xml:lang="fr-FR">Ordonner 5 nombres compris entre 0 et 10, du plus petit au plus grand.</dct:title>
+        <dct:description><![CDATA["init":[[120,320],[220,320],[320,320],[420,320],[520,320]],"url":"puzzle/compare01.svg","svgclass":"up", "values":[{"a":0,"b":1,"c":5,"d":7,"e":10},{"a":0,"b":2,"c":3,"d":6,"e":7},{"a":1,"b":2,"c":3,"d":8,"e":10}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Placez les nombres proposés en veillant à respecter les inégalités présentes."]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>520</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>5d10</dct:identifier>
+        <dct:title xml:lang="fr-FR">Ordonner 5 nombres compris entre 0 et 10, du plus grand au plus petit.</dct:title>
+        <dct:description><![CDATA["init":[[120,320],[220,320],[320,320],[420,320],[520,320]],"url":"puzzle/compare01.svg","svgclass":"down", "values":[{"a":8,"b":7,"c":3,"d":2,"e":0},{"a":10,"b":8,"c":2,"d":1,"e":0},{"a":10,"b":8,"c":4,"d":3,"e":0}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Placez les nombres proposés en veillant à respecter les inégalités présentes."]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>520</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>510</dct:identifier>
+        <dct:title xml:lang="fr-FR">Ordonner 5 nombres compris entre 0 et 10.</dct:title>
+        <dct:description><![CDATA["init":[[120,320],[220,320],[320,320],[420,320],[520,320]],"url":"puzzle/compare01.svg","svgclass":["up","up","down"], "values":[{"a":0,"b":2,"c":3,"d":9,"e":10},{"a":0,"b":1,"c":2,"d":8,"e":10},{"a":10,"b":6,"c":5,"d":3,"e":0}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Placez les nombres proposés en veillant à respecter les inégalités présentes."]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>520</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>5u10o</dct:identifier>
+        <dct:title xml:lang="fr-FR">Ordonner 5 nombres compris entre 0 et 10, du plus petit au plus grand.</dct:title>
+        <dct:description><![CDATA["init":[[120,320],[220,320],[320,320],[420,320],[520,320]],"url":"puzzle/compare01.svg","svgclass":"up", "gen":"function(){var ret=[]; for (var i=0; i<3;i++) { var val=[]; for (var j=0;j<5;j++) { var v=0, already; do { v=Math.floor(Math.random()*10);already=false; for (var k=0;k<val.length;k++){ if (val[k]==v) { already=true;}} } while(already); val.push(v); } val.sort(function(a,b){return a-b;}); ret.push({\\\"a\\\":val[0],\\\"b\\\":val[1],\\\"c\\\":val[2],\\\"d\\\":val[3],\\\"e\\\":val[4]});} return ret;}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Placez les nombres proposés en veillant à respecter les inégalités présentes."]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>520</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>5d10o</dct:identifier>
+        <dct:title xml:lang="fr-FR">Ordonner 5 nombres compris entre 0 et 10, du plus grand au plus petit.</dct:title>
+        <dct:description><![CDATA["init":[[120,320],[220,320],[320,320],[420,320],[520,320]],"url":"puzzle/compare01.svg","svgclass":"down", "gen":"function(){var ret=[]; for (var i=0; i<3;i++) { var val=[]; for (var j=0;j<5;j++) { var v=0, already; do { v=Math.floor(Math.random()*10);already=false; for (var k=0;k<val.length;k++){ if (val[k]==v) { already=true;}} } while(already); val.push(v); } val.sort(function(a,b){return b-a;}); ret.push({\\\"a\\\":val[0],\\\"b\\\":val[1],\\\"c\\\":val[2],\\\"d\\\":val[3],\\\"e\\\":val[4]});} return ret;}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Placez les nombres proposés en veillant à respecter les inégalités présentes."]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>520</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
         <dct:identifier>3u20</dct:identifier>
         <dct:title xml:lang="fr-FR">Ordonner 3 nombres compris entre 0 et 20, du plus petit au plus grand.</dct:title>
         <dct:description><![CDATA["init":[[145,320],[320,320],[495,320]],"url":"puzzle/compare01.svg","svgclass":"up l3","id":["b","c","d"], "values":[{"b":"0","c":10,"d":20},{"b":5,"c":14,"d":16},{"b":2,"c":7,"d":12}]]]></dct:description>
@@ -109,6 +171,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>520</dct:alternative>
     </rdf:Description>
+
 
     <rdf:Description>
         <dct:identifier>5u20</dct:identifier>

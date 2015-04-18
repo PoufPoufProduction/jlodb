@@ -16,194 +16,13 @@
     <script type="text/javascript" src="gonz/jquery.gonz.js"></script>
     <link type="text/css" rel="stylesheet" href="css/jlodb.css" media="all" />
     <link type="text/css" rel="stylesheet" href="css/user.css" media="all" />
+    <link type="text/css" rel="stylesheet" href="mods/socialis/style.css" media="all" />
     <link rel="apple-touch-icon-precomposed" href="mods/socialis/res/img/icon/icon144.png" />
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="mods/socialis/res/img/icon/icon72.png" />
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="mods/socialis/res/img/icon/icon114.png" />
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="mods/socialis/res/img/icon/icon144.png" />
     <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <style>
-.mask                           { top:0; left:0; position:absolute; width:16em; height:12em; background-color:rgba(0,0,0,0);
-                                  display:none; z-index:10; }
-.icon.del                       { background-color:#222233; border-radius:.25em;}
-.icon.del.s                     { background-color:red;}
-.mask.filler                    { width:6.5em; height:1em; }
-#avatar>div                     { width:100%; height:100%; overflow:hidden;}
-#footer #cancel                 { float:left; margin-left:.2em; }
-#footer #valid                  { float:right; margin-right:.2em; }
 
-#main #score .splash01          { top:5%;left:16%; font-size:3em; }
-#main #score .splash02          { top:25%;left:40%; font-size:2em; }
-
-#genius>#waiting                { top:0.2em; left:0.6em; font-size:7em; z-index:100;}
-
-#genius #boardmask #quit        { font-size:1em; width:1em; height:1em; position:absolute; top:0; left:0; cursor:pointer; }
-#genius #boardmask>div          { position:relative; top:9.5em; left:2.4em; width:7.5em; height:2.2em;
-                                  background-color:rgba(120,100,80,0.6);}
-#genius #boardmask h1           { font-size:.3em; color:white; padding-left:4em; background-color:rgba(255,220,200,0.1);
-                                   border:1px solid white; border-width:0 0 1px 0; }
-#genius #boardmask #example     { width:1em; height:1em; font-size:1.6em; color:white;
-                                  background-image:url("res/img/icon/menu01bg.svg"); background-size:100%;
-                                  font-weight:bold; float:right; cursor:pointer;}
-#genius #boardmask #example>div { font-size:.5em;width:2em; text-align:center; margin-top:.2em; }
-#genius #boardmask #source>div  { padding-left:3.5em; border:1px solid #FF5555; font-size:.3em;color:#FF5555; cursor:pointer;
-                                  margin:.2em; background-color:rgba(0,0,0,0.2);}
-#genius.Ulysse #boardmask>div   { background-color:rgba(0,0,0,0.8);}
-
-#genius.Ulysse>#user           { background-color:rgba(0,0,0,0.75); }
-
-#genius>#user                   { position:absolute; top:9.5em; left:10em; width:5.9em; height:2.3em;
-                                  background-color:rgba(120,100,80,0.6); border-radius:0.25em;}
-#genius>#user #avatar           { float:left;width:2.1em;height:2.1em;margin:.1em;background-color:black;border-radius:0.25em;}
-#genius>#user #details          { font-size:.2em; color:white; }
-#genius>#user h1                { font-weight:bold; width:8.7em; height:1.4em; background-color:rgba(255,255,255,0.1);
-                                  border-radius:.25em; margin-top:.3em; text-align:center; color:#FFDDAA; }
-#genius>#user .stars            { font-size:2em; margin-right:0.5em; }
-#genius>#user .stars>div        { float:right; }
-#genius>#user #stars            { color:yellow; }
-#genius>#user #buttons          { font-size:3em; width:6em; }
-#genius>#user #buttons>div      { float:left; margin:.1em; cursor:pointer; overflow:visible;}
-#genius>#user #buttons .l       { background-color:red;color:white; position:relative; border-radius:.5em; display:none;
-                                  font-size:.5em; top:-1.5em; left:1em; width:1em; height:1em; text-align:center; opacity:0.9; }
-
-#main>#edit>div                 { position:relative; font-size:.5em; width:20em; height:18em; top:2em; left:6em; 
-                                  background-color:rgba(128,120,100,0.9);
-                                  border-radius:.5em; background-image:url("res/img/background/book06.svg"); background-repeat:repeat; }
-#main>#edit .icon               { cursor:pointer; margin:.1em; }
-#main>#edit input               { border:0; width:13.8em; height:1.2em; margin:.1em; border-radius:0 .5em .5em 0; font-size:.8em; }
-#main>#edit select              { border:0; width:13.8em; height:1.2em; margin:.1em; border-radius:0 .5em .5em 0; font-size:.8em; }
-#main>#edit input.empty         { color:#BBBBBB; }
-#main>#edit #header             { height:13.2em; }
-#main>#edit #misc               { height:2em; clear:both;}
-#main>#edit #misc .label        { float:left;width:8.3em; margin:.05em .2em; text-align:right; color:white; }
-#main>#edit #footer             { font-size:4em; }
-#main>#edit #settings           { margin:.1em; }
-#main>#edit #error              { clear:both;color:red;margin-right:1em;text-align:right;font-weight:bold;font-style:italic;font-size:.8em;}
-#main>#edit #avatar             { float:left;width:8.3em;height:8.3em;margin:.25em .2em;background-color:black;border-radius:1em 0 0 1em;}
-#main>#edit #gonz               { background-color:rgba(255,240,200,0.9); width:100%; height:62%; margin-top:2em; padding:.5em;}
-
-#board #node                    { z-index:50; }
-#board #finish                  { z-index:50; }
-
-#main>#friend>div               { position:relative; font-size:.5em; width:30em; height:20em; top:1em; left:1em;
-                                  background-color:rgba(255,240,200,0.8); border-radius:.5em;}
-#main>#friend #popup            { z-index:11; }
-#main>#friend #popup>div        { font-size:.8em; width:15em; background-color:#555; border-radius:.75em; padding:.5em;
-                                  margin-top:3em; margin-left:2em; }
-#main>#friend #popup>div>div    { width:16em; }
-#main>#friend #popup input      { float:left; font-size:1em; height:1.19em; width:13.3em; border:0;
-                                  padding-left:.5em; background-color:#AAA; color:white; border-radius:.5em 0 0 .5em;}
-#main>#friend #popup .icon      { padding:.1em; margin-left:1em; background-color:#333;  border-radius:0 .5em .5em 0;}
-#main>#friend #menu             { width:6em; height:20em; float:left; background-color:rgba(255,255,255,0.1); }
-#main>#friend #menu #quit       { font-size:2em; width:1em; height:1em; cursor:pointer; }
-#main>#friend #group            { height:17em; color:white; }
-#main>#friend #group>.e         { margin:.25em;background-color:#333;padding:.4em .25em;border-radius:.5em;cursor:pointer;
-                                  font-size:.8em;height:1.2em;}
-#main>#friend #group>.e.o       { background-color:blue;  }
-#main>#friend #group>.e.s       { background-color:red; }
-#main>#friend .popup            { height:19em; overflow:auto; display:none; }
-#main>#friend #list             { height:17.8em; overflow:auto; }
-#main>#friend .mask             { opacity:0.98; font-size:2em;}
-#main>#friend .mask #quit       { font-size:1em; width:1em; height:1em; position:absolute; top:0; left:0; cursor:pointer; }
-#main>#friend #genius>div       { font-size:.8em; width:16em; height:12em; margin:1em 2em; position:relative; border-radius:.25em;}
-#main>#friend #genius #board    { width:100%; height:100%; }
-#main>#friend #genius #avatar   { width:3em;height:3em;border-radius:.5em;overflow:hidden;position:absolute;left:12.75em;top:8.75em; }
-#main>#friend #course>div       { font-size:.8em; width:10em; height:9.5em; margin:1em 5em; position:relative; border-radius:.25em;
-                                  background-color:#444466; }
-#main>#friend #course .h1       { border:1px solid white; border-width:0 0 1px 0; font-size:1.2em; text-align:center; color:white; }
-#main>#friend #course #select   { margin:.5em 0 .5em .5em;  }
-#main>#friend #course select    { float:left;height:1.2em;width:7.5em;border:0;background-color:#222233;color:white;font-size:1em;
-                                  margin-right:.5em;}
-#main>#friend #course .icon     { cursor:pointer; }
-#main>#friend #course select.s  { width:9em; }
-#main>#friend #course textarea  { margin:0 0 .3em 1em;border:0;background-color:#222233;color:white;font-size:.5em;width:18em; height:6em; }
-#main>#friend #course #footer   {font-size:2em; }
-
-#main>#friend #menu #footer       { background-color:#444466; color:white; height:1.2em;}
-#main>#friend #menu #footer>div   { float:right; cursor:pointer; opacity:0.1; }
-#main>#friend #menu #footer.s>div { opacity:1; }
-#main>#friend #menu #addgroup     { opacity:1 !important; }
-#main>#friend #menu #delgroup     { display:none; border-radius:.5em;}
-#main>#friend #menu #delgroup.s   { background-color:red; }
-#main>#friend.del #menu #delgroup { display:inherit; }
-#main>#friend.del #menu #addgroup { display:none; }
-#main>#friend #view #input      { background-color:#444466; padding:.1em; width:24em; height:1em; }
-#main>#friend #view #input>*    { float:right; margin:0 .2em;}
-#main>#friend #view #search     { margin:0 .5em 0 .2em; }
-#main>#friend #view select      { font-size:0.75em; color:#444466; border:0; width:4em; height:1.2em; margin:.1em; }
-#main>#friend #view input       { font-size:0.75em; color:#444466; border:0; width:9.8em; height:1.2em; margin:.1em; }
-#main>#friend #view .icon       { cursor:pointer;  }
-#main>#friend #view #ask        { background-color:#222233; color:white; text-align:center; border-radius:.25em; }
-#main>#friend #view #ask.s      { background-color:red; }
-#main>#friend #view             { float:left; width:24em; }
-
-#main>#friend .user                       { font-size:1.1em; width:10em; height:4em; margin:.1em; padding:.1em; background-color:#444466;
-                                            color:white; border-radius:.5em; float:left; }
-#main>#friend .user.small                 { font-size:.9em; width:6em; }
-#main>#friend .user .legend               { float:left; width:6em; }
-#main>#friend .user .avatar               { width:4em; height:4em; border-radius:.5em; float:left; }
-#main>#friend .user .id                   { text-align:right; width:5.9em; padding-right:.1em; height:1.2em; cursor:move;
-                                            border:1px solid white; border-width:0 0 1px 0;}
-#main>#friend .user .name                 { margin-left:.5em; clear:both; font-size:.6em; font-style:italic; height:1.2em; overflow:visible;}
-#main>#friend .user .icon                 { float:right; cursor:pointer; }
-#main>#friend .user .icon.s               { background-color:red; border-radius:.5em; }
-#main>#friend .user .friendstar           { font-size:.8em; margin-right:.25em; }
-#main>#friend .user .friendstar>div       { float:right; }
-#main>#friend .user .friendstar .icon     { font-size:1em; }
-#main>#friend .user .nbstars              { color:yellow; }
-#main>#friend .user .fdel                 { display:none; }
-#main>#friend.del .user .fdel             { display:inherit; }
-#main>#friend .user.ui-draggable-dragging             { background-color:rgba(255,0,0,0.3) !important;  height:1em; width:6em;
-                                                        border:1px solid red; margin:0 2em;}
-#main>#friend .user.ui-draggable-dragging .avatar     { display:none; }
-#main>#friend .user.ui-draggable-dragging .icon       { display:none; }
-#main>#friend .user.ui-draggable-dragging .friendstar { display:none; }
-#main>#friend .user.ui-draggable-dragging .nbstars    { display:none; }
-#main>#friend .user.ui-draggable-dragging .name       { display:none; }
-
-#main>#tibibi>div               { font-size:.5em; width:22em; height:20em; margin:1em 5em; background-color:rgba(255,240,200,0.8);
-                                  border-radius:.5em;}
-#tibibi #header                 { height:2em; position:relative; }
-#tibibi #header #menu           { height:1.1em; background-color:#444466; padding:.1em 0 0 3em; }
-#tibibi #menu>div               { float:left; }
-#tibibi #recv                   { overflow:auto; height:18em; }
-#tibibi #send                   { display:none; overflow:auto; height:18em;}
-#tibibi .icon                   { cursor:pointer; }
-#tibibi .filler                 { width:2em; }
-#tibibi #menu #toggle .icon     { border-radius:.25em; float:left; }
-#tibibi #menu #toggle .icon.s   { background-color:#222233; }
-#tibibi #r.icon                 { margin:0 .1em; }
-#tibibi #s.icon                 { margin:0 .1em; }
-#tibibi #quit                   { font-size:2em; width:1em; height:1em; position:absolute; top:0; left:0; cursor:pointer; }
-#tibibi .course                 { background-color:#444466; width:20em; height:5em; border-radius:.5em; color:white; margin:.5em; }
-#tibibi .course .h1             { border:1px solid white; border-width:0 0 1px 0; font-size:1.2em; text-align:center; color:white; }
-#tibibi .course .h1 .state      { float:left; font-size:.5em; border:1px solid white; border-radius:.5em; margin:.5em .4em; padding:0 .5em;
-                                  width:5em; text-align:center; }
-#tibibi .course .h1 #del        { margin-top:.1em; border-radius:.5em; display:none; }
-#tibibi.del .course .h1 #del    { display:inherit; }
-#tibibi .course .h1 #del.s      { background-color:red; }
-#tibibi .course .state.none     { border:0; }
-#tibibi .course .value          { float:left; width:12em; }
-#tibibi .course .avatar         { font-size:3em; float:left; width:1em; height:1em; border-radius:.1em; margin:.1em; }
-#tibibi .course .legend         { font-size:.8em; font-style:italic; float:left; width:15em; height:4.5em; margin-left:.25em; }
-#tibibi .course .target         { height:1em; }
-#tibibi .course .group          { float:left; margin-left:.5em;  }
-#tibibi .course .nb             { background-color:#222233; width:1em; height:1em; text-align:center; border-radius:.25em; float:left;}
-#tibibi .course .action         { font-size:3.5em; }
-#tibibi #details                { font-size:2em; }
-#tibibi #details>div            { font-size:.5em; width:30em; height:22em; margin:1em 1em; background-color:rgba(0,0,0,0.8); color:Lime;
-                                  border-radius:.5em; font-family: "Courier New", Courier, mono; font-weight:bold;}
-#tibibi #details tr.done        { background-color:lime; color:black; }
-#tibibi #details td .id         { width:5em; display:none; }
-#tibibi #details td .first      { width:7em; }
-#tibibi #details td .last       { width:7em; }
-#tibibi #details td .nb         { width:1.5em; }
-#tibibi #details td .done       { width:1.5em; }
-#tibibi #details td .lA         { opacity:1; }
-#tibibi #details td .lB         { opacity:0.8; }
-#tibibi #details td .lC         { opacity:0.5; }
-#tibibi #details td .lD         { opacity:0.2; }
-
-    </style>
     <script>
 
 var socialis = {
@@ -219,12 +38,51 @@ var socialis = {
     locale  : {},
     menu    : function() { socialis.activity=""; if (socialis.finished) { var state = $("#genius #board").genius('finish'); } },
     state   : function() { $("#genius #board").genius('states'); },
+    format  : function(_text) {
+        var regNode = new RegExp("\\\[node\\\]([0-9]+)\\\[/node\\\]","g");
+        var match = regNode.exec(_text);
+        _text = _text.replace(regNode, function(_val, _p1) {
+            $.getJSON("mods/genius/api/node.php?id="+_p1, function(_data) {
+                $("#fmt"+_data.id).html(_data.name);
+            });
+            return "<span id='fmt"+_p1+"' class='nodeln' onclick='socialis.node("+_p1+");' "+
+                   "ontouchstart='socialis.node("+_p1+");event.preventDefault();'>"+_p1+"</span>"; });
+
+        var regBold = new RegExp("\\\[b\\\]([^\\\[]+)\\\[/b\\\]","g");
+        _text = _text.replace(regBold,"<b>$1</b>");
+
+        var regBlink = new RegExp("\\\[blink\\\]([^\\\[]+)\\\[/blink\\\]","g");
+        _text = _text.replace(regBlink,"<span class='blink"+Math.floor(Math.random()*4+1)+"'>$1</span>");
+
+        return _text;
+    },
+    node: function(_id) {
+        if ($("#news").is(":visible")) { socialis.news.close(); }
+        if ($("#awards").is(":visible")) { socialis.awards.close(); }
+
+        setTimeout(function() {
+            $("#board").genius("svg","#"+_id).each(function() {
+                if ($(this).attr("class").indexOf("available")!=-1) { $("#board").genius("node",_id); }
+                else                                                { socialis.example.open($("#board"), _id, true); }
+            });
+        }, 800);
+    },
     getJSON : function(_url, _args, _post, _cbk) {
         var cross = (_url.indexOf("http")==0);
         var url = _url+"?username="+socialis.settings.user.name+
                     (cross?("&host="+document.URL.substr(0,document.URL.lastIndexOf("/")+1)):"&code="+socialis.settings.user.code);
 
-        if (typeof(_args)=="object") {  for (var i in _args) { url+="&"+i+"="+_args[i]; } }
+        if (typeof(_args)=="object") {  for (var i in _args) {
+            if ($.isArray(_args[i])) {
+                var urltmp=""; for (var j in _args[i]) {
+                    if (urltmp.length) { urltmp+=","; }
+                    if (typeof(_args[i][j])=="string")  { urltmp+="'"+_args[i][j]+"'"; }
+                    else                                { urltmp+=_args[i][j]; }
+                }
+                url+="&"+i+"="+urltmp;
+            }
+            else { url+="&"+i+"="+_args[i]; }
+        } }
         else if (_args.length) { url+=(_args[0]=='&'?"":"&")+_args; }
 
         //alert(url);
@@ -237,8 +95,55 @@ var socialis = {
     },
     cyclic  : {
         timer   : 0,
+        counter : 0,
         process: function() {
             if (socialis.cyclic.timer) { clearTimeout(socialis.cyclic.timer); socialis.cyclic.timer = 0; }
+            socialis.cyclic.timer = setTimeout(socialis.cyclic.process, 5000);
+            socialis.cyclic.counter++;
+            if (!$("#launcher").is(":visible")) {
+                if (socialis.cyclic.counter%20==1)  { socialis.cyclic.misc(); }
+                if (socialis.cyclic.counter%6==0)   { socialis.cyclic.friend(); socialis.cyclic.tibibi(); }
+                if (socialis.cyclic.counter%2==0)   { socialis.cyclic.highlight.start(); }
+            }
+        },
+        highlight: {
+            start: function() {
+                $("#main>#genius #board").genius("svg",".node.available").each(function() {
+                    if (!$("#main>#genius #board").genius("svg",".link.d"+$(this).attr("id")).length) {
+                        $(this).attr("class",$(this).attr("class")+" highlight");
+                    }
+                });
+                setTimeout(socialis.cyclic.highlight.run,100);
+            },
+            run: function() {
+                var nb=0;
+                $("#main>#genius #board").genius("svg",".node.highlight").each(function() {
+                    $(this).attr("class",$(this).attr("class").replace(" highlight"," highlightdone"));
+                    $("#main>#genius #board").genius("svg",".link.d"+$(this).attr("id")).each(function() {
+                         $(this).attr("class",$(this).attr("class").replace(" highlight"," highlightdone"));
+                    });
+                    nb++;
+                    $("#main>#genius #board").genius("svg",".link.s"+$(this).attr("id")).each(function() {
+                        highlight = $(this).attr("class").split(" ")[2].substr(1);
+                        var $highlight = $("#main>#genius #board").genius("svg","#"+highlight);
+                        if ($highlight.attr("class").indexOf("highlight")==-1) {
+                            $highlight.attr("class",$highlight.attr("class")+" highlight");
+                            $(this).attr("class",$(this).attr("class")+" highlight");
+                        }
+                    });
+                });
+                if (nb) { setTimeout(socialis.cyclic.highlight.run,80); } else { setTimeout(socialis.cyclic.highlight.stop,80); }
+            },
+            stop: function() {
+                $("#main>#genius #board").genius("svg",".highlight").each(function() {
+                    $(this).attr("class",$(this).attr("class").replace(" highlight",""));
+                });
+                $("#main>#genius #board").genius("svg",".highlightdone").each(function() {
+                    $(this).attr("class",$(this).attr("class").replace(" highlightdone",""));
+                });
+            }
+        },
+        friend: function() {
             socialis.getJSON("mods/socialis/api/friend.php", {action:"ask"}, "", function(_data) {
                 var ask = _data.value?parseInt(_data.value):0;
                 if (_data.status=="success" && _data.value) {
@@ -253,15 +158,15 @@ var socialis = {
                 }
                 socialis.friend.ask();
             });
-
+        },
+        tibibi: function() {
             socialis.getJSON("mods/socialis/api/tibibi.php", {action:"new"}, "", function(_data) {
                 if (_data.status=="success") {
                     $("#user #details #new").html(_data.value?_data.value:0).toggle(_data.value?true:false);
                 }
             });
-
-            socialis.cyclic.timer = setTimeout(socialis.cyclic.process, 30000);
-        }
+        },
+        misc: function() {  },
     },
     score: {
         effect: function(_score) {
@@ -318,14 +223,14 @@ var socialis = {
                             html+="></div>";
                             $("#boardmask #source").append(html);
 
-                            $.getJSON("mods/genius/api/node.php?id="+s[1], function(_data) {
+                            socialis.getJSON("mods/genius/api/node.php",{id:s[1]}, function(_data) {
                                 $("#boardmask #source #i"+_data.id).html(_data.name);
                             });
 
                         });
 
 
-                        $.getJSON("mods/genius/api/node.php?id="+_id, function(data) {
+                        socialis.getJSON("mods/genius/api/node.php",{id:_id}, function(data) {
                             if(data.status=="success") {
                                 $("#boardmask h1").html(data.name);
 
@@ -359,6 +264,7 @@ var socialis = {
                     },
                     onfinish:   function($this) { $("#genius").show(); $("#score").removeClass().hide(); },
                     onscore:    function($this, _ret) {
+                        $("#score #newreward").hide();
                         $("#score #reload").show();
                         $("#score #next").hide();
                         socialis.score.effect(_ret.score);
@@ -368,6 +274,155 @@ var socialis = {
                     },args);
                 }
         }
+    },
+    awards: {
+        status: true,
+        data: {},
+        current: -1,        // Current badge
+        group: 0,           // Current group
+        show : function() {
+            $("#main>#awards").show();
+            $("#awards>div").css("top","25em").css("opacity",0).animate({top:"0.5em",opacity:1}, 1000 );
+        },
+        pinuser: function(_data) {
+            if (_data) { $("#user #avatar .badge").html("<img src='mods/socialis/res/img/badges/"+_data+".svg'/>").show(); }
+            else { $("#user #avatar .badge").hide(); }
+        },
+        unreadbadges: function(_data, _update) {
+                    var count = 0;
+                    $("#awards .na").removeClass("na");
+                    if (_data) for (var i in _data) {
+                        $("#"+_data[i].type+" .lv2").each( function() {
+                            if ($(this).find(".l").html()==_data[i].group) {
+                                $(this).addClass("na").find(".n").html(_data[i].count);
+                                $(this).parent().find(".title").addClass("na");
+                                count+=_data[i].count;
+                            }
+                        });
+                    }
+                    $("#user #success.l").html(count).toggle(count!=0);
+            if (socialis.awards.group && _update) { socialis.awards.overview(socialis.awards.group,false); }
+        },
+        build: function(_cbk) {
+            if ($("#awards #menu").html().length==0) {
+                socialis.getJSON("mods/socialis/api/award.php",{time:Math.floor(Math.random()*1000)}, function(_data) {
+                    for (var i in _data.awards) {
+                        var $title = $("#awards #menu #"+_data.awards[i].type);
+                        if ($title.length==0) {
+                            $title = $("<div id='"+_data.awards[i].type+"'><div class='title' "+
+                                "ontouchstart='socialis.awards.menu(this,\""+_data.awards[i].type+"\");event.preventDefault();' " +
+                                "onclick='socialis.awards.menu(this,\""+_data.awards[i].type+"\");'><div class='l'>"+
+                                socialis.locale[_data.awards[i].type]+"</div><div class='n'>!</div></div></div>");
+                            $("#awards #menu").append($title);
+                        }
+                        $title.append("<div class='lv2' ontouchstart='socialis.awards.overview(this,true);event.preventDefault();' "+
+                                      "onclick='socialis.awards.overview(this,true);'><div class='l'>"+_data.awards[i].label+"</div>"+
+                                      "<div class='n'></div></div>");
+                    }
+                    _cbk();
+                });
+            }
+            else { _cbk(); }
+        },
+        open: function() {  socialis.awards.show(); },
+        close: function() {
+            $("#awards>div").animate({top:"25em",opacity:0},500, function() {$("#main>#awards").hide(); });
+        },
+        clear: function() {
+            socialis.awards.group = 0;
+            $("#awards #thumbnails").html("");
+            $("#awards #detail #text").html("").removeClass("pinned"); socialis.awards.current=-1;
+        },
+        menu: function(_elt, _type) {
+            socialis.awards.clear();
+            if (socialis.awards.status) {
+                $("#awards #menu .title").addClass("hide");
+                $(_elt).removeClass("hide");
+                $(_elt).parent().find(".lv2").addClass("show");
+                $("#awards #menu .title.hide").animate({left:"-15em"},500, function() { $(this).hide(); });
+                setTimeout(function() {
+                    $("#awards #menu .lv2.show").show().css("opacity",0).animate({opacity:1},500);
+                },800);
+            }
+            else {
+                $("#awards #menu .lv2").removeClass("s").removeClass("show").hide();
+                $("#awards #menu .title.hide").show().animate({left:"0"},500, function() { $(this).removeClass("hide"); });
+            }
+            socialis.awards.status = !socialis.awards.status;
+        },
+        overview: function(_elt,_read) {
+            $("#awards #menu .lv2").removeClass("s");
+            $(_elt).addClass("s");
+            socialis.awards.clear();
+            socialis.awards.group = _elt;
+            socialis.getJSON("mods/socialis/api/award.php",{action:"look",value:encodeURIComponent($(_elt).find('.l').text()) },
+            function(_data) {
+                socialis.awards.data = _data.awards;
+                var newawards=[];
+                for (var i in _data.awards) {
+                    var vImg = (_data.awards[i].state==0)?"locked":_data.awards[i].id;
+                    var html="<div onclick='socialis.awards.detail(this,"+i+");' ";
+                    html+="ontouchstart='socialis.awards.detail(this,"+i+");event.preventDefault();'>";
+                    html+="<div class='icon'><img src='mods/socialis/res/img/badges/"+vImg+".svg'/></div>";
+                    if (_data.awards[i].state==2) {
+                        html+="<div class='nn'><img src='mods/socialis/res/img/award.svg'/></div>";
+                        newawards.push(_data.awards[i].id);
+                    }
+                    html+="</div>";
+                    $("#awards #thumbnails").append(html);
+                }
+                if (newawards.length && _read) {
+                    socialis.getJSON("mods/socialis/api/award.php",{action:"read",value:newawards},
+                        function(_data) { socialis.awards.unreadbadges(_data.unreadbadges, false); });
+                }
+            });
+        },
+        detail: function(_elt,_id) {
+            socialis.awards.current=_id;
+            if (_elt) { $("#awards #thumbnails>div").removeClass("s"); $(_elt).addClass("s"); }
+            $("#awards #detail #text").html("<p>"+socialis.format(socialis.awards.data[_id].label)+"</p>");
+            if (socialis.awards.data[_id].pinned=="1")  { $("#awards #detail #text").addClass("pinned"); }
+            else                                        { $("#awards #detail #text").removeClass("pinned"); }
+        },
+        pin: function() {
+            if (socialis.awards.current!=-1 && socialis.awards.data[socialis.awards.current].state!=0) {
+                var newpinned="zzzzzz";
+                if (socialis.awards.data[socialis.awards.current].pinned=="1") {
+                    socialis.awards.data[socialis.awards.current].pinned="0";
+                }
+                else {
+                    for (var i in socialis.awards.data) { socialis.awards.data[i].pinned="0"; }
+                    socialis.awards.data[socialis.awards.current].pinned="1";
+                    newpinned=socialis.awards.data[socialis.awards.current].id;
+                }
+                socialis.awards.detail(0,socialis.awards.current);
+                socialis.getJSON("mods/socialis/api/award.php",{action:"pin",value:newpinned},
+                        function(_data) { socialis.awards.pinuser(_data.pin); });
+            }
+        }
+    },
+    news: {
+        open: function() {
+            if (!$("#news #content").html().length) {
+                socialis.getJSON("mods/socialis/news.json",{time:Math.floor(Math.random()*1000)}, function(_news) {
+                    for (var i in _news) {
+                        var html="<div class='news'><div class='newstitle'><div class='date'>"+_news[i].date+"</div>";
+                        html+="<div class='title'>"+_news[i].title+"</div></div>";
+                        html+="<div class='newsstory'>"+socialis.format( _news[i].story)+"</div></div>";
+                        $("#news #content").append(html);
+                    }
+                    $("#main>#news").show();
+                    $("#news>div").css("top","25em").css("opacity",0).animate({top:"0.5em",opacity:1}, 1000 );
+                });
+            }
+            else {
+                $("#main>#news").show();
+                $("#news>div").css("top","25em").css("opacity",0).animate({top:"0.5em",opacity:1}, 1000 );
+            }
+        },
+        close: function() {
+            $("#news>div").animate({top:"25em",opacity:0},500, function() {$("#main>#news").hide(); });
+        },
     },
     friend: {
         open: function() {
@@ -633,8 +688,7 @@ var socialis = {
             $.cookie("jlodb-name", _data.name, { expires : 1 });
             $.cookie("jlodb-code", _data.code, { expires : 1 });
 
-            $("#user #stars").html(_data.stars);
-            if (_data.theme) { $("#genius").attr("class",_data.theme); }
+            if (_data.theme) { $("#main").attr("class",_data.theme); }
 
             $.getJSON("mods/genius/api/state.php",function(data){
                 $("#genius #board").genius('states',{nodes:data.nodes});
@@ -644,12 +698,22 @@ var socialis = {
                 });
             });
             $("#user h1").html(socialis.settings.user.name);
-            if ($("#user #avatar>div").children().length==0) {
-                $("#user #avatar>div").gonz({interactive:false, code:socialis.settings.user.avatar, context:{
+            if ($("#user #avatar .gonz").children().length==0) {
+                $("#user #avatar .gonz").gonz({interactive:false, code:socialis.settings.user.avatar, context:{
                     onclick:function($this){  },
                     onquit:function($this, _ret){}}});
-            } else { $("#user #avatar>div").gonz('import',socialis.settings.user.avatar); }
+            } else { $("#user #avatar .gonz").gonz('import',socialis.settings.user.avatar); }
 
+
+            socialis.awards.build(function() {
+                socialis.getJSON("mods/socialis/api/award.php", {action:"upd"}, "", function(_data) {
+                    if (_data.status=="success") {
+                        socialis.awards.pinuser(_data.pin);
+                        socialis.awards.unreadbadges(_data.unreadbadges,false);
+                        $("#user #stars").html(_data.stars);
+                    }
+                });
+            });
             socialis.cyclic.process();
         }
         else {
@@ -677,13 +741,13 @@ var socialis = {
             $("#upid").attr("value",socialis.settings.user.name);
 
             if (socialis.settings.user.last)  { $("#upln").attr("value", socialis.settings.user.last).removeClass(); }
-            else                     { $("#upln").attr("value", socialis.locale.template.upln).addClass("empty"); }
+            else                     { $("#upln").attr("value", socialis.locale.value.upln).addClass("empty"); }
 
             if (socialis.settings.user.first) { $("#upfn").attr("value", socialis.settings.user.first).removeClass(); }
-            else                     { $("#upfn").attr("value", socialis.locale.template.upfn).addClass("empty"); }
+            else                     { $("#upfn").attr("value", socialis.locale.value.upfn).addClass("empty"); }
 
             if (socialis.settings.user.email) { $("#upem").attr("value", socialis.settings.user.email).removeClass(); }
-            else                     { $("#upem").attr("value", socialis.locale.template.upem).addClass("empty"); }
+            else                     { $("#upem").attr("value", socialis.locale.value.upem).addClass("empty"); }
 
             if (socialis.settings.user.theme)  { $("#edit #theme").attr("value", socialis.settings.user.theme); }
 
@@ -769,6 +833,7 @@ var socialis = {
                             },
                             onfinish:   function($this) { $("#genius").show(); $("#score").removeClass().hide(); },
                             onscore:    function($this, _ret) {
+                                $("#score #newreward").hide();
                                 var isnext = false;
                                 if (_ret.score>=2) { isnext = $("#board #node #menu").menu('score', _ret.score).menu('more'); }
                                 $("#score #next").toggle(isnext);
@@ -946,18 +1011,12 @@ window.onload = function() {
          $.getJSON("mods/socialis/api/checkdb.php", function(_checkSocialis) {
            if (_checkSocialis.status=="success") {
 
-/*
-            if (!_checkSocialis.course) { $("#friend .tibibi").hide(); $("#user #courses").hide(); }
-            if (!_checkSocialis.tibibi) { $("#friend #course #select .icon").hide(); $("#friend #course select").addClass("s"); }
-*/
             socialis.settings.lang=_check.lang;
 
-            $.getJSON("mods/socialis/locale/"+socialis.settings.lang+"/text.json", function(_locale) {
+            $.getJSON("mods/socialis/locale/"+socialis.settings.lang+"/text.json?id="+Math.floor(Math.random()*1000), function(_locale) {
                 socialis.locale = _locale;
-                for (var i in _locale.template) { var $elt = $("#"+i);
-                    if ($elt.attr("value") && $elt.attr("value").length) { $elt.attr("value", _locale.template[i]); }
-                    else { $elt.html(_locale.template[i]); }
-                }
+                for (var i in _locale.html)     { $("#"+i).html(_locale.html[i]); }
+                for (var i in _locale.value)    { $("#"+i).attr("value", _locale.value[i]); }
             });
 
             $("#friend #view select").attr("disabled","disabled");
@@ -980,7 +1039,7 @@ window.onload = function() {
 
             $("#main>#genius #board").genius({
                 state: function($this, _id, _ex, _cbk) {
-                    socialis.getJSON("mods/socialis/api/state.php","node="+_id, 0, function(_state) {
+                    socialis.getJSON("mods/socialis/api/state.php", {node:_id}, "", function(_state) {
                         var state = _state.state;
                         if (!state.length) { state = "."; }
                         _cbk($this, _ex, state);
@@ -1023,11 +1082,20 @@ window.onload = function() {
                 },
                 onupdate: function($this, $menu, _id, _state) {
                     socialis.getJSON("mods/socialis/api/state.php","node="+_id, { state: _state} , function(_state) {
-                        if (_state.stars) { $("#user #stars").html(_state.stars); }
+                        $("#score #newreward").hide();
+                        socialis.getJSON("mods/socialis/api/award.php", {action:"upd"}, "", function(_data) {
+                                if (_data.status=="success") {
+                                    $("#user #stars").html(_data.stars);
+                                    if (_data.nbnew) {
+                                        socialis.awards.unreadbadges(_data.unreadbadges,true);
+                                        $("#score #newreward").show();
+                                    }
+                                }
+                        });
                     });
                 },
                 onstate: function($this, _nodes) {
-                    socialis.getJSON("mods/socialis/api/genius.php", "", {genius:_nodes}, function(_genius) {});
+                    socialis.getJSON("mods/socialis/api/genius.php", "", {genius:_nodes}, function(_genius) { });
                 },
                 onclosenode: function($this) {
                     if (socialis.tibibi.settings.course) {
@@ -1064,31 +1132,41 @@ window.onload = function() {
             </div>
 
             <div id="board"></div>
+            <div id="boardfooter"><div id="footertext"></div></div>
+
 
             <!-- USER PANEL (BOTTOM-RIGHT): NAME,STARS,AVATAR AND MENU -->
             <div id="user">
-                <div id="avatar"><div></div></div>
+                <div id="avatar" class="avatar" onclick="socialis.user.open();"
+                                 ontouchstart="socialis.user.open();event.preventDefault();">
+                    <div class="gonz"></div>
+                    <div class="badge"></div>
+                </div>
                 <div id="details">
-                    <h1></h1>
+                    <h1 onclick="socialis.user.open();" ontouchstart="socialis.user.open();event.preventDefault();"></h1>
                     <div class="stars">
                         <div class="icon"><img src="mods/socialis/res/img/star.svg"/></div>
                         <div id="stars">0</div>
                     </div>
                     <div id="buttons">
+                        <div class="icon" onclick="socialis.news.open();" ontouchstart="socialis.news.open();event.preventDefault();">
+                            <img src="mods/socialis/res/img/list.svg"/>
+                        </div>
+                        <div class="icon" onclick="socialis.awards.open();" ontouchstart="socialis.awards.open();event.preventDefault();">
+                            <img src="mods/socialis/res/img/award.svg"/>
+                            <div class="l" id="success"></div>
+                        </div>
 <!--
+                        <div class="icon" onclick="socialis.friend.open();" ontouchstart="socialis.open.friend();event.preventDefault();">
+                            <img src="mods/socialis/res/img/people.svg"/>
+                            <div class="l" id="ask"></div>
+                        </div>
                         <div class="icon" id="courses" onclick="socialis.open.tibibi();"
                                                        ontouchstart="socialis.open.tibibi();event.preventDefault();">
                             <img src="mods/socialis/res/img/courses.svg"/>
                             <div class="l" id="new"></div>
                         </div>
 -->
-                        <div class="icon" onclick="socialis.friend.open();" ontouchstart="socialis.open.friend();event.preventDefault();">
-                            <img src="mods/socialis/res/img/people.svg"/>
-                            <div class="l" id="ask"></div>
-                        </div>
-                        <div class="icon" onclick="socialis.user.open();" ontouchstart="socialis.user.open();event.preventDefault();">
-                            <img src="mods/socialis/res/img/edit.svg"/>
-                        </div>
                         <div class="icon" onclick="socialis.logout();" ontouchstart="socialis.logout();event.preventDefault();">
                             <img src="mods/socialis/res/img/logout.svg"/>
                         </div>
@@ -1103,7 +1181,7 @@ window.onload = function() {
         <div id="launcher">
             <div id="quit" ontouchstart="socialis.activity='';$('#launcher').jlodb('quit');event.preventDefault();"
                            onclick="socialis.activity='';$('#launcher').jlodb('quit');">
-                <img src="res/img/icon/quit.svg"/>
+                <img src="res/img/icon/back.svg"/>
             </div>
             <div id="activity"></div>
         </div>
@@ -1119,8 +1197,36 @@ window.onload = function() {
                 <div class="icon" id="next" ontouchstart="$('#launcher').jlodb('close', false);$('#menu').menu('next');event.preventDefault();"
                     onclick="$('#launcher').jlodb('close', false);$('#menu').menu('next');"><img src="res/img/icon/next.svg"/></div>
             </div>
+            <div id="newreward" class="icon"><img src="mods/socialis/res/img/reward.svg"/></div>
             <div id="touch01" class="splash01"><div><img src="res/img/effects/touch01.svg"/></div></div>
             <div id="touch01" class="splash02"><div><img src="res/img/effects/touch01.svg"/></div></div>
+        </div></div>
+
+        <!-- AWARD PANEL -->
+        <div id="awards" class="mask"><div>
+          <div id="header">
+            <div id="quit" ontouchstart="socialis.awards.close();event.preventDefault();"
+                           onclick="socialis.awards.close();"><img src="res/img/icon/quit.svg"/></div>
+            <div id="awardstitle"></div>
+          </div>
+          <div id="content">
+            <div id="menu"></div>
+            <div id="detail">
+                <div id="thumbnails"></div>
+                <div id="text" ontouchstart="socialis.awards.pin();event.preventDefault();"
+                               onclick="socialis.awards.pin();"></div>
+            </div>
+          </div>
+        </div></div>
+
+        <!-- NEWS PANEL -->
+        <div id="news" class="mask"><div>
+          <div id="header">
+            <div id="quit" ontouchstart="socialis.news.close();event.preventDefault();"
+                               onclick="socialis.news.close();"><img src="res/img/icon/quit.svg"/></div>
+            <div id="newstitle"></div>
+          </div>
+          <div id="content"></div>
         </div></div>
 
         <!-- LOGIN PANEL -->
@@ -1143,6 +1249,7 @@ window.onload = function() {
             </div></div>
         </div>
 
+
         <!-- EDIT PANEL -->
         <div id="edit" class="mask"><div>
           <div id="header">
@@ -1160,8 +1267,8 @@ window.onload = function() {
                 <input value="" type="password" id="upcpr" style="display:none;"/>
             </div>
             <div id="misc">
-                <div><div class="label">Theme</div>
-                     <select id="theme"><option>Kraken</option><option>Ulysse</option></select></div>
+                <div><div class="label" id="themelabel"></div>
+                     <select id="theme"><option id="theme1" value="theme1"></option><option id="theme2" value="theme2"></option></select></div>
             </div>
             <div id="error"></div>
           </div>
