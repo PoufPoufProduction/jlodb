@@ -8,6 +8,7 @@
             3           : square 3d
             b           : boxes
             c           : coins
+            ch          : chart
             d           : distance
             de          : decompose
             dg          : digit
@@ -1338,7 +1339,7 @@
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>po10000</dct:alternative>
+        <dct:alternative>po10K</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
@@ -1349,7 +1350,7 @@
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>po10000</dct:alternative>
+        <dct:alternative>po10K</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
@@ -1360,7 +1361,7 @@
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>po10000</dct:alternative>
+        <dct:alternative>po10K</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
@@ -1371,73 +1372,97 @@
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
-        <dct:alternative>po10000</dct:alternative>
+        <dct:alternative>po10K</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>po01000</dct:identifier>
+        <dct:identifier>po01K</dct:identifier>
         <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une abscisse entière comprise entre 0 et 1000.</dct:title>
         <dct:description><![CDATA["time":0,"len":10,"input":{"digit":3,"speed":2000},"gen":"function(){var ret=\\\"<div style='width:7em;height:1em;overflow:visible;'><svg width='100%' height='100%' viewBox='0 0 100 10'>\\\"; var offset=Math.floor(Math.random()*10),correct=[3.5,2,0.5,0],step=[1,10,100,1000],stepid=2,first=Math.floor(Math.random()*8),ball=Math.floor(Math.random()*20); for (var i=0; i<31; i++) { ret+=\\\"<line x1='\\\"+(5+i*3)+\\\"' y1='\\\"+(i%10==offset?2:3.5)+\\\"' x2='\\\"+(5+i*3)+\\\"' y2='\\\"+(i%10==offset?8:6.5)+\\\"' style='stroke:\\\"+(i%10==offset?\\\"black\\\":\\\"gray\\\")+\\\";stroke-width:.25'/>\\\"; } for (var i=0; i<3; i++) { ret+=\\\"<text x='\\\"+(i*30+offset*3+correct[stepid])+\\\"' y='1.5' font-family='Verdana' font-size='4'>\\\"+(first+i)*step[stepid]+\\\"</text>\\\"; } ret+=\\\"<line x1='5' y1='5' x2='95' y2='5' style='stroke:black;stroke-width:.25'/><circle cy='5' cx='\\\"+(5+(offset+ball)*3)+\\\"' r='1.5' style='fill:red'/></svg></div>\\\"; return [ret, first*step[stepid]+ball*step[stepid]/10];}","class":"neg alpha p02"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
-        <dct:alternative>po10000</dct:alternative>
+        <dct:alternative>po10K</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>po01000x</dct:identifier>
+        <dct:identifier>po01Kx</dct:identifier>
         <dct:title xml:lang="fr-FR">Lire, en moins de 40 secondes, une abscisse entière comprise entre 0 et 1000.</dct:title>
         <dct:description><![CDATA["time":2,"len":10,"input":{"digit":3,"speed":2000},"gen":"function(){var ret=\\\"<div style='width:7em;height:1em;overflow:visible;'><svg width='100%' height='100%' viewBox='0 0 100 10'>\\\"; var offset=Math.floor(Math.random()*10),correct=[3.5,2,0.5,0],step=[1,10,100,1000],stepid=2,first=Math.floor(Math.random()*8),ball=Math.floor(Math.random()*20); for (var i=0; i<31; i++) { ret+=\\\"<line x1='\\\"+(5+i*3)+\\\"' y1='\\\"+(i%10==offset?2:3.5)+\\\"' x2='\\\"+(5+i*3)+\\\"' y2='\\\"+(i%10==offset?8:6.5)+\\\"' style='stroke:\\\"+(i%10==offset?\\\"black\\\":\\\"gray\\\")+\\\";stroke-width:.25'/>\\\"; } for (var i=0; i<3; i++) { ret+=\\\"<text x='\\\"+(i*30+offset*3+correct[stepid])+\\\"' y='1.5' font-family='Verdana' font-size='4'>\\\"+(first+i)*step[stepid]+\\\"</text>\\\"; } ret+=\\\"<line x1='5' y1='5' x2='95' y2='5' style='stroke:black;stroke-width:.25'/><circle cy='5' cx='\\\"+(5+(offset+ball)*3)+\\\"' r='1.5' style='fill:red'/></svg></div>\\\"; return [ret, first*step[stepid]+ball*step[stepid]/10];}","class":"neg alpha p02"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
-        <dct:alternative>po10000</dct:alternative>
+        <dct:alternative>po10K</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>po1000</dct:identifier>
+        <dct:identifier>po1Ka</dct:identifier>
+        <dct:title xml:lang="fr-FR">Retrouver, sans contrainte de temps, l'unité d'une graduation dont l'échelle est variable.</dct:title>
+        <dct:description><![CDATA["time":0,"template":"template2.html","len":10,"input":{"digit":1,"values":[["1",1],["10",10]]},"gen":"function(){var ret=\\\"<div style='width:7em;height:1em;overflow:visible;'><svg width='100%' height='100%' viewBox='0 0 100 10'>\\\"; var offset=Math.floor(Math.random()*10),correct=[3.5,2,0.5,0],step=[1,10,100,1000],stepid=Math.floor(Math.random()*2)+1,first=Math.floor(Math.random()*((stepid==1)?98:8)),ball=Math.floor(Math.random()*20); for (var i=0; i<31; i++) { ret+=\\\"<line x1='\\\"+(5+i*3)+\\\"' y1='\\\"+(i%10==offset?2:3.5)+\\\"' x2='\\\"+(5+i*3)+\\\"' y2='\\\"+(i%10==offset?8:6.5)+\\\"' style='stroke:\\\"+(i%10==offset?\\\"black\\\":\\\"gray\\\")+\\\";stroke-width:.25'/>\\\"; } for (var i=0; i<3; i++) { ret+=\\\"<text x='\\\"+(i*30+offset*3+correct[stepid])+\\\"' y='1.5' font-family='Verdana' font-size='4'>\\\"+(first+i)*step[stepid]+\\\"</text>\\\"; } ret+=\\\"<line x1='5' y1='5' x2='95' y2='5' style='stroke:black;stroke-width:.25'/><circle cy='5' cx='\\\"+(5+(offset+ball)*3)+\\\"' r='1.5' style='fill:red'/></svg></div>\\\"; return [ret, step[stepid-1]];}","class":"neg alpha p02"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quelle est l'unité de la graduation ?"]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:alternative>po10K</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>po1K</dct:identifier>
         <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une abscisse entière comprise entre 0 et 1000 (avec échelle variable).</dct:title>
         <dct:description><![CDATA["time":0,"len":10,"input":{"digit":3,"speed":3000},"gen":"function(){var ret=\\\"<div style='width:7em;height:1em;overflow:visible;'><svg width='100%' height='100%' viewBox='0 0 100 10'>\\\"; var offset=Math.floor(Math.random()*10),correct=[3.5,2,0.5,0],step=[1,10,100,1000],stepid=Math.floor(Math.random()*2)+1,first=Math.floor(Math.random()*((stepid==1)?98:8)),ball=Math.floor(Math.random()*20); for (var i=0; i<31; i++) { ret+=\\\"<line x1='\\\"+(5+i*3)+\\\"' y1='\\\"+(i%10==offset?2:3.5)+\\\"' x2='\\\"+(5+i*3)+\\\"' y2='\\\"+(i%10==offset?8:6.5)+\\\"' style='stroke:\\\"+(i%10==offset?\\\"black\\\":\\\"gray\\\")+\\\";stroke-width:.25'/>\\\"; } for (var i=0; i<3; i++) { ret+=\\\"<text x='\\\"+(i*30+offset*3+correct[stepid])+\\\"' y='1.5' font-family='Verdana' font-size='4'>\\\"+(first+i)*step[stepid]+\\\"</text>\\\"; } ret+=\\\"<line x1='5' y1='5' x2='95' y2='5' style='stroke:black;stroke-width:.25'/><circle cy='5' cx='\\\"+(5+(offset+ball)*3)+\\\"' r='1.5' style='fill:red'/></svg></div>\\\"; return [ret, first*step[stepid]+ball*step[stepid]/10];}","class":"neg alpha p02"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>4</dct:type>
-        <dct:alternative>po10000</dct:alternative>
+        <dct:alternative>po10K</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>po1000x</dct:identifier>
+        <dct:identifier>po1Kx</dct:identifier>
         <dct:title xml:lang="fr-FR">Lire, en moins de 40 secondes, une abscisse entière comprise entre 0 et 1000 (avec échelle variable).</dct:title>
         <dct:description><![CDATA["time":2,"len":10,"input":{"digit":3,"speed":3000},"gen":"function(){var ret=\\\"<div style='width:7em;height:1em;overflow:visible;'><svg width='100%' height='100%' viewBox='0 0 100 10'>\\\"; var offset=Math.floor(Math.random()*10),correct=[3.5,2,0.5,0],step=[1,10,100,1000],stepid=Math.floor(Math.random()*2)+1,first=Math.floor(Math.random()*((stepid==1)?98:8)),ball=Math.floor(Math.random()*20); for (var i=0; i<31; i++) { ret+=\\\"<line x1='\\\"+(5+i*3)+\\\"' y1='\\\"+(i%10==offset?2:3.5)+\\\"' x2='\\\"+(5+i*3)+\\\"' y2='\\\"+(i%10==offset?8:6.5)+\\\"' style='stroke:\\\"+(i%10==offset?\\\"black\\\":\\\"gray\\\")+\\\";stroke-width:.25'/>\\\"; } for (var i=0; i<3; i++) { ret+=\\\"<text x='\\\"+(i*30+offset*3+correct[stepid])+\\\"' y='1.5' font-family='Verdana' font-size='4'>\\\"+(first+i)*step[stepid]+\\\"</text>\\\"; } ret+=\\\"<line x1='5' y1='5' x2='95' y2='5' style='stroke:black;stroke-width:.25'/><circle cy='5' cx='\\\"+(5+(offset+ball)*3)+\\\"' r='1.5' style='fill:red'/></svg></div>\\\"; return [ret, first*step[stepid]+ball*step[stepid]/10];}","class":"neg alpha p02"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>4</dct:type>
-        <dct:alternative>po10000</dct:alternative>
+        <dct:alternative>po10K</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>po10000</dct:identifier>
+        <dct:identifier>po10Ka</dct:identifier>
+        <dct:title xml:lang="fr-FR">Retrouver, sans contrainte de temps, l'unité d'une graduation dont l'échelle est variable.</dct:title>
+        <dct:description><![CDATA["time":0,"template":"template2.html","input":{"css":{"font-size":"1.2em","width":"2.0em"},"digit":1,"values":[["1",1],["10",10],["100",100]]},"gen":"function(){var ret=\\\"<div style='width:7em;height:1em;overflow:visible;'><svg width='100%' height='100%' viewBox='0 0 100 10'>\\\"; var offset=Math.floor(Math.random()*10),correct=[3.5,2,0.5,0],step=[1,10,100,1000],stepid=Math.floor(Math.random()*3)+1,first=Math.floor(Math.random()*((stepid==1)?998:((stepid==2)?98:8))),ball=Math.floor(Math.random()*20); for (var i=0; i<31; i++) { ret+=\\\"<line x1='\\\"+(5+i*3)+\\\"' y1='\\\"+(i%10==offset?2:3.5)+\\\"' x2='\\\"+(5+i*3)+\\\"' y2='\\\"+(i%10==offset?8:6.5)+\\\"' style='stroke:\\\"+(i%10==offset?\\\"black\\\":\\\"gray\\\")+\\\";stroke-width:.25'/>\\\"; } for (var i=0; i<3; i++) { ret+=\\\"<text x='\\\"+(i*30+offset*3+correct[stepid])+\\\"' y='1.5' font-family='Verdana' font-size='4'>\\\"+(first+i)*step[stepid]+\\\"</text>\\\"; } ret+=\\\"<line x1='5' y1='5' x2='95' y2='5' style='stroke:black;stroke-width:.25'/><circle cy='5' cx='\\\"+(5+(offset+ball)*3)+\\\"' r='1.5' style='fill:red'/></svg></div>\\\"; return [ret, step[stepid-1]];}","class":"neg alpha p02"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quelle est l'unité de la graduation ?"]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>5</dct:type>
+        <dct:alternative>po10K</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>po10K</dct:identifier>
         <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une abscisse entière comprise entre 0 et 10000 (avec échelle variable).</dct:title>
         <dct:description><![CDATA["time":0,"len":10,"input":{"digit":4,"speed":4000},"gen":"function(){var ret=\\\"<div style='width:7em;height:1em;overflow:visible;'><svg width='100%' height='100%' viewBox='0 0 100 10'>\\\"; var offset=Math.floor(Math.random()*10),correct=[3.5,2,0.5,0],step=[1,10,100,1000],stepid=Math.floor(Math.random()*3)+1,first=Math.floor(Math.random()*((stepid==1)?998:((stepid==2)?98:8))),ball=Math.floor(Math.random()*20); for (var i=0; i<31; i++) { ret+=\\\"<line x1='\\\"+(5+i*3)+\\\"' y1='\\\"+(i%10==offset?2:3.5)+\\\"' x2='\\\"+(5+i*3)+\\\"' y2='\\\"+(i%10==offset?8:6.5)+\\\"' style='stroke:\\\"+(i%10==offset?\\\"black\\\":\\\"gray\\\")+\\\";stroke-width:.25'/>\\\"; } for (var i=0; i<3; i++) { ret+=\\\"<text x='\\\"+(i*30+offset*3+correct[stepid])+\\\"' y='1.5' font-family='Verdana' font-size='4'>\\\"+(first+i)*step[stepid]+\\\"</text>\\\"; } ret+=\\\"<line x1='5' y1='5' x2='95' y2='5' style='stroke:black;stroke-width:.25'/><circle cy='5' cx='\\\"+(5+(offset+ball)*3)+\\\"' r='1.5' style='fill:red'/></svg></div>\\\"; return [ret, first*step[stepid]+ball*step[stepid]/10];}","class":"neg alpha p02"]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>5</dct:type>
-        <dct:alternative>po10000</dct:alternative>
+        <dct:alternative>po10K</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>po10000x</dct:identifier>
+        <dct:identifier>po10Kx</dct:identifier>
         <dct:title xml:lang="fr-FR">Lire, en moins de 50 secondes, une abscisse entière comprise entre 0 et 10000 (avec échelle variable).</dct:title>
         <dct:description><![CDATA["time":2.5,"len":10,"input":{"digit":4,"speed":4000},"gen":"function(){var ret=\\\"<div style='width:7em;height:1em;overflow:visible;'><svg width='100%' height='100%' viewBox='0 0 100 10'>\\\"; var offset=Math.floor(Math.random()*10),correct=[3.5,2,0.5,0],step=[1,10,100,1000],stepid=Math.floor(Math.random()*3)+1,first=Math.floor(Math.random()*((stepid==1)?998:((stepid==2)?98:8))),ball=Math.floor(Math.random()*20); for (var i=0; i<31; i++) { ret+=\\\"<line x1='\\\"+(5+i*3)+\\\"' y1='\\\"+(i%10==offset?2:3.5)+\\\"' x2='\\\"+(5+i*3)+\\\"' y2='\\\"+(i%10==offset?8:6.5)+\\\"' style='stroke:\\\"+(i%10==offset?\\\"black\\\":\\\"gray\\\")+\\\";stroke-width:.25'/>\\\"; } for (var i=0; i<3; i++) { ret+=\\\"<text x='\\\"+(i*30+offset*3+correct[stepid])+\\\"' y='1.5' font-family='Verdana' font-size='4'>\\\"+(first+i)*step[stepid]+\\\"</text>\\\"; } ret+=\\\"<line x1='5' y1='5' x2='95' y2='5' style='stroke:black;stroke-width:.25'/><circle cy='5' cx='\\\"+(5+(offset+ball)*3)+\\\"' r='1.5' style='fill:red'/></svg></div>\\\"; return [ret, first*step[stepid]+ball*step[stepid]/10];}","class":"neg alpha p02"]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>5</dct:type>
-        <dct:alternative>po10000</dct:alternative>
+        <dct:alternative>po10K</dct:alternative>
     </rdf:Description>
 
 
@@ -1449,7 +1474,7 @@
         <dct:subject>negative</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>pon1000</dct:alternative>
+        <dct:alternative>pon1K</dct:alternative>
     </rdf:Description>
 
 
@@ -1461,7 +1486,7 @@
         <dct:subject>negative</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>pon1000</dct:alternative>
+        <dct:alternative>pon1K</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
@@ -1472,7 +1497,7 @@
         <dct:subject>negative</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>pon1000</dct:alternative>
+        <dct:alternative>pon1K</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
@@ -1484,7 +1509,7 @@
         <dct:subject>negative</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>pon1000</dct:alternative>
+        <dct:alternative>pon1K</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
@@ -1495,44 +1520,44 @@
         <dct:subject>negative</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
-        <dct:alternative>pon1000</dct:alternative>
+        <dct:alternative>pon1K</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>pon01000</dct:identifier>
+        <dct:identifier>pon01K</dct:identifier>
         <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une abscisse entière comprise entre -1000 et 1000.</dct:title>
         <dct:description><![CDATA["time":0,"template":"keypadneg","negative":true,"len":10,"input":{"digit":3,"speed":3000},"gen":"function(){var ret=\\\"<div style='width:7em;height:1em;overflow:visible;'><svg width='100%' height='100%' viewBox='0 0 100 10'>\\\"; var offset=Math.floor(Math.random()*10),correct=[3.5,2,0.5,0],step=[1,10,100,1000],stepid=2,first=Math.floor(Math.random()*18)-10,ball=Math.floor(Math.random()*20); for (var i=0; i<31; i++) { ret+=\\\"<line x1='\\\"+(5+i*3)+\\\"' y1='\\\"+(i%10==offset?2:3.5)+\\\"' x2='\\\"+(5+i*3)+\\\"' y2='\\\"+(i%10==offset?8:6.5)+\\\"' style='stroke:\\\"+(i%10==offset?\\\"black\\\":\\\"gray\\\")+\\\";stroke-width:.25'/>\\\"; } for (var i=0; i<3; i++) { ret+=\\\"<text x='\\\"+(i*30+offset*3+correct[stepid])+\\\"' y='1.5' font-family='Verdana' font-size='4'>\\\"+(first+i)*step[stepid]+\\\"</text>\\\"; } ret+=\\\"<line x1='5' y1='5' x2='95' y2='5' style='stroke:black;stroke-width:.25'/><circle cy='5' cx='\\\"+(5+(offset+ball)*3)+\\\"' r='1.5' style='fill:red'/></svg></div>\\\"; return [ret, first*step[stepid]+ball*step[stepid]/10];}","class":"neg alpha p02"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>negative</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
-        <dct:alternative>pon1000</dct:alternative>
+        <dct:alternative>pon1K</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>pon01000x</dct:identifier>
+        <dct:identifier>pon01Kx</dct:identifier>
         <dct:title xml:lang="fr-FR">Lire, en moins de 40 secondes, une abscisse entière comprise entre -1000 et 1000.</dct:title>
         <dct:description><![CDATA["time":2,"template":"keypadneg","negative":true,"len":10,"input":{"digit":3,"speed":3000},"gen":"function(){var ret=\\\"<div style='width:7em;height:1em;overflow:visible;'><svg width='100%' height='100%' viewBox='0 0 100 10'>\\\"; var offset=Math.floor(Math.random()*10),correct=[3.5,2,0.5,0],step=[1,10,100,1000],stepid=2,first=Math.floor(Math.random()*18)-10,ball=Math.floor(Math.random()*20); for (var i=0; i<31; i++) { ret+=\\\"<line x1='\\\"+(5+i*3)+\\\"' y1='\\\"+(i%10==offset?2:3.5)+\\\"' x2='\\\"+(5+i*3)+\\\"' y2='\\\"+(i%10==offset?8:6.5)+\\\"' style='stroke:\\\"+(i%10==offset?\\\"black\\\":\\\"gray\\\")+\\\";stroke-width:.25'/>\\\"; } for (var i=0; i<3; i++) { ret+=\\\"<text x='\\\"+(i*30+offset*3+correct[stepid])+\\\"' y='1.5' font-family='Verdana' font-size='4'>\\\"+(first+i)*step[stepid]+\\\"</text>\\\"; } ret+=\\\"<line x1='5' y1='5' x2='95' y2='5' style='stroke:black;stroke-width:.25'/><circle cy='5' cx='\\\"+(5+(offset+ball)*3)+\\\"' r='1.5' style='fill:red'/></svg></div>\\\"; return [ret, first*step[stepid]+ball*step[stepid]/10];}","class":"neg alpha p02"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>negative</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
-        <dct:alternative>pon1000</dct:alternative>
+        <dct:alternative>pon1K</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>pon1000</dct:identifier>
+        <dct:identifier>pon1K</dct:identifier>
         <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une abscisse entière comprise entre -1000 et 1000 (avec échelle variable).</dct:title>
         <dct:description><![CDATA["time":0,"template":"keypadneg","negative":true,"len":10,"input":{"digit":3,"speed":3000},"gen":"function(){var ret=\\\"<div style='width:7em;height:1em;overflow:visible;'><svg width='100%' height='100%' viewBox='0 0 100 10'>\\\"; var offset=Math.floor(Math.random()*10),correct=[3.5,2,0.5,0],step=[1,10,100,1000],stepid=Math.floor(Math.random()*2)+1,first=(stepid==1)?Math.floor(Math.random()*198)-100:Math.floor(Math.random()*18)-10,ball=Math.floor(Math.random()*20); for (var i=0; i<31; i++) { ret+=\\\"<line x1='\\\"+(5+i*3)+\\\"' y1='\\\"+(i%10==offset?2:3.5)+\\\"' x2='\\\"+(5+i*3)+\\\"' y2='\\\"+(i%10==offset?8:6.5)+\\\"' style='stroke:\\\"+(i%10==offset?\\\"black\\\":\\\"gray\\\")+\\\";stroke-width:.25'/>\\\"; } for (var i=0; i<3; i++) { ret+=\\\"<text x='\\\"+(i*30+offset*3+correct[stepid])+\\\"' y='1.5' font-family='Verdana' font-size='4'>\\\"+(first+i)*step[stepid]+\\\"</text>\\\"; } ret+=\\\"<line x1='5' y1='5' x2='95' y2='5' style='stroke:black;stroke-width:.25'/><circle cy='5' cx='\\\"+(5+(offset+ball)*3)+\\\"' r='1.5' style='fill:red'/></svg></div>\\\"; return [ret, first*step[stepid]+ball*step[stepid]/10];}","class":"neg alpha p02"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>negative</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>4</dct:type>
-        <dct:alternative>pon1000</dct:alternative>
+        <dct:alternative>pon1K</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>pona1000</dct:identifier>
+        <dct:identifier>pona1K</dct:identifier>
         <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, la valeur absolue d'une abscisse entière comprise entre -1000 et 1000 (avec échelle variable).</dct:title>
         <dct:description><![CDATA["time":0,"len":10,"input":{"digit":3,"speed":3000},"gen":"function(){var ret=\\\"<div style='width:7em;height:1em;overflow:visible;'><svg width='100%' height='100%' viewBox='0 0 100 10'>\\\"; var offset=Math.floor(Math.random()*10),correct=[3.5,2,0.5,0],step=[1,10,100,1000],stepid=Math.floor(Math.random()*2)+1,first=(stepid==1)?Math.floor(Math.random()*198)-100:Math.floor(Math.random()*18)-10,ball=Math.floor(Math.random()*20); for (var i=0; i<31; i++) { ret+=\\\"<line x1='\\\"+(5+i*3)+\\\"' y1='\\\"+(i%10==offset?2:3.5)+\\\"' x2='\\\"+(5+i*3)+\\\"' y2='\\\"+(i%10==offset?8:6.5)+\\\"' style='stroke:\\\"+(i%10==offset?\\\"black\\\":\\\"gray\\\")+\\\";stroke-width:.25'/>\\\"; } for (var i=0; i<3; i++) { ret+=\\\"<text x='\\\"+(i*30+offset*3+correct[stepid])+\\\"' y='1.5' font-family='Verdana' font-size='4'>\\\"+(first+i)*step[stepid]+\\\"</text>\\\"; } ret+=\\\"<line x1='5' y1='5' x2='95' y2='5' style='stroke:black;stroke-width:.25'/><circle cy='5' cx='\\\"+(5+(offset+ball)*3)+\\\"' r='1.5' style='fill:red'/></svg></div>\\\"; return [ret, Math.abs(first*step[stepid]+ball*step[stepid]/10)];}","class":"neg alpha p02"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Donnez la <b>valeur absolue</b> de la position."]]></dct:description>
@@ -1540,18 +1565,18 @@
         <dct:subject>negative</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>4</dct:type>
-        <dct:alternative>pon1000</dct:alternative>
+        <dct:alternative>pon1K</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>pon1000x</dct:identifier>
+        <dct:identifier>pon1Kx</dct:identifier>
         <dct:title xml:lang="fr-FR">Lire, en moins de 40 secondes, une abscisse entière comprise entre -1000 et 1000 (avec échelle variable).</dct:title>
         <dct:description><![CDATA["time":2,"template":"keypadneg","negative":true,"len":10,"input":{"digit":3,"speed":3000},"gen":"function(){var ret=\\\"<div style='width:7em;height:1em;overflow:visible;'><svg width='100%' height='100%' viewBox='0 0 100 10'>\\\"; var offset=Math.floor(Math.random()*10),correct=[3.5,2,0.5,0],step=[1,10,100,1000],stepid=Math.floor(Math.random()*2)+1,first=(stepid==1)?Math.floor(Math.random()*198)-100:Math.floor(Math.random()*18)-10,ball=Math.floor(Math.random()*20); for (var i=0; i<31; i++) { ret+=\\\"<line x1='\\\"+(5+i*3)+\\\"' y1='\\\"+(i%10==offset?2:3.5)+\\\"' x2='\\\"+(5+i*3)+\\\"' y2='\\\"+(i%10==offset?8:6.5)+\\\"' style='stroke:\\\"+(i%10==offset?\\\"black\\\":\\\"gray\\\")+\\\";stroke-width:.25'/>\\\"; } for (var i=0; i<3; i++) { ret+=\\\"<text x='\\\"+(i*30+offset*3+correct[stepid])+\\\"' y='1.5' font-family='Verdana' font-size='4'>\\\"+(first+i)*step[stepid]+\\\"</text>\\\"; } ret+=\\\"<line x1='5' y1='5' x2='95' y2='5' style='stroke:black;stroke-width:.25'/><circle cy='5' cx='\\\"+(5+(offset+ball)*3)+\\\"' r='1.5' style='fill:red'/></svg></div>\\\"; return [ret, first*step[stepid]+ball*step[stepid]/10];}","class":"neg alpha p02"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>negative</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>4</dct:type>
-        <dct:alternative>pon1000</dct:alternative>
+        <dct:alternative>pon1K</dct:alternative>
     </rdf:Description>
 
 
@@ -1688,6 +1713,130 @@
         <dct:type>5</dct:type>
         <dct:alternative>d05x</dct:alternative>
     </rdf:Description>
+
+    <!-- chart -->
+
+    <rdf:Description>
+        <dct:identifier>chb45</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une valeur comprise entre 0 et 5 issue d'un graphique en colonne.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"gen":"function(){var nb=4,max=5,step=[1,5],val=0,red=Math.floor(Math.random()*nb),ret=\\\"<div style='width:1.2em;height:1em;margin:.1em .2em;'><svg width='100%' height='100%' viewBox='0 0 120 100'><def><style>text {font-size:8px;fill:black;}line {stroke:black;stroke-width:1;}line.s{stroke-width:0.2;}line.l{stroke-width:0.5;}rect {fill:gray;stroke:none;}rect.red {fill:red;} .wrong rect {fill:red;}.good rect {fill:green;}</style></def><g transform='translate(0,6)'>\\\";for (var i=0;i<nb;i++) { var v=Math.floor(Math.random()*max); ret+=\\\"<rect x='\\\"+(10+110/nb*i)+\\\"' y='\\\"+(max-v)*(90/max)+\\\"' width='\\\"+(110/nb-0.5)+\\\"' height='\\\"+(90/max*v)+\\\"' \\\"+(i==red?\\\"class='red'\\\":\\\"\\\")+\\\"/>\\\"; if (i==red) { val=v; }} for (var i=0;i<=max;i++) { if (i%step[0]==0) { ret+=\\\"<line x1='10' y1='\\\"+((max-i)*(90/max))+\\\"' x2='120' y2='\\\"+((max-i)*(90/max))+\\\"' class='\\\"+(i%step[1]==0?\\\"l\\\":\\\"s\\\")+\\\"'/>\\\"; } if (i%step[1]==0) { ret+=\\\"<text transform='translate(0,\\\"+(2+(max-i)*(90/max))+\\\")'>\\\"+i+\\\"</text>\\\";} } ret+=\\\"<line x1='10' y1='0' x2='10' y2='92'/><line x1='8' y1='90' x2='120' y2='90'/><line x1='120' y1='0' x2='120' y2='90' class='l'/>\\\"; ret+=\\\"</g></svg></div>\\\"; return [ret, val];}","class":"neg alpha h12","font":4]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quelle valeur représente la <span style='color:red'><b>colonne rouge</b></span> ?"]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>chb610</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>chb610</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une valeur comprise entre 0 et 10 issue d'un graphique en colonne.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"gen":"function(){var nb=6,max=10,step=[1,5],val=0,red=Math.floor(Math.random()*nb),ret=\\\"<div style='width:1.2em;height:1em;margin:.1em .2em;'><svg width='100%' height='100%' viewBox='0 0 120 100'><def><style>text {font-size:8px;fill:black;}line {stroke:black;stroke-width:1;}line.s{stroke-width:0.2;}line.l{stroke-width:0.5;}rect {fill:gray;stroke:none;}rect.red {fill:red;} .wrong rect {fill:red;}.good rect {fill:green;}</style></def><g transform='translate(0,6)'>\\\";for (var i=0;i<nb;i++) { var v=Math.floor(Math.random()*max); ret+=\\\"<rect x='\\\"+(10+110/nb*i)+\\\"' y='\\\"+(max-v)*(90/max)+\\\"' width='\\\"+(110/nb-0.5)+\\\"' height='\\\"+(90/max*v)+\\\"' \\\"+(i==red?\\\"class='red'\\\":\\\"\\\")+\\\"/>\\\"; if (i==red) { val=v; }} for (var i=0;i<=max;i++) { if (i%step[0]==0) { ret+=\\\"<line x1='10' y1='\\\"+((max-i)*(90/max))+\\\"' x2='120' y2='\\\"+((max-i)*(90/max))+\\\"' class='\\\"+(i%step[1]==0?\\\"l\\\":\\\"s\\\")+\\\"'/>\\\"; } if (i%step[1]==0) { ret+=\\\"<text transform='translate(0,\\\"+(2+(max-i)*(90/max))+\\\")'>\\\"+i+\\\"</text>\\\";} } ret+=\\\"<line x1='10' y1='0' x2='10' y2='92'/><line x1='8' y1='90' x2='120' y2='90'/><line x1='120' y1='0' x2='120' y2='90' class='l'/>\\\"; ret+=\\\"</g></svg></div>\\\"; return [ret, val];}","class":"neg alpha h12","font":4]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quelle valeur représente la <span style='color:red'><b>colonne rouge</b></span> ?"]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>chb610</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>chb1020</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une valeur comprise entre 0 et 20 issue d'un graphique en colonne.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"gen":"function(){var nb=10,max=20,step=[1,5],val=0,red=Math.floor(Math.random()*nb),ret=\\\"<div style='width:1.2em;height:1em;margin:.1em .2em;'><svg width='100%' height='100%' viewBox='0 0 120 100'><def><style>text {font-size:8px;fill:black;}line {stroke:black;stroke-width:1;}line.s{stroke-width:0.2;}line.l{stroke-width:0.5;}rect {fill:gray;stroke:none;}rect.red {fill:red;} .wrong rect {fill:red;}.good rect {fill:green;}</style></def><g transform='translate(0,6)'>\\\";for (var i=0;i<nb;i++) { var v=Math.floor(Math.random()*max); ret+=\\\"<rect x='\\\"+(10+110/nb*i)+\\\"' y='\\\"+(max-v)*(90/max)+\\\"' width='\\\"+(110/nb-0.5)+\\\"' height='\\\"+(90/max*v)+\\\"' \\\"+(i==red?\\\"class='red'\\\":\\\"\\\")+\\\"/>\\\"; if (i==red) { val=v; }} for (var i=0;i<=max;i++) { if (i%step[0]==0) { ret+=\\\"<line x1='10' y1='\\\"+((max-i)*(90/max))+\\\"' x2='120' y2='\\\"+((max-i)*(90/max))+\\\"' class='\\\"+(i%step[1]==0?\\\"l\\\":\\\"s\\\")+\\\"'/>\\\"; } if (i%step[1]==0) { ret+=\\\"<text transform='translate(0,\\\"+(2+(max-i)*(90/max))+\\\")'>\\\"+i+\\\"</text>\\\";} } ret+=\\\"<line x1='10' y1='0' x2='10' y2='92'/><line x1='8' y1='90' x2='120' y2='90'/><line x1='120' y1='0' x2='120' y2='90' class='l'/>\\\"; ret+=\\\"</g></svg></div>\\\"; return [ret, val];}","class":"neg alpha h12","font":4]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quelle valeur représente la <span style='color:red'><b>colonne rouge</b></span> ?"]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>chb610</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>chb1020b</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une valeur comprise entre 0 et 20 issue d'un graphique en colonne.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"gen":"function(){var nb=10,max=20,step=[2,10],val=0,red=Math.floor(Math.random()*nb),ret=\\\"<div style='width:1.2em;height:1em;margin:.1em .2em;'><svg width='100%' height='100%' viewBox='0 0 120 100'><def><style>text {font-size:8px;fill:black;}line {stroke:black;stroke-width:1;}line.s{stroke-width:0.2;}line.l{stroke-width:0.5;}rect {fill:gray;stroke:none;}rect.red {fill:red;} .wrong rect {fill:red;}.good rect {fill:green;}</style></def><g transform='translate(0,6)'>\\\";for (var i=0;i<nb;i++) { var v=Math.floor(Math.random()*max); ret+=\\\"<rect x='\\\"+(10+110/nb*i)+\\\"' y='\\\"+(max-v)*(90/max)+\\\"' width='\\\"+(110/nb-0.5)+\\\"' height='\\\"+(90/max*v)+\\\"' \\\"+(i==red?\\\"class='red'\\\":\\\"\\\")+\\\"/>\\\"; if (i==red) { val=v; }} for (var i=0;i<=max;i++) { if (i%step[0]==0) { ret+=\\\"<line x1='10' y1='\\\"+((max-i)*(90/max))+\\\"' x2='120' y2='\\\"+((max-i)*(90/max))+\\\"' class='\\\"+(i%step[1]==0?\\\"l\\\":\\\"s\\\")+\\\"'/>\\\"; } if (i%step[1]==0) { ret+=\\\"<text transform='translate(0,\\\"+(2+(max-i)*(90/max))+\\\")'>\\\"+i+\\\"</text>\\\";} } ret+=\\\"<line x1='10' y1='0' x2='10' y2='92'/><line x1='8' y1='90' x2='120' y2='90'/><line x1='120' y1='0' x2='120' y2='90' class='l'/>\\\"; ret+=\\\"</g></svg></div>\\\"; return [ret, val];}","class":"neg alpha h12","font":4]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quelle valeur représente la <span style='color:red'><b>colonne rouge</b></span> ?"]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>chb610</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>chb1250</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une valeur comprise entre 0 et 50 issue d'un graphique en colonne.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"gen":"function(){var nb=12,max=50,step=[2,10],val=0,red=Math.floor(Math.random()*nb),ret=\\\"<div style='width:1.2em;height:1em;margin:.1em .2em;'><svg width='100%' height='100%' viewBox='0 0 120 100'><def><style>text {font-size:8px;fill:black;}line {stroke:black;stroke-width:1;}line.s{stroke-width:0.2;}line.l{stroke-width:0.5;}rect {fill:gray;stroke:none;}rect.red {fill:red;} .wrong rect {fill:red;}.good rect {fill:green;}</style></def><g transform='translate(0,6)'>\\\";for (var i=0;i<nb;i++) { var v=Math.floor(Math.random()*max); ret+=\\\"<rect x='\\\"+(10+110/nb*i)+\\\"' y='\\\"+(max-v)*(90/max)+\\\"' width='\\\"+(110/nb-0.5)+\\\"' height='\\\"+(90/max*v)+\\\"' \\\"+(i==red?\\\"class='red'\\\":\\\"\\\")+\\\"/>\\\"; if (i==red) { val=v; }} for (var i=0;i<=max;i++) { if (i%step[0]==0) { ret+=\\\"<line x1='10' y1='\\\"+((max-i)*(90/max))+\\\"' x2='120' y2='\\\"+((max-i)*(90/max))+\\\"' class='\\\"+(i%step[1]==0?\\\"l\\\":\\\"s\\\")+\\\"'/>\\\"; } if (i%step[1]==0) { ret+=\\\"<text transform='translate(0,\\\"+(2+(max-i)*(90/max))+\\\")'>\\\"+i+\\\"</text>\\\";} } ret+=\\\"<line x1='10' y1='0' x2='10' y2='92'/><line x1='8' y1='90' x2='120' y2='90'/><line x1='120' y1='0' x2='120' y2='90' class='l'/>\\\"; ret+=\\\"</g></svg></div>\\\"; return [ret, val];}","class":"neg alpha h12","font":4]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quelle valeur représente la <span style='color:red'><b>colonne rouge</b></span> ?"]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>chb610</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>chd45</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une valeur comprise entre 0 et 5 issue d'un graphique.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"gen":"function(){var nb=4,max=5,step=[1,5],val=0,last=0,red=Math.floor(Math.random()*nb),retl=\\\"\\\",retc=\\\"\\\",retp=\\\"\\\",ret=\\\"<div style='width:1.2em;height:1em;margin:.1em .2em;'><svg width='100%' height='100%' viewBox='0 0 120 100'><def><style>text {font-size:8px;fill:black;}path{fill:cyan;fill-opacity:0.2;}line {stroke:black;stroke-width:1;}line.c{stroke:#333;}line.red {stroke:red;stroke-width:0.5;stroke-dasharray:4,2;}line.s{stroke-width:0.2;}line.l{stroke-width:0.5;}circle {fill:#333;stroke:none;}circle.red {fill:red;}</style></def><g transform='translate(0,6)'>\\\";for (var i=0;i<=nb;i++) { var v=Math.floor(Math.random()*max); if (i) { retl+=\\\"<line x1='\\\"+(10+110/nb*(i-1))+\\\"' y1='\\\"+(max-last)*(90/max)+\\\"' x2='\\\"+(10+110/nb*i)+\\\"' y2='\\\"+(max-v)*(90/max)+\\\"' class='c'/>\\\"; } retp+=\\\" L \\\"+(10+110/nb*i)+\\\",\\\"+(max-v)*(90/max);retc+=\\\"<circle cx='\\\"+(10+110/nb*i)+\\\"' cy='\\\"+(max-v)*(90/max)+\\\"' r='2' \\\"+(i==red?\\\"class='red'\\\":\\\"\\\")+\\\"/>\\\"; if (i==red) { val=v; retl+=\\\"<line x1='\\\"+(10+110/nb*i)+\\\"' y1='\\\"+(max-v)*(90/max)+\\\"' x2='\\\"+(10+110/nb*i)+\\\"' y2='90' class='red'/>\\\";} last=v;} ret+=\\\"<path d='M 10,90 \\\"+retp+\\\" L 120,90 L 10,90 z'/>\\\"+retl+retc; for (var i=0;i<=max;i++) { if (i%step[0]==0) { ret+=\\\"<line x1='10' y1='\\\"+((max-i)*(90/max))+\\\"' x2='120' y2='\\\"+((max-i)*(90/max))+\\\"' class='\\\"+(i%step[1]==0?\\\"l\\\":\\\"s\\\")+\\\"'/>\\\"; } if (i%step[1]==0) { ret+=\\\"<text transform='translate(0,\\\"+(2+(max-i)*(90/max))+\\\")'>\\\"+i+\\\"</text>\\\";} } ret+=\\\"<line x1='10' y1='0' x2='10' y2='92'/><line x1='8' y1='90' x2='120' y2='90'/><line x1='120' y1='0' x2='120' y2='90' class='l'/>\\\"; ret+=\\\"</g></svg></div>\\\"; return [ret, val];}","class":"neg alpha h12","font":4]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quelle valeur correspond à la <span style='color:red'><b>mesure en rouge</b></span> ?"]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>chd610</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>chd610</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une valeur comprise entre 0 et 10 issue d'un graphique.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"gen":"function(){var nb=6,max=10,step=[1,5],val=0,last=0,red=Math.floor(Math.random()*nb),retl=\\\"\\\",retc=\\\"\\\",retp=\\\"\\\",ret=\\\"<div style='width:1.2em;height:1em;margin:.1em .2em;'><svg width='100%' height='100%' viewBox='0 0 120 100'><def><style>text {font-size:8px;fill:black;}path{fill:cyan;fill-opacity:0.2;}line {stroke:black;stroke-width:1;}line.c{stroke:#333;}line.red {stroke:red;stroke-width:0.5;stroke-dasharray:4,2;}line.s{stroke-width:0.2;}line.l{stroke-width:0.5;}circle {fill:#333;stroke:none;}circle.red {fill:red;}</style></def><g transform='translate(0,6)'>\\\";for (var i=0;i<=nb;i++) { var v=Math.floor(Math.random()*max); if (i) { retl+=\\\"<line x1='\\\"+(10+110/nb*(i-1))+\\\"' y1='\\\"+(max-last)*(90/max)+\\\"' x2='\\\"+(10+110/nb*i)+\\\"' y2='\\\"+(max-v)*(90/max)+\\\"' class='c'/>\\\"; } retp+=\\\" L \\\"+(10+110/nb*i)+\\\",\\\"+(max-v)*(90/max);retc+=\\\"<circle cx='\\\"+(10+110/nb*i)+\\\"' cy='\\\"+(max-v)*(90/max)+\\\"' r='2' \\\"+(i==red?\\\"class='red'\\\":\\\"\\\")+\\\"/>\\\"; if (i==red) { val=v; retl+=\\\"<line x1='\\\"+(10+110/nb*i)+\\\"' y1='\\\"+(max-v)*(90/max)+\\\"' x2='\\\"+(10+110/nb*i)+\\\"' y2='90' class='red'/>\\\";} last=v;} ret+=\\\"<path d='M 10,90 \\\"+retp+\\\" L 120,90 L 10,90 z'/>\\\"+retl+retc; for (var i=0;i<=max;i++) { if (i%step[0]==0) { ret+=\\\"<line x1='10' y1='\\\"+((max-i)*(90/max))+\\\"' x2='120' y2='\\\"+((max-i)*(90/max))+\\\"' class='\\\"+(i%step[1]==0?\\\"l\\\":\\\"s\\\")+\\\"'/>\\\"; } if (i%step[1]==0) { ret+=\\\"<text transform='translate(0,\\\"+(2+(max-i)*(90/max))+\\\")'>\\\"+i+\\\"</text>\\\";} } ret+=\\\"<line x1='10' y1='0' x2='10' y2='92'/><line x1='8' y1='90' x2='120' y2='90'/><line x1='120' y1='0' x2='120' y2='90' class='l'/>\\\"; ret+=\\\"</g></svg></div>\\\"; return [ret, val];}","class":"neg alpha h12","font":4]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quelle valeur correspond à la <span style='color:red'><b>mesure en rouge</b></span> ?"]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>chd610</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>chd1020</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une valeur comprise entre 0 et 10 issue d'un graphique.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"gen":"function(){var nb=10,max=20,step=[1,5],val=0,last=0,red=Math.floor(Math.random()*nb),retl=\\\"\\\",retc=\\\"\\\",retp=\\\"\\\",ret=\\\"<div style='width:1.2em;height:1em;margin:.1em .2em;'><svg width='100%' height='100%' viewBox='0 0 120 100'><def><style>text {font-size:8px;fill:black;}path{fill:cyan;fill-opacity:0.2;}line {stroke:black;stroke-width:1;}line.c{stroke:#333;}line.red {stroke:red;stroke-width:0.5;stroke-dasharray:4,2;}line.s{stroke-width:0.2;}line.l{stroke-width:0.5;}circle {fill:#333;stroke:none;}circle.red {fill:red;}</style></def><g transform='translate(0,6)'>\\\";for (var i=0;i<=nb;i++) { var v=Math.floor(Math.random()*max); if (i) { retl+=\\\"<line x1='\\\"+(10+110/nb*(i-1))+\\\"' y1='\\\"+(max-last)*(90/max)+\\\"' x2='\\\"+(10+110/nb*i)+\\\"' y2='\\\"+(max-v)*(90/max)+\\\"' class='c'/>\\\"; } retp+=\\\" L \\\"+(10+110/nb*i)+\\\",\\\"+(max-v)*(90/max);retc+=\\\"<circle cx='\\\"+(10+110/nb*i)+\\\"' cy='\\\"+(max-v)*(90/max)+\\\"' r='2' \\\"+(i==red?\\\"class='red'\\\":\\\"\\\")+\\\"/>\\\"; if (i==red) { val=v; retl+=\\\"<line x1='\\\"+(10+110/nb*i)+\\\"' y1='\\\"+(max-v)*(90/max)+\\\"' x2='\\\"+(10+110/nb*i)+\\\"' y2='90' class='red'/>\\\";} last=v;} ret+=\\\"<path d='M 10,90 \\\"+retp+\\\" L 120,90 L 10,90 z'/>\\\"+retl+retc; for (var i=0;i<=max;i++) { if (i%step[0]==0) { ret+=\\\"<line x1='10' y1='\\\"+((max-i)*(90/max))+\\\"' x2='120' y2='\\\"+((max-i)*(90/max))+\\\"' class='\\\"+(i%step[1]==0?\\\"l\\\":\\\"s\\\")+\\\"'/>\\\"; } if (i%step[1]==0) { ret+=\\\"<text transform='translate(0,\\\"+(2+(max-i)*(90/max))+\\\")'>\\\"+i+\\\"</text>\\\";} } ret+=\\\"<line x1='10' y1='0' x2='10' y2='92'/><line x1='8' y1='90' x2='120' y2='90'/><line x1='120' y1='0' x2='120' y2='90' class='l'/>\\\"; ret+=\\\"</g></svg></div>\\\"; return [ret, val];}","class":"neg alpha h12","font":4]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quelle valeur correspond à la <span style='color:red'><b>mesure en rouge</b></span> ?"]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>chd610</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>chd1020b</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une valeur comprise entre 0 et 10 issue d'un graphique.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"gen":"function(){var nb=10,max=20,step=[2,10],val=0,last=0,red=Math.floor(Math.random()*nb),retl=\\\"\\\",retc=\\\"\\\",retp=\\\"\\\",ret=\\\"<div style='width:1.2em;height:1em;margin:.1em .2em;'><svg width='100%' height='100%' viewBox='0 0 120 100'><def><style>text {font-size:8px;fill:black;}path{fill:cyan;fill-opacity:0.2;}line {stroke:black;stroke-width:1;}line.c{stroke:#333;}line.red {stroke:red;stroke-width:0.5;stroke-dasharray:4,2;}line.s{stroke-width:0.2;}line.l{stroke-width:0.5;}circle {fill:#333;stroke:none;}circle.red {fill:red;}</style></def><g transform='translate(0,6)'>\\\";for (var i=0;i<=nb;i++) { var v=Math.floor(Math.random()*max); if (i) { retl+=\\\"<line x1='\\\"+(10+110/nb*(i-1))+\\\"' y1='\\\"+(max-last)*(90/max)+\\\"' x2='\\\"+(10+110/nb*i)+\\\"' y2='\\\"+(max-v)*(90/max)+\\\"' class='c'/>\\\"; } retp+=\\\" L \\\"+(10+110/nb*i)+\\\",\\\"+(max-v)*(90/max);retc+=\\\"<circle cx='\\\"+(10+110/nb*i)+\\\"' cy='\\\"+(max-v)*(90/max)+\\\"' r='2' \\\"+(i==red?\\\"class='red'\\\":\\\"\\\")+\\\"/>\\\"; if (i==red) { val=v; retl+=\\\"<line x1='\\\"+(10+110/nb*i)+\\\"' y1='\\\"+(max-v)*(90/max)+\\\"' x2='\\\"+(10+110/nb*i)+\\\"' y2='90' class='red'/>\\\";} last=v;} ret+=\\\"<path d='M 10,90 \\\"+retp+\\\" L 120,90 L 10,90 z'/>\\\"+retl+retc; for (var i=0;i<=max;i++) { if (i%step[0]==0) { ret+=\\\"<line x1='10' y1='\\\"+((max-i)*(90/max))+\\\"' x2='120' y2='\\\"+((max-i)*(90/max))+\\\"' class='\\\"+(i%step[1]==0?\\\"l\\\":\\\"s\\\")+\\\"'/>\\\"; } if (i%step[1]==0) { ret+=\\\"<text transform='translate(0,\\\"+(2+(max-i)*(90/max))+\\\")'>\\\"+i+\\\"</text>\\\";} } ret+=\\\"<line x1='10' y1='0' x2='10' y2='92'/><line x1='8' y1='90' x2='120' y2='90'/><line x1='120' y1='0' x2='120' y2='90' class='l'/>\\\"; ret+=\\\"</g></svg></div>\\\"; return [ret, val];}","class":"neg alpha h12","font":4]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quelle valeur correspond à la <span style='color:red'><b>mesure en rouge</b></span> ?"]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>chd610</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>chd1250</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une valeur comprise entre 0 et 10 issue d'un graphique.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"gen":"function(){var nb=12,max=50,step=[2,10],val=0,last=0,red=Math.floor(Math.random()*nb),retl=\\\"\\\",retc=\\\"\\\",retp=\\\"\\\",ret=\\\"<div style='width:1.2em;height:1em;margin:.1em .2em;'><svg width='100%' height='100%' viewBox='0 0 120 100'><def><style>text {font-size:8px;fill:black;}path{fill:cyan;fill-opacity:0.2;}line {stroke:black;stroke-width:1;}line.c{stroke:#333;}line.red {stroke:red;stroke-width:0.5;stroke-dasharray:4,2;}line.s{stroke-width:0.2;}line.l{stroke-width:0.5;}circle {fill:#333;stroke:none;}circle.red {fill:red;}</style></def><g transform='translate(0,6)'>\\\";for (var i=0;i<=nb;i++) { var v=Math.floor(Math.random()*max); if (i) { retl+=\\\"<line x1='\\\"+(10+110/nb*(i-1))+\\\"' y1='\\\"+(max-last)*(90/max)+\\\"' x2='\\\"+(10+110/nb*i)+\\\"' y2='\\\"+(max-v)*(90/max)+\\\"' class='c'/>\\\"; } retp+=\\\" L \\\"+(10+110/nb*i)+\\\",\\\"+(max-v)*(90/max);retc+=\\\"<circle cx='\\\"+(10+110/nb*i)+\\\"' cy='\\\"+(max-v)*(90/max)+\\\"' r='2' \\\"+(i==red?\\\"class='red'\\\":\\\"\\\")+\\\"/>\\\"; if (i==red) { val=v; retl+=\\\"<line x1='\\\"+(10+110/nb*i)+\\\"' y1='\\\"+(max-v)*(90/max)+\\\"' x2='\\\"+(10+110/nb*i)+\\\"' y2='90' class='red'/>\\\";} last=v;} ret+=\\\"<path d='M 10,90 \\\"+retp+\\\" L 120,90 L 10,90 z'/>\\\"+retl+retc; for (var i=0;i<=max;i++) { if (i%step[0]==0) { ret+=\\\"<line x1='10' y1='\\\"+((max-i)*(90/max))+\\\"' x2='120' y2='\\\"+((max-i)*(90/max))+\\\"' class='\\\"+(i%step[1]==0?\\\"l\\\":\\\"s\\\")+\\\"'/>\\\"; } if (i%step[1]==0) { ret+=\\\"<text transform='translate(0,\\\"+(2+(max-i)*(90/max))+\\\")'>\\\"+i+\\\"</text>\\\";} } ret+=\\\"<line x1='10' y1='0' x2='10' y2='92'/><line x1='8' y1='90' x2='120' y2='90'/><line x1='120' y1='0' x2='120' y2='90' class='l'/>\\\"; ret+=\\\"</g></svg></div>\\\"; return [ret, val];}","class":"neg alpha h12","font":4]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quelle valeur correspond à la <span style='color:red'><b>mesure en rouge</b></span> ?"]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>chd610</dct:alternative>
+    </rdf:Description>
+
+    <!-- roman number -->
 
     <rdf:Description>
         <dct:identifier>ro1</dct:identifier>

@@ -92,7 +92,7 @@
 
                 // ADD BACKGROUND
                 $this.find("#background").css("background-image", "url('res/img/"+settings.background+"')");
-                if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         // Update the timer
@@ -307,7 +307,6 @@
                 }
             },
             next: function() {
-                $(this).find("#splash").hide();
                 helpers.build($(this));
                 helpers.timer($(this));
             },

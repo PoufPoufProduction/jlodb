@@ -7,6 +7,7 @@
         css         : "style.css",                              // Activity's css style sheet
         lang        : "en-US",                                  // Current localization
         font        : 1,                                        // The font-size multiplicator
+        sep         : " .,'-;:\"?!",                               // The separators
         debug       : false                                     // Debug mode
     };
 
@@ -80,41 +81,50 @@
                 var content ="";
                 var reg = new RegExp("[ ]", "g");
                 var t = -1, tnext;
+                var word = "";
+                var lastLetterIsSep=false;
+                var vGroup=-1;
+                var vEndGroup = false;
+                var vBeginGroup = false;
 
                 // PARSE EACH PARAGRAPH
                 for (var i=0; i<settings.text.length; i++) {
                     content+="<p>";
-                    var text = settings.text[i].split(reg);
-                    // BROWSE EACH WORD
-                    for (var j=0; j<text.length; j++) {
-                        // ADD A SPACE
-                        if (j) content+=helpers.word($this,"&nbsp;", 9);
-
-                        // HANDLE PUNCTUATION
-                        var begin = 0, end = text[j].length;
-                        if (text[j][0]=='"') { begin=1; }
-
-                        for (var k=end; k>begin; k--) {
-                            if ((text[j][k-1]=='.')||(text[j][k-1]==',')||(text[j][k-1]==':')||(text[j][k-1]==';')||(text[j][k-1]=='"'))
-                                { end=k-1; }
-                            else { k=begin; }
-                        }
-                        var endx = end, beginx = begin;
-                        // HANDLE SEPARATOR
-                        tnext = t;
+                    for (var j=0; j<settings.text[i].length; j++) {
+                        var vIsQuestion = false;
                         for (var k in settings.questions) {
-                            if (text[j][begin]==settings.questions[k].s) { beginx++; t = (t==k)?-1:k; tnext = t;}
-                            if (text[j][end-1]==settings.questions[k].s) { endx--; tnext = (t==k)?-1:k; }
+                            if (settings.text[i][j]==settings.questions[k].s) {
+                                vIsQuestion = true;
+                                if (vGroup==-1) { vGroup=k; vBeginGroup = true; vEndGroup = false; } else { vEndGroup=true; }
+                            }
                         }
+                        if (vIsQuestion) { continue; }
 
-                        if (begin) { content+=helpers.word($this,text[j][0], 9); }
-                        content+=helpers.word($this,text[j].substring(beginx,endx), t);
-                        if (end!=text[j].length) { content+=helpers.word($this,text[j].substring(end), 9); }
 
-                        t = tnext;
+                        if (settings.sep.indexOf(settings.text[i][j])==-1) {
+                            if (lastLetterIsSep) {
+                                content+=helpers.word($this,word.replace(" ","&nbsp;"), vBeginGroup?-1:vGroup);
+                                word="";
+                                if (vEndGroup) { vEndGroup=false; vGroup=-1; }
+                            }
+                            word+=settings.text[i][j];
+                            lastLetterIsSep=false;
+                        }
+                        else {
+                            if (!lastLetterIsSep) {
+                                content+=helpers.word($this,word, vGroup);
+                                word="";
+                                if (vEndGroup) { vEndGroup=false; vGroup=-1; }
+                            }
+                            word+=settings.text[i][j];
+                            lastLetterIsSep=true;
+                        }
+                        vBeginGroup = false;
                     }
+                    content+=helpers.word($this,word, lastLetterIsSep?9:8); word="";
                     content+="</p>";
                 }
+
                 helpers.color($this,0);
 
                 $this.find("#data>div").css("font-size",settings.font+"em").html(content);

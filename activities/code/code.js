@@ -13,8 +13,20 @@
             ma      : true,
             cl      : true
         },
+        initsc      : [],                                       // Init screen
         debug       : false                                     // Debug mode
     };
+
+    var regExp = [
+        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
+        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
+        "\\\[br\\\]",                               "<br/>",
+        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
+        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
+        "\\\[svg\\\]([^\\\[]+)\\\[/svg\\\]",        "<div class='svg'><div><svg width='100%' height='100%' viewBox='0 0 32 32'><rect x='0' y='0' width='32' height='32' style='fill:black'/>$1</svg></div></div>",
+        "\\\[code\\\](.+)\\\[/code\\\]",            "<div class='cc'>$1</div>",
+        "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>"
+    ];
 
     // private methods
     var helpers = {
@@ -41,6 +53,13 @@
             var settings = helpers.settings($this);
             helpers.unbind($this);
             settings.context.onquit($this,{'status':'success','score':settings.score});
+        },
+        format: function(_text) {
+            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
+                var vReg = new RegExp(regExp[i*2],"g");
+                _text = _text.replace(vReg,regExp[i*2+1]);
+            }
+            return _text;
         },
         loader: {
             css: function($this) {
@@ -102,11 +121,13 @@
                     if ($.isArray(value)) {  for (var i in value) { $this.find("#"+id).append("<p>"+value[i]+"</p>"); } }
                     else { $this.find("#"+id).html(value); }
                 }); }
+
                 if ($.isArray(settings.exercice)) {
-                    $this.find("#exercice>div").html("");
-                    for (var i in settings.exercice) { $this.find("#exercice>div").append(
-                        "<p>"+(settings.exercice[i].length?settings.exercice[i]:"&nbsp;")+"</p>"); }
-                } else { $this.find("#exercice>div").html(settings.exercice); }
+                    $this.find("#exercice #ex").html("");
+                    for (var i in settings.exercice) { $this.find("#exercice #ex").append(
+                        "<p>"+(settings.exercice[i].length?helpers.format(settings.exercice[i]):"&nbsp;")+"</p>"); }
+                } else { $this.find("#exercice #ex").html(helpers.format(settings.exercice)); }
+
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             },
             speed: function($this) {
@@ -204,6 +225,15 @@
                 settings.screen.ctxt.fillStyle = "#000000";
                 settings.screen.ctxt.fillRect(0, 0, settings.screen.model[0]*settings.screen.p,
                                                     settings.screen.model[1]*settings.screen.p);
+                for (var i in settings.initsc) {
+                    var ii = settings.initsc[i];
+                    settings.screen.ctxt.fillStyle = "rgb("+ii.rgb[0]+","+ii.rgb[1]+","+ii.rgb[2]+")";
+                    if (ii.coord.length==4) {
+                        helpers.screen[ii.svg]($this, ii.coord[0], ii.coord[1], ii.coord[2], ii.coord[3], false);
+                    }
+                    else { helpers.screen[ii.svg]($this, ii.coord[0], ii.coord[1], ii.coord[2], false); }
+                }
+
             },
             pixel: function($this, _i, _j) {
                 var settings = helpers.settings($this);
@@ -211,13 +241,49 @@
                                                  settings.data.color[2]+")";
                 settings.screen.ctxt.fillRect(_i*settings.screen.p, _j*settings.screen.p, settings.screen.p, settings.screen.p);
             },
-            rect: function($this, _i, _j, _w, _h) {
+            circle: function($this, _i, _j, _r, _color) {
                 var settings = helpers.settings($this);
-                settings.screen.ctxt.fillStyle = "rgb("+settings.data.color[0]+","+settings.data.color[1]+","+
+                if (_color) {
+                    settings.screen.ctxt.fillStyle = "rgb("+settings.data.color[0]+","+settings.data.color[1]+","+
                                                  settings.data.color[2]+")";
+                }
+                for (var i=Math.max(0,_i-_r); i<Math.min(settings.screen.model[0],_i+_r+1); i++)
+                for (var j=Math.max(0,_j-_r); j<Math.min(settings.screen.model[1],_j+_r+1); j++) {
+                if ((i-_i)*(i-_i)+(j-_j)*(j-_j)<(_r+1)*(_r+1)) {
+                    settings.screen.ctxt.fillRect(i*settings.screen.p, j*settings.screen.p, settings.screen.p, settings.screen.p);
+                }}
+            },
+            rect: function($this, _i, _j, _w, _h, _color) {
+                var settings = helpers.settings($this);
+                if (_color) {
+                    settings.screen.ctxt.fillStyle = "rgb("+settings.data.color[0]+","+settings.data.color[1]+","+
+                                                 settings.data.color[2]+")";
+                }
                 settings.screen.ctxt.fillRect(_i*settings.screen.p, _j*settings.screen.p, _w*settings.screen.p, _h*settings.screen.p);
             },
-            draw: function($this, _i, _j, _w, _h, _spr) {
+            line: function($this, _x1, _y1, _x2, _y2, _color) {
+                var settings = helpers.settings($this);
+                if (_color) {
+                    settings.screen.ctxt.fillStyle = "rgb("+settings.data.color[0]+","+settings.data.color[1]+","+
+                                                 settings.data.color[2]+")";
+                }
+                var vRatio = (_y1==_y2)?10000:(_x1-_x2)/(_y1-_y2);
+                if (Math.abs(vRatio)>1) {
+                    for (var i=Math.min(_x1,_x2); i<=Math.max(_x1,_x2); i++) {
+                        settings.screen.ctxt.fillRect(
+                            i*settings.screen.p, Math.round((_x1<_x2?_y1:_y2)+(i-Math.min(_x1,_x2))/vRatio)*settings.screen.p,
+                                                      settings.screen.p, settings.screen.p);
+                    }
+                }
+                else {
+                    for (var i=Math.min(_y1,_y2); i<=Math.max(_y1,_y2); i++) {
+                        settings.screen.ctxt.fillRect(
+                            Math.round((_y1<_y2?_x1:_x2)+(i-Math.min(_y1,_y2))*vRatio)*settings.screen.p, i*settings.screen.p, 
+                            settings.screen.p, settings.screen.p);
+                    }
+                }
+            },
+            draw: function($this, _spr, _i, _j, _w, _h) {
                 var settings = helpers.settings($this);
                 for (var j=0; j<_h; j++) {
                 for (var i=0; i<_w; i++) {
@@ -354,6 +420,17 @@
                             case "log":     ret = Math.log(this.get($this, $first));                break;
                             case "exp":     ret = Math.exp(this.get($this, $first));                break;
                             case "atan":    ret = 180*Math.atan(this.get($this, $first))/Math.PI;   break;
+                            case "color":
+                                ret = [ settings.data.color[0], settings.data.color[1], settings.data.color[2] ];
+                                break;
+                            case "read":
+                                ret = settings.data.lastkey;
+                                settings.data.lastkey = 0;
+                                if (ret) {
+                                    settings.sav.stdout.push(helpers.stdout.crc32($this));
+                                    settings.sav.screen.push(helpers.screen.crc32($this));
+                                }
+                                break;
                             case "len":
                                 var val = this.get($this, $first, true);
                                 ret = (typeof(val)=="number")?1:val.length;
@@ -409,6 +486,10 @@
                                         case "TRUE"     : ret = 1;          break;
                                         case "FALSE"    : ret = 0;          break;
                                         case "PI"       : ret = Math.PI;    break;
+                                        case "UP"       : ret = 38;         break;
+                                        case "DOWN"     : ret = 40;         break;
+                                        case "LEFT"     : ret = 39;         break;
+                                        case "RIGHT"    : ret = 37;         break;
                                     }
                                 }
                             }
@@ -423,11 +504,11 @@
                 }
             },
             draw: function($this, $elt) {
-                helpers.screen.draw( $this, Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first())),
-                                            Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first().next())),
-                                            Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first().next().next())),
-                                            Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first().next().next().next())),
-                                     helpers.process.value.get($this, $elt.find(".d.va").first().next().next().next().next(), true));
+                helpers.screen.draw( $this, helpers.process.value.get($this, $elt.find(".d.va").first(),true),
+                        Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first().next())),
+                        Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first().next().next())),
+                        Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first().next().next().next())),
+                        Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first().next().next().next().next())));
                 return true;
             },
             dump: function($this, $elt) {
@@ -472,11 +553,24 @@
                 helpers.stdout.print($this, helpers.process.value.get($this, $elt.find(".d.va").first(), true) );
                 return true;
             },
+            circle: function($this, $elt) {
+                helpers.screen.circle( $this, Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first())),
+                        Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first().next())),
+                        Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first().next().next())), true);
+                return true;
+            },
             rect: function($this, $elt) {
                 helpers.screen.rect( $this, Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first())),
-                                            Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first().next())),
-                                            Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first().next().next())),
-                                            Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first().next().next().next())));
+                        Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first().next())),
+                        Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first().next().next())),
+                        Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first().next().next().next())), true);
+                return true;
+            },
+            line: function($this, $elt) {
+                helpers.screen.line( $this, Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first())),
+                        Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first().next())),
+                        Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first().next().next())),
+                        Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first().next().next().next())),true);
                 return true;
             },
             call1: function($this, $elt) {
@@ -546,6 +640,14 @@
                                         Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first().next().next()))%256 ];
                 return true;
             },
+            pick: function($this, $elt) {
+                var settings = helpers.settings($this);
+                var vc = settings.screen.ctxt.getImageData(
+                    helpers.process.value.get($this, $elt.find(".d.va").first())*settings.screen.p,
+                    helpers.process.value.get($this, $elt.find(".d.va").first().next())*settings.screen.p, 1, 1).data;
+                settings.data.color=[vc[0],vc[1],vc[2]];
+                return true;
+            },
             xx: function($this, $elt) {
                 var settings = helpers.settings($this);
                 settings.data.X = helpers.process.value.get($this, $elt.find(".d.va").first(), true);
@@ -596,6 +698,7 @@
             var settings = helpers.settings($this);
             settings.data.count = 0;
             settings.data.timer = 0;
+            settings.data.lastkey = 0;
             settings.data.X = 0; settings.data.Y = 0; settings.data.Z = 0;
             settings.data.I = 0; settings.data.J = 0; settings.data.K = 0;
             settings.data.R = 0; settings.data.G = 0; settings.data.B = 0;
@@ -603,6 +706,8 @@
             settings.data.color = [255,255,255];
             helpers.screen.clear($this);
             helpers.stdout.clear($this);
+            settings.sav.stdout = [];
+            settings.sav.screen = [];
             $this.find("#code #lines .line").removeClass("s");
             $this.find("#mask").show();
         },
@@ -675,12 +780,28 @@
             settings.data.paused = false;
             var good = false;
 
-            if (settings.debug) { alert("\"valid\":{\"screen\":"+helpers.screen.crc32($this)+
-                                                   ",\"stdout\":"+helpers.stdout.crc32($this)+"}"); }
+            settings.sav.stdout.push(helpers.stdout.crc32($this));
+            settings.sav.screen.push(helpers.screen.crc32($this));
+
+            if (settings.debug) {
+                alert("\"valid\":{"+
+                    "\"screen\":"+ (settings.sav.screen.length==1?settings.sav.screen[0]:"["+settings.sav.screen+"]")+
+                     ",\"stdout\":"+(settings.sav.stdout.length==1?settings.sav.stdout[0]:"["+settings.sav.stdout+"]")+"}");
+            }
             else if (!_stopped) {
                 good = true;
-                if (settings.valid.stdout)          { good &= (helpers.stdout.crc32($this)==settings.valid.stdout); }
-                if (good && settings.valid.screen)  { good &= (helpers.screen.crc32($this)==settings.valid.screen); }
+                if (settings.valid.stdout)          {
+                    if ($.isArray(settings.valid.stdout)) {
+                        alert("stdout TODO");
+                    }
+                    else { good &= (helpers.stdout.crc32($this)==settings.valid.stdout); }
+                }
+                if (good && settings.valid.screen)  {
+                    if ($.isArray(settings.valid.screen)) {
+                        alert("screen TODO");
+                    }
+                    else { good &= (helpers.screen.crc32($this)==settings.valid.screen); }
+                }
             }
 
             $this.find("#effects>div").hide();
@@ -709,6 +830,7 @@
                     codeid          : 0,
                     stdout          : { lines   :[],        pos : 0 },
                     screen          : { model   : [32,32],  p   : 1 },
+                    sav             : { stdout  :[],        screen:[]},
                     score           : 5,
                     data : {
                         running     : false,
@@ -716,11 +838,12 @@
                         speed       : 2,
                         count       : 0,
                         timer       : 0,
+                        lastkey     : 0,
                         I:0, J:0,
                         X:0, Y:0, Z:0,
                         color       : [255,255,255],
                         stack       : []
-                    },
+                    }
                 };
 
                 return this.each(function() {
@@ -739,6 +862,11 @@
                         helpers.loader.css($this);
                     }
                 });
+            },
+            click: function(_key) {
+                var $this = $(this) , settings = helpers.settings($this);
+                settings.data.lastkey = _key;
+
             },
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);

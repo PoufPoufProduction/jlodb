@@ -17,6 +17,17 @@
         debug       : false                                      // Debug mode
     };
 
+    var regExp = [
+        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
+        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
+        "\\\[br\\\]",                               "<br/>",
+        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
+        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
+        "\\\[svg\\\]([^\\\[]+)\\\[/svg\\\]",        "<div class='svg'><div><svg width='100%' height='100%' viewBox='0 0 32 32'><rect x='0' y='0' width='32' height='32' style='fill:black'/>$1</svg></div></div>",
+        "\\\[code\\\](.+)\\\[/code\\\]",            "<div class='cc'>$1</div>",
+        "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>"
+    ];
+
     // private methods
     var helpers = {
         // @generic: Check the context
@@ -42,6 +53,13 @@
             var settings = helpers.settings($this);
             helpers.unbind($this);
             settings.context.onquit($this,{'status':'success','score':settings.score});
+        },
+        format: function(_text) {
+            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
+                var vReg = new RegExp(regExp[i*2],"g");
+                _text = _text.replace(vReg,regExp[i*2+1]);
+            }
+            return _text;
         },
         round: function(_val) { return Math.round(_val*100)/100; },
         loader: {
@@ -94,8 +112,8 @@
                 if ($.isArray(settings.exercice)) {
                     $this.find("#exercice>div").html("");
                     for (var i in settings.exercice) { $this.find("#exercice>div").append(
-                        "<p>"+(settings.exercice[i].length?settings.exercice[i]:"&nbsp;")+"</p>"); }
-                } else { $this.find("#exercice>div").html(settings.exercice); }
+                        "<p>"+(settings.exercice[i].length?helpers.format(settings.exercice[i]):"&nbsp;")+"</p>"); }
+                } else { $this.find("#exercice>div").html(helpers.format(settings.exercice)); }
                 $.each(settings.locale.source, function(id,value) { $this.find("#"+id+" .label").html(value); });
 
                 for (var i in settings.a) {
@@ -125,7 +143,7 @@
                     for (var i in settings.locale.guide) { $this.find("#guide").append("<p>"+settings.locale.guide[i]+"</p>"); }
                 }
                 else { $this.find("#guide").html(settings.locale.guide); }
-                if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             },
             speed: function($this) {
                 var settings = helpers.settings($this);
@@ -645,7 +663,6 @@
             },
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                $(this).find("#splash").hide();
                 settings.interactive = true;
             },
             play: function() {

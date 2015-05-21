@@ -187,7 +187,8 @@ window.onload = function() {
                         },_args);
 
                 },
-                onupdate: function($this, $menu, _id, _state) { if (genius.cookie) { $.cookie("node"+_id, _state, { expires : 365 }); }},
+                onupdate: function($this, $menu, _id, _state, _lastId) {
+                    if (genius.cookie) { $.cookie("node"+_id, _state, { expires : 365 }); }},
                 onheader: function($this, _id) {
                      $.getJSON("mods/genius/api/node.php?id="+_id+"&verbose=1", function(_data) {
                         var c="\t";

@@ -18,15 +18,10 @@
         <img src="res/img/icon/swwrong.svg" id="subwrong"/>
     </div>
 
-    <div id="splash" ontouchstart="$(this).closest('.correcter').correcter('next');event.preventDefault();"
-                     onclick="$(this).closest('.correcter').correcter('next');"><div>
-        <div class="text">
-            <h1 id="label">Correcter</h1>
-            <ul>
-                <li id="default1"></li>
-                <li id="default2"></li>
-            </ul>
-        </div>
+    <div id="splashex" ontouchstart="$(this).hide().closest('.correcter').correcter('next');event.preventDefault();"
+                     onclick="$(this).hide().closest('.correcter').correcter('next');"><div>
+        <h1 id="label"></h1>
+        <div id="guide"></div>
     </div></div>
 
 </div>

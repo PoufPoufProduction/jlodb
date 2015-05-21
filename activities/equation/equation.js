@@ -929,7 +929,7 @@ helpers.equations.get($this).label();
                     });
                 }
 
-                if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         element: function() {
@@ -1703,7 +1703,6 @@ helpers.equations.get($this).label();
             },
             next: function() {
                 var settings = $(this).data("settings");
-                $(this).find("#splash").hide();
                 settings.interactive=true;
             },
             quit: function() {

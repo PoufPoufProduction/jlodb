@@ -12,8 +12,9 @@
         .c2                                 { fill:#4c4237; }
         .c3                                 { fill:#241f1c; }
         .star                               { stroke:#241f1c;stroke-width:0.1;}
-        #nodes text                         { font-size:4px;font-weight:bold;text-anchor:middle;
+        #nodes text                         { font-size:3px;font-weight:bold;text-anchor:middle;
                                               font-family:arial;stroke:#241f1c;stroke-width:0.1; fill:#4c4237;}
+        #nodes text.l1                      { font-size:4px; }
         #nodes text.nb                      { stroke:none; }
         .available.blue .c2                 { fill:#44BBFF; }
         .available.green .c2                { fill:#55EE22; }
@@ -128,6 +129,7 @@
 
     <!-- SUDOKU -->
     <g transform="translate(160,220)">
+        <text transform="translate(-10,25)" class="l2">SUDOKU</text>
         <use x="0" y="0" xlink:href="#r4"/>
         <g class="link s9001 d9002" transform="rotate(120)"><path d="M 17.31,-10 C 13.62,-16.26 7.13,-19.79 0,-20"/></g>
         <g class="link s9002 d9003" transform="rotate(60)"><path d="M 17.31,-10 C 13.62,-16.26 7.13,-19.79 0,-20"/></g>
@@ -184,6 +186,7 @@
 
     <!-- PICROSS -->
     <g transform="translate(50,120)">
+        <text transform="translate(25,-2)" class="l2">PICROSS</text>
         <use x="0" y="0" xlink:href="#r3"/>
         <g class="link s11 d9051"><path d="M 60,0 L 14,0"/></g>
         <g class="link s9051 d9052" transform="rotate(45)"><path d="M 9.9,-9.9 C 7.37,-12.44 3.86,-14 0,-14"/></g>
@@ -198,8 +201,8 @@
     </g>
 
     <!-- FRENCH -->
-    <g transform="translate(50,200)">
-
+    <g transform="translate(60,200)">
+        <text transform="translate(-20,-15)" class="l1">FRANÇAIS</text>
         <g transform="translate(-20,0)">
             <use x="0" y="0" xlink:href="#r1"/>
             <g class="link s10001 d10002" transform="rotate(-90)"><path d="M 6.06,3.5 C 6.66,2.47 7,1.27 7,0 C 7,-3.864 3.864,-7 0,-7"/></g>
@@ -222,17 +225,18 @@
         </g>
 
         <g transform="translate(15,0)">
+            <text transform="translate(25,-12)" class="l2">GRAMMAIRE</text>
             <use x="0" y="0" xlink:href="#r3"/>
             <g class="link s10011 d10012" transform="rotate(-90)"><path d="M 9.9,-9.9 C 7.37,-12.44 3.86,-14 0,-14"/></g>
             <g class="link s10012 d10013" transform="rotate(-45)"><path d="M 9.9,-9.9 C 7.37,-12.44 3.86,-14 0,-14"/></g>
             <g class="link s10013 d10014" transform="rotate(0)"><path d="M 9.9,-9.9 C 7.37,-12.44 3.86,-14 0,-14"/></g>
             <g class="link s10014 d10018" transform="rotate(45)"><path d="M 9.9,-9.9 C 7.37,-12.44 3.86,-14 0,-14"/></g>
-            <g class="link s8 d10014"><path d="M 9.9,-9.9 L 50,-9.9 Q 55,-9.9 55,-14.9 L 55,-30"/></g>
+            <g class="link s8 d10014"><path d="M 9.9,-9.9 L 40,-9.9 Q 45,-9.9 45,-14.9 L 45,-30"/></g>
             <g class="link s10011 d10015" transform="rotate(-135)"><path d="M 9.9,-9.9 C 7.37,-12.44 3.86,-14 0,-14"/></g>
             <g class="link s10015 d10016" transform="rotate(180)"><path d="M 9.9,-9.9 C 7.37,-12.44 3.86,-14 0,-14"/></g>
             <g class="link s10016 d10017" transform="rotate(135)"><path d="M 9.9,-9.9 C 7.37,-12.44 3.86,-14 0,-14"/></g>
             <g class="link s10017 d10018" transform="rotate(90)"><path d="M 9.9,-9.9 C 7.37,-12.44 3.86,-14 0,-14"/></g>
-            <!-- <g class="link s10018 d10051"><path d="M 14,0 L 20,0 Q 25,0 25,5 L 25,10"/></g> -->
+            <g class="link s10018 d10051"><path d="M 14,0 L 20,0 Q 25,0 25,5 L 25,10"/></g>
             <g id="10011" transform="translate(-14,0)"  class="blue node">
                 <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
                 <text y="1">Dét.</text>
@@ -266,7 +270,7 @@
                 <text y="1">!?</text>
             </g>
         </g>
-<!--
+
         <g transform="translate(40,20)">
             <use x="0" y="0" xlink:href="#r2"/>
             <g class="link s10051 d10052" transform="rotate(180)"><path d="M 0,10 C 5.52,10 10,5.52 10,0 C 10,-5.52 5.52,-10 0,-10"/></g>
@@ -325,8 +329,8 @@
                 <text y="1">Où</text>
             </g>
         </g>
--->
     </g>
+
 
     <!-- Futoshiki -->
     <g transform="translate(80,150)">
@@ -351,6 +355,7 @@
 
     <!-- [10] numeration until 10 -->
     <g transform="translate(110,150)">
+        <text transform="translate(30,-2)" class="l2">ARITHMÉTIQUE</text>
         <use x="0" y="0" xlink:href="#r2"/>
         <use x="40" y="-30" xlink:href="#r2"/>
         <use x="10" y="-30" xlink:href="#r2"/>
@@ -415,7 +420,7 @@
             <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
             <text y="1" class="nb">x</text>
         </g>
-        <g id="10" transform="translate(10,-20)" class="blue node">
+        <g id="10" transform="translate(10,-20)" class="green node">
             <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
             <text y="1" class="nb">+</text>
         </g>
@@ -479,6 +484,8 @@
 
     <!-- FRACTION -->
     <g transform="translate(220,170)">
+        <text transform="translate(0,25)" class="l1">MATHÉMATIQUES</text>
+        <text transform="translate(15,-12)" class="l2">Fractions</text>
         <use x="0" y="0" xlink:href="#r1"/>
         <g class="link s71 d72"><path d="M 0,-20 L 0,-7"/></g>
         <g class="link s72 d73"><path d="M 6.06,3.5 C 6.66,2.47 7,1.27 7,0 C 7,-3.864 3.864,-7 0,-7" transform="rotate(0)"/></g>
@@ -539,14 +546,26 @@
         </g>
     </g>
 
+    <!-- TEMPORARY -->
+    <g transform="translate(250,180)">
+        <use x="0" y="0" xlink:href="#r1"/>
+
+        <g id="999" transform="translate(-7,0)" class="blue node">
+            <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
+            <text y="1">XY</text>
+        </g>
+    </g>
+
     <!-- GEOMETRIE -->
-    <g transform="translate(250,150)">
+    <g transform="translate(300,150)">
+        <text transform="translate(25,-40)" class="l1">GÉOMÉTRIE</text>
         <use x="0" y="0" xlink:href="#r1"/>
         <g class="link s101 d111"><path d="M 0,7 C 3.864,7 7,3.864 7,0 C 7,-3.864 3.864,-7 0,-7" transform="rotate(90)"/></g>
+        <g class="link s111 d1101"><path d="M 7,0 L 7,-110 Q 7,-120 -3,-120 L -25,-120"/></g>
 
         <g id="101" transform="translate(-7,0)" class="blue node">
             <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
-            <text y="1">(AB)</text>
+            <text y="1">AB</text>
         </g>
         <g id="111" transform="translate(7,0)" class="blue node">
             <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
@@ -558,6 +577,8 @@
     <!-- INFORMATIQUE -->
     <g transform="translate(195,80)">
         <use x="0" y="0" xlink:href="#r2"/>
+
+      <text transform="translate(25,-12)" class="l1">INFORMATIQUE</text>
 
         <!-- ROBOT -->
       <g transform="translate(-4,-50)">
@@ -572,10 +593,9 @@
         <g class="link s1005 d1006"><path d="M 32,3.5 L 37,3.5 Q 42,3.5 42,8.5 L 42,15 Q 42,20 37,20 L 32,20"/></g>
         <g class="link s1006 d1007" transform="translate(25,20)"><path d="M 0,7 C 3.864,7 7,3.864 7,0 C 7,-3.864 3.864,-7 0,-7" transform="rotate(90)"/></g>
         <g class="link s1007 d1008"><path d="M 6.06,20 L 19,20"/></g>
-        <g class="link s1002 d1501"><path d="M -6.06,3.5 L -12,3.5 Q -17,3.5 -17,13.5 L -17,55 C -12,56 -4,63 -2,67 L 4,60"/></g>
-        <g class="link s1001 d1101"><path d="M 0,-7 L 0,-14 Q 0,-24 10,-24 L 59,-24 Q 69,-24 69,-14 L 69,-4"/></g>
-        <g class="link s1001 d9061"><path d="M 14,-15 L 14,-12 Q 14,-7 9,-7 L 0,-7"/></g>
-        <g class="link s1004 d9062" transform="translate(25,3.5)"><path d="M 18,0 L 7,0 C 7,-3.864 3.864,-7 0,-7" transform="rotate(-90)"/></g>
+        <g class="link s1005 d1101"><path d="M 32,3.5 L 32,-5 Q 32,-10 37,-10 L 79,-10 Q 84,-10 84,-5 L 84,0"/></g>
+        <g class="link s1001 d9061"><path d="M 14,-20 L 14,-12 Q 14,-7 9,-7 L 0,-7"/></g>
+        <g class="link s1004 d9062" transform="translate(25,3.5)"><path d="M 23,0 L 7,0 C 7,-3.864 3.864,-7 0,-7" transform="rotate(-90)"/></g>
 
         <g id="1001" transform="translate(0,-7)" class="blue node">
             <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
@@ -612,12 +632,12 @@
       </g>
 
       <!-- LOGO -->
-      <g transform="translate(65,-34)">
+      <g transform="translate(80,-30)">
         <use x="0" y="0" xlink:href="#r4"/>
         <g class="link s1101 d1102"><path d="M 14.125,-14.125 C 10.505,-17.745 5.52,-20 0,-20" transform="rotate(-45)"/></g>
         <g class="link s1102 d1103"><path d="M 14.125,-14.125 C 10.505,-17.745 5.52,-20 0,-20" transform="rotate(-90)"/></g>
         <g class="link s1103 d1104"><path d="M 14.125,-14.125 C 10.505,-17.745 5.52,-20 0,-20" transform="rotate(-135)"/></g>
-        <g class="link s1101 d1201"><path d="M 0,-20 L 25,-20"/></g>
+        <g class="link s1102 d1201"><path d="M -14.14,-14.14 L -25,-14.14 Q -30,-14.14 -30 -9.14 L -30,20"/></g>
         <g id="1101" transform="translate(0,-20)" class="blue node">
             <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
             <text y="1">AV</text>
@@ -665,19 +685,19 @@
       </g>
 
       <!-- CODE -->
-      <g transform="translate(100,-54)">
+      <g transform="translate(50,0)">
         <use x="0" y="0" xlink:href="#r2"/>
-        <g class="link s1201 d1202"><path d="M 10,0 C 10,-5.52 5.52,-10 0,-10" transform="rotate(-90)"/></g>
-        <g class="link s1202 d1203"><path d="M 10,0 C 10,-5.52 5.52,-10 0,-10" transform="rotate(0)"/></g>
-        <g id="1201" transform="translate(-10,0)" class="blue node">
+        <g class="link s1201 d1202"><path d="M 10,0 C 10,-5.52 5.52,-10 0,-10" transform="rotate(0)"/></g>
+        <g class="link s1202 d1203"><path d="M 10,0 C 10,-5.52 5.52,-10 0,-10" transform="rotate(90)"/></g>
+        <g id="1201" transform="translate(0,-10)" class="blue node">
             <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
             <text y="1">C</text>
         </g>
-        <g id="1202" transform="translate(0,-10)" class="blue node">
+        <g id="1202" transform="translate(10,0)" class="blue node">
             <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
             <text y="1">++</text>
         </g>
-        <g id="1203" transform="translate(10,0)" class="green node">
+        <g id="1203" transform="translate(0,10)" class="green node">
             <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
             <text y="1">for</text>
         </g>
@@ -689,7 +709,7 @@
 
 
 <!-- EMBOUTEILLAGE -->
-<g transform="translate(205,15)">
+<g transform="translate(205,10)">
     <g class="link s9061 d9062"><path d="M 0,0 L 11,0"/></g>
     <g class="link s9062 d9063"><path d="M 11,0 L 22,0"/></g>
     <g id="9061" transform="translate(0,0)" class="blue node">

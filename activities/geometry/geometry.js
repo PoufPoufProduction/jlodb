@@ -17,10 +17,19 @@
         hlcolor     : "blue",                   // The highlight color
         goodcolor   : "#004488",                // The matching color
         color       : "black",                  // The current color
+        color2      : 0,                        // The color used after init
         translate   : [0,0],                    // The translation values
         style       : false,                    // The style changing is disable
         debug       : false                     // Debug mode
     };
+
+    var regExp = [
+        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
+        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
+        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
+        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
+        "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>"
+    ];
 
     // private methods
     var helpers = {
@@ -47,6 +56,13 @@
             var settings = helpers.settings($this);
             helpers.unbind($this);
             settings.context.onquit($this,{'status':'success','score':settings.score});
+        },
+        format: function(_text) {
+            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
+                var vReg = new RegExp(regExp[i*2],"g");
+                _text = _text.replace(vReg,regExp[i*2+1]);
+            }
+            return _text;
         },
         loader: {
             css: function($this) {
@@ -98,10 +114,10 @@
                 // MANAGE THE OBJECTIVES
                 if (settings.statement) {
                     if ($.isArray(settings.statement)) {
-                        var html=""; for (var i in settings.statement) { html+="<div>"+settings.statement[i]+"</div>"; }
+                        var html=""; for (var i in settings.statement) { html+="<div>"+helpers.format(settings.statement[i])+"</div>"; }
                         $this.find("#statement").html(html);
                     }
-                    else { $this.find("#statement").html(settings.statement); }
+                    else { $this.find("#statement").html(helpers.format(settings.statement)); }
                 }
                 for (var i in settings.labels) {
                     $this.find("#objectives").append("<tr><td><div class='icon' style='cursor:default;'>"+
@@ -569,7 +585,7 @@
                     return this.convert4($this,i1,j1,i1+Math.cos(dir*Math.PI/180),j1+Math.sin(dir*Math.PI/180));
                 }
             },
-            round: function(x) { return Math.round(x*100)/100; },
+            round: function(x) { return Math.round(x*10)/10; },
             equal: function(x,y) { return (this.round(x)==this.round(y)); },
             samepoint: function(p1, p2) { return this.equal($(p1).attr("cx"), $(p2).attr("cx")) &&
                                                  this.equal($(p1).attr("cy"), $(p2).attr("cy")); },
@@ -749,11 +765,17 @@
                     var object = helpers.factory.build($this, "segment", elt.value, elt.attr);
                     if (elt.active==true) { settings.lines.push(object); }
                 }
-                else if (elt.type=="path") {
+                else if (elt.type=="path" || elt.type=="path+") {
+                    if (elt.type=="path+") {
+                        for (var gi=0; gi<Math.floor((elt.value.length)/2); gi++) {
+                            var object = helpers.factory.build($this, "point", [elt.value[gi*2], elt.value[gi*2+1]], elt.attr);
+                            if (elt.active==true) { settings.points.push(object); }
+                        }
+                    }
                     for (var gi=0; gi<Math.floor((elt.value.length-2)/2); gi++) {
                         var object = helpers.factory.build($this, "segment",
                             [elt.value[gi*2], elt.value[gi*2+1], elt.value[gi*2+2], elt.value[gi*2+3]], elt.attr);
-                        if (elt.active==true) { settings.points.push(object); }
+                        if (elt.active==true) { settings.lines.push(object); }
                     }
                 }
                 // ----------------------- LINE ----------------------------
@@ -787,6 +809,10 @@
                 }
                 else { $("#text", settings.svg.root()).text(settings.text); }
             }
+
+            // UPDATE WORKING COLOR
+            if (settings.color2)        { settings.color = settings.color2; }
+
         },
         // compute the score
         score:function(number, reference) {

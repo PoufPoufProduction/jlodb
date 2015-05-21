@@ -23,7 +23,7 @@
     <rdf:Description rdf:about="urn:activity:correcter">
         <dct:title xml:lang="fr-FR">Le correcteur</dct:title>
         <dct:abstract xml:lang="fr-FR">L'utilisateur doit corriger un texte en remplaçant les mots erronés ou manquants.</dct:abstract>
-        <dct:description xml:lang="fr-FR"><![CDATA["default1":"Cliquer sur les mots erronés ou manquants et choisir la bonne réponse depuis le menu contextuel.", "default2": "Soumettre ensuite la correction en cliquant sur le bouton de validation." ]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA["guide":"Cliquer sur les mots erronés ou manquants et choisir la bonne réponse depuis le menu contextuel. Soumettre ensuite la correction en cliquant sur le bouton de validation." ]]></dct:description>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:countdown">
@@ -58,6 +58,11 @@
         <dct:description xml:lang="fr-FR"><![CDATA["guide":"Tracer dans la zone de travail les différentes figures demandées par l'énoncé.","guide2":"La note finale dépend du nombre d'opérations géométriques effectuées lors de l'exercice."]]></dct:description>
     </rdf:Description>
 
+    <rdf:Description rdf:about="urn:activity:info">
+        <dct:title xml:lang="fr-FR">Activité d'information</dct:title>
+        <dct:abstract xml:lang="fr-FR">L'activité d'information propose des exercices sans fin possible dont le seul but est d'empêcher toute progression au sein de séries d'exercices.</dct:abstract>
+    </rdf:Description>
+
     <rdf:Description rdf:about="urn:activity:logo">
         <dct:title xml:lang="fr-FR">LOGO</dct:title>
         <dct:abstract xml:lang="fr-FR">Cette activité de programmation permet de réaliser avec le langage LOGO les figures géométriques demandées par l'énoncé.</dct:abstract>
@@ -73,7 +78,7 @@
     <rdf:Description rdf:about="urn:activity:mathematics">
         <dct:title xml:lang="fr-FR">Mathematiques</dct:title>
         <dct:abstract xml:lang="fr-FR">A l'aide d'opérations élémentaires, l'utilisateur doit construire les formules mathématiques demandées par l'énoncé.</dct:abstract>
-        <dct:description xml:lang="fr-FR"><![CDATA["guide":"YOP"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA["guide":"Résoudre le problème à l'aide des éléments fournis par l'exercice."]]></dct:description>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:mcq">
@@ -83,20 +88,20 @@
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:memory">
-        <dct:title xml:lang="fr-FR">Mémoire visuelle</dct:title>
+        <dct:title xml:lang="fr-FR">Jeu de mémoire</dct:title>
         <dct:abstract xml:lang="fr-FR">Jeu de mémoire où le joueur doit retrouver des nombres cachés après que ces derniers aient été brièvement exposés.</dct:abstract>
-        <dct:description xml:lang="fr-FR"><![CDATA["explanation":"Une fois les chiffres disparus, cliquer sur leur emplacement pour les faire apparaître, du plus petit au plus grand.","number_l":"Nombre de chiffres","exposure_l":"Durée d'exposition", "error_l":"Nombre d'erreur(s)"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA["guide":"Une fois les chiffres disparus, cliquer sur leur emplacement pour les faire apparaître, du plus petit au plus grand.","number_l":"Nombre de chiffres","exposure_l":"Durée d'exposition", "error_l":"Nombre d'erreur(s)"]]></dct:description>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:memory2">
-        <dct:title xml:lang="fr-FR">Mémoire auditive</dct:title>
+        <dct:title xml:lang="fr-FR">Jeu de mémoire</dct:title>
         <dct:abstract xml:lang="fr-FR">Jeu de mémoire où le joueur doit retrouver une séquence visuelle et auditive après que celle ait été jouée une première fois. La séquence s'allonge après chaque essais réussi.</dct:abstract>
-        <dct:description xml:lang="fr-FR"><![CDATA["explanation":"Rejouer la séquence proposée."]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA["guide":"Rejouer la séquence proposée."]]></dct:description>
         <dct:requires>midi</dct:requires>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:memory3">
-        <dct:title xml:lang="fr-FR">Mémoire</dct:title>
+        <dct:title xml:lang="fr-FR">Jeu de mémoire</dct:title>
         <dct:abstract xml:lang="fr-FR">Jeu de mémoire où le joueur doit retourner et associer deux cartes identiques ou correspondantes, initialement faces cachées.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["guide":"Cliquer sur une carte pour la retourner et regrouper les paires pour les faire disparaître."]]></dct:description>
     </rdf:Description>

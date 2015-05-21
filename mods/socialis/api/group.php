@@ -7,18 +7,18 @@ if (!$error) {
 
     if ($_GET["action"]=="new") {
         $value = $_GET["value"];
+        $index = 1;
 
-        $indexes = mysql_query("SELECT * FROM `".$_SESSION['prefix']."group` ".
+        $indexes = mysql_query("SELECT `Group_Index` FROM `".$_SESSION['prefix']."group` ".
                             "WHERE User_Id='".$_GET["username"]."' ORDER BY `Group_Index` DESC LIMIT 1");
-        $i = mysql_fetch_array($indexes);
-        $index = $i["Group_Index"]+1;
+        if ( $i = mysql_fetch_array($indexes) ) { $index = $i["Group_Index"]+1; }
 
         mysql_query("INSERT INTO `".$_SESSION['prefix']."group` (`Group_Name`,`User_Id`, `Group_Index`) VALUES ('".
                     $_GET["value"]."','".$_GET["username"]."',".$index.")");
     }
     else
     if ($_GET["action"]=="up") {
-        $indexes = mysql_query("SELECT * FROM `".$_SESSION['prefix']."group` ".
+        $indexes = mysql_query("SELECT `Group_Index` FROM `".$_SESSION['prefix']."group` ".
                     "WHERE `Group_Name`='".$_GET["value"]."' AND `User_Id`='".$_GET["username"]."' LIMIT 1");
         $i = mysql_fetch_array($indexes);
 
@@ -32,11 +32,11 @@ if (!$error) {
     }
     else
     if ($_GET["action"]=="down") {
-        $indexes = mysql_query("SELECT * FROM `".$_SESSION['prefix']."group` ".
+        $indexes = mysql_query("SELECT `Group_Index` FROM `".$_SESSION['prefix']."group` ".
                     "WHERE `Group_Name`='".$_GET["value"]."' AND `User_Id`='".$_GET["username"]."' LIMIT 1");
         $i = mysql_fetch_array($indexes);
 
-        $maxindexes = mysql_query("SELECT * FROM `".$_SESSION['prefix']."group` ".
+        $maxindexes = mysql_query("SELECT `Group_Index` FROM `".$_SESSION['prefix']."group` ".
                             "WHERE User_Id='".$_GET["username"]."' ORDER BY `Group_Index` DESC LIMIT 1");
         $m = mysql_fetch_array($maxindexes);
 

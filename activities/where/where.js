@@ -302,7 +302,7 @@
                     vLast = vNew;
                 }
 
-                if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         // Update the timer
@@ -574,7 +574,6 @@
             },
             next: function() {
                 var settings = $(this).data("settings");
-                $(this).find("#splash").hide();
                 $(this).find("#values ul").show();
                 settings.interactive=true;
                 helpers.move($(this), true);

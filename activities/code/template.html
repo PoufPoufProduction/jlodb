@@ -23,9 +23,12 @@
                         <div class="a op o" id="pixel"><div class="label">PIXEL</div><div class="d va"></div><div class="d va"></div></div>
                         <div class="a op o" id="print"><div class="label">PRINT</div><div class="d va"></div></div>
                         <div class="a op o" id="rect"><div class="label">RECT</div><div class="d va"></div><div class="d va"></div><div class="d va"></div><div class="d va"></div></div>
+                        <div class="a op o" id="line"><div class="label">LINE</div><div class="d va"></div><div class="d va"></div><div class="d va"></div><div class="d va"></div></div>
+                        <div class="a op o" id="circle"><div class="label">CIRCLE</div><div class="d va"></div><div class="d va"></div><div class="d va"></div></div>
                         <div class="a op o" id="ret"><div class="label">RETURN</div></div>
                         <div class="a op o" id="return"><div class="label">RETURN</div><div class="d va"></div></div>
                         <div class="a op o" id="rgb"><div class="label">RGB</div><div class="d va"></div><div class="d va"></div><div class="d va"></div></div>
+                        <div class="a op o" id="pick"><div class="label">PICK</div><div class="d va"></div><div class="d va"></div></div>
                         <div class="a op o" id="xx"><div class="label">X =</div><div class="d va"></div></div>
                         <div class="a op o" id="yy"><div class="label">Y =</div><div class="d va"></div></div>
                         <div class="a op o" id="zz"><div class="label">Z =</div><div class="d va"></div></div>
@@ -52,8 +55,10 @@
                         <div class="a va v" id="V009">9</div>
                         <div class="a va v" id="V010">10</div>
                         <div class="a va v" id="V013">13</div>
+                        <div class="a va v" id="V015">15</div>
                         <div class="a va v" id="V016">16</div>
                         <div class="a va v" id="V020">20</div>
+                        <div class="a va v" id="V023">23</div>
                         <div class="a va v" id="V024">24</div>
                         <div class="a va v" id="V026">26</div>
                         <div class="a va v" id="V030">30</div>
@@ -113,6 +118,10 @@
                         <div class="a va v" id="TRUE"><div class="label">true</div></div>
                         <div class="a va v" id="FALSE"><div class="label">false</div></div>
                         <div class="a va v" id="PI"><div class="label">PI</div></div>
+                        <div class="a va v" id="UP"><div class="label">UP</div></div>
+                        <div class="a va v" id="DOWN"><div class="label">DOWN</div></div>
+                        <div class="a va v" id="LEFT"><div class="label">LEFT</div></div>
+                        <div class="a va v" id="RIGHT"><div class="label">RIGHT</div></div>
                         <div class="a va v" id="X">X</div>
                         <div class="a va v" id="Y">Y</div>
                         <div class="a va v" id="Z">Z</div>
@@ -153,6 +162,7 @@
                         <div class="a ma v" id="sub2"><div class="label">SUBSTR</div><div class="d va c"></div><div class="d va"></div></div>
                         <div class="a ma v" id="match"><div class="label">MATCH</div><div class="d va c"></div><div class="d va c"></div></div>
                         <div class="a ma v" id="rep"><div class="label">REPLACE</div><div class="d va c"></div><div class="d va c"></div><div class="d va c"></div></div>
+                        <div class="a ma v" id="color"><div class="label">RGB</div></div>
                         <div class="a ma v" id="read"><div class="label">READ</div></div>
                         <div class="a ma v" id="call1"><div class="label">F1</div></div>
                         <div class="a ma v" id="call2"><div class="label">F2</div><div class="d va"></div></div>
@@ -177,7 +187,9 @@
                 <div id="lines"></div>
                 <div class="filler"></div>
             </div>
-            <div id="exercice"><div></div></div>
+            <div id="exercice"><div id="toggle" onclick="$(this).closest('.code').toggleClass('exstate');"
+                                    ontouchstart="$(this).closest('.code').toggleClass('exstate');event.preventDefault();"></div>
+                               <div id="ex"></div></div>
         </div>
 
         <div id="screens">

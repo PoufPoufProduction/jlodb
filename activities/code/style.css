@@ -1,8 +1,8 @@
 .code .both *                        { overflow:visible; }
 .code                                { background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat;}
-.code div#splashex                  { background-image:url("../../res/img/banners/code.svg"); }
+.code div#splashex                  { background-image:url("../../res/img/banners/it.svg"); color:lime; }
 .code div#splashex h1               { position:absolute; top:45%; left:80%; font-size:1.5em; }
-.code div#splashex #guide           { position:absolute; top:52%; left:45%; font-size:.75em; width:48%; font-style:italic;
+.code div#splashex #guide           { position:absolute; top:52%; left:45%; font-size:.75em; width:48%;;
                                           text-align:justify; }
 .code div#board                      { font-size:.5em; width:105%; }
 .code div#board>div                  { float:left; }
@@ -47,9 +47,21 @@
 .code #central #lines .code>div      { float:left; }
 .code #central #lines .codelabel     { width:3.7em; text-align:center; }
 .code #central #lines .codevalue     { margin-left:1em; font-size:.3em; width:22em; font-family: "Courier New" Courier monospace;}
-.code #central #exercice             { width:29.1em !important; height:9.4em; background-repeat:repeat; padding:.2em .5em;
+.code #central #exercice             { width:30em !important; height:9.4em; background-repeat:repeat;
                                       background-image:url("../../res/img/background/book02.svg"); text-align:justify;
                                       font-family: "Courier New" Courier monospace; font-size:.5em !important;}
+.code #central #exercice #toggle     { height:1em; background-color:rgba(0,0,0,0.2); cursor:pointer; text-align:center; }
+.code #central #exercice #toggle:after  { content:"-"; }
+.code #central #exercice #ex         { margin:0 .5em;  }
+.code.exstate #central #exercice #ex { display:none; }
+.code.exstate #central #exercice     { height:1em !important; }
+.code.exstate #central #code         { height:30.8em !important; }
+.code.exstate #central #exercice #toggle:after  { content:"+"; }
+.code #central #exercice .svg         { background-color:rgba(0,0,0,0.2); font-size:6em; }
+.code #central #exercice .svg>div     { width:1em; height:1em; margin:.1em auto; }
+.code #central #exercice .cc         { background-color:rgba(0,40,0,0.9); color:lime; padding:.5em; margin:.4em 0; }
+.code #central #exercice .strong    { color:red; font-weight:bold; border: 1px solid red; border-width:1px 0; }
+
 .code.l1 #central #exercice         { height:16.8em; }
 .code.l1 #central #code             { height:20em; }
 .code.l2 #central #exercice         { height:24.1em; }

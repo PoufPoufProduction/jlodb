@@ -1,10 +1,8 @@
 .logo                                { background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat;}
-.logo div#splash>div                 { background-image:url("../../res/img/banners/logo.svg"); background-repeat:no-repeat;}
-.logo div#splash .text               { width:47%; float:left; font-size:.8em;  }
-.logo div#splash .text h1            { text-align:right; padding-right:.5em;}
-.logo div#splash .text ul            { list-style-type:none; margin:.5em; font-size:.9em; }
-.logo div#splash .text li            { margin:.5em 0 .5em 0; }
-.logo div#splash .text #guide        { font-size:0.8em; margin-left:.2em;}
+.logo div#splashex                  { background-image:url("../../res/img/banners/it.svg"); color:lime; }
+.logo div#splashex h1               { position:absolute; top:45%; left:80%; font-size:1.5em; }
+.logo div#splashex #guide           { position:absolute; top:52%; left:45%; font-size:.75em; width:48%;;
+                                          text-align:justify; }
 .logo div.mask                       { position:absolute; width:7.8em; height:12em; top:0; left:0; display:none; }
 .logo div#export                     { position:absolute; width:16em; height:12em; top:0; left:0; display:none; }
 .logo div#dbg                        { position:absolute; width:16em; height:12em; top:0; left:0; display:none;
@@ -21,9 +19,15 @@
 .logo div#buttons #submit            { float:right; margin-right:.2em; opacity:0.2; cursor:auto;}
 .logo div#buttons #submit.s          { opacity:1; cursor:pointer; }
 .logo div#exercice                   { width:7.8em; height:4.3em; border-radius:0 0 .5em 0;
-                                       text-align:justify; font-style:italic; background-repeat:repeat; padding:.05em .1em;
+                                       text-align:justify; background-repeat:repeat; padding:.05em .1em;
                                       background-image:url("../../res/img/background/book02.svg"); }
 .logo div#exercice>div               { font-size:.3em; }
+
+.logo div#exercice .svg              { background-color:rgba(0,0,0,0.2); font-size:6em; }
+.logo div#exercice .svg>div          { width:1em; height:1em; margin:.1em auto; }
+.logo div#exercice .cc               { background-color:rgba(0,40,0,0.9); color:lime; padding:.5em; margin:.4em 0; }
+.logo div#exercice .strong           { color:red; font-weight:bold; border: 1px solid red; border-width:1px 0; }
+
 .logo div#menu                       { float:left; background-color:#90cce0; border-radius:.5em 0 0 .5em; margin:.1em 0 .1em .1em;
                                        width:7.7em; height:11.8em; }
 

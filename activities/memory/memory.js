@@ -81,7 +81,7 @@
                 $this.find("#number_v").html(n);
                 $this.find("#exposure_v").html(settings.delay/1000);
                 $this.find("#error_v").html(settings.attempt);
-                if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         hide: function($this) {
@@ -145,8 +145,6 @@
             // Next level
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                // Hide instruction
-                $(this).find("#splash").hide();
 
                  // build the numbers array
                 var a = new Array();

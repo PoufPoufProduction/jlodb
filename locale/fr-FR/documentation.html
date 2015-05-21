@@ -50,7 +50,36 @@ var t001 = {
 <body>
     <h1>Guide du développeur jLoDB.</h1>
     <div>En cours de construction...</div>
-    <h2>Activités</h2>
+    <h2>Avant propos</h2>
+    <h3>Noms des exercices</h3>
+    <div>
+        <p>Le nom des exercices est formé ainsi : ( S + E ) + FI + ID.</p>
+        <ul>
+        <li>S est la première lettre du nom de l'activité.</li>
+        <li>E est la dernière lettre du nom de l'activité.</li>
+        <li>FI sont les 2 premières lettres du nom du fichier dans lequel est défini l'exercice.</li>
+        <li>ID est l'identifiant de l'exercice.</li>
+        </ul>
+        <p>Ainsi <b>ceac001</b> désigne l'exercice appartenant à l'activité <b>code</b> (ce), définit dans un fichier dont le nom commence par ac (<b>action.rdf</b> en l'occurence) et dont l'identifiant est <b>001</b>.</p>
+        <p>Une exception notable : avec le fichier <b>xx.rdf</b>, la valeur de FI est nulle.</p>
+    </div>
+    <h2>Création d'activité</h2>
+    <ul>
+        <li>Choisir un nom pertinent pour l'activité tout en respectant certaines contraintes
+            <ul>
+                <li>En anglais</li>
+                <li>La première et dernière lettre du nom de l'activité servent de clé. Leur combinaison doit être <b>unique</b>. Par exemple, <b>se</b> (<i>sequence</i>), <b>mr</b> (<i>marker</i>) ne sont plus disponibles, il n'est donc plus possible de définir des activités avec des noms du type <b>s....e</b> ou <b>m....r</b>.</li>
+                <li>Pour contourner le point précédent, il est possible de tricher un peu avec l'orthographe.</li>
+            </ul>
+        </li>
+        <li>Dans cet exemple, nous choisissons le nom <b>foo</b>
+        <li>Créer l'icône <b>res/img/activity/foo.svg</b> sur la même base que les icônes déjà présent. Un copier-coller est toujours un bon départ.</li>
+        <li>Créer le répertoire <b>data/foo</b> et copier le fichier <b>data/alchemist/xx.svg</b> en <b>data/foo/xx.svg</b>.</li>
+        <li>Copier le repertoire <b>zzz</b> en <b>foo</b>. Renomer <b>boilerplate.js</b> en <b>foo.js</b>. puis dans les trois fichiers, remplacer toutes les références à <b>boilerplate</b> par <b>foo</b>.</li>
+        <li>Dans le fichier <b>activities/activities.rdf</b>, rajouter une entrée pour l'activité <b>foo</b>.</li>
+        <li>Ré-installer la base. L'activité est désormais installée et l'exercice <b>fox</b> est accessible.</li>
+    </ul>
+    <h2>Activités existantes</h2>
     <h3>LOGO</h3>
     <h4>Paramètres</h4>
     <ul>

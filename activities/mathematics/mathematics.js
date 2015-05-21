@@ -14,10 +14,21 @@
         debug       : false                                     // Debug mode
     };
 
+    var regExp = [
+        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
+        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
+        "\\\[br\\\]",                               "<br/>",
+        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
+        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
+        "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>",
+        "\\\[math\\\](.+)\\\[/math\\\]",            "<div class='math'><math>$1</math></div>",
+        "\\\[mathxl\\\](.+)\\\[/mathxl\\\]",        "<div class='mathxl'><math>$1</math></div>"
+    ];
+
     var op = {
-        abs:    { label:"abs",      c:1, m:"<mo>|</mo>c0<mo>|</mo>",                                t:"abs(c0)" },
-        cos:    { label:"cos",      c:1, m:"<mi>cos</mi><mo>&#x2061;</mo><mo>(</mo>c0<mo>)</mo>",   t:"cos(c0)" },
-        div:    { label:"/",        c:2, m:"<mfrac><mrow>c0</mrow><mrow>c1</mrow></mfrac>",
+        abs:    { label:"abs",  l:.6,   c:1, m:"<mo>|</mo>c0<mo>|</mo>",                                t:"abs(c0)" },
+        cos:    { label:"cos",  l:.6,   c:1, m:"<mi>cos</mi><mo>&#x2061;</mo><mo>(</mo>c0<mo>)</mo>",   t:"cos(c0)" },
+        div:    { label:"/",            c:2, m:"<mfrac><mrow>c0</mrow><mrow>c1</mrow></mfrac>",
             needbracket:function(_node) {
                 ret = [false, false];
                 for (var i=0; i<2; i++)
@@ -32,10 +43,10 @@
                 return (bra[0]?"(c0)":"c0")+"/"+(bra[1]?"(c1)":"c1");
             }
         },
-        eq :    { label:"=",        c:2, m:"c0<mo>=</mo>c1",                                        t:["c0=c1","c1=c0"] },
-        integ:  { label:"&int;x",   c:3, m:"<msubsup><mo>&int;</mo>c0c1</msubsup><mrow>c2<mo>&InvisibleTimes;</mo>" +
+        eq :    { label:"=",            c:2, m:"c0<mo>=</mo>c1",                                        t:["c0=c1","c1=c0"] },
+        integ:  { label:"&int;",        c:3, m:"<msubsup><mo>&int;</mo>c0c1</msubsup><mrow>c2<mo>&InvisibleTimes;</mo>" +
                                            "<mrow><mi>d</mi><mi>x</mi></mrow>", t:"int(c0,c1,c2)" },
-        minus:  { label:"-",        c:2, m:"c0<mo>-</mo>c1",
+        minus:  { label:"-",            c:2, m:"c0<mo>-</mo>c1",
             needbracket:function(_node) {
                 ret = [false, false];
                 for (var i=0; i<2; i++)
@@ -126,6 +137,13 @@
             var settings = helpers.settings($this);
             helpers.unbind($this);
             settings.context.onquit($this,{'status':'success','score':settings.score});
+        },
+        format: function(_text) {
+            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
+                var vReg = new RegExp(regExp[i*2],"g");
+                _text = _text.replace(vReg,regExp[i*2+1]);
+            }
+            return _text;
         },
         loader: {
             css: function($this) {
@@ -221,8 +239,16 @@
                                 else { this.width = 1; }
                             },
                             label:      function() {
-                                var ret = this.value;
-                                if (this.type=="op" && op[this.value]) { ret = op[this.value].label; }
+                                var ret = "", size = 1;
+                                if (this.type=="op" && op[this.value]) {
+                                    ret = op[this.value].label;
+                                    if (op[this.value].l) { size = op[this.value].l; }
+                                }
+                                else {
+                                    ret = this.value;
+                                    size = 1-(this.value.toString().length-1)*0.2;
+                                }
+                                ret = "<span style='font-size:"+size+"em;'>"+ret+"</span>";
                                 return ret;
                             }
                 };
@@ -396,12 +422,14 @@
                 if (data.figure.content)    { $this.find("#figure").html(data.figure.content); }
             }
 
+            /* Exercice stuff */
             if ($.isArray(exercice)) {
                 var html=""; for (var i in exercice) {
-                    html+="<div style='font-size:"+settings.font+"em;'>"+(exercice[i].length?exercice[i]:"&nbsp;")+"</div>"; }
+                    html+="<div style='font-size:"+settings.font+"em;'>"+
+                            (exercice[i].length?helpers.format(exercice[i]):"&nbsp;")+"</div>"; }
                 $this.find("#exercice>div").html(html);
             }
-            else { $this.find("#exercice>div").html(exercice); }
+            else { $this.find("#exercice>div").html(helpers.format(exercice)); }
 
             $this.find("#inventory .z").each(function(_index) {
                 var html="";

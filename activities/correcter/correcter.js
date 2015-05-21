@@ -152,7 +152,7 @@
                 if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
 
                 $this.children().show()
-                if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         }
     };
@@ -259,7 +259,6 @@
                 }
             },
             next: function() {
-                $(this).find("#splash").hide();
                 $(this).find("#data").show();
             },
             valid: function() {

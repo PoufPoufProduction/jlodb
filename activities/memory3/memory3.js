@@ -110,7 +110,7 @@
                 if(settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
                 if (settings.exercice) { $this.find("#exercice").show().find(">div").html(settings.exercice); }
 
-                if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         }
     };
@@ -151,8 +151,6 @@
             // Next level
             next: function() {
                 var $this=$(this), settings = helpers.settings($this);
-                // Hide instruction
-                $(this).find("#splash").hide();
                 settings.interactive = true;
 
             },

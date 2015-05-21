@@ -45,6 +45,14 @@
 .genius #menu .slider               { background-color:rgba(255,255,255,0.2); }
 
 .genius>#finish                     { position:absolute;  top:0; left:0; width:16em; height:12em;
-                                      display:none; background-color:rgba(0,0,0,0.8);}
-.genius>#finish>div                 { width:12em; height:6em; margin:3em 2em; background-color:rgba(255,255,255,0.9); border-radius:.5em; }
-.genius>#finish>div .icon           { font-size:2em; margin-top:2em; margin-left:5em; cursor:pointer; }
+                                      background-color:rgba(0,0,0,0.8); display:none;}
+.genius>#finish>div                 { width:12em; height:9em; margin:1em 2em; border-radius:.25em; overflow:visible;
+                                      background-image:url("../../res/img/background/complete.svg"); position:relative; }
+.genius>#finish>div #next           { font-size:2em; top:3.5em; left:5em; cursor:pointer; position:absolute;}
+.genius>#finish>div #newreward      { font-size:3em; left:-.5em; top:2.2em; position:absolute; display:none; }
+.genius>#finish>div #label          { font-size:.6em; background-color:rgba(0,0,0,0.5); color:#fda; top:0.5em; position:absolute;
+                                      width:100%; }
+
+.theme2 .genius>#finish             { background-color:rgba(0,0,0,0); }
+.theme2 .genius>#finish>div         { border-radius:0; border:.05em solid black; }
+.theme2 .genius>#finish>div #label  { color:white; }

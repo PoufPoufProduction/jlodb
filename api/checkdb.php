@@ -6,20 +6,22 @@ if (!$error) {
     if ($result) {
         $row = mysql_fetch_array($result);
 
+        $lock = false;
         if ($row["Lock"]) {
             $error = 4;
             $textstatus = "Database is locked";
+            $lock = true;
         }
-        else {
-            $a=mysql_query("SELECT count(*) FROM `".$_SESSION['prefix']."activity`");
-            $b=mysql_fetch_array($a);
-            $a=mysql_query("SELECT count(*) FROM `".$_SESSION['prefix']."exercice`");
-            $c=mysql_fetch_array($a);
+        else { $status = "success"; }
 
-            $status = "success";
-            $overview = '"version":"'.$row["Version"].'", "date":"'.$row["Date"].'", "lang":"'.$row["Language"].
-                        '", "activities":'.$b[0].', "exercices":'.$c[0];
-        }
+        $a=mysql_query("SELECT count(*) FROM `".$_SESSION['prefix']."activity`");
+        $b=mysql_fetch_array($a);
+        $a=mysql_query("SELECT count(*) FROM `".$_SESSION['prefix']."exercice`");
+        $c=mysql_fetch_array($a);
+
+        $overview = '"version":"'.$row["Version"].'", "date":"'.$row["Date"].'", "lang":"'.$row["Language"].
+                    '", "activities":'.$b[0].', "exercices":'.$c[0].', "lock":'.($lock?"true":"false");
+
     }
     else {
         $textstatus = $_SESSION['prefix']."jlodb table is missing";

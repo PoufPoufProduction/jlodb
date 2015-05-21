@@ -1,11 +1,12 @@
 (function($) {
     // Activity default options
     var defaults = {
-        name        : "activity",                               // The activity name
-        label       : "Activity",                               // The activity label
+        name        : "info",                                   // The activity name
+        label       : "Info",                                   // The activity label
         template    : "template.html",                          // Activity's html template
         css         : "style.css",                              // Activity's css style sheet
         lang        : "en-US",                                  // Current localization
+        type        : "",
         debug       : false                                     // Debug mode
     };
 
@@ -70,27 +71,22 @@
 
                 $this.css("font-size", Math.floor($this.height()/12)+"px");
 
-                // Locale handling
-                $this.find("h1#label").html(settings.label);
-                if (settings.locale) { $.each(settings.locale, function(id,value) {
-                    if ($.isArray(value)) {  for (var i in value) { $this.find("#"+id).append("<p>"+value[i]+"</p>"); } }
-                    else { $this.find("#"+id).html(value); }
-                }); }
-
-                if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (settings.type=="underconstruction") {
+                    $this.find("#board").html("<img src='res/img/background/underconstruction.svg'/>");
+                    $this.find("#comment").addClass("underconstruction").html(settings.comment);
+                }
             }
         }
     };
 
     // The plugin
-    $.fn.activity = function(method) {
+    $.fn.info = function(method) {
 
         // public methods
         var methods = {
             init: function(options) {
                 // The settings
                 var settings = {
-                    interactive     : false
                 };
 
                 return this.each(function() {
@@ -109,9 +105,6 @@
                         helpers.loader.css($this);
                     }
                 });
-            },
-            next: function() {
-                $(this).find("#splash").hide();
             },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);

@@ -15,7 +15,7 @@ if (!$error && strlen($_GET["username"])) {
             if (strcmp($u['User_Password'],md5($_GET["password"]))==0)
             {
                 $id = md5(uniqid());
-                mysql_query("UPDATE `".$_SESSION['prefix']."user` SET `User_Date`=NOW(), ".
+                mysql_query("UPDATE `".$_SESSION['prefix']."user` SET ".
                     "`User_Code` = '".$id."' WHERE `User_Id` = '".$u["User_Id"]."'");
                 $status = "success";
             }
@@ -23,9 +23,7 @@ if (!$error && strlen($_GET["username"])) {
         else if (strlen($_GET["code"])) {
             if (strcmp($u['User_Code'],$_GET["code"])==0)
             {
-                // TODO: CHECK THE DATE AND REFUSE AFTER ONE DAY
                 $id = $_GET["code"];
-                mysql_query("UPDATE `".$_SESSION['prefix']."user` SET `User_Date`=NOW() WHERE `User_Id` = '".$u["User_Id"]."'");
                 $status = "success";
             }
             else { $error = 103; $textstatus="wrong login"; }
@@ -38,7 +36,11 @@ if (!$error && strlen($_GET["username"])) {
         }
     }
     else { $error = 103; $textstatus="wrong login"; }
+
+    if ($status=="success") { $_SESSION['User_Date'] = $u["User_Date"]; $_SESSION['User_Code'] = $u["User_Code"]; }
+    else                    { $_SESSION['User_Code'] = 0; }
 }
+
 // PUBLISH DATA UNDER JSON FORMAT
 echo '{';
 echo '  "status" : "'.$status.'",';

@@ -40,11 +40,10 @@
 
     <div id="touch01" ><div><img src="res/img/effects/touch01.svg"/></div></div>
 
-    <div id="splash" ontouchstart="$(this).closest('.mathematics').mathematics('next');event.preventDefault();"
-                     onclick="$(this).closest('.mathematics').mathematics('next');"><div>
-        <div class="text">
-            <h1 id="label"></h1>
-        </div>
+    <div id="splashex" ontouchstart="$(this).hide().closest('.mathematics').mathematics('next');event.preventDefault();"
+                     onclick="$(this).hide().closest('.mathematics').mathematics('next');"><div>
+        <h1 id="label"></h1>
+        <div id="guide"></div>
     </div></div>
 
 </div>

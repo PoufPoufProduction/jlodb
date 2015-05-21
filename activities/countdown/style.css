@@ -38,6 +38,9 @@
                                           text-align:center; color:#222; height:1.1em; cursor:move; }
 .countdown .t.tt                        { background-color:rgba(200,200,200,0.8); }
 
+.countdown #exercice               { position:absolute; top:80%; left:10%; width:80%; height:20%; font-size:.5em; display:none; }
+.countdown #exercice>div           { color:red; border:1px solid red; border-width:1px 0; }
+
 .countdown #keypad                 { position:absolute; overflow:visible; font-weight:bold; top:2.3em; left:6.45em; display:none;}
 .countdown #keypad div.k           { width:1em; height:1em; overflow:hidden; text-align:center;
                                      background-image:url("../../res/img/icon/round.svg"); border-radius:0.5em;

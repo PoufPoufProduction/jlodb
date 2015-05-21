@@ -2,9 +2,10 @@
     <div id="base" class="tab"><div id="lbase" class="label">BASE</div><span></span></div>
     <div id="nbdec" class="tab"><div id="lnbdec" class="label">DEC</div><span></span></div>
     <div id="board">
-        <div id="data">
-        </div>
+        <div id="data"></div>
+        <div id="exercice"><div></div></div>
     </div>
+
 
     <div id="keypad">
         <div id="bg1"></div>
@@ -38,12 +39,10 @@
         <div id="wrong"><img src="res/img/effects/alert01.svg"/></div>
     </div>
 
-    <div id="splash" ontouchstart="$(this).closest('.operation').operation('next');event.preventDefault();"
-                     onclick="$(this).closest('.operation').operation('next');"><div>
-        <div class="text">
+    <div id="splashex" ontouchstart="$(this).hide().closest('.operation').operation('next');event.preventDefault();"
+                     onclick="$(this).hide().closest('.operation').operation('next');"><div>
             <h1 id="label">Operation</h1>
             <p id="guide"></p>
-        </div>
     </div></div>
 
 </div>

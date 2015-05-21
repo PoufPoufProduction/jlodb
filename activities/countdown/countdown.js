@@ -7,6 +7,7 @@
         css         : "style.css",                              // Activity's css style sheet
         lang        : "en-US",                                  // Current localization
         number      : 2,                                        // Number of games in case of gen
+        fontex      : 1,                                        // exercice font size
         debug       : false                                     // Debug mode
     };
 
@@ -99,6 +100,15 @@
                 if (settings.gen) {
                     settings.data = [];
                     for (var i=0;i<settings.number;i++) { settings.data.push(eval('('+settings.gen+')')(i)); }
+                }
+
+                if (settings.exercice) {
+                    if ($.isArray(settings.exercice)) {
+                        $this.find("#exercice>div").html("");
+                        for (var i in settings.exercice) {
+                            $this.find("#exercice>div").append("<p>"+(settings.exercice[i].length?settings.exercice[i]:"&nbsp;")+"</p>"); }
+                    } else { $this.find("#exercice>div").html(settings.exercice); }
+                    $this.find("#exercice>div").css("font-size",settings.fontex+"em").parent().show();
                 }
 
                 // Locale handling
@@ -295,6 +305,11 @@
             compute: function(_elt) {
                 var $this = $(this) , settings = helpers.settings($this);
                 if ($(_elt).parent().hasClass("cc") && settings.compute!=0) {
+
+                    if ($this.find("#exercice").is(":visible")) {
+                        $this.find("#exercice").animate({opacity:0},1000,function() { $this.find("#exercice").hide(); });
+                    }
+
                     $line = $(_elt).closest(".line");
                     var id= 100+parseInt($line.attr("id").substr(1));
                     var $t = $("<div class='t' id='"+id+"'>"+settings.compute+"</div>");

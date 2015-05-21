@@ -11,6 +11,9 @@
         withmove    : true,                 // Does user need to move the decimal value
         removezero  : true,                 // No space allowed for 0 multiplicator
         time        : 1,                    // Perfect time to solve the operation
+        ratioerr    : 1,                    // Error ratio
+        fontex      : 1,                    // Exercice font
+        highlight   : [],                   // Highlight cells
         debug       : false                 // Debug mode
     };
 
@@ -99,10 +102,18 @@
                     );
                 }
 
+                // exercice
+                if ($.isArray(settings.exercice)) {
+                    $this.find("#exercice>div").html("");
+                    for (var i in settings.exercice) {
+                        $this.find("#exercice>div").append("<p>"+(settings.exercice[i].length?settings.exercice[i]:"&nbsp;")+"</p>"); }
+                } else { $this.find("#exercice>div").html(settings.exercice); }
+                $this.find("#exercice>div").css("font-size",settings.fontex+"em");
+
                 // Locale handling
                 $this.find("h1#label").html(settings.label);
                 if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
-                if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         showop: function($this) {
@@ -367,7 +378,7 @@
                         html+="><img src='res/img/generic/futoshiki05.svg'/></div>";
                     }
                     else {
-                        html+="<div class='move"+opclass+"' style='top:"+top+"em;left:"+left+"em;'>";
+                        html+="<div class='move' style='top:"+top+"em;left:"+left+"em;'>";
                         html+="<img src='res/img/generic/futoshiki04.svg'/></div>";
                     }
                     left+=.25;
@@ -389,7 +400,7 @@
                         html+="><img src='res/img/generic/futoshiki06.svg'/></div>";
                     }
                     else {
-                        html+="<div class='move"+opclass+"' style='top:"+top+"em;left:"+left+"em;'>";
+                        html+="<div class='move' style='top:"+top+"em;left:"+left+"em;'>";
                         html+="<img src='res/img/generic/futoshiki04.svg'/></div>";
                     }
                     left+=.25;
@@ -403,6 +414,12 @@
                 html+="<div class='bg' style='top:-0.1em;left:0.675em;width:"+(width+0.67)+"em;height:"+(top+0.15)+"em;'></div>";
             }
             $board.append(html);
+
+            for (var i in settings.highlight) {
+                for (var j in settings.highlight[i]) {
+                    $($this.find(".active").get(settings.highlight[i][j])).addClass(i);
+                }
+            }
 
             $this.find(".active").bind("mousedown touchstart", function(event) {
                 var $this = $(this).closest(".operation") , settings = helpers.settings($this), $keypad = $this.find("#keypad");
@@ -536,7 +553,7 @@
             },
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                $(this).find("#splash").hide();
+                $this.find("#exercice").show();
                 helpers.build($(this));
             },
             quit: function() {
@@ -586,7 +603,7 @@
                         }
                     }
 
-                    settings.score-=error;
+                    settings.score-=error*settings.ratioerr;
                     if (settings.score<0) { settings.score = 0; }
                     $this.find("#effects").toggleClass("division", settings.type=="/").show();
                     $this.find("#good").toggle(!error);

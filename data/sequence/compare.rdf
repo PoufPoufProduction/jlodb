@@ -41,6 +41,30 @@
     </rdf:Description>
 
     <rdf:Description>
+        <dct:identifier>se3a</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, la hauteur de 2 rectangles (avec égalité possible).</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["≤",">"],"css":{"height":"1.2em"}},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var eq=(Math.floor(Math.random()*3.3)==0),ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*5)+1,val2=eq?val1:Math.floor(Math.random()*5)+1;ret+=\\\"<rect x='1' y='\\\"+Math.floor(18*(5-val1)/5)+\\\"' width='46' height='\\\"+Math.floor(46*val1/5)+\\\"'/>\\\"; ret+=\\\"</svg></div><div style='width:1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\"; ret+=\\\"<rect x='1' y='\\\"+Math.floor(18*(5-val2)/5)+\\\"' width='46' height='\\\"+Math.floor(46*val2/5)+\\\"'/>\\\"; ret+=\\\"</svg></div>\\\"; return [ret, val1<=val2?'≤':'>'];}","class":"alpha left p02","font":1.7]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Comparez la hauteur des rectangles."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>s1</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>se3b</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, la hauteur de 2 rectangles (avec égalité possible).</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["<","≥"],"css":{"height":"1.2em"}},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var eq=(Math.floor(Math.random()*3.3)==0),ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*5)+1,val2=eq?val1:Math.floor(Math.random()*5)+1;ret+=\\\"<rect x='1' y='\\\"+Math.floor(18*(5-val1)/5)+\\\"' width='46' height='\\\"+Math.floor(46*val1/5)+\\\"'/>\\\"; ret+=\\\"</svg></div><div style='width:1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\"; ret+=\\\"<rect x='1' y='\\\"+Math.floor(18*(5-val2)/5)+\\\"' width='46' height='\\\"+Math.floor(46*val2/5)+\\\"'/>\\\"; ret+=\\\"</svg></div>\\\"; return [ret, val1<val2?'<':'≥'];}","class":"alpha left p02","font":1.7]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Comparez la hauteur des rectangles."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>s1</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
         <dct:identifier>s4</dct:identifier>
         <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, la hauteur de 2 rectangles (avec égalité possible et légende numérique).</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var eq=(Math.floor(Math.random()*3.3)==0),ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*5)+1,val2=eq?val1:Math.floor(Math.random()*5)+1;ret+=\\\"<rect x='1' y='\\\"+Math.floor(18*(5-val1)/5)+\\\"' width='46' height='\\\"+Math.floor(46*val1/5)+\\\"'/><text transform='translate(23,22)' style='font-size:8px;fill:white;font-weight:bold;'>\\\"+val1+\\\"</text>\\\"; ret+=\\\"</svg></div><div style='width:1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\"; ret+=\\\"<rect x='1' y='\\\"+Math.floor(18*(5-val2)/5)+\\\"' width='46' height='\\\"+Math.floor(46*val2/5)+\\\"'/><text transform='translate(23,22)' style='font-size:8px;fill:white;font-weight:bold;'>\\\"+val2+\\\"</text>\\\"; ret+=\\\"</svg></div>\\\"; return [ret,  val1==val2?'=':(val1<val2?'<':'>')];}","class":"alpha left p02","font":1.7]]></dct:description>
@@ -441,6 +465,56 @@
         <dct:alternative>1Kx</dct:alternative>
     </rdf:Description>
 
+    <!-- lte -->
+
+    <rdf:Description>
+        <dct:identifier>eg03</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, 2 entiers compris entre 0 et 3.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["≤",">"],"css":{"height":"1.2em"}},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=4,a=Math.floor(Math.random()*max),p=Math.floor(Math.random()*3.5),b=(p)?Math.floor(Math.random()*max):a; return [\\\"<div style='width:2.7em;margin-left:.2em;'><div style='width:1em;'>\\\"+a+\\\"</div><div style='width:0.7em;'>...</div><div style='width:1em;'>\\\"+b+\\\"</div></div>\\\", (a<=b)?\\\"≤\\\":\\\">\\\"]}","class":"alpha left","font":2]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"L'opérateur ≤ signifie <b>inférieur ou égal</b>."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>1Kx</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>el03</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, 2 entiers compris entre 0 et 3.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["<","≥"],"css":{"height":"1.2em"}},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=4,a=Math.floor(Math.random()*max),p=Math.floor(Math.random()*3.5),b=(p)?Math.floor(Math.random()*max):a; return [\\\"<div style='width:2.7em;margin-left:.2em;'><div style='width:1em;'>\\\"+a+\\\"</div><div style='width:0.7em;'>...</div><div style='width:1em;'>\\\"+b+\\\"</div></div>\\\", (a<b)?\\\"<\\\":\\\"≥\\\"]}","class":"alpha left","font":2]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"L'opérateur ≥ signifie <b>supérieur ou égal</b>."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>1Kx</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>eg05</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, 2 entiers compris entre 0 et 5.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["≤",">"],"css":{"height":"1.2em"}},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=6,a=Math.floor(Math.random()*max),p=Math.floor(Math.random()*3.5),b=(p)?Math.floor(Math.random()*max):a; return [\\\"<div style='width:2.7em;margin-left:.2em;'><div style='width:1em;'>\\\"+a+\\\"</div><div style='width:0.7em;'>...</div><div style='width:1em;'>\\\"+b+\\\"</div></div>\\\", (a<=b)?\\\"≤\\\":\\\">\\\"]}","class":"alpha left","font":2]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"L'opérateur ≤ signifie <b>inférieur ou égal</b>."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>1Kx</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>el05</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, 2 entiers compris entre 0 et 5.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["<","≥"],"css":{"height":"1.2em"}},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=6,a=Math.floor(Math.random()*max),p=Math.floor(Math.random()*3.5),b=(p)?Math.floor(Math.random()*max):a; return [\\\"<div style='width:2.7em;margin-left:.2em;'><div style='width:1em;'>\\\"+a+\\\"</div><div style='width:0.7em;'>...</div><div style='width:1em;'>\\\"+b+\\\"</div></div>\\\", (a<b)?\\\"<\\\":\\\"≥\\\"]}","class":"alpha left","font":2]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"L'opérateur ≥ signifie <b>supérieur ou égal</b>."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>1Kx</dct:alternative>
+    </rdf:Description>
+
     <!-- Negative -->
 
     <rdf:Description>
@@ -578,6 +652,29 @@
      </rdf:Description>
 
     <rdf:Description>
+        <dct:identifier>stm29</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, l'un des nombres compris entre 2 et 9 complétant la double inégalité d'infériorité.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":0},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var c=Math.floor(Math.random()*2)+1,a=Math.floor(Math.random()*(9-c))+1,vals=[]; for (var i=0; i<c; i++) { vals.push(a+1+i); } return [\\\"<div style='margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:.6em;'>&lt;</div><div style='width:.7em;'>...</div><div style='width:.6em;'>&lt;</div><div>\\\"+(a+c+1)+\\\"</div>\\\",vals]}","class":"alpha left","font":2]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Trouvez une valeur vérifiant la double inégalité."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>t119x</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>ste10</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre 0 et 10 complétant la double inégalité d'infériorité.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var c=Math.floor(Math.random()*3),a=Math.floor(Math.random()*(c==0?9:10)); return [\\\"<div style='margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:.6em;'>\\\"+(c==1?'≤':'<')+\\\"</div><div style='width:1.2em;text-align:center'>...</div><div style='width:.6em;'>\\\"+(c==2?'≤':'<')+\\\"</div><div>\\\"+(c==0?a+2:a+1)+\\\"</div>\\\",(c==1?a:a+1)]}","class":"alpha left","font":1.7]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>t119x</dct:alternative>
+     </rdf:Description>
+
+    <rdf:Description>
         <dct:identifier>st119</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre 1 et 19 complétant la double inégalité d'infériorité.</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*19); return [\\\"<div style='margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:.6em;'>&lt;</div><div style='width:1.2em;'>...</div><div style='width:.6em;'>&lt;</div><div>\\\"+(a+2)+\\\"</div>\\\",(a+1)]}","class":"alpha left","font":1.5]]></dct:description>
@@ -637,6 +734,29 @@
         <dct:identifier>gt29y</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver, en moins de 20 secondes, le nombre compris entre 2 et 9 complétant la double inégalité de supériorité.</dct:title>
         <dct:description><![CDATA["time":1,"input":{"digit":1,"speed":0},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*8)+1; return [\\\"<div style='margin-left:.1em;'>\\\"+(a+2)+\\\"</div><div style='width:.6em;'>&gt;</div><div style='width:.7em;'>...</div><div style='width:.6em;'>&gt;</div><div>\\\"+a+\\\"</div>\\\",(a+1)]}","class":"alpha left","font":2]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>t119x</dct:alternative>
+     </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>gtm29</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, l'un des nombres compris entre 2 et 9 complétant la double inégalité d'infériorité.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":0},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var c=Math.floor(Math.random()*2)+1,a=Math.floor(Math.random()*(9-c))+1,vals=[]; for (var i=0; i<c; i++) { vals.push(a+1+i); } return [\\\"<div style='margin-left:.1em;'>\\\"+(a+c+1)+\\\"</div><div style='width:.6em;'>&gt;</div><div style='width:.7em;'>...</div><div style='width:.6em;'>&gt;</div><div>\\\"+a+\\\"</div>\\\",vals]}","class":"alpha left","font":2]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Trouvez une valeur vérifiant la double inégalité."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>t119x</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>gte10</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre 0 et 10 complétant la double inégalité de supériorité.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var c=Math.floor(Math.random()*3),a=Math.floor(Math.random()*(c==0?9:10)); return [\\\"<div style='margin-left:.1em;'>\\\"+(c==0?a+2:a+1)+\\\"</div><div style='width:.6em;'>\\\"+(c==1?'≥':'>')+\\\"</div><div style='width:1.2em;text-align:center'>...</div><div style='width:.6em;'>\\\"+(c==2?'≥':'>')+\\\"</div><div>\\\"+a+\\\"</div>\\\",(c==2?a:a+1)]}","class":"alpha left","font":1.7]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
@@ -706,10 +826,56 @@
         <dct:description><![CDATA["time":1,"input":{"digit":1,"speed":0},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*8)+1, b=Math.floor(Math.random()*2); return [b?\\\"<div style='margin-left:.1em;'>\\\"+(a+2)+\\\"</div><div style='width:.6em;'>&gt;</div><div style='width:.7em;'>...</div><div style='width:.6em;'>&gt;</div><div>\\\"+a+\\\"</div>\\\":\\\"<div style='margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:.6em;'>&lt;</div><div style='width:.7em;'>...</div><div style='width:.6em;'>&lt;</div><div>\\\"+(a+2)+\\\"</div>\\\",(a+1)]}","class":"alpha left","font":2]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>t119x</dct:alternative>
+    </rdf:Description>
+
+
+    <rdf:Description>
+        <dct:identifier>tm29</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, l'un des nombres compris entre 2 et 9 complétant la double inégalité.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":0},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var c=Math.floor(Math.random()*2)+1,a=Math.floor(Math.random()*(9-c))+1,vals=[]; for (var i=0; i<c; i++) { vals.push(a+1+i); } var b=Math.floor(Math.random()*2); return [b?\\\"<div style='margin-left:.1em;'>\\\"+(a+c+1)+\\\"</div><div style='width:.6em;'>&gt;</div><div style='width:.7em;'>...</div><div style='width:.6em;'>&gt;</div><div>\\\"+a+\\\"</div>\\\":\\\"<div style='margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:.6em;'>&lt;</div><div style='width:.7em;'>...</div><div style='width:.6em;'>&lt;</div><div>\\\"+(a+c+1)+\\\"</div>\\\",vals]}","class":"alpha left","font":2]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Trouvez une valeur vérifiant la double inégalité."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>t119x</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>te10</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre 0 et 10 complétant la double inégalité.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var op=[['<','≤','<','>','≥','>'],['<','<','≤','>','>','≥']],c=Math.floor(Math.random()*6),a=Math.floor(Math.random()*((c%3)==0?9:10)); return [\\\"<div style='margin-left:.1em;'>\\\"+(c<3?a:(c==3?a+2:a+1))+\\\"</div><div style='width:.6em;'>\\\"+op[0][c]+\\\"</div><div style='width:1.2em;text-align:center'>...</div><div style='width:.6em;'>\\\"+op[1][c]+\\\"</div><div>\\\"+(c<3?(c==0?a+2:a+1):a)+\\\"</div>\\\",(c==1||c==5?a:a+1)]}","class":"alpha left h12","font":1.7]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>t119x</dct:alternative>
      </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>te10x</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, en moins de 40 secondes, le nombre compris entre 0 et 10 complétant la double inégalité.</dct:title>
+        <dct:description><![CDATA["time":2,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var op=[['<','≤','<','>','≥','>'],['<','<','≤','>','>','≥']],c=Math.floor(Math.random()*6),a=Math.floor(Math.random()*((c%3)==0?9:10)); return [\\\"<div style='margin-left:.1em;'>\\\"+(c<3?a:(c==3?a+2:a+1))+\\\"</div><div style='width:.6em;'>\\\"+op[0][c]+\\\"</div><div style='width:1.2em;text-align:center'>...</div><div style='width:.6em;'>\\\"+op[1][c]+\\\"</div><div>\\\"+(c<3?(c==0?a+2:a+1):a)+\\\"</div>\\\",(c==1||c==5?a:a+1)]}","class":"alpha left h12","font":1.7]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>t119x</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>te10y</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, en moins de 20 secondes, le nombre compris entre 0 et 10 complétant la double inégalité.</dct:title>
+        <dct:description><![CDATA["time":1,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var op=[['<','≤','<','>','≥','>'],['<','<','≤','>','>','≥']],c=Math.floor(Math.random()*6),a=Math.floor(Math.random()*((c%3)==0?9:10)); return [\\\"<div style='margin-left:.1em;'>\\\"+(c<3?a:(c==3?a+2:a+1))+\\\"</div><div style='width:.6em;'>\\\"+op[0][c]+\\\"</div><div style='width:1.2em;text-align:center'>...</div><div style='width:.6em;'>\\\"+op[1][c]+\\\"</div><div>\\\"+(c<3?(c==0?a+2:a+1):a)+\\\"</div>\\\",(c==1||c==5?a:a+1)]}","class":"alpha left h12","font":1.7]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:alternative>t119x</dct:alternative>
+    </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>t119</dct:identifier>
@@ -744,6 +910,74 @@
         <dct:alternative>t119x</dct:alternative>
      </rdf:Description>
 
+    <rdf:Description>
+        <dct:identifier>te100</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre 0 et 100 complétant la double inégalité.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var op=[['<','≤','<','>','≥','>'],['<','<','≤','>','>','≥']],c=Math.floor(Math.random()*6),a=Math.floor(Math.random()*((c%3)==0?98:99)); return [\\\"<div style='margin-left:.1em;'>\\\"+(c<3?a:(c==3?a+2:a+1))+\\\"</div><div style='width:.6em;'>\\\"+op[0][c]+\\\"</div><div style='width:1.2em;text-align:center'>...</div><div style='width:.6em;'>\\\"+op[1][c]+\\\"</div><div>\\\"+(c<3?(c==0?a+2:a+1):a)+\\\"</div>\\\",(c==1||c==5?a:a+1)]}","class":"alpha left h12","font":1.3]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>t119x</dct:alternative>
+     </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>te100x</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, en moins de 40 secondes, le nombre compris entre 0 et 100 complétant la double inégalité.</dct:title>
+        <dct:description><![CDATA["time":2,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var op=[['<','≤','<','>','≥','>'],['<','<','≤','>','>','≥']],c=Math.floor(Math.random()*6),a=Math.floor(Math.random()*((c%3)==0?98:99)); return [\\\"<div style='margin-left:.1em;'>\\\"+(c<3?a:(c==3?a+2:a+1))+\\\"</div><div style='width:.6em;'>\\\"+op[0][c]+\\\"</div><div style='width:1.2em;text-align:center'>...</div><div style='width:.6em;'>\\\"+op[1][c]+\\\"</div><div>\\\"+(c<3?(c==0?a+2:a+1):a)+\\\"</div>\\\",(c==1||c==5?a:a+1)]}","class":"alpha left h12","font":1.3]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>t119x</dct:alternative>
+     </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>te100y</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, en moins de 20 secondes, le nombre compris entre 0 et 100 complétant la double inégalité.</dct:title>
+        <dct:description><![CDATA["time":1,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var op=[['<','≤','<','>','≥','>'],['<','<','≤','>','>','≥']],c=Math.floor(Math.random()*6),a=Math.floor(Math.random()*((c%3)==0?98:99)); return [\\\"<div style='margin-left:.1em;'>\\\"+(c<3?a:(c==3?a+2:a+1))+\\\"</div><div style='width:.6em;'>\\\"+op[0][c]+\\\"</div><div style='width:1.2em;text-align:center'>...</div><div style='width:.6em;'>\\\"+op[1][c]+\\\"</div><div>\\\"+(c<3?(c==0?a+2:a+1):a)+\\\"</div>\\\",(c==1||c==5?a:a+1)]}","class":"alpha left h12","font":1.3]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:alternative>t119x</dct:alternative>
+     </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>tm100</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, l'un des nombres compris entre 2 et 98 complétant la double inégalité.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var c=Math.floor(Math.random()*3)+1,a=Math.floor(Math.random()*(99-c))+1,vals=[]; for (var i=0; i<c; i++) { vals.push(a+1+i); } var b=Math.floor(Math.random()*2); return [b?\\\"<div style='margin-left:.1em;'>\\\"+(a+c+1)+\\\"</div><div style='width:.6em;'>&gt;</div><div style='width:1.2em;'>...</div><div style='width:.6em;'>&gt;</div><div>\\\"+a+\\\"</div>\\\":\\\"<div style='margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:.6em;'>&lt;</div><div style='width:1.2em;'>...</div><div style='width:.6em;'>&lt;</div><div>\\\"+(a+c+1)+\\\"</div>\\\",vals]}","class":"alpha left","font":1.3]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Trouvez une valeur vérifiant la double inégalité."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>t119x</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>tm100x</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, en moins de 40 secondes, l'un des nombres compris entre 2 et 98 complétant la double inégalité.</dct:title>
+        <dct:description><![CDATA["time":2,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var c=Math.floor(Math.random()*3)+1,a=Math.floor(Math.random()*(99-c))+1,vals=[]; for (var i=0; i<c; i++) { vals.push(a+1+i); } var b=Math.floor(Math.random()*2); return [b?\\\"<div style='margin-left:.1em;'>\\\"+(a+c+1)+\\\"</div><div style='width:.6em;'>&gt;</div><div style='width:1.2em;'>...</div><div style='width:.6em;'>&gt;</div><div>\\\"+a+\\\"</div>\\\":\\\"<div style='margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:.6em;'>&lt;</div><div style='width:1.2em;'>...</div><div style='width:.6em;'>&lt;</div><div>\\\"+(a+c+1)+\\\"</div>\\\",vals]}","class":"alpha left","font":1.3]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Trouvez une valeur vérifiant la double inégalité."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>t119x</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>tm100y</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, en moins de 20 secondes, l'un des nombres compris entre 2 et 98 complétant la double inégalité.</dct:title>
+        <dct:description><![CDATA["time":1,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var c=Math.floor(Math.random()*3)+1,a=Math.floor(Math.random()*(99-c))+1,vals=[]; for (var i=0; i<c; i++) { vals.push(a+1+i); } var b=Math.floor(Math.random()*2); return [b?\\\"<div style='margin-left:.1em;'>\\\"+(a+c+1)+\\\"</div><div style='width:.6em;'>&gt;</div><div style='width:1.2em;'>...</div><div style='width:.6em;'>&gt;</div><div>\\\"+a+\\\"</div>\\\":\\\"<div style='margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:.6em;'>&lt;</div><div style='width:1.2em;'>...</div><div style='width:.6em;'>&lt;</div><div>\\\"+(a+c+1)+\\\"</div>\\\",vals]}","class":"alpha left","font":1.3]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Trouvez une valeur vérifiant la double inégalité."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:alternative>t119x</dct:alternative>
+    </rdf:Description>
     <!-- Negative -->
 
 
@@ -886,7 +1120,7 @@
          <dct:identifier>214</dct:identifier>
          <dct:title xml:lang="fr-FR">Différencier, sans contrainte de temps, deux groupes de carrés (de 1 à 4).</dct:title>
          <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["=","&ne;"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var n=2,eq=(Math.floor(Math.random()*5)==0),ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:1;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*n*n)+1,val2=eq?val1:Math.floor(Math.random()*n*n)+1,b1=[],b2=[]; for(var i=0;i<n*n;i++){ b1.push(false);b2.push(false);}for(var i=0;i<val1;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b1[x]);b1[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div><div style='width:1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:1;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\"; for(var i=0;i<val2;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b2[x]);b2[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div>\\\"; return [ret, val1==val2?'=':'&ne;'];}","class":"alpha left p02","font":1.7]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Comparez le nombre de carrés dans chaque groupe."]]></dct:description>
+         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Comparez le nombre de carrés dans chaque groupe."]]></dct:description>
          <dct:extent>1</dct:extent>
          <dct:subject>numeration</dct:subject>
          <dct:educationLevel>2</dct:educationLevel>

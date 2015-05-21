@@ -4,22 +4,6 @@ include_once $apipath."database.php";
 include "check.php";
 
 
-
-function getUserStats()
-{
-    $nbstars = 0;
-    $nbnodes = 0;
-    $stars = mysql_query("SELECT * FROM `".$_SESSION['prefix']."state` WHERE `User_Id`='".$_GET["username"]."'");
-    while($s = mysql_fetch_array($stars)) {
-        $nbstars += 3*substr_count($s["State"],"5") + 2*substr_count($s["State"],"4") + 1*substr_count($s["State"],"3");
-        $last = substr($s["State"], -1);
-        if ($last=='2'||$last=='3'||$last=='4'||$last=='5') { $nbnodes++; }
-    }
-    mysql_query("UPDATE `".$_SESSION['prefix']."user` SET `User_Stars`=".$nbstars." WHERE `User_Id` = '".$_GET["username"]."'");
-
-    return array($nbstars, $nbnodes);
-}
-
 function getPinnedBadge()
 {
     $ret = "";
@@ -54,10 +38,31 @@ function getNbNewBadges()
     return $ret;
 }
 
-function updateBadges($_nbStars,$_nbNodes)
+function updateBadges($_node)
 {
-    $ret    = false;
     $values = "";
+    $nodes = "";
+
+    if ($_node=="1") {
+        $genius = mysql_query("SELECT * FROM `".$_SESSION['prefix']."genius` WHERE `User_Id`='".$_GET["username"]."'");
+        $g = mysql_fetch_array($genius);
+        $nodes = $g["Genius"];
+    }
+
+    $nbstars = 0;
+    $nbnodes = 0;
+    if ($_node=="0") {
+        $stars = mysql_query("SELECT * FROM `".$_SESSION['prefix']."state` WHERE `User_Id`='".$_GET["username"]."'");
+        while($s = mysql_fetch_array($stars)) {
+            $nbstars += 3*substr_count($s["State"],"5") + 2*substr_count($s["State"],"4") + 1*substr_count($s["State"],"3");
+            $last = substr($s["State"], -1);
+            if ($last=='2'||$last=='3'||$last=='4'||$last=='5') { $nbnodes++; }
+        }
+        mysql_query("UPDATE `".$_SESSION['prefix']."user` SET `User_Stars`=".$nbstars." WHERE `User_Id` = '".$_GET["username"]."'");
+    }
+
+    $user = mysql_query("SELECT * FROM `".$_SESSION['prefix']."user` WHERE User_Id='".$_GET["username"]."'");
+    $u = mysql_fetch_array($user);
 
     $awards = mysql_query("SELECT `Award_Id`, `Award_Description` FROM `".$_SESSION['prefix']."award`");
     while ($b=mysql_fetch_array($awards)) {
@@ -65,9 +70,26 @@ function updateBadges($_nbStars,$_nbNodes)
         $args = explode("|",$b["Award_Description"]);
         foreach($args as $arg) {
             $data = explode(":",$arg);
-            if (!strcmp($data[0],"nbstars")) { if ($_nbStars<$data[1]) { $good = false; } }             else
-            if (!strcmp($data[0],"nbnodes")) { if ($_nbNodes<$data[1]) { $good = false; } }
-            else $good = false;
+            if (!strcmp($data[0],"nbstars")) { if ($nbstars<$data[1]) { $good = false; } }             else
+            if (!strcmp($data[0],"nbnodes")) { if ($nbnodes<$data[1]) { $good = false; } }             else
+            if (!strcmp($data[0],"nbdays"))  { if ($u["User_Days"]<$data[1]) { $good = false; } }       else
+            if (!strcmp($data[0],"node") && $_node=="1")   {
+                $good = false;
+                $byte     = floor($data[1]/3);
+                $offset   = (1<<(5-($data[1]%3)*2)) | (1<<(4-($data[1]%3)*2));
+                if ($byte<strlen($nodes)) {
+                    // AS IN jquery.jlodb.genius.js
+                    $r = 63;
+                    $val = ord($nodes[$byte]);
+                    if ($val>=65 && $val<=90)   { $r = $val - 65; } else
+                    if ($val>=97 && $val<=122)  { $r = $val - 97 + 26; } else
+                    if ($val>=48 && $val<=57)   { $r = $val - 48 + 52; } else
+                    if ($val==43) { $r = 62; }
+
+                    $r = ($r & $offset)>>(4-($data[1]%3)*2);
+                    if ($r & 2) { $good = true; }
+                }
+            } else $good = false;
         }
 
         if ($good) {
@@ -80,7 +102,7 @@ function updateBadges($_nbStars,$_nbNodes)
         mysql_query("INSERT INTO `".$_SESSION['prefix']."reward` (`User_Id`, `Award_Id`) VALUES ".$values.
                     " ON DUPLICATE KEY UPDATE `New`=false");
     }
-    return $ret;
+    return $nbstars;
 }
 
 
@@ -88,12 +110,12 @@ $stats          = 0;
 $pinned         = "";
 $nbnew          = 0;
 $unreadbadges   = "";
+$nstars         = 0;
 
 if (!$error) {
 
     if ($_GET["action"]=="upd") {
-        $stats = getUserStats();
-        updateBadges($stats[0],$stats[1]);
+        $nstars = updateBadges($_GET["node"]);
 
         $pinned = getPinnedBadge();
         $unreadbadges=getUnreadBadges();
@@ -155,7 +177,7 @@ echo '  "status" : "'.$status.'",';
 if ($error) { echo '  "error" : '.$error.','; }
 echo '  "textStatus" : "'.$textstatus.'"';
 if ($json)          { echo ', "awards":['.$json.']'; }
-if ($stats)         { echo ',  "stars" : "'.$stats[0].'"'; }
+if ($nstars)        { echo ',  "stars" : "'.$nstars.'"'; }
 if ($nbnew)         { echo ',  "nbnew" : '.$nbnew; }
 if ($unreadbadges)  { echo ',  "unreadbadges" : '.$unreadbadges; }
 if ($pinned)        { echo ',  "pin" : "'.$pinned.'"'; }

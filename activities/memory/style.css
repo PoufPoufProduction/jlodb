@@ -12,11 +12,12 @@
 .memory table#board td.false          { background-color:rgba(255,80,65,1.0); }
 .memory table#board td.good           { background-color:rgba(80,255,65,1.0); }
 .memory.active #board td.active div   { cursor:pointer; }
-.memory div#splash                    { font-size:.3em; }
-.memory div#splash>div                { background-image:url("../../res/img/banners/memory.svg"); }
-.memory div#splash .text              { font-size:.5em; width:60%; }
-.memory div#splash .text h1           { padding-left:.5em; }
-.memory div#splash .text p            { margin:.5em; }
-.memory div#splash table              { border:0; background-color:none; }
-.memory div#splash #number_l          { width:14em; }
-.memory div#splash #number_v          { width:2em; }
+.memory div#splashex                  { font-size:.2em; background-image:url("../../res/img/banners/memory.svg");
+                                        background-color:rgba(0,0,0,0.2); }
+.memory div#splashex h1               { position:absolute; top:11%; left:66%; text-align:center; width:30%;
+                                        font-size:1.1em; color:#310; }
+.memory div#splashex #explanation     { position:absolute; top:18%; left:69%; font-size:.8em; width:25%; font-style:italic;
+                                        text-align:justify; }
+.memory div#splashex table              { margin-top:4em; font-size:.6em; border:0; background-color:none; }
+.memory div#splashex #number_l          { width:14em; }
+.memory div#splashex #number_v          { width:2em; }

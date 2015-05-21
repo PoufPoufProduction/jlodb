@@ -47,7 +47,7 @@ if (!$error) {
             mysql_query('CREATE TABLE  `'.$_SESSION['prefix'].'friend` ('.
                             '`User_Id`                  VARCHAR( 64 ) NOT NULL, '.
                             '`Friend_Id`                VARCHAR( 64 ) NOT NULL, '.
-                            '`Host`                     VARCHAR( 64 ), '.
+                            '`Host`                     VARCHAR( 64 ) DEFAULT NULL, '.
                             '`Group_Name`               VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_bin, '.
                             '`Timestamp`                TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, '.
                             '`Accept`                   BOOL DEFAULT false, '.
@@ -164,17 +164,28 @@ if (!$error) {
         $status = "success";
 
         // UPDATE TEST USERS
+        mysql_query("UPDATE `".$_SESSION['prefix']."user` SET `User_Theme`='theme2' WHERE `User_Id`='test1'");
         mysql_query("INSERT INTO `".$_SESSION['prefix']."state` VALUES ('test1', '1' ,".
             "'2222222222222222222222222222222222222222222222222222222222222222222222222222222.')");
         mysql_query("INSERT INTO `".$_SESSION['prefix']."state` VALUES ('test1', '1001' , '5555555555555555.')");
+        mysql_query("INSERT INTO `".$_SESSION['prefix']."group` VALUES ".
+                    "('group1', 'test1' , 1),('group2', 'test1' , 2),('group3', 'test1' , 3)");
+        mysql_query("INSERT INTO `".$_SESSION['prefix']."friend` (`User_Id`, `Friend_Id`) VALUES ('test1','test2')");
 
-
+        mysql_query("UPDATE `".$_SESSION['prefix']."user` SET `User_Date`=NOW(), `User_Days`=7 WHERE `User_Id`='test2'");
         mysql_query("INSERT INTO `".$_SESSION['prefix']."state` VALUES ('test2', '1' ,".
             "'555555555555555555555555555555555555555555555555555555555555555555.')");
         mysql_query("INSERT INTO `".$_SESSION['prefix']."state` VALUES ('test2', '101' ,".
             "'22222222222222222222222222222222222222222222222222222222222222222222222222222222')");
         mysql_query("INSERT INTO `".$_SESSION['prefix']."genius` VALUES ('test2', 'EAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAAQAAAAAA')");
+        mysql_query("INSERT INTO `".$_SESSION['prefix']."group` VALUES ('group1', 'test2' , 1)");
 
+        $values = "";
+        for ($i=3; $i<50; $i++) {
+            if (strlen($values)) { $values.=","; }
+            $values.= "('test2','test".$i."','group1',true),('test".$i."','test2',NULL,true)";
+        }
+        mysql_query("INSERT INTO `".$_SESSION['prefix']."friend` (`User_Id`, `Friend_Id`, `Group_Name`, `Accept`) VALUES ".$values);
     }
 }
 

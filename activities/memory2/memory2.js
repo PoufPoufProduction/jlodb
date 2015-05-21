@@ -105,7 +105,7 @@
                 // Locale handling
                 $this.find("h1#label").html(settings.label);
                 if(settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
-                if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         stop: function($this, _i) {
@@ -201,8 +201,6 @@
             // Next level
             next: function() {
                 var $this=$(this),settings = $(this).data("settings");
-                // Hide instruction
-                $this.find("#splash").hide();
                 // Check stuff
                 setTimeout(function() { helpers.demo($this); }, 500);
 

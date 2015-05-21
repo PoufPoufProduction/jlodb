@@ -185,6 +185,41 @@
     </rdf:Description>
 
     <rdf:Description>
+        <dct:identifier>50</dct:identifier>
+        <dct:title xml:lang="fr-FR">Associer l'addition de deux nombres compris entre 0 et 50 à son résultat.</dct:title>
+        <dct:description><![CDATA["gen":"function(i){var a = Math.floor(Math.random()*51), b = Math.floor(Math.random()*51); return [\\\"\\\"+a+\\\"+\\\"+b,a+b];}","nbvalues":5,"number":5,"len":4,"font":1.7]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>10</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>100</dct:identifier>
+        <dct:title xml:lang="fr-FR">Associer l'addition de deux nombres compris entre 0 et 100 à son résultat.</dct:title>
+        <dct:description><![CDATA["gen":"function(i){var a = Math.floor(Math.random()*101), b = Math.floor(Math.random()*101); return [\\\"\\\"+a+\\\"+\\\"+b,a+b];}","nbvalues":5,"number":5,"len":5,"font":1.7]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>10</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>500</dct:identifier>
+        <dct:title xml:lang="fr-FR">Associer l'addition de deux nombres compris entre 0 et 500 à son résultat.</dct:title>
+        <dct:description><![CDATA["gen":"function(i){var a = Math.floor(Math.random()*501), b = Math.floor(Math.random()*501); return [\\\"\\\"+a+\\\"+\\\"+b,a+b];}","nbvalues":5,"number":5,"len":5,"font":1.7]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>10</dct:alternative>
+    </rdf:Description>
+
+    <!-- COMPLEMENTARY -->
+
+    <rdf:Description>
         <dct:identifier>c10</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer deux nombres compris entre 1 et 10 dont la somme vaut 10.</dct:title>
         <dct:description><![CDATA["gen":"function(i){var a = Math.floor(Math.random()*9)+1, b = 10-a; return [a,b];}","nbvalues":5,"number":5,"len":3,"font":1.7]]></dct:description>

@@ -9,8 +9,19 @@
         score       : 1,                                        // The score (from 1 to 5)
         number      : 0,                                        // Number of exercices during the same session
         multiple    : false,                                    // General multiple choices
+        randomize   : false,                                    // Random response
         debug       : false                                     // Debug mode
     };
+
+    var regExp = [
+        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
+        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
+        "\\\[br\\\]",                               "<br/>",
+        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
+        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
+        "\\\[icon4\\\]([^\\\[]+)\\\[/icon4\\\]",    "<div class='icon f4'><img src='$1'/></div>",
+        "\\\[quote\\\](.+)\\\[/quote\\\]",          "<div class='q'>$1</div>"
+    ];
 
     // private methods
     var helpers = {
@@ -106,7 +117,7 @@
 
                 // Decoration
                 if (settings.fgl) { $this.find("#fgl").html("<img src='res/img/"+settings.fgl+".svg'/>"); }
-                if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         // Update the timer
@@ -130,13 +141,24 @@
             $this.find("#submit").show().attr("class","");
             $this.find("#board").attr("class",classvalue);
             $this.find("#board #responses").html("");
-            $this.find("#board #text>div").html(settings.data[settings.it].question);
+
+            var vQuestion = settings.data[settings.it].question;
+            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
+                var vReg = new RegExp(regExp[i*2],"g");
+                vQuestion = vQuestion.replace(vReg,regExp[i*2+1]);
+            }
+
+            $this.find("#board #text>div").html(vQuestion);
 
             settings.questmul = settings.multiple;
             if (settings.data[settings.it].good.length>1) { settings.questmul = true; }
 
             settings.r = $.merge([], settings.data[settings.it].good);
-            if (settings.data[settings.it].wrong) { settings.r = $.merge(settings.r, settings.data[settings.it].wrong).sort(); }
+            if (settings.data[settings.it].wrong) {
+                settings.r = $.merge(settings.r, settings.data[settings.it].wrong);
+                if (settings.randomize) { settings.r.sort( function() { return 0.5 - Math.random(); } );}
+                else                    { settings.r.sort(); }
+            }
             $this.find("#board #responses").attr("class","nb"+settings.r.length);
 
             $(settings.r).each(function(_index) {
@@ -234,7 +256,6 @@
                 settings.context.onquit($this,{'status':'abort'});
             },
             next: function() {
-                $(this).find("#splash").hide();
                 // CHECK IF THERE IS AN EVENT BEFORE QUESTION
                 if (false) {
                 }

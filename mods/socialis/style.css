@@ -28,12 +28,18 @@
 .blink4       { -webkit-animation: dbl-blink 5s step-start infinite 4s;
                                   animation: dbl-blink 5s step-start infinite 4s; }
 
+#checkKO                        { width:100%; height:100%; display:none; color:white; }
+
 #footer #cancel                 { float:left; margin-left:.2em; }
 #footer #valid                  { float:right; margin-right:.2em; }
 
 #main #score .splash01          { top:5%;left:16%; font-size:3em; }
 #main #score .splash02          { top:25%;left:40%; font-size:2em; }
 #main #score #newreward         { font-size:4em; position:absolute; top:10%; left:70%; }
+
+#finish>div #label>div          { width: 40em; margin-left: 20em; }
+#finish>div #label>div.s        { animation: animfooter 20s infinite 2s;
+                                  -webkit-animation: animfooter 20s infinite 2s; }
 
 #genius>#waiting                { top:0.2em; left:0.6em; font-size:7em; z-index:100;}
 
@@ -56,8 +62,8 @@
 #main.theme2 #boardmask #example { background-image:url("../../res/img/icon/menu02bg.svg"); }
 
 #genius #boardfooter            { position:absolute; font-size:.5em; color:white; top:93%; left:14%; width:49%; }
-#genius #boardfooter>div        { width:40em; margin-left:20em; color:#FDA;
-                                  animation: animfooter 17s infinite 5s;
+#genius #boardfooter>div        { width:40em; margin-left:20em; color:#FDA; }
+#genius #boardfooter>div.s      { animation: animfooter 17s infinite 5s;
                                   -webkit-animation: animfooter 17s infinite 5s; }
 #main.theme2 #boardfooter     { top:94%; left:13.5%; }
 #main.theme2 #boardfooter>div { color:black;  }
@@ -65,7 +71,8 @@
 .avatar                     { position:relative; overflow:visible; }
 .avatar .gonz               { width:100%; height:100%; overflow:hidden;}
 .avatar .badge              { font-size:0.5em; width:1em; height:1em; position:absolute; top:-0.05em; left:1.7em;
-                              background-color:black; border-radius:.5em; display:none; }
+                              background-color:rgba(80,75,60,1); border-radius:.5em; display:none; }
+.theme2 .avatar .badge      { background-color:white; }
 
 #genius>#user                   { position:absolute; top:9.5em; left:10em; width:5.9em; height:2.3em;
                                   background-color:rgba(120,100,80,0.6); }
@@ -110,8 +117,8 @@
 #main>#awards #thumbnails>div.s { background-color:red; }
 #main>#awards #thumbnails>div .nn { position:absolute; font-size:.4em; background-color:red; border-radius:.5em; color:white;
                                   width:1em; height:1em; top:1.8em; left:1.8em; }
-#main>#awards #text             { height:4em; background-color:rgba(255,255,255,0.2); border:.1em solid white; border-width:0.1em 0 0 0;
-                                  font-size:.7em; color:#241F1C; padding:.1em; padding-left:.5em; cursor:pointer; }
+#main>#awards #text             { height:4.1em; background-color:rgba(255,255,255,0.2); border:.1em solid white; border-width:0.1em 0 0 0;
+                                  font-size:.6em; color:#241F1C; padding:.1em; padding-left:.5em; cursor:pointer; }
 #main>#awards #text.pinned      { background-color:rgba(0,0,0,0.5); color:#fda; }
 
 #main.theme2 #awards>div        { border-radius:0; border:.1em solid black; background-color:rgba(128,128,128,0.9); }
@@ -164,7 +171,8 @@
 #board #finish                  { z-index:50; }
 
 #main>#friend>div               { position:relative; font-size:.5em; width:30em; height:20em; top:1em; left:1em;
-                                  background-color:rgba(255,240,200,0.8); border-radius:.5em;}
+                                  background-color:rgba(128,120,100,0.9); border-radius:.5em;
+                                  background-image:url("../../res/img/background/book06.svg"); background-repeat:repeat; }
 #main>#friend #popup            { z-index:11; }
 #main>#friend #popup>div        { font-size:.8em; width:15em; background-color:#555; border-radius:.75em; padding:.5em;
                                   margin-top:3em; margin-left:2em; }
@@ -172,20 +180,23 @@
 #main>#friend #popup input      { float:left; font-size:1em; height:1.19em; width:13.3em; border:0;
                                   padding-left:.5em; background-color:#AAA; color:white; border-radius:.5em 0 0 .5em;}
 #main>#friend #popup .icon      { padding:.1em; margin-left:1em; background-color:#333;  border-radius:0 .5em .5em 0;}
-#main>#friend #menu             { width:6em; height:20em; float:left; background-color:rgba(255,255,255,0.1); }
+
+
+#main>#friend #menu             { width:6em; height:20em; float:left; background-color:rgba(0,0,0,0.1); }
 #main>#friend #menu #quit       { font-size:2em; width:1em; height:1em; cursor:pointer; }
-#main>#friend #group            { height:17em; color:white; }
-#main>#friend #group>.e         { margin:.25em;background-color:#333;padding:.4em .25em;border-radius:.5em;cursor:pointer;
-                                  font-size:.8em;height:1.2em;}
+#main>#friend #group            { height:17em; color:#fda; }
+#main>#friend #group>.e         { margin:.25em;border:1px solid #fda; background-color:rgba(0,0,0,0.5);padding:.4em .25em;cursor:pointer;
+                                  font-size:.8em;height:1.2em; }
 #main>#friend #group>.e.o       { background-color:blue;  }
 #main>#friend #group>.e.s       { background-color:red; }
 #main>#friend .popup            { height:19em; overflow:auto; display:none; }
-#main>#friend #list             { height:17.8em; overflow:auto; }
+#main>#friend #list             { height:19em; overflow:auto; }
 #main>#friend .mask             { opacity:0.98; font-size:2em;}
 #main>#friend .mask #quit       { font-size:1em; width:1em; height:1em; position:absolute; top:0; left:0; cursor:pointer; }
-#main>#friend #genius>div       { font-size:.8em; width:16em; height:12em; margin:1em 2em; position:relative; border-radius:.25em;}
+#main>#friend #genius>div       { font-size:.8em; width:16em; height:12em; margin:.2em auto; position:relative; border-radius:.25em;}
 #main>#friend #genius #board    { width:100%; height:100%; }
-#main>#friend #genius #avatar   { width:3em;height:3em;border-radius:.5em;overflow:hidden;position:absolute;left:12.75em;top:8.75em; }
+#main>#friend #genius #avatar   { font-size:.4em; width:11.5em;text-align:right;color:#FDA;
+                                  font-weight:bold;position:absolute;left:70%;top:94%; }
 #main>#friend #course>div       { font-size:.8em; width:10em; height:9.5em; margin:1em 5em; position:relative; border-radius:.25em;
                                   background-color:#444466; }
 #main>#friend #course .h1       { border:1px solid white; border-width:0 0 1px 0; font-size:1.2em; text-align:center; color:white; }
@@ -216,7 +227,7 @@
 #main>#friend #view             { float:left; width:24em; }
 
 #main>#friend .user                       { font-size:1.1em; width:10em; height:4em; margin:.1em; padding:.1em; background-color:#444466;
-                                            color:white; border-radius:.5em; float:left; }
+                                            color:white; float:left; }
 #main>#friend .user.small                 { font-size:.9em; width:6em; }
 #main>#friend .user .legend               { float:left; width:6em; }
 #main>#friend .user .avatar               { width:4em; height:4em; border-radius:.5em; float:left; }
@@ -238,6 +249,15 @@
 #main>#friend .user.ui-draggable-dragging .friendstar { display:none; }
 #main>#friend .user.ui-draggable-dragging .nbstars    { display:none; }
 #main>#friend .user.ui-draggable-dragging .name       { display:none; }
+
+#main.theme2>#friend>div         { border-radius:0; border:.1em solid black; background-color:rgba(128,128,128,0.9); }
+#main.theme2>#friend #menu       { background-color:rgba(255,255,255,0.4); }
+#main.theme2>#friend #group      { color:white; }
+#main.theme2>#friend #group>.e   { border:1px solid white; }
+#main.theme2>#friend #list       { background-color:white; background-image:url("../../res/img/background/book03.svg");
+                                   background-repeat:repeat; }
+#main.theme2>#friend #genius #avatar { color:black; }
+#main.theme2>#friend #genius>div    { border:1px solid black; border-radius:0;}
 
 #main>#tibibi>div               { font-size:.5em; width:22em; height:20em; margin:1em 5em; background-color:rgba(255,240,200,0.8);
                                   border-radius:.5em;}

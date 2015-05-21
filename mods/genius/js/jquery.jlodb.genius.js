@@ -188,7 +188,9 @@
             $this.find("#"+settings.menu).menu({
                 list    : _ex,
                 state   : _state,
-                onupdate: function($menu, _state) { if (settings.onupdate) { settings.onupdate($this, $menu, settings.id, _state); } },
+                onupdate: function($menu, _state, _lastId) {
+                    if (settings.onupdate) { settings.onupdate($this, $menu, settings.id, _state, _lastId); }
+                },
                 onclick : function($menu, _args)  { if (settings.onclick)  { settings.onclick($this, $menu, _args); } }
             });
             if (settings.onshow) { settings.onshow($this); }
@@ -273,7 +275,6 @@
             // A NODE IS FINISHED, SO OPEN THE FOLLOWINGS
             finish: function() {
                 var $this = $(this), settings = helpers.settings($this);
-                $(this).find("#finish").show();
 
                 helpers.base64.node($this, settings.id, s.finished);
 
@@ -289,6 +290,7 @@
                 });
                 helpers.states($this);
                 if (settings.onstate) { settings.onstate($this, settings.nodes); }
+                $(this).find("#finish").show();
 
             },
             // GET AN SVG ELEMENT FROM THE GRAPH

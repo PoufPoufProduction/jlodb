@@ -1,7 +1,7 @@
 (function($) {
     var defaults = {
         onclick : function($this, _args) {},
-        onupdate: function($this, _state) {}
+        onupdate: function($this, _state, _lastId) {}
     };
 
     // private methods
@@ -62,7 +62,7 @@
                         helpers.state($this,settings.last+1);
                     }
 
-                    settings.onupdate($this, settings.state);
+                    settings.onupdate($this, settings.state, settings.last);
                 }
             }
         },

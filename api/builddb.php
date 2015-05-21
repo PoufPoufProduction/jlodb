@@ -23,17 +23,17 @@ if (!$error) {
         $error = 100;
     }
     else {
-        mysql_query('DROP TABLE '.$_SESSION['prefix'].'jlodb');
-        mysql_query('DROP TABLE '.$_SESSION['prefix'].'activity');
-        mysql_query('DROP TABLE '.$_SESSION['prefix'].'exercice');
         mysql_query('DROP TABLE '.$_SESSION['prefix'].'tags');
+        mysql_query('DROP TABLE '.$_SESSION['prefix'].'exercice');
+        mysql_query('DROP TABLE '.$_SESSION['prefix'].'activity');
+        mysql_query('DROP TABLE '.$_SESSION['prefix'].'jlodb');
 
         // BUILD THE TABLES
        if (mysql_query('CREATE TABLE `'.$_SESSION['prefix'].'jlodb` ('.
                             '`Version`                  VARCHAR(50)     NOT NULL, '.
                             '`Date`                     DATE            NOT NULL, '.
                             '`Language`                 VARCHAR(50)     NOT NULL, '.
-                            '`Lock`                     CHAR'.
+                            '`Lock`                     BOOL DEFAULT false'.
                         ') ENGINE=InnoDB', $link) &&
            mysql_query('CREATE TABLE `'.$_SESSION['prefix'].'activity` ('.
                             '`Activity_Name`            VARCHAR( 64 )   NOT NULL , '.
@@ -144,7 +144,7 @@ if (!$error) {
 
                 // FILL THE JLODB TABLE
                 $sql = "INSERT INTO `".$_SESSION['prefix']."jlodb` (`Version`,`Date`,`Language`,`Lock`) VALUES ('".
-                       $version."','".date("Ymd")."','".$lang."',0)";
+                       $version."','".date("Ymd")."','".$lang."',false)";
                 mysql_query($sql , $link);
 
                 $status = "success";
