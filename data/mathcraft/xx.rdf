@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dct="http://purl.org/dc/terms/">
+
+    <rdf:Description>
+        <dct:identifier>x</dct:identifier>
+        <dct:title xml:lang="fr-FR">Composer librement des formules mathématiques.</dct:title>
+        <dct:description><![CDATA["debug":true,"data":[{"figure":{"content":"<path d='M 80,400 L 200,50 L 500,80 L 80,400 z' class='l'/><path d='M 200,50 L 290,240 L 380,430' class='l'/><circle cx='80' cy='400' r='5' class='p'/><circle cx='200' cy='50' r='5' class='p'/><circle cx='500' cy='80' r='5' class='p'/><circle cx='290' cy='240' r='5' class='p'/><circle cx='380' cy='430' r='5' class='p'/><text transform='translate(100,200)'>A</text>"},"values":[{"type":"v","value":1},{"type":"v","value":"M"},{"type":"v","subtype":"segment","value":"AB"},{"type":"v","value":"AC"},{"type":"v","subtype":"segment","value":"CD"},{"type":"tree","abstract":"M∈[AB]","value":"isin","children":[{"type":"v","value":"M"},{"type":"v","subtype":"segment","value":"AB"}]},{"type":"op","value":"middle"},{"type":"op","value":"complex"},{"type":"v","value":"b"},{"type":"v","value":"x"},{"type":"op","value":"isin"},{"type":"op","value":"div"},{"type":"op","value":"perp"},{"type":"op","value":"eq"},{"type":"op","value":"par"},{"type":"op","value":"parallelogram"},{"type":"v","value":"ABCD"},{"type":"op","value":"ident"},{"type":"action","value":"eval"}],"result":"2*5"}],"class":"in ex","glossary":true]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":[["Exercice d'écriture mathématique [b]libre[/b]"]]]]></dct:description>
+        <dct:extent>15</dct:extent>
+        <dct:subject>game</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>4</dct:type>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>001</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier un quadrilatère à partir du milieu de ses diagonales.</dct:title>
+        <dct:description><![CDATA["data":[{"figure":{"content":"<path d='M 80,400 L 200,50 L 500,80 L 80,400 z' class='l'/><path d='M 200,50 L 290,240 L 380,430' class='l'/><circle cx='80' cy='400' r='5' class='p'/><circle cx='200' cy='50' r='5' class='p'/><circle cx='500' cy='80' r='5' class='p'/><circle cx='290' cy='240' r='5' class='p'/><circle cx='380' cy='430' r='5' class='p'/><text transform='translate(50,400)'>A</text><text transform='translate(170,50)'>C</text><text transform='translate(510,80)'>B</text><text transform='translate(285,220)'>M</text><text transform='translate(390,430)'>K</text>"},"values":[{"type":"tree","abstract":"#1","value":"middle","children":[{"type":"v","value":"M"},{"type":"v","subtype":"segment","value":"AB"}]},{"type":"tree","abstract":"#2","value":"middle","children":[{"type":"v","value":"M"},{"type":"v","subtype":"segment","value":"CK"}]}],"result":["parallelogram(ACBK)","parallelogram(CAKB)"]}],"class":"ex","glossary":true,"modif":false]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":[["Soit ABC un triangle, et [1]M le milieu de [AB][/1]. K est le point tel que [2]M est le milieu de [CK][/2].","","[b]Montrez que le quadrilatère ACBK est un parallélogramme.[/b]"]]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>002</dct:identifier>
+        <dct:title xml:lang="fr-FR">Démontrer l'alignement de 3 points issus de perpendiculaires à 2 deux droites parallèles.</dct:title>
+        <dct:description><![CDATA["data":[{"figure":{"content":"<path d='M -30.98,478.71 L 370.45,-55.67' class='s a d'/><path d='M 83.90,499.36 L 485.33,-35.02' class='s d'/><path d='M 209.15,159.03 L 505.04,381.15' class='s'/><path d='M 270.44,77.47 L 94.59,311.59 L 505.04,381.15 L 270.44,77.47 z' class='l'/><path d='M 282.69,234.65 L 295.15,244.02 L 305,230.90' class='s'/><path d='M 199.37,172.09 L 211.84,181.47 L 221.69,168.34' class='s'/><circle cx='270.44' cy='77.47' r='5' class='p'/><circle cx='94.59' cy='311.59' r='5' class='p'/><circle cx='505.04' cy='381.15' r='5' class='p'/><circle cx='210.13' cy='330.84' r='5' class='p'/><circle cx='336.20' cy='162.86' r='5' class='p'/><circle cx='292.46' cy='221.46' r='5' class='p'/><circle cx='209.1' cy='159.07' r='5' class='p'/><circle cx='210.13' cy='330.84' r='5' class='p'/><text transform='translate(260,65)'>B</text><text transform='translate(60,320)'>C</text><text transform='translate(515,385)'>A</text><text transform='translate(210,365)' class='dd'>J</text><text transform='translate(360,170)' class='dd'>I</text><text transform='translate(282,211)'>H</text><text transform='translate(190,149)'>K</text>"},"values":[{"type":"tree","abstract":"#1","value":"isin","children":[{"type":"v","value":"I"},{"type":"v","subtype":"segment","value":"AB"}]},{"type":"tree","abstract":"#2","value":"isin","children":[{"type":"v","value":"J"},{"type":"v","subtype":"segment","value":"AC"}]},{"type":"tree","abstract":"#3","value":"par","children":[{"type":"v","subtype":"line","value":"IJ"},{"type":"v","subtype":"line","value":"BC"}]},{"type":"tree","abstract":"#4","value":"perp","children":[{"type":"v","subtype":"line","value":"AH"},{"type":"v","subtype":"line","value":"IJ"}]},{"type":"tree","abstract":"#5","value":"perp","children":[{"type":"v","subtype":"line","value":"AK"},{"type":"v","subtype":"line","value":"BC"}]}],"result":["AK=AH"]}],"class":"in ex","glossary":true,"modif":false]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":[["Soit ABC un triangle. [1]I est un point du segment [AB][/1] et [2]J un point du segment [AC][/2] tels que [3](IJ) est parallèle à (BC)[/3]. [4]H est le pied de la hauteur issue de A[/4] dans le triangle AIJ. [5]K est le pied de la hauteur issue de A[/5] dans le triangle ABC.","[b]Montrez que A, H, et K sont alignés.[/b]"]]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>003</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier un rectangle.</dct:title>
+        <dct:description><![CDATA["data":[{"figure":{"content":"<path d='M 0,180 L 640,80' class='s d'/><path d='M 200,148.75 L 228.31,329.56' class='s'/><path d='M 478.97,-108.12 L 578.97,531.88' class='s'/><path d='M 100,350 L 200,148.75 L 540,280 L 100,350 z' class='l'/><path d='M 225.27,310.93 L 243.43,307.91 L 246.45,326.77' class='s'/><circle cx='100' cy='350' r='5' class='p'/><circle cx='200' cy='148.75' r='5' class='p'/><circle cx='540' cy='280' r='5' class='p'/><circle cx='228.31' cy='329.56' r='5' class='p'/><circle cx='511.5' cy='100' r='5' class='p'/><text transform='translate(65,350)'>C</text><text transform='translate(190,130)'>A</text><text transform='translate(550,280)'>B</text><text transform='translate(220,370)' class='dd'>H</text><text transform='translate(520,90)' class='dd'>K</text>"},"values":[{"type":"tree","abstract":"#1","value":"perp","children":[{"type":"v","subtype":"line","value":"AH"},{"type":"v","subtype":"line","value":"BC"}]},{"type":"tree","abstract":"#2","value":"isin","children":[{"type":"v","value":"H"},{"type":"v","subtype":"line","value":"BC"}]},{"type":"tree","abstract":"#3","value":"par","children":[{"type":"v","subtype":"line","value":"AK"},{"type":"v","subtype":"line","value":"BC"}]},{"type":"tree","abstract":"#4","value":"par","children":[{"type":"v","subtype":"line","value":"BK"},{"type":"v","subtype":"line","value":"AH"}]}],"result":["rectangle(BKAH)","rectangle(AKBH)"]}],"class":"in ex","glossary":true,"modif":false]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":[["Soit ABC un triangle et [1]H le pied de la hauteur[/1] [2]issue de A[/2]. La [3]parallèle à (BC)[/3] passant par A coupe la [4]parallèle à (AH)[/4] passant par B en un point K.","","[b]Montrez que AHBK est un rectangle.[/b]"]]]]></dct:description>
+        <dct:extent>5</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
+    </rdf:Description>
+</rdf:RDF>

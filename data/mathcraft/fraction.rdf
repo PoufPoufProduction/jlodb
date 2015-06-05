@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dct="http://purl.org/dc/terms/">
+
+
+    <rdf:Description>
+        <dct:identifier>24</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier une fraction représentée par un disque découpé entre 2 et 4 fois.</dct:title>
+        <dct:description><![CDATA["number":5,"values":[{"type":"v","value":1},{"type":"v","value":2},{"type":"v","value":3},{"type":"v","value":4},{"type":"v","value":5},{"type":"v","value":6},{"type":"v","value":7},{"type":"v","value":8},{"type":"v","value":9},{"type":"v","value":10},{"type":"v","value":11},{"type":"v","value":12},{"type":"v","value":13},{"type":"v","value":14},{"type":"v","value":15},{"type":"v","value":16},{"type":"op","value":"div"}],"gen":"function(){var des=[2,3,4],de=des[Math.floor(Math.random()*des.length)],num=Math.floor(Math.random()*de)+1,ret=\\\"<div style='width:1em;height:1em;margin-left:.2em;font-size:5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>.s {fill:none;stroke:black;stroke-width:0.5;}.f{fill:gray;}</style></def>\\\";if (num==de) { ret+=\\\"<circle cx='24' cy='24' r='22' class='f'/>\\\"; } else { ret+=\\\"<path d='M24,24 v-22 a22,22 0 \\\"+(num>de/2?1:0)+\\\",1 \\\"+(22*Math.sin(2*Math.PI*num/de))+\\\",\\\"+(22-22*Math.cos(2*Math.PI*num/de))+\\\" z' class='f'/>\\\"; } for (var i=0;i<de;i++) { ret+=\\\"<line x1='24' y1='24' x2='\\\"+(24+22*Math.sin(2*Math.PI*i/de))+\\\"' y2='\\\"+(24-22*Math.cos(2*Math.PI*i/de))+\\\"' class='s'/>\\\"; } ret+=\\\"<circle cx='24' cy='24' r='22' class='s'/></svg></div>\\\"; return {\\\"figure\\\":{\\\"content\\\":ret},\\\"result\\\":num+\\\"/\\\"+de } }","err":2]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":[["Représentez sous la forme d'une fraction la valeur ci-dessus."]]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>216</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>248</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier une fraction représentée par un disque découpé entre 2 et 4 fois.</dct:title>
+        <dct:description><![CDATA["number":5,"values":[{"type":"v","value":1},{"type":"v","value":2},{"type":"v","value":3},{"type":"v","value":4},{"type":"v","value":5},{"type":"v","value":6},{"type":"v","value":7},{"type":"v","value":8},{"type":"v","value":9},{"type":"v","value":10},{"type":"v","value":11},{"type":"v","value":12},{"type":"v","value":13},{"type":"v","value":14},{"type":"v","value":15},{"type":"v","value":16},{"type":"op","value":"div"}],"gen":"function(){var des=[2,4,4,8,8],de=des[Math.floor(Math.random()*des.length)],num=Math.floor(Math.random()*de)+1,ret=\\\"<div style='width:1em;height:1em;margin-left:.2em;font-size:5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>.s {fill:none;stroke:black;stroke-width:0.5;}.f{fill:gray;}</style></def>\\\";if (num==de) { ret+=\\\"<circle cx='24' cy='24' r='22' class='f'/>\\\"; } else { ret+=\\\"<path d='M24,24 v-22 a22,22 0 \\\"+(num>de/2?1:0)+\\\",1 \\\"+(22*Math.sin(2*Math.PI*num/de))+\\\",\\\"+(22-22*Math.cos(2*Math.PI*num/de))+\\\" z' class='f'/>\\\"; } for (var i=0;i<de;i++) { ret+=\\\"<line x1='24' y1='24' x2='\\\"+(24+22*Math.sin(2*Math.PI*i/de))+\\\"' y2='\\\"+(24-22*Math.cos(2*Math.PI*i/de))+\\\"' class='s'/>\\\"; } ret+=\\\"<circle cx='24' cy='24' r='22' class='s'/></svg></div>\\\"; return {\\\"figure\\\":{\\\"content\\\":ret},\\\"result\\\":num+\\\"/\\\"+de } }","err":2]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":[["Représentez sous la forme d'une fraction la valeur ci-dessus."]]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>216</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>216</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier une fraction représentée par un disque découpé entre 2 et 16 fois.</dct:title>
+        <dct:description><![CDATA["number":5,"values":[{"type":"v","value":1},{"type":"v","value":2},{"type":"v","value":3},{"type":"v","value":4},{"type":"v","value":5},{"type":"v","value":6},{"type":"v","value":7},{"type":"v","value":8},{"type":"v","value":9},{"type":"v","value":10},{"type":"v","value":11},{"type":"v","value":12},{"type":"v","value":13},{"type":"v","value":14},{"type":"v","value":15},{"type":"v","value":16},{"type":"op","value":"div"}],"gen":"function(){var des=[2,3,4,5,6,8,9,12,16],de=des[Math.floor(Math.random()*des.length)],num=Math.floor(Math.random()*de)+1,ret=\\\"<div style='width:1em;height:1em;margin-left:.2em;font-size:5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>.s {fill:none;stroke:black;stroke-width:0.5;}.f{fill:gray;}</style></def>\\\";if (num==de) { ret+=\\\"<circle cx='24' cy='24' r='22' class='f'/>\\\"; } else { ret+=\\\"<path d='M24,24 v-22 a22,22 0 \\\"+(num>de/2?1:0)+\\\",1 \\\"+(22*Math.sin(2*Math.PI*num/de))+\\\",\\\"+(22-22*Math.cos(2*Math.PI*num/de))+\\\" z' class='f'/>\\\"; } for (var i=0;i<de;i++) { ret+=\\\"<line x1='24' y1='24' x2='\\\"+(24+22*Math.sin(2*Math.PI*i/de))+\\\"' y2='\\\"+(24-22*Math.cos(2*Math.PI*i/de))+\\\"' class='s'/>\\\"; } ret+=\\\"<circle cx='24' cy='24' r='22' class='s'/></svg></div>\\\"; return {\\\"figure\\\":{\\\"content\\\":ret},\\\"result\\\":num+\\\"/\\\"+de } }","err":2]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":[["Représentez sous la forme d'une fraction la valeur ci-dessus."]]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>216</dct:alternative>
+    </rdf:Description>
+</rdf:RDF>

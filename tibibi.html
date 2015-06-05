@@ -505,7 +505,7 @@ window.onload = function() {
     <div id="main">
         <div id="topmenu">
             <div class="icon l" onclick="tibibi.group.open();" ontouchstart="tibibi.group.open();event.preventDefault();">
-                <img src="mods/tibibi/res/img/people.svg"/></div>
+                <img src="mods/tibibi/res/img/newpeople.svg"/></div>
             <select id="ggroups" onchange="tibibi.menu.build();"><option></option></select>
             <div class="icon e" onclick="tibibi.group.edit();" ontouchstart="tibibi.group.edit();event.preventDefault();">
                 <img src="mods/tibibi/res/img/edit.svg"/></div>
@@ -514,7 +514,7 @@ window.onload = function() {
                 <img src="mods/tibibi/res/img/delete.svg"/></div>
 
             <div class="icon l" onclick="tibibi.course.open();" ontouchstart="tibibi.course.open();event.preventDefault();">
-                <img src="mods/tibibi/res/img/courses.svg"/></div>
+                <img src="mods/tibibi/res/img/newcourse.svg"/></div>
             <select id="gcourses" onchange="tibibi.course.load($(this).val(),false,true);"></select>
             <div class="icon e" onclick="tibibi.course.edit();" ontouchstart="tibibi.course.edit();event.preventDefault();">
                 <img src="mods/tibibi/res/img/edit.svg"/></div>
@@ -584,7 +584,7 @@ window.onload = function() {
                     <div class="label" id="loclog"></div><div class="input"><input type="text" name="username"/></div>
                     <div class="icon" onclick="$('#logpanel').toggleClass('s');"
                                       ontouchstart="$('#logpanel').toggleClass('s');event.preventDefault();">
-                        <img src="mods/tibibi/res/img/new.svg"/></div>
+                        <img src="mods/tibibi/res/img/newpeople.svg"/></div>
                 </div>
                 <div class="param">
                     <div class="label" id="locpwd"></div><div><input type="password" name="password"/></div>
@@ -604,7 +604,7 @@ window.onload = function() {
                 </input>
                 <div class="icon" onclick="tibibi.popup.valid(); event.stopPropagation();"
                                   ontouchstart="tibibi.popup.valid();event.stopPropagation();event.preventDefault();">
-                    <img src="mods/tibibi/res/img/edit.svg"/>
+                    <img src="mods/tibibi/res/img/valid.svg"/>
                 </div>
             </div></div>
         </div>

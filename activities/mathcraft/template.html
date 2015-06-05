@@ -1,0 +1,69 @@
+<div>
+    <div id="leftmenu">
+        <div id="figure"></div>
+        <div id="exercice"><div></div></div>
+        <div id="inventory">
+            <table class="zz">
+                <tr><td><div class="z"></div></td><td><div class="z"></div></td><td><div class="z"></div></td>
+                    <td><div class="z"></div></td><td><div class="z"></div></td><td><div class="z"></div></td>
+                    <td><div class="z"></div></td></tr>
+                <tr><td><div class="z"></div></td><td><div class="z"></div></td><td><div class="z"></div></td>
+                    <td><div class="z"></div></td><td><div class="z"></div></td><td><div class="z"></div></td>
+                    <td><div class="z"></div></td></tr>
+                <tr><td><div class="z"></div></td><td><div class="z"></div></td><td><div class="z"></div></td>
+                    <td><div class="z"></div></td><td><div class="z"></div></td><td><div class="z"></div></td>
+                    <td><div class="z"></div></td></tr>
+            </table>
+        </div>
+    </div>
+    <div id="rightmenu">
+        <div id="board">
+            <div id="editor"><div></div></div>
+            <div id="clear" class="button" ontouchstart="$(this).closest('.mathcraft').mathcraft('clear');event.preventDefault();"
+                     onclick="$(this).closest('.mathcraft').mathcraft('clear');">CLEAR</div>
+            <div id="glossary" class="button" ontouchstart="$(this).closest('.mathcraft').mathcraft('glossary');event.preventDefault();"
+                     onclick="$(this).closest('.mathcraft').mathcraft('glossary');">GLOSSARY</div>
+            <div id="book">
+                <div id="b"></div>
+                <div id="quitbook" class="button" onclick="$(this).closest('.mathcraft').mathcraft('closebook');"
+                     ontouchstart="$(this).closest('.mathcraft').mathcraft('closebook');event.preventDefault();">QUITTER</div>
+            </div>
+            <div id="mask"></div>
+        </div>
+        <div id="screen" ontouchstart="$(this).closest('.mathcraft').mathcraft('onscreen');event.preventDefault();"
+                     onclick="$(this).closest('.mathcraft').mathcraft('onscreen');"></div>
+        <div id="menu">
+            <div id="toinventory" ontouchstart="$(this).closest('.mathcraft').mathcraft('toinventory');event.preventDefault();"
+                     onclick="$(this).closest('.mathcraft').mathcraft('toinventory');">
+                <img src="res/img/control/toleft.svg"/>
+            </div>
+            <div id="exec" ontouchstart="$(this).closest('.mathcraft').mathcraft('execute');event.preventDefault();"
+                     onclick="$(this).closest('.mathcraft').mathcraft('execute');">
+                <img src="res/img/control/play.svg"/>
+            </div>
+            <div id="submit" ontouchstart="$(this).closest('.mathcraft').mathcraft('valid');event.preventDefault();"
+                     onclick="$(this).closest('.mathcraft').mathcraft('valid');">
+                <img src="res/img/control/valid.svg"/>
+            </div>
+            <!--
+            <div id="bar1" class="bar"></div>
+            <div id="result">
+                <table class="zz">
+                    <tr><td><div class="z"></div></td><td><div class="z"></div></td><td><div class="z"></div></td></tr>
+                </table>
+            </div>
+            <div id="bar2" class="bar"></div>
+            -->
+        </div>
+    </div>
+
+    <div id="touch01" ><div><img src="res/img/effects/touch01.svg"/></div></div>
+
+    <div id="splashex" ontouchstart="$(this).hide().closest('.mathcraft').mathcraft('next');event.preventDefault();"
+                     onclick="$(this).hide().closest('.mathcraft').mathcraft('next');"><div>
+        <h1 id="label"></h1>
+        <div id="guide"></div>
+    </div></div>
+
+</div>
+
