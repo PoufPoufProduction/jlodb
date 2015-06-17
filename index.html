@@ -4,8 +4,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>jLoDB - Javascript Learning Objects DataBase</title>
-    <script type="text/javascript" src="js/jquery-1.8.1.min.js"></script>
-    <script type="text/javascript" src="js/jquery-ui-1.8.23.custom.min.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
     <script type="text/javascript" src="js/jquery.svg.min.js"></script>
     <script type="text/javascript" src="js/jquery.jlodb.js"></script>
@@ -460,9 +460,9 @@ jlodb = {
                 $("#contentb").show();
                 $("#contentb").browser("onshow");
             },
-            export: function() {
+            ex: function() {
                 var values="";
-                $("#contentb .data .c0 span").each(function(_index) { values+=(_index?",":"")+$(this).text(); }); 
+                $("#contentb .data .c0 span").each(function(_index) { values+=(_index?",":"")+$(this).text(); });
                 values+="\n\n";
                 $("#contentb .data").each(function() {
                     var classification = $(this).find(".c1 img").attr("src").substr(23);
@@ -553,7 +553,7 @@ jlodb = {
 
                     $("#contentb").browser({
                       onReady:function($this){
-                        $("#contentb #jbrmenu").append("<div onclick='jlodb.page.browser.export();'>export</div>");
+                        $("#contentb #jbrmenu").append("<div onclick='jlodb.page.browser.ex();'>export</div>");
                       },
                       lang:"fr-FR", classification:jlodb.classification.data, context:{
                         Lancer:function(_id){ jlodb.run({id:_id}, false); },
@@ -567,17 +567,7 @@ jlodb = {
     }
 };
 
-// OVERRIDE METHODS
-/*
-jlodb.context.refresh = function(_begin) { $("#page").toggle(!_begin);}
-
-jlodb.score.l.menu = {
-    more:function() { return false; },
-    update:function(_state) {}
-};
-*/
-
-window.onload = function() {
+$(window).load(function() {
     // SPECIAL STUFF
     $("#activity").ontouchmove = function(e) { e.preventDefault(); }
 
@@ -588,8 +578,7 @@ window.onload = function() {
     $("body>div").css("margin-top", Math.floor(($(window).height()-$("body>div").height())/2)+"px").show();
 
     jlodb.home();
-}
-
+});
 
     </script>
 </head>

@@ -4,8 +4,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Genius</title>
-    <script type="text/javascript" src="js/jquery-1.8.1.min.js"></script>
-    <script type="text/javascript" src="js/jquery-ui-1.8.23.custom.min.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
     <script type="text/javascript" src="js/jquery.svg.min.js"></script>
     <script type="text/javascript" src="js/jquery.cookie.js"></script>
@@ -76,7 +76,7 @@ var genius = {
     }
 };
 
-window.onload = function() {
+$(window).load(function() {
     // SPECIAL STUFF
     document.ontouchmove = function(e) { e.preventDefault(); }
 
@@ -221,7 +221,7 @@ window.onload = function() {
         }
         else { alert(_check.status+": "+_check.textStatus); } });
 
-}
+});
 
 
 

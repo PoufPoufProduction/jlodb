@@ -4,8 +4,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Genius Socialis</title>
-    <script type="text/javascript" src="js/jquery-1.8.1.min.js"></script>
-    <script type="text/javascript" src="js/jquery-ui-1.8.23.custom.min.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
     <script type="text/javascript" src="js/jquery.svg.min.js"></script>
     <script type="text/javascript" src="js/jquery.cookie.js"></script>
@@ -491,7 +491,7 @@ var socialis = {
                             drop:function(event, ui) {
                                 if (!$(this).hasClass("s")) {
                                     var group = $(this).html();
-                                    var friend = $(ui.helper).find(".id").html();
+                                    var friend = $(ui.helper).find(".key").html();
                                     $(ui.helper).detach();
                                     socialis.getJSON("mods/socialis/api/friend.php", { action:"group", group:group, value:friend}, "",
                                         function(_data) {
@@ -617,28 +617,33 @@ var socialis = {
             }
             var legend=$("<div class='legend'></div>");
             legend.append("<div class='id'>"+_user.id+"</div>");
+            legend.append("<div class='key'>"+_user.key+"</div>");
             legend.append("<div class='name'>"+_user.first+" "+_user.last+"</div>");
-            legend.append("<div class='friendstar'><div class='icon'><img src='mods/socialis/res/img/star.svg'/></div>" +
+            legend.append("<div class='friendstar'><div class='tag'>"+_user.tag+"</div>"+
+                          "<div class='icon'><img src='mods/socialis/res/img/star.svg'/></div>" +
                           "<div class='nbstars'>"+(_user.stars?_user.stars:0)+"</div></div>");
+            if (_large&&_user.pin) {
+                legend.append("<div class='icon badge'><img src='mods/socialis/res/img/badges/"+_user.pin+".svg'/></div>");
+            }
             if (_type=="add") {
-                legend.append("<div class='icon' onclick='socialis.friend.op.process(this,\""+_user.id+"\",\"new\");'>"+
+                legend.append("<div class='icon' onclick='socialis.friend.op.process(this,\""+_user.key+"\",\"new\");'>"+
                               "<img src='mods/socialis/res/img/add.svg'/></div>");
             }
             else if (_type=="accept") {
-                legend.append("<div class='icon' onclick='socialis.friend.op.process(this,\""+_user.id+"\",\"ok\",socialis.friend.accept);'>"+
+                legend.append("<div class='icon' onclick='socialis.friend.op.process(this,\""+_user.key+"\",\"ok\",socialis.friend.accept);'>"+
                               "<img src='mods/socialis/res/img/valid.svg'/></div>");
                 legend.append("<div class='icon'></div>");
-                legend.append("<div class='icon' onclick='socialis.friend.op.process(this,\""+_user.id+"\",\"del\",socialis.friend.refuse);'>"+
+                legend.append("<div class='icon' onclick='socialis.friend.op.process(this,\""+_user.key+"\",\"del\",socialis.friend.refuse);'>"+
                               "<img src='mods/socialis/res/img/cancel.svg'/></div>");
             }
             else if (_type=="friend") {
                 legend.append("<div class='icon fdel' "+
-                              "onclick='socialis.friend.op.process(this,\""+_user.id+"\",\"del\",socialis.friend.del);' "+
-                              "ontouchstart='socialis.friend.op.process(this,\""+_user.id+"\",\"del\",socialis.friend.del);"+
+                              "onclick='socialis.friend.op.process(this,\""+_user.key+"\",\"del\",socialis.friend.del);' "+
+                              "ontouchstart='socialis.friend.op.process(this,\""+_user.key+"\",\"del\",socialis.friend.del);"+
                                             "event.preventDefault();'>"+
                               "<img src='mods/socialis/res/img/cancel.svg'/></div>");
-                legend.append("<div class='icon' onclick='socialis.friend.genius(this,\""+_user.id+"\");' "+
-                               "ontouchstart='socialis.friend.genius(this,\""+_user.id+"\");event.preventDefault();'>"+
+                legend.append("<div class='icon' onclick='socialis.friend.genius(this,\""+_user.key+"\");' "+
+                               "ontouchstart='socialis.friend.genius(this,\""+_user.key+"\");event.preventDefault();'>"+
                               "<img src='mods/socialis/res/img/look.svg'/></div>");
 /*
                 legend.append("<div class='icon tibibi' onclick='socialis.open.course(\""+_user.id+"\");' "+
@@ -654,7 +659,7 @@ var socialis = {
             var pod = $("#friend #view #input select").attr("disabled")?"":$("#friend #view #input select").val();
             $("#friend #results").html("");
             if (name && name.length) {
-                socialis.getJSON(pod+"mods/socialis/api/user.php",{value:name}, 0,function(_data){
+                socialis.getJSON(pod+"api/mods/user.php",{value:name}, 0,function(_data){
                     for (var i in _data.users) {
                         $("#friend #results").append(socialis.friend.elt(_data.users[i], (_data.users.length<20), "add"));
                     }
@@ -704,6 +709,7 @@ var socialis = {
                 });
             });
             $("#user h1").html(socialis.settings.user.name);
+            $("#user #usertag").html(socialis.settings.user.tag);
             if ($("#user #avatar .gonz").children().length==0) {
                 $("#user #avatar .gonz").gonz({interactive:false, code:socialis.settings.user.avatar, context:{
                     onclick:function($this){  },
@@ -769,26 +775,27 @@ var socialis = {
         update: function() {
             var args="";
             var error="";
-            if (!$("#upln").hasClass("empty") && $("#upln").attr("value")!=socialis.settings.user.last) {
-                args+="&last="+$("#upln").attr("value");
+
+            if (!$("#upln").hasClass("empty") && $("#upln").val()!=socialis.settings.user.last) {
+                args+="&last="+$("#upln").val();
             }
-            if (!$("#upfn").hasClass("empty") && $("#upfn").attr("value")!=socialis.settings.user.first) {
-                args+="&first="+$("#upfn").attr("value");
+            if (!$("#upfn").hasClass("empty") && $("#upfn").val()!=socialis.settings.user.first) {
+                args+="&first="+$("#upfn").val();
             }
-            if (!$("#upem").hasClass("empty") && $("#upem").attr("value")!=socialis.settings.user.email) {
-                if ( $("#upem").attr("value").indexOf("@")==-1 ) {
+            if (!$("#upem").hasClass("empty") && $("#upem").val()!=socialis.settings.user.email) {
+                if ( $("#upem").val().indexOf("@")==-1 ) {
                     error = socialis.locale.email?socialis.locale.email:"Invalid e-mail";
                 }
                 else {
-                    args+="&email="+$("#upem").attr("value");
+                    args+="&email="+$("#upem").val();
                 }
             }
 
-            if ($("#upopr").attr("value").length) { args+="&old="+$("#upopr").attr("value"); }
-            if ($("#upnpr").attr("value").length) { args+="&new="+$("#upnpr").attr("value"); }
-            if ($("#upcpr").attr("value").length) { args+="&con="+$("#upcpr").attr("value"); }
+            if ($("#upopr").val().length) { args+="&old="+$("#upopr").val(); }
+            if ($("#upnpr").val().length) { args+="&new="+$("#upnpr").val(); }
+            if ($("#upcpr").val().length) { args+="&con="+$("#upcpr").val(); }
 
-            args+="&theme="+$("#edit #theme").attr("value");
+            args+="&theme="+$("#edit #theme").val();
 
             if (socialis.settings.avatar.length && socialis.settings.avatar!=socialis.settings.user.avatar) {
                 args+="&avatar="+encodeURIComponent(socialis.settings.avatar);
@@ -1007,7 +1014,7 @@ var socialis = {
     }
 };
 
-window.onload = function() {
+$(window).load(function() {
     // SPECIAL STUFF
     document.ontouchmove = function(e) { e.preventDefault(); }
 
@@ -1136,7 +1143,7 @@ window.onload = function() {
         }
     });
 
-}
+});
 
 
 
@@ -1172,9 +1179,12 @@ window.onload = function() {
                 </div>
                 <div id="details">
                     <h1 onclick="socialis.user.open();" ontouchstart="socialis.user.open();event.preventDefault();"></h1>
-                    <div class="stars">
-                        <div class="icon"><img src="mods/socialis/res/img/star.svg"/></div>
-                        <div id="stars">0</div>
+                    <div id="h2">
+                        <div id="usertag"></div>
+                        <div class="stars">
+                            <div class="icon"><img src="mods/socialis/res/img/star.svg"/></div>
+                            <div id="stars">0</div>
+                        </div>
                     </div>
                     <div id="buttons">
                         <div class="icon" onclick="socialis.news.open();" ontouchstart="socialis.news.open();event.preventDefault();">

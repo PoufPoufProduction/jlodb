@@ -4,8 +4,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>TiBibI</title>
-    <script type="text/javascript" src="js/jquery-1.8.1.min.js"></script>
-    <script type="text/javascript" src="js/jquery-ui-1.8.23.custom.min.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
     <script type="text/javascript" src="js/jquery.svg.min.js"></script>
     <script type="text/javascript" src="js/jquery.cookie.js"></script>
@@ -361,14 +361,14 @@ var tibibi = {
                 }
             });
         },
-        export: function() {
+        expo: function() {
             var html="";
             for (var i in tibibi.course.ex) { if (html) { html+=","; } html+=tibibi.course.ex[i]; }
             $("#popup2 textarea").val(html);
             $("#popup2 .button").hide();
             $("#popup2").show();
         },
-        import: function() {
+        impo: function() {
             $("#popup2 textarea").val("");
             $("#popup2 .button").show();
             $("#popup2").show();
@@ -439,11 +439,11 @@ var tibibi = {
         $("#waiting").show().find("div").addClass("running");
         $("#launcher").jlodb({ onstart: function($this) { $("#content").hide(); $("#waiting").hide().find("div").removeClass("running"); },
                                onfinish:function($this) { $("#content").show(); $("#score").removeClass().hide(); }},_args);
-    },
+    }
 };
 
 
-window.onload = function() {
+$(window).load(function() {
     // SPECIAL STUFF
     $("#activity").ontouchmove = function(e) { e.preventDefault(); }
 
@@ -497,7 +497,7 @@ window.onload = function() {
         else { $("#logpanel").show(); }
     },500);
 
-}
+});
     </script>
 </head>
 
@@ -543,8 +543,8 @@ window.onload = function() {
                         <div class="icon" onclick="tibibi.course.action('look');"><img src="mods/tibibi/res/img/look.svg"/></div>
                     </div>
                     <div id="tactions">
-                        <div class="icon" onclick="tibibi.course.export();"><img src="mods/tibibi/res/img/export.svg"/></div>
-                        <div class="icon" onclick="tibibi.course.import();"><img src="mods/tibibi/res/img/import.svg"/></div>
+                        <div class="icon" onclick="tibibi.course.expo();"><img src="mods/tibibi/res/img/export.svg"/></div>
+                        <div class="icon" onclick="tibibi.course.impo();"><img src="mods/tibibi/res/img/import.svg"/></div>
                         <div class="icon" onclick="tibibi.course.overview();"><img src="mods/tibibi/res/img/list.svg"/></div>
                     </div>
                 </div>

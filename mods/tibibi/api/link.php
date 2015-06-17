@@ -1,16 +1,16 @@
 <?php
 $apipath = "../../../api/";
 include_once $apipath."database.php";
-include "check.php";
+include_once $apipath."mods/check.php";
 
 if (!$error) {
     if (strlen($_GET["value"])!=0) {
         $value = $_GET["value"];
-        mysql_query("REPLACE INTO `".$_SESSION['prefix']."coursebytibibi` (Link_Description,User_Id,Course_Name,Tibibi_Name) ".
-                "VALUES ('".$_GET["value"]."','".$_GET["username"]."','".$_GET["course"]."','".$_GET["tibibi"]."')");
+        mysql_query("REPLACE INTO `".$_SESSION['prefix']."coursebytibibi` (Link_Description,User_Key,Course_Name,Tibibi_Name) ".
+                "VALUES ('".$_GET["value"]."','".$_SESSION['User_Key']."','".$_GET["course"]."','".$_GET["tibibi"]."')");
     }
     else {
-        $l = mysql_query("SELECT * FROM `".$_SESSION['prefix']."coursebytibibi` WHERE User_Id='".$_GET["username"]."' ".
+        $l = mysql_query("SELECT * FROM `".$_SESSION['prefix']."coursebytibibi` WHERE User_Key='".$_SESSION['User_Key']."' ".
                         "AND Course_Name='".$_GET["course"]."' AND Tibibi_Name='".$_GET["tibibi"]."'");
         $description = "";
         if ($l) {

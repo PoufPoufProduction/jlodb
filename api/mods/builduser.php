@@ -1,4 +1,5 @@
 <?php
+include "_new.php";
 
 if (!$error) {
     // CHECK IF THE CALLER IS LOGGED AS ADMIN
@@ -10,8 +11,10 @@ if (!$error) {
         if (!mysql_query("SELECT * FROM `".$_SESSION['prefix']."user`")) {
             // CREATE THE TABLE
             mysql_query('CREATE TABLE `'.$_SESSION['prefix'].'user` ('.
+                            '`User_Key`                 INT NOT NULL AUTO_INCREMENT, '.
                             '`User_Id`                  VARCHAR( 64 )   NOT NULL , '.
                             '`User_Password`            VARCHAR( 64 )   NOT NULL , '.
+                            '`User_Tag`                 INT NOT NULL DEFAULT 1234, '.
                             '`User_Code`                VARCHAR( 128) , '.
                             '`User_Avatar`              VARCHAR( 64 ) , '.
                             '`User_FirstName`           VARCHAR( 128) , '.
@@ -21,26 +24,18 @@ if (!$error) {
                             '`User_Theme`               VARCHAR( 128) , '.
                             '`User_Days`                INT DEFAULT 1 , '.
                             '`User_Date`                DATETIME DEFAULT NULL, '.
-                            'PRIMARY KEY (  `User_Id` ) ) ENGINE=InnoDB', $link);
+                            'PRIMARY KEY (  `User_Key` ) ) ENGINE=InnoDB', $link);
         }
 
         // UPDATE COLUMN WITHOUT DELETING TABLE
         if (mysql_query("SELECT * FROM `".$_SESSION['prefix']."user`")) {
             // GET THE COLUMN NAMES
-            $userStars = false;
-            $userTheme = false;
             $userDays = false;
             $columns = mysql_query('SHOW COLUMNS FROM `'.$_SESSION['prefix'].'user`');
             while($row = mysql_fetch_array($columns)) {
-                if ($row[0]=="User_Stars") { $userStars = true; }
-                if ($row[0]=="User_Theme") { $userTheme = true; }
                 if ($row[0]=="User_Days") { $userDays = true; }
             }
             // ADD COLUMNS
-            if (!$userStars) { mysql_query('ALTER TABLE `'.$_SESSION['prefix'].'user` '.
-                                           'ADD `User_Stars` INT DEFAULT 0 AFTER `User_eMail`'); }
-            if (!$userTheme) { mysql_query('ALTER TABLE `'.$_SESSION['prefix'].'user` '.
-                                           'ADD `User_Theme` VARCHAR( 128) AFTER `User_Stars`'); }
             if (!$userDays) { mysql_query('ALTER TABLE `'.$_SESSION['prefix'].'user` '.
                                            'ADD `User_Days` INT DEFAULT 1 AFTER `User_Theme`'); }
         }
@@ -56,10 +51,11 @@ if (!$error) {
         for ($i=0; $i<50; $i++) {
             $ln=$lastname[($i*7)%count($lastname)].$lastname[(floor($i/3)*5)%count($lastname)].$lastname[($i*11)%count($lastname)];
             mysql_query("DELETE FROM `".$_SESSION['prefix']."user` WHERE `User_Id`='test".$i."'");
-            mysql_query("INSERT INTO `".$_SESSION['prefix']."user` ".
-                        "(`User_Id`, `User_Password`, `User_Avatar`, `User_FirstName`, `User_LastName`) VALUES ".
-                        "('test".$i."', '".md5("test".$i)."', '".$avatars[$i%count($avatars)]."', ".
-                        "'".$firsnames[$i%count($firsnames)]."', '".ucfirst($ln)."')");
+            insertNewUser("test".$i, "test".$i, $avatars[$i%count($avatars)], $firsnames[$i%count($firsnames)], ucfirst($ln) );
+        }
+        for ($i=1; $i<5; $i++) {
+            $ln=$lastname[0].$lastname[0].$lastname[0];
+            insertNewUser("test0", "test".$i, $avatars[0], $firsnames[0], ucfirst($ln) );
         }
 
     }

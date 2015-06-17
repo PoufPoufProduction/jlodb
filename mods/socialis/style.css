@@ -80,6 +80,8 @@
 #genius>#user #details          { font-size:.2em; color:white; }
 #genius>#user h1                { font-weight:bold; width:8.7em; height:1.4em; background-color:rgba(255,255,255,0.1);
                                   margin-top:.3em; text-align:center; color:#FFDDAA; cursor:pointer; }
+#genius>#user #usertag          { float:left; margin-left:3.5em; color:#FFDDAA; }
+#genius>#user #usertag:before   { content:"#"; }
 #genius>#user .stars            { font-size:2em; padding-right:0.5em; }
 #genius>#user .stars>div        { float:right;
                                   -webkit-animation: dbl-blink 5s step-start infinite 10s;
@@ -91,7 +93,8 @@
                                   font-size:.5em; top:-1.5em; left:1em; width:1em; height:1em; text-align:center; opacity:0.9; }
 #main.theme2 #user              { background-color:rgba(255,255,255,0.75); border:.05em solid black; left:9.9em;  }
 #main.theme2 #user h1           { background-color:white; color:black; }
-#main.theme2 #user .stars       { background-color:gray; }
+#main.theme2 #user #usertag     { color:black; background-color:gray; }
+#main.theme2 #user #h2          { background-color:gray; }
 #main.theme2 #user #buttons     { background-color:gray; }
 
 #main>#awards>div                 { position:relative; font-size:.5em; width:24em; height:22em; top:0.5em; left:7.5em; 
@@ -227,19 +230,24 @@
 #main>#friend #view             { float:left; width:24em; }
 
 #main>#friend .user                       { font-size:1.1em; width:10em; height:4em; margin:.1em; padding:.1em; background-color:#444466;
-                                            color:white; float:left; }
-#main>#friend .user.small                 { font-size:.9em; width:6em; }
+                                            color:white; float:left; position:relative; }
+#main>#friend .user.small                 { font-size:.9em; width:6em; height:3em; }
 #main>#friend .user .legend               { float:left; width:6em; }
 #main>#friend .user .avatar               { width:4em; height:4em; border-radius:.5em; float:left; }
-#main>#friend .user .id                   { text-align:right; width:5.9em; padding-right:.1em; height:1.2em; cursor:move;
-                                            border:1px solid white; border-width:0 0 1px 0;}
-#main>#friend .user .name                 { margin-left:.5em; clear:both; font-size:.6em; font-style:italic; height:1.2em; overflow:visible;}
+#main>#friend .user .id                   { text-align:right; width:10em; padding-right:.1em; height:1.2em; cursor:move;
+                                            border:1px solid white; border-width:0 0 1px 0; font-size:0.6em;}
+#main>#friend .user .key                  { display:none; }
+#main>#friend .user .name                 { float:right; clear:both; font-size:.4em; font-style:italic; height:1.2em; overflow:visible;}
 #main>#friend .user .icon                 { float:right; cursor:pointer; }
 #main>#friend .user .icon.s               { background-color:red; border-radius:.5em; }
-#main>#friend .user .friendstar           { font-size:.8em; margin-right:.25em; }
+#main>#friend .user .friendstar           { font-size:.6em; margin-right:.25em; clear:both;}
 #main>#friend .user .friendstar>div       { float:right; }
 #main>#friend .user .friendstar .icon     { font-size:1em; }
+#main>#friend .user .friendstar>.tag      { float:right; font-size:.5em; margin-left:2em; }
+#main>#friend .user .tag:before           { content:"#"; }
 #main>#friend .user .nbstars              { color:yellow; }
+#main>#friend .user .badge                { position:absolute; top:0; left:1.7em; font-size:2em;
+                                            border-radius:.5em; background-color:#446; }
 #main>#friend .user .fdel                 { display:none; }
 #main>#friend.del .user .fdel             { display:inherit; }
 #main>#friend .user.ui-draggable-dragging             { background-color:rgba(255,0,0,0.3) !important;  height:1em; width:6em;

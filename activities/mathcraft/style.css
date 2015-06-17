@@ -59,7 +59,7 @@
                                               margin-top:.1em; border-radius:0 .5em .5em 0; cursor:pointer;
                                               background-color:rgba(20,100,80,0.1); display:none; }
 .mathcraft #rightmenu #book #list         { display:none; opacity:0; }
-.mathcraft #rightmenu #book #list .disabled   { opacity:0.2; cursor:auto; }
+.mathcraft #rightmenu #book .disabled       { opacity:0.2; cursor:auto; }
 .mathcraft #rightmenu #book #list .icon   { font-size:2em; margin:.1em; float:left; cursor:pointer; }
 .mathcraft #rightmenu #book #list .icon>div   { font-size:.8em; }
 .mathcraft #rightmenu #clear              { position:absolute; top:25em; left:18.5em; display:none; }
@@ -99,7 +99,8 @@
 .mathcraft #rightmenu>#menu #bar1         { margin:0 .3em 0 2em; }
 .mathcraft #rightmenu>#menu #bar2         { margin:0 1em 0 .3em; }
 .mathcraft #rightmenu>#menu #result       { margin-top:.4em; }
-.mathcraft #rightmenu>#menu #submit       { float:right; width:1em; height:1em; font-size:1.4em; margin:.15em .2em; cursor:pointer; }
+.mathcraft #rightmenu>#menu #submit       { float:right; width:1em; height:1em; font-size:1.4em; margin:.15em .2em; opacity:0.2; }
+.mathcraft #rightmenu>#menu #submit.s     { cursor:pointer; opacity:1; }
 .mathcraft #rightmenu>#menu #toinventory  { float:left; width:1em; height:1em; font-size:1.4em; margin:.15em .2em;
                                               display:none; opacity:0.2; }
 .mathcraft.in #rightmenu>#menu #toinventory { display:block; }

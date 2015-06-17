@@ -1,14 +1,14 @@
 <?php
 $apipath = "../../../api/";
 include_once $apipath."database.php";
-include "check.php";
+include_once $apipath."mods/check.php";
 
 
 function getPinnedBadge()
 {
     $ret = "";
     $badge = mysql_query("SELECT `Award_Id` FROM `".$_SESSION['prefix']."reward` WHERE ".
-                         "`User_Id`='".$_GET["username"]."' AND `Pinned`=true LIMIT 1");
+                         "`User_Key`='".$_SESSION['User_Key']."' AND `Pinned`=true LIMIT 1");
     if ($b = mysql_fetch_array($badge)) { $ret = $b[0]; }
     return $ret;
 }
@@ -18,7 +18,7 @@ function getUnreadBadges()
     $ret = "";
     $badges = mysql_query("SELECT COUNT(*) AS n, A.Award_Group AS g, A.Award_type AS t FROM `".$_SESSION['prefix']."reward` R ".
          "INNER JOIN `".$_SESSION['prefix']."award` A WHERE ".
-         "R.User_Id='".$_GET["username"]."' AND R.Unread=true AND R.Award_Id=A.Award_Id GROUP BY A.Award_Group");
+         "R.User_Key='".$_SESSION['User_Key']."' AND R.Unread=true AND R.Award_Id=A.Award_Id GROUP BY A.Award_Group");
 
     while ($b=mysql_fetch_array($badges)) {
         if (strlen($ret)) { $ret .=","; }
@@ -33,7 +33,7 @@ function getNbNewBadges()
 {
     $ret = 0;
     $badges = mysql_query("SELECT COUNT(*) FROM `".$_SESSION['prefix']."reward` WHERE ".
-         "User_Id='".$_GET["username"]."' AND New=true");
+         "User_Key='".$_SESSION['User_Key']."' AND New=true");
     if ($b=mysql_fetch_array($badges)) { $ret = $b[0]; }
     return $ret;
 }
@@ -44,7 +44,7 @@ function updateBadges($_node)
     $nodes = "";
 
     if ($_node=="1") {
-        $genius = mysql_query("SELECT * FROM `".$_SESSION['prefix']."genius` WHERE `User_Id`='".$_GET["username"]."'");
+        $genius = mysql_query("SELECT * FROM `".$_SESSION['prefix']."genius` WHERE `User_Key`='".$_SESSION['User_Key']."'");
         $g = mysql_fetch_array($genius);
         $nodes = $g["Genius"];
     }
@@ -52,16 +52,16 @@ function updateBadges($_node)
     $nbstars = 0;
     $nbnodes = 0;
     if ($_node=="0") {
-        $stars = mysql_query("SELECT * FROM `".$_SESSION['prefix']."state` WHERE `User_Id`='".$_GET["username"]."'");
+        $stars = mysql_query("SELECT * FROM `".$_SESSION['prefix']."state` WHERE `User_Key`='".$_SESSION['User_Key']."'");
         while($s = mysql_fetch_array($stars)) {
             $nbstars += 3*substr_count($s["State"],"5") + 2*substr_count($s["State"],"4") + 1*substr_count($s["State"],"3");
             $last = substr($s["State"], -1);
             if ($last=='2'||$last=='3'||$last=='4'||$last=='5') { $nbnodes++; }
         }
-        mysql_query("UPDATE `".$_SESSION['prefix']."user` SET `User_Stars`=".$nbstars." WHERE `User_Id` = '".$_GET["username"]."'");
+        mysql_query("UPDATE `".$_SESSION['prefix']."user` SET `User_Stars`=".$nbstars." WHERE `User_Key` = '".$_SESSION['User_Key']."'");
     }
 
-    $user = mysql_query("SELECT * FROM `".$_SESSION['prefix']."user` WHERE User_Id='".$_GET["username"]."'");
+    $user = mysql_query("SELECT * FROM `".$_SESSION['prefix']."user` WHERE `User_Key`='".$_SESSION['User_Key']."'");
     $u = mysql_fetch_array($user);
 
     $awards = mysql_query("SELECT `Award_Id`, `Award_Description` FROM `".$_SESSION['prefix']."award`");
@@ -94,12 +94,12 @@ function updateBadges($_node)
 
         if ($good) {
             if (strlen($values)) { $values.=","; }
-            $values.="('".$_GET["username"]."','".$b["Award_Id"]."')";
+            $values.="('".$_SESSION['User_Key']."','".$b["Award_Id"]."')";
         }
     }
 
     if ($values) {
-        mysql_query("INSERT INTO `".$_SESSION['prefix']."reward` (`User_Id`, `Award_Id`) VALUES ".$values.
+        mysql_query("INSERT INTO `".$_SESSION['prefix']."reward` (`User_Key`, `Award_Id`) VALUES ".$values.
                     " ON DUPLICATE KEY UPDATE `New`=false");
     }
     return $nbstars;
@@ -125,9 +125,9 @@ if (!$error) {
     if ($_GET["action"]=="pin") {
         $value = $_GET["value"];
         if ($value) {
-            mysql_query("UPDATE `".$_SESSION['prefix']."reward` SET `Pinned`=false WHERE User_Id='".$_GET["username"]."'");
+            mysql_query("UPDATE `".$_SESSION['prefix']."reward` SET `Pinned`=false WHERE `User_Key`='".$_SESSION['User_Key']."'");
             mysql_query("UPDATE `".$_SESSION['prefix']."reward` SET `Pinned`=true ".
-                        "WHERE `Award_Id`='".$_GET["value"]."' AND User_Id='".$_GET["username"]."'");
+                        "WHERE `Award_Id`='".$_GET["value"]."' AND `User_Key`='".$_SESSION['User_Key']."'");
         }
         $pinned=getPinnedBadge();
     }
@@ -136,7 +136,7 @@ if (!$error) {
         $value = $_GET["value"];
         if ($value) {
             mysql_query("UPDATE `".$_SESSION['prefix']."reward` SET `Unread`=false ".
-                            "WHERE `Award_Id` IN (".str_replace("\'", "'", $value).") AND User_Id='".$_GET["username"]."'");
+                            "WHERE `Award_Id` IN (".str_replace("\'", "'", $value).") AND `User_Key`='".$_SESSION['User_Key']."'");
         }
         $unreadbadges=getUnreadBadges();
     }
@@ -148,7 +148,7 @@ if (!$error) {
             $state = 0;
             $pinned = false;
             $reward = mysql_query("SELECT Unread, Pinned FROM `".$_SESSION['prefix']."reward` WHERE ".
-                "User_Id='".$_GET["username"]."' AND Award_Id='".$a["Award_Id"]."'");
+                "`User_Key`='".$_SESSION['User_Key']."' AND Award_Id='".$a["Award_Id"]."'");
             if ($r = mysql_fetch_array($reward)) { $state = $r[0]?2:1; $pinned = $r[1]; }
 
             if (strlen($json)) { $json.=","; }

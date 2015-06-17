@@ -45,7 +45,7 @@ if (!$error) {
     }
 
     if (!$error) {
-        $sql = "UPDATE `".$_SESSION['prefix']."user` SET ".$FIELDS." WHERE `User_Id` = '".$_GET["username"]."'";
+        $sql = "UPDATE `".$_SESSION['prefix']."user` SET ".$FIELDS." WHERE `User_Key` = '".$_SESSION['User_Key']."'";
         if (mysql_query($sql)) { $status = "success"; }
     }
 

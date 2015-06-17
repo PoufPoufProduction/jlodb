@@ -1,36 +1,36 @@
 <?php
 $apipath = "../../../api/";
 include_once $apipath."database.php";
-include "check.php";
+include_once $apipath."mods/check.php";
 
 if (!$error) {
     if ($_GET["action"]=="new") {
         $value = $_GET["value"];
-        mysql_query("INSERT INTO `".$_SESSION['prefix']."course` (`Course_Name`,`User_Id`, `Course_Description`) VALUES ('".
-                $_GET["value"]."','".$_GET["username"]."','')");
+        mysql_query("INSERT INTO `".$_SESSION['prefix']."course` (`Course_Name`,`User_Key`, `Course_Description`) VALUES ('".
+                $_GET["value"]."','".$_SESSION['User_Key']."','')");
     }
     else
     if ($_GET["action"]=="upd") {
         $value = $_GET["value"];
         if (strlen($_GET["value"])) {
             if (! mysql_query("UPDATE `".$_SESSION['prefix']."course` SET `Course_Name`='".$_GET["value"]."' ".
-                            "WHERE `Course_Name`='".$_GET["course"]."' AND User_Id='".$_GET["username"]."'") ) {
+                            "WHERE `Course_Name`='".$_GET["course"]."' AND User_Key='".$_SESSION['User_Key']."'") ) {
                 $value = $_GET["course"];
             }
         }
         else {
             mysql_query("UPDATE `".$_SESSION['prefix']."course` SET Course_Description='".$_GET["description"]."' ".
-                        "WHERE `Course_Name`='".$_GET["course"]."' AND User_Id='".$_GET["username"]."'");
+                        "WHERE `Course_Name`='".$_GET["course"]."' AND User_Key='".$_SESSION['User_Key']."'");
         }
     }
     else
     if ($_GET["action"]=="del") {
         mysql_query("DELETE FROM `".$_SESSION['prefix']."course` WHERE `Course_Name`='".$_GET["value"]."' ".
-                        "AND User_Id='".$_GET["username"]."'");
+                        "AND User_Key='".$_SESSION['User_Key']."'");
     }
     else
     if ($_GET["action"]=="list") {
-        $courses = mysql_query("SELECT * FROM `".$_SESSION['prefix']."course` WHERE User_Id='".$_GET["username"]."' ORDER BY Course_Name");
+        $courses = mysql_query("SELECT * FROM `".$_SESSION['prefix']."course` WHERE User_Key='".$_SESSION['User_Key']."' ORDER BY Course_Name");
         $json = "";
         while($c = mysql_fetch_array($courses)) {
             if (strlen($json)) { $json.=","; }
@@ -38,7 +38,7 @@ if (!$error) {
         }
     }
     else {
-        $courses = mysql_query("SELECT * FROM `".$_SESSION['prefix']."course` WHERE User_Id='".$_GET["username"]."' AND ".
+        $courses = mysql_query("SELECT * FROM `".$_SESSION['prefix']."course` WHERE User_Key='".$_SESSION['User_Key']."' AND ".
                             "Course_Name='".$_GET["value"]."'");
         $description = "";
         while($c = mysql_fetch_array($courses)) {

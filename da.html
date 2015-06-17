@@ -4,8 +4,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Dä</title>
-    <script type="text/javascript" src="js/jquery-1.8.1.min.js"></script>
-    <script type="text/javascript" src="js/jquery-ui-1.8.23.custom.min.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
     <script type="text/javascript" src="js/jquery.svg.min.js"></script>
     <script type="text/javascript" src="js/jquery.jlodb.js"></script>
@@ -258,7 +258,7 @@ game = {
     }
 }
 
-window.onload = function() {
+$(window).load(function() {
 
     // SPECIAL STUFF
     document.ontouchmove = function(e) { e.preventDefault(); }
@@ -303,7 +303,7 @@ window.onload = function() {
     $("#main").css("margin-top", Math.floor(($(window).height()-$("#main").height())/2)+"px");
 
     $("#gpopup1").show();
-}
+});
 
 
 

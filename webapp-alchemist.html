@@ -4,8 +4,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Alchemist</title>
-    <script type="text/javascript" src="js/jquery-1.8.1.min.js"></script>
-    <script type="text/javascript" src="js/jquery-ui-1.8.23.custom.min.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
     <script type="text/javascript" src="js/jquery.svg.min.js"></script>
     <script type="text/javascript" src="js/jquery.cookie.js"></script>
@@ -33,7 +33,7 @@ var app = {
     update      : function(_state) { $.cookie(app.cookie(), _state, { expires : 365 }); }
 };
 
-window.onload = function() {
+$(window).load(function() {
 
 
     // GET AND RESIZE THE BEST PANEL
@@ -61,7 +61,7 @@ window.onload = function() {
         }, {id:"atx"});
 
 
-};
+});
     </script>
 </head>
 

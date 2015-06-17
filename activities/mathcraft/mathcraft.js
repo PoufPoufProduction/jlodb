@@ -12,6 +12,7 @@
         onlyone     : false,                                    // Only one response possible : no commutativity
         number      : 1,                                        // number of exercices
         nbdec       : 2,                                        // number of dec for float numbers
+        ntype       : 0,                                        // number display type
         glossary    : false,                                    // Glossary usage
         a           : false,                                    // Glossary authorization
         modif       : true,                                     // Editor modification
@@ -29,8 +30,12 @@
         "\\\[mathxl\\\](.+)\\\[/mathxl\\\]",        "<div class='mathxl'><math>$1</math></div>"
     ];
 
+    var ntype = { normal:0, scientific:1, physics:2 };
+
     var nodecounter = 0;
-    var vocabulary = 0;
+    var vocabulary  = 0;
+    var actioncount = 0;
+    var actiontmp   = 0;
 
     var action = {
         add:   {
@@ -97,6 +102,27 @@
             },
             process: function(_node) { return (this.check(_node))?this.compute(_node.children[0]):0; }
         },
+        cinteg:   {
+            label:"C",    c:1,
+            check: function(_node,_id) { return (helpers.node.filled(_node)?true:false); },
+            compute: function(_node) {
+                var ret = 0;
+                if (_node.type=="op" && _node.value=="integ") {
+                    ret = helpers.node.create("n"+(nodecounter++)); ret.type="op"; ret.value="mult";
+                    ret.children.push(helpers.node.clone(_node.children[2]));
+                    var tmp = helpers.node.create("n"+(nodecounter++)); tmp.type="op"; tmp.value="minus";
+                    tmp.children.push(helpers.node.clone(_node.children[1]));
+                    tmp.children.push(helpers.node.clone(_node.children[0]));
+                    ret.children.push(tmp);
+                }
+                else {
+                    ret = helpers.node.create("n"+(nodecounter++)); helpers.node.extend(ret,_node);
+                    for (var i in _node.children) { ret.children.push(this.compute(_node.children[i])); }
+                }
+                return ret;
+            },
+            process: function(_node) { return (this.check(_node))?this.compute(_node.children[0]):0; }
+        },
         eval:   {
             label:"=",    c:1,
             check: function(_node,_id) { return (helpers.node.filled(_node)?true:false); },
@@ -152,14 +178,29 @@
             process: function(_node) {
                 var ret = 0;
                 if (this.check(_node)) {
-                    var n = _node.children[0].children[1];
+                    var c = _node.children[0].children[1].value, v = _node.children[0].children[0].value;
+                    if (actiontmp==c.value) { actioncount++; } actiontmp = c.value;
+                    var value = [c, c[0]+v ];
+                    if (actioncount%3==1) { value = [c, c[1]+v]; } else
+                    if (actioncount%3==2) { value = [c[0]+v, c[1]+v ]; }
                     var tmp = {   type:"op", value:"eq", children:[
-                            { type:"v", subtype: n.subtype, value:n.value } ,
-                            { type:"v", subtype: n.subtype, value:n.value[0]+_node.children[0].children[0].value } ] };
+                            { type:"v", subtype:"line", value:value[0] }, { type:"v", subtype:"line", value:value[1] } ] };
                     ret = helpers.node.init(tmp);
                 }
                 return ret;
             },
+        },
+        med2perp: {
+            label:"<img src='res/img/icon/geometry/mediator02.svg'/>", c:1,
+            check : function(_node,_id) {
+                return helpers.node.filled(_node) && (_node.children[0].type=="op") && (_node.children[0].value=="mediator");
+            },
+            process: function(_node) {
+                var ret = 0;
+                if (this.check(_node) ) { ret = helpers.node.clone(_node.children[0]); ret.value = "perp";
+                                          ret.children[0].subtype = "line"; ret.children[1].subtype = "line"; }
+                return ret;
+            }
         },
         mid2d : { label:"<img src='res/img/icon/geometry/midpoint02.svg'/>", c:1,
             check : function(_node,_id) {
@@ -207,6 +248,41 @@
                         var tmp = helpers.node.create("n"+(nodecounter++));
                         tmp.type = "v"; tmp.value = v1[0]+v2[0]+v1[1]+v2[1];
                         ret.children.push(tmp);
+                    }
+                }
+                return ret;
+            }
+        },
+        mids2med : {
+            label:"<img src='res/img/icon/geometry/mediator02.svg'/>", c:2,
+            check: function(_node,_id) {
+                return helpers.node.filled(_node.children[_id]) &&  _node.children[_id] &&
+                       (_node.children[_id].type=="op") && (_node.children[_id].value=="eq");
+            },
+            process: function(_node) {
+                var ret = 0;
+                if (this.check(_node,0)&&this.check(_node,1)) {
+                    var vOk = true, v=[0,0,0,0], p;
+                    for (var i=0; i<2; i++) {
+                        if (_node.children[i].children[0].value.length==2 && _node.children[i].children[1].value.length==2 )
+                        {
+                            if ((p=_node.children[i].children[1].value.indexOf(_node.children[i].children[0].value[0]))!=-1) {
+                                v[i*2] = _node.children[i].children[0].value[0];
+                                v[i*2+1] = _node.children[i].children[0].value[1]+_node.children[i].children[1].value[1-p];
+                            }
+                            else if ((p=_node.children[i].children[1].value.indexOf(_node.children[i].children[0].value[1]))!=-1) {
+                                v[i*2] = _node.children[i].children[0].value[1];
+                                v[i*2+1] = _node.children[i].children[0].value[0]+_node.children[i].children[1].value[1-p];
+                            }
+                            else vOk = false;
+                        }
+                    }
+                    if (vOk && (v[0]!=v[2]) && (v[1]==v[3] || v[1]==v[3][1]+v[3][0])) {
+                        var tmp = {   type:"op", value:"mediator", children:[
+                            { type:"v", subtype:"line", value: v[0]+v[2] },
+                            { type:"v", subtype:"segment", value: v[1] }
+                        ] };
+                        ret = helpers.node.init(tmp);
                     }
                 }
                 return ret;
@@ -281,6 +357,27 @@
                 return ret;
             }
         },
+        par2pars: {
+            label:"<img src='res/img/icon/geometry/parallelogram02.svg'/>", c:1,
+            check: function(_node, _id) {
+                return (helpers.node.filled(_node.children[0]) &&
+                        _node.children[0].type=="op" && _node.children[0].value=="parallelogram");
+            },
+            process: function(_node) {
+                var ret = 0;
+                if (this.check(_node)) {
+                    if (_node.children[0].children[0].value.length == 4 ) {
+                        var c = _node.children[0].children[0].value;
+                        if (actiontmp==c) { actioncount++; } actiontmp = c;
+                        var tmp = {   type:"op", value:"par", children:[
+                                        { type:"v", subtype:"line", value: c[0+actioncount%2]+c[1+actioncount%2] },
+                                        { type:"v", subtype:"line", value: c[(3+actioncount%2)%4]+c[2+actioncount%2] } ] };
+                        ret = helpers.node.init(tmp);
+                    }
+                }
+                return ret;
+            }
+        },
         par2rect: {
             label:"<img src='res/img/icon/geometry/rectangle02.svg'/>", c:2,
             check: function(_node, _id) {
@@ -320,8 +417,9 @@
             compute: function(_node, _value) {
                 var ret = 0, same=0;
                 for (var i=0; i<2; i++) for (var j=0; j<2; j++) {
-                    if (_node.children[0].children[i].type=="v" && _node.children[1].children[j].type=="v" &&
-                        _node.children[0].children[i].value == _node.children[1].children[j].value) { same = [i,j]; }
+                    var c1 = _node.children[0].children[i], c2 = _node.children[1].children[j];
+                    if (c1.type=="v" && c2.type=="v" &&
+                        ( c1.value == c2.value || ( c2.value.length==2 && c1.value == c2.value[1]+c2.value[0] ) ) ) { same = [i,j]; }
                 }
                 if (same) {
                     ret = helpers.node.create("n"+(nodecounter++));
@@ -329,6 +427,7 @@
 
                     ret.children.push(helpers.node.clone(_node.children[0].children[1-same[0]]));
                     ret.children.push(helpers.node.clone(_node.children[1].children[1-same[1]]));
+                    ret.children[0].subtype = "line"; ret.children[1].subtype = "line";
                 }
                 return ret;
             },
@@ -440,6 +539,34 @@
                 return ret;
             }
         },
+        rtriangle: {
+            label:"<img src='res/img/icon/geometry/rtriangle02.svg'/>", c:1,
+            check: function(_node,_id) {
+                return (helpers.node.filled(_node) && _node.children[0].type=="op" && _node.children[0].value=="perp");
+            },
+            process: function(_node) {
+                var ok = false;
+                if (this.check(_node)) {
+                    var ab = _node.children[0].children[0];
+                    var ac = _node.children[0].children[1];
+                    if (ab.type=="v" && ab.value.length==2 && typeof(ab.value)!="number" &&
+                        ac.type=="v" && ac.value.length==2 && typeof(ac.value)!="number") {
+                        var pab = 0, pac = ac.value.indexOf(ab.value[pab]);
+                        if (pac==-1) { pab = 1; pac = ac.value.indexOf(ab.value[pab]); }
+                        if (pac!=-1) {
+                            var tmp = {   type:"op", value:"rtriangle", children:[
+                                                  { type:"v", value:ab.value[pab]+ab.value[1-pab]+ac.value[1-pac] } ,
+                                                  { type:"v", value:ab.value[pab] }
+                                             ]};
+                            ret = helpers.node.init(tmp);
+                            ok = true;
+                        }
+                    }
+                }
+                if (!ok) { ret = 0; }
+                return ret;
+            }
+        },
         swap: {
             label:"&lsaquo;&rsaquo;", c:1,
             check: function(_node,_id) {
@@ -535,14 +662,19 @@
         eq :    { label:"=", c:2, m:"c0<mo>=</mo>c1", t:["c0=c1","c1=c0"], p:function() { return op.p.commutative | op.p.associative; } },
         gt :    { label:">", c:2, m:"c0<mo>&gt;</mo>c1", t:["c0>c1","c1<c0"] },
         ident:  { label:"",  c:1, m:"c0", t:"c0", process:function(_children) { return _children[0]; } },
-        integ:  { label:"&int;", c:3, m:"<msubsup><mo>&int;</mo>c0c1</msubsup><mrow>c2<mo>&InvisibleTimes;</mo>" +
-                                        "<mrow><mi>d</mi><mi>x</mi></mrow>", t:"int(c0,c1,c2)", d:2 },
+        integ:  { label:"&int;", c:3, d:2,
+                  m:function(_node) { return "<msubsup><mo>&int;</mo><mrow>c0</mrow><mrow>c1</mrow></msubsup><mrow>c2"+
+                                             "<mo>&InvisibleTimes;</mo><mrow><mi>d</mi><mi>"+_node.subtype+"</mi></mrow>"; },
+                  t:function(_node) { return "int"+_node.subtype+"(c0,c1,c2)"; } },
         isin:   { label:"&isin;", c:2, m:"c0<mo>&isin;</mo>c1", t:"c0∈c1" },
         lt :    { label:"<", c:2, m:"c0<mo>&lt;</mo>c1", t:["c0<c1","c1>c0"] },
+        mediator: { label:"<img src='res/img/icon/geometry/mediator01.svg'/>", c:2,
+                  m:function() { return "c0<mtext mathsize='big'>"+(vocabulary?vocabulary.mediator:"mediator")+"</mtext>c1" },
+                  t:"mediator(c0,c1)" },
         middle: { label:"<img src='res/img/icon/geometry/midpoint01.svg'/>", c:2,
                   m:function() { return "c0<mtext mathsize='big'>"+(vocabulary?vocabulary.middle:"middle")+"</mtext>c1" },
                   t:"mid(c0,c1)" },
-        minus:  { label:"-", c:2, m:"c0<mo>-</mo>c1",
+        minus:  { label:"-", c:2,
             needbracket:function(_node) {
                 ret = [false, false];
                 for (var i=0; i<2; i++)
@@ -586,7 +718,18 @@
             },
             process:function(_children) { return _children[0]*_children[1]; }
         },
-
+        neg:  { label:"-", c:1,
+            needbracket:function(_node) {
+                ret = false;
+                if (_node.children&&_node.children[0]&&_node.children[0].type=="op")
+                    if (_node.children[0].value=="plus"||_node.children[0].value=="minus")
+                        ret=true;
+                return ret;
+            },
+            m:function(_node) { return "<mo>-</mo>"+(op.neg.needbracket(_node)?"<mo>(</mo>c0<mo>)</mo>":"c0"); },
+            t:function(_node) { return "-"+(op.neg.needbracket(_node)?"(c0)":"c0"); },
+            process:function(_children) { return -_children[0]; }
+        },
 
         par:    { label:"//", c:2, m:"c0<mo>//</mo>c1", t:"par(c0,c1)", p:function() { return op.p.commutative | op.p.associative; } },
         parallelogram:  { label:"<img src='res/img/icon/geometry/parallelogram01.svg'/>", c:1,
@@ -621,7 +764,11 @@
         rectangle:  { label:"<img src='res/img/icon/geometry/rectangle01.svg'/>", c:1,
                   m:function() { return "<mover><mrow><mtext mathsize='big'>"+(vocabulary?vocabulary.rectangle:"rectangle")+
                                         "</mtext></mrow><mrow>c0</mrow></mover>";},
-                  t:"rectangle(c0)", p:function() { return op.p.final; } }
+                  t:"rectangle(c0)", p:function() { return op.p.final; } },
+        rtriangle: { label:"<img src='res/img/icon/geometry/rtriangle01.svg'/>", c:2,
+                  m:function() { return "<mover><mrow><mtext mathsize='small'>"+(vocabulary?vocabulary.rtriangle:"rtriangle")+
+                                        " c1</mtext></mrow><mrow>c0</mrow></mover>";},
+                  t:"rtriangle(c0,c1)", p:function() { return op.p.final; } }
     };
 
     // private methods
@@ -707,11 +854,15 @@
                 $this.find("#editor").bind("mousedown touchstart", function(event) {
                     if ($(this).children().first().html().length) {
                         $this.find("#clear").css("opacity",0).show().animate({opacity:1},500);
-                        setTimeout(function() { $this.find("#clear").animate({opacity:0},500, function() { $(this).hide(); }); }, 2000);
+                        if (settings.timers.clear) { clearTimeout(settings.timers.clear); }
+                        settings.timers.clear = setTimeout(function() { $this.find("#clear")
+                            .animate({opacity:0},500, function() { $(this).hide(); }); }, 2000);
                     }
                     if (settings.glossary && (!settings.root || settings.root.type!="action")) {
                         $this.find("#glossary").css("opacity",0).show().animate({opacity:1},500);
-                        setTimeout(function() { $this.find("#glossary").animate({opacity:0},500, function() { $(this).hide(); }); }, 2000);
+                        if (settings.timers.glossary) { clearTimeout(settings.timers.glossary); }
+                        settings.timers.glossary = setTimeout(function() { $this.find("#glossary")
+                            .animate({opacity:0},500, function() { $(this).hide(); }); }, 2000);
                     }
                     event.preventDefault();
                 });
@@ -726,10 +877,11 @@
                 }
                 $this.find("#book #b").html("");
                 for (var i in settings.locale.databook) {
-                    var e=settings.locale.databook[i], $html=$("<h1 id='t"+i+"'>"+e.t+"</h1>");
+                    var e=settings.locale.databook[i], vTValid=vIsValid(settings.a,"t"+e.id);
+                    var $html=$("<h1 id='t"+i+"' class='"+(vTValid?" valid":" disabled")+"'>"+e.t+"</h1>");
                     $this.find("#book #b").append($html);
-                    var vTValid=vIsValid(settings.a,"t"+e.id);
                     $html.bind("mousedown touchstart", function(event) {
+                      if (!$(this).hasClass("disabled")) {
                         var vId = parseInt($(this).attr("id").substr(1));
                         if ($(this).hasClass("s")) {
                             $(this).removeClass("s");
@@ -749,14 +901,16 @@
                                 $this.find("#book #b h2.t"+vId).css("margin-left","-20em").show().animate({"margin-left":"-0.5em"},500);
                                 }, 500);
                         }
-                        event.preventDefault();
+                      }
+                      event.preventDefault();
                     });
 
                     if (e.c) for (var j in e.c) {
-                        var vBValid=vTValid|vIsValid(settings.a,"b"+e.c[j].id);
-                        var $html2 = $("<h2 id='b"+e.c[j].id+"' class='t"+i+(vBValid?" valid":"")+"'>"+e.c[j].t+"</h2>");
+                        var vBValid=vTValid&vIsValid(settings.a,"b"+e.c[j].id);
+                        var $html2 = $("<h2 id='b"+e.c[j].id+"' class='t"+i+(vBValid?" valid":" disabled")+"'>"+e.c[j].t+"</h2>");
                         $this.find("#book #b").append($html2);
                         $html2.bind("mousedown touchstart", function(event) {
+                          if (!$(this).hasClass("disabled")) {
                             var vId = parseInt($(this).attr("class").substr(1));
                             var vBook = parseInt($(this).attr("id").substr(1));
                             if ($(this).hasClass("s")) {
@@ -784,7 +938,7 @@
                                     for (var k in settings.locale.action) {
                                         var a = settings.locale.action[k];
                                         if (a[2]==vBook) {
-                                            var vClass=(vBValid|| vIsValid(settings.a,k))?"":" disabled";
+                                            var vClass=(vBValid && vIsValid(settings.a,k))?"":" disabled";
                                             var $h=$("<div class='icon a action"+vClass+"' id='a"+k+"'><div>"
                                                    + action[k].label+"</div></div>");
                                             $this.find("#book #b #list").append($h);
@@ -800,6 +954,8 @@
                                     $this.find("#book #b #list").animate({"opacity":1},500,function(){$(this).show(); });
                                 },500);
                             }
+                          }
+                          event.preventDefault();
                         });
                     }
                 }
@@ -853,7 +1009,16 @@
                 } else { return 0; }
             },
             equal: function(_this, _node) {
-                var ret = (_this.type==_node.type && _this.value==_node.value && _this.children.length==_node.children.length);
+                var ret = (_this.type==_node.type && _this.children.length==_node.children.length &&
+                           _this.subtype==_node.subtype );
+
+                if (ret) {
+                    if ( _node.value.length==2 && (_node.subtype=="line" || _node.subtype=="segment" || !_node.subtype)) {
+                        ret = ret && (_this.value==_node.value || _this.value==_node.value[1]+_node.value[0]);
+                    }
+                    else { ret = ret && _this.value==_node.value; }
+                }
+
                 if (ret) {
                     if (_this.children.length==2 && op[_this.value] && op[_this.value].p && (op[_this.value].p()&op.p.commutative)) {
                         ret = ret && (  ( helpers.node.equal(_this.children[0], _node.children[0]) &&
@@ -877,7 +1042,7 @@
                     _this.left = _this.left/_this.children.length;
                 } else { _this.width = 1; }
             },
-            label: function(_this, _nbdec, _frommathml) {
+            label: function(_this, _args) {
                 var ret = "", size = 1;
                 if (_this.type=="tree") {
                     ret = _this.abstract;
@@ -894,14 +1059,42 @@
                 }
                 else {
                     ret = _this.value;
-                    if (typeof(ret)=="number" && _nbdec) { ret = Math.floor(ret*Math.pow(10,_nbdec))/Math.pow(10,_nbdec); }
+                    if (typeof(ret)=="number") {
+                        var p="";
+                        if (_args && _args.ntype) {
+                            var i=0;
+                            if (Math.abs(ret)>=1000) {
+                                var ps=["","K","M","G","T","P","E","Z","Y"];
+                                while (Math.abs(ret)>=1000) { i++; ret=ret/1000; }
+                                if (_args.ntype==ntype.physics) { p=(i<ps.length)?ps[i]:"?"; } else
+                                if (_args.ntype==ntype.scientific && i>0) {
+                                    if (_args && _args.frommathml) {
+                                        p="<mo>*</mo><msup><mrow><mn>10</mn></mrow><mrow><mn>"+(i*3)+"</mn></mrow></msup>";
+                                    }
+                                    else { p=(i>0?"*10^"+(3*i):""); }
+                                }
+                            } else if (Math.abs(ret)<1) {
+                                var ps=["","m","µ","p","f","a","z","y"];
+                                while (Math.abs(ret)<1) { i++; ret=ret*1000; }
+                                if (_args.ntype==ntype.physics) { p=(i<ps.length)?ps[i]:"?"; } else
+                                if (_args.ntype==ntype.scientific && i>0) {
+                                    if (_args && _args.frommathml) {
+                                        p="<mo>*</mo><msup><mrow><mn>10</mn></mrow><mrow><mo>-</mo><mn>"+(i*3)+"</mn></mrow></msup>";
+                                    }
+                                    else { p=(i>0?"*10^"+(3*i):""); }
+                                }
+                            }
+                        }
+                        if (_args && _args.nbdec) { ret = Math.floor(ret*Math.pow(10,_args.nbdec))/Math.pow(10,_args.nbdec); }
+                        ret = ((_args && _args.frommathml)?"<mn>"+ret+"</mn>":ret)+p;
+                    }
                     switch (_this.subtype) {
                         case "segment"  : ret="["+ret+"]"; break;
                         case "line"     : ret="("+ret+")"; break;
                     }
                     size = Math.max(0.2,1-(ret.toString().length-1)*0.2);
                 }
-                if (!_frommathml && size!=1) { ret = "<span style='font-size:"+size+"em;'>"+ret+"</span>"; }
+                if (_args && !_args.onlytext && size!=1) { ret = "<span style='font-size:"+size+"em;'>"+ret+"</span>"; }
                 return ret;
             },
             filled: function(_this) {
@@ -956,7 +1149,6 @@
                             helpers.node.detach(c.children[d]);
                             c.children[d] = helpers.node.clone(sav);
                             settings.root=helpers.node.editor.insert($this,true,c);
-                            helpers.checkfilled($this);
                         }
                     }
 
@@ -966,7 +1158,7 @@
                 insert: function($this,_root,_elt) {
                     var settings = helpers.settings($this);
                     var data = (settings.data?settings.data[settings.dataid]:settings);
-                    if (typeof(_elt)=="number") { _elt=(_elt<0?0:settings.cvalues[_elt]); }
+                    if (typeof(_elt)=="number") { _elt=(_elt<0?0:helpers.node.clone(settings.cvalues[_elt])); }
 
                     var ret = helpers.node.create("n"+(nodecounter++));
                     ret.$html = $("<div class='d' id='"+ret.id+"'></div>");
@@ -999,7 +1191,8 @@
                                 if (settings.cvalues[id].type=="tree") {
                                     node.type="op";
                                     node.$html.html("<div class='a "+node.type+"' id='"+node.id+"'><div class='label'>"+
-                                                    helpers.node.label(node, settings.nbdec)+"</div></div>");
+                                                    helpers.node.label(node, {nbdec: settings.nbdec, ntype: settings.ntype}) +
+                                                    "</div></div>");
                                     for (var i in settings.cvalues[id].children) { 
                                             node.children.push(helpers.node.editor.insert($this,false,settings.cvalues[id].children[i]));
                                     }
@@ -1015,7 +1208,6 @@
 
                                 helpers.node.editor.display($this);
                                 helpers.node.mathml($this);
-                                helpers.checkfilled($this);
                             }
                         }
                     });
@@ -1024,7 +1216,7 @@
                     if (_elt && _elt.type) {
                         helpers.node.extend(ret, _elt);
                         ret.$html.html("<div class='a "+_elt.type+"' id='"+_elt.id+"'><div class='label'>"+
-                                        helpers.node.label(_elt, settings.nbdec)+"</div></div>");
+                                        helpers.node.label(_elt, {nbdec: settings.nbdec, ntype: settings.ntype})+"</div></div>");
                         if (_elt.children && _elt.children.length) {
                             for (var i in _elt.children) {
                                 ret.children.push(helpers.node.editor.insert($this,false,_elt.children[i]));
@@ -1076,12 +1268,14 @@
                     if (links) { $this.find("#editor>div").append(links); }
                     _node.$html.css("top",(_level*1.75)+"em").css("left",((_left+_node.left)*1.5)+"em");
 
+                    // ROOT LEVEL
                     if (_level==0) {
                         var ratio = Math.min(1,3.5/level,5.5/_node.width);
                         $this.find("#editor>div").css("font-size",ratio+"em");
                         var mx = ($this.find("#editor").width()-_node.$html.width()*_node.width*1.25)/2;
                         var my = ($this.find("#editor").height()-_node.$html.height()*(level+1)*1.45)/2;
                         $this.find("#editor>div").css("left",mx+"px").css("top",my+"px");
+                        helpers.checkfilled($this);
                     }
                     return level;
                 },
@@ -1092,6 +1286,7 @@
                     helpers.node.mathml($this);
                     $this.find("#toinventory").removeClass("s");
                     $this.find("#exec").removeClass("s");
+                    $this.find("#submit").removeClass("s");
                 }
             },
             mathml: function($this, _node) {
@@ -1127,7 +1322,8 @@
                         ret = ret.replace(regexp, helpers.node.mathml($this,_node.children[i]));
                     }
                 }
-                else { ret = "<mn>"+helpers.node.label(_node, settings.nbdec,true)+"</mn>"; }
+                else { ret = helpers.node.label(_node,
+                                {nbdec: settings.nbdec, ntype: settings.ntype, onlytext:true, frommathml:true }); }
 
                 if (isroot) {
                     if (_node.type) {
@@ -1167,18 +1363,18 @@
                     }
                 }
                 else {
-                    var tmp = _node.value;
-                    if (tmp && typeof(tmp)=="number") { tmp = Math.floor(tmp*Math.pow(10,settings.nbdec))/Math.pow(10,settings.nbdec); }
+                    var tmp = helpers.node.label(_node, {nbdec: settings.nbdec, ntype: settings.ntype, onlytext:true});
                     ret = [tmp?tmp:""];
                 }
                 return ret;
             },
             mathmlup: function($this) {
                 var settings = helpers.settings($this);
-                settings.mathmlup.timerid = 0;
-                var ratio = $this.find("#screen>div").height()/$this.find("#screen").height();
-                if (ratio<0.8 || ratio>1) {
-                    settings.mathmlup.ratio = settings.mathmlup.ratio*(ratio<0.8?1.1:0.9);
+                if (settings.mathmlup.timerid) { clearTimeout(settings.mathmlup.timerid); settings.mathmlup.timerid = 0; }
+                var ratio = Math.max($this.find("#screen>div").height()/$this.find("#screen").height(),
+                                     $this.find("#screen>div").width()/$this.find("#screen").width());
+                if (ratio<0.5 || ratio>1) {
+                    settings.mathmlup.ratio = settings.mathmlup.ratio*(ratio<0.5?1.1:0.9);
                     $this.find("#screen>div").css("font-size",settings.mathmlup.ratio+"em");
                     settings.mathmlup.timerid = setTimeout(function(){ helpers.node.mathmlup($this); }, 10 );
                 }
@@ -1231,7 +1427,8 @@
                 if (values && _index<values.length) {
                     values[_index]= helpers.node.init(values[_index], _index);
                     html="<div class='a "+values[_index].type+"' id='"+values[_index].id+"'>"+
-                         "<div class='label'>"+helpers.node.label(values[_index], settings.nbdec)+"</div></div>";
+                         "<div class='label'>"+helpers.node.label(values[_index], {nbdec: settings.nbdec, ntype: settings.ntype})+
+                         "</div></div>";
                 }
                 $(this).html(html);
             });
@@ -1264,6 +1461,7 @@
             var isFilled = helpers.node.filled(settings.root);
             $this.find("#toinventory").toggleClass("s",settings.root.type=="op"&&isFilled);
             $this.find("#exec").toggleClass("s",settings.root.type=="action"&&isFilled);
+            $this.find("#submit").toggleClass("s", settings.root.type=="op"&&isFilled);
         },
         levenshtein: function (a,b) {
                 var n = a.length, m = b.length, matrice = [];
@@ -1292,6 +1490,7 @@
                     root            : {},                                   // build tree
                     wrongs          : 0,                                    // wrongs value
                     mathmlup        : { ratio: 1, timerid: 0, action:0 },   // ratio of the mathml output
+                    timers          : { glossary: 0, clear: 0 },            // Timers id
                     cvalues         : 0                                     // current values
                 };
 
@@ -1323,7 +1522,7 @@
             },
             valid: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                if (settings.interactive) {
+                if (settings.interactive && $this.find("#submit").hasClass("s")) {
                     settings.interactive = false;
                     var result = (settings.data?settings.data[settings.dataid].result:settings.result);
                     if (!$.isArray(result)) { result = [ result ]; }
@@ -1363,7 +1562,7 @@
                         helpers.node.detach(vNew);
                         settings.cvalues.push(vNew);
                         var $html=$("<div class='a "+vNew.type+"' id='"+vNew.id+"'><div class='label'>"+
-                                     helpers.node.label(vNew, settings.nbdec)+"</div></div>");
+                                     helpers.node.label(vNew, {nbdec: settings.nbdec, ntype: settings.ntype})+"</div></div>");
                         $($this.find("#inventory .z").get(vIndex)).html($html);
                         helpers.node.editor.clear($this);
                         helpers.draggable($this, $html);

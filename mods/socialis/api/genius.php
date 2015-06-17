@@ -1,19 +1,15 @@
 <?php
 $apipath = "../../../api/";
 include_once $apipath."database.php";
-include "check.php";
-include $apipath."mods/check.php";
+include_once $apipath."mods/check.php";
 
 if (!$error) {
     if ($_POST["genius"]) {
-        mysql_query("INSERT INTO `".$_SESSION['prefix']."genius` (`User_Id`, `Genius`) ".
-                    "VALUES ( '".$_GET["username"]."', '".$_POST["genius"]."') ".
+        mysql_query("INSERT INTO `".$_SESSION['prefix']."genius` (`User_Key`, `Genius`) ".
+                    "VALUES ( '".$_SESSION['User_Key']."', '".$_POST["genius"]."') ".
                     "ON DUPLICATE KEY UPDATE `Genius` = '".$_POST["genius"]."'");
 
         $value = $_POST["genius"];
-
-        // HANDLE AWARDS
-
     }
     else {
 
@@ -21,12 +17,12 @@ if (!$error) {
 
             //TODO : check if value and username are friends
 
-            $genius = mysql_query("SELECT * FROM `".$_SESSION['prefix']."genius` WHERE `User_Id`='".$_GET["value"]."'");
+            $genius = mysql_query("SELECT * FROM `".$_SESSION['prefix']."genius` WHERE `User_Key`='".$_GET["value"]."'");
             $g = mysql_fetch_array($genius);
             $value = $g["Genius"];
         }
         else {
-            $genius = mysql_query("SELECT * FROM `".$_SESSION['prefix']."genius` WHERE `User_Id`='".$_GET["username"]."'");
+            $genius = mysql_query("SELECT * FROM `".$_SESSION['prefix']."genius` WHERE `User_Key`='".$_SESSION['User_Key']."'");
             $g = mysql_fetch_array($genius);
             $value = $g["Genius"];
         }
