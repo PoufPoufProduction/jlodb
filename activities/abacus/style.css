@@ -1,0 +1,30 @@
+.abacus                            { background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat;}
+.abacus div#splashex               { background-image:url("../../res/img/banners/abacus.svg"); }
+.abacus div#splashex h1            { position:absolute; top:14%; left:60%; font-size:1.5em; }
+.abacus div#splashex #guide        { position:absolute; top:22%; left:61%; font-size:.75em; width:35%; text-align:justify; }
+
+.abacus div#board                  { width:16em; height:9em; }
+
+.abacus div#nav                    { width:16em; height:3em; }
+.abacus div#exercice               { float:left; margin:1em 0 0 1em; width:37em; height:8em; padding:.5em; background-repeat:repeat;
+                                     font-size:.3em; border-radius:1.5em 1.5em 0 0;
+                                     background-image:url("../../res/img/background/book02.svg"); text-align:justify;
+                                     font-family: "Courier New" Courier monospace; }
+.abacus div#exercice .strong       { color:red; font-weight:bold; border: 1px solid red; border-width:1px 0; }
+
+
+.abacus div#comment                  { margin-top:0.5em; font-size:2em; height:1em;width:1em; float:right;
+                                       background-image:url("../../res/img/icon/se.svg"); background-repeat:no-repeat; }
+.abacus div#comment>div             { font-size:.6em; margin-top:.2em; text-align:center; font-weight:bold; color:#aee2e6; }
+
+.abacus div#submit                   { margin-top:0.5em; font-size:2em; height:1em;width:1em; cursor:pointer; float:left; }
+.abacus div#submit>img               { display:none; }
+.abacus div#submit #subvalid         { display:inline; }
+.abacus div#submit.good #subvalid    { display:none; }
+.abacus div#submit.wrong #subvalid   { display:none; }
+.abacus div#submit.good #subgood     { display:inline; }
+.abacus div#submit.wrong #subwrong   { display:inline; }
+
+.abacus #effects                     { display:none; width:5em; height:5em; position:absolute; top:0.5em; left:10.5em;  z-index:20;}
+.abacus #effects.division            { top:5em;}
+.abacus #effects>div                 { font-size:5em; width:1em; height:1em; display:none;}

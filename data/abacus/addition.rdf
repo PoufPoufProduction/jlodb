@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dct="http://purl.org/dc/terms/">
+
+    <!-- SUANPAN -->
+
+    <rdf:Description>
+        <dct:identifier>s5a</dct:identifier>
+        <dct:title xml:lang="fr-FR">Additioner deux nombres compris entre 1 et 5 [2+2,6+3].</dct:title>
+        <dct:description><![CDATA["data":[{"value":["+","2","2"],"target":[[0,4,"+1"],[0,5,"+2"]],"init":2},{"value":["+","6","3"],"target":[[0,3,"+1"],[0,4,"+2"],[0,5,"+3"]],"init":6}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Effectuez les opérations demandées grâce au boulier chinois ([b]'Suanpan'[/b]).","Pour vous aider dans cet exercice, le premier opérande est déjà placé sur le boulier et les billes à déplacer sont coloriées."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:alternative>s10To</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>s5b</dct:identifier>
+        <dct:title xml:lang="fr-FR">Additioner deux nombres compris entre 1 et 5 [1+2,3+2,4+1].</dct:title>
+        <dct:description><![CDATA["data":[{"value":["+","1","2"],"target":[[0,3,"+1"],[0,4,"+2"]],"init":1},{"value":["+","3","2"],"target":[[0,5,"+1"],[0,6,"+2"],[0,2,"5&darr;"],[0,1,"&darr;"]],"init":3},{"value":["+","4","1"],"target":[[0,6,"+1"],[0,2,"5&darr;"],[0,1,"&darr;"]],"init":4}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Effectuez les opérations demandées.","[strong]Quand les billes du bas sont toutes les 5 grises et qu'un X rouge apparaît, il faut vite échanger ces 5 billes par une bille du haut.[/strong]"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:alternative>s10To</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>s10a</dct:identifier>
+        <dct:title xml:lang="fr-FR">Additioner deux nombres compris entre 1 et 5 [3+3,4+4,4+2].</dct:title>
+        <dct:description><![CDATA["data":[{"value":["+","3","3"],"target":[[0,5,"+1"],[0,6,"+2"],[0,2,"5&darr;"],[0,1,"&darr;"],[0,2,"+3"]],"init":3},{"value":["+","4","4"],"target":[[0,6,"+1"],[0,2,"5&darr;"],[0,1,"&darr;"],[0,2,"+2"],[0,3,"+3"],[0,4,"+4"]],"init":4},{"value":["+","4","2"],"target":[[0,6,"+1"],[0,2,"5&darr;"],[0,1,"&darr;"],[0,2,"+1"]],"init":4}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Effectuez les opérations demandées.","L'opération se poursuit normalement après l'échange des 5 billes grises."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:alternative>s10To</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>s10b</dct:identifier>
+        <dct:title xml:lang="fr-FR">Additioner deux nombres compris entre 1 et 5 [2+3,4+4,3+3].</dct:title>
+        <dct:description><![CDATA["data":[{"value":["+","2","3"],"target":[[0,3,"2"],[0,4,"+1"],[0,5,"+2"],[0,6,"+3"],[0,2,"5&darr;"],[0,1,"&darr;"]]},{"value":["+","4","4"],"target":[[0,5,"4"],[0,6,"+1"],[0,2,"5&darr;"],[0,1,"&darr;"],[0,2,"+2"],[0,3,"+3"],[0,4,"+4"]]},{"value":["+","3","3"],"target":[[0,4,"3"],[0,5,"+1"],[0,6,"+2"],[0,2,"5&darr;"],[0,1,"&darr;"],[0,2,"+3"]]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Effectuez les opérations demandées.","Désormais le premier opérande n'est plus placé au début."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:alternative>s10To</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>s10o</dct:identifier>
+        <dct:title xml:lang="fr-FR">Additioner deux nombres dont la somme est comprise entre 2 et 9.</dct:title>
+        <dct:description><![CDATA["number":5,"gen":"function(_value){var a=Math.floor(Math.random()*8)+1, b=Math.floor(Math.random()*(9-a))+1; return {\\\"value\\\":[\\\"+\\\",a,b]}; }"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Effectuez les opérations demandées."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:alternative>s10To</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>s100o</dct:identifier>
+        <dct:title xml:lang="fr-FR">Additioner deux nombres dont la somme est comprise entre 2 et 99.</dct:title>
+        <dct:description><![CDATA["number":5,"gen":"function(_value){var a=Math.floor(Math.random()*98)+1, b=Math.floor(Math.random()*(99-a))+1; return {\\\"value\\\":[\\\"+\\\",a,b]}; }"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Effectuez les opérations demandées."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:alternative>s10To</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>s1Ko</dct:identifier>
+        <dct:title xml:lang="fr-FR">Additioner deux nombres dont la somme est comprise entre 2 et 999.</dct:title>
+        <dct:description><![CDATA["number":5,"gen":"function(_value){var a=Math.floor(Math.random()*998)+1, b=Math.floor(Math.random()*(999-a))+1; return {\\\"value\\\":[\\\"+\\\",a,b]}; }"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Effectuez les opérations demandées."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:alternative>s10To</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>s1Ki</dct:identifier>
+        <dct:title xml:lang="fr-FR">Additioner deux nombres dont la somme est comprise entre 2 et 999 avec un boulier préparé.</dct:title>
+        <dct:description><![CDATA["number":5,"gen":"function(_value){var a=Math.floor(Math.random()*998)+1, b=Math.floor(Math.random()*(999-a))+1; return {\\\"value\\\":[\\\"+\\\",a,b],\\\"init\\\":a}; }"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Effectuez les opérations demandées."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:alternative>s10To</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>s1Mo</dct:identifier>
+        <dct:title xml:lang="fr-FR">Additioner deux nombres dont la somme est comprise entre 2 et 999 999.</dct:title>
+        <dct:description><![CDATA["number":4,"gen":"function(_value){var a=Math.floor(Math.random()*999998)+1, b=Math.floor(Math.random()*(999999-a))+1; return {\\\"value\\\":[\\\"+\\\",a,b]}; }"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Effectuez les opérations demandées."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:alternative>s10To</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>s1Mi</dct:identifier>
+        <dct:title xml:lang="fr-FR">Additioner deux nombres dont la somme est comprise entre 2 et 999 999 avec un boulier préparé.</dct:title>
+        <dct:description><![CDATA["number":4,"gen":"function(_value){var a=Math.floor(Math.random()*999998)+1, b=Math.floor(Math.random()*(999999-a))+1; return {\\\"value\\\":[\\\"+\\\",a,b],\\\"init\\\":a}; }"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Effectuez les opérations demandées."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:alternative>s10To</dct:alternative>
+    </rdf:Description>
+
+</rdf:RDF>
+
