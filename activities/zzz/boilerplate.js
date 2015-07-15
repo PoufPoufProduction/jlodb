@@ -6,6 +6,7 @@
         template    : "template.html",                          // Activity's html template
         css         : "style.css",                              // Activity's css style sheet
         lang        : "en-US",                                  // Current localization
+        exercice    : [],                                       // Exercice
         debug       : false                                     // Debug mode
     };
 
