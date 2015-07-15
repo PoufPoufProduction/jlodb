@@ -14,8 +14,20 @@
         ratioerr    : 1,                    // Error ratio
         fontex      : 1,                    // Exercice font
         highlight   : [],                   // Highlight cells
+        exercice    : "",                   // Exercice
         debug       : false                 // Debug mode
     };
+
+    var regExp = [
+        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",                  "<b>$1</b>",
+        "[*]",                                      "&times;",
+        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
+        "\\\[br\\\]",                               "<br/>",
+        "\\\[green\\\]([^\\\[]+)\\\[/green\\\]",    "<span style='color:green'>$1</span>",
+        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
+        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
+        "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>"
+    ];
 
     // private methods
     var helpers = {
@@ -42,6 +54,13 @@
             var settings = helpers.settings($this);
             helpers.unbind($this);
             settings.context.onquit($this,{'status':'success', 'score':settings.score});
+        },
+        format: function(_text) {
+            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
+                var vReg = new RegExp(regExp[i*2],"g");
+                _text = _text.replace(vReg,regExp[i*2+1]);
+            }
+            return _text;
         },
         loader: {
             css: function($this) {
@@ -106,8 +125,9 @@
                 if ($.isArray(settings.exercice)) {
                     $this.find("#exercice>div").html("");
                     for (var i in settings.exercice) {
-                        $this.find("#exercice>div").append("<p>"+(settings.exercice[i].length?settings.exercice[i]:"&nbsp;")+"</p>"); }
-                } else { $this.find("#exercice>div").html(settings.exercice); }
+                        $this.find("#exercice>div").append("<p>"+
+                            (settings.exercice[i].length?helpers.format(settings.exercice[i]):"&nbsp;")+"</p>"); }
+                } else { $this.find("#exercice>div").html(helpers.format(settings.exercice)); }
                 $this.find("#exercice>div").css("font-size",settings.fontex+"em");
 
                 // Locale handling
@@ -146,6 +166,7 @@
             var $board = $this.find("#data").html("");
             $this.find("#effects").hide();
             $this.find("#effects>div").hide();
+            $this.find("#submit").removeClass("wrong").removeClass("good");
 
             // Get the operation
             var vOpTmp;
@@ -368,6 +389,8 @@
                     else if (j>=settings.op.length && j<height-1)   { opclass = " l2 active"; if (j>settings.op.length) optxt = "+"; }
                     else if (j==height-1)                           { opclass = " result active"; }
 
+                    if (optxt=="*")                                 { optxt = "&times;"; }
+
                     html+="<div class='op' style='top:"+top+"em;left:"+left+"em;'>"+optxt+"</div>";
                     left+=0.75;
 
@@ -417,48 +440,37 @@
 
             for (var i in settings.highlight) {
                 for (var j in settings.highlight[i]) {
-                    $($this.find(".active").get(settings.highlight[i][j])).addClass(i);
+                    $($this.find(".active,.value").get(settings.highlight[i][j])).addClass(i);
                 }
             }
 
-            $this.find(".active").bind("mousedown touchstart", function(event) {
-                var $this = $(this).closest(".operation") , settings = helpers.settings($this), $keypad = $this.find("#keypad");
-
-                $this.find("#keypad .k").removeClass("s");
-
-                if (settings.interactive && !$(this).hasClass("move") ) {
-                    var vEvent = (event && event.originalEvent && event.originalEvent.touches &&
-                                  event.originalEvent.touches.length)? event.originalEvent.touches[0]:event;
-                    var vTop = vEvent.clientY - $this.offset().top;
-                    var vLeft = vEvent.clientX - $this.offset().left;
-
-                    settings.keypad = $(this);
-                    settings.key    = -1;
-
-                    var tmp = $this.find("#bg1").height()/1.5;
-                    if (vTop<tmp)   { vTop = tmp; }
-                    if (vLeft<tmp)  { vLeft = tmp; }
-                    if (vTop+tmp>$this.height())    { vTop=$this.height()-tmp; }
-                    if (vLeft+tmp>$this.width())    { vLeft=$this.width()-tmp; }
-                    $keypad.css("top", vTop+"px").css("left", vLeft+"px").show();
-                    settings.elt = this;
-
-                    $(this).addClass("s");
-                }
-                event.preventDefault();
+            $this.find(".corner").bind("mousedown touchstart", function(event) {
+                $this.find(".carry .active").html(""); event.preventDefault();
             });
 
+            $this.find(".active").bind("mousedown touchstart", function(event) { helpers.mousedown(this, event, false); });
+
             $this.bind("mouseup touchend", function(event) {
-                var settings = helpers.settings($this), $keypad = $this.find("#keypad");
+                var settings = helpers.settings($this), $keypad = $this.find("#keypad"), vVal = "";
 
                 if (settings.key!=-1 && settings.keypad) {
-                    var vVal = settings.$keys[settings.key].text();
+                    vVal = settings.$keys[settings.key].text();
                     settings.keypad.html((settings.keypad.html()==vVal&&settings.keypad.html().length)?"":vVal);
                 }
 
                 $this.find(".active").removeClass("s");
                 $keypad.hide();
                 settings.keypad = 0;
+
+                if (vVal && settings.target && settings.targetid<settings.target.length) {
+                    var vOk = true;
+                    if (settings.target[settings.targetid].block) {
+                        if (settings.target[settings.targetid].block != vVal) { vOk = false; }
+                    }
+                    if (vOk) { settings.targetid++; helpers.target($this, true); }
+                }
+
+
                 event.preventDefault();
             });
 
@@ -495,16 +507,102 @@
 
             // Resize
             settings.size= [width, height];
-            var off = settings.type=="/"?0.2:2;
-            var vFont = Math.floor(Math.min($board.width()/(width+off), $board.height()/(height+1)));
+            var off = (settings.type=="/")?[0,0]:[1,0.5];
+
+            var vFont = Math.floor(0.9*Math.min($board.width()/(width+off[0]), $board.height()/(height+off[1])));
             vFont = Math.floor(vFont/4)*4;
             $board.css("font-size", vFont+"px")
-                  .css("top", Math.floor(($board.height()-(height+1)*vFont)/2)+"px")
-                  .css("left", Math.floor(($board.width()-((width+off)*vFont))/2)+"px");
+                  .css("top", Math.floor(($board.height()-(height+off[1])*vFont)/2)+"px")
+                  .css("left", Math.floor(($board.width()-((width+off[0])*vFont))/2)+"px");
             if (settings.type!="/") helpers.showop($this);
+
+            if (settings.target) {
+                var vTargetFont = 1.2*vFont*12/$this.height();
+                vTargetFont = Math.floor($this.height()/12*vTargetFont)/($this.height()/12);
+                $this.find("#target").css("font-size",vTargetFont+"em");
+                helpers.target($this, false);
+                $this.find("#target").show();
+
+                setTimeout(function() { $this.find("#target>div").addClass("running"); },0);
+            }
 
             settings.interactive = true;
 
+        },
+        mousedown: function(_this, event, _fromtarget) {
+            var $this = $(_this).closest(".operation") , settings = helpers.settings($this), $keypad = $this.find("#keypad");
+            $this.find("#keypad .k").removeClass("s");
+
+            if (settings.target && settings.targetid<settings.target.length && settings.target[settings.targetid].block && !_fromtarget) {
+                // Not targeted cell are blocked
+
+            }
+            else {
+
+                if (settings.interactive && !$(_this).hasClass("move") ) {
+                    var vEvent = (event && event.originalEvent && event.originalEvent.touches &&
+                                event.originalEvent.touches.length)? event.originalEvent.touches[0]:event;
+                    var vTop = vEvent.clientY - $this.offset().top;
+                    var vLeft = vEvent.clientX - $this.offset().left;
+
+                    settings.keypad = $(_this);
+                    settings.key    = -1;
+
+                    var tmp = $this.find("#bg1").height()/1.5;
+                    if (vTop<tmp)   { vTop = tmp; }
+                    if (vLeft<tmp)  { vLeft = tmp; }
+                    if (vTop+tmp>$this.height())    { vTop=$this.height()-tmp; }
+                    if (vLeft+tmp>$this.width())    { vLeft=$this.width()-tmp; }
+                    $keypad.css("top", vTop+"px").css("left", vLeft+"px").show();
+                    settings.elt = _this;
+
+                    $(_this).addClass("s");
+                }
+            }
+            event.preventDefault();
+        },
+        target: function($this, _anim) {
+            var settings = helpers.settings($this);
+
+            if (settings.target && settings.targetid<settings.target.length) {
+                var $data = $this.find("#data");
+
+                if (typeof settings.target[settings.targetid].id != "undefined") {
+                    var $cell = $($this.find(".active,.value").get(settings.target[settings.targetid].id));
+                    var vCarry = 0;
+                    if ($cell.parent().hasClass("carry")) { $cell = $cell.parent(); vCarry = $cell.height()/2; }
+                    var $target = $this.find("#target");
+                    var offset = Math.floor($target.width()-$cell.width())/2;
+                    $target.animate({left : ($cell.position().left+$data.position().left-offset)+"px",
+                                     top  : ($cell.position().top+$data.position().top-offset-vCarry)+"px" },
+                                    _anim?500:0 );
+                }
+
+                if (settings.target[settings.targetid].box) {
+                    var $cell1 = $($this.find(".active,.value").get(settings.target[settings.targetid].box[0]));
+                    var $cell2 = $($this.find(".active,.value").get(settings.target[settings.targetid].box[1]));
+                    if ($cell1.parent().hasClass("carry")) { $cell1 = $cell1.parent(); }
+                    if ($cell2.parent().hasClass("carry")) { $cell2 = $cell2.parent(); }
+
+                    var x1 = $cell1.position().left+$data.position().left;
+                    var y1 = $cell1.position().top+$data.position().top;
+                    var x2 = $cell2.position().left+$data.position().left+$cell2.width();
+                    var y2 = $cell2.position().top+$data.position().top+$cell2.height();
+                    $this.find("#box").css("left",x1+"px").css("top",y1+"px")
+                                      .css("width",(x2-x1-10)+"px").css("height",(y2-y1-10)+"px")
+                                      .css("opacity",1).show();
+
+                }
+                else if ($this.find("#box").is(":visible"))
+                {
+                    $this.find("#box").animate({opacity:0}, 500, function() { $(this).hide(); });
+                }
+
+            }
+            else
+            {
+                $this.find("#box,#target").animate({opacity:0}, 500, function() { $(this).hide(); });
+            }
         }
     };
 
@@ -529,6 +627,7 @@
                     $keys       : [],
                     interactive : false,
                     count       : 0,
+                    targetid    : 0,
                     type        : '+',
                     op          : []
                 };
@@ -572,6 +671,10 @@
                     helpers.showop($this);
                 }
             },
+            target: function(event) {
+                var $this = $(this) , settings = helpers.settings($this);
+                helpers.mousedown($this.find(".active,.value").get(settings.target[settings.targetid].id), event, true);
+            },
             valid: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 if (settings.interactive) {
@@ -608,6 +711,7 @@
                     $this.find("#effects").toggleClass("division", settings.type=="/").show();
                     $this.find("#good").toggle(!error);
                     $this.find("#wrong").toggle(error);
+                    $this.find("#submit").addClass(error?"wrong":"good");
 
                     settings.count++;
 

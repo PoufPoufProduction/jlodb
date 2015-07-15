@@ -3,6 +3,10 @@
     <div id="nbdec" class="tab"><div id="lnbdec" class="label">DEC</div><span></span></div>
     <div id="board">
         <div id="data"></div>
+        <div id="target" class="anim12" ontouchstart="$(this).closest('.operation').operation('target',event);event.preventDefault();"
+                                        onmousedown="$(this).closest('.operation').operation('target',event);event.preventDefault();">
+            <div><img src="res/img/effects/target01.svg"/></div></div>
+        <div id="box"></div>
         <div id="exercice"><div></div></div>
     </div>
 

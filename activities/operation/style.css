@@ -21,7 +21,7 @@
                                       display:none; }
 .operation div#exercice>div         { font-size:0.5em; margin:.2em 1em; text-align:justify; font-style:italic; }
 
-.operation #data                    { position:relative; margin:0 auto; width:86%; height:86%; overflow:visible;}
+.operation #data                    { position:relative; margin:0; width:86%; height:86%; overflow:visible;}
 .operation #data>div                { position:absolute; background-color:rgb(255,255,255); z-index:1;}
 .operation #data .active            { cursor:pointer; }
 .operation #data .active.red        { background-color:rgb(255,64,64); color:rgb(64,0,0);}
@@ -72,3 +72,6 @@
 .operation #effects>div                 { font-size:5em; width:1em; height:1em; display:none;}
 
 
+.operation #target                      { cursor:pointer; z-index:3; width:1em; height:1em; position:absolute; top:0; left:0;  }
+.operation #box                         { position:absolute; top:0; left:0; width:1em; height:2em; z-index:2; border:5px solid red;
+                                          display:none; }
