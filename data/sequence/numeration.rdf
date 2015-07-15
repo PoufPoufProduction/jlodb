@@ -22,6 +22,8 @@
             p           : potion
             po          : position
             s           : série de nombres à compléter
+            so          : sorobo (japanese)
+            su          : suanpan (chinese)
             u           : unité/dizaine/centaine
             w           : writing
     -->
@@ -1326,6 +1328,143 @@
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>s09r</dct:alternative>
+    </rdf:Description>
+
+
+    <!-- Soroban -->
+
+    <rdf:Description>
+        <dct:identifier>so10</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une valeur comprise entre 1 et 9 depuis un boulier japonais (avec boules grisées).</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":1000},"gen":"function(){var val=Math.floor(Math.random()*9)+1, v = val, ret=\\\"<div style='margin:0 auto;width:2em;height:1em;overflow:visible;'><svg width='100%' height='100%' viewBox='0 0 100 50'><rect x='2' y='1' width='96' height='48' rx='2' style='fill:none;stroke:black;stroke-width:1;'/><line x1='2' y1='15.5' x2='98' y2='15.5' style='fill:none;stroke:black;stroke-width:1;'/>\\\"; for (var i=5; i>=0; i--) { var vv=v%10; v=Math.floor(v/10); ret+=\\\"<line x1='\\\"+(2+8+16*i)+\\\"' y1='1' x2='\\\"+(2+8+16*i)+\\\"' y2='49' style='fill:none;stroke:black;stroke-width:0.5;'/>\\\"; for (var j=0; j<1; j++) { var c=(vv>=5); ret+=\\\"<rect x='\\\"+(4+16*i)+\\\"' y='\\\"+(2.5+j*4.5+(c?7:0))+\\\"' width='12' height='4' rx='4' style='fill:\\\"+(c?\\\"gray\\\":\\\"white\\\")+\\\";stroke:black;stroke-width:0.5;'/>\\\"; } if (vv>=5) { vv-=5; } for (var j=0; j<4; j++) { var c=(vv<=j); ret+=\\\"<rect x='\\\"+(4+16*i)+\\\"' y='\\\"+(17.5+j*4.5+(c?12:0))+\\\"' width='12' height='4' rx='4' style='fill:\\\"+(!c?\\\"gray\\\":\\\"white\\\")+\\\";stroke:black;stroke-width:0.5;'/>\\\"; } } ret+=\\\"</svg></div>\\\"; return [ret,val];}","class":"neg alpha p02","font":3]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>so10K</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>so100</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une valeur comprise entre 1 et 100 depuis un boulier japonais (avec boules grisées).</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":3000},"gen":"function(){var val=Math.floor(Math.random()*100), v = val, ret=\\\"<div style='margin:0 auto;width:2em;height:1em;overflow:visible;'><svg width='100%' height='100%' viewBox='0 0 100 50'><rect x='2' y='1' width='96' height='48' rx='2' style='fill:none;stroke:black;stroke-width:1;'/><line x1='2' y1='15.5' x2='98' y2='15.5' style='fill:none;stroke:black;stroke-width:1;'/>\\\"; for (var i=5; i>=0; i--) { var vv=v%10; v=Math.floor(v/10); ret+=\\\"<line x1='\\\"+(2+8+16*i)+\\\"' y1='1' x2='\\\"+(2+8+16*i)+\\\"' y2='49' style='fill:none;stroke:black;stroke-width:0.5;'/>\\\"; for (var j=0; j<1; j++) { var c=(vv>=5); ret+=\\\"<rect x='\\\"+(4+16*i)+\\\"' y='\\\"+(2.5+j*4.5+(c?7:0))+\\\"' width='12' height='4' rx='4' style='fill:\\\"+(c?\\\"gray\\\":\\\"white\\\")+\\\";stroke:black;stroke-width:0.5;'/>\\\"; } if (vv>=5) { vv-=5; } for (var j=0; j<4; j++) { var c=(vv<=j); ret+=\\\"<rect x='\\\"+(4+16*i)+\\\"' y='\\\"+(17.5+j*4.5+(c?12:0))+\\\"' width='12' height='4' rx='4' style='fill:\\\"+(!c?\\\"gray\\\":\\\"white\\\")+\\\";stroke:black;stroke-width:0.5;'/>\\\"; } } ret+=\\\"</svg></div>\\\"; return [ret,val];}","class":"neg alpha p02","font":3]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>so10K</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>so1K</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une valeur comprise entre 1 et 1 000 depuis un boulier japonais (avec boules grisées).</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":3,"speed":3000},"gen":"function(){var val=Math.floor(Math.random()*1000), v = val, ret=\\\"<div style='margin:0 auto;width:2em;height:1em;overflow:visible;'><svg width='100%' height='100%' viewBox='0 0 100 50'><rect x='2' y='1' width='96' height='48' rx='2' style='fill:none;stroke:black;stroke-width:1;'/><line x1='2' y1='15.5' x2='98' y2='15.5' style='fill:none;stroke:black;stroke-width:1;'/>\\\"; for (var i=5; i>=0; i--) { var vv=v%10; v=Math.floor(v/10); ret+=\\\"<line x1='\\\"+(2+8+16*i)+\\\"' y1='1' x2='\\\"+(2+8+16*i)+\\\"' y2='49' style='fill:none;stroke:black;stroke-width:0.5;'/>\\\"; for (var j=0; j<1; j++) { var c=(vv>=5); ret+=\\\"<rect x='\\\"+(4+16*i)+\\\"' y='\\\"+(2.5+j*4.5+(c?7:0))+\\\"' width='12' height='4' rx='4' style='fill:\\\"+(c?\\\"gray\\\":\\\"white\\\")+\\\";stroke:black;stroke-width:0.5;'/>\\\"; } if (vv>=5) { vv-=5; } for (var j=0; j<4; j++) { var c=(vv<=j); ret+=\\\"<rect x='\\\"+(4+16*i)+\\\"' y='\\\"+(17.5+j*4.5+(c?12:0))+\\\"' width='12' height='4' rx='4' style='fill:\\\"+(!c?\\\"gray\\\":\\\"white\\\")+\\\";stroke:black;stroke-width:0.5;'/>\\\"; } } ret+=\\\"</svg></div>\\\"; return [ret,val];}","class":"neg alpha p02","font":3]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>so10K</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>so1Ka</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une valeur comprise entre 1 et 1 000 depuis un boulier japonais.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":3,"speed":3000},"gen":"function(){var val=Math.floor(Math.random()*1000), v = val, ret=\\\"<div style='margin:0 auto;width:2em;height:1em;overflow:visible;'><svg width='100%' height='100%' viewBox='0 0 100 50'><rect x='2' y='1' width='96' height='48' rx='2' style='fill:none;stroke:black;stroke-width:1;'/><line x1='2' y1='15.5' x2='98' y2='15.5' style='fill:none;stroke:black;stroke-width:1;'/>\\\"; for (var i=5; i>=0; i--) { var vv=v%10; v=Math.floor(v/10); ret+=\\\"<line x1='\\\"+(2+8+16*i)+\\\"' y1='1' x2='\\\"+(2+8+16*i)+\\\"' y2='49' style='fill:none;stroke:black;stroke-width:0.5;'/>\\\"; for (var j=0; j<1; j++) { var c=(vv>=5); ret+=\\\"<rect x='\\\"+(4+16*i)+\\\"' y='\\\"+(2.5+j*4.5+(c?7:0))+\\\"' width='12' height='4' rx='4' style='fill:white;stroke:black;stroke-width:0.5;'/>\\\"; } if (vv>=5) { vv-=5; } for (var j=0; j<4; j++) { var c=(vv<=j); ret+=\\\"<rect x='\\\"+(4+16*i)+\\\"' y='\\\"+(17.5+j*4.5+(c?12:0))+\\\"' width='12' height='4' rx='4' style='fill:white;stroke:black;stroke-width:0.5;'/>\\\"; } } ret+=\\\"</svg></div>\\\"; return [ret,val];}","class":"neg alpha p02","font":3]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>so10K</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>so10K</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une valeur comprise entre 1 et 10 000 depuis un boulier japonais (avec boules grisées).</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":4,"speed":3000},"gen":"function(){var val=Math.floor(Math.random()*10000), v = val, ret=\\\"<div style='margin:0 auto;width:2em;height:1em;overflow:visible;'><svg width='100%' height='100%' viewBox='0 0 100 50'><rect x='2' y='1' width='96' height='48' rx='2' style='fill:none;stroke:black;stroke-width:1;'/><line x1='2' y1='15.5' x2='98' y2='15.5' style='fill:none;stroke:black;stroke-width:1;'/>\\\"; for (var i=5; i>=0; i--) { var vv=v%10; v=Math.floor(v/10); ret+=\\\"<line x1='\\\"+(2+8+16*i)+\\\"' y1='1' x2='\\\"+(2+8+16*i)+\\\"' y2='49' style='fill:none;stroke:black;stroke-width:0.5;'/>\\\"; for (var j=0; j<1; j++) { var c=(vv>=5); ret+=\\\"<rect x='\\\"+(4+16*i)+\\\"' y='\\\"+(2.5+j*4.5+(c?7:0))+\\\"' width='12' height='4' rx='4' style='fill:\\\"+(c?\\\"gray\\\":\\\"white\\\")+\\\";stroke:black;stroke-width:0.5;'/>\\\"; } if (vv>=5) { vv-=5; } for (var j=0; j<4; j++) { var c=(vv<=j); ret+=\\\"<rect x='\\\"+(4+16*i)+\\\"' y='\\\"+(17.5+j*4.5+(c?12:0))+\\\"' width='12' height='4' rx='4' style='fill:\\\"+(!c?\\\"gray\\\":\\\"white\\\")+\\\";stroke:black;stroke-width:0.5;'/>\\\"; } } ret+=\\\"</svg></div>\\\"; return [ret,val];}","class":"neg alpha p02","font":3]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>so10K</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>so10Ka</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une valeur comprise entre 1 et 10 000 depuis un boulier japonais.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":4,"speed":3000},"gen":"function(){var val=Math.floor(Math.random()*10000), v = val, ret=\\\"<div style='margin:0 auto;width:2em;height:1em;overflow:visible;'><svg width='100%' height='100%' viewBox='0 0 100 50'><rect x='2' y='1' width='96' height='48' rx='2' style='fill:none;stroke:black;stroke-width:1;'/><line x1='2' y1='15.5' x2='98' y2='15.5' style='fill:none;stroke:black;stroke-width:1;'/>\\\"; for (var i=5; i>=0; i--) { var vv=v%10; v=Math.floor(v/10); ret+=\\\"<line x1='\\\"+(2+8+16*i)+\\\"' y1='1' x2='\\\"+(2+8+16*i)+\\\"' y2='49' style='fill:none;stroke:black;stroke-width:0.5;'/>\\\"; for (var j=0; j<1; j++) { var c=(vv>=5); ret+=\\\"<rect x='\\\"+(4+16*i)+\\\"' y='\\\"+(2.5+j*4.5+(c?7:0))+\\\"' width='12' height='4' rx='4' style='fill:white;stroke:black;stroke-width:0.5;'/>\\\"; } if (vv>=5) { vv-=5; } for (var j=0; j<4; j++) { var c=(vv<=j); ret+=\\\"<rect x='\\\"+(4+16*i)+\\\"' y='\\\"+(17.5+j*4.5+(c?12:0))+\\\"' width='12' height='4' rx='4' style='fill:white;stroke:black;stroke-width:0.5;'/>\\\"; } } ret+=\\\"</svg></div>\\\"; return [ret,val];}","class":"neg alpha p02","font":3]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>so10K</dct:alternative>
+    </rdf:Description>
+
+    <!-- Suanpan -->
+
+    <rdf:Description>
+        <dct:identifier>su10</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une valeur comprise entre 1 et 9 depuis un boulier chinois (avec boules grisées).</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":1000},"gen":"function(){var val=Math.floor(Math.random()*9)+1, v = val, ret=\\\"<div style='margin:0 auto;width:2em;height:1em;overflow:visible;'><svg width='100%' height='100%' viewBox='0 0 100 50'><rect x='2' y='1' width='96' height='48' rx='2' style='fill:none;stroke:black;stroke-width:1;'/><line x1='2' y1='17.5' x2='98' y2='17.5' style='fill:none;stroke:black;stroke-width:1;'/>\\\"; for (var i=5; i>=0; i--) { var vv=v%10; v=Math.floor(v/10); ret+=\\\"<line x1='\\\"+(2+8+16*i)+\\\"' y1='1' x2='\\\"+(2+8+16*i)+\\\"' y2='49' style='fill:none;stroke:black;stroke-width:0.5;'/>\\\"; for (var j=0; j<2; j++) { var c=(vv>=5*(2-j)); ret+=\\\"<rect x='\\\"+(4+16*i)+\\\"' y='\\\"+(2.5+j*4.5+(c?5:0))+\\\"' width='12' height='4' rx='4' style='fill:\\\"+(c?\\\"gray\\\":\\\"white\\\")+\\\";stroke:black;stroke-width:0.5;'/>\\\"; } if (vv>=5) { vv-=5; } for (var j=0; j<5; j++) { var c=(vv<=j); ret+=\\\"<rect x='\\\"+(4+16*i)+\\\"' y='\\\"+(19+j*4.5+(c?7:0))+\\\"' width='12' height='4' rx='4' style='fill:\\\"+(!c?\\\"gray\\\":\\\"white\\\")+\\\";stroke:black;stroke-width:0.5;'/>\\\"; } } ret+=\\\"</svg></div>\\\"; return [ret,val];}","class":"neg alpha p02","font":3]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>su10K</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>su100</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une valeur comprise entre 0 et 100 depuis un boulier chinois (avec boules grisées).</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":3000},"gen":"function(){var val=Math.floor(Math.random()*100), v = val, ret=\\\"<div style='margin:0 auto;width:2em;height:1em;overflow:visible;'><svg width='100%' height='100%' viewBox='0 0 100 50'><rect x='2' y='1' width='96' height='48' rx='2' style='fill:none;stroke:black;stroke-width:1;'/><line x1='2' y1='17.5' x2='98' y2='17.5' style='fill:none;stroke:black;stroke-width:1;'/>\\\"; for (var i=5; i>=0; i--) { var vv=v%10; v=Math.floor(v/10); ret+=\\\"<line x1='\\\"+(2+8+16*i)+\\\"' y1='1' x2='\\\"+(2+8+16*i)+\\\"' y2='49' style='fill:none;stroke:black;stroke-width:0.5;'/>\\\"; for (var j=0; j<2; j++) { var c=(vv>=5*(2-j)); ret+=\\\"<rect x='\\\"+(4+16*i)+\\\"' y='\\\"+(2.5+j*4.5+(c?5:0))+\\\"' width='12' height='4' rx='4' style='fill:\\\"+(c?\\\"gray\\\":\\\"white\\\")+\\\";stroke:black;stroke-width:0.5;'/>\\\"; } if (vv>=5) { vv-=5; } for (var j=0; j<5; j++) { var c=(vv<=j); ret+=\\\"<rect x='\\\"+(4+16*i)+\\\"' y='\\\"+(19+j*4.5+(c?7:0))+\\\"' width='12' height='4' rx='4' style='fill:\\\"+(!c?\\\"gray\\\":\\\"white\\\")+\\\";stroke:black;stroke-width:0.5;'/>\\\"; } } ret+=\\\"</svg></div>\\\"; return [ret,val];}","class":"neg alpha p02","font":3]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>su10K</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>su1K</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une valeur comprise entre 0 et 1 000 depuis un boulier chinois (avec boules grisées).</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":3,"speed":3000},"gen":"function(){var val=Math.floor(Math.random()*1000), v = val, ret=\\\"<div style='margin:0 auto;width:2em;height:1em;overflow:visible;'><svg width='100%' height='100%' viewBox='0 0 100 50'><rect x='2' y='1' width='96' height='48' rx='2' style='fill:none;stroke:black;stroke-width:1;'/><line x1='2' y1='17.5' x2='98' y2='17.5' style='fill:none;stroke:black;stroke-width:1;'/>\\\"; for (var i=5; i>=0; i--) { var vv=v%10; v=Math.floor(v/10); ret+=\\\"<line x1='\\\"+(2+8+16*i)+\\\"' y1='1' x2='\\\"+(2+8+16*i)+\\\"' y2='49' style='fill:none;stroke:black;stroke-width:0.5;'/>\\\"; for (var j=0; j<2; j++) { var c=(vv>=5*(2-j)); ret+=\\\"<rect x='\\\"+(4+16*i)+\\\"' y='\\\"+(2.5+j*4.5+(c?5:0))+\\\"' width='12' height='4' rx='4' style='fill:\\\"+(c?\\\"gray\\\":\\\"white\\\")+\\\";stroke:black;stroke-width:0.5;'/>\\\"; } if (vv>=5) { vv-=5; } for (var j=0; j<5; j++) { var c=(vv<=j); ret+=\\\"<rect x='\\\"+(4+16*i)+\\\"' y='\\\"+(19+j*4.5+(c?7:0))+\\\"' width='12' height='4' rx='4' style='fill:\\\"+(!c?\\\"gray\\\":\\\"white\\\")+\\\";stroke:black;stroke-width:0.5;'/>\\\"; } } ret+=\\\"</svg></div>\\\"; return [ret,val];}","class":"neg alpha p02","font":3]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>su10K</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>su1Ka</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une valeur comprise entre 0 et 1 000 depuis un boulier chinois.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":3,"speed":3000},"gen":"function(){var val=Math.floor(Math.random()*1000), v = val, ret=\\\"<div style='margin:0 auto;width:2em;height:1em;overflow:visible;'><svg width='100%' height='100%' viewBox='0 0 100 50'><rect x='2' y='1' width='96' height='48' rx='2' style='fill:none;stroke:black;stroke-width:1;'/><line x1='2' y1='17.5' x2='98' y2='17.5' style='fill:none;stroke:black;stroke-width:1;'/>\\\"; for (var i=5; i>=0; i--) { var vv=v%10; v=Math.floor(v/10); ret+=\\\"<line x1='\\\"+(2+8+16*i)+\\\"' y1='1' x2='\\\"+(2+8+16*i)+\\\"' y2='49' style='fill:none;stroke:black;stroke-width:0.5;'/>\\\"; for (var j=0; j<2; j++) { var c=(vv>=5*(2-j)); ret+=\\\"<rect x='\\\"+(4+16*i)+\\\"' y='\\\"+(2.5+j*4.5+(c?5:0))+\\\"' width='12' height='4' rx='4' style='fill:white;stroke:black;stroke-width:0.5;'/>\\\"; } if (vv>=5) { vv-=5; } for (var j=0; j<5; j++) { var c=(vv<=j); ret+=\\\"<rect x='\\\"+(4+16*i)+\\\"' y='\\\"+(19+j*4.5+(c?7:0))+\\\"' width='12' height='4' rx='4' style='fill:white;stroke:black;stroke-width:0.5;'/>\\\"; } } ret+=\\\"</svg></div>\\\"; return [ret,val];}","class":"neg alpha p02","font":3]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>su10K</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>su10K</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une valeur comprise entre 0 et 10 000 depuis un boulier chinois (avec boules grisées).</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":4,"speed":3000},"gen":"function(){var val=Math.floor(Math.random()*10000), v = val, ret=\\\"<div style='margin:0 auto;width:2em;height:1em;overflow:visible;'><svg width='100%' height='100%' viewBox='0 0 100 50'><rect x='2' y='1' width='96' height='48' rx='2' style='fill:none;stroke:black;stroke-width:1;'/><line x1='2' y1='17.5' x2='98' y2='17.5' style='fill:none;stroke:black;stroke-width:1;'/>\\\"; for (var i=5; i>=0; i--) { var vv=v%10; v=Math.floor(v/10); ret+=\\\"<line x1='\\\"+(2+8+16*i)+\\\"' y1='1' x2='\\\"+(2+8+16*i)+\\\"' y2='49' style='fill:none;stroke:black;stroke-width:0.5;'/>\\\"; for (var j=0; j<2; j++) { var c=(vv>=5*(2-j)); ret+=\\\"<rect x='\\\"+(4+16*i)+\\\"' y='\\\"+(2.5+j*4.5+(c?5:0))+\\\"' width='12' height='4' rx='4' style='fill:\\\"+(c?\\\"gray\\\":\\\"white\\\")+\\\";stroke:black;stroke-width:0.5;'/>\\\"; } if (vv>=5) { vv-=5; } for (var j=0; j<5; j++) { var c=(vv<=j); ret+=\\\"<rect x='\\\"+(4+16*i)+\\\"' y='\\\"+(19+j*4.5+(c?7:0))+\\\"' width='12' height='4' rx='4' style='fill:\\\"+(!c?\\\"gray\\\":\\\"white\\\")+\\\";stroke:black;stroke-width:0.5;'/>\\\"; } } ret+=\\\"</svg></div>\\\"; return [ret,val];}","class":"neg alpha p02","font":3]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>su10K</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>su10Ka</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une valeur comprise entre 0 et 10 000 depuis un boulier chinois.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":4,"speed":3000},"gen":"function(){var val=Math.floor(Math.random()*10000), v = val, ret=\\\"<div style='margin:0 auto;width:2em;height:1em;overflow:visible;'><svg width='100%' height='100%' viewBox='0 0 100 50'><rect x='2' y='1' width='96' height='48' rx='2' style='fill:none;stroke:black;stroke-width:1;'/><line x1='2' y1='17.5' x2='98' y2='17.5' style='fill:none;stroke:black;stroke-width:1;'/>\\\"; for (var i=5; i>=0; i--) { var vv=v%10; v=Math.floor(v/10); ret+=\\\"<line x1='\\\"+(2+8+16*i)+\\\"' y1='1' x2='\\\"+(2+8+16*i)+\\\"' y2='49' style='fill:none;stroke:black;stroke-width:0.5;'/>\\\"; for (var j=0; j<2; j++) { var c=(vv>=5*(2-j)); ret+=\\\"<rect x='\\\"+(4+16*i)+\\\"' y='\\\"+(2.5+j*4.5+(c?5:0))+\\\"' width='12' height='4' rx='4' style='fill:white;stroke:black;stroke-width:0.5;'/>\\\"; } if (vv>=5) { vv-=5; } for (var j=0; j<5; j++) { var c=(vv<=j); ret+=\\\"<rect x='\\\"+(4+16*i)+\\\"' y='\\\"+(19+j*4.5+(c?7:0))+\\\"' width='12' height='4' rx='4' style='fill:white;stroke:black;stroke-width:0.5;'/>\\\"; } } ret+=\\\"</svg></div>\\\"; return [ret,val];}","class":"neg alpha p02","font":3]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>su10K</dct:alternative>
     </rdf:Description>
 
 

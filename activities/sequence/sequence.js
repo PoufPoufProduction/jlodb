@@ -163,7 +163,8 @@
                     else                        { vValue.question = vNewValue; vValue.response = eval(vNewValue); }
 
                     // Special treatment
-                    vValue.question = vValue.question.replace("*","&times;");
+                    var vRegExpMult = new RegExp("\\\*", "g")
+                    vValue.question = vValue.question.toString().replace(vRegExpMult,"&times;");
 
                     // Fill the dom element, use a regexp if needed
                     if (vRegexp)    { $li.html(vValue.question.replace(vRegexp, settings.regexp.input.to)); }

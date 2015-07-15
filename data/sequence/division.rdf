@@ -3,6 +3,76 @@
          xmlns:dct="http://purl.org/dc/terms/">
 
     <rdf:Description>
+        <dct:identifier>0100</dct:identifier>
+        <dct:title xml:lang="fr-FR">Résoudre, sans contrainte de temps, la division d'un nombre compris entre 1 et 100.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"gen":"function(){var a=Math.floor(Math.random()*10)+1, b=Math.floor(Math.random()*10)+1; return [ (a*b)+\\\"/\\\"+a,b]; }","font":2.5,"class":"p02"]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>01K</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>01K</dct:identifier>
+        <dct:title xml:lang="fr-FR">Résoudre, sans contrainte de temps, la division d'un nombre compris entre 1 et 1 000.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"gen":"function(){var a=Math.floor(Math.random()*99)+1, b=Math.floor(Math.random()*10)+1; return [ (a*b)+\\\"/\\\"+a,b]; }","font":2,"number":10,"class":"p02"]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>01K</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>100</dct:identifier>
+        <dct:title xml:lang="fr-FR">Résoudre, sans contrainte de temps, la division avec reste d'un nombre compris entre 1 et 100.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\?" },"gen":"function(){var a=Math.floor(Math.random()*10)+1, b=Math.floor(Math.random()*9)+2, c = Math.floor(Math.random()*(b-1))+1; return [ (a*b+c)+\\\"=?*\\\"+b+\\\"+\\\"+c, a]; }","font":1,"class":"p02"]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>01K</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>100a</dct:identifier>
+        <dct:title xml:lang="fr-FR">Résoudre, sans contrainte de temps, la division avec reste d'un nombre compris entre 1 et 100.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\?" },"gen":"function(){var a=Math.floor(Math.random()*10)+1, b=Math.floor(Math.random()*9)+2, c = Math.floor(Math.random()*(b-1))+1; return [ (a*b+c)+\\\">?*\\\"+b, a]; }","font":1.5,"class":"p02"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Trouvez la valeur la plus grande vérifiant l'inégalité."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>01K</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>1K</dct:identifier>
+        <dct:title xml:lang="fr-FR">Résoudre, sans contrainte de temps, la division avec reste d'un nombre compris entre 1 et 1 000.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\?" },"gen":"function(){var a=Math.floor(Math.random()*99)+1, b=Math.floor(Math.random()*9)+2, c = Math.floor(Math.random()*(b-1))+1; return [ (a*b+c)+\\\"=?*\\\"+a+\\\"+\\\"+c, b]; }","font":1,"class":"p02"]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>01K</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>1Ka</dct:identifier>
+        <dct:title xml:lang="fr-FR">Résoudre, sans contrainte de temps, la division avec reste d'un nombre compris entre 1 et 100.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\?" },"gen":"function(){var a=Math.floor(Math.random()*10)+1, b=Math.floor(Math.random()*99)+2, c = Math.floor(Math.random()*(b-1))+1; return [ (a*b+c)+\\\">?*\\\"+b, a]; }","font":1.5,"number":10,"class":"p02"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Trouvez la valeur la plus grande vérifiant l'inégalité."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>01K</dct:alternative>
+    </rdf:Description>
+
+    <!-- Divisibility -->
+
+    <rdf:Description>
         <dct:identifier>d1K2</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier, sans contrainte de temps, les nombres divisibles par 2 compris entre 1 et 1000.</dct:title>
         <dct:description><![CDATA["time":0,"template":"template.html","gen":"function() { var max=1000,v=2,r=Math.floor(Math.random()*2),a=Math.floor(Math.random()*max/v)*v+(r?0:Math.floor(Math.random()*(v-1))+1); return [a, (a%v)?0:1]}","font":2,"class":"h2"]]></dct:description>

@@ -757,6 +757,50 @@
         <dct:alternative>i9</dct:alternative>
     </rdf:Description>
 
+    <rdf:Description>
+        <dct:identifier>i10</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter, sans contrainte de temps, la multiplication par un nombre compris entre 1 et 10.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\?" },"gen":"function(){var a=Math.floor(Math.random()*10)+1, b=Math.floor(Math.random()*10)+1; return [a+\\\"*?=\\\"+(a*b) ,b];}","font":1.5]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>i9</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>i10a</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter, sans contrainte de temps, la multiplication par un nombre compris entre 1 et 10.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":3,"speed":1000},"regexp": { "output": "\\\\?" },"gen":"function(){var a=Math.floor(Math.random()*10)+1, b=Math.floor(Math.random()*10)+1, c=Math.floor(Math.random()*3), ret; if (c==0) { ret = [a+\\\"*?=\\\"+(a*b) ,b]; } else if (c==1) { ret = [\\\"?*\\\"+a+\\\"=\\\"+(a*b) ,b]; } else {  ret = [a+\\\"*\\\"+b+\\\"=?\\\" ,(a*b)]; } return ret;}","font":1.5]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>i9</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>i10b</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter, sans contrainte de temps, la multiplication par un nombre compris entre 1 et 10.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\?" },"gen":"function(){var a=Math.floor(Math.random()*10)+1, b=Math.floor(Math.random()*10)+1, c=Math.floor(Math.random()*2), ret; if (c==0) { ret = [a+\\\"*?=\\\"+(a*b) ,b]; } else if (c==1) { ret = [\\\"?*\\\"+a+\\\"=\\\"+(a*b) ,b]; } return ret; }","font":1.5]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>i9</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>i10bx</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter, en moins de 40 secondes, la multiplication par un nombre compris entre 1 et 10.</dct:title>
+        <dct:description><![CDATA["time":2,"input":{"digit":2,"speed":1000},"regexp": { "output": "\\\\?" },"gen":"function(){var a=Math.floor(Math.random()*10)+1, b=Math.floor(Math.random()*10)+1, c=Math.floor(Math.random()*2), ret; if (c==0) { ret = [a+\\\"*?=\\\"+(a*b) ,b]; } else if (c==1) { ret = [\\\"?*\\\"+a+\\\"=\\\"+(a*b) ,b]; } return ret; }","font":1.5]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>i9</dct:alternative>
+    </rdf:Description>
+
     <!-- 2D SQUARE -->
 
     <rdf:Description>
