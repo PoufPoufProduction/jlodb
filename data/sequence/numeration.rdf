@@ -4,8 +4,8 @@
 
 
     <!-- PREFIX LIST
-            2           : square 2d
-            3           : square 3d
+            2d          : square 2d
+            3d          : square 3d
             b           : boxes
             c           : coins
             ch          : chart
@@ -42,7 +42,7 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>dima2</dct:identifier>
+        <dct:identifier>dima3</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer un certain nombre d'allumettes à la valeur d'un dé (choisi entre 1 et 3), sans contrainte de temps.</dct:title>
         <dct:description><![CDATA["time":0,"input":{"css":{"font-size":"3.0em","width":"3.2em"},"digit":1,"values":[["<div class='icon'><img src='res/img/matches/match11.svg'/></div>",1],["<div class='icon'><img src='res/img/matches/match21.svg'/></div>",2],["<div class='icon'><img src='res/img/matches/match31.svg'/></div>",3]]},"regexp":{"input":{"from":"([1-6])","to":"<div class=\\\"dice\\\"><img src=\\\"res/img/generic/dice0$1.svg\\\"/></div>"}},"template":"template.html","values":[["1","1"],["2","2"],["3","3"]],"class":"alpha", "font":3]]></dct:description>
         <dct:extent>1</dct:extent>
@@ -793,212 +793,212 @@
     <!-- 2D boxes -->
 
     <rdf:Description>
-        <dct:identifier>214</dct:identifier>
+        <dct:identifier>2d14</dct:identifier>
         <dct:title xml:lang="fr-FR">Dénombrer, sans contrainte de temps, des carrés (de 1 à 4).</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":500},"gen":"function(){var n=2,b=[],val=Math.floor(Math.random()*n*n)+1,ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:1;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\";for(var i=0;i<n*n;i++){ b.push(false); }for(var i=0;i<val;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b[x]);b[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div>\\\"; return [ret, val];}","class":"alpha p02","font":3]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>2110x</dct:alternative>
+        <dct:alternative>2d110x</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>214x</dct:identifier>
+        <dct:identifier>2d14x</dct:identifier>
         <dct:title xml:lang="fr-FR">Dénombrer, en moins de 20 secondes, des carrés (de 1 à 4).</dct:title>
         <dct:description><![CDATA["time":1,"input":{"digit":1,"speed":500},"gen":"function(){var n=2,b=[],val=Math.floor(Math.random()*n*n)+1,ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:1;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\";for(var i=0;i<n*n;i++){ b.push(false); }for(var i=0;i<val;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b[x]);b[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div>\\\"; return [ret, val];}","class":"alpha p02","font":3]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>2110x</dct:alternative>
+        <dct:alternative>2d110x</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>219</dct:identifier>
+        <dct:identifier>2d19</dct:identifier>
         <dct:title xml:lang="fr-FR">Dénombrer, sans contrainte de temps, des carrés (de 1 à 9).</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":500},"gen":"function(){var n=3,b=[],val=Math.floor(Math.random()*n*n)+1,ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\";for(var i=0;i<n*n;i++){ b.push(false); }for(var i=0;i<val;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b[x]);b[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div>\\\"; return [ret, val];}","class":"alpha p02","font":3]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>2110x</dct:alternative>
+        <dct:alternative>2d110x</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>219x</dct:identifier>
+        <dct:identifier>2d19x</dct:identifier>
         <dct:title xml:lang="fr-FR">Dénombrer, en moins de 30 secondes, des carrés (de 1 à 9).</dct:title>
         <dct:description><![CDATA["time":1.5,"input":{"digit":1,"speed":500},"gen":"function(){var n=3,b=[],val=Math.floor(Math.random()*n*n)+1,ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\";for(var i=0;i<n*n;i++){ b.push(false); }for(var i=0;i<val;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b[x]);b[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div>\\\"; return [ret, val];}","class":"alpha p02","font":3]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
-        <dct:alternative>2110x</dct:alternative>
+        <dct:alternative>2d110x</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>2110</dct:identifier>
+        <dct:identifier>2d110</dct:identifier>
         <dct:title xml:lang="fr-FR">Dénombrer, sans contrainte de temps, des carrés (de 1 à 10).</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"gen":"function(){var n=4,b=[],val=Math.floor(Math.random()*10)+1,ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\";for(var i=0;i<n*n;i++){ b.push(false); }for(var i=0;i<val;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b[x]);b[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div>\\\"; return [ret, val];}","class":"alpha p02","font":3]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>2110x</dct:alternative>
+        <dct:alternative>2d110x</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>2110x</dct:identifier>
+        <dct:identifier>2d110x</dct:identifier>
         <dct:title xml:lang="fr-FR">Dénombrer, en moins de 30 secondes, des carrés (de 1 à 10).</dct:title>
         <dct:description><![CDATA["time":1.5,"input":{"digit":2,"speed":1000},"gen":"function(){var n=4,b=[],val=Math.floor(Math.random()*10)+1,ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\";for(var i=0;i<n*n;i++){ b.push(false); }for(var i=0;i<val;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b[x]);b[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div>\\\"; return [ret, val];}","class":"alpha p02","font":3]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
-        <dct:alternative>2110x</dct:alternative>
+        <dct:alternative>2d110x</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>2116</dct:identifier>
+        <dct:identifier>2d116</dct:identifier>
         <dct:title xml:lang="fr-FR">Dénombrer, sans contrainte de temps, des carrés (de 1 à 16).</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"gen":"function(){var n=4,b=[],val=Math.floor(Math.random()*n*n)+1,ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\";for(var i=0;i<n*n;i++){ b.push(false); }for(var i=0;i<val;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b[x]);b[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div>\\\"; return [ret, val];}","class":"alpha p02","font":3]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>2110x</dct:alternative>
+        <dct:alternative>2d110x</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>2116x</dct:identifier>
+        <dct:identifier>2d116x</dct:identifier>
         <dct:title xml:lang="fr-FR">Dénombrer, en moins de 40 secondes, des carrés (de 1 à 16).</dct:title>
         <dct:description><![CDATA["time":2,"input":{"digit":2,"speed":1000},"gen":"function(){var n=4,b=[],val=Math.floor(Math.random()*n*n)+1,ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\";for(var i=0;i<n*n;i++){ b.push(false); }for(var i=0;i<val;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b[x]);b[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div>\\\"; return [ret, val];}","class":"alpha p02","font":3]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>4</dct:type>
-        <dct:alternative>2110x</dct:alternative>
+        <dct:alternative>2d110x</dct:alternative>
     </rdf:Description>
 
     <!-- 3D boxes -->
 
     <rdf:Description>
-        <dct:identifier>341</dct:identifier>
+        <dct:identifier>3d41</dct:identifier>
         <dct:title xml:lang="fr-FR">Dénombrer des boites de rangement sans contrainte de temps (de 1 à 4 sur une grille 2x2x1).</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":500},"gen":"function(){var n=2,h=1,nb=Math.floor(Math.random()*4)+1,box=['002','012','022','032','023'],data=[],val=0,ret=\\\"<div style='width:1em;margin-left:.2em;position:relative'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>path {fill:gray;}.good path{fill:green;}.wrong path{fill:red;}</style></def><path d='M 0,36 L 24,24 L 48,36 L 24,48 L 0,36 z'/></svg><div style='font-size:\\\"+(1/(3*n))+\\\"em;position:absolute;top:0;left:0;overflow:visible;'>\\\";for(var i=0;i<n*n;i++){data.push(0);}var nbx=0;while(nbx<nb){var x=Math.floor(Math.random()*n),y=Math.floor(Math.random()*n),vok=true; if (x>0&&y>0&&data[x-1+(y-1)*n]<=data[x+y*n]){ vok=false;} if(vok&&data[x+y*n]<h) { data[x+y*n]++; nbx++;}}for(var i=0;i<n;i++)for(j=0;j<n;j++)for(h=0;h<data[i+j*n];h++){ val++; ret+=\\\"<div style='width:3em;height:4em;position:absolute;top:\\\"+((n-1)*1.5-0.95+(i+j)*0.75-h*1.4)+\\\"em;left:\\\"+((n-1)*1.5+i*1.5-j*1.5)+\\\"em;'><img src='res/img/tileset/iso/object/box\\\"+box[Math.floor(Math.random()*box.length)]+\\\".svg'/></div>\\\"; }ret+=\\\"</div></div>\\\"; return [ret, val];}","class":"alpha p02 blank","font":5,"number":20]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>3203</dct:alternative>
+        <dct:alternative>3d203</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>382</dct:identifier>
+        <dct:identifier>3d82</dct:identifier>
         <dct:title xml:lang="fr-FR">Dénombrer des boites de rangement sans contrainte de temps (de 1 à 4 sur une grille 2x2x2).</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":500},"gen":"function(){var n=2,h=2,nb=Math.floor(Math.random()*8)+1,box=['002','012','022','032','023'],data=[],val=0,ret=\\\"<div style='width:1em;margin-left:.2em;position:relative'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>path {fill:gray;}.good path{fill:green;}.wrong path{fill:red;}</style></def><path d='M 0,36 L 24,24 L 48,36 L 24,48 L 0,36 z'/></svg><div style='font-size:\\\"+(1/(3*n))+\\\"em;position:absolute;top:0;left:0;overflow:visible;'>\\\";for(var i=0;i<n*n;i++){data.push(0);}var nbx=0;while(nbx<nb){var x=Math.floor(Math.random()*n),y=Math.floor(Math.random()*n),vok=true; if (x>0&&y>0&&data[x-1+(y-1)*n]<=data[x+y*n]){ vok=false;} if(vok&&data[x+y*n]<h) { data[x+y*n]++; nbx++;}}for(var i=0;i<n;i++)for(j=0;j<n;j++)for(h=0;h<data[i+j*n];h++){ val++; ret+=\\\"<div style='width:3em;height:4em;position:absolute;top:\\\"+((n-1)*1.5-0.95+(i+j)*0.75-h*1.4)+\\\"em;left:\\\"+((n-1)*1.5+i*1.5-j*1.5)+\\\"em;'><img src='res/img/tileset/iso/object/box\\\"+box[Math.floor(Math.random()*box.length)]+\\\".svg'/></div>\\\"; }ret+=\\\"</div></div>\\\"; return [ret, val];}","class":"alpha p02 blank","font":5,"number":20]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>3203</dct:alternative>
+        <dct:alternative>3d203</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>391</dct:identifier>
+        <dct:identifier>3d91</dct:identifier>
         <dct:title xml:lang="fr-FR">Dénombrer des boites de rangement sans contrainte de temps (de 1 à 9 sur une grille 3x3x1).</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":500},"gen":"function(){var n=3,h=1,nb=Math.floor(Math.random()*9)+1,box=['002','012','022','032','023'],data=[],val=0,ret=\\\"<div style='width:1em;margin-left:.2em;position:relative'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>path {fill:gray;}.good path{fill:green;}.wrong path{fill:red;}</style></def><path d='M 0,36 L 24,24 L 48,36 L 24,48 L 0,36 z'/></svg><div style='font-size:\\\"+(1/(3*n))+\\\"em;position:absolute;top:0;left:0;overflow:visible;'>\\\";for(var i=0;i<n*n;i++){data.push(0);}var nbx=0;while(nbx<nb){var x=Math.floor(Math.random()*n),y=Math.floor(Math.random()*n),vok=true; if (x>0&&y>0&&data[x-1+(y-1)*n]<=data[x+y*n]){ vok=false;} if(vok&&data[x+y*n]<h) { data[x+y*n]++; nbx++;}}for(var i=0;i<n;i++)for(j=0;j<n;j++)for(h=0;h<data[i+j*n];h++){ val++; ret+=\\\"<div style='width:3em;height:4em;position:absolute;top:\\\"+((n-1)*1.5-0.95+(i+j)*0.75-h*1.4)+\\\"em;left:\\\"+((n-1)*1.5+i*1.5-j*1.5)+\\\"em;'><img src='res/img/tileset/iso/object/box\\\"+box[Math.floor(Math.random()*box.length)]+\\\".svg'/></div>\\\"; }ret+=\\\"</div></div>\\\"; return [ret, val];}","class":"alpha p02 blank","font":5,"number":20]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>3203</dct:alternative>
+        <dct:alternative>3d203</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>3102</dct:identifier>
+        <dct:identifier>3d102</dct:identifier>
         <dct:title xml:lang="fr-FR">Dénombrer des boites de rangement sans contrainte de temps (de 1 à 10 sur une grille 3x3x2).</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"gen":"function(){var n=3,h=2,nb=Math.floor(Math.random()*10)+1,box=['002','012','022','032','023'],data=[],val=0,ret=\\\"<div style='width:1em;margin-left:.2em;position:relative'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>path {fill:gray;}.good path{fill:green;}.wrong path{fill:red;}</style></def><path d='M 0,36 L 24,24 L 48,36 L 24,48 L 0,36 z'/></svg><div style='font-size:\\\"+(1/(3*n))+\\\"em;position:absolute;top:0;left:0;overflow:visible;'>\\\";for(var i=0;i<n*n;i++){data.push(0);}var nbx=0;while(nbx<nb){var x=Math.floor(Math.random()*n),y=Math.floor(Math.random()*n),vok=true; if (x>0&&y>0&&data[x-1+(y-1)*n]<=data[x+y*n]){ vok=false;} if(vok&&data[x+y*n]<h) { data[x+y*n]++; nbx++;}}for(var i=0;i<n;i++)for(j=0;j<n;j++)for(h=0;h<data[i+j*n];h++){ val++; ret+=\\\"<div style='width:3em;height:4em;position:absolute;top:\\\"+((n-1)*1.5-0.95+(i+j)*0.75-h*1.4)+\\\"em;left:\\\"+((n-1)*1.5+i*1.5-j*1.5)+\\\"em;'><img src='res/img/tileset/iso/object/box\\\"+box[Math.floor(Math.random()*box.length)]+\\\".svg'/></div>\\\"; }ret+=\\\"</div></div>\\\"; return [ret, val];}","class":"alpha p02 blank","font":5,"number":20]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>3203</dct:alternative>
+        <dct:alternative>3d203</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>3103</dct:identifier>
+        <dct:identifier>3d103</dct:identifier>
         <dct:title xml:lang="fr-FR">Dénombrer des boites de rangement sans contrainte de temps (de 1 à 10 sur une grille 3x3x3).</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"gen":"function(){var n=3,h=3,nb=Math.floor(Math.random()*10)+1,box=['002','012','022','032','023'],data=[],val=0,ret=\\\"<div style='width:1em;margin-left:.2em;position:relative'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>path {fill:gray;}.good path{fill:green;}.wrong path{fill:red;}</style></def><path d='M 0,36 L 24,24 L 48,36 L 24,48 L 0,36 z'/></svg><div style='font-size:\\\"+(1/(3*n))+\\\"em;position:absolute;top:0;left:0;overflow:visible;'>\\\";for(var i=0;i<n*n;i++){data.push(0);}var nbx=0;while(nbx<nb){var x=Math.floor(Math.random()*n),y=Math.floor(Math.random()*n),vok=true; if (x>0&&y>0&&data[x-1+(y-1)*n]<=data[x+y*n]){ vok=false;} if(vok&&data[x+y*n]<h) { data[x+y*n]++; nbx++;}}for(var i=0;i<n;i++)for(j=0;j<n;j++)for(h=0;h<data[i+j*n];h++){ val++; ret+=\\\"<div style='width:3em;height:4em;position:absolute;top:\\\"+((n-1)*1.5-0.95+(i+j)*0.75-h*1.4)+\\\"em;left:\\\"+((n-1)*1.5+i*1.5-j*1.5)+\\\"em;'><img src='res/img/tileset/iso/object/box\\\"+box[Math.floor(Math.random()*box.length)]+\\\".svg'/></div>\\\"; }ret+=\\\"</div></div>\\\"; return [ret, val];}","class":"alpha p02 blank","font":5,"number":20]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>3203</dct:alternative>
+        <dct:alternative>3d203</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>3203</dct:identifier>
+        <dct:identifier>3d203</dct:identifier>
         <dct:title xml:lang="fr-FR">Dénombrer des boites de rangement sans contrainte de temps (de 1 à 20 sur une grille 3x3x3).</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"gen":"function(){var n=3,h=3,nb=Math.floor(Math.random()*20)+1,box=['002','012','022','032','023'],data=[],val=0,ret=\\\"<div style='width:1em;margin-left:.2em;position:relative'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>path {fill:gray;}.good path{fill:green;}.wrong path{fill:red;}</style></def><path d='M 0,36 L 24,24 L 48,36 L 24,48 L 0,36 z'/></svg><div style='font-size:\\\"+(1/(3*n))+\\\"em;position:absolute;top:0;left:0;overflow:visible;'>\\\";for(var i=0;i<n*n;i++){data.push(0);}var nbx=0;while(nbx<nb){var x=Math.floor(Math.random()*n),y=Math.floor(Math.random()*n),vok=true; if (x>0&&y>0&&data[x-1+(y-1)*n]<=data[x+y*n]){ vok=false;} if(vok&&data[x+y*n]<h) { data[x+y*n]++; nbx++;}}for(var i=0;i<n;i++)for(j=0;j<n;j++)for(h=0;h<data[i+j*n];h++){ val++; ret+=\\\"<div style='width:3em;height:4em;position:absolute;top:\\\"+((n-1)*1.5-0.95+(i+j)*0.75-h*1.4)+\\\"em;left:\\\"+((n-1)*1.5+i*1.5-j*1.5)+\\\"em;'><img src='res/img/tileset/iso/object/box\\\"+box[Math.floor(Math.random()*box.length)]+\\\".svg'/></div>\\\"; }ret+=\\\"</div></div>\\\"; return [ret, val];}","class":"alpha p02 blank","font":5,"number":15]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
-        <dct:alternative>3203</dct:alternative>
+        <dct:alternative>3d203</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>3202</dct:identifier>
+        <dct:identifier>3d202</dct:identifier>
         <dct:title xml:lang="fr-FR">Dénombrer des boites de rangement sans contrainte de temps (de 1 à 20 sur une grille 4x4x2).</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"gen":"function(){var n=4,h=2,nb=Math.floor(Math.random()*20)+1,box=['002','012','022','032','023'],data=[],val=0,ret=\\\"<div style='width:1em;margin-left:.2em;position:relative'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>path {fill:gray;}.good path{fill:green;}.wrong path{fill:red;}</style></def><path d='M 0,36 L 24,24 L 48,36 L 24,48 L 0,36 z'/></svg><div style='font-size:\\\"+(1/(3*n))+\\\"em;position:absolute;top:0;left:0;overflow:visible;'>\\\";for(var i=0;i<n*n;i++){data.push(0);}var nbx=0;while(nbx<nb){var x=Math.floor(Math.random()*n),y=Math.floor(Math.random()*n),vok=true; if (x>0&&y>0&&data[x-1+(y-1)*n]<=data[x+y*n]){ vok=false;} if(vok&&data[x+y*n]<h) { data[x+y*n]++; nbx++;}}for(var i=0;i<n;i++)for(j=0;j<n;j++)for(h=0;h<data[i+j*n];h++){ val++; ret+=\\\"<div style='width:3em;height:4em;position:absolute;top:\\\"+((n-1)*1.5-0.95+(i+j)*0.75-h*1.4)+\\\"em;left:\\\"+((n-1)*1.5+i*1.5-j*1.5)+\\\"em;'><img src='res/img/tileset/iso/object/box\\\"+box[Math.floor(Math.random()*box.length)]+\\\".svg'/></div>\\\"; }ret+=\\\"</div></div>\\\"; return [ret, val];}","class":"alpha p02 blank","font":5,"number":15]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
-        <dct:alternative>3203</dct:alternative>
+        <dct:alternative>3d203</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>320b3</dct:identifier>
+        <dct:identifier>3d20b3</dct:identifier>
         <dct:title xml:lang="fr-FR">Dénombrer des boites de rangement sans contrainte de temps (de 10 à 20 sur une grille 4x4x3).</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"gen":"function(){var n=4,h=3,nb=Math.floor(Math.random()*11)+10,box=['002','012','022','032','023'],data=[],val=0,ret=\\\"<div style='width:1em;margin-left:.2em;position:relative'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>path {fill:gray;}.good path{fill:green;}.wrong path{fill:red;}</style></def><path d='M 0,36 L 24,24 L 48,36 L 24,48 L 0,36 z'/></svg><div style='font-size:\\\"+(1/(3*n))+\\\"em;position:absolute;top:0;left:0;overflow:visible;'>\\\";for(var i=0;i<n*n;i++){data.push(0);}var nbx=0;while(nbx<nb){var x=Math.floor(Math.random()*n),y=Math.floor(Math.random()*n),vok=true; if (x>0&&y>0&&data[x-1+(y-1)*n]<=data[x+y*n]){ vok=false;} if(vok&&data[x+y*n]<h) { data[x+y*n]++; nbx++;}}for(var i=0;i<n;i++)for(j=0;j<n;j++)for(h=0;h<data[i+j*n];h++){ val++; ret+=\\\"<div style='width:3em;height:4em;position:absolute;top:\\\"+((n-1)*1.5-0.95+(i+j)*0.75-h*1.4)+\\\"em;left:\\\"+((n-1)*1.5+i*1.5-j*1.5)+\\\"em;'><img src='res/img/tileset/iso/object/box\\\"+box[Math.floor(Math.random()*box.length)]+\\\".svg'/></div>\\\"; }ret+=\\\"</div></div>\\\"; return [ret, val];}","class":"alpha p02 blank","font":5,"number":15]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>4</dct:type>
-        <dct:alternative>3203</dct:alternative>
+        <dct:alternative>3d203</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>3304</dct:identifier>
+        <dct:identifier>3d304</dct:identifier>
         <dct:title xml:lang="fr-FR">Dénombrer des boites de rangement sans contrainte de temps (de 10 à 30 sur une grille 4x4x4).</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"gen":"function(){var n=4,h=4,nb=Math.floor(Math.random()*21)+10,box=['002','012','022','032','023'],data=[],val=0,ret=\\\"<div style='width:1em;margin-left:.2em;position:relative'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>path {fill:gray;}.good path{fill:green;}.wrong path{fill:red;}</style></def><path d='M 0,36 L 24,24 L 48,36 L 24,48 L 0,36 z'/></svg><div style='font-size:\\\"+(1/(3*n))+\\\"em;position:absolute;top:0;left:0;overflow:visible;'>\\\";for(var i=0;i<n*n;i++){data.push(0);}var nbx=0;while(nbx<nb){var x=Math.floor(Math.random()*n),y=Math.floor(Math.random()*n),vok=true; if (x>0&&y>0&&data[x-1+(y-1)*n]<=data[x+y*n]){ vok=false;} if(vok&&data[x+y*n]<h) { data[x+y*n]++; nbx++;}}for(var i=0;i<n;i++)for(j=0;j<n;j++)for(h=0;h<data[i+j*n];h++){ val++; ret+=\\\"<div style='width:3em;height:4em;position:absolute;top:\\\"+((n-1)*1.5-0.95+(i+j)*0.75-h*1.4)+\\\"em;left:\\\"+((n-1)*1.5+i*1.5-j*1.5)+\\\"em;'><img src='res/img/tileset/iso/object/box\\\"+box[Math.floor(Math.random()*box.length)]+\\\".svg'/></div>\\\"; }ret+=\\\"</div></div>\\\"; return [ret, val];}","class":"alpha p02 blank","font":5,"number":10]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>4</dct:type>
-        <dct:alternative>3203</dct:alternative>
+        <dct:alternative>3d203</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>3504</dct:identifier>
+        <dct:identifier>3d504</dct:identifier>
         <dct:title xml:lang="fr-FR">Dénombrer des boites de rangement sans contrainte de temps (de 30 à 50 sur une grille 5x5x4).</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"gen":"function(){var n=5,h=4,nb=Math.floor(Math.random()*21)+30,box=['002','012','022','032','023'],data=[],val=0,ret=\\\"<div style='width:1em;margin-left:.2em;position:relative'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>path {fill:gray;}.good path{fill:green;}.wrong path{fill:red;}</style></def><path d='M 0,36 L 24,24 L 48,36 L 24,48 L 0,36 z'/></svg><div style='font-size:\\\"+(1/(3*n))+\\\"em;position:absolute;top:0;left:0;overflow:visible;'>\\\";for(var i=0;i<n*n;i++){data.push(0);}var nbx=0;while(nbx<nb){var x=Math.floor(Math.random()*n),y=Math.floor(Math.random()*n),vok=true; if (x>0&&y>0&&data[x-1+(y-1)*n]<=data[x+y*n]){ vok=false;} if(vok&&data[x+y*n]<h) { data[x+y*n]++; nbx++;}}for(var i=0;i<n;i++)for(j=0;j<n;j++)for(h=0;h<data[i+j*n];h++){ val++; ret+=\\\"<div style='width:3em;height:4em;position:absolute;top:\\\"+((n-1)*1.5-0.95+(i+j)*0.75-h*1.4)+\\\"em;left:\\\"+((n-1)*1.5+i*1.5-j*1.5)+\\\"em;'><img src='res/img/tileset/iso/object/box\\\"+box[Math.floor(Math.random()*box.length)]+\\\".svg'/></div>\\\"; }ret+=\\\"</div></div>\\\"; return [ret, val];}","class":"alpha p02 blank","font":5,"number":5]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>4</dct:type>
-        <dct:alternative>3203</dct:alternative>
+        <dct:alternative>3d203</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
     </rdf:Description>
 

@@ -7,6 +7,7 @@
             3           : square 3d
             b           : boxes
             c           : coins
+            ca          : cart
             dg          : digit
             di          : dice
             g           : group wisely
@@ -217,7 +218,7 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>di32</dct:identifier>
+        <dct:identifier>di33</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner, sans contrainte de temps, 3 dés dont les valeurs sont comprises entre 1 et 3</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":1000},"regexp":{"input": { "from": "([1-6])","to":"<div class=\\\"dice\\\"><img src=\\\"res/img/generic/dice0$1.svg\\\"/></div>"} },"values":["1+1+1","1+2+1","2+1+1","2+2+1","1+3+1","3+1+1","3+2+1","2+3+1","1+1+2","1+2+2","2+1+2","2+2+2","1+3+2","3+1+2","3+2+2","2+3+2","1+1+3","1+2+3","2+1+3","2+2+3","1+3+3","3+1+3","3+2+3","2+3+3"],"class":"alpha", "font":1.5]]></dct:description>
         <dct:extent>1</dct:extent>
@@ -1037,7 +1038,7 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>910x</dct:identifier>
+        <dct:identifier>910y</dct:identifier>
         <dct:title xml:lang="fr-FR">Ajouter, en moins de 20 secondes, 9 à un nombre inférieur à 10</dct:title>
         <dct:description><![CDATA["time":1,"input":{"digit":2,"speed":1000},"gen":"function() { return Math.floor(1+Math.random()*9)+\\\"+9\\\"; }","font":3]]></dct:description>
         <dct:extent>1</dct:extent>
@@ -1632,314 +1633,314 @@
         <dct:alternative>i10</dct:alternative>
     </rdf:Description>
 
-    <!-- CARDS: c[1-10][abc] -->
+    <!-- CARDS: ca -->
 
     <rdf:Description>
-        <dct:identifier>c2</dct:identifier>
+        <dct:identifier>ca2</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner, sans contrainte de temps, les valeurs de 2 cartes à jouer choisies parmi les 1 et 2 de coeurs</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":1000},"regexp":{"input": { "from": "([1-6])","to":"<div class=\\\"h10 w07\\\"><img src=\\\"res/img/cards/0$1hearts.svg\\\"/></div>"} },"values":["1+1","1+2","2+1","2+2" ],"class":"negx p01 alpha","font":3,"vertical":3]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>c10</dct:alternative>
+        <dct:alternative>ca10</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>c2x</dct:identifier>
+        <dct:identifier>ca2x</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner, en moins de 40 secondes, les valeurs de 2 cartes à jouer choisies parmi les 1 et 2 de carreaux</dct:title>
         <dct:description><![CDATA["time":2,"input":{"digit":1,"speed":1000},"regexp":{"input": { "from": "([1-6])","to":"<div class=\\\"h10 w07\\\"><img src=\\\"res/img/cards/0$1diamonds.svg\\\"/></div>"} },"values":["1+1","1+2","2+1","2+2" ],"class":"negx p01 alpha","font":3,"vertical":3]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>c10</dct:alternative>
+        <dct:alternative>ca10</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>c2y</dct:identifier>
+        <dct:identifier>ca2y</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner, en moins de 20 secondes, les valeurs de 2 cartes à jouer choisies parmi les 1 et 2 de trèfles</dct:title>
         <dct:description><![CDATA["time":1,"input":{"digit":1,"speed":1000},"regexp":{"input": { "from": "([1-6])","to":"<div class=\\\"h10 w07\\\"><img src=\\\"res/img/cards/0$1clubs.svg\\\"/></div>"} },"values":["1+1","1+2","2+1","2+2" ],"class":"negx p01 alpha","font":3,"vertical":3]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>4</dct:type>
-        <dct:alternative>c10</dct:alternative>
+        <dct:alternative>ca10</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>c3</dct:identifier>
+        <dct:identifier>ca3</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner, sans contrainte de temps, les valeurs de 2 cartes à jouer choisies parmi les 1,2 et 3 de coeurs</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":1000},"regexp":{"input": { "from": "([1-6])","to":"<div class=\\\"h10 w07\\\"><img src=\\\"res/img/cards/0$1hearts.svg\\\"/></div>"} },"values":["1+1","1+2","2+1","2+2","1+3","3+1","3+2","2+3" ],"class":"negx p01 alpha","font":3,"vertical":3]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>c10</dct:alternative>
+        <dct:alternative>ca10</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>c3x</dct:identifier>
+        <dct:identifier>ca3x</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner, en moins de 40 secondes, les valeurs de 2 cartes à jouer choisies parmi les 1,2 et 3 de carreaux</dct:title>
         <dct:description><![CDATA["time":2,"input":{"digit":1,"speed":1000},"regexp":{"input": { "from": "([1-6])","to":"<div class=\\\"h10 w07\\\"><img src=\\\"res/img/cards/0$1diamonds.svg\\\"/></div>"} },"values":["1+1","1+2","2+1","2+2","1+3","3+1","3+2","2+3" ],"class":"negx p01 alpha","font":3,"vertical":3]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>c10</dct:alternative>
+        <dct:alternative>ca10</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>c3y</dct:identifier>
+        <dct:identifier>ca3y</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner, en moins de 20 secondes, les valeurs de 2 cartes à jouer choisies parmi les 1,2 et 3 de trèfles</dct:title>
         <dct:description><![CDATA["time":1,"input":{"digit":1,"speed":1000},"regexp":{"input": { "from": "([1-6])","to":"<div class=\\\"h10 w07\\\"><img src=\\\"res/img/cards/0$1clubs.svg\\\"/></div>"} },"values":["1+1","1+2","2+1","2+2","1+3","3+1","3+2","2+3" ],"class":"negx p01 alpha","font":3,"vertical":3]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>4</dct:type>
-        <dct:alternative>c10</dct:alternative>
+        <dct:alternative>ca10</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>c4</dct:identifier>
+        <dct:identifier>ca4</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner, sans contrainte de temps, les valeurs de 2 cartes à jouer choisies parmi les 1,2,3 et 4 de coeurs</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"regexp":{"input": { "from": "([1-6])","to":"<div class=\\\"h10 w07\\\"><img src=\\\"res/img/cards/0$1hearts.svg\\\"/></div>"} },"values":["1+1","1+2","2+1","2+2","1+3","3+1","3+2","2+3","3+3","1+4","4+1","4+2","2+4","4+3","3+4","4+4"],"class":"negx p01 alpha","font":3,"vertical":3]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>c10</dct:alternative>
+        <dct:alternative>ca10</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>c4x</dct:identifier>
+        <dct:identifier>ca4x</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner, en moins de 40 secondes, les valeurs de 2 cartes à jouer choisies parmi les 1,2,3 et 4 de carreaux</dct:title>
         <dct:description><![CDATA["time":2,"input":{"digit":2,"speed":1000},"regexp":{"input": { "from": "([1-6])","to":"<div class=\\\"h10 w07\\\"><img src=\\\"res/img/cards/0$1diamonds.svg\\\"/></div>"} },"values":["1+1","1+2","2+1","2+2","1+3","3+1","3+2","2+3","3+3","1+4","4+1","4+2","2+4","4+3","3+4","4+4"],"class":"negx p01 alpha","font":3,"vertical":3]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>c10</dct:alternative>
+        <dct:alternative>ca10</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>c4y</dct:identifier>
+        <dct:identifier>ca4y</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner, en moins de 20 secondes, les valeurs de 2 cartes à jouer choisies parmi les 1,2,3 et 4 de trèfles</dct:title>
         <dct:description><![CDATA["time":1,"input":{"digit":2,"speed":1000},"regexp":{"input": { "from": "([1-6])","to":"<div class=\\\"h10 w07\\\"><img src=\\\"res/img/cards/0$1clubs.svg\\\"/></div>"} },"values":["1+1","1+2","2+1","2+2","1+3","3+1","3+2","2+3","3+3","1+4","4+1","4+2","2+4","4+3","3+4","4+4"],"class":"negx p01 alpha","font":3,"vertical":3]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>4</dct:type>
-        <dct:alternative>c10</dct:alternative>
+        <dct:alternative>ca10</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>c5</dct:identifier>
+        <dct:identifier>ca5</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner, sans contrainte de temps, les valeurs de 2 cartes à jouer choisies parmi les 1,2,3,4 et 5 de coeurs</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"regexp":{"input": { "from": "([1-6])","to":"<div class=\\\"h10 w07\\\"><img src=\\\"res/img/cards/0$1hearts.svg\\\"/></div>"} },"values":["1+1","1+2","2+1","2+2","1+3","3+1","3+2","2+3","3+3","1+4","4+1","4+2","2+4","4+3","3+4","4+4","5+1","1+5","5+2","2+5","5+3","3+5","4+5","5+4","5+5"],"class":"negx p01 alpha","font":3,"vertical":3]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>c10</dct:alternative>
+        <dct:alternative>ca10</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>c5x</dct:identifier>
+        <dct:identifier>ca5x</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner, en moins de 40 secondes, les valeurs de 2 cartes à jouer choisies parmi les 1,2,3,4 et 5 de carreaux</dct:title>
         <dct:description><![CDATA["time":2,"input":{"digit":2,"speed":1000},"regexp":{"input": { "from": "([1-6])","to":"<div class=\\\"h10 w07\\\"><img src=\\\"res/img/cards/0$1diamonds.svg\\\"/></div>"} },"values":["1+1","1+2","2+1","2+2","1+3","3+1","3+2","2+3","3+3","1+4","4+1","4+2","2+4","4+3","3+4","4+4","5+1","1+5","5+2","2+5","5+3","3+5","4+5","5+4","5+5"],"class":"negx p01 alpha","font":3,"vertical":3]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>c10</dct:alternative>
+        <dct:alternative>ca10</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>c5y</dct:identifier>
+        <dct:identifier>ca5y</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner, en moins de 20 secondes, les valeurs de 2 cartes à jouer choisies parmi les 1,2,3,4 et 5 de trèfles</dct:title>
         <dct:description><![CDATA["time":1,"input":{"digit":2,"speed":1000},"regexp":{"input": { "from": "([1-6])","to":"<div class=\\\"h10 w07\\\"><img src=\\\"res/img/cards/0$1clubs.svg\\\"/></div>"} },"values":["1+1","1+2","2+1","2+2","1+3","3+1","3+2","2+3","3+3","1+4","4+1","4+2","2+4","4+3","3+4","4+4","5+1","1+5","5+2","2+5","5+3","3+5","4+5","5+4","5+5"],"class":"negx p01 alpha","font":3,"vertical":3]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>4</dct:type>
-        <dct:alternative>c10</dct:alternative>
+        <dct:alternative>ca10</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>c6</dct:identifier>
+        <dct:identifier>ca6</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner, sans contrainte de temps, les valeurs de 2 cartes à jouer choisies parmi les coeurs compris entre 1 et 6</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"regexp":{"input": { "from": "([0-9])","to":"<div class=\\\"h10 w07\\\"><img src=\\\"res/img/cards/0$1hearts.svg\\\"/></div>"} },"gen":"function() { return \\\"\\\"+Math.floor(1+Math.random()*6)+\\\"+\\\"+Math.floor(1+Math.random()*6); }","class":"negx p01 alpha","font":3,"vertical":3]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>c10</dct:alternative>
+        <dct:alternative>ca10</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>c6x</dct:identifier>
+        <dct:identifier>ca6x</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner, en moins de 40 secondes, les valeurs de 2 cartes à jouer choisies parmi les carreaux compris entre 1 et 6</dct:title>
         <dct:description><![CDATA["time":2,"input":{"digit":2,"speed":1000},"regexp":{"input": { "from": "([0-9])","to":"<div class=\\\"h10 w07\\\"><img src=\\\"res/img/cards/0$1diamonds.svg\\\"/></div>"} },"gen":"function() { return \\\"\\\"+Math.floor(1+Math.random()*6)+\\\"+\\\"+Math.floor(1+Math.random()*6); }","class":"negx p01 alpha","font":3,"vertical":3]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>c10</dct:alternative>
+        <dct:alternative>ca10</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>c6y</dct:identifier>
+        <dct:identifier>ca6y</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner, en moins de 20 secondes, les valeurs de 2 cartes à jouer choisies parmi les trèfles compris entre 1 et 6</dct:title>
         <dct:description><![CDATA["time":1,"input":{"digit":2,"speed":1000},"regexp":{"input": { "from": "([0-9])","to":"<div class=\\\"h10 w07\\\"><img src=\\\"res/img/cards/0$1clubs.svg\\\"/></div>"} },"gen":"function() { return \\\"\\\"+Math.floor(1+Math.random()*6)+\\\"+\\\"+Math.floor(1+Math.random()*6); }","class":"negx p01 alpha","font":3,"vertical":3]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>4</dct:type>
-        <dct:alternative>c10</dct:alternative>
+        <dct:alternative>ca10</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>c7</dct:identifier>
+        <dct:identifier>ca7</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner, sans contrainte de temps, les valeurs de 2 cartes à jouer choisies parmi les coeurs compris entre 1 et 7</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"regexp":{"input": { "from": "([0-9])","to":"<div class=\\\"h10 w07\\\"><img src=\\\"res/img/cards/0$1hearts.svg\\\"/></div>"} },"gen":"function() { return \\\"\\\"+Math.floor(1+Math.random()*7)+\\\"+\\\"+Math.floor(1+Math.random()*7); }","class":"negx p01 alpha","font":3,"vertical":3]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>c10</dct:alternative>
+        <dct:alternative>ca10</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>c7x</dct:identifier>
+        <dct:identifier>ca7x</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner, en moins de 40 secondes, les valeurs de 2 cartes à jouer choisies parmi les carreaux compris entre 1 et 7</dct:title>
         <dct:description><![CDATA["time":2,"input":{"digit":2,"speed":1000},"regexp":{"input": { "from": "([0-9])","to":"<div class=\\\"h10 w07\\\"><img src=\\\"res/img/cards/0$1diamonds.svg\\\"/></div>"} },"gen":"function() { return \\\"\\\"+Math.floor(1+Math.random()*7)+\\\"+\\\"+Math.floor(1+Math.random()*7); }","class":"negx p01 alpha","font":3,"vertical":3]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>c10</dct:alternative>
+        <dct:alternative>ca10</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>c7y</dct:identifier>
+        <dct:identifier>ca7y</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner, en moins de 20 secondes, les valeurs de 2 cartes à jouer choisies parmi les trèfles compris entre 1 et 7</dct:title>
         <dct:description><![CDATA["time":1,"input":{"digit":2,"speed":1000},"regexp":{"input": { "from": "([0-9])","to":"<div class=\\\"h10 w07\\\"><img src=\\\"res/img/cards/0$1clubs.svg\\\"/></div>"} },"gen":"function() { return \\\"\\\"+Math.floor(1+Math.random()*7)+\\\"+\\\"+Math.floor(1+Math.random()*7); }","class":"negx p01 alpha","font":3,"vertical":3]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>4</dct:type>
-        <dct:alternative>c10</dct:alternative>
+        <dct:alternative>ca10</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>c8</dct:identifier>
+        <dct:identifier>ca8</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner, sans contrainte de temps, les valeurs de 2 cartes à jouer choisies parmi les coeurs compris entre 1 et 8</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"regexp":{"input": { "from": "([0-9])","to":"<div class=\\\"h10 w07\\\"><img src=\\\"res/img/cards/0$1hearts.svg\\\"/></div>"} },"gen":"function() { return \\\"\\\"+Math.floor(1+Math.random()*8)+\\\"+\\\"+Math.floor(1+Math.random()*8); }","class":"negx p01 alpha","font":3,"vertical":3]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>c10</dct:alternative>
+        <dct:alternative>ca10</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>c8x</dct:identifier>
+        <dct:identifier>ca8x</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner, en moins de 40 secondes, les valeurs de 2 cartes à jouer choisies parmi les carreaux compris entre 1 et 8</dct:title>
         <dct:description><![CDATA["time":2,"input":{"digit":2,"speed":1000},"regexp":{"input": { "from": "([0-9])","to":"<div class=\\\"h10 w07\\\"><img src=\\\"res/img/cards/0$1diamonds.svg\\\"/></div>"} },"gen":"function() { return \\\"\\\"+Math.floor(1+Math.random()*8)+\\\"+\\\"+Math.floor(1+Math.random()*8); }","class":"negx p01 alpha","font":3,"vertical":3]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>c10</dct:alternative>
+        <dct:alternative>ca10</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>c8y</dct:identifier>
+        <dct:identifier>ca8y</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner, en moins de 20 secondes, les valeurs de 2 cartes à jouer choisies parmi les trèfles compris entre 1 et 8</dct:title>
         <dct:description><![CDATA["time":1,"input":{"digit":2,"speed":1000},"regexp":{"input": { "from": "([0-9])","to":"<div class=\\\"h10 w07\\\"><img src=\\\"res/img/cards/0$1clubs.svg\\\"/></div>"} },"gen":"function() { return \\\"\\\"+Math.floor(1+Math.random()*8)+\\\"+\\\"+Math.floor(1+Math.random()*8); }","class":"negx p01 alpha","font":3,"vertical":3]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>4</dct:type>
-        <dct:alternative>c10</dct:alternative>
+        <dct:alternative>ca10</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>c9</dct:identifier>
+        <dct:identifier>ca9</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner, sans contrainte de temps, les valeurs de 2 cartes à jouer choisies parmi les coeurs compris entre 1 et 9</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"regexp":{"input": { "from": "([0-9])","to":"<div class=\\\"h10 w07\\\"><img src=\\\"res/img/cards/0$1hearts.svg\\\"/></div>"} },"gen":"function() { return \\\"\\\"+Math.floor(1+Math.random()*9)+\\\"+\\\"+Math.floor(1+Math.random()*9); }","class":"negx p01 alpha","font":3,"vertical":3]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>c10</dct:alternative>
+        <dct:alternative>ca10</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>c9x</dct:identifier>
+        <dct:identifier>ca9x</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner, en moins de 40 secondes, les valeurs de 2 cartes à jouer choisies parmi les carreaux compris entre 1 et 9</dct:title>
         <dct:description><![CDATA["time":2,"input":{"digit":2,"speed":1000},"regexp":{"input": { "from": "([0-9])","to":"<div class=\\\"h10 w07\\\"><img src=\\\"res/img/cards/0$1diamonds.svg\\\"/></div>"} },"gen":"function() { return \\\"\\\"+Math.floor(1+Math.random()*9)+\\\"+\\\"+Math.floor(1+Math.random()*9); }","class":"negx p01 alpha","font":3,"vertical":3]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>c10</dct:alternative>
+        <dct:alternative>ca10</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>c9y</dct:identifier>
+        <dct:identifier>ca9y</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner, en moins de 20 secondes, les valeurs de 2 cartes à jouer choisies parmi les trèfles compris entre 1 et 9</dct:title>
         <dct:description><![CDATA["time":1,"input":{"digit":2,"speed":1000},"regexp":{"input": { "from": "([0-9])","to":"<div class=\\\"h10 w07\\\"><img src=\\\"res/img/cards/0$1clubs.svg\\\"/></div>"} },"gen":"function() { return \\\"\\\"+Math.floor(1+Math.random()*9)+\\\"+\\\"+Math.floor(1+Math.random()*9); }","class":"negx p01 alpha","font":3,"vertical":3]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>4</dct:type>
-        <dct:alternative>c10</dct:alternative>
+        <dct:alternative>ca10</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>c10</dct:identifier>
+        <dct:identifier>ca10</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner, sans contrainte de temps, les valeurs de 2 cartes à jouer choisies parmi les coeurs compris entre 1 et 10</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"regexp":{"input": { "from": "([0-9][0-9])","to":"<div class=\\\"h10 w07\\\"><img src=\\\"res/img/cards/$1hearts.svg\\\"/></div>"} },"gen":"function() { var a=Math.floor(1+Math.random()*10), b=Math.floor(1+Math.random()*10); return (a<10?\\\"0\\\":\\\"\\\")+a+(b<10?\\\"+0\\\":\\\"+\\\")+b; }","class":"negx p01 alpha","font":3,"vertical":3]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>c10</dct:alternative>
+        <dct:alternative>ca10</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>c10x</dct:identifier>
+        <dct:identifier>ca10x</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner, en moins de 40 secondes, les valeurs de 2 cartes à jouer choisies parmi les carreaux compris entre 1 et 10</dct:title>
         <dct:description><![CDATA["time":2,"input":{"digit":2,"speed":1000},"regexp":{"input": { "from": "([0-9][0-9])","to":"<div class=\\\"h10 w07\\\"><img src=\\\"res/img/cards/$1diamonds.svg\\\"/></div>"} },"gen":"function() { var a=Math.floor(1+Math.random()*10), b=Math.floor(1+Math.random()*10); return (a<10?\\\"0\\\":\\\"\\\")+a+(b<10?\\\"+0\\\":\\\"+\\\")+b; }","class":"negx p01 alpha","font":3,"vertical":3]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
          <dct:type>2</dct:type>
-        <dct:alternative>c10</dct:alternative>
+        <dct:alternative>ca10</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>c10y</dct:identifier>
+        <dct:identifier>ca10y</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner, en moins de 20 secondes, les valeurs de 2 cartes à jouer choisies parmi les trèfles compris entre 1 et 10</dct:title>
         <dct:description><![CDATA["time":1,"input":{"digit":2,"speed":1000},"regexp":{"input": { "from": "([0-9][0-9])","to":"<div class=\\\"h10 w07\\\"><img src=\\\"res/img/cards/$1clubs.svg\\\"/></div>"} },"gen":"function() { var a=Math.floor(1+Math.random()*10), b=Math.floor(1+Math.random()*10); return (a<10?\\\"0\\\":\\\"\\\")+a+(b<10?\\\"+0\\\":\\\"+\\\")+b; }","class":"negx p01 alpha","font":3,"vertical":3]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>4</dct:type>
-        <dct:alternative>c10</dct:alternative>
+        <dct:alternative>ca10</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>c33</dct:identifier>
+        <dct:identifier>ca33</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner,sans contrainte de temps, les valeurs de 3 cartes à jouer choisies parmi les 1,2 et 3</dct:title>
         <dct:description><![CDATA["time":2,"len":7,"input":{"digit":1,"speed":1000},"regexp":{"input": { "from": "([^+]+)","to":"<div class=\\\"h10 w07\\\"><img src=\\\"res/img/cards/$1.svg\\\"/></div>"} },"gen":"function() { var a = Math.floor(Math.random()*3)+1, b= Math.floor(Math.random()*3)+1, c= Math.floor(Math.random()*3)+1, e=Math.floor(Math.random()*4), f=['hearts','diamonds','spades','clubs']; return [\\\"0\\\"+a+f[e]+\\\"+0\\\"+b+f[(e+1)%4]+\\\"+0\\\"+c+f[(e+2)%4], a+b+c]; }","class":"negx p01 alpha","font":2,"vertical":3]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
-        <dct:alternative>c10</dct:alternative>
+        <dct:alternative>ca10</dct:alternative>
     </rdf:Description>
 
     <!-- DIGITS -->
