@@ -170,7 +170,7 @@
             if (settings.context.onload) { settings.context.onload($this,false); }
 
             // Resize the template
-            $this.css("font-size", Math.floor($this.height()/12.2)+"px");
+            $this.css("font-size", Math.floor($this.height()/12.7)+"px");
 
             $this.find("#code").keyup(function() {
                 helpers.import($this, $(this).val()); helpers.refresh($this,0); helpers.sliders($this); });
