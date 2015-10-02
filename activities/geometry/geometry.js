@@ -19,8 +19,10 @@
         color       : "black",                  // The current color
         color2      : 0,                        // The color used after init
         translate   : [0,0],                    // The translation values
+        timerend    : 2000,                     // Timer before display the score panel
         style       : false,                    // The style changing is disable
-        debug       : false                     // Debug mode
+        active    : false,                      // Activate all data by default
+        debug       : true                      // Debug mode
     };
 
     var regExp = [
@@ -211,7 +213,7 @@
                 settings.score = helpers.score(settings.histo.length, settings.number);
                 $(settings.svg.root()).attr("class",$(settings.svg.root()).attr("class")+" done");
 
-                setTimeout(function() { helpers.end($this); }, 2000);
+                setTimeout(function() { helpers.end($this); }, settings.timerend);
             }
 
             return ret;
@@ -734,15 +736,17 @@
 
             for (var i=0; i<settings.data.length; i++) {
                 var elt = settings.data[i];
+                if (typeof(elt.active)=="undefined") { elt.active = settings.active; }
                 // ----------------------- POINT ----------------------------
                 if (elt.type=="point") {
                     var object = helpers.factory.build($this, "point", elt.value, elt.attr);
                     if (elt.active==true) { settings.points.push(object); }
                     // POINT NAME
                     if (elt.id) {
-                        var angle = elt.idpos?elt.idpos:45;
+                        var angle = (typeof(elt.idpos)!="undefined")?elt.idpos:45;
                         var newPosX = elt.value[0] - settings.sizepoint/1.5  + Math.cos(angle*Math.PI/180)*settings.sizepoint*1.5;
                         var newPosY = elt.value[1] + settings.sizepoint/1.5 + Math.sin(-angle*Math.PI/180)*settings.sizepoint*2;
+                        if (angle>135 && angle<225 && elt.id.length>1) { newPosX-=settings.sizepoint/1.5; }
                         settings.svg.text(settings.layers.active,
                             newPosX, newPosY,
                             elt.id, { fontSize:settings.sizepoint*2, fontWeight:"bold" });

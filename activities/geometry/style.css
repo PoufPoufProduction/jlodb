@@ -55,6 +55,7 @@
 .geometry table#objectives                      { margin-left:1em; }
 .geometry table#objectives div.icon             { width:1em; height:1em; }
 .geometry div#splashex                          { background-image:url("../../res/img/banners/geometry.svg"); color:#432;}
+.geometry div#splashex #splash_dots             { display:none; }
 .geometry div#splashex h1                       { position:absolute; top:28%; left:10%; font-size:1.5em; }
 .geometry div#splashex .guide                   { position:absolute; font-size:.7em; font-weight:bold; font-style:italic; text-align:justify; }
 .geometry div#splashex #guide                   { top:36%; left:8%; width:40%; }
@@ -75,3 +76,15 @@
 .geometry.full  div#boardframe                  { width:16em; height:12em; margin:0; border-radius:0; background-image:none; }
 .geometry.full  div#board                       { width:16em; height:12em; overflow:hidden;}
 .geometry.full                                  { background-image:none; }
+
+.geometry.dots  div#splashex                    { background-color:rgba(0,0,0,0.3);
+                                                  background-image:url("../../res/img/banners/dots.svg"); color:#432;}
+.geometry.dots  div#splashex #splash_dots       { display:inline; }
+.geometry.dots  div#splashex #splash_default    { display:none; }
+.geometry.dots  div#splashex #label_dots        { position:absolute; top:75%; left:0; font-size:2em; background-color:rgba(70,40,20,0.8);
+                                                  width:100%; color:white; text-align:center;  text-transform:uppercase;
+                                                  border:.5em solid white; border-width:.2em 0;}
+.geometry.dots  div#splashex #guide_dots        { position:absolute; font-size:0.8em; top:2%; left:2%; width:35%;text-align:justify;
+                                                  border:.5em solid white; padding:.5em; font-style: italic;
+                                                  background-image:url("../../res/img/background/book02.svg"); background-repeat:repeat; }
+
