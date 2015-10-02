@@ -60,6 +60,10 @@ var socialis = {
 
         return _text;
     },
+    waiting: {
+        start: function() { $("#waiting").show().find("div").addClass("running"); },
+        stop:  function() { $("#waiting").hide().find("div").removeClass("running"); }
+    },
     node: function(_id) {
         if ($("#news").is(":visible")) { socialis.news.close(); }
         if ($("#awards").is(":visible")) { socialis.awards.close(); }
@@ -111,13 +115,16 @@ var socialis = {
             }
         },
         highlight: {
+            disabled : true,
             start: function() {
-                $("#main>#genius #board").genius("svg",".node.available").each(function() {
-                    if (!$("#main>#genius #board").genius("svg",".link.d"+$(this).attr("id")).length) {
-                        $(this).attr("class",$(this).attr("class")+" highlight");
-                    }
-                });
-                setTimeout(socialis.cyclic.highlight.run,100);
+                if (!this.disabled) {
+                    $("#main>#genius #board").genius("svg",".node.available").each(function() {
+                        if (!$("#main>#genius #board").genius("svg",".link.d"+$(this).attr("id")).length) {
+                            $(this).attr("class",$(this).attr("class")+" highlight");
+                        }
+                    });
+                    setTimeout(socialis.cyclic.highlight.run,100);
+                }
             },
             run: function() {
                 var nb=0;
@@ -262,8 +269,10 @@ var socialis = {
             if (socialis.example.data.length) {
                 var args = { id: socialis.example.data[Math.floor(Math.random()*socialis.example.data.length)] };
                 $("body").removeClass("nosplash");
+                socialis.waiting.start();
                 $("#launcher").jlodb({
                     onstart:    function($this) {
+                        socialis.waiting.stop();
                         setTimeout(function(){ if ($("#launcher").is(":visible")) { $("#genius").hide(); } },2000);
                     },
                     onfinish:   function($this) { $("#genius").show(); $("#score").removeClass().hide(); },
@@ -839,10 +848,10 @@ var socialis = {
                             function(_data) { });
                     },
                     onclick : function($this, _args) {
-                        $("#waiting").show().find("div").addClass("running");
+                        socialis.waiting.start();
                         $("#launcher").jlodb({
                             onstart:    function($this) {
-                                $("#waiting").hide().find("div").removeClass("running");
+                                socialis.waiting.stop();
                                 setTimeout(function(){ if ($("#launcher").is(":visible")) { $("#genius").hide(); } },2000);
                             },
                             onfinish:   function($this) { $("#genius").show(); $("#score").removeClass().hide(); },
@@ -1060,11 +1069,11 @@ $(window).load(function() {
                     });
                 },
                 onnode: function($this, _id, _available) {
-                    if (_available) { $("#waiting").show().find("div").addClass("running"); }
+                    if (_available) { socialis.waiting.start(); }
                     else            { socialis.example.open($this, _id, true); }
 
                     return true; },
-                onshow: function($this) { $("#waiting").hide().find("div").removeClass("running"); },
+                onshow: function($this) { socialis.waiting.stop(); },
                 onbuild: function($this) {
                     // LOG PANEL
                     if ($.cookie("jlodb-name") && $.cookie("jlodb-code") && $.cookie("jlodb-code")!=0) {
@@ -1073,8 +1082,10 @@ $(window).load(function() {
                     else { $("#logpanel").show(); }
                 },
                 onclick: function($this, $menu, _args) {
+                    socialis.waiting.start();
                     $("#launcher").jlodb({
                         onstart:    function($this) {
+                            socialis.waiting.stop();
                             setTimeout(function(){ if ($("#launcher").is(":visible")) { $("#genius").hide(); } },2000);
                         },
                         onfinish:   function($this) { $("#genius").show(); $("#score").removeClass().hide(); },
@@ -1213,7 +1224,7 @@ $(window).load(function() {
                 </div>
             </div>
 
-            <div id="waiting" class="anim12"><div><img src="res/img/generic/waiting.svg"/></div></div>
+            <div id="waiting" class="anim12"><div><img src="res/img/generic/waiting_red.svg"/></div></div>
         </div>
 
         <!-- EXERCICE PANEL -->

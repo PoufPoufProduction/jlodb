@@ -120,7 +120,7 @@ if (!$error) {
                         while (false !== ($file = readdir($handle))) {
                             if ($file != "." && $file != "..") {
 
-                                insertIntoDB($link,$row["Activity_Name"],$row["Activity_Key"],$file,$lang,$warnings,$tags);
+                                insertIntoDB($link,$row["Activity_Name"],$row["Activity_Key"],$file,$lang,$warnings,$tags,false);
                             }
                         }
                     }

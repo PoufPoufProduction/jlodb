@@ -61,4 +61,6 @@ else {
     }
 }
 
+session_write_close();
+
 ?> 

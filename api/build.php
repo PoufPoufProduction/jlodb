@@ -1,9 +1,5 @@
 <?php
 
-/**
- *   drop jlodb tables and re-build every thing from rdf files
- */
-
 include_once "database.php";
 include "_insert.php";
 
@@ -23,7 +19,7 @@ if (!$error) {
         else {
             $result = mysql_query("SELECT * FROM `".$_SESSION['prefix']."activity` WHERE `Activity_Name`='".$_GET["activity"]."'");
             while ($row = mysql_fetch_array($result)) {
-                insertIntoDB($link,$row["Activity_Name"],$row["Activity_Key"],$_GET["filename"],$lang,$warnings,$tags);
+                insertIntoDB($link,$row["Activity_Name"],$row["Activity_Key"],$_GET["filename"],$lang,$warnings,$tags,true);
                 $status = "success";
             }
 

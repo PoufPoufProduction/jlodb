@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <script type="text/javascript" src="../../js/jquery-1.8.1.min.js"></script>
+    <script type="text/javascript" src="../../js/jquery.min.js"></script>
     <title>jLoDB - Documentation</title>
     <style>
         body        { font-size:12px; }
@@ -11,6 +11,7 @@
         .margin     { margin-left:1em; }
         .button     { cursor:pointer; border:1px solid black; margin:.1em; padding:.1em; border-radius:.25em;
                       text-align:center;}
+        h3          { padding-left:5em; border:1px solid black; border-width:1px 0 1px 0; }
     </style>
     <script>
 var t001 = {
@@ -40,6 +41,37 @@ var t001 = {
 
         ret="{\"svgclass\":\"l"+(l+1)+"\",\"values\":{"+ret+"},\"area\":[220,350,480,450],\"url\":\"puzzle/sentence.svg\"}";
         alert(ret);
+    }
+};
+
+var t002 = {
+    r: function(_val) { return Math.round(_val*100)/100; },
+    process:function() {
+        var d=$("#t002").val();
+        var regexp = new RegExp("([LlMm]*)[ ]([\\\-0-9\\\.]+)[, ]([\\\-0-9\\\.]+)", "g");
+        var data = [];
+        var objectives = [];
+        var i = 1;
+        var last=[0,0];
+        var absolute = true;
+        var c=[];
+        while (match = regexp.exec(d)) {
+            if (match[1][0]=='L' || match[1][0]=='M')       { absolute = true; }
+            else if (match[1][0]=='l' || match[1][0]=='m')  { absolute = false; }
+
+            if (absolute) { c=[parseFloat(match[2]), parseFloat(match[3])]; }
+            else          { c=[last[0]+parseFloat(match[2]), last[1]+parseFloat(match[3])];}
+  
+            data.push('{"type":"point","value":['+this.r(c[0])+','+this.r(c[1])+'],"id":"'+i+'","idpos":0}');
+            if (i>1) {
+                objectives.push('{"type":"segment","values":['+this.r(last[0])+','+this.r(last[1])+','+this.r(c[0])+','+this.r(c[1])+']}');
+            }
+
+            last=[c[0], c[1]];
+            i++;
+        }
+        alert('<![CDATA["active":true,"data":['+data.join(',')+'],"number":'+(i-2)+
+              ',"class":"full dots","objectives":[['+objectives.join(',')+']],"selected":"segment"]]>');
     }
 };
 
@@ -80,6 +112,20 @@ var t001 = {
         <li>Ré-installer la base. L'activité est désormais installée et l'exercice <b>fox</b> est accessible.</li>
     </ul>
     <h2>Activités existantes</h2>
+    <h3>Géométrie</h3>
+    <h4>Paramètres</h4>
+    <h4>Alternative : Points à relier</h4>
+    
+    <div class="margin">
+        <ul>
+            <li><b>"svg":"full dots"</b></li>
+        </ul>
+        <div>
+            <p><b>Générateur</b> : entrez l'attribut 'd' du chemin de type svg correspondant au tracé à effectuer.</p>
+            <textarea style="width:30em;height:4em;" id="t002"></textarea>
+            <div class="button" style="width:5em;" onclick="t002.process();">Publier</div>
+        </div>
+    </div>
     <h3>LOGO</h3>
     <h4>Paramètres</h4>
     <ul>
@@ -104,7 +150,7 @@ var t001 = {
     <h4>Autres</h4>
     <div class="margin"><p><b>Générateur</b> : <a href="../../demo.html?id=lox"><b>lox</b></a></li></p></div>
     <h3>Paint</h3>
-    <h4>Picross</h4>
+    <h4>Alternative : Picross</h4>
     <div class="margin">
         <ul>
             <li><b>"url":"desktop/paint/picross5x5.svg"</b> ou <b>"desktop/paint/picross5x5.svg"</b></li>
@@ -116,7 +162,7 @@ var t001 = {
         <div class="margin"><p><b>Générateur</b> : <a href="../../demo.html?id=ptpia000"><b>ptpia000</b></a> ou <a href="../../demo.html?id=ptpib000"><b>ptpib000</b></a>. Attention : les générateurs ne testent pas l'unicité de la figure.</p></div>
     </div>
     <h3>Puzzle</h3>
-    <h4>Reconstruction de phrases</h4>
+    <h4>Alternative : Reconstruction de phrases</h4>
     <div class="margin">
         <ul>
             <li><b>"url":"puzzle/sentence.svg"</b></li>

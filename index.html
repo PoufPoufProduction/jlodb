@@ -23,6 +23,9 @@
         #jlodb .icon                        { width:1em; height:1em; }
 
         #waiting                            { position:absolute; top:2.9em; left:0.05em; font-size:2.8em; }
+        #waitingCount                       { position:absolute; top:9em; left:0.5em; font-size:1em; width:2em;
+                                              text-align:center; color:#800000; display:none; }
+        #waitingCount>div                   { font-size:0.7em; }
 
         #jlodb #popup                       { position:absolute; top:0; left:0; border-radius:.5em; font-size:.25em;
                                               background-color:#221500; color:#FFDD99; z-index:1000; display:none;
@@ -326,6 +329,11 @@ jlodb = {
             }
         },
         login: {
+            timer: 0,
+            waiting: function() {
+                $.getJSON("api/checkdb.php", function(data) { $("#waitingCount>div").html(data.exercices); });
+                jlodb.page.login.timer = setTimeout(jlodb.page.login.waiting, 2000);
+            },
             load: function() {
                 jlodb.islogged(function() {
                     $("#contentdiv>div").hide();
@@ -345,9 +353,14 @@ jlodb = {
                     function (data) { $("body>div").toggleClass("logged", (data.status=="success")); });
             },
             install: function() {
-                $("#jlodb #mask").show(); $("#waiting div").addClass("running"); $("#waiting").show();
+                $("#jlodb #mask").show(); $("#waiting div").addClass("running"); $("#waiting").show(); $("#waitingCount").show();
+                if (jlodb.page.login.timer) { clearTimeout(jlodb.page.login.timer); }
+                jlodb.page.login.timer = setTimeout(jlodb.page.login.waiting, 100);
+
+
                 $.getJSON("api/builddb.php", function(data) {
-                    $("#jlodb #mask").hide(); $("#waiting div").removeClass("running"); $("#waiting").hide();
+                    $("#jlodb #mask").hide(); $("#waiting div").removeClass("running"); $("#waiting").hide(); $("#waitingCount").hide();
+                    clearTimeout(jlodb.page.login.timer);
                     if (data.status=="success") {
                         // No warning anymore because of the "ON DUPLICATE KEY UPDATE" in API
                         if (data.warnings && data.warnings.length) {
@@ -614,7 +627,8 @@ $(window).load(function() {
                            onclick="$('#jlodb #screen').hide();"><img src="res/img/icon/quit.svg"/></div>
         </div>
     </div>
-    <div id="waiting" class="anim12"><div><img src="res/img/generic/waiting.svg"/></div></div>
+    <div id="waiting" class="anim12"><div><img src="res/img/generic/waiting_red.svg"/></div></div>
+    <div id="waitingCount"><div></div></div>
 
     <div id="score"><div>
         <div class="content">

@@ -12,7 +12,26 @@ function exName($file, $key, $id)
     return $ret;
 }
 
-function insertIntoDB($link,$activity,$key,$file,$lang,&$warnings, &$tags) {
+function mysql_query_array(&$sql, &$id, $link, &$warnings, $delete) {
+    if ($delete) {
+        mysql_query("DELETE FROM `".$_SESSION['prefix']."exercice` WHERE `Exercice_Id` IN (".implode(',',$id).")", $link);
+    }
+
+    $init = "INSERT INTO `".$_SESSION['prefix']."exercice` (`Exercice_Id`,`Exercice_Activity`,".
+                "`Exercice_Title`,`Exercice_Parameters`,`Exercice_Level`,`Exercice_Difficulty`,".
+                "`Exercice_Classification`,`Exercice_Duration`,`Exercice_Tags`,`Exercice_Variant`,".
+                "`Exercice_Reference`,`Exercice_Nb`) VALUES ";
+    if (!mysql_query($init.implode(',',$sql) , $link)) {
+        for ($i=0; $i<count($sql); $i++) {
+            if (!mysql_query($init.$sql[$i], $link)) {
+                array_push($warnings, "(W) Can not insert exercice ".$id[$i]." : ".mysql_error());
+            }
+        }
+    }
+    $sql = array(); $id=array(); 
+}
+
+function insertIntoDB($link,$activity,$key,$file,$lang,&$warnings, &$tags, $delete) {
     // READ THE RDF FILE
     $rdf = file_get_contents("../data/".$activity."/".$file);
     $rdf = str_replace('rdf:','rdf_', $rdf);
@@ -20,6 +39,8 @@ function insertIntoDB($link,$activity,$key,$file,$lang,&$warnings, &$tags) {
     $rdf = str_replace('xml:','xml_', $rdf);
     $xml = new SimpleXMLElement($rdf);
     $count = 0;
+    $sql = array();
+    $id  = array();
     // PARSE THE ACTIVITIES RDF FILE FOR FILLING THE ACTIVITY TABLE
     foreach ($xml->children() as $childName=>$child) {
         $exerciceTitle  = "";
@@ -60,32 +81,24 @@ function insertIntoDB($link,$activity,$key,$file,$lang,&$warnings, &$tags) {
             $exerciceTitle = str_replace("'", "\'", $exerciceTitle);
             $exerciceDesc = str_replace("'", "\'", $exerciceDesc);
 
-            $sql = "INSERT INTO `".$_SESSION['prefix']."exercice` (`Exercice_Id`,`Exercice_Activity`,".
-                "`Exercice_Title`,`Exercice_Parameters`,`Exercice_Level`,`Exercice_Difficulty`,".
-                "`Exercice_Classification`,`Exercice_Duration`,`Exercice_Tags`,`Exercice_Variant`,".
-                "`Exercice_Reference`,`Exercice_Nb`) VALUES ('".
+            array_push($sql, "('".
                 $exerciceId."','".$activity."','".$exerciceTitle."','".$exerciceDesc."',".
                 $exerciceLevel.",".$exerciceDiff.",'".$exerciceClass."',".$exerciceTime.",'".
-                $exerciceTag."','".$exerciceVar."','".$exerciceRef."',0) ".
-
-                "ON DUPLICATE KEY UPDATE `Exercice_Title`='".$exerciceTitle."', `Exercice_Parameters`='".$exerciceDesc."', ".
-                "`Exercice_Level`='".$exerciceLevel."', `Exercice_Difficulty`='".$exerciceDiff."', ".
-                "`Exercice_Classification`='".$exerciceClass."', `Exercice_Duration`='".$exerciceTime."', ".
-                "`Exercice_Tags`='".$exerciceTag."', `Exercice_Variant`='".$exerciceVar."', ".
-                "`Exercice_Reference`='".$exerciceRef."'";
-
-            if (!mysql_query($sql , $link)) {
-                array_push($warnings, "(W) Can not insert #".$count." exercice [".$exerciceId."] from ".$file." for activity ".$activity);
-            }
+                $exerciceTag."','".$exerciceVar."','".$exerciceRef."',0)");
+            array_push($id, "'".$exerciceId."'");
 
             // HANDLE THE TAGS
             if ($exerciceTag) {
                 $ts = explode(",",$exerciceTag);
                 foreach ($ts as $v) { if (!in_array($v,$tags)) { array_push($tags,$v);} }
             }
+
+            if (count($sql)>100) {  mysql_query_array($sql, $id, $link,$warnings,$delete); }
+
         }
         $count++;
     }
+    if (count($sql)) {  mysql_query_array($sql, $id, $link,$warnings,$delete); }
 }
 
 ?> 
