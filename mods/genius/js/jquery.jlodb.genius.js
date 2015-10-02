@@ -91,6 +91,8 @@
             },
             build: function($this) {
                 var settings = helpers.settings($this);
+                settings.nav.w = $(settings.svg.root()).attr("id");
+
                 // ZOOM DRAG
                 $this.find("#zoom .slider").draggable({ axis:"x", containment:"parent",
                 drag:function() {
@@ -175,6 +177,7 @@
             $this.find("#svg").css("font-size",settings.nav.zoom+'em')
                               .css("top",((1+settings.nav.y)*($this.find("#map").height()-$this.find("#svg").height())/2)+'px')
                               .css("left",((1+settings.nav.x)*($this.find("#map").width()-$this.find("#svg").width())/2)+'px');
+
             $this.find("#move .slider").css("font-size",(1/settings.nav.zoom)+'em')
                               .css("top",((1+settings.nav.y)*($this.find("#move").height()-$this.find("#move .slider").height())/2)+'px')
                               .css("left",((1+settings.nav.x)*($this.find("#move").width()-$this.find("#move .slider").width())/2)+'px');
@@ -231,7 +234,7 @@
             init: function(options) {
                 // The settings
                 var settings = {
-                    nav: { zoom : 1, max : 3, x : 0, y : 0 },
+                    nav: { zoom : 1, max : 3, x : 0, y : 0, w:640 },
                     nodes: "",
                     id: 0,
                     overtimer: 0
