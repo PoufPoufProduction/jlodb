@@ -9,12 +9,10 @@
 .toggleswitch div#splashex                  { background-image:url("../../res/img/banners/toggleswitch.svg"); }
 .toggleswitch div#splashex h1               { position:absolute; top:2%; left:5%; font-size:1.6em; color:white; width:90%;
                                               padding:.5em 1em; background-color:black; border-radius:.5em; }
-.toggleswitch div#splashex #guide           { position:absolute; top:8%; left:65%; color:white; width:32%; font-size:.9em;
+.toggleswitch div#splashex .guide           { position:absolute; top:8%; left:65%; color:white; width:32%; font-size:.9em;
                                               text-align:justify; font-style:italic; }
-.toggleswitch div#splash>div                { background-image:url("../../res/img/banners/toggleswitch.svg"); }
-.toggleswitch div#splash .text              { font-size:.8em; width:60%; float:right; }
-.toggleswitch div#splash .text h1           { text-align:right; padding-right:.5em; }
-.toggleswitch div#splash .text #guide       { margin:.5em 1em .5em 0; }
+.toggleswitch div#splashex #search          { display:none; }
+.toggleswitch div#splashex #diff7           { display:none; }
 .toggleswitch div#submit                    { font-size:1.5em; height:1em;width:1em; cursor:pointer; display:none;
                                               position:absolute; top:7em; left:0em; z-index:3; }
 .toggleswitch div#submit>img                { display:none; }
@@ -39,3 +37,14 @@
 
 .toggleswitch #effects                      { width:60%; height:60%; position:absolute; top:5%; left:60%; display:none; }
 .toggleswitch #effects>div                  { font-size:6em; width:1em; height:1em; display:none; }
+
+.toggleswitch.search div#splashex           { background-image:url("../../res/img/banners/search.svg"); }
+.toggleswitch.search div#splashex #default  { display:none; }
+.toggleswitch.search div#splashex #search   { display:inline; }
+
+.toggleswitch.diff7 div#splashex            { background-image:url("../../res/img/banners/diff7.svg"); }
+.toggleswitch.diff7 div#splashex #default   { display:none; }
+.toggleswitch.diff7 div#splashex #diff7     { display:inline; }
+.toggleswitch div#splashex #guide_diff7b    { position:absolute; top:30%; left:85%; color:white; width:14%; font-size:.5em;
+                                              text-align:justify; font-style:italic; display:none; }
+.toggleswitch.diff7.inv div#splashex #guide_diff7b  { display:inline; }

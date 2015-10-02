@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dct="http://purl.org/dc/terms/">
+
+
+    <rdf:Description>
+        <dct:identifier>o12a</dct:identifier>
+        <dct:title xml:lang="fr-FR">Retrouver une paire cachée parmi 15 images [fruits].</dct:title>
+        <dct:description><![CDATA["number":4,"template":"array5x3","gen":"function(){var o=['vegetable/apple01','vegetable/apricot01','vegetable/banana01','vegetable/cherry01','vegetable/cherry02','vegetable/kiwi01','vegetable/leaf01','vegetable/leaf02','vegetable/leaf03','vegetable/pear01','vegetable/pepper01','vegetable/pepper02','vegetable/pepper03','vegetable/radish01','vegetable/strawberry01','vegetable/tomato01'],result=\\\"\\\",ret=[],val=[],number=15, c=Math.floor(Math.random()*(number-1));val.push(c);for (var i=0; i<(number-1); i++){ val.push(i); } for (var i=0;i<5;i++) { val.sort(function() { return .5 - Math.random();}); } for (var i=0; i<number; i++) { var a=\\\"<img src='res/img/svginventoryicons/\\\"+(o[val[i]])+\\\".svg'/>\\\" ; result+=(c==val[i])?\\\"1\\\":\\\"0\\\"; ret.push(a);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","border-color":"white"},{"background-color":"rgba(255,255,255,0.8)","border-color":"red"}]},"wrong":{"style":{"border-color":"purple"}},"class":"search","onclick":"function($this,elts,id){var nb=0;for (var i in elts) { if (elts[i].state==1) nb++; } return (elts[id].state==1 || nb<2);}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Retrouvez les 2 mêmes images"}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>game</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>o48a</dct:alternative>
+        <dct:isPartOf>findpair</dct:isPartOf>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>o20a</dct:identifier>
+        <dct:title xml:lang="fr-FR">Retrouver une paire cachée parmi 20 images [stylo].</dct:title>
+        <dct:description><![CDATA["number":4,"template":"array5x4","gen":"function(){var o=['pencil/aero01','pencil/brush01','pencil/brush02','pencil/brush04','pencil/corrector01','pencil/eraser01','pencil/eraser02','pencil/marker01','pencil/marker03','pencil/pen04','pencil/pencil01','pencil/spray01','pencil/stamp01','pencil/pentel01','pencil/blue01','pencil/red02','pencil/green03','pencil/brush03','pencil/brush05'],result=\\\"\\\",ret=[],val=[],number=20, c=Math.floor(Math.random()*(number-1));val.push(c);for (var i=0; i<(number-1); i++){ val.push(i); } for (var i=0;i<5;i++) { val.sort(function() { return .5 - Math.random();}); } for (var i=0; i<number; i++) { var a=\\\"<img src='res/img/svginventoryicons/\\\"+(o[val[i]])+\\\".svg'/>\\\" ; result+=(c==val[i])?\\\"1\\\":\\\"0\\\"; ret.push(a);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","border-color":"white"},{"background-color":"rgba(255,255,255,0.8)","border-color":"red"}]},"wrong":{"style":{"border-color":"purple"}},"class":"search","onclick":"function($this,elts,id){var nb=0;for (var i in elts) { if (elts[i].state==1) nb++; } return (elts[id].state==1 || nb<2);}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Retrouvez les 2 mêmes images"}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>game</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>o48a</dct:alternative>
+        <dct:isPartOf>findpair</dct:isPartOf>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>o48a</dct:identifier>
+        <dct:title xml:lang="fr-FR">Retrouver une paire cachée parmi 48 images [divers].</dct:title>
+        <dct:description><![CDATA["number":3,"template":"array8x6","gen":"function(){var o=['pencil/aero01','pencil/brush01','pencil/brush02','pencil/brush04','pencil/corrector01','pencil/eraser01','pencil/eraser02','pencil/marker01','pencil/marker03','pencil/pen04','pencil/pencil01','pencil/spray01','pencil/stamp01','vegetable/apple01','vegetable/apricot01','vegetable/banana01','vegetable/cherry01','vegetable/cherry02','vegetable/kiwi01','vegetable/leaf01','vegetable/leaf02','vegetable/leaf03','vegetable/pear01','vegetable/pepper01','vegetable/pepper02','vegetable/pepper03','vegetable/radish01','vegetable/strawberry01','vegetable/tomato01','action/stop01','book/old01','book/old02','book/old03','book/old04','hardware/calculator01','hardware/camera01','hardware/phone01','hardware/pocketwatch01','key/blue01','key/key02','mineral/gold01','mineral/silver01','mineral/sulphur01','mineral/red03','misc/binder01','misc/dice01','misc/pressure01','misc/salt01','misc/pino01','tool/binocular01','tool/bulb01','tool/compass01'],result=\\\"\\\",ret=[],val=[],number=48, c=Math.floor(Math.random()*(number-1));val.push(c);for (var i=0; i<(number-1); i++){ val.push(i); } for (var i=0;i<5;i++) { val.sort(function() { return .5 - Math.random();}); }for (var i=0; i<number; i++) { var a=\\\"<img src='res/img/svginventoryicons/\\\"+(o[val[i]])+\\\".svg'/>\\\" ; result+=(c==val[i])?\\\"1\\\":\\\"0\\\"; ret.push(a);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","border-color":"white"},{"background-color":"rgba(255,255,255,0.8)","border-color":"red"}]},"wrong":{"style":{"border-color":"purple"}},"class":"search","onclick":"function($this,elts,id){var nb=0;for (var i in elts) { if (elts[i].state==1) nb++; } return (elts[id].state==1 || nb<2);}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Retrouvez les 2 mêmes images"}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>game</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>o48a</dct:alternative>
+        <dct:isPartOf>findpair</dct:isPartOf>
+    </rdf:Description>
+
+
+    <rdf:Description>
+        <dct:identifier>o70a</dct:identifier>
+        <dct:title xml:lang="fr-FR">Retrouver une paire cachée parmi 70 images [divers].</dct:title>
+        <dct:description><![CDATA["number":2,"template":"array10x7","gen":"function(){var o=['pencil/aero01','pencil/brush01','pencil/brush02','pencil/brush04','pencil/corrector01','pencil/eraser01','pencil/eraser02','pencil/marker01','pencil/marker03','pencil/pen04','pencil/pencil01','pencil/spray01','pencil/stamp01','vegetable/apple01','vegetable/apricot01','vegetable/banana01','vegetable/cherry01','vegetable/cherry02','vegetable/kiwi01','vegetable/leaf01','vegetable/leaf02','vegetable/leaf03','vegetable/pear01','vegetable/pepper01','vegetable/pepper02','vegetable/pepper03','vegetable/radish01','vegetable/strawberry01','vegetable/tomato01','action/stop01','book/old01','book/old02','book/old03','book/old04','hardware/calculator01','hardware/camera01','hardware/phone01','hardware/pocketwatch01','hardware/sdcard01','hardware/toggle01','key/blue01','key/key02','mineral/gold01','mineral/silver01','mineral/sulphur01','mineral/red03','misc/binder01','misc/dice01','misc/pressure01','misc/salt01','tool/binocular01','tool/bulb01','tool/compass01','space/callisto01','space/earth01','space/ganymede01','space/jupiter01','space/mars01','space/mercury01','space/moon01','space/neptune01','space/saturn01','space/uranus01','space/venus01','tool/bag01','tool/envelope01','tool/feather01','tool/lock01','tool/pin01','tool/scissors02','tool/scissors03','tool/shovel01','tool/trashbin01'],result=\\\"\\\",ret=[],val=[],number=70, c=Math.floor(Math.random()*(number-1));val.push(c);for (var i=0; i<(number-1); i++){ val.push(i); } for (var i=0;i<5;i++) { val.sort(function() { return .5 - Math.random();}); }for (var i=0; i<number; i++) { var a=\\\"<img src='res/img/svginventoryicons/\\\"+(o[val[i]])+\\\".svg'/>\\\" ; result+=(c==val[i])?\\\"1\\\":\\\"0\\\"; ret.push(a);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","border-color":"white"},{"background-color":"rgba(255,255,255,0.8)","border-color":"red"}]},"wrong":{"style":{"border-color":"purple"}},"class":"search","onclick":"function($this,elts,id){var nb=0;for (var i in elts) { if (elts[i].state==1) nb++; } return (elts[id].state==1 || nb<2);}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Retrouvez les 2 mêmes images"}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>game</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:alternative>o48a</dct:alternative>
+        <dct:isPartOf>findpair</dct:isPartOf>
+    </rdf:Description>
+
+
+    <rdf:Description>
+        <dct:identifier>p12a</dct:identifier>
+        <dct:title xml:lang="fr-FR">Retrouver une paire cachée parmi 15 images [Lottie].</dct:title>
+        <dct:description><![CDATA["number":4,"template":"array5x3","gen":"function(){var result=\\\"\\\",ret=[],val=[],number=15, c=Math.floor(Math.random()*(number-1));val.push(c);for (var i=0; i<(number-1); i++){ val.push(i); } for (var i=0;i<5;i++) { val.sort(function() { return .5 - Math.random();}); } for (var i=0; i<number; i++) { var a=\\\"<img src='res/img/ppvc/lottie\\\"+(21+val[i])+\\\".svg'/>\\\" ; result+=(c==val[i])?\\\"1\\\":\\\"0\\\"; ret.push(a);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","border-color":"white"},{"background-color":"rgba(255,255,255,0.8)","border-color":"red"}]},"wrong":{"style":{"border-color":"purple"}},"class":"search","onclick":"function($this,elts,id){var nb=0;for (var i in elts) { if (elts[i].state==1) nb++; } return (elts[id].state==1 || nb<2);}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Retrouvez les 2 mêmes images"}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>game</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>p20a</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">LizzieEtLottie</dct:coverage>
+        <dct:isPartOf>findpair</dct:isPartOf>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>p12b</dct:identifier>
+        <dct:title xml:lang="fr-FR">Retrouver une paire cachée parmi 15 images [Lizzie].</dct:title>
+        <dct:description><![CDATA["number":4,"template":"array5x3","gen":"function(){var result=\\\"\\\",ret=[],val=[],number=15, c=Math.floor(Math.random()*(number-1));val.push(c);for (var i=0; i<(number-1); i++){ val.push(i); } for (var i=0;i<5;i++) { val.sort(function() { return .5 - Math.random();}); } for (var i=0; i<number; i++) { var a=\\\"<img src='res/img/ppvc/lizzie\\\"+(21+val[i])+\\\".svg'/>\\\" ; result+=(c==val[i])?\\\"1\\\":\\\"0\\\"; ret.push(a);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","border-color":"white"},{"background-color":"rgba(255,255,255,0.8)","border-color":"red"}]},"wrong":{"style":{"border-color":"purple"}},"class":"search","onclick":"function($this,elts,id){var nb=0;for (var i in elts) { if (elts[i].state==1) nb++; } return (elts[id].state==1 || nb<2);}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Retrouvez les 2 mêmes images"}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>game</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>p20a</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">LizzieEtLottie</dct:coverage>
+        <dct:isPartOf>findpair</dct:isPartOf>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>p20a</dct:identifier>
+        <dct:title xml:lang="fr-FR">Retrouver une paire cachée parmi 20 images [Lottie].</dct:title>
+        <dct:description><![CDATA["number":4,"template":"array5x4","gen":"function(){var result=\\\"\\\",ret=[],val=[],number=20, c=Math.floor(Math.random()*(number-1));val.push(c);for (var i=0; i<(number-1); i++){ val.push(i); } for (var i=0;i<5;i++) { val.sort(function() { return .5 - Math.random();}); } for (var i=0; i<number; i++) { var a=\\\"<img src='res/img/ppvc/lottie\\\"+(21+val[i])+\\\".svg'/>\\\" ; result+=(c==val[i])?\\\"1\\\":\\\"0\\\"; ret.push(a);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","border-color":"white"},{"background-color":"rgba(255,255,255,0.8)","border-color":"red"}]},"wrong":{"style":{"border-color":"purple"}},"class":"search","onclick":"function($this,elts,id){var nb=0;for (var i in elts) { if (elts[i].state==1) nb++; } return (elts[id].state==1 || nb<2);}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Retrouvez les 2 mêmes images"}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>game</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>p20a</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">LizzieEtLottie</dct:coverage>
+        <dct:isPartOf>findpair</dct:isPartOf>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>p20b</dct:identifier>
+        <dct:title xml:lang="fr-FR">Retrouver une paire cachée parmi 20 images [Lizzie].</dct:title>
+        <dct:description><![CDATA["number":4,"template":"array5x4","gen":"function(){var result=\\\"\\\",ret=[],val=[],number=20, c=Math.floor(Math.random()*(number-1));val.push(c);for (var i=0; i<(number-1); i++){ val.push(i); } for (var i=0;i<5;i++) { val.sort(function() { return .5 - Math.random();}); } for (var i=0; i<number; i++) { var a=\\\"<img src='res/img/ppvc/lizzie\\\"+(21+val[i])+\\\".svg'/>\\\" ; result+=(c==val[i])?\\\"1\\\":\\\"0\\\"; ret.push(a);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","border-color":"white"},{"background-color":"rgba(255,255,255,0.8)","border-color":"red"}]},"wrong":{"style":{"border-color":"purple"}},"class":"search","onclick":"function($this,elts,id){var nb=0;for (var i in elts) { if (elts[i].state==1) nb++; } return (elts[id].state==1 || nb<2);}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Retrouvez les 2 mêmes images"}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>game</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>p20a</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">LizzieEtLottie</dct:coverage>
+        <dct:isPartOf>findpair</dct:isPartOf>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>p35a</dct:identifier>
+        <dct:title xml:lang="fr-FR">Retrouver une paire cachée parmi 35 images [Lizzie et Lottie].</dct:title>
+        <dct:description><![CDATA["number":3,"template":"array7x5","gen":"function(){var result=\\\"\\\",ret=[],val=[],number=35, c=Math.floor(Math.random()*(number-1)),d=16+Math.floor(Math.random()*4);val.push(c);for (var i=0; i<(number-1); i++){ val.push(i); } for (var i=0;i<5;i++) { val.sort(function() { return .5 - Math.random();}); } for (var i=0; i<number; i++) { var a=\\\"<img src='res/img/ppvc/\\\"+(val[i]<d?\\\"lizzie\\\":\\\"lottie\\\")+(21+(val[i]<d?val[i]:val[i]-d))+\\\".svg'/>\\\" ; result+=(c==val[i])?\\\"1\\\":\\\"0\\\"; ret.push(a);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","border-color":"white"},{"background-color":"rgba(255,255,255,0.8)","border-color":"red"}]},"wrong":{"style":{"border-color":"purple"}},"class":"search","onclick":"function($this,elts,id){var nb=0;for (var i in elts) { if (elts[i].state==1) nb++; } return (elts[id].state==1 || nb<2);}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Retrouvez les 2 mêmes images"}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>game</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>5</dct:type>
+        <dct:alternative>p20a</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">LizzieEtLottie</dct:coverage>
+        <dct:isPartOf>findpair</dct:isPartOf>
+    </rdf:Description>
+
+</rdf:RDF>

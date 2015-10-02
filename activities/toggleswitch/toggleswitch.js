@@ -10,10 +10,12 @@
         number      : 0,                                        // Pages number
         show        : true,                                     // Show the wrong responses
         toggle      : "a",                                      // Active class
+        group       : "",                                       // Active group
         result      : "",
         init        : "",
         font        : 1,                                        // Template font
-        debug       : false                                     // Debug mode
+        loop        : true,                                     // State loop
+        debug       : true                                      // Debug mode
     };
 
     // private methods
@@ -122,18 +124,25 @@
 
                 var isOk = true;
                 if (settings.current.onclick) {
-                    isOk = eval('('+settings.current.onclick+')')($this, settings.current.elts, id); }
+                    isOk = eval('('+settings.current.onclick+')')($this, settings.current.elts, id); } else
+                if (settings.onclick) {
+                    isOk = eval('('+settings.onclick+')')($this, settings.current.elts, id); }
 
                 if (isOk) {
-                    elt.state=(elt.state+1)%((settings.states.nb)?settings.states.nb:2);
-                    helpers.refresh($this, elt);
+                    elt.state++;
+                    if (elt.state==((settings.states.nb)?settings.states.nb:2)) {
+                        if (settings.loop)  { elt.state = 0; helpers.refresh($this, elt); }
+                        else                { elt.state--; }
+                    }
+                    else { helpers.refresh($this, elt); }
                 }
             }
         },
         fill: function($this) {
             var settings = helpers.settings($this);
             settings.current.elts = [];
-            $this.find("."+settings.toggle).each(function(index) {
+            var vToggle = (settings.current.group?"#"+settings.current.group+" ":"")+"."+settings.toggle;
+            $this.find(vToggle).each(function(index) {
                 var elt={ elt:$(this), state:0 };
                 if (settings.init.length>index) { elt.state = parseInt(settings.init[index]); }
                 settings.current.elts.push(elt);
@@ -184,11 +193,12 @@
 
                 if (settings.current.template.indexOf(".svg")!=-1) {
                     var templatepath = "res/img/"+settings.current.template+debug;
+                    $this.find("#data").html("");
                     var elt= $("<div id='svg'></div>").appendTo($this.find("#data"));
                     elt.svg();
                     settings.svg = elt.svg('get');
-                    $(settings.svg).attr("class",settings["class"]);
                     settings.svg.load(templatepath, { addTo: true, changeSize: true, onLoad:function() {
+                        if (settings.current.svgclass) { $(settings.svg.root()).attr("class",settings.current.svgclass); }
                         $this.find(".t").each(function(index) {
                             var value = settings.current.t[index];
                             if (vRegexp) { value = value.replace(vRegexp, settings.regexp.to); }
