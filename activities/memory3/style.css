@@ -6,17 +6,19 @@
 .memory3 .card                      { width:1em; height:1em; margin:.02em;
                                       background-image:url("../../res/img/svginventoryicons/background/border/card01.svg");
                                       cursor:pointer; float:left; }
-.memory3 .card .content             { width:1em; height:1em; display:none; text-align:center; color:#885533;
-                                      background-image:url("../../res/img/svginventoryicons/background/border/card02.svg"); }
+.memory3 .card .content             { width:1em; height:1em; display:none; text-align:center; color:#885533;border-radius:.14em;
+                                      background-image:url("../../res/img/svginventoryicons/background/noborder/star01.svg");
+                                      position:relative; }
+.memory3 .card .content>*           { position:absolute; top:0; }
 .memory3.nb6 .card                  { font-size:5em; }
 .memory3.nb6 #board                 { padding-left:.2em; padding-top:.6em; }
 .memory3.nb8 .card                  { font-size:3.7em; }
 .memory3.nb8 #board                 { padding-left:.3em; padding-top:1.2em; }
 .memory3.nb12 .card                 { font-size:3.7em; }
 .memory3.nb12 #board                { padding-left:.3em; padding-top:0.2em; }
-.memory3.nb16 .card                 { font-size:2.9em; }
+.memory3.nb16 .card                 { font-size:2.8em; }
 .memory3.nb16 #board                { padding-left:2em; padding-top:0.05em; width:12em;}
-.memory3.nb20 .card                 { font-size:2.9em; }
+.memory3.nb20 .card                 { font-size:2.8em; }
 .memory3.nb20 #board                { padding-left:.4em; padding-top:0.05em; }
 
 .memory3 div#splashex               { background-image:url("../../res/img/banners/memory.svg"); background-color:rgba(0,0,0,0.2); }
