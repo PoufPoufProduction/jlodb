@@ -1,7 +1,7 @@
 <div>
 
-    <div id="board">
-    </div>
+    <div id="board" onclick="$(this).closest('.info').info('click');"
+                    ontouchstart="$(this).closest('.info').info('click');event.preventDefault();"></div>
 
     <div id="comment">
     </div>

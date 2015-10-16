@@ -7,7 +7,7 @@
         css         : "style.css",                              // Activity's css style sheet
         lang        : "en-US",                                  // Current localization
         type        : "",
-        debug       : false                                     // Debug mode
+        debug       : true                                     // Debug mode
     };
 
     // private methods
@@ -74,6 +74,10 @@
                 if (settings.type=="underconstruction") {
                     $this.find("#board").html("<img src='res/img/background/underconstruction.svg'/>");
                     $this.find("#comment").addClass("underconstruction").html(settings.comment);
+                } else
+                if (settings.type=="notfound") {
+                    $this.find("#board").html("<img src='res/img/background/underconstruction.svg'/>");
+                    $this.find("#comment").addClass("underconstruction").html(settings.comment);
                 }
             }
         }
@@ -87,6 +91,7 @@
             init: function(options) {
                 // The settings
                 var settings = {
+                    score: 5
                 };
 
                 return this.each(function() {
@@ -109,6 +114,10 @@
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 settings.context.onquit($this,{'status':'abort'});
+            },
+            click: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+                helpers.end($this);
             }
         };
 

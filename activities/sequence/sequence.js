@@ -20,6 +20,15 @@
         debug       : false                     // Debug mode
     };
 
+    var regExp = [
+        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
+        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
+        "\\\[br\\\]",                               "<br/>",
+        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
+        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
+        "\\\[small\\\]([^\\\[]+)\\\[/small\\\]",    "<span style='font-size:.6em;'>$1</span>"
+    ];
+
     // private methods
     var helpers = {
         // @generic: Check the context
@@ -46,6 +55,13 @@
             helpers.unbind($this);
             settings.context.onquit($this,{'status':'success', 'score':settings.score});
         },
+        format: function(_text) {
+            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
+                var vReg = new RegExp(regExp[i*2],"g");
+                _text = _text.replace(vReg,regExp[i*2+1]);
+            }
+            return _text;
+        },
         loader: {
             css: function($this) {
                 var settings = helpers.settings($this), cssAlreadyLoaded = false, debug = "";
@@ -70,6 +86,7 @@
                 if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
 
                 // Load the template
+                if (settings.template.indexOf(".html")==-1) { settings.template+=".html"; }
                 var templatepath = "activities/"+settings.name+"/template/"+settings.template+debug;
                 $this.load( templatepath, function(response, status, xhr) { helpers.loader.svg($this); });
             },        // Load the svg if require
@@ -194,11 +211,13 @@
 
                 // Locale handling
                 $this.find("h1#label").html(settings.label);
-                if ($.isArray(settings.comment)) {
-                    $this.find("#comment").html("");
-                    for (var i in settings.comment) { $this.find("#comment").append("<p>"+settings.comment[i]+"</p>"); }
+                if (settings.comment) {
+                    if ($.isArray(settings.comment)) {
+                        $this.find("#comment").html("");
+                        for (var i in settings.comment) { $this.find("#comment").append("<p>"+helpers.format(settings.comment[i])+"</p>"); }
+                    }
+                    else { $this.find("#comment").html(helpers.format(settings.comment)); }
                 }
-                else { $this.find("#comment").html(settings.comment); }
                 if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
 
                 setTimeout(function() { $this.find("#values ul").show(); helpers.move($this, true);}, 500);

@@ -15,8 +15,17 @@
         init        : "",
         font        : 1,                                        // Template font
         loop        : true,                                     // State loop
+        illustration: "",                                       // Add an illustration (text or image)
         debug       : true                                      // Debug mode
     };
+
+    var regExp = [
+        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
+        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
+        "\\\[br\\\]",                               "<br/>",
+        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
+        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>"
+    ];
 
     // private methods
     var helpers = {
@@ -43,6 +52,13 @@
             var settings = helpers.settings($this);
             helpers.unbind($this);
             settings.context.onquit($this,{'status':'success','score':settings.score});
+        },
+        format: function(_text) {
+            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
+                var vReg = new RegExp(regExp[i*2],"g");
+                _text = _text.replace(vReg,regExp[i*2+1]);
+            }
+            return _text;
         },
         loader: {
             css: function($this) {
@@ -149,6 +165,20 @@
                 helpers.refresh($this,elt);
                 $(this).bind("mousedown touchstart",function(event){ helpers.click($this,index); event.preventDefault();});
             });
+
+            // HANDLE THE ILLUSTRATION
+            var vIllus = settings.illustration;
+            if ($.isArray(vIllus)) { vIllus = vIllus[settings.it%vIllus.length]; }
+
+            if ($.isArray(vIllus)) {
+                    $this.find("#illustration").html("<div></div>");
+                    for (var i in vIllus) { $this.find("#illustration>div").append(
+                        "<p>"+(vIllus[i].length?helpers.format(vIllus[i]):"&nbsp;")+"</p>"); }
+            } else {
+                if (vIllus.indexOf("<svg")!=-1) { $this.find("#illustration").html(vIllus); }
+                else { $this.find("#illustration").html("<div>"+helpers.format(vIllus)+"</div>"); }
+            }
+
             settings.interactive = true;
         },
         // Build the question
@@ -169,6 +199,7 @@
                 if (gen.data) { settings.current.data   = gen.data; }
             }
 
+            // HANDLE THE EXERCICE
             if (settings.exercice) {
                 if ($.type(settings.exercice)=="string") {
                     $this.find("#exercice #content").html(settings.exercice);

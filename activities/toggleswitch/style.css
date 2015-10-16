@@ -30,6 +30,15 @@
 .toggleswitch div#exercice #label           { font-size:2em; float:right; width:2.0em; height:1.2em; font-weight:bold;
                                               color:white; background-color:black; border-radius:.2em; text-align:center;
                                               margin:.1em; display:none; }
+.toggleswitch #illustration>div             { font-size:.5em;text-align:justify;margin:.2em .5em;}
+.toggleswitch #illustration .a              { stroke-dasharray:8,8; }
+.toggleswitch #illustration .l              { fill:none; stroke:black; stroke-width:4px; stroke-linecap:round; }
+.toggleswitch #illustration .s              { fill:none; stroke:black; stroke-width:2px; stroke-linecap:round; }
+.toggleswitch #illustration .p              { fill:black; stroke:none; }
+.toggleswitch #illustration .d              { stroke:#dd8833 !important; }
+.toggleswitch #illustration .p.d            { fill:#dd8833 !important; }
+.toggleswitch #illustration text            { font-size:28px; }
+
 .toggleswitch .a                            { cursor:pointer; }
 .toggleswitch div#data                      { overflow:visible; position:absolute; width:16em; height:12em; top:0; }
 .toggleswitch div#data>div                  { overflow:visible; }

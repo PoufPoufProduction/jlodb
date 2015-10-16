@@ -12,7 +12,7 @@
         worst       : [],                                       // The worst scenario (for multi-robots)
         max         : 200,                                      // Maximum operations allowed
         maxbt       : 20,                                       // Maximum bt allowed
-        debug       : false                                     // Debug mode
+        debug       : true                                     // Debug mode
     };
 
     // private methods
@@ -183,6 +183,9 @@
                         $(ui.draggable).detach().css("top",0).css("left",0);
                         $(this).append(ui.draggable);
                 } });
+
+                // Target offset
+                settings.targetoffset=[-$this.find("#t1").offset().top,-$this.find("#t1").offset().left];
 
                 // Locale handling
                 if (settings.exercice) { $this.find("#exercice").html(settings.exercice); }
@@ -702,8 +705,8 @@
                         var $t = $this.find("#target"+(rid+1));
                         if ($this.find("#t"+(rid+1)).is(":visible")) {
                             var o = Math.floor(($this.find("#target"+(rid+1)).width() - settings.lastelt.height())/2);
-                            $t.css("top",(settings.lastelt.position().top-o)+"px")
-                              .css("left",(settings.lastelt.position().left-o)+"px").show();
+                            $t.css("top",(settings.lastelt.offset().top+settings.targetoffset[0]-o)+"px")
+                              .css("left",(settings.lastelt.offset().left+settings.targetoffset[1]-o)+"px").show();
                         }
                         else { $t.hide(); }
 
@@ -943,6 +946,7 @@
                     sourcemax       : [0,0,0,0],
                     testid          : 0,
                     numberinit      : 0,
+                    targetoffset    : [0,0],
                     lastcount       : -1,
                     lastelt         : 0,
                     scale           : 1
