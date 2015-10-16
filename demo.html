@@ -42,6 +42,13 @@ $(window).load(function() {
         if (args.activity)          { options.activity = args.activity; }
         if (args.classification)    { options.classification = args.classification; }
     }
+    if (args.nosplash) { $("body").addClass("nosplash"); }
+
+    if (args.id && args.snapshot) {
+        window.open('demo.html?nosplash=1&id='+args.id,'_blank',
+            'width=640, height=480,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,status=no,titlebar=no');
+        return;
+    }
 
     jlodb($("#launcher"));
 });

@@ -57,16 +57,20 @@
             // GET EXERCICE FROM DATABASE AND LAUNCH
             var url     = "api/exercice.php"+args;
 
-            $.getJSON(url, function (data) {
-                var d = data.data;
-                if (data.locale) { if (d.locale) { d.locale = $.extend(d.locale, data.locale); } else { d.locale = data.locale; } }
-                d.label = data.label;
-                if (settings.onexercice) { settings.onexercice($this, data.id, data.activity); }
 
-                if (data.ext && jlodbext && jlodbext[data.ext]) {
-                    jlodbext[data.ext].js(function() { helpers.run($this,data.activity, d); });
+            $.getJSON(url, function (data) {
+                if (data.status=="error") { helpers.exercice($this, {id:"ioy"}); }
+                else {
+                    var d = data.data;
+                    if (data.locale) { if (d.locale) { d.locale = $.extend(d.locale, data.locale); } else { d.locale = data.locale; } }
+                    d.label = data.label;
+                    if (settings.onexercice) { settings.onexercice($this, data.id, data.activity); }
+
+                    if (data.ext && jlodbext && jlodbext[data.ext]) {
+                        jlodbext[data.ext].js(function() { helpers.run($this,data.activity, d); });
+                    }
+                    else { helpers.run($this,data.activity, d); }
                 }
-                else { helpers.run($this,data.activity, d); }
             });
         },
 

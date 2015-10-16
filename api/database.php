@@ -27,6 +27,7 @@ if (!$_SESSION['database'] || $forceReadFile ) {
         $_SESSION['host']       = $ini_array["db"]["host"];
         $_SESSION['username']   = $ini_array["db"]["username"];
         $_SESSION['password']   = $ini_array["db"]["password"];
+        $_SESSION['url']        = $ini_array["dev"]["url"];
     }
 }
 

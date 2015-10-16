@@ -1,4 +1,5 @@
 <?php
+// $forceReadFile = true;
 include_once "database.php";
 
 if (!$error) {
@@ -33,6 +34,7 @@ echo '{';
 echo '  "status" : "'.$status.'",';
 if ($error)     { echo '  "error" : '.$error.','; }
 if ($overview)  { echo $overview.','; }
+if ($_SESSION['url']) { echo ' "url" : "'.$_SESSION['url'].'",'; }
 echo '  "textStatus" : "'.$textstatus.'"';
 echo '}';
 

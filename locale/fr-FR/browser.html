@@ -54,28 +54,30 @@
                     <div id="number" class="s2" onclick="$(this).attr('class','s'+((parseInt($(this).attr('class').substr(-1))+1)%4));$(this).closest('.browser').browser('update');"></div>
                 </div>
                 <div id="jcount">0</div>
-                <div id="jsubmit" onclick="$(this).closest('.browser').browser('submit');"><img src="res/img/icon/sesearch.svg"/></div>
+                <div id="jsubmit" onclick="$(this).closest('.browser').browser('submit',false);"><img src="res/img/icon/sesearch.svg"/></div>
             </div>
         </div>
     </div>
 </div>
 <div id="jhstab" onclick="$('#jbrowser').toggleClass('reduce');"></div>
 <div id="jresults">
-    <table>
-        <tr class='header'>
-            <td><div class="c7"></div></td>
-            <td><div class='c0' id="jcId" onclick="$(this).closest('.browser').browser('sort','Id');">Id</div></td>
-            <td><div class='c1'></div></td>
-            <td><div class='c2'></div></td>
-            <td><div class='c3'>Libélé</div></td>
-            <td><div class='c4' id="jcLevel" onclick="$(this).closest('.browser').browser('sort','Level');">N</div></td>
-            <td><div class='c5' id="jcDifficulty" onclick="$(this).closest('.browser').browser('sort','Difficulty');">D</div></td>
-            <td><div class='c6' id="jcDuration" onclick="$(this).closest('.browser').browser('sort','Duration');">D</div></td>
-        </tr>
-    </table>
+    <div id="orderby">
+        <span>Classé par </span>
+        <select id="s1" onchange="$(this).closest('.browser').browser('submit',true);">
+            <option value="id" selected="selected">Identifiant</option>
+            <option value="activity">Activité</option>
+            <option value="duration">Durée</option>
+            <option value="difficulty">Difficulté</option>
+            <option value="level">Niveau</option>
+        </select>
+        <select id="s2" onchange="$(this).closest('.browser').browser('submit',true);">
+            <option value="ASC" selected="selected">Croissant(e)</option>
+            <option value="DESC">Décroissant(e)</option>
+        </select>
+    </div>
+    <div id="jdata">
+    </div>
 </div>
 <div id="jbrmenu">
-</div>
-<div id="jpopup">
 </div>
 </div>

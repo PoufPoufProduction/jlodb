@@ -75,13 +75,13 @@
         #main>#screen>div#quit      { position:absolute; top:0; left:0; font-size:1.2em; width:1em; height:1em; cursor:pointer; }
         #main>#screen>div#list    { font-size:.25em; width:61em; height:41em; margin:4em 1em; padding:.5em; background-color:black;
                                               overflow:auto; }
-        #main>#screen #list .drop   { width:100%; height:2.4em; margin:.25em; background-color:rgba(200,220,255,0.1); overflow:visible;}
-        #main>#screen #list .drag   { height:2.4em; }
-        #main>#screen #list .drag>div   { float:left; background-color:rgba(0,20,10,0.9); }
-        #main>#screen #list .drag #exid { font-size:2em; height:1.2em; width:4em; color:yellowgreen;}
-        #main>#screen #list .drag #extitle { width:46em; height:2.4em; }
-        #main>#screen #list .drag #exlevel { font-size:2em; height:1.2em; width:1em;}
-        #main>#screen #list .drag #exdiff { font-size:2em; height:1.2em; width:1em;}
+        #main>#screen #list .drop   { font-size:.8em; float:left; width:12em; height:12em; margin:.25em; background-color:rgba(200,220,255,0.1); overflow:visible;}
+        #main>#screen #list .drag   { position:relative; height:12em; background-color:gray; cursor:move; background-image:url('res/img/site/nosnapshot.svg');background-repeat:no-repeat;}
+        #main>#screen #list .drag .eximg { font-size:3em; width: 4em; height: 3em; }
+        #main>#screen #list .drag .eximg>img.snap { width: 4em; height: 3em; }
+        #main>#screen #list .drag .extitle { background-color:white; height:4.5em; border:1px solid black; border-width:1px 0 0 0; font-size:.7em;color:black;text-align:justify;padding:0 .5em; }
+        #main>#screen #list .drag .exid { position:absolute; color:black; width:5.5em; background-color:white; top:.3em; left:-0.1em;
+                                          padding-left:.5em; border-radius:0 .5em .5em 0;border:1px solid black;}
 
     </style>
     <script>
@@ -89,6 +89,7 @@
 var tibibi = {
     settings: {
         lang    : "",
+        url     : "",
         user    : {},
         logout  : 0
     },
@@ -262,6 +263,10 @@ var tibibi = {
                     $("#tbrowser").browser("id",tibibi.course.ex[tibibi.course.selected]);
                 }
                 else if (_action=="exe") {  tibibi.run({id:tibibi.course.ex[tibibi.course.selected]}); }
+                else if (_action=="snapshot") {
+                    window.open('demo.html?id='+tibibi.course.ex[tibibi.course.selected],'_blank',
+                        'width=640, height=480,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,status=no,titlebar=no');
+                }
                 if (upd) { tibibi.course.update(); }
             }
         },
@@ -280,23 +285,24 @@ var tibibi = {
         update: function() {
             tibibi.getJSON("mods/tibibi/api/course.php",{action:"upd",course:$("#gcourses").val(), description:tibibi.course.ex}, "", function(_data){
                 tibibi.course.load($("#gcourses").val(),true,false);
+                tibibi.course.highlight();
             });
         },
         select: function(_id) {
             if (_id!=-1) {
-                if ($($(".elt").get(_id)).hasClass("s")) {
-                    $(".elt").removeClass("s");
+                if ($($("#telts .elt").get(_id)).hasClass("s")) {
+                    $("#telts .elt").removeClass("s");
                     $("#teltact").removeClass("s");
                     _id = -1;
                 }
                 else {
-                    $(".elt").removeClass("s");
-                    $($(".elt").get(_id)).addClass("s");
+                    $("#telts .elt").removeClass("s");
+                    $($("#telts .elt").get(_id)).addClass("s");
                     $("#teltact").addClass("s");
                 }
             }
             else {
-                $(".elt").removeClass("s");
+                $("#telts .elt").removeClass("s");
                 $("#teltact").removeClass("s");
             }
             tibibi.course.selected=_id;
@@ -316,6 +322,7 @@ var tibibi = {
                     }
                     tibibi.course.ex = ex;
                     tibibi.course.select(_select?tibibi.course.selected:-1);
+                    tibibi.course.highlight();
                 });
             }
             else {
@@ -381,11 +388,15 @@ var tibibi = {
                 $("#popup2").hide();
             }
         },
+        highlight: function() {
+            $("#jresults .elt").removeClass("s");
+            for (var i in tibibi.course.ex) { $("#jresults #"+tibibi.course.ex[i]).addClass("s"); }
+        },
         updover: function() {
             var html="";
             tibibi.course.ex=[];
             $("#main #screen #list .drop").each(function(){ if (!$(this).html().length) { $(this).detach(); }});
-            $("#main #screen #list #exid").each(function(_index){
+            $("#main #screen #list .exid").each(function(_index){ $(this).attr("id","v"+_index);
                 if (_index) { html+=","; } html+=$(this).text(); tibibi.course.ex.push($(this).text()); });
             tibibi.course.update();
         },
@@ -393,8 +404,10 @@ var tibibi = {
             $elt.droppable({accept:".drag",
                         drop:function(event, ui) {
                             var $d = $("<div class='drop'></div>");
-                            $d.insertBefore(this);
-                            $(ui.draggable).detach().css("top",0).appendTo($d);
+                            if (parseInt($(ui.draggable).find(".exid").attr("id").substr(1))>
+                                parseInt($(this).find(".exid").attr("id").substr(1)))
+                                { $d.insertBefore(this); } else { $d.insertAfter(this); }
+                            $(ui.draggable).detach().appendTo($d);
                             tibibi.course.droppable($d);
                             tibibi.course.updover();
                     } });
@@ -407,12 +420,20 @@ var tibibi = {
                 for (var i in data2.exercices) {
                     var $drop = $("<div class='drop'></div>");
                     var $drag = $("<div class='drag'></div>");
-                    $drag.append("<div id='exid'>"+data2.exercices[i].id+"</div>");
-                    $drag.append("<div id='extitle'>"+data2.exercices[i].title+"</div>");
-                    $drag.append("<div id='exlevel'>"+data2.exercices[i].level+"</div>");
-                    $drag.append("<div id='exdiff'>"+data2.exercices[i].difficulty+"</div>");
+                    var img = "<div class='eximg'>";
+                    if (tibibi.settings.url) {
+                        img +="<img class='snap' src='"+tibibi.settings.url+"/res/img/exercices/"+
+                                data2.exercices[i].activity+"/"+
+                                // data2.exercices[i].id[2]+data2.exercices[i].id[3]+"/"+
+                                data2.exercices[i].id+".png'/>";
+                    }
+                    img += "</div>";
+                    $drag.append(img);
+                    $drag.append("<div class='exid'>"+data2.exercices[i].id+"</div>");
+                    $drag.append("<div class='extitle'>"+data2.exercices[i].title+"</div>");
                     $drop.append($drag);
-                    $drag.draggable({ containment:$("#screen #list"), appendTo:$("#screen #list"), axis:"y", revert:"invalid", stack:".drag"});
+                    $drag.draggable({ containment:$("#screen #list"), appendTo:$("#screen #list"), revert:false, stack:".drag",
+                        stop:function(event, ui) { $(this).css("top",0).css("left",0); }});
                     tibibi.course.droppable($drop);
                     $("#main #screen #list").append($drop);
                 }
@@ -451,6 +472,7 @@ $(window).load(function() {
 
         if (_check.status=="success") {
             tibibi.settings.lang=_check.lang;
+            tibibi.settings.url =_check.url;
 
             $.getJSON("mods/tibibi/locale/"+tibibi.settings.lang+"/text.json", function(_locale) {
                 tibibi.locale = _locale;
@@ -462,18 +484,21 @@ $(window).load(function() {
 
             $.getJSON("locale/"+tibibi.settings.lang+"/classification.json", function(data) {
                 tibibi.classification = $(data);
-                $("#tbrowser").browser({lang:tibibi.settings.lang, classification:tibibi.classification, context:{
-                    Test:function(_id){ tibibi.run({id:_id}); },
-                    Insert:function(_id){
-                        $("#tbrowser").find("#jpopup").hide();
-                        if ($("#telts .elt.s").length) {
-                            tibibi.course.ex.splice($("#telts .elt.s").attr("id"),0,_id);
-                        }
-                        else {
-                            tibibi.course.ex.push(_id);
-                        }
+                $("#tbrowser").browser({url:tibibi.settings.url, lang:tibibi.settings.lang, classification:tibibi.classification,
+                    onRefresh:function($this) { tibibi.course.highlight(); },
+                    context:[
+                    { icon:"mods/tibibi/res/img/run.svg", process:function(_id){ tibibi.run({id:_id}); } },
+                    { icon:"mods/tibibi/res/img/import.svg", process:function(_id){
+                        if ($("#telts .elt.s").length)  { tibibi.course.ex.splice($("#telts .elt.s").attr("id"),0,_id); }
+                        else                            { tibibi.course.ex.push(_id); }
                         tibibi.course.update();
-                    } }
+                    } },
+                    { icon:"mods/tibibi/res/img/snapshot.svg", process:function(_id) {
+                        window.open('demo.html?id='+_id,'_blank',
+                            'width=640, height=480,toolbar=no,location=no,status=no,menubar=no,'+
+                            'scrollbars=no,resizable=no,status=no,titlebar=no'); }
+                    }
+                    ]
                 });
             });
 
@@ -540,6 +565,7 @@ $(window).load(function() {
                         <div class="icon" onclick="tibibi.course.action('up');"><img src="mods/tibibi/res/img/up.svg"/></div>
                         <div class="icon" onclick="tibibi.course.action('down');"><img src="mods/tibibi/res/img/down.svg"/></div>
                         <div class="icon" onclick="tibibi.course.action('exe');"><img src="mods/tibibi/res/img/run.svg"/></div>
+                        <div class="icon" onclick="tibibi.course.action('snapshot');"><img src="mods/tibibi/res/img/snapshot.svg"/></div>
                         <div class="icon" onclick="tibibi.course.action('look');"><img src="mods/tibibi/res/img/look.svg"/></div>
                     </div>
                     <div id="tactions">

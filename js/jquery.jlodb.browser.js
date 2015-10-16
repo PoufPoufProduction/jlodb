@@ -147,58 +147,76 @@
                 $this.find("#tags").append("<option value='"+t+"'>"+settings.tags[t]+"</option>");
             }
         },
+        onclick: function(_args) {
+            var txt = "";
+            for (var i in _args) { if (txt.length) { txt+=","; } txt+="\""+_args[i]+"\""; }
+            return "onclick='$(this).closest(\".browser\").browser("+txt+");' "+
+                   "ontouchstart='$(this).closest(\".browser\").browser("+txt+");event.preventDefault();'";
+        },
         buildExercices: function($this, data) {
             var settings = helpers.settings($this);
-            $this.find("#jresults table tr.data").remove();
+            $this.find("#jresults #jdata").html("");
             $this.find("#jcount").html(data.nb);
 
             for (var i=0; i<data.exercices.length; i++) {
                 var e=data.exercices[i];
-                var html="<tr class='data'>";
-                html+="<td><div class=";
-                if (e.nb) { html+="'c7 s' onclick=\"$(this).closest('.browser').browser('id','"+e.id+"');\">"+(parseInt(e.nb)+1); }
-                else if (e.variant) { html+="'c7 s' onclick=\"$(this).closest('.browser').browser('id','"+e.variant+"');\">^"; }
-                else { html+="'c7'>"; }
-                html+="</div></td>";
-                html+="<td><div class='c0' onclick=\"$(this).closest('.browser').browser('click',this,'"+e.id+"');\"><span>"+e.id+"</span>";
-                if (e.reference) {
-                    html+="<div onclick=\"$(this).closest('.browser').browser('reference','"+
-                          e.reference+"');event.stopPropagation();\">"+e.reference+"</div>";
-                };
-                html+="</div></td>";
-                html+="<td><div class='c1' onclick=\"$(this).closest('.browser').browser('classification','"+e.classification+"',true);\"><img src='res/img/classification/"+e.classification+".svg'/></div></td>";
-                html+="<td><div class='c2' onclick=\"$(this).closest('.browser').browser('activity','"+e.activity+"');\"><img src='res/img/activity/"+e.activity+".svg'/></div></td>";
+                var html="<div class='elt' id='"+e.id+"'>";
+
+                html+="<div class='title' "+helpers.onclick(['id',e.id])+">"
+                if (settings.url) {
+                    html+="<img src='"+settings.url+"/res/img/exercices/"+e.activity+"/"+ // e.id[2]+e.id[3]+"/"+
+                           e.id+".png'/>";
+                }
+                html+="<div class='id'>"+e.id+"</div>";
+                if (e.nb) { html+="<div class='nb'>"+(parseInt(e.nb)+1)+"</div>"; }
+                html+="</div>";
+
+                html+="<div class='activity' "+helpers.onclick(['activity',e.activity])+">"+
+                      "<img src='res/img/activity/"+e.activity+".svg'/></div>";
 
                 var txt = e.label;
                 if (e.tag.length) {
                     var tags = e.tag.split(",");
                     for (var t in tags) {
-                        txt+=" <span class='tag' ";
-                        txt+="onclick=\"$(this).closest('.browser').browser('tag','"+settings.tagsbyid[tags[t]]+"');\"";
-                        txt+=">#"+tags[t]+"</span>";
+                        txt+=" <span class='tag' "+helpers.onclick(['tag',settings.tagsbyid[tags[t]]])+">#"+tags[t]+"</span>";
                     }
                 }
+                html+="<div class='label'><div class='m'>"+txt+"</div>";
+                if (e.reference) {
+                    html+="<div class='ref' "+helpers.onclick(['reference',e.reference])+">"+e.reference+"</div>";
+                };
+                if (e.variant) {
+                    html+="<div class='variant' "+helpers.onclick(['id',e.variant])+">["+e.variant+"]</div>";
+                }
+                html+="</div>";
 
-                html+="<td><div class='c3'>"+txt+"</div></td>";
-                html+="<td><div class='c4'>"+e.level+"</div></td>";
-                html+="<td><div class='c5'><img src='res/img/star/star"+e.diff+".svg'/></div></td>";
-                html+="<td><div class='c6'>"+e.extend+"</div></td>";
-                html+="</tr>";
-                $this.find("#jresults table").append(html);
+                html+="<div class='parameter'>";
+                html+="<div "+helpers.onclick(['classification',e.classification])+">"+
+                      "<img src='res/img/classification/"+e.classification+".svg'/></div>";
+                html+="<div>"+e.level+"</div>";
+                html+="<div><img src='res/img/star/star"+e.diff+".svg'/></div>";
+                html+="<div class='time'>"+e.extend+"</div>";
+                html+="</div>";
+
+                html+="<div class='context'>";
+                for (var j in settings.context) {
+                    html+="<div "+helpers.onclick(['context',j,e.id])+">";
+                    html+="<img src='"+settings.context[j].icon+"'/>";
+                    html+="</div>";
+                }
+                html+="";
+
+                html+="</div>";
+                $this.find("#jresults #jdata").append(html);
             }
+             if (settings.onRefresh) { settings.onRefresh($this); }
 
-        },
-        buildPopup: function($this) {
-            var settings = helpers.settings($this);
-            for (var i in settings.context) { $this.find("#jpopup").
-                append("<div onclick=\"$(this).closest('.browser').browser('callback','"+i+"');\">"+i+"</div>"); }
         },
         build: function($this) {
             var settings = helpers.settings($this);
             helpers.buildActivities($this);
             helpers.buildClassification($this);
             helpers.buildTags($this);
-            helpers.buildPopup($this);
             helpers.submit($this, function() { $this.find("#jbrowser").show(); helpers.buildSliders($this);}, true);
 
             if (settings.onReady) { settings.onReady($this); }
@@ -253,11 +271,8 @@
                 if (ref) { ref = "&reference="+ref; }
 
                 //GET THE ORDER
-                var order="";
-                if (settings.sorting.elt && settings.sorting[settings.sorting.elt]) {
-                    order = "&order="+(settings.sorting[settings.sorting.elt]==1?"ASC":"DESC")+
-                            "&by="+settings.sorting.elt;
-                }
+                var order="&by="+$this.find("#s1").val()+"&order="+$this.find("#s2").val();
+
 
                 //GET THE NUMBER
                 var n=[500,100,25,5];
@@ -320,7 +335,7 @@
                 var $this = $(this), settings = helpers.settings($this);
                 $this.find("#actab .icon").removeClass("s");
                 $this.find("#actab #"+_val).addClass("s");
-                helpers.submit($this, function() { $this.removeClass("upd"); }, true);
+                helpers.update($this);
             },
             classification: function(_val, _update) {
                 var $this = $(this), settings = helpers.settings($this);
@@ -354,7 +369,7 @@
                 $this.find("#reference").val(_val?_val:"");
                 helpers.update($(this));
             },
-            submit: function() { var $this=$(this); helpers.submit($this, function() { $this.removeClass("upd"); }, false); },
+            submit: function(_force) { var $this=$(this); helpers.submit($this, function() { $this.removeClass("upd"); }, _force); },
             sort: function(_elt) {
                 var $this = $(this), settings = helpers.settings($this);
                 $this.find("#jresults .header div").removeClass("asc").removeClass("desc");
@@ -372,21 +387,9 @@
 
                 helpers.update($this);
             },
-            click:function(_elt, _val) {
-                var $this = $(this), settings = $this.data("settings"), $popup = $(this).find("#jpopup");
-                 if (settings.elt.timer) { clearTimeout(settings.elt.timer); settings.elt.timer = 0; }
-
-                $(this).find("#jresults .data .c0").removeClass("s");
-                $popup.css("left",Math.floor($(_elt).width()*3))
-                      .css("top",$this.find("#jresults").position().top+$(_elt).position().top-Math.floor($(_elt).height())*0.5  )
-                      .show();
-                $(_elt).addClass("s");
-                settings.elt.timer = setTimeout(function() { helpers.popup($this); }, 1500);
-                settings.elt.id = _val;
-            },
-            callback:function(_fct) {
-                var $this = $(this), settings = helpers.settings($this);
-                if (settings.context&&settings.context[_fct]&&settings.elt.id) { settings.context[_fct](settings.elt.id); }
+            context: function(_c, _id) {
+                var $this = $(this), settings = $this.data("settings");
+                settings.context[_c].process(_id);
             }
         };
 

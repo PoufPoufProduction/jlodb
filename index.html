@@ -568,9 +568,14 @@ jlodb = {
                       onReady:function($this){
                         $("#contentb #jbrmenu").append("<div onclick='jlodb.page.browser.ex();'>export</div>");
                       },
-                      lang:"fr-FR", classification:jlodb.classification.data, context:{
-                        Lancer:function(_id){ jlodb.run({id:_id}, false); },
-                        Editer:function(_id){ jlodb.page.edition.open(_id); } }
+                      url:jlodb.checkdb.url,
+                      lang:jlodb.checkdb.lang, classification:jlodb.classification.data, context:[
+                        { icon:"mods/tibibi/res/img/run.svg", process :function(_id){ jlodb.run({id:_id}, false); } },
+                        { icon:"mods/tibibi/res/img/edit.svg", process:function(_id){ jlodb.page.edition.open(_id); } },
+                        { icon:"mods/tibibi/res/img/snapshot.svg", process:function(_id) {
+                            window.open('demo.html?id='+_id,'_blank',
+                                'width=640, height=480,toolbar=no,location=no,status=no,menubar=no,'+
+                                'scrollbars=no,resizable=no,status=no,titlebar=no'); } } ]
                 });
 
                 });

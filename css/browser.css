@@ -39,33 +39,35 @@
 #jbrowser #jresults                     { width:31.4em; height:9.5em; margin:.2em .15em; font-size:.4em;
                                           background-color:#EEE; clear:both; border-radius:.5em; overflow:auto;
                                           position:relative; }
-#jbrowser #jresults .header             { font-family: "Courier New", Courier, mono; cursor:pointer;}
-#jbrowser #jresults .header .asc:after  { content:"^"; }
-#jbrowser #jresults .header .desc:after { content:"v"; }
-#jbrowser #jresults .c0                 { width:4.5em; position:relative; overflow:visible;}
-#jbrowser #jresults .c0>div             { font-size:.5em; position:absolute; top:1.7em; width:9em; text-align:right; overflow:visible;}
-#jbrowser #jresults .c7                 { width:1em; }
-#jbrowser #jresults .c1                 { width:2em; }
-#jbrowser #jresults .c2                 { width:2em; }
-#jbrowser #jresults .c3                 { width:14em; }
-#jbrowser #jresults .c4                 { width:2em; }
-#jbrowser #jresults .c5                 { width:2em; }
-#jbrowser #jresults .c6                 { width:2em; }
-#jbrowser #jresults span.tag            { font-weight:bold; cursor:pointer; }
-#jbrowser #jresults .data .c7.s         { display:block;}
-#jbrowser #jresults .data .c7           { height:1.2em; width:2em; font-size:.5em; text-align:center; border:1px solid black;
-                                          border-radius:.5em; display:none; cursor:pointer; }
-#jbrowser #jresults .data .c0           { height:1.2em; margin-left:.1em; cursor:pointer; }
-#jbrowser #jresults .data .c0.s         { background-color:gray; color:white; border-radius:.1em; }
-#jbrowser #jresults .data .c1           { cursor:pointer; font-size:2em; width:1em; height:1em; }
-#jbrowser #jresults .data .c2           { cursor:pointer; font-size:2em; width:1em; height:1em; }
-#jbrowser #jresults .data .c3           { width:22em; height:3.33em; font-size:.6em; font-style:italic;
-                                          margin:0 .1em; background-color:white; border-radius:.5em; }
-#jbrowser #jresults .data .c4           { font-size:2em; width:1em; text-align:center; color:#30251c;
-                                          height:1em; background-image:url("../res/img/icon/icon.svg"); background-size:100%; }
-#jbrowser #jresults .data .c5           { font-size:2em; width:1em; text-align:center; height:1em; }
-#jbrowser #jresults .data .c6           { font-size:2em; width:1em; text-align:center; color:#30251c;
-                                          height:1em; background-image:url("../res/img/icon/duration.svg"); background-size:100%; }
+#jbrowser #jresults #orderby            { padding-left:1em; font-size:.5em; border:1px solid gray; border-width:0 0 1px 0; }
+#jbrowser #jresults #orderby select     { border:0; background: transparent; width:7em; cursor:pointer; color:black;}
+
+#jbrowser #jresults #jdata>div.elt      { padding:.1em; }
+#jbrowser #jresults #jdata>div.elt.s    { background-color:#555; }
+#jbrowser #jresults #jdata>div.elt>*    { float:left; margin-right:.1em; }
+#jbrowser #jresults .title              { width:4em; height:3em; background-color:gray; position:relative; cursor:pointer;
+                                          background-image:url('../res/img/site/nosnapshot.svg');background-repeat:no-repeat; }
+#jbrowser #jresults .title>img          { width:4em; height:3em; }
+#jbrowser #jresults .title .id          { position:absolute; color:black; width:5.5em; background-color:white; top:.3em; left:-0.1em;
+                                          padding-left:.5em; border-radius:0 .5em .5em 0;border:1px solid black; font-size:.4em; }
+#jbrowser #jresults .title .nb          { position:absolute; color:black; width:1.5em; background-color:white; top:5.8em; left:-0.1em;
+                                          padding-left:.5em; border-radius:0 .5em .5em 0;border:1px solid black; font-size:.4em; }
+#jbrowser #jresults .activity           { width:3em; height:3em; cursor:pointer; }
+#jbrowser #jresults .parameter          { width:3.1em; height:3em; }
+#jbrowser #jresults .parameter>div      { font-size:1.4em; float:left; width:1em; height:1em; margin:0.03em; text-align:center;
+                                          background-image:url("../res/img/icon/icon.svg"); }
+#jbrowser #jresults .parameter>div.time { background-image:url("../res/img/icon/duration.svg"); }
+#jbrowser #jresults .label              { background-color:white; height:3em; width:15em; }
+#jbrowser #jresults .label>div          { font-size:.5em; }
+#jbrowser #jresults .label div.m        { height:4.6em; }
+#jbrowser #jresults .label div.ref      { margin-right:.2em; float:right; font-weight:bold; cursor:pointer; }
+#jbrowser #jresults .label div.variant  { margin-left:.2em; float:left; font-style:italic; cursor:pointer; }
+#jbrowser #jresults .label .tag         { color:blue; cursor:pointer; }
+#jbrowser #jresults .context            { width:3em; height:3em; }
+#jbrowser #jresults .context>div        { font-size:1.4em; float:left; width:1em; height:1em; margin:0.03em; background-color:gray;
+                                          cursor:pointer; border-radius:.2em; }
+
+
 #jbrowser #jfooter                      { width:100%; font-size:2.5em; position:relative; }
 #jbrowser #jbuttons                     { font-size:0.2em; width:2em; float:left; overflow:visible; margin-top:0.5em; }
 #jbrowser #jbuttons #alternative        { overflow:visible; cursor:pointer; }
@@ -86,7 +88,4 @@
 #jbrowser.reduce #jhstab:after          { content:"+"; }
 #jbrowser.reduce #jtab                  { display:none; }
 #jbrowser.reduce #jresults              { height:19.3em; }
-#jbrowser #jpopup                       { position:absolute; top:0; left:0; width:5em; background-color:white; border-radius:.5em;
-                                          margin:.1em; font-size:.4em; display:none; }
-#jbrowser #jpopup>div                   { margin:.1em; background-color:gray; color:white; border-radius:.5em; cursor:pointer;
-                                          font-weight:bold; text-align:center; }
+
