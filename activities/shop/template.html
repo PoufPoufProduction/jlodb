@@ -1,0 +1,83 @@
+<div>
+    <div id="board">
+        <div id="people">
+            <div id="postman" class="dealer"><img src="res/img/ppvc/postman01.svg"/></div>
+            <div id="dealer01" class="dealer"><img src="res/img/ppvc/geek01.svg"/></div>
+        </div>
+        <div id="pwallet" class="panel wallet"><div></div></div>
+        <div id="pchange" class="panel wallet"><div><div id="pmask"></div></div></div>
+        <div id="pcalculator" class="panel">
+            <table>
+                <tr><td colspan="3"><div id="screen" class="movepanel">0</div></td></tr>
+                <tr>
+                    <td ontouchstart="$(this).closest('.shop').shop('key', 7, this);event.preventDefault();"
+                        onclick="$(this).closest('.shop').shop('key', 7, this);" class="bluekeypad">7</td>
+                    <td ontouchstart="$(this).closest('.shop').shop('key', 8, this);event.preventDefault();"
+                        onclick="$(this).closest('.shop').shop('key', 8, this);" class="bluekeypad">8</td>
+                    <td ontouchstart="$(this).closest('.shop').shop('key', 9, this);event.preventDefault();"
+                        onclick="$(this).closest('.shop').shop('key', 9, this);" class="bluekeypad">9</td>
+                </tr>
+                <tr>
+                    <td ontouchstart="$(this).closest('.shop').shop('key', 4, this);event.preventDefault();"
+                        onclick="$(this).closest('.shop').shop('key', 4, this);" class="bluekeypad">4</td>
+                    <td ontouchstart="$(this).closest('.shop').shop('key', 5, this);event.preventDefault();"
+                        onclick="$(this).closest('.shop').shop('key', 5, this);" class="bluekeypad">5</td>
+                    <td ontouchstart="$(this).closest('.shop').shop('key', 6, this);event.preventDefault();"
+                        onclick="$(this).closest('.shop').shop('key', 6, this);" class="bluekeypad">6</td>
+                </tr>
+                <tr>
+                    <td ontouchstart="$(this).closest('.shop').shop('key', 1, this);event.preventDefault();"
+                        onclick="$(this).closest('.shop').shop('key', 1, this);" class="bluekeypad">1</td>
+                    <td ontouchstart="$(this).closest('.shop').shop('key', 2, this);event.preventDefault();"
+                        onclick="$(this).closest('.shop').shop('key', 2, this);" class="bluekeypad">2</td>
+                    <td ontouchstart="$(this).closest('.shop').shop('key', 3, this);event.preventDefault();"
+                        onclick="$(this).closest('.shop').shop('key', 3, this);" class="bluekeypad">3</td>
+                </tr>
+                <tr>
+                    <td ontouchstart="$(this).closest('.shop').shop('key', 0, this);event.preventDefault();"
+                        onclick="$(this).closest('.shop').shop('key', 0, this);" class="bluekeypad">0</td>
+                    <td ontouchstart="$(this).closest('.shop').shop('key', '.', this);event.preventDefault();"
+                        onclick="$(this).closest('.shop').shop('key', '.', this);" class="bluekeypad">.</td>
+                    <td ontouchstart="$(this).closest('.shop').shop('key', 'c', this);event.preventDefault();"
+                        onclick="$(this).closest('.shop').shop('key', 'c', this);" class="bluekeypad">
+                            <div class="icon" style="margin:0 auto;"><img src="res/img/icon/cancel2.svg"/></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td ontouchstart="$(this).closest('.shop').shop('key', 'v', this);event.preventDefault();"
+                        onclick="$(this).closest('.shop').shop('key', 'v', this);" colspan="3" class="bluekeypad">
+                            <div class="icon" style="margin:0 auto;"><img src="res/img/icon/valid2.svg"/></div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="menu">
+            <div id="calculator" class="tab" onclick="$(this).closest('.shop').shop('menu','calculator');"
+                    ontouchstart="$(this).closest('.shop').shop('menu','calculator');event.preventDefault();" >
+                <img src="res/img/svginventoryicons/hardware/calculator01.svg"/></div>
+            <div id="wallet" class="tab" onclick="$(this).closest('.shop').shop('menu','wallet');"
+                    ontouchstart="$(this).closest('.shop').shop('menu','wallet');event.preventDefault();" >
+                <img src="res/img/coin/coins.svg"/></div>
+            <div id="change" class="tab" onclick="$(this).closest('.shop').shop('menu','change');"
+                    ontouchstart="$(this).closest('.shop').shop('menu','change');event.preventDefault();" >
+                <img src="res/img/coin/coin1.svg"/></div>
+        </div>
+
+
+        <div id="bubbles" onclick="$(this).closest('.shop').shop('bubbles');"
+                          ontouchstart="$(this).closest('.shop').shop('bubbles');event.preventDefault();">
+            <div id="owner" class="talk"><div class="content"></div></div>
+            <div id="client" class="talk"><div class="content"></div></div>
+        </div>
+
+    </div>
+
+    <div id="splashex" ontouchstart="$(this).hide().closest('.shop').shop('next');event.preventDefault();"
+                     onclick="$(this).hide().closest('.shop').shop('next');"><div>
+        <h1 id="label"></h1>
+        <div id="guide"></div>
+    </div></div>
+
+</div>
+
