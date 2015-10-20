@@ -422,10 +422,12 @@ var tibibi = {
                     var $drag = $("<div class='drag'></div>");
                     var img = "<div class='eximg'>";
                     if (tibibi.settings.url) {
-                        img +="<img class='snap' src='"+tibibi.settings.url+"/res/img/exercices/"+
-                                data2.exercices[i].activity+"/"+
-                                // data2.exercices[i].id[2]+data2.exercices[i].id[3]+"/"+
-                                data2.exercices[i].id+".png'/>";
+                        var url = tibibi.settings.url+"/res/img/exercices/"+data2.exercices[i].activity+"/";
+                        if (data2.exercices[i].id.length>4) { url+=data2.exercices[i].id[2]+data2.exercices[i].id[3]+"/"; }
+                        else                                { url+="xx/"; }
+                        url += data2.exercices[i].id+".png";
+
+                        img +="<img class='snap' src='"+url+"'/>";
                     }
                     img += "</div>";
                     $drag.append(img);

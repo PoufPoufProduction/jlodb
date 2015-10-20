@@ -164,8 +164,11 @@
 
                 html+="<div class='title' "+helpers.onclick(['id',e.id])+">"
                 if (settings.url) {
-                    html+="<img src='"+settings.url+"/res/img/exercices/"+e.activity+"/"+ // e.id[2]+e.id[3]+"/"+
-                           e.id+".png'/>";
+                    var url = settings.url+"/res/img/exercices/"+e.activity+"/";
+                        if (e.id.length>4) { url+=e.id[2]+e.id[3]+"/"; } else { url+="xx/"; }
+                        url += e.id+".png";
+
+                    html+="<img src='"+url+"'/>";
                 }
                 html+="<div class='id'>"+e.id+"</div>";
                 if (e.nb) { html+="<div class='nb'>"+(parseInt(e.nb)+1)+"</div>"; }

@@ -1,13 +1,17 @@
 <?php
 
-function exName($file, $key, $id)
+function exName($file, $key, $id, &$warnings)
 {
     $ret = "";
     if (substr($id,0,1)=='_') { $ret = substr($id,1); }
     else {
         $subname = substr($file,0,2);
-        if ($subname=="xx") { $subname=""; }
-        $ret = $key.$subname.$id;
+        if ($subname=="xx") {
+            if (strlen($id)>2) { array_push($warnings, "(W) Can not insert exercice ".$id." as its length>2 in xx.rdf [".$key."]"); }
+            else               { $ret = $key.$id; }
+            
+        }
+        else { $ret = $key.$subname.$id; }
     }
     return $ret;
 }
@@ -73,28 +77,29 @@ function insertIntoDB($link,$activity,$key,$file,$lang,&$warnings, &$tags, $dele
                 if (strcmp($dcName,"dct_coverage")==0 && strcmp($dc->attributes()->xml_lang, $lang)==0)
                                                                         { $exerciceTag      = $dc; }
             }
-            $exerciceId = exName($file, $key, $exerciceId);
-            if (strlen($exerciceVar)) { $exerciceVar = exName($file, $key, $exerciceVar); }
-            if ($exerciceVar == $exerciceId) { $exerciceVar =""; }
+            $exerciceId = exName($file, $key, $exerciceId,$warnings);
+            if (strlen($exerciceId)) {
+                if (strlen($exerciceVar)) { $exerciceVar = exName($file, $key, $exerciceVar,$warnings); }
+                if ($exerciceVar == $exerciceId) { $exerciceVar =""; }
 
-            // FILL THE TABLE
-            $exerciceTitle = str_replace("'", "\'", $exerciceTitle);
-            $exerciceDesc = str_replace("'", "\'", $exerciceDesc);
+                // FILL THE TABLE
+                $exerciceTitle = str_replace("'", "\'", $exerciceTitle);
+                $exerciceDesc = str_replace("'", "\'", $exerciceDesc);
 
-            array_push($sql, "('".
-                $exerciceId."','".$activity."','".$exerciceTitle."','".$exerciceDesc."',".
-                $exerciceLevel.",".$exerciceDiff.",'".$exerciceClass."',".$exerciceTime.",'".
-                $exerciceTag."','".$exerciceVar."','".$exerciceRef."',0)");
-            array_push($id, "'".$exerciceId."'");
+                array_push($sql, "('".
+                    $exerciceId."','".$activity."','".$exerciceTitle."','".$exerciceDesc."',".
+                    $exerciceLevel.",".$exerciceDiff.",'".$exerciceClass."',".$exerciceTime.",'".
+                    $exerciceTag."','".$exerciceVar."','".$exerciceRef."',0)");
+                array_push($id, "'".$exerciceId."'");
 
-            // HANDLE THE TAGS
-            if ($exerciceTag) {
-                $ts = explode(",",$exerciceTag);
-                foreach ($ts as $v) { if (!in_array($v,$tags)) { array_push($tags,$v);} }
+                // HANDLE THE TAGS
+                if ($exerciceTag) {
+                    $ts = explode(",",$exerciceTag);
+                    foreach ($ts as $v) { if (!in_array($v,$tags)) { array_push($tags,$v);} }
+                }
+
+                if (count($sql)>100) {  mysql_query_array($sql, $id, $link,$warnings,$delete); }
             }
-
-            if (count($sql)>100) {  mysql_query_array($sql, $id, $link,$warnings,$delete); }
-
         }
         $count++;
     }
