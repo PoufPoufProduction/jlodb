@@ -116,6 +116,7 @@
                         $coin.css("left",pos[0]+"px").css("top",pos[1]+"px");
 
                         if ($(this).attr("id")=="pchange") {
+                            pos = helpers.panel.inside($this, $coin,1.4);
                             $this.find("#pmask").css("opacity",0).show().animate({opacity:1},500,function() {
                                 $coin.detach();
                                 var vWidth = $(this).width();
@@ -139,6 +140,10 @@
 
                 }
                 });
+
+                $this.find("#pmoney").show();
+                for (var i=0;i<10;i++)
+                helpers.panel.add($this, "#pmoney", Math.floor(Math.random()*12));
 
                 // Locale handling
                 $this.find("h1#label").html(settings.label);
@@ -194,12 +199,14 @@
                 settings.text.page = 0;
                 settings.text.count = 0;
                 settings.text.callback = _callback;
+                settings.text.available = false;
                 $this.find("#bubbles").show();
                 $this.find("#"+_text.id+" .content").html("").parent().css("opacity",0).show().animate({opacity:0.9}, 400, function() {
                     helpers.text.char($this); });
             },
             char: function($this) {
                 var settings = helpers.settings($this);
+                settings.text.available = true;
                 if (settings.text.count<settings.text.value.dialog[settings.text.page].length) {
                     $this.find("#"+settings.text.value.id+" .content").append(settings.text.value.dialog[settings.text.page][settings.text.count]);
                     settings.text.count++;
@@ -209,24 +216,30 @@
             },
             click: function($this) {
                 var settings = helpers.settings($this);
-                if (settings.text.timerid) {
-                    clearTimeout(settings.text.timerid); settings.text.timerid = 0;
-                    $this.find("#"+settings.text.value.id+" .content").html(settings.text.value.dialog[settings.text.page]);
-                }
-                else {
-                    settings.text.count=0;
-                    if (++settings.text.page<settings.text.value.dialog.length) {
-                        $this.find("#"+settings.text.value.id+" .content").html("");
-                        helpers.text.char($this);
+                if (settings.text.available) {
+                    if (settings.text.timerid) {
+                        clearTimeout(settings.text.timerid); settings.text.timerid = 0;
+                        $this.find("#"+settings.text.value.id+" .content").html(settings.text.value.dialog[settings.text.page]);
                     }
                     else {
-                        $this.find("#"+settings.text.value.id).animate({opacity:0},400, function() {
-                            $(this).hide().parent().hide();
-                            if (settings.text.callback) { settings.text.callback(); }
-                        });
+                        settings.text.count=0;
+                        if (++settings.text.page<settings.text.value.dialog.length) {
+                            $this.find("#"+settings.text.value.id+" .content").html("");
+                            helpers.text.char($this);
+                        }
+                        else {
+                            $this.find("#"+settings.text.value.id).animate({opacity:0},400, function() {
+                                $(this).hide().parent().hide();
+                                if (settings.text.callback) { settings.text.callback(); }
+                            });
+                        }
                     }
                 }
             }
+        },
+        pos: function(_$elt,_val) {
+            var ret = _$elt.css(_val);
+            return parseFloat(ret);
         },
         panel: {
             zindex: function($this, _id) {
@@ -237,12 +250,33 @@
                     if (z!="auto" && parseInt(z)>zindex) { zindex=z; }});
                 if (zindex) { $this.find("#"+_id).css("z-index",zindex+1); }
             },
+            inside: function($this, $elt, _factor) {
+                if (!_factor) { _factor = 1; }
+                var pos = [ helpers.pos($elt,"left"), helpers.pos($elt,"top")];
+                var maxw = $elt.parent().width() - $elt.width()*_factor;
+                var maxh = $elt.parent().height() - $elt.height()*_factor;
+
+                if (pos[0]<0)       { pos[0] = 0; $elt.animate({left:0},100); }
+                if (pos[1]<0)       { pos[1] = 0; $elt.animate({top:0},100); }
+                if (pos[0]>maxw)    { pos[0] = maxw; $elt.animate({left:maxw},100); }
+                if (pos[1]>maxh)    { pos[1] = maxh; $elt.animate({top:maxh},100); }
+
+                return pos;
+            },
             draggable: function($this, $elt) {
+                helpers.panel.inside($this, $elt);
                 $elt.draggable({containment:$this.find("#board"), stack:".a", revert:true,
                     start:function(event, ui) {
                         helpers.panel.zindex($this, $(this).closest(".panel").attr("id"));
                     }
                 });
+            },
+            add: function($this, _elt, _coin) {
+                var $c = $("<div class='v"+_coin+(_coin<8?" coin":" bill")+" a'>"+
+                          "<div><img src='res/img/coin/"+coins[_coin]+".svg'/></div></div>");
+                $this.find(_elt+">div").append($c);
+                $c.css("top", (Math.random()*6)+"em").css("left",(Math.random()*5)+"em");
+                helpers.panel.draggable($this,$c);
             }
         },
         // Handle the key input

@@ -11,12 +11,20 @@
 .shop #people                     { position:absolute; overflow:visible;font-size:6.2em; }
 .shop #people>div                 { width:1em; height:1em; position:absolute; top:0.6em; display:none; }
 
-.shop .panel                      { display:none; background-color:rgba(0,0,0,0.8); border:.1em solid black; border-radius:.25em; overflow:visible; }
-.shop #pwallet                    { position:absolute; top:45%; left:5%;  }
-.shop #pchange                    { position:absolute; top:45%; left:45%;  }
+.shop .panel                      { display:none; background-color:rgba(0,0,0,0.8); border:.1em solid black;
+                                    border-radius:.25em; overflow:visible; width:8em; height:8em; padding:.06em;}
+.shop .wallet>div                 { overflow:visible;  width:8em; height:8em; background-color:rgba(255,200,100,0.4); border-radius:.25em; }
+.shop .wallet.over                { background-color:rgba(255,255,0,0.8); }
+
+.shop #pmoney                     { position:absolute; top:2%; left:38%;  }
+.shop #pmoney #pvalid             { position:absolute; top:3.5em; left:3.5em; font-size:2em; width:1em; height:1em;
+                                    background-color:rgba(255,255,255,0.8); border-radius:0.5em; cursor:pointer;}
+.shop #pchange                    { position:absolute; top:45%; left:38%; }
+.shop #pchange>div                { background-image:url("../../res/img/background/shop/change.svg"); }
 .shop #pchange #pmask             { position:absolute; width:8em; height:8em; background-color:red; border-radius:.25em;z-index:100;display:none;}
-.shop .wallet>div                 { overflow:visible; margin:.06em; width:8em; height:8em; background-color:rgba(255,200,100,0.4); border-radius:.25em; }
-.shop .wallet.over                { background-color:rgba(255,255,0,0.8); }         
+
+.shop #pwallet                    { position:absolute; top:45%; left:5%;  }
+.shop #pwallet>div                { background-image:url("../../res/img/background/book05.svg"); }
 .shop .coin                       { cursor:move; top:0; left:0; position:absolute;overflow:visible;}
 .shop .bill                       { cursor:move; top:0; left:0; position:absolute;overflow:visible; }
 .shop .coin>div                       { width:1em; height:1em; cursor:move; top:0; left:0; }
@@ -31,7 +39,7 @@
 .shop .coin.v7>div                    { font-size:2em; }
 
 
-.shop #pcalculator                { position:absolute; top:2%; left:5%; width:5.2em; }
+.shop #pcalculator                { position:absolute; top:2%; left:5%; width:5.2em; height:8.2em; padding:0; }
 .shop #pcalculator td             { width:1.2em; overflow:hidden; cursor:pointer; text-align:center; font-weight:bold;
                                           font-family: "Courier New" Courier monospace;
                                           color:rgb(220,231,241); border-radius:.25em; }
