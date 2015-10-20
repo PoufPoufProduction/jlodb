@@ -8,6 +8,7 @@
         <dct:identifier>aa</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser l'opérateur x4 pour faire avancer le robot de 4 cases.</dct:title>
         <dct:description><![CDATA["board":[[461,470,470,470,461],[1,1,1,1,2]],"robots":[{"origin":[0,1,0],"code":[2,0,0],"actions":["f01","x4"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Ce niveau présente une nouvelle fonctionnalité :\\nl'ITERATION. Il est désormais possible d'effec-\\ntuer une même action plusieurs fois. Ici, rajouter\\nl'opérateur 4X devant AVANCER D'UNE CASE permet\\nd'exécuter 4 fois cette dernière et d'avancer ainsi\\nde 4 cases."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -19,12 +20,14 @@
     <rdf:Description>
         <dct:identifier>ab</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser l'opérateur x2 pour faire avancer le robot jusqu'à la case d'arrivée.</dct:title>
-        <dct:description><![CDATA["board":[[2,1,1],[0,469,1],[0,0,1]],"robots":[{"origin":[2,2,3],"code":[18,0,0],"actions":["f01","f01","f01","x2","x2","turnleft","turnleft","turnleft","turnleft","turnleft","turnright","turnright","turnright","turnright","turnright"]}],"padding":1]]></dct:description>
+        <dct:description><![CDATA["board":[[2,1,1],[0,469,1],[0,0,1]],"robots":[{"origin":[2,2,3],"code":[18,0,0],"actions":["f01","f01","x2","x2","turnleft"]}],"padding":1]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Un opérateur de multiplication n'agit que sur\\nl'action suivante. Les autres actions ne seront\\nexécutées qu'une seule fois à moins qu'elles ne\\nsoient elles-mêmes précédées d'un opérateur de\\nmultiplication."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>aa</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -41,12 +44,14 @@
     <rdf:Description>
         <dct:identifier>ad</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser l'opérateur x2 pour faire faire un demi-tour au robot.</dct:title>
-        <dct:description><![CDATA["board":[[1,2]],"robots":[{"origin":[0,0,2],"code":[18,0,0],"actions":["f01","x2","turnright"]}]]]></dct:description>
+        <dct:description><![CDATA["board":[[1,2]],"robots":[{"origin":[0,0,2],"code":[18,0,0],"actions":["f01","turnright","x2"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Un opérateur de multiplication peut être utilisé\\navec n'importe quelle action : AVANCER, RECULER...\\nou TOURNER."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>aa</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -64,11 +69,13 @@
         <dct:identifier>af</dct:identifier>
         <dct:title xml:lang="fr-FR">Réaliser avec 2 opérateurs x2 une double boucle pour faire avancer le robot de 4 cases.</dct:title>
         <dct:description><![CDATA["board":[[0,51,0,51,0],[1,1,1,1,2]],"robots":[{"origin":[0,1,0],"code":[18,0,0],"actions":["f01","x2","x2"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Un opérateur de multiplication peut être suivi\\nd'un autre opérateur de multiplication. Dans\\nun tel cas, les coefficients se multiplient.\\n\\nPar exemple, la séquence X2 X3 permet d'exécuter\\n6 fois l'action suivante."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>aa</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>

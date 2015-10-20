@@ -913,6 +913,47 @@
                     else { helpers.execute.tiles($this, _robotsorder, _count, _fct); }
                 }
             }
+        },
+        course: {
+            run: function($this) {
+                var settings = helpers.settings($this);
+                if (settings.cc.timerid) { clearTimeout(settings.cc.timerid); settings.cc.timerid = 0; }
+                settings.cc.page = 0;
+                settings.cc.count = 0;
+                $this.find("#course").show();
+                $this.find("#course pre").html("").closest(".panel").css("opacity",0).animate({opacity:0.9}, 1000, function() {
+                    helpers.course.char($this); });
+            },
+            char: function($this) {
+                var settings = helpers.settings($this);
+                settings.cc.available = true;
+                if (settings.cc.count<settings.course[settings.cc.page].length) {
+                    $this.find("#course pre").append(settings.course[settings.cc.page][settings.cc.count]);
+                    settings.cc.count++;
+                    settings.cc.timerid = setTimeout(function() { helpers.course.char($this); }, 10);
+                }
+                else { settings.cc.timerid = 0; }
+            },
+            click: function($this) {
+                var settings = helpers.settings($this);
+                if (settings.cc.available) {
+                    if (settings.cc.timerid) {
+                        clearTimeout(settings.cc.timerid); settings.cc.timerid = 0;
+                        $this.find("#course pre").html(settings.course[settings.cc.page]);
+                    }
+                    else {
+                        settings.cc.count=0;
+                        if (++settings.cc.page<settings.course.length) {
+                            $this.find("#course pre").html("");
+                            helpers.course.char($this);
+                        }
+                        else {
+                            settings.cc.available = false;
+                            $this.find("#course .panel").animate({opacity:0},400, function() { $(this).parent().hide(); });
+                        }
+                    }
+                }
+            }
         }
     };
 
@@ -949,7 +990,8 @@
                     targetoffset    : [0,0],
                     lastcount       : -1,
                     lastelt         : 0,
-                    scale           : 1
+                    scale           : 1,
+                    cc              : { count:0, page:0,timerid:0,available:false }
                 };
 
                 return this.each(function() {
@@ -977,6 +1019,7 @@
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 settings.interactive = true;
+                if (settings.course) { helpers.course.run($this); }
             },
             speed: function() {
                 var $this = $(this) , settings = helpers.settings($this);
@@ -1033,7 +1076,8 @@
                 if (settings.pause.state) { helpers.restore($this); }
             },
             valid: function() {
-            }
+            },
+            course: function() { helpers.course.click($(this)); }
         };
 
         if (methods[method])    { return methods[method].apply(this, Array.prototype.slice.call(arguments, 1)); } 

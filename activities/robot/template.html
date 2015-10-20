@@ -607,6 +607,12 @@
         <div id="exercice"></div>
     </div>
 
+    <div id="course" ontouchstart="$(this).closest('.robot').robot('course');event.preventDefault();"
+                     onclick="$(this).closest('.robot').robot('course');"><div class="panel">
+        <div id="art"><img src="res/img/art/robot01.svg"/></div>
+        <pre>bla bla bla</pre>
+    </div></div>
+
     <div id="touch01" ><div><img src="res/img/effects/touch01.svg"/></div></div>
 
     <div id="splashex" ontouchstart="$(this).hide().closest('.robot').robot('next');event.preventDefault();"

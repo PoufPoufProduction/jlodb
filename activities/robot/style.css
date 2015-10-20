@@ -2,8 +2,8 @@
 .robot                              { background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat;}
 
 .robot div#splashex                  { background-image:url("../../res/img/banners/it.svg"); color:lime; }
-.robot div#splashex h1               { position:absolute; top:45%; left:80%; font-size:1.5em; }
-.robot div#splashex #guide           { position:absolute; top:52%; left:45%; font-size:.75em; width:48%;;
+.robot div#splashex h1               { position:absolute; top:46%; left:80%; font-size:1.5em; }
+.robot div#splashex #guide           { position:absolute; top:53%; left:45%; font-size:.7em; width:50%;
                                           text-align:justify; }
 
 .robot #board                       { background-image:url("../../res/img/background/book02.svg"); background-repeat:repeat;
@@ -77,5 +77,12 @@
 .robot .source .slider .down        { margin-top:1.2em; }
 .robot .a                           { width:1em; height:1em; cursor:crosshair; }
 
+.robot #course                      { width:16em; height:12em; position:absolute;top:0;left:0; background-color:rgba(0,0,0,0.5);
+                                      z-index:100; cursor:pointer; display:none; }
+.robot #course>div                  { font-size:.5em; width:100%; height:30%; margin:4em 0;
+                                      background-image:url("../../res/img/background/book01.svg"); background-repeat:repeat; }
+.robot #course>div #art             { float:left; width:10em; height:7.5em; }
+.robot #course>div pre              { font-family: "Courier New" Courier monospace; margin:.5em 0; font-size:.7em; color:#222;
+                                      white-space: pre;}
 
-.robot #touch01                          { top:0; left:0; font-size:2em; z-index:100;}
+.robot #touch01                     { top:0; left:0; font-size:2em; z-index:100;}
