@@ -7,8 +7,9 @@
         </div>
         <div id="bg"><img src="res/img/effects/gears.svg"/></div>
         <div id="tiles"></div>
-        <div id="fg">
-        </div>
+        <div id="fg"></div>
+        <div id="help"  ontouchstart="$('#phelp').show();event.preventDefault();" onclick="$('#phelp').show();">
+            <img src="res/img/icon/about.svg"/></div>
     </div>
     <div id="menu">
         <div id="action">
@@ -24,7 +25,7 @@
             </div>
             <div id="tabs">
                 <div class="both" id="t1">
-                    <div class="source">
+                    <div class="source"><div>
                         <div class="slider">
                             <div class="up" ontouchstart="$(this).closest('.robot').robot('up',0);event.preventDefault();"
                                             onclick="$(this).closest('.robot').robot('up',0);">-</div>
@@ -88,7 +89,7 @@
                                 <td><div class="z"></div></td>
                             </tr></table>
                         </div>
-                    </div>
+                    </div></div>
                     <div class="dest">
                         <div class="f0">
                             <div class="label">MAIN</div>
@@ -165,7 +166,7 @@
                     <div id="target1" class="target"><img src="res/img/icon/target01.svg"/></div>
                 </div>
                 <div class="both" id="t2">
-                    <div class="source">
+                    <div class="source"><div>
                         <div class="slider">
                             <div class="up" ontouchstart="$(this).closest('.robot').robot('up',1);event.preventDefault();"
                                             onclick="$(this).closest('.robot').robot('up',1);">-</div>
@@ -229,7 +230,7 @@
                                 <td><div class="z"></div></td>
                             </tr></table>
                         </div>
-                    </div>
+                    </div></div>
                     <div class="dest">
                         <div class="f0">
                             <div class="label">MAIN</div>
@@ -306,7 +307,7 @@
                     <div id="target2" class="target"><img src="res/img/icon/target01.svg"/></div>
                 </div>
                 <div class="both" id="t3">
-                    <div class="source">
+                    <div class="source"><div>
                         <div class="slider">
                             <div class="up" ontouchstart="$(this).closest('.robot').robot('up',2);event.preventDefault();"
                                             onclick="$(this).closest('.robot').robot('up',2);">-</div>
@@ -370,7 +371,7 @@
                                 <td><div class="z"></div></td>
                             </tr></table>
                         </div>
-                    </div>
+                    </div></div>
                     <div class="dest">
                         <div class="f0">
                             <div class="label">MAIN</div>
@@ -447,7 +448,7 @@
                     <div id="target3" class="target"><img src="res/img/icon/target01.svg"/></div>
                 </div>
                 <div class="both" id="t4">
-                    <div class="source">
+                    <div class="source"><div>
                         <div class="slider">
                             <div class="up" ontouchstart="$(this).closest('.robot').robot('up',3);event.preventDefault();"
                                             onclick="$(this).closest('.robot').robot('up',3);">-</div>
@@ -511,7 +512,7 @@
                                 <td><div class="z"></div></td>
                             </tr></table>
                         </div>
-                    </div>
+                    </div></div>
                     <div class="dest">
                         <div class="f0">
                             <div class="label">MAIN</div>
@@ -607,10 +608,185 @@
         <div id="exercice"></div>
     </div>
 
+    <div id="phelp" ontouchstart="$(this).hide();event.preventDefault();" onclick="$(this).hide();"><div>
+        <div class="h1" id="actions"></div>
+        <div class="elt">
+            <div class="icon"><img src="res/img/action/f01.svg"/></div>
+            <div id="f01" class="label"></div>
+        </div>
+        <div class="elt">
+            <div class="icon"><img src="res/img/action/b01.svg"/></div>
+            <div id="b01" class="label"></div>
+        </div>
+        <div class="elt">
+            <div class="icon"><img src="res/img/action/turnleft.svg"/></div>
+            <div id="turnleft" class="label"></div>
+        </div>
+        <div class="elt">
+            <div class="icon"><img src="res/img/action/turnright.svg"/></div>
+            <div id="turnright" class="label"></div>
+        </div>
+        <div class="elt">
+            <div class="icon"><img src="res/img/action/nothing.svg"/></div>
+            <div id="nothing" class="label"></div>
+        </div>
+        <div class="elt">
+            <div class="icon"><img src="res/img/action/invert.svg"/></div>
+            <div id="inv" class="label"></div>
+        </div>
+        <div class="elt">
+            <div class="icon"><img src="res/img/action/num.svg"/></div>
+            <div id="num" class="label"></div>
+        </div>
+        <div class="elt">
+            <div class="icon"><img src="res/img/action/num0.svg"/></div>
+            <div class="icon"><img src="res/img/action/num1.svg"/></div>
+            <div class="icon"><img src="res/img/action/num2.svg"/></div>
+            <div class="icon"><img src="res/img/action/num9.svg"/></div>
+            <div id="nums" class="label"></div>
+        </div>
+        <div class="elt">
+            <div class="icon"><img src="res/img/action/numplus.svg"/></div>
+            <div id="numplus" class="label"></div>
+        </div>
+        <div class="elt">
+            <div class="icon"><img src="res/img/action/numminus.svg"/></div>
+            <div id="numminus" class="label"></div>
+        </div>
+        <div class="elt">
+            <div class="icon"><img src="res/img/action/blue.svg"/></div>
+            <div class="icon"><img src="res/img/action/red.svg"/></div>
+            <div class="icon"><img src="res/img/action/green.svg"/></div>
+            <div class="icon"><img src="res/img/action/purple.svg"/></div>
+            <div id="color" class="label"></div>
+        </div>
+        <div class="elt">
+            <div class="icon"><img src="res/img/action/notblue.svg"/></div>
+            <div class="icon"><img src="res/img/action/notred.svg"/></div>
+            <div class="icon"><img src="res/img/action/notgreen.svg"/></div>
+            <div class="icon"><img src="res/img/action/notpurple.svg"/></div>
+            <div id="notcolor" class="label"></div>
+        </div>
+        <div class="elt">
+            <div class="icon"><img src="res/img/action/fct1.svg"/></div>
+            <div id="fct1" class="label"></div>
+        </div>
+        <div class="elt">
+            <div class="icon"><img src="res/img/action/fct2.svg"/></div>
+            <div id="fct2" class="label"></div>
+        </div>
+        
+        <div class="h1" id="tests"></div>
+        <div class="elt">
+            <div class="icon"><img src="res/img/action/ifeq0.svg"/></div>
+            <div class="icon"><img src="res/img/action/ifeq3.svg"/></div>
+            <div class="icon"><img src="res/img/action/ifeq5.svg"/></div>
+            <div class="icon"><img src="res/img/action/ifeq8.svg"/></div>
+            <div id="ifeq" class="label"></div>
+        </div>
+        <div class="elt">
+            <div class="icon"><img src="res/img/action/ifnoteq0.svg"/></div>
+            <div class="icon"><img src="res/img/action/ifnoteq3.svg"/></div>
+            <div class="icon"><img src="res/img/action/ifnoteq5.svg"/></div>
+            <div class="icon"><img src="res/img/action/ifnoteq8.svg"/></div>
+            <div id="ifnoteq" class="label"></div>
+        </div>
+        <div class="elt">
+            <div class="icon"><img src="res/img/action/iflblue.svg"/></div>
+            <div class="icon"><img src="res/img/action/iflred.svg"/></div>
+            <div class="icon"><img src="res/img/action/iflgreen.svg"/></div>
+            <div class="icon"><img src="res/img/action/iflpurple.svg"/></div>
+            <div id="iflcolor" class="label"></div>
+        </div>
+        <div class="elt">
+            <div class="icon"><img src="res/img/action/iflnotblue.svg"/></div>
+            <div class="icon"><img src="res/img/action/iflnotred.svg"/></div>
+            <div class="icon"><img src="res/img/action/iflnotgreen.svg"/></div>
+            <div class="icon"><img src="res/img/action/iflnotpurple.svg"/></div>
+            <div id="iflnotcolor" class="label"></div>
+        </div>
+        <div class="elt">
+            <div class="icon"><img src="res/img/action/ifblue.svg"/></div>
+            <div class="icon"><img src="res/img/action/ifred.svg"/></div>
+            <div class="icon"><img src="res/img/action/ifgreen.svg"/></div>
+            <div class="icon"><img src="res/img/action/ifpurple.svg"/></div>
+            <div id="ifcolor" class="label"></div>
+        </div>
+        <div class="elt">
+            <div class="icon"><img src="res/img/action/ifnotblue.svg"/></div>
+            <div class="icon"><img src="res/img/action/ifnotred.svg"/></div>
+            <div class="icon"><img src="res/img/action/ifnotgreen.svg"/></div>
+            <div class="icon"><img src="res/img/action/ifnotpurple.svg"/></div>
+            <div id="ifnotcolor" class="label"></div>
+        </div>
+        <div class="elt">
+            <div class="icon"><img src="res/img/action/ifnum0.svg"/></div>
+            <div class="icon"><img src="res/img/action/ifnum1.svg"/></div>
+            <div class="icon"><img src="res/img/action/ifnum2.svg"/></div>
+            <div class="icon"><img src="res/img/action/ifnum9.svg"/></div>
+            <div id="ifnums" class="label"></div>
+        </div>
+        <div class="elt">
+            <div class="icon"><img src="res/img/action/ifinvert.svg"/></div>
+            <div id="ifinvert" class="label"></div>
+        </div>
+        <div class="elt">
+            <div class="icon"><img src="res/img/action/ifnotblueend.svg"/></div>
+            <div class="icon"><img src="res/img/action/ifnotredend.svg"/></div>
+            <div class="icon"><img src="res/img/action/ifnotgreenend.svg"/></div>
+            <div class="icon"><img src="res/img/action/ifnotpurpleend.svg"/></div>
+            <div id="ifnotend" class="label"></div>
+        </div>
+
+        
+        <div class="h1" id="loops"></div>
+        <div class="elt">
+            <div class="icon"><img src="res/img/action/x2.svg"/></div>
+            <div class="icon"><img src="res/img/action/x3.svg"/></div>
+            <div class="icon"><img src="res/img/action/x4.svg"/></div>
+            <div class="icon"><img src="res/img/action/x5.svg"/></div>
+            <div id="xnums" class="label"></div>
+        </div>
+        <div class="elt">
+            <div class="icon"><img src="res/img/action/xnum.svg"/></div>
+            <div id="xnum" class="label"></div>
+        </div>
+        <div class="elt">
+            <div class="icon"><img src="res/img/action/whilelblue.svg"/></div>
+            <div class="icon"><img src="res/img/action/whilelred.svg"/></div>
+            <div class="icon"><img src="res/img/action/whilelgreen.svg"/></div>
+            <div class="icon"><img src="res/img/action/whilelpurple.svg"/></div>
+            <div id="whilelcolor" class="label"></div>
+        </div>
+        <div class="elt">
+            <div class="icon"><img src="res/img/action/whilelnotblue.svg"/></div>
+            <div class="icon"><img src="res/img/action/whilelnotred.svg"/></div>
+            <div class="icon"><img src="res/img/action/whilelnotgreen.svg"/></div>
+            <div class="icon"><img src="res/img/action/whilelnotpurple.svg"/></div>
+            <div id="whilelnotcolor" class="label"></div>
+        </div>
+        <div class="elt">
+            <div class="icon"><img src="res/img/action/whileblue.svg"/></div>
+            <div id="whilecolor" class="label"></div>
+        </div>
+        <div class="elt">
+            <div class="icon"><img src="res/img/action/whilenotblue.svg"/></div>
+            <div id="whilenotcolor" class="label"></div>
+        </div>
+        <div class="elt">
+            <div class="icon"><img src="res/img/action/whilenotblueend.svg"/></div>
+            <div class="icon"><img src="res/img/action/whilenotredend.svg"/></div>
+            <div class="icon"><img src="res/img/action/whilenotgreenend.svg"/></div>
+            <div class="icon"><img src="res/img/action/whilenotpurpleend.svg"/></div>
+            <div id="whilenotend" class="label"></div>
+        </div>
+
+    </div></div>
+
     <div id="course" ontouchstart="$(this).closest('.robot').robot('course');event.preventDefault();"
                      onclick="$(this).closest('.robot').robot('course');"><div class="panel">
         <div id="art"><img src="res/img/art/robot01.svg"/></div>
-        <pre>bla bla bla</pre>
+        <pre></pre>
     </div></div>
 
     <div id="touch01" ><div><img src="res/img/effects/touch01.svg"/></div></div>

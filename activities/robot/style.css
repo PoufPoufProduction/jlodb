@@ -19,10 +19,11 @@
 .robot #board #tiles .engine #invert{ width:1em; height:1em; font-size:1.5em; margin-top:-2.7em;margin-left:0.9em;
                                       position:relative; z-index:20; display:none; }
 .robot #board #tiles .engine #img   { width:1em; height:1em; font-size:3.2em; margin-top:-.4em;margin-left:.1em; position:relative; }
-.robot .code                        { background-image:none; }
-.robot #board #fg                   { z-index:1000; font-size:.3em; font-family:Courier New, Courier, monospace;}
+.robot .code                        { background-image:none; float:right; width:5em; margin-right:0.05em; }
+.robot #board #fg                   { z-index:99; font-size:.3em; font-family:Courier New, Courier, monospace;}
 .robot #board #bg                   {  width:11em; height:11em; 
                                        background-image:linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0)); }
+.robot #board #help                 { font-size:.8em; cursor:pointer; width:1em; height:1em; top:12.6em; left:.2em; z-index:99; }
 .robot #cache                       { width:6.4em; height:11em; position:absolute; top:1.75em; left:.25em; z-index:1999;
                                       background-color:rgba(0,0,0,0.5); display:none; }
 
@@ -57,6 +58,7 @@
 
 .robot #action #tabs .source        { width:6em; height:3em; background-color:rgba(255,255,255,0.5); margin:.2em;
                                       background-image:url("../../res/img/background/book05.svg"); background-repeat:repeat;}
+.robot #action #tabs .source>div    { width:6.5em; margin-left:-0.5em; }
 .robot #action #tabs .dest>*        { position:relative; }
 .robot #action #tabs .dest .label   { position:absolute; font-size:2em; font-weight:bold; color:rgba(255,255,255,0.4); top:-0.05em;width:100%; text-align:center; }
 .robot #action #tabs .f0            { width:6em; height:3em; background-color:rgba(255,255,255,0.2); margin:0 .2em .2em .2em;
@@ -76,6 +78,17 @@
                                       text-align:center; cursor:pointer;}
 .robot .source .slider .down        { margin-top:1.2em; }
 .robot .a                           { width:1em; height:1em; cursor:crosshair; }
+
+.robot #phelp                       { width:16em; height:12em; position:absolute;top:0;left:0; background-color:rgba(0,0,0,0.5);
+                                      z-index:100; cursor:pointer; display:none; }
+.robot #phelp>div                   { font-size:.3em; width:98%; height:98%; margin:.2em auto;
+                                      background-color:rgba(255,255,255,0.8); }
+.robot #phelp .h1                   { clear:both; font-size:1.5em; padding-left:5em; margin-top:.5em; border:1px solid black;
+                                      border-width:0 0 1px 0;}
+.robot #phelp .elt                  { float:left; width:24em; height:1.4em; padding:.1em; margin:.1em .5em;
+                                      background-color:rgb(50,100,160); border-radius:.2em; }
+.robot #phelp .elt>.icon            { float:left; font-size:1.4em; }
+.robot #phelp .elt>.label           { margin-left:.5em; color:white; float:left; }
 
 .robot #course                      { width:16em; height:12em; position:absolute;top:0;left:0; background-color:rgba(0,0,0,0.5);
                                       z-index:100; cursor:pointer; display:none; }

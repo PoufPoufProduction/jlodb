@@ -191,9 +191,7 @@
                 if (settings.exercice) { $this.find("#exercice").html(settings.exercice); }
                 $this.find("h1#label").html(settings.label);
                 var list=["a","b","c","d","e","f","g"];
-                for (var i in settings.locale.legend) {
-                    $this.find("#legend ul").append("<li>"+list[i]+" "+settings.locale.legend[i]+"</li>");
-                }
+                for (var i in settings.locale.legend) { $this.find("#"+i).html(settings.locale.legend[i]); }
                 if ($.isArray(settings.locale.guide)) {
                     $this.find("#guide").html("");
                     for (var i in settings.locale.guide) { $this.find("#guide").append("<p>"+settings.locale.guide[i]+"</p>"); }
@@ -265,6 +263,13 @@
                 if ($robot && $robot.css("z-index")!=zindex) { $robot.css("z-index", zindex); }
             }
         },
+        num: function($this, _val) {
+            var settings    = helpers.settings($this);
+            settings.tiles.number = _val;
+            if (!settings.synchro) for (var i=0; i<10; i++) {
+                $this.find(".t6"+(i+50)+" img").attr("src","res/img/tileset/iso/set1/6"+(_val+50)+".svg");
+            }
+        },
         // THE ACTIONS
         actions : {
             f01 : {
@@ -313,13 +318,30 @@
             num: {
                 execute     : function($this, _id, _invert) {
                     var settings = helpers.settings($this);
-                    var val = helpers.tiles.get($this, helpers.settings($this).robots[_id].pos)%100;
-                    if (val>=10&&val<=19) {
-                        helpers.settings($this).tiles.number = val-10;
-                        if (!settings.synchro) for (var i=0; i<10; i++) {
-                            $this.find(".t6"+(i+50)+" img").attr("src","res/img/tileset/iso/set1/6"+(val-10+50)+".svg");
-                        }
-                    }
+                    var val = helpers.tiles.get($this, settings.robots[_id].pos)%100;
+                    if (val>=10&&val<=19) { helpers.num($this, val-10); }
+                }
+            },
+            num0: { execute: function($this, _id, _invert) { helpers.num($this, 0); }},
+            num1: { execute: function($this, _id, _invert) { helpers.num($this, 1); }},
+            num2: { execute: function($this, _id, _invert) { helpers.num($this, 2); }},
+            num3: { execute: function($this, _id, _invert) { helpers.num($this, 3); }},
+            num4: { execute: function($this, _id, _invert) { helpers.num($this, 4); }},
+            num5: { execute: function($this, _id, _invert) { helpers.num($this, 5); }},
+            num6: { execute: function($this, _id, _invert) { helpers.num($this, 6); }},
+            num7: { execute: function($this, _id, _invert) { helpers.num($this, 7); }},
+            num8: { execute: function($this, _id, _invert) { helpers.num($this, 8); }},
+            num9: { execute: function($this, _id, _invert) { helpers.num($this, 9); }},
+            numminus: {
+                execute: function($this, _id, _invert) {
+                    var settings    = helpers.settings($this);
+                    if (settings.tiles.number>0) { helpers.num($this, settings.tiles.number-1); }
+                }
+            },
+            numplus: {
+                execute: function($this, _id, _invert) {
+                    var settings    = helpers.settings($this);
+                    if (settings.tiles.number<9) { helpers.num($this, settings.tiles.number+1); }
                 }
             },
             blue: {
