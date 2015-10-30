@@ -6,19 +6,28 @@
         template    : "template.html",                          // Activity's html template
         css         : "style.css",                              // Activity's css style sheet
         lang        : "en-US",                                  // Current localization
-        constraint  : [0,0],
-        rotation    : 0,
-        tthreshold  : 120,
-        boundaries  : [-1,-1,-1,-1],
-        area        : [0,0,640,480],                            // The departure area of the pieces
+        constraint  : [0,0],                                    // Grid for pieces
+        rotation    : 0,                                        // Rotation step
+        boundaries  : [-1,-1,-1,-1],                            // Piece move boundaries
         scale       : 1.2,                                      // The move scale of the pieces
         radius      : 20,                                       // The magnetic radius
         zhandling   : true,                                     // Handle the z-index
-        fix         : false,                                    // Fix the well-placed pieces (work with no rotation or doubles)
-        fullscreen  : false,                                    // Fullscreen
         pieces      : "pieces",                                 // The pieces group name
-        debug       : false                                     // Debug mode
+        errratio    : 1,                                        // Error ratio
+        number      : 1,                                        // Number of puzzle
+        fontex      : 1,                                        // Exercice font
+        decoyfx     : true,                                  // No magnetic for decoy
+        debug       : true                                      // Debug mode
     };
+
+
+    var regExp = [
+        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
+        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
+        "\\\[br\\\]",                               "<br/>",
+        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
+        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>"
+    ];
 
     // private methods
     var helpers = {
@@ -45,6 +54,13 @@
             var settings = helpers.settings($this);
             helpers.unbind($this);
             settings.context.onquit($this,{'status':'success','score':settings.score});
+        },
+        format: function(_text) {
+            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
+                var vReg = new RegExp(regExp[i*2],"g");
+                _text = _text.replace(vReg,regExp[i*2+1]);
+            }
+            return _text;
         },
         loader: {
             css: function($this) {
@@ -86,9 +102,6 @@
             build: function($this) {
                 var settings = helpers.settings($this);
 
-                if (settings.rotation==0) { $this.find("#norot").show(); }
-                if (settings.fullscreen) { settings.fix = true; $this.find("#submit").hide(); $this.find("#norot").hide(); }
-
                 if (settings.context.onload) { settings.context.onload($this); }
 
                 // Resize the template
@@ -97,27 +110,49 @@
                 // COMPUTE RATIO
                 var vWidth = $this.find("#board").width();
                 if ($(settings.svg.root()).attr("title")) {
-                    var vReg = new RegExp("[ ]", "g");
-                    var vSize = $(settings.svg.root()).attr("title").split(vReg);
-                    settings.ratio = vWidth/(vSize[2]-vSize[0]);
+                    settings.ratio = vWidth/parseInt($(settings.svg.root()).attr("title"));
                 }
                 else { settings.ratio = vWidth/640; }
                 if (settings.ratio<=0) { settings.ratio=1; }
 
+                // CHECK THE DEPARTURE AREA REGARDING THE BOUNDARIES
+                if (settings.boundaries[0]!=-1 && settings.boundaries[0]>settings.area[0]) { settings.area[0] = settings.boundaries[0]; }
+                if (settings.boundaries[1]!=-1 && settings.boundaries[1]>settings.area[1]) { settings.area[1] = settings.boundaries[1]; }
+                if (settings.boundaries[2]!=-1 && settings.boundaries[2]<settings.area[2]) { settings.area[2] = settings.boundaries[2]; }
+                if (settings.boundaries[3]!=-1 && settings.boundaries[3]<settings.area[3]) { settings.area[3] = settings.boundaries[3]; }
+
                 // GENERATE VALUES
-                if (settings.gen) { settings.values = eval('('+settings.gen+')')(); }
+                if (settings.init && settings.init.pos) {
+                    for (var i=0; i<10; i++) { settings.init.pos.sort(function(a,b){return 0.5-Math.random(); }); }
+                }
+                if (settings.id && $.isArray(settings.id[0]))       { settings.number = settings.id.length; }
+                if (settings.values && $.isArray(settings.values))  { settings.number = settings.values.length; }
+                if (settings.txt && $.isArray(settings.txt))        { settings.number = settings.txt.length; }
 
                 // LOCALE HANDLING
                 $this.find("h1#label").html(settings.label);
                 $this.find("#guide").html(settings.locale.guide);
                 //$.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); });
 
-                if (settings.exercice) { $this.find("#exercice>div").html(settings.exercice).parent().show(); }
+                if (settings.exercice) {
+                    $this.find("#exercice #content").html(helpers.format(settings.exercice)).css("font-size",settings.fontex+"em");
+                    if (settings.labelex) { $this.find("#exercice #label").html(settings.labelex).show(); }
+                    $this.find("#exercice").show();
+                }
 
                 helpers.build($this);
 
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             },
+        },
+        isdecoy:function($this, _id) {
+            var settings = helpers.settings($this);
+            var ret = false;
+            if (settings.decoys) {
+                var decoys = ($.isArray(settings.decoys[0]))?settings.decoys[settings.puzzleid%settings.decoys.length]:settings.decoys;
+                for (var i in decoys) { if (decoys[i]==_id) { ret = true; } }
+            }
+            return ret;
         },
         // Update the timer
         timer:function($this) {
@@ -144,12 +179,19 @@
             var settings = helpers.settings($this);
             settings.origin.translate = [];
             settings.origin.rotate    = {};
-            settings.nbfixed          = 0;
             $this.find("#submit").removeClass();
             $this.find(".t").hide();
             var inituse               = [];
             var ids                   = [];
             var nbpieces              = 0;
+
+            // AUTOMATIC GENERATION
+            if (settings.gen) {
+                var gen = eval('('+settings.gen+')')(settings.puzzleid);
+                if (gen.values) { settings.values = gen.values; }
+                if (gen.id)     { settings.id = gen.id; }
+                if (gen.txt)    { settings.txt = gen.txt; }
+            }
 
             // PREPARE THE SCREEN
             if (settings.svgclass) {
@@ -164,6 +206,13 @@
             else if (settings.ttxt) {
                 var txt = $.isArray(settings.ttxt)?settings.ttxt[settings.puzzleid]:settings.ttxt;
                 if (txt) { $this.find("#ttxt").html(txt).parent().show(); }
+            }
+
+            // HIDE AND SHOW ELEMENT
+            if (settings.show) {
+                $(".hide",settings.svg.root()).css("display","hide");
+                var show = $.isArray(settings.show[0])?settings.show[settings.puzzleid]:settings.show;
+                for (var i in show) { $("#"+show[i],settings.svg.root()).css("display","inline"); }
             }
 
             // HANDLE TEXT IN SVG
@@ -186,6 +235,7 @@
             for (var i=0; i<nbpieces; i++) { inituse.push(false); }
 
             // PARSE ALL THE PIECES
+            var count = 0;
             $("#"+settings.pieces+">g",settings.svg.root()).each(function(_index) {
                 $(this).attr("class","");
                 var vOK = true;
@@ -197,22 +247,25 @@
                         var values = ($.isArray(settings.values))?settings.values[settings.puzzleid]:settings.values;
                         if (typeof(values[$(this).attr("id")])!="undefined") {$(this).find("text").text(values[$(this).attr("id")]); }
                     }
-
-                    // SAVE THE ORIGINALE POSITION AND ROTATION
-                    var translate = [$(this).attr("id"),0,0];
-                    if ($(this).attr("transform")) {
-                        var reg = new RegExp("[( ),]","g");
-                        var vSplit = $(this).attr("transform").split(reg);
-                        translate = [$(this).attr("id"),vSplit[1], vSplit[2]];
+                    
+                    if (!helpers.isdecoy($this, $(this).attr("id")))
+                    {
+                        // SAVE THE ORIGINALE POSITION AND ROTATION
+                        var translate = [$(this).attr("id"),0,0];
+                        if ($(this).attr("transform")) {
+                            var reg = new RegExp("[( ),]","g");
+                            var vSplit = $(this).attr("transform").split(reg);
+                            translate = [$(this).attr("id"),vSplit[1], vSplit[2]];
+                        }
+                        settings.origin.translate.push(translate);
+                        var rotate = [$(this).attr("id"),0];
+                        if ($(this).find(".rot") && $(this).find(".rot").attr("transform")) {
+                            var reg = new RegExp("[( ),]","g");
+                            var vSplit = $(this).find(".rot").attr("transform").split(reg);
+                            rotate = [ $(this).attr("id"),vSplit[1]];
+                        }
+                        settings.origin.rotate[rotate[0]]=rotate[1];
                     }
-                    settings.origin.translate.push(translate);
-                    var rotate = [$(this).attr("id"),0];
-                    if ($(this).find(".rot") && $(this).find(".rot").attr("transform")) {
-                        var reg = new RegExp("[( ),]","g");
-                        var vSplit = $(this).find(".rot").attr("transform").split(reg);
-                        rotate = [ $(this).attr("id"),vSplit[1]];
-                    }
-                    settings.origin.rotate[rotate[0]]=rotate[1];
 
                     // CLICK ON PIECES
                     $(this).bind('touchstart mousedown', function(event) {
@@ -233,7 +286,9 @@
                             $this.addClass("active");
                             settings.mouse = [ vEvent.clientX, vEvent.clientY];
 
-                            if (settings.scale) { $(this).find(".scale").attr("transform","scale("+settings.scale+")"); }
+                            if ( settings.decoyfx || !helpers.isdecoy($this, $(settings.elt.id).attr("id"))) {
+                                $(this).find(".scale").attr("transform","scale("+settings.scale+")"); }
+
                             if (settings.zhandling) { $(this).detach().appendTo($("#"+settings.pieces,settings.svg.root())); }
 
                             var now = new Date();
@@ -242,36 +297,31 @@
                         event.preventDefault();
                     });
 
-                    // MOVE THE PIECE
+                    // INITIALIZE THE PIECE
+                    var vX = 100, vY = 100, vZ = 0;
+                    var id = $(this).attr("id");
+                    if (settings.rotation>0 && $(this).find(".rot")) {
+                        vZ = settings.rotation*Math.floor(Math.random()*(360/settings.rotation));
+                    }
                     if (settings.init) {
-                        if ($.isArray(settings.init)) {
-                            var initid = 0;
-                            do { initid = Math.floor(Math.random()*nbpieces); } while(inituse[initid]);
-                            inituse[initid]=true;
-                            $(this).attr("transform", "translate("+settings.init[initid][0]+" "+settings.init[initid][1]+")");
-                            if (settings.init[initid].length>2) {
-                                $(this).find(".rot").attr("transform","rotate("+settings.init[initid][2]+")");
-                            }
+                        if (settings.init.id && settings.init.id[id]) {
+                            vX = settings.init.id[id][0];
+                            vY = settings.init.id[id][1];
+                            if (settings.init.id[id].length>2) { vZ = settings.init.id[id][2]; }
                         }
-                        else if (settings.init[$(this).attr("id")]) {
-                            $(this).attr("transform", "translate("+settings.init[$(this).attr("id")][0]+
-                                                      " "+settings.init[$(this).attr("id")][1]+")");
-                            if (settings.init[$(this).attr("id")].length>2) {
-                                $(this).find(".rot").attr("transform","rotate("+settings.init[$(this).attr("id")][2]+")");
-                            }
+                        else if (settings.init.pos && count<settings.init.pos.length) {
+                            vX = settings.init.pos[count][0];
+                            vY = settings.init.pos[count][1];
+                            if (settings.init.pos[count].length>2) { vZ = settings.init.pos[count][2]; }
+                            count++;
                         }
-                    }
-                    else {
-                        var vX = settings.area[0]+Math.floor(Math.random()*(settings.area[2]-settings.area[0]));
-                        var vY = settings.area[1]+Math.floor(Math.random()*(settings.area[3]-settings.area[1]));
-                        $(this).attr("transform", "translate("+vX+" "+vY+")");
-
-                        // ROTATE THE PIECES
-                        if (settings.rotation>0 && $(this).find(".rot")) {
-                            $(this).find(".rot").attr("transform","rotate("+
-                                (settings.rotation*Math.floor(Math.random()*(360/settings.rotation)))+")");
+                        else if (settings.init.area) {
+                            vX = settings.init.area[0]+Math.floor(Math.random()*(settings.init.area[2]-settings.init.area[0]));
+                            vY = settings.init.area[1]+Math.floor(Math.random()*(settings.init.area[3]-settings.init.area[1]));
                         }
                     }
+                    $(this).attr("transform", "translate("+vX+" "+vY+")");
+                    $(this).find(".rot").attr("transform","rotate("+vZ+")");
                 }
                 else {
                     $(this).attr("class","disable");
@@ -284,6 +334,12 @@
                 var idx = Math.floor(Math.random()*nb);
                 $($("#"+settings.pieces+">g",settings.svg.root()).get(idx)).detach().appendTo($("#"+settings.pieces,settings.svg.root()));
             }
+
+            // BUILD THE MAGNETIC ZONES
+            settings.magzone = [];
+            for (var i in settings.origin.translate) {
+                settings.magzone.push([settings.origin.translate[i][1], settings.origin.translate[i][2]]); }
+            if (settings.magnetic) { for (var i in settings.magnetic) { settings.magzone.push(settings.magnetic[i]); } }
 
             // MOVE PIECES
             $(settings.svg.root()).bind('touchmove mousemove', function(event) {
@@ -340,25 +396,28 @@
                         var vSplit = $(settings.elt.id).find(".rot").attr("transform").split(reg);
                         var rotation = parseInt(vSplit[1]);
 
-                        if (now.getTime()-settings.elt.tick<settings.tthreshold) {
+                        if (now.getTime()-settings.elt.tick<120) {
                             rotation = (rotation+settings.rotation)%360;
                             $(settings.elt.id).find(".rot").attr("transform","rotate("+rotation+")");
                         }
                     }
 
                     // CHECK MAGNETIC
-                    var dist=-1;
-                    var distid=-1;
-                    for (var i in settings.origin.translate) {
-                        var d = ((settings.origin.translate[i][1]-settings.elt.translate.current[0]) *
-                                 (settings.origin.translate[i][1]-settings.elt.translate.current[0])) +
-                                ((settings.origin.translate[i][2]-settings.elt.translate.current[1]) *
-                                 (settings.origin.translate[i][2]-settings.elt.translate.current[1]));
-                        if (dist<0 || d<dist) { dist = d; distid = i; }
-                    }
-                    if (dist<settings.radius*settings.radius) {
-                        settings.elt.translate.current[0] = settings.origin.translate[distid][1];
-                        settings.elt.translate.current[1] = settings.origin.translate[distid][2];
+                    if (settings.decoyfx || !helpers.isdecoy($this, $(settings.elt.id).attr("id")))
+                    {
+                        var dist=-1;
+                        var distid=-1;
+                        for (var i in settings.magzone) {
+                            var d = ((settings.magzone[i][0]-settings.elt.translate.current[0]) *
+                                     (settings.magzone[i][0]-settings.elt.translate.current[0])) +
+                                    ((settings.magzone[i][1]-settings.elt.translate.current[1]) *
+                                     (settings.magzone[i][1]-settings.elt.translate.current[1]));
+                            if (dist<0 || d<dist) { dist = d; distid = i; }
+                        }
+                        if (dist<settings.radius*settings.radius) {
+                            settings.elt.translate.current[0] = settings.magzone[distid][0];
+                            settings.elt.translate.current[1] = settings.magzone[distid][1];
+                        }
                     }
 
                     $(settings.elt.id).attr("transform","translate("+settings.elt.translate.current[0]+" "+
@@ -372,14 +431,6 @@
                             settings.origin.translate[i][2] == settings.elt.translate.current[1] &&
                             (rotation==-1 || rotation == settings.origin.rotate[settings.origin.translate[i][0]]) );
                     }
-                    if (vOK && settings.fix) {
-                        $(settings.elt.id).unbind('touchstart mousedown').attr("class","fixed");
-                        $this.addClass("fix"+$(settings.elt.id).attr("id"));
-                        if (++settings.nbfixed>=settings.origin.translate.length ) {
-                            $this.addClass("fixall");
-                            if (settings.fullscreen) { helpers.submit($this); }
-                        }
-                    }
 
                     // END MOVE
                     $(settings.elt.id).find(".scale").attr("transform","scale(1)");
@@ -391,7 +442,9 @@
         submit: function($this) {
             var settings = helpers.settings($this);
             var wrongs =0;
-            if (!settings.finish) {
+            if (settings.interactive) {
+                settings.interactive = false;
+
                 for (var i in settings.origin.translate) {
                     var translate = [0,0];
                     // BUILD THE LIST OF PIECES PUZZLE WHICH CAN USE THE CURRENT POSITION
@@ -405,6 +458,7 @@
                     var findone = false;
                     for (var p in pieces) {
                         var isgood = false;
+
                         var $piece = $("#"+settings.pieces+">g#"+pieces[p],settings.svg.root());
                         if ($piece.attr("transform")) {
                             var reg = new RegExp("[( ),]","g");
@@ -423,10 +477,29 @@
                             }
                         }
                         findone |= isgood;
-                        if (isgood && !settings.fix) { $piece.attr("class","good"); }
+                        if (isgood) { $piece.attr("class","good"); }
                     }
                     if (!findone) { wrongs++;}
                     settings.all++;
+                }
+
+                // check if some decoys are on good places 
+                if (settings.decoyfx && settings.decoys) {
+                    var decoys = ($.isArray(settings.decoys[0]))?settings.decoys[settings.puzzleid%settings.decoys.length]:settings.decoys;
+                    for (var i in decoys) {
+                        var $piece = $("#"+settings.pieces+">g#"+decoys[i],settings.svg.root());
+                        if ($piece.attr("transform")) {
+                            var reg = new RegExp("[( ),]","g");
+                            var vSplit = $piece.attr("transform").split(reg);
+                            var translate = [vSplit[1], vSplit[2]];
+                            for (var t in settings.origin.translate) {
+                                if ((settings.origin.translate[t][1]==translate[0])&&(settings.origin.translate[t][2]==translate[1])) {
+                                    wrongs++;
+                                    $piece.attr("class","wrong");
+                                }
+                            }
+                        }
+                    }
                 }
 
                 for (var i in settings.origin.translate) {
@@ -435,19 +508,16 @@
                 }
 
                 settings.wrongs+=wrongs;
-                settings.interactive = false;
                 settings.puzzleid++;
 
                 if (wrongs) { $this.find("#submit").addClass("wrong"); } else { $this.find("#submit").addClass("good"); }
 
-                if ( (settings.id && $.isArray(settings.id[0]) && settings.puzzleid<settings.id.length) ||
-                     (settings.values && $.isArray(settings.values) && settings.puzzleid<settings.values.length) ) {
-                    setTimeout(function() { helpers.rebuild($this); }, wrongs?3000:1000);
+                if ( settings.puzzleid<settings.number ) {
+                    setTimeout(function() { helpers.rebuild($this); settings.interactive = true; }, wrongs?2500:1000);
                 }
                 else {
-                    settings.finish = true;
-                    var ratio = (settings.all<6)?Math.floor(6/settings.all):1;
-                    settings.score = 5-Math.ceil(ratio*settings.wrongs/2);
+                    settings.interactive = false;
+                    settings.score = 5-Math.ceil(settings.errratio*settings.wrongs);
                     if (settings.score<0) { settings.score = 0; }
                     clearTimeout(settings.timer.id);
                     setTimeout(function() { helpers.end($this); }, wrongs?3000:1000);
@@ -464,7 +534,7 @@
             init: function(options) {
                 // The settings
                 var settings = {
-                    finish          : false,
+                    interactive      : false,
                     timer: {                // the general timer
                         id      : 0,        // the timer id
                         value   : 0         // the timer value
@@ -479,7 +549,6 @@
                         translate   : [],
                         rotate      : []
                     },
-                    nbfixed         : 0,
                     puzzleid        : 0,
                     wrongs          : 0,
                     all             : 0,
@@ -506,10 +575,13 @@
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 if (settings.timer.id) { clearTimeout(settings.timer.id); settings.timer.id=0; }
-                settings.finish = true;
+                settings.interactive = false;
                 settings.context.onquit($this,{'status':'abort'});
             },
-            next: function() { }
+            next: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+                settings.interactive = true;
+            }
         };
 
         if (methods[method])    { return methods[method].apply(this, Array.prototype.slice.call(arguments, 1)); } 

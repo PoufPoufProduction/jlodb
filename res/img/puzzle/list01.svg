@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="100%" height="100%" viewBox="0 0 640 480" id="list01">
+<defs id="defs2385">
+ <style type="text/css">
+    #list01 .disable { display:none; }
+    #list01 .hide    { display:none; }
+
+    #list01 #pieces .result { fill:none; fill-opacity:0.5; }
+    #list01 #pieces .wrong .result { fill:red; }
+    #list01 #pieces .good .result  { fill:#0F0; }
+
+    #list01 text    { font-size:48px;text-anchor:middle;fill:white;font-family:Times New Roman;opacity:0.7; }
+    #list01 #target text.bg { fill:#ccc; }
+
+ </style>
+</defs>
+
+
+    <rect x="40" y="40" width="550" height="120" ry="60" style="fill:#AAA;fill-opacity:1;stroke:white;stroke-width:10px;"/>
+
+<g class="disable">
+    <g id="tt">
+        <circle cx="0" cy="0" r="45" style="fill:gray;"/>
+    </g>
+    <g id="tp">
+        <circle cx="0" cy="0" r="40" style="fill:#8e572b;"/>
+        <circle cx="0" cy="0" r="35" style="fill:#c27642;"/>
+        <path d="M 0 -40 C -18.560591 -40 -34.172464 -27.361411 -38.6875 -10.21875 C -27.439467 -6.9192853 -14.193093 -5 0 -5 C 14.193093 -5 27.439467 -6.9192853 38.6875 -10.21875 C 34.172464 -27.361411 18.560591 -40 0 -40 z" style="fill:#ffc593;fill-opacity:0.15;"/>
+        <circle cx="0" cy="0" r="40" style="fill:none;stroke:#463326;stroke-width:2;"/>
+    </g>
+</g>
+
+
+<g id="bg">
+
+    <g id="target">
+        <g id="t01" transform="translate(100,100)" class="hide">
+            <use x="0" y="0" xlink:href="#tt"/>
+            <text y="14" class="bg" id="txt01"></text>
+        </g>
+        <g id="t02" transform="translate(185,100)">
+            <use x="0" y="0" xlink:href="#tt"/>
+            <text y="14" class="bg" id="txt02"></text>
+        </g>
+        <g id="t03" transform="translate(270,100)">
+            <use x="0" y="0" xlink:href="#tt"/>
+            <text y="14" class="bg" id="txt03"></text>
+        </g>
+        <g id="t04" transform="translate(355,100)">
+            <use x="0" y="0" xlink:href="#tt"/>
+            <text y="14" class="bg" id="txt04"></text>
+        </g>
+        <g id="t05" transform="translate(440,100)">
+            <use x="0" y="0" xlink:href="#tt"/>
+            <text y="14" class="bg" id="txt05"></text>
+        </g>
+        <g id="t06" transform="translate(525,100)">
+            <use x="0" y="0" xlink:href="#tt"/>
+            <text y="14" class="bg" id="txt06"></text>
+        </g>
+        <g id="t00" transform="translate(100,100)" class="hide">
+            <use x="0" y="0" xlink:href="#tt"/>
+            <circle cx="0" cy="0" r="40" style="fill:#8e572b;"/>
+            <circle cx="0" cy="0" r="35" style="fill:#c27642;"/>
+            <path d="M 0 -40 C -18.560591 -40 -34.172464 -27.361411 -38.6875 -10.21875 C -27.439467 -6.9192853 -14.193093 -5 0 -5 C 14.193093 -5 27.439467 -6.9192853 38.6875 -10.21875 C 34.172464 -27.361411 18.560591 -40 0 -40 z" style="fill:#ffc593;fill-opacity:0.15;"/>
+            <text y="14" id="txt00"></text>
+        </g>
+    </g>
+</g>
+
+<g id="pieces">
+    <g id="pp01" transform="translate(100,100)"><g class="scale"><g class="rot">
+        <use x="0" y="0" xlink:href="#tp"/>
+        <text y="14" id="p01"></text>
+        <circle cx="0" cy="0" r="43" class="result"/>
+    </g></g></g>
+    <g id="pp02" transform="translate(185,100)"><g class="scale"><g class="rot">
+        <use x="0" y="0" xlink:href="#tp"/>
+        <text y="14" id="p02"></text>
+        <circle cx="0" cy="0" r="43" class="result"/>
+    </g></g></g>
+    <g id="pp03" transform="translate(270,100)"><g class="scale"><g class="rot">
+        <use x="0" y="0" xlink:href="#tp"/>
+        <text y="14" id="p03"></text>
+        <circle cx="0" cy="0" r="43" class="result"/>
+    </g></g></g>
+    <g id="pp04" transform="translate(355,100)"><g class="scale"><g class="rot">
+        <use x="0" y="0" xlink:href="#tp"/>
+        <text y="14" id="p04"></text>
+        <circle cx="0" cy="0" r="43" class="result"/>
+    </g></g></g>
+    <g id="pp05" transform="translate(440,100)"><g class="scale"><g class="rot">
+        <use x="0" y="0" xlink:href="#tp"/>
+        <text y="14" id="p05"></text>
+        <circle cx="0" cy="0" r="43" class="result"/>
+    </g></g></g>
+    <g id="pp06" transform="translate(525,100)"><g class="scale"><g class="rot">
+        <use x="0" y="0" xlink:href="#tp"/>
+        <text y="14" id="p06"></text>
+        <circle cx="0" cy="0" r="43" class="result"/>
+    </g></g></g>
+
+    <g id="dd01" transform="translate(100,200)"><g class="scale"><g class="rot">
+        <use x="0" y="0" xlink:href="#tp"/>
+        <text y="14" id="d01"></text>
+        <circle cx="0" cy="0" r="43" class="result"/>
+    </g></g></g>
+    <g id="dd02" transform="translate(185,200)"><g class="scale"><g class="rot">
+        <use x="0" y="0" xlink:href="#tp"/>
+        <text y="14" id="d02"></text>
+        <circle cx="0" cy="0" r="43" class="result"/>
+    </g></g></g>
+    <g id="dd03" transform="translate(270,200)"><g class="scale"><g class="rot">
+        <use x="0" y="0" xlink:href="#tp"/>
+        <text y="14" id="d03"></text>
+        <circle cx="0" cy="0" r="43" class="result"/>
+    </g></g></g>
+    <g id="dd04" transform="translate(355,200)"><g class="scale"><g class="rot">
+        <use x="0" y="0" xlink:href="#tp"/>
+        <text y="14" id="d04"></text>
+        <circle cx="0" cy="0" r="43" class="result"/>
+    </g></g></g>
+    <g id="dd05" transform="translate(440,200)"><g class="scale"><g class="rot">
+        <use x="0" y="0" xlink:href="#tp"/>
+        <text y="14" id="d05"></text>
+        <circle cx="0" cy="0" r="43" class="result"/>
+    </g></g></g>
+    <g id="dd06" transform="translate(525,200)"><g class="scale"><g class="rot">
+        <use x="0" y="0" xlink:href="#tp"/>
+        <text y="14" id="d06"></text>
+        <circle cx="0" cy="0" r="43" class="result"/>
+    </g></g></g>
+
+
+</g>
+
+
+
+
+
+
+
+</svg>

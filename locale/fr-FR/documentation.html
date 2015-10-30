@@ -93,7 +93,7 @@ var t002 = {
         <li>ID est l'identifiant de l'exercice.</li>
         </ul>
         <p>Ainsi <b>ceac001</b> désigne l'exercice appartenant à l'activité <b>code</b> (ce), définit dans un fichier dont le nom commence par ac (<b>action.rdf</b> en l'occurence) et dont l'identifiant est <b>001</b>.</p>
-        <p>Une exception notable : avec le fichier <b>xx.rdf</b>, la valeur de FI est nulle.</p>
+        <p>Une exception notable : avec le fichier <b>xx.rdf</b>, la valeur de FI est nulle et l'identifiant doit avoir une longueur maximale de 2.</p>
     </div>
     <h2>Création d'activité</h2>
     <ul>
@@ -162,6 +162,32 @@ var t002 = {
         <div class="margin"><p><b>Générateur</b> : <a href="../../demo.html?id=ptpia000"><b>ptpia000</b></a> ou <a href="../../demo.html?id=ptpib000"><b>ptpib000</b></a>. Attention : les générateurs ne testent pas l'unicité de la figure.</p></div>
     </div>
     <h3>Puzzle</h3>
+    <h4>Paramètres</h4>
+    <ul>
+        <li><b>"number":1</b> indique le nombre de puzzles à réaliser au cours de l'exercice. Le paramètre est automatique mis à jour dans le cas où "id", "values" ou "txt" sont des tableaux.</li>
+        <li><b>"txt":{"id":"value"} ([])</b> permet de mettre à jour les textes du template svg en fonction de leur id respectif.</li>
+        <li><b>"svgclass":"" ([])</b> ajoute une classe à l'image de travail svg</li>
+        <li><b>"show":[] ([])</b> fournit des ids d'éléments (de classe 'hide') à faire apparaître.</li>
+        <li><b>"pieces":"pieces"</b> définit le groupe contenant l'ensemble des pièces du puzzle</li>
+        <li><b>"id":[] ([])</b> définit unitairement les pièces par leur id à la place du paramètre "pieces"</li>
+        <li><b>"decoys":[] ([])</b> définit des fausses pièces par leur id</li>
+        <li><b>"values":{"id":"value"} ([])</b> est un raccourci permettant de définir les pièces du puzzle par leur id et de mettre à jour un text plus bas dans le DOM. Remplace "txt","pieces" et "id"</li>
+        <li><b>"constraint":[0,0]</b> définit une grille de déplacement pour les différentes pièces suivant les 2 axes de l'image (0 représente une absence de contrainte).</li>
+        <li><b>"rotation":0</b> définit le pas de rotation des pièces du puzzle</li>
+        <li><b>"scale":1.2</b> définit l'agrandissement de la pièce du puzzle en cours de déplacement</li>
+        <li><b>"radius":20</b> définit la taille de l'aimant depuis les positions d'arrivées</li>
+        <li><b>"magnetic":[[x,y]]</b> fournit une liste de positions qui vont servir d'aimants (en plus des vraies zones d'arrivée)</li>
+        <li><b>"decoyfx":true</b> précise si l'agrandissement (scale) et le magnétisme s'appliquent aux fausses pièces</li>
+        <li><b>"zhandling":true</b> précise la gestion du z-index (la pièce du puzzle en cours de déplacement passe en premier plan)</li>
+        <li><b>"boundaries":[-1,-1,-1,-1]</b> définit la zone [x1,y1,x2,y2] dans laquelle les pièces du puzzle peuvent être déplacées (-1 représente une absence de limite)</li>
+        <li><b>"init":{..} ([])</b> définit les positions de départ des pièces du puzzles
+            <ul>
+                <li><b>"id":{"piece01":[x,y]}</b> par id</li>
+                <li><b>"pos":[[x,y],[x,y]]</b> par un ensemble de positions possibles choisies aléatoirement</li>
+                <li><b>"area":[0,0,640,480]</b> par zone</li>
+            </ul>
+        </li>
+    </ul>
     <h4>Alternative : Reconstruction de phrases</h4>
     <div class="margin">
         <ul>
