@@ -8,7 +8,7 @@
         lang        : "en-US",                                  // Current localization
         clean       : true,                                     // Clean board between exercices
         font        : 1,                                        // Exerice font
-        err         : 1,                                        // Error weight
+        errratio    : 1,                                        // Error weight
         onlyone     : false,                                    // Only one response possible : no commutativity
         number      : 1,                                        // number of exercices
         nbdec       : 2,                                        // number of dec for float numbers
@@ -731,12 +731,12 @@
             process:function(_children) { return -_children[0]; }
         },
 
-        par:    { label:"//", c:2, m:"c0<mo>//</mo>c1", t:"par(c0,c1)", p:function() { return op.p.commutative | op.p.associative; } },
+        par:    { label:"//", c:2, m:"c0<mo>//</mo>c1", t:["par(c0,c1)","par(c1,c0)"], p:function() { return op.p.commutative | op.p.associative; } },
         parallelogram:  { label:"<img src='res/img/icon/geometry/parallelogram01.svg'/>", c:1,
                   m:function() { return "<mover><mrow><mtext mathsize='big'>"+(vocabulary?vocabulary.parallelogram:"parallelogram")+
                                         "</mtext></mrow><mrow>c0</mrow></mover>";},
                   t:"parallelogram(c0)", p:function() { return op.p.final; } },
-        perp:   { label:"&perp;", c:2, m:"c0<mo>&perp;</mo>c1", t:"perp(c0,c1)", p:function() { return op.p.commutative; } },
+        perp:   { label:"&perp;", c:2, m:"c0<mo>&perp;</mo>c1", t:["perp(c0,c1)","perp(c1,c0)"], p:function() { return op.p.commutative; } },
         plus:   { label:"+", c:2, m:"c0<mo>+</mo>c1", t:["c0+c1","c1+c0"], p:function() { return op.p.commutative | op.p.associative; },
                   process:function(_children) { return _children[0]+_children[1]; } },
         pow:    { label:"^", c:2,
@@ -1532,7 +1532,7 @@
                     var values = helpers.node.text($this);
                     if (settings.onlyone) { values = [ values[0] ]; }
                     for (var i in values) for (var j in result ) { min = Math.min (min,helpers.levenshtein(values[i], result[j])); }
-                    min = Math.min(5,min*settings.err);
+                    min = Math.min(5,min*settings.errratio);
                     $this.find("#screen").addClass("s"+min);
 
                     if (settings.debug) { alert($this.find("#screen>div").html()+"\n"+values[0]); }

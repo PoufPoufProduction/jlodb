@@ -69,7 +69,7 @@
         <dct:identifier>l011</dct:identifier>
         <dct:title xml:lang="fr-FR">A partir des points A,B,C,D, construire tous les segments possibles.</dct:title>
         <dct:description><![CDATA["data":[{"type":"point", "value":[-150,-100], "id":"A", "active":true}, {"type":"point", "value":[-100,100], "id":"B", "active":true},{"type":"point", "value":[150,-100], "id":"C", "active":true}, {"type":"point", "value":[100,100], "id":"D", "active":true}],"available":["segment"],"number":6,"objectives":[[{"type":"segment", "values":[-150,-100,-100,100]},{"type":"segment", "values":[150,-100,100,100]},{"type":"segment", "values":[-150,-100,100,100]},{"type":"segment", "values":[-100,100,150,-100]},{"type":"segment", "values":[-150,-100,150,-100]},{"type":"segment", "values":[-100,100,100,100]}]],"translate":[320,185.5]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"A partir des points A,B,C,D, tracez tous les segments possibles","labels":["6 segments"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"A partir des points A,B,C,D, tracez [b]tous les segments possibles[/b]","labels":["6 segments"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>geometry</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -81,7 +81,7 @@
         <dct:identifier>l015</dct:identifier>
         <dct:title xml:lang="fr-FR">A partir des points A,B,C,D,E construire tous les segments possibles.</dct:title>
         <dct:description><![CDATA["data":[{"type":"point", "value":[0,0], "id":"A", "active":true}, {"type":"point", "value":[-180,-100], "id":"B", "active":true},{"type":"point", "value":[250,-20], "id":"C", "active":true}, {"type":"point", "value":[-200,100], "id":"D", "active":true,"idpos":315}, {"type":"point", "value":[120,140], "id":"E", "active":true}],"available":["segment"],"number":10,"objectives":[[{"type":"segment", "values":[0,0,-180,-100]},{"type":"segment", "values":[0,0,250,-20]},{"type":"segment", "values":[0,0,-200,100]},{"type":"segment", "values":[0,0,120,140]},{"type":"segment", "values":[-180,-100,120,140]},{"type":"segment", "values":[-180,-100,250,-20]},{"type":"segment", "values":[-180,-100,-200,100]},{"type":"segment", "values":[120,140,-200,100]},{"type":"segment", "values":[120,140,250,-20]},{"type":"segment", "values":[-200,100,250,-20]}]],"translate":[320,185.5]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"A partir des points A,B,C,D,E, tracez tous les segments possibles","labels":["10 segments"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"A partir des points A,B,C,D,E, tracez [b]tous les segments possibles[/b]","labels":["10 segments"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>geometry</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -216,7 +216,7 @@
         <dct:identifier>t101</dct:identifier>
         <dct:title xml:lang="fr-FR">Construire un triangle isocèle.</dct:title>
         <dct:description><![CDATA["data":[{"type":"point", "value":[-50,150], "id":"A", "active":true,"idpos":225}, {"type":"point", "value":[50,150], "id":"B", "active":true,"idpos":315},{"type":"point", "value":[0,-100], "id":"C", "active":true},{"type":"segment", "value":[-15,35,-35,15],"attr":{"style":"stroke:#dd8833;"}},{"type":"segment", "value":[15,35,35,15],"attr":{"style":"stroke:#dd8833;"}}],"number":3,"objectives":[[{"type":"segment", "values":[-50,150,50,150]},{"type":"segment", "values":[50,150,0,-100]},{"type":"segment", "values":[-50,150,0,-100]}]],"available":["segment"],"translate":[320,185.5]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":["On appelle triangle <b>isocèle</b>, un triangle dont 2 côtés ont la même longueur.","De <b>petits traits</b> sur les côtés d'un triangle sont souvent utilisés pour <b>notifier visuellement de l'égalité des longueurs</b>. Ici AC = AB : le triangle est isocèle."],"labels":["Triangle isocèle ABC"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":["On appelle triangle [b]isocèle[/b], un triangle dont 2 côtés ont la même longueur.","De [b]petits traits[/b] sur les côtés d'un triangle sont souvent utilisés pour [b]notifier visuellement de l'égalité des longueurs[/b]. Ici AC = AB : [red]le triangle est isocèle[/red]."],"labels":["Triangle isocèle ABC"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>geometry</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -459,6 +459,18 @@
     <!-- CIRCLE -->
 
     <rdf:Description>
+        <dct:identifier>c000</dct:identifier>
+        <dct:title xml:lang="fr-FR">Relier les points de 1 à 17 équidistants d'un même point A.</dct:title>
+        <dct:description><![CDATA["active":true,"data":[{"type":"segment","value":[290.05,53.92,323.05,50.23],"active":false},{"type":"segment","value":[320,180,323.05,50.23],"active":false,"attr":{"style":"stroke:#dd8833;"}},{"type":"segment","value":[320,180,379.35,64.76],"active":false,"attr":{"style":"stroke:#dd8833;"}},{"type":"segment","value":[320,180,411.65,88.3],"active":false,"attr":{"style":"stroke:#dd8833;"}},{"type":"segment","value":[320,180,442.11,136.3],"active":false,"attr":{"style":"stroke:#dd8833;"}},{"type":"segment","value":[320,180,449.03,192.14],"active":false,"attr":{"style":"stroke:#dd8833;"}},{"type":"segment","value":[320,180,433.41,243.2],"active":false,"attr":{"style":"stroke:#dd8833;"}},{"type":"segment","value":[320,180,400.81,281.2],"active":false,"attr":{"style":"stroke:#dd8833;"}},{"type":"segment","value":[320,180,350.04,306.13],"active":false,"attr":{"style":"stroke:#dd8833;"}},{"type":"segment","value":[320,180,295.82,307.51],"active":false,"attr":{"style":"stroke:#dd8833;"}},{"type":"segment","value":[320,180,250.82,289.74],"active":false,"attr":{"style":"stroke:#dd8833;"}},{"type":"segment","value":[320,180,205.83,241.52],"active":false,"attr":{"style":"stroke:#dd8833;"}},{"type":"segment","value":[320,180,190.14,188.44],"active":false,"attr":{"style":"stroke:#dd8833;"}},{"type":"segment","value":[320,180,193.57,148.72],"active":false,"attr":{"style":"stroke:#dd8833;"}},{"type":"segment","value":[320,180,207.44,115.53],"active":false,"attr":{"style":"stroke:#dd8833;"}},{"type":"segment","value":[320,180,227.52,88.99],"active":false,"attr":{"style":"stroke:#dd8833;"}},{"type":"segment","value":[320,180,253.59,68.46],"active":false,"attr":{"style":"stroke:#dd8833;"}},{"type":"segment","value":[320,180,290.05,53.92],"active":false,"attr":{"style":"stroke:#dd8833;"}},{"type":"point","value":[320,180],"id":"A","active":false},{"type":"point","value":[323.05,50.23],"id":"1","idpos":90},{"type":"point","value":[379.35,64.76],"id":"2","idpos":60},{"type":"point","value":[411.65,88.3],"id":"3","idpos":45},{"type":"point","value":[442.11,136.3],"id":"4","idpos":30},{"type":"point","value":[449.03,192.14],"id":"5","idpos":340},{"type":"point","value":[433.41,243.2],"id":"6","idpos":310},{"type":"point","value":[400.81,281.2],"id":"7","idpos":290},{"type":"point","value":[350.04,306.13],"id":"8","idpos":275},{"type":"point","value":[295.82,307.51],"id":"9","idpos":260},{"type":"point","value":[250.82,289.74],"id":"10","idpos":240},{"type":"point","value":[205.83,241.52],"id":"11","idpos":210},{"type":"point","value":[190.14,188.44],"id":"12","idpos":180},{"type":"point","value":[193.57,148.72],"id":"13","idpos":160},{"type":"point","value":[207.44,115.53],"id":"14","idpos":140},{"type":"point","value":[227.52,88.99],"id":"15","idpos":120},{"type":"point","value":[253.59,68.46],"id":"16","idpos":100},{"type":"point","value":[290.05,53.92],"id":"17","idpos":100}],"available":["segment"],"number":16,"objectives":[[{"type":"segment","values":[323.05,50.23,379.35,64.76]},{"type":"segment","values":[379.35,64.76,411.65,88.3]},{"type":"segment","values":[411.65,88.3,442.11,136.3]},{"type":"segment","values":[442.11,136.3,449.03,192.14]},{"type":"segment","values":[449.03,192.14,433.41,243.2]},{"type":"segment","values":[433.41,243.2,400.81,281.2]},{"type":"segment","values":[400.81,281.2,350.04,306.13]},{"type":"segment","values":[350.04,306.13,295.82,307.51]},{"type":"segment","values":[295.82,307.51,250.82,289.74]},{"type":"segment","values":[250.82,289.74,205.83,241.52]},{"type":"segment","values":[205.83,241.52,190.14,188.44]},{"type":"segment","values":[190.14,188.44,193.57,148.72]},{"type":"segment","values":[193.57,148.72,207.44,115.53]},{"type":"segment","values":[207.44,115.53,227.52,88.99]},{"type":"segment","values":[227.52,88.99,253.59,68.46]},{"type":"segment","values":[253.59,68.46,290.05,53.92]}]]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":["Les points numérotés de 1 à 17 sont tous [red]à la même distance[/red] du point [b]A[/b]. Reliez les points de 1 à 17 et observez la figure ainsi créée."],"labels":["Segments reliant les points de 1 à 17"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>c001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
         <dct:identifier>c001</dct:identifier>
         <dct:title xml:lang="fr-FR">A partir des points A et B, construire le cercle de centre A et de rayon [AB].</dct:title>
         <dct:description><![CDATA["data":[{"type":"segment","value":[0,0,-150,100],"attr":{"style":"stroke:#dd8833;"}},{"type":"point", "value":[0,0], "id":"A", "active":true}, {"type":"point", "value":[-150,100], "id":"B", "active":true}],"available":["circle"],"number":1,"objectives":[[{"type":"circle", "values":[0,0,180.28]}]],"translate":[320,185.5]]]></dct:description>
@@ -495,10 +507,23 @@
     </rdf:Description>
 
     <rdf:Description>
+        <dct:identifier>c004</dct:identifier>
+        <dct:title xml:lang="fr-FR">Relier le point A aux points se trouvant à la distance AB.</dct:title>
+        <dct:description><![CDATA["active":true,"data":[{"type":"segment","value":[320,180,350.04,306.13],"active":false,"attr":{"style":"stroke:#dd8833;"}},{"type":"point","value":[320,180],"id":"A"},{"type":"point","value":[350,45]},{"type":"point","value":[379.35,64.76]},{"type":"point","value":[405,95]},{"type":"point","value":[442.11,136.3]},{"type":"point","value":[430,192]},{"type":"point","value":[420,240]},{"type":"point","value":[400.81,281.2]},{"type":"point","value":[350.04,306.13],"id":"B","idpos":275},{"type":"point","value":[295,290]},{"type":"point","value":[250.82,289.74]},{"type":"point","value":[215,235]},{"type":"point","value":[180,188]},{"type":"point","value":[193.57,148.72]},{"type":"point","value":[227.52,88.99]},{"type":"point","value":[254,80]},{"type":"point","value":[290,45]}],"available":["segment","circle"],"number":7,"objectives":[[{"type":"circle","values":[320,180,129.7]}],[{"type":"segment","values":[320,180,379.35,64.76]},{"type":"segment","values":[320,180,442.11,136.3]},{"type":"segment","values":[320,180,400.81,281.2]},{"type":"segment","values":[320,180,250.82,289.74]},{"type":"segment","values":[320,180,193.57,148.72]},{"type":"segment","values":[320,180,227.52,88.99]}]]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":["Tracez tous [b]les segments partant de A et de longueur AB[/b].","[strong]Pour rappel, le cercle de centre A et de rayon AB représente l'ensemble des points situés à une même distance de A.[/strong]"],"labels":["Cercle de centre A et de rayon AB","Segments partant de A et de longueur AB."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>c001</dct:alternative>
+    </rdf:Description>
+
+
+    <rdf:Description>
         <dct:identifier>c021</dct:identifier>
         <dct:title xml:lang="fr-FR">A partir des points A,B et C, construire les cercles de centre A et de centre C, tous deux de rayon [AB].</dct:title>
-        <dct:description><![CDATA["data":[{"type":"point", "value":[-100,-20], "id":"A", "active":true},{"type":"point", "value":[-100,80], "id":"B", "active":true},{"type":"point", "value":[150,0], "id":"C", "active":true}],"available":["circle"],"number":2,"objectives":[[{"type":"circle", "values":[-100,-20,100]}],[{"type":"circle", "values":[150,0,100]}]],"translate":[320,185.5]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"L'outil cercle dispose d'un autre mode. Comme avec un compas qui resterait ouvert après avoir tracé un cercle, il est possible en cliquant simplement sur un point de tracer automatiquement un cercle dont le rayon serait celui du cercle précédent. Tracez le premier cercle de centre A puis cliquez sur le point C pour dessiner le cercle suivant.","labels":["Cercle de centre A et de rayon [AB]","Cercle de centre C et de rayon [AB]"]]]></dct:description>
+        <dct:description><![CDATA["data":[{"type":"segment","value":[-100,-20,-100,80],"attr":{"style":"stroke:#dd8833;"}},{"type":"circle","value":[150,0,20],"attr":{"style":"stroke:#dd8833;"}},{"type":"point", "value":[-100,-20], "id":"A", "active":true},{"type":"point", "value":[-100,80], "id":"B", "active":true},{"type":"point", "value":[150,0], "id":"C", "active":true}],"available":["circle"],"number":2,"objectives":[[{"type":"circle", "values":[-100,-20,100]}],[{"type":"circle", "values":[150,0,100]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":["[red]L'outil cercle dispose d'un autre mode[/red]. Comme avec un compas qui resterait ouvert après avoir tracé un cercle, il est possible en cliquant simplement sur un point de tracer automatiquement un cercle dont le [b]rayon serait celui du cercle précédent[/b].","Tracez le premier cercle de centre A et de rayon [AB] puis cliquez sur le point C pour dessiner le cercle suivant."],"labels":["Cercle de centre A et de rayon [AB]","Cercle de centre C et de rayon [AB]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>geometry</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -510,7 +535,7 @@
         <dct:identifier>c022</dct:identifier>
         <dct:title xml:lang="fr-FR">A l'aide de l'outil cercle, dessiner une tête de souris.</dct:title>
         <dct:description><![CDATA["data":[{"type":"point", "value":[0,30], "id":"A", "active":true},{"type":"point", "value":[-50,-50], "id":"B", "active":true},{"type":"point", "value":[-90,-100], "id":"C", "active":true},{"type":"point", "value":[90,-100], "id":"D", "active":true}],"available":["circle"],"number":3,"objectives":[[{"type":"circle", "values":[0,30,94.34]}],[{"type":"circle", "values":[-90,-100,64.03]}],[{"type":"circle", "values":[90,-100,64.03]}]],"translate":[320,185.5]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"Dessinez la tête d'une souris en réalisant les tracés suivants :","labels":["Cercle de centre A et de rayon [AB]","Cercle de centre C et de rayon [CB]","Cercle de centre D et de rayon [CB]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"Dessinez [b]la tête d'une souris[/b] en réalisant les tracés suivants :","labels":["Cercle de centre A et de rayon [AB]","Cercle de centre C et de rayon [CB]","Cercle de centre D et de rayon [CB]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>geometry</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -602,6 +627,18 @@
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:alternative>p001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>p002</dct:identifier>
+        <dct:title xml:lang="fr-FR">Utiliser la barre d'outils pour construire une droite parallèle.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"line","value":[-100,-50,-80,-100],"active":true},{"type":"point", "value":[0,50], "id":"A", "active":true,"idpos":315},{"type":"point", "value":[50,0], "id":"B", "active":true,"idpos":315}],"available":["parallel"],"number":2,"objectives":[[{"type":"line", "values":[50,-68.2]}],[{"type":"line", "values":[125,-68.2]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":["Construisez les parallèles à la droite passant par A et par B.","","[strong]Lorsque deux droites d1 et d2 sont parallèles, on écrit : d1//d2[/strong]",""],"labels":["Droite parallèle passant par A","Droite parallèle passant par B"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
         <dct:alternative>p001</dct:alternative>
     </rdf:Description>
 

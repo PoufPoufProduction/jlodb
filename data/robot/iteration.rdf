@@ -476,6 +476,7 @@
         <dct:identifier>da</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser l'action d'inversion pour faire avancer le robot jusqu'à la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[1,2]],"robots":[{"origin":[0,0,0],"code":[2,0,0],"actions":["invert","b01"]}],"padding":0]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["L'opérateur 'INVERSION DES COMMANDES' ne change pas\\nla position du robot mais lui permet de rentrer en\\nmode bugué. Dans ce mode, les actions du programmes\\nsont inversées par le processeur du robot."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -521,11 +522,13 @@
         <dct:identifier>de</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser l'action d'inversion pour annuler l'effet d'une case d'inversion.</dct:title>
         <dct:description><![CDATA["board":[[456,476,476,476,476,456],[1,1,1,22,1,2]],"robots":[{"origin":[0,1,0],"code":[18,0,0],"actions":["f01","f01","f01","x2","x2","x2","invert"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Lorsque le robot est déjà bugué (avec le symbole\\nau-dessus de sa tête), l'opérateur 'INVERSION DES\\nCOMMANDES' permet de rétablir un fonctionnement\\nnormal."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>aa</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -579,6 +582,7 @@
         <dct:identifier>ea</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser une boucle utilisateur (4 par défaut) et faire avancer le robot de 4 cases.</dct:title>
         <dct:description><![CDATA["board":[[470,470,470,470,654],[1,1,1,1,2]],"robots":[{"origin":[0,1,0],"code":[2,0,0],"actions":["f01","xnum"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["L'opérateur de multiplication introduit dans\\nce niveau permet de répéter une action autant\\nde fois que la valeur affichée sur l'écran\\nanalogique présent sur le plateau."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -613,6 +617,7 @@
         <dct:identifier>ed</dct:identifier>
         <dct:title xml:lang="fr-FR">Modifier le nombre d'itérations de la boucle utilisateur et faire avancer le robot de 4 cases.</dct:title>
         <dct:description><![CDATA["board":[[461,461,463,470,658],[1,13,1,1,2]],"robots":[{"origin":[0,1,0],"code":[4,0,0],"actions":["f01","f01","xnum","num"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Le nouvel opérateur introduit dans ce niveau\\npermet de changer la valeur de l'écran analo-\\ngique en la remplaçant par la valeur de la\\ndalle sur laquelle se trouve le robot."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -636,6 +641,102 @@
         <dct:identifier>eg</dct:identifier>
         <dct:title xml:lang="fr-FR">Modifier le nombre d'itérations de la boucle utilisateur et trouver le bon chemin pour faire avancer le robot jusqu'à la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[0,0,0,0,0,0,0,0,650,0],[1,13,14,14,16,11,19,12,11,2]],"robots":[{"origin":[0,1,0],"code":[18,0,0],"actions":["f01","f01","f01","f01","b01","xnum","xnum","xnum","num","num","num"]}]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>aa</dct:alternative>
+    </rdf:Description>
+
+    <!-- Num: f[a-z] -->
+
+    <rdf:Description>
+        <dct:identifier>fa</dct:identifier>
+        <dct:title xml:lang="fr-FR">Modifier le nombre d'itérations de la boucle utilisateur grâce aux opérateurs fournis et faire avancer le robot jusqu'à la case d'arrivée.</dct:title>
+        <dct:description><![CDATA["board":[[0,0,492,0,0,0,650,0],[1,1,1,1,1,1,1,2],[0,0,491,0,0,0,0,0]],"robots":[{"origin":[0,1,0],"code":[18,0,0],"actions":["f01","num7","xnum"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Il est possible de changer la valeur de l'écran\\nanalogique grâce à l'opérateur adéquat."]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>aa</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>fb</dct:identifier>
+        <dct:title xml:lang="fr-FR">Modifier le nombre d'itérations de la boucle utilisateur grâce aux opérateurs fournis et faire avancer le robot jusqu'à la case d'arrivée.</dct:title>
+        <dct:description><![CDATA["board":[[462,461,650],[462,1,2]],"robots":[{"origin":[1,1,2],"code":[18,0,0],"actions":["f01","turnleft","num2","xnum"]}]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>aa</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>fc</dct:identifier>
+        <dct:title xml:lang="fr-FR">Modifier le nombre d'itérations de la boucle utilisateur grâce aux opérateurs fournis et faire avancer le robot jusqu'à la case d'arrivée.</dct:title>
+        <dct:description><![CDATA["board":[[462,461,650],[462,1,2]],"robots":[{"origin":[1,1,2],"code":[18,0,0],"actions":["f01","turnleft","num4","num5","num6","num7","xnum"]}]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>aa</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>fd</dct:identifier>
+        <dct:title xml:lang="fr-FR">Modifier le nombre d'itérations de la boucle utilisateur grâce aux opérateurs fournis et faire avancer le robot jusqu'à la case d'arrivée.</dct:title>
+        <dct:description><![CDATA["board":[[462,461,650],[462,1,2]],"robots":[{"origin":[1,1,3],"code":[18,0,0],"actions":["f01","turnleft","num4","num5","num6","num7","xnum"]}]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>aa</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>ff</dct:identifier>
+        <dct:title xml:lang="fr-FR">Modifier le nombre d'itérations de la boucle utilisateur grâce aux opérateurs fournis et faire avancer le robot jusqu'à la case d'arrivée.</dct:title>
+        <dct:description><![CDATA["board":[[0,0,0,0,0,655,0],[1,1,1,1,1,1,2],[0,0,0,0,0,0,0]],"robots":[{"origin":[0,1,0],"code":[18,0,0],"actions":["f01","numplus","xnum"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["L'opérateur '++' permet d'ajounter 1 à la\\nvaleur de l'écran analogique."]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>aa</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>fg</dct:identifier>
+        <dct:title xml:lang="fr-FR">Modifier le nombre d'itérations de la boucle utilisateur grâce aux opérateurs fournis et faire avancer le robot jusqu'à la case d'arrivée.</dct:title>
+        <dct:description><![CDATA["board":[[480,1,1,1,1],[478,0,0,652,1],[2,1,1,1,1]],"robots":[{"origin":[1,0,0],"code":[18,0,0],"actions":["f01","f01","f01","numplus","numplus","numplus","numminus","turnright","turnright","xnum","xnum","xnum"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["L'opérateur '--' permet de retrancher 1 à la\\nvaleur de l'écran analogique."]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>aa</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>fh</dct:identifier>
+        <dct:title xml:lang="fr-FR">Modifier le nombre d'itérations de la boucle utilisateur grâce aux opérateurs fournis et faire avancer le robot jusqu'à la case d'arrivée.</dct:title>
+        <dct:description><![CDATA["board":[[4,4,650,0],[1,1,4,4],[1,1,1,1],[1,1,1,1],[1,3,3,1],[1,2,1,4]],"robots":[{"origin":[0,5,3],"code":[18,0,0],"actions":["f01","f01","f01","f01","f01","f01","f01","f01","num2","num5","numplus","numminus","numminus","xnum","xnum","xnum","xnum","xnum"]}]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>aa</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>fi</dct:identifier>
+        <dct:title xml:lang="fr-FR">Modifier le nombre d'itérations de la boucle utilisateur grâce aux opérateurs fournis et faire avancer le robot jusqu'à la case d'arrivée.</dct:title>
+        <dct:description><![CDATA["board":[[1,1,1,1],[1,0,650,1],[1,0,468,1],[1,0,2,1]],"robots":[{"origin":[0,3,3],"code":[18,0,0],"actions":["f01","f01","f01","f01","turnleft","turnleft","turnleft","num2","numplus","numplus","numminus","numminus","xnum","xnum","xnum","xnum","xnum","xnum","xnum","xnum"]}]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>

@@ -838,6 +838,7 @@
                         text = text.replace(/<svg/,'<svg xmlns:xlink="http://www.w3.org/1999/xlink"');
                     }
                     if (text.search("xlink:href")==-1)  { text = text.replace(/href/,'xlink:href'); }
+                    text = text.replace(/id="pencil"/, 'id="pencil" style="display:none;"');
                     $(this).find("#export").html("<img title='export' src='data:image/svg+xml;charset=utf-8,"+
                                                   encodeURIComponent(text)+"'/>").show();
             }
