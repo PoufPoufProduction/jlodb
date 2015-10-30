@@ -8,10 +8,12 @@
         lang        : "en-US",                                  // Current localization
         exercice    : [],                                       // Exercice
         wallet      : [10,5,6,10,5,6,10,5,2,5,5,2,1],           // initial wallet
+        errratio    : 1,                                        // Error ratio
         debug       : true                                     // Debug mode
     };
 
     var coins = [ "cent1","cent2","cent5","cent10","cent20","cent50","coin1b","coin2","bill5","bill10","bill20","bill50","bill100" ];
+    var valc = [ 0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 50, 100 ];
     var cc = [ 0.9, 1.1, 1.3, 1.1, 1.5, 2, 1.7, 2, 0.5, 0.5, 0.5, 0.5, 1];
     var change = [ [[0,1]], [[0,2]], [[0,1],[1,2]], [[2,2]], [[3,2]], [[3,1],[4,2]], [[5,2]], [[6,2]], [[6,1],[7,2]], [[8,2]],
                    [[9,2]], [[9,1],[10,2]], [[11,2]] ];
@@ -77,8 +79,14 @@
 
                 $this.css("font-size", Math.floor($this.height()/12)+"px");
 
-                $this.find("#pcalculator").draggable({containment:$this.find("#board"), stack:".panel", handle:"#screen"});
-                $this.find(".wallet").draggable({containment:$this.find("#board"), stack:".panel"});
+                $this.find("#pcalculator").draggable({containment:$this.find("#board"), stack:".pstack", handle:"#screen"});
+                $this.find(".wallet").draggable({containment:$this.find("#board"), stack:".pstack"});
+                $this.find("#pbill").draggable({containment:$this.find("#board"), stack:".pstack"});
+
+                if (settings.menu) {
+                    $this.find("#menu .tab").hide();
+                    for (var i in settings.menu) { $this.find("#menu #"+settings.menu[i]).show(); }
+                }
 
                 // Fill the wallet
                 var x = 0; y = 0;
@@ -91,7 +99,7 @@
                         x=x+0.1;
                         $this.find("#pwallet>div").append(c);
                     }
-                    x=x+cc[i];
+                    if (settings.wallet[i]) { x=x+cc[i]; }
                 }
                 $this.find(".a").each(function() { helpers.panel.draggable($this, $(this)); });
 
@@ -141,9 +149,11 @@
                 }
                 });
 
+                /*
                 $this.find("#pmoney").show();
                 for (var i=0;i<10;i++)
                 helpers.panel.add($this, "#pmoney", Math.floor(Math.random()*12));
+                */
 
                 // Locale handling
                 $this.find("h1#label").html(settings.label);
@@ -166,7 +176,7 @@
             },
             enter : function ($this, _callback) {
                 var settings = helpers.settings($this);
-                if (settings.here != settings.data[settings.it].here) {
+                if (settings.data[settings.it].here && settings.here != settings.data[settings.it].here) {
                     settings.here = settings.data[settings.it].here;
                     $this.find("#people #"+settings.here).css("left","-1.5em").show().animate({left:0},1000, _callback);
                 }
@@ -176,19 +186,28 @@
         run: function($this) {
             var settings = helpers.settings($this);
             helpers.whoishere.run($this, function() {
+                var text = settings.data[settings.it].text;
+                if (!$.isArray(text) && settings.dialog[text]) { text = settings.dialog[text]; }
+                if (!$.isArray(text)) { text = [text]; }
                 switch(settings.data[settings.it].type) {
                     case "dialog" :
-                        var dialog = settings.data[settings.it].value;
-                        if (!$.isArray(dialog) && settings.dialog[dialog]) { dialog = settings.dialog[dialog]; }
-                        if (!$.isArray(dialog)) { dialog = [dialog]; }
-                        helpers.text.run($this, { id:settings.data[settings.it].from, dialog:dialog},
+                        helpers.text.run($this, { id:settings.data[settings.it].from, dialog:text},
                         function(){ helpers.next($this); } );
+                        break;
+                    case "bill" :
+                        $("#pbill .f").each(function(_index){ $(this).html(text[_index]); });
+                        $("#pbill #billval").html(settings.data[settings.it].value);
+                        $("#pbill").removeClass();
+                        if (settings.data[settings.it].subtype) { $("#pbill").addClass(settings.data[settings.it].subtype); }
+                        $("#pbill").show();
+                        $("#pmoney").show();
                         break;
                 }
             });
         },
         next: function($this) {
             var settings = helpers.settings($this);
+            if (settings.score<0) { settings.score = 0; }
             if (++settings.it<settings.data.length) { helpers.run($this); } else { helpers.end($this); }
         },
         text: {
@@ -292,6 +311,29 @@
                 else { settings.calculator+=value.toString(); }
             }
             $this.find("#screen").html(settings.calculator.length?settings.calculator:"0");
+        },
+        money: function($this) {
+            var settings = helpers.settings($this);
+            var value = 0;
+            $this.find("#pmoney .a").each( function() { value+= valc[parseInt($(this).attr("class").substr(1,2))]; });
+            $this.find("#pmoney .a").animate({opacity:0},500, function() { $(this).detach(); });
+
+            switch(settings.data[settings.it].type) {
+                case "bill" :
+                    settings.interactive = false;
+                    if (value==settings.data[settings.it].value) {
+                        $this.find("#pvalid").addClass("good");
+                    } else {
+                        settings.score -= settings.errratio;
+                        $this.find("#pvalid").addClass("wrong");
+                    }
+                    setTimeout(function() {
+                        $this.find("#pmoney").hide();
+                        $this.find("#pbill").hide();
+                        helpers.next($this);
+                    },1000);
+                break;
+            }
         }
     };
 
@@ -309,7 +351,8 @@
                     it              : 0,
                     here            : "",
                     text            : { timerid : 0, value:{}, page:0, count: 0, callback:0},
-                    coins           : { wallet: 0 }
+                    coins           : { wallet: 0 },
+                    score           : 5
                 };
 
                 return this.each(function() {
@@ -357,7 +400,8 @@
                 }
                 helpers.key($(this), value, false);
             },
-            bubbles: function() { helpers.text.click($(this)); }
+            bubbles: function() { helpers.text.click($(this)); },
+            valid: function() { helpers.money($(this)); }
         };
 
         if (methods[method])    { return methods[method].apply(this, Array.prototype.slice.call(arguments, 1)); } 

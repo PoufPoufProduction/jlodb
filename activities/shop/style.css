@@ -1,15 +1,25 @@
 .shop                            { background-image:url("../../res/img/background/shop01.svg");}
-.shop div#splashex               { background-image:url("../../res/img/banners/shop.svg"); background-color:rgba(0,0,0,0.7); }
-.shop div#splashex h1            { position:absolute; top:8%; left:-5%; width:60%; font-size:1.5em; background-color:rgba(200,100,0,0.9);
-                                   padding-left:2em; border:.2em solid white; border-radius:0 .5em .5em 0; color:rgb(255,200,100);}
-.shop div#splashex #guide        { position:absolute; top:75%; left:30%; font-size:.75em; width:65%; text-align:justify;
-                                   background-color:rgba(255,255,255,0.9); padding:.2em; border-radius:.5em; border:.2em solid white;
-                                   font-style:italic; }
+.shop div#splashex               { background-image:url("../../res/img/banners/operation.svg"); background-color:rgba(0,0,0,0.7); }
+.shop div#splashex h1            { position:absolute; top:15%; left:68%; font-size:1.1em; color:#222;}
+.shop div#splashex #guide        { position:absolute; top:22%; left:65%; font-size:.7em; width:30%; text-align:justify; font-style:italic; }
 
 .shop div#board                  { height:20em; font-size:.6em; }
 
 .shop #people                     { position:absolute; overflow:visible;font-size:6.2em; }
 .shop #people>div                 { width:1em; height:1em; position:absolute; top:0.6em; display:none; }
+
+.shop .cell                         { width:5em; height:1.2em; border:1px solid red; text-align:center; font-weight:bold; color:red;
+                                    float:right; margin-right:0.2em; }
+
+.shop #pbill                       { position:absolute; width:9em; height:4em; background-color:white; border:.05em solid black;
+                                     display:none; top:2%; left:2%; }
+.shop #pbill>div                    { font-size:.4em; }
+.shop #pbill .header                { color:#004; text-align:right; margin-right:0.5em; }
+.shop #pbill .title                 { font-size:2em; padding-left:10%; }
+.shop #pbill .date                  { font-size:0.8em; padding-left:10%; border:1px solid black; border-width:0 0 0.1em 0; margin-bottom:1em; }
+.shop #pbill .topay                 { float:left; margin-left:1em; font-size:1.5em; color:red; }
+.shop #pbill #billval               { font-size:2em;   }
+.shop #pbill .footer                { padding:1em 0 0 1em; clear:both; font-size:.8em; color:#004; }
 
 .shop .panel                      { display:none; background-color:rgba(0,0,0,0.8); border:.1em solid black;
                                     border-radius:.25em; overflow:visible; width:8em; height:8em; padding:.06em;}
@@ -19,6 +29,8 @@
 .shop #pmoney                     { position:absolute; top:2%; left:38%;  }
 .shop #pmoney #pvalid             { position:absolute; top:3.5em; left:3.5em; font-size:2em; width:1em; height:1em;
                                     background-color:rgba(255,255,255,0.8); border-radius:0.5em; cursor:pointer;}
+.shop #pmoney #pvalid.good        { background-color:rgba(0,255,0,0.8); }
+.shop #pmoney #pvalid.wrong       { background-color:rgba(255,0,0,0.8); }
 .shop #pchange                    { position:absolute; top:45%; left:38%; }
 .shop #pchange>div                { background-image:url("../../res/img/background/shop/change.svg"); }
 .shop #pchange #pmask             { position:absolute; width:8em; height:8em; background-color:red; border-radius:.25em;z-index:100;display:none;}
@@ -50,6 +62,7 @@
                                     background-color:rgba(0,0,0,0.8); cursor:pointer; border-radius:.5em ; overflow:visible;}
 .shop #menu .tab.s                      { background-color:rgba(255,0,0,0.8); }
 
+
 .shop #pcalculator #screen             { font-size:1.5em; width:3em; border-radius:.25em; cursor:move;
                                     text-align:center; color:#0F0; font-weight:bold;
                                       padding:.2em; background-color:#030;
@@ -71,7 +84,7 @@
 .shop #bubbles .talk                  { position:absolute; border-radius: .5em; background: #FE7; opacity:0.9; display:none;
                                   border:.1em solid #530; padding:.2em .5em; font-size:.6em; overflow:visible; cursor:pointer; }
 .shop #bubbles .talk:before           { content:""; display : block; position:absolute; font-size:.5em; background: #FE7; border:.2em solid #530; }
-.shop bubbles .talk .content         {  white-space: pre; }
+.shop #bubbles .talk .content         { font-size:.8em; }
 .shop #bubbles #owner                { width:40%; height:15%; left:40%; top:5%; }
 .shop #bubbles #owner:before          {  width:2em; height:1em;  border-radius:.5em 0 0 .5em;  left:-2em; top:8em;
                                 border-width:.2em 0 .2em .2em; }

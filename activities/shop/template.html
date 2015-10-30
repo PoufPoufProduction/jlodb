@@ -4,10 +4,13 @@
             <div id="postman" class="dealer"><img src="res/img/ppvc/postman01.svg"/></div>
             <div id="dealer01" class="dealer"><img src="res/img/ppvc/geek01.svg"/></div>
         </div>
-        <div id="pmoney" class="panel wallet"><div><div id="pvalid"><img src="res/img/icon/valid.svg"/></div></div></div>
-        <div id="pwallet" class="panel wallet"><div></div></div>
-        <div id="pchange" class="panel wallet"><div><div id="pmask"></div></div></div>
-        <div id="pcalculator" class="panel">
+        <div id="pmoney" class="panel wallet pstack"><div>
+            <div id="pvalid" ontouchstart="$(this).closest('.shop').shop('valid');event.preventDefault();"
+                        onclick="$(this).closest('.shop').shop('valid');"><img src="res/img/icon/valid.svg"/></div>
+        </div></div>
+        <div id="pwallet" class="panel wallet pstack"><div></div></div>
+        <div id="pchange" class="panel wallet pstack"><div><div id="pmask"></div></div></div>
+        <div id="pcalculator" class="panel pstack">
             <table>
                 <tr><td colspan="3"><div id="screen" class="movepanel">0</div></td></tr>
                 <tr>
@@ -53,6 +56,14 @@
             </table>
         </div>
 
+        <div id="pbill" class="pstack"><div>
+            <div class="header f"></div>
+            <div class="title f"></div>
+            <div class="date f"></div>
+            <div class="topay f"></div><div id="billval" class="cell"></div>
+            <div class="footer f"></div>
+        </div></div>
+
         <div id="menu">
             <div id="calculator" class="tab" onclick="$(this).closest('.shop').shop('menu','calculator');"
                     ontouchstart="$(this).closest('.shop').shop('menu','calculator');event.preventDefault();" >
@@ -68,8 +79,8 @@
 
         <div id="bubbles" onclick="$(this).closest('.shop').shop('bubbles');"
                           ontouchstart="$(this).closest('.shop').shop('bubbles');event.preventDefault();">
-            <div id="owner" class="talk"><div class="content"></div></div>
-            <div id="client" class="talk"><div class="content"></div></div>
+            <div id="owner" class="talk"><pre class="content"></pre></div>
+            <div id="client" class="talk"><pre class="content"></pre></div>
         </div>
 
     </div>
