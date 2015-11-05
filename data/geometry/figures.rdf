@@ -508,9 +508,70 @@
 
     <rdf:Description>
         <dct:identifier>c004</dct:identifier>
+        <dct:title xml:lang="fr-FR">Tracer l'intersection de 2 cercles.</dct:title>
+        <dct:description><![CDATA["active":true,"data":[{"type":"circle", "value":[100,-10,50]}, {"type":"circle", "value":[-50,20,150]}],"available":["intersection"],"number":1,"objectives":[[{"type":"point", "values":[79.5,-55.6]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":["De la même façon que pour l'intersection de 2 droites, il est possible de tracer l'intersection de 2 cercles. Sélectionnez l'opération INTERSECTION, cliquez sur le premier cercle puis en maintenant la pression, glissez vers le deuxième. Relachez enfin la pression pour dessiner l'intersection des 2 cercles.","[strong]Deux cercles, lorsqu'ils se coupent, ont une intersection formée de 2 points du plan.[/strong]"],"labels":["Points d'intersection des deux cercles."]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>c001</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>c005</dct:identifier>
+        <dct:title xml:lang="fr-FR">Tracer toutes les intersections de cercles possibles.</dct:title>
+        <dct:description><![CDATA["active":true,"data":[{"type":"circle", "value":[-100,0,50]},{"type":"circle", "value":[-210,-40,50]},{"type":"circle", "value":[210,-100,40]},{"type":"circle", "value":[-100,0,150]},{"type":"circle", "value":[-50,20,150]},{"type":"circle", "value":[130,0,70]}],"available":["intersection"],"number":4,"objectives":[[{"type":"point", "values":[-249.7,-9.6]},{"type":"point", "values":[-199.6,8.9]},{"type":"point", "values":[-129.8,147]},{"type":"point", "values":[82.1,-51.1]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":["Tracez toutes les intersections de cercles possibles."],"labels":["Points d'intersection des différents cercles."]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>c001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>c006</dct:identifier>
+        <dct:title xml:lang="fr-FR">A partir des points A et B, construire les cercles de centre A et de centre B, tous deux de rayon [AB] ainsi que leurs intersections.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"segment","value":[100,-10,-50,20],"attr":{"style":"stroke:#dd8833;"}},{"type":"point", "value":[100,-10], "id":"A", "active":true}, {"type":"point", "value":[-50,20], "id":"B", "active":true}],"available":["circle","intersection"],"number":3,"objectives":[[{"type":"circle", "values":[100,-10,152.97]}],[{"type":"circle", "values":[-50,20,152.97]}],[{"type":"point", "values":[-1,-124.9]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":["Tracez les éléments demandés."],"labels":["Cercle de centre A et de rayon [AB]","Cercle de centre B et de rayon [AB]","Intersection des 2 cercles"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>c001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>c011</dct:identifier>
         <dct:title xml:lang="fr-FR">Relier le point A aux points se trouvant à la distance AB.</dct:title>
-        <dct:description><![CDATA["active":true,"data":[{"type":"segment","value":[320,180,350.04,306.13],"active":false,"attr":{"style":"stroke:#dd8833;"}},{"type":"point","value":[320,180],"id":"A"},{"type":"point","value":[350,45]},{"type":"point","value":[379.35,64.76]},{"type":"point","value":[405,95]},{"type":"point","value":[442.11,136.3]},{"type":"point","value":[430,192]},{"type":"point","value":[420,240]},{"type":"point","value":[400.81,281.2]},{"type":"point","value":[350.04,306.13],"id":"B","idpos":275},{"type":"point","value":[295,290]},{"type":"point","value":[250.82,289.74]},{"type":"point","value":[215,235]},{"type":"point","value":[180,188]},{"type":"point","value":[193.57,148.72]},{"type":"point","value":[227.52,88.99]},{"type":"point","value":[254,80]},{"type":"point","value":[290,45]}],"available":["segment","circle"],"number":7,"objectives":[[{"type":"circle","values":[320,180,129.7]}],[{"type":"segment","values":[320,180,379.35,64.76]},{"type":"segment","values":[320,180,442.11,136.3]},{"type":"segment","values":[320,180,400.81,281.2]},{"type":"segment","values":[320,180,250.82,289.74]},{"type":"segment","values":[320,180,193.57,148.72]},{"type":"segment","values":[320,180,227.52,88.99]}]]]]></dct:description>
+        <dct:description><![CDATA["active":true,"data":[{"type":"segment","value":[320,180,350.04,306.13],"active":false,"attr":{"style":"stroke:#dd8833;"}},{"type":"point","value":[320,180],"id":"A"},{"type":"point","value":[350,45]},{"type":"point","value":[379.35,64.76]},{"type":"point","value":[405,95]},{"type":"point","value":[442.11,136.3]},{"type":"point","value":[430,192]},{"type":"point","value":[420,240]},{"type":"point","value":[400.81,281.2]},{"type":"point","value":[350.04,306.13],"id":"B","idpos":275},{"type":"point","value":[295,290]},{"type":"point","value":[250.82,289.74]},{"type":"point","value":[215,235]},{"type":"point","value":[180,188]},{"type":"point","value":[193.57,148.72]},{"type":"point","value":[227.52,88.99]},{"type":"point","value":[254,80]},{"type":"point","value":[290,45]}],"available":["segment","circle"],"number":8,"objectives":[[{"type":"circle","values":[320,180,129.7]}],[{"type":"segment","values":[320,180,379.35,64.76]},{"type":"segment","values":[320,180,442.11,136.3]},{"type":"segment","values":[320,180,400.81,281.2]},{"type":"segment","values":[320,180,250.82,289.74]},{"type":"segment","values":[320,180,193.57,148.72]},{"type":"segment","values":[320,180,227.52,88.99]}]]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"statement":["Tracez tous [b]les segments partant de A et de longueur AB[/b].","[strong]Pour rappel, le cercle de centre A et de rayon AB représente l'ensemble des points situés à une même distance de A.[/strong]"],"labels":["Cercle de centre A et de rayon AB","Segments partant de A et de longueur AB."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>c001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>c012</dct:identifier>
+        <dct:title xml:lang="fr-FR">Relier le point A aux points se trouvant à une distance inférieure ou égale à AB.</dct:title>
+        <dct:description><![CDATA["active":true,"data":[{"type":"segment","value":[320,180,350.04,306.13],"active":false,"attr":{"style":"stroke:#dd8833;"}},{"type":"circle","value":[320,180,129.7],"active":false,"attr":{"style":"fill:blue;fill-opacity:0.2;"}},{"type":"point","value":[320,180],"id":"A"},{"type":"point","value":[350.04,306.13],"id":"B","idpos":275},{"type":"point","value":[193.57,148.72]},{"type":"point","value":[379.35,64.76]},{"type":"point","value":[400.81,281.2]},{"type":"point","value":[300,150]},{"type":"point","value":[400,200]},{"type":"point","value":[250,250]},{"type":"point","value":[350,70]},{"type":"point","value":[150,50]},{"type":"point","value":[500,200]},{"type":"point","value":[100,300]},{"type":"point","value":[400,320]}],"available":["segment"],"number":8,"objectives":[[{"type":"segment","values":[320,180,193.57,148.72]},{"type":"segment","values":[320,180,379.35,64.76]},{"type":"segment","values":[320,180,400.81,281.2]},{"type":"segment","values":[320,180,300,150]},{"type":"segment","values":[320,180,400,200]},{"type":"segment","values":[320,180,250,250]},{"type":"segment","values":[320,180,350,70]}]]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":["Tracez tous [b]les segments partant de A et dont la longueur est inférieure ou égale à AB[/b].","[strong]On appelle 'disque' de centre A et de rayon AB tous les points dont la distance à A est inférieure à AB.[/strong]"],"labels":["Segments partant de A et de longueur inférieure ou égale à AB."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>c001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>c013</dct:identifier>
+        <dct:title xml:lang="fr-FR">Relier le point A aux points se trouvant à une distance strictement inférieure à AB.</dct:title>
+        <dct:description><![CDATA["active":true,"data":[{"type":"segment","value":[320,180,350.04,306.13],"active":false,"attr":{"style":"stroke:#dd8833;"}},{"type":"circle","value":[320,180,129.7],"active":false,"attr":{"style":"fill:blue;fill-opacity:0.2;"}},{"type":"point","value":[320,180],"id":"A"},{"type":"point","value":[350.04,306.13],"id":"B","idpos":275},{"type":"point","value":[193.57,148.72]},{"type":"point","value":[379.35,64.76]},{"type":"point","value":[400.81,281.2]},{"type":"point","value":[300,150]},{"type":"point","value":[400,200]},{"type":"point","value":[250,250]},{"type":"point","value":[350,70]},{"type":"point","value":[150,50]},{"type":"point","value":[500,200]},{"type":"point","value":[100,300]},{"type":"point","value":[400,320]}],"available":["segment"],"number":4,"objectives":[[{"type":"segment","values":[320,180,300,150]},{"type":"segment","values":[320,180,400,200]},{"type":"segment","values":[320,180,250,250]},{"type":"segment","values":[320,180,350,70]}]]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":["Tracez tous [b]les segments partant de A et dont la longueur est strictement inférieure à AB[/b].","[strong]On appelle 'disque ouvert' l'ensemble des points dont la distance avec le centre est strictement inférieure au rayon.[/strong]","[strong]On appelle 'disque fermé' l'ensemble des points dont la distance avec le centre est inférieure ou égale au rayon.[/strong]"],"labels":["Segments partant de A et de longueur strictement inférieure à AB."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>geometry</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>

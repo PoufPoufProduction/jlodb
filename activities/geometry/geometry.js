@@ -30,7 +30,8 @@
         "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
         "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
         "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
-        "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>"
+        "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>",
+        "\\\[small\\\](.+)\\\[/small\\\]",          "<div class='small'>$1</div>"
     ];
 
     // private methods
@@ -585,6 +586,9 @@
                 },
                 convert3: function($this, i1,j1,dir) {
                     return this.convert4($this,i1,j1,i1+Math.cos(dir*Math.PI/180),j1+Math.sin(dir*Math.PI/180));
+                },
+                convert2: function($this, i1,dir) {
+                    return this.convert3($this, (dir==90?i1:0),(dir==90?0:i1),dir);
                 }
             },
             round: function(x) { return Math.round(x*10)/10; },
@@ -790,6 +794,9 @@
                     }
                     else if (elt.value.length==3) {
                         pos = helpers.utility.line.convert3($this, elt.value[0], elt.value[1], elt.value[2]);
+                    }
+                    else if (elt.value.length==2) {
+                        pos = helpers.utility.line.convert2($this, elt.value[0], elt.value[1]);
                     }
                     if (pos) {
                         var object = helpers.factory.build($this, "line", [pos.i1, pos.j1, pos.i2, pos.j2], elt.attr);
