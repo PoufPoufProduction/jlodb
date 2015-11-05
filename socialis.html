@@ -1056,11 +1056,17 @@ $(window).load(function() {
             $("body").css("font-size", (Math.min(x,y))+"px");
             $("#main").css("margin-top", Math.floor(($(window).height()-$("#main").height())/2)+"px").show();
 
-            // DEBUG MODE
+            // HANDLE MODE
             var a = location.search.substring(1).split('&');
-            $("body").toggleClass("debug",(a.length&& a[0]=="debug"));
+            var group="";
+            for (var it in a) {
+                var aa = a[it].split('=');
+                if (aa[0]=="g" && aa.length>1) { group = aa[1]; }
+            }
+
 
             $("#main>#genius #board").genius({
+                group : group,
                 state: function($this, _id, _ex, _cbk) {
                     socialis.getJSON("mods/socialis/api/state.php", {node:_id}, "", function(_state) {
                         var state = _state.state;

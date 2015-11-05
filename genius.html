@@ -92,12 +92,17 @@ $(window).load(function() {
             $("body").css("font-size", (Math.min(x,y))+"px");
             $("#main").css("margin-top", Math.floor(($(window).height()-$("#main").height())/2)+"px").show();
 
-            // DEBUG MODE
+            // HANDLE MODE
             var a = location.search.substring(1).split('&');
-            $("body").toggleClass("debug",(a.length&& a[0]=="debug"));
-            if (a.length) { $("#genius").addClass(a[0]); }
+            var group="";
+            for (var it in a) {
+                var aa = a[it].split('=');
+                if (aa[0]=="cookie") { if (aa.length==1 || aa[1]=="1") { genius.cookie=true; } } else
+                if (aa[0]=="g" && aa.length>1) { group = aa[1]; }
+            }
 
             $("#genius #board").genius({
+                group : group,
                 state: function($this, _id, _ex, _cbk) {
                     var state=".";
                     if (genius.cookie) { if ($.cookie("node"+_id)) { state = $.cookie("node"+_id); } }
@@ -230,10 +235,6 @@ $(window).load(function() {
             <div id="waiting" class="anim12"><div><img src="res/img/generic/waiting.svg"/></div></div>
             <div id="gsplash"><div onclick="$('#gsplash').hide(); genius.state();"
                                 ontouchstart="$('#gsplash').hide(); genius.state(); event.preventDefault();">
-                <div id="cookies" onclick="$('#gsplash').hide(); genius.cookie=true;genius.state(); event.stopPropagation();"
-                    ontouchstart="$('#gsplash').hide();genius.cookie=true;genius.state();event.preventDefault();event.stopPropagation();">
-                    <img src="mods/genius/res/img/cookies.svg"/>
-                </div>
             </div></div>
         </div>
 
@@ -267,6 +268,9 @@ $(window).load(function() {
                     onclick="$('#launcher').jlodb('close', false);$('#menu').menu('next');"><img src="res/img/icon/next.svg"/></div>
             </div>
         </div></div>
+<!--
+    <div id="output" style="position:absolute;top:1%;left:1%;font-size:.5em;color:white;"></div>
+-->
 
     </div>
 

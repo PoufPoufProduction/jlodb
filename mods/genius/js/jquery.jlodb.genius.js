@@ -6,12 +6,18 @@
         css         : "style.css",              // Activity css style sheet
         lang        : "fr-FR",                  // Current localization
         menu        : "menu",                   // Menu id
+        group       : "",                       // Use a specific group
         debug       : true                      // Debug mode
     };
 
     var s = {
         opened      : 1,
         finished    : 2
+    };
+
+    var groups = {
+        debug: { w:80, alone:true, max:1.5 },
+        it : { w:160, max:2 }
     };
 
     // private methods
@@ -82,16 +88,49 @@
                 var settings = helpers.settings($this),debug = "";
                 if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
                 var elt= $("<div id='svg'></div>").appendTo($this.find("#map"));
-                elt.svg();
-                settings.svg = elt.svg('get');
-                $(settings.svg).attr("class",settings.class);
-                settings.svg.load('mods/genius/data/locale/'+settings.lang+'/map.svg' + debug,
-                    { addTo: true, changeSize: true, onLoad:function() { helpers.loader.build($this); }
+
+                $.ajax({
+                    url: 'mods/genius/data/'+(settings.group?'map':'locale/'+settings.lang)+'/map.svg' + debug,
+                    dataType: 'text'
+                }).done(function( data ) {
+                        settings.nav.w = settings.group?groups[settings.group].w:640;
+                        settings.nav.max = settings.group?groups[settings.group].max:3;
+                        data=data.replace("0 0 640 480","0 0 "+settings.nav.w+" "+(settings.nav.w*3/4));
+                        
+                        elt.svg();
+                        settings.svg = elt.svg('get');
+
+                        settings.svg.load(data, { addTo: true, changeSize: true, onLoad:function() {
+                            if (settings.group) {
+                                $.ajax({
+                                    url: 'mods/genius/data/map/'+settings.group+'.xml' + debug,
+                                    dataType: 'text'
+                                }).done(function( data ) {
+                                        $("#nodes #content",settings.svg.root()).html(data);
+                                        helpers.loader.build($this);
+                                });
+                            }
+                            else {
+                                var count=0; for (var i in groups) { if (!groups[i].alone) count++; }
+                                for (var i in groups) if (!groups[i].alone) { 
+                                    $.ajax({
+                                        url: 'mods/genius/data/map/'+i+'.xml' + debug,
+                                        dataType: 'text'
+                                    }).done(function( data ) {
+                                        $("#nodes #s"+i,settings.svg.root()).html(data);
+                                        if (--count==0) { helpers.loader.build($this); }
+                                    });
+                                }
+                            }
+                        }});
                 });
+
+
             },
             build: function($this) {
                 var settings = helpers.settings($this);
-                settings.nav.w = $(settings.svg.root()).attr("id");
+
+                $(settings.svg).attr("class",settings.class);
 
                 // ZOOM DRAG
                 $this.find("#zoom .slider").draggable({ axis:"x", containment:"parent",
@@ -178,7 +217,8 @@
                               .css("top",((1+settings.nav.y)*($this.find("#map").height()-$this.find("#svg").height())/2)+'px')
                               .css("left",((1+settings.nav.x)*($this.find("#map").width()-$this.find("#svg").width())/2)+'px');
 
-            $this.find("#move .slider").css("font-size",(1/settings.nav.zoom)+'em')
+            $this.find("#move .slider")
+                              .css("width","4em").css("height","3em").css("font-size",(1/settings.nav.zoom)+'em')
                               .css("top",((1+settings.nav.y)*($this.find("#move").height()-$this.find("#move .slider").height())/2)+'px')
                               .css("left",((1+settings.nav.x)*($this.find("#move").width()-$this.find("#move .slider").width())/2)+'px');
         },
