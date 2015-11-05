@@ -98,9 +98,22 @@
                 for (var i=0; i<4; i++) {
                     if (i<settings.robots.length) {
                         for (var j=0; j<3; j++) {
-                            $this.find("#tabs #t"+(i+1)+" .f"+j+" div.z").each(function(_index) {
-                                $(this).toggle(_index<settings.robots[i].code[j]);
-                            });
+                            if ($.isArray(settings.robots[i].code[j])) {
+                                $this.find("#tabs #t"+(i+1)+" .f"+j+" div.z").each(function(_index) {
+                                    $(this).toggle(_index<settings.robots[i].code[j].length);
+                                    if (_index<settings.robots[i].code[j].length) {
+                                        $(this).append("<div class='a'><img src='res/img/action/"+
+                                            settings.robots[i].code[j][_index]+".svg' alt='"+
+                                            settings.robots[i].code[j][_index]+"' style='position:relative;'/></div>");
+                                    }
+                                });
+                                $this.find("#tabs #t"+(i+1)+" .f"+j+" div.z").removeClass("dd");
+                            }
+                            else {
+                                $this.find("#tabs #t"+(i+1)+" .f"+j+" div.z").each(function(_index) {
+                                    $(this).toggle(_index<settings.robots[i].code[j]);
+                                });
+                            }
                         }
                     }
                     else {
@@ -165,7 +178,7 @@
 
                 helpers.updatesource($this);
 
-                $this.find(".z").droppable({accept:".a",
+                $this.find(".dd").droppable({accept:".a",
                     drop:function(event, ui) {
                         var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
                                     event.originalEvent.touches[0]:event;
