@@ -28,6 +28,7 @@ if (!$error) {
                     if ($d) {
                         $all.=' "title": "'.$d["Exercice_Title"].'",';
                         $all.=' "level": "'.$d["Exercice_Level"].'",';
+                        $all.=' "activity": "'.$d["Exercice_Activity"].'",';
                         $all.=' "difficulty": "'.$d["Exercice_Difficulty"].'"}';
                     }
                     else {

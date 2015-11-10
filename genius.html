@@ -31,9 +31,19 @@
 
         #main>#screen                      { position:absolute; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5);
                                               display:none; z-index:3;}
-        #main>#screen>textarea             { font-size:.25em; width:61em; height:20em; margin:5em 1em; padding:.5em;
+        #main>#screen>textarea             { font-size:.2em; width:70em; height:4em; margin:0.5em 7em; padding:.5em;
                                              background-color:black; color:limegreen; overflow:auto;}
         #main>#screen>div                   { position:absolute; top:0; left:0; font-size:1.2em; width:1em; height:1em; cursor:pointer; }
+        #main>#screen>div#list              { font-size:.25em; width:61em; height:40em; margin:5em 1em; padding:.5em; background-color:black;
+                                              overflow:auto; }
+        #main>#screen #list .drop           { font-size:.8em; float:left; width:12em; height:12em; margin:.25em; background-color:rgba(200,220,255,0.1); overflow:visible;}
+        #main>#screen #list .drag           { position:relative; height:12em; background-color:gray; background-image:url('res/img/site/nosnapshot.svg');background-repeat:no-repeat;}
+        #main>#screen #list .drag .eximg    { font-size:3em; width: 4em; height: 3em; }
+        #main>#screen #list .drag .eximg>img.snap { width: 4em; height: 3em; }
+        #main>#screen #list .drag .extitle  { background-color:white; height:4.5em; border:1px solid black; border-width:1px 0 0 0; font-size:.7em;color:black;text-align:justify;padding:0 .5em; }
+        #main>#screen #list .drag .exid     { position:absolute; color:black; width:5.5em; background-color:white; top:.3em; left:-0.1em;
+                                          padding-left:.5em; border-radius:0 .5em .5em 0;border:1px solid black;}
+
 
         #main>#info                         { position:absolute; top:9.5em; left:2.5em; 
                                               display:none; z-index:3; width:13.25em; height:2.25em; overflow:hide;}
@@ -54,6 +64,7 @@
 
 var genius = {
     lang    : "",
+    url     : "",
     cookie  : false,
     activity: "",
     finished: false,
@@ -82,9 +93,11 @@ $(window).load(function() {
 
     $.getJSON("api/checkdb.php", function (_check) {
       if (_check.status=="success") {
+        genius.url =_check.url;
         $.getJSON("mods/genius/api/checkdb.php", function(_check) {
           if (_check.status=="success") {
             genius.lang=_check.lang;
+
 
             // GET AND RESIZE THE BEST PANEL
             var x = Math.floor($(window).width()/16);
@@ -197,12 +210,34 @@ $(window).load(function() {
                 onheader: function($this, _id) {
                      $.getJSON("mods/genius/api/node.php?id="+_id+"&verbose=1", function(_data) {
                         var list = "";
+                        $("#main #screen #list").html("");
                         for (var i in _data.detail) {
                             list+=(list.length?",":"")+_data.detail[i].id;
+
+                            var $drop = $("<div class='drop'></div>");
+                            var $drag = $("<div class='drag'></div>");
+                            var img = "<div class='eximg'>";
+                            if (genius.url) {
+                                var url = genius.url+"/res/img/exercices/"+_data.detail[i].activity+"/";
+                                if (_data.detail[i].id.length>4) { url+=_data.detail[i].id[2]+_data.detail[i].id[3]+"/"; }
+                                else                                { url+="xx/"; }
+                                url += _data.detail[i].id+".png";
+
+                                img +="<img class='snap' src='"+url+"'/>";
+                            }
+                            img += "</div>";
+                            $drag.append(img);
+                            $drag.append("<div class='exid'>"+_data.detail[i].id+"</div>");
+                            $drag.append("<div class='extitle'>"+_data.detail[i].title+"</div>");
+                            $drop.append($drag);
+                            $("#main #screen #list").append($drop);
+                        
                         }
 
                         $("#main #screen").show();
                         $("#main #screen textarea").val(list);
+
+
                     });
                 },
                 onstate: function($this, _nodes) {
@@ -240,6 +275,7 @@ $(window).load(function() {
 
         <div id="screen">
             <textarea></textarea>
+            <div id="list"></div>
             <div id="quit" ontouchstart="$('#main #screen').hide();event.preventDefault();"
                            onclick="$('#main #screen').hide();"><img src="res/img/icon/quit.svg"/></div>
         </div>

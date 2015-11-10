@@ -18,8 +18,9 @@
     };
 
     var regExp = [
-        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
-        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
+        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",                  "<b>$1</b>",
+        "\\\[bb\\\](.+)\\\[/bb\\\]",                  "<b>$1</b>",
+        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",                  "<i>$1</i>",
         "\\\[br\\\]",                               "<br/>",
         "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
         "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
@@ -55,7 +56,7 @@
             settings.context.onquit($this,{'status':'success','score':settings.score});
         },
         format: function(_text) {
-            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
+            for (var j=0; j<5; j++) for (var i=0; i<regExp.length/2; i++) {
                 var vReg = new RegExp(regExp[i*2],"g");
                 _text = _text.replace(vReg,regExp[i*2+1]);
             }
