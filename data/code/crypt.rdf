@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dct="http://purl.org/dc/terms/">
+
+
+    <rdf:Description>
+        <dct:identifier>015</dct:identifier>
+        <dct:title xml:lang="fr-FR">Convertir les lettres d'une chaîne de caractères en nombre de 0 à 25.</dct:title>
+        <dct:description><![CDATA["class":"l1","a":{"op":["dump","ii","xx"],"va":["V000","VA","V001","I","X"],"ma":["plus","minus","len","get"],"cl":["rep"]},"values":{"\\\"HELLO\\\"":"HELLO"},"valid":{"stdout":952869608}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Convertissez les lettres de la chaîne de caractères [i]\\\"HELLO\\\"[/i] en nombre de 0 à 25 ([i]'A'[/i]=0, [i]'B'[/i]=1, [i]'C'[/i]=2, etc.).[/b]","","Lorsqu'une ligne de code s'avère trop longue, n'hésitez pas à utiliser une variable pour simplifier l'écriture et améliorer ainsi la lisibilité du programme."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>016</dct:identifier>
+        <dct:title xml:lang="fr-FR">Convertir les lettres d'une chaîne de caractères en nombre de 13 à 38.</dct:title>
+        <dct:description><![CDATA["class":"l1","a":{"op":["dump","ii","xx"],"va":["V000","VA","V001","V013","I","X"],"ma":["plus","minus","len","get"],"cl":["rep"]},"values":{"TXT":"ABCMNOXYZ"},"valid":{"stdout":-285591002}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Convertissez les lettres de la chaîne de caractères TXT contenant le mot [i]\\\"ABCMNOXYZ\\\"[/i] en nombre de 13 à 39 ([i]'A'[/i]=13, [i]'B'[/i]=14, [i]'C'[/i]=15 ... 'Z'=38 ).","","Ici encore, il est extrêmement conseillé d'utiliser une variable X pour faciliter la lecture du code et d'avoir [red][b]DUMP(X)[/b][/red] comme seul appel à la fonction d'affichage."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>017</dct:identifier>
+        <dct:title xml:lang="fr-FR">Convertir une chaîne de caractères en ROT13 en recopiant une partie de programme.</dct:title>
+        <dct:description><![CDATA["class":"l1","a":{"op":["print","ii","xx"],"va":["V000","VA","V001","V013","V026","I","X"],"ma":["plus","minus","len","get","modulo"],"cl":["rep"]},"values":{"TXT":"ABCMNOXYZ"},"valid":{"stdout":662546339}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Convertissez la chaîne de caractères TXT contenant le mot [i]\\\"ABCMNOXYZ\\\"[/i] en ROT13.[/b]","","Pour chaque lettre à la position J dans le mot TXT, la conversion se fait ainsi :","[code]X = GET(TXT,J) - 'A'[br]X = X + 13[br]X = X % 26[br]X = X + 'A'[/code]"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>018</dct:identifier>
+        <dct:title xml:lang="fr-FR">Convertir une chaîne de caractères en ROT13.</dct:title>
+        <dct:description><![CDATA["class":"l2","a":{"op":["print","ii","xx"],"va":["V000","V010","VA","V001","V013","V026","I","X"],"ma":["plus","minus","len","get","modulo"],"cl":["rep"]},"values":{"TXT":"FRPERG"},"valid":{"stdout":-1742084786}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez le mot contenu dans la chaîne de caractères TXT puis, sur la ligne suivante, convertissez celui-ci en ROT13.[/b]","","Pour rappel, la conversion en ROT13 se fait selon l'algorithme suivant.","[code]o Transformer chaque lettre en nombre suivant leur ordre alphabétique (de 0 à 25)[br]o Ajouter 13 à la valeur obtenue[br]o Utiliser l'opération MODULO 26[br]o Re-transformer ce nombre en lettre[/code]","","Pour changer de ligne entre les 2 mots à afficher, utilisez la valeur 10 quit correspond au saut de ligne."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+
+    <rdf:Description>
+        <dct:identifier>024</dct:identifier>
+        <dct:title xml:lang="fr-FR">Afficher un mot crypté par symétrie suivi de son décryptage en recopiant un programme.</dct:title>
+        <dct:description><![CDATA["class":"l2","a":{"op":["print","ii","xx"],"va":["V000","V010","V001","VZ","VA","I","X"],"ma":["plus","minus","len","get"],"cl":["rep"]},"values":{"DATA":"ZFTFHGZZWZPRMTOLEVOZXV"},"valid":{"stdout":-1433957907}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez la chaîne de caractères DATA sur la sortie standard puis, sur une autre ligne, le décryptage de celle-ci.[/b]","","Pour décrypter DATA, [b]chaque caractère doit être inversé[/b] : 'A' devient 'Z', 'B' devient 'Y', etc.","","Pour faciliter l'écriture du code, il est fortement conseillé d'utiliser une variable.","[code]X = GET(DATA,I) - 'A'[br]X = 'Z' - X[br]PRINT X[/code]"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+</rdf:RDF>

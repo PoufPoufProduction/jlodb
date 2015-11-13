@@ -582,9 +582,7 @@
                                               $first:0, count:0, sav:{X:settings.data.X, Y:settings.data.Y, Z:settings.data.Z,
                                                                       I:settings.data.I, J:settings.data.J, K:settings.data.K,
                                                                       R:settings.data.R, G:settings.data.G, B:settings.data.B } });
-                    settings.data.X = 0; settings.data.Y = 0; settings.data.Z = 0;
-                    settings.data.I = 0; settings.data.J = 0; settings.data.K = 0;
-                    settings.data.R = 0; settings.data.G = 0; settings.data.B = 0;
+                    helpers.initvar($this);
                 }
                 return !ret;
             },
@@ -597,11 +595,8 @@
                                               $first:0, count:0, sav:{X:settings.data.X, Y:settings.data.Y, Z:settings.data.Z,
                                                                       I:settings.data.I, J:settings.data.J, K:settings.data.K,
                                                                       R:settings.data.R, G:settings.data.G, B:settings.data.B } });
+                    helpers.initvar($this);
                     settings.data.X = valueX;
-                    settings.data.Y = 0;
-                    settings.data.Z = 0;
-                    settings.data.I = 0; settings.data.J = 0; settings.data.K = 0;
-                    settings.data.R = 0; settings.data.G = 0; settings.data.B = 0;
                 }
                 return !ret;
             },
@@ -615,11 +610,9 @@
                                               $first:0, count:0, sav:{X:settings.data.X, Y:settings.data.Y, Z:settings.data.Z,
                                                                       I:settings.data.I, J:settings.data.J, K:settings.data.K,
                                                                       R:settings.data.R, G:settings.data.G, B:settings.data.B } });
+                    helpers.initvar($this);
                     settings.data.X = valueX;
                     settings.data.Y = valueY;
-                    settings.data.Z = 0;
-                    settings.data.I = 0; settings.data.J = 0; settings.data.K = 0;
-                    settings.data.R = 0; settings.data.G = 0; settings.data.B = 0;
                 }
                 return !ret;
             },
@@ -695,14 +688,18 @@
                 return true;
             }
         },
+        initvar: function($this) {
+            var settings = helpers.settings($this);
+            settings.data.X = 99; settings.data.Y = 98; settings.data.Z = 97;
+            settings.data.I = 57; settings.data.J = 58; settings.data.K = 59;
+            settings.data.R = 63; settings.data.G = 62; settings.data.B = 61;
+        },
         init: function($this) {
             var settings = helpers.settings($this);
+            helpers.initvar($this);
             settings.data.count = 0;
             settings.data.timer = 0;
             settings.data.lastkey = 0;
-            settings.data.X = 0; settings.data.Y = 0; settings.data.Z = 0;
-            settings.data.I = 0; settings.data.J = 0; settings.data.K = 0;
-            settings.data.R = 0; settings.data.G = 0; settings.data.B = 0;
             settings.data.stack=[{$elt:$this.find("#code #lines").children().first(), $first:0, count:1, sav:0}];
             settings.data.color = [255,255,255];
             helpers.screen.clear($this);
