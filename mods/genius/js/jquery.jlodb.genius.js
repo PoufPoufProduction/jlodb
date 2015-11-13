@@ -16,8 +16,9 @@
     };
 
     var groups = {
-        debug: { w:80, alone:true, max:1.5 },
-        it : { w:160, max:2 }
+        debug       : { w:80, alone:true, max:1.5 },
+        it          : { w:160, max:2 },
+        sudoku      : { w:80, max:2 }
     };
 
     // private methods
@@ -112,12 +113,13 @@
                             }
                             else {
                                 var count=0; for (var i in groups) { if (!groups[i].alone) count++; }
-                                for (var i in groups) if (!groups[i].alone) { 
+                                for (var i in groups) if (!groups[i].alone) {
                                     $.ajax({
                                         url: 'mods/genius/data/map/'+i+'.xml' + debug,
-                                        dataType: 'text'
+                                        dataType: 'text',
+                                        context: $("#nodes #s"+i,settings.svg.root())
                                     }).done(function( data ) {
-                                        $("#nodes #s"+i,settings.svg.root()).html(data);
+                                        $(this).html(data);
                                         if (--count==0) { helpers.loader.build($this); }
                                     });
                                 }

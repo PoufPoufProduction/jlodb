@@ -20,8 +20,8 @@
     <rdf:Description>
         <dct:identifier>002</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher 3 fois la dernière valeur d'un tableau en utilisant une variable.</dct:title>
-        <dct:description><![CDATA["class":"l1","a":{"op":["dump","xx"],"va":["V001","X"],"ma":["get","len","minus"]},"values":{"DATA":[4,8,15,16,23,42]},"valid":{"stdout":1254702314}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez 3 fois la dernière valeur du tableau DATA sur la sortie standard.[/b]","","Il est fortement conseillé d'utiliser ici une variable.","","[strong]Une variable est une zone de la mémoire dans laquelle il est possible de sauver une valeur afin de l'utiliser plus tard.[/strong]"]]]></dct:description>
+        <dct:description><![CDATA["class":"l1","a":{"op":["dump","xx"],"va":["V001","X"],"ma":["get","len","minus"]},"values":{"[DATA]":[4,8,15,16,23,42]},"valid":{"stdout":1254702314}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[bb]Affichez 3 fois la dernière valeur du tableau [DATA] sur la sortie standard.[/bb]","","Il est fortement conseillé d'utiliser ici une variable.","","[strong]Une variable est une zone de la mémoire dans laquelle il est possible de sauver une valeur afin de l'utiliser plus tard.[/strong]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -33,8 +33,8 @@
     <rdf:Description>
         <dct:identifier>003</dct:identifier>
         <dct:title xml:lang="fr-FR">Incrémenter et afficher 4 fois la dernière valeur d'un tableau en utilisant une variable.</dct:title>
-        <dct:description><![CDATA["class":"l2","a":{"op":["dump","xx"],"va":["V001","X"],"ma":["get","len","minus","plus"]},"values":{"DATA":[4,8,15,16,23,42]},"valid":{"stdout":-1685991242}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Copiez la dernière valeur du tableau DATA dans la variable X, incrémentez de 1 cette valeur puis affichez celle-ci 4 fois sur la sortie standard.[/b]","","La commande utilisée pour incrémenter une variable est :","[code]X = X + 1[/code]","","A l'exécution, l'ordinateur va commencer par évaluer l'expression de droite 'X+1'. Si, par exemple, X vaut 23, alors 'X+1' est égal à 24. L'instruction 'X = X + 1' se résume donc, dans cet exemple, à 'X = 24'. L'instruction a donc incrémenté la variable X d'une unité faisant passer celle-ci de 23 à 24."]]]></dct:description>
+        <dct:description><![CDATA["class":"l2","a":{"op":["dump","xx"],"va":["V001","X"],"ma":["get","len","minus","plus"]},"values":{"[DATA]":[4,8,15,16,23,42]},"valid":{"stdout":-1685991242}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[bb]Copiez la dernière valeur du tableau [DATA] dans la variable X, incrémentez de 1 cette valeur puis affichez celle-ci 4 fois sur la sortie standard.[/bb]","","La commande utilisée pour incrémenter une variable est :","[code]X = X + 1[/code]","","A l'exécution, l'ordinateur va commencer par évaluer l'expression de droite 'X+1'. Si, par exemple, X vaut 23, alors 'X+1' est égal à 24. L'instruction 'X = X + 1' se résume donc, dans cet exemple, à 'X = 24'. L'instruction a donc incrémenté la variable X d'une unité faisant passer celle-ci de 23 à 24."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -71,7 +71,7 @@
         <dct:identifier>006</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher les 5 premières puissances de 2 \\\"1 2 4 8 16\\\" en utilisant une variable.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["dump","xx"],"va":["V001","V002","X"],"ma":["mult"]},"valid":{"stdout":1235119986}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez sur la sortie standard les 5 premières puissances de 2 : [i]\\\"1 2 4 8 16\\\"[/i].[/b]","","X = X + 1 n'est évidemment pas la seule façon d'incrémenter la variable X. Toutes les opérations sont possibles comme, par exemple, X = X * 2. Avec cette opération, si X = 1 alors le programme va calculer la partie droite de l'opération X * 2 = 1 * 2 = 2 puis il va charger ce résultat dans la variable X."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez sur la sortie standard les 5 premières puissances de 2 : [i]\\\"1 2 4 8 16\\\"[/i].[/b]","","[b]X = X + 1[/b] n'est évidemment pas la seule façon d'incrémenter la variable X. Toutes les opérations sont possibles comme, par exemple, [b]X = X * 2[/b]."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -94,8 +94,8 @@
     <rdf:Description>
         <dct:identifier>101</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher la somme d'un tableau de 3 valeurs en utilisant une variable et en recopiant un programme.</dct:title>
-        <dct:description><![CDATA["class":"l1","a":{"op":["dump","xx"],"va":["V000","V001","V002","X"],"ma":["get","plus"]},"values":{"DATA":[4,8,15]},"valid":{"stdout":1328017123}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez la somme des 3 éléments de DATA[/b].","","Pour répondre à l'exercice, votre programme devrait ressembler à :","[code]X = GET(DATA,0)[br]X = X + GET(DATA,1)[br]X = X + GET(DATA,2)[br]PRINT(X)[/code]"]]]></dct:description>
+        <dct:description><![CDATA["class":"l1","a":{"op":["dump","xx"],"va":["V000","V001","V002","X"],"ma":["get","plus"]},"values":{"[DATA]":[4,8,15]},"valid":{"stdout":1328017123}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[bb]Affichez la somme des 3 éléments de [DATA][/bb].","","Pour répondre à l'exercice, votre programme devrait ressembler à :","[code]X = GET([DATA],0)[br]X = X + GET([DATA],1)[br]X = X + GET([DATA],2)[br]DUMP(X)[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -106,8 +106,8 @@
     <rdf:Description>
         <dct:identifier>102</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher la somme d'un tableau de 3 valeurs non consécutives en utilisant une variable.</dct:title>
-        <dct:description><![CDATA["class":"l1","a":{"op":["dump","xx"],"va":["V000","V002","V004","X"],"ma":["get","plus"]},"values":{"DATA":[4,8,15,16,23,42]},"valid":{"stdout":1343964342}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Soit DATA, un tableau contenant 6 valeurs [4,8,15,16,23,42], [b]affichez la somme des 3 nombres 4, 15 et 23[/b] (respectivement aux positions 0, 2 et 4 du tableau)."]]]></dct:description>
+        <dct:description><![CDATA["class":"l1","a":{"op":["dump","xx"],"va":["V000","V002","V004","X"],"ma":["get","plus"]},"values":{"[DATA]":[4,8,15,16,23,42]},"valid":{"stdout":1343964342}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Soit [DATA], un tableau contenant 6 valeurs [4,8,15,16,23,42], [b]affichez la somme des 3 nombres 4, 15 et 23[/b] (respectivement aux positions 0, 2 et 4 du tableau)."]]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -118,8 +118,8 @@
     <rdf:Description>
         <dct:identifier>103</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher la somme d'un tableau de 4 valeurs en utilisant 2 variables en recopiant un programme.</dct:title>
-        <dct:description><![CDATA["class":"l2 small","a":{"op":["dump","xx","ii"],"va":["V000","V001","X","I"],"ma":["get","plus"]}, "values":{"DATA":[4,8,15,16]},"valid":{"stdout":763248294}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez la somme des 4 éléments du tableau DATA[/b].","","Attention, ici, les valeurs des positions 2 et 3 ne sont pas disponibles. Il vous faut utiliser une variable I pour sauver la position à utiliser au sein du tableau : ","[code]I = 0[br]X = GET( DATA, I )[br]I = I + 1[br]X = X + GET( DATA, I )[br]I = I + 1[br]X = X + GET( DATA,I )[br]I = I + 1[br]X = X + GET( DATA,I )[/code]","[strong]I est un itérateur.[/strong]"]]]></dct:description>
+        <dct:description><![CDATA["class":"l2 small","a":{"op":["dump","xx","ii"],"va":["V000","V001","X","I"],"ma":["get","plus"]}, "values":{"[DATA]":[4,8,15,16]},"valid":{"stdout":763248294}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[bb]Affichez la somme des 4 éléments du tableau [DATA][/bb].","","Attention, ici, les valeurs des positions 2 et 3 ne sont pas disponibles. Il vous faut utiliser une deuxième variable I pour sauver la position à utiliser au sein du tableau : ","[code]I = 0[br]X = GET( DATA, I )[br]I = I + 1[br]X = X + GET( DATA, I )[br]I = I + 1[br]X = X + GET( DATA,I )[br]I = I + 1[br]X = X + GET( DATA,I )[/code]","[strong]I est un itérateur.[/strong]"]]]></dct:description>
         <dct:extent>4</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -130,8 +130,8 @@
     <rdf:Description>
         <dct:identifier>104</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher la somme d'un tableau de 4 valeurs non consécutives en utilisant 2 variables.</dct:title>
-        <dct:description><![CDATA["class":"l1","a":{"op":["dump","xx","ii"],"va":["V000","V002","X","I"],"ma":["get","plus"]},"values":{"DATA":[12,0,13,0,14,0,15]},"valid":{"stdout":-1711330423}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Soit DATA, un tableau contenant 7 valeurs [12,0,13,0,14,0,15], [b]affichez la somme des 4 nombres 12,13,14 et 15[/b] (respectivement aux positions 0,2,4 et 6 du tableau).","","Seules les valeurs numériques 0 et 2 sont disponibles. Il est donc impératif d'utiliser un [red][b]itérateur I[/b][/red] et de le faire varier de 2 en 2 pour pouvoir extraire et ajouter les valeurs demandées par l'énoncé."]]]></dct:description>
+        <dct:description><![CDATA["class":"l1","a":{"op":["dump","xx","ii"],"va":["V000","V002","X","I"],"ma":["get","plus"]},"values":{"[DATA]":[12,0,13,0,14,0,15]},"valid":{"stdout":-1711330423}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Soit [DATA], un tableau contenant 7 valeurs [12,0,13,0,14,0,15], [b]affichez la somme des 4 nombres 12,13,14 et 15[/b] (respectivement aux positions 0,2,4 et 6 du tableau).","","Seules les valeurs numériques 0 et 2 sont disponibles. Il est donc impératif d'utiliser un [red][b]itérateur I[/b][/red] et de le faire varier de 2 en 2 pour pouvoir extraire et ajouter les valeurs demandées par l'énoncé."]]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>

@@ -56,7 +56,7 @@
         <dct:identifier>005</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher la valeur de PI suivie de sa partie entière.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["dump"],"va":["PI"],"ma":["floor"]},"valid":{"stdout":-67213464}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez sur la sortie standard la valeur du nombre PI suivie de sa partie entière.[/b]","","L'opérateur [red][b]FLOOR[/b][/red] (le 'sol' ou la 'terre' en anglais) fournit le plus grand entier inférieur à la valeur fournie en paramètre. Dans le cas d'un [blue][b]nombre positif[/b][/blue] comme PI, l'opérateur [red][b]FLOOR[/b][/red] renvoie sa [b]partie entière[/b]."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez sur la sortie standard la valeur du nombre PI suivie de sa partie entière.[/b]","","L'opérateur [red][b]FLOOR[/b][/red] (le 'sol' ou la 'terre' en anglais) fournit le plus grand entier inférieur à la valeur du paramètre. Dans le cas d'un [blue][b]nombre positif[/b][/blue] comme PI, l'opérateur [red][b]FLOOR[/b][/red] renvoie sa [b]partie entière[/b]."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -92,7 +92,7 @@
         <dct:identifier>008</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher les valeur -7 et -8 à partir de COS(45) et de l'un des opérateurs FLOOR et CEIL.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["dump"],"va":["V045","V010"],"ma":["ceil","neg","mult","cos"]},"valid":{"stdout":1013895194}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Sachant que COS(45)=0.7071, affichez les valeurs -7 et -8 sur la sortie standard.[/b]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Sachant que COS(45)=0.7071, affichez les valeurs -7 et -8 sur la sortie standard.[/b]","","[blue]Petit indice : CEIL(-X) et -CEIL(X) ne donnent pas la même valeur.[/blue]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -140,7 +140,7 @@
         <dct:identifier>014</dct:identifier>
         <dct:title xml:lang="fr-FR">En utilisant l'addition, afficher le texte \\\"0123\\\" à partir du caractère '0'.</dct:title>
         <dct:description><![CDATA["class":"l2","a":{"op":["print"],"va":["V000","V001","V002","V003","V0"],"ma":["plus"]},"valid":{"stdout":-1073303177}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez le texte [i]\\\"0123\\\"[/i] sur la sortie standard.[/b]","","Pour rappel, il est important de bien différencier, d'un côté, les nombres 0, 1, 2 et 3 qui sont affichables grâce à la commande [red][b]DUMP[/b][/red] mais correspondent à des caractères [blue]ASCII[/blue] non affichables avec PRINT, avec, de l'autre, les caractères [i]'0', '1', '2'[/i] et [i]'3'[/i] qui sont affichables tels quels par [red][b]PRINT[/b][/red] et qui correspondent aux valeurs 48, 49, 50 et 51."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez le texte [i]\\\"0123\\\"[/i] sur la sortie standard.[/b]","","Pour rappel, il est important de bien différencier, d'un côté, les nombres 0, 1, 2 et 3 qui sont affichables grâce à la commande [red][b]DUMP[/b][/red] mais correspondent à des caractères [blue]ASCII[/blue] non affichables avec [red][b]PRINT[/b][/red], et, de l'autre côté, les caractères [i]'0', '1', '2'[/i] et [i]'3'[/i] qui sont affichables tels quels par [red][b]PRINT[/b][/red] et qui correspondent aux valeurs 48, 49, 50 et 51."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -166,8 +166,8 @@
     <rdf:Description>
         <dct:identifier>202</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher un tableau suivi de sa longueur.</dct:title>
-        <dct:description><![CDATA["class":"l2","a":{"op":["dump"],"ma":["len"]},"values":{"ARRAY":[4,8,15,16,23,42]},"valid":{"stdout":-771897627}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez le tableau ARRAY sur la sortie standard suivi de la longueur de celui-ci, c'est à dire son nombre d'éléments. En l'occurence 6.[/b]","","L'opérateur [red][b]LENGTH[/b][/red], lorsqu'il est utilisé avec un tableau en paramètre, renvoie la longueur de ce dernier. Ici encore, il est important de bien comprendre qu'un mot n'est rien d'autre qu'un tableau où chaque élément correspond à la valeur [blue]ASCII[/blue] d'une lettre."]]]></dct:description>
+        <dct:description><![CDATA["class":"l2","a":{"op":["dump"],"ma":["len"]},"values":{"[ARRAY]":[4,8,15,16,23,42]},"valid":{"stdout":-771897627}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[bb]Affichez le tableau [ARRAY] sur la sortie standard suivi de la longueur de celui-ci, c'est à dire son nombre d'éléments. En l'occurence 6.[/bb]","","L'opérateur [red][b]LENGTH[/b][/red], lorsqu'il est utilisé avec un tableau en paramètre, renvoie le nombre d'éléments contenus dans ce dernier.","","[red][b]LENGTH[/b][/red] permet de calculer la longueur d'un [b]tableau[/b] mais aussi d'un [b]texte[/b]. Ce qui n'est pas tellement surprenant car, un texte n'est finalement qu'un tableau où chaque élément correspond à la valeur [blue]ASCII[/blue] d'une lettre."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -181,8 +181,8 @@
     <rdf:Description>
         <dct:identifier>211</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher la 2ème valeur d'un tableau.</dct:title>
-        <dct:description><![CDATA["class":"l1","a":{"op":["dump"],"va":["V002"],"ma":["get"]},"values":{"ARRAY":[4,8,15,16,23,42]},"valid":{"stdout":-1816951327}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez sur la sortie standard, la 3ème valeur du tableau ARRAY[/b].","","L'opérateur [red][b]GET(TABLEAU,POSITION)[/b][/red] ('RÉCUPÉRER' en anglais) retourne la valeur du TABLEAU située à la place n°POSITION. [b]Attention[/b]: le premier élément du tableau est à la [b]position 0[/b]."]]]></dct:description>
+        <dct:description><![CDATA["class":"l1","a":{"op":["dump"],"va":["V002"],"ma":["get"]},"values":{"[ARRAY]":[4,8,15,16,23,42]},"valid":{"stdout":-1816951327}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[bb]Affichez sur la sortie standard, la 3ème valeur du tableau [ARRAY][/bb].","","L'opérateur [red][b]GET(TABLEAU,POSITION)[/b][/red] ('RÉCUPÉRER' en anglais) retourne la valeur du TABLEAU située à la place n°POSITION.","","[strong]Attention: le premier élément du tableau est à la position 0[/strong]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -207,7 +207,7 @@
         <dct:identifier>213</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher \\\"WELL WORLD\\\" à partir des mots \\\"HELLO\\\" et \\\"WORLD\\\".</dct:title>
         <dct:description><![CDATA["a":{"op":["print"],"va":["V000","V001","V002","V003","V004","VSP"],"ma":["get"]},"values":{"\\\"HELLO\\\"":"HELLO","\\\"WORLD\\\"":"WORLD"},"valid":{"stdout":85513327}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Sans oublier l'espace, affichez les deux mots [i]\\\"WELL WORLD\\\"[/i] sur la sortie standard.[/b]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Sans oublier l'espace, affichez les deux mots [i]\\\"WELL WORLD\\\"[/i] sur la sortie standard.[/b]","","[blue]Le mot \\\"WELL\\\" devra être affiché lettre par lettre.[/blue]"]]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -221,7 +221,7 @@
         <dct:identifier>221</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher le dernier caractère d'une chaîne de caractères.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["print"],"va":["V001"],"ma":["get","len","minus"]},"values":{"\\\"HELLO\\\"":"HELLO"},"valid":{"stdout":-2001344955}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez [i]'O'[/i] sur la sortie standard.[/b]","","Pour résoudre l'exercice, il faut afficher la [b]dernière lettre du mot[/b] [i]\\\"HELLO\\\"[/i] en récupérant l'élément situé à la position [b]LONGUEUR-1[/b] de la chaîne de caractères, où [b]LONGUEUR[/b] est la longueur de cette dernière."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]A partir du mot \\\"HELLO\\\", affichez [i]'O'[/i] sur la sortie standard.[/b]","","[strong]LONGUEUR(TEXTE)-1 est la position de la dernière lettre du TEXTE.[/strong]","","Votre code devrait donc ressembler à :","[code]PRINT( GET ( \\\"HELLO\\\", LENGTH(\\\"HELLO\\\") - 1 ))[/code]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -282,8 +282,8 @@
     <rdf:Description>
         <dct:identifier>404</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher la position d'un entier dans un tableau d'entiers.</dct:title>
-        <dct:description><![CDATA["class":"l1","a":{"op":["dump"],"va":["V008"],"ma":["find"]},"values":{"ARRAY":[4,8,15,16,23,42]},"valid":{"stdout":791483555}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez sur la sortie standard le tableau ARRAY puis la position de la valeur 8 dans ce tableau.[/b]","","La commande [red][b]FIND[/b][/red] permet également de rechercher une valeur numérique au sein d'un tableau de valeurs numériques."]]]></dct:description>
+        <dct:description><![CDATA["class":"l1","a":{"op":["dump"],"va":["V008"],"ma":["find"]},"values":{"[ARRAY]":[4,8,15,16,23,42]},"valid":{"stdout":791483555}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[bb]Affichez sur la sortie standard le tableau [ARRAY] puis la position de la valeur 8 dans ce tableau.[/bb]","","La commande [red][b]FIND[/b][/red] permet également de rechercher une valeur numérique au sein d'un tableau de valeurs numériques."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -492,8 +492,8 @@
    <rdf:Description>
         <dct:identifier>601</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher un tableau de chaînes de caractères et en afficher la longueur.</dct:title>
-        <dct:description><![CDATA["class":"l1","a":{"op":["print","dump"],"ma":["len"]},"values":{"DATA":["MAY","THE","FORCE","BE","WITH","YOU."]},"valid":{"stdout":-463162947}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez le contenu du tableau DATA suivi de sa longueur.[/b]","","[red]DATA est un tableau de chaînes de caractères[/red] : [[i]\\\"MAY\\\", \\\"THE\\\", \\\"FORCE\\\", \\\"BE\\\", \\\"WITH\\\", \\\"YOU.\\\"[/i]]. La longeur de DATA correspond au nombre de mots dans le tableau, c'est à dire 6."]]]></dct:description>
+        <dct:description><![CDATA["class":"l1","a":{"op":["print","dump"],"ma":["len"]},"values":{"[DATA]":["MAY","THE","FORCE","BE","WITH","YOU."]},"valid":{"stdout":-463162947}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[bb]Affichez le contenu du tableau [DATA] suivi de sa longueur.[/bb]","","[bb][DATA] est un tableau de chaînes de caractères[/bb] : [[i]\\\"MAY\\\", \\\"THE\\\", \\\"FORCE\\\", \\\"BE\\\", \\\"WITH\\\", \\\"YOU.\\\"[/i]]. La longeur de [DATA] correspond au nombre de mots dans le tableau, c'est à dire 6."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -504,8 +504,8 @@
    <rdf:Description>
         <dct:identifier>602</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher la 3ème valeur d'un tableau de chaînes de caractères.</dct:title>
-        <dct:description><![CDATA["class":"l1","a":{"op":["print"],"va":["V002"],"ma":["get"]},"values":{"DATA":["MAY","THE","FORCE","BE","WITH","YOU."]},"valid":{"stdout":712701512}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez le contenu du tableau DATA suivi de la 3ème valeur de ce même tableau.[/b]","","[strong]La numérotation commençant à 0, le 3ème élément d'un tableau est celui à la position n°2.[/strong]"]]]></dct:description>
+        <dct:description><![CDATA["class":"l1","a":{"op":["print"],"va":["V002"],"ma":["get"]},"values":{"[DATA]":["MAY","THE","FORCE","BE","WITH","YOU."]},"valid":{"stdout":712701512}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[bb]Affichez le contenu du tableau [DATA] suivi de la 3ème valeur de ce même tableau.[/bb]","","[strong]La numérotation commençant à 0, le 3ème élément d'un tableau est celui à la position n°2.[/strong]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -516,8 +516,8 @@
    <rdf:Description>
         <dct:identifier>603</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher le 2ème caractère de la 3ème valeur d'un tableau de chaînes de caractères en recopiant un programme.</dct:title>
-        <dct:description><![CDATA["class":"l2","a":{"op":["print","xx"],"va":["V001","V002","X"],"ma":["get"]},"values":{"DATA":["MAY","THE","FORCE","BE","WITH","YOU."]},"valid":{"stdout":-1709148784}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez le contenu du tableau de chaînes de caractères DATA suivi du 2ème caractère de la 3ème valeur de ce même tableau.[/b]","","Bien que le programme puisse s'écrire sur une seule ligne (peu lisible), il est conseillé d'utiliser une variable.","[code]X = GET(DATA,2)[br]PRINT(GET(X,1))[/code]","","N'oubliez pas d'afficher DATA au préalable comme cela est demandé par l'énoncé."]]]></dct:description>
+        <dct:description><![CDATA["class":"l2","a":{"op":["print","xx"],"va":["V001","V002","X"],"ma":["get"]},"values":{"[DATA]":["MAY","THE","FORCE","BE","WITH","YOU."]},"valid":{"stdout":-1709148784}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[bb]Affichez le contenu du tableau de chaînes de caractères [DATA] suivi du 2ème caractère de la 3ème valeur de ce même tableau.[/bb]","","Bien que le programme puisse s'écrire sur une seule ligne (peu lisible), il est conseillé d'utiliser une variable.","[code]X = GET([DATA],2)[br]PRINT(GET(X,1))[/code]","","N'oubliez pas d'afficher [DATA] au préalable comme cela est demandé par l'énoncé."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -528,8 +528,8 @@
     <rdf:Description>
         <dct:identifier>604</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher le 2ème caractère de la 5ème valeur d'un tableau de chaînes de caractères.</dct:title>
-        <dct:description><![CDATA["class":"l2","a":{"op":["print","xx"],"va":["V001","V004","X"],"ma":["get"]},"values":{"DATA":["MAY","THE","FORCE","BE","WITH","YOU."]},"valid":{"stdout":-1006053375}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez le 2ème caractère de la 5ème valeur du tableau de chaînes de caractères.[/b]","","Il est tout à fait possible d'utiliser l'instruction [red][b]X = GET(DATA,4)[/b][/red]. On a vu que X pouvait être utilisé pour stocker des valeurs numériques, mais aussi des lettres (ce qui est un peu la même chose). Ici X reçoit une chaîne de caractères ([i]\\\"WITH\\\"[/i] en l'occurence). On dit que X n'est pas typée, c'est à dire que la variable n'est pas limitée à un seul type de donnée. C'est le cas ici pour toutes les variables (X,Y,Z,I,J,etc.).","Inversement, les langages dits 'typés' (comme le C/C++) ne proposent que des variables dont le type est prédéfini à l'avance (une variable ne pourra stocker que des entiers, une autre ne pourra stocker que des caractères, etc.)."]]]></dct:description>
+        <dct:description><![CDATA["class":"l2","a":{"op":["print","xx"],"va":["V001","V004","X"],"ma":["get"]},"values":{"[DATA]":["MAY","THE","FORCE","BE","WITH","YOU."]},"valid":{"stdout":-1006053375}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez le 2ème caractère de la 5ème valeur du tableau de chaînes de caractères.[/b]","","Il est tout à fait possible d'utiliser l'instruction","[code]X = GET([DATA],4)[/code]","On a vu que X pouvait être utilisé pour stocker des valeurs numériques, mais aussi des lettres (ce qui est un peu la même chose). Ici X reçoit une chaîne de caractères ([i]\\\"WITH\\\"[/i] en l'occurence). On dit que [red]X n'est pas typée[/red], c'est à dire que la variable n'est pas limitée à un seul type de donnée. C'est le cas ici pour toutes les variables (X,Y,Z,I,J,etc.).","Inversement, les langages dits 'typés' (comme le C/C++) ne proposent que des variables dont le type est prédéfini à l'avance (une variable ne pourra stocker que des entiers, une autre ne pourra stocker que des caractères, etc.)."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -540,8 +540,8 @@
     <rdf:Description>
         <dct:identifier>605</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher \\\"DEH\\\" à partir du tableau [ \\\"HELLO\\\", \\\"WORLD\\\" ].</dct:title>
-        <dct:description><![CDATA["a":{"op":["print","xx"],"va":["V000","V001","X"],"ma":["get","len","minus"]},"values":{"DATA":["HELLO","THE","WORLD"]},"valid":{"stdout":1061993400}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]A partir du tableau de chaînes de caractères DATA défini par[/b] [ [i]\\\"HELLO\\\"[/i], [i]\\\"WORLD\\\"[/i] ][b], affichez le mot [i]\\\"DEH\\\"[/i].[/b]"]]]></dct:description>
+        <dct:description><![CDATA["a":{"op":["print","xx"],"va":["V000","V001","X"],"ma":["get","len","minus"]},"values":{"[DATA]":["HELLO","WORLD"]},"valid":{"stdout":1061993400}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[bb]A partir du tableau de chaînes de caractères [DATA] défini par[/bb] [ [i]\\\"HELLO\\\"[/i], [i]\\\"WORLD\\\"[/i] ][b], affichez le mot [i]\\\"DEH\\\"[/i].[/b]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -552,8 +552,8 @@
     <rdf:Description>
         <dct:identifier>606</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher 5 à partir du tableau [ \\\"HELLO\\\", \\\"WORLD\\\" ].</dct:title>
-        <dct:description><![CDATA["a":{"op":["dump","xx"],"va":["V000","V001","X"],"ma":["get","len"]},"values":{"DATA":["HELLO","THE","WORLD"]},"valid":{"stdout":-435719001}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]A partir du tableau de chaînes de caractères DATA défini par[/b] [ [i]\\\"HELLO\\\"[/i], [i]\\\"WORLD\\\"[/i] ],[b] affichez la valeur 5.[/b]"]]]></dct:description>
+        <dct:description><![CDATA["a":{"op":["dump","xx"],"va":["V000","V001","X"],"ma":["get","len"]},"values":{"[DATA]":["HELLO","WORLD"]},"valid":{"stdout":-435719001}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[bb]A partir du tableau de chaînes de caractères [DATA] défini par[/bb] [ [i]\\\"HELLO\\\"[/i], [i]\\\"WORLD\\\"[/i] ],[b] affichez la valeur 5.[/b]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -566,8 +566,8 @@
     <rdf:Description>
         <dct:identifier>621</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher un tableau de tableaux et en afficher la longueur.</dct:title>
-        <dct:description><![CDATA["class":"l1","a":{"op":["dump"],"ma":["len"]},"values":{"DATA":[[1,2,3],[4,5,6],[7,8,9]]},"valid":{"stdout":-2091922486}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez le contenu du tableau DATA à l'aide de l'opérateur DUMP suivi de sa longueur.[/b]","","De la même façon qu'il existe des tableaux de chaînes de caractères, DATA est, dans cet exercice, un [b]tableau de tableaux[/b]. C'est à dire que DATA est un tableau de 3 éléments où chacun de ses éléments est également un tableau. On peut définir DATA ainsi : [[1,2,3],[4,5,6],[7,8,9]]. La longeur de DATA correspond à son nombre d'éléments, c'est à dire 3."]]]></dct:description>
+        <dct:description><![CDATA["class":"l1","a":{"op":["dump"],"ma":["len"]},"values":{"[DATA]":[[1,2,3],[4,5,6],[7,8,9]]},"valid":{"stdout":-2091922486}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[bb]Affichez le contenu du tableau [DATA] à l'aide de l'opérateur DUMP suivi de sa longueur.[/bb]","","De la même façon qu'il existe des tableaux de chaînes de caractères, [DATA] est, dans cet exercice, un [b]tableau de tableaux[/b]. C'est à dire que [DATA] est un tableau de 3 éléments où chacun de ses éléments est également un tableau. On peut définir [DATA] ainsi : [[1,2,3],[4,5,6],[7,8,9]]. La longeur de [DATA] correspond à son nombre d'éléments, c'est à dire aux nombres de tableaux qu'il contient, donc [b]3[/b]."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -578,8 +578,8 @@
     <rdf:Description>
         <dct:identifier>622</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher le dernièr élément du tableau de tableaux DATA.</dct:title>
-        <dct:description><![CDATA["class":"l1 small","a":{"op":["dump"],"va":["V001"],"ma":["get","len","minus"]},"values":{"DATA":[[1,2,3],[4,5,6],[7,8,9]]},"valid":{"stdout":-1315231145}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Soit DATA le tableau de tableaux construit ainsi : [[1,2,3],[4,5,6],[7,8,9]]. [b]Affichez le contenu de DATA suivi de son dernièr élément[/b]. Au final, la sortie standard doit afficher :","[code]1 2 3 4 5 6 7 8 9 7 8 9[/code]"]]]></dct:description>
+        <dct:description><![CDATA["class":"l1 small","a":{"op":["dump"],"va":["V001"],"ma":["get","len","minus"]},"values":{"[DATA]":[[1,2,3],[4,5,6],[7,8,9]]},"valid":{"stdout":-1315231145}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Soit [DATA] = [[1,2,3],[4,5,6],[7,8,9]]. [bb]Affichez le contenu de [DATA] suivi de son dernièr élément[/bb]. Au final, la sortie standard doit afficher :","[code]1 2 3 4 5 6 7 8 9 7 8 9[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -590,8 +590,8 @@
     <rdf:Description>
         <dct:identifier>623</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher la 3ème valeur du 2ème élément de DATA.</dct:title>
-        <dct:description><![CDATA["class":"l1","a":{"op":["dump","xx"],"va":["V002","V001","X"],"ma":["get"]},"values":{"DATA":[[1,2,3],[4,5,6],[7,8,9]]},"valid":{"stdout":-1067848827}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez la 3ème valeur du 2ème élément de DATA.[/b]","","Les différentes variables proposées dans cette activité ne sont pas typées. C'est à dire qu'elles peuvent contenir aussi bien une valeur numérique, qu'une chaine de caractères, qu'un tableau. En écrivant X = GET(DATA,1), on copie dans la variable X le 2ème élément du tableau de tableaux DATA. On copie donc dans X un tableau. Cette opération est possible avec ce langage de programmation car X est non typée. Ce n'est pas forcément possible ailleurs."]]]></dct:description>
+        <dct:description><![CDATA["class":"l1","a":{"op":["dump","xx"],"va":["V002","V001","X"],"ma":["get"]},"values":{"[DATA]":[[1,2,3],[4,5,6],[7,8,9]]},"valid":{"stdout":-1067848827}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[bb]Affichez la 3ème valeur du 2ème élément de [DATA].[/bb]","","Les différentes variables proposées dans cette activité ne sont pas typées. C'est à dire qu'elles peuvent contenir aussi bien une valeur numérique, qu'une chaine de caractères, qu'un tableau. En écrivant","[code]X = GET([DATA],1)[/code]","on copie dans la variable X le 2ème élément du tableau de tableaux [DATA]. On copie donc dans X un tableau. Cette opération est possible avec ce langage de programmation car X est [red]non typée[/red]. Ce n'est pas forcément possible ailleurs."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -602,8 +602,8 @@
     <rdf:Description>
         <dct:identifier>624</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher la taille du 3ème élément de DATA.</dct:title>
-        <dct:description><![CDATA["a":{"op":["dump","xx"],"va":["V002","X"],"ma":["get","len"]},"values":{"DATA":[[1,2,3,4],[11,12,13,14,15],[21,22,23,24,25,26],[31,32,33]]},"valid":{"stdout":-1067848827}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez la taille du 3ème élément de DATA[/b].","","Le 3ème élément de DATA (comme tous ses autres éléments) est un tableau dont on peut afficher la taille."]]]></dct:description>
+        <dct:description><![CDATA["a":{"op":["dump","xx"],"va":["V002","X"],"ma":["get","len"]},"values":{"[DATA]":[[1,2,3,4],[11,12,13,14,15],[21,22,23,24,25,26],[31,32,33]]},"valid":{"stdout":-1067848827}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[bb]Affichez la taille du 3ème élément de [DATA][/bb].","","Le 3ème élément de [DATA] (comme tous ses autres éléments) est un tableau dont on peut afficher la taille."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -614,8 +614,8 @@
     <rdf:Description>
         <dct:identifier>625</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher la dernière valeur du dernier élément de DATA.</dct:title>
-        <dct:description><![CDATA["a":{"op":["dump","xx"],"va":["V001","X"],"ma":["get","len","minus"]},"values":{"DATA":[[1,2,3,4,5,6],[11,12,13,14,15,16],[21,22,23,24,25,26],[31,32,33,34,35,36]]},"valid":{"stdout":797499885}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez la dernière valeur du dernier élément de DATA.[/b]"]]]></dct:description>
+        <dct:description><![CDATA["a":{"op":["dump","xx"],"va":["V001","X"],"ma":["get","len","minus"]},"values":{"[DATA]":[[1,2,3,4,5,6],[11,12,13,14,15,16],[21,22,23,24,25,26],[31,32,33,34,35,36]]},"valid":{"stdout":797499885}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[bb]Affichez la dernière valeur du dernier élément de [DATA].[/bb]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -626,8 +626,8 @@
     <rdf:Description>
         <dct:identifier>626</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher la somme des 3 valeurs numériques contenues dans le 2ème élément de DATA.</dct:title>
-        <dct:description><![CDATA["class":"l1","a":{"op":["dump","xx","yy","ii"],"va":["V000","V001","X","Y","I"],"ma":["get","plus"]},"values":{"DATA":[[1,2,3],[4,5,6],[7,8,9]]},"valid":{"stdout":-1816951327}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez la somme des 3 valeurs numériques contenues dans le 2ème élément de DATA.[/b]","","Pour résoudre l'exercice, posez [b]X = GET( DATA, 1 )[/b] et additionnez dans Y les valeurs GET( X, I ) où I est un itérateur valant successivement 0, 1 et 2."]]]></dct:description>
+        <dct:description><![CDATA["class":"l1","a":{"op":["dump","xx","yy","ii"],"va":["V000","V001","X","Y","I"],"ma":["get","plus"]},"values":{"[DATA]":[[1,2,3],[4,5,6],[7,8,9]]},"valid":{"stdout":-1816951327}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[bb]Affichez la somme des 3 valeurs numériques contenues dans le 2ème élément de [DATA].[/bb]","","Pour résoudre l'exercice, posez [bb]X = GET( [DATA], 1 )[/bb] et additionnez dans Y les valeurs GET( X, I ) où I est un itérateur valant successivement 0, 1 et 2."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>

@@ -12,7 +12,7 @@
     <g class="link s1005 d1006"><path d="M 32,3.5 L 37,3.5 Q 42,3.5 42,8.5 L 42,15 Q 42,20 37,20 L 32,20"/></g>
     <g class="link s1006 d1007" transform="translate(25,20)"><path d="M 0,7 C 3.864,7 7,3.864 7,0 C 7,-3.864 3.864,-7 0,-7" transform="rotate(90)"/></g>
     <g class="link s1007 d1008"><path d="M 6.06,20 L 19,20"/></g>
-    <g class="link s1011 d1101"><path d="M 25,-7 Q 35,-7 35,-17 L 79,-17 Q 84,-17 84,-12 L 84,0"/></g>
+    <g class="link s1011 d1101"><path d="M 25,-7 Q 35,-7 35,-17 L 74,-17 Q 79,-17 79,-12 L 79,-7"/></g>
 
     <g id="1001" transform="translate(0,-7)" class="blue node">
         <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
@@ -54,76 +54,95 @@
 </g>
 
       <!-- LOGO -->
-<g transform="translate(105,40)">
-    <use x="0" y="0" xlink:href="#r4"/>
-    <g class="link s1101 d1102"><path d="M 14.125,-14.125 C 10.505,-17.745 5.52,-20 0,-20" transform="rotate(-45)"/></g>
-    <g class="link s1102 d1103"><path d="M 14.125,-14.125 C 10.505,-17.745 5.52,-20 0,-20" transform="rotate(-90)"/></g>
-    <g class="link s1103 d1104"><path d="M 14.125,-14.125 C 10.505,-17.745 5.52,-20 0,-20" transform="rotate(-135)"/></g>
-    <g class="link s1102 d1201"><path d="M -14.14,-14.14 L -25,-14.14 Q -30,-14.14 -30 -9.14 L -30,20"/></g>
-    <g id="1101" transform="translate(0,-20)" class="blue node">
+<g transform="translate(100,20)">
+    <use x="0" y="0" xlink:href="#r1"/>
+    <g class="link s1101 d1102"><path d="M 6.06,3.5 C 6.66,2.47 7,1.27 7,0 C 7,-3.864 3.864,-7 0,-7" transform="rotate(-120)"/></g>
+    <g class="link s1102 d1103"><path d="M 6.06,3.5 C 6.66,2.47 7,1.27 7,0 C 7,-3.864 3.864,-7 0,-7" transform="rotate(120)"/></g>
+    <g class="link s1102 d1201"><path d="M -6.06,3.5 L -10,3.5 Q -15,3.5 -15,8.5 L -15,20"/></g>
+    <g class="link s1103 d1204"><path d="M 6.06,3.5 L 6.06,35 Q 6.06,40 1.06,40 L -15,40"/></g>
+    <g id="1101" transform="translate(0,-7)" class="blue node">
         <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
         <text y="1">AV</text>
     </g>
-    <g id="1102" transform="translate(-14.14,-14.14)" class="blue node">
+    <g id="1102" transform="translate(-6.06,3.5)" class="blue node">
         <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
         <text y="1" class="nb">+</text>
     </g>
-    <g id="1103" transform="translate(-20,0)" class="green node">
+    <g id="1103" transform="translate(6.06,3.5)" class="green node">
         <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
         <text y="1">for</text>
     </g>
+<!--
     <g id="1104" transform="translate(-14.14,14.14)" class="green node">
         <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
         <text y="1">f1</text>
     </g>
-</g>
-
-<!-- ASM -->
-<g transform="translate(25,70)">
-    <use x="0" y="0" xlink:href="#r2"/>
-    <g class="link s1501 d1502"><path d="M 10,0 C 10,-5.52 5.52,-10 0,-10" transform="rotate(180)"/></g>
-    <g class="link s1502 d1503"><path d="M -10,0 L 0,0"/></g>
-    <g class="link s1503 d1504"><path d="M 10,0 L 0,0"/></g>
-    <g class="link s1504 d1505"><path d="M 10,0 C 10,-5.52 5.52,-10 0,-10" transform="rotate(0)"/></g>
-    <g id="1501" transform="translate(0,10)" class="blue node">
-        <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
-        <text y="1">lda</text>
-    </g>
-    <g id="1502" transform="translate(-10,0)" class="blue node">
-        <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
-        <text y="1">sta</text>
-    </g>
-    <g id="1503" transform="translate(0,0)" class="blue node">
-        <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
-        <text y="1">adc</text>
-    </g>
-    <g id="1504" transform="translate(10,0)" class="green node">
-        <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
-        <text y="1">and</text>
-    </g>
-    <g id="1505" transform="translate(0,-10)" class="green node">
-        <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
-        <text y="1">Z</text>
-    </g>
+-->
 </g>
 
 <!-- CODE -->
-<g transform="translate(75,70)">
+<g transform="translate(85,50)">
     <use x="0" y="0" xlink:href="#r2"/>
+    <use x="-25" y="10" xlink:href="#r0"/>
     <g class="link s1201 d1202"><path d="M 10,0 C 10,-5.52 5.52,-10 0,-10" transform="rotate(0)"/></g>
-    <g class="link s1202 d1203"><path d="M 10,0 C 10,-5.52 5.52,-10 0,-10" transform="rotate(90)"/></g>
+    <g class="link s1202 d1203"><path d="M 10,0 L 0,0"/></g>
+    <g class="link s1203 d1204"><path d="M 0,0 L 0,10"/></g>
+    <g class="link s1204 d1205"><path d="M 10,0 C 10,-5.52 5.52,-10 0,-10" transform="rotate(180)"/></g>
+    <g class="link s1205 d1211"><path d="M -10,0 L -20,0 Q -25,0 -25,5 L -25,10"/></g>
+    <g class="link s1211 d1501"><path d="M -25,10 L -25,30"/></g>
     <g id="1201" transform="translate(0,-10)" class="blue node">
         <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
         <text y="1">C</text>
     </g>
     <g id="1202" transform="translate(10,0)" class="blue node">
         <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
+        <text y="1">+</text>
+    </g>
+    <g id="1203" transform="translate(0,0)" class="blue node">
+        <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
         <text y="1">++</text>
     </g>
-    <g id="1203" transform="translate(0,10)" class="green node">
+    <g id="1204" transform="translate(0,10)" class="green node">
         <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
         <text y="1">for</text>
     </g>
+    <g id="1205" transform="translate(-10,0)" class="green node">
+        <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
+        <text y="1">fct</text>
+    </g>
+    <g id="1211" transform="translate(-25,10)" class="green node">
+        <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
+        <path class="star" d="M 0,-2.9 C 0.02,-2.9 0.80,-1.04 0.82,-1.03 C 0.84,-1.02 2.84,-0.84 2.85,-0.82 C 2.86,-0.81 1.34,0.51 1.33,0.53 C 1.32,0.55 1.78,2.51 1.76,2.52 C 1.74,2.54 0.02,1.5 0,1.5 C -0.02,1.5 -1.74,2.54 -1.76,2.53 C -1.78,2.51 -1.32,0.55 -1.33,0.53 C -1.34,0.51 -2.86,-0.80 -2.85,-0.83 C -2.84,-0.84 -0.84,-1.02 -0.82,-1.03 C -0.80,-1.04 -0.02,-2.9 0,-2.9 z"/>
+    </g>
 </g>
 
+
+<!-- ASM -->
+<g transform="translate(50,80)">
+    <use x="0" y="0" xlink:href="#r2"/>
+    <g class="link s1500 d1501"><path d="M 10,0 C 10,-5.52 5.52,-10 0,-10" transform="rotate(90)"/></g>
+    <g class="link s1501 d1502"><path d="M 10,0 L 0,0"/></g>
+    <g class="link s1502 d1503"><path d="M -10,0 L 0,0"/></g>
+    <g class="link s1503 d1504"><path d="M 10,0 C 10,-5.52 5.52,-10 0,-10" transform="rotate(270)"/></g>
+    <g id="1500" transform="translate(0,10)" class="blue node">
+        <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
+        <path class="star" d="M 0,-2.9 C 0.02,-2.9 0.80,-1.04 0.82,-1.03 C 0.84,-1.02 2.84,-0.84 2.85,-0.82 C 2.86,-0.81 1.34,0.51 1.33,0.53 C 1.32,0.55 1.78,2.51 1.76,2.52 C 1.74,2.54 0.02,1.5 0,1.5 C -0.02,1.5 -1.74,2.54 -1.76,2.53 C -1.78,2.51 -1.32,0.55 -1.33,0.53 C -1.34,0.51 -2.86,-0.80 -2.85,-0.83 C -2.84,-0.84 -0.84,-1.02 -0.82,-1.03 C -0.80,-1.04 -0.02,-2.9 0,-2.9 z"/>
+    </g>
+    <g id="1501" transform="translate(10,0)" class="blue node">
+        <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
+        <text y="1">lda</text>
+    </g>
+    <g id="1502" transform="translate(0,0)" class="blue node">
+        <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
+        <text y="1">sta</text>
+    </g>
+    <g id="1503" transform="translate(-10,0)" class="green node">
+        <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
+        <text y="1">adc</text>
+    </g>
+    <g id="1504" transform="translate(0,-10)" class="green node">
+        <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
+        <text y="1">and</text>
+    </g>
+</g>
 
