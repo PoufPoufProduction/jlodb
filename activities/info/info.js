@@ -7,6 +7,7 @@
         css         : "style.css",                              // Activity's css style sheet
         lang        : "en-US",                                  // Current localization
         type        : "",
+        score       : 0,
         debug       : true                                     // Debug mode
     };
 
@@ -91,7 +92,6 @@
             init: function(options) {
                 // The settings
                 var settings = {
-                    score: 5
                 };
 
                 return this.each(function() {

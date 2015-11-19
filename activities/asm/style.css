@@ -54,6 +54,11 @@
 .asm.huge #central #exercice        { height:21.4em; }
 .asm.huge #central #code            { height:17em; }
 
+.asm #central #exercice .svg         { background-color:rgba(0,0,0,0.2); font-size:6em; }
+.asm #central #exercice .svg>div     { width:1em; height:1em; margin:.1em auto; }
+.asm #central #exercice .cc          { background-color:rgba(0,40,0,0.9); color:lime; padding:.5em; margin:.4em 0; }
+.asm #central #exercice .strong      { color:red; font-weight:bold; border: 1px solid red; border-width:1px 0; }
+
 /*---------------------------------------------------------------------------------------------------------------------------*/
 .asm div#board #detail>*            { font-size:.75em;margin:.1em; width:10em; border-radius:.5em;}
 .asm #detail #source                { height:25em; background-color:#112211; 

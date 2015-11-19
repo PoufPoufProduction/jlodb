@@ -14,7 +14,8 @@
             cl      : true
         },
         initsc      : [],                                       // Init screen
-        debug       : false                                     // Debug mode
+        debug       : true,                                     // Debug mode
+        devmode     : false
     };
 
     var regExp = [
@@ -580,9 +581,8 @@
                 if (ret) {
                     settings.data.stack.push({$elt:$this.find("#code #fct1 .d.op").children().first(),
                                               $first:0, count:0, sav:{X:settings.data.X, Y:settings.data.Y, Z:settings.data.Z,
-                                                                      I:settings.data.I, J:settings.data.J, K:settings.data.K,
                                                                       R:settings.data.R, G:settings.data.G, B:settings.data.B } });
-                    helpers.initvar($this);
+                    helpers.initvar($this,false);
                 }
                 return !ret;
             },
@@ -590,12 +590,11 @@
                 var settings = helpers.settings($this);
                 var ret = ($this.find("#code #fct2").length==1);
                 if (ret) {
-                    var valueX = helpers.process.value.get($this, $elt.find(".d.va").first());
+                    var valueX = helpers.process.value.get($this, $elt.find(".d.va").first(), true);
                     settings.data.stack.push({$elt:$this.find("#code #fct2 .d.op").children().first(),
                                               $first:0, count:0, sav:{X:settings.data.X, Y:settings.data.Y, Z:settings.data.Z,
-                                                                      I:settings.data.I, J:settings.data.J, K:settings.data.K,
                                                                       R:settings.data.R, G:settings.data.G, B:settings.data.B } });
-                    helpers.initvar($this);
+                    helpers.initvar($this,false);
                     settings.data.X = valueX;
                 }
                 return !ret;
@@ -604,13 +603,12 @@
                 var settings = helpers.settings($this);
                 var ret = ($this.find("#code #fct3").length==1);
                 if (ret) {
-                    var valueX = helpers.process.value.get($this, $elt.find(".d.va").first());
-                    var valueY = helpers.process.value.get($this, $elt.find(".d.va").first().next());
+                    var valueX = helpers.process.value.get($this, $elt.find(".d.va").first(), true);
+                    var valueY = helpers.process.value.get($this, $elt.find(".d.va").first().next(), true);
                     settings.data.stack.push({$elt:$this.find("#code #fct3 .d.op").children().first(),
                                               $first:0, count:0, sav:{X:settings.data.X, Y:settings.data.Y, Z:settings.data.Z,
-                                                                      I:settings.data.I, J:settings.data.J, K:settings.data.K,
                                                                       R:settings.data.R, G:settings.data.G, B:settings.data.B } });
-                    helpers.initvar($this);
+                    helpers.initvar($this,false);
                     settings.data.X = valueX;
                     settings.data.Y = valueY;
                 }
@@ -688,15 +686,15 @@
                 return true;
             }
         },
-        initvar: function($this) {
+        initvar: function($this, _global) {
             var settings = helpers.settings($this);
             settings.data.X = 99; settings.data.Y = 98; settings.data.Z = 97;
-            settings.data.I = 57; settings.data.J = 58; settings.data.K = 59;
+            if (_global) { settings.data.I = 57; settings.data.J = 58; settings.data.K = 59; }
             settings.data.R = 63; settings.data.G = 62; settings.data.B = 61;
         },
         init: function($this) {
             var settings = helpers.settings($this);
-            helpers.initvar($this);
+            helpers.initvar($this,true);
             settings.data.count = 0;
             settings.data.timer = 0;
             settings.data.lastkey = 0;
@@ -781,7 +779,7 @@
             settings.sav.stdout.push(helpers.stdout.crc32($this));
             settings.sav.screen.push(helpers.screen.crc32($this));
 
-            if (settings.debug) {
+            if (settings.devmode) {
                 alert("\"valid\":{"+
                     "\"screen\":"+ (settings.sav.screen.length==1?settings.sav.screen[0]:"["+settings.sav.screen+"]")+
                      ",\"stdout\":"+(settings.sav.stdout.length==1?settings.sav.stdout[0]:"["+settings.sav.stdout+"]")+"}");

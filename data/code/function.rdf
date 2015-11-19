@@ -1,0 +1,219 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dct="http://purl.org/dc/terms/">
+
+    <rdf:Description>
+        <dct:identifier>001</dct:identifier>
+        <dct:title xml:lang="fr-FR">Recopier un programme avec méthode pour afficher une chaîne de caractères dans la sortie standard.</dct:title>
+        <dct:description><![CDATA["class":"l2","a":{"op":["print","call1"],"va":["VA","VB"],"cl":["fct1"]},"valid":{"stdout":1580622006}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez le texte \\\"AAABAAA\\\" sur la sortie standard en recopiant le code suivant :[/b]","[code]F1()[br]| PRINT 'A'[br]| PRINT 'A'[br]| PRINT 'A'[br]F1[br]PRINT 'B'[br]F1[/code]","","F1() est l'opérateur permettant de définir une méthode et que l'on peut trouver dans le 4ème onglet. Il est à noter que cette définition peut avoir lieu à n'importe quel endroit du code (ici elle est au début du code, mais elle aurait tout aussi bien être à la fin ou même au milieu). Elle ne sera exécutée que lors de l'appel à F1 grâce à l'opérateur du premier onglet."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>002</dct:identifier>
+        <dct:title xml:lang="fr-FR">Afficher une chaîne de caractères dans la sortie standard à l'aide d'une méthode.</dct:title>
+        <dct:description><![CDATA["class":"l2","a":{"op":["print","call1"],"va":["V005","VA","VB"],"cl":["fct1","rep"]},"valid":{"stdout":299122941}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez le texte \\\"AAAAABAAAAA\\\" sur la sortie standard en recopiant le code suivant :[/b]","","L'opérateur de répétition peut être utiliser à l'intérieur d'une fonction."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>003</dct:identifier>
+        <dct:title xml:lang="fr-FR">Afficher une chaîne de caractères dans la sortie standard à l'aide d'une méthode.</dct:title>
+        <dct:description><![CDATA["class":"l1","a":{"op":["print","call1","ii"],"va":["V010","V005","V001","VA","I"],"cl":["fct1","rep"],"ma":["plus"]},"values":{"\\\"HELLO\\\"":"HELLO"},"valid":{"stdout":390014174}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez le texte suivant sur la sortie standard :[/b]","","[code]ABCDE[br]HELLO[br]ABCDE[br]ABCDE[/code]","","Pour rappel (mais depuis le temps, cela devrait être évident), l'opération [red]PRINT 10[/red] permet d'afficher le caractère [blue]ASCII[/blue] numéro 10 qui correspond à un retour à la ligne."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>004</dct:identifier>
+        <dct:title xml:lang="fr-FR">Afficher une chaîne de caractères dans la sortie standard à l'aide d'une méthode.</dct:title>
+        <dct:description><![CDATA["debug":true,"a":{"op":["print","call1","ii"],"va":["V010","V001","I"],"cl":["fct1","rep"],"ma":["minus","len","get"]},"values":{"\\\"HELLO\\\"":"HELLO"},"valid":{"stdout":1676469700}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez le texte suivant sur la sortie standard :[/b]","[code]OLLEH[br]HELLO[br]OLLEH[br]OLLEH[/code]"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>051</dct:identifier>
+        <dct:title xml:lang="fr-FR">Recopier un programme avec méthode pour afficher une chaîne de caractères dans la sortie standard.</dct:title>
+        <dct:description><![CDATA["class":"l2","a":{"op":["print","call2"],"va":["V003","X","VA","VB","VC"],"cl":["fct2","rep"]},"valid":{"stdout":1120962785}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez le texte \\\"AAABBBAAACCC\\\" sur la sortie standard en recopiant le code suivant :[/b]","[code]F2(X)[br]| REPEAT 3[br]| | PRINT X[br]F2 'A'[br]F2 'B'[br]F2 'A'[br]F2 'C'[/code]","","F2(X) est une méthode qui s'utilise avec un [b]argument[/b]. Cet argument permet de passer une valeur depuis l'appelant vers la méthode."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>052</dct:identifier>
+        <dct:title xml:lang="fr-FR">Utiliser une méthode avec argument pour afficher une chaîne de caractères dans la sortie standard.</dct:title>
+        <dct:description><![CDATA["class":"l1","a":{"op":["print","call2","xx"],"va":["V001","V005","V010","X","VA","VB","VD"],"ma":["plus"],"cl":["fct2","rep"]},"valid":{"stdout":-1728182667}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez le texte suivant sur la sortie standard :[/b]","[code]ABCDE[br]BCDEF[br]DEFGH[/code]","","Au cours de ce programme, vous serez probablement amené(e) à utiliser l'instruction [b]X = X + 1[/b] à l'intérieur de la [red]méthode F2(X)[/red]. Cette opération est tout à fait légitime et permet d'incrémenter le paramètre de la méthode."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>053</dct:identifier>
+        <dct:title xml:lang="fr-FR">Utiliser une méthode avec argument pour afficher un ensemble de motifs.</dct:title>
+        <dct:description><![CDATA["class":"l1","a":{"op":["line","circle","call2"],"va":["V005","V013","V020","V026","V000","V031","V015","V003","X"],"cl":["fct2"]},"valid":{"screen":86885834}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Pour chaque valeur X de la liste ci-dessous, tracez la ligne horizontale n°X de l'écran graphique et dessinez le cercle de centre (15,X) et de rayon 3.[/b]","[code]5 13 20 26[/code]","","[svg]<def><style>circle {fill:#FFF;} path {fill:none;stroke:#FFF;}</style></def><circle cx='15' cy='5' r='3'/><path d='M 0,5 32,5'/><circle cx='15' cy='13' r='3'/><path d='M 0,13 32,13'/><circle cx='15' cy='20' r='3'/><path d='M 0,20 32,20'/><circle cx='15' cy='26' r='3'/><path d='M 0,26 32,26'/>[/svg]"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>054</dct:identifier>
+        <dct:title xml:lang="fr-FR">Utiliser une méthode avec argument pour afficher un ensemble de droites graduées verticales.</dct:title>
+        <dct:description><![CDATA["class":"l1","a":{"op":["line","call2","jj"],"va":["V005","V013","V020","V026","V000","V031","V001","V002","V004","V008","X","J"],"cl":["fct2","rep"],"ma":["plus","minus"]},"valid":{"screen":-1659962612}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Pour chaque valeur X de la liste ci-dessous, tracez la ligne verticale n°X de l'écran graphique ainsi que les 8 graduations correspondantes.[/b] Pour chaque valeur X, les graduations sont les lignes d'extrémités [b]( X-1,J ) et ( X+1,J )[/b] où J varie de [b]2 à 30[/b] par pas de [b]4[/b].","[code]5 13 20 26[/code]","[svg]<def><style>path {fill:none;stroke:#FFF;}</style></def><path id='l' d='M 5,0 5,32 M 4,2 6,2 M 4,6 6,6 M 4,10 6,10 M 4,14 6,14 M 4,18 6,18 M 4,22 6,22 M 4,26 6,26 M 4,30 6,30'/><use transform='translate(8,0)' xlink:href='#l'/><use transform='translate(15,0)' xlink:href='#l'/><use transform='translate(21,0)' xlink:href='#l'/>[/svg]"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>061</dct:identifier>
+        <dct:title xml:lang="fr-FR">Afficher 2 chaînes de caractères en espaçant chaque lettre.</dct:title>
+        <dct:description><![CDATA["class":"l1","a":{"op":["print","call2","yy"],"va":["V000","V001","VSP","X","Y"],"cl":["fct2","rep"],"ma":["plus","get","len"]},"values":{"\\\"HELLO\\\"":"HELLO","\\\"WORLD\\\"":"WORLD"},"valid":{"stdout":-1361754578}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez les mots \\\"HELLO\\\" et \\\"WORLD\\\" sur la sortie standard en espaçant chacune des lettres.[/b] Au final, la sortie standard doit afficher :","[code]H_E_L_L_O_W_O_R_L_D_[/code]","Il doit y avoir un espace final. Il est conseillé d'utiliser la méthode [red]F2 (X)[/red] pour afficher la chaîne de caractères X en ajoutant un espace après chaque lettre.","","[strong]Il est possible d'utiliser en argument de méthode une valeur complexe (chaîne de caractères, tableau, etc.)[/strong]"]]]></dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>062</dct:identifier>
+        <dct:title xml:lang="fr-FR">Afficher les sommes respectives de 3 tableaux.</dct:title>
+        <dct:description><![CDATA["a":{"op":["dump","call2","yy","zz"],"va":["V000","V001","X","Y","Z"],"cl":["fct2","rep"],"ma":["plus","get","len"]},"values":{"[DATA1]":[3,4,5],"[DATA2]":[12],"[DATA3]":[1,2,3,4,5]},"valid":{"stdout":723877691}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[bb]Affichez les sommes respectives des 3 tableaux [DATA1], [DATA2] et [DATA3] sur la sortie standard.[/bb]"]]]></dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>101</dct:identifier>
+        <dct:title xml:lang="fr-FR">Recopier un programme et appréhender la notion de variable locale.</dct:title>
+        <dct:description><![CDATA["class":"l2","a":{"op":["dump","call1","xx"],"va":["V000","V002","X"],"cl":["fct1"]},"valid":{"stdout":-1667698364}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Recopiez et exécutez le programme suivant :[/b]","[code]F1 ()[br] | X = 0[br] | DUMP X[br]X = 2[br]DUMP X[br]F1[br]DUMP X[/code]","","A la fin de l'exécution, la sortie standard affiche les valeurs [b]\\\"2 0 2\\\"[/b]. Il est important de remarquer que l'instruction [red]X = 0[/red] exécutée dans la fonction F1 [b]n'affecte pas[/b] la valeur de la variable X dans le programme principal qui reste à 2. [blue]Même si elles portent le même nom, les variables X du programme principale et celles des différentes méthodes sont des variables différentes.[/blue]","","[strong]On dit que X est une variable locale.[/strong]"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>102</dct:identifier>
+        <dct:title xml:lang="fr-FR">Recopier un programme et appréhender la notion de variable globale.</dct:title>
+        <dct:description><![CDATA["class":"l2","a":{"op":["dump","call1","ii"],"va":["V000","V002","I"],"cl":["fct1"]},"valid":{"stdout":942590659}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Recopiez et exécutez le programme suivant :[/b]","[code]F1 ()[br] | I = 0[br] | DUMP I[br]I = 2[br]DUMP I[br]F1[br]DUMP I[/code]","","A la fin de l'exécution, la sortie standard affiche les valeurs [b]\\\"2 0 0\\\"[/b]. Dans ce cas, l'instruction [red]I = 0[/red] exécutée dans la fonction F1 [b]affecte[/b] la valeur de la variable I du programme principal. Contrairement à X, la variable I est commune à toutes les méthodes.","","[strong]On dit que I est une variable globale.[/strong]"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>103</dct:identifier>
+        <dct:title xml:lang="fr-FR">Recopier un programme et appréhender la notion de variable globale.</dct:title>
+        <dct:description><![CDATA["class":"l1","a":{"op":["circle","line","call2","jj"],"va":["V000","V002","V005","V013","V020","V026","V031","J","X"],"cl":["fct2"],"ma":["plus"]},"valid":{"screen":1910518013}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Pour chauque point M ci-dessous, tracez le cercle de centre M et de rayon 2 puis tracez la ligne verticale passant M.[/b]","[code](0,0) (20,5) (13,10) (26,15) (5,20)[/code]","Faites varier la [red]variable globale J[/red] de [b]5 en 5[/b] pour fournir à la fonction F2(X) le numéro de ligne du point M.","[svg]<def><style>circle {fill:#FFF;} path {fill:none;stroke:#FFF;}</style></def><circle cx='0.5' cy='0.5' r='2'/><path d='M 0.5,0.5 0.5,32'/><circle cx='20' cy='5' r='2'/><path d='M 20,0 20,32'/><circle cx='13' cy='10' r='2'/><path d='M 13,0 13,32'/><circle cx='26' cy='15' r='2'/><path d='M 26,0 26,32'/><circle cx='5.5' cy='20' r='2'/><path d='M 5.5,0 5.5,32'/>[/svg]"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>151</dct:identifier>
+        <dct:title xml:lang="fr-FR">Recopier un programme avec méthode pour afficher une chaîne de caractères dans la sortie standard.</dct:title>
+        <dct:description><![CDATA["class":"l2","a":{"op":["print","call3"],"va":["V003","V002","V004","X","Y","VA","VB","VC"],"cl":["fct3","rep"]},"valid":{"stdout":-869620}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez le texte \\\"AABBBAAAACC\\\" sur la sortie standard en recopiant le code suivant :[/b]","[code]F3(X,Y)[br]| REPEAT X[br]| | PRINT Y[br]F3 2 'A'[br]F3 3 'B'[br]F3 3 'A'[br]F3 2 'C'[/code]","","La méthode F3(X,Y) permet d'utiliser [b]2 arguments[/b]."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>152</dct:identifier>
+        <dct:title xml:lang="fr-FR">Tracer un motif en différents points de l'écran.</dct:title>
+        <dct:description><![CDATA["class":"l2","a":{"op":["line","circle","call3","rgb"],"va":["V000","V003","V005","V010","V015","V020","V026","V031","V255","X","Y"],"cl":["fct3"]},"valid":{"screen":-1508709072}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Pour chaque point de la liste ci-dessous, tracez un cercle vert centré en ce point et de rayon 3 puis tracez en jaune les droites verticale et horizontale passant par ce point.[/b]","[code](5,5) (15,10) (20,26) (26,15)[/code]","","[svg]<def><style>circle {fill:#0F0;} path {fill:none;stroke:#FF0;}</style></def><circle cx='5' cy='5' r='3'/><path d='M 0,5 32,5 M 5,0 5,32'/><circle cx='15' cy='10' r='3'/><path d='M 0,10 32,10 M 15,0 15,32'/><circle cx='20' cy='26' r='3'/><path d='M 0,26 32,26 M 20,0 20,32'/><circle cx='26' cy='15' r='3'/><path d='M 0,15 32,15 M 26,0 26,32'/>[/svg]"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>153</dct:identifier>
+        <dct:title xml:lang="fr-FR">Tracer un motif en différents points de l'écran.</dct:title>
+        <dct:description><![CDATA["class":"l2","a":{"op":["circle","call3","rgb","ii"],"va":["V000","V001","V002","V003","V015","V255","X","Y","I"],"ma":["div","plus","len","get"],"cl":["rep","fct3"]},"values":{"[DATA]":[6,7,26,8,25,24,5,16]},"valid":{"screen":1029300537}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Pour chaque point défini dans [DATA], [b]tracez 2 cercles centrés en ce point[/b] : le premier est [b]blanc de rayon 3[/b] tandis que le deuxième est [b]rouge de rayon 1[/b]. Pour finir, tracez ces 2 mêmes cercles au point de coordonnées [b](15,15)[/b].","","[DATA] est un tableau défini comme suit : [ I_1, J_1, I_2, J_2, I_3, ...] où I_N,J_N sont les coordonnées du point N.","","[svg]<def><style>.w {fill:#FFF;} .r {fill:#F00;}</style></def><circle cx='6' cy='7' r='3' class='w'/><circle cx='6' cy='7' r='1' class='r'/><circle cx='26' cy='8' r='3' class='w'/><circle cx='26' cy='8' r='1' class='r'/><circle cx='25' cy='24' r='3' class='w'/><circle cx='25' cy='24' r='1' class='r'/><circle cx='5' cy='16' r='3' class='w'/><circle cx='5' cy='16' r='1' class='r'/><circle cx='15' cy='15' r='3' class='w'/><circle cx='15' cy='15' r='1' class='r'/>[/svg]"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>154</dct:identifier>
+        <dct:title xml:lang="fr-FR">Tracer un motif en différents points de l'écran en utilisant une variable globale.</dct:title>
+        <dct:description><![CDATA["class":"l1","a":{"op":["circle","call3","rgb","ii"],"va":["V000","V001","V002","V004","V005","V006","V008","V010","V016","V024","V026","V255","X","Y","I"],"ma":["plus"],"cl":["fct3"]},"valid":{"screen":-1871117902}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Pour chaque triplet (X,Y,R) de la liste ci-desous, [b]tracez 2 cercles centrés en au point (X,Y)[/b] : le premier est [b]jaune de rayon R[/b] tandis que le deuxième est [b]vert de rayon 1[/b].","[code](5,5,2) (8,10,3) (26,16,4) (6,26,5) (24,24,6)[/code]","Utilisez la [red]variable globale I[/red] pour définir le rayon du cercle à tracer.","","[svg]<def><style>.w {fill:#FF0;} .r {fill:#0F0;}</style></def><circle cx='5' cy='5' r='2' class='w'/><circle cx='5' cy='5' r='1' class='r'/><circle cx='8' cy='10' r='3' class='w'/><circle cx='8' cy='10' r='1' class='r'/><circle cx='26' cy='16' r='4' class='w'/><circle cx='26' cy='16' r='1' class='r'/><circle cx='6' cy='26' r='5' class='w'/><circle cx='6' cy='26' r='1' class='r'/><circle cx='24' cy='24' r='6' class='w'/><circle cx='24' cy='24' r='1' class='r'/>[/svg]"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+</rdf:RDF>
+

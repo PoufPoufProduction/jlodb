@@ -118,6 +118,30 @@
     </rdf:Description>
 
     <rdf:Description>
+        <dct:identifier>024</dct:identifier>
+        <dct:title xml:lang="fr-FR">Afficher le mot 'HELLO' à l'envers en recopiant un programme.</dct:title>
+        <dct:description><![CDATA["class":"l1","a":{"op":["print","ii"],"va":["V001","I"],"ma":["plus","minus","len","get"],"cl":["rep"]},"values":{"\\\"HELLO\\\"":"HELLO"},"valid":{"stdout":-2079374078}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez le mot \\\"HELLO\\\" à l'envers en recopiant le programme suivant :[/b]","[code]I = LENGTH(\\\"HELLO\\\")[br]REPEAT LENGTH(\\\"HELLO\\\")[br]| I = I -1[br]| PRINT GET(\\\"HELLO\\\",I)[/code]","","Il existe d'autres façons d'écrire ce programme, mais quelque soit la méthode choisie, l'itérateur utilisé dans l'appel à [red]GET[/red] doit varier de [b]LENGTH(\\\"HELLO\\\")-1[/b] à [b]0[/b]."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>025</dct:identifier>
+        <dct:title xml:lang="fr-FR">Afficher le mot 'WORLD' à l'envers.</dct:title>
+        <dct:description><![CDATA["a":{"op":["print","ii"],"va":["V001","I"],"ma":["plus","minus","len","get"],"cl":["rep"]},"values":{"\\\"WORLD\\\"":"WORLD"},"valid":{"stdout":-702648850}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez le mot \\\"WORLD\\\" à l'envers[/b]."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
         <dct:identifier>031</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher les 32 premières valeurs d'une série croissante.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["dump","ii","xx"],"va":["V000","V001","V032","I","X"],"ma":["plus"],"cl":["rep"]},"valid":{"stdout":-872610790}]]></dct:description>
@@ -372,8 +396,8 @@
     <rdf:Description>
         <dct:identifier>065</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher des points bleus dont la position est fournies par 1 tableau.</dct:title>
-        <dct:description><![CDATA["class":"l2","a":{"op":["dump","pixel","ii","rgb"],"va":["V000","V001","V002","V255","I"],"ma":["plus","div","len","get"],"cl":["rep"]},"values":{"DATA":[10,10,11,10,12,10,13,10,14,11,15,12,15,13,15,14,15,15,14,16,13,17,12,17,11,17,10,17,9,16,8,15,8,14,8,13,8,12,9,11]},"valid":{"screen":987671431,"stdout":-1325270739}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez le contenu du tableau DATA sur la sortie standard et tracez des points bleus dont les coordonnées sont fournies par DATA.[/b]","","DATA est construite ainsi [ I_0, J_0, I_1, J_1, I_2, J_2, etc..] où (I_X,J_X) sont les coordonnées du Xème point.","","[svg]<circle cx='12' cy='13' r='4' style='fill:none;stroke:#00F;stroke-width:2;'/>[/svg]"]]]></dct:description>
+        <dct:description><![CDATA["class":"l2","a":{"op":["dump","pixel","ii","rgb"],"va":["V000","V001","V002","V255","I"],"ma":["plus","div","len","get"],"cl":["rep"]},"values":{"[DATA]":[10,10,11,10,12,10,13,10,14,11,15,12,15,13,15,14,15,15,14,16,13,17,12,17,11,17,10,17,9,16,8,15,8,14,8,13,8,12,9,11]},"valid":{"screen":987671431,"stdout":-1325270739}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[bb]Affichez le contenu du tableau [DATA] sur la sortie standard et tracez des points bleus dont les coordonnées sont fournies par [DATA].[/bb]","","[DATA] est construite ainsi [ I_0, J_0, I_1, J_1, I_2, J_2, etc..] où (I_X,J_X) sont les coordonnées du Xème point.","","[svg]<circle cx='12' cy='13' r='4' style='fill:none;stroke:#00F;stroke-width:2;'/>[/svg]"]]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -384,8 +408,20 @@
     <rdf:Description>
         <dct:identifier>066</dct:identifier>
         <dct:title xml:lang="fr-FR">Dessiner une tête de souris grâce à la position des cercles fournies par 1 tableau.</dct:title>
-        <dct:description><![CDATA["class":"l2","a":{"op":["circle","ii","rgb"],"va":["V000","V001","V002","V003","V255","I"],"ma":["plus","div","len","get"],"cl":["rep"]},"values":{"DATA":[15,20,10,6,6,6,24,6,6]},"valid":{"screen":-449522127}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Tracez des cercles rouges dont les coordonnées sont fournies par DATA.[/b]","","DATA est construite ainsi [ CX_0, CY_0, R_0, CX_1, CX_1, R_1, etc..] où (CX_X,CY_X) sont les coordonnées du centre du Xème cercle de rayon R_X.","","[svg]<circle cx='15.5' cy='20.5' r='11' style='fill:#F00;'/><circle cx='6.5' cy='6.5' r='7' style='fill:#F00;'/><circle cx='24.5' cy='6.5' r='7' style='fill:#F00;'/>[/svg]"]]]></dct:description>
+        <dct:description><![CDATA["class":"l2","a":{"op":["circle","ii","rgb"],"va":["V000","V001","V002","V003","V255","I"],"ma":["plus","div","len","get"],"cl":["rep"]},"values":{"[DATA]":[15,20,10,6,6,6,24,6,6]},"valid":{"screen":-449522127}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[bb]Tracez des cercles rouges dont les coordonnées sont fournies par [DATA].[/bb]","","[DATA] est construite ainsi [ CX_0, CY_0, R_0, CX_1, CX_1, R_1, etc..] où (CX_X,CY_X) sont les coordonnées du centre du Xème cercle de rayon R_X.","","[svg]<circle cx='15.5' cy='20.5' r='11' style='fill:#F00;'/><circle cx='6.5' cy='6.5' r='7' style='fill:#F00;'/><circle cx='24.5' cy='6.5' r='7' style='fill:#F00;'/>[/svg]"]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>067</dct:identifier>
+        <dct:title xml:lang="fr-FR">Placer des sprites en fonctions de coordonnées fournies par un tableau.</dct:title>
+        <dct:description><![CDATA["class":"l2","a":{"op":["draw","ii"],"va":["V000","V001","V002","V008","I"],"ma":["plus","div","len","get"],"cl":["rep"]},"values":{"[sprite]":[0,0,0,0,0,0,0,0,0,255,97,97,255,97,97,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,255,97,97,255,97,97,255,97,97,255,97,97,0,0,0,0,0,0,0,0,0,255,97,97,255,97,97,255,97,97,255,97,97,255,97,97,255,97,97,0,0,0,255,97,97,255,97,97,241,232,91,255,97,97,255,97,97,241,232,91,255,97,97,255,97,97,255,97,97,255,97,97,255,97,97,255,97,97,255,97,97,255,97,97,255,97,97,255,97,97,0,0,0,0,0,0,238,58,58,0,0,0,0,0,0,238,58,58,0,0,0,0,0,0,0,0,0,238,58,58,0,0,0,238,58,58,238,58,58,0,0,0,238,58,58,0,0,0,238,58,58,0,0,0,238,58,58,0,0,0,0,0,0,238,58,58,0,0,0,238,58,58],"[DATA]":[1,1,20,2,5,10,23,15,6,19]},"valid":{"screen":-1917349524}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[bb]Affichez le sprite de taille 8x8 aux positions fournies par le tableau [DATA].[/bb]","","[DATA] est construite ainsi [ I_0, J_0, I_1, J_1, I_2, etc..] où (I_N,J_N) sont les coordonnées du point numéro N.","","La commande [red]DRAW[/red] permet d'afficher un sprite. Elle s'utilise ainsi :","[code]DRAW [sprite] I J Largeur Hauteur[/code]","où (I,J) sont les coordonnées du coin supérieur gauche du sprite dans l'écran graphique."]]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -396,36 +432,36 @@
     <rdf:Description>
         <dct:identifier>101</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher un histogramme vertical de couleur verte à partir de données fournies par un tableau.</dct:title>
-        <dct:description><![CDATA["class":"l2","a":{"op":["rect","jj","rgb","xx"],"va":["V000","V001","V255","J","X"],"ma":["plus","get","len"],"cl":["rep"]},"values":{"DATA":[15,15,15,15,14,14,14,14,13,13,13,12,12,11,10,9,8,7,6,5,5,4,4,4,4,4,5,5,6,7,8,9]},"valid":{"screen":1553789210}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez un histogramme vertical de couleur verte à partir de données fournies par le tableau DATA.[/b]","","Les 32 valeurs de DATA correspondent aux longueurs de chacune des lignes de l'écran graphique.","","[svg]<rect x='0' y='0' width='15' height='9' style='fill:#0F0;stroke:#0F0;stroke-width:0.5px;'/><rect x='0' y='9' width='10' height='6' style='fill:#0F0;stroke:#0F0;stroke-width:0.5px;'/><rect x='0' y='15' width='4' height='8' style='fill:#0F0;stroke:#0F0;stroke-width:0.5px;'/><rect x='0' y='23' width='7' height='4' style='fill:#0F0;stroke:#0F0;stroke-width:0.5px;'/><rect x='0' y='27' width='9' height='5' style='fill:#0F0;stroke:#0F0;stroke-width:0.5px;'/>[/svg]"]]]></dct:description>
-        <dct:extent>2</dct:extent>
+        <dct:description><![CDATA["class":"l2","a":{"op":["rect","jj","rgb","xx"],"va":["V000","V001","V255","J","X"],"ma":["plus","get","len"],"cl":["rep"]},"values":{"[DATA]":[15,15,15,15,14,14,14,14,13,13,13,12,12,11,10,9,8,7,6,5,5,4,4,4,4,4,5,5,6,7,8,9]},"valid":{"screen":1553789210}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[bb]Affichez un histogramme vertical de couleur verte à partir de données fournies par le tableau [DATA].[/bb]","","Les 32 valeurs de [DATA] correspondent aux longueurs de chacune des lignes de l'écran graphique.","","[svg]<rect x='0' y='0' width='15' height='9' style='fill:#0F0;stroke:#0F0;stroke-width:0.5px;'/><rect x='0' y='9' width='10' height='6' style='fill:#0F0;stroke:#0F0;stroke-width:0.5px;'/><rect x='0' y='15' width='4' height='8' style='fill:#0F0;stroke:#0F0;stroke-width:0.5px;'/><rect x='0' y='23' width='7' height='4' style='fill:#0F0;stroke:#0F0;stroke-width:0.5px;'/><rect x='0' y='27' width='9' height='5' style='fill:#0F0;stroke:#0F0;stroke-width:0.5px;'/>[/svg]"]]]></dct:description>
+        <dct:extent>3</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>3</dct:type>
         <dct:alternative>001</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>102</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher un histogramme vertical double de couleurs verte et jaunes à partir de données fournies par un tableau.</dct:title>
-        <dct:description><![CDATA["class":"l2 small","a":{"op":["rect","jj","xx","yy","rgb"],"va":["V000","V001","V002","V255","J","X","Y"],"ma":["plus","get","mult","div","len"],"cl":["rep"]},"values":{"DATA":[15,4,15,4,15,4,15,4,14,4,14,4,14,4,14,4,13,4,13,4,13,4,12,4,12,4,11,4,10,4,9,4,8,4,7,4,6,4,5,4,5,4,4,4,4,4,4,4,4,4,4,4,5,4,5,4,6,4,7,4,8,4,9,4]},"valid":{"screen":-443782538}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez un histogramme vertical double de couleur verte et jaune à partir de données fournies par le tableau DATA[/b].","","[b]DATA[/b] est une succession de doublon (VERT,JAUNE) ou chaque valeur donne la longueur des composantes vertes et jaunes. Par exemple, (15,4) représente une ligne commençant par 15 pixels verts suivis de 4 pixels jaunes.","","[svg]<rect x='4' y='0' width='15' height='9' style='fill:#FF0;stroke:#FF0;stroke-width:0.5px;'/><rect x='4' y='9' width='10' height='6' style='fill:#FF0;stroke:#FF0;stroke-width:0.5px;'/><rect x='4' y='15' width='4' height='8' style='fill:#FF0;stroke:#FF0;stroke-width:0.5px;'/><rect x='4' y='23' width='7' height='4' style='fill:#FF0;stroke:#FF0;stroke-width:0.5px;'/><rect x='4' y='27' width='9' height='5' style='fill:#FF0;stroke:#FF0;stroke-width:0.5px;'/><rect x='0' y='0' width='15' height='9' style='fill:#0F0;stroke:#0F0;stroke-width:0.5px;'/><rect x='0' y='9' width='10' height='6' style='fill:#0F0;stroke:#0F0;stroke-width:0.5px;'/><rect x='0' y='15' width='4' height='8' style='fill:#0F0;stroke:#0F0;stroke-width:0.5px;'/><rect x='0' y='23' width='7' height='4' style='fill:#0F0;stroke:#0F0;stroke-width:0.5px;'/><rect x='0' y='27' width='9' height='5' style='fill:#0F0;stroke:#0F0;stroke-width:0.5px;'/>[/svg]"]]]></dct:description>
-        <dct:extent>2</dct:extent>
+        <dct:description><![CDATA["class":"l2 small","a":{"op":["rect","jj","xx","yy","rgb"],"va":["V000","V001","V002","V255","J","X","Y"],"ma":["plus","get","mult","div","len"],"cl":["rep"]},"values":{"[DATA]":[15,4,15,4,15,4,15,4,14,4,14,4,14,4,14,4,13,4,13,4,13,4,12,4,12,4,11,4,10,4,9,4,8,4,7,4,6,4,5,4,5,4,4,4,4,4,4,4,4,4,4,4,5,4,5,4,6,4,7,4,8,4,9,4]},"valid":{"screen":-443782538}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[bb]Affichez un histogramme vertical double de couleur verte et jaune à partir de données fournies par le tableau [DATA] = [15,4,15,4,...] [/bb].","","[DATA] est une succession de doublon (VERT,JAUNE) ou chaque valeur donne la longueur des composantes vertes et jaunes. Par exemple, les deix premières valeurs 15,4 représentent une ligne commençant par 15 pixels verts suivis de 4 pixels jaunes.","","[svg]<rect x='4' y='0' width='15' height='9' style='fill:#FF0;stroke:#FF0;stroke-width:0.5px;'/><rect x='4' y='9' width='10' height='6' style='fill:#FF0;stroke:#FF0;stroke-width:0.5px;'/><rect x='4' y='15' width='4' height='8' style='fill:#FF0;stroke:#FF0;stroke-width:0.5px;'/><rect x='4' y='23' width='7' height='4' style='fill:#FF0;stroke:#FF0;stroke-width:0.5px;'/><rect x='4' y='27' width='9' height='5' style='fill:#FF0;stroke:#FF0;stroke-width:0.5px;'/><rect x='0' y='0' width='15' height='9' style='fill:#0F0;stroke:#0F0;stroke-width:0.5px;'/><rect x='0' y='9' width='10' height='6' style='fill:#0F0;stroke:#0F0;stroke-width:0.5px;'/><rect x='0' y='15' width='4' height='8' style='fill:#0F0;stroke:#0F0;stroke-width:0.5px;'/><rect x='0' y='23' width='7' height='4' style='fill:#0F0;stroke:#0F0;stroke-width:0.5px;'/><rect x='0' y='27' width='9' height='5' style='fill:#0F0;stroke:#0F0;stroke-width:0.5px;'/>[/svg]"]]]></dct:description>
+        <dct:extent>5</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>4</dct:type>
         <dct:alternative>001</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>103</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher un histogramme vertical triple de couleurs verte, jaunes et rouges à partir de données fournies par un tableau.</dct:title>
-        <dct:description><![CDATA["class":"l2 small","a":{"op":["rect","jj","xx","yy","rgb"],"va":["V000","V001","V002","V003","V255","J","X","Y"],"ma":["plus","get","mult","div","len"],"cl":["rep"]},"values":{"DATA":[15,4,10,15,4,10,15,4,10,15,4,10,14,4,10,14,4,10,14,4,10,14,4,10,13,4,10,13,4,10,13,4,10,12,4,10,12,4,10,11,4,10,10,4,10,9,4,10,8,4,10,7,4,10,6,4,10,5,4,10,5,4,10,4,4,10,4,4,10,4,4,10,4,4,10,4,4,10,5,4,10,5,4,10,6,4,10,7,4,10,8,4,10,9,4,10]},"valid":{"screen":-756007832}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez un histogramme vertical double de couleur verte, jaune et rouge à partir de données fournies par le tableau DATA[/b].","","Le tableau DATA est une suite de triplets (VERT,JAUNE,ROUGE) qui spécifie les nombres respectifs de pixels verts, jaunes, et rouges. [12,3,6] est une ligne commençant par 12 pixels verts, suivis de 3 pixels jaunes, à nouveau suivis de 6 pixels rouges.","","[svg]<rect x='8' y='0' width='15' height='9' style='fill:#F00;stroke:#F00;stroke-width:0.5px;'/><rect x='8' y='9' width='10' height='6' style='fill:#F00;stroke:#F00;stroke-width:0.5px;'/><rect x='8' y='15' width='4' height='8' style='fill:#F00;stroke:#F00;stroke-width:0.5px;'/><rect x='8' y='23' width='7' height='4' style='fill:#F00;stroke:#F00;stroke-width:0.5px;'/><rect x='8' y='27' width='9' height='5' style='fill:#F00;stroke:#F00;stroke-width:0.5px;'/><rect x='4' y='0' width='15' height='9' style='fill:#FF0;stroke:#FF0;stroke-width:0.5px;'/><rect x='4' y='9' width='10' height='6' style='fill:#FF0;stroke:#FF0;stroke-width:0.5px;'/><rect x='4' y='15' width='4' height='8' style='fill:#FF0;stroke:#FF0;stroke-width:0.5px;'/><rect x='4' y='23' width='7' height='4' style='fill:#FF0;stroke:#FF0;stroke-width:0.5px;'/><rect x='4' y='27' width='9' height='5' style='fill:#FF0;stroke:#FF0;stroke-width:0.5px;'/><rect x='0' y='0' width='15' height='9' style='fill:#0F0;stroke:#0F0;stroke-width:0.5px;'/><rect x='0' y='9' width='10' height='6' style='fill:#0F0;stroke:#0F0;stroke-width:0.5px;'/><rect x='0' y='15' width='4' height='8' style='fill:#0F0;stroke:#0F0;stroke-width:0.5px;'/><rect x='0' y='23' width='7' height='4' style='fill:#0F0;stroke:#0F0;stroke-width:0.5px;'/><rect x='0' y='27' width='9' height='5' style='fill:#0F0;stroke:#0F0;stroke-width:0.5px;'/>[/svg]"]]]></dct:description>
-        <dct:extent>2</dct:extent>
+        <dct:description><![CDATA["class":"l2 small","a":{"op":["rect","jj","xx","yy","rgb"],"va":["V000","V001","V002","V003","V255","J","X","Y"],"ma":["plus","get","mult","div","len"],"cl":["rep"]},"values":{"[DATA]":[15,4,10,15,4,10,15,4,10,15,4,10,14,4,10,14,4,10,14,4,10,14,4,10,13,4,10,13,4,10,13,4,10,12,4,10,12,4,10,11,4,10,10,4,10,9,4,10,8,4,10,7,4,10,6,4,10,5,4,10,5,4,10,4,4,10,4,4,10,4,4,10,4,4,10,4,4,10,5,4,10,5,4,10,6,4,10,7,4,10,8,4,10,9,4,10]},"valid":{"screen":-756007832}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[bb]Affichez un histogramme vertical double de couleur verte, jaune et rouge à partir de données fournies par le tableau [DATA] = [15,4,10,15,4,10,...][/bb].","","Le tableau [DATA] est une suite de triplets (VERT,JAUNE,ROUGE) qui spécifie les nombres respectifs de pixels verts, jaunes, et rouges. Les 3 valeurs 15,4,10 représentent une ligne commençant par 15 pixels verts, suivis de 4 pixels jaunes, à nouveau suivis de 10 pixels rouges.","","[svg]<rect x='8' y='0' width='15' height='9' style='fill:#F00;stroke:#F00;stroke-width:0.5px;'/><rect x='8' y='9' width='10' height='6' style='fill:#F00;stroke:#F00;stroke-width:0.5px;'/><rect x='8' y='15' width='4' height='8' style='fill:#F00;stroke:#F00;stroke-width:0.5px;'/><rect x='8' y='23' width='7' height='4' style='fill:#F00;stroke:#F00;stroke-width:0.5px;'/><rect x='8' y='27' width='9' height='5' style='fill:#F00;stroke:#F00;stroke-width:0.5px;'/><rect x='4' y='0' width='15' height='9' style='fill:#FF0;stroke:#FF0;stroke-width:0.5px;'/><rect x='4' y='9' width='10' height='6' style='fill:#FF0;stroke:#FF0;stroke-width:0.5px;'/><rect x='4' y='15' width='4' height='8' style='fill:#FF0;stroke:#FF0;stroke-width:0.5px;'/><rect x='4' y='23' width='7' height='4' style='fill:#FF0;stroke:#FF0;stroke-width:0.5px;'/><rect x='4' y='27' width='9' height='5' style='fill:#FF0;stroke:#FF0;stroke-width:0.5px;'/><rect x='0' y='0' width='15' height='9' style='fill:#0F0;stroke:#0F0;stroke-width:0.5px;'/><rect x='0' y='9' width='10' height='6' style='fill:#0F0;stroke:#0F0;stroke-width:0.5px;'/><rect x='0' y='15' width='4' height='8' style='fill:#0F0;stroke:#0F0;stroke-width:0.5px;'/><rect x='0' y='23' width='7' height='4' style='fill:#0F0;stroke:#0F0;stroke-width:0.5px;'/><rect x='0' y='27' width='9' height='5' style='fill:#0F0;stroke:#0F0;stroke-width:0.5px;'/>[/svg]"]]]></dct:description>
+        <dct:extent>5</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>5</dct:type>
         <dct:alternative>001</dct:alternative>
     </rdf:Description>
 
@@ -433,7 +469,7 @@
         <dct:identifier>111</dct:identifier>
         <dct:title xml:lang="fr-FR">Réaliser un dégradé bi-linéaire de couleur verte centré sur le coin en haut à gauche de l'écran graphique.</dct:title>
         <dct:description><![CDATA["class":"l2","a":{"op":["rect","ii","rgb"],"va":["V000","V001","V032","V008","I"],"ma":["minus","mult"],"cl":["rep"]},"valid":{"screen":574910257}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Réalisez un dégradé bi-linéaire de couleur verte.[/b]","","Tracez 32 carrés partant du point (0,0) et dont la taille varie de 32 à 1 (du plus grand au plus petit pour que tous soient visibles à la fin). Chaque carré aura une couleur [b]RGB( 0, (8*I)-1, 0)[/b] où I est la taille de celui-ci.","","[svg]<defs><linearGradient id='g1' x1='0%' y1='0%' x2='0%' y2='100%'><stop offset='0%' style='stop-color:#0F0;stop-opacity:0' /><stop offset='100%' style='stop-color:#0F0;stop-opacity:1' /></linearGradient><linearGradient id='g2' x1='0%' y1='0%' x2='100%' y2='0%'><stop offset='0%' style='stop-color:#0F0;stop-opacity:0' /><stop offset='100%' style='stop-color:#0F0;stop-opacity:1' /></linearGradient></defs><rect x='0' y='0' width='32' height='32' fill='url(#g1)'/><rect x='0' y='0' width='32' height='32' fill='url(#g2)'/>[/svg]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Réalisez un dégradé bi-linéaire de couleur verte.[/b]","","Tracez 32 carrés partant du point (0,0) et dont la taille varie de 32 à 1 (du plus grand au plus petit pour que tous soient visibles à la fin). Chaque carré aura une couleur [b]RGB( 0, (8*I)-1, 0)[/b] où I est la taille de celui-ci.","","[svg]<rect x='0' y='0' width='32' height='32' style='fill:#0F0;'/><rect x='0' y='0' width='30' height='30' style='fill:#0E0;'/><rect x='0' y='0' width='28' height='28' style='fill:#0D0;'/><rect x='0' y='0' width='26' height='26' style='fill:#0C0;'/><rect x='0' y='0' width='24' height='24' style='fill:#0B0;'/><rect x='0' y='0' width='22' height='22' style='fill:#0A0;'/><rect x='0' y='0' width='20' height='20' style='fill:#090;'/><rect x='0' y='0' width='18' height='18' style='fill:#080;'/><rect x='0' y='0' width='16' height='16' style='fill:#070;'/><rect x='0' y='0' width='14' height='14' style='fill:#060;'/><rect x='0' y='0' width='12' height='12' style='fill:#050;'/><rect x='0' y='0' width='10' height='10' style='fill:#040;'/><rect x='0' y='0' width='8'  height='8'  style='fill:#030;'/><rect x='0' y='0' width='6'  height='6'  style='fill:#020;'/><rect x='0' y='0' width='4'  height='4'  style='fill:#010;'/>[/svg]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -445,7 +481,7 @@
         <dct:identifier>112</dct:identifier>
         <dct:title xml:lang="fr-FR">Réaliser un dégradé bi-linéaire de couleur bleu centré sur le coin en haut à gauche de l'écran graphique.</dct:title>
         <dct:description><![CDATA["class":"l2","a":{"op":["rect","ii","rgb"],"va":["V000","V001","V032","V008","V255","I"],"ma":["minus","mult"],"cl":["rep"]},"valid":{"screen":846964953}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Réalisez un dégradé bi-linéaire de couleur bleue.[/b]","","Tracez 32 carrés partant du point (0,0) et dont la taille varie de 32 à 1. Chaque carré aura une couleur dont la [b]composante bleue[/b] est égale à [b]255-8*I[/b] où I est la taille du carré. Les autres composantes couleur sont nulles.","","[svg]<defs><linearGradient id='g1' x1='0%' y1='0%' x2='0%' y2='100%'><stop offset='0%' style='stop-color:#00F;stop-opacity:1' /><stop offset='100%' style='stop-color:#00F;stop-opacity:0' /></linearGradient><linearGradient id='g2' x1='0%' y1='0%' x2='100%' y2='0%'><stop offset='0%' style='stop-color:#00F;stop-opacity:1' /><stop offset='100%' style='stop-color:#00F;stop-opacity:0' /></linearGradient></defs><rect x='0' y='0' width='32' height='32' fill='url(#g1)'/><rect x='0' y='0' width='32' height='32' fill='url(#g2)'/>[/svg]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Réalisez un dégradé bi-linéaire de couleur bleue.[/b]","","Tracez 32 carrés partant du point (0,0) et dont la taille varie de 32 à 1. Chaque carré aura une couleur dont la [b]composante bleue[/b] est égale à [b]255-8*I[/b] où I est la taille du carré. Les autres composantes couleur sont nulles.","","[svg]<rect x='0' y='0' width='32' height='32' style='fill:#001;'/><rect x='0' y='0' width='30' height='30' style='fill:#002;'/><rect x='0' y='0' width='28' height='28' style='fill:#003;'/><rect x='0' y='0' width='26' height='26' style='fill:#004;'/><rect x='0' y='0' width='24' height='24' style='fill:#005;'/><rect x='0' y='0' width='22' height='22' style='fill:#006;'/><rect x='0' y='0' width='20' height='20' style='fill:#007;'/><rect x='0' y='0' width='18' height='18' style='fill:#008;'/><rect x='0' y='0' width='16' height='16' style='fill:#009;'/><rect x='0' y='0' width='14' height='14' style='fill:#00A;'/><rect x='0' y='0' width='12' height='12' style='fill:#00B;'/><rect x='0' y='0' width='10' height='10' style='fill:#00C;'/><rect x='0' y='0' width='8'  height='8'  style='fill:#00D;'/><rect x='0' y='0' width='6'  height='6'  style='fill:#00E;'/><rect x='0' y='0' width='4'  height='4'  style='fill:#00F;'/>[/svg]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -457,7 +493,7 @@
         <dct:identifier>113</dct:identifier>
         <dct:title xml:lang="fr-FR">Réaliser un dégradé bi-linéaire de couleur verte dont le centre est le coin inférieur droit de l'écran.</dct:title>
         <dct:description><![CDATA["class":"l2 small","a":{"op":["rect","ii","rgb"],"va":["V001","V032","V008","V255","I"],"ma":["minus","mult"],"cl":["rep"]},"valid":{"screen":-639404895}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Réalisez un dégradé bi-linéaire de couleur verte dont le centre est le coin inférieur droit de l'écran.[/b]","","Tracez 32 carrés dont la taille varie de 32 à 1. Chaque carré aura une couleur [b]RGB( 0, 255-8*I, 0)[/b] où I est la taille de celui-ci. Par ailleurs, le coin supérieur gauche des différents carrés a pour coordonnées [b](32-I,32-I)[/b] où I est toujours la taille du carré.","","[svg]<defs><linearGradient id='g' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:#0F0;stop-opacity:0' /><stop offset='100%' style='stop-color:#0F0;stop-opacity:1' /></linearGradient></defs><rect x='0' y='0' width='32' height='32' fill='url(#g)'/>[/svg]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Réalisez un dégradé bi-linéaire de couleur verte dont le centre est le coin inférieur droit de l'écran.[/b]","","Tracez 32 carrés dont la taille varie de 32 à 1. Chaque carré aura une couleur [b]RGB( 0, 255-8*I, 0)[/b] où I est la taille de celui-ci. Par ailleurs, le coin supérieur gauche des différents carrés a pour coordonnées [b](32-I,32-I)[/b] où I est toujours la taille du carré.","","[svg]<rect x='0' y='0' width='32' height='32' style='fill:#010;'/><rect x='2' y='2' width='30' height='30' style='fill:#020;'/><rect x='4' y='4' width='28' height='28' style='fill:#030;'/><rect x='6' y='6' width='26' height='26' style='fill:#040;'/><rect x='8' y='8' width='24' height='24' style='fill:#050;'/><rect x='10' y='10' width='22' height='22' style='fill:#060;'/><rect x='12' y='12' width='20' height='20' style='fill:#070;'/><rect x='14' y='14' width='18' height='18' style='fill:#080;'/><rect x='16' y='16' width='16' height='16' style='fill:#090;'/><rect x='18' y='18' width='14' height='14' style='fill:#0A0;'/><rect x='20' y='20' width='12' height='12' style='fill:#0B0;'/><rect x='22' y='22' width='10' height='10' style='fill:#0C0;'/><rect x='24' y='24' width='8'  height='8'  style='fill:#0D0;'/><rect x='26' y='26' width='6'  height='6'  style='fill:#0E0;'/><rect x='28' y='28' width='4'  height='4'  style='fill:#0F0;'/>[/svg]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -469,7 +505,7 @@
         <dct:identifier>114</dct:identifier>
         <dct:title xml:lang="fr-FR">Réaliser un dégradé bi-linéaire de couleur rouge centré sur le milieu de l'écran graphique.</dct:title>
         <dct:description><![CDATA["class":"l2","a":{"op":["rect","ii","xx","rgb"],"va":["V002","V016","V032","V008","V255","I","X"],"ma":["minus","mult","div"],"cl":["rep"]},"valid":{"screen":-191261940}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Réalisez un dégradé bi-linéaire de couleur rouge centré sur le milieu de l'écran.[/b]","","Tracez 16 carrés centrés sur le milieu de l'écran et dont la taille varie de 32 à 2. L'itérateur I sera décrémenté de 2 à chaque itération. Chaque carré aura une couleur dont la composante rouge est égale à [b]255-8*I[/b] où I est la taille du carré. Le point de départ de chaque carré aura comme coordonnées (X,X) où X est le résultat de l'opération [b](32-I)/2[/b]."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Réalisez un dégradé bi-linéaire de couleur rouge centré sur le milieu de l'écran.[/b]","","Tracez 16 carrés centrés sur le milieu de l'écran et dont la taille varie de 32 à 2. L'itérateur I sera décrémenté de 2 à chaque itération. Chaque carré aura une couleur dont la composante rouge est égale à [b]255-8*I[/b] où I est la taille du carré. Le point de départ de chaque carré aura comme coordonnées (X,X) où X est le résultat de l'opération [b](32-I)/2[/b].","","[svg]<rect x='0' y='0' width='32' height='32' style='fill:#100;'/><rect x='1' y='1' width='30' height='30' style='fill:#200;'/><rect x='2' y='2' width='28' height='28' style='fill:#300;'/><rect x='3' y='3' width='26' height='26' style='fill:#400;'/><rect x='4' y='4' width='24' height='24' style='fill:#500;'/><rect x='5' y='5' width='22' height='22' style='fill:#600;'/><rect x='6' y='6' width='20' height='20' style='fill:#700;'/><rect x='7' y='7' width='18' height='18' style='fill:#800;'/><rect x='8' y='8' width='16' height='16' style='fill:#900;'/><rect x='9' y='9' width='14' height='14' style='fill:#A00;'/><rect x='10' y='10' width='12' height='12' style='fill:#B00;'/><rect x='11' y='11' width='10' height='10' style='fill:#C00;'/><rect x='12' y='12' width='8'  height='8'  style='fill:#D00;'/><rect x='13' y='13' width='6'  height='6'  style='fill:#E00;'/><rect x='14' y='14' width='4'  height='4'  style='fill:#F00;'/>[/svg]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -494,8 +530,8 @@
     <rdf:Description>
         <dct:identifier>202</dct:identifier>
         <dct:title xml:lang="fr-FR">Décoder et afficher un mot sur la sortie standard.</dct:title>
-        <dct:description><![CDATA["class":"l1 small","a":{"op":["ii","print"],"va":["V000","V001","V002","I"],"ma":["get","mult","plus","len","div"],"cl":["rep"]},"values":{"DATA":[1,72,1,69,2,76,1,79]},"valid":{"stdout":1404283036}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Décodez le tableau DATA et affichez le mot secret.[/b]","","DATA est composé par une série de paires (X,L) : [ X_0, L_0, X_1, L_1,..., X_N, L_N ]. Dans chaque paire, la lettre L doit être affichée X fois. Par exemple, [ 1,'A',2,'B',3,'C' ] équivaut à la chaine de caractères 'ABBCCC'."]]]></dct:description>
+        <dct:description><![CDATA["class":"l1 small","a":{"op":["ii","print"],"va":["V000","V001","V002","I"],"ma":["get","mult","plus","len","div"],"cl":["rep"]},"values":{"[DATA]":[1,72,1,69,2,76,1,79]},"valid":{"stdout":1404283036}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[bb]Décodez le tableau [DATA] et affichez le mot secret.[/bb]","","[DATA] est composé par une série de paires (X,L) : [ X_0, L_0, X_1, L_1,..., X_N, L_N ]. Dans chaque paire, la lettre L doit être affichée X fois. Par exemple, [ 1,'A',2,'B',3,'C' ] équivaut à la chaine de caractères \\\"ABBCCC\\\"."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -508,11 +544,12 @@
         <dct:title xml:lang="fr-FR">Réaliser un dégradé bicolore rouge et bleu en recopiant un programme.</dct:title>
         <dct:description><![CDATA["class":"l1 small","a":{"op":["pixel","ii","jj","rgb"],"va":["V000","V001","V032","V008","I","J"],"ma":["mult","plus"],"cl":["rep"]},"valid":{"screen":467128493}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Réalisez un dégradé bicolore rouge et bleu en recopiant le programme ci-dessous.[/b]","","[code]J = 0[br]REPEAT 32[br]| I = 0[br]| REPEAT 32[br]| | RGB I*8,0,J*8[br]| | PIXEL I,J[br]| | I = I + 1[br]| J = J + 1[/code]"]]]></dct:description>
-        <dct:extent>2</dct:extent>
+        <dct:extent>5</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>2</dct:type>
         <dct:alternative>001</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -520,10 +557,10 @@
         <dct:title xml:lang="fr-FR">Réaliser un dégradé bicolore jaune et bleu en recopiant un programme partiel.</dct:title>
         <dct:description><![CDATA["class":"l2","a":{"op":["pixel","ii","jj","rgb"],"va":["V000","V001","V032","V008","I","J"],"ma":["mult","plus"],"cl":["rep"]},"valid":{"screen":-684662339}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Réalisez un dégradé bicolore jaune et bleu en recopiant le programme ci-dessous en complétant les parties manquantes.[/b]","","[code]J = 0[br]REPEAT 32[br]| I = 0[br]| REPEAT 32[br]| | RGB I*8,I*8,J*8[br]| | ????[br]| | ????[br]| ????[/code]"]]]></dct:description>
-        <dct:extent>2</dct:extent>
+        <dct:extent>5</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>2</dct:type>
         <dct:alternative>001</dct:alternative>
     </rdf:Description>
 
@@ -532,10 +569,10 @@
         <dct:title xml:lang="fr-FR">Réaliser un dégradé bicolore vert et violet.</dct:title>
         <dct:description><![CDATA["a":{"op":["pixel","ii","jj","rgb"],"va":["V000","V001","V032","V008","I","J"],"ma":["mult","plus"],"cl":["rep"]},"valid":{"screen":242454055}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Réalisez un dégradé bicolore vert et violet.[/b]","","Dans ce dégradé, chaque pixel de coordonnées (I,J) se voit attribuer la couleur [b]RGB( J*8, I*8, J*8 )[/b]."]]]></dct:description>
-        <dct:extent>2</dct:extent>
+        <dct:extent>8</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>3</dct:type>
         <dct:alternative>001</dct:alternative>
     </rdf:Description>
 
@@ -544,10 +581,10 @@
         <dct:title xml:lang="fr-FR">Réaliser un dégradé, linéaire et diagonal, violet.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["pixel","ii","jj","xx","rgb"],"va":["V000","V001","V032","V016","I","J","X"],"ma":["mult","plus","div","pow2"],"cl":["rep"]},"valid":{"screen":-1147920271}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Réalisez un dégradé, linéaire et diagonal, violet.[/b]","","Dans ce dégradé, chaque pixel de coordonnées (I,J) se voit attribuer la couleur RGB( X, 0, X ) où X est calculé par la formule : [b](I+J)²/16[/b]. L'utilisation de la variable X permet de ne pas écrire et calculer 2 fois cette formule."]]]></dct:description>
-        <dct:extent>2</dct:extent>
+        <dct:extent>8</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>3</dct:type>
         <dct:alternative>001</dct:alternative>
     </rdf:Description>
 
@@ -555,11 +592,11 @@
         <dct:identifier>255</dct:identifier>
         <dct:title xml:lang="fr-FR">Réaliser un dégradé, linéaire, diagonal et bicolore violet et jaune.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["pixel","ii","jj","xx","rgb"],"va":["V000","V001","V031","V032","V004","V255","I","J","X"],"ma":["mult","plus","minus"],"cl":["rep"]},"valid":{"screen":875466418}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Réalisez un dégradé, linéaire, diagonal et bicolore violet et jaune./(b]","","Dans ce dégradé, chaque pixel de coordonnées (I,J) se voit attribuer la couleur RGB( 255, 255-X, X ) où X est calculé par la formule : [b](I+(31-J))*4[/b]."]]]></dct:description>
-        <dct:extent>2</dct:extent>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Réalisez un dégradé, linéaire, diagonal et bicolore violet et jaune.[/b]","","Dans ce dégradé, chaque pixel de coordonnées (I,J) se voit attribuer la couleur RGB( 255, 255-X, X ) où X est calculé par la formule :","[code]( I + ( 31 - J ) ) * 4[/code]"]]]></dct:description>
+        <dct:extent>5</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>3</dct:type>
         <dct:alternative>001</dct:alternative>
     </rdf:Description>
 
@@ -567,47 +604,35 @@
         <dct:identifier>261</dct:identifier>
         <dct:title xml:lang="fr-FR">Réaliser un motif jaune.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["pixel","ii","jj","rgb"],"va":["V000","V016","V002","V255","I","J"],"ma":["plus"],"cl":["rep"]},"valid":{"screen":441633453}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Réalisez un motif jaune[/b].","","Coloriez en jaune tous les pixels (I,J) lorsque I est pair et J aussi. Pour ce faire, réalisez 2 boucles de 16 itérations chacunes où I et J sont incrémentés de 2 à chaque fois."]]]></dct:description>
-        <dct:extent>2</dct:extent>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Réalisez un motif jaune[/b].","","Coloriez en jaune tous les pixels (I,J) lorsque I est pair et J aussi. Pour ce faire, réalisez 2 boucles de 16 itérations chacunes où I et J sont incrémentés de 2 à chaque fois.","","[svg]<def><style>rect {fill:#FF0;}</style></def><g id='l'><rect x='0' y='0' width='2' height='2'/><rect x='4' y='0' width='2' height='2'/><rect x='8' y='0' width='2' height='2'/><rect x='12' y='0' width='2' height='2'/><rect x='16' y='0' width='2' height='2'/><rect x='20' y='0' width='2' height='2'/><rect x='24' y='0' width='2' height='2'/><rect x='28' y='0' width='2' height='2'/></g><use transform='translate(0,4)' xlink:href='#l'/><use transform='translate(0,8)' xlink:href='#l'/><use transform='translate(0,12)' xlink:href='#l'/><use transform='translate(0,16)' xlink:href='#l'/><use transform='translate(0,20)' xlink:href='#l'/><use transform='translate(0,24)' xlink:href='#l'/><use transform='translate(0,28)' xlink:href='#l'/>[/svg]"]]]></dct:description>
+        <dct:extent>5</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>3</dct:type>
         <dct:alternative>001</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>262</dct:identifier>
-        <dct:title xml:lang="fr-FR">Réaliser un motif jaune grâce à l'opérateur MODULO.</dct:title>
-        <dct:description><![CDATA["class":"l1","a":{"op":["pixel","ii","jj","xx","rgb"],"va":["V000","V001","V032","V002","V255","I","J","X"],"ma":["plus","mult","modulo"],"cl":["rep"]},"valid":{"screen":1177472796}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Réalisez un motif jaune.[/b]","","Pour tracer ce motif, chaque pixel de coordonnées (I,J) se voit attribuer la couleur RGB( X, X, 0 ) où X est calculé par la formule : [b]255 * ( (I%2) AND (J%2) )[/b]. La composante couleur X vaut 255 lorsque I est impair ET J est impair."]]]></dct:description>
-        <dct:extent>2</dct:extent>
+        <dct:title xml:lang="fr-FR">Réaliser un damier de rouge et de blanc.</dct:title>
+        <dct:description><![CDATA["class":"l2","a":{"op":["pixel","ii","jj","xx","rgb"],"va":["V000","V001","V032","V002","V255","I","J","X"],"ma":["mult","plus","modulo"],"cl":["rep"]},"valid":{"screen":1927974253}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Réalisez un damier de rouge et de blanc[/b].","","Chaque pixel de coordonnées (I,J) se voit attribuer la couleur RGB( 255, X, X ) où X est calculé par la formule : [b]255*((I+J)%2)[/b].","","Par cette formule, X vaut 0 lorsque I+J est paire et vaut 255 lorsque I+J est impaire. Si pour un pixel donné, la composante couleur X vaut 0, alors (I+J) est paire. Par conséquent, les voisins de ce pixel (I,(J+1)) et ((I+1),J) auront nécessairement une somme de leur coordonnées impaire et donc une composante couleur égale à 255. Il s'agit bien d'un damier."]]]></dct:description>
+        <dct:extent>5</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>3</dct:type>
         <dct:alternative>001</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>263</dct:identifier>
-        <dct:title xml:lang="fr-FR">Réaliser un damier de rouge et de blanc.</dct:title>
-        <dct:description><![CDATA["class":"l2","a":{"op":["pixel","ii","jj","xx","rgb"],"va":["V000","V001","V032","V002","V255","I","J","X"],"ma":["mult","plus","modulo"],"cl":["rep"]},"valid":{"screen":684219243}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Réalisez un damier de rouge et de blanc[/b].","","Chaque pixel de coordonnées (I,J) se voit attribuer la couleur RGB( 255, X, X ) où X est calculé par la formule : [b]255*((I+J)%2)[/b].","","Par cette formule, X vaut 0 lorsque I+J est paire et vaut 255 lorsque I+J est impaire. Si pour un pixel donné, la composante couleur X vaut 0, alors (I+J) est paire. Par conséquent, les voisins de ce pixel (I,(J+1)) et ((I+1),J) auront nécessairement une somme de leur coordonnées impaire et donc une composante couleur égale à 255. Il s'agit bien d'un damier."]]]></dct:description>
-        <dct:extent>2</dct:extent>
-        <dct:subject>it</dct:subject>
-        <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>264</dct:identifier>
         <dct:title xml:lang="fr-FR">Réaliser un motif de traits diagonaux.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["pixel","ii","jj","xx","rgb"],"va":["V000","V001","V032","V004","V255","V100","I","J","X"],"ma":["mult","plus","modulo","minus"],"cl":["rep"]},"valid":{"screen":1585588983}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Réalisez un motif de traits diagonaux[/b]","","Chaque pixel de coordonnées (I,J) se voit attribuer la couleur RGB( (255-X), 100, 255 ) où X est calculé par la formule : [b]255*((I+J)%4)[/b]."]]]></dct:description>
-        <dct:extent>2</dct:extent>
+        <dct:extent>5</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>3</dct:type>
         <dct:alternative>001</dct:alternative>
     </rdf:Description>
 
