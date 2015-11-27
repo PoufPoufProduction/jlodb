@@ -7,6 +7,12 @@
 $forceReadFile = 1;
 include "database.php";
 include "_insert.php";
+include "_login.php";
+
+if ( strlen($_GET["username"]) && strlen($_GET["password"]))
+{
+    login($_GET["username"], $_GET["password"], $status, $textstatus, $error);
+}
 
 if (!$error) {
     $config             = '  "settings":{"host":"'.$_SESSION['host'].'", "database":"'.$_SESSION['database'].'", '.

@@ -4,14 +4,78 @@
 
     <rdf:Description>
         <dct:identifier>001</dct:identifier>
-        <dct:title xml:lang="fr-FR">Payer factures et fournisseurs</dct:title>
-        <dct:description><![CDATA["wallet":[0,0,0,0,0,0,1,1,0,1,0,0,0],"menu":["wallet"],"errratio":5,"data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"dialog","text":"d2","from":"client","here":"postman"},{"type":"dialog","text":"d3","from":"owner","here":"postman"},{"type":"dialog","text":"d4","from":"client","here":"postman"},{"type":"dialog","text":"d5","from":"owner","here":"postman"},{"type":"bill","here":"postman","text":"b1","subtype":"bill1","value":10}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Bonjour et bienvenue dans ma boutique.\\nJe suis ravie d'avoir enfin trouver\\nquelqu'un pour m'aider ici.\\nJe suis sûre qu'ensemble, nous allons\\nfaire du bon travail.","Pour votre premier jour, nous allons\\ncommencer par payer quelques factures\\nafin que vous vous familiarisiez avec les\\ndifférents porte-monnaies.","Je crois que le facteur va nous apporter\\nla première."],"d2":["Bonjour !"],"d3":["Bonjour monsieur le facteur.\\nQu'avez-vous pour nous aujourd'hui ?"],"d4":["Une facture."],"d5":["Je m'en doutais.","Pour payer une facture, il faut\\nmettre la somme d'argent indiquée sur\\nle document dans la zone de paiement\\npuis confirmer la transaction en cliquant\\nsur le bouton de validation.","L'argent à déposer est dans le tiroir-\\ncaisse que l'on peut ouvrir et fermer\\nen cliquant sur le bouton en bas à\\ngauche de l'écran.","Pour cette première facture, il vous\\nfaut ouvrir le porte-monnaie, faire\\nglisser le billet de 10 sous vers la\\nzone de paiement et confirmer la tran-\\nsaction grâce au bouton de validation.","A vous de jouer !"],"b1":["Document à conserver","Facture d'électricité","Du 1 Janvier au 31 Mars","A régler","Retrouvez l'explication de votre facture sur votre Espace Client"]}]]></dct:description>
-        <dct:extent>15</dct:extent>
-        <dct:subject>game</dct:subject>
+        <dct:title xml:lang="fr-FR">Appréhender l'activité et payer une première facture [10].</dct:title>
+        <dct:description><![CDATA["wallet":[0,0,0,0,0,0,1,1,0,1,0,0,0],"menu":["wallet"],"errratio":3,"data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"dialog","text":"d2","from":"client","here":"postman"},{"type":"dialog","text":"d3","from":"owner","here":"postman"},{"type":"dialog","text":"d4","from":"client","here":"postman"},{"type":"dialog","text":"d5","from":"owner","here":"postman"},{"type":"dialog","text":"d6","from":"owner","here":"postman","target":0},{"type":"bill","here":"postman","text":"b1","subtype":"bill1","value":10},{"type":"dialog","text":"d7","from":"owner"}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Bonjour et bienvenue dans ma boutique.\\nJe suis ravie d'avoir enfin trouver\\nquelqu'un pour m'aider ici.\\nJe suis sûre qu'ensemble, nous allons\\nfaire du bon travail.","Pour votre premier jour, nous allons\\ncommencer par payer quelques factures\\nafin que vous vous familiarisiez avec les\\ndifférents porte-monnaies.","Je crois que le facteur va nous apporter\\nla première."],"d2":["Bonjour !"],"d3":["Bonjour monsieur le facteur.\\nQu'avez-vous pour nous aujourd'hui ?"],"d4":["Une facture."],"d5":["Je m'en doutais.","Pour payer une facture, il faut\\nmettre la somme d'argent indiquée sur\\nle document dans la zone de paiement\\npuis confirmer la transaction en cliquant\\nsur le bouton de validation."],"d6":["L'argent à déposer est dans le tiroir-\\ncaisse que l'on peut ouvrir et fermer\\nen cliquant sur le bouton en bas à\\ngauche de l'écran.","Pour cette première facture, il vous\\nfaut ouvrir le porte-monnaie, faire\\nglisser le billet de 10 sous vers la\\nzone de paiement et confirmer la tran-\\nsaction grâce au bouton de validation.","A vous de jouer !"],"d7":["Félicitation !"],"b1":["Document à conserver","Facture d'électricité","Du 1 Janvier au 31 Mars","A régler","Retrouvez l'explication de votre facture sur votre Espace Client"]}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>4</dct:type>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
     </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>002</dct:identifier>
+        <dct:title xml:lang="fr-FR">Payer deux factures [5,12].</dct:title>
+        <dct:description><![CDATA["wallet":[0,0,0,0,0,0,2,3,2,1,0,0,0],"menu":["wallet"],"errratio":2,"data":[{"type":"dialog","text":"d1","from":"owner","here":"postman"},{"type":"dialog","text":"d2","from":"client","here":"postman"},{"type":"bill","text":"b1","subtype":"bill2","value":5},{"type":"bill","text":"b2","subtype":"bill1","value":12},{"type":"dialog","text":"d3","from":"owner"}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["J'ai reçu de nouvelles factures.\\nPourriez-vous vous en charger ?"],"d2":["Au revoir !"],"d3":["Bon travail !"],"b1":["N° 2 8392 78 E","Loyer","Mois de Janvier","A régler",""],"b2":["Mairie de la ville","Taxe d'habitation","Ref: 1 64523","Total","A régler avant le 15 Février"]}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>011</dct:identifier>
+        <dct:title xml:lang="fr-FR">Payer une facture en utilisant le monnayeur [5].</dct:title>
+        <dct:description><![CDATA["decimal":false,"wallet":[0,0,0,0,0,0,0,0,0,1,0,0,0],"menu":["wallet","change"],"errratio":3,"data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"dialog","text":"d2","from":"owner","target":1},{"type":"bill","text":"b1","subtype":"bill1","value":5},{"type":"dialog","text":"d3","from":"owner"}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Il arrive parfois que nous n'ayons\\npas la monnaie demandée pour le\\nréglement d'une facture.\\nHeureusement il est possible d'utiliser\\nle monnayeur pour régler ce problème."],"d2":["Toute valeur introduite dans le monnayeur,\\nsitué en bas de l'écran, est automatique-\\nment décomposée en petite monnaie.","A vous de jouer !"],"d3":["J'adore les photos de chatons !"],"b1":["Amicale des sapeurs pompiers","Calendrier","Modèle 'spécial chatons'","Prix","Tel: 18"]}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>012</dct:identifier>
+        <dct:title xml:lang="fr-FR">Payer deux factures en utilisant le monnayeur [12,7].</dct:title>
+        <dct:description><![CDATA["decimal":false,"wallet":[0,0,0,0,0,0,0,0,0,0,1,0,0],"menu":["wallet","change"],"errratio":2,"data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"bill","text":"b1","subtype":"bill1","value":12},{"type":"bill","text":"b2","subtype":"bill2","value":7},{"type":"dialog","text":"d99","from":"owner"}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Voici venir d'autres factures."],"d99":["Une bonne chose de faite."],"b1":["Papéterie Souzot","Fournitures diverses","","Total",""],"b2":["Facture d'eau","Premier trimestre","Janvier-Mars","A régler","Compte client : J 3891 ZE 3"]}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>013</dct:identifier>
+        <dct:title xml:lang="fr-FR">Payer deux factures en utilisant le monnayeur [25,13].</dct:title>
+        <dct:description><![CDATA["decimal":false,"wallet":[0,0,0,0,0,0,0,0,0,0,0,1,0],"menu":["wallet","change"],"errratio":2,"data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"bill","text":"b1","subtype":"bill2","value":25},{"type":"bill","text":"b2","subtype":"bill1","value":13},{"type":"dialog","text":"d99","from":"owner"}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Argh.....\\nDes factures à payer....\\nEncore !"],"d99":["Comme ça, c'est fait !"],"b1":["Cotisation associative","Éclairage de rue","Lampes, électricité, entretien","Total","Association des commerçants de la rue Rhu"],"b2":["Facture de gaz","Premier trimestre","Janvier-Mars","A régler","N° Abonné : P54 12353 23 Z 8952 36"]}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>014</dct:identifier>
+        <dct:title xml:lang="fr-FR">Payer des factures en utilisant le monnayeur [50,32,11].</dct:title>
+        <dct:description><![CDATA["decimal":false,"wallet":[0,0,0,0,0,0,0,0,0,0,0,0,1],"menu":["wallet","change"],"errratio":2,"data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"bill","text":"b1","subtype":"bill1","value":50},{"type":"bill","text":"b2","subtype":"bill1","value":32},{"type":"bill","text":"b3","subtype":"bill2","value":11},{"type":"dialog","text":"d99","from":"owner"}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Encore des factures !"],"d99":["Nous voila un peu moins riches..."],"b1":["Réparateur chauffage","Intervention","du 7 Janvier","A régler","Tel: 01 23 45 67 89"],"b2":["Service d'entretien","Entreprise Pompon","pompom@mail.com","Total","Avec Pompon, vous avez tout bon"],"b3":["Association des anciens élèves","Cotisation annuelle","","Total","mail: assoc@poufpouf.org"]}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
 
 </rdf:RDF>
 

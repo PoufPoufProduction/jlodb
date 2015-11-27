@@ -56,8 +56,10 @@
       <!-- LOGO -->
 <g transform="translate(100,20)">
     <use x="0" y="0" xlink:href="#r1"/>
+    <use x="25" y="0" xlink:href="#r1"/>
     <g class="link s1101 d1102"><path d="M 6.06,3.5 C 6.66,2.47 7,1.27 7,0 C 7,-3.864 3.864,-7 0,-7" transform="rotate(-120)"/></g>
     <g class="link s1102 d1103"><path d="M 6.06,3.5 C 6.66,2.47 7,1.27 7,0 C 7,-3.864 3.864,-7 0,-7" transform="rotate(120)"/></g>
+    <g class="link s1103 d1104"><path d="M 6.06,3.5 L 19.94,3.5"/></g>
     <g class="link s1102 d1201"><path d="M -6.06,3.5 L -10,3.5 Q -15,3.5 -15,8.5 L -15,20"/></g>
     <g class="link s1103 d1204"><path d="M 6.06,3.5 L 6.06,35 Q 6.06,40 1.06,40 L -15,40"/></g>
     <g id="1101" transform="translate(0,-7)" class="blue node">
@@ -72,23 +74,24 @@
         <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
         <text y="1">for</text>
     </g>
-<!--
-    <g id="1104" transform="translate(-14.14,14.14)" class="green node">
+    <g id="1104" transform="translate(19.94,3.5)" class="yellow node">
         <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
-        <text y="1">f1</text>
+        <text y="1">fct</text>
     </g>
--->
+
 </g>
 
 <!-- CODE -->
 <g transform="translate(85,50)">
     <use x="0" y="0" xlink:href="#r2"/>
+    <use x="0" y="30" xlink:href="#r2"/>
     <use x="-25" y="10" xlink:href="#r0"/>
     <g class="link s1201 d1202"><path d="M 10,0 C 10,-5.52 5.52,-10 0,-10" transform="rotate(0)"/></g>
     <g class="link s1202 d1203"><path d="M 10,0 L 0,0"/></g>
     <g class="link s1203 d1204"><path d="M 0,0 L 0,10"/></g>
     <g class="link s1204 d1205"><path d="M 10,0 C 10,-5.52 5.52,-10 0,-10" transform="rotate(180)"/></g>
     <g class="link s1205 d1211"><path d="M -10,0 L -20,0 Q -25,0 -25,5 L -25,10"/></g>
+    <g class="link s1205 d1206"><path d="M -10,0 Q -10,5 -15,5 L -15,25 Q -10,25 -10,30"/></g>
     <g class="link s1211 d1501"><path d="M -25,10 L -25,30"/></g>
     <g id="1201" transform="translate(0,-10)" class="blue node">
         <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
@@ -106,7 +109,11 @@
         <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
         <text y="1">for</text>
     </g>
-    <g id="1205" transform="translate(-10,0)" class="green node">
+    <g id="1205" transform="translate(-10,0)" class="yellow node">
+        <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
+        <text y="1">for</text>
+    </g>
+    <g id="1206" transform="translate(-10,30)" class="green node">
         <circle cx="0" cy="0" r="3.5" class="c1"/><circle cx="0" cy="0" r="3" class="c2"/><circle cx="0" cy="0" r="2" class="c3"/>
         <text y="1">fct</text>
     </g>

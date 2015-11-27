@@ -200,7 +200,7 @@
                 }
                 $this.find("#code #lines .line.x").droppable({accept:".a",
                     drop:function(event, ui) {
-                      if (($(this).offset().top+$(this).height()) < ($this.find("#code").offset().top+$this.find("#code").height()))
+                      if (($(this).offset().top+$(this).height()) < ($this.find("#code").offset().top+$this.find("#code").height()+1))
                       {
                         var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
                                     event.originalEvent.touches[0]:event;

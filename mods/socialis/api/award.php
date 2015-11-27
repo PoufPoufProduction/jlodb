@@ -143,7 +143,7 @@ if (!$error) {
     else
     if ($_GET["action"]=="look") {
         $awards = mysql_query("SELECT * FROM `".$_SESSION['prefix']."award` ".
-                    "WHERE `Award_Group`='".$_GET["value"]."' ORDER BY `Award_Counter` ASC");
+                    "WHERE `Award_Group`=\"".$_GET["value"]."\" ORDER BY `Award_Counter` ASC");
         while ($a = mysql_fetch_array($awards)) {
             $state = 0;
             $pinned = false;

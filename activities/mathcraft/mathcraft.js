@@ -21,6 +21,7 @@
 
     var regExp = [
         "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
+        "\\\[bb\\\](.+)\\\[/bb\\\]",                "<b>$1</b>",
         "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
         "\\\[br\\\]",                               "<br/>",
         "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
@@ -427,7 +428,6 @@
 
                     ret.children.push(helpers.node.clone(_node.children[0].children[1-same[0]]));
                     ret.children.push(helpers.node.clone(_node.children[1].children[1-same[1]]));
-                    ret.children[0].subtype = "line"; ret.children[1].subtype = "line";
                 }
                 return ret;
             },

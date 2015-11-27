@@ -8,8 +8,8 @@
 .shop #people                     { position:absolute; overflow:visible;font-size:6.2em; }
 .shop #people>div                 { width:1em; height:1em; position:absolute; top:0.6em; display:none; }
 
-.shop .cell                         { width:5em; height:1.2em; border:1px solid red; text-align:center; font-weight:bold; color:red;
-                                    float:right; margin-right:0.2em; }
+.shop .cell                         { width:5em; height:1.2em; border:1px solid #600; text-align:center; font-weight:bold; color:#600;
+                                    float:right; margin-right:0.2em; background-color:rgba(255,255,255,0.2); }
 
 .shop #pbill                       { position:absolute; width:9em; height:4em; background-color:white; border:.05em solid black;
                                      display:none; top:2%; left:2%; }
@@ -21,6 +21,13 @@
 .shop #pbill #billval               { font-size:2em;   }
 .shop #pbill .footer                { padding:1em 0 0 1em; clear:both; font-size:.8em; color:#004; }
 
+.shop #pbill.bill2                  { background-color:#99CCDD; }
+.shop #pbill.bill2 .header          { color:white; font-style:italic; }
+.shop #pbill.bill2 .title           { font-size:1.5em; text-align:right; padding-right:5%; }
+.shop #pbill.bill2 .date            { color:#444; text-align:right; padding-right:5%; }
+.shop #pbill.bill2 .topay           { color:#600; }
+
+
 .shop .panel                      { display:none; background-color:rgba(0,0,0,0.8); border:.1em solid black;
                                     border-radius:.25em; overflow:visible; width:8em; height:8em; padding:.06em;}
 .shop .wallet>div                 { overflow:visible;  width:8em; height:8em; background-color:rgba(255,200,100,0.4); border-radius:.25em; }
@@ -29,11 +36,12 @@
 .shop #pmoney                     { position:absolute; top:2%; left:38%;  }
 .shop #pmoney #pvalid             { position:absolute; top:3.5em; left:3.5em; font-size:2em; width:1em; height:1em;
                                     background-color:rgba(255,255,255,0.8); border-radius:0.5em; cursor:pointer;}
-.shop #pmoney #pvalid.good        { background-color:rgba(0,255,0,0.8); }
-.shop #pmoney #pvalid.wrong       { background-color:rgba(255,0,0,0.8); }
+.shop .wallet.good                { background-color:rgba(0,255,0,0.8); }
+.shop .wallet.wrong               { background-color:rgba(255,0,0,0.8); }
 .shop #pchange                    { position:absolute; top:45%; left:38%; }
 .shop #pchange>div                { background-image:url("../../res/img/background/shop/change.svg"); }
-.shop #pchange #pmask             { position:absolute; width:8em; height:8em; background-color:red; border-radius:.25em;z-index:100;display:none;}
+.shop #pchange #pmask             { position:absolute; width:8em; height:8em; background-color:green; border-radius:.25em;
+                                    z-index:100;display:none;}
 
 .shop #pwallet                    { position:absolute; top:45%; left:5%;  }
 .shop #pwallet>div                { background-image:url("../../res/img/background/book05.svg"); }
@@ -61,6 +69,7 @@
 .shop #menu .tab                        { background-image:url("../../res/img/icon/tab00.svg");
                                     background-color:rgba(0,0,0,0.8); cursor:pointer; border-radius:.5em ; overflow:visible;}
 .shop #menu .tab.s                      { background-color:rgba(255,0,0,0.8); }
+.shop #menu #target                     { position:absolute; left:0; }
 
 
 .shop #pcalculator #screen             { font-size:1.5em; width:3em; border-radius:.25em; cursor:move;

@@ -65,6 +65,7 @@
 var genius = {
     lang    : "",
     url     : "",
+    ready   : false,
     cookie  : false,
     activity: "",
     finished: false,
@@ -122,6 +123,7 @@ $(window).load(function() {
                     else               { for (var i=1; i<_ex.length; i++) { state+="."; } }
                     _cbk($this, _ex, state);
                 },
+                onbuild: function($this) { genius.ready = true; },
                 onhover: function($this, _id) {
                     $("#info>#current").html("<div class='item'><div id='id'>"+_id+"</div><div id='legend'></div></div>");
                     $.getJSON("mods/genius/api/node.php?id="+_id, function(_data) {
@@ -268,8 +270,8 @@ $(window).load(function() {
             <div id="board"></div>
 
             <div id="waiting" class="anim12"><div><img src="res/img/generic/waiting.svg"/></div></div>
-            <div id="gsplash"><div onclick="$('#gsplash').hide(); genius.state();"
-                                ontouchstart="$('#gsplash').hide(); genius.state(); event.preventDefault();">
+            <div id="gsplash"><div onclick="if (genius.ready) { $('#gsplash').hide(); genius.state(); }"
+                                ontouchstart="if (genius.ready) { $('#gsplash').hide(); genius.state(); } event.preventDefault();">
             </div></div>
         </div>
 

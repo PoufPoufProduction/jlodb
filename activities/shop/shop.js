@@ -9,7 +9,8 @@
         exercice    : [],                                       // Exercice
         wallet      : [10,5,6,10,5,6,10,5,2,5,5,2,1],           // initial wallet
         errratio    : 1,                                        // Error ratio
-        debug       : true                                     // Debug mode
+        decimal     : true,                                     // Handle decimal
+        debug       : true                                      // Debug mode
     };
 
     var coins = [ "cent1","cent2","cent5","cent10","cent20","cent50","coin1b","coin2","bill5","bill10","bill20","bill50","bill100" ];
@@ -124,36 +125,30 @@
                         $coin.css("left",pos[0]+"px").css("top",pos[1]+"px");
 
                         if ($(this).attr("id")=="pchange") {
-                            pos = helpers.panel.inside($this, $coin,1.4);
-                            $this.find("#pmask").css("opacity",0).show().animate({opacity:1},500,function() {
-                                $coin.detach();
-                                var vWidth = $(this).width();
-                                var id = parseInt($coin.attr("class").substr(1,2));
-                                var count = 0;
-                                for (var i in change[id]) for (var j=0; j<change[id][i][1]; j++) {
-                                    var ii = change[id][i][0];
-                                    var $c = $("<div class='v"+ii+(ii<8?" coin":" bill")+" a'><div><img src='res/img/coin/"+coins[ii]+".svg'/></div></div>");
-                                    $c.css("left",(pos[0]+count*vWidth/10)+"px").css("top",(pos[1]+count*vWidth/10)+"px");
-                                    $this.find("#pchange>div").append($c);
-                                    helpers.panel.draggable($this, $c);
-                                    count++;
-                                }
+                            var id = parseInt($coin.attr("class").substr(1,2));
+                            if (settings.decimal || id>6) {
+                                pos = helpers.panel.inside($this, $coin,1.4);
+                                $this.find("#pmask").css("opacity",0).show().animate({opacity:1},500,function() {
+                                    $coin.detach();
+                                    var vWidth = $(this).width();
+                                    var count = 0;
+                                    for (var i in change[id]) for (var j=0; j<change[id][i][1]; j++) {
+                                        var ii = change[id][i][0];
+                                        var $c = $("<div class='v"+ii+(ii<8?" coin":" bill")+" a'><div><img src='res/img/coin/"+coins[ii]+".svg'/></div></div>");
+                                        $c.css("left",(pos[0]+count*vWidth/10)+"px").css("top",(pos[1]+count*vWidth/10)+"px");
+                                        $this.find("#pchange>div").append($c);
+                                        helpers.panel.draggable($this, $c);
+                                        count++;
+                                    }
 
-                                $this.find("#pmask").animate({opacity:0.2},500,function(){ $(this).hide(); });
-                            });
+                                    $this.find("#pmask").animate({opacity:0.2},500,function(){ $(this).hide(); });
+                                });
+                            }
+                            else { helpers.panel.draggable($this, $coin); }
                         }
-                        else {
-                            helpers.panel.draggable($this, $coin);
-                        }
-
+                        else { helpers.panel.draggable($this, $coin); }
                 }
                 });
-
-                /*
-                $this.find("#pmoney").show();
-                for (var i=0;i<10;i++)
-                helpers.panel.add($this, "#pmoney", Math.floor(Math.random()*12));
-                */
 
                 // Locale handling
                 $this.find("h1#label").html(settings.label);
@@ -185,10 +180,21 @@
         },
         run: function($this) {
             var settings = helpers.settings($this);
+
+            // HANDLE CLIENTS OR PROVIDERS
             helpers.whoishere.run($this, function() {
+
+                // GET THE DIALOG TEXT
                 var text = settings.data[settings.it].text;
                 if (!$.isArray(text) && settings.dialog[text]) { text = settings.dialog[text]; }
                 if (!$.isArray(text)) { text = [text]; }
+
+                // DEAL WITH THE TUTORIAL TARGET
+                $this.find("#target").hide();
+                if (typeof(settings.data[settings.it].target)!="undefined") {
+                    $this.find("#target").css("left",(settings.data[settings.it].target*1.1)+"em").show();
+                }
+
                 switch(settings.data[settings.it].type) {
                     case "dialog" :
                         helpers.text.run($this, { id:settings.data[settings.it].from, dialog:text},
@@ -315,25 +321,26 @@
         money: function($this) {
             var settings = helpers.settings($this);
             var value = 0;
+            var itsgood = false;
             $this.find("#pmoney .a").each( function() { value+= valc[parseInt($(this).attr("class").substr(1,2))]; });
-            $this.find("#pmoney .a").animate({opacity:0},500, function() { $(this).detach(); });
+            settings.interactive = false;
 
             switch(settings.data[settings.it].type) {
                 case "bill" :
-                    settings.interactive = false;
-                    if (value==settings.data[settings.it].value) {
-                        $this.find("#pvalid").addClass("good");
-                    } else {
-                        settings.score -= settings.errratio;
-                        $this.find("#pvalid").addClass("wrong");
-                    }
-                    setTimeout(function() {
-                        $this.find("#pmoney").hide();
-                        $this.find("#pbill").hide();
-                        helpers.next($this);
-                    },1000);
+                    if (value==settings.data[settings.it].value) { itsgood = true; }
                 break;
             }
+            if (itsgood) {
+                $this.find("#pmoney").addClass("good");
+                $this.find("#pmoney .a").animate({opacity:0},500, function() { $(this).detach(); });
+                setTimeout(function() { $this.find("#pmoney").hide(); $this.find("#pbill").hide(); helpers.next($this);
+                },1000);
+            }
+            else {
+                settings.score -= settings.errratio;
+                $this.find("#pmoney").addClass("wrong");
+            }
+            setTimeout(function() { $this.find("#pmoney").removeClass("good").removeClass("wrong"); settings.interactive = true; }, 800);
         }
     };
 
