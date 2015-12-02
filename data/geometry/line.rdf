@@ -1,0 +1,233 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dct="http://purl.org/dc/terms/">
+
+    <!-- SEGMENTS AND LINES l[.] -->
+
+    <rdf:Description>
+        <dct:identifier>001</dct:identifier>
+        <dct:title xml:lang="fr-FR">Utiliser la barre d'outils pour construire un segment à partir de 2 points.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"point", "value":[-150,0], "id":"A", "active":true}, {"type":"point", "value":[150,0], "id":"B", "active":true}],"available":["segment"],"number":1,"objectives":[[{"type":"segment", "values":[-150,0,150,0]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":["[strong]En géométrie, un segment est une portion de droite délimitée par deux points, appelés extrémités du segment. Un segment reliant deux points A et B est noté [AB] et représente la partie de la droite (AB) qui se situe 'entre' les points A et B. Intuitivement, un segment correspond à un fil tendu entre deux points.[/strong]","Cliquez sur l'outil <b>segment</b> puis reliez les points A et B"],"labels":["Segment [AB]"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:alternative>101</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>002</dct:identifier>
+        <dct:title xml:lang="fr-FR">A partir des points A,B,C,D, construire les deux segments [AB] et [CD].</dct:title>
+        <dct:description><![CDATA["data":[{"type":"point", "value":[-150,-100], "id":"A", "active":true}, {"type":"point", "value":[-100,100], "id":"B", "active":true},{"type":"point", "value":[150,-100], "id":"C", "active":true}, {"type":"point", "value":[100,100], "id":"D", "active":true}],"available":["segment"],"number":2,"objectives":[[{"type":"segment", "values":[-150,-100,-100,100]}],[{"type":"segment", "values":[150,-100,100,100]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"Reliez les points A,B et les points C,D","labels":["Segment [AB]","Segment [CD]"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>101</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>003</dct:identifier>
+        <dct:title xml:lang="fr-FR">A partir des points A,B,C,D, construire les deux segments [AB], [AD] et [AC].</dct:title>
+        <dct:description><![CDATA["data":[{"type":"point", "value":[-150,-100], "id":"A", "active":true}, {"type":"point", "value":[-100,100], "id":"B", "active":true},{"type":"point", "value":[150,-100], "id":"C", "active":true}, {"type":"point", "value":[100,100], "id":"D", "active":true}],"available":["segment"],"number":3,"objectives":[[{"type":"segment", "values":[-150,-100,-100,100]}],[{"type":"segment", "values":[-150,-100,100,100]}],[{"type":"segment", "values":[-150,-100,150,-100]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"Tracez les segments ci-dessous","labels":["Segment [AB]","Segment [AD]","Segment [AC]"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>101</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>004</dct:identifier>
+        <dct:title xml:lang="fr-FR">A partir des points A,B,C,D,E construire tous les segments contenant A.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"point", "value":[0,0], "id":"A", "active":true}, {"type":"point", "value":[-100,-100], "id":"B", "active":true},{"type":"point", "value":[250,-20], "id":"C", "active":true}, {"type":"point", "value":[-200,100], "id":"D", "active":true,"idpos":315}, {"type":"point", "value":[120,140], "id":"E", "active":true}],"available":["segment"],"number":4,"objectives":[[{"type":"segment", "values":[0,0,-100,-100]}],[{"type":"segment", "values":[0,0,250,-20]}],[{"type":"segment", "values":[0,0,-200,100]}],[{"type":"segment", "values":[0,0,120,140]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"Tracez les segments ci-dessous","labels":["Segment [AB]","Segment [AC]","Segment [AD]","Segment [AE]"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>101</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>005</dct:identifier>
+        <dct:title xml:lang="fr-FR">A partir des points A,B,C,D, construire les segments [AB],[CD],[AD] et [BC] et dessiner ainsi un papillon.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"point", "value":[-150,-100], "id":"A", "active":true}, {"type":"point", "value":[-100,100], "id":"B", "active":true},{"type":"point", "value":[150,-100], "id":"C", "active":true}, {"type":"point", "value":[100,100], "id":"D", "active":true}],"available":["segment"],"number":4,"objectives":[[{"type":"segment", "values":[-150,-100,-100,100]}],[{"type":"segment", "values":[150,-100,100,100]}],[{"type":"segment", "values":[-150,-100,100,100]}],[{"type":"segment", "values":[-100,100,150,-100]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"Tracez les segments ci-dessous et dessiner ainsi un papillon.","labels":["Segment [AB]","Segment [CD]","Segment [AD]","Segment [BC]"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>101</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>011</dct:identifier>
+        <dct:title xml:lang="fr-FR">A partir des points A,B,C,D, construire tous les segments possibles.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"point", "value":[-150,-100], "id":"A", "active":true}, {"type":"point", "value":[-100,100], "id":"B", "active":true},{"type":"point", "value":[150,-100], "id":"C", "active":true}, {"type":"point", "value":[100,100], "id":"D", "active":true}],"available":["segment"],"number":6,"objectives":[[{"type":"segment", "values":[-150,-100,-100,100]},{"type":"segment", "values":[150,-100,100,100]},{"type":"segment", "values":[-150,-100,100,100]},{"type":"segment", "values":[-100,100,150,-100]},{"type":"segment", "values":[-150,-100,150,-100]},{"type":"segment", "values":[-100,100,100,100]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"A partir des points A,B,C,D, tracez [b]tous les segments possibles[/b]","labels":["6 segments"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>101</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>015</dct:identifier>
+        <dct:title xml:lang="fr-FR">A partir des points A,B,C,D,E construire tous les segments possibles.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"point", "value":[0,0], "id":"A", "active":true}, {"type":"point", "value":[-180,-100], "id":"B", "active":true},{"type":"point", "value":[250,-20], "id":"C", "active":true}, {"type":"point", "value":[-200,100], "id":"D", "active":true,"idpos":315}, {"type":"point", "value":[120,140], "id":"E", "active":true}],"available":["segment"],"number":10,"objectives":[[{"type":"segment", "values":[0,0,-180,-100]},{"type":"segment", "values":[0,0,250,-20]},{"type":"segment", "values":[0,0,-200,100]},{"type":"segment", "values":[0,0,120,140]},{"type":"segment", "values":[-180,-100,120,140]},{"type":"segment", "values":[-180,-100,250,-20]},{"type":"segment", "values":[-180,-100,-200,100]},{"type":"segment", "values":[120,140,-200,100]},{"type":"segment", "values":[120,140,250,-20]},{"type":"segment", "values":[-200,100,250,-20]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"A partir des points A,B,C,D,E, tracez [b]tous les segments possibles[/b]","labels":["10 segments"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>101</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>051</dct:identifier>
+        <dct:title xml:lang="fr-FR">Utiliser la barre d'outils pour construire une droite à partir de 2 points.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"point", "value":[-150,0], "id":"A", "active":true}, {"type":"point", "value":[150,0], "id":"B", "active":true}],"available":["line"],"number":1,"objectives":[[{"type":"line", "values":[0,0]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":["[strong]En géométrie, la droite désigne une ligne rectiligne, infinie et sans épaisseur. Dans la pratique, elle est représentée sur une feuille par une ligne droite ayant bien entendu des limites — celle de la feuille — et une épaisseur — celle du crayon.[/strong]","Cliquez sur l'outil <b>droite</b> puis reliez les points A et B"],"labels":["Droite (AB)"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>101</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>052</dct:identifier>
+        <dct:title xml:lang="fr-FR">A partir des points A,B,C,D, construire les deux droites (AB) et (CD).</dct:title>
+        <dct:description><![CDATA["data":[{"type":"point", "value":[-150,-100], "id":"A", "active":true}, {"type":"point", "value":[-100,100], "id":"B", "active":true},{"type":"point", "value":[100,-100], "id":"C", "active":true}, {"type":"point", "value":[150,100], "id":"D", "active":true}],"available":["line"],"number":2,"objectives":[[{"type":"line", "values":[500,75.964]}],[{"type":"line", "values":[-500,75.964]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"Reliez les points A,B et les points C,B","labels":["Droite (AB)","Droite (CD)"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>101</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>101</dct:identifier>
+        <dct:title xml:lang="fr-FR">A partir des points A,B,C,D, construire la droite (AC) et le segment [BD].</dct:title>
+        <dct:description><![CDATA["data":[{"type":"point", "value":[-150,-100], "id":"A", "active":true}, {"type":"point", "value":[-150,100], "id":"B", "active":true},{"type":"point", "value":[150,-100], "id":"C", "active":true}, {"type":"point", "value":[150,100], "id":"D", "active":true}],"available":["line","segment"],"number":2,"objectives":[[{"type":"line", "values":[-100,0]}],[{"type":"segment", "values":[-150,100,150,100]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"Réalisez les tracés demandés ci-dessous","labels":["Droite (AC)","Segment [BD]"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>101</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>102</dct:identifier>
+        <dct:title xml:lang="fr-FR">A partir des points A,B,C,D, construire les droites (AC) et (BD) ainsi que les segments [AB] et [CD].</dct:title>
+        <dct:description><![CDATA["data":[{"type":"point", "value":[-150,-100], "id":"A", "active":true}, {"type":"point", "value":[-150,100], "id":"B", "active":true},{"type":"point", "value":[150,-100], "id":"C", "active":true}, {"type":"point", "value":[150,100], "id":"D", "active":true}],"available":["line","segment"],"number":4,"objectives":[[{"type":"line", "values":[-100,0]}],[{"type":"line", "values":[100,0]}],[{"type":"segment", "values":[-150,-100,-150,100]}],[{"type":"segment", "values":[150,-100,150,100]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"Réalisez les tracés demandés ci-dessous","labels":["Droite (AC)","Droite (BD)","Segment [AB]","Segment [CD]"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>101</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>201</dct:identifier>
+        <dct:title xml:lang="fr-FR">A partir d'un point A, créer un segment de même longueur qu'un segment de référence.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"point", "value":[0,-150], "id":"A", "active":true},{"type":"point", "value":[-150,-150], "id":"X","attr":{"style":"stroke:red;"}},{"type":"point", "value":[-150,100], "id":"Y","attr":{"style":"stroke:red;"}},{"type":"segment", "value":[-150,-150,-150,100],"attr":{"style":"stroke:red;"}},{"type":"grid", "value":[0,-200,1,20,25,25],"active":true,"attr":{"style":"stroke-width:4;"}}],"available":["segment"],"number":1,"objectives":[[{"type":"segment", "values":[0,-150,0,100]}]],"translate":[320,185.5],"strokewidth":3]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"[b]La longueur d'un segment est la distance qui sépare ses 2 extrémités[/b]. A partir du point A, créez un segment de même longueur que le segment [XY]","labels":["Segment de même longueur que le segment [XY]"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>101</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>202</dct:identifier>
+        <dct:title xml:lang="fr-FR">A partir d'un point A et d'un point B, créer deux segments de même longueur qu'un segment de référence.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"point", "value":[0,-150], "id":"A", "active":true},{"type":"point", "value":[100,-100], "id":"B", "active":true},{"type":"point", "value":[-150,-150], "id":"X","attr":{"style":"stroke:red;"}},{"type":"point", "value":[-150,75], "id":"Y","attr":{"style":"stroke:red;"}},{"type":"segment", "value":[-150,-150,-150,75],"attr":{"style":"stroke:red;"}},{"type":"grid", "value":[0,-200,2,20,100,25],"active":true,"attr":{"style":"stroke-width:4;"}}],"available":["segment"],"number":2,"objectives":[[{"type":"segment", "values":[0,-150,0,75]}],[{"type":"segment", "values":[100,-100,100,125]}]],"translate":[320,185.5],"strokewidth":3]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"[b]La longueur d'un segment[/b] [XY] s'écrit simplement [b]XY[/b]. Tracez à partir du point A et du point B, deux segments de longueur XY.","labels":["Segment de longueur XY et d'extrémité A","Segment de longueur XY et d'extrémité B"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>101</dct:alternative>
+    </rdf:Description>
+
+
+    <!-- SECANTE, PARALELLE AND PERPENDICULAR -->
+
+     <rdf:Description>
+        <dct:identifier>301</dct:identifier>
+        <dct:title xml:lang="fr-FR">Utiliser la barre d'outils pour construire une droite parallèle.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"circle", "value":[-50,-26,20],"attr":{"style":"stroke:#dd8833;"}},{"type":"segment", "value":[-50,-26,0,50],"attr":{"style":"stroke:#dd8833;"}},{"type":"segment", "value":[0,20,0,50],"attr":{"style":"stroke:#dd8833;"}},{"type":"segment", "value":[-28,40,0,50],"attr":{"style":"stroke:#dd8833;"}},{"type":"line","value":[0,-50,20,-60],"active":true},{"type":"point", "value":[0,50], "id":"A", "active":true,"idpos":315}],"available":["parallel"],"number":1,"objectives":[[{"type":"line", "values":[50,-26.57]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":["Construisez une parallèle à la droite passant par A.","Sélectionnez l'outil [red][b]droite parallèle[/b][/red], cliquez sur la droite et en maintenant appuyé, dirigez vous vers le point A puis relachez.","[strong]Par définition, deux droites parallèles sont deux droites qui ne se coupent pas et n'ont donc pas d'intersection.[/strong]"],"labels":["Droite parallèle"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:alternative>301</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>302</dct:identifier>
+        <dct:title xml:lang="fr-FR">Utiliser la barre d'outils pour construire une droite parallèle.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"line","value":[-100,-50,-80,-100],"active":true},{"type":"point", "value":[0,50], "id":"A", "active":true,"idpos":315},{"type":"point", "value":[50,0], "id":"B", "active":true,"idpos":315}],"available":["parallel"],"number":2,"objectives":[[{"type":"line", "values":[50,-68.2]}],[{"type":"line", "values":[125,-68.2]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":["Construisez les parallèles à la droite passant par A et par B.","","[strong]Lorsque deux droites d1 et d2 sont parallèles, on écrit : d1//d2[/strong]",""],"labels":["Droite parallèle passant par A","Droite parallèle passant par B"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>301</dct:alternative>
+    </rdf:Description>
+
+     <rdf:Description>
+        <dct:identifier>305</dct:identifier>
+        <dct:title xml:lang="fr-FR">Utiliser la barre d'outils pour construire une droite parallèle.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"point", "value":[0,50], "id":"A", "active":true,"idpos":315},{"type":"point", "value":[-20,-100], "id":"B", "active":true,"idpos":135},{"type":"point", "value":[100,-30], "id":"C", "active":true,"idpos":315},{"type":"segment", "value":[0,50,-20,-100], "active":true},{"type":"segment", "value":[0,50,100,-30], "active":true},{"type":"segment", "value":[100,-30,-20,-100], "active":true}],"available":["parallel"],"number":3,"objectives":[[{"type":"line", "values":[50,30.26]}],[{"type":"line", "values":[-116,-38.66]}],[{"type":"line", "values":[-780,82.41]}]],"translate":[320,185.5],"color2":"green"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":["En chaque sommet du triangle, tracez la parallèle au côté opposé."],"labels":["Droite parallèle à [BC] passant par A.","Droite parallèle à [AC] passant par B.","Droite parallèle à [AB] passant par C."]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>301</dct:alternative>
+    </rdf:Description>
+
+     <rdf:Description>
+        <dct:identifier>311</dct:identifier>
+        <dct:title xml:lang="fr-FR">Utiliser la barre d'outils pour définir le point d'intersection de 2 droites.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"circle", "value":[-50,-26,20],"attr":{"style":"stroke:#dd8833;"}},{"type":"segment", "value":[-50,-26,-50,50],"attr":{"style":"stroke:#dd8833;"}},{"type":"segment", "value":[-25,25,-50,50],"attr":{"style":"stroke:#dd8833;"}},{"type":"segment", "value":[-75,25,-50,50],"attr":{"style":"stroke:#dd8833;"}},{"type":"line","value":[0,-50,20,-60],"active":true},{"type":"line", "value":[100,70,-100,50],"active":true}],"available":["intersection"],"number":1,"objectives":[[{"type":"point", "values":[-183.33,41.67]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":["[strong]Par définition, deux droites non parallèles sont dites sécantes et ont un point d'intersection, c'est à dire qu'il existe un point unique appartenant simultanément aux deux droites.[/strong]","En utilisant l'outil d'[red][b]intersection[/b][/red] définissez le points d'intersection des deux droites."],"labels":["Point d'intersection des deux droites"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:alternative>301</dct:alternative>
+    </rdf:Description>
+
+     <rdf:Description>
+        <dct:identifier>312</dct:identifier>
+        <dct:title xml:lang="fr-FR">Tracer la parallèle à une droite passant par le point d'intersection de 2 autres droites.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"line","value":[0,-50,20,-40],"active":true},{"type":"line","value":[-100,-150,-90,100],"active":true},{"type":"line","value":[-100,50,-90,50],"active":true,"attr":{"style":"stroke:red;"}}],"available":["parallel","intersection"],"number":2,"objectives":[[{"type":"point", "values":[-97.96,-98.98]}],[{"type":"line", "values":[-98.98,0]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":["Tracez la parallèle à la droite rouge passant par le point d'intersection des 2 droites noires."],"labels":["Point d'intersection des droites noires","Parallèle à la droite rouge"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:alternative>301</dct:alternative>
+    </rdf:Description>
+
+
+</rdf:RDF>
+

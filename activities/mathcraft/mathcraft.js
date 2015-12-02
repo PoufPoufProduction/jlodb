@@ -1382,18 +1382,20 @@
         },
         build: function($this) {
             var settings = helpers.settings($this);
-            var data = (settings.data?settings.data[settings.dataid]:settings);
-            var values = (settings.data&&settings.data[settings.dataid].values?settings.data[settings.dataid].values:settings.values);
-            var exercice = (settings.data?settings.exercice[settings.dataid%settings.exercice.length]:settings.exercice);
+            var data        = (settings.data?settings.data[settings.dataid]:settings);
+            var values      = (settings.data&&settings.data[settings.dataid].values?settings.data[settings.dataid].values:settings.values);
+            var exercice    = (settings.data?settings.exercice[settings.dataid%settings.exercice.length]:settings.exercice);
+            var figure      = (settings.data&&settings.data[settings.dataid].figure?settings.data[settings.dataid].figure:settings.figure);
 
             settings.cvalues = values;
+            settings.root    = 0;
 
             if (settings.clean) { $this.find("#editor>div").html(""); $this.find("#screen").html(""); }
 
-            if (data.figure) {
-                if (data.figure.url)        { $this.find("#figure").html("<img src='"+data.figure.url+"'/>"); } else
-                if (data.figure.content)    {
-                    if (data.figure.content.indexOf("<svg")==-1) {
+            if (figure) {
+                if (figure.url)        { $this.find("#figure").html("<img src='"+figure.url+"'/>"); } else
+                if (figure.content)    {
+                    if (figure.content.indexOf("<svg")==-1) {
                         $this.find("#figure").html(
                             "<svg width='100%' height='100%' viewBox='0 0 640 480'><def><style>"+
                             ".a { stroke-dasharray:8,8; }"+
@@ -1406,10 +1408,10 @@
                             ".red { fill:#F00; }"+
                             "text { font-size:30px;} text.dd { fill:#dd8833} "+
                             "</style></def><rect x='0' y='0' width='640' height='480' style='fill:white;'/>"+
-                            data.figure.content+"</svg>"
+                            figure.content+"</svg>"
                         );
                     }
-                    else { $this.find("#figure").html(data.figure.content); }
+                    else { $this.find("#figure").html(figure.content); }
                 }
             }
 

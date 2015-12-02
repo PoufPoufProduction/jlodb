@@ -580,8 +580,8 @@
                             ret.j1+=settings.board.svgWidth/100*(j2-j1);
                             ret.i2-=settings.board.svgWidth/100*(i2-i1);
                             ret.j2-=settings.board.svgWidth/100*(j2-j1);
-                        } while ( (ret.i1*ret.i1+ret.j1*ret.j1)<settings.board.svgWidth*settings.board.svgWidth &&
-                                  (ret.i2*ret.i2+ret.j2*ret.j2)<settings.board.svgWidth*settings.board.svgWidth);
+                        } while ( (ret.i1*ret.i1+ret.j1*ret.j1)<2*settings.board.svgWidth*settings.board.svgWidth &&
+                                  (ret.i2*ret.i2+ret.j2*ret.j2)<2*settings.board.svgWidth*settings.board.svgWidth);
                     }
                     return ret;
                 },

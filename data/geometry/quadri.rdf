@@ -1,0 +1,253 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dct="http://purl.org/dc/terms/">
+
+    <!-- SQUARE and RECTANGLE -->
+
+    <rdf:Description>
+        <dct:identifier>001</dct:identifier>
+        <dct:title xml:lang="fr-FR">Utiliser la barre d'outils pour construire un carré à partir de 4 points.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"point", "value":[-120,-120], "id":"A", "active":true,"idpos":135}, {"type":"point", "value":[120,-120], "id":"B", "active":true},{"type":"point", "value":[120,120], "id":"C", "active":true,"idpos":315}, {"type":"point", "value":[-120,120], "id":"D", "active":true,"idpos":225}],"available":["segment"],"number":4,"objectives":[[{"type":"segment", "values":[-120,-120,120,-120]}],[{"type":"segment", "values":[120,-120,120,120]}],[{"type":"segment", "values":[120,120,-120,120]}],[{"type":"segment", "values":[-120,120,-120,-120]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":["Tracez les segments [AB], [BC], [CD] et [DA] pour dessiner le carré ABCD."],"labels":["Segment [AB]","Segment [BC]","Segment [CD]","Segment [DA]"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>002</dct:identifier>
+        <dct:title xml:lang="fr-FR">Tracer 2 carrés imbriqués.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"point", "value":[-100,-100], "id":"A", "active":true,"idpos":135}, {"type":"point", "value":[100,-100], "id":"B", "active":true},{"type":"point", "value":[100,100], "id":"C", "active":true,"idpos":315}, {"type":"point", "value":[-100,100], "id":"D", "active":true,"idpos":225},{"type":"point", "value":[-50,-50], "id":"E", "active":true,"idpos":135}, {"type":"point", "value":[50,-50], "id":"F", "active":true},{"type":"point", "value":[50,50], "id":"G", "active":true,"idpos":315}, {"type":"point", "value":[-50,50], "id":"H", "active":true,"idpos":225}],"available":["segment"],"number":8,"objectives":[[{"type":"segment", "values":[-100,-100,100,-100]},{"type":"segment", "values":[100,-100,100,100]},{"type":"segment", "values":[100,100,-100,100]},{"type":"segment", "values":[-100,100,-100,-100]}],[{"type":"segment", "values":[-50,-50,50,-50]},{"type":"segment", "values":[50,-50,50,50]},{"type":"segment", "values":[50,50,-50,50]},{"type":"segment", "values":[-50,50,-50,-50]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":["Tracez les carrés ABCD et EFGH."],"labels":["Carré ABCD","Carré EFGH"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>003</dct:identifier>
+        <dct:title xml:lang="fr-FR">Tracer 2 carrés se cheuvauchant.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"point", "value":[-120,-100], "id":"A", "active":true,"idpos":135}, {"type":"point", "value":[80,-140], "id":"B", "active":true},{"type":"point", "value":[120,60], "id":"C", "active":true,"idpos":315}, {"type":"point", "value":[-80,100], "id":"D", "active":true,"idpos":225},{"type":"point", "value":[50,0], "id":"E", "active":true,"idpos":135}, {"type":"point", "value":[200,-0], "id":"F", "active":true},{"type":"point", "value":[200,150], "id":"G", "active":true,"idpos":315}, {"type":"point", "value":[50,150], "id":"H", "active":true,"idpos":225}],"available":["segment"],"number":8,"objectives":[[{"type":"segment", "values":[-120,-100,80,-140]},{"type":"segment", "values":[80,-140,120,60]},{"type":"segment", "values":[120,60,-80,100]},{"type":"segment", "values":[-80,100,-120,-100]}],[{"type":"segment", "values":[50,0,200,0]},{"type":"segment", "values":[200,0,200,150]},{"type":"segment", "values":[200,150,50,150]},{"type":"segment", "values":[50,150,50,0]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":["Tracez les carrés ABCD et EFGH."],"labels":["Carré ABCD","Carré EFGH"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>004</dct:identifier>
+        <dct:title xml:lang="fr-FR">Utiliser la barre d'outils pour construire un carré oblique à partir de 4 points.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"point", "value":[0,-150], "id":"A", "active":true,"idpos":135}, {"type":"point", "value":[150,0], "id":"B", "active":true},{"type":"point", "value":[0,150], "id":"C", "active":true,"idpos":315}, {"type":"point", "value":[-150,0], "id":"D", "active":true,"idpos":225}],"available":["segment"],"number":4,"objectives":[[{"type":"segment", "values":[0,-150,150,0]},{"type":"segment", "values":[150,0,0,150]},{"type":"segment", "values":[0,150,-150,0]},{"type":"segment", "values":[-150,0,0,-150]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":["Un carré reste un carré quelque soit son orientation. Dessinez le carré ABCD."],"labels":["Carré ABCD"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>005</dct:identifier>
+        <dct:title xml:lang="fr-FR">Dessiner une étoile à 8 branches à l'aide de 2 carrés.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"point", "value":[0,-120], "id":"A", "active":true,"idpos":135}, {"type":"point", "value":[120,0], "id":"B", "active":true},{"type":"point", "value":[0,120], "id":"C", "active":true,"idpos":315}, {"type":"point", "value":[-120,0], "id":"D", "active":true,"idpos":225},{"type":"point", "value":[-85,-85], "id":"E", "active":true,"idpos":135}, {"type":"point", "value":[85,-85], "id":"F", "active":true},{"type":"point", "value":[85,85], "id":"G", "active":true,"idpos":315}, {"type":"point", "value":[-85,85], "id":"H", "active":true,"idpos":225}],"available":["segment"],"number":8,"objectives":[[{"type":"segment", "values":[0,-120,120,0]},{"type":"segment", "values":[120,0,0,120]},{"type":"segment", "values":[0,120,-120,0]},{"type":"segment", "values":[-120,0,0,-120]}],[{"type":"segment", "values":[-85,-85,85,-85]},{"type":"segment", "values":[85,-85,85,85]},{"type":"segment", "values":[85,85,-85,85]},{"type":"segment", "values":[-85,85,-85,-85]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":["Tracez les 2 carrés pour dessiner une étoile à 8 branches."],"labels":["Carré ABCD","Carré EFGH"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>011</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter un carré en découvrant le 4ème sommet.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"point", "value":[-150,-100], "id":"A", "active":true,"idpos":135},{"type":"point", "value":[50,100], "id":"C", "active":true,"idpos":315}, {"type":"point", "value":[-150,100], "id":"B", "active":true,"idpos":225},{"type":"segment", "value":[50,100,-150,100], "active":true},{"type":"segment", "value":[-150,-100,-150,100], "active":true},{"type":"grid", "value":[-50,-150,10,8,25,25],"active":true,"attr":{"style":"stroke-width:4;"}}],"available":["segment"],"number":2,"objectives":[[{"type":"segment", "values":[-150,-100,50,-100]},{"type":"segment", "values":[50,-100,50,100]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":["Trouvez le sommet manquant D pour compléter le carré."],"labels":["Carré ABCD"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>012</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter deux carrés en découvrant leur 4ème sommet respectif.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"point", "value":[-125,-100], "id":"A", "active":true,"idpos":135},{"type":"point", "value":[25,100], "id":"C", "active":true,"idpos":315}, {"type":"point", "value":[-150,75], "id":"B", "active":true,"idpos":225},{"type":"point", "value":[100,75], "id":"E", "active":true,"idpos":135},{"type":"point", "value":[150,125], "id":"F", "active":true,"idpos":315},{"type":"point", "value":[200,75], "id":"G", "active":true},{"type":"segment", "value":[25,100,-150,75], "active":true},{"type":"segment", "value":[-125,-100,-150,75], "active":true},{"type":"grid", "value":[-50,-150,10,8,25,25],"active":true,"attr":{"style":"stroke-width:4;"}}],"available":["segment"],"number":6,"objectives":[[{"type":"segment", "values":[-125,-100,50,-75]},{"type":"segment", "values":[50,-75,25,100]}],[{"type":"segment", "values":[100,75,150,125]},{"type":"segment", "values":[200,75,150,125]},{"type":"segment", "values":[200,75,150,25]},{"type":"segment", "values":[100,75,150,25]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":["Trouvez les sommets manquants pour compléter et tracer les 2 carrés."],"labels":["Carré ABCD","Carré EFGH"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>051</dct:identifier>
+        <dct:title xml:lang="fr-FR">Utiliser la barre d'outils pour construire un rectangle à partir de 4 points.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"point", "value":[-200,-100], "id":"A", "active":true,"idpos":135}, {"type":"point", "value":[200,-100], "id":"B", "active":true},{"type":"point", "value":[200,100], "id":"C", "active":true,"idpos":315}, {"type":"point", "value":[-200,100], "id":"D", "active":true,"idpos":225}],"available":["segment"],"number":4,"objectives":[[{"type":"segment", "values":[-200,-100,200,-100]}],[{"type":"segment", "values":[200,-100,200,100]}],[{"type":"segment", "values":[200,100,-200,100]}],[{"type":"segment", "values":[-200,100,-200,-100]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":["Tracez les segments [AB], [BC], [CD] et [DA] pour dessiner le rectangle ABCD.","Contrairement au carré dont tous les segments sont de même longueur, les côtés d'un rectangles ne sont égaux que 2 à 2."],"labels":["Segment [AB]","Segment [BC]","Segment [CD]","Segment [DA]"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>052</dct:identifier>
+        <dct:title xml:lang="fr-FR">Tracer 2 rectangle se cheuvauchant.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"point", "value":[-100,-150], "id":"A", "active":true,"idpos":135}, {"type":"point", "value":[100,-150], "id":"B", "active":true},{"type":"point", "value":[100,150], "id":"C", "active":true,"idpos":315}, {"type":"point", "value":[-100,150], "id":"D", "active":true,"idpos":225},{"type":"point", "value":[-200,-100], "id":"E", "active":true,"idpos":135}, {"type":"point", "value":[200,-100], "id":"F", "active":true},{"type":"point", "value":[200,0], "id":"G", "active":true,"idpos":315}, {"type":"point", "value":[-200,0], "id":"H", "active":true,"idpos":225}],"available":["segment"],"number":8,"objectives":[[{"type":"segment", "values":[-100,-150,100,-150]},{"type":"segment", "values":[100,-150,100,150]},{"type":"segment", "values":[100,150,-100,150]},{"type":"segment", "values":[-100,150,-100,-150]}],[{"type":"segment", "values":[-200,-100,200,-100]},{"type":"segment", "values":[200,-100,200,0]},{"type":"segment", "values":[200,0,-200,0]},{"type":"segment", "values":[-200,0,-200,-100]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":["Tracez les figures suivantes :"],"labels":["Rectangle ABCD","Rectangle EFGH"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>053</dct:identifier>
+        <dct:title xml:lang="fr-FR">Tracer un rectangle et un carré se cheuvauchant.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"point", "value":[-50,-80], "id":"A", "active":true,"idpos":135}, {"type":"point", "value":[50,-80], "id":"B", "active":true},{"type":"point", "value":[50,150], "id":"C", "active":true,"idpos":315}, {"type":"point", "value":[-50,150], "id":"D", "active":true,"idpos":225},{"type":"point", "value":[100,-20], "id":"E", "active":true}, {"type":"point", "value":[40,30], "id":"F", "active":true,"idpos":225},{"type":"point", "value":[-10,-30], "id":"G", "active":true,"idpos":225}],"available":["segment"],"number":8,"objectives":[[{"type":"segment", "values":[-50,-80,50,-80]},{"type":"segment", "values":[50,-80,50,150]},{"type":"segment", "values":[50,150,-50,150]},{"type":"segment", "values":[-50,150,-50,-80]}],[{"type":"segment", "values":[50,-80,100,-20]},{"type":"segment", "values":[100,-20,40,30]},{"type":"segment", "values":[40,30,-10,-30]},{"type":"segment", "values":[-10,-30,50,-80]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":["Tracez les figures suivantes :"],"labels":["Rectangle ABCD","Carré BEFG"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>061</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter un rectangle en découvrant le 4ème sommet.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"point", "value":[-100,-100], "id":"A", "active":true,"idpos":135},{"type":"point", "value":[25,150], "id":"C", "active":true,"idpos":315}, {"type":"point", "value":[-100,150], "id":"B", "active":true,"idpos":225},{"type":"segment", "value":[25,150,-100,150], "active":true},{"type":"segment", "value":[-100,-100,-100,150], "active":true},{"type":"grid", "value":[-50,-150,10,8,25,25],"active":true,"attr":{"style":"stroke-width:4;"}}],"available":["segment"],"number":2,"objectives":[[{"type":"segment", "values":[-100,-100,25,-100]},{"type":"segment", "values":[25,-100,25,150]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":["Trouvez le sommet manquant D pour compléter le rectangle."],"labels":["Rectangle ABCD"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>062</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter deux rectangles en découvrant leur 4ème sommet respectif.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"point", "value":[-100,-100], "id":"A", "active":true,"idpos":135},{"type":"point", "value":[-100,150], "id":"C", "active":true,"idpos":315}, {"type":"point", "value":[-200,100], "id":"B", "active":true,"idpos":225},{"type":"point", "value":[-100,50], "id":"E", "active":true,"idpos":225},{"type":"point", "value":[175,50], "id":"F", "active":true,"idpos":315},{"type":"segment", "value":[-200,100,-100,-100], "active":true},{"type":"segment", "value":[-200,100,-100,150], "active":true},{"type":"grid", "value":[-50,-150,10,8,25,25],"active":true,"attr":{"style":"stroke-width:4;"}}],"available":["segment"],"number":6,"objectives":[[{"type":"segment", "values":[-100,-100,0,-50]},{"type":"segment", "values":[0,-50,-100,150]}],[{"type":"segment", "values":[-100,-100,175,-100]},{"type":"segment", "values":[175,-100,175,50]},{"type":"segment", "values":[175,50,-100,50]},{"type":"segment", "values":[-100,50,-100,-100]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":["Trouvez les sommets manquants pour compléter et tracer les 2 rectangles."],"labels":["Rectangle ABCD","Rectangle AEFG"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+     <rdf:Description>
+        <dct:identifier>101</dct:identifier>
+        <dct:title xml:lang="fr-FR">Tracer un quadrilatère.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"point", "value":[-200,-150], "id":"A", "active":true,"idpos":135},{"type":"point", "value":[-150,50], "id":"B", "active":true,"idpos":225},{"type":"point", "value":[0,120], "id":"C", "active":true,"idpos":270},{"type":"point", "value":[100,120], "id":"D", "active":true,"idpos":270},{"type":"point", "value":[250,0], "id":"E", "active":true},{"type":"point", "value":[200,-120], "id":"F", "active":true}],"available":["segment"],"number":6,"objectives":[[{"type":"segment", "values":[-200,-150,-150,50]},{"type":"segment", "values":[-150,50,0,120]},{"type":"segment", "values":[0,120,100,120]},{"type":"segment", "values":[100,120,250,0]},{"type":"segment", "values":[250,0,200,-120]},{"type":"segment", "values":[200,-120,-200,-150]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":["[strong]Un polygone est une figure géométrique plane, formée d'une suite cyclique de segments consécutifs.[/strong]","Le [b]triangle[/b], le [b]carré[/b] et le [b]rectangle[/b] sont des polygones. Tracez le polygone ABCDEF."],"labels":["Polygone ABCDEF."]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+     <rdf:Description>
+        <dct:identifier>102</dct:identifier>
+        <dct:title xml:lang="fr-FR">Tracer un quadrilatère.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"point", "value":[-100,-100], "id":"A", "active":true,"idpos":135},{"type":"point", "value":[-100,150], "id":"C", "active":true,"idpos":315},{"type":"point", "value":[-200,100], "id":"B", "active":true,"idpos":225},{"type":"point", "value":[250,150], "id":"D", "active":true,"idpos":315}],"available":["segment"],"number":4,"objectives":[[{"type":"segment", "values":[-100,-100,-200,100]},{"type":"segment", "values":[-200,100,-100,150]},{"type":"segment", "values":[-100,150,250,150]},{"type":"segment", "values":[250,150,-100,-100]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":["[strong]Une polygone composée de 4 segments est un quadrilatère.[/strong]","Le [b]carré[/b] et le [b]rectangle[/b] sont deux types de quadrilatères, mais ce ne sont pas les seuls. Tracez le quadrilatère ABCD."],"labels":["Quadrilatère ABCD."]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+     <rdf:Description>
+        <dct:identifier>111</dct:identifier>
+        <dct:title xml:lang="fr-FR">Tracer un quadrilatère concave.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"point", "value":[-100,-100], "id":"A", "active":true,"idpos":135},{"type":"point", "value":[0,50], "id":"C", "active":true,"idpos":315},{"type":"point", "value":[-200,100], "id":"B", "active":true,"idpos":225},{"type":"point", "value":[250,150], "id":"D", "active":true,"idpos":315}],"available":["segment"],"number":4,"objectives":[[{"type":"segment", "values":[-100,-100,-200,100]},{"type":"segment", "values":[-200,100,0,50]},{"type":"segment", "values":[0,50,250,150]},{"type":"segment", "values":[250,150,-100,-100]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":["[strong]Un quadrilatère présentant un \\\"creux\\\" est dit concave.[/strong]","[b]Inversement[/b] les quadrilatères sans creux comme le carré ou le rectangle sont dits [b]convexes[/b].","Tracez le quadrilatère concave ABCD."],"labels":["Quadrilatère concave ABCD."]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+     <rdf:Description>
+        <dct:identifier>151</dct:identifier>
+        <dct:title xml:lang="fr-FR">Tracer les diagonales d'un quadrilatère.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"point", "value":[-100,-100], "id":"A", "active":true,"idpos":135},{"type":"point", "value":[-100,150], "id":"C", "active":true,"idpos":315},{"type":"point", "value":[-200,100], "id":"B", "active":true,"idpos":225},{"type":"point", "value":[250,-50], "id":"D", "active":true,"idpos":315},{"type":"path", "value":[-100,-100,-200,100,-100,150,250,-50,-100,-100]}],"available":["segment"],"number":2,"objectives":[[{"type":"segment", "values":[-100,-100,-100,150]}],[{"type":"segment", "values":[-200,100,250,-50]}]],"translate":[320,185.5],"color2":"blue"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":["[strong]La diagonale d'un quadrilatère est la droite ou le segment qui relie 2 sommets opposés.[/strong]","Tracer les 2 diagonales du quadrilatère ABCD."],"labels":["Diagonale AC.","Diagonale BD"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+     <rdf:Description>
+        <dct:identifier>152</dct:identifier>
+        <dct:title xml:lang="fr-FR">Tracer les diagonales d'un carré et d'un rectangle.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"path+", "value":[-200,-100,0,-100,0,100,-200,100,-200,-100], "active":true},{"type":"path+", "value":[150,-150,150,120,250,120,250,-150,150,-150], "active":true}],"available":["segment"],"number":4,"objectives":[[{"type":"segment", "values":[-200,-100,0,100]},{"type":"segment", "values":[-200,100,0,-100]}],[{"type":"line", "values":[150,-150,250,120]},{"type":"segment", "values":[150,120,250,-150]}]],"translate":[320,185.5],"color2":"blue"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":["Tracer les diagonales des différents quadrilatères."],"labels":["Diagonales du carré.","Diagonales du rectangle"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+     <rdf:Description>
+        <dct:identifier>154</dct:identifier>
+        <dct:title xml:lang="fr-FR">Tracer les diagonales d'un quadrilatère concave.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"path+", "value":[-100,-100,-200,100,0,50,250,150,-100,-100], "active":true}],"available":["line"],"number":2,"objectives":[[{"type":"line", "values":[-100,-100,0,50]},{"type":"line", "values":[-200,100,250,150]}]],"translate":[320,185.5],"color2":"blue"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":["[strong]Dans un quadrilatère concave l'une des diagonale est extérieur au polygone[/strong]","Tracez les diagonales du quadrilatère."],"labels":["Diagonales du quadrilatère concave."]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+
+     <rdf:Description>
+        <dct:identifier>213</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier le centre d'un carré par intersection des diagonales.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"path+", "value":[-100,-100,100,-100,100,100,-100,100,-100,-100],"active":true}],"available":["segment","intersection"],"number":3,"objectives":[[{"type":"segment", "values":[-100,-100,100,100]},{"type":"segment", "values":[-100,100,100,-100]}],[{"type":"point", "values":[0,0]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":["[strong]Le centre d'un carré est le point d'intersection de ses diagonales.[/strong]","Tracez les diagonales du carré puis situez le centre de celui-ci grâce à l'outil [red][b]intersection[/b][/red]"],"labels":["Diagonales du carré","Centre du carré"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+     <rdf:Description>
+        <dct:identifier>214</dct:identifier>
+        <dct:title xml:lang="fr-FR">Tracer le cercle circonscrit d'un carré.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"path+", "value":[-120,-120,120,-120,120,120,-120,120,-120,-120],"active":true}],"available":["segment","intersection","circle"],"number":4,"objectives":[[{"type":"segment", "values":[-120,-120,120,120]},{"type":"segment", "values":[-120,120,120,-120]}],[{"type":"point", "values":[0,0]}],[{"type":"circle", "values":[0,0,169.71]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":["[strong]Le cercle circonscrit d'un carré a même centre que celui-ci et passe par ses 4 points.[/strong]","Tracez le cercle circonscrit au carré"],"labels":["Diagonales du carré","Centre du carré","Cercle circonscrit"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+</rdf:RDF>
+
