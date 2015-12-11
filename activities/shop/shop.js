@@ -10,6 +10,7 @@
         wallet      : [10,5,6,10,5,6,10,5,2,5,5,2,1],           // initial wallet
         errratio    : 1,                                        // Error ratio
         decimal     : true,                                     // Handle decimal
+        messy       : false,                                    // Wallet is messy
         debug       : true                                      // Debug mode
     };
 
@@ -18,6 +19,7 @@
     var cc = [ 0.9, 1.1, 1.3, 1.1, 1.5, 2, 1.7, 2, 0.5, 0.5, 0.5, 0.5, 1];
     var change = [ [[0,1]], [[0,2]], [[0,1],[1,2]], [[2,2]], [[3,2]], [[3,1],[4,2]], [[5,2]], [[6,2]], [[6,1],[7,2]], [[8,2]],
                    [[9,2]], [[9,1],[10,2]], [[11,2]] ];
+    var products = [ "vegetable/banana01","vegetable/strawberry01","vegetable/cherry02","vegetable/tomato01","vegetable/pepper01" ];
 
     // private methods
     var helpers = {
@@ -79,30 +81,16 @@
                 if (settings.context.onload) { settings.context.onload($this); }
 
                 $this.css("font-size", Math.floor($this.height()/12)+"px");
-
+/*
                 $this.find("#pcalculator").draggable({containment:$this.find("#board"), stack:".pstack", handle:"#screen"});
                 $this.find(".wallet").draggable({containment:$this.find("#board"), stack:".pstack"});
                 $this.find("#pbill").draggable({containment:$this.find("#board"), stack:".pstack"});
+*/
 
                 if (settings.menu) {
                     $this.find("#menu .tab").hide();
                     for (var i in settings.menu) { $this.find("#menu #"+settings.menu[i]).show(); }
                 }
-
-                // Fill the wallet
-                var x = 0; y = 0;
-                for (var i in settings.wallet) {
-                    for (var j=0; j<settings.wallet[i]; j++) {
-                        if (x>=(i<8?6:5)) { x = 0; y=y+(i<4?1.5:2); }
-                        var c = $("<div class='v"+i+(i<8?" coin":" bill")+" a'><div><img src='res/img/coin/"+coins[i]+".svg'/></div></div>");
-                        
-                        c.css("top", (0.1+y)+"em").css("left",(0.1+x)+"em");
-                        x=x+0.1;
-                        $this.find("#pwallet>div").append(c);
-                    }
-                    if (settings.wallet[i]) { x=x+cc[i]; }
-                }
-                $this.find(".a").each(function() { helpers.panel.draggable($this, $(this)); });
 
                 // Droppable wallet
                 $this.find(".wallet").droppable({greedy:true, accept:".a",
@@ -137,18 +125,20 @@
                                         var $c = $("<div class='v"+ii+(ii<8?" coin":" bill")+" a'><div><img src='res/img/coin/"+coins[ii]+".svg'/></div></div>");
                                         $c.css("left",(pos[0]+count*vWidth/10)+"px").css("top",(pos[1]+count*vWidth/10)+"px");
                                         $this.find("#pchange>div").append($c);
-                                        helpers.panel.draggable($this, $c);
+                                        helpers.panel.draggable($this, $c,true);
                                         count++;
                                     }
 
                                     $this.find("#pmask").animate({opacity:0.2},500,function(){ $(this).hide(); });
                                 });
                             }
-                            else { helpers.panel.draggable($this, $coin); }
+                            else { helpers.panel.draggable($this, $coin,true); }
                         }
-                        else { helpers.panel.draggable($this, $coin); }
+                        else { helpers.panel.draggable($this, $coin,true); }
                 }
                 });
+
+                helpers.fill($this, $this.find("#pwallet>div"), settings.wallet,settings.messy);
 
                 // Locale handling
                 $this.find("h1#label").html(settings.label);
@@ -184,35 +174,148 @@
             // HANDLE CLIENTS OR PROVIDERS
             helpers.whoishere.run($this, function() {
 
+                var data = settings.data[settings.it];
+
                 // GET THE DIALOG TEXT
-                var text = settings.data[settings.it].text;
+                var text = data.text;
                 if (!$.isArray(text) && settings.dialog[text]) { text = settings.dialog[text]; }
                 if (!$.isArray(text)) { text = [text]; }
 
                 // DEAL WITH THE TUTORIAL TARGET
                 $this.find("#target").hide();
-                if (typeof(settings.data[settings.it].target)!="undefined") {
-                    $this.find("#target").css("left",(settings.data[settings.it].target*1.1)+"em").show();
+                if (typeof(data.target)!="undefined") { $this.find("#target").css("left",(data.target*1.1)+"em").show(); }
+
+                $this.find("#pinvoice .good").removeClass("good");
+                $this.find("#pinvoice .wrong").removeClass("wrong");
+                $this.find("#pinvoice #svalid").removeClass("s");
+
+                // HANDLE VALUE
+                var gen = 0;
+                if (typeof(data.value)=="string") {
+                    if (data.value.indexOf("function")==-1) { gen = settings[data.value]; } else { gen = data.value; }
+                }
+                if (gen) { data.value = eval('('+gen+')')({id:settings.it}); }
+
+                // HANDLE WALLET
+                gen = 0;
+                if (typeof(data.wallet)=="string") {
+                    if (data.wallet.indexOf("function")==-1) { gen = settings[data.wallet]; } else { gen = data.wallet; }
+                }
+                if (gen) { data.wallet = eval('('+gen+')')(
+                    {id:settings.it,value:parseFloat($this.find("#pinvoice .final .cell").html())});
                 }
 
-                switch(settings.data[settings.it].type) {
+                switch(data.type) {
                     case "dialog" :
-                        helpers.text.run($this, { id:settings.data[settings.it].from, dialog:text},
+                        $this.find("#pcalculator").hide(); $this.find("#calculator").removeClass("s");
+                        helpers.text.run($this, { id:data.from, dialog:text},
                         function(){ helpers.next($this); } );
                         break;
                     case "bill" :
-                        $("#pbill .f").each(function(_index){ $(this).html(text[_index]); });
-                        $("#pbill #billval").html(settings.data[settings.it].value);
-                        $("#pbill").removeClass();
-                        if (settings.data[settings.it].subtype) { $("#pbill").addClass(settings.data[settings.it].subtype); }
-                        $("#pbill").show();
-                        $("#pmoney").show();
+                        $this.find("#pbill .f").each(function(_index){ $(this).html(text[_index]); });
+                        if (data.value==Math.floor(data.value)) { vv = data.value.toString(); }
+                        else                                    { vv = data.value.toFixed(2).toString(); }
+                        $this.find("#pbill #billval").html(vv.replace(".",","));
+                        $this.find("#pbill").removeClass();
+                        if (data.subtype) { $this.find("#pbill").addClass(data.subtype); }
+                        helpers.fx.show($this, "bill");
+                        helpers.fx.show($this, "money");
                         break;
+                    case "invoice" :
+                        $this.find("#pinvoice #content").html("");
+                        for (var i in data.value) {
+                            var d = data.value[i];
+                            d[0] = d[0]%products.length;
+                            var html="<div class='line'>";
+                            html+="<div class='label'><img src='res/img/svginventoryicons/"+products[d[0]]+".svg'/></div>";
+                            html+="<div class='price'>"+d[1]+"</div>";
+                            html+="<div class='quantity'>"+d[2]+"</div>";
+                            var vClass='cell', vVal = '';
+                            if ((d.length>3) && (d[3]&1)) { vClass+=' fixed'; vVal = (d[1]*d[2]).toString().replace('.',','); }
+                            if ((d.length>3) && (d[3]&2)) { vClass+=' highlight'; }
+                            html+="<div class='"+vClass+"'>"+vVal+"</div></div>";
+                            $this.find("#pinvoice #content").append(html);
+                        }
+                        if (data.total) {
+                            $this.find("#pinvoice .final .cell").html(data.total).addClass("fixed");
+                            $this.find("#pinvoice #svalid").addClass("s");
+                        }
+                        else {
+                            $this.find("#pinvoice .final .cell").html("").removeClass("fixed");
+                            $this.find("#pinvoice #svalid").removeClass("s");
+                        }
+                        $this.find("#pinvoice .cell").each(function() {
+                            if (!$(this).hasClass("fixed")) { helpers.cell.create($this, this); }
+                        });
+                        helpers.fx.show($this, "invoice");
+                        break;
+                    case "sell":
+                        var value = helpers.fill($this, $this.find("#pmoney>div"), data.wallet, true);
+                        data.value = value - parseFloat($this.find("#pinvoice .final .cell").html());
+                        helpers.fx.show($this, "money");
+                        break;
+                        
                 }
             });
         },
+        fill: function($this, $panel, _wallet, _random) {
+            var x = 0; y = 0, value = 0, $cc = [];
+            for (var i in _wallet) {
+                value += valc[i]*_wallet[i];
+                for (var j=0; j<_wallet[i]; j++) {
+                    if (x>=(i<8?6:5)) { x = 0; y=y+(i<4?1.5:2); }
+                    var $c = $("<div class='v"+i+(i<8?" coin":" bill")+" a'><div><img src='res/img/coin/"+coins[i]+".svg'/></div></div>");
+                    if (_random) {
+                        $c.css("top", (0.1+Math.floor(Math.random()*60)/10)+"em")
+                          .css("left", (0.1+Math.floor(Math.random()*(i<8?60:50))/10)+"em")
+                    }
+                    else {
+                        $c.css("top", (0.1+y)+"em").css("left",(0.1+x)+"em");
+                    }
+                    x=x+0.1;
+                    $cc.push($c);
+                }
+                if (_wallet[i]) { x=x+cc[i]; }
+            }
+            if (_random) {
+                for (var i=0; i<10; i++) { $cc.sort(function(a,b){return 0.5-Math.random(); }); }
+            }
+            for (var c in $cc) {
+                $panel.append($cc[c]);
+                helpers.panel.draggable($this, $cc[c],false);
+            }
+            return value;
+        },
+        cell: {
+            create: function($this, _this) {
+                $(_this).unbind("click touchstart");
+                $(_this).bind("click touchstart", function(event) {
+                    if ($(this).hasClass("s")) { $(this).removeClass("s"); }
+                    else { $this.find("#pinvoice .cell").removeClass("s"); $(this).addClass("s");
+                           helpers.fx.show($this,"calculator"); }
+                    event.preventDefault();
+                });
+            },
+            next: function($this) {
+                var found = false;
+                $this.find("#pinvoice .cell").each(function() {
+                    if ($(this).hasClass("s"))  { $(this).removeClass("s").removeClass("highlight"); found = true; } else
+                    if (found)                  { $(this).addClass("s"); found = false; }
+                });
+            }
+        },
         next: function($this) {
             var settings = helpers.settings($this);
+
+            switch (settings.data[settings.it].type)
+            {
+                case "sell":
+                    helpers.fx.hide($this,"wallet");
+                    helpers.fx.hide($this,"calculator");
+                    helpers.fx.hide($this,"invoice");
+                    break;
+            }
+
             if (settings.score<0) { settings.score = 0; }
             if (++settings.it<settings.data.length) { helpers.run($this); } else { helpers.end($this); }
         },
@@ -262,19 +365,21 @@
                 }
             }
         },
+        fx : {
+            show : function($this, _p) {
+                $this.find("#menu #"+_p).addClass("s");
+                $this.find("#p"+_p).show().animate({opacity:1}, 500); 
+            },
+            hide : function($this, _p,_delay) {
+                $this.find("#menu #"+_p).removeClass("s");
+                $this.find("#p"+_p).delay(_delay?_delay:0).animate({opacity:0}, 500,  function() { $(this).hide(); }); 
+            }
+        },
         pos: function(_$elt,_val) {
             var ret = _$elt.css(_val);
             return parseFloat(ret);
         },
         panel: {
-            zindex: function($this, _id) {
-                if (_id[0]!='p') { _id = 'p'+_id; }
-                var zindex=0;
-                $this.find(".panel").each(function() {
-                    var z = $(this).css("z-index");
-                    if (z!="auto" && parseInt(z)>zindex) { zindex=z; }});
-                if (zindex) { $this.find("#"+_id).css("z-index",zindex+1); }
-            },
             inside: function($this, $elt, _factor) {
                 if (!_factor) { _factor = 1; }
                 var pos = [ helpers.pos($elt,"left"), helpers.pos($elt,"top")];
@@ -288,20 +393,9 @@
 
                 return pos;
             },
-            draggable: function($this, $elt) {
-                helpers.panel.inside($this, $elt);
-                $elt.draggable({containment:$this.find("#board"), stack:".a", revert:true,
-                    start:function(event, ui) {
-                        helpers.panel.zindex($this, $(this).closest(".panel").attr("id"));
-                    }
-                });
-            },
-            add: function($this, _elt, _coin) {
-                var $c = $("<div class='v"+_coin+(_coin<8?" coin":" bill")+" a'>"+
-                          "<div><img src='res/img/coin/"+coins[_coin]+".svg'/></div></div>");
-                $this.find(_elt+">div").append($c);
-                $c.css("top", (Math.random()*6)+"em").css("left",(Math.random()*5)+"em");
-                helpers.panel.draggable($this,$c);
+            draggable: function($this, $elt, _check) {
+                if (_check) { helpers.panel.inside($this, $elt); }
+                $elt.draggable({containment:$this.find("#board"), stack:".a", revert:true}).css("position","absolute");
             }
         },
         // Handle the key input
@@ -311,7 +405,12 @@
                 if (settings.calculator.indexOf(".")==-1 && settings.calculator.length<5) {
                     settings.calculator+=(settings.calculator.length?"":"0")+"."; } }
             else if (value=="c") { settings.calculator=""; }
-            else if (value=="v") { settings.calculator="";}
+            else if (value=="v") {
+                $this.find("#pinvoice .cell.s").html(settings.calculator);
+                helpers.cell.next($this);
+                settings.calculator="";
+                $this.find("#pinvoice #svalid").toggleClass("s", ($this.find("#pinvoice .footer .cell").html().length!=0) );
+            }
             else if (settings.calculator.length<6) {
                 if (value=="0" && settings.calculator.length && settings.calculator[0]=='0') {}
                 else { settings.calculator+=value.toString(); }
@@ -324,17 +423,19 @@
             var itsgood = false;
             $this.find("#pmoney .a").each( function() { value+= valc[parseInt($(this).attr("class").substr(1,2))]; });
             settings.interactive = false;
+            value = Math.round(value*100)/100;
 
             switch(settings.data[settings.it].type) {
                 case "bill" :
+                case "sell" :
                     if (value==settings.data[settings.it].value) { itsgood = true; }
                 break;
             }
             if (itsgood) {
                 $this.find("#pmoney").addClass("good");
                 $this.find("#pmoney .a").animate({opacity:0},500, function() { $(this).detach(); });
-                setTimeout(function() { $this.find("#pmoney").hide(); $this.find("#pbill").hide(); helpers.next($this);
-                },1000);
+                helpers.fx.hide($this,"money",200); helpers.fx.hide($this,"bill");
+                setTimeout(function() { helpers.next($this); },1000);
             }
             else {
                 settings.score -= settings.errratio;
@@ -381,8 +482,10 @@
             },
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                settings.interactive = true;
-                helpers.run($this);
+                if (!settings.interactive) {
+                    settings.interactive = true;
+                    helpers.run($this);
+                }
             },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
@@ -391,13 +494,10 @@
             menu: function(_id) {
                 var $this = $(this) , settings = helpers.settings($this);
                 if ($this.find("#p"+_id).is(":visible")) {
-                    $this.find("#p"+_id).hide();
-                    $this.find("#"+_id).removeClass("s");
+                    helpers.fx.hide($this, _id);
                 } else {
-                    helpers.panel.zindex($this,_id);
                     if (_id=="calculator") { settings.calculator=""; }
-                    $this.find("#p"+_id).show();
-                    $this.find("#"+_id).addClass("s");
+                    helpers.fx.show($this, _id);
                 }
             },
             key: function(value, _elt) {
@@ -408,7 +508,22 @@
                 helpers.key($(this), value, false);
             },
             bubbles: function() { helpers.text.click($(this)); },
-            valid: function() { helpers.money($(this)); }
+            valid: function() { helpers.money($(this)); },
+            confirm: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+                if ($this.find("#pinvoice #svalid").hasClass("s")) {
+                    $this.find("#pinvoice #svalid").addClass("good");
+
+                    var vVal = parseFloat($this.find("#pinvoice .final .cell").html());
+                    var vTr = settings.locale.tr1;
+                    if (Math.floor(vVal)!=vVal) { vTr = settings.locale.tr1; }
+                    var vTt = vTr[Math.floor(Math.random()*vTr.length)];
+                    vTt = vTt.replace("X",Math.floor(vVal).toString()).replace("Y",((vVal*100)%10).toString());
+
+                    helpers.text.run($this, { id:"owner", dialog:[vTt]},
+                        function(){ helpers.next($this); } );
+                }
+            }
         };
 
         if (methods[method])    { return methods[method].apply(this, Array.prototype.slice.call(arguments, 1)); } 

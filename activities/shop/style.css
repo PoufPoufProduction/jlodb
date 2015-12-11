@@ -30,6 +30,7 @@
 
 .shop .panel                      { display:none; background-color:rgba(0,0,0,0.8); border:.1em solid black;
                                     border-radius:.25em; overflow:visible; width:8em; height:8em; padding:.06em;}
+.shop .pstack                     { opacity:0; }
 .shop .wallet>div                 { overflow:visible;  width:8em; height:8em; background-color:rgba(255,200,100,0.4); border-radius:.25em; }
 .shop .wallet.over                { background-color:rgba(255,255,0,0.8); }
 
@@ -40,7 +41,7 @@
 .shop .wallet.wrong               { background-color:rgba(255,0,0,0.8); }
 .shop #pchange                    { position:absolute; top:45%; left:38%; }
 .shop #pchange>div                { background-image:url("../../res/img/background/shop/change.svg"); }
-.shop #pchange #pmask             { position:absolute; width:8em; height:8em; background-color:green; border-radius:.25em;
+.shop #pchange #pmask             { position:absolute; width:8em; height:8em; background-color:rgb(0,255,0); border-radius:.25em;
                                     z-index:100;display:none;}
 
 .shop #pwallet                    { position:absolute; top:45%; left:5%;  }
@@ -71,35 +72,62 @@
 .shop #menu .tab.s                      { background-color:rgba(255,0,0,0.8); }
 .shop #menu #target                     { position:absolute; left:0; }
 
+/* INVOICE PANEL */
+.shop #pinvoice                 { width:7.5em; background-color:white; display:none; left:70%; top:2%; position:absolute; padding:.1em;
+                                  background-image:url("../../res/img/background/book02.svg"); background-repeat:repeat;
+                                  border:2px solid black; }
+.shop #pinvoice .header         { font-size:.4em; border:1px solid black; border-width:0 0 1px 0;}
+.shop #pinvoice .header>div     { float:left; width:4em; text-align:center;}
+.shop #pinvoice .footer         { margin-top:.2em; }
+.shop #pinvoice .line           { margin:.1em 0 0 0; background-color:rgba(0,140,255,0.2); }
+.shop #pinvoice .line>div       { float:left; text-align:center; }
+.shop #pinvoice .line .label    { width:1em; height:1em; font-size:1.5em; }
+.shop #pinvoice .line .price    { font-size:0.6em; width:2.6em; margin-top:.5em; }
+.shop #pinvoice .line .quantity { font-size:0.7em; width:2.6em; margin-top:.4em; margin-left:.2em; background-color:red;
+                                  border-radius:.5em; color:white; }
+.shop #pinvoice .line .quantity:before { content:"×"; }
+.shop #pinvoice .line .cell     { font-size:0.6em; margin-left:.2em; margin-top:.5em; width:3.5em; cursor:pointer; }
+.shop #pinvoice .line .cell.s   { background-color:yellow; cursor:auto; }
+.shop #pinvoice .line .cell.highlight { background-color:red; }
+.shop #pinvoice .line .total    { color:#256; font-size:.8em; width:6.1em; text-align:right; margin-right:.2em; }
+.shop #pinvoice .footer .cell   { margin-top:0.1em; }
+.shop #pinvoice #svalid.s       { opacity:1; cursor:pointer; }
+.shop #pinvoice #svalid         { height:1em; font-size:1em; opacity:0.2; background-color:rgba(0,0,0,0.1); padding:.1em; margin-top:.1em; }
+.shop #pinvoice #svalid>div     { width:1em; height:1em; margin:0 auto;  }
+.shop #pinvoice #svalid.good    { background-color:rgba(0,255,0,0.4); }
+.shop #pinvoice #svalid.wrong   { background-color:rgba(255,0,0,0.4); }
 
-.shop #pcalculator #screen             { font-size:1.5em; width:3em; border-radius:.25em; cursor:move;
-                                    text-align:center; color:#0F0; font-weight:bold;
-                                      padding:.2em; background-color:#030;
-                                      background-image:url("../../res/img/background/book05.svg"); background-repeat:repeat;}
+
+/* CALCULATOR PANEL */
+.shop #pcalculator               { height:auto; }
+.shop #pcalculator #screen       { font-size:1.5em; width:3em; border-radius:.25em; cursor:move;
+                                   text-align:center; color:#0F0; font-weight:bold;
+                                   padding:.2em; background-color:#030;
+                                   background-image:url("../../res/img/background/book05.svg"); background-repeat:repeat;}
 .shop .bluekeypad                { background-color:rgba(84,137,184,0.9);
-                                  -webkit-transition: background-color 1000ms ease-in;
-                                  -moz-transition: background-color 1000ms ease-in;
-                                  -o-transition: background-color 1000ms ease-in;
-                                  -ms-transition: background-color 1000ms ease-in;
-                                  transition: background-color 1000ms ease-in; }
+                                   -webkit-transition: background-color 1000ms ease-in;
+                                   -moz-transition: background-color 1000ms ease-in;
+                                   -o-transition: background-color 1000ms ease-in;
+                                   -ms-transition: background-color 1000ms ease-in;
+                                   transition: background-color 1000ms ease-in; }
 .shop .bluekeypad.touch          { background-color:rgba(256,220,50,0.9);
-                                  -webkit-transition: none;
-                                  -moz-transition: none;
-                                  -o-transition: none;
-                                  -ms-transition: none;
-                                  transition: none; }
+                                   -webkit-transition: none;
+                                   -moz-transition: none;
+                                   -o-transition: none;
+                                   -ms-transition: none;
+                                   transition: none; }
 
-.shop #bubbles                        { position:absolute; top:0; left:0%; width:30em; height:20em; color:#530;  display:none;}
-.shop #bubbles .talk                  { position:absolute; border-radius: .5em; background: #FE7; opacity:0.9; display:none;
+/* DIALOG BUBBLES */
+.shop #bubbles                  { position:absolute; top:0; left:0%; width:30em; height:20em; color:#530;  display:none;}
+.shop #bubbles .talk            { position:absolute; border-radius: .5em; background: #FE7; opacity:0.9; display:none;
                                   border:.1em solid #530; padding:.2em .5em; font-size:.6em; overflow:visible; cursor:pointer; }
-.shop #bubbles .talk:before           { content:""; display : block; position:absolute; font-size:.5em; background: #FE7; border:.2em solid #530; }
-.shop #bubbles .talk .content         { font-size:.8em; }
-.shop #bubbles #owner                { width:40%; height:15%; left:40%; top:5%; }
-.shop #bubbles #owner:before          {  width:2em; height:1em;  border-radius:.5em 0 0 .5em;  left:-2em; top:8em;
-                                border-width:.2em 0 .2em .2em; }
-
-.shop #bubbles #client                { width:20%; height:12%; left:1%; top:7%; }
-.shop #bubbles #client:before          {  width:1em; height:1.5em;  border-radius:0 0 .5em .5em;  left:6em; top:8.7em;
-                                border-width:0 .2em .2em .2em; }
+.shop #bubbles .talk:before     { content:""; display : block; position:absolute; font-size:.5em; background: #FE7; border:.2em solid #530; }
+.shop #bubbles .talk .content   { font-size:.8em; }
+.shop #bubbles #owner           { width:40%; height:15%; left:40%; top:5%; }
+.shop #bubbles #owner:before    { width:2em; height:1em;  border-radius:.5em 0 0 .5em;  left:-2em; top:8em;
+                                  border-width:.2em 0 .2em .2em; }
+.shop #bubbles #client          { width:20%; height:12%; left:1%; top:7%; }
+.shop #bubbles #client:before   { width:1em; height:1.5em;  border-radius:0 0 .5em .5em;  left:6em; top:8.7em;
+                                  border-width:0 .2em .2em .2em; }
 
 
