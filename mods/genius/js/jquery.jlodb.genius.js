@@ -19,7 +19,8 @@
         debug       : { w:80, alone:true, max:1.5 },
         geometry    : { w:160, max:2 },
         it          : { w:160, max:2 },
-        sudoku      : { w:80, max:2 }
+        sudoku      : { w:80, max:2 },
+        wip         : { w:80, alone:true, max:1.5 }
     };
 
     // private methods
