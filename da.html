@@ -238,7 +238,6 @@ game = {
             args.classification=game.types[game.typeid].data[cellId-1].classification;
         }
 
-
         game.success = false;
         $("#launcher").jlodb({
             onstart:    function($this)       { $("#da").hide(); $("#launcher").show();
@@ -267,8 +266,8 @@ $(window).load(function() {
         if (_check.status=="success") {
             game.lang=_check.lang;
             $.getJSON("mods/da/locale/"+game.lang+".json", function (_locale) {
-            $.getJSON("mods/da/board.json", function (_boards) {
-            $.getJSON("mods/da/type.json", function(_type) {
+            $.getJSON("mods/da/board.json?d="+Math.random(), function (_boards) {
+            $.getJSON("mods/da/type.json?d="+Math.random(), function(_type) {
 
                 // SAVE
                 game.boards = _boards;
