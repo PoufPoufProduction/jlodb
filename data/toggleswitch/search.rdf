@@ -67,4 +67,28 @@
         <dct:isPartOf>search</dct:isPartOf>
     </rdf:Description>
 
+    <rdf:Description>
+        <dct:identifier>g01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Retrouver le rond jaune dans une grille 10x6.</dct:title>
+        <dct:description><![CDATA["values":[{"gen":"function(){var s=[10,6],t=Math.floor(Math.min(600/s[0],400/s[1])),r=[Math.floor(Math.random()*s[0]),Math.floor(Math.random()*s[1])],o=[Math.floor((640-s[0]*t)/2),Math.floor((420-s[1]*t)/2)],ret=\\\"<svg width='100%' height='100%' viewBox='0 0 640 480'><defs><style>.c0{opacity:1;}.c1{opacity:0;}text{font-size:16px;}</style></defs>\\\",d=function(x,y){return Math.abs(x-r[0])+Math.abs(y-r[1]);},max=1; for (var i=0;i<s[0];i++)for (var j=0;j<s[1];j++){max=Math.max(max,d(i,j)); } for (var i=0;i<s[0];i++)for (var j=0;j<s[1];j++) { var dd=(max-d(i,j))/max; ret+=\\\"<rect x='\\\"+(o[0]+i*t)+\\\"' y='\\\"+(o[1]+j*t)+\\\"' width='\\\"+(t)+\\\"' height='\\\"+(t)+\\\"' style='fill:rgb(\\\"+Math.floor(255*dd)+\\\",\\\"+Math.floor(255*(1-dd))+\\\",0);stroke:black;stroke-width:1.4;'/>\\\";}ret+=\\\"<circle cx='\\\"+(o[0]+(r[0]+0.5)*t)+\\\"' cy='\\\"+(o[1]+(r[1]+0.5)*t)+\\\"' r='\\\"+(t/2.5)+\\\"' style='fill:yellow;' class='\\\"+(r[0]*s[1]+r[1])+\\\"'/>\\\";for (var i=0;i<s[0];i++)for (var j=0;j<s[1];j++){ret+=\\\"<rect x='\\\"+(o[0]+i*t+0.5)+\\\"' y='\\\"+(o[1]+j*t+0.5)+\\\"' width='\\\"+(t-1)+\\\"' height='\\\"+(t-1)+\\\"' class='a' style='fill:gray;'/>\\\"; } return {\\\"data\\\":ret+\\\"</svg>\\\"}; }" }],"states":{ "nb":2, "class":["c0","c1"]},"loop":false,"class":"search","onclick":"function($this,_elt,id){var nb=0; for (var i in _elt){if (_elt[i].state) { nb++;}} if (!_elt[id].state) { nb++; } var p=parseInt($this.find('svg circle').attr('class')); if (_elt[p].state==0) { $this.find('#label').html(nb); } return (_elt[p].state==0); }","scorefct":"function($this,_elt){var nb=0; for (var i in _elt){if (_elt[i].state) { nb++;}} var p=parseInt($this.find('svg circle').attr('class')), w=0; if (_elt[p].state==0) { w=5;} w+=Math.floor(nb/Math.sqrt(_elt.length)); return w; }","number":3]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Cliquez sur les carrés gris pour retrouver le rond jaune. Plus vous êtes proches et plus la couleur devient rouge.","label":"0"}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>game</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>g01</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>g02</dct:identifier>
+        <dct:title xml:lang="fr-FR">Retrouver le rond jaune dans une grille 16x12.</dct:title>
+        <dct:description><![CDATA["values":[{"gen":"function(){var s=[16,12],t=Math.floor(Math.min(600/s[0],400/s[1])),r=[Math.floor(Math.random()*s[0]),Math.floor(Math.random()*s[1])],o=[Math.floor((640-s[0]*t)/2),Math.floor((420-s[1]*t)/2)],ret=\\\"<svg width='100%' height='100%' viewBox='0 0 640 480'><defs><style>.c0{opacity:1;}.c1{opacity:0;}text{font-size:16px;}</style></defs>\\\",d=function(x,y){return Math.abs(x-r[0])+Math.abs(y-r[1]);},max=1; for (var i=0;i<s[0];i++)for (var j=0;j<s[1];j++){max=Math.max(max,d(i,j)); } for (var i=0;i<s[0];i++)for (var j=0;j<s[1];j++) { var dd=(max-d(i,j))/max; ret+=\\\"<rect x='\\\"+(o[0]+i*t)+\\\"' y='\\\"+(o[1]+j*t)+\\\"' width='\\\"+(t)+\\\"' height='\\\"+(t)+\\\"' style='fill:rgb(\\\"+Math.floor(255*dd)+\\\",\\\"+Math.floor(255*(1-dd))+\\\",0);stroke:black;stroke-width:1.4;'/>\\\";}ret+=\\\"<circle cx='\\\"+(o[0]+(r[0]+0.5)*t)+\\\"' cy='\\\"+(o[1]+(r[1]+0.5)*t)+\\\"' r='\\\"+(t/2.5)+\\\"' style='fill:yellow;' class='\\\"+(r[0]*s[1]+r[1])+\\\"'/>\\\";for (var i=0;i<s[0];i++)for (var j=0;j<s[1];j++){ret+=\\\"<rect x='\\\"+(o[0]+i*t+0.5)+\\\"' y='\\\"+(o[1]+j*t+0.5)+\\\"' width='\\\"+(t-1)+\\\"' height='\\\"+(t-1)+\\\"' class='a' style='fill:gray;'/>\\\"; } return {\\\"data\\\":ret+\\\"</svg>\\\"}; }" }],"states":{ "nb":2, "class":["c0","c1"]},"loop":false,"class":"search","onclick":"function($this,_elt,id){var nb=0; for (var i in _elt){if (_elt[i].state) { nb++;}} if (!_elt[id].state) { nb++; } var p=parseInt($this.find('svg circle').attr('class')); if (_elt[p].state==0) { $this.find('#label').html(nb); } return (_elt[p].state==0); }","scorefct":"function($this,_elt){var nb=0; for (var i in _elt){if (_elt[i].state) { nb++;}} var p=parseInt($this.find('svg circle').attr('class')), w=0; if (_elt[p].state==0) { w=5;} w+=Math.floor(nb/Math.sqrt(_elt.length)); return w; }","number":3]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Cliquez sur les carrés gris pour retrouver le rond jaune. Plus vous êtes proches et plus la couleur devient rouge.","label":"0"}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>game</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>g01</dct:alternative>
+    </rdf:Description>
+
 </rdf:RDF>

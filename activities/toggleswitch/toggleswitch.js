@@ -305,16 +305,20 @@
                 var $this   = $(this) , settings = helpers.settings($this);
                 if (settings.interactive) {
                     settings.interactive = false;
-                    var result  = "";
                     var wrongs  = 0;
-                    for (var i=0; i<settings.current.elts.length; i++) {
-                        result+=settings.current.elts[i].state;
-                        if(settings.current.result.length<i || settings.current.elts[i].state!=settings.current.result[i]) {
-                            wrongs++;
-                            settings.current.elts[i].state = -1;
-                            helpers.refresh($this, settings.current.elts[i]);
+                    if (settings.scorefct) { wrongs = eval('('+settings.scorefct+')')($this, settings.current.elts); }
+                    else {
+                        for (var i in settings.current.elts) {
+                            if(!settings.current.result || settings.current.result.length<i ||
+                                settings.current.elts[i].state!=settings.current.result[i]) {
+                                wrongs++;
+                                settings.current.elts[i].state = -1;
+                            }
                         }
                     }
+                    
+                    for (var i in settings.current.elts) { helpers.refresh($this, settings.current.elts[i]); }
+
                     var value = wrongs?"wrong":"good";
                     $this.find("#submit").addClass(value);
                     settings.wrongs+=wrongs;
