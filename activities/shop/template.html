@@ -11,6 +11,33 @@
             <div id="client07" class="dealer"><img src="res/img/ppvc/lizzie01.svg"/></div>
             <div id="client08" class="dealer"><img src="res/img/ppvc/lottie01.svg"/></div>
         </div>
+        <div id="psketchbook" class="pstack">
+            <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.0" width="100%" height="100%" viewBox="0 0 640 640" style="display:inline"><defs><style>path {stroke:black;fill:none;stroke-width:2;}circle {fill:black;}</style></defs></svg>
+            <div id="clear" ontouchstart="$(this).closest('.shop').shop('clear');event.preventDefault();event.stopPropagation();"
+                            onmousedown="$(this).closest('.shop').shop('clear');event.stopPropagation();">
+                <img src="res/img/icon/reload.svg"/></div>
+        </div>
+
+        <div id="pinvoice" class="pstack"><div>
+            <div class="header">
+                <div id="slabel" class="label">Produit</div>
+                <div id="sprice" class="price">Prix</div>
+                <div id="squantity" class="quantity">Quantité</div>
+                <div id="stotal" class="total">Total</div>
+            </div>
+            <div id="content"></div>
+            <div class="footer">
+                <div class="line">
+                    <div id="stotal" class="total">Total</div>
+                    <div class="cell a">0</div>
+                </div>
+            </div>
+            <div id="svalid" ontouchstart="$(this).closest('.shop').shop('confirm');event.preventDefault();"
+                        onclick="$(this).closest('.shop').shop('confirm');"><div><img src="res/img/icon/valid.svg"/></div></div>
+        </div></div>
+
+        <div id="clientsales"></div>
+
         <div id="pwallet" class="panel wallet pstack"><div></div></div>
         <div id="pchange" class="panel wallet pstack"><div><div id="pmask"></div></div></div>
         <div id="pmoney" class="panel wallet pstack"><div>
@@ -71,23 +98,6 @@
             <div class="footer f"></div>
         </div></div>
 
-        <div id="pinvoice" class="pstack"><div>
-            <div class="header">
-                <div id="slabel" class="label">Produit</div>
-                <div id="sprice" class="price">Prix</div>
-                <div id="squantity" class="quantity">Quantité</div>
-                <div id="stotal" class="total">Total</div>
-            </div>
-            <div id="content"></div>
-            <div class="footer">
-                <div class="line final">
-                    <div id="stotal" class="total">Total</div>
-                    <div class="cell">0</div>
-                </div>
-            </div>
-            <div id="svalid" ontouchstart="$(this).closest('.shop').shop('confirm');event.preventDefault();"
-                        onclick="$(this).closest('.shop').shop('confirm');"><div><img src="res/img/icon/valid.svg"/></div></div>
-        </div></div>
 
         <div id="menu">
             <div id="calculator" class="tab" onclick="$(this).closest('.shop').shop('menu','calculator');"
@@ -99,6 +109,9 @@
             <div id="change" class="tab" onclick="$(this).closest('.shop').shop('menu','change');"
                     ontouchstart="$(this).closest('.shop').shop('menu','change');event.preventDefault();" >
                 <img src="res/img/coin/coin1.svg"/></div>
+            <div id="sketchbook" class="tab" onclick="$(this).closest('.shop').shop('menu','sketchbook');"
+                    ontouchstart="$(this).closest('.shop').shop('menu','sketchbook');event.preventDefault();" >
+                <img src="res/img/svginventoryicons/book/sketchbook01.svg"/></div>
             <div id="target" class="anim12"><div class="running"><img src="res/img/effects/target01.svg"/></div></div>
         </div>
 

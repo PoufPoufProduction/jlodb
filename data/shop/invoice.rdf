@@ -2,6 +2,8 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dct="http://purl.org/dc/terms/">
 
+    <!-- HANDLE INVOICE AND GET MONEY FROM CLIENTS -->
+
     <rdf:Description>
         <dct:identifier>001</dct:identifier>
         <dct:title xml:lang="fr-FR">Encaisser un premier client [10].</dct:title>
@@ -43,7 +45,7 @@
 
     <rdf:Description>
         <dct:identifier>051</dct:identifier>
-        <dct:title xml:lang="fr-FR">Valider une facture pouvant aller jusqu'à 20 sous et encaisser 3 clients.</dct:title>
+        <dct:title xml:lang="fr-FR">Valider une facture dont la valeur entière est inférieure à 20 sous et encaisser 3 clients.</dct:title>
         <dct:description><![CDATA["data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"invoice","here":"client01","value":"invoice"},{"type":"sell","wallet":"sell","here":"client01"},{"type":"invoice","here":"client03","value":"invoice"},{"type":"sell","wallet":"sell","here":"client03"},{"type":"invoice","here":"client05","value":"invoice"},{"type":"sell","wallet":"sell","here":"client05"},{"type":"dialog","text":"d99","from":"owner"}],"wallet":[0,0,0,0,0,0,0,0,0,0,0,0,0],"menu":["wallet","calculator"],"invoice":"function(){return [[Math.floor(Math.random()*20),1,1+Math.floor(Math.random()*20),1]]; }","sell":"function(_args){var valc=[100,50,20,10,5,2,1,0.5,0.2,0.1,0.05,0.02,0.01],v=_args.value,ret=[];for(var i in valc){var nb=0;if (i>=6 || Math.random()<0.5) { while(v>=valc[i]){nb++;v-=valc[i];} } ret.push(nb); };return ret.reverse()}"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Voici venir de nouveaux clients.\\nA vous de jouer !"],"d99":["C'était très bien !"]}]]></dct:description>
         <dct:extent>2</dct:extent>
@@ -51,7 +53,34 @@
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>001</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+    </rdf:Description>
+
+    
+    <rdf:Description>
+        <dct:identifier>101</dct:identifier>
+        <dct:title xml:lang="fr-FR">Facturer et encaisser 3 clients [2.3,3.35,2.19].</dct:title>
+        <dct:description><![CDATA["data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"invoice","here":"alea","value":[[21,1,2.3,1]]},{"type":"sell","wallet":[0,0,0,1,1,0,2,0,0,0,0,0,0],"here":"same"},{"type":"invoice","here":"alea","value":[[23,1,3.35,1]]},{"type":"sell","wallet":[0,0,1,3,0,0,1,1,0,0,0,0,0],"here":"same"},{"type":"invoice","here":"alea","value":[[20,1,2.19,1]]},{"type":"sell","wallet":[0,2,1,1,0,2,1,0,0,0,0,0,0],"here":"same"},{"type":"dialog","text":"d99","from":"owner"}],"wallet":[0,0,0,0,0,0,0,0,0,0,0,0,0],"menu":["wallet","calculator"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Continuez de reporter le montant du\\nproduit dans la case 'total'. Faites\\nattention car désormais ce montant\\ncomporte des centimes."],"d99":["C'était très bien !"]}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>game</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
         <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>151</dct:identifier>
+        <dct:title xml:lang="fr-FR">Valider une facture dont la valeur décimale est inférieure à 10 sous et encaisser 3 clients.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"invoice","here":"client01","value":"invoice"},{"type":"sell","wallet":"sell","here":"client01"},{"type":"invoice","here":"client03","value":"invoice"},{"type":"sell","wallet":"sell","here":"client03"},{"type":"invoice","here":"client05","value":"invoice"},{"type":"sell","wallet":"sell","here":"client05"},{"type":"dialog","text":"d99","from":"owner"}],"wallet":[0,0,0,0,0,0,0,0,0,0,0,0,0],"menu":["wallet","calculator"],"invoice":"function(){return [[20+Math.floor(Math.random()*20),1,Math.floor(Math.random()*1000+1)/100,1]]; }","sell":"function(_args){var valc=[10000,5000,2000,1000,500,200,100,50,20,10,5,2,1],v=Math.round(_args.value*100),ret=[];for(var i in valc){var nb=0;if (i>=12 || Math.random()<0.8) { while(v>=valc[i]){nb++;v-=valc[i];} } ret.push(nb); };return ret.reverse()}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Voici venir de nouveaux clients.\\nA vous de jouer !"],"d99":["C'était très bien !"]}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>game</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
     </rdf:Description>
 
 </rdf:RDF>

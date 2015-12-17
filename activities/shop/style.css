@@ -72,6 +72,28 @@
 .shop #menu .tab.s                      { background-color:rgba(255,0,0,0.8); }
 .shop #menu #target                     { position:absolute; left:0; }
 
+/* SKETCHBOOK PANEL */
+.shop #psketchbook                 { width:16em; height:16em;  background-color:white; display:none; left:2%; top:1%; position:absolute;
+                                    border:2px solid black; }
+.shop #psketchbook #clear           { font-size:2em; width:1em; height:1em; position:absolute; top:7em; left:7em; cursor:pointer; }
+
+/* SALES */
+.shop .sales                    { width:4.5em; height:2em; background-color:rgba(255,255,220,0.9); border:2px solid black;
+                                  border-radius:.25em; position:absolute; top:88%; cursor:move; }
+.shop .sales .icon              { font-size:2em; float:left; }
+.shop .sales .label             { font-size:.9em; float:right; color:#A00; font-weight:bold; margin-right:.2em; }
+.shop .sales .label:before      { content:"-"; }
+.shop .sales .label:after       { content:"☆"; }
+.shop .sales .label.type0:after { content:"%"; }
+.shop .sales .cond              { clear:right; float:right; width:3em; background-color:#0A0; font-size:.6em;
+                                  border-radius:.5em 0 0 .5em; text-align:center; color:white; }
+.shop .sales .cond:before       { content:">"; }
+.shop .sales .cond.s:after      { content:"☆"; }
+.shop .sales.ui-draggable-dragging  { opacity:0.7; cursor:none !important; }
+
+.shop #clientsales              { position:absolute; width:5em; height:6.9em; top:48%; left:3%; overflow:visible; display:none;
+                                  background-color:rgba(255,255,255,0.4); border-radius:.2em; border:2px solid black; }
+
 /* INVOICE PANEL */
 .shop #pinvoice                 { width:7.5em; background-color:white; display:none; left:70%; top:2%; position:absolute; padding:.1em;
                                   background-image:url("../../res/img/background/book02.svg"); background-repeat:repeat;
@@ -80,22 +102,38 @@
 .shop #pinvoice .header>div     { float:left; width:4em; text-align:center;}
 .shop #pinvoice .footer         { margin-top:.2em; }
 .shop #pinvoice .line           { margin:.1em 0 0 0; background-color:rgba(0,140,255,0.2); }
+.shop #pinvoice .line.s         { background-color:rgba(150,150,150,0.2); }
+.shop #pinvoice .line.s>*       { opacity:0.7; }
+.shop #pinvoice .line.over      { background-color:rgba(255,140,140,0.6) !important; }
 .shop #pinvoice .line>div       { float:left; text-align:center; }
 .shop #pinvoice .line .label    { width:1em; height:1em; font-size:1.5em; }
 .shop #pinvoice .line .price    { font-size:0.6em; width:2.6em; margin-top:.5em; }
-.shop #pinvoice .line .quantity { font-size:0.7em; width:2.6em; margin-top:.4em; margin-left:.2em; background-color:red;
+.shop #pinvoice .line .quantity { font-size:0.6em; width:3em; margin-top:.6em; margin-left:.2em; background-color:red;
                                   border-radius:.5em; color:white; }
+.shop #pinvoice .line .quantity.hide    { opacity: 0; }
 .shop #pinvoice .line .quantity:before { content:"×"; }
-.shop #pinvoice .line .cell     { font-size:0.6em; margin-left:.2em; margin-top:.5em; width:3.5em; cursor:pointer; }
-.shop #pinvoice .line .cell.s   { background-color:yellow; cursor:auto; }
-.shop #pinvoice .line .cell.highlight { background-color:red; }
-.shop #pinvoice .line .total    { color:#256; font-size:.8em; width:6.1em; text-align:right; margin-right:.2em; }
+.shop #pinvoice .cell           { font-size:0.6em; margin-left:.2em; margin-top:.5em; width:3.5em; }
+.shop #pinvoice .cell.a         { cursor:pointer; }
+.shop #pinvoice .cell.s         { background-color:yellow; cursor:auto; }
+.shop #pinvoice .cell.highlight { background-color:red; }
+.shop #pinvoice .total          { color:#256; font-size:.8em; width:6.1em; text-align:right !important; margin-right:.2em; }
 .shop #pinvoice .footer .cell   { margin-top:0.1em; }
 .shop #pinvoice #svalid.s       { opacity:1; cursor:pointer; }
 .shop #pinvoice #svalid         { height:1em; font-size:1em; opacity:0.2; background-color:rgba(0,0,0,0.1); padding:.1em; margin-top:.1em; }
 .shop #pinvoice #svalid>div     { width:1em; height:1em; margin:0 auto;  }
 .shop #pinvoice #svalid.good    { background-color:rgba(0,255,0,0.4); }
-.shop #pinvoice #svalid.wrong   { background-color:rgba(255,0,0,0.4); }
+.shop #pinvoice .wrong          { background-color:rgba(255,0,0,0.4) !important; }
+
+
+.shop #pinvoice .lineplus .sale { background-color:rgba(150,150,150,0.2); }
+.shop #pinvoice .lineplus .sale>* { float:left; }
+.shop #pinvoice .lineplus .sale .icon   { background-color:gray; border-radius:0 0.5em 0.5em 0; cursor:pointer; }
+.shop #pinvoice .lineplus .sale .label  { width:4em; }
+.shop #pinvoice .lineplus .sale .label>div  { margin-left:3.6em; background-color:#0A0; color:white; border-radius:0.5em;
+                                             font-size:0.6em; width:3em; margin-top:.2em; text-align:center;}
+.shop #pinvoice .lineplus .cell   { margin-top:0.2em !important; }
+.shop #pinvoice .lineplus .line { margin-top:0; }
+
 
 
 /* CALCULATOR PANEL */

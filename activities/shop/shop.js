@@ -19,7 +19,34 @@
     var cc = [ 0.9, 1.1, 1.3, 1.1, 1.5, 2, 1.7, 2, 0.5, 0.5, 0.5, 0.5, 1];
     var change = [ [[0,1]], [[0,2]], [[0,1],[1,2]], [[2,2]], [[3,2]], [[3,1],[4,2]], [[5,2]], [[6,2]], [[6,1],[7,2]], [[8,2]],
                    [[9,2]], [[9,1],[10,2]], [[11,2]] ];
-    var products = [ "vegetable/banana01","vegetable/strawberry01","vegetable/cherry02","vegetable/tomato01","vegetable/pepper01" ];
+    var products = [
+                    // BY QUANTITY (x20)
+                    "pencil/blue01","pencil/brush02","pencil/corrector02","pencil/corrector01","pencil/eraser01",
+                    "misc/binder01","pencil/marker01","misc/salt01","pencil/marker01","pencil/brush03",
+                    "pencil/brush04","pencil/pencil02","pencil/pencil04","pencil/red02","tool/ruler01",
+                    "pencil/pen03","tool/compass02","tool/envelope01","tool/scissors01","tool/scissors02",
+
+                    // BY WEIGHT (x20)
+                     "vegetable/apple01","vegetable/apricot01","vegetable/kiwi01","vegetable/pear01","vegetable/pepper02",
+                     "vegetable/banana01","vegetable/strawberry01","vegetable/cherry02","vegetable/tomato01","vegetable/pepper01",
+                     "vegetable/radish01","vegetable/pepper03",
+                        // TO complete
+                        "vegetable/vanilla01","potion/blue01","potion/blue02","potion/green03","potion/yellow04",
+                        "potion/white01","potion/red03","potion/purple02",
+                    ];
+
+    
+    var n = {
+        comma : ',',
+        toString:function(_val, _nbdec) {
+            var dec = Math.floor((_val - Math.floor(_val))*Math.pow(10,_nbdec)+0.1), txt = "";
+            if (dec) { txt = n.comma+(dec<10?'0':'')+dec; }
+            return Math.floor(_val)+txt;
+        },
+        toFloat:function(_val) { return parseFloat(_val.replace(n.comma,".")); },
+        price: function(_val) { return n.toString(_val, 2); },
+        qty: function(_val) { return n.toString(_val,3); }
+    };
 
     // private methods
     var helpers = {
@@ -79,18 +106,93 @@
 
                 // Send the onLoad callback
                 if (settings.context.onload) { settings.context.onload($this); }
-
                 $this.css("font-size", Math.floor($this.height()/12)+"px");
-/*
-                $this.find("#pcalculator").draggable({containment:$this.find("#board"), stack:".pstack", handle:"#screen"});
-                $this.find(".wallet").draggable({containment:$this.find("#board"), stack:".pstack"});
-                $this.find("#pbill").draggable({containment:$this.find("#board"), stack:".pstack"});
-*/
 
                 if (settings.menu) {
                     $this.find("#menu .tab").hide();
                     for (var i in settings.menu) { $this.find("#menu #"+settings.menu[i]).show(); }
                 }
+
+                // sketchbook
+                settings.sketchbook.$svg
+
+                var elt=$this.find("#psketchbook>svg");
+                elt.svg();
+                settings.sketchbook.svg = elt.svg('get');
+                settings.sketchbook.g = settings.sketchbook.svg.group();
+
+                $this.find("#psketchbook").bind("touchstart mousedown", function(_event) {
+                    var e = (_event && _event.originalEvent &&
+                             _event.originalEvent.touches && _event.originalEvent.touches.length)?
+                             _event.originalEvent.touches[0]:_event;
+
+                    settings.sketchbook.first = [ e.clientX, e.clientY ];
+                    settings.sketchbook.last = [ e.clientX, e.clientY ];
+                    settings.sketchbook.path = settings.sketchbook.svg.createPath();
+                    settings.sketchbook.path = settings.sketchbook.svg.path( settings.sketchbook.g,
+                      settings.sketchbook.path.move(  
+                        (settings.sketchbook.last[0] - settings.sketchbook.offset[0])*settings.sketchbook.ratio,
+                        (settings.sketchbook.last[1] - settings.sketchbook.offset[1])*settings.sketchbook.ratio ) );
+
+                    settings.sketchbook.svg.circle( settings.sketchbook.g,
+                        (settings.sketchbook.last[0] - settings.sketchbook.offset[0])*settings.sketchbook.ratio,
+                        (settings.sketchbook.last[1] - settings.sketchbook.offset[1])*settings.sketchbook.ratio, 1.5);
+                    
+                    _event.preventDefault();
+                });
+
+                $this.bind("touchend mouseup", function(_event) {
+                    if (settings.sketchbook.path) {
+                        var e = (_event && _event.originalEvent &&
+                                 _event.originalEvent.touches && _event.originalEvent.touches.length)?
+                                 _event.originalEvent.touches[0]:_event;
+                        settings.sketchbook.path = 0;
+                        settings.sketchbook.svg.circle( settings.sketchbook.g,
+                            (settings.sketchbook.last[0] - settings.sketchbook.offset[0])*settings.sketchbook.ratio,
+                            (settings.sketchbook.last[1] - settings.sketchbook.offset[1])*settings.sketchbook.ratio, 1.5);
+                        _event.preventDefault();
+                    }
+                });
+
+                $this.bind("mousemove touchmove", function(_event) {
+                    if (settings.sketchbook.path) {
+                        var e = (_event && _event.originalEvent &&
+                             _event.originalEvent.touches && _event.originalEvent.touches.length)?
+                             _event.originalEvent.touches[0]:_event;
+
+                        if (Math.abs(settings.sketchbook.last[0] - e.clientX)+Math.abs(settings.sketchbook.last[1] - e.clientY)>5) {
+
+                            settings.sketchbook.last = [ e.clientX, e.clientY ];
+                            $(settings.sketchbook.path).attr({d:
+                                $(settings.sketchbook.path).attr("d")+" L "+
+                                    (e.clientX - settings.sketchbook.offset[0])*settings.sketchbook.ratio + "," +
+                                    (e.clientY - settings.sketchbook.offset[1])*settings.sketchbook.ratio });
+                        }
+                        _event.preventDefault();
+                    }
+                });
+                    
+                // SALES
+                if (settings.sales) {
+                    for (var i in settings.sales) {
+                        $this.find("#board").append(helpers.sale.create($this, i, settings.sales[i], { left:(21.5-i*5)+"em" })); }
+                    $this.find("#board .sales").draggable({helper:"clone"});
+                }
+
+                $this.find("#pinvoice .footer .line").droppable({accept:".sales.ss2",
+                    over: function(event, ui) { $(this).addClass("over");  },
+                    out: function(event, ui) { $(this).removeClass("over"); },
+                    drop:function(event, ui) {
+                        var $this = $(this).closest(".shop"),settings = helpers.settings($this);
+                        $(this).removeClass("over");
+                        if (settings.data[settings.it].type=="invoice") {
+                            var id = parseInt($(ui.draggable).attr("id").substr(1));
+                            var sale = (id<2?settings.sales[id]:settings.data[settings.it].sales[id-2]);
+                            helpers.sale.add($this, this, sale);
+                            $this.find("#pinvoice #svalid").removeClass("s");
+                        }
+                    }
+                });
 
                 // Droppable wallet
                 $this.find(".wallet").droppable({greedy:true, accept:".a",
@@ -150,9 +252,45 @@
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
+        sale: {
+            create: function($this, _id, _sale, _args) {
+                var args="";
+                for (var i in _args) { args += i+":"+_args[i]+";"}
+                var html="<div id='s"+_id+"' class='sales ss"+(_sale.product!=-1?1:2)+"' style='"+args+"'>";
+                if (_sale.product!=-1) {
+                    html+="<div class='icon'><img src='res/img/svginventoryicons/"+products[_sale.product]+".svg'/></div>";
+                }
+                html+="<div class='label type"+_sale.type+"'>"+_sale.value+"</div>";
+                if (_sale.cond) { html+="<div class='cond"+(_sale.product==-1?" s":"")+"'>"+_sale.cond+"</div>"; }
+                html+="</div>";
+                return html;
+            },
+            add: function($this, _this, _sale) {
+                if ($(_this).hasClass("s")) { $(_this).next().detach(); $(_this).removeClass("s");}
+
+                var html="";
+                html+="<div class='lineplus'><div class='sale'>";
+                html+="<div class='icon' ontouchstart=\"$(this).closest('.shop').shop('del',this);event.preventDefault();\" "+
+                      "onclick=\"$(this).closest('.shop').shop('del',this);\"><img src='res/img/icon/cancel2.svg'/></div>";
+                if (_sale.type==0) { html+="<div class='label'><div>"+_sale.value+"</div></div><div class='cell a'></div></div>"; }
+                else { html+="<div class='label'>&nbsp;</div><div class='cell fixed'>"+_sale.value+"</div></div>"; }
+                html+="<div class='line'><div class='total'>&nbsp;</div><div class='cell a'></div></div></div>";
+
+                $(html).insertAfter($(_this));
+                $(_this).next().find(".cell.a").each(function(){ helpers.cell.create($this, $(this));  });
+                $(_this).addClass("s");
+            }
+        },
         whoishere: {
             run : function ($this, _callback) {
                 var settings = helpers.settings($this);
+                // HANDLE "alea" AND "same" VALUES
+                if (settings.data[settings.it].here) {
+                    if (settings.data[settings.it].here =="alea") {
+                        settings.data[settings.it].here = "client0"+Math.floor(Math.random()*8+1);
+                    }
+                    else if (settings.data[settings.it].here =="same") { settings.data[settings.it].here = settings.here; }
+                }
                 if (settings.here && settings.here!=settings.data[settings.it].here) {
                     $this.find("#people #"+settings.here).animate({left:"-1.5em"},1000,
                         function() { $(this).hide(); helpers.whoishere.enter($this,_callback) } );
@@ -201,8 +339,9 @@
                 if (typeof(data.wallet)=="string") {
                     if (data.wallet.indexOf("function")==-1) { gen = settings[data.wallet]; } else { gen = data.wallet; }
                 }
+
                 if (gen) { data.wallet = eval('('+gen+')')(
-                    {id:settings.it,value:parseFloat($this.find("#pinvoice .final .cell").html())});
+                    {id:settings.it,value:n.toFloat($this.find("#pinvoice .cell").last().html())});
                 }
 
                 switch(data.type) {
@@ -223,35 +362,62 @@
                         break;
                     case "invoice" :
                         $this.find("#pinvoice #content").html("");
+
+                        if (data.sales) {
+                            $this.find("#clientsales").html("").show();
+                            for (var i in data.sales) {
+                                $this.find("#clientsales").append(helpers.sale.create($this, parseInt(i)+2, data.sales[i],
+                                    { top:(0.2+i*2.2)+"em", left:"0.2em" })); }
+                            $this.find("#clientsales .sales").draggable({helper:"clone"});
+                        }
+
                         for (var i in data.value) {
                             var d = data.value[i];
                             d[0] = d[0]%products.length;
-                            var html="<div class='line'>";
+                            var hide = ((d.length>3) && (d[3]&4))?true:false;
+                            var html="<div class='line' id='p"+i+"'>";
                             html+="<div class='label'><img src='res/img/svginventoryicons/"+products[d[0]]+".svg'/></div>";
-                            html+="<div class='price'>"+d[1]+"</div>";
-                            html+="<div class='quantity'>"+d[2]+"</div>";
+                            html+="<div class='price'>"+(hide?"":d[1])+"</div>";
+                            html+="<div class='quantity "+(hide?"hide":"")+"'>"+n.qty(d[2])+"</div>";
                             var vClass='cell', vVal = '';
-                            if ((d.length>3) && (d[3]&1)) { vClass+=' fixed'; vVal = (d[1]*d[2]).toString().replace('.',','); }
-                            if ((d.length>3) && (d[3]&2)) { vClass+=' highlight'; }
+                            if ((d.length>3) && (d[3]&1)) { vClass+=' fixed'; vVal = n.price(d[1]*d[2]); } else
+                            if ((d.length>3) && (d[3]&2)) { vClass+=' highlight'; } else
+                                                          { vClass+=' a'; }
                             html+="<div class='"+vClass+"'>"+vVal+"</div></div>";
+
                             $this.find("#pinvoice #content").append(html);
                         }
                         if (data.total) {
-                            $this.find("#pinvoice .final .cell").html(data.total).addClass("fixed");
+                            $this.find("#pinvoice .cell").last().html(data.total).addClass("fixed");
                             $this.find("#pinvoice #svalid").addClass("s");
                         }
                         else {
-                            $this.find("#pinvoice .final .cell").html("").removeClass("fixed");
+                            $this.find("#pinvoice .cell").last().html("").removeClass("fixed");
                             $this.find("#pinvoice #svalid").removeClass("s");
                         }
                         $this.find("#pinvoice .cell").each(function() {
                             if (!$(this).hasClass("fixed")) { helpers.cell.create($this, this); }
                         });
                         helpers.fx.show($this, "invoice");
+                        $this.find("#pinvoice #content .line").droppable({accept:".sales.ss1",
+                            over: function(event, ui) { $(this).addClass("over");  },
+                            out: function(event, ui) { $(this).removeClass("over"); },
+                            drop:function(event, ui) {
+                                var $this = $(this).closest(".shop"),settings = helpers.settings($this);
+                                $this.find("#pinvoice #content .line").removeClass("over");
+                                if ( settings.data[settings.it].type=="invoice") {
+                                    var id = parseInt($(ui.draggable).attr("id").substr(1));
+                                    var sale = (id<2?settings.sales[id]:settings.data[settings.it].sales[id-2]);
+                                    if (sale.product == settings.data[settings.it].value[parseInt($(this).attr("id").substr(1))][0]) {
+                                        helpers.sale.add($this, this, sale);
+                                    }
+                                }
+                            }
+                        });
                         break;
                     case "sell":
                         var value = helpers.fill($this, $this.find("#pmoney>div"), data.wallet, true);
-                        data.value = value - parseFloat($this.find("#pinvoice .final .cell").html());
+                        data.value = value - n.toFloat($this.find("#pinvoice .cell").last().html());
                         helpers.fx.show($this, "money");
                         break;
                         
@@ -290,15 +456,18 @@
             create: function($this, _this) {
                 $(_this).unbind("click touchstart");
                 $(_this).bind("click touchstart", function(event) {
-                    if ($(this).hasClass("s")) { $(this).removeClass("s"); }
-                    else { $this.find("#pinvoice .cell").removeClass("s"); $(this).addClass("s");
-                           helpers.fx.show($this,"calculator"); }
+                    var $this=$(this).closest('.shop'), settings = helpers.settings($this);
+                    if (settings.data[settings.it].type=="invoice") {
+                        if ($(this).hasClass("s")) { $(this).removeClass("s"); }
+                        else { $this.find("#pinvoice .cell").removeClass("s"); $(this).addClass("s");
+                               helpers.fx.show($this,"calculator"); }
+                    }
                     event.preventDefault();
                 });
             },
             next: function($this) {
                 var found = false;
-                $this.find("#pinvoice .cell").each(function() {
+                $this.find("#pinvoice .cell.a").each(function() {
                     if ($(this).hasClass("s"))  { $(this).removeClass("s").removeClass("highlight"); found = true; } else
                     if (found)                  { $(this).addClass("s"); found = false; }
                 });
@@ -313,6 +482,7 @@
                     helpers.fx.hide($this,"wallet");
                     helpers.fx.hide($this,"calculator");
                     helpers.fx.hide($this,"invoice");
+                    $this.find("#clientsales").html("").hide();
                     break;
             }
 
@@ -406,14 +576,17 @@
                     settings.calculator+=(settings.calculator.length?"":"0")+"."; } }
             else if (value=="c") { settings.calculator=""; }
             else if (value=="v") {
-                $this.find("#pinvoice .cell.s").html(settings.calculator);
+                $this.find("#pinvoice .cell.s").html(n.price(settings.calculator));
                 helpers.cell.next($this);
                 settings.calculator="";
-                $this.find("#pinvoice #svalid").toggleClass("s", ($this.find("#pinvoice .footer .cell").html().length!=0) );
+                $this.find("#pinvoice #svalid").toggleClass("s", ($this.find("#pinvoice .footer .cell").last().html().length!=0) );
             }
             else if (settings.calculator.length<6) {
-                if (value=="0" && settings.calculator.length && settings.calculator[0]=='0') {}
-                else { settings.calculator+=value.toString(); }
+                if (value=="0" && settings.calculator.length<2 && settings.calculator[0]=='0') {}
+                else {
+                    if (settings.calculator.length==1 && settings.calculator[0]=='0') { settings.calculator=""; }
+                    settings.calculator+=value.toString();
+                }
             }
             $this.find("#screen").html(settings.calculator.length?settings.calculator:"0");
         },
@@ -460,7 +633,8 @@
                     here            : "",
                     text            : { timerid : 0, value:{}, page:0, count: 0, callback:0},
                     coins           : { wallet: 0 },
-                    score           : 5
+                    score           : 5,
+                    sketchbook      : { svg:0, g:0, path:0, ratio:1,  last:[0,0], offset:[0,0]}
                 };
 
                 return this.each(function() {
@@ -498,6 +672,10 @@
                 } else {
                     if (_id=="calculator") { settings.calculator=""; }
                     helpers.fx.show($this, _id);
+                    if (_id=="sketchbook") {
+                        settings.sketchbook.ratio = 640/$this.find("#psketchbook").width();
+                        settings.sketchbook.offset = [ $this.find("#psketchbook").offset().left, $this.find("#psketchbook").offset().top];
+                    }
                 }
             },
             key: function(value, _elt) {
@@ -507,21 +685,120 @@
                 }
                 helpers.key($(this), value, false);
             },
+            clear: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+                $(settings.sketchbook.g).empty();
+            },
+            del: function(_elt) {
+                var $this = $(this) , settings = helpers.settings($this);
+                var $sale = $(_elt).parent().parent();
+                if ( settings.data[settings.it].type=="invoice") {
+                    $sale.prev().removeClass("s");
+                    $sale.detach();
+                }
+            },
             bubbles: function() { helpers.text.click($(this)); },
             valid: function() { helpers.money($(this)); },
             confirm: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                if ($this.find("#pinvoice #svalid").hasClass("s")) {
-                    $this.find("#pinvoice #svalid").addClass("good");
+                if (settings.data[settings.it].type=="invoice" && $this.find("#pinvoice #svalid").hasClass("s")) {
+                    var good=true;
 
-                    var vVal = parseFloat($this.find("#pinvoice .final .cell").html());
-                    var vTr = settings.locale.tr1;
-                    if (Math.floor(vVal)!=vVal) { vTr = settings.locale.tr1; }
-                    var vTt = vTr[Math.floor(Math.random()*vTr.length)];
-                    vTt = vTt.replace("X",Math.floor(vVal).toString()).replace("Y",((vVal*100)%10).toString());
+                    // GLOBAL SALES / SALES BY PRODUCT
+                    var sg = [], sp = [];
+                    if (settings.sales) for (var i in settings.sales) {
+                        var s = settings.sales[i]; if (s.product == -1) { sg.push(s) } else { sp.push(s); }
+                    }
+                    if (settings.data[settings.it].sales) for (var i in settings.data[settings.it].sales) {
+                        var s = settings.data[settings.it].sales[i]; if (s.product == -1) { sg.push(s) } else { sp.push(s); }
+                    }
 
-                    helpers.text.run($this, { id:"owner", dialog:[vTt]},
-                        function(){ helpers.next($this); } );
+                    // CHECK PRODUCT SALES
+                    var sby = [], total = 0, reduc = 0;
+                    for (var i in settings.data[settings.it].value) {
+                        var pp = settings.data[settings.it].value[i];
+                        var ss=[pp[1]*pp[2],0];
+                        for (var i in sp) {
+                            if (sp[i].product==pp[0] && (!sp[i].cond || sp[i].cond<ss[0])) {
+                                var val = sp[i].type?sp[i].value:ss[0]*sp[i].value/100;
+                                if (val>=ss[0]) { val = 0; }
+                                if (ss[1]<val) { ss[1] = val; }
+                            }
+                        }
+                        total += ss[0];
+                        reduc += ss[1];
+                        sby.push(ss);
+                    }
+                    var max = 0;
+                    for (var i in sg) if (!sg[i].cond || sg[i].cond<total) {
+                        var val = sg[i].type?sg[i].value:total*sg[i].value/100;
+                        if (val>=total) { val = 0; }
+                        if (max<val) { max = val; }
+                    }
+
+                    var global = (max>reduc);
+                    
+                    //alert(sby+" "+total+" : "+reduc+" / "+max+" = "+global);
+
+                    // CHECK PRODUCT LINES
+                    for (var i in settings.data[settings.it].value) {
+                        var pp = settings.data[settings.it].value[i];
+                        var ss = sby[i];
+                        var $line = $this.find("#pinvoice .line#p"+i);
+                        var w = ( n.toFloat($line.find(".quantity").html())!=pp[2] ||
+                                  n.toFloat($line.find(".cell").html()) != ss[0]);
+                        var wplus = false;
+
+                        if ($line.hasClass("s")) {
+                            if (global || !ss[1]) { w = true; } else {
+                                // CHECK THE SALE
+                                var $lineplus = $line.next();
+                                if (n.toFloat($lineplus.find(".sale .cell").html()) != ss[1]) {
+                                    wplus = true; $lineplus.find(".sale").addClass("wrong");
+                                }
+                                if (n.toFloat($lineplus.find(".line .cell").html()) != ss[0] - ss[1]) {
+                                    wplus = true; $lineplus.find(".line").addClass("wrong");
+                                }
+                            }
+                        }
+                        else { if (!global && ss[1]) { w = true; } }
+
+                        if (w) { $line.addClass("wrong"); }
+                        good = good & !w & !wplus;
+                    }
+                    // CHECK TOTAL
+                    var $line = $this.find("#pinvoice .footer>.line");
+                    if (n.toFloat($line.find(".cell").html()) != total - (global?0:reduc)) { good = false; $line.addClass("wrong"); }
+                    if ($line.hasClass("s")) {
+                        if (global) {
+                            var $lineplus = $line.next();
+                            if (n.toFloat($lineplus.find(".sale .cell").html()) != max) {
+                                good = true; $lineplus.find(".sale").addClass("wrong");
+                            }
+                            if (n.toFloat($lineplus.find(".line .cell").html()) != total - max) {
+                                good = true; $lineplus.find(".line").addClass("wrong");
+                            }
+                        }
+                        else { good = false; $line.addClass("wrong"); }
+                    }
+                    else { if (global) { good = false; $line.addClass("wrong"); } }
+
+                    if (good) {
+                        $this.find("#pinvoice #svalid").addClass("good");
+
+                        var vVal = n.toFloat($this.find("#pinvoice .cell").last().html());
+                        var vTr = settings.locale.tr1;
+                        if (Math.floor(vVal)!=vVal) { vTr = settings.locale.tr2; }
+                        var vTt = vTr[Math.floor(Math.random()*vTr.length)];
+                        vTt = vTt.replace("X",Math.floor(vVal).toString()).replace("Y",(Math.round(vVal*100)%100).toString());
+
+                        helpers.fx.hide($this,"sketchbook");
+
+                        helpers.text.run($this, { id:"owner", dialog:[vTt]}, function(){ helpers.next($this); } );
+                    }
+                    else {
+                        setTimeout(function() { $this.find("#pinvoice .wrong").removeClass("wrong"); },1000);
+                    }
                 }
             }
         };
