@@ -85,8 +85,9 @@
 .shop .sales .label:before      { content:"-"; }
 .shop .sales .label:after       { content:"☆"; }
 .shop .sales .label.type0:after { content:"%"; }
-.shop .sales .cond              { clear:right; float:right; width:3em; background-color:#0A0; font-size:.6em;
+.shop .sales .cond              { clear:right; float:right; width:3em; background-color:#A00; font-size:.6em;
                                   border-radius:.5em 0 0 .5em; text-align:center; color:white; }
+.shop .sales .cond.s            { background-color:#0A0; }
 .shop .sales .cond:before       { content:">"; }
 .shop .sales .cond.s:after      { content:"☆"; }
 .shop .sales.ui-draggable-dragging  { opacity:0.7; cursor:none !important; }
@@ -131,6 +132,7 @@
 .shop #pinvoice .lineplus .sale .label  { width:4em; }
 .shop #pinvoice .lineplus .sale .label>div  { margin-left:3.6em; background-color:#0A0; color:white; border-radius:0.5em;
                                              font-size:0.6em; width:3em; margin-top:.2em; text-align:center;}
+.shop #pinvoice .lineplus .sale .label>div:after { content:"%"; }
 .shop #pinvoice .lineplus .cell   { margin-top:0.2em !important; }
 .shop #pinvoice .lineplus .line { margin-top:0; }
 

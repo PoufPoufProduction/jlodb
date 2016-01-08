@@ -2,6 +2,8 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dct="http://purl.org/dc/terms/">
 
+    <!-- 001-500 : integer values -->
+
     <rdf:Description>
         <dct:identifier>001</dct:identifier>
         <dct:title xml:lang="fr-FR">Appréhender l'activité et payer une première facture [10].</dct:title>
@@ -35,7 +37,7 @@
         <dct:extent>3</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>3</dct:type>
+        <dct:type>2</dct:type>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
         <dct:alternative>001</dct:alternative>
     </rdf:Description>
@@ -48,7 +50,7 @@
         <dct:extent>3</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>3</dct:type>
+        <dct:type>2</dct:type>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
         <dct:alternative>001</dct:alternative>
     </rdf:Description>
@@ -61,39 +63,165 @@
         <dct:extent>3</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>061</dct:identifier>
+        <dct:title xml:lang="fr-FR">Payer quatre factures aléatoires comprises entre 1 et 100 avec un tiroir-caisse en désordre.</dct:title>
+        <dct:description><![CDATA["messy":true,"wallet":[0,0,0,0,0,0,10,10,4,5,6,3,3],"menu":["wallet"],"errratio":2,"data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"dialog","text":"d2","from":"owner"}],"gen":"function(i_){return 1+Math.floor(Math.random()*100);}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Ah là la ! Toute la monnaie dans le\\ntiroir-caisse s'est mélangée...\\nEt voila de nouvelles factures !","Pouvez-vous m'aider ?"],"d2":["Super."],"b1":["N° 2 8392 78 E","Facture","A régler sous huitaine","Total","site : www.facture-poufpouf.org"]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>081</dct:identifier>
+        <dct:title xml:lang="fr-FR">Payer trois factures avec une monnaie réduite [11,42,8].</dct:title>
+        <dct:description><![CDATA["wallet":[0,0,0,0,0,0,0,13,1,1,1,0,0],"menu":["wallet"],"errratio":2,"data":[{"type":"dialog","text":"d1","from":"owner","here":"postman"},{"type":"bill","text":"b1","subtype":"bill2","value":11},{"type":"bill","text":"b1","subtype":"bill1","value":42},{"type":"bill","text":"b1","subtype":"bill1","value":8},{"type":"dialog","text":"d99","from":"owner"}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Aîe, j'ai reçu de nouvelles factures\\net je n'ai plus beaucoup de monnaie.\\nIl va falloir faire attention.\\nPourriez-vous vous en charger ?"],"d99":["Bon travail !"],"b1":["N° 2 8392 78 E","Facture","A régler sous huitaine","Total","site : www.facture-poufpouf.org"]}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>082</dct:identifier>
+        <dct:title xml:lang="fr-FR">Payer quatre factures avec une monnaie réduite [25,65,13,18].</dct:title>
+        <dct:description><![CDATA["wallet":[0,0,0,0,0,0,0,8,11,0,0,1,0],"menu":["wallet"],"errratio":2,"data":[{"type":"dialog","text":"d1","from":"owner","here":"postman"},{"type":"bill","text":"b1","subtype":"bill1","value":25},{"type":"bill","text":"b1","subtype":"bill1","value":65},{"type":"bill","text":"b1","subtype":"bill2","value":13},{"type":"bill","text":"b1","subtype":"bill2","value":18},{"type":"dialog","text":"d99","from":"owner"}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Aîe, j'ai reçu de nouvelles factures\\net je n'ai plus beaucoup de monnaie.\\nIl va falloir faire attention.\\nPourriez-vous vous en charger ?","En régle générale, à chaque fois, utilisez\\nles plus grosses coupures possibles."],"d99":["Bon travail !"],"b1":["N° 2 8392 78 E","Facture","A régler sous huitaine","Total","site : www.facture-poufpouf.org"]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>101</dct:identifier>
+        <dct:title xml:lang="fr-FR">Payer une facture en utilisant le monnayeur [5].</dct:title>
+        <dct:description><![CDATA["decimal":false,"wallet":[0,0,0,0,0,0,0,0,0,1,0,0,0],"menu":["wallet","change"],"errratio":3,"data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"dialog","text":"d2","from":"owner","target":1},{"type":"bill","text":"b1","subtype":"bill1","value":5},{"type":"dialog","text":"d3","from":"owner"}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Il arrive parfois que nous n'ayons\\npas la monnaie demandée pour le\\nréglement d'une facture.\\nHeureusement il est possible d'utiliser\\nle monnayeur pour régler ce problème."],"d2":["Toute valeur introduite dans le monnayeur,\\nsitué en bas de l'écran, est automatique-\\nment décomposée en petite monnaie.","A vous de jouer !"],"d3":["J'adore les photos de chatons !"],"b1":["Amicale des sapeurs pompiers","Calendrier","Modèle 'spécial chatons'","Prix","Tel: 18"]}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>102</dct:identifier>
+        <dct:title xml:lang="fr-FR">Payer deux factures en utilisant le monnayeur [12,7].</dct:title>
+        <dct:description><![CDATA["decimal":false,"wallet":[0,0,0,0,0,0,0,0,0,0,1,0,0],"menu":["wallet","change"],"errratio":2,"data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"bill","text":"b1","subtype":"bill1","value":12},{"type":"bill","text":"b2","subtype":"bill2","value":7},{"type":"dialog","text":"d99","from":"owner"}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Voici venir d'autres factures."],"d99":["Une bonne chose de faite."],"b1":["Papéterie Souzot","Fournitures diverses","","Total",""],"b2":["Facture d'eau","Premier trimestre","Janvier-Mars","A régler","Compte client : J 3891 ZE 3"]}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>103</dct:identifier>
+        <dct:title xml:lang="fr-FR">Payer deux factures en utilisant le monnayeur [25,13].</dct:title>
+        <dct:description><![CDATA["decimal":false,"wallet":[0,0,0,0,0,0,0,0,0,0,0,1,0],"menu":["wallet","change"],"errratio":2,"data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"bill","text":"b1","subtype":"bill2","value":25},{"type":"bill","text":"b2","subtype":"bill1","value":13},{"type":"dialog","text":"d99","from":"owner"}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Argh.....\\nDes factures à payer....\\nEncore !"],"d99":["Comme ça, c'est fait !"],"b1":["Cotisation associative","Éclairage de rue","Lampes, électricité, entretien","Total","Association des commerçants de la rue Rhu"],"b2":["Facture de gaz","Premier trimestre","Janvier-Mars","A régler","N° Abonné : P54 12353 23 Z 8952 36"]}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>104</dct:identifier>
+        <dct:title xml:lang="fr-FR">Payer des factures en utilisant le monnayeur [50,32,11].</dct:title>
+        <dct:description><![CDATA["decimal":false,"wallet":[0,0,0,0,0,0,0,0,0,0,0,0,1],"menu":["wallet","change"],"errratio":2,"data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"bill","text":"b1","subtype":"bill1","value":50},{"type":"bill","text":"b2","subtype":"bill1","value":32},{"type":"bill","text":"b3","subtype":"bill2","value":11},{"type":"dialog","text":"d99","from":"owner"}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Encore des factures !"],"d99":["Nous voila un peu moins riches..."],"b1":["Réparateur chauffage","Intervention","du 7 Janvier","A régler","Tel: 01 23 45 67 89"],"b2":["Service d'entretien","Entreprise Pompon","pompom@mail.com","Total","Avec Pompon, vous avez tout bon"],"b3":["Association des anciens élèves","Cotisation annuelle","","Total","mail: assoc@poufpouf.org"]}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>151</dct:identifier>
+        <dct:title xml:lang="fr-FR">Payer quatre factures aléatoires comprises entre 1 et 20 en utilisant le monnayeur.</dct:title>
+        <dct:description><![CDATA["decimal":false,"wallet":[0,0,0,0,0,0,0,0,0,0,0,2,0],"menu":["wallet","change"],"errratio":2,"data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"dialog","text":"d2","from":"owner"}],"gen":"function(i_){return 1+Math.floor(Math.random()*20);}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Des factures !!!\\nArgh..."],"d2":["Super."],"b1":["N° 2 8392 78 E","Facture","A régler sous huitaine","Total","site : www.facture-poufpouf.org"]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>152</dct:identifier>
+        <dct:title xml:lang="fr-FR">Payer quatre factures aléatoires comprises entre 1 et 50 en utilisant le monnayeur.</dct:title>
+        <dct:description><![CDATA["decimal":false,"wallet":[0,0,0,0,0,0,0,0,0,0,0,0,2],"menu":["wallet","change"],"errratio":2,"data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"dialog","text":"d2","from":"owner"}],"gen":"function(i_){return 1+Math.floor(Math.random()*50);}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Des factures !!!"],"d2":["Super."],"b1":["N° 2 8392 78 E","Facture","A régler sous huitaine","Total","site : www.facture-poufpouf.org"]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>153</dct:identifier>
+        <dct:title xml:lang="fr-FR">Payer quatre factures aléatoires comprises entre 1 et 100 en utilisant le monnayeur.</dct:title>
+        <dct:description><![CDATA["decimal":false,"wallet":[0,0,0,0,0,0,0,0,0,0,0,0,5],"menu":["wallet","change"],"errratio":2,"data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"dialog","text":"d2","from":"owner"}],"gen":"function(i_){return 1+Math.floor(Math.random()*100);}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Des factures !!!"],"d2":["Super."],"b1":["N° 2 8392 78 E","Facture","A régler sous huitaine","Total","site : www.facture-poufpouf.org"]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
         <dct:alternative>001</dct:alternative>
     </rdf:Description>
 
 
+    <!-- 501-999 decimal prices -->
+
     <rdf:Description>
-        <dct:identifier>101</dct:identifier>
+        <dct:identifier>501</dct:identifier>
         <dct:title xml:lang="fr-FR">Payer deux factures [10.5,3.6].</dct:title>
         <dct:description><![CDATA["wallet":[0,0,0,2,2,2,2,3,2,1,0,0,0],"menu":["wallet"],"errratio":2,"data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"bill","text":"b1","subtype":"bill2","value":10.5},{"type":"bill","text":"b2","subtype":"bill1","value":3.6},{"type":"dialog","text":"d3","from":"owner"}]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["On continue avec les factures !\\nAttention, ici les valeurs à régler sont\\ndécimales : il va donc falloir utiliser\\ndes centimes !"],"d3":["Excellent !"],"b1":["Abonnement Internet","Fournisseur Accès Web","Décembre","Total",""],"b2":["Centre des impôts","Rappel fiscal","Ref: 1 64523","Total","A régler avant le 15 Février"]}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>2</dct:type>
         <dct:alternative>001</dct:alternative>
     </rdf:Description>
 
-
     <rdf:Description>
-        <dct:identifier>102</dct:identifier>
+        <dct:identifier>502</dct:identifier>
         <dct:title xml:lang="fr-FR">Payer deux factures [0.03,12.18].</dct:title>
         <dct:description><![CDATA["wallet":[5,5,5,5,5,5,5,2,2,1,0,0,0],"menu":["wallet"],"errratio":2,"data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"bill","text":"b1","subtype":"bill1","value":0.03},{"type":"bill","text":"b2","subtype":"bill2","value":12.18},{"type":"dialog","text":"d3","from":"owner"}]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Est-ce que vous pourriez vous occuper de\\nces papiers ?"],"d3":["Merci. Cela m'aide beaucoup."],"b1":["Le 23/01,","Banque Popo","Agios Décembre","A payer","Facture #23913"],"b2":["Association Assion","Cotisation annuelle","","Total",""]}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>3</dct:type>
         <dct:alternative>001</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>151</dct:identifier>
+        <dct:identifier>551</dct:identifier>
         <dct:title xml:lang="fr-FR">Payer quatre factures décimales aléatoires comprises entre 1 et 20.</dct:title>
         <dct:description><![CDATA["wallet":[10,10,5,10,10,5,10,10,5,5,5,0,0],"menu":["wallet"],"errratio":2,"data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"dialog","text":"d2","from":"owner"}],"gen":"function(i_){return (1+Math.floor(Math.random()*2000)/100);}"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Des factures !!!\\nArgh..."],"d2":["Super."],"b1":["N° 2 8392 78 E","Facture","A régler sous huitaine","Total","site : www.facture-poufpouf.org"]}]]></dct:description>
@@ -106,7 +234,7 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>152</dct:identifier>
+        <dct:identifier>552</dct:identifier>
         <dct:title xml:lang="fr-FR">Payer quatre factures décimales aléatoires comprises entre 1 et 50.</dct:title>
         <dct:description><![CDATA["wallet":[10,10,5,10,10,5,10,10,5,10,10,5,0],"menu":["wallet"],"errratio":2,"data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"dialog","text":"d2","from":"owner"}],"gen":"function(i_){return (1+Math.floor(Math.random()*5000)/100);}"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Des factures !!!\\nArgh..."],"d2":["Super."],"b1":["N° 2 8392 78 E","Facture","A régler sous huitaine","Total","site : www.facture-poufpouf.org"]}]]></dct:description>
@@ -119,7 +247,7 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>153</dct:identifier>
+        <dct:identifier>553</dct:identifier>
         <dct:title xml:lang="fr-FR">Payer quatre factures décimales aléatoires comprises entre 1 et 100.</dct:title>
         <dct:description><![CDATA["wallet":[10,10,5,10,10,5,10,10,5,10,10,5,0],"menu":["wallet"],"errratio":2,"data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"dialog","text":"d2","from":"owner"}],"gen":"function(i_){return (1+Math.floor(Math.random()*10000)/100);}"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Des factures !!!\\nArgh..."],"d2":["Super."],"b1":["N° 2 8392 78 E","Facture","A régler sous huitaine","Total","site : www.facture-poufpouf.org"]}]]></dct:description>
@@ -133,7 +261,7 @@
 
 
     <rdf:Description>
-        <dct:identifier>161</dct:identifier>
+        <dct:identifier>561</dct:identifier>
         <dct:title xml:lang="fr-FR">Payer quatre factures décimales aléatoires comprises entre 1 et 100 avec un tiroir-caisse en désordre.</dct:title>
         <dct:description><![CDATA["messy":true,"wallet":[10,10,5,10,10,5,10,10,5,10,10,5,0],"menu":["wallet"],"errratio":2,"data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"dialog","text":"d2","from":"owner"}],"gen":"function(i_){return (1+Math.floor(Math.random()*10000)/100);}"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Ah là la ! Toute la monnaie dans le\\ntiroir-caisse s'est mélangée...\\nEt voila de nouvelles factures !","Pouvez-vous m'aider ?"],"d2":["Super."],"b1":["N° 2 8392 78 E","Facture","A régler sous huitaine","Total","site : www.facture-poufpouf.org"]}]]></dct:description>
@@ -145,98 +273,8 @@
         <dct:alternative>001</dct:alternative>
     </rdf:Description>
 
-
     <rdf:Description>
-        <dct:identifier>201</dct:identifier>
-        <dct:title xml:lang="fr-FR">Payer une facture en utilisant le monnayeur [5].</dct:title>
-        <dct:description><![CDATA["decimal":false,"wallet":[0,0,0,0,0,0,0,0,0,1,0,0,0],"menu":["wallet","change"],"errratio":3,"data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"dialog","text":"d2","from":"owner","target":1},{"type":"bill","text":"b1","subtype":"bill1","value":5},{"type":"dialog","text":"d3","from":"owner"}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Il arrive parfois que nous n'ayons\\npas la monnaie demandée pour le\\nréglement d'une facture.\\nHeureusement il est possible d'utiliser\\nle monnayeur pour régler ce problème."],"d2":["Toute valeur introduite dans le monnayeur,\\nsitué en bas de l'écran, est automatique-\\nment décomposée en petite monnaie.","A vous de jouer !"],"d3":["J'adore les photos de chatons !"],"b1":["Amicale des sapeurs pompiers","Calendrier","Modèle 'spécial chatons'","Prix","Tel: 18"]}]]></dct:description>
-        <dct:extent>2</dct:extent>
-        <dct:subject>numeration</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>202</dct:identifier>
-        <dct:title xml:lang="fr-FR">Payer deux factures en utilisant le monnayeur [12,7].</dct:title>
-        <dct:description><![CDATA["decimal":false,"wallet":[0,0,0,0,0,0,0,0,0,0,1,0,0],"menu":["wallet","change"],"errratio":2,"data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"bill","text":"b1","subtype":"bill1","value":12},{"type":"bill","text":"b2","subtype":"bill2","value":7},{"type":"dialog","text":"d99","from":"owner"}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Voici venir d'autres factures."],"d99":["Une bonne chose de faite."],"b1":["Papéterie Souzot","Fournitures diverses","","Total",""],"b2":["Facture d'eau","Premier trimestre","Janvier-Mars","A régler","Compte client : J 3891 ZE 3"]}]]></dct:description>
-        <dct:extent>2</dct:extent>
-        <dct:subject>numeration</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>203</dct:identifier>
-        <dct:title xml:lang="fr-FR">Payer deux factures en utilisant le monnayeur [25,13].</dct:title>
-        <dct:description><![CDATA["decimal":false,"wallet":[0,0,0,0,0,0,0,0,0,0,0,1,0],"menu":["wallet","change"],"errratio":2,"data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"bill","text":"b1","subtype":"bill2","value":25},{"type":"bill","text":"b2","subtype":"bill1","value":13},{"type":"dialog","text":"d99","from":"owner"}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Argh.....\\nDes factures à payer....\\nEncore !"],"d99":["Comme ça, c'est fait !"],"b1":["Cotisation associative","Éclairage de rue","Lampes, électricité, entretien","Total","Association des commerçants de la rue Rhu"],"b2":["Facture de gaz","Premier trimestre","Janvier-Mars","A régler","N° Abonné : P54 12353 23 Z 8952 36"]}]]></dct:description>
-        <dct:extent>2</dct:extent>
-        <dct:subject>numeration</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>204</dct:identifier>
-        <dct:title xml:lang="fr-FR">Payer des factures en utilisant le monnayeur [50,32,11].</dct:title>
-        <dct:description><![CDATA["decimal":false,"wallet":[0,0,0,0,0,0,0,0,0,0,0,0,1],"menu":["wallet","change"],"errratio":2,"data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"bill","text":"b1","subtype":"bill1","value":50},{"type":"bill","text":"b2","subtype":"bill1","value":32},{"type":"bill","text":"b3","subtype":"bill2","value":11},{"type":"dialog","text":"d99","from":"owner"}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Encore des factures !"],"d99":["Nous voila un peu moins riches..."],"b1":["Réparateur chauffage","Intervention","du 7 Janvier","A régler","Tel: 01 23 45 67 89"],"b2":["Service d'entretien","Entreprise Pompon","pompom@mail.com","Total","Avec Pompon, vous avez tout bon"],"b3":["Association des anciens élèves","Cotisation annuelle","","Total","mail: assoc@poufpouf.org"]}]]></dct:description>
-        <dct:extent>2</dct:extent>
-        <dct:subject>numeration</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>001</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>251</dct:identifier>
-        <dct:title xml:lang="fr-FR">Payer quatre factures aléatoires comprises entre 1 et 20 en utilisant le monnayeur.</dct:title>
-        <dct:description><![CDATA["decimal":false,"wallet":[0,0,0,0,0,0,0,0,0,0,0,2,0],"menu":["wallet","change"],"errratio":2,"data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"dialog","text":"d2","from":"owner"}],"gen":"function(i_){return 1+Math.floor(Math.random()*20);}"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Des factures !!!\\nArgh..."],"d2":["Super."],"b1":["N° 2 8392 78 E","Facture","A régler sous huitaine","Total","site : www.facture-poufpouf.org"]}]]></dct:description>
-        <dct:extent>3</dct:extent>
-        <dct:subject>numeration</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>3</dct:type>
-        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
-        <dct:alternative>001</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>252</dct:identifier>
-        <dct:title xml:lang="fr-FR">Payer quatre factures aléatoires comprises entre 1 et 50 en utilisant le monnayeur.</dct:title>
-        <dct:description><![CDATA["decimal":false,"wallet":[0,0,0,0,0,0,0,0,0,0,0,0,2],"menu":["wallet","change"],"errratio":2,"data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"dialog","text":"d2","from":"owner"}],"gen":"function(i_){return 1+Math.floor(Math.random()*50);}"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Des factures !!!"],"d2":["Super."],"b1":["N° 2 8392 78 E","Facture","A régler sous huitaine","Total","site : www.facture-poufpouf.org"]}]]></dct:description>
-        <dct:extent>3</dct:extent>
-        <dct:subject>numeration</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>3</dct:type>
-        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
-        <dct:alternative>001</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>253</dct:identifier>
-        <dct:title xml:lang="fr-FR">Payer quatre factures aléatoires comprises entre 1 et 100 en utilisant le monnayeur.</dct:title>
-        <dct:description><![CDATA["decimal":false,"wallet":[0,0,0,0,0,0,0,0,0,0,0,0,5],"menu":["wallet","change"],"errratio":2,"data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"dialog","text":"d2","from":"owner"}],"gen":"function(i_){return 1+Math.floor(Math.random()*100);}"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Des factures !!!"],"d2":["Super."],"b1":["N° 2 8392 78 E","Facture","A régler sous huitaine","Total","site : www.facture-poufpouf.org"]}]]></dct:description>
-        <dct:extent>3</dct:extent>
-        <dct:subject>numeration</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>3</dct:type>
-        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
-        <dct:alternative>001</dct:alternative>
-    </rdf:Description>
-
-
-    <rdf:Description>
-        <dct:identifier>351</dct:identifier>
+        <dct:identifier>651</dct:identifier>
         <dct:title xml:lang="fr-FR">Payer quatre factures aléatoires décimales comprises entre 1 et 20 en utilisant le monnayeur.</dct:title>
         <dct:description><![CDATA["wallet":[0,0,0,0,0,0,5,5,0,0,0,2,0],"menu":["wallet","change"],"errratio":2,"data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"dialog","text":"d2","from":"owner"}],"gen":"function(i_){return (1+Math.floor(Math.random()*2000)/100);}"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Des factures !!!"],"d2":["Super."],"b1":["N° 2 8392 78 E","Facture","A régler sous huitaine","Total","site : www.facture-poufpouf.org"]}]]></dct:description>
@@ -249,7 +287,7 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>352</dct:identifier>
+        <dct:identifier>652</dct:identifier>
         <dct:title xml:lang="fr-FR">Payer quatre factures aléatoires décimales comprises entre 1 et 50 en utilisant le monnayeur.</dct:title>
         <dct:description><![CDATA["wallet":[0,0,0,0,0,0,5,5,0,0,2,0,2],"menu":["wallet","change"],"errratio":2,"data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"dialog","text":"d2","from":"owner"}],"gen":"function(i_){return (1+Math.floor(Math.random()*5000)/100);}"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Des factures !!!"],"d2":["Super."],"b1":["N° 2 8392 78 E","Facture","A régler sous huitaine","Total","site : www.facture-poufpouf.org"]}]]></dct:description>
@@ -262,7 +300,7 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>353</dct:identifier>
+        <dct:identifier>653</dct:identifier>
         <dct:title xml:lang="fr-FR">Payer quatre factures aléatoires décimales comprises entre 1 et 100 en utilisant le monnayeur.</dct:title>
         <dct:description><![CDATA["wallet":[0,0,0,0,0,0,5,5,0,0,2,0,5],"menu":["wallet","change"],"errratio":2,"data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"dialog","text":"d2","from":"owner"}],"gen":"function(i_){return (1+Math.floor(Math.random()*10000)/100);}"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Des factures !!!"],"d2":["Super."],"b1":["N° 2 8392 78 E","Facture","A régler sous huitaine","Total","site : www.facture-poufpouf.org"]}]]></dct:description>

@@ -10,7 +10,7 @@
         <dct:extent>2</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>2</dct:type>
         <dct:alternative>001</dct:alternative>
         <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
     </rdf:Description>
@@ -23,154 +23,194 @@
         <dct:extent>2</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>2</dct:type>
         <dct:alternative>001</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>010</dct:identifier>
         <dct:title xml:lang="fr-FR">Etablir trois factures en additionant les montants entiers de 2 produits compris entre 1 et 10 en utilisant le calepin puis encaisser l'appoint.</dct:title>
-        <dct:description><![CDATA["data":[{"type":"dialog","text":"d1","from":"owner","target":2},{"type":"invoice","here":"alea","value":[[3,1,6,1],[2,1,7,1]]},{"type":"sell","wallet":"sell","here":"same"},{"type":"invoice","here":"alea","value":[[3,1,8,1],[2,1,9,1]]},{"type":"sell","wallet":"sell","here":"same"},{"type":"invoice","here":"alea","value":[[3,1,5,1],[2,1,8,1]]},{"type":"sell","wallet":"sell","here":"same"},{"type":"dialog","text":"d99","from":"owner"}],"wallet":[0,0,0,0,0,0,0,0,0,0,0,0,0],"menu":["wallet","calculator","sketchbook"],"sell":"function(_args){var valc=[10000,5000,2000,1000,500,200,100,50,20,10,5,2,1],v=Math.round(_args.value*100),ret=[];for(var i in valc){var nb=0;if (i>=12 || Math.random()<0.8) { while(v>=valc[i]){nb++;v-=valc[i];} } ret.push(nb); };return ret.reverse()}"]]></dct:description>
+        <dct:description><![CDATA["data":[{"type":"dialog","text":"d1","from":"owner","target":2},{"type":"invoice","here":"alea","value":[[3,1,6,1],[2,1,7,1]]},{"type":"sell","wallet":"sell","here":"same"},{"type":"invoice","here":"alea","value":[[3,1,8,1],[2,1,9,1]]},{"type":"sell","wallet":"sell","here":"same"},{"type":"invoice","here":"alea","value":[[3,1,5,1],[2,1,8,1]]},{"type":"sell","wallet":"sell","here":"same"},{"type":"dialog","text":"d99","from":"owner"}],"wallet":[0,0,0,0,0,0,0,0,0,0,0,0,0],"menu":["wallet","calculator","sketchbook"],"sell":"function(_args){var valc=[10000,5000,2000,1000,500,200,100,50,20,10,5,2,1],v=Math.round(_args.value*100),ret=[];for(var i in valc){var nb=0;if (i>=6 || Math.random()<0.8) { while(v>=valc[i]){nb++;v-=valc[i];} } ret.push(nb); };return ret.reverse()}"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Comme le calcul de la facture risque de\\ndevenir de plus en plus complexe, je\\npense qu'un petit calepin ne sera pas\\ndu luxe.","En cliquant sur l'icône du calepin en bas\\ndans le menu, il est possible d'ouvrir et\\nde fermer une fenêtre dans laquelle il va\\npouvoir être possible d'écrire et de\\nposer les opérations complexes"],"d99":["Quelle bonne journée !"]}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>2</dct:type>
         <dct:alternative>001</dct:alternative>
         <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>010a</dct:identifier>
+        <dct:identifier>011</dct:identifier>
         <dct:title xml:lang="fr-FR">Etablir trois factures en additionant les montants entiers de 2 produits compris entre 1 et 10 puis encaisser l'appoint.</dct:title>
-        <dct:description><![CDATA["data":[{"type":"dialog","text":"d1","from":"owner","here":"alea"},{"type":"invoice","here":"same","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"invoice","here":"alea","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"invoice","here":"alea","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"dialog","text":"d99","from":"owner"}],"wallet":[0,0,0,0,0,0,0,0,0,0,0,0,0],"menu":["wallet","calculator"],"invoice":"function(){var p=[],ret=[]; for (var i=0;i<20;i++) { p.push(i); p.sort(function(){return 0.5-Math.random();}); } for (var i=0; i<2; i++) { ret.push([p[i],1,1+Math.floor(Math.random()*10),1]); } return ret; }","sell":"function(_args){var valc=[10000,5000,2000,1000,500,200,100,50,20,10,5,2,1],v=Math.round(_args.value*100),ret=[];for(var i in valc){var nb=0;if (i>=12 || Math.random()<0.8) { while(v>=valc[i]){nb++;v-=valc[i];} } ret.push(nb); };return ret.reverse()}"]]></dct:description>
+        <dct:description><![CDATA["data":[{"type":"dialog","text":"d1","from":"owner","here":"alea"},{"type":"invoice","here":"same","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"invoice","here":"alea","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"invoice","here":"alea","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"dialog","text":"d99","from":"owner"}],"wallet":[0,0,0,0,0,0,0,0,0,0,0,0,0],"menu":["wallet","calculator","sketchbook"],"invoice":"function(){var p=[],ret=[]; for (var i=0;i<20;i++) { p.push(i); p.sort(function(){return 0.5-Math.random();}); } for (var i=0; i<2; i++) { ret.push([p[i],1,1+Math.floor(Math.random()*10),1]); } return ret; }","sell":"function(_args){var valc=[10000,5000,2000,1000,500,200,100,50,20,10,5,2,1],v=Math.round(_args.value*100),ret=[];for(var i in valc){var nb=0;if (i>=6 || Math.random()<0.8) { while(v>=valc[i]){nb++;v-=valc[i];} } ret.push(nb); };return ret.reverse()}"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Bonjour.\\nBienvenue dans notre boutique.\\nQue puis-je pour vous ?"],"d99":["Quelle bonne journée !"]}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>2</dct:type>
         <dct:alternative>001</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>010b</dct:identifier>
+        <dct:identifier>012</dct:identifier>
         <dct:title xml:lang="fr-FR">Etablir trois factures en additionant les montants entiers de 3 produits compris entre 1 et 10 puis encaisser l'appoint.</dct:title>
-        <dct:description><![CDATA["data":[{"type":"dialog","text":"d1","from":"owner","here":"alea"},{"type":"invoice","here":"same","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"invoice","here":"alea","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"invoice","here":"alea","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"dialog","text":"d99","from":"owner"}],"wallet":[0,0,0,0,0,0,0,0,0,0,0,0,0],"menu":["wallet","calculator"],"invoice":"function(){var p=[],ret=[]; for (var i=0;i<20;i++) { p.push(i); p.sort(function(){return 0.5-Math.random();}); } for (var i=0; i<3; i++) { ret.push([p[i],1,1+Math.floor(Math.random()*10),1]); } return ret; }","sell":"function(_args){var valc=[10000,5000,2000,1000,500,200,100,50,20,10,5,2,1],v=Math.round(_args.value*100),ret=[];for(var i in valc){var nb=0;if (i>=12 || Math.random()<0.8) { while(v>=valc[i]){nb++;v-=valc[i];} } ret.push(nb); };return ret.reverse()}"]]></dct:description>
+        <dct:description><![CDATA["data":[{"type":"dialog","text":"d1","from":"owner","here":"alea"},{"type":"invoice","here":"same","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"invoice","here":"alea","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"invoice","here":"alea","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"dialog","text":"d99","from":"owner"}],"wallet":[0,0,0,0,0,0,0,0,0,0,0,0,0],"menu":["wallet","calculator","sketchbook"],"invoice":"function(){var p=[],ret=[]; for (var i=0;i<20;i++) { p.push(i); p.sort(function(){return 0.5-Math.random();}); } for (var i=0; i<3; i++) { ret.push([p[i],1,1+Math.floor(Math.random()*10),1]); } return ret; }","sell":"function(_args){var valc=[10000,5000,2000,1000,500,200,100,50,20,10,5,2,1],v=Math.round(_args.value*100),ret=[];for(var i in valc){var nb=0;if (i>=6 || Math.random()<0.8) { while(v>=valc[i]){nb++;v-=valc[i];} } ret.push(nb); };return ret.reverse()}"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Bonjour.\\nBienvenue dans notre boutique.\\nQue puis-je pour vous ?"],"d99":["Quelle bonne journée !"]}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>2</dct:type>
         <dct:alternative>001</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>010c</dct:identifier>
+        <dct:identifier>013</dct:identifier>
         <dct:title xml:lang="fr-FR">Etablir trois factures en additionant les montants entiers de 4 produits compris entre 1 et 10 puis encaisser l'appoint.</dct:title>
-        <dct:description><![CDATA["data":[{"type":"dialog","text":"d1","from":"owner","here":"alea"},{"type":"invoice","here":"same","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"invoice","here":"alea","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"invoice","here":"alea","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"dialog","text":"d99","from":"owner"}],"wallet":[0,0,0,0,0,0,0,0,0,0,0,0,0],"menu":["wallet","calculator"],"invoice":"function(){var p=[],ret=[]; for (var i=0;i<20;i++) { p.push(i); p.sort(function(){return 0.5-Math.random();}); } for (var i=0; i<4; i++) { ret.push([p[i],1,1+Math.floor(Math.random()*10),1]); } return ret; }","sell":"function(_args){var valc=[10000,5000,2000,1000,500,200,100,50,20,10,5,2,1],v=Math.round(_args.value*100),ret=[];for(var i in valc){var nb=0;if (i>=12 || Math.random()<0.8) { while(v>=valc[i]){nb++;v-=valc[i];} } ret.push(nb); };return ret.reverse()}"]]></dct:description>
+        <dct:description><![CDATA["data":[{"type":"dialog","text":"d1","from":"owner","here":"alea"},{"type":"invoice","here":"same","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"invoice","here":"alea","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"invoice","here":"alea","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"dialog","text":"d99","from":"owner"}],"wallet":[0,0,0,0,0,0,0,0,0,0,0,0,0],"menu":["wallet","calculator","sketchbook"],"invoice":"function(){var p=[],ret=[]; for (var i=0;i<20;i++) { p.push(i); p.sort(function(){return 0.5-Math.random();}); } for (var i=0; i<4; i++) { ret.push([p[i],1,1+Math.floor(Math.random()*10),1]); } return ret; }","sell":"function(_args){var valc=[10000,5000,2000,1000,500,200,100,50,20,10,5,2,1],v=Math.round(_args.value*100),ret=[];for(var i in valc){var nb=0;if (i>=6 || Math.random()<0.8) { while(v>=valc[i]){nb++;v-=valc[i];} } ret.push(nb); };return ret.reverse()}"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Bonjour.\\nBienvenue dans notre boutique.\\nQue puis-je pour vous ?"],"d99":["Quelle bonne journée !"]}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>2</dct:type>
         <dct:alternative>001</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>020a</dct:identifier>
+        <dct:identifier>020</dct:identifier>
         <dct:title xml:lang="fr-FR">Etablir trois factures en additionant les montants entiers de 2 produits compris entre 1 et 20 puis encaisser l'appoint.</dct:title>
-        <dct:description><![CDATA["data":[{"type":"dialog","text":"d1","from":"owner","here":"alea"},{"type":"invoice","here":"same","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"invoice","here":"alea","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"invoice","here":"alea","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"dialog","text":"d99","from":"owner"}],"wallet":[0,0,0,0,0,0,0,0,0,0,0,0,0],"menu":["wallet","calculator"],"invoice":"function(){var p=[],ret=[]; for (var i=0;i<20;i++) { p.push(i); p.sort(function(){return 0.5-Math.random();}); } for (var i=0; i<2; i++) { ret.push([p[i],1,1+Math.floor(Math.random()*20),1]); } return ret; }","sell":"function(_args){var valc=[10000,5000,2000,1000,500,200,100,50,20,10,5,2,1],v=Math.round(_args.value*100),ret=[];for(var i in valc){var nb=0;if (i>=12 || Math.random()<0.8) { while(v>=valc[i]){nb++;v-=valc[i];} } ret.push(nb); };return ret.reverse()}"]]></dct:description>
+        <dct:description><![CDATA["data":[{"type":"dialog","text":"d1","from":"owner","here":"alea"},{"type":"invoice","here":"same","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"invoice","here":"alea","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"invoice","here":"alea","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"dialog","text":"d99","from":"owner"}],"wallet":[0,0,0,0,0,0,0,0,0,0,0,0,0],"menu":["wallet","calculator","sketchbook"],"invoice":"function(){var p=[],ret=[]; for (var i=0;i<20;i++) { p.push(i); p.sort(function(){return 0.5-Math.random();}); } for (var i=0; i<2; i++) { ret.push([p[i],1,1+Math.floor(Math.random()*20),1]); } return ret; }","sell":"function(_args){var valc=[10000,5000,2000,1000,500,200,100,50,20,10,5,2,1],v=Math.round(_args.value*100),ret=[];for(var i in valc){var nb=0;if (i>=6 || Math.random()<0.8) { while(v>=valc[i]){nb++;v-=valc[i];} } ret.push(nb); };return ret.reverse()}"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Bonjour.\\nBienvenue dans notre boutique.\\nQue puis-je pour vous ?"],"d99":["Quelle bonne journée !"]}]]></dct:description>
-        <dct:extent>2</dct:extent>
+        <dct:extent>3</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>2</dct:type>
         <dct:alternative>001</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>020b</dct:identifier>
+        <dct:identifier>021</dct:identifier>
         <dct:title xml:lang="fr-FR">Etablir trois factures en additionant les montants entiers de 3 produits compris entre 1 et 20 puis encaisser l'appoint.</dct:title>
-        <dct:description><![CDATA["data":[{"type":"dialog","text":"d1","from":"owner","here":"alea"},{"type":"invoice","here":"same","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"invoice","here":"alea","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"invoice","here":"alea","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"dialog","text":"d99","from":"owner"}],"wallet":[0,0,0,0,0,0,0,0,0,0,0,0,0],"menu":["wallet","calculator"],"invoice":"function(){var p=[],ret=[]; for (var i=0;i<20;i++) { p.push(i); p.sort(function(){return 0.5-Math.random();}); } for (var i=0; i<3; i++) { ret.push([p[i],1,1+Math.floor(Math.random()*20),1]); } return ret; }","sell":"function(_args){var valc=[10000,5000,2000,1000,500,200,100,50,20,10,5,2,1],v=Math.round(_args.value*100),ret=[];for(var i in valc){var nb=0;if (i>=12 || Math.random()<0.8) { while(v>=valc[i]){nb++;v-=valc[i];} } ret.push(nb); };return ret.reverse()}"]]></dct:description>
+        <dct:description><![CDATA["data":[{"type":"dialog","text":"d1","from":"owner","here":"alea"},{"type":"invoice","here":"same","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"invoice","here":"alea","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"invoice","here":"alea","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"dialog","text":"d99","from":"owner"}],"wallet":[0,0,0,0,0,0,0,0,0,0,0,0,0],"menu":["wallet","calculator","sketchbook"],"invoice":"function(){var p=[],ret=[]; for (var i=0;i<20;i++) { p.push(i); p.sort(function(){return 0.5-Math.random();}); } for (var i=0; i<3; i++) { ret.push([p[i],1,1+Math.floor(Math.random()*20),1]); } return ret; }","sell":"function(_args){var valc=[10000,5000,2000,1000,500,200,100,50,20,10,5,2,1],v=Math.round(_args.value*100),ret=[];for(var i in valc){var nb=0;if (i>=6 || Math.random()<0.8) { while(v>=valc[i]){nb++;v-=valc[i];} } ret.push(nb); };return ret.reverse()}"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Bonjour.\\nBienvenue dans notre boutique.\\nQue puis-je pour vous ?"],"d99":["Quelle bonne journée !"]}]]></dct:description>
-        <dct:extent>2</dct:extent>
+        <dct:extent>4</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>2</dct:type>
         <dct:alternative>001</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>020c</dct:identifier>
+        <dct:identifier>022</dct:identifier>
         <dct:title xml:lang="fr-FR">Etablir trois factures en additionant les montants entiers de 4 produits compris entre 1 et 10 puis encaisser l'appoint.</dct:title>
-        <dct:description><![CDATA["data":[{"type":"dialog","text":"d1","from":"owner","here":"alea"},{"type":"invoice","here":"same","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"invoice","here":"alea","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"invoice","here":"alea","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"dialog","text":"d99","from":"owner"}],"wallet":[0,0,0,0,0,0,0,0,0,0,0,0,0],"menu":["wallet","calculator"],"invoice":"function(){var p=[],ret=[]; for (var i=0;i<20;i++) { p.push(i); p.sort(function(){return 0.5-Math.random();}); } for (var i=0; i<4; i++) { ret.push([p[i],1,1+Math.floor(Math.random()*20),1]); } return ret; }","sell":"function(_args){var valc=[10000,5000,2000,1000,500,200,100,50,20,10,5,2,1],v=Math.round(_args.value*100),ret=[];for(var i in valc){var nb=0;if (i>=12 || Math.random()<0.8) { while(v>=valc[i]){nb++;v-=valc[i];} } ret.push(nb); };return ret.reverse()}"]]></dct:description>
+        <dct:description><![CDATA["data":[{"type":"dialog","text":"d1","from":"owner","here":"alea"},{"type":"invoice","here":"same","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"invoice","here":"alea","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"invoice","here":"alea","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"dialog","text":"d99","from":"owner"}],"wallet":[0,0,0,0,0,0,0,0,0,0,0,0,0],"menu":["wallet","calculator","sketchbook"],"invoice":"function(){var p=[],ret=[]; for (var i=0;i<20;i++) { p.push(i); p.sort(function(){return 0.5-Math.random();}); } for (var i=0; i<4; i++) { ret.push([p[i],1,1+Math.floor(Math.random()*20),1]); } return ret; }","sell":"function(_args){var valc=[10000,5000,2000,1000,500,200,100,50,20,10,5,2,1],v=Math.round(_args.value*100),ret=[];for(var i in valc){var nb=0;if (i>=6 || Math.random()<0.8) { while(v>=valc[i]){nb++;v-=valc[i];} } ret.push(nb); };return ret.reverse()}"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Bonjour.\\nBienvenue dans notre boutique.\\nQue puis-je pour vous ?"],"d99":["Quelle bonne journée !"]}]]></dct:description>
-        <dct:extent>2</dct:extent>
+        <dct:extent>5</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>2</dct:type>
         <dct:alternative>001</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
     </rdf:Description>
 
+    <rdf:Description>
+        <dct:identifier>031</dct:identifier>
+        <dct:title xml:lang="fr-FR">Additionner, facturer, encaisser les clients et payer les fournisseurs (valeurs entières).</dct:title>
+        <dct:description><![CDATA["data":"function() { ret=[{'type':'dialog','text':'d1','from':'owner'}];for (var i=0;i<4;i++){if (Math.random()<0.5){ret.push({'type':'invoice','here':'alea','value':'invoice'});ret.push({'type':'sell','wallet':'sell','here':'same'});}else{ret.push({'type':'bill','text':'b1','subtype':'bill1','value':'bill'});}}ret.push({'type':'dialog','text':'d99','from':'owner'});return ret;}","wallet":[0,0,0,0,0,0,0,0,0,0,0,2,1],"menu":["wallet","calculator","change","sketchbook"],"decimal":false,"invoice":"function(){var p=[],ret=[]; for (var i=0;i<20;i++) { p.push(i); p.sort(function(){return 0.5-Math.random();}); } for (var i=0; i<2+Math.floor(Math.random()*2); i++) { ret.push([p[i],1,1+Math.floor(Math.random()*20),1]); } return ret; }","sell":"function(_args){var valc=[10000,5000,2000,1000,500,200,100,50,20,10,5,2,1],v=Math.round(_args.value*100),ret=[];for(var i in valc){var nb=0;if (i>=6 || Math.random()<0.8) { while(v>=valc[i]){nb++;v-=valc[i];} } ret.push(nb); };return ret.reverse()}","bill":"function(_args){return Math.floor(Math.random()*_args.wallet/2+1);}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["C'est parti pour une nouvelle journée."],"d99":["C'est parfait."],"b1":["Facture #234J 12","Fournisseur","","A régler",""]}]]></dct:description>
+        <dct:extent>5</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>001</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+    </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>050a</dct:identifier>
+        <dct:identifier>050</dct:identifier>
         <dct:title xml:lang="fr-FR">Etablir trois factures en additionant les montants entiers de 2 produits compris entre 1 et 50 puis encaisser l'appoint.</dct:title>
-        <dct:description><![CDATA["data":[{"type":"dialog","text":"d1","from":"owner","here":"alea"},{"type":"invoice","here":"same","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"invoice","here":"alea","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"invoice","here":"alea","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"dialog","text":"d99","from":"owner"}],"wallet":[0,0,0,0,0,0,0,0,0,0,0,0,0],"menu":["wallet","calculator"],"invoice":"function(){var p=[],ret=[]; for (var i=0;i<20;i++) { p.push(i); p.sort(function(){return 0.5-Math.random();}); } for (var i=0; i<2; i++) { ret.push([p[i],1,1+Math.floor(Math.random()*50),1]); } return ret; }","sell":"function(_args){var valc=[10000,5000,2000,1000,500,200,100,50,20,10,5,2,1],v=Math.round(_args.value*100),ret=[];for(var i in valc){var nb=0;if (i>=12 || Math.random()<0.8) { while(v>=valc[i]){nb++;v-=valc[i];} } ret.push(nb); };return ret.reverse()}"]]></dct:description>
+        <dct:description><![CDATA["data":[{"type":"dialog","text":"d1","from":"owner","here":"alea"},{"type":"invoice","here":"same","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"invoice","here":"alea","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"invoice","here":"alea","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"dialog","text":"d99","from":"owner"}],"wallet":[0,0,0,0,0,0,0,0,0,0,0,0,0],"menu":["wallet","calculator","sketchbook"],"invoice":"function(){var p=[],ret=[]; for (var i=0;i<20;i++) { p.push(i); p.sort(function(){return 0.5-Math.random();}); } for (var i=0; i<2; i++) { ret.push([p[i],1,1+Math.floor(Math.random()*50),1]); } return ret; }","sell":"function(_args){var valc=[10000,5000,2000,1000,500,200,100,50,20,10,5,2,1],v=Math.round(_args.value*100),ret=[];for(var i in valc){var nb=0;if (i>=6 || Math.random()<0.8) { while(v>=valc[i]){nb++;v-=valc[i];} } ret.push(nb); };return ret.reverse()}"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Bonjour.\\nBienvenue dans notre boutique.\\nQue puis-je pour vous ?"],"d99":["Quelle bonne journée !"]}]]></dct:description>
-        <dct:extent>2</dct:extent>
+        <dct:extent>3</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>2</dct:type>
         <dct:alternative>001</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>050b</dct:identifier>
+        <dct:identifier>051</dct:identifier>
         <dct:title xml:lang="fr-FR">Etablir trois factures en additionant les montants entiers de 3 produits compris entre 1 et 50 puis encaisser l'appoint.</dct:title>
-        <dct:description><![CDATA["data":[{"type":"dialog","text":"d1","from":"owner","here":"alea"},{"type":"invoice","here":"same","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"invoice","here":"alea","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"invoice","here":"alea","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"dialog","text":"d99","from":"owner"}],"wallet":[0,0,0,0,0,0,0,0,0,0,0,0,0],"menu":["wallet","calculator"],"invoice":"function(){var p=[],ret=[]; for (var i=0;i<20;i++) { p.push(i); p.sort(function(){return 0.5-Math.random();}); } for (var i=0; i<3; i++) { ret.push([p[i],1,1+Math.floor(Math.random()*50),1]); } return ret; }","sell":"function(_args){var valc=[10000,5000,2000,1000,500,200,100,50,20,10,5,2,1],v=Math.round(_args.value*100),ret=[];for(var i in valc){var nb=0;if (i>=12 || Math.random()<0.8) { while(v>=valc[i]){nb++;v-=valc[i];} } ret.push(nb); };return ret.reverse()}"]]></dct:description>
+        <dct:description><![CDATA["data":[{"type":"dialog","text":"d1","from":"owner","here":"alea"},{"type":"invoice","here":"same","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"invoice","here":"alea","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"invoice","here":"alea","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"dialog","text":"d99","from":"owner"}],"wallet":[0,0,0,0,0,0,0,0,0,0,0,0,0],"menu":["wallet","calculator","sketchbook"],"invoice":"function(){var p=[],ret=[]; for (var i=0;i<20;i++) { p.push(i); p.sort(function(){return 0.5-Math.random();}); } for (var i=0; i<3; i++) { ret.push([p[i],1,1+Math.floor(Math.random()*50),1]); } return ret; }","sell":"function(_args){var valc=[10000,5000,2000,1000,500,200,100,50,20,10,5,2,1],v=Math.round(_args.value*100),ret=[];for(var i in valc){var nb=0;if (i>=6 || Math.random()<0.8) { while(v>=valc[i]){nb++;v-=valc[i];} } ret.push(nb); };return ret.reverse()}"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Bonjour.\\nBienvenue dans notre boutique.\\nQue puis-je pour vous ?"],"d99":["Quelle bonne journée !"]}]]></dct:description>
-        <dct:extent>2</dct:extent>
+        <dct:extent>4</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>2</dct:type>
         <dct:alternative>001</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>050c</dct:identifier>
+        <dct:identifier>052</dct:identifier>
         <dct:title xml:lang="fr-FR">Etablir trois factures en additionant les montants entiers de 4 produits compris entre 1 et 50 puis encaisser l'appoint.</dct:title>
-        <dct:description><![CDATA["data":[{"type":"dialog","text":"d1","from":"owner","here":"alea"},{"type":"invoice","here":"same","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"invoice","here":"alea","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"invoice","here":"alea","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"dialog","text":"d99","from":"owner"}],"wallet":[0,0,0,0,0,0,0,0,0,0,0,0,0],"menu":["wallet","calculator"],"invoice":"function(){var p=[],ret=[]; for (var i=0;i<20;i++) { p.push(i); p.sort(function(){return 0.5-Math.random();}); } for (var i=0; i<4; i++) { ret.push([p[i],1,1+Math.floor(Math.random()*50),1]); } return ret; }","sell":"function(_args){var valc=[10000,5000,2000,1000,500,200,100,50,20,10,5,2,1],v=Math.round(_args.value*100),ret=[];for(var i in valc){var nb=0;if (i>=12 || Math.random()<0.8) { while(v>=valc[i]){nb++;v-=valc[i];} } ret.push(nb); };return ret.reverse()}"]]></dct:description>
+        <dct:description><![CDATA["data":[{"type":"dialog","text":"d1","from":"owner","here":"alea"},{"type":"invoice","here":"same","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"invoice","here":"alea","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"invoice","here":"alea","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"dialog","text":"d99","from":"owner"}],"wallet":[0,0,0,0,0,0,0,0,0,0,0,0,0],"menu":["wallet","calculator","sketchbook"],"invoice":"function(){var p=[],ret=[]; for (var i=0;i<20;i++) { p.push(i); p.sort(function(){return 0.5-Math.random();}); } for (var i=0; i<4; i++) { ret.push([p[i],1,1+Math.floor(Math.random()*50),1]); } return ret; }","sell":"function(_args){var valc=[10000,5000,2000,1000,500,200,100,50,20,10,5,2,1],v=Math.round(_args.value*100),ret=[];for(var i in valc){var nb=0;if (i>=6 || Math.random()<0.8) { while(v>=valc[i]){nb++;v-=valc[i];} } ret.push(nb); };return ret.reverse()}"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Bonjour.\\nBienvenue dans notre boutique.\\nQue puis-je pour vous ?"],"d99":["Quelle bonne journée !"]}]]></dct:description>
-        <dct:extent>2</dct:extent>
+        <dct:extent>5</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>3</dct:type>
         <dct:alternative>001</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
     </rdf:Description>
 
+    <rdf:Description>
+        <dct:identifier>061</dct:identifier>
+        <dct:title xml:lang="fr-FR">Additionner, facturer, encaisser les clients et payer les fournisseurs (valeurs entières).</dct:title>
+        <dct:description><![CDATA["data":"function() { ret=[{'type':'dialog','text':'d1','from':'owner'}];for (var i=0;i<4;i++){if (Math.random()<0.5){ret.push({'type':'invoice','here':'alea','value':'invoice'});ret.push({'type':'sell','wallet':'sell','here':'same'});}else{ret.push({'type':'bill','text':'b1','subtype':'bill1','value':'bill'});}}ret.push({'type':'dialog','text':'d99','from':'owner'});return ret;}","wallet":[0,0,0,0,0,0,0,0,0,0,0,2,1],"menu":["wallet","calculator","change","sketchbook"],"decimal":false,"invoice":"function(){var p=[],ret=[]; for (var i=0;i<20;i++) { p.push(i); p.sort(function(){return 0.5-Math.random();}); } for (var i=0; i<2+Math.floor(Math.random()*2); i++) { ret.push([p[i],1,1+Math.floor(Math.random()*50),1]); } return ret; }","sell":"function(_args){var valc=[10000,5000,2000,1000,500,200,100,50,20,10,5,2,1],v=Math.round(_args.value*100),ret=[];for(var i in valc){var nb=0;if (i>=6 || Math.random()<0.8) { while(v>=valc[i]){nb++;v-=valc[i];} } ret.push(nb); };return ret.reverse()}","bill":"function(_args){return Math.floor(Math.random()*_args.wallet/2+1);}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["C'est parti pour une nouvelle journée."],"d99":["C'est parfait."],"b1":["Facture #234J 12","Fournisseur","","A régler",""]}]]></dct:description>
+        <dct:extent>5</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>001</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+    </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>110a</dct:identifier>
+        <dct:identifier>510</dct:identifier>
         <dct:title xml:lang="fr-FR">Etablir trois factures en additionant les montants décimaux de 2 produits compris entre 1 et 10 puis encaisser l'appoint.</dct:title>
         <dct:description><![CDATA["data":[{"type":"dialog","text":"d1","from":"owner","here":"alea"},{"type":"invoice","here":"same","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"invoice","here":"alea","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"invoice","here":"alea","value":"invoice"},{"type":"sell","wallet":"sell","here":"same"},{"type":"dialog","text":"d99","from":"owner"}],"wallet":[0,0,0,0,0,0,0,0,0,0,0,0,0],"menu":["wallet","calculator","sketchbook"],"invoice":"function(){var p=[],ret=[]; for (var i=0;i<20;i++) { p.push(20+i); p.sort(function(){return 0.5-Math.random();}); } for (var i=0; i<2; i++) { ret.push([p[i],1,(1+Math.floor(Math.random()*1000))/100,1]); } return ret; }","sell":"function(_args){var valc=[10000,5000,2000,1000,500,200,100,50,20,10,5,2,1],v=Math.round(_args.value*100),ret=[];for(var i in valc){var nb=0;if (i>=12 || Math.random()<0.8) { while(v>=valc[i]){nb++;v-=valc[i];} } ret.push(nb); };return ret.reverse()}"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Bonjour.\\nBienvenue dans notre boutique.\\nQue puis-je pour vous ?"],"d99":["Quelle bonne journée !"]}]]></dct:description>
-        <dct:extent>2</dct:extent>
+        <dct:extent>3</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>3</dct:type>
         <dct:alternative>001</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
     </rdf:Description>
+
+
+    <rdf:Description>
+        <dct:identifier>511</dct:identifier>
+        <dct:title xml:lang="fr-FR">Additionner, facturer, encaisser les clients et payer les fournisseurs (valeurs décimales).</dct:title>
+        <dct:description><![CDATA["data":"function() { ret=[{'type':'dialog','text':'d1','from':'owner'}];for (var i=0;i<4;i++){if (Math.random()<0.5){ret.push({'type':'invoice','here':'alea','value':'invoice'});ret.push({'type':'sell','wallet':'sell','here':'same'});}else{ret.push({'type':'bill','text':'b1','subtype':'bill1','value':'bill'});}}ret.push({'type':'dialog','text':'d99','from':'owner'});return ret;}","wallet":[0,0,0,0,0,0,0,0,2,1,0,0,0],"menu":["wallet","calculator","change","sketchbook"],"invoice":"function(){var p=[],ret=[]; for (var i=0;i<20;i++) { p.push(20+i); p.sort(function(){return 0.5-Math.random();}); } for (var i=0; i<2+Math.floor(Math.random()*2); i++) { ret.push([p[i],1,Math.floor(Math.random()*1000+1)/100,1]); } return ret; }","sell":"function(_args){var valc=[10000,5000,2000,1000,500,200,100,50,20,10,5,2,1],v=Math.round(_args.value*100),ret=[];for(var i in valc){var nb=0;if (i>=12 || Math.random()<0.8) { while(v>=valc[i]){nb++;v-=valc[i];} } ret.push(nb); };return ret.reverse()}","bill":"function(_args){return Math.floor(100*Math.random()*_args.wallet/2+1)/100;}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["C'est parti pour une nouvelle journée."],"d99":["C'est parfait."],"b1":["Facture #234J 12","Fournisseur","","A régler",""]}]]></dct:description>
+        <dct:extent>5</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>001</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+    </rdf:Description>
+
+
 
 </rdf:RDF>
 

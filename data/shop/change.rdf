@@ -1,0 +1,247 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dct="http://purl.org/dc/terms/">
+
+    <rdf:Description>
+        <dct:identifier>001</dct:identifier>
+        <dct:title xml:lang="fr-FR">Valider une facture puis encaisser le client en rendant la monnaie [10-8].</dct:title>
+        <dct:description><![CDATA["data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"dialog","text":"d4","from":"client","here":"client01"},{"type":"invoice","here":"same","value":[[1,1,6,1],[0,1,2,1]],"total":8},{"type":"dialog","text":"d2","from":"client","here":"same"},{"type":"dialog","text":"d3","from":"owner","here":"same"},{"type":"sell","wallet":[0,0,0,0,0,0,0,0,0,1,0,0,0],"here":"same"},{"type":"dialog","text":"d99","from":"owner"}],"wallet":[0,0,0,0,0,0,0,1,0,0,0,0,0],"menu":["wallet"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Jusqu'à présent, les clients ont tous payé\\nen fournissant l'appoint !\\nEn 10 ans de métier, c'est du jamais-vu.\\nJ'ai peur que les choses se compliquent\\nà présent."],"d2":["Voyons voir... Je \\nn'ai qu'un billet\\nde 10 sous.","Ca ira ?"],"d3":["Il n'y a aucun problème.","La cliente nous doit 8 sous. Comme elle\\nnous donne 10 sous, il faut lui rendre la\\ndifférence, c'est à dire 10 - 8 = 2 sous.","Déplacez le billet de la cliente dans\\nnotre tiroir-caisse et rendez les 2 sous\\nde monnaie à la cliente avant de valider."],"d4":["Bonjour !"],"d99":["C'est parfait."]}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>002</dct:identifier>
+        <dct:title xml:lang="fr-FR">Valider 3 factures puis encaisser les clients en leur rendant la monnaie [5-4,10-7,30-25].</dct:title>
+        <dct:description><![CDATA["data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"invoice","here":"alea","value":[[18,2,2,1]],"total":4},{"type":"sell","wallet":[0,0,0,0,0,0,0,0,1,0,0,0,0],"here":"same"},{"type":"invoice","here":"alea","value":[[11,3,2,1],[12,1,1,1]],"total":7},{"type":"sell","wallet":[0,0,0,0,0,0,0,0,0,1,0,0,0],"here":"same"},{"type":"invoice","here":"alea","value":[[9,3,5,1],[8,2,5,1]],"total":25},{"type":"sell","wallet":[0,0,0,0,0,0,0,0,0,1,1,0,0],"here":"same"},{"type":"dialog","text":"d99","from":"owner"}],"wallet":[0,0,0,0,0,0,2,1,0,0,0,0,0],"menu":["wallet"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["De nouveaux clients arrivent.\\nN'oubliez pas de rendre la monnaie !","La monnaie à rendre est égale à la\\ndifférence entre ce que donne le client\\net ce qu'il nous doit."],"d99":["C'est parfait."]}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>003</dct:identifier>
+        <dct:title xml:lang="fr-FR">Valider 3 factures puis encaisser les clients en leur rendant la monnaie [50-49,20-7,100-25].</dct:title>
+        <dct:description><![CDATA["data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"invoice","here":"alea","value":[[8,7,7,1]],"total":49},{"type":"sell","wallet":[0,0,0,0,0,0,0,0,0,0,0,1,0],"here":"same"},{"type":"invoice","here":"alea","value":[[1,2,2,1],[13,1,3,1]],"total":7},{"type":"sell","wallet":[0,0,0,0,0,0,0,0,0,0,1,0,0],"here":"same"},{"type":"invoice","here":"alea","value":[[7,4,5,1],[6,1,5,1]],"total":25},{"type":"sell","wallet":[0,0,0,0,0,0,0,0,0,0,0,0,1],"here":"same"},{"type":"dialog","text":"d99","from":"owner"}],"wallet":[0,0,0,0,0,0,10,10,5,5,5,0,0],"menu":["wallet"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["De nouveaux clients arrivent.\\nN'oubliez pas de rendre la monnaie !"],"d99":["Très bien."]}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>004</dct:identifier>
+        <dct:title xml:lang="fr-FR">Valider 3 factures puis encaisser les clients en leur rendant la monnaie malgré un tiroir caisse en désordre [30-23,40-29,20-12].</dct:title>
+        <dct:description><![CDATA["messy":true,"data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"invoice","here":"alea","value":[[5,5,4,1],[3,1,3,1]],"total":23},{"type":"sell","wallet":[0,0,0,0,0,0,0,0,0,1,1,0,0],"here":"same"},{"type":"invoice","here":"alea","value":[[1,2,10,1],[3,3,3,1]],"total":29},{"type":"sell","wallet":[0,0,0,0,0,0,0,0,0,0,2,0,0],"here":"same"},{"type":"invoice","here":"alea","value":[[2,4,2,1],[3,2,2,1]],"total":12},{"type":"sell","wallet":[0,0,0,0,0,0,0,0,0,2,0,0,0],"here":"same"},{"type":"dialog","text":"d99","from":"owner"}],"wallet":[0,0,0,0,0,0,10,10,5,5,5,0,0],"menu":["wallet"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Aïe, le tiroir-caisse est à nouveau en\\ndésordre alors que de nouveaux clients\\narrivent.\\nJ'espère que cela va aller."],"d99":["Très bien."]}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>011</dct:identifier>
+        <dct:title xml:lang="fr-FR">Valider une facture puis encaisser le client en rendant la monnaie [50-32].</dct:title>
+        <dct:description><![CDATA["data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"invoice","here":"alea","value":[[18,4,8,1]],"total":32},{"type":"dialog","text":"d2","from":"owner","here":"same"},{"type":"sell","wallet":[0,0,0,0,0,0,0,0,0,0,0,1,0],"here":"same"},{"type":"dialog","text":"d99","from":"owner"}],"wallet":[0,0,0,0,0,0,1,1,1,1,0,0,0],"menu":["wallet"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Pour rendre la monnaie plus facilement,\\nil existe une astuce très utile qui\\npermet d'éviter d'avoir à faire la\\nmoindre soustraction."],"d2":["Je vois que ce client n'a qu'un billet\\nde 50 sous. Il est tout à fait possible\\nde faire la soustraction 50-32 et de\\nlui rendre 18 sous de monnaie.\\nMais on peut faire autrement.","A partir des 32 sous de la facture, il\\nsuffit d'ajouter de la monnaie jusqu'à\\narriver aux 50 sous donnés par le client.","Je commence à 32, je donne 1 sou de\\nmonnaie puis 2 sous. Cela fait\\n32 + 1 + 2 = 35. Je rajoute encore 5 sous\\npour arriver à 40 puis 10 qui me donnent\\nenfin 40 + 10 = 50","Au final, j'aurais donné 1+2+5+10 (=18)\\nsous au client pour passer de 32 à 50\\nce qui correspond bien à la monnaie\\nà rendre.","Allez, c'est à vous !\\nPartez de 32 et ajoutez autant\\nde monnaie que nécessaire pour arriver au\\n50 sous du client."],"d99":["C'est bien."]}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>001</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>012</dct:identifier>
+        <dct:title xml:lang="fr-FR">Valider 3 factures puis encaisser les clients en leur rendant la monnaie [50-23,20-3,100-25].</dct:title>
+        <dct:description><![CDATA["data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"invoice","here":"alea","value":[[8,1,23,1]],"total":23},{"type":"dialog","text":"d2","from":"owner","here":"same"},{"type":"sell","wallet":[0,0,0,0,0,0,0,0,0,0,0,1,0],"here":"same"},{"type":"invoice","here":"alea","value":[[13,1,3,1]],"total":3},{"type":"sell","wallet":[0,0,0,0,0,0,0,0,0,0,1,0,0],"here":"same"},{"type":"invoice","here":"alea","value":[[5,5,4,1],[6,1,5,1]],"total":25},{"type":"sell","wallet":[0,0,0,0,0,0,0,0,0,0,0,0,1],"here":"same"},{"type":"dialog","text":"d99","from":"owner"}],"wallet":[0,0,0,0,0,0,0,2,3,1,1,0,0],"menu":["wallet"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Essayer de rendre la monnaie sans\\nfaire de soustraction."],"d2":["Ce client a un billet de 50 sous.\\nPour aller de 23 à 50, il faut :\\n. 23 + 2 = 25\\n. 25 + 5 = 30\\n. 30 + 20 = 50","La monnaie à rendre à ce client est :\\n2 + 5 + 20 soit 27 sous.\\nCalculée sans aucune soustraction !"],"d99":["Très bien."]}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>021</dct:identifier>
+        <dct:title xml:lang="fr-FR">Valider 3 factures puis encaisser les clients en leur rendant la monnaie à l'aide du monnayeur [20-9,30-21,50-12].</dct:title>
+        <dct:description><![CDATA["decimal":false,"data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"invoice","here":"alea","value":[[5,3,3,1]]},{"type":"sell","wallet":[0,0,0,0,0,0,0,0,0,0,1,0,0],"here":"same"},{"type":"invoice","here":"alea","value":[[11,2,10,1],[13,1,1,1]]},{"type":"sell","wallet":[0,0,0,0,0,0,0,0,0,1,1,0,0],"here":"same"},{"type":"invoice","here":"alea","value":[[3,4,2,1],[7,2,2,1]]},{"type":"sell","wallet":[0,0,0,0,0,0,0,0,0,0,0,1,0],"here":"same"},{"type":"dialog","text":"d99","from":"owner"}],"wallet":[0,0,0,0,0,0,0,8,0,2,0,1,0],"menu":["wallet","change"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["N'hésitez pas à utiliser le monnayeur\\npour pouvoir rendre la monnaie aux clients."],"d99":["Vous avez tout compris."]}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>022</dct:identifier>
+        <dct:title xml:lang="fr-FR">Additionner les produits et valider 3 factures puis encaisser les clients en leur rendant la monnaie à l'aide du monnayeur (valeurs entières) [5x10].</dct:title>
+        <dct:description><![CDATA["decimal":false,"data":"function() { ret=[{'type':'dialog','text':'d1','from':'owner'}];for (var i=0;i<3;i++){ret.push({'type':'invoice','here':'alea','value':'invoice'});ret.push({'type':'sell','wallet':'sell','here':'same'});} ret.push({'type':'dialog','text':'d99','from':'owner'});return ret;}","wallet":[0,0,0,0,0,0,0,8,0,2,0,1,0],"menu":["wallet","change","sketchbook","calculator"],"invoice":"function(){var p=[],ret=[]; for (var i=0;i<20;i++) { p.push(i); p.sort(function(){return 0.5-Math.random();}); } var s=0;for (var i=0; i<2+Math.floor(Math.random()*2); i++) { var a=1+Math.floor(Math.random()*5),b=p[i]<20?1+Math.floor(Math.random()*10):Math.floor(1+Math.random()*99)/10;s+=a*b;ret.push([p[i],a,b,0]); } return ret; }","sell":"function(_args){var alea=0.8,bills=2; var exact=function(v,d,ret){ var valc=[10000,5000,2000,1000,500,200,100,50,20,10,5,2,1]; if (!ret) { ret=[0,0,0,0,0,0,0,0,0,0,0,0,0]; } for(var i=0;i<13;i++){var nb=0;if (i>=(d?12:6) || Math.random()<alea) { while(v>=valc[i]){nb++;v-=valc[i];} } ret[12-i]+=nb; };return ret; }, up=function(v,d,ret){var valc=[1,2,5,10,20,50,100,200,500,1000,2000,5000,10000],done=false;if (!ret) { ret=[0,0,0,0,0,0,0,0,0,0,0,0,0]; }for (var i=0;i<13;i++){var nb=0; if (!done&&((v/valc[i]<bills&&Math.random()<alea&&v%valc[i])||i>=12)){ nb=Math.ceil(v/valc[i]); done=true; } ret[i]+=nb; } return ret;}; var v=Math.round(_args.value*100),v0=[0],v1=v0[Math.floor(Math.random()*v0.length)],v2=v-v1; return exact(v1,_args.dec,up(v2,_args.dec));}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Voici venir de nouveaux clients.\\nA vous de facturer, d'encaisser et\\nde rendre la monnaie."],"d99":["C'était très bien."]}]]></dct:description>
+        <dct:extent>5</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>001</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+    </rdf:Description>
+
+        <rdf:Description>
+        <dct:identifier>023</dct:identifier>
+        <dct:title xml:lang="fr-FR">Additionner les produits et valider 3 factures puis encaisser les clients en leur rendant la monnaie à l'aide du monnayeur (valeurs entières) [10x10].</dct:title>
+        <dct:description><![CDATA["decimal":false,"data":"function() { ret=[{'type':'dialog','text':'d1','from':'owner'}];for (var i=0;i<3;i++){ret.push({'type':'invoice','here':'alea','value':'invoice'});ret.push({'type':'sell','wallet':'sell','here':'same'});} ret.push({'type':'dialog','text':'d99','from':'owner'});return ret;}","wallet":[0,0,0,0,0,0,0,8,0,2,0,1,0],"menu":["wallet","change","sketchbook","calculator"],"invoice":"function(){var p=[],ret=[]; for (var i=0;i<20;i++) { p.push(i); p.sort(function(){return 0.5-Math.random();}); } var s=0;for (var i=0; i<2+Math.floor(Math.random()*2); i++) { var a=1+Math.floor(Math.random()*10),b=p[i]<20?1+Math.floor(Math.random()*10):Math.floor(1+Math.random()*99)/10;s+=a*b;ret.push([p[i],a,b,0]); } return ret; }","sell":"function(_args){var alea=1,bills=2; var exact=function(v,d,ret){ var valc=[10000,5000,2000,1000,500,200,100,50,20,10,5,2,1]; if (!ret) { ret=[0,0,0,0,0,0,0,0,0,0,0,0,0]; } for(var i=0;i<13;i++){var nb=0;if (i>=(d?12:6) || Math.random()<alea) { while(v>=valc[i]){nb++;v-=valc[i];} } ret[12-i]+=nb; };return ret; }, up=function(v,d,ret){var valc=[1,2,5,10,20,50,100,200,500,1000,2000,5000,10000],done=false;if (!ret) { ret=[0,0,0,0,0,0,0,0,0,0,0,0,0]; }for (var i=0;i<13;i++){var nb=0; if (!done&&((v/valc[i]<bills&&Math.random()<alea&&v%valc[i])||i>=12)){ nb=Math.ceil(v/valc[i]); done=true; } ret[i]+=nb; } return ret;}; var v=Math.round(_args.value*100),v0=[v%1000],v1=v0[Math.floor(Math.random()*v0.length)],v2=v-v1; return up(v1,_args.dec,exact(v2,_args.dec));}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["C'est à vous."],"d99":["Excellent."]}]]></dct:description>
+        <dct:extent>5</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>001</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>051</dct:identifier>
+        <dct:title xml:lang="fr-FR">Rendre la monnaie de 52 sur une facture de 22 .</dct:title>
+        <dct:description><![CDATA["data":[{"type":"dialog","text":"d1","from":"owner","here":"alea"},{"type":"invoice","here":"same","value":[[18,2,11,0]]},{"type":"dialog","text":"d2","from":"client","here":"same"},{"type":"dialog","text":"d3","from":"owner","here":"same"},{"type":"sell","wallet":[0,0,0,0,0,0,0,1,0,0,0,1,0],"here":"same"},{"type":"dialog","text":"d99","from":"owner"}],"wallet":[0,0,0,0,0,0,1,1,1,1,1,0,0],"menu":["wallet","calculator"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Bonjour."],"d2":["Je n'ai qu'un billet\\nde 50 sous...","Attendez...","J'ai également les 2\\nsous."],"d3":["Ce client nous a donné 52 sous pour régler\\nsa facture de 22 sous.\\nDans ces cas-là, il est plus simple de\\nrendre la monnaie en 2 fois.","On rend d'abord la monnaie pour les unités\\nIci 2 pour 2, il n'y a rien à rendre.\\nPuis on rend la monnaie pour les dizaines,\\nc'est à dire 50 pour 20 donc 30.","C'est à vous."],"d99":["C'est bien."]}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>001</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>052</dct:identifier>
+        <dct:title xml:lang="fr-FR">Additionner les produits et valider 3 factures puis encaisser les clients en leur rendant la monnaie à l'aide du monnayeur (valeurs entières et appoint partiel) [10x10].</dct:title>
+        <dct:description><![CDATA["decimal":false,"data":"function() { ret=[{'type':'dialog','text':'d1','from':'owner'}];for (var i=0;i<3;i++){ret.push({'type':'invoice','here':'alea','value':'invoice'});ret.push({'type':'sell','wallet':'sell','here':'same'});} ret.push({'type':'dialog','text':'d99','from':'owner'});return ret;}","wallet":[0,0,0,0,0,0,0,8,0,2,0,1,0],"menu":["wallet","change","sketchbook","calculator"],"invoice":"function(){var p=[],ret=[]; for (var i=0;i<20;i++) { p.push(i); p.sort(function(){return 0.5-Math.random();}); } var s=0;for (var i=0; i<2+Math.floor(Math.random()*2); i++) { var a=1+Math.floor(Math.random()*10),b=p[i]<20?1+Math.floor(Math.random()*10):Math.floor(1+Math.random()*99)/10;s+=a*b;ret.push([p[i],a,b,0]); } return ret; }","sell":"function(_args){var alea=0.8,bills=3; var exact=function(v,d,ret){ var valc=[10000,5000,2000,1000,500,200,100,50,20,10,5,2,1]; if (!ret) { ret=[0,0,0,0,0,0,0,0,0,0,0,0,0]; } for(var i=0;i<13;i++){var nb=0;if (i>=(d?12:6) || Math.random()<alea) { while(v>=valc[i]){nb++;v-=valc[i];} } ret[12-i]+=nb; };return ret; }, up=function(v,d,ret){var valc=[1,2,5,10,20,50,100,200,500,1000,2000,5000,10000],done=false;if (!ret) { ret=[0,0,0,0,0,0,0,0,0,0,0,0,0]; }for (var i=0;i<13;i++){var nb=0; if (!done&&((v/valc[i]<bills&&Math.random()<alea&&v%valc[i])||i>=12)){ nb=Math.ceil(v/valc[i]); done=true; } ret[i]+=nb; } return ret;}; var v=Math.round(_args.value*100),v0=[v%1000],v1=v0[Math.floor(Math.random()*v0.length)],v2=v-v1; return exact(v1,_args.dec,up(v2,_args.dec));}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["A vous de jouer."],"d99":["C'était très bien."]}]]></dct:description>
+        <dct:extent>5</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>001</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>053</dct:identifier>
+        <dct:title xml:lang="fr-FR">Additionner les produits et valider 3 factures puis encaisser les clients en leur rendant la monnaie à l'aide du monnayeur (valeurs entières et appoint partiel) [10x10].</dct:title>
+        <dct:description><![CDATA["decimal":false,"data":"function() { ret=[{'type':'dialog','text':'d1','from':'owner'}];for (var i=0;i<3;i++){ret.push({'type':'invoice','here':'alea','value':'invoice'});ret.push({'type':'sell','wallet':'sell','here':'same'});} ret.push({'type':'dialog','text':'d99','from':'owner'});return ret;}","wallet":[0,0,0,0,0,0,0,8,0,2,0,1,0],"menu":["wallet","change","sketchbook","calculator"],"invoice":"function(){var p=[],ret=[]; for (var i=0;i<20;i++) { p.push(i); p.sort(function(){return 0.5-Math.random();}); } var s=0;for (var i=0; i<2+Math.floor(Math.random()*2); i++) { var a=1+Math.floor(Math.random()*10),b=p[i]<20?1+Math.floor(Math.random()*10):Math.floor(1+Math.random()*99)/10;s+=a*b;ret.push([p[i],a,b,0]); } return ret; }","sell":"function(_args){var alea=0.8,bills=3; var exact=function(v,d,ret){ var valc=[10000,5000,2000,1000,500,200,100,50,20,10,5,2,1]; if (!ret) { ret=[0,0,0,0,0,0,0,0,0,0,0,0,0]; } for(var i=0;i<13;i++){var nb=0;if (i>=(d?12:6) || Math.random()<alea) { while(v>=valc[i]){nb++;v-=valc[i];} } ret[12-i]+=nb; };return ret; }, up=function(v,d,ret){var valc=[1,2,5,10,20,50,100,200,500,1000,2000,5000,10000],done=false;if (!ret) { ret=[0,0,0,0,0,0,0,0,0,0,0,0,0]; }for (var i=0;i<13;i++){var nb=0; if (!done&&((v/valc[i]<bills&&Math.random()<alea&&v%valc[i])||i>=12)){ nb=Math.ceil(v/valc[i]); done=true; } ret[i]+=nb; } return ret;}; var v=Math.round(_args.value*100),v0=[0,v%1000,v%1000],v1=v0[Math.floor(Math.random()*v0.length)],v2=v-v1; return exact(v1,_args.dec,up(v2,_args.dec));}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["C'est à vous."],"d99":["Excellent."]}]]></dct:description>
+        <dct:extent>5</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>001</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+    </rdf:Description>
+
+
+    <rdf:Description>
+        <dct:identifier>054</dct:identifier>
+        <dct:title xml:lang="fr-FR">Additionner les produits et valider 3 factures puis encaisser les clients en leur rendant la monnaie à l'aide du monnayeur (valeurs entières et appoint partiel) [10x10].</dct:title>
+        <dct:description><![CDATA["decimal":false,"data":"function() { ret=[{'type':'dialog','text':'d1','from':'owner'}];for (var i=0;i<3;i++){ret.push({'type':'invoice','here':'alea','value':'invoice'});ret.push({'type':'sell','wallet':'sell','here':'same'});} ret.push({'type':'dialog','text':'d99','from':'owner'});return ret;}","wallet":[0,0,0,0,0,0,0,8,0,2,0,1,0],"menu":["wallet","change","sketchbook","calculator"],"invoice":"function(){var p=[],ret=[]; for (var i=0;i<20;i++) { p.push(i); p.sort(function(){return 0.5-Math.random();}); } var s=0;for (var i=0; i<2+Math.floor(Math.random()*3); i++) { var a=1+Math.floor(Math.random()*10),b=p[i]<20?1+Math.floor(Math.random()*10):Math.floor(1+Math.random()*99)/10;s+=a*b;ret.push([p[i],a,b,0]); } return ret; }","sell":"function(_args){var alea=0.8,bills=3; var exact=function(v,d,ret){ var valc=[10000,5000,2000,1000,500,200,100,50,20,10,5,2,1]; if (!ret) { ret=[0,0,0,0,0,0,0,0,0,0,0,0,0]; } for(var i=0;i<13;i++){var nb=0;if (i>=(d?12:6) || Math.random()<alea) { while(v>=valc[i]){nb++;v-=valc[i];} } ret[12-i]+=nb; };return ret; }, up=function(v,d,ret){var valc=[1,2,5,10,20,50,100,200,500,1000,2000,5000,10000],done=false;if (!ret) { ret=[0,0,0,0,0,0,0,0,0,0,0,0,0]; }for (var i=0;i<13;i++){var nb=0; if (!done&&((v/valc[i]<bills&&Math.random()<alea&&v%valc[i])||i>=12)){ nb=Math.ceil(v/valc[i]); done=true; } ret[i]+=nb; } return ret;}; var v=Math.round(_args.value*100),v0=[0,v%1000,v%1000],v1=v0[Math.floor(Math.random()*v0.length)],v2=v-v1; return Math.random()<0.5?exact(v1,_args.dec,up(v2,_args.dec)):up(v1,_args.dec,exact(v2,_args.dec));;}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["C'est à vous."],"d99":["Excellent."]}]]></dct:description>
+        <dct:extent>5</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>001</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>501</dct:identifier>
+        <dct:title xml:lang="fr-FR">Valider 3 factures puis encaisser les clients en leur rendant la monnaie à l'aide du monnayeur [30-28.8].</dct:title>
+        <dct:description><![CDATA["data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"invoice","here":"alea","value":[[25,8,3.6,1]]},{"type":"dialog","text":"d2","from":"client","here":"same"},{"type":"dialog","text":"d3","from":"owner","here":"same"},{"type":"sell","wallet":[0,0,0,0,0,0,0,0,0,3,0,0,0],"here":"same"},{"type":"dialog","text":"d99","from":"owner"}],"wallet":[0,0,0,0,1,0,1,0,0,0,0,0,0],"menu":["wallet","change"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Bonjour."],"d2":["Voici 30 sous."],"d3":["Avec les centimes, il est souvent plus\\nsimple de rendre la monnaie par addition.\\n28.8 + 0.20 = 29\\n29   + 1    = 30\\net le tour est joué !"],"d99":["Vous avez tout compris."]}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>502</dct:identifier>
+        <dct:title xml:lang="fr-FR">Valider 3 factures puis encaisser les clients en leur rendant la monnaie à l'aide du monnayeur [300-245.68].</dct:title>
+        <dct:description><![CDATA["data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"invoice","here":"alea","value":[[27,8,5.71,1],[21,8,25,1]],"total":245.68},{"type":"dialog","text":"d2","from":"client","here":"same"},{"type":"dialog","text":"d3","from":"owner","here":"same"},{"type":"sell","wallet":[0,0,0,0,0,0,0,0,0,0,0,0,3],"here":"same"},{"type":"dialog","text":"d99","from":"owner"}],"wallet":[0,1,0,1,1,0,0,2,0,0,0,1,0],"menu":["wallet","change"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Bonjour."],"d2":["Voici 300 sous."],"d3":["Rendons la monnaie par addition.\\nPartons de 245.68 et tâchons d'arriver\\nau 300 sous donné par le client.","245.68 + 0.02 = 245.70\\n245.70 + 0.30 = 246\\n246    + 4    = 250\\n250    +  50  = 300","A vous."],"d99":["Vous avez tout compris."]}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>551</dct:identifier>
+        <dct:title xml:lang="fr-FR">Additionner les produits et valider 3 factures puis encaisser les clients en leur rendant la monnaie à l'aide du monnayeur (valeurs décimales).</dct:title>
+        <dct:description><![CDATA["data":"function() { ret=[{'type':'dialog','text':'d1','from':'owner'}];for (var i=0;i<3;i++){ret.push({'type':'invoice','here':'alea','value':'invoice'});ret.push({'type':'sell','wallet':'sell','here':'same'});} ret.push({'type':'dialog','text':'d99','from':'owner'});return ret;}","wallet":[5,5,5,5,5,5,5,5,5,5,5,5,1],"menu":["wallet","change","sketchbook","calculator"],"invoice":"function(){var p=[],ret=[]; for (var i=0;i<20;i++) { p.push(20+i); p.sort(function(){return 0.5-Math.random();}); } var s=0;for (var i=0; i<1+Math.floor(Math.random()*2); i++) { var a=1+Math.floor(Math.random()*10),b=p[i]<20?1+Math.floor(Math.random()*20):Math.floor(1+Math.random()*99)/10;s+=a*b;ret.push([p[i],a,b,0]); } return ret; }","sell":"function(_args){var alea=0.8,bills=3; var exact=function(v,d,ret){ var valc=[10000,5000,2000,1000,500,200,100,50,20,10,5,2,1]; if (!ret) { ret=[0,0,0,0,0,0,0,0,0,0,0,0,0]; } for(var i=0;i<13;i++){var nb=0;if (i>=(d?12:6) || Math.random()<alea) { while(v>=valc[i]){nb++;v-=valc[i];} } ret[12-i]+=nb; };return ret; }, up=function(v,d,ret){var valc=[1,2,5,10,20,50,100,200,500,1000,2000,5000,10000],done=false;if (!ret) { ret=[0,0,0,0,0,0,0,0,0,0,0,0,0]; }for (var i=0;i<13;i++){var nb=0; if (!done&&((v/valc[i]<bills&&Math.random()<alea&&v%valc[i])||i>=12)){ nb=Math.ceil(v/valc[i]); done=true; } ret[i]+=nb; } return ret;}; var v=Math.round(_args.value*100),v0=[0],v1=v0[Math.floor(Math.random()*v0.length)],v2=v-v1; return exact(v1,_args.dec,up(v2,_args.dec));}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Les choses se compliquent."],"d99":["Vous avez tout compris."]}]]></dct:description>
+        <dct:extent>5</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>001</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>552</dct:identifier>
+        <dct:title xml:lang="fr-FR">Additionner les produits et valider 3 factures puis encaisser les clients en leur rendant la monnaie à l'aide du monnayeur (valeurs décimales).</dct:title>
+        <dct:description><![CDATA["data":"function() { ret=[{'type':'dialog','text':'d1','from':'owner'}];for (var i=0;i<3;i++){ret.push({'type':'invoice','here':'alea','value':'invoice'});ret.push({'type':'sell','wallet':'sell','here':'same'});} ret.push({'type':'dialog','text':'d99','from':'owner'});return ret;}","wallet":[5,5,5,5,5,5,5,5,5,5,5,5,1],"menu":["wallet","change","sketchbook","calculator"],"invoice":"function(){var p=[],ret=[]; for (var i=0;i<20;i++) { p.push(20+i); p.sort(function(){return 0.5-Math.random();}); } var s=0;for (var i=0; i<1+Math.floor(Math.random()*3); i++) { var a=1+Math.floor(Math.random()*10),b=p[i]<20?1+Math.floor(Math.random()*20):Math.floor(1+Math.random()*99)/10;s+=a*b;ret.push([p[i],a,b,0]); } return ret; }","sell":"function(_args){var alea=0.8,bills=3; var exact=function(v,d,ret){ var valc=[10000,5000,2000,1000,500,200,100,50,20,10,5,2,1]; if (!ret) { ret=[0,0,0,0,0,0,0,0,0,0,0,0,0]; } for(var i=0;i<13;i++){var nb=0;if (i>=(d?12:6) || Math.random()<alea) { while(v>=valc[i]){nb++;v-=valc[i];} } ret[12-i]+=nb; };return ret; }, up=function(v,d,ret){var valc=[1,2,5,10,20,50,100,200,500,1000,2000,5000,10000],done=false;if (!ret) { ret=[0,0,0,0,0,0,0,0,0,0,0,0,0]; }for (var i=0;i<13;i++){var nb=0; if (!done&&((v/valc[i]<bills&&Math.random()<alea&&v%valc[i])||i>=12)){ nb=Math.ceil(v/valc[i]); done=true; } ret[i]+=nb; } return ret;}; var v=Math.round(_args.value*100),v0=[v%100],v1=v0[Math.floor(Math.random()*v0.length)],v2=v-v1; return exact(v1,_args.dec,up(v2,_args.dec));}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["On continue."],"d99":["Vous avez tout compris."]}]]></dct:description>
+        <dct:extent>5</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:alternative>001</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>553</dct:identifier>
+        <dct:title xml:lang="fr-FR">Additionner les produits et valider 3 factures puis encaisser les clients en leur rendant la monnaie à l'aide du monnayeur (valeurs décimales).</dct:title>
+        <dct:description><![CDATA["data":"function() { ret=[{'type':'dialog','text':'d1','from':'owner'}];for (var i=0;i<3;i++){ret.push({'type':'invoice','here':'alea','value':'invoice'});ret.push({'type':'sell','wallet':'sell','here':'same'});} ret.push({'type':'dialog','text':'d99','from':'owner'});return ret;}","wallet":[5,5,5,5,5,5,5,5,5,5,5,5,1],"menu":["wallet","change","sketchbook","calculator"],"invoice":"function(){var p=[],ret=[]; for (var i=0;i<40;i++) { p.push(i); p.sort(function(){return 0.5-Math.random();}); } var s=0;for (var i=0; i<2+Math.floor(Math.random()*3); i++) { var a=1+Math.floor(Math.random()*10),b=p[i]<20?1+Math.floor(Math.random()*20):Math.floor(1+Math.random()*99)/10;s+=a*b;ret.push([p[i],a,b,0]); } return ret; }","sell":"function(_args){var alea=0.8,bills=3; var exact=function(v,d,ret){ var valc=[10000,5000,2000,1000,500,200,100,50,20,10,5,2,1]; if (!ret) { ret=[0,0,0,0,0,0,0,0,0,0,0,0,0]; } for(var i=0;i<13;i++){var nb=0;if (i>=(d?12:6) || Math.random()<alea) { while(v>=valc[i]){nb++;v-=valc[i];} } ret[12-i]+=nb; };return ret; }, up=function(v,d,ret){var valc=[1,2,5,10,20,50,100,200,500,1000,2000,5000,10000],done=false;if (!ret) { ret=[0,0,0,0,0,0,0,0,0,0,0,0,0]; }for (var i=0;i<13;i++){var nb=0; if (!done&&((v/valc[i]<bills&&Math.random()<alea&&v%valc[i])||i>=12)){ nb=Math.ceil(v/valc[i]); done=true; } ret[i]+=nb; } return ret;}; var v=Math.round(_args.value*100),v0=[0,v%10,v%100],v1=v0[Math.floor(Math.random()*v0.length)],v2=v-v1; return exact(v1,_args.dec,up(v2,_args.dec));}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["On continue."],"d99":["Vous avez tout compris."]}]]></dct:description>
+        <dct:extent>5</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:alternative>001</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>554</dct:identifier>
+        <dct:title xml:lang="fr-FR">Additionner les produits et valider 3 factures puis encaisser les clients en leur rendant la monnaie à l'aide du monnayeur (valeurs décimales).</dct:title>
+        <dct:description><![CDATA["data":"function() { ret=[{'type':'dialog','text':'d1','from':'owner'}];for (var i=0;i<3;i++){ret.push({'type':'invoice','here':'alea','value':'invoice'});ret.push({'type':'sell','wallet':'sell','here':'same'});} ret.push({'type':'dialog','text':'d99','from':'owner'});return ret;}","wallet":[5,5,5,5,5,5,5,5,5,5,5,5,1],"menu":["wallet","change","sketchbook","calculator"],"invoice":"function(){var p=[],ret=[]; for (var i=0;i<40;i++) { p.push(i); p.sort(function(){return 0.5-Math.random();}); } var s=0;for (var i=0; i<2+Math.floor(Math.random()*3); i++) { var a=1+Math.floor(Math.random()*10),b=p[i]<20?1+Math.floor(Math.random()*20):Math.floor(1+Math.random()*999)/100;s+=a*b;ret.push([p[i],a,b,0]); } return ret; }","sell":"function(_args){var alea=0.8,bills=3; var exact=function(v,d,ret){ var valc=[10000,5000,2000,1000,500,200,100,50,20,10,5,2,1]; if (!ret) { ret=[0,0,0,0,0,0,0,0,0,0,0,0,0]; } for(var i=0;i<13;i++){var nb=0;if (i>=(d?12:6) || Math.random()<alea) { while(v>=valc[i]){nb++;v-=valc[i];} } ret[12-i]+=nb; };return ret; }, up=function(v,d,ret){var valc=[1,2,5,10,20,50,100,200,500,1000,2000,5000,10000],done=false;if (!ret) { ret=[0,0,0,0,0,0,0,0,0,0,0,0,0]; }for (var i=0;i<13;i++){var nb=0; if (!done&&((v/valc[i]<bills&&Math.random()<alea&&v%valc[i])||i>=12)){ nb=Math.ceil(v/valc[i]); done=true; } ret[i]+=nb; } return ret;}; var v=Math.round(_args.value*100),v0=[0,v%10,v%100],v1=v0[Math.floor(Math.random()*v0.length)],v2=v-v1; return exact(v1,_args.dec,up(v2,_args.dec));}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["On continue."],"d99":["Vous avez tout compris."]}]]></dct:description>
+        <dct:extent>5</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:alternative>001</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+    </rdf:Description>
+
+</rdf:RDF>
+

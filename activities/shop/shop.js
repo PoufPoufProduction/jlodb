@@ -21,18 +21,19 @@
                    [[9,2]], [[9,1],[10,2]], [[11,2]] ];
     var products = [
                     // BY QUANTITY (x20)
-                    "pencil/blue01","pencil/brush02","pencil/corrector02","pencil/corrector01","pencil/eraser01",
-                    "misc/binder01","pencil/marker01","misc/salt01","pencil/marker01","pencil/brush03",
-                    "pencil/brush04","pencil/pencil02","pencil/pencil04","pencil/red02","tool/ruler01",
-                    "pencil/pen03","tool/compass02","tool/envelope01","tool/scissors01","tool/scissors02",
+                    "food/butter01","food/canned01","food/jam01","food/soup01",
+                    "drink/milk01","drink/wine01","misc/batterie01","misc/salt01",
+                    "tool/clean01","tool/scissors03","tool/envelope01","tool/compass02",
+                    "pencil/blue01","pencil/brush02","pencil/corrector01","pencil/eraser01",
+                    "pencil/marker01","pencil/marker03","pencil/spray01","pencil/pencil01",
 
                     // BY WEIGHT (x20)
-                     "vegetable/apple01","vegetable/apricot01","vegetable/kiwi01","vegetable/pear01","vegetable/pepper02",
-                     "vegetable/banana01","vegetable/strawberry01","vegetable/cherry02","vegetable/tomato01","vegetable/pepper01",
-                     "vegetable/radish01","vegetable/pepper03",
-                        // TO complete
-                        "vegetable/vanilla01","potion/blue01","potion/blue02","potion/green03","potion/yellow04",
-                        "potion/white01","potion/red03","potion/purple02",
+
+                    "vegetable/apple01","vegetable/apricot01","vegetable/aubergine01","vegetable/banana01",
+                    "vegetable/cherry02","vegetable/clementine01","vegetable/kiwi01","vegetable/leek01",
+                    "vegetable/mushroom01","vegetable/orange01","vegetable/pear01","vegetable/pepper01",
+                    "vegetable/pepper02","vegetable/pepper03","vegetable/pistachio01","vegetable/potato01",
+                    "vegetable/radish01","vegetable/strawberry01","vegetable/tomato01","food/cheese01"
                     ];
 
     
@@ -40,7 +41,11 @@
         comma : ',',
         toString:function(_val, _nbdec) {
             var dec = Math.floor((_val - Math.floor(_val))*Math.pow(10,_nbdec)+0.1), txt = "";
-            if (dec) { txt = n.comma+(dec<10?'0':'')+dec; }
+            if (dec) {
+                txt = n.comma;
+                if (_nbdec==3 && dec<100) { txt+='0'; }
+                txt+= (dec<10?'0':'')+dec;
+            }
             return Math.floor(_val)+txt;
         },
         toFloat:function(_val) { return parseFloat(_val.replace(n.comma,".")); },
@@ -107,6 +112,9 @@
                 // Send the onLoad callback
                 if (settings.context.onload) { settings.context.onload($this); }
                 $this.css("font-size", Math.floor($this.height()/12)+"px");
+
+                // COMPUTE DATA IF NEED
+                if (typeof(settings.data)=="string") { settings.data = eval('('+settings.data+')')(); }
 
                 if (settings.menu) {
                     $this.find("#menu .tab").hide();
@@ -252,6 +260,7 @@
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
+        debug: function($this, _txt) { $this.find("#output").append("<p>"+_txt+"</p>"); },
         sale: {
             create: function($this, _id, _sale, _args) {
                 var args="";
@@ -261,7 +270,7 @@
                     html+="<div class='icon'><img src='res/img/svginventoryicons/"+products[_sale.product]+".svg'/></div>";
                 }
                 html+="<div class='label type"+_sale.type+"'>"+_sale.value+"</div>";
-                if (_sale.cond) { html+="<div class='cond"+(_sale.product==-1?" s":"")+"'>"+_sale.cond+"</div>"; }
+                if (_sale.cond) { html+="<div class='cond"+(_sale.mode?"":" s")+"'>"+_sale.cond+"</div>"; }
                 html+="</div>";
                 return html;
             },
@@ -284,13 +293,16 @@
         whoishere: {
             run : function ($this, _callback) {
                 var settings = helpers.settings($this);
+
                 // HANDLE "alea" AND "same" VALUES
                 if (settings.data[settings.it].here) {
                     if (settings.data[settings.it].here =="alea") {
-                        settings.data[settings.it].here = "client0"+Math.floor(Math.random()*8+1);
+                        do {  settings.data[settings.it].here = "client0"+Math.floor(Math.random()*8+1); }
+                        while (settings.here==settings.data[settings.it].here);
                     }
                     else if (settings.data[settings.it].here =="same") { settings.data[settings.it].here = settings.here; }
                 }
+
                 if (settings.here && settings.here!=settings.data[settings.it].here) {
                     $this.find("#people #"+settings.here).animate({left:"-1.5em"},1000,
                         function() { $(this).hide(); helpers.whoishere.enter($this,_callback) } );
@@ -312,6 +324,7 @@
             // HANDLE CLIENTS OR PROVIDERS
             helpers.whoishere.run($this, function() {
 
+                $this.find("#output").append("<p>build</p>");
                 var data = settings.data[settings.it];
 
                 // GET THE DIALOG TEXT
@@ -332,7 +345,11 @@
                 if (typeof(data.value)=="string") {
                     if (data.value.indexOf("function")==-1) { gen = settings[data.value]; } else { gen = data.value; }
                 }
-                if (gen) { data.value = eval('('+gen+')')({id:settings.it}); }
+                var vWallet = 0;
+                $this.find("#pwallet .a").each( function() { vWallet+= valc[parseInt($(this).attr("class").substr(1,2))]; });
+                vWallet = Math.round(vWallet*100)/100;
+
+                if (gen) { data.value = eval('('+gen+')')({id:settings.it, wallet:vWallet, dec:settings.decimal }); }
 
                 // HANDLE WALLET
                 gen = 0;
@@ -370,6 +387,9 @@
                                     { top:(0.2+i*2.2)+"em", left:"0.2em" })); }
                             $this.find("#clientsales .sales").draggable({helper:"clone"});
                         }
+
+                        $this.find("#pinvoice .footer .lineplus").detach();
+                        $this.find("#pinvoice .footer .line").removeClass("s");
 
                         for (var i in data.value) {
                             var d = data.value[i];
@@ -475,7 +495,6 @@
         },
         next: function($this) {
             var settings = helpers.settings($this);
-
             switch (settings.data[settings.it].type)
             {
                 case "sell":
@@ -601,9 +620,10 @@
             switch(settings.data[settings.it].type) {
                 case "bill" :
                 case "sell" :
-                    if (value==settings.data[settings.it].value) { itsgood = true; }
+                    if (Math.round(value*100)==Math.round(settings.data[settings.it].value*100)) { itsgood = true; }
                 break;
             }
+
             if (itsgood) {
                 $this.find("#pmoney").addClass("good");
                 $this.find("#pmoney .a").animate({opacity:0},500, function() { $(this).detach(); });
@@ -717,9 +737,11 @@
                     var sby = [], total = 0, reduc = 0;
                     for (var i in settings.data[settings.it].value) {
                         var pp = settings.data[settings.it].value[i];
-                        var ss=[pp[1]*pp[2],0];
+                        var ss=[Math.floor(pp[1]*pp[2]*100+0.01)/100,0];
                         for (var i in sp) {
-                            if (sp[i].product==pp[0] && (!sp[i].cond || sp[i].cond<ss[0])) {
+                            if ( (sp[i].product==pp[0]) &&
+                                 (!sp[i].cond || (sp[i].mode?(sp[i].cond<pp[2]):(sp[i].cond<ss[0])) ) )
+                            {
                                 var val = sp[i].type?sp[i].value:ss[0]*sp[i].value/100;
                                 if (val>=ss[0]) { val = 0; }
                                 if (ss[1]<val) { ss[1] = val; }
@@ -737,7 +759,8 @@
                     }
 
                     var global = (max>reduc);
-                    
+                    total=Math.round(total*100)/100;
+
                     //alert(sby+" "+total+" : "+reduc+" / "+max+" = "+global);
 
                     // CHECK PRODUCT LINES
@@ -753,10 +776,10 @@
                             if (global || !ss[1]) { w = true; } else {
                                 // CHECK THE SALE
                                 var $lineplus = $line.next();
-                                if (n.toFloat($lineplus.find(".sale .cell").html()) != ss[1]) {
+                                if (n.toFloat($lineplus.find(".sale .cell").html()) != Math.round(ss[1]*100)/100) {
                                     wplus = true; $lineplus.find(".sale").addClass("wrong");
                                 }
-                                if (n.toFloat($lineplus.find(".line .cell").html()) != ss[0] - ss[1]) {
+                                if (n.toFloat($lineplus.find(".line .cell").html()) != Math.round((ss[0] - ss[1])*100)/100) {
                                     wplus = true; $lineplus.find(".line").addClass("wrong");
                                 }
                             }
@@ -768,15 +791,17 @@
                     }
                     // CHECK TOTAL
                     var $line = $this.find("#pinvoice .footer>.line");
-                    if (n.toFloat($line.find(".cell").html()) != total - (global?0:reduc)) { good = false; $line.addClass("wrong"); }
+                    if (n.toFloat($line.find(".cell").html()) != Math.round((total - (global?0:reduc))*100)/100) {
+                        good = false; $line.addClass("wrong");
+                    }
                     if ($line.hasClass("s")) {
                         if (global) {
                             var $lineplus = $line.next();
-                            if (n.toFloat($lineplus.find(".sale .cell").html()) != max) {
-                                good = true; $lineplus.find(".sale").addClass("wrong");
+                            if (n.toFloat($lineplus.find(".sale .cell").html()) != Math.round(max*100)/100 ) {
+                                good = false; $lineplus.find(".sale").addClass("wrong");
                             }
-                            if (n.toFloat($lineplus.find(".line .cell").html()) != total - max) {
-                                good = true; $lineplus.find(".line").addClass("wrong");
+                            if (n.toFloat($lineplus.find(".line .cell").html()) != Math.round((total - max)*100)/100) {
+                                good = false; $lineplus.find(".line").addClass("wrong");
                             }
                         }
                         else { good = false; $line.addClass("wrong"); }
