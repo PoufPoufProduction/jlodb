@@ -1,5 +1,5 @@
 <?php
-include_once "../database.php";
+include_once "../../api/database.php";
 include_once "_new.php";
 
 if (!$error && strlen($_GET["username"])) {

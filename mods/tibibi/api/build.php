@@ -1,8 +1,7 @@
 <?php
-$forceReadFile = 1;
-$apipath = "../../../api/";
-include_once $apipath."database.php";
-include $apipath."mods/builduser.php";
+$forceReadFile = 1; $apipath = "../../";
+include_once $apipath."../api/database.php";
+include $apipath."../user/api/builduser.php";
 
 if (!$error) {
 

@@ -1,5 +1,5 @@
 <?php
-include_once "../database.php";
+include_once "../../api/database.php";
 include "check.php";
 
 if (!$error) {

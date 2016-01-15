@@ -9,11 +9,7 @@ if ($handle = opendir("../mods")) {
         if ($file != "." && $file != "..") {
 
             $modrdf = "../mods/".$file."/".$file.".rdf";
-            if (!file_exists($modrdf)) {
-                $textstatus = "$activities: file is missing";
-                $error = 12;
-            }
-            else {
+            if (file_exists($modrdf)) {
                 // READ THE RDF FILE
                 $rdf = file_get_contents($modrdf);
                 $rdf = str_replace('rdf:','rdf_', $rdf);

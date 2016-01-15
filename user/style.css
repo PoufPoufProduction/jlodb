@@ -1,0 +1,39 @@
+/*---------- User edit ----*/
+
+#upuser                     { position:absolute; top:0; left:0; display:none; width:16em; height:12em;
+                              background-color: rgba(0,0,0,0.2); }
+#upuser>div                 { position:relative; font-size:.4em; width:20em; height:15em; top:2em; left:18em; 
+                              background-color:rgba(128,120,100,0.9); border:.2em solid white; color:black;
+                              border-radius:.5em; background-image:url("../res/img/background/book06.svg"); background-repeat:repeat; }
+#upuser .icon               { cursor:pointer; margin:.1em; }
+#upuser input               { border:0; width:13.8em; height:1.2em; margin:.1em; border-radius:0 .5em .5em 0; font-size:.8em; }
+#upuser select              { border:0; width:13.8em; height:1.2em; margin:.1em; border-radius:0 .5em .5em 0; font-size:.8em; }
+#upuser input.empty         { color:#BBBBBB; }
+#upuser #header             { height:10em; }
+#upuser #footer             { font-size:4em; }
+#upuser #settings           { margin:.1em; }
+#upuser #error              { clear:both;color:white;background-color:rgba(255,0,0,0.5); padding-right:1em;text-align:right;
+                              font-size:.8em; display:none;}
+#upuser #avatar             { float:left;width:8.3em;height:8.3em;margin:.25em .2em;background-color:black;border-radius:1em 0 0 1em;}
+#upuser #gonz               { background-color:rgba(255,240,200,0.9); width:100%; height:78%; margin-top:1em; padding:.5em;}
+#upuser #cancel             { float:left; margin-left:.2em; }
+#upuser #valid              { float:right; margin-right:.2em; }
+
+/*---------- Log panel -----*/
+
+#logpanel                   { position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); display:none; }
+#logpanel>div               { margin:2em; font-size:.8em; width:15em; background-color:#555; border-radius:.75em; padding:.5em; }
+#logpanel>div>div           { width:16em; }
+#logpanel .param            { clear:both; margin-bottom:.1em; }
+#logpanel .label            { float:left; width:6em; text-align:right; padding-right:.5em; background-color:#AAA;
+                              border-radius:.5em 0 0 .5em; height:1.2em; }
+#logpanel #lp               { display:none; }
+#logpanel.s #lp             { display:block; }
+#logpanel.s #ll .icon       { opacity:1; }
+#logpanel #ll input         { width:6.8em; border-radius:0; }
+#logpanel #ll .icon         { float:left; border-radius:0 .4em .4em 0; background-color:#666;font-size:1.2em; cursor:pointer; opacity:0.2; }
+#logpanel #ll .input        { float:left; width:7.3em; }
+#logpanel input             { font-size:1em; width:8em; height:1.2em; padding-left:.5em; background-color:#BBB; border:0;
+                              border-radius:0 .5em .5em 0; }
+#logpanel .button           { background-color:#999; border-radius:.5em; text-align:center; cursor:pointer; width:15em; }
+#logpanel.wrong #logvalid   { background-color:#C66; color:#500;}

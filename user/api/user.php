@@ -1,5 +1,5 @@
 <?php
-include_once "../database.php";
+include_once "../../api/database.php";
 include_once "check.php";
 
 if (!$error && strlen($_GET["value"])) {

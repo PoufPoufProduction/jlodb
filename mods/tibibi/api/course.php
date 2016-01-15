@@ -1,7 +1,7 @@
 <?php
-$apipath = "../../../api/";
-include_once $apipath."database.php";
-include_once $apipath."mods/check.php";
+$apipath = "../../";
+include_once $apipath."../api/database.php";
+include $apipath."../user/api/check.php";
 
 if (!$error) {
     if ($_GET["action"]=="new") {

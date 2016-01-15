@@ -1,0 +1,34 @@
+<div>
+
+    <div id="header">
+        <div id="avatar"><div></div></div>
+        <div id="settings">
+            <input value="id" id="upid" disabled="disabled"/>
+            <input value="last name" id="upln" onfocus="if ($(this).hasClass('empty')) { $(this).removeClass().val(''); }"/>
+            <input value="first name" id="upfn" onfocus="if ($(this).hasClass('empty')) { $(this).removeClass().val(''); }"/>
+            <input value="email" id="upem" onfocus="if ($(this).hasClass('empty')) { $(this).removeClass().val(''); }"/>
+            <input value="old password" id="upop" class="empty" onfocus="$(this).hide();$('#upopr').show().focus();" />
+            <input value="" type="password" id="upopr" style="display:none;"/>
+            <input value="new password" id="upnp" class="empty" onfocus="$(this).hide();$('#upnpr').show().focus();" />
+            <input value="" type="password" id="upnpr" style="display:none;"/>
+            <input value="confirmation" id="upcp" class="empty" onfocus="$(this).hide();$('#upcpr').show().focus();" />
+            <input value="" type="password" id="upcpr" style="display:none;"/>
+        </div>
+        <div id="error"></div>
+    </div>
+
+    <div id="footer">
+        <div class="icon" id="cancel" onclick="user.edit.close();" 
+                                      ontouchstart="user.edit.close();event.preventDefault();">
+            <img src="user/res/img/cancel.svg"/>
+        </div>
+        <div class="icon" id="valid" onclick="user.edit.update();" 
+                                     ontouchstart="user.edit.update();event.preventDefault();">
+            <img src="user/res/img/valid.svg"/>
+        </div>
+    </div>
+
+    <div id="gonz"></div>
+
+</div>
+

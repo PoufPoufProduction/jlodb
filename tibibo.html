@@ -1,0 +1,544 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>tibibo</title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="js/jquery.svg.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/jquery.jlodb.js"></script>
+    <script type="text/javascript" src="js/jquery.jlodb.menu.js"></script>
+    <script type="text/javascript" src="js/jlodb-ext.js"></script>
+    <script type="text/javascript" src="user/user.js"></script>
+    <script type="text/javascript" src="gonz/jquery.gonz.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/jlodb.css" media="all" />
+    <link type="text/css" rel="stylesheet" href="user/style.css" media="all" />
+    <link rel="apple-touch-icon-precomposed" href="mods/tibibo/res/img/icon/icon144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="mods/tibibo/res/img/icon/icon72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="mods/tibibo/res/img/icon/icon114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="mods/tibibo/res/img/icon/icon144.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <style>
+        #main                       { display:relative; background-image:url('res/img/background/book02.svg'); }
+        #main .special              { font-size:.3em; width:105%; margin:.5em 0 .2em 0; }
+        #main .special>div           { height:3em; padding:.1em; border-radius:.25em; float:left; margin-left:1em;  }
+        #main #nav                  { background-color:#DD5; width:40em; color:white;}
+        #main #profile              { background-color:#5B6; width:10em; color:white;}
+        #main #profile>*            { float:left; }
+        #main #profile #avatar      { width:1em; height:1em; background-color:#444; font-size:3em; border-radius:.1em; cursor:pointer; }
+        #main #profile #label       { margin-left:.2em;  font-size:.7em; width:5.2em; }
+        #main #profile #sub         { font-size:.8em; color:yellow; }
+        #main #profile .icon        { font-size:3em; cursor:pointer; }
+        #main #profile #gdx         { display:none; }
+        #main #profile #gdx.s       { background-color:red; border-radius:.5em; }
+
+        #main #error                { position:absolute; top:19.3em; color:white; font-size:.5em; width:100%; background-color:red;
+                                      padding-left:2em; display:none; }
+
+        #main #content              { width:100%; height:9em; }
+        #main #content>div          { width:100%; display:none; }
+        #main #footer #menu                 { clear:both; background-color:#aaa; width:51em; height:5em; color:white;}
+        #main #footer #menu .menu           { display:none; }
+        #main #footer #menu #editown        { font-size:4em;  }
+        #main #footer #menu #editown .icon  { float:left; margin:.12em; cursor:pointer; border-radius:.1em; }
+        #main #footer #menu #editown .icon.s    { background-color:#A00; }
+
+        #main #browser              { font-size:3em; margin-left:.2em; }
+        #main #upuseror               { font-size:3.4em; margin-left:.4em; }
+        #main .node                  { width:1em; height:1.35em; margin:.1em; cursor:pointer; float:left; position:relative;
+                                      overflow:visible; }
+        #main .node .type            { width:1em; height:1em; font-size:.25em; position:absolute; top:-0.1em; left:-0.1em; display:none;}
+        #main .node .icon             { width:1em; height:1em; position:absolute; top:0; left:0; }
+        #main .node .star             { width:1em; height:1em; position:absolute; top:0.1em; left:0; display:none; }
+        #main .node .label           { font-size:.08em; position:absolute; top:13.5em; text-align:justify; }
+        #main .node.f .type         { display:inline; }
+        #main .node.s .star         { display:inline; }
+
+        #main #content .input              { background-color:red; color:white; margin-top:1em; font-size:0.8em; }
+        #main #content .input>*            { float:left; margin-left:.5em; }
+        #main #content .input .label      { width:7em; }
+        #main #content .input input        { font-size:1em; width:8em; color:#500; padding-left:.5em; }
+        #main #content .input input.s       { color:gray; }
+        #main #content .input .icon        { float:right; font-size:1.2em; cursor:pointer; margin-right:.5em; }
+        #main #content .booklist              { font-size:0.5em; border:1px solid black; border-width:0 0 .2em 0;
+                                                margin-top:1em; height:12.5em;}
+        #main #content .booklist .title       { background-color:black; color: white; padding-left:2em; height:1.2em; }
+        #main #content .booklist .list      { height:12.5em; overflow:auto; }
+        #main #content .booklist .list>div    { margin:.2em 0.2em; cursor:pointer; clear:both; }
+        #main #content .booklist .list .bookid   { float:left; width:5em; background-color:rgba(0,100,200,0.2); padding-right:.5em; color:#345;
+                                              border-radius:.5em 0 0 .5em; height:1.2em; text-align:right; font-weight:bold; }
+        #main #content .booklist .list .label    { float:left; margin-left:.1em; background-color:rgba(200,100,0,0.2); color:#543;
+                                                width:24em; height:1.2em; padding-left:.5em; border-radius:0 .5em .5em 0;
+                                                font-style:italic;}
+
+        #main #content #dinput              { font-size:.5em; }
+        #main #content #dinput input        { width:20em; }
+
+#editnode                     { position:absolute; top:0; left:0; width:16em; height:12em;
+                              background-color: rgba(0,0,0,0.2); display:none; }
+#editnode>div                 { position:absolute; font-size:.4em; width:20em; height:21em; top:2em; left:2em; 
+                              background-color:rgba(128,120,100,0.9); border:.2em solid white; color:black;
+                              border-radius:.5em; background-image:url("res/img/background/book06.svg"); background-repeat:repeat; }
+
+#editnode #eimg               { width:15em; left:23em; }
+#editnode #eimg .icon           { float:left; cursor:pointer; margin:0.05em; font-size:1.4em; }
+
+#editnode #settings             { height:16em; }
+#editnode #settings #nodeimg      { font-size:8em; float:left; margin:0.05em; height:1.1em; }
+#editnode #settings textarea      { float:right; margin-top:0.8em; padding:.2em; font-size:0.6em; width:17.5em;
+                                    border:0; background-color:white; border-radius:.5em 0 0 .5em; height:6.5em;  }
+    #editnode #settings #tibibi { clear:both;}
+#editnode #settings #tibibi select  { border:0; background-color:white; border-radius:00; float:left;
+                                    font-size:1em; width:18em; }
+#editnode #settings #tibibi .icon   { float:left; background-color:#444; padding:.1em .5em; border-radius:0; cursor:pointer; }
+#editnode #settings #tibibi textarea { clear:both; border-radius:0; width:33em; float:none; }
+#editnode #evalid               { font-size:4em; float:right; margin:.1em; cursor:pointer;}
+#editnode #ecancel              { font-size:4em; float:left; margin:.1em; cursor:pointer; }
+
+
+    </style>
+    <script>
+
+user.onEvent = function() {
+    $("#profile #avatar").html("");
+    $("#tibibi select").html("");
+
+    if (user.settings && user.settings.name) {
+        $("#profile #avatar").gonz({interactive:false, code:user.settings.avatar,
+                                    context:{onclick:function($this){},onquit:function($this, _ret){}}});
+        $("#profile #label #name").html(user.settings.name);
+        $("#profile #label #sub").html("#"+user.settings.tag);
+        $("#main #profile #gdx").show();
+
+        tibibo.init();
+
+        user.getJSON("mods/tibibi/api/course.php",{action:"list"}, "",function(_data) {
+            for (var i in _data.courses) {$("#tibibi select").append("<option>"+_data.courses[i]+"</option>"); }
+        });
+
+    }
+    else {
+        $("#profile #avatar").html("<img src='mods/tibibi/res/img/people.svg'/>");
+        $("#profile #label #name").html("");
+        $("#profile #label #sub").html("");
+        $("#main #profile #gdx").hide();
+        tibibo.args.dev = 0;
+
+
+        tibibo.init();
+    }
+
+};
+
+var tibibo = {
+    lang            : "",
+    args            : {},
+    locale          : {},
+    user: function() { if (user.settings.name) { user.edit.open(); } else { $("#logpanel").show(); } },
+    run : function(_args) {
+        $("#waiting").show().find("div").addClass("running");
+        $("#launcher").jlodb({ onstart: function($this) { $("#content").hide(); $("#waiting").hide().find("div").removeClass("running"); },
+                               onfinish:function($this) { $("#content").show(); $("#score").removeClass().hide(); }},_args);
+    },
+    node : {
+        edit: {
+            star : 0,
+            open: function(_elt) {
+                if (_elt) {
+                }
+                else {
+                    $("#nodeimg .icon img").attr("src","res/img/classification/root.svg");
+                    $("#editnode textarea").val("");
+                    tibibo.node.edit.star = 0;
+                }
+                tibibo.node.edit.refresh(false);
+                $("#editnode #eedit").css("left","-20em").css("opacity",0).animate({left:"2em",opacity:1}, 1000 );
+                $("#editnode #eimg").css("left","38em").css("opacity",0).animate({left:"23em",opacity:1}, 1000 );
+                $("#editnode").show();
+            },
+            tibibi: function() {
+                if ($("#editnode #tibibi select").val().length) {
+                    user.getJSON("mods/tibibi/api/course.php",{value:$("#editnode #tibibi select").val()}, "",
+                    function(_data) {
+                        if (_data.status=="success" && _data.description && _data.description.length>0) {
+                            var val = $("#editnode #tibibi textarea").val();
+                            if (val.length) { val+=','; }
+                            val += _data.description;
+                            $("#editnode #tibibi textarea").val(val);
+                            tibibo.node.edit.refresh(false);
+                        }
+                    });
+                }
+            },
+            refresh: function(_incstar) {
+                if (_incstar) { tibibo.node.edit.star = (tibibo.node.edit.star+1)%5; }
+
+                if (tibibo.node.edit.star!=0) {
+                    $("#editnode .node .star img").attr("src", "res/img/icon/menu01st"+(tibibo.node.edit.star-1)+".svg");
+                }
+
+                $("#editnode .node").toggleClass("s",  (tibibo.node.edit.star!=0));
+                $("#editnode .node").toggleClass("f", ($("#editnode #tibibi textarea").val().length==0));
+            },
+            update: function() {
+                tibibo.node.edit.close();
+            },
+            close: function() {
+                $("#editnode>div").animate({opacity:0}, 1000, function() { $("#editnode").hide(); } );
+            }
+        }
+    },
+    book: {
+        data: {},
+        create: function() {
+            if (!$("#dinput input").hasClass("s") && $("#dinput input").val().length) {
+
+                user.getJSON("mods/tibibo/api/book.php",{action:"new",value:encodeURIComponent($("#dinput input").val())}, "",
+                function(_data) {
+                    if (_data.status=="success") { document.location='tibibo.html?id='+_data.value; }
+                    else { $("#error").html(_data.error+" : "+_data.textStatus).show(); }
+                });
+            }
+        }
+    },
+    init: function() {
+        $("#content>div").hide();
+        $("#menu .icon").removeClass("s");
+        if (tibibo.args.id && !tibibo.book.data.owner) {
+            $("#error").html(tibibo.locale.error.booknotfound.replace("$1",tibibo.args.id)).show();
+        }
+
+        if (tibibo.book.data && tibibo.book.data.owner == user.settings.name) { tibibo.args.dev = true; }
+
+        if (user.settings && user.settings.name) {
+            if (tibibo.args.dev) {
+                if (tibibo.args.id && tibibo.book.data.owner) {
+
+                    if (tibibo.book.data.owner == user.settings.name) { $("#editown").show(); }
+                    else                                              { $("#editext").show(); }
+
+                    $("#browser").show();
+                }
+                else {
+                    user.getJSON("mods/tibibo/api/book.php",{action:"list"},0, function(_data) {
+                        $("#dlastid .list").html("");
+                        for (var i in _data.books) {
+                            var html="<div onmousedown=\"document.location='tibibo.html?id="+_data.books[i].id+"';\"";
+                            html+="ontouchstart=\"document.location='tibibo.html?id="+_data.books[i].id+"';event.preventDefault();\">";
+                            html+="<div class='bookid'>"+_data.books[i].id+"</div>";
+                            html+="<div class='label'>"+_data.books[i].label+"</div></div>";
+
+                            $("#dlastid .list").append(html);
+                        }
+                    });
+                    $("#devmenu").show();
+                }
+            }
+            else {
+                if (tibibo.args.id && tibibo.book.data.owner) {
+                    $("#browser").show();
+                }
+                else { $("#chooseid #clastid").show(); $("#chooseid").show(); }
+            }
+        }
+        else {
+            if (tibibo.args.id && tibibo.book.data.owner) {
+                $("#browser").show();
+            }
+            else { $("#chooseid #clastid").hide(); $("#chooseid").show(); }
+        }
+    }
+};
+
+
+$(window).load(function() {
+    // SPECIAL STUFF
+    $("#activity").ontouchmove = function(e) { e.preventDefault(); }
+
+    var a = location.search.substring(1).split('&');
+    for (var i in a) { var p= a[i].split('='); tibibo.args[p[0]]=p[1]; }
+    
+
+    $.getJSON("api/checkdb.php", function (_check) {
+
+        if (_check.status=="success") {
+            tibibo.lang=_check.lang;
+
+            user.load.edit($("#main"));
+            user.load.logpanel($("#main"), {close:true}, function() {
+                if (tibibo.args.id) { $.getJSON("mods/tibibo/api/book.php?value="+tibibo.args.id, function(_data) {
+                        tibibo.book.data = _data; user.init(tibibo.lang); });
+                }
+                else { user.init(tibibo.lang); }
+            });
+
+            $.getJSON("mods/tibibo/locale/"+_check.lang+"/text.json?debug="+Math.floor(Math.random()*1000), function(_locale) {
+                for (var i in _locale.locale) { $("#"+i).html(_locale.locale[i]); }
+                for (var i in _locale.input) { $("#"+i).val(_locale.input[i]); }
+                tibibo.locale = _locale;
+            });
+
+        }
+        else {
+            $("#main").html(_check.status+": "+_check.textStatus);
+        }
+    });
+
+    // HANDLE ICON
+    $("#eimg .icon img").bind("mousedown touchstart", function(event) {
+        $("#nodeimg .icon img").attr("src", $(this).attr("src"));
+        event.preventDefault();
+    });
+
+    // GET AND RESIZE THE BEST PANEL
+    var x = Math.floor($(window).width()/16);
+    var y = Math.floor($(window).height()/12);
+    $("body").css("font-size", (Math.min(x,y))+"px");
+    $("#main").css("margin-top", Math.floor(($(window).height()-$("#main").height())/2)+"px").show();
+
+
+});
+    </script>
+</head>
+
+<body>
+    <div id="main">
+
+      <div id="mainex">
+        <div id="header" class="special">
+            <div id="nav"></div>
+            <div id="profile">
+                <div id="avatar" ontouchstart="tibibo.user();event.preventDefault();"
+                    onclick="tibibo.user();"></div>
+                <div id="label"><div id="name">&nbsp;</div><div id="sub"></div></div>
+                <div id="gdx" class="icon" ontouchstart="user.logout($(this));event.preventDefault();"
+                    onclick="user.logout($(this));"><img src="mods/tibibi/res/img/logout.svg"/></div>
+            </div>
+        </div>
+
+        <div id="content">
+
+            <div id="browser">
+                <div class="node">
+                    <div class="icon"><img src="res/img/activity/sudoku.svg"/></div>
+                    <div class="type"></div>
+                    <div class="star"></div>
+                    <div class="label">Créer, modifier, supprimer un livre.</div>
+                </div>
+                <div class="node">
+                    <div class="icon"><img src="res/img/classification/game.svg"/></div>
+                    <div class="type"><img src="res/img/icon/armor01.svg"/></div>
+                    <div class="star"><img src="res/img/icon/menu01st1.svg"/></div>
+                    <div class="label">Visualiser les résultats des élèves.</div>
+                </div>
+                <div class="node">
+                    <div class="icon"><img src="res/img/activity/sequence.svg"/></div>
+                    <div class="type"></div>
+                    <div class="star"></div>
+                    <div class="label">Créer des séries d'exercices avec l'application TiBibI.</div>
+                </div>
+                <div class="node">
+                    <div class="icon"><img src="res/img/activity/sudoku.svg"/></div>
+                    <div class="type"></div>
+                    <div class="star"><img src="res/img/icon/menu01st2.svg"/></div>
+                    <div class="label">Créer, modifier, supprimer un livre.</div>
+                </div>
+                <div class="node">
+                    <div class="icon"><img src="res/img/activity/shop.svg"/></div>
+                    <div class="type"><img src="res/img/icon/armor01.svg"/></div>
+                    <div class="star"><img src="res/img/icon/menu01st3.svg"/></div>
+                    <div class="label">Visualiser les résultats des élèves.</div>
+                </div>
+                <div class="node">
+                    <div class="icon"><img src="res/img/activity/sequence.svg"/></div>
+                    <div class="type"></div>
+                    <div class="star"></div>
+                    <div class="label">Créer des séries d'exercices avec l'application TiBibI.</div>
+                </div>
+                <div class="node">
+                    <div class="icon"><img src="res/img/activity/shop.svg"/></div>
+                    <div class="type"><img src="res/img/icon/armor01.svg"/></div>
+                    <div class="star"><img src="res/img/icon/menu01st1.svg"/></div>
+                    <div class="label">Visualiser les résultats des élèves.</div>
+                </div>
+                <div class="node">
+                    <div class="icon"><img src="res/img/activity/sequence.svg"/></div>
+                    <div class="type"></div>
+                    <div class="star"></div>
+                    <div class="label">Créer des séries d'exercices avec l'application TiBibI.</div>
+                </div>
+            </div>
+
+            <div id="chooseid">
+                <div id="cinput" class="input">
+                    <div id="clabel" class="label"></div>
+                    <input></input>
+                    <div class="icon"
+        onmousedown="if ($('#chooseid input').val()) document.location='tibibo.html?id='+$('#chooseid input').val();"
+        ontouchstart="if ($('#chooseid input').val()) document.location='tibibo.html?id='+$('#chooseid input').val();event.preventDefault();">
+                        <img src="mods/tibibi/res/img/valid.svg"/></div>
+                </div>
+                <div id="clastid" class="booklist">
+                    <div id="clist" class="title"></div>
+                    <div class="list">
+                        <div><div class="bookid">mnuto</div><div class="label">Cahier d'exercices pour classe de CE1.</div></div>
+                        <div><div class="bookid">mnuto</div><div class="label">Cahier d'exercices pour classe de CE1.</div></div>
+                        <div><div class="bookid">mnuto</div><div class="label">Cahier d'exercices pour classe de CE1.</div></div>
+                        <div><div class="bookid">mnuto</div><div class="label">Cahier d'exercices pour classe de CE1.</div></div>
+                        <div><div class="bookid">mnuto</div><div class="label">Cahier d'exercices pour classe de CE1.</div></div>
+                        <div><div class="bookid">mnuto</div><div class="label">Cahier d'exercices pour classe de CE1.</div></div>
+                        <div><div class="bookid">mnuto</div><div class="label">Cahier d'exercices pour classe de CE1.</div></div>
+                        <div><div class="bookid">mnuto</div><div class="label">Cahier d'exercices pour classe de CE1.</div></div>
+                        <div><div class="bookid">mnuto</div><div class="label">Cahier d'exercices pour classe de CE1.</div></div>
+                        <div><div class="bookid">mnuto</div><div class="label">Cahier d'exercices pour classe de CE1.</div></div>
+                        <div><div class="bookid">mnuto</div><div class="label">Cahier d'exercices pour classe de CE1.</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="devmenu">
+                
+                <div id="dinput" class="input">
+                    <div id="dlabel" class="label"></div>
+                    <input id="dval" class="s" onfocus="if ($(this).hasClass('s')) { $(this).removeClass('s').val(''); }"></input>
+                    <div class="icon" onmousedown="tibibo.book.create();"
+                        ontouchstart="tibibo.book.create();event.preventDefault();" >
+                        <img src="mods/tibibi/res/img/valid.svg"/></div>
+                </div>
+
+                <div id="dlastid" class="booklist">
+                    <div id="dlist" class="title"></div>
+                    <div class="list"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="error"></div>
+
+        <div id="footer" class="special">
+            <div id="menu">
+                <div id="editown" class="menu">
+                    <div class="icon" onmousedown="tibibo.node.edit.open();"><img src="mods/tibibi/res/img/newcourse.svg"/></div>
+                </div>
+            </div>
+        </div>
+      </div>
+
+<!--        <div id="waiting"><div><img src="res/img/generic/waiting.svg"/></div></div> -->
+
+    <div id="editnode">
+        <div id="eedit">
+        <div id="settings">
+            <div id="nodeimg" class="node" onclick="tibibo.node.edit.refresh(true);" 
+                                          ontouchstart="tibibo.node.edit.refresh(true);event.preventDefault();">
+                    <div class="icon"><img src="res/img/classification/root.svg"/></div>
+                    <div class="type"><img src="res/img/icon/plus01.svg"/></div>
+                    <div class="star"><img src="res/img/icon/menu01st0.svg"/></div>
+            </div>
+            <textarea></textarea>
+            <div id="tibibi">
+                <select></select>
+                <div class="icon" onclick="tibibo.node.edit.tibibi();" 
+                                          ontouchstart="tibibo.node.edit.tibibi();event.preventDefault();">
+                    <img src="mods/tibibi/res/img/import.svg"/></div>
+                <textarea onkeyup="tibibo.node.edit.refresh(false);"></textarea>
+            </div>
+        </div>
+        <div>
+            <div class="icon" id="ecancel" onclick="tibibo.node.edit.close();" 
+                                          ontouchstart="tibibo.node.edit.close();event.preventDefault();">
+                <img src="user/res/img/cancel.svg"/>
+            </div>
+            <div class="icon" id="evalid" onclick="tibibo.node.edit.update();" 
+                                         ontouchstart="tibibo.node.edit.update();event.preventDefault();">
+                <img src="user/res/img/valid.svg"/>
+            </div>
+        </div>
+    </div>
+
+    <div id="eimg">
+        <div class="icon"><img src="res/img/activity/abacus.svg"/></div>
+        <div class="icon"><img src="res/img/activity/alchemist.svg"/></div>
+        <div class="icon"><img src="res/img/activity/asm.svg"/></div>
+        <div class="icon"><img src="res/img/activity/code.svg"/></div>
+        <div class="icon"><img src="res/img/activity/correcter.svg"/></div>
+        <div class="icon"><img src="res/img/activity/countdown.svg"/></div>
+        <div class="icon"><img src="res/img/activity/crossword.svg"/></div>
+        <div class="icon"><img src="res/img/activity/equation.svg"/></div>
+        <div class="icon"><img src="res/img/activity/futoshiki.svg"/></div>
+        <div class="icon"><img src="res/img/activity/geometry.svg"/></div>
+        <div class="icon"><img src="res/img/activity/info.svg"/></div>
+        <div class="icon"><img src="res/img/activity/logo.svg"/></div>
+        <div class="icon"><img src="res/img/activity/marker.svg"/></div>
+        <div class="icon"><img src="res/img/activity/mathcraft.svg"/></div>
+        <div class="icon"><img src="res/img/activity/mcq.svg"/></div>
+        <div class="icon"><img src="res/img/activity/memory.svg"/></div>
+        <div class="icon"><img src="res/img/activity/memory2.svg"/></div>
+        <div class="icon"><img src="res/img/activity/memory3.svg"/></div>
+        <div class="icon"><img src="res/img/activity/operation.svg"/></div>
+        <div class="icon"><img src="res/img/activity/paint.svg"/></div>
+        <div class="icon"><img src="res/img/activity/puzzle.svg"/></div>
+        <div class="icon"><img src="res/img/activity/robot.svg"/></div>
+        <div class="icon"><img src="res/img/activity/sequence.svg"/></div>
+        <div class="icon"><img src="res/img/activity/shop.svg"/></div>
+        <div class="icon"><img src="res/img/activity/sokoban.svg"/></div>
+        <div class="icon"><img src="res/img/activity/sorting.svg"/></div>
+        <div class="icon"><img src="res/img/activity/sudoku.svg"/></div>
+        <div class="icon"><img src="res/img/activity/toggleswitch.svg"/></div>
+        <div class="icon"><img src="res/img/activity/trafficjam.svg"/></div>
+        <div class="icon"><img src="res/img/activity/where.svg"/></div>
+        <div class="icon"><img src="res/img/classification/addition.svg"/></div>
+        <div class="icon"><img src="res/img/classification/arithmetic.svg"/></div>
+        <div class="icon"><img src="res/img/classification/arts.svg"/></div>
+        <div class="icon"><img src="res/img/classification/division.svg"/></div>
+        <div class="icon"><img src="res/img/classification/french.svg"/></div>
+        <div class="icon"><img src="res/img/classification/game.svg"/></div>
+        <div class="icon"><img src="res/img/classification/geography.svg"/></div>
+        <div class="icon"><img src="res/img/classification/geometry.svg"/></div>
+        <div class="icon"><img src="res/img/classification/health.svg"/></div>
+        <div class="icon"><img src="res/img/classification/it.svg"/></div>
+        <div class="icon"><img src="res/img/classification/languages.svg"/></div>
+        <div class="icon"><img src="res/img/classification/logic.svg"/></div>
+        <div class="icon"><img src="res/img/classification/mathematics.svg"/></div>
+        <div class="icon"><img src="res/img/classification/multiplication.svg"/></div>
+        <div class="icon"><img src="res/img/classification/negative.svg"/></div>
+        <div class="icon"><img src="res/img/classification/numeration.svg"/></div>
+        <div class="icon"><img src="res/img/classification/operations.svg"/></div>
+        <div class="icon"><img src="res/img/classification/root.svg"/></div>
+        <div class="icon"><img src="res/img/classification/sciences.svg"/></div>
+        <div class="icon"><img src="res/img/classification/social.svg"/></div>
+        <div class="icon"><img src="res/img/classification/subtraction.svg"/></div>
+        <div class="icon"><img src="res/img/classification/symmetry.svg"/></div>
+        <div class="icon"><img src="res/img/classification/technology.svg"/></div>
+    </div>
+
+
+    </div>
+
+        <div id="score"><div>
+            <div class="content">
+                <div class="value"></div><div class="stars"></div>
+                <div class="icon" id="reload" ontouchstart="$('#launcher').jlodb('reload');event.preventDefault();"
+                    onclick="$('#launcher').jlodb('reload');" ><img src="res/img/icon/reload.svg"/></div>
+                <div class="icon" id="menu" ontouchstart="$('#launcher').jlodb('close',true);event.preventDefault();"
+                    onclick="$('#launcher').jlodb('close', true);" ><img src="res/img/icon/menu.svg"/></div>
+                <div class="icon" id="next"
+                    ontouchstart="$('#launcher').jlodb('close',false);$('#tmenu').menu('next');event.preventDefault();"
+                    onclick="$('#launcher').jlodb('close',false);$('#tmenu').menu('next');"><img src="res/img/icon/next.svg"/></div>
+            </div>
+        </div></div>
+ 
+        <div id="launcher">
+            <div id="quit" ontouchstart="$('#launcher').jlodb('quit');event.preventDefault();"
+                           onclick="$('#launcher').jlodb('quit');"><img src="res/img/icon/quit.svg"/></div>
+            <div id="activity"></div>
+        </div>
+
+
+    </div>
+</body>

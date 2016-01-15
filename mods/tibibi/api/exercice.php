@@ -1,6 +1,6 @@
 <?php
-$apipath = "../../../api/";
-include $apipath."database.php";
+$apipath = "../../";
+include_once $apipath."../api/database.php";
 
 if (!$error) {
     $ex = explode(",",$_GET["value"]);

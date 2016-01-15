@@ -13,9 +13,10 @@ if (!$error) {
                 $_SESSION['User_Date'] = $u["User_Date"];
                 $_SESSION['User_Code'] = $u['User_Code'];
                 $_SESSION['User_Key']  = $u['User_Key'];
+
                 $ok = true;
             }
-            else { $error = 102; $textstatus="identification error"; }
+            else { $_SESSION['User_Key'] = ""; $error = 102; $textstatus="identification error"; }
         }
 
         if ($ok)
@@ -33,7 +34,7 @@ if (!$error) {
             $_SESSION['User_Date'] = date("y-m-d H:i:s");
         }
     }
-    else { $error = 102; $textstatus="identification error"; }
+    else { $_SESSION['User_Key'] = ""; $error = 102; $textstatus="identification error"; }
 
 
 }
