@@ -9,10 +9,28 @@
                                       background-image:url("../../res/img/background/book02.svg"); background-repeat:repeat;
                                       height:9em; margin:2px; overflow:hidden; position:relative; }
 .alchemist #board #area             { width:6em; height:2.05em; background-color:rgba(255,220,162,0.7);  border-radius:.2em .2em 0 0;}
-.alchemist #board div.tile          { position:absolute; width:1em; height:1em; -webkit-background-size:1em 1em; }
-.alchemist #board #points           { position:absolute; font-size:.4em; opacity:0.5; top:0; left:10.5em; font-weight:bold; }
-.alchemist #board #preview          { font-size:0.7em; opacity:0.5; position:absolute; top:0; left: 0; }
-.alchemist #board #preview div      { -webkit-background-size:1em 1em; width:1em; height:1em; display:inline-block;}
+.alchemist #board div.empty         { position:absolute; width:1em; height:1em;  background-color:red; opacity:0.5;}
+.alchemist #board div.fill         { position:absolute; width:1em; height:1em;  background-color:yellow; opacity:0.5;}
+.alchemist #board div.effect        { position:absolute; width:1em; height:1em; z-index:2; background-color:yellow; border-radius:.5em; }
+.alchemist #board div.effect.fstone { background-color:brown; }
+.alchemist #board div.effect.fice   { background-color:cyan; border-radius:0;}
+.alchemist #board div.effect.fice2  { background-color:cyan; border-radius:0.5em 0.5em 0 0; }
+.alchemist #board div.effect.fup    { background-color:gray; border-radius:0;}
+.alchemist #board div.effect.fup2   { background-color:gray; border-radius:0.5em 0.5em 0 0; }
+.alchemist #board div.effect.fdel   { background-color:red; border-radius:0;}
+.alchemist #board div.effect.fdel2  { background-color:red; border-radius:0.5em 0.5em 0 0; }
+.alchemist #board div.tile          { position:absolute; width:1em; height:1em; }
+.alchemist #board div.tile>div      { position:absolute; top:0; left:0; width:1em; height:1em; }
+.alchemist #board div.tile .img     { background-image:url("../../res/img/svginventoryicons/background/noborder/transmut01.svg"); }
+.alchemist #board div.tile .ice01  { background-image:url("../../res/img/icon/ice01.svg"); }
+.alchemist #board div.tile .ice02   { background-image:url("../../res/img/icon/ice02.svg"); }
+.alchemist #board #points           { position:absolute; font-size:.4em; opacity:0.5; top:0; left:70%; font-weight:bold; }
+.alchemist #board #counter          { position:absolute; font-size:.6em; opacity:0.5; top:5%; left:85%; font-weight:bold; text-align:center;
+                                      border-radius:.5em 0 0 .5em; width:1.6em; height:1.1em; background-color:green; color:white;
+                                      display:none; }
+.alchemist #board #preview          { font-size:0.7em; opacity:0.6; position:absolute; top:0; left: 0;width:2em;height:1em; }
+.alchemist #board #preview div      { width:1em; height:1em; position:absolute;top:0;left:0; }
+.alchemist #board #preview #preview2    { left:1em; }
 .alchemist #menu                    { width:3em; border:1px solid #507099; overflow:hidden; margin:1px;
                                       font-size:1.5em; border-radius:.13em; }
 .alchemist #menu table div          { width:1em; height:1em; overflow:hidden; text-align:center; background-size: 1em;
@@ -20,12 +38,25 @@
 .alchemist #menu #keypad            { width:3em; height:2em; overflow:hidden; background-color:rgba(255,210,140,0.8); }
 .alchemist #menu #keypad img        { width:.9em; height:.9em; cursor:pointer; }
 .alchemist #overview                { width:3em; height:4em; background-color:rgba(255,220,162,0.8); cursor:pointer;}
-.alchemist #overview div            { background-image:url("../../res/img/svginventoryicons/background/noborder/transmut01.svg"); }
-.alchemist #overview div img        { display:none; }
-.alchemist div#splash>div           { background-image:url("../../res/img/banners/alchemist.svg"); }
-.alchemist div#splash .text         { font-size:.5em; width:48%; float:right; }
-.alchemist div#splash .text h1      { text-align:right; padding-right:.5em; }
-.alchemist div#splash .text p       { margin:.5em; }
+.alchemist #overview div.n          { position:absolute; font-size:.2em; }
+.alchemist #overview div.icon       { border-radius:.5em; overflow:visible !important;
+                                      background-image:url("../../res/img/svginventoryicons/background/noborder/transmut01.svg"); }
+.alchemist #overview div.icon.s     { background-color:red; }
+.alchemist #overview div.icon.f     { background-color:yellow; }
+.alchemist #overview div.icon img   { display:none; }
+
+.alchemist div#splashex               { background-image:url("../../res/img/banners/alchemist.svg"); background-color:rgba(0,0,0,0.4); }
+.alchemist div#splashex h1            { position:absolute; top:7%; left:48%; font-size:1.1em; color:#222;}
+.alchemist div#splashex #guide        { position:absolute; top:15%; left:45%; font-size:.7em; width:45%; text-align:justify; font-style:italic; }
+.alchemist div#splashex #goals       {position:absolute; top:38%; left:50%; width:40%; background-color:white; padding:.5em;
+                                      overflow:visible; border:.1em solid black;  height:7em; display:none;}
+.alchemist div#splashex #goallabel  { position:absolute; top:-1em; left:-1em; padding:.2em .5em; background-color:#F56; color:white;
+                                      border-radius:.2em; border:.1em solid black;
+                                      -ms-transform: rotate(-10deg); -webkit-transform: rotate(-10deg); transform: rotate(-10deg); }
+.alchemist div#splashex ul          { margin-top:0.8em; font-size:0.8em; font-style:italic; }
+.alchemist div#splashex li          { margin-bottom:0.2em; }
+.alchemist div#splashex .l          { background-color:red; color:white; padding:0 0.5em; border-radius:.5em; }
+
 .alchemist #buttons #info           { width:.95em; height:.95em; border:1px solid black; background-color:rgba(255,255,255,0.8);
                                       cursor: pointer; margin:0 auto; }
 .alchemist #tutorial                { display:none; font-size:.2em; width:15em; height:20em; background-color:rgba(255,255,255,0.8);
