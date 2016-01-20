@@ -28,13 +28,13 @@ if (strlen($_SESSION['User_Key']) && $_GET["action"]=="upd") {
     $value = $_GET["value"];
     if (strlen($_GET["value"])) {
         if (! mysql_query("UPDATE `".$_SESSION['prefix']."book` SET `Book_Name`='".$_GET["value"]."' ".
-                        "WHERE `Book_Name`='".$_GET["course"]."' AND User_Key='".$_SESSION['User_Key']."'") ) {
+                        "WHERE `Book_Name`='".$_GET["book"]."' AND User_Key='".$_SESSION['User_Key']."'") ) {
             $value = $_GET["course"];
         }
     }
     else {
         mysql_query("UPDATE `".$_SESSION['prefix']."book` SET Book_Description='".$_GET["description"]."' ".
-                        "WHERE `Book_Name`='".$_GET["course"]."' AND User_Key='".$_SESSION['User_Key']."'");
+                        "WHERE `Book_Name`='".$_GET["book"]."' AND User_Key='".$_SESSION['User_Key']."'");
     }
 }
 else
@@ -70,7 +70,7 @@ if ($error) { echo '  "error" : '.$error.','; }
 echo '  "textStatus" : "'.$textstatus.'"';
 if ($value)       { echo ', "value" : "'.$value.'"'; }
 if ($owner)       { echo ', "owner" : "'.$owner.'"'; }
-if ($description) { echo ',  "description":"'.$description.'"'; }
+if ($description) { echo ',  "description":'.$description; }
 if ($json)        { echo ',  "books":['.$json.']'; }
 echo '}';
 

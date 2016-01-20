@@ -23,6 +23,19 @@ if (!$error) {
         }
 
     
+        if (!mysql_query("SELECT * FROM `".$_SESSION['prefix']."tibibo`")) {
+            mysql_query('CREATE TABLE  `'.$_SESSION['prefix'].'tibibo` ('.
+                            '`Book_Name`             VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL, '.
+                            '`User_Key`              INT NOT NULL, '.
+                            '`Node_Id`               INT NOT NULL, '.
+                            '`Node_State`            TEXT, '.
+                            '`Node_Date`             DATETIME, '.
+                            ' CONSTRAINT `fr_Tibibo_User_Key` FOREIGN KEY (`User_Key`) REFERENCES `'.$_SESSION['prefix'].'user` '.
+                            ' (`User_Key`) ON DELETE CASCADE,'.
+                            ' CONSTRAINT `fr_Tibibo_Book_Name` FOREIGN KEY (`Book_Name`) REFERENCES `'.$_SESSION['prefix'].'book` '.
+                            ' (`Book_Name`) ON DELETE CASCADE,'.
+                            ' PRIMARY KEY ( `Book_Name`, `User_Key`, `Node_Id` )) ENGINE=InnoDB', $link);
+        }
 
         $status = "success";
     }

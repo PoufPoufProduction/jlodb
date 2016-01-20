@@ -93,9 +93,13 @@
         #jlodb #mods .action.success        { background-color:green; }
         #jlodb #mods .action.failed         { background-color:red; }
         body>div.logged #jlodb #mods .action { display:inherit; }
+        #jlodb #mods .mod .snap          { position:absolute; width:1em; height:1em; font-size:1.5em; cursor:pointer; top:4em;
+                                        left:25.2em; }
+        #jlodb #mods .mod .snap.s2          { left:24em; }
         #jlodb #mods .mod .icon             { font-size:8em; }
-        #jlodb #mods .mod .text             { width:39em; height:7em; text-align:justify; overflow:hidden; vertical-align:top;
-                                              padding:.5em; background-color: #888; border-radius:1.5em; color:white; margin-left:.5em;}
+        #jlodb #mods .mod .text             { width:39em; height:7em; text-align:justify; overflow:hidden; vertical-align:top; 
+                                              padding:.5em; background-color: #888; border-radius:0.5em; color:white; margin-left:.5em;
+                                                position:relative;}
 
         #jlodb #apps                        { font-size:.25em; text-align:justify; }
         #jlodb #apps .icon                  { width:1em; height:1em; float:left; cursor:pointer; margin:.1em; font-size:5em; }
@@ -217,6 +221,16 @@ jlodb = {
                                           data.mods[i].id+".html' target='blank'>";
                                 html    +="<img src='mods/"+data.mods[i].id+"/icon.svg'/></a></div>";
                                 html    +="<div class='text'>";
+                                if (data.mods[i].id=="tibibo") {
+                                    html    +="<div class='snap s2' onclick=\"window.open('"+data.mods[i].id+".html?dev=1',"+
+                                              "'_blank', 'width=640, height=480,toolbar=no,location=no,status=no,menubar=no," +
+                                              "scrollbars=no,resizable=no,status=no,titlebar=no');\">"+
+                                              "<img src='mods/tibibi/res/img/snapshot.svg'/></div>";
+                                }
+                                html    +="<div class='snap' onclick=\"window.open('"+data.mods[i].id+".html',"+
+                                          "'_blank', 'width=640, height=480,toolbar=no,location=no,status=no,menubar=no," +
+                                          "scrollbars=no,resizable=no,status=no,titlebar=no');\">"+
+                                          "<img src='mods/tibibi/res/img/snapshot.svg'/></div>";
                                 if (data.mods[i].source.length) {
                                     html+="<div class='action' id='"+data.mods[i].source+
                                           "' onclick='jlodb.page.mods.build(this);'>+</div>";
