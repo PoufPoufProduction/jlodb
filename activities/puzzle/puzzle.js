@@ -16,7 +16,7 @@
         errratio    : 1,                                        // Error ratio
         number      : 1,                                        // Number of puzzle
         fontex      : 1,                                        // Exercice font
-        decoyfx     : true,                                  // No magnetic for decoy
+        decoyfx     : true,                                     // No magnetic for decoy
         debug       : true                                      // Debug mode
     };
 
@@ -286,8 +286,9 @@
                             $this.addClass("active");
                             settings.mouse = [ vEvent.clientX, vEvent.clientY];
 
-                            if ( settings.decoyfx || !helpers.isdecoy($this, $(settings.elt.id).attr("id"))) {
-                                $(this).find(".scale").attr("transform","scale("+settings.scale+")"); }
+                            if ( settings.decoyfx || !helpers.isdecoy($this, $(this).attr("id"))) {
+                                $(this).find(".scale").attr("transform","scale("+settings.scale+")");
+                            }
 
                             if (settings.zhandling) { $(this).detach().appendTo($("#"+settings.pieces,settings.svg.root())); }
 
@@ -444,6 +445,8 @@
             var wrongs =0;
             if (settings.interactive) {
                 settings.interactive = false;
+
+                $this.addClass("finished");
 
                 for (var i in settings.origin.translate) {
                     var translate = [0,0];

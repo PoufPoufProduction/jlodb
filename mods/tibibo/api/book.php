@@ -27,14 +27,30 @@ else
 if (strlen($_SESSION['User_Key']) && $_GET["action"]=="upd") {
     $value = $_GET["value"];
     if (strlen($_GET["value"])) {
-        if (! mysql_query("UPDATE `".$_SESSION['prefix']."book` SET `Book_Name`='".$_GET["value"]."' ".
+        
+        $v = str_replace("'","\'", $_GET["value"]);
+        $v = str_replace('"','', $v);
+
+        if (! mysql_query("UPDATE `".$_SESSION['prefix']."book` SET `Book_Name`='".$value."' ".
                         "WHERE `Book_Name`='".$_GET["book"]."' AND User_Key='".$_SESSION['User_Key']."'") ) {
             $value = $_GET["course"];
         }
     }
     else {
-        mysql_query("UPDATE `".$_SESSION['prefix']."book` SET Book_Description='".$_GET["description"]."' ".
+        $v = str_replace("'","\'", $_POST["description"]);
+        mysql_query("UPDATE `".$_SESSION['prefix']."book` SET Book_Description='".$v."' ".
                         "WHERE `Book_Name`='".$_GET["book"]."' AND User_Key='".$_SESSION['User_Key']."'");
+
+        // Reload description
+        $courses = mysql_query("SELECT * FROM `".$_SESSION['prefix']."book` B INNER JOIN `".$_SESSION['prefix']."user` U WHERE ".
+                "B.User_Key=U.User_Key AND B.Book_Name='".$_GET["book"]."'");
+
+        while($c = mysql_fetch_array($courses)) {
+            $value = $c["Book_Label"];
+            $description = $c["Book_Description"];
+            $owner = $c["User_Id"];
+
+        }
     }
 }
 else

@@ -1,9 +1,10 @@
 .sokoban .both *                        { overflow:visible; }
 .sokoban                                { background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat;}
-.sokoban div#splash>div                 { background-image:url("../../res/img/banners/sokoban.svg"); }
-.sokoban div#splash .text               { width:35%; float:right; }
-.sokoban div#splash .text h1            { text-align:right; padding-right:.5em; }
-.sokoban div#splash #guide              { font-size:.9em; margin-right:.5em; }
+
+.sokoban div#splashex                  { background-image:url("../../res/img/banners/sokoban.svg"); color:lime; }
+.sokoban div#splashex h1               { position:absolute; top:45%; left:60%; font-size:1.5em; }
+.sokoban div#splashex #guide           { position:absolute; top:52%; left:45%; font-size:.75em; width:48%;;
+                                          text-align:justify; }
 .sokoban #board                         { background-image:url("../../res/img/background/book02.svg"); background-repeat:repeat;
                                           width:11em; height:11em; border-radius:.5em; margin:0.5em 0 0 .25em;
                                           position:relative; float:left; }
@@ -21,9 +22,10 @@
                                           position:relative; color:#444444;}
 .sokoban #menu #banner #reset           { position:absolute; width:1em; height:1em; cursor:pointer; font-size:1.5em;
                                           top:.1em; left:1.8em; }
-.sokoban #menu #banner #score           { position:absolute; font-size:.8em; width:2em; height:2.4em; top:0.5em; left:.02em;
-                                          background-color:rgba(255,255,255,0.5); border-radius:.5em; }
-.sokoban #menu #banner .label           { clear:both; float:left; width:5em; text-align:right; margin-right:.5em; }
+.sokoban #menu #banner #art             { margin-top:1.2em; }
+.sokoban #menu #banner #sokoscore       { font-size:.4em;
+                                          background-color:rgba(255,255,255,0.5); }
+.sokoban #menu #banner .label           { clear:both; float:left; width:7em; text-align:right; margin-right:.5em; }
 .sokoban #menu #banner .value           { float:left; }
 .sokoban #menu #keypad                  { margin-top:.25em; border-radius:.5em; }
 .sokoban #menu #keypad.r0               { background-color:#90cce0; }

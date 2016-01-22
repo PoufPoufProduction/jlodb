@@ -227,8 +227,9 @@ var tibibo = {
                     list    : _list,
                     state   : _state,
                     onupdate: function($this, _state) {
-                        user.getJSON("mods/tibibo/api/tibibo.php",
-                                {action:"upd",value:_state, book:tibibo.args.id, id:tibibo.menu.current}, "", function(_data) {}); },
+                        if (user.settings && user.settings.name) {
+                            user.getJSON("mods/tibibo/api/tibibo.php",
+                                {action:"upd",value:_state, book:tibibo.args.id, id:tibibo.menu.current}, "", function(_data) {}); }},
                     onclick : function($this, _args) {
                         $("#waiting").show().find("div").addClass("running");
                         $("#launcher").jlodb({
@@ -282,7 +283,6 @@ var tibibo = {
                             {action:"del", book:tibibo.args.id, id:id}, "", function(_data) {});
                         tibibo.book.browse.remove(id);
                         tibibo.book.save();
-                        tibibo.book.refresh();
                     }
                     else if ($("#editown #medit").hasClass("s")) {
                         tibibo.node.edit.open(elt);
@@ -353,7 +353,7 @@ var tibibo = {
                 if (tibibo.node.edit.elt) {
                     tibibo.node.edit.elt.src = $("#nodeimg .icon img").attr("src");
                     tibibo.node.edit.elt.nbstar = tibibo.node.edit.star;
-                    tibibo.node.edit.elt.label = $("#editnode #elabel").val();
+                    tibibo.node.edit.elt.label = $("#editnode #elabel").val().replace(/\"/g,"'");
                     tibibo.node.edit.elt.description = $("#editnode #tibibi textarea").val();
                 }
                 else {
@@ -361,13 +361,13 @@ var tibibo = {
                         id:tibibo.book.browse.id()+1,
                         src: $("#nodeimg .icon img").attr("src"),
                         nbstar: tibibo.node.edit.star,
-                        label: $("#editnode #elabel").val(),
+                        label: $("#editnode #elabel").val().replace(/\"/g,"'"),
                         description : $("#editnode #tibibi textarea").val(),
                         children:[]
                     };
+
                     tibibo.book.current.push(elt);
                 }
-                tibibo.book.refresh();
                 tibibo.book.save();
                 tibibo.node.edit.close();
             },
@@ -424,15 +424,23 @@ var tibibo = {
         },
         save: function() {
             var description = JSON.stringify(tibibo.book.data.description);
-            user.getJSON("mods/tibibo/api/book.php",{action:"upd",book:tibibo.args.id,description:description},"",
-                function(_data) { });
+            user.getJSON("mods/tibibo/api/book.php",{action:"upd",book:tibibo.args.id},{description:description},
+                function(_data) {
+                    tibibo.book.data = _data;
+                    if (!tibibo.book.data.description) { tibibo.book.data.description=[]; }
+                    tibibo.book.current = tibibo.book.parents.length ?
+                              tibibo.book.browse.elt(tibibo.book.parents[tibibo.book.parents.length-1]).children
+                            : tibibo.book.data.description;
+                    
+                    tibibo.book.refresh();
+            });
         },
         create: function() {
             if (!$("#dinput input").hasClass("s") && $("#dinput input").val().length) {
 
                 user.getJSON("mods/tibibo/api/book.php",{action:"new",value:encodeURIComponent($("#dinput input").val())}, "",
                 function(_data) {
-                    if (_data.status=="success") { document.location='tibibo.html?id='+_data.value; }
+                    if (_data.status=="success") { document.location='tibibo.html?dev=1&id='+_data.value; }
                     else { $("#error").html(_data.error+" : "+_data.textStatus).show(); }
                 });
             }
@@ -456,18 +464,20 @@ var tibibo = {
         },
         nav : function() {
             $("#oheader #onav").html("");
-            var label = tibibo.book.data.value;
-            var html="<div id='root' class='node' ";
-            html+="ontouchstart='tibibo.node.click($(this),\"nav\");event.preventDefault();' ";
-            html+="onmousedown='tibibo.node.click($(this),\"nav\");' ";
-            html+="><div class='icon'><img src='mods/tibibo/icon.svg'/></div></div>";
-            $("#oheader #onav").html(html);
-            for (var i in tibibo.book.parents) {
-                var elt = tibibo.book.browse.elt(tibibo.book.parents[i]);
-                $("#oheader #onav").append(tibibo.book.node(elt,"nav"));
-                label = elt.label;
+            if (tibibo.book.data.owner) {
+                var label = tibibo.book.data.value;
+                var html="<div id='root' class='node' ";
+                html+="ontouchstart='tibibo.node.click($(this),\"nav\");event.preventDefault();' ";
+                html+="onmousedown='tibibo.node.click($(this),\"nav\");' ";
+                html+="><div class='icon'><img src='mods/tibibo/icon.svg'/></div></div>";
+                $("#oheader #onav").html(html);
+                for (var i in tibibo.book.parents) {
+                    var elt = tibibo.book.browse.elt(tibibo.book.parents[i]);
+                    $("#oheader #onav").append(tibibo.book.node(elt,"nav"));
+                    label = elt.label;
+                }
+                $("#oheader #onav").append("<div class='label'>"+label+"</div>");
             }
-            $("#oheader #onav").append("<div class='label'>"+label+"</div>");
         },
         refresh: function() {
             tibibo.book.nav();

@@ -133,9 +133,6 @@
                 if (nb==0) $line.find(".r").addClass("rr");
                 if (!settings.op || settings.op.length!=1) {
                     $line.find(".o").bind("touchstart mousedown", function(_event) {
-                        var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
-                                    event.originalEvent.touches[0]:event;
-
                         if (!$(this).hasClass("disabled")) {
                             var $keypad = $this.find("#keypad");
                             var vLeft = $(this).position().left + Math.floor($(this).width()/1.6);
@@ -143,6 +140,7 @@
                             $this.find("#keypad").css("top",vTop+"px").css("left",vLeft+"px").show();
                             settings.keypad = $(this);
                         }
+                        _event.preventDefault();
                     });
                 }
                 if (settings.op) {
@@ -170,8 +168,8 @@
                         $this.find(".t#"+$elt.attr("id")).addClass("tt").draggable({disabled:true})
                         helpers.computable($this);
 
-                        var x           = event.clientX-$this.offset().left;
-                        var y           = event.clientY-$this.offset().top;
+                        var x           = vEvent.clientX-$this.offset().left;
+                        var y           = vEvent.clientY-$this.offset().top;
                         var $old        = $this.find("#touch01>div").detach();
                         var $new        = $old.clone();
                         $this.find("#touch01").css("left",Math.floor(x - $this.find("#touch01").width()/2)+"px")

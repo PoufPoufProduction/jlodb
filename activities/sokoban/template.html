@@ -4,9 +4,8 @@
     </div>
     <div id="menu">
         <div id="banner">
-            <div id="reset" ontouchstart="$(this).closest('.sokoban').sokoban('reset');event.preventDefault();"
-                                 onclick="$(this).closest('.sokoban').sokoban('reset');"><img src="res/img/icon/reset.svg"/></div>
-            <div id="score">
+            <div id="art"><img src="res/img/art/box01.svg"/></div>
+            <div id="sokoscore">
                 <div id="nbmoves">
                     <div class="label" id="lmoves">moves</div>
                     <div class="value">0</div>
@@ -16,6 +15,8 @@
                     <div class="value">0</div>
                 </div>
             </div>
+            <div id="reset" ontouchstart="$(this).closest('.sokoban').sokoban('reset');event.preventDefault();"
+                                 onclick="$(this).closest('.sokoban').sokoban('reset');"><img src="res/img/icon/reset.svg"/></div>
         </div>
         <div id="keypad">
             <table>
@@ -43,12 +44,10 @@
         </div>
     </div>
 
-    <div id="splash" ontouchstart="$(this).closest('.sokoban').sokoban('next');event.preventDefault();"
-                     onclick="$(this).closest('.sokoban').sokoban('next');"><div>
-        <div class="text">
-            <h1 id="label">sokoban</h1>
+    <div id="splashex" ontouchstart="$(this).hide().closest('.sokoban').sokoban('next');event.preventDefault();"
+                     onclick="$(this).hide().closest('.sokoban').sokoban('next');"><div>
+            <h1 id="label"></h1>
             <div id="guide">
-            </div>
         </div>
     </div></div>
 

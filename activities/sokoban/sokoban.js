@@ -10,7 +10,7 @@
         padding     : 3,                                        // Padding top
         margin      : 0.5,                                      // Margin
         delay       : 150,                                      // Time between two cases
-        debug       : false                                     // Debug mode
+        debug       : true                                     // Debug mode
     };
 
     // private methods
@@ -100,7 +100,7 @@
                 // Locale handling
                 $this.find("h1#label").html(settings.label);
                 if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
-                if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
                 helpers.build($this);
             }
         },
@@ -632,7 +632,6 @@
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 settings.interactive = true;
-                $this.find("#splash").hide();
             },
             reset: function() {
                 var $this = $(this) , settings = helpers.settings($this);
