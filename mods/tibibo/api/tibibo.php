@@ -41,6 +41,16 @@ if (!$error) {
         $courses = mysql_query("DELETE FROM `".$_SESSION['prefix']."tibibo`  WHERE ".
                     "Book_Name='".$_GET["book"]."' AND Node_Id='".$_GET["id"]."'");
     }
+    else
+    if ($_GET["action"]=="all") {
+        $courses = mysql_query("SELECT * FROM `".$_SESSION['prefix']."tibibo`  WHERE ".
+                    "User_Key='".$_SESSION['User_Key']."' AND Book_Name='".$_GET["book"]."'");
+        $state = "";
+        while($c = mysql_fetch_array($courses)) {
+            if (strlen($state)) { $state.=","; }
+            $state.='"'.$c["Node_Id"].'":"'.$c["Node_State"].'"';
+        }
+    }
     else {
         $courses = mysql_query("SELECT * FROM `".$_SESSION['prefix']."tibibo`  WHERE ".
                     "User_Key='".$_SESSION['User_Key']."' AND Book_Name='".$_GET["book"]."' AND Node_Id='".$_GET["id"]."'");
@@ -60,6 +70,7 @@ if ($error) { echo '  "error" : '.$error.','; }
 echo '  "textStatus" : "'.$textstatus.'"';
 if ($value)       { echo ', "value" : "'.$value.'"'; }
 if ($json)       { echo ', "description" : ['.$json.']'; }
+if ($state)       { echo ', "state" : {'.$state.'}'; }
 echo '}';
 
 

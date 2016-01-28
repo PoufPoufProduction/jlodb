@@ -22,6 +22,9 @@
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="mods/tibibo/res/img/icon/icon144.png" />
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <style>
+        #main #waiting                    { top:50%; left:72%; font-size:4em; }
+
+
         #main                       { display:relative; background-image:url('res/img/background/book02.svg'); }
         #main .special              { font-size:.3em; width:105%; margin:.5em 0 .2em 0; }
         #main .special>div           { height:3em; padding:.1em; border-radius:.25em; float:left; margin-left:1em;  }
@@ -45,10 +48,10 @@
         #main #ocontent>div          { width:100%; display:none; }
         #main #ofooter #menu                 { clear:both; background-color:#aaa; width:51em; height:5em; color:white;}
         #main #ofooter #menu .menu           { display:none; }
-        #main #ofooter #menu #editown        { font-size:4em;  }
-        #main #ofooter #menu #editown .icon  { float:left; margin:.12em; cursor:pointer; border-radius:.1em; }
-        #main #ofooter #menu #editown .icon.s    { background-color:#A00; }
-        #main #ofooter #menu #editown .icon.f { float:right; }
+        #main #ofooter #menu>div             { font-size:4em;  }
+        #main #ofooter #menu>div .icon  { float:left; margin:.12em; cursor:pointer; border-radius:.1em; }
+        #main #ofooter #menu>div .icon.s    { background-color:#A00; }
+        #main #ofooter #menu>div .icon.f { float:right; }
 
         #main #obrowser              { font-size:2.4em; margin-left:.2em; }
         #main #ocontent>#omenu         { font-size:1.4em; height:6.5em; }
@@ -67,6 +70,9 @@
         #main .node .label           { font-size:.09em; position:absolute; top:12em; text-align:justify; }
         #main .node.f .type         { display:inline; }
         #main .node.s .star         { display:inline; }
+        #main .node .done           { position:absolute; top:0em; left:3.5em; font-size:.15em; width:3em; text-align:center;
+                                     background-color:rgba(20,200,50,0.8); color:yellow; border:.1em solid yellow;
+                                     -ms-transform: rotate(10deg); -webkit-transform: rotate(10deg); transform: rotate(10deg);   }
 
         #main #ocontent .input              { background-color:red; color:white; margin-top:1em; font-size:0.8em; }
         #main #ocontent .input>*            { float:left; margin-left:.5em; }
@@ -83,10 +89,27 @@
                                               border-radius:.5em 0 0 .5em; height:1.2em; text-align:right; font-weight:bold; }
         #main #ocontent .booklist .list .label    { float:left; margin-left:.1em; background-color:rgba(200,100,0,0.2); color:#543;
                                                 width:24em; height:1.2em; padding-left:.5em; border-radius:0 .5em .5em 0;
-                                                font-style:italic;}
+                                                font-style:italic;border:0;font-size:1em; font-family: "Times New Roman",Times,serif; }
 
         #main #ocontent #dinput              { font-size:.5em; }
         #main #ocontent #dinput input        { width:20em; }
+
+#dbrowser                   { position:absolute; top:0; left:0; width:16em; height:12em;
+                              background-color: rgba(0,0,0,0.2); display:none;}
+#dbrowser>div               { position:absolute; font-size:.4em; width:26em; height:21em; top:2em; left:2em; 
+                              background-color:rgba(200,200,200,0.9); border:.2em solid white; color:black;
+                              border-radius:.5em; background-image:url("res/img/background/book06.svg"); background-repeat:repeat; }
+#dbrowser #dcontent         { font-size:1.5em; overflow:auto; height:14em; }
+#dbrowser ul                { padding-left:0.5em; clear:both; }
+#dbrowser ul.sub            { display:none; }
+#dbrowser li                { clear:both;}
+#dbrowser .node             { height:1.1em; }
+#dbrowser .label            { padding:0 .1em; font-size:0.5em; height:2.4em; overflow:visible; float:left;
+                              background-color:rgba(240,250,255,0.5);  }
+#dbrowser .state            { width:4em; height:1.3em; font-size:.8em; background-color:rgba(255,255,255,0.8);
+                              border-radius:0 .2em .2em 0; text-align:center;padding-top:.2em; cursor:pointer;}
+#dbrowser .move            { font-size:1.2em;width:1em; height:1em; background-color:rgba(0,0,0,0.8);
+                              border-radius:0 .2em .2em 0; padding:0 .2em; text-align:center; cursor:pointer;}
 
 #editnode                     { position:absolute; top:0; left:0; width:16em; height:12em;
                               background-color: rgba(0,0,0,0.2); display:none; }
@@ -208,25 +231,20 @@ var tibibo = {
     },
     menu: {
         current: -1,
-        state: function(_book, _id, _cbk) {
-            tibibo.menu.current = _id;
-            if (user.settings.name) {
-                user.getJSON("mods/tibibo/api/tibibo.php", {book:_book, id:_id}, "", function(_data) {
-                    _cbk(_data.value);
-                });
-            }
-            else { _cbk(""); }
-        },
-        build:function(_list, _state) {
+        state : {},
+        build:function(_list) {
             $("#editown .e").hide();
-            if (!_state) { _state="."; }
-            for (var i=_state.length; i<_list.length; i++) { _state+=user.settings.name?"l":"."; }
+            var state = "";
+            if (tibibo.menu.state) { state = tibibo.menu.state[tibibo.menu.current]; }
+            if (!state) { state="."; }
+            for (var i=state.length; i<_list.length; i++) { state+=user.settings.name?"l":"."; }
 
-                $("#obrowser").hide();
+                $("#obrowser").html("").hide();
                 $("#omenu").show().menu({
                     list    : _list,
-                    state   : _state,
+                    state   : state,
                     onupdate: function($this, _state) {
+                        if (tibibo.menu.state) { tibibo.menu.state[tibibo.menu.current] = _state; }
                         if (user.settings && user.settings.name) {
                             user.getJSON("mods/tibibo/api/tibibo.php",
                                 {action:"upd",value:_state, book:tibibo.args.id, id:tibibo.menu.current}, "", function(_data) {}); }},
@@ -243,10 +261,23 @@ var tibibo = {
                                 return true; } },_args);
                     }
                 });
+        },
+        open: function(_id) {
+            tibibo.menu.current = _id;
+            tibibo.menu.build(tibibo.book.browse.elt(_id).description.split(","));
+            $("#dbrowser").hide();
+            tibibo.book.parents=[];
+            var parents = tibibo.book.browse.parent(_id).reverse();
+            for (var i=0; i<parents.length-1; i++) { tibibo.book.parents.push(parents[i]); }
+            tibibo.book.nav();
         }
     },
     node : {
         click: function($elt,_from) {
+            if (_from=="dump") {
+                $elt.parent().find("ul").first().toggle();
+            }
+            else
             if (_from=="state") { }
             else {
                 tibibo.menu.current = -1;
@@ -276,16 +307,46 @@ var tibibo = {
                 else {
 
                     var id = $elt.attr("id").substr(1);
-
                     var elt = tibibo.book.browse.elt(id);
                     if ($("#editown #mdelete").hasClass("s")) {
                         user.getJSON("mods/tibibo/api/tibibo.php",
                             {action:"del", book:tibibo.args.id, id:id}, "", function(_data) {});
                         tibibo.book.browse.remove(id);
                         tibibo.book.save();
+                        tibibo.node.menu();
                     }
                     else if ($("#editown #medit").hasClass("s")) {
                         tibibo.node.edit.open(elt);
+                        tibibo.node.menu();
+                    }
+                    else if ($("#editown #mleft").hasClass("s")) {
+                        var parent = tibibo.book.data.description;
+                        if (tibibo.book.parents.length) {
+                            parent = tibibo.book.browse.elt(tibibo.book.parents[tibibo.book.parents.length-1]).children;
+                        }
+                        var pos = -1;
+                        for (var i in parent) { if (parent[i].id==id) { pos=parseInt(i); } }
+                        if (pos>0) { parent.splice(pos-1, 0, parent.splice(pos, 1)[0]); }
+                        tibibo.book.save();
+                    }
+                    else if ($("#editown #mright").hasClass("s")) {
+                        var parent = tibibo.book.data.description;
+                        if (tibibo.book.parents.length) {
+                            parent = tibibo.book.browse.elt(tibibo.book.parents[tibibo.book.parents.length-1]).children;
+                        }
+                        var pos = -1;
+                        for (var i in parent) { if (parent[i].id==id) { pos=parseInt(i); } }
+                        if (pos<parent.length-1) { parent.splice(pos+1, 0, parent.splice(pos, 1)[0]); }
+                        tibibo.book.save();
+                    }
+                    else if ($("#editown #mmove").hasClass("s")) {
+                        $("#dbrowser").show();
+                        var html="<div class='label' style='width:26.4em;margin-bottom:.1em;'>"+tibibo.book.data.value+"</div></div>"+
+                                 "<div class='move' onmousedown='tibibo.book.move("+id+",-1)' "+
+                                 "ontouchstart='tibibo.book.move("+id+",-1);event.preventDefault();'>"+
+                                 "<img src='mods/tibibi/res/img/import.svg'/></div>";
+                        html+=tibibo.book.browse.dump({action:"move",id:id});
+                        $("#dbrowser #dcontent").html(html);
                     }
                     else if ($elt.hasClass("f")) {
                         tibibo.book.parents.push(elt.id);
@@ -293,13 +354,11 @@ var tibibo = {
                         tibibo.book.refresh();
                     }
                     else {
-                        tibibo.menu.state(tibibo.args.id, id, function(_state) {
-                            tibibo.menu.build(elt.description.split(","), _state);
-                        });
+                        tibibo.menu.current = id;
+                        tibibo.menu.build(elt.description.split(","));
                     }
                 }
             }
-            tibibo.node.menu();
         },
         edit: {
             star : 0,
@@ -379,6 +438,10 @@ var tibibo = {
             var turnon= ($elt && !$elt.hasClass("s"));
             $("#editown>div").removeClass("s");
             if (turnon) { $elt.addClass("s"); }
+        },
+        state:function() {
+            $("#dbrowser").show();
+            $("#dbrowser #dcontent").html(tibibo.book.browse.dump({action:"state"},tibibo.book.current));
         }
     },
     book: {
@@ -386,6 +449,63 @@ var tibibo = {
         current:[],
         parents:[],
         browse: {
+            done: function(_node) {
+                var ret = true;
+                if (_node.description) {
+                    ret = ( tibibo.menu.state && tibibo.menu.state[_node.id] &&
+                            tibibo.menu.state[_node.id].indexOf('l')==-1 &&
+                            tibibo.menu.state[_node.id].indexOf('.')==-1 );
+                }
+                else { for (var i in _node.children) { ret &=tibibo.book.browse.done(_node.children[i]); } }
+                return ret;
+            },
+            dump: function(_args,_node,_level) {
+                var ret = "", same = _args.same;
+                if (!_node) { _node = tibibo.book.data.description; }
+                if ($.isArray(_node)) {
+                    ret+="<ul>"; for (var i in _node) {
+                        if (_args.id==_node[i].id) { _args.same = true; } else { _args.same = same; }
+                        ret+= tibibo.book.browse.dump(_args,_node[i],0);
+                    } ret+="</ul>";
+                }
+                else {
+                    ret+=(_node.description && _node.description.length)?"<li class='final'>":"<li>";
+                    ret+=tibibo.book.node(_node,"dump");
+                    ret+="<div class='label' style='width:"+(23-_level)+"em;'>"+_node.label+"</div>";
+
+                    if (_args.action=="state" && _node.description && _node.description.length) {
+                        var nb=0;
+                        if (tibibo.menu.state && tibibo.menu.state[_node.id]) {
+                            for (var i=0; i<tibibo.menu.state[_node.id].length; i++) {
+                                if (tibibo.menu.state[_node.id][i]!="." && tibibo.menu.state[_node.id][i]!="l") { nb++; }
+                            }
+                        }
+                        ret+="<div class='state' onmousedown='tibibo.menu.open("+_node.id+")' "+
+                             "ontouchstart='tibibo.menu.open("+_node.id+");event.preventDefault();'>"+nb+"/"+_node.description.split(",").length+"</div>";
+                    }
+
+                    if (_args.action=="move")
+                    {
+                        if (!_node.description && !_args.same) {
+                            ret+="<div class='move' onmousedown='tibibo.book.move("+_args.id+","+_node.id+")' "+
+                                 "ontouchstart='tibibo.book.move("+_args.id+","+_node.id+");event.preventDefault();'>"+
+                                 "<img src='mods/tibibi/res/img/import.svg'/>"+
+                                 "</div>";
+                        }
+                    }
+
+                    if (_node.children && _node.children.length) {
+                        ret+="<ul class='sub'>";
+                        for (var i in _node.children) {
+                            if (_args.id==_node.children[i].id) { _args.same = true; } else { _args.same = same; }
+                            ret += tibibo.book.browse.dump(_args,_node.children[i],_level+1);
+                        }
+                        ret+="</ul>";
+                    }
+                    ret+="</li>";
+                }
+                return ret;
+            },
             id: function(_node) {
                 var ret = -1;
                 if (!_node) { for (var i in tibibo.book.data.description) {
@@ -420,7 +540,39 @@ var tibibo = {
                     for (var i in _node.children) { ret = ret || tibibo.book.browse.elt(_id,_node.children[i]); }
                 }
                 return ret;
+            },
+            parent: function(_id,_node) {
+                var ret = [];
+                if (!_node) { for (var i in tibibo.book.data.description) {
+                    var child = tibibo.book.browse.parent(_id,tibibo.book.data.description[i]);
+                    if (child.length) { ret = child; }
+                } }
+                else {
+                    if (_node.id==_id) { ret = [ _id ];  } else
+                    for (var i in _node.children) {
+                        var child = tibibo.book.browse.parent(_id,_node.children[i]);
+                        if (child.length) { ret = child; ret.push(_node.id); }
+                    }
+                }
+                return ret;
             }
+        },
+        move: function(_id, _to) {
+            $("#dbrowser").hide();
+            var vElt = tibibo.book.browse.elt(_id);
+            var vTo = _to==-1?tibibo.book.data.description:tibibo.book.browse.elt(_to).children;
+            var vFrom = tibibo.book.browse.parent(_id).reverse();
+            var vParent = tibibo.book.data.description;
+            if (vFrom.length>1) { vParent = tibibo.book.browse.elt(vFrom[vFrom.length-2]).children; }
+            var vPos = -1;
+            for (var i in vParent) { if (vParent[i].id==_id) { vPos = i; } }
+            if (vPos>=0) {
+                vParent.splice(vPos,1);
+                vTo.push(vElt);
+            }
+            
+            tibibo.book.save();
+            tibibo.node.menu();
         },
         save: function() {
             var description = JSON.stringify(tibibo.book.data.description);
@@ -458,6 +610,7 @@ var tibibo = {
             if (!_from)         { html+="<div class='type'><img src='res/img/icon/plus01.svg'/></div>"; }
             if (elt.nbstar>0)   { html+="<div class='star'><img src='res/img/icon/menu01st"+(elt.nbstar-1)+".svg'/></div>"; }
             if (!_from)         { html+="<div class='label'>"+elt.label+"</div>"; }
+            if (!_from && tibibo.book.browse.done(elt)) { html+="<div class='done'>"+tibibo.locale.donelabel+"</div>"; }
 
             html+="</div>";
             return html;
@@ -485,6 +638,11 @@ var tibibo = {
             for (var i in tibibo.book.current) { $("#obrowser").append(tibibo.book.node(tibibo.book.current[i])); }
             $("#obrowser").show(); $("#ocontent>#omenu").hide();
             
+        },
+        name: function(_elt) {
+            user.getJSON("mods/tibibo/api/book.php",
+                {action:"upd",book:$(_elt).parent().find(".bookid").text(),value:encodeURIComponent($(_elt).val())}, "",
+                    function(_data) { });
         }
     },
     init: function() {
@@ -494,7 +652,8 @@ var tibibo = {
             $("#error").html(tibibo.locale.error.booknotfound.replace("$1",tibibo.args.id)).show();
         }
 
-        $("#editown").hide(); $("#editext").hide(); $("#chooseid #clastid .list").html("");
+        tibibo.menu.state = {};
+        $("#ofooter #menu>div").hide(); $("#chooseid #clastid .list").html("");
 
         if (user.settings && user.settings.name) {
             if (tibibo.args.dev) {
@@ -502,16 +661,20 @@ var tibibo = {
 
                     if (tibibo.book.data.owner == user.settings.name) { $("#editown").show(); }
 
-                    $("#obrowser").show();
+                    user.getJSON("mods/tibibo/api/tibibo.php",{action:"all",book:tibibo.args.id}, 0, function(_data) {
+                        if (_data.state) { tibibo.menu.state = _data.state; }
+                        tibibo.book.refresh();
+                        $("#obrowser").show();
+                    });
                 }
                 else {
                     user.getJSON("mods/tibibo/api/book.php",{action:"list"},0, function(_data) {
                         $("#dlastid .list").html("");
                         for (var i in _data.books) {
-                            var html="<div onmousedown=\"document.location='tibibo.html?dev=1&id="+_data.books[i].id+"';\"";
+                            var html="<div><div class='bookid' onmousedown=\"document.location='tibibo.html?dev=1&id="+_data.books[i].id+"';\"";
                             html+="ontouchstart=\"document.location='tibibo.html?dev=1&id="+_data.books[i].id+"';event.preventDefault();\">";
-                            html+="<div class='bookid'>"+_data.books[i].id+"</div>";
-                            html+="<div class='label'>"+_data.books[i].label+"</div></div>";
+                            html+=_data.books[i].id+"</div>";
+                            html+="<textarea onchange='tibibo.book.name(this);' class='label'>"+_data.books[i].label+"</textarea></div>";
 
                             $("#dlastid .list").append(html);
                         }
@@ -521,7 +684,13 @@ var tibibo = {
             }
             else {
                 if (tibibo.args.id && tibibo.book.data.owner) {
-                    $("#obrowser").show();
+                    $("#ooptions").show();
+                    user.getJSON("mods/tibibo/api/tibibo.php",{action:"all",book:tibibo.args.id}, 0, function(_data) {
+                        tibibo.menu.state = _data.state;
+                        tibibo.book.refresh();
+                        $("#obrowser").show();
+                    });
+                    
                 }
                 else {
                     user.getJSON("mods/tibibo/api/tibibo.php",{action:"list"},0, function(_data) {
@@ -542,6 +711,7 @@ var tibibo = {
         }
         else {
             if (tibibo.args.id && tibibo.book.data.owner) {
+                tibibo.book.refresh();
                 $("#obrowser").show();
             }
             else { $("#chooseid #clastid").hide(); $("#chooseid").show(); }
@@ -569,7 +739,6 @@ $(window).load(function() {
                         tibibo.book.data = _data;
                         if (!tibibo.book.data.description) { tibibo.book.data.description=[]; }
                         tibibo.book.current = tibibo.book.data.description;
-                        tibibo.book.refresh();
                         user.init(tibibo.lang); });
                 }
                 else { user.init(tibibo.lang); }
@@ -672,16 +841,31 @@ $(window).load(function() {
                     <div id="medit" class="icon e" onmousedown="tibibo.node.menu($(this));"
                         ontouchstart="tibibo.node.menu($(this));event.preventDefault();" >
                         <img src="mods/tibibi/res/img/edit.svg"/></div>
+                    <div id="mleft" class="icon e" onmousedown="tibibo.node.menu($(this));"
+                        ontouchstart="tibibo.node.menu($(this));event.preventDefault();" >
+                        <img src="mods/tibibo/res/img/left.svg"/></div>
+                    <div id="mright" class="icon e" onmousedown="tibibo.node.menu($(this));"
+                        ontouchstart="tibibo.node.menu($(this));event.preventDefault();" >
+                        <img src="mods/tibibo/res/img/right.svg"/></div>
+                    <div id="mmove" class="icon e" onmousedown="tibibo.node.menu($(this));"
+                        ontouchstart="tibibo.node.menu($(this));event.preventDefault();" >
+                        <img src="mods/tibibi/res/img/courses.svg"/></div>
                     <div id="mlook" class="icon f" onmousedown="tibibo.stat.realtime.open();"
                         ontouchstart="tibibo.stat.realtime.open();event.preventDefault();" >
                         <img src="mods/tibibi/res/img/people.svg"/></div>
                     
+                    
+                </div>
+                <div id="ooptions" class="menu">
+                    <div class="icon e" onmousedown="tibibo.node.state();"
+                        ontouchstart="tibibo.node.state();event.preventDefault();" >
+                        <img src="mods/tibibi/res/img/list.svg"/></div>
                 </div>
             </div>
         </div>
       </div>
 
-<!--        <div id="waiting"><div><img src="res/img/generic/waiting.svg"/></div></div> -->
+    <div id="waiting" class="anim12"><div><img src="res/img/generic/waiting_red.svg"/></div></div>
 
     <div id="editnode">
         <div id="eedit">
@@ -772,9 +956,12 @@ $(window).load(function() {
         <div class="icon"><img src="mods/tibibo/res/img/thumbnail/pinguin01.svg"/></div>
         <div class="icon"><img src="mods/tibibo/res/img/thumbnail/pig01.svg"/></div>
     </div>
-
-
     </div>
+
+    <div id="dbrowser" ontouchstart="$(this).hide();tibibo.node.menu();event.preventDefault();" onclick="$(this).hide();tibibo.node.menu();">
+    <div ontouchstart="event.stopPropagation();event.preventDefault();" onclick="event.stopPropagation();">
+        <div id="dcontent"></div>
+    </div></div>
 
         <div id="score"><div>
             <div class="content">

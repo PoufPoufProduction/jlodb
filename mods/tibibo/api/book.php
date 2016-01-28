@@ -25,13 +25,12 @@ if (strlen($_SESSION['User_Key']) && $_GET["action"]=="new") {
 }
 else
 if (strlen($_SESSION['User_Key']) && $_GET["action"]=="upd") {
-    $value = $_GET["value"];
     if (strlen($_GET["value"])) {
         
         $v = str_replace("'","\'", $_GET["value"]);
         $v = str_replace('"','', $v);
 
-        if (! mysql_query("UPDATE `".$_SESSION['prefix']."book` SET `Book_Name`='".$value."' ".
+        if (! mysql_query("UPDATE `".$_SESSION['prefix']."book` SET `Book_Label`='".$v."' ".
                         "WHERE `Book_Name`='".$_GET["book"]."' AND User_Key='".$_SESSION['User_Key']."'") ) {
             $value = $_GET["course"];
         }
