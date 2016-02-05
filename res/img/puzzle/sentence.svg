@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 
-<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="100%" height="100%" viewBox="0 0 640 480" id="1-9">
+<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="100%" height="100%" viewBox="0 0 640 480" id="sentence">
 <defs id="defs2385">
 <style type="text/css">
-    .l                  { fill:white;fill-opacity:0.5;stroke:white;stroke-width:2;}
-    .a                  { fill:#aaddff;stroke:#002b35;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;cursor:move;}
-    .good .a            { fill:green; }
-    .good text          { fill:lime; }
-    .disable .a         { display:none; }
-    text                { font-size:32px;text-anchor:middle;fill:#002b35;font-family:Times New Roman; }
+    #sentence .l                  { fill:white;fill-opacity:0.5;stroke:white;stroke-width:2;}
+    #sentence .a                  { fill:#cceeff;fill-opacity:0.95;stroke:#002b35;stroke-width:2;cursor:move;}
+    #sentence .good .a            { fill:#0B0; }
+    #sentence .good text          { fill:#050; }
+    #sentence .wrong .a           { fill:#C00; }
+    #sentence .wrong text         { fill:#500; }
+    #sentence .disable            { display:none; }
+    #sentence text                { font-size:32px;text-anchor:middle;fill:#002b35;font-family:Times New Roman; }
 
-    .l1 #l2             { display:none; }
-    .l1 #l3             { display:none; }
-    .l1 #l4             { display:none; }
-    .l2 #l3             { display:none; }
-    .l2 #l4             { display:none; }
-    .l3 #l4             { display:none; }
+    #sentence.l1 #l2              { display:none; }
+    #sentence.l1 #l3              { display:none; }
+    #sentence.l1 #l4              { display:none; }
+    #sentence.l2 #l3              { display:none; }
+    #sentence.l2 #l4              { display:none; }
+    #sentence.l3 #l4              { display:none; }
 
-    .box                { fill:lime;fill-opacity:0.3; }
+    #sentence .box                { fill:#37435f;fill-opacity:0.95; }
 </style>
 </defs>
 
@@ -28,7 +30,7 @@
 <rect x="24" y="236" width="576" height="48" class="l" id="l4"/>
 
 <g id="area">
-    <rect x="200" y="320" ry="20" width="430" height="150" class="box"/>
+    <rect x="10" y="320" ry="20" width="620" height="150" class="box"/>
 </g>
 
 

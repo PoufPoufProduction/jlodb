@@ -170,14 +170,17 @@
             var vIllus = settings.illustration;
             if ($.isArray(vIllus)) { vIllus = vIllus[settings.it%vIllus.length]; }
 
-            if ($.isArray(vIllus)) {
-                    $this.find("#illustration").html("<div></div>");
-                    for (var i in vIllus) { $this.find("#illustration>div").append(
-                        "<p>"+(vIllus[i].length?helpers.format(vIllus[i]):"&nbsp;")+"</p>"); }
-            } else {
+            if (vIllus) {
                 if (vIllus.indexOf("<svg")!=-1) { $this.find("#illustration").html(vIllus); }
-                else { $this.find("#illustration").html("<div>"+helpers.format(vIllus)+"</div>"); }
+                else { $this.find("#illustration").html("<img src='"+vIllus+"'/>"); }
             }
+
+            // HANDLE THE LEGEND
+            var vLegend = settings.legend;
+            if ($.isArray(vLegend)) { vLegend = vLegend[settings.it%vLegend.length]; }
+
+            if (vLegend) { $this.find("#legend").html(helpers.format(vLegend)); }
+  
 
             settings.interactive = true;
         },

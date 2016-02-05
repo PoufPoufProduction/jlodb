@@ -234,6 +234,8 @@
             }
             for (var i=0; i<nbpieces; i++) { inituse.push(false); }
 
+            $("#"+settings.pieces+">g",settings.svg.root()).unbind('touchstart mousedown');
+
             // PARSE ALL THE PIECES
             var count = 0;
             $("#"+settings.pieces+">g",settings.svg.root()).each(function(_index) {

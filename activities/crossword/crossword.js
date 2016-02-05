@@ -14,7 +14,7 @@
         move        : true,                                     // Move after key
         keypad      : "num",                                    // The keypad
         number      : 1,                                        // Number of exercices
-        debug       : false                                     // Debug mode
+        debug       : true                                      // Debug mode
     };
 
     // private methods
