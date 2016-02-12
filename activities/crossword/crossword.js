@@ -317,7 +317,11 @@
                     else { settings.elt.hint = 0; }
                 }
             },
-            key: function(_elt) { helpers.key($(this), $(_elt).text()); },
+            key: function(_elt) { 
+                if (_elt) { $(_elt).addClass("touch");
+                    setTimeout(function() { $(_elt).removeClass("touch"); }, 50);
+                }
+                helpers.key($(this), $(_elt).text()); },
             next: function()    { helpers.settings($(this)).interactive = true; },
             valid: function() {
                 var $this = $(this) , settings = helpers.settings($this);

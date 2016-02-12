@@ -1,5 +1,5 @@
 .crossword                                { background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat; }
-.crossword #main                          { width:16.2em;}
+.crossword>div                            { width:16.2em;}
 .crossword div#splashex                   { background-color:rgba(0,0,0,0.3); background-image:url("../../res/img/banners/crossword.svg");
                                             font-family: "Courier New" Courier monospace; }
 .crossword div#splashex  h1               { position:absolute; top:78%; left:0; font-size:2em; background-color:rgba(70,40,20,0.8);
@@ -63,15 +63,28 @@
 .crossword div#menu #input                { border:0; }
 .crossword div#menu .num                  { font-size:1.2em; margin:.1em 0 .1em .1em; display:none; }
 .crossword div#menu .num table div        { width:1em; height:1em; cursor:pointer; text-align:center; font-weight:bold;
-                                          font-family: "Courier New" Courier monospace; background-color:rgba(84,137,184,0.9);
+                                          font-family: "Courier New" Courier monospace;
                                           color:rgb(220,231,241); border-radius:.25em; }
 
 .crossword div#menu .abc                  { font-size:.8em; margin:.12em 0 .12em .1em; }
 .crossword div#menu .abc table div        { width:0.9em; height:1em; cursor:pointer; text-align:center; font-weight:bold;
-                                          font-family: "Courier New" Courier monospace; background-color:rgba(84,137,184,0.9);
+                                          font-family: "Courier New" Courier monospace;
                                           color:rgb(220,231,241); border-radius:.25em; }
 .crossword div#menu .input                { display:none; }
 
+
+.crossword .bluekeypad                { background-color:rgba(84,137,184,0.9);
+                                   -webkit-transition: background-color 1000ms ease-in;
+                                   -moz-transition: background-color 1000ms ease-in;
+                                   -o-transition: background-color 1000ms ease-in;
+                                   -ms-transition: background-color 1000ms ease-in;
+                                   transition: background-color 1000ms ease-in; }
+.crossword .bluekeypad.touch          { background-color:rgba(256,220,50,0.9);
+                                   -webkit-transition: none;
+                                   -moz-transition: none;
+                                   -o-transition: none;
+                                   -ms-transition: none;
+                                   transition: none; }
 
 .crossword div#valid                      { font-size:1.6em; position:absolute; background-color:rgba(255,255,255,0.8);
                                             display:none; top:1em; left:3em;  border-radius:.25em; }

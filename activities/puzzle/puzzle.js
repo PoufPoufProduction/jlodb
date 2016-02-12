@@ -179,6 +179,7 @@
             var settings = helpers.settings($this);
             settings.origin.translate = [];
             settings.origin.rotate    = {};
+            settings.origin.decoys    = [];
             $this.find("#submit").removeClass();
             $this.find(".t").hide();
             var inituse               = [];
@@ -268,6 +269,7 @@
                         }
                         settings.origin.rotate[rotate[0]]=rotate[1];
                     }
+                    else { settings.origin.decoys.push($(this).attr("id")); }
 
                     // CLICK ON PIECES
                     $(this).bind('touchstart mousedown', function(event) {
@@ -455,8 +457,11 @@
                     // BUILD THE LIST OF PIECES PUZZLE WHICH CAN USE THE CURRENT POSITION
                     var pieces = [ settings.origin.translate[i][0] ];
                     if (settings.same) {
-                        for (var si in settings.same) for (var sj in settings.same[si]) {
-                            if (settings.same[si][sj]==settings.origin.translate[i][0]) { pieces = settings.same[si]; } }
+                        var vSame = settings.same;
+                        if (typeof(vSame[0][0])!="string") { vSame = settings.same[settings.puzzleid]; }
+
+                        for (var si in vSame) for (var sj in vSame[si]) {
+                            if (vSame[si][sj]==settings.origin.translate[i][0]) { pieces = vSame[si]; } }
                     }
 
                     // CHECK IF THE POSITION OF EACH PIECES IN THE LIST IS MATCHING THE CURRENT POSITION
@@ -493,7 +498,9 @@
                     var decoys = ($.isArray(settings.decoys[0]))?settings.decoys[settings.puzzleid%settings.decoys.length]:settings.decoys;
                     for (var i in decoys) {
                         var $piece = $("#"+settings.pieces+">g#"+decoys[i],settings.svg.root());
-                        if ($piece.attr("transform")) {
+                        var isActualDecoy = false;
+                        for (var j in settings.origin.decoys) { if (settings.origin.decoys[j]==decoys[i]) { isActualDecoy=true; } }
+                        if (isActualDecoy && $piece.attr("transform")) {
                             var reg = new RegExp("[( ),]","g");
                             var vSplit = $piece.attr("transform").split(reg);
                             var translate = [vSplit[1], vSplit[2]];
@@ -552,7 +559,8 @@
                     interactive : false,
                     origin      : {
                         translate   : [],
-                        rotate      : []
+                        rotate      : [],
+                        decoys      : []
                     },
                     puzzleid        : 0,
                     wrongs          : 0,

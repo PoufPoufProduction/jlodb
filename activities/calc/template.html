@@ -1,14 +1,72 @@
 <div>
 
     <div id="exercice"><div></div></div>
-    <div id="command">
-        <div id="form">3.141592</div>
-        <div class="icon"><img src="res/img/icon/valid2.svg"/></div>
-        <div class="icon"><img src="res/img/icon/cancel2.svg"/></div>
+    <div id="board"><div></div></div>
+
+    <div id="target" ontouchstart="$(this).closest('.calc').calc('cell', 0);event.preventDefault();"
+                     onclick="$(this).closest('.calc').calc('cell', 0);">
+        <div style="display:none;"></div>
     </div>
-    <div id="board">
-        <div id="sheet"></div>
-        <div id="menu"></div>
+
+    <div id="panel">
+        <div id="ppanel">
+            <div id="pcalc">
+                <table>
+                    <tr><td colspan="3"><div id="screen"ontouchstart="$(this).closest('.calc').calc('key', 'c', this);event.preventDefault();"
+                            onclick="$(this).closest('.calc').calc('key', 'c', this);">0</div></td></tr>
+                    <tr>
+                        <td ontouchstart="$(this).closest('.calc').calc('key', 7, this);event.preventDefault();"
+                            onclick="$(this).closest('.calc').calc('key', 7, this);" class="bluekeypad">7</td>
+                        <td ontouchstart="$(this).closest('.calc').calc('key', 8, this);event.preventDefault();"
+                            onclick="$(this).closest('.calc').calc('key', 8, this);" class="bluekeypad">8</td>
+                        <td ontouchstart="$(this).closest('.calc').calc('key', 9, this);event.preventDefault();"
+                            onclick="$(this).closest('.calc').calc('key', 9, this);" class="bluekeypad">9</td>
+                    </tr>
+                    <tr>
+                        <td ontouchstart="$(this).closest('.calc').calc('key', 4, this);event.preventDefault();"
+                            onclick="$(this).closest('.calc').calc('key', 4, this);" class="bluekeypad">4</td>
+                        <td ontouchstart="$(this).closest('.calc').calc('key', 5, this);event.preventDefault();"
+                            onclick="$(this).closest('.calc').calc('key', 5, this);" class="bluekeypad">5</td>
+                        <td ontouchstart="$(this).closest('.calc').calc('key', 6, this);event.preventDefault();"
+                            onclick="$(this).closest('.calc').calc('key', 6, this);" class="bluekeypad">6</td>
+                    </tr>
+                    <tr>
+                        <td ontouchstart="$(this).closest('.calc').calc('key', 1, this);event.preventDefault();"
+                            onclick="$(this).closest('.calc').calc('key', 1, this);" class="bluekeypad">1</td>
+                        <td ontouchstart="$(this).closest('.calc').calc('key', 2, this);event.preventDefault();"
+                            onclick="$(this).closest('.calc').calc('key', 2, this);" class="bluekeypad">2</td>
+                        <td ontouchstart="$(this).closest('.calc').calc('key', 3, this);event.preventDefault();"
+                            onclick="$(this).closest('.calc').calc('key', 3, this);" class="bluekeypad">3</td>
+                    </tr>
+                    <tr>
+                        <td ontouchstart="$(this).closest('.calc').calc('key', '.', this);event.preventDefault();"
+                            onclick="$(this).closest('.calc').calc('key', '.', this);" class="bluekeypad">.</td>
+                        <td ontouchstart="$(this).closest('.calc').calc('key', 0, this);event.preventDefault();"
+                            onclick="$(this).closest('.calc').calc('key', 0, this);" class="bluekeypad">0</td>
+                        <td ontouchstart="$(this).closest('.calc').calc('key', '-', this);event.preventDefault();"
+                            onclick="$(this).closest('.calc').calc('key', '-', this);" class="bluekeypad">-</div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="pimg"></div>
+        </div>
+        <div id="phandle">
+            <div class="icon" id="pcancel" ontouchstart="$(this).closest('.calc').calc('cell', 0);event.preventDefault();"
+                              onclick="$(this).closest('.calc').calc('cell', 0);"><img src="res/img/icon/cancel2.svg"/></div>
+            <div class="icon" id="pvalid"><img src="res/img/icon/valid2.svg"/></div>
+        </div>
+        <div id="pmenu">
+            <div class="icon" id="tabcalc" ontouchstart="$(this).closest('.calc').calc('tab', 'pcalc', this);event.preventDefault();"
+                              onclick="$(this).closest('.calc').calc('tab', 'pcalc', this);">
+                <img src="res/img/svginventoryicons/hardware/calculator01.svg"/></div>
+            <div class="icon" id="tabimg" ontouchstart="$(this).closest('.calc').calc('tab', 'pimg', this);event.preventDefault();"
+                              onclick="$(this).closest('.calc').calc('tab', 'pimg', this);">
+                <img src="res/img/svginventoryicons/hardware/camera01.svg"/></div>
+            <div class="icon" id="tabmath" ontouchstart="$(this).closest('.calc').calc('tab', 'pmath', this);event.preventDefault();"
+                              onclick="$(this).closest('.calc').calc('tab', 'pmath', this);">
+                <img src="res/img/svginventoryicons/tool/abacus01.svg"/></div>
+        </div>
     </div>
 
     <div id="splashex" ontouchstart="$(this).hide().closest('.calc').calc('next');event.preventDefault();"

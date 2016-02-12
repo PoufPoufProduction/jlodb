@@ -75,7 +75,50 @@ var t002 = {
     }
 };
 
+var t003 = {
+    process: function() {
+        var svgClass="";
+        var values="";
+        var same=[], issame = false;
+        var img="";
+        var txt = $("#t003").val().split(",");
+        for (var i in txt) {
+            t = txt[i];
+            if (svgClass.length) { svgClass+=','; img+=','; values+=','; }
+            svgClass+='"l'+t.length+'"';
+            img+='"clipart/animal/pear01.svg"';
+            values+="{";
+            for (var j=0; j<t.length; j++) {
+                if (j!=0) { values+=","; }
+                values+='"p'+(j<9?"0":"")+(j+1)+'":"'+t[j]+'"';
+            }
+            for (var j=0; j<12-t.length; j++) {
+                var c;
+                do { c = String.fromCharCode(65 + Math.floor(Math.random()*26)); } while (t.indexOf(c)!=-1);
+                values+=',"dd0'+(j+1)+'":"'+c+'"';
+            }
+            values+="}";
 
+            var s = [];
+            for (var j=0; j<t.length; j++) {
+                var val=[];
+                if (t[j]!='#') for (var k=j+1; k<t.length; k++) {
+                    if (t[k]==t[j]) { val.push('p'+(k<9?"0":"")+(k+1)); issame = true; }
+                }
+                if (val.length) { val.push('p'+(j<9?"0":"")+(j+1)); t = t.replace(new RegExp(t[j], 'g'),"#"); s.push(val); }
+                
+            }
+            same.push(s);
+
+        }
+
+    alert('<![CDATA["decoys":["dd01","dd02","dd03","dd04","dd05","dd06","dd07","dd08","dd09"],"init":{"pos":[[425,60],[495,60],[565,60],[425,130],[495,130],[565,130],[425,200],[495,200],[565,200],[425,270],[495,270],[565,270]]},"url":"puzzle/word.svg",'+
+    '"svgclass":['+svgClass+'],"timg":['+img+'],"values":['+values+']'+
+    ((issame)?',"same":'+JSON.stringify(same):'')+
+    ']]>');
+
+    }
+};
     </script>
 </head>
 
@@ -188,6 +231,21 @@ var t002 = {
             </ul>
         </li>
     </ul>
+    <h4>Alternative : Reconstruction de mots</h4>
+    <div class="margin">
+        <ul>
+            <li><b>"url":"puzzle/word.svg"</b></li>
+            <li><b>"svgclass"</b> peut prendre les valeurs "l2","l3"..."l11","l12"(valeur par défaut) en fonction du nombre de lettres contenus dans le mot à reconstruire.</li>
+            <li><b>"decoys":["dd01","dd02","dd03","dd04","dd05","dd06","dd07","dd08","dd09"]</b> permet de définir de fausses lettres. Evidemment, elles ne doivent pas être communes avec les lettres du mot en cours.</li>
+            <li><b>"values":{"p01":'Lettre1',"p02":'Lettre2',...,"dd01":'Fausse lettre'}</b>.</li>
+        </ul>
+        <div>
+            <p><b>Générateur</b> : entrez les mots de l'exercice séparés par une virgule.</p>
+            <textarea style="width:30em;height:4em;" id="t003"></textarea>
+            <div class="button" style="width:5em;" onclick="t003.process();">Publier</div>
+        </div>
+    </div>
+
     <h4>Alternative : Reconstruction de phrases</h4>
     <div class="margin">
         <ul>
@@ -199,7 +257,8 @@ var t002 = {
             <p><b>Générateur</b> : entrez la phrase en séparant les différentes parties par le caractère | et cliquez sur le bouton de publication. Attention : ce générateur vite codé n'est pas parfait, il est important de bien tester le résultat obtenu avec l'outil d'édition de jlodb.</p>
             <textarea style="width:30em;height:4em;" id="t001"></textarea>
             <div class="button" style="width:5em;" onclick="t001.process();">Publier</div>
-    <div>
+        </div>
+    </div>
 </body>
 
 </html>
