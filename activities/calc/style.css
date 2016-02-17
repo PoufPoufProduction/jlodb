@@ -1,23 +1,28 @@
 .calc                            { background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat; position:relative;}
-.calc div#splashex               { background-image:url("../../res/img/banners/it.svg"); }
-.calc div#splashex h1            { position:absolute; top:45%; left:80%; font-size:1.5em; }
-.calc div#splashex #guide        { position:absolute; top:52%; left:45%; font-size:.75em; width:48%;;
+.calc div#splashex               { background-image:url("../../res/img/banners/sorting.svg"); background-color:rgba(0,0,0,0.5); }
+.calc div#splashex h1            { position:absolute; top:45%; left:80%; font-size:2em; }
+.calc div#splashex #guide        { position:absolute; top:55%; left:30%; font-size:1.5em; width:60%;
                                           text-align:justify; }
-.calc div#exercice               { width:100%; height:1.5em; background-repeat:repeat;
+.calc div#exercice               { width:90%; margin-left:10%; height:1.7em; background-repeat:repeat; border-radius:.5em 0 0 0;
                                    background-image:url("../../res/img/background/book02.svg"); text-align:justify; }
-.calc div#exercice>div          { font-size:.4em; margin-left:4em; margin-right:1em;}
+.calc div#exercice>div          { font-size:.4em;  margin-left:1em; margin-right:0.5em;}
 .calc div#exercice .strong       { color:red; font-weight:bold; border: 1px solid red; border-width:1px 0; }
 
 
-.calc div#board                  { height:12em; font-size:0.8em; padding:0.02em 0 0 0.02em;}
+.calc div#board                 { margin-top:0.5em; height:12.5em; font-size:0.8em; padding:0.02em 0 0 0.02em;}
 .calc div#board>div             { position:relative; height:120%; width:120%; }
 .calc div#board .cell           { position:absolute; background-color:white;
                                    text-align:center; cursor:pointer; }
+.calc div#board .cell.left      { text-align:left; }
+.calc div#board .cell.left>span { margin-left:.1em; }
 .calc div#board .cell.fixed     { cursor:auto; }
+.calc div#board .cell.wrong     { background-color:#A00 !important; color:red !important;}
+.calc div#board .cell.empty     { background-color:#FF0 !important; }
 .calc div#board .cell.g         { background-color:#888; color:#444;cursor:auto; }
 
-.calc div#panel                 { position:absolute; top:20%; left:60%; width:6em; height:8em;
+.calc div#panel                 { position:absolute; top:10%; left:60%; width:6em; height:8em;
                                   border:0.15em solid white; border-radius:.2em; overflow:visible;display:none; }
+.calc.leftpanel div#panel       { left:5%; }
 .calc div#panel #ppanel         { width:6em; height:7em; background-color:rgba(255,255,255,0.8); }
 .calc div#panel #ppanel>div     { display:none; }
 .calc div#panel #phandle        { background-color: rgba(100,100,100,0.8); cursor:move; }
@@ -33,10 +38,11 @@
 .calc #pimg .icon               { float:left; border-radius:.5em; overflow:visible; cursor:pointer;}
 .calc #pimg .icon.s             { background-color:rgba(84,137,184,0.9); }
 .calc table                 { border-spacing: 0; }
-.calc #screen       { font-size:1.5em; width:4em; cursor:move;
+.calc #screen       { font-size:1.5em; width:4em;
                                    text-align:center; color:#0F0; font-weight:bold;
                                    background-color:#030;
                                    background-image:url("../../res/img/background/book05.svg"); background-repeat:repeat;}
+.calc .graykeypad               { background-color:rgba(128,128,128,0.9) !important;} 
 .calc .bluekeypad                { background-color:rgba(84,137,184,0.9); color:white; text-align:center; font-size:1.15em; cursor:pointer;
                                    border:1px solid white; 
                                    -webkit-transition: background-color 1000ms ease-in;
@@ -55,3 +61,12 @@
                                   overflow:visible;display:none; padding:2px; }
 .calc #target>div               { width:20px;height:20px;margin-top:-15px;margin-left:-15px;
                                   position:absolute;top:100%;left:100%;background-color:blue; }
+
+.calc div#submit                     { font-size:1.5em; height:1em;width:1em; cursor:pointer;
+                                            position:absolute; top:7em; left:0em; z-index:3; }
+.calc div#submit>img                 { display:none; }
+.calc div#submit #subvalid           { display:inline; }
+.calc div#submit.good #subvalid      { display:none; }
+.calc div#submit.wrong #subvalid     { display:none; }
+.calc div#submit.good #subgood       { display:inline; }
+.calc div#submit.wrong #subwrong     { display:inline; }
