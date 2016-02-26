@@ -10,7 +10,7 @@
         withbars    : true,                             // Add the bars A,B,C,D,... 1,2,3,4,...
         sp          : 0.1,                              // space between cells
         font        : 1,                                // font size of cell
-        tabs        : ["calc","img"],                   // authorized tabs
+        tabs        : ["calc","img","math"],            // authorized tabs
         withtabs    : true,                             // display the tabs
         imgsize     : 2,                                // img tab font-size in em
         imgprefix   : "res/img/clipart/animal/",        // img prefix
@@ -21,6 +21,7 @@
         nonext      : false,                            // no next cell after validing
         callen      : 6,                                // calculator length
         checkempty  : false,                            // Do not valid if empty cells
+        reference   : "A1",                             // reference value
         debug       : true                              // Debug mode
     };
 
@@ -105,8 +106,32 @@
                 if (settings.nodec) { $this.find("#paddec").addClass("graykeypad"); }
                 if (settings.noneg) { $this.find("#padneg").addClass("graykeypad"); }
 
+                // handle math editor
+                $this.find("#editor").editor({
+                    onclick:function($editor, _event) {
+                        if (settings.timers.clear) { clearTimeout(settings.timers.clear); }
+                        else { $this.find("#eclear").css("opacity",0).show().animate({opacity:1},500); }
+                        settings.timers.clear = setTimeout(function() { $this.find("#eclear")
+                            .animate({opacity:0},500, function() { $(this).hide(); settings.timers.clear=0; }); }, 2000);
+                    },
+                    newnode:function($editor, $elt) {
+                        var ret = { type:"value", subtype:$elt.attr("id"), abstract:$elt.text(), value:settings.reference,
+                            process:function() {
+                                return helpers.content($this,this.value.charCodeAt(0)-65,parseInt(this.value[1])-1);
+                            },
+                            p:function() {
+                                var cell = settings.sheet[parseInt(this.value[1])-1][this.value.charCodeAt(0)-65];
+                                return (cell&&cell.type=="img")?nodemathtype.rootonly:0;
+                            }
+                        };
+                        return ret;
+                    }
+                });
+                helpers.reference($this, settings.reference);
+                $this.find(".ea").draggable({containment:$this, helper:"clone", appendTo:$this});
+
+
                 // handle tabs and panel
-                if (settings.withtabs && settings.tabs.length>1) { for (var i in settings.tabs) { $this.find("#tab"+settings.tabs[i]).show(); } }
                 $this.find("#pimg").css("font-size",settings.imgsize+"em");
                 for (var i in settings.img) {
                     var html="<div id='img"+i+"' class='icon'";
@@ -115,7 +140,7 @@
                     html+="><img src='"+settings.imgprefix+settings.img[i]+".svg'/></div>";
                     $this.find("#pimg").append(html);
                 }
-                $this.find("#panel").draggable({handle:"#phandle"}).css("position","absolute");
+                $this.find("#panel").draggable({handle:"#escreen"}).css("position","absolute");
 
                 // Locale handling
                 $this.find("h1#label").html(settings.label);
@@ -229,6 +254,32 @@
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
+        ref: {
+            // Get all the reference from a cell
+            fromcell: function(_node) {
+                var ret = [];
+                if (_node.type=="value"&&_node.subtype.substr(0,3)=="ref") {
+                    ret.push(_node.value);
+                }
+                for (var i in _node.children) { ret = ret.concat(helpers.ref.fromcell(_node.children[i])); }
+                return ret;
+            },
+            // Check if loop
+            loop: function($this, _ref,_node) {
+                var settings = helpers.settings($this)
+                var ret = false;
+                var ref = helpers.ref.fromcell(_node);
+                while(ref.length && !ret) {
+                    var elt = ref.pop();
+                    if (elt==_ref) { ret = true; }
+                    else {
+                        var cell = settings.sheet[parseInt(elt[1])-1][elt.charCodeAt(0)-65];
+                        if (cell.type=="math") { ref = ref.concat(helpers.ref.fromcell(cell.value)); }
+                    }
+                };
+                return ret;
+            }
+        },
         content: function($this, _i, _j) {
             var settings = helpers.settings($this);
             var type = settings.sheet[_j][_i].type;
@@ -236,12 +287,17 @@
             switch(type) {
                 case "img" :
                     if (ret.toString().length) { ret = "<img src='"+settings.imgprefix+settings.img[ret]+".svg'/>"; }
-                break;
+                    break;
+                case "math":
+                    if (!settings.sheet[_j][_i].update) { settings.sheet[_j][_i].tmp = ret.process(); }
+                    ret = settings.sheet[_j][_i].tmp;
+                    break;
                 case "txt" :
                     if (settings.txt && settings.txt[ret]) { ret = helpers.format(settings.txt[ret]); }
                     ret="<span>"+ret+"</span>";
-                break;
+                    break;
             }
+            settings.sheet[_j][_i].update = true;
             return ret;
         },
         value: function($this, _i, _j, _attr, _default) {
@@ -264,19 +320,12 @@
         // Update the grid
         update:function($this) {
             var settings = helpers.settings($this);
-            var toUpdate = [];
             for (var j=0; j<settings.size[1]; j++) for (var i=0; i<settings.size[0]; i++) {
                 settings.sheet[j][i].update = false;
-                toUpdate.push([i,j]);
             }
-            do {
-                var elt = toUpdate.shift();
-                var id = '#c'+(elt[0]+1)+'x'+(elt[1]+1) ;
-                $this.find(id).html(helpers.content($this,elt[0],elt[1]));
-                
-                settings.sheet[elt[1]][elt[0]].update = true;
+            for (var j=0; j<settings.size[1]; j++) for (var i=0; i<settings.size[0]; i++) {
+                $this.find('#c'+(i+1)+'x'+(j+1)).html(helpers.content($this,i,j));
             }
-            while (toUpdate.length);
         },
         // Handle the key input
         key: function($this, value, fromkeyboard) {
@@ -305,6 +354,16 @@
             var value = settings.calculator;
             if (value.length==0 || (value.length==1&&value[0]=='-')) { value="0"; }
             $this.find("#screen").html(value);
+        },
+        reference: function($this, value) {
+            var settings = helpers.settings($this);
+            settings.reference=value;
+            $this.find("#ref1 span").html(value[0]+value[1]);
+            $this.find("#ref2 span").html(value[0]+"$"+value[1]);
+            $this.find("#ref3 span").html("$"+value[0]+value[1]);
+            $this.find("#ref4 span").html("$"+value[0]+"$"+value[1]);
+        },
+        loop: function($this, _ref, _value) {
         }
     };
 
@@ -320,6 +379,7 @@
                     size            : [0,0],
                     sheet           : [],
                     calculator      : "",
+                    timers          : { clear:0 },
                     target          : 0
                 };
 
@@ -343,6 +403,8 @@
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 settings.interactive = true;
+                if (settings.withtabs && settings.tabs.length>1) {
+                    for (var i in settings.tabs) { $this.find("#tab"+settings.tabs[i]).show(); } }
             },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
@@ -354,37 +416,49 @@
                 if (settings.interactive) {
                     if (_cell) {
                         var target=$(_cell).attr("id").match(/c([0-9]*)x([0-9]*)/);
-                        if (settings.target[0]!=target[0]) {
-                            settings.target=target;
-                            var c=settings.sheet[parseInt(settings.target[2]-1)][parseInt(settings.target[1]-1)];
-
-                            if (settings.tabs.length) {
-                                var tab=settings.tabs[0];
-                                switch(c.type) {
-                                    case "img":
-                                        tab ="img";
-                                        $this.find("#pimg .icon").removeClass("s");
-                                        $this.find("#pimg #img"+c.value).addClass("s");
-                                        helpers.key($this, 'c', false);
-                                        break;
-                                    default:
-                                        settings.calculator="";
-                                        var value = c.value.toString();
-                                        if (value.length==0 || (value.length==1&&value[0]=='-')) { value="0"; }
-                                        $this.find("#screen").html(value);
-                                        break;
-                                }
-                                $this.find("#ppanel>div").hide();
-                                $this.find("#ppanel #p"+tab).show();
-                                $this.find("#pmenu>div").removeClass("s");
-                                $this.find("#pmenu #tab"+tab).addClass("s");
-                            }
+                        if ($this.find("#echange").hasClass("s")) {
+                            $this.find("#echange").removeClass("s");
+                            helpers.reference($this, String.fromCharCode(64 + parseInt(target[1]))+target[2]);
                         }
-                        $target.show();
-                        $target.width($(_cell).width()).height($(_cell).height())
-                               .offset({top:$(_cell).offset().top-4, left:$(_cell).offset().left-4});
-                        $this.find("#panel").show();
+                        else {
+                            if (settings.target[0]!=target[0]) {
+                                var c=settings.sheet[parseInt(target[2]-1)][parseInt(target[1]-1)];
+                                settings.target=target;
 
+                                $this.find("#pimg .icon").removeClass("s");
+                                $this.find("#editor").editor('clear');
+                                helpers.key($this, 'c', false);
+
+                                if (settings.tabs.length) {
+                                    var tab=settings.tabs[0];
+
+                                    switch(c.type) {
+                                        case "img":
+                                            tab ="img";
+                                            $this.find("#pimg #img"+c.value).addClass("s");
+                                            break;
+                                        case "math":
+                                            tab ="math";
+                                            $this.find("#editor").editor('value',c.value);
+                                            break;
+                                        default:
+                                            var value = c.value.toString();
+                                            if (value.length==0 || (value.length==1&&value[0]=='-')) { value="0"; }
+                                            $this.find("#screen").html(value);
+                                            break;
+                                    }
+                                    $this.find("#ppanel>div").hide();
+                                    $this.find("#ppanel #p"+tab).show();
+                                    $this.find("#pmenu>div").removeClass("s");
+                                    $this.find("#pmenu #tab"+tab).addClass("s");
+                                }
+                                $this.find("#escreen").css("opacity",c.type=="math"?1:0);
+                            }
+                            $target.show();
+                            $target.width($(_cell).width()).height($(_cell).height())
+                                   .offset({top:$(_cell).offset().top-4, left:$(_cell).offset().left-4});
+                            $this.find("#panel").show();
+                        }
                     }
                     else {
                         $target.hide();
@@ -398,6 +472,7 @@
                 $(_elt).addClass("s");
                 $this.find("#ppanel>div").hide();
                 $this.find("#"+_tab).show();
+                $this.find("#escreen").css("opacity",_tab=="pmath"?1:0);
             },
             img: function(_elt) {
                 if ($(_elt).hasClass("s")) { $(this).calc("valid"); }
@@ -414,26 +489,50 @@
                 helpers.key($(this), value, false);
             },
             valid: function() {
-                var $this = $(this) , settings = helpers.settings($this);
+                var $this = $(this) , settings = helpers.settings($this), ok = true;
                 var i = parseInt(settings.target[1])-1;
                 var j = parseInt(settings.target[2])-1;
                 if ($this.find("#tabcalc").hasClass("s")) {
                     settings.sheet[j][i].type = "value";
                     settings.sheet[j][i].value = parseFloat(settings.calculator.length?settings.calculator:"0");
-
                 }
                 else if ($this.find("#tabimg").hasClass("s")) {
-                    settings.sheet[j][i].type = "img";
-                    settings.sheet[j][i].value = parseInt($this.find("#pimg .icon.s").attr("id").replace("img",""));
+                    if (settings.sheet[j][i].type!="img") {
+                        var name = String.fromCharCode(65 + i)+(j+1);
+                        for (var jj=0; jj<settings.size[1]; jj++) for (var ii=0; ii<settings.size[0]; ii++) {
+                            var cc=settings.sheet[jj][ii];
+                            if (cc.type=="math"&& $.inArray(name,helpers.ref.fromcell(cc.value))!=-1) { ok=false; }
+                        }
+                    }
+                    if (ok) {
+                        settings.sheet[j][i].type = "img";
+                        settings.sheet[j][i].value = parseInt($this.find("#pimg .icon.s").attr("id").replace("img",""));
+                    }
+                }
+                else if ($this.find("#tabmath").hasClass("s")) {
+                    ok = $this.find("#editor").editor('filled');
+
+                    if (ok) {
+                        var val = $this.find("#editor").editor('value');
+                        val.detach();
+                        ok = !helpers.ref.loop($this,String.fromCharCode(65 + i)+(j+1),val);
+                        if (ok) {
+                            settings.sheet[j][i].type = "math";
+                            settings.sheet[j][i].value = val;
+                        }
+                        else { $this.find("#editor").editor('value',val); }
+                    }
                 }
 
-                helpers.update($this);
+                if (ok) {
+                    helpers.update($this);
 
-                var cell=0;
-                if (!settings.nonext && j+1<settings.size[1] && settings.sheet[j+1][i].type!="hide" && !settings.sheet[j+1][i].fixed) {
-                    cell=$this.find("#c"+settings.target[1]+"x"+(parseInt(settings.target[2])+1));
+                    var cell=0;
+                    if (!settings.nonext && j+1<settings.size[1] && settings.sheet[j+1][i].type!="hide" && !settings.sheet[j+1][i].fixed) {
+                        cell=$this.find("#c"+settings.target[1]+"x"+(parseInt(settings.target[2])+1));
+                    }
+                    $this.calc("cell",cell);
                 }
-                $this.calc("cell",cell);
             },
             submit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
@@ -475,7 +574,8 @@
                         setTimeout(function() { helpers.end($this); } , 2000);
                     }
                 }
-            }
+            },
+            clear:function() { $(this).find("#editor").editor('clear'); }
         };
 
         if (methods[method])    { return methods[method].apply(this, Array.prototype.slice.call(arguments, 1)); } 

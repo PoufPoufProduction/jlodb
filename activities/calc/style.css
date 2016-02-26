@@ -27,7 +27,8 @@
 .calc div#panel #ppanel>div     { display:none; }
 .calc div#panel #phandle        { background-color: rgba(100,100,100,0.8); cursor:move; }
 .calc #phandle #pcancel       { float:right; cursor:pointer;}
-.calc #phandle #pvalid      { cursor:pointer; }
+.calc #phandle #pvalid      { float:left; cursor:pointer; }
+.calc #phandle #edscreen        { float:left; width:3.8em; height:1em; color:white; margin-left:0.1em; }
 .calc div#pmenu                  { position:absolute; left:-1em; top:0; }
 .calc div#pmenu>div              { background-color:white; border-radius:0.5em; background-image:url("../../res/img/icon/tab00.svg");
                                   cursor:pointer; overflow:visible;display:none; }
@@ -70,3 +71,39 @@
 .calc div#submit.wrong #subvalid     { display:none; }
 .calc div#submit.good #subgood       { display:inline; }
 .calc div#submit.wrong #subwrong     { display:inline; }
+
+
+.calc #escreen                  { height:1em; color:white; }
+
+#esource                      { width:6em; height:2em; background-color:rgba(84,137,184,0.9); }
+.editor                       { width:6em; height:5em; background-color:#030; background-repeat:repeat;
+                                background-image:url("../../res/img/background/book06.svg"); position:relative; }
+.editor>div                     { position:absolute;overflow:visible;}
+.ebutton                      { color:lime; font-size:.2em; cursor:pointer; border:1px solid lime; display:none;
+                                width:10em; text-align:center; background-color:rgba(100,255,100,0.1); position:absolute; }
+.ea                           { width:1em;height:1em;text-align:center; cursor:move;
+                                color:#352222; border-radius:.2em; z-index:3;
+                                background-image:url("../../res/img/action/nothing.svg"); }
+.ea>span                      { position:relative; }
+
+.ea.op                          { background-image:url("../../res/img/action/nothing2.svg"); }
+
+.editor .ed           { width:1.2em;height:1.2em; background-color:rgba(0,32,0,0.5); border-radius:.1em;
+                                              border:.1em solid #106410; position:absolute; z-index:2;
+                                            }
+.editor .ed.over      { border:.1em solid #20AA20; background-color:rgba(50,128,50,0.5); }
+.editor .ed>.ea        { margin:.1em; }
+
+.editor .el           { position:absolute; height:0.3em; border:1em solid #106410; z-index:1;
+                                              border-width:.05em 0 0 .05em; border-radius:.15em 0 0 0;
+                                              }
+.editor .el.el0        {  border-width:0 0 0 .05em; height:0.22em; border-radius:0; }
+.editor .el.el1        {  border-width:0 0 0 .05em; border-radius:0; }
+.editor .el.el2        {  border-width:.05em .05em 0 0; border-radius:0 .15em 0 0; }
+
+math {  display: block; font-style: normal; }
+
+#esource>div                  { float:left; font-size:.6em; margin:.05em; }
+#esource #echange             { width:1em; height:1em; background-color:#e4e4e4; color:black; text-align:center; border-radius:.2em; }
+#esource #echange.s           { background-color:#A00; color:red;}
+.calc #eclear                 { top:33em; left:19em;  }

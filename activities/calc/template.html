@@ -57,12 +57,36 @@
                 </table>
             </div>
             <div id="pimg"></div>
+            <div id="pmath">
+                <div id="esource">
+                    <div id="echange" ontouchstart="$(this).toggleClass('s');event.preventDefault();"
+                        onclick="$(this).toggleClass('s');"><span style="font-size:.7em;top:-0.3em;position:relative;">?</span></div>
+                    <div class="ea" id="ref1"><span style="font-size:.4em;top:-0.7em;">A1</span></div>
+                    <div class="ea" id="ref2"><span style="font-size:.4em;top:-0.7em;">A$1</span></div>
+                    <div class="ea" id="ref3"><span style="font-size:.4em;top:-0.7em;">$A1</span></div>
+                    <div class="ea" id="ref4"><span style="font-size:.4em;top:-0.7em;">$A$1</span></div>
+                    <div class="ea" id="pi"><span style="font-size:1em;top:-0.1em;">π</span></div>
+                    <div class="ea" id="val2"><span style="font-size:1em;top:-0.1em;">2</span></div>
+                    <div class="ea op" id="plus"><span style="font-size:1em;top:-0.1em;">+</span></div>
+                    <div class="ea op" id="minus"><span style="font-size:1em;top:-0.1em;">-</span></div>
+                    <div class="ea op" id="mult"><span style="font-size:1em;top:-0.1em;">*</span></div>
+                    <div class="ea op" id="div"><span style="font-size:1em;top:-0.1em;">/</span></div>
+                    <div class="ea op" id="log"><span style="font-size:.4em;top:-0.7em;">log</span></div>
+                    <div class="ea op" id="exp"><span style="font-size:.4em;top:-0.7em;">exp</span></div>
+                    <div class="ea op" id="cos"><span style="font-size:.4em;top:-0.7em;">cos</span></div>
+                    <div class="ea op" id="sin"><span style="font-size:.4em;top:-0.7em;">sin</span></div>
+                </div>
+                <div id="editor"></div>
+                <div id="eclear" class="ebutton" ontouchstart="$(this).closest('.calc').calc('clear');event.preventDefault();"
+                     onclick="$(this).closest('.calc').calc('clear');">CLEAR</div>
+            </div>
         </div>
         <div id="phandle">
             <div class="icon" id="pcancel" ontouchstart="$(this).closest('.calc').calc('cell', 0);event.preventDefault();"
                               onclick="$(this).closest('.calc').calc('cell', 0);"><img src="res/img/icon/cancel2.svg"/></div>
             <div class="icon" id="pvalid" ontouchstart="$(this).closest('.calc').calc('valid');event.preventDefault();"
                               onclick="$(this).closest('.calc').calc('valid');"><img src="res/img/icon/valid2.svg"/></div>
+            <div id="escreen"></div>
         </div>
         <div id="pmenu">
             <div class="icon" id="tabcalc" ontouchstart="$(this).closest('.calc').calc('tab', 'pcalc', this);event.preventDefault();"
