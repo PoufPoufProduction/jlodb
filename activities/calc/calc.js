@@ -10,11 +10,13 @@
         withbars    : true,                             // Add the bars A,B,C,D,... 1,2,3,4,...
         sp          : 0.1,                              // space between cells
         font        : 1,                                // font size of cell
-        tabs        : ["calc","img","math"],            // authorized tabs
-        withtabs    : true,                             // display the tabs
+        tabs        : ["calc","img","math","txt"],            // authorized tabs
+        withtabs    : false,                            // display the tabs
         imgsize     : 2,                                // img tab font-size in em
         imgprefix   : "res/img/clipart/animal/",        // img prefix
         img         : [],                               // img filename
+		txtsize		: 1,								// text tab font-size em
+		txt			: [],								// text values
         errratio    : 1,                                // ratio error
         noneg       : false,                            // no negative number
         nodec       : false,                            // no decimal number
@@ -121,7 +123,7 @@
                             },
                             p:function() {
                                 var cell = settings.sheet[parseInt(this.value[1])-1][this.value.charCodeAt(0)-65];
-                                return (cell&&cell.type=="img")?nodemathtype.rootonly:0;
+                                return (cell&&(cell.type=="img"||cell.type=="txt"))?nodemathtype.rootonly:0;
                             }
                         };
                         return ret;
@@ -141,6 +143,16 @@
                     $this.find("#pimg").append(html);
                 }
                 $this.find("#panel").draggable({handle:"#escreen"}).css("position","absolute");
+                
+                $this.find("#ptxt").css("font-size",settings.txtsize+"em");
+                for (var i in settings.txt) {
+                    var html="<div id='txt"+i+"' ";
+                    html+='onmousedown=\'$(this).closest(".calc").calc("txt",this);\' ';
+                    html+='ontouchstart=\'$(this).closest(".calc").calc("txt",this);event.preventDefault();\' ';
+                    html+=">"+settings.txt[i]+"</div>";
+                    $this.find("#ptxt").append(html);
+					
+				}
 
                 // Locale handling
                 $this.find("h1#label").html(settings.label);
@@ -218,7 +230,7 @@
                         var type = helpers.value($this,(i+1),(j+1),"type","");
                         if (type.length) { settings.sheet[j][i].type = type; }
 
-                        settings.sheet[j][i].fixed = helpers.value($this,(i+1),(j+1),"fixed",(type=="txt"));
+                        settings.sheet[j][i].fixed = helpers.value($this,(i+1),(j+1),"fixed",(type=="fixed"));
                         settings.sheet[j][i].value = helpers.value($this,(i+1),(j+1),"value","");
                         settings.sheet[j][i].result = helpers.value($this,(i+1),(j+1),"result","");
                         settings.sheet[j][i].opt = helpers.value($this,(i+1),(j+1),"opt","");
@@ -292,8 +304,11 @@
                     if (!settings.sheet[_j][_i].update) { settings.sheet[_j][_i].tmp = ret.process(); }
                     ret = settings.sheet[_j][_i].tmp;
                     break;
-                case "txt" :
-                    if (settings.txt && settings.txt[ret]) { ret = helpers.format(settings.txt[ret]); }
+                case "txt":
+					if (ret.toString().length) { ret = settings.txt[ret]; }
+					break;
+                case "fixed" :
+                    if (settings.po && settings.po[ret]) { ret = helpers.format(settings.po[ret]); }
                     ret="<span>"+ret+"</span>";
                     break;
             }
@@ -426,6 +441,7 @@
                                 settings.target=target;
 
                                 $this.find("#pimg .icon").removeClass("s");
+                                $this.find("#ptxt>div").removeClass("s");
                                 $this.find("#editor").editor('clear');
                                 helpers.key($this, 'c', false);
 
@@ -441,6 +457,10 @@
                                             tab ="math";
                                             $this.find("#editor").editor('value',c.value);
                                             break;
+                                        case "txt":
+											tab = "txt";
+											$this.find("#ptxt #txt"+c.value).addClass("s");
+											break;
                                         default:
                                             var value = c.value.toString();
                                             if (value.length==0 || (value.length==1&&value[0]=='-')) { value="0"; }
@@ -481,6 +501,13 @@
                     $(_elt).addClass("s");
                 }
             },
+            txt: function(_elt) {
+                if ($(_elt).hasClass("s")) { $(this).calc("valid"); }
+                else {
+                    $(this).find("#ptxt>div").removeClass("s");
+                    $(_elt).addClass("s");
+                }
+			},
             key: function(value, _elt) {
                 var $this = $(this);
                 if (_elt) { $(_elt).addClass("touch");
@@ -507,6 +534,19 @@
                     if (ok) {
                         settings.sheet[j][i].type = "img";
                         settings.sheet[j][i].value = parseInt($this.find("#pimg .icon.s").attr("id").replace("img",""));
+                    }
+                }
+                else if ($this.find("#tabtxt").hasClass("s")) {
+                    if (settings.sheet[j][i].type!="txt") {
+                        var name = String.fromCharCode(65 + i)+(j+1);
+                        for (var jj=0; jj<settings.size[1]; jj++) for (var ii=0; ii<settings.size[0]; ii++) {
+                            var cc=settings.sheet[jj][ii];
+                            if (cc.type=="math"&& $.inArray(name,helpers.ref.fromcell(cc.value))!=-1) { ok=false; }
+                        }
+                    }
+                    if (ok) {
+                        settings.sheet[j][i].type = "txt";
+                        settings.sheet[j][i].value = parseInt($this.find("#ptxt>div.s").attr("id").replace("txt",""));
                     }
                 }
                 else if ($this.find("#tabmath").hasClass("s")) {

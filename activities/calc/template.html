@@ -80,6 +80,7 @@
                 <div id="eclear" class="ebutton" ontouchstart="$(this).closest('.calc').calc('clear');event.preventDefault();"
                      onclick="$(this).closest('.calc').calc('clear');">CLEAR</div>
             </div>
+            <div id="ptxt"></div>
         </div>
         <div id="phandle">
             <div class="icon" id="pcancel" ontouchstart="$(this).closest('.calc').calc('cell', 0);event.preventDefault();"
@@ -98,6 +99,9 @@
             <div class="icon" id="tabmath" ontouchstart="$(this).closest('.calc').calc('tab', 'pmath', this);event.preventDefault();"
                               onclick="$(this).closest('.calc').calc('tab', 'pmath', this);">
                 <img src="res/img/svginventoryicons/tool/abacus01.svg"/></div>
+            <div class="icon" id="tabtxt" ontouchstart="$(this).closest('.calc').calc('tab', 'ptxt', this);event.preventDefault();"
+                              onclick="$(this).closest('.calc').calc('tab', 'ptxt', this);">
+                <img src="res/img/svginventoryicons/pencil/pen01.svg"/></div>
         </div>
     </div>
 

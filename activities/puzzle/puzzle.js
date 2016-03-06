@@ -192,6 +192,8 @@
                 if (gen.values) { settings.values = gen.values; }
                 if (gen.id)     { settings.id = gen.id; }
                 if (gen.txt)    { settings.txt = gen.txt; }
+                if (gen.show)   { settings.show = gen.show; }
+                if (gen.init)	{ settings.init = $.extend(true,{},settings.init,gen.init);}
             }
 
             // PREPARE THE SCREEN
@@ -228,7 +230,7 @@
                 nbpieces = ids.length;
             }
             else { nbpieces = $("#"+settings.pieces+">g",settings.svg.root()).length; }
-            if (!ids.length && settings.values) {
+            if (settings.values) {
                 var values = ($.isArray(settings.values))?settings.values[settings.puzzleid]:settings.values;
                 for (var i in values) { ids.push(i); }
                 nbpieces = ids.length;

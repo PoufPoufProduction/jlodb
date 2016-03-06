@@ -20,9 +20,10 @@
 .calc div#board .cell.empty     { background-color:#FF0 !important; }
 .calc div#board .cell.g         { background-color:#888; color:#444;cursor:auto; }
 
-.calc div#panel                 { position:absolute; top:10%; left:60%; width:6em; height:8em;
+.calc div#panel                 { position:absolute; top:5%; left:60%; width:6em; height:8em;
                                   border:0.15em solid white; border-radius:.2em; overflow:visible;display:none; }
 .calc.leftpanel div#panel       { left:5%; }
+.calc.smallpanel div#panel		{ font-size:.6em; left:65%; }
 .calc div#panel #ppanel         { width:6em; height:7em; background-color:rgba(255,255,255,0.8); }
 .calc div#panel #ppanel>div     { display:none; }
 .calc div#panel #phandle        { background-color: rgba(100,100,100,0.8); cursor:move; }
@@ -38,6 +39,9 @@
 .calc #pimg                     { font-size:2em; }
 .calc #pimg .icon               { float:left; border-radius:.5em; overflow:visible; cursor:pointer;}
 .calc #pimg .icon.s             { background-color:rgba(84,137,184,0.9); }
+.calc #ptxt>div					{ background-color:rgba(84,137,184,0.9); margin:.1em; color:white;
+								  cursor:pointer; }
+.calc #ptxt>div.s				{ background-color:rgba(256,220,50,0.9); }
 .calc table                 { border-spacing: 0; }
 .calc #screen       { font-size:1.5em; width:4em;
                                    text-align:center; color:#0F0; font-weight:bold;

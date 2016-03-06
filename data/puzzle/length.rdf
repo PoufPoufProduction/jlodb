@@ -2,6 +2,57 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dct="http://purl.org/dc/terms/">
 
+	<!-- RULER SORTING -->
+	
+	<rdf:Description>
+        <dct:identifier>rco4a</dct:identifier>
+        <dct:title xml:lang="fr-FR">Ordonner 4 bandes grises par ordre croissant à l'aide d'une règle graduée.</dct:title>
+        <dct:description><![CDATA["errratio":2,"init":{"id":{"ruler":[460,30],"ref":[500,30]},"area":[0,0,100,100]},"decoys":["ruler"],"magnetic":[[185,121],[395,121],[605,121],[185,201],[395,201],[605,201],[185,281],[395,281],[605,281],[185,361],[395,361],[605,361]],"url":"puzzle/ruler01.svg","decoyfx":false,"gen":"function(){ var pp=[[50,30],[100,30],[150,30],[200,30]],p={},b=['01','02','07','08'],vv=[[103,208,312,415],[104,209,312,417],[103,209,314,417]],v=vv[Math.floor(vv.length*Math.random())],val={},s=[]; for (var i=0;i<5;i++) v.sort(function(){return Math.random()-0.5;});for (var i=0;i<4;i++) { var id=Math.floor(v[i]/100); s.push('b'+b[i]+(v[i]%100<10?'0':'')+(v[i]%100)); val['pp'+b[i]]=id; p['pp'+b[i]]=pp[id-1]; } return {'values':val,'show':[s],'id':['ruler'],'init':{'id':p}}; }"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"En utilisant la règle graduée, mesurez les [b]4 bandes grises[/b] et [b]ordonnez-les[/b] de la plus petite (1) à la plus grande (4).","fontex":0.7]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>rco6</dct:alternative>
+    </rdf:Description>
+    
+	<rdf:Description>
+        <dct:identifier>rco4b</dct:identifier>
+        <dct:title xml:lang="fr-FR">Ordonner 4 bandes grises par ordre croissant à l'aide d'une règle graduée.</dct:title>
+        <dct:description><![CDATA["errratio":2,"init":{"id":{"ruler":[460,30],"ref":[500,30]},"area":[0,0,100,100]},"decoys":["ruler"],"magnetic":[[185,121],[395,121],[605,121],[185,201],[395,201],[605,201],[185,281],[395,281],[605,281],[185,361],[395,361],[605,361]],"url":"puzzle/ruler01.svg","decoyfx":false,"gen":"function(){ var pp=[[50,30],[100,30],[150,30],[200,30]],p={},b=['01','02','07','08'],vv=[[108,211,314,417],[109,211,314,417],[108,212,315,417]],v=vv[Math.floor(vv.length*Math.random())],val={},s=[]; for (var i=0;i<5;i++) v.sort(function(){return Math.random()-0.5;});for (var i=0;i<4;i++) { var id=Math.floor(v[i]/100); s.push('b'+b[i]+(v[i]%100<10?'0':'')+(v[i]%100)); val['pp'+b[i]]=id; p['pp'+b[i]]=pp[id-1]; } return {'values':val,'show':[s],'id':['ruler'],'init':{'id':p}}; }"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"En utilisant la règle graduée, mesurez les [b]4 bandes grises[/b] et [b]ordonnez-les[/b] de la plus petite (1) à la plus grande (4).","fontex":0.7]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>rco6</dct:alternative>
+    </rdf:Description>
+    
+	<rdf:Description>
+        <dct:identifier>rco4c</dct:identifier>
+        <dct:title xml:lang="fr-FR">Ordonner 4 bandes grises par ordre croissant à l'aide d'une règle graduée.</dct:title>
+        <dct:description><![CDATA["errratio":2,"init":{"id":{"ruler":[460,30],"ref":[500,30]},"area":[0,0,100,100]},"decoys":["ruler"],"magnetic":[[185,121],[395,121],[605,121],[185,201],[395,201],[605,201],[185,281],[395,281],[605,281],[185,361],[395,361],[605,361]],"url":"puzzle/ruler01.svg","decoyfx":false,"gen":"function(){ var pp=[[50,30],[100,30],[150,30],[200,30]],p={},b=['01','02','07','08'],vv=[[113,214,316,417],[113,214,315,417],[114,215,316,417]],v=vv[Math.floor(vv.length*Math.random())],val={},s=[]; for (var i=0;i<5;i++) v.sort(function(){return Math.random()-0.5;});for (var i=0;i<4;i++) { var id=Math.floor(v[i]/100); s.push('b'+b[i]+(v[i]%100<10?'0':'')+(v[i]%100)); val['pp'+b[i]]=id; p['pp'+b[i]]=pp[id-1]; } return {'values':val,'show':[s],'id':['ruler'],'init':{'id':p}}; }"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"En utilisant la règle graduée, mesurez les [b]4 bandes grises[/b] et [b]ordonnez-les[/b] de la plus petite (1) à la plus grande (4).","fontex":0.7]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>rco6</dct:alternative>
+    </rdf:Description>
+	
+	
+	<rdf:Description>
+        <dct:identifier>rco6</dct:identifier>
+        <dct:title xml:lang="fr-FR">Ordonner 6 bandes grises par ordre croissant à l'aide d'une règle graduée.</dct:title>
+        <dct:description><![CDATA["init":{"id":{"ruler":[460,30],"ref":[500,30]},"area":[0,0,100,100]},"decoys":["ruler"],"magnetic":[[185,121],[395,121],[605,121],[185,201],[395,201],[605,201],[185,281],[395,281],[605,281],[185,361],[395,361],[605,361]],"url":"puzzle/ruler01.svg","decoyfx":false,"gen":"function(){ var pp=[[50,30],[100,30],[150,30],[50,80],[100,80],[150,80]],p={},b=['01','02','04','05','07','08'],vv=[[112,213,314,415,516,617]],v=vv[Math.floor(vv.length*Math.random())],val={},s=[]; for (var i=0;i<5;i++) v.sort(function(){return Math.random()-0.5;});for (var i=0;i<6;i++) { var id=Math.floor(v[i]/100); s.push('b'+b[i]+(v[i]%100<10?'0':'')+(v[i]%100)); val['pp'+b[i]]=id; p['pp'+b[i]]=pp[id-1]; } return {'values':val,'show':[s],'id':['ruler'],'init':{'id':p}}; }"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"En utilisant la règle graduée, mesurez les [b]6 bandes grises[/b] et [b]ordonnez-les[/b] de la plus petite (1) à la plus grande (6).","fontex":0.7]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>rco6</dct:alternative>
+    </rdf:Description>
+	
 
     <!-- RULER EQUALITY -->
 
