@@ -4,7 +4,7 @@
 
     <rdf:Description>
         <dct:identifier>5</dct:identifier>
-        <dct:title xml:lang="fr-FR">Soustraire 1 nombre entier inférieur à 5.</dct:title>
+        <dct:title xml:lang="fr-FR">Effectuer une soustraction dont le diminuteur et la différence sont inférieurs à 5.</dct:title>
         <dct:description><![CDATA["gen":"function() { var a = Math.floor(1+Math.random()*4), b = Math.floor(1+Math.random()*4); return \\\"\\\"+(a+b)+\\\"-\\\"+a; }"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>subtraction</dct:subject>
@@ -15,7 +15,7 @@
 
     <rdf:Description>
         <dct:identifier>10</dct:identifier>
-        <dct:title xml:lang="fr-FR">Soustraire 1 nombres entier inférieurs à 10.</dct:title>
+        <dct:title xml:lang="fr-FR">Effectuer une soustraction dont le diminuteur et la différence sont inférieurs à 10.</dct:title>
         <dct:description><![CDATA["gen":"function() { var a = Math.floor(5+Math.random()*4), b = Math.floor(5+Math.random()*4); return \\\"\\\"+(a+b)+\\\"-\\\"+a;}"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>subtraction</dct:subject>
@@ -25,8 +25,19 @@
     </rdf:Description>
 
     <rdf:Description>
+        <dct:identifier>10t</dct:identifier>
+        <dct:title xml:lang="fr-FR">Effectuer une soustraction dont la diminuende est inférieure à 10.</dct:title>
+        <dct:description><![CDATA["gen":"function() { var a = Math.floor(5+Math.random()*5), b = Math.floor(1+Math.random()*a); return \\\"\\\"+a+\\\"-\\\"+b;}"]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>subtraction</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>210K</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
         <dct:identifier>20</dct:identifier>
-        <dct:title xml:lang="fr-FR">Soustraire 1 nombres entier inférieurs à 20.</dct:title>
+        <dct:title xml:lang="fr-FR">Effectuer une soustraction dont le diminuteur et la différence sont inférieurs à 20.</dct:title>
         <dct:description><![CDATA["gen":"function() { var a = Math.floor(5+Math.random()*14), b = Math.floor(5+Math.random()*14); return \\\"\\\"+(a+b)+\\\"-\\\"+a;}"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>subtraction</dct:subject>
@@ -36,8 +47,85 @@
     </rdf:Description>
 
     <rdf:Description>
+        <dct:identifier>23</dct:identifier>
+        <dct:title xml:lang="fr-FR">Effectuer la soustraction 23-4.</dct:title>
+        <dct:description><![CDATA["values":["23-4"],"number":1,"ratioerr":3,"highlight":{"red":[0],"blue":[6],"green":[7]},"target":[{"id":0,"block":"1"},{"id":7,"block":"9"},{"id":6,"block":"1"}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Le plus petit nombre finissant par 3 et supérieur à 4 est 13. Placez la [red]retenue 1[/red] dans la case rouge puis notez le résultat de [green]13-4[/green] dans la case verte. Finalement, soustrayez la [red]retenue[/red] à la valeur 2 et placez le résultat de [blue]2-1[/blue] dans la case bleue."],"fontex":0.4]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>subtraction</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>210K</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>38</dct:identifier>
+        <dct:title xml:lang="fr-FR">Effectuer la soustraction 38-9.</dct:title>
+        <dct:description><![CDATA["values":["38-9"],"number":1,"ratioerr":3,"highlight":{"red":[0],"blue":[6],"green":[7]},"target":[{"id":0,"block":"1"},{"id":7,"block":"9"},{"id":6,"block":"2"}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Placez la [red]retenue[/red] dans la case rouge pour résoudre l'opération."],"fontex":0.4]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>subtraction</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>210K</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+    </rdf:Description>
+
+
+    <rdf:Description>
+        <dct:identifier>38r</dct:identifier>
+        <dct:title xml:lang="fr-FR">Effectuer la soustraction 38-21.</dct:title>
+        <dct:description><![CDATA["values":["38-21"],"number":1,"ratioerr":3,"highlight":{"blue":[6],"green":[7]},"target":[{"id":7,"block":"7","box":[3,5]},{"id":6,"block":"1","box":[2,4]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Résolvez l'opération en [b]soustrayant chaque chiffre séparément[/b]."],"fontex":0.4]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>subtraction</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>210K</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+    </rdf:Description>
+
+
+    <rdf:Description>
+        <dct:identifier>45</dct:identifier>
+        <dct:title xml:lang="fr-FR">Effectuer la soustraction 45-27.</dct:title>
+        <dct:description><![CDATA["values":["45-27"],"number":1,"ratioerr":3,"highlight":{"red":[0],"blue":[6],"green":[7]},"target":[{"id":0,"block":"1"},{"id":7,"block":"8"},{"id":6,"block":"1"}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Le plus petit nombre finissant par 5 et supérieur à 7 est 15. Placez la [red]retenue 1[/red] dans la case rouge puis notez le résultat de [green]15-7[/green] dans la case verte. Additionez mentalement la valeur 2 (du nombre 27) et la [red]retenue[/red] puis soustrayez cette valeur au 4 du nombre 45."],"fontex":0.3]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>subtraction</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>210K</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>50t</dct:identifier>
+        <dct:title xml:lang="fr-FR">Effectuer une soustraction dont la diminuende est inférieure à 50.</dct:title>
+        <dct:description><![CDATA["gen":"function() { var a = Math.floor(10+Math.random()*40), b = Math.floor(1+Math.random()*(a-1)); return \\\"\\\"+a+\\\"-\\\"+b;}"]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>subtraction</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>210K</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>50rt</dct:identifier>
+        <dct:title xml:lang="fr-FR">Effectuer une soustraction dont la diminuende est inférieure à 50 (sans retenue).</dct:title>
+        <dct:description><![CDATA["gen":"function() { var a = Math.floor(1+Math.random()*4)*10+Math.floor(1+Math.random()*9), b; do { b = Math.floor(1+Math.random()*(a-1)); } while (a%10<b%10); return \\\"\\\"+a+\\\"-\\\"+b;}"]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>subtraction</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>210K</dct:alternative>
+    </rdf:Description>
+
+
+    <rdf:Description>
         <dct:identifier>50</dct:identifier>
-        <dct:title xml:lang="fr-FR">Soustraire 1 nombre entier inférieur à 50.</dct:title>
+        <dct:title xml:lang="fr-FR">Effectuer une soustraction dont le diminuteur et la différence sont inférieurs à 50.</dct:title>
         <dct:description><![CDATA["gen":"function() { var a = Math.floor(10+Math.random()*40), b = Math.floor(10+Math.random()*40); return \\\"\\\"+(a+b)+\\\"-\\\"+a; }"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>subtraction</dct:subject>
@@ -47,44 +135,8 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>50a</dct:identifier>
-        <dct:title xml:lang="fr-FR">Effectuer la soustraction 43-4.</dct:title>
-        <dct:description><![CDATA["values":["43-4"],"number":1,"ratioerr":3,"highlight":{"red":[0],"blue":[6],"green":[7]},"target":[{"id":0,"block":"1"},{"id":7,"block":"9"},{"id":6,"block":"3"}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Le plus petit nombre finissant par 3 et supérieur à 4 est 13. Placez la [red]retenue 1[/red] dans la case rouge puis notez le résultat de [green]13-4[/green] dans la case verte. Finalement, soustrayez la [red]retenue[/red] à la valeur 4 et placez le résultat de [blue]4-1[/blue] dans la case bleue."],"fontex":0.4]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>subtraction</dct:subject>
-        <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>210K</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>50b</dct:identifier>
-        <dct:title xml:lang="fr-FR">Effectuer la soustraction 38-9.</dct:title>
-        <dct:description><![CDATA["values":["38-9"],"number":1,"ratioerr":3,"highlight":{"red":[0],"blue":[6],"green":[7]},"target":[{"id":0,"block":"1"},{"id":7,"block":"9"},{"id":6,"block":"2"}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Placez la [red]retenue[/red] dans la case rouge pour résoudre l'opération."],"fontex":0.4]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>subtraction</dct:subject>
-        <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>210K</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>50c</dct:identifier>
-        <dct:title xml:lang="fr-FR">Effectuer la soustraction 45-27.</dct:title>
-        <dct:description><![CDATA["values":["45-27"],"number":1,"ratioerr":3,"highlight":{"red":[0],"blue":[6],"green":[7]},"target":[{"id":0,"block":"1"},{"id":7,"block":"8"},{"id":6,"block":"1"}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Le plus petit nombre finissant par 5 et supérieur à 7 est 15. Placez la [red]retenue 1[/red] dans la case rouge puis notez le résultat de [green]15-7[/green] dans la case verte. Additionez mentalement la valeur 2 (du nombre 27) et la [red]retenue[/red] puis soustrayez cette valeur au 4 du nombre 45."],"fontex":0.3]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>subtraction</dct:subject>
-        <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>210K</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
         <dct:identifier>500</dct:identifier>
-        <dct:title xml:lang="fr-FR">Soustraire 1 nombre entier inférieur à 500.</dct:title>
+        <dct:title xml:lang="fr-FR">Effectuer une soustraction dont le diminuteur et la différence sont inférieurs à 500.</dct:title>
         <dct:description><![CDATA["gen":"function() { var a = Math.floor(100+Math.random()*400), b = Math.floor(100+Math.random()*400); return \\\"\\\"+(a+b)+\\\"-\\\"+a; }"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>subtraction</dct:subject>
@@ -131,7 +183,7 @@
 
     <rdf:Description>
         <dct:identifier>5K</dct:identifier>
-        <dct:title xml:lang="fr-FR">Soustraire 1 nombre entier inférieur à 5000.</dct:title>
+        <dct:title xml:lang="fr-FR">Effectuer une soustraction dont le diminuteur et la différence sont inférieurs à 5000.</dct:title>
         <dct:description><![CDATA["gen":"function() { var a = Math.floor(1000+Math.random()*4000), b = Math.floor(1000+Math.random()*4000); return \\\"\\\"+(a+b)+\\\"-\\\"+a; }"]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>subtraction</dct:subject>
@@ -142,7 +194,7 @@
 
     <rdf:Description>
         <dct:identifier>2100</dct:identifier>
-        <dct:title xml:lang="fr-FR">Soustraire 2 nombres entiers inférieurs à 33.</dct:title>
+        <dct:title xml:lang="fr-FR">Effectuer une soustraction dont les 2 diminuteurs et la différence sont inférieurs à 33.</dct:title>
         <dct:description><![CDATA["gen":"function() { var a = Math.floor(10+Math.random()*23), b = Math.floor(10+Math.random()*23), c = Math.floor(10+Math.random()*23); return \\\"\\\"+(a+b+c)+\\\"-\\\"+a+\\\"-\\\"+b; }"]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>subtraction</dct:subject>
@@ -201,7 +253,7 @@
 
     <rdf:Description>
         <dct:identifier>21K</dct:identifier>
-        <dct:title xml:lang="fr-FR">Soustraire 2 nombres entiers inférieurs à 333.</dct:title>
+        <dct:title xml:lang="fr-FR">Effectuer une soustraction dont les 2 diminuteurs et la différence sont inférieurs à 333.</dct:title>
         <dct:description><![CDATA["gen":"function() { var a = Math.floor(100+Math.random()*233), b = Math.floor(100+Math.random()*233), c = Math.floor(100+Math.random()*233); return \\\"\\\"+(a+b+c)+\\\"-\\\"+a+\\\"-\\\"+b; }"]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>subtraction</dct:subject>
@@ -212,7 +264,7 @@
 
     <rdf:Description>
         <dct:identifier>210K</dct:identifier>
-        <dct:title xml:lang="fr-FR">Soustraire 3 nombres entiers inférieurs à 3333.</dct:title>
+        <dct:title xml:lang="fr-FR">Effectuer une soustraction dont les 2 diminuteurs et la différence sont inférieurs à 3333.</dct:title>
         <dct:description><![CDATA["gen":"function() { var a = Math.floor(1000+Math.random()*2333), b = Math.floor(1000+Math.random()*2333), c = Math.floor(1000+Math.random()*2333); return \\\"\\\"+(a+b+c)+\\\"-\\\"+a+\\\"-\\\"+b; }"]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>subtraction</dct:subject>
@@ -223,7 +275,7 @@
 
     <rdf:Description>
         <dct:identifier>31K</dct:identifier>
-        <dct:title xml:lang="fr-FR">Soustraire 3 nombres entiers inférieurs à 250.</dct:title>
+        <dct:title xml:lang="fr-FR">Effectuer une soustraction dont les 3 diminuteurs et la différence sont inférieurs à 250.</dct:title>
         <dct:description><![CDATA["gen":"function() { var a = Math.floor(100+Math.random()*150), b = Math.floor(100+Math.random()*150), c = Math.floor(100+Math.random()*150), d = Math.floor(100+Math.random()*150); return \\\"\\\"+(a+b+c+d)+\\\"-\\\"+a+\\\"-\\\"+b+\\\"-\\\"+c; }"]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>subtraction</dct:subject>
@@ -234,7 +286,7 @@
 
     <rdf:Description>
         <dct:identifier>310K</dct:identifier>
-        <dct:title xml:lang="fr-FR">Soustraire 3 nombres entiers inférieurs à 2500.</dct:title>
+        <dct:title xml:lang="fr-FR">Effectuer une soustraction dont les 3 diminuteurs et la différence sont inférieurs à 2500.</dct:title>
         <dct:description><![CDATA["gen":"function() { var a = Math.floor(1000+Math.random()*1500), b = Math.floor(1000+Math.random()*1500), c = Math.floor(1000+Math.random()*1500), d = Math.floor(1000+Math.random()*1500); return \\\"\\\"+(a+b+c+d)+\\\"-\\\"+a+\\\"-\\\"+b+\\\"-\\\"+c; }"]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>subtraction</dct:subject>

@@ -5,9 +5,9 @@
 
     <rdf:Description>
         <dct:identifier>t5</dct:identifier>
-        <dct:title xml:lang="fr-FR">Vérifier le résultat d'une soustraction de nombres, compris entre 1 et 5.</dct:title>
+        <dct:title xml:lang="fr-FR">Vérifier le résultat de soustractions dont le diminuteur et la différence sont compris entre 1 et 5.</dct:title>
         <dct:description><![CDATA["number":4,"template":"array2x4","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var chance=Math.floor(Math.random()*2), max=5, a=Math.floor(Math.random()*max)+1, b=Math.floor(Math.random()*max)+1, c=(chance==0)?a+b:b+Math.floor(Math.random()*a)+1; result+=(a+b==c)?\\\"0\\\":\\\"1\\\"; ret.push(c+\\\"-\\\"+b+\\\"=\\\"+a);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Barrez les opérations erronées. Petite astuce : l'expression A-B = C est équivalente à A = B + C. Il est donc possible de vérifier les soustractions grâce à une addition. Par exemple : 5 - 4 = 1 car 5 = 4 + 1.","font":0.8}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"[b]Barrez les opérations erronées.[/b]","font":0.8}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>subtraction</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -17,9 +17,9 @@
 
     <rdf:Description>
         <dct:identifier>t10</dct:identifier>
-        <dct:title xml:lang="fr-FR">Vérifier le résultat d'une soustraction de nombres, compris entre 1 et 10.</dct:title>
+        <dct:title xml:lang="fr-FR">Vérifier le résultat de soustractions dont le diminuteur et la différence sont compris entre 1 et 10.</dct:title>
         <dct:description><![CDATA["number":4,"template":"array2x4","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var chance=Math.floor(Math.random()*2), max=10, a=Math.floor(Math.random()*max)+1, b=Math.floor(Math.random()*max)+1, c=(chance==0)?a+b:b+Math.floor(Math.random()*a)+1; result+=(a+b==c)?\\\"0\\\":\\\"1\\\"; ret.push(c+\\\"-\\\"+b+\\\"=\\\"+a);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}},"font":0.8]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Barrez les opérations erronées."}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"[b]Barrez les opérations erronées.[/b]"}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>subtraction</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -29,7 +29,7 @@
 
     <rdf:Description>
         <dct:identifier>t20</dct:identifier>
-        <dct:title xml:lang="fr-FR">Vérifier le résultat d'une soustraction de nombres, compris entre 1 et 20.</dct:title>
+        <dct:title xml:lang="fr-FR">Vérifier le résultat de soustractions dont le diminuteur et la différence sont compris entre 1 et 20.</dct:title>
         <dct:description><![CDATA["number":4,"template":"array2x4","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var chance=Math.floor(Math.random()*2), max=20, a=Math.floor(Math.random()*max)+1, b=Math.floor(Math.random()*max)+1, c=(chance==0)?a+b:b+Math.floor(Math.random()*a)+1; result+=(a+b==c)?\\\"0\\\":\\\"1\\\"; ret.push(c+\\\"-\\\"+b+\\\"=\\\"+a);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}},"font":0.7]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Barrez les opérations erronées."}]]></dct:description>
         <dct:extent>1</dct:extent>
@@ -41,7 +41,7 @@
 
     <rdf:Description>
         <dct:identifier>t50</dct:identifier>
-        <dct:title xml:lang="fr-FR">Vérifier le résultat d'une soustraction de nombres, compris entre 1 et 50.</dct:title>
+        <dct:title xml:lang="fr-FR">Vérifier le résultat de soustractions dont le diminuteur et la différence sont compris entre 1 et 50.</dct:title>
         <dct:description><![CDATA["number":4,"template":"array2x4","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var chance=Math.floor(Math.random()*2), max=50, a=Math.floor(Math.random()*max)+1, b=Math.floor(Math.random()*max)+1, c=a+b+(chance==0?0:Math.floor(Math.random()*20)-10); if (c<=0) { c = a+b; } result+=(a+b==c)?\\\"0\\\":\\\"1\\\"; ret.push(c+\\\"-\\\"+b+\\\"=\\\"+a);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}},"font":0.7]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Barrez les opérations erronées."}]]></dct:description>
         <dct:extent>1</dct:extent>
@@ -53,7 +53,7 @@
 
     <rdf:Description>
         <dct:identifier>t100</dct:identifier>
-        <dct:title xml:lang="fr-FR">Vérifier le résultat d'une soustraction de nombres, compris entre 1 et 100.</dct:title>
+        <dct:title xml:lang="fr-FR">Vérifier le résultat de soustractions dont le diminuteur et la différence sont compris entre 1 et 100.</dct:title>
         <dct:description><![CDATA["number":4,"template":"array2x4","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var chance=Math.floor(Math.random()*2), max=100, a=Math.floor(Math.random()*max)+1, b=Math.floor(Math.random()*max)+1, c=a+b+(chance==0?0:Math.floor(Math.random()*20)-10); if (c<=0) { c = a+b; } result+=(a+b==c)?\\\"0\\\":\\\"1\\\"; ret.push(c+\\\"-\\\"+b+\\\"=\\\"+a);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}},"font":0.6]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Barrez les opérations erronées."}]]></dct:description>
         <dct:extent>1</dct:extent>

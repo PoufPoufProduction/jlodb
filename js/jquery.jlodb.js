@@ -198,7 +198,7 @@ var nodemathtype = { final:1, rootonly:2, commutative :4, associative:8 };
             },
             process:function() { return this.children[0].process()-this.children[1].process(); }
         },
-        mult:   { type:"op", value:"*", abstract:"", c:2, p:function() { return nodemathtype.commutative | nodemathtype.associative; },
+        mult:   { type:"op", value:"×", abstract:"", c:2, p:function() { return nodemathtype.commutative | nodemathtype.associative; },
             needbracket:function() {
                 ret = [false, false];
                 for (var i=0; i<2; i++)
@@ -208,13 +208,13 @@ var nodemathtype = { final:1, rootonly:2, commutative :4, associative:8 };
                 return ret;
             },
             m:function() {
-                var ret=["c0","c1","<mo>*</mo>"];
+                var ret=["c0","c1","<mo>×</mo>"];
                 var bra=this.needbracket();
                 for (var i=0; i<2; i++) if (bra[i]) { ret[i] = "<mo>(</mo>c"+i+"<mo>)</mo>"; }
                 return ret[0]+ret[2]+ret[1];
             },
             t:function() {
-                var bra=this.needbracket(_node);
+                var bra=this.needbracket();
                 var val=[bra[0]?"(c0)":"c0", bra[1]?"(c1)":"c1"];
                 return [ val[0]+"*"+val[1], val[1]+"*"+val[0] ];
             },
@@ -271,17 +271,20 @@ var nodemathtype = { final:1, rootonly:2, commutative :4, associative:8 };
             settings.$ed = $("<div id='ed'></div>");
             $this.html("").append(settings.$ed);
 
+            for (var n in nodetype) { nodetype[n].id = n; }
+
             $this.bind("mousedown touchstart", function(_event) {
                 if (settings.onclick) { settings.onclick($this, _event); } _event.preventDefault();
             });
 
             $this.droppable({accept:settings.accept,
-                drop:function(event, ui) { helpers.editor.addroot($this, helpers.getnode($this,$(ui.draggable))); }
+                drop:function(event, ui) { helpers.editor.addroot($this, settings.getnode($this, $(ui.draggable).attr("id")) ); }
             });
         },
         node: function (_elt) {
             // INIT ATTRIBUTES
-            var args = $.extend(true, { id:         nodecounter++,
+            var args = $.extend(true, { idx:        nodecounter++,
+                                        id:         "",
                                         type:       "",
                                         subtype:    "",
                                         value:      "",
@@ -295,17 +298,17 @@ var nodemathtype = { final:1, rootonly:2, commutative :4, associative:8 };
             for (var i in args) { this[i]=args[i]; }
 
             // BUILD PROTOTYPE
-            this.find = function (_idt) {
+            this.find = function (_idx) {
                 var ret = 0;
-                if (this.id==_idt)      { ret = this; }
-                else for (var i in this.children) { ret = ret || this.children[i].find(_idt); }
+                if (this.idx==_idx)      { ret = this; }
+                else for (var i in this.children) { ret = ret || this.children[i].find(_idx); }
                 return ret;
             };
 
-            this.parent = function(_idt) {
+            this.parent = function(_idx) {
                 var ret = 0;
-                for (var i in this.children) if (this.children[i].id==_idt) { ret = this; }
-                for (var i in this.children) { ret = ret || this.children[i].parent(_idt); }
+                for (var i in this.children) if (this.children[i].idx==_idx) { ret = this; }
+                for (var i in this.children) { ret = ret || this.children[i].parent(_idx); }
                 return ret;
             };
 
@@ -345,7 +348,6 @@ var nodemathtype = { final:1, rootonly:2, commutative :4, associative:8 };
                 }
                 if (this.children.length) { this.left = this.left/this.children.length; }
                 else { this.width = 1; }
-                
             };
 
             this.label = function(_args) {
@@ -387,11 +389,10 @@ var nodemathtype = { final:1, rootonly:2, commutative :4, associative:8 };
                     case "line"     : ret="("+ret+")"; break;
                 }
 
-                size = Math.max(0.2,1-(ret.toString().length-1)*0.2);
-                if (this.l) { size = this.l; }
-                if (size<0.2) { ret = ret.substr(0,3)+"~"; size=0.4; }
+                size = (this.l&&!this.abstract)?this.l:1-(ret.toString().length-1)*0.2;
+                if (size<0.2 && (!_args || !_args.mathml) )     { ret = ret.substr(0,3)+"~"; size=0.4; }
+                if (size!=1 &&  (!_args || !_args.onlytext) )   { ret = "<span style='font-size:"+size+"em;'>"+ret+"</span>"; }
 
-                if (_args && !_args.onlytext && size!=1) { ret = "<span style='font-size:"+size+"em;'>"+ret+"</span>"; }
                 return ret;
             };
 
@@ -422,18 +423,6 @@ var nodemathtype = { final:1, rootonly:2, commutative :4, associative:8 };
             };
 
         },
-        
-        getnode: function($this, $elt) {
-            var settings = helpers.settings($this), n = 0;
-            var id = $elt.attr("id");
-
-            if (id.substr(0,3)=="val") { n = {type:"value", value:parseFloat(id.substr(3)) }; }
-            else {
-                n = nodetype[id];
-                if (!n) { n = settings.newnode($this, $elt); }
-            }
-            return n;
-        },
 
         editor: {
             addroot: function($this, _elt) {
@@ -444,8 +433,9 @@ var nodemathtype = { final:1, rootonly:2, commutative :4, associative:8 };
                 settings.root=helpers.editor.insert($this,true,_elt);
 
                 if (settings.root.type=="op" && settings.root.p && (settings.root.p()&nodemathtype.final)) { vOk = false; }
+                var hasChildren = _elt.children&&_elt.children.length;
 
-                if (sav && sav.type && vOk && settings.root.c ) {
+                if (sav && sav.type && vOk && settings.root.c && !hasChildren) {
                     if (sav.p && sav.p()&nodemathtype.rootonly) { vOk = false; }
                     if (vOk) {
                         var elt = settings.root;
@@ -460,15 +450,15 @@ var nodemathtype = { final:1, rootonly:2, commutative :4, associative:8 };
             },
             insert: function($this,_root,_elt) {
                 var settings = helpers.settings($this);
-                var ret = (_elt&&_elt.id)?_elt:new helpers.node(_elt);
-                ret.$html = $("<div class='ed' id='"+ret.id+"'></div>");
+                var ret = new helpers.node(_elt);
+                if (ret.type!="value") { ret.abstract=""; }
+
+                ret.$html = $("<div class='ed' id='"+ret.idx+"'></div>");
                 if (_elt.type) {
                     ret.$html.html("<div class='ea "+ret.type+"'><div class='label'>"+
                         ret.label({nbdec: settings.nbdec, displaytype: settings.displaytype})+"</div></div>");
                 }
                 settings.$ed.append(ret.$html);
-
-                if (_root && ret.type=="tree") { ret.type="op"; }
 
                 ret.$html.droppable({accept:settings.accept, greedy:true,
                     over: function(event, ui) { $(this).addClass("over"); },
@@ -480,7 +470,8 @@ var nodemathtype = { final:1, rootonly:2, commutative :4, associative:8 };
                         var parent  = settings.root.parent($(this).attr("id"));
                         var vOK     = true;
 
-                        var n = helpers.getnode($this,$(ui.draggable));
+                        var n = settings.getnode($this, $(ui.draggable).attr("id"));
+                        if (n.type!="value") { n.abstract=""; }
 
                         if (n.p && n.p()&nodemathtype.rootonly) { vOK = false; }
                         if (n.type!="value" && parent && parent.type=="op" && parent.p && (parent.p()&nodemathtype.final) ) { vOK = false; }
@@ -493,24 +484,17 @@ var nodemathtype = { final:1, rootonly:2, commutative :4, associative:8 };
                             }
 
                             if (elt.type) { for (var i in elt.children) { elt.children[i].detach(); } elt.children=[]; }
+                            var $html = elt.$html, idx = elt.idx;
                             elt = $.extend(true, elt, n);
+                            elt.$html = $html;
+                            elt.idx = idx;
 
-                            if (elt.type=="tree") {
-                                elt.type="op";
-                                elt.$html.html("<div class='a "+elt.type+"' id='"+elt.id+"'><div class='label'>"+
-                                                    elt.label({nbdec: settings.nbdec, displaytype: settings.displaytype}) +
-                                                    "</div></div>");
-                                for (var i in elt.children) {
-                                    elt.children.push(helpers.editor.insert($this,false,elt.children[i]));
-                                }
-                            }
-                            else {
-                                elt.$html.html("<div class='ea "+elt.type+"'><div class='label'>"+
-                                                elt.label({nbdec: settings.nbdec, displaytype: settings.displaytype})+"</div></div>");
+                            elt.$html.html("<div class='ea "+elt.type+"'><div class='label'>"+
+                                        elt.label({nbdec: settings.nbdec, displaytype: settings.displaytype})+"</div></div>");
 
-                                for (var i=0; i<n.c; i++) {
-                                    elt.children.push(helpers.editor.insert($this,false,0));
-                                }
+                            elt.children=[];
+                            for (var i=0; i<n.c; i++) {
+                                elt.children.push(helpers.editor.insert($this,false,(n.children&&n.children.length>i)?n.children[i]:0));
                             }
                         }
 
@@ -568,15 +552,17 @@ var nodemathtype = { final:1, rootonly:2, commutative :4, associative:8 };
                     var mx = ($this.width()-_node.$html.width()*_node.width*1.25)/2;
                     var my = ($this.height()-_node.$html.height()*(level+1)*1.45)/2;
                     settings.$ed.css("left",mx+"px").css("top",my+"px");
+
+                    if (settings.onupdate) { settings.onupdate($this, settings.root); }
                 }
                 return level;
             },
             clear:function($this) {
                 var settings = helpers.settings($this);
                 settings.$ed.html("");
-                if (settings.root&&settings.root.id) { settings.root.detach(); } settings.root={};
+                if (settings.root&&settings.root.idx) { settings.root.detach(); } settings.root={};
                 helpers.mathml($this);
-                if (settings.onclear) { settings.onclear($this); }
+                if (settings.onupdate) { settings.onupdate($this,false); }
             }
         },
         mathml: function($this, _node) {
@@ -585,32 +571,30 @@ var nodemathtype = { final:1, rootonly:2, commutative :4, associative:8 };
 
             var ret = _node.mathml?_node.mathml({nbdec: settings.nbdec, displaytype: settings.displaytype}):"";
 
-            if (_node==settings.root && $(settings.mathml)) {
+            if ($(settings.mathml)) {
                 if (ret.length) {
-                    $(settings.mathml).html("<div><math><mrow>"+ret+"</mrow></math></div>");
-                    if (settings.mathmlup.timerid) { clearTimeout(settings.mathmlup.timerid); }
-                    settings.mathmlup.timerid = setTimeout(function(){ helpers.mathmlup($this); }, 10 );
+                    if (!_node.nomathml) {
+                        $(settings.mathml).html("<div><math><mrow>"+ret+"</mrow></math></div>");
+                            // TO IMPROVE THE WTF ALGORITHM
+                        var ratio = $(settings.mathml).text().length;
+                        if ($(settings.mathml).text().indexOf("/")!=-1) { ratio = ratio*0.7; }
+                        ratio = ratio>5?Math.pow(0.65,Math.pow(ratio-5,0.45)):1;
+                        $(settings.mathml+">div").css("font-size",ratio+"em");
+                    }
+                    else { $(settings.mathml).html(ret); }
                 }
                 else { $(settings.mathml).html(""); }
             }
 
             return ret;
         },
-        mathmlup: function($this) {
-            // TO IMPROVE THE WTF ALGORITHM
-            var settings = helpers.settings($this);
-            var ratio = $(settings.mathml).text().length;
-            if ($(settings.mathml).text().indexOf("/")!=-1) { ratio = ratio*0.7; }
-            ratio = ratio>5?Math.pow(0.65,Math.pow(ratio-5,0.45)):1;
-            $(settings.mathml+">div").css("font-size",ratio+"em");
-        },
         text: function($this, _node) {
             var settings = helpers.settings($this), ret=[];
             if (!_node) { _node=settings.root; }
             if (_node.type=="op") {
 
-                var val = nodetype[_node.value].t, children = [], nb = 1;
-                if (typeof(val)=="function") { val = val(_node); }
+                var val = _node.t, children = [], nb = 1;
+                if (typeof(val)=="function") { val = _node.t(); }
                 if (typeof(val)=="string")   { val = [val]; }
 
                 for (var i in _node.children) {
@@ -661,16 +645,37 @@ var nodemathtype = { final:1, rootonly:2, commutative :4, associative:8 };
                 });
             },
             clear: function() { helpers.editor.clear($(this)); },
-            value: function(_value) {
+            value: function(_value, _add) {
                 var $this = $(this), settings = helpers.settings($this),ret=0;
-                if (_value) { settings.root=helpers.editor.insert($this,true, $.extend(true, {},_value));
-                              helpers.editor.display($this); helpers.mathml($this); }
+                if (_value) { if (_add) { helpers.editor.addroot($this, $.extend(true, {},_value)); }
+                              else      { settings.root=helpers.editor.insert($this,true, $.extend(true, {},_value));
+                                          helpers.editor.display($this); helpers.mathml($this); }
+                            }
                 else        { ret = $.extend(true, {}, settings.root); }
                 return ret;
             },
+            text: function() {  var $this = $(this), settings = helpers.settings($this); return helpers.text($(this)); },
             filled: function() {
                 var $this = $(this), settings = helpers.settings($this);
                 return settings.root.filled();
+            },
+            mathml: function(_val) {
+                var $this = $(this), settings = helpers.settings($this);
+                if (_val) { $(settings.mathml).addClass("s"); } else { $(settings.mathml).removeClass("s"); }
+                helpers.mathml($(this),_val);
+            },
+            tonode: function(_val) {
+                var $this = $(this), settings = helpers.settings($this), ret, val = $.extend(true, {}, _val);
+
+                if (typeof(val.value)!="undefined")     { ret = {type:"value"}; }
+                else                                    { ret = nodetype[val.id]; }
+                if (!ret)                               { ret = settings.getnode?settings.getnode($this, val):{}; }
+
+                ret = new helpers.node($.extend(true, val, ret));
+                ret.children = [];
+                for (var i in _val.children) { ret.children.push($this.editor("tonode", _val.children[i])); }
+
+                return ret;
             }
         };
 

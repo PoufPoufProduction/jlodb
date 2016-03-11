@@ -109,6 +109,7 @@
                 if (settings.noneg) { $this.find("#padneg").addClass("graykeypad"); }
 
                 // handle math editor
+                helpers.reference($this, settings.reference);
                 $this.find("#editor").editor({
                     onclick:function($editor, _event) {
                         if (settings.timers.clear) { clearTimeout(settings.timers.clear); }
@@ -116,20 +117,33 @@
                         settings.timers.clear = setTimeout(function() { $this.find("#eclear")
                             .animate({opacity:0},500, function() { $(this).hide(); settings.timers.clear=0; }); }, 2000);
                     },
-                    newnode:function($editor, $elt) {
-                        var ret = { type:"value", subtype:$elt.attr("id"), abstract:$elt.text(), value:settings.reference,
-                            process:function() {
-                                return helpers.content($this,this.value.charCodeAt(0)-65,parseInt(this.value[1])-1);
-                            },
-                            p:function() {
-                                var cell = settings.sheet[parseInt(this.value[1])-1][this.value.charCodeAt(0)-65];
-                                return (cell&&(cell.type=="img"||cell.type=="txt"))?nodemathtype.rootonly:0;
-                            }
-                        };
+                    getnode:function($editor, _val) {
+                        var ret =0;
+                        if (typeof(_val)=="object") {
+                            ret = { type:"value", id:_val.id, subtype:"ref",
+                                    abstract:helpers.ref.format(settings.reference,_val.id[3]), value:settings.reference,
+                                process:function() {
+                                    return helpers.content($this,this.value.charCodeAt(0)-65,parseInt(this.value[1])-1);
+                                },
+                                p:function() {
+                                    var cell = settings.sheet[parseInt(this.value[1])-1][this.value.charCodeAt(0)-65];
+                                    return (cell&&(cell.type=="img"||cell.type=="txt"))?nodemathtype.rootonly:0;
+                                }
+                            };
+                        }
+                        else { ret = settings.mathnodes[_val]; }
                         return ret;
                     }
                 });
-                helpers.reference($this, settings.reference);
+                // Fill math operator
+                var isRef = false;
+                for (var i in settings.math) {
+                    var vNode = $this.find("#editor").editor("tonode", settings.math[i]);
+                    settings.mathnodes.push(vNode);
+                    var vClass="ea";
+                    if (vNode.subtype=="ref") { vClass+=" "+vNode.id; isRef = true;}
+                    $this.find("#esource").append("<div class='"+vClass+" "+vNode.type+"' id='"+i+"'><div class='label'>"+vNode.label()+"</div></div>");
+                }
                 $this.find(".ea").draggable({containment:$this, helper:"clone", appendTo:$this});
 
 
@@ -151,8 +165,8 @@
                     html+='ontouchstart=\'$(this).closest(".calc").calc("txt",this);event.preventDefault();\' ';
                     html+=">"+settings.txt[i]+"</div>";
                     $this.find("#ptxt").append(html);
-					
 				}
+
 
                 // Locale handling
                 $this.find("h1#label").html(settings.label);
@@ -290,6 +304,16 @@
                     }
                 };
                 return ret;
+            },
+            format : function(_ref, _val) {
+                var ret;
+                switch (parseInt(_val)) {
+                    case 2 : ret = _ref[0]+"$"+_ref[1];         break;
+                    case 3 : ret = "$"+_ref[0]+_ref[1];         break;
+                    case 4 : ret = "$"+_ref[0]+"$"+_ref[1];     break;
+                    default: ret = _ref;
+                }
+                return ret;
             }
         },
         content: function($this, _i, _j) {
@@ -373,10 +397,14 @@
         reference: function($this, value) {
             var settings = helpers.settings($this);
             settings.reference=value;
-            $this.find("#ref1 span").html(value[0]+value[1]);
-            $this.find("#ref2 span").html(value[0]+"$"+value[1]);
-            $this.find("#ref3 span").html("$"+value[0]+value[1]);
-            $this.find("#ref4 span").html("$"+value[0]+"$"+value[1]);
+            for (var i in settings.mathnodes) {
+                var n = settings.mathnodes[i];
+                if (n.subtype=="ref") {
+                    n.value     = value;
+                    n.abstract  = helpers.ref.format(value, n.id[3]);
+                    $this.find("."+n.id+" .label").html(n.label());
+                }
+            }
         },
         loop: function($this, _ref, _value) {
         }
@@ -395,7 +423,8 @@
                     sheet           : [],
                     calculator      : "",
                     timers          : { clear:0 },
-                    target          : 0
+                    target          : 0,
+                    mathnodes       : []
                 };
 
                 return this.each(function() {

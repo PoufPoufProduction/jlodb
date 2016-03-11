@@ -205,9 +205,9 @@
             // HANDLE THE EXERCICE
             if (settings.exercice) {
                 if ($.type(settings.exercice)=="string") {
-                    $this.find("#exercice #content").html(settings.exercice);
+                    $this.find("#exercice #content").html(helpers.format(settings.exercice));
                 } else {
-                    $this.find("#exercice #content").html(settings.exercice.value);
+                    $this.find("#exercice #content").html(helpers.format(settings.exercice.value));
                     if (settings.exercice.label) { $this.find("#exercice #label").html(settings.exercice.label).show(); }
                     if (settings.exercice.font) { $this.find("#exercice #content").css("font-size",settings.exercice.font+"em"); }
                 }

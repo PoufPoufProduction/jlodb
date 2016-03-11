@@ -18,7 +18,7 @@
     </div>
     <div id="rightmenu">
         <div id="board">
-            <div id="editor"><div></div></div>
+            <div id="editor"></div>
             <div id="clear" class="button" ontouchstart="$(this).closest('.mathcraft').mathcraft('clear');event.preventDefault();"
                      onclick="$(this).closest('.mathcraft').mathcraft('clear');">CLEAR</div>
             <div id="glossary" class="button" ontouchstart="$(this).closest('.mathcraft').mathcraft('glossary');event.preventDefault();"
@@ -30,7 +30,7 @@
             </div>
             <div id="mask"></div>
         </div>
-        <div id="screen" ontouchstart="$(this).closest('.mathcraft').mathcraft('onscreen');event.preventDefault();"
+        <div id="escreen" ontouchstart="$(this).closest('.mathcraft').mathcraft('onscreen');event.preventDefault();"
                      onclick="$(this).closest('.mathcraft').mathcraft('onscreen');"></div>
         <div id="menu">
             <div id="toinventory" ontouchstart="$(this).closest('.mathcraft').mathcraft('toinventory');event.preventDefault();"

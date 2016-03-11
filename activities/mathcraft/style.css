@@ -3,14 +3,10 @@
 .mathcraft table.zz                       { font-size:1em; border-collapse:collapse; border-spacing:0;}
 .mathcraft .z                             { width:1em; height:1em; background-image:url("../../res/img/generic/cell01.svg");
                                               background-size:100%; }
-.mathcraft .a                             { width:1em;height:1em;text-align:center;
-                                              color:#352222; background-color:#acacac; border-radius:.2em;
-                                              background-image:url("../../res/img/action/nothing.svg"); }
-.mathcraft .a.op                          { background-image:url("../../res/img/action/nothing2.svg"); }
-.mathcraft .a.tree                          { background-image:url("../../res/img/action/nothing3.svg"); }
-.mathcraft .a.action                      { background-image:url("../../res/img/action/nothing4.svg"); color:#A00; }
-.mathcraft .a.move                        { background-image:none; color:#eee;}
-.mathcraft .a>div                         { font-size:.8em;margin-top:0.1em;cursor:move; }
+.mathcraft .ea.tree                        { background-image:url("../../res/img/action/nothing3.svg"); }
+.mathcraft .ea.action                      { background-image:url("../../res/img/action/nothing4.svg"); color:#A00; }
+.mathcraft .ea.move                        { opacity:0.7; }
+.mathcraft .ea>div                         { font-size:.8em;margin-top:0.1em;cursor:move; }
 
 .mathcraft div#splashex                  { background-image:url("../../res/img/banners/mathematics.svg"); color:black; }
 .mathcraft div#splashex h1               { position:absolute; top:15%; left:60%; font-size:1.5em; }
@@ -32,6 +28,7 @@
 .mathcraft #leftmenu>#exercice .mathxl    { font-size:3em; width:100%; background-color:rgba(0,0,0,0.2); margin:.2em 0; }
 .mathcraft #leftmenu>#exercice .data      { font-style:italic; color:green; }
 .mathcraft #leftmenu>#exercice .data.s    { color:red; }
+.mathcraft #leftmenu>#exercice .hl        { background-color:yellow; }
 
 .mathcraft #leftmenu>#inventory           { width:7em;height:3em;border-radius:0 0 .25em .25em;
                                               background-color:#90cce0;
@@ -42,15 +39,14 @@
                                               background-color:#030; background-image:url("../../res/img/background/book06.svg");
                                               background-repeat:repeat;}
 .mathcraft #rightmenu #editor             { width:100%;height:8em; position:absolute; }
-.mathcraft #rightmenu #editor>div         { width:100%;height:100%; position:relative;  }
 .mathcraft #rightmenu #mask               { width:100%;height:8em; position:absolute; top:0; left:0; background-color:#0F0;
-                                              border-radius:.25em .25em 0 0; display:none; }
+                                            display:none; z-index:200; }
 .mathcraft #rightmenu .button             { color:lime; font-size:.3em; cursor:pointer; border:1px solid lime;
                                               width:10em; text-align:center; background-color:rgba(100,255,100,0.1); }
 .mathcraft #rightmenu #book               { width:100%;height:8em; position:absolute; top:0; left:0;
                                               background-color:rgba(0,50,0,0.7); background-repeat:repeat;
                                               background-image:url("../../res/img/background/book05.svg");
-                                              border-radius:.25em .25em 0 0; display:none; }
+                                              border-radius:.25em .25em 0 0; display:none; z-index:200;  }
 .mathcraft #rightmenu #book #b            { height:15em; font-size:.5em; color:lime;}
 .mathcraft #rightmenu #book #b>h1         { font-size:1em; margin-left:-.5em; padding-left:1em; border:1px solid lime; width:15em;
                                               margin-top:.1em; border-radius:0 .5em .5em 0; cursor:pointer;
@@ -69,7 +65,7 @@
                                               border:.1em solid #106410; position:absolute;
                                             }
 .mathcraft #rightmenu>#board .d.over      { border:.1em solid #20AA20; background-color:rgba(50,128,50,0.5); }
-.mathcraft #rightmenu>#board .d>.a        { margin:.1em; }
+.mathcraft #rightmenu>#board .d>.ea       { margin:.1em; }
 
 .mathcraft #rightmenu>#board .l           { position:absolute; height:0.3em; border:1em solid #106410; 
                                               border-width:.05em 0 0 .05em; border-radius:.15em 0 0 0;
@@ -78,20 +74,22 @@
 .mathcraft #rightmenu>#board .l.l1        {  border-width:0 0 0 .05em; border-radius:0; }
 .mathcraft #rightmenu>#board .l.l2        {  border-width:.05em .05em 0 0; border-radius:0 .15em 0 0; }
 
-.mathcraft #rightmenu>#screen             { width:8.7em;height:2em;background-color:white; cursor:pointer; }
-.mathcraft #rightmenu>#screen.s           { color:gray; }
+.mathcraft #rightmenu>#escreen             { width:8.7em;height:2em;background-color:white; cursor:pointer; }
+.mathcraft #rightmenu>#escreen.s *         { color:gray !important; }
 
-.mathcraft #rightmenu>#screen.s0          { background-color:limegreen; color:white; }
-.mathcraft #rightmenu>#screen.s1          { background-color:greenyellow; color:white; }
-.mathcraft #rightmenu>#screen.s2          { background-color:yellow; color:white; }
-.mathcraft #rightmenu>#screen.s3          { background-color:orange; color:white; }
-.mathcraft #rightmenu>#screen.s4          { background-color:red; color:white; }
-.mathcraft #rightmenu>#screen.s5          { background-color:purple; color:white; }
-.mathcraft #rightmenu>#screen>div         {  }
-.mathcraft #rightmenu>#screen h1          { font-size:.5em; color:green; }
-.mathcraft #rightmenu>#screen .ac         { font-size:.4em; color:green; text-align:justify; margin:.2em .5em; }
-.mathcraft #rightmenu>#screen .ac .link   { font-weight:bold; cursor:pointer; }
-.mathcraft #rightmenu>#screen .ac .link.wrong { color:red; }
+
+.mathcraft #rightmenu>#escreen.s0          { background-color:limegreen; color:white; }
+.mathcraft #rightmenu>#escreen.s1          { background-color:greenyellow; color:white; }
+.mathcraft #rightmenu>#escreen.s2          { background-color:yellow; color:white; }
+.mathcraft #rightmenu>#escreen.s3          { background-color:orange; color:white; }
+.mathcraft #rightmenu>#escreen.s4          { background-color:red; color:white; }
+.mathcraft #rightmenu>#escreen.s5          { background-color:purple; color:white; }
+.mathcraft #rightmenu>#escreen>div         {  }
+.mathcraft #rightmenu>#escreen h1          { font-size:.5em; color:green; }
+.mathcraft #rightmenu>#escreen .sub        { font-size:.4em; color:green; text-align:justify; margin:.2em .5em; }
+.mathcraft #rightmenu>#escreen .sub .link   { padding:0 .1em; border-radius:.2em; font-weight:bold; cursor:pointer; }
+.mathcraft #rightmenu>#escreen .sub .link.wrong { color:white; background-color:red; }
+.mathcraft #rightmenu>#escreen .sub .link.good { color:white; background-color:green; }
 .mathcraft #rightmenu>#menu               { width:8.7em;height:1.8em;background-color:gray; border-radius:0 0 .25em .25em;
                                               background-image:url("../../res/img/background/steel01.svg"); background-repeat:repeat; }
 .mathcraft #rightmenu>#menu>div           { float:left;}

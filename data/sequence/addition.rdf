@@ -1511,6 +1511,17 @@
     </rdf:Description>
 
     <rdf:Description>
+        <dct:identifier>49r</dct:identifier>
+        <dct:title xml:lang="fr-FR">Additioner, sans contrainte de temps, 2 nombres compris entre 0 et 49 (sans retenue)</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"gen":"function() { var a = 10+Math.floor(Math.random()*40),b; do { b = 10+Math.floor(Math.random()*40); } while(a%10+b%10>9); return \\\"\\\"+a+\\\"+\\\"+b; }","font":2.5]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>10</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
         <dct:identifier>99</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner, sans contrainte de temps, 2 nombres compris entre 1 et 99</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":3,"speed":1000},"gen":"function() { return \\\"\\\"+Math.floor(11+Math.random()*88)+\\\"+\\\"+Math.floor(11+Math.random()*88); }","font":2.5]]></dct:description>
@@ -1529,6 +1540,28 @@
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>4</dct:type>
+        <dct:alternative>10</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>99r</dct:identifier>
+        <dct:title xml:lang="fr-FR">Additioner, sans contrainte de temps, 2 nombres compris entre 1 et 99 (sans retenue)</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"gen":"function() { var a = 10+Math.floor(Math.random()*80),b; do { b = 10+Math.floor(Math.random()*80); } while(a+b>=100 || a%10+b%10>9); return \\\"\\\"+a+\\\"+\\\"+b; }","font":2.5]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>10</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>99R</dct:identifier>
+        <dct:title xml:lang="fr-FR">Additioner, sans contrainte de temps, 2 nombres compris entre 1 et 99 (dont la somme est inférieure à 100)</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":1000},"gen":"function() { var a = 10+Math.floor(Math.random()*80),b; do { b = 10+Math.floor(Math.random()*80); } while(a+b>=100); return \\\"\\\"+a+\\\"+\\\"+b; }","font":2.5]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
         <dct:alternative>10</dct:alternative>
     </rdf:Description>
 

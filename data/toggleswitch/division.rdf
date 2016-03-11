@@ -3,6 +3,17 @@
          xmlns:dct="http://purl.org/dc/terms/">
 
 
+    <rdf:Description>
+        <dct:identifier>d2a</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier les nombres compris entre 1 et 100 divisibles par 2.</dct:title>
+        <dct:description><![CDATA["number":4,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[],val=2, max=100; for (var i=0; i<9; i++) { var c=Math.floor(Math.random()*2),a; do { a=Math.floor(Math.random()*max)+1; } while ((a%val==0&&c==1) || (a%val!=0&&c==0)); result+=(c==0)?\\\"1\\\":\\\"0\\\"; ret.push(a);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"yellow","color":"orange"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Surlignez les nombres divisibles par 2.","label":"/2"}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>d3b</dct:alternative>
+    </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>d3a</dct:identifier>
