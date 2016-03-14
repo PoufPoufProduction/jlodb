@@ -64,8 +64,11 @@
 
 .calc #target                   { position:absolute; width:1em;height:1em;top:0;left:0; border:2px solid blue;
                                   overflow:visible;display:none; padding:2px; }
-.calc #target>div               { width:20px;height:20px;margin-top:-15px;margin-left:-15px;
-                                  position:absolute;top:100%;left:100%;background-color:blue; }
+.calc #target>div               { width:20px;height:20px;margin-top:-15px;margin-left:-15px; cursor:move;
+                                  position:absolute;top:100%;left:100%;background-color:blue; display:none; }
+.calc.auto #target>div          { display:inherit; }
+.calc #target.s                 { border:2px solid red; }
+.calc #target.s>div             { background-color:red; }
 
 .calc div#submit                     { font-size:1.5em; height:1em;width:1em; cursor:pointer;
                                             position:absolute; top:7em; left:0em; z-index:3; }
