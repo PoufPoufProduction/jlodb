@@ -29,7 +29,8 @@
         "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
         "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>",
         "\\\[math\\\](.+)\\\[/math\\\]",            "<div class='math'><math>$1</math></div>",
-        "\\\[mathxl\\\](.+)\\\[/mathxl\\\]",        "<div class='mathxl'><math>$1</math></div>"
+        "\\\[mathxl\\\](.+)\\\[/mathxl\\\]",        "<div class='mathxl'><math>$1</math></div>",
+        "\\\[icon\\\](.+)\\\[/icon\\\]",            "<div class='img'><div class='icon'><img src='res/img/$1.svg'/></div></div>"
     ];
 
     var ntype = { normal:0, scientific:1, physics:2 };

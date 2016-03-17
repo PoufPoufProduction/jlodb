@@ -68,6 +68,45 @@
                      onclick="$(this).closest('.calc').calc('clear');">CLEAR</div>
             </div>
             <div id="ptxt"></div>
+            <div id="pgraph">
+                <div id="graphmenu">
+                    <div id="gpie" class="icon"  ontouchstart="$(this).closest('.calc').calc('graph','pie');event.preventDefault();"
+                     onclick="$(this).closest('.calc').calc('graph','pie');"><img src="res/img/charts/pie01.svg"/></div>
+                    <div id="gbar" class="icon"  ontouchstart="$(this).closest('.calc').calc('graph','bar');event.preventDefault();"
+                     onclick="$(this).closest('.calc').calc('graph','bar');"><img src="res/img/charts/bar01.svg"/></div>
+                    <div id="gfct" class="icon"  ontouchstart="$(this).closest('.calc').calc('graph','fct');event.preventDefault();"
+                     onclick="$(this).closest('.calc').calc('graph','fct');"><img src="res/img/charts/fct01.svg"/></div>
+                </div>
+                <div id="graphvalues">
+                    <div class="line">
+                        <div class="label">X</div>
+                        <div class="ref" id="ref11"
+    ontouchstart="$(this).closest('#graphvalues').find('.ref').removeClass('s');$(this).toggleClass('s');event.preventDefault();"
+    onclick="$(this).closest('#graphvalues').find('.ref').removeClass('s');$(this).toggleClass('s');"></div>
+                        <div class="ref" id="ref12"
+    ontouchstart="$(this).closest('#graphvalues').find('.ref').removeClass('s');$(this).toggleClass('s');event.preventDefault();"
+    onclick="$(this).closest('#graphvalues').find('.ref').removeClass('s');$(this).toggleClass('s');"></div>
+                    </div>
+                    <div class="line">
+                        <div class="label">Y</div>
+                        <div class="ref" id="ref21"
+    ontouchstart="$(this).closest('#graphvalues').find('.ref').removeClass('s');$(this).toggleClass('s');event.preventDefault();"
+    onclick="$(this).closest('#graphvalues').find('.ref').removeClass('s');$(this).toggleClass('s');"></div>
+                        <div class="ref" id="ref22"
+    ontouchstart="$(this).closest('#graphvalues').find('.ref').removeClass('s');$(this).toggleClass('s');event.preventDefault();"
+    onclick="$(this).closest('#graphvalues').find('.ref').removeClass('s');$(this).toggleClass('s');"></div>
+                    </div>
+                    <div class="line">
+                        <div class="label">Z</div>
+                        <div class="ref" id="ref31"
+    ontouchstart="$(this).closest('#graphvalues').find('.ref').removeClass('s');$(this).toggleClass('s');event.preventDefault();"
+    onclick="$(this).closest('#graphvalues').find('.ref').removeClass('s');$(this).toggleClass('s');"></div>
+                        <div class="ref" id="ref32"
+    ontouchstart="$(this).closest('#graphvalues').find('.ref').removeClass('s');$(this).toggleClass('s');event.preventDefault();"
+    onclick="$(this).closest('#graphvalues').find('.ref').removeClass('s');$(this).toggleClass('s');"></div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div id="phandle">
             <div class="icon" id="pcancel" ontouchstart="$(this).closest('.calc').calc('cell', 0);event.preventDefault();"
@@ -89,6 +128,9 @@
             <div class="icon" id="tabtxt" ontouchstart="$(this).closest('.calc').calc('tab', 'ptxt', this);event.preventDefault();"
                               onclick="$(this).closest('.calc').calc('tab', 'ptxt', this);">
                 <img src="res/img/svginventoryicons/pencil/pen01.svg"/></div>
+            <div class="icon" id="tabgraph" ontouchstart="$(this).closest('.calc').calc('tab', 'pgraph', this);event.preventDefault();"
+                              onclick="$(this).closest('.calc').calc('tab', 'pgraph', this);">
+                <img src="res/img/svginventoryicons/action/gears01.svg"/></div>
         </div>
     </div>
 

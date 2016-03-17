@@ -422,6 +422,12 @@ var nodemathtype = { final:1, rootonly:2, commutative :4, associative:8 };
                 for (var i in this.children) { this.children[i].detach(); }
             };
 
+            this.clone = function() {
+                var children=[];
+                if (this.children) { for (var i in this.children) { children.push(this.children[i].clone()); } }
+                return $.extend({}, this, { children: children });
+            }
+
         },
 
         editor: {
@@ -651,7 +657,7 @@ var nodemathtype = { final:1, rootonly:2, commutative :4, associative:8 };
                               else      { settings.root=helpers.editor.insert($this,true, $.extend(true, {},_value));
                                           helpers.editor.display($this); helpers.mathml($this); }
                             }
-                else        { ret = $.extend(true, {}, settings.root); }
+                else        { ret = settings.root.clone(); }
                 return ret;
             },
             text: function() {  var $this = $(this), settings = helpers.settings($this); return helpers.text($(this)); },

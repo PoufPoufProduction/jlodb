@@ -10,7 +10,7 @@
         withbars    : true,                             // Add the bars A,B,C,D,... 1,2,3,4,...
         sp          : 0.1,                              // space between cells
         font        : 1,                                // font size of cell
-        tabs        : ["calc","img","math","txt"],            // authorized tabs
+        tabs        : ["calc","img","math","txt","graph"], // authorized tabs
         withtabs    : false,                            // display the tabs
         imgsize     : 2,                                // img tab font-size in em
         imgprefix   : "res/img/clipart/animal/",        // img prefix
@@ -33,8 +33,15 @@
         "\\\[br\\\]",                               "<br/>",
         "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
         "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
-        "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>"
+        "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>",
+        "\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='img'><div class='icon'><img src='res/img/$1.svg'/></div></div>"
     ];
+
+    var graphType = {
+        pie : { label: ["X"], line: [ false ] },
+        bar : { label: ["Y"], line: [ true ] },
+        fct : { label: ["X","Y"], line: [ true ] }
+    };
 
     // private methods
     var helpers = {
@@ -123,10 +130,10 @@
                             ret = { type:"value", id:_val.id, subtype:"ref",
                                     abstract:helpers.ref.format(settings.reference,_val.id[3]), value:settings.reference,
                                 process:function() {
-                                    return helpers.content($this,this.value.charCodeAt(0)-65,parseInt(this.value[1])-1);
+                                    return helpers.content($this,this.value.charCodeAt(0)-65,parseInt(this.value.substr(1))-1);
                                 },
                                 p:function() {
-                                    var cell = settings.sheet[parseInt(this.value[1])-1][this.value.charCodeAt(0)-65];
+                                    var cell = settings.sheet[parseInt(this.value.substr(1))-1][this.value.charCodeAt(0)-65];
                                     return (cell&&(cell.type=="img"||cell.type=="txt"))?nodemathtype.rootonly:0;
                                 }
                             };
@@ -317,10 +324,15 @@
                         for (var i=0;i<=nbi&&vOk;i++) for (var j=0;j<=nbj&&vOk;j++) {
                             if (!settings.auto.sheet[settings.auto.target[1]+j][settings.auto.target[0]+i]) {
                                 settings.auto.sheet[settings.auto.target[1]+j][settings.auto.target[0]+i] =
-                                    $.extend(true, {}, settings.auto.sheet[settings.auto.target[1]][settings.auto.target[0]]);
+                                    helpers.clone(settings.auto.sheet[settings.auto.target[1]][settings.auto.target[0]]);
                                 var c = settings.auto.sheet[settings.auto.target[1]+j][settings.auto.target[0]+i];
                                 switch (c.type) {
                                     case "value" : c.value+=j+i; break;
+                                    case "math"  : helpers.ref.update(c.value,i,j);
+                                                   vOk =  helpers.ref.inside($this, c.value) &&
+                                                          !helpers.ref.loop($this,String.fromCharCode(65 + settings.auto.target[0]+i)+
+                                                                                (settings.auto.target[1]+j+1),c.value);
+                                                    break;
                                 };
                             }
                         }
@@ -372,6 +384,15 @@
                 };
                 return ret;
             },
+            inside: function($this, _node) {
+                var settings = helpers.settings($this)
+                var ret = true;
+                if (_node.children) { for (var i in _node.children) { if (!helpers.ref.inside($this,_node.children[i])) { ret = false; } } }
+                if (_node.subtype=="ref" &&
+                    ( _node.value.charCodeAt(0)-65>=settings.size[0] ||
+                    ( parseInt(_node.value.substr(1))-1>=settings.size[1]) ) ) { ret = false; }
+                return ret;
+            },
             format : function(_ref, _val) {
                 var ret;
                 switch (parseInt(_val)) {
@@ -381,7 +402,59 @@
                     default: ret = _ref;
                 }
                 return ret;
+            },
+            update : function(_node, _i, _j) {
+                if (_node.children) { for (var i in _node.children) { helpers.ref.update(_node.children[i],_i,_j); } }
+                if (_node.subtype=="ref") {
+                    var ref = [ _node.value.charCodeAt(0)-65, parseInt(_node.value.substr(1)) ];
+                    switch (parseInt(_node.id[3])) {
+                        case 1 : ref[0]+=_i; ref[1]+=_j; break;
+                        case 2 : ref[0]+=_i; break;
+                        case 3 : ref[1]+=_j; break;
+                        default: break;
+                    }
+                    _node.value     = String.fromCharCode(65+ref[0])+ref[1];
+                    _node.abstract  = helpers.ref.format(_node.value,_node.id[3])
+                }
             }
+        },
+        graph: function($this, _val) {
+            var ret = "<svg xmlns:svg='http://www.w3.org/2000/svg' xmlns='http://www.w3.org/2000/svg' version='1.0' "+
+                    "width='100%' height='100%' viewBox='0 0 48 48' class='graph "+_val.type+"'>"+
+                    "<def><style>.graph .up {fill:green} .graph .down {fill:red;}</style></def>";
+            // get the data
+            var value = [];
+            for (var i in _val.data) {
+                var mini = Math.min( _val.data[i][0].charCodeAt(0)-64, _val.data[i][1].charCodeAt(0)-64 );
+                var minj = Math.min( parseInt(_val.data[i][0].substr(1)), parseInt(_val.data[i][1].substr(1)) );
+                var maxi = Math.max( _val.data[i][0].charCodeAt(0)-64, _val.data[i][1].charCodeAt(0)-64 );
+                var maxj = Math.max( parseInt(_val.data[i][0].substr(1)), parseInt(_val.data[i][1].substr(1)) );
+
+                var v = { min:0, max:0, sum:0, val:[]}, first = true;
+                for (var jj=minj; jj<=maxj; jj++) for (var ii=mini; ii<=maxi; ii++) {
+                    vv = parseFloat($this.find("#c"+ii+"x"+jj).text());
+                    if (first || vv<v.min) { v.min = vv; }
+                    if (first || vv>v.max) { v.max = vv; }
+                    first = false;
+                    v.sum+=vv;
+                    v.val.push(vv);
+                }
+                value.push(v);
+            }
+            switch (_val.type) {
+                case "bar":
+                    var v = value[0], h, a, nb=v.val.length;
+                    if (v.min>0) { h = v.max;       a = 0; } else
+                    if (v.max<0) { h = -v.min;      a = 1; } else
+                                 { h = v.max-v.min; a = Math.abs(v.min)/h; }
+                    for (var i=0; i<nb; i++) {
+                        var hh = Math.abs(v.val[i])/h;
+                        ret+="<rect class='"+(v.val[i]>0?"up":"down")+"' x='"+(47*i/nb+0.5)+"' width='"+(47/nb)*0.9+"' ";
+                        ret+="y='"+(0.5+(v.val[i]>0?(1-a-hh):(1-a))*47)+"' height='"+hh*47+"'/>";
+                    }
+            }
+            ret+="</svg>";
+            return ret;
         },
         content: function($this, _i, _j) {
             var settings = helpers.settings($this);
@@ -407,8 +480,11 @@
 					if (ret.toString().length) { ret = settings.txt[ret]; }
 					break;
                 case "fixed" :
-                    if (settings.po && settings.po[ret]) { ret = helpers.format(settings.po[ret]); }
-                    ret="<span>"+ret+"</span>";
+                    if (settings.po && settings.po[ret]) { ret = settings.po[ret]; }
+                    ret="<div>"+helpers.format(ret.toString())+"</div>";
+                    break;
+                case "graph" :
+                    ret = helpers.graph($this,ret);
                     break;
             }
             cell.update = true;
@@ -420,15 +496,21 @@
             if (settings.all&&typeof(settings.all[_attr])!="undefined") {
                 ret = settings.all[_attr];
             }
-            if (settings.cols&&settings.cols["col"+_i]&&typeof(settings.cols["col"+_i][_attr])!="undefined") {
-                ret = settings.cols["col"+_i][_attr];
-            }
             if (settings.rows&&settings.rows["row"+_j]&&typeof(settings.rows["row"+_j][_attr])!="undefined") {
                 ret = settings.rows["row"+_j][_attr];
+            }
+            if (settings.cols&&settings.cols["col"+_i]&&typeof(settings.cols["col"+_i][_attr])!="undefined") {
+                ret = settings.cols["col"+_i][_attr];
             }
             if (settings.cells&&settings.cells["c"+_i+"x"+_j]&&typeof(settings.cells["c"+_i+"x"+_j][_attr])!="undefined") {
                 ret = settings.cells["c"+_i+"x"+_j][_attr];
             }
+            return ret;
+        },
+        // Clone a cell value
+        clone: function(_cell) {
+            var ret = $.extend(true,{},_cell);
+            if (ret.type=="math") { ret.value = ret.value.clone(); }
             return ret;
         },
         // Update the grid
@@ -440,7 +522,10 @@
                 if (auto && settings.auto.sheet[j][i]) { settings.auto.sheet[j][i].update = false; }
             }
             for (var j=0; j<settings.size[1]; j++) for (var i=0; i<settings.size[0]; i++) {
-                $this.find('#c'+(i+1)+'x'+(j+1)).html(helpers.content($this,i,j));
+                if (settings.sheet[j][i].type!="graph") { $this.find('#c'+(i+1)+'x'+(j+1)).html(helpers.content($this,i,j)); }
+            }
+            for (var j=0; j<settings.size[1]; j++) for (var i=0; i<settings.size[0]; i++) {
+                if (settings.sheet[j][i].type=="graph") { $this.find('#c'+(i+1)+'x'+(j+1)).html(helpers.content($this,i,j)); }
             }
         },
         // Handle the key input
@@ -482,8 +567,6 @@
                     $this.find("."+n.id+" .label").html(n.label());
                 }
             }
-        },
-        loop: function($this, _ref, _value) {
         }
     };
 
@@ -545,7 +628,7 @@
                     settings.auto.target = [ parseInt(settings.target[1]-1), parseInt(settings.target[2]-1) ];
                     settings.auto.sheet = new Array(settings.size[1]);
                     for (var i=0; i<settings.size[1]; i++) { settings.auto.sheet[i]=new Array(settings.size[0]); }
-                    settings.auto.sheet[settings.auto.target[1]][settings.auto.target[0]]=$.extend(true,{},target);
+                    settings.auto.sheet[settings.auto.target[1]][settings.auto.target[0]]=helpers.clone(target);
                 }
             },
             cell: function(_cell) {
@@ -557,6 +640,9 @@
                         if ($this.find("#echange").hasClass("s")) {
                             $this.find("#echange").removeClass("s");
                             helpers.reference($this, String.fromCharCode(64 + parseInt(target[1]))+target[2]);
+                        }
+                        else if ($this.find("#graphvalues .ref.s").length) {
+                            $this.find("#graphvalues .ref.s").removeClass("s").html(String.fromCharCode(64 + parseInt(target[1]))+target[2]);
                         }
                         else {
                             if (settings.target[0]!=target[0]) {
@@ -631,6 +717,17 @@
                     $(_elt).addClass("s");
                 }
 			},
+            graph: function(_val) {
+                var $this = $(this);
+                $this.find("#graphmenu .icon").removeClass("s");
+                $this.find("#graphmenu #g"+_val).addClass("s");
+                $this.find("#graphvalues .line").each(function(_index) {
+                    if (_index<graphType[_val].label.length) {
+                        $(this).show().find(".label").html(graphType[_val].label[_index]);
+                    }
+                    else { $(this).hide(); }
+                });
+            },
             key: function(value, _elt) {
                 var $this = $(this);
                 if (_elt) { $(_elt).addClass("touch");
@@ -684,6 +781,27 @@
                             settings.sheet[j][i].value = val;
                         }
                         else { $this.find("#editor").editor('value',val); }
+                    }
+                }
+                else if ($this.find("#tabgraph").hasClass("s")) {
+                    ok = false;
+                    var g = $this.find("#graphmenu .icon.s");
+                    if (typeof(g.attr("id"))!="undefined") {
+                        var v = g.attr("id").substr(1);
+                        var val = {type:v, data:[]};
+                        ok = true;
+                        for (var ii=0; ii<graphType[v].label.length; ii++) {
+                            var l = $($this.find("#graphvalues .line").get(ii));
+                            var v1 = l.find(".ref").first().text();
+                            var v2 = l.find(".ref").first().next().text();
+                            if (!v1.length || !v2.length) { ok = false; }
+                            if (graphType[v].line[ii] && v1[0]!=v2[0] && v1[1]!=v2[1]) { ok = false; }
+                            val.data.push([v1,v2]);
+                        }
+                        if (ok) {
+                            settings.sheet[j][i].type = "graph";
+                            settings.sheet[j][i].value = val;
+                        }
                     }
                 }
 
