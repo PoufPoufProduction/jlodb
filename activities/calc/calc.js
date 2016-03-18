@@ -40,7 +40,7 @@
     var graphType = {
         pie : { label: ["X"], line: [ false ] },
         bar : { label: ["Y"], line: [ true ] },
-        fct : { label: ["X","Y"], line: [ true ] }
+        fct : { label: ["Y"], line: [ true ] }
     };
 
     // private methods
@@ -134,7 +134,7 @@
                                 },
                                 p:function() {
                                     var cell = settings.sheet[parseInt(this.value.substr(1))-1][this.value.charCodeAt(0)-65];
-                                    return (cell&&(cell.type=="img"||cell.type=="txt"))?nodemathtype.rootonly:0;
+                                    return (cell&&(cell.type=="img"||cell.type=="txt"||cell.type=="graph"))?nodemathtype.rootonly:0;
                                 }
                             };
                         }
@@ -237,7 +237,8 @@
                     if (settings.hide[s].length>2) { w = settings.hide[s][2]; }
                     if (settings.hide[s].length>3) { h = settings.hide[s][3]; }
                     for (var i=0; i<w; i++) for (var j=0; j<h; j++) {
-                        settings.sheet[settings.hide[s][1]+j-1][settings.hide[s][0]+i-1].type="hide";
+                        var ii = settings.hide[s][0]+i-1, jj = settings.hide[s][1]+j-1;
+                        if (ii<settings.size[0] && jj<settings.size[1]) settings.sheet[jj][ii].type="hide";
                     }
                 }
 
@@ -298,6 +299,8 @@
                                   event.originalEvent.touches[0]:event;
                         var diffi=vEvent.clientX - settings.auto.origin[0], diffj = vEvent.clientY - settings.auto.origin[1];
                         var nbi = 0, nbj = 0, sizei = 0, sizej = 0, vOk = true;
+
+                        $this.find("#panel").hide();
 
                         while (vOk && diffi>0) {
                             if (settings.auto.target[0]+2+nbi>settings.size[0]) { diffi = 0; }
@@ -421,7 +424,10 @@
         graph: function($this, _val) {
             var ret = "<svg xmlns:svg='http://www.w3.org/2000/svg' xmlns='http://www.w3.org/2000/svg' version='1.0' "+
                     "width='100%' height='100%' viewBox='0 0 48 48' class='graph "+_val.type+"'>"+
-                    "<def><style>.graph .up {fill:green} .graph .down {fill:red;}</style></def>";
+                    "<def><style>.graph .up {fill:green} .graph .down {fill:red;} "+
+                    ".graph path.l {fill:none;stroke:black;stroke-width:0.5px;} .graph path.b {fill:#AEF;} "+
+                    ".graph path.d {fill:none;stroke:black;stroke-width:0.2px;} "+
+                    "</style></def>";
             // get the data
             var value = [];
             for (var i in _val.data) {
@@ -432,7 +438,9 @@
 
                 var v = { min:0, max:0, sum:0, val:[]}, first = true;
                 for (var jj=minj; jj<=maxj; jj++) for (var ii=mini; ii<=maxi; ii++) {
-                    vv = parseFloat($this.find("#c"+ii+"x"+jj).text());
+                    $this.find("#c"+ii+"x"+jj).html(helpers.content($this,ii-1,jj-1));
+                    vv = parseFloat(helpers.content($this, ii-1, jj-1));
+                    vv = isNaN(vv)?0:vv;
                     if (first || vv<v.min) { v.min = vv; }
                     if (first || vv>v.max) { v.max = vv; }
                     first = false;
@@ -446,12 +454,31 @@
                     var v = value[0], h, a, nb=v.val.length;
                     if (v.min>0) { h = v.max;       a = 0; } else
                     if (v.max<0) { h = -v.min;      a = 1; } else
-                                 { h = v.max-v.min; a = Math.abs(v.min)/h; }
+                                 { h = v.max-v.min; a = h?Math.abs(v.min)/h:0; }
                     for (var i=0; i<nb; i++) {
-                        var hh = Math.abs(v.val[i])/h;
+                        var hh = h?Math.abs(v.val[i])/h:0;
                         ret+="<rect class='"+(v.val[i]>0?"up":"down")+"' x='"+(47*i/nb+0.5)+"' width='"+(47/nb)*0.9+"' ";
                         ret+="y='"+(0.5+(v.val[i]>0?(1-a-hh):(1-a))*47)+"' height='"+hh*47+"'/>";
                     }
+                    break;
+                case "fct":
+                    var v = value[0], h, a, nb=v.val.length;
+                    if (v.min>0) { h = v.max;       a = 0; } else
+                    if (v.max<0) { h = -v.min;      a = 1; } else
+                                 { h = v.max-v.min; a = h?Math.abs(v.min)/h:0; }
+                    var path = [];
+                    for (var i=0; i<nb; i++) {
+                        path.push([47*i/(nb-1)+0.5, 47*(1-a-(h?v.val[i]/h:0))+0.5]);
+                    }
+                    ret+="<path class='b' d='M ";
+                    for (var i in path) { ret+=path[i][0]+","+path[i][1]+" "; }
+                    ret+=" 47.5,"+((1-a)*47)+" 0.5,"+((1-a)*47)+"'/>";
+                    ret+="<path class='l' d='M ";
+                    for (var i in path) { ret+=path[i][0]+","+path[i][1]+" "; }
+                    ret+="'/>";
+                    ret+="<path class='d' d='M 0.5,"+((1-a)*47)+" 47.5,"+((1-a)*47)+"'/>";
+                    ret+="<path class='d' d='M 0.5,0.5 0.5,47.5'/>";
+                    break;
             }
             ret+="</svg>";
             return ret;
@@ -467,28 +494,29 @@
                 cell = settings.auto.sheet[_j][_i];
             }
             var type = cell.type;
-            var ret = cell.value;
-            switch(type) {
-                case "img" :
-                    if (ret.toString().length) { ret = "<img src='"+settings.imgprefix+settings.img[ret]+".svg'/>"; }
-                    break;
-                case "math":
-                    if (!cell.update) { cell.tmp = ret.process(); }
-                    ret = cell.tmp;
-                    break;
-                case "txt":
-					if (ret.toString().length) { ret = settings.txt[ret]; }
-					break;
-                case "fixed" :
-                    if (settings.po && settings.po[ret]) { ret = settings.po[ret]; }
-                    ret="<div>"+helpers.format(ret.toString())+"</div>";
-                    break;
-                case "graph" :
-                    ret = helpers.graph($this,ret);
-                    break;
+            cell.tmp = cell.value;
+            if (true) {
+                switch(type) {
+                    case "img" :
+                        cell.tmp = cell.tmp.toString().length ? "<img src='"+settings.imgprefix+settings.img[cell.tmp]+".svg'/>":"";
+                        break;
+                    case "math":
+                        cell.tmp = cell.tmp.process();
+                        break;
+                    case "txt":
+                        cell.tmp = cell.tmp.toString().length?settings.txt[cell.tmp]:"";
+                        break;
+                    case "fixed" :
+                        if (settings.po && settings.po[cell.tmp]) { cell.tmp = settings.po[cell.tmp]; }
+                        cell.tmp ="<div>"+helpers.format(cell.tmp.toString())+"</div>";
+                        break;
+                    case "graph" :
+                        cell.tmp = helpers.graph($this,cell.tmp);
+                        break;
+                }
             }
             cell.update = true;
-            return ret;
+            return cell.tmp;
         },
         value: function($this, _i, _j, _attr, _default) {
             var settings = helpers.settings($this);
@@ -522,10 +550,7 @@
                 if (auto && settings.auto.sheet[j][i]) { settings.auto.sheet[j][i].update = false; }
             }
             for (var j=0; j<settings.size[1]; j++) for (var i=0; i<settings.size[0]; i++) {
-                if (settings.sheet[j][i].type!="graph") { $this.find('#c'+(i+1)+'x'+(j+1)).html(helpers.content($this,i,j)); }
-            }
-            for (var j=0; j<settings.size[1]; j++) for (var i=0; i<settings.size[0]; i++) {
-                if (settings.sheet[j][i].type=="graph") { $this.find('#c'+(i+1)+'x'+(j+1)).html(helpers.content($this,i,j)); }
+                $this.find('#c'+(i+1)+'x'+(j+1)).html(helpers.content($this,i,j));
             }
         },
         // Handle the key input
@@ -652,6 +677,8 @@
                                 $this.find("#pimg .icon").removeClass("s");
                                 $this.find("#ptxt>div").removeClass("s");
                                 $this.find("#editor").editor('clear');
+                                $this.find("#graphmenu .icon").removeClass("s");
+                                $this.find("#graphvalues .line").hide();
                                 helpers.key($this, 'c', false);
 
                                 if (settings.tabs.length) {
@@ -670,6 +697,19 @@
 											tab = "txt";
 											$this.find("#ptxt #txt"+c.value).addClass("s");
 											break;
+                                        case "graph" :
+                                            tab = "graph";
+                                            $this.find("#graphmenu #g"+c.value.type).addClass("s");
+                                            $this.find("#graphvalues .line").each(function(_index) {
+                                                if (_index<graphType[c.value.type].label.length) {
+                                                    $(this).show().find(".label").html(graphType[c.value.type].label[_index]);
+                                                    if (_index<c.value.data.length) {
+                                                        $this.find(".ref").first().html(c.value.data[_index][0]);
+                                                        $this.find(".ref").first().next().html(c.value.data[_index][1]);
+                                                    }
+                                                }
+                                            });
+                                            break;
                                         default:
                                             var value = c.value.toString();
                                             if (value.length==0 || (value.length==1&&value[0]=='-')) { value="0"; }
