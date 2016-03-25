@@ -333,6 +333,7 @@
                                     case "value" : c.value+=j+i; break;
                                     case "math"  : helpers.ref.update(c.value,i,j);
                                                    vOk =  helpers.ref.inside($this, c.value) &&
+                                                          helpers.ref.checkonlyroot($this, c.value) && 
                                                           !helpers.ref.loop($this,String.fromCharCode(65 + settings.auto.target[0]+i)+
                                                                                 (settings.auto.target[1]+j+1),c.value);
                                                     break;
@@ -385,6 +386,18 @@
                         if (cell.type=="math") { ref = ref.concat(helpers.ref.fromcell(cell.value)); }
                     }
                 };
+                return ret;
+            },
+            // check only root
+            checkonlyroot: function($this, _node, _notroot) {
+                var settings = helpers.settings($this), ret = true;                
+                if (_node.children) { for (var i in _node.children) { ret = ret && helpers.ref.checkonlyroot($this,_node.children[i],true); } }
+
+                if (_notroot && _node.subtype=="ref") {
+                    var t = settings.sheet[parseInt(_node.value.substr(1))-1][_node.value.charCodeAt(0)-65].type;
+                    if (t=="graph" || t=="txt" || t=="img") { ret = false; }
+                }
+
                 return ret;
             },
             inside: function($this, _node) {

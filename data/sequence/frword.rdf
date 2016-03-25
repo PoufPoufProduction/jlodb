@@ -2,6 +2,21 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dct="http://purl.org/dc/terms/">
 
+    <!-- MISSING LETTER OR SOUND -->
+
+    <rdf:Description>
+        <dct:identifier>wmo01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter, sans contrainte de temps, les mots par 'o' ou 'eau'.</dct:title>
+        <dct:description><![CDATA["number":15,"time":0,"regexp":{"output":"\\\\.\\\\.\\\\.","input": { "from": "(.+) (.+)","to":"<div class='icon' style='font-size:4.8em;float:none;margin:0 auto;'><img src='res/img/clipart/$1.svg'/></div>$2"}},"template":"template.html","input":{"css":{"font-size":"5.0em","width":"3.0em"},"digit":1,"speed":0,"values":["o","eau"]},"values":[["clothes/hat01 chap...","eau"],["food/cake03 gat...","eau"],["object/gift01 cad...","eau"],["tool/basket01 s...","eau"],["tool/scissors01 cis...x","eau"],["vehicle/ship01 bat...","eau"],["animal/crocodile01 cr...c...dile","o"],["animal/hog01 c...chon","o"],["animal/rhinoceros01 rhin...ceros","o"],["music/piano01 pian...","o"],["object/domino01 d...min...","o"],["object/tap01 r...binet","o"],["vehicle/bike01 vél...","o"]],"class":"neg alpha h60","font":0.6]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Complétez le mot par [b]o[/b] ou [b]eau[/b] ?"]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>frword</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>wa0</dct:alternative>
+    </rdf:Description>
+
+
     <!-- SYNONYMIE wa[.] -->
 
     <rdf:Description>

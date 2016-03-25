@@ -7,11 +7,14 @@
                                           padding:.4em 2em; background-color:white; border-radius:1em;
                                             border:.2em solid black; text-align:justify; }
 .correcter div#exercice                   { margin:.5em .5em .5em 2em; font-size:.5em; text-align:justify; font-style:italic; }
-.correcter div#board                      { margin-top:.5em; height:23.5em; font-size:.6em; }
+.correcter div#illustration               { position:absolute; border:1px solid black; top:-0.2em; left: 0.2em; font-size:1.2em;
+                                            width:9em; height:12em; display:none; }
+.correcter div#board                      { margin-top:.5em; height:23.5em; font-size:.6em; position:relative; overflow:visible; }
 .correcter div#data                       { width:90%; overflow:hidden; background-repeat:repeat;
                                             border:1px solid black; border-width:1px 0 1px 0; text-align:justify; padding:2px 5% 2px 5%;
                                             display:none; background-image:url("../../res/img/background/book02.svg"); }
-.correcter div#data p                     { margin:.2em 0; overflow:visible; }
+.correcter div#data.fig                   { padding:2px 5% 2px 43%; width:52%; }
+.correcter div#data p                     { margin:.2em 0; overflow:visible; line-height:1.3em; }
 .correcter div#data span                  { cursor:pointer; }
 .correcter div#data span.blank            { border:1px solid gray; padding:0 2px 0 2px; }
 .correcter div#data span.bold             { font-weight:bold; }
@@ -21,6 +24,7 @@
                                             border:1px solid black; display:none; padding:5px; z-index:2;}
 .correcter div#popup .current             { background-color:rgba(255,231,184,0.8); }
 .correcter div#popup div                  { cursor:pointer; }
+.correcter div#popup div.s                { background-color:rgba(255,0,0,0.8); }
 .correcter div#submit                     { font-size:1.5em; height:1em;width:1em; cursor:pointer;
                                             position:absolute; top:7em; left:0em; z-index:3; }
 .correcter div#submit>img                 { display:none; }

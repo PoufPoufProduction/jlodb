@@ -12,7 +12,7 @@
         multiple    : 0,                                        // The multiple occurence separator
         font        : 1,                                        // The font-size multiplicator
         first       : false,                                    // Don't choose randomly the wrong words, use the first one
-        debug       : false                                     // Debug mode
+        debug       : true                                     // Debug mode
     };
 
     // private methods
@@ -127,7 +127,7 @@
 
                         if (begin>0) { content+=text[j].substring(0, begin); }
                         content+="<span class='"+classTxt+
-                                 "' onclick=\"$(this).closest('.correcter').correcter('click', this, "+index+");\"";
+                                 "' onmousedown=\"$(this).closest('.correcter').correcter('click', this, "+index+");\"";
                         content+=" ontouchstart=\"$(this).closest('.correcter').correcter('click', this, "+
                                  index+");event.preventDefault();\"";
                         content+=">"+word+"</span>";
@@ -146,6 +146,39 @@
                 $this.find("#options").css("font-size",settings.font+"em");
                 $this.find("#data").css("font-size",settings.font+"em");
 
+                $this.bind("mouseup touchend", function(_event) {
+                    if (settings.elt) {
+                        var t = $this.find("#popup div.s").text();
+                        if (t&&t.length) { settings.elt.html(t); }
+                    }
+                    settings.elt = 0;
+                    $this.find("#popup").hide();
+                    $this.find("#popup div").removeClass("s");
+                });
+
+                $this.bind("mousemove touchmove", function(event) {
+                    var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
+                                      event.originalEvent.touches[0]:event;
+                    $this.find("#popup div").removeClass("s");
+
+                    if (vEvent.clientX>=settings.popup.offset[0] &&
+                        vEvent.clientX<settings.popup.offset[0]+settings.popup.size[0] &&
+                        vEvent.clientY>=settings.popup.offset[1]&&
+                        vEvent.clientY<settings.popup.offset[1]+settings.popup.size[1] ) {
+                        var index = 1+Math.floor(settings.popup.nb*(vEvent.clientY-settings.popup.offset[1])/settings.popup.size[1]);
+                        $($this.find("#popup div").get(index)).addClass("s");
+                    }
+
+                });
+
+                // fig
+                if (settings.fig) {
+                    if (settings.fig.indexOf("<svg")!=-1)   { $this.find("#illustration").html(settings.fig); }
+                    else                                    { $this.find("#illustration").html("<img src='res/img/"+settings.fig+".svg'/>"); }
+                    $this.find("#illustration").show();
+                    $this.find("#data").addClass("fig");
+                }
+                    
                 // Locale handling
                 $this.find("h1#label").html(settings.label);
                 $this.find("#exercice").html(settings.exercice);
@@ -165,10 +198,10 @@
             init: function(options) {
                 // The settings
                 var settings = {
-                    finish          : false,
+                    activate        : false,
                     responses       : [],
-                    keypad          : 0,
                     elt             : 0,
+                    popup           : {},
                     offset          : {
                         "default"   : [6,6],
                         "blank"     : [3,5],
@@ -197,11 +230,13 @@
                 var $this = $(this) , settings = helpers.settings($this), $popup = $(this).find("#popup");
 
                 if (settings.style=="default" || $(elt).hasClass("blank") || $(elt).hasClass("bold") ) {
-                    if (settings.keypad) { clearTimeout(settings.keypad); settings.keypad=0; }
-                    if (!settings.finish) {
+                    if (settings.activate) {
+                        var posx = $(elt).offset().left-$this.find("#data").offset().left;
+                        var posy = $(elt).offset().top;
+
                         // Position the popup : 6 = 1 (border width) + 5 (padding)
-                        $popup.css("left",($(elt).position().left-settings.offset[settings.style][0])+"px")
-                              .css("top",($(elt).position().top-settings.offset[settings.style][1])+"px");
+                        $popup.css("left",(posx-settings.offset[settings.style][0])+"px")
+                              .css("top",(posy-settings.offset[settings.style][1])+"px");
 
                         // Compute the array
                         var goodWord = settings.responses[value];
@@ -220,51 +255,38 @@
                         response.sort();
 
                         // Fill the popup
-                        var reg=new RegExp("(')" ,"g");
+                        var reg=new RegExp("(')" ,"g"), nb = 1;
                         var content =
-                            "<div class='current' onclick=\"$(this).closest('.correcter').correcter('key', '"+
-                                $(elt).html().replace(reg,"\\'")+"')\">"+
+                            "<div class='current s'>"+
                             (settings.style=="bold"?"<b>"+$(elt).html()+"</b>":$(elt).html())+"</div>";
                         for (var i=0; i<response.length; i++) {
-                            if (response[i]!=$(elt).html()) {
-                                content+="<div onclick=\"$(this).closest('.correcter').correcter('key', '"+
-                                    response[i].replace(reg,"\\'")+"')\">"+response[i]+"</div>";
-                            }
+                            if (response[i]!=$(elt).html()) { nb++; content+="<div>"+response[i]+"</div>"; }
                         }
                         $popup.show().find("#options").html(content);
+
+                        settings.popup = { offset   : [$(elt).offset().left, $(elt).offset().top],
+                                           size     : [$popup.width(), $popup.height()],
+                                           nb       : nb };
 
                         // Save the current element
                         settings.elt = $(elt);
                     }
                 }
             },
-            key: function(value) {
-                var $this = $(this) , settings = helpers.settings($this), $popup = $(this).find("#popup");
-                if (settings.elt) { settings.elt.html(value); }
-                $popup.hide();
-                settings.elt = 0;
-            },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                settings.finish = true;
+                settings.activate = false;
                 settings.context.onquit($this,{'status':'abort'});
             },
-            popout: function(out) {
-                var $this = $(this) , settings = helpers.settings($this), $popup = $(this).find("#popup");
-                if (out) {
-                    if (!settings.keypad) { settings.keypad = setTimeout(function() { $popup.hide() }, 1000); }
-                }
-                else {
-                    if (settings.keypad) {  clearTimeout(settings.keypad); settings.keypad = 0; }
-                }
-            },
             next: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+                settings.activate = true;
                 $(this).find("#data").show();
             },
             valid: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                if (!settings.finish) {
-                    settings.finish = true;
+                if (settings.activate) {
+                    settings.activate = false;
                     var nbErrors = 0;
                     $(this).find("#data span").each(function(index, value) {
                         var word = settings.responses[index];
