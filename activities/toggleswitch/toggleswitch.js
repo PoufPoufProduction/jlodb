@@ -248,7 +248,7 @@
                             if (vRegexp) { value = value.replace(vRegexp, settings.regexp.to); }
                             if (settings.current.t && settings.current.t.length>index) {
                                 $(this).html("<div style='font-size:"+settings.font+"em;margin-top:"+
-                                             (1-settings.font)/(2*settings.font)+"em;'>"+helpers.format(value)+"</div>"); }});
+                                             (1-settings.font)/(2*settings.font)+"em;'>"+helpers.format(value.toString())+"</div>"); }});
                         helpers.fill($this);
                     });
                 }
