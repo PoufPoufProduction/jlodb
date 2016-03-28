@@ -7,7 +7,7 @@
         lang        : "fr-FR",              // Current localization
         delay       : 0,                    // Time of display the values
         prefix      : "",                   // Prefix for data
-        font        : 1,
+        font        : 0.8,
         debug       : true                 // Debug mode
     };
 
@@ -99,8 +99,7 @@
                     html+="><div class='content'>";
                     if (settings.cards[i].src.indexOf("svg")!=-1) { html+="<div class='icon'><img src='"+settings.cards[i].src+"'/></div>"; }
                     else  {
-                        var margin = (settings.font<1)?0.2/settings.font:-0.1;
-                        html+="<p style='width:"+(1/settings.font)+"em;font-size:"+settings.font+"em;margin-top:"+margin+"em;'>"+settings.cards[i].src+"</p>"; }
+                        html+="<p style='width:"+(1/settings.font)+"em;font-size:"+settings.font+"em;'>"+settings.cards[i].src+"</p>"; }
                     html+="<div class='icon'><img src='res/img/svginventoryicons/background/border/card03.svg'/></div>";
                     html+="</div></div>";
                     $this.find("#board").append(html);

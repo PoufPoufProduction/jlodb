@@ -62,8 +62,11 @@
 /* TEMPLATE ALTERNATIVES */
 .toggleswitch.small .t                      { font-size:.6em; }
 
-.toggleswitch #check5r #illustration        { width:9em;height:12em; }
-.toggleswitch #check5r #legend              { top:56%; font-size:.6em; }
-.toggleswitch.horiz #check5r #illustration  { width:9em;height:6.75em; }
-.toggleswitch.top #check5r #legend          { top:0; }
-.toggleswitch.legends #check5r #legend      { font-size:.5em; }
+.toggleswitch .illustration  #illustration       { width:9em;height:12em; }
+.toggleswitch .illustration #legend              { top:56%; font-size:.6em; width:100%; text-align:justify; }
+.toggleswitch.horiz .illustration #illustration  { width:9em;height:6.75em; }
+.toggleswitch.square .illustration #illustration { width:9em;height:9em; }
+.toggleswitch.square .illustration #legend		 { top:69%; }
+.toggleswitch.legend .illustration #legend		 { text-align:center; font-size:1.7em; }
+.toggleswitch.top .illustration #legend          { top:0; }
+.toggleswitch.legends .illustration #legend      { font-size:.5em; }

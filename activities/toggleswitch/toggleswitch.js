@@ -254,7 +254,7 @@
                 }
             }
             else {
-                $this.find("#data").html(settings.current.data);
+                $this.find("#data").html(settings.current.data?settings.current.data:settings.data);
                 $this.find(".t").each(function(index) {
                     var value = settings.current.t[index];
                     if (vRegexp) { value = value.replace(vRegexp, settings.regexp.to); }
