@@ -1,17 +1,22 @@
-<div onmousedown="event.stopPropagation();"
-     ontouchstart="event.stopPropagation();event.preventDefault();"><div>
+<div><div>
     <div class="param" id="ll">
-        <div class="label" id="loclog"></div><div class="input"><input type="text" name="username"/></div>
-        <div class="icon" onclick="$('#logpanel').toggleClass('s');"
-                          ontouchstart="$('#logpanel').toggleClass('s');event.preventDefault();">
+        <div class="label" id="loclog"></div><div class="input"><input type="text" name="username"
+            onmousedown="$(this).focus();event.stopPropagation();"
+            ontouchstart="$(this).focus();event.stopPropagation();event.preventDefault();"/></div>
+        <div class="icon" onmousedown="$('#logpanel').toggleClass('s');event.stopPropagation();"
+                          ontouchstart="$('#logpanel').toggleClass('s');event.stopPropagation();event.preventDefault();">
             <img src="user/res/img/newpeople.svg"/></div>
     </div>
     <div class="param">
-        <div class="label" id="locpwd"></div><div><input type="password" name="password"/></div>
+        <div class="label" id="locpwd"></div><div><input type="password" name="password"
+            onmousedown="$(this).focus();event.stopPropagation();"
+            ontouchstart="$(this).focus();event.stopPropagation();event.preventDefault();"/></div>
     </div>
     <div class="param" id="lp">
-        <div class="label" id="locconf"></div><div><input type="password" name="password2"/></div>
+        <div class="label" id="locconf"></div><div><input type="password" name="password2"
+            onmousedown="$(this).focus();event.stopPropagation();"
+            ontouchstart="$(this).focus();event.stopPropagation();event.preventDefault();"/></div>
     </div>
-    <div class="button" id="logvalid" onclick="user.login();"
-                                      ontouchstart="user.login();event.preventDefault();">Valid</div>
+    <div class="button" id="logvalid" onmousedown="user.login();event.stopPropagation();"
+                                      ontouchstart="user.login();event.stopPropagation();event.preventDefault();">Valid</div>
 </div></div>

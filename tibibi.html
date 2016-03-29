@@ -52,7 +52,7 @@
         #tlist #teltact .icon.r     { float:right; }
         #tlist #teltact.s .icon     { opacity:1; cursor:pointer; }
         #tlist #tactions            { width:100%; height:1em; background-color:#222;}
-        #tlist #tactions .icon      { margin-left:.5em; float:left; cursor:pointer;}
+        #tlist #tactions .icon      { margin-left:.4em; float:left; cursor:pointer;}
         #tbrowser                   { float:left; background-color:#AAA; width:13em; height:100%; }
         #main>#content              { width:100%; height:100%; background-color:#222; }
         #main>.popup                { position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5);
@@ -365,6 +365,47 @@ var tibibi = {
                             tibibi.course.updover();
                     } });
         },
+        snapshot:function() {
+            var html="";
+            for (var i in tibibi.course.ex) { if (html) { html+=","; } html+=tibibi.course.ex[i]; }
+            $.getJSON("mods/tibibi/api/exercice.php?value="+html, function(data2) {
+                html="";
+                for (var i in data2.exercices) {
+                    html+="<div class='exercice'><div class='eximg'>";
+                    if (tibibi.url) {
+                        var url = tibibi.url+"/res/img/exercices/"+data2.exercices[i].activity+"/";
+                        if (data2.exercices[i].id.length>4) { url+=data2.exercices[i].id[2]+data2.exercices[i].id[3]+"/"; }
+                        else                                { url+="xx/"; }
+                        url += data2.exercices[i].id+".png";
+
+                        html +="<img class='snap' src='"+url+"'/>";
+                    }
+                    html+="</div>";
+                    html+="<div><div class='exid'>"+data2.exercices[i].id+"</div>";
+                    html+="<div class='extitle'>"+data2.exercices[i].title+"</div></div>";
+                    html+="<div class='param'>";
+                    html+="<div class='label'>niveau</div><div class='value'>"+data2.exercices[i].level+"</div>";
+                    html+="<div class='label'>difficulté</div><div class='value'>"+data2.exercices[i].difficulty+"</div>";
+                    html+="<div class='label'>durée</div><div class='value'>"+data2.exercices[i].duration+"</div>";
+                    html+="</div>";
+                    html+="</div>";
+                }
+                var newWindow = window.open("", "_blank", "");
+                html=   "<!DOCTYPE HTML><html xmlns='http://www.w3.org/1999/xhtml' xml:lang='fr' lang='fr'><head><style>"+
+                        "body               { font-size:10px; }"+
+                        ".exercice          { border:1px solid black; border-width:1px 0 0 0;height:3em;clear:both; margin-top:2px; } "+
+                        ".exercice>*        { float:left; margin-left:5px; }"+
+                        ".eximg             { font-size:3em; width: 4em; height: 3em; } "+
+                        ".eximg>img.snap    { width: 4em; height: 3em; } "+
+                        ".extitle           { font-size:1.5em; width:25em; margin-top:3px; font-style:italic; text-align:justify; } "+
+                        ".exid              { font-size:2em; text-align:right; } "+
+                        ".param             { width:7em; font-size:1.2em; }"+
+                        ".label             { width: 5em; float:left; margin-right:3px; text-align:right; } "+
+                        "</style></head><body>"+html+"</body></html>";
+                newWindow.document.write(html);
+                newWindow.document.close();
+            });
+        },
         overview: function() {
             var html="";
             for (var i in tibibi.course.ex) { if (html) { html+=","; } html+=tibibi.course.ex[i]; }
@@ -513,6 +554,7 @@ $(window).load(function() {
                         <div class="icon" onclick="tibibi.course.expo();"><img src="mods/tibibi/res/img/export.svg"/></div>
                         <div class="icon" onclick="tibibi.course.impo();"><img src="mods/tibibi/res/img/import.svg"/></div>
                         <div class="icon" onclick="tibibi.course.overview();"><img src="mods/tibibi/res/img/list.svg"/></div>
+                        <div class="icon" onclick="tibibi.course.snapshot();"><img src="mods/tibibi/res/img/snapshot.svg"/></div>
                     </div>
                 </div>
                 <div id="tbrowser"></div></div>

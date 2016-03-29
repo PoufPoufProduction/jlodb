@@ -1,7 +1,8 @@
 (function($) {
     var defaults = {
         onclick : function($this, _args) {},
-        onupdate: function($this, _state, _lastId) {}
+        onupdate: function($this, _state, _lastId) {},
+        large   : 12
     };
 
     // private methods
@@ -28,7 +29,7 @@
             while (settings.state.length < settings.list.length) { settings.state+="l"; }
 
             $this.html("<div class='jmenu'><div class='slider'><div class='cursor'></div></div><div class='header'></div>"+
-                        "<div class='footer'></div><div class='menu"+(settings.list.length<=12?" large":"")+"'></div></div>");
+                        "<div class='footer'></div><div class='menu"+(settings.list.length<=settings.large?" large":"")+"'></div></div>");
             for (var i in settings.list) {
                 $this.find(".menu").append("<div class='icon"+(i>=99?" gtc":"")+"' id='"+i+"' onclick='$(this).closest(\".jmenu\").parent().menu(\"click\", "+i+");event.stopPropagation();' ontouchstart='$(this).closest(\".jmenu\").parent().menu(\"click\","+i+");event.stopPropagation();event.preventDefault();'><div class='legend'>"+(parseInt(i)+1)+"</div><div class='state sl'></div></div>");
             }
