@@ -12,13 +12,23 @@
         debug       : true,                                     // Debug mode
         type        : "swap",                                   // swap: swap 2 elements, move: move all the elements for inserting
         len         : 1,                                        // text length (0:auto)
-        bgcolor     : ["gray","rgba(255,252,246,0.9)"],    // question and response colors
+        bgcolor     : ["gray","rgba(255,252,246,0.9)"],         // question and response colors
         bg          : ["",""],                                  // background image
         color       : ["white","black"],
         font        : 1,
         fontex      : 0.7,
+        erratio     : 0.5,
         background  : ""
     };
+
+    var regExp = [
+        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
+        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
+        "\\\[br\\\]",                               "<br/>",
+        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
+        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
+        "\\\[small\\\]([^\\\[]+)\\\[/small\\\]",    "<span style='font-size:.6em;'>$1</span>"
+    ];
 
     // private methods
     var helpers = {
@@ -45,6 +55,13 @@
             var settings = helpers.settings($this);
             helpers.unbind($this);
             settings.context.onquit($this,{'status':'success', 'score':settings.score});
+        },
+        format: function(_text) {
+            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
+                var vReg = new RegExp(regExp[i*2],"g");
+                _text = _text.replace(vReg,regExp[i*2+1]);
+            }
+            return _text;
         },
         loader: {
             css: function($this) {
@@ -83,7 +100,7 @@
                 $this.find("#interactive>div").css("font-size",settings.font+"em");
 
                 // DISPLAY STUFF
-                if (settings.exercice) { $this.find("#exercice").html(settings.exercice); }
+                if (settings.exercice) { $this.find("#exercice").html(helpers.format(settings.exercice)); }
                 $this.find("#exercice").css("font-size",settings.fontex+"em").show();
 
                 // LOCALE HANDLING
@@ -116,7 +133,15 @@
 
             // IS THERE MORE THAN ONE PAGE
             var vValues = settings.values;
-            if (!(settings.gen) && $.isArray(vValues[0][0])) { vValues = vValues[settings.number%vValues.length]; }
+            if (!settings.gen) {
+                if ( ( $.isArray(vValues[0][0]) && settings.type=="swap") ||
+                     ( $.isArray(vValues[0]) && settings.type=="move") ) {
+
+                    settings.number = vValues.length;
+                    vValues = vValues[settings.it%vValues.length];
+                }
+            }
+
 
             // GET AND COMPUTE THE VALUES
             if (!(settings.gen) && (settings.nbvalues>vValues.length)) {
@@ -131,13 +156,21 @@
                                 new RegExp(settings.regexp.question.from, "g"):0;
 
             // CREATE AN ELEMENT
+            var last = 0;
             for (var i=0; i<settings.nbvalues; i++) {
                 var vValue;
                 do {
                     if (settings.gen)  { vValue = eval('('+settings.gen+')')(i,settings.elts); }
                     else {
                         if (settings.nbvalues==vValues.length) { vValue = vValues[i]; }
-                        else { vValue = vValues[Math.floor(Math.random()*vValues.length)]; }
+                        else {
+                            if (settings.type=="swap") { vValue = vValues[Math.floor(Math.random()*vValues.length)]; }
+                            else {
+                                var p = last + Math.floor(Math.random()*(vValues.length-last)/(settings.nbvalues-i));
+                                last = p+1;
+                                vValue = vValues[p];
+                            }
+                        }
                     }
                     if (!$.isArray(vValue))
                         if (settings.type=="swap")  { vValue = [vValue, eval(vValue)]; }
@@ -180,7 +213,7 @@
                 var html = "<div class='response' id='"+i+"'>"+
                            "<div style='background-color:"+settings.bgcolor[1]+";color:"+settings.color[1]+";";
                 if (settings.bg[1].length) { html+="background-image:url("+settings.bg[1]+");" }
-                html+="'>"+vValue+"</div></div>";
+                html+="'>"+helpers.format(vValue.toString())+"</div></div>";
                 $this.find("#interactive #response").append(html);
 
                 settings.elts[i][2] = i;
@@ -223,7 +256,7 @@
                             $this.find("#interactive .response").each(function(_index) {
                                 var vId = $(this).attr("id");
                                 if (vId) {
-                                    $(this).children().first().html(settings.elts[vId][1]);
+                                    $(this).children().first().html(helpers.format(settings.elts[vId][1]));
                                     settings.elts[vId][2] = _index;
                                 }
                             });
@@ -295,7 +328,7 @@
                     $this.find("#submit").addClass(vGood?"good":"wrong");
                     settings.interactive = false;
                     if (++settings.it >= settings.number) {
-                        settings.score = Math.floor(5-settings.wrong/2);
+                        settings.score = Math.floor(5-settings.erratio*settings.wrong);
                         if (settings.score<0) { settings.score = 0; }
                         clearTimeout(settings.timer.id);
                         setTimeout(function() { helpers.end($this); }, vGood?1000:2000);
