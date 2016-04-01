@@ -8,8 +8,16 @@
         lang        : "en-US",                                  // Current localization
         font        : 1,                                        // The font-size multiplicator
         sep         : " .,'-;:\"?!",                               // The separators
-        debug       : false                                     // Debug mode
+        debug       : true                                     // Debug mode
     };
+
+    var regExp = [
+        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
+        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
+        "\\\[br\\\]",                               "<br/>",
+        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
+        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>"
+    ];
 
     // private methods
     var helpers = {
@@ -36,6 +44,13 @@
             var settings = helpers.settings($this);
             helpers.unbind($this);
             settings.context.onquit($this,{'status':'success','score':settings.score});
+        },
+        format: function(_text) {
+            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
+                var vReg = new RegExp(regExp[i*2],"g");
+                _text = _text.replace(vReg,regExp[i*2+1]);
+            }
+            return _text;
         },
         loader: {
             css: function($this) {
@@ -72,10 +87,10 @@
                 $this.css("font-size", Math.floor($this.height()/12)+"px");
 
                 //
-                $this.find("#exercice>div").hide();
+                $this.find("#menu>div").hide();
                 for (var i in settings.questions) {
-                    $this.find("#exercice #c"+(parseInt(i)+1)+" .legend").html(settings.questions[i].label);
-                    $this.find("#exercice #c"+(parseInt(i)+1)).show();
+                    $this.find("#menu #c"+(parseInt(i)+1)+" .legend").html(settings.questions[i].label);
+                    $this.find("#menu #c"+(parseInt(i)+1)).show();
                 }
 
                 var content ="";
@@ -131,9 +146,10 @@
                 $("body").bind("mouseup", function() { helpers.mouseup($this); })
                         .bind("touchend", function() { helpers.mouseup($this); });
 
+                if (settings.exercice) { $this.find("#exercice>div").html(helpers.format(settings.exercice)); }
+
                 // Locale handling
                 $this.find("h1#label").html(settings.label);
-                $this.find("#exercice").html(settings.exercice);
                 if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
@@ -162,8 +178,8 @@
         color: function($this, _color) {
             var settings = helpers.settings($this);
             settings.color = _color;
-            $this.find("#exercice .color").removeClass("s");
-            $this.find("#exercice #c"+(settings.color+1)+" .color").addClass("s");
+            $this.find("#menu .color").removeClass("s");
+            $this.find("#menu #c"+(settings.color+1)+" .color").addClass("s");
         },
         update: function($this) {
             var settings = helpers.settings($this);

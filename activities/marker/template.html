@@ -2,24 +2,24 @@
 
     <div id="board">
         <div id="data"><div></div></div>
-        <div id="exercice">
-            <div id="c1">
-                <div class="color" ontouchstart="$(this).closest('.marker').marker('color',0);event.preventDefault();"
-                                   onclick="$(this).closest('.marker').marker('color',0);"><div></div></div>
+        <div id="menu">
+            <div id="c1" ontouchstart="$(this).closest('.marker').marker('color',0);event.preventDefault();"
+                                   onclick="$(this).closest('.marker').marker('color',0);">
+                <div class="color"><div></div></div>
                 <div class="legend"></div>
             </div>
-            <div id="c2" class="odd">
-                <div class="color" ontouchstart="$(this).closest('.marker').marker('color',1);event.preventDefault();"
-                                   onclick="$(this).closest('.marker').marker('color',1);"><div></div></div>
+            <div id="c2" class="odd" ontouchstart="$(this).closest('.marker').marker('color',1);event.preventDefault();"
+                                   onclick="$(this).closest('.marker').marker('color',1);">
+                <div class="color"><div></div></div>
                 <div class="legend"></div>
             </div>
-            <div id="c3">
-                <div class="color" ontouchstart="$(this).closest('.marker').marker('color',2);event.preventDefault();"
-                                   onclick="$(this).closest('.marker').marker('color',2);"><div></div></div>
+            <div id="c3" ontouchstart="$(this).closest('.marker').marker('color',2);event.preventDefault();"
+                         onclick="$(this).closest('.marker').marker('color',2);">
+                <div class="color"><div></div></div>
                 <div class="legend"></div>
             </div>
-
         </div>
+        <div id="exercice"><div></div></div>
     </div>
 
     <div id="submit" ontouchstart="$(this).closest('.marker').marker('valid');event.preventDefault();"

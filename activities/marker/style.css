@@ -21,18 +21,23 @@
 .marker div#data p span.c1              { border-radius:.25em 0 0 .25em; }
 .marker div#data p span.c2              { border-radius:0 .25em .25em 0; }
 .marker div#data p span.c3              { border-radius:.25em; }
-.marker div#exercice                    { width:19em; height:3.8em; background-color:white; border-radius:.5em;
-                                          margin-top:.25em; margin-left:15%; font-size:.7em;}
-.marker div#exercice>div                { background-color:white; padding:.05em 0; clear:both;}
-.marker div#exercice>div.odd            { background-color:#DDD; }
-.marker #exercice .color                { padding:.1em; border-radius:.25em; float:left; margin-left:.5em;}
-.marker #exercice .color.s              { background-color:black; }
-.marker #exercice .color>div            { width:1em; height:1em; border-radius:.25em; cursor:pointer; }
-.marker #exercice #c1 .color>div        { background-color:blue;  }
-.marker #exercice #c2 .color>div        { background-color:red;}
-.marker #exercice #c3 .color>div        { background-color:green; }
-.marker #exercice .legend               { margin-left:.25em; float:left;  }
-.marker.e05 #exercice .legend           { margin-left:.5em; font-size:.5em; }
+.marker div#menu                        { width:12em; height:3.8em; background-color:white; border-radius:.5em 0 0 .5em;
+                                          margin-top:.25em; margin-left:15%; font-size:.7em; float:left;}
+.marker div#menu>div                    { background-color:white; padding:.05em 0; clear:both; cursor:pointer;}
+.marker div#menu>div.odd                { background-color:#DDD; }
+.marker #menu .color                    { padding:.1em; border-radius:.25em; float:left; margin-left:.5em;}
+.marker #menu .color.s                  { background-color:black; }
+.marker #menu .color>div                { width:1em; height:1em; border-radius:.25em;  }
+.marker #menu #c1 .color>div            { background-color:blue;  }
+.marker #menu #c2 .color>div            { background-color:red;}
+.marker #menu #c3 .color>div            { background-color:green; }
+.marker #menu .legend                   { margin-left:.25em; float:left;  }
+.marker.e05 #menu .legend               { margin-left:.5em; font-size:.5em; }
+
+.marker div#exercice                     { width:7em; height:3.8em; background-color:#333; border-radius:0 .5em .5em 0;
+                                          margin-top:.25em; font-size:.7em; float:left;}
+.marker div#exercice>div                { margin:0.5em; color:white; font-size:.5em; text-align:justify; }
+
 .marker div#submit                      { font-size:1.5em; height:1em;width:1em; cursor:pointer;
                                           position:absolute; top:7em; left:0em; z-index:3; }
 .marker div#submit>img                  { display:none; }

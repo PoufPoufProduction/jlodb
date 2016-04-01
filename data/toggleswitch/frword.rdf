@@ -179,6 +179,19 @@
 
 
     <rdf:Description>
+        <dct:identifier>wS01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Séparer les différentes phrases du texte.</dct:title>
+        <dct:description><![CDATA["data":"<div style='margin-top:10%;padding:1%;margin-left:4%;background-color:rgba(255,255,200,0.5);border-radius:.1em;width:90%;height:60%;font-size:1em;font-family: \\\"Courier New\\\" Courier monospace;'><div class='t' style='float:left;margin-left:0.3em;'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div></div>","states":{ "nb":2,"style":[{"margin-left":"0.3em","float":"left"},{"margin-left":"0.3em","float":"left"}]},"wrong":{"style":{"color":"red"}},"values":[{"result":"000000100000000010000000000000","t":["Ce","matin,","la","petite Lizzie","s'est","levée","tôt","elle","est","sortie","de","la","chambre","sans","réveiller","sa","soeur","à","la","cuisine,","elle","a","préparé","le","petit-déjeuner","pour","tout","le","monde."]},{"result":"000001000010000000000100000000","t":["La","fillette","a","sorti","des","bols","elle","a","ouvert","le","frigo","sur","la","table,","elle","a","posé","le","lait","et","la","confiture","quel","travail !"]}],"onclick":"function($this,elts,id){var c = elts[id].elt.html(); if (elts[id].state) { elts[id].elt.html(c[0].toLowerCase()+c.substr(1)); elts[id].elt.prev().html(elts[id].elt.prev().html().replace('.','')); } else { elts[id].elt.html(c[0].toUpperCase()+c.substr(1)); elts[id].elt.prev().append('.'); } return true;}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Séparez[/b] les différentes phrases du texte en cliquant sur le [red]premier mot[/red] de chacune d'entre elles."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>frword</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>wS01</dct:alternative>
+    </rdf:Description>
+
+
+    <rdf:Description>
         <dct:identifier>sa01</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier, grâce aux images, les mots présentant le son 'a'.</dct:title>
         <dct:description><![CDATA["regexp":{ "from": "(.+)","to":"<img src=\\\"res/img/clipart/$1.svg\\\"/>"},"values":[{"template":"array4x3","result":"110100011000","t":["vehicle/airplane01","vegetable/banana01","tool/scissors01","sport/football01","object/book01","object/key01","vehicle/bike01","object/gift01","music/piano01","furniture/bed01","clothes/shirt03","clothes/shoes01"]},{"template":"array4x3","result":"101011011011","t":["clothes/bag01","animal/crocodile01","vehicle/tractor01","animal/dog04","animal/cow01","food/cake03","animal/turtle01","food/icecream02","furniture/table01","object/domino01","object/vase01","clothes/hat01"]}],"states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)"},{"background-color":"#F88"}]},"wrong":{"style":{"background-color":"black"}}]]></dct:description>

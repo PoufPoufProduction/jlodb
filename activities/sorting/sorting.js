@@ -146,7 +146,6 @@
             // GET AND COMPUTE THE VALUES
             if (!(settings.gen) && (settings.nbvalues>vValues.length)) {
                 settings.nbvalues = vValues.length;
-                settings.number = 1;
             }
 
             // BUILD THE REGEXP
