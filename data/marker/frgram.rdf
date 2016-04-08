@@ -2,209 +2,149 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dct="http://purl.org/dc/terms/">
 
+    <!-- words and nouns -->
 
     <rdf:Description>
+        <dct:identifier>gw001</dct:identifier>
+        <dct:title xml:lang="fr-FR">Souligner les noms communs présents dans le texte.</dct:title>
+        <dct:description><![CDATA["text":["La |récréation| est finie.","La |mer| est calme.","On veut des |frites| !","Les |nuages| cachent le |soleil|.","Les |carottes| sont cuites."],"questions":[{"label":"nom commun","s":"|"}],"font":1]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Coloriez en bleu les [b]noms communs[/b] présents dans le texte."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>frgram</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>gw001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>gw002</dct:identifier>
+        <dct:title xml:lang="fr-FR">Souligner les noms communs présents dans le texte.</dct:title>
+        <dct:description><![CDATA["text":["Le petit |chat| boit du |lait|.","Le |garçon| court dans le |jardin|.","J'aime faire du |vélo|.","Mon |oncle| lit le |journal|.","Parfois, le vieil |homme| s'ennuie."],"questions":[{"label":"nom commun","s":"|"}],"font":1]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Coloriez en bleu les [b]noms communs[/b] présents dans le texte."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>frgram</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>gw001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>gw003</dct:identifier>
+        <dct:title xml:lang="fr-FR">Souligner les noms communs présents dans le texte.</dct:title>
+        <dct:description><![CDATA["text":["Le |poussin| sort de l'|oeuf|.","L'|oiseau| est sur la |branche|.","Le |crocodile| se baigne dans la |rivière|.","Au |zoo|, il y a des |lapins| et des |moutons|.","J'ai vu deux énormes |pandas|.","L'|ours| hiberne dans sa |tanière|."],"questions":[{"label":"nom commun","s":"|"}],"font":0.8]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Coloriez en bleu les [b]noms communs[/b] présents dans le texte."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>frgram</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>gw001</dct:alternative>
+    </rdf:Description>
+
+
+    <rdf:Description>
+        <dct:identifier>gw011</dct:identifier>
+        <dct:title xml:lang="fr-FR">Souligner les noms présents dans le texte.</dct:title>
+        <dct:description><![CDATA["text":["|Marie| mange une |pomme|.","|Amélie| nage très bien.","Mes |amis| s'appellent |Pierre| et |Richard|.","|Thomas| a de la |chance|.","Hier, j'ai vu |Gaston| à la |piscine|.","|Londres| est une grande |ville|."],"questions":[{"label":"nom commun","s":"|"}],"font":0.8]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Coloriez en bleu les [b]noms (propres ou communs)[/b] présents dans le texte."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>frgram</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>gw001</dct:alternative>
+    </rdf:Description>
+
+
+    <rdf:Description>
+        <dct:identifier>gw051</dct:identifier>
+        <dct:title xml:lang="fr-FR">Repérer les noms communs et propres présents dans le texte.</dct:title>
+        <dct:description><![CDATA["text":["$Marie$ mange une |pomme|.","$Amélie$ nage très bien.","Mes |amis| s'appellent $Pierre$ et $Richard$.","$Thomas$ a de la |chance|.","Hier, j'ai vu $Gaston$ à la |piscine|.","$Londres$ est une grande |ville|."],"questions":[{"label":"nom commun","s":"|"},{"label":"nom propre","s":"$"}],"font":0.8]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Coloriez en bleu les [b]noms communs[/b] et en rouge les [b]noms propres[/b]."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>frgram</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>gw001</dct:alternative>
+    </rdf:Description>
+
+
+    <!-- article -->
+
+
+   <rdf:Description>
         <dct:identifier>ga001</dct:identifier>
-        <dct:title xml:lang="fr-FR">Souligner les noms communs du texte issu de différentes chansons populaires.</dct:title>
-        <dct:description><![CDATA["text":["Savez-vous planter les |choux| ? A la |mode|, à la |mode|. Savez-vous planter les |choux|, à la |mode| de chez nous.","Promenons-nous dans les |bois| pendant que le |loup| n'y est pas. Si le |loup| y était, il nous mangerait."],"questions":[{"label":"nom commun","s":"|"}],"font":1]]></dct:description>
+        <dct:title xml:lang="fr-FR">Souligner les articles 'le' et 'la' présents dans le texte.</dct:title>
+        <dct:description><![CDATA["text":["|La| récréation est finie.","|La| mer est calme.","|Le| lapin a mangé |la| carotte.","|La| bouteille est posée sur |la| table.","|Le| joueur en bleu a perdu |la| partie."],"questions":[{"label":"articles","s":"|"}],"font":1]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Coloriez en bleu les [b]articles 'le' et 'la'[/b] présents dans le texte."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>frgram</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
+        <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>ga001</dct:alternative>
     </rdf:Description>
 
-    <rdf:Description>
-        <dct:identifier>ga002</dct:identifier>
-        <dct:title xml:lang="fr-FR">Souligner les noms communs du texte issu de différentes chansons populaires.</dct:title>
-        <dct:description><![CDATA["text":["Dansons la |capucine|, y'a plus de |pain| chez nous. Y'en a chez la |voisine|, mais ce n'est pas pour nous.","|Bateau|, sur l'|eau|, la |rivière| au |bord| de l'|eau|.","|Maman|, les p'tits |bateaux| qui vont sur l'|eau| ont-ils des |jambes| ?"],"questions":[{"label":"nom commun","s":"|"}],"font":0.8]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>frgram</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>ga001</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>ga003</dct:identifier>
-        <dct:title xml:lang="fr-FR">Souligner les noms communs du texte issu de différentes chansons populaires.</dct:title>
-        <dct:description><![CDATA["text":["Il était un petit |navire| qui n'avait jamais navigué.","A la claire |fontaine|, m'en allant promener, j'ai trouvé l'|eau| si claire que je me suis baignée.","A vous dirais-je |maman|, ce qui cause mon |tourment| ?","Une |souris| verte qui courait dans l'|herbe|, je l'attrape par la |queue|, je la montre à ces |messieurs|.","A la |pêche| aux |moules|, je ne veux plus y aller |maman|, les |gens| de la |ville| m'ont pris mon |panier|."],"questions":[{"label":"nom commun","s":"|"}],"font":0.7]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>frgram</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>ga001</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>ga004</dct:identifier>
-        <dct:title xml:lang="fr-FR">Souligner les noms communs du texte issu de différentes chansons populaires.</dct:title>
-        <dct:description><![CDATA["text":["Dans la |forêt| lointaine, on entend le |coucou|. Du |haut| de son grand |chêne|, il répond au |hibou|.","Petit |escargot| porte sur son dos sa |maisonette|, aussitôt qu'il pleut, il est tout heureux, il sort sa |tête|.","|Meunier|, tu dors, ton |moulin| va trop vite.","Mon petit |oiseau| est allé se mettre sur un |oranger|, la |branche| était sèche, elle s'est cassée.","Au |feu| les |pompiers|, y'a la |maison| qui brûle."],"questions":[{"label":"nom commun","s":"|"}],"font":0.7]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>frgram</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>ga001</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
+   <rdf:Description>
         <dct:identifier>ga011</dct:identifier>
-        <dct:title xml:lang="fr-FR">Souligner les noms communs du texte [extrait de 'L'hirondelle et les petits oiseaux' de Jean de La Fontaine].</dct:title>
-        <dct:description><![CDATA["text":["Une |hirondelle| en ses |voyages| avait beaucoup appris. Quiconque a beaucoup vu peut avoir beaucoup retenu. Celle-ci prévoyait jusqu'aux moindres |orages|, et devant qu'ils ne fussent éclos, les annonçait aux |matelots|."],"questions":[{"label":"nom commun","s":"|"}],"font":1]]></dct:description>
+        <dct:title xml:lang="fr-FR">Souligner les articles présents dans le texte.</dct:title>
+        <dct:description><![CDATA["text":["|La| récréation est finie.","|La| mer est calme.","Marie mange |une| pomme.","|Les| nuages cachent |le| soleil.","|Les| carottes sont cuites."],"questions":[{"label":"articles","s":"|"}],"font":1]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Coloriez en bleu les [b]articles[/b] présents dans le texte."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>frgram</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>ga001</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>ga012</dct:identifier>
-        <dct:title xml:lang="fr-FR">Souligner les noms communs du texte [extrait de 'Le rat des villes et le rat des champs' de Jean de La Fontaine]</dct:title>
-        <dct:description><![CDATA["text":["Le |régal| fut fort honnête : rien ne manquait au |festin| ; mais quelqu'un troubla la |fête| pendant qu'ils étaient en train. A la |porte| de la |salle| ils entendirent du |bruit| : le |rat| de |ville| détale, son |camarade| le suit."],"questions":[{"label":"nom commun","s":"|"}],"font":0.9]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>frgram</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
+        <dct:educationLevel>1</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>ga001</dct:alternative>
     </rdf:Description>
 
-    <rdf:Description>
-        <dct:identifier>ga013</dct:identifier>
-        <dct:title xml:lang="fr-FR">Souligner les noms communs du texte [extrait de 'Le loup et l'agneau' de Jean de La Fontaine]</dct:title>
-        <dct:description><![CDATA["text":["Un |agneau| se désaltérait dans le |courant| d'une |onde| pure. Un |loup| survient à jeun, qui cherchait |aventure|, et que la |faim| en ces |lieux| attirait. Qui te rend si hardi de troubler mon |breuvage| ? dit cet |animal| plein de |rage| : tu seras châtié de ta |témérité|."],"questions":[{"label":"nom commun","s":"|"}],"font":0.9]]></dct:description>
+    <!-- gender -->
+
+   <rdf:Description>
+        <dct:identifier>gg001</dct:identifier>
+        <dct:title xml:lang="fr-FR">Repérer dans le texte les noms masculins et les noms féminins précédés des articles 'le','la','un' ou 'une'.</dct:title>
+        <dct:description><![CDATA["text":["La $récréation$ est finie.","La $mer$ est calme.","J'ai vu un |oiseau| sur une $branche$.","Le |soleil| se cache derrière un |nuage|.","Le |lapin| a mangé une $carotte$."],"questions":[{"label":"nom masculin","s":"|"},{"label":"nom féminin","s":"$"}],"font":0.9]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Coloriez en bleu les [b]noms masculins[/b] et en rouge les [b]noms féminins[/b]."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>frgram</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>gg001</dct:alternative>
+    </rdf:Description>
+
+   <rdf:Description>
+        <dct:identifier>gg002</dct:identifier>
+        <dct:title xml:lang="fr-FR">Repérer dans le texte les noms masculins et les noms féminins précédés des articles 'le','la','un' ou 'une'.</dct:title>
+        <dct:description><![CDATA["text":["Une $voiture$ rouge passe sur le |pont|.","A la $ferme$, j'ai vu 3 $poules$ et 2 $vaches$.","Une $souris$ a mangé le |fromage|.","Le |tailleur| a cousu un beau |pantalon|.","Le |gendarme| court après un |voleur|."],"questions":[{"label":"nom masculin","s":"|"},{"label":"nom féminin","s":"$"}],"font":0.9]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Coloriez en bleu les [b]noms masculins[/b] et en rouge les [b]noms féminins[/b]."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>frgram</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>gg001</dct:alternative>
+    </rdf:Description>
+
+   <rdf:Description>
+        <dct:identifier>gg011</dct:identifier>
+        <dct:title xml:lang="fr-FR">Repérer dans le texte les noms masculins et les noms féminins précédés des articles 'les','l', ou 'des'.</dct:title>
+        <dct:description><![CDATA["text":["Des |oiseaux| ont mangé les $graines$.","L'$autruche$ a des grandes $plumes$.","Les |enfants| aiment les $sucreries$.","Les |nuages| cachent les $étoiles$.","J'ai mal à l'$oreille$."],"questions":[{"label":"nom masculin","s":"|"},{"label":"nom féminin","s":"$"}],"font":0.9]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Coloriez en bleu les [b]noms masculins[/b] et en rouge les [b]noms féminins[/b]."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>frgram</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>ga001</dct:alternative>
+        <dct:alternative>gg001</dct:alternative>
     </rdf:Description>
 
+    <!-- number -->
+
     <rdf:Description>
-        <dct:identifier>ga014</dct:identifier>
-        <dct:title xml:lang="fr-FR">Souligner les noms communs du texte [extrait de 'Le lion et le moucheron' de Jean de La Fontaine]</dct:title>
-        <dct:description><![CDATA["text":["'Penses-tu, lui dit-il, que ton |titre| de |roi| me fasse |peur|, ni me soucie ? Un |boeuf| est plus puissant que toi, je le mène à ma |fantaisie|.' A peine il achevait ces |mots|, que lui-même il sonna la |charge|, fut la |trompette| et le |héros|."],"questions":[{"label":"nom commun","s":"|"}],"font":0.9]]></dct:description>
+        <dct:identifier>gn001</dct:identifier>
+        <dct:title xml:lang="fr-FR">Repérer les noms au singulier et les noms au pluriel présents dans le texte.</dct:title>
+        <dct:description><![CDATA["text":["Les $nuages$ cachent le |soleil|.","L'|autruche| a des grandes $plumes$.","Des $oiseaux$ ont mangé les $graines$.","J'ai vu un |oiseau| sur une |branche|.","Les $lapins$ ont mangé une |carotte|.","Mon |oncle| lit le |journal|."],"questions":[{"label":"nom au singulier","s":"|"},{"label":"nom au pluriel","s":"$"}],"font":0.8]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Coloriez en bleu les [b]noms au singulier[/b] et en rouge les [b]noms au pluriel[/b]."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>frgram</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
+        <dct:educationLevel>1</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>ga001</dct:alternative>
+        <dct:alternative>gn001</dct:alternative>
     </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>ga101</dct:identifier>
-        <dct:title xml:lang="fr-FR">Souligner les noms du texte (propres ou communs) [extrait de 'Rouletabille' de Gaston Leroux]</dct:title>
-        <dct:description><![CDATA["text":["Et elle lui tourna le |dos| pour s'intéresser à autre |chose|. |Athanase| semblait très occupé à dompter une |irritation| peu ordinaire. |Rouletabille| écoutait et regardait. Le |cynisme| incroyable d' |Ivana| le mettait, lui aussi, en |fureur|. Les |regards| du |reporter| et du |Bulgare| se croisèrent. Les deux |hommes| se comprirent-ils ?"],"questions":[{"label":"nom (propre ou commun)","s":"|"}],"font":0.8]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>frgram</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>ga001</dct:alternative>
-    </rdf:Description>
- 
-    <rdf:Description>
-        <dct:identifier>ga102</dct:identifier>
-        <dct:title xml:lang="fr-FR">Souligner les noms (propres ou communs) du texte [extrait des 'Misérables Tome I - Fantine' de Victor Hugo]</dct:title>
-        <dct:description><![CDATA["text":["Disons tout de suite que cette joyeuse |contrariété|, une |ondée|, manqua à cette |compagnie| de belle |humeur|, quoique |Favourite| eût dit en partant, avec un |accent| magistral et maternel : les |limaces| se promènent dans les |sentiers|. |Signe| de |pluie|, mes |enfants|.","Toutes quatre étaient follement jolies."],"questions":[{"label":"nom (propre ou commun)","s":"|"}],"font":0.8]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>frgram</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>ga001</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>ga103</dct:identifier>
-        <dct:title xml:lang="fr-FR">Souligner les noms (propres ou communs) du texte [extrait des 'Misérables Tome II - Cosette' de Victor Hugo]</dct:title>
-        <dct:description><![CDATA["text":["En cheminant par le |taillis| dans la |direction| de |Montfermeil|, il avait aperçu cette petite |ombre| qui se mouvait avec un |gémissement|, qui déposait un |fardeau| à |terre|, puis le reprenait, et se remettait à marcher. Il s'était approché et avait reconnu que c'était un tout jeune |enfant| chargé d'un énorme |seau| d' |eau|. Alors il était allé à l' |enfant|, et avait pris silencieusement l' |anse| du |seau|."],"questions":[{"label":"nom (propre ou commun)","s":"|"}],"font":0.8]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>frgram</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>ga001</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>ga201</dct:identifier>
-        <dct:title xml:lang="fr-FR">Souligner les 4 noms masculins du texte [extrait de 'Le loup et l'agneau' de La Fontaine]</dct:title>
-        <dct:description><![CDATA["text":["Un |agneau| se désaltérait dans le |courant| d'une onde pure. Un |loup| survient à jeun, qui cherchait aventure, et que la faim en ces |lieux| attirait."],"questions":[{"label":"4 noms masculins","s":"|"}],"font":1.2]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>frgram</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>ga201</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>ga206</dct:identifier>
-        <dct:title xml:lang="fr-FR">Souligner les noms masculins du texte [extrait de 'Le Lion et l'âne chassant' de La Fontaine]</dct:title>
-        <dct:description><![CDATA["text":["Le |roi| des |animaux| se mit un |jour| en tête de giboyer : il célébrait sa fête. Le |gibier| du |lion|, ce ne sont pas |moineaux|, mais beaux et bons |sangliers|, |daims| et |cerfs| bons et beaux."],"questions":[{"label":"noms masculins","s":"|"}],"font":1.1]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>frgram</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>ga201</dct:alternative>
-    </rdf:Description>
-
-
-
-    <rdf:Description>
-        <dct:identifier>ga301</dct:identifier>
-        <dct:title xml:lang="fr-FR">Colorier suivant leur genre les noms du texte [extrait de 'La cigale et la fourmie' de La Fontaine]</dct:title>
-        <dct:description><![CDATA["text":["La $cigale$, ayant chanté tout l'|été|, se trouva fort dépourvue quand la $bise$ fut venue. Pas un seul petit |morceau| de $mouche$ ou de |vermisseau|, elle alla crier $famine$ chez la $fourmi$ sa $voisine$, la priant de lui prêter quelque |grain| pour subsister jusqu'à la $saison$ nouvelle."],"questions":[{"label":"nom masculin","s":"|"},{"label":"nom féminin","s":"$"}],"font":0.8]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>frgram</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>3</dct:type>
-        <dct:alternative>ga201</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>ga302</dct:identifier>
-        <dct:title xml:lang="fr-FR">Colorier suivant leur genre les noms du texte [extrait de 'La corbeau et le renard' de La Fontaine]</dct:title>
-        <dct:description><![CDATA["text":["A ces |mots| le |corbeau| ne se sent pas de $joie$ et pour montrer sa belle $voix$, il ouvre un large |bec| laisse tomber sa $proie$. Le |renard| s'en saisit et dit : Mon bon |monsieur|, apprenez que tout |flatteur| vit aux |dépens| de celui qui l'écoute: cette $leçon$ vaut bien un |fromage| sans doute."],"questions":[{"label":"nom masculin","s":"|"},{"label":"nom féminin","s":"$"}],"font":0.9]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>frgram</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>3</dct:type>
-        <dct:alternative>ga201</dct:alternative>
-    </rdf:Description>
-
-
-
-    <rdf:Description>
-        <dct:identifier>ga501</dct:identifier>
-        <dct:title xml:lang="fr-FR">Souligner les noms au pluriel du texte [extrait de 'Autour de la table' de George Sand]</dct:title>
-        <dct:description><![CDATA["text":["Ainsi je vous parlerai de tout ce qui nous aura frappés, mais non pas de tout ce qui aurait mérité de nous frapper ou de nous occuper dans la vie en commun, car cette vie, lorsqu'elle se passe aux |champs|, est pleine de |lacunes| et d' |imprévus|. Un rayon de soleil emporte toutes |choses| et toutes |gens| dans le domaine de la rêverie et des |contemplations|."],"questions":[{"label":"nom au pluriel","s":"|"}],"font":0.8]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>frgram</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>ga511</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>ga502</dct:identifier>
-        <dct:title xml:lang="fr-FR">Différencier avec des couleurs différentes les noms au singulier des noms au pluriel [extrait de 'Coeur de panthère' de Gustave Aimard]</dct:title>
-        <dct:description><![CDATA["text":["Comme il avait une |influence| considérable dans sa |peuplade|, il ne lui fut pas difficile de trouver des $adhérents$ tout prêts à l'aider dans ses $projets$. Ainsi secondé il entreprit de la faire prisonnière dans le |village| indien; mais elle eût l' |adresse| de s'échapper et parvint à gagner heureusement le |fort|."],"questions":[{"label":"nom au singulier","s":"|"},{"label":"nom au pluriel","s":"$"}],"font":0.8]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>frgram</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>ga511</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>gc001</dct:identifier>
-        <dct:title xml:lang="fr-FR">Souligner les ajectifs épithètes et attributs</dct:title>
-        <dct:description><![CDATA["text":["On n'a jamais vu chez Joseph Rouletabille une fureur |pareille| ! Eh ! en vérité, elle est bien %excusable% chez un |jeune| homme qui est %connu% dans le monde |entier| pour avoir pénétré les plus |obscurs| mystères, pour avoir démêlé les intrigues |criminelles| les plus |compliquées|, et qui se trouve tout à coup, et pour la |première| fois de sa vie, devant le mystère du coeur |féminin| auquel il ne comprend rien du tout !"],"questions":[{"label":"Ajectif épithète","s":"|"},{"label":"Adjectif attribut","s":"%"}],"font":0.7]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>frgram</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>gc001</dct:alternative>
-    </rdf:Description>
-
 
 </rdf:RDF>
 
