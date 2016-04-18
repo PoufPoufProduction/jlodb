@@ -74,7 +74,7 @@ function insertIntoDB($link,$activity,$key,$file,$lang,&$warnings, &$tags, $dele
                     if (strcmp($dcName,"dct_identifier")==0)            { $exerciceId       = $dc; } else
                     if (strcmp($dcName,"dct_alternative")==0)           { $exerciceVar      = $dc; } else
                     if (strcmp($dcName,"dct_isPartOf")==0)              { $exerciceRef      = $dc; } else
-                if (strcmp($dcName,"dct_coverage")==0 && strcmp($dc->attributes()->xml_lang, $lang)==0)
+                    if (strcmp($dcName,"dct_coverage")==0 && strcmp($dc->attributes()->xml_lang, $lang)==0)
                                                                         { $exerciceTag      = $dc; }
             }
             $exerciceId = exName($file, $key, $exerciceId,$warnings);

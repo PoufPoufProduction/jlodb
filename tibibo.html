@@ -97,6 +97,10 @@
         #main #ocontent #dinput              { font-size:.5em; }
         #main #ocontent #dinput input        { width:20em; }
 
+        #firefox            { position:absolute; top:79%; left:83%; font-size:.2em; width:15em; height:3em; border:2px solid orange;
+                              border-radius:1.5em 0 0 1.5em; background-color:rgba(0,0,0,0.1); font-weight:bold; color:brown; }
+        #firefox>img        { float:left; font-size:3em; width:1em; height:1em; margin-left:.1em; margin-right:.2em; }
+
 #dbrowser                   { position:absolute; top:0; left:0; width:16em; height:12em;
                               background-color: rgba(0,0,0,0.2); display:none;}
 #dbrowser>div               { position:absolute; font-size:.4em; width:26em; height:21em; top:2em; left:2em; 
@@ -831,7 +835,6 @@ $(window).load(function() {
 
             <div id="obrowser"></div>
             <div id="omenu"></div>
-
             <div id="chooseid">
                 <div id="cinput" class="input">
                     <div id="clabel" class="label"></div>
@@ -867,6 +870,11 @@ $(window).load(function() {
         </div>
 
         <div id="error"></div>
+
+        
+                    <div id="firefox">
+                        <img src="ext/firefox.svg"/>Designed for<h2>Firefox</h2>
+                    </div>
 
         <div id="ofooter" class="special">
             <div id="menu">

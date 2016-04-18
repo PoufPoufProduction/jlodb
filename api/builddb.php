@@ -124,7 +124,7 @@ if (!$error) {
                 while ($row = mysql_fetch_array($result)) {
                     if ($handle = opendir("../data/".$row["Activity_Name"])) {
                         while (false !== ($file = readdir($handle))) {
-                            if ($file != "." && $file != "..") {
+                            if ($file != "." && $file != ".." && strpos($file,".rdf")) {
 
                                 insertIntoDB($link,$row["Activity_Name"],$row["Activity_Key"],$file,$lang,$warnings,$tags,false);
                             }

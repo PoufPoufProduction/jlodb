@@ -160,10 +160,12 @@
             var vToggle = (settings.current.group?"#"+settings.current.group+" ":"")+"."+settings.toggle;
             $this.find(vToggle).each(function(index) {
                 var elt={ elt:$(this), state:0 };
-                var init = settings.init;
-                if (!init) { init = settings.values[settings.it%settings.values.length].init; }
-                if (init && init.length>index) { elt.state = parseInt(init[index]); }
 
+             if (settings.init.length>index) { elt.state = parseInt(settings.init[index]); }
+
+                var init = settings.init;
+                if (!init && settings.values) { init = settings.values[settings.it%settings.values.length].init;  }
+                if (init && init.length>index) { elt.state = parseInt(init[index]); }
 
                 settings.current.elts.push(elt);
                 helpers.refresh($this,elt);
