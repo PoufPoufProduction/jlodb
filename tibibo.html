@@ -252,10 +252,11 @@ var tibibo = {
                     list    : _list,
                     state   : state,
                     onupdate: function($this, _state) {
-                        if (tibibo.menu.state) { tibibo.menu.state[tibibo.menu.current] = _state; }
+                        if (!tibibo.menu.state) { tibibo.menu.state={}; }
+                        tibibo.menu.state[tibibo.menu.current] = _state;
                         if (user.settings && user.settings.name) {
                             user.getJSON("mods/tibibo/api/tibibo.php",
-                                {action:"upd",value:_state, book:tibibo.args.id, id:tibibo.menu.current}, "", function(_data) {}); }},
+                                {action:"upd",value:_state, book:tibibo.args.id, id:tibibo.menu.current}, "", function(_data) { }); }},
                     onclick : function($this, _args) {
                         $("#waiting").show().find("div").addClass("running");
                         $("#launcher").jlodb({
@@ -976,6 +977,7 @@ $(window).load(function() {
         <div class="icon"><img src="res/img/activity/trafficjam.svg"/></div>
         <div class="icon"><img src="res/img/activity/where.svg"/></div>
         <div class="icon"><img src="res/img/classification/addition.svg"/></div>
+        <div class="icon"><img src="res/img/classification/animal.svg"/></div>
         <div class="icon"><img src="res/img/classification/arithmetic.svg"/></div>
         <div class="icon"><img src="res/img/classification/arts.svg"/></div>
         <div class="icon"><img src="res/img/classification/division.svg"/></div>
@@ -983,6 +985,7 @@ $(window).load(function() {
         <div class="icon"><img src="res/img/classification/game.svg"/></div>
         <div class="icon"><img src="res/img/classification/geography.svg"/></div>
         <div class="icon"><img src="res/img/classification/geometry.svg"/></div>
+        <div class="icon"><img src="res/img/classification/grammar.svg"/></div>
         <div class="icon"><img src="res/img/classification/health.svg"/></div>
         <div class="icon"><img src="res/img/classification/it.svg"/></div>
         <div class="icon"><img src="res/img/classification/languages.svg"/></div>
@@ -992,12 +995,16 @@ $(window).load(function() {
         <div class="icon"><img src="res/img/classification/negative.svg"/></div>
         <div class="icon"><img src="res/img/classification/numeration.svg"/></div>
         <div class="icon"><img src="res/img/classification/operations.svg"/></div>
+        <div class="icon"><img src="res/img/classification/reading.svg"/></div>
         <div class="icon"><img src="res/img/classification/root.svg"/></div>
         <div class="icon"><img src="res/img/classification/sciences.svg"/></div>
         <div class="icon"><img src="res/img/classification/social.svg"/></div>
         <div class="icon"><img src="res/img/classification/subtraction.svg"/></div>
         <div class="icon"><img src="res/img/classification/symmetry.svg"/></div>
         <div class="icon"><img src="res/img/classification/technology.svg"/></div>
+        <div class="icon"><img src="res/img/classification/time.svg"/></div>
+        <div class="icon"><img src="res/img/classification/vegetable.svg"/></div>
+        <div class="icon"><img src="res/img/classification/word.svg"/></div>
         <div class="icon"><img src="mods/tibibo/res/img/thumbnail/bear01.svg"/></div>
         <div class="icon"><img src="mods/tibibo/res/img/thumbnail/bunny01.svg"/></div>
         <div class="icon"><img src="mods/tibibo/res/img/thumbnail/pinguin01.svg"/></div>

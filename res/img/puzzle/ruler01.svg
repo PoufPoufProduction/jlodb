@@ -3,13 +3,16 @@
 <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="100%" height="100%" viewBox="0 0 640 480" id="ruler">
 <defs id="defs2385">
  <style type="text/css">
+    .r4 #ruler use.r4 { display:none; }
+    .r6 #ruler use.r6 { display:none; }
+
     #ruler .disable { display:none; }
 
     #ruler #pieces .result { fill:none; fill-opacity:0.5; }
     #ruler #pieces .wrong .result { fill:red; }
     #ruler #pieces .good .result  { fill:#0F0; }
 
-    #ruler .hide { display:none; }
+    #ruler .hide { display:none; } 
     #ruler #ref rect.hide { fill:#47B;stroke:black; }
 
     #ruler #pieces .r1 { fill:white; fill-opacity:0.5; }
@@ -39,304 +42,265 @@
 
     </g>
 
-    <g id="len01">
-        <use x="0" y="0" xlink:href="#border"/>
-        <rect x="-5" y="-5" width="10" height="10" style="fill:gray;stroke:black;"/>
-    </g>
-    <g id="len02">
-        <use x="0" y="0" xlink:href="#border"/>
-        <rect x="-10" y="-5" width="20" height="10" style="fill:gray;stroke:black;"/>
-    </g>
-    <g id="len03">
-        <use x="0" y="0" xlink:href="#border"/>
-        <rect x="-15" y="-5" width="30" height="10" style="fill:gray;stroke:black;"/>
-    </g>
-    <g id="len04">
-        <use x="0" y="0" xlink:href="#border"/>
-        <rect x="-20" y="-5" width="40" height="10" style="fill:gray;stroke:black;"/>
-    </g>
-    <g id="len05">
-        <use x="0" y="0" xlink:href="#border"/>
-        <rect x="-25" y="-5" width="50" height="10" style="fill:gray;stroke:black;"/>
-    </g>
-    <g id="len06">
-        <use x="0" y="0" xlink:href="#border"/>
-        <rect x="-30" y="-5" width="60" height="10" style="fill:gray;stroke:black;"/>
-    </g>
-    <g id="len07">
-        <use x="0" y="0" xlink:href="#border"/>
-        <rect x="-35" y="-5" width="70" height="10" style="fill:gray;stroke:black;"/>
-    </g>
-    <g id="len08">
-        <use x="0" y="0" xlink:href="#border"/>
-        <rect x="-40" y="-5" width="80" height="10" style="fill:gray;stroke:black;"/>
-    </g>
-    <g id="len09">
-        <use x="0" y="0" xlink:href="#border"/>
-        <rect x="-45" y="-5" width="90" height="10" style="fill:gray;stroke:black;"/>
-    </g>
-    <g id="len10">
-        <use x="0" y="0" xlink:href="#border"/>
-        <rect x="-50" y="-5" width="100" height="10" style="fill:gray;stroke:black;"/>
-    </g>
-    <g id="len11">
-        <use x="0" y="0" xlink:href="#border"/>
-        <rect x="-55" y="-5" width="110" height="10" style="fill:gray;stroke:black;"/>
-    </g>
-    <g id="len12">
-        <use x="0" y="0" xlink:href="#border"/>
-        <rect x="-60" y="-5" width="120" height="10" style="fill:gray;stroke:black;"/>
-    </g>
-    <g id="len13">
-        <use x="0" y="0" xlink:href="#border"/>
-        <rect x="-65" y="-5" width="130" height="10" style="fill:gray;stroke:black;"/>
-    </g>
-    <g id="len14">
-        <use x="0" y="0" xlink:href="#border"/>
-        <rect x="-70" y="-5" width="140" height="10" style="fill:gray;stroke:black;"/>
-    </g>
-    <g id="len15">
-        <use x="0" y="0" xlink:href="#border"/>
-        <rect x="-75" y="-5" width="150" height="10" style="fill:gray;stroke:black;"/>
-    </g>
-    <g id="len16">
-        <use x="0" y="0" xlink:href="#border"/>
-        <rect x="-80" y="-5" width="160" height="10" style="fill:gray;stroke:black;"/>
-    </g>
-    <g id="len17">
-        <use x="0" y="0" xlink:href="#border"/>
-        <rect x="-85" y="-5" width="170" height="10" style="fill:gray;stroke:black;"/>
-    </g>
+    <g id="len01"><rect x="-5" y="-5" width="10" height="10" style="fill:gray;stroke:black;"/></g>
+    <g id="len02"><rect x="-10" y="-5" width="20" height="10" style="fill:gray;stroke:black;"/></g>
+    <g id="len03"><rect x="-15" y="-5" width="30" height="10" style="fill:gray;stroke:black;"/></g>
+    <g id="len04"><rect x="-20" y="-5" width="40" height="10" style="fill:gray;stroke:black;"/></g>
+    <g id="len05"><rect x="-25" y="-5" width="50" height="10" style="fill:gray;stroke:black;"/></g>
+    <g id="len06"><rect x="-30" y="-5" width="60" height="10" style="fill:gray;stroke:black;"/></g>
+    <g id="len07"><rect x="-35" y="-5" width="70" height="10" style="fill:gray;stroke:black;"/></g>
+    <g id="len08"><rect x="-40" y="-5" width="80" height="10" style="fill:gray;stroke:black;"/></g>
+    <g id="len09"><rect x="-45" y="-5" width="90" height="10" style="fill:gray;stroke:black;"/></g>
+    <g id="len10"><rect x="-50" y="-5" width="100" height="10" style="fill:gray;stroke:black;"/></g>
+    <g id="len11"><rect x="-55" y="-5" width="110" height="10" style="fill:gray;stroke:black;"/></g>
+    <g id="len12"><rect x="-60" y="-5" width="120" height="10" style="fill:gray;stroke:black;"/></g>
+    <g id="len13"><rect x="-65" y="-5" width="130" height="10" style="fill:gray;stroke:black;"/></g>
+    <g id="len14"><rect x="-70" y="-5" width="140" height="10" style="fill:gray;stroke:black;"/></g>
+    <g id="len15"><rect x="-75" y="-5" width="150" height="10" style="fill:gray;stroke:black;"/></g>
+    <g id="len16"><rect x="-80" y="-5" width="160" height="10" style="fill:gray;stroke:black;"/></g>
+    <g id="len17"><rect x="-85" y="-5" width="170" height="10" style="fill:gray;stroke:black;"/></g>
 
 </g>
 
 <g transform="translate(110,150)">
-    <use id="b0101" x="0" y="0" xlink:href="#len01" class="hide"/>
-    <use id="b0102" x="0" y="0" xlink:href="#len02" class="hide"/>
-    <use id="b0103" x="0" y="0" xlink:href="#len03" class="hide"/>
-    <use id="b0104" x="0" y="0" xlink:href="#len04" class="hide"/>
-    <use id="b0105" x="0" y="0" xlink:href="#len05" class="hide"/>
-    <use id="b0106" x="0" y="0" xlink:href="#len06" class="hide"/>
-    <use id="b0107" x="0" y="0" xlink:href="#len07" class="hide"/>
-    <use id="b0108" x="0" y="0" xlink:href="#len08" class="hide"/>
-    <use id="b0109" x="0" y="0" xlink:href="#len09" class="hide"/>
-    <use id="b0110" x="0" y="0" xlink:href="#len10" class="hide"/>
-    <use id="b0111" x="0" y="0" xlink:href="#len11" class="hide"/>
-    <use id="b0112" x="0" y="0" xlink:href="#len12" class="hide"/>
-    <use id="b0113" x="0" y="0" xlink:href="#len13" class="hide"/>
-    <use id="b0114" x="0" y="0" xlink:href="#len14" class="hide"/>
-    <use id="b0115" x="0" y="0" xlink:href="#len15" class="hide"/>
-    <use id="b0116" x="0" y="0" xlink:href="#len16" class="hide"/>
-    <use id="b0117" x="0" y="0" xlink:href="#len17" class="hide"/>
+    <use x="0" y="0" xlink:href="#border"/>
+    <use transform="translate(-50,0)" id="b0101" x="0" y="0" xlink:href="#len01" class="hide"/>
+    <use transform="translate(20,0)" id="b0102" x="0" y="0" xlink:href="#len02" class="hide"/>
+    <use transform="translate(10,0)" id="b0103" x="0" y="0" xlink:href="#len03" class="hide"/>
+    <use transform="translate(0,0)" id="b0104" x="0" y="0" xlink:href="#len04" class="hide"/>
+    <use transform="translate(-20,0)" id="b0105" x="0" y="0" xlink:href="#len05" class="hide"/>
+    <use transform="translate(30,0)" id="b0106" x="0" y="0" xlink:href="#len06" class="hide"/>
+    <use transform="translate(5,0)" id="b0107" x="0" y="0" xlink:href="#len07" class="hide"/>
+    <use transform="translate(15,0)" id="b0108" x="0" y="0" xlink:href="#len08" class="hide"/>
+    <use transform="translate(-5,0)" id="b0109" x="0" y="0" xlink:href="#len09" class="hide"/>
+    <use transform="translate(-15,0)" id="b0110" x="0" y="0" xlink:href="#len10" class="hide"/>
+    <use transform="translate(10,0)" id="b0111" x="0" y="0" xlink:href="#len11" class="hide"/>
+    <use transform="translate(20,0)" id="b0112" x="0" y="0" xlink:href="#len12" class="hide"/>
+    <use transform="translate(5,0)" id="b0113" x="0" y="0" xlink:href="#len13" class="hide"/>
+    <use transform="translate(-5,0)" id="b0114" x="0" y="0" xlink:href="#len14" class="hide"/>
+    <use transform="translate(0,0)" id="b0115" x="0" y="0" xlink:href="#len15" class="hide"/>
+    <use transform="translate(-5,0)" id="b0116" x="0" y="0" xlink:href="#len16" class="hide"/>
+    <use transform="translate(0,0)" id="b0117" x="0" y="0" xlink:href="#len17" class="hide"/>
 </g>
 <g transform="translate(320,150)">
-    <use id="b0201" x="0" y="0" xlink:href="#len01" class="hide"/>
-    <use id="b0202" x="0" y="0" xlink:href="#len02" class="hide"/>
-    <use id="b0203" x="0" y="0" xlink:href="#len03" class="hide"/>
-    <use id="b0204" x="0" y="0" xlink:href="#len04" class="hide"/>
-    <use id="b0205" x="0" y="0" xlink:href="#len05" class="hide"/>
-    <use id="b0206" x="0" y="0" xlink:href="#len06" class="hide"/>
-    <use id="b0207" x="0" y="0" xlink:href="#len07" class="hide"/>
-    <use id="b0208" x="0" y="0" xlink:href="#len08" class="hide"/>
-    <use id="b0209" x="0" y="0" xlink:href="#len09" class="hide"/>
-    <use id="b0210" x="0" y="0" xlink:href="#len10" class="hide"/>
-    <use id="b0211" x="0" y="0" xlink:href="#len11" class="hide"/>
-    <use id="b0212" x="0" y="0" xlink:href="#len12" class="hide"/>
-    <use id="b0213" x="0" y="0" xlink:href="#len13" class="hide"/>
-    <use id="b0214" x="0" y="0" xlink:href="#len14" class="hide"/>
-    <use id="b0215" x="0" y="0" xlink:href="#len15" class="hide"/>
-    <use id="b0216" x="0" y="0" xlink:href="#len16" class="hide"/>
-    <use id="b0217" x="0" y="0" xlink:href="#len17" class="hide"/>
+    <use x="0" y="0" xlink:href="#border"/>
+    <use transform="translate(40,0)" id="b0201" x="0" y="0" xlink:href="#len01" class="hide"/>
+    <use transform="translate(-30,0)" id="b0202" x="0" y="0" xlink:href="#len02" class="hide"/>
+    <use transform="translate(-30,0)" id="b0203" x="0" y="0" xlink:href="#len03" class="hide"/>
+    <use transform="translate(20,0)" id="b0204" x="0" y="0" xlink:href="#len04" class="hide"/>
+    <use transform="translate(30,0)" id="b0205" x="0" y="0" xlink:href="#len05" class="hide"/>
+    <use transform="translate(40,0)" id="b0206" x="0" y="0" xlink:href="#len06" class="hide"/>
+    <use transform="translate(20,0)" id="b0207" x="0" y="0" xlink:href="#len07" class="hide"/>
+    <use transform="translate(-10,0)" id="b0208" x="0" y="0" xlink:href="#len08" class="hide"/>
+    <use transform="translate(-20,0)" id="b0209" x="0" y="0" xlink:href="#len09" class="hide"/>
+    <use transform="translate(-15,0)" id="b0210" x="0" y="0" xlink:href="#len10" class="hide"/>
+    <use transform="translate(10,0)" id="b0211" x="0" y="0" xlink:href="#len11" class="hide"/>
+    <use transform="translate(5,0)" id="b0212" x="0" y="0" xlink:href="#len12" class="hide"/>
+    <use transform="translate(20,0)" id="b0213" x="0" y="0" xlink:href="#len13" class="hide"/>
+    <use transform="translate(10,0)" id="b0214" x="0" y="0" xlink:href="#len14" class="hide"/>
+    <use transform="translate(-10,0)" id="b0215" x="0" y="0" xlink:href="#len15" class="hide"/>
+    <use transform="translate(-5,0)" id="b0216" x="0" y="0" xlink:href="#len16" class="hide"/>
+    <use transform="translate(0,0)" id="b0217" x="0" y="0" xlink:href="#len17" class="hide"/>
 </g>
 <g transform="translate(530,150)">
-    <use id="b0301" x="0" y="0" xlink:href="#len01" class="hide"/>
-    <use id="b0302" x="0" y="0" xlink:href="#len02" class="hide"/>
-    <use id="b0303" x="0" y="0" xlink:href="#len03" class="hide"/>
-    <use id="b0304" x="0" y="0" xlink:href="#len04" class="hide"/>
-    <use id="b0305" x="0" y="0" xlink:href="#len05" class="hide"/>
-    <use id="b0306" x="0" y="0" xlink:href="#len06" class="hide"/>
-    <use id="b0307" x="0" y="0" xlink:href="#len07" class="hide"/>
-    <use id="b0308" x="0" y="0" xlink:href="#len08" class="hide"/>
-    <use id="b0309" x="0" y="0" xlink:href="#len09" class="hide"/>
-    <use id="b0310" x="0" y="0" xlink:href="#len10" class="hide"/>
-    <use id="b0311" x="0" y="0" xlink:href="#len11" class="hide"/>
-    <use id="b0312" x="0" y="0" xlink:href="#len12" class="hide"/>
-    <use id="b0313" x="0" y="0" xlink:href="#len13" class="hide"/>
-    <use id="b0314" x="0" y="0" xlink:href="#len14" class="hide"/>
-    <use id="b0315" x="0" y="0" xlink:href="#len15" class="hide"/>
-    <use id="b0316" x="0" y="0" xlink:href="#len16" class="hide"/>
-    <use id="b0317" x="0" y="0" xlink:href="#len17" class="hide"/>
+    <use x="0" y="0" xlink:href="#border" class="r4 r6"/>
+    <use transform="translate(50,0)" id="b0301" x="0" y="0" xlink:href="#len01" class="hide"/>
+    <use transform="translate(30,0)" id="b0302" x="0" y="0" xlink:href="#len02" class="hide"/>
+    <use transform="translate(-20,0)" id="b0303" x="0" y="0" xlink:href="#len03" class="hide"/>
+    <use transform="translate(-30,0)" id="b0304" x="0" y="0" xlink:href="#len04" class="hide"/>
+    <use transform="translate(10,0)" id="b0305" x="0" y="0" xlink:href="#len05" class="hide"/>
+    <use transform="translate(5,0)" id="b0306" x="0" y="0" xlink:href="#len06" class="hide"/>
+    <use transform="translate(-20,0)" id="b0307" x="0" y="0" xlink:href="#len07" class="hide"/>
+    <use transform="translate(15,0)" id="b0308" x="0" y="0" xlink:href="#len08" class="hide"/>
+    <use transform="translate(5,0)" id="b0309" x="0" y="0" xlink:href="#len09" class="hide"/>
+    <use transform="translate(-5,0)" id="b0310" x="0" y="0" xlink:href="#len10" class="hide"/>
+    <use transform="translate(10,0)" id="b0311" x="0" y="0" xlink:href="#len11" class="hide"/>
+    <use transform="translate(15,0)" id="b0312" x="0" y="0" xlink:href="#len12" class="hide"/>
+    <use transform="translate(-10,0)" id="b0313" x="0" y="0" xlink:href="#len13" class="hide"/>
+    <use transform="translate(-10,0)" id="b0314" x="0" y="0" xlink:href="#len14" class="hide"/>
+    <use transform="translate(-5,0)" id="b0315" x="0" y="0" xlink:href="#len15" class="hide"/>
+    <use transform="translate(5,0)" id="b0316" x="0" y="0" xlink:href="#len16" class="hide"/>
+    <use transform="translate(0,0)" id="b0317" x="0" y="0" xlink:href="#len17" class="hide"/>
 </g>
 <g transform="translate(110,230)">
-    <use id="b0401" x="0" y="0" xlink:href="#len01" class="hide"/>
-    <use id="b0402" x="0" y="0" xlink:href="#len02" class="hide"/>
-    <use id="b0403" x="0" y="0" xlink:href="#len03" class="hide"/>
-    <use id="b0404" x="0" y="0" xlink:href="#len04" class="hide"/>
-    <use id="b0405" x="0" y="0" xlink:href="#len05" class="hide"/>
-    <use id="b0406" x="0" y="0" xlink:href="#len06" class="hide"/>
-    <use id="b0407" x="0" y="0" xlink:href="#len07" class="hide"/>
-    <use id="b0408" x="0" y="0" xlink:href="#len08" class="hide"/>
-    <use id="b0409" x="0" y="0" xlink:href="#len09" class="hide"/>
-    <use id="b0410" x="0" y="0" xlink:href="#len10" class="hide"/>
-    <use id="b0411" x="0" y="0" xlink:href="#len11" class="hide"/>
-    <use id="b0412" x="0" y="0" xlink:href="#len12" class="hide"/>
-    <use id="b0413" x="0" y="0" xlink:href="#len13" class="hide"/>
-    <use id="b0414" x="0" y="0" xlink:href="#len14" class="hide"/>
-    <use id="b0415" x="0" y="0" xlink:href="#len15" class="hide"/>
-    <use id="b0416" x="0" y="0" xlink:href="#len16" class="hide"/>
-    <use id="b0417" x="0" y="0" xlink:href="#len17" class="hide"/>
+    <use x="0" y="0" xlink:href="#border" class="r4"/>
+    <use transform="translate(10,0)" id="b0401" x="0" y="0" xlink:href="#len01" class="hide"/>
+    <use transform="translate(0,0)" id="b0402" x="0" y="0" xlink:href="#len02" class="hide"/>
+    <use transform="translate(-10,0)" id="b0403" x="0" y="0" xlink:href="#len03" class="hide"/>
+    <use transform="translate(20,0)" id="b0404" x="0" y="0" xlink:href="#len04" class="hide"/>
+    <use transform="translate(-30,0)" id="b0405" x="0" y="0" xlink:href="#len05" class="hide"/>
+    <use transform="translate(25,0)" id="b0406" x="0" y="0" xlink:href="#len06" class="hide"/>
+    <use transform="translate(-15,0)" id="b0407" x="0" y="0" xlink:href="#len07" class="hide"/>
+    <use transform="translate(-10,0)" id="b0408" x="0" y="0" xlink:href="#len08" class="hide"/>
+    <use transform="translate(-5,0)" id="b0409" x="0" y="0" xlink:href="#len09" class="hide"/>
+    <use transform="translate(10,0)" id="b0410" x="0" y="0" xlink:href="#len10" class="hide"/>
+    <use transform="translate(15,0)" id="b0411" x="0" y="0" xlink:href="#len11" class="hide"/>
+    <use transform="translate(-5,0)" id="b0412" x="0" y="0" xlink:href="#len12" class="hide"/>
+    <use transform="translate(5,0)" id="b0413" x="0" y="0" xlink:href="#len13" class="hide"/>
+    <use transform="translate(10,0)" id="b0414" x="0" y="0" xlink:href="#len14" class="hide"/>
+    <use transform="translate(-10,0)" id="b0415" x="0" y="0" xlink:href="#len15" class="hide"/>
+    <use transform="translate(5,0)" id="b0416" x="0" y="0" xlink:href="#len16" class="hide"/>
+    <use transform="translate(0,0)" id="b0417" x="0" y="0" xlink:href="#len17" class="hide"/>
 </g>
 <g transform="translate(320,230)">
-    <use id="b0501" x="0" y="0" xlink:href="#len01" class="hide"/>
-    <use id="b0502" x="0" y="0" xlink:href="#len02" class="hide"/>
-    <use id="b0503" x="0" y="0" xlink:href="#len03" class="hide"/>
-    <use id="b0504" x="0" y="0" xlink:href="#len04" class="hide"/>
-    <use id="b0505" x="0" y="0" xlink:href="#len05" class="hide"/>
-    <use id="b0506" x="0" y="0" xlink:href="#len06" class="hide"/>
-    <use id="b0507" x="0" y="0" xlink:href="#len07" class="hide"/>
-    <use id="b0508" x="0" y="0" xlink:href="#len08" class="hide"/>
-    <use id="b0509" x="0" y="0" xlink:href="#len09" class="hide"/>
-    <use id="b0510" x="0" y="0" xlink:href="#len10" class="hide"/>
-    <use id="b0511" x="0" y="0" xlink:href="#len11" class="hide"/>
-    <use id="b0512" x="0" y="0" xlink:href="#len12" class="hide"/>
-    <use id="b0513" x="0" y="0" xlink:href="#len13" class="hide"/>
-    <use id="b0514" x="0" y="0" xlink:href="#len14" class="hide"/>
-    <use id="b0515" x="0" y="0" xlink:href="#len15" class="hide"/>
-    <use id="b0516" x="0" y="0" xlink:href="#len16" class="hide"/>
-    <use id="b0517" x="0" y="0" xlink:href="#len17" class="hide"/>
+    <use x="0" y="0" xlink:href="#border" class="r4"/>
+    <use transform="translate(25,0)" id="b0501" x="0" y="0" xlink:href="#len01" class="hide"/>
+    <use transform="translate(30,0)" id="b0502" x="0" y="0" xlink:href="#len02" class="hide"/>
+    <use transform="translate(-25,0)" id="b0503" x="0" y="0" xlink:href="#len03" class="hide"/>
+    <use transform="translate(-20,0)" id="b0504" x="0" y="0" xlink:href="#len04" class="hide"/>
+    <use transform="translate(5,0)" id="b0505" x="0" y="0" xlink:href="#len05" class="hide"/>
+    <use transform="translate(-15,0)" id="b0506" x="0" y="0" xlink:href="#len06" class="hide"/>
+    <use transform="translate(5,0)" id="b0507" x="0" y="0" xlink:href="#len07" class="hide"/>
+    <use transform="translate(-10,0)" id="b0508" x="0" y="0" xlink:href="#len08" class="hide"/>
+    <use transform="translate(10,0)" id="b0509" x="0" y="0" xlink:href="#len09" class="hide"/>
+    <use transform="translate(5,0)" id="b0510" x="0" y="0" xlink:href="#len10" class="hide"/>
+    <use transform="translate(-5,0)" id="b0511" x="0" y="0" xlink:href="#len11" class="hide"/>
+    <use transform="translate(10,0)" id="b0512" x="0" y="0" xlink:href="#len12" class="hide"/>
+    <use transform="translate(15,0)" id="b0513" x="0" y="0" xlink:href="#len13" class="hide"/>
+    <use transform="translate(-10,0)" id="b0514" x="0" y="0" xlink:href="#len14" class="hide"/>
+    <use transform="translate(5,0)" id="b0515" x="0" y="0" xlink:href="#len15" class="hide"/>
+    <use transform="translate(0,0)" id="b0516" x="0" y="0" xlink:href="#len16" class="hide"/>
+    <use transform="translate(0,0)" id="b0517" x="0" y="0" xlink:href="#len17" class="hide"/>
 </g>
 <g transform="translate(530,230)">
-    <use id="b0601" x="0" y="0" xlink:href="#len01" class="hide"/>
-    <use id="b0602" x="0" y="0" xlink:href="#len02" class="hide"/>
-    <use id="b0603" x="0" y="0" xlink:href="#len03" class="hide"/>
-    <use id="b0604" x="0" y="0" xlink:href="#len04" class="hide"/>
-    <use id="b0605" x="0" y="0" xlink:href="#len05" class="hide"/>
-    <use id="b0606" x="0" y="0" xlink:href="#len06" class="hide"/>
-    <use id="b0607" x="0" y="0" xlink:href="#len07" class="hide"/>
-    <use id="b0608" x="0" y="0" xlink:href="#len08" class="hide"/>
-    <use id="b0609" x="0" y="0" xlink:href="#len09" class="hide"/>
-    <use id="b0610" x="0" y="0" xlink:href="#len10" class="hide"/>
-    <use id="b0611" x="0" y="0" xlink:href="#len11" class="hide"/>
-    <use id="b0612" x="0" y="0" xlink:href="#len12" class="hide"/>
-    <use id="b0613" x="0" y="0" xlink:href="#len13" class="hide"/>
-    <use id="b0614" x="0" y="0" xlink:href="#len14" class="hide"/>
-    <use id="b0615" x="0" y="0" xlink:href="#len15" class="hide"/>
-    <use id="b0616" x="0" y="0" xlink:href="#len16" class="hide"/>
-    <use id="b0617" x="0" y="0" xlink:href="#len17" class="hide"/>
+    <use x="0" y="0" xlink:href="#border" class="r4 r6"/>
+    <use transform="translate(45,0)" id="b0601" x="0" y="0" xlink:href="#len01" class="hide"/>
+    <use transform="translate(-35,0)" id="b0602" x="0" y="0" xlink:href="#len02" class="hide"/>
+    <use transform="translate(20,0)" id="b0603" x="0" y="0" xlink:href="#len03" class="hide"/>
+    <use transform="translate(25,0)" id="b0604" x="0" y="0" xlink:href="#len04" class="hide"/>
+    <use transform="translate(-15,0)" id="b0605" x="0" y="0" xlink:href="#len05" class="hide"/>
+    <use transform="translate(10,0)" id="b0606" x="0" y="0" xlink:href="#len06" class="hide"/>
+    <use transform="translate(-5,0)" id="b0607" x="0" y="0" xlink:href="#len07" class="hide"/>
+    <use transform="translate(0,0)" id="b0608" x="0" y="0" xlink:href="#len08" class="hide"/>
+    <use transform="translate(5,0)" id="b0609" x="0" y="0" xlink:href="#len09" class="hide"/>
+    <use transform="translate(10,0)" id="b0610" x="0" y="0" xlink:href="#len10" class="hide"/>
+    <use transform="translate(20,0)" id="b0611" x="0" y="0" xlink:href="#len11" class="hide"/>
+    <use transform="translate(-15,0)" id="b0612" x="0" y="0" xlink:href="#len12" class="hide"/>
+    <use transform="translate(10,0)" id="b0613" x="0" y="0" xlink:href="#len13" class="hide"/>
+    <use transform="translate(-5,0)" id="b0614" x="0" y="0" xlink:href="#len14" class="hide"/>
+    <use transform="translate(0,0)" id="b0615" x="0" y="0" xlink:href="#len15" class="hide"/>
+    <use transform="translate(5,0)" id="b0616" x="0" y="0" xlink:href="#len16" class="hide"/>
+    <use transform="translate(0,0)" id="b0617" x="0" y="0" xlink:href="#len17" class="hide"/>
 </g>
 <g transform="translate(110,310)">
-    <use id="b0701" x="0" y="0" xlink:href="#len01" class="hide"/>
-    <use id="b0702" x="0" y="0" xlink:href="#len02" class="hide"/>
-    <use id="b0703" x="0" y="0" xlink:href="#len03" class="hide"/>
-    <use id="b0704" x="0" y="0" xlink:href="#len04" class="hide"/>
-    <use id="b0705" x="0" y="0" xlink:href="#len05" class="hide"/>
-    <use id="b0706" x="0" y="0" xlink:href="#len06" class="hide"/>
-    <use id="b0707" x="0" y="0" xlink:href="#len07" class="hide"/>
-    <use id="b0708" x="0" y="0" xlink:href="#len08" class="hide"/>
-    <use id="b0709" x="0" y="0" xlink:href="#len09" class="hide"/>
-    <use id="b0710" x="0" y="0" xlink:href="#len10" class="hide"/>
-    <use id="b0711" x="0" y="0" xlink:href="#len11" class="hide"/>
-    <use id="b0712" x="0" y="0" xlink:href="#len12" class="hide"/>
-    <use id="b0713" x="0" y="0" xlink:href="#len13" class="hide"/>
-    <use id="b0714" x="0" y="0" xlink:href="#len14" class="hide"/>
-    <use id="b0715" x="0" y="0" xlink:href="#len15" class="hide"/>
-    <use id="b0716" x="0" y="0" xlink:href="#len16" class="hide"/>
-    <use id="b0717" x="0" y="0" xlink:href="#len17" class="hide"/>
+    <use x="0" y="0" xlink:href="#border"/>
+    <use transform="translate(15,0)" id="b0701" x="0" y="0" xlink:href="#len01" class="hide"/>
+    <use transform="translate(20,0)" id="b0702" x="0" y="0" xlink:href="#len02" class="hide"/>
+    <use transform="translate(-10,0)" id="b0703" x="0" y="0" xlink:href="#len03" class="hide"/>
+    <use transform="translate(-5,0)" id="b0704" x="0" y="0" xlink:href="#len04" class="hide"/>
+    <use transform="translate(10,0)" id="b0705" x="0" y="0" xlink:href="#len05" class="hide"/>
+    <use transform="translate(5,0)" id="b0706" x="0" y="0" xlink:href="#len06" class="hide"/>
+    <use transform="translate(15,0)" id="b0707" x="0" y="0" xlink:href="#len07" class="hide"/>
+    <use transform="translate(20,0)" id="b0708" x="0" y="0" xlink:href="#len08" class="hide"/>
+    <use transform="translate(-25,0)" id="b0709" x="0" y="0" xlink:href="#len09" class="hide"/>
+    <use transform="translate(-10,0)" id="b0710" x="0" y="0" xlink:href="#len10" class="hide"/>
+    <use transform="translate(-15,0)" id="b0711" x="0" y="0" xlink:href="#len11" class="hide"/>
+    <use transform="translate(-10,0)" id="b0712" x="0" y="0" xlink:href="#len12" class="hide"/>
+    <use transform="translate(5,0)" id="b0713" x="0" y="0" xlink:href="#len13" class="hide"/>
+    <use transform="translate(-10,0)" id="b0714" x="0" y="0" xlink:href="#len14" class="hide"/>
+    <use transform="translate(5,0)" id="b0715" x="0" y="0" xlink:href="#len15" class="hide"/>
+    <use transform="translate(-5,0)" id="b0716" x="0" y="0" xlink:href="#len16" class="hide"/>
+    <use transform="translate(0,0)" id="b0717" x="0" y="0" xlink:href="#len17" class="hide"/>
 </g>
 <g transform="translate(320,310)">
-    <use id="b0801" x="0" y="0" xlink:href="#len01" class="hide"/>
-    <use id="b0802" x="0" y="0" xlink:href="#len02" class="hide"/>
-    <use id="b0803" x="0" y="0" xlink:href="#len03" class="hide"/>
-    <use id="b0804" x="0" y="0" xlink:href="#len04" class="hide"/>
-    <use id="b0805" x="0" y="0" xlink:href="#len05" class="hide"/>
-    <use id="b0806" x="0" y="0" xlink:href="#len06" class="hide"/>
-    <use id="b0807" x="0" y="0" xlink:href="#len07" class="hide"/>
-    <use id="b0808" x="0" y="0" xlink:href="#len08" class="hide"/>
-    <use id="b0809" x="0" y="0" xlink:href="#len09" class="hide"/>
-    <use id="b0810" x="0" y="0" xlink:href="#len10" class="hide"/>
-    <use id="b0811" x="0" y="0" xlink:href="#len11" class="hide"/>
-    <use id="b0812" x="0" y="0" xlink:href="#len12" class="hide"/>
-    <use id="b0813" x="0" y="0" xlink:href="#len13" class="hide"/>
-    <use id="b0814" x="0" y="0" xlink:href="#len14" class="hide"/>
-    <use id="b0815" x="0" y="0" xlink:href="#len15" class="hide"/>
-    <use id="b0816" x="0" y="0" xlink:href="#len16" class="hide"/>
-    <use id="b0817" x="0" y="0" xlink:href="#len17" class="hide"/>
+    <use x="0" y="0" xlink:href="#border"/>
+    <use transform="translate(25,0)" id="b0801" x="0" y="0" xlink:href="#len01" class="hide"/>
+    <use transform="translate(-25,0)" id="b0802" x="0" y="0" xlink:href="#len02" class="hide"/>
+    <use transform="translate(30,0)" id="b0803" x="0" y="0" xlink:href="#len03" class="hide"/>
+    <use transform="translate(15,0)" id="b0804" x="0" y="0" xlink:href="#len04" class="hide"/>
+    <use transform="translate(-15,0)" id="b0805" x="0" y="0" xlink:href="#len05" class="hide"/>
+    <use transform="translate(10,0)" id="b0806" x="0" y="0" xlink:href="#len06" class="hide"/>
+    <use transform="translate(-5,0)" id="b0807" x="0" y="0" xlink:href="#len07" class="hide"/>
+    <use transform="translate(0,0)" id="b0808" x="0" y="0" xlink:href="#len08" class="hide"/>
+    <use transform="translate(5,0)" id="b0809" x="0" y="0" xlink:href="#len09" class="hide"/>
+    <use transform="translate(10,0)" id="b0810" x="0" y="0" xlink:href="#len10" class="hide"/>
+    <use transform="translate(15,0)" id="b0811" x="0" y="0" xlink:href="#len11" class="hide"/>
+    <use transform="translate(-15,0)" id="b0812" x="0" y="0" xlink:href="#len12" class="hide"/>
+    <use transform="translate(-10,0)" id="b0813" x="0" y="0" xlink:href="#len13" class="hide"/>
+    <use transform="translate(-5,0)" id="b0814" x="0" y="0" xlink:href="#len14" class="hide"/>
+    <use transform="translate(5,0)" id="b0815" x="0" y="0" xlink:href="#len15" class="hide"/>
+    <use transform="translate(5,0)" id="b0816" x="0" y="0" xlink:href="#len16" class="hide"/>
+    <use transform="translate(0,0)" id="b0817" x="0" y="0" xlink:href="#len17" class="hide"/>
 </g>
 <g transform="translate(530,310)">
-    <use id="b0901" x="0" y="0" xlink:href="#len01" class="hide"/>
-    <use id="b0902" x="0" y="0" xlink:href="#len02" class="hide"/>
-    <use id="b0903" x="0" y="0" xlink:href="#len03" class="hide"/>
-    <use id="b0904" x="0" y="0" xlink:href="#len04" class="hide"/>
-    <use id="b0905" x="0" y="0" xlink:href="#len05" class="hide"/>
-    <use id="b0906" x="0" y="0" xlink:href="#len06" class="hide"/>
-    <use id="b0907" x="0" y="0" xlink:href="#len07" class="hide"/>
-    <use id="b0908" x="0" y="0" xlink:href="#len08" class="hide"/>
-    <use id="b0909" x="0" y="0" xlink:href="#len09" class="hide"/>
-    <use id="b0910" x="0" y="0" xlink:href="#len10" class="hide"/>
-    <use id="b0911" x="0" y="0" xlink:href="#len11" class="hide"/>
-    <use id="b0912" x="0" y="0" xlink:href="#len12" class="hide"/>
-    <use id="b0913" x="0" y="0" xlink:href="#len13" class="hide"/>
-    <use id="b0914" x="0" y="0" xlink:href="#len14" class="hide"/>
-    <use id="b0915" x="0" y="0" xlink:href="#len15" class="hide"/>
-    <use id="b0916" x="0" y="0" xlink:href="#len16" class="hide"/>
-    <use id="b0917" x="0" y="0" xlink:href="#len17" class="hide"/>
+    <use x="0" y="0" xlink:href="#border" class="r4 r6"/>
+    <use transform="translate(-35,0)" id="b0901" x="0" y="0" xlink:href="#len01" class="hide"/>
+    <use transform="translate(35,0)" id="b0902" x="0" y="0" xlink:href="#len02" class="hide"/>
+    <use transform="translate(30,0)" id="b0903" x="0" y="0" xlink:href="#len03" class="hide"/>
+    <use transform="translate(-25,0)" id="b0904" x="0" y="0" xlink:href="#len04" class="hide"/>
+    <use transform="translate(-20,0)" id="b0905" x="0" y="0" xlink:href="#len05" class="hide"/>
+    <use transform="translate(-15,0)" id="b0906" x="0" y="0" xlink:href="#len06" class="hide"/>
+    <use transform="translate(25,0)" id="b0907" x="0" y="0" xlink:href="#len07" class="hide"/>
+    <use transform="translate(-20,0)" id="b0908" x="0" y="0" xlink:href="#len08" class="hide"/>
+    <use transform="translate(15,0)" id="b0909" x="0" y="0" xlink:href="#len09" class="hide"/>
+    <use transform="translate(10,0)" id="b0910" x="0" y="0" xlink:href="#len10" class="hide"/>
+    <use transform="translate(5,0)" id="b0911" x="0" y="0" xlink:href="#len11" class="hide"/>
+    <use transform="translate(0,0)" id="b0912" x="0" y="0" xlink:href="#len12" class="hide"/>
+    <use transform="translate(5,0)" id="b0913" x="0" y="0" xlink:href="#len13" class="hide"/>
+    <use transform="translate(0,0)" id="b0914" x="0" y="0" xlink:href="#len14" class="hide"/>
+    <use transform="translate(10,0)" id="b0915" x="0" y="0" xlink:href="#len15" class="hide"/>
+    <use transform="translate(-5,0)" id="b0916" x="0" y="0" xlink:href="#len16" class="hide"/>
+    <use transform="translate(0,0)" id="b0917" x="0" y="0" xlink:href="#len17" class="hide"/>
 </g>
 <g transform="translate(110,390)">
-    <use id="b1001" x="0" y="0" xlink:href="#len01" class="hide"/>
-    <use id="b1002" x="0" y="0" xlink:href="#len02" class="hide"/>
-    <use id="b1003" x="0" y="0" xlink:href="#len03" class="hide"/>
-    <use id="b1004" x="0" y="0" xlink:href="#len04" class="hide"/>
-    <use id="b1005" x="0" y="0" xlink:href="#len05" class="hide"/>
-    <use id="b1006" x="0" y="0" xlink:href="#len06" class="hide"/>
-    <use id="b1007" x="0" y="0" xlink:href="#len07" class="hide"/>
-    <use id="b1008" x="0" y="0" xlink:href="#len08" class="hide"/>
-    <use id="b1009" x="0" y="0" xlink:href="#len09" class="hide"/>
-    <use id="b1010" x="0" y="0" xlink:href="#len10" class="hide"/>
-    <use id="b1011" x="0" y="0" xlink:href="#len11" class="hide"/>
-    <use id="b1012" x="0" y="0" xlink:href="#len12" class="hide"/>
-    <use id="b1013" x="0" y="0" xlink:href="#len13" class="hide"/>
-    <use id="b1014" x="0" y="0" xlink:href="#len14" class="hide"/>
-    <use id="b1015" x="0" y="0" xlink:href="#len15" class="hide"/>
-    <use id="b1016" x="0" y="0" xlink:href="#len16" class="hide"/>
-    <use id="b1017" x="0" y="0" xlink:href="#len17" class="hide"/>
+    <use x="0" y="0" xlink:href="#border" class="r4 r6"/>
+    <use transform="translate(-45,0)" id="b1001" x="0" y="0" xlink:href="#len01" class="hide"/>
+    <use transform="translate(20,0)" id="b1002" x="0" y="0" xlink:href="#len02" class="hide"/>
+    <use transform="translate(25,0)" id="b1003" x="0" y="0" xlink:href="#len03" class="hide"/>
+    <use transform="translate(-25,0)" id="b1004" x="0" y="0" xlink:href="#len04" class="hide"/>
+    <use transform="translate(0,0)" id="b1005" x="0" y="0" xlink:href="#len05" class="hide"/>
+    <use transform="translate(5,0)" id="b1006" x="0" y="0" xlink:href="#len06" class="hide"/>
+    <use transform="translate(15,0)" id="b1007" x="0" y="0" xlink:href="#len07" class="hide"/>
+    <use transform="translate(-15,0)" id="b1008" x="0" y="0" xlink:href="#len08" class="hide"/>
+    <use transform="translate(-5,0)" id="b1009" x="0" y="0" xlink:href="#len09" class="hide"/>
+    <use transform="translate(-20,0)" id="b1010" x="0" y="0" xlink:href="#len10" class="hide"/>
+    <use transform="translate(-10,0)" id="b1011" x="0" y="0" xlink:href="#len11" class="hide"/>
+    <use transform="translate(5,0)" id="b1012" x="0" y="0" xlink:href="#len12" class="hide"/>
+    <use transform="translate(15,0)" id="b1013" x="0" y="0" xlink:href="#len13" class="hide"/>
+    <use transform="translate(10,0)" id="b1014" x="0" y="0" xlink:href="#len14" class="hide"/>
+    <use transform="translate(-5,0)" id="b1015" x="0" y="0" xlink:href="#len15" class="hide"/>
+    <use transform="translate(-5,0)" id="b1016" x="0" y="0" xlink:href="#len16" class="hide"/>
+    <use transform="translate(0,0)" id="b1017" x="0" y="0" xlink:href="#len17" class="hide"/>
 </g>
 <g transform="translate(320,390)">
-    <use id="b1101" x="0" y="0" xlink:href="#len01" class="hide"/>
-    <use id="b1102" x="0" y="0" xlink:href="#len02" class="hide"/>
-    <use id="b1103" x="0" y="0" xlink:href="#len03" class="hide"/>
-    <use id="b1104" x="0" y="0" xlink:href="#len04" class="hide"/>
-    <use id="b1105" x="0" y="0" xlink:href="#len05" class="hide"/>
-    <use id="b1106" x="0" y="0" xlink:href="#len06" class="hide"/>
-    <use id="b1107" x="0" y="0" xlink:href="#len07" class="hide"/>
-    <use id="b1108" x="0" y="0" xlink:href="#len08" class="hide"/>
-    <use id="b1109" x="0" y="0" xlink:href="#len09" class="hide"/>
-    <use id="b1110" x="0" y="0" xlink:href="#len10" class="hide"/>
-    <use id="b1111" x="0" y="0" xlink:href="#len11" class="hide"/>
-    <use id="b1112" x="0" y="0" xlink:href="#len12" class="hide"/>
-    <use id="b1113" x="0" y="0" xlink:href="#len13" class="hide"/>
-    <use id="b1114" x="0" y="0" xlink:href="#len14" class="hide"/>
-    <use id="b1115" x="0" y="0" xlink:href="#len15" class="hide"/>
-    <use id="b1116" x="0" y="0" xlink:href="#len16" class="hide"/>
-    <use id="b1117" x="0" y="0" xlink:href="#len17" class="hide"/>
+    <use x="0" y="0" xlink:href="#border" class="r4 r6"/>
+    <use transform="translate(40,0)" id="b1101" x="0" y="0" xlink:href="#len01" class="hide"/>
+    <use transform="translate(-35,0)" id="b1102" x="0" y="0" xlink:href="#len02" class="hide"/>
+    <use transform="translate(30,0)" id="b1103" x="0" y="0" xlink:href="#len03" class="hide"/>
+    <use transform="translate(-25,0)" id="b1104" x="0" y="0" xlink:href="#len04" class="hide"/>
+    <use transform="translate(-20,0)" id="b1105" x="0" y="0" xlink:href="#len05" class="hide"/>
+    <use transform="translate(15,0)" id="b1106" x="0" y="0" xlink:href="#len06" class="hide"/>
+    <use transform="translate(-10,0)" id="b1107" x="0" y="0" xlink:href="#len07" class="hide"/>
+    <use transform="translate(-25,0)" id="b1108" x="0" y="0" xlink:href="#len08" class="hide"/>
+    <use transform="translate(-5,0)" id="b1109" x="0" y="0" xlink:href="#len09" class="hide"/>
+    <use transform="translate(5,0)" id="b1110" x="0" y="0" xlink:href="#len10" class="hide"/>
+    <use transform="translate(0,0)" id="b1111" x="0" y="0" xlink:href="#len11" class="hide"/>
+    <use transform="translate(10,0)" id="b1112" x="0" y="0" xlink:href="#len12" class="hide"/>
+    <use transform="translate(5,0)" id="b1113" x="0" y="0" xlink:href="#len13" class="hide"/>
+    <use transform="translate(-5,0)" id="b1114" x="0" y="0" xlink:href="#len14" class="hide"/>
+    <use transform="translate(0,0)" id="b1115" x="0" y="0" xlink:href="#len15" class="hide"/>
+    <use transform="translate(5,0)" id="b1116" x="0" y="0" xlink:href="#len16" class="hide"/>
+    <use transform="translate(0,0)" id="b1117" x="0" y="0" xlink:href="#len17" class="hide"/>
 </g>
 <g transform="translate(530,390)">
-    <use id="b1201" x="0" y="0" xlink:href="#len01" class="hide"/>
-    <use id="b1202" x="0" y="0" xlink:href="#len02" class="hide"/>
-    <use id="b1203" x="0" y="0" xlink:href="#len03" class="hide"/>
-    <use id="b1204" x="0" y="0" xlink:href="#len04" class="hide"/>
-    <use id="b1205" x="0" y="0" xlink:href="#len05" class="hide"/>
-    <use id="b1206" x="0" y="0" xlink:href="#len06" class="hide"/>
-    <use id="b1207" x="0" y="0" xlink:href="#len07" class="hide"/>
-    <use id="b1208" x="0" y="0" xlink:href="#len08" class="hide"/>
-    <use id="b1209" x="0" y="0" xlink:href="#len09" class="hide"/>
-    <use id="b1210" x="0" y="0" xlink:href="#len10" class="hide"/>
-    <use id="b1211" x="0" y="0" xlink:href="#len11" class="hide"/>
-    <use id="b1212" x="0" y="0" xlink:href="#len12" class="hide"/>
-    <use id="b1213" x="0" y="0" xlink:href="#len13" class="hide"/>
-    <use id="b1214" x="0" y="0" xlink:href="#len14" class="hide"/>
-    <use id="b1215" x="0" y="0" xlink:href="#len15" class="hide"/>
-    <use id="b1216" x="0" y="0" xlink:href="#len16" class="hide"/>
-    <use id="b1217" x="0" y="0" xlink:href="#len17" class="hide"/>
+    <use x="0" y="0" xlink:href="#border" class="r4 r6"/>
+    <use transform="translate(-35,0)" id="b1201" x="0" y="0" xlink:href="#len01" class="hide"/>
+    <use transform="translate(35,0)" id="b1202" x="0" y="0" xlink:href="#len02" class="hide"/>
+    <use transform="translate(25,0)" id="b1203" x="0" y="0" xlink:href="#len03" class="hide"/>
+    <use transform="translate(-5,0)" id="b1204" x="0" y="0" xlink:href="#len04" class="hide"/>
+    <use transform="translate(10,0)" id="b1205" x="0" y="0" xlink:href="#len05" class="hide"/>
+    <use transform="translate(-10,0)" id="b1206" x="0" y="0" xlink:href="#len06" class="hide"/>
+    <use transform="translate(-15,0)" id="b1207" x="0" y="0" xlink:href="#len07" class="hide"/>
+    <use transform="translate(20,0)" id="b1208" x="0" y="0" xlink:href="#len08" class="hide"/>
+    <use transform="translate(25,0)" id="b1209" x="0" y="0" xlink:href="#len09" class="hide"/>
+    <use transform="translate(-15,0)" id="b1210" x="0" y="0" xlink:href="#len10" class="hide"/>
+    <use transform="translate(-25,0)" id="b1211" x="0" y="0" xlink:href="#len11" class="hide"/>
+    <use transform="translate(-5,0)" id="b1212" x="0" y="0" xlink:href="#len12" class="hide"/>
+    <use transform="translate(-5,0)" id="b1213" x="0" y="0" xlink:href="#len13" class="hide"/>
+    <use transform="translate(0,0)" id="b1214" x="0" y="0" xlink:href="#len14" class="hide"/>
+    <use transform="translate(5,0)" id="b1215" x="0" y="0" xlink:href="#len15" class="hide"/>
+    <use transform="translate(5,0)" id="b1216" x="0" y="0" xlink:href="#len16" class="hide"/>
+    <use transform="translate(0,0)" id="b1217" x="0" y="0" xlink:href="#len17" class="hide"/>
 </g>
 
 

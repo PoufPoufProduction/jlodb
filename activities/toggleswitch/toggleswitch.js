@@ -27,6 +27,12 @@
         "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>"
     ];
 
+    var onClicks = {
+        onlyone : function($this, elts, id) {
+            var nb=0; for (var i in elts) { if (elts[i].state==1) nb++; } return (elts[id].state==1 || nb<1);
+        }
+    }
+
     // private methods
     var helpers = {
         // @generic: Check the context
@@ -139,10 +145,14 @@
                 var elt = settings.current.elts[id];
 
                 var isOk = true;
-                if (settings.current.onclick) {
-                    isOk = eval('('+settings.current.onclick+')')($this, settings.current.elts, id); } else
-                if (settings.onclick) {
-                    isOk = eval('('+settings.onclick+')')($this, settings.current.elts, id); }
+                var onClick = 0;
+                if (settings.current.onclick)   { onClick = settings.current.onclick; } else
+                if (settings.onclick)           { onClick = settings.onclick; }
+
+                if (onClick) {
+                    if (onClicks[onClick])  { isOk = onClicks[onClick]($this, settings.current.elts, id); }
+                    else                    { isOk = eval('('+onClick+')')($this, settings.current.elts, id); }
+                }
 
                 if (isOk) {
                     elt.state++;
