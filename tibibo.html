@@ -67,7 +67,8 @@
         #main .node .type            { width:1em; height:1em; font-size:.25em; position:absolute; top:-0.1em; left:-0.1em; display:none;}
         #main .node .icon             { width:1em; height:1em; position:absolute; top:0; left:0; }
         #main .node .star             { width:1em; height:1em; position:absolute; top:0.1em; left:0; display:none; }
-        #main .node .label           { font-size:.09em; position:absolute; top:12em; text-align:justify; }
+        #main .node .label           { font-family: Arial,Helvetica Neue,Helvetica,sans-serif;
+                                       font-size:.09em; position:absolute; top:12em; text-align:justify; }
         #main .node.f .type         { display:inline; }
         #main .node.s .star         { display:inline; }
         #main .node .done           { position:absolute; top:0em; left:3.5em; font-size:.15em; width:3em; text-align:center;
@@ -76,6 +77,8 @@
         
         #main .node .progress         { width:1em; height:0.05em; position:absolute; top:1.02em; background-color:#dd5; }
         #main .node .progress>div       { height:0.05em; background-color:#5b6; }
+
+        #main .label .strong        { font-size:1.5em; font-weight:bold; }
 
         #main #ocontent .input              { background-color:red; color:white; margin-top:1em; font-size:0.8em; }
         #main #ocontent .input>*            { float:left; margin-left:.5em; }
@@ -172,11 +175,27 @@ user.onEvent = function() {
 
 };
 
+var regExp = [
+        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
+        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
+        "\\\[br\\\]",                               "<br/>",
+        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
+        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
+        "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>"
+    ];
+
 var tibibo = {
     lang            : "",
     args            : {},
     locale          : {},
     user: function() { if (user.settings.name) { user.edit.open(); } else { $("#logpanel").show(); } },
+    format: function(_text) {
+            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
+                var vReg = new RegExp(regExp[i*2],"g");
+                _text = _text.replace(vReg,regExp[i*2+1]);
+            }
+            return _text;
+        },
     run : function(_args) {
         $("#waiting").show().find("div").addClass("running");
         $("#launcher").jlodb({ onstart: function($this) { $("#ocontent").hide(); $("#waiting").hide().find("div").removeClass("running"); },
@@ -240,6 +259,7 @@ var tibibo = {
         current: -1,
         state : {},
         build:function(_list) {
+            tibibo.book.nav(tibibo.menu.current);
             $("#editown .e").hide();
             var state = "";
             if (tibibo.menu.state) { state = tibibo.menu.state[tibibo.menu.current]; }
@@ -278,7 +298,7 @@ var tibibo = {
             tibibo.book.parents=[];
             var parents = tibibo.book.browse.parent(_id).reverse();
             for (var i=0; i<parents.length-1; i++) { tibibo.book.parents.push(parents[i]); }
-            tibibo.book.nav();
+            tibibo.book.nav(_id);
         }
     },
     node : {
@@ -451,6 +471,14 @@ var tibibo = {
         state:function() {
             $("#dbrowser").show();
             $("#dbrowser #dcontent").html(tibibo.book.browse.dump({action:"state"},tibibo.book.current));
+        },
+        export:function() {
+            
+                var newWindow = window.open("", "_blank", "");
+                newWindow.document.write("<!DOCTYPE HTML><html xmlns='http://www.w3.org/1999/xhtml' xml:lang='fr' lang='fr'><head>"+
+                        "<title>"+tibibo.book.data.value+"</title></head><body>"+
+                        JSON.stringify(tibibo.book.current)+"</body></html>");
+                newWindow.document.close();
         }
     },
     book: {
@@ -495,7 +523,7 @@ var tibibo = {
                 else {
                     ret+=(_node.description && _node.description.length)?"<li class='final'>":"<li>";
                     ret+=tibibo.book.node(_node,"dump");
-                    ret+="<div class='label' style='width:"+(23-_level)+"em;'>"+_node.label+"</div>";
+                    ret+="<div class='label' style='width:"+(23-_level)+"em;'>"+tibibo.format(_node.label)+"</div>";
 
                     if (_args.action=="state" && _node.description && _node.description.length) {
                         var nb=0;
@@ -627,8 +655,10 @@ var tibibo = {
             if (elt.nbstar>0)               { html+=" s"; }
             if (elt.description.length==0)  { html+=" f"; }
             html+="'";
-            html+="ontouchstart='tibibo.node.click($(this),\""+_from+"\");event.preventDefault();' ";
-            html+="onmousedown='tibibo.node.click($(this),\""+_from+"\");' ";
+            if (!_from||_from!="noclick")   {
+                html+="ontouchstart='tibibo.node.click($(this),\""+_from+"\");event.preventDefault();' ";
+                html+="onmousedown='tibibo.node.click($(this),\""+_from+"\");' ";
+            }
             html+=">";
             html+="<div class='icon'><img src='"+elt.src+"'/></div>";
 
@@ -637,13 +667,13 @@ var tibibo = {
                 html+="<div class='progress'><div style='width:"+(r[1]?r[0]/r[1]:1)+"em';></div></div>";
             }
             if (elt.nbstar>0)   { html+="<div class='star'><img src='res/img/icon/menu01st"+(elt.nbstar-1)+".svg'/></div>"; }
-            if (!_from)         { html+="<div class='label'>"+elt.label+"</div>"; }
+            if (!_from)         { html+="<div class='label'>"+tibibo.format(elt.label)+"</div>"; }
             if (!_from && r[0]==r[1]) { html+="<div class='done'>"+tibibo.locale.donelabel+"</div>"; }
 
             html+="</div>";
             return html;
         },
-        nav : function() {
+        nav : function(_menuid) {
             $("#oheader #onav").html("");
             if (tibibo.book.data.owner) {
                 var label = tibibo.book.data.value;
@@ -655,7 +685,12 @@ var tibibo = {
                 for (var i in tibibo.book.parents) {
                     var elt = tibibo.book.browse.elt(tibibo.book.parents[i]);
                     $("#oheader #onav").append(tibibo.book.node(elt,"nav"));
-                    label = elt.label;
+                    label = tibibo.format(elt.label);
+                }
+                if (_menuid) {
+                    var elt = tibibo.book.browse.elt(_menuid);
+                    $("#oheader #onav").append(tibibo.book.node(elt,"noclick"));
+                    label = tibibo.format(elt.label);
                 }
                 $("#oheader #onav").append("<div class='label'>"+label+"</div>");
             }
@@ -898,6 +933,9 @@ $(window).load(function() {
                     <div id="mmove" class="icon e" onmousedown="tibibo.node.menu($(this));"
                         ontouchstart="tibibo.node.menu($(this));event.preventDefault();" >
                         <img src="mods/tibibi/res/img/courses.svg"/></div>
+                    <div id="mexport" class="icon e" onmousedown="tibibo.node.export();"
+                        ontouchstart="tibibo.node.export($(this));event.preventDefault();" >
+                        <img src="mods/tibibi/res/img/export.svg"/></div>
                     <div id="mlook" class="icon f" onmousedown="tibibo.stat.realtime.open();"
                         ontouchstart="tibibo.stat.realtime.open();event.preventDefault();" >
                         <img src="mods/tibibi/res/img/people.svg"/></div>

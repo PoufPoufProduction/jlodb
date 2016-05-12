@@ -3,6 +3,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="mobile-web-app-capable" content="yes">
     <title>jLoDB - Javascript Learning Objects DataBase</title>
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/jquery-ui.min.js"></script>
@@ -11,6 +12,7 @@
     <script type="text/javascript" src="js/jquery.jlodb.js"></script>
     <script type="text/javascript" src="js/jquery.jlodb.browser.js"></script>
     <script type="text/javascript" src="js/jlodb-ext.js"></script>
+    <link rel="manifest" href="manifest.json">
     <link type="text/css" rel="stylesheet" href="css/jlodb.css" media="all" />
     <link type="text/css" rel="stylesheet" href="css/browser.css" media="all"/>
     <style>
@@ -667,6 +669,26 @@ $(window).load(function() {
         <div id="quit" ontouchstart="$('#launcher').jlodb('quit');event.preventDefault();"
                        onclick="$('#launcher').jlodb('quit');"><img src="res/img/icon/quit.svg"/></div>
         <div id="activity"></div>
+    </div>
+
+    <!-- SPECIAL EVENT -->
+    <div id="specialevent" style="position:absolute;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.4);">
+        <div style="width:16em;height:12em;font-size:.9em;background-color:white;margin:0.5em auto;border:2px solid black;overflow:hide;position:relative;background-image:url('res/img/background/book03.svg'); background-repeat:repeat;">
+            <div style="position:absolute;transform: rotate(45deg);top:1em;left:11em;background-color:red;color:white;width:7em;text-align:center;">Annonce</div>
+            <div style="margin-top:1em;padding:0 1em 0 1em;background-color:gray;font-size:0.8em;border:1px solid black;border-width:2px 0;overflow:visible;background-image:url('res/img/background/book05.svg'); background-repeat:repeat;">
+                <div style="font-size:2em;font-weight:bold;padding:.1em;background-color:black;width:4.5em;text-align:center;border-radius:.2em;color:white;transform: rotate(-5deg);margin:-.1em 0 .2em -.2em;">CAHIER</div>
+                <div style="float:left; font-size:0.8em;">d'exercices numériques <b>libres</b></div>
+                <div style="font-size:1.2em;position:relative;top:-.2em;left:0.5em;border-radius:.2em;background-color:black;color:white;width:5em;text-align:center;">Niveau CP</div>
+            </div>
+            <div style="text-align:center;">recherche</div>
+            <div style="font-size:0.4em;text-align:center;margin-bottom:2em;"><i>test(eurs/euses), correc(teurs/trices), pédagogues et forces de propositions.</i></div>
+            <div style="font-size:0.5em;color:white;">
+            <a href="http://jlodb.poufpoufproduction.fr/tibibo.html?id=CP"><div style="background-color:black;height:1.2em;width:18em;border-radius:0 .5em .5em 0;margin:.1em 0;padding-left:1em;">Tester le cahier en développement</div></a>
+            <div onclick="$('#specialevent').hide();" style="cursor:pointer;background-color:black;height:1.2em;width:18em;border-radius:0 .5em .5em 0;margin:.1em 0;padding-left:1em;">Continuer sur le site principal</div>
+            <div style="background-color:gray;height:1.2em;width:18em;border-radius:0 .5em .5em 0;margin:.1em 0;padding-left:1em;margin-top:1em;"><div style="width:4em;float:left;">mail</div>johannc@poufpoufproduction.fr</div>
+            <a href="https://twitter.com/jlodb1"><div style="background-color:gray;height:1.2em;width:18em;border-radius:0 .5em .5em 0;margin:.1em 0;padding-left:1em;"><div style="width:4em;float:left;">twitter</div>@jlodb1</div></a>
+            </div>
+        </div>
     </div>
 
 
