@@ -3,14 +3,73 @@
          xmlns:dct="http://purl.org/dc/terms/">
 
     <rdf:Description>
-        <dct:identifier>0x</dct:identifier>
+        <dct:identifier>01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Équilibrer une balance grâce au poid proposé par l'exercice [500].</dct:title>
+        <dct:description><![CDATA["art":"weight/A_to_C","course":["Faites glisser le poids de 500g, disponible\\nen haut de la fenêtre, vers le plateau gauche\\nde la balance afin d'équilibrer celle-ci.\\n\\nL'aiguille doit être alors verticale."],"weights":["g500"],"value":500]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>gravity</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>01</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>02</dct:identifier>
+        <dct:title xml:lang="fr-FR">Équilibrer une balance grâce à l'un des poids proposés par l'exercice [20].</dct:title>
+        <dct:description><![CDATA["art":"weight/A_to_C","course":["Parmi tous les poids proposés en haut\\nde la fenêtre, trouvez celui permettant\\nd'équilibrer la balance."],"weights":["g200","g20","g2"],"value":20]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>gravity</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>01</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>03</dct:identifier>
+        <dct:title xml:lang="fr-FR">Équilibrer une balance grâce à l'un des poids proposés par l'exercice [100,2,10].</dct:title>
+        <dct:description><![CDATA["weights":["g200","g100","g20","g10","g2","g1"],"data":[{"value":100},{"value":2},{"value":10}]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>gravity</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>01</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>0a</dct:identifier>
+        <dct:title xml:lang="fr-FR">Équilibrer une balance grâce à l'un des poids proposés par l'exercice.</dct:title>
+        <dct:description><![CDATA["weights":["g1000","g500","g200","g100","g50","g20","g10","g5","g2","g1"],"number":5,"gen":"function(){var w=[1000,500,200,100,50,20,10,5,2,1]; return {\\\"value\\\":w[Math.floor(Math.random()*w.length)]};}"]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>gravity</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>01</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+    </rdf:Description>
+
+
+    <rdf:Description>
+        <dct:identifier>aa</dct:identifier>
+        <dct:title xml:lang="fr-FR">Équilibrer une balance pour déterminer le poids d'un objet.</dct:title>
+        <dct:description><![CDATA["number":3,"gen":"function(){ return {\\\"value\\\":Math.floor(Math.random()*1500)};}"]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>gravity</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>01</dct:alternative>
+    </rdf:Description>
+
+
+    <rdf:Description>
+        <dct:identifier>ba</dct:identifier>
         <dct:title xml:lang="fr-FR">dev.</dct:title>
-        <dct:description><![CDATA[]]></dct:description>
-        <dct:extent>15</dct:extent>
-        <dct:subject>game</dct:subject>
+        <dct:description><![CDATA["number":3,"type":"bag","gen":"function(){ return {\\\"value\\\":Math.floor(Math.random()*1500)};}"]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>gravity</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>4</dct:type>
-        <dct:alternative>0x</dct:alternative>
+        <dct:type>1</dct:type>
+        <dct:alternative>01</dct:alternative>
     </rdf:Description>
 
 

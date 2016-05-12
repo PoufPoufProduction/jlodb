@@ -1,9 +1,72 @@
 <div>
 
-    <div id="exercice"></div>
-    <div id="board">hello world</div>
+    <div id="svg"></div>
+    <div id="calc" class="button" ontouchstart="$(this).closest('.balance').balance('calc');event.preventDefault();"
+                                  onclick="$(this).closest('.balance').balance('calc');">
+        <img src="res/img/svginventoryicons/hardware/calculator01.svg"/></div>
+    <div id="fill" class="button" ontouchstart="$(this).closest('.balance').balance('fill');event.preventDefault();"
+                                  onclick="$(this).closest('.balance').balance('fill');">
+        <img src="res/img/svginventoryicons/action/gears01.svg"/></div>
 
-    <div id="splash" ontouchstart="$(this).hide().closest('.balance').balance('next');event.preventDefault();"
+    <div id="calculator">
+        <table>
+            <tr><td colspan="3"><div id="screen" class="movepanel">0</div></td></tr>
+            <tr>
+                <td ontouchstart="$(this).closest('.balance').balance('key', 7, this);event.preventDefault();"
+                    onclick="$(this).closest('.balance').balance('key', 7, this);" class="bluekeypad">7</td>
+                <td ontouchstart="$(this).closest('.balance').balance('key', 8, this);event.preventDefault();"
+                    onclick="$(this).closest('.balance').balance('key', 8, this);" class="bluekeypad">8</td>
+                <td ontouchstart="$(this).closest('.balance').balance('key', 9, this);event.preventDefault();"
+                    onclick="$(this).closest('.balance').balance('key', 9, this);" class="bluekeypad">9</td>
+            </tr>
+            <tr>
+                <td ontouchstart="$(this).closest('.balance').balance('key', 4, this);event.preventDefault();"
+                    onclick="$(this).closest('.balance').balance('key', 4, this);" class="bluekeypad">4</td>
+                <td ontouchstart="$(this).closest('.balance').balance('key', 5, this);event.preventDefault();"
+                    onclick="$(this).closest('.balance').balance('key', 5, this);" class="bluekeypad">5</td>
+                <td ontouchstart="$(this).closest('.balance').balance('key', 6, this);event.preventDefault();"
+                    onclick="$(this).closest('.balance').balance('key', 6, this);" class="bluekeypad">6</td>
+            </tr>
+            <tr>
+                <td ontouchstart="$(this).closest('.balance').balance('key', 1, this);event.preventDefault();"
+                    onclick="$(this).closest('.balance').balance('key', 1, this);" class="bluekeypad">1</td>
+                <td ontouchstart="$(this).closest('.balance').balance('key', 2, this);event.preventDefault();"
+                    onclick="$(this).closest('.balance').balance('key', 2, this);" class="bluekeypad">2</td>
+                <td ontouchstart="$(this).closest('.balance').balance('key', 3, this);event.preventDefault();"
+                    onclick="$(this).closest('.balance').balance('key', 3, this);" class="bluekeypad">3</td>
+            </tr>
+            <tr>
+                <td ontouchstart="$(this).closest('.balance').balance('key', 0, this);event.preventDefault();"
+                    onclick="$(this).closest('.balance').balance('key', 0, this);" class="bluekeypad">0</td>
+                <td ontouchstart="$(this).closest('.balance').balance('key', '.', this);event.preventDefault();"
+                    onclick="$(this).closest('.balance').balance('key', '.', this);" class="bluekeypad">.</td>
+                <td ontouchstart="$(this).closest('.balance').balance('key', 'c', this);event.preventDefault();"
+                    onclick="$(this).closest('.balance').balance('key', 'c', this);" class="bluekeypad">
+                        <div class="icon" style="margin:0 auto;"><img src="res/img/icon/cancel2.svg"/></div>
+                </td>
+            </tr>
+            <tr>
+                <td ontouchstart="$(this).closest('.balance').balance('key', 'v', this);event.preventDefault();"
+                    onclick="$(this).closest('.balance').balance('key', 'v', this);" colspan="3" class="bluekeypad">
+                        <div class="icon" style="margin:0 auto;"><img src="res/img/icon/valid2.svg"/></div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+    <div id="effects">
+        <div id="good"><img src="res/img/effects/alert02.svg"/></div>
+        <div id="wrong"><img src="res/img/effects/alert01.svg"/></div>
+    </div>
+
+    <div id="course" ontouchstart="$(this).closest('.balance').balance('course');event.preventDefault();"
+                      onclick="$(this).closest('.balance').balance('course');"><div>
+        <div id="art"></div>
+        <pre></pre>
+    </div></div>
+
+    <div id="splashex" ontouchstart="$(this).hide().closest('.balance').balance('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.balance').balance('next');"><div>
         <h1 id="label"></h1>
         <div id="guide"></div>

@@ -1,10 +1,47 @@
 .balance                            { background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat;}
-.balance div#splashex               { background-image:url("../../res/img/banners/it.svg"); }
-.balance div#splashex h1            { position:absolute; top:45%; left:80%; font-size:1.5em; }
-.balance div#splashex #guide        { position:absolute; top:52%; left:45%; font-size:.75em; width:48%;;
-                                          text-align:justify; }
-.balance div#exercice               { width:100%; height:20%; background-repeat:repeat; font-size:.5em;
-                                          background-image:url("../../res/img/background/book02.svg"); text-align:justify;
-                                          font-family: "Courier New" Courier monospace; }
-.balance div#exercice .strong       { color:red; font-weight:bold; border: 1px solid red; border-width:1px 0; }
-.balance div#board                  { height:70%; font-size:.6em; }
+.balance div#splashex               { background-image:url("../../res/img/banners/balance.svg"); background-color:rgba(0,0,0,0.2); }
+.balance div#splashex h1            { position:absolute; top:6%; left:70%; font-size:1.5em; }
+.balance div#splashex #guide        { position:absolute; top:13%; left:33%; font-size:1em; width:55%;
+                                      text-align:justify; }
+.balance .button                    { width:1em; height:1em; position:absolute; font-size:2em; top:80%; overflow:visible;
+                                      background-image:url("../../res/img/icon/tab00.svg"); border-radius:.5em;
+                                      background-color:white; cursor:pointer; display:none; }
+.balance .button.s                  { background-color:red; }
+.balance .button#calc               { left:3.5%; }
+.balance .button#fill               { left:84%; }
+.balance div#svg                    { position:relative;width:16em;height:12em; }
+
+.balance #course                  { position:absolute;top:0;left:0;background-color:rgba(0,0,0,0.2); width:100%; height:100%;
+                                      font-size:0.5em; cursor:pointer; display:none; }
+.balance #course>div              { background-image:url("../../res/img/background/book02.svg"); background-repeat:repeat;
+                                      width:31em; padding:.5em; height:30%; margin-top:10%; }
+.balance #course>div #art        { float:left; width:1em; height:1em; font-size:7em; display:none;}
+.balance #course>div pre              { font-family: "Courier New" Courier monospace; margin-left:1em; font-size:.8em; color:#222;
+                                      white-space: pre; float:left; width:65%; overflow:visible; }
+
+
+.balance #calculator               { height:auto; display:none; background-color:rgba(0,0,0,0.8); font-size:.6em;
+                                      border-radius:.25em; overflow:visible; padding:.03em; position:absolute; top:5%; left:5%; }
+.balance #calculator #screen       { font-size:1.2em; width:4.5em; border-radius:.25em; cursor:move;
+                                   text-align:center; color:#0F0; font-weight:bold;
+                                   padding:.2em 0; background-color:#030;
+                                   background-image:url("../../res/img/background/book05.svg"); background-repeat:repeat;}
+.balance #calculator #screen:after  { content:"g"; }
+.balance #calculator td             { width:1.2em; overflow:hidden; cursor:pointer; text-align:center; font-weight:bold;
+                                          font-family: "Courier New" Courier monospace;
+                                          color:rgb(220,231,241); border-radius:.25em; }
+.balance .bluekeypad                { background-color:rgba(84,137,184,0.9);
+                                   -webkit-transition: background-color 1000ms ease-in;
+                                   -moz-transition: background-color 1000ms ease-in;
+                                   -o-transition: background-color 1000ms ease-in;
+                                   -ms-transition: background-color 1000ms ease-in;
+                                   transition: background-color 1000ms ease-in; }
+.balance .bluekeypad.touch          { background-color:rgba(256,220,50,0.9);
+                                   -webkit-transition: none;
+                                   -moz-transition: none;
+                                   -o-transition: none;
+                                   -ms-transition: none;
+                                   transition: none; }
+
+.balance #effects                       { position:absolute; top:2%; left:70%; }
+.balance #effects>div                   { font-size:5em; width:1em; height:1em; display:none; }
