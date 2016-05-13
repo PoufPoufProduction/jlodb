@@ -24,6 +24,7 @@
         "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
         "\\\[br\\\]",                               "<br/>",
         "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
+        "\\\[green\\\]([^\\\[]+)\\\[/green\\\]",    "<span style='color:green'>$1</span>",
         "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>"
     ];
 
@@ -260,7 +261,7 @@
                     var templatepath = "activities/"+settings.name+"/template/"+settings.current.template+".html"+debug;
                     $this.find("#data").load(templatepath, function(response, status, xhr) {
                         $this.find(".t").each(function(index) {
-                            var value = settings.current.t[index];
+                            var value = index<settings.current.t.length?settings.current.t[index]:" ";
                             if (vRegexp) { value = value.replace(vRegexp, settings.regexp.to); }
                             if (settings.current.t && settings.current.t.length>index) {
                                 $(this).html("<div style='font-size:"+settings.font+"em;margin-top:"+

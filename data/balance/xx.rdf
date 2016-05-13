@@ -2,12 +2,14 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dct="http://purl.org/dc/terms/">
 
+    <!-- weight is known : 0. -->
+
     <rdf:Description>
         <dct:identifier>01</dct:identifier>
-        <dct:title xml:lang="fr-FR">Équilibrer une balance grâce au poid proposé par l'exercice [500].</dct:title>
-        <dct:description><![CDATA["art":"weight/A_to_C","course":["Faites glisser le poids de 500g, disponible\\nen haut de la fenêtre, vers le plateau gauche\\nde la balance afin d'équilibrer celle-ci.\\n\\nL'aiguille doit être alors verticale."],"weights":["g500"],"value":500]]></dct:description>
+        <dct:title xml:lang="fr-FR">Équilibrer une balance grâce au poid proposé par l'exercice [50].</dct:title>
+        <dct:description><![CDATA["art":"weight/A_to_C","course":["Faites glisser le poids de 50g, disponible\\nen haut de la fenêtre, vers le plateau gauche\\nde la balance afin d'équilibrer celle-ci.\\n\\nL'aiguille doit être alors verticale."],"weights":["g50"],"value":50]]></dct:description>
         <dct:extent>1</dct:extent>
-        <dct:subject>gravity</dct:subject>
+        <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>01</dct:alternative>
@@ -16,10 +18,10 @@
 
     <rdf:Description>
         <dct:identifier>02</dct:identifier>
-        <dct:title xml:lang="fr-FR">Équilibrer une balance grâce à l'un des poids proposés par l'exercice [20].</dct:title>
-        <dct:description><![CDATA["art":"weight/A_to_C","course":["Parmi tous les poids proposés en haut\\nde la fenêtre, trouvez celui permettant\\nd'équilibrer la balance."],"weights":["g200","g20","g2"],"value":20]]></dct:description>
+        <dct:title xml:lang="fr-FR">Équilibrer une balance grâce à l'un des poids proposés par l'exercice [10].</dct:title>
+        <dct:description><![CDATA["art":"weight/A_to_C","course":["Parmi tous les poids proposés en haut\\nde la fenêtre, trouvez celui permettant\\nd'équilibrer la balance."],"weights":["g100","g10","g1"],"value":10]]></dct:description>
         <dct:extent>1</dct:extent>
-        <dct:subject>gravity</dct:subject>
+        <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>01</dct:alternative>
@@ -27,21 +29,33 @@
 
     <rdf:Description>
         <dct:identifier>03</dct:identifier>
-        <dct:title xml:lang="fr-FR">Équilibrer une balance grâce à l'un des poids proposés par l'exercice [100,2,10].</dct:title>
-        <dct:description><![CDATA["weights":["g200","g100","g20","g10","g2","g1"],"data":[{"value":100},{"value":2},{"value":10}]]]></dct:description>
+        <dct:title xml:lang="fr-FR">Équilibrer une balance grâce à l'un des poids proposés par l'exercice [100,2,20].</dct:title>
+        <dct:description><![CDATA["weights":["g200","g100","g20","g10","g2","g1"],"data":[{"value":100},{"value":2},{"value":20}]]]></dct:description>
         <dct:extent>2</dct:extent>
-        <dct:subject>gravity</dct:subject>
+        <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>01</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>0a</dct:identifier>
-        <dct:title xml:lang="fr-FR">Équilibrer une balance grâce à l'un des poids proposés par l'exercice.</dct:title>
+        <dct:identifier>04</dct:identifier>
+        <dct:title xml:lang="fr-FR">Équilibrer une balance grâce à l'un des poids proposés par l'exercice (jusqu'à 100).</dct:title>
+        <dct:description><![CDATA["weights":["g100","g50","g20","g10","g5","g2","g1"],"number":5,"gen":"function(){var w=[100,50,20,10,5,2,1]; return {\\\"value\\\":w[Math.floor(Math.random()*w.length)]};}"]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>01</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>05</dct:identifier>
+        <dct:title xml:lang="fr-FR">Équilibrer une balance grâce à l'un des poids proposés par l'exercice (jusqu'à 1000).</dct:title>
         <dct:description><![CDATA["weights":["g1000","g500","g200","g100","g50","g20","g10","g5","g2","g1"],"number":5,"gen":"function(){var w=[1000,500,200,100,50,20,10,5,2,1]; return {\\\"value\\\":w[Math.floor(Math.random()*w.length)]};}"]]></dct:description>
         <dct:extent>2</dct:extent>
-        <dct:subject>gravity</dct:subject>
+        <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>01</dct:alternative>
@@ -50,28 +64,165 @@
 
 
     <rdf:Description>
-        <dct:identifier>aa</dct:identifier>
-        <dct:title xml:lang="fr-FR">Équilibrer une balance pour déterminer le poids d'un objet.</dct:title>
-        <dct:description><![CDATA["number":3,"gen":"function(){ return {\\\"value\\\":Math.floor(Math.random()*1500)};}"]]></dct:description>
-        <dct:extent>2</dct:extent>
-        <dct:subject>gravity</dct:subject>
+        <dct:identifier>0a</dct:identifier>
+        <dct:title xml:lang="fr-FR">Équilibrer une balance grâce aux deux poids proposés par l'exercice [51].</dct:title>
+        <dct:description><![CDATA["art":"weight/AA_to_C","course":["Comme 51 = 50 + 1, faites glisser les deux\\npoids disponibles sur le plateau gauche\\nde la balance pour équilibrer celle-ci."],"weights":["g50","g1"],"value":51]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>01</dct:alternative>
+        <dct:alternative>0a</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>0b</dct:identifier>
+        <dct:title xml:lang="fr-FR">Équilibrer une balance grâce à deux des poids proposés proposés par l'exercice (jusqu'à 100).</dct:title>
+        <dct:description><![CDATA["weights":["g50","g20","g10","g5","g2","g1"],"number":5,"gen":"function(){var w=[5,2,1]; return {\\\"value\\\":w[Math.floor(Math.random()*w.length)]+w[Math.floor(Math.random()*w.length)]*10};}"]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>0a</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>0g</dct:identifier>
+        <dct:title xml:lang="fr-FR">Équilibrer une balance grâce aux poids proposés proposés par l'exercice (jusqu'à 100).</dct:title>
+        <dct:description><![CDATA["weights":["g50","g20","h20","g10","g5","g2","h2","g1"],"number":5,"gen":"function(){return {\\\"value\\\":Math.floor(Math.random()*100)};}"]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>0a</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>0h</dct:identifier>
+        <dct:title xml:lang="fr-FR">Équilibrer une balance grâce aux poids proposés proposés par l'exercice (jusqu'à 1000).</dct:title>
+        <dct:description><![CDATA["number":5,"gen":"function(){return {\\\"value\\\":Math.floor(Math.random()*1000)};}"]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>0a</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>0i</dct:identifier>
+        <dct:title xml:lang="fr-FR">Équilibrer une balance grâce aux poids proposés proposés par l'exercice (jusqu'à 2000).</dct:title>
+        <dct:description><![CDATA["number":5,"gen":"function(){return {\\\"value\\\":Math.floor(Math.random()*2000)};}"]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>0a</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+    </rdf:Description>
+
+   <rdf:Description>
+        <dct:identifier>0A</dct:identifier>
+        <dct:title xml:lang="fr-FR">Équilibrer une balance grâce aux deux poids proposés par l'exercice [49].</dct:title>
+        <dct:description><![CDATA["ravailable":true,"art":"weight/A_to_AC","course":["Comme 49 = 50 - 1, faites glisser le poids\\nde 50 grammes sur le plateau gauche de la\\nbalance et le poids de 1 gramme sur le\\nplateau droit.\\nAinsi, chaque plateau supporte le même\\npoids de 50 grammes : la balance est à\\nl'équilibre."],"weights":["g50","g1"],"value":49]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>subtraction</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>0A</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
     </rdf:Description>
 
 
     <rdf:Description>
         <dct:identifier>ba</dct:identifier>
-        <dct:title xml:lang="fr-FR">dev.</dct:title>
-        <dct:description><![CDATA["number":3,"type":"bag","gen":"function(){ return {\\\"value\\\":Math.floor(Math.random()*1500)};}"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Peser un objet (jusqu'à 100)</dct:title>
+        <dct:description><![CDATA["weights":["g50","g20","h20","g10","g5","g2","h2","g1"],"number":3,"type":"bag","gen":"function(){ return {\\\"value\\\":Math.floor(Math.random()*100)};}"]]></dct:description>
         <dct:extent>2</dct:extent>
-        <dct:subject>gravity</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>01</dct:alternative>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>ba</dct:alternative>
     </rdf:Description>
 
+    <rdf:Description>
+        <dct:identifier>bb</dct:identifier>
+        <dct:title xml:lang="fr-FR">Peser un objet (jusqu'à 1000)</dct:title>
+        <dct:description><![CDATA["weights":["g500","g200","h200","g100","g50","g20","h20","g10","g5","g2","h2","g1"],"number":3,"type":"bag","gen":"function(){ return {\\\"value\\\":Math.floor(Math.random()*1000)};}"]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>ba</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>bc</dct:identifier>
+        <dct:title xml:lang="fr-FR">Peser un objet (jusqu'à 1500)</dct:title>
+        <dct:description><![CDATA["number":3,"type":"bag","gen":"function(){ return {\\\"value\\\":Math.floor(Math.random()*1500)};}"]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>ba</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>bd</dct:identifier>
+        <dct:title xml:lang="fr-FR">Peser un objet (jusqu'à 2000)</dct:title>
+        <dct:description><![CDATA["number":3,"type":"bag","gen":"function(){ return {\\\"value\\\":Math.floor(Math.random()*2000)};}"]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>ba</dct:alternative>
+    </rdf:Description>
+
+   <rdf:Description>
+        <dct:identifier>bA</dct:identifier>
+        <dct:title xml:lang="fr-FR">Peser un objet et déterminer son poids (jusqu'à 100)</dct:title>
+        <dct:description><![CDATA["calc":true,"weights":["g50","g20","h20","g10","g5","g2","h2","g1"],"number":3,"type":"bag","gen":"function(){ return {\\\"value\\\":Math.floor(Math.random()*100)};}"]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>ba</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>bB</dct:identifier>
+        <dct:title xml:lang="fr-FR">Peser un objet (jusqu'à 1000)</dct:title>
+        <dct:description><![CDATA["calc":true,"weights":["g500","g200","h200","g100","g50","g20","h20","g10","g5","g2","h2","g1"],"number":3,"type":"bag","gen":"function(){ return {\\\"value\\\":Math.floor(Math.random()*1000)};}"]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>ba</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>bC</dct:identifier>
+        <dct:title xml:lang="fr-FR">Peser un objet (jusqu'à 1500)</dct:title>
+        <dct:description><![CDATA["calc":true,"number":3,"type":"bag","gen":"function(){ return {\\\"value\\\":Math.floor(Math.random()*1500)};}"]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>ba</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>bD</dct:identifier>
+        <dct:title xml:lang="fr-FR">Peser un objet (jusqu'à 2000)</dct:title>
+        <dct:description><![CDATA["calc":true,"number":3,"type":"bag","gen":"function(){ return {\\\"value\\\":Math.floor(Math.random()*2000)};}"]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>ba</dct:alternative>
+    </rdf:Description>
 
 </rdf:RDF>
 

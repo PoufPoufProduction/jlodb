@@ -2,6 +2,43 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dct="http://purl.org/dc/terms/">
 
+
+    <rdf:Description>
+        <dct:identifier>a01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier les balances dont la position est compatible avec les valeurs numériques fournies.</dct:title>
+        <dct:description><![CDATA["regexp":{ "from": "([^ ]+)","to":"<div class='icon'><img src=\\\"res/img/weight/$1.svg\\\"/></div>"},"states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"yellow"}]},"wrong":{"style":{"background-color":"red"}},"legend":["[red][b]A[/b] = 100g[/red] | [green][b]B[/b] = 50g[/green] | [blue][b]C[/b] = 2g[/blue]","[red][b]A[/b] = 21g[/red] | [green][b]B[/b] = 10g[/green] | [blue][b]C[/b] = 50g[/blue]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"font":1,"values":[{"template":"array3x2r","result":"001101","t":["A_eq_B","B_lt_C","A_wt_C","B_wt_C","A_lt_B","A_wt_B"]},{"template":"array3x2r","result":"000111","t":["A_wt_C","A_lt_B","B_wt_C","A_lt_C","B_lt_C","A_wt_B"]}],"exercice":{"value":"Coloriez en [b]jaune[/b], les balances dont la position est [b]compatible[/b] avec les valeurs fournies plus haut."}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>gravity</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>a01</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>a02</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier les balances dont la position est compatible avec les valeurs numériques fournies.</dct:title>
+        <dct:description><![CDATA["regexp":{ "from": "([^ ]+)","to":"<div class='icon'><img src=\\\"res/img/weight/$1.svg\\\"/></div>"},"states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"yellow"}]},"wrong":{"style":{"background-color":"red"}},"legend":["[red][b]A[/b] = 80g[/red] | [green][b]B[/b] = 15g[/green] | [blue][b]C[/b] = 15g[/blue]","[red][b]A[/b] = 20g[/red] | [green][b]B[/b] = 10g[/green] | [blue][b]C[/b] = 15g[/blue]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"font":1,"values":[{"template":"array3x2r","result":"011001","t":["A_eq_B","B_eq_C","A_wt_C","B_wt_C","A_lt_B","A_wt_B"]},{"template":"array3x2r","result":"010111","t":["A_lt_C","A_eq_BB","B_eq_C","A_wt_B","B_lt_C","A_wt_C"]}],"exercice":{"value":"Coloriez en [b]jaune[/b], les balances dont la position est [b]compatible[/b] avec les valeurs fournies plus haut."}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>gravity</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>a01</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>a03</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier les balances dont la position est compatible avec les valeurs numériques fournies.</dct:title>
+        <dct:description><![CDATA["regexp":{ "from": "([^ ]+)","to":"<div class='icon'><img src=\\\"res/img/weight/$1.svg\\\"/></div>"},"states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"yellow"}]},"wrong":{"style":{"background-color":"red"}},"legend":["[red][b]A[/b] = 20g[/red] | [green][b]B[/b] = 10g[/green] | [blue][b]C[/b] = 30g[/blue]","[red][b]A[/b] = 20g[/red] | [green][b]B[/b] = 10g[/green] | [blue][b]C[/b] = 15g[/blue]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"font":1,"values":[{"template":"array3x2r","result":"010011","t":["AA_lt_BC","A_eq_BB","AB_wt_CC","A_lt_B","AA_eq_BC","AB_lt_CC"]},{"template":"array3x2r","result":"101100","t":["AA_wt_BC","AA_lt_C","AB_eq_CC","A_wt_B","AA_lt_BC","AB_wt_CC"]}],"exercice":{"value":"Coloriez en [b]jaune[/b], les balances dont la position est [b]compatible[/b] avec les valeurs fournies plus haut."}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>gravity</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>a01</dct:alternative>
+    </rdf:Description>
+
     <rdf:Description>
         <dct:identifier>b01</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier les propositions exactes relatives à différentes pesées.</dct:title>
