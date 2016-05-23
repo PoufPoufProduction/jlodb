@@ -135,9 +135,54 @@
         <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
     </rdf:Description>
 
+    <rdf:Description>
+        <dct:identifier>b1</dct:identifier>
+        <dct:title xml:lang="fr-FR">Peser un objet [12].</dct:title>
+        <dct:description><![CDATA["art":"weight/AA_to_C","course":["Pour peser un objet, poser le poids le\\nplus lourd sur la balance de gauche (20).\\nSi celle-ci change de position, cela veut\\ndire que le poids est trop lourd.\\nEnlevez-le. Sinon, laissez-le sur la\\nbalance. Dans tous le cas, recommencez\\navec le poids plus léger suivant (10)."],"type":"bag","weights":["g20","g10","g5","g2","h2","g1"],"value":12]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>01</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>b2</dct:identifier>
+        <dct:title xml:lang="fr-FR">Peser un objet [23].</dct:title>
+        <dct:description><![CDATA["type":"bag","weights":["g20","g10","g5","g2","h2","g1"],"value":23]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>01</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>b3</dct:identifier>
+        <dct:title xml:lang="fr-FR">Peser un objet [14].</dct:title>
+        <dct:description><![CDATA["art":"weight/AA_to_C","course":["Attention avec les poids de 2g, 20g et\\n200g. S'il ne change pas le sens de la\\nbalance, pensez à tester avec le deuxième\\npoids de même valeur."],"type":"bag","weights":["g20","g10","g5","g2","h2","g1"],"value":14]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>01</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+    </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>ba</dct:identifier>
+        <dct:title xml:lang="fr-FR">Peser un objet (jusqu'à 25)</dct:title>
+        <dct:description><![CDATA["weights":["g20","g10","g5","g2","h2","g1"],"number":3,"type":"bag","gen":"function(){ return {\\\"value\\\":Math.floor(Math.random()*25)};}"]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>ba</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>bb</dct:identifier>
         <dct:title xml:lang="fr-FR">Peser un objet (jusqu'à 100)</dct:title>
         <dct:description><![CDATA["weights":["g50","g20","h20","g10","g5","g2","h2","g1"],"number":3,"type":"bag","gen":"function(){ return {\\\"value\\\":Math.floor(Math.random()*100)};}"]]></dct:description>
         <dct:extent>2</dct:extent>
@@ -148,7 +193,7 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>bb</dct:identifier>
+        <dct:identifier>bc</dct:identifier>
         <dct:title xml:lang="fr-FR">Peser un objet (jusqu'à 1000)</dct:title>
         <dct:description><![CDATA["weights":["g500","g200","h200","g100","g50","g20","h20","g10","g5","g2","h2","g1"],"number":3,"type":"bag","gen":"function(){ return {\\\"value\\\":Math.floor(Math.random()*1000)};}"]]></dct:description>
         <dct:extent>2</dct:extent>
@@ -159,7 +204,7 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>bc</dct:identifier>
+        <dct:identifier>bd</dct:identifier>
         <dct:title xml:lang="fr-FR">Peser un objet (jusqu'à 1500)</dct:title>
         <dct:description><![CDATA["number":3,"type":"bag","gen":"function(){ return {\\\"value\\\":Math.floor(Math.random()*1500)};}"]]></dct:description>
         <dct:extent>2</dct:extent>
@@ -170,7 +215,7 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>bd</dct:identifier>
+        <dct:identifier>be</dct:identifier>
         <dct:title xml:lang="fr-FR">Peser un objet (jusqu'à 2000)</dct:title>
         <dct:description><![CDATA["number":3,"type":"bag","gen":"function(){ return {\\\"value\\\":Math.floor(Math.random()*2000)};}"]]></dct:description>
         <dct:extent>2</dct:extent>
@@ -180,8 +225,19 @@
         <dct:alternative>ba</dct:alternative>
     </rdf:Description>
 
-   <rdf:Description>
+    <rdf:Description>
         <dct:identifier>bA</dct:identifier>
+        <dct:title xml:lang="fr-FR">Peser un objet et déterminer son poids (jusqu'à 25)</dct:title>
+        <dct:description><![CDATA["art":"weight/AA_to_C","course":["Lorsque l'image de la calculatrice est\\naffichée en bas à gauche de l'écran,\\nil vous faut entrer le poids de l'objet\\npour valider l'exercice."],"calc":true,"weights":["g20","g10","g5","g2","h2","g1"],"number":3,"type":"bag","gen":"function(){ return {\\\"value\\\":Math.floor(Math.random()*25)};}"]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>ba</dct:alternative>
+    </rdf:Description>
+
+   <rdf:Description>
+        <dct:identifier>bB</dct:identifier>
         <dct:title xml:lang="fr-FR">Peser un objet et déterminer son poids (jusqu'à 100)</dct:title>
         <dct:description><![CDATA["calc":true,"weights":["g50","g20","h20","g10","g5","g2","h2","g1"],"number":3,"type":"bag","gen":"function(){ return {\\\"value\\\":Math.floor(Math.random()*100)};}"]]></dct:description>
         <dct:extent>2</dct:extent>
@@ -192,7 +248,7 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>bB</dct:identifier>
+        <dct:identifier>bC</dct:identifier>
         <dct:title xml:lang="fr-FR">Peser un objet (jusqu'à 1000)</dct:title>
         <dct:description><![CDATA["calc":true,"weights":["g500","g200","h200","g100","g50","g20","h20","g10","g5","g2","h2","g1"],"number":3,"type":"bag","gen":"function(){ return {\\\"value\\\":Math.floor(Math.random()*1000)};}"]]></dct:description>
         <dct:extent>2</dct:extent>
@@ -203,7 +259,7 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>bC</dct:identifier>
+        <dct:identifier>bD</dct:identifier>
         <dct:title xml:lang="fr-FR">Peser un objet (jusqu'à 1500)</dct:title>
         <dct:description><![CDATA["calc":true,"number":3,"type":"bag","gen":"function(){ return {\\\"value\\\":Math.floor(Math.random()*1500)};}"]]></dct:description>
         <dct:extent>2</dct:extent>
@@ -214,7 +270,7 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>bD</dct:identifier>
+        <dct:identifier>bE</dct:identifier>
         <dct:title xml:lang="fr-FR">Peser un objet (jusqu'à 2000)</dct:title>
         <dct:description><![CDATA["calc":true,"number":3,"type":"bag","gen":"function(){ return {\\\"value\\\":Math.floor(Math.random()*2000)};}"]]></dct:description>
         <dct:extent>2</dct:extent>
