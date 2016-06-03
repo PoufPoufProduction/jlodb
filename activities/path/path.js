@@ -32,6 +32,9 @@
         "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
         "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
         "\\\[strong\\\]([^\\\[]+)\\\[/strong\\\]",        "<div class='strong'>$1</div>",
+        "\\\[h1\\\]([^\\\[]+)\\\[/h1\\\]",        "<div class='h1'>$1</div>",
+        "\\\[small\\\]([^\\\[]+)\\\[/small\\\]",        "<div class='small'>$1</div>",
+        "\\\[img\\\]([^\\\[]+)\\\[/img\\\]",        "<div class='img'><img src='res/img/$1.svg'/></div>",
         "\\\[action\\\]([^\\\[]+)\\\[/action\\\]",  "<div class='icon' style='float:left;margin:.1em;font-size:2em;'><img src='res/img/action/$1.svg'/></div>"
     ];
 
@@ -215,21 +218,26 @@
 
                         
                         if (current!=-1) {
+
                             
+
                             var limit = 0, ok = true;
+                            var vx = settings.nodes[current][0], vy = settings.nodes[current][1];
                             if (settings.limit) { limit = $.isArray(settings.limit)?
                                                     settings.limit[settings.current%settings.limit.length]:settings.limit; }
-                            if (typeof(limit)=="object") {
-                                ok = ( Math.abs(x-settings.nodes[settings.begin[id]][0]) < limit.x) &&
-                                     ( Math.abs(y-settings.nodes[settings.begin[id]][1]) < limit.y);
-                            }
-                            else {
-                                var d = (x-settings.nodes[settings.begin[id]][0])*(x-settings.nodes[settings.begin[id]][0]) +
-                                        (y-settings.nodes[settings.begin[id]][1])*(y-settings.nodes[settings.begin[id]][1]);
-                                ok = (d<=limit*limit);
+                            if (limit) { 
+                                if (typeof(limit)=="object") {
+                                    ok = ( Math.abs(vx-settings.nodes[settings.begin[id]][0]) < limit.x) &&
+                                         ( Math.abs(vy-settings.nodes[settings.begin[id]][1]) < limit.y);
+                                }
+                                else {
+                                    var d = (vx-settings.nodes[settings.begin[id]][0])*(vx-settings.nodes[settings.begin[id]][0]) +
+                                            (vy-settings.nodes[settings.begin[id]][1])*(vy-settings.nodes[settings.begin[id]][1]);
+                                    ok = (d<=limit*limit);
+                                }
                             }
 
-                            if ( ok)  {
+                            if (ok)  {
                                 x = settings.nodes[current][0]; y = settings.nodes[current][1];
 
                                 if (settings.paths[id] && settings.paths[id].nodes && settings.paths[id].nodes.length &&
@@ -320,7 +328,15 @@
                     else { $this.find("#"+id).html(value); }
                 }); }
 
-                if (settings.text) { for (var i in settings.text) { $("#"+i,settings.svg.root()).text(settings.text[i]); }}
+                if (settings.text) {
+                    if (typeof(settings.text)=="object") {
+                        for (var i in settings.text) { $("#"+i,settings.svg.root()).text(settings.text[i]); }
+                    }
+                    else {
+                        var gtext = settings.gtext?"#"+settings.gtext+" ":"";
+                        $(gtext+".t",settings.svg.root()).each(function(_i) { if (_i<settings.text.length) $(this).text(settings.text[_i]); });
+                    }
+                }
 
                 // Exercice
                 if (settings.exercice && settings.exercice.length) {
