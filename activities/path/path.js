@@ -21,6 +21,7 @@
         fontex      : 1,
         groupname   : "paths",
         group       : 0,
+        width       : 640,
         effects     : false,
         debug       : true                                     // Debug mode
     };
@@ -390,7 +391,7 @@
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 settings.interactive = true;
-                settings.ratio = $this.width()/640;
+                settings.ratio = $this.width()/settings.width;
             },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
