@@ -22,12 +22,14 @@ if (!$error) {
             $all.=' "title": "EXERCICE ERROR"}';
         }
     }
+    $status = "success";
 }
 
 // PUBLISH DATA UNDER JSON FORMAT
 echo '{';
 echo '  "status" : "'.$status.'",';
 echo '  "textStatus" : "'.$textstatus.'",';
+if ($_GET["id"]) { echo '  "id" : "'.$_GET["id"].'",'; }
 if ($error)     { echo '  "error" : '.$error; }
 else {
     echo '  "exercices": ['.$all.']';

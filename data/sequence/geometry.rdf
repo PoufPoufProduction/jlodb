@@ -32,6 +32,30 @@
         <dct:alternative>fs01</dct:alternative>
     </rdf:Description>
 
+   <rdf:Description>
+        <dct:identifier>ft51</dct:identifier>
+        <dct:title xml:lang="fr-FR">Donner, sans contrainte de temps, le nombre de triangles parmi les cercles.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":0},"gen":"function(){var nb=Math.floor(Math.random()*9),ret=\\\"<div style='width:2em;height:1em;margin-left:.1em;'><svg width='100%' height='100%' viewBox='0 0 192 96'><def><style>path,circle,rect {fill:none;stroke:black;stroke-width:1;} .wrong path,.wrong circle,.wrong rect {stroke:red;fill:red;fill-opacity:0.5;} .good path,.good circle,.good rect {stroke:green;fill:green;fill-opacity:0.5;}</style></def>\\\",aa=[]; for (var i=0;i<8;i++) { aa.push(Math.floor(Math.random()*3)); } var n=0; while(n!=nb){var a=Math.floor(Math.random()*8); if (aa[a]!=3) { aa[a]=3; n++; }}; for (var j=0; j<2; j++) for (var i=0; i<4; i++) { ret+=\\\"<g transform='translate(\\\"+(i*48+24)+\\\",\\\"+(j*48+24)+\\\")'>\\\"; var a=aa[i+j*4]; if (a!=3) { ret+=\\\"<circle x=0 y=0 r=\\\"+(Math.floor(Math.random()*12+10))+\\\"/>\\\"; } else { b=Math.floor(Math.random()*8)+10; c=Math.floor(Math.random()*8)+10; ret+=\\\"<path transform='rotate(\\\"+(Math.random()*360)+\\\")' d='M0,-\\\"+b+\\\" \\\"+c+\\\",7 -\\\"+c+\\\",7 0,-\\\"+b+\\\" z'/>\\\";  } ret+=\\\"</g>\\\"} ret+=\\\"</svg></div>\\\"; return [ret, nb];}","class":"alpha blank h12","font":3]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Combien y a-t-il de [red]triangles[/red] ?"]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>ft52</dct:alternative>
+    </rdf:Description>
+
+   <rdf:Description>
+        <dct:identifier>ft52</dct:identifier>
+        <dct:title xml:lang="fr-FR">Donner, sans contrainte de temps, le nombre de triangles parmi cercles, carrés et rectangles.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":0},"gen":"function(){var nb=Math.floor(Math.random()*9),ret=\\\"<div style='width:2em;height:1em;margin-left:.1em;'><svg width='100%' height='100%' viewBox='0 0 192 96'><def><style>path,circle,rect {fill:none;stroke:black;stroke-width:1;} .wrong path,.wrong circle,.wrong rect {stroke:red;fill:red;fill-opacity:0.5;} .good path,.good circle,.good rect {stroke:green;fill:green;fill-opacity:0.5;}</style></def>\\\",aa=[]; for (var i=0;i<8;i++) { aa.push(Math.floor(Math.random()*3)); } var n=0; while(n!=nb){var a=Math.floor(Math.random()*8); if (aa[a]!=3) { aa[a]=3; n++; }}; for (var j=0; j<2; j++) for (var i=0; i<4; i++) { ret+=\\\"<g transform='translate(\\\"+(i*48+24)+\\\",\\\"+(j*48+24)+\\\")'>\\\"; var a=aa[i+j*4]; if (a==0) { ret+=\\\"<circle x=0 y=0 r=\\\"+(Math.floor(Math.random()*12+10))+\\\"/>\\\"; } else if (a==1) { var b=Math.floor(Math.random()*10)+8; ret+=\\\"<rect transform='rotate(\\\"+(Math.random()*90)+\\\")' x=-\\\"+b+\\\" y=-\\\"+b+\\\" width=\\\"+(2*b)+\\\" height=\\\"+(2*b)+\\\"/>\\\"; } else if (a==2) { var b,c; do { b=Math.floor(Math.random()*7)+10; c=Math.floor(Math.random()*9)+5; } while(Math.abs(b-c)<5); ret+=\\\"<rect transform='rotate(\\\"+(Math.random()*90)+\\\")' x=-\\\"+b+\\\" y=-\\\"+c+\\\" width=\\\"+(2*b)+\\\" height=\\\"+(2*c)+\\\"/>\\\"; } else { b=Math.floor(Math.random()*8)+10; c=Math.floor(Math.random()*8)+10; ret+=\\\"<path transform='rotate(\\\"+(Math.random()*360)+\\\")' d='M0,-\\\"+b+\\\" \\\"+c+\\\",7 -\\\"+c+\\\",7 0,-\\\"+b+\\\" z'/>\\\";  } ret+=\\\"</g>\\\"} ret+=\\\"</svg></div>\\\"; return [ret, nb];}","class":"alpha blank h12","font":3]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Combien y a-t-il de [red]triangles[/red] ?"]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>ft52</dct:alternative>
+    </rdf:Description>
+
 
     <rdf:Description>
         <dct:identifier>fc01</dct:identifier>
@@ -70,6 +94,20 @@
         <dct:alternative>fc11</dct:alternative>
     </rdf:Description>
 
+
+
+   <rdf:Description>
+        <dct:identifier>fc52</dct:identifier>
+        <dct:title xml:lang="fr-FR">Donner, sans contrainte de temps, le nombre de cercles parmi triangles, carrés et rectangles.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":0},"gen":"function(){var nb=Math.floor(Math.random()*9),ret=\\\"<div style='width:2em;height:1em;margin-left:.1em;'><svg width='100%' height='100%' viewBox='0 0 192 96'><def><style>path,circle,rect {fill:none;stroke:black;stroke-width:1;} .wrong path,.wrong circle,.wrong rect {stroke:red;fill:red;fill-opacity:0.5;} .good path,.good circle,.good rect {stroke:green;fill:green;fill-opacity:0.5;}</style></def>\\\",aa=[]; for (var i=0;i<8;i++) { aa.push(Math.floor(Math.random()*3)); } var n=0; while(n!=nb){var a=Math.floor(Math.random()*8); if (aa[a]!=3) { aa[a]=3; n++; }}; for (var j=0; j<2; j++) for (var i=0; i<4; i++) { ret+=\\\"<g transform='translate(\\\"+(i*48+24)+\\\",\\\"+(j*48+24)+\\\")'>\\\"; var a=aa[i+j*4]; if (a==0) { b=Math.floor(Math.random()*8)+10; c=Math.floor(Math.random()*8)+10; ret+=\\\"<path transform='rotate(\\\"+(Math.random()*360)+\\\")' d='M0,-\\\"+b+\\\" \\\"+c+\\\",7 -\\\"+c+\\\",7 0,-\\\"+b+\\\" z'/>\\\";  } else if (a==1) { var b=Math.floor(Math.random()*10)+8; ret+=\\\"<rect transform='rotate(\\\"+(Math.random()*90)+\\\")' x=-\\\"+b+\\\" y=-\\\"+b+\\\" width=\\\"+(2*b)+\\\" height=\\\"+(2*b)+\\\"/>\\\"; } else if (a==2) { var b,c; do { b=Math.floor(Math.random()*7)+10; c=Math.floor(Math.random()*9)+5; } while(Math.abs(b-c)<5); ret+=\\\"<rect transform='rotate(\\\"+(Math.random()*90)+\\\")' x=-\\\"+b+\\\" y=-\\\"+c+\\\" width=\\\"+(2*b)+\\\" height=\\\"+(2*c)+\\\"/>\\\"; } else { ret+=\\\"<circle x=0 y=0 r=\\\"+(Math.floor(Math.random()*12+10))+\\\"/>\\\"; } ret+=\\\"</g>\\\"} ret+=\\\"</svg></div>\\\"; return [ret, nb];}","class":"alpha blank h12","font":3]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Combien y a-t-il de [red]cercles[/red] ?"]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>ft52</dct:alternative>
+    </rdf:Description>
+
     <rdf:Description>
         <dct:identifier>fs01</dct:identifier>
         <dct:title xml:lang="fr-FR">Différencier, sans contrainte de temps, un carré d'un rectangle (sans rotation).</dct:title>
@@ -106,6 +144,44 @@
         <dct:alternative>fs01</dct:alternative>
     </rdf:Description>
 
+
+   <rdf:Description>
+        <dct:identifier>fs51</dct:identifier>
+        <dct:title xml:lang="fr-FR">Donner, sans contrainte de temps, le nombre de carrés parmi les cercles et les triangles.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":0},"gen":"function(){var nb=Math.floor(Math.random()*9),ret=\\\"<div style='width:2em;height:1em;margin-left:.1em;'><svg width='100%' height='100%' viewBox='0 0 192 96'><def><style>path,circle,rect {fill:none;stroke:black;stroke-width:1;} .wrong path,.wrong circle,.wrong rect {stroke:red;fill:red;fill-opacity:0.5;} .good path,.good circle,.good rect {stroke:green;fill:green;fill-opacity:0.5;}</style></def>\\\",aa=[]; for (var i=0;i<8;i++) { aa.push(Math.floor(Math.random()*2)); } var n=0; while(n!=nb){var a=Math.floor(Math.random()*8); if (aa[a]!=2) { aa[a]=2; n++; }}; for (var j=0; j<2; j++) for (var i=0; i<4; i++) { ret+=\\\"<g transform='translate(\\\"+(i*48+24)+\\\",\\\"+(j*48+24)+\\\")'>\\\"; var a=aa[i+j*4]; if (a==0) { ret+=\\\"<circle x=0 y=0 r=\\\"+(Math.floor(Math.random()*12+10))+\\\"/>\\\"; } else if (a==1) { b=Math.floor(Math.random()*8)+10; c=Math.floor(Math.random()*8)+10; ret+=\\\"<path transform='rotate(\\\"+(Math.random()*360)+\\\")' d='M0,-\\\"+b+\\\" \\\"+c+\\\",7 -\\\"+c+\\\",7 0,-\\\"+b+\\\" z'/>\\\"; } else { var b=Math.floor(Math.random()*10)+8; ret+=\\\"<rect transform='rotate(\\\"+(Math.random()*90)+\\\")' x=-\\\"+b+\\\" y=-\\\"+b+\\\" width=\\\"+(2*b)+\\\" height=\\\"+(2*b)+\\\"/>\\\"; } ret+=\\\"</g>\\\"} ret+=\\\"</svg></div>\\\"; return [ret, nb];}","class":"alpha blank h12","font":3]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Combien y a-t-il de [red]carrés[/red] ?"]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>ft52</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>fs52</dct:identifier>
+        <dct:title xml:lang="fr-FR">Donner, sans contrainte de temps, le nombre de carrés parmi les cercles, les triangles et les rectangles.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":0},"gen":"function(){var nb=Math.floor(Math.random()*9),ret=\\\"<div style='width:2em;height:1em;margin-left:.1em;'><svg width='100%' height='100%' viewBox='0 0 192 96'><def><style>path,circle,rect {fill:none;stroke:black;stroke-width:1;} .wrong path,.wrong circle,.wrong rect {stroke:red;fill:red;fill-opacity:0.5;} .good path,.good circle,.good rect {stroke:green;fill:green;fill-opacity:0.5;}</style></def>\\\",aa=[]; for (var i=0;i<8;i++) { aa.push(Math.floor(Math.random()*3)); } var n=0; while(n!=nb){var a=Math.floor(Math.random()*8); if (aa[a]!=3) { aa[a]=3; n++; }}; for (var j=0; j<2; j++) for (var i=0; i<4; i++) { ret+=\\\"<g transform='translate(\\\"+(i*48+24)+\\\",\\\"+(j*48+24)+\\\")'>\\\"; var a=aa[i+j*4]; if (a==0) { ret+=\\\"<circle x=0 y=0 r=\\\"+(Math.floor(Math.random()*12+10))+\\\"/>\\\"; } else if (a==1) { b=Math.floor(Math.random()*8)+10; c=Math.floor(Math.random()*8)+10; ret+=\\\"<path transform='rotate(\\\"+(Math.random()*360)+\\\")' d='M0,-\\\"+b+\\\" \\\"+c+\\\",7 -\\\"+c+\\\",7 0,-\\\"+b+\\\" z'/>\\\"; } else if (a==2) { var b,c; do { b=Math.floor(Math.random()*7)+10; c=Math.floor(Math.random()*9)+5; } while(Math.abs(b-c)<5); ret+=\\\"<rect transform='rotate(\\\"+(Math.random()*90)+\\\")' x=-\\\"+b+\\\" y=-\\\"+c+\\\" width=\\\"+(2*b)+\\\" height=\\\"+(2*c)+\\\"/>\\\";} else { var b=Math.floor(Math.random()*10)+8; ret+=\\\"<rect transform='rotate(\\\"+(Math.random()*90)+\\\")' x=-\\\"+b+\\\" y=-\\\"+b+\\\" width=\\\"+(2*b)+\\\" height=\\\"+(2*b)+\\\"/>\\\"; } ret+=\\\"</g>\\\"} ret+=\\\"</svg></div>\\\"; return [ret, nb];}","class":"alpha blank h12","font":3]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Combien y a-t-il de [red]carrés[/red] ?"]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>ft52</dct:alternative>
+    </rdf:Description>
+
+   <rdf:Description>
+        <dct:identifier>fs61</dct:identifier>
+        <dct:title xml:lang="fr-FR">Donner, sans contrainte de temps, le nombre de rectangles parmi les cercles et les triangles.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":0},"gen":"function(){var nb=Math.floor(Math.random()*9),ret=\\\"<div style='width:2em;height:1em;margin-left:.1em;'><svg width='100%' height='100%' viewBox='0 0 192 96'><def><style>path,circle,rect {fill:none;stroke:black;stroke-width:1;} .wrong path,.wrong circle,.wrong rect {stroke:red;fill:red;fill-opacity:0.5;} .good path,.good circle,.good rect {stroke:green;fill:green;fill-opacity:0.5;}</style></def>\\\",aa=[]; for (var i=0;i<8;i++) { aa.push(Math.floor(Math.random()*2)); } var n=0; while(n!=nb){var a=Math.floor(Math.random()*8); if (aa[a]!=2) { aa[a]=2; n++; }}; for (var j=0; j<2; j++) for (var i=0; i<4; i++) { ret+=\\\"<g transform='translate(\\\"+(i*48+24)+\\\",\\\"+(j*48+24)+\\\")'>\\\"; var a=aa[i+j*4]; if (a==0) { ret+=\\\"<circle x=0 y=0 r=\\\"+(Math.floor(Math.random()*12+10))+\\\"/>\\\"; } else if (a==1) { b=Math.floor(Math.random()*8)+10; c=Math.floor(Math.random()*8)+10; ret+=\\\"<path transform='rotate(\\\"+(Math.random()*360)+\\\")' d='M0,-\\\"+b+\\\" \\\"+c+\\\",7 -\\\"+c+\\\",7 0,-\\\"+b+\\\" z'/>\\\"; } else { var b,c; do { b=Math.floor(Math.random()*7)+10; c=Math.floor(Math.random()*9)+5; } while(Math.abs(b-c)<5); ret+=\\\"<rect transform='rotate(\\\"+(Math.random()*90)+\\\")' x=-\\\"+b+\\\" y=-\\\"+c+\\\" width=\\\"+(2*b)+\\\" height=\\\"+(2*c)+\\\"/>\\\"; } ret+=\\\"</g>\\\"} ret+=\\\"</svg></div>\\\"; return [ret, nb];}","class":"alpha blank h12","font":3]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Combien y a-t-il de [red]rectangles[/red] ?"]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>ft52</dct:alternative>
+    </rdf:Description>
+
+
     <!-- LINES, SEGMENT, LENGTH -->
 
     <rdf:Description>
@@ -130,6 +206,19 @@
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>l02</dct:alternative>
+    </rdf:Description>
+
+
+   <rdf:Description>
+        <dct:identifier>l51</dct:identifier>
+        <dct:title xml:lang="fr-FR">Donner, sans contrainte de temps, le nombre de segments composant les différentes figures.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":0},"gen":"function(){var val=[[4,'M -16.4,-16.4 12,-12 16.4,16.4 -16.4,15 z'],[4,'M -11,-8 13,-12 8,12 -16,15 z'],[4,'M -4,-16.1 5.8,-12.1 5.8,16.1 -8,16.1 z'],[3,'M -16,14.4 -0.5,-16.4 16.1,13 z'],[5,'M 1.8,14.8 -15.4,4 l 7.5,-20.4 20,0 4.2,16.2 z'],[1,'M -16.4,-10 16.2,3.8'],[2,'M 0,-24 0,0 10,5'],[2,'M 0,-24 0,0 -22,0'],[2,'M -12,-24 -11,20 M 12,-24 10,22'],[3,'M 0,-24 0,0 -20,5 M 12,12 0,0'],[3,'M -10,-20 -5,12 M 0,-16 -2,15 M 8,-16 11,20'],[4,'M 0,-24 0,0 -20,5 M 12,12 0,0 10,-15'],[5,'M 0,-24 0,0 -20,5 M 12,12 0,0 10,-15 M -12,7 0,0']],ret=\\\"<div style='width:1em;height:1em;margin-left:0.2em;'><svg width='100%' height='100%' viewBox='0 0 52 52'><def><style>path {fill:none;stroke:black;stroke-width:1;}</style></def><g transform='translate(26,26)'>\\\",a=Math.floor(Math.random()*val.length); ret+=\\\"<path transform='rotate(\\\"+Math.random()*360+\\\")' d='\\\"+val[a][1]+\\\"'/></g></svg></div>\\\"; return [ret, val[a][0]];}","class":"alpha blank neg","font":5]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Combien de [red]segments[/red] composent chaque figure ?"]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>l51</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>

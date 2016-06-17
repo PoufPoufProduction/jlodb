@@ -125,6 +125,7 @@
                 // Build the nodes
                 if (typeof(settings.dots)=="string") {
                     var gloss={};
+
                     $(settings.dots,settings.svg.root()).each(function() {
                         if ($(this).is("circle")) {
                             if ($(this).attr("id")) {
@@ -142,6 +143,7 @@
                         }
                     });
                 }
+
 
                 settings.group = $("#"+settings.groupname, settings.svg.root());
                 if (!settings.group.length) {
