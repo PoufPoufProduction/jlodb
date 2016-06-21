@@ -19,6 +19,16 @@
         debug       : false                                     // Debug mode
     };
 
+
+    var regExp = [
+        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
+        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
+        "\\\[br\\\]",                               "<br/>",
+        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
+        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>"
+    ];
+
+
     // private methods
     var helpers = {
         // @generic: Check the context
@@ -44,6 +54,13 @@
             var settings = helpers.settings($this);
             helpers.unbind($this);
             settings.context.onquit($this,{'status':'success','score':settings.score});
+        },
+        format: function(_text) {
+            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
+                var vReg = new RegExp(regExp[i*2],"g");
+                _text = _text.replace(vReg,regExp[i*2+1]);
+            }
+            return _text;
         },
         loader: {
             css: function($this) {
@@ -115,29 +132,8 @@
                     settings.color = [settings.selected,-1];
                 }
 
-                $this.find("#board").bind('touchstart mousedown', function() { settings.down=true; event.preventDefault();})
-                                    .bind('touchend mouseup', function() { settings.elt=0; settings.down=false; event.preventDefault();});
-
-                $("#"+settings.canvas, settings.svg.root()).css("display","inline");
-                $("#"+settings.canvas+" ."+settings.toggle, settings.svg.root()).each(function(_index) {
-                    $(this).bind('touchmove mousemove', function() {
-                        if (settings.interactive && settings.color[0]!=-1 && settings.down && settings.elt!=this) {
-                            helpers.paint($this, $(this), false);
-                            if (settings.cbk) { eval('('+settings.cbk+')')(settings.svg.root(),helpers.result($this), $(this).attr("id").substr(1)); }
-                        }
-                        settings.elt = this;
-                        event.preventDefault();
-                    });
-                    $(this).bind('touchstart mousedown', function() {
-                        if (settings.interactive && settings.color[0]!=-1) {
-                            helpers.paint($this, $(this), true);
-                            if (settings.cbk) { eval('('+settings.cbk+')')(settings.svg.root(),helpers.result($this), $(this).attr("id").substr(1)); }
-                        }
-                        settings.elt = this;
-                        event.preventDefault();
-                    });
-                    $(this).attr("id","c"+_index);
-                });
+                $this.find("#board").bind('touchstart mousedown', function(_event) { settings.down=true; _event.preventDefault();})
+                                    .bind('touchend mouseup', function(_event) { settings.elt=0; settings.down=false; _event.preventDefault();});
 
                 $this.find("#exercice #content").css("font-size",settings.font+"em");
 
@@ -156,9 +152,11 @@
 
             for (var i=0; i<settings.result.length; i++) {
                 var vClass=$("#"+settings.canvas+" #c"+i, settings.svg.root()).attr("class");
-                vClass=vClass.replace(" wrong","");
-                if (settings.remove) { vClass=vClass.replace(/ c[0-9]/g,""); }
-                $("#"+settings.canvas+" #c"+i, settings.svg.root()).attr("class",vClass);
+                if (vClass) {
+                    vClass=vClass.replace(" wrong","");
+                    if (settings.remove) { vClass=vClass.replace(/ c[0-9]/g,""); }
+                    $("#"+settings.canvas+" #c"+i, settings.svg.root()).attr("class",vClass);
+                }
             }
 
 
@@ -175,7 +173,7 @@
             }
 
             var t = settings.t;
-            if (!t && settings.values) { number=settings.values.length; t = settings.values[settings.id].t; }
+            if (!t && settings.values) { number=settings.values.length; t = settings.values[settings.id%settings.values.length].t; }
             if (t) {
                 $("text.t", settings.svg.root()).each(function(_index) {
                     if (_index<t.length) {
@@ -186,20 +184,51 @@
             }
 
             var o = settings.o;
-            if (!o && settings.values) { o = settings.values[settings.id].o; }
+            if (!o && settings.values) { o = settings.values[settings.id%settings.values.length].o; }
             if (o) {
                 $(".o", settings.svg.root()).each(function(_index) {
                     if (_index<o.length) { var val = o[_index]; if (val==' ') val = '0'; $(this).attr("class","o c"+val); }
                 });
             }
 
+            var svgClass = $.isArray(settings.svgClass)?settings.svgClass[settings.id%settings.svgClass.length]:settings.svgClass;
+            $this.find("svg").attr("class",svgClass);
+
+            $("."+settings.toggle, settings.svg.root()).unbind('touchmove mousemove');
+            var canvas = settings.canvas;
+            if ($.isArray(canvas)) {
+                for (var i in canvas) { $("#"+canvas[i], settings.svg.root()).css("display","none"); }
+                canvas = canvas[settings.id%canvas.length];
+            }
+            $("#"+canvas, settings.svg.root()).css("display","inline");
+            $("#"+canvas+" ."+settings.toggle, settings.svg.root()).each(function(_index) {
+                    $(this).bind('touchmove mousemove', function(_event) {
+                        if (settings.interactive && settings.color[0]!=-1 && settings.down && settings.elt!=this) {
+                            helpers.paint($this, $(this), false);
+                            if (settings.cbk) { eval('('+settings.cbk+')')(settings.svg.root(),helpers.result($this), $(this).attr("id").substr(1)); }
+                        }
+                        settings.elt = this;
+                        _event.preventDefault();
+                    });
+                    $(this).bind('touchstart mousedown', function(_event) {
+                        if (settings.interactive && settings.color[0]!=-1) {
+                            helpers.paint($this, $(this), true);
+                            if (settings.cbk) { eval('('+settings.cbk+')')(settings.svg.root(),helpers.result($this), $(this).attr("id").substr(1)); }
+                        }
+                        settings.elt = this;
+                        _event.preventDefault();
+                    });
+                    $(this).attr("id","c"+_index);
+            });
+
+
             if (!exercice && settings.values) { exercice = settings.values[settings.id].exercice; }
             if (exercice) {
                 if ($.isArray(exercice)) {
-                    var html=""; for (var i in exercice) { html+="<div>"+exercice[i]+"</div>"; }
+                    var html=""; for (var i in exercice) { html+="<div>"+helpers.format(exercice[i])+"</div>"; }
                     $this.find("#exercice #content").html(html);
                 }
-                else { $this.find("#exercice #content").html(exercice); }
+                else { $this.find("#exercice #content").html(helpers.format(exercice)); }
                 $this.find("#exercice").show();
             }
             if (label) { $this.find("#exercice #label").html(label).show(); }
@@ -210,7 +239,8 @@
         },
         result: function($this) {
             var result="", settings = helpers.settings($this);
-            $("#"+settings.canvas+" ."+settings.toggle, settings.svg.root()).each(function(_index) {
+            var canvas = $.isArray(settings.canvas)?settings.canvas[settings.id%settings.canvas.length]:settings.canvas;
+            $("#"+canvas+" ."+settings.toggle, settings.svg.root()).each(function(_index) {
                 var val = $(this).attr("class").substr(-1);
                 if (val==settings.toggle) { val=" "; } else
                 if (settings.data&&settings.data[val]&&settings.data[val].skip) { val =" "; }
@@ -355,6 +385,8 @@
             valid: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 if (settings.interactive) {
+
+                    var canvas = $.isArray(settings.canvas)?settings.canvas[settings.id%settings.canvas.length]:settings.canvas;
                     settings.interactive = false;
 
                     var result=helpers.result($this);
@@ -364,12 +396,11 @@
                         nbErrors = eval('('+settings.scorefct+')')($this,result,settings.scoreArg);
                     }
                     else {
-                        for (var i=0; i<settings.result.length; i++) {
-                            var r1 = settings.result[i];
-                            var r2 = result[i];
-                            if (r1!=r2) {
-                                $("#"+settings.canvas+" #c"+i, settings.svg.root()).attr("class",
-                                    $("#"+settings.canvas+" #c"+i, settings.svg.root()).attr("class")+" wrong");
+                        var r = $.isArray(settings.result)?settings.result[settings.id%settings.result.length]:settings.result;
+                        for (var i=0; i<r.length; i++) {
+                            if (r[i]!=result[i]) {
+                                $("#"+canvas+" #c"+i, settings.svg.root()).attr("class",
+                                    $("#"+canvas+" #c"+i, settings.svg.root()).attr("class")+" wrong");
                                 nbErrors++;
                             }
                         }
@@ -388,7 +419,10 @@
                     }
 
                     // Developper mode
-                    if (settings.dev) { helpers.dev[settings.dev.mode]($this,result); }
+                    if (settings.dev) {
+                        if (helpers.dev[settings.dev.mode]) { helpers.dev[settings.dev.mode]($this,result); }
+                        else { alert(result); }
+                    }
 
                     if (settings.score<0) { settings.score = 0; }
                     if (++settings.id<settings.number) {

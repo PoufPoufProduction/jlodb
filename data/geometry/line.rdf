@@ -2,6 +2,92 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dct="http://purl.org/dc/terms/">
 
+    <rdf:Description>
+        <dct:identifier>s01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Utiliser la barre d'outils pour tracer un trait à partir de 2 points.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"point", "value":[-150,0], "id":"A", "active":true}, {"type":"point", "value":[150,0], "id":"B", "active":true}],"available":["segment"],"number":1,"objectives":[[{"type":"segment", "values":[-150,0,150,0]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":["Pour tracer un trait entre A et B, cliquez sur l'outil <b>trait</b> dans le menu à gauche, puis, en gardant le doigt ou le bouton de la souris appuyé, reliez les points A et B"],"labels":["Trait AB"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:alternative>101</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>s02</dct:identifier>
+        <dct:title xml:lang="fr-FR">A partir des points A,B,C,D, construire les deux traits AB et CD.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"point", "value":[-150,-100], "id":"A", "active":true}, {"type":"point", "value":[-100,100], "id":"B", "active":true},{"type":"point", "value":[150,-100], "id":"C", "active":true}, {"type":"point", "value":[100,100], "id":"D", "active":true}],"available":["segment"],"number":2,"objectives":[[{"type":"segment", "values":[-150,-100,-100,100]}],[{"type":"segment", "values":[150,-100,100,100]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"Reliez les points A,B et les points C,D","labels":["Trait AB","Trait CD"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>101</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>s03</dct:identifier>
+        <dct:title xml:lang="fr-FR">A partir des points A,B,C,D, construire les trois traits partant de A.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"point", "value":[-150,-100], "id":"A", "active":true}, {"type":"point", "value":[-100,100], "id":"B", "active":true},{"type":"point", "value":[150,-100], "id":"C", "active":true}, {"type":"point", "value":[100,100], "id":"D", "active":true}],"available":["segment"],"number":3,"objectives":[[{"type":"segment", "values":[-150,-100,-100,100]}],[{"type":"segment", "values":[-150,-100,100,100]}],[{"type":"segment", "values":[-150,-100,150,-100]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"Tracez les 3 traits partant du point A :","labels":["Trait AB","Trait AD","Trait AC"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>101</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>s04</dct:identifier>
+        <dct:title xml:lang="fr-FR">A partir des points A,B,C,D,E construire tous les traits partant de A.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"point", "value":[0,0], "id":"A", "active":true}, {"type":"point", "value":[-100,-100], "id":"B", "active":true},{"type":"point", "value":[250,-20], "id":"C", "active":true}, {"type":"point", "value":[-200,100], "id":"D", "active":true,"idpos":315}, {"type":"point", "value":[120,140], "id":"E", "active":true}],"available":["segment"],"number":4,"objectives":[[{"type":"segment", "values":[0,0,-100,-100]}],[{"type":"segment", "values":[0,0,250,-20]}],[{"type":"segment", "values":[0,0,-200,100]}],[{"type":"segment", "values":[0,0,120,140]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"Tracez tous les traits partant de A","labels":["Trait AB","Trait AC","Trait AD","Trait AE"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>101</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>s05</dct:identifier>
+        <dct:title xml:lang="fr-FR">A partir des points A,B,C,D, construire les traits AB, CD, AD et BC et dessiner ainsi un papillon.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"point", "value":[-150,-100], "id":"A", "active":true}, {"type":"point", "value":[-100,100], "id":"B", "active":true},{"type":"point", "value":[150,-100], "id":"C", "active":true}, {"type":"point", "value":[100,100], "id":"D", "active":true}],"available":["segment"],"number":4,"objectives":[[{"type":"segment", "values":[-150,-100,-100,100]}],[{"type":"segment", "values":[150,-100,100,100]}],[{"type":"segment", "values":[-150,-100,100,100]}],[{"type":"segment", "values":[-100,100,150,-100]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"[b]Tracez les traits ci-dessous[/b] et dessinez ainsi un [red]papillon[/red].","labels":["Trait AB","Trait CD","Trait AD","Trait BC"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>101</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>s11</dct:identifier>
+        <dct:title xml:lang="fr-FR">A partir des points A,B,C,D, construire tous les traits possibles.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"point", "value":[-150,-100], "id":"A", "active":true}, {"type":"point", "value":[-100,100], "id":"B", "active":true},{"type":"point", "value":[150,-100], "id":"C", "active":true}, {"type":"point", "value":[100,100], "id":"D", "active":true}],"available":["segment"],"number":6,"objectives":[[{"type":"segment", "values":[-150,-100,-100,100]},{"type":"segment", "values":[150,-100,100,100]},{"type":"segment", "values":[-150,-100,100,100]},{"type":"segment", "values":[-100,100,150,-100]},{"type":"segment", "values":[-150,-100,150,-100]},{"type":"segment", "values":[-100,100,100,100]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"A partir des points A,B,C,D, tracez [b]tous les traits possibles[/b]","labels":["6 traits"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>101</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>s15</dct:identifier>
+        <dct:title xml:lang="fr-FR">A partir des points A,B,C,D,E construire tous les traits possibles.</dct:title>
+        <dct:description><![CDATA["data":[{"type":"point", "value":[0,0], "id":"A", "active":true}, {"type":"point", "value":[-180,-100], "id":"B", "active":true},{"type":"point", "value":[250,-20], "id":"C", "active":true}, {"type":"point", "value":[-200,100], "id":"D", "active":true,"idpos":315}, {"type":"point", "value":[120,140], "id":"E", "active":true}],"available":["segment"],"number":10,"objectives":[[{"type":"segment", "values":[0,0,-180,-100]},{"type":"segment", "values":[0,0,250,-20]},{"type":"segment", "values":[0,0,-200,100]},{"type":"segment", "values":[0,0,120,140]},{"type":"segment", "values":[-180,-100,120,140]},{"type":"segment", "values":[-180,-100,250,-20]},{"type":"segment", "values":[-180,-100,-200,100]},{"type":"segment", "values":[120,140,-200,100]},{"type":"segment", "values":[120,140,250,-20]},{"type":"segment", "values":[-200,100,250,-20]}]],"translate":[320,185.5]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"A partir des points A,B,C,D,E, tracez [b]tous les traits possibles[/b]","labels":["10 traits"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>101</dct:alternative>
+    </rdf:Description>
+
+
     <!-- SEGMENTS AND LINES l[.] -->
 
     <rdf:Description>
@@ -31,7 +117,7 @@
 
     <rdf:Description>
         <dct:identifier>003</dct:identifier>
-        <dct:title xml:lang="fr-FR">A partir des points A,B,C,D, construire les deux segments [AB], [AD] et [AC].</dct:title>
+        <dct:title xml:lang="fr-FR">A partir des points A,B,C,D, construire les trois segments [AB], [AD] et [AC].</dct:title>
         <dct:description><![CDATA["data":[{"type":"point", "value":[-150,-100], "id":"A", "active":true}, {"type":"point", "value":[-100,100], "id":"B", "active":true},{"type":"point", "value":[150,-100], "id":"C", "active":true}, {"type":"point", "value":[100,100], "id":"D", "active":true}],"available":["segment"],"number":3,"objectives":[[{"type":"segment", "values":[-150,-100,-100,100]}],[{"type":"segment", "values":[-150,-100,100,100]}],[{"type":"segment", "values":[-150,-100,150,-100]}]],"translate":[320,185.5]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"Tracez les segments ci-dessous","labels":["Segment [AB]","Segment [AD]","Segment [AC]"]]]></dct:description>
         <dct:extent>1</dct:extent>
