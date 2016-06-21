@@ -703,7 +703,7 @@
 
                 if(cssAlreadyLoaded) { helpers.loader.template($this); }
                 else {
-                    $("head").append("<link>");
+                    $("head").append("<link></link>");
                     var css = $("head").children(":last");
                     var csspath = "activities/"+settings.name+"/"+settings.css+debug;
 
