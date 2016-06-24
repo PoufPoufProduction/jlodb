@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dct="http://purl.org/dc/terms/">
+
+    <rdf:Description>
+        <dct:identifier>x</dct:identifier>
+        <dct:title xml:lang="fr-FR">Combiner 3 éléments au moins, de même type, afin de les transmuter en un élément de qualité supérieure.</dct:title>
+        <dct:description><![CDATA["content":{"def":{ "e": { "text":"Wikipe","img":{"happy":"characters/wikipe01.svg"} },"l": { "text":"Lapin","img":{"default":"ppvc/bunny01.svg"}, "attr":{"background-color":"red" } }},"story":{"init":[{"type":"op","value":"$first=true"},{"type":"background","img":"background/board.svg"},{"type": "show","value":"e happy","attr":{"class":"char","anim":"fromright","left":"25%"}}],"next":[{"type": "dialog", "text":"d1", "from": "e" },{ "type": "dialogg", "text":["$first","d2","d2b"] },{"type": "error"},{"type": "dialog", "text":["$first","d3","d3b"], "from": "e" },{"type": "dialog", "text":"d4", "from": "e" },{"type": "show","value":"e happy","attr":{"left":"-25%","anim":"move 2"}},{"type": "dialogg", "text":"d5" },{"type": "dialog", "text":"d6", "from": "e" },{ "type": "menu","value":[{"text":["$first","recommencer","recommencer (encore)"],"story":[{"type":"op","value":"$first=false"},{ "type": "dialog", "text":"Très bien. ", "from":"e" },{ "type": "dialogg", "text":"C'est reparti." },{"type": "dialog"},{"type": "show","value":"e happy","attr":{"class":"char","anim":"move","left":"25%"}},{"type":"jump","value":"next" }] },{ "text" : "quitter", "story": [ { "type": "dialog", "text":"A bientôt !","from":"e" },{"type": "dialog"},{"type": "hide","value":"e","attr":{"anim":"toleft"}} ] }]}]}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"glossary":{"d1":"[b]Bonjour[/b] tout le [red]monde[/red] ![br]","d2":"Bienvenue dans ce tout premier roman graphique.","d2b":"Encore vous ?!?","d3":"Vous ne l'avez certainement pas vu, mais vous venez de commettre une [b]erreur[/b]. Votre note vient de baisser d'un point. Pas de chance !","d3b":"Vous venez de faire encore une erreur. Décidément.","d4":"Je me déplace un peu pour laisser de la place au menu.[br]","d5":"Voila.","d6":"Que choisissez-vous de faire désormais ?"}]]></dct:description>
+        <dct:extent>15</dct:extent>
+        <dct:subject>game</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:alternative>0x</dct:alternative>
+    </rdf:Description>
+
+
+</rdf:RDF>
+

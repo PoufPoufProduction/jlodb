@@ -282,8 +282,8 @@
                 html+="<div class='icon' ontouchstart=\"$(this).closest('.shop').shop('del',this);event.preventDefault();\" "+
                       "onclick=\"$(this).closest('.shop').shop('del',this);\"><img src='res/img/icon/cancel2.svg'/></div>";
                 if (_sale.type==0) { html+="<div class='label'><div>"+_sale.value+"</div></div><div class='cell a'></div></div>"; }
-                else { html+="<div class='label'>&nbsp;</div><div class='cell fixed'>"+_sale.value+"</div></div>"; }
-                html+="<div class='line'><div class='total'>&nbsp;</div><div class='cell a'></div></div></div>";
+                else { html+="<div class='label'>&#xA0;</div><div class='cell fixed'>"+_sale.value+"</div></div>"; }
+                html+="<div class='line'><div class='total'>&#xA0;</div><div class='cell a'></div></div></div>";
 
                 $(html).insertAfter($(_this));
                 $(_this).next().find(".cell.a").each(function(){ helpers.cell.create($this, $(this));  });

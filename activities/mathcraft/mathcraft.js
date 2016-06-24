@@ -938,7 +938,7 @@
             if ($.isArray(exercice)) {
                 var html=""; for (var i in exercice) {
                     html+="<div style='font-size:"+settings.font+"em;'>"+
-                            (exercice[i].length?helpers.format(exercice[i]):"&nbsp;")+"</div>"; }
+                            (exercice[i].length?helpers.format(exercice[i]):"&#xA0;")+"</div>"; }
                 $this.find("#exercice>div").html(html);
             }
             else { $this.find("#exercice>div").html(helpers.format(exercice)); }

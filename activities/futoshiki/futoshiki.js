@@ -303,14 +303,14 @@
                             var hintempty=true;
                             $cell.find(".hint div").each(function() {
                                 var v = $(this).html();
-                                if (v && v.length!=0 && v[0]!=' ' && v!="&nbsp;") { hintempty=false; }
+                                if (v && v.length!=0 && v[0]!=' ' && v!="&#xA0;") { hintempty=false; }
                             });
                             if (hintempty) { $cell.find(">div").show(); }
 
                         }
                         else {
                             var $value = $cell.find(">div");
-                            if ($value && (!$value.html() || $value.html().length==0 || $value.html()[0]==' ' || $value.html()=="&nbsp;")) {
+                            if ($value && (!$value.html() || $value.html().length==0 || $value.html()[0]==' ' || $value.html()=="&#xA0;")) {
                                  $value.hide();
                             }
                         }

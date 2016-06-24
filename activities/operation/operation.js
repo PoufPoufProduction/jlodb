@@ -20,7 +20,7 @@
 
     var regExp = [
         "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",                  "<b>$1</b>",
-        "[*]",                                      "&times;",
+        "[*]",                                      "×",
         "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
         "\\\[br\\\]",                               "<br/>",
         "\\\[green\\\]([^\\\[]+)\\\[/green\\\]",    "<span style='color:green'>$1</span>",
@@ -126,7 +126,7 @@
                     $this.find("#exercice>div").html("");
                     for (var i in settings.exercice) {
                         $this.find("#exercice>div").append("<p>"+
-                            (settings.exercice[i].length?helpers.format(settings.exercice[i]):"&nbsp;")+"</p>"); }
+                            (settings.exercice[i].length?helpers.format(settings.exercice[i]):"&#xA0;")+"</p>"); }
                 } else { $this.find("#exercice>div").html(helpers.format(settings.exercice)); }
                 $this.find("#exercice>div").css("font-size",settings.fontex+"em");
 
@@ -389,7 +389,7 @@
                     else if (j>=settings.op.length && j<height-1)   { opclass = " l2 active"; if (j>settings.op.length) optxt = "+"; }
                     else if (j==height-1)                           { opclass = " result active"; }
 
-                    if (optxt=="*")                                 { optxt = "&times;"; }
+                    if (optxt=="*")                                 { optxt = "×"; }
 
                     html+="<div class='op' style='top:"+top+"em;left:"+left+"em;'>"+optxt+"</div>";
                     left+=0.75;

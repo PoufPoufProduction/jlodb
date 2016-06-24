@@ -158,7 +158,7 @@
                     if ($.isArray(settings.exercice)) {
                         $this.find("#exercice").html("");
                         for (var i in settings.exercice) { $this.find("#exercice").append(
-                            "<p>"+(settings.exercice[i].length?helpers.format(settings.exercice[i]):"&nbsp;")+"</p>"); }
+                            "<p>"+(settings.exercice[i].length?helpers.format(settings.exercice[i]):"&#xA0;")+"</p>"); }
                     } else { $this.find("#exercice").html(helpers.format(settings.exercice)); }
                     setTimeout(function() { $this.find("#exercice").show(); }, 100);
                 }

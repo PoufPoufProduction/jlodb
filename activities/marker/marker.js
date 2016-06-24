@@ -118,7 +118,7 @@
 
                         if (settings.sep.indexOf(settings.text[i][j])==-1) {
                             if (lastLetterIsSep) {
-                                content+=helpers.word($this,word.replace(" ","&nbsp;"), vBeginGroup?-1:vGroup);
+                                content+=helpers.word($this,word.replace(" ","&#xA0;"), vBeginGroup?-1:vGroup);
                                 word="";
                                 if (vEndGroup) { vEndGroup=false; vGroup=-1; }
                             }

@@ -346,7 +346,7 @@
                     if ($.isArray(settings.exercice)) {
                         $this.find("#exercice>div").css("font-size",settings.fontex+"em").html("").parent().show();
                         for (var i in settings.exercice) { $this.find("#exercice>div").append(
-                            "<p>"+(settings.exercice[i].length?helpers.format(settings.exercice[i]):"&nbsp;")+"</p>"); }
+                            "<p>"+(settings.exercice[i].length?helpers.format(settings.exercice[i]):"&#xA0;")+"</p>"); }
                     } else { $this.find("#exercice>div").css("font-size",settings.fontex+"em").html(helpers.format(settings.exercice)).parent().show(); }
                 }
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }

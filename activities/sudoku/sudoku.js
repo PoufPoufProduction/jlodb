@@ -280,7 +280,7 @@
                 if ($.isArray(settings.comment)) {
                     $this.find("#comment>div").html("");
                     for (var i in settings.comment) {
-                        $this.find("#comment>div").append("<p>"+(settings.comment[i].length?settings.comment[i]:"&nbsp;")+"</p>"); }
+                        $this.find("#comment>div").append("<p>"+(settings.comment[i].length?settings.comment[i]:"&#xA0;")+"</p>"); }
                 } else { $this.find("#comment>div").html(settings.comment); }
 
                 // LOCALE HANDLING

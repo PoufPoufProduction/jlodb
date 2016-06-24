@@ -181,7 +181,7 @@
 
                     // Special treatment
                     var vRegExpMult = new RegExp("\\\*", "g")
-                    vValue.question = vValue.question.toString().replace(vRegExpMult,"&times;");
+                    vValue.question = vValue.question.toString().replace(vRegExpMult,"×");
 
                     // Fill the dom element, use a regexp if needed
                     if (vRegexp)    { $li.html(vValue.question.replace(vRegexp, settings.regexp.input.to)); }
@@ -194,10 +194,10 @@
 
                 // Handle some elements
                 var vScreen = $this.find("#screen");
-                if (vScreen) { vScreen.html("&nbsp;"); }
+                if (vScreen) { vScreen.html("&#xA0;"); }
                 $this.find("#guide_number").html(settings.number);
                 if (!settings.time) {
-                    $this.find("#time").html("&nbsp;");
+                    $this.find("#time").html("&#xA0;");
                     $this.find("#guide_time").html("........");
                 }
                 else {
@@ -254,7 +254,7 @@
         next: function($this) {
             var settings = helpers.settings($this);
             $($this.find("#values li").get(settings.it)).addClass("select");
-            if (settings.screenc) { $this.find("#screen").html("&nbsp;"); }
+            if (settings.screenc) { $this.find("#screen").html("&#xA0;"); }
             setTimeout(function() { helpers.hidefx($this); }, 200 );
         },
         // Handle the key input
@@ -290,7 +290,7 @@
                             settings.response.value += value.toString(); settings.response.digit++;
                         }
                     }
-                    $this.find("#screen").html(settings.response.digit?settings.response.value:"&nbsp;");
+                    $this.find("#screen").html(settings.response.digit?settings.response.value:"&#xA0;");
                     if (value!=settings.erase) {
                             if (!helpers.check($this, (settings.input.speed==0)))
                             {

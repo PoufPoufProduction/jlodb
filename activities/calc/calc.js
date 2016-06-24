@@ -357,7 +357,7 @@
                 if ($.isArray(settings.exercice)) {
                     $this.find("#exercice>div").html("");
                     for (var i in settings.exercice) { $this.find("#exercice>div").append(
-                        "<p>"+(settings.exercice[i].length?helpers.format(settings.exercice[i]):"&nbsp;")+"</p>"); }
+                        "<p>"+(settings.exercice[i].length?helpers.format(settings.exercice[i]):"&#xA0;")+"</p>"); }
                 } else { $this.find("#exercice>div").html(helpers.format(settings.exercice)); }
 
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }

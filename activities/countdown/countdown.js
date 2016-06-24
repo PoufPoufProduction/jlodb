@@ -106,7 +106,7 @@
                     if ($.isArray(settings.exercice)) {
                         $this.find("#exercice>div").html("");
                         for (var i in settings.exercice) {
-                            $this.find("#exercice>div").append("<p>"+(settings.exercice[i].length?settings.exercice[i]:"&nbsp;")+"</p>"); }
+                            $this.find("#exercice>div").append("<p>"+(settings.exercice[i].length?settings.exercice[i]:"&#xA0;")+"</p>"); }
                     } else { $this.find("#exercice>div").html(settings.exercice); }
                     $this.find("#exercice>div").css("font-size",settings.fontex+"em").parent().show();
                 }

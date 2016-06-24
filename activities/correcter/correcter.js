@@ -114,7 +114,7 @@
                                     var len = settings.dictionary[goodWord][
                                         Math.floor(Math.random()*settings.dictionary[goodWord].length)].length;
                                     word = "";
-                                    for (var count=0; count<len*1.5; count++) { word+="&nbsp;"; }
+                                    for (var count=0; count<len*1.5; count++) { word+="&#xA0;"; }
                                 }
 
                                 classTxt = settings.style;

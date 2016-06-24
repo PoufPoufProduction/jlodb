@@ -98,7 +98,7 @@
                 if ($.isArray(settings.exercice)) {
                     $this.find("#exercice").html("");
                     for (var i in settings.exercice) { $this.find("#exercice").append(
-                        "<p>"+(settings.exercice[i].length?helpers.format(settings.exercice[i]):"&nbsp;")+"</p>"); }
+                        "<p>"+(settings.exercice[i].length?helpers.format(settings.exercice[i]):"&#xA0;")+"</p>"); }
                 } else { $this.find("#exercice").html(helpers.format(settings.exercice)); }
 
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
