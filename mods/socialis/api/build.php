@@ -16,7 +16,7 @@ if (!$error) {
         if (!mysql_query("SELECT * FROM `".$_SESSION['prefix']."genius`")) {
             mysql_query('CREATE TABLE `'.$_SESSION['prefix'].'genius` ('.
                             '`User_Key` INT NOT NULL, `Genius` TEXT, PRIMARY KEY (  `User_Key` ), '.
-                            ' CONSTRAINT `fr_Genius_User_Key` FOREIGN KEY (`User_Key`) REFERENCES `'.$_SESSION['prefix'].'user` '.
+                            ' CONSTRAINT `'.$_SESSION['prefix'].'Genius_User_Key` FOREIGN KEY (`User_Key`) REFERENCES `'.$_SESSION['prefix'].'user` '.
                             ' (`User_Key`) ON DELETE CASCADE ) ENGINE=InnoDB', $link);
         }
 
@@ -27,7 +27,7 @@ if (!$error) {
                             '`Node_Id`  VARCHAR( 64 ) NOT NULL, '.
                             '`State` TEXT, '.
                             ' PRIMARY KEY ( `User_Key`, `Node_Id` ), '.
-                            ' CONSTRAINT `fr_State_User_Key` FOREIGN KEY (`User_Key`) REFERENCES `'.$_SESSION['prefix'].'user` '.
+                            ' CONSTRAINT `'.$_SESSION['prefix'].'State_User_Key` FOREIGN KEY (`User_Key`) REFERENCES `'.$_SESSION['prefix'].'user` '.
                             ' (`User_Key`) ON DELETE CASCADE ) ENGINE=InnoDB', $link);
         }
 
@@ -37,7 +37,7 @@ if (!$error) {
                             '`Group_Name`              VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL, '.
                             '`User_Key`                INT NOT NULL, '.
                             '`Group_Index`             INT NOT NULL, '.
-                            ' CONSTRAINT `fr_Group_User_Key` FOREIGN KEY (`User_Key`) REFERENCES `'.$_SESSION['prefix'].'user` '.
+                            ' CONSTRAINT `'.$_SESSION['prefix'].'Group_User_Key` FOREIGN KEY (`User_Key`) REFERENCES `'.$_SESSION['prefix'].'user` '.
                             ' (`User_Key`) ON DELETE CASCADE,'.
                             ' PRIMARY KEY ( `Group_Name`, `User_Key` )) ENGINE=InnoDB', $link);
         }
@@ -51,7 +51,7 @@ if (!$error) {
                             '`Group_Name`               VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_bin, '.
                             '`Timestamp`                TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, '.
                             '`Accept`                   BOOL DEFAULT false, '.
-                            ' CONSTRAINT `fr_Friend_User_Key` FOREIGN KEY (`User_Key`) REFERENCES `'.$_SESSION['prefix'].'user` '.
+                            ' CONSTRAINT `'.$_SESSION['prefix'].'Friend_User_Key` FOREIGN KEY (`User_Key`) REFERENCES `'.$_SESSION['prefix'].'user` '.
                             ' (`User_Key`) ON DELETE CASCADE,'.
                             ' PRIMARY KEY ( `User_Key`, `Friend_Key`, `Host` )) ENGINE=InnoDB', $link);
         }
@@ -69,9 +69,9 @@ if (!$error) {
                             '`Timestamp`                TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, '.
                             '`Deadline`                 TIMESTAMP, '.
                             '`Finished`                 BOOL DEFAULT false, '.
-                            ' CONSTRAINT `fr_Send_User_Key` FOREIGN KEY (`User_Key`) REFERENCES `'.$_SESSION['prefix'].'user` '.
+                            ' CONSTRAINT `'.$_SESSION['prefix'].'Send_User_Key` FOREIGN KEY (`User_Key`) REFERENCES `'.$_SESSION['prefix'].'user` '.
                             ' (`User_Key`) ON DELETE CASCADE,'.
-                            ' CONSTRAINT `fr_Send_Course_Name` FOREIGN KEY (`Course_Name`) REFERENCES `'.$_SESSION['prefix'].'course` '.
+                            ' CONSTRAINT `'.$_SESSION['prefix'].'Send_Course_Name` FOREIGN KEY (`Course_Name`) REFERENCES `'.$_SESSION['prefix'].'course` '.
                             ' (`Course_Name`) ON UPDATE CASCADE ON DELETE CASCADE,'.
                             ' PRIMARY KEY ( `Send_Id` )) ENGINE=InnoDB', $link);
         }
@@ -83,9 +83,9 @@ if (!$error) {
                             '`User_Key`                 INT NOT NULL, '.
                             '`Course_Description`       TEXT, '.
                             '`Masked`                   BOOL DEFAULT false, '.
-                            ' CONSTRAINT `fr_Recv_User_Key` FOREIGN KEY (`User_Key`) REFERENCES `'.$_SESSION['prefix'].'user` '.
+                            ' CONSTRAINT `'.$_SESSION['prefix'].'Recv_User_Key` FOREIGN KEY (`User_Key`) REFERENCES `'.$_SESSION['prefix'].'user` '.
                             ' (`User_Key`) ON DELETE CASCADE,'.
-                            ' CONSTRAINT `fr_Recv_Send_Id` FOREIGN KEY (`Recv_Id`) REFERENCES `'.$_SESSION['prefix'].'send` '.
+                            ' CONSTRAINT `'.$_SESSION['prefix'].'Recv_Send_Id` FOREIGN KEY (`Recv_Id`) REFERENCES `'.$_SESSION['prefix'].'send` '.
                             ' (`Send_Id`) ON DELETE CASCADE,'.
                             ' PRIMARY KEY ( `Recv_Id`, `User_Key` )) ENGINE=InnoDB', $link);
         }
@@ -156,9 +156,9 @@ if (!$error) {
                             '`New`                      BOOL DEFAULT true, '.
                             '`Unread`                   BOOL DEFAULT true, '.
                             '`Pinned`                   BOOL DEFAULT false, '.
-                            ' CONSTRAINT `fr_Reward_User_Key` FOREIGN KEY (`User_Key`) REFERENCES `'.$_SESSION['prefix'].'user` '.
+                            ' CONSTRAINT `'.$_SESSION['prefix'].'Reward_User_Key` FOREIGN KEY (`User_Key`) REFERENCES `'.$_SESSION['prefix'].'user` '.
                             ' (`User_Key`) ON DELETE CASCADE,'.
-                            ' CONSTRAINT `fr_Reward_Award_Id` FOREIGN KEY (`Award_Id`) REFERENCES `'.$_SESSION['prefix'].'award` '.
+                            ' CONSTRAINT `'.$_SESSION['prefix'].'Reward_Award_Id` FOREIGN KEY (`Award_Id`) REFERENCES `'.$_SESSION['prefix'].'award` '.
                             ' (`Award_Id`) ON DELETE CASCADE,'.
                             ' PRIMARY KEY ( `Award_Id`, `User_Key` )) ENGINE=InnoDB', $link);
         }
