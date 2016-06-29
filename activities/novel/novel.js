@@ -133,9 +133,6 @@
                 var timer       = 0;
                 var next        = true;
                 switch(elt.type) {
-                    case "background" : case "bg" :
-                        $this.find("#background").html((elt.img!="none"?"<img src='res/img/"+elt.img+"'/>":""));
-                        break;
                     case "dialog" :
                         $this.find("#dialog").detach();
                         if (elt.text && elt.text.length) {
@@ -169,7 +166,7 @@
                     case "error" : settings.score -= elt.value?elt.value:1; break;
                     case "hide" :
                         var e = elt.value.split(" ");
-                        var $elt = $this.find("#char"+e[0]);
+                        var $elt = $this.find("#elt"+e[0]);
                         if ($elt.length) {
                             if (elt.attr && elt.attr.anim) {
                                 var anim = elt.attr.anim.split(" ");
@@ -183,7 +180,14 @@
                             else { $elt.detach(); }
                         }
                         break;
-                    case "jump" : settings.pc = [ {story: settings.content.story[elt.value], p:0 , name:elt.value } ]; next =false; break;
+                    case "if"   :
+                        var reg = new RegExp("[$]","g"), rep = true;
+                        try { rep = eval(elt.cond.replace(reg,"settings.data.")+";"); }
+                        catch (e) { alert("error with: "+elt.cond); }
+                        if (rep) { settings.pc.push({story:elt.value[0], p:0, n:"if"}); }
+                        else if (elt.value.length>1) { settings.pc.push({story:elt.value[1], p:0, n:"if"}); }
+                        break;
+                    case "jump" : settings.pc = [ {story: settings.content.story[elt.value], p:0 , n:elt.value } ]; next =false; break;
                     case "menu" :
                         next = false; timer = -1;
                         var $html=$("<div id='menu'></menu>");
@@ -204,38 +208,56 @@
                     case "pause"  : timer = parseFloat(elt.value)*1000; break;
                     case "show" :
                         var e = elt.value.split(" ");
-                        if (settings.def[e[0]] && settings.def[e[0]].img && settings.def[e[0]].img[e[1]] ) {
+                        var def = settings.def[e[0]];
+                        if (def) {
 
-                            var $elt = $this.find("#char"+e[0]), old = 0;
-                            var leftv= (elt.attr && elt.attr.left)? elt.attr.left : 0;
+                            var $elt = $this.find("#elt"+e[0]), oldleft = 0, oldtop;
 
                             if ($elt.length) {
-                                old = $elt.css("left");
-                                if (e.length>1) { $elt.find("img").attr("src","res/img/"+settings.def[e[0]].img[e[1]]); }
+                                oldleft  = $elt.css("left");
+                                oldtop = $elt.css("top");
+                                if (e.length>1) { $elt.find("img").attr("src","res/img/"+def.img[e[1]]); }
                             }
                             else {
-                                $elt = $("<div class='"+elt.attr.class+"' id='char"+e[0]+"'><img src='res/img/"+settings.def[e[0]].img[e[1]]+"'/></div>");
+                                var style="";
+                                if (def.attr&&def.attr.width)       { style+="width:"+def.attr.width+"em;" }
+                                if (def.attr&&def.attr.height)      { style+="height:"+def.attr.height+"em;" }
+                                if (def.attr&&def.attr.opacity)     { style+="opacity:"+def.attr.opacity+";" }
+                                if (def.attr&&def.attr.zindex)      { style+="z-index:"+def.attr.index+";" }
+                                if (def.attr&&def.attr.size)        { style+="font-size:"+def.attr.size+"em;" }
+                                $elt = $("<div "+(def.attr&&def.attr.class?"class='"+def.attr.class+"' ":"")+"id='elt"+e[0]+"'"+
+                                         (style?" style='"+style+"'":"")+
+                                         "><img src='res/img/"+def.img[e[1]]+"'/></div>");
                                 $this.find("#board").append($elt);
                             }
 
-                            if (elt.attr.anim) {
+                            var leftv= (elt.attr && elt.attr.left)? elt.attr.left : ( (def.attr && def.attr.left)?def.attr.left:-1 );
+                            var topv= (elt.attr && elt.attr.top)? elt.attr.top : ( (def.attr && def.attr.top)?def.attr.top:-1 );
+
+                            if (leftv!=-1)  { $elt.css("left", leftv); }
+                            if (topv!=-1)   { $elt.css("top", topv); }
+
+                            if (elt.attr&&elt.attr.anim) {
                                 var anim = elt.attr.anim.split(" ");
                                 timer = parseFloat(anim.length>1?anim[1]:1)*1000;
                                 switch(anim[0]) {
                                     case "dissolve"  : $elt.css("opacity",0).animate({opacity:1}, timer); break;
                                     case "fromright" : $elt.css("left","100%").animate({left:leftv}, timer); break;
                                     case "fromleft" : $elt.css("left","-100%").animate({left:leftv}, timer); break;
-                                    case "move":      $elt.css("left",old).animate({left:leftv}, timer); break;
+                                    case "move":
+                                        var aa = { };
+                                        if (leftv!=-1)  { aa["left"]    = leftv; }
+                                        if (topv!=-1)   { aa["top"]     = topv; }
+                                        $elt.css("left",oldleft).css("top",oldtop).animate(aa, timer); break;
                                 }
                             }
-                            else { $elt.css("left", leftv); }
 
 
                         }
                         break;
                 }
                 if (next)       { pc.p++; }
-                if (timer!=-1)  { setTimeout(function(){helpers.run($this);}, timer + 100); }
+                if (timer!=-1)  { if (timer&&!elt.nodelay) setTimeout(function(){helpers.run($this);}, timer ); else helpers.run($this); }
             }
             else {
                 if (settings.pc.length>1) {
@@ -247,6 +269,7 @@
                     for (var i in settings.content.story) {
                         if (found)   { name = i; found = false; }
                         if (i==pc.n) { found = true;} }
+
                     if (name) {
                         settings.pc = [{story:settings.content.story[name], p:0, n:name }];
                         setTimeout(function(){helpers.run($this);}, 100);

@@ -1,4 +1,4 @@
-.novel                              { background-image:url("../../res/img/background/book03.svg"); background-repeat:repeat;}
+.novel                              { background-color:black;}
 .novel div#splashex                 { background-image:url("../../res/img/banners/correcter.svg"); }
 .novel div#splashex h1              { display:none; position:absolute; top:45%; left:50%; font-size:1.5em; }
 .novel div#splashex #guide          { position:absolute; top:52%; left:45%; font-size:.75em; width:48%;;
@@ -10,11 +10,15 @@
 .novel div#board #dialog .label     { margin-left:.5em; }
 .novel div#board #dialog .content   { margin: 0 1em; }
 
-.novel div#board .char              { position:absolute; width:16em; height:16em; top:10%; left:0; z-index:10; }
+.novel div#board>div                { position: absolute; top:0; left:0; width:16em; height:12em; }
 
-.novel div#menu                     { position:absolute; z-index:12;
+.novel div#board .char              { width:16em; height:16em; top:10%; left:0; }
+.novel div#board .portrait          { width:11em; height:11em; top:1em; left:0; }
+.novel div#board .sprite            { width:1em; height:1em;  }
+
+.novel div#board #menu              { position:absolute; width:auto; height:auto;
                                       top:10%; left:60%; font-size:.5em; background-color:rgba(0,0,0,0.5); padding:.1em; }
-.novel div#menu>div                 { width:10em; padding:.1em .5em; margin:.1em; color:white; border:2px solid white;
+.novel div#board #menu>div          { width:10em; padding:.1em .5em; margin:.1em; color:white; border:2px solid white;
                                       border-radius:.1em; cursor:pointer;}
 
 .novel .bluekeypad                   { background-color:rgba(84,137,184,0.9);
