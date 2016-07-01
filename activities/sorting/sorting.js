@@ -17,7 +17,7 @@
         color       : ["white","black"],
         font        : 1,
         fontex      : 0.7,
-        erratio     : 0.5,
+        errratio    : 0.5,
         background  : ""
     };
 
@@ -144,8 +144,9 @@
 
 
             // GET AND COMPUTE THE VALUES
-            if (!(settings.gen) && (settings.nbvalues>vValues.length)) {
-                settings.nbvalues = vValues.length;
+            var nbvalues = settings.nbvalues;
+            if ((!(settings.gen) && (nbvalues>vValues.length)) || (nbvalues==-1) ) {
+                nbvalues = vValues.length;
             }
 
             // BUILD THE REGEXP
@@ -156,16 +157,16 @@
 
             // CREATE AN ELEMENT
             var last = 0;
-            for (var i=0; i<settings.nbvalues; i++) {
+            for (var i=0; i<nbvalues; i++) {
                 var vValue;
                 do {
                     if (settings.gen)  { vValue = eval('('+settings.gen+')')(i,settings.elts); }
                     else {
-                        if (settings.nbvalues==vValues.length) { vValue = vValues[i]; }
+                        if (nbvalues==vValues.length) { vValue = vValues[i]; }
                         else {
                             if (settings.type=="swap") { vValue = vValues[Math.floor(Math.random()*vValues.length)]; }
                             else {
-                                var p = last + Math.floor(Math.random()*(vValues.length-last)/(settings.nbvalues-i));
+                                var p = last + Math.floor(Math.random()*(vValues.length-last)/(nbvalues-i));
                                 last = p+1;
                                 vValue = vValues[p];
                             }
@@ -327,7 +328,7 @@
                     $this.find("#submit").addClass(vGood?"good":"wrong");
                     settings.interactive = false;
                     if (++settings.it >= settings.number) {
-                        settings.score = Math.floor(5-settings.erratio*settings.wrong);
+                        settings.score = Math.floor(5-settings.errratio*settings.wrong);
                         if (settings.score<0) { settings.score = 0; }
                         clearTimeout(settings.timer.id);
                         setTimeout(function() { helpers.end($this); }, vGood?1000:2000);

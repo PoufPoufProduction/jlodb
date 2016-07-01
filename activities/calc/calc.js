@@ -34,7 +34,8 @@
         "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
         "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
         "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>",
-        "\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='img'><div class='icon'><img src='res/img/$1.svg'/></div></div>"
+        "\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='img'><div class='icon'><img src='res/img/$1.svg'/></div></div>",
+        "\\\[small\\\]([^\\\[]+)\\\[/small\\\]",    "<span style='font-size:0.5em'>$1</span>"
     ];
 
     var graphType = {
@@ -200,6 +201,13 @@
                 }
                 for (var i in settings.rows) {
                     var m = i.match(/row([0-9]*)/); if (parseInt(m[1])>settings.size[1]) { settings.size[1] = parseInt(m[1]); }
+                }
+                for (var i in settings.fill) {
+                    for (var j=0; j<2; j++) {
+                        if (settings.fill[i].cell[j]+settings.fill[i].cell[2+j]-1>settings.size[j]) {
+                            settings.size[j] = settings.fill[i].cell[j]+settings.fill[i].cell[2+j]-1;
+                        }
+                    }
                 }
                 // the bars
                 var w       = helpers.value($this,0,0,"width",1.2);
@@ -542,6 +550,20 @@
             }
             if (settings.cols&&settings.cols["col"+_i]&&typeof(settings.cols["col"+_i][_attr])!="undefined") {
                 ret = settings.cols["col"+_i][_attr];
+            }
+
+            for (var i in settings.fill) {
+                var elt = settings.fill[i];
+                if (typeof(elt[_attr])!="undefined"&&
+                    _i>=elt.cell[0]&&_i<elt.cell[0]+elt.cell[2]&&_j>=elt.cell[1]&&_j<elt.cell[1]+elt.cell[3]) {
+                    if ($.isArray(elt[_attr])) {
+                        var index = ((_i-elt.cell[0])+(_j-elt.cell[1])*elt.cell[2])%elt[_attr].length;
+                        ret = elt[_attr][index];
+                    }
+                    else {
+                        ret = elt[_attr];
+                    }
+                }
             }
             if (settings.cells&&settings.cells["c"+_i+"x"+_j]&&typeof(settings.cells["c"+_i+"x"+_j][_attr])!="undefined") {
                 ret = settings.cells["c"+_i+"x"+_j][_attr];
