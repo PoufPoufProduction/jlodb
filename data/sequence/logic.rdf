@@ -5,7 +5,7 @@
     <rdf:Description>
         <dct:identifier>021a</dct:identifier>
         <dct:title xml:lang="fr-FR">Résoudre, sans contrainte de temps, la négation logique d'un nombre binaire codé sur 2 bits.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":2000},"template":"keypad2.html","gen":"function() { var n=2, a=Math.floor(Math.random()*Math.pow(2,n)), aa = a.toString(2), cc = \\\"\\\"; while(aa.length<n) { aa = \\\"0\\\"+aa; } for (var i=0; i<n; i++)  { cc += (aa[i]=='0'?'1':'0'); } return [\\\"¬\\\"+aa, cc ]}","font":2,"strict":true]]></dct:description>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":5000},"template":"keypad2.html","gen":"function() { var n=2, a=Math.floor(Math.random()*Math.pow(2,n)), aa = a.toString(2), cc = \\\"\\\"; while(aa.length<n) { aa = \\\"0\\\"+aa; } for (var i=0; i<n; i++)  { cc += (aa[i]=='0'?'1':'0'); } return [\\\"¬\\\"+aa, cc ]}","font":2,"strict":true]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>logic</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -16,7 +16,7 @@
     <rdf:Description>
         <dct:identifier>022a</dct:identifier>
         <dct:title xml:lang="fr-FR">Résoudre, sans contrainte de temps, la négation logique d'un nombre binaire codé sur 3 bits.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":3,"speed":2000},"template":"keypad2.html","gen":"function() { var n=3, a=Math.floor(Math.random()*Math.pow(2,n)), aa = a.toString(2), cc = \\\"\\\"; while(aa.length<n) { aa = \\\"0\\\"+aa; } for (var i=0; i<n; i++)  { cc += (aa[i]=='0'?'1':'0'); } return [\\\"¬\\\"+aa, cc ]}","font":2,"strict":true]]></dct:description>
+        <dct:description><![CDATA["time":0,"input":{"digit":3,"speed":5000},"template":"keypad2.html","gen":"function() { var n=3, a=Math.floor(Math.random()*Math.pow(2,n)), aa = a.toString(2), cc = \\\"\\\"; while(aa.length<n) { aa = \\\"0\\\"+aa; } for (var i=0; i<n; i++)  { cc += (aa[i]=='0'?'1':'0'); } return [\\\"¬\\\"+aa, cc ]}","font":2,"strict":true]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>logic</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -27,7 +27,7 @@
     <rdf:Description>
         <dct:identifier>023a</dct:identifier>
         <dct:title xml:lang="fr-FR">Résoudre, sans contrainte de temps, la négation logique d'un nombre binaire codé sur 4 bits.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":4,"speed":2000},"template":"keypad2.html","gen":"function() { var n=4, a=Math.floor(Math.random()*Math.pow(2,n)), aa = a.toString(2), cc = \\\"\\\"; while(aa.length<n) { aa = \\\"0\\\"+aa; } for (var i=0; i<n; i++)  { cc += (aa[i]=='0'?'1':'0'); } return [\\\"¬\\\"+aa, cc ]}","font":2,"strict":true]]></dct:description>
+        <dct:description><![CDATA["time":0,"input":{"digit":4,"speed":5000},"template":"keypad2.html","gen":"function() { var n=4, a=Math.floor(Math.random()*Math.pow(2,n)), aa = a.toString(2), cc = \\\"\\\"; while(aa.length<n) { aa = \\\"0\\\"+aa; } for (var i=0; i<n; i++)  { cc += (aa[i]=='0'?'1':'0'); } return [\\\"¬\\\"+aa, cc ]}","font":2,"strict":true]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>logic</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -71,7 +71,7 @@
     <rdf:Description>
         <dct:identifier>121a</dct:identifier>
         <dct:title xml:lang="fr-FR">Résoudre, sans contrainte de temps, la disjonction logique de 2 nombres binaires codés sur 2 bits.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":2000},"template":"keypad2.html","gen":"function() { var n=2, a=Math.floor(Math.random()*Math.pow(2,n)), b = Math.floor(Math.random()*Math.pow(2,n)), aa = a.toString(2), bb = b.toString(2), cc = (a|b).toString(2); while (cc.length<n) { cc = \\\"0\\\"+cc; } while(aa.length<n) { aa = \\\"0\\\"+aa; } while(bb.length<n)  { bb = \\\"0\\\"+bb; } return [aa+\\\" ∨ \\\"+bb, cc ]}","font":2,"strict":true,"class":"h14"]]></dct:description>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":5000},"template":"keypad2.html","gen":"function() { var n=2, a=Math.floor(Math.random()*Math.pow(2,n)), b = Math.floor(Math.random()*Math.pow(2,n)), aa = a.toString(2), bb = b.toString(2), cc = (a|b).toString(2); while (cc.length<n) { cc = \\\"0\\\"+cc; } while(aa.length<n) { aa = \\\"0\\\"+aa; } while(bb.length<n)  { bb = \\\"0\\\"+bb; } return [aa+\\\" ∨ \\\"+bb, cc ]}","font":2,"strict":true,"class":"h14"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>logic</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -82,7 +82,7 @@
     <rdf:Description>
         <dct:identifier>122a</dct:identifier>
         <dct:title xml:lang="fr-FR">Résoudre, sans contrainte de temps, la disjonction logique de 2 nombres binaires codés sur 3 bits.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":3,"speed":2000},"template":"keypad2.html","gen":"function() { var n=3, a=Math.floor(Math.random()*Math.pow(2,n)), b = Math.floor(Math.random()*Math.pow(2,n)), aa = a.toString(2), bb = b.toString(2), cc = (a|b).toString(2); while (cc.length<n) { cc = \\\"0\\\"+cc; } while(aa.length<n) { aa = \\\"0\\\"+aa; } while(bb.length<n)  { bb = \\\"0\\\"+bb; } return [aa+\\\" ∨ \\\"+bb, cc ]}","font":1.5,"strict":true,"class":"h14"]]></dct:description>
+        <dct:description><![CDATA["time":0,"input":{"digit":3,"speed":5000},"template":"keypad2.html","gen":"function() { var n=3, a=Math.floor(Math.random()*Math.pow(2,n)), b = Math.floor(Math.random()*Math.pow(2,n)), aa = a.toString(2), bb = b.toString(2), cc = (a|b).toString(2); while (cc.length<n) { cc = \\\"0\\\"+cc; } while(aa.length<n) { aa = \\\"0\\\"+aa; } while(bb.length<n)  { bb = \\\"0\\\"+bb; } return [aa+\\\" ∨ \\\"+bb, cc ]}","font":1.5,"strict":true,"class":"h14"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>logic</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -93,7 +93,7 @@
     <rdf:Description>
         <dct:identifier>123a</dct:identifier>
         <dct:title xml:lang="fr-FR">Résoudre, sans contrainte de temps, la disjonction logique de 2 nombres binaires codés sur 4 bits.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":4,"speed":2000},"template":"keypad2.html","gen":"function() { var n=4, a=Math.floor(Math.random()*Math.pow(2,n)), b = Math.floor(Math.random()*Math.pow(2,n)), aa = a.toString(2), bb = b.toString(2), cc = (a|b).toString(2); while (cc.length<n) { cc = \\\"0\\\"+cc; } while(aa.length<n) { aa = \\\"0\\\"+aa; } while(bb.length<n)  { bb = \\\"0\\\"+bb; } return [aa+\\\" ∨ \\\"+bb, cc ]}","font":1,"strict":true,"class":"h14"]]></dct:description>
+        <dct:description><![CDATA["time":0,"input":{"digit":4,"speed":5000},"template":"keypad2.html","gen":"function() { var n=4, a=Math.floor(Math.random()*Math.pow(2,n)), b = Math.floor(Math.random()*Math.pow(2,n)), aa = a.toString(2), bb = b.toString(2), cc = (a|b).toString(2); while (cc.length<n) { cc = \\\"0\\\"+cc; } while(aa.length<n) { aa = \\\"0\\\"+aa; } while(bb.length<n)  { bb = \\\"0\\\"+bb; } return [aa+\\\" ∨ \\\"+bb, cc ]}","font":1,"strict":true,"class":"h14"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>logic</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -104,7 +104,7 @@
     <rdf:Description>
         <dct:identifier>201a</dct:identifier>
         <dct:title xml:lang="fr-FR">Résoudre, sans contrainte de temps, la conjonction logique de 2 nombres binaires codés sur 1 bit.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":2000},"template":"keypad2.html","gen":"function() { var n=1, a=Math.floor(Math.random()*Math.pow(2,n)), b = Math.floor(Math.random()*Math.pow(2,n)), aa = a.toString(2), bb = b.toString(2), cc = (a&b).toString(2); while (cc.length<n) { cc = \\\"0\\\"+cc; } while(aa.length<n) { aa = \\\"0\\\"+aa; } while(bb.length<n)  { bb = \\\"0\\\"+bb; } return [aa+\\\" ∧ \\\"+bb, cc ]}","font":2,"strict":true,"class":"h14"]]></dct:description>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":5000},"template":"keypad2.html","gen":"function() { var n=1, a=Math.floor(Math.random()*Math.pow(2,n)), b = Math.floor(Math.random()*Math.pow(2,n)), aa = a.toString(2), bb = b.toString(2), cc = (a&b).toString(2); while (cc.length<n) { cc = \\\"0\\\"+cc; } while(aa.length<n) { aa = \\\"0\\\"+aa; } while(bb.length<n)  { bb = \\\"0\\\"+bb; } return [aa+\\\" ∧ \\\"+bb, cc ]}","font":2,"strict":true,"class":"h14"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>logic</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -139,7 +139,7 @@
     <rdf:Description>
         <dct:identifier>221a</dct:identifier>
         <dct:title xml:lang="fr-FR">Résoudre, sans contrainte de temps, la conjonction logique de 2 nombres binaires codés sur 2 bits.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":2000},"template":"keypad2.html","gen":"function() { var n=2, a=Math.floor(Math.random()*Math.pow(2,n)), b = Math.floor(Math.random()*Math.pow(2,n)), aa = a.toString(2), bb = b.toString(2), cc = (a&b).toString(2); while (cc.length<n) { cc = \\\"0\\\"+cc; } while(aa.length<n) { aa = \\\"0\\\"+aa; } while(bb.length<n)  { bb = \\\"0\\\"+bb; } return [aa+\\\" ∧ \\\"+bb, cc ]}","font":2,"strict":true,"class":"h14"]]></dct:description>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":5000},"template":"keypad2.html","gen":"function() { var n=2, a=Math.floor(Math.random()*Math.pow(2,n)), b = Math.floor(Math.random()*Math.pow(2,n)), aa = a.toString(2), bb = b.toString(2), cc = (a&b).toString(2); while (cc.length<n) { cc = \\\"0\\\"+cc; } while(aa.length<n) { aa = \\\"0\\\"+aa; } while(bb.length<n)  { bb = \\\"0\\\"+bb; } return [aa+\\\" ∧ \\\"+bb, cc ]}","font":2,"strict":true,"class":"h14"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>logic</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -150,7 +150,7 @@
     <rdf:Description>
         <dct:identifier>222a</dct:identifier>
         <dct:title xml:lang="fr-FR">Résoudre, sans contrainte de temps, la conjonction logique de 2 nombres binaires codés sur 3 bits.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":3,"speed":2000},"template":"keypad2.html","gen":"function() { var n=3, a=Math.floor(Math.random()*Math.pow(2,n)), b = Math.floor(Math.random()*Math.pow(2,n)), aa = a.toString(2), bb = b.toString(2), cc = (a&b).toString(2); while (cc.length<n) { cc = \\\"0\\\"+cc; } while(aa.length<n) { aa = \\\"0\\\"+aa; } while(bb.length<n)  { bb = \\\"0\\\"+bb; } return [aa+\\\" ∧ \\\"+bb, cc ]}","font":1.5,"strict":true,"class":"h14"]]></dct:description>
+        <dct:description><![CDATA["time":0,"input":{"digit":3,"speed":5000},"template":"keypad2.html","gen":"function() { var n=3, a=Math.floor(Math.random()*Math.pow(2,n)), b = Math.floor(Math.random()*Math.pow(2,n)), aa = a.toString(2), bb = b.toString(2), cc = (a&b).toString(2); while (cc.length<n) { cc = \\\"0\\\"+cc; } while(aa.length<n) { aa = \\\"0\\\"+aa; } while(bb.length<n)  { bb = \\\"0\\\"+bb; } return [aa+\\\" ∧ \\\"+bb, cc ]}","font":1.5,"strict":true,"class":"h14"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>logic</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -161,7 +161,7 @@
     <rdf:Description>
         <dct:identifier>223a</dct:identifier>
         <dct:title xml:lang="fr-FR">Résoudre, sans contrainte de temps, la conjonction logique de 2 nombres binaires codés sur 4 bits.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":4,"speed":2000},"template":"keypad2.html","gen":"function() { var n=4, a=Math.floor(Math.random()*Math.pow(2,n)), b = Math.floor(Math.random()*Math.pow(2,n)), aa = a.toString(2), bb = b.toString(2), cc = (a&b).toString(2); while (cc.length<n) { cc = \\\"0\\\"+cc; } while(aa.length<n) { aa = \\\"0\\\"+aa; } while(bb.length<n)  { bb = \\\"0\\\"+bb; } return [aa+\\\" ∧ \\\"+bb, cc ]}","font":1,"strict":true,"class":"h14"]]></dct:description>
+        <dct:description><![CDATA["time":0,"input":{"digit":4,"speed":5000},"template":"keypad2.html","gen":"function() { var n=4, a=Math.floor(Math.random()*Math.pow(2,n)), b = Math.floor(Math.random()*Math.pow(2,n)), aa = a.toString(2), bb = b.toString(2), cc = (a&b).toString(2); while (cc.length<n) { cc = \\\"0\\\"+cc; } while(aa.length<n) { aa = \\\"0\\\"+aa; } while(bb.length<n)  { bb = \\\"0\\\"+bb; } return [aa+\\\" ∧ \\\"+bb, cc ]}","font":1,"strict":true,"class":"h14"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>logic</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -207,7 +207,7 @@
     <rdf:Description>
         <dct:identifier>321a</dct:identifier>
         <dct:title xml:lang="fr-FR">Résoudre, sans contrainte de temps, la conjonction ou la disjonction logique de 2 nombres binaires codés sur 2 bits.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":2000},"template":"keypad2.html","gen":"function() { var n=2, a=Math.floor(Math.random()*Math.pow(2,n)), b = Math.floor(Math.random()*Math.pow(2,n)), aa = a.toString(2), bb = b.toString(2), q = Math.random()*2; cc = q>1?(a&b).toString(2):(a|b).toString(2); while (cc.length<n) { cc = \\\"0\\\"+cc; } while(aa.length<n) { aa = \\\"0\\\"+aa; } while(bb.length<n)  { bb = \\\"0\\\"+bb; } return [aa+(q>1?\\\" ∧ \\\":\\\" ∨ \\\")+bb, cc ]}","font":2,"strict":true,"class":"h14"]]></dct:description>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":5000},"template":"keypad2.html","gen":"function() { var n=2, a=Math.floor(Math.random()*Math.pow(2,n)), b = Math.floor(Math.random()*Math.pow(2,n)), aa = a.toString(2), bb = b.toString(2), q = Math.random()*2; cc = q>1?(a&b).toString(2):(a|b).toString(2); while (cc.length<n) { cc = \\\"0\\\"+cc; } while(aa.length<n) { aa = \\\"0\\\"+aa; } while(bb.length<n)  { bb = \\\"0\\\"+bb; } return [aa+(q>1?\\\" ∧ \\\":\\\" ∨ \\\")+bb, cc ]}","font":2,"strict":true,"class":"h14"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>logic</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -218,7 +218,7 @@
     <rdf:Description>
         <dct:identifier>322a</dct:identifier>
         <dct:title xml:lang="fr-FR">Résoudre, sans contrainte de temps, la conjonction ou la disjonction logique de 2 nombres binaires codés sur 3 bits.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":3,"speed":2000},"template":"keypad2.html","gen":"function() { var n=3, a=Math.floor(Math.random()*Math.pow(2,n)), b = Math.floor(Math.random()*Math.pow(2,n)), aa = a.toString(2), bb = b.toString(2), q = Math.random()*2; cc = q>1?(a&b).toString(2):(a|b).toString(2); while (cc.length<n) { cc = \\\"0\\\"+cc; } while(aa.length<n) { aa = \\\"0\\\"+aa; } while(bb.length<n)  { bb = \\\"0\\\"+bb; } return [aa+(q>1?\\\" ∧ \\\":\\\" ∨ \\\")+bb, cc ]}","font":1.5,"strict":true,"class":"h14"]]></dct:description>
+        <dct:description><![CDATA["time":0,"input":{"digit":3,"speed":5000},"template":"keypad2.html","gen":"function() { var n=3, a=Math.floor(Math.random()*Math.pow(2,n)), b = Math.floor(Math.random()*Math.pow(2,n)), aa = a.toString(2), bb = b.toString(2), q = Math.random()*2; cc = q>1?(a&b).toString(2):(a|b).toString(2); while (cc.length<n) { cc = \\\"0\\\"+cc; } while(aa.length<n) { aa = \\\"0\\\"+aa; } while(bb.length<n)  { bb = \\\"0\\\"+bb; } return [aa+(q>1?\\\" ∧ \\\":\\\" ∨ \\\")+bb, cc ]}","font":1.5,"strict":true,"class":"h14"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>logic</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -229,7 +229,7 @@
     <rdf:Description>
         <dct:identifier>323a</dct:identifier>
         <dct:title xml:lang="fr-FR">Résoudre, sans contrainte de temps, la conjonction ou la disjonction logique de 2 nombres binaires codés sur 4 bits.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":4,"speed":2000},"template":"keypad2.html","gen":"function() { var n=4, a=Math.floor(Math.random()*Math.pow(2,n)), b = Math.floor(Math.random()*Math.pow(2,n)), aa = a.toString(2), bb = b.toString(2), q = Math.random()*2; cc = q>1?(a&b).toString(2):(a|b).toString(2); while (cc.length<n) { cc = \\\"0\\\"+cc; } while(aa.length<n) { aa = \\\"0\\\"+aa; } while(bb.length<n)  { bb = \\\"0\\\"+bb; } return [aa+(q>1?\\\" ∧ \\\":\\\" ∨ \\\")+bb, cc ]}","font":1,"strict":true,"class":"h14"]]></dct:description>
+        <dct:description><![CDATA["time":0,"input":{"digit":4,"speed":5000},"template":"keypad2.html","gen":"function() { var n=4, a=Math.floor(Math.random()*Math.pow(2,n)), b = Math.floor(Math.random()*Math.pow(2,n)), aa = a.toString(2), bb = b.toString(2), q = Math.random()*2; cc = q>1?(a&b).toString(2):(a|b).toString(2); while (cc.length<n) { cc = \\\"0\\\"+cc; } while(aa.length<n) { aa = \\\"0\\\"+aa; } while(bb.length<n)  { bb = \\\"0\\\"+bb; } return [aa+(q>1?\\\" ∧ \\\":\\\" ∨ \\\")+bb, cc ]}","font":1,"strict":true,"class":"h14"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>logic</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
