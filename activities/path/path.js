@@ -32,11 +32,11 @@
         "\\\[br\\\]",                               "<br/>",
         "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
         "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
-        "\\\[strong\\\]([^\\\[]+)\\\[/strong\\\]",        "<div class='strong'>$1</div>",
-        "\\\[h1\\\]([^\\\[]+)\\\[/h1\\\]",        "<div class='h1'>$1</div>",
-        "\\\[small\\\]([^\\\[]+)\\\[/small\\\]",        "<div class='small'>$1</div>",
+        "\\\[strong\\\]([^\\\[]+)\\\[/strong\\\]",  "<div class='strong'>$1</div>",
+        "\\\[h1\\\]([^\\\[]+)\\\[/h1\\\]",          "<div class='h1'>$1</div>",
+        "\\\[small\\\]([^\\\[]+)\\\[/small\\\]",    "<div class='small'>$1</div>",
         "\\\[img\\\]([^\\\[]+)\\\[/img\\\]",        "<div class='img'><img src='res/img/$1.svg'/></div>",
-        "\\\[action\\\]([^\\\[]+)\\\[/action\\\]",  "<div class='icon' style='float:left;margin:.1em;font-size:2em;'><img src='res/img/action/$1.svg'/></div>"
+        "\\\[a\\\]([^\\\[]+)\\\[/a\\\]",            "<div class='icon' style='float:left;margin:.1em;font-size:2em;'><img src='res/img/action/$1.svg'/></div>"
     ];
 
     // private methods

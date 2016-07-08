@@ -665,7 +665,7 @@
             $this.find(".target").hide();
             if (!settings.stop && helpers.success($this, _count)) {
                 settings.score = 5-settings.wrong;
-                if (settings.score<0) { settings.score = 0; }
+                if (settings.score<2) { settings.score = 2; }
                 helpers.end($this);
             }
             else {

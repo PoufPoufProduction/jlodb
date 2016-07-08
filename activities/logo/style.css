@@ -4,7 +4,7 @@
 .logo div#splashex #guide           { position:absolute; top:52%; left:45%; font-size:.75em; width:48%;;
                                           text-align:justify; }
 .logo div.mask                       { position:absolute; width:7.8em; height:12em; top:0; left:0; display:none; }
-.logo div#export                     { position:absolute; width:16em; height:12em; top:0; left:0; display:none; }
+.logo div#export                     { position:absolute; width:16em; height:12em; top:0; left:0; display:none; z-index:2002;}
 .logo div#dbg                        { position:absolute; width:16em; height:12em; top:0; left:0; display:none;
                                        background-color:rgba(0,20,0,0.9); color:green; }
 .logo div#dbg>pre                    { font-size:0.3em; }
@@ -45,10 +45,11 @@
 
 .logo .op                            { background-color:#446688; color:#DDEEFF; }
 .logo .va                            { background-color:#777777; color:#EEEEEE; min-width:1.8em; }
+.logo .va>.label                     { margin:0 auto; float:none; }
 .logo .ma                            { background-color:#555555; color:#EEEEEE; }
 .logo .cl                            { background-color:#334466; color:#DDEEFF; }
 .logo .label                         { margin:0 .1em; text-align:center; float:left; }
-.logo .a                             { margin:.1em; padding-left:.2em; float:left; font-weight:bold; opacity:0.2; white-space:nowrap;
+.logo .a                             { margin:.1em; padding:0 .2em; float:left; font-weight:bold; opacity:0.2; white-space:nowrap;
                                        font-family: "Courier New" Courier monospace; border-radius:.25em; cursor:move; }
 .logo .a.s                           { opacity:1; }
 .logo .d                             { float:left; margin:.1em .1em .1em .2em;  min-height:1em; min-width:1.8em; border-radius:.25em; }
@@ -58,9 +59,12 @@
 .logo .ui-draggable-dragging         { min-width:3em; cursor:none !important; }
 .logo .va.ui-draggable-dragging      { opacity:0.8 !important; min-width:1.8em; }
 .logo .ma.ui-draggable-dragging      { opacity:0.8 !important;}
+.logo .ma.ui-draggable-dragging>.label  { float:none; margin:0 auto; }
+
+.logo .d>.a                          { font-size:0.8em; }
 
 .logo div#code                       { margin:.22em; width:18.8em; height:18.8em; background-color:#222222; border-radius:0 0 0 1.2em;
-                                       overflow:auto; font-size:0.4em;
+                                       overflow:auto; font-size:0.4em; background-size:100%;
                                        background-image:url("../../res/img/background/asm45.svg"); background-repeat:no-repeat; }
 .logo div#code #footer               { width:100%; height:2em; border:1px solid #334466; border-width:4px 0 0 0;
                                        background-image:linear-gradient(to bottom, rgba(51,68,102,1), rgba(51,68,102,0)); }

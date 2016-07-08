@@ -14,7 +14,8 @@
             ma      : true,
             cl      : true
         },
-        debug       : false                                      // Debug mode
+        dev         : false,
+        debug       : true                                      // Debug mode
     };
 
     var regExp = [
@@ -136,7 +137,7 @@
                     $clone.appendTo($("#background", settings.svg.root()));
                 }
 
-                if (settings.debug) { $this.find("#controls #debug").show(); }
+                if (settings.dev) { $this.find("#controls #debug").show(); }
 
                 if ($.isArray(settings.locale.guide)) {
                     $this.find("#guide").html("");

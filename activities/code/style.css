@@ -33,7 +33,7 @@
 .code #screens #buttons>div          { font-size:3em; width:1em; height:1em; margin:.1em; float:left; cursor:pointer;}
 /*---------------------------------------------------------------------------------------------------------------------------*/
 .code div#board #central>*           { font-size:.75em; margin:.1em; width:20em; border-radius:.5em; }
-.code #central #code                 { height:25em; background-color:#222; overflow:auto;
+.code #central #code                 { height:25em; background-color:#222; overflow:auto; background-size:100%;
                                       background-image:url("../../res/img/background/asm45.svg"); background-repeat:no-repeat; }
 .code #central #code #lines          { font-size:1em; }
 .code.small #central #code #lines    { font-size:.8em; }
@@ -99,21 +99,24 @@
 .code #touch01                       { top:0; left:0; font-size:2em; }
 
 
-.code #board .a                      { cursor:move; margin:.1em; text-align:center; font-size:1em; opacity:0.2;}
+.code #board  .a                             { cursor:move; margin:.1em; text-align:center; font-size:1em; opacity:0.2; }
 .code #board  .d.va.over                     { background-color:red !important; }
 .code #board  .a.s                           { opacity:1; }
 .code #board  .va.c                          { background-color:#888 !important; }
-.code #board  .ui-draggable-dragging         { cursor:none !important; }
+.code #board  .ui-draggable-dragging         { cursor:none !important; min-width:3em; }
 .code #board  .va.ui-draggable-dragging      { opacity:0.8 !important; }
 .code #board  .ma.ui-draggable-dragging      { opacity:0.8 !important; }
 .code #board  .ui-draggable-dragging .d.op   { display:none; }
+.code #board  .ui-draggable-dragging .d.va   { display:none; }
+
+.code #board .d>.a                          { font-size:0.8em; }
 
 .code #board  .op                            { background-color:#446688; color:#DDEEFF; border-radius:.5em; min-width:12.5em;  }
 .code #board  .op>.label                     { margin:0 .2em; text-align:right; float:left; width:4em; }
 .code #board  .op>.va                        { margin:.1em; min-width:1.2em; min-height:1em; height:inherit;}
 
 .code #board  .va                            { background-color:#777777; color:#EEEEEE; float:left; border-radius:.25em; height:1em;
-                                       min-width:2.2em; }
+                                                min-width:2.2em; }
 .code #board  .va>.label                     { margin:0 .4em; }
 .code #board  .va.char .label:before         { content:"'"; }
 .code #board  .va.char .label:after          { content:"'"; }
@@ -121,6 +124,8 @@
 .code #board  .ma                            { background-color:#555555; color:#EEEEEE; border-radius:.25em; float:left; }
 .code #board  .ma>.va                        { margin:.1em .2em; min-width:1.2em; min-height:1em; height:inherit;}
 .code #board  .ma>.label                     { float:left; margin:0 .2em; }
+
+
 
 .code .cl                            { background-color:#334466; color:#DDEEFF; border-radius:.5em; min-width:12.5em;  }
 .code #board  .cl>.label                     { margin:0 .2em; text-align:right; float:left; width:4em; }

@@ -962,6 +962,18 @@
         <dct:alternative>ga</dct:alternative>
     </rdf:Description>
 
+    <rdf:Description>
+        <dct:identifier>hl</dct:identifier>
+        <dct:title xml:lang="fr-FR">En utilisant une boucle conditionnel, faire avancer le robot jusqu'à la case d'arrivée.</dct:title>
+        <dct:description><![CDATA["board":[[1,101,101,101,101,101,101,101,101,101,101,307],[0,0,0,0,0,0,0,0,0,0,473,307],[2,201,201,201,201,201,201,201,201,201,201,1]],"robots":[{"origin":[0,0,0],"code":[3,3,0],"actions":["f01","f01","invert","fct1","fct1","whilenotblue"]}]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>ga</dct:alternative>
+    </rdf:Description>
+
+
     <!-- WHILE NOT BLUE END -->
 
     <rdf:Description>
@@ -986,6 +998,40 @@
         <dct:type>2</dct:type>
         <dct:alternative>ga</dct:alternative>
     </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>ic</dct:identifier>
+        <dct:title xml:lang="fr-FR">En testant la couleur et la valeur d'une case, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
+        <dct:description><![CDATA["board":[[0,0,0,0,654],[14,1,1,1,13],[1,12,1,11,1],[1,1,2,11,1],[1,12,1,1,13],[1,0,0,0,0]],"robots":[{"origin":[0,5,3],"code":[18,12,12],"actions":["f01","fct1","fct2","numminus","turnright","num","ifnum0","whilenotblueend"]}]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>ga</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>id</dct:identifier>
+        <dct:title xml:lang="fr-FR">En testant l'éclairage d'une lampe, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
+        <dct:description><![CDATA["board":[[0,0,101,20,101],[0,51,9,0,220],[111,209,112,1,111],[320,0,1,0,0],[101,1,1,309,2]],"robots":[{"origin":[2,4,3],"code":[18,12,0],"actions":["f01","fct1","x2","turnleft","turnright","blue","notblue","ifred","ifred","iflblue","iflnotblue","ifeq1","ifeq2","whilenotblueend"]}]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>ga</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>ie</dct:identifier>
+        <dct:title xml:lang="fr-FR">En testant l'éclairage d'une lampe, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
+        <dct:description><![CDATA["board":[[0,2,651],[0,12,1],[51,13,0],[1,11,12],[0,1,1]],"robots":[{"origin":[0,3,0],"code":[18,12,0],"actions":["f01","fct1","turnright","blue","iflnotblue","ifeq3","num","ifnum2","whilenotblueend"]}]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>ga</dct:alternative>
+    </rdf:Description>
+
 
 </rdf:RDF>
 
