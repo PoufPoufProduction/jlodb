@@ -15,6 +15,21 @@
         debug       : true                                     // Debug mode
     };
 
+    var permut = [
+        [[0]],
+        [[0,1]],
+        [[0,1,2],[0,2,1]],
+        [[0,1,2,3],[0,1,3,2],[0,2,1,3],[0,2,3,1],[0,3,1,2],[0,3,2,1]]
+    ];
+
+    // to complete
+    var worst = [
+        [[0]],
+        [[0,1],[0,0,1],[0,0,0,1],[0,0,0,0,1],[0,0,0,0,0,1],[0,0,0,0,0,0,1],[0,0,1,0,0,0,1]],
+        [[0,1,2],[0,0,1,2],[0,0,0,1,2],[0,0,0,0,1,2],[0,0,0,0,0,1,2],[0,0,0,0,0,0,1,2]],
+        [[0,1,2,3],[0,0,1,2,3],[0,0,0,1,2,3],[0,0,0,0,0,0,1,2,3]]
+    ]
+
     // private methods
     var helpers = {
         // @generic: Check the context
@@ -171,9 +186,34 @@
                     }
 
                     // Check the up and down button
-                    $this.find(".source .slider>div").toggle((settings.robots[i].actions.length>15));
-                    settings.sourceid[i]=0;
-                    settings.sourcemax[i]=Math.floor((settings.robots[i].actions.length-1)/5)-2;
+                    
+                    settings.sourceid[i]    = 0;
+                    settings.sourcemax[i]   = 0;
+                    if (settings.robots[i].actions) {
+                        $this.find(".source .slider>div").toggle((settings.robots[i].actions.length>15));
+                        settings.sourcemax[i]=Math.floor((settings.robots[i].actions.length-1)/5)-2;
+                    }
+                }
+
+                // BUILD WORST
+                // Compute all permutation
+                if (settings.robots.length>1 && !settings.worst.length) {
+                    var p = permut[settings.robots.length-1];
+                    var pp = [];
+                    for (var i=0; i<settings.robots.length; i++) {
+                        for (var j in p) {
+                            var tmp = [];
+                            for (var k in p[j]) { tmp.push((p[j][k]+i)%settings.robots.length); }
+                            pp.push(tmp);
+                        }
+                    }
+
+                    var w = worst[settings.robots.length-1];
+                    for (var i in pp) for (var j in w) {
+                        var tmp= [];
+                        for (var k in w[j]) { tmp.push(pp[i][w[j][k]]); }
+                        settings.worst.push(tmp);
+                    }
                 }
 
                 helpers.updatesource($this);
@@ -545,6 +585,16 @@
             ifnum7:     { test: function($this, _id) { return (helpers.settings($this).tiles.number==7); } },
             ifnum8:     { test: function($this, _id) { return (helpers.settings($this).tiles.number==8); } },
             ifnum9:     { test: function($this, _id) { return (helpers.settings($this).tiles.number==9); } },
+            ifnotnum0:  { test: function($this, _id) { return !helpers.actions.ifnum0.test($this,_id); } },
+            ifnotnum1:  { test: function($this, _id) { return !helpers.actions.ifnum1.test($this,_id); } },
+            ifnotnum2:  { test: function($this, _id) { return !helpers.actions.ifnum2.test($this,_id); } },
+            ifnotnum3:  { test: function($this, _id) { return !helpers.actions.ifnum3.test($this,_id); } },
+            ifnotnum4:  { test: function($this, _id) { return !helpers.actions.ifnum4.test($this,_id); } },
+            ifnotnum5:  { test: function($this, _id) { return !helpers.actions.ifnum5.test($this,_id); } },
+            ifnotnum6:  { test: function($this, _id) { return !helpers.actions.ifnum6.test($this,_id); } },
+            ifnotnum7:  { test: function($this, _id) { return !helpers.actions.ifnum7.test($this,_id); } },
+            ifnotnum8:  { test: function($this, _id) { return !helpers.actions.ifnum8.test($this,_id); } },
+            ifnotnum9:  { test: function($this, _id) { return !helpers.actions.ifnum9.test($this,_id); } },
             x2:         { loop : function($this, _id, _val) { return _val?_val-1:2; }},
             x3:         { loop : function($this, _id, _val) { return _val?_val-1:3; }},
             x4:         { loop : function($this, _id, _val) { return _val?_val-1:4; }},

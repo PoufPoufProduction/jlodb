@@ -1,9 +1,8 @@
 .wargames                                { background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat;}
-.wargames div#splash>div                 { /* background-image:url("../../res/img/banners/correcter.svg"); */ }
-.wargames div#splash .text               { width:48%; float:right; font-size:.8em;  }
-.wargames div#splash .text h1            { text-align:right; padding-right:.5em;}
-.wargames div#splash .text ul            { list-style-type:none; margin:.5em; font-size:.9em; }
-.wargames div#splash .text li            { margin:.5em 0 .5em 0; }
+.wargames div#splashex                  { background-image:url("../../res/img/banners/it.svg"); color:lime; }
+.wargames div#splashex h1               { position:absolute; top:45%; left:60%; font-size:1.5em; }
+.wargames div#splashex #guide           { position:absolute; top:52%; left:45%; font-size:.75em; width:48%;;
+                                          text-align:justify; }
 
 .wargames #main                          { width:16.5em; }
 .wargames #main>#menu                    { margin:.1em; width:5.2em; height:11.8em; float:left; }
@@ -42,10 +41,10 @@
 
 .wargames #action>#board #bg>div.t         { cursor:move; }
 
-.wargames #action>#board #fogg>div.s      { background-color:rgba(200,200,200,0.8); }
-.wargames #action>#board #fg>div.m       { background-color:rgba(0,20,40,0.3); }
-.wargames #action>#board #fg>div.m.m0     { background-color:rgba(0,20,40,0.1); }
-.wargames #action>#board #fg>div.m>.a       { width:2em; height:7em; opacity:0.7;
+.wargames #action>#board #fogg>div          { background-color:rgba(200,200,200,0.8); display:none; }
+.wargames #action>#board #fg>div            { background-color:rgba(0,20,40,0.1); display:none;}
+.wargames #action>#board #fg>div.s          { background-color:rgba(0,20,40,0.3); }
+.wargames #action>#board #fg>div>.a         { width:2em; height:7em; opacity:0.7;
                                              background-image:url("../../res/img/generic/arrow01.svg"); position:relative; }
 .wargames #action>#board #fg>div.m>.a.a10   { top:-3em; left:0; }
 .wargames #action>#board #fg>div.m>.a.a20   { top:-4em; left:0; }
@@ -86,17 +85,16 @@
 .wargames #action>#board #etop             { width:11em; height:0.4em; }
 .wargames #action>#board #ebottom          { width:11em; height:0.4em; top:9.6em;}
 
-.wargames #popups>div                       { position:absolute; font-size:.4em; width:15em; padding:.5em;
+.wargames #popups>div                       { position:absolute; font-size:.3em; width:15em; padding:.5em;
                                               border-radius:.5em; background-color:rgba(0,80,40,0.9); color:#5F6;
-                                              border:2px solid #5F6; text-align:justify; display:none; }
-.wargames #popups h1                        { font-size:1.2em; }
-.wargames #popups>div.mode                  { top:2.5em; left:3em; }
-.wargames #popups>div.fog                   { top:2.5em; left:2em; }
-.wargames #popups>div#plife                 { top:4.4em; left:2em; }
-.wargames #popups>div#pmunition             { top:4.4em; left:2em; }
-.wargames #popups>div#parmor                { top:5.9em; left:2em; }
-.wargames #popups>div#pattack               { top:5.9em; left:2em; }
-.wargames #popups>div#pmove                 { top:7.2em; left:2em; }
-.wargames #popups>div#pvision               { top:7.2em; left:2em; }
-.wargames #popups>div#pluck                 { top:8.5em; left:2em; }
-.wargames #popups>div#pspeed                { top:8.5em; left:2em; }
+                                              border:2px solid #5F6; text-align:justify; display:none; left:2%;}
+.wargames #popups>div.mode                  { top:8.5%; }
+.wargames #popups>div.fog                   { top:8.5%; }
+.wargames #popups>div#plife                 { top:15%; }
+.wargames #popups>div#pmunition             { top:15%; }
+.wargames #popups>div#parmor                { top:20%; }
+.wargames #popups>div#pattack               { top:20%; }
+.wargames #popups>div#pmove                 { top:25%; }
+.wargames #popups>div#pvision               { top:25%; }
+.wargames #popups>div#pluck                 { top:30%; }
+.wargames #popups>div#pspeed                { top:30%; }

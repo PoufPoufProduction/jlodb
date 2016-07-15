@@ -78,15 +78,10 @@
     <div id="story">
     </div>
 
-    <div id="splash" ontouchstart="$(this).closest('.wargames').wargames('next');event.preventDefault();"
-                     onclick="$(this).closest('.wargames').wargames('next');"><div>
-        <div class="text">
+    <div id="splashex" ontouchstart="$(this).hide().closest('.wargames').wargames('next');event.preventDefault();"
+                     onclick="$(this).hide().closest('.wargames').wargames('next');"><div>
             <h1 id="label"></h1>
-            <ul>
-                <li id="default1"></li>
-                <li id="default2"></li>
-            </ul>
-        </div>
+            <div id="guide">
     </div></div>
 
 </div>

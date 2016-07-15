@@ -11,66 +11,72 @@
         zoom        : 0,                                        // The current zoom value (0=see all)
         playmode    : 0,                                        // Mode (0:group, 1:single)
         hasfog      : true,                                    // Fog of war
-        debug       : false                                     // Debug mode
+        debug       : true                                     // Debug mode
     };
+
+
+    var regExp = [
+        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
+        "\\\[bb\\\](.+)\\\[/bb\\\]",                "<b>$1</b>",
+        "\\\[h1\\\](.+)\\\[/h1\\\]",                "<b><u>$1</u></b><br/>",
+        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
+        "\\\[br\\\]",                               "<br/>",
+        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
+        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
+        "\\\[svg\\\]([^\\\[]+)\\\[/svg\\\]",        "<div class='svg'><div><svg width='100%' height='100%' viewBox='0 0 32 32'><rect x='0' y='0' width='32' height='32' style='fill:black'/>$1</svg></div></div>",
+        "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>"
+    ];
 
     var DO_NOTHING = 0;
     var MOVE_BOARD = 1;
     var MOVE_UNIT  = 2;
 
-    var people = {
-        base : {
-            pos     : [0,0,0],
-            id      : 0,
-            team    : 0,
-            time    : 0,
-            bonus   : [{type:"attack",add:1},{type:"luck",abs:2},{type:"move",mul:1.2},{type:"vision",mul:1.5}],
-            value   : function(_attribute) {
-                var value = this.stat[_attribute], from = value;
-                if ($.isArray(value)) { from = value[1]; value = value[0]; }
-                for (var j in this.bonus) if (this.bonus[j].type==_attribute) {
-                    if (this.bonus[j].add) { value += this.bonus[j].add; } else
-                    if (this.bonus[j].mul) { value *= this.bonus[j].mul; } else
-                    if (this.bonus[j].abs) { value = this.bonus[j].abs; }
+    // CREATE DATA FOR UNIT
+    var unit = function(_unit) {
+        var def = {
+            default : {
+                pos     : [0,0],
+                fog     : false,
+                id      : 0,
+                team    : 0,
+                time    : 0,
+                res     : { img:"red01", size:[4,6], line:0 },
+                stat    : {
+                    life:       [10,10],    munition:   [10,10],    attack:     1,      armor:      0,
+                    vision:     4,          move:       4,          luck:       3,      speed:      1
+                    },
+                speed   : { ground:1, road:0.5, flood:4, wood:2, hill:2, mountain:3, sea:99 },
+                bonus   : [], // [{type:"attack",add:1},{type:"luck",abs:2},{type:"move",mul:1.2},{type:"vision",mul:1.5}],
+                value   : function(_attribute) {
+                    var value = this.stat[_attribute], from = value;
+                    if ($.isArray(value)) { from = value[1]; value = value[0]; }
+                    for (var j in this.bonus) if (this.bonus[j].type==_attribute) {
+                        if (this.bonus[j].add) { value += this.bonus[j].add; } else
+                        if (this.bonus[j].mul) { value *= this.bonus[j].mul; } else
+                        if (this.bonus[j].abs) { value = this.bonus[j].abs; }
+                    }
+                    return [Math.floor(value), from];
                 }
-                return [Math.floor(value), from];
             },
-            overview: function($this) {
-                for (var i in this.stat) {
-                    var value = this.value(i);
-                    var bonus = (value[0]>value[1]), malus = (value[0]<value[1]);
-                    $this.find("#data #"+i+" .label").html(value[0]).toggleClass("bonus",bonus).toggleClass("malus",malus);
-                }
-                $this.find("#stats #portrait").html("<div class='icon'>"+
-                    "<div style='width:"+this.res.size[0]+"em;height:"+this.res.size[1]+"em;margin-top:-"+this.res.line+"em;'>"+
-                    "<img src='res/img/tileset/ortho/people/"+this.res.img+".svg'/></div></div></div>");
+            soldier : { res     : { img:"red01", size:[4,6], line:0 } }
+        };
 
-            },
-            update: function($this) {
-                this.$elt.css("top",this.pos[1]+"em").css("left",this.pos[0]+"em");
-                var vTop = 0, vLeft = 0;
-                if (this.pos[2]) { vLeft-=1; }
-                //if (tile[settings.board[unit.pos[1]][unit.pos[0]]].type=="flood") { vLeft-=2; }
-                vTop-=this.res.line;
-                this.$elt.children().first().css("left",vLeft+"em").css("top",vTop+"em")
-            }
-        },
-        soldier : {
-            res     : { img:"red01", size:[4,6], line:0 },
-            stat    : {
-                life:       10,
-                munition:   10,
-                attack:     1,
-                armor:      0,
-                vision:     4,
-                move:       4,
-                luck:       3,
-                speed:      1
-                },
-            speed   : { ground:1, road:0.5, flood:4, wood:2, hill:2, mountain:3, sea:99 }
-        }
+        var type     = "";
+        if (typeof(_unit)=="string") { type=_unit; _unit={}; } else { type=_unit.type; }
+        if (!type || !def[type]) { type = "default"; }
+
+        var ret = $.extend(true, {}, def.default, def[type], _unit);
+
+        if (!$.isArray(ret.stat.life))     { ret.stat.life      = [ret.stat.life, ret.stat.life]; }
+        if (!$.isArray(ret.stat.munition)) { ret.stat.munition  = [ret.stat.munition, ret.stat.munition]; }
+
+        return ret;
     };
+
+
     var tile = {
+        default : { fog: 0, move:0 },
+
         // GROUND
         g0   : { pos: [0,0], type:"ground"  },  g1   : { pos: [0,1], type:"ground"  },
         g2   : { pos: [0,2], type:"ground"  },  g3   : { pos: [0,3], type:"ground"  },
@@ -96,57 +102,90 @@
         scso : { pos: [4,2], type:"sea"    },   scse : { pos: [5,2], type:"sea"    },
 
         // WOOD
-        w0   : { pos: [1,0], type:"wood" },
+        w0   : { pos: [1,0], type:"wood", fogtype:"hide" },
 
         // MOUNTAINS
-        m0   : { pos: [2,0], type:"hill" },     m1   : { pos: [2,1], h:2, type:"mountain" },
-
-        fog : { "wood" : "hide", "mountain": "stop" }
+        m0   : { pos: [2,0], type:"hill" },     m1   : { pos: [2,1], h:2, type:"mountain", fogtype:"stop" },
     }
 
-    var board = {
-        clone: function(_board, _fill) { return board.create(_board[0].length, _board.length, _fill); },
-        create: function(_width, _height, _fill) {
-            var ret=[];
-            for (var j=0; j<_height; j++) {
-                var line = [];
-                for (var i=0; i<_width; i++) { line.push(_fill); }
-                ret.push(line); }
-            return ret;
-        },
-        merge: function(_board1, _board2, _function) {
-            var ret=[];
-            for (var j=0; j<_board1.length; j++) {
-                var line=[];
-                for (var i=0; i<_board1[0].length; i++) { line.push(_function(_board1[j][i], _board2[j][i])); }
-                ret.push(line); }
-            return ret;
-        },
-        fog: function(_board, _pos, _vision) {
-            var ret = board.clone(_board, 0);
-            var tiles = [ [_pos[0],_pos[1],_vision] ];
-            while (tiles.length) {
-                var t = tiles.shift();
-                if (ret[t[1]][t[0]]<t[2]) {
-                    ret[t[1]][t[0]] = t[2];
-                    if (t[2]>1 && tile.fog[tile[_board[t[1]][t[0]]].type]!="stop") {
-                        if (t[0]>0)              { tiles.push([t[0]-1,t[1],t[2]-1]); }
-                        if (t[1]>0)              { tiles.push([t[0],t[1]-1,t[2]-1]); }
-                        if (t[0]<ret[0].length-1){ tiles.push([t[0]+1,t[1],t[2]-1]); }
-                        if (t[1]<ret.length-1)   { tiles.push([t[0],t[1]+1,t[2]-1]); }
+    var board = function(_board) {
+        var w,h,b;
+        if ($.isArray(_board))  { w = _board[0].length; h = _board.length; b=_board; }
+        else                    { w = _board.width;     h = _board.height; b=_board.board; }
+        
+        var ret = {
+            width:  w,
+            height: h,
+            board: [],
+            moves: function(_people, _id) {
+                this.init("move",0);
+                var moves    = [];
+                moves.push([_people[_id].pos[0], _people[_id].pos[1], _people[_id].value("move")[0]]);
+
+                while (moves.length) {
+                    var cell = moves.pop();
+                    var ok = (cell[2]>0);
+
+                    if (ok && (cell[0]<0 || cell[1]<0 || cell[0]>=this.width || cell[1]>=this.height))  { ok = false; }
+
+                    if (ok) {
+                        for (var i in _people)
+                            if (_people[i].team!=_people[_id].team && _people[i].pos[0]==cell[0] && _people[i].pos[1]==cell[1] &&
+                                !_people[i].fog) {
+                                ok = false;
+                        }
                     }
-                }
-            };
 
-            for (var j=0; j<_board.length; j++) for (var i=0; i<_board[0].length; i++) {
-                if (tile.fog[tile[_board[j][i]].type]=="hide") {
-                    if (Math.abs(i-_pos[0])+Math.abs(j-_pos[1])>1) { ret[j][i] = 0; }
+                    if (ok && this.board[cell[1]][cell[0]].move < cell[2]) {
+                        var tile = this.board[cell[1]][cell[0]];
+                        var speed = _people[_id].speed[tile.type]?_people[_id].speed[tile.type]:1;
+
+                        this.board[cell[1]][cell[0]].move = cell[2];
+
+                        moves.push([cell[0]-1, cell[1], cell[2]-speed]);
+                        moves.push([cell[0]+1, cell[1], cell[2]-speed]);
+                        moves.push([cell[0], cell[1]-1, cell[2]-speed]);
+                        moves.push([cell[0], cell[1]+1, cell[2]-speed]);
+                    }
+
                 }
+                return this;
+            },
+            fog : function(_people, _team) {
+                this.init("fog",0);
+                var tiles = [];
+                for (var i in _people) { if (_people[i].team == _team) {
+                    tiles.push([_people[i].pos[0], _people[i].pos[1], _people[i].value("vision")[0], 0]); } }
+                while (tiles.length) {
+                    var t = tiles.shift();
+                    var elt = this.board[t[1]][t[0]];
+                    if (elt.fog<t[2]) {
+                        if (elt.fogtype!="hide" || t[3]<2) { elt.fog = t[2]; }
+                        if (t[2]>1 && elt.fogtype!="stop") {
+                            if (t[0]>0)             { tiles.push([t[0]-1,t[1],t[2]-1,t[3]+1]); }
+                            if (t[1]>0)             { tiles.push([t[0],t[1]-1,t[2]-1,t[3]+1]); }
+                            if (t[0]<this.width-1)  { tiles.push([t[0]+1,t[1],t[2]-1,t[3]+1]); }
+                            if (t[1]<this.height-1) { tiles.push([t[0],t[1]+1,t[2]-1,t[3]+1]); }
+                        }
+                    }
+                };
+                return this;
+            },
+            init : function(_tag, _value) { this.foreach(function(_elt) { _elt[_tag] = _value; }); return this; },
+            foreach: function(_function) {
+                for (var j=0; j<this.height; j++) for (var i=0; i<this.width; i++) { _function(this.board[j][i]); }
+                return this;
+            },
+            dump: function() { alert(JSON.stringify(this.board)); return this;}
+        };
+        for (var j=0; j<h; j++) { var line = []; for (var i=0; i<w; i++) {
+                var val = $.isArray(b)?b[j][i]:b;
+                if (typeof(val)=="string") { val = tile[val]?tile[val]:tile.default; }
+                line.push($.extend(true,{}, tile.default, val));
             }
-
-            return ret;
-        }
-    }
+            ret.board.push(line); }
+        return ret;
+    };
 
     // private methods
     var helpers = {
@@ -173,6 +212,13 @@
             var settings = helpers.settings($this);
             helpers.unbind($this);
             settings.context.onquit($this,{'status':'success','score':settings.score});
+        },
+        format: function(_text) {
+            for (var j=0; j<5; j++) for (var i=0; i<regExp.length/2; i++) {
+                var vReg = new RegExp(regExp[i*2],"g");
+                _text = _text.replace(vReg,regExp[i*2+1]);
+            }
+            return _text;
         },
         loader: {
             css: function($this) {
@@ -250,22 +296,30 @@
                 // BOARD
                 $this.find("#board #bg").html("");
                 $this.find("#board #fogg").html("");
-                for (var j in settings.board) for (var i in settings.board[j]) {
-                    var val = settings.board[j][i];
-                    if (tile[val]) {
-                        var $elt = $("<div class='t' style='top:"+j+"em;left:"+i+"em;"+
-                            "background-position:-"+tile[val].pos[0]+"em -"+tile[val].pos[1]+"em;"+"'><div></div></div>");
-                        if (tile[val].h) {
-                            $elt.css("height",tile[val].h+"em").css("top",(j-tile[val].h+1)+"em");
-                        }
-                        $this.find("#board #bg").append($elt);
-                    }
-                    var $fogelt = $("<div id='fog"+i+"x"+j+"' class='t' style='top:"+j+"em;left:"+i+"em;'><div></div></div>");
-                    $this.find("#board #fogg").append($fogelt);
+
+                settings.map = board(settings.board);
+
+                for (var j in settings.map.board) for (var i in settings.map.board[j]) {
+                    var val = settings.map.board[j][i];
+
+                    // $elt : BACKGROUND TILE
+                    val.$elt=$("<div class='t' style='top:"+j+"em;left:"+i+"em;"+
+                            "background-position:-"+val.pos[0]+"em -"+val.pos[1]+"em;"+"'><div></div></div>");
+                    if (val.h) { val.$elt.css("height",val.h+"em").css("top",(j-val.h+1)+"em"); }
+                    $this.find("#board #bg").append(val.$elt);
+
+                    // $fogelt : FOG TILE
+                    val.$fogelt = $("<div id='fog"+i+"x"+j+"' class='t' style='top:"+j+"em;left:"+i+"em;'><div></div></div>");
+                    $this.find("#board #fogg").append(val.$fogelt);
+
+                    // $movelt : MOVE TILE
+                    val.$movelt = $("<div style='top:"+j+"em;left:"+i+"em;'></div>");
+                    $this.find("#fg").append(val.$movelt);
                 }
+
                 settings.maxtiles = Math.min(settings.board.length, settings.board[0].length);
-                settings.nav.size=[ settings.board[0].length, settings.board.length ];
-                settings.nav.focus=[settings.maxtiles/2, settings.maxtiles/2 ];
+                settings.nav.size = [ settings.board[0].length, settings.board.length ];
+                settings.nav.focus= [ settings.maxtiles/2, settings.maxtiles/2 ];
 
                 $this.find("#board #grounds").css("width",settings.board[0].length+"em")
                                              .css("height",settings.board.length+"em");
@@ -274,12 +328,14 @@
                 helpers.zoom($this,1);
 
                 $this.find("#zoom #cursor")
-                    .css("width",(22.4*settings.mintiles/settings.maxtiles)+"em").show()
+                    .css("width",(22.4*settings.mintiles/settings.maxtiles)+"em")
                     .draggable({ axis:"x", containment:"parent",
                         drag:function() {
                             var x= ($(this).offset().left-$(this).parent().offset().left)/($(this).parent().width()-$(this).width());
                             helpers.zoom($this,1-x);
-                    }});
+                    }})
+                    .css("position","absolute")
+                    .show();
 
                 $this.find("#board").bind("mousedown touchstart", function(event) {
                     var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
@@ -304,10 +360,9 @@
                             // MOVE SOLDIER
                         break;
                     }
-                    $this.find("#fg").html("");
+                    $this.find("#fg>div").removeClass("s").hide();
                     settings.nav.mouse      = 0;
                     settings.action.id      = DO_NOTHING;
-                    settings.engine.area    = [];
 
                     event.stopPropagation();
                     event.preventDefault();
@@ -357,95 +412,61 @@
                     event.preventDefault();
                 });
 
-                for (var i in settings.units) { settings.units[i] = helpers.units.create($this, settings.units[i]); 
-                    $this.find("#people").append(settings.units[i].$elt);}
-
+                for (var i in settings.units) { helpers.units.add($this, settings.units[i]); }
                 helpers.engine.newturn($this);
 
                 // Locale handling
                 $this.find("h1#label").html(settings.label);
                 $this.find("#exercice").html(settings.exercice);
-                if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
+                if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(helpers.format(value)); }); }
 
-                if (!$this.find("#splash").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
-            }
-        },
-        engine: {
-            newturn: function($this) {
-                var settings = helpers.settings($this);
-                if (settings.hasfog) {
-                    settings.engine.fog = helpers.fog.compute($this, 0);
-                    helpers.fog.display($this, settings.engine.fog);
-                    for (var i in settings.units) { var unit = settings.units[i];
-                        unit.$elt.toggleClass("d",settings.engine.fog[unit.pos[1]][unit.pos[0]]);
-                    }
-                }
-                if (settings.playmode==0) {
-                    for (var i in settings.units) { settings.units[i].$elt.toggleClass("a",(settings.units[i].team==0)); }
-                } else {
-                }
-            }
-        },
-        fog: {
-            display: function($this, _board) {
-                var settings = helpers.settings($this);
-                $this.find("#fogg>div").removeClass();
-                for (var j in _board) for (var i in _board[j]) {
-                    $this.find("#fogg #fog"+i+"x"+j).toggleClass("s", _board[j][i]);
-                }
-            },
-            compute: function($this, _team) {
-                var settings = helpers.settings($this);
-                var ret = board.create(settings.nav.size[0],settings.nav.size[1],true);
-                for (var i in settings.units) {
-                    var unit = settings.units[i];
-                    if (unit.team == _team) {
-                        ret = board.merge(ret, board.fog(settings.board, unit.pos, unit.value("vision")[0]),
-                                    function(_a,_b) { return _a&&(_b==0);});
-                    }
-                }
-                return ret;
+                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         units: {
-            get:    function($this, _id) {
-                var ret = 0, settings = helpers.settings($this);
-                for (var i in settings.units) { if (settings.units[i].id == _id) { ret = settings.units[i]; } }
-                return ret;
-            },
-            create: function($this, _unit) {
+            add: function($this, _data) {
                 var settings = helpers.settings($this);
-                var type     = "";
-                if (typeof(_unit)=="string") { type=_unit; _unit={}; } else { type=_unit.type; }
-                var unit = $.extend({}, people.base, people[type], _unit);
-                if (!$.isArray(unit.stat.life))     { unit.stat.life= [unit.stat.life, unit.stat.life]; }
-                if (!$.isArray(unit.stat.munition)) { unit.stat.munition= [unit.stat.munition, unit.stat.munition]; }
-                unit.id = settings.unitcount++;
-                unit.$elt = $("<div id='"+unit.id+"' class=''>"+
-                              "<div style='width:"+unit.res.size[0]+"em;height:"+unit.res.size[1]+"em;'>"+
-                              "<img src='res/img/tileset/ortho/people/"+unit.res.img+".svg'/></div></div>");
+                var u        = unit(_data);
 
-                unit.$elt.bind("mousedown touchstart", function(event) {
+                u.overview = function($this) {
+                    for (var i in this.stat) {
+                        var value = this.value(i);
+                        var bonus = (value[0]>value[1]), malus = (value[0]<value[1]);
+                        $this.find("#data #"+i+" .label").html(value[0]).toggleClass("bonus",bonus).toggleClass("malus",malus);
+                    }
+                    $this.find("#stats #portrait").html("<div class='icon'>"+
+                        "<div style='width:"+this.res.size[0]+"em;height:"+this.res.size[1]+"em;margin-top:-"+this.res.line+"em;'>"+
+                        "<img src='res/img/tileset/ortho/people/"+this.res.img+".svg'/></div></div></div>");
+                    return this;
+                };
+
+
+                u.update = function($this, _newpos, _anim) {
+                    this.$elt.css("top",this.pos[1]+"em").css("left",this.pos[0]+"em");
+                    var vTop = 0, vLeft = 0;
+                    //if (tile[settings.board[unit.pos[1]][unit.pos[0]]].type=="flood") { vLeft-=2; }
+                    vTop-=this.res.line;
+                    this.$elt.children().first().css("left",vLeft+"em").css("top",vTop+"em");
+                    return this;
+                }
+
+                u.id = settings.people.length;
+                u.$elt = $("<div id='"+u.id+"' class=''>"+
+                           "<div style='width:"+u.res.size[0]+"em;height:"+u.res.size[1]+"em;'>"+
+                           "<img src='res/img/tileset/ortho/people/"+u.res.img+".svg'/></div></div>");
+
+                u.$elt.bind("mousedown touchstart", function(event) {
                     var guyid = $(this).attr("id");
                     $this.find("#people>div").removeClass("s");
-                    var guy = helpers.units.get($this, guyid);
+                    var guy = settings.people[guyid];
                     if (guy) {
                         guy.$elt.addClass("s");
                         guy.overview($this);
                         if (guy.$elt.hasClass("a") ) {
-                            $this.find("#fg").html("");
-                            settings.engine.area = helpers.info.moves($this, guyid);
+                            settings.map.moves(settings.people,guyid);
                             settings.action.timer = setTimeout(function(){
-                                for (var jj=0; jj<settings.engine.area.length; jj++)
-                                for (var ii=0; ii<settings.engine.area[jj].length; ii++)
-                                {
-                                    if (settings.engine.area[jj][ii].v>=0) {
-                                        settings.engine.area[jj][ii].$e =
-                                            $("<div class='m m"+settings.engine.area[jj][ii].v+"' id='m"+ii+"x"+jj+"' "+
-                                              "style='top:"+jj+"em;left:"+ii+"em;'></div>");
-                                        $this.find("#fg").append(settings.engine.area[jj][ii].$e );
-                                    }
-                                }
+                                $this.find("#fg>div").removeClass("s").show();
+                                settings.map.foreach(function(_tile) { if (_tile.move) { _tile.$movelt.addClass("s"); } });
                                 settings.action.id = MOVE_UNIT;
                             },300);
                         }
@@ -453,8 +474,33 @@
                     event.stopPropagation();
                     event.preventDefault();
                 });
-                unit.update($this);
-                return unit;
+
+                settings.people.push(u.update());
+                $this.find("#people").append(u.$elt);
+            }
+        },
+        engine: {
+            newturn: function($this) {
+                var settings = helpers.settings($this);
+                if (settings.hasfog) {
+                    settings.map.fog(settings.people,0);
+                    settings.map.foreach(function(_tile) {
+                        if (!_tile.fog) { _tile.$fogelt.show(); }
+                    });
+
+                    for (var i in settings.people) {
+                        settings.people[i].fog = false;
+                        if (settings.people[i].team!=0 && !settings.map.board[settings.people[i].pos[1]][settings.people[i].pos[0]].fog) {
+                            settings.people[i].fog = true;
+                            settings.people[i].$elt.hide();
+                        }
+                    }
+                }
+
+                if (settings.playmode==0) {
+                    for (var i in settings.people) { settings.people[i].$elt.toggleClass("a",(settings.people[i].team==0)); }
+                } else {
+                }
             }
         },
         info: {
@@ -469,54 +515,6 @@
                      _event.clientY>=o.top  &&_event.clientY<o.top+$b.height() ) {
                     ret = [Math.floor(settings.nav.xy[0]+(_event.clientX-o.left)/s),
                            Math.floor(settings.nav.xy[1]+(_event.clientY-o.top)/s)];
-                }
-                return ret;
-            },
-            // PROVIDE THE POSSIBLE MOVES FOR A PEOPLE
-            moves: function($this, _id) {
-                var settings = helpers.settings($this);
-                var ret      = board.clone(settings.board,{v:-1});
-                var guy      = helpers.units.get($this,_id);
-                if (guy) {
-                    var moves    = [];
-                    moves.push([guy.pos[0], guy.pos[1], 0]);
-
-                    while (moves.length) {
-                        var cell = moves.pop();
-                        var ok = true;
-
-                        if (ok && (cell[0]<0 || cell[1]<0 || cell[0]>=ret[0].length || cell[1]>=ret.length))    { ok = false; }
-                        if (ok && ret[cell[1]][cell[0]].v!=-1 && ret[cell[1]][cell[0]].v<= cell[2])             { ok = false; }
-
-                        if (ok) {
-                            // GET THE SPEED
-                            var speed = 1;
-                            if (settings.board[cell[1]][cell[0]] && tile[settings.board[cell[1]][cell[0]]] &&
-                                guy.speed && typeof(guy.speed[tile[settings.board[cell[1]][cell[0]]].type])!='undefined' ) {
-                                speed = guy.speed[tile[settings.board[cell[1]][cell[0]]].type];
-                            }
-
-                            // IS SOMEONE HERE ?
-                            var team = -1;
-                            for (var i in settings.units) {
-                                if (settings.units[i].pos[0]==cell[0] && settings.units[i].pos[1]==cell[1]) {
-                                    team = settings.units[i].team;
-                                    if (settings.hasfog && settings.engine.fog[cell[1]][cell[0]]) { team = -1; }
-                                }
-                            }
-
-                            if (speed!=-1 && (team==-1 || team==guy.team)) {
-                                ret[cell[1]][cell[0]] = {$e:0, v:cell[2], s:speed};
-
-                                if (cell[2]+speed<=guy.value("move")[0]) {
-                                    moves.push([cell[0]-1, cell[1], cell[2]+speed]);
-                                    moves.push([cell[0]+1, cell[1], cell[2]+speed]);
-                                    moves.push([cell[0], cell[1]-1, cell[2]+speed]);
-                                    moves.push([cell[0], cell[1]+1, cell[2]+speed]);
-                                }
-                            }
-                        }
-                    }
                 }
                 return ret;
             }
@@ -571,7 +569,7 @@
                     action          : { id: 0, timer: 0 },      // THE CURRENT ACTION (1:translate board, 2:move people)
                     nav             : { mouse: 0, focus:[0,0], rt:[0,0], zoom:0, size:[0,0], xy:[0,0] },
                     popuptimer      : 0,
-                    unitcount       : 0,
+                    people          : [],
                     engine          : { fog:[], move:[] }
                 };
 
