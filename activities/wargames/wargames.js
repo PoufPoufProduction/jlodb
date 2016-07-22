@@ -10,8 +10,8 @@
         mintiles    : 5,                                        // The minimum tiles in board
         zoom        : 0,                                        // The current zoom value (0=see all)
         playmode    : 0,                                        // Mode (0:group, 1:single)
-        hasfog      : true,                                    // Fog of war
-        debug       : true                                     // Debug mode
+        hasfog      : true,                                     // Fog of war
+        debug       : true                                      // Debug mode
     };
 
 
@@ -35,17 +35,23 @@
     var unit = function(_unit) {
         var def = {
             default : {
+                alive   : true,
                 pos     : [0,0],
                 fog     : false,
+                side    : true,
                 id      : 0,
                 team    : 0,
                 time    : 0,
                 res     : { img:"red01", size:[4,6], line:0 },
+                fire    : { min:1, max:1, type:"move" },
+                support : {},
+                type    : "human",
+                subtype : "",
                 stat    : {
-                    life:       [10,10],    munition:   [10,10],    attack:     1,      armor:      0,
-                    vision:     4,          move:       4,          luck:       3,      speed:      1
+                    life:       [10,10],    munition:   [20,20],    attack:     5,      armor:      0,
+                    vision:     3,          move:       4,          luck:       3,      speed:      1
                     },
-                speed   : { ground:1, road:0.5, flood:4, wood:2, hill:2, mountain:3, sea:99 },
+                speed   : { ground:1, road:0.5, flood:3, wood:2, hill:2, mountain:3, sea:99 },
                 bonus   : [], // [{type:"attack",add:1},{type:"luck",abs:2},{type:"move",mul:1.2},{type:"vision",mul:1.5}],
                 value   : function(_attribute) {
                     var value = this.stat[_attribute], from = value;
@@ -53,19 +59,56 @@
                     for (var j in this.bonus) if (this.bonus[j].type==_attribute) {
                         if (this.bonus[j].add) { value += this.bonus[j].add; } else
                         if (this.bonus[j].mul) { value *= this.bonus[j].mul; } else
-                        if (this.bonus[j].abs) { value = this.bonus[j].abs; }
+                        if (this.bonus[j].abs) { value  = this.bonus[j].abs; }
                     }
                     return [Math.floor(value), from];
+                },
+                canattack: function(_target) {
+                    var ret = false;
+                    if (this.value("attack")[0]>0 && this.value("munition")[0]>0 && _target.alive && _target.team!=this.team && !_target.fog) {
+                        ret = true;
+                    }
+                    return ret;
+                },
+                canhelp: function(_target) {
+                    var ret = false;
+                    if (this.support && _target.alive && _target.team==this.team && _target.id!=this.id) {
+                        
+                        if (this.support.type=="heal"   && _target.type=="human")   { ret = true; }
+                        if (this.support.type=="repear" && _target.type=="mecanic") { ret = true; }
+                        if (this.support.type=="ammo")                              { ret = true; }
+                    }
+                    return ret;
+                },
+                offset: function(_tile) {       
+                    var vTop = 0, vLeft = 0;
+                    vTop    += this.res.line;
+                    vLeft   += this.side?0:1;
+                    if (_tile) {
+                        if (_tile.type=="flood" || _tile.type=="sea") {
+                            vLeft = (vLeft+2)%this.res.size[0];
+                        }
+                    }
+                    return {top:vTop, left:vLeft }
+                },
+                fight: function(_d, _from, _to, _iscounter) {
+                    var ret = this.value("attack")[0] - _d.value("armor")[0];
+                    return Math.max(0,ret);
+                },
+                attack: function(_d, _from, _to, _counter) {
+                    return [this.fight(_d, _from, _to, true), _counter?_d.fight(this, _to, _from, false):0];
                 }
             },
+            archer  : { fire    : { min:1.6, max:2.5, type:"move" }, stat : { munition:   [5,5], attack: 4, vision: 4, move: 3 } },
+            doctor  : { stat    : { munition:   [0,0],    attack:     0 }, support : { type:"heal", value:2 } },
             soldier : { res     : { img:"red01", size:[4,6], line:0 } }
         };
 
-        var type     = "";
-        if (typeof(_unit)=="string") { type=_unit; _unit={}; } else { type=_unit.type; }
-        if (!type || !def[type]) { type = "default"; }
+        var base     = "";
+        if (typeof(_unit)=="string") { base=_unit; _unit={}; } else { base=_unit.base; }
+        if (!base || !def[base]) { base = "default"; }
 
-        var ret = $.extend(true, {}, def.default, def[type], _unit);
+        var ret = $.extend(true, {}, def.default, def[base], _unit);
 
         if (!$.isArray(ret.stat.life))     { ret.stat.life      = [ret.stat.life, ret.stat.life]; }
         if (!$.isArray(ret.stat.munition)) { ret.stat.munition  = [ret.stat.munition, ret.stat.munition]; }
@@ -105,7 +148,7 @@
         w0   : { pos: [1,0], type:"wood", fogtype:"hide" },
 
         // MOUNTAINS
-        m0   : { pos: [2,0], type:"hill" },     m1   : { pos: [2,1], h:2, type:"mountain", fogtype:"stop" },
+        m0   : { pos: [2,0], type:"hill", fogtype:[1,1] },     m1   : { pos: [2,1], h:2, type:"mountain", fogtype:[99,2] },
     }
 
     var board = function(_board) {
@@ -117,10 +160,16 @@
             width:  w,
             height: h,
             board: [],
-            moves: function(_people, _id) {
+            // Place people on the map board
+            people: function(_people) {
+                this.init("people",0);
+                for (var p in _people) { if (_people[p].alive) this.board[_people[p].pos[1]][_people[p].pos[0]].people = _people[p]; }
+            },
+            // Compute possible moves for unit _id
+            moves: function(_guy) {
                 this.init("move",0);
-                var moves    = [];
-                moves.push([_people[_id].pos[0], _people[_id].pos[1], _people[_id].value("move")[0]]);
+                var moves   = [];
+                moves.push([_guy.pos[0], _guy.pos[1], _guy.value("move")[0]+1]);
 
                 while (moves.length) {
                     var cell = moves.pop();
@@ -129,48 +178,135 @@
                     if (ok && (cell[0]<0 || cell[1]<0 || cell[0]>=this.width || cell[1]>=this.height))  { ok = false; }
 
                     if (ok) {
-                        for (var i in _people)
-                            if (_people[i].team!=_people[_id].team && _people[i].pos[0]==cell[0] && _people[i].pos[1]==cell[1] &&
-                                !_people[i].fog) {
-                                ok = false;
-                        }
+                        var p = this.board[cell[1]][cell[0]].people;
+                        if (p && p.team!=_guy.team && !p.fog) { ok = false; }
                     }
 
                     if (ok && this.board[cell[1]][cell[0]].move < cell[2]) {
-                        var tile = this.board[cell[1]][cell[0]];
-                        var speed = _people[_id].speed[tile.type]?_people[_id].speed[tile.type]:1;
-
                         this.board[cell[1]][cell[0]].move = cell[2];
 
-                        moves.push([cell[0]-1, cell[1], cell[2]-speed]);
-                        moves.push([cell[0]+1, cell[1], cell[2]-speed]);
-                        moves.push([cell[0], cell[1]-1, cell[2]-speed]);
-                        moves.push([cell[0], cell[1]+1, cell[2]-speed]);
-                    }
+                        var d       = [[-1,0],[0,-1],[1,0],[0,1]];
+                        for (var i in d) {
+                            if (cell[0]+d[i][0]>=0 && cell[1]+d[i][1]>=0 && cell[0]+d[i][0]<this.width && cell[1]+d[i][1]<this.height) {
+                                var tile = this.board[cell[1]+d[i][1]][cell[0]+d[i][0]];
+                                var speed = _guy.speed[tile.type]?_guy.speed[tile.type]:1;
 
+                                moves.push([cell[0]+d[i][0], cell[1]+d[i][1], cell[2]-speed]);
+                            }
+                        }
+                    }
                 }
+
                 return this;
             },
-            fog : function(_people, _team) {
-                this.init("fog",0);
+            // Compute possible targets for unit _id
+            targets: function(_people, _id) {
+                this.init("target",0);
+                var guy = _people[_id];
+
+                if (guy.value("attack")[0])
+                for (var i=0; i<this.width; i++) for (var j=0; j<this.height; j++) {
+                    var d = (guy.pos[0]-i)*(guy.pos[0]-i)+(guy.pos[1]-j)*(guy.pos[1]-j);
+                    if (d<=guy.fire.max*guy.fire.max && d>=guy.fire.min*guy.fire.min) { this.board[j][i].target = 1; }
+                }
+
+                if (guy.fire.type=="move")
+                for (var p in _people) {
+                    var foe = _people[p];
+                    // ATTACK THE FOE
+                    if (guy.canattack(foe)) {
+                        // look for the best place (if any) where the foe can be attack
+                        var place = 0;
+                        for (var i=Math.ceil(Math.max(0,foe.pos[0]-guy.fire.max)); i<=Math.ceil(Math.min(this.width, foe.pos[0]+guy.fire.max)); i++)
+                        for (var j=Math.ceil(Math.max(0,foe.pos[1]-guy.fire.max)); j<=Math.ceil(Math.min(this.height, foe.pos[1]+guy.fire.max)); j++) {
+                            if (this.board[j][i].move && ( !this.board[j][i].people || this.board[j][i].people.id==guy.id) ) {
+                                var d = (foe.pos[0]-i)*(foe.pos[0]-i)+(foe.pos[1]-j)*(foe.pos[1]-j);
+                                if (d<=guy.fire.max*guy.fire.max && d>=guy.fire.min*guy.fire.min) {
+                                    if (!place || this.board[place[1]][place[0]].move<this.board[j][i].move) {
+                                        place = [ i, j ];
+                                    }
+                                }
+                            }
+                        }
+                        this.board[foe.pos[1]][foe.pos[0]].target = place;
+                    }
+                    // HEAL THE ALLY
+                    if (guy.canhelp(foe)) {
+                        var place = 0;
+                        var d     = [[-1,0],[0,-1],[1,0],[0,1]]; 
+                        for (var dd in d) {
+                            var i = foe.pos[0]+d[dd][0], j = foe.pos[1]+d[dd][1];
+                            if (i>=0 && j>=0 && i<this.width && j<this.height && this.board[j][i].move &&
+                                ( !this.board[j][i].people || this.board[j][i].people.id==guy.id) ) {
+                                if (!place || this.board[place[1]][place[0]].move<this.board[j][i].move) {
+                                    place = [ i, j ];
+                                }
+                            }
+                        }
+                        this.board[foe.pos[1]][foe.pos[0]].target = place;
+                    }
+                }
+
+            },
+            // Compute the fog visibility for a team ("fog" or "fogia") 
+            fog : function(_people, _team, _fog) {
+                this.init(_fog,0);
                 var tiles = [];
-                for (var i in _people) { if (_people[i].team == _team) {
-                    tiles.push([_people[i].pos[0], _people[i].pos[1], _people[i].value("vision")[0], 0]); } }
+                for (var i in _people) { if (_people[i].team == _team && _people[i].alive) {
+                    var elt = this.board[_people[i].pos[1]][_people[i].pos[0]];
+                    var bonus = (elt.fogtype&&$.isArray(elt.fogtype))?elt.fogtype[1]:0;
+                    tiles.push([_people[i].pos[0], _people[i].pos[1], _people[i].value("vision")[0]+bonus, 0]); } }
                 while (tiles.length) {
                     var t = tiles.shift();
                     var elt = this.board[t[1]][t[0]];
-                    if (elt.fog<t[2]) {
-                        if (elt.fogtype!="hide" || t[3]<2) { elt.fog = t[2]; }
-                        if (t[2]>1 && elt.fogtype!="stop") {
-                            if (t[0]>0)             { tiles.push([t[0]-1,t[1],t[2]-1,t[3]+1]); }
-                            if (t[1]>0)             { tiles.push([t[0],t[1]-1,t[2]-1,t[3]+1]); }
-                            if (t[0]<this.width-1)  { tiles.push([t[0]+1,t[1],t[2]-1,t[3]+1]); }
-                            if (t[1]<this.height-1) { tiles.push([t[0],t[1]+1,t[2]-1,t[3]+1]); }
+                    if (elt[_fog]<t[2]) {
+                        if (elt.fogtype!="hide" || t[3]<2) { elt[_fog] = t[2]; }
+                        var f = (elt.fogtype&&$.isArray(elt.fogtype)&&t[3])?elt.fogtype[0]:1;
+                        if (t[2]>f) {
+                            if (t[0]>0)             { tiles.push([t[0]-1,t[1],t[2]-f,t[3]+1]); }
+                            if (t[1]>0)             { tiles.push([t[0],t[1]-1,t[2]-f,t[3]+1]); }
+                            if (t[0]<this.width-1)  { tiles.push([t[0]+1,t[1],t[2]-f,t[3]+1]); }
+                            if (t[1]<this.height-1) { tiles.push([t[0],t[1]+1,t[2]-f,t[3]+1]); }
                         }
                     }
                 };
                 return this;
             },
+            // Compute the path of an unit according to its precalculated moves
+            path: function(cell, _cbk) {
+                var d       = [[-1,0],[0,-1],[1,0],[0,1]];                              // Possible directions
+                var move    = cell.length?this.board[cell[1]][cell[0]].move:-1;         // Move value (from board.moves)
+                var to      = -1;                                                       // Next tiles
+                var ret     = [];
+
+                while (move>0) {
+                    var from         = -1;
+                    var tilemove     = move;
+
+                    ret.push([cell[0],cell[1]]);
+
+                    for (var i=0; i<4; i++) {
+                        var cnext = [cell[0]+d[i][0], cell[1]+d[i][1]];
+                        if (cnext[0]>=0 && cnext[1]>=0 && cnext[0]<this.width && cnext[1]<this.height &&
+                            this.board[cnext[1]][cnext[0]] && this.board[cnext[1]][cnext[0]].move!=0 &&
+                            this.board[cnext[1]][cnext[0]].move>tilemove ) {
+                            from        = i;
+                            tilemove    = this.board[cnext[1]][cnext[0]].move;
+                        }
+                    }
+                                    
+                    if (from==-1) { move=0; }
+                    else {
+                        if (_cbk) { _cbk(cell[0],cell[1],from,to); }
+                        cell    = [cell[0]+d[from][0], cell[1]+d[from][1]];
+                        move    = this.board[cell[1]][cell[0]].move;
+                        to      = from;
+                    }
+                    if (to!=-1) { if (_cbk) { _cbk(cell[0],cell[1],-1,to); } }
+                }
+                return ret;
+            },
+            tile : function(_x,_y) { return this.board[$.isArray(_x)?_x[1]:_y][$.isArray(_x)?_x[0]:_x]; },
             init : function(_tag, _value) { this.foreach(function(_elt) { _elt[_tag] = _value; }); return this; },
             foreach: function(_function) {
                 for (var j=0; j<this.height; j++) for (var i=0; i<this.width; i++) { _function(this.board[j][i]); }
@@ -300,7 +436,7 @@
                 settings.map = board(settings.board);
 
                 for (var j in settings.map.board) for (var i in settings.map.board[j]) {
-                    var val = settings.map.board[j][i];
+                    var val = settings.map.tile(i,j);
 
                     // $elt : BACKGROUND TILE
                     val.$elt=$("<div class='t' style='top:"+j+"em;left:"+i+"em;"+
@@ -324,18 +460,20 @@
                 $this.find("#board #grounds").css("width",settings.board[0].length+"em")
                                              .css("height",settings.board.length+"em");
 
-                helpers.nav($this);
-                helpers.zoom($this,1);
+                setTimeout(function() {
+                    helpers.nav($this);
+                    helpers.zoom($this,1);
 
-                $this.find("#zoom #cursor")
-                    .css("width",(22.4*settings.mintiles/settings.maxtiles)+"em")
-                    .draggable({ axis:"x", containment:"parent",
-                        drag:function() {
-                            var x= ($(this).offset().left-$(this).parent().offset().left)/($(this).parent().width()-$(this).width());
-                            helpers.zoom($this,1-x);
-                    }})
-                    .css("position","absolute")
-                    .show();
+                    $this.find("#zoom #cursor")
+                        .css("width",(22.4*settings.mintiles/settings.maxtiles)+"em")
+                        .draggable({ axis:"x", containment:"parent",
+                            drag:function() {
+                                var x= ($(this).offset().left-$(this).parent().offset().left)/($(this).parent().width()-$(this).width());
+                                helpers.zoom($this,1-x);
+                        }})
+                        .css("position","absolute")
+                        .show();
+                }, 1);
 
                 $this.find("#board").bind("mousedown touchstart", function(event) {
                     var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
@@ -356,8 +494,36 @@
                             for (var i=0; i<2; i++) { settings.nav.focus[i] -= settings.nav.rt[i]; settings.nav.rt[i] = 0; }
                             helpers.zoom($this, -1);
                         break;
-                        case 2:
-                            // MOVE SOLDIER
+                        case MOVE_UNIT:
+                            if (settings.action.elt) {
+                                // MOVE
+                                if (settings.action.path) { settings.action.path.reverse(); }
+                                helpers.units.move($this, settings.action.elt, settings.action.path, function(_status) {
+                                    if (_status) {
+                                        if (settings.action.target) {
+                                            var foe = settings.map.tile(settings.action.target).people;
+                                            if (!foe.fog) {
+                                                if (foe.team!=settings.action.elt.team) {
+                                                    // ATTACK
+                                                    helpers.units.attack($this, settings.action.elt, foe);
+                                                }
+                                                else {
+                                                    // HEAL AND SUPPORT
+                                                }
+                                            }
+                                        }
+                                    }
+                                    else {
+                                        $this.find("#warning").css("opacity",1)
+                                                              .css("top", settings.action.elt.pos[1]+"em")
+                                                              .css("left",settings.action.elt.pos[0]+"em").show()
+                                                              .delay(500)
+                                                              .animate({opacity:0},500,function() { $(this).hide(); });
+                                        
+                                        settings.action.elt     = -1;
+                                    }
+                                });
+                            }
                         break;
                     }
                     $this.find("#fg>div").removeClass("s").hide();
@@ -380,31 +546,29 @@
                         break;
                         case MOVE_UNIT:
                             $this.find("#fg .a").detach();
-                            var d = [[-1,0],[0,-1],[1,0],[0,1]];
-                            var c = helpers.info.eventToTiles($this,vEvent);
-                            var v = c.length?settings.engine.area[c[1]][c[0]].v:-1;
-                            var to = -1;
-                            while (v>0) {
-                                var from = -1;
-                                var stmp = 100;
-                                for (var i=0; i<4; i++) {
-                                    var cnext = [c[0]+d[i][0], c[1]+d[i][1]];
-                                    if (cnext[0]>=0 && cnext[1]>=0 && cnext[0]<settings.nav.size[0] && cnext[1]<settings.nav.size[1] &&
-                                        settings.engine.area[cnext[1]][cnext[0]] && settings.engine.area[cnext[1]][cnext[0]].v!=-1 &&
-                                        settings.engine.area[cnext[1]][cnext[0]].v<v && settings.engine.area[cnext[1]][cnext[0]].s<stmp) {
-                                            from = i;
-                                            stmp = settings.engine.area[cnext[1]][cnext[0]].s;
-                                        }
-                                }
-                                if (from==-1) { v=-1; }
-                                else {
-                                    settings.engine.area[c[1]][c[0]].$e.html("<div class='a a"+(from+1)+""+(to+1)+"'></div>");
-                                    c  = [c[0]+d[from][0], c[1]+d[from][1]];
-                                    v  = settings.engine.area[c[1]][c[0]].v
-                                    to = from;
-                                }
+                            $this.find("#fg .tt").detach();
+                            var c           = helpers.info.eventToTiles($this,vEvent);          // Cursor position in grid
+                            var letsmove    = true;
+                            var target      = settings.map.tile(c).target;
+                            settings.action.target = 0;
+
+                            if (target && $.isArray(target) && settings.map.tile(c).people && !settings.map.tile(c).people.fog) {
+
+                                settings.map.tile(c).$movelt.html("<div class='tt'></div>");
+                                settings.action.target = [c[0],c[1]];
+                                c = [target[0],target[1]];
                             }
-                            if (to!=-1) { settings.engine.area[c[1]][c[0]].$e.html("<div class='a a0"+(to+1)+"'></div>"); }
+
+                            if ( !settings.action.target && settings.map.tile(c).people && !settings.map.tile(c).people.fog) {
+                                letsmove = false;
+                            }
+
+                            if (letsmove) {
+                                settings.action.path = settings.map.path(c, function(_i,_j,_from,_to) {
+                                    settings.map.tile(_i,_j).$movelt.html("<div class='a a"+(_from+1)+""+(_to+1)+"'></div>");
+                                });
+                            }
+                            else { settings.action.path = 0; }
 
                         break;
                     }
@@ -412,18 +576,97 @@
                     event.preventDefault();
                 });
 
-                for (var i in settings.units) { helpers.units.add($this, settings.units[i]); }
-                helpers.engine.newturn($this);
 
                 // Locale handling
                 $this.find("h1#label").html(settings.label);
                 $this.find("#exercice").html(settings.exercice);
                 if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(helpers.format(value)); }); }
 
-                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         units: {
+            update: function($this, _elt) {
+                var settings = helpers.settings($this);
+                var offset = _elt.offset(settings.map.tile(_elt.pos));
+                _elt.$elt.children().first().css("left",-offset.left+"em").css("top",-offset.top+"em");
+                return _elt;
+            },
+            damage: function($this, _a, _value, _who, _cbk) {
+                var settings = helpers.settings($this);
+                $this.find("#bing01"+_who).css("top", _a.pos[1]+"em").css("left",_a.pos[0]+"em").show();
+
+                setTimeout(function() {
+                    $this.find("#bing02"+_who).css("opacity",1).css("top", _a.pos[1]+"em").css("left",_a.pos[0]+"em").show().delay(200)
+                                              .animate({opacity:0},200,function() { $(this).hide(); });
+                    $this.find("#bing01"+_who).hide();
+                    setTimeout(function() {
+                        $this.find("#point"+_who+">div").html(_value);
+                        $this.find("#pointb>div").html(_value);
+                        _a.stat.life[0]-=_value;
+                        $this.find("#point"+_who).css("opacity",1).css("top", _a.pos[1]+"em").css("left",_a.pos[0]+"em").show().delay(300)
+                                                 .animate({top:(_a.pos[1]-0.5)+"em",opacity:0},500,function() { $(this).hide(); });
+
+                       
+                        setTimeout(function() {
+                            if (_a.value("life")[0]<=0) {
+                                _a.alive = false;
+                                _a.$elt.animate({opacity:0},200,function(){$(this).hide();});
+                            }
+                            if (_cbk) { _cbk(); }
+                         },300);
+
+
+                        },100);
+                    },200);
+            
+            },
+            // Handle attack
+            attack: function($this, _a, _d, _cbk) {
+                var settings = helpers.settings($this);
+                var delay    = 1;
+                var counter  = ((Math.abs(_a.pos[0]-_d.pos[0])+Math.abs(_a.pos[1]-_d.pos[1]))==1 && _d.fire.min == 1);
+                if (_a.pos[0]!=_d.pos[0]) {
+                    if (_a.pos[0]<_d.pos[0])    { _a.side = true; _d.side = false; }
+                    else                        { _a.side = false; _d.side = true; }
+                    helpers.units.update($this, _a);
+                    helpers.units.update($this, _d);
+                    delay = 200;
+                }
+                setTimeout(function() {
+                    _a.stat.munition[0]--;
+                    var pt = _a.attack(_d,settings.map.tile(_a.pos),settings.map.tile(_d.pos), counter);
+                    if (counter) { helpers.units.damage($this, _a, pt[1], "a"); }
+                    helpers.units.damage($this, _d, pt[0], "b", function() { _a.overview($this); _cbk(); });
+                }, delay);
+            },
+            // Animate the move
+            move: function ($this, _elt, _move, _cbk) {
+                var settings = helpers.settings($this);
+                if (_move && _move.length>1) {
+                    var stopped = false;
+                    var from    = _move[0];
+                    var to      = _move[1];
+                    var cell    = settings.map.tile(to);
+
+                    if (cell.people && cell.people.team!=_elt.team) { _cbk(false); }
+                    else {
+                        _elt.$elt.animate({top:(from[1]+to[1])/2+"em", left:(from[0]+to[0])/2+"em"},150, function() {
+                            if (to[0]!=from[0]) { _elt.side = (to[0]>from[0]); }
+                            _elt.pos = [to[0],to[1]];
+                            if (_elt.team==0) { helpers.fog($this); }
+
+                            helpers.units.update($this, _elt);
+
+                            _elt.$elt.animate({top:to[1]+"em", left:to[0]+"em"},150, function() {
+                                _move.shift();
+                                helpers.units.move($this,_elt,_move,_cbk);
+                            });
+                        });
+                    }
+                }
+                else { _cbk(true); }
+            },
             add: function($this, _data) {
                 var settings = helpers.settings($this);
                 var u        = unit(_data);
@@ -441,32 +684,42 @@
                 };
 
 
-                u.update = function($this, _newpos, _anim) {
-                    this.$elt.css("top",this.pos[1]+"em").css("left",this.pos[0]+"em");
-                    var vTop = 0, vLeft = 0;
-                    //if (tile[settings.board[unit.pos[1]][unit.pos[0]]].type=="flood") { vLeft-=2; }
-                    vTop-=this.res.line;
-                    this.$elt.children().first().css("left",vLeft+"em").css("top",vTop+"em");
-                    return this;
-                }
-
                 u.id = settings.people.length;
                 u.$elt = $("<div id='"+u.id+"' class=''>"+
                            "<div style='width:"+u.res.size[0]+"em;height:"+u.res.size[1]+"em;'>"+
                            "<img src='res/img/tileset/ortho/people/"+u.res.img+".svg'/></div></div>");
 
+                
+                u.$elt.css("top",u.pos[1]+"em").css("left",u.pos[0]+"em");
+                var offset = u.offset(settings.map.tile(u.pos));
+                u.$elt.children().first().css("left",-offset.left+"em").css("top",-offset.top+"em");
+
+
                 u.$elt.bind("mousedown touchstart", function(event) {
                     var guyid = $(this).attr("id");
-                    $this.find("#people>div").removeClass("s");
+                    $this.find("#people>div").removeClass("s").removeClass("t");
                     var guy = settings.people[guyid];
                     if (guy) {
+                        settings.action.elt     = guy;
+                        settings.action.target  = 0;
+                        settings.action.move    = 0;
+
+                        $this.find("#fg .tt").detach();
+                        $this.find("#fg .a").detach();
                         guy.$elt.addClass("s");
                         guy.overview($this);
                         if (guy.$elt.hasClass("a") ) {
-                            settings.map.moves(settings.people,guyid);
+
+                            settings.map.people(settings.people);
+                            settings.map.moves(settings.people[guyid]);
+                            settings.map.targets(settings.people, guyid);
+
                             settings.action.timer = setTimeout(function(){
-                                $this.find("#fg>div").removeClass("s").show();
-                                settings.map.foreach(function(_tile) { if (_tile.move) { _tile.$movelt.addClass("s"); } });
+                                $this.find("#fg>div").removeClass("s").removeClass("t").removeClass("c").show();
+                                settings.map.foreach(function(_tile) {
+                                    if (_tile.move)     { _tile.$movelt.addClass("s"); }
+                                    if (_tile.target)   { _tile.$movelt.addClass($.isArray(_tile.target)?"t":"c"); }
+                                });
                                 settings.action.id = MOVE_UNIT;
                             },300);
                         }
@@ -475,27 +728,30 @@
                     event.preventDefault();
                 });
 
-                settings.people.push(u.update());
+                settings.people.push(u);
                 $this.find("#people").append(u.$elt);
+            }
+        },
+        fog : function($this) {
+            var settings = helpers.settings($this);
+            if (settings.hasfog) {
+                settings.map.fog(settings.people,0,"fog");
+                settings.map.foreach(function(_tile) { if (!_tile["fog"]) { _tile.$fogelt.show(); } else { _tile.$fogelt.hide(); } });
+
+                for (var i in settings.people) {
+                    var guy = settings.people[i];
+                    if (guy.alive) {
+                        if (guy.team!=0 && !settings.map.tile(guy.pos).fog) { guy.fog = true;  guy.$elt.hide(); }
+                        else                                                { guy.fog = false; guy.$elt.show(); }
+                    }
+                }
             }
         },
         engine: {
             newturn: function($this) {
                 var settings = helpers.settings($this);
-                if (settings.hasfog) {
-                    settings.map.fog(settings.people,0);
-                    settings.map.foreach(function(_tile) {
-                        if (!_tile.fog) { _tile.$fogelt.show(); }
-                    });
+                helpers.fog($this);
 
-                    for (var i in settings.people) {
-                        settings.people[i].fog = false;
-                        if (settings.people[i].team!=0 && !settings.map.board[settings.people[i].pos[1]][settings.people[i].pos[0]].fog) {
-                            settings.people[i].fog = true;
-                            settings.people[i].$elt.hide();
-                        }
-                    }
-                }
 
                 if (settings.playmode==0) {
                     for (var i in settings.people) { settings.people[i].$elt.toggleClass("a",(settings.people[i].team==0)); }
@@ -566,7 +822,7 @@
                 var settings = {
                     interactive     : false,
                     maxtiles        : 3,
-                    action          : { id: 0, timer: 0 },      // THE CURRENT ACTION (1:translate board, 2:move people)
+                    action          : { id: 0, timer: 0, elt: -1, target:0, path:0 },
                     nav             : { mouse: 0, focus:[0,0], rt:[0,0], zoom:0, size:[0,0], xy:[0,0] },
                     popuptimer      : 0,
                     people          : [],
@@ -599,6 +855,9 @@
                 var $this = $(this) , settings = helpers.settings($this);
                 $(this).find("#splash").hide();
                 settings.interactive = true;
+
+                for (var i in settings.units) { helpers.units.add($this, settings.units[i]); }
+                helpers.engine.newturn($this);
             }
         };
 

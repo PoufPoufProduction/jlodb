@@ -1,5 +1,6 @@
 <div>
     <div id="main">
+    <div id="output" style="position:absolute;z-index:2000;top:0;left:0;font-size:15px;"></div>
         <div id="menu">
             <div id="header">
                 <div class="icon onpopup" id="playmode"></div>
@@ -28,18 +29,8 @@
                                                <div class="label"></div></div>
                         </div>
                     </div>
-                    <div id="option">
-                        <div><div class="icon"><img src="res/img/action/move01.svg"/></div></div>
-                        <div><div class="icon"><img src="res/img/action/attack01.svg"/></div></div>
-                        <div><div class="icon"><img src="res/img/action/block01.svg"/></div></div>
-                        <div><div class="icon"><img src="res/img/action/heal01.svg"/></div></div>
-                    </div>
                 </div>
                 <div id="other"></div>
-                <div id="submit" ontouchstart="$(this).closest('.wargames').wargames('endturn');event.preventDefault();"
-                     onclick="$(this).closest('.wargames').wargames('endturn');">
-                    <img src="res/img/icon/swvalid.svg" id="subvalid"/>
-                </div>
             </div></div>
         </div>
         <div id="action">
@@ -49,10 +40,17 @@
                     <div id="fogg" class="tileset"></div>
                     <div id="fg" class="tileset"></div>
                     <div id="people"></div>
+                    <div id="warning" class="icon fx"><img src="res/img/effects/alert01.svg"/></div>
+                    <div id="bing01a" class="icon fx bing"><img src="res/img/effects/bing01.svg"/></div>
+                    <div id="bing02a" class="icon fx bang"><img src="res/img/effects/bing02.svg"/></div>
+                    <div id="bing01b" class="icon fx bing"><img src="res/img/effects/bing01.svg"/></div>
+                    <div id="bing02b" class="icon fx bang"><img src="res/img/effects/bing02.svg"/></div>
+                    <div id="pointa" class="icon fx point"><div></div></div>
+                    <div id="pointb" class="icon fx point"><div></div></div>
                 </div>
 
-               <div id="eleft" class="fx"></div><div id="eright"  class="fx"></div>
-               <div id="etop"  class="fx"></div><div id="ebottom" class="fx"></div>
+               <div id="eleft" class="border"></div><div id="eright"  class="border"></div>
+               <div id="etop"  class="border"></div><div id="ebottom" class="border"></div>
             </div></div>
             <div id="footer">
                 <div id="zoom"><div id="cursor"></div></div>
