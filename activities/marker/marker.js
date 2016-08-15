@@ -7,7 +7,7 @@
         css         : "style.css",                              // Activity's css style sheet
         lang        : "en-US",                                  // Current localization
         font        : 1,                                        // The font-size multiplicator
-        sep         : " .,'-;:\"?!",                               // The separators
+        sep         : " .,'-;:\"?!»«",                          // The separators
         debug       : true                                     // Debug mode
     };
 
