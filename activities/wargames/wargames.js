@@ -44,6 +44,7 @@
                 time    : 0,
                 res     : { img:"red01", size:[4,6], line:0 },
                 fire    : { min:1, max:1, type:"move" },
+                freight : { type:"", units:[], id:-1 },
                 support : {},
                 type    : "human",
                 subtype : "",
@@ -72,11 +73,8 @@
                 },
                 canhelp: function(_target) {
                     var ret = false;
-                    if (this.support && _target.alive && _target.team==this.team && _target.id!=this.id) {
-                        
-                        if (this.support.type=="heal"   && _target.type=="human")   { ret = true; }
-                        if (this.support.type=="repear" && _target.type=="mecanic") { ret = true; }
-                        if (this.support.type=="ammo")                              { ret = true; }
+                    if (this.support.type && _target.alive && _target.team==this.team && _target.id!=this.id && _target.type==this.type) {
+						ret = true;
                     }
                     return ret;
                 },
@@ -99,9 +97,18 @@
                     return [this.fight(_d, _from, _to, true), _counter?_d.fight(this, _to, _from, false):0];
                 }
             },
-            archer  : { fire    : { min:1.6, max:2.5, type:"move" }, stat : { munition:   [5,5], attack: 4, vision: 4, move: 3 } },
-            doctor  : { stat    : { munition:   [0,0],    attack:     0 }, support : { type:"heal", value:2 } },
-            soldier : { res     : { img:"red01", size:[4,6], line:0 } }
+            archer  : { fire : { min:1.6, max:2.5, type:"move" }, stat : { munition:   [5,5], attack: 4, vision: 4, move: 3 } },
+            bunny	: { stat : { life: [1,1], munition: [0,0], attack: 0, vision:5, move:5, luck:50, speed:10 }, res : { img:"animal01", line:0 },
+						speed : { flood:99, wood:1.5, hill:2, mountain:2.5, sea:99 } },
+            bus		: { type:"mecanic", stat : { munition: [0,0], attack: 0, armor:3, vision: 4, move: 5 }, freight : { type: "human", units:[0,0] },
+						speed   : { ground:1, road:0.5, flood:99, wood:3, hill:4, mountain:99, sea:99 } },
+			croco	: { stat : { munition: [99,99], attack: 5, vision:3, move:3, luck:10, speed:2 }, res : { img:"animal01", line:2 },
+						speed : { flood:1, wood:2, hill:99, mountain:99, sea:2, road:1 } },
+            doctor  : { stat : { munition: [10,10], attack: 1 }, support : { type:"heal", value:2 } },
+            mamouth : { stat : { life: [20,20], armor:2, munition: [99,99], attack:10, vision:3, move:2, luck:0, speed:1 }, res : { img:"animal01", line:1 },
+						speed : { flood:2, wood:2, hill:2, mountain:99, sea:99 } },
+            soldier : { },
+			squire	: { stat : { munition: [10,10], attack: 1 }, support : { type:"ammo", value:10 } },
         };
 
         var base     = "";
@@ -165,6 +172,18 @@
                 this.init("people",0);
                 for (var p in _people) { if (_people[p].alive) this.board[_people[p].pos[1]][_people[p].pos[0]].people = _people[p]; }
             },
+            drop: function(_guy, _unit) {
+                this.init("move",0);
+                this.board[_guy.pos[1]][_guy.pos[0]].move = 2;
+                var d = [[-1,0],[0,-1],[1,0],[0,1]];
+                for (var i in d) {
+					var cell = [ _guy.pos[0]+d[i][0], _guy.pos[1]+d[i][1] ];
+					if ( cell[0]>=0 && cell[1]>=0 && cell[0]<this.width && cell[1]<this.height) {
+						this.board[cell[1]][cell[0]].move = 1;
+					}
+				}
+				return this;
+			},
             // Compute possible moves for unit _id
             moves: function(_guy) {
                 this.init("move",0);
@@ -498,9 +517,27 @@
                             if (settings.action.elt) {
                                 // MOVE
                                 if (settings.action.path) { settings.action.path.reverse(); }
+                                if (settings.action.elt.freight.id!=-1) {
+									var unit = settings.action.elt.freight.units[settings.action.elt.freight.id];
+									settings.action.elt.freight.units[settings.action.elt.freight.id] = 0;
+									settings.action.elt.freight.id = -1;
+									unit.alive = true;
+									unit.pos = [ settings.action.elt.pos[0], settings.action.elt.pos[1] ];
+									unit.$elt.css("top", unit.pos[1]+"em").css("left",unit.pos[0]+"em").show();
+									settings.action.elt = unit;
+									unit.overview($this);
+								}
                                 helpers.units.move($this, settings.action.elt, settings.action.path, function(_status) {
                                     if (_status) {
-                                        if (settings.action.target) {
+										var who = settings.map.tile(settings.action.elt.pos).people;
+										if (who && who.id!=settings.action.elt.id && who.freight.type) {
+											settings.action.elt.alive = false;
+											settings.action.elt.$elt.hide();
+											var place = -1;
+											for (var i in who.freight.units) { if (place==-1 && !who.freight.units[i]) { place = i; }}
+											who.freight.units[place] = settings.action.elt;
+										}
+										else if (settings.action.target) {
                                             var foe = settings.map.tile(settings.action.target).people;
                                             if (!foe.fog) {
                                                 if (foe.team!=settings.action.elt.team) {
@@ -509,6 +546,8 @@
                                                 }
                                                 else {
                                                     // HEAL AND SUPPORT
+													if (settings.action.elt.support) helpers.units.support($this, settings.action.elt, foe);
+													
                                                 }
                                             }
                                         }
@@ -561,6 +600,11 @@
 
                             if ( !settings.action.target && settings.map.tile(c).people && !settings.map.tile(c).people.fog) {
                                 letsmove = false;
+								var p = settings.map.tile(c).people;
+								
+								if (p.team==settings.action.elt.team && p.freight.type==settings.action.elt.type) {
+									for (var i in p.freight.units) { if (!p.freight.units[i]) letsmove = true; }
+								}
                             }
 
                             if (letsmove) {
@@ -602,7 +646,6 @@
                     $this.find("#bing01"+_who).hide();
                     setTimeout(function() {
                         $this.find("#point"+_who+">div").html(_value);
-                        $this.find("#pointb>div").html(_value);
                         _a.stat.life[0]-=_value;
                         $this.find("#point"+_who).css("opacity",1).css("top", _a.pos[1]+"em").css("left",_a.pos[0]+"em").show().delay(300)
                                                  .animate({top:(_a.pos[1]-0.5)+"em",opacity:0},500,function() { $(this).hide(); });
@@ -612,6 +655,7 @@
                             if (_a.value("life")[0]<=0) {
                                 _a.alive = false;
                                 _a.$elt.animate({opacity:0},200,function(){$(this).hide();});
+								helpers.fog($this);
                             }
                             if (_cbk) { _cbk(); }
                          },300);
@@ -621,6 +665,21 @@
                     },200);
             
             },
+            // Handle support
+            support: function($this, _a, _d, _cbk) {
+				if (_a.support) {
+					$this.find("#pointb>div").html(_a.support.value);
+					switch (_a.support.type) {
+						case "heal" : case "fix" : _d.stat.life[0]=Math.min(_d.stat.life[1], _d.stat.life[0]+_a.support.value); break;
+						case "ammo" : _d.stat.munition[0]=Math.min(_d.stat.munition[1], _d.stat.munition[0]+_a.support.value); break;
+					}
+					$this.find("#pointb").css("opacity",1).css("top", _d.pos[1]+"em").css("left",_d.pos[0]+"em").show().delay(300)
+										 .animate({top:(_d.pos[1]-0.5)+"em",opacity:0},500,function() { $(this).hide(); });
+				}
+                       
+                setTimeout(function() { if (_cbk) { _cbk(); } },300);
+
+			},
             // Handle attack
             attack: function($this, _a, _d, _cbk) {
                 var settings = helpers.settings($this);
@@ -670,16 +729,47 @@
             add: function($this, _data) {
                 var settings = helpers.settings($this);
                 var u        = unit(_data);
+                
+                u.img = function($this) {
+					return "<div class='icon'>"+
+                        "<div style='width:"+this.res.size[0]+"em;height:"+this.res.size[1]+"em;margin-top:-"+this.res.line+"em;'>"+
+                        "<img src='res/img/tileset/ortho/people/"+this.res.img+".svg'/></div></div></div>";
+                };
 
                 u.overview = function($this) {
-                    for (var i in this.stat) {
-                        var value = this.value(i);
-                        var bonus = (value[0]>value[1]), malus = (value[0]<value[1]);
-                        $this.find("#data #"+i+" .label").html(value[0]).toggleClass("bonus",bonus).toggleClass("malus",malus);
-                    }
-                    $this.find("#stats #portrait").html("<div class='icon'>"+
-                        "<div style='width:"+this.res.size[0]+"em;height:"+this.res.size[1]+"em;margin-top:-"+this.res.line+"em;'>"+
-                        "<img src='res/img/tileset/ortho/people/"+this.res.img+".svg'/></div></div></div>");
+					$this.find("#stats #portrait>#ptype").hide();
+					$this.find("#stats #portrait>#ptransport").hide();
+					if (u.alive) {
+						for (var i in this.stat) {
+							var value = this.value(i);
+							var bonus = (value[0]>value[1]), malus = (value[0]<value[1]);
+							$this.find("#data #"+i+" .label").html(value[0]).toggleClass("bonus",bonus).toggleClass("malus",malus);
+						}
+						$this.find("#stats #portrait>#punit").html(this.img($this));
+						if (this.support) {
+							var img="";
+							switch (this.support.type) {
+								case "heal" : img="life01"; break;
+								case "ammo" : img="munition01"; break;
+								case "fix"  : img="support01"; break;
+							}
+							if (img) { $this.find("#stats #portrait>#ptype").html("<img src='res/img/icon/"+img+".svg'/>").show(); }
+						}
+						if (this.freight.type) {
+							$this.find("#stats #portrait>#ptransport").show();
+							$this.find("#stats #portrait .punit").removeClass("s").html("");
+							for (var i in this.freight.units) {
+								if (this.freight.units[i]) {
+									$this.find("#stats #portrait #punit"+i).html(this.freight.units[i].img($this));
+								}
+							}
+							if (this.freight.id!=-1) { $this.find("#stats #portrait #punit"+this.freight.id).addClass("s");	}
+						}
+					}
+					else {
+						for (var i in this.stat) { $this.find("#data #"+i+" .label").html(""); }
+						$this.find("#stats #portrait>#punit").html("");
+					}
                     return this;
                 };
 
@@ -700,6 +790,7 @@
                     $this.find("#people>div").removeClass("s").removeClass("t");
                     var guy = settings.people[guyid];
                     if (guy) {
+                        if (settings.action.elt!=guy) { guy.freight.id = -1; }
                         settings.action.elt     = guy;
                         settings.action.target  = 0;
                         settings.action.move    = 0;
@@ -709,10 +800,15 @@
                         guy.$elt.addClass("s");
                         guy.overview($this);
                         if (guy.$elt.hasClass("a") ) {
-
                             settings.map.people(settings.people);
-                            settings.map.moves(settings.people[guyid]);
-                            settings.map.targets(settings.people, guyid);
+                            
+                            if (guy.freight.id!=-1) {
+								settings.map.drop(guy, guy.freight.units[guy.freight.id]);
+							}
+							else {
+								settings.map.moves(guy);
+								settings.map.targets(settings.people, guyid);
+							}
 
                             settings.action.timer = setTimeout(function(){
                                 $this.find("#fg>div").removeClass("s").removeClass("t").removeClass("c").show();
@@ -858,7 +954,14 @@
 
                 for (var i in settings.units) { helpers.units.add($this, settings.units[i]); }
                 helpers.engine.newturn($this);
-            }
+            },
+            transport: function(_id) {
+                var $this = $(this) , settings = helpers.settings($this);
+                if (settings.action.elt.freight.type && settings.action.elt.freight.units[_id]) {
+					settings.action.elt.freight.id=(settings.action.elt.freight.id==_id)?-1:_id;
+					settings.action.elt.overview($this);
+				}
+			}
         };
 
         if (methods[method])    { return methods[method].apply(this, Array.prototype.slice.call(arguments, 1)); } 

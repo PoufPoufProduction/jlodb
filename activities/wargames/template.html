@@ -9,7 +9,16 @@
             <div id="nav"><div>
                 <div id="detail">
                     <div id="stats">
-                        <div id="portrait"></div>
+                        <div id="portrait">
+							<div id="punit"></div>
+							<div id="ptype"><img src="res/img/icon/life01.svg"/></div>
+							<div id="ptransport">
+								<div id="punit0" class="punit" onclick="$(this).closest('.wargames').wargames('transport',0);"
+									ontouchstart="$(this).hide().closest('.wargames').wargames('transport',0);event.preventDefault();"></div>
+								<div id="punit1" class="punit" onclick="$(this).closest('.wargames').wargames('transport',1);"
+									ontouchstart="$(this).hide().closest('.wargames').wargames('transport',1);event.preventDefault();"></div>
+							</div>
+                        </div>
                         <div id="data">
                             <div class="skill onpopup" id="life"><div class="icon"><img src="res/img/icon/life01.svg"/></div>
                                                <div class="label"></div></div>
