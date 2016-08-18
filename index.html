@@ -613,6 +613,8 @@ $(window).ready(function() {
     jlodb.home();
 });
 
+$(window).resize(function() { $("#console").html($(window).width()+" x "+$(window).height()); } );
+
     </script>
 </head>
 
@@ -670,6 +672,7 @@ $(window).ready(function() {
         <div id="activity"></div>
     </div>
 
+
     <!-- SPECIAL EVENT -->
     <!--
     <div id="specialevent" style="position:absolute;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.4);">
@@ -691,7 +694,6 @@ $(window).ready(function() {
         </div>
     </div>
     -->
-
 
 </div></body>
 </html>

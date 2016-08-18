@@ -8,14 +8,26 @@
         lang        : "en-US",                                  // Current localization
         font        : 1,                                        // The font-size multiplicator
         empty       : ' ',                                      // Empty cell value
+        emptyval    : '',                                       // if exist, this cell value has to be empty
         margin      : 0,                                        // Margin value
         horiz       : false,                                    // Only horizontal words
         hint        : true,                                     // Hint available
         move        : true,                                     // Move after key
         keypad      : "num",                                    // The keypad
         number      : 1,                                        // Number of exercices
+        errratio    : 1,                                        // Error ratio
         debug       : true                                      // Debug mode
     };
+
+    var regExp = [
+        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
+        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
+        "\\\[br\\\]",                               "<br/>",
+        "\\\[strong\\\]([^\\\[]+)\\\[/strong\\\]",  "<div class='strong'>$1</div>",
+        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
+        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
+        "\\\[small\\\]([^\\\[]+)\\\[/small\\\]",    "<span style='font-size:.6em;'>$1</span>"
+    ];
 
     // private methods
     var helpers = {
@@ -42,6 +54,13 @@
             var settings = helpers.settings($this);
             helpers.unbind($this);
             settings.context.onquit($this,{'status':'success','score':settings.score});
+        },
+        format: function(_text) {
+            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
+                var vReg = new RegExp(regExp[i*2],"g");
+                _text = _text.replace(vReg,regExp[i*2+1]);
+            }
+            return _text;
         },
         loader: {
             css: function($this) {
@@ -78,8 +97,6 @@
 
                 $this.css("font-size", Math.floor($this.height()/12)+"px");
 
-                helpers.build($this);
-
                 // DISPLAY KEYPAD
                 $this.find("#menu #"+settings.keypad).show();
 
@@ -87,14 +104,14 @@
                 $this.find("h1#label").html(settings.label);
                 $this.find("#guide").html(settings.guide);
                 $this.find("#guide2").html(settings.guide2);
-                if (settings.title) { $this.find("#title").html(settings.title); } else { $this.addClass("notitle"); }
-                if (settings.exercice) {
-                    if ($.isArray(settings.exercice)) {
-                        for (var i in settings.exercice) { $this.find("#exercice").append("<p>"+settings.exercice[i]+"</p>"); }
-                    } else { $this.find("#exercice").html(settings.exercice); }
-                } else { $this.addClass("noex"); }
-                if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
+                if (settings.title)     { $this.find("#title").html(settings.title); } else { $this.addClass("notitle"); }
+                if (!settings.exercice) { $this.addClass("noex"); }
+                if (!settings.def)      { $this.addClass("nodef"); }
+                if (settings.locale)    { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
 
+                if (settings.data && $.isArray(settings.data[0])) { settings.number = settings.data.length; }
+
+                setTimeout(function() { helpers.build($this);}, 100);
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
@@ -103,25 +120,34 @@
             $this.find("#effects>div").hide();
             $this.find("#effects").hide();
 
+            if (settings.data)  { settings.values       = $.isArray(settings.data[0])?settings.data[settings.id]:settings.data; }
+            if (settings.def)   { settings.definition   = $.isArray(settings.def[0])?settings.def[settings.id]:settings.def; }
+            var fixed = settings.fixed;
+
             if (settings.gen) {
                 var gen = eval('('+settings.gen+')')();
-                settings.data  = gen.data;
-                settings.fixed = gen.fixed;
-                settings.def   = gen.def;
+                settings.values     = gen.data;
+                settings.definition = gen.def; 
+                fixed               = gen.fixed;
+            }
+
+            if (settings.exercice) {
+                if ($.isArray(settings.exercice)) { $this.find("#exercice").html(helpers.format(settings.exercice[settings.id])); }
+                else                              { $this.find("#exercice").html(helpers.format(settings.exercice)); }
             }
 
             // BUILD TABLE
             var rbut = 0.9;
             var horiz = settings.horiz?1.2:1;
-            var size = Math.floor(Math.min((($this.find("#board").width()*0.98)/(settings.data[0].length+settings.margin)),
-                                           (($this.find("#board").height()*rbut)/(settings.data.length*horiz+settings.margin))));
-            var mtop= Math.floor(($this.find("#board").height()*rbut-(size*settings.data.length*horiz))/2);
-            var mleft= Math.floor(($this.find("#board").width()-(size*settings.data[0].length))/2);
+            var size = Math.floor(Math.min((($this.find("#board").width()*0.98)/(settings.values[0].length+settings.margin)),
+                                           (($this.find("#board").height()*rbut)/(settings.values.length*horiz+settings.margin))));
+            var mtop= Math.floor(($this.find("#board").height()*rbut-(size*settings.values.length*horiz))/2);
+            var mleft= Math.floor(($this.find("#board").width()-(size*settings.values[0].length))/2);
             html="<table style='font-size:"+size+"px;margin-top:"+mtop+"px;margin-left:"+mleft+"px;'>";
-            for (var row in settings.data) {
+            for (var row in settings.values) {
                 html+="<tr>";
-                for (var col in settings.data[row]) {
-                    var value=(settings.data[row][col]==settings.empty)?0:Math.floor(Math.random()*2)+1;
+                for (var col in settings.values[row]) {
+                    var value=(settings.values[row][col]==settings.empty)?0:Math.floor(Math.random()*2)+1;
                     html+="<td><div class='bg bg"+value+(settings.horiz?" horiz":"")+"' id='"+col+"x"+row+"'>";
                     if (value!=0) {
                         html+="<div class='v'";
@@ -148,9 +174,9 @@
             $this.find("#board").html(html);
 
             // FIXED CELLS
-            if (settings.fixed) for (var i in settings.fixed) {
-                $elt = $this.find("#"+settings.fixed[i][0]+"x"+settings.fixed[i][1]);
-                $elt.addClass("fixed").find(".v").html(settings.data[settings.fixed[i][1]][settings.fixed[i][0]]);
+            if (fixed) for (var i in fixed) {
+                $elt = $this.find("#"+fixed[i][0]+"x"+fixed[i][1]);
+                $elt.addClass("fixed").find(".v").html(settings.values[fixed[i][1]][fixed[i][0]]);
             }
         },
         key: function($this, _val) {
@@ -173,8 +199,8 @@
                             if (settings.move) {
                                 if (settings.elt.horiz) { settings.elt.pos[0]++; } else { settings.elt.pos[1]++; }
                                 $this.find(".l2").removeClass("l2").addClass("l1");
-                                if ( settings.elt.pos[0]>=settings.data[0].length)  { settings.elt.pos[0] = -1; }
-                                if ( settings.elt.pos[1]>=settings.data.length)     { settings.elt.pos[1] = -1; }
+                                if ( settings.elt.pos[0]>=settings.values[0].length)  { settings.elt.pos[0] = -1; }
+                                if ( settings.elt.pos[1]>=settings.values.length)     { settings.elt.pos[1] = -1; }
                                 if ( settings.elt.pos[0]!=-1 && settings.elt.pos[1]!=-1) {
                                     var $elt = $this.find("#"+settings.elt.pos[0]+"x"+settings.elt.pos[1]);
                                     if (!$elt.hasClass("fixed")) { $elt.removeClass("l1").addClass("l2"); }
@@ -189,8 +215,8 @@
 
                         if (settings.move) {
                             if (settings.elt.horiz) { settings.elt.pos[0]++; } else { settings.elt.pos[1]++; }
-                            if ( settings.elt.pos[0]>=settings.data[0].length)  { settings.elt.pos[0] = -1; }
-                            if ( settings.elt.pos[1]>=settings.data.length)     { settings.elt.pos[1] = -1; }
+                            if ( settings.elt.pos[0]>=settings.values[0].length)  { settings.elt.pos[0] = -1; }
+                            if ( settings.elt.pos[1]>=settings.values.length)     { settings.elt.pos[1] = -1; }
                             $this.find(".hint div").removeClass("s");
                             $this.find(".l2").removeClass("l2").addClass("l1");
                             if ( settings.elt.pos[0]!=-1 && settings.elt.pos[1]!=-1) {
@@ -272,12 +298,12 @@
                     var begin, end;
                     for (var i=0; i<2; i++) {
                         if (settings.elt.horiz) {
-                            var begin=_col; while(begin>=0 && settings.data[_row][begin]!=settings.empty) { begin--; } begin++;
-                            var end=begin;  while(end<settings.data[0].length && settings.data[_row][end]!=settings.empty) { end++; } end--;
+                            var begin=_col; while(begin>=0 && settings.values[_row][begin]!=settings.empty) { begin--; } begin++;
+                            var end=begin;  while(end<settings.values[0].length && settings.values[_row][end]!=settings.empty) { end++; } end--;
                         }
                         else {
-                            var begin=_row; while(begin>=0 && settings.data[begin][_col]!=settings.empty) { begin--; } begin++;
-                            var end=begin;  while(end<settings.data.length && settings.data[end][_col]!=settings.empty) { end++; } end--;
+                            var begin=_row; while(begin>=0 && settings.values[begin][_col]!=settings.empty) { begin--; } begin++;
+                            var end=begin;  while(end<settings.values.length && settings.values[end][_col]!=settings.empty) { end++; } end--;
                         }
                         if (begin==end) { settings.elt.horiz = (!settings.elt.horiz); } else break;
                      }
@@ -291,9 +317,9 @@
                     // GET THE DEFINITION
                     var ref = settings.elt.horiz?begin+"x"+_row:_col+"x"+begin;
                     var def = "";
-                    if (settings.def && settings.def[settings.elt.horiz?"horiz":"vert"] &&
-                        settings.def[settings.elt.horiz?"horiz":"vert"][ref]) {
-                        def = settings.def[settings.elt.horiz?"horiz":"vert"][ref];
+                    if (settings.definition && settings.definition[settings.elt.horiz?"horiz":"vert"] &&
+                        settings.definition[settings.elt.horiz?"horiz":"vert"][ref]) {
+                        def = settings.definition[settings.elt.horiz?"horiz":"vert"][ref];
 
                         if (settings.regexp) {
                             var vRegexp = new RegExp(settings.regexp.from, "g");
@@ -326,24 +352,31 @@
             valid: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 var error = 0;
+
                 $this.find(".bg").removeClass("l1").removeClass("l2");
                 $this.find(".bg .v").show();
                 $this.find(".hint div").removeClass("s");
-                for (var row=0; row<settings.data.length; row++) for (var col=0; col<settings.data[row].length; col++) {
-                    if (settings.data[row][col]!=settings.empty &&
-                        settings.data[row][col]!=this.find("#"+col+"x"+row+" .v").text()) {
-                        error++;
-                        this.find("#"+col+"x"+row).addClass("wrong");
+                for (var row=0; row<settings.values.length; row++) for (var col=0; col<settings.values[row].length; col++) {
+                    var value = this.find("#"+col+"x"+row+" .v").text();
+                    if (settings.values[row][col]!=settings.empty &&
+                        settings.values[row][col]!=value) {
+
+                        if (value.length || settings.values[row][col]!=settings.emptyval) {
+                            error++;
+                            this.find("#"+col+"x"+row).addClass("wrong");
+                        }
+
+
                     }
                 }
-                settings.score-=error;
+                settings.score-=error*settings.errratio;
                 if (settings.score<0) settings.score=0;
 
                 if (error==0) { $this.find("#effects #good").show(); }
                 else          { $this.find("#effects #wrong").show(); }
                 $this.find("#effects").show();
 
-                if (++settings.id<settings.number && settings.gen) {
+                if (++settings.id<settings.number) {
                     setTimeout(function() { helpers.build($this); }, 1000);
                 }
                 else {

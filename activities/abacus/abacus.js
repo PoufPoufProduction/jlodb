@@ -6,19 +6,22 @@
         template    : "template.html",                          // Activity's html template
         css         : "style.css",                              // Activity's css style sheet
         lang        : "en-US",                                  // Current localization
-        exercice    : ["yop"],                                  // Exercice
+        exercice    : [],                                       // Exercice
         type        : "suanpan",                                // Abacus type (suanpan/soroban)
         mode        : "normal",                                 // Mode (normal, hexa)
         number      : 3,                                        // Number of exercices
+        fontex      : 1,                                        // Exercice font size
         ratioerr    : 1,                                        // Ratio error
         reset       : true,                                     // Reset abacus after each question
-        debug       : false                                     // Debug mode
+        debug       : true                                     // Debug mode
     };
 
     var c = {
-        suanpan: { b:[5,2] },
-        soroban: { b:[4,1] }
+        suanpan: { b:[5,2],  u:[8,6] },
+        soroban: { b:[4,1],  u:[8,6] },
+        abacus:  { b:[10,0], u:[13,0] }
     };
+
 
     var regExp = [
         "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
@@ -141,13 +144,14 @@
                     if (settings.data[settings.id].target && $(this).attr("class").indexOf("tgt")==-1) { vOk = false; }
 
                     if (vOk) {
-                        settings.mouse.row = parseInt($(this).attr("id").substr(-1));
+                        var row = $(this).attr("id").substr(-1);
+                        settings.mouse.row = (row=='a')?10:parseInt(row);
                         settings.mouse.col = parseInt($(this).parent().attr("id").substr(1));
 
-                        if (settings.mouse.row>5) {
-                            settings.mouse.up = (8-settings.mouse.row<=settings.status[settings.mouse.col][1]);
+                        if (settings.mouse.row>c[settings.type].b[0]) {
+                            settings.mouse.up = (c[settings.type].u[0]-settings.mouse.row<=settings.status[settings.mouse.col][1]);
                             if (settings.mouse.up) {
-                                for (var i=8-settings.status[settings.mouse.col][1]; i<=settings.mouse.row; i++) {
+                                for (var i=c[settings.type].u[0]-settings.status[settings.mouse.col][1]; i<=settings.mouse.row; i++) {
                                     $("#e"+settings.mouse.col+i, settings.svg.root()).attr("class","b m"); }
                             } else {
                                 for (var i=settings.mouse.row; i<=7-settings.status[settings.mouse.col][1]; i++) {
@@ -158,10 +162,10 @@
                             settings.mouse.up = (settings.mouse.row>settings.status[settings.mouse.col][0]);
                             if (settings.mouse.up) {
                                 for (var i=settings.status[settings.mouse.col][0]+1; i<=settings.mouse.row; i++) {
-                                    $("#e"+settings.mouse.col+i, settings.svg.root()).attr("class","b m"); }
+                                    $("#e"+settings.mouse.col+(i==10?'a':i), settings.svg.root()).attr("class","b m"); }
                             } else {
                                 for (var i=settings.mouse.row; i<=settings.status[settings.mouse.col][0]; i++) {
-                                    $("#e"+settings.mouse.col+i, settings.svg.root()).attr("class","b m"); }
+                                    $("#e"+settings.mouse.col+(i==10?'a':i), settings.svg.root()).attr("class","b m"); }
                             }
                         }
                         settings.mouse.clientY = event.clientY;
@@ -177,7 +181,7 @@
                             event.originalEvent.touches[0]:event;
                         settings.mouse.move = ((event.clientY - settings.mouse.clientY)/settings.ratio);
 
-                        var vMax = (settings.mouse.row>5?6:8);
+                        var vMax = (settings.mouse.row>c[settings.type].b[0]?c[settings.type].u[1]:c[settings.type].u[0]);
                         if (settings.mouse.up)    {
                             settings.mouse.move = Math.min(0,settings.mouse.move);
                             if (settings.mouse.move<-vMax) { settings.mouse.move = -vMax; }
@@ -187,8 +191,8 @@
                             if (settings.mouse.move>vMax) { settings.mouse.move = vMax; }
                         }
                         var vMove = settings.mouse.move;
-                        if (!settings.mouse.up&&settings.mouse.row<=5) { vMove -= vMax; }
-                        if (settings.mouse.up&&settings.mouse.row>5)   { vMove += vMax; }
+                        if (!settings.mouse.up&&settings.mouse.row<=c[settings.type].b[0]) { vMove -= vMax; }
+                        if (settings.mouse.up&&settings.mouse.row>c[settings.type].b[0])   { vMove += vMax; }
 
                         $(".b.m", settings.svg.root()).attr("transform","translate(0,"+vMove+")");
 
@@ -197,10 +201,10 @@
 
                 $this.find("#board").bind("mouseup touchend", function(event) {
                     if (settings.interactive && settings.mouse.move) {
-                        var vMax = (settings.mouse.row>5?6:8);
+                        var vMax = (settings.mouse.row>c[settings.type].b[0]?c[settings.type].u[1]:c[settings.type].u[0]);
                         if (Math.abs(settings.mouse.move)>0.8*vMax) {
-                            if (settings.mouse.row>5) {
-                                settings.status[settings.mouse.col][1] = 8-settings.mouse.row-(settings.mouse.up?1:0);
+                            if (settings.mouse.row>c[settings.type].b[0]) {
+                                settings.status[settings.mouse.col][1] = c[settings.type].u[0]-settings.mouse.row-(settings.mouse.up?1:0);
                             }
                             else {
                                 settings.status[settings.mouse.col][0] = settings.mouse.row-(settings.mouse.up?0:1);
@@ -216,10 +220,10 @@
 
                 // Exercice
                 if ($.isArray(settings.exercice)) {
-                    $this.find("#exercice").html("");
-                    for (var i in settings.exercice) { $this.find("#exercice").append(
+                    $this.find("#exercice>div").css("font-size",settings.fontex+"em").html("");
+                    for (var i in settings.exercice) { $this.find("#exercice>div").append(
                         "<p>"+(settings.exercice[i].length?helpers.format(settings.exercice[i]):"&#xA0;")+"</p>"); }
-                } else { $this.find("#exercice").html("<p>"+helpers.format(settings.exercice)+"<p>"); }
+                } else { $this.find("#exercice>div").html("<p>"+helpers.format(settings.exercice)+"<p>"); }
 
 
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
@@ -232,23 +236,28 @@
                 var value = settings.status[i][0]+5*settings.status[i][1];
                 var vErr = "";
                 if (settings.mode=="normal") {
-                    if (settings.status[i][0]==5 || settings.status[i][1]==2) { value="X"; vErr="err"; }
+                    switch (settings.type) {
+                        case "suanpan" :
+                            if (settings.status[i][0]==5 || settings.status[i][1]==2) { value="X"; vErr="err"; } break;
+                        case "abacus" :
+                            if (settings.status[i][0]==10) { value="X"; vErr="err"; } break;
+                    }
                 }
                 $("#val2 #c"+i, settings.svg.root()).text(value.toString()).attr("class",vErr);
 
                 for (var j=1; j<=c[settings.type].b[0]; j++) {
-                    var $elt    = $("#e"+i+j, settings.svg.root());
+                    var $elt    = $("#e"+i+((j==10)?'a':j), settings.svg.root());
                     var vClass  = $elt.attr("class").replace(" up","").replace(" tgt","");
                     var vUp     = (j<=settings.status[i][0]);
                     if (vUp) { vClass+=" up"; }
-                    $elt.attr("transform","translate(0,"+(vUp?-8:0)+")").attr("class",vClass);
+                    $elt.attr("transform","translate(0,"+(vUp?-c[settings.type].u[0]:0)+")").attr("class",vClass);
                 }
                 for (var j=0; j<c[settings.type].b[1]; j++) {
                     var $elt    = $("#e"+i+(7-j), settings.svg.root());
                     var vClass  = $elt.attr("class").replace(" up","").replace(" tgt","");
                     var vUp     = (j<settings.status[i][1]);
                     if (vUp) { vClass+=" up"; }
-                    $elt.attr("transform","translate(0,"+(vUp?6:0)+")").attr("class",vClass);
+                    $elt.attr("transform","translate(0,"+(vUp?c[settings.type].u[1]:0)+")").attr("class",vClass);
                 }
             }
             $this.find("#comment>div").html("");

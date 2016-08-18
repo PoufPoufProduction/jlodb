@@ -2,13 +2,173 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dct="http://purl.org/dc/terms/">
 
+
+    <!-- CLASSIC -->
+
+    <rdf:Description>
+        <dct:identifier>4</dct:identifier>
+        <dct:title xml:lang="fr-FR">Reproduire avec un boulier les nombres demandés [3,5,9].</dct:title>
+        <dct:description><![CDATA["type":"abacus","data":[{"value":3,"target":[[0,3]]},{"value":5,"target":[[0,5]]},{"value":9,"target":[[0,9]]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"fontex":0.8,"exercice":["[b]Reproduisez les nombres demandés grâce au boulier.[/b]","Pour vous aider dans cet exercice, la bille à déplacer est coloriée."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:alternative>10To</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>9o</dct:identifier>
+        <dct:title xml:lang="fr-FR">Reproduire avec un boulier les nombres demandés compris entre 1 et 9 inclus.</dct:title>
+        <dct:description><![CDATA["type":"abacus","gen":"function(_last){ var a; do { a=Math.floor(Math.random()*9+1); } while(a==_last); return {\\\"type\\\":\\\"number\\\",\\\"value\\\":a}; }","number":5]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Reproduisez les nombres demandés[/b]."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>10To</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>100o</dct:identifier>
+        <dct:title xml:lang="fr-FR">Reproduire avec un boulier les nombres demandés compris entre 1 et 100.</dct:title>
+        <dct:description><![CDATA["type":"abacus","gen":"function(_last){ var a; do { a=Math.floor(Math.random()*99+1); } while(a==_last); return {\\\"type\\\":\\\"number\\\",\\\"value\\\":a}; }","number":5]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Reproduisez les nombres demandés."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>10To</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>1Ko</dct:identifier>
+        <dct:title xml:lang="fr-FR">Reproduire avec un boulier les nombres demandés compris entre 1 et 1 000.</dct:title>
+        <dct:description><![CDATA["type":"abacus","gen":"function(_last){ var a; do { a=Math.floor(Math.random()*999+1); } while(a==_last); return {\\\"type\\\":\\\"number\\\",\\\"value\\\":a}; }","number":5]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Reproduisez les nombres demandés."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>10To</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>1Koa</dct:identifier>
+        <dct:title xml:lang="fr-FR">Reproduire avec un boulier les nombres demandés compris entre 1 et 1 000 sans remise à zéro entre les questions.</dct:title>
+        <dct:description><![CDATA["type":"abacus","gen":"function(_last){ var a; do { a=Math.floor(Math.random()*999+1); } while(a==_last); var ret={\\\"type\\\":\\\"number\\\",\\\"value\\\":a}; if (_last==-1) { ret.init = Math.floor(Math.random()*999+1); } return ret;}","number":5, "reset":false]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Reproduisez les nombres demandés en partant d'un boulier [b]non remis à 0[/b]."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>10To</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>1Mo</dct:identifier>
+        <dct:title xml:lang="fr-FR">Reproduire avec un boulier les nombres demandés compris entre 1 et 1 000 000.</dct:title>
+        <dct:description><![CDATA["type":"abacus","gen":"function(_last){ var a; do { a=Math.floor(Math.random()*999999+1); } while(a==_last); return {\\\"type\\\":\\\"number\\\",\\\"value\\\":a}; }","number":4]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Reproduisez les nombres demandés."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>10To</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>1Moa</dct:identifier>
+        <dct:title xml:lang="fr-FR">Reproduire avec un boulier les nombres demandés compris entre 1 et 1 000 000 sans remise à zéro entre les questions.</dct:title>
+        <dct:description><![CDATA["type":"abacus","gen":"function(_last){ var a; do { a=Math.floor(Math.random()*999999+1); } while(a==_last); var ret={\\\"type\\\":\\\"number\\\",\\\"value\\\":a}; if (_last==-1) { ret.init = Math.floor(Math.random()*999999+1); } return ret;}","number":4, "reset":false]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Reproduisez les nombres demandés en partant d'un boulier [b]non remis à 0[/b]."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>10To</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>1Go</dct:identifier>
+        <dct:title xml:lang="fr-FR">Reproduire avec un boulier les nombres demandés compris entre 1 et 1 000 000 000.</dct:title>
+        <dct:description><![CDATA["type":"abacus","gen":"function(_last){ var a; do { a=Math.floor(Math.random()*999999999+1); } while(a==_last); return {\\\"type\\\":\\\"number\\\",\\\"value\\\":a}; }","number":4]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Reproduisez les nombres demandés."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>10To</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>1Goa</dct:identifier>
+        <dct:title xml:lang="fr-FR">Reproduire avec un boulier les nombres demandés compris entre 1 et 1 000 000 000 sans remise à zéro entre les questions.</dct:title>
+        <dct:description><![CDATA["type":"abacus","gen":"function(_last){ var a; do { a=Math.floor(Math.random()*999999999+1); } while(a==_last); var ret={\\\"type\\\":\\\"number\\\",\\\"value\\\":a}; if (_last==-1) { ret.init = Math.floor(Math.random()*999999999+1); } return ret;}","number":4, "reset":false]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Reproduisez les nombres demandés en partant d'un boulier [b]non remis à 0[/b]."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>10To</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>1To</dct:identifier>
+        <dct:title xml:lang="fr-FR">Reproduire avec un boulier les nombres demandés compris entre 1 et 1 000 000 000 000.</dct:title>
+        <dct:description><![CDATA["type":"abacus","gen":"function(_last){ var a; do { a=Math.floor(Math.random()*999999999999+1); } while(a==_last); return {\\\"type\\\":\\\"number\\\",\\\"value\\\":a}; }","number":3]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Reproduisez les nombres demandés."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>10To</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>1Toa</dct:identifier>
+        <dct:title xml:lang="fr-FR">Reproduire avec un boulier les nombres demandés compris entre 1 et 1 000 000 000 000 sans remise à zéro entre les questions.</dct:title>
+        <dct:description><![CDATA["type":"abacus","gen":"function(_last){ var a; do { a=Math.floor(Math.random()*999999999999+1); } while(a==_last); var ret={\\\"type\\\":\\\"number\\\",\\\"value\\\":a}; if (_last==-1) { ret.init = Math.floor(Math.random()*999999999999+1); } return ret;}","number":3, "reset":false]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Reproduisez les nombres demandés en partant d'un boulier [b]non remis à 0[/b]."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>10To</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>10To</dct:identifier>
+        <dct:title xml:lang="fr-FR">Reproduire avec un boulier les nombres demandés compris entre 1 et 10 000 000 000 000.</dct:title>
+        <dct:description><![CDATA["type":"abacus","gen":"function(_last){ var a; do { a=Math.floor(Math.random()*9999999999999+1); } while(a==_last); return {\\\"type\\\":\\\"number\\\",\\\"value\\\":a}; }","number":3]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Reproduisez les nombres demandés."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>10To</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>10Toa</dct:identifier>
+        <dct:title xml:lang="fr-FR">Reproduire avec un boulier les nombres demandés compris entre 1 et 10 000 000 000 000 sans remise à zéro entre les questions.</dct:title>
+        <dct:description><![CDATA["type":"abacus","gen":"function(_last){ var a; do { a=Math.floor(Math.random()*9999999999999+1); } while(a==_last); var ret={\\\"type\\\":\\\"number\\\",\\\"value\\\":a}; if (_last==-1) { ret.init = Math.floor(Math.random()*9999999999999+1); } return ret;}","number":3, "reset":false]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Reproduisez les nombres demandés en partant d'un boulier [b]non remis à 0[/b]."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>10To</dct:alternative>
+    </rdf:Description>
+
     <!-- SUANPAN -->
 
     <rdf:Description>
         <dct:identifier>s4</dct:identifier>
         <dct:title xml:lang="fr-FR">Reproduire avec un boulier chinois les nombres demandés [3,1,4].</dct:title>
         <dct:description><![CDATA["data":[{"value":3,"target":[[0,3]]},{"value":1,"target":[[0,1]]},{"value":4,"target":[[0,4]]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Reproduisez les nombres demandés grâce au boulier chinois ([b]'Suanpan'[/b]).","Pour vous aider dans cet exercice, la bille à déplacer est coloriée."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"fontex":0.8,"exercice":["Reproduisez les nombres demandés grâce au boulier chinois ([b]'Suanpan'[/b]).","Pour vous aider dans cet exercice, la bille à déplacer est coloriée."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -21,7 +181,7 @@
         <dct:identifier>s5</dct:identifier>
         <dct:title xml:lang="fr-FR">Reproduire avec un boulier chinois les nombres demandés [2,3,5].</dct:title>
         <dct:description><![CDATA["data":[{"value":2,"target":[[0,2]]},{"value":3,"target":[[0,3]]},{"value":5,"target":[[0,7]]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Reproduisez les nombres demandés.","[strong]Sur un boulier chinois, la valeur 5 est traditionnellement représentée par la première bille de la partie supérieure.[/strong]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"fontex":0.8,"exercice":["Reproduisez les nombres demandés.","[strong]Sur un boulier chinois, la valeur 5 est traditionnellement représentée par la première bille de la partie supérieure.[/strong]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -34,7 +194,7 @@
         <dct:identifier>s9</dct:identifier>
         <dct:title xml:lang="fr-FR">Reproduire avec un boulier chinois les nombres demandés [6,8,9].</dct:title>
         <dct:description><![CDATA["data":[{"value":6,"target":[[0,7],[0,1]]},{"value":8,"target":[[0,7],[0,3]]},{"value":9,"target":[[0,7],[0,4]]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Reproduisez les nombres demandés.","Les chiffres supérieurs à 5 sont représentés par la bille du haut à laquelle s'ajoutent un certain nombre de billes de la partie inférieure du boulier."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"fontex":0.8,"exercice":["[b]Reproduisez les nombres demandés.[/b]","Les chiffres [red]supérieurs à 5[/red] sont représentés par la bille du haut à laquelle s'ajoutent un certain nombre de billes de la partie inférieure du boulier."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -59,12 +219,24 @@
         <dct:identifier>s100</dct:identifier>
         <dct:title xml:lang="fr-FR">Reproduire avec un boulier chinois les nombres demandés [11,28,95].</dct:title>
         <dct:description><![CDATA["data":[{"value":11,"target":[[1,1],[0,1]]},{"value":28,"target":[[1,2],[0,7],[0,3]]},{"value":95,"target":[[1,7],[1,4],[0,7]]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Reproduisez les nombres demandés.","Chaque chiffre doit être traité séparément."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Reproduisez les nombres demandés.[/b]","[strong]Chaque chiffre doit être traité séparément.[/strong]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:alternative>s10To</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>s100o</dct:identifier>
+        <dct:title xml:lang="fr-FR">Reproduire avec un boulier chinois les nombres demandés compris entre 1 et 100.</dct:title>
+        <dct:description><![CDATA["gen":"function(_last){ var a; do { a=Math.floor(Math.random()*99+1); } while(a==_last); return {\\\"type\\\":\\\"number\\\",\\\"value\\\":a}; }","number":5]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Reproduisez les nombres demandés."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
         <dct:alternative>s10To</dct:alternative>
     </rdf:Description>
 
@@ -194,12 +366,12 @@
         <dct:identifier>o1Mo</dct:identifier>
         <dct:title xml:lang="fr-FR">Reproduire avec un boulier japonais les nombres demandés compris entre 1 et 1 000 000.</dct:title>
         <dct:description><![CDATA["type":"soroban","gen":"function(_last){ var a; do { a=Math.floor(Math.random()*999999+1); } while(a==_last); return {\\\"type\\\":\\\"number\\\",\\\"value\\\":a}; }","number":4]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Reproduisez les nombres demandés.","Le boulier japonais appelé [b]soroban[/b] a 2 billes en moins que le boulier chinois. Ces billes n'étant pas utilisées, leur absence ne devrait pas poser de problème."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"fontex":0.8,"exercice":["[b]Reproduisez les nombres demandés.[/b]","Le boulier japonais appelé [b]soroban[/b] a 2 billes en moins que le boulier chinois. [red]Ces billes n'étant quasiment pas utilisées, leur absence ne devrait pas poser de problème.[/red]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>s10To</dct:alternative>
+        <dct:alternative>o10To</dct:alternative>
         <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
     </rdf:Description>
 
@@ -212,7 +384,7 @@
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>s10To</dct:alternative>
+        <dct:alternative>o10To</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
@@ -224,7 +396,7 @@
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>s10To</dct:alternative>
+        <dct:alternative>o10To</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
@@ -236,7 +408,7 @@
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>s10To</dct:alternative>
+        <dct:alternative>o10To</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
@@ -248,7 +420,7 @@
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>s10To</dct:alternative>
+        <dct:alternative>o10To</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
@@ -260,7 +432,7 @@
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>s10To</dct:alternative>
+        <dct:alternative>o10To</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
@@ -272,7 +444,7 @@
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>s10To</dct:alternative>
+        <dct:alternative>o10To</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
@@ -284,7 +456,7 @@
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>s10To</dct:alternative>
+        <dct:alternative>o10To</dct:alternative>
     </rdf:Description>
 
 
