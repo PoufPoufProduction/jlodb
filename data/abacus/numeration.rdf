@@ -31,6 +31,18 @@
     </rdf:Description>
 
     <rdf:Description>
+        <dct:identifier>19o</dct:identifier>
+        <dct:title xml:lang="fr-FR">Reproduire avec un boulier les nombres demandés compris entre 1 et 19 inclus.</dct:title>
+        <dct:description><![CDATA["type":"abacus","gen":"function(_last){ var a; do { a=Math.floor(Math.random()*19+1); } while(a==_last); return {\\\"type\\\":\\\"number\\\",\\\"value\\\":a}; }","number":5]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Reproduisez les nombres demandés[/b].[strong]Chaque bille de la deuxième colonne (en partant de la droite) représente une dizaine.[/strong]"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>10To</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
         <dct:identifier>100o</dct:identifier>
         <dct:title xml:lang="fr-FR">Reproduire avec un boulier les nombres demandés compris entre 1 et 100.</dct:title>
         <dct:description><![CDATA["type":"abacus","gen":"function(_last){ var a; do { a=Math.floor(Math.random()*99+1); } while(a==_last); return {\\\"type\\\":\\\"number\\\",\\\"value\\\":a}; }","number":5]]></dct:description>

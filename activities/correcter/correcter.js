@@ -293,6 +293,7 @@
                         if (settings.multiple && word.search(settings.multiple)>0) {
                             word = word.substring(0,word.search(settings.multiple));
                         }
+                        word = word.replace("&#8201;",String.fromCharCode(8201));
                         if ($(value).html()!=word) {
                             nbErrors++;
                             $(value).addClass("wrong");
