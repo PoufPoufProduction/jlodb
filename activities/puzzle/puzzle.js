@@ -213,7 +213,7 @@
 
             // HIDE AND SHOW ELEMENT
             if (settings.show) {
-                $(".hide",settings.svg.root()).css("display","hide");
+                $(".hide",settings.svg.root()).css("display","none");
                 var show = $.isArray(settings.show[0])?settings.show[settings.puzzleid]:settings.show;
                 for (var i in show) { $("#"+show[i],settings.svg.root()).css("display","inline"); }
             }

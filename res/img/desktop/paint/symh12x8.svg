@@ -8,7 +8,7 @@
         .s .p               { stroke:#FF5555; stroke-width:10px;}
         .c                  { fill:white; }
         .s                  { fill:#225588 !important;}
-        .bg1                { fill:#5599BB; }
+        .bg1                { fill:#0055AA; }
         .bg2                { fill:#2277BB; }
         .bg3                { fill:#77CCFF; }
         .bg4                { fill:#AAEEFF; }
@@ -23,13 +23,19 @@
         .quadri .c0         { fill:#e0f8d0 !important; }
         .quadri .c          { fill:#e0f8d0; }
         .ww .c.wrong        { fill:red !important; }
-        text#label          { text-anchor:middle; font-size:25px; fill:#77CCFF; }
+
+        .tableline          { display:none; }
+        .table .tableline   { display:inline; }
+        .table .bg5         { stroke:black; }
+
+        text#label          { text-anchor:start; font-size:15px; fill:#AADDFF; }
     </style>
 </defs>
 
 <g id="label" transform="translate(70,430)">
-    <rect x="0" y="0" width="150" height="40" class="bg1"/>
-    <text id="label" y="25" transform="translate(75,0)" class="t"></text>
+    <rect x="0" y="0" width="350" height="40" class="bg1"/>
+   <text id="label" transform="translate(8,15)" class="t"></text>
+   <text id="label" transform="translate(8,32)" class="t"></text>
 </g>
 
 <g id="source" transform="translate(0,430)">
@@ -45,21 +51,21 @@
 </g>
 
 <g id="quadri" transform="translate(0,430)">
-    <g id="q0" transform="translate(240,00)">
-        <rect x="0" y="0" width="80" height="40" class="c0"/>
-        <rect x="-1" y="-1" width="82" height="42" style="fill:none;" class="p"/>
+    <g id="q0" transform="translate(440,00)">
+        <rect x="0" y="0" width="30" height="40" class="c0"/>
+        <rect x="-1" y="-1" width="32" height="42" style="fill:none;" class="p"/>
     </g>
-    <g id="q1" transform="translate(340,00)">
-        <rect x="0" y="0" width="80" height="40" class="c1"/>
-        <rect x="-1" y="-1" width="82" height="42" style="fill:none;" class="p"/>
+    <g id="q1" transform="translate(490,00)">
+        <rect x="0" y="0" width="30" height="40" class="c1"/>
+        <rect x="-1" y="-1" width="32" height="42" style="fill:none;" class="p"/>
     </g>
-    <g id="q2" transform="translate(440,00)">
-        <rect x="0" y="0" width="80" height="40" class="c2"/>
-        <rect x="-1" y="-1" width="82" height="42" style="fill:none;" class="p"/>
+    <g id="q2" transform="translate(540,00)">
+        <rect x="0" y="0" width="30" height="40" class="c2"/>
+        <rect x="-1" y="-1" width="32" height="42" style="fill:none;" class="p"/>
     </g>
-    <g id="q3" transform="translate(540,00)">
-        <rect x="0" y="0" width="80" height="40" class="c3"/>
-        <rect x="-1" y="-1" width="82" height="42" style="fill:none;" class="p"/>
+    <g id="q3" transform="translate(590,00)">
+        <rect x="0" y="0" width="30" height="40" class="c3"/>
+        <rect x="-1" y="-1" width="32" height="42" style="fill:none;" class="p"/>
     </g>
 </g>
 
@@ -172,6 +178,8 @@
     <rect x="528" y="336"   width="47" height="47" class="c"/>
 
     <line x1="0" y1="191" x2="576" y2="191" class="bg5"/>
+    <line x1="0" y1="383" x2="576" y2="383" class="bg5 tableline"/>
+    <line x1="0" y1="0" x2="576" y2="0" class="bg5 tableline"/>
 
 </g>
 

@@ -720,6 +720,18 @@
     </rdf:Description>
 
     <rdf:Description>
+        <dct:identifier>b50</dct:identifier>
+        <dct:title xml:lang="fr-FR">Quantifier, sans contrainte de temps, le nombre de cubes (entre 1 et 49)</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":5000},"regexp":{"input": { "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/numbers/box$1.svg\\\"/></div>"} },"gen":"function(){var a=Math.floor(Math.random()*49)+1, b=a, ret=\\\"\\\"; while(a>0) { if (ret.length) { ret+=\\\" \\\"; } if (a>=100) { ret+=\\\"100\\\"; a-=100; } else if (a>=50) { ret+=\\\"50\\\"; a-=50; } else if (a>=40) { ret+=\\\"40\\\"; a-=40; } else if (a>=30) { ret+=\\\"30\\\"; a-=30; } else if (a>=20) { ret+=\\\"20\\\"; a-=20; } else if (a>=10) { ret+=\\\"10\\\"; a-=10; } else { ret+=\\\"0\\\"+a; a=0; } } return [ret, b];}","class":"wrong gray","font":2]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Combien de cubes ?"]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>b200y</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
         <dct:identifier>b100</dct:identifier>
         <dct:title xml:lang="fr-FR">Quantifier, sans contrainte de temps, le nombre de cubes (entre 1 et 99)</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":5000},"regexp":{"input": { "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/numbers/box$1.svg\\\"/></div>"} },"gen":"function(){var a=Math.floor(Math.random()*99)+1, b=a, ret=\\\"\\\"; while(a>0) { if (ret.length) { ret+=\\\" \\\"; } if (a>=100) { ret+=\\\"100\\\"; a-=100; } else if (a>=50) { ret+=\\\"50\\\"; a-=50; } else if (a>=40) { ret+=\\\"40\\\"; a-=40; } else if (a>=30) { ret+=\\\"30\\\"; a-=30; } else if (a>=20) { ret+=\\\"20\\\"; a-=20; } else if (a>=10) { ret+=\\\"10\\\"; a-=10; } else { ret+=\\\"0\\\"+a; a=0; } } return [ret, b];}","class":"wrong gray","font":2]]></dct:description>

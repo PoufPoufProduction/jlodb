@@ -16,7 +16,7 @@
         remove      : false,                                    // Remove previous painting
         number      : 1,                                        // Number of exercices
         effects     : true,                                     // Show effects
-        debug       : false                                     // Debug mode
+        debug       : true                                     // Debug mode
     };
 
 

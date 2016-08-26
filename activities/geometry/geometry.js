@@ -126,7 +126,7 @@
                 for (var i in settings.labels) {
                     $this.find("#objectives").append("<tr><td><div class='icon' style='cursor:default;'>"+
                         "<img src='res/img/icon/cancel.svg' alt='x'/></div></td><td>&#xA0;"+
-                        settings.labels[i]+"</td></tr>");
+                        helpers.format(settings.labels[i])+"</td></tr>");
                 }
                 for (var i in settings.objectives) for (var j in settings.objectives[i]) {
                     settings.objectives[i][j].done = false;

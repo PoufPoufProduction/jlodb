@@ -17,7 +17,7 @@
         screenc     : false,                    // Clear the screen between question
         strict      : false,                    // Strictly test the values (Not sure is still mandatory)
         negative    : false,                    // Accept negative value
-        debug       : false                     // Debug mode
+        debug       : true                     // Debug mode
     };
 
     var regExp = [
@@ -101,30 +101,24 @@
                     settings.svg.load( settings.input.svg + debug,
                         {addTo: true, changeSize: true, onLoad:function() {
                             if (settings.input["class"]) { $(settings.svg.root()).attr("class",settings.input["class"]); }
-                            for (var i in settings.values) {
+                            var svgBind = function($svg) {
+                                var vClass = $svg.attr("class");
+                                if (!vClass || vClass.indexOf("interactive")<0) {
+                                    if (vClass) { vClass+=" interactive"; } else { vClass="interactive"; }
+                                    $svg.bind("click touchstart",function(event) {
+                                                    $this.sequence('key',this.id, this); event.preventDefault();})
+                                        .css("cursor", "pointer").attr("class",vClass);
+                                }
+                            };
+
+                            if (settings.input.key) {
+                                $(settings.input.key, settings.svg.root()).each(function() { svgBind($(this)); });
+                            }
+                            else for (var i in settings.values) {
                                 var vData = settings.values[i][1];
-                                if ($.isArray(vData)) {
-                                    for (var j in vData) {
-                                        var $svg = $("#"+vData[j], settings.svg.root());
-                                        var vClass = $svg.attr("class");
-                                        if (!vClass || vClass.indexOf("interactive")<0) {
-                                            if (vClass) { vClass+=" interactive"; } else { vClass="interactive"; }
-                                            $svg.bind("click touchstart", function(event) {
-                                                        $this.sequence('key',this.id); event.preventDefault(); })
-                                                .css("cursor", "pointer").attr("class",vClass);
-                                        }
-                                    }
-                                }
-                                else {
-                                    var $svg = $("#"+vData, settings.svg.root());
-                                    var vClass = $svg.attr("class");
-                                    if (!vClass || vClass.indexOf("interactive")<0) {
-                                        if (vClass) { vClass+=" interactive"; } else { vClass="interactive"; }
-                                        $svg.bind("click touchstart",function(event) {
-                                                    $this.sequence('key',this.id); event.preventDefault();})
-                                            .css("cursor", "pointer").attr("class",vClass);
-                                    }
-                                }
+                                if ($.isArray(vData))   { for (var j in vData) { svgBind($("#"+vData[j], settings.svg.root())); } }
+                                else                    { svgBind($("#"+vData, settings.svg.root())); }
+                                
                             }
                             helpers.loader.build($this);
                         }
@@ -162,18 +156,21 @@
                 var $ul = $this.find("#values ul").css("font-size",settings.font+"em").hide();
 
                 // Fill the UL list
+                var vValueArray = [];
+                if (!settings.gen) {
+                    var cpt = 0;
+                    for (var i=0; i<settings.values.length; i++) { vValueArray.push(settings.values[i]); }
+                    if (settings.shuffle) { vValueArray.sort(function(){return Math.random()-0.5; }); }
+                    for (var i=0; i<settings.number-settings.values.length; i++) { vValueArray.push(vValueArray[i%settings.values.length]); }
+                    if (settings.shuffle) { vValueArray.sort(function(){return Math.random()-0.5; }); }
+                }
+
                 for (var i=0; i<settings.number; i++) {
                     var $li = $("<li></li>").appendTo($ul), vNewValue, vValue = { question:0, response:0};
 
                     // Get the question
-                    if (settings.gen) { vNewValue = eval('('+settings.gen+')')(); }
-                    else {
-                        do  {
-                            vNew = (settings.shuffle)?Math.floor(Math.random()*settings.values.length):i;
-                        }
-                        while ((settings.values.length>2)&&(vNew==vLast));
-                        vNewValue = settings.values[vNew];
-                    }
+                    if (settings.gen)   { vNewValue = eval('('+settings.gen+')')(); }
+                    else                { vNewValue = vValueArray[i%vValueArray.length]; }
 
                     // The question may be an array [question, response], otherwise response is evaluated from the question
                     if ($.isArray(vNewValue))   { vValue.question = vNewValue[0]; vValue.response = vNewValue[1]; }
@@ -185,7 +182,7 @@
 
                     // Fill the dom element, use a regexp if needed
                     if (vRegexp)    { $li.html(vValue.question.replace(vRegexp, settings.regexp.input.to)); }
-                    else            { $li.html(vValue.question); }
+                    else            { $li.html(helpers.format(vValue.question)); }
 
                     // Store the question
                     settings.questions.push(vValue);
@@ -423,15 +420,17 @@
                 settings.interactive=true;
             },
             key: function(value, _elt) {
-                var $this = $(this);
-                if (_elt) { $(_elt).addClass("touch");
-                    setTimeout(function() { $(_elt).removeClass("touch"); }, 50);
+                var $this = $(this), settings = helpers.settings($this);
+                if (_elt) {
+                    $(_elt).attr("class", $(_elt).attr("class")+" touch");
+                    setTimeout(function() { $(_elt).attr("class", $(_elt).attr("class").replace(" touch","")); },
+                               (settings.input && settings.input.svg)?500:50);
                 }
                 helpers.key($(this), value, false);
             },
             click: function(value) { helpers.key($(this), value, false); },
             quit: function() {
-                var $this = $(this) , settings = helpers.settings($this);
+                var $this = $(this), settings = helpers.settings($this);
                 if (settings.timer.id) { clearTimeout(settings.timer.id); settings.timer.id=0; }
                 settings.finish = true;
                 settings.context.onquit($this,{'status':'abort'});

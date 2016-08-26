@@ -111,8 +111,10 @@
                                 word = settings.dictionary[goodWord][id];
 
                                 if (settings.style=="blank") {
-                                    var len = settings.dictionary[goodWord][
-                                        Math.floor(Math.random()*settings.dictionary[goodWord].length)].length;
+                                    var tmp = settings.dictionary[goodWord][
+                                        Math.floor(Math.random()*settings.dictionary[goodWord].length)];
+                                    var regTmp = new RegExp("&.+;","g");
+                                    var len = tmp.replace(regTmp,"_").length;
                                     word = "";
                                     for (var count=0; count<len*1.5; count++) { word+="&#xA0;"; }
                                 }
@@ -161,7 +163,7 @@
                                       event.originalEvent.touches[0]:event;
                     $this.find("#popup div").removeClass("s");
 
-                    if (vEvent.clientX>=settings.popup.offset[0] &&
+                    if (settings.elt && vEvent.clientX>=settings.popup.offset[0] &&
                         vEvent.clientX<settings.popup.offset[0]+settings.popup.size[0] &&
                         vEvent.clientY>=settings.popup.offset[1]&&
                         vEvent.clientY<settings.popup.offset[1]+settings.popup.size[1] ) {
@@ -293,7 +295,8 @@
                         if (settings.multiple && word.search(settings.multiple)>0) {
                             word = word.substring(0,word.search(settings.multiple));
                         }
-                        word = word.replace("&#8201;",String.fromCharCode(8201));
+                        var regTmp = new RegExp("&#8201;","g");
+                        word = word.replace(regTmp,String.fromCharCode(8201));
                         if ($(value).html()!=word) {
                             nbErrors++;
                             $(value).addClass("wrong");
