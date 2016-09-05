@@ -222,12 +222,6 @@ jlodb = {
                                           data.mods[i].id+".html' target='blank'>";
                                 html    +="<img src='mods/"+data.mods[i].id+"/icon.svg'/></a></div>";
                                 html    +="<div class='text'>";
-                                if (data.mods[i].id=="tibibo") {
-                                    html    +="<div class='snap s2' onclick=\"window.open('"+data.mods[i].id+".html?dev=1',"+
-                                              "'_blank', 'width=640, height=480,toolbar=no,location=no,status=no,menubar=no," +
-                                              "scrollbars=no,resizable=no,status=no,titlebar=no');\">"+
-                                              "<img src='mods/tibibi/res/img/snapshot.svg'/></div>";
-                                }
                                 html    +="<div class='snap' onclick=\"window.open('"+data.mods[i].id+".html',"+
                                           "'_blank', 'width=640, height=480,toolbar=no,location=no,status=no,menubar=no," +
                                           "scrollbars=no,resizable=no,status=no,titlebar=no');\">"+
@@ -679,14 +673,13 @@ $(window).resize(function() { $("#console").html($(window).width()+" x "+$(windo
         <div style="width:16em;height:12em;font-size:.9em;background-color:white;margin:0.5em auto;border:2px solid black;overflow:hide;position:relative;background-image:url('res/img/background/book03.svg'); background-repeat:repeat;">
             <div style="position:absolute;transform: rotate(45deg);top:1em;left:11em;background-color:red;color:white;width:7em;text-align:center;">Annonce</div>
             <div style="margin-top:1em;padding:0 1em 0 1em;background-color:gray;font-size:0.8em;border:1px solid black;border-width:2px 0;overflow:visible;background-image:url('res/img/background/book05.svg'); background-repeat:repeat;">
-                <div style="font-size:2em;font-weight:bold;padding:.1em;background-color:black;width:4.5em;text-align:center;border-radius:.2em;color:white;transform: rotate(-5deg);margin:-.1em 0 .2em -.2em;">CAHIER</div>
-                <div style="float:left; font-size:0.8em;">d'exercices numériques <b>libres</b></div>
-                <div style="font-size:1.2em;position:relative;top:-.2em;left:0.5em;border-radius:.2em;background-color:black;color:white;width:5em;text-align:center;">Niveau CP</div>
+                <div style="font-size:1.4em;font-weight:bold;padding:.1em;background-color:black;width:8em;text-align:center;border-radius:.2em;color:white;transform: rotate(-5deg);margin:-.1em 0 .2em -.2em;">GESTIONNAIRE</div>
+                <div style="font-size:0.8em; margin:0.5em 0;">de fiches de préparations <b>numériques</b></div>
             </div>
             <div style="text-align:center;">recherche</div>
-            <div style="font-size:0.4em;text-align:center;margin-bottom:2em;"><i>test(eurs/euses), correc(teurs/trices), pédagogues et forces de propositions.</i></div>
+            <div style="font-size:0.4em;text-align:center;margin-bottom:2em;"><i>test(eurs/euses), pédagogues, forces de propositions et bonnes volontées.</i></div>
             <div style="font-size:0.5em;color:white;">
-            <a href="http://jlodb.poufpoufproduction.fr/tibibo.html?id=CP"><div style="background-color:black;height:1.2em;width:18em;border-radius:0 .5em .5em 0;margin:.1em 0;padding-left:1em;">Tester le cahier en développement</div></a>
+            <a href="tibibu.html"><div style="background-color:black;height:1.2em;width:18em;border-radius:0 .5em .5em 0;margin:.1em 0;padding-left:1em;">Tester le logiciel (version dev)</div></a>
             <div onclick="$('#specialevent').hide();" style="cursor:pointer;background-color:black;height:1.2em;width:18em;border-radius:0 .5em .5em 0;margin:.1em 0;padding-left:1em;">Continuer sur le site principal</div>
             <div style="background-color:gray;height:1.2em;width:18em;border-radius:0 .5em .5em 0;margin:.1em 0;padding-left:1em;margin-top:1em;"><div style="width:4em;float:left;">mail</div>johannc@poufpoufproduction.fr</div>
             <a href="https://twitter.com/jlodb1"><div style="background-color:gray;height:1.2em;width:18em;border-radius:0 .5em .5em 0;margin:.1em 0;padding-left:1em;"><div style="width:4em;float:left;">twitter</div>@jlodb1</div></a>

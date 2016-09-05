@@ -1,0 +1,181 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>tibibu</title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="js/jquery.svg.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/jquery.jlodb.js"></script>
+    <script type="text/javascript" src="js/jquery.jlodb.menu.js"></script>
+    <script type="text/javascript" src="js/jlodb-ext.js"></script>
+    <script type="text/javascript" src="user/user.js"></script>
+    <script type="text/javascript" src="gonz/jquery.gonz.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/jlodb.css" media="all" />
+    <link type="text/css" rel="stylesheet" href="user/style.css" media="all" />
+    <link rel="apple-touch-icon-precomposed" href="mods/tibibu/res/img/icon/icon144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="mods/tibibu/res/img/icon/icon72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="mods/tibibu/res/img/icon/icon114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="mods/tibibu/res/img/icon/icon144.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <style>
+#main #waiting                          { top:50%; left:72%; font-size:4em; }
+#main                                   { display:relative; background-image:url('res/img/background/book02.svg'); }
+
+#main #nav                              { font-size:.3em; width:10em; height:100%; border:1px solid black; border-width:0 2px 0 0; background-color:rgba(255,255,255,0.6); }
+
+#main #profile                          { background-color:#5B6; width:10em; color:white;height:3em;}
+#main #profile>*                        { float:left; }
+#main #profile #avatar                  { width:1em; height:1em; background-color:#444; font-size:3em; cursor:pointer; }
+#main #profile #label                   { margin-left:.2em;  font-size:.7em; width:5.2em; }
+#main #profile #sub                     { font-size:.8em; color:yellow; }
+#main #profile #devmode                 { font-size:2em; opacity:0.3; }
+#main.devmode #profile #devmode         { opacity:1; }
+#main #profile .icon                    { font-size:3em; cursor:pointer; }
+#main #profile #gdx                     { display:none; }
+#main #profile #gdx.s                   { background-color:red; border-radius:.5em; }
+#main #upuser>div                       { left:1em; }
+#main #umenu                            { margin-top:.5em; display:none;}
+#main #umenu>div                        { margin-bottom:.5em; color:white; padding-left:.5em; cursor:pointer; }
+
+#main .usermode                         { display:inherit; }
+#main .devmode                          { display:none; }
+#main.devmode .usermode                 { display:none; }
+#main.devmode .devmode                  { display:inherit; }
+
+    </style>
+    <script>
+
+// USER EVENT CALLBACK (FROM user/user.js)
+user.onEvent = function() {
+    $("#profile #avatar").html("");
+    $("#tibibi select").html("");
+    $("#main").removeClass("devmode");
+
+    if (user.settings && user.settings.name) {
+        $("#profile #avatar").gonz({interactive:false, code:user.settings.avatar,
+                                    context:{onclick:function($this){},onquit:function($this, _ret){}}});
+        $("#profile #label #name").html(user.settings.name);
+        $("#profile #label #sub").html("#"+user.settings.tag);
+
+        $("#profile>*").show();
+
+        if (user.settings.devmode) {
+            // DEVMODE : PROFESSOR
+            $("#main").addClass("devmode");
+        }
+        else {
+            // STUDENT
+            $("#main").removeClass("devmode");
+        }
+        $("#umenu").show();
+
+    }
+    else {
+        $("#profile>*").hide();
+        $("#umenu").hide();
+        $("#logpanel").show();
+    }
+
+};
+
+// TEXT FORMATING
+var regExp = [
+        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
+        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
+        "\\\[br\\\]",                               "<br/>",
+        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
+        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
+        "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>"
+    ];
+
+var tibibu = {
+    lang            : "",
+    locale          : {},
+    format: function(_text) {
+        for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
+            var vReg = new RegExp(regExp[i*2],"g");
+            _text = _text.replace(vReg,regExp[i*2+1]);
+        }
+        return _text;
+    },
+    devmode: function() { if ($("#main").hasClass("devmode")) { user.devmode(); } else { $("#udevmode").show(); } },
+    menu: function(_elt) {
+        $(_elt).addClass("touch"); setTimeout(function() { $(_elt).removeClass("touch");}, 100);
+    }
+};
+
+
+$(window).ready(function() {
+    // SPECIAL STUFF
+    $("#activity").ontouchmove = function(e) { e.preventDefault(); }
+
+    $.getJSON("api/checkdb.php", function (_check) {
+        if (_check.status=="success") {
+            // GLOBAL DATA
+            tibibu.lang=_check.lang;
+            tibibu.url =_check.url;
+
+            // USER HANDLER INITIALISATION
+            user.load.edit($("#main"));
+            user.load.devmode($("#main"));
+            user.load.logpanel($("#main"), {}, function() { user.init(tibibu.lang); });
+
+            // LOCALISATION
+            $.getJSON("mods/tibibu/locale/"+_check.lang+"/text.json?debug="+Math.floor(Math.random()*1000), function(_locale) {
+                for (var i in _locale.locale) { $("#"+i).html(_locale.locale[i]); }
+                tibibu.locale = _locale;
+            });
+
+        }
+        else {
+            $("#main").html(_check.status+": "+_check.textStatus);
+        }
+    });
+
+
+    // GET AND RESIZE THE BEST PANEL
+    var x = Math.floor($(window).width()/16);
+    var y = Math.floor($(window).height()/12);
+    $("body").css("font-size", (Math.min(x,y))+"px");
+    $("#main").css("margin-top", Math.floor(($(window).height()-$("#main").height())/2-2)+"px").show();
+
+
+});
+    </script>
+</head>
+
+<body>
+    <div id="main">
+
+        <!-- NAVIGATION LEFT MENU -->
+        <div id="nav">
+            
+            <!-- USER PROFILE -->
+            <div id="profile">
+                <div id="avatar" ontouchstart="user.edit.open();event.preventDefault();"
+                    onclick="user.edit.open();"></div>
+                <div id="label">
+                    <div id="name">&nbsp;</div>
+                    <div id="sub"></div>
+                    <div id="devmode" class="icon" ontouchstart="tibibu.devmode();event.preventDefault();"
+                        onclick="tibibu.devmode();"><img src="mods/tibibi/res/img/edit.svg"/></div>
+                </div>
+                <div id="gdx" class="icon" ontouchstart="user.logout($(this));event.preventDefault();"
+                    onclick="user.logout($(this));"><img src="mods/tibibi/res/img/logout.svg"/></div>
+            </div>
+
+            <div id="umenu">
+                <div id="uflabel" class="bluekeypad" onclick="tibibu.menu(this);" ontouchstart="tibibu.menu(this);event.preventDefault();"></div>
+                <div id="uelabel" class="bluekeypad usermode" onclick="tibibu.menu(this);" ontouchstart="tibibu.menu(this);event.preventDefault();"></div>
+                <div id="uclabel" class="bluekeypad devmode" onclick="tibibu.menu(this);" ontouchstart="tibibu.menu(this);event.preventDefault();"></div>
+                <div id="uplabel" class="bluekeypad devmode" onclick="tibibu.menu(this);" ontouchstart="tibibu.menu(this);event.preventDefault();"></div>
+            </div>
+
+        </div>
+
+    </div>
+</body>
