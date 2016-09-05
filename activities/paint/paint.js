@@ -15,6 +15,7 @@
         toggle      : "c",                                      // Toggle element class
         remove      : false,                                    // Remove previous painting
         number      : 1,                                        // Number of exercices
+        scorearg    : 0,
         effects     : true,                                     // Show effects
         debug       : true                                     // Debug mode
     };
@@ -159,14 +160,12 @@
                 }
             }
 
-
-
             var exercice = settings.exercice;
             var label    = settings.exlabel;
             if (settings.gen) {
                 var vValue = eval('('+settings.gen+')')();
                 if (vValue.exercice) { exercice = vValue.exercice; }
-                if (vValue.arg)      { settings.scoreArg = vValue.arg; }
+                if (vValue.arg)      { settings.scorearg = vValue.arg; }
                 if (vValue.label)    { label = vValue.label; }
                 if (vValue.result)   { settings.result = vValue.result; }
                 if (vValue.t)        { settings.t = vValue.t; }
@@ -202,6 +201,7 @@
             }
             $("#"+canvas, settings.svg.root()).css("display","inline");
             $("#"+canvas+" ."+settings.toggle, settings.svg.root()).each(function(_index) {
+                    $(this).unbind('touchmove mousemove touchstart mousedown');
                     $(this).bind('touchmove mousemove', function(_event) {
                         if (settings.interactive && settings.color[0]!=-1 && settings.down && settings.elt!=this) {
                             helpers.paint($this, $(this), false);
@@ -252,6 +252,7 @@
             var settings = helpers.settings($this);
             var ok = true;
             var c = $elt.attr("class").substr(-1);
+            if (c=="c") { c = -1; }
 
             if (_begin) {
                 settings.color[1] = settings.color[0];
@@ -261,7 +262,6 @@
             }
 
             if (settings.data ) {
-                if (c=="c") { c = -1; }
                 if (c!=-1 && settings.data[c] && settings.data[c].notover && c!=settings.color[0]) { ok = false; }
             }
 
@@ -352,8 +352,7 @@
                     score           : 5,
                     color           : [-1,-1],
                     elt             : 0,
-                    id              : 0,
-                    scoreArg        : 0
+                    id              : 0
                 };
 
                 return this.each(function() {
@@ -393,7 +392,8 @@
                     var nbErrors = 0;
 
                     if (settings.scorefct) {
-                        nbErrors = eval('('+settings.scorefct+')')($this,result,settings.scoreArg);
+                        var arg = $.isArray(settings.scorearg)?settings.scorearg[settings.id%settings.canvas.length]:settings.scorearg;
+                        nbErrors = eval('('+settings.scorefct+')')($this,result,arg);
                     }
                     else {
                         var r = $.isArray(settings.result)?settings.result[settings.id%settings.result.length]:settings.result;

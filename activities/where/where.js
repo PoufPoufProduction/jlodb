@@ -10,9 +10,19 @@
         shuffle     : true,                     // Shuffle the questions
         evaluation  : [4,0.8],                  // The evaluation from the score average (4 for A, 3.5 for B, 3 for C, etc.)
         font        : 1,                        // Font size
+        fontex      : 1,
         effects     : true,                     // Display effects
-        debug       : false                     // Debug mode
+        debug       : true                     // Debug mode
     };
+
+    var regExp = [
+        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
+        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
+        "\\\[br\\\]",                               "<br/>",
+        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
+        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
+        "\\\[small\\\]([^\\\[]+)\\\[/small\\\]",    "<span style='font-size:.6em;'>$1</span>"
+    ];
 
     // private methods
     var helpers = {
@@ -39,6 +49,13 @@
             var settings = helpers.settings($this);
             helpers.unbind($this);
             settings.context.onquit($this,{'status':'success', 'score':settings.score});
+        },
+        format: function(_text) {
+            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
+                var vReg = new RegExp(regExp[i*2],"g");
+                _text = _text.replace(vReg,regExp[i*2+1]);
+            }
+            return _text;
         },
         loader: {
             css: function($this) {
@@ -102,7 +119,7 @@
                 // LOCALE HANDLING
                 $this.find("h1#label").html(settings.label);
                 $this.find("#guide").html(settings.guide);
-                $this.find("#comment").html(settings.comment);
+                $this.find("#comment>div").html(helpers.format(settings.comment));
                 $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); });
 
                 // BUILD THE CURSORS LIST
