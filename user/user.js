@@ -22,7 +22,8 @@ var user = {
                 $logpanel.bind("touchstart mousedown", function(_event) { $(this).hide();_event.preventDefault(); });
             }
         },
-        edit    : function($elt, _cbk) { $elt.append($("<div id='upuser'>").load("user/edit.html", _cbk)); }
+        edit    : function($elt, _cbk) { $elt.append($("<div id='upuser'>").load("user/edit.html", _cbk)); },
+        devmode : function($elt, _cbk) { $elt.append($("<div id='udevmode'>").load("user/devmode.html", _cbk)); }
     },
     init: function(_lang) {
         $.getJSON("user/locale/"+_lang+"/text.json?debug="+Math.floor(Math.random()*1000), function(_locale) {
@@ -41,6 +42,22 @@ var user = {
             else { user.onEvent(); }
         },500);
     },
+    devmode: function(_login) {
+        if (_login) {
+            $.getJSON("user/api/devmode.php?password="+$("#udevmode input").val(), function(_data) {
+                user.settings.devmode = _data.devmode;
+                user.onEvent();
+                $("#udevmode input").val("");
+            });
+            $("#udevmode").hide();
+        }
+        else {
+            $.getJSON("user/api/devmode.php", function(_data) {
+                user.settings.devmode = _data.devmode;
+                user.onEvent();
+            });
+        }
+    },
     login: function() {
         if ($("#logpanel").hasClass("s")) {
             $.getJSON("user/api/usernew.php"+
@@ -55,6 +72,8 @@ var user = {
     logout : function($elt) {
         if (user.timer) {
             clearTimeout(user.timer); user.timer=0; $elt.removeClass("s");
+
+            $("input[name=username]").val(""); $("input[name=password]").val(""); $("input[name=password2]").val("");
 
             if (user.settings.name) {
                 user.getJSON("user/api/login.php", {"action":"logout"}, 0, function(_data) {
@@ -82,8 +101,6 @@ var user = {
             else { user.onEvent(); }
         }
     },
-
-
     edit    : {
         avatar : function() {
             if ($("#upuser #gonz").children().length==0) {

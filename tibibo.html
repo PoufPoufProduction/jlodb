@@ -22,148 +22,123 @@
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="mods/tibibo/res/img/icon/icon144.png" />
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <style>
-        #main #waiting                    { top:50%; left:72%; font-size:4em; }
-
-
-        #main                       { display:relative; background-image:url('res/img/background/book02.svg'); }
-        #main .special              { font-size:.3em; width:105%; margin:.5em 0 .2em 0; }
-        #main .special>div           { height:3em; padding:.1em; border-radius:.25em; float:left; margin-left:1em;  }
-        #main #oheader               { overflow:visible; }
-        #main #onav                  { background-color:#DD5; width:40em; color:white; overflow:visible; }
-        #main #onav .node            { font-size:2.8em; margin:.05em .1em; }
-        #main #onav .label           { color:black; font-size:1.1em; margin-top:.1em; float:right; margin-right:.5em; width:18em; height:2.4em;}
-        #main #omain #profile              { background-color:#5B6; width:10em; color:white;}
-        #main #omain #profile>*            { float:left; }
-        #main #omain #profile #avatar      { width:1em; height:1em; background-color:#444; font-size:3em; border-radius:.1em; cursor:pointer; }
-        #main #omain #profile #label       { margin-left:.2em;  font-size:.7em; width:5.2em; }
-        #main #omain #profile #sub         { font-size:.8em; color:yellow; }
-        #main #omain #profile .icon        { font-size:3em; cursor:pointer; }
-        #main #omain #profile #gdx         { display:none; }
-        #main #omain #profile #gdx.s       { background-color:red; border-radius:.5em; }
-
-        #main #error                { position:absolute; top:19.3em; color:white; font-size:.5em; width:100%; background-color:red;
-                                      padding-left:2em; display:none; }
-
-        #main #ocontent              { width:100%; height:9em; }
-        #main #ocontent>div          { width:100%; display:none; }
-        #main #ofooter #menu                 { clear:both; background-color:#aaa; width:51em; height:5em; color:white;}
-        #main #ofooter #menu .menu           { display:none; }
-        #main #ofooter #menu>div             { font-size:4em;  }
-        #main #ofooter #menu>div .icon  { float:left; margin:.12em; cursor:pointer; border-radius:.1em; }
-        #main #ofooter #menu>div .icon.s    { background-color:#A00; }
-        #main #ofooter #menu>div .icon.f { float:right; }
-
-        #main #obrowser              { font-size:2.4em; margin-left:.2em; }
-        #main #ocontent>#omenu         { font-size:1.4em; height:6.5em; }
-        #main #ocontent>#omenu .icon  { background-image:url('res/img/icon/menu02bg.svg') !important; }
-        #main #ocontent #omenu .ostate  { font-size:.5em; background-color:#ADF; margin:.1em; height:1.2em; width:15em; }
-        #main #ocontent #omenu .ostate .user    { font-size:0.5em; width:7em; }
-        #main #ocontent #omenu .ostate>div  { float:left; }
-        #main #ocontent #omenu .ostate .jmenu   { width:6em; }
-        #main #ocontent #omenu .ostate .date    { font-size:0.4em; }
-        #main #upuseror               { font-size:3.4em; margin-left:.4em; }
-        #main .node                  { width:1em; height:1.35em; margin:.1em; cursor:pointer; float:left; position:relative;
-                                      overflow:visible; }
-        #main .node .type            { width:1em; height:1em; font-size:.25em; position:absolute; top:-0.1em; left:-0.1em; display:none;}
-        #main .node .icon             { width:1em; height:1em; position:absolute; top:0; left:0; }
-        #main .node .star             { width:1em; height:1em; position:absolute; top:0.1em; left:0; display:none; }
-        #main .node .label           { font-family: Arial,Helvetica Neue,Helvetica,sans-serif;
-                                       font-size:.09em; position:absolute; top:12em; text-align:justify; }
-        #main .node.f .type         { display:inline; }
-        #main .node.s .star         { display:inline; }
-        #main .node .done           { position:absolute; top:0em; left:3.5em; font-size:.15em; width:3em; text-align:center;
-                                     background-color:rgba(20,200,50,0.8); color:yellow; border:.1em solid yellow;
-                                     -ms-transform: rotate(10deg); -webkit-transform: rotate(10deg); transform: rotate(10deg);   }
-        
-        #main .node .progress         { width:1em; height:0.05em; position:absolute; top:1.02em; background-color:#dd5; }
-        #main .node .progress>div       { height:0.05em; background-color:#5b6; }
-
-        #main .label .strong        { font-size:1.5em; font-weight:bold; }
-
-        #main #ocontent .input              { background-color:red; color:white; margin-top:1em; font-size:0.8em; }
-        #main #ocontent .input>*            { float:left; margin-left:.5em; }
-        #main #ocontent .input .label      { width:7em; }
-        #main #ocontent .input input        { font-size:1em; width:8em; color:#500; padding-left:.5em; }
-        #main #ocontent .input input.s       { color:gray; }
-        #main #ocontent .input .icon        { float:right; font-size:1.2em; cursor:pointer; margin-right:.5em; }
-        #main #ocontent .booklist              { font-size:0.5em; border:1px solid black; border-width:0 0 .2em 0;
-                                                margin-top:1em; height:12.5em;}
-        #main #ocontent .booklist .title       { background-color:black; color: white; padding-left:2em; height:1.2em; }
-        #main #ocontent .booklist .list      { height:12.5em; overflow:auto; }
-        #main #ocontent .booklist .list>div    { margin:.2em 0.2em; cursor:pointer; clear:both; }
-        #main #ocontent .booklist .list .bookid   { float:left; width:5em; background-color:rgba(0,100,200,0.2); padding-right:.5em; color:#345;
-                                              border-radius:.5em 0 0 .5em; height:1.2em; text-align:right; font-weight:bold; }
-        #main #ocontent .booklist .list .label    { float:left; margin-left:.1em; background-color:rgba(200,100,0,0.2); color:#543;
-                                                width:24em; height:1.2em; padding-left:.5em; border-radius:0 .5em .5em 0;
-                                                font-style:italic;border:0;font-size:1em; font-family: "Times New Roman",Times,serif; }
-
-        #main #ocontent #dinput              { font-size:.5em; }
-        #main #ocontent #dinput input        { width:20em; }
-
-        #firefox            { position:absolute; top:79%; left:83%; font-size:.2em; width:15em; height:3em; border:2px solid orange;
-                              border-radius:1.5em 0 0 1.5em; background-color:rgba(0,0,0,0.1); font-weight:bold; color:brown; }
-        #firefox>img        { float:left; font-size:3em; width:1em; height:1em; margin-left:.1em; margin-right:.2em; }
-
-#dbrowser                   { position:absolute; top:0; left:0; width:16em; height:12em;
-                              background-color: rgba(0,0,0,0.2); display:none;}
-#dbrowser>div               { position:absolute; font-size:.4em; width:26em; height:21em; top:2em; left:2em; 
-                              background-color:rgba(200,200,200,0.9); border:.2em solid white; color:black;
-                              border-radius:.5em; background-image:url("res/img/background/book06.svg"); background-repeat:repeat; }
-#dbrowser #dcontent         { font-size:1.5em; overflow:auto; height:14em; }
-#dbrowser ul                { padding-left:0.5em; clear:both; }
-#dbrowser ul.sub            { display:none; }
-#dbrowser li                { clear:both;}
-#dbrowser .node             { height:1.1em; }
-#dbrowser .label            { padding:0 .1em; font-size:0.5em; height:2.4em; overflow:visible; float:left;
-                              background-color:rgba(240,250,255,0.5);  }
-#dbrowser .state            { width:4em; height:1.3em; font-size:.8em; background-color:rgba(255,255,255,0.8);
-                              border-radius:0 .2em .2em 0; text-align:center;padding-top:.2em; cursor:pointer;}
-#dbrowser .move            { font-size:1.2em;width:1em; height:1em; background-color:rgba(0,0,0,0.8);
-                              border-radius:0 .2em .2em 0; padding:0 .2em; text-align:center; cursor:pointer;}
-
-#editnode                     { position:absolute; top:0; left:0; width:16em; height:12em;
-                              background-color: rgba(0,0,0,0.2); display:none; }
-#editnode>div                 { position:absolute; font-size:.4em; width:20em; height:21em; top:2em; left:2em; 
-                              background-color:rgba(128,120,100,0.9); border:.2em solid white; color:black;
-                              border-radius:.5em; background-image:url("res/img/background/book06.svg"); background-repeat:repeat; }
-
-#editnode #eimg               { width:15em; left:23em; }
-#editnode #eimg .icon           { float:left; cursor:pointer; margin:0.05em; font-size:1.4em; }
-
-#editnode #settings             { height:16em; }
-#editnode #settings #nodeimg      { font-size:8em; float:left; margin:0.05em; height:1.1em; }
-#editnode #settings textarea      { float:right; margin-top:0.8em; padding:.2em; font-size:0.6em; width:17.5em;
-                                    border:0; background-color:white; border-radius:.5em 0 0 .5em; height:6.5em;  }
-    #editnode #settings #tibibi { clear:both;}
-#editnode #settings #tibibi select  { border:0; background-color:white; border-radius:00; float:left;
-                                    font-size:1em; width:18em; }
-#editnode #settings #tibibi .icon   { float:left; background-color:#444; padding:.1em .5em; border-radius:0; cursor:pointer; }
-#editnode #settings #tibibi textarea { clear:both; border-radius:0; width:33em; float:none; }
-#editnode #evalid               { font-size:4em; float:right; margin:.1em; cursor:pointer;}
-#editnode #ecancel              { font-size:4em; float:left; margin:.1em; cursor:pointer; }
-
-#eimport                    { position:absolute; top:0; left:0; background-color:rgba(0,0,0,0.2); width:100%; height:100%; display:none; }
-#eimport>div                { width:12em; height:8em; background-color:gray; margin:2em; }
-#eimport textarea           { width:58em; height:32em; margin:1em; border:0; font-size:0.2em; }
-#eimport .icon              { margin: 0 auto; cursor:pointer; }
-
-
+#main #waiting                          { top:50%; left:72%; font-size:4em; }
+#main                                   { display:relative; background-image:url('res/img/background/book02.svg'); }
+#main .special                          { font-size:.3em; width:105%; margin:.5em 0 .2em 0; }
+#main .special>div                      { height:3em; padding:.1em; border-radius:.25em; float:left; margin-left:1em;  }
+#main #oheader                          { overflow:visible; }
+#main #onav                             { background-color:#DD5; width:40em; color:white; overflow:visible; }
+#main #onav .node                       { font-size:2.8em; margin:.05em .1em; }
+#main #onav .label                      { color:black; font-size:1.1em; margin-top:.1em; float:right; margin-right:.5em; width:18em; height:2.4em;}
+#main #omain #profile                   { background-color:#5B6; width:10em; color:white;}
+#main #omain #profile>*                 { float:left; }
+#main #omain #profile #avatar           { width:1em; height:1em; background-color:#444; font-size:3em; border-radius:.1em; cursor:pointer; }
+#main #omain #profile #label            { margin-left:.2em;  font-size:.7em; width:5.2em; }
+#main #omain #profile #sub              { font-size:.8em; color:yellow; }
+#main #omain #profile #devmode          { font-size:2em; opacity:0.3; display:none; }
+#main.devmode #omain #profile #devmode  { opacity:1; }
+#main #omain #profile .icon             { font-size:3em; cursor:pointer; }
+#main #omain #profile #gdx              { display:none; }
+#main #omain #profile #gdx.s            { background-color:red; border-radius:.5em; }
+#main #error                            { position:absolute; top:19.3em; color:white; font-size:.5em; width:100%; background-color:red; padding-left:2em; display:none; }
+#main #ocontent                         { width:100%; height:9em; }
+#main #ocontent>div                     { width:100%; display:none; }
+#main #ofooter #menu                    { clear:both; background-color:#aaa; width:51em; height:5em; color:white;}
+#main #ofooter #menu>div                { font-size:4em;  }
+#main #ofooter #menu>div .icon          { float:left; margin:.12em; cursor:pointer; border-radius:.1em; }
+#main #ofooter #menu>div .icon.s        { background-color:#A00; }
+#main #ofooter #menu>div .icon.f        { float:right; }
+#main.devmode.ownbook #editown.menu     { display:inline; }
+#main.devmode.book #editother.menu      { display:inline; }
+#main .usermode                         { display:inline; }
+#main .devmode                          { display:none; }
+#main.devmode .usermode                 { display:none; }
+#main #obrowser                         { font-size:2.4em; margin-left:.2em; }
+#main #ocontent>#omenu                  { font-size:1.4em; height:6.5em; }
+#main #ocontent>#omenu .icon            { background-image:url('res/img/icon/menu02bg.svg') !important; }
+#main #ocontent #omenu .ostate          { font-size:.5em; background-color:#ADF; margin:.1em; height:1.2em; width:15em; }
+#main #ocontent #omenu .ostate .user    { font-size:0.5em; width:7em; }
+#main #ocontent #omenu .ostate>div      { float:left; }
+#main #ocontent #omenu .ostate .jmenu   { width:6em; }
+#main #ocontent #omenu .ostate .date    { font-size:0.4em; }
+#main #upuseror                         { font-size:3.4em; margin-left:.4em; }
+#main .node                             { width:1em; height:1.35em; margin:.1em; cursor:pointer; float:left; position:relative; overflow:visible; }
+#main .node .type                       { width:1em; height:1em; font-size:.25em; position:absolute; top:-0.1em; left:-0.1em; display:none;}
+#main .node .icon                       { width:1em; height:1em; position:absolute; top:0; left:0; }
+#main .node .star                       { width:1em; height:1em; position:absolute; top:0.1em; left:0; display:none; }
+#main .node .label                      { font-family: Arial,Helvetica Neue,Helvetica,sans-serif; font-size:.09em; position:absolute; top:12em; text-align:justify; }
+#main .node.f .type                     { display:inline; }
+#main .node.s .star                     { display:inline; }
+#main .node .done                       { position:absolute; top:0em; left:3.5em; font-size:.15em; width:3em; text-align:center; background-color:rgba(20,200,50,0.8); color:yellow; border:.1em solid yellow; -ms-transform: rotate(10deg); -webkit-transform: rotate(10deg); transform: rotate(10deg);   }
+#main .node .progress                   { width:1em; height:0.05em; position:absolute; top:1.02em; background-color:#dd5; }
+#main .node .progress>div               { height:0.05em; background-color:#5b6; }
+#main .label .strong                    { font-size:1.5em; font-weight:bold; }
+#main #ocontent .input                  { background-color:red; color:white; margin-top:1em; font-size:0.8em; }
+#main #ocontent .input>*                { float:left; margin-left:.5em; }
+#main #ocontent .input .label           { width:7em; }
+#main #ocontent .input input            { font-size:1em; width:8em; color:#500; padding-left:.5em; }
+#main #ocontent .input input.s          { color:gray; }
+#main #ocontent .input .icon            { float:right; font-size:1.2em; cursor:pointer; margin-right:.5em; }
+#main #ocontent .booklist               { font-size:0.5em; border:1px solid black; border-width:0 0 .2em 0; margin-top:1em; height:12.5em;}
+#main #ocontent .booklist .title        { background-color:black; color: white; padding-left:2em; height:1.2em; }
+#main #ocontent .booklist .list         { height:12.5em; overflow:auto; }
+#main #ocontent .booklist .list>div     { margin:.2em 0.2em; cursor:pointer; clear:both; }
+#main #ocontent .booklist .list .bookid { float:left; width:5em; background-color:rgba(0,100,200,0.2); padding-right:.5em; color:#345; border-radius:.5em 0 0 .5em; height:1.2em; text-align:right; font-weight:bold; }
+#main #ocontent .booklist .list .label  { float:left; margin-left:.1em; background-color:rgba(200,100,0,0.2); color:#543; width:24em; height:1.2em; padding-left:.5em; border-radius:0 .5em .5em 0; font-style:italic;border:0;font-size:1em; font-family: "Times New Roman",Times,serif; }
+#main #ocontent #dinput                 { font-size:.5em; }
+#main #ocontent #dinput input           { width:20em; }
+#firefox                                { position:absolute; top:79%; left:83%; font-size:.2em; width:15em; height:3em; border:2px solid orange; border-radius:1.5em 0 0 1.5em; background-color:rgba(0,0,0,0.1); font-weight:bold; color:brown; }
+#firefox>img                            { float:left; font-size:3em; width:1em; height:1em; margin-left:.1em; margin-right:.2em; }
+#dbrowser                               { position:absolute; top:0; left:0; width:16em; height:12em; background-color: rgba(0,0,0,0.2); display:none;}
+#dbrowser>div                           { position:absolute; font-size:.4em; width:26em; height:21em; top:2em; left:2em;  background-color:rgba(200,200,200,0.9); border:.2em solid white; color:black;  border-radius:.5em; background-image:url("res/img/background/book06.svg"); background-repeat:repeat; }
+#dbrowser #dcontent                     { font-size:1.5em; overflow:auto; height:14em; }
+#dbrowser ul                            { padding-left:0.5em; clear:both; }
+#dbrowser ul.sub                        { display:none; }
+#dbrowser li                            { clear:both;}
+#dbrowser .node                         { height:1.1em; }
+#dbrowser .label                        { padding:0 .1em; font-size:0.5em; height:2.4em; overflow:visible; float:left; background-color:rgba(240,250,255,0.5);  }
+#dbrowser .state                        { width:4em; height:1.3em; font-size:.8em; background-color:rgba(255,255,255,0.8); border-radius:0 .2em .2em 0; text-align:center;padding-top:.2em; cursor:pointer;}
+#dbrowser .move                         { font-size:1.2em;width:1em; height:1em; background-color:rgba(0,0,0,0.8); border-radius:0 .2em .2em 0; padding:0 .2em; text-align:center; cursor:pointer;}
+#editnode                               { position:absolute; top:0; left:0; width:16em; height:12em; background-color: rgba(0,0,0,0.2); display:none; }
+#editnode>div                           { position:absolute; font-size:.4em; width:20em; height:21em; top:2em; left:2em;  background-color:rgba(128,120,100,0.9); border:.2em solid white; color:black; border-radius:.5em; background-image:url("res/img/background/book06.svg"); background-repeat:repeat; }
+#editnode #eimg                         { width:15em; left:23em; }
+#editnode #eimg .icon                   { float:left; cursor:pointer; margin:0.05em; font-size:1.4em; }
+#editnode #settings                     { height:16em; }
+#editnode #settings #nodeimg            { font-size:8em; float:left; margin:0.05em; height:1.1em; }
+#editnode #settings textarea            { float:right; margin-top:0.8em; padding:.2em; font-size:0.6em; width:17.5em; border:0; background-color:white; border-radius:.5em 0 0 .5em; height:6.5em;  }
+#editnode #settings #tibibi             { clear:both;}
+#editnode #settings #tibibi select      { border:0; background-color:white; border-radius:00; float:left; font-size:1em; width:18em; }
+#editnode #settings #tibibi .icon       { float:left; background-color:#444; padding:.1em .5em; border-radius:0; cursor:pointer; }
+#editnode #settings #tibibi textarea    { clear:both; border-radius:0; width:33em; float:none; }
+#editnode #evalid                       { font-size:4em; float:right; margin:.1em; cursor:pointer;}
+#editnode #ecancel                      { font-size:4em; float:left; margin:.1em; cursor:pointer; }
+#eimport                                { position:absolute; top:0; left:0; background-color:rgba(0,0,0,0.2); width:100%; height:100%; display:none; }
+#eimport>div                            { width:12em; height:8em; background-color:gray; margin:2em; }
+#eimport textarea                       { width:58em; height:32em; margin:1em; border:0; font-size:0.2em; }
+#eimport .icon                          { margin: 0 auto; cursor:pointer; }
     </style>
     <script>
 
+// USER EVENT CALLBACK (FROM user/user.js)
 user.onEvent = function() {
     $("#profile #avatar").html("");
     $("#tibibi select").html("");
+    $("#main").removeClass("devmode");
 
     if (user.settings && user.settings.name) {
         $("#profile #avatar").gonz({interactive:false, code:user.settings.avatar,
                                     context:{onclick:function($this){},onquit:function($this, _ret){}}});
         $("#profile #label #name").html(user.settings.name);
         $("#profile #label #sub").html("#"+user.settings.tag);
+
+        if (user.settings.devmode)  { $("#main").addClass("devmode"); }
+        $("#profile #label #devmode").show();
+
         $("#main #profile #gdx").show();
 
         tibibo.init();
 
+        // GET THE COURSE LIST FROM TIBIBI TO FILL NODE IN DEVMODE
         user.getJSON("mods/tibibi/api/course.php",{action:"list"}, "",function(_data) {
             for (var i in _data.courses) {$("#tibibi select").append("<option>"+_data.courses[i]+"</option>"); }
         });
@@ -173,6 +148,7 @@ user.onEvent = function() {
         $("#profile #avatar").html("<img src='mods/tibibi/res/img/people.svg'/>");
         $("#profile #label #name").html("");
         $("#profile #label #sub").html("");
+        $("#profile #label #devmode").hide();
         $("#main #profile #gdx").hide();
 
         tibibo.init();
@@ -180,6 +156,7 @@ user.onEvent = function() {
 
 };
 
+// TEXT FORMATING
 var regExp = [
         "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
         "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
@@ -206,60 +183,6 @@ var tibibo = {
         $("#launcher").jlodb({ onstart: function($this) { $("#ocontent").hide(); $("#waiting").hide().find("div").removeClass("running"); },
                                onfinish:function($this) { $("#ocontent").show(); $("#score").removeClass().hide(); }},_args);
     },
-    stat: {
-        realtime : {
-            timer: 0,
-            id  : -1,
-            run : function() {
-                user.getJSON("mods/tibibo/api/tibibo.php",{action:"look", id:tibibo.stat.realtime.id}, "", function(_data) {
-                    $("#omenu").html("");
-                    for (var i in _data.description) {
-                        var l = _data.description[i];
-                        var elt = tibibo.book.browse.elt(l.id);
-                        var html="<div class='ostate'>";
-                        html+=tibibo.book.node(elt,"state");
-
-                        html+="<div class='user'>";
-                        if (l.last && l.first) {
-                            html+=l.first+"<br/>"+l.last;
-                        }
-                        else {
-                            html+="<div class='name'>"+l.user+"</div>";
-                        }
-                        html+="</div>";
-
-                        var last = l.state.indexOf(".");
-                        if (last==-1) { last = l.state.length; }
-                        var first = last - 5;
-                        if (first<0) { first = 0; }
-                        html+="<div class='jmenu'><div class='menu'>";
-                        for (var i =first; i<last; i++) {
-                            html+="<div class='icon'><div class='legend'>"+(i+1)+"</div><div class='state s"+l.state[i]+"'></div></div>";
-                        }
-                        html+="</div></div>";
-
-                        html+="<div class='date'>"+l.date+"</div>";
-
-                        html+="</div>";
-                        $("#omenu").append(html);
-                    }
-                });
-                tibibo.stat.realtime.timer = setTimeout (tibibo.stat.realtime.run, 5000);
-            },
-            stop : function() {
-                if (tibibo.stat.realtime.timer) { clearTimeout (tibibo.stat.realtime.timer); tibibo.stat.realtime.timer = 0; }
-            },
-            open : function() {
-                if (tibibo.menu.current>=0) {
-                    tibibo.stat.realtime.id=tibibo.menu.current;
-                    tibibo.stat.realtime.stop();
-                    tibibo.stat.realtime.run();
-                }
-                else {
-                }
-            }
-        }
-    },
     menu: {
         current: -1,
         state : {},
@@ -271,17 +194,20 @@ var tibibo = {
             if (!state) { state="."; }
             for (var i=state.length; i<_list.length; i++) { state+=user.settings.name?"l":"."; }
 
+            if (user.settings.devmode) { state = ""; for (var i=0; i<_list.length; i++) { state+="."; } }
+
                 $("#obrowser").html("").hide();
                 $("#omenu").show().menu({
                     large   : 8,
                     list    : _list,
                     state   : state,
                     onupdate: function($this, _state) {
-                        if (!tibibo.menu.state) { tibibo.menu.state={}; }
-                        tibibo.menu.state[tibibo.menu.current] = _state;
-                        if (user.settings && user.settings.name) {
-                            user.getJSON("mods/tibibo/api/tibibo.php",
-                                {action:"upd",value:_state, book:tibibo.args.id, id:tibibo.menu.current}, "", function(_data) { }); }},
+                        if (!user.settings.devmode) {
+                            if (!tibibo.menu.state) { tibibo.menu.state={}; }
+                            tibibo.menu.state[tibibo.menu.current] = _state;
+                            if (user.settings && user.settings.name) {
+                                user.getJSON("mods/tibibo/api/tibibo.php",
+                                    {action:"upd",value:_state, book:tibibo.args.id, id:tibibo.menu.current}, "", function(_data) { }); }}},
                     onclick : function($this, _args) {
                         $("#waiting").show().find("div").addClass("running");
                         $("#launcher").jlodb({
@@ -316,7 +242,6 @@ var tibibo = {
             else {
                 tibibo.menu.current = -1;
                 $("#editown .e").show();
-                tibibo.stat.realtime.stop();
 
                 if (_from=="nav") {
                     if ($elt.attr("id")=="root") {
@@ -479,12 +404,13 @@ var tibibo = {
         },
         export:function() {
             
-                var newWindow = window.open("", "_blank", "");
+            var newWindow = window.open("", "_blank", "");
             var value = "";
+            
             if (tibibo.menu.current!=-1)    { value = "["+JSON.stringify(tibibo.book.browse.elt(tibibo.menu.current))+"]"; }
             else                            { value = JSON.stringify(tibibo.book.current); }
                 newWindow.document.write("<!DOCTYPE HTML><html xmlns='http://www.w3.org/1999/xhtml' xml:lang='fr' lang='fr'><head>"+
-                        "<title>"+tibibo.book.data.value+"</title></head><body>"+value+"</body></html>");
+                        "<title>"+tibibo.book.data.value+" ("+tibibo.book.browse.count()[1]+")</title></head><body>"+value+"</body></html>");
                 newWindow.document.close();
         },
         import:function() {
@@ -503,80 +429,6 @@ var tibibo = {
                 }
             }
             else { $("#eimport").hide(); }
-        },
-        overview: function() {
-            $("#waiting").show().find("div").addClass("running");
-            var total = 0;
-            if (tibibo.menu.current==-1) {
-                for (var i in tibibo.book.current) { tibibo.book.browse.each(tibibo.book.current[i],
-                    function(_node){ if (_node && _node.description && _node.description.length) {total++;}} ); }
-            }
-            else { total = 1; }
-
-            var html = $(tibibo.book.browse.dump({nowidth:true, from:"noclick", description:true},
-                    tibibo.menu.current!=-1?tibibo.book.browse.elt(tibibo.menu.current):tibibo.book.current));
-
-            var edit = function() {
-                var newWindow = window.open("", "_blank", "");
-                                html=   "<!DOCTYPE HTML><html xmlns='http://www.w3.org/1999/xhtml' xml:lang='fr' lang='fr'><head><style>"+
-                                            ".node { position:relative; font-size:1.5em; } " +
-                                            ".label { font-size:1.5em; } " +
-                                            ".icon { width:1em; height:1em; float:left; } "+
-                                            ".star { width:1em; height:1em; position:absolute; top:0.1em; left:0; } " +
-                                            ".exercice { width:8em; height:10em; border:1px solid black; margin:1px; float:left; overflow:hidden; }"+
-                                            ".extitle { font-size:.6em; }"+
-                                            ".nb { width:2em; float:left;}"+
-                                            ".snap  { width:8em; }"+
-                                            "li     { clear:both; }"+
-                                            "</style></head><body>"+html.html()+"</body></html>";
-                                newWindow.document.write(html);
-                                newWindow.document.close();
-                                $("#waiting").hide().find("div").removeClass("running");
-            }
-
-            var timerid = 0;
-            var expnode = function(_node) {
-                    if (_node && _node.description && _node.description.length) {
-                        $.getJSON("mods/tibibi/api/exercice.php?value="+_node.description+"&id="+_node.id, function(data) {
-                            var content="";
-                            for (var i in data.exercices) {
-                                if (tibibo.menu.current!=-1) {
-                                    content+="<div class='exercice'><div class='eximg'>";
-                                    if (tibibo.url) {
-                                        var url = tibibo.url+"/res/img/exercices/"+data.exercices[i].activity+"/";
-                                        if (data.exercices[i].id.length>4) { url+=data.exercices[i].id[2]+data.exercices[i].id[3]+"/"; }
-                                        else                                { url+="xx/"; }
-                                        url += data.exercices[i].id+".png";
-
-                                        content +="<img class='snap' src='"+url+"'/>";
-                                    }
-                                    content+="</div>";
-                                    content+="<div class='extitle'>"+data.exercices[i].title+"</div>";
-                                    content+="</div>";
-                                }
-                                else {
-                                    content+="<div class='nb'>"+(parseInt(i)+1)+"</div><div>"+data.exercices[i].title+"</div>";
-                                }
-                            }
-
-
-                            html.find("#n"+data.id).next().after("<div>"+content+"</div>");
-
-                            if (timerid) { clearTimeout(timerid); }
-                            if (--total==0) { edit(); }
-                            else            { timerid = setTimeout(edit, 1000); }
-
-                        });
-
-                    }
-            }
-
-
-            
-
-            if (tibibo.menu.current!=-1)            { expnode(tibibo.book.browse.elt(tibibo.menu.current)); }
-            else for (var i in tibibo.book.current) { tibibo.book.browse.each(tibibo.book.current[i], expnode ); }
-
         }
     },
     book: {
@@ -758,12 +610,13 @@ var tibibo = {
                     tibibo.book.refresh();
             });
         },
+        // CREATE A NEW BOOK
         create: function() {
             if (!$("#dinput input").hasClass("s") && $("#dinput input").val().length) {
 
                 user.getJSON("mods/tibibo/api/book.php",{action:"new",value:encodeURIComponent($("#dinput input").val())}, "",
                 function(_data) {
-                    if (_data.status=="success") { document.location='tibibo.html?dev=1&id='+_data.value; }
+                    if (_data.status=="success") { document.location='tibibo.html?id='+_data.value; }
                     else { $("#error").html(_data.error+" : "+_data.textStatus).show(); }
                 });
             }
@@ -782,9 +635,7 @@ var tibibo = {
             html+="<div class='icon'><img src='"+elt.src+"'/></div>";
 
             if (!_from)         { html+="<div class='type'><img src='res/img/icon/plus01.svg'/></div>"; }
-            if (!_from && tibibo.book.data.owner && user.settings && user.settings.name && !tibibo.args.dev) {
-                html+="<div class='progress'><div style='width:"+(r[1]?r[0]/r[1]:1)+"em';></div></div>";
-            }
+            if (!_from)         { html+="<div class='progress usermode'><div style='width:"+(r[1]?r[0]/r[1]:1)+"em';></div></div>"; }
             if (elt.nbstar>0)   { html+="<div class='star'><img src='res/img/icon/menu01st"+(elt.nbstar-1)+".svg'/></div>"; }
             if (!_from)         { html+="<div class='label'>"+tibibo.format(elt.label)+"</div>"; }
             if (!_from && r[0]==r[1]) { html+="<div class='done'>"+tibibo.locale.donelabel+"</div>"; }
@@ -843,6 +694,10 @@ var tibibo = {
                     function(_data) { });
         }
     },
+    devmode: function() {
+        if ($("#main").hasClass("devmode")) { user.devmode(); } else { $("#udevmode").show(); }
+        tibibo.init();
+    },
     init: function() {
         $("#ocontent>div").hide();
         $("#omenu .icon").removeClass("s");
@@ -851,13 +706,16 @@ var tibibo = {
         }
 
         tibibo.menu.state = {};
-        $("#ofooter #menu>div").hide(); $("#chooseid #clastid .list").html("");
+        $("#chooseid #clastid .list").html("");
+        $("#main").removeClass("ownbook").removeClass("book");
 
         if (user.settings && user.settings.name) {
-            if (tibibo.args.dev) {
+            if (user.settings.devmode) {
+                // DISPLAY CURRENT BOOK (MAY BE USER OWN OR NOT)
                 if (tibibo.args.id && tibibo.book.data.owner) {
 
-                    if (tibibo.book.data.owner == user.settings.name) { $("#editown").show(); } else { $("#editother").show(); }
+                    if (tibibo.book.data.owner == user.settings.name)   { $("#main").addClass("ownbook"); }
+                    else                                                { $("#main").addClass("book"); }
 
                     user.getJSON("mods/tibibo/api/tibibo.php",{action:"all",book:tibibo.args.id}, 0, function(_data) {
                         if (_data.state) { tibibo.menu.state = _data.state; }
@@ -866,11 +724,12 @@ var tibibo = {
                     });
                 }
                 else {
+                    // DISPLAY USER OWN BOOK LIST
                     user.getJSON("mods/tibibo/api/book.php",{action:"list"},0, function(_data) {
                         $("#dlastid .list").html("");
                         for (var i in _data.books) {
-                            var html="<div><div class='bookid' onmousedown=\"document.location='tibibo.html?dev=1&id="+_data.books[i].id+"';\"";
-                            html+="ontouchstart=\"document.location='tibibo.html?dev=1&id="+_data.books[i].id+"';event.preventDefault();\">";
+                            var html="<div><div class='bookid' onmousedown=\"document.location='tibibo.html?id="+_data.books[i].id+"';\"";
+                            html+="ontouchstart=\"document.location='tibibo.html?id="+_data.books[i].id+"';event.preventDefault();\">";
                             html+=_data.books[i].id+"</div>";
                             html+="<textarea onchange='tibibo.book.name(this);' class='label'>"+_data.books[i].label+"</textarea></div>";
 
@@ -881,8 +740,8 @@ var tibibo = {
                 }
             }
             else {
+                // DISPLAY CURRENT BOOK
                 if (tibibo.args.id && tibibo.book.data.owner) {
-                    $("#ooptions").show();
                     user.getJSON("mods/tibibo/api/tibibo.php",{action:"all",book:tibibo.args.id}, 0, function(_data) {
                         tibibo.menu.state = _data.state;
                         tibibo.book.refresh();
@@ -891,6 +750,7 @@ var tibibo = {
                     
                 }
                 else {
+                    // DISPLAY BOOK LIST USER HAS EVER USED
                     user.getJSON("mods/tibibo/api/tibibo.php",{action:"list"},0, function(_data) {
                         for (var i in _data.description) {
                             var html="<div onmousedown=\"document.location='tibibo.html?id="+_data.description[i].id+"';\"";
@@ -909,9 +769,7 @@ var tibibo = {
         }
         else {
             if (tibibo.args.id && tibibo.book.data.owner) {
-                tibibo.book.refresh();
-                if (tibibo.args.dev) { $("#editother").show(); }
-                $("#obrowser").show();
+                tibibo.book.refresh(); $("#obrowser").show();
             }
             else { $("#chooseid #clastid").hide(); $("#chooseid").show(); }
         }
@@ -930,10 +788,13 @@ $(window).ready(function() {
     $.getJSON("api/checkdb.php", function (_check) {
 
         if (_check.status=="success") {
+            // GLOBAL DATA
             tibibo.lang=_check.lang;
             tibibo.url =_check.url;
 
+            // USER HANDLER INITIALISATION
             user.load.edit($("#main"));
+            user.load.devmode($("#main"));
             user.load.logpanel($("#main"), {close:true}, function() {
                 if (tibibo.args.id) { $.getJSON("mods/tibibo/api/book.php?value="+tibibo.args.id, function(_data) {
                         tibibo.book.data = _data;
@@ -944,6 +805,7 @@ $(window).ready(function() {
                 else { user.init(tibibo.lang); }
             });
 
+            // LOCALISATION
             $.getJSON("mods/tibibo/locale/"+_check.lang+"/text.json?debug="+Math.floor(Math.random()*1000), function(_locale) {
                 for (var i in _locale.locale) { $("#"+i).html(_locale.locale[i]); }
                 for (var i in _locale.input) { $("#"+i).val(_locale.input[i]); }
@@ -978,20 +840,36 @@ $(window).ready(function() {
 
       <div id="omain">
         <div id="oheader" class="special">
+
+            <!-- NAVIGATION ICONS AND CHAPTER/BOOK DESCRIPTION -->
             <div id="onav"></div>
+
+            <!-- USER PROFILE -->
             <div id="profile">
                 <div id="avatar" ontouchstart="tibibo.user();event.preventDefault();"
                     onclick="tibibo.user();"></div>
-                <div id="label"><div id="name">&nbsp;</div><div id="sub"></div></div>
+                <div id="label">
+                    <div id="name">&nbsp;</div>
+                    <div id="sub"></div>
+                    <div id="devmode" class="icon" ontouchstart="tibibo.devmode();event.preventDefault();"
+                        onclick="tibibo.devmode();"><img src="mods/tibibi/res/img/edit.svg"/></div>
+                </div>
                 <div id="gdx" class="icon" ontouchstart="user.logout($(this));event.preventDefault();"
                     onclick="user.logout($(this));"><img src="mods/tibibi/res/img/logout.svg"/></div>
             </div>
+
         </div>
 
+        <!-- PAGE CONTENT -->
         <div id="ocontent">
 
+            <!-- BOOK CHAPTER ICONS -->
             <div id="obrowser"></div>
+
+            <!-- CHAPTER MENU -->
             <div id="omenu"></div>
+
+            <!-- USER MENU : CHOOSE A BOOK OR CONTINUE ALREADY USED -->
             <div id="chooseid">
                 <div id="cinput" class="input">
                     <div id="clabel" class="label"></div>
@@ -1007,35 +885,37 @@ $(window).ready(function() {
                 </div>
             </div>
 
+            <!-- DEV MENU : CREATE A NEW BOOK OR BROWSE YOUR OWN BOOKS-->
             <div id="devmenu">
-                
+
+                <!-- DESCRIPTION INPUT FOR A NEW BOOK -->
                 <div id="dinput" class="input">
                     <div id="dlabel" class="label"></div>
                     <input id="dval" class="s" onfocus="if ($(this).hasClass('s')) { $(this).removeClass('s').val(''); }"></input>
-                    <div class="icon" onmousedown="tibibo.book.create();"
-                        ontouchstart="tibibo.book.create();event.preventDefault();" >
+                    <div class="icon" onmousedown="tibibo.book.create();" ontouchstart="tibibo.book.create();event.preventDefault();" >
                         <img src="mods/tibibi/res/img/valid.svg"/></div>
                 </div>
 
+                <!-- LIST OF USER OWN BOOKS -->
                 <div id="dlastid" class="booklist">
                     <div id="dlist" class="title"></div>
                     <div class="list"></div>
                 </div>
-
             </div>
 
         </div>
 
+        <!-- ERROR LOG PANEL (WRONG BOOK ID)-->
         <div id="error"></div>
 
-        
-                    <div id="firefox">
-                        <img src="ext/firefox.svg"/>Designed for<h2>Firefox</h2>
-                    </div>
+        <!-- FIREFOX WARNINGS -->
+        <div id="firefox"><img src="ext/firefox.svg"/>Designed for<h2>Firefox</h2></div>
 
         <div id="ofooter" class="special">
             <div id="menu">
-                <div id="editown" class="menu">
+
+                <!-- DEVMODE ON OWN BOOK TOOLS -->
+                <div id="editown" class="menu devmode">
                     <div class="icon e" onmousedown="tibibo.node.edit.open();"
                         ontouchstart="tibibo.node.edit.open();event.preventDefault();" >
                         <img src="mods/tibibi/res/img/newcourse.svg"/></div>
@@ -1060,25 +940,20 @@ $(window).ready(function() {
                     <div id="mimport" class="icon e" onmousedown="$('#eimport').show();"
                         ontouchstart="$('#eimport').show();event.preventDefault();" >
                         <img src="mods/tibibi/res/img/import.svg"/></div>
-                    <div id="moverview" class="icon e" onmousedown="tibibo.node.overview();"
-                        ontouchstart="tibibo.node.overview($(this));event.preventDefault();" >
-                        <img src="mods/tibibi/res/img/snapshot.svg"/></div>
-                    <div id="mlook" class="icon f" onmousedown="tibibo.stat.realtime.open();"
-                        ontouchstart="tibibo.stat.realtime.open();event.preventDefault();" >
-                        <img src="mods/tibibi/res/img/people.svg"/></div>
                 </div>
-                <div id="ooptions" class="menu">
-                    <div id="olist" class="icon e" onmousedown="tibibo.node.state();"
-                        ontouchstart="tibibo.node.state();event.preventDefault();" >
-                    </div>
-                </div>
-                <div id="editother" class="menu">
+
+                <!-- DEVMODE ON OTHER ONE BOOK -->
+                <div id="editother" class="menu devmode">
                     <div id="mexport" class="icon e" onmousedown="tibibo.node.export();"
                         ontouchstart="tibibo.node.export($(this));event.preventDefault();" >
                         <img src="mods/tibibi/res/img/export.svg"/></div>
-                    <div id="moverview" class="icon e" onmousedown="tibibo.node.overview();"
-                        ontouchstart="tibibo.node.overview($(this));event.preventDefault();" >
-                        <img src="mods/tibibi/res/img/snapshot.svg"/></div>
+                </div>
+
+                <!-- USERMODE -->
+                <div id="ooptions" class="menu usermode">
+                    <div id="olist" class="icon e" onmousedown="tibibo.node.state();"
+                        ontouchstart="tibibo.node.state();event.preventDefault();" >
+                    </div>
                 </div>
             </div>
         </div>

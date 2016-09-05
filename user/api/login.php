@@ -12,6 +12,7 @@ if (!$error && strlen($_GET["username"])) {
     while($u = mysql_fetch_array($user))
     {
         if (strlen($_GET["password"])) {
+            $_SESSION['User_DevMode'] = 0;
             if (strcmp($u['User_Password'],md5($_GET["password"]))==0)
             {
                 if ($_GET["action"]=="logout") {
@@ -31,7 +32,8 @@ if (!$error && strlen($_GET["username"])) {
             {
                 if ($_GET["action"]=="logout") {
                     mysql_query("UPDATE `".$_SESSION['prefix']."user` SET `User_Code` = '' WHERE `User_Key` = '".$u["User_Key"]."'");
-                    $status="logout"; $error = 0; $textstatus="logout";  $param=',"logout":true';
+                    $_SESSION['User_DevMode'] = 0;
+                    $status="logout"; $error = 0; $textstatus="logout";  $param=',"logout":true,"devmode":'.($_SESSION['User_DevMode']?'1':'0');
                 }
                 else {
                     $id = $_GET["code"];
@@ -44,7 +46,7 @@ if (!$error && strlen($_GET["username"])) {
         if (!$error && !$param) {
             $param = ',"avatar":"'.$u["User_Avatar"].'", "first":"'.$u["User_FirstName"].'",'.
                  ' "last":"'.$u["User_LastName"].'", "email":"'.$u["User_eMail"].'",'.
-                 ' "theme":"'.$u["User_Theme"].'", "key":"'.$u["User_Key"].'", "tag":"'.$u["User_Tag"].'"';
+                 ' "theme":"'.$u["User_Theme"].'", "key":"'.$u["User_Key"].'", "tag":"'.$u["User_Tag"].'", "devmode":'.($_SESSION['User_DevMode']?'1':'0');
 
             $_SESSION['User_Date'] = $u["User_Date"];
             $_SESSION['User_Code'] = $u["User_Code"];

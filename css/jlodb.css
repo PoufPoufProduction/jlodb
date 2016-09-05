@@ -134,3 +134,18 @@ div#splash .text h1             { border:1px solid white; border-width:0 0 1px 0
 .editor .el.el0                 { border-width:0 0 0 .05em; height:0.22em; border-radius:0; }
 .editor .el.el1                 { border-width:0 0 0 .05em; border-radius:0; }
 .editor .el.el2                 { border-width:.05em .05em 0 0; border-radius:0 .15em 0 0; }
+
+/*---------------------------- BLUEKEYPAD -----------------------------------------------------------*/
+
+.bluekeypad                   { background-color:rgba(84,137,184,0.9);
+                                  -webkit-transition: background-color 1000ms ease-in;
+                                  -moz-transition: background-color 1000ms ease-in;
+                                  -o-transition: background-color 1000ms ease-in;
+                                  -ms-transition: background-color 1000ms ease-in;
+                                  transition: background-color 1000ms ease-in; }
+.bluekeypad.touch             { background-color:rgba(256,220,50,0.9);
+                                  -webkit-transition: none;
+                                  -moz-transition: none;
+                                  -o-transition: none;
+                                  -ms-transition: none;
+                                  transition: none; }

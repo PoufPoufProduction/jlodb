@@ -37,3 +37,11 @@
                               border-radius:0 .5em .5em 0; }
 #logpanel .button           { background-color:#999; border-radius:.5em; text-align:center; cursor:pointer; width:15em; }
 #logpanel.wrong #logvalid   { background-color:#C66; color:#500;}
+
+/*---------- Dev mode ----*/
+
+#udevmode                     { position:absolute; top:0; left:0; display:none; width:16em; height:12em;
+                              background-color: rgba(0,0,0,0.2); }
+#udevmode>div               { margin-top:2em; font-size:.8em; width:100%; background-color:gray; padding:.5em; }
+#udevmode input             { float:left; width:16.5em; font-size:1em; border:0; padding-left:.5em;}
+#udevmode .icon             { float:left; margin-left:0.5em; font-size:1.2em; cursor:pointer; }

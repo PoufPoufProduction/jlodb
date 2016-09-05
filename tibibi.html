@@ -23,66 +23,56 @@
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="mods/tibibi/res/img/icon/icon144.png" />
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <style>
-        #main                       { display:relative; }
-        #main>#topmenu              { width:100%; height:1.2em; background-color:gray; font-size:.5em; padding:.1em; }
-        #main>#topmenu>*            { float:left; }
-        #topmenu>select             { font-size:1em; height:1.2em; width:10em; border:0;
-                                      padding-left:.5em; background-color:#555; color:white; }
-        #topmenu>.icon              { font-size:1em; padding:.1em; cursor:pointer; }
-        #topmenu>.icon.l            { margin-left:.5em; background-color:#333;  border-radius:.5em 0 0 .5em;}
-        #topmenu>.icon.e            { background-color:#444; }
-        #topmenu>.icon.s            { background-color:#A11 !important; }
-        #topmenu>.icon.d            { background-color:#333;  border-radius:0 .5em .5em 0;}
-        #topmenu>.icon.x            { margin-left:.5em; background-color:#333;  border-radius:.5em; }
-        #tmenu                      { font-size:2em; height:5.65em; }
-        #tedit                      { display:none; height:11.3em; width:17em; }
-        #content.s #tmenu           { display:none; }
-        #content.s #tedit           { display:inherit; }
-        #tlist                      { float:left; background-color:#555; width:6em; height:100%; font-size:.5em;}
-        #tlist #telts               { width:100%; height:25.8em; font-size:.8em; overflow:auto;}
-        #tlist #telts .elt          { width:6.5em; height:1.4em; margin-top:.1em; cursor:pointer; }
-        #tlist #telts .l            { clear:both; float:left; background-color:#447; border-radius:.5em 0 0 .5em; width:1em;
-                                      text-align:center; color:white; margin-left:.1em; }
-        #tlist #telts .v            { float:left; background-color:#222; color:white; width:5em; padding-left:.2em;
-                                      border-radius:0 .5em .5em 0;}
-        #tlist #telts .elt.s .l     { background-color:red; }
-        #tlist #telts .elt.s .v     { background-color:red; }
-        #tlist #teltact             { width:100%; height:1em; background-color:#333;}
-        #tlist #teltact .icon       { float:left; opacity:0.1; cursor:default;}
-        #tlist #teltact .icon.r     { float:right; }
-        #tlist #teltact.s .icon     { opacity:1; cursor:pointer; }
-        #tlist #tactions            { width:100%; height:1em; background-color:#222;}
-        #tlist #tactions .icon      { margin-left:.4em; float:left; cursor:pointer;}
-        #tbrowser                   { float:left; background-color:#AAA; width:13em; height:100%; }
-        #main>#content              { width:100%; height:100%; background-color:#222; }
-        #main>.popup                { position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5);
-                                      display:none; }
-        #main>.popup>div            { font-size:.8em; width:15em; background-color:#555; border-radius:.75em; padding:.5em;
-                                      margin-top:3em; margin-left:2em; }
-        #main>.popup>div>div        { width:16em; }
-        #main>.popup input          { float:left; font-size:1em; height:1.19em; width:13.3em; border:0;
-                                      padding-left:.5em; background-color:#AAA; color:white; border-radius:.5em 0 0 .5em;}
-        #main>.popup .icon          { padding:.1em; margin-left:1em; background-color:#333;  border-radius:0 .5em .5em 0;}
-        #main>#popup2 textarea      { font-size:.5em; border-radius:.5em; margin:0; border:0; background-color:#DDD;
-                                       width:30em; height:8em; resize:none;  }
-        #main>#popup2 .button       { background-color:#999; border-radius:.5em; text-align:center; cursor:pointer; width:15em; }
-        #jbrowser #patab .small div { font-size:.8em; }
-        #jbrowser #jresults         { height: 15.7em; }
-        #jbrowser.reduce #jresults  { height: 25.5em; }
-        #tmenu .menu                { font-size:1.3em !important; }
-
-        #main>#screen                      { position:absolute; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5);
-                                              display:none; z-index:3; color:limegreen; }
-        #main>#screen>div#quit      { position:absolute; top:0; left:0; font-size:1.2em; width:1em; height:1em; cursor:pointer; }
-        #main>#screen>div#list    { font-size:.25em; width:61em; height:41em; margin:4em 1em; padding:.5em; background-color:black;
-                                              overflow:auto; }
-        #main>#screen #list .drop   { font-size:.8em; float:left; width:12em; height:12em; margin:.25em; background-color:rgba(200,220,255,0.1); overflow:visible;}
-        #main>#screen #list .drag   { position:relative; height:12em; background-color:gray; cursor:move; background-image:url('res/img/site/nosnapshot.svg');background-repeat:no-repeat;}
-        #main>#screen #list .drag .eximg { font-size:3em; width: 4em; height: 3em; }
-        #main>#screen #list .drag .eximg>img.snap { width: 4em; height: 3em; }
-        #main>#screen #list .drag .extitle { background-color:white; height:4.5em; border:1px solid black; border-width:1px 0 0 0; font-size:.7em;color:black;text-align:justify;padding:0 .5em; }
-        #main>#screen #list .drag .exid { position:absolute; color:black; width:5.5em; background-color:white; top:.3em; left:-0.1em;
-                                          padding-left:.5em; border-radius:0 .5em .5em 0;border:1px solid black;}
+        #main                                       { display:relative; }
+        #main>#topmenu                              { width:100%; height:1.2em; background-color:gray; font-size:.5em; padding:.1em; }
+        #main>#topmenu>*                            { float:left; }
+        #topmenu>select                             { font-size:1em; height:1.2em; width:10em; border:0; padding-left:.5em; background-color:#555; color:white; }
+        #topmenu>.icon                              { font-size:1em; padding:.1em; cursor:pointer; }
+        #topmenu>.icon.l                            { margin-left:.5em; background-color:#333;  border-radius:.5em 0 0 .5em;}
+        #topmenu>.icon.e                            { background-color:#444; }
+        #topmenu>.icon.s                            { background-color:#A11 !important; }
+        #topmenu>.icon.d                            { background-color:#333;  border-radius:0 .5em .5em 0;}
+        #topmenu>.icon.x                            { margin-left:.5em; background-color:#333;  border-radius:.5em; }
+        #topmenu #gdr                               { display:none; }
+        #tmenu                                      { font-size:2em; height:5.65em; }
+        #tedit                                      { display:none; height:11.3em; width:17em; }
+        #content.s #tmenu                           { display:none; }
+        #content.s #tedit                           { display:inherit; }
+        #tlist                                      { float:left; background-color:#555; width:6em; height:100%; font-size:.5em;}
+        #tlist #telts                               { width:100%; height:25.8em; font-size:.8em; overflow:auto;}
+        #tlist #telts .elt                          { width:6.5em; height:1.4em; margin-top:.1em; cursor:pointer; }
+        #tlist #telts .l                            { clear:both; float:left; background-color:#447; border-radius:.5em 0 0 .5em; width:1em; text-align:center; color:white; margin-left:.1em; }
+        #tlist #telts .v                            { float:left; background-color:#222; color:white; width:5em; padding-left:.2em; border-radius:0 .5em .5em 0;}
+        #tlist #telts .elt.s .l                     { background-color:red; }
+        #tlist #telts .elt.s .v                     { background-color:red; }
+        #tlist #teltact                             { width:100%; height:1em; background-color:#333;}
+        #tlist #teltact .icon                       { float:left; opacity:0.1; cursor:default;}
+        #tlist #teltact .icon.r                     { float:right; }
+        #tlist #teltact.s .icon                     { opacity:1; cursor:pointer; }
+        #tlist #tactions                            { width:100%; height:1em; background-color:#222;}
+        #tlist #tactions .icon                      { margin-left:.4em; float:left; cursor:pointer;}
+        #tbrowser                                   { float:left; background-color:#AAA; width:13em; height:100%; }
+        #main>#content                              { width:100%; height:100%; background-color:#222; }
+        #main>.popup                                { position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); display:none; }
+        #main>.popup>div                            { font-size:.8em; width:15em; background-color:#555; border-radius:.75em; padding:.5em; margin-top:3em; margin-left:2em; }
+        #main>.popup>div>div                        { width:16em; }
+        #main>.popup input                          { float:left; font-size:1em; height:1.19em; width:13.3em; border:0; padding-left:.5em; background-color:#AAA; color:white; border-radius:.5em 0 0 .5em;}
+        #main>.popup .icon                          { padding:.1em; margin-left:1em; background-color:#333;  border-radius:0 .5em .5em 0;}
+        #main>#popup2 textarea                      { font-size:.5em; border-radius:.5em; margin:0; border:0; background-color:#DDD; width:30em; height:8em; resize:none;  }
+        #main>#popup2 .button                       { background-color:#999; border-radius:.5em; text-align:center; cursor:pointer; width:15em; }
+        #jbrowser #patab .small div                 { font-size:.8em; }
+        #jbrowser #jresults                         { height: 15.7em; }
+        #jbrowser.reduce #jresults                  { height: 25.5em; }
+        #tmenu .menu                                { font-size:1.3em !important; }
+        #main>#screen                               { position:absolute; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); display:none; z-index:3; color:limegreen; }
+        #main>#screen>div#quit                      { position:absolute; top:0; left:0; font-size:1.2em; width:1em; height:1em; cursor:pointer; }
+        #main>#screen>div#list                      { font-size:.25em; width:61em; height:41em; margin:4em 1em; padding:.5em; background-color:black;overflow:auto; }
+        #main>#screen #list .drop                   { font-size:.8em; float:left; width:12em; height:12em; margin:.25em; background-color:rgba(200,220,255,0.1); overflow:visible;}
+        #main>#screen #list .drag                   { position:relative; height:12em; background-color:gray; cursor:move; background-image:url('res/img/site/nosnapshot.svg');background-repeat:no-repeat;}
+        #main>#screen #list .drag .eximg            { font-size:3em; width: 4em; height: 3em; }
+        #main>#screen #list .drag .eximg>img.snap   { width: 4em; height: 3em; }
+        #main>#screen #list .drag .extitle          { background-color:white; height:4.5em; border:1px solid black; border-width:1px 0 0 0; font-size:.7em;color:black;text-align:justify;padding:0 .5em; }
+        #main>#screen #list .drag .exid             { position:absolute; color:black; width:5.5em; background-color:white; top:.3em; left:-0.1em; padding-left:.5em; border-radius:0 .5em .5em 0;border:1px solid black;}
 
     </style>
     <script>
@@ -456,34 +446,51 @@ var tibibi = {
         $("#waiting").show().find("div").addClass("running");
         $("#launcher").jlodb({ onstart: function($this) { $("#content").hide(); $("#waiting").hide().find("div").removeClass("running"); },
                                onfinish:function($this) { $("#content").show(); $("#score").removeClass().hide(); }},_args);
+    },
+    qtimer : 0,
+    quit : function() {
+        if (urlargs.from) {
+            if (tibibi.qtimer) { clearTimeout(tibibi.qtimer); }
+            if ($("#gdr").hasClass("s")) { $("#gdr").removeClass("s"); window.location = urlargs.from; }
+            else                         { $("#gdr").addClass("s");
+                                           tibibi.qtimer = setTimeout(function() { $("#gdr").removeClass("s"); tibibi.qtimer = 0; },500); }
+        }
     }
 };
 
+var urlargs = {}
 
 $(window).ready(function() {
     // SPECIAL STUFF
     $("#activity").ontouchmove = function(e) { e.preventDefault(); }
 
+    // URL ARGUMENTS
+    var a = location.search.substring(1).split('&');
+    for (var i in a) { var p= a[i].split('='); urlargs[p[0]]=p[1]; }
+
+    if (urlargs.from) { $("#gdx").hide(); $("#gdr").show(); }
+
     $.getJSON("api/checkdb.php", function (_check) {
 
         if (_check.status=="success") {
-            tibibi.lang=_check.lang;
-            tibibi.url =_check.url;
+            tibibi.lang = _check.lang;
+            tibibi.url  = _check.url;
 
             user.load.logpanel($("#main"), {}, function() { user.init(tibibi.lang); });
 
+            // BROWSER LOADING
             $.getJSON("locale/"+tibibi.lang+"/classification.json", function(data) {
                 tibibi.classification = $(data);
                 $("#tbrowser").browser({url:tibibi.url, lang:tibibi.lang, classification:tibibi.classification,
                     onRefresh:function($this) { tibibi.course.highlight(); },
                     context:[
-                    { icon:"mods/tibibi/res/img/run.svg", process:function(_id){ tibibi.run({id:_id}); } },
-                    { icon:"mods/tibibi/res/img/import.svg", process:function(_id){
+                    { icon:"mods/tibibi/res/img/run.svg",       process:function(_id){ tibibi.run({id:_id}); } },
+                    { icon:"mods/tibibi/res/img/import.svg",    process:function(_id){
                         if ($("#telts .elt.s").length)  { tibibi.course.ex.splice($("#telts .elt.s").attr("id"),0,_id); }
                         else                            { tibibi.course.ex.push(_id); }
                         tibibi.course.update();
                     } },
-                    { icon:"mods/tibibi/res/img/snapshot.svg", process:function(_id) {
+                    { icon:"mods/tibibi/res/img/snapshot.svg",  process:function(_id) {
                         window.open('demo.html?id='+_id,'_blank',
                             'width=640, height=480,toolbar=no,location=no,status=no,menubar=no,'+
                             'scrollbars=no,resizable=no,status=no,titlebar=no'); }
@@ -536,6 +543,10 @@ $(window).ready(function() {
             <div id="gdx" class="icon x" onclick="user.logout($(this));"  ontouchstart="user.logout($(this));event.preventDefault();">
                 <img src="mods/tibibi/res/img/logout.svg"/>
             </div>
+            <div id="gdr" class="icon x" onclick="tibibi.quit();"  ontouchstart="tibibi.quit();event.preventDefault();">
+                <img src="mods/tibibi/res/img/valid.svg"/>
+            </div>
+
         </div>
         <div id="content">
             <div id="tmenu"></div>
@@ -553,8 +564,8 @@ $(window).ready(function() {
                     <div id="tactions">
                         <div class="icon" onclick="tibibi.course.expo();"><img src="mods/tibibi/res/img/export.svg"/></div>
                         <div class="icon" onclick="tibibi.course.impo();"><img src="mods/tibibi/res/img/import.svg"/></div>
-                        <div class="icon" onclick="tibibi.course.overview();"><img src="mods/tibibi/res/img/list.svg"/></div>
-                        <div class="icon" onclick="tibibi.course.snapshot();"><img src="mods/tibibi/res/img/snapshot.svg"/></div>
+                        <div class="icon" onclick="tibibi.course.overview();"><img src="mods/tibibi/res/img/snapshot.svg"/></div>
+                        <div class="icon" onclick="tibibi.course.snapshot();"><img src="mods/tibibi/res/img/list.svg"/></div>
                     </div>
                 </div>
                 <div id="tbrowser"></div></div>
