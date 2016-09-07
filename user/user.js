@@ -6,11 +6,11 @@ var user = {
 
     onEvent : function() { },  // To override 
 
-    getJSON : function(_url, _args, _post, _cbk) {
+    getJSON : function(_url, _args, _post, _cbk, _alert) {
         var url = _url+"?username="+user.settings.name+"&code="+user.settings.code;
         if (typeof(_args)=="object") {  for (var i in _args) { url+="&"+i+"="+_args[i]; } }
         else if (_args.length) { url+=(_args[0]=='&'?"":"&")+_args; }
-        //alert(url);
+        if (_alert){ alert(url); }
         if (_post) { $.post(url, _post, function(_data) {if(_data.error==102){location.reload();} else { _cbk(_data); } }, "json"); }
         else       { $.getJSON(url, function(_data)     {if(_data.error==102){location.reload();} else { _cbk(_data); } }); }
     },
