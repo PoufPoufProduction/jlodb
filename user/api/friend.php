@@ -31,9 +31,17 @@ if (!$error) {
         $users = mysql_query($sql);
     }
     else {
-        $sql = "SELECT * FROM `".$_SESSION['prefix']."friend` F INNER JOIN `".$_SESSION['prefix']."user` U ".
-               "WHERE F.User_Key='".$_SESSION['User_Key']."'".
-               "AND F.Friend_Key=U.User_Key AND F.Accept=".(($_GET["action"]=="ask")?"false":"true");
+        if (strlen($_GET["circle"])) {
+            $sql = "SELECT * FROM `".$_SESSION['prefix']."friend` F INNER JOIN `".$_SESSION['prefix']."user` U ".
+                   "INNER JOIN `".$_SESSION['prefix']."friendbycircle` C ".
+                   "WHERE F.User_Key='".$_SESSION['User_Key']."'".
+                   "AND F.Friend_Key=U.User_Key AND F.Friend_Key=C.Friend_Key AND C.Circle_Key='".$_GET["circle"]."'";
+        }
+        else {
+            $sql = "SELECT * FROM `".$_SESSION['prefix']."friend` F INNER JOIN `".$_SESSION['prefix']."user` U ".
+                   "WHERE F.User_Key='".$_SESSION['User_Key']."'".
+                   "AND F.Friend_Key=U.User_Key AND F.Accept=".(($_GET["action"]=="ask")?"false":"true");
+        }
         $users = mysql_query($sql);
     }
 

@@ -76,17 +76,6 @@ math                            { display: block; text-align: center; }
 div#splashex                    { height:100%; width:100%; top:0; left:0; position:absolute; z-index:2000; cursor: pointer;
                                   font-size:.5em; }
 .nosplash div#splashex          { display:none; }
-div#splash                      { font-size:.5em; height:40%; width:80%; top:25%; left:10%; position:absolute; z-index:2000;
-                                  background-color:rgba(255,255,255,0.9); text-align:justify; overflow:hidden;
-                                  cursor: pointer; padding:1%; border-radius:.2em; color:#003366; }
-div#splash>div                  { background-color:rgb(180,220,235); border-radius:.1em; height:100%;
-                                  background-size:100%; font-family: Times, serif; }
-div#splash .text h1             { border:1px solid white; border-width:0 0 1px 0; }
-.nosplash div#splash            { display:none; }
-#appsplash                      { position:absolute; top:0; left:0; width:100%; height:100%;
-                                  background-color:rgba(0,0,0,0.8); z-index:10;}
-#appsplash>div                  { width:16em; height:6em; margin-top:15%; background-color:rgb(160,240,255); cursor:pointer;
-                                  background-size:100%; background-repeat:no-repeat;}
 /*---------------------------------------------------------------------------------------------------------------------------*/
 .jmenu                          { position:relative; height:100%; overflow:hidden;}
 .jmenu .slider                  { font-size:.6em; width:1em; height:96%; background-color:rgba(0,0,0,0.5); float:right;
@@ -149,3 +138,10 @@ div#splash .text h1             { border:1px solid white; border-width:0 0 1px 0
                                   -o-transition: none;
                                   -ms-transition: none;
                                   transition: none; }
+
+/*----------------------------- CLASSIC INPUT PANEL -----------------------------------------------------*/
+.inputpanel                   { position:absolute; top:0; left:0; display:none; width:16em; height:12em;
+                              background-color: rgba(0,0,0,0.2); }
+.inputpanel>div               { margin-top:2em; font-size:.8em; width:100%; background-color:gray; padding:.5em; }
+.inputpanel input             { float:left; width:16.5em; font-size:1em; border:0; padding-left:.5em;}
+.inputpanel .icon             { float:left; margin-left:0.5em; font-size:1.2em; cursor:pointer; }

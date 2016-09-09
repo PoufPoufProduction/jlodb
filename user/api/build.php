@@ -62,12 +62,12 @@ if (!$error) {
         // USER GROUP OF FRIENDS
         if (!mysql_query("SELECT * FROM `".$_SESSION['prefix']."circle`")) {
             mysql_query('CREATE TABLE  `'.$_SESSION['prefix'].'circle` ('.
+                            '`Circle_Key`              INT NOT NULL AUTO_INCREMENT, '.
                             '`Circle_Name`             VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL, '.
                             '`User_Key`                INT NOT NULL, '.
-                            '`Circle_Index`            INT NOT NULL, '.
                             ' CONSTRAINT `'.$_SESSION['prefix'].'Circle_User_Key` FOREIGN KEY (`User_Key`) REFERENCES `'.$_SESSION['prefix'].'user` '.
                             ' (`User_Key`) ON DELETE CASCADE,'.
-                            ' PRIMARY KEY ( `Circle_Name`, `User_Key` )) ENGINE=InnoDB', $link);
+                            ' PRIMARY KEY ( `Circle_Key` )) ENGINE=InnoDB', $link);
         }
 
         // USER FRIENDS
@@ -82,6 +82,18 @@ if (!$error) {
                             ' CONSTRAINT `'.$_SESSION['prefix'].'User_Friend_Key` FOREIGN KEY (`Friend_Key`) REFERENCES `'.$_SESSION['prefix'].'user` '.
                             ' (`User_Key`) ON DELETE CASCADE,'.
                             ' PRIMARY KEY ( `User_Key`, `Friend_Key` )) ENGINE=InnoDB', $link);
+        }
+
+
+        if (!mysql_query("SELECT * FROM `".$_SESSION['prefix']."friendbycircle`")) {
+            mysql_query('CREATE TABLE  `'.$_SESSION['prefix'].'friendbycircle` ('.
+                            '`Circle_Key`              INT NOT NULL, '.
+                            '`Friend_Key`              INT NOT NULL, '.
+                            ' CONSTRAINT `'.$_SESSION['prefix'].'FriendByCircle_Circle_Key` FOREIGN KEY (`Circle_Key`) REFERENCES `'.$_SESSION['prefix'].'circle` '.
+                            ' (`Circle_Key`) ON DELETE CASCADE,'.
+                            ' CONSTRAINT `'.$_SESSION['prefix'].'FriendByCircle_Friend_Key` FOREIGN KEY (`Friend_Key`) REFERENCES `'.$_SESSION['prefix'].'user` '.
+                            ' (`User_Key`) ON DELETE CASCADE,'.
+                            ' PRIMARY KEY ( `Circle_Key`, `Friend_Key` )) ENGINE=InnoDB', $link);
         }
 
 

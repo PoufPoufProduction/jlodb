@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html xmlns=http://www.w3.org/1999/xhtml xml:lang=fr lang=fr>
+
+<head>
+    <meta http-equiv=Content-Type content=text/html; charset=UTF-8>
+    <meta name=mobile-web-app-capable content=yes>
+    <title>jLoDb</title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <link type=text/css rel=stylesheet href=css/style.css media=all />
+</head>
+
+<body>
+<h1>jLoDb</h1>
+<h2>Présentation générale</h2>
+<p><b>jLoDb</b> (<b>j</b>avascript <b>L</b>earning <b>o</b>bject <b>D</b>ata<b>b</b>ase) est un projet construit autour d'une base de données regroupant un ensemble d'exercices éducatifs libres. Ces exercices sont référencés au sein de la base suivant leur niveau, leur difficulté ainsi que leur champ d'application.</p>
+<p>Cette base de données repose sur un ensemble de technologies web (HTML, CSS, Javascript, SVG, MathML) et elle est ainsi accessible depuis tout navigateur respectant ces protocoles. L'utilisation exclusive d'images vectorielles rend la solution indifférente à la résolution d'affichage. Seul le format 4/3 paysage est imposé. De plus, quel que soit la nature de l'activité, l'utilisation du clavier reste facultative.</p>
+<p>jLoDB est compatible avec une utilisation sur ordinateurs, tablettes ou TBI. Enfin, la base de données dans son intégralité est sous licence GPL-3.</p>
+<p>Les activités présentes dans l'environnement jLoDb sont des programmes permettant l'exécution d'exercices intéractifs. Chaque réponse proposée par l'utilisateur au cours de ces exercices est évaluée automatiquement. A la différence d'un cahier d'exercices qui peut nécessiter une vérification extérieure, l'utilisateur est ici totalement autonome.</p>
+<p>JloDb est un programme libre pouvant être installé à peu près n'importe où. Une instance de démonstration est accessible à l'adresse suivante : http://jlodb.poufpoufproduction.fr/</p>
+
+<h2>Installation de JLoDb et de ses différents modules</h2>
+<p>jLoDb est un site web tout à fait classique nécessitant, pour fonctionner, d'un serveur web de type Apache, du langage PHP et du gestionnaire de bases de données MySQL. Ces trois logiciels libres sont généralement regroupés sous l'acronyme LAMP (avec 'L' pour Linux). Leur installation est largement documentée et elle est relativement aisée. Sous Ubuntu, la commande suivante permet l'installation complète du serveur. </p>
+<pre>sudo apt-get install apache2 php5 mysql-server libapache2-mod-php5 php5-mysql</pre>
+<p>Une fois le serveur web correctement configuré, l'installation de jLoDb peut commencer.</p>
+<h3>Récupération du logiciel</h3>
+<p>Le code source de jLoDb est accessible depuis le compte GitHub de PoufPoufProduction à l'adresse suivante : https://github.com/PoufPoufProduction/jlodb</p>
+<p>L'opération peut se faire en récupérant une archive du projet grâce au bouton Download ZIP ou en clonant directement le dépôt.</p>
+<p>Attention, le répertoire res/img/svginventoryicons est un sous module dépendant du projet https://github.com/PoufPoufProduction/SVG-Inventory-Icons. L'opération clonage doit se faire avec l'option –recursive tandis que le chargement direct nécessite de charger également ce projet.</p>
+<p>Une fois récupéré, le projet jLoDb doit être placé dans le répertoire de travail du serveur Apache (par défaut /var/www). Et la page localhost/jlodb/index.html doit renvoyer un premier résultat.</p>
+<h3>Configuration du logiciel</h3>
+<p>La configuration du site web se fait grâce au fichier conf/jlodb.ini</p>
+<ul>
+<li>La section [admin] permet de définir un identifiant et mot de passe administrateur. Par défaut le couple login/password est admin/admin. Le mot de passe est crypté sous md5 mais de nombreux encodeurs sont disponibles sur le net : http://www.md5online.org/md5-encrypt.html par exemple.</li>
+<li>La section [db] permet de définir les paramètres d'utilisation de mySQL. Le paramètre prefix permet d'ajouter un préfixe aux noms des tables définis par jLoDb, ce qui peut s'avérer utile dans le cas d'une base de données partagée.</li>
+</ul>
+<h3>Installation</h3>
+<p>Depuis un navigateur web compatible (Firefox est recommandé), ouvrir la page jlodb/index.html puis cliquer ensuite sur l'icône en forme de clé, en haut à droite de l'écran, pour s'identifier en tant qu'administrateur grâce au login/password définis dans le fichier de configuration. L'installation peut alors être lancée. Suivant les systèmes et la taille de la base, cela peut prendre quelques minutes.</p>
+<p>Le site principal jLoDb est désormais installé. La page d'accueil doit désormais s'afficher correctement ainsi que le nombre d'activités et d'exercices disponibles dans la base.</p>
+<h2>Utilisation du site</h2>
+
+<h2>Activités</h2>
+<h3>boulier</h3>
+<img src='res/img/asnus10To.png'/>
+<p>L'activité <i>boulier</i> propose d'utiliser plusieurs types de bouliers.</p>
+<h3>LOGO</h3>
+<img src='res/img/lolo001.png'/>
+<img src='res/img/lolo301.png'/>
+<p>L'activité <i>LOGO</i> propose à l'utilisateur de réaliser une figure géométrique, pré-tracée à l'écran et dont les caractéristiques sont précisées dans l'énoncé, à l'aide des opérateurs et valeurs fournis. L'exercice se termine lorsque l'utilisateur clique sur le bouton de validation à droite. La note est alors calculée en comparant la figure tracée à la figure demandée.</p>
+
+<h2>Guide du développeur</h2>
+<h3>Noms des exercices</h3>
+<p>Le nom des exercices est formé ainsi  :  ( S + E ) + FI + ID.</p>
+<ul>
+<li>S est la première lettre du nom de l'activité.</li>
+<li>E est la dernière lettre du nom de l'activité.</li>
+<li>FI sont les 2 premières lettres du nom du fichier dans lequel est défini l'exercice.</li>
+<li>ID est l'identifiant de l'exercice.</li>
+</ul>
+<p>Ainsi <b>ceac001</b> désigne l'exercice appartenant à l'activité <b>code</b> (ce), définit dans un fichier dont le nom commence par ac (<b>action.rdf</b> en l'occurence) et dont l'identifiant est <b>001</b>.</p>
+<p>Une exception notable  :  avec le fichier <b>xx.rdf</b>, la valeur de FI est nulle et l'identifiant a une longueur maximale de 2.</p>
+  
+<h2>Activités et exercices</h2>
+<h3>LOGO</h3>
+<h4>Paramètres</h4>
+    <ul>
+        <li><b>a : {}</b> permet de définir les commandes autorisées par l'exercice.
+            <ul>
+                <li><b>op : []</b> liste les opérations [av, re, td, tr, co, fo, ct, mt, lc, bc, or, ca, po, xx, yy, zz, ii, jj]</li>
+                <li><b>va : []</b> liste les valeurs [V000, V001, V002, ..., V090, ..., V200, ..., X, Y, Z, I, J, black, white, green, red, blue ]</li>
+                <li><b>ma : []</b> liste les opérations mathématiques [plus, minus, neg, mult, div, modulo, pow2, sqrt, log, exp, cos, sin, tan, atan]</li>
+                <li><b>cl : []</b> liste les opérateurs de contrôle [rep, call1, call2, call3, fct1, fct2, fct3, if]</li>
+            </ul>
+        </li>
+        <li><b>bg : []</b> liste les éléments présents dans le fond de l'image (grille, indications textuelles, figure en pointillé).</li>
+        <li><b>result : {}</b> définit les critères d'évaluation de l'exercice.
+            <ul>
+                <li><b>nb : int</b> définit le nombre de segments à tracer.</li>
+                <li><b>values : []</b> liste les segments à tracer. Chaque segment est défini ainsi [x1,y1,x2,y2,couleur].</li>
+                <li><b>ct : bool</b> (facultatif) précise l'état final de la tortue (caché ou non).</li>
+                <li><b>bg : int</b> (facultatif) précise la couleur finale du fond de l'écran.</li>
+            </ul>
+        </li>
+    </ul>
+    <h4>Autres</h4>
+    <p><b>Générateur</b>  :  lox</p>
+
+</body>
+</html>

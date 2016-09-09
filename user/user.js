@@ -23,7 +23,7 @@ var user = {
             }
         },
         edit    : function($elt, _cbk) { $elt.append($("<div id='upuser'>").load("user/edit.html", _cbk)); },
-        devmode : function($elt, _cbk) { $elt.append($("<div id='udevmode'>").load("user/devmode.html", _cbk)); }
+        devmode : function($elt, _cbk) { $elt.append($("<div id='udevmode' onmousedown='$(this).hide();' ontouchstart='$(this).hide();event.preventDefault();'>").load("user/devmode.html", _cbk)); }
     },
     init: function(_lang) {
         $.getJSON("user/locale/"+_lang+"/text.json?debug="+Math.floor(Math.random()*1000), function(_locale) {
@@ -137,9 +137,9 @@ var user = {
             if (user.settings.email) { $("#upem").val(user.settings.email).removeClass(); }
             else                     { $("#upem").val(user.locale.value.upem).addClass("empty"); }
 
-            $("#upop").val(user.locale.value.upop).show();$("#upopr").attr("value","").hide();
-            $("#upnp").val(user.locale.value.upnp).show();$("#upnpr").attr("value","").hide();
-            $("#upcp").val(user.locale.value.upcp).show();$("#upcpr").attr("value","").hide();
+            $("#upop").val(user.locale.value.upop).show();$("#upopr").val("").hide();
+            $("#upnp").val(user.locale.value.upnp).show();$("#upnpr").val("").hide();
+            $("#upcp").val(user.locale.value.upcp).show();$("#upcpr").val("").hide();
             $("#upuser #error").html("").hide();
             $("#upuser>div").css("top","25em").css("opacity",0).animate({top:"2em",opacity:1}, 1000 );
             $("#upuser").show();

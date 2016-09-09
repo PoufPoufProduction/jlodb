@@ -14,6 +14,8 @@
     <script type="text/javascript" src="js/jlodb-ext.js"></script>
     <script type="text/javascript" src="user/user.js"></script>
     <script type="text/javascript" src="gonz/jquery.gonz.js"></script>
+
+
     <link type="text/css" rel="stylesheet" href="css/jlodb.css" media="all" />
     <link type="text/css" rel="stylesheet" href="user/style.css" media="all" />
     <link rel="apple-touch-icon-precomposed" href="mods/tibibu/res/img/icon/icon144.png" />
@@ -22,8 +24,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="mods/tibibu/res/img/icon/icon144.png" />
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <style>
-#main #waiting                          { top:50%; left:72%; font-size:4em; }
-#main                                   { display:relative; background-image:url('res/img/background/book02.svg'); }
+#main                                   { position:relative; background-image:url('res/img/background/book02.svg'); }
 #main>div                               { width:16.5em; height:12em; }
 
 #main #nav                              { font-size:.3em; width:10em; height:100%; border:1px solid black; border-width:0 2px 0 0; background-color:rgba(255,255,255,0.6); float:left; }
@@ -57,12 +58,26 @@
 #fspanel.content #fsheader input        { float:left; width:22em; border:0; font-size:1em; margin:.1em .5em .1em 1em; padding-left:.5em; }
 #fspanel.content #fsheader .icon        { font-size:1.5em; cursor:pointer; }
 
+#flpanel.content #flheader              { width:100%; height:1.5em; background-color:gray; }
+#flpanel.content #flheader .label       { cursor:pointer; height:1em; float:left; padding:.25em 0; width:2.5em; color:white; font-weight:bold; text-align:center; background-color:rgba(0,0,0,0.2); }
+#flpanel.content #flheader select       { background-color:white; float:left; width:18em; border:0; font-size:1em; margin:.1em 0 .1em .2em; padding-left:.5em; }
+#flpanel.content #flheader .icon        { font-size:1.2em; margin-top:.1em; margin-left:.1em; cursor:pointer; float:left;}
+#flpanel.content #flheader .icon.s      { background-color:red; border-radius:.5em; }
+#flpanel.content #flcontent             { height:21em; }
+#flpanel.content #flfooter              { width:100%; height:1.5em; background-color:gray; }
+#flpanel.content #flfooter>*            { opacity:0.2; }
+#flpanel.content #flfooter.s>*          { opacity:1; }
+#flpanel.content #flfooter .label       { height:1em; float:left; padding:.25em 0; width:5em; color:white; font-weight:bold; text-align:center; background-color:rgba(0,0,0,0.2); }
+#flpanel.content #flfooter.s>.icon      { cursor:pointer; }
+#flpanel.content #flfooter select       { background-color:white; float:left; width:18em; border:0; font-size:0.5em; margin:.5em 0 .1em .2em; padding-left:.5em; }
 
 #main .user                             { font-size:0.8em; width:10em; height:4em; margin:.1em; padding:.1em; background-color:#444466; color:white; float:left; position:relative; }
+#main .user.c                           { cursor:pointer; }
+#main .user.s                           { background-color:#aa4444; }
 #main .user.small                       { font-size:0.65em; width:6em; height:4em; }
 #main .user .legend                     { float:left; width:6em; }
 #main .user .avatar                     { width:4em; height:4em; border-radius:.5em; float:left; }
-#main .user .id                         { float:right; text-align:right; width:8em; padding-right:.1em; height:1.2em; cursor:move; border:1px solid white; border-width:0 0 1px 0; font-size:0.8em;}
+#main .user .id                         { float:right; text-align:right; width:8em; padding-right:.1em; height:1.2em; border:1px solid white; border-width:0 0 1px 0; font-size:0.8em;}
 #main .user .key                        { display:none; }
 #main .user .name                       { float:right; font-size:.5em; font-style:italic; height:1.2em; width:12em; text-align:right;}
 #main .user .icon                       { margin-top:.4em; font-size:1.2em; float:right; cursor:pointer; }
@@ -74,6 +89,7 @@
 #main .user.ui-draggable-dragging .nd   { display:none; }
 
 #main .content .alert                   { background-color:red; color:white; margin:.5em 0; text-align:center; display:none; }
+#main #waiting                          { position:absolute; top:3.1em; left:0.05em; font-size:2.7em; }
 
     </style>
     <script>
@@ -104,8 +120,9 @@ user.onEvent = function() {
 
     }
     else {
+        // CLEAN PAGE ON LOGOUT
         $("#profile>*").hide(); $("#umenu").hide();
-        $(".content").hide(); $(".nav2").hide();
+        $(".content").hide(); $(".nav2").hide(); $(".nav2>div").removeClass("s");
         $("#fscontent").html(""); $("#fsheader input").val("");
         $("#logpanel").show();
     }
@@ -136,105 +153,13 @@ var tibibu = {
     menu: function(_elt) {
         var cb = { "ufmenu":"friend", "uemenu":"homework" };
         $(_elt).addClass("touch"); setTimeout(function() { $(_elt).removeClass("touch");}, 100);
-        $(".nav2").hide();
-        $(".nav2>div").removeClass("s");
-        tibibu[cb[$(_elt).attr("id")]].open();
+        if (!$("#"+cb[$(_elt).attr("id")]).is(":visible"))  { tibibu[cb[$(_elt).attr("id")]].open(); }
+        else                                                { $(".nav2").hide(); }
     },
-    friend : {
-        process: function(_elt,_key, _action, _cbk) {
-            user.getJSON("user/api/friend.php",{action:_action,value:_key},0,function(_data) {
-                // DO THE SAME THING THAN tibibu.friend.search(); BUT WITHOUT API REQUEST
-                $(_elt).parent().parent().hide();
-            });
-        },
-        elt: function(_user, _args) {
-            if (!_args) { _args = {}; }
-            var ret=$("<div class='user"+(_args.large?"":" small")+"'></div>");
-            if (_args.large) {
-                var avatar = $("<div class='avatar nd'><div></div></div>");
-                avatar.find("div").gonz({interactive:false, code:_user.avatar, context:{onclick:function($this){},onquit:function($this, _ret){}}});
-                ret.append(avatar);
-            }
-            var legend=$("<div class='legend'></div>");
-            legend.append("<div class='id'>"+_user.id+"</div>");
-            legend.append("<div class='key nd'>"+_user.key+"</div>");
-            legend.append("<div class='name nd'>"+_user.first+" "+_user.last+"</div>");
-            legend.append("<div class='tag nd'>"+_user.tag+"</div>");
-        
-            if (_args.type=="add") {
-                legend.append("<div class='icon nd cb' onclick='tibibu.friend.process(this,\""+_user.key+"\",\"new\");'>"+
-                              "<img src='mods/tibibu/res/img/add.svg'/></div>");
-            }
-            else if (_args.type=="wait") {
-                legend.append("<div class='icon nd cb' onclick='tibibu.friend.process(this,\""+_user.key+"\",\"del\");'>"+
-                              "<img src='mods/socialis/res/img/cancel.svg'/></div>");
-            }
-            else if (_args.type=="accept") {
-                legend.append("<div class='icon nd cb' onclick='tibibu.friend.process(this,\""+_user.key+"\",\"valid\");'>"+
-                              "<img src='mods/socialis/res/img/valid.svg'/></div>");
-                legend.append("<div class='space nd'>&nbsp;</div>");
-                legend.append("<div class='icon nd' onclick='tibibu.friend.process(this,\""+_user.key+"\",\"del\");'>"+
-                              "<img src='mods/socialis/res/img/cancel.svg'/></div>");
-            }
-            else if (_args.type=="friend") {
-                legend.append("<div class='icon nd fdel cb' "+
-                              "onclick='socialis.friend.op.process(this,\""+_user.key+"\",\"del\",socialis.friend.del);' "+
-                              "ontouchstart='socialis.friend.op.process(this,\""+_user.key+"\",\"del\",socialis.friend.del);"+
-                                            "event.preventDefault();'>"+
-                              "<img src='mods/socialis/res/img/cancel.svg'/></div>");
-                legend.append("<div class='icon nd' onclick='socialis.friend.genius(this,\""+_user.key+"\");' "+
-                               "ontouchstart='socialis.friend.genius(this,\""+_user.key+"\");event.preventDefault();'>"+
-                              "<img src='mods/socialis/res/img/look.svg'/></div>");
-            }
-            ret.append(legend);
-            return ret;
-        },
-        open : function() { $("#friend.nav2").show(); },
-        menu : function(_elt) {
-            $("#friend.nav2>div").removeClass("s"); $(_elt).addClass("s");
-            $(".content").hide(); 
-            switch($(_elt).attr("id")) {
-                case "fsmenu" : $("#fspanel").show(); break;
-                case "famenu" :
-                    $("#facontent").html("");
-                    user.getJSON("user/api/friend.php", {action:"waiting"}, 0, function(_data) {
-                        for (var i in _data.users) {
-                            $("#facontent").append(tibibu.friend.elt(_data.users[i],{large:_data.users.length<19, type:"wait"}));
-                        }
-                        if (_data.users && _data.users.length) { $("#faalert").hide(); } else { $("#faalert").show(); }
-                        $("#fapanel").show();
-                    });
-                    break;
-                case "fpmenu" :
-                    $("#fpcontent").html("");
-                    user.getJSON("user/api/friend.php", {action:"ask"}, 0, function(_data) {
-                        for (var i in _data.users) {
-                            $("#fpcontent").append(tibibu.friend.elt(_data.users[i],{large:_data.users.length<19, type:"accept"}));
-                        }
-                        if (_data.users && _data.users.length) { $("#fpalert").hide(); } else { $("#fpalert").show(); }
-                        $("#fppanel").show();
-                    });
-                    break;
-                case "flmenu" :
-                    $("#flcontent").html("");
-                    user.getJSON("user/api/friend.php", {}, 0, function(_data) {
-                        for (var i in _data.users) {
-                            $("#flcontent").append(tibibu.friend.elt(_data.users[i],{large:_data.users.length<19}));
-                        }
-                        $("#flpanel").show();
-                    });
-                    break;
-            }
-
-        },
-        search : function() {
-            $("#fscontent").html("");
-            user.getJSON("user/api/user.php",{value:$("#fsheader input").val()},0,function(_data) {
-                for (var i in _data.users) {
-                    $("#fscontent").append(tibibu.friend.elt(_data.users[i],{large:_data.users.length<19, type:"add"}));
-                }
-            });
-        }
+    inputpanel : {
+        cbk: 0,
+        open: function(_v,_c) { tibibu.inputpanel.cbk = _c; $("#inputpanel input").val(_v); $("#inputpanel").show(); },
+        valid: function()     { $("#inputpanel").hide(); if (tibibu.inputpanel.cbk) { tibibu.inputpanel.cbk($("#inputpanel input").val());} }
     }
 };
 
@@ -276,6 +201,8 @@ $(window).ready(function() {
 
 });
     </script>
+    <script type="text/javascript" src="mods/tibibu/js/friend.js"></script>
+
 </head>
 
 <body>
@@ -332,28 +259,50 @@ $(window).ready(function() {
                     <img src="user/res/img/look.svg"/>
                 </div>
             </div>
-            <div id="fscontent">
-            </div>
+            <div id="fscontent" class="data"></div>
         </div>
 
-        <div class="content" id="fapanel">
-            <div class="alert" id="faalert"></div>
-            <div id="facontent">
-            </div>
-        </div>
-
-        <div class="content" id="fppanel">
-            <div class="alert" id="fpalert"></div>
-            <div id="fpcontent">
-            </div>
-        </div>
+        <div class="content" id="fapanel"><div class="alert" id="faalert"></div><div id="facontent" class="data"></div></div>
+        <div class="content" id="fppanel"><div class="alert" id="fpalert"></div><div id="fpcontent" class="data"></div></div>
 
         <div class="content" id="flpanel">
-            <div id="flcontent">
+            <div id="flheader">
+                <div class="label" onclick="tibibu.circle.selectall(this);" ontouchstart="tibibu.circle.selectall();event.preventDefault();"></div>
+                <select id="flcircles" onchange="tibibu.friend.get($(this).val());"></select>
+                <div class="icon l" onclick="tibibu.circle.open();" ontouchstart="tibibu.circle.open();event.preventDefault();">
+                    <img src="mods/tibibu/res/img/newpeople.svg"/></div>
+                <div class="icon e" onclick="tibibu.circle.edit();" ontouchstart="tibibu.circle.edit();event.preventDefault();">
+                    <img src="mods/tibibu/res/img/edit.svg"/></div>
+                <div id="flremove" class="icon" onclick="tibibu.circle.remove();" ontouchstart="tibibu.circle.remove();event.preventDefault();">
+                    <img src="mods/tibibu/res/img/cancel.svg"/></div>
+            </div>
+            <div id="flcontent"></div>
+            <div id="flfooter">
+                <div class="label"></div>
+                <select id="flaction" disabled="disabled" onchange="tibibu.friend.footer();">
+                    <option id="flnothing" value="0"></option>
+                    <option id="flin" value="1"></option>
+                    <option id="flout" value="2"></option>
+                    <option id="fldel" value="3"></option>
+                </select>
+                <select id="fltarget" disabled="disabled"></select>
+                <div class="icon" onclick="tibibu.friend.update();" ontouchstart="tibibu.friend.update();event.preventDefault();">
+                    <img src="mods/tibibi/res/img/valid.svg"/></div>
             </div>
         </div>
 
+        <div id="inputpanel" class="inputpanel" onmousedown="$(this).hide();" ontouchstart="$(this).hide();event.preventDefault();"><div>
+            <input type="text"
+                onmousedown="$(this).focus();event.stopPropagation();"
+                ontouchstart="$(this).focus();event.stopPropagation();event.preventDefault();"/>
 
+            <div class="icon" onmousedown="tibibu.inputpanel.valid();event.stopPropagation();"
+                              ontouchstart="tibibu.inputpanel.valid();event.stopPropagation();event.preventDefault();">
+                <img src="user/res/img/valid.svg"/>
+            </div>
+        </div></div>
+
+        <div id="waiting" class="anim12"><div><img src="res/img/generic/waiting_red.svg"/></div></div>
 
     </div></div>
 </body>
