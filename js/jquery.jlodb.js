@@ -1,4 +1,9 @@
 (function($) {
+
+    // NOT SURE TO REMEMBER WHY (maybe because of class handling or score)
+    // BUT JLODB PLUGIN HAS TO BE APPLIED ON A PARENT OBJECT OF THE ACTIVITY
+    // NOT DIRECTLY ON THE ACTIVITY IT SELF
+
     var defaults = {
         debug       : false,
         url         : "",               // cross platform json (not available for the moment)

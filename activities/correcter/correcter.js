@@ -144,7 +144,7 @@
                 }
 
                 $this.find("#data").html(content);
-                $this.css("font-size", Math.floor($this.height()/12)+"px");
+                $this.css("font-size", ($this.height()/12)+"px");
                 $this.find("#options").css("font-size",settings.font+"em");
                 $this.find("#data").css("font-size",settings.font+"em");
 
@@ -233,8 +233,8 @@
 
                 if (settings.style=="default" || $(elt).hasClass("blank") || $(elt).hasClass("bold") ) {
                     if (settings.activate) {
-                        var posx = $(elt).offset().left-$this.find("#data").offset().left;
-                        var posy = $(elt).offset().top;
+                        var posx = $(elt).offset().left-$this.offset().left;
+                        var posy = $(elt).offset().top-$this.offset().top;
 
                         // Position the popup : 6 = 1 (border width) + 5 (padding)
                         $popup.css("left",(posx-settings.offset[settings.style][0])+"px")

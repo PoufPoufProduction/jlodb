@@ -97,7 +97,7 @@
             build: function($this) {
                 var settings = helpers.settings($this);
                 if (settings.context.onload) { settings.context.onload($this); }
-                $this.css("font-size", Math.floor($this.height()/12)+"px");
+                $this.css("font-size", ($this.height()/12)+"px");
 
                 // Locale handling
                 $this.find("h1#label").html(settings.label);

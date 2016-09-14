@@ -95,7 +95,7 @@
                 // Send the onLoad callback
                 if (settings.context.onload) { settings.context.onload($this); }
 
-                $this.css("font-size", Math.floor($this.height()/12)+"px");
+                $this.css("font-size", ($this.height()/12)+"px");
 
                 // DISPLAY KEYPAD
                 $this.find("#menu #"+settings.keypad).show();

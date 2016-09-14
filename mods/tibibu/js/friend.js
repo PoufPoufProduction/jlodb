@@ -103,7 +103,7 @@ tibibu.friend = {
     },
     process: function(_elt,_key, _action, _cbk) {
         user.getJSON("user/api/friend.php",{action:_action,value:_key},0,function(_data) {
-        var $content = $(_elt).closest('.content');
+        var $content = $(_elt).closest('.bucontent');
         $(_elt).parent().parent().detach();
         if ($content.find(".data").is(":empty")) { $content.find(".alert").show(); }
         });
@@ -147,10 +147,9 @@ tibibu.friend = {
         ret.append(legend);
         return ret;
     },
-    open : function() { $("#friend.nav2").show(); },
     menu : function(_elt) {
         $(".nav2>div").removeClass("s"); $(_elt).addClass("s");
-        $(".content").hide(); 
+        $(".bucontent").hide(); 
         switch($(_elt).attr("id")) {
         case "fsmenu" : $("#fspanel").show(); break;
         case "famenu" :

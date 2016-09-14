@@ -51,7 +51,7 @@
             settings.context.onquit($this,{'status':'success', 'score':settings.score});
         },
         format: function(_text) {
-            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
+            if (_text) for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
                 var vReg = new RegExp(regExp[i*2],"g");
                 _text = _text.replace(vReg,regExp[i*2+1]);
             }
@@ -99,7 +99,7 @@
             build: function($this) {
                 var settings = helpers.settings($this);
                 if (settings.context.onload) { settings.context.onload($this); }
-                $this.css("font-size", Math.floor($this.height()/12)+"px");
+                $this.css("font-size", ($this.height()/12)+"px");
 
                 var vWidth = Math.floor($this.find("#values").width());
                 $this.find("#values").css("font-size", settings.font+"em");
@@ -201,6 +201,7 @@
                                 vSplit[1] = vCursor.init+
                                             Math.round((vSplit[1]-vCursor.init)/vCursor.constraint)*vCursor.constraint;
                             }
+                            
                             $(settings.elt).attr("transform", "rotate("+vSplit[1]+")");
                             vCursor.translate=parseFloat(vSplit[1]);
                         }
@@ -238,11 +239,9 @@
                             var det = settings.control.current[0]*vB[1] - settings.control.current[1]*vB[0];
                             var sign = det>0?1:-1;
 
-                            var vRot = settings.control.rot + sign*(Math.acos(settings.control.current[0]*vB[0]+
-                                                              settings.control.current[1]*vB[1])*180/Math.PI);
-
-
-
+                            var vValue = settings.control.current[0]*vB[0]+settings.control.current[1]*vB[1];
+                            if (vValue<-1) { vValue=-1;} else if (vValue>1)  { vValue=1; }
+                            var vRot = settings.control.rot + sign*(Math.acos(vValue)*180/Math.PI);
                             if (vCursor.boundaries && vRot<vCursor.boundaries[0]) { vRot = vCursor.boundaries[0]; }
                             if (vCursor.boundaries && vRot>vCursor.boundaries[1]) { vRot = vCursor.boundaries[1]; }
 

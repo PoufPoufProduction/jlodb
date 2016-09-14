@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>tibibo</title>
+    <title>TiBIbo</title>
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
@@ -22,100 +22,100 @@
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="mods/tibibo/res/img/icon/icon144.png" />
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <style>
-#main #waiting                          { top:50%; left:72%; font-size:4em; }
-#main                                   { display:relative; background-image:url('res/img/background/book02.svg'); }
-#main .special                          { font-size:.3em; width:105%; margin:.5em 0 .2em 0; }
-#main .special>div                      { height:3em; padding:.1em; border-radius:.25em; float:left; margin-left:1em;  }
-#main #oheader                          { overflow:visible; }
-#main #onav                             { background-color:#DD5; width:40em; color:white; overflow:visible; }
-#main #onav .node                       { font-size:2.8em; margin:.05em .1em; }
-#main #onav .label                      { color:black; font-size:1.1em; margin-top:.1em; float:right; margin-right:.5em; width:18em; height:2.4em;}
-#main #omain #profile                   { background-color:#5B6; width:10em; color:white;}
-#main #omain #profile>*                 { float:left; }
-#main #omain #profile #avatar           { width:1em; height:1em; background-color:#444; font-size:3em; border-radius:.1em; cursor:pointer; }
-#main #omain #profile #label            { margin-left:.2em;  font-size:.7em; width:5.2em; }
-#main #omain #profile #sub              { font-size:.8em; color:yellow; }
-#main #omain #profile #devmode          { font-size:2em; opacity:0.3; display:none; }
-#main.devmode #omain #profile #devmode  { opacity:1; }
-#main #omain #profile .icon             { font-size:3em; cursor:pointer; }
-#main #omain #profile #gdx              { display:none; }
-#main #omain #profile #gdx.s            { background-color:red; border-radius:.5em; }
-#main #error                            { position:absolute; top:19.3em; color:white; font-size:.5em; width:100%; background-color:red; padding-left:2em; display:none; }
-#main #ocontent                         { width:100%; height:9em; }
-#main #ocontent>div                     { width:100%; display:none; }
-#main #ofooter #menu                    { clear:both; background-color:#aaa; width:51em; height:5em; color:white;}
-#main #ofooter #menu>div                { font-size:4em;  }
-#main #ofooter #menu>div .icon          { float:left; margin:.12em; cursor:pointer; border-radius:.1em; }
-#main #ofooter #menu>div .icon.s        { background-color:#A00; }
-#main #ofooter #menu>div .icon.f        { float:right; }
-#main.devmode.ownbook #editown.menu     { display:inline; }
-#main.devmode.book #editother.menu      { display:inline; }
-#main .usermode                         { display:inline; }
-#main .devmode                          { display:none; }
-#main.devmode .usermode                 { display:none; }
-#main #obrowser                         { font-size:2.4em; margin-left:.2em; }
-#main #ocontent>#omenu                  { font-size:1.4em; height:6.5em; }
-#main #ocontent>#omenu .icon            { background-image:url('res/img/icon/menu02bg.svg') !important; }
-#main #ocontent #omenu .ostate          { font-size:.5em; background-color:#ADF; margin:.1em; height:1.2em; width:15em; }
-#main #ocontent #omenu .ostate .user    { font-size:0.5em; width:7em; }
-#main #ocontent #omenu .ostate>div      { float:left; }
-#main #ocontent #omenu .ostate .jmenu   { width:6em; }
-#main #ocontent #omenu .ostate .date    { font-size:0.4em; }
-#main #upuseror                         { font-size:3.4em; margin-left:.4em; }
-#main .node                             { width:1em; height:1.35em; margin:.1em; cursor:pointer; float:left; position:relative; overflow:visible; }
-#main .node .type                       { width:1em; height:1em; font-size:.25em; position:absolute; top:-0.1em; left:-0.1em; display:none;}
-#main .node .icon                       { width:1em; height:1em; position:absolute; top:0; left:0; }
-#main .node .star                       { width:1em; height:1em; position:absolute; top:0.1em; left:0; display:none; }
-#main .node .label                      { font-family: Arial,Helvetica Neue,Helvetica,sans-serif; font-size:.09em; position:absolute; top:12em; text-align:justify; }
-#main .node.f .type                     { display:inline; }
-#main .node.s .star                     { display:inline; }
-#main .node .done                       { position:absolute; top:0em; left:3.5em; font-size:.15em; width:3em; text-align:center; background-color:rgba(20,200,50,0.8); color:yellow; border:.1em solid yellow; -ms-transform: rotate(10deg); -webkit-transform: rotate(10deg); transform: rotate(10deg);   }
-#main .node .progress                   { width:1em; height:0.05em; position:absolute; top:1.02em; background-color:#dd5; }
-#main .node .progress>div               { height:0.05em; background-color:#5b6; }
-#main .label .strong                    { font-size:1.5em; font-weight:bold; }
-#main #ocontent .input                  { background-color:red; color:white; margin-top:1em; font-size:0.8em; }
-#main #ocontent .input>*                { float:left; margin-left:.5em; }
-#main #ocontent .input .label           { width:7em; }
-#main #ocontent .input input            { font-size:1em; width:8em; color:#500; padding-left:.5em; }
-#main #ocontent .input input.s          { color:gray; }
-#main #ocontent .input .icon            { float:right; font-size:1.2em; cursor:pointer; margin-right:.5em; }
-#main #ocontent .booklist               { font-size:0.5em; border:1px solid black; border-width:0 0 .2em 0; margin-top:1em; height:12.5em;}
-#main #ocontent .booklist .title        { background-color:black; color: white; padding-left:2em; height:1.2em; }
-#main #ocontent .booklist .list         { height:12.5em; overflow:auto; }
-#main #ocontent .booklist .list>div     { margin:.2em 0.2em; cursor:pointer; clear:both; }
-#main #ocontent .booklist .list .bookid { float:left; width:5em; background-color:rgba(0,100,200,0.2); padding-right:.5em; color:#345; border-radius:.5em 0 0 .5em; height:1.2em; text-align:right; font-weight:bold; }
-#main #ocontent .booklist .list .label  { float:left; margin-left:.1em; background-color:rgba(200,100,0,0.2); color:#543; width:24em; height:1.2em; padding-left:.5em; border-radius:0 .5em .5em 0; font-style:italic;border:0;font-size:1em; font-family: "Times New Roman",Times,serif; }
-#main #ocontent #dinput                 { font-size:.5em; }
-#main #ocontent #dinput input           { width:20em; }
-#firefox                                { position:absolute; top:79%; left:83%; font-size:.2em; width:15em; height:3em; border:2px solid orange; border-radius:1.5em 0 0 1.5em; background-color:rgba(0,0,0,0.1); font-weight:bold; color:brown; }
-#firefox>img                            { float:left; font-size:3em; width:1em; height:1em; margin-left:.1em; margin-right:.2em; }
-#dbrowser                               { position:absolute; top:0; left:0; width:16em; height:12em; background-color: rgba(0,0,0,0.2); display:none;}
-#dbrowser>div                           { position:absolute; font-size:.4em; width:26em; height:21em; top:2em; left:2em;  background-color:rgba(200,200,200,0.9); border:.2em solid white; color:black;  border-radius:.5em; background-image:url("res/img/background/book06.svg"); background-repeat:repeat; }
-#dbrowser #dcontent                     { font-size:1.5em; overflow:auto; height:14em; }
-#dbrowser ul                            { padding-left:0.5em; clear:both; }
-#dbrowser ul.sub                        { display:none; }
-#dbrowser li                            { clear:both;}
-#dbrowser .node                         { height:1.1em; }
-#dbrowser .label                        { padding:0 .1em; font-size:0.5em; height:2.4em; overflow:visible; float:left; background-color:rgba(240,250,255,0.5);  }
-#dbrowser .state                        { width:4em; height:1.3em; font-size:.8em; background-color:rgba(255,255,255,0.8); border-radius:0 .2em .2em 0; text-align:center;padding-top:.2em; cursor:pointer;}
-#dbrowser .move                         { font-size:1.2em;width:1em; height:1em; background-color:rgba(0,0,0,0.8); border-radius:0 .2em .2em 0; padding:0 .2em; text-align:center; cursor:pointer;}
-#editnode                               { position:absolute; top:0; left:0; width:16em; height:12em; background-color: rgba(0,0,0,0.2); display:none; }
-#editnode>div                           { position:absolute; font-size:.4em; width:20em; height:21em; top:2em; left:2em;  background-color:rgba(128,120,100,0.9); border:.2em solid white; color:black; border-radius:.5em; background-image:url("res/img/background/book06.svg"); background-repeat:repeat; }
-#editnode #eimg                         { width:15em; left:23em; }
-#editnode #eimg .icon                   { float:left; cursor:pointer; margin:0.05em; font-size:1.4em; }
-#editnode #settings                     { height:16em; }
-#editnode #settings #nodeimg            { font-size:8em; float:left; margin:0.05em; height:1.1em; }
-#editnode #settings textarea            { float:right; margin-top:0.8em; padding:.2em; font-size:0.6em; width:17.5em; border:0; background-color:white; border-radius:.5em 0 0 .5em; height:6.5em;  }
-#editnode #settings #tibibi             { clear:both;}
-#editnode #settings #tibibi select      { border:0; background-color:white; border-radius:00; float:left; font-size:1em; width:18em; }
-#editnode #settings #tibibi .icon       { float:left; background-color:#444; padding:.1em .5em; border-radius:0; cursor:pointer; }
-#editnode #settings #tibibi textarea    { clear:both; border-radius:0; width:33em; float:none; }
-#editnode #evalid                       { font-size:4em; float:right; margin:.1em; cursor:pointer;}
-#editnode #ecancel                      { font-size:4em; float:left; margin:.1em; cursor:pointer; }
-#eimport                                { position:absolute; top:0; left:0; background-color:rgba(0,0,0,0.2); width:100%; height:100%; display:none; }
-#eimport>div                            { width:12em; height:8em; background-color:gray; margin:2em; }
-#eimport textarea                       { width:58em; height:32em; margin:1em; border:0; font-size:0.2em; }
-#eimport .icon                          { margin: 0 auto; cursor:pointer; }
+#waiting                                { top:50%; left:72%; font-size:4em; }
+.usermode                               { display:inline; }
+.devmode                                { display:none; }
+
+#bomain                                 { display:relative; background-image:url('res/img/background/book02.svg'); }
+#bomain.devmode #bopage #devmode        { opacity:1; }
+#bomain.devmode.ownbook #editown.menu   { display:inline; }
+#bomain.devmode.book #editother.menu    { display:inline; }
+#bomain.devmode .usermode               { display:none; }
+.bospecial                              { font-size:.3em; width:105%; margin:.5em 0 .2em 0; }
+.bospecial>div                          { height:3em; padding:.1em; border-radius:.25em; float:left; margin-left:1em;  }
+#boheader                               { overflow:visible; }
+#bonav                                  { background-color:#DD5; width:40em; color:white; overflow:visible; }
+#bonav .node                            { font-size:2.8em; margin:.05em .1em; }
+#bonav .label                           { color:black; font-size:1.1em; margin-top:.1em; float:right; margin-right:.5em; width:18em; height:2.4em;}
+#bopage #profile                        { background-color:#5B6; width:10em; color:white;}
+#bopage #profile>*                      { float:left; }
+#bopage #profile #avatar                { width:1em; height:1em; background-color:#444; font-size:3em; border-radius:.1em; cursor:pointer; }
+#bopage #profile #label                 { margin-left:.2em;  font-size:.7em; width:5.2em; }
+#bopage #profile #sub                   { font-size:.8em; color:yellow; }
+#bopage #profile #devmode               { font-size:2em; opacity:0.3; display:none; }
+#bopage #profile .icon                  { font-size:3em; cursor:pointer; }
+#bopage #profile #gdx                   { display:none; }
+#bopage #profile #gdx.s                 { background-color:red; border-radius:.5em; }
+#boerror                                { position:absolute; top:19.3em; color:white; font-size:.5em; width:100%; background-color:red; padding-left:2em; display:none; }
+#bocontent                              { width:100%; height:9em; }
+#bocontent>div                          { width:100%; display:none; }
+#bofooter #menu                         { clear:both; background-color:#aaa; width:51em; height:5em; color:white;}
+#bofooter #menu>div                     { font-size:4em;  }
+#bofooter #menu>div .icon               { float:left; margin:.12em; cursor:pointer; border-radius:.1em; }
+#bofooter #menu>div .icon.s             { background-color:#A00; }
+#bofooter #menu>div .icon.f             { float:right; }
+#bobrowser                              { font-size:2.4em; margin-left:.2em; }
+#bocontent>#omenu                       { font-size:1.4em; height:6.5em; }
+#bocontent>#omenu .icon                 { background-image:url('res/img/icon/menu02bg.svg') !important; }
+#bocontent #omenu .ostate               { font-size:.5em; background-color:#ADF; margin:.1em; height:1.2em; width:15em; }
+#bocontent #omenu .ostate .user         { font-size:0.5em; width:7em; }
+#bocontent #omenu .ostate>div           { float:left; }
+#bocontent #omenu .ostate .jmenu        { width:6em; }
+#bocontent #omenu .ostate .date         { font-size:0.4em; }
+#bocontent .input                       { background-color:red; color:white; margin-top:1em; font-size:0.8em; }
+#bocontent .input>*                     { float:left; margin-left:.5em; }
+#bocontent .input .label                { width:7em; }
+#bocontent .input input                 { font-size:1em; width:8em; color:#500; padding-left:.5em; }
+#bocontent .input input.s               { color:gray; }
+#bocontent .input .icon                 { float:right; font-size:1.2em; cursor:pointer; margin-right:.5em; }
+#bocontent .booklist                    { font-size:0.5em; border:1px solid black; border-width:0 0 .2em 0; margin-top:1em; height:12.5em;}
+#bocontent .booklist .title             { background-color:black; color: white; padding-left:2em; height:1.2em; }
+#bocontent .booklist .list              { height:12.5em; overflow:auto; }
+#bocontent .booklist .list>div          { margin:.2em 0.2em; cursor:pointer; clear:both; }
+#bocontent .booklist .list .bookid      { float:left; width:5em; background-color:rgba(0,100,200,0.2); padding-right:.5em; color:#345; border-radius:.5em 0 0 .5em; height:1.2em; text-align:right; font-weight:bold; }
+#bocontent .booklist .list .label       { float:left; margin-left:.1em; background-color:rgba(200,100,0,0.2); color:#543; width:24em; height:1.2em; padding-left:.5em; border-radius:0 .5em .5em 0; font-style:italic;border:0;font-size:1em; font-family: "Times New Roman",Times,serif; }
+#bocontent #dinput                      { font-size:.5em; }
+#bocontent #dinput input                { width:20em; }
+#bomain .node                           { width:1em; height:1.35em; margin:.1em; cursor:pointer; float:left; position:relative; overflow:visible; }
+#bomain .node .type                     { width:1em; height:1em; font-size:.25em; position:absolute; top:-0.1em; left:-0.1em; display:none;}
+#bomain .node .icon                     { width:1em; height:1em; position:absolute; top:0; left:0; }
+#bomain .node .star                     { width:1em; height:1em; position:absolute; top:0.1em; left:0; display:none; }
+#bomain .node .label                    { font-family: Arial,Helvetica Neue,Helvetica,sans-serif; font-size:.09em; position:absolute; top:12em; text-align:justify; }
+#bomain .node.f .type                   { display:inline; }
+#bomain .node.s .star                   { display:inline; }
+#bomain .node .done                     { position:absolute; top:0em; left:3.5em; font-size:.15em; width:3em; text-align:center; background-color:rgba(20,200,50,0.8); color:yellow; border:.1em solid yellow; -ms-transform: rotate(10deg); -webkit-transform: rotate(10deg); transform: rotate(10deg);   }
+#bomain .node .progress                 { width:1em; height:0.05em; position:absolute; top:1.02em; background-color:#dd5; }
+#bomain .node .progress>div             { height:0.05em; background-color:#5b6; }
+#bomain .label .strong                  { font-size:1.5em; font-weight:bold; }
+#bofirefox                              { position:absolute; top:79%; left:83%; font-size:.2em; width:15em; height:3em; border:2px solid orange; border-radius:1.5em 0 0 1.5em; background-color:rgba(0,0,0,0.1); font-weight:bold; color:brown; }
+#bofirefox>img                          { float:left; font-size:3em; width:1em; height:1em; margin-left:.1em; margin-right:.2em; }
+#bodbrowser                             { position:absolute; top:0; left:0; width:16em; height:12em; background-color: rgba(0,0,0,0.2); display:none;}
+#bodbrowser>div                         { position:absolute; font-size:.4em; width:26em; height:21em; top:2em; left:2em;  background-color:rgba(200,200,200,0.9); border:.2em solid white; color:black;  border-radius:.5em; background-image:url("res/img/background/book06.svg"); background-repeat:repeat; }
+#bodbrowser #dcontent                   { font-size:1.5em; overflow:auto; height:14em; }
+#bodbrowser ul                          { padding-left:0.5em; clear:both; }
+#bodbrowser ul.sub                      { display:none; }
+#bodbrowser li                          { clear:both;}
+#bodbrowser .node                       { height:1.1em; }
+#bodbrowser .label                      { padding:0 .1em; font-size:0.5em; height:2.4em; overflow:visible; float:left; background-color:rgba(240,250,255,0.5);  }
+#bodbrowser .state                      { width:4em; height:1.3em; font-size:.8em; background-color:rgba(255,255,255,0.8); border-radius:0 .2em .2em 0; text-align:center;padding-top:.2em; cursor:pointer;}
+#bodbrowser .move                       { font-size:1.2em;width:1em; height:1em; background-color:rgba(0,0,0,0.8); border-radius:0 .2em .2em 0; padding:0 .2em; text-align:center; cursor:pointer;}
+#boeditnode                             { position:absolute; top:0; left:0; width:16em; height:12em; background-color: rgba(0,0,0,0.2); display:none; }
+#boeditnode>div                         { position:absolute; font-size:.4em; width:20em; height:21em; top:2em; left:2em;  background-color:rgba(128,120,100,0.9); border:.2em solid white; color:black; border-radius:.5em; background-image:url("res/img/background/book06.svg"); background-repeat:repeat; }
+#boeditnode #eimg                       { width:15em; left:23em; }
+#boeditnode #eimg .icon                 { float:left; cursor:pointer; margin:0.05em; font-size:1.4em; }
+#boeditnode #settings                   { height:16em; }
+#boeditnode #settings #nodeimg          { font-size:8em; float:left; margin:0.05em; height:1.1em; }
+#boeditnode #settings textarea          { float:right; margin-top:0.8em; padding:.2em; font-size:0.6em; width:17.5em; border:0; background-color:white; border-radius:.5em 0 0 .5em; height:6.5em;  }
+#boeditnode #settings #tibibi           { clear:both;}
+#boeditnode #settings #tibibi select    { border:0; background-color:white; border-radius:00; float:left; font-size:1em; width:18em; }
+#boeditnode #settings #tibibi .icon     { float:left; background-color:#444; padding:.1em .5em; border-radius:0; cursor:pointer; }
+#boeditnode #settings #tibibi textarea  { clear:both; border-radius:0; width:33em; float:none; }
+#boeditnode #evalid                     { font-size:4em; float:right; margin:.1em; cursor:pointer;}
+#boeditnode #ecancel                    { font-size:4em; float:left; margin:.1em; cursor:pointer; }
+#boeimport                              { position:absolute; top:0; left:0; background-color:rgba(0,0,0,0.2); width:100%; height:100%; display:none; }
+#boeimport>div                          { width:12em; height:8em; background-color:gray; margin:2em; }
+#boeimport textarea                     { width:58em; height:32em; margin:1em; border:0; font-size:0.2em; }
+#boeimport .icon                        { margin: 0 auto; cursor:pointer; }
     </style>
     <script>
 
@@ -123,7 +123,7 @@
 user.onEvent = function() {
     $("#profile #avatar").html("");
     $("#tibibi select").html("");
-    $("#main").removeClass("devmode");
+    $("#bomain").removeClass("devmode");
 
     if (user.settings && user.settings.name) {
         $("#profile #avatar").gonz({interactive:false, code:user.settings.avatar,
@@ -131,10 +131,10 @@ user.onEvent = function() {
         $("#profile #label #name").html(user.settings.name);
         $("#profile #label #sub").html("#"+user.settings.tag);
 
-        if (user.settings.devmode)  { $("#main").addClass("devmode"); }
+        if (user.settings.devmode)  { $("#bomain").addClass("devmode"); }
         $("#profile #label #devmode").show();
 
-        $("#main #profile #gdx").show();
+        $("#bomain #profile #gdx").show();
 
         tibibo.init();
 
@@ -149,7 +149,7 @@ user.onEvent = function() {
         $("#profile #label #name").html("");
         $("#profile #label #sub").html("");
         $("#profile #label #devmode").hide();
-        $("#main #profile #gdx").hide();
+        $("#bomain #profile #gdx").hide();
 
         tibibo.init();
     }
@@ -180,8 +180,8 @@ var tibibo = {
         },
     run : function(_args) {
         $("#waiting").show().find("div").addClass("running");
-        $("#launcher").jlodb({ onstart: function($this) { $("#ocontent").hide(); $("#waiting").hide().find("div").removeClass("running"); },
-                               onfinish:function($this) { $("#ocontent").show(); $("#score").removeClass().hide(); }},_args);
+        $("#launcher").jlodb({ onstart: function($this) { $("#bocontent").hide(); $("#waiting").hide().find("div").removeClass("running"); },
+                               onfinish:function($this) { $("#bocontent").show(); $("#score").removeClass().hide(); }},_args);
     },
     menu: {
         current: -1,
@@ -196,7 +196,7 @@ var tibibo = {
 
             if (user.settings.devmode) { state = ""; for (var i=0; i<_list.length; i++) { state+="."; } }
 
-                $("#obrowser").html("").hide();
+                $("#bobrowser").html("").hide();
                 $("#omenu").show().menu({
                     large   : 8,
                     list    : _list,
@@ -225,7 +225,7 @@ var tibibo = {
         open: function(_id) {
             tibibo.menu.current = _id;
             tibibo.menu.build(tibibo.book.browse.elt(_id).description.split(","));
-            $("#dbrowser").hide();
+            $("#bodbrowser").hide();
             tibibo.book.parents=[];
             var parents = tibibo.book.browse.parent(_id).reverse();
             for (var i=0; i<parents.length-1; i++) { tibibo.book.parents.push(parents[i]); }
@@ -299,13 +299,13 @@ var tibibo = {
                         tibibo.book.save();
                     }
                     else if ($("#editown #mmove").hasClass("s")) {
-                        $("#dbrowser").show();
+                        $("#bodbrowser").show();
                         var html="<div class='label' style='width:26.4em;margin-bottom:.1em;'>"+tibibo.book.data.value+"</div></div>"+
                                  "<div class='move' onmousedown='tibibo.book.move("+id+",-1)' "+
                                  "ontouchstart='tibibo.book.move("+id+",-1);event.preventDefault();'>"+
                                  "<img src='mods/tibibi/res/img/import.svg'/></div>";
                         html+=tibibo.book.browse.dump({action:"move",id:id});
-                        $("#dbrowser #dcontent").html(html);
+                        $("#bodbrowser #dcontent").html(html);
                     }
                     else if ($elt.hasClass("f")) {
                         tibibo.book.parents.push(elt.id);
@@ -326,32 +326,32 @@ var tibibo = {
                 $("#eedit #tibibi").show();
                 if (_elt) {
                     $("#nodeimg .icon img").attr("src",_elt.src);
-                    $("#editnode #elabel").val(_elt.label);
-                    $("#editnode #tibibi textarea").val(_elt.description)
+                    $("#boeditnode #elabel").val(_elt.label);
+                    $("#boeditnode #tibibi textarea").val(_elt.description)
                     tibibo.node.edit.star = _elt.nbstar;
                     tibibo.node.edit.elt = _elt;
                     if (_elt.children.length) { $("#eedit #tibibi").hide(); }
                 }
                 else {
                     $("#nodeimg .icon img").attr("src","res/img/classification/root.svg");
-                    $("#editnode textarea").val("");
+                    $("#boeditnode textarea").val("");
                     tibibo.node.edit.star = 0;
                     tibibo.node.edit.elt = 0;
                 }
                 tibibo.node.edit.refresh(false);
-                $("#editnode #eedit").css("left","-20em").css("opacity",0).animate({left:"2em",opacity:1}, 1000 );
-                $("#editnode #eimg").css("left","38em").css("opacity",0).animate({left:"23em",opacity:1}, 1000 );
-                $("#editnode").show();
+                $("#boeditnode #eedit").css("left","-20em").css("opacity",0).animate({left:"2em",opacity:1}, 1000 );
+                $("#boeditnode #eimg").css("left","38em").css("opacity",0).animate({left:"23em",opacity:1}, 1000 );
+                $("#boeditnode").show();
             },
             tibibi: function() {
-                if ($("#editnode #tibibi select").val().length) {
-                    user.getJSON("mods/tibibi/api/course.php",{value:$("#editnode #tibibi select").val()}, "",
+                if ($("#boeditnode #tibibi select").val().length) {
+                    user.getJSON("mods/tibibi/api/course.php",{value:$("#boeditnode #tibibi select").val()}, "",
                     function(_data) {
                         if (_data.status=="success" && _data.description && _data.description.length>0) {
-                            var val = $("#editnode #tibibi textarea").val();
+                            var val = $("#boeditnode #tibibi textarea").val();
                             if (val.length) { val+=','; }
                             val += _data.description;
-                            $("#editnode #tibibi textarea").val(val);
+                            $("#boeditnode #tibibi textarea").val(val);
                             tibibo.node.edit.refresh(false);
                         }
                     });
@@ -361,26 +361,26 @@ var tibibo = {
                 if (_incstar) { tibibo.node.edit.star = (tibibo.node.edit.star+1)%5; }
 
                 if (tibibo.node.edit.star!=0) {
-                    $("#editnode .node .star img").attr("src", "res/img/icon/menu01st"+(tibibo.node.edit.star-1)+".svg");
+                    $("#boeditnode .node .star img").attr("src", "res/img/icon/menu01st"+(tibibo.node.edit.star-1)+".svg");
                 }
 
-                $("#editnode .node").toggleClass("s",  (tibibo.node.edit.star!=0));
-                $("#editnode .node").toggleClass("f", ($("#editnode #tibibi textarea").val().length==0));
+                $("#boeditnode .node").toggleClass("s",  (tibibo.node.edit.star!=0));
+                $("#boeditnode .node").toggleClass("f", ($("#boeditnode #tibibi textarea").val().length==0));
             },
             update: function() {
                 if (tibibo.node.edit.elt) {
                     tibibo.node.edit.elt.src = $("#nodeimg .icon img").attr("src");
                     tibibo.node.edit.elt.nbstar = tibibo.node.edit.star;
-                    tibibo.node.edit.elt.label = $("#editnode #elabel").val().replace(/\"/g,"'");
-                    tibibo.node.edit.elt.description = $("#editnode #tibibi textarea").val();
+                    tibibo.node.edit.elt.label = $("#boeditnode #elabel").val().replace(/\"/g,"'");
+                    tibibo.node.edit.elt.description = $("#boeditnode #tibibi textarea").val();
                 }
                 else {
                     var elt={
                         id:tibibo.book.browse.id()+1,
                         src: $("#nodeimg .icon img").attr("src"),
                         nbstar: tibibo.node.edit.star,
-                        label: $("#editnode #elabel").val().replace(/\"/g,"'"),
-                        description : $("#editnode #tibibi textarea").val(),
+                        label: $("#boeditnode #elabel").val().replace(/\"/g,"'"),
+                        description : $("#boeditnode #tibibi textarea").val(),
                         children:[]
                     };
 
@@ -390,7 +390,7 @@ var tibibo = {
                 tibibo.node.edit.close();
             },
             close: function() {
-                $("#editnode>div").animate({opacity:0}, 1000, function() { $("#editnode").hide(); } );
+                $("#boeditnode>div").animate({opacity:0}, 1000, function() { $("#boeditnode").hide(); } );
             }
         },
         menu: function($elt) {
@@ -399,8 +399,8 @@ var tibibo = {
             if (turnon) { $elt.addClass("s"); }
         },
         state:function() {
-            $("#dbrowser").show();
-            $("#dbrowser #dcontent").html(tibibo.book.browse.dump({action:"state"},tibibo.book.current));
+            $("#bodbrowser").show();
+            $("#bodbrowser #dcontent").html(tibibo.book.browse.dump({action:"state"},tibibo.book.current));
         },
         export:function() {
             
@@ -414,7 +414,7 @@ var tibibo = {
                 newWindow.document.close();
         },
         import:function() {
-            var txt = $("#eimport textarea").val();
+            var txt = $("#boeimport textarea").val();
             if (txt.length) {
                 try {
                     var json = eval(txt);
@@ -422,13 +422,13 @@ var tibibo = {
                     else { tibibo.book.import(json, tibibo.book.current); }
 
                     tibibo.book.save();
-                    $("#eimport textarea").val("");
-                    $("#eimport").hide();
+                    $("#boeimport textarea").val("");
+                    $("#boeimport").hide();
                 } catch (e) {
                     alert("Syntax error");
                 }
             }
-            else { $("#eimport").hide(); }
+            else { $("#boeimport").hide(); }
         }
     },
     book: {
@@ -581,7 +581,7 @@ var tibibo = {
             }
         },
         move: function(_id, _to) {
-            $("#dbrowser").hide();
+            $("#bodbrowser").hide();
             var vElt = tibibo.book.browse.elt(_id);
             var vTo = _to==-1?tibibo.book.data.description:tibibo.book.browse.elt(_to).children;
             var vFrom = tibibo.book.browse.parent(_id).reverse();
@@ -617,7 +617,7 @@ var tibibo = {
                 user.getJSON("mods/tibibo/api/book.php",{action:"new",value:encodeURIComponent($("#dinput input").val())}, "",
                 function(_data) {
                     if (_data.status=="success") { document.location='tibibo.html?id='+_data.value; }
-                    else { $("#error").html(_data.error+" : "+_data.textStatus).show(); }
+                    else { $("#boerror").html(_data.error+" : "+_data.textStatus).show(); }
                 });
             }
         },
@@ -644,25 +644,25 @@ var tibibo = {
             return html;
         },
         nav : function(_menuid) {
-            $("#oheader #onav").html("");
+            $("#boheader #bonav").html("");
             if (tibibo.book.data.owner) {
                 var label = tibibo.book.data.value;
                 var html="<div id='root' class='node' ";
                 html+="ontouchstart='tibibo.node.click($(this),\"nav\");event.preventDefault();' ";
                 html+="onmousedown='tibibo.node.click($(this),\"nav\");' ";
                 html+="><div class='icon'><img src='mods/tibibo/icon.svg'/></div></div>";
-                $("#oheader #onav").html(html);
+                $("#boheader #bonav").html(html);
                 for (var i in tibibo.book.parents) {
                     var elt = tibibo.book.browse.elt(tibibo.book.parents[i]);
-                    $("#oheader #onav").append(tibibo.book.node(elt,"nav"));
+                    $("#boheader #bonav").append(tibibo.book.node(elt,"nav"));
                     label = tibibo.format(elt.label);
                 }
                 if (_menuid) {
                     var elt = tibibo.book.browse.elt(_menuid);
-                    $("#oheader #onav").append(tibibo.book.node(elt,"noclick"));
+                    $("#boheader #bonav").append(tibibo.book.node(elt,"noclick"));
                     label = tibibo.format(elt.label);
                 }
-                $("#oheader #onav").append("<div class='label'>"+label+"</div>");
+                $("#boheader #bonav").append("<div class='label'>"+label+"</div>");
             }
         },
         refresh: function() {
@@ -683,9 +683,9 @@ var tibibo = {
             }
 
 
-            $("#obrowser").html("");
-            for (var i in tibibo.book.current) { $("#obrowser").append(tibibo.book.node(tibibo.book.current[i])); }
-            $("#obrowser").show(); $("#ocontent>#omenu").hide();
+            $("#bobrowser").html("");
+            for (var i in tibibo.book.current) { $("#bobrowser").append(tibibo.book.node(tibibo.book.current[i])); }
+            $("#bobrowser").show(); $("#bocontent>#omenu").hide();
             
         },
         name: function(_elt) {
@@ -695,32 +695,32 @@ var tibibo = {
         }
     },
     devmode: function() {
-        if ($("#main").hasClass("devmode")) { user.devmode(); } else { $("#udevmode").show(); }
+        if ($("#bomain").hasClass("devmode")) { user.devmode(); } else { $("#udevmode").show(); }
         tibibo.init();
     },
     init: function() {
-        $("#ocontent>div").hide();
+        $("#bocontent>div").hide();
         $("#omenu .icon").removeClass("s");
         if (tibibo.args.id && !tibibo.book.data.owner) {
-            $("#error").html(tibibo.locale.error.booknotfound.replace("$1",tibibo.args.id)).show();
+            $("#boerror").html(tibibo.locale.error.booknotfound.replace("$1",tibibo.args.id)).show();
         }
 
         tibibo.menu.state = {};
         $("#chooseid #clastid .list").html("");
-        $("#main").removeClass("ownbook").removeClass("book");
+        $("#bomain").removeClass("ownbook").removeClass("book");
 
         if (user.settings && user.settings.name) {
             if (user.settings.devmode) {
                 // DISPLAY CURRENT BOOK (MAY BE USER OWN OR NOT)
                 if (tibibo.args.id && tibibo.book.data.owner) {
 
-                    if (tibibo.book.data.owner == user.settings.name)   { $("#main").addClass("ownbook"); }
-                    else                                                { $("#main").addClass("book"); }
+                    if (tibibo.book.data.owner == user.settings.name)   { $("#bomain").addClass("ownbook"); }
+                    else                                                { $("#bomain").addClass("book"); }
 
                     user.getJSON("mods/tibibo/api/tibibo.php",{action:"all",book:tibibo.args.id}, 0, function(_data) {
                         if (_data.state) { tibibo.menu.state = _data.state; }
                         tibibo.book.refresh();
-                        $("#obrowser").show();
+                        $("#bobrowser").show();
                     });
                 }
                 else {
@@ -745,7 +745,7 @@ var tibibo = {
                     user.getJSON("mods/tibibo/api/tibibo.php",{action:"all",book:tibibo.args.id}, 0, function(_data) {
                         tibibo.menu.state = _data.state;
                         tibibo.book.refresh();
-                        $("#obrowser").show();
+                        $("#bobrowser").show();
                     });
                     
                 }
@@ -769,7 +769,7 @@ var tibibo = {
         }
         else {
             if (tibibo.args.id && tibibo.book.data.owner) {
-                tibibo.book.refresh(); $("#obrowser").show();
+                tibibo.book.refresh(); $("#bobrowser").show();
             }
             else { $("#chooseid #clastid").hide(); $("#chooseid").show(); }
         }
@@ -793,9 +793,9 @@ $(window).ready(function() {
             tibibo.url =_check.url;
 
             // USER HANDLER INITIALISATION
-            user.load.edit($("#main"));
-            user.load.devmode($("#main"));
-            user.load.logpanel($("#main"), {close:true}, function() {
+            user.load.edit($("#bomain"));
+            user.load.devmode($("#bomain"));
+            user.load.logpanel($("#bomain"), {close:true}, function() {
                 if (tibibo.args.id) { $.getJSON("mods/tibibo/api/book.php?value="+tibibo.args.id, function(_data) {
                         tibibo.book.data = _data;
                         if (!tibibo.book.data.description) { tibibo.book.data.description=[]; }
@@ -814,7 +814,7 @@ $(window).ready(function() {
 
         }
         else {
-            $("#main").html(_check.status+": "+_check.textStatus);
+            $("#bomain").html(_check.status+": "+_check.textStatus);
         }
     });
 
@@ -828,7 +828,7 @@ $(window).ready(function() {
     var x = Math.floor($(window).width()/16);
     var y = Math.floor($(window).height()/12);
     $("body").css("font-size", (Math.min(x,y))+"px");
-    $("#main").css("margin-top", Math.floor(($(window).height()-$("#main").height())/2-2)+"px").show();
+    $("#bomain").css("margin-top", Math.floor(($(window).height()-$("#bomain").height())/2-2)+"px").show();
 
 
 });
@@ -836,13 +836,13 @@ $(window).ready(function() {
 </head>
 
 <body>
-    <div id="main">
+    <div id="bomain">
 
-      <div id="omain">
-        <div id="oheader" class="special">
+      <div id="bopage">
+        <div id="boheader" class="bospecial">
 
             <!-- NAVIGATION ICONS AND CHAPTER/BOOK DESCRIPTION -->
-            <div id="onav"></div>
+            <div id="bonav"></div>
 
             <!-- USER PROFILE -->
             <div id="profile">
@@ -861,10 +861,10 @@ $(window).ready(function() {
         </div>
 
         <!-- PAGE CONTENT -->
-        <div id="ocontent">
+        <div id="bocontent">
 
             <!-- BOOK CHAPTER ICONS -->
-            <div id="obrowser"></div>
+            <div id="bobrowser"></div>
 
             <!-- CHAPTER MENU -->
             <div id="omenu"></div>
@@ -906,12 +906,12 @@ $(window).ready(function() {
         </div>
 
         <!-- ERROR LOG PANEL (WRONG BOOK ID)-->
-        <div id="error"></div>
+        <div id="boerror"></div>
 
         <!-- FIREFOX WARNINGS -->
-        <div id="firefox"><img src="ext/firefox.svg"/>Designed for<h2>Firefox</h2></div>
+        <div id="bofirefox"><img src="ext/firefox.svg"/>Designed for<h2>Firefox</h2></div>
 
-        <div id="ofooter" class="special">
+        <div id="bofooter" class="bospecial">
             <div id="menu">
 
                 <!-- DEVMODE ON OWN BOOK TOOLS -->
@@ -937,8 +937,8 @@ $(window).ready(function() {
                     <div id="mexport" class="icon e" onmousedown="tibibo.node.export();"
                         ontouchstart="tibibo.node.export($(this));event.preventDefault();" >
                         <img src="mods/tibibi/res/img/export.svg"/></div>
-                    <div id="mimport" class="icon e" onmousedown="$('#eimport').show();"
-                        ontouchstart="$('#eimport').show();event.preventDefault();" >
+                    <div id="mimport" class="icon e" onmousedown="$('#boeimport').show();"
+                        ontouchstart="$('#boeimport').show();event.preventDefault();" >
                         <img src="mods/tibibi/res/img/import.svg"/></div>
                 </div>
 
@@ -961,14 +961,14 @@ $(window).ready(function() {
 
     <div id="waiting" class="anim12"><div><img src="res/img/generic/waiting_red.svg"/></div></div>
 
-    <div id="eimport"><div>
+    <div id="boeimport"><div>
         <textarea id="areaimport"></textarea>
         <div class="button"><div class="icon" onmousedown="tibibo.node.import();"
                             ontouchstart="tibibo.node.import($(this));event.preventDefault();">
             <img src="mods/tibibi/res/img/import.svg"/></div></div>
     </div></div>
 
-    <div id="editnode">
+    <div id="boeditnode">
         <div id="eedit">
         <div id="settings">
             <div id="nodeimg" class="node" onclick="tibibo.node.edit.refresh(true);" 
@@ -1069,7 +1069,7 @@ $(window).ready(function() {
     </div>
     </div>
 
-    <div id="dbrowser" ontouchstart="$(this).hide();tibibo.node.menu();event.preventDefault();" onclick="$(this).hide();tibibo.node.menu();">
+    <div id="bodbrowser" ontouchstart="$(this).hide();tibibo.node.menu();event.preventDefault();" onclick="$(this).hide();tibibo.node.menu();">
     <div ontouchstart="event.stopPropagation();event.preventDefault();" onclick="event.stopPropagation();">
         <div id="dcontent"></div>
     </div></div>

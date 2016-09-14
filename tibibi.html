@@ -23,65 +23,64 @@
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="mods/tibibi/res/img/icon/icon144.png" />
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <style>
-        #main                                       { display:relative; }
-        #main>#topmenu                              { width:100%; height:1.2em; background-color:gray; font-size:.5em; padding:.1em; }
-        #main>#topmenu>*                            { float:left; }
-        #topmenu>select                             { font-size:1em; height:1.2em; width:10em; border:0; padding-left:.5em; background-color:#555; color:white; }
-        #topmenu>.icon                              { font-size:1em; padding:.1em; cursor:pointer; }
-        #topmenu>.icon.l                            { margin-left:.5em; background-color:#333;  border-radius:.5em 0 0 .5em;}
-        #topmenu>.icon.e                            { background-color:#444; }
-        #topmenu>.icon.s                            { background-color:#A11 !important; }
-        #topmenu>.icon.d                            { background-color:#333;  border-radius:0 .5em .5em 0;}
-        #topmenu>.icon.x                            { margin-left:.5em; background-color:#333;  border-radius:.5em; }
-        #topmenu #gdr                               { display:none; }
-        #tmenu                                      { font-size:2em; height:5.65em; }
-        #tedit                                      { display:none; height:11.3em; width:17em; }
-        #content.s #tmenu                           { display:none; }
-        #content.s #tedit                           { display:inherit; }
-        #tlist                                      { float:left; background-color:#555; width:6em; height:100%; font-size:.5em;}
-        #tlist #telts                               { width:100%; height:25.8em; font-size:.8em; overflow:auto;}
-        #tlist #telts .elt                          { width:6.5em; height:1.4em; margin-top:.1em; cursor:pointer; }
-        #tlist #telts .l                            { clear:both; float:left; background-color:#447; border-radius:.5em 0 0 .5em; width:1em; text-align:center; color:white; margin-left:.1em; }
-        #tlist #telts .v                            { float:left; background-color:#222; color:white; width:5em; padding-left:.2em; border-radius:0 .5em .5em 0;}
-        #tlist #telts .elt.s .l                     { background-color:red; }
-        #tlist #telts .elt.s .v                     { background-color:red; }
-        #tlist #teltact                             { width:100%; height:1em; background-color:#333;}
-        #tlist #teltact .icon                       { float:left; opacity:0.1; cursor:default;}
-        #tlist #teltact .icon.r                     { float:right; }
-        #tlist #teltact.s .icon                     { opacity:1; cursor:pointer; }
-        #tlist #tactions                            { width:100%; height:1em; background-color:#222;}
-        #tlist #tactions .icon                      { margin-left:.4em; float:left; cursor:pointer;}
-        #tbrowser                                   { float:left; background-color:#AAA; width:13em; height:100%; }
-        #main>#content                              { width:100%; height:100%; background-color:#222; }
-        #main>.popup                                { position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); display:none; }
-        #main>.popup>div                            { font-size:.8em; width:15em; background-color:#555; border-radius:.75em; padding:.5em; margin-top:3em; margin-left:2em; }
-        #main>.popup>div>div                        { width:16em; }
-        #main>.popup input                          { float:left; font-size:1em; height:1.19em; width:13.3em; border:0; padding-left:.5em; background-color:#AAA; color:white; border-radius:.5em 0 0 .5em;}
-        #main>.popup .icon                          { padding:.1em; margin-left:1em; background-color:#333;  border-radius:0 .5em .5em 0;}
-        #main>#popup2 textarea                      { font-size:.5em; border-radius:.5em; margin:0; border:0; background-color:#DDD; width:30em; height:8em; resize:none;  }
-        #main>#popup2 .button                       { background-color:#999; border-radius:.5em; text-align:center; cursor:pointer; width:15em; }
-        #jbrowser #patab .small div                 { font-size:.8em; }
-        #jbrowser #jresults                         { height: 15.7em; }
-        #jbrowser.reduce #jresults                  { height: 25.5em; }
-        #tmenu .menu                                { font-size:1.3em !important; }
-        #main>#screen                               { position:absolute; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); display:none; z-index:3; color:limegreen; }
-        #main>#screen>div#quit                      { position:absolute; top:0; left:0; font-size:1.2em; width:1em; height:1em; cursor:pointer; }
-        #main>#screen>div#list                      { font-size:.25em; width:61em; height:41em; margin:4em 1em; padding:.5em; background-color:black;overflow:auto; }
-        #main>#screen #list .drop                   { font-size:.8em; float:left; width:12em; height:12em; margin:.25em; background-color:rgba(200,220,255,0.1); overflow:visible;}
-        #main>#screen #list .drag                   { position:relative; height:12em; background-color:gray; cursor:move; background-image:url('res/img/site/nosnapshot.svg');background-repeat:no-repeat;}
-        #main>#screen #list .drag .eximg            { font-size:3em; width: 4em; height: 3em; }
-        #main>#screen #list .drag .eximg>img.snap   { width: 4em; height: 3em; }
-        #main>#screen #list .drag .extitle          { background-color:white; height:4.5em; border:1px solid black; border-width:1px 0 0 0; font-size:.7em;color:black;text-align:justify;padding:0 .5em; }
-        #main>#screen #list .drag .exid             { position:absolute; color:black; width:5.5em; background-color:white; top:.3em; left:-0.1em; padding-left:.5em; border-radius:0 .5em .5em 0;border:1px solid black;}
-
+#bimain                                 { display:relative; }
+#bitopmenu                              { width:100%; height:1.2em; background-color:gray; font-size:.5em; padding:.1em; }
+#bitopmenu>*                            { float:left; }
+#bitopmenu>select                       { font-size:1em; height:1.2em; width:10em; border:0; padding-left:.5em; background-color:#555; color:white; }
+#bitopmenu>.icon                        { font-size:1em; padding:.1em; cursor:pointer; }
+#bitopmenu>.icon.l                      { margin-left:.5em; background-color:#333;  border-radius:.5em 0 0 .5em;}
+#bitopmenu>.icon.e                      { background-color:#444; }
+#bitopmenu>.icon.s                      { background-color:#A11 !important; }
+#bitopmenu>.icon.d                      { background-color:#333;  border-radius:0 .5em .5em 0;}
+#bitopmenu>.icon.x                      { margin-left:.5em; background-color:#333;  border-radius:.5em; }
+#bitopmenu #bigdr                       { display:none; }
+#bimenu                                 { font-size:2em; height:5.65em; }
+#biedit                                 { display:none; height:11.3em; width:17em; }
+#bicontent.s #bimenu                    { display:none; }
+#bicontent.s #biedit                    { display:inherit; }
+#bilist                                 { float:left; background-color:#555; width:6em; height:100%; font-size:.5em;}
+#bilist #bielts                         { width:100%; height:25.8em; font-size:.8em; overflow:auto;}
+#bilist #bielts .elt                    { width:6.5em; height:1.4em; margin-top:.1em; cursor:pointer; }
+#bilist #bielts .l                      { clear:both; float:left; background-color:#447; border-radius:.5em 0 0 .5em; width:1em; text-align:center; color:white; margin-left:.1em; }
+#bilist #bielts .v                      { float:left; background-color:#222; color:white; width:5em; padding-left:.2em; border-radius:0 .5em .5em 0;}
+#bilist #bielts .elt.s .l               { background-color:red; }
+#bilist #bielts .elt.s .v               { background-color:red; }
+#bilist #bieltact                       { width:100%; height:1em; background-color:#333;}
+#bilist #bieltact .icon                 { float:left; opacity:0.1; cursor:default;}
+#bilist #bieltact .icon.s               { background:red; }
+#bilist #bieltact.s .icon               { opacity:1; cursor:pointer; }
+#bilist #biactions                      { width:100%; height:1em; background-color:#222;}
+#bilist #biactions .icon                { margin-left:.4em; float:left; cursor:pointer;}
+#bibrowser                              { float:left; background-color:#AAA; width:13em; height:100%; }
+#bicontent                              { width:100%; height:100%; background-color:#222; }
+.bipopup                                { position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); display:none; }
+.bipopup>div                            { font-size:.8em; width:15em; background-color:#555; border-radius:.75em; padding:.5em; margin-top:3em; margin-left:2em; }
+.bipopup>div>div                        { width:16em; }
+.bipopup input                          { float:left; font-size:1em; height:1.19em; width:13.3em; border:0; padding-left:.5em; background-color:#AAA; color:white; border-radius:.5em 0 0 .5em;}
+.bipopup .icon                          { padding:.1em; margin-left:1em; background-color:#333;  border-radius:0 .5em .5em 0;}
+#bipopup2 textarea                      { font-size:.5em; border-radius:.5em; margin:0; border:0; background-color:#DDD; width:30em; height:8em; resize:none;  }
+#bipopup2 .button                       { background-color:#999; border-radius:.5em; text-align:center; cursor:pointer; width:15em; }
+#bimain #jbrowser #patab .small div     { font-size:.8em; }
+#bimain #jbrowser #jresults             { height: 15.7em; }
+#bimain #jbrowser.reduce #jresults      { height: 25.5em; }
+#bimenu .menu                           { font-size:1.3em !important; }
+#biscreen                               { position:absolute; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); display:none; z-index:3; color:limegreen; }
+#biscreen>div#quit                      { position:absolute; top:0; left:0; font-size:1.2em; width:1em; height:1em; cursor:pointer; }
+#biscreen>div#list                      { font-size:.25em; width:61em; height:41em; margin:4em 1em; padding:.5em; background-color:black;overflow:auto; }
+#biscreen #list .drop                   { font-size:.8em; float:left; width:12em; height:12em; margin:.25em; background-color:rgba(200,220,255,0.1); overflow:visible;}
+#biscreen #list .drag                   { position:relative; height:12em; background-color:gray; cursor:move; background-image:url('res/img/site/nosnapshot.svg');background-repeat:no-repeat;}
+#biscreen #list .drag .eximg            { font-size:3em; width: 4em; height: 3em; }
+#biscreen #list .drag .eximg>img.snap   { width: 4em; height: 3em; }
+#biscreen #list .drag .extitle          { background-color:white; height:4.5em; border:1px solid black; border-width:1px 0 0 0; font-size:.7em;color:black;text-align:justify;padding:0 .5em; }
+#biscreen #list .drag .exid             { position:absolute; color:black; width:5.5em; background-color:white; top:.3em; left:-0.1em; padding-left:.5em; border-radius:0 .5em .5em 0;border:1px solid black;}
     </style>
     <script>
 
 
 user.onEvent = function() {
     if (user.settings && user.settings.name) { tibibi.group.list(); tibibi.course.list(); }
-    else { $("#tmenu").html(""); $("#gcourses").html(""); $("#ggroups").html("");
-            $("#gde").removeClass("s"); $("#content").removeClass("s"); $("#logpanel").show(); }
+    else { $("#bimenu").html(""); $("#bigcourses").html(""); $("#biggroups").html("");
+            $("#bigde").removeClass("s"); $("#bicontent").removeClass("s"); $("#logpanel").show(); }
 };
 
 var tibibi = {
@@ -89,28 +88,28 @@ var tibibi = {
     url     : "",
     menu: {
         build:function(_value) {
-            user.getJSON("mods/tibibi/api/link.php",{course:$("#gcourses").val(), tibibi:_value?_value:$("#ggroups").val()}, "",
+            user.getJSON("mods/tibibi/api/link.php",{course:$("#bigcourses").val(), tibibi:_value?_value:$("#biggroups").val()}, "",
                 function(_data) {
                 if (!_data.description) { _data.description=""; }
                 for (var i=_data.description.length; i<tibibi.course.ex.length; i++) { _data.description+="."; }
 
-                $("#tmenu").menu({
+                $("#bimenu").menu({
                     list    : tibibi.course.ex,
                     state   : _data.description,
                     onupdate: function($this, _state) {
-                        if ($("#ggroups").val().length) {
+                        if ($("#biggroups").val().length) {
                             user.getJSON("mods/tibibi/api/link.php",
-                                {value:_state, course:$("#gcourses").val(), tibibi:$("#ggroups").val()}, "", function(_data) {});
+                                {value:_state, course:$("#bigcourses").val(), tibibi:$("#biggroups").val()}, "", function(_data) {});
                     } },
                     onclick : function($this, _args) {
                         $("#waiting").show().find("div").addClass("running");
                         $("#launcher").jlodb({
                             onstart:    function($this) { $("#rmenu").hide(); $("#waiting").hide().find("div").removeClass("running"); },
                             onfinish:   function($this) { 
-                                $("#main").addClass("nosplash"); $("#rmenu").show(); $("#score").removeClass().hide(); },
+                                $("#bimain").addClass("nosplash"); $("#rmenu").show(); $("#score").removeClass().hide(); },
                             onscore:    function($this, _ret) {
                                 var isnext = false;
-                                if (_ret.score>=2) { isnext = $("#tmenu").menu('score', _ret.score).menu('more'); }
+                                if (_ret.score>=2) { isnext = $("#bimenu").menu('score', _ret.score).menu('more'); }
                                 $("#score #next").toggle(isnext);
                                 $("#score").attr("class","s"+_ret.score).show();
                                 return true; } },_args);
@@ -121,56 +120,56 @@ var tibibi = {
     },
     popup: {
         cbk: function() {},
-        close: function() { $("#popup1").hide(); },
+        close: function() { $("#bipopup1").hide(); },
         valid: function() { tibibi.popup.cbk(); tibibi.popup.close(); }
     },
     group: {
         timer: 0,
         open: function() {
-            $("#popup1 input").val("");
+            $("#bipopup1 input").val("");
             tibibi.popup.cbk = function() {
-                if ($("#popup1 input").val().length) {
-                    user.getJSON("mods/tibibi/api/tibibi.php",{action:"new",value:$("#popup1 input").val()}, "", function(_data){
+                if ($("#bipopup1 input").val().length) {
+                    user.getJSON("mods/tibibi/api/tibibi.php",{action:"new",value:$("#bipopup1 input").val()}, "", function(_data){
                         tibibi.group.list(_data.value);
-                        tibibi.menu.build($("#popup1 input").val());
+                        tibibi.menu.build($("#bipopup1 input").val());
                     });
                 }
             }
-            $("#popup1").show();
+            $("#bipopup1").show();
         },
         remove: function() {
             if (tibibi.group.timer) {
-                clearTimeout(tibibi.group.timer); tibibi.group.timer = 0; $("#gdg").removeClass("s");
-                user.getJSON("mods/tibibi/api/tibibi.php",{action:"del",value:$("#ggroups").val()}, "", function(_data){
+                clearTimeout(tibibi.group.timer); tibibi.group.timer = 0; $("#bigdg").removeClass("s");
+                user.getJSON("mods/tibibi/api/tibibi.php",{action:"del",value:$("#biggroups").val()}, "", function(_data){
                     tibibi.group.list();
-                    $("#ggroups").val("");
+                    $("#biggroups").val("");
                     tibibi.menu.build();
                 });
             }
             else {
-                if ($("#ggroups").val().length) {
-                    $("#gdg").addClass("s");
-                    tibibi.group.timer = setTimeout(function() { $("#gdg").removeClass("s"); tibibi.group.timer = 0; }, 500);
+                if ($("#biggroups").val().length) {
+                    $("#bigdg").addClass("s");
+                    tibibi.group.timer = setTimeout(function() { $("#bigdg").removeClass("s"); tibibi.group.timer = 0; }, 500);
                 }
             }
         },
         edit: function() {
-            if ($("#ggroups").val().length) {
-                $("#popup1 input").val($("#ggroups").val());
+            if ($("#biggroups").val().length) {
+                $("#bipopup1 input").val($("#biggroups").val());
                 tibibi.popup.cbk = function() {
-                    user.getJSON("mods/tibibi/api/tibibi.php",{action:"upd",tibibi:$("#ggroups").val(), value:$("#popup1 input").val()}, "", function(_data){ tibibi.group.list(_data.value); });
+                    user.getJSON("mods/tibibi/api/tibibi.php",{action:"upd",tibibi:$("#biggroups").val(), value:$("#bipopup1 input").val()}, "", function(_data){ tibibi.group.list(_data.value); });
                 }
-                $("#popup1").show();
+                $("#bipopup1").show();
             }
         },
         list: function(_val) {
             user.getJSON("mods/tibibi/api/tibibi.php",{}, "", function(_data) {
-                $("#ggroups").html("<option></option>");
+                $("#biggroups").html("<option></option>");
                 for (var g in _data.tibibis) {
                     html = "<option";
                     if (_data.tibibis[g]==_val) { html+=" selected='selected'"; }
                     html+=">"+_data.tibibis[g]+"</option>";
-                    $("#ggroups").append(html);
+                    $("#biggroups").append(html);
                 }
             });
         }
@@ -180,15 +179,23 @@ var tibibi = {
         ex:[],
         selected: -1,
         action: function(_action) {
-            if ($("#teltact").hasClass("s")) {
+            if ($("#bieltact").hasClass("s")) {
                 var upd = false;
                 if (_action=="del") {
-                    for (var i=tibibi.course.selected; i<tibibi.course.ex.length-1; i++) {
-                        tibibi.course.ex[i] = tibibi.course.ex[i+1];
+                    if (tibibi.course.timer) {
+                        clearTimeout(tibibi.course.timer); tibibi.course.timer = 0; $("#bidelex").removeClass("s");
+
+                        for (var i=tibibi.course.selected; i<tibibi.course.ex.length-1; i++) {
+                            tibibi.course.ex[i] = tibibi.course.ex[i+1];
+                        }
+                        tibibi.course.ex.pop();
+                        tibibi.course.selected = -1;
+                        upd = true;
                     }
-                    tibibi.course.ex.pop();
-                    tibibi.course.selected = -1;
-                    upd = true;
+                    else {
+                        $("#bidelex").addClass("s");
+                        tibibi.course.timer = setTimeout(function() { $("#bidelex").removeClass("s"); tibibi.course.timer = 0; }, 500);
+                    }
                 }
                 else if (_action=="up" && tibibi.course.selected>0) {
                     var tmp = tibibi.course.ex[tibibi.course.selected];
@@ -203,7 +210,7 @@ var tibibi = {
                     upd = true;
                 }
                 else if (_action=="look") {
-                    $("#tbrowser").browser("id",tibibi.course.ex[tibibi.course.selected]);
+                    $("#bibrowser").browser("id",tibibi.course.ex[tibibi.course.selected]);
                 }
                 else if (_action=="exe") {  tibibi.run({id:tibibi.course.ex[tibibi.course.selected]}); }
                 else if (_action=="snapshot") {
@@ -214,39 +221,39 @@ var tibibi = {
             }
         },
         open: function() {
-            $("#popup1 input").val("");
+            $("#bipopup1 input").val("");
             tibibi.popup.cbk = function() {
-                if ($("#popup1 input").val().length) {
-                    user.getJSON("mods/tibibi/api/course.php",{action:"new",value:$("#popup1 input").val()}, "", function(_data){
+                if ($("#bipopup1 input").val().length) {
+                    user.getJSON("mods/tibibi/api/course.php",{action:"new",value:$("#bipopup1 input").val()}, "", function(_data){
                         tibibi.course.list(_data.value);
-                        tibibi.course.load($("#popup1 input").val(),false,true);
+                        tibibi.course.load($("#bipopup1 input").val(),false,true);
                     });
                 }
             }
-            $("#popup1").show();
+            $("#bipopup1").show();
         },
         update: function() {
-            user.getJSON("mods/tibibi/api/course.php",{action:"upd",course:$("#gcourses").val(), description:tibibi.course.ex}, "", function(_data){
-                tibibi.course.load($("#gcourses").val(),true,false);
+            user.getJSON("mods/tibibi/api/course.php",{action:"upd",course:$("#bigcourses").val(), description:tibibi.course.ex}, "", function(_data){
+                tibibi.course.load($("#bigcourses").val(),true,false);
                 tibibi.course.highlight();
             });
         },
         select: function(_id) {
             if (_id!=-1) {
-                if ($($("#telts .elt").get(_id)).hasClass("s")) {
-                    $("#telts .elt").removeClass("s");
-                    $("#teltact").removeClass("s");
+                if ($($("#bielts .elt").get(_id)).hasClass("s")) {
+                    $("#bielts .elt").removeClass("s");
+                    $("#bieltact").removeClass("s");
                     _id = -1;
                 }
                 else {
-                    $("#telts .elt").removeClass("s");
-                    $($("#telts .elt").get(_id)).addClass("s");
-                    $("#teltact").addClass("s");
+                    $("#bielts .elt").removeClass("s");
+                    $($("#bielts .elt").get(_id)).addClass("s");
+                    $("#bieltact").addClass("s");
                 }
             }
             else {
-                $("#telts .elt").removeClass("s");
-                $("#teltact").removeClass("s");
+                $("#bielts .elt").removeClass("s");
+                $("#bieltact").removeClass("s");
             }
             tibibi.course.selected=_id;
         },
@@ -256,9 +263,9 @@ var tibibi = {
                     var ex=[];
                     if (_data.description && _data.description.length) { ex = _data.description.split(","); }
                     if (_menu) { tibibi.menu.build(); }
-                    $("#telts").html("");
+                    $("#bielts").html("");
                     for (var e in ex) {
-                        $("#telts").append(
+                        $("#bielts").append(
                             "<div class='elt' id='"+e+"' onclick='tibibi.course.select("+e+")'>"+
                             "<div class='l'>"+(parseInt(e)+1)+"</div>"+
                             "<div class='v'>"+ex[e]+"</div></div>");
@@ -269,66 +276,66 @@ var tibibi = {
                 });
             }
             else {
-                $("#tmenu").html("");
-                $("#gde").removeClass("s");
-                $("#content").removeClass("s");
+                $("#bimenu").html("");
+                $("#bigde").removeClass("s");
+                $("#bicontent").removeClass("s");
                 tibibi.course.ex=[];
                 tibibi.course.selected = -1;
             }
         },
         remove: function() {
             if (tibibi.course.timer) {
-                clearTimeout(tibibi.course.timer); tibibi.course.timer = 0; $("#gdc").removeClass("s");
-                user.getJSON("mods/tibibi/api/course.php",{action:"del",value:$("#gcourses").val()}, "", function(_data){
+                clearTimeout(tibibi.course.timer); tibibi.course.timer = 0; $("#bigdc").removeClass("s");
+                user.getJSON("mods/tibibi/api/course.php",{action:"del",value:$("#bigcourses").val()}, "", function(_data){
                     tibibi.course.list(); tibibi.course.load("",false,false);
                 });
             }
             else {
-                if ($("#gcourses").val().length) {
-                    $("#gdc").addClass("s");
-                    tibibi.course.timer = setTimeout(function() { $("#gdc").removeClass("s"); tibibi.course.timer = 0; }, 500);
+                if ($("#bigcourses").val().length) {
+                    $("#bigdc").addClass("s");
+                    tibibi.course.timer = setTimeout(function() { $("#bigdc").removeClass("s"); tibibi.course.timer = 0; }, 500);
                 }
             }
         },
         edit: function() {
-            if ($("#gcourses").val().length) {
-                $("#popup1 input").val($("#gcourses").val());
+            if ($("#bigcourses").val().length) {
+                $("#bipopup1 input").val($("#bigcourses").val());
                 tibibi.popup.cbk = function() {
-                    user.getJSON("mods/tibibi/api/course.php",{action:"upd",course:$("#gcourses").val(), value:$("#popup1 input").val()}, "", function(_data){
+                    user.getJSON("mods/tibibi/api/course.php",{action:"upd",course:$("#bigcourses").val(), value:$("#bipopup1 input").val()}, "", function(_data){
                         tibibi.course.list(_data.value); });
                 }
-                $("#popup1").show();
+                $("#bipopup1").show();
             }
         },
         list: function(_val) {
             user.getJSON("mods/tibibi/api/course.php",{action:"list"}, "", function(_data) {
-                $("#gcourses").html("<option></option>");
+                $("#bigcourses").html("<option></option>");
                 for (var g in _data.courses) {
                     html = "<option";
                     if (_data.courses[g]==_val) { html+=" selected='selected'"; }
                     html+=">"+_data.courses[g]+"</option>";
-                    $("#gcourses").append(html);
+                    $("#bigcourses").append(html);
                 }
             });
         },
         expo: function() {
             var html="";
             for (var i in tibibi.course.ex) { if (html) { html+=","; } html+=tibibi.course.ex[i]; }
-            $("#popup2 textarea").val(html);
-            $("#popup2 .button").hide();
-            $("#popup2").show();
+            $("#bipopup2 textarea").val(html);
+            $("#bipopup2 .button").hide();
+            $("#bipopup2").show();
         },
         impo: function() {
-            $("#popup2 textarea").val("");
-            $("#popup2 .button").show();
-            $("#popup2").show();
+            $("#bipopup2 textarea").val("");
+            $("#bipopup2 .button").show();
+            $("#bipopup2").show();
         },
         importex: function() {
-            if ($("#popup2 textarea").val()) {
-                var ex = $("#popup2 textarea").val().split(",");
+            if ($("#bipopup2 textarea").val()) {
+                var ex = $("#bipopup2 textarea").val().split(",");
                 for (var i in ex) { tibibi.course.ex.push(ex[i]); }
                 tibibi.course.update();
-                $("#popup2").hide();
+                $("#bipopup2").hide();
             }
         },
         highlight: function() {
@@ -338,8 +345,8 @@ var tibibi = {
         updover: function() {
             var html="";
             tibibi.course.ex=[];
-            $("#main #screen #list .drop").each(function(){ if (!$(this).html().length) { $(this).detach(); }});
-            $("#main #screen #list .exid").each(function(_index){ $(this).attr("id","v"+_index);
+            $("#biscreen #list .drop").each(function(){ if (!$(this).html().length) { $(this).detach(); }});
+            $("#biscreen #list .exid").each(function(_index){ $(this).attr("id","v"+_index);
                 if (_index) { html+=","; } html+=$(this).text(); tibibi.course.ex.push($(this).text()); });
             tibibi.course.update();
         },
@@ -400,7 +407,7 @@ var tibibi = {
             var html="";
             for (var i in tibibi.course.ex) { if (html) { html+=","; } html+=tibibi.course.ex[i]; }
              $.getJSON("mods/tibibi/api/exercice.php?value="+html, function(data2) {
-                $("#main #screen #list").html("");
+                $("#biscreen #list").html("");
                 for (var i in data2.exercices) {
                     var $drop = $("<div class='drop'></div>");
                     var $drag = $("<div class='drag'></div>");
@@ -418,42 +425,42 @@ var tibibi = {
                     $drag.append("<div class='exid'>"+data2.exercices[i].id+"</div>");
                     $drag.append("<div class='extitle'>"+data2.exercices[i].title+"</div>");
                     $drop.append($drag);
-                    $drag.draggable({ containment:$("#screen #list"), appendTo:$("#screen #list"), revert:false, stack:".drag",
+                    $drag.draggable({ containment:$("#biscreen #list"), appendTo:$("#biscreen #list"), revert:false, stack:".drag",
                         stop:function(event, ui) { $(this).css("top",0).css("left",0); }});
                     tibibi.course.droppable($drop);
-                    $("#main #screen #list").append($drop);
+                    $("#biscreen #list").append($drop);
                 }
                 tibibi.course.updover();
-                $("#main #screen").show();
+                $("#biscreen").show();
             });
         }
     },
     edit: function() {
-        if ($("#gde").hasClass("s")) {
-            $("#gde").removeClass("s");
-            $("#content").removeClass("s");
+        if ($("#bigde").hasClass("s")) {
+            $("#bigde").removeClass("s");
+            $("#bicontent").removeClass("s");
             tibibi.menu.build();
         }
         else {
-            if ($("#gcourses").val()) {
-                $("#gde").addClass("s");
-                $("#content").addClass("s");
-                $("#tbrowser").browser('onshow');
+            if ($("#bigcourses").val()) {
+                $("#bigde").addClass("s");
+                $("#bicontent").addClass("s");
+                $("#bibrowser").browser('onshow');
             }
         }
     },
     run : function(_args) {
         $("#waiting").show().find("div").addClass("running");
-        $("#launcher").jlodb({ onstart: function($this) { $("#content").hide(); $("#waiting").hide().find("div").removeClass("running"); },
-                               onfinish:function($this) { $("#content").show(); $("#score").removeClass().hide(); }},_args);
+        $("#launcher").jlodb({ onstart: function($this) { $("#bicontent").hide(); $("#waiting").hide().find("div").removeClass("running"); },
+                               onfinish:function($this) { $("#bicontent").show(); $("#score").removeClass().hide(); }},_args);
     },
     qtimer : 0,
     quit : function() {
         if (urlargs.from) {
             if (tibibi.qtimer) { clearTimeout(tibibi.qtimer); }
-            if ($("#gdr").hasClass("s")) { $("#gdr").removeClass("s"); window.location = urlargs.from; }
-            else                         { $("#gdr").addClass("s");
-                                           tibibi.qtimer = setTimeout(function() { $("#gdr").removeClass("s"); tibibi.qtimer = 0; },500); }
+            if ($("#bigdr").hasClass("s"))  { $("#bigdr").removeClass("s"); window.location = urlargs.from; }
+            else                            { $("#bigdr").addClass("s");
+                                              tibibi.qtimer = setTimeout(function() { $("#bigdr").removeClass("s"); tibibi.qtimer = 0; },500); }
         }
     }
 };
@@ -468,7 +475,7 @@ $(window).ready(function() {
     var a = location.search.substring(1).split('&');
     for (var i in a) { var p= a[i].split('='); urlargs[p[0]]=p[1]; }
 
-    if (urlargs.from) { $("#gdx").hide(); $("#gdr").show(); }
+    if (urlargs.from) { $("#bigdx").hide(); $("#bigdr").show(); }
 
     $.getJSON("api/checkdb.php", function (_check) {
 
@@ -476,17 +483,17 @@ $(window).ready(function() {
             tibibi.lang = _check.lang;
             tibibi.url  = _check.url;
 
-            user.load.logpanel($("#main"), {}, function() { user.init(tibibi.lang); });
+            user.load.logpanel($("#bimain"), {}, function() { user.init(tibibi.lang); });
 
             // BROWSER LOADING
             $.getJSON("locale/"+tibibi.lang+"/classification.json", function(data) {
                 tibibi.classification = $(data);
-                $("#tbrowser").browser({url:tibibi.url, lang:tibibi.lang, classification:tibibi.classification,
+                $("#bibrowser").browser({url:tibibi.url, lang:tibibi.lang, classification:tibibi.classification,
                     onRefresh:function($this) { tibibi.course.highlight(); },
                     context:[
                     { icon:"mods/tibibi/res/img/run.svg",       process:function(_id){ tibibi.run({id:_id}); } },
                     { icon:"mods/tibibi/res/img/import.svg",    process:function(_id){
-                        if ($("#telts .elt.s").length)  { tibibi.course.ex.splice($("#telts .elt.s").attr("id"),0,_id); }
+                        if ($("#bielts .elt.s").length)  { tibibi.course.ex.splice($("#bielts .elt.s").attr("id"),0,_id); }
                         else                            { tibibi.course.ex.push(_id); }
                         tibibi.course.update();
                     } },
@@ -501,7 +508,7 @@ $(window).ready(function() {
 
         }
         else {
-            $("#main").html(_check.status+": "+_check.textStatus);
+            $("#bimain").html(_check.status+": "+_check.textStatus);
         }
     });
 
@@ -509,87 +516,87 @@ $(window).ready(function() {
     var x = Math.floor($(window).width()/16);
     var y = Math.floor($(window).height()/12);
     $("body").css("font-size", (Math.min(x,y))+"px");
-    $("#main").css("margin-top", Math.floor(($(window).height()-$("#main").height())/2-2)+"px").show();
+    $("#bimain").css("margin-top", Math.floor(($(window).height()-$("#bimain").height())/2-2)+"px").show();
 
 });
     </script>
 </head>
 
 <body>
-    <div id="main">
-        <div id="topmenu">
+    <div id="bimain">
+        <div id="bitopmenu">
             <div class="icon l" onclick="tibibi.group.open();" ontouchstart="tibibi.group.open();event.preventDefault();">
                 <img src="mods/tibibi/res/img/newpeople.svg"/></div>
-            <select id="ggroups" onchange="tibibi.menu.build();"><option></option></select>
+            <select id="biggroups" onchange="tibibi.menu.build();"><option></option></select>
             <div class="icon e" onclick="tibibi.group.edit();" ontouchstart="tibibi.group.edit();event.preventDefault();">
                 <img src="mods/tibibi/res/img/edit.svg"/></div>
-            <div id="gdg" class="icon d" onclick="tibibi.group.remove();"
+            <div id="bigdg" class="icon d" onclick="tibibi.group.remove();"
                                          ontouchstart="tibibi.group.remove();event.preventDefault();">
                 <img src="mods/tibibi/res/img/delete.svg"/></div>
 
             <div class="icon l" onclick="tibibi.course.open();" ontouchstart="tibibi.course.open();event.preventDefault();">
                 <img src="mods/tibibi/res/img/newcourse.svg"/></div>
-            <select id="gcourses" onchange="tibibi.course.load($(this).val(),false,true);"></select>
+            <select id="bigcourses" onchange="tibibi.course.load($(this).val(),false,true);"></select>
             <div class="icon e" onclick="tibibi.course.edit();" ontouchstart="tibibi.course.edit();event.preventDefault();">
                 <img src="mods/tibibi/res/img/edit.svg"/></div>
-            <div id="gdc" class="icon d" onclick="tibibi.course.remove();" 
+            <div id="bigdc" class="icon d" onclick="tibibi.course.remove();" 
                                          ontouchstart="tibibi.course.remove();event.preventDefault();">
                 <img src="mods/tibibi/res/img/delete.svg"/></div>
 
-            <div id="gde" class="icon x" onclick="tibibi.edit();" ontouchstart="tibibi.edit();event.preventDefault();">
+            <div id="bigde" class="icon x" onclick="tibibi.edit();" ontouchstart="tibibi.edit();event.preventDefault();">
                 <img src="mods/tibibi/res/img/settings.svg"/>
             </div>
 
-            <div id="gdx" class="icon x" onclick="user.logout($(this));"  ontouchstart="user.logout($(this));event.preventDefault();">
+            <div id="bigdx" class="icon x" onclick="user.logout($(this));"  ontouchstart="user.logout($(this));event.preventDefault();">
                 <img src="mods/tibibi/res/img/logout.svg"/>
             </div>
-            <div id="gdr" class="icon x" onclick="tibibi.quit();"  ontouchstart="tibibi.quit();event.preventDefault();">
+            <div id="bigdr" class="icon x" onclick="tibibi.quit();"  ontouchstart="tibibi.quit();event.preventDefault();">
                 <img src="mods/tibibi/res/img/valid.svg"/>
             </div>
 
         </div>
-        <div id="content">
-            <div id="tmenu"></div>
-            <div id="tedit">
-                <div id="tlist">
-                    <div id="telts"></div>
-                    <div id="teltact">
-                        <div class="icon r" onclick="tibibi.course.action('del');"><img src="mods/tibibi/res/img/delete.svg"/></div>
+        <div id="bicontent">
+            <div id="bimenu"></div>
+            <div id="biedit">
+                <div id="bilist">
+                    <div id="bielts"></div>
+                    <div id="bieltact">
                         <div class="icon" onclick="tibibi.course.action('up');"><img src="mods/tibibi/res/img/up.svg"/></div>
                         <div class="icon" onclick="tibibi.course.action('down');"><img src="mods/tibibi/res/img/down.svg"/></div>
                         <div class="icon" onclick="tibibi.course.action('exe');"><img src="mods/tibibi/res/img/run.svg"/></div>
                         <div class="icon" onclick="tibibi.course.action('snapshot');"><img src="mods/tibibi/res/img/snapshot.svg"/></div>
                         <div class="icon" onclick="tibibi.course.action('look');"><img src="mods/tibibi/res/img/look.svg"/></div>
+                        <div id="bidelex" class="icon" onclick="tibibi.course.action('del');"><img src="mods/tibibi/res/img/delete.svg"/></div>
                     </div>
-                    <div id="tactions">
+                    <div id="biactions">
                         <div class="icon" onclick="tibibi.course.expo();"><img src="mods/tibibi/res/img/export.svg"/></div>
                         <div class="icon" onclick="tibibi.course.impo();"><img src="mods/tibibi/res/img/import.svg"/></div>
                         <div class="icon" onclick="tibibi.course.overview();"><img src="mods/tibibi/res/img/snapshot.svg"/></div>
                         <div class="icon" onclick="tibibi.course.snapshot();"><img src="mods/tibibi/res/img/list.svg"/></div>
                     </div>
                 </div>
-                <div id="tbrowser"></div></div>
+                <div id="bibrowser"></div></div>
         </div>
 
         <div id="waiting"><div><img src="res/img/generic/waiting.svg"/></div></div>
 
         <div id="score"><div>
-            <div class="content">
+            <div class="bicontent">
                 <div class="value"></div><div class="stars"></div>
                 <div class="icon" id="reload" ontouchstart="$('#launcher').jlodb('reload');event.preventDefault();"
                     onclick="$('#launcher').jlodb('reload');" ><img src="res/img/icon/reload.svg"/></div>
                 <div class="icon" id="menu" ontouchstart="$('#launcher').jlodb('close',true);event.preventDefault();"
                     onclick="$('#launcher').jlodb('close', true);" ><img src="res/img/icon/menu.svg"/></div>
                 <div class="icon" id="next"
-                    ontouchstart="$('#launcher').jlodb('close',false);$('#tmenu').menu('next');event.preventDefault();"
-                    onclick="$('#launcher').jlodb('close',false);$('#tmenu').menu('next');"><img src="res/img/icon/next.svg"/></div>
+                    ontouchstart="$('#launcher').jlodb('close',false);$('#bimenu').menu('next');event.preventDefault();"
+                    onclick="$('#launcher').jlodb('close',false);$('#bimenu').menu('next');"><img src="res/img/icon/next.svg"/></div>
             </div>
         </div></div>
 
-        <div id="screen">
+        <div id="biscreen">
             <div id="list"></div>
-            <div id="quit" ontouchstart="$('#main #screen').hide();event.preventDefault();"
-                           onclick="$('#main #screen').hide();"><img src="res/img/icon/quit.svg"/></div>
+            <div id="quit" ontouchstart="$('#biscreen').hide();event.preventDefault();"
+                           onclick="$('#biscreen').hide();"><img src="res/img/icon/quit.svg"/></div>
         </div>
  
         <div id="launcher">
@@ -598,7 +605,7 @@ $(window).ready(function() {
             <div id="activity"></div>
         </div>
 
-        <div id="popup1" class="popup" onclick="$(this).hide();" ontouchstart="$(this).hide();event.preventDefault();">
+        <div id="bipopup1" class="bipopup" onclick="$(this).hide();" ontouchstart="$(this).hide();event.preventDefault();">
             <div><div>
                 <input type="text" onclick="event.stopPropagation();" ontouchstart="event.stopPropagation();">
                 </input>
@@ -610,7 +617,7 @@ $(window).ready(function() {
         </div>
 
 
-        <div id="popup2" class="popup" onclick="$(this).hide();" ontouchstart="$(this).hide();event.preventDefault();">
+        <div id="bipopup2" class="bipopup" onclick="$(this).hide();" ontouchstart="$(this).hide();event.preventDefault();">
             <div onclick="event.stopPropagation();" ontouchstart="event.stopPropagation();"><div>
                 <textarea></textarea>
                 <div class="button" onclick="tibibi.course.importex();"
