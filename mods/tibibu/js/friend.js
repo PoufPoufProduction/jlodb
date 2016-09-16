@@ -148,7 +148,7 @@ tibibu.friend = {
         return ret;
     },
     menu : function(_elt) {
-        $(".nav2>div").removeClass("s"); $(_elt).addClass("s");
+        $(".bunav2>div").removeClass("s"); $(_elt).addClass("s");
         $(".bucontent").hide(); 
         switch($(_elt).attr("id")) {
         case "fsmenu" : $("#fspanel").show(); break;

@@ -11,6 +11,8 @@
     <script type="text/javascript" src="js/jquery.jlodb.js"></script>
     <script type="text/javascript" src="js/jquery.jlodb.menu.js"></script>
     <script type="text/javascript" src="js/jlodb-ext.js"></script>
+    
+    <script type="text/javascript" src="activities/draw/draw.js"></script>
 
     <script type="text/javascript" src="mods/tibibu/slide/slide.js"></script>
     <link type="text/css" rel="stylesheet" href="mods/tibibu/slide/style.css" media="all" />
@@ -20,7 +22,8 @@
 
 var examples = {
     lock  : "{{img|url=https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Paris_Canal_Saint-Martin_003.JPG/1280px-Paris_Canal_Saint-Martin_003.JPG|legend=Qu'est-ce donc ?}},{{text|text1=Bravo !|text2=[strong]C'est une écluse.[/strong]}},{{text|text1=Une [red]écluse[/red] est un [blue]ouvrage hydrolique[/blue] qui permet aux bateaux de [b]franchir[/b] les dénivellations d'un canal.|text2=[strong]C'est un ascenseur à bateaux.[/strong]|text3=[i]Mais comment ça marche ?[/i]}},{{exercice|id=nllox}}",
-    pairs : "{{title|title=Jeux d'observation|subtitle=[small]Je cherche deux images identiques[/small]}},{{list|header=[b]Consignes[/b] de l'exercice|elt1=Je [red]cherche[/red] les 2 images identiques|elt2=Une fois trouvées, je [red]lève la main[/red]|elt3=J'indique les 2 images lorsque je suis [red]interrogé(e)[/red]}},{{exercice|id=thpao48a}},{{exercice|id=thpap20a}},{{exercice|id=thpap20b}},{{exercice|id=thpao70a}},{{exercice|id=thpap35a}}"
+    pairs : "{{title|title=Jeux d'observation|subtitle=[small]Je cherche deux images identiques[/small]}},{{list|header=[b]Consignes[/b] de l'exercice|elt1=Je [red]cherche[/red] les 2 images identiques|elt2=Une fois trouvées, je [red]lève la main[/red]|elt3=J'indique les 2 images lorsque je suis [red]interrogé(e)[/red]}},{{exercice|id=thpao48a}},{{exercice|id=thpap20a}},{{exercice|id=thpap20b}},{{exercice|id=thpao70a}},{{exercice|id=thpap35a}}",
+    draw : "{{title|title=Test}},{{exercice|id=onmu10b}}"
 }
 
 $(window).ready(function() {
@@ -38,7 +41,7 @@ $(window).ready(function() {
     for (var i in a) { var p= a[i].split('='); args[p[0]]=p[1]; }
 
 
-    $("#slider").slide({context:{onquit:function(){}}});
+    $("#slider").slide({draw:true,context:{onquit:function(){}}});
     $("#slider").slide('update',(args["id"]&&examples[args["id"]])?examples[args["id"]]:examples.lock, {});
 });
 
@@ -46,6 +49,6 @@ $(window).ready(function() {
 </head>
 
 <body><div>
-<div id="slider" style="width:100%;height:100%;background-color:white;">
+<div id="slider" style="width:100%;height:100%;background-color:white;"></div>
 </div>
 </body>

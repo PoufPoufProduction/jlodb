@@ -14,6 +14,8 @@
     <script type="text/javascript" src="js/jlodb-ext.js"></script>
     <script type="text/javascript" src="user/user.js"></script>
     <script type="text/javascript" src="gonz/jquery.gonz.js"></script>
+    
+    <script type="text/javascript" src="activities/draw/draw.js"></script>
 
     <script type="text/javascript" src="mods/tibibu/slide/slide.js"></script>
     <link type="text/css" rel="stylesheet" href="mods/tibibu/slide/style.css" media="all" />
@@ -26,87 +28,52 @@
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="mods/tibibu/res/img/icon/icon144.png" />
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <style>
-#main                                   { position:relative; background-image:url('res/img/background/book02.svg'); }
-#main>div                               { width:16.5em; height:12em; }
+#bumain                                 { position:relative; background-image:url('res/img/background/book02.svg'); }
+#bumain>div                             { width:16.5em; height:12em; }
+#bunav                                  { font-size:.3em; width:10em; height:100%; border:1px solid black; border-width:0 2px 0 0; background-color:rgba(255,255,255,0.6); float:left; }
+.bucontent                              { float:left; font-size:0.5em; display:none; height:24em; width:26em; }
+.bunav2                                 { font-size:.8em; display:none; }
+.bunav2>div                             { padding-left:1em; background-color:gray; margin-top:.3em; color:white; cursor:pointer; }
+.bunav2>div.s                           { background-color:red; }
+#bumain #profile                        { background-color:#5B6; width:10em; color:white;height:3em;}
+#bumain #profile>*                      { float:left; }
+#bumain #profile #avatar                { width:1em; height:1em; background-color:#444; font-size:3em; cursor:pointer; }
+#bumain #profile #label                 { margin-left:.2em;  font-size:.7em; width:5.2em; }
+#bumain #profile #sub                   { font-size:.8em; color:yellow; }
+#bumain #profile #devmode               { font-size:2em; opacity:0.3; }
+#bumain.devmode #profile #devmode       { opacity:1; }
+#bumain #profile .icon                  { font-size:3em; cursor:pointer; }
+#bumain #profile #gdx                   { display:none; }
+#bumain #profile #gdx.s                 { background-color:red; border-radius:.5em; }
+#bumain #upuser>div                     { left:1em; }
+#bumain #umenu                          { display:none;}
+#bumain .bu.bluekeypad                  { margin-top:.5em; color:white; padding-left:.5em; cursor:pointer; }
+#bumain .bu.bluekeypad>div              { float:left; }
+#bumain .bu.bluekeypad .alert           { float:right; min-width:1.5em; background-color:rgba(255,0,0,0.6); border-radius:.2em; margin:0.2em; text-align:center; font-weight:bold; font-size:0.8em; }
+#bumain .usermode                       { display:inherit; }
+#bumain .devmode                        { display:none; }
+#bumain.devmode .usermode               { display:none; }
+#bumain.devmode .devmode                { display:inherit; }
+#bumain #waiting                        { position:absolute; top:3.1em; left:0.05em; font-size:2.7em; }
 
-#main #bunav                            { font-size:.3em; width:10em; height:100%; border:1px solid black; border-width:0 2px 0 0; background-color:rgba(255,255,255,0.6); float:left; }
-#main .bucontent                        { float:left; font-size:0.5em; display:none; height:24em; width:26em; }
-#main .nav2                             { font-size:.8em; display:none; }
-#main .nav2>div                         { padding-left:1em; background-color:gray; margin-top:.3em; color:white; cursor:pointer; }
-#main .nav2>div.s                       { background-color:red; }
+#buslide #busoverview                   { background-color:black; padding:.5em; }
+#buslide #busoverview>div               { background-color:white; width:16em; height:12em; font-size:1.2em; margin:0 auto; }
+#buslide #buscontent                    { padding-left:1em; font-size:0.4em; background-color:gray; color:white;  }
+#buslide #busvalues                     { overflow:auto; height:8.2em; }
+#buslide #buscontent span               { cursor:pointer; }
+#buslide #buscontent span.s             { background-color:red; }
+#buslide #busbutton                     { float:right; font-size:2.5em; margin:.1em .2em 0 0;}
+#buslide #buslist                       { overflow:auto; font-size:0.5em; float:left; height:8em; width:8em; margin:3px .2em .2em .2em; border:1px solid black; }
+#buslide #buslist>div                   { padding-left:.2em; cursor:pointer; background-color:white; }
+#buslide #buslist>div.s                 { background-color:#DDD; }
+#buslide textarea                       { float:left; margin-top:3px; font-size:.5em; border:1px solid black; width:40em; height:8em; }
+#buslide #busaction                     { float:right; padding:0 .1em; background-color:#444; height:4.4em; }
+#buslide .bu.icon                       { cursor:pointer; }
+#buslide .bu.icon.s                     { background-color:red; }
 
-#main #profile                          { background-color:#5B6; width:10em; color:white;height:3em;}
-#main #profile>*                        { float:left; }
-#main #profile #avatar                  { width:1em; height:1em; background-color:#444; font-size:3em; cursor:pointer; }
-#main #profile #label                   { margin-left:.2em;  font-size:.7em; width:5.2em; }
-#main #profile #sub                     { font-size:.8em; color:yellow; }
-#main #profile #devmode                 { font-size:2em; opacity:0.3; }
-#main.devmode #profile #devmode         { opacity:1; }
-#main #profile .icon                    { font-size:3em; cursor:pointer; }
-#main #profile #gdx                     { display:none; }
-#main #profile #gdx.s                   { background-color:red; border-radius:.5em; }
-#main #upuser>div                       { left:1em; }
-#main #umenu                            { display:none;}
-#main .bu.bluekeypad                    { margin-top:.5em; color:white; padding-left:.5em; cursor:pointer; }
-#main .bu.bluekeypad>div                { float:left; }
-#main .bu.bluekeypad .alert             { float:right; min-width:1.5em; background-color:rgba(255,0,0,0.6); border-radius:.2em; margin:0.2em; text-align:center; font-weight:bold; font-size:0.8em; }
-
-#main .usermode                         { display:inherit; }
-#main .devmode                          { display:none; }
-#main.devmode .usermode                 { display:none; }
-#main.devmode .devmode                  { display:inherit; }
-
-#fspanel.bucontent #fsheader              { width:100%; height:1.5em; background-color:gray; }
-#fspanel.bucontent #fsheader input        { float:left; width:22em; border:0; font-size:1em; margin:.1em .5em .1em 1em; padding-left:.5em; }
-#fspanel.bucontent #fsheader .icon        { font-size:1.5em; cursor:pointer; }
-
-#flpanel.bucontent #flheader              { width:100%; height:1.5em; background-color:gray; }
-#flpanel.bucontent #flheader .label       { cursor:pointer; height:1em; float:left; padding:.25em 0; width:2.5em; color:white; font-weight:bold; text-align:center; background-color:rgba(0,0,0,0.2); }
-#flpanel.bucontent #flheader select       { background-color:white; float:left; width:18em; border:0; font-size:1em; margin:.1em 0 .1em .2em; padding-left:.5em; }
-#flpanel.bucontent #flheader .icon        { font-size:1.2em; margin-top:.1em; margin-left:.1em; cursor:pointer; float:left;}
-#flpanel.bucontent #flheader .icon.s      { background-color:red; border-radius:.5em; }
-#flpanel.bucontent #flcontent             { height:21em; }
-#flpanel.bucontent #flfooter              { width:100%; height:1.5em; background-color:gray; }
-#flpanel.bucontent #flfooter>*            { opacity:0.2; }
-#flpanel.bucontent #flfooter.s>*          { opacity:1; }
-#flpanel.bucontent #flfooter .label       { height:1em; float:left; padding:.25em 0; width:5em; color:white; font-weight:bold; text-align:center; background-color:rgba(0,0,0,0.2); }
-#flpanel.bucontent #flfooter.s>.icon      { cursor:pointer; }
-#flpanel.bucontent #flfooter select       { background-color:white; float:left; width:18em; border:0; font-size:0.5em; margin:.5em 0 .1em .2em; padding-left:.5em; }
-
-#main .user                             { font-size:0.8em; width:10em; height:4em; margin:.1em; padding:.1em; background-color:#444466; color:white; float:left; position:relative; }
-#main .user.c                           { cursor:pointer; }
-#main .user.s                           { background-color:#aa4444; }
-#main .user.small                       { font-size:0.65em; width:6em; height:4em; }
-#main .user .legend                     { float:left; width:6em; }
-#main .user .avatar                     { width:4em; height:4em; border-radius:.5em; float:left; }
-#main .user .id                         { float:right; text-align:right; width:8em; padding-right:.1em; height:1.2em; border:1px solid white; border-width:0 0 1px 0; font-size:0.8em;}
-#main .user .key                        { display:none; }
-#main .user .name                       { float:right; font-size:.5em; font-style:italic; height:1.2em; width:12em; text-align:right;}
-#main .user .icon                       { margin-top:.4em; font-size:1.2em; float:right; cursor:pointer; }
-#main .user .space                      { float:right; width:3.5em; }
-#main .user .tag                        { font-size:.5em; margin-right:.25em; float:right; margin-left:2em; color:yellow; }
-#main .user .tag:before                 { content:"#"; }
-#main .user .cb                         { clear:both; }
-#main .user.ui-draggable-dragging       { background-color:rgba(255,0,0,0.3) !important;  height:1em; width:6em; border:1px solid red; margin:0 2em;}
-#main .user.ui-draggable-dragging .nd   { display:none; }
-
-#pdpanel.bucontent #pdoverview            { background-color:black; padding:.5em; }
-#pdpanel.bucontent #pdoverview>div        { background-color:white; width:16em; height:12em; font-size:1.2em; margin:0 auto; }
-#pdpanel.bucontent #pdcontent             { padding-left:1em; font-size:0.4em; background-color:gray; color:white;  }
-#pdpanel.bucontent #pdvalues              { overflow:auto; height:8.2em; }
-#pdpanel.bucontent #pdcontent span        { cursor:pointer; }
-#pdpanel.bucontent #pdcontent span.s      { background-color:red; }
-#pdpanel.bucontent #pdbutton              { float:right; font-size:2.5em; margin:.1em .2em 0 0;}
-#pdpanel.bucontent #pdlist                { overflow:auto; font-size:0.5em; float:left; height:8em; width:8em; margin:3px .2em .2em .2em; border:1px solid black; }
-#pdpanel.bucontent #pdlist>div            { padding-left:.2em; cursor:pointer; background-color:white; }
-#pdpanel.bucontent #pdlist>div.s          { background-color:#DDD; }
-#pdpanel.bucontent textarea               { float:left; margin-top:3px; font-size:.5em; border:1px solid black; width:40em; height:8em; }
-#pdpanel.bucontent #pdaction              { float:right; padding:0 .1em; background-color:#444; height:4.4em; }
-#pdpanel.bucontent .bu.icon               { cursor:pointer; }
-#pdpanel.bucontent .bu.icon.s             { background-color:red; }
-
-#main .bucontent .alert                   { background-color:red; color:white; margin:.5em 0; text-align:center; display:none; }
-#main #waiting                          { position:absolute; top:3.1em; left:0.05em; font-size:2.7em; }
+#buboard                                { }
+#buboard>#budraw                        { height:100%; }
+#buboard>#buborder                      { float:right; width:2em; height:100%; background-color:gray; }
 
     </style>
     <script>
@@ -115,9 +82,11 @@
 user.onEvent = function() {
     $("#profile #avatar").html("");
     $("#tibibi select").html("");
-    $("#main").removeClass("devmode");
+    $("#bumain").removeClass("devmode");
 
     $("textarea").val("");
+    $(".bucontent").hide(); $(".bunav2").hide(); $(".bunav2>div").removeClass("s");
+    $("#budraw").draw("clean");
 
     if (user.settings && user.settings.name) {
         $("#profile #avatar").gonz({interactive:false, code:user.settings.avatar,
@@ -127,24 +96,17 @@ user.onEvent = function() {
 
         $("#profile>*").show();
 
-        if (user.settings.devmode) {
-            // DEVMODE : PROFESSOR
-            $("#main").addClass("devmode");
-        }
-        else {
-            // STUDENT
-            $("#main").removeClass("devmode");
-        }
+        if (user.settings.devmode) { $("#bumain").addClass("devmode"); } else { $("#bumain").removeClass("devmode"); }
         $("#umenu").show();
-
+        $("#buboard").show();
     }
     else {
         // CLEAN PAGE ON LOGOUT
         $("#profile>*").hide(); $("#umenu").hide();
-        $(".bucontent").hide(); $(".nav2").hide(); $(".nav2>div").removeClass("s");
-        $("#fscontent").html(""); $("#fsheader input").val("");
+        $("#ufscontent").html(""); $("#ufsheader input").val("");
         $("#logpanel").show();
     }
+
 
 };
 
@@ -168,13 +130,19 @@ var tibibu = {
         }
         return _text;
     },
-    devmode: function() { if ($("#main").hasClass("devmode")) { user.devmode(); } else { $("#udevmode").show(); } },
+    devmode: function() { if ($("#bumain").hasClass("devmode")) { user.devmode(); } else { $("#udevmode").show(); } },
     menu: function(_elt) {
-        var cb = { "ufmenu":"friend", "uemenu":"homework", "upmenu":"prep" };
+        var id = $(_elt).attr("id");
         $(_elt).addClass("touch"); setTimeout(function() { $(_elt).removeClass("touch");}, 100);
-        var isVisible = $("#"+cb[$(_elt).attr("id")]).is(":visible");
-        $(".nav2").hide();
-        if (!isVisible)  { $("#"+cb[$(_elt).attr("id")]).show(); }
+        switch (id) {
+            case "ubmenu" : $("#buboard").show(); $(".bunav2>div").removeClass("s"); $(".bunav2").hide(); break;
+            default:
+                var cb = { "ufmenu":"friend", "uemenu":"homework", "upmenu":"prep" };
+                var isVisible = $("#"+cb[id]).is(":visible");
+                $(".bunav2").hide();
+                if (!isVisible)  { $("#"+cb[id]).show(); }
+                break;
+        }
     },
     inputpanel : {
         cbk: 0,
@@ -183,10 +151,22 @@ var tibibu = {
     },
     prep : {
         menu : function(_elt) {
-            $(".nav2>div").removeClass("s"); $(_elt).addClass("s");
+            $(".bunav2>div").removeClass("s"); $(_elt).addClass("s");
             $(".bucontent").hide(); 
             switch($(_elt).attr("id")) {
-                case "pdmenu" : $("#pdpanel").show(); break;
+                case "pdmenu" : $("#buslide").show(); break;
+            }
+        }
+    },
+    friend: {
+        menu: function(_elt) {
+            $(".bunav2>div").removeClass("s"); $(_elt).addClass("s");
+            $(".bucontent").hide(); 
+            switch($(_elt).attr("id")) {
+                case "bufsmenu" : user.friend.open("ufspanel"); break;
+                case "bufamenu" : user.friend.open("ufapanel"); break;
+                case "bufpmenu" : user.friend.open("ufppanel"); break;
+                case "buflmenu" : user.friend.open("uflpanel"); break;
             }
         }
     },
@@ -238,7 +218,7 @@ var tibibu = {
         },
         select: function(_elt) {
             var selected = parseInt($(_elt).attr("id").substr(1));
-            $("#pdvalues .s").removeClass("s");
+            $("#busvalues .s").removeClass("s");
             if (selected == tibibu.slide.selected) {
                 tibibu.slide.selected=-1;
                 $("#pdvalue").val("");
@@ -262,27 +242,27 @@ var tibibu = {
                     else { tibibu.slide.list.push(match[1]); }
                     match = regExp.exec(value);
                 }
-                $("#pdvalue").val("");
+                $("#pdvalue").val(""); $("#busvalues .s").removeClass("s"); tibibu.slide.selected=-1;
                 tibibu.slide.display();
                 tibibu.slide.overview(false);
             }
         },
         display: function() {
-            $("#pdvalues").html("");
+            $("#busvalues").html("");
             for (var i=0; i<tibibu.slide.list.length; i++) {
-                if (i>0) { $("#pdvalues").append(","); }
-                $("#pdvalues").append("<span onclick='tibibu.slide.select(this)' id='s"+i+"'" +
+                if (i>0) { $("#busvalues").append(","); }
+                $("#busvalues").append("<span onclick='tibibu.slide.select(this)' id='s"+i+"'" +
                                       (i==tibibu.slide.selected?" class='s'":"")+">"+tibibu.slide.list[i]+"</span>");
             }
         },
         overview: function(_all, _args) {
             if (!_args) {_args={}; }
-            var value = _all?$("#pdvalues").text():$("#pdvalue").val();
+            var value = _all?$("#busvalues").text():$("#pdvalue").val();
             var ok    = true;
-            if (_all) { $("#pdvalue").val(""); $("#pdvalues .s").removeClass("s"); tibibu.slide.selected=-1; }
+            if (_all) { $("#pdvalue").val(""); $("#busvalues .s").removeClass("s"); tibibu.slide.selected=-1; }
             else      { _args.nonext = true; ok=(tibibu.slide.last != value);}
             tibibu.slide.last = value;
-            if (ok) { $("#pdoverview>div").slide('update',value, _args); }
+            if (ok) { $("#busoverview>div").slide('update',value, _args); }
         }
     }
 };
@@ -293,7 +273,7 @@ $(window).ready(function() {
     $("#activity").ontouchmove = function(e) { e.preventDefault(); }
 
     // PREPARE SLIDE
-    $("#pdoverview>div").slide({context:{onquit:function(){}}});
+    $("#busoverview>div").slide({context:{onquit:function(){}}});
 
     $.getJSON("api/checkdb.php", function (_check) {
         if (_check.status=="success") {
@@ -302,29 +282,39 @@ $(window).ready(function() {
             tibibu.url =_check.url;
 
             // USER HANDLER INITIALISATION
-            user.load.edit($("#main"));
-            user.load.devmode($("#main"));
-            user.load.logpanel($("#main"), {}, function() { user.init(tibibu.lang); });
+            user.waiting    = "#waiting";
+            user.inputpanel = tibibu.inputpanel.open;
 
-            // LOCALISATION
-            $.getJSON("mods/tibibu/locale/"+_check.lang+"/text.json?debug="+Math.floor(Math.random()*1000), function(_locale) {
-                for (var i in _locale.locale) { if (typeof(_locale.locale[i])== "string") $("#"+i).html(_locale.locale[i]); }
+            user.load.edit($("#bumain"));
+            user.load.devmode($("#bumain"));
+        
+            user.load.logpanel($("#bumain"), {}, function() { user.init(tibibu.lang);
+                user.load.friend($("#bumain>div"), function() { $(".ufcontent").addClass("bucontent");
 
-                $("#pdlist").html("");
-                var nb = 0;
-                for (var i in _locale.slide) {
-                    var $elt = $("<div onclick='$(\"#pdvalue\").val(\""+_locale.slide[i]+"\");tibibu.slide.overview(false);'>"+i+"</div>");
-                    if (nb++%2) { $elt.addClass("s"); }
-                    $("#pdlist").append($elt);
-                    
-                }
+                    // LOCALISATION
+                    $.getJSON("mods/tibibu/locale/"+_check.lang+"/text.json?debug="+Math.floor(Math.random()*1000), function(_locale) {
+                        for (var i in _locale.locale) { if (typeof(_locale.locale[i])== "string") $("#"+i).html(_locale.locale[i]); }
 
-                tibibu.locale = _locale;
+                        $("#buslist").html("");
+                        var nb = 0;
+                        for (var i in _locale.slide) {
+                            var $elt = $("<div onclick='$(\"#pdvalue\").val(\""+_locale.slide[i]+"\");tibibu.slide.overview(false);'>"+i+"</div>");
+                            if (nb++%2) { $elt.addClass("s"); }
+                            $("#buslist").append($elt);
+                            
+                        }
+
+                        tibibu.locale = _locale;
+                        $("#uflheader").addClass("devmode"); $("#uflfooter").addClass("devmode");
+
+                        $("#budraw").draw({size:[480,480],context:{onquit:function(){} }});
+                    });
+                });
             });
 
         }
         else {
-            $("#main").html(_check.status+": "+_check.textStatus);
+            $("#bumain").html(_check.status+": "+_check.textStatus);
         }
     });
 
@@ -333,17 +323,16 @@ $(window).ready(function() {
     var x = Math.floor($(window).width()/16);
     var y = Math.floor($(window).height()/12);
     $("body").css("font-size", (Math.min(x,y))+"px");
-    $("#main").css("margin-top", Math.floor(($(window).height()-$("#main").height())/2-2)+"px").show();
+    $("#bumain").css("margin-top", Math.floor(($(window).height()-$("#bumain").height())/2-2)+"px").show();
 
 
 });
     </script>
-    <script type="text/javascript" src="mods/tibibu/js/friend.js"></script>
 
 </head>
 
 <body>
-    <div id="main"><div>
+    <div id="bumain"><div>
 
         <!-- NAVIGATION LEFT MENU -->
         <div id="bunav">
@@ -364,13 +353,16 @@ $(window).ready(function() {
 
             <!-- MAIN MENU -->
             <div id="umenu">
+                <div id="ubmenu" class="bu bluekeypad" onclick="tibibu.menu(this);" ontouchstart="tibibu.menu(this);event.preventDefault();">
+                    <div id="ublabel"></div>
+                </div>
                 <div id="ufmenu" class="bu bluekeypad" onclick="tibibu.menu(this);" ontouchstart="tibibu.menu(this);event.preventDefault();">
                     <div id="uflabel"></div><div class="alert"></div></div>
-                <div id="friend" class="nav2">
-                    <div id="fsmenu" onclick="tibibu.friend.menu(this);" ontouchstart="tibibu.friend.menu(this);event.preventDefault();"><div id="fslabel"></div></div>
-                    <div id="famenu" onclick="tibibu.friend.menu(this);" ontouchstart="tibibu.friend.menu(this);event.preventDefault();"><div id="falabel"></div></div>
-                    <div id="fpmenu" onclick="tibibu.friend.menu(this);" ontouchstart="tibibu.friend.menu(this);event.preventDefault();"><div id="fplabel"></div><div class="alert"></div></div>
-                    <div id="flmenu" onclick="tibibu.friend.menu(this);" ontouchstart="tibibu.friend.menu(this);event.preventDefault();"><div id="fllabel"></div></div>
+                <div id="friend" class="bunav2">
+                    <div id="bufsmenu" class="devmode" onclick="tibibu.friend.menu(this);" ontouchstart="tibibu.friend.menu(this);event.preventDefault();"><div id="fslabel"></div></div>
+                    <div id="bufamenu" class="devmode" onclick="tibibu.friend.menu(this);" ontouchstart="tibibu.friend.menu(this);event.preventDefault();"><div id="falabel"></div></div>
+                    <div id="bufpmenu" onclick="tibibu.friend.menu(this);" ontouchstart="tibibu.friend.menu(this);event.preventDefault();"><div id="fplabel"></div><div class="alert"></div></div>
+                    <div id="buflmenu" onclick="tibibu.friend.menu(this);" ontouchstart="tibibu.friend.menu(this);event.preventDefault();"><div id="fllabel"></div></div>
                 </div>
 
                 <div id="uemenu" class="bu bluekeypad usermode" onclick="tibibu.menu(this);" ontouchstart="tibibu.menu(this);event.preventDefault();">
@@ -382,78 +374,38 @@ $(window).ready(function() {
                 <div id="upmenu" class="bu bluekeypad devmode" onclick="tibibu.menu(this);" ontouchstart="tibibu.menu(this);event.preventDefault();">
                     <div id="uplabel"></div>
                 </div>
-                <div id="prep" class="nav2">
+                <div id="prep" class="bunav2">
                     <div id="psmenu" onclick="tibibu.prep.menu(this);" ontouchstart="tibibu.prep.menu(this);event.preventDefault();"><div id="pslabel"></div></div>
                     <div id="pdmenu" onclick="tibibu.prep.menu(this);" ontouchstart="tibibu.prep.menu(this);event.preventDefault();"><div id="pdlabel"></div></div>
                     <div id="ppmenu" onclick="tibibu.prep.menu(this);" ontouchstart="tibibu.prep.menu(this);event.preventDefault();"><div id="pplabel"></div></div>
                     <div id="pbmenu" onclick="tibibu.prep.menu(this);" ontouchstart="tibibu.prep.menu(this);event.preventDefault();"><div id="pblabel"></div></div>
                 </div>
             </div>
-
         </div>
 
-        <div class="bucontent" id="fspanel">
-            <div id="fsheader">
-                <input type="text" name="fsinput"
-                    onmousedown="$(this).focus();event.stopPropagation();"
-                    ontouchstart="$(this).focus();event.stopPropagation();event.preventDefault();"/>
-                <div class="icon" onmousedown="tibibu.friend.search();event.stopPropagation();"
-                                  ontouchstart="tibibu.friend.search();event.stopPropagation();event.preventDefault();">
-                    <img src="user/res/img/look.svg"/>
-                </div>
-            </div>
-            <div id="fscontent" class="data"></div>
+        <div class="bucontent nosplash" id="buboard"><div id="buborder"></div><div id="budraw"></div>
         </div>
 
-        <div class="bucontent" id="fapanel"><div class="alert" id="faalert"></div><div id="facontent" class="data"></div></div>
-        <div class="bucontent" id="fppanel"><div class="alert" id="fpalert"></div><div id="fpcontent" class="data"></div></div>
-
-        <div class="bucontent" id="flpanel">
-            <div id="flheader">
-                <div class="label" onclick="tibibu.circle.selectall(this);" ontouchstart="tibibu.circle.selectall();event.preventDefault();"></div>
-                <select id="flcircles" onchange="tibibu.friend.get($(this).val());"></select>
-                <div class="icon l" onclick="tibibu.circle.open();" ontouchstart="tibibu.circle.open();event.preventDefault();">
-                    <img src="mods/tibibu/res/img/newpeople.svg"/></div>
-                <div class="icon e" onclick="tibibu.circle.edit();" ontouchstart="tibibu.circle.edit();event.preventDefault();">
-                    <img src="mods/tibibu/res/img/edit.svg"/></div>
-                <div id="flremove" class="icon" onclick="tibibu.circle.remove();" ontouchstart="tibibu.circle.remove();event.preventDefault();">
-                    <img src="mods/tibibu/res/img/cancel.svg"/></div>
-            </div>
-            <div id="flcontent"></div>
-            <div id="flfooter">
-                <div class="label"></div>
-                <select id="flaction" disabled="disabled" onchange="tibibu.friend.footer();">
-                    <option id="flnothing" value="0"></option>
-                    <option id="flin" value="1"></option>
-                    <option id="flout" value="2"></option>
-                    <option id="fldel" value="3"></option>
-                </select>
-                <select id="fltarget" disabled="disabled"></select>
-                <div class="icon" onclick="tibibu.friend.update();" ontouchstart="tibibu.friend.update();event.preventDefault();">
-                    <img src="mods/tibibi/res/img/valid.svg"/></div>
-            </div>
-        </div>
-
-        <div class="bucontent" id="pdpanel">
-            <div id="pdcontent">
-                <div id="pdbutton">
+        <div class="bucontent" id="buslide">
+            <div id="buscontent">
+                <div id="busbutton">
                     <div class="bu icon" onclick="tibibu.slide.overview(true);" ontouchstart="tibibu.slide.overview(true);event.preventDefault();"><img src="mods/tibibi/res/img/run.svg"></div>
                     <div class="bu icon"></div>
                     <div class="bu icon" id="fpdeleteall" onclick="tibibu.slide.deleteall();" ontouchstart="tibibu.slide.deleteall();event.preventDefault();"><img src="mods/tibibi/res/img/delete.svg"></div>
                 </div>
-                <div id="pdvalues"></div>
+                <div id="busvalues"></div>
             </div>
             <div id="pdwrite">
-                <div id="pdlist"></div>
+                <div id="buslist"></div>
                 <textarea id="pdvalue" onkeyup="tibibu.slide.overview(false, {keep:true});"></textarea>
-                <div id="pdaction">
+                <div id="busaction">
                     <div class="bu icon" onclick="tibibu.slide.insert();" ontouchstart="tibibu.slide.insert();event.preventDefault();"><img src="mods/tibibi/res/img/valid.svg"></div>
                     <div class="bu icon" onclick="tibibu.slide.up();" ontouchstart="tibibu.slide.up();event.preventDefault();"><img src="mods/tibibi/res/img/up.svg"></div>
                     <div class="bu icon" onclick="tibibu.slide.down();" ontouchstart="tibibu.slide.down();event.preventDefault();"><img src="mods/tibibi/res/img/down.svg"></div>
                     <div class="bu icon" id="fpremove" onclick="tibibu.slide.remove();" ontouchstart="tibibu.slide.remove();event.preventDefault();"><img src="mods/tibibi/res/img/delete.svg"></div>
                 </div>
             </div>
-            <div id="pdoverview"><div></div></div>
+            <div id="busoverview"><div></div></div>
         </div>
 
         <div id="inputpanel" class="inputpanel" onmousedown="$(this).hide();" ontouchstart="$(this).hide();event.preventDefault();"><div>

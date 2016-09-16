@@ -7,6 +7,7 @@
         css         : "style.css",                              // Activity's css style sheet
         lang        : "en-US",                                  // Current localization
         exercice    : [],                                       // Exercice
+        draw        : false,                                    // Draw mode
         debug       : false                                     // Debug mode
     };
 
@@ -103,7 +104,23 @@
             var settings = helpers.settings($this);
 
             $this.html("<div id='slpage'></div><div id='slcontrol'><img src='mods/tibibu/res/img/about.svg'/></div>"+
-                       "<div id='slmenu'><div><div class='icon' id='slback'><img src='res/img/generic/left.svg'/></div><div id='sllist'></div><div class='icon' id='slforward'><img src='res/img/generic/right.svg'/></div></div></div>");
+                       "<div id='slmenu'><div><div class='icon' id='slback'><img src='res/img/generic/left.svg'/></div>"+
+                       "<div id='sllist'></div><div class='icon' id='slforward'><img src='res/img/generic/right.svg'/></div>"+
+                       "<div class='icon' id='slcomment'><img src='mods/tibibu/res/img/edit.svg'/></div>"+
+                       "</div></div>"+
+                       "<div id='sldraw'></div>");
+
+            if (settings.draw) {
+                $this.find("#slcomment").bind("mousedown touchstart", function(_event) {
+                    if ($(this).hasClass("s"))  { $(this).removeClass("s"); $this.find("#sldraw").hide(); }
+                    else                        { $(this).addClass("s"); $this.find("#sldraw").show(); }
+                    _event.preventDefault();
+                    _event.stopPropagation();
+                });
+                $this.addClass("nosplash");
+                $this.find("#sldraw").draw({ background:0, stroke:"red", context:{ onquit:function(){} }});
+            }
+            else { $this.find("#slcomment").hide(); }
 
             $this.find("#slback").bind("mousedown touchstart", function(_event) {
                 if (settings.page>0) { settings.page--; settings.event = [0,0]; helpers.run($this); }
@@ -150,6 +167,7 @@
             var settings = helpers.settings($this);
 
             $this.find("#sllist").html("");
+            if (settings.draw) { $this.find("#sldraw").draw("clean"); }
             for (var i=0; i<settings.content.length; i++) {
                 var $elt = $("<div class='icon"+(i==settings.page?" s":"")+"'><div>"+(i+1)+"</div></div>");
                 $elt.bind("mousedown touchstart", function(_event) {

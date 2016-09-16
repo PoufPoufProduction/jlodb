@@ -1,0 +1,47 @@
+<div id="ufspanel" class="ufcontent">
+    <div id="ufsheader">
+        <input type="text" name="ufsinput"
+            onmousedown="$(this).focus();event.stopPropagation();"
+            ontouchstart="$(this).focus();event.stopPropagation();event.preventDefault();"/>
+        <div class="icon" onmousedown="user.friend.search();event.stopPropagation();"
+                          ontouchstart="user.friend.search();event.stopPropagation();event.preventDefault();">
+            <img src="user/res/img/look.svg"/>
+        </div>
+    </div>
+    <div id="ufscontent" class="data"></div>
+</div>
+
+<div id="ufapanel" class="ufcontent"><div class="ufalert" id="ufaalert"></div><div id="ufacontent" class="data"></div></div>
+<div id="ufppanel" class="ufcontent"><div class="ufalert" id="ufpalert"></div><div id="ufpcontent" class="data"></div></div>
+
+<div id="uflpanel" class="ufcontent">
+    <div id="uflheader">
+        <div class="label" onclick="user.circle.selectall(this);" ontouchstart="user.circle.selectall();event.preventDefault();"></div>
+        <select id="uflcircles" onchange="user.friend.get($(this).val());"></select>
+        <div class="icon l" onclick="user.circle.open();" ontouchstart="user.circle.open();event.preventDefault();">
+            <img src="mods/tibibu/res/img/newpeople.svg"/>
+        </div>
+        <div class="icon e" onclick="user.circle.edit();" ontouchstart="user.circle.edit();event.preventDefault();">
+            <img src="mods/tibibu/res/img/edit.svg"/>
+        </div>
+        <div id="uflremove" class="icon" onclick="user.circle.remove();" ontouchstart="user.circle.remove();event.preventDefault();">
+            <img src="mods/tibibu/res/img/cancel.svg"/>
+        </div>
+    </div>
+    <div id="uflcontent"></div>
+    <div id="uflfooter">
+        <div class="label"></div>
+        <select id="uflaction" disabled="disabled" onchange="user.friend.footer();">
+            <option id="uflnothing" value="0"></option>
+            <option id="uflin" value="1"></option>
+            <option id="uflout" value="2"></option>
+            <option id="ufldel" value="3"></option>
+        </select>
+        <select id="ufltarget" disabled="disabled"></select>
+        <div class="icon" onclick="user.friend.update();" ontouchstart="user.friend.update();event.preventDefault();">
+            <img src="mods/tibibi/res/img/valid.svg"/>
+        </div>
+    </div>
+</div>
+
+
