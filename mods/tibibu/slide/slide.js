@@ -103,10 +103,10 @@
         build: function($this) {
             var settings = helpers.settings($this);
 
-            $this.html("<div id='slpage'></div><div id='slcontrol'><img src='mods/tibibu/res/img/about.svg'/></div>"+
+            $this.html("<div id='slpage'></div><div id='slcontrol'><img src='res/img/icon/about.svg'/></div>"+
                        "<div id='slmenu'><div><div class='icon' id='slback'><img src='res/img/generic/left.svg'/></div>"+
                        "<div id='sllist'></div><div class='icon' id='slforward'><img src='res/img/generic/right.svg'/></div>"+
-                       "<div class='icon' id='slcomment'><img src='mods/tibibu/res/img/edit.svg'/></div>"+
+                       "<div class='icon' id='slcomment'><img src='res/img/white/edit.svg'/></div>"+
                        "</div></div>"+
                        "<div id='sldraw'></div>");
 
@@ -118,7 +118,7 @@
                     _event.stopPropagation();
                 });
                 $this.addClass("nosplash");
-                $this.find("#sldraw").draw({ background:0, stroke:"red", context:{ onquit:function(){} }});
+                $this.find("#sldraw").draw({ nomenu:true, background:0, stroke:"red", context:{ onquit:function(){} }});
             }
             else { $this.find("#slcomment").hide(); }
 

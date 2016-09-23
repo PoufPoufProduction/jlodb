@@ -5,19 +5,21 @@ var user = {
     avatar      : "",       // avatar save
 
     // ---- TO OVERRIDE ---
-    waiting     : "",
     inputpanel  : 0,
+    onrequest   : 0,
+    onreply     : 0,
     // --------------------
 
     onEvent : function() { },  // To override 
-
+            
     getJSON : function(_url, _args, _post, _cbk, _alert) {
         var url = _url+"?username="+user.settings.name+"&code="+user.settings.code;
         if (typeof(_args)=="object") {  for (var i in _args) { url+="&"+i+"="+_args[i]; } }
         else if (_args.length) { url+=(_args[0]=='&'?"":"&")+_args; }
         if (_alert){ alert(url); }
-        if (_post) { $.post(url, _post, function(_data) {if(_data.error==102){location.reload();} else { _cbk(_data); } }, "json"); }
-        else       { $.getJSON(url, function(_data)     {if(_data.error==102){location.reload();} else { _cbk(_data); } }); }
+        if (user.onrequest) { user.onrequest(); }
+        if (_post) { $.post(url, _post, function(_data) {if (user.onreply) { user.onreply(); } if(_data.error==102){location.reload();} else { _cbk(_data); } }, "json"); }
+        else       { $.getJSON(url, function(_data)     {if (user.onreply) { user.onreply(); } if(_data.error==102){location.reload();} else { _cbk(_data); } }); }
     },
     load: {
         logpanel: function($elt, _args, _cbk) {
@@ -369,7 +371,6 @@ var user = {
         },
         get: function(_group, _cbk) {
             $("#uflcontent").html("");
-            if (user.waiting) { $(user.waiting+" div").addClass("running"); $(user.waiting).show(); }
             user.getJSON("user/api/friend.php", {circle:_group}, 0, function(_data) {
             if (_data.users) for (var i in _data.users) {
                 $("#uflcontent").append(user.friend.elt(_data.users[i],{large:_data.users.length<19,
@@ -377,17 +378,14 @@ var user = {
             }
             user.friend.footer();
             $("#uflheader .label").html(_data.users?_data.users.length:0); $("#uflheader .label").removeClass("s");
-            if (user.waiting) { $(user.waiting+" div").removeClass("running"); $(user.waiting).hide(); }
             if (_cbk) { _cbk(); }
             });
         },
         search : function() {
-            $("#ufscontent").html(""); $("#waiting div").addClass("running"); $("#waiting").show();
             user.getJSON("user/api/user.php",{value:$("#ufsheader input").val()},0,function(_data) {
             for (var i in _data.users) {
                 $("#ufscontent").append(user.friend.elt(_data.users[i],{large:_data.users.length<19, type:"add"}));
             }
-            $("#waiting div").removeClass("running"); $("#waiting").hide();
             });
         }
     }

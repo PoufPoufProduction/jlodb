@@ -10,6 +10,9 @@
         background  : "white",                                  // Background
         stroke      : "black",                                  // Stroke color
         strokewidth : 3,                                        // stroke width
+        object      : "path",                                   // type of drawing
+        garbage     : [],                                       // garbage elements
+        nomenu      : false,                                    // No menu
         debug       : false                                     // Debug mode
     };
 
@@ -90,12 +93,11 @@
 
                 $this.css("font-size", ($this.height()/12)+"px");
 
-
                 var svgContent = "<svg xmlns:svg='http://www.w3.org/2000/svg' xmlns='http://www.w3.org/2000/svg' "+
-                            " width='100%' height='100%' viewBox='0 0 "+settings.size[0]+" "+settings.size[1]+"'><def><style>"+
-                            "path {fill:none; stroke:black; stroke-linecap:round;stroke-linejoin:round}"+
+                            " width='100%' height='100%' viewBox='0 0 "+settings.size[0]+" "+settings.size[1]+"' id='jdraw'><def><style>"+
+                            "svg#jdraw path,circle,line,rect {fill:none; stroke:black; stroke-linecap:round;stroke-linejoin:round}"+
                             "</style></def>"+
-                            (settings.background?"<rect x='0' y='0' width='"+settings.size[0]+"' height='"+settings.size[1]+"' style='fill:"+settings.background+";'/>":"")+
+                            (settings.background?"<rect x='0' y='0' width='"+settings.size[0]+"' height='"+settings.size[1]+"' style='stroke:none;fill:"+settings.background+";'/>":"")+
                             "</svg>";
 
                 $this.find("#board").svg();
@@ -103,6 +105,7 @@
                 settings.svg.load(svgContent, { addTo: false, changeSize: true});
 
                 settings.group = settings.svg.group();
+                $(settings.group).attr("id","foreground");
 
                 $this.find("#board").bind("touchstart mousedown", function(_event) {
                     var e = (_event && _event.originalEvent &&
@@ -117,10 +120,31 @@
                     settings.first  = [ e.clientX, e.clientY ];
                     settings.last   = [ e.clientX, e.clientY ];
                     settings.path = settings.svg.createPath();
-                    settings.path = settings.svg.path( settings.group,
-                      settings.path.move(  
-                        (settings.last[0] - settings.offset[0])*settings.ratio,
-                        (settings.last[1] - settings.offset[1])*settings.ratio ) );
+                    switch(settings.object) {
+                        case "line":
+                            settings.path = settings.svg.line( settings.group,
+                                (settings.first[0] - settings.offset[0])*settings.ratio,
+                                (settings.first[1] - settings.offset[1])*settings.ratio,
+                                (settings.first[0] - settings.offset[0])*settings.ratio,
+                                (settings.first[1] - settings.offset[1])*settings.ratio);
+                            break;
+                        case "rect":
+                            settings.path = settings.svg.rect( settings.group,
+                                (settings.first[0] - settings.offset[0])*settings.ratio,
+                                (settings.first[1] - settings.offset[1])*settings.ratio,0,0);
+                            break;
+                        case "circle":
+                            settings.path = settings.svg.circle( settings.group,
+                                (settings.first[0] - settings.offset[0])*settings.ratio,
+                                (settings.first[1] - settings.offset[1])*settings.ratio, 0 );
+                            break;
+                        default:
+                            settings.path = settings.svg.path( settings.group,
+                              settings.path.move(  
+                                (settings.first[0] - settings.offset[0])*settings.ratio,
+                                (settings.first[1] - settings.offset[1])*settings.ratio ) );
+                            break;
+                    }
 
                     $(settings.path).css("stroke", settings.stroke).css("stroke-width", settings.strokewidth);
                     
@@ -134,6 +158,10 @@
                                  _event.originalEvent.touches[0]:_event;
                         settings.path = 0;
 
+                        $this.find("#prev").removeClass("d");
+                        settings.garbage=[];
+                        $this.find("#next").addClass("d");
+
                         _event.preventDefault();
                     }
                 });
@@ -146,15 +174,80 @@
 
                         if (Math.abs(settings.last[0] - e.clientX)+Math.abs(settings.last[1] - e.clientY)>5) {
 
+                            switch(settings.object) {
+                                case "rect":
+                                    var w = (e.clientX - settings.first[0])*settings.ratio;
+                                    var h = (e.clientY - settings.first[1])*settings.ratio;
+                                    $(settings.path).attr({
+                                        x: ( (w>0?settings.first[0]:e.clientX) - settings.offset[0])*settings.ratio,
+                                        y: ( (h>0?settings.first[1]:e.clientY) - settings.offset[1])*settings.ratio,
+                                        width: Math.abs(w) , height: Math.abs(h) });
+                                    break;
+                                case "line":
+                                    $(settings.path).attr({x2: (e.clientX - settings.offset[0])*settings.ratio,
+                                                           y2: (e.clientY - settings.offset[1])*settings.ratio });
+                                    break;
+                                case "circle":
+                                    $(settings.path).attr({r:
+                                        settings.ratio* Math.sqrt(((settings.first[0] - e.clientX) * (settings.first[0] - e.clientX)) +
+                                                                  ((settings.first[1] - e.clientY) * (settings.first[1] - e.clientY)) ) });
+                                    break;
+                                default:
+                                    $(settings.path).attr({d:
+                                        $(settings.path).attr("d")+" L "+
+                                            (e.clientX - settings.offset[0])*settings.ratio + "," +
+                                            (e.clientY - settings.offset[1])*settings.ratio });
+                                    break;
+                            }
+
                             settings.last = [ e.clientX, e.clientY ];
-                            $(settings.path).attr({d:
-                                $(settings.path).attr("d")+" L "+
-                                    (e.clientX - settings.offset[0])*settings.ratio + "," +
-                                    (e.clientY - settings.offset[1])*settings.ratio });
                         }
                         _event.preventDefault();
                     }
                 });
+
+                // MENU BUTTONS
+                if (settings.nomenu) { $this.find("#menu").hide(); }
+                else {
+                    $this.find("#menu .icon").bind("mousedown touchstart", function(_event) {
+                        $(this).closest(".action").find(".icon").removeClass("s");
+                        $(this).addClass("s");
+                        switch ($(this).attr("id")) {
+                            case "path" :   settings.object = "path";   break;
+                            case "circle" : settings.object = "circle"; break;
+                            case "rect" :   settings.object = "rect";   break;
+                            case "line" :   settings.object = "line";   break;
+                            case "black":   settings.stroke = "black";  break;
+                            case "red":     settings.stroke = "red";    break;
+                            case "green":   settings.stroke = "green";  break;
+                            case "blue":    settings.stroke = "blue";   break;
+                            case "white":   settings.stroke = "white";  break;
+                            case "yellow":  settings.stroke = "yellow"; break;
+                            case "cyan":    settings.stroke = "cyan";   break;
+                            case "purple":  settings.stroke = "purple"; break;
+                            case "dot1":    settings.strokewidth = 1;   break;
+                            case "dot2":    settings.strokewidth = 3;   break;
+                            case "dot3":    settings.strokewidth = 6;   break;
+                            case "dot4":    settings.strokewidth = 9;   break;
+                            case "clear":   helpers.clean($this); break;
+                            case "prev":
+                                if ($("#foreground", settings.svg.root()).children().length) {
+                                    settings.garbage.push($("#foreground", settings.svg.root()).children().last().detach());
+                                    $this.find("#next").removeClass("d");
+                                    if (!$("#foreground", settings.svg.root()).children().length) { $this.find("#prev").addClass("d"); }
+                                }
+                                break;
+                            case "next":
+                                if (settings.garbage.length) {
+                                    $("#foreground", settings.svg.root()).append(settings.garbage.pop());
+                                    $this.find("#prev").removeClass("d");
+                                    if (!settings.garbage.length) { $this.find("#next").addClass("d"); }
+                                }
+                            break;
+                        }
+                        _event.preventDefault();
+                    });
+                }
 
 
                 // Locale handling
@@ -167,6 +260,13 @@
 
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
+        },
+        clean: function($this) {
+            var settings = helpers.settings($this);
+            if (settings.svg) { $("#foreground>*", settings.svg.root()).detach();}
+            $this.find("#prev").addClass("d");
+            $this.find("#next").addClass("d");
+            settings.garbage=[];
         }
     };
 
@@ -207,10 +307,7 @@
                 var $this = $(this) , settings = helpers.settings($this);
                 settings.interactive = true;
             },
-            clean: function() {
-                var $this = $(this) , settings = helpers.settings($this);
-                if (settings.svg) { $("path",settings.svg.root()).detach(); }
-            },
+            clean: function() { helpers.clean($(this)); },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 settings.context.onquit($this,{'status':'abort'});

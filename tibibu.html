@@ -22,10 +22,10 @@
 
     <link type="text/css" rel="stylesheet" href="css/jlodb.css" media="all" />
     <link type="text/css" rel="stylesheet" href="user/style.css" media="all" />
-    <link rel="apple-touch-icon-precomposed" href="mods/tibibu/res/img/icon/icon144.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="mods/tibibu/res/img/icon/icon72.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="mods/tibibu/res/img/icon/icon114.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="mods/tibibu/res/img/icon/icon144.png" />
+    <link rel="apple-touch-icon-precomposed" href="res/img/white/icon/icon144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="res/img/white/icon/icon72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="res/img/white/icon/icon114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="res/img/white/icon/icon144.png" />
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <style>
 #bumain                                 { position:relative; background-image:url('res/img/background/book02.svg'); }
@@ -55,6 +55,7 @@
 #bumain.devmode .usermode               { display:none; }
 #bumain.devmode .devmode                { display:inherit; }
 #bumain #waiting                        { position:absolute; top:3.1em; left:0.05em; font-size:2.7em; }
+#bumain #outputpanel textarea           { font-size:0.4em; border:0; width:47em; height:10em; overflow:auto; }
 
 #buslide #busoverview                   { background-color:black; padding:.5em; }
 #buslide #busoverview>div               { background-color:white; width:16em; height:12em; font-size:1.2em; margin:0 auto; }
@@ -71,8 +72,80 @@
 #buslide .bu.icon                       { cursor:pointer; }
 #buslide .bu.icon.s                     { background-color:red; }
 
-#buboard                                { }
-#buboard>#budraw                        { height:100%; }
+#buprep #bupmenu                        { border:1px solid black; border-width:0 2px 0 0; float:left; font-size:.5em; width:17em; height:100%; }
+#buprep #buplist                        { height:6em; overflow:auto; border:1px solid black; border-width:0 0 2px 0; }
+#buprep #buplist>div                    { padding-left:.5em; cursor:pointer; background-color:white; }
+#buprep #buplist>div.s                  { cursor:pointer; background-color:#DDD; }
+#buprep #bupvalues                      { background-color:gray; color:white; height:10em; }
+#buprep #bupvalues>span                 { cursor:pointer; }
+#buprep #bupvalues>span.s               { background-color:red; }
+#bupmenu textarea                       { border:0; width:20.5em; height:31em; font-size:0.8em; padding:0 .2em; overflow:auto; }
+#bupmenu #bupid                         { background-color:#444; color:white; text-align:center; height:1.2em; }
+#bupmenu #bupbuttons                    { background-color:#444; font-size:2em; height:2.5em; }
+#bupmenu #bupbuttons .icon              { cursor:pointer; margin:.1em; float:left; }
+#bupmenu #bupbuttons .icon.s            { background-color:red; }
+#bupmenu #bupcontrol                    { background-color:gray; font-size:2em; padding:.1em 0; }
+#bupmenu #bupcontrol .icon              { cursor:pointer; margin:.1em; float:left; }
+#bupmenu #bupcontrol .icon.s            { background-color:red; }
+
+.buprep                                 { width:16.4em; }
+.buprep>div                             { width:16em; cursor:pointer; margin-bottom:.1em; }
+.buprep>div.hide2                       { display:none; }
+.buprep>div.s                           { background-color:rgba(255,255,0,0.5); border:4px solid red; border-width:0 .4em 0 0; }
+.buprep>div.tmp                         { background-color:rgba(0,255,0,0.2); border:4px solid #0F0; border-width:0 .4em 0 0 ; }
+.buprep>div.hide3                       { display:none; }
+
+.buprep .label                          { color:#ff8; margin-left:.5em; font-weight:bold;}
+.buprep .header                         { background-color:red; color:white; padding-left:.1em; height:1.2em; }
+.buprep .title                          { float:left; margin-left:.1em;  }
+.buprep>.comment>div                   { font-size:.6em; font-style:italic; text-align:justify; margin-left: 2em; width:80%; }
+
+.buprep .icon                           { float:left; font-size:.5em; margin-top:.7em; margin-right:.4em; cursor:pointer; }
+.buprep .number                         { float:left; width:1.5em; padding-right:.1em; text-align:right; margin-right:.2em; border:1px solid black; border-width:0 1px 0 0; }
+.buprep textarea                        { font-size:1em; border:0; }
+.buprep .obj                            { margin-top:.1em; clear:both; font-size:.5em;background-color:rgba(0,0,0,0.5); color:white; padding-bottom:.2em; }
+.buprep .obj.empty                      { display:none; }
+.buprep .obj .value                     { margin-left:1.5em; }
+.buprep .equ                            { margin-top:.1em; clear:both; font-size:.5em;background-color:rgba(100,100,0,0.5); color:white; padding-bottom:.2em; }
+.buprep .equ.empty                      { display:none; }
+.buprep .equ .value                     { margin-left:1.5em; }
+.buprep .attrs                          { width:16.2em; }
+.buprep .attr                           { font-size:.6em; width:8.6em; background-color:rgba(100,100,0,0.5); color:white; height:2.4em; float:left; margin:.1em 0 .1em .1em; }
+.buprep .attr.classification            { width:9.3em; margin-left:0;}
+.buprep .attr .value                    { text-align:right; margin-right:.5em; }
+.buprep .session                        { margin-top:.3em; }
+.buprep .session>.header                { font-size:.8em; }
+.buprep .session.closed .obj            { display:none; }
+.buprep .session.closed .equ            { display:none; }
+.buprep .duration                       { float:right; margin-right:.2em; width:1.5em; text-align:center; background-color:#FFF; height:1.2em; color:red;}
+.buprep .step                           { margin-top:.2em; }
+.buprep .step>div                       { font-size:.7em; border:1px solid red; border-width:2px 0 2px 0; color:black; padding-left:.2em; height:1.2em; }
+.buprep .step .duration                 { float:right; width:1.5em; text-align:center; height:1.2em; color:white; background-color:red; }
+.buprep .hint:before                    { content:"♣"; float:left; margin-right:0.2em; width:1em; text-align:center; color:#8FA;}
+.buprep .hint                           { font-size:.7em; background-color:#5B6; color:white; }
+.buprep .teacher:before                 { content:"♥"; float:left; margin-right:0.2em; width:1em; text-align:center; color:#FFA;}
+.buprep .teacher                        { font-size:.7em; background-color:#BB6; color:white; }
+.buprep .student:before                 { content:"♠"; float:left; margin-right:0.2em; width:1em; text-align:center; color:#8AF;}
+.buprep .student                        { font-size:.7em; background-color:#56B; color:white; }
+.buprep .generic .text                  { font-size:.5em; margin-left:2em; border:1px solid black; border-width:0 0 0 1px; padding-left:.5em; text-align:justify; }
+.buprep .com                            { margin-left:2em; font-size:.7em; background-color:rgba(84, 137, 184, 0.9); color:white;}
+.buprep .com .label                     { margin-left:.2em; color:#BEF;}
+.buprep .com .data                      { background-color:rgba(0,0,0,0.5); font-size:.4em; padding:0 .2em; max-height:3em; overflow:auto;}
+.buprep .slides .data                   { display:none; }
+.buprep .slides .description            { font-size:.5em; margin-left:2.5em; padding-left:.5em; text-align:justify; margin-bottom:.1em; }
+.buprep .slides .com                    { margin-bottom:0; }
+.buprep .actions                        { float: right; margin-right:.2em; margin-top:.1em;  }
+.buprep .actions>div                    { width:1em; height:1em; cursor:pointer; float:right;}
+.limited .buprep .com .data             { display:none; }
+.limited .buprep .hint                  { display:none; }
+.limited .buprep .teacher               { display:none; }
+.limited .buprep .student               { display:none; }
+.limited .buprep .generic .text         { display:none; }
+.limited .buprep .obj                   { display:none; }
+.limited .buprep .slides .description   { display:none; }
+
+#buboard                                { height:24em; }
+#buboard>#budraw                        { height:100%; position:relative; }
 #buboard>#buborder                      { float:right; width:2em; height:100%; background-color:gray; }
 
     </style>
@@ -85,6 +158,8 @@ user.onEvent = function() {
     $("#bumain").removeClass("devmode");
 
     $("textarea").val("");
+    tibibu.prep.init();
+
     $(".bucontent").hide(); $(".bunav2").hide(); $(".bunav2>div").removeClass("s");
     $("#budraw").draw("clean");
 
@@ -150,13 +225,356 @@ var tibibu = {
         valid: function()     { $("#inputpanel").hide(); if (tibibu.inputpanel.cbk) { tibibu.inputpanel.cbk($("#inputpanel input").val());} }
     },
     prep : {
+        last:"",
+        timer: 0,
+        list: [],
+        selected: -1,
+        svalue : "",
+        tmp: [],
+        up: function() {
+            if (tibibu.prep.selected>1) {
+                var sav = tibibu.prep.list[tibibu.prep.selected];
+                tibibu.prep.list[tibibu.prep.selected]    = tibibu.prep.list[tibibu.prep.selected-1];
+                tibibu.prep.list[tibibu.prep.selected-1]  = sav;
+                $("#buprender #e"+tibibu.prep.selected).detach().insertBefore($("#buprender #e"+(tibibu.prep.selected-1)));
+                tibibu.prep.selected--; tibibu.prep.display();
+            }
+        },
+        down: function() {
+            if (tibibu.prep.selected>0 && tibibu.prep.selected<tibibu.prep.list.length-1) {
+                var sav = tibibu.prep.list[tibibu.prep.selected];
+                tibibu.prep.list[tibibu.prep.selected]    = tibibu.prep.list[tibibu.prep.selected+1];
+                tibibu.prep.list[tibibu.prep.selected+1]  = sav;
+                $("#buprender #e"+tibibu.prep.selected).detach().insertAfter($("#buprender #e"+(tibibu.prep.selected+1)));
+                tibibu.prep.selected++; tibibu.prep.display();
+            }
+        },
+        deleteall: function() {
+            if (tibibu.prep.timer) {
+                clearTimeout(tibibu.prep.timer); tibibu.prep.timer = 0; $("#bupdeleteall").removeClass("s");
+                tibibu.prep.init();
+            }
+            else {
+                $("#bupdeleteall").addClass("s");
+                tibibu.prep.timer = setTimeout(function() { $("#bupdeleteall").removeClass("s"); tibibu.prep.timer = 0; }, 500);
+            }
+        },
+        remove: function() {
+            if (tibibu.prep.timer) {
+                if (tibibu.prep.selected!=-1) {
+                    clearTimeout(tibibu.prep.timer); tibibu.prep.timer = 0; $("#bupremove").removeClass("s");
+                    tibibu.prep.list.splice(tibibu.prep.selected,1);
+                    $("#buprender #e"+tibibu.prep.selected).detach();
+                    tibibu.prep.selected = -1; tibibu.prep.display();
+                }
+                $("#bupvalue").val("");
+                tibibu.prep.tmp="";
+                $('#buprender>.buprep>div.tmp').detach();
+            }
+            else {
+                $("#bupremove").addClass("s");
+                tibibu.prep.timer = setTimeout(function() { $("#bupremove").removeClass("s"); tibibu.prep.timer = 0; }, 500);
+            }
+        },
+        export:function($_target){
+            $_target.find("textarea").val(tibibu.prep.list.join(','));
+            $_target.show();
+        },
+        tags : {
+            list : function(_tag,_value, _offset) {
+                var list = _value.substr(_offset, _value.indexOf("}}",_offset)-_offset);
+                var elts = list.split("|");
+                var html = "<ul>";
+                for (var e in elts) {
+                    ee = elts[e].split('=');
+                    if (ee.length==1) { html+="<li>"+tibibu.format(ee[0])+"</li>"; }
+                    else              { html+="<li><div class='number'>"+ee[0]+"</div>"+tibibu.format(ee[1])+"</li>" }
+                }
+                html+="</ul>";
+                return { offset:_offset+list.length+2, html:$(html) };
+            },
+            html : function(_value,_offset) {
+                var finished    = false;
+                var global      = "error";
+
+                // GET GLOBAL ELEMENT TAG
+                if (_value.indexOf("{{")!=0) { _offset = -1; }
+                else {
+                    _offset+=2;
+                    global = _value.substr(_offset, _value.indexOf("|",_offset)-_offset);
+                    _offset+=global.length+1;
+                }
+
+                // CHOOSE TEMPLATE
+                var templates = {
+                    comment:   "<div class='comment'><div><div class='text'></div></div></div>",
+                    prep :      "<div class='level1 butitle'><div class='header'><div class='icon toggle1'><img src='res/img/white/minus.svg'/></div>"+
+                                "<div class='mod title'></div></div><div class='attrs'>" +
+                                "<div class='attr classification'><div class='label'>"+tibibu.locale.buprep.classification+"</div><div class='mod value'></div></div>"+
+                                "<div class='attr levels'><div class='label'>"+tibibu.locale.buprep.levels+"</div><div class='value'></div></div>"+
+                                "<div class='attr author'><div class='label'>"+tibibu.locale.buprep.author+"</div><div class='value'></div></div>"+
+                                "</div>"+
+                                "<div class='obj empty'><div class='label'>"+tibibu.locale.buprep.objectives+"</div><div class='value'></div></div>"+
+                                "</div>",
+                    session:    "<div class='level2 session'><div class='header'><div class='icon toggle'><img src='res/img/white/minus.svg'/></div>"+
+                                "<div class='duration mod'></div><div class='title mod'></div></div>"+
+                                "<div class='equ empty'><div class='label'>"+tibibu.locale.buprep.equipment+"</div><div class='value'></div></div>"+
+                                "<div class='obj empty'><div class='label'>"+tibibu.locale.buprep.objectives+"</div><div class='value'></div></div>"+
+                                "</div>",
+                    step:       "<div class='level3 step'><div><div class='icon toggle alt2'><img src='res/img/icon/minus.svg'/></div><div class='duration mod'></div><div class='title mod'></div></div></div>",
+                    exercices:  "<div class='exercices'><div class='com'><div class='actions'>"+
+                                "<div><img src='res/img/white/run.svg'/></div>"+
+                                "<div></div><div><img src='res/img/white/export.svg'/></div>"+
+                                "</div><div class='label'>"+tibibu.locale.buprep.exercices+"</div><div class='data'></div></div></div>",
+                    file:       "<div class='file'><div class='com'><div class='actions'>"+
+                                "<div><img src='res/img/white/run.svg'/></div>"+
+                                "<div></div><div><img src='res/img/white/download.svg'/></div>"+
+                                "</div><div class='label description'></div><div class='data'></div></div></div>",
+                    slides:     "<div class='slides'><div class='com'><div class='actions'>"+
+                                "<div><img src='res/img/white/run.svg'/></div>"+
+                                "</div><div class='label'>"+tibibu.locale.buprep.slides+"</div><div class='data'></div></div><div class='description'></div></div>",
+                    generic:    "<div class='generic'><div class='"+global+"'>"+tibibu.locale.buprep[global]+"</div><div class='text'></div></div>",
+                    error:      "<div class='error'>error</div>"
+                };
+                var $html=templates[global]?$(templates[global]):$(templates.generic);
+
+                while (_offset!=-1 && _value[_offset]!='}') {
+                    var value ="";
+                    // GET THE TAG
+                    var tag = _value.substr(_offset, _value.indexOf("=",_offset)-_offset);
+                    _offset+=tag.length+1;
+                    var savOffset = _offset;
+
+                    // GET THE VALUE (TAKE CARE ABOUT THE LIST)
+                    if (_value[_offset]=='{') {
+                        if (global=="slides" && tag=="data") {
+                            // SPECIFIC TREATMENT FOR SLIDES BECAUSE OF ITS FORMAT {{}},{{}},{{}}
+                            var end = _value.indexOf("}}}}",_offset), alt = _value.indexOf("}}|",_offset);
+                            if (alt!=-1 && alt<end) { end = alt; }
+                            end+=2;
+                            value = _value.substr(_offset, end-_offset);
+                            _offset+=value.length+1;
+                        }
+                        else {
+                            _offset+=2;
+                            var subtag = _value.substr(_offset, _value.indexOf("|",_offset)-_offset);
+                            if (tibibu.prep.tags[subtag]) {
+                                _offset+=subtag.length+1;
+                                var parser = tibibu.prep.tags[subtag](subtag,_value, _offset);
+                                _offset=parser.offset+1; value=parser.html;
+                            }
+                        }
+                    }
+                    else {
+                        var end = _value.indexOf("}",_offset), alt = _value.indexOf("|",_offset);
+                        if (alt!=-1 && alt<end) { end = alt; }
+                        value = _value.substr(_offset, end-_offset);
+                        _offset+=value.length+1;
+                    }
+
+                    // FILL THE ELEMENT
+                    switch(tag) {
+                        case "title":           $html.find(".title").html(tibibu.format(value)).addClass("mod").attr("id","c"+savOffset+"x"+(_offset-1)); break;
+                        case "classification":  $html.find(".classification .value").html(value).addClass("mod").attr("id","c"+savOffset+"x"+(_offset-1)); break;
+                        case "status":          break;
+                        case "level":           $html.find(".levels .value").html(value).addClass("mod").attr("id","c"+savOffset+"x"+(_offset-1));break;
+                        case "objectives":      $html.find(".obj .value").html(value); $html.find(".obj").removeClass("empty"); break;
+                        case "duration":        value = parseInt(value); if (!value) { value=0; } $html.find(".duration").html(value); break;
+                        case "text":            $html.find(".text").html(value).addClass("mod").attr("id","c"+savOffset+"x"+(_offset-1));break;
+                        case "equipment":       $html.find(".equ .value").html(value); $html.find(".equ").removeClass("empty"); break;
+                        case "data":            $html.find(".data").html(value); break;
+                        case "url":             $html.find(".data").html(value); break;
+                        case "description":     $html.find(".description").html(value); break;
+                    }
+                
+                }
+                if (_offset!=-1) { _offset++; }
+                return {offset:_offset, html:$html}
+            }
+        },
+        tohtml: function(_value, _args, _parse) {
+            var offset  = 0;
+            var html    = "";
+
+            while (offset!=-1 && offset<_value.length) {
+                offset=_value.indexOf("{{",offset);
+                if (offset!=-1) {
+                    var parser = tibibu.prep.tags.html(_value, offset);
+                    if (_args && _args["id"])       { parser.html.attr("id", _args.id); }
+                    if (_args && _args["class"])    { parser.html.addClass(_args["class"]); }
+                    if (_parse) { _parse.push(_value.substr(offset, parser.offset-offset)); }
+                    offset=parser.offset; html+=parser.html.prop('outerHTML');
+                }
+            };
+            return html;
+        },
+        bind: function($_target, _select) {
+
+            if (_select) {
+                $_target.find(".buprep>div").unbind("mousedown touchstart");
+                $_target.find(".buprep>div").bind("mousedown touchstart",function(_event) {
+                    tibibu.prep.select("#bupvalues #s"+$(this).attr("id").substr(1));
+                    _event.preventDefault();
+                    _event.stopPropagation();
+                });
+            }
+
+            $_target.find(".toggle1").unbind("mousedown touchstart");
+            $_target.find(".toggle1").bind("mousedown touchstart",function(_event) {
+                var $elt    = $(this).closest(".buprep>div");
+                var closed  = $elt.hasClass("closed");
+                $elt.parent().find(".level2").each(function() { tibibu.prep.toggleelt($(this), closed, false); });
+                $elt.parent().find(".level3").each(function() { tibibu.prep.toggleelt($(this), closed, true); });
+                    
+                if (closed) {
+                    $elt.removeClass("closed");
+                    $elt.find("img").attr("src", "res/img/white/minus.svg");
+                }
+                else {
+                    $elt.addClass("closed");
+                    $elt.find("img").attr("src", "res/img/white/add.svg");
+                }
+                _event.preventDefault();
+                _event.stopPropagation();
+            });
+
+            $_target.find(".toggle").unbind("mousedown touchstart");
+            $_target.find(".toggle").bind("mousedown touchstart",function(_event) {
+                var $elt    = $(this).closest(".buprep>div");
+                var closed  = $elt.hasClass("closed");
+                    
+                tibibu.prep.toggleelt($elt, closed, $(this).hasClass("alt2"));
+                _event.preventDefault();
+                _event.stopPropagation();
+            });
+        },
+        toggleelt: function($_elt, _closed, _black) {
+            var level   = function($_e) {
+                var ret = 99;
+                var i   = $_e.attr("class").indexOf("level");
+                if (i!=-1) { ret = parseInt($_e.attr("class")[i+5]); }
+                return ret;
+            };
+
+            var lvl     = level($_elt);
+            var $next   = $_elt.next();
+
+            while ($next.html() && level($next)>lvl) {
+                if (_closed) $next.removeClass("hide"+lvl); else $next.addClass("hide"+lvl);
+                $next = $next.next();
+            }
+
+            if (_closed) {
+                $_elt.removeClass("closed");
+                $_elt.find("img").attr("src", (_black?"res/img/icon/":"res/img/white/")+"minus.svg");
+            }
+            else {
+                $_elt.addClass("closed");
+                $_elt.find("img").attr("src", (_black?"res/img/icon/":"res/img/white/")+"add.svg");
+            }
+        },
+        toggleview: function(_b, _elt) {
+            if (_elt.hasClass("limited"))   { _elt.removeClass("limited");  _b.addClass("s"); }
+            else                            { _elt.addClass("limited");     _b.removeClass("s");}
+        },
+        add : function(_id) {
+            var data    = tibibu.locale.prep[_id][1];
+            if (data.indexOf("{{slides|") == 0) { data = data.replace("$1", tibibu.slide.list.join(',') ); }
+            $("#bupvalue").val(data);
+            tibibu.prep.selected=-1;
+            tibibu.prep.tmp = [];
+            $("#bupvalues .s").removeClass("s");
+            $("#buprender>.buprep>div.s").removeClass("s");
+            $('#buprender>.buprep>div.tmp').detach();
+            $('#buprender>.buprep').append(tibibu.prep.tohtml($("#bupvalue").val(), { "class": "tmp" }, tibibu.prep.tmp));
+        },
+        init : function() {
+            tibibu.prep.list=[];
+            for (var i in tibibu.locale.newprep) { tibibu.prep.list.push(tibibu.locale.newprep[i]); }
+            tibibu.prep.selected=-1;
+            $("#bupvalue").val("");
+
+            var html="";
+            for (var i=0; i<tibibu.prep.list.length; i++ ) { html+=tibibu.prep.tohtml(tibibu.prep.list[i]); }
+            $('#buprender>.buprep').html(html);
+            tibibu.prep.bind($('#buprender'), true);
+
+            tibibu.prep.display();
+        },
+        display: function() {
+            var html="";
+            for (var i=0; i<tibibu.prep.list.length; i++) {
+                $($("#buprender .buprep").children().get(i)).attr("id","e"+i);
+                if (i) { html+=","; }
+                html+="<span onclick='tibibu.prep.select(this)' id='s"+i+"'" +
+                      (i==tibibu.prep.selected?" class='s'":"")+">"+tibibu.prep.list[i].substr(0,tibibu.prep.list[i].indexOf('|'))+"}}</span>";
+            }
+            $("#bupvalues").html(html);
+        },
+        select: function(_elt) {
+            var selected = parseInt($(_elt).attr("id").substr(1));
+            $("#bupvalues .s").removeClass("s");
+            $("#buprender>.buprep>div.s").removeClass("s");
+            tibibu.prep.tmp = "";
+            $('#buprender>.buprep>div.tmp').detach();
+
+            if (tibibu.prep.selected!=-1 && tibibu.prep.svalue!=$("#bupvalue").val()) {
+                var $html = $(tibibu.prep.tohtml(tibibu.prep.list[tibibu.prep.selected]));
+                $('#buprender>.buprep #e'+tibibu.prep.selected).html($html.html());
+                tibibu.prep.bind($('#buprender'),true);
+            }
+
+            if (selected == tibibu.prep.selected) {
+                tibibu.prep.selected=-1;
+                $("#bupvalue").val("");
+            }
+            else {
+                $(_elt).addClass("s");
+                tibibu.prep.selected=selected;
+                tibibu.prep.svalue = tibibu.prep.list[tibibu.prep.selected];
+                $('#buprender>.buprep #e'+tibibu.prep.selected).addClass("s");
+                $("#bupvalue").val(tibibu.prep.svalue);
+            }
+        },
+        overview: function() {
+            if (tibibu.prep.selected!=-1) {
+                var $html = $(tibibu.prep.tohtml($("#bupvalue").val()));
+                $('#buprender>.buprep #e'+tibibu.prep.selected).html($html.html());
+            }
+            else if (tibibu.prep.tmp.length) {
+                tibibu.prep.tmp = [];
+                $('#buprender>.buprep>div.tmp').detach();
+                $('#buprender>.buprep').append(tibibu.prep.tohtml($("#bupvalue").val(), { "class": "tmp" }, tibibu.prep.tmp));
+            }
+        },
+        insert: function() {
+           if (tibibu.prep.selected!=-1) {
+                tibibu.prep.list[tibibu.prep.selected]=$("#bupvalue").val();
+                $("#bupvalues .s").removeClass("s");
+                $("#buprender>.buprep>div.s").removeClass("s");
+            }
+            else if (tibibu.prep.tmp.length) {
+                var id=tibibu.prep.list.length;
+                $('#buprender>.buprep>div.tmp').detach();
+                for (var i=0; i<tibibu.prep.tmp.length; i++) {
+                    tibibu.prep.list.push(tibibu.prep.tmp[i]);
+                    $('#buprender>.buprep').append(tibibu.prep.tohtml(tibibu.prep.tmp[i]));
+                }
+                tibibu.prep.display();
+                tibibu.prep.tmp = [];
+            }
+            tibibu.prep.bind($('#buprender'),true);
+            $("#bupvalue").val("");
+        },
         menu : function(_elt) {
             $(".bunav2>div").removeClass("s"); $(_elt).addClass("s");
             $(".bucontent").hide(); 
             switch($(_elt).attr("id")) {
-                case "pdmenu" : $("#buslide").show(); break;
+                case "pdmenu" : $("#buslide").show();   break;
+                case "ppmenu" : $("#buprep").show();    break;
             }
-        }
+        },
+        save: function() { alert("TODO : sauvegarde du document"); }
     },
     friend: {
         menu: function(_elt) {
@@ -175,6 +593,10 @@ var tibibu = {
         selected : -1,
         timer:0,
         last: "",
+        export:function($_target){
+            $_target.find("textarea").val(tibibu.slide.list.join(','));
+            $_target.show();
+        },
         up: function() {
             if (tibibu.slide.selected!=-1 && tibibu.slide.selected>0) {
                 var sav = tibibu.slide.list[tibibu.slide.selected];
@@ -251,13 +673,14 @@ var tibibu = {
             $("#busvalues").html("");
             for (var i=0; i<tibibu.slide.list.length; i++) {
                 if (i>0) { $("#busvalues").append(","); }
+                var value = tibibu.slide.list[i].substr(0, tibibu.slide.list[i].indexOf('|'));
                 $("#busvalues").append("<span onclick='tibibu.slide.select(this)' id='s"+i+"'" +
-                                      (i==tibibu.slide.selected?" class='s'":"")+">"+tibibu.slide.list[i]+"</span>");
+                                      (i==tibibu.slide.selected?" class='s'":"")+">"+value+"}}</span>");
             }
         },
         overview: function(_all, _args) {
             if (!_args) {_args={}; }
-            var value = _all?$("#busvalues").text():$("#pdvalue").val();
+            var value = _all?tibibu.slide.list.join(','):$("#pdvalue").val();
             var ok    = true;
             if (_all) { $("#pdvalue").val(""); $("#busvalues .s").removeClass("s"); tibibu.slide.selected=-1; }
             else      { _args.nonext = true; ok=(tibibu.slide.last != value);}
@@ -283,6 +706,10 @@ $(window).ready(function() {
 
             // USER HANDLER INITIALISATION
             user.waiting    = "#waiting";
+            
+            user.onrequest = function() { $(user.waiting+" div").addClass("running"); $(user.waiting).show(); };
+            user.onreply = function() { $(user.waiting+" div").removeClass("running"); $(user.waiting).hide(); };
+
             user.inputpanel = tibibu.inputpanel.open;
 
             user.load.edit($("#bumain"));
@@ -295,18 +722,26 @@ $(window).ready(function() {
                     $.getJSON("mods/tibibu/locale/"+_check.lang+"/text.json?debug="+Math.floor(Math.random()*1000), function(_locale) {
                         for (var i in _locale.locale) { if (typeof(_locale.locale[i])== "string") $("#"+i).html(_locale.locale[i]); }
 
+                        // SLIDE LOCALE
                         $("#buslist").html("");
                         var nb = 0;
                         for (var i in _locale.slide) {
                             var $elt = $("<div onclick='$(\"#pdvalue\").val(\""+_locale.slide[i]+"\");tibibu.slide.overview(false);'>"+i+"</div>");
                             if (nb++%2) { $elt.addClass("s"); }
                             $("#buslist").append($elt);
-                            
+                        }
+
+                        // PREP LOCALE
+                        for (var i=0; i<_locale.prep.length; i++) {
+                            var $elt = $("<div onclick='tibibu.prep.add("+i+");'>"+_locale.prep[i][0]+"</div>");
+                            if (i%2) { $elt.addClass("s"); }
+                            $("#buplist").append($elt);
                         }
 
                         tibibu.locale = _locale;
                         $("#uflheader").addClass("devmode"); $("#uflfooter").addClass("devmode");
 
+                        $("#buboard").show();
                         $("#budraw").draw({size:[480,480],context:{onquit:function(){} }});
                     });
                 });
@@ -345,10 +780,10 @@ $(window).ready(function() {
                     <div id="name">&nbsp;</div>
                     <div id="sub"></div>
                     <div id="devmode" class="icon" ontouchstart="tibibu.devmode();event.preventDefault();"
-                        onclick="tibibu.devmode();"><img src="mods/tibibi/res/img/edit.svg"/></div>
+                        onclick="tibibu.devmode();"><img src="res/img/white/edit.svg"/></div>
                 </div>
                 <div id="gdx" class="icon" ontouchstart="user.logout($(this));event.preventDefault();"
-                    onclick="user.logout($(this));"><img src="mods/tibibi/res/img/logout.svg"/></div>
+                    onclick="user.logout($(this));"><img src="res/img/white/logout.svg"/></div>
             </div>
 
             <!-- MAIN MENU -->
@@ -389,9 +824,9 @@ $(window).ready(function() {
         <div class="bucontent" id="buslide">
             <div id="buscontent">
                 <div id="busbutton">
-                    <div class="bu icon" onclick="tibibu.slide.overview(true);" ontouchstart="tibibu.slide.overview(true);event.preventDefault();"><img src="mods/tibibi/res/img/run.svg"></div>
-                    <div class="bu icon"></div>
-                    <div class="bu icon" id="fpdeleteall" onclick="tibibu.slide.deleteall();" ontouchstart="tibibu.slide.deleteall();event.preventDefault();"><img src="mods/tibibi/res/img/delete.svg"></div>
+                    <div class="bu icon" onclick="tibibu.slide.overview(true);" ontouchstart="tibibu.slide.overview(true);event.preventDefault();"><img src="res/img/white/run.svg"></div>
+                    <div class="bu icon" onclick="tibibu.slide.export($('#outputpanel'));" ontouchstart="tibibu.slide.export($('#outputpanel'));event.preventDefault();"><img src="res/img/white/export.svg"></div>
+                    <div class="bu icon" id="fpdeleteall" onclick="tibibu.slide.deleteall();" ontouchstart="tibibu.slide.deleteall();event.preventDefault();"><img src="res/img/white/delete.svg"></div>
                 </div>
                 <div id="busvalues"></div>
             </div>
@@ -399,14 +834,41 @@ $(window).ready(function() {
                 <div id="buslist"></div>
                 <textarea id="pdvalue" onkeyup="tibibu.slide.overview(false, {keep:true});"></textarea>
                 <div id="busaction">
-                    <div class="bu icon" onclick="tibibu.slide.insert();" ontouchstart="tibibu.slide.insert();event.preventDefault();"><img src="mods/tibibi/res/img/valid.svg"></div>
-                    <div class="bu icon" onclick="tibibu.slide.up();" ontouchstart="tibibu.slide.up();event.preventDefault();"><img src="mods/tibibi/res/img/up.svg"></div>
-                    <div class="bu icon" onclick="tibibu.slide.down();" ontouchstart="tibibu.slide.down();event.preventDefault();"><img src="mods/tibibi/res/img/down.svg"></div>
-                    <div class="bu icon" id="fpremove" onclick="tibibu.slide.remove();" ontouchstart="tibibu.slide.remove();event.preventDefault();"><img src="mods/tibibi/res/img/delete.svg"></div>
+                    <div class="bu icon" onclick="tibibu.slide.insert();" ontouchstart="tibibu.slide.insert();event.preventDefault();"><img src="res/img/white/valid.svg"></div>
+                    <div class="bu icon" onclick="tibibu.slide.up();" ontouchstart="tibibu.slide.up();event.preventDefault();"><img src="res/img/white/up.svg"></div>
+                    <div class="bu icon" onclick="tibibu.slide.down();" ontouchstart="tibibu.slide.down();event.preventDefault();"><img src="res/img/white/down.svg"></div>
+                    <div class="bu icon" id="fpremove" onclick="tibibu.slide.remove();" ontouchstart="tibibu.slide.remove();event.preventDefault();"><img src="res/img/white/delete.svg"></div>
                 </div>
             </div>
             <div id="busoverview"><div></div></div>
         </div>
+
+        <div class="bucontent" id="buprep">
+            <div id="bupmenu">
+                <div id="bupvalues"></div>
+                <div id="bupid"></div>
+                <div id="bupcontrol">
+                    <div class='icon s' onclick="tibibu.prep.toggleview($(this), $('#buprender'));"><img src='res/img/white/eye.svg'/></div>
+                    <div class='icon' onclick="tibibu.prep.export($('#outputpanel'));" ontouchstart="tibibu.prep.export($('#outputpanel'));event.preventDefault();"><img src="res/img/white/export.svg"></div>
+                    <div class='icon' onclick="tibibu.prep.save();" ontouchstart="tibibu.prep.save();event.preventDefault();"><img src="res/img/white/download.svg"></div>
+                    <div class='icon' id="bupdeleteall" onclick="tibibu.prep.deleteall();" ontouchstart="tibibu.prep.deleteall();event.preventDefault();"><img src="res/img/white/delete.svg"></div>
+               </div>
+                <div id="buplist"></div>
+                <textarea id="bupvalue" onkeyup="tibibu.prep.overview();"></textarea>
+                <div id="bupbuttons">
+                    <div class="icon" onclick="tibibu.prep.insert();" ontouchstart="tibibu.prep.insert();event.preventDefault();"><img src="res/img/white/valid.svg"></div>
+                    <div class="icon" onclick="tibibu.prep.up();" ontouchstart="tibibu.prep.up();event.preventDefault();"><img src="res/img/white/up.svg"></div>
+                    <div class="icon" onclick="tibibu.prep.down();" ontouchstart="tibibu.prep.down();event.preventDefault();"><img src="res/img/white/down.svg"></div>
+                    <div class='icon' id="bupremove" onclick="tibibu.prep.remove();" ontouchstart="tibibu.prep.remove();event.preventDefault();"><img src="res/img/white/delete.svg"></div>
+                </div>
+            </div>
+            <div id="buprender"><div class="buprep"></div></div>
+        </div>
+
+        <div id="outputpanel" class="inputpanel" onmousedown="$(this).hide();" ontouchstart="$(this).hide();event.preventDefault();"><div>
+            <textarea onmousedown="$(this).focus();event.stopPropagation();"
+                      ontouchstart="$(this).focus();event.stopPropagation();event.preventDefault();"/>
+        </div></div>
 
         <div id="inputpanel" class="inputpanel" onmousedown="$(this).hide();" ontouchstart="$(this).hide();event.preventDefault();"><div>
             <input type="text"

@@ -4,7 +4,7 @@
         "uflabel"   : "Contacts",
         "uelabel"   : "Devoirs",
         "uclabel"   : "Présentations",
-        "uplabel"   : "Préparations",
+        "uplabel"   : "Rédaction",
 
         "fslabel"   : "Chercher des contacts",
         "falabel"   : "Demandes en cours",
@@ -20,8 +20,9 @@
 
         "pslabel"   : "Chercher une préparation",
         "pdlabel"   : "Préparer un diaporama",
-        "pplabel"   : "Créer une préparation",
-        "pblabel"   : "Créer un board"
+        "pplabel"   : "Créer une séquence",
+        "pblabel"   : "Créer un board",
+        "bupid"     : "Nouvelle séquence"
     },
     "slide"   : {
         "titre"         : "{{title|title=Mon titre|subtitle=Sous-titre facultatif}}",
@@ -29,5 +30,29 @@
         "liste"         : "{{list|header=Texte facultatif|elt1=Premier élément|elt2=Deuxième élément|elt3=Troisième élément|elt4=Quatrième élément}}",
         "illustration"  : "{{img|url=https://upload.wikimedia.org/wikipedia/commons/a/aa/120318-M-MM918-004_%286859784290%29.jpg|legend=Légende facultative}}",
         "exercice"      : "{{exercice|id=iox}}"
+    },
+    "newprep"   : ["{{prep|title=Titre de la préparation|classification=Discipline|status=Non utilisé|level=Niveau scolaire|objectives={{list|Objectif n°1|Objectif n°2}}}}","{{comment|text=Résumé de la fiche de préparation}}"],
+    "prep"      : [
+        [ "séance"                    , "{{session|title=Titre de la séance|objectives={{list|Objectif n°1|Objectif n°2}}|duration=Durée de la séance en minutes|equipment={{list|Matériel n°1|Matériel n°2}}}}"],
+        [ "étape"                     , "{{step|title=Titre de l'étape|duration=Durée de l'étape en minutes}}"],
+        [ "commentaire"               , "{{comment|text=Texte libre}}"],
+        [ "astuce"                    , "{{hint|text=Description de l'astuce}}"],
+        [ "activité de l'enseignant"  , "{{teacher|text=Commentaire sur l'activité de l'enseignant}}"],
+        [ "activité de l'élève"       , "{{student|text=Commentaire sur les réponses attendues}}"],
+        [ "diaporama"                 , "{{slides|description={{list|1=Description de la diapositive n°1|2=Description de la diapositive n°2}}|data=$1}}"],
+        [ "exercices"                 , "{{exercices|data=iox,ioy,nllox}}"],
+        [ "fichier joint"             , "{{file|url=|description=Description du fichier joint}}"]
+    ],
+    "buprep"    : {
+        "classification"            : "Discipline",
+        "levels"                    : "Niveaux",
+        "author"                    : "Auteur",
+        "objectives"                : "Objectifs",
+        "equipment"                 : "Matériel",
+        "hint"                      : "Astuce",
+        "teacher"                   : "Activité de l'enseignant",
+        "student"                   : "Retours attendus des élèves",
+        "exercices"                 : "Exercices",
+        "slides"                    : "Diaporama"
     }
 }
