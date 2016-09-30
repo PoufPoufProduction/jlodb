@@ -1,17 +1,18 @@
-.slide                  { position:relative; }
-.slide>#slcontrol         { z-index:3000; position:absolute; top:.1em; left:.1em; width:1em; height:1em; font-size:.6em; cursor:pointer; opacity:0.5;}
-.slide>#slpage            { width:100%; height:100%; }
-.slide>#slmenu            { z-index:3000; display:none; top:0; left:0; position:absolute; background-color:rgba(0,0,0,0.2); width:100%; height:100%; }
-.slide>#slmenu>div        { background-color:rgba(255,255,255,0.4); margin-top:45%; width:100%; height:25%; border: 1px solid black; border-width:1px 0 1px 0;}
-.slide>#slmenu #slback      { float:left; font-size:3em; margin-left:.1em; cursor:pointer; }
-.slide>#slmenu #sllist { float:left; margin-left:.5em; width:8em; height:3em; cursor:pointer; }
-.slide>#slmenu #sllist .icon { float:left; font-size:.8em; background-image:url('../../../res/img/icon/menu01bg.svg'); }
-.slide>#slmenu #sllist .icon>div   { font-size:0.6em; color:white; text-align:center; font-weight:bold; }
-.slide>#slmenu #sllist .icon.s { background-image:url('../../../res/img/icon/menu02bg.svg'); }
-.slide>#slmenu #slforward   { float:left; font-size:3em; cursor:pointer; }
-.slide>#sldraw              { position:absolute;top:0;left:0;width:100%;height:100%;display:none; z-index:2999}
-.slide #slcomment           { font-size:0.7em; margin-top:.1em; cursor:pointer; border-radius:0.5em; background-color:gray;  }
-.slide #slcomment.s         { background-color:red; }
+.slide                              { position:relative; }
+.slide>#slcontrol                   { z-index:3000; position:absolute; top:.1em; left:.1em; width:1em; height:1em; font-size:.6em; cursor:pointer; opacity:0.5;}
+.slide>#slpage                      { width:100%; height:100%; }
+.slide>#slmenu                      { z-index:3000; display:none; top:0; left:0; position:absolute; background-color:rgba(0,0,0,0.2); width:100%; height:100%; }
+.slide>#slmenu>div                  { background-color:rgba(255,255,255,0.4); margin-top:45%; width:100%; height:25%; border: 1px solid black; border-width:1px 0 1px 0;}
+.slide>#slmenu #slback              { float:left; font-size:3em; margin-left:.1em; cursor:pointer; }
+.slide>#slmenu #sllist              { float:left; margin-left:.5em; width:8em; height:3em; cursor:pointer; }
+.slide>#slmenu #sllist .icon        { float:left; font-size:.8em; background-image:url('../../../res/img/icon/menu01bg.svg'); }
+.slide>#slmenu #sllist .icon>div    { font-size:0.6em; color:white; text-align:center; font-weight:bold; }
+.slide>#slmenu #sllist .icon.s      { background-image:url('../../../res/img/icon/menu02bg.svg'); }
+.slide>#slmenu #slforward           { float:left; font-size:3em; cursor:pointer; }
+.slide>#sldraw                      { position:absolute;top:0;left:0;width:100%;height:100%;display:none; z-index:2999}
+.slide #slactions                   { float:left; margin-left:.25em; }
+.slide #slactions .icon             { font-size:0.65em; margin-top:.1em; cursor:pointer; border-radius:0.5em; background-color:gray;  }
+.slide #slactions .icon.s           { background-color:red; }
 
 .slide .title           { font-size:1.2em; padding:0 10%; margin:0 auto; margin-top:20%; text-align:center; border: 1px solid black; border-width:1px 0 1px 0;}
 .slide .subtitle        { font-size:.8em; text-align:right; margin-right:1em; }

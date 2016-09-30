@@ -8,7 +8,8 @@
         lang        : "en-US",                                  // Current localization
         exercice    : [],                                       // Exercice
         draw        : false,                                    // Draw mode
-        debug       : false                                     // Debug mode
+        quit        : true,                                     // Quit button
+        debug       : true                                     // Debug mode
     };
 
     var regExp = [
@@ -106,8 +107,11 @@
             $this.html("<div id='slpage'></div><div id='slcontrol'><img src='res/img/icon/about.svg'/></div>"+
                        "<div id='slmenu'><div><div class='icon' id='slback'><img src='res/img/generic/left.svg'/></div>"+
                        "<div id='sllist'></div><div class='icon' id='slforward'><img src='res/img/generic/right.svg'/></div>"+
+                       "<div id='slactions'>"+
                        "<div class='icon' id='slcomment'><img src='res/img/white/edit.svg'/></div>"+
-                       "</div></div>"+
+                       "<div class='icon'></div><div class='icon'></div>"+
+                       "<div class='icon' id='sllogout'><img src='res/img/white/logout.svg'/></div>"+
+                       "</div></div></div>"+
                        "<div id='sldraw'></div>");
 
             if (settings.draw) {
@@ -120,7 +124,17 @@
                 $this.addClass("nosplash");
                 $this.find("#sldraw").draw({ nomenu:true, background:0, stroke:"red", context:{ onquit:function(){} }});
             }
-            else { $this.find("#slcomment").hide(); }
+            else { $this.find("#slcomment").html(""); }
+
+            if (settings.quit) {
+                $this.find("#sllogout").bind("mousedown touchstart", function(_event) {
+                    helpers.end($this);
+                    _event.preventDefault();
+                    _event.stopPropagation();
+                });
+                
+            }
+            else { $this.find("#sllogout").html(""); }
 
             $this.find("#slback").bind("mousedown touchstart", function(_event) {
                 if (settings.page>0) { settings.page--; settings.event = [0,0]; helpers.run($this); }
@@ -232,7 +246,7 @@
             update: function(_value, _args) {
                 var $this = $(this) , settings = helpers.settings($this);
 
-                // $this.css("font-size", Math.floor($this.height()/12)+"px");
+                $this.find("#slcomment").removeClass("s"); $this.find("#sldraw").hide();
 
                 if (!_args || !_args.keep) {
                     settings.page    = 0;
@@ -258,6 +272,7 @@
                     match = regExp.exec(_value);
                 }
                 helpers.run($this);
+                return $this;
             },
             next: function() { helpers.next($(this)); },
             quit: function() {
