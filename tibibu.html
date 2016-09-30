@@ -248,8 +248,8 @@ var tibibu = {
         tmp: [],
         save: function(_elt) {
             if (_elt.hasClass("s")) {
-                var args = { action:"new", label:encodeURIComponent($(".butitle .title").text()),
-                             level: $(".butitle .levels .value").text(), classification: $(".butitle .classification .value").text() };
+                var args = { action:"new", label:encodeURIComponent($("#buprender .butitle .title").text()),
+                             level: $("buprender .butitle .levels .value").text(), classification: $("buprender .butitle .classification .value").text() };
                 if ($("#bupmenu #bupid").hasClass("s")) { args.action="upd"; args.name=$("#bupmenu #bupid").text(); }
 
                 user.getJSON("mods/tibibu/api/file.php", args, { data:tibibu.prep.list.join(',') },
