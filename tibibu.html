@@ -46,7 +46,8 @@
 #bumain #profile #gdx                   { display:none; }
 #bumain #profile #gdx.s                 { background-color:red; border-radius:.5em; }
 #bumain #upuser>div                     { left:1em; }
-#bumain #umenu                          { display:none;}
+#bumain #umenu                          { display:none; height:35em;}
+#bumain #butarget                       { font-size:.6em; background-color:black; color:white; padding:.8em 0 1em .5em;}
 #bumain .bu.bluekeypad                  { margin-top:.5em; color:white; padding-left:.5em; cursor:pointer; }
 #bumain .bu.bluekeypad>div              { float:left; }
 #bumain .bu.bluekeypad .alert           { float:right; min-width:1.5em; background-color:rgba(255,0,0,0.6); border-radius:.2em; margin:0.2em; text-align:center; font-weight:bold; font-size:0.8em; }
@@ -556,21 +557,24 @@ var tibibu = {
         },
         init : function(_args) {
             tibibu.prep.list=[];
+            tibibu.prep.selected=-1;
+            $("#bupvalue").val("");
 
             if (!_args) {
                 for (var i in tibibu.locale.newprep) { tibibu.prep.list.push(tibibu.locale.newprep[i]); }
-                tibibu.prep.selected=-1;
-                $("#bupvalue").val("");
-
                 var html="";
                 for (var i=0; i<tibibu.prep.list.length; i++ ) { html+=tibibu.prep.tohtml(tibibu.prep.list[i]); }
                 $('#buprender>.buprep').html(html);
-                tibibu.prep.bind($('#buprender'), true);
 
                 $("#bupmenu #bupid").html(tibibu.locale.locale.bupid).removeClass("s");
             }
             else {
+                var html= tibibu.prep.tohtml(_args.data, { }, tibibu.prep.list);
+                $('#buprender>.buprep').html(html);
+
+                $("#bupmenu #bupid").html(_args.id).addClass("s");
             }
+            tibibu.prep.bind($('#buprender'), true);
             $("#bupsave").removeClass("s");
 
             tibibu.prep.display();
@@ -658,6 +662,15 @@ var tibibu = {
                                 user.getJSON("mods/tibibu/api/file.php", {value: $(this).attr("id").substr(1) }, {}, function(_data) {
                                     $("#bupsrender>.buprep").html(tibibu.prep.tohtml(_data.description));
                                     tibibu.prep.bind($('#bupsrender'), true);
+                                });
+                                _event.preventDefault();
+                                _event.stopPropagation();
+                            });
+                            $html.find(".e").bind("mousedown touchstart", function(_event) {
+                                user.getJSON("mods/tibibu/api/file.php", {value: $(this).parent().attr("id").substr(1) }, {}, function(_data) {
+                                    $(".bunav2>div").removeClass("s"); $(".bunav2 #ppmenu").addClass("s"); $(".bucontent").hide(); 
+                                    tibibu.prep.init({id:_data.value, data:_data.description});
+                                    $("#buprep").show();
                                 });
                                 _event.preventDefault();
                                 _event.stopPropagation();
@@ -809,6 +822,9 @@ $(window).ready(function() {
 
             user.load.edit($("#butoggle"));
             user.load.devmode($("#butoggle"));
+
+            user.circle.onselect = function(_key) {
+                $("#butarget").html(_key?$("#uflcircles option:selected").html():tibibu.locale.locale.butarget).attr("class","k"+_key); }
         
             user.load.logpanel($("#butoggle"), {}, function() { user.init(tibibu.lang);
                 user.load.friend($("#butoggle"), function() { $(".ufcontent").addClass("bucontent");
@@ -916,6 +932,7 @@ $(window).ready(function() {
                     <!-- <div id="pbmenu" onmousedown="tibibu.prep.menu(this);" ontouchstart="tibibu.prep.menu(this);event.preventDefault();"><div id="pblabel"></div></div> -->
                 </div>
             </div>
+            <div id="butarget" class="devmode"></div>
         </div>
 
         <div class="bucontent nosplash" id="buboard"><div id="buborder"></div><div id="budraw"></div>

@@ -250,9 +250,13 @@ var user = {
                     $("#uflheader .label").html(0); 
                 });
             }
-        }); }
+        }); },
+        onselect: function(_key) { }
     },
     friend : {
+        data : {
+            uflpanel : false
+        },
         update: function() {
             if ($("#uflfooter").hasClass("s")) {
                 switch($("#uflaction").val()) {
@@ -362,9 +366,13 @@ var user = {
                 });
                 break;
             case "uflpanel" :
-                user.circle.list(function() { 
-                    user.friend.get($("#uflcircles").val(), function() {  $("#uflpanel").show();}); });
-                user.circle.list(0, { elt:"#ufltarget", noempty:true});
+                if (user.friend.data.uflpanel) { $("#uflpanel").show(); }
+                else {
+                    user.friend.data.uflpanel = true;
+                    user.circle.list(function() { 
+                        user.friend.get($("#uflcircles").val(), function() {  $("#uflpanel").show();}); });
+                    user.circle.list(0, { elt:"#ufltarget", noempty:true});
+                }
                 break;
             }
 
@@ -379,6 +387,7 @@ var user = {
             user.friend.footer();
             $("#uflheader .label").html(_data.users?_data.users.length:0); $("#uflheader .label").removeClass("s");
             if (_cbk) { _cbk(); }
+            user.circle.onselect(_group);
             });
         },
         search : function() {
