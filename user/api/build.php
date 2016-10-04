@@ -44,6 +44,7 @@ if (!$error) {
             $error = 13;
         }
 
+        /*
         // ADD TEST USERS
         $avatars = array("U+IOHgggDZIDgqNgg8LLG","RJJCF7ggB2GG/qD/gFEED","VhGMCyggBACDVqM/IkLLE","PZCIEjggEXCNdqAVgzKKI");
         $firsnames = array("Bob","Sue","Roger","Mary","Rick","Amy","Paul","Michelle","Vladimir","Anna","Richard","Charlotte","John","Elizabeth","Oliver","Josephine");
@@ -58,6 +59,7 @@ if (!$error) {
             $ln=$lastname[0].$lastname[0].$lastname[0];
             insertNewUser("test0", "test".$i, $avatars[0], $firsnames[0], ucfirst($ln) );
         }
+        */
 
         // USER GROUP OF FRIENDS
         if (!mysql_query("SELECT * FROM `".$_SESSION['prefix']."circle`")) {

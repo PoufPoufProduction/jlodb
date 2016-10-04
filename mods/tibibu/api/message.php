@@ -10,22 +10,18 @@ $textstatus = "";
 if (strlen($_SESSION['User_Key']) && $_GET["action"]=="new") {
     $idisfine = false; $len = 5;
 
-    $v = str_replace("'","\'", $_GET["label"]);
-    $v = str_replace('"','\"', $v);
+    $l = str_replace("'","\'", $_GET["label"]);
+    $l = str_replace('"','\"', $l);
+
+    $e = str_replace("'","\'", $_POST["description"]);
+    $e = str_replace('"','\"', $e);
 
     $d = str_replace("'","\'", $_POST["data"]);
     $d = str_replace('"','\"', $d);
 
-    do {
-        $value  = substr(md5(uniqid()),0,$len++);
-        $book   = mysql_query("SELECT * FROM `".$_SESSION['prefix']."file` WHERE `Book_Name`='".$value."'");
-        $b      = mysql_fetch_array($book);
-        if (!$b) { $idisfine = true; }
-    } while (!$idisfine);
-
-    mysql_query("INSERT INTO `".$_SESSION['prefix']."file` (".
-                "`File_Name`,`User_Key`, `File_Label`, `File_Description`, `File_Level`, `File_Classification`) VALUES (".
-                "'".$value."','".$_SESSION['User_Key']."','".$v."','".$d."','".$_GET["level"]."','".$_GET["classification"]."')");
+    mysql_query("INSERT INTO `".$_SESSION['prefix']."message` (".
+                "`User_Key`, `Circle_Key`, `Target_Key`, `Message_Type`, `Message_Label`, `Message_Description`, `Message_Content`) VALUES (".
+                "'".$_SESSION['User_Key']."','".$_GET["circle"]."','".$_GET["target"]."','".$_GET["type"]."','".$l."','".$e."','".$d."')");
 
 }
 else

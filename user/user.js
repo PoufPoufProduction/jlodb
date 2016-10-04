@@ -8,6 +8,7 @@ var user = {
     inputpanel  : 0,
     onrequest   : 0,
     onreply     : 0,
+    onuser      : 0,
     // --------------------
 
     onEvent : function() { },  // To override 
@@ -340,6 +341,9 @@ var user = {
                       "<img src='user/res/img/cancel.svg'/></div>");
             }
             ret.append(legend);
+
+            if (user.onuser) { user.onuser(_user, _args, ret); }
+
             return ret;
         },
         open : function(_elt) {
@@ -381,7 +385,7 @@ var user = {
             $("#uflcontent").html("");
             user.getJSON("user/api/friend.php", {circle:_group}, 0, function(_data) {
             if (_data.users) for (var i in _data.users) {
-                $("#uflcontent").append(user.friend.elt(_data.users[i],{large:_data.users.length<19,
+                $("#uflcontent").append(user.friend.elt(_data.users[i],{large:_data.users.length<19, type:"list",
                 select:user.friend.footer }));
             }
             user.friend.footer();

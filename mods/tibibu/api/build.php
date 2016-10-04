@@ -24,6 +24,38 @@ if (!$error) {
                             ' PRIMARY KEY ( `File_Name` )) ENGINE=InnoDB', $link);
         }
 
+        if (!mysql_query("SELECT * FROM `".$_SESSION['prefix']."message`")) {
+            mysql_query('CREATE TABLE  `'.$_SESSION['prefix'].'message` ('.
+                            '`Message_Key`              INT NOT NULL AUTO_INCREMENT, '.
+                            '`User_Key`                 INT NOT NULL, '.
+                            '`Circle_Key`               INT, '.
+                            '`Target_Key`               INT, '.
+                            '`Message_Type`             VARCHAR( 64 ) NOT NULL , '.
+                            '`Message_Status`           VARCHAR( 64 ), '.
+                            '`Message_Label`            VARCHAR( 64 ), '.
+                            '`Message_Description`      TEXT, '.
+                            '`Message_Content`          TEXT, '.
+                            '`Message_Date`             TIMESTAMP DEFAULT CURRENT_TIMESTAMP, '.
+                            ' CONSTRAINT `'.$_SESSION['prefix'].'Message_User_Key` FOREIGN KEY (`User_Key`) REFERENCES `'.$_SESSION['prefix'].'user` '.
+                            ' (`User_Key`) ON DELETE CASCADE,'.
+                            ' PRIMARY KEY ( `Message_Key` )) ENGINE=InnoDB', $link);
+        }
+
+        if (!mysql_query("SELECT * FROM `".$_SESSION['prefix']."response`")) {
+            mysql_query('CREATE TABLE  `'.$_SESSION['prefix'].'response` ('.
+                            '`Response_Key`             INT NOT NULL AUTO_INCREMENT, '.
+                            '`User_Key`                 INT NOT NULL, '.
+                            '`Message_Key`              INT NOT NULL, '.
+                            '`Response_Description`     TEXT, '.
+                            '`Response_Content`         TEXT, '.
+                            '`Response_Date`            TIMESTAMP DEFAULT CURRENT_TIMESTAMP, '.
+                            ' CONSTRAINT `'.$_SESSION['prefix'].'Response_User_Key` FOREIGN KEY (`User_Key`) REFERENCES `'.$_SESSION['prefix'].'user` '.
+                            ' (`User_Key`) ON DELETE CASCADE,'.
+                            ' CONSTRAINT `'.$_SESSION['prefix'].'Response_Message_Key` FOREIGN KEY (`Message_Key`) REFERENCES `'.$_SESSION['prefix'].'message` '.
+                            ' (`Message_Key`) ON DELETE CASCADE,'.
+                            ' PRIMARY KEY ( `Response_Key` )) ENGINE=InnoDB', $link);
+        }
+
         $status = "success";
     }
 }

@@ -88,9 +88,6 @@
             build: function($this) {
                 var settings = helpers.settings($this);
 
-                // Send the onLoad callback
-                if (settings.context.onload) { settings.context.onload($this); }
-
                 $this.css("font-size", ($this.height()/12)+"px");
 
                 var svgContent = "<svg xmlns:svg='http://www.w3.org/2000/svg' xmlns='http://www.w3.org/2000/svg' "+
@@ -162,6 +159,8 @@
                         settings.garbage=[];
                         $this.find("#next").addClass("d");
 
+                        if (settings.context.onchange) { settings.context.onchange($this, settings.svg); }
+
                         _event.preventDefault();
                     }
                 });
@@ -229,12 +228,14 @@
                             case "dot2":    settings.strokewidth = 3;   break;
                             case "dot3":    settings.strokewidth = 6;   break;
                             case "dot4":    settings.strokewidth = 9;   break;
-                            case "clear":   helpers.clean($this); break;
+                            case "clear":   helpers.clean($this); 
+                                            if (settings.context.onchange) { settings.context.onchange($this, settings.svg); } break;
                             case "prev":
                                 if ($("#foreground", settings.svg.root()).children().length) {
                                     settings.garbage.push($("#foreground", settings.svg.root()).children().last().detach());
                                     $this.find("#next").removeClass("d");
                                     if (!$("#foreground", settings.svg.root()).children().length) { $this.find("#prev").addClass("d"); }
+                                    if (settings.context.onchange) { settings.context.onchange($this, settings.svg); }
                                 }
                                 break;
                             case "next":
@@ -242,6 +243,7 @@
                                     $("#foreground", settings.svg.root()).append(settings.garbage.pop());
                                     $this.find("#prev").removeClass("d");
                                     if (!settings.garbage.length) { $this.find("#next").addClass("d"); }
+                                    if (settings.context.onchange) { settings.context.onchange($this, settings.svg); }
                                 }
                             break;
                         }
@@ -249,6 +251,8 @@
                     });
                 }
 
+                // Send the onLoad callback
+                if (settings.context.onload) { settings.context.onload($this, settings.svg); }
 
                 // Locale handling
                 $this.find("h1#label").html(settings.label);
