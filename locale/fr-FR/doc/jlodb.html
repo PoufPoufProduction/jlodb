@@ -83,6 +83,28 @@
     </ul>
     <h4>Autres</h4>
     <p><b>Générateur</b>  :  lox</p>
-
+<h3>Sudoku</h3>
+<h4>Format</h4>
+<p>Au sein du projet jLoDb, les grilles de Sudoku sont définies par une suite de <b>81 caractères</b> ([1-9a-i]{81}) définissant chacune des 81 cases de la grille.</p>
+<ul>
+<li>Les nombres de 1 à 9 correspondent aux valeurs initialement exposées.</li>
+<li>Les lettres de 'a' à 'i' correspondent aux valeurs non exposées et servent uniquement pour la validation. Le 'a' représente une valeur 1 à trouver, le 'b' une valeur 2, etc.</li>
+</ul>
+<h4>Générateurs et convertisseurs</h4>
+<ul>
+<li>Le logiciel <b>Sudoku</b> écrit par Michael Kennett est disponible sur les plateformes GNU/Linux. Il permet la génération de grilles ainsi que leur résolution. Il permet également d'évaluer les difficultés de résolution suivant 5 niveaux différents (very easy, easy, medium, hard, fiendish). Pour l'heure, c'est l'évaluation, ramenée de 1 à 5, de ce logiciel qui sert de référence dans la base <b>jLoDb</b>.</li>
+<li>Le logiciel du même nom <b>Sudoku</b>, rapidement écrit en C++ par Johann C et disponible dans data/sudoku/, permet également de générer des grilles. L'intérêt principal de ce binaire est de proposer une symétrie des valeurs initialement exposées.
+    <ul>
+        <li>0 : aucune symétrie</li>
+        <li>1 : symétrie suivant l'axe horizontal</li>
+        <li>2 : symétrie suivant l'axe vertical</li>
+        <li>3 : symétrie centrale</li>
+        <li>4 : symétrie diagonale</li>
+        <li>5 : symétrie totale</li>
+    </ul>
+    De plus, le format de sortie est compatible avec le logiciel précédent qui peut ainsi nativement évaluer la grille générée.
+</li>
+<li>Les scripts <b>rdf2std</b>, <b>rdf2compact</b> et <b>rdf2csv</b> (dans data/sudoku) permettent, respectivement, d'exporter les grilles telles quelles sont stockées dans les fichiers rdf, vers les formats standards, compact et csv.</li>
+</ul>
 </body>
 </html>

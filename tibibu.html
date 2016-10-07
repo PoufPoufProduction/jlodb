@@ -168,6 +168,17 @@
 #busendpanel.d input                    { color:gray; }
 #busendpanel.d textarea                 { color:gray; }
 
+#buinbox #buiheader                     { height:10em; border:2px solid black; border-width:0 0 2px 0; background-color:white; }
+#buinbox #buiheader #buimessage         { width:20em; height:10em; overflow:auto; border:2px solid black; border-width:0 2px 0 0; }
+.bumsg                                  { background-color:#56B; color:white; margin:.1em; padding-left:.2em; cursor:pointer; font-size:.8em; }
+.bumsg.text                             { background-color:gray; }
+.bumsg.draw                             { background-color:#5B6; }
+.bumsg .id                              { display:none; }
+.bumsg .icon                            { float:left; margin:.1em .1em 0 0; }
+.bumsg.s                                { background-color:red !important; }
+#buicontent                             { padding:.25em; height:10.6em; }
+#builaunch                              { background-color:gray; height:1em; font-size:3em; cursor:pointer; display:none; }
+#builaunch>div                          { margin:0 auto; }
 
     </style>
     <script>
@@ -178,6 +189,7 @@ user.onEvent = function() {
     $("#tibibi select").html("");
     $("#bumain").removeClass("devmode");
 
+    $(".confidential").html("");
     $("textarea").val("");
     tibibu.prep.init();
 
@@ -816,6 +828,7 @@ var tibibu = {
     message: {
         type : "",
         cbk  : 0,
+        data : 0,
         init: function(_type, _show, _cbk) {
             if (_type=="reset" || tibibu.message.type!=_type) {
                 if (_type=="reset") { type = tibibu.message.type; }
@@ -835,10 +848,45 @@ var tibibu = {
             $("#busendpanel").hide();
             if (tibibu.message.cbk) { tibibu.message.cbk(); }
         },
+        reply: function() {
+            switch (tibibu.message.data.type) {
+                case "text":
+                    tibibu.message.init("text",true, function() {
+                        alert("yop");
+                    });
+                break;
+                case "exercice":
+                    $("#buexercices #buex").menu({
+                        list    : atob(tibibu.message.data.data).split(','),
+                        state   : ".....",
+                        onupdate: function($this, _state) {},
+                        onclick : function($this, _args)  {
+                            $("#waiting").show().find("div").addClass("running");
+                            $("#bulauncher").jlodb({
+                                    onstart:    function($this) { $("#buexercices").hide(); $("#waiting").hide().find("div").removeClass("running"); },
+                                    onfinish:   function($this) { $("#buexercices").show(); },
+                                    onscore:    function($this, _ret) {
+                                        var isnext = $("#buexercices #buex").menu('more');
+                                        if (_ret.score>=2) { $("#buexercices #buex").menu('score', _ret.score); }
+                                        if (isnext) { $("#buexercices #buex").menu('next'); }
+                                        else        { $("#buexercices").hide(); $("#butoggle").show(); }
+                                        return isnext; } },_args);
+                            }
+                    }).parent().show();
+                break;
+            }
+        },
+        open: function(_id) {
+            $("#buicontent").html("");
+            user.getJSON("mods/tibibu/api/message.php", {"value":_id }, {}, function(_data) {
+                $("#buicontent").html(_data.value);
+                $("#builaunch").show();
+                tibibu.message.data = _data;
+                //alert(atob(_data.data));
+            });
+        },
         menu : function(_elt) {
             $(".bunav2>div").removeClass("s"); 
-            //$(_elt).addClass("s");
-            //$(".bucontent").hide(); 
             switch($(_elt).attr("id")) {
                 case "mwmenu" :
                     if ($("#uflcircles").val()) {
@@ -852,6 +900,29 @@ var tibibu = {
                             
                         });
                     }
+                    break;
+                case "mimenu":
+                        $(_elt).addClass("s");
+                        user.getJSON("mods/tibibu/api/message.php", { action:"inbox" }, {},
+                        function(_data) {
+                            $("#buimessage").html("");
+                            for (var i in _data.messages) {
+                                var $html=$("<div class='bumsg "+_data.messages[i].type+"'></div>");
+                                $html.append("<div class='id'>"+_data.messages[i].id+"</div>");
+                                $html.append("<div class='icon'><img src='res/img/white/"+(_data.messages[i].group?"newpeople":"people2")+".svg'/></div>");
+                                $html.append("<div class='label'>"+_data.messages[i].label+"</div>");
+                                $html.bind("mousedown touchstart", function(_event) {
+                                    $("#buimessage>div").removeClass("s");
+                                    $(this).addClass("s");
+                                    tibibu.message.open($(this).find(".id").text());
+                                    _event.preventDefault();
+                                    _event.stopPropagation();
+                                });
+                                $("#buimessage").append($html);
+                                $("#buicontent").html(""); $("#builaunch").hide();
+                            }
+                            $(".bucontent").hide(); $("#buinbox").show();
+                        });
                     break;
             }
         }
@@ -868,10 +939,13 @@ var tibibu = {
             $html.bind("mousedown touchstart", function(_event) {
                 if (!$(this).hasClass("d")) {
                     tibibu.message.init("draw",true, function() {
+                        var html = $("#foreground",tibibu.board.svg.root()).html();
+                        var vReg = new RegExp("([.][0-9][0-9])[0-9]+","g");
+                        html = html.replace(vReg,"$1");
+
                         user.getJSON("mods/tibibu/api/message.php", {
                             action:"new", circle:$("#uflcircles").val(), type:"draw", label:$("#busendpanel input").val() }, {
-                            description:$("#busendpanel").hasClass("d")?"":$("#busendpanel textarea").val(),
-                            data:$("#foreground",tibibu.board.svg.root()).html() },
+                            description:$("#busendpanel").hasClass("d")?"":$("#busendpanel textarea").val(), data:html },
                             function(_data) { tibibu.message.init("reset",false); });
                         
                     });
@@ -1080,6 +1154,16 @@ $(window).ready(function() {
                 </div>
             </div>
             <div id="busoverview"><div></div></div>
+        </div>
+
+        
+        <div class="bucontent" id="buinbox">
+            <div id="buiheader">
+                <div id="buimessage" class="confidential"></div>
+                <div id="buimenu"></div>
+            </div>
+            <div id="buicontent"></div>
+            <div id="builaunch" onmousedown="tibibu.message.reply();" ontouchstart="tibibu.message.reply();event.preventDefault();"><div class='icon'><img src='res/img/white/run.svg'/></div></div>
         </div>
 
         <div class="bucontent" id="buprep">
