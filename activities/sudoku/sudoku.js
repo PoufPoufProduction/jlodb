@@ -8,8 +8,12 @@
         level       : 1,                    // Grid level
         highlight   : [],                   // Elements to highlight for tutorial
         comment     : "",
+        width       : 9,                    // Line width
         debug       : false                 // Debug mode
     };
+
+    var mapping = { 'a':1, 'b':2, 'c':3, 'd':4, 'e':5, 'f':6, 'g':7, 'h':8, 'i':9,
+                    '1':1, '2':2, '3':3, '4':4, '5':5, '6':6, '7':7, '8':8, '9':9 };
 
     // private methods
     var helpers = {
@@ -80,13 +84,6 @@
                     $(this).css("background-image", "url('res/img/svginventoryicons/background/border/square0"+r+".svg')");
                 });
 
-                // Keypad
-                for (var i=0; i<10; i++) {
-                    settings.$keys.push($this.find("#keypad #key"+i).css("top",(1.5*Math.cos(2*Math.PI*(i/10))-0.5)+"em")
-                                       .css("left",(1.5*Math.sin(2*Math.PI*(i/10))-0.5)+"em")
-                                       .show());
-                }
-
                 // HIGHLIGHT
                 for (var i in settings.highlight) {
                     switch (settings.highlight[i][0]) {
@@ -120,8 +117,9 @@
                 $this.find("div.fill").each(function(index) {
                     var vY = Math.floor(index/9) + (Math.floor((index%9)/3)) - Math.floor((index%27)/9);
                     var vX = index%3 + 3*Math.floor((index%27)/9);
-                    if (settings.data[vY][vX]>10) {
-                        $(this).text(settings.data[vY][vX]%10).addClass("final");
+                    var elt = settings.data[vY*settings.width+vX];
+                    if (elt>='1' && elt<='9') {
+                        $(this).text(mapping[elt]).addClass("final");
                         $(this).bind("mousedown touchstart",function(event) {
                             var val=$(this).text();
                             $this.find("div.fill").each(function() {
@@ -312,7 +310,8 @@
             $this.find("div.fill").each(function(index) {
                 var vY = Math.floor(index/9) + (Math.floor((index%9)/3)) - Math.floor((index%27)/9);
                 var vX = index%3 + 3*Math.floor((index%27)/9);
-                if (settings.data[vY][vX]%10 != $(this).text()) { finish= false; }
+                 var elt = settings.data[vY*settings.width+vX];
+                if (mapping[elt] != $(this).text()) { finish= false; }
             });
             if (finish) { $this.find("#effects").show(); }
             return finish;
@@ -330,7 +329,7 @@
         },
         // compute the score regarding the time and the grid level
         score:function(level, time) {
-            var timeref = 600*level;
+            var timeref = 1000*level;
             var score = 1;
             if (time<timeref)       { score = 5; } else
             if (time<timeref*1.2)   { score = 4; } else
@@ -416,6 +415,14 @@
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 $(this).find("#grid9x9").show();
+
+                // Keypad
+                for (var i=0; i<10; i++) {
+                    settings.$keys.push($this.find("#keypad #key"+i).css("top",(1.5*Math.cos(2*Math.PI*(i/10))-0.5)+"em")
+                                       .css("left",(1.5*Math.sin(2*Math.PI*(i/10))-0.5)+"em")
+                                       .show());
+                }
+
                 settings.interactive = true;
                 helpers.timer($this);
             },
