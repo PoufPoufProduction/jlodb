@@ -1,0 +1,38 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usepackage{mathpazo}
+\usepackage[margin=1in]{geometry}
+\newcounter{row}
+\newcounter{col}
+
+\newcommand\setrow[9]{
+  \setcounter{col}{1}
+  \foreach \n in {#1, #2, #3, #4, #5, #6, #7, #8, #9} {
+    \edef\x{\value{col} - 0.5}
+    \edef\y{9.5 - \value{row}}
+    \node[anchor=center] at (\x, \y) {\textbf{\fontsize{1.4cm}{1cm}\selectfont\n}};
+    \stepcounter{col}
+  }
+  \stepcounter{row}
+}
+
+\begin{document}
+
+\begin{titlepage}
+	\centering
+	{\scshape\LARGE Pouf-Pouf Production \par}
+	\vspace{1.5cm}
+	{\huge\bfseries Grilles de SUDOKU\par}
+	\vfill
+\end{titlepage}
+
+\input{very.tex}
+\input{easy.tex}
+\input{medium.tex}
+\input{hard.tex}
+\input{fiendish.tex}
+
+
+\end{document}
+
