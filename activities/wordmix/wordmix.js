@@ -124,7 +124,7 @@
                             "#mix .a { stroke-dasharray:8,8; }"+
                             "#mix text { font-size: "+ss+"px;text-anchor:middle; }"+
                             ".done #mix line {stroke:#0F0; }"+
-                            "#mix line { fill:none; stroke:yellow; stroke-linecap:round; stroke-opacity:0.6; stroke-width:0.8; }"+
+                            "#mix line { fill:none; stroke:yellow; stroke-linecap:round; stroke-opacity:0.4; stroke-width:0.8; }"+
                             "#mix line#user { stroke:red; }" +
                             "</style></def>";
 
