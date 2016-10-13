@@ -1,0 +1,13 @@
+.jewel                            { background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat;}
+.jewel div#splashex               { background-image:url("../../res/img/banners/it.svg"); }
+.jewel div#splashex h1            { position:absolute; top:45%; left:80%; font-size:1.5em; }
+.jewel div#splashex #guide        { position:absolute; top:52%; left:45%; font-size:.75em; width:48%; text-align:justify; }
+
+.jewel #board                     { height:12em; float:left; width:12em; }
+.jewel #board>div                 { position:relative; height:12em; width:12em;  }
+.jewel #board .bg                 { background-color:rgba(0,0,0,0.5); position:absolute; width:1em; height:1em; z-index:1; }
+.jewel #board .cell               { position:absolute; width:1em; height:1em; z-index:2; }
+.jewel #board .cell>div           { width:1em; height:1em; position:absolute; top:0; cursor:move; }
+.jewel #board .fx                 { position:absolute; background-color:rgba(255,255,0,0.5); z-index:4; border-radius:.2em; }
+.jewel #leftmenu                  { height:12em; background-color:rgba(255,255,255,0.2); float:left; width:1em; }
+.jewel #rightmenu                 { height:12em; background-color:rgba(255,255,255,0.2); float:left; width:3em; }
