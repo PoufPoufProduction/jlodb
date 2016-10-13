@@ -283,7 +283,7 @@
                 }
             };
 
-            if (anim)   { setTimeout(function() { helpers.move($this); }, Math.min(100,speed)); }
+            if (anim)   { setTimeout(function() { helpers.move($this); }, Math.max(100,speed)); }
             else        { if (!helpers.compute($this)) { settings.interactive = true; } }
         },
         getCell: function($this, _i, _j) {
