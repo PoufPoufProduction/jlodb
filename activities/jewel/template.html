@@ -2,7 +2,12 @@
 
     <div id="leftmenu"></div>
     <div id="board"><div></div></div>
-    <div id="rightmenu"></div>
+    <div id="rightmenu">
+        <div id="scorepanel">
+            <div id="sctitle">score</div>
+            <div id="scvalue" class="bluekeypad">0</div>
+        </div>
+    </div>
 
     <div id="splashex" ontouchstart="$(this).hide().closest('.jewel').jewel('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.jewel').jewel('next');"><div>
