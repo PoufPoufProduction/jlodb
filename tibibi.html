@@ -105,8 +105,7 @@ var tibibi = {
                         $("#waiting").show().find("div").addClass("running");
                         $("#launcher").jlodb({
                             onstart:    function($this) { $("#rmenu").hide(); $("#waiting").hide().find("div").removeClass("running"); },
-                            onfinish:   function($this) { 
-                                $("#bimain").addClass("nosplash"); $("#rmenu").show(); $("#score").removeClass().hide(); },
+                            onfinish:   function($this) { $("#rmenu").show(); $("#score").removeClass().hide(); },
                             onscore:    function($this, _ret) {
                                 var isnext = false;
                                 if (_ret.score>=2) { isnext = $("#bimenu").menu('score', _ret.score).menu('more'); }

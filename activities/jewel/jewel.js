@@ -7,8 +7,8 @@
         css         : "style.css",                              // Activity's css style sheet
         lang        : "en-US",                                  // Current localization
         board       : ["aaaaaaaa","aaFaaaaa","aaaaaaaa","aaaaaaaa","aaaaaaaa","aaaaaaaa","aaaaaaaa","aaaaaaaa"],
-        pjewels     : [1,1,1,1,1,1],                        // Jewel probability
-        pspecial    : [0,0,0,0,0,0],                   // Jewel special (horiz or vertical)
+        pjewels     : [1,1,1,0,1,1],                        // Jewel probability
+        pspecial    : [10,10,10,10,10,10],                   // Jewel special (horiz or vertical)
         pbomb       : 0,                                    // Bomb
         specials    : [true, true],                         // Jewel horizontal or vertical
         debug       : true                                  // Debug mode
@@ -212,9 +212,6 @@
                     _event.preventDefault();
                 });
 
-                // TOREMOVE
-                $this.find("#splashex").hide();
-
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
@@ -235,7 +232,7 @@
                     if (cpx>2 && cpdelx!=cpx) {
                         for (var k=0; k<cpx; k++) {
                             remove = true;
-                            helpers.cell($this,i+k,j).act();
+                            helpers.cell($this,i+k,j).act($this);
                         }
                         var $fx = $("<div class='fx'></div>");
                         $fx.css("top",j+"em").css("left",i+"em").css("width",cpx+"em").css("height","1em")
@@ -253,7 +250,7 @@
                     if (cpy>2 && cpdely!=cpy) {
                         for (var k=0; k<cpy; k++) {
                             remove = true;
-                            helpers.cell($this,i,j+k).act();
+                            helpers.cell($this,i,j+k).act($this);
                         }
                         var $fx = $("<div class='fx'></div>");
                         $fx.css("top",j+"em").css("left",i+"em").css("width","1em").css("height",cpy+"em")
@@ -279,6 +276,42 @@
             }
             return (remove);
         },
+        line: function($this, _cell) {
+            var settings  = helpers.settings($this);
+            if (_cell.val>10 && _cell.val<20) {
+                var $fx = $("<div class='fx'></div>");
+                $fx.css("top",_cell.pos[1]+"em").css("left",0).css("width",settings.size[0]+"em").css("height","1em")
+                   .animate({opacity:0}, gspeed*1.2, function() { $(this).detach() });
+                $this.find("#board>div").append($fx);
+
+                settings.action.count++;
+                var score = 10*settings.size[0]*settings.action.count;
+                var $score = $("<div class='score line'><div>"+score+"</div></div>");
+                $score.css("top",_cell.pos[1]+"em").css("left",(settings.size[0]/2-0.5)+"em").css("width","2em").css("height","1em")
+                      .animate({opacity:0, "margin-top":"-1em"}, gspeed*1.5, function() { $(this).detach() });
+                $this.find("#board>div").append($score);
+                helpers.score($this, score);
+
+                for (var i=0; i<settings.size[0]; i++) { var c = helpers.cell($this, i, _cell.pos[1]); if (c) { c.act($this); } }
+            }
+            else if (_cell.val>20 && _cell.val<30) {
+                var $fx = $("<div class='fx'></div>");
+                $fx.css("top",0).css("left",_cell.pos[0]+"em").css("width","1em").css("height",settings.size[1]+"em")
+                   .animate({opacity:0}, gspeed*1.2, function() { $(this).detach() });
+                $this.find("#board>div").append($fx);
+
+                
+                settings.action.count++;
+                var score = 10*settings.size[1]*settings.action.count;
+                var $score = $("<div class='score line'><div>"+score+"</div></div>");
+                $score.css("top",(settings.size[1]/2-0.5)+"em").css("left",(_cell.pos[0]-0.5)+"em").css("width","2em").css("height","1em")
+                      .animate({opacity:0, "margin-top":"-1em"}, gspeed*1.5, function() { $(this).detach() });
+                $this.find("#board>div").append($score);
+                helpers.score($this, score);
+
+                for (var j=0; j<settings.size[1]; j++) { var c = helpers.cell($this, _cell.pos[0],j); if (c) { c.act($this); } }
+            }
+        },
         score: function($this, _val) {
             var settings  = helpers.settings($this);
             settings.score+=_val;
@@ -299,17 +332,27 @@
             while(totreat.length) {
                 var elt = totreat.pop();
                 if (elt[1]>0) {
-                    var up = helpers.cell($this, elt[0], elt[1]-1);
-                    if (helpers.fromboard($this,elt[0], elt[1]-1)=='0' ||
-                        (up && !up.canmove()) ) {
+                    var up  = helpers.cell($this, elt[0], elt[1]-1);
+                    var w   = [0,-1];
+                    if (up && !up.canmove()) {
+                        var sides=[];
+                        up = helpers.cell($this, elt[0]-1, elt[1]);
+                        if (up && up.canmove()) { sides.push([up,[-1,0]]); }
+                        up = helpers.cell($this, elt[0]+1, elt[1]);
+                        if (up && up.canmove()) { sides.push([up,[1,0]]); }
+                        if (sides.length) {
+                            var alea = Math.floor(Math.random()*sides.length);
+                            up = sides[alea][0];
+                            w  = sides[alea][1];
+                        } else { up = 0; }
                     }
-                    else if (up) {
-                        var cell = helpers.cell($this, elt[0], elt[1]-1);
-                        helpers.cell($this, elt[0], elt[1]-1, 0);
-                        helpers.cell($this, elt[0], elt[1], cell);
-                        cell.pos=[elt[0],elt[1]];
-                        cell.offset(0,-1).reinit(speed); anim=true;
-                        totreat.push([elt[0],elt[1]-1]);
+
+                    if (up) {
+                        helpers.cell($this, up.pos[0], up.pos[1], 0);
+                        helpers.cell($this, elt[0], elt[1], up);
+                        up.pos=[elt[0],elt[1]];
+                        up.offset(w[0],w[1]).reinit(speed); anim=true;
+                        totreat.push([elt[0]+w[0],elt[1]+w[1]]);
                     }
                 }
                 else {
@@ -362,12 +405,16 @@
                 } else { this.init(); }
                 return this;
             }
-            ret.act         = function() {
+            ret.act         = function($this) {
                 if (this.frozen) { this.unfreeze(); }
                 else {
-                    this.remove = true;
-                    this.$html.animate({opacity:0}, gspeed, function() { $(this).detach() }); return this;
+                    if (!this.remove) {
+                        this.remove = true;
+                        this.$html.animate({opacity:0}, gspeed, function() { $(this).detach() });
+                        if (this.val>10 && this.val<30) { helpers.line($this, this); }
+                    }
                 }
+                return this;
             }
             ret.match       = function(_cell) { return (_cell && this.val<30 && _cell.val<30 && this.val%10==_cell.val%10); }
             ret.canmove     = function() { return !this.frozen; }

@@ -1,18 +1,19 @@
-.jewel                            { background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat;}
-.jewel div#splashex               { background-image:url("../../res/img/banners/it.svg"); }
-.jewel div#splashex h1            { position:absolute; top:45%; left:80%; font-size:1.5em; }
-.jewel div#splashex #guide        { position:absolute; top:52%; left:45%; font-size:.75em; width:48%; text-align:justify; }
-
-.jewel #board                     { height:12em; float:left; width:12em; }
-.jewel #board>div                 { position:relative; height:12em; width:12em;  }
-.jewel #board .bg                 { background-color:rgba(0,0,0,0.5); position:absolute; width:1em; height:1em; z-index:1; }
-.jewel #board .cell               { position:absolute; width:1em; height:1em; z-index:2; }
-.jewel #board .cell>div           { width:1em; height:1em; position:absolute; top:0; cursor:move; }
-.jewel #board .fx                 { position:absolute; background-color:rgba(255,255,0,0.5); z-index:4; border-radius:.2em; }
-.jewel #leftmenu                  { height:12em; background-color:rgba(255,255,255,0.2); float:left; width:1em; }
-.jewel #rightmenu                 { height:12em; background-color:rgba(255,255,255,0.2); float:left; width:3em; }
-
-.jewel #board .score              { position:absolute; z-index:4; text-align:center; font-weight:bold; color:yellow; }
-.jewel #scorepanel                { color:white; }
-.jewel #sctitle                   { text-align:center; font-size:.4em; margin-top:1em; background-color:black;  }
-.jewel #scvalue                   { text-align:right; font-size:.6em; padding-right:.2em; }
+.jewel                              { background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat;}
+.jewel #board                       { height:12em; float:left; width:12em; }
+.jewel #board>div                   { position:relative; height:12em; width:12em;  }
+.jewel #board .bg                   { background-color:rgba(0,0,0,0.5); position:absolute; width:1em; height:1em; z-index:1; }
+.jewel #board .cell                 { position:absolute; width:1em; height:1em; z-index:2; }
+.jewel #board .cell>div             { width:1em; height:1em; position:absolute; top:0; cursor:move; }
+.jewel #board .fx                   { position:absolute; background-color:rgba(255,255,0,0.5); z-index:4; border-radius:.2em; }
+.jewel #leftmenu                    { height:12em; background-color:rgba(255,255,255,0.2); float:left; width:1em; }
+.jewel #rightmenu                   { height:12em; background-color:rgba(255,255,255,0.2); float:left; width:3em; }
+.jewel #board .score                { position:absolute; z-index:4; text-align:center; font-weight:bold; color:yellow; }
+.jewel #board .score.line>div       { color:orange; font-size:.5em; }
+.jewel #scorepanel                  { color:white; }
+.jewel #sctitle                     { text-align:center; font-size:.4em; margin-top:1em; background-color:black;  }
+.jewel #scvalue                     { text-align:right; font-size:.6em; padding-right:.2em; }
+.jewel div#splashex                 { background-image:url("../../res/img/banners/jewel.svg"); background-color:rgba(0,0,0,0.4); }
+.jewel div#splashex h1              { position:absolute; top:7%; left:48%; font-size:1.1em; color:#222;}
+.jewel div#splashex #guide          { position:absolute; top:15%; left:50%; font-size:.7em; width:45%; text-align:justify; font-style:italic; }
+.jewel div#splashex #goals          { position:absolute; top:38%; left:50%; width:40%; background-color:white; padding:.5em; overflow:visible; border:.1em solid black;  height:7em; display:none;}
+.jewel div#splashex #goallabel      { position:absolute; top:-1em; left:-1em; padding:.2em .5em; background-color:#F56; color:white; border-radius:.2em; border:.1em solid black; -ms-transform: rotate(-10deg); -webkit-transform: rotate(-10deg); transform: rotate(-10deg); }
