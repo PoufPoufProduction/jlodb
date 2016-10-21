@@ -40,7 +40,6 @@ if ($handle = opendir("../mods")) {
 
 // PUBLISH DATA UNDER JSON FORMAT
 echo '{';
-echo $config;
 echo '  "status" : "'.$status.'",';
 if ($error)     { echo '  "error" : '.$error.','; }
 echo '  "textStatus" : "'.$textstatus.'",';

@@ -8,7 +8,7 @@ if (!$error) {
 
     // THE CONDITIONS
     $where="";
-    if (strlen($_GET["activity"])) {
+    if (array_key_exists("activity",$_GET)) {
         if (strlen($where)) { $where.=" AND"; }
 
         $activity = "";
@@ -23,37 +23,37 @@ if (!$error) {
     }
 
     // THE LEVEL
-    if (strlen($_GET["levelmin"])) {
+    if (array_key_exists("levelmin",$_GET)) {
         if (strlen($where)) { $where.=" AND"; }
         $where.= " `Exercice_Level` >= ".$_GET["levelmin"]." ";
     }
-    if (strlen($_GET["levelmax"])) {
+    if (array_key_exists("levelmax",$_GET)) {
         if (strlen($where)) { $where.=" AND"; }
         $where.= " `Exercice_Level` <= ".$_GET["levelmax"]." ";
     }
 
     // THE DIFFICULTY
-    if (strlen($_GET["diffmin"])) {
+    if (array_key_exists("diffmin",$_GET)) {
         if (strlen($where)) { $where.=" AND"; }
         $where.= " `Exercice_Difficulty` >= ".$_GET["diffmin"]." ";
     }
-    if (strlen($_GET["diffmax"])) {
+    if (array_key_exists("diffmax",$_GET)) {
         if (strlen($where)) { $where.=" AND"; }
         $where.= " `Exercice_Difficulty` <= ".$_GET["diffmax"]." ";
     }
 
     // THE DURATION
-    if (strlen($_GET["extendmin"])) {
+    if (array_key_exists("extendmin",$_GET)) {
         if (strlen($where)) { $where.=" AND"; }
         $where.= " `Exercice_Duration` >= ".$_GET["extendmin"]." ";
     }
-    if (strlen($_GET["extendmax"])) {
+    if (array_key_exists("extendmax",$_GET)) {
         if (strlen($where)) { $where.=" AND"; }
         $where.= " `Exercice_Duration` <= ".$_GET["extendmax"]." ";
     }
 
     // THE CLASSIFICATION
-    if (strlen($_GET["classification"])) {
+    if (array_key_exists("classification",$_GET)) {
         if (strlen($where)) { $where.=" AND"; }
 
         $classification = "";
@@ -69,19 +69,19 @@ if (!$error) {
     }
 
     // THE TAGS
-    if (strlen($_GET["tag"])) {
+    if (array_key_exists("tag",$_GET)) {
         if (strlen($where)) { $where.=" AND"; }
         $where.= " `Exercice_Tags` = '".$_GET["tag"]."'";
     }
 
     // THE REFERENCE
-    if (strlen($_GET["reference"])) {
+    if (array_key_exists("reference",$_GET)) {
         if (strlen($where)) { $where.=" AND"; }
         $where.= " `Exercice_Reference` = '".$_GET["reference"]."'";
     }
 
     // THE ID
-    if (strlen($_GET["id"])) {
+    if (array_key_exists("id",$_GET)) {
         if (strlen($where)) { $where.=" AND"; }
         $where.=" (`Exercice_Id`='".$_GET["id"]."' OR `Exercice_Variant`='".$_GET["id"]."')";
     }
@@ -89,17 +89,19 @@ if (!$error) {
     // COUNT THE NUMBER OF MATCHING EXERCICES (WITHOU ORDER, LIMIT NOR ALTERNATIVE GROUP)
     $sql = "SELECT COUNT(*) FROM `".$_SESSION['prefix']."exercice`";
     if (strlen($where)) { $sql.=" WHERE".$where; }
-    $count = mysql_fetch_array(mysql_query($sql));
+	$ret 	= mysql_query($sql);
+	$count 	= 0;
+    if ($ret) { $count = mysql_fetch_array($ret); }
 
     // THE VARIANT
-    if (!strlen($_GET["id"]) && !strlen($_GET["alt"])) {
+    if (!array_key_exists("id",$_GET) && !array_key_exists("alt",$_GET)) {
         if (strlen($where)) { $where.=" AND"; }
         $where.=" `Exercice_Variant`=''";
     }
 
     // THE ORDER
     $order = " ORDER BY Exercice_Id ASC";
-    if (strlen($_GET["order"])&&strlen($_GET["by"])) {
+    if ( array_key_exists("order",$_GET) && array_key_exists("by",$_GET)) {
         $order=" ORDER BY Exercice_".$_GET["by"]." ".$_GET["order"];
         if ($_GET["by"]!="Id") { $order.=",Exercice_Id ASC"; }
     }
@@ -110,28 +112,30 @@ if (!$error) {
 
 
     $limit = "500";
-    if (strlen($_GET["limit"])) { $limit = $_GET["limit"]; }
+    if (array_key_exists("limit",$_GET)) { $limit = $_GET["limit"]; }
     $sql.= $order." LIMIT ".$limit;
 
-    if (strlen($_GET["raw"])) {
+    if (array_key_exists("raw",$_GET)) {
         $sql = "SELECT * FROM `".$_SESSION['prefix']."exercice`";
     }
 
     $exercice = mysql_query($sql);
     $json = "";
-    while($row = mysql_fetch_array($exercice)) {
-        if (strlen($json)) { $json.=strlen($_GET["raw"])?"\n":","; }
-        $json.='{ "id":"'.$row["Exercice_Id"].'","label":"'.$row["Exercice_Title"].'",'.
-               '"activity":"'.$row["Exercice_Activity"].'","classification":"'.$row["Exercice_Classification"].'",'.
-               '"level":'.$row["Exercice_Level"].',"diff":'.$row["Exercice_Difficulty"].',"extend":'.
-               $row["Exercice_Duration"].',"variant":"'.$row["Exercice_Variant"].'","nb":'.$row["Exercice_Nb"].','.
-               '"tag":"'.$row["Exercice_Tags"].'","reference":"'.$row["Exercice_Reference"].'"}';
-    }
+	if ($exercice) {
+		while($row = mysql_fetch_array($exercice)) {
+			if (strlen($json)) { $json.=array_key_exists("raw",$_GET)?"\n":","; }
+			$json.='{ "id":"'.$row["Exercice_Id"].'","label":"'.$row["Exercice_Title"].'",'.
+				   '"activity":"'.$row["Exercice_Activity"].'","classification":"'.$row["Exercice_Classification"].'",'.
+				   '"level":'.$row["Exercice_Level"].',"diff":'.$row["Exercice_Difficulty"].',"extend":'.
+				   $row["Exercice_Duration"].',"variant":"'.$row["Exercice_Variant"].'","nb":'.$row["Exercice_Nb"].','.
+				   '"tag":"'.$row["Exercice_Tags"].'","reference":"'.$row["Exercice_Reference"].'"}';
+		}
+	}
     $status     = "success";
 }
 
 // PUBLISH DATA UNDER JSON FORMAT
-if (strlen($_GET["raw"])) {
+if (array_key_exists("raw",$_GET)) {
     echo $json;
 }
 else {
@@ -139,7 +143,7 @@ else {
     echo '  "status" : "'.$status.'",';
     if ($error)     { echo '  "error" : '.$error.','; }
     echo '  "textStatus" : "'.$textstatus.'",';
-    echo '  "nb" : '.$count[0].',';
+    echo '  "nb" : '.($count?$count[0]:0).',';
     echo '  "exercices" : ['.$json.']';
     echo '}';
 }

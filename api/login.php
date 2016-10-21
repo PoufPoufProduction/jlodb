@@ -7,7 +7,13 @@ $error      = 0;
 $textstatus = "";
 
 session_start();
-login($_GET["username"], $_GET["password"], $status, $textstatus, $error);
+
+$username = "";
+$password = "";
+if (array_key_exists("username",$_GET)) { $username = $_GET["username"]; }
+if (array_key_exists("password",$_GET)) { $password = $_GET["password"]; }
+
+login($username, $password, $status, $textstatus, $error);
 
 
 // PUBLISH DATA UNDER JSON FORMAT

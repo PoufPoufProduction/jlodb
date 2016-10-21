@@ -327,13 +327,13 @@ jlodb = {
                 jlodb.islogged(function() {
                     $("#jlcontent>div").hide();
                     $("#jlcontenta").load("locale/zxx/logon.html",function() {
-                        $("#content #lockjlodb img").attr("src","res/img/icon/"+(jlodb.checkdb.lock?"lock":"unlock")+".svg");
+                        $("#lockjlodb img").attr("src","res/img/icon/"+(jlodb.checkdb.lock?"lock":"unlock")+".svg");
                     }).show(); });
             },
             lock: function() {
                 $.getJSON("api/lock.php?action="+(jlodb.checkdb.lock?"unlock":"lock"), function(data) {
                     if (data.status=="success") { jlodb.checkdb.lock = data.lock; }
-                    $("#content #lockjlodb img").attr("src","res/img/icon/"+(jlodb.checkdb.lock?"lock":"unlock")+".svg");
+                    $("#lockjlodb img").attr("src","res/img/icon/"+(jlodb.checkdb.lock?"lock":"unlock")+".svg");
                 });
             },
             perform: function(_login) {

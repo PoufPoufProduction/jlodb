@@ -5,8 +5,9 @@ include "database.php";
 // @return ONE EXERCICE WITH ITS ARGUMENTS
 
 if (!$error) {
+	$where = "";
     // THE CONDITIONS
-    if (strlen($_GET["activity"])) {
+    if (array_key_exists("activity",$_GET)) {
         $activity = "";
         $tok = strtok($_GET["activity"], ",");
         while($tok!=false) {
@@ -20,31 +21,31 @@ if (!$error) {
     }
 
     // THE LEVEL
-    if (strlen($_GET["levelmin"])) {
+    if (array_key_exists("levelmin",$_GET)) {
         $where.= " AND `Exercice_Level` >= ".$_GET["levelmin"]." ";
     }
-    if (strlen($_GET["levelmax"])) {
+    if (array_key_exists("levelmax",$_GET)) {
         $where.= " AND `Exercice_Level` <= ".$_GET["levelmax"]." ";
     }
 
     // THE DIFFICULTY
-    if (strlen($_GET["diffmin"])) {
+    if (array_key_exists("diffmin",$_GET)) {
         $where.= " AND `Exercice_Difficulty` >= ".$_GET["diffmin"]." ";
     }
-    if (strlen($_GET["diffmax"])) {
+    if (array_key_exists("diffmax",$_GET)) {
         $where.= " AND `Exercice_Difficulty` <= ".$_GET["diffmax"]." ";
     }
 
     // THE DURATION
-    if (strlen($_GET["extendmin"])) {
+    if (array_key_exists("extendmin",$_GET)) {
         $where.= " AND `Exercice_Duration` >= ".$_GET["extendmin"]." ";
     }
-    if (strlen($_GET["extendmax"])) {
+    if (array_key_exists("extendmax",$_GET)) {
         $where.= " AND `Exercice_Duration` <= ".$_GET["extendmax"]." ";
     }
 
     // THE CLASSIFICATION
-    if (strlen($_GET["classification"])) {
+    if (array_key_exists("classification",$_GET)) {
         $classification = "";
         $tok = strtok($_GET["classification"], ",");
         while($tok!=false) {
@@ -57,7 +58,7 @@ if (!$error) {
     }
 
     // THE ID
-    if (strlen($_GET["id"])) {
+    if (array_key_exists("id",$_GET)) {
         $where.= " AND `Exercice_Id` = '".$_GET["id"]."'";
     }
     else {

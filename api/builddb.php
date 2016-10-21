@@ -9,7 +9,7 @@ include "database.php";
 include "_insert.php";
 include "_login.php";
 
-if ( strlen($_GET["username"]) && strlen($_GET["password"]))
+if ( array_key_exists("username",$_GET) && strlen($_GET["username"]) && array_key_exists("password",$_GET) && strlen($_GET["password"]))
 {
     login($_GET["username"], $_GET["password"], $status, $textstatus, $error);
 }
@@ -18,7 +18,7 @@ if (!$error) {
     $config             = '  "settings":{"host":"'.$_SESSION['host'].'", "database":"'.$_SESSION['database'].'", '.
                           '"username":"'.$_SESSION['username'].'"},';
     $version            = "0.0-1";
-    $lang               = ($_GET["lang"]?$_GET["lang"]:"fr-FR");
+    $lang               = array_key_exists("lang",$_GET)?$_GET["lang"]:"fr-FR";
     $_SESSION['lang']   = $lang;
     $warnings           = array();
 

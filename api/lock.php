@@ -10,8 +10,10 @@ if (!$error) {
         $error = 100;
     }
     else {
-        if ($_GET["action"]=="lock")        { mysql_query("UPDATE `".$_SESSION['prefix']."jlodb` SET `Lock`=true"); }
-        else if ($_GET["action"]=="unlock") { mysql_query("UPDATE `".$_SESSION['prefix']."jlodb` SET `Lock`=false"); }
+		if (array_key_exists("action",$_GET)) {
+			if ($_GET["action"]=="lock")        { mysql_query("UPDATE `".$_SESSION['prefix']."jlodb` SET `Lock`=true"); }
+			else if ($_GET["action"]=="unlock") { mysql_query("UPDATE `".$_SESSION['prefix']."jlodb` SET `Lock`=false"); }
+		}
 
         $lock = mysql_query("SELECT `Lock` FROM `".$_SESSION['prefix']."jlodb` LIMIT 1");
         $l = mysql_fetch_array($lock);

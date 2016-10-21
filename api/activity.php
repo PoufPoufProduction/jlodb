@@ -3,7 +3,7 @@
 include "database.php";
 
 if (!$error) {
-    if ($_GET["name"]) {
+    if (array_key_exists("name",$_GET)) {
         $activitiy = mysql_query("SELECT * FROM `".$_SESSION['prefix']."activity` WHERE ".
                                 "`Activity_Name` = '".$_GET["name"]."' LIMIT 1");
 

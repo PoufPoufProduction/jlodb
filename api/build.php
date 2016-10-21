@@ -18,11 +18,12 @@ if (!$error) {
         }
         else {
             $result = mysql_query("SELECT * FROM `".$_SESSION['prefix']."activity` WHERE `Activity_Name`='".$_GET["activity"]."'");
-            while ($row = mysql_fetch_array($result)) {
-                insertIntoDB($link,$row["Activity_Name"],$row["Activity_Key"],$_GET["filename"],$lang,$warnings,$tags,true);
-                $status = "success";
-            }
-
+			if ($result) {
+				while ($row = mysql_fetch_array($result)) {
+					insertIntoDB($link,$row["Activity_Name"],$row["Activity_Key"],$_GET["filename"],$lang,$warnings,$tags,true);
+					$status = "success";
+				}
+			}
         }
     }
 }

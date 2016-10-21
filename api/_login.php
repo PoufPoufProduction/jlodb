@@ -15,7 +15,7 @@ function login($username, $password, &$status, &$textstatus, &$error)
     {
         // EXPORT THE CONFIGURATION FILE
         $ini_array = parse_ini_file($filename, true);
-
+		
         // CHECK THE LOGIN PARAMETERS
         if ( strcmp($ini_array["admin"]["username"], $username) == 0 &&
              strcmp($ini_array["admin"]["password"], md5($password)) == 0 ) {

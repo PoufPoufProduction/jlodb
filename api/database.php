@@ -6,7 +6,7 @@
  *   $error = 0 when the database is available at the end of the call
  **/
 
-if (!$apipath) { $apipath="./"; }
+if (!isset($apipath)) { $apipath="./"; }
 $filename   = $apipath."../conf/jlodb.ini";
 $status     = "error";
 $error      = 0;
@@ -14,7 +14,7 @@ $textstatus = "";
 
 session_start();
 
-if (!$_SESSION['database'] || $forceReadFile ) {
+if (!array_key_exists("database",$_SESSION) || isset($forceReadFile))  {
     if (!file_exists($filename)) {
         $textstatus = "$filename: configuration file is missing";
         $error = 1;
@@ -28,6 +28,8 @@ if (!$_SESSION['database'] || $forceReadFile ) {
         $_SESSION['username']   = $ini_array["db"]["username"];
         $_SESSION['password']   = $ini_array["db"]["password"];
         $_SESSION['url']        = $ini_array["dev"]["url"];
+		
+		date_default_timezone_set('UTC');
     }
 }
 
@@ -52,7 +54,7 @@ else {
     }
     else {
         // GET THE LANG
-        if (!$_SESSION['lang']) {
+        if (!array_key_exists("lang",$_SESSION)) {
             $jlodb = mysql_query("SELECT * FROM `".$_SESSION['prefix']."jlodb` LIMIT 1");
             if ($jlodb) {
                 $row = mysql_fetch_array($jlodb);

@@ -5,10 +5,12 @@ include "database.php";
 if (!$error) {
     $activity = mysql_query("SELECT * FROM `".$_SESSION['prefix']."tags` ORDER BY Tag");
     $json = "";
-    while($row = mysql_fetch_array($activity)) {
-        if (strlen($json)) { $json.=","; }
-        $json.='"'.$row["Tag"].'"';
-    }
+	if ($activity) {
+		while($row = mysql_fetch_array($activity)) {
+			if (strlen($json)) { $json.=","; }
+			$json.='"'.$row["Tag"].'"';
+		}
+	}
     $status     = "success";
 }
 

@@ -7,7 +7,7 @@ if (!$error) {
     $json = "";
     while($row = mysql_fetch_array($activity)) {
         if (strlen($json)) { $json.=","; }
-        if ($_GET["locale"]) {
+        if (array_key_exists("locale",$_GET)) {
             $json.='"'.$row["Activity_Name"].'":{'.$row["Activity_Locale"].'}';
         }
         else {
@@ -19,7 +19,7 @@ if (!$error) {
 }
 
 
-if ($_GET["format"] && $_GET["format"]=="html") {
+if (array_key_exists("format",$_GET) && $_GET["format"]=="html") {
     echo '<!DOCTYPE HTML><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">';
     echo '<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>activities</title></head>';
     echo '<body>'.$json.'</body></html>';
@@ -30,7 +30,7 @@ else {
     echo '  "status" : "'.$status.'",';
     if ($error)     { echo '  "error" : '.$error.','; }
     echo '  "textStatus" : "'.$textstatus.'",';
-    if ($_GET["locale"]) { echo '  "locale" : {'.$json.'}'; } else { echo '  "activities" : ['.$json.']'; }
+    if (array_key_exists("locale",$_GET)) { echo '  "locale" : {'.$json.'}'; } else { echo '  "activities" : ['.$json.']'; }
     echo '}';
 }
 
