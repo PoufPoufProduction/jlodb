@@ -548,7 +548,7 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>5u10Ko</dct:identifier>
+        <dct:identifier>5u10ko</dct:identifier>
         <dct:title xml:lang="fr-FR">Ordonner 5 nombres compris entre 0 et 10000, du plus petit au plus grand.</dct:title>
         <dct:description><![CDATA["number":3,"init":{"pos":[[120,320],[220,320],[320,320],[420,320],[520,320]]},"url":"puzzle/compare01.svg","svgclass":"up", "gen":"function(){var val=[];for (var j=0;j<5;j++) { var v=0, already; do { v=Math.floor(Math.random()*10000);already=false; for (var k=0;k<val.length;k++){ if (val[k]==v) { already=true;}} } while(already); val.push(v); } val.sort(function(a,b){return a-b;}); return {\\\"values\\\":{\\\"a\\\":val[0],\\\"b\\\":val[1],\\\"c\\\":val[2],\\\"d\\\":val[3],\\\"e\\\":val[4]}};}"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Placez les nombres proposés en veillant à respecter les inégalités présentes."]]></dct:description>
@@ -561,7 +561,7 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>5d10Ko</dct:identifier>
+        <dct:identifier>5d10ko</dct:identifier>
         <dct:title xml:lang="fr-FR">Ordonner 5 nombres compris entre 0 et 10000, du plus grand au plus petit.</dct:title>
         <dct:description><![CDATA["number":3,"init":{"pos":[[120,320],[220,320],[320,320],[420,320],[520,320]]},"url":"puzzle/compare01.svg","svgclass":"down", "gen":"function(){var val=[];for (var j=0;j<5;j++) { var v=0, already; do { v=Math.floor(Math.random()*10000);already=false; for (var k=0;k<val.length;k++){ if (val[k]==v) { already=true;}} } while(already); val.push(v); } val.sort(function(a,b){return b-a;}); return {\\\"values\\\":{\\\"a\\\":val[0],\\\"b\\\":val[1],\\\"c\\\":val[2],\\\"d\\\":val[3],\\\"e\\\":val[4]}};}"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Placez les nombres proposés en veillant à respecter les inégalités présentes."]]></dct:description>

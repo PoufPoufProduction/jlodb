@@ -10,18 +10,18 @@
         <dct:subject>division</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>3</dct:type>
-        <dct:alternative>01K</dct:alternative>
+        <dct:alternative>01k</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>01K</dct:identifier>
+        <dct:identifier>01k</dct:identifier>
         <dct:title xml:lang="fr-FR">Résoudre, sans contrainte de temps, la division d'un nombre compris entre 1 et 1 000.</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":5000},"gen":"function(){var a=Math.floor(Math.random()*99)+1, b=Math.floor(Math.random()*10)+1; return [ (a*b)+\\\"/\\\"+a,b]; }","font":2,"number":10,"class":"p02"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>3</dct:type>
-        <dct:alternative>01K</dct:alternative>
+        <dct:alternative>01k</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
@@ -32,7 +32,7 @@
         <dct:subject>division</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>3</dct:type>
-        <dct:alternative>01K</dct:alternative>
+        <dct:alternative>01k</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
@@ -44,22 +44,22 @@
         <dct:subject>division</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>3</dct:type>
-        <dct:alternative>01K</dct:alternative>
+        <dct:alternative>01k</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>1K</dct:identifier>
+        <dct:identifier>1k</dct:identifier>
         <dct:title xml:lang="fr-FR">Résoudre, sans contrainte de temps, la division avec reste d'un nombre compris entre 1 et 1 000.</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":5000},"regexp": { "output": "\\\\?" },"gen":"function(){var a=Math.floor(Math.random()*99)+1, b=Math.floor(Math.random()*9)+2, c = Math.floor(Math.random()*(b-1))+1; return [ (a*b+c)+\\\"=?*\\\"+a+\\\"+\\\"+c, b]; }","font":1,"class":"p02"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>3</dct:type>
-        <dct:alternative>01K</dct:alternative>
+        <dct:alternative>01k</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>1Ka</dct:identifier>
+        <dct:identifier>1ka</dct:identifier>
         <dct:title xml:lang="fr-FR">Résoudre, sans contrainte de temps, la division avec reste d'un nombre compris entre 1 et 100.</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":5000},"regexp": { "output": "\\\\?" },"gen":"function(){var a=Math.floor(Math.random()*10)+1, b=Math.floor(Math.random()*99)+2, c = Math.floor(Math.random()*(b-1))+1; return [ (a*b+c)+\\\">?*\\\"+b, a]; }","font":1.5,"number":10,"class":"p02"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Trouvez la valeur la plus grande vérifiant l'inégalité."]]></dct:description>
@@ -67,13 +67,13 @@
         <dct:subject>division</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>3</dct:type>
-        <dct:alternative>01K</dct:alternative>
+        <dct:alternative>01k</dct:alternative>
     </rdf:Description>
 
     <!-- Divisibility -->
 
     <rdf:Description>
-        <dct:identifier>d1K2</dct:identifier>
+        <dct:identifier>d1k2</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier, sans contrainte de temps, les nombres divisibles par 2 compris entre 1 et 1000.</dct:title>
         <dct:description><![CDATA["time":0,"template":"template.html","gen":"function() { var max=1000,v=2,r=Math.floor(Math.random()*2),a=Math.floor(Math.random()*max/v)*v+(r?0:Math.floor(Math.random()*(v-1))+1); return [a, (a%v)?0:1]}","font":2,"class":"h2"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Le nombre est-il divisible par 2 ?","input":{"css":{"font-size":"3.0em","width":"3.0em"},"digit":1,"values":[["oui",1],["non",0]]}]]></dct:description>
@@ -81,11 +81,11 @@
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>d1K2</dct:alternative>
+        <dct:alternative>d1k2</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>d1K3</dct:identifier>
+        <dct:identifier>d1k3</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier, sans contrainte de temps, les nombres divisibles par 3 compris entre 1 et 1000.</dct:title>
         <dct:description><![CDATA["time":0,"template":"template.html","gen":"function() { var max=1000,v=3,r=Math.floor(Math.random()*2),a=Math.floor(Math.random()*max/v)*v+(r?0:Math.floor(Math.random()*(v-1))+1); return [a, (a%v)?0:1]}","font":2,"class":"h2"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Le nombre est-il divisible par 3 ?","input":{"css":{"font-size":"3.0em","width":"3.0em"},"digit":1,"values":[["oui",1],["non",0]]}]]></dct:description>
@@ -93,11 +93,11 @@
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
-        <dct:alternative>d1K2</dct:alternative>
+        <dct:alternative>d1k2</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>d1K5</dct:identifier>
+        <dct:identifier>d1k5</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier, sans contrainte de temps, les nombres divisibles par 5 compris entre 1 et 1000.</dct:title>
         <dct:description><![CDATA["time":0,"template":"template.html","gen":"function() { var max=1000,v=5,r=Math.floor(Math.random()*2),a=Math.floor(Math.random()*max/v)*v+(r?0:Math.floor(Math.random()*(v-1))+1); return [a, (a%v)?0:1]}","font":2,"class":"h2"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Le nombre est-il divisible par 5 ?","input":{"css":{"font-size":"3.0em","width":"3.0em"},"digit":1,"values":[["oui",1],["non",0]]}]]></dct:description>
@@ -105,11 +105,11 @@
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>d1K2</dct:alternative>
+        <dct:alternative>d1k2</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>d1K9</dct:identifier>
+        <dct:identifier>d1k9</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier, sans contrainte de temps, les nombres divisibles par 9 compris entre 1 et 1000.</dct:title>
         <dct:description><![CDATA["time":0,"template":"template.html","gen":"function() { var max=1000,v=9,r=Math.floor(Math.random()*2),a=Math.floor(Math.random()*max/v)*v+(r?0:Math.floor(Math.random()*(v-1))+1); return [a, (a%v)?0:1]}","font":2,"class":"h2"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Le nombre est-il divisible par 9 ?","input":{"css":{"font-size":"3.0em","width":"3.0em"},"digit":1,"values":[["oui",1],["non",0]]}]]></dct:description>
@@ -117,7 +117,7 @@
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>4</dct:type>
-        <dct:alternative>d1K2</dct:alternative>
+        <dct:alternative>d1k2</dct:alternative>
     </rdf:Description>
 
 </rdf:RDF>
