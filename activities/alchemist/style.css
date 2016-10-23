@@ -11,6 +11,7 @@
 .alchemist #board div.fill          { position:absolute; width:1em; height:1em;  background-color:yellow; opacity:0.5;}
 .alchemist #board div.score         { position:absolute; width:1em; height:1em; text-align:center; z-index:3; overflow:visible;}
 .alchemist #board div.score>div     { font-weight:bold; color:orange; overflow:visible; }
+.alchemist #board div.crap          { display:none; position:absolute; width:1em; height:1em; z-index:2; background-color:rgba(0,0,0,0.8); border-radius:.5em; }
 .alchemist #board div.effect        { position:absolute; width:1em; height:1em; z-index:2; background-color:yellow; border-radius:.5em; }
 .alchemist #board div.effect.fstone { background-color:brown; }
 .alchemist #board div.effect.fice   { background-color:cyan; border-radius:0;}
@@ -66,3 +67,4 @@
 .alchemist #tutorial>div            { border:1px solid black; width:14em; margin:0 auto; }
 .alchemist #tutorial div.icon       { width:2em; height:2em; display:inline-block; border:0; background-color:transparent; }
 .alchemist .alphakeypad             { border-radius:.5em; }
+.alchemist .alert					{ z-index:4; display:none;position:absolute; font-size:4em; width:1em; height:1em; top:2%; left:50%; }

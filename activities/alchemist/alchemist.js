@@ -598,9 +598,11 @@
         score:function($this,level) {
             var settings = $this.data("settings");
             var l = 0;
+			var transmut = false;
 
             if (settings.goals) {
                 l = (helpers.goals.check($this, false)!=s.success?0:5);
+				if (l==0) { transmut = true; $this.find("#wrong").show(); } else { $this.find("#good").show(); }
                 if (l==5 && settings.ref) {
                     if (settings.points<settings.ref*0.5)   { l = 2; } else
                     if (settings.points<settings.ref*0.8)   { l = 3; } else
@@ -608,10 +610,23 @@
                 }
             }
             else {
+				transmut = true;
                 l = settings.level-6;
                 if (l>5) { l=5; }
                 if (l<0) { l=0; }
             }
+            
+            if (transmut) {
+				for (var j=0; j<9; j++) for (var i=0; i<6; i++)  {
+					if (settings.board[j][i]) {
+						var $elt = $("<div class='crap l"+j+"'></div>")
+							.appendTo($this.find("#board")).css("left", i+"em").css("top", j+"em");
+					}
+				}
+				var l = 0;
+				for (var j=0; j<9; j++) { setTimeout(function() { $this.find(".crap.l"+(l++)).show(); }, j*50); }
+			}
+            
             return l;
         },
         power: function($this, _first) {
@@ -628,7 +643,7 @@
                 else {
                     settings.interactive = false;
                     settings.score = helpers.score($this);
-                    setTimeout(function() { helpers.end($this); }, 500);
+                    setTimeout(function() { helpers.end($this); }, 2000);
                 }
             }
         }
