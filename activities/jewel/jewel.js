@@ -6,11 +6,15 @@
         template    : "template.html",                          // Activity's html template
         css         : "style.css",                              // Activity's css style sheet
         lang        : "en-US",                                  // Current localization
-        board       : ["aaaaaaaa","aaFaaaaa","aaaaaaaa","aaaaaaaa","aaaaaaaa","aaaaaaaa","aaaaaaaa","aaaaaaaa"],
-        pjewels     : [1,1,1,0,1,1],                        // Jewel probability
-        pspecial    : [10,10,10,10,10,10],                   // Jewel special (horiz or vertical)
+        board       : ["aaaa","aaaa","aaaa","aaaa"],		// grid
+        pjewels     : [1,1,1,1,1,1,1,0,0,0],                // Jewel probability
+        pspecial    : [10,10,10,10,10,10,10,10,10,10],      // Jewel special (horiz or vertical)
         pbomb       : 0,                                    // Bomb
         specials    : [true, true],                         // Jewel horizontal or vertical
+		blocked		: true,									// Do not change jewels
+		ref			: 0,									// Reference score
+		time		: 0,
+		goals		: [{"type":"max","value":10},{"type":"frozen"}],
         debug       : true                                  // Debug mode
     };
 
@@ -25,6 +29,8 @@
 
     var gspeed = 500;
     var ncells = [[-1,0],[0,-1],[1,0],[0,1]];
+	
+    var s = { normal : 0, success: 1, failure: 2 };
 
     // private methods
     var helpers = {
@@ -100,45 +106,54 @@
                     if ($.isArray(value)) {  for (var i in value) { $this.find("#"+id).append("<p>"+value[i]+"</p>"); } }
                     else { $this.find("#"+id).html(value); }
                 }); }
+				helpers.score($this,0);
 
                 // BUILD THE PROBABILITY VECTOR
                 for (var i=0; i<settings.pjewels.length; i++) for(var j=0; j<settings.pjewels[i]; j++) { settings.proba.push(i); }
 
+                if (settings.time) { $this.find("#time").show(); $this.find("#withtime").show();}
+
+                // goals handling
+                setTimeout(function() { helpers.goals.init($this); }, 100);
+				
                 // BUILD GRID
                 settings.size = [ settings.board[0].length, settings.board.length];
-                settings.tcells=[];
-                for (var j=0; j<settings.size[1]; j++) {
-                    var tmp=[];
-                    for (var i=0; i<settings.size[0]; i++) { tmp.push(0); }
-                    settings.tcells.push(tmp);
-                }
-
                 var max     = Math.max(settings.size[1], settings.size[0])*1.1;
                 $this.find("#board>div").css("font-size", (12/max)+"em")
                                         .css("margin-left", ((max-settings.size[0])/2)+"em")
                                         .css("margin-top", ((max-settings.size[1])/2)+"em");
-                for (var j=0; j<settings.size[1]; j++) for (var i=0; i<settings.size[0]; i++) {
-                    if (helpers.fromboard($this, i, j)!='0') {
-                        var ok, cell, $bg;
-                        do {
-                            ok = true;
-                            cell=helpers.jewel($this, i, j, helpers.fromboard($this, i, j));
-                            if (cell.match(helpers.cell($this,i,j-1)) && cell.match(helpers.cell($this,i,j-2))) { ok = false; }
-                            if (cell.match(helpers.cell($this,i-1,j)) && cell.match(helpers.cell($this,i-2,j))) { ok = false; }
-                        } while(!ok);
-                        helpers.cell($this,i,j,cell);
-                        $this.find("#board>div").append(cell.$html);
+										
+				do {		
+					$this.find("#board>div").html("");
+					settings.tcells=[];
+					for (var j=0; j<settings.size[1]; j++) {
+						var tmp=[];
+						for (var i=0; i<settings.size[0]; i++) { tmp.push(0); }
+						settings.tcells.push(tmp);
+					}
+					for (var j=0; j<settings.size[1]; j++) for (var i=0; i<settings.size[0]; i++) {
+						if (helpers.fromboard($this, i, j)!='0') {
+							var ok, cell, $bg;
+							do {
+								ok = true;
+								cell=helpers.jewel($this, i, j, helpers.fromboard($this, i, j));
+								if (cell.match(helpers.cell($this,i,j-1)) && cell.match(helpers.cell($this,i,j-2))) { ok = false; }
+								if (cell.match(helpers.cell($this,i-1,j)) && cell.match(helpers.cell($this,i-2,j))) { ok = false; }
+							} while(!ok);
+							helpers.cell($this,i,j,cell);
+							$this.find("#board>div").append(cell.$html);
 
 
-                        var $bg = $("<div class='bg'></div>");
-                        var neighboors = ['0','0','0','0'], radius = [];
-                        for (var n=0; n<4; n++) { neighboors[n] = helpers.fromboard($this, i+ncells[n][0], j+ncells[n][1]); }
-                        for (var n=0; n<4; n++) { radius.push(neighboors[n]=='0'&&neighboors[(n+1)%4]=='0'?".2em":"0"); }
-                        $bg.css("border-radius",radius.join(" ")).css("top",j+"em").css("left",i+"em");
-                        $this.find("#board>div").append($bg);
+							var $bg = $("<div class='bg'></div>");
+							var neighboors = ['0','0','0','0'], radius = [];
+							for (var n=0; n<4; n++) { neighboors[n] = helpers.fromboard($this, i+ncells[n][0], j+ncells[n][1]); }
+							for (var n=0; n<4; n++) { radius.push(neighboors[n]=='0'&&neighboors[(n+1)%4]=='0'?".2em":"0"); }
+							$bg.css("border-radius",radius.join(" ")).css("top",j+"em").css("left",i+"em");
+							$this.find("#board>div").append($bg);
 
-                    }
-                }
+						}
+					}
+				} while (helpers.blocked($this));
 
                 $this.bind("touchmove mousemove", function(_event) {
                     if (settings.interactive && settings.action.elt1 ) {
@@ -199,6 +214,7 @@
                                 helpers.cell($this, settings.action.elt1.pos[0], settings.action.elt1.pos[1], settings.action.elt1);
                                 helpers.cell($this, settings.action.elt2.pos[0], settings.action.elt2.pos[1], settings.action.elt2);
                             }
+							else { if (settings.timer.id) { clearTimeout(settings.timer.id); } }
                         }
                         else {
                             if (settings.action.elt2) { settings.action.elt2.init(); }
@@ -215,6 +231,91 @@
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
+        goals: {
+            init: function($this) {
+                var settings = helpers.settings($this);
+                for (var i in settings.goals) {
+                    var txt = settings.locale.goaltxt[settings.goals[i].type];
+                    switch(settings.goals[i].type) {
+                        case "survive":
+                            $this.find("#counter").html(settings.goals[i].value).show();
+                            txt = txt.replace("$1","<span class='l'>"+settings.goals[i].value+"</span>");
+                            break;
+                        case "max":
+                            $this.find("#counter").html(settings.goals[i].value).addClass("s").show();
+                            txt = txt.replace("$1","<span class='l'>"+(settings.goals[i].value)+"</span>");
+                            break;
+                    }
+                    $this.find("#splashex ul").append("<li>"+txt+"</li>");
+                    $this.find("#splashex #goals").show();
+                }
+            },
+            // return s.normal, s.success or s.failure
+            check: function($this, _update) {
+                var settings = helpers.settings($this);
+                var ret = s.normal, goal = 0;
+
+                if (settings.goals && settings.goals.length) {
+                    for (var i in settings.goals) {
+                        switch(settings.goals[i].type) {
+                            case "survive":
+                                var val = parseInt($this.find("#counter").html());
+                                if (val>1) { if (_update) { val--; } } else { goal++; }
+                                $this.find("#counter").html(val);
+                                break;
+                            case "max":
+                                var val = parseInt($this.find("#counter").html());
+                                goal++;
+                                if (val>1) { if (_update) { val--; } } else { if (_update) { val=0; } ret = s.failed; }
+                                $this.find("#counter").html(val);
+                                break;
+                            case "frozen":
+                                var ok = true;
+								for (var j=0; j<settings.size[1]; j++) for (var i=0; i<settings.size[0]; i++) {
+									if (helpers.cell($this,i,j)&&helpers.cell($this,i,j).frozen) { ok = false; }
+								}
+                                if (ok) { goal++; }
+                                break;
+                        }
+                    }
+                    if (goal==settings.goals.length) { ret = s.success; } 
+                }
+                return ret;
+            }
+        },
+		blocked: function($this) {
+            var settings  = helpers.settings($this);
+			var ret = true;
+            for (var j=0; j<settings.size[1]; j++) for (var i=0; i<settings.size[0]; i++) {
+				if (helpers.cell($this,i,j) && helpers.cell($this,i,j).canmove()) {
+					if (j>0 && helpers.cell($this,i,j-1) && helpers.cell($this,i,j-1).canmove() ) {
+						if (i>1 && helpers.cell($this,i,j-1).match(helpers.cell($this,i-2,j)) && helpers.cell($this,i,j-1).match(helpers.cell($this,i-1,j)) ) { ret =false; }					
+						if (i>0 && i<settings.size[0]-1 && helpers.cell($this,i,j-1).match(helpers.cell($this,i-1,j)) && helpers.cell($this,i,j-1).match(helpers.cell($this,i+1,j)) ) { ret =false; }
+						if (i<settings.size[0]-2 && helpers.cell($this,i,j-1).match(helpers.cell($this,i+1,j)) && helpers.cell($this,i,j-1).match(helpers.cell($this,i+2,j)) ) { ret =false; }
+						if (j<settings.size[1]-2 && helpers.cell($this,i,j-1).match(helpers.cell($this,i,j+1)) && helpers.cell($this,i,j-1).match(helpers.cell($this,i,j+2)) ) { ret =false; }
+					}
+					if (j<settings.size[1]-1 && helpers.cell($this,i,j+1) && helpers.cell($this,i,j+1).canmove()) {
+						if (i>1 && helpers.cell($this,i,j+1).match(helpers.cell($this,i-2,j)) && helpers.cell($this,i,j+1).match(helpers.cell($this,i-1,j)) ) { ret =false; }					
+						if (i>0 && i<settings.size[0]-1 && helpers.cell($this,i,j+1).match(helpers.cell($this,i-1,j)) && helpers.cell($this,i,j+1).match(helpers.cell($this,i+1,j)) ) { ret =false; }
+						if (i<settings.size[0]-2 && helpers.cell($this,i,j+1).match(helpers.cell($this,i+1,j)) && helpers.cell($this,i,j+1).match(helpers.cell($this,i+2,j)) ) { ret =false; }
+						if (j>1 && helpers.cell($this,i,j+1).match(helpers.cell($this,i,j-1)) && helpers.cell($this,i,j+1).match(helpers.cell($this,i,j-2)) ) { ret =false; }	
+					}
+					if (i>0 && helpers.cell($this,i-1,j) && helpers.cell($this,i-1,j).canmove() ) {
+						if (j>1 && helpers.cell($this,i-1,j).match(helpers.cell($this,i,j-2)) && helpers.cell($this,i-1,j).match(helpers.cell($this,i,j-1)) ) { ret =false; }					
+						if (j>0 && j<settings.size[1]-1 && helpers.cell($this,i-1,j).match(helpers.cell($this,i,j-1)) && helpers.cell($this,i-1,j).match(helpers.cell($this,i,j+1)) ) { ret =false; }
+						if (j<settings.size[1]-2 && helpers.cell($this,i-1,j).match(helpers.cell($this,i,j+1)) && helpers.cell($this,i-1,j).match(helpers.cell($this,i,j+2)) ) { ret =false; }
+						if (i<settings.size[0]-2 && helpers.cell($this,i-1,j).match(helpers.cell($this,i+1,j)) && helpers.cell($this,i-1,j).match(helpers.cell($this,i+2,j)) ) { ret =false; }
+					}
+					if (i<settings.size[0]-1 && helpers.cell($this,i+1,j) && helpers.cell($this,i+1,j).canmove() ) {
+						if (j>1 && helpers.cell($this,i+1,j).match(helpers.cell($this,i,j-2)) && helpers.cell($this,i+1,j).match(helpers.cell($this,i,j-1)) ) { ret =false; }					
+						if (j>0 && j<settings.size[1]-1 && helpers.cell($this,i+1,j).match(helpers.cell($this,i,j-1)) && helpers.cell($this,i+1,j).match(helpers.cell($this,i,j+1)) ) { ret =false; }
+						if (j<settings.size[1]-2 && helpers.cell($this,i+1,j).match(helpers.cell($this,i,j+1)) && helpers.cell($this,i+1,j).match(helpers.cell($this,i,j+2)) ) { ret =false; }
+						if (i>1 && helpers.cell($this,i+1,j).match(helpers.cell($this,i-1,j)) && helpers.cell($this,i+1,j).match(helpers.cell($this,i-2,j)) ) { ret =false; }
+					}
+				}
+			}
+			return ret;
+		},
         compute: function($this) {
             var settings  = helpers.settings($this);
             var remove = false;
@@ -314,19 +415,20 @@
         },
         score: function($this, _val) {
             var settings  = helpers.settings($this);
-            settings.score+=_val;
-            $this.find("#scvalue").html(settings.score).addClass("touch");
-            setTimeout(function() { $this.find("#scvalue").removeClass("touch"); }, 100);
+            settings.points+=_val;
+            $this.find("#scorepanel #points #v").html(settings.points);
+			if (settings.ref) {
+				$this.find("#scorepanel #slide").width($this.find("#scorepanel #points").width()*Math.min(1,settings.points/settings.ref));
+			}
         },
         move: function($this) {
             var settings  = helpers.settings($this);
             var speed = 0;
             var totreat = [];
             for (var j=0; j<settings.size[1]; j++) for (var i=0; i<settings.size[0]; i++) {
-                if (helpers.fromboard($this, i,j)!='0' && !helpers.cell($this,i,j) ) { totreat.push([i,j]); }
+				if (helpers.fromboard($this, i,j)!='0' && !helpers.cell($this,i,j)) { totreat.push([i,j]); }
             }
             totreat.sort(function(a,b){ return (b[1]<a[1]); });
-
 
             var anim = false;
             while(totreat.length) {
@@ -334,25 +436,27 @@
                 if (elt[1]>0) {
                     var up  = helpers.cell($this, elt[0], elt[1]-1);
                     var w   = [0,-1];
+					
                     if (up && !up.canmove()) {
                         var sides=[];
                         up = helpers.cell($this, elt[0]-1, elt[1]);
-                        if (up && up.canmove()) { sides.push([up,[-1,0]]); }
+                        if (up && up.canmove() && !up.islast(elt[0],elt[1])) { sides.push([up,[-1,0]]); }
                         up = helpers.cell($this, elt[0]+1, elt[1]);
-                        if (up && up.canmove()) { sides.push([up,[1,0]]); }
+                        if (up && up.canmove() && !up.islast(elt[0],elt[1])) { sides.push([up,[1,0]]); }
                         if (sides.length) {
                             var alea = Math.floor(Math.random()*sides.length);
                             up = sides[alea][0];
                             w  = sides[alea][1];
                         } else { up = 0; }
                     }
-
-                    if (up) {
+					
+                    if (up && up.canmove()) {
                         helpers.cell($this, up.pos[0], up.pos[1], 0);
                         helpers.cell($this, elt[0], elt[1], up);
-                        up.pos=[elt[0],elt[1]];
+                        up.setpos(elt[0],elt[1]);
                         up.offset(w[0],w[1]).reinit(speed); anim=true;
                         totreat.push([elt[0]+w[0],elt[1]+w[1]]);
+						totreat.sort(function(a,b){ return (b[1]<a[1]); });
                     }
                 }
                 else {
@@ -364,8 +468,75 @@
             };
 
             if (anim)   { setTimeout(function() { helpers.move($this); }, Math.max(100,speed)); }
-            else        { if (!helpers.compute($this)) { settings.interactive = true; } }
+            else        { if (!helpers.compute($this)) { helpers.next($this); } }
         },
+		next: function($this) {
+            var settings  = helpers.settings($this);
+			var goal = helpers.goals.check($this, true);
+			var finish = false;
+			
+			if (goal==s.success) {
+				setTimeout(function() { $this.find("#good").show(); }, 500);
+				settings.score = 5;
+				finish = true;
+			}
+			else if (goal==s.failed || (helpers.blocked($this)&&settings.blocked)) {
+				setTimeout(function() { $this.find("#wrong").show(); }, 1000);
+				setTimeout(function() { helpers.clear($this); }, 2000);
+				settings.score = settings.goals?0:5;
+				finish = true;
+			}
+			else if (helpers.blocked($this)&&!settings.blocked) {
+				setTimeout(function() { helpers.clear($this); }, 2000);
+				// TO DO
+			}
+			
+			if (finish) {
+				if (settings.score == 5) {
+					if ( settings.ref) {
+						if (settings.points<settings.ref * 0.3) { settings.score = 0; } else
+						if (settings.points<settings.ref * 0.5) { settings.score = 1; } else
+						if (settings.points<settings.ref * 0.7) { settings.score = 2; } else
+						if (settings.points<settings.ref * 0.9) { settings.score = 3; } else
+						if (settings.points<settings.ref )      { settings.score = 4; } else
+																{ settings.score = 5; }
+					}
+				}
+				setTimeout(function() { helpers.end($this);}, 2500);
+			}
+			else {
+				settings.interactive = true; 
+				if (settings.time) {
+					$this.find("#time>div").width(0);
+					settings.timer.val = Date.now();
+					settings.timer.id = setTimeout(function() { helpers.time($this); }, 50);
+				}
+			}
+		},
+		clear: function($this) {
+            var settings  = helpers.settings($this);
+			for (var j=0; j<settings.size[1]; j++) for (var i=0; i<settings.size[0]; i++) {
+				var cell=helpers.cell($this, i,j);
+				if (cell) {
+					cell.pos[1]+=settings.size[1]+1;
+					cell.reinit(500);
+				}
+			}
+		},
+		time: function($this) {
+            var settings = helpers.settings($this);
+            var val = (Date.now() - settings.timer.val)/1000;
+            $this.find("#time>div").width($this.find("#time").width()*Math.min(1,val/settings.time));
+            if (val<settings.time) { settings.timer.id = setTimeout(function() { helpers.time($this); }, 50); }
+            else                   {
+                settings.timer.id = 0;
+				settings.score = 0;
+				settings.interactive = false;
+				setTimeout(function() { $this.find("#wrong").show(); }, 1000);
+				setTimeout(function() { helpers.clear($this); }, 2000);
+				setTimeout(function() { helpers.end($this);}, 2500);
+			}
+		},
         cell: function($this, _i, _j, _cell) {
             var settings  = helpers.settings($this);
             var notdefined = (_j<0 || _j>=settings.size[1] || _i<0 || _i>=settings.size[0] );
@@ -381,21 +552,24 @@
             var settings  = helpers.settings($this);
             var j = [ "",
                       "jewels/red01", "jewels/blue02", "jewels/yellow03", "jewels/purple04", "jewels/green05", 
-                      "jewels/white06", "", "", "", "",
+                      "jewels/white06", "jewels/orange07", "", "", "",
                       "jewels/red01h", "jewels/blue02h", "jewels/yellow03h", "jewels/purple04h", "jewels/green05h", 
-                      "jewels/white06h", "", "", "", "",
+                      "jewels/white06h", "jewels/orange07h", "", "", "",
                       "jewels/red01v", "jewels/blue02v", "jewels/yellow03v", "jewels/purple04v", "jewels/green05", 
-                      "jewels/white06v", "", "", "", "",
+                      "jewels/white06v", "jewels/orange07v", "", "", "",
                       "icon/life01", "","","",""];
 
             var ret       = {
                 pos         : [_i,_j],
+				last		: [-1,-1],
                 val         : 0,
                 remove      : false,
                 frozen      : false,
                 $html       : $("<div class='cell'></div>")
             }
 
+			ret.setpos = function(_i,_j) { this.last=[this.pos[0],this.pos[1]]; this.pos=[_i,_j]; }
+			ret.islast = function(_i,_j) { return ((this.last[0]==_i) && (this.last[1]==_j)); }
             ret.offset = function(_x,_y) { this.$html.css("left",(this.pos[0]+_x)+"em").css("top",(this.pos[1]+_y)+"em"); return this;}
             ret.init = function() { this.$html.attr("id","c"+this.pos[0]+"x"+this.pos[1]); return this.offset(0,0); };
             ret.reinit = function(_speed, _cbk) {
@@ -475,7 +649,9 @@
                     proba           : [],       // computed probability
                     width           : 0,        // cell width
                     action          : { pos:0, elt1:0, elt2:0, ok:false, count:0 },
-                    score           : 0
+					points			: 0,
+                    score           : 0,
+					timer			: { val:0, id:0 }
                 };
 
                 return this.each(function() {
