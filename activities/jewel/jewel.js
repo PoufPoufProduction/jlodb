@@ -8,9 +8,9 @@
         lang        : "en-US",                                  // Current localization
         board       : ["aaaa","aaaa","aaaa","aaaa"],		// grid
         pjewels     : [1,1,1,1,1,1,1,0,0,0],                // Jewel probability
-        pspecial    : [10,10,10,10,10,10,10,10,10,10],      // Jewel special (horiz or vertical)
+        pspecial    : [20,20,20,20,20,20,20,20,20,20],      // Jewel special (horiz or vertical)
         pbomb       : 0,                                    // Bomb
-        specials    : [true, true],                         // Jewel horizontal or vertical
+        specials    : [true, true, true],                   // Jewel horizontal, vertical or local
 		blocked		: true,									// Do not change jewels
 		ref			: 0,									// Reference score
 		time		: 0,
@@ -272,7 +272,10 @@
                             case "frozen":
                                 var ok = true;
 								for (var j=0; j<settings.size[1]; j++) for (var i=0; i<settings.size[0]; i++) {
-									if (helpers.cell($this,i,j)&&helpers.cell($this,i,j).frozen) { ok = false; }
+                                    var cell = helpers.cell($this,i,j);
+                                    if (cell) {
+                                        if (cell.frozen || cell.locked) { ok = false; }
+                                    }
 								}
                                 if (ok) { goal++; }
                                 break;
@@ -319,21 +322,26 @@
         compute: function($this) {
             var settings  = helpers.settings($this);
             var remove = false;
+            
+            for (var j=0; j<settings.size[1]; j++) for (var i=0; i<settings.size[0]; i++) {
+                var elt = helpers.cell($this, i, j); if (elt) { elt.tmp = false; }
+            }
+            
             for (var j=0; j<settings.size[1]; j++) for (var i=0; i<settings.size[0]; i++) {
                 var elt = helpers.cell($this, i, j);
                 if (elt) {
                     var cpx = 0, cpdelx = 0, cpy = 0, cpdely = 0;
 
-                    do { if (helpers.cell($this,i+cpx,j) && helpers.cell($this,i+cpx,j).remove) { cpdelx++; } cpx++; }
+                    do { if (helpers.cell($this,i+cpx,j) && helpers.cell($this,i+cpx,j).tmp) { cpdelx++; } cpx++; }
                     while (helpers.cell($this,i+cpx,j) && elt.match(helpers.cell($this,i+cpx,j)));
 
-                    do { if (helpers.cell($this,i,j+cpy) && helpers.cell($this,i,j+cpy).remove) { cpdely++; } cpy++; }
+                    do { if (helpers.cell($this,i,j+cpy) && helpers.cell($this,i,j+cpy).tmp) { cpdely++; } cpy++; }
                     while (helpers.cell($this,i,j+cpy) && elt.match(helpers.cell($this,i,j+cpy)));
 
                     if (cpx>2 && cpdelx!=cpx) {
                         for (var k=0; k<cpx; k++) {
                             remove = true;
-                            helpers.cell($this,i+k,j).act($this);
+                            helpers.cell($this,i+k,j).act($this).tmp = true;
                         }
                         var $fx = $("<div class='fx'></div>");
                         $fx.css("top",j+"em").css("left",i+"em").css("width",cpx+"em").css("height","1em")
@@ -341,7 +349,7 @@
                         $this.find("#board>div").append($fx);
 
                         settings.action.count++;
-                        var score = 10*(cpx-2)*settings.action.count;
+                        var score = Math.floor(10*(cpx-2)*Math.min(3,0.5+settings.action.count/2));
                         var $score = $("<div class='score'><div>"+score+"</div></div>");
                         $score.css("top",j+"em").css("left",i+"em").css("width",cpx+"em").css("height","1em")
                            .animate({opacity:0, "margin-top":"-1em"}, gspeed*1.5, function() { $(this).detach() });
@@ -351,7 +359,7 @@
                     if (cpy>2 && cpdely!=cpy) {
                         for (var k=0; k<cpy; k++) {
                             remove = true;
-                            helpers.cell($this,i,j+k).act($this);
+                            helpers.cell($this,i,j+k).act($this).tmp = true;
                         }
                         var $fx = $("<div class='fx'></div>");
                         $fx.css("top",j+"em").css("left",i+"em").css("width","1em").css("height",cpy+"em")
@@ -359,7 +367,7 @@
                         $this.find("#board>div").append($fx);
 
                         settings.action.count++;
-                        var score = 10*(cpy-2)*settings.action.count;
+                        var score = Math.floor(10*(cpy-2)*Math.min(3,0.5+settings.action.count/2));
                         var $score = $("<div class='score'><div>"+score+"</div></div>");
                         $score.css("top",(j+0.5)+"em").css("left",(i-0.5)+"em").css("width","2em").css("height","1em")
                            .animate({opacity:0, "margin-top":"-1em"}, gspeed*1.5, function() { $(this).detach() });
@@ -377,6 +385,29 @@
             }
             return (remove);
         },
+        local:function($this, _cell) {
+            var settings  = helpers.settings($this);
+            var x = Math.max(0,_cell.pos[0]-1);
+            var y = Math.max(0,_cell.pos[1]-1);
+            var w = Math.min(settings.size[0]-1, _cell.pos[0]+1)-x+1;
+            var h = Math.min(settings.size[1]-1, _cell.pos[1]+1)-y+1;
+            
+            var $fx = $("<div class='fx'></div>");
+            $fx.css("top",y+"em").css("left",x+"em").css("width",w+"em").css("height",h+"em")
+                .animate({opacity:0}, gspeed*1.2, function() { $(this).detach() });
+            $this.find("#board>div").append($fx);
+
+            settings.action.count++;
+            var score = Math.floor(10*w*h*Math.min(3,0.5+settings.action.count/2));
+            var $score = $("<div class='score line'><div>"+score+"</div></div>");
+            $score.css("top",_cell.pos[1]+"em").css("left",_cell.pos[0]+"em").css("width","2em").css("height","1em")
+                  .animate({opacity:0, "margin-top":"-1em"}, gspeed*1.5, function() { $(this).detach() });
+            $this.find("#board>div").append($score);
+            helpers.score($this, score);
+
+            for (var j=_cell.pos[1]-1; j<=_cell.pos[1]+1; j++)
+            for (var i=_cell.pos[0]-1; i<=_cell.pos[0]+1; i++) { var c = helpers.cell($this, i, j); if (c) { c.act($this); } }
+        },
         line: function($this, _cell) {
             var settings  = helpers.settings($this);
             if (_cell.val>10 && _cell.val<20) {
@@ -386,7 +417,7 @@
                 $this.find("#board>div").append($fx);
 
                 settings.action.count++;
-                var score = 10*settings.size[0]*settings.action.count;
+                var score = Math.floor(10*settings.size[0]*Math.min(3,0.5+settings.action.count/2));
                 var $score = $("<div class='score line'><div>"+score+"</div></div>");
                 $score.css("top",_cell.pos[1]+"em").css("left",(settings.size[0]/2-0.5)+"em").css("width","2em").css("height","1em")
                       .animate({opacity:0, "margin-top":"-1em"}, gspeed*1.5, function() { $(this).detach() });
@@ -403,7 +434,7 @@
 
                 
                 settings.action.count++;
-                var score = 10*settings.size[1]*settings.action.count;
+                var score = Math.floor(10*settings.size[0]*Math.min(3,0.5+settings.action.count/2));
                 var $score = $("<div class='score line'><div>"+score+"</div></div>");
                 $score.css("top",(settings.size[1]/2-0.5)+"em").css("left",(_cell.pos[0]-0.5)+"em").css("width","2em").css("height","1em")
                       .animate({opacity:0, "margin-top":"-1em"}, gspeed*1.5, function() { $(this).detach() });
@@ -421,54 +452,89 @@
 				$this.find("#scorepanel #slide").width($this.find("#scorepanel #points").width()*Math.min(1,settings.points/settings.ref));
 			}
         },
-        move: function($this) {
+        move: function($this, _force) {
             var settings  = helpers.settings($this);
-            var speed = 0;
+            var speed = 0, blocked = 9999;
+            
+            // GET HOLES TO FILL
             var totreat = [];
             for (var j=0; j<settings.size[1]; j++) for (var i=0; i<settings.size[0]; i++) {
-				if (helpers.fromboard($this, i,j)!='0' && !helpers.cell($this,i,j)) { totreat.push([i,j]); }
+				var cell = helpers.cell($this,i,j);
+				if (cell) { cell.tmp = false; }
+				if (helpers.fromboard($this, i,j)!='0' && !cell) { totreat.push([i,j]); }
             }
             totreat.sort(function(a,b){ return (b[1]<a[1]); });
 
+            // CREATE FEED FLOW (for moving tiles in the good direction)
+            var weight = [], cells=[];
+            for (var j=0; j<settings.size[1]; j++) { var tmp=[]; for (var i=0; i<settings.size[0]; i++) { tmp.push(blocked); } weight.push(tmp); }
+            for (var i=0; i<settings.size[0]; i++) { cells.push([i,0,1]);}
+            while (cells.length) {
+                var elt = cells.pop();
+                if (helpers.fromboard($this,elt[0],elt[1])!='0' &&
+                    elt[0]>=0 && elt[0]<settings.size[0] && elt[1]>=0 && elt[1]<settings.size[1] ) {
+                    var cell = helpers.cell($this,elt[0],elt[1]);
+                    
+                    if ((!cell || cell.canmove()) && weight[elt[1]][elt[0]]>elt[2]){
+                        weight[elt[1]][elt[0]] = elt[2];
+                        cells.push([elt[0]+1,elt[1],elt[2]+1]);
+                        cells.push([elt[0]-1,elt[1],elt[2]+1]);
+                        cells.push([elt[0],elt[1]+1,elt[2]+1]);
+                    }
+                }
+            }
+            
             var anim = false;
             while(totreat.length) {
                 var elt = totreat.pop();
                 if (elt[1]>0) {
                     var up  = helpers.cell($this, elt[0], elt[1]-1);
                     var w   = [0,-1];
-					
-                    if (up && !up.canmove()) {
-                        var sides=[];
-                        up = helpers.cell($this, elt[0]-1, elt[1]);
-                        if (up && up.canmove() && !up.islast(elt[0],elt[1])) { sides.push([up,[-1,0]]); }
-                        up = helpers.cell($this, elt[0]+1, elt[1]);
-                        if (up && up.canmove() && !up.islast(elt[0],elt[1])) { sides.push([up,[1,0]]); }
-                        if (sides.length) {
-                            var alea = Math.floor(Math.random()*sides.length);
-                            up = sides[alea][0];
-                            w  = sides[alea][1];
-                        } else { up = 0; }
+                    
+                    if ( helpers.fromboard($this, elt[0], elt[1]-1)=='0' || (up&&!up.canmove()) || _force) {
+						// GET THE BEST NEIGHBOOR THANKS TO THE WEIGHT
+						var side1 = [0,0,blocked], side2 = [0,0,blocked];
+						
+						if (helpers.fromboard($this, elt[0]-1, elt[1])!='0') {
+							up = helpers.cell($this, elt[0]-1, elt[1]);
+							if (!up || up.canmove()) { side1 = [up, [-1,0], weight[elt[1]][elt[0]-1] ]; }
+						}
+						
+						if (helpers.fromboard($this, elt[0]+1, elt[1])!='0') {
+							up = helpers.cell($this, elt[0]+1, elt[1]);
+							if (!up || up.canmove()) { side2 = [up, [1,0], weight[elt[1]][elt[0]+1] ]; }
+						}
+                        
+                        //alert(side1+ " - " +side2);
+						
+                        if (side1[2] < side2[2])    { up = side1[0]; w = side1[1]; } else
+                        if (side2[2] < side1[2])    { up = side2[0]; w = side2[1]; } else
+                        if (side1[2]!=blocked)      { var a = Math.floor(Math.random()*2); up = a?side1[0]:side2[0]; w = a?side1[1]:side2[1]; }
+                        else                        { up = 0; }
                     }
 					
-                    if (up && up.canmove()) {
+                    if (up && up.canmove() && /* !up.islast(elt[0],elt[1]) && */ !up.tmp ) {
                         helpers.cell($this, up.pos[0], up.pos[1], 0);
                         helpers.cell($this, elt[0], elt[1], up);
                         up.setpos(elt[0],elt[1]);
-                        up.offset(w[0],w[1]).reinit(speed); anim=true;
-                        totreat.push([elt[0]+w[0],elt[1]+w[1]]);
+                        up.offset(w[0],w[1]).reinit(speed);
+						up.tmp = true;
+						totreat.push([elt[0]+w[0],elt[1]+w[1]]);
 						totreat.sort(function(a,b){ return (b[1]<a[1]); });
+                        anim = true;
                     }
                 }
                 else {
                     var cell=helpers.jewel($this, elt[0], elt[1], 'a').offset(0,-1);
                     helpers.cell($this, elt[0], elt[1], cell);
                     $this.find("#board>div").append(cell.$html);
-                    cell.reinit(speed); anim=true;
+                    cell.reinit(speed);
+                    anim=true;
                 }
             };
 
-            if (anim)   { setTimeout(function() { helpers.move($this); }, Math.max(100,speed)); }
-            else        { if (!helpers.compute($this)) { helpers.next($this); } }
+            if (anim || !_force)    { setTimeout(function() { helpers.move($this, !anim); }, anim?Math.max(100,speed):0); }
+            else                    { if (!helpers.compute($this)) { helpers.next($this); } }
         },
 		next: function($this) {
             var settings  = helpers.settings($this);
@@ -494,10 +560,10 @@
 			if (finish) {
 				if (settings.score == 5) {
 					if ( settings.ref) {
-						if (settings.points<settings.ref * 0.3) { settings.score = 0; } else
-						if (settings.points<settings.ref * 0.5) { settings.score = 1; } else
-						if (settings.points<settings.ref * 0.7) { settings.score = 2; } else
-						if (settings.points<settings.ref * 0.9) { settings.score = 3; } else
+						if (settings.points<settings.ref * 0.2) { settings.score = 0; } else
+						if (settings.points<settings.ref * 0.4) { settings.score = 1; } else
+						if (settings.points<settings.ref * 0.6) { settings.score = 2; } else
+						if (settings.points<settings.ref * 0.8) { settings.score = 3; } else
 						if (settings.points<settings.ref )      { settings.score = 4; } else
 																{ settings.score = 5; }
 					}
@@ -557,13 +623,17 @@
                       "jewels/white06h", "jewels/orange07h", "", "", "",
                       "jewels/red01v", "jewels/blue02v", "jewels/yellow03v", "jewels/purple04v", "jewels/green05", 
                       "jewels/white06v", "jewels/orange07v", "", "", "",
+                      "jewels/red01c", "jewels/blue02c", "jewels/yellow03c", "jewels/purple04c", "jewels/green05c", 
+                      "jewels/white06c", "jewels/orange07c", "", "", "",
                       "icon/life01", "","","",""];
 
             var ret       = {
                 pos         : [_i,_j],
 				last		: [-1,-1],
                 val         : 0,
+				tmp			: false,
                 remove      : false,
+                locked      : 0,
                 frozen      : false,
                 $html       : $("<div class='cell'></div>")
             }
@@ -580,39 +650,64 @@
                 return this;
             }
             ret.act         = function($this) {
-                if (this.frozen) { this.unfreeze(); }
+                if (this.locked)        { this.unlock(); }
+                else if (this.frozen)   { this.unfreeze(); }
                 else {
                     if (!this.remove) {
                         this.remove = true;
                         this.$html.animate({opacity:0}, gspeed, function() { $(this).detach() });
-                        if (this.val>10 && this.val<30) { helpers.line($this, this); }
+                        if (this.val>10 && this.val<30) { helpers.line($this, this); } else
+                        if (this.val>30 && this.val<40) { helpers.local($this, this); }
                     }
                 }
                 return this;
             }
-            ret.match       = function(_cell) { return (_cell && this.val<30 && _cell.val<30 && this.val%10==_cell.val%10); }
-            ret.canmove     = function() { return !this.frozen; }
+            ret.match       = function(_cell) { return (_cell && this.val<40 && _cell.val<40 && this.val%10==_cell.val%10); }
+            ret.canmove     = function() { return !this.locked; }
             ret.unfreeze    = function() { this.frozen = false; this.$html.find(".frozen").detach(); }
+            ret.unlock      = function() {
+                if (this.locked==2) { this.locked = 1; this.$html.find(".locked img").attr("src", "res/img/icon/locked01.svg"); }
+                else                { this.locked = 0; this.$html.find(".locked").detach(); }
+            }
 
-            switch(_val) {
-                case 'F': ret.frozen = true;
+            var value = _val;
+            switch (_val) {
+                case 'F' : ret.frozen = true; value = 'A'; break;
+                case 'f' : ret.frozen = true; value = 'a'; break;
+                case 'G' : ret.locked = 1; ret.frozen = 1; value = 'A'; break;
+                case 'g' : ret.locked = 1; ret.frozen = 1; value = 'a'; break;
+                case 'H' : ret.locked = 2; ret.frozen = 1; value = 'A'; break;
+                case 'h' : ret.locked = 2; ret.frozen = 1; value = 'a'; break;
+                case 'L' : ret.locked = 1; value = 'A'; break;
+                case 'l' : ret.locked = 1; value = 'a'; break;
+                case 'M' : ret.locked = 2; value = 'A'; break;
+                case 'm' : ret.locked = 2; value = 'a'; break;
+            }
+            
+            switch(value) {
                 case 'A': ret.val = settings.proba[Math.floor(Math.random()*settings.proba.length)]+1; break;
-                case 'a': if (settings.pbomb && Math.floor(Math.random()*settings.pbomb)==0) { ret.val = 31; }
+                case 'a': if (settings.pbomb && Math.floor(Math.random()*settings.pbomb)==0) { ret.val = 41; }
                           else {
                               var value = settings.proba[Math.floor(Math.random()*settings.proba.length)];
-                              if (value<10 && (settings.specials[0]||settings.specials[1])) {
+                              if (value<10 && (settings.specials[0]||settings.specials[1]||settings.specials[2])) {
                                 if (settings.pspecial[value]&&Math.floor(Math.random()*settings.pspecial[value])==0) {
-                                    value+=((Math.floor(Math.random()*2)==0&&settings.specials[0]) || !settings.specials[1])?10:20; 
+                                    var offset = 0;
+                                    do {
+                                        var w = Math.floor(Math.random()*settings.specials.length);
+                                        if (settings.specials[w]) { offset = 10*(w+1); }
+                                    } while (!offset);
+                                    value+=offset; 
                                 }
                               }
                               ret.val = value+1;
                           }
                           break;
-                case 'b': ret.val = 31; break;
+                case 'b': ret.val = 41; break;
                 default : ret.val = parseInt(_val); break;
             }
             ret.$html.append("<div><img src='res/img/"+j[ret.val]+".svg'/></div>");
             if (ret.frozen) { ret.$html.append("<div class='frozen'><img src='res/img/icon/ice01.svg'/></div>"); }
+            if (ret.locked) { ret.$html.append("<div class='locked'><img src='res/img/icon/locked0"+ret.locked+".svg'/></div>"); }
             ret.$html.unbind("mousedown touchstart").bind("mousedown touchstart", function(_event) {
                 if (settings.interactive) {
                     var e = (_event && _event.originalEvent &&
