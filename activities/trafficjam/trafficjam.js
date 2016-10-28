@@ -75,86 +75,12 @@
                 $this.css("font-size", Math.floor($this.height()/12)+"px");
 
                 $this.find("#nbfinal .value>div").html(settings.objective);
-
+                
+                
                 var vBoardSize = $this.find("#board").width();
                 var vSize = Math.floor(Math.min(vBoardSize/(settings.size[0]+2), vBoardSize/(settings.size[1]+3) ));
                 var vOffset = [ Math.floor((vBoardSize-(settings.size[0]+2)*vSize)/2),
                                 Math.floor((vBoardSize-(settings.size[1]+3)*vSize)/2) ];
-                $this.find("#board>div").html("").css("font-size",vSize);
-                settings.nav.size = vSize;
-                settings.nav.offset = vOffset;
-
-                $this.find("#board>div").append("<div class='b nw' style='top:"+((1-0.66)*vSize+vOffset[1])+"px;"+
-                                                 "left:"+(vOffset[0])+"px;z-index:0'></div>");
-                $this.find("#board>div").append("<div class='b ne' style='top:"+((1-0.66)*vSize+vOffset[1])+"px;"+
-                                                 "left:"+(((settings.size[0]+1)*vSize)+vOffset[0])+"px;z-index:0'></div>");
-                $this.find("#board>div").append("<div class='n n1' style='top:"+(vOffset[1])+"px;"+
-                                                 "left:"+((1*vSize)+vOffset[0])+"px;z-index:0'></div>");
-                $this.find("#board>div").append("<div class='n n1' style='top:"+(vOffset[1])+"px;"+
-                                                 "left:"+((3*vSize)+vOffset[0])+"px;z-index:0'></div>");
-                $this.find("#board>div").append("<div class='n n1' style='top:"+(vOffset[1])+"px;"+
-                                                 "left:"+((5*vSize)+vOffset[0])+"px;z-index:0'></div>");
-
-                for (var i=0; i<settings.size[0]; i++) for (var j=0; j<settings.size[1]; j++) {
-                    $this.find("#board>div").append("<div class='r' style='top:"+((2+j)*vSize+vOffset[1])+"px;"+
-                                                                          "left:"+((1+i)*vSize+vOffset[0])+"px;'></div>");
-                }
-                for (var i=-1; i<settings.size[0]+1; i++) {
-                    var c = "s";
-                    if (i==-1) { c="sw"; } else if (i==settings.size[0]) { c="se"; }
-                    $this.find("#board>div").append("<div class='b "+c+"' style='top:"+((2-0.66+settings.size[1])*vSize+vOffset[1])+"px;"+
-                                                    "left:"+((1+i)*vSize+vOffset[0])+"px;z-index:"+settings.size[1]+"'></div>");
-                }
-                for (var j=0; j<settings.size[1]; j++) {
-                    var c= "e";
-                    if (j==settings.goal[1]-1) { c="se2"; } else if (j==settings.goal[1]) { c="e3"; } else
-                    if (j==settings.goal[1]+1) { c="e2"; }
-                    $this.find("#board>div").append("<div class='b "+c+"' style='top:"+((2-0.66+j)*vSize+vOffset[1])+"px;"+
-                                                    "left:"+((settings.size[0]+1)*vSize+vOffset[0])+"px;z-index:"+j+"'></div>");
-                    $this.find("#board>div").append("<div class='b w' style='top:"+((2-0.66+j)*vSize+vOffset[1])+"px;"+
-                                                    "left:"+vOffset[0]+"px;z-index:"+j+"'></div>");
-                }
-
-                for (var i in settings.cars) {
-                    settings.cars[i].$car = $("<div id='"+i+"' class='c "+settings.cars[i][0].substr(0,2)+"'>"+
-                                                "<img src='res/img/tileset/ortho/traffic/"+settings.cars[i][0]+".svg'/></div>");
-
-                    settings.cars[i].$car.bind("mousedown touchstart", function(event){
-                        var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
-                                      event.originalEvent.touches[0]:event;
-                        if (settings.interactive) {
-                            settings.nav.id = $(this).attr("id");
-                            settings.nav.mouse = [ vEvent.clientX, vEvent.clientY];
-                            settings.nav.move = [0,0];
-
-                            var x,y;
-                            var vCar    = settings.cars[settings.nav.id];
-                            var vOffset = (vCar[0][0]=='h')?[parseInt(vCar[0][1]),0]:[0,parseInt(vCar[0][1])];
-
-                            if (vCar[0][0]=='h')
-                            {
-                                x = vCar[1]-1;
-                                while (x>=0 && settings.board[vCar[2]][x]==-1) { x--; }
-                                y = vCar[1]+parseInt(vCar[0][1]);
-                                while (y<settings.size[0] && settings.board[vCar[2]][y]==-1) { y++; }
-                                settings.nav.max=[x-vCar[1]+1,y-vCar[1]-parseInt(vCar[0][1])];
-                            }
-                            else
-                            {
-                                x = vCar[2]-1;
-                                while (x>=0 && settings.board[x][vCar[1]]==-1) { x--; }
-                                y = vCar[2]+parseInt(vCar[0][1]);
-                                while (y<settings.size[1] && settings.board[y][vCar[1]]==-1) { y++; }
-                                settings.nav.max=[x-vCar[2]+1,y-vCar[2]-parseInt(vCar[0][1])];
-                            }
-
-                        }
-                        event.stopPropagation();
-                        event.preventDefault();
-                    });
-                    $this.find("#board>div").append(settings.cars[i].$car);
-                }
-                helpers.update($this);
 
                 $this.find("#board").bind("mouseup touchend", function(event) {
                     var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
@@ -214,9 +140,95 @@
                     if ($.isArray(value)) {  for (var i in value) { $this.find("#"+id).append("<p>"+value[i]+"</p>"); } }
                     else { $this.find("#"+id).html(value); }
                 }); }
+                
+                setTimeout(function(){helpers.build($this);},100);
 
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
+        },
+        build: function($this) {
+            var settings = helpers.settings($this);
+          
+                var vBoardSize = $this.find("#board").width();
+                var vSize = Math.floor(Math.min(vBoardSize/(settings.size[0]+2), vBoardSize/(settings.size[1]+3) ));
+                var vOffset = [ Math.floor((vBoardSize-(settings.size[0]+2)*vSize)/2),
+                                Math.floor((vBoardSize-(settings.size[1]+3)*vSize)/2) ];
+                $this.find("#board>div").html("").css("font-size",vSize);
+                settings.nav.size = vSize;
+                settings.nav.offset = vOffset;
+
+                $this.find("#board>div").append("<div class='b nw' style='top:"+((1-0.66)*vSize+vOffset[1])+"px;"+
+                                                 "left:"+(vOffset[0])+"px;z-index:0'></div>");
+                $this.find("#board>div").append("<div class='b ne' style='top:"+((1-0.66)*vSize+vOffset[1])+"px;"+
+                                                 "left:"+(((settings.size[0]+1)*vSize)+vOffset[0])+"px;z-index:0'></div>");
+                $this.find("#board>div").append("<div class='n n1' style='top:"+(vOffset[1])+"px;"+
+                                                 "left:"+((1*vSize)+vOffset[0])+"px;z-index:0'></div>");
+                $this.find("#board>div").append("<div class='n n1' style='top:"+(vOffset[1])+"px;"+
+                                                 "left:"+((3*vSize)+vOffset[0])+"px;z-index:0'></div>");
+                $this.find("#board>div").append("<div class='n n1' style='top:"+(vOffset[1])+"px;"+
+                                                 "left:"+((5*vSize)+vOffset[0])+"px;z-index:0'></div>");
+
+                for (var i=0; i<settings.size[0]; i++) for (var j=0; j<settings.size[1]; j++) {
+                    $this.find("#board>div").append("<div class='r' style='top:"+((2+j)*vSize+vOffset[1])+"px;"+
+                                                                          "left:"+((1+i)*vSize+vOffset[0])+"px;'></div>");
+                }
+                for (var i=-1; i<settings.size[0]+1; i++) {
+                    var c = "s";
+                    if (i==-1) { c="sw"; } else if (i==settings.size[0]) { c="se"; }
+                    $this.find("#board>div").append("<div class='b "+c+"' style='top:"+((2-0.66+settings.size[1])*vSize+vOffset[1])+"px;"+
+                                                    "left:"+((1+i)*vSize+vOffset[0])+"px;z-index:"+settings.size[1]+"'></div>");
+                }
+                for (var j=0; j<settings.size[1]; j++) {
+                    var c= "e";
+                    if (j==settings.goal[1]-1) { c="se2"; } else if (j==settings.goal[1]) { c="e3"; } else
+                    if (j==settings.goal[1]+1) { c="e2"; }
+                    $this.find("#board>div").append("<div class='b "+c+"' style='top:"+((2-0.66+j)*vSize+vOffset[1])+"px;"+
+                                                    "left:"+((settings.size[0]+1)*vSize+vOffset[0])+"px;z-index:"+j+"'></div>");
+                    $this.find("#board>div").append("<div class='b w' style='top:"+((2-0.66+j)*vSize+vOffset[1])+"px;"+
+                                                    "left:"+vOffset[0]+"px;z-index:"+j+"'></div>");
+                }
+
+                for (var i in settings.cars) {
+                    settings.cars[i].$car = $("<div id='"+i+"' class='c "+settings.cars[i][0].substr(0,2)+"'>"+
+                                                "<img src='res/img/tileset/ortho/traffic/"+settings.cars[i][0]+".svg'/></div>");
+
+                    settings.cars[i].$car.bind("mousedown touchstart", function(event){
+                        var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
+                                      event.originalEvent.touches[0]:event;
+
+                        if (settings.interactive) {
+                            settings.nav.id = $(this).attr("id");
+                            settings.nav.mouse = [ vEvent.clientX, vEvent.clientY];
+                            settings.nav.move = [0,0];
+
+                            var x,y;
+                            var vCar    = settings.cars[settings.nav.id];
+                            var vOffset = (vCar[0][0]=='h')?[parseInt(vCar[0][1]),0]:[0,parseInt(vCar[0][1])];
+
+                            if (vCar[0][0]=='h')
+                            {
+                                x = vCar[1]-1;
+                                while (x>=0 && settings.board[vCar[2]][x]==-1) { x--; }
+                                y = vCar[1]+parseInt(vCar[0][1]);
+                                while (y<settings.size[0] && settings.board[vCar[2]][y]==-1) { y++; }
+                                settings.nav.max=[x-vCar[1]+1,y-vCar[1]-parseInt(vCar[0][1])];
+                            }
+                            else
+                            {
+                                x = vCar[2]-1;
+                                while (x>=0 && settings.board[x][vCar[1]]==-1) { x--; }
+                                y = vCar[2]+parseInt(vCar[0][1]);
+                                while (y<settings.size[1] && settings.board[y][vCar[1]]==-1) { y++; }
+                                settings.nav.max=[x-vCar[2]+1,y-vCar[2]-parseInt(vCar[0][1])];
+                            }
+
+                        }
+                        event.stopPropagation();
+                        event.preventDefault();
+                    });
+                    $this.find("#board>div").append(settings.cars[i].$car);
+                }
+                helpers.update($this);  
         },
         update:function($this) {
             var settings = helpers.settings($this);
@@ -235,7 +247,8 @@
                 settings.score = 5 - Math.ceil((settings.moves.length-settings.objective)/2);
                 if (settings.score<2) { settings.score = 2; }
                 if (settings.score>5) { settings.score = 5; }
-                helpers.end($this);
+                $this.find("#good").show();
+                setTimeout(function() { helpers.end($this); }, 1500);
             }
         },
         board: function($this) {

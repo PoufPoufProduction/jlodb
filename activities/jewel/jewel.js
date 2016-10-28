@@ -703,6 +703,8 @@
                           }
                           break;
                 case 'b': ret.val = 41; break;
+                case 'd': ret.val = 11; break;
+                case 'D': ret.val = 15; break;
                 default : ret.val = parseInt(_val); break;
             }
             ret.$html.append("<div><img src='res/img/"+j[ret.val]+".svg'/></div>");
