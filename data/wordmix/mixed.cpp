@@ -1,16 +1,16 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <time.h>
-#include <sys/time.h>
-#include <iostream>
 
+#include <iostream>
 #include <vector>
 #include <map>
 #include <string>
 #include <algorithm>
 #include <chrono>
 #include <random>
+#include <ctime>
+#include <cstdlib>
 
 static bool mixAvailable = true;
 int         sideAvailable = 0xff;
@@ -43,7 +43,7 @@ int check(char * _grid, int _sx, int _sy, const std::string& word, int _x, int _
 
     } while (!finish);
 
-    if (ret==word.size()*5) { ret = 0; }
+    if (ret==word.size()*5) { ret = -1; }
 
     if (ret) {
         ret=ret*100 + std::rand()%100;
@@ -81,6 +81,7 @@ int main(int argc, char * argv[])
     int                         count = 0;
     int                         finaldiag = 0, diag = 0;
     int                         finalcount = 0, finalwords = 0;
+    bool                        verbose = false;
     int                         skip = 0;
 
     std::srand(std::time(0));
@@ -96,8 +97,10 @@ int main(int argc, char * argv[])
                 sideAvailable = atoi(argv[argid]);
             } else if (!strcmp(argv[argid],"-S") && (++argid<argc)) {
                 skip = atoi(argv[argid]);
-            }else if (!strcmp(argv[argid],"-d") && (++argid<argc)) {
+            } else if (!strcmp(argv[argid],"-d") && (++argid<argc)) {
                 diagratio = atof(argv[argid]);
+            } else if (!strcmp(argv[argid],"-v")) {
+                verbose = true;
             }
 
         }
@@ -137,10 +140,10 @@ int main(int argc, char * argv[])
 
                 bool newvalueisok = true;
                 for (std::vector<std::string>::const_iterator it = corpus.begin(); it!=corpus.end(); it++) {
-                    if (it->find(value)!=std::string::npos)      { newvalueisok=false; std::cout<<"Warning : "<<value<<" - "<<*it<<std::endl; } else
-                    if (it->find(inverse)!=std::string::npos)    { newvalueisok=false; std::cout<<"Warning : "<<value<<" - "<<*it<<std::endl; } else
-                    if (value.find(*it)!=std::string::npos)      { newvalueisok=false; std::cout<<"Warning : "<<value<<" - "<<*it<<std::endl; } else
-                    if (inverse.find(*it)!=std::string::npos)    { newvalueisok=false; std::cout<<"Warning : "<<value<<" - "<<*it<<std::endl; }
+                    if (it->find(value)!=std::string::npos)      { newvalueisok=false; if (verbose) std::cout<<"Warning : "<<value<<" - "<<*it<<std::endl; } else
+                    if (it->find(inverse)!=std::string::npos)    { newvalueisok=false; if (verbose) std::cout<<"Warning : "<<value<<" - "<<*it<<std::endl; } else
+                    if (value.find(*it)!=std::string::npos)      { newvalueisok=false; if (verbose) std::cout<<"Warning : "<<value<<" - "<<*it<<std::endl; } else
+                    if (inverse.find(*it)!=std::string::npos)    { newvalueisok=false; if (verbose) std::cout<<"Warning : "<<value<<" - "<<*it<<std::endl; }
                 }
 
                 if (newvalueisok) {
@@ -166,8 +169,8 @@ int main(int argc, char * argv[])
             // MIXED AND SORTED
             alea.clear();
             for (int i=0; i<corpus.size(); i++) { alea.insert(std::pair<std::string, int>(corpus[i], rand()%5)); }
-            unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
-            shuffle(corpus.begin(), corpus.end(), std::default_random_engine(seed));
+            unsigned seed = std::time(0);
+            //shuffle(corpus.begin(), corpus.end(), std::default_random_engine(seed));
             std::sort(corpus.begin(), corpus.end(), sort);
 
             // for (int i=0; i<corpus.size(); i++) std::cout<<corpus[i]<<std::endl; break;
@@ -227,6 +230,23 @@ int main(int argc, char * argv[])
         }
         while(count<100000 && finalholes!=0);
 
+        
+        for (int i=0; i<corpus.size(); i++) { if (used[i]) {
+            int cc = 0;
+            for (int y=0; y<sy; y++) for (int x=0; x<sx; x++) {
+                if ( check(finalgrid, sx, sy, corpus[i], x, y, 1, 0))    { cc++; }
+                if ( check(finalgrid, sx, sy, corpus[i], x, y, -1, 0))   { cc++; }
+                if ( check(finalgrid, sx, sy, corpus[i], x, y, 0, 1))    { cc++; }
+                if ( check(finalgrid, sx, sy, corpus[i], x, y, 0, -1))   { cc++; }
+                if ( check(finalgrid, sx, sy, corpus[i], x, y, 1, 1))    { cc++; }
+                if ( check(finalgrid, sx, sy, corpus[i], x, y, -1, 1))   { cc++; }
+                if ( check(finalgrid, sx, sy, corpus[i], x, y, 1, -1))   { cc++; }
+                if ( check(finalgrid, sx, sy, corpus[i], x, y, -1,-1))   { cc++; }
+            }
+            if (cc>1) { std::cout<<"WARNING : "<<corpus[i]<<"("<<cc<<")"<<std::endl; }
+        }
+        }
+        
        
         for (int y=0; y<sy; y++) {
             if (y) { std::cout<<",\""; } else { std::cout<<std::endl<<"\"grid\":[\""; }
