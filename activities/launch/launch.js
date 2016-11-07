@@ -7,13 +7,14 @@
         css         : "style.css",                              // Activity's css style sheet
         lang        : "en-US",                                  // Current localization
         exercice    : [],                                       // Exercice
-        wheel       : [260,410],                                // Wheel position
+        wheel       : [260,458],                                // Wheel position
         bubble      : [40,34],
-        wall        : [100,20],
+        wall        : [100,2],
         level       : 0,
-        tip         : true,
+        tip         : false,
         board       : "",                                       // board
         change      : 9,
+        time        : 0,
         debug       : true                                      // Debug mode
     };
 
@@ -30,8 +31,6 @@
     
     var colors = [ "black","white","blue","green","yellow","purple","red","orange"];
     var touch = { none:0, ball:1, wall:2, top:3 };
-    
-    var fps = 20;
 
     // private methods
     var helpers = {
@@ -117,146 +116,65 @@
                              _event.originalEvent.touches && _event.originalEvent.touches.length)?
                              _event.originalEvent.touches[0]:_event;
 
-                    if (settings.interactive) {
-                        if (!settings.ratio) {
+                   
+                    if (!settings.ratio) {
                             settings.ratio  = 640/$(this).width();
                             settings.offset = [$(this).offset().left, $(this).offset().top];
-                        }
-                        var x = (e.clientX - settings.offset[0])*settings.ratio;
-                        var y = (e.clientY - settings.offset[1])*settings.ratio;
-
-                        if (x>=100 && x<420) {
-                            if (y<380) {
-                                settings.action.first   = [ e.clientX, y ];
-                                settings.action.last    = [ e.clientX, e.clientY ];
-                                settings.action.angle   = settings.angle;
-                                if (settings.tip) { $("#tip",settings.svg.root()).show(); }
-                            }
-                            else {
-                                if (settings.tip) { $("#tip",settings.svg.root()).hide(); }
-                                settings.interactive = false;
-                                settings.action.path = helpers.path($this,settings.wheel, settings.action.angle);
-                                settings.current.moveto(settings.action.path, 400, function() {
-                                    // FIND THE CLOSEST HOLES
-                                    var dd, pp=0;
-                                    for (var j=0; j<(10+1); j++) for (var i=0; i<8; i++) {
-                                        if (!settings.data[j][i]) {
-                                            var pos = helpers.ijtopos($this, i,j);
-                                            var d   = (settings.current.pos[0]-pos[0])*(settings.current.pos[0]-pos[0]) +
-                                                      (settings.current.pos[1]-pos[1])*(settings.current.pos[1]-pos[1]);
-                                            if (pp==0 || d<dd) { dd=d; pp = [i,j]; }
-                                        }
-                                        else { settings.data[j][i].tmp = 0; }
-                                    }
-                                    settings.data[pp[1]][pp[0]]=settings.current;
-                                    var check = [[pp[0],pp[1]]];
-
-                                    setTimeout(function() {
-                                        helpers.display($this);
-                                        var elts=[];
-                                        do {
-                                            var pos = check.shift();
-                                            var e = helpers.getbubble($this, pos );
-                                            if (e && e.tmp==0 && e.val==settings.current.val) {
-                                                elts.push([e,pos[1]]);
-                                                e.tmp = 1;
-                                                check.push([pos[0]-1, pos[1]]);
-                                                check.push([pos[0]+1, pos[1]]);
-                                                check.push([pos[0], pos[1]-1]);
-                                                check.push([pos[0]+(pos[1]%2?1:-1), pos[1]-1]);
-                                                check.push([pos[0], pos[1]+1]);
-                                                check.push([pos[0]+(pos[1]%2?1:-1), pos[1]+1]);
-                                            }
-                                        } while(check.length);
-                                        if (elts.length>2) {
-                                            for (var j=0; j<(10+1); j++) for (var i=0; i<8; i++) {
-                                                var e = helpers.getbubble($this, [i,j] );
-                                                if (e) { e.tmp = 0; }
-                                            }
-                                            do {
-                                                var elt = elts.shift(), e = elt[0];
-                                                e.remove = true; e.tmp = 1;
-                                                e.$svg.attr("class","bubble fx");
-                                            } while (elts.length);
-                                            check = [];
-                                            for (var i=0; i<8; i++) {
-                                                var e = helpers.getbubble($this, [i,0] );
-                                                if (e && !e.remove) { check.push([i,0]); }
-                                            }
-                                            var finish = !(check.length);
-                                            while (check.length) {
-                                                var pos = check.shift();
-                                                var e = helpers.getbubble($this, pos );
-                                                if (e && e.tmp==0) {
-                                                    e.tmp = 1;
-                                                    check.push([pos[0]-1, pos[1]]);
-                                                    check.push([pos[0]+1, pos[1]]);
-                                                    check.push([pos[0], pos[1]-1]);
-                                                    check.push([pos[0]+(pos[1]%2?1:-1), pos[1]-1]);
-                                                    check.push([pos[0], pos[1]+1]);
-                                                    check.push([pos[0]+(pos[1]%2?1:-1), pos[1]+1]);
-                                                }
-                                            };
-                                            
-                                            for (var j=0; j<(10+1); j++) for (var i=0; i<8; i++) {
-                                                var e = helpers.getbubble($this, [i,j] );
-                                                if (e && (e.tmp==0 || e.remove)) {
-                                                    settings.data[j][i] = 0;
-                                                    var path=[];
-                                                    path.push([e.pos[0],e.pos[1]]);
-                                                    path.push([e.pos[0],e.pos[1]+480]);
-                                                    e.moveto(path,400+j*40, function() { this.$svg.detach(); });
-                                                }
-                                            }
-                                            
-                                            if (finish) { settings.score = 5; setTimeout(function() { helpers.end($this);}, 1000 ); }
-                                            else        { setTimeout(function() { helpers.run($this);}, 1000 ); }
-
-                                        }
-                                        else { helpers.run($this); }
-                                    }, 100);
-                                    
-                                });
-                            }
-                        }
-                        
-                        helpers.tip($this);
                     }
+                    var x = (e.clientX - settings.offset[0])*settings.ratio;
+                    var y = (e.clientY - settings.offset[1])*settings.ratio;
+
+                    settings.action.move = false;
+                    settings.action.last = 0;
+                    
+                    if (x>=100 && x<420) {
+                        if (y<416) {
+                            settings.action.first   = [ e.clientX, y ];
+                            settings.action.last    = [ e.clientX, e.clientY ];
+                            settings.action.angle   = settings.angle;
+                        }
+                        else  if (settings.interactive) { helpers.launch($this); }
+                    }
+
+                    helpers.tip($this);
                     _event.preventDefault();
                 });
                 
                 $this.bind("touchend mouseup", function(_event) {
-                    if (settings.interactive && settings.action.last ) {
+                    if (settings.action.last ) {
                         settings.angle = settings.action.angle;
+                        if (settings.interactive && !settings.action.move) { helpers.launch($this); }
                     }
                     settings.action.last = 0;
                     _event.preventDefault();
                 });
                 
                 $this.bind("mousemove touchmove", function(_event) {
-                    if (settings.interactive && settings.action.last ) {
+                    if (settings.action.last ) {
                         var e = (_event && _event.originalEvent &&
                              _event.originalEvent.touches && _event.originalEvent.touches.length)?
                              _event.originalEvent.touches[0]:_event;
 
+                        settings.action.move = true;
                         settings.action.angle = settings.angle +
                             (e.clientX - settings.action.first[0])*settings.ratio*settings.action.first[1]/430;
                         
-                        if (settings.action.angle>70) { settings.action.angle = 70; } else
-                        if (settings.action.angle<-70){ settings.action.angle =-70; }
+                        if (settings.action.angle>80) { settings.action.angle = 80; } else
+                        if (settings.action.angle<-80){ settings.action.angle =-80; }
                         
                         $("#wheel #rotate").attr("transform","rotate("+settings.action.angle+")");
                         
-                        helpers.tip($this);
+                        if (settings.tip) { helpers.tip($this); }
 
                     }
                     _event.preventDefault();
                 });
                 
                 $("#wheel",settings.svg.root()).attr("transform","translate("+settings.wheel[0]+","+settings.wheel[1]+")");
+                $("#slide",settings.svg.root()).attr("transform","translate(0,62)");
                 
                 var index = 0;
-                for (var j=0; j<(10+1); j++) {
+                for (var j=0; j<(12+1); j++) {
                     var line = [];
                     for (var i=0; i<8; i++) {
                         if (i<7 || j%2==0)
@@ -284,9 +202,109 @@
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
+        launch:function($this) {
+            var settings = helpers.settings($this);
+            
+            if (settings.action.last) { settings.angle = settings.action.angle; }
+            settings.action.last = 0;
+            
+            if (settings.timer.id) { clearTimeout(settings.timer.id); }
+            
+            if (settings.tip) { $("#tip",settings.svg.root()).hide(); }
+            settings.interactive = false;
+            settings.action.path = helpers.path($this,settings.wheel, settings.action.angle);
+            settings.current.moveto(settings.action.path, 16, function() {
+                var dd, pp=0;
+                for (var j=0; j<(12+1); j++) for (var i=0; i<8; i++) {
+                    if (!settings.data[j][i]) {
+                        var pos = helpers.ijtopos($this, i,j);
+                        var d   = (settings.current.pos[0]-pos[0])*(settings.current.pos[0]-pos[0]) +
+                                   (settings.current.pos[1]-pos[1])*(settings.current.pos[1]-pos[1]);
+                        if (pp==0 || d<dd) { dd=d; pp = [i,j]; }
+                    }
+                     else { settings.data[j][i].tmp = 0; }
+                }
+                settings.data[pp[1]][pp[0]]=settings.current;
+                var check = [[pp[0],pp[1]]];
+
+                                    var elts=[];
+                                    do {
+                                        var pos = check.shift();
+                                        var e = helpers.getbubble($this, pos );
+                                        if (e && e.tmp==0 && e.val==settings.current.val) {
+                                            elts.push([e,pos[1]]);
+                                            e.tmp = 1;
+                                            check.push([pos[0]-1, pos[1]]);
+                                            check.push([pos[0]+1, pos[1]]);
+                                            check.push([pos[0], pos[1]-1]);
+                                            check.push([pos[0]+(pos[1]%2?1:-1), pos[1]-1]);
+                                            check.push([pos[0], pos[1]+1]);
+                                            check.push([pos[0]+(pos[1]%2?1:-1), pos[1]+1]);
+                                        }
+                                    } while(check.length);
+                                    
+                                    if (elts.length>2) {
+                                            for (var j=0; j<(12+1); j++) for (var i=0; i<8; i++) {
+                                                var e = helpers.getbubble($this, [i,j] );
+                                                if (e) { e.tmp = 0; }
+                                            }
+                                            do {
+                                                var elt = elts.shift(), e = elt[0];
+                                                e.remove = true; e.tmp = 1;
+                                                // e.$svg.attr("class","bubble fx");
+                                            } while (elts.length);
+                                            check = [];
+                                            for (var i=0; i<8; i++) {
+                                                var e = helpers.getbubble($this, [i,0] );
+                                                if (e && !e.remove) { check.push([i,0]); }
+                                            }
+                                            var finish = !(check.length);
+                                            while (check.length) {
+                                                var pos = check.shift();
+                                                var e = helpers.getbubble($this, pos );
+                                                if (e && e.tmp==0) {
+                                                    e.tmp = 1;
+                                                    check.push([pos[0]-1, pos[1]]);
+                                                    check.push([pos[0]+1, pos[1]]);
+                                                    check.push([pos[0], pos[1]-1]);
+                                                    check.push([pos[0]+(pos[1]%2?1:-1), pos[1]-1]);
+                                                    check.push([pos[0], pos[1]+1]);
+                                                    check.push([pos[0]+(pos[1]%2?1:-1), pos[1]+1]);
+                                                }
+                                            };
+                                            
+                                            var highest = 12;
+                                            for (var j=0; j<(12+1); j++) for (var i=0; i<8; i++) {
+                                                var e = helpers.getbubble($this, [i,j] );
+                                                if (e && (e.tmp==0 || e.remove)) { if (highest>j) { highest = j; break; }}
+                                            }
+                                            
+                                            for (var j=0; j<(12+1); j++) for (var i=0; i<8; i++) {
+                                                var e = helpers.getbubble($this, [i,j] );
+                                                if (e && (e.tmp==0 || e.remove)) {
+                                                    settings.data[j][i] = 0;
+                                                    var path=[];
+                                                    var alea = (Math.random()-0.5)*200;
+                                                    path.push([e.pos[0],e.pos[1]]);
+                                                    path.push([e.pos[0]+alea/6,e.pos[1]-40, 14]);
+                                                    path.push([e.pos[0]+alea,e.pos[1]+480]);
+                                                    e.moveto(path,18+(j-highest), function() { this.$svg.detach(); });
+                                                }
+                                            }
+                                            
+                                            if (finish) { settings.score = 5; setTimeout(function() { helpers.end($this);}, 1000 ); }
+                                            else        { setTimeout(function() { helpers.display($this); helpers.run($this);}, 1000 ); }
+
+                                    }
+                                    else { setTimeout(function() { helpers.display($this); helpers.run($this);} , 100); }
+                                    
+                                    
+                                });
+            
+        },
         getbubble: function($this, _pos) {
             var settings = helpers.settings($this);
-            return (_pos[0]>=0 && _pos[0]<8 && _pos[1]>=0 && _pos[1]<(10+1))?settings.data[_pos[1]][_pos[0]]:0;
+            return (_pos[0]>=0 && _pos[0]<8 && _pos[1]>=0 && _pos[1]<(12+1))?settings.data[_pos[1]][_pos[0]]:0;
         },
         tip: function($this) {
             var settings = helpers.settings($this);
@@ -297,7 +315,7 @@
                     if (i) { d+=" L "; }
                     d+=settings.action.path[i][0]+","+settings.action.path[i][1];
                 }
-                        
+                
                 $("#tip path",settings.svg.root()).attr("d",d);
                 var last = settings.action.path[settings.action.path.length-1];
                 $("#tip circle",settings.svg.root()).attr("cx",last[0]).attr("cy",last[1]).attr("r",settings.bubble[0]/2);  
@@ -313,7 +331,7 @@
                 var x1 = settings.wall[0]+settings.bubble[0]/2;
                 var x2 = x1 + (8-1)*settings.bubble[0];
                 var lines = 0;
-                for (var j=9; j>=0; j--) {
+                for (var j=(12-1); j>=0; j--) {
                     for (var i=0; i<8; i++) {
                         var e=settings.data[j][i];
                         if (e) {
@@ -321,10 +339,10 @@
                             if (s && s[1]>ss[1]) { ss=s; }
                         }
                     }
-                    if (ss[1] && ss[0]>=x1 && ss[0]<=x2) { lines++; }
+                    if (ss[1]>settings.bubble[0]/2+settings.bubble[1]*settings.level && ss[0]>=x1 && ss[0]<=x2) { lines++; }
                     if (lines==2) { break; }
                 }
-                if (ss[1] && ss[0]>=x1 && ss[0]<=x2) { ret.push(ss); touch = true;}
+                if (ss[1]>settings.bubble[0]/2+settings.bubble[1]*settings.level && ss[0]>=x1 && ss[0]<=x2) { ret.push(ss); touch = true;}
                 else {
                     $("#output").html("");
                     var y = settings.wall[1]+settings.bubble[0]/2+settings.bubble[1]*settings.level-_pos[1];
@@ -357,7 +375,7 @@
                 pos     : [0,0],
                 $svg    : 0,
                 size    : settings.bubble,
-                move    : { step:[], cbk:0 },
+                move    : { cbk:0, path:[], speed:0, dist:0 },
                 tmp     : 0,
                 remove  : false
             };
@@ -366,32 +384,31 @@
                 if (_speed) {
                     var sp2 = _speed*_speed;
                     this.move.cbk   = _cbk;
-                    this.move.step  = [];
-                        
+                    this.move.speed = _speed*_speed;
+                    this.move.dist  = 0;
+                    this.move.path  = [];
+                    
                     if ($.isArray(_pos[0])) {
                         var last=[];
                         for (var i=0; i<_pos.length; i++) {
                             if (i) {
-                                var l2 = (last[0]-_pos[i][0])*(last[0]-_pos[i][0])+(last[1]-_pos[i][1])*(last[1]-_pos[i][1]);
-                                var nb = Math.ceil(l2*fps/sp2);
-                                for (var j=1; j<=nb; j++) {
-                                   this.move.step.push([last[0]*(1-j/nb)+_pos[i][0]*j/nb, last[1]*(1-j/nb)+_pos[i][1]*j/nb]);
-                                }
+                                var elt = [last[0], last[1], _pos[i][0],_pos[i][1],
+                                         (last[0]-_pos[i][0])*(last[0]-_pos[i][0])+(last[1]-_pos[i][1])*(last[1]-_pos[i][1])];
+                                if (_pos[i].length>2) { elt.push(_pos[i][2]); }
+                                this.move.path.push(elt);
                             }
                             last = _pos[i];
                         }
                     }
                     else {
-                        var l2 = (this.pos[0]-_pos[0])*(this.pos[0]-_pos[0])+(this.pos[1]-_pos[1])*(this.pos[1]-_pos[1]);
-                        var nb = Math.ceil(l2*fps/sp2);
-                        
-                        for (var j=1; j<=nb; j++) {
-                            this.move.step.push([this.pos[0]*(1-j/nb)+_pos[0]*j/nb, this.pos[1]*(1-j/nb)+_pos[1]*j/nb]);
-                        }
+                        var elt = [this.pos[0], this.pos[1], _pos[0],_pos[1],
+                                              (this.pos[0]-_pos[0])*(this.pos[0]-_pos[0])+(this.pos[1]-_pos[1])*(this.pos[1]-_pos[1]) ];
+                        if (_pos.length>2) { elt.push(_pos[2]); }          
+                        this.move.path.push ( elt );
                     }
-                   
                     
                     settings.moves.elts.push(this);
+                    this.move.time  = Date.now();
                     if (settings.moves.timerid==0) { helpers.moves($this); }
                 }
                 else {
@@ -402,7 +419,7 @@
             ret.inter = function(_from, _angle) {
                 var ret=false, alpha = -Math.tan(Math.PI*_angle/180), N = _from[0]-alpha*_from[1]-this.pos[0];
                 var A = 1+alpha*alpha, B = 2*alpha*N-2*this.pos[1], C = this.pos[1]*this.pos[1]+N*N-this.size[0]*this.size[0];
-                if (B*B-4*A*C>=0) {
+                if (B*B-4*A*C>=2000) {
                     var y = -(B-Math.sqrt(B*B-4*A*C))/(2*A);
                     var x = (y-_from[1])*alpha+_from[0];
                     ret = [x,y];
@@ -417,18 +434,25 @@
             return ret;
         },
         moves:function($this) {
-            var settings = helpers.settings($this), tmp=[];
+            var settings = helpers.settings($this), tmp=[], now = Date.now();
             settings.moves.timerid = 0;
             for (var i in settings.moves.elts) {
                 var elt = settings.moves.elts[i];
-                elt.pos = elt.move.step.shift();
+                var seg = elt.move.path[0];
+                var speed = seg.length>5?seg[5]:elt.move.speed;
+                var alpha = Math.min(1,(now-elt.move.time)*speed/seg[4]);
+                
+                elt.pos = [seg[0]*(1-alpha)+seg[2]*alpha, seg[1]*(1-alpha)+seg[3]*alpha];
                 elt.$svg.attr("transform","translate("+elt.pos[0]+","+elt.pos[1]+")");
-                if (elt.move.step.length)   { tmp.push(elt); }
-                else if (elt.move.cbk)      { elt.move.cbk.call(elt); }
+                
+                if (alpha==1) { elt.move.path.shift(); elt.move.time = now; }
+                
+                if (elt.move.path.length)   { tmp.push(elt); }
+                else if (elt.move.cbk)      { setTimeout(function() { elt.move.cbk.call(elt);} , 1); }
             }
             settings.moves.elts = tmp;
             if (settings.moves.elts.length) {
-                settings.moves.timerid = setTimeout(function() { helpers.moves($this);}, 1000/fps);
+                settings.moves.timerid = setTimeout(function() { helpers.moves($this);}, 0);
             }
         },
         ijtopos: function($this, _i, _j) {
@@ -443,7 +467,7 @@
             if ((settings.count+1)%settings.change==0)  { $("#warning",settings.svg.root()).show(); }
             else                                        { $("#warning",settings.svg.root()).hide(); }
             
-            for (var j=0; j<(10+1); j++) for (var i=0; i<8; i++) {
+            for (var j=0; j<(12+1); j++) for (var i=0; i<8; i++) {
                 var elt = settings.data[j][i];
                 if (elt) { elt.moveto(helpers.ijtopos($this,i,j)); }
             }          
@@ -451,9 +475,10 @@
         next: function($this) {
             var settings = helpers.settings($this);
  
+            
             var ishere = [];
             for (var i in colors) { ishere.push(false); }
-            for (var j=0; j<10; j++) for (var i=0; i<8; i++) {
+            for (var j=0; j<12; j++) for (var i=0; i<8; i++) {
                 var elt = settings.data[j][i];
                 if (elt) { ishere[elt.val] = true; }
             }
@@ -467,6 +492,7 @@
         run: function($this) {
             var settings = helpers.settings($this);
             
+            if (settings.tip) { helpers.tip($this); $("#tip",settings.svg.root()).show(); }
             
             
             if (settings.count && (settings.count%settings.change==0)) {
@@ -478,30 +504,50 @@
             settings.count++;
             
             var ok = true;
-            for (var j=10; j>=10-settings.level; j--) for (var i=0; i<8; i++) {
+            for (var j=12; j>=12-settings.level; j--) for (var i=0; i<8; i++) {
                 if (settings.data[j][i]) { ok =false; }
             }
             
             if (ok) {
-                settings.next.moveto([settings.wheel[0],settings.wheel[1]],200);
+                settings.next.moveto([settings.wheel[0],settings.wheel[1]],8);
                 settings.current = settings.next;
                 settings.next = 0;
-                setTimeout(function(){ helpers.next($this); settings.interactive = true; }, 500);
+                setTimeout(function(){
+                    helpers.next($this);
+                    settings.interactive = true;
+                    if (settings.time) {
+                        settings.timer.begin=Date.now();
+                        helpers.time($this);
+                    }
+                }, 500);
             }
             else { helpers.failed($this,0); }
+        },
+        time:function($this) {
+            var settings = helpers.settings($this);
+            var ratio = Math.min(1,(Date.now()-settings.timer.begin)/settings.time);
+            $("#slide",settings.svg.root()).attr("transform","translate(0,"+((1-ratio)*62)+")");
+            
+            if (ratio>=1) {
+                settings.timer.id = 0;
+                helpers.launch($this);
+            }
+            else { settings.timer.id = setTimeout(function() { helpers.time($this);}, 50); }
+            
+            
         },
         failed: function($this, count) {
             var settings = helpers.settings($this);
             for (var i=0; i<8; i++) {
-                var cell=settings.data[10-count-settings.level][i];
+                var cell=settings.data[12-count-settings.level][i];
                 if (cell) { cell.$svg.attr("class","bubble"); }
             }
-            if (count==10-settings.level)   {
+            if (count==12-settings.level)   {
                 
                 setTimeout(function(){
-                    for (var j=0; j<(10+1); j++) for (var i=0; i<8; i++) {
+                    for (var j=0; j<(12+1); j++) for (var i=0; i<8; i++) {
                         var elt = settings.data[j][i];
-                        if (elt) { elt.moveto([elt.pos[0],elt.pos[1]+480],600+j*40); }
+                        if (elt) { elt.moveto([elt.pos[0]+(Math.random()-0.5)*200,elt.pos[1]+480],16+j); }
                         
                         setTimeout(function(){ helpers.end($this)}, 2000);
                     }
@@ -524,9 +570,10 @@
                 var settings = {
                     interactive     : false,
                     ratio           : 0,
-                    action          : { first:0, last:0, angle: 0},
+                    action          : { first:0, last:0, angle: 0, move:false},
                     data            : [],
                     moves           : { elts:[], timerid:0 },
+                    timer           : { begin : 0, id: 0},
                     next            : 0,
                     score           : 0,
                     count           : 0,
