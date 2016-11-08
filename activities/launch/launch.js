@@ -56,7 +56,14 @@
         end: function($this) {
             var settings = helpers.settings($this);
             helpers.unbind($this);
+            helpers.quit($this);
             settings.context.onquit($this,{'status':'success','score':settings.score});
+        },
+        // End all timers
+        quit: function($this) {
+            var settings = helpers.settings($this);
+            if (settings.moves.timerid) { clearTimeout(settings.moves.timerid); }
+            if (settings.timer.id)      { clearTimeout(settings.timer.id);}
         },
         format: function(_text) {
             for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
@@ -419,7 +426,7 @@
             ret.inter = function(_from, _angle) {
                 var ret=false, alpha = -Math.tan(Math.PI*_angle/180), N = _from[0]-alpha*_from[1]-this.pos[0];
                 var A = 1+alpha*alpha, B = 2*alpha*N-2*this.pos[1], C = this.pos[1]*this.pos[1]+N*N-this.size[0]*this.size[0];
-                if (B*B-4*A*C>=2000) {
+                if (B*B-4*A*C>=0) {
                     var y = -(B-Math.sqrt(B*B-4*A*C))/(2*A);
                     var x = (y-_from[1])*alpha+_from[0];
                     ret = [x,y];
@@ -603,6 +610,7 @@
             },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
+                helpers.quit($this);
                 settings.context.onquit($this,{'status':'abort'});
             }
         };

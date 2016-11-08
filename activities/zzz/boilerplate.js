@@ -45,6 +45,11 @@
             helpers.unbind($this);
             settings.context.onquit($this,{'status':'success','score':settings.score});
         },
+        // End all timers
+        quit: function($this) {
+            var settings = helpers.settings($this);
+            // if (settings.timerid) { clearTimeout(settings.timerid); }
+        },
         format: function(_text) {
             for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
                 var vReg = new RegExp(regExp[i*2],"g");
@@ -140,6 +145,7 @@
             },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
+                helpers.quit($this);
                 settings.context.onquit($this,{'status':'abort'});
             }
         };
