@@ -19,9 +19,11 @@ if (strlen($_SESSION['User_Key']) && $_GET["action"]=="new") {
         $b = mysql_fetch_array($book);
         if (!$b) { $idisfine = true; }
     } while (!$idisfine);
+    
 
-    mysql_query("INSERT INTO `".$_SESSION['prefix']."book` (`Book_Name`,`User_Key`, `Book_Label`) VALUES ('".
-            $value."','".$_SESSION['User_Key']."','".$v."')");
+
+    mysql_query("INSERT INTO `".$_SESSION['prefix']."book` (`Book_Name`,`User_Key`, `Book_Label`, `Book_Description`) VALUES ('".
+            $value."','".$_SESSION['User_Key']."','".$v."','')");
 }
 else
 if (strlen($_SESSION['User_Key']) && $_GET["action"]=="upd") {

@@ -3,7 +3,7 @@ include_once "../../api/database.php";
 
 $id = "";
 if (!$error && strlen($_GET["username"])) {
-    $user = mysql_query("SELECT * FROM `".$_SESSION['prefix']."user` WHERE `User_Id` = '".$_GET["username"]."'");
+    $user = mysql_query("SELECT * FROM `".$_SESSION['prefix']."user` WHERE BINARY `User_Id` = '".$_GET["username"]."'");
     $error = 103; $textstatus="wrong login";
     $param = 0;
 
