@@ -208,7 +208,7 @@
             }
             else if (settings.ttxt) {
                 var txt = $.isArray(settings.ttxt)?settings.ttxt[settings.puzzleid]:settings.ttxt;
-                if (txt) { $this.find("#ttxt").html(txt).parent().show(); }
+                if (txt) { $this.find("#ttxt").html(helpers.format(txt)).parent().show(); }
             }
 
             // HIDE AND SHOW ELEMENT

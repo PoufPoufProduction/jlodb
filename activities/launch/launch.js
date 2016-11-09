@@ -351,7 +351,6 @@
                 }
                 if (ss[1]>settings.bubble[0]/2+settings.bubble[1]*settings.level && ss[0]>=x1 && ss[0]<=x2) { ret.push(ss); touch = true;}
                 else {
-                    $("#output").html("");
                     var y = settings.wall[1]+settings.bubble[0]/2+settings.bubble[1]*settings.level-_pos[1];
                     if (_angle>0) {
                         var angletop = Math.atan((_pos[0]-x2)/y);
