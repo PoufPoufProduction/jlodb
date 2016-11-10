@@ -57,7 +57,7 @@
         // Binding clear
         unbind: function($this) {
             $(document).unbind("keypress keydown");
-            $this.unbind("mouseup mousedown mousemove mouseout touchstart touchmove touchend touchleave");
+            $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
         end: function($this) {
@@ -274,7 +274,7 @@
                 });
 
 
-                $this.bind("touchend mouseup", function(_event) {
+                $this.bind("touchend touchleave mouseup mouseleave", function(_event) {
                     if (settings.interactive && settings.current != -1 ) {
 
                         var id = "c"+settings.current;

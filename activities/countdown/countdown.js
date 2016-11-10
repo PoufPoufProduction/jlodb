@@ -29,7 +29,7 @@
         // Binding clear
         unbind: function($this) {
             $(document).unbind("keypress keydown");
-            $this.unbind("mouseup mousedown mousemove mouseout touchstart touchmove touchend touchleave");
+            $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
         end: function($this) {
@@ -216,7 +216,7 @@
             $this.find(".t").draggable({ containment:$this, helper:"clone", appendTo:$this.find("#board"),
                             start:function() {} });
 
-            $this.bind("touchend mouseup", function(_event) {
+            $this.bind("touchend touchleave mouseup mouseleave", function(_event) {
                 if (settings.key!=-1 && settings.keypad) {
                     var vVal = settings.$keys[settings.key].text();
                     settings.keypad.html("<div"+(vVal=='-'?" class='minus'":"")+">"+vVal+"</div>");

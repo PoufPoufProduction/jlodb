@@ -47,7 +47,7 @@
         // Binding clear
         unbind: function($this) {
             $(document).unbind("keypress keydown");
-            $this.unbind("mouseup mousedown mousemove mouseout touchstart touchmove touchend touchleave");
+            $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
         end: function($this) {
@@ -257,7 +257,7 @@
                 return this.each(function() {
                     var $this = $(this);
                     helpers.unbind($this);
-                    $this.unbind("mouseup mousedown mousemove mouseout touchstart touchmove touchend touchleave");
+                    $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
                     $(document).keypress(function(_e) { helpers.key($this, String.fromCharCode(_e.which)); });
 
                     var $settings = $.extend({}, defaults, options, settings);

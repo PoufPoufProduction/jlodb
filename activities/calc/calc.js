@@ -62,7 +62,7 @@
         // Binding clear
         unbind: function($this) {
             $(document).unbind("keypress keydown");
-            $this.unbind("mouseup mousedown mousemove mouseout touchstart touchmove touchend touchleave");
+            $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
         end: function($this) {
@@ -287,7 +287,7 @@
                 // HANDLE AUTOMATIC SELECT
                 settings.spinpx = $board.children().first().next().offset().left -
                                   $board.children().first().offset().left - $board.children().first().width();
-                $this.bind("mouseup touchend", function() {
+                $this.bind("mouseup mouseleave touchend touchleave", function() {
                     var $target = $this.find("#target");
                     if ($target.hasClass("s")) {
                         $target.removeClass("s").hide();

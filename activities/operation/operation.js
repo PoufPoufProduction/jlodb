@@ -47,7 +47,7 @@
         // Binding clear
         unbind: function($this) {
             $(document).unbind("keypress keydown");
-            $this.unbind("mouseup mousedown mousemove mouseout touchstart touchmove touchend touchleave");
+            $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
         end: function($this) {
@@ -450,7 +450,7 @@
 
             $this.find(".active").bind("mousedown touchstart", function(event) { helpers.mousedown(this, event, false); });
 
-            $this.bind("mouseup touchend", function(event) {
+            $this.bind("mouseup mouseleave touchend touchleave", function(event) {
                 var settings = helpers.settings($this), $keypad = $this.find("#keypad"), vVal = "";
 
                 if (settings.key!=-1 && settings.keypad) {

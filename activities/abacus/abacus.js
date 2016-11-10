@@ -50,7 +50,7 @@
         // Binding clear
         unbind: function($this) {
             $(document).unbind("keypress keydown");
-            $this.unbind("mouseup mousedown mousemove mouseout touchstart touchmove touchend touchleave");
+            $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
         end: function($this) {
@@ -199,7 +199,7 @@
                     }
                 });
 
-                $this.find("#board").bind("mouseup touchend", function(event) {
+                $this.find("#board").bind("mouseup mouseleave touchend touchleave", function(event) {
                     if (settings.interactive && settings.mouse.move) {
                         var vMax = (settings.mouse.row>c[settings.type].b[0]?c[settings.type].u[1]:c[settings.type].u[0]);
                         if (Math.abs(settings.mouse.move)>0.8*vMax) {

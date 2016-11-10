@@ -33,7 +33,7 @@
         // Binding clear
         unbind: function($this) {
             $(document).unbind("keypress keydown");
-            $this.unbind("mouseup mousedown mousemove mouseout touchstart touchmove touchend touchleave");
+            $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
         end: function($this) {
@@ -148,7 +148,7 @@
                 $this.find("#options").css("font-size",settings.font+"em");
                 $this.find("#data").css("font-size",settings.font+"em");
 
-                $this.bind("mouseup touchend", function(_event) {
+                $this.bind("mouseup mouseleave touchend touchleave", function(_event) {
                     if (settings.elt) {
                         var t = $this.find("#popup div.s").text();
                         if (t&&t.length) { settings.elt.html(t); }

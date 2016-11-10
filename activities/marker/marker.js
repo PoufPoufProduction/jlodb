@@ -37,7 +37,7 @@
         // Binding clear
         unbind: function($this) {
             $(document).unbind("keypress keydown");
-            $this.unbind("mouseup mousedown mousemove mouseout touchstart touchmove touchend touchleave");
+            $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
         end: function($this) {
@@ -143,8 +143,7 @@
                 helpers.color($this,0);
 
                 $this.find("#data>div").css("font-size",settings.font+"em").html(content);
-                $("body").bind("mouseup", function() { helpers.mouseup($this); })
-                        .bind("touchend", function() { helpers.mouseup($this); });
+                $this.bind("mouseup mouseleave touchend touchleave", function() { helpers.mouseup($this); });
 
                 if (settings.exercice) { $this.find("#exercice>div").html(helpers.format(settings.exercice)); }
 
