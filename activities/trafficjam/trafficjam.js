@@ -10,7 +10,7 @@
         goal        : [5,2],
         cars        : [],                                       // List of cars
         objective   : 6,                                        // Objectives
-        debug       : false                                     // Debug mode
+        debug       : true                                     // Debug mode
     };
 
     // private methods
@@ -82,6 +82,54 @@
                 var vOffset = [ Math.floor((vBoardSize-(settings.size[0]+2)*vSize)/2),
                                 Math.floor((vBoardSize-(settings.size[1]+3)*vSize)/2) ];
 
+                $this.find("#board").bind("mousedown touchstart", function(event){
+                    var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
+                                  event.originalEvent.touches[0]:event;
+
+                    if (settings.interactive) {
+                        
+                        var ii = Math.floor((vEvent.clientX-$(this).offset().left-settings.nav.offset[0])/settings.nav.size-1);
+                        var jj = Math.floor((vEvent.clientY-$(this).offset().top-settings.nav.offset[1])/settings.nav.size-1.8);
+                        settings.nav.id = -1;
+                        for (var i=0; i<settings.cars.length; i++) {
+                            var c = settings.cars[i];
+                            for (var j=0; j<parseInt(c[0][1]); j++) {
+                                if ( c[1]+(c[0][0]=='h'?j:0) == ii && c[2]+(c[0][0]=='v'?j:0) == jj) { settings.nav.id = i; }
+                            }
+                        } 
+                
+                        if (settings.nav.id!=-1) {
+                            settings.nav.mouse = [ vEvent.clientX, vEvent.clientY];
+                            settings.nav.move = [0,0];
+
+                            var x,y;
+                            var vCar    = settings.cars[settings.nav.id];
+                            var vOffset = (vCar[0][0]=='h')?[parseInt(vCar[0][1]),0]:[0,parseInt(vCar[0][1])];
+
+                            if (vCar[0][0]=='h')
+                            {
+                                x = vCar[1]-1;
+                                while (x>=0 && settings.board[vCar[2]][x]==-1) { x--; }
+                                y = vCar[1]+parseInt(vCar[0][1]);
+                                while (y<settings.size[0] && settings.board[vCar[2]][y]==-1) { y++; }
+                                settings.nav.max=[x-vCar[1]+1,y-vCar[1]-parseInt(vCar[0][1])];
+                            }
+                            else
+                            {
+                                x = vCar[2]-1;
+                                while (x>=0 && settings.board[x][vCar[1]]==-1) { x--; }
+                                y = vCar[2]+parseInt(vCar[0][1]);
+                                while (y<settings.size[1] && settings.board[y][vCar[1]]==-1) { y++; }
+                                settings.nav.max=[x-vCar[2]+1,y-vCar[2]-parseInt(vCar[0][1])];
+                            }
+                        }
+
+                    }
+                    event.stopPropagation();
+                    event.preventDefault();
+                });
+                    
+                                
                 $this.find("#board").bind("mouseup touchend", function(event) {
                     var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
                                   event.originalEvent.touches[0]:event;
@@ -191,41 +239,6 @@
                 for (var i in settings.cars) {
                     settings.cars[i].$car = $("<div id='"+i+"' class='c "+settings.cars[i][0].substr(0,2)+"'>"+
                                                 "<img src='res/img/tileset/ortho/traffic/"+settings.cars[i][0]+".svg'/></div>");
-
-                    settings.cars[i].$car.bind("mousedown touchstart", function(event){
-                        var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
-                                      event.originalEvent.touches[0]:event;
-
-                        if (settings.interactive) {
-                            settings.nav.id = $(this).attr("id");
-                            settings.nav.mouse = [ vEvent.clientX, vEvent.clientY];
-                            settings.nav.move = [0,0];
-
-                            var x,y;
-                            var vCar    = settings.cars[settings.nav.id];
-                            var vOffset = (vCar[0][0]=='h')?[parseInt(vCar[0][1]),0]:[0,parseInt(vCar[0][1])];
-
-                            if (vCar[0][0]=='h')
-                            {
-                                x = vCar[1]-1;
-                                while (x>=0 && settings.board[vCar[2]][x]==-1) { x--; }
-                                y = vCar[1]+parseInt(vCar[0][1]);
-                                while (y<settings.size[0] && settings.board[vCar[2]][y]==-1) { y++; }
-                                settings.nav.max=[x-vCar[1]+1,y-vCar[1]-parseInt(vCar[0][1])];
-                            }
-                            else
-                            {
-                                x = vCar[2]-1;
-                                while (x>=0 && settings.board[x][vCar[1]]==-1) { x--; }
-                                y = vCar[2]+parseInt(vCar[0][1]);
-                                while (y<settings.size[1] && settings.board[y][vCar[1]]==-1) { y++; }
-                                settings.nav.max=[x-vCar[2]+1,y-vCar[2]-parseInt(vCar[0][1])];
-                            }
-
-                        }
-                        event.stopPropagation();
-                        event.preventDefault();
-                    });
                     $this.find("#board>div").append(settings.cars[i].$car);
                 }
                 helpers.update($this);  

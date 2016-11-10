@@ -203,44 +203,40 @@
                                  _event.originalEvent.touches && _event.originalEvent.touches.length)?
                                  _event.originalEvent.touches[0]:_event;
                         var id = "c"+settings.current;
-                        var x = settings.cursor.init[2] + (e.clientX - settings.cursor.init[0])/settings.ratio;
-                        var y = settings.cursor.init[3] + (e.clientY - settings.cursor.init[1])/settings.ratio;
-
-                        var dist = -1;
-                        var current = -1;
-                        for (var i=0; i<settings.nodes.length; i++) {
-                            if (i!= settings.begin[id]) {
-                                var d = (x-settings.nodes[i][0])*(x-settings.nodes[i][0]) +
-                                        (y-settings.nodes[i][1])*(y-settings.nodes[i][1]);
-
-                                if ((dist==-1||d<dist) && d<settings.radius*settings.radius) {
-                                    current = i; dist = d;
-                                }
+                        var x  = settings.cursor.init[2] + (e.clientX - settings.cursor.init[0])/settings.ratio;
+                        var y  = settings.cursor.init[3] + (e.clientY - settings.cursor.init[1])/settings.ratio;
+                        
+                        var ok = true, limit = 0;
+                        if (settings.limit) { limit = $.isArray(settings.limit)?settings.limit[settings.current%settings.limit.length]:settings.limit; }
+                        if (limit) { 
+                            if (typeof(limit)=="object") {
+                                ok = ( Math.abs(x-settings.nodes[settings.begin[id]][0]) < limit.x) &&
+                                     ( Math.abs(y-settings.nodes[settings.begin[id]][1]) < limit.y);
+                            }
+                            else {
+                                var d = (x-settings.nodes[settings.begin[id]][0])*(x-settings.nodes[settings.begin[id]][0]) +
+                                        (y-settings.nodes[settings.begin[id]][1])*(y-settings.nodes[settings.begin[id]][1]);
+                                ok = (d<=limit*limit);
                             }
                         }
-
-                        
-                        if (current!=-1) {
-
                             
 
-                            var limit = 0, ok = true;
-                            var vx = settings.nodes[current][0], vy = settings.nodes[current][1];
-                            if (settings.limit) { limit = $.isArray(settings.limit)?
-                                                    settings.limit[settings.current%settings.limit.length]:settings.limit; }
-                            if (limit) { 
-                                if (typeof(limit)=="object") {
-                                    ok = ( Math.abs(vx-settings.nodes[settings.begin[id]][0]) < limit.x) &&
-                                         ( Math.abs(vy-settings.nodes[settings.begin[id]][1]) < limit.y);
-                                }
-                                else {
-                                    var d = (vx-settings.nodes[settings.begin[id]][0])*(vx-settings.nodes[settings.begin[id]][0]) +
-                                            (vy-settings.nodes[settings.begin[id]][1])*(vy-settings.nodes[settings.begin[id]][1]);
-                                    ok = (d<=limit*limit);
+                        if (ok) {
+                            var dist    = -1;
+                            var current = -1;
+                            
+                            for (var i=0; i<settings.nodes.length; i++) {
+                                if (i!= settings.begin[id]) {
+                                    var d = (x-settings.nodes[i][0])*(x-settings.nodes[i][0]) +
+                                            (y-settings.nodes[i][1])*(y-settings.nodes[i][1]);
+
+                                    if ((dist==-1||d<dist) && d<settings.radius*settings.radius) {
+                                        current = i; dist = d;
+                                    }
                                 }
                             }
-
-                            if (ok)  {
+                            
+                            if (current!=-1) {
                                 x = settings.nodes[current][0]; y = settings.nodes[current][1];
 
                                 if (settings.paths[id] && settings.paths[id].nodes && settings.paths[id].nodes.length &&
@@ -268,12 +264,11 @@
                                 $(settings.path).attr("x1",x).attr("y1",y);
                                 settings.begin[id] = current;
                             }
+                            
+                            $("#c"+settings.current, settings.svg.root()).attr("transform","translate("+x+","+y+")");
+                            $(settings.path).attr("x2",x).attr("y2",y);
 
                         }
-
-                        $("#c"+settings.current, settings.svg.root()).attr("transform","translate("+x+","+y+")");
-                        $(settings.path).attr("x2",x).attr("y2",y);
-                        
                     }
                         _event.preventDefault();
                 });

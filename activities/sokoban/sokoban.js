@@ -10,7 +10,7 @@
         padding     : 3,                                        // Padding top
         margin      : 0.5,                                      // Margin
         delay       : 150,                                      // Time between two cases
-        debug       : true                                     // Debug mode
+        debug       : true                                      // Debug mode
     };
 
     // private methods
@@ -179,44 +179,48 @@
             var settings = helpers.settings($this);
             // get size;
             var max = 0;
-            for (var i in settings.xsb) { if (settings.xsb[i].length>max) { max = settings.xsb[i].length; } }
+            for (var i=1; i<settings.xsb.length-1; i++) { if (settings.xsb[i].length>max) { max = settings.xsb[i].length; } }
 
             // Build board
             settings.board=[];
             settings.boxes=[];
             var r = [];
             var inside = [];
-            for (var i in settings.xsb) {
+            for (var i=1; i<settings.xsb.length-1; i++) {
                 var row = [];
-                for (var j in settings.xsb[i]) {
+                for (var j=1; j<settings.xsb[i].length-1; j++) {
                     var tile = 0;
                     switch (settings.xsb[i][j]) {
-                        case '#': tile = 477; break;
-                        case '$': tile = 1; settings.boxes.push({value:0,origin:[parseInt(j),parseInt(i)]}); break;
-                        case '@': tile = 1; r=[parseInt(i), parseInt(j)]; break;
+                        case '#': tile = 101; break;
+                        case '$': case 'o': tile = 1; settings.boxes.push({value:0,origin:[j-1,i-1]}); break;
+                        case '@': tile = 1; r=[i-1,j-1]; break;
                         case '.': tile = 2; break;
-                        case '*': tile = 2; settings.boxes.push({value:0,origin:[parseInt(j),parseInt(i)]}); break;
-                        case '+': tile = 2; r=[parseInt(i), parseInt(j)]; break;
+                        case '*': tile = 2; settings.boxes.push({value:0,origin:[j-1,i-1]}); break;
+                        case '+': tile = 2; r=[i-1,j-1]; break;
                         default: break;
                     }
-                    if ((tile==1)||(tile==2)) { inside.push([parseInt(i),parseInt(j)]); }
+                    if ((tile==1)||(tile==2)) { inside.push([i-1,j-1]); }
                     row.push(tile);
                 }
                 for (var j=settings.xsb[i].length; j<max; j++) { row.push(0); }
                 settings.board.push(row);
             }
-
+            
             // Fill the inside
             while (inside.length) {
                 var elt = inside.pop();
-                var pos = [ elt[0]-1, elt[1], elt[0]+1, elt[1], elt[0], elt[1]-1, elt[0], elt[1]+1 ];
+                var pos = [ [elt[0]-1, elt[1]], [elt[0]+1, elt[1]], [elt[0], elt[1]-1], [elt[0], elt[1]+1] ] ;
                 for (var i=0; i<4; i++) {
-                    if (pos[i*2]>=0 && pos[i*2]<=settings.board.length && pos[i*2+1]>=0 && pos[i*2+1]<=max &&
-                        settings.board[pos[i*2]][pos[i*2+1]] == 0) {
-                        settings.board[pos[i*2]][pos[i*2+1]] = 1;
-                        inside.push([pos[i*2], pos[i*2+1]]);
+                    if (pos[i][0]>=0 && pos[i][0]<settings.board.length && pos[i][1]>=0 && pos[i][1]<max-2 &&
+                        settings.board[pos[i][0]][pos[i][1]] == 0) {
+
+                        settings.board[pos[i][0]][pos[i][1]] = 1;
+                        inside.push([pos[i][0], pos[i][1]]);
                     }
                 }
+            }
+            for (var i in settings.board) for (var j in settings.board[i]) {
+                if (settings.board[i][j]==101) { settings.board[i][j]=0; }
             }
 
             // Add the robots
@@ -460,6 +464,7 @@
                     else            { settings.interactive = true; }
                 }
             }
+            return nbmove;
         },
         // END OF TURN
         endturn: function($this) {
@@ -478,7 +483,8 @@
             switch(_elt.speed) { case 0:pos[0]++;break; case 1:pos[1]++;break; case 2:pos[0]--;break; case 3:pos[1]--;break; }
 
             // CHECK THE WALL
-            if (helpers.tiles.get($this, pos)%100>50) {
+            var tile = helpers.tiles.get($this, pos);
+            if (tile%100>50 || tile==0 || (tile%100==9 && !settings.tiles.tile9[Math.floor(tile/100)])) {
                 nbmove = 0;
                 if ((!_elt.isrobot) && (_elt.value==12) && _level==0 && helpers.tiles.get($this, pos)!=482) {
                     _elt.isopened = true;
@@ -567,9 +573,9 @@
                 else if ((_value==38 || _value=="up") && settings.robots[settings.robotid].active) {
                     var v = settings.robots[settings.robotid].isinverted?2:0;
                     settings.robots[settings.robotid].speed = (settings.robots[settings.robotid].pos[2]+v)%4;
-                    $this.find("#nbmoves .value").html(++settings.nbmoves);
                     settings.countpush = false;
-                    helpers.prepare($this);
+                    settings.nbmoves+=helpers.prepare($this);
+                    $this.find("#nbmoves .value").html(settings.nbmoves);
                 }
                 else if (_value==40 || _value=="down") { helpers.togglerobot($this, settings.robotid+1); }
 
@@ -606,7 +612,7 @@
                 return this.each(function() {
                     var $this = $(this);
                     helpers.unbind($this);
-                    $(document).keydown(function(_e) { helpers.key($this, _e.which); });
+                    $(document).keydown(function(_e) { helpers.key($this, _e.which);  if (_e.which!=116) { _e.preventDefault(); } });
 
                     var $settings = $.extend({}, defaults, options, settings);
                     var checkContext = helpers.checkContext($settings);

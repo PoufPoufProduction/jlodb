@@ -3,7 +3,7 @@
 .trafficjam div#splashex h1         { position:absolute; top:51%; left:10%; font-size:1.5em; }
 .trafficjam div#splashex #guide     { position:absolute; top:62%; left:10%; font-size:.7em; width:25%; font-style:italic; text-align:justify; }
 
-.trafficjam div#board               { width:12em; height:12em; float:left; }
+.trafficjam div#board               { width:12em; height:12em; float:left; cursor:move; }
 .trafficjam div#board .r            { position:absolute; background-image:url("../../res/img/tileset/ortho/traffic/road01.svg");
                                       width:1em; height:1em; }
 .trafficjam div#board .b            { position:absolute; width:1em; height:1.67em; }
@@ -21,7 +21,7 @@
 .trafficjam div#board .n            { position:absolute; width:2em; height:2em;}
 .trafficjam div#board .n1          { background-image:url("../../res/img/tileset/ortho/traffic/n01.svg"); }
 
-.trafficjam div#board .c            { position:absolute; cursor:move; }
+.trafficjam div#board .c            { position:absolute; }
 .trafficjam div#board .c.h2         { width:2em; height:1.67em; }
 .trafficjam div#board .c.h3         { width:3em; height:1.67em; }
 .trafficjam div#board .c.v2         { width:1em; height:2.67em; }

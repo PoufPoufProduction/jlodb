@@ -83,18 +83,20 @@ var t003 = {
         var img="";
         var txt = $("#t003").val().split(",");
         for (var i in txt) {
+            var alpha = false;
             t = txt[i];
             if (svgClass.length) { svgClass+=','; img+=','; values+=','; }
             svgClass+='"l'+t.length+'"';
             img+='"clipart/animal/pear01.svg"';
             values+="{";
             for (var j=0; j<t.length; j++) {
+                if (t[j]>='a' && t[j]<='z') { alpha = true; }
                 if (j!=0) { values+=","; }
                 values+='"p'+(j<9?"0":"")+(j+1)+'":"'+t[j]+'"';
             }
             for (var j=0; j<12-t.length; j++) {
                 var c;
-                do { c = String.fromCharCode(65 + Math.floor(Math.random()*26)); } while (t.indexOf(c)!=-1);
+                do { c = String.fromCharCode((alpha?97:65) + Math.floor(Math.random()*26)); } while (t.indexOf(c)!=-1);
                 values+=',"dd0'+(j+1)+'":"'+c+'"';
             }
             values+="}";
@@ -113,7 +115,7 @@ var t003 = {
         }
 
     alert('<![CDATA["decoys":["dd01","dd02","dd03","dd04","dd05","dd06","dd07","dd08","dd09"],"init":{"pos":[[425,60],[495,60],[565,60],[425,130],[495,130],[565,130],[425,200],[495,200],[565,200],[425,270],[495,270],[565,270]]},"url":"puzzle/word.svg",'+
-    '"svgclass":['+svgClass+'],"timg":['+img+'],"values":['+values+']'+
+    '"timg":['+img+'],"svgclass":['+svgClass+'],"values":['+values+']'+
     ((issame)?',"same":'+JSON.stringify(same):'')+
     ']]>');
 

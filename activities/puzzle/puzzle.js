@@ -202,11 +202,13 @@
             }
 
             // HANDLE THE TEMPLATE IMAGE AND TEXTS
+            $this.find("#ttext").removeClass("legend");
             if (settings.timg) {
                 var img = $.isArray(settings.timg)?settings.timg[settings.puzzleid]:settings.timg;
-                if (img) { $this.find("#timg").html("<img src='res/img/"+img+"'/>").show(); }
+                if (img) { $this.find("#timg").html("<img src='res/img/"+img+"'/>").show();
+                           $this.find("#ttext").addClass("legend"); }
             }
-            else if (settings.ttxt) {
+            if (settings.ttxt) {
                 var txt = $.isArray(settings.ttxt)?settings.ttxt[settings.puzzleid]:settings.ttxt;
                 if (txt) { $this.find("#ttxt").html(helpers.format(txt)).parent().show(); }
             }

@@ -19,8 +19,8 @@
             var settings = helpers.settings($this);
             var y= ($this.find(".cursor").offset().top-$this.find(".slider").offset().top)/
                    ($this.find(".slider").height()-$this.find(".cursor").height());
-            $this.find(".header").toggle((y!=0));
-            $this.find(".footer").toggle((y!=1));
+            $this.find(".header").toggle((y>0));
+            $this.find(".footer").toggle((y<0.999));
             var val = -Math.floor(y*(20+$this.find(".menu").height()-$this.find(".jmenu").height()));
             $this.find(".menu").css("top",val+"px");
         },
