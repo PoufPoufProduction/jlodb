@@ -50,7 +50,7 @@
         // Binding clear
         unbind: function($this) {
             $(document).unbind("keypress keydown");
-            $this.unbind("mouseup mousedown mousemove mouseout touchstart touchmove touchend touchleave");
+            $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
         end: function($this) {
@@ -147,7 +147,7 @@
                     _event.preventDefault();
                 });
                 
-                $this.bind("touchend mouseup", function(_event) {
+                $this.bind("touchend touchleave mouseup mouseleave", function(_event) {
                     if (settings.action.last ) {
                         settings.angle = settings.action.angle;
                         if (settings.interactive && !settings.action.move) { helpers.launch($this); }

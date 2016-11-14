@@ -38,7 +38,7 @@
         // Binding clear
         unbind: function($this) {
             $(document).unbind("keypress keydown");
-            $this.unbind("mouseup mousedown mousemove mouseout touchstart touchmove touchend touchleave");
+            $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
         end: function($this) {
@@ -222,7 +222,7 @@
                 }
             });
 
-            $board.bind("mouseup touchend", function(event) {
+            $board.bind("mouseup mouseleave touchend touchleave", function(event) {
                 if (settings.data.pos && settings.data.line) {
                     var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
                                 event.originalEvent.touches[0]:event;

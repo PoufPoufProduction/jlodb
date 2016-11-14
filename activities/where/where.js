@@ -42,7 +42,7 @@
         // Binding clear
         unbind: function($this) {
             $(document).unbind("keypress keydown");
-            $this.unbind("mouseup mousedown mousemove mouseout touchstart touchmove touchend touchleave");
+            $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
         end: function($this) {
@@ -186,9 +186,9 @@
                     if (vCursor.onmove) { eval('('+vCursor.onmove+')')($this, settings.svg.root(), vCursor.translate); }
                 }
 
-                $this.bind('touchend mouseup', function() { //mouseleave touchleave
-                    $(settings.elt).attr("class","");
+                $this.bind('touchend touchleave mouseup mouseleave', function() {
                     if (settings.elt) {
+                        $(settings.elt).attr("class","");
                         var vCursor = settings.cursors[settings.elt.id];
                         $this.removeClass("active");
 

@@ -351,10 +351,11 @@
             if (settings.magnetic) { for (var i in settings.magnetic) { settings.magzone.push(settings.magnetic[i]); } }
 
             // MOVE PIECES
-            $(settings.svg.root()).bind('touchmove mousemove', function(event) {
-                var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
-                              event.originalEvent.touches[0]:event;
+            $this.bind('touchmove mousemove', function(event) {
                 if (settings.interactive && settings.elt.id) {
+                    var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
+                                  event.originalEvent.touches[0]:event;
+                              
                     // COMPUTE TRANSLATION_X
                     var vX = settings.elt.translate.origin[0];
                     if (settings.constraint[0]==0) {
@@ -391,10 +392,10 @@
             });
 
             // RELEASE PIECES
-            $(settings.svg.root()).bind('touchend mouseup', function() {
-                $this.removeClass("active");
+            $this.bind('touchend touchleave mouseup mouseleave', function() {
                 if (settings.interactive && settings.elt.id) {
-
+                    
+                    $this.removeClass("active");
                     $(settings.elt.id).attr("class","");
 
                     // ROTATION ?

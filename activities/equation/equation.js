@@ -323,7 +323,7 @@
                         }
                     });
 
-                    $this.bind("mouseup touchend", function(e) {
+                    $this.bind("mouseup mouseleave touchend touchleave", function(e) {
                         var $this = $(this), settings = helpers.settings($this);
                         if (settings.interactive) {
                             var ve = (e && e.originalEvent && e.originalEvent.touches && e.originalEvent.touches.length)?
