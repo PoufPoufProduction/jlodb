@@ -819,8 +819,8 @@ $(window).ready(function() {
     });
 
     // HANDLE ICON
-    $("#eimg .icon img").bind("mousedown touchstart", function(event) {
-        $("#nodeimg .icon img").attr("src", $(this).attr("src"));
+    $("#eimg .icon").bind("mousedown touchstart", function(event) {
+        $("#nodeimg .icon img").attr("src", $(this).children().first().attr("src"));
         event.preventDefault();
     });
 

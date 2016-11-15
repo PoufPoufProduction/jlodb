@@ -71,7 +71,7 @@ if (!$error) {
     // THE TAGS
     if (array_key_exists("tag",$_GET)) {
         if (strlen($where)) { $where.=" AND"; }
-        $where.= " `Exercice_Tags` = '".$_GET["tag"]."'";
+        $where.= " `Exercice_Tags` LIKE '%{$_GET["tag"]}%'";
     }
 
     // THE REFERENCE

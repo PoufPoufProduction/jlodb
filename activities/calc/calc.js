@@ -17,6 +17,7 @@
         img         : [],                               // img filename
 		txtsize		: 1,								// text tab font-size em
 		txt			: [],								// text values
+        txtstyle    : "default",                        // default or inline
         errratio    : 1,                                // ratio error
         noneg       : false,                            // no negative number
         nodec       : false,                            // no decimal number
@@ -131,7 +132,8 @@
                             ret = { type:"value", id:_val.id, subtype:"ref",
                                     abstract:helpers.ref.format(settings.reference,_val.id[3]), value:settings.reference,
                                 process:function() {
-                                    return helpers.content($this,this.value.charCodeAt(0)-65,parseInt(this.value.substr(1))-1);
+                                    var i = this.value.charCodeAt(0)-65, j = parseInt(this.value.substr(1))-1;
+                                    return helpers.content($this,i,j);
                                 },
                                 p:function() {
                                     var cell = settings.sheet[parseInt(this.value.substr(1))-1][this.value.charCodeAt(0)-65];
@@ -164,11 +166,11 @@
                     html+="><img src='"+settings.imgprefix+settings.img[i]+".svg'/></div>";
                     $this.find("#pimg").append(html);
                 }
-                $this.find("#panel").draggable({handle:"#escreen"}).css("position","absolute");
+                $this.find("#panel").draggable({handle:"#escreen",containment:$this}).css("position","absolute");
                 
                 $this.find("#ptxt").css("font-size",settings.txtsize+"em");
                 for (var i in settings.txt) {
-                    var html="<div id='txt"+i+"' ";
+                    var html="<div id='txt"+i+"' class='"+settings.txtstyle+"'";
                     html+='onmousedown=\'$(this).closest(".calc").calc("txt",this);\' ';
                     html+='ontouchstart=\'$(this).closest(".calc").calc("txt",this);event.preventDefault();\' ';
                     html+=">"+settings.txt[i]+"</div>";
@@ -250,20 +252,25 @@
                     }
                 }
 
+                 for (var j=0; j<settings.size[1]; j++) {
+                    for (var i=0; i<settings.size[0]; i++) {
+                        
+                        var type = helpers.value($this,(i+1),(j+1),"type","");
+                        if (type.length) { settings.sheet[j][i].type = type; }
+
+                        settings.sheet[j][i].fixed  = helpers.value($this,(i+1),(j+1),"fixed",(type=="fixed"));
+                        settings.sheet[j][i].value  = helpers.value($this,(i+1),(j+1),"value","");
+                        settings.sheet[j][i].result = helpers.value($this,(i+1),(j+1),"result","");
+                        settings.sheet[j][i].opt    = helpers.value($this,(i+1),(j+1),"opt","");
+                    }
+                }
+                
                 var height= helpers.value($this,0,0,"height",1.2);
                 for (var j=0; j<settings.size[1]; j++) {
                     var width = helpers.value($this,0,0,"width",1.2);
                     for (var i=0; i<settings.size[0]; i++) {
                         w = helpers.value($this,(i+1),(j+1),"width",2);
                         h = helpers.value($this,(i+1),(j+1),"height",1.2);
-
-                        var type = helpers.value($this,(i+1),(j+1),"type","");
-                        if (type.length) { settings.sheet[j][i].type = type; }
-
-                        settings.sheet[j][i].fixed = helpers.value($this,(i+1),(j+1),"fixed",(type=="fixed"));
-                        settings.sheet[j][i].value = helpers.value($this,(i+1),(j+1),"value","");
-                        settings.sheet[j][i].result = helpers.value($this,(i+1),(j+1),"result","");
-                        settings.sheet[j][i].opt = helpers.value($this,(i+1),(j+1),"opt","");
 
                         if (settings.sheet[j][i].type!="hide") {
                             var vClass="cell "+settings.sheet[j][i].type;
@@ -276,7 +283,7 @@
                                 html+='onmousedown=\'$(this).closest(".calc").calc("cell",this);\' ';
                                 html+='ontouchstart=\'$(this).closest(".calc").calc("cell",this);event.preventDefault();\' ';
                             }
-                            html+='>'+helpers.content($this,i,j)+'</div>';
+                            html+='><div>'+helpers.content($this,i,j)+'</div></div>';
                             $board.append(html);
                         }
                         width+=helpers.value($this,(i+1),0,"width",2);
@@ -444,7 +451,7 @@
         },
         graph: function($this, _val) {
             var ret = "<svg xmlns:svg='http://www.w3.org/2000/svg' xmlns='http://www.w3.org/2000/svg' version='1.0' "+
-                    "width='100%' height='100%' viewBox='0 0 48 48' class='graph "+_val.type+"'>"+
+                    "width='100%' height='100%' viewBox='0 0 48 48' preserveAspectRatio='none' class='graph "+_val.type+"'>"+
                     "<def><style>.graph .up {fill:green} .graph .down {fill:red;} "+
                     ".graph path.l {fill:none;stroke:black;stroke-width:0.5px;} .graph path.b {fill:#AEF;} "+
                     ".graph path.d {fill:none;stroke:black;stroke-width:0.2px;} "+
@@ -459,8 +466,9 @@
 
                 var v = { min:0, max:0, sum:0, val:[]}, first = true;
                 for (var jj=minj; jj<=maxj; jj++) for (var ii=mini; ii<=maxi; ii++) {
-                    $this.find("#c"+ii+"x"+jj).html(helpers.content($this,ii-1,jj-1));
-                    vv = parseFloat(helpers.content($this, ii-1, jj-1));
+                    var content = helpers.content($this,ii-1,jj-1);
+                    $this.find("#c"+ii+"x"+jj+">div").html(content);
+                    vv = parseFloat(content);
                     vv = isNaN(vv)?0:vv;
                     if (first || vv<v.min) { v.min = vv; }
                     if (first || vv>v.max) { v.max = vv; }
@@ -478,8 +486,8 @@
                                  { h = v.max-v.min; a = h?Math.abs(v.min)/h:0; }
                     for (var i=0; i<nb; i++) {
                         var hh = h?Math.abs(v.val[i])/h:0;
-                        ret+="<rect class='"+(v.val[i]>0?"up":"down")+"' x='"+(47*i/nb+0.5)+"' width='"+(47/nb)*0.9+"' ";
-                        ret+="y='"+(0.5+(v.val[i]>0?(1-a-hh):(1-a))*47)+"' height='"+hh*47+"'/>";
+                        ret+="<rect class='"+(v.val[i]>0?"up":"down")+"' x='"+(48*i/nb)+"' width='"+(48/nb)+"' ";
+                        ret+="y='"+((v.val[i]>0?(1-a-hh):(1-a))*48)+"' height='"+hh*48+"'/>";
                     }
                     break;
                 case "fct":
@@ -489,16 +497,16 @@
                                  { h = v.max-v.min; a = h?Math.abs(v.min)/h:0; }
                     var path = [];
                     for (var i=0; i<nb; i++) {
-                        path.push([47*i/(nb-1)+0.5, 47*(1-a-(h?v.val[i]/h:0))+0.5]);
+                        path.push([48*i/(nb-1), 48*(1-a-(h?v.val[i]/h:0))]);
                     }
                     ret+="<path class='b' d='M ";
                     for (var i in path) { ret+=path[i][0]+","+path[i][1]+" "; }
-                    ret+=" 47.5,"+((1-a)*47)+" 0.5,"+((1-a)*47)+"'/>";
+                    ret+=" 48,"+((1-a)*48)+" 0,"+((1-a)*48)+"'/>";
                     ret+="<path class='l' d='M ";
                     for (var i in path) { ret+=path[i][0]+","+path[i][1]+" "; }
                     ret+="'/>";
-                    ret+="<path class='d' d='M 0.5,"+((1-a)*47)+" 47.5,"+((1-a)*47)+"'/>";
-                    ret+="<path class='d' d='M 0.5,0.5 0.5,47.5'/>";
+                    ret+="<path class='d' d='M 0,"+((1-a)*48)+" 48,"+((1-a)*48)+"'/>";
+                    ret+="<path class='d' d='M 0,0 0,48'/>";
                     break;
             }
             ret+="</svg>";
@@ -529,7 +537,7 @@
                         break;
                     case "fixed" :
                         if (settings.po && settings.po[cell.tmp]) { cell.tmp = settings.po[cell.tmp]; }
-                        cell.tmp ="<div>"+helpers.format(cell.tmp.toString())+"</div>";
+                        cell.tmp =helpers.format(cell.tmp.toString());
                         break;
                     case "graph" :
                         cell.tmp = helpers.graph($this,cell.tmp);
@@ -585,7 +593,7 @@
                 if (auto && settings.auto.sheet[j][i]) { settings.auto.sheet[j][i].update = false; }
             }
             for (var j=0; j<settings.size[1]; j++) for (var i=0; i<settings.size[0]; i++) {
-                $this.find('#c'+(i+1)+'x'+(j+1)).html(helpers.content($this,i,j));
+                $this.find('#c'+(i+1)+'x'+(j+1)+'>div').html(helpers.content($this,i,j));
             }
         },
         // Handle the key input
@@ -927,6 +935,7 @@
 
                         settings.score = 5 - error*settings.errratio;
                         if (settings.score<0) { settings.score = 0; }
+                        $this.find(settings.score==5?"#good":"#wrong").show();
                         setTimeout(function() { helpers.end($this); } , 2000);
                     }
                 }

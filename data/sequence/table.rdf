@@ -5,49 +5,53 @@
     <rdf:Description>
         <dct:identifier>22</dct:identifier>
         <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une valeur comprise entre 0 et 9 dans un table 2x2.</dct:title>
-        <dct:description><![CDATA["number":15,"time":0,"input":{"digit":1,"speed":5000},"gen":"function() { var w=2,h=2,a=Math.floor(Math.random()*w),b=Math.floor(Math.random()*h),ret,table=\\\"<tr><td><div class='icon bg'></div></td>\\\"; for (var i=0;i<w;i++) { table+=\\\"<td><div class='bg icon'>\\\"+String.fromCharCode(65 + i)+\\\"</div></td>\\\"; } for (var j=0; j<h;j++){table+=\\\"<tr><td><div class='bg icon'>\\\"+j+\\\"</div></td>\\\"; for (var i=0;i<w;i++) { var c = Math.floor(Math.random()*9)+1; table+=\\\"<td><div class='icon'>\\\"+c+\\\"</div></td>\\\"; if (i==a && j==b) { ret = c; }} table+='</tr>'; } return [\\\"<table cellspacing='0' style='border:1px solid black;float:left;margin-left:.5em;margin-top:.2em;font-size:\\\"+(1/(h+1))+\\\"em;'>\\\"+table+\\\"</table><div style='font-size:.5em;'>\\\"+String.fromCharCode(65 + a)+b+\\\"</div>\\\", ret] }","font":3,"class":"h12 neg alpha"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Donnez la valeur du tableau correspondant à la référence."]]></dct:description>
+        <dct:description><![CDATA["number":15,"time":0,"input":{"digit":1,"speed":5000},"gen":"function() { var w=2,h=2,a=Math.floor(Math.random()*w),b=Math.floor(Math.random()*h),ret,table=\\\"<tr><td><div class='icon bg'></div></td>\\\"; for (var i=0;i<w;i++) { table+=\\\"<td><div class='bg icon'>\\\"+String.fromCharCode(65 + i)+\\\"</div></td>\\\"; } for (var j=0; j<h;j++){table+=\\\"<tr><td><div class='bg icon'>\\\"+(j+1)+\\\"</div></td>\\\"; for (var i=0;i<w;i++) { var c = Math.floor(Math.random()*9)+1; table+=\\\"<td><div class='icon'>\\\"+c+\\\"</div></td>\\\"; if (i==a && j==b) { ret = c; }} table+='</tr>'; } return [\\\"<table cellspacing='0' style='border:1px solid black;float:left;margin-left:.5em;margin-top:.2em;font-size:\\\"+(1/(h+1))+\\\"em;'>\\\"+table+\\\"</table><div style='font-size:.5em;'>\\\"+String.fromCharCode(65 + a)+(b+1)+\\\"</div>\\\", ret] }","font":3,"class":"h12 neg alpha"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Donnez la [b]valeur[/b] du tableau [red]correspondant à la référence[/red]."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>mathematics</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>44</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>33</dct:identifier>
         <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une valeur comprise entre 0 et 9 dans un table 3x3.</dct:title>
-        <dct:description><![CDATA["number":15,"time":0,"input":{"digit":1,"speed":5000},"gen":"function() { var w=3,h=3,a=Math.floor(Math.random()*w),b=Math.floor(Math.random()*h),ret,table=\\\"<tr><td><div class='icon bg'></div></td>\\\"; for (var i=0;i<w;i++) { table+=\\\"<td><div class='bg icon'>\\\"+String.fromCharCode(65 + i)+\\\"</div></td>\\\"; } for (var j=0; j<h;j++){table+=\\\"<tr><td><div class='bg icon'>\\\"+j+\\\"</div></td>\\\"; for (var i=0;i<w;i++) { var c = Math.floor(Math.random()*9)+1; table+=\\\"<td><div class='icon'>\\\"+c+\\\"</div></td>\\\"; if (i==a && j==b) { ret = c; }} table+='</tr>'; } return [\\\"<table cellspacing='0' style='border:1px solid black;float:left;margin-left:.5em;margin-top:.2em;font-size:\\\"+(1/(h+1))+\\\"em;'>\\\"+table+\\\"</table><div style='font-size:.5em;'>\\\"+String.fromCharCode(65 + a)+b+\\\"</div>\\\", ret] }","font":3,"class":"h12 neg alpha"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Donnez la valeur du tableau correspondant à la référence."]]></dct:description>
+        <dct:description><![CDATA["number":15,"time":0,"input":{"digit":1,"speed":5000},"gen":"function() { var w=3,h=3,a=Math.floor(Math.random()*w),b=Math.floor(Math.random()*h),ret,table=\\\"<tr><td><div class='icon bg'></div></td>\\\"; for (var i=0;i<w;i++) { table+=\\\"<td><div class='bg icon'>\\\"+String.fromCharCode(65 + i)+\\\"</div></td>\\\"; } for (var j=0; j<h;j++){table+=\\\"<tr><td><div class='bg icon'>\\\"+(j+1)+\\\"</div></td>\\\"; for (var i=0;i<w;i++) { var c = Math.floor(Math.random()*9)+1; table+=\\\"<td><div class='icon'>\\\"+c+\\\"</div></td>\\\"; if (i==a && j==b) { ret = c; }} table+='</tr>'; } return [\\\"<table cellspacing='0' style='border:1px solid black;float:left;margin-left:.5em;margin-top:.2em;font-size:\\\"+(1/(h+1))+\\\"em;'>\\\"+table+\\\"</table><div style='font-size:.5em;'>\\\"+String.fromCharCode(65 + a)+(b+1)+\\\"</div>\\\", ret] }","font":3,"class":"h12 neg alpha"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Donnez la [b]valeur[/b] du tableau [red]correspondant à la référence[/red]."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>mathematics</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>44</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>44</dct:identifier>
         <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une valeur comprise entre 0 et 9 dans un table 4x4.</dct:title>
-        <dct:description><![CDATA["number":15,"time":0,"input":{"digit":1,"speed":5000},"gen":"function() { var w=4,h=4,a=Math.floor(Math.random()*w),b=Math.floor(Math.random()*h),ret,table=\\\"<tr><td><div class='icon bg'></div></td>\\\"; for (var i=0;i<w;i++) { table+=\\\"<td><div class='bg icon'>\\\"+String.fromCharCode(65 + i)+\\\"</div></td>\\\"; } for (var j=0; j<h;j++){table+=\\\"<tr><td><div class='bg icon'>\\\"+j+\\\"</div></td>\\\"; for (var i=0;i<w;i++) { var c = Math.floor(Math.random()*9)+1; table+=\\\"<td><div class='icon'>\\\"+c+\\\"</div></td>\\\"; if (i==a && j==b) { ret = c; }} table+='</tr>'; } return [\\\"<table cellspacing='0' style='border:1px solid black;float:left;margin-left:.5em;margin-top:.2em;font-size:\\\"+(1/(h+1))+\\\"em;'>\\\"+table+\\\"</table><div style='font-size:.5em;'>\\\"+String.fromCharCode(65 + a)+b+\\\"</div>\\\", ret] }","font":3,"class":"h12 neg alpha"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Donnez la valeur du tableau correspondant à la référence."]]></dct:description>
+        <dct:description><![CDATA["number":15,"time":0,"input":{"digit":1,"speed":5000},"gen":"function() { var w=4,h=4,a=Math.floor(Math.random()*w),b=Math.floor(Math.random()*h),ret,table=\\\"<tr><td><div class='icon bg'></div></td>\\\"; for (var i=0;i<w;i++) { table+=\\\"<td><div class='bg icon'>\\\"+String.fromCharCode(65 + i)+\\\"</div></td>\\\"; } for (var j=0; j<h;j++){table+=\\\"<tr><td><div class='bg icon'>\\\"+(j+1)+\\\"</div></td>\\\"; for (var i=0;i<w;i++) { var c = Math.floor(Math.random()*9)+1; table+=\\\"<td><div class='icon'>\\\"+c+\\\"</div></td>\\\"; if (i==a && j==b) { ret = c; }} table+='</tr>'; } return [\\\"<table cellspacing='0' style='border:1px solid black;float:left;margin-left:.5em;margin-top:.2em;font-size:\\\"+(1/(h+1))+\\\"em;'>\\\"+table+\\\"</table><div style='font-size:.5em;'>\\\"+String.fromCharCode(65 + a)+(b+1)+\\\"</div>\\\", ret] }","font":3,"class":"h12 neg alpha"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Donnez la [b]valeur[/b] du tableau [red]correspondant à la référence[/red]."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>mathematics</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>44</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>34</dct:identifier>
         <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une valeur comprise entre 0 et 9 dans un table 3x4.</dct:title>
-        <dct:description><![CDATA["number":15,"time":0,"input":{"digit":1,"speed":5000},"gen":"function() { var w=3,h=4,a=Math.floor(Math.random()*w),b=Math.floor(Math.random()*h),ret,table=\\\"<tr><td><div class='icon bg'></div></td>\\\"; for (var i=0;i<w;i++) { table+=\\\"<td><div class='bg icon'>\\\"+String.fromCharCode(65 + i)+\\\"</div></td>\\\"; } for (var j=0; j<h;j++){table+=\\\"<tr><td><div class='bg icon'>\\\"+j+\\\"</div></td>\\\"; for (var i=0;i<w;i++) { var c = Math.floor(Math.random()*9)+1; table+=\\\"<td><div class='icon'>\\\"+c+\\\"</div></td>\\\"; if (i==a && j==b) { ret = c; }} table+='</tr>'; } return [\\\"<table cellspacing='0' style='border:1px solid black;float:left;margin-left:.5em;margin-top:.2em;font-size:\\\"+(1/(h+1))+\\\"em;'>\\\"+table+\\\"</table><div style='font-size:.5em;'>\\\"+String.fromCharCode(65 + a)+b+\\\"</div>\\\", ret] }","font":3,"class":"h12 neg alpha"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Donnez la valeur du tableau correspondant à la référence."]]></dct:description>
+        <dct:description><![CDATA["number":15,"time":0,"input":{"digit":1,"speed":5000},"gen":"function() { var w=3,h=4,a=Math.floor(Math.random()*w),b=Math.floor(Math.random()*h),ret,table=\\\"<tr><td><div class='icon bg'></div></td>\\\"; for (var i=0;i<w;i++) { table+=\\\"<td><div class='bg icon'>\\\"+String.fromCharCode(65 + i)+\\\"</div></td>\\\"; } for (var j=0; j<h;j++){table+=\\\"<tr><td><div class='bg icon'>\\\"+(j+1)+\\\"</div></td>\\\"; for (var i=0;i<w;i++) { var c = Math.floor(Math.random()*9)+1; table+=\\\"<td><div class='icon'>\\\"+c+\\\"</div></td>\\\"; if (i==a && j==b) { ret = c; }} table+='</tr>'; } return [\\\"<table cellspacing='0' style='border:1px solid black;float:left;margin-left:.5em;margin-top:.2em;font-size:\\\"+(1/(h+1))+\\\"em;'>\\\"+table+\\\"</table><div style='font-size:.5em;'>\\\"+String.fromCharCode(65 + a)+(b+1)+\\\"</div>\\\", ret] }","font":3,"class":"h12 neg alpha"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Donnez la [b]valeur[/b] du tableau [red]correspondant à la référence[/red]."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>mathematics</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>44</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
     </rdf:Description>
 
 </rdf:RDF>
