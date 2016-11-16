@@ -11,6 +11,7 @@
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>45o</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -22,6 +23,7 @@
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>45o</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -33,6 +35,7 @@
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>45o</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -44,6 +47,7 @@
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>45o</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -55,6 +59,7 @@
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>45o</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -66,6 +71,7 @@
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>45o</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -77,6 +83,7 @@
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>45o</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -88,6 +95,7 @@
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>45o</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -99,6 +107,7 @@
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>45o</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -109,9 +118,9 @@
         <dct:extent>3</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
         <dct:type>3</dct:type>
         <dct:alternative>45o</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire,CP</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -122,9 +131,9 @@
         <dct:extent>3</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
         <dct:type>2</dct:type>
         <dct:alternative>45o</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire,CP</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -135,35 +144,34 @@
         <dct:extent>3</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
         <dct:type>3</dct:type>
         <dct:alternative>45o</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire,CE1</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>500o</dct:identifier>
-        <dct:title xml:lang="fr-FR">Retrouver le bon compte à partir de 2 valeurs parmi 6 comprises entre 10 et 50.</dct:title>
+        <dct:title xml:lang="fr-FR">Retrouver le bon compte à partir de 2 valeurs parmi 6 comprises entre 10 et 500.</dct:title>
         <dct:description><![CDATA["op":["plus"],"gen":"function(_index){ var range=[500,10],nb=2,tiles=[],value=0,t=0; for (var i=0;i<6;i++) { tiles.push(Math.floor(Math.random()*(range[0]-range[1]))+range[1]); } for (var i=0;i<nb;i++) { var v; do { v=Math.floor(Math.random()*tiles.length); } while (t&(1<<v)); t=t|(1<<v); value+=tiles[v]; }  tiles.sort(function(a,b){return (parseInt(a)>parseInt(b));}); return {\\\"values\\\":tiles,\\\"result\\\":value} }","number":5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Pour cet exercice, il vous faudra utiliser <b>2 tuiles</b> uniquement parmi les 6 proposées."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
         <dct:type>3</dct:type>
         <dct:alternative>45o</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire,CE1</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>45o</dct:identifier>
         <dct:title xml:lang="fr-FR">Retrouver le bon compte.</dct:title>
         <dct:description><![CDATA["op":["plus"],"number":5,"gen":"function(_index){var small=[1,2,3,4,5,6,7,8,9,10], big=[25,75,100,200], nb=[6,6],op=1,alea=[25,20],value=0,tiles=[],test=function(_tiles,_level,_value){if (_tiles[_tiles.length-1]==_value) { return true;} else if (_tiles.length==1){ return false;} else for(var i=0;i<_tiles.length-1;i++)for(var j=i+1;j<_tiles.length;j++){var newtiles=[];for(var k=0;k<_tiles.length;k++) {if (k!=i&&k!=j){newtiles.push(_tiles[k]);}} newtiles.push(0); if (op&1){var n=_tiles[i]+_tiles[j]; if (n<1000) {newtiles[newtiles.length-1]=n; if(test(newtiles,_level+1,_value)) return true;}} if (op&2){var n=Math.abs(_tiles[i]-_tiles[j]); newtiles[newtiles.length-1]=n; if(test(newtiles,_level+1,_value)) return true;} if (op&4){var n=_tiles[i]*_tiles[j]; if (n<1000) {newtiles[newtiles.length-1]=n; if(test(newtiles,_level+1,_value)) return true;}} if (op&8){ if (_tiles[i]%_tiles[j]==0) {newtiles[newtiles.length-1]=_tiles[i]/_tiles[j]; if(test(newtiles,_level+1,_value)) return true;} else if (_tiles[j]%_tiles[i]==0) {newtiles[newtiles.length-1]=_tiles[j]/_tiles[i]; if(test(newtiles,_level+1,_value)) return true;}} } return false;}; for (var i=0;i<nb[1];i++){var id;do{id=Math.floor(Math.random()*small.length);}while(!small[id]); tiles.push(small[id]);small[id]=0;} for (var i=0;i<nb[0]-nb[1];i++){var id;do{id=Math.floor(Math.random()*big.length);}while(!big[id]); tiles.push(big[id]);big[id]=0;}for(var i=0;i<100;i++){var x=Math.floor(Math.random()*tiles.length),y=Math.floor(Math.random()*tiles.length),tmp;tmp=tiles[x];tiles[x]=tiles[y];tiles[y]=tmp;}do { value=Math.floor(Math.random()*alea[0])+alea[1]; } while (!test(tiles,0,value)); return {\\\"values\\\":tiles,\\\"result\\\":value} }"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
-        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
         <dct:type>3</dct:type>
         <dct:alternative>45o</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
     </rdf:Description>
 </rdf:RDF>
 

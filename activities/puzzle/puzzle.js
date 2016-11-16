@@ -302,6 +302,7 @@
 
                             var now = new Date();
                             settings.elt.tick = now.getTime();
+                            settings.rottimerid = setTimeout(function() { helpers.rottimer($this);}, 500);
                         }
                         event.preventDefault();
                     });
@@ -349,13 +350,16 @@
             for (var i in settings.origin.translate) {
                 settings.magzone.push([settings.origin.translate[i][1], settings.origin.translate[i][2]]); }
             if (settings.magnetic) { for (var i in settings.magnetic) { settings.magzone.push(settings.magnetic[i]); } }
-
+            
             // MOVE PIECES
             $this.bind('touchmove mousemove', function(event) {
                 if (settings.interactive && settings.elt.id) {
                     var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
                                   event.originalEvent.touches[0]:event;
-                              
+                    
+                    if (settings.rottimerid) { clearTimeout(settings.rottimerid); }
+                    settings.rottimerid = setTimeout(function() { helpers.rottimer($this);}, 1000);
+                    
                     // COMPUTE TRANSLATION_X
                     var vX = settings.elt.translate.origin[0];
                     if (settings.constraint[0]==0) {
@@ -397,20 +401,13 @@
                     
                     $this.removeClass("active");
                     $(settings.elt.id).attr("class","");
+                    
+                    if (settings.rottimerid) { clearTimeout(settings.rottimerid); }
 
                     // ROTATION ?
                     var now         = new Date();
                     var rotation    = -1;
-                    if (settings.rotation>0 && $(settings.elt.id).find(".rot")) {
-                        var reg = new RegExp("[( ),]","g");
-                        var vSplit = $(settings.elt.id).find(".rot").attr("transform").split(reg);
-                        var rotation = parseInt(vSplit[1]);
-
-                        if (now.getTime()-settings.elt.tick<120) {
-                            rotation = (rotation+settings.rotation)%360;
-                            $(settings.elt.id).find(".rot").attr("transform","rotate("+rotation+")");
-                        }
-                    }
+                    if (now.getTime()-settings.elt.tick<200) { rotation = helpers.rotate($this, $(settings.elt.id)); }
 
                     // CHECK MAGNETIC
                     if (settings.decoyfx || !helpers.isdecoy($this, $(settings.elt.id).attr("id")))
@@ -540,6 +537,23 @@
                     setTimeout(function() { helpers.end($this); }, wrongs?3000:1000);
                 }
             }
+        },
+        rottimer: function($this) {
+            var settings = helpers.settings($this);
+            helpers.rotate($this, $(settings.elt.id));
+            settings.rottimerid = setTimeout(function() { helpers.rottimer($this);}, 400);  
+        },
+        rotate:function($this, $elt) {
+            var settings = helpers.settings($this);
+            var rotation    = -1;
+            if (settings.rotation>0 && $elt.find(".rot")) {
+                var reg = new RegExp("[( ),]","g");
+                var vSplit = $elt.find(".rot").attr("transform").split(reg);
+                var rotation = parseInt(vSplit[1]);
+                rotation = (rotation+settings.rotation)%360;
+                $elt.find(".rot").attr("transform","rotate("+rotation+")");
+            }
+            return rotation;
         }
     };
 
@@ -570,6 +584,7 @@
                     puzzleid        : 0,
                     wrongs          : 0,
                     all             : 0,
+                    rottimerid      : 0,
                 };
 
                 return this.each(function() {
