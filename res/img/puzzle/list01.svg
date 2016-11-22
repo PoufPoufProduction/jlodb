@@ -3,16 +3,13 @@
 <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="100%" height="100%" viewBox="0 0 640 480" id="list01">
 <defs id="defs2385">
  <style type="text/css">
-    #list01 .disable { display:none; }
-    #list01 .hide    { display:none; }
-
-    #list01 #pieces .result { fill:none; fill-opacity:0.5; }
-    #list01 #pieces .wrong .result { fill:red; }
-    #list01 #pieces .good .result  { fill:#0F0; }
-
-    #list01 text    { font-size:48px;text-anchor:middle;fill:white;font-family:Times New Roman;opacity:0.7; }
-    #list01 #target text.bg { fill:#ccc; }
-
+    svg#list01 .disable                 { display:none; }
+    svg#list01 .hide                    { display:none; }
+    svg#list01 #pieces .result          { fill:white; fill-opacity:0; cursor:move; }
+    svg#list01 #pieces .wrong .result   { fill:red; fill-opacity:0.5; }
+    svg#list01 #pieces .good .result    { fill:#0F0; fill-opacity:0.5; }
+    svg#list01 text                     { font-size:48px;text-anchor:middle;fill:white;font-family:Times New Roman;opacity:0.7; }
+    svg#list01 #target text.bg          { fill:#ccc; }
  </style>
 </defs>
 
@@ -26,7 +23,7 @@
     <g id="tp">
         <circle cx="0" cy="0" r="40" style="fill:#8e572b;"/>
         <circle cx="0" cy="0" r="35" style="fill:#c27642;"/>
-        <path d="M 0 -40 C -18.560591 -40 -34.172464 -27.361411 -38.6875 -10.21875 C -27.439467 -6.9192853 -14.193093 -5 0 -5 C 14.193093 -5 27.439467 -6.9192853 38.6875 -10.21875 C 34.172464 -27.361411 18.560591 -40 0 -40 z" style="fill:#ffc593;fill-opacity:0.15;"/>
+        <path d="M 0 -40 C -18.56 -40 -34.17 -27.36 -38.68 -10.21 C -27.43 -6.91 -14.19 -5 0 -5 C 14.19 -5 27.44 -6.92 38.68 -10.21 C 34.17 -27.36 18.56 -40 0 -40 z" style="fill:#ffc593;fill-opacity:0.15;"/>
         <circle cx="0" cy="0" r="40" style="fill:none;stroke:#463326;stroke-width:2;"/>
     </g>
 </g>

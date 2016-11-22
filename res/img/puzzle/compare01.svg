@@ -3,25 +3,21 @@
 <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="100%" height="100%" viewBox="0 0 640 480" id="compare">
 <defs id="defs2385">
  <style type="text/css">
-    #compare .disable { display:none; }
-    #compare .box    { fill:#553300; fill-opacity:0.95;}
-    #compare #pieces .result { fill:none; }
-    #compare #pieces .wrong .result { fill:red; }
-    #compare #pieces .good .result  { fill:#0F0; }
-
-    #compare text    { font-size:48px;text-anchor:middle;fill:white;font-family:Times New Roman; }
-
-    #compare #up         { display:none; }
-    #compare #up text    { fill:black; font-weight:bold; }
-    #compare #down       { display:none; }
-    #compare #down text  { fill:black;font-weight:bold; }
-
-    #compare.up #up     { display:inline; }
-    #compare.down #down { display:inline; }
-
-    #compare.l4 .e5     { display:none; }
-    #compare.l3 .e5     { display:none !important; }
-    #compare.l3 .e4     { display:none; }
+    svg#compare .disable                { display:none; }
+    svg#compare .box                    { fill:#553300; fill-opacity:0.95;}
+    svg#compare #pieces .result         { fill:white; fill-opacity:0; cursor:move; }
+    svg#compare #pieces .wrong .result  { fill:red; fill-opacity:0.5; }
+    svg#compare #pieces .good .result   { fill:#0F0; fill-opacity:0.5; }
+    svg#compare text                    { font-size:48px;text-anchor:middle;fill:white;font-family:Times New Roman; }
+    svg#compare #up                     { display:none; }
+    svg#compare #up text                { fill:black; font-weight:bold; }
+    svg#compare #down                   { display:none; }
+    svg#compare #down text              { fill:black;font-weight:bold; }
+    svg#compare.up #up                  { display:inline; }
+    svg#compare.down #down              { display:inline; }
+    svg#compare.l4 .e5                  { display:none; }
+    svg#compare.l3 .e5                  { display:none !important; }
+    svg#compare.l3 .e4                  { display:none; }
  </style>
 </defs>
 
@@ -87,27 +83,27 @@
     <g id="a" transform="translate(60,125) "><g class="scale"><g class="rot">
         <use x="0" y="0" xlink:href="#tp"/>
         <text y="16"></text>
-        <rect width="100" height="50" ry="7.00" x="-50" y="-25" style="fill-opacity:0.5;" class="result"/>
+        <rect width="100" height="50" ry="7.00" x="-50" y="-25" class="result"/>
     </g></g></g>
     <g id="b" transform="translate(190,125) "><g class="scale"><g class="rot">
         <use x="0" y="0" xlink:href="#tp"/>
         <text y="16"></text>
-        <rect width="100" height="50" ry="7.00" x="-50" y="-25" style="fill-opacity:0.5;" class="result"/>
+        <rect width="100" height="50" ry="7.00" x="-50" y="-25" class="result"/>
     </g></g></g>
     <g id="c" transform="translate(320,125) "><g class="scale"><g class="rot">
         <use x="0" y="0" xlink:href="#tp"/>
         <text y="16"></text>
-        <rect width="100" height="50" ry="7.00" x="-50" y="-25" style="fill-opacity:0.5;" class="result"/>
+        <rect width="100" height="50" ry="7.00" x="-50" y="-25" class="result"/>
     </g></g></g>
     <g id="d" transform="translate(450,125) "><g class="scale"><g class="rot">
         <use x="0" y="0" xlink:href="#tp"/>
         <text y="16"></text>
-        <rect width="100" height="50" ry="7.00" x="-50" y="-25" style="fill-opacity:0.5;" class="result"/>
+        <rect width="100" height="50" ry="7.00" x="-50" y="-25" class="result"/>
     </g></g></g>
     <g id="e" transform="translate(580,125) "><g class="scale"><g class="rot">
         <use x="0" y="0" xlink:href="#tp"/>
         <text y="16"></text>
-        <rect width="100" height="50" ry="7.00" x="-50" y="-25" style="fill-opacity:0.5;" class="result"/>
+        <rect width="100" height="50" ry="7.00" x="-50" y="-25" class="result"/>
     </g></g></g>
 
 </g>

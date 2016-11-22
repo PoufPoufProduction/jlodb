@@ -170,7 +170,7 @@
                             else { $this.find("#wrong").hide(); }
                             settings.show=[];
                             $this.find("#board").find(".content").hide();
-                            helpers.settings($this).interactive = true; }, 500);
+                            helpers.settings($this).interactive = true; }, 1000);
 
                         if ((settings.cards[settings.show[0]].val != settings.cards[settings.show[1]].val) && 
                             (settings.cards[settings.show[0]].nb++ | settings.cards[settings.show[1]].nb++ )) {

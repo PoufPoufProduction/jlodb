@@ -6,7 +6,7 @@ include "database.php";
 
 if (!$error) {
 	$where = "";
-    // THE CONDITIONS
+    
     if (array_key_exists("activity",$_GET)) {
         $activity = "";
         $tok = strtok($_GET["activity"], ",");
@@ -19,32 +19,7 @@ if (!$error) {
 
         $where.= " AND `Exercice_Activity` IN ( ".str_replace("\'", "'", $activity)." )";
     }
-
-    // THE LEVEL
-    if (array_key_exists("levelmin",$_GET)) {
-        $where.= " AND `Exercice_Level` >= ".$_GET["levelmin"]." ";
-    }
-    if (array_key_exists("levelmax",$_GET)) {
-        $where.= " AND `Exercice_Level` <= ".$_GET["levelmax"]." ";
-    }
-
-    // THE DIFFICULTY
-    if (array_key_exists("diffmin",$_GET)) {
-        $where.= " AND `Exercice_Difficulty` >= ".$_GET["diffmin"]." ";
-    }
-    if (array_key_exists("diffmax",$_GET)) {
-        $where.= " AND `Exercice_Difficulty` <= ".$_GET["diffmax"]." ";
-    }
-
-    // THE DURATION
-    if (array_key_exists("extendmin",$_GET)) {
-        $where.= " AND `Exercice_Duration` >= ".$_GET["extendmin"]." ";
-    }
-    if (array_key_exists("extendmax",$_GET)) {
-        $where.= " AND `Exercice_Duration` <= ".$_GET["extendmax"]." ";
-    }
-
-    // THE CLASSIFICATION
+    
     if (array_key_exists("classification",$_GET)) {
         $classification = "";
         $tok = strtok($_GET["classification"], ",");
@@ -57,13 +32,16 @@ if (!$error) {
         $where.= " AND `Exercice_Classification` IN ( ".str_replace("\'", "'", $classification)." )";
     }
 
-    // THE ID
-    if (array_key_exists("id",$_GET)) {
-        $where.= " AND `Exercice_Id` = '".$_GET["id"]."'";
-    }
-    else {
-        $where.= " AND `Exercice_Tags` NOT LIKE '%debug%'";
-    }
+    if (array_key_exists("levelmin",$_GET))     { $where.= " AND `Exercice_Level` >= ".$_GET["levelmin"]." "; }
+    if (array_key_exists("levelmax",$_GET))     { $where.= " AND `Exercice_Level` <= ".$_GET["levelmax"]." "; }
+    if (array_key_exists("diffmin",$_GET))      { $where.= " AND `Exercice_Difficulty` >= ".$_GET["diffmin"]." "; }
+    if (array_key_exists("diffmax",$_GET))      { $where.= " AND `Exercice_Difficulty` <= ".$_GET["diffmax"]." "; }
+    if (array_key_exists("extendmin",$_GET))    { $where.= " AND `Exercice_Duration` >= ".$_GET["extendmin"]." "; }
+    if (array_key_exists("extendmax",$_GET))    { $where.= " AND `Exercice_Duration` <= ".$_GET["extendmax"]." "; }
+
+    if (array_key_exists("id",$_GET))           { $where.= " AND `Exercice_Id` = '".$_GET["id"]."'"; }
+    else                                        { $where.= " AND `Exercice_Tags` NOT LIKE '%debug%'"; }
+    
 
     $exercice = mysql_query("SELECT * FROM `".$_SESSION['prefix']."exercice`, `".$_SESSION['prefix']."activity` WHERE ".
                             " `Exercice_Activity` = `Activity_Name`".$where." ORDER BY RAND( ) LIMIT 1");

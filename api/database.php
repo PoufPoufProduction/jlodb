@@ -8,6 +8,7 @@
 
 if (!isset($apipath)) { $apipath="./"; }
 $filename   = $apipath."../conf/jlodb.ini";
+
 $status     = "error";
 $error      = 0;
 $textstatus = "";

@@ -405,9 +405,13 @@
                     if (settings.rottimerid) { clearTimeout(settings.rottimerid); }
 
                     // ROTATION ?
+                    
+                    var tdist = Math.pow( settings.elt.translate.current[0] - settings.elt.translate.origin[0], 2) +
+                                Math.pow( settings.elt.translate.current[1] - settings.elt.translate.origin[1], 2);
+                               
                     var now         = new Date();
                     var rotation    = -1;
-                    if (now.getTime()-settings.elt.tick<200) { rotation = helpers.rotate($this, $(settings.elt.id)); }
+                    if (tdist<10 && now.getTime()-settings.elt.tick<400) { rotation = helpers.rotate($this, $(settings.elt.id)); }
 
                     // CHECK MAGNETIC
                     if (settings.decoyfx || !helpers.isdecoy($this, $(settings.elt.id).attr("id")))
