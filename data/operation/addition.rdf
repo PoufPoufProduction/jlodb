@@ -257,19 +257,19 @@
 
     <rdf:Description>
         <dct:identifier>299</dct:identifier>
-        <dct:title xml:lang="fr-FR">Additionner 2 nombres entiers inférieurs à 100.</dct:title>
+        <dct:title xml:lang="fr-FR">Additionner 2 nombres entiers dont la somme est inférieure à 100.</dct:title>
         <dct:description><![CDATA["gen":"function() { var a = 10+Math.floor(Math.random()*80),b; do { b = 10+Math.floor(Math.random()*80); } while(a+b>100); return \\\"\\\"+a+\\\"+\\\"+b; }"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>210k</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">aléatoire,CE1</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">aléatoire,CP</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>299a</dct:identifier>
-        <dct:title xml:lang="fr-FR">Additionner 2 nombres entiers inférieurs à 100 [35+47, 73+18, 54+29].</dct:title>
+        <dct:title xml:lang="fr-FR">Additionner 2 nombres entiers dont la somme est inférieure à 100 [35+47, 73+18, 54+29].</dct:title>
         <dct:description><![CDATA["values":["35+47", "73+18", "54+29"],"number":3]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
@@ -277,24 +277,24 @@
         <dct:type>2</dct:type>
         <dct:alternative>210k</dct:alternative>
         <dct:isPartOf>ad99a</dct:isPartOf>
-        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>299r</dct:identifier>
-        <dct:title xml:lang="fr-FR">Additionner 2 nombres entiers inférieurs à 100 sans retenue.</dct:title>
+        <dct:title xml:lang="fr-FR">Additionner 2 nombres entiers dont la somme est inférieure à 100 sans retenue.</dct:title>
         <dct:description><![CDATA["gen":"function() { var a = 10+Math.floor(Math.random()*80),b; do { b = 10+Math.floor(Math.random()*80); } while(a+b>=100 || a%10+b%10>9); return \\\"\\\"+a+\\\"+\\\"+b; }"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>210k</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">aléatoire,CE1</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">aléatoire,CP</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>299ra</dct:identifier>
-        <dct:title xml:lang="fr-FR">Additionner 2 nombres entiers inférieurs à 100 sans retenue [35+22, 72+6, 5+23].</dct:title>
+        <dct:title xml:lang="fr-FR">Additionner 2 nombres entiers dont la somme est inférieure à 100 sans retenue [35+22, 72+6, 5+23].</dct:title>
         <dct:description><![CDATA["values":["35+22", "72+6", "5+23"],"number":3]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Les opérandes d'une addition n'ont pas forcément [b]le même nombre de chiffres[/b]."],"fontex":0.4]]></dct:description>
         <dct:extent>1</dct:extent>
@@ -317,6 +317,43 @@
         <dct:coverage xml:lang="fr-FR">aléatoire,CE1</dct:coverage>
     </rdf:Description>
 
+    <rdf:Description>
+        <dct:identifier>2500r</dct:identifier>
+        <dct:title xml:lang="fr-FR">Additionner 2 nombres entiers inférieurs à 500 sans retenue.</dct:title>
+        <dct:description><![CDATA["gen":"function() { var a = 10+Math.floor(Math.random()*480),b; do { b = 10+Math.floor(Math.random()*480); } while(Math.floor((a%100+b%100)/10)>9 || a%10+b%10>9); return \\\"\\\"+a+\\\"+\\\"+b; }"]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>210k</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire,CE1</dct:coverage>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>2500ra</dct:identifier>
+        <dct:title xml:lang="fr-FR">Additionner 2 nombres entiers compris entre 1 et 500 sans retenue [123+456].</dct:title>
+        <dct:description><![CDATA["values":["123+456"],"number":1,"ratioerr":5,"target":[{"id":11,"block":"9","box":[5,8]},{"id":10,"block":"7","box":[4,7]},{"id":9,"block":"5","box":[3,6]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["L'addition de nombres à 3 chiffres se fait en [b]commençant par les unités[/b], puis les [b]dizaines[/b] et enfin les [b]centaines[/b]."],"fontex":0.5]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>210k</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">tutoriel,CE1</dct:coverage>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>2500</dct:identifier>
+        <dct:title xml:lang="fr-FR">Additionner 2 nombres entiers inférieurs à 500.</dct:title>
+        <dct:description><![CDATA["gen":"function() { return \\\"\\\"+(10+Math.floor(Math.random()*490))+\\\"+\\\"+(10+Math.floor(Math.random()*490)); }"]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>210k</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire,CE1</dct:coverage>
+    </rdf:Description>
+    
     <rdf:Description>
         <dct:identifier>2500a</dct:identifier>
         <dct:title xml:lang="fr-FR">Additionner 2 nombres entiers compris entre 1 et 500 [155+267].</dct:title>

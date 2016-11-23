@@ -157,6 +157,7 @@
         <dct:alternative>10k</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
     </rdf:Description>
+    
 
     <rdf:Description>
         <dct:identifier>10010</dct:identifier>
@@ -218,6 +219,32 @@
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
     </rdf:Description>
 
+    
+    <rdf:Description>
+        <dct:identifier>10r</dct:identifier>
+        <dct:title xml:lang="fr-FR">Poser et résoudre la multiplication inférieure à 100 de 2 nombres entiers respectivement inférieurs à 100 et à 10 sans retenue</dct:title>
+        <dct:description><![CDATA["number":5,"gen":"function() { var a,b; do { a= Math.floor(Math.random()*89+11); b=Math.floor(Math.random()*7+3); }while((a%10)*(b%10)>=10 || a*b>100); return \\\"\\\"+a+\\\"*\\\"+b; }"]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>10k</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire,CE1</dct:coverage>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>10o</dct:identifier>
+        <dct:title xml:lang="fr-FR">Poser et résoudre la multiplication de 2 nombres entiers respectivement inférieurs à 100 et à 10</dct:title>
+        <dct:description><![CDATA["number":5,"gen":"function() { var a,b; a= Math.floor(Math.random()*89+11); b=Math.floor(Math.random()*8+2);  return \\\"\\\"+a+\\\"*\\\"+b; }"]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>10k</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire,CE1</dct:coverage>
+    </rdf:Description>
+    
+    
     <rdf:Description>
         <dct:identifier>10a</dct:identifier>
         <dct:title xml:lang="fr-FR">Effectuer la multiplication 43*2.</dct:title>

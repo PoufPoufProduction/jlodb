@@ -360,7 +360,7 @@
         // Binding clear
         unbind: function($this) {
             $(document).unbind("keypress keydown");
-            $this.unbind("mouseup mousedown mousemove mouseout touchstart touchmove touchend touchleave");
+            $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
         end: function($this) {
@@ -440,7 +440,7 @@
                     event.stopPropagation();
                     event.preventDefault();
                 });
-                $this.find(".onpopup").bind("mouseup touchend mouseout touchleave", function(event) {
+                $this.find(".onpopup").bind("mouseup touchend mouseleave touchleave", function(event) {
                     var $this = $(this).closest('.wargames'), settings = helpers.settings($this);
                     settings.popuptimer = setTimeout(function(){
                         if (settings.popuptimer) { $this.find(".popup").hide(); } settings.popuptimer=0; },500);

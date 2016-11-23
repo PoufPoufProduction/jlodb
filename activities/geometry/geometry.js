@@ -410,7 +410,7 @@
 
             helpers.restore($this);
         },
-        mouseout: function($this, event) {
+        mouseleave: function($this, event) {
             var settings    = helpers.settings($this); if (settings.finish) { return; }
             var x           = event.clientX-$this.find("#board").offset().left;
             var y           = event.clientY-$this.find("#board").offset().top;
@@ -948,7 +948,7 @@
                 $(this).find("#board").bind("mousemove", function(e) { helpers.mousemove($this, e); });
                 $(this).find("#board").bind("mousedown", function() { helpers.mousedown($this); });
                 $(this).find("#board").bind("mouseup", function() { helpers.mouseup($this); });
-                $(this).find("#board").mouseout(function(e) { helpers.mouseout($this, e); });
+                $(this).find("#board").mouseleave(function(e) { helpers.mouseleave($this, e); });
 
                 $(this).find("#board").bind("touchmove", function(e) {
                     helpers.mousemove($this, e.originalEvent.touches[0]); e.preventDefault(); });

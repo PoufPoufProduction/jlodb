@@ -245,6 +245,7 @@
                 }
                 $("#val2 #c"+i, settings.svg.root()).text(value.toString()).attr("class",vErr);
 
+                
                 for (var j=1; j<=c[settings.type].b[0]; j++) {
                     var $elt    = $("#e"+i+((j==10)?'a':j), settings.svg.root());
                     var vClass  = $elt.attr("class").replace(" up","").replace(" tgt","");
@@ -283,7 +284,7 @@
                 var val = data.init;
                 for (var i=0; i<13; i++) {
                     var v = val%10, status=[0,0];
-                    if (v>=5) { status[1] = 1; v=v-5; }
+                    if (v>=5 && settings.type!= "abacus") { status[1] = 1; v=v-5; }
                     status[0] = v;
                     val = Math.floor(val/10);
                     settings.status.push(status);

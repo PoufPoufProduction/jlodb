@@ -3,12 +3,12 @@
 <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="100%" height="100%" viewBox="0 0 640 480" id="groups">
 <defs id="defs2385">
  <style type="text/css">
-    #groups .disable            { display:none; }
-    #groups text                { font-size:16px;text-anchor:middle;fill:#241c1c;font-family:Times New Roman;font-weight:bold; fill:white; }
-    #groups #board text         { font-size:20px;  }
-    #groups #pieces .result     { fill:none; fill-opacity:0.5; }
-    #groups #pieces .wrong .result { fill:red; }
-    #groups #pieces .good .result  { fill:#0F0; }
+    svg#groups .disable            { display:none; }
+    svg#groups text                { font-size:16px;text-anchor:middle;fill:#241c1c;font-family:Times New Roman;font-weight:bold; fill:white; cursor:move; }
+    svg#groups #board text         { font-size:20px;  }
+    svg#groups #pieces .result     { fill:white; fill-opacity:0; cursor:move; }
+    svg#groups #pieces .wrong .result { fill:red; fill-opacity:0.5;}
+    svg#groups #pieces .good .result  { fill:#0F0; fill-opacity:0.5;}
  </style>
 </defs>
 
