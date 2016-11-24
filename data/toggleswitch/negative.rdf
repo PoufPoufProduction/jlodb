@@ -6,7 +6,7 @@
         <dct:identifier>10gt0</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier les soustractions dont les opérandes sont compris entre 0 et 10 et dont le résultat est strictement supérieur à 0.</dct:title>
         <dct:description><![CDATA["number":5,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var a=Math.floor(Math.random()*11),b; do { b=Math.floor(Math.random()*11);} while(a==b); result+=(a>b)?\\\"1\\\":\\\"0\\\"; ret.push((a<0?\\\"(\\\"+a+\\\")\\\":a.toString())+\\\"-\\\"+(b<0?\\\"(\\\"+b+\\\")\\\":b.toString()));} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"gray","color":"white"}]},"wrong":{"style":{"background-color":"black","color":"red"}},"font":0.8]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Surlignez les résultats <b>strictement supérieurs à 0</b>.","label":">0"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Surlignez les résultats <b>strictement supérieurs à 0</b>.","tag":">0"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>negative</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -18,7 +18,7 @@
         <dct:identifier>n10gt0</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier les additions dont les opérandes sont compris entre -10 et 10 et dont le résultat est strictement supérieur à 0.</dct:title>
         <dct:description><![CDATA["number":5,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var a=Math.floor(Math.random()*21)-10,b; do { b=Math.floor(Math.random()*21)-10;} while(Math.abs(a)==Math.abs(b)); result+=(a+b>0)?\\\"1\\\":\\\"0\\\"; ret.push((a<0?\\\"(\\\"+a+\\\")\\\":a.toString())+\\\"+\\\"+(b<0?\\\"(\\\"+b+\\\")\\\":b.toString()));} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"gray","color":"white"}]},"wrong":{"style":{"background-color":"black","color":"red"}},"font":0.4]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Surlignez les résultats <b>strictement supérieurs à 0</b>.","label":">0"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Surlignez les résultats <b>strictement supérieurs à 0</b>.","tag":">0"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>negative</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -30,7 +30,7 @@
         <dct:identifier>na10gt0</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier les additions dont les opérandes sont compris entre -10 et 10 et dont le résultat est strictement supérieur à 0 (avec présence de valeurs absolues).</dct:title>
         <dct:description><![CDATA["number":5,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var a=Math.floor(Math.random()*21)-10,b; do { b=Math.floor(Math.random()*21)-10;} while(Math.abs(a)==Math.abs(b)); var aa=Math.floor(Math.random()*1.5),ba=Math.floor(Math.random()*1.5),ar=(aa==0?a:Math.abs(a)),br=(ba==0?b:Math.abs(b)); result+=(ar+br>0)?\\\"1\\\":\\\"0\\\"; ret.push((a<0?(aa==0?\\\"(\\\"+a+\\\")\\\":\\\"|\\\"+a+\\\"|\\\"):(aa==0?a:\\\"|\\\"+a+\\\"|\\\"))+\\\"+\\\"+(b<0?(ba==0?\\\"(\\\"+b+\\\")\\\":\\\"|\\\"+b+\\\"|\\\"):(ba==0?b:\\\"|\\\"+b+\\\"|\\\")));} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"gray","color":"white"}]},"wrong":{"style":{"background-color":"black","color":"red"}},"font":0.4]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Surlignez les résultats <b>strictement supérieurs à 0</b>.","label":">0"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Surlignez les résultats <b>strictement supérieurs à 0</b>.","tag":">0"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>negative</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>

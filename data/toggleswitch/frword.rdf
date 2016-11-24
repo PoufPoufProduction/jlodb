@@ -8,7 +8,7 @@
         <dct:identifier>wl01</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier les lettres en majuscules de l'alphabet.</dct:title>
         <dct:description><![CDATA["number":3,"template":"array4x3","gen":"function(){var result=\\\"\\\",ret=[],w=['1','2','3','4','5','6','7','8','9','&','+','-','/',';',',','§','!','?',')','(','[',']','$','£','€','*','%']; for (var i=0; i<12; i++) { var a=(Math.random()<0.5); result+=a?\\\"1\\\":\\\"0\\\"; ret.push(\\\"<p style='font-size:0.8em;'>\\\"+(a?String.fromCharCode(65+Math.floor(Math.random()*26)):w[Math.floor(Math.random()*w.length)])+\\\"</p>\\\");} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)"},{"background-color":"#F88"}]},"wrong":{"style":{"background-color":"black"}}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez les [b]lettres[/b] de l'alphabet.","label":"AZ"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez les [b]lettres[/b] de l'alphabet.","tag":"AZ"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>frword</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
@@ -20,7 +20,7 @@
         <dct:identifier>wl02</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier les lettres en minuscules de l'alphabet.</dct:title>
         <dct:description><![CDATA["number":3,"template":"array4x3","gen":"function(){var result=\\\"\\\",ret=[],w=['1','2','3','4','5','6','7','8','9','&','+','-','/',';',',','§','!','?',')','(','[',']','$','£','€','*','%']; for (var i=0; i<12; i++) { var a=(Math.random()<0.5); result+=a?\\\"1\\\":\\\"0\\\"; ret.push(\\\"<p style='font-size:0.8em;'>\\\"+(a?String.fromCharCode(97 +Math.floor(Math.random()*26)):w[Math.floor(Math.random()*w.length)])+\\\"</p>\\\");} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)"},{"background-color":"#F88"}]},"wrong":{"style":{"background-color":"black"}}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez les [b]lettres[/b] de l'alphabet.","label":"az"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez les [b]lettres[/b] de l'alphabet.","tag":"az"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>frword</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
@@ -32,7 +32,7 @@
         <dct:identifier>wl03</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier les lettres de l'alphabet.</dct:title>
         <dct:description><![CDATA["number":3,"template":"array4x3","gen":"function(){var result=\\\"\\\",ret=[],w=['1','2','3','4','5','6','7','8','9','&','+','-','/',';',',','§','!','?',')','(','[',']','$','£','€','*','%']; for (var i=0; i<12; i++) { var a=(Math.random()<0.5); result+=a?\\\"1\\\":\\\"0\\\"; ret.push(\\\"<p style='font-size:0.8em;'>\\\"+(a?String.fromCharCode((Math.random()<0.5?65:97) +Math.floor(Math.random()*26)):w[Math.floor(Math.random()*w.length)])+\\\"</p>\\\");} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)"},{"background-color":"#F88"}]},"wrong":{"style":{"background-color":"black"}}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez les [b]lettres[/b] de l'alphabet, majuscules et minuscules.","label":"aZ"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez les [b]lettres[/b] de l'alphabet, majuscules et minuscules.","tag":"aZ"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>frword</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
@@ -45,7 +45,7 @@
         <dct:identifier>wl04</dct:identifier>
         <dct:title xml:lang="fr-FR">Différencier majuscules et minuscules.</dct:title>
         <dct:description><![CDATA["number":5,"template":"array4x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<12; i++) { var a=(Math.random()<0.5); result+=a?\\\"1\\\":\\\"0\\\"; ret.push(\\\"<p style='font-size:0.8em;'>\\\"+(a?String.fromCharCode(65+Math.floor(Math.random()*26)):String.fromCharCode(97+Math.floor(Math.random()*26)))+\\\"</p>\\\");} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)"},{"background-color":"#F88"}]},"wrong":{"style":{"background-color":"black"}}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez les [b]lettres majuscules[/b] de l'alphabet.","label":"AZ"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez les [b]lettres majuscules[/b] de l'alphabet.","tag":"AZ"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>frword</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
@@ -271,7 +271,7 @@
         <dct:identifier>sa01</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier, grâce aux images, les mots présentant le son 'a'.</dct:title>
         <dct:description><![CDATA["regexp":{ "from": "(.+)","to":"<img src=\\\"res/img/clipart/$1.svg\\\"/>"},"values":[{"template":"array4x3","result":"110100011000","t":["vehicle/airplane01","vegetable/banana01","tool/scissors01","sport/football01","object/book01","object/key01","vehicle/bike01","object/gift01","music/piano01","furniture/bed01","clothes/shirt03","clothes/shoes01"]},{"template":"array4x3","result":"101011011011","t":["clothes/bag01","animal/rooster03","vehicle/tractor01","animal/dog04","animal/cow01","food/cake03","animal/turtle01","food/icecream02","furniture/table01","object/domino01","animal/panda02","clothes/hat01"]}],"states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)"},{"background-color":"#F88"}]},"wrong":{"style":{"background-color":"black"}}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez les dessins des mots contenant le son [red]'a'[/red].","label":"a"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez les dessins des mots contenant le son [red]'a'[/red].","tag":"a"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>frword</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
@@ -284,7 +284,7 @@
         <dct:identifier>si01</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier, grâce aux images, les mots présentant le son 'i'.</dct:title>
         <dct:description><![CDATA["regexp":{ "from": "(.+)","to":"<img src=\\\"res/img/clipart/$1.svg\\\"/>"},"values":[{"template":"array4x3","result":"101011100011","t":["bugs/ant01","animal/chicken01","tool/scissors01","clothes/hat01","object/book01","furniture/bed01","bugs/butterfly02","object/gift01","vehicle/tire01","object/lamp01","clothes/shirt03","animal/mice01"]},{"template":"array4x3","result":"001010001101","t":["clothes/bag01","animal/zebra01","animal/giraffe01","bugs/fly02","animal/rhinoceros01","animal/panda02","clothes/glasses01","vehicle/bus01","object/tap01","object/domino01","building/tent01","animal/seahorse01"]}],"states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)"},{"background-color":"#F88"}]},"wrong":{"style":{"background-color":"black"}}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez les dessins des mots contenant le son [red]'i'[/red].","label":"i"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez les dessins des mots contenant le son [red]'i'[/red].","tag":"i"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>frword</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>

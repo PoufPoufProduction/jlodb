@@ -29,7 +29,7 @@
     ];
 
     var onClicks = {
-        onlyone : function($this, elts, id) {
+        onlyone : function($this, elts, id, settings) {
             var nb=0; for (var i in elts) { if (elts[i].state==1) nb++; } return (elts[id].state==1 || nb<1);
         }
     }
@@ -151,8 +151,8 @@
                 if (settings.onclick)           { onClick = settings.onclick; }
 
                 if (onClick) {
-                    if (onClicks[onClick])  { isOk = onClicks[onClick]($this, settings.current.elts, id); }
-                    else                    { isOk = eval('('+onClick+')')($this, settings.current.elts, id); }
+                    if (onClicks[onClick])  { isOk = onClicks[onClick]($this, settings.current.elts, id, settings); }
+                    else                    { isOk = eval('('+onClick+')')($this, settings.current.elts, id, settings); }
                 }
 
                 if (isOk) {
@@ -172,8 +172,7 @@
             $this.find(vToggle).each(function(index) {
                 var elt={ elt:$(this), state:0 };
 
-             if (settings.init.length>index) { elt.state = parseInt(settings.init[index]); }
-
+                if (settings.init.length>index) { elt.state = parseInt(settings.init[index]); }
                 var init = settings.init;
                 if (!init && settings.values) { init = settings.values[settings.it%settings.values.length].init;  }
                 if (init && init.length>index) { elt.state = parseInt(init[index]); }
@@ -212,20 +211,27 @@
 
             // 3 CASES : GEN (FUNCTION), VALUES (ARRAY), DATA (SINGLE)
             settings.current=settings.values?settings.values[settings.it%settings.values.length]:settings;
+            
             if (settings.current.gen) {
                 var gen = eval('('+settings.current.gen+')')();
-                settings.current.t      = gen.t;
-                settings.current.result = gen.result;
-                if (gen.data) { settings.current.data   = gen.data; }
+                settings.current = $.extend({}, gen);
             }
+            
+            if (settings.group)                                 { settings.current.group    = settings.group; }
+            if (settings.t)                                     { settings.current.t        = settings.t; } 
+            if (settings.svgclass)                              { settings.current.svgclass = settings.svgclass; }
+            if (settings.template)                              { settings.current.template = settings.template; }
+            
+            if (settings.exercice && settings.exercice.tag)     { settings.current.tag    = settings.exercice.tag;}
 
+            
             // HANDLE THE EXERCICE
             if (settings.exercice) {
                 if ($.type(settings.exercice)=="string") {
                     $this.find("#exercice #content").html(helpers.format(settings.exercice));
                 } else {
                     $this.find("#exercice #content").html(helpers.format(settings.exercice.value));
-                    if (settings.exercice.label) { $this.find("#exercice #label").html(settings.exercice.label).show(); }
+                    if (settings.current.tag) { $this.find("#exercice #label").html(settings.current.tag).show(); }
                     if (settings.exercice.font) { $this.find("#exercice #content").css("font-size",settings.exercice.font+"em"); }
                 }
                 $this.find("#exercice").show();
@@ -249,11 +255,16 @@
                     elt.svg();
                     settings.svg = elt.svg('get');
                     settings.svg.load(templatepath, { addTo: true, changeSize: true, onLoad:function() {
+                        
                         if (settings.current.svgclass) { $(settings.svg.root()).attr("class",settings.current.svgclass); }
                         $this.find(".t").each(function(index) {
-                            var value = settings.current.t[index];
-                            if (vRegexp) { value = value.replace(vRegexp, settings.regexp.to); }
-                            if (settings.current.t && settings.current.t.length>index) { $(this).text(value); }});
+                            var t = settings.current.t;
+                            if (t && t.length>index) {
+                                var value = t[index];
+                                if (vRegexp) { value = value.replace(vRegexp, settings.regexp.to); }
+                                $(this).text(value);
+                            }
+                        });
                         helpers.fill($this); }
                     });
                 }
@@ -326,7 +337,7 @@
                 if (settings.interactive) {
                     settings.interactive = false;
                     var wrongs  = 0;
-                    if (settings.scorefct) { wrongs = eval('('+settings.scorefct+')')($this, settings.current.elts); }
+                    if (settings.scorefct) { wrongs = eval('('+settings.scorefct+')')($this, settings.current.elts, settings); }
                     else {
                         for (var i in settings.current.elts) {
                             if(!settings.current.result || settings.current.result.length<i ||
