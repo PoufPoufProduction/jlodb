@@ -4,8 +4,10 @@
 <defs id="defs2385">
  <style type="text/css">
     svg#groups .disable            { display:none; }
-    svg#groups text                { font-size:16px;text-anchor:middle;fill:#241c1c;font-family:Times New Roman;font-weight:bold; fill:white; cursor:move; }
-    svg#groups #board text         { font-size:20px;  }
+    svg#groups text                { font-size:16px;text-anchor:middle;fill:#241c1c;font-family:Times New Roman;font-weight:bold; fill:white; cursor:move; dominant-baseline: middle; }
+    svg#groups #board text         { font-size:20px; dominant-baseline: middle;  }
+    svg#groups.big #board text     { font-size:25px;  }
+    svg#groups.big text            { font-size:25px; }
     svg#groups #pieces .result     { fill:white; fill-opacity:0; cursor:move; }
     svg#groups #pieces .wrong .result { fill:red; fill-opacity:0.5;}
     svg#groups #pieces .good .result  { fill:#0F0; fill-opacity:0.5;}
@@ -74,51 +76,51 @@
 
 <g id="pieces">
     <g transform="translate(215,230)" id="a"><g class="scale"><g class="rot">
-        <use x="0" y="0" xlink:href="#template"/><text y="4"></text>
+        <use x="0" y="0" xlink:href="#template"/><text y="2"></text>
         <rect width="90" height="30" ry="2" x="-45" y="-15" class="result"/>
     </g></g></g>
     <g transform="translate(215,280)" id="b"><g class="scale"><g class="rot">
-        <use x="0" y="0" xlink:href="#template"/><text y="4"></text>
+        <use x="0" y="0" xlink:href="#template"/><text y="2"></text>
         <rect width="90" height="30" ry="2" x="-45" y="-15" class="result"/>
     </g></g></g>
     <g transform="translate(215,330)" id="c"><g class="scale"><g class="rot">
-        <use x="0" y="0" xlink:href="#template"/><text y="4"></text>
+        <use x="0" y="0" xlink:href="#template"/><text y="2"></text>
         <rect width="90" height="30" ry="2" x="-45" y="-15" class="result"/>
     </g></g></g>
     <g transform="translate(215,380)" id="d"><g class="scale"><g class="rot">
-        <use x="0" y="0" xlink:href="#template"/><text y="4"></text>
+        <use x="0" y="0" xlink:href="#template"/><text y="2"></text>
         <rect width="90" height="30" ry="2" x="-45" y="-15" class="result"/>
     </g></g></g>
     <g transform="translate(375,230)" id="e"><g class="scale"><g class="rot">
-        <use x="0" y="0" xlink:href="#template"/><text y="4"></text>
+        <use x="0" y="0" xlink:href="#template"/><text y="2"></text>
         <rect width="90" height="30" ry="2" x="-45" y="-15" class="result"/>
     </g></g></g>
     <g transform="translate(375,280)" id="f"><g class="scale"><g class="rot">
-        <use x="0" y="0" xlink:href="#template"/><text y="4"></text>
+        <use x="0" y="0" xlink:href="#template"/><text y="2"></text>
         <rect width="90" height="30" ry="2" x="-45" y="-15" class="result"/>
     </g></g></g>
     <g transform="translate(375,330)" id="g"><g class="scale"><g class="rot">
-        <use x="0" y="0" xlink:href="#template"/><text y="4"></text>
+        <use x="0" y="0" xlink:href="#template"/><text y="2"></text>
         <rect width="90" height="30" ry="2" x="-45" y="-15" class="result"/>
     </g></g></g>
     <g transform="translate(375,380)" id="h"><g class="scale"><g class="rot">
-        <use x="0" y="0" xlink:href="#template"/><text y="4"></text>
+        <use x="0" y="0" xlink:href="#template"/><text y="2"></text>
         <rect width="90" height="30" ry="2" x="-45" y="-15" class="result"/>
     </g></g></g>
     <g transform="translate(535,230)" id="i"><g class="scale"><g class="rot">
-        <use x="0" y="0" xlink:href="#template"/><text y="4"></text>
+        <use x="0" y="0" xlink:href="#template"/><text y="2"></text>
         <rect width="90" height="30" ry="2" x="-45" y="-15" class="result"/>
     </g></g></g>
     <g transform="translate(535,280)" id="j"><g class="scale"><g class="rot">
-        <use x="0" y="0" xlink:href="#template"/><text y="4"></text>
+        <use x="0" y="0" xlink:href="#template"/><text y="2"></text>
         <rect width="90" height="30" ry="2" x="-45" y="-15" class="result"/>
     </g></g></g>
     <g transform="translate(535,330)" id="k"><g class="scale"><g class="rot">
-        <use x="0" y="0" xlink:href="#template"/><text y="4"></text>
+        <use x="0" y="0" xlink:href="#template"/><text y="2"></text>
         <rect width="90" height="30" ry="2" x="-45" y="-15" class="result"/>
     </g></g></g>
     <g transform="translate(535,380)" id="l"><g class="scale"><g class="rot">
-        <use x="0" y="0" xlink:href="#template"/><text y="4"></text>
+        <use x="0" y="0" xlink:href="#template"/><text y="2"></text>
         <rect width="90" height="30" ry="2" x="-45" y="-15" class="result"/>
     </g></g></g>
 </g>

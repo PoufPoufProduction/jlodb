@@ -101,7 +101,7 @@
             },
             build: function($this) {
                 var settings = helpers.settings($this);
-
+                
                 if (settings.context.onload) { settings.context.onload($this); }
 
                 // Resize the template
@@ -125,10 +125,12 @@
                 if (settings.init && settings.init.pos) {
                     for (var i=0; i<10; i++) { settings.init.pos.sort(function(a,b){return 0.5-Math.random(); }); }
                 }
-                if (settings.id && $.isArray(settings.id[0]))       { settings.number = settings.id.length; }
-                if (settings.values && $.isArray(settings.values))  { settings.number = settings.values.length; }
-                if (settings.txt && $.isArray(settings.txt))        { settings.number = settings.txt.length; }
-
+                if (!settings.gen) {
+                    if (settings.id && $.isArray(settings.id[0]))       { settings.number = settings.id.length; }
+                    if (settings.values && $.isArray(settings.values))  { settings.number = settings.values.length; }
+                    if (settings.txt && $.isArray(settings.txt))        { settings.number = settings.txt.length; }
+                }
+                
                 // LOCALE HANDLING
                 $this.find("h1#label").html(settings.label);
                 $this.find("#guide").html(settings.locale.guide);
@@ -529,7 +531,7 @@
                 settings.puzzleid++;
 
                 if (wrongs) { $this.find("#submit").addClass("wrong"); } else { $this.find("#submit").addClass("good"); }
-
+                
                 if ( settings.puzzleid<settings.number ) {
                     setTimeout(function() { helpers.rebuild($this); settings.interactive = true; }, wrongs?2500:1000);
                 }

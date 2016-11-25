@@ -4,8 +4,10 @@
 <defs id="defs2385">
  <style type="text/css">
     svg#groups .disable            { display:none; }
-    svg#groups text                { font-size:16px;text-anchor:middle;fill:#241c1c;font-family:Times New Roman;font-weight:bold; fill:white; cursor:move; }
-    svg#groups #board text         { font-size:20px;  }
+    svg#groups text                { font-size:16px;text-anchor:middle;fill:#241c1c;font-family:Times New Roman;font-weight:bold; fill:white; cursor:move; dominant-baseline: middle; }
+    svg#groups #board text         { font-size:20px; dominant-baseline: middle;  }
+    svg#groups.big #board text     { font-size:30px;  }
+    svg#groups.big text            { font-size:30px; }
     svg#groups #pieces .result     { fill:white; fill-opacity:0; cursor:move; }
     svg#groups #pieces .wrong .result { fill:red; fill-opacity:0.5;}
     svg#groups #pieces .good .result  { fill:#0F0; fill-opacity:0.5;}
@@ -55,8 +57,8 @@
         <path d="M 165.96,151.15 C 159.64,151.15 154.56,156.24 154.56,162.56 L 154.56,173.65 C 178.07,179.61 210.73,183.28 246.84,183.28 C 288.68,183.28 325.88,178.32 349.59,170.62 L 349.59,162.56 C 349.59,156.24 344.50,151.15 338.18,151.15 L 165.96,151.15 z" id="p7977" style="opacity:1;fill:#8282b3;fill-opacity:0.29;fill-rule:nonzero;stroke:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"/>
         <path d="M 406.59,151.15 C 400.27,151.15 395.18,156.24 395.18,162.56 L 395.18,172.31 C 418.95,179.04 453.71,183.28 492.43,183.28 C 531.46,183.28 566.44,178.98 590.21,172.15 L 590.21,162.56 C 590.21,156.24 585.10,151.15 578.78,151.15 L 406.59,151.15 z" id="p7979" style="opacity:1;fill:#8282b3;fill-opacity:0.29;fill-rule:nonzero;stroke:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"/>
     </g>
-    <text x="247.94" y="186.57" id="text1"></text>
-    <text x="498.81" y="186.57" id="text2"></text>
+    <text x="247.94"  y="181" id="text1"></text>
+    <text x="498.81"  y="181" id="text2"></text>
 
     <g transform="translate(255,255)"><g transform="scale(1,1)"><path d="M -74 -24 C -75.108 -24 -76 -23.108 -76 -22 L -76 -18.46 C -78.97 -20.08 -82.37 -21 -86 -21 C -97.6 -21 -107 -11.6 -107 0 C -107 11.6 -97.6 21 -86 21 C -82.37 21 -78.97 20.08 -76 18.46 L -76 22 C -76 23.108 -75.108 24 -74 24 L 74 24 C 75.108 24 76 23.108 76 22 L 76 18.46 C 78.97 20.08 82.371 21 86 21 C 97.6 21 107 11.6 107 0 C 107 -11.6 97.6 -21 86 -21 C 82.371 -21 78.97 -20.08 76 -18.46 L 76 -22 C 76 -23.108 75.108 -24 74 -24 L -74 -24 z " id="p8168" style="opacity:1;fill:#241c1c;fill-opacity:0.75;stroke:#3c2d27;stroke-width:6;"/></g></g>
     <g transform="translate(255,320)"><g transform="scale(1,1)"><path d="M -74 -24 C -75.108 -24 -76 -23.108 -76 -22 L -76 -18.46 C -78.97 -20.08 -82.37 -21 -86 -21 C -97.6 -21 -107 -11.6 -107 0 C -107 11.6 -97.6 21 -86 21 C -82.37 21 -78.97 20.08 -76 18.46 L -76 22 C -76 23.108 -75.108 24 -74 24 L 74 24 C 75.108 24 76 23.108 76 22 L 76 18.46 C 78.97 20.08 82.371 21 86 21 C 97.6 21 107 11.6 107 0 C 107 -11.6 97.6 -21 86 -21 C 82.371 -21 78.97 -20.08 76 -18.46 L 76 -22 C 76 -23.108 75.108 -24 74 -24 L -74 -24 z " id="p8168" style="opacity:1;fill:#241c1c;fill-opacity:0.75;stroke:#3c2d27;stroke-width:6;"/></g></g>
@@ -66,19 +68,19 @@
 
 <g id="pieces">
     <g transform="translate(255,255)" id="a"><g class="scale"><g class="rot">
-        <use x="0" y="0" xlink:href="#template"/><text y="4"></text>
+        <use x="0" y="0" xlink:href="#template"/><text y="2"></text>
         <rect width="152" height="48" ry="2" x="-76" y="-24" class="result"/>
     </g></g></g>
     <g transform="translate(255,320)" id="b"><g class="scale"><g class="rot">
-        <use x="0" y="0" xlink:href="#template"/><text y="4"></text>
+        <use x="0" y="0" xlink:href="#template"/><text y="2"></text>
         <rect width="152" height="48" ry="2" x="-76" y="-24" class="result"/>
     </g></g></g>
     <g transform="translate(490,255)" id="c"><g class="scale"><g class="rot">
-        <use x="0" y="0" xlink:href="#template"/><text y="4"></text>
+        <use x="0" y="0" xlink:href="#template"/><text y="2"></text>
         <rect width="152" height="48" ry="2" x="-76" y="-24" class="result"/>
     </g></g></g>
     <g transform="translate(490,320)" id="d"><g class="scale"><g class="rot">
-        <use x="0" y="0" xlink:href="#template"/><text y="4"></text>
+        <use x="0" y="0" xlink:href="#template"/><text y="2"></text>
         <rect width="152" height="48" ry="2" x="-76" y="-24" class="result"/>
     </g></g></g>
 </g>
