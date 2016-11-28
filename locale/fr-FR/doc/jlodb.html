@@ -40,11 +40,8 @@
 
 <h2>Activités</h2>
 <h3>boulier</h3>
-<img src='res/img/asnus10To.png'/>
 <p>L'activité <i>boulier</i> propose d'utiliser plusieurs types de bouliers.</p>
 <h3>LOGO</h3>
-<img src='res/img/lolo001.png'/>
-<img src='res/img/lolo301.png'/>
 <p>L'activité <i>LOGO</i> propose à l'utilisateur de réaliser une figure géométrique, pré-tracée à l'écran et dont les caractéristiques sont précisées dans l'énoncé, à l'aide des opérateurs et valeurs fournis. L'exercice se termine lorsque l'utilisateur clique sur le bouton de validation à droite. La note est alors calculée en comparant la figure tracée à la figure demandée.</p>
 
 <h2>Guide du développeur</h2>
@@ -60,7 +57,7 @@
 <p>Une exception notable  :  avec le fichier <b>xx.rdf</b>, la valeur de FI est nulle et l'identifiant a une longueur maximale de 2.</p>
 
 <h2>API</h2>
-<p>L'ensemble des arguments sont de type GET sauf lorsque cela est précisé.</p>
+<p>L'ensemble des arguments sont de type GET sauf lorsque cela est précisé. Par ailleurs, les arguments obligatoires sont suivis d'une étoile *.</p>
 <h3>database.php</h3>
 <h3>exercice.php</h3>
 <p><b>exercice.php</b> fournit la description complète d'un exercice de la base correspondant aux différents paramètres. Sans argument ou lorsque plusieurs exercices correspondent aux critéres, l'exercice renvoyé est choisi aléatoirement parmi les candidats potentiels. La description retournée par l'API sert directement à l'exécution de l'exercice.</p>
@@ -95,6 +92,28 @@
 <ul>
 <li><b>10 : can not find exercice</b>. Aucun exercice ne correspond aux paramètres demandés.</li>
 </ul>
+<h3>activity.php</h3>
+<p><b>activity.php</b> renvoit un aperçu d'une activité donnée ainsi qu'une image de son utilisation.</p>
+<h4>arguments</h4>
+<ul>
+<li><b>name</b>* : identifiant de l'activité..</li>
+</ul>
+<h4>résultats</h4>
+<ul>
+<li><b>name</b> : identifiant de l'activité</li>
+<li><b>lang</b> : localisation du serveur</li>
+<li><b>label</b> : nom localisé de l'activté</li>
+<li><b>exercices</b> : nombre d'exercices rédigés avec cette activité</li>
+<li><b>classification</b> : [] ensemble des classifications référencées par les exercices</li>
+<li><b>files</b> : [] liste des fichiers statiques de description</li>
+<li><b>locale</b> : {} données localisées nécessaires à la bonne exécution du jeu</li>
+</ul>
+<h4>erreurs</h4>
+<ul>
+<li><b>8 : can not find activity</b>. L'activité demandée n'existe pas.</li>
+<li><b>9 : activity name is missing</b>. Le paramètre name est absent de la requête.</li>
+</ul>
+
 
 <h2>Activités et exercices</h2>
 <h3>LOGO</h3>

@@ -193,6 +193,19 @@
         <dct:alternative>001</dct:alternative>
     </rdf:Description>
 
+    <rdf:Description>
+        <dct:identifier>161</dct:identifier>
+        <dct:title xml:lang="fr-FR">Payer quatre factures aléatoires comprises entre 1 et 200 en utilisant le monnayeur.</dct:title>
+        <dct:description><![CDATA["decimal":false,"wallet":[0,0,0,0,0,0,0,0,0,0,0,0,5],"menu":["wallet","change"],"errratio":2,"data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"bill","text":"b1","subtype":"bill1","value":"gen"},{"type":"dialog","text":"d2","from":"owner"}],"gen":"function(i_){return 1+Math.floor(Math.random()*200);}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Des factures !!!"],"d2":["Super."],"b1":["N° 2 8392 78 E","Facture","A régler sous huitaine","Total","site : www.facture-poufpouf.org"]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
 
     <!-- 501-999 decimal prices -->
 
