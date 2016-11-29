@@ -3,11 +3,13 @@
          xmlns:dct="http://purl.org/dc/terms/">
 
     <!-- Prefix
-         c : count coins
          d : count with digit
          i : identification
          n : count with number
+         c : count coins
          s : count stars
+         g : count candles
+         m : count matches
          e : space between number class
     -->
 
@@ -272,6 +274,48 @@
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
     </rdf:Description>
 
+    
+
+    <rdf:Description>
+        <dct:identifier>g13</dct:identifier>
+        <dct:title xml:lang="fr-FR">Associer à chaque groupe de bougies le bon nombre (de 1 à 3)</dct:title>
+        <dct:description><![CDATA["number":3,"template":"table3.1x3","gen":"function(){var t=[],ret=[],nb=3,max=3,line=3; for (var j=0; j<line; j++) { var r=\\\"\\\",a=Math.floor(Math.random()*3)+1,b,v;  do { b=a;v=[]; for (var i=0; i<nb; i++) { var aa=Math.floor(Math.random()*(Math.min(max,b)+1)); b-=aa; v.push(aa); }} while(b>0); v.sort(function(){return Math.random()-0.5;}); for (var i=0; i<nb; i++) { r+=\\\"<div class='icon'><img src='res/img/numbers/cake0\\\"+v[i]+\\\".svg'/></div>\\\";} t.push(r); ret.push(a-1); } return {result:ret,t:t}}","states":{ "nb":3, "content":["1","2","3"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Trouvez le bon nombre de [b]bougies[/b]."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>s510</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire,CP,GS</dct:coverage>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>g15</dct:identifier>
+        <dct:title xml:lang="fr-FR">Associer à chaque groupe de bougies le bon nombre (de 1 à 5)</dct:title>
+        <dct:description><![CDATA["number":3,"template":"table3.1x3","gen":"function(){var t=[],ret=[],nb=3,max=4,line=3; for (var j=0; j<line; j++) { var r=\\\"\\\",a=Math.floor(Math.random()*5)+1,b,v;  do { b=a;v=[]; for (var i=0; i<nb; i++) { var aa=Math.floor(Math.random()*(Math.min(max,b)+1)); b-=aa; v.push(aa); }} while(b>0); v.sort(function(){return Math.random()-0.5;}); for (var i=0; i<nb; i++) { r+=\\\"<div class='icon'><img src='res/img/numbers/cake0\\\"+v[i]+\\\".svg'/></div>\\\";} t.push(r); ret.push(a-1); } return {result:ret,t:t}}","states":{ "nb":5, "content":["1","2","3","4","5"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Trouvez le bon nombre de [b]bougies[/b]."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>s510</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire,CP,GS</dct:coverage>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>g110</dct:identifier>
+        <dct:title xml:lang="fr-FR">Associer à chaque groupe de bougies le bon nombre (de 1 à 10)</dct:title>
+        <dct:description><![CDATA["number":3,"template":"table5.1x4","gen":"function(){var t=[],ret=[],nb=5,max=4,line=4; for (var j=0; j<line; j++) { var r=\\\"\\\",a=Math.floor(Math.random()*10)+1,b,v;  do { b=a;v=[]; for (var i=0; i<nb; i++) { var aa=Math.floor(Math.random()*(Math.min(max,b)+1)); b-=aa; v.push(aa); }} while(b>0); v.sort(function(){return Math.random()-0.5;}); for (var i=0; i<nb; i++) { r+=\\\"<div class='icon'><img src='res/img/numbers/cake0\\\"+v[i]+\\\".svg'/></div>\\\";} t.push(r); ret.push(a-1); } return {result:ret,t:t}}","states":{ "nb":10, "content":["1","2","3","4","5","6","7","8","9","10"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Trouvez le bon nombre de [b]bougies[/b]."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>s510</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire,CP</dct:coverage>
+    </rdf:Description>
+    
+    
     <rdf:Description>
         <dct:identifier>s13</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer à chaque groupe d'étoiles le bon nombre (de 1 à 3)</dct:title>
@@ -282,7 +326,7 @@
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>s510</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">aléatoire,CP</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">aléatoire,CP,GS</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -295,7 +339,7 @@
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>s510</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">aléatoire,CP</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">aléatoire,CP,GS</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -308,7 +352,7 @@
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>s510</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">aléatoire,CP</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">aléatoire,CP,GS</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -399,7 +443,7 @@
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>s510</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">aléatoire,CP</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">aléatoire,CP,GS</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -412,7 +456,7 @@
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>s510</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">aléatoire,CP</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">aléatoire,CP,GS</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -424,6 +468,98 @@
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
+        <dct:alternative>s510</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire,CP,GS</dct:coverage>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>c110</dct:identifier>
+        <dct:title xml:lang="fr-FR">Associer à chaque groupe de pièces le bon nombre (de 1 à 10)</dct:title>
+        <dct:description><![CDATA["number":3,"template":"table5.1x4","gen":"function(){var result=\\\"\\\",ret=[],i=0;  while (i<4) { var a = Math.floor(Math.random()*10)+1, aa=a-1, r=\\\"\\\", c = 0; do {var b=Math.floor(Math.random()*(a>5?5:a))+1; a-=b; r+=\\\"<div class='icon'><img src='res/img/coin/coins\\\"+b+\\\".svg'/></div>\\\"; c++; } while(a); if (c<=5) { ret.push(r); result+=(aa); i++; }} return {result:result,t:ret}}","states":{ "nb":10, "content":["1","2","3","4","5","6","7","8","9","10"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Associez à chaque élément le bon nombre."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>s510</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire,CP</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>c510</dct:identifier>
+        <dct:title xml:lang="fr-FR">Associer à chaque groupe de pièces le bon nombre (de 5 à 10)</dct:title>
+        <dct:description><![CDATA["number":3,"template":"table5.1x4","gen":"function(){var result=\\\"\\\",ret=[],i=0;  while (i<4) { var a = Math.floor(Math.random()*6)+5, aa=a-1, r=\\\"\\\", c = 0; do {var b=Math.floor(Math.random()*(a>5?5:a))+1; a-=b; r+=\\\"<div class='icon'><img src='res/img/coin/coins\\\"+b+\\\".svg'/></div>\\\"; c++; } while(a); if (c<=5) { ret.push(r); result+=(aa); i++; }} return {result:result,t:ret}}","states":{ "nb":10, "content":["1","2","3","4","5","6","7","8","9","10"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Associez à chaque élément le bon nombre."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>s510</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire,CP</dct:coverage>
+    </rdf:Description>
+    
+
+    <rdf:Description>
+        <dct:identifier>m13</dct:identifier>
+        <dct:title xml:lang="fr-FR">Associer à chaque groupe d'allumettes le bon nombre (de 1 à 3)</dct:title>
+        <dct:description><![CDATA["number":3,"template":"table3.1x3","gen":"function(){var result=\\\"\\\",ret=[];  for (var i=0; i<3; i++) { var a = Math.floor(Math.random()*3)+1, r=\\\"\\\"; result+=(a-1); do {var b=Math.floor(Math.random()*a)+1; a-=b; r+=\\\"<div class='icon'><img src='res/img/matches/match\\\"+b+\\\"1.svg'/></div>\\\";} while(a); ret.push(r); } return {result:result,t:ret}}","states":{ "nb":3, "content":["1","2","3"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Associez à chaque élément le bon nombre."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>s510</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire,CP,GS</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>m14</dct:identifier>
+        <dct:title xml:lang="fr-FR">Associer à chaque groupe d'allumettes le bon nombre (de 1 à 4)</dct:title>
+        <dct:description><![CDATA["number":3,"template":"table5.1x4","gen":"function(){var result=\\\"\\\",ret=[];  for (var i=0; i<4; i++) { var a = Math.floor(Math.random()*4)+1, r=\\\"\\\"; result+=(a-1); do {var b=Math.floor(Math.random()*a)+1; a-=b; r+=\\\"<div class='icon'><img src='res/img/matches/match\\\"+b+\\\"1.svg'/></div>\\\";} while(a); ret.push(r); } return {result:result,t:ret}}","states":{ "nb":4, "content":["1","2","3","4"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Associez à chaque élément le bon nombre."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>s510</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire,CP,GS</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>m15</dct:identifier>
+        <dct:title xml:lang="fr-FR">Associer à chaque groupe d'allumettes le bon nombre (de 1 à 5)</dct:title>
+        <dct:description><![CDATA["number":3,"template":"table5.1x4","gen":"function(){var result=\\\"\\\",ret=[];  for (var i=0; i<4; i++) { var a = Math.floor(Math.random()*5)+1, r=\\\"\\\"; result+=(a-1); do {var b=Math.floor(Math.random()*a)+1; a-=b; r+=\\\"<div class='icon'><img src='res/img/matches/match\\\"+b+\\\"1.svg'/></div>\\\";} while(a); ret.push(r); } return {result:result,t:ret}}","states":{ "nb":5, "content":["1","2","3","4","5"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Associez à chaque élément le bon nombre."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>s510</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire,CP,GS</dct:coverage>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>m110</dct:identifier>
+        <dct:title xml:lang="fr-FR">Associer à chaque groupe d'allumettes le bon nombre (de 1 à 10)</dct:title>
+        <dct:description><![CDATA["number":3,"template":"table5.1x4","gen":"function(){var result=\\\"\\\",ret=[],i=0;  while (i<4) { var a = Math.floor(Math.random()*10)+1, aa=a-1, r=\\\"\\\", c = 0; do {var b=Math.floor(Math.random()*(a>5?5:a))+1; a-=b; r+=\\\"<div class='icon'><img src='res/img/matches/match\\\"+b+\\\"1.svg'/></div>\\\"; c++; } while(a); if (c<=5) { ret.push(r); result+=(aa); i++; }} return {result:result,t:ret}}","states":{ "nb":10, "content":["1","2","3","4","5","6","7","8","9","10"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Associez à chaque élément le bon nombre."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>s510</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">aléatoire,CP</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>m510</dct:identifier>
+        <dct:title xml:lang="fr-FR">Associer à chaque groupe d'allumettes le bon nombre (de 5 à 10)</dct:title>
+        <dct:description><![CDATA["number":3,"template":"table5.1x4","gen":"function(){var result=\\\"\\\",ret=[],i=0;  while (i<4) { var a = Math.floor(Math.random()*6)+5, aa=a-1, r=\\\"\\\", c = 0; do {var b=Math.floor(Math.random()*(a>5?5:a))+1; a-=b; r+=\\\"<div class='icon'><img src='res/img/matches/match\\\"+b+\\\"1.svg'/></div>\\\"; c++; } while(a); if (c<=5) { ret.push(r); result+=(aa); i++; }} return {result:result,t:ret}}","states":{ "nb":10, "content":["1","2","3","4","5","6","7","8","9","10"],"style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Associez à chaque élément le bon nombre."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>2</dct:type>
         <dct:alternative>s510</dct:alternative>
         <dct:coverage xml:lang="fr-FR">aléatoire,CP</dct:coverage>
     </rdf:Description>
