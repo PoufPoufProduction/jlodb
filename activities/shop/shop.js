@@ -517,6 +517,7 @@
                 settings.text.count = 0;
                 settings.text.callback = _callback;
                 settings.text.available = false;
+                settings.text.time  = 0;
                 $this.find("#bubbles").show();
                 $this.find("#"+_text.id+" .content").html("").parent().css("opacity",0).show().animate({opacity:0.9}, 400, function() {
                     helpers.text.char($this); });
@@ -524,18 +525,21 @@
             char: function($this) {
                 var settings = helpers.settings($this);
                 settings.text.available = true;
+                if (!settings.text.time) { settings.text.time  = Date.now(); }
+                var count = Math.floor((Date.now()-settings.text.time)/30);
                 if (settings.text.count<settings.text.value.dialog[settings.text.page].length) {
-                    $this.find("#"+settings.text.value.id+" .content").append(settings.text.value.dialog[settings.text.page][settings.text.count]);
-                    settings.text.count++;
-                    settings.text.timerid = setTimeout(function() { helpers.text.char($this); }, 10);
+                    $this.find("#"+settings.text.value.id+" .content").append(
+                        settings.text.value.dialog[settings.text.page].substr(settings.text.count, count-settings.text.count));
+                    settings.text.count = count;
+                    settings.text.timerid = setTimeout(function() { helpers.text.char($this); }, 2);
                 }
-                else { settings.text.timerid = 0; }
+                else { settings.text.timerid = 0; settings.text.time  = 0; }
             },
             click: function($this) {
                 var settings = helpers.settings($this);
                 if (settings.text.available) {
                     if (settings.text.timerid) {
-                        clearTimeout(settings.text.timerid); settings.text.timerid = 0;
+                        clearTimeout(settings.text.timerid); settings.text.timerid = 0;  settings.text.time  = 0;
                         $this.find("#"+settings.text.value.id+" .content").html(settings.text.value.dialog[settings.text.page]);
                     }
                     else {
@@ -651,7 +655,7 @@
                     timerid         : 0,
                     it              : 0,
                     here            : "",
-                    text            : { timerid : 0, value:{}, page:0, count: 0, callback:0},
+                    text            : { timerid : 0, value:{}, page:0, count: 0, callback:0, time:0 },
                     coins           : { wallet: 0 },
                     score           : 5,
                     sketchbook      : { svg:0, g:0, path:0, ratio:1,  last:[0,0], offset:[0,0]}

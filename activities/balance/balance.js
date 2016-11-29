@@ -368,6 +368,7 @@
                 if (settings.cc.timerid) { clearTimeout(settings.cc.timerid); settings.cc.timerid = 0; }
                 settings.cc.page = 0;
                 settings.cc.count = 0;
+                settings.cc.time = 0;
                 if (settings.art) { $this.find("#art").html("<img src='res/img/"+settings.art+".svg'/>").show(); }
                 $this.find("#course").show();
                 $this.find("#course pre").html("").parent().css("opacity",0).animate({opacity:0.9}, 1000, function() {
@@ -376,18 +377,20 @@
             char: function($this) {
                 var settings = helpers.settings($this);
                 settings.cc.available = true;
+                if (!settings.cc.time) { settings.cc.time  = Date.now(); }
+                var count = Math.floor((Date.now()-settings.cc.time)/20);
                 if (settings.cc.count<settings.course[settings.cc.page].length) {
-                    $this.find("#course pre").append(settings.course[settings.cc.page][settings.cc.count]);
-                    settings.cc.count++;
+                    $this.find("#course pre").append(settings.course[settings.cc.page].substr(settings.cc.count, count-settings.cc.count));
+                    settings.cc.count = count;
                     settings.cc.timerid = setTimeout(function() { helpers.course.char($this); }, 10);
                 }
-                else { settings.cc.timerid = 0; }
+                else { settings.cc.timerid = 0; settings.cc.time = 0; }
             },
             click: function($this) {
                 var settings = helpers.settings($this);
                 if (settings.cc.available) {
                     if (settings.cc.timerid) {
-                        clearTimeout(settings.cc.timerid); settings.cc.timerid = 0;
+                        clearTimeout(settings.cc.timerid); settings.cc.timerid = 0; settings.cc.time = 0;
                         $this.find("#course pre").html(settings.course[settings.cc.page]);
                     }
                     else {
@@ -428,7 +431,7 @@
                     score           : 5,
                     id              : 0,
                     move            : { x:0, y:0 },
-                    cc              : { count:0, page:0,timerid:0,available:false },
+                    cc              : { count:0, page:0,timerid:0,available:false, time:0 },
                     anim            : { init:0, diff:0, timerid:0, count: 0}
                 };
 
