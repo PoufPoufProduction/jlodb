@@ -7,6 +7,13 @@
         css         : "style.css",                              // Activity's css style sheet
         lang        : "en-US",                                  // Current localization
         exercice    : [],                                       // Exercice
+        fontex      : 1,
+        tags        : "",
+        mode        : "default",
+        totaltime   : 30,
+        freq        : 1,
+        duration    : 2,
+        animation   : 0.5,
         debug       : true                                     // Debug mode
     };
 
@@ -18,6 +25,17 @@
         "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
         "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>"
     ];
+   
+    var predefined = {
+        bunny       : { type: "img", src:"ppvc/bunny01", src2:"ppvc/bunny_knocked01" },
+        lizzie      : { type: "img", src:"ppvc/lizzie01" },
+        lottie      : { type: "img", src:"ppvc/lottie01" },
+        blueball    : { type: "img", src:"balls/blue01" },
+        redball     : { type: "img", src:"balls/red01" },
+        greenball   : { type: "img", src:"balls/green01" },
+        yellowball  : { type: "img", src:"balls/yellow01" },
+        purpleball  : { type: "img", src:"balls/purple01" }
+    };
 
     // private methods
     var helpers = {
@@ -43,12 +61,12 @@
         end: function($this) {
             var settings = helpers.settings($this);
             helpers.unbind($this);
-            settings.context.onquit($this,{'status':'success','score':settings.score});
+            settings.context.onquit($this,{'status':'success','score':Math.max(0,settings.score)});
         },
         // End all timers
         quit: function($this) {
             var settings = helpers.settings($this);
-            // if (settings.timerid) { clearTimeout(settings.timerid); }
+            if (settings.timerid) { clearTimeout(settings.timerid); }
         },
         format: function(_text) {
             for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
@@ -91,6 +109,7 @@
                 if (settings.context.onload) { settings.context.onload($this); }
 
                 $this.css("font-size", ($this.height()/12)+"px");
+                $this.addClass(settings.mode);
 
                 // Locale handling
                 $this.find("h1#label").html(settings.label);
@@ -98,16 +117,132 @@
                     if ($.isArray(value)) {  for (var i in value) { $this.find("#"+id).append("<p>"+value[i]+"</p>"); } }
                     else { $this.find("#"+id).html(value); }
                 }); }
+                
+                var arr=["good","wrong"];
+                for (var j in arr) {
+                    for (var i in settings[arr[j]]) {
+                        var elt = $.extend({},predefined[settings[arr[j]][i]]?predefined[settings[arr[j]][i]]:settings[arr[j]][i],true);
+                        if (typeof(elt)=="string") { alert("Error: "+elt+" unknown"); } else {
+                            if (elt.type=="sig") { elt.src = "ppvc/sign01"; }
+                            if (elt.src)    { elt.$src = $("<img src='res/img/"+elt.src+".svg'/>"); }
+                            if (elt.src2)   { elt.$src2 = $("<img src='res/img/"+elt.src2+".svg'/>"); }
+                            settings.elt[arr[j]].push(elt);
+                        } 
+                    }
+                }
+                
+                if (settings.tag) {
+                    $this.find("#tag").html(
+                        settings.tag.toString().indexOf(".svg")!=-1?"<img src='res/img/"+settings.tag+"'/>":settings.tag).show();
+                }
+                
+                $this.bind("mousedown touchstart", function(event){
+                    var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
+                                  event.originalEvent.touches[0]:event;
+
+                    if (settings.interactive) {
+                        var x = ((vEvent.clientX-$this.offset().left)/$this.width() - 0.02)/0.218;
+                        var y = ((vEvent.clientY-$this.offset().top)/$this.height() - 0.12)/0.295;
+                        var ok = true;
+                        
+                        if (settings.mode=="default")
+                        {
+                            var xx = Math.floor(x*100)%100;
+                            ok = (xx>=18) && (xx<=82);
+                            y+=0.3;
+                        }
+                        x=Math.floor(x); y=Math.floor(y);
+                        if (ok && x>=0 && x<4 && y>=0 && y<3) {
+                            var e = settings.grid[x+y*4];
+                            if (e && !e.clicked) {
+                                e.clicked = true;
+                                if (e.from=="good") { $fx = $this.find("#g"+x.toString()+y.toString()).show(); }
+                                else                { $fx = $this.find("#w"+x.toString()+y.toString()).show(); settings.score--; }
+                                setTimeout(function() { $fx.hide(); } , 200);
+                            }
+                            
+                        }
+                    }
+                    event.preventDefault();
+                });
 
                 // Exercice
                 if ($.isArray(settings.exercice)) {
-                    $this.find("#exercice").html("");
-                    for (var i in settings.exercice) { $this.find("#exercice").append(
+                    $this.find("#exercice>div").html("");
+                    for (var i in settings.exercice) { $this.find("#exercice>div").append(
                         "<p>"+(settings.exercice[i].length?helpers.format(settings.exercice[i]):"&#xA0;")+"</p>"); }
-                } else { $this.find("#exercice").html(helpers.format(settings.exercice)); }
+                } else { $this.find("#exercice>div").html(helpers.format(settings.exercice)); }
+                $this.find("#exercice>div").css("font-size",settings.fontex+"em");
 
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
+        },
+        run: function($this) {
+            var settings = helpers.settings($this);
+            var d = Date.now();
+            settings.timerid = 0;
+            
+            // CHECK ELT EVERY 100 ms
+            if (d-settings.time.last>100 && d-settings.time.begin<settings.totaltime*1000) {
+                if (settings.count<12 && Math.random()*((d-settings.time.begin)/(settings.freq*1000)-settings.total)>0.5) {
+                    var from = "good";
+                    if (settings.elt.wrong.length) { from = Math.random()>0.5?"wrong":"good"; }
+                    var elt=settings.elt[from][Math.floor(Math.random()*settings.elt[from].length)];
+                    var to = -1;
+                    do { to =Math.floor(Math.random()*12); } while (settings.grid[to]!=0);
+                    var e = { type:elt.type, from:from, begin:d, clicked:false, inpos:false };
+                    e.$html=$("<div class='icon'></div>");
+                    
+                    var top= Math.floor(to/4)+(settings.mode=="default"?0.52:0);
+                    e.$html.css("z-index",Math.floor(to/4))
+                           .css("top",top+"em")
+                           .css("left",(to%4)+"em");
+                    switch(e.type) {
+                        case "img" :
+                            e.$html.append(elt.$src.clone());
+                            if (elt.$src2) { e.$src2 = elt.$src2.clone(); }
+                            break;
+                        case "txt" :
+                            e.$html.attr("class","text").append("<div>"+elt.value+"</div>");
+                            break;
+                        case "sig" :
+                            e.$html.append(elt.$src.clone()).append("<div class='label'>"+elt.value+"</div>");
+                            break;
+                    }
+                    $this.find("#elts").append(e.$html);
+                    settings.grid[to] = e;
+                    
+                    settings.count++;
+                    settings.total++;
+                }
+                settings.time.last = d;
+            }
+
+            for (var i=0; i<12; i++) if (settings.grid[i]) {
+                var e = settings.grid[i];
+                var still = (settings.duration*1000-(d-e.begin));
+                if (settings.mode=="default") {
+                    var alpha = Math.min((d-e.begin)/(settings.animation*1000), still/(settings.animation*1000));
+                    if (alpha<1)     { e.$html.css("top",(Math.floor(i/4)+0.52*(1-alpha)-0.25*alpha)+"em"); } else
+                    if (!e.inpos)    { e.$html.css("top",(Math.floor(i/4)-0.25)+"em"); e.inpos = true; }
+                }
+
+                if (still<=0) { 
+                    e.$html.detach(); settings.count--; settings.grid[i] = 0;
+                    if (e.from=="good" && !e.clicked) { 
+                        settings.score--;
+                        var $fx = $this.find("#w"+(i%4).toString()+Math.floor(i/4).toString());
+                        $fx.show();
+                        setTimeout(function() { $fx.hide(); } , 200);
+                    }
+                }
+            }
+            
+            if (settings.score<=0 || (d-settings.time.begin>settings.totaltime*1000 && settings.count==0)) {
+                settings.interactive = false;
+                setTimeout(function() { helpers.end($this); }, 500);
+            }
+            else { settings.timerid = setTimeout(function() { helpers.run($this); }, 5); }
         }
     };
 
@@ -119,7 +254,14 @@
             init: function(options) {
                 // The settings
                 var settings = {
-                    interactive     : false
+                    interactive     : false,
+                    elt             : { good:[], wrong:[] },
+                    grid            : [0,0,0,0,0,0,0,0,0,0,0,0],
+                    total           : 0,
+                    count           : 0,
+                    score           : 5,
+                    time            : { begin : 0, last : 0, newelt : 0 },
+                    timerid         : 0
                 };
 
                 return this.each(function() {
@@ -142,6 +284,8 @@
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 settings.interactive = true;
+                settings.time.begin = Date.now();
+                settings.timerid = setTimeout(function() { helpers.run($this); }, 500);
             },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
