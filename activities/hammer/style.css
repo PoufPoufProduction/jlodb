@@ -1,11 +1,12 @@
 .hammer                            { cursor:pointer;  }
-.hammer div#splashex               { background-image:url("../../res/img/banners/it.svg"); }
-.hammer div#splashex h1            { position:absolute; top:45%; left:80%; font-size:1.5em; }
-.hammer div#splashex #guide        { position:absolute; top:52%; left:45%; font-size:.75em; width:48%; text-align:justify; }
+.hammer div#splashex               { background-image:url("../../res/img/banners/hammer.svg"); }
+.hammer div#splashex h1            { position:absolute; top:5%; left:40%; font-size:1.5em; }
+.hammer div#splashex #guide        { position:absolute; top:15%; left:45%; font-size:1em; width:48%; text-align:justify; }
 
 .hammer div#exercice               { width:32em; height:3em; background-repeat:repeat; font-size:.5em; background-image:url("../../res/img/background/book02.svg"); text-align:justify; font-family: "Courier New" Courier monospace; }
 .hammer div#exercice>div        { margin:0 15% 0 8%; }
 .hammer div#tag     { position:absolute; top:1%; left:85%; font-size:2em; z-index:4; border:2px solid black; background-color:rgba(255,255,255,0.5); border-radius:.1em; display:none; text-align:center; }
+.hammer div#tag>div { font-size:.8em; margin-top:.07em; }
 
 .hammer div#board                       { font-size:3.5em; position:relative; width:5em; height:3em; background-color:#609b14; overflow:visible;}
 .hammer div#board .grid            { position:absolute;width:4em; height:3em;top:0;left:0.1em; overflow:visible; }
@@ -18,7 +19,15 @@
 .hammer .text>div           { margin:.11em; background-color:#EEE; border-radius:.6em; font-size:.7em; width:1.2em; height:1.2em; text-align:center; }
 .hammer .icon .label                { position:absolute; width:1.15em; height:1.15em; top:0.08em;left:0.42em; font-size:.5em; color:black;
                              text-align:center; }
-.hammer .classic                           { display:none; }
+.hammer .icon.good .label   { color:#080; background-color:rgba(0,255,0,0.4); }
+.hammer .icon.wrong .label { color:#800; background-color:rgba(255,0,0,0.4); }
 
+.hammer .text.good>div          { color:#080; background-color:#0F0; }
+.hammer .text.wrong>div        { color:#800; background-color:#F00; }
+
+.hammer #fg01>div   { border:1px solid #609b14; border-width:0 0 1px 0; }
+
+.hammer .classic                           { display:none; }
 .hammer.classic .normal   { display:none; }
 .hammer.classic  .classic { display:inline; }
+.hammer.classic #elts>div       { opacity:0; }

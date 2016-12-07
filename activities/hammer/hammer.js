@@ -10,10 +10,10 @@
         fontex      : 1,
         tags        : "",
         mode        : "default",
-        totaltime   : 30,
+        totaltime   : 40,
         freq        : 1,
-        duration    : 2,
-        animation   : 0.5,
+        duration    : 4,
+        animation   : 1,
         debug       : true                                     // Debug mode
     };
 
@@ -27,14 +27,13 @@
     ];
    
     var predefined = {
-        bunny       : { type: "img", src:"ppvc/bunny01", src2:"ppvc/bunny_knocked01" },
-        lizzie      : { type: "img", src:"ppvc/lizzie01" },
-        lottie      : { type: "img", src:"ppvc/lottie01" },
-        blueball    : { type: "img", src:"balls/blue01" },
-        redball     : { type: "img", src:"balls/red01" },
-        greenball   : { type: "img", src:"balls/green01" },
-        yellowball  : { type: "img", src:"balls/yellow01" },
-        purpleball  : { type: "img", src:"balls/purple01" }
+        bunny       : { type: "img", src:"ppvc/bunny01",    wrong:"ppvc/bunny02",   good:"ppvc/bunny03" },
+        lizzie      : { type: "img", src:"ppvc/lizzie01",   wrong:"ppvc/lizzie03",  good:"ppvc/lizzie04" },
+        lottie      : { type: "img", src:"ppvc/lottie01",   wrong:"ppvc/lottie02",  good:"ppvc/lottie04" },
+        blueball    : { type: "img", src:"balls/blue01",    wrong:"balls/gray02",   good:"balls/blue02" },
+        redball     : { type: "img", src:"balls/red01",     wrong:"balls/gray02",   good:"balls/red02" },
+        greenball   : { type: "img", src:"balls/green01",   wrong:"balls/gray02",   good:"balls/green02" },
+        purpleball  : { type: "img", src:"balls/purple01",  wrong:"balls/gray02",   good:"balls/purple02" }
     };
 
     // private methods
@@ -124,8 +123,8 @@
                         var elt = $.extend({},predefined[settings[arr[j]][i]]?predefined[settings[arr[j]][i]]:settings[arr[j]][i],true);
                         if (typeof(elt)=="string") { alert("Error: "+elt+" unknown"); } else {
                             if (elt.type=="sig") { elt.src = "ppvc/sign01"; }
-                            if (elt.src)    { elt.$src = $("<img src='res/img/"+elt.src+".svg'/>"); }
-                            if (elt.src2)   { elt.$src2 = $("<img src='res/img/"+elt.src2+".svg'/>"); }
+                            if (elt.src)        { elt.$src = $("<img src='res/img/"+elt.src+".svg'/>"); }
+                            if (elt[arr[j]])    { elt.$src2 = $("<img src='res/img/"+elt[arr[j]]+".svg'/>"); }
                             settings.elt[arr[j]].push(elt);
                         } 
                     }
@@ -133,7 +132,7 @@
                 
                 if (settings.tag) {
                     $this.find("#tag").html(
-                        settings.tag.toString().indexOf(".svg")!=-1?"<img src='res/img/"+settings.tag+"'/>":settings.tag).show();
+                        settings.tag.toString().indexOf(".svg")!=-1?"<img src='res/img/"+settings.tag+"'/>":"<div>"+settings.tag+"</div>").show();
                 }
                 
                 $this.bind("mousedown touchstart", function(event){
@@ -158,6 +157,20 @@
                                 e.clicked = true;
                                 if (e.from=="good") { $fx = $this.find("#g"+x.toString()+y.toString()).show(); }
                                 else                { $fx = $this.find("#w"+x.toString()+y.toString()).show(); settings.score--; }
+                                e.$html.addClass(e.from);
+                                var now     = Date.now();
+                                var delta   = Math.max(0,settings.animation*1000-(now-e.begin),(now-e.begin)-(settings.duration-settings.animation)*1000);
+                                e.begin = Date.now()-(settings.duration-settings.animation)*1000-delta;
+                                
+                                switch(e.type) {
+                                    case "img" :
+                                        if (e.$src2) {
+                                            e.$html.find("img").detach();
+                                            e.$html.append(e.$src2);
+                                        }
+                                        break;
+                                }
+                                
                                 setTimeout(function() { $fx.hide(); } , 200);
                             }
                             
@@ -203,10 +216,14 @@
                             if (elt.$src2) { e.$src2 = elt.$src2.clone(); }
                             break;
                         case "txt" :
-                            e.$html.attr("class","text").append("<div>"+elt.value+"</div>");
+                            var value = elt.value;
+                            if (elt.gen) { value = eval('('+elt.gen+')')(); }
+                            e.$html.addClass("text").append("<div>"+value+"</div>");
                             break;
                         case "sig" :
-                            e.$html.append(elt.$src.clone()).append("<div class='label'>"+elt.value+"</div>");
+                            var value = elt.value;
+                            if (elt.gen) { value = eval('('+elt.gen+')')(); }
+                            e.$html.append(elt.$src.clone()).append("<div class='label'>"+value+"</div>");
                             break;
                     }
                     $this.find("#elts").append(e.$html);
@@ -221,10 +238,14 @@
             for (var i=0; i<12; i++) if (settings.grid[i]) {
                 var e = settings.grid[i];
                 var still = (settings.duration*1000-(d-e.begin));
+                var alpha = Math.min((d-e.begin)/(settings.animation*1000), still/(settings.animation*1000));
                 if (settings.mode=="default") {
-                    var alpha = Math.min((d-e.begin)/(settings.animation*1000), still/(settings.animation*1000));
                     if (alpha<1)     { e.$html.css("top",(Math.floor(i/4)+0.52*(1-alpha)-0.25*alpha)+"em"); } else
                     if (!e.inpos)    { e.$html.css("top",(Math.floor(i/4)-0.25)+"em"); e.inpos = true; }
+                }
+                else {
+                    if (alpha<1)     { e.$html.css("opacity",alpha); } else
+                    if (!e.inpos)    { e.$html.css("opacity",1); e.inpos = true; }
                 }
 
                 if (still<=0) { 
