@@ -16,11 +16,19 @@ if (!$error) {
                             '`Book_Name`             VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL, '.
                             '`User_Key`              INT NOT NULL, '.
                             '`Book_Label`            TEXT NOT NULL, '.
+                            '`Book_Comment`          TEXT, '.
                             '`Book_Description`      TEXT NOT NULL, '.
                             ' CONSTRAINT `'.$_SESSION['prefix'].'Book_User_Key` FOREIGN KEY (`User_Key`) REFERENCES `'.$_SESSION['prefix'].'user` '.
                             ' (`User_Key`) ON DELETE CASCADE,'.
                             ' PRIMARY KEY ( `Book_Name` )) ENGINE=InnoDB', $link);
         }
+        
+        $columns = mysql_query('SHOW COLUMNS FROM `'.$_SESSION['prefix'].'book`');
+        $bookComment = false;
+        while($row = mysql_fetch_array($columns)) {
+            if ($row[0]=="Book_Comment") { $bookComment = true; }
+        }
+        if (!$bookComment) { mysql_query('ALTER TABLE `'.$_SESSION['prefix'].'book` ADD `Book_Comment` TEXT AFTER `Book_Label`'); }
 
     
         if (!mysql_query("SELECT * FROM `".$_SESSION['prefix']."tibibo`")) {

@@ -39,128 +39,48 @@
 <h2>Utilisation du site</h2>
 
 <h2>Activités</h2>
-<h3>boulier</h3>
-<p>L'activité <i>boulier</i> propose d'utiliser plusieurs types de bouliers.</p>
-<h3>LOGO</h3>
-<p>L'activité <i>LOGO</i> propose à l'utilisateur de réaliser une figure géométrique, pré-tracée à l'écran et dont les caractéristiques sont précisées dans l'énoncé, à l'aide des opérateurs et valeurs fournis. L'exercice se termine lorsque l'utilisateur clique sur le bouton de validation à droite. La note est alors calculée en comparant la figure tracée à la figure demandée.</p>
 
-<h2>Guide du développeur</h2>
-<h3>Noms des exercices</h3>
-<p>Le nom des exercices est formé ainsi  :  ( S + E ) + FI + ID.</p>
-<ul>
-<li>S est la première lettre du nom de l'activité.</li>
-<li>E est la dernière lettre du nom de l'activité.</li>
-<li>FI sont les 2 premières lettres du nom du fichier dans lequel est défini l'exercice.</li>
-<li>ID est l'identifiant de l'exercice.</li>
-</ul>
-<p>Ainsi <b>ceac001</b> désigne l'exercice appartenant à l'activité <b>code</b> (ce), définit dans un fichier dont le nom commence par ac (<b>action.rdf</b> en l'occurence) et dont l'identifiant est <b>001</b>.</p>
-<p>Une exception notable  :  avec le fichier <b>xx.rdf</b>, la valeur de FI est nulle et l'identifiant a une longueur maximale de 2.</p>
-
-<h2>API</h2>
-<p>L'ensemble des arguments sont de type GET sauf lorsque cela est précisé. Par ailleurs, les arguments obligatoires sont suivis d'une étoile *.</p>
-<h3>database.php</h3>
-<h3>exercice.php</h3>
-<p><b>exercice.php</b> fournit la description complète d'un exercice de la base correspondant aux différents paramètres. Sans argument ou lorsque plusieurs exercices correspondent aux critéres, l'exercice renvoyé est choisi aléatoirement parmi les candidats potentiels. La description retournée par l'API sert directement à l'exécution de l'exercice.</p>
-<h4>arguments</h4>
-<ul>
-<li><b>activity</b> : nom de l'activité de l'exercice. Accepte également une liste d'activités séparées par une virgule</li>
-<li><b>classification</b> : discipline traitée par l'exercice. Accepte également une liste de classification séparées par une virgule</li>
-<li><b>levelmin</b> : niveau scolaire minimum de l'exercice (de 1 à 5)</li>
-<li><b>levelmax</b> : niveau scolaire maximum de l'exercice (de 1 à 5)</li>
-<li><b>diffmin</b> : difficulté minimum de l'exercice (de 1 à 5)</li>
-<li><b>diffmax</b> : difficulté maximum de l'exercice (de 1 à 5)</li>
-<li><b>extendmin</b> : durée minimum de l'exercice en minute (de 1 à 60)</li>
-<li><b>extendmax</b> : durée maximum de l'exercice en minute (de 1 à 60)</li>
-<li><b>id</b> : identifiant de l'exercice. Lorsque l'identifiant n'est pas fourni (typiquement dans le cas d'un exercice aléatoire portant sur une activité ou une classification), les exercices portant le tag 'debug' sont écartés des résultats potentiels.</li>
-</ul>
-<h4>résultats</h4>
-<ul>
-<li><b>id</b> : identifiant de l'exercice</li>
-<li><b>lang</b> : langue utilisée sur le serveur</li>
-<li><b>activity</b> : activité de l'exercice</li>
-<li><b>label</b> : nom de l'activité</li>
-<li><b>title</b> : description de l'exercice</li>
-<li><b>level</b> : niveau scolaire de l'exercice</li>
-<li><b>difficulty</b> : difficulté de l'exercice</li>
-<li><b>time</b> : durée de résolution moyenne de l'exercice</li>
-<li><b>classification</b> : classification de l'exercice</li>
-<li><b>ext</b> : utilisation d'une librairie externe</li>
-<li><b>data</b> : donnée de l'exercice (spécifique à chaque activité)</li>
-<li><b>locale</b> : localisation</li>
-</ul>
-<h4>erreurs</h4>
-<ul>
-<li><b>10 : can not find exercice</b>. Aucun exercice ne correspond aux paramètres demandés.</li>
-</ul>
-<h3>activity.php</h3>
-<p><b>activity.php</b> renvoit un aperçu d'une activité donnée ainsi qu'une image de son utilisation.</p>
-<h4>arguments</h4>
-<ul>
-<li><b>name</b>* : identifiant de l'activité..</li>
-</ul>
-<h4>résultats</h4>
-<ul>
-<li><b>name</b> : identifiant de l'activité</li>
-<li><b>lang</b> : localisation du serveur</li>
-<li><b>label</b> : nom localisé de l'activté</li>
-<li><b>exercices</b> : nombre d'exercices rédigés avec cette activité</li>
-<li><b>classification</b> : [] ensemble des classifications référencées par les exercices</li>
-<li><b>files</b> : [] liste des fichiers statiques de description</li>
-<li><b>locale</b> : {} données localisées nécessaires à la bonne exécution du jeu</li>
-</ul>
-<h4>erreurs</h4>
-<ul>
-<li><b>8 : can not find activity</b>. L'activité demandée n'existe pas.</li>
-<li><b>9 : activity name is missing</b>. Le paramètre name est absent de la requête.</li>
-</ul>
+<h3>[<i>abacus</i>]</h3>
+<h3>[<i>alchemist</i>]</h3>
+<h3>[<i>asm</i>]</h3>
+<h3>[<i>balance</i>]</h3>
+<h3>[<i>calc</i>]</h3>
+<h3>[<i>code</i>]</h3>
+<h3>[<i>correcter</i>]</h3>
+<h3>[<i>countdown</i>]</h3>
+<h3>[<i>crossword</i>]</h3>
+<h3>[<i>draw</i>]</h3>
+<h3>[<i>equation</i>]</h3>
+<h3>[<i>futoshiki</i>]</h3>
+<h3>[<i>geometry</i>]</h3>
+<h3>[<i>hammer</i>] Cliquez-les tous !</h3>
+<p>Jeu d'adresse et de réflexion dans lequel le joueur doit cliquer sur les éléments demandés par l'énoncé avant que ceux-ci ne disparaissent. L'activité propose 2 vues différentes : en 2D ou en perspective avec animation. Pédagogiquement, l'activité propose un contenu très proche de celui de '<i>l'interrupteur à bascule</i>'. Leur différence réside principalement dans l'aspect dynamique de l'activité '<i>Cliquez-les tous</i>'.</p>
+<h3>[<i>info</i>]</h3>
+<h3>[<i>jewel</i>]</h3>
+<h3>[<i>launch</i>]</h3>
+<h3>[<i>logo</i>]</h3>
+<h3>[<i>marker</i>]</h3>
+<h3>[<i>mathcraft</i>]</h3>
+<h3>[<i>memory</i>]</h3>
+<h3>[<i>memory2</i>]</h3>
+<h3>[<i>memory3</i>]</h3>
+<h3>[<i>novel</i>]</h3>
+<h3>[<i>operation</i>]</h3>
+<h3>[<i>paint</i>]</h3>
+<h3>[<i>path</i>]</h3>
+<h3>[<i>puzzle</i>]</h3>
+<h3>[<i>robot</i>]</h3>
+<h3>[<i>sequence</i>]</h3>
+<h3>[<i>shop</i>]</h3>
+<h3>[<i>sokoban</i>]</h3>
+<h3>[<i>sorting</i>]</h3>
+<h3>[<i>sudoku</i>]</h3>
+<h3>[<i>toggleswitch</i>]</h3>
+<h3>[<i>trafficjam</i>]</h3>
+<h3>[<i>wargames</i>]</h3>
+<h3>[<i>where</i>]</h3>
+<h3>[<i>wordmix</i>]</h3>
 
 
-<h2>Activités et exercices</h2>
-<h3>LOGO</h3>
-<h4>Paramètres</h4>
-    <ul>
-        <li><b>a : {}</b> permet de définir les commandes autorisées par l'exercice.
-            <ul>
-                <li><b>op : []</b> liste les opérations [av, re, td, tr, co, fo, ct, mt, lc, bc, or, ca, po, xx, yy, zz, ii, jj]</li>
-                <li><b>va : []</b> liste les valeurs [V000, V001, V002, ..., V090, ..., V200, ..., X, Y, Z, I, J, black, white, green, red, blue ]</li>
-                <li><b>ma : []</b> liste les opérations mathématiques [plus, minus, neg, mult, div, modulo, pow2, sqrt, log, exp, cos, sin, tan, atan]</li>
-                <li><b>cl : []</b> liste les opérateurs de contrôle [rep, call1, call2, call3, fct1, fct2, fct3, if]</li>
-            </ul>
-        </li>
-        <li><b>bg : []</b> liste les éléments présents dans le fond de l'image (grille, indications textuelles, figure en pointillé).</li>
-        <li><b>result : {}</b> définit les critères d'évaluation de l'exercice.
-            <ul>
-                <li><b>nb : int</b> définit le nombre de segments à tracer.</li>
-                <li><b>values : []</b> liste les segments à tracer. Chaque segment est défini ainsi [x1,y1,x2,y2,couleur].</li>
-                <li><b>ct : bool</b> (facultatif) précise l'état final de la tortue (caché ou non).</li>
-                <li><b>bg : int</b> (facultatif) précise la couleur finale du fond de l'écran.</li>
-            </ul>
-        </li>
-    </ul>
-    <h4>Autres</h4>
-    <p><b>Générateur</b>  :  lox</p>
-<h3>Sudoku</h3>
-<h4>Format</h4>
-<p>Au sein du projet jLoDb, les grilles de Sudoku sont définies par une suite de <b>81 caractères</b> ([1-9a-i]{81}) définissant chacune des 81 cases de la grille.</p>
-<ul>
-<li>Les nombres de 1 à 9 correspondent aux valeurs initialement exposées.</li>
-<li>Les lettres de 'a' à 'i' correspondent aux valeurs non exposées et servent uniquement pour la validation. Le 'a' représente une valeur 1 à trouver, le 'b' une valeur 2, etc.</li>
-</ul>
-<h4>Générateurs et convertisseurs</h4>
-<ul>
-<li>Le logiciel <b>Sudoku</b> écrit par Michael Kennett est disponible sur les plateformes GNU/Linux. Il permet la génération de grilles ainsi que leur résolution. Il permet également d'évaluer les difficultés de résolution suivant 5 niveaux différents (very easy, easy, medium, hard, fiendish). Pour l'heure, c'est l'évaluation, ramenée de 1 à 5, de ce logiciel qui sert de référence dans la base <b>jLoDb</b>.</li>
-<li>Le logiciel du même nom <b>Sudoku</b>, rapidement écrit en C++ par Johann C et disponible dans data/sudoku/, permet également de générer des grilles. L'intérêt principal de ce binaire est de proposer une symétrie des valeurs initialement exposées.
-    <ul>
-        <li>0 : aucune symétrie</li>
-        <li>1 : symétrie suivant l'axe horizontal</li>
-        <li>2 : symétrie suivant l'axe vertical</li>
-        <li>3 : symétrie centrale</li>
-        <li>4 : symétrie diagonale</li>
-        <li>5 : symétrie totale</li>
-    </ul>
-    De plus, le format de sortie est compatible avec le logiciel précédent qui peut ainsi nativement évaluer la grille générée.
-</li>
-<li>Les scripts <b>rdf2std</b>, <b>rdf2compact</b> et <b>rdf2csv</b> (dans data/sudoku) permettent, respectivement, d'exporter les grilles telles quelles sont stockées dans les fichiers rdf, vers les formats standards, compact et csv.</li>
-</ul>
 </body>
 </html>

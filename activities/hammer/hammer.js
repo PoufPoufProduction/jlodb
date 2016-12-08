@@ -218,11 +218,13 @@
                         case "txt" :
                             var value = elt.value;
                             if (elt.gen) { value = eval('('+elt.gen+')')(); }
+                            if (value.indexOf(".svg")!=-1) { value = "<img src='res/img/"+value+"'/>"; }
                             e.$html.addClass("text").append("<div>"+value+"</div>");
                             break;
                         case "sig" :
                             var value = elt.value;
                             if (elt.gen) { value = eval('('+elt.gen+')')(); }
+                            if (value.indexOf(".svg")!=-1) { value = "<img src='res/img/"+value+"'/>"; }
                             e.$html.append(elt.$src.clone()).append("<div class='label'>"+value+"</div>");
                             break;
                     }

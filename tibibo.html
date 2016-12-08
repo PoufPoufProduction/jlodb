@@ -36,7 +36,7 @@
 #boheader                               { overflow:visible; }
 #bonav                                  { background-color:#DD5; width:40em; color:white; overflow:visible; }
 #boheader #bonav .node                  { font-size:2.8em; margin:.05em .1em; }
-#boheader #bonav .label                 { color:black; font-size:1.1em; margin-top:.1em; float:right; margin-right:.5em; width:18em; height:2.4em;}
+#boheader #bonav .label                 { color:black; font-size:1.1em; margin-top:.1em; float:right; margin-right:.5em; width:18em; height:2.4em; cursor:pointer; }
 #bopage #profile                        { background-color:#5B6; width:10em; color:white;}
 #bopage #profile>*                      { float:left; }
 #bopage #profile #avatar                { width:1em; height:1em; background-color:#444; font-size:3em; border-radius:.1em; cursor:pointer; }
@@ -80,13 +80,15 @@
 #bomain .node .type                     { width:1em; height:1em; font-size:.25em; position:absolute; top:-0.1em; left:-0.1em; display:none;}
 #bomain .node .icon                     { width:1em; height:1em; position:absolute; top:0; left:0; }
 #bomain .node .star                     { width:1em; height:1em; position:absolute; top:0.1em; left:0; display:none; }
-#bomain .node .label                    { font-family: Arial,Helvetica Neue,Helvetica,sans-serif; font-size:.09em; position:absolute; top:12em; width:105%; }
+#bomain .node .label                    { font-family: Arial,Helvetica Neue,Helvetica,sans-serif; font-size:.09em; position:absolute; top:12em; width:105%; min-height:3.2em; }
 #bomain .node.f .type                   { display:inline; }
 #bomain .node.s .star                   { display:inline; }
 #bomain .node .done                     { position:absolute; top:0em; left:3.5em; font-size:.15em; width:3em; text-align:center; background-color:rgba(20,200,50,0.8); color:yellow; border:.1em solid yellow; -ms-transform: rotate(10deg); -webkit-transform: rotate(10deg); transform: rotate(10deg);   }
 #bomain .node .progress                 { width:1em; height:0.05em; position:absolute; top:1.02em; background-color:#dd5; }
 #bomain .node .progress>div             { height:0.05em; background-color:#5b6; }
 #bomain .label .strong                  { font-size:1.5em; font-weight:bold; }
+#bocomment .strong                      { font-size:1em; color:red; border:1px solid red; border-width:1px 0 1px 0;}
+#bocomment .icon                        { float:left; width:1em; height:1em; font-size:8em; margin-right:10px; }
 #bofirefox                              { position:absolute; top:79%; left:83%; font-size:.2em; width:15em; height:3em; border:2px solid orange; border-radius:1.5em 0 0 1.5em; background-color:rgba(0,0,0,0.1); font-weight:bold; color:brown; }
 #bofirefox>img                          { float:left; font-size:3em; width:1em; height:1em; margin-left:.1em; margin-right:.2em; }
 #bodbrowser                             { position:absolute; top:0; left:0; width:16em; height:12em; background-color: rgba(0,0,0,0.2); display:none;}
@@ -105,7 +107,9 @@
 #boeditnode #eimg .icon                 { float:left; cursor:pointer; margin:0.05em; font-size:1.4em; }
 #boeditnode #settings                   { height:16em; }
 #boeditnode #settings #nodeimg          { font-size:8em; float:left; margin:0.05em; height:1.1em; }
-#boeditnode #settings textarea          { float:right; margin-top:0.8em; padding:.2em; font-size:0.6em; width:17.5em; border:0; background-color:white; border-radius:.5em 0 0 .5em; height:6.5em;  }
+#boeditnode #settings textarea          { float:right; margin-top:0.8em; padding:.2em; font-size:0.6em; width:17.5em; border:0; background-color:white; border-radius:.5em 0 0 .5em; height:7.5em;  }
+#boeditnode #settings textarea.d        { color:gray; }
+#boeditnode #settings #elabel           { height:3.5em; }
 #boeditnode #settings #tibibi           { clear:both;}
 #boeditnode #settings #tibibi select    { border:0; background-color:white; border-radius:00; float:left; font-size:1em; width:18em; }
 #boeditnode #settings #tibibi .icon     { float:left; background-color:#444; padding:.1em .5em; border-radius:0; cursor:pointer; }
@@ -116,6 +120,17 @@
 #boeimport>div                          { width:12em; height:8em; background-color:gray; margin:2em; }
 #boeimport textarea                     { width:58em; height:32em; margin:1em; border:0; font-size:0.2em; }
 #boeimport .icon                        { margin: 0 auto; cursor:pointer; }
+
+#boecomment                              { position:absolute; top:0; left:0; background-color:rgba(0,0,0,0.2); width:100%; height:100%; display:none;  }
+#boecomment>div                          { width:12em; height:8em; background-color:gray; margin:2em; }
+#boecomment textarea                     { width:29em; height:16em; margin:0.5em; border:0; font-size:0.4em; }
+#boecomment .icon                        { margin: 0 0.5em; cursor:pointer; }
+
+#bocomment                              { position:absolute; top:0; left:0; background-color:rgba(0,0,0,0.2); width:100%; height:100%; display:none; }
+#bocomment #boccomment                          { width:70%; height:70%; background-color:rgba(255,255,255,0.8); border:1px solid black; margin:5% 15%; cursor:pointer; font-size:.4em; padding:.5em; }
+#bocomment #boquit              { position:absolute; font-size:1em; width:1em; height:1em; top:88%; left:90%; background-color:red; cursor:pointer; border-radius:.5em;}
+#bocomment.s #boquit                { display:none; }
+
     </style>
     <script>
 
@@ -161,8 +176,10 @@ var regExp = [
         "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
         "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
         "\\\[br\\\]",                               "<br/>",
+        "\\\[clear\\\]",                            "<div style='clear:both'></div>",
         "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
         "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
+        "\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='icon'><img src='$1'/></div>",
         "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>"
     ];
 
@@ -319,6 +336,11 @@ var tibibo = {
                 }
             }
         },
+        comment: function($elt,_from) {
+            var id = $elt.attr("id").substr(1);
+            var elt = tibibo.book.browse.elt(id);
+            if (elt.comment) { $("#boccomment").html(tibibo.format(elt.comment)).parent().addClass("s").show(); }
+        },
         edit: {
             star : 0,
             elt : 0,
@@ -326,15 +348,22 @@ var tibibo = {
                 $("#eedit #tibibi").show();
                 if (_elt) {
                     $("#nodeimg .icon img").attr("src",_elt.src);
-                    $("#boeditnode #elabel").val(_elt.label);
-                    $("#boeditnode #tibibi textarea").val(_elt.description)
+                    
+                    if (_elt.label)         { $("#boeditnode #elabel").val(_elt.label).removeClass("d"); }
+                    else                    { $("#boeditnode #elabel").val(tibibo.locale.default.elabel).addClass("d"); }
+                    if (_elt.comment)       { $("#boeditnode #ecomment").val(_elt.comment).removeClass("d"); }
+                    else                    { $("#boeditnode #ecomment").val(tibibo.locale.default.ecomment).addClass("d"); }
+                    if (_elt.description)   { $("#boeditnode #etibibi").val(_elt.description).removeClass("d"); }
+                    else                    { $("#boeditnode #etibibi").val(tibibo.locale.default.etibibi).addClass("d"); }
                     tibibo.node.edit.star = _elt.nbstar;
                     tibibo.node.edit.elt = _elt;
                     if (_elt.children.length) { $("#eedit #tibibi").hide(); }
                 }
                 else {
                     $("#nodeimg .icon img").attr("src","res/img/classification/root.svg");
-                    $("#boeditnode textarea").val("");
+                    $("#boeditnode #elabel").val(tibibo.locale.default.elabel).addClass("d");
+                    $("#boeditnode #ecomment").val(tibibo.locale.default.ecomment).addClass("d");
+                    $("#boeditnode #etibibi").val(tibibo.locale.default.etibibi).addClass("d");
                     tibibo.node.edit.star = 0;
                     tibibo.node.edit.elt = 0;
                 }
@@ -348,10 +377,11 @@ var tibibo = {
                     user.getJSON("mods/tibibi/api/course.php",{value:$("#boeditnode #tibibi select").val()}, "",
                     function(_data) {
                         if (_data.status=="success" && _data.description && _data.description.length>0) {
-                            var val = $("#boeditnode #tibibi textarea").val();
+                            tibibo.textarea($("#boeditnode #etibibi"));
+                            var val = $("#boeditnode #etibibi").val();
                             if (val.length) { val+=','; }
                             val += _data.description;
-                            $("#boeditnode #tibibi textarea").val(val);
+                            $("#boeditnode #etibibi").val(val);
                             tibibo.node.edit.refresh(false);
                         }
                     });
@@ -368,20 +398,26 @@ var tibibo = {
                 $("#boeditnode .node").toggleClass("f", ($("#boeditnode #tibibi textarea").val().length==0));
             },
             update: function() {
+                var label = $("#boeditnode #elabel").hasClass("d")?"":$("#boeditnode #elabel").val().replace(/\"/g,"'");
+                var comment = $("#boeditnode #ecomment").hasClass("d")?"":$("#boeditnode #ecomment").val().replace(/\"/g,"'");
+                var desc = $("#boeditnode #etibibi").hasClass("d")?"":$("#boeditnode #etibibi").val();
+                
                 if (tibibo.node.edit.elt) {
-                    tibibo.node.edit.elt.src = $("#nodeimg .icon img").attr("src");
-                    tibibo.node.edit.elt.nbstar = tibibo.node.edit.star;
-                    tibibo.node.edit.elt.label = $("#boeditnode #elabel").val().replace(/\"/g,"'");
-                    tibibo.node.edit.elt.description = $("#boeditnode #tibibi textarea").val();
+                    tibibo.node.edit.elt.src            = $("#nodeimg .icon img").attr("src");
+                    tibibo.node.edit.elt.nbstar         = tibibo.node.edit.star;
+                    tibibo.node.edit.elt.label          = label;
+                    tibibo.node.edit.elt.comment        = comment;
+                    tibibo.node.edit.elt.description    = desc;
                 }
                 else {
                     var elt={
-                        id:tibibo.book.browse.id()+1,
-                        src: $("#nodeimg .icon img").attr("src"),
-                        nbstar: tibibo.node.edit.star,
-                        label: $("#boeditnode #elabel").val().replace(/\"/g,"'"),
-                        description : $("#boeditnode #tibibi textarea").val(),
-                        children:[]
+                        id          : tibibo.book.browse.id()+1,
+                        src         : $("#nodeimg .icon img").attr("src"),
+                        nbstar      : tibibo.node.edit.star,
+                        label       : label,
+                        comment     : comment,
+                        description : desc,
+                        children    : []
                     };
 
                     tibibo.book.current.push(elt);
@@ -626,18 +662,26 @@ var tibibo = {
             var r = tibibo.book.browse.count(elt);
             if (elt.nbstar>0)               { html+=" s"; }
             if (elt.description.length==0)  { html+=" f"; }
-            html+="'";
+            html+="'><div class='icon' ";
             if (!_from||_from!="noclick")   {
-                html+="ontouchstart='tibibo.node.click($(this),\""+_from+"\");event.preventDefault();' ";
-                html+="onmousedown='tibibo.node.click($(this),\""+_from+"\");' ";
+                html+="ontouchstart='tibibo.node.click($(this).parent(),\""+_from+"\");event.preventDefault();' ";
+                html+="onmousedown='tibibo.node.click($(this).parent(),\""+_from+"\");' ";
             }
-            html+=">";
-            html+="<div class='icon'><img src='"+elt.src+"'/></div>";
+            html+="><img src='"+elt.src+"'/></div>";
 
             if (!_from)         { html+="<div class='type'><img src='res/img/icon/plus01.svg'/></div>"; }
             if (!_from)         { html+="<div class='progress usermode'><div style='width:"+(r[1]?r[0]/r[1]:1)+"em';></div></div>"; }
             if (elt.nbstar>0)   { html+="<div class='star'><img src='res/img/icon/menu01st"+(elt.nbstar-1)+".svg'/></div>"; }
-            if (!_from)         { html+="<div class='label'>"+tibibo.format(elt.label)+"</div>"; }
+            
+            if (!_from)         {
+                html+="<div class='label' ";
+                if (_from!="noclick") {
+                    html+="ontouchstart='tibibo.node.comment($(this).parent(),\""+_from+"\");event.preventDefault();' ";
+                    html+="onmousedown='tibibo.node.comment($(this).parent(),\""+_from+"\");' ";
+                }
+                html+=">"+tibibo.format(elt.label)+"</div>";
+            }
+
             if (!_from && r[0]==r[1]) { html+="<div class='done'>"+tibibo.locale.donelabel+"</div>"; }
 
             html+="</div>";
@@ -662,7 +706,11 @@ var tibibo = {
                     $("#boheader #bonav").append(tibibo.book.node(elt,"noclick"));
                     label = tibibo.format(elt.label);
                 }
-                $("#boheader #bonav").append("<div class='label'>"+label+"</div>");
+                html = "<div class='label' ";
+                html+="ontouchstart='tibibo.book.header();event.preventDefault();' ";
+                html+="onmousedown='tibibo.book.header();' ";
+                html+=">"+label+"</div>";
+                $("#boheader #bonav").append(html);
             }
         },
         refresh: function() {
@@ -692,6 +740,21 @@ var tibibo = {
             user.getJSON("mods/tibibo/api/book.php",
                 {action:"upd",book:$(_elt).parent().find(".bookid").text(),value:encodeURIComponent($(_elt).val())}, "",
                     function(_data) { });
+        },
+        header: function() {
+            if (user.settings && user.settings.devmode && tibibo.args.id && tibibo.book.data.owner == user.settings.name) {
+                $("#areacomment").val(tibibo.book.data.comment);
+                $("#boecomment").show();
+            }
+            else {
+                if (tibibo.book.data.comment) { $("#boccomment").html(tibibo.format(tibibo.book.data.comment)).parent().removeClass("s").show(); }
+            }
+        },
+        comment: function() {
+            var comment = $("#areacomment").val().replace(/\"/g,"'");
+            user.getJSON("mods/tibibo/api/book.php",{action:"upd",book:tibibo.args.id},{comment:comment},
+                function(_data) { tibibo.book.data.comment = _data.comment; });
+            $("#boecomment").hide();
         }
     },
     devmode: function() {
@@ -773,7 +836,8 @@ var tibibo = {
             }
             else { $("#chooseid #clastid").hide(); $("#chooseid").show(); }
         }
-    }
+    },
+    textarea: function(_elt) { if ($(_elt).focus().hasClass("d")) { $(_elt).val("").removeClass("d"); } }
 };
 
 
@@ -967,6 +1031,26 @@ $(window).ready(function() {
                             ontouchstart="tibibo.node.import($(this));event.preventDefault();">
             <img src="mods/tibibi/res/img/import.svg"/></div></div>
     </div></div>
+    
+    
+    <div id="boecomment"><div>
+        <textarea id="areacomment"></textarea>
+        <div>
+            <div class="icon" style="float:left;" id="commentcancel" onclick="$('#boecomment').hide();" 
+                                          ontouchstart="$('#boecomment').hide();event.preventDefault();">
+                <img src="user/res/img/cancel.svg"/>
+            </div>
+            <div class="icon" style="float:right;" id="commentvalid" onclick="tibibo.book.comment();" 
+                                         ontouchstart="tibibo.book.comment();event.preventDefault();">
+                <img src="user/res/img/valid.svg"/>
+            </div>
+        </div>
+    </div></div>
+    
+    <div id="bocomment" onmousedown="$(this).hide();" ontouchstart="$(this).hide();event.preventDefault();">
+        <div id="boccomment"></div>
+        <div id="boquit" class="icon" onmousedown="document.location='tibibo.html';event.stopPropagation();" ontouchstart="document.location='tibibo.html';event.stopPropagation();event.preventDefault();"><img src="res/img/white/logout.svg"/></div>
+    </div>
 
     <div id="boeditnode">
         <div id="eedit">
@@ -977,13 +1061,21 @@ $(window).ready(function() {
                     <div class="type"><img src="res/img/icon/plus01.svg"/></div>
                     <div class="star"><img src="res/img/icon/menu01st0.svg"/></div>
             </div>
-            <textarea id="elabel"></textarea>
+            <textarea id="elabel"
+                    onclick="tibibo.textarea(this);" 
+                    ontouchstart="tibibo.textarea(this);event.preventDefault();"></textarea>
+            <textarea id="ecomment"
+                    onclick="tibibo.textarea(this);" 
+                    ontouchstart="tibibo.textarea(this);event.preventDefault();"></textarea>
             <div id="tibibi">
                 <select></select>
                 <div class="icon" onclick="tibibo.node.edit.tibibi();" 
-                                          ontouchstart="tibibo.node.edit.tibibi();event.preventDefault();">
+                                  ontouchstart="tibibo.node.edit.tibibi();event.preventDefault();">
                     <img src="mods/tibibi/res/img/import.svg"/></div>
-                <textarea onkeyup="tibibo.node.edit.refresh(false);"></textarea>
+                <textarea id="etibibi"
+                    onclick="tibibo.textarea(this);" 
+                    ontouchstart="tibibo.textarea(this);event.preventDefault();"
+                    onkeyup="tibibo.node.edit.refresh(false);"></textarea>
             </div>
         </div>
         <div>
@@ -1010,6 +1102,7 @@ $(window).ready(function() {
         <div class="icon"><img src="res/img/activity/equation.svg"/></div>
         <div class="icon"><img src="res/img/activity/futoshiki.svg"/></div>
         <div class="icon"><img src="res/img/activity/geometry.svg"/></div>
+        <div class="icon"><img src="res/img/activity/hammer.svg"/></div>
         <div class="icon"><img src="res/img/activity/info.svg"/></div>
         <div class="icon"><img src="res/img/activity/jewel.svg"/></div>
         <div class="icon"><img src="res/img/activity/launch.svg"/></div>
