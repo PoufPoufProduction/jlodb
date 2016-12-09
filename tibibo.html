@@ -87,8 +87,6 @@
 #bomain .node .progress                 { width:1em; height:0.05em; position:absolute; top:1.02em; background-color:#dd5; }
 #bomain .node .progress>div             { height:0.05em; background-color:#5b6; }
 #bomain .label .strong                  { font-size:1.5em; font-weight:bold; }
-#bocomment .strong                      { font-size:1em; color:red; border:1px solid red; border-width:1px 0 1px 0;}
-#bocomment .icon                        { float:left; width:1em; height:1em; font-size:8em; margin-right:10px; }
 #bofirefox                              { position:absolute; top:79%; left:83%; font-size:.2em; width:15em; height:3em; border:2px solid orange; border-radius:1.5em 0 0 1.5em; background-color:rgba(0,0,0,0.1); font-weight:bold; color:brown; }
 #bofirefox>img                          { float:left; font-size:3em; width:1em; height:1em; margin-left:.1em; margin-right:.2em; }
 #bodbrowser                             { position:absolute; top:0; left:0; width:16em; height:12em; background-color: rgba(0,0,0,0.2); display:none;}
@@ -131,8 +129,27 @@
 #bocomment #boquit              { position:absolute; font-size:1em; width:1em; height:1em; top:88%; left:90%; background-color:red; cursor:pointer; border-radius:.5em;}
 #bocomment.s #boquit                { display:none; }
 
+
+#bocomment .strong                      { font-size:1em; color:red; border:1px solid red; border-width:1px 0 1px 0;}
+#bocomment .icon                        { float:left; width:1em; height:1em; font-size:8em; margin-right:10px; }
+#bocomment .img                         { width:100%; }
+
+
     </style>
     <script>
+    
+// TEXT FORMATING
+var regExp = [
+        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
+        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
+        "\\\[br\\\]",                               "<br/>",
+        "\\\[clear\\\]",                            "<div style='clear:both'></div>",
+        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
+        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
+        "\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='icon'><img src='$1'/></div>",
+        "\\\[img\\\]([^\\\[]+)\\\[/img\\\]",        "<div class='img'><img src='$1'/></img>",
+        "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>"
+    ];
 
 // USER EVENT CALLBACK (FROM user/user.js)
 user.onEvent = function() {
@@ -170,18 +187,6 @@ user.onEvent = function() {
     }
 
 };
-
-// TEXT FORMATING
-var regExp = [
-        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
-        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
-        "\\\[br\\\]",                               "<br/>",
-        "\\\[clear\\\]",                            "<div style='clear:both'></div>",
-        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
-        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
-        "\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='icon'><img src='$1'/></div>",
-        "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>"
-    ];
 
 var tibibo = {
     lang            : "",
@@ -398,8 +403,8 @@ var tibibo = {
                 $("#boeditnode .node").toggleClass("f", ($("#boeditnode #tibibi textarea").val().length==0));
             },
             update: function() {
-                var label = $("#boeditnode #elabel").hasClass("d")?"":$("#boeditnode #elabel").val().replace(/\"/g,"'");
-                var comment = $("#boeditnode #ecomment").hasClass("d")?"":$("#boeditnode #ecomment").val().replace(/\"/g,"'");
+                var label = $("#boeditnode #elabel").hasClass("d")?"":$("#boeditnode #elabel").val().replace(/\"/g,"'").replace(/\n/g,"[br]");
+                var comment = $("#boeditnode #ecomment").hasClass("d")?"":$("#boeditnode #ecomment").val().replace(/\"/g,"'").replace(/\n/g,"[br]");
                 var desc = $("#boeditnode #etibibi").hasClass("d")?"":$("#boeditnode #etibibi").val();
                 
                 if (tibibo.node.edit.elt) {
@@ -671,7 +676,14 @@ var tibibo = {
 
             if (!_from)         { html+="<div class='type'><img src='res/img/icon/plus01.svg'/></div>"; }
             if (!_from)         { html+="<div class='progress usermode'><div style='width:"+(r[1]?r[0]/r[1]:1)+"em';></div></div>"; }
-            if (elt.nbstar>0)   { html+="<div class='star'><img src='res/img/icon/menu01st"+(elt.nbstar-1)+".svg'/></div>"; }
+            if (elt.nbstar>0)   {
+                html+="<div class='star' ";
+                if (!_from||_from!="noclick")   {
+                    html+="ontouchstart='tibibo.node.click($(this).parent(),\""+_from+"\");event.preventDefault();' ";
+                    html+="onmousedown='tibibo.node.click($(this).parent(),\""+_from+"\");' ";
+                }
+                html+="><img src='res/img/icon/menu01st"+(elt.nbstar-1)+".svg'/></div>";
+                }
             
             if (!_from)         {
                 html+="<div class='label' ";
@@ -742,7 +754,8 @@ var tibibo = {
                     function(_data) { });
         },
         header: function() {
-            if (user.settings && user.settings.devmode && tibibo.args.id && tibibo.book.data.owner == user.settings.name) {
+            if (user.settings && user.settings.devmode && tibibo.args.id &&
+                tibibo.book.data.owner == user.settings.name && $("#editown #medit").hasClass("s") ) {
                 $("#areacomment").val(tibibo.book.data.comment);
                 $("#boecomment").show();
             }
@@ -751,7 +764,8 @@ var tibibo = {
             }
         },
         comment: function() {
-            var comment = $("#areacomment").val().replace(/\"/g,"'");
+            var comment = $("#areacomment").val().replace(/\"/g,"'").replace(/\n/g,"[br]");
+            $("#editown #medit").removeClass("s");
             user.getJSON("mods/tibibo/api/book.php",{action:"upd",book:tibibo.args.id},{comment:comment},
                 function(_data) { tibibo.book.data.comment = _data.comment; });
             $("#boecomment").hide();
@@ -864,6 +878,9 @@ $(window).ready(function() {
                         tibibo.book.data = _data;
                         if (!tibibo.book.data.description) { tibibo.book.data.description=[]; }
                         tibibo.book.current = tibibo.book.data.description;
+                        
+                        if (tibibo.book.data.comment) { $("#boccomment").html(tibibo.format(tibibo.book.data.comment)).parent().removeClass("s").show(); }
+                        
                         user.init(tibibo.lang); });
                 }
                 else { user.init(tibibo.lang); }
