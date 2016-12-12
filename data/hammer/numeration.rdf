@@ -17,6 +17,46 @@
  
  
     <rdf:Description>
+        <dct:identifier>o45</dct:identifier>
+        <dct:title xml:lang="fr-FR">Cliquer sur les groupes (compris entre 1 et 5) représentant moins de 4 objets.</dct:title>
+        <dct:description><![CDATA["totaltime":30,"good":[{"type":"sig","value":"generic/dice01.svg"},{"type":"sig","value":"generic/dice02.svg"},{"type":"sig","value":"generic/dice03.svg"},{"type":"sig","value":"star/starr1.svg"},{"type":"sig","value":"star/starr2.svg"},{"type":"sig","value":"star/starr3.svg"},{"type":"sig","value":"coin/coins1.svg"},{"type":"sig","value":"coin/coins2.svg"},{"type":"sig","value":"coin/coins3.svg"}],"wrong":[{"type":"sig","value":"generic/dice04.svg"},{"type":"sig","value":"generic/dice05.svg"},{"type":"sig","value":"star/starr4.svg"},{"type":"sig","value":"star/starr5.svg"},{"type":"sig","value":"coin/coins4.svg"},{"type":"sig","value":"coin/coins5.svg"}],"tag":"<4"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Cliquez sur les groupes de [b]moins de 4 objets[/b]."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>c3</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
+    </rdf:Description>
+ 
+ 
+    <rdf:Description>
+        <dct:identifier>c035</dct:identifier>
+        <dct:title xml:lang="fr-FR">Parmi les valeurs comprises entre 0 et 5, cliquer sur les valeurs strictement inférieures à 3.</dct:title>
+        <dct:description><![CDATA["good":[{"type":"sig","gen":"function() { return Math.floor(Math.random()*3);}"}],"wrong":[{"type":"sig","gen":"function() { return Math.floor(Math.random()*3)+3;}"}],"tag":"<3"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Cliquez sur les valeurs [b]strictement inférieures à 3[/b]."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>c510</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
+    </rdf:Description>
+ 
+    <rdf:Description>
+        <dct:identifier>c45</dct:identifier>
+        <dct:title xml:lang="fr-FR">Parmi les valeurs comprises entre 1 et 5, cliquer sur les valeurs strictement inférieures à 4.</dct:title>
+        <dct:description><![CDATA["good":[{"type":"sig","gen":"function() { return Math.floor(Math.random()*3)+1;}"}],"wrong":[{"type":"sig","gen":"function() { return Math.floor(Math.random()*2)+4;}"}],"tag":"<4"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Cliquez sur les valeurs [b]strictement inférieures à 4[/b]."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>c510</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
+    </rdf:Description>
+ 
+    <rdf:Description>
         <dct:identifier>c510</dct:identifier>
         <dct:title xml:lang="fr-FR">Parmi les valeurs comprises entre 1 et 9, cliquer sur les valeurs strictement inférieures à 5.</dct:title>
         <dct:description><![CDATA["good":[{"type":"sig","gen":"function() { return Math.floor(Math.random()*4)+1;}"}],"wrong":[{"type":"sig","gen":"function() { return Math.floor(Math.random()*5)+5;}"}],"tag":"<5"]]></dct:description>
@@ -26,6 +66,7 @@
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c510</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
     </rdf:Description>
     
     <rdf:Description>

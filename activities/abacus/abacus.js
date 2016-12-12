@@ -152,20 +152,24 @@
                             settings.mouse.up = (c[settings.type].u[0]-settings.mouse.row<=settings.status[settings.mouse.col][1]);
                             if (settings.mouse.up) {
                                 for (var i=c[settings.type].u[0]-settings.status[settings.mouse.col][1]; i<=settings.mouse.row; i++) {
-                                    $("#e"+settings.mouse.col+i, settings.svg.root()).attr("class","b m"); }
+                                    $("#e"+settings.mouse.col+i, settings.svg.root()).attr("class",
+                                        $("#e"+settings.mouse.col+i, settings.svg.root()).attr("class").replace(" up","")+" m"); }
                             } else {
                                 for (var i=settings.mouse.row; i<=7-settings.status[settings.mouse.col][1]; i++) {
-                                    $("#e"+settings.mouse.col+i, settings.svg.root()).attr("class","b m"); }
+                                    $("#e"+settings.mouse.col+i, settings.svg.root()).attr("class",
+                                        $("#e"+settings.mouse.col+i, settings.svg.root()).attr("class").replace(" up","")+" m"); }
                             }
                         }
                         else {
                             settings.mouse.up = (settings.mouse.row>settings.status[settings.mouse.col][0]);
                             if (settings.mouse.up) {
                                 for (var i=settings.status[settings.mouse.col][0]+1; i<=settings.mouse.row; i++) {
-                                    $("#e"+settings.mouse.col+(i==10?'a':i), settings.svg.root()).attr("class","b m"); }
+                                    $("#e"+settings.mouse.col+(i==10?'a':i), settings.svg.root()).attr("class",
+                                        $("#e"+settings.mouse.col+(i==10?'a':i), settings.svg.root()).attr("class").replace(" up","")+" m"); }
                             } else {
                                 for (var i=settings.mouse.row; i<=settings.status[settings.mouse.col][0]; i++) {
-                                    $("#e"+settings.mouse.col+(i==10?'a':i), settings.svg.root()).attr("class","b m"); }
+                                    $("#e"+settings.mouse.col+(i==10?'a':i), settings.svg.root()).attr("class",
+                                      $("#e"+settings.mouse.col+(i==10?'a':i), settings.svg.root()).attr("class").replace(" up","")+" m"  ); }
                             }
                         }
                         settings.mouse.clientY = event.clientY;

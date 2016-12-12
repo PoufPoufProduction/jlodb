@@ -104,9 +104,6 @@
                 $this.find("h1#label").html(settings.label);
                 $this.find("#guide").html(settings.guide);
                 $this.find("#guide2").html(settings.guide2);
-                if (settings.title)     { $this.find("#title").html(settings.title); } else { $this.addClass("notitle"); }
-                if (!settings.exercice) { $this.addClass("noex"); }
-                if (!settings.def)      { $this.addClass("nodef"); }
                 if (settings.locale)    { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
 
                 if (settings.data && $.isArray(settings.data[0])) { settings.number = settings.data.length; }
@@ -130,6 +127,9 @@
                 settings.definition = gen.def; 
                 fixed               = gen.fixed;
             }
+            if (settings.title)            { $this.find("#title").html(settings.title); } else { $this.addClass("notitle"); }
+            if (!settings.exercice)        { $this.addClass("noex"); }
+            if (!settings.definition)      { $this.addClass("nodef"); }
 
             if (settings.exercice) {
                 if ($.isArray(settings.exercice)) { $this.find("#exercice").html(helpers.format(settings.exercice[settings.id])); }

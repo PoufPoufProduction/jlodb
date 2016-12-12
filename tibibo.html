@@ -131,7 +131,7 @@
 
 
 #bocomment .strong                      { font-size:1em; color:red; border:1px solid red; border-width:1px 0 1px 0;}
-#bocomment .icon                        { float:left; width:1em; height:1em; font-size:8em; margin-right:10px; }
+#bocomment .icon                        { float:right; width:1em; height:1em; font-size:8em; margin-right:10px; }
 #bocomment .img                         { width:100%; }
 
 
@@ -143,11 +143,12 @@ var regExp = [
         "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
         "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
         "\\\[br\\\]",                               "<br/>",
+        "\\\[dot\\\]",                              "<div style='clear:left'></div><div style='margin:0 .5em 0 1em;float:left;'>•</div>",
         "\\\[clear\\\]",                            "<div style='clear:both'></div>",
         "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
         "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
         "\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='icon'><img src='$1'/></div>",
-        "\\\[img\\\]([^\\\[]+)\\\[/img\\\]",        "<div class='img'><img src='$1'/></img>",
+        "\\\[img\\\]([^\\\[]+)\\\[/img\\\]",        "<div class='img'><img src='$1'/></div>",
         "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>"
     ];
 
@@ -344,7 +345,8 @@ var tibibo = {
         comment: function($elt,_from) {
             var id = $elt.attr("id").substr(1);
             var elt = tibibo.book.browse.elt(id);
-            if (elt.comment) { $("#boccomment").html(tibibo.format(elt.comment)).parent().addClass("s").show(); }
+            if ($("#editown #medit").hasClass("s")) { tibibo.node.edit.open(elt); tibibo.node.menu(); }
+            else { if (elt.comment) { $("#boccomment").html(tibibo.format(elt.comment)).parent().addClass("s").show(); } }
         },
         edit: {
             star : 0,
@@ -760,7 +762,16 @@ var tibibo = {
                 $("#boecomment").show();
             }
             else {
-                if (tibibo.book.data.comment) { $("#boccomment").html(tibibo.format(tibibo.book.data.comment)).parent().removeClass("s").show(); }
+                var local = false;
+                if (tibibo.menu.current!=-1) {
+                    var elt = tibibo.book.browse.elt(tibibo.menu.current);
+                    if (elt.comment) { local=true; $("#boccomment").html(tibibo.format(elt.comment)).parent().addClass("s").show(); }
+                }
+                else if (tibibo.book.parents.length>0) {
+                    var elt = tibibo.book.browse.elt(tibibo.book.parents[tibibo.book.parents.length-1]);
+                    if (elt.comment) { local=true; $("#boccomment").html(tibibo.format(elt.comment)).parent().addClass("s").show(); }
+                }
+                if (!local && tibibo.book.data.comment) { $("#boccomment").html(tibibo.format(tibibo.book.data.comment)).parent().removeClass("s").show(); }
             }
         },
         comment: function() {
