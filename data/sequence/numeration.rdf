@@ -2423,31 +2423,33 @@
     <rdf:Description>
         <dct:identifier>ea100</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier le chiffre des unités d'un nombre compris entre 0 et 100.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":0},"gen":"function() { var max=100,a=Math.floor(Math.random()*max); return [a, a%10]}","class":"alpha","font":3]]></dct:description>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":0},"gen":"function() { var max=100,a=Math.floor(Math.random()*max); return [a, a%10]}","class":"alpha","font":3,"number":10]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel est le <b>chiffre</b> des unités ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>ec10k</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>eb100</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier le chiffre des dizaines d'un nombre compris entre 0 et 100.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":0},"gen":"function() { var max=100,a=(Math.random()*5>1?Math.floor(Math.random()*max):Math.floor(Math.random()*10)); return [a, Math.floor(a/10)]}","class":"alpha","font":3]]></dct:description>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":0},"gen":"function() { var max=100,a=(Math.random()*5>1?Math.floor(Math.random()*max):Math.floor(Math.random()*10)); return [a, Math.floor(a/10)]}","class":"alpha","font":3,"number":10]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel est le <b>chiffre</b> des dizaines ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>ec10k</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>eb1k</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier le chiffre des dizaines d'un nombre compris entre 0 et 1000.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":0},"gen":"function() { var max=[10,10,100,1000,1000,1000],a=Math.floor(Math.random()*max[Math.floor(Math.random()*max.length)]); return [a, Math.floor(a/10)%10]}","class":"alpha","font":3]]></dct:description>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":0},"gen":"function() { var max=[10,10,100,1000,1000,1000],a=Math.floor(Math.random()*max[Math.floor(Math.random()*max.length)]); return [a, Math.floor(a/10)%10]}","class":"alpha","font":3,"number":10]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel est le <b>chiffre</b> des dizaines ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -2459,7 +2461,7 @@
     <rdf:Description>
         <dct:identifier>ebs1k</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier le nombre de dizaines d'un nombre compris entre 0 et 1000.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":5000},"gen":"function() { var max=1000,a=(Math.random()*5>1?Math.floor(Math.random()*max):Math.floor(Math.random()*10)); return [a, Math.floor(a/10)]}","class":"alpha","font":3]]></dct:description>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":5000},"gen":"function() { var max=1000,a=(Math.random()*5>1?Math.floor(Math.random()*max):Math.floor(Math.random()*10)); return [a, Math.floor(a/10)]}","class":"alpha","font":3,"number":10]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel est le <b>nombre</b> de dizaines ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -2471,7 +2473,7 @@
     <rdf:Description>
         <dct:identifier>ec1k</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier le chiffre des centaines d'un nombre compris entre 0 et 1000.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":0},"gen":"function() { var max=[10,100,1000,1000,1000,1000],a=Math.floor(Math.random()*max[Math.floor(Math.random()*max.length)]); return [a, Math.floor(a/100)%10]}","class":"alpha","font":3]]></dct:description>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":0},"gen":"function() { var max=[10,100,1000,1000,1000,1000],a=Math.floor(Math.random()*max[Math.floor(Math.random()*max.length)]); return [a, Math.floor(a/100)%10]}","class":"alpha","font":3,"number":10]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel est le <b>chiffre</b> des centaines ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -2483,7 +2485,7 @@
     <rdf:Description>
         <dct:identifier>eb10k</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier le chiffre des dizaines d'un nombre compris entre 0 et 10000.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":0},"gen":"function() { var max=[100,1000,1000,10000,10000,10000],a=Math.floor(Math.random()*max[Math.floor(Math.random()*max.length)]),a2=a,i,aa=\\\"\\\"; i=0; while(a2>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a2%10).toString()+aa; a2=Math.floor(a2/10); i++; }; return [aa, Math.floor(a/10)%10]}","class":"alpha","font":2.8]]></dct:description>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":0},"gen":"function() { var max=[100,1000,1000,10000,10000,10000],a=Math.floor(Math.random()*max[Math.floor(Math.random()*max.length)]),a2=a,i,aa=\\\"\\\"; i=0; while(a2>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a2%10).toString()+aa; a2=Math.floor(a2/10); i++; }; return [aa, Math.floor(a/10)%10]}","class":"alpha","font":2.8,"number":10]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel est le <b>chiffre</b> des dizaines ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -2495,7 +2497,7 @@
     <rdf:Description>
         <dct:identifier>ebs10k</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier le nombre de dizaines d'un nombre compris entre 0 et 10000.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":3,"speed":5000},"gen":"function() { var max=[100,1000,1000,10000,10000,10000],a=Math.floor(Math.random()*max[Math.floor(Math.random()*max.length)]),a2=a,i,aa=\\\"\\\"; i=0; while(a2>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a2%10).toString()+aa; a2=Math.floor(a2/10); i++; }; return [aa, Math.floor(a/10)]}","class":"alpha","font":2.8]]></dct:description>
+        <dct:description><![CDATA["time":0,"input":{"digit":3,"speed":5000},"gen":"function() { var max=[100,1000,1000,10000,10000,10000],a=Math.floor(Math.random()*max[Math.floor(Math.random()*max.length)]),a2=a,i,aa=\\\"\\\"; i=0; while(a2>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a2%10).toString()+aa; a2=Math.floor(a2/10); i++; }; return [aa, Math.floor(a/10)]}","class":"alpha","font":2.8,"number":10]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel est le <b>nombre</b> de dizaines ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -2507,7 +2509,7 @@
     <rdf:Description>
         <dct:identifier>ec10k</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier le chiffre des centaines d'un nombre compris entre 0 et 10000.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":0},"gen":"function() { var max=[100,1000,1000,10000,10000,10000],a=Math.floor(Math.random()*max[Math.floor(Math.random()*max.length)]),a2=a,i,aa=\\\"\\\"; i=0; while(a2>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a2%10).toString()+aa; a2=Math.floor(a2/10); i++; }; return [aa, Math.floor(a/100)%10]}","class":"alpha","font":2.8]]></dct:description>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":0},"gen":"function() { var max=[100,1000,1000,10000,10000,10000],a=Math.floor(Math.random()*max[Math.floor(Math.random()*max.length)]),a2=a,i,aa=\\\"\\\"; i=0; while(a2>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a2%10).toString()+aa; a2=Math.floor(a2/10); i++; }; return [aa, Math.floor(a/100)%10]}","class":"alpha","font":2.8,"number":10]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel est le <b>chiffre</b> des centaines ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -2519,7 +2521,7 @@
     <rdf:Description>
         <dct:identifier>ecs10k</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier le nombre de centaines d'un nombre compris entre 0 et 10000.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":5000},"gen":"function() { var max=[100,1000,1000,10000,10000,10000],a=Math.floor(Math.random()*max[Math.floor(Math.random()*max.length)]),a2=a,i,aa=\\\"\\\"; i=0; while(a2>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a2%10).toString()+aa; a2=Math.floor(a2/10); i++; }; return [aa, Math.floor(a/100)]}","class":"alpha","font":2.8]]></dct:description>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":5000},"gen":"function() { var max=[100,1000,1000,10000,10000,10000],a=Math.floor(Math.random()*max[Math.floor(Math.random()*max.length)]),a2=a,i,aa=\\\"\\\"; i=0; while(a2>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a2%10).toString()+aa; a2=Math.floor(a2/10); i++; }; return [aa, Math.floor(a/100)]}","class":"alpha","font":2.8,"number":10]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel est le <b>nombre</b> de centaines ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -2531,22 +2533,36 @@
     <!-- POSITION -->
 
     <rdf:Description>
-        <dct:identifier>f1k</dct:identifier>
-        <dct:title xml:lang="fr-FR">Identifier la position du chiffre rouge dans un nombre compris entre 10 et 999.</dct:title>
-        <dct:description><![CDATA["time":0,"gen":"function() { var s=(Math.floor(Math.random()*990)+10).toString(), l=s.length, a=Math.floor(Math.random()*10), p=Math.floor(Math.random()*(a==0?l-1:l)), v=\\\"\\\"; for (var i=0; i<l;i++) { if (i!=0 && ((i-l)%3==0)) { v+=\\\" \\\"; } if (i==l-p-1) { v+=\\\"<span style='color:red;'>\\\"+a.toString()+\\\"</span>\\\"; } else { var r=0; do { r=Math.floor(Math.random()*10); }while (r==a || (r==0&&i==0)); v+=r.toString();  }} return [v, p+1]; }","template":"template.html","class":"alpha neg","font":2]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"input":{"css":{"font-size":"2.0em","width":"5.0em"},"digit":1,"values":[["Unité",1],["Dizaine",2],["Centaine",3]]},"comment":"Quel est la place du chiffre rouge ?"]]></dct:description>
+        <dct:identifier>f100</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier la position du chiffre rouge dans un nombre compris entre 10 et 99.</dct:title>
+        <dct:description><![CDATA["time":0,"gen":"function() { var s=(Math.floor(Math.random()*90)+10).toString(), l=s.length, a=Math.floor(Math.random()*10), p=Math.floor(Math.random()*(a==0?l-1:l)), v=\\\"\\\"; for (var i=0; i<l;i++) { if (i!=0 && ((i-l)%3==0)) { v+=\\\" \\\"; } if (i==l-p-1) { v+=\\\"<span style='color:red;'>\\\"+a.toString()+\\\"</span>\\\"; } else { var r=0; do { r=Math.floor(Math.random()*10); }while (r==a || (r==0&&i==0)); v+=r.toString();  }} return [v, p+1]; }","template":"template.html","class":"alpha neg","font":2,"number":10]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"input":{"css":{"font-size":"3em","width":"5.0em"},"digit":1,"values":[["Unité",1],["Dizaine",2]]},"comment":"Quel est la [b]place[/b] du chiffre [red]rouge[/red] ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>f1m</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>f1k</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier la position du chiffre rouge dans un nombre compris entre 10 et 999.</dct:title>
+        <dct:description><![CDATA["time":0,"gen":"function() { var s=(Math.floor(Math.random()*990)+10).toString(), l=s.length, a=Math.floor(Math.random()*10), p=Math.floor(Math.random()*(a==0?l-1:l)), v=\\\"\\\"; for (var i=0; i<l;i++) { if (i!=0 && ((i-l)%3==0)) { v+=\\\" \\\"; } if (i==l-p-1) { v+=\\\"<span style='color:red;'>\\\"+a.toString()+\\\"</span>\\\"; } else { var r=0; do { r=Math.floor(Math.random()*10); }while (r==a || (r==0&&i==0)); v+=r.toString();  }} return [v, p+1]; }","template":"template.html","class":"alpha neg","font":2,"number":15]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"input":{"css":{"font-size":"2.0em","width":"5.0em"},"digit":1,"values":[["Unité",1],["Dizaine",2],["Centaine",3]]},"comment":"Quel est la [b]place[/b] du chiffre [red]rouge[/red] ?"]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>f1m</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>f10k</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier la position du chiffre rouge dans un nombre compris entre 10 et 9 999.</dct:title>
-        <dct:description><![CDATA["time":0,"gen":"function() { var s=(Math.floor(Math.random()*9990)+10).toString(), l=s.length, a=Math.floor(Math.random()*10), p=Math.floor(Math.random()*(a==0?l-1:l)), v=\\\"\\\"; for (var i=0; i<l;i++) { if (i!=0 && ((i-l)%3==0)) { v+=\\\" \\\"; } if (i==l-p-1) { v+=\\\"<span style='color:red;'>\\\"+a.toString()+\\\"</span>\\\"; } else { var r=0; do { r=Math.floor(Math.random()*10); }while (r==a || (r==0&&i==0)); v+=r.toString();  }} return [v, p+1]; }","template":"template.html","class":"alpha neg","font":2]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"input":{"css":{"font-size":"2.0em","width":"7.5em"},"digit":1,"values":[["Unité",1],["Dizaine",2],["Centaine",3],["Millier",4]]},"comment":"Quel est la place du chiffre rouge ?"]]></dct:description>
+        <dct:description><![CDATA["time":0,"gen":"function() { var s=(Math.floor(Math.random()*9990)+10).toString(), l=s.length, a=Math.floor(Math.random()*10), p=Math.floor(Math.random()*(a==0?l-1:l)), v=\\\"\\\"; for (var i=0; i<l;i++) { if (i!=0 && ((i-l)%3==0)) { v+=\\\" \\\"; } if (i==l-p-1) { v+=\\\"<span style='color:red;'>\\\"+a.toString()+\\\"</span>\\\"; } else { var r=0; do { r=Math.floor(Math.random()*10); }while (r==a || (r==0&&i==0)); v+=r.toString();  }} return [v, p+1]; }","template":"template.html","class":"alpha neg","font":2,"number":15]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"input":{"css":{"font-size":"2.0em","width":"7.5em"},"digit":1,"values":[["Unité",1],["Dizaine",2],["Centaine",3],["Millier",4]]},"comment":"Quel est la [b]place[/b] du chiffre [red]rouge[/red] ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -2558,7 +2574,7 @@
         <dct:identifier>f100k</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier la position du chiffre rouge dans un nombre compris entre 10 et 99 999.</dct:title>
         <dct:description><![CDATA["time":0,"gen":"function() { var s=(Math.floor(Math.random()*99990)+10).toString(), l=s.length, a=Math.floor(Math.random()*10), p=Math.floor(Math.random()*(a==0?l-1:l)), v=\\\"\\\"; for (var i=0; i<l;i++) { if (i!=0 && ((i-l)%3==0)) { v+=\\\" \\\"; } if (i==l-p-1) { v+=\\\"<span style='color:red;'>\\\"+a.toString()+\\\"</span>\\\"; } else { var r=0; do { r=Math.floor(Math.random()*10); }while (r==a || (r==0&&i==0)); v+=r.toString();  }} return [v, p+1]; }","template":"template.html","class":"alpha neg","font":2]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"input":{"css":{"font-size":"1.5em","width":"10em"},"digit":1,"values":[["Unité",1],["Dizaine",2],["Centaine",3],["Millier",4],["Dizaine de milliers",5]]},"comment":"Quel est la place du chiffre rouge ?"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"input":{"css":{"font-size":"1.5em","width":"10em"},"digit":1,"values":[["Unité",1],["Dizaine",2],["Centaine",3],["Millier",4],["Dizaine de milliers",5]]},"comment":"Quel est la [b]place[/b] du chiffre [red]rouge[/red] ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -2570,7 +2586,7 @@
         <dct:identifier>f1m</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier la position du chiffre rouge dans un nombre compris entre 10 et 999 999.</dct:title>
         <dct:description><![CDATA["time":0,"gen":"function() { var s=(Math.floor(Math.random()*999990)+10).toString(), l=s.length, a=Math.floor(Math.random()*10), p=Math.floor(Math.random()*(a==0?l-1:l)), v=\\\"\\\"; for (var i=0; i<l;i++) { if (i!=0 && ((i-l)%3==0)) { v+=\\\" \\\"; } if (i==l-p-1) { v+=\\\"<span style='color:red;'>\\\"+a.toString()+\\\"</span>\\\"; } else { var r=0; do { r=Math.floor(Math.random()*10); }while (r==a || (r==0&&i==0)); v+=r.toString();  }} return [v, p+1]; }","template":"template.html","class":"alpha neg","font":2]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"input":{"css":{"font-size":"1.5em","width":"10em"},"digit":1,"values":[["Unité",1],["Dizaine",2],["Centaine",3],["Millier",4],["Dizaine de milliers",5],["Centaine de milliers",6]]},"comment":"Quel est la place du chiffre rouge ?"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"input":{"css":{"font-size":"1.5em","width":"10em"},"digit":1,"values":[["Unité",1],["Dizaine",2],["Centaine",3],["Millier",4],["Dizaine de milliers",5],["Centaine de milliers",6]]},"comment":"Quel est la [b]place[/b] du chiffre [red]rouge[/red] ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
