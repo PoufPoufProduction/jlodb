@@ -131,8 +131,13 @@
                 }
                 
                 if (settings.tag) {
-                    $this.find("#tag").html(
-                        settings.tag.toString().indexOf(".svg")!=-1?"<img src='res/img/"+settings.tag+"'/>":"<div>"+settings.tag+"</div>").show();
+                    var value = settings.tag;
+                    if (value.toString().indexOf(".svg")!=-1) { value = "<img src='res/img/"+value+"'/>"; }
+                    if (settings.fonttag) {
+                        var m = (1-settings.fonttag)/(2*settings.fonttag);
+                        value="<div style='margin-top:"+m+"em;font-size:"+settings.fonttag+"em;'>"+value+"</div>";
+                    }
+                    $this.find("#tag").html(value).show();
                 }
                 
                 $this.bind("mousedown touchstart", function(event){
@@ -225,6 +230,10 @@
                             var value = elt.value;
                             if (elt.gen) { value = eval('('+elt.gen+')')(); }
                             if (value.toString().indexOf(".svg")!=-1) { value = "<img src='res/img/"+value+"'/>"; }
+                            if (elt.font) {
+                                var m = (1-elt.font)/(2*elt.font);
+                                value="<div style='margin-top:"+m+"em;font-size:"+elt.font+"em;'>"+value+"</div>";
+                            }
                             e.$html.append(elt.$src.clone()).append("<div class='label'>"+value+"</div>");
                             break;
                     }
