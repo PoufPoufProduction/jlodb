@@ -1,12 +1,91 @@
 <?xml version="1.0"?>
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dct="http://purl.org/dc/terms/">
+         
+        
+    <rdf:Description>
+        <dct:identifier>mg24a</dct:identifier>
+        <dct:title xml:lang="fr-FR">Additionner des bougies (de 1 à 4 par cellules) dans une grille 2x2 (avec 1 indice).</dct:title>
+        <dct:description><![CDATA["errratio":2,"checkempty":true,"callen":2,"noneg":true,"nodec":true,"imgprefix":"res/img/numbers/","withtabs":false,"img":["cake01","cake02","cake03","cake04"],"sp":0.02,"rows":{"row0":{"height":0.2}},"cols":{"col0":{"width":0.2}},"withbars":false,"all":{"height":1.2,"width":1.2},"gen":"function() { var q=[[3,2],[3,1],[2,3]],nb=2, cells={}, val=[]; cells['c'+(nb+1)+'x'+(nb+1)]={'type':'hide'}; for (var j=0; j<nb;j++) for (var i=0; i<nb;i++) { val[i+j*nb]=Math.floor(Math.random()*4)+1; cells['c'+(i+1)+'x'+(j+1)]={'fixed':true,'type':'img','value':val[i+j*nb]-1};} for (var i=0; i<nb; i++) { var s=0; for (var j=0; j<nb; j++) { s+=val[i+j*nb]; } cells['c'+(i+1)+'x'+(nb+1)]={'fixed':true,'value':s,'background':'#AA8','color':'#FDA'}; } for (var j=0; j<nb; j++) { var s=0; for (var i=0; i<nb; i++) { s+=val[i+j*nb]; } cells['c'+(nb+1)+'x'+(j+1)]={'fixed':true,'value':s,'background':'#AA8','color':'#FDA'}; } for (var i in q) { var c = cells['c'+q[i][0]+'x'+q[i][1]]; c.result=c.value; c.value=''; c.fixed = false; } return {'cells':cells}; }","font":3]]></dct:description>
+        <dct:description xml:lang="fr-FR">,"exercice":"[b]Remplissez[/b] les [red]cellules vides[/red] vides en additionant les bougies en [b]lignes[/b] et en [b]colonnes[/b]."</dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>m35a</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>mg24b</dct:identifier>
+        <dct:title xml:lang="fr-FR">Additionner des bougies (de 1 à 4 par cellules) dans une grille 2x2.</dct:title>
+        <dct:description><![CDATA["errratio":2,"checkempty":true,"callen":2,"noneg":true,"nodec":true,"imgprefix":"res/img/numbers/","withtabs":false,"img":["cake01","cake02","cake03","cake04"],"sp":0.02,"rows":{"row0":{"height":0.2}},"cols":{"col0":{"width":0.2}},"withbars":false,"all":{"height":1.2,"width":1.2},"gen":"function() { var q=[[3,2],[3,1],[2,3],[1,3]],nb=2, cells={}, val=[]; cells['c'+(nb+1)+'x'+(nb+1)]={'type':'hide'}; for (var j=0; j<nb;j++) for (var i=0; i<nb;i++) { val[i+j*nb]=Math.floor(Math.random()*4)+1; cells['c'+(i+1)+'x'+(j+1)]={'fixed':true,'type':'img','value':val[i+j*nb]-1};} for (var i=0; i<nb; i++) { var s=0; for (var j=0; j<nb; j++) { s+=val[i+j*nb]; } cells['c'+(i+1)+'x'+(nb+1)]={'fixed':true,'value':s,'background':'#AA8','color':'#FDA'}; } for (var j=0; j<nb; j++) { var s=0; for (var i=0; i<nb; i++) { s+=val[i+j*nb]; } cells['c'+(nb+1)+'x'+(j+1)]={'fixed':true,'value':s,'background':'#AA8','color':'#FDA'}; } for (var i in q) { var c = cells['c'+q[i][0]+'x'+q[i][1]]; c.result=c.value; c.value=''; c.fixed = false; } return {'cells':cells}; }","font":3]]></dct:description>
+        <dct:description xml:lang="fr-FR">,"exercice":"[b]Remplissez[/b] les [red]cellules vides[/red] vides en additionant les bougies en [b]lignes[/b] et en [b]colonnes[/b]."</dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>m35a</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
+    </rdf:Description>
+         
+    <rdf:Description>
+        <dct:identifier>mc25a</dct:identifier>
+        <dct:title xml:lang="fr-FR">Additionner des cubes (de 1 à 5 par cellules) dans une grille 2x2 (avec 1 indice).</dct:title>
+        <dct:description><![CDATA["errratio":2,"checkempty":true,"callen":2,"noneg":true,"nodec":true,"imgprefix":"res/img/numbers/","withtabs":false,"img":["box01","box02","box03","box04","box05"],"sp":0.02,"rows":{"row0":{"height":0.2}},"cols":{"col0":{"width":0.2}},"withbars":false,"all":{"height":1.2,"width":1.2},"gen":"function() { var q=[[3,2],[1,3],[2,3]],nb=2, cells={}, val=[]; cells['c'+(nb+1)+'x'+(nb+1)]={'type':'hide'}; for (var j=0; j<nb;j++) for (var i=0; i<nb;i++) { val[i+j*nb]=Math.floor(Math.random()*5)+1; cells['c'+(i+1)+'x'+(j+1)]={'fixed':true,'type':'img','value':val[i+j*nb]-1};} for (var i=0; i<nb; i++) { var s=0; for (var j=0; j<nb; j++) { s+=val[i+j*nb]; } cells['c'+(i+1)+'x'+(nb+1)]={'fixed':true,'value':s,'background':'#AA8','color':'#FDA'}; } for (var j=0; j<nb; j++) { var s=0; for (var i=0; i<nb; i++) { s+=val[i+j*nb]; } cells['c'+(nb+1)+'x'+(j+1)]={'fixed':true,'value':s,'background':'#AA8','color':'#FDA'}; } for (var i in q) { var c = cells['c'+q[i][0]+'x'+q[i][1]]; c.result=c.value; c.value=''; c.fixed = false; } return {'cells':cells}; }","font":3]]></dct:description>
+        <dct:description xml:lang="fr-FR">,"exercice":"[b]Remplissez[/b] les [red]cellules vides[/red] vides en additionant les cubes en [b]lignes[/b] et en [b]colonnes[/b]."</dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>m35a</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>mc25b</dct:identifier>
+        <dct:title xml:lang="fr-FR">Additionner des cubes (de 1 à 5 par cellules) dans une grille 2x2.</dct:title>
+        <dct:description><![CDATA["errratio":2,"checkempty":true,"callen":2,"noneg":true,"nodec":true,"imgprefix":"res/img/numbers/","withtabs":false,"img":["box01","box02","box03","box04","box05"],"sp":0.02,"rows":{"row0":{"height":0.2}},"cols":{"col0":{"width":0.2}},"withbars":false,"all":{"height":1.2,"width":1.2},"gen":"function() { var q=[[3,1],[3,2],[1,3],[2,3]],nb=2, cells={}, val=[]; cells['c'+(nb+1)+'x'+(nb+1)]={'type':'hide'}; for (var j=0; j<nb;j++) for (var i=0; i<nb;i++) { val[i+j*nb]=Math.floor(Math.random()*5)+1; cells['c'+(i+1)+'x'+(j+1)]={'fixed':true,'type':'img','value':val[i+j*nb]-1};} for (var i=0; i<nb; i++) { var s=0; for (var j=0; j<nb; j++) { s+=val[i+j*nb]; } cells['c'+(i+1)+'x'+(nb+1)]={'fixed':true,'value':s,'background':'#AA8','color':'#FDA'}; } for (var j=0; j<nb; j++) { var s=0; for (var i=0; i<nb; i++) { s+=val[i+j*nb]; } cells['c'+(nb+1)+'x'+(j+1)]={'fixed':true,'value':s,'background':'#AA8','color':'#FDA'}; } for (var i in q) { var c = cells['c'+q[i][0]+'x'+q[i][1]]; c.result=c.value; c.value=''; c.fixed = false; } return {'cells':cells}; }","font":3]]></dct:description>
+        <dct:description xml:lang="fr-FR">,"exercice":"[b]Remplissez[/b] les [red]cellules vides[/red] vides en additionant les cubes en [b]lignes[/b] et en [b]colonnes[/b]."</dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>m35a</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>m25a</dct:identifier>
+        <dct:title xml:lang="fr-FR">Additionner des allumettes (de 1 à 5 par cellules) dans une grille 2x2 (avec 1 indice).</dct:title>
+        <dct:description><![CDATA["errratio":2,"checkempty":true,"callen":2,"noneg":true,"nodec":true,"imgprefix":"res/img/matches/","withtabs":false,"img":["match11","match21","match31","match41","match51"],"sp":0.02,"rows":{"row0":{"height":0.2}},"cols":{"col0":{"width":0.2}},"withbars":false,"all":{"height":1.2,"width":1.2},"gen":"function() { var q=[[3,2],[1,3],[2,3]],nb=2, cells={}, val=[]; cells['c'+(nb+1)+'x'+(nb+1)]={'type':'hide'}; for (var j=0; j<nb;j++) for (var i=0; i<nb;i++) { val[i+j*nb]=Math.floor(Math.random()*5)+1; cells['c'+(i+1)+'x'+(j+1)]={'fixed':true,'type':'img','value':val[i+j*nb]-1};} for (var i=0; i<nb; i++) { var s=0; for (var j=0; j<nb; j++) { s+=val[i+j*nb]; } cells['c'+(i+1)+'x'+(nb+1)]={'fixed':true,'value':s,'background':'#AA8','color':'#FDA'}; } for (var j=0; j<nb; j++) { var s=0; for (var i=0; i<nb; i++) { s+=val[i+j*nb]; } cells['c'+(nb+1)+'x'+(j+1)]={'fixed':true,'value':s,'background':'#AA8','color':'#FDA'}; } for (var i in q) { var c = cells['c'+q[i][0]+'x'+q[i][1]]; c.result=c.value; c.value=''; c.fixed = false; } return {'cells':cells}; }","font":3]]></dct:description>
+        <dct:description xml:lang="fr-FR">,"exercice":"[b]Remplissez[/b] les [red]cellules vides[/red] vides en additionant les allumettes en [b]lignes[/b] et en [b]colonnes[/b]."</dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>m35a</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>m25b</dct:identifier>
+        <dct:title xml:lang="fr-FR">Additionner des allumettes (de 1 à 5 par cellules) dans une grille 2x2.</dct:title>
+        <dct:description><![CDATA["errratio":2,"checkempty":true,"callen":2,"noneg":true,"nodec":true,"imgprefix":"res/img/matches/","withtabs":false,"img":["match11","match21","match31","match41","match51"],"sp":0.02,"rows":{"row0":{"height":0.2}},"cols":{"col0":{"width":0.2}},"withbars":false,"all":{"height":1.2,"width":1.2},"gen":"function() { var q=[[3,2],[3,1],[1,3],[2,3]],nb=2, cells={}, val=[]; cells['c'+(nb+1)+'x'+(nb+1)]={'type':'hide'}; for (var j=0; j<nb;j++) for (var i=0; i<nb;i++) { val[i+j*nb]=Math.floor(Math.random()*5)+1; cells['c'+(i+1)+'x'+(j+1)]={'fixed':true,'type':'img','value':val[i+j*nb]-1};} for (var i=0; i<nb; i++) { var s=0; for (var j=0; j<nb; j++) { s+=val[i+j*nb]; } cells['c'+(i+1)+'x'+(nb+1)]={'fixed':true,'value':s,'background':'#AA8','color':'#FDA'}; } for (var j=0; j<nb; j++) { var s=0; for (var i=0; i<nb; i++) { s+=val[i+j*nb]; } cells['c'+(nb+1)+'x'+(j+1)]={'fixed':true,'value':s,'background':'#AA8','color':'#FDA'}; } for (var i in q) { var c = cells['c'+q[i][0]+'x'+q[i][1]]; c.result=c.value; c.value=''; c.fixed = false; } return {'cells':cells}; }","font":3]]></dct:description>
+        <dct:description xml:lang="fr-FR">,"exercice":"[b]Remplissez[/b] les [red]cellules vides[/red] vides en additionant les allumettes en [b]lignes[/b] et en [b]colonnes[/b]."</dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>m35a</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
+    </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>m35a</dct:identifier>
         <dct:title xml:lang="fr-FR">Additionner des allumettes (de 1 à 5 par cellules) dans une grille 3x3.</dct:title>
         <dct:description><![CDATA["errratio":2,"checkempty":true,"callen":2,"noneg":true,"nodec":true,"imgprefix":"res/img/matches/","withtabs":false,"img":["match11","match21","match31","match41","match51"],"sp":0.02,"rows":{"row0":{"height":0.2}},"cols":{"col0":{"width":0.2}},"withbars":false,"all":{"height":1.2,"width":1.2},"gen":"function() { var q=[[4,2],[4,3],[1,4],[3,4]],nb=3, cells={}, val=[]; cells['c'+(nb+1)+'x'+(nb+1)]={'type':'hide'}; for (var j=0; j<nb;j++) for (var i=0; i<nb;i++) { val[i+j*nb]=Math.floor(Math.random()*5)+1; cells['c'+(i+1)+'x'+(j+1)]={'fixed':true,'type':'img','value':val[i+j*nb]-1};} for (var i=0; i<nb; i++) { var s=0; for (var j=0; j<nb; j++) { s+=val[i+j*nb]; } cells['c'+(i+1)+'x'+(nb+1)]={'fixed':true,'value':s,'background':'#AA8','color':'#FDA'}; } for (var j=0; j<nb; j++) { var s=0; for (var i=0; i<nb; i++) { s+=val[i+j*nb]; } cells['c'+(nb+1)+'x'+(j+1)]={'fixed':true,'value':s,'background':'#AA8','color':'#FDA'}; } for (var i in q) { var c = cells['c'+q[i][0]+'x'+q[i][1]]; c.result=c.value; c.value=''; c.fixed = false; } return {'cells':cells}; }","font":2.4]]></dct:description>
-        <dct:description xml:lang="fr-FR">,"exercice":"Remplissez les [red]cellules vides[/red] vides en additionant les allumettes."</dct:description>
+        <dct:description xml:lang="fr-FR">,"exercice":"[b]Remplissez[/b] les [red]cellules vides[/red] vides en additionant les allumettes."</dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -19,7 +98,7 @@
         <dct:identifier>m35b</dct:identifier>
         <dct:title xml:lang="fr-FR">Additionner des allumettes (de 1 à 5 par cellules) dans une grille 3x3.</dct:title>
         <dct:description><![CDATA["errratio":2,"checkempty":true,"callen":2,"noneg":true,"nodec":true,"imgprefix":"res/img/matches/","withtabs":false,"img":["match11","match21","match31","match41","match51"],"sp":0.02,"rows":{"row0":{"height":0.2}},"cols":{"col0":{"width":0.2}},"withbars":false,"all":{"height":1.2,"width":1.2},"gen":"function() { var q=[[1,1],[1,3],[4,3],[2,2],[3,2],[2,4]],nb=3, cells={}, val=[]; cells['c'+(nb+1)+'x'+(nb+1)]={'type':'hide'}; for (var j=0; j<nb;j++) for (var i=0; i<nb;i++) { val[i+j*nb]=Math.floor(Math.random()*5)+1; cells['c'+(i+1)+'x'+(j+1)]={'fixed':true,'type':'img','value':val[i+j*nb]-1};} for (var i=0; i<nb; i++) { var s=0; for (var j=0; j<nb; j++) { s+=val[i+j*nb]; } cells['c'+(i+1)+'x'+(nb+1)]={'fixed':true,'value':s,'background':'#AA8','color':'#FDA'}; } for (var j=0; j<nb; j++) { var s=0; for (var i=0; i<nb; i++) { s+=val[i+j*nb]; } cells['c'+(nb+1)+'x'+(j+1)]={'fixed':true,'value':s,'background':'#AA8','color':'#FDA'}; } for (var i in q) { var c = cells['c'+q[i][0]+'x'+q[i][1]]; c.result=c.value; c.value=''; c.fixed = false; } return {'cells':cells}; }","font":2.4]]></dct:description>
-        <dct:description xml:lang="fr-FR">,"exercice":"Remplissez les [red]cellules vides[/red] vides en additionant les allumettes."</dct:description>
+        <dct:description xml:lang="fr-FR">,"exercice":"[b]Remplissez[/b] les [red]cellules vides[/red] vides en additionant les allumettes."</dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -32,7 +111,7 @@
         <dct:identifier>m45a</dct:identifier>
         <dct:title xml:lang="fr-FR">Additionner des allumettes (de 1 à 5 par cellules) dans une grille 4x4.</dct:title>
         <dct:description><![CDATA["errratio":2,"checkempty":true,"callen":2,"noneg":true,"nodec":true,"imgprefix":"res/img/matches/","withtabs":false,"img":["match11","match21","match31","match41","match51"],"sp":0.02,"rows":{"row0":{"height":0.2}},"cols":{"col0":{"width":0.2}},"withbars":false,"all":{"height":1.2,"width":1.2},"gen":"function() { var q=[[5,1],[5,2],[5,3],[5,4],[1,5],[2,5],[3,5],[4,5]],nb=4, cells={}, val=[]; cells['c'+(nb+1)+'x'+(nb+1)]={'type':'hide'}; for (var j=0; j<nb;j++) for (var i=0; i<nb;i++) { val[i+j*nb]=Math.floor(Math.random()*5)+1; cells['c'+(i+1)+'x'+(j+1)]={'fixed':true,'type':'img','value':val[i+j*nb]-1};} for (var i=0; i<nb; i++) { var s=0; for (var j=0; j<nb; j++) { s+=val[i+j*nb]; } cells['c'+(i+1)+'x'+(nb+1)]={'fixed':true,'value':s,'background':'#AA8','color':'#FDA'}; } for (var j=0; j<nb; j++) { var s=0; for (var i=0; i<nb; i++) { s+=val[i+j*nb]; } cells['c'+(nb+1)+'x'+(j+1)]={'fixed':true,'value':s,'background':'#AA8','color':'#FDA'}; } for (var i in q) { var c = cells['c'+q[i][0]+'x'+q[i][1]]; c.result=c.value; c.value=''; c.fixed = false; } return {'cells':cells}; }","font":2]]></dct:description>
-        <dct:description xml:lang="fr-FR">,"exercice":"Remplissez les [red]cellules vides[/red] en additionant les allumettes."</dct:description>
+        <dct:description xml:lang="fr-FR">,"exercice":"[b]Remplissez[/b] les [red]cellules vides[/red] en additionant les allumettes."</dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -45,7 +124,7 @@
         <dct:identifier>m45b</dct:identifier>
         <dct:title xml:lang="fr-FR">Additionner des allumettes (de 1 à 5 par cellules) dans une grille 4x4.</dct:title>
         <dct:description><![CDATA["errratio":2,"checkempty":true,"callen":2,"noneg":true,"nodec":true,"imgprefix":"res/img/matches/","withtabs":false,"img":["match11","match21","match31","match41","match51"],"sp":0.02,"rows":{"row0":{"height":0.2}},"cols":{"col0":{"width":0.2}},"withbars":false,"all":{"height":1.2,"width":1.2},"gen":"function() { var q=[[2,1],[3,1],[3,2],[5,2],[1,3],[1,4],[4,4],[5,4]],nb=4, cells={}, val=[]; cells['c'+(nb+1)+'x'+(nb+1)]={'type':'hide'}; for (var j=0; j<nb;j++) for (var i=0; i<nb;i++) { val[i+j*nb]=Math.floor(Math.random()*5)+1; cells['c'+(i+1)+'x'+(j+1)]={'fixed':true,'type':'img','value':val[i+j*nb]-1};} for (var i=0; i<nb; i++) { var s=0; for (var j=0; j<nb; j++) { s+=val[i+j*nb]; } cells['c'+(i+1)+'x'+(nb+1)]={'fixed':true,'value':s,'background':'#AA8','color':'#FDA'}; } for (var j=0; j<nb; j++) { var s=0; for (var i=0; i<nb; i++) { s+=val[i+j*nb]; } cells['c'+(nb+1)+'x'+(j+1)]={'fixed':true,'value':s,'background':'#AA8','color':'#FDA'}; } for (var i in q) { var c = cells['c'+q[i][0]+'x'+q[i][1]]; c.result=c.value; c.value=''; c.fixed = false; } return {'cells':cells}; }","font":2]]></dct:description>
-        <dct:description xml:lang="fr-FR">,"exercice":"Remplissez les [red]cellules vides[/red] en additionant les allumettes."</dct:description>
+        <dct:description xml:lang="fr-FR">,"exercice":"[b]Remplissez[/b] les [red]cellules vides[/red] en additionant les allumettes."</dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>

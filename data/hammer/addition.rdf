@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dct="http://purl.org/dc/terms/">
+
+ 
+    <rdf:Description>
+        <dct:identifier>c10</dct:identifier>
+        <dct:title xml:lang="fr-FR">Parmi les valeurs comprises entre 0 et 5, cliquer sur les valeurs strictement inférieures à 3.</dct:title>
+        <dct:description><![CDATA["good":[{"type":"sig","font":0.3,"gen":"function() { var a=Math.floor(Math.random()*9)+1,b; do {b=Math.floor(Math.random()*10)+1;} while(a+b>10); return ''+a+'+'+b+'='+(a+b);}"}],"wrong":[{"type":"sig","font":0.3,"gen":"function() { var a=Math.floor(Math.random()*9)+1,b,c; do {b=Math.floor(Math.random()*10)+1;} while(a+b>10); do { c=Math.floor(Math.random()*10)+1; } while(c==a+b); return ''+a+'+'+b+'='+c;}"}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Cliquez sur les additions [b]exactes[/b]."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>c10</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
+    </rdf:Description>
+ 
+    
+</rdf:RDF>
+
