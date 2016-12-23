@@ -187,6 +187,7 @@
             var inituse               = [];
             var ids                   = [];
             var nbpieces              = 0;
+            
 
             // AUTOMATIC GENERATION
             if (settings.gen) {
@@ -207,7 +208,7 @@
             $this.find("#ttext").removeClass("legend");
             if (settings.timg) {
                 var img = $.isArray(settings.timg)?settings.timg[settings.puzzleid]:settings.timg;
-                if (img) { $this.find("#timg").html("<img src='res/img/"+img+"'/>").show();
+                if (img) { $this.find("#timg").html("<img src='"+img+"'/>").show();
                            $this.find("#ttext").addClass("legend"); }
             }
             if (settings.ttxt) {
@@ -245,16 +246,25 @@
 
             // PARSE ALL THE PIECES
             var count = 0;
+            
             $("#"+settings.pieces+">g",settings.svg.root()).each(function(_index) {
                 $(this).attr("class","");
                 var vOK = true;
+                
                 if (ids.length) { vOK = false; for (var i in ids) { vOK = vOK || (ids[i]==$(this).attr("id")); } }
 
                 if (vOK) {
                     // CHECK IF THERE IS A TEXT TO CHANGE
                     if (settings.values) {
                         var values = ($.isArray(settings.values))?settings.values[settings.puzzleid]:settings.values;
-                        if (typeof(values[$(this).attr("id")])!="undefined") {$(this).find("text").text(values[$(this).attr("id")]); }
+                        var txt    = values[$(this).attr("id")];
+                        if (typeof(txt)!="undefined") {
+							if (!$.isArray(txt)) { txt = [txt]; }
+							for (var i in txt) {
+								if (txt[i].indexOf(".svg")!=-1) { $(this).find("image").attr("xlink:href",txt[i]); }
+								else 							{ $(this).find("text").text(txt[i]); }
+							}
+						}
                     }
                     
                     if (!helpers.isdecoy($this, $(this).attr("id")))
