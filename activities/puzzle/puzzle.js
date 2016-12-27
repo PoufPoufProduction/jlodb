@@ -26,7 +26,11 @@
         "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
         "\\\[br\\\]",                               "<br/>",
         "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
-        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>"
+        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
+        "\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='icon' style='float:left'><img src='$1'/></div>",
+        "\\\[icon2\\\]([^\\\[]+)\\\[/icon2\\\]",    "<div class='icon' style='float:left;font-size:2em;'><img src='$1'/></div>",
+        "\\\[icon3\\\]([^\\\[]+)\\\[/icon3\\\]",    "<div class='icon' style='float:left;font-size:3em;'><img src='$1'/></div>",
+        "\\\[icon4\\\]([^\\\[]+)\\\[/icon4\\\]",    "<div class='icon' style='float:left;font-size:4em;'><img src='$1'/></div>"
     ];
 
     // private methods
@@ -257,7 +261,7 @@
                     // CHECK IF THERE IS A TEXT TO CHANGE
                     if (settings.values) {
                         var values = ($.isArray(settings.values))?settings.values[settings.puzzleid]:settings.values;
-                        var txt    = values[$(this).attr("id")];
+                        var txt    = values[$(this).attr("id")].toString();
                         if (typeof(txt)!="undefined") {
 							if (!$.isArray(txt)) { txt = [txt]; }
 							for (var i in txt) {

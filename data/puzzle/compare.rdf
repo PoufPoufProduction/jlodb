@@ -34,7 +34,7 @@
     <rdf:Description>
         <dct:identifier>g100</dct:identifier>
         <dct:title xml:lang="fr-FR">Classer 8 valeurs, comprises entre 1 et 100, suivant les 2 inégalités proposées [1,50,100].</dct:title>
-        <dct:description><![CDATA["number":3,"init":{"pos":[[201,28],[201,65],[201,102],[375,48],[375,85],[540,28],[540,65],[540,102]]},"same":[["a","b","c","d"],["e","f","g","h"]],"url":"puzzle/groups2-4.svg","gen":"function(_id){ var nb=4,range=[0,50,100],txt={},values={}; for (var i=0; i<range.length-1;i++){ txt['text'+(i+1)]=range[i]+' < ... < '+range[i+1]; for(var j=0;j<nb;j++) { values[String.fromCharCode(97 + j + i*nb)]= Math.floor(Math.random()*(range[i+1]-range[i]-1))+range[i]+1; } } return {txt:txt, values:values};}","svgclass":"big"]]></dct:description>
+        <dct:description><![CDATA["number":2,"init":{"pos":[[201,28],[201,65],[201,102],[375,48],[375,85],[540,28],[540,65],[540,102]]},"same":[["a","b","c","d"],["e","f","g","h"]],"url":"puzzle/groups2-4.svg","gen":"function(_id){ var nb=4,range=[0,50,100],txt={},values={}; for (var i=0; i<range.length-1;i++){ txt['text'+(i+1)]=range[i]+' < ... < '+range[i+1]; for(var j=0;j<nb;j++) { values[String.fromCharCode(97 + j + i*nb)]= Math.floor(Math.random()*(range[i+1]-range[i]-1))+range[i]+1; } } return {txt:txt, values:values};}","svgclass":"big"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Placez les différentes valeurs suivant [b]les inégalités[/b] proposées."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -47,7 +47,7 @@
     <rdf:Description>
         <dct:identifier>g100o</dct:identifier>
         <dct:title xml:lang="fr-FR">Classer 8 valeurs, comprises entre 1 et 100, suivant les 2 inégalités proposées.</dct:title>
-        <dct:description><![CDATA["number":3,"init":{"pos":[[201,28],[201,65],[201,102],[375,48],[375,85],[540,28],[540,65],[540,102]]},"same":[["a","b","c","d"],["e","f","g","h"]],"url":"puzzle/groups2-4.svg","gen":"function(_id){ var nb=4,range=[0,20+Math.floor(Math.random()*61),100],txt={},values={}; for (var i=0; i<range.length-1;i++){ txt['text'+(i+1)]=range[i]+' < ... < '+range[i+1]; for(var j=0;j<nb;j++) { values[String.fromCharCode(97 + j + i*nb)]= Math.floor(Math.random()*(range[i+1]-range[i]-1))+range[i]+1; } } return {txt:txt, values:values};}","svgclass":"big"]]></dct:description>
+        <dct:description><![CDATA["number":2,"init":{"pos":[[201,28],[201,65],[201,102],[375,48],[375,85],[540,28],[540,65],[540,102]]},"same":[["a","b","c","d"],["e","f","g","h"]],"url":"puzzle/groups2-4.svg","gen":"function(_id){ var nb=4,range=[0,20+Math.floor(Math.random()*61),100],txt={},values={}; for (var i=0; i<range.length-1;i++){ txt['text'+(i+1)]=range[i]+' < ... < '+range[i+1]; for(var j=0;j<nb;j++) { values[String.fromCharCode(97 + j + i*nb)]= Math.floor(Math.random()*(range[i+1]-range[i]-1))+range[i]+1; } } return {txt:txt, values:values};}","svgclass":"big"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Placez les différentes valeurs suivant [b]les inégalités[/b] proposées."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -60,8 +60,8 @@
     
     <rdf:Description>
         <dct:identifier>g3100</dct:identifier>
-        <dct:title xml:lang="fr-FR">Classer 8 valeurs, comprises entre 1 et 100, suivant les 3 inégalités proposées [1,30,60,100].</dct:title>
-        <dct:description><![CDATA["number":2,"init":{"pos":[[215,28],[215,65],[215,102],[320,28],[320,65],[320,102],[425,28],[425,65],[425,102],[530,28],[530,65],[530,102]]},"same":[["a","b","c","d"],["e","f","g","h"],["i","j","k","l"]],"url":"puzzle/groups3-4.svg","gen":"function(_id){ var nb=4,range=[0,30,60,100],txt={},values={}; for (var i=0; i<range.length-1;i++){ txt['text'+(i+1)]=range[i]+' < ... < '+range[i+1]; for(var j=0;j<nb;j++) { values[String.fromCharCode(97 + j + i*nb)]= Math.floor(Math.random()*(range[i+1]-range[i]-1))+range[i]+1; } } return {txt:txt, values:values};}","svgclass":"big"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Classer 12 valeurs, comprises entre 1 et 100, suivant les 3 inégalités proposées [1,30,60,100].</dct:title>
+        <dct:description><![CDATA["number":1,"init":{"pos":[[215,28],[215,65],[215,102],[320,28],[320,65],[320,102],[425,28],[425,65],[425,102],[530,28],[530,65],[530,102]]},"same":[["a","b","c","d"],["e","f","g","h"],["i","j","k","l"]],"url":"puzzle/groups3-4.svg","gen":"function(_id){ var nb=4,range=[0,30,60,100],txt={},values={}; for (var i=0; i<range.length-1;i++){ txt['text'+(i+1)]=range[i]+' < ... < '+range[i+1]; for(var j=0;j<nb;j++) { values[String.fromCharCode(97 + j + i*nb)]= Math.floor(Math.random()*(range[i+1]-range[i]-1))+range[i]+1; } } return {txt:txt, values:values};}","svgclass":"big"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Placez les différentes valeurs suivant [b]les inégalités[/b] proposées."]]></dct:description>
         <dct:extent>4</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -73,8 +73,8 @@
 
     <rdf:Description>
         <dct:identifier>g3100o</dct:identifier>
-        <dct:title xml:lang="fr-FR">Classer 8 valeurs, comprises entre 1 et 100, suivant les 3 inégalités proposées.</dct:title>
-        <dct:description><![CDATA["number":2,"init":{"pos":[[215,28],[215,65],[215,102],[320,28],[320,65],[320,102],[425,28],[425,65],[425,102],[530,28],[530,65],[530,102]]},"same":[["a","b","c","d"],["e","f","g","h"],["i","j","k","l"]],"url":"puzzle/groups3-4.svg","gen":"function(_id){ var nb=4,m=100,a=20+Math.floor(Math.random()*40),range=[0,a,Math.floor(Math.random()*(m-a-41))+a+21,m],txt={},values={}; for (var i=0; i<range.length-1;i++){ txt['text'+(i+1)]=range[i]+' < ... < '+range[i+1]; for(var j=0;j<nb;j++) { values[String.fromCharCode(97 + j + i*nb)]= Math.floor(Math.random()*(range[i+1]-range[i]-1))+range[i]+1; } } return {txt:txt, values:values};}","svgclass":"big"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Classer 12 valeurs, comprises entre 1 et 100, suivant les 3 inégalités proposées.</dct:title>
+        <dct:description><![CDATA["number":1,"init":{"pos":[[215,28],[215,65],[215,102],[320,28],[320,65],[320,102],[425,28],[425,65],[425,102],[530,28],[530,65],[530,102]]},"same":[["a","b","c","d"],["e","f","g","h"],["i","j","k","l"]],"url":"puzzle/groups3-4.svg","gen":"function(_id){ var nb=4,m=100,a=20+Math.floor(Math.random()*40),range=[0,a,Math.floor(Math.random()*(m-a-41))+a+21,m],txt={},values={}; for (var i=0; i<range.length-1;i++){ txt['text'+(i+1)]=range[i]+' < ... < '+range[i+1]; for(var j=0;j<nb;j++) { values[String.fromCharCode(97 + j + i*nb)]= Math.floor(Math.random()*(range[i+1]-range[i]-1))+range[i]+1; } } return {txt:txt, values:values};}","svgclass":"big"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Placez les différentes valeurs suivant [b]les inégalités[/b] proposées."]]></dct:description>
         <dct:extent>4</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -87,7 +87,7 @@
     <rdf:Description>
         <dct:identifier>g1ko</dct:identifier>
         <dct:title xml:lang="fr-FR">Classer 8 valeurs, comprises entre 1 et 1000, suivant les 2 inégalités proposées.</dct:title>
-        <dct:description><![CDATA["number":3,"init":{"pos":[[201,28],[201,65],[201,102],[375,48],[375,85],[540,28],[540,65],[540,102]]},"same":[["a","b","c","d"],["e","f","g","h"]],"url":"puzzle/groups2-4.svg","gen":"function(_id){ var nb=4,range=[0,20+Math.floor(Math.random()*961),1000],txt={},values={}; for (var i=0; i<range.length-1;i++){ txt['text'+(i+1)]=range[i]+' < ... < '+range[i+1]; for(var j=0;j<nb;j++) { values[String.fromCharCode(97 + j + i*nb)]= Math.floor(Math.random()*(range[i+1]-range[i]-1))+range[i]+1; } } return {txt:txt, values:values};}","svgclass":"big"]]></dct:description>
+        <dct:description><![CDATA["number":2,"init":{"pos":[[201,28],[201,65],[201,102],[375,48],[375,85],[540,28],[540,65],[540,102]]},"same":[["a","b","c","d"],["e","f","g","h"]],"url":"puzzle/groups2-4.svg","gen":"function(_id){ var nb=4,range=[0,20+Math.floor(Math.random()*961),1000],txt={},values={}; for (var i=0; i<range.length-1;i++){ txt['text'+(i+1)]=range[i]+' < ... < '+range[i+1]; for(var j=0;j<nb;j++) { values[String.fromCharCode(97 + j + i*nb)]= Math.floor(Math.random()*(range[i+1]-range[i]-1))+range[i]+1; } } return {txt:txt, values:values};}","svgclass":"big"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Placez les différentes valeurs suivant [b]les inégalités[/b] proposées."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -99,8 +99,8 @@
 
     <rdf:Description>
         <dct:identifier>g31ko</dct:identifier>
-        <dct:title xml:lang="fr-FR">Classer 8 valeurs, comprises entre 1 et 1000, suivant les 3 inégalités proposées.</dct:title>
-        <dct:description><![CDATA["number":2,"init":{"pos":[[215,28],[215,65],[215,102],[320,28],[320,65],[320,102],[425,28],[425,65],[425,102],[530,28],[530,65],[530,102]]},"same":[["a","b","c","d"],["e","f","g","h"],["i","j","k","l"]],"url":"puzzle/groups3-4.svg","gen":"function(_id){ var nb=4,m=1000,a=20+Math.floor(Math.random()*940),range=[0,a,Math.floor(Math.random()*(m-a-41))+a+21,m],txt={},values={}; for (var i=0; i<range.length-1;i++){ txt['text'+(i+1)]=range[i]+' < ... < '+range[i+1]; for(var j=0;j<nb;j++) { values[String.fromCharCode(97 + j + i*nb)]= Math.floor(Math.random()*(range[i+1]-range[i]-1))+range[i]+1; } } return {txt:txt, values:values};}"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Classer 12 valeurs, comprises entre 1 et 1000, suivant les 3 inégalités proposées.</dct:title>
+        <dct:description><![CDATA["number":1,"init":{"pos":[[215,28],[215,65],[215,102],[320,28],[320,65],[320,102],[425,28],[425,65],[425,102],[530,28],[530,65],[530,102]]},"same":[["a","b","c","d"],["e","f","g","h"],["i","j","k","l"]],"url":"puzzle/groups3-4.svg","gen":"function(_id){ var nb=4,m=1000,a=20+Math.floor(Math.random()*940),range=[0,a,Math.floor(Math.random()*(m-a-41))+a+21,m],txt={},values={}; for (var i=0; i<range.length-1;i++){ txt['text'+(i+1)]=range[i]+' < ... < '+range[i+1]; for(var j=0;j<nb;j++) { values[String.fromCharCode(97 + j + i*nb)]= Math.floor(Math.random()*(range[i+1]-range[i]-1))+range[i]+1; } } return {txt:txt, values:values};}"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Placez les différentes valeurs suivant [b]les inégalités[/b] proposées."]]></dct:description>
         <dct:extent>4</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -113,7 +113,7 @@
     <rdf:Description>
         <dct:identifier>g10ko</dct:identifier>
         <dct:title xml:lang="fr-FR">Classer 8 valeurs, comprises entre 1 et 10000, suivant les 2 inégalités proposées.</dct:title>
-        <dct:description><![CDATA["number":3,"init":{"pos":[[201,28],[201,65],[201,102],[375,48],[375,85],[540,28],[540,65],[540,102]]},"same":[["a","b","c","d"],["e","f","g","h"]],"url":"puzzle/groups2-4.svg","gen":"function(_id){ var nb=4,range=[0,20+Math.floor(Math.random()*9961),10000],txt={},values={}; for (var i=0; i<range.length-1;i++){ txt['text'+(i+1)]=range[i]+' < ... < '+range[i+1]; for(var j=0;j<nb;j++) { values[String.fromCharCode(97 + j + i*nb)]= Math.floor(Math.random()*(range[i+1]-range[i]-1))+range[i]+1; } } return {txt:txt, values:values};}"]]></dct:description>
+        <dct:description><![CDATA["number":2,"init":{"pos":[[201,28],[201,65],[201,102],[375,48],[375,85],[540,28],[540,65],[540,102]]},"same":[["a","b","c","d"],["e","f","g","h"]],"url":"puzzle/groups2-4.svg","gen":"function(_id){ var nb=4,range=[0,20+Math.floor(Math.random()*9961),10000],txt={},values={}; for (var i=0; i<range.length-1;i++){ txt['text'+(i+1)]=range[i]+' < ... < '+range[i+1]; for(var j=0;j<nb;j++) { values[String.fromCharCode(97 + j + i*nb)]= Math.floor(Math.random()*(range[i+1]-range[i]-1))+range[i]+1; } } return {txt:txt, values:values};}"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Placez les différentes valeurs suivant [b]les inégalités[/b] proposées."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -124,8 +124,8 @@
 
     <rdf:Description>
         <dct:identifier>g310ko</dct:identifier>
-        <dct:title xml:lang="fr-FR">Classer 8 valeurs, comprises entre 1 et 10000, suivant les 3 inégalités proposées.</dct:title>
-        <dct:description><![CDATA["number":2,"init":{"pos":[[215,28],[215,65],[215,102],[320,28],[320,65],[320,102],[425,28],[425,65],[425,102],[530,28],[530,65],[530,102]]},"same":[["a","b","c","d"],["e","f","g","h"],["i","j","k","l"]],"url":"puzzle/groups3-4.svg","gen":"function(_id){ var nb=4,m=10000,a=20+Math.floor(Math.random()*9940),range=[0,a,Math.floor(Math.random()*(m-a-41))+a+21,m],txt={},values={}; for (var i=0; i<range.length-1;i++){ txt['text'+(i+1)]=range[i]+' < ... < '+range[i+1]; for(var j=0;j<nb;j++) { values[String.fromCharCode(97 + j + i*nb)]= Math.floor(Math.random()*(range[i+1]-range[i]-1))+range[i]+1; } } return {txt:txt, values:values};}"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Classer 12 valeurs, comprises entre 1 et 10000, suivant les 3 inégalités proposées.</dct:title>
+        <dct:description><![CDATA["number":1,"init":{"pos":[[215,28],[215,65],[215,102],[320,28],[320,65],[320,102],[425,28],[425,65],[425,102],[530,28],[530,65],[530,102]]},"same":[["a","b","c","d"],["e","f","g","h"],["i","j","k","l"]],"url":"puzzle/groups3-4.svg","gen":"function(_id){ var nb=4,m=10000,a=20+Math.floor(Math.random()*9940),range=[0,a,Math.floor(Math.random()*(m-a-41))+a+21,m],txt={},values={}; for (var i=0; i<range.length-1;i++){ txt['text'+(i+1)]=range[i]+' < ... < '+range[i+1]; for(var j=0;j<nb;j++) { values[String.fromCharCode(97 + j + i*nb)]= Math.floor(Math.random()*(range[i+1]-range[i]-1))+range[i]+1; } } return {txt:txt, values:values};}"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Placez les différentes valeurs suivant [b]les inégalités[/b] proposées."]]></dct:description>
         <dct:extent>4</dct:extent>
         <dct:subject>numeration</dct:subject>
