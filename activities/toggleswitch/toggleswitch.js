@@ -16,6 +16,7 @@
         font        : 1,                                        // Template font
         loop        : true,                                     // State loop
         illustration: "",                                       // Add an illustration (text or image)
+        errratio    : 1,                                        // Ratio error
         debug       : true                                      // Debug mode
     };
 
@@ -26,8 +27,8 @@
         "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
         "\\\[green\\\]([^\\\[]+)\\\[/green\\\]",    "<span style='color:green'>$1</span>",
         "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
-        "\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='icon' style='float:left'><img src='res/img/$1'/></div>",
-        "\\\[icon2\\\]([^\\\[]+)\\\[/icon2\\\]",    "<div class='icon' style='font-size:2em;float:left'><img src='res/img/$1'/></div>"
+        "\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='icon' style='float:left'><img src='$1'/></div>",
+        "\\\[icon2\\\]([^\\\[]+)\\\[/icon2\\\]",    "<div class='icon' style='font-size:2em;float:left'><img src='$1'/></div>"
     ];
 
     var onClicks = {
@@ -365,7 +366,7 @@
 
                     if (settings.it>=settings.number) {
 
-                        settings.score = 5-settings.wrongs;
+                        settings.score = 5-settings.errratio*settings.wrongs;
                         if (settings.score<0) { settings.score = 0; }
                         $(this).find("#valid").hide();
                         setTimeout(function() { helpers.end($this); }, wrongs?2000:1000);
