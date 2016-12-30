@@ -11,7 +11,7 @@
         mode        : "normal",                                 // Mode (normal, hexa)
         number      : 3,                                        // Number of exercices
         fontex      : 1,                                        // Exercice font size
-        ratioerr    : 1,                                        // Ratio error
+        errratio    : 1,                                        // Ratio error
         reset       : true,                                     // Reset abacus after each question
         debug       : true                                     // Debug mode
     };
@@ -371,7 +371,7 @@
                     setTimeout(function() { helpers.next($this, settings.reset); }, wrong?2000:500);
                 }
                 else {
-                    settings.score = Math.max(0,Math.floor(5-settings.wrongs*settings.ratioerr));
+                    settings.score = Math.max(0,Math.floor(5-settings.wrongs*settings.errratio));
                     setTimeout(function() { helpers.end($this); }, wrong?2000:500);
                 }
             },

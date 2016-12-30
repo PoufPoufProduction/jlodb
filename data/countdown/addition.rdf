@@ -138,15 +138,15 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>2001</dct:identifier>
-        <dct:title xml:lang="fr-FR">Retrouver le bon compte [12,14,17] à partir de valeurs comprises entre 5 et 10.</dct:title>
-        <dct:description><![CDATA["op":["plus"],"data":[{"values":[5,6,7,8,9,10],"result":12},{"values":[5,6,7,8,9,10],"result":14},{"values":[5,6,7,8,9,10],"result":17}]]]></dct:description>
-        <dct:extent>2</dct:extent>
+        <dct:identifier>20o</dct:identifier>
+        <dct:title xml:lang="fr-FR">Retrouver le bon compte à partir de valeurs comprises entre 1 et 10.</dct:title>
+        <dct:description><![CDATA["op":["plus"],"gen":"function(_index){ var tt=[[4,5,6,7,8,9],[4,6,6,7,8,9],[5,6,7,7,8,8],[6,7,8,8,9,9]],tiles=tt[_index],a=Math.floor(Math.random()*tiles.length),b,value; do { var ok=true; do { b=Math.floor(Math.random()*tiles.length); } while (a==b); value=tiles[a]+tiles[b]; for(var i in tiles) { if (value==tiles[i]) { ok=false; }} } while(!ok); return {\\\"values\\\":tiles,\\\"result\\\":value} }","number":4]]></dct:description>
+        <dct:extent>3</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
+        <dct:type>3</dct:type>
         <dct:alternative>45o</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">aléatoire,CP</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
