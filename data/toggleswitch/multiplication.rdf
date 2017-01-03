@@ -3,6 +3,20 @@
          xmlns:dct="http://purl.org/dc/terms/">
 
 
+    
+    <rdf:Description>
+        <dct:identifier>ac20</dct:identifier>
+        <dct:title xml:lang="fr-FR">Sélectionner deux fois plus de cubes que demandé (de 1 à 20).</dct:title>
+        <dct:description><![CDATA["number":4,"template":"desktop/numeration01.svg","onclick":"function($this, elts, id, settings){ var ret = true, number=false, index = 0, val=[], e='v1'; do { var cpt=0; for (var i=0; i<10; i++) { if ( (elts[i+index].state==1 && id!=i+index) ||(elts[i+index].state==0 && id==i+index)) { cpt++; number=true; }} index+=10; if (number) {val.push(cpt); } ret&=(cpt!=10);} while(index<elts.length); if (ret) {val.reverse(); if (!val.length) { val=[0];} for (var i=0; i<3; i++) { $('#'+e,settings.svg.root()).html(i<val.length?val[i]:''); e+='0';}} return ret;}","scorefct":"function($this, elts, settings){ var user=settings.current.user, ret = 0, index = 0, val=[]; do { var cpt=0; for (var i=0; i<10; i++) { if (elts[i+index].state==1) { cpt++; }} index+=10; val.push(cpt); } while(index<elts.length); val.reverse(); while(val.length<3){val.push(0);} if (val[0]!=user%10) { $('#bgunit',settings.svg.root()).attr('class','unit wrong');ret++; } if (val[1]!=Math.floor(user/10)%10) { $('#bgdecade',settings.svg.root()).attr('class','decade wrong');ret++; } if (val[2]!=Math.floor(user/100)%10) { $('#bghundred',settings.svg.root()).attr('class','hundred wrong');ret++; }return ret;}","gen":"function(){var a=Math.floor(Math.random()*10)+1; return {'tag':a,'user':a*2}}","states":{ "nb":2, "class":["c0","c1"]},"svgclass":"decade numbers","group":"decade"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"[b]Sélectionnez[/b] [red]deux fois[/red] plus de cubes que demandé ci-contre."},"t":["Centaines","Dizaines","Unités"]]]></dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>ac20</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
+    </rdf:Description>
+    
     <rdf:Description>
         <dct:identifier>2</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier les valeurs appartenant à la table de multiplication de 2.</dct:title>
