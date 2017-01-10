@@ -8,22 +8,24 @@
         <dct:title xml:lang="fr-FR">Soustraire, additionner et multiplier, sans contrainte de temps, des valeurs comprises entre 1 et 100.</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":5000},"gen":"function() { var ret=\\\"\\\"; var op=Math.random()*3; if (op<1) { var a=Math.floor(Math.random()*95)+6; ret=\\\"\\\"+a+\\\"-\\\"+(Math.floor(Math.random()*a)+1);} else if (op<2) { var a=Math.floor(Math.random()*99)+1; ret=\\\"\\\"+a+\\\"+\\\"+(Math.floor(Math.random()*(99-a))+1); } else { ret=\\\"\\\"+(Math.floor(Math.random()*10)+1)+\\\"*\\\"+(Math.floor(Math.random()*10)+1); } return ret;}","font":2]]></dct:description>
         <dct:extent>1</dct:extent>
-        <dct:subject>operation</dct:subject>
+        <dct:subject>operations</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>100</dct:alternative>
     </rdf:Description>
-
+    
     <rdf:Description>
-        <dct:identifier>100x</dct:identifier>
-        <dct:title xml:lang="fr-FR">Soustraire, additionner et multiplier, en moins de 30 secondes, des valeurs comprises entre 1 et 100.</dct:title>
-        <dct:description><![CDATA["time":1.5,"input":{"digit":2,"speed":5000},"gen":"function() { var ret=\\\"\\\"; var op=Math.random()*3; if (op<1) { var a=Math.floor(Math.random()*95)+6; ret=\\\"\\\"+a+\\\"-\\\"+(Math.floor(Math.random()*a)+1);} else if (op<2) { var a=Math.floor(Math.random()*99)+1; ret=\\\"\\\"+a+\\\"+\\\"+(Math.floor(Math.random()*(99-a))+1); } else { ret=\\\"\\\"+(Math.floor(Math.random()*10)+1)+\\\"*\\\"+(Math.floor(Math.random()*10)+1); } return ret;}","font":2]]></dct:description>
+        <dct:identifier>20</dct:identifier>
+        <dct:title xml:lang="fr-FR">Soustraire, additionner, multiplier et diviser par 2, sans contrainte de temps, des valeurs comprises entre 1 et 20.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":5000},"gen":"function() { var val=[function() { return Math.floor(Math.random()*7+3)+'+'+Math.floor(Math.random()*7+3); }, function() { var a = Math.floor(Math.random()*17+3); return a+'-'+Math.floor(Math.random()*(a-1)+1); }, function() { var a = Math.floor(Math.random()*7+3); return a+'*2'; }, function() { var a = Math.floor(Math.random()*7+3); return (a*2)+'/2'; }], v=Math.floor(Math.random()*val.length); return val[v]();}","font":2,"class":"h12"]]></dct:description>
         <dct:extent>1</dct:extent>
-        <dct:subject>operation</dct:subject>
+        <dct:subject>operations</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>4</dct:type>
+        <dct:type>2</dct:type>
         <dct:alternative>100</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
     </rdf:Description>
+
 
     <!-- NEG AND ABSOLUTE -->
 
@@ -35,7 +37,7 @@
         <dct:subject>negative</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>100</dct:alternative>
+        <dct:alternative>n10</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
@@ -46,7 +48,7 @@
         <dct:subject>negative</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>100</dct:alternative>
+        <dct:alternative>n10</dct:alternative>
     </rdf:Description>
 
 </rdf:RDF>

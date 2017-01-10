@@ -173,8 +173,8 @@
                     else                { vNewValue = vValueArray[i%vValueArray.length]; }
 
                     // The question may be an array [question, response], otherwise response is evaluated from the question
-                    if ($.isArray(vNewValue))   { vValue.question = vNewValue[0]; vValue.response = vNewValue[1]; }
-                    else                        { vValue.question = vNewValue; vValue.response = eval(vNewValue.replace("×","*")); }
+                    if ($.isArray(vNewValue))   { vValue.question = vNewValue[0].toString(); vValue.response = vNewValue[1].toString(); }
+                    else                        { vValue.question = vNewValue.toString(); vValue.response = eval(vNewValue.toString().replace("×","*")); }
 
                     // Special treatment
                     var vRegExpMult = new RegExp("\\\*", "g")

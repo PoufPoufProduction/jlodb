@@ -227,10 +227,13 @@
                 for (var i in show) { $("#"+show[i],settings.svg.root()).css("display","inline"); }
             }
 
-            // HANDLE TEXT IN SVG
+            // HANDLE STATIC TEXT OR IMAGE IN SVG
             if (settings.txt) {
                 var txt = $.isArray(settings.txt)?settings.txt[settings.puzzleid]:settings.txt;
-                for (var i in txt) { $("#"+i,settings.svg.root()).text(txt[i]); }
+                for (var i in txt) {
+                    if (txt[i].toString().indexOf(".svg")!=-1)  { $("#"+i,settings.svg.root()).attr("xlink:href",txt[i]).show(); }
+					else 							            { $("#"+i,settings.svg.root()).text(txt[i]).show(); }
+                }
             }
 
             // GET PIECES AND NB PIECES
@@ -258,15 +261,15 @@
                 if (ids.length) { vOK = false; for (var i in ids) { vOK = vOK || (ids[i]==$(this).attr("id")); } }
 
                 if (vOK) {
-                    // CHECK IF THERE IS A TEXT TO CHANGE
+                    // DYNAMIC TEXT/IMAGE TO CHANGE
                     if (settings.values) {
                         var values = ($.isArray(settings.values))?settings.values[settings.puzzleid]:settings.values;
                         var txt    = values[$(this).attr("id")].toString();
                         if (typeof(txt)!="undefined") {
 							if (!$.isArray(txt)) { txt = [txt]; }
 							for (var i in txt) {
-								if (txt[i].indexOf(".svg")!=-1) { $(this).find("image").attr("xlink:href",txt[i]); }
-								else 							{ $(this).find("text").text(txt[i]); }
+								if (txt[i].toString().indexOf(".svg")!=-1)  { $(this).find("image").attr("xlink:href",txt[i]).show(); }
+								else 							            { $(this).find("text").text(txt[i]).show(); }
 							}
 						}
                     }
@@ -348,6 +351,7 @@
                     }
                     $(this).attr("transform", "translate("+vX+" "+vY+")");
                     $(this).find(".rot").attr("transform","rotate("+vZ+")");
+                    $(this).show();
                 }
                 else {
                     $(this).attr("class","disable");
