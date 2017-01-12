@@ -264,8 +264,9 @@
                     // DYNAMIC TEXT/IMAGE TO CHANGE
                     if (settings.values) {
                         var values = ($.isArray(settings.values))?settings.values[settings.puzzleid]:settings.values;
-                        var txt    = values[$(this).attr("id")].toString();
+                        var txt    = values[$(this).attr("id")];
                         if (typeof(txt)!="undefined") {
+                            txt = txt.toString();
 							if (!$.isArray(txt)) { txt = [txt]; }
 							for (var i in txt) {
 								if (txt[i].toString().indexOf(".svg")!=-1)  { $(this).find("image").attr("xlink:href",txt[i]).show(); }

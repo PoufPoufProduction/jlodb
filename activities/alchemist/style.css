@@ -1,3 +1,4 @@
+.alchemist     { font-family:"Century Gothic", sans-serif; }
 .alchemist                          { font-family: "Courier New" Courier monospace;
                                       background-image:url("../../res/img/background/book03.svg"); background-repeat:repeat;}
 .alchemist table                    { border-collapse:collapse; border-spacing:0;  font-size:1em; }
@@ -45,16 +46,16 @@
 .alchemist #menu #keypad img        { width:.9em; height:.9em; cursor:pointer; }
 .alchemist #overview                { width:3em; height:4em; background-color:rgba(255,220,162,0.8); cursor:pointer;}
 .alchemist #overview td             { position:relative; }
-.alchemist #overview div.n          { position:absolute; font-size:.2em; }
+.alchemist #overview div.n          { position:absolute; font-size:.2em; overflow:visible; font-weight:bold; color:#631;}
 .alchemist #overview div.icon       { position:absolute; top:0; left:0; }
 .alchemist #overview div.icon.no    { display:none; }
 .alchemist #overview div.icon.img   { border-radius:.5em; overflow:visible !important; background-image:url("../../res/img/svginventoryicons/background/noborder/transmut01.svg"); }
 .alchemist #overview div.icon.img.s { background-color:red; }
 .alchemist #overview div.icon.img.f { background-color:yellow; }
 .alchemist #overview div.icon.img img { display:none; }
-.alchemist div#splashex             { background-image:url("../../res/img/banners/alchemist.svg"); background-color:rgba(0,0,0,0.4); }
+.alchemist div#splashex             { background-image:url("../../res/img/banners/alchemist.svg"); }
 .alchemist div#splashex h1          { position:absolute; top:7%; left:48%; font-size:1.1em; color:#222;}
-.alchemist div#splashex #guide      { position:absolute; top:15%; left:45%; font-size:.7em; width:45%; text-align:justify; font-style:italic; }
+.alchemist div#splashex #guide      { position:absolute; top:15%; left:45%; font-size:.6em; width:45%; text-align:justify; font-style:italic; }
 .alchemist div#splashex #goals      { position:absolute; top:38%; left:50%; width:40%; background-color:white; padding:.5em; overflow:visible; border:.1em solid black;  height:7em; display:none;}
 .alchemist div#splashex #goallabel  { position:absolute; top:-1em; left:-1em; padding:.2em .5em; background-color:#F56; color:white; border-radius:.2em; border:.1em solid black; -ms-transform: rotate(-10deg); -webkit-transform: rotate(-10deg); transform: rotate(-10deg); }
 .alchemist div#splashex #withtime   { display:none; position:absolute; top:80%; left:70%; padding:.2em .5em; background-color:#F56; color:white; border-radius:.2em; border:.1em solid black; -ms-transform: rotate(-10deg); -webkit-transform: rotate(-10deg); transform: rotate(-10deg); }

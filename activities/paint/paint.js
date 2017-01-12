@@ -8,7 +8,7 @@
         url         : "",                                       // The svg element
         lang        : "en-US",                                  // Current localization
         nbcolor     : 2,                                        // Number of colors
-        font        : 1,                                        // The font-size multiplicator
+        fontex      : 1,                                        // The font-size multiplicator
         result      : "",                                       // The result
         source      : ["source",""],                            // The source group + prefix
         canvas      : "canvas",                                 // Toggle element group
@@ -115,28 +115,56 @@
 
                 if (settings.data) { settings.nbcolor = settings.data.length; }
 
-                for (var i=0; i<settings.nbcolor; i++) {
-                    var $elt = $("#"+settings.source[0]+" #"+settings.source[1]+i, settings.svg.root());
-                    $elt.bind('touchstart mousedown', function(event) {
-                        var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
-                                event.originalEvent.touches[0]:event;
-                        if (settings.interactive) {
-                            $("#"+settings.source[0]+" .s", settings.svg.root()).attr("class","");
-                            $(this).attr("class","s");
-                            settings.color = [parseInt($(this).attr("id").substr(settings.source[1].length)),-1];
-                        }
-                        event.preventDefault();
-                    });
+                if (settings.source && $.isArray(settings.source[0])) {
+                    $this.addClass("full");
+                    $this.find("#sources").html("");
+                    for (var i=0; i<settings.source.length; i++) {
+                        var s = settings.source[i];
+                        var $html=$("<div id='s"+s[0]+"' style='color:"+s[3]+";background-color:"+s[2]+";'>"+s[1]+"</div>");
+                        $this.find("#sources").append($html);
+                        
+                        $html.bind('touchstart mousedown', function(event) {
+                            var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
+                                    event.originalEvent.touches[0]:event;
+                            if (settings.interactive) {
+                                $this.find("#sources>div").removeClass("s");
+                                $(this).attr("class","s");
+                                settings.color = [parseInt($(this).attr("id").substr(1)),-1];
+                            }
+                            event.preventDefault();
+                        });
+                        
+                    }
+                    
+                    if (typeof(settings.selected) != "undefined") {
+                        $("#sources #s"+settings.selected).addClass("s");
+                        settings.color = [settings.selected,-1];
+                    }
                 }
-                if (typeof(settings.selected) != "undefined") {
-                    $("#"+settings.source[0]+" #"+settings.source[1]+settings.selected, settings.svg.root()).attr("class","s");
-                    settings.color = [settings.selected,-1];
+                else {
+                    for (var i=0; i<settings.nbcolor; i++) {
+                        var $elt = $("#"+settings.source[0]+" #"+settings.source[1]+i, settings.svg.root());
+                        $elt.bind('touchstart mousedown', function(event) {
+                            var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
+                                    event.originalEvent.touches[0]:event;
+                            if (settings.interactive) {
+                                $("#"+settings.source[0]+" .s", settings.svg.root()).attr("class","");
+                                $(this).attr("class","s");
+                                settings.color = [parseInt($(this).attr("id").substr(settings.source[1].length)),-1];
+                            }
+                            event.preventDefault();
+                        });
+                    }
+                    if (typeof(settings.selected) != "undefined") {
+                        $("#"+settings.source[0]+" #"+settings.source[1]+settings.selected, settings.svg.root()).attr("class","s");
+                        settings.color = [settings.selected,-1];
+                    }
                 }
 
                 $this.find("#board").bind('touchstart mousedown', function(_event) { settings.down=true; _event.preventDefault();})
                                     .bind('touchend touchleave mouseup mouseleave', function(_event) { settings.elt=0; settings.down=false; _event.preventDefault();});
 
-                $this.find("#exercice #content").css("font-size",settings.font+"em");
+                $this.find("#exercice #content").css("font-size",settings.fontex+"em");
 
                 helpers.build($this);
 
@@ -426,9 +454,9 @@
 
                     if (settings.score<0) { settings.score = 0; }
                     if (++settings.id<settings.number) {
-                        setTimeout(function() { settings.interactive=true; helpers.build($this); }, nbErrors?3000:500);
+                        setTimeout(function() { settings.interactive=true; helpers.build($this); }, nbErrors?3000:1500);
                     }
-                    else  { setTimeout(function() { helpers.end($this); }, nbErrors?3000:500); }
+                    else  { setTimeout(function() { helpers.end($this); }, nbErrors?3000:1500); }
                 }
             }
         };

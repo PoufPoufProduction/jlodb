@@ -1,8 +1,9 @@
+.paint     { font-family:"Century Gothic", sans-serif; }
 .paint                                { background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat;
                                         position:relative;}
 
 
-.paint div#splashex                     { background-color:rgba(0,0,0,0.2); background-image:url("../../res/img/banners/paint.svg");}
+.paint div#splashex                     { background-image:url("../../res/img/banners/paint.svg");}
 
 .paint.picross div#splashex             { background-image:url("../../res/img/banners/picross.svg");}
 .paint div#splashex #picross            { display:none; }
@@ -20,14 +21,21 @@
                                           border-radius:.5em; border:.7em solid white;
                                           padding:.5em; font-style:italic; font-weight:bold; }
 
-.paint div#exercice                   { position:absolute; width:14.2em; height:1.5em; top:10.5em; left:1.8em; border-radius:.5em 0 0 0;
-                                        background-image:url("../../res/img/background/book02.svg"); background-repeat:repeat;
-                                        display:none; }
-.paint div#exercice #content          { margin:.2em 1em; text-align:justify; font-style:italic; }
-.paint div#exercice #label            { font-size:1em; float:right; width:2.5em; height:1.2em; font-weight:bold;
-                                        color:white; background-color:black; border-radius:.2em; text-align:center;
-                                        margin:.1em; display:none; }
+.paint div#exercice                   {  position:absolute; width:28em; height:3em; top:21em; left:4em; border-radius:1em 0 0 0;
+                               background-image:url("../../res/img/background/book02.svg"); background-repeat:repeat;
+                               display:none; font-size:.5em; border:.3em solid white;}
+.paint div#exercice #content          { margin:0 1em; text-align:justify; font-style:italic; }
+.paint div#exercice #label            { font-size:2em; float:right; width:2.0em; height:1.2em; font-weight:bold;
+                                 color:white; background-color:black; border-radius:.2em; text-align:center;
+                                 margin:0 .15em; display:none; }
 .paint div#board                      { position:absolute; top:0; width:16em; height:12em; }
+.paint.full div#board                    { font-size:0.8em; top:5%; left:18%; border:.1em solid white;}
+.paint div#sources                  { display:none; width:2.7em; height:9.7em; margin-top:.5em;}
+.paint div#sources>div          { font-size:0.5em; width:5em; height:1.4em; border:.2em solid white; text-align:center; margin:.1em; cursor:pointer; float:left;}
+.paint.square div#sources>div { font-size:2.5em; width:1em; height:1em; border-width:0.05em; margin:0.02em; }
+.paint div#sources>div.s { border-color:red; }
+.paint.full div#sources         { display:inherit; }
+.paint.small div#sources        { font-size:.5em; width:6em; height:19.4em; margin-top:1em; }
 .paint div#submit                     { font-size:1.5em; height:1em;width:1em; cursor:pointer; position:absolute;
                                         top:7em; left:0em; z-index:3; }
 .paint div#submit>img                 { display:none; }
