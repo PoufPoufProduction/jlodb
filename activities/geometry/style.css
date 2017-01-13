@@ -1,4 +1,4 @@
-.geometry                                       { font-family: "Courier New" Courier monospace; 
+.geometry                                       { font-family:"Century Gothic", sans-serif;
                                                   background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat;}
 .geometry table                                 { border-collapse:collapse; border-spacing:0;  font-size:1em; }
 .geometry td                                    { margin:0; padding:0; }
@@ -17,7 +17,7 @@
 .geometry div#actions div.simple.disable *      { opacity:.3; }
 .geometry div#actions div.simple#color div      { width:1em; height:1em; background-color:black; }
 .geometry div#actions #nbelts                   { font-size:.25em; width:4em; text-align:center;}
-.geometry div#actions #cancel                   { font-size:.75em; width:1.3em; text-align:center; }
+.geometry div#actions #cancel                   { margin-top:-.1em; font-size:.7em; width:1.3em; text-align:center; }
 .geometry div#actions #info                     { background-color:white;
                                                     -webkit-transition: background-color 1000ms ease-in;
                                                     -moz-transition: background-color 1000ms ease-in;
@@ -44,10 +44,10 @@
                                                   border-radius:.5em; background-image:url("../../res/img/background/book01.svg");
                                                   background-repeat:repeat;}
 .geometry div#board                             { width:13.8em; height:10.35em; overflow:hidden;   }
-.geometry div#text                              { width:40.1em; height:9.3em; overflow:hidden;
-                                                  margin:.2em; border-radius:.25em; font-size:.4em; clear:both;
-                                                  background-image:url("../../res/img/background/book02.svg");
-                                                  background-repeat:repeat; text-align:justify;  }
+.geometry div#text                              { width:45.2em; height:10.5em; overflow:hidden;
+                                  margin:.2em; border-radius:.25em; font-size:.35em; clear:both;
+                                  background-image:url("../../res/img/background/book02.svg");
+                                  background-repeat:repeat; text-align:justify;  }
 
 .geometry div#text .strong                      { color:red; font-size:.9em; font-weight:bold; border: 1px solid red; border-width:1px 0; }
 .geometry div#text .small                       {font-size:.7em;  }
@@ -61,8 +61,8 @@
 .geometry div#splashex .guide                   { position:absolute; font-size:.7em; font-weight:bold; font-style:italic; text-align:justify; }
 .geometry div#splashex #guide                   { top:36%; left:8%; width:40%; }
 .geometry div#splashex #guide2                  { top:48%; left:8%; width:32%; }
-.geometry div#splashex #gnote                   { position:absolute; top:74%; left:77%; color:white; font-size:4em; font-weight:bold;
-                                                  width:2em; text-align:center; }
+.geometry div#splashex #gnote                   { position:absolute; top:73%; left:77%; color:white; font-size:4em; font-weight:bold;
+                                       width:2em; text-align:center; }
 
 
 .geometry.blank div#boardframe                  { background-image:none; background-color:#dcf9f5; }

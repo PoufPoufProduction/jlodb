@@ -334,7 +334,7 @@
         },
         move: function($this, _anim) {
             var settings = helpers.settings($this);
-            var vHeight=Math.floor(($this.find("#values").height()-$this.find("#values li").height())/2);
+            var vHeight=0;
             $this.find("#values li").each(function(index) { if (index<settings.it) { vHeight = vHeight - $(this).outerHeight(); } });
             if (_anim)  { $this.find("#values ul").animate({top: vHeight+"px"}, 250, function() { helpers.next($this); }); }
             else        { $this.find("#values ul").css("top", vHeight+"px"); }

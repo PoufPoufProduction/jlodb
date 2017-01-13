@@ -137,6 +137,7 @@
                         var m = (1-settings.fonttag)/(2*settings.fonttag);
                         value="<div style='margin-top:"+m+"em;font-size:"+settings.fonttag+"em;'>"+value+"</div>";
                     }
+                    else { value = "<div>"+value+"</div>"; }
                     $this.find("#tag").html(value).show();
                 }
                 
@@ -316,8 +317,10 @@
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 settings.interactive = true;
-                settings.time.begin = Date.now();
-                settings.timerid = setTimeout(function() { helpers.run($this); }, 500);
+                settings.timerid = setTimeout(function() { 
+                    settings.time.begin = Date.now();
+                    helpers.run($this);
+                }, settings.exercice?3000:1000);
             },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);

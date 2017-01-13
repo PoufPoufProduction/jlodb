@@ -1,3 +1,4 @@
+.where     { font-family:"Century Gothic", sans-serif; }
 .where.active                       { cursor:none; }
 .where>div                          { height:100%; }
 .where div#splashex                       { background-image:url("../../res/img/banners/where.svg"); }
@@ -5,17 +6,18 @@
                                           font-size:1.5em; color:black; }
 .where div#splashex #guide                { position:absolute; top:70%; left:40%; font-size:.9em; width:58%; font-style:italic;
                                           text-align:justify; }
-.where                              { position:relative; }
+.where                              { background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat;
+                       position:relative;}
 .where #keypad #svg                 { width:100%; height:100%; position:absolute; top:0; left:0; }
 .where #board                       { width:100%; height:1.4em; font-size:.5em; overflow:hidden; }
 .where #values                      { text-align:center; font-family: "Courier New" Courier monospace; overflow:hidden;
-                                      width:100%; height:1em; }
+                                      width:100%; height:1.2em; }
 .where #values ul                   { list-style-type:none; position:relative; top:0; left:0; padding:0;
                                       -webkit-margin-before: 0em; background-image:url("../../res/img/background/book02.svg");
                                       background-repeat:repeat; opacity:.9;}
-.where #values li                   { height:1em; overflow:hidden; white-space:nowrap; color:rgb(53,34,34); cursor:pointer; }
-.where #comment                     { font-size:.5em; background-color:rgba(255,255,255,0.9); font-style:italic;
-                                      position:relative; top:0; left:0; z-index:200; text-align:center; width:33em; }
+.where #values li                   { height:1.2em; overflow:visible; white-space:nowrap; color:rgb(53,34,34); cursor:pointer; }
+.where #comment                     { font-size:.4em; background-color:rgba(255,255,255,0.9);
+                           position:relative; top:0; left:0; z-index:200; text-align:center; width:100%; }
 .where #effects                     { position:absolute; z-index:500; font-size:4em; top:2%; left:75%;}
 .where #effects>div                 { width:1em; height:1em; display:none; }
 

@@ -1,9 +1,11 @@
+.robot     { font-family:"Century Gothic", sans-serif; }
+.robot pre { font-family:"Century Gothic", sans-serif; }
 .robot .both *                      { overflow:visible; }
 .robot                              { background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat;}
 
 .robot div#splashex                  { background-image:url("../../res/img/banners/it.svg"); color:lime; }
-.robot div#splashex h1               { position:absolute; top:46%; left:80%; font-size:1.5em; }
-.robot div#splashex #guide           { position:absolute; top:53%; left:45%; font-size:.7em; width:50%;
+.robot div#splashex h1               { position:absolute; top:45%; left:80%; font-size:1.5em; }
+.robot div#splashex #guide           { position:absolute; top:54%; left:47%; font-size:.6em; width:50%;
                                           text-align:justify; }
 
 .robot #board                       { background-image:url("../../res/img/background/book02.svg"); background-repeat:repeat;
@@ -60,10 +62,10 @@
                                       background-image:url("../../res/img/background/book05.svg"); background-repeat:repeat;}
 .robot #action #tabs .source>div    { width:6.5em; margin-left:-0.5em; }
 .robot #action #tabs .dest>*        { position:relative; }
-.robot #action #tabs .dest .label   { position:absolute; font-size:2em; font-weight:bold; color:rgba(255,255,255,0.4); top:-0.05em;width:100%; text-align:center; }
+.robot #action #tabs .dest .label   { position:absolute; font-size:2em; font-weight:bold; color:rgba(255,255,255,0.3); top:-0.2em;width:100%; text-align:center; }
 .robot #action #tabs .f0            { width:6em; height:3em; background-color:rgba(255,255,255,0.2); margin:0 .2em .2em .2em;
                                       background-image:url("../../res/img/background/book05.svg"); background-repeat:repeat;}
-.robot #action #tabs .f0 .label     { top:0.2em; }
+.robot #action #tabs .f0 .label     { top:0.1em; }
 .robot #action #tabs .f1            { width:6em; height:2em; background-color:rgba(255,255,255,0.2); margin:0 .2em .2em .2em;
                                       background-image:url("../../res/img/background/book05.svg"); background-repeat:repeat;}
 .robot #action #tabs .f2            { width:6em; height:2em; background-color:rgba(255,255,255,0.2); margin:0 .2em .2em .2em;
@@ -88,14 +90,13 @@
 .robot #phelp .elt                  { float:left; width:24em; height:1.4em; padding:.1em; margin:.1em .5em;
                                       background-color:rgb(50,100,160); border-radius:.2em; }
 .robot #phelp .elt>.icon            { float:left; font-size:1.4em; }
-.robot #phelp .elt>.label           { margin-left:.5em; color:white; float:left; }
+.robot #phelp .elt>.label           { margin-left:.5em; margin-top:.1em; color:white; float:left; font-size:.8em;}
 
 .robot #course                      { width:16em; height:12em; position:absolute;top:0;left:0; background-color:rgba(0,0,0,0.5);
                                       z-index:100; cursor:pointer; display:none; }
-.robot #course>div                  { font-size:.5em; width:100%; height:30%; margin:4em 0;
+.robot #course>div                  { font-size:.5em; width:100%; height:30%; margin:4em 0;border:1px solid white;border-width:.25em 0 .25em 0;
                                       background-image:url("../../res/img/background/book01.svg"); background-repeat:repeat; }
 .robot #course>div #art             { float:left; width:10em; height:7.5em; }
-.robot #course>div pre              { font-family: "Courier New" Courier monospace; margin:.5em 0; font-size:.7em; color:#222;
-                                      white-space: pre;}
+.robot #course>div pre              { margin:.5em 0; font-size:.7em; color:#222; white-space: pre;}
 
 .robot #touch01                     { top:0; left:0; font-size:2em; z-index:100;}
