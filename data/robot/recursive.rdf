@@ -8,7 +8,7 @@
         <dct:identifier>aa</dct:identifier>
         <dct:title xml:lang="fr-FR">En utilisant un appel récursif, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[461,470,470,470,461],[1,1,1,1,2]],"robots":[{"origin":[0,1,0],"code":[1,3,0],"actions":["f01","fct1","fct1","ifnotblueend"]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Une fonction récursive est une fonction qui\\ns'appelle elle-même.\\n\\nEn pratique, la fonction F1 est récursive\\nlorsqu'y figure un appel à F1.","Evidemment pour que cette fonction récursive\\nne tourne pas indéfiniment, il est important\\nde conditionner l'appel récursif.","Dans ce niveau, il faut faire un appel récursif\\nà F1 tant que la case, sur laquelle le robot se\\ntrouve, n'est pas bleue.\\n\\nSouvent, une fonction récursive permet\\nde simuler une itération conditionnelle."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Une fonction récursive est une fonction qui s'appelle elle-même.  En pratique, la fonction F1 est récursive lorsqu'y figure un appel à F1.","Evidemment pour que cette fonction récursive ne tourne pas indéfiniment, il est important de conditionner l'appel récursif.","Dans ce niveau, il faut faire un appel récursif à F1 tant que la case, sur laquelle le robot se trouve, n'est pas bleue.  Souvent, une fonction récursive permet de simuler une itération conditionnelle."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -102,7 +102,7 @@
         <dct:identifier>ca</dct:identifier>
         <dct:title xml:lang="fr-FR">En utilisant un appel récursif, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[0,0,0,0,453,492,0,0,0],[2,109,1,1,1,1,1,1,120],[0,0,0,0,0,491,0,0,0]],"robots":[{"origin":[2,1,0],"code":[["fct1","b01","b01"],12,0],"actions":["f01","b01","fct1","ifblue"]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Soit la fonction F1 suivante :\\nAVANCE - F1 (sous condition) - RECULE\\n\\nOn peut remarquer que l'action RECULE\\nest situé APRÈS l'appel récursif.\\nQue va-t-il se passer si la fonction récursive\\ns'appelle 1 fois (suivant la condition) ?","Le robot va exécuter les actions suivantes :\\nAVANCE - [ AVANCE - RECULE ] - RECULE\\n          +------ F1 -----+\\n+---------------- F1 -----------------+","Toutes les actions situées AVANT l'appel\\nrécursif sont traitées et ce n'est qu'une\\nfois la récursivité terminée que les\\nactions situés après l'appel récursif\\nsont traités à leur tour."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Soit la fonction F1 suivante : AVANCE - F1 (sous condition) - RECULE  On peut remarquer que l'action RECULE est situé APRÈS l'appel récursif. Que va-t-il se passer si la fonction récursive s'appelle 1 fois (suivant la condition) ?","Le robot va exécuter les actions suivantes : AVANCE - [ AVANCE - RECULE ] - RECULE           +------ F1 -----+ +---------------- F1 -----------------+","Toutes les actions situées AVANT l'appel récursif sont traitées et ce n'est qu'une fois la récursivité terminée que les actions situés après l'appel récursif sont traités à leur tour."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>

@@ -1,8 +1,9 @@
+.asm     { font-family:"Century Gothic", sans-serif; }
 .asm .both *                        { overflow:visible; }
 .asm                                { background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat;}
 .asm div#splashex                  { background-image:url("../../res/img/banners/it.svg"); color:lime; }
 .asm div#splashex h1               { position:absolute; top:45%; left:60%; font-size:1.5em; }
-.asm div#splashex #guide           { position:absolute; top:52%; left:45%; font-size:.75em; width:48%;;
+.asm div#splashex #guide           { position:absolute; top:54%; left:45%; font-size:.75em; width:48%;;
                                           text-align:justify; }
 .asm div#board                      { font-size:.5em; width:105%; }
 .asm div#board>div                  { float:left; }
@@ -41,11 +42,11 @@
 .asm #central #code #lines .line    { position:relative; height:1.5em; background-color:rgba(180,255,180,0.12); }
 .asm #central #code #lines .line.c  { background-color:yellow !important; }
 .asm #central #code #lines .filler  { background-image:url("../../res/img/background/border01.svg"); background-repeat:repeat-x; }
-.asm #central #lines .code          { margin:.1em; background-color:#da5; border-radius:.25em; padding:.1em; width:12.25em;
+.asm #central #lines .code          { margin:.1em; background-color:#da5; border-radius:.25em; width:12.25em;
                                       color:#fea; font-weight:bold; position:absolute; top:0; left:0; background-image:none; }
 .asm #central #lines .code>div      { float:left; }
 .asm #central #lines .codelabel     { width:3.7em; text-align:center; }
-.asm #central #lines .codevalue     { margin-left:1em; font-size:.3em; width:22em; font-family: "Courier New" Courier monospace;}
+.asm #central #lines .codevalue     { margin-left:1em; font-size:.3em; width:22em; font-family: "Courier New",Courier,monospace;}
 .asm #central #exercice             { width:29.1em !important; height:9.4em; background-repeat:repeat; padding:.2em .5em;
                                       background-image:url("../../res/img/background/book02.svg"); text-align:justify;
                                       font-family: "Courier New" Courier monospace; font-size:.5em !important;}
@@ -77,13 +78,13 @@
 .asm #detail #source #args .a       { width:5.0em; }
 
 
-.asm #central #code #lines .label       { margin:.1em; background-color:#f88; border-radius:.25em; padding:.1em; width:3.8em;
+.asm #central #code #lines .label       { margin:.1em; background-color:#f88; border-radius:.25em; width:3.8em;
                                           color:#fee; font-weight:bold; position:absolute; top:0; left:0;}
 .asm #central #code #lines .label.arg   { background-color:#f88; width:5em; color:#fee; left:7.3em;}
-.asm #central #code #lines .op          { margin:.1em; background-color:#90cce0; border-radius:.25em; padding:.1em; width:3em;
+.asm #central #code #lines .op          { margin:.1em; background-color:#90cce0; border-radius:.25em; width:3em;
                                           color:#eff; font-weight:bold; position:absolute; top:0; left:4em;
                                           /* text-transform:lowercase; */}
-.asm #central #code #lines .arg         { margin:.1em; background-color:#82ca82; border-radius:.25em; padding:.1em; width:5em;
+.asm #central #code #lines .arg         { margin:.1em; background-color:#82ca82; border-radius:.25em; width:5em;
                                           color:#efe; font-weight:bold; position:absolute; top:0; left:7.3em; }
 .asm .a                                 { text-align:center; font-size:1em; cursor:move; }
 
@@ -142,7 +143,8 @@
 .asm #binary                        { width:100%; height:100%; position:absolute; top:0; left:0; background-color:rgba(0,0,0,0.8);
                                       display:none; z-index:2002;}
 .asm #binary>div                    { width:82%; height:80%; margin:5% 10%; background-color:rgba(0,50,10,0.8); color:#0F0;
-                                      font-weight:bold; font-size:.35em; font-family: "Courier New" Courier monospace; border-radius:.5em;
+                                      font-weight:bold; font-size:.35em;
+                          font-family: "Courier New",Courier,monospace; border-radius:.5em;
                                       overflow:auto; cursor:pointer;  }
 .asm #binary p                      { white-space:nowrap; margin:0 .5em;}
 

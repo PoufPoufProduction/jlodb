@@ -1,7 +1,7 @@
-.balance                            { background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat;}
+.balance                            { font-family:"Century Gothic", sans-serif;  background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat;}
 .balance div#splashex               { background-image:url("../../res/img/banners/balance.svg"); background-color:rgba(0,0,0,0.2); }
 .balance div#splashex h1            { position:absolute; top:6%; left:70%; font-size:1.5em; }
-.balance div#splashex #guide        { position:absolute; top:13%; left:33%; font-size:1em; width:55%;
+.balance div#splashex #guide        { position:absolute; top:13%; left:33%; font-size:0.8em; width:55%;
                                       text-align:justify; }
 .balance .button                    { width:1em; height:1em; position:absolute; font-size:2em; top:80%; overflow:visible;
                                       background-image:url("../../res/img/icon/tab00.svg"); border-radius:.5em;
@@ -16,10 +16,8 @@
 .balance #course>div              { background-image:url("../../res/img/background/book02.svg"); background-repeat:repeat;
                                       width:31em; padding:.5em; height:30%; margin-top:10%; }
 .balance #course>div #art        { float:left; width:1em; height:1em; font-size:7em; display:none;}
-.balance #course>div pre              { font-family: "Courier New" Courier monospace; margin-left:1em; font-size:.8em; color:#222;
-                                      white-space: pre; float:left; width:65%; overflow:visible; }
-
-
+.balance #course>div #pre        { float:left; width:72%; overflow:visible; margin-left:1em; font-size:.8em; color:#222;}
+.balance #course>div #pre div  { display:inline-block; white-space: pre;}
 .balance #calculator               { height:auto; display:none; background-color:rgba(0,0,0,0.8); font-size:.6em;
                                       border-radius:.25em; overflow:visible; padding:.03em; position:absolute; top:5%; left:5%; }
 .balance #calculator #screen       { font-size:1.2em; width:4.5em; border-radius:.25em; cursor:move;
@@ -28,8 +26,7 @@
                                    background-image:url("../../res/img/background/book05.svg"); background-repeat:repeat;}
 .balance #calculator #screen:after  { content:"g"; }
 .balance #calculator td             { width:1.2em; overflow:hidden; cursor:pointer; text-align:center; font-weight:bold;
-                                          font-family: "Courier New" Courier monospace;
-                                          color:rgb(220,231,241); border-radius:.25em; }
+                              color:rgb(220,231,241); border-radius:.25em; }
 .balance .bluekeypad                { background-color:rgba(84,137,184,0.9);
                                    -webkit-transition: background-color 1000ms ease-in;
                                    -moz-transition: background-color 1000ms ease-in;

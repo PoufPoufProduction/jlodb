@@ -365,13 +365,18 @@
         course: {
             run: function($this) {
                 var settings = helpers.settings($this);
-                if (settings.cc.timerid) { clearTimeout(settings.cc.timerid); settings.cc.timerid = 0; }
-                settings.cc.page = 0;
-                settings.cc.count = 0;
-                settings.cc.time = 0;
-                if (settings.art) { $this.find("#art").html("<img src='res/img/"+settings.art+".svg'/>").show(); }
+                if (settings.cc.timerid)    { clearTimeout(settings.cc.timerid); settings.cc.timerid = 0; }
+                if (settings.art)           { $this.find("#art").html("<img src='res/img/"+settings.art+".svg'/>").show(); }
                 $this.find("#course").show();
-                $this.find("#course pre").html("").parent().css("opacity",0).animate({opacity:0.9}, 1000, function() {
+                
+                settings.cc.page    = 0;
+                settings.cc.count   = 0;
+                settings.cc.time    = 0;
+                settings.cc.pre     = $("<div></div>");
+                settings.cc.width   = $this.find("#course #pre").width()*0.85;
+                
+                $this.find("#course #pre").html(settings.cc.pre);
+                $this.find("#course").css("opacity",0).animate({opacity:0.9}, 1000, function() {
                     helpers.course.char($this); });
             },
             char: function($this) {
@@ -380,7 +385,13 @@
                 if (!settings.cc.time) { settings.cc.time  = Date.now(); }
                 var count = Math.floor((Date.now()-settings.cc.time)/20);
                 if (settings.cc.count<settings.course[settings.cc.page].length) {
-                    $this.find("#course pre").append(settings.course[settings.cc.page].substr(settings.cc.count, count-settings.cc.count));
+                    for (var i=settings.cc.count; i<count; i++) {
+                        var c = settings.course[settings.cc.page][i];
+                        if (c=='|' || (c==' ' && settings.cc.pre.width()>settings.cc.width)) {
+                            settings.cc.pre = $("<div></div>");
+                            $this.find("#course #pre").append("<br/>").append(settings.cc.pre);
+                        } else { settings.cc.pre.append(c); }
+                    }
                     settings.cc.count = count;
                     settings.cc.timerid = setTimeout(function() { helpers.course.char($this); }, 10);
                 }
@@ -391,12 +402,19 @@
                 if (settings.cc.available) {
                     if (settings.cc.timerid) {
                         clearTimeout(settings.cc.timerid); settings.cc.timerid = 0; settings.cc.time = 0;
-                        $this.find("#course pre").html(settings.course[settings.cc.page]);
+                        for (var i=settings.cc.count; i<settings.course[settings.cc.page].length; i++) {
+                            var c = settings.course[settings.cc.page][i];
+                            if (c=='|' || (c==' ' && settings.cc.pre.width()>settings.cc.width)) {
+                                settings.cc.pre = $("<div></div>");
+                                $this.find("#course #pre").append("<br/>").append(settings.cc.pre);
+                            } else { settings.cc.pre.append(c); }
+                        }
                     }
                     else {
                         settings.cc.count=0;
                         if (++settings.cc.page<settings.course.length) {
-                            $this.find("#course pre").html("");
+                            settings.cc.pre = $("<div></div>");
+                            $this.find("#course #pre").html(settings.cc.pre);
                             helpers.course.char($this);
                         }
                         else {
@@ -431,7 +449,7 @@
                     score           : 5,
                     id              : 0,
                     move            : { x:0, y:0 },
-                    cc              : { count:0, page:0,timerid:0,available:false, time:0 },
+                    cc              : { count:0, page:0, timerid:0, available:false, time:0, width:100, pre:0 },
                     anim            : { init:0, diff:0, timerid:0, count: 0}
                 };
 

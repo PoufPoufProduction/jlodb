@@ -1,5 +1,4 @@
 .robot     { font-family:"Century Gothic", sans-serif; }
-.robot pre { font-family:"Century Gothic", sans-serif; }
 .robot .both *                      { overflow:visible; }
 .robot                              { background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat;}
 
@@ -97,6 +96,7 @@
 .robot #course>div                  { font-size:.5em; width:100%; height:30%; margin:4em 0;border:1px solid white;border-width:.25em 0 .25em 0;
                                       background-image:url("../../res/img/background/book01.svg"); background-repeat:repeat; }
 .robot #course>div #art             { float:left; width:10em; height:7.5em; }
-.robot #course>div pre              { margin:.5em 0; font-size:.7em; color:#222; white-space: pre;}
+.robot #course>div #pre        { float:left; width:60%; overflow:visible; margin-left:1em; font-size:.7em; color:#222;}
+.robot #course>div #pre div  { display:inline-block; white-space: pre;}
 
 .robot #touch01                     { top:0; left:0; font-size:2em; z-index:100;}

@@ -8,7 +8,7 @@
         <dct:identifier>aa</dct:identifier>
         <dct:title xml:lang="fr-FR">Programmer parallèlement plusieurs robots afin qu'ils atteignent leur case d'arrivée respective.</dct:title>
         <dct:description><![CDATA["average":[0,0,1,2,1,2,1,2,3,3,3,0],"board":[[2,102,202,302],[1,101,201,301],[1,101,201,301],[1,101,201,301]],"worst":[[0,0,1,2,1,2,1,2,3,3,3,0]],"robots":[{"origin":[0,3,3],"code":[3,0,0],"actions":["f01","f01","f01"]},{"origin":[1,3,3],"code":[["whilenotredend","f01"],0,0]},{"origin":[2,3,3],"code":[["x3","f01"],0,0]},{"origin":[3,3,3],"code":[["f01","f01","f01"],0,0]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Les différents robots ne sont pas synchronisés.\\nC'est-à-dire que l'on ne peut s'avoir dans quel\\nordre ils vont exécuter leur programme respectif.\\n\\nVoyez ici comment vont avancer les 4 robots."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Les différents robots ne sont pas synchronisés. C'est-à-dire que l'on ne peut s'avoir dans quel ordre ils vont exécuter leur programme respectif.  Voyez ici comment vont avancer les 4 robots."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -21,12 +21,13 @@
         <dct:identifier>ab</dct:identifier>
         <dct:title xml:lang="fr-FR">Programmer parallèlement plusieurs robots afin qu'ils atteignent leur case d'arrivée respective.</dct:title>
         <dct:description><![CDATA["board":[[51,102,0],[1,101,2]],"worst":[[0,0,0,0,1]],"robots":[{"origin":[0,1,0],"code":[["whilelnotblue","nothing","f01","f01"],0,0]},{"origin":[1,1,3],"code":[2,0,0],"actions":["f01","blue"]}],"padding":6]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Ici, le robot bleu doit avance APRÉS le robot\\nrouge. Or, les robots n'étant pas synchronisés,\\non ne peut pas savoir comment les 2 programmes\\nvont s'exécuter. En général, il faut prévoir le\\ncas le plus défavorable.","Pour que le robot bleu avance APRÈS le robot\\nrouge, on va utilise un sémaphore. C'est-à-dire\\nquelque chose qui va indiquer au robot bleu\\nqu'il peut avancer. Ici, c'est la lampe bleu\\nqui va servir de sémaphore.","Le programme du robot bleu est le suivant :\\n. Tant que la lampe est éteinte, je ne fais rien.\\n. J'avance de deux cases.\\n\\nA vous d'écrire le programme du robot rouge."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Ici, le robot bleu doit avance APRÉS le robot rouge. Or, les robots n'étant pas synchronisés, on ne peut pas savoir comment les 2 programmes vont s'exécuter. En général, il faut prévoir le cas le plus défavorable.","Pour que le robot bleu avance APRÈS le robot rouge, on va utilise un sémaphore. C'est-à-dire quelque chose qui va indiquer au robot bleu qu'il peut avancer. Ici, c'est la lampe bleu qui va servir de sémaphore.","Le programme du robot bleu est le suivant : . Tant que la lampe est éteinte, je ne fais rien. . J'avance de deux cases.  A vous d'écrire le programme du robot rouge."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>aa</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
@@ -44,7 +45,7 @@
         <dct:identifier>ad</dct:identifier>
         <dct:title xml:lang="fr-FR">Programmer parallèlement plusieurs robots afin qu'ils atteignent leur case d'arrivée respective.</dct:title>
         <dct:description><![CDATA["board":[[51,102,0],[1,101,2],[0,101,0]],"worst":[[0,0,0,0,1],[1,1,1,1,0],[0,1],[0,0,1,1]],"robots":[{"origin":[0,1,0],"code":[18,0,0],"actions":["f01","f01","blue","nothing","whilelnotblue"]},{"origin":[1,2,3],"code":[18,0,0],"actions":["f01","f01","blue","nothing","whilelnotblue"]}],"padding":6]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["À vous de choisir quel robot passe en premier.\\nLes deux options sont possibles."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["À vous de choisir quel robot passe en premier. Les deux options sont possibles."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -79,7 +80,7 @@
         <dct:identifier>ak</dct:identifier>
         <dct:title xml:lang="fr-FR">Programmer parallèlement plusieurs robots afin qu'ils atteignent leur case d'arrivée respective.</dct:title>
         <dct:description><![CDATA["board":[[480,478,51],[1,23,2],[1,9,102]],"worst":[[0,0,0,0,1],[0,1],[0,1,1,1,1]],"robots":[{"origin":[0,1,0],"code":[18,12,12],"actions":["f01","f01","nothing","blue","whilelblue"]},{"origin":[0,2,0],"code":[18,12,12],"actions":["f01","notblue","nothing","x2","whilelnotblue"]}],"padding":4]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Ce niveau introduit un nouvea type de dalle.\\nLa dalle 'pression' permet de rendre tangibles\\nles dalles transparentes TANT qu'un robot\\nse trouve dessus.\\nLorsque le robot quitte une dalle 'pression',\\nles dalles redeviennent transparentes."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Ce niveau introduit un nouveau type de dalle. La dalle 'pression' permet de rendre tangibles les dalles transparentes TANT qu'un robot se trouve dessus. Lorsque le robot quitte une dalle 'pression', les dalles redeviennent transparentes."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -113,7 +114,7 @@
         <dct:identifier>1a</dct:identifier>
         <dct:title xml:lang="fr-FR">Programmer parallèlement plusieurs robots afin qu'ils atteignent leur case d'arrivée respective.</dct:title>
         <dct:description><![CDATA["board":[[650,102,0],[1,101,2]],"worst":[[0,0,0,0,1],[1,1,1,1,0],[0,1],[0,0,1,1]],"robots":[{"origin":[0,1,0],"code":[18,["nothing","ifnum0","fct1"],12],"actions":["f01","f01","fct1"]},{"origin":[1,1,3],"code":[18,12,12],"actions":["f01","num1"]}],"padding":8]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["L'écran analogique peut également servir de\\nsémaphore. L'ennui, c'est qu'il n'existe pas\\nde boucles conditionnelles portant sur les\\nvaleurs de cet écran.\\nIl va donc falloir simuler cette boucle\\ngrâce à une fonction récursive.","Au passage, il est obligatoire qu'une fonction\\nrécursive exécute au moins 1 action (autre que\\nl'appel récursif). Ne serait-ce que l'action de\\nne rien faire."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["L'écran analogique peut également servir de sémaphore. L'ennui, c'est qu'il n'existe pas de boucles conditionnelles portant sur les valeurs de cet écran. Il va donc falloir simuler cette boucle grâce à une fonction récursive.","Au passage, il est obligatoire qu'une fonction récursive exécute au moins 1 action (autre que l'appel récursif). Ne serait-ce que l'action de ne rien faire."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>

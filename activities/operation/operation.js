@@ -15,7 +15,7 @@
         fontex      : 1,                    // Exercice font
         highlight   : [],                   // Highlight cells
         exercice    : "",                   // Exercice
-        debug       : false                 // Debug mode
+        debug       : true                  // Debug mode
     };
 
     var regExp = [

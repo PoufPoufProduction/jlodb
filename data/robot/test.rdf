@@ -8,7 +8,7 @@
         <dct:identifier>aa</dct:identifier>
         <dct:title xml:lang="fr-FR">En testant la couleur d'une case, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[1,1,101],[0,0,2]],"robots":[{"origin":[0,0,0],"code":[["x3","fct1"],3,0],"actions":["f01","turnright","ifred"]}],"padding":0]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Un test, en informatique, est un opérateur\\nqui permet d'exécuter une action lorsqu'une\\ncondition est vérifiée.\\nDans ce niveau par exemple, le robot va\\ndevoir tourner à droite lorsque la dalle\\nsur laquelle il se trouve est rouge.","Comme pour l'opérateur de multiplication,\\ncelui de test se place AVANT l'action qu'elle\\nconditionne."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Un test, en informatique, est un opérateur qui permet d'exécuter une action lorsqu'une condition est vérifiée. Dans ce niveau par exemple, le robot va devoir tourner à droite lorsque la dalle sur laquelle il se trouve est rouge.","Comme pour l'opérateur de multiplication, celui de test se place AVANT l'action qu'elle conditionne."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -76,7 +76,7 @@
         <dct:identifier>ag</dct:identifier>
         <dct:title xml:lang="fr-FR">En testant la couleur et la valeur d'une case, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[111,101,111],[2,0,11],[0,0,1]],"robots":[{"origin":[2,2,3],"code":[["x5","fct1"],4,0],"actions":["f01","turnleft","ifred","ifeq1"]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Comme pour les opérateurs de multiplication,\\nil est possible d'enchaîner les opérateurs de\\ntest. Dans ce cas, l'action suivante est\\nexécutée lorsque les 2 tests sont vérifiés.","Dans ce niveau, le robot doit tourner lorsque\\nla dalle sur laquelle il se trouve est rouge\\nET qu'elle est marquée 1."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Comme pour les opérateurs de multiplication, il est possible d'enchaîner les opérateurs de test. Dans ce cas, l'action suivante est exécutée lorsque les 2 tests sont vérifiés.","Dans ce niveau, le robot doit tourner lorsque la dalle sur laquelle il se trouve est rouge ET qu'elle est marquée 1."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -111,7 +111,7 @@
         <dct:identifier>ai</dct:identifier>
         <dct:title xml:lang="fr-FR">En testant la couleur et la valeur d'une case, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[2,0],[101,0],[11,111],[0,1],[11,111],[101,0],[11,111],[0,1]],"robots":[{"origin":[1,7,3],"code":[["x5","x2","fct1"],7,0],"actions":["f01","x2","turnright","turnright","ifeq1","ifeq1","ifred"]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Un opérateur de multiplication peut être précédé\\nd'un opérateur de test. L'inverse, quoique\\ntechniquement possible est plus rare.","Dans ce niveau, le robot doit tourner à droite\\nlorsque la dalle sur laquelle il se trouve vaut 1,\\net doit tourner à droite 2 fois de plus lorsqu'en\\nplus la dalle est rouge."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Un opérateur de multiplication peut être précédé d'un opérateur de test. L'inverse, quoique techniquement possible est plus rare.","Dans ce niveau, le robot doit tourner à droite lorsque la dalle sur laquelle il se trouve vaut 1, et doit tourner à droite 2 fois de plus lorsqu'en plus la dalle est rouge."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -205,7 +205,7 @@
         <dct:identifier>ba</dct:identifier>
         <dct:title xml:lang="fr-FR">En testant la couleur d'une case, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[201,1,101],[1,0,1],[1,658,1],[301,2,0]],"robots":[{"origin":[2,2,3],"code":[["xnum","fct1"],3,0],"actions":["f01","turnleft","ifnotblue"]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Chaque condition dispose de son inverse :\\non peut tester si une dalle est bleue, mais\\non peut également tester si elle N'est PAS\\nbleue."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Chaque condition dispose de son inverse : on peut tester si une dalle est bleue, mais on peut également tester si elle N'est PAS bleue."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -286,7 +286,7 @@
         <dct:identifier>ca</dct:identifier>
         <dct:title xml:lang="fr-FR">En testant la valeur de l'écran analogique, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[0,2,0],[1,11,13],[651,1,1]],"robots":[{"origin":[0,1,0],"code":[["x2","x3","fct1"],12,0],"actions":["f01","num","turnright","ifnum3"]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Certains opérateurs permettent de tester la valeur\\nde l'écran analogique.\\nEn pratique, ce test donne le même résultat tant\\nque la valeur de l'écran n'a pas été modifiée.","Pour rappel, l'opérateur qui permet de changer la\\nvaleur de l'écran analogique en fonction de la\\ndalle sur laquelle se trouve le robot, ne fait rien\\nlorsque la dalle n'est pas numérotée."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Certains opérateurs permettent de tester la valeur de l'écran analogique. En pratique, ce test donne le même résultat tant que la valeur de l'écran n'a pas été modifiée.","Pour rappel, l'opérateur qui permet de changer la valeur de l'écran analogique en fonction de la dalle sur laquelle se trouve le robot, ne fait rien lorsque la dalle n'est pas numérotée."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -342,7 +342,7 @@
         <dct:identifier>cf</dct:identifier>
         <dct:title xml:lang="fr-FR">En testant la valeur de l'écran analogique, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[2,0],[12,0],[11,112],[651,1],[111,12],[12,0],[11,112],[0,1]],"robots":[{"origin":[1,7,3],"code":[["x5","x2","fct1"],12,0],"actions":["f01","turnright","turnleft","num","ifnotblue","ifblue","ifred","ifgreen","ifpurple","ifeq1","ifeq2","ifeq3","ifnum1","ifnum2","ifnum3"]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Toutes les actions peuvent dépendre d'une\\ncondition d'exécution. L'opérateur qui\\npermet de changer la valeur de l'écran\\nanalogique peut aussi être précédé par\\nun test de couleur de dalle (rouge, par\\nexemple)."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Toutes les actions peuvent dépendre d'une condition d'exécution. L'opérateur qui permet de changer la valeur de l'écran analogique peut aussi être précédé par un test de couleur de dalle (rouge, par exemple)."]]]></dct:description>
         <dct:extent>5</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -392,7 +392,7 @@
         <dct:identifier>ea</dct:identifier>
         <dct:title xml:lang="fr-FR">En testant l'éclairage d'une lampe, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[1,1,11,101,11],[51,0,0,0,1],[2,11,1,201,11]],"robots":[{"origin":[0,0,0],"code":[["x5","x2","fct1"],["f01","fct2","iflblue","ifeq1","turnright"],12],"actions":["ifred","ifgreen","blue","notblue"]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Certains opérateurs permettent d'utiliser les\\nlampes de couleurs. Il est possible d'allumer\\nou d'éteindre une lampe mais aussi de tester\\nl'état de celle-ci","Dans ce niveau, le robot tourne à droite\\nlorque la dalle est numérotée 1 ET que la lampe\\nest allumée. A vous d'allumer et d'éteindre la\\nlampe au bon moment dans la fonction F2."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Certains opérateurs permettent d'utiliser les lampes de couleurs. Il est possible d'allumer ou d'éteindre une lampe mais aussi de tester l'état de celle-ci","Dans ce niveau, le robot tourne à droite lorque la dalle est numérotée 1 ET que la lampe est allumée. A vous d'allumer et d'éteindre la lampe au bon moment dans la fonction F2."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>

@@ -8,7 +8,7 @@
         <dct:identifier>aa</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser l'opérateur x4 pour faire avancer le robot de 4 cases.</dct:title>
         <dct:description><![CDATA["board":[[461,470,470,470,461],[1,1,1,1,2]],"robots":[{"origin":[0,1,0],"code":[2,0,0],"actions":["f01","x4"]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Ce niveau présente une nouvelle fonctionnalité :\\nl'ITERATION. Il est désormais possible d'effec-\\ntuer une même action plusieurs fois. Ici, rajouter\\nl'opérateur 4X devant AVANCER D'UNE CASE permet\\nd'exécuter 4 fois cette dernière et d'avancer ainsi\\nde 4 cases."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Ce niveau présente une nouvelle fonctionnalité appelée ITERATION grâce à laquelle il va être possible d'effectuer une même action plusieurs fois. Ici, en rajoutant l'opérateur 4X devant AVANCER D'UNE CASE, le robot va pouvoir avancer directement de 4 cases."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -21,7 +21,7 @@
         <dct:identifier>ab</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser l'opérateur x2 pour faire avancer le robot jusqu'à la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[2,1,1],[0,469,1],[0,0,1]],"robots":[{"origin":[2,2,3],"code":[18,0,0],"actions":["f01","f01","x2","x2","turnleft"]}],"padding":1]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Un opérateur de multiplication n'agit que sur\\nl'action suivante. Les autres actions ne seront\\nexécutées qu'une seule fois à moins qu'elles ne\\nsoient elles-mêmes précédées d'un opérateur de\\nmultiplication."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Un opérateur de multiplication n'agit que sur l'action suivante. Les autres actions ne seront exécutées qu'une seule fois à moins qu'elles ne soient elles-mêmes précédées d'un opérateur de multiplication."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -45,7 +45,7 @@
         <dct:identifier>ad</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser l'opérateur x2 pour faire faire un demi-tour au robot.</dct:title>
         <dct:description><![CDATA["board":[[1,2]],"robots":[{"origin":[0,0,2],"code":[18,0,0],"actions":["f01","turnright","x2"]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Un opérateur de multiplication peut être utilisé\\navec n'importe quelle action : AVANCER, RECULER...\\nou TOURNER."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Un opérateur de multiplication peut être utilisé avec n'importe quelle action : AVANCER, RECULER... ou TOURNER."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -69,7 +69,7 @@
         <dct:identifier>af</dct:identifier>
         <dct:title xml:lang="fr-FR">Réaliser avec 2 opérateurs x2 une double boucle pour faire avancer le robot de 4 cases.</dct:title>
         <dct:description><![CDATA["board":[[0,51,0,51,0],[1,1,1,1,2]],"robots":[{"origin":[0,1,0],"code":[18,0,0],"actions":["f01","x2","x2"]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Un opérateur de multiplication peut être suivi\\nd'un autre opérateur de multiplication. Dans\\nun tel cas, les coefficients se multiplient.\\n\\nPar exemple, la séquence X2 X3 permet d'exécuter\\n6 fois l'action suivante."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Un opérateur de multiplication peut être suivi d'un autre opérateur de multiplication. Dans un tel cas, les coefficients se multiplient.  Par exemple, la séquence X2 X3 permet d'exécuter 6 fois l'action suivante."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -476,7 +476,7 @@
         <dct:identifier>da</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser l'action d'inversion pour faire avancer le robot jusqu'à la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[1,2]],"robots":[{"origin":[0,0,0],"code":[2,0,0],"actions":["invert","b01"]}],"padding":0]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["L'opérateur 'INVERSION DES COMMANDES' ne change pas\\nla position du robot mais lui permet de rentrer en\\nmode bugué. Dans ce mode, les actions du programmes\\nsont inversées par le processeur du robot."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["L'opérateur 'INVERSION DES COMMANDES' ne change pas la position du robot mais lui permet de rentrer en mode bugué. Dans ce mode, les actions du programmes sont inversées par le processeur du robot."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -522,7 +522,7 @@
         <dct:identifier>de</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser l'action d'inversion pour annuler l'effet d'une case d'inversion.</dct:title>
         <dct:description><![CDATA["board":[[456,476,476,476,476,456],[1,1,1,22,1,2]],"robots":[{"origin":[0,1,0],"code":[18,0,0],"actions":["f01","f01","f01","x2","x2","x2","invert"]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Lorsque le robot est déjà bugué (avec le symbole\\nau-dessus de sa tête), l'opérateur 'INVERSION DES\\nCOMMANDES' permet de rétablir un fonctionnement\\nnormal."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Lorsque le robot est déjà bugué (avec le symbole au-dessus de sa tête), l'opérateur 'INVERSION DES COMMANDES' permet de rétablir un fonctionnement normal."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -582,7 +582,7 @@
         <dct:identifier>ea</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser une boucle utilisateur (4 par défaut) et faire avancer le robot de 4 cases.</dct:title>
         <dct:description><![CDATA["board":[[470,470,470,470,654],[1,1,1,1,2]],"robots":[{"origin":[0,1,0],"code":[2,0,0],"actions":["f01","xnum"]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["L'opérateur de multiplication introduit dans\\nce niveau permet de répéter une action autant\\nde fois que la valeur affichée sur l'écran\\nanalogique présent sur le plateau."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["L'opérateur de multiplication introduit dans ce niveau permet de répéter une action autant de fois que la valeur affichée sur l'écran analogique présent sur le plateau."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -617,7 +617,7 @@
         <dct:identifier>ed</dct:identifier>
         <dct:title xml:lang="fr-FR">Modifier le nombre d'itérations de la boucle utilisateur et faire avancer le robot de 4 cases.</dct:title>
         <dct:description><![CDATA["board":[[461,461,463,470,658],[1,13,1,1,2]],"robots":[{"origin":[0,1,0],"code":[4,0,0],"actions":["f01","f01","xnum","num"]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Le nouvel opérateur introduit dans ce niveau\\npermet de changer la valeur de l'écran analo-\\ngique en la remplaçant par la valeur de la\\ndalle sur laquelle se trouve le robot.","Dans le cas où la case n'est pas numérotée,\\nl'opérateur ne fait rien et la valeur de\\nl'écran analogique reste inchangée."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Le nouvel opérateur introduit dans ce niveau permet de changer la valeur de l'écran analo- gique en la remplaçant par la valeur de la dalle sur laquelle se trouve le robot.","Dans le cas où la case n'est pas numérotée, l'opérateur ne fait rien et la valeur de l'écran analogique reste inchangée."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -654,7 +654,7 @@
         <dct:identifier>fa</dct:identifier>
         <dct:title xml:lang="fr-FR">Modifier le nombre d'itérations de la boucle utilisateur grâce aux opérateurs fournis et faire avancer le robot jusqu'à la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[0,0,492,0,0,0,650,0],[1,1,1,1,1,1,1,2],[0,0,491,0,0,0,0,0]],"robots":[{"origin":[0,1,0],"code":[18,0,0],"actions":["f01","num7","xnum"]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Il est possible de changer la valeur de l'écran\\nanalogique grâce à l'opérateur adéquat."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Il est possible de changer la valeur de l'écran analogique grâce à l'opérateur adéquat."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -700,7 +700,7 @@
         <dct:identifier>ff</dct:identifier>
         <dct:title xml:lang="fr-FR">Modifier le nombre d'itérations de la boucle utilisateur grâce aux opérateurs fournis et faire avancer le robot jusqu'à la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[0,0,0,0,0,655,0],[1,1,1,1,1,1,2],[0,0,0,0,0,0,0]],"robots":[{"origin":[0,1,0],"code":[18,0,0],"actions":["f01","numplus","xnum"]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["L'opérateur '++' permet d'ajounter 1 à la\\nvaleur de l'écran analogique."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["L'opérateur '++' permet d'ajounter 1 à la valeur de l'écran analogique."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -713,7 +713,7 @@
         <dct:identifier>fg</dct:identifier>
         <dct:title xml:lang="fr-FR">Modifier le nombre d'itérations de la boucle utilisateur grâce aux opérateurs fournis et faire avancer le robot jusqu'à la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[480,1,1,1,1],[478,0,0,652,1],[2,1,1,1,1]],"robots":[{"origin":[1,0,0],"code":[18,0,0],"actions":["f01","f01","f01","numplus","numplus","numplus","numminus","turnright","turnright","xnum","xnum","xnum"]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["L'opérateur '--' permet de retrancher 1 à la\\nvaleur de l'écran analogique."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["L'opérateur '--' permet de retrancher 1 à la valeur de l'écran analogique."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -750,7 +750,7 @@
         <dct:identifier>ga</dct:identifier>
         <dct:title xml:lang="fr-FR">En utilisant une boucle conditionnel, faire avancer le robot jusqu'à la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[101,101,101,101,2]],"robots":[{"origin":[0,0,0],"code":[2,0,0],"actions":["f01","whilered"]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Ce niveau introduit une nouvelle fonctionnalité :\\nl'ITERATION CONDITIONNELLE.\\nAvec ce nouveau type d'itérations, il est possible de\\nrépéter une action TANT QU'une certaine condition est\\nvérifiée.","Dans ce niveau, le robot doit avancer TANT QUE la\\ndalle sur laquelle il se trouve est rouge."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Ce niveau introduit une nouvelle fonctionnalité appelée ITERATION CONDITIONNELLE. Avec ce nouveau type d'itérations, il est possible de répéter une action TANT QU'une certaine condition est vérifiée.","Dans ce niveau, le robot doit avancer TANT QUE la dalle sur laquelle il se trouve est rouge."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
