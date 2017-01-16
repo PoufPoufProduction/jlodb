@@ -14,9 +14,8 @@ if (!$error) {
         $activity = "";
         $tok = strtok($_GET["activity"], ",");
         while($tok!=false) {
-            if (strlen($activity)!=0)       { $activity.=","; }
-            if (strpos($tok,"'")==-1)       { $activity.="'".$tok."'"; }
-            else                            { $activity.=$tok; }
+            if (strlen($activity)!=0) { $activity.=","; }
+            if (strpos($tok,"'")) { $activity.="'".$tok."'"; } else { $activity.=$tok; }
             $tok = strtok(",");
         }
         $where.= " `Exercice_Activity` IN ( ".str_replace("\'", "'", $activity)." )";
@@ -60,8 +59,7 @@ if (!$error) {
         $tok = strtok($_GET["classification"], ",");
         while($tok!=false) {
             if (strlen($classification)!=0) { $classification.=","; }
-            if (strpos($tok,"'")==-1)       { $classification.="'".$tok."'"; }
-            else                            { $classification.=$tok; }
+            if (strpos($tok,"'")) { $classification.="'".$tok."'"; } else { $classification.=$tok; }
             $tok = strtok(",");
         }
 
@@ -83,7 +81,20 @@ if (!$error) {
     // THE ID
     if (array_key_exists("id",$_GET)) {
         if (strlen($where)) { $where.=" AND"; }
-        $where.=" (`Exercice_Id`='".$_GET["id"]."' OR `Exercice_Variant`='".$_GET["id"]."')";
+        
+        if (strpos($_GET["id"],",")) {
+            
+            $ids = "";
+            $tok = strtok($_GET["id"], ",");
+            while($tok!=false) {
+                if (strlen($ids)!=0)   { $ids.=","; }
+                if (!strpos($tok,"'")) { $ids.="'".$tok."'"; } else { $ids.=$tok; }
+                $tok = strtok(",");
+            }
+
+            $where.= " `Exercice_Id` IN ( ".$ids." )";
+        }
+        else { $where.=" (`Exercice_Id`='".$_GET["id"]."' OR `Exercice_Variant`='".$_GET["id"]."')"; }
     }
 
     // COUNT THE NUMBER OF MATCHING EXERCICES (WITHOU ORDER, LIMIT NOR ALTERNATIVE GROUP)

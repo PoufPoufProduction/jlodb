@@ -362,50 +362,12 @@ var tibibi = {
                     } });
         },
         snapshot:function() {
-            var html="";
-            for (var i in tibibi.course.ex) { if (html) { html+=","; } html+=tibibi.course.ex[i]; }
-            $.getJSON("mods/tibibi/api/exercice.php?value="+html, function(data2) {
-                html="";
-                for (var i in data2.exercices) {
-                    html+="<div class='exercice'><div class='eximg'>";
-                    if (tibibi.url) {
-                        var url = tibibi.url+"/res/img/exercices/"+data2.exercices[i].activity+"/";
-                        if (data2.exercices[i].id.length>4) { url+=data2.exercices[i].id[2]+data2.exercices[i].id[3]+"/"; }
-                        else                                { url+="xx/"; }
-                        url += data2.exercices[i].id+".png";
-
-                        html +="<img class='snap' src='"+url+"'/>";
-                    }
-                    html+="</div>";
-                    html+="<div><div class='exid'>"+data2.exercices[i].id+"</div>";
-                    html+="<div class='extitle'>"+data2.exercices[i].title+"</div></div>";
-                    html+="<div class='param'>";
-                    html+="<div class='label'>niveau</div><div class='value'>"+data2.exercices[i].level+"</div>";
-                    html+="<div class='label'>difficulté</div><div class='value'>"+data2.exercices[i].difficulty+"</div>";
-                    html+="<div class='label'>durée</div><div class='value'>"+data2.exercices[i].duration+"</div>";
-                    html+="</div>";
-                    html+="</div>";
-                }
-                var newWindow = window.open("", "_blank", "");
-                html=   "<!DOCTYPE HTML><html xmlns='http://www.w3.org/1999/xhtml' xml:lang='fr' lang='fr'><head><style>"+
-                        "body               { font-size:10px; }"+
-                        ".exercice          { border:1px solid black; border-width:1px 0 0 0;height:3em;clear:both; margin-top:2px; } "+
-                        ".exercice>*        { float:left; margin-left:5px; }"+
-                        ".eximg             { font-size:3em; width: 4em; height: 3em; } "+
-                        ".eximg>img.snap    { width: 4em; height: 3em; } "+
-                        ".extitle           { font-size:1.5em; width:25em; margin-top:3px; font-style:italic; text-align:justify; } "+
-                        ".exid              { font-size:2em; text-align:right; } "+
-                        ".param             { width:7em; font-size:1.2em; }"+
-                        ".label             { width: 5em; float:left; margin-right:3px; text-align:right; } "+
-                        "</style></head><body>"+html+"</body></html>";
-                newWindow.document.write(html);
-                newWindow.document.close();
-            });
+            window.open('export.html?id='+encodeURIComponent(tibibi.course.ex),'_blank'); 
         },
         overview: function() {
             var html="";
             for (var i in tibibi.course.ex) { if (html) { html+=","; } html+=tibibi.course.ex[i]; }
-             $.getJSON("mods/tibibi/api/exercice.php?value="+html, function(data2) {
+             $.getJSON("api/exercices.php?id="+html, function(data2) {
                 $("#biscreen #list").html("");
                 for (var i in data2.exercices) {
                     var $drop = $("<div class='drop'></div>");
@@ -422,7 +384,7 @@ var tibibi = {
                     img += "</div>";
                     $drag.append(img);
                     $drag.append("<div class='exid'>"+data2.exercices[i].id+"</div>");
-                    $drag.append("<div class='extitle'>"+data2.exercices[i].title+"</div>");
+                    $drag.append("<div class='extitle'>"+data2.exercices[i].label+"</div>");
                     $drop.append($drag);
                     $drag.draggable({ containment:$("#biscreen #list"), appendTo:$("#biscreen #list"), revert:false, stack:".drag",
                         stop:function(event, ui) { $(this).css("top",0).css("left",0); }});

@@ -1,0 +1,171 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+
+<head>
+    <title>jLoDb asset export</title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <style>
+body               { font-family:"Century Gothic", sans-serif; }
+.exercice          { border:2px solid gray; height:14em; width:14em; margin:2px; overflow:hidden; float:left; position:relative;
+                     cursor:pointer; }
+.eximg             { width: 14em; height:10.5em; background-color:gray; border:0; 
+                     background-image:url('res/img/site/nosnapshot.svg');background-repeat:no-repeat;}
+.eximg .snap       { width: 14em; height:10.5em; }
+.exn               { position:absolute; top:0; left:12.8em; width:1.2em; height:1.2em; text-align:center;
+                     background-color:rgba(255,255,255,0.6); border:1px solid gray; border-radius:0 0 0 .5em;
+                     border-width:0 0 1px 1px; }
+.extitle           { padding:0 .2em; font-size:0.6em; font-style:italic; text-align:justify; }
+.exid              { position:absolute; top:.5em; left:0; background-color:rgba(255,255,255,0.6); border:1px solid gray;
+                     border-radius:0 .5em .5em 0; border-width:1px 1px 1px 0; min-width:5em; text-align:center; color:black;}
+.exercice .param             { position:absolute; top:9.2em; left:0; width:14em; height:0.8em; background-color:gray; color:white; }
+.exercice .param>div         { float:left; font-size:0.6em; }
+.exercice .label             { margin-left:2.5em; float:left; margin-right:3px; text-align:right; }
+
+.chapter                     { clear:both; }
+.chapter .strong             { font-size:1.5em; font-weight:bold; }
+.chapter .label              { cursor:pointer; }
+.chapter .overview           { display:none; }
+.chapter .overview.s         { display:inherit; }
+    
+    </style>
+    <script>
+    
+// TEXT FORMATING
+var regExp = [
+        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
+        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
+        "\\\[br\\\]",                               " ",
+        "\\\[dot\\\]",                              "<div style='clear:left'></div><div style='margin:0 .5em 0 1em;float:left;'>•</div>",
+        "\\\[clear\\\]",                            "<div style='clear:both'></div>",
+        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
+        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
+        "\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='icon'><img src='$1'/></div>",
+        "\\\[img\\\]([^\\\[]+)\\\[/img\\\]",        "<div class='img'><img src='$1'/></div>",
+        "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>"
+    ];
+    
+var snapshots = "";
+var render = {
+format: function(_text) {
+            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
+                var vReg = new RegExp(regExp[i*2],"g");
+                _text = _text.replace(vReg,regExp[i*2+1]);
+            }
+            return _text;
+        },
+
+ids: function(_target, _ids) {
+    $.getJSON("api/exercices.php?id="+_ids, function(data) {
+        var html="";
+        var ids = decodeURIComponent(_ids).split(",");
+        for (var i in ids) {
+            var e = 0;
+            var url="";
+            for (var j in data.exercices) { if (data.exercices[j].id==ids[i]) { e = data.exercices[j]; } }
+            if (!e) {
+                e={id:ids[i], activity:"info", level:0, diff:0, extend:0, label:"ERROR exercice not found"};
+                url=snapshots+"/res/img/exercices/info/xx/ioy.png";
+            }
+            
+            
+            html+="<div class='exercice' ";
+            html+="onclick=\"window.open('demo.html?id="+e.id+"','_blank',"+
+                      "'width=640, height=480,toolbar=no,location=no,status=no,menubar=no,"+
+                      "scrollbars=no,resizable=no,status=no,titlebar=no');\"";
+            html+="><div class='eximg'>";
+            if (snapshots) {
+                if (!url.length) {
+                    url = snapshots+"/res/img/exercices/"+e.activity+"/";
+                    if (e.id.length>4) { url+=e.id[2]+e.id[3]+"/"; } else { url+="xx/"; }
+                    url += e.id+".png";
+                }
+
+                html +="<img class='snap' src='"+url+"'/>";
+            }
+            html+="</div>";
+            html+="<div class='exn'>"+i+"</div>";
+            html+="<div><div class='exid'>"+e.id+"</div>";
+            html+="<div class='extitle'>"+e.label+"</div></div>";
+            html+="<div class='param'>";
+            html+="<div class='label'>Niveau</div><div class='value'>"+e.level+"</div>";
+            html+="<div class='label'>Difficulté</div><div class='value'>"+e.diff+"</div>";
+            html+="<div class='label'>Durée</div><div class='value'>"+e.extend+"</div>";
+            html+="</div>";
+            html+="</div>";
+            
+        }
+        $(_target).append(html);
+    });
+},
+count:0,
+chapter: {},
+node: function(_target, _nodes, _level) {
+    for (var i in _nodes) {
+        var n = _nodes[i];
+        var html="";
+        var id = "c"+(render.count++);
+        html+="<div class='chapter' id='"+id+"'>";
+        html+="<div class='label' style='margin-left:"+_level+"em;'>"+render.format(n.label)+"</div>";
+        html+="<div class='overview'></div>";
+        html+="</div>";
+        var $html=$(html);
+        
+        if (n.description) { render.chapter[id] = n.description; }
+        
+        $(_target).append($html);
+        $html.find(".label").bind("click", function(_event) {
+            var id=$(this).parent().attr("id");
+            var $o=$(this).next();
+            
+            if (render.chapter[id]) {
+                $o.html("");
+                render.ids($o, render.chapter[id]);
+            }
+            
+            $o.toggleClass("s");
+        });
+        
+        render.count++;
+        if (n.children) {
+            render.node($html.find(".overview"), n.children, _level+1);
+        }
+    
+    }
+
+
+}
+
+};
+
+$(window).ready(function() {
+
+    var args = {}
+    var a = location.search.substring(1).split('&');
+    for (var i in a) { var p= a[i].split('='); args[p[0]]=p[1]; }
+    
+    $.getJSON("api/checkdb.php", function (_check) {
+
+        if (_check.status=="success") {
+            snapshots  = _check.url;
+
+            if (args.id) { render.ids($("body"),args.id); }
+            else if (args.tibibo) {
+                $.getJSON("mods/tibibo/api/book.php?value="+args.tibibo, function(_data) {
+                    render.node("body",_data.description,0);
+                });
+            }
+            else {
+                $("body").html("No exercices in request");
+            }
+        }
+    });
+});
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
