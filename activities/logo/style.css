@@ -1,7 +1,7 @@
 .logo                                { background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat;}
 .logo div#splashex                  { background-image:url("../../res/img/banners/it.svg"); color:lime; }
 .logo div#splashex h1               { position:absolute; top:45%; left:80%; font-size:1.5em; }
-.logo div#splashex #guide           { position:absolute; top:52%; left:45%; font-size:.75em; width:48%;;
+.logo div#splashex #guide           { position:absolute; top:53%; left:45%; font-size:.6em; width:52%;
                                           text-align:justify; }
 .logo div.mask                       { position:absolute; width:7.8em; height:12em; top:0; left:0; display:none; }
 .logo div#export                     { position:absolute; width:16em; height:12em; top:0; left:0; display:none; z-index:2002;}
@@ -21,7 +21,7 @@
 .logo div#exercice                   { width:7.8em; height:4.3em; border-radius:0 0 .5em 0;
                                        text-align:justify; background-repeat:repeat; padding:.05em .1em;
                                       background-image:url("../../res/img/background/book02.svg"); }
-.logo div#exercice>div               { font-size:.3em; }
+.logo div#exercice>div               { font-size:.28em; }
 
 .logo div#exercice .svg              { background-color:rgba(0,0,0,0.2); font-size:6em; }
 .logo div#exercice .svg>div          { width:1em; height:1em; margin:.1em auto; }
@@ -41,27 +41,28 @@
 .logo div#panels                     { background-color:white; }
 .logo div#panels>div                 { width:24em; height:14.2em; overflow:auto; font-size:0.4em; margin:.2em;
                                        background-color:#90cce0; background-image:url("../../res/img/background/book05.svg");
-                                       background-repeat:repeat; }
+                                       background-repeat:repeat; overflow:visible;}
 
-.logo .op                            { background-color:#446688; color:#DDEEFF; }
-.logo .va                            { background-color:#777777; color:#EEEEEE; min-width:1.8em; }
+.logo .op                            { background-color:#446688; color:#DDEEFF; min-height:1.4em;}
+.logo .va                            { background-color:#777777; color:#EEEEEE; min-width:1.8em; min-height:1.2em;}
 .logo .va>.label                     { margin:0 auto; float:none; }
-.logo .ma                            { background-color:#555555; color:#EEEEEE; }
-.logo .cl                            { background-color:#334466; color:#DDEEFF; }
+.logo .ma                            { background-color:#555555; color:#EEEEEE; min-height:1.4em; }
+.logo .cl                            { background-color:#334466; color:#DDEEFF; height:1.4em; }
+.logo .cl>.op                    { height:1.2em; }
 .logo .label                         { margin:0 .1em; text-align:center; float:left; }
-.logo .a                             { margin:.1em; padding:0 .2em; float:left; font-weight:bold; opacity:0.2; white-space:nowrap;
+.logo .a                             { margin:.1em; padding:0 .2em; float:left; opacity:0.2; white-space:nowrap;
                                        font-family: "Courier New" Courier monospace; border-radius:.25em; cursor:move; }
 .logo .a.s                           { opacity:1; }
-.logo .d                             { float:left; margin:.1em .1em .1em .2em;  min-height:1em; min-width:1.8em; border-radius:.25em; }
+.logo .d                             { float:left; margin:.1em .1em .1em .2em;  min-height:1.2em; min-width:1.8em; border-radius:.25em; }
 .logo .d.va.over                     { background-color:red !important; }
 .logo .ui-draggable-dragging .d.op   { display:none; }
-.logo .ui-draggable-dragging .d.va   { display:none; }
+.logo .ui-draggable-dragging .d.va   { opacity:0; }
 .logo .ui-draggable-dragging         { min-width:3em; cursor:none !important; }
-.logo .va.ui-draggable-dragging      { opacity:0.8 !important; min-width:1.8em; }
-.logo .ma.ui-draggable-dragging      { opacity:0.8 !important;}
-.logo .ma.ui-draggable-dragging>.label  { float:none; margin:0 auto; }
+.logo .va.ui-draggable-dragging      { opacity:0.8 !important; height:1.2em; min-width:1.8em; }
+.logo .ma.ui-draggable-dragging      { opacity:0.8 !important; height:1.4em;}
+.logo .op.ui-draggable-dragging      { height:1.4em;}
 
-.logo .d>.a                          { font-size:0.8em; }
+.logo .d>.a                          { font-size:0.75em; }
 
 .logo div#code                       { margin:.22em; width:18.8em; height:18.8em; background-color:#222222; border-radius:0 0 0 1.2em;
                                        overflow:auto; font-size:0.4em; background-size:100%;
@@ -72,6 +73,9 @@
                                        background-color:rgba(20,40,50,0.9); border:1px solid #334466; border-width:0 0 1px 0;}
 .logo div#code .line.s               { background:yellow; }
 
+.logo div#code .line .op                      { width:95%; }
+.logo div#code .line .cl                        { height:inherit;  }
+.logo div#code .line .cl>.op            { height:auto !important;  }
 .logo div#code .cl.cc                 { width:95%; }
 .logo div#code .cc .d.op              { clear:both; width:98%; border-radius:0; }
 

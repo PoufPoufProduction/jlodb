@@ -8,7 +8,7 @@
         lang        : "en-US",                                  // Current localization
         number      : 2,                                        // Number of games in case of gen
         fontex      : 1,                                        // exercice font size
-        debug       : false                                     // Debug mode
+        debug       : true                                     // Debug mode
     };
 
     // private methods

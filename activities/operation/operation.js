@@ -102,7 +102,7 @@
 
                 // Keypad
                 var nb = Math.min(settings.base,10);
-                var r = settings.base>10?1.8:1.5;
+                var r = settings.base>10?2:1.8;
                 for (var i=0; i<nb; i++) {
                     settings.$keys.push(
                         $this.find("#keypad #key"+i).css("top",(r*Math.pow(nb/10,0.3)*Math.cos(2*Math.PI*(i/nb))-0.5)+"em")

@@ -13,7 +13,7 @@
         object      : "path",                                   // type of drawing
         garbage     : [],                                       // garbage elements
         nomenu      : false,                                    // No menu
-        debug       : false                                     // Debug mode
+        debug       : true                                     // Debug mode
     };
 
     var regExp = [

@@ -17,6 +17,7 @@
         loop        : true,                                     // State loop
         illustration: "",                                       // Add an illustration (text or image)
         errratio    : 1,                                        // Ratio error
+        fontex      : 1,
         debug       : true                                      // Debug mode
     };
 
@@ -27,7 +28,7 @@
         "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
         "\\\[green\\\]([^\\\[]+)\\\[/green\\\]",    "<span style='color:green'>$1</span>",
         "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
-        "\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='icon' style='float:left'><img src='$1'/></div>",
+        "\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='icon' style='font-size:1.2em;float:left'><img src='$1'/></div>",
         "\\\[icon2\\\]([^\\\[]+)\\\[/icon2\\\]",    "<div class='icon' style='font-size:2em;float:left'><img src='$1'/></div>"
     ];
 
@@ -243,6 +244,7 @@
                 $this.find("#exercice #content").html(settings.current.comment);
                 $this.find("#exercice").show(); }
             else { $this.find("#exercice").hide(); }
+            $this.find("#exercice #content").css("font-size",settings.fontex+"em");
 
             if (settings.current.template) {
                 var debug = "";

@@ -11,21 +11,21 @@
                                   background-color:rgba(150,150,150,0.9);
                                   background-image:url("../../res/img/background/book05.svg"); background-repeat:repeat;
                                   overflow:hidden; text-align:center; }
-.sudoku #time                   { font-size: 1em; border-radius:0 0 .5em .5em;  width:6em; height:1em;
+.sudoku #time                   { font-size: 1em; border-radius:0 0 .5em .5em;  width:6em; height:1.2em;
                                   text-align:center; cursor:pointer; background-color:rgba(255,255,255,0.9);
                                   font-weight:bold; color:rgb(53,34,34); }
 .sudoku #grid                   { padding-top:2px; }
 .sudoku #keypad                 { position:absolute; overflow:visible; display:none; font-weight:bold; }
-.sudoku #keypad div.k           { width:1em; height:1em; overflow:hidden; text-align:center;
-                                  background-image:url("../../res/img/icon/round.svg"); border-radius:0.5em;
-                                  background-size:100%; color:rgb(17,95,130); background-position:0 0; cursor:pointer;
-                                  position:absolute; display:none; background-color:rgba(200,235,235,0.8);}
+.sudoku #keypad div.k           { font-size:.8em; width:1.2em; height:1.2em; overflow:hidden; text-align:center;
+                           background-image:url("../../res/img/icon/round.svg"); border-radius:0.5em;
+                           background-size:100%; color:rgb(17,95,130); background-position:0 0; cursor:pointer;
+                           position:absolute; display:none; background-color:rgba(200,235,235,0.8);}
 .sudoku #keypad div.k.s         { background-color:rgba(17,95,130,0.8); color:rgb(200,235,235); }
 .sudoku #keypad #bg1            { background-image:url("../../res/img/icon/round2.svg"); font-size:3em; position:absolute; 
-                                  width:1em; height:1em; top:-0.5em; left:-0.5em; font-size:2.4em; }
-.sudoku td.cell                 { width:3em; height:3em; overflow:hidden;}
-.sudoku td.cell div.border      { width:3em; height:3em; overflow:hidden; position:relative; }
-.sudoku td.cell div.fill        { width:1em; height:1em; font-size:3em; text-align:center; cursor:pointer; position:absolute; }
+                                  width:1em; height:1em; top:-0.47em; left:-0.47em; font-size:3em; }
+.sudoku td.cell                 { width:3.6em; height:3.6em; overflow:hidden;}
+.sudoku td.cell div.border      { width:3.6em; height:3.6em; overflow:hidden; position:relative; }
+.sudoku td.cell div.fill        { width:1.2em; height:1.2em; font-size:3em; text-align:center; cursor:pointer; position:absolute; }
 .sudoku td.cell div.fill.value  { color:red; }
 
 .sudoku #grid td.cell.blue div.fill         { background-color:rgba(0,0,200,0.3); }
@@ -44,8 +44,8 @@
 
 .sudoku td.cell table.hint      { position:absolute; display:none; }
 .sudoku td.cell div.final       { cursor:default; color:rgb(53,34,34); }
-.sudoku table.hint div          { width:1em; height:1em; overflow:hidden; text-align:center; cursor:pointer;}
-.sudoku #grid9x9                { font-size: 1em; collapse-border:collapse; border: 1px solid rgb(53,34,34);
+.sudoku table.hint div          { width:1.2em; height:1.2em; overflow:hidden; text-align:center; cursor:pointer;}
+.sudoku #grid9x9                { font-size: 0.8em; collapse-border:collapse; border: 1px solid rgb(53,34,34);
                                   background-color:rgba(255,252,246,0.8); display:none; }
 .sudoku #grid.f td.cell.level1  { background-color:rgba(255,231,184,0.8); }
 .sudoku #grid.f td.cell.level2  { background-color:rgba(255,220,162,0.8); }

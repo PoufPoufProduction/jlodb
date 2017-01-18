@@ -100,8 +100,8 @@
                 $this.find("#interactive>div").css("font-size",settings.font+"em");
 
                 // DISPLAY STUFF
-                if (settings.exercice) { $this.find("#exercice").html(helpers.format(settings.exercice)); }
-                $this.find("#exercice").css("font-size",settings.fontex+"em").show();
+                if (settings.exercice) { $this.find("#exercice>div").html(helpers.format(settings.exercice)); }
+                $this.find("#exercice>div").css("font-size",settings.fontex+"em").show();
 
                 // LOCALE HANDLING
                 $this.find("h1#label").html(settings.label);

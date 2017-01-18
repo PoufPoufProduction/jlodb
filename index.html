@@ -31,7 +31,7 @@
         body>div.logged #jlheader           { background-color:#555555; }
         #jlnav                              { float:left; width:3em; height:9em; overflow:hidden; background-color:#DDDDDD; }
         #jlnav ul                           { font-size:.35em; list-style-type: none; }
-        #jlnav li div                       { margin:.2em; padding:.1em .1em .1em .3em; cursor:pointer; border-radius:.2em; background-color:#888;color:#DDD;}
+        #jlnav li div                       { margin:.2em; padding:.1em .1em .1em .3em; cursor:pointer; border-radius:.2em; background-color:#888;color:#DDD; height:1.2em; white-space:nowrap;}
         #jlnav .sub                         { display:none; }
         #jlnav ul.sub                       { font-size:.8em; padding-left:1em; }
         #jlfooter                           { clear:both; width:100%; height:1em; overflow:hidden; background-color:#EEEEEE; position:relative; }
@@ -111,7 +111,8 @@
         #jlodb .navigation td.icon          { font-size:8em; cursor:pointer; }
         #jlodb .navigation td.text          { width:24em; height:4em; text-align:justify; overflow:hidden; vertical-align:top;
                                               padding:.5em; background-color: #888; border-radius:1.5em; color:white; }
-        #jlodb .navigation td.text p        { font-style:italic; }
+        #jlodb .navigation td.text h1       { font-size:1.5em; height:1.2em; }
+        #jlodb .navigation td.text p        { font-style:italic; font-size:0.8em; }
         #jlodb .navigation .scroll          { height:36em; width:34em; float:left; overflow:scroll;}
         #jlodb .navigation .details         { height:35.8em; width:17.6em; overflow:hidden; margin-top:.2em;
                                               background-color: #DDD; border-radius:1.5em; }
@@ -263,7 +264,7 @@ jlodb = {
                         $("#activities .files").html("");
                         for (var i=0; i<data.files.length; i++) {
                             var html="<div>";
-                            html+="<div class='label'>"+data.files[i]+"</div>";
+                            html+="<div class='label'>"+data.files[i].replace(".rdf","")+"</div>";
                             html+="<div class='icon'><a href='data/"+name+"/"+data.files[i]+"'>&nbsp;</a></div>";
                             html+="<div class='icon' id='build' onclick='jlodb.page.activities.build(\""+data.files[i]+"\",\""+name+"\");'>+</div>";
                             html+="</div>";

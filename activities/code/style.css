@@ -2,7 +2,7 @@
 .code                                { background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat;}
 .code div#splashex                  { background-image:url("../../res/img/banners/it.svg"); color:lime; }
 .code div#splashex h1               { position:absolute; top:45%; left:80%; font-size:1.5em; }
-.code div#splashex #guide           { position:absolute; top:52%; left:45%; font-size:.75em; width:48%;;
+.code div#splashex #guide           { position:absolute; top:52%; left:45%; font-size:.75em; width:54%;
                                           text-align:justify; }
 .code div#board                      { font-size:.5em; width:105%; }
 .code div#board>div                  { float:left; }
@@ -11,7 +11,7 @@
 .code #screens #output               { width:11.6em; height:5.6em; background-color:#030; color:#0F0; font-weight:bold;
                                       padding:.2em; border-radius:.5em; line-height:.8em;
                                       background-image:url("../../res/img/background/book05.svg"); background-repeat:repeat;}
-.code #screens #output pre           { overflow:visible; }
+.code #screens #output pre           { overflow:visible; font-family: "Courier New",Courier,monospace; }
 .code #screens #canvas               { width:12em; height:12em; background-color:black; border-radius:.5em; position:relative; }
 .code #screens.s2 #canvas            { height:8em; }
 .code #screens.s3 #canvas            { height:10.8em; }
@@ -36,7 +36,7 @@
 .code #central #code                 { height:25em; background-color:#222; overflow:auto; background-size:100%;
                                       background-image:url("../../res/img/background/asm45.svg"); background-repeat:no-repeat; }
 .code #central #code #lines          { font-size:1em; }
-.code.small #central #code #lines    { font-size:.8em; }
+.code.small #central #code #lines    { font-size:.7em; }
 .code #central #code #lines .line    { position:relative; width:100%; min-height:1em;
                                        background-color:rgba(20,40,50,0.9); border:1px solid #334466; border-width:0 0 1px 0;}
 .code #central #code #lines .line.s  { background-color:yellow !important; }
@@ -50,6 +50,7 @@
 .code #central #exercice             { width:30em !important; height:9.4em; background-repeat:repeat;
                                       background-image:url("../../res/img/background/book02.svg"); text-align:justify;
                                       font-family: "Courier New" Courier monospace; font-size:.5em !important;}
+.code #central #exercice #ex    { font-size:0.9em; }
 .code #central #exercice #toggle     { height:1em; background-color:rgba(0,0,0,0.2); cursor:pointer; text-align:center; }
 .code #central #exercice #toggle:after  { content:"-"; }
 .code #central #exercice #ex         { margin:0 .5em;  }
@@ -99,40 +100,41 @@
 .code #touch01                       { top:0; left:0; font-size:2em; }
 
 
-.code #board  .a                             { cursor:move; margin:.1em; text-align:center; font-size:1em; opacity:0.2; }
+.code #board  .a                             { cursor:move; min-height:1.2em; margin:.1em; text-align:center; font-size:1em; opacity:0.2; }
 .code #board  .d.va.over                     { background-color:red !important; }
 .code #board  .a.s                           { opacity:1; }
 .code #board  .va.c                          { background-color:#888 !important; }
 .code #board  .ui-draggable-dragging         { cursor:none !important; min-width:3em; }
-.code #board  .va.ui-draggable-dragging      { opacity:0.8 !important; }
-.code #board  .ma.ui-draggable-dragging      { opacity:0.8 !important; }
+.code #board  .va.ui-draggable-dragging      { opacity:0.8 !important; height:1.2em;}
+.code #board  .ma.ui-draggable-dragging      { opacity:0.8 !important; height:1.4em;}
+.code #board  .op.ui-draggable-dragging      { height:1.4em;}
 .code #board  .ui-draggable-dragging .d.op   { display:none; }
-.code #board  .ui-draggable-dragging .d.va   { display:none; }
+.code #board  .ui-draggable-dragging .d.va   { opacity:0; }
 
-.code #board .d>.a                          { font-size:0.8em; }
+.code #board .d>.a                          { font-size:0.75em; }
 
-.code #board  .op                            { background-color:#446688; color:#DDEEFF; border-radius:.5em; min-width:12.5em;  }
+.code #board  .op                            { background-color:#446688; color:#DDEEFF; border-radius:.5em; min-width:12.5em; min-height:1.4em; }
 .code #board  .op>.label                     { margin:0 .2em; text-align:right; float:left; width:4em; }
-.code #board  .op>.va                        { margin:.1em; min-width:1.2em; min-height:1em; height:inherit;}
+.code #board  .op>.va                        { margin:.1em; min-width:1.2em;}
 
-.code #board  .va                            { background-color:#777777; color:#EEEEEE; float:left; border-radius:.25em; height:1em;
-                                                min-width:2.2em; }
+.code #board  .va                            { background-color:#777777; color:#EEEEEE; float:left; border-radius:.25em; min-height:1.2em; min-width:2.2em; }
 .code #board  .va>.label                     { margin:0 .4em; }
 .code #board  .va.char .label:before         { content:"'"; }
 .code #board  .va.char .label:after          { content:"'"; }
 
-.code #board  .ma                            { background-color:#555555; color:#EEEEEE; border-radius:.25em; float:left; }
-.code #board  .ma>.va                        { margin:.1em .2em; min-width:1.2em; min-height:1em; height:inherit;}
+.code #board  .ma                            { background-color:#555555; color:#EEEEEE; border-radius:.25em; float:left; min-height:1.4em; }
+.code #board  .ma>.va                        { margin:.1em .2em; min-width:1.2em;}
 .code #board  .ma>.label                     { float:left; margin:0 .2em; }
 
 
 
-.code .cl                            { background-color:#334466; color:#DDEEFF; border-radius:.5em; min-width:12.5em;  }
-.code #board  .cl>.label                     { margin:0 .2em; text-align:right; float:left; width:4em; }
-.code #board  .cl>.label.r                   { width:auto; }
-.code #board  .cl>.va                        { margin:.1em; min-width:1.2em; min-height:1em; height:inherit;}
-.code #board  .cl>.op                        { float:left; margin:.1em; min-height:1em; min-width:1.8em; border-radius:.25em; }
-.code #lines .cl>.op                 { clear:both; width:98%; border-radius:0; }
+.code #board .cl                            { background-color:#334466; color:#DDEEFF; border-radius:.5em; min-width:12.5em; height:1.4em;  }
+.code #board .cl>.label                     { margin:0 .2em; text-align:right; float:left; width:4em; }
+.code #board .cl>.label.r                   { width:auto; }
+.code #board .cl>.va                        { margin:.1em; min-width:1.2em; height:1.2em;}
+.code #board .cl>.op                        { float:left; margin:.1em; height:1.2em; min-width:1.8em; border-radius:.25em; }
+.code #lines .cl                        { height:inherit;  }
+.code #lines .cl>.op                 { clear:both; width:98%; border-radius:0; height:auto !important; }
 .code #lines .cl>.label.r            { width:4em; font-size:1em; }
 .code #lines .op>.va                 { min-width:1.8em; }
 .code #lines .cl>.va                 { min-width:1.8em; }

@@ -9,7 +9,7 @@
         highlight   : [],                   // Elements to highlight for tutorial
         comment     : "",
         width       : 9,                    // Line width
-        debug       : false                 // Debug mode
+        debug       : true                 // Debug mode
     };
 
     var mapping = { 'a':1, 'b':2, 'c':3, 'd':4, 'e':5, 'f':6, 'g':7, 'h':8, 'i':9,
@@ -418,8 +418,8 @@
 
                 // Keypad
                 for (var i=0; i<10; i++) {
-                    settings.$keys.push($this.find("#keypad #key"+i).css("top",(1.5*Math.cos(2*Math.PI*(i/10))-0.5)+"em")
-                                       .css("left",(1.5*Math.sin(2*Math.PI*(i/10))-0.5)+"em")
+                    settings.$keys.push($this.find("#keypad #key"+i).css("top",(1.8*Math.cos(2*Math.PI*(i/10))-0.5)+"em")
+                                       .css("left",(1.8*Math.sin(2*Math.PI*(i/10))-0.5)+"em")
                                        .show());
                 }
 
