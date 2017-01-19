@@ -678,7 +678,7 @@
                 return this.each(function() {
                     var $this = $(this);
                     helpers.unbind($this);
-                    $(document).keydown(function(_e) { helpers.key($this, _e.which); if (_e.which!=116) { _e.preventDefault(); } });
+                    $(document).keydown(function(_e) { if (_e.which!=116) { helpers.key($this, _e.which); _e.preventDefault(); } });
 
                     var $settings = $.extend({}, defaults, options, settings);
                     var checkContext = helpers.checkContext($settings);

@@ -6,7 +6,7 @@
     <rdf:Description>
         <dct:identifier>oct01</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer chaque valeur (comprise entre 1 et 64) en base 10 à son équivalent en base 8.</dct:title>
-        <dct:description><![CDATA["gen":"function(i){var a = Math.floor(Math.random()*64)+1; return [\\\"0\\\"+a.toString(8),a];}","nbvalues":5,"number":5,"len":3,"font":1.7,"fontex":0.5]]></dct:description>
+        <dct:description><![CDATA["class":"h12","gen":"function(i){var a = Math.floor(Math.random()*64)+1; return [\\\"0\\\"+a.toString(8),a];}","nbvalues":5,"number":5,"len":3,"font":1.6,"fontex":0.5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Associez chaque valeur en base 10 à son équivalent en base 8."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -18,7 +18,7 @@
     <rdf:Description>
         <dct:identifier>hex01</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer chaque valeur (comprise entre 1 et 256) en base 10 à son équivalent en base 16.</dct:title>
-        <dct:description><![CDATA["gen":"function(i){var a = Math.floor(Math.random()*256)+1; return [\\\"0x\\\"+a.toString(16),a];}","nbvalues":5,"number":5,"len":3,"font":1.7,"fontex":0.5]]></dct:description>
+        <dct:description><![CDATA["class":"h12","gen":"function(i){var a = Math.floor(Math.random()*256)+1; return [\\\"0x\\\"+a.toString(16),a];}","nbvalues":5,"number":5,"len":3,"font":1.6,"fontex":0.5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Associez chaque valeur en base 10 à son équivalent en base 16."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -30,7 +30,7 @@
     <rdf:Description>
         <dct:identifier>bin01</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer chaque valeur (comprise entre 0 et 7) en base 10 à son équivalent en base 2.</dct:title>
-        <dct:description><![CDATA["gen":"function(i){var n=3, a = Math.floor(Math.random()*Math.pow(2,n)), b = a.toString(2); while (b.length<n) { b=\\\"0\\\"+b; } return [b,a];}","nbvalues":5,"number":5,"len":3,"font":1.7,"fontex":0.5]]></dct:description>
+        <dct:description><![CDATA["class":"h12","gen":"function(i){var n=3, a = Math.floor(Math.random()*Math.pow(2,n)), b = a.toString(2); while (b.length<n) { b=\\\"0\\\"+b; } return [b,a];}","nbvalues":5,"number":5,"len":3,"font":1.6,"fontex":0.5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Associez chaque valeur en base 10 à son équivalent en base 2."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -42,7 +42,7 @@
     <rdf:Description>
         <dct:identifier>bin02</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer chaque valeur (comprise entre 0 et 15) en base 10 à son équivalent en base 2.</dct:title>
-        <dct:description><![CDATA["gen":"function(i){var n=4, a = Math.floor(Math.random()*Math.pow(2,n)), b = a.toString(2); while (b.length<n) { b=\\\"0\\\"+b; } return [b,a];}","nbvalues":5,"number":5,"len":3,"font":1.7,"fontex":0.5]]></dct:description>
+        <dct:description><![CDATA["class":"h12","gen":"function(i){var n=4, a = Math.floor(Math.random()*Math.pow(2,n)), b = a.toString(2); while (b.length<n) { b=\\\"0\\\"+b; } return [b,a];}","nbvalues":5,"number":5,"len":3,"font":1.6,"fontex":0.5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Associez chaque valeur en base 10 à son équivalent en base 2."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -54,7 +54,7 @@
     <rdf:Description>
         <dct:identifier>bin11</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer chaque bitmap de 4 bits à son codage héxadécimal .</dct:title>
-        <dct:description><![CDATA["gen":"function(i){var a = 0, b=\\\"<div style='float:left;width:0.5em;height:1em;'></div>\\\"; for(var i=0; i<4; i++) { var r = Math.floor(Math.random()*2); a = a*2+r; b = b+\\\"<div style='margin-top:0.1em;width:0.8em;height:0.8em;float:left;border:1px solid black;background-color:\\\"+(r?\\\"black\\\":\\\"white\\\")+\\\";'></div>\\\"; } return [b,\\\"0x\\\"+a.toString(16)];}","nbvalues":5,"number":3,"len":4,"font":1.7,"fontex":0.5]]></dct:description>
+        <dct:description><![CDATA["class":"h12","gen":"function(i){var a = 0, b=\\\"<div style='float:left;width:0.5em;height:1em;'></div>\\\"; for(var i=0; i<4; i++) { var r = Math.floor(Math.random()*2); a = a*2+r; b = b+\\\"<div style='margin-top:0.1em;width:0.8em;height:0.8em;float:left;border:1px solid black;background-color:\\\"+(r?\\\"black\\\":\\\"white\\\")+\\\";'></div>\\\"; } return [b,\\\"0x\\\"+a.toString(16)];}","nbvalues":5,"number":3,"len":4,"font":1.6,"fontex":0.5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Associez à chaque bitmap la valeur hexadécimale correspondante."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -66,7 +66,7 @@
     <rdf:Description>
         <dct:identifier>bin21</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer chaque bitmap de 8 bits à son codage héxadécimal .</dct:title>
-        <dct:description><![CDATA["gen":"function(i){var a = 0, b=\\\"<div style='float:left;width:0.5em;height:1em;'></div>\\\"; for(var i=0; i<8; i++) { var r = Math.floor(Math.random()*2); a = a*2+r; b = b+\\\"<div style='margin-top:0.1em;width:0.8em;height:0.8em;float:left;border:1px solid black;background-color:\\\"+(r?\\\"black\\\":\\\"white\\\")+\\\";'></div>\\\"; } return [b,(a<16?\\\"0x0\\\":\\\"0x\\\")+a.toString(16)];}","nbvalues":5,"number":3,"len":7.4,"font":1.5,"fontex":0.5]]></dct:description>
+        <dct:description><![CDATA["class":"h12","gen":"function(i){var a = 0, b=\\\"<div style='float:left;width:0.5em;height:1em;'></div>\\\"; for(var i=0; i<8; i++) { var r = Math.floor(Math.random()*2); a = a*2+r; b = b+\\\"<div style='margin-top:0.1em;width:0.8em;height:0.8em;float:left;border:1px solid black;background-color:\\\"+(r?\\\"black\\\":\\\"white\\\")+\\\";'></div>\\\"; } return [b,(a<16?\\\"0x0\\\":\\\"0x\\\")+a.toString(16)];}","nbvalues":5,"number":3,"len":7.4,"font":1.5,"fontex":0.5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Associez à chaque bitmap la valeur hexadécimale correspondante."]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -78,7 +78,7 @@
     <rdf:Description>
         <dct:identifier>pow01</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer chaque puissance de 2 à sa valeur en base 10 (de 2^0 à 2^5).</dct:title>
-        <dct:description><![CDATA["values":[[["2^0","1"],["2^1","2"],["2^2","4"],["2^3","8"],["2^4","16"],["2^5","32"]]],"nbvalues":4,"number":3,"len":2.5,"font":2,"fontex":0.5]]></dct:description>
+        <dct:description><![CDATA["class":"h12","values":[[["2^0","1"],["2^1","2"],["2^2","4"],["2^3","8"],["2^4","16"],["2^5","32"]]],"nbvalues":4,"number":3,"len":2.5,"font":2,"fontex":0.5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Associez chaque puissance de 2 à sa valeur."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>

@@ -173,8 +173,9 @@
                     else                { vNewValue = vValueArray[i%vValueArray.length]; }
 
                     // The question may be an array [question, response], otherwise response is evaluated from the question
-                    if ($.isArray(vNewValue))   { vValue.question = vNewValue[0].toString(); vValue.response = vNewValue[1].toString(); }
+                    if ($.isArray(vNewValue))   { vValue.question = vNewValue[0].toString(); vValue.response = vNewValue[1]; }
                     else                        { vValue.question = vNewValue.toString(); vValue.response = eval(vNewValue.toString().replace("×","*")); }
+                    
 
                     // Special treatment
                     var vRegExpMult = new RegExp("\\\*", "g")
@@ -399,8 +400,10 @@
                 return this.each(function() {
                     var $this = $(this);
                     helpers.unbind($this);
-                    $(document).keypress(function(_e) { helpers.key($this, String.fromCharCode(_e.which), true); });
-
+                    
+                    $(document).keypress(function(_e) {
+                        if (_e.keyCode!=116) { helpers.key($this, String.fromCharCode(_e.which), true); _e.preventDefault(); } });
+                    
                     var $settings = $.extend({}, defaults, options, settings);
                     var checkContext = helpers.checkContext($settings);
                     if (checkContext.length) {

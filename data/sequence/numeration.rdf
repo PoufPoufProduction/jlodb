@@ -2344,7 +2344,7 @@
     <rdf:Description>
         <dct:identifier>ro1</dct:identifier>
         <dct:title xml:lang="fr-FR">Convertir un nombre romain composé d'1 chiffre</dct:title>
-        <dct:description><![CDATA["time":1,"len":4,"input":{"digit":1,"speed":5000},"gen":"function() { var roman=[[\\\"\\\", \\\"I\\\", \\\"II\\\", \\\"III\\\", \\\"IV\\\", \\\"V\\\", \\\"VI\\\", \\\"VII\\\", \\\"VIII\\\", \\\"IX\\\"]], val=[1+Math.floor(Math.random()*9)]; return([roman[0][val[0]], val[0]]); }"]]></dct:description>
+        <dct:description><![CDATA["class":"h12","time":1,"len":4,"input":{"digit":1,"speed":5000},"gen":"function() { var roman=[[\\\"\\\", \\\"I\\\", \\\"II\\\", \\\"III\\\", \\\"IV\\\", \\\"V\\\", \\\"VI\\\", \\\"VII\\\", \\\"VIII\\\", \\\"IX\\\"]], val=[1+Math.floor(Math.random()*9)]; return([roman[0][val[0]], val[0]]); }"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -2355,7 +2355,7 @@
     <rdf:Description>
         <dct:identifier>ro2</dct:identifier>
         <dct:title xml:lang="fr-FR">Convertir un nombre romain composé de 2 chiffres</dct:title>
-        <dct:description><![CDATA["time":2,"input":{"digit":2,"speed":5000},"gen":"function() { var roman=[[\\\"\\\", \\\"I\\\", \\\"II\\\", \\\"III\\\", \\\"IV\\\", \\\"V\\\", \\\"VI\\\", \\\"VII\\\", \\\"VIII\\\", \\\"IX\\\"], [\\\"\\\", \\\"X\\\", \\\"XX\\\", \\\"XXX\\\", \\\"XL\\\", \\\"L\\\", \\\"LX\\\", \\\"LXX\\\", \\\"LXXX\\\", \\\"XC\\\"]], val=[Math.floor(Math.random()*10), Math.floor(Math.random()*10)], value=val[0]+val[1]*10; if (!value) { val[0]++; value++; } return([roman[1][val[1]]+roman[0][val[0]], value]); }"]]></dct:description>
+        <dct:description><![CDATA["class":"h12","time":2,"input":{"digit":2,"speed":5000},"gen":"function() { var roman=[[\\\"\\\", \\\"I\\\", \\\"II\\\", \\\"III\\\", \\\"IV\\\", \\\"V\\\", \\\"VI\\\", \\\"VII\\\", \\\"VIII\\\", \\\"IX\\\"], [\\\"\\\", \\\"X\\\", \\\"XX\\\", \\\"XXX\\\", \\\"XL\\\", \\\"L\\\", \\\"LX\\\", \\\"LXX\\\", \\\"LXXX\\\", \\\"XC\\\"]], val=[Math.floor(Math.random()*10), Math.floor(Math.random()*10)], value=val[0]+val[1]*10; if (!value) { val[0]++; value++; } return([roman[1][val[1]]+roman[0][val[0]], value]); }"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -2366,7 +2366,7 @@
     <rdf:Description>
         <dct:identifier>ro3</dct:identifier>
         <dct:title xml:lang="fr-FR">Convertir un nombre romain composé de 3 chiffres</dct:title>
-        <dct:description><![CDATA["time":4,"input":{"digit":3,"speed":5000},"gen":"function() { var roman=[[\\\"\\\", \\\"I\\\", \\\"II\\\", \\\"III\\\", \\\"IV\\\", \\\"V\\\", \\\"VI\\\", \\\"VII\\\", \\\"VIII\\\", \\\"IX\\\"], [\\\"\\\", \\\"X\\\", \\\"XX\\\", \\\"XXX\\\", \\\"XL\\\", \\\"L\\\", \\\"LX\\\", \\\"LXX\\\", \\\"LXXX\\\", \\\"XC\\\"],[\\\"\\\", \\\"C\\\", \\\"CC\\\", \\\"CCC\\\", \\\"CD\\\", \\\"D\\\", \\\"DC\\\", \\\"DCC\\\", \\\"DCCC\\\", \\\"CM\\\"]], val=[Math.floor(Math.random()*10), Math.floor(Math.random()*10), Math.floor(Math.random()*10)], value=val[0]+val[1]*10+val[2]*100; if (!value) { val[0]++; value++; } return([roman[2][val[2]]+roman[1][val[1]]+roman[0][val[0]], value]); }"]]></dct:description>
+        <dct:description><![CDATA["class":"h12","time":4,"input":{"digit":3,"speed":5000},"gen":"function() { var roman=[[\\\"\\\", \\\"I\\\", \\\"II\\\", \\\"III\\\", \\\"IV\\\", \\\"V\\\", \\\"VI\\\", \\\"VII\\\", \\\"VIII\\\", \\\"IX\\\"], [\\\"\\\", \\\"X\\\", \\\"XX\\\", \\\"XXX\\\", \\\"XL\\\", \\\"L\\\", \\\"LX\\\", \\\"LXX\\\", \\\"LXXX\\\", \\\"XC\\\"],[\\\"\\\", \\\"C\\\", \\\"CC\\\", \\\"CCC\\\", \\\"CD\\\", \\\"D\\\", \\\"DC\\\", \\\"DCC\\\", \\\"DCCC\\\", \\\"CM\\\"]], val=[Math.floor(Math.random()*10), Math.floor(Math.random()*10), Math.floor(Math.random()*10)], value=val[0]+val[1]*10+val[2]*100; if (!value) { val[0]++; value++; } return([roman[2][val[2]]+roman[1][val[1]]+roman[0][val[0]], value]); }","font":0.9]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -2377,7 +2377,7 @@
     <rdf:Description>
         <dct:identifier>ro4</dct:identifier>
         <dct:title xml:lang="fr-FR">Convertir un nombre romain composé de 4 chiffres</dct:title>
-        <dct:description><![CDATA["time":5,"input":{"digit":4,"speed":5000},"gen":"function() { var roman=[[\\\"\\\", \\\"I\\\", \\\"II\\\", \\\"III\\\", \\\"IV\\\", \\\"V\\\", \\\"VI\\\", \\\"VII\\\", \\\"VIII\\\", \\\"IX\\\"], [\\\"\\\", \\\"X\\\", \\\"XX\\\", \\\"XXX\\\", \\\"XL\\\", \\\"L\\\", \\\"LX\\\", \\\"LXX\\\", \\\"LXXX\\\", \\\"XC\\\"],[\\\"\\\", \\\"C\\\", \\\"CC\\\", \\\"CCC\\\", \\\"CD\\\", \\\"D\\\", \\\"DC\\\", \\\"DCC\\\", \\\"DCCC\\\", \\\"CM\\\"], [\\\"\\\", \\\"M\\\", \\\"MM\\\"]], val=[Math.floor(Math.random()*10), Math.floor(Math.random()*10), Math.floor(Math.random()*10), Math.floor(Math.random()*3)], value=val[0]+val[1]*10+val[2]*100+val[3]*1000; if (!value) { val[0]++; value++; } return([roman[3][val[3]]+roman[2][val[2]]+roman[1][val[1]]+roman[0][val[0]], value]); }"]]></dct:description>
+        <dct:description><![CDATA["class":"h12","time":5,"input":{"digit":4,"speed":5000},"gen":"function() { var roman=[[\\\"\\\", \\\"I\\\", \\\"II\\\", \\\"III\\\", \\\"IV\\\", \\\"V\\\", \\\"VI\\\", \\\"VII\\\", \\\"VIII\\\", \\\"IX\\\"], [\\\"\\\", \\\"X\\\", \\\"XX\\\", \\\"XXX\\\", \\\"XL\\\", \\\"L\\\", \\\"LX\\\", \\\"LXX\\\", \\\"LXXX\\\", \\\"XC\\\"],[\\\"\\\", \\\"C\\\", \\\"CC\\\", \\\"CCC\\\", \\\"CD\\\", \\\"D\\\", \\\"DC\\\", \\\"DCC\\\", \\\"DCCC\\\", \\\"CM\\\"], [\\\"\\\", \\\"M\\\", \\\"MM\\\"]], val=[Math.floor(Math.random()*10), Math.floor(Math.random()*10), Math.floor(Math.random()*10), Math.floor(Math.random()*3)], value=val[0]+val[1]*10+val[2]*100+val[3]*1000; if (!value) { val[0]++; value++; } return([roman[3][val[3]]+roman[2][val[2]]+roman[1][val[1]]+roman[0][val[0]], value]); }","font":0.8]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -2450,7 +2450,7 @@
     <rdf:Description>
         <dct:identifier>ea100</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier le chiffre des unités d'un nombre compris entre 0 et 100.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":0},"gen":"function() { var max=100,a=Math.floor(Math.random()*max); return [a, a%10]}","class":"alpha","font":3,"number":10]]></dct:description>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":0},"gen":"function() { var max=100,a=Math.floor(Math.random()*max); return [a, a%10]}","class":"h12 alpha","font":3,"number":10]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel est le <b>chiffre</b> des unités ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -2463,7 +2463,7 @@
     <rdf:Description>
         <dct:identifier>eb100</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier le chiffre des dizaines d'un nombre compris entre 0 et 100.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":0},"gen":"function() { var max=100,a=(Math.random()*5>1?Math.floor(Math.random()*max):Math.floor(Math.random()*10)); return [a, Math.floor(a/10)]}","class":"alpha","font":3,"number":10]]></dct:description>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":0},"gen":"function() { var max=100,a=(Math.random()*5>1?Math.floor(Math.random()*max):Math.floor(Math.random()*10)); return [a, Math.floor(a/10)]}","class":"h12 alpha","font":3,"number":10]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel est le <b>chiffre</b> des dizaines ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -2476,7 +2476,7 @@
     <rdf:Description>
         <dct:identifier>eb1k</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier le chiffre des dizaines d'un nombre compris entre 0 et 1000.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":0},"gen":"function() { var max=[10,10,100,1000,1000,1000],a=Math.floor(Math.random()*max[Math.floor(Math.random()*max.length)]); return [a, Math.floor(a/10)%10]}","class":"alpha","font":3,"number":10]]></dct:description>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":0},"gen":"function() { var max=[10,10,100,1000,1000,1000],a=Math.floor(Math.random()*max[Math.floor(Math.random()*max.length)]); return [a, Math.floor(a/10)%10]}","class":"h12 alpha","font":3,"number":10]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel est le <b>chiffre</b> des dizaines ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -2488,7 +2488,7 @@
     <rdf:Description>
         <dct:identifier>ebs1k</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier le nombre de dizaines d'un nombre compris entre 0 et 1000.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":5000},"gen":"function() { var max=1000,a=(Math.random()*5>1?Math.floor(Math.random()*max):Math.floor(Math.random()*10)); return [a, Math.floor(a/10)]}","class":"alpha","font":3,"number":10]]></dct:description>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":5000},"gen":"function() { var max=1000,a=(Math.random()*5>1?Math.floor(Math.random()*max):Math.floor(Math.random()*10)); return [a, Math.floor(a/10)]}","class":"h12 alpha","font":3,"number":10]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel est le <b>nombre</b> de dizaines ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -2500,7 +2500,7 @@
     <rdf:Description>
         <dct:identifier>ec1k</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier le chiffre des centaines d'un nombre compris entre 0 et 1000.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":0},"gen":"function() { var max=[10,100,1000,1000,1000,1000],a=Math.floor(Math.random()*max[Math.floor(Math.random()*max.length)]); return [a, Math.floor(a/100)%10]}","class":"alpha","font":3,"number":10]]></dct:description>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":0},"gen":"function() { var max=[10,100,1000,1000,1000,1000],a=Math.floor(Math.random()*max[Math.floor(Math.random()*max.length)]); return [a, Math.floor(a/100)%10]}","class":"h12 alpha","font":3,"number":10]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel est le <b>chiffre</b> des centaines ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -2512,7 +2512,7 @@
     <rdf:Description>
         <dct:identifier>eb10k</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier le chiffre des dizaines d'un nombre compris entre 0 et 10000.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":0},"gen":"function() { var max=[100,1000,1000,10000,10000,10000],a=Math.floor(Math.random()*max[Math.floor(Math.random()*max.length)]),a2=a,i,aa=\\\"\\\"; i=0; while(a2>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a2%10).toString()+aa; a2=Math.floor(a2/10); i++; }; return [aa, Math.floor(a/10)%10]}","class":"alpha","font":2.8,"number":10]]></dct:description>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":0},"gen":"function() { var max=[100,1000,1000,10000,10000,10000],a=Math.floor(Math.random()*max[Math.floor(Math.random()*max.length)]),a2=a,i,aa=\\\"\\\"; i=0; while(a2>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a2%10).toString()+aa; a2=Math.floor(a2/10); i++; }; return [aa, Math.floor(a/10)%10]}","class":"h12 alpha","font":2.2,"number":10]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel est le <b>chiffre</b> des dizaines ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -2524,7 +2524,7 @@
     <rdf:Description>
         <dct:identifier>ebs10k</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier le nombre de dizaines d'un nombre compris entre 0 et 10000.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":3,"speed":5000},"gen":"function() { var max=[100,1000,1000,10000,10000,10000],a=Math.floor(Math.random()*max[Math.floor(Math.random()*max.length)]),a2=a,i,aa=\\\"\\\"; i=0; while(a2>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a2%10).toString()+aa; a2=Math.floor(a2/10); i++; }; return [aa, Math.floor(a/10)]}","class":"alpha","font":2.8,"number":10]]></dct:description>
+        <dct:description><![CDATA["time":0,"input":{"digit":3,"speed":5000},"gen":"function() { var max=[100,1000,1000,10000,10000,10000],a=Math.floor(Math.random()*max[Math.floor(Math.random()*max.length)]),a2=a,i,aa=\\\"\\\"; i=0; while(a2>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a2%10).toString()+aa; a2=Math.floor(a2/10); i++; }; return [aa, Math.floor(a/10)]}","class":"h12 alpha","font":2.2,"number":10]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel est le <b>nombre</b> de dizaines ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -2536,7 +2536,7 @@
     <rdf:Description>
         <dct:identifier>ec10k</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier le chiffre des centaines d'un nombre compris entre 0 et 10000.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":0},"gen":"function() { var max=[100,1000,1000,10000,10000,10000],a=Math.floor(Math.random()*max[Math.floor(Math.random()*max.length)]),a2=a,i,aa=\\\"\\\"; i=0; while(a2>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a2%10).toString()+aa; a2=Math.floor(a2/10); i++; }; return [aa, Math.floor(a/100)%10]}","class":"alpha","font":2.8,"number":10]]></dct:description>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":0},"gen":"function() { var max=[100,1000,1000,10000,10000,10000],a=Math.floor(Math.random()*max[Math.floor(Math.random()*max.length)]),a2=a,i,aa=\\\"\\\"; i=0; while(a2>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a2%10).toString()+aa; a2=Math.floor(a2/10); i++; }; return [aa, Math.floor(a/100)%10]}","class":"h12 alpha","font":2.2,"number":10]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel est le <b>chiffre</b> des centaines ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -2548,7 +2548,7 @@
     <rdf:Description>
         <dct:identifier>ecs10k</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier le nombre de centaines d'un nombre compris entre 0 et 10000.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":5000},"gen":"function() { var max=[100,1000,1000,10000,10000,10000],a=Math.floor(Math.random()*max[Math.floor(Math.random()*max.length)]),a2=a,i,aa=\\\"\\\"; i=0; while(a2>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a2%10).toString()+aa; a2=Math.floor(a2/10); i++; }; return [aa, Math.floor(a/100)]}","class":"alpha","font":2.8,"number":10]]></dct:description>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":5000},"gen":"function() { var max=[100,1000,1000,10000,10000,10000],a=Math.floor(Math.random()*max[Math.floor(Math.random()*max.length)]),a2=a,i,aa=\\\"\\\"; i=0; while(a2>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a2%10).toString()+aa; a2=Math.floor(a2/10); i++; }; return [aa, Math.floor(a/100)]}","class":"h12 alpha","font":2.2,"number":10]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel est le <b>nombre</b> de centaines ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>

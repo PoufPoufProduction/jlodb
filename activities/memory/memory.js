@@ -10,7 +10,7 @@
         score       : 1,                    // The score (from 1 to 5)
         level       : 3,                    // The beginning level
         inclevel    : true,                 // Increase the level after each success
-        debug       : false                 // Debug mode
+        debug       : true                 // Debug mode
     };
 
     // private methods

@@ -99,7 +99,7 @@
                     html+="><div class='content'>";
                     if (settings.cards[i].src.indexOf("svg")!=-1) { html+="<div class='icon'><img src='"+settings.cards[i].src+"'/></div>"; }
                     else  {
-                        html+="<p style='top:"+Math.round(10*(1-settings.font)/(2.5*settings.font))/10+"em;width:"+(1/settings.font)+"em;font-size:"+settings.font+"em;'>"+settings.cards[i].src+"</p>"; }
+                        html+="<p style='top:"+(Math.round(10*(1-settings.font)/(2.5*settings.font))/10-0.1)+"em;width:"+(1/settings.font)+"em;font-size:"+settings.font+"em;'>"+settings.cards[i].src+"</p>"; }
                     html+="<div class='icon'><img src='res/img/svginventoryicons/background/border/card03.svg'/></div>";
                     html+="</div></div>";
                     $this.find("#board").append(html);
