@@ -27,7 +27,9 @@
         "\\\[br\\\]",                               "<br/>",
         "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
         "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
-        "\\\[small\\\]([^\\\[]+)\\\[/small\\\]",    "<span style='font-size:.6em;'>$1</span>"
+        "\\\[small\\\]([^\\\[]+)\\\[/small\\\]",    "<span style='font-size:.6em;'>$1</span>",
+        "\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='icon'><img src='$1'/></div>",
+        "\\\[char\\\]([^\\\[]+)\\\[/char\\\]",      "<div class='char'><img src='$1'/></div>"
     ];
 
     // private methods
@@ -96,6 +98,7 @@
 
                 // RESIZE THE TEMPLATE
                 $this.find("#board").addClass(settings.type);
+                $this.find("#splashex").addClass(settings.type);
                 $this.css("font-size", Math.floor($this.height()/12)+"px");
                 $this.find("#interactive>div").css("font-size",settings.font+"em");
 
@@ -202,7 +205,7 @@
                 var html = "<div class='question' style='background-color:"+settings.bgcolor[0]+";color:"+settings.color[0]+";";
                 if (settings.bg[0].length) { html+="background-image:url("+settings.bg[0]+");" }
                 if (settings.len) { html+="width:"+settings.len+"em;"}
-                html+="'>"+vLabel+"</div>";
+                html+="'>"+helpers.format(vLabel)+"</div>";
                 $this.find("#interactive #question").append(html);
             }
 

@@ -1,7 +1,7 @@
 .shop                            { background-image:url("../../res/img/background/shop01.svg");}
-.shop div#splashex               { background-image:url("../../res/img/banners/operation.svg"); background-color:rgba(0,0,0,0.7); }
-.shop div#splashex h1            { position:absolute; top:21%; left:68%; font-size:1.1em; color:#222;}
-.shop div#splashex #guide        { position:absolute; top:30%; left:65%; font-size:.7em; width:30%; text-align:justify; font-style:italic; }
+.shop div#splashex               { background-image:url("../../res/img/banners/operation.svg"); }
+.shop div#splashex h1            { position:absolute; top:22%; left:66%; font-size:1em; color:#222;}
+.shop div#splashex #guide        { position:absolute; top:30%; left:65%; font-size:.6em; width:34%; text-align:justify; font-style:italic; }
 
 .shop div#board                  { height:20em; font-size:.6em; }
 
@@ -66,8 +66,7 @@
 
 .shop #pcalculator                { position:absolute; top:2%; left:5%; width:5.2em; height:8.2em; padding:0; }
 .shop #pcalculator td             { width:1.2em; overflow:hidden; cursor:pointer; text-align:center; font-weight:bold;
-                                          font-family: "Courier New" Courier monospace;
-                                          color:rgb(220,231,241); border-radius:.25em; }
+                            color:rgb(220,231,241); border-radius:.25em; }
 
 .shop #menu                             { font-size:2em; position:absolute; left:5%; top:88%; }
 .shop #menu>*                           { width:1em; height:1em; float:left; margin-left:.1em; }
@@ -104,7 +103,7 @@
                                   background-image:url("../../res/img/background/book02.svg"); background-repeat:repeat;
                                   border:2px solid black; }
 .shop #pinvoice .header         { font-size:.4em; border:1px solid black; border-width:0 0 1px 0;}
-.shop #pinvoice .header>div     { float:left; width:4em; text-align:center;}
+.shop #pinvoice .header>div     { float:left; width:4em; text-align:center; overflow:visible; }
 .shop #pinvoice .footer         { margin-top:.2em; }
 .shop #pinvoice .line           { margin:.1em 0 0 0; background-color:rgba(0,140,255,0.2); }
 .shop #pinvoice .line.s         { background-color:rgba(150,150,150,0.2); }
@@ -113,8 +112,8 @@
 .shop #pinvoice .line>div       { float:left; text-align:center; }
 .shop #pinvoice .line .label    { width:1em; height:1em; font-size:1.5em; }
 .shop #pinvoice .line .price    { font-size:0.6em; width:2.6em; margin-top:.5em; }
-.shop #pinvoice .line .quantity { font-size:0.6em; width:3em; margin-top:.6em; margin-left:.2em; background-color:red;
-                                  border-radius:.5em; color:white; }
+.shop #pinvoice .line .quantity { font-size:0.5em; width:3.6em; margin-top:.7em; margin-left:.25em; background-color:red;
+                                  border-radius:.5em; color:white; overflow:visible; }
 .shop #pinvoice .line .quantity.hide    { opacity: 0; }
 .shop #pinvoice .line .quantity:before { content:"×"; }
 .shop #pinvoice .cell           { font-size:0.6em; margin-left:.2em; margin-top:.5em; width:3.5em; }
@@ -167,11 +166,12 @@
                                   border:.1em solid #530; padding:.2em .5em; font-size:.6em; overflow:visible; cursor:pointer; }
 .shop #bubbles .talk:before     { content:""; display : block; position:absolute; font-size:.5em; background: #FE7; border:.2em solid #530; }
 .shop #bubbles .talk .content   { font-size:.8em; }
-.shop #bubbles #owner           { width:40%; height:15%; left:40%; top:5%; }
+.shop #bubbles #owner           { width:40%; min-height:15%; left:40%; top:5%; }
 .shop #bubbles #owner:before    { width:2em; height:1em;  border-radius:.5em 0 0 .5em;  left:-2em; top:8em;
                                   border-width:.2em 0 .2em .2em; }
-.shop #bubbles #client          { width:20%; height:12%; left:1%; top:7%; }
+.shop #bubbles #client          { width:20%; min-height:12%; left:1%; top:7%; }
 .shop #bubbles #client:before   { width:1em; height:1.5em;  border-radius:0 0 .5em .5em;  left:6em; top:8.7em;
                                   border-width:0 .2em .2em .2em; }
+.shop #bubbles #pre div  { display:inline-block; white-space: pre;}
 
 

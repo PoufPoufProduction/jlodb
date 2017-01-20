@@ -22,10 +22,10 @@
 
         <div id="pinvoice" class="pstack"><div>
             <div class="header">
-                <div id="slabel" class="label">Produit</div>
-                <div id="sprice" class="price">Prix</div>
-                <div id="squantity" class="quantity">Quantité</div>
-                <div id="stotal" class="total">Total</div>
+                <div id="slabel">Produit</div>
+                <div id="sprice">Prix</div>
+                <div id="squantity">Quantité</div>
+                <div id="stotal">Total</div>
             </div>
             <div id="content"></div>
             <div class="footer">
@@ -118,10 +118,10 @@
         </div>
 
 
-        <div id="bubbles" onclick="$(this).closest('.shop').shop('bubbles');"
+        <div id="bubbles" class="overflow" onclick="$(this).closest('.shop').shop('bubbles');"
                           ontouchstart="$(this).closest('.shop').shop('bubbles');event.preventDefault();">
-            <div id="owner" class="talk"><pre class="content"></pre></div>
-            <div id="client" class="talk"><pre class="content"></pre></div>
+            <div id="owner" class="talk"><div id="pre"></div></div>
+            <div id="client" class="talk"><div id="pre"></div></div>
         </div>
 
 <!-- <div id="output" style="padding-left:.1em;color:#333;font-size:0.5em;width:5em;height:40em;position:absolute;top:0;left:0;background-color:rgba(255,255,255,0.4);"></div> -->

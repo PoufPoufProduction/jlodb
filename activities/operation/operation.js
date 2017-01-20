@@ -148,7 +148,8 @@
                 if (settings.type=="*") { while(v.length<=settings.op[i].dec) { v = "0"+v; } }
 
                 for (var j=0; j<v.length; j++) {
-                    var $cell = $this.find("#c"+(j+settings.size[0]-v.length-settings.op[i].pos)+"x"+i).html(v[j]);
+                    var $cell = $this.find("#c"+(j+settings.size[0]-v.length-settings.op[i].pos)+"x"+i);
+                    $cell.html("<div>"+v[j]+"</div>");
 
                     if (settings.op[i].dec && j==v.length-settings.op[i].dec-1) {
                         if (settings.op[i].$elt) { settings.op[i].$elt.detach(); }
@@ -337,7 +338,7 @@
                         // BUILD THE CELL
                         if (add) {
                             html+="<div id='c"+i+"x"+j+"' class='value s"+Math.floor(Math.random()*2)+opclass+
-                                "' style='top:"+(top+offset)+"em;left:"+left+"em;'>"+opcontent+"</div>";
+                                "' style='top:"+(top+offset)+"em;left:"+left+"em;'><div>"+opcontent+"</div></div>";
                         }
 
                         // STATIC COMMA IF NEEDED
@@ -455,7 +456,7 @@
 
                 if (settings.key!=-1 && settings.keypad) {
                     vVal = settings.$keys[settings.key].text();
-                    settings.keypad.html((settings.keypad.html()==vVal&&settings.keypad.html().length)?"":vVal);
+                    settings.keypad.html("<div>"+((settings.keypad.html()==vVal&&settings.keypad.html().length)?"":vVal)+"</div>");
                 }
 
                 $this.find(".active").removeClass("s");
@@ -683,7 +684,7 @@
 
                     $this.find(".value.result").each(function(_index) {
                         var it = _index-settings.offset;
-                        if (it>=0 && it<settings.result.length && settings.result[it]!=$(this).html()) {
+                        if (it>=0 && it<settings.result.length && settings.result[it]!=$(this).text()) {
                             error++; $(this).addClass("wrong"); }
                     });
 
@@ -699,8 +700,8 @@
                         for (var i=settings.size[0]; i>=0; i--) {
                             $elt = this.find("#c"+i+"x"+(settings.size[1]-1));
                             if ($elt.length) {
-                                if (k>=0){ if ($elt.html()!=settings.modulo[k]) { $elt.addClass("wrong"); error++; } }
-                                else     { if ($elt.html().length) { $elt.addClass("wrong"); error++; } }
+                                if (k>=0){ if ($elt.text()!=settings.modulo[k]) { $elt.addClass("wrong"); error++; } }
+                                else     { if ($elt.text().length) { $elt.addClass("wrong"); error++; } }
                                 k--;
                             }
                         }

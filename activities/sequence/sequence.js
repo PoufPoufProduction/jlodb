@@ -216,6 +216,7 @@
                     }
                     else { $this.find("#comment").html(helpers.format(settings.comment)); }
                 }
+                
                 if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
 
                 setTimeout(function() { $this.find("#values ul").show(); helpers.move($this, true);}, 500);

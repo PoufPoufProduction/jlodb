@@ -518,9 +518,13 @@
                 settings.text.callback = _callback;
                 settings.text.available = false;
                 settings.text.time  = 0;
+                settings.text.pre     = $("<div></div>");
+                
                 $this.find("#bubbles").show();
-                $this.find("#"+_text.id+" .content").html("").parent().css("opacity",0).show().animate({opacity:0.9}, 400, function() {
-                    helpers.text.char($this); });
+                $this.find("#"+_text.id+" #pre").html(settings.text.pre).parent().css("opacity",0).show()
+                                                .animate({opacity:0.9}, 400, function() { helpers.text.char($this); });
+                    
+                settings.text.width   = $this.find("#"+_text.id+" #pre").width()*0.8;
             },
             char: function($this) {
                 var settings = helpers.settings($this);
@@ -528,8 +532,15 @@
                 if (!settings.text.time) { settings.text.time  = Date.now(); }
                 var count = Math.floor((Date.now()-settings.text.time)/30);
                 if (settings.text.count<settings.text.value.dialog[settings.text.page].length) {
-                    $this.find("#"+settings.text.value.id+" .content").append(
-                        settings.text.value.dialog[settings.text.page].substr(settings.text.count, count-settings.text.count));
+                    
+                    for (var i=settings.text.count; i<count; i++) {
+                        var c = settings.text.value.dialog[settings.text.page][i];
+                        if (c=='|' || (c==' ' && settings.text.pre.width()>settings.text.width)) {
+                            var tmp = $("<div></div>");
+                            settings.text.pre.parent().append("<br/>").append(tmp);
+                            settings.text.pre = tmp;
+                        } else { settings.text.pre.append(c); }
+                    }
                     settings.text.count = count;
                     settings.text.timerid = setTimeout(function() { helpers.text.char($this); }, 2);
                 }
@@ -539,16 +550,26 @@
                 var settings = helpers.settings($this);
                 if (settings.text.available) {
                     if (settings.text.timerid) {
-                        clearTimeout(settings.text.timerid); settings.text.timerid = 0;  settings.text.time  = 0;
-                        $this.find("#"+settings.text.value.id+" .content").html(settings.text.value.dialog[settings.text.page]);
+                        clearTimeout(settings.text.timerid); settings.text.timerid = 0; settings.text.time = 0;
+                        for (var i=settings.text.count; i<settings.text.value.dialog[settings.text.page].length; i++) {
+                            var c = settings.text.value.dialog[settings.text.page][i];
+                            if (c=='|' || (c==' ' && settings.text.pre.width()>settings.text.width)) {
+                                var tmp = $("<div></div>");
+                                settings.text.pre.parent().append("<br/>").append(tmp);
+                                settings.text.pre = tmp;
+                            } else { settings.text.pre.append(c); }
+                        }
                     }
                     else {
                         settings.text.count=0;
                         if (++settings.text.page<settings.text.value.dialog.length) {
-                            $this.find("#"+settings.text.value.id+" .content").html("");
+                            var tmp = $("<div></div>");
+                            settings.text.pre.parent().html(tmp);
+                            settings.text.pre = tmp;
                             helpers.text.char($this);
                         }
                         else {
+                            settings.text.available = false;
                             $this.find("#"+settings.text.value.id).animate({opacity:0},400, function() {
                                 $(this).hide().parent().hide();
                                 if (settings.text.callback) { settings.text.callback(); }
@@ -655,7 +676,7 @@
                     timerid         : 0,
                     it              : 0,
                     here            : "",
-                    text            : { timerid : 0, value:{}, page:0, count: 0, callback:0, time:0 },
+                    text            : { timerid : 0, value:{}, page:0, count: 0, callback:0, time:0 , width:100, pre:0 },
                     coins           : { wallet: 0 },
                     score           : 5,
                     sketchbook      : { svg:0, g:0, path:0, ratio:1,  last:[0,0], offset:[0,0]}

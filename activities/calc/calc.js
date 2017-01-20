@@ -9,7 +9,8 @@
         exercice    : [],                               // Exercice
         withbars    : true,                             // Add the bars A,B,C,D,... 1,2,3,4,...
         sp          : 0.1,                              // space between cells
-        font        : 1,                                // font size of cell
+        font        : 1,                                // cell font size
+        fontex        : 1,                              // exercice font size
         tabs        : ["calc","img","math","txt","graph"], // authorized tabs
         withtabs    : false,                            // display the tabs
         imgsize     : 2,                                // img tab font-size in em
@@ -375,6 +376,7 @@
                     for (var i in settings.exercice) { $this.find("#exercice>div").append(
                         "<p>"+(settings.exercice[i].length?helpers.format(settings.exercice[i]):"&#xA0;")+"</p>"); }
                 } else { $this.find("#exercice>div").html(helpers.format(settings.exercice)); }
+                $this.find("#exercice>div").css("font-size",settings.fontex+"em");
 
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
