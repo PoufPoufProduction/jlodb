@@ -5,9 +5,13 @@
  <style type="text/css">
     svg#compare .disable                { display:none; }
     svg#compare .box                    { fill:#553300; fill-opacity:0.95;}
-    svg#compare #pieces .result         { fill:white; fill-opacity:0; cursor:move; }
-    svg#compare #pieces .wrong .result  { fill:red; fill-opacity:0.5; }
-    svg#compare #pieces .good .result   { fill:#0F0; fill-opacity:0.5; }
+    svg#compare .pieces>g               { display:none; }
+    svg#compare .pieces .result         { fill:white; fill-opacity:0; cursor:move; }
+    svg#compare .pieces .wrong .result  { fill:red; fill-opacity:0.5; }
+    svg#compare .pieces .good .result   { fill:#0F0; fill-opacity:0.5; }
+    svg#compare .pieces circle          { fill:#3b4e5d; fill-opacity:0.5; stroke:#3b4e5d; stroke-width:3; }
+    svg#compare .pieces .wrong circle   { fill:red; }
+    svg#compare .pieces .good circle    { fill:#0F0; }
     svg#compare text                    { font-size:48px;text-anchor:middle;fill:white;font-family:Times New Roman; }
     svg#compare #up                     { display:none; }
     svg#compare #down                   { display:none; }
@@ -93,7 +97,7 @@
     </g> 
 
 </g>
-<g id="pieces">
+<g id="pieces" class="pieces">
 
     <g id="a" transform="translate(60,125) "><g class="scale"><g class="rot">
         <use x="0" y="0" xlink:href="#tp"/>
@@ -120,6 +124,67 @@
         <text y="16"></text>
         <rect width="100" height="50" ry="7.00" x="-50" y="-25" class="result"/>
     </g></g></g>
+</g>
+
+<g id="rdown" class="pieces">
+
+    <g id="ad" transform="translate(60,125) "><g class="scale"><g class="rot">
+        <use x="0" y="0" xlink:href="#tp"/>
+        <rect width="100" height="50" ry="7.00" x="-50" y="-25" class="result"/>
+        <circle cx="0" cy="0" r="40"/>
+    </g></g></g>
+    <g id="bd" transform="translate(190,125) "><g class="scale"><g class="rot">
+        <use x="0" y="0" xlink:href="#tp"/>
+        <rect width="100" height="50" ry="7.00" x="-50" y="-25" class="result"/>
+        <circle cx="0" cy="0" r="30"/>
+    </g></g></g>
+    <g id="cd" transform="translate(320,125) "><g class="scale"><g class="rot">
+        <use x="0" y="0" xlink:href="#tp"/>
+        <rect width="100" height="50" ry="7.00" x="-50" y="-25" class="result"/>
+        <circle cx="0" cy="0" r="20"/>
+    </g></g></g>
+    <g id="dd" transform="translate(450,125) "><g class="scale"><g class="rot">
+        <use x="0" y="0" xlink:href="#tp"/>
+        <rect width="100" height="50" ry="7.00" x="-50" y="-25" class="result"/>
+        <circle cx="0" cy="0" r="10"/>
+    </g></g></g>
+    <g id="ed" transform="translate(580,125) "><g class="scale"><g class="rot">
+        <use x="0" y="0" xlink:href="#tp"/>
+        <rect width="100" height="50" ry="7.00" x="-50" y="-25" class="result"/>
+        <circle cx="0" cy="0" r="5"/>
+    </g></g></g>
 
 </g>
+
+<g id="rup" class="pieces">
+
+    <g id="au" transform="translate(60,125) "><g class="scale"><g class="rot">
+        <use x="0" y="0" xlink:href="#tp"/>
+        <rect width="100" height="50" ry="7.00" x="-50" y="-25" class="result"/>
+        <circle cx="0" cy="0" r="5"/>
+    </g></g></g>
+    <g id="bu" transform="translate(190,125) "><g class="scale"><g class="rot">
+        <use x="0" y="0" xlink:href="#tp"/>
+        <rect width="100" height="50" ry="7.00" x="-50" y="-25" class="result"/>
+        <circle cx="0" cy="0" r="10"/>
+    </g></g></g>
+    <g id="cu" transform="translate(320,125) "><g class="scale"><g class="rot">
+        <use x="0" y="0" xlink:href="#tp"/>
+        <rect width="100" height="50" ry="7.00" x="-50" y="-25" class="result"/>
+        <circle cx="0" cy="0" r="20"/>
+    </g></g></g>
+    <g id="du" transform="translate(450,125) "><g class="scale"><g class="rot">
+        <use x="0" y="0" xlink:href="#tp"/>
+        <rect width="100" height="50" ry="7.00" x="-50" y="-25" class="result"/>
+        <circle cx="0" cy="0" r="30"/>
+    </g></g></g>
+    <g id="eu" transform="translate(580,125) "><g class="scale"><g class="rot">
+        <use x="0" y="0" xlink:href="#tp"/>
+        <rect width="100" height="50" ry="7.00" x="-50" y="-25" class="result"/>
+        <circle cx="0" cy="0" r="40"/>
+    </g></g></g>
+
+</g>
+
+
 </svg>

@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="100%" height="100%" viewBox="0 0 640 480" id="array6x4">
+<defs>
+ <style type="text/css">
+    svg#array6x4 .sym                     { fill:none; stroke:red; stroke-width:2; }
+    svg#array6x4.small text               { font-size:16px; }
+    svg#array6x4.large text               { font-size:64px; }
+    svg#array6x4 text                     { font-size:32px;text-anchor:middle; }
+    svg#array6x4 .hl                { fill:white; fill-opacity:0.2; }
+    svg#array6x4 #bg rect                 { fill:white; fill-opacity:0.5; stroke:gray; stroke-width:0.5; }
+    svg#array6x4 #bg text                   { fill:gray;opacity:0.7; }
+    svg#array6x4 #pieces>g                { cursor:move; display:none; }
+    svg#array6x4 #pieces .border          { fill:gray; }
+    svg#array6x4 #pieces .bg              { fill:#ffccaa; }
+    svg#array6x4 #pieces .wrong .bg   { fill:red; fill-opacity:0.5; }
+    svg#array6x4 #pieces .good .bg    { fill:#0F0; fill-opacity:0.5; }
+    svg#array6x4 #pieces text             { fill:white;opacity:0.7; }
+    svg#array6x4 #target text.bg          { fill:#ccc; }
+ </style>
+</defs>
+
+<g id="bg">
+    <g transform="translate(50,80)">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <text y="8" id="t00"></text>
+        <image id="i00" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+    <g transform="translate(140,80)">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <text y="8" id="t10"></text>
+        <image id="i10" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+    <g transform="translate(230,80)">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <text y="8" id="t20"></text>
+        <image id="i20" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+    <g transform="translate(320,80)">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <text y="8" id="t30"></text>
+        <image id="i30" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+    <g transform="translate(410,80)">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <text y="8" id="t40"></text>
+        <image id="i40" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+    <g transform="translate(500,80)">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <text y="8" id="t50"></text>
+        <image id="i50" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+    <g transform="translate(50,170)">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <text y="8" id="t01"></text>
+        <image id="i01" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+    <g transform="translate(140,170)">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <text y="8" id="t11"></text>
+        <image id="i11" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+    <g transform="translate(230,170)">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <text y="8" id="t21"></text>
+        <image id="i21" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+    <g transform="translate(320,170)">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <text y="8" id="t31"></text>
+        <image id="i31" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+    <g transform="translate(410,170)">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <text y="8" id="t41"></text>
+        <image id="i41" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+    <g transform="translate(500,170)">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <text y="8" id="t51"></text>
+        <image id="i51" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+    <g transform="translate(50,260)">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <text y="8" id="t02"></text>
+        <image id="i02" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+    <g transform="translate(140,260)">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <text y="8" id="t12"></text>
+        <image id="i12" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+    <g transform="translate(230,260)">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <text y="8" id="t22"></text>
+        <image id="i22" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+    <g transform="translate(320,260)">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <text y="8" id="t32"></text>
+        <image id="i32" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+    <g transform="translate(410,260)">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <text y="8" id="t42"></text>
+        <image id="i42" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+    <g transform="translate(500,260)">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <text y="8" id="t52"></text>
+        <image id="i52" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+    <g transform="translate(50,350)">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <text y="8" id="t03"></text>
+        <image id="i03" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+    <g transform="translate(140,350)">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <text y="8" id="t13"></text>
+        <image id="i13" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+    <g transform="translate(230,350)">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <text y="8" id="t23"></text>
+        <image id="i23" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+    <g transform="translate(320,350)">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <text y="8" id="t33"></text>
+        <image id="i33" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+    <g transform="translate(410,350)">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <text y="8" id="t43"></text>
+        <image id="i43" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+    <g transform="translate(500,350)">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <text y="8" id="t53"></text>
+        <image id="i53" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+
+    <path d="M 275 0 L 275 640" class="sym"/>
+    <path d="M 0 215 L 640 215" class="sym"/>
+    <rect x="545" y="0" width="95" height="480" class="hl"/> 
+</g>
+
+<g id="pieces">
+
+    <g id="p00" transform="translate(50,80)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8"></text>
+        <image transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="p10" transform="translate(140,80)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8"></text>
+        <image transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="p20" transform="translate(230,80)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8"></text>
+        <image transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="p30" transform="translate(320,80)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8"></text>
+        <image transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="p40" transform="translate(410,80)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8"></text>
+        <image transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="p50" transform="translate(500,80)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8"></text>
+        <image transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="p01" transform="translate(50,150)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8"></text>
+        <image transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="p11" transform="translate(140,150)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8"></text>
+        <image transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="p21" transform="translate(230,150)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8"></text>
+        <image transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="p31" transform="translate(320,150)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8"></text>
+        <image transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="p41" transform="translate(410,150)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8"></text>
+        <image transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="p51" transform="translate(500,150)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8"></text>
+        <image transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="p02" transform="translate(50,240)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8"></text>
+        <image transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="p12" transform="translate(140,240)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8"></text>
+        <image transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="p22" transform="translate(230,240)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8"></text>
+        <image transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="p32" transform="translate(320,240)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8"></text>
+        <image transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="p42" transform="translate(410,240)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8"></text>
+        <image transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="p52" transform="translate(500,240)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8"></text>
+        <image transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="p03" transform="translate(50,350)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8"></text>
+        <image transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="p13" transform="translate(140,350)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8"></text>
+        <image transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="p23" transform="translate(230,350)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8"></text>
+        <image transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="p33" transform="translate(320,350)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8"></text>
+        <image transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="p43" transform="translate(410,350)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8"></text>
+        <image transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="p53" transform="translate(500,350)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8"></text>
+        <image transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+    
+    
+    
+
+    <g id="s00" transform="translate(50,80)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8" transform="scale(-1,1)"></text>
+        <image transform="matrix(-1,0,0,1,36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="s10" transform="translate(140,80)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8" transform="scale(-1,1)"></text>
+        <image transform="matrix(-1,0,0,1,36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="s20" transform="translate(230,80)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8" transform="scale(-1,1)"></text>
+        <image transform="matrix(-1,0,0,1,36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="s30" transform="translate(320,80)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8" transform="scale(-1,1)"></text>
+        <image transform="matrix(-1,0,0,1,36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="s40" transform="translate(410,80)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8" transform="scale(-1,1)"></text>
+        <image transform="matrix(-1,0,0,1,36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="s50" transform="translate(500,80)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8" transform="scale(-1,1)"></text>
+        <image transform="matrix(-1,0,0,1,36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="s01" transform="translate(50,150)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8" transform="scale(-1,1)"></text>
+        <image transform="matrix(-1,0,0,1,36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="s11" transform="translate(140,150)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8" transform="scale(-1,1)"></text>
+        <image transform="matrix(-1,0,0,1,36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="s21" transform="translate(230,150)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8" transform="scale(-1,1)"></text>
+        <image transform="matrix(-1,0,0,1,36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="s31" transform="translate(320,150)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8" transform="scale(-1,1)"></text>
+        <image transform="matrix(-1,0,0,1,36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="s41" transform="translate(410,150)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8" transform="scale(-1,1)"></text>
+        <image transform="matrix(-1,0,0,1,36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="s51" transform="translate(500,150)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8" transform="scale(-1,1)"></text>
+        <image transform="matrix(-1,0,0,1,36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="s02" transform="translate(50,240)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8" transform="scale(-1,1)"></text>
+        <image transform="matrix(-1,0,0,1,36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="s12" transform="translate(140,240)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8" transform="scale(-1,1)"></text>
+        <image transform="matrix(-1,0,0,1,36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="s22" transform="translate(230,240)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8" transform="scale(-1,1)"></text>
+        <image transform="matrix(-1,0,0,1,36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="s32" transform="translate(320,240)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8" transform="scale(-1,1)"></text>
+        <image transform="matrix(-1,0,0,1,36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="s42" transform="translate(410,240)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8" transform="scale(-1,1)"></text>
+        <image transform="matrix(-1,0,0,1,36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="s52" transform="translate(500,240)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8" transform="scale(-1,1)"></text>
+        <image transform="matrix(-1,0,0,1,36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="s03" transform="translate(50,350)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8" transform="scale(-1,1)"></text>
+        <image transform="matrix(-1,0,0,1,36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="s13" transform="translate(140,350)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8" transform="scale(-1,1)"></text>
+        <image transform="matrix(-1,0,0,1,36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="s23" transform="translate(230,350)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8" transform="scale(-1,1)"></text>
+        <image transform="matrix(-1,0,0,1,36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="s33" transform="translate(320,350)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8" transform="scale(-1,1)"></text>
+        <image transform="matrix(-1,0,0,1,36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="s43" transform="translate(410,350)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8" transform="scale(-1,1)"></text>
+        <image transform="matrix(-1,0,0,1,36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+    <g id="s53" transform="translate(500,350)"><g class="scale"><g class="rot">
+        <rect x="-40" y="-40" height="80" width="80" rx="10" ry="10" class="border"/>
+        <rect x="-36" y="-36" height="72" width="72" rx="6.6" ry="6.6" class="bg"/>
+        <text y="8" transform="scale(-1,1)"></text>
+        <image transform="matrix(-1,0,0,1,36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+    </g>
+        <path d="M -30 -40 C -35.54 -40 -40 -35.54 -40 -30 L -40 -12.71 A 60 23.08 0 0 0 0 -6.8 A 60 23.08 0 0 0 40 -12.72 L 40 -30 C 40 -35.54 35.54 -40 30 -40 L -30 -40 z " class="hl"/>
+    </g></g>
+
+
+
+</g>
+
+
+
+
+
+
+
+</svg>

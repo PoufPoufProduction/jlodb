@@ -6,13 +6,13 @@
         template    : "template.html",                          // Activity's html template
         css         : "style.css",                              // Activity's css style sheet
         lang        : "en-US",                                  // Current localization
-        constraint  : [0,0],                                    // Grid for pieces
+        constraint  : [0,0],                                    // Grid for pgroup
         rotation    : 0,                                        // Rotation step
         boundaries  : [-1,-1,-1,-1],                            // Piece move boundaries
-        scale       : 1.2,                                      // The move scale of the pieces
+        scale       : 1.2,                                      // The move scale of the pgroup
         radius      : 20,                                       // The magnetic radius
         zhandling   : true,                                     // Handle the z-index
-        pieces      : "pieces",                                 // The pieces group name
+        pieces      : "pieces",                                 // The pgroup group name
         errratio    : 1,                                        // Error ratio
         number      : 1,                                        // Number of puzzle
         fontex      : 1,                                        // Exercice font
@@ -174,9 +174,10 @@
         },
         rebuild: function($this) {
             var settings = helpers.settings($this);
+            var pgroup = $.isArray(settings.pieces)?settings.pieces[settings.puzzleid-1]:settings.pieces;
             for (var i in settings.origin.translate) {
-                $("#"+settings.pieces+">g#"+settings.origin.translate[i][0],settings.svg.root()).attr("transform",
-                    "translate("+settings.origin.translate[i][1]+","+settings.origin.translate[i][2]+")");
+                $("#"+pgroup+">g#"+settings.origin.translate[i][0],settings.svg.root()).attr("transform",
+                    "translate("+settings.origin.translate[i][1]+","+settings.origin.translate[i][2]+")").hide();
             }
             helpers.build($this);
         },
@@ -190,9 +191,9 @@
             $this.find(".t").hide();
             var inituse               = [];
             var ids                   = [];
-            var nbpieces              = 0;
+            var nbpgroup              = 0;
+            var pgroup                = $.isArray(settings.pieces)?settings.pieces[settings.puzzleid]:settings.pieces;
             
-
             // AUTOMATIC GENERATION
             if (settings.gen) {
                 var gen = eval('('+settings.gen+')')(settings.puzzleid);
@@ -239,22 +240,22 @@
             // GET PIECES AND NB PIECES
             if (settings.id) {
                 ids = ($.isArray(settings.id[0]))?settings.id[settings.puzzleid]:settings.id;
-                nbpieces = ids.length;
+                nbpgroup = ids.length;
             }
-            else { nbpieces = $("#"+settings.pieces+">g",settings.svg.root()).length; }
+            else { nbpgroup = $("#"+pgroup+">g",settings.svg.root()).length; }
             if (settings.values) {
                 var values = ($.isArray(settings.values))?settings.values[settings.puzzleid]:settings.values;
                 for (var i in values) { ids.push(i); }
-                nbpieces = ids.length;
+                nbpgroup = ids.length;
             }
-            for (var i=0; i<nbpieces; i++) { inituse.push(false); }
+            for (var i=0; i<nbpgroup; i++) { inituse.push(false); }
 
-            $("#"+settings.pieces+">g",settings.svg.root()).unbind('touchstart mousedown');
+            $("#"+pgroup+">g",settings.svg.root()).unbind('touchstart mousedown');
 
             // PARSE ALL THE PIECES
             var count = 0;
             
-            $("#"+settings.pieces+">g",settings.svg.root()).each(function(_index) {
+            $("#"+pgroup+">g",settings.svg.root()).each(function(_index) {
                 $(this).attr("class","");
                 var vOK = true;
                 
@@ -302,6 +303,7 @@
 
                         if (!settings.timer.id) { settings.timer.id = setTimeout(function() { helpers.timer($this); }, 1000); }
                         if (settings.interactive) {
+                            var pgroup  = $.isArray(settings.pieces)?settings.pieces[settings.puzzleid]:settings.pieces;
                             settings.elt.id = this;
                             settings.elt.translate = [0,0];
                             if ($(this).attr("transform")) {
@@ -318,7 +320,7 @@
                                 $(this).find(".scale").attr("transform","scale("+settings.scale+")");
                             }
 
-                            if (settings.zhandling) { $(this).detach().appendTo($("#"+settings.pieces,settings.svg.root())); }
+                            if (settings.zhandling) { $(this).detach().appendTo($("#"+pgroup,settings.svg.root())); }
 
                             var now = new Date();
                             settings.elt.tick = now.getTime();
@@ -360,10 +362,10 @@
             });
 
             // MIX THE PIECES Z-ORDER
-            var nb = $("#"+settings.pieces+">g",settings.svg.root()).length;
+            var nb = $("#"+pgroup+">g",settings.svg.root()).length;
             for (var i=0; i<nb; i++) {
                 var idx = Math.floor(Math.random()*nb);
-                $($("#"+settings.pieces+">g",settings.svg.root()).get(idx)).detach().appendTo($("#"+settings.pieces,settings.svg.root()));
+                $($("#"+pgroup+">g",settings.svg.root()).get(idx)).detach().appendTo($("#"+pgroup,settings.svg.root()));
             }
 
             // BUILD THE MAGNETIC ZONES
@@ -473,6 +475,7 @@
         },
         submit: function($this) {
             var settings = helpers.settings($this);
+            var pgroup = $.isArray(settings.pieces)?settings.pieces[settings.puzzleid]:settings.pieces;
             var wrongs =0;
             if (settings.interactive) {
                 settings.interactive = false;
@@ -496,7 +499,7 @@
                     for (var p in pieces) {
                         var isgood = false;
 
-                        var $piece = $("#"+settings.pieces+">g#"+pieces[p],settings.svg.root());
+                        var $piece = $("#"+pgroup+">g#"+pieces[p],settings.svg.root());
                         if ($piece.attr("transform")) {
                             var reg = new RegExp("[( ),]","g");
                             var vSplit = $piece.attr("transform").split(reg);
@@ -524,7 +527,7 @@
                 if (settings.decoyfx && settings.decoys) {
                     var decoys = ($.isArray(settings.decoys[0]))?settings.decoys[settings.puzzleid%settings.decoys.length]:settings.decoys;
                     for (var i in decoys) {
-                        var $piece = $("#"+settings.pieces+">g#"+decoys[i],settings.svg.root());
+                        var $piece = $("#"+pgroup+">g#"+decoys[i],settings.svg.root());
                         var isActualDecoy = false;
                         for (var j in settings.origin.decoys) { if (settings.origin.decoys[j]==decoys[i]) { isActualDecoy=true; } }
                         if (isActualDecoy && $piece.attr("transform")) {
@@ -542,7 +545,7 @@
                 }
 
                 for (var i in settings.origin.translate) {
-                    var $piece = $("#"+settings.pieces+">g#"+settings.origin.translate[i][0],settings.svg.root());
+                    var $piece = $("#"+pgroup+">g#"+settings.origin.translate[i][0],settings.svg.root());
                     if (!$piece.attr("class").length) { $piece.attr("class","wrong"); }
                 }
 
