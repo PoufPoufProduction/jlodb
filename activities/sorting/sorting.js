@@ -205,7 +205,7 @@
                 var html = "<div class='question' style='background-color:"+settings.bgcolor[0]+";color:"+settings.color[0]+";";
                 if (settings.bg[0].length) { html+="background-image:url("+settings.bg[0]+");" }
                 if (settings.len) { html+="width:"+settings.len+"em;"}
-                html+="'>"+helpers.format(vLabel)+"</div>";
+                html+="'>"+helpers.format(vLabel.toString())+"</div>";
                 $this.find("#interactive #question").append(html);
             }
 
