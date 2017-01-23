@@ -17,6 +17,7 @@
         screenc     : false,                    // Clear the screen between question
         strict      : false,                    // Strictly test the values (Not sure is still mandatory)
         negative    : false,                    // Accept negative value
+        fontex      : 1,                        // exercice font
         debug       : true                     // Debug mode
     };
 
@@ -26,7 +27,11 @@
         "\\\[br\\\]",                               "<br/>",
         "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
         "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
-        "\\\[small\\\]([^\\\[]+)\\\[/small\\\]",    "<span style='font-size:.6em;'>$1</span>"
+        "\\\[small\\\]([^\\\[]+)\\\[/small\\\]",    "<span style='font-size:.6em;'>$1</span>",
+        "\\\[img\\\]([^\\\[]+)\\\[/img\\\]",        "<img src='$1'/>",
+        "\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='icon'>$1</div>",
+        "\\\[char\\\]([^\\\[]+)\\\[/char\\\]",      "<div class='char'>$1</div>",
+        "\\\[svg48\\\]([^\\\[]+)\\\[/svg48\\\]",    "<svg xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svg='http://www.w3.org/2000/svg' xmlns='http://www.w3.org/2000/svg' version='1.0' viewBox='0 0 48 48'>$1</svg>"
     ];
 
     // private methods
@@ -182,7 +187,7 @@
                     vValue.question = vValue.question.toString().replace(vRegExpMult,"×");
 
                     // Fill the dom element, use a regexp if needed
-                    if (vRegexp)    { $li.html(vValue.question.replace(vRegexp, settings.regexp.input.to)); }
+                    if (vRegexp)    { $li.html(helpers.format(vValue.question.replace(vRegexp, settings.regexp.input.to))); }
                     else            { $li.html(helpers.format(vValue.question)); }
 
                     // Store the question
@@ -209,13 +214,15 @@
 
                 // Locale handling
                 $this.find("h1#label").html(settings.label);
-                if (settings.comment) {
-                    if ($.isArray(settings.comment)) {
-                        $this.find("#comment").html("");
-                        for (var i in settings.comment) { $this.find("#comment").append("<p>"+helpers.format(settings.comment[i])+"</p>"); }
+                if (settings.comment && !settings.exercice ) { settings.exercice = settings.comment; } // OLD DEFINITION (TO REMOVE IN DATA)
+                if (settings.exercice) {
+                    if ($.isArray(settings.exercice)) {
+                        $this.find("#exercice>div").html("");
+                        for (var i in settings.exercice) { $this.find("#exercice>div").append("<p>"+helpers.format(settings.exercice[i])+"</p>"); }
                     }
-                    else { $this.find("#comment").html(helpers.format(settings.comment)); }
+                    else { $this.find("#exercice>div").html(helpers.format(settings.exercice)); }
                 }
+                $this.find("#exercice>div").css("font-size",settings.fontex+"em");
                 
                 if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
 

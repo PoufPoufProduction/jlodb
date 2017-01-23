@@ -2,13 +2,67 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dct="http://purl.org/dc/terms/">
 
+    <!-- round -->    
+         
+    <rdf:Description>
+         <dct:identifier>r1</dct:identifier>
+         <dct:title xml:lang="fr-FR">Différencier, sans contrainte de temps, la taille de 2 disques.</dct:title>
+         <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["=","&ne;"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var eq=(Math.floor(Math.random()*2.2)==0),ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>circle {fill:#08F;stroke:white;stroke-width:1;}.wrong circle {fill:red;}.good circle {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*5)+1,val2=eq?val1:Math.floor(Math.random()*5)+1;ret+=\\\"<circle cx='24' cy='24' r='\\\"+Math.floor(23*val1/5)+\\\"'/>\\\"; ret+=\\\"</svg></div><div style='width:1.1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>circle {fill:#08F;stroke:white;stroke-width:1;}.wrong circle {fill:red;}.good circle {fill:green;}</style></def>\\\"; ret+=\\\"<circle cx='24' cy='24' r='\\\"+Math.floor(23*val2/5)+\\\"'/>\\\"; ret+=\\\"</svg></div>\\\"; return [ret, val1==val2?'=':'&ne;'];}","class":"alpha left p02","font":1.7]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Comparez[/b] les 2 ronds.","[b]=[/b] pour [b]égal[/b] et [b]&ne;[/b] pour [b]différent[/b]"],"fontex":1.4]]></dct:description>
+         <dct:extent>1</dct:extent>
+         <dct:subject>numeration</dct:subject>
+         <dct:educationLevel>2</dct:educationLevel>
+         <dct:type>2</dct:type>
+         <dct:alternative>r1</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
+    </rdf:Description>
+         
+    <rdf:Description>
+         <dct:identifier>r2</dct:identifier>
+         <dct:title xml:lang="fr-FR">Différencier, sans contrainte de temps, la taille de 2 disques (sans égalité).</dct:title>
+         <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["<",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>circle {fill:#08F;stroke:white;stroke-width:1;}.wrong circle {fill:red;}.good circle {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*5)+1,val2; do { val2=Math.floor(Math.random()*5)+1; } while(val1==val2);ret+=\\\"<circle cx='24' cy='24' r='\\\"+Math.floor(23*val1/5)+\\\"'/><text transform='translate(24,26)' style='font-size:8px;fill:white;font-weight:bold;text-anchor:middle;'>A</text>\\\"; ret+=\\\"</svg></div><div style='width:1.1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>circle {fill:#08F;stroke:white;stroke-width:1;}.wrong circle {fill:red;}.good circle {fill:green;}</style></def>\\\"; ret+=\\\"<circle cx='24' cy='24' r='\\\"+Math.floor(23*val2/5)+\\\"'/><text transform='translate(24,26)' style='font-size:8px;fill:white;font-weight:bold;text-anchor:middle;'>B</text>\\\"; ret+=\\\"</svg></div>\\\"; return [ret, val1==val2?'=':(val1<val2?'<':'>')];}","class":"alpha left p02","font":1.7]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Comparez[/b] les 2 ronds.","[b]A&lt;B[/b] se dit '[red]A est plus petit que B[/red]'.","[b]A&gt;B[/b] se dit '[red]A est plus grand que B[/red]'."],"fontex":1.4]]></dct:description>
+         <dct:extent>1</dct:extent>
+         <dct:subject>numeration</dct:subject>
+         <dct:educationLevel>2</dct:educationLevel>
+         <dct:type>2</dct:type>
+         <dct:alternative>r1</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
+    </rdf:Description>
+         
+    <rdf:Description>
+         <dct:identifier>r3</dct:identifier>
+         <dct:title xml:lang="fr-FR">Différencier, sans contrainte de temps, la taille de 2 disques (avec égalité possible).</dct:title>
+         <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var eq=(Math.floor(Math.random()*3.3)==0),ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>circle {fill:#08F;stroke:white;stroke-width:1;}.wrong circle {fill:red;}.good circle {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*5)+1,val2=eq?val1:Math.floor(Math.random()*5)+1; ret+=\\\"<circle cx='24' cy='24' r='\\\"+Math.floor(23*val1/5)+\\\"'/>\\\"; ret+=\\\"</svg></div><div style='width:1.1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>circle {fill:#08F;stroke:white;stroke-width:1;}.wrong circle {fill:red;}.good circle {fill:green;}</style></def>\\\"; ret+=\\\"<circle cx='24' cy='24' r='\\\"+Math.floor(23*val2/5)+\\\"'/>\\\"; ret+=\\\"</svg></div>\\\"; return [ret, val1==val2?'=':(val1<val2?'<':'>')];}","class":"alpha left p02","font":1.7]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Comparez[/b] les 2 ronds."],"fontex":1.4]]></dct:description>
+         <dct:extent>1</dct:extent>
+         <dct:subject>numeration</dct:subject>
+         <dct:educationLevel>2</dct:educationLevel>
+         <dct:type>2</dct:type>
+         <dct:alternative>r1</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
+    </rdf:Description>
+         
+    <rdf:Description>
+         <dct:identifier>r4</dct:identifier>
+         <dct:title xml:lang="fr-FR">Différencier, sans contrainte de temps, la taille de 2 disques (avec égalité possible et légende numérique).</dct:title>
+         <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var eq=(Math.floor(Math.random()*3.3)==0),ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>circle {fill:#08F;stroke:white;stroke-width:1;}.wrong circle {fill:red;}.good circle {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*5)+1,val2=eq?val1:Math.floor(Math.random()*5)+1; ret+=\\\"<circle cx='24' cy='24' r='\\\"+Math.floor(23*val1/5)+\\\"'/><text transform='translate(24,26)' style='font-size:8px;fill:white;font-weight:bold;text-anchor:middle;'>\\\"+val1+\\\"</text>\\\"; ret+=\\\"</svg></div><div style='width:1.1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>circle {fill:#08F;stroke:white;stroke-width:1;}.wrong circle {fill:red;}.good circle {fill:green;}</style></def>\\\"; ret+=\\\"<circle cx='24' cy='24' r='\\\"+Math.floor(23*val2/5)+\\\"'/><text transform='translate(24,26)' style='font-size:8px;fill:white;font-weight:bold;text-anchor:middle;'>\\\"+val2+\\\"</text>\\\"; ret+=\\\"</svg></div>\\\"; return [ret, val1==val2?'=':(val1<val2?'<':'>')];}","class":"alpha left p02","font":1.7]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Comparez[/b] les 2 ronds."],"fontex":1.4]]></dct:description>
+         <dct:extent>1</dct:extent>
+         <dct:subject>numeration</dct:subject>
+         <dct:educationLevel>2</dct:educationLevel>
+         <dct:type>2</dct:type>
+         <dct:alternative>r1</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
+    </rdf:Description>
+         
     <!-- Stack -->
 
     <rdf:Description>
          <dct:identifier>s1</dct:identifier>
          <dct:title xml:lang="fr-FR">Différencier, sans contrainte de temps, la hauteur de 2 rectangles.</dct:title>
          <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["=","&ne;"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var eq=(Math.floor(Math.random()*2.2)==0),ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:1;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*5)+1,val2=eq?val1:Math.floor(Math.random()*5)+1;ret+=\\\"<rect x='1' y='\\\"+Math.floor(1+18*(5-val1)/5)+\\\"' width='46' height='\\\"+Math.floor(46*val1/5)+\\\"'/>\\\"; ret+=\\\"</svg></div><div style='width:1.1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:1;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\"; ret+=\\\"<rect x='1' y='\\\"+Math.floor(1+18*(5-val2)/5)+\\\"' width='46' height='\\\"+Math.floor(46*val2/5)+\\\"'/>\\\"; ret+=\\\"</svg></div>\\\"; return [ret, val1==val2?'=':'&ne;'];}","class":"alpha left p02","font":1.7]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":["[b]Comparez[/b] la [red]hauteur[/red] des rectangles.","[b]=[/b] pour [b]égal[/b] et [b]&ne;[/b] pour [b]différent[/b]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Comparez[/b] la [red]hauteur[/red] des rectangles.","[b]=[/b] pour [b]égal[/b] et [b]&ne;[/b] pour [b]différent[/b]"],"fontex":1.3]]></dct:description>
          <dct:extent>1</dct:extent>
          <dct:subject>numeration</dct:subject>
          <dct:educationLevel>2</dct:educationLevel>
@@ -20,8 +74,8 @@
     <rdf:Description>
         <dct:identifier>s2</dct:identifier>
         <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, la hauteur de 2 rectangles (sans égalité).</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["<",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:1;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*5)+1,val2; do { val2=Math.floor(Math.random()*5)+1; } while(val1==val2); ret+=\\\"<rect x='1' y='\\\"+Math.floor(1+18*(5-val1)/5)+\\\"' width='46' height='\\\"+Math.floor(46*val1/5)+\\\"'/>\\\"; ret+=\\\"</svg></div><div style='width:1.1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:1;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\"; ret+=\\\"<rect x='1' y='\\\"+Math.floor(1+18*(5-val2)/5)+\\\"' width='46' height='\\\"+Math.floor(46*val2/5)+\\\"'/>\\\"; ret+=\\\"</svg></div>\\\"; return [ret,  val1==val2?'=':(val1<val2?'<':'>')];}","class":"alpha left p02","font":1.7]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":["[b]Comparez[/b] la [red]hauteur[/red] des rectangles.","<b>A&lt;B</b> se dit '<b>A est plus petit que B</b>'.","<b>A&gt;B</b> se dit '<b>A est plus grand que B</b>'."]]]></dct:description>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["<",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:1;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*5)+1,val2; do { val2=Math.floor(Math.random()*5)+1; } while(val1==val2); ret+=\\\"<rect x='1' y='\\\"+Math.floor(1+18*(5-val1)/5)+\\\"' width='46' height='\\\"+Math.floor(46*val1/5)+\\\"'/><text transform='translate(24,22)' style='font-size:8px;fill:white;font-weight:bold;text-anchor:middle;'>A</text>\\\"; ret+=\\\"</svg></div><div style='width:1.1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:1;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\"; ret+=\\\"<rect x='1' y='\\\"+Math.floor(1+18*(5-val2)/5)+\\\"' width='46' height='\\\"+Math.floor(46*val2/5)+\\\"'/><text transform='translate(24,22)' style='font-size:8px;fill:white;font-weight:bold;text-anchor:middle;'>B</text>\\\"; ret+=\\\"</svg></div>\\\"; return [ret,  val1==val2?'=':(val1<val2?'<':'>')];}","class":"alpha left p02","font":1.7]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Comparez[/b] la [red]hauteur[/red] des rectangles.","[b]A&lt;B[/b] se dit '[red]A est plus petit que B[/red]'.","[b]A&gt;B[/b] se dit '[red]A est plus grand que B[/red]'."],"fontex":1.3]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -34,7 +88,7 @@
         <dct:identifier>s3</dct:identifier>
         <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, la hauteur de 2 rectangles (avec égalité possible).</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var eq=(Math.floor(Math.random()*3.3)==0),ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:1;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*5)+1,val2=eq?val1:Math.floor(Math.random()*5)+1;ret+=\\\"<rect x='1' y='\\\"+Math.floor(1+18*(5-val1)/5)+\\\"' width='46' height='\\\"+Math.floor(46*val1/5)+\\\"'/>\\\"; ret+=\\\"</svg></div><div style='width:1.1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:1;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\"; ret+=\\\"<rect x='1' y='\\\"+Math.floor(1+18*(5-val2)/5)+\\\"' width='46' height='\\\"+Math.floor(46*val2/5)+\\\"'/>\\\"; ret+=\\\"</svg></div>\\\"; return [ret,  val1==val2?'=':(val1<val2?'<':'>')];}","class":"alpha left p02","font":1.7]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"[b]Comparez[/b] la [red]hauteur[/red] des rectangles."]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Comparez[/b] la [red]hauteur[/red] des rectangles.","fontex":1.3]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -47,7 +101,7 @@
         <dct:identifier>se3a</dct:identifier>
         <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, la hauteur de 2 rectangles (avec égalité possible).</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["≤",">"],"css":{"height":"1.2em"}},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var eq=(Math.floor(Math.random()*3.3)==0),ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:1;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*5)+1,val2=eq?val1:Math.floor(Math.random()*5)+1;ret+=\\\"<rect x='1' y='\\\"+Math.floor(1+18*(5-val1)/5)+\\\"' width='46' height='\\\"+Math.floor(46*val1/5)+\\\"'/>\\\"; ret+=\\\"</svg></div><div style='width:1.1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:1;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\"; ret+=\\\"<rect x='1' y='\\\"+Math.floor(1+18*(5-val2)/5)+\\\"' width='46' height='\\\"+Math.floor(46*val2/5)+\\\"'/>\\\"; ret+=\\\"</svg></div>\\\"; return [ret, val1<=val2?'≤':'>'];}","class":"alpha left p02","font":1.7]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"[b]Comparez[/b] la [red]hauteur[/red] des rectangles."]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Comparez[/b] la [red]hauteur[/red] des rectangles.","fontex":1.3]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -60,7 +114,7 @@
         <dct:identifier>se3b</dct:identifier>
         <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, la hauteur de 2 rectangles (avec égalité possible).</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["<","≥"],"css":{"height":"1.2em"}},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var eq=(Math.floor(Math.random()*3.3)==0),ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:1;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*5)+1,val2=eq?val1:Math.floor(Math.random()*5)+1;ret+=\\\"<rect x='1' y='\\\"+Math.floor(1+18*(5-val1)/5)+\\\"' width='46' height='\\\"+Math.floor(46*val1/5)+\\\"'/>\\\"; ret+=\\\"</svg></div><div style='width:1.1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:1;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\"; ret+=\\\"<rect x='1' y='\\\"+Math.floor(1+18*(5-val2)/5)+\\\"' width='46' height='\\\"+Math.floor(46*val2/5)+\\\"'/>\\\"; ret+=\\\"</svg></div>\\\"; return [ret, val1<val2?'<':'≥'];}","class":"alpha left p02","font":1.7]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"[b]Comparez[/b] la [red]hauteur[/red] des rectangles."]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Comparez[/b] la [red]hauteur[/red] des rectangles.","fontex":1.3]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -73,7 +127,7 @@
         <dct:identifier>s4</dct:identifier>
         <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, la hauteur de 2 rectangles (avec égalité possible et légende numérique).</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var eq=(Math.floor(Math.random()*3.3)==0),ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:1;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*5)+1,val2=eq?val1:Math.floor(Math.random()*5)+1;ret+=\\\"<rect x='1' y='\\\"+Math.floor(1+18*(5-val1)/5)+\\\"' width='46' height='\\\"+Math.floor(46*val1/5)+\\\"'/><text transform='translate(23,22)' style='font-size:8px;fill:white;font-weight:bold;'>\\\"+val1+\\\"</text>\\\"; ret+=\\\"</svg></div><div style='width:1.1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:1;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\"; ret+=\\\"<rect x='1' y='\\\"+Math.floor(1+18*(5-val2)/5)+\\\"' width='46' height='\\\"+Math.floor(46*val2/5)+\\\"'/><text transform='translate(23,22)' style='font-size:8px;fill:white;font-weight:bold;'>\\\"+val2+\\\"</text>\\\"; ret+=\\\"</svg></div>\\\"; return [ret,  val1==val2?'=':(val1<val2?'<':'>')];}","class":"alpha left p02","font":1.7]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"[b]Comparez[/b] la [red]hauteur[/red] des rectangles."]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Comparez[/b] la [red]hauteur[/red] des rectangles.","fontex":1.3]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -444,7 +498,7 @@
         <dct:identifier>eg03</dct:identifier>
         <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, 2 entiers compris entre 0 et 3.</dct:title>
         <dct:description><![CDATA["number":10,"time":0,"input":{"digit":1,"values":["≤",">"],"css":{"height":"1.2em"}},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=4,a=Math.floor(Math.random()*max),p=Math.floor(Math.random()*3.5),b=(p)?Math.floor(Math.random()*max):a; return [\\\"<div style=margin-left:.2em;'><div style='width:1.1em;'>\\\"+a+\\\"</div><div style='width:1.1em;'>...</div><div style='width:1.1em;'>\\\"+b+\\\"</div></div>\\\", (a<=b)?\\\"≤\\\":\\\">\\\"]}","class":"h12 alpha left","font":1.9]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"L'opérateur ≤ signifie <b>inférieur ou égal</b>."]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"L'opérateur ≤ signifie <b>inférieur ou égal</b>."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -456,7 +510,7 @@
         <dct:identifier>el03</dct:identifier>
         <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, 2 entiers compris entre 0 et 3.</dct:title>
         <dct:description><![CDATA["number":10,"time":0,"input":{"digit":1,"values":["<","≥"],"css":{"height":"1.2em"}},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=4,a=Math.floor(Math.random()*max),p=Math.floor(Math.random()*3.5),b=(p)?Math.floor(Math.random()*max):a; return [\\\"<div style=margin-left:.2em;'><div style='width:1.1em;'>\\\"+a+\\\"</div><div style='width:1.1em;'>...</div><div style='width:1.1em;'>\\\"+b+\\\"</div></div>\\\", (a<b)?\\\"<\\\":\\\"≥\\\"]}","class":"h12 alpha left","font":1.9]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"L'opérateur ≥ signifie <b>supérieur ou égal</b>."]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"L'opérateur ≥ signifie <b>supérieur ou égal</b>."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -468,7 +522,7 @@
         <dct:identifier>eg05</dct:identifier>
         <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, 2 entiers compris entre 0 et 5.</dct:title>
         <dct:description><![CDATA["number":10,"time":0,"input":{"digit":1,"values":["≤",">"],"css":{"height":"1.2em"}},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=6,a=Math.floor(Math.random()*max),p=Math.floor(Math.random()*3.5),b=(p)?Math.floor(Math.random()*max):a; return [\\\"<div style=margin-left:.2em;'><div style='width:1.1em;'>\\\"+a+\\\"</div><div style='width:1.1em;'>...</div><div style='width:1.1em;'>\\\"+b+\\\"</div></div>\\\", (a<=b)?\\\"≤\\\":\\\">\\\"]}","class":"h12 alpha left","font":1.9]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"L'opérateur ≤ signifie <b>inférieur ou égal</b>."]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"L'opérateur ≤ signifie <b>inférieur ou égal</b>."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -480,7 +534,7 @@
         <dct:identifier>el05</dct:identifier>
         <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, 2 entiers compris entre 0 et 5.</dct:title>
         <dct:description><![CDATA["number":10,"time":0,"input":{"digit":1,"values":["<","≥"],"css":{"height":"1.2em"}},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=6,a=Math.floor(Math.random()*max),p=Math.floor(Math.random()*3.5),b=(p)?Math.floor(Math.random()*max):a; return [\\\"<div style=margin-left:.2em;'><div style='width:1.1em;'>\\\"+a+\\\"</div><div style='width:1.1em;'>...</div><div style='width:1.1em;'>\\\"+b+\\\"</div></div>\\\", (a<b)?\\\"<\\\":\\\"≥\\\"]}","class":"h12 alpha left","font":1.9]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"L'opérateur ≥ signifie <b>supérieur ou égal</b>."]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"L'opérateur ≥ signifie <b>supérieur ou égal</b>."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -617,7 +671,7 @@
         <dct:identifier>stm29</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, l'un des nombres compris entre 2 et 9 complétant la double inégalité d'infériorité.</dct:title>
         <dct:description><![CDATA["number":15,"time":0,"input":{"digit":1,"speed":0},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var c=Math.floor(Math.random()*2)+1,a=Math.floor(Math.random()*(9-c))+1,vals=[]; for (var i=0; i<c; i++) { vals.push(a+1+i); } return [\\\"<div style='width:1.3em;margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:1em;'>&lt;</div><div style='width:1.1em;'>...</div><div style='width:1em;'>&lt;</div><div style='width:1.1em;'>\\\"+(a+c+1)+\\\"</div>\\\",vals]}","class":"h12 alpha left","font":1.2]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Trouvez une valeur vérifiant la double inégalité."]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Trouvez une valeur vérifiant la double inégalité."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
@@ -685,7 +739,7 @@
         <dct:identifier>gtm29</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, l'un des nombres compris entre 2 et 9 complétant la double inégalité d'infériorité.</dct:title>
         <dct:description><![CDATA["number":15,"time":0,"input":{"digit":1,"speed":0},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var c=Math.floor(Math.random()*2)+1,a=Math.floor(Math.random()*(9-c))+1,vals=[]; for (var i=0; i<c; i++) { vals.push(a+1+i); } return [\\\"<div style='width:1.3em;margin-left:.1em;'>\\\"+(a+c+1)+\\\"</div><div style='width:1em;'>&gt;</div><div style='width:1.1em;'>...</div><div style='width:1em;'>&gt;</div><div style='width:1.1em;'>\\\"+a+\\\"</div>\\\",vals]}","class":"h12 alpha left","font":1.2]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Trouvez une valeur vérifiant la double inégalité."]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Trouvez une valeur vérifiant la double inégalité."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
@@ -754,7 +808,7 @@
         <dct:identifier>tm29</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, l'un des nombres compris entre 2 et 9 complétant la double inégalité.</dct:title>
         <dct:description><![CDATA["number":15,"time":0,"input":{"digit":1,"speed":0},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var c=Math.floor(Math.random()*2)+1,a=Math.floor(Math.random()*(9-c))+1,vals=[]; for (var i=0; i<c; i++) { vals.push(a+1+i); } var b=Math.floor(Math.random()*2); return [b?\\\"<div style='width:1.5em;margin-left:.1em;'>\\\"+(a+c+1)+\\\"</div><div style='width:1em;'>&gt;</div><div style='width:1.1em;'>...</div><div style='width:1em;'>&gt;</div><div style='width:1.5em;'>\\\"+a+\\\"</div>\\\":\\\"<div style='width:1.5em;margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:1em;'>&lt;</div><div style='width:1.1em;'>...</div><div style='width:1em;'>&lt;</div><div style='width:1.5em;'>\\\"+(a+c+1)+\\\"</div>\\\",vals]}","class":"h12 alpha left","font":1.4]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Trouvez une valeur vérifiant la double inégalité."]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Trouvez une valeur vérifiant la double inégalité."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
@@ -832,7 +886,7 @@
         <dct:identifier>tm100</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, l'un des nombres compris entre 2 et 98 complétant la double inégalité.</dct:title>
         <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":5000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var c=Math.floor(Math.random()*3)+1,a=Math.floor(Math.random()*(99-c))+1,vals=[]; for (var i=0; i<c; i++) { vals.push(a+1+i); } var b=Math.floor(Math.random()*2); return [b?\\\"<div style='width:1.5em;margin-left:.1em;'>\\\"+(a+c+1)+\\\"</div><div style='width:1em;'>&gt;</div><div style='width:1.5em;'>...</div><div style='width:1em;'>&gt;</div><div style='width:1.5em;'>\\\"+a+\\\"</div>\\\":\\\"<div style='width:1.5em;margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:1em;'>&lt;</div><div style='width:1.3em;'>...</div><div style='width:1em;'>&lt;</div><div style='width:1.5em;'>\\\"+(a+c+1)+\\\"</div>\\\",vals]}","class":"h12 alpha left","font":1.1]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Trouvez une valeur vérifiant la double inégalité."]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Trouvez une valeur vérifiant la double inégalité."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -844,7 +898,7 @@
         <dct:identifier>tm100x</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver, en moins de 40 secondes, l'un des nombres compris entre 2 et 98 complétant la double inégalité.</dct:title>
         <dct:description><![CDATA["time":2,"input":{"digit":2,"speed":5000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var c=Math.floor(Math.random()*3)+1,a=Math.floor(Math.random()*(99-c))+1,vals=[]; for (var i=0; i<c; i++) { vals.push(a+1+i); } var b=Math.floor(Math.random()*2); return [b?\\\"<div style='width:1.5em;margin-left:.1em;'>\\\"+(a+c+1)+\\\"</div><div style='width:1em;'>&gt;</div><div style='width:1.5em;'>...</div><div style='width:1em;'>&gt;</div><div style='width:1.5em;'>\\\"+a+\\\"</div>\\\":\\\"<div style='width:1.5em;margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:1em;'>&lt;</div><div style='width:1.3em;'>...</div><div style='width:1em;'>&lt;</div><div style='width:1.5em;'>\\\"+(a+c+1)+\\\"</div>\\\",vals]}","class":"h12 alpha left","font":1.1]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Trouvez une valeur vérifiant la double inégalité."]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Trouvez une valeur vérifiant la double inégalité."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -994,7 +1048,7 @@
          <dct:identifier>214</dct:identifier>
          <dct:title xml:lang="fr-FR">Différencier, sans contrainte de temps, deux groupes de carrés (de 1 à 4).</dct:title>
          <dct:description><![CDATA["number":15,"time":0,"input":{"digit":1,"values":["=","&ne;"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var n=2,eq=(Math.floor(Math.random()*5)==0),ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:1;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*n*n)+1,val2=eq?val1:Math.floor(Math.random()*n*n)+1,b1=[],b2=[]; for(var i=0;i<n*n;i++){ b1.push(false);b2.push(false);}for(var i=0;i<val1;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b1[x]);b1[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div><div style='width:1.1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:1;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\"; for(var i=0;i<val2;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b2[x]);b2[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div>\\\"; return [ret, val1==val2?'=':'&ne;'];}","class":"alpha left p02","font":1.7]]></dct:description>
-         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"[b]Comparez[/b] le [red]nombre de carrés[/red]."]]></dct:description>
+         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Comparez[/b] le [red]nombre de carrés[/red]."]]></dct:description>
          <dct:extent>2</dct:extent>
          <dct:subject>numeration</dct:subject>
          <dct:educationLevel>2</dct:educationLevel>
@@ -1007,7 +1061,7 @@
          <dct:identifier>2t14</dct:identifier>
          <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, deux groupes de carrés (de 1 à 4).</dct:title>
          <dct:description><![CDATA["number":15,"time":0,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var n=2,eq=(Math.floor(Math.random()*10)==0),ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:1;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*n*n)+1,val2=eq?val1:Math.floor(Math.random()*n*n)+1,b1=[],b2=[]; for(var i=0;i<n*n;i++){ b1.push(false);b2.push(false);}for(var i=0;i<val1;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b1[x]);b1[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div><div style='width:1.1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:1;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\"; for(var i=0;i<val2;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b2[x]);b2[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div>\\\"; return [ret, val1==val2?'=':(val1<val2?'<':'>')];}","class":"alpha left p02","font":1.7]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"[b]Comparez[/b] le [red]nombre de carrés[/red]."]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Comparez[/b] le [red]nombre de carrés[/red]."]]></dct:description>
          <dct:extent>1</dct:extent>
          <dct:subject>numeration</dct:subject>
          <dct:educationLevel>2</dct:educationLevel>
@@ -1020,7 +1074,7 @@
          <dct:identifier>219</dct:identifier>
          <dct:title xml:lang="fr-FR">Différencier, sans contrainte de temps, deux groupes de carrés (de 1 à 9).</dct:title>
          <dct:description><![CDATA["number":15,"time":0,"input":{"digit":1,"values":["=","&ne;"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var n=3,eq=(Math.floor(Math.random()*2.2)==0),ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*n*n)+1,val2=eq?val1:Math.floor(Math.random()*n*n)+1,b1=[],b2=[]; for(var i=0;i<n*n;i++){ b1.push(false);b2.push(false);}for(var i=0;i<val1;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b1[x]);b1[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div><div style='width:1.1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\"; for(var i=0;i<val2;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b2[x]);b2[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div>\\\"; return [ret, val1==val2?'=':'&ne;'];}","class":"alpha left p02","font":1.7]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"[b]Comparez[/b] le [red]nombre de carrés[/red]."]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Comparez[/b] le [red]nombre de carrés[/red]."]]></dct:description>
          <dct:extent>1</dct:extent>
          <dct:subject>numeration</dct:subject>
          <dct:educationLevel>2</dct:educationLevel>
@@ -1032,7 +1086,7 @@
          <dct:identifier>2t19</dct:identifier>
          <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, deux groupes de carrés (de 1 à 9).</dct:title>
          <dct:description><![CDATA["number":15,"time":0,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var n=3,eq=(Math.floor(Math.random()*3.5)==0),ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*n*n)+1,val2=eq?val1:Math.floor(Math.random()*n*n)+1,b1=[],b2=[]; for(var i=0;i<n*n;i++){ b1.push(false);b2.push(false);}for(var i=0;i<val1;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b1[x]);b1[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div><div style='width:1.1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\"; for(var i=0;i<val2;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b2[x]);b2[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div>\\\"; return [ret, val1==val2?'=':(val1<val2?'<':'>')];}","class":"alpha left p02","font":1.7]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"[b]Comparez[/b] le [red]nombre de carrés[/red]."]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Comparez[/b] le [red]nombre de carrés[/red]."]]></dct:description>
          <dct:extent>1</dct:extent>
          <dct:subject>numeration</dct:subject>
          <dct:educationLevel>2</dct:educationLevel>
@@ -1044,7 +1098,7 @@
          <dct:identifier>2110</dct:identifier>
          <dct:title xml:lang="fr-FR">Différencier, sans contrainte de temps, deux groupes de carrés (de 1 à 10).</dct:title>
          <dct:description><![CDATA["number":15,"time":0,"input":{"digit":1,"values":["=","&ne;"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var n=4,eq=(Math.floor(Math.random()*2.1)==0),ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*10)+1,val2=eq?val1:Math.floor(Math.random()*10)+1,b1=[],b2=[]; for(var i=0;i<n*n;i++){ b1.push(false);b2.push(false);}for(var i=0;i<val1;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b1[x]);b1[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div><div style='width:1.1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\"; for(var i=0;i<val2;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b2[x]);b2[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div>\\\"; return [ret, val1==val2?'=':'&ne;'];}","class":"alpha left p02","font":1.7]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"[b]Comparez[/b] le [red]nombre de carrés[/red]."]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Comparez[/b] le [red]nombre de carrés[/red]."]]></dct:description>
          <dct:extent>1</dct:extent>
          <dct:subject>numeration</dct:subject>
          <dct:educationLevel>2</dct:educationLevel>
@@ -1056,7 +1110,7 @@
          <dct:identifier>2110x</dct:identifier>
          <dct:title xml:lang="fr-FR">Différencier, en moins de 40 secondes, deux groupes de carrés (de 1 à 10).</dct:title>
          <dct:description><![CDATA["number":15,"time":2,"input":{"digit":1,"values":["=","&ne;"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var n=4,eq=(Math.floor(Math.random()*2.1)==0),ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*10)+1,val2=eq?val1:Math.floor(Math.random()*10)+1,b1=[],b2=[]; for(var i=0;i<n*n;i++){ b1.push(false);b2.push(false);}for(var i=0;i<val1;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b1[x]);b1[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div><div style='width:1.1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\"; for(var i=0;i<val2;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b2[x]);b2[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div>\\\"; return [ret, val1==val2?'=':'&ne;'];}","class":"alpha left p02","font":1.7]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"[b]Comparez[/b] le [red]nombre de carrés[/red]."]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Comparez[/b] le [red]nombre de carrés[/red]."]]></dct:description>
          <dct:extent>1</dct:extent>
          <dct:subject>numeration</dct:subject>
          <dct:educationLevel>2</dct:educationLevel>
@@ -1068,7 +1122,7 @@
          <dct:identifier>2t110</dct:identifier>
          <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, deux groupes de carrés (de 1 à 10).</dct:title>
          <dct:description><![CDATA["number":15,"time":0,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var n=4,eq=(Math.floor(Math.random()*3.1)==0),ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*10)+1,val2=eq?val1:Math.floor(Math.random()*10)+1,b1=[],b2=[]; for(var i=0;i<n*n;i++){ b1.push(false);b2.push(false);}for(var i=0;i<val1;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b1[x]);b1[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div><div style='width:1.1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\"; for(var i=0;i<val2;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b2[x]);b2[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div>\\\"; return [ret, val1==val2?'=':(val1<val2?'<':'>')];}","class":"alpha left p02","font":1.7]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"[b]Comparez[/b] le [red]nombre de carrés[/red]."]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Comparez[/b] le [red]nombre de carrés[/red]."]]></dct:description>
          <dct:extent>1</dct:extent>
          <dct:subject>numeration</dct:subject>
          <dct:educationLevel>2</dct:educationLevel>
@@ -1080,7 +1134,7 @@
          <dct:identifier>2t110x</dct:identifier>
          <dct:title xml:lang="fr-FR">Comparer, en moins de 40 secondes, deux groupes de carrés (de 1 à 10).</dct:title>
          <dct:description><![CDATA["number":15,"time":2,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var n=4,eq=(Math.floor(Math.random()*3.1)==0),ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*10)+1,val2=eq?val1:Math.floor(Math.random()*10)+1,b1=[],b2=[]; for(var i=0;i<n*n;i++){ b1.push(false);b2.push(false);}for(var i=0;i<val1;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b1[x]);b1[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div><div style='width:1.1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\"; for(var i=0;i<val2;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b2[x]);b2[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div>\\\"; return [ret, val1==val2?'=':(val1<val2?'<':'>')];}","class":"alpha left p02","font":1.7]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"[b]Comparez[/b] le [red]nombre de carrés[/red]."]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Comparez[/b] le [red]nombre de carrés[/red]."]]></dct:description>
          <dct:extent>1</dct:extent>
          <dct:subject>numeration</dct:subject>
          <dct:educationLevel>2</dct:educationLevel>
@@ -1092,7 +1146,7 @@
          <dct:identifier>2116</dct:identifier>
          <dct:title xml:lang="fr-FR">Différencier, sans contrainte de temps, deux groupes de carrés (de 1 à 16).</dct:title>
          <dct:description><![CDATA["number":15,"time":0,"input":{"digit":1,"values":["=","&ne;"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var n=4,eq=(Math.floor(Math.random()*2.1)==0),ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*n*n)+1,val2=eq?val1:Math.floor(Math.random()*n*n)+1,b1=[],b2=[]; for(var i=0;i<n*n;i++){ b1.push(false);b2.push(false);}for(var i=0;i<val1;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b1[x]);b1[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div><div style='width:1.1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\"; for(var i=0;i<val2;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b2[x]);b2[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div>\\\"; return [ret, val1==val2?'=':'&ne;'];}","class":"alpha left p02","font":1.7]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"[b]Comparez[/b] le [red]nombre de carrés[/red]."]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Comparez[/b] le [red]nombre de carrés[/red]."]]></dct:description>
          <dct:extent>1</dct:extent>
          <dct:subject>numeration</dct:subject>
          <dct:educationLevel>2</dct:educationLevel>
@@ -1104,7 +1158,7 @@
          <dct:identifier>2116x</dct:identifier>
          <dct:title xml:lang="fr-FR">Différencier, en moins de 40 secondes, deux groupes de carrés (de 1 à 16).</dct:title>
          <dct:description><![CDATA["number":15,"time":2,"input":{"digit":1,"values":["=","&ne;"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var n=4,eq=(Math.floor(Math.random()*2.1)==0),ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*n*n)+1,val2=eq?val1:Math.floor(Math.random()*n*n)+1,b1=[],b2=[]; for(var i=0;i<n*n;i++){ b1.push(false);b2.push(false);}for(var i=0;i<val1;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b1[x]);b1[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div><div style='width:1.1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\"; for(var i=0;i<val2;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b2[x]);b2[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div>\\\"; return [ret, val1==val2?'=':'&ne;'];}","class":"alpha left p02","font":1.7]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"[b]Comparez[/b] le [red]nombre de carrés[/red]."]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Comparez[/b] le [red]nombre de carrés[/red]."]]></dct:description>
          <dct:extent>1</dct:extent>
          <dct:subject>numeration</dct:subject>
          <dct:educationLevel>2</dct:educationLevel>
@@ -1116,7 +1170,7 @@
          <dct:identifier>2t116</dct:identifier>
          <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, deux groupes de carrés (de 1 à 16).</dct:title>
          <dct:description><![CDATA["number":15,"time":0,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var n=4,eq=(Math.floor(Math.random()*3.1)==0),ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*n*n)+1,val2=eq?val1:Math.floor(Math.random()*n*n)+1,b1=[],b2=[]; for(var i=0;i<n*n;i++){ b1.push(false);b2.push(false);}for(var i=0;i<val1;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b1[x]);b1[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div><div style='width:1.1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\"; for(var i=0;i<val2;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b2[x]);b2[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div>\\\"; return [ret, val1==val2?'=':(val1<val2?'<':'>')];}","class":"alpha left p02","font":1.7]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"[b]Comparez[/b] le [red]nombre de carrés[/red]."]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Comparez[/b] le [red]nombre de carrés[/red]."]]></dct:description>
          <dct:extent>1</dct:extent>
          <dct:subject>numeration</dct:subject>
          <dct:educationLevel>2</dct:educationLevel>
@@ -1128,7 +1182,7 @@
          <dct:identifier>2t116x</dct:identifier>
          <dct:title xml:lang="fr-FR">Comparer, en moins de 40 secondes, deux groupes de carrés (de 1 à 16).</dct:title>
          <dct:description><![CDATA["number":15,"time":2,"input":{"digit":1,"values":["<","=",">"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function(){var n=4,eq=(Math.floor(Math.random()*3.1)==0),ret=\\\"<div style='width:1em;margin-left:.5em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\",val1=Math.floor(Math.random()*n*n)+1,val2=eq?val1:Math.floor(Math.random()*n*n)+1,b1=[],b2=[]; for(var i=0;i<n*n;i++){ b1.push(false);b2.push(false);}for(var i=0;i<val1;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b1[x]);b1[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div><div style='width:1.1em;'>...</div><div style='width:1em;'><svg width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;stroke:white;stroke-width:0.5;}.wrong rect {fill:red;}.good rect {fill:green;}</style></def>\\\"; for(var i=0;i<val2;i++){var x;do{x=Math.floor(Math.random()*n*n);}while(b2[x]);b2[x]=true;ret+=\\\"<rect x='\\\"+(Math.floor(48/n)*(x%n)+1)+\\\"' y='\\\"+(Math.floor(48/n)*Math.floor(x/n)+1)+\\\"' width='\\\"+(Math.floor(48/n)-2)+\\\"' height='\\\"+(Math.floor(48/n)-2)+\\\"' ry='\\\"+Math.floor(12/n)+\\\"'/>\\\";} ret+=\\\"</svg></div>\\\"; return [ret, val1==val2?'=':(val1<val2?'<':'>')];}","class":"alpha left p02","font":1.7]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"[b]Comparez[/b] le [red]nombre de carrés[/red]."]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Comparez[/b] le [red]nombre de carrés[/red]."]]></dct:description>
          <dct:extent>1</dct:extent>
          <dct:subject>numeration</dct:subject>
          <dct:educationLevel>2</dct:educationLevel>
@@ -1144,7 +1198,7 @@
         <dct:identifier>o12</dct:identifier>
         <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, 2 entiers compris entre 1 et 2</dct:title>
         <dct:description><![CDATA["number":10,"time":0,"input":{"digit":1,"values":["=","&ne;"]},"regexp": { "input": { "from": "([a-z]+[0-9]+)","to":"<div class=\\\"char\\\"><img src=\\\"res/img/svginventoryicons/vegetable/$1.svg\\\"/></div>"}, "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var v=[\\\"apple01\\\",\\\"banana01\\\",\\\"tomato01\\\",\\\"pepper01\\\",\\\"apricot01\\\",\\\"strawberry01\\\",\\\"pear01\\\",\\\"cherry01\\\",\\\"kiwi01\\\"], max=2,a=Math.floor(Math.random()*max)+1,p=Math.floor(Math.random()*3),b=(p)?Math.floor(Math.random()*max)+1:a; var ta=\\\"\\\",tb=\\\"\\\"; for (var i=0; i<a;i++) { ta+=v[Math.floor(Math.random()*v.length)]; } for (var i=0; i<b;i++) { tb+=v[Math.floor(Math.random()*v.length)]; } return [ta+\\\"<div style='width:1.1em;'>...</div>\\\"+tb, (a==b)?\\\"=\\\":\\\"&ne;\\\"]}","class":"h12 alpha left","font":1.2]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":["Comparez le nombre de fruits de part et d'autre.","<b>=</b> signifie <b>égale</b> alors que <b>&ne;</b> signifie <b>différent</b>."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Comparez le nombre de fruits de part et d'autre.","<b>=</b> signifie <b>égale</b> alors que <b>&ne;</b> signifie <b>différent</b>."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
@@ -1156,7 +1210,7 @@
         <dct:identifier>o13</dct:identifier>
         <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, 2 entiers compris entre 1 et 3</dct:title>
         <dct:description><![CDATA["number":10,"time":0,"input":{"digit":1,"values":["=","&ne;"]},"regexp": { "input": { "from": "([a-z]+[0-9]+)","to":"<div class=\\\"char\\\"><img src=\\\"res/img/svginventoryicons/vegetable/$1.svg\\\"/></div>"}, "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var v=[\\\"apple01\\\",\\\"banana01\\\",\\\"tomato01\\\",\\\"pepper01\\\",\\\"apricot01\\\",\\\"strawberry01\\\",\\\"pear01\\\",\\\"cherry01\\\",\\\"kiwi01\\\"], max=3,a=Math.floor(Math.random()*max)+1,p=Math.floor(Math.random()*3.5),b=(p)?Math.floor(Math.random()*max)+1:a; var ta=\\\"\\\",tb=\\\"\\\"; for (var i=0; i<a;i++) { ta+=v[Math.floor(Math.random()*v.length)]; } for (var i=0; i<b;i++) { tb+=v[Math.floor(Math.random()*v.length)]; } return [ta+\\\"<div style='width:1.1em;'>...</div>\\\"+tb, (a==b)?\\\"=\\\":\\\"&ne;\\\"]}","class":"h12 alpha left","font":0.8]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":["Comparez le nombre de fruits de part et d'autre.","<b>=</b> signifie <b>égale</b> alors que <b>&ne;</b> signifie <b>différent</b>."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Comparez le nombre de fruits de part et d'autre.","<b>=</b> signifie <b>égale</b> alors que <b>&ne;</b> signifie <b>différent</b>."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>

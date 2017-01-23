@@ -6,7 +6,6 @@
                                           background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat; }
 .sequence #keypad                       { display:inline-block; position:relative; margin-top:2px; }
 .sequence #keypad td                    { width:1.2em; overflow:hidden; cursor:pointer; text-align:center; font-weight:bold;
-                                          font-family: "Courier New" Courier monospace;
                                           color:rgb(220,231,241); border-radius:.25em; }
 .sequence #keypad.tiny td               { font-size:.8em; }
 .sequence #screen                       { background-color:rgba(15, 15, 30, 0.75) !important; color:#DDDDFF !important; }
@@ -18,8 +17,7 @@
 .sequence div#splashex h1               { position:absolute; top:33%; left:50%; font-size:.7em; white-space:nowrap; }
 .sequence div#splashex .guide           { position:absolute; top:42%; left:51%; font-size:.4em; width:25%; font-style:italic;
                                           text-align:justify; }
-.sequence div#splashex #guide_time      { position:absolute; top:81.5%; left:50%; font-size:.8em; color:#333;
-                                          font-family: "Courier New" Courier monospace; font-weight:bold;}
+.sequence div#splashex #guide_time      { position:absolute; top:81.5%; left:50%; font-size:.8em; color:#333; font-weight:bold;}
 .sequence div#splashex #guide_number    { position:absolute; top:82%; left:43.5%; font-size:.6em; color:#555;
                                           font-weight:bold; width:1.5em; overflow:visible; text-align:center; }
 .sequence div#splash>div                { background-image:url("../../res/img/banners/sequence.svg"); }
@@ -59,7 +57,7 @@
 
 .sequence #values                       { text-align:center; overflow:hidden;
                                           float:left; width:70%; height:100%; }
-.sequence #comment                      { font-size:.25em; background-color:rgba(255,255,255,0.9); font-style:italic;
+.sequence #exercice                      { font-size:.25em; background-color:rgba(255,255,255,0.9); font-style:italic;
                                           position:relative; top:0; left:0; z-index:200; text-align:center; padding-left:1em;  }
 .sequence #values ul                    { list-style-type:none; position:relative; top:0; left:0; padding:0;
                               -webkit-margin-before: 0em; overflow:hidden; width:105%; }
@@ -99,7 +97,7 @@
 .sequence.wrong     #values li.wrong    { background-color:rgba(255,80,65,1.0); color:rgb(220, 240, 256); text-decoration:none; }
 .sequence.gray      #values li.select   { background-color:rgba(100,100,100,0.9); }
 .sequence.blank     #values li.select   { background:none; color:rgb(53,34,34); }
-.sequence.courier   #values             { font-family: "Courier New" Courier monospace; }
+.sequence.courier   #values             { font-family: "Courier New",Courier,monospace; }
 .sequence.left      #values li *        { float:left; }
 .sequence.p00       #values li          { padding:0; }
 .sequence.p01       #values li          { padding:0.1em 0; }
