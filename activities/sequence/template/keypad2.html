@@ -4,12 +4,12 @@
         <div id="time" class="time">00:00:00</div></td>
         <div id="keypad">
             <table>
-                <tr><td colspan="3" id="screen">00</td></tr>
+                <tr><td colspan="3" id="screen"><div>00</div></td></tr>
                 <tr>
                     <td class="bluekeypad" ontouchstart="$(this).closest('.sequence').sequence('key', 0, this);event.preventDefault();"
-                        onclick="$(this).closest('.sequence').sequence('key', 0, this);">0</td>
+                        onclick="$(this).closest('.sequence').sequence('key', 0, this);"><div>0</div></td>
                     <td class="bluekeypad" ontouchstart="$(this).closest('.sequence').sequence('key', 1, this);event.preventDefault();"
-                        onclick="$(this).closest('.sequence').sequence('key', 1, this);">1</td>
+                        onclick="$(this).closest('.sequence').sequence('key', 1, this);"><div>1</div></td>
                     <td class="bluekeypad" ontouchstart="$(this).closest('.sequence').sequence('key', '.', this);event.preventDefault();"
                         onclick="$(this).closest('.sequence').sequence('key', '.', this);">
                             <div class="icon" style="margin:0 auto;"><img src="res/img/icon/cancel2.svg"/></div>

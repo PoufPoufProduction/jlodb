@@ -5,10 +5,10 @@
 .sequence #board                        { float:left; width:30%; height:100%;
                                           background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat; }
 .sequence #keypad                       { display:inline-block; position:relative; margin-top:2px; }
-.sequence #keypad td                    { width:1.2em; overflow:hidden; cursor:pointer; text-align:center; font-weight:bold;
-                                          color:rgb(220,231,241); border-radius:.25em; }
-.sequence #keypad.tiny td               { font-size:.8em; }
+.sequence #keypad td>div            { font-size:.8em; height:1.2em; width:1.2em; overflow:hidden; cursor:pointer; text-align:center; font-weight:bold;
+                              color:rgb(220,231,241); }
 .sequence #screen                       { background-color:rgba(15, 15, 30, 0.75) !important; color:#DDDDFF !important; }
+.sequence td#screen>div              { width:inherit; text-align:center; }
 .sequence .keyboard #screen             { float:right; font-size:3em; width:2.5em; border-radius:.25em; margin-right:.05em;
                                           text-align:center; margin-top:0.2em; }
 .sequence #time                         { font-size:.5em; width:6em; height:1.2em; overflow:hidden; text-align:center; }
@@ -44,8 +44,8 @@
 .sequence .template #board              { clear:both; width:100%; height:30%; font-size:.3em; overflow:hidden; }
 .sequence .template.keyboard #board     { height:45%; }
 .sequence .template .input              { display:inline-block; border-radius:.25em;
-                                          width:6.8em; height:1em; overflow:hidden; text-align:center; cursor:pointer;
-                                          font-size:1.5em; padding-bottom:.2em; margin-bottom:.1em; color:white; }
+                                  width:6.8em; height:1em; overflow:hidden; text-align:center; cursor:pointer;
+                                  font-size:1.5em; margin-bottom:.1em; color:white; }
 .sequence .template2 .input             { border-radius:.25em;
                                   min-width:1.2em; height:1.2em; overflow:hidden; text-align:center; cursor:pointer;
                                   font-size:1.8em; margin-left:.2em; margin-bottom:.1em; color:white; }
@@ -70,12 +70,11 @@
 .sequence #values li.wrong .bg          { background-color:rgba(255,80,65,1.0); }
 .sequence #values .icon                 { float:left; }
 .sequence #values .icon.center          { float:none; margin-left:.5em;}
-.sequence #values .dice                 { width:.9em; height:.9em; background-size:.9em; overflow:hidden;
-                                          margin:0 auto; display:inline-block; margin-top:.05em;
+.sequence #values .dice                 { width:1em; height:1em; background-size:100%; overflow:hidden;
+                                          margin:0 auto; display:inline-block;
                                           background-image:url("../../res/img/svginventoryicons/background/border/yellow01.svg"); }
 .sequence #values .good .dice           { background-image:url("../../res/img/svginventoryicons/background/border/green01.svg"); }
 .sequence #values .wrong .dice          { background-image:url("../../res/img/svginventoryicons/background/border/red01.svg"); }
-.sequence #values .dice img             { width:.9em; height:.9em;}
 .sequence #values .w10                  { width:1em; display:inline-block; }
 .sequence #values .w07                  { width:.68em; display:inline-block; }
 .sequence #values .h10                  { height:1em; display:inline-block; }

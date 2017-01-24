@@ -29,6 +29,7 @@
         "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
         "\\\[small\\\]([^\\\[]+)\\\[/small\\\]",    "<span style='font-size:.6em;'>$1</span>",
         "\\\[img\\\]([^\\\[]+)\\\[/img\\\]",        "<img src='$1'/>",
+        "\\\[dice\\\]([^\\\[]+)\\\[/dice\\\]",      "<div class='dice'>$1</div>",
         "\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='icon'>$1</div>",
         "\\\[char\\\]([^\\\[]+)\\\[/char\\\]",      "<div class='char'>$1</div>",
         "\\\[svg48\\\]([^\\\[]+)\\\[/svg48\\\]",    "<svg xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svg='http://www.w3.org/2000/svg' xmlns='http://www.w3.org/2000/svg' version='1.0' viewBox='0 0 48 48'>$1</svg>"
@@ -147,9 +148,15 @@
                                 vLabel = settings.input.values[_index];
                                 vValue = settings.input.values[_index];
                             }
-                            $(this).html(vLabel).addClass("bluekeypad").bind("click touchstart",function(event) {
+                            $(this).html(helpers.format(vLabel.toString())).addClass("bluekeypad").bind("click touchstart",function(event) {
                                 $this.sequence('key',vValue, this); event.preventDefault(); });
-                            if (settings.input.css) { for (var i in settings.input.css) { $(this).css(i, settings.input.css[i]); } }
+                                
+    if (settings.input.css) { for (var i in settings.input.css) { $(this).css(i, settings.input.css[i]); } } //deprecated
+    
+                            if (settings.input.attr) {
+                                var css=["font-size","width","height"];
+                                for (var i=0; i<settings.input.attr.length; i++) { $(this).css(css[i], settings.input.attr[i]+"em"); }
+                            }
                         }
                         else { $(this).hide(); }
                     });
@@ -196,8 +203,7 @@
                 }
 
                 // Handle some elements
-                var vScreen = $this.find("#screen");
-                if (vScreen) { vScreen.html("&#xA0;"); }
+                $this.find("#screen>div").html("&#xA0;");
                 $this.find("#guide_number").html(settings.number);
                 if (!settings.time) {
                     $this.find("#time").html("&#xA0;");
@@ -260,7 +266,7 @@
         next: function($this) {
             var settings = helpers.settings($this);
             $($this.find("#values li").get(settings.it)).addClass("select");
-            if (settings.screenc) { $this.find("#screen").html("&#xA0;"); }
+            if (settings.screenc) { $this.find("#screen>div").html("&#xA0;"); }
             setTimeout(function() { helpers.hidefx($this); }, 200 );
         },
         // Handle the key input
@@ -296,7 +302,7 @@
                             settings.response.value += value.toString(); settings.response.digit++;
                         }
                     }
-                    $this.find("#screen").html(settings.response.digit?settings.response.value:"&#xA0;");
+                    $this.find("#screen>div").html(settings.response.digit?settings.response.value:"&#xA0;");
                     if (value!=settings.erase) {
                             if (!helpers.check($this, (settings.input.speed==0)))
                             {
