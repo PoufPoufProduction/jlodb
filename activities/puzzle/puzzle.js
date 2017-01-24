@@ -236,6 +236,18 @@
 					else 							            { $("#"+i,settings.svg.root()).text(txt[i]).show(); }
                 }
             }
+            
+            // FIX THE ROTATION OF PIECES
+            if (settings.rot) {
+                var rot = $.isArray(settings.rot)?settings.rot[settings.puzzleid]:settings.rot;
+                for (var i in rot) {$("#"+i+" .rot",settings.svg.root()).attr("transform","rotate("+rot[i]+")"); }
+            }
+            
+            // FIX THE TRANSLATION OF PIECES
+            if (settings.mov) {
+                var mov = $.isArray(settings.mov)?settings.mov[settings.puzzleid]:settings.mov;
+                for (var i in mov) {$("#"+i,settings.svg.root()).attr("transform","translate("+rot[i][0]+","+rot[i][1]+")"); }
+            }
 
             // GET PIECES AND NB PIECES
             if (settings.id) {
@@ -334,6 +346,7 @@
                     var id = $(this).attr("id");
                     if (settings.rotation>0 && $(this).find(".rot")) {
                         vZ = settings.rotation*Math.floor(Math.random()*(360/settings.rotation));
+                        $(this).find(".rot").attr("transform","rotate("+vZ+")");
                     }
                     if (settings.init) {
                         if (settings.init.id && settings.init.id[id]) {
@@ -351,9 +364,8 @@
                             vX = settings.init.area[0]+Math.floor(Math.random()*(settings.init.area[2]-settings.init.area[0]));
                             vY = settings.init.area[1]+Math.floor(Math.random()*(settings.init.area[3]-settings.init.area[1]));
                         }
+                        $(this).attr("transform", "translate("+vX+" "+vY+")");
                     }
-                    $(this).attr("transform", "translate("+vX+" "+vY+")");
-                    $(this).find(".rot").attr("transform","rotate("+vZ+")");
                     $(this).show();
                 }
                 else {
