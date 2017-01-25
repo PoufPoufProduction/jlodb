@@ -369,27 +369,29 @@ var tibibi = {
             for (var i in tibibi.course.ex) { if (html) { html+=","; } html+=tibibi.course.ex[i]; }
              $.getJSON("api/exercices.php?id="+html, function(data2) {
                 $("#biscreen #list").html("");
-                for (var i in data2.exercices) {
-                    var $drop = $("<div class='drop'></div>");
-                    var $drag = $("<div class='drag'></div>");
-                    var img = "<div class='eximg'>";
-                    if (tibibi.url) {
-                        var url = tibibi.url+"/res/img/exercices/"+data2.exercices[i].activity+"/";
-                        if (data2.exercices[i].id.length>4) { url+=data2.exercices[i].id[2]+data2.exercices[i].id[3]+"/"; }
-                        else                                { url+="xx/"; }
-                        url += data2.exercices[i].id+".png";
-
-                        img +="<img class='snap' src='"+url+"'/>";
+                for (var i in tibibi.course.ex) {
+                    var elt = 0;
+                    for (var j in data2.exercices) { if (tibibi.course.ex[i]==data2.exercices[j].id) { elt = data2.exercices[j]; } }
+                    if (elt) {
+                        var $drop = $("<div class='drop'></div>");
+                        var $drag = $("<div class='drag'></div>");
+                        var img = "<div class='eximg'>";
+                        if (tibibi.url) {
+                            var url = tibibi.url+"/res/img/exercices/"+elt.activity+"/";
+                            if (elt.id.length>4) { url+=elt.id[2]+elt.id[3]+"/"; } else { url+="xx/"; }
+                            url += elt.id+".png";
+                            img +="<img class='snap' src='"+url+"'/>";
+                        }
+                        img += "</div>";
+                        $drag.append(img);
+                        $drag.append("<div class='exid'>"+elt.id+"</div>");
+                        $drag.append("<div class='extitle'>"+elt.label+"</div>");
+                        $drop.append($drag);
+                        $drag.draggable({ containment:$("#biscreen #list"), appendTo:$("#biscreen #list"), revert:false, stack:".drag",
+                            stop:function(event, ui) { $(this).css("top",0).css("left",0); }});
+                        tibibi.course.droppable($drop);
+                        $("#biscreen #list").append($drop);
                     }
-                    img += "</div>";
-                    $drag.append(img);
-                    $drag.append("<div class='exid'>"+data2.exercices[i].id+"</div>");
-                    $drag.append("<div class='extitle'>"+data2.exercices[i].label+"</div>");
-                    $drop.append($drag);
-                    $drag.draggable({ containment:$("#biscreen #list"), appendTo:$("#biscreen #list"), revert:false, stack:".drag",
-                        stop:function(event, ui) { $(this).css("top",0).css("left",0); }});
-                    tibibi.course.droppable($drop);
-                    $("#biscreen #list").append($drop);
                 }
                 tibibi.course.updover();
                 $("#biscreen").show();

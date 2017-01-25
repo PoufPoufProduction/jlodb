@@ -6,7 +6,7 @@
         <dct:identifier>lr01</dct:identifier>
         <dct:title xml:lang="fr-FR">Différencier main droite et main gauche.</dct:title>
         <dct:description><![CDATA["time":0,"number":15,"template":"template.html","regexp":{"input": { "from": "(.*[0-9]{2})","to":"<div class=\\\"icon center\\\"><img src=\\\"res/img/svginventoryicons/human/$1.svg\\\"/></div>"} },"values":[["lefthand00","l"],["lefthand05","l"],["lefthand10","l"],["righthand00","r"],["righthand05","r"],["righthand10","r"]],"class":"alpha f07 neg", "font":2.5]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"input":{"digit":1,"css":{"font-size":"3.0em","width":"5.0em"},"values":[["gauche","l"],["droite","r"]]},"comment":"Main droite ou main gauche ?"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"input":{"digit":1,"attr":[3,5,1.2],"values":[["gauche","l"],["droite","r"]]},"comment":"Main droite ou main gauche ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>mathematics</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -18,7 +18,7 @@
         <dct:identifier>lr02</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier, sans contrainte de temps, une direction.</dct:title>
         <dct:description><![CDATA["time":0,"number":15,"template":"template.html","regexp":{"input": { "from": "(.*)","to":"<div class=\\\"icon center\\\"><img src=\\\"res/img/action/$1.svg\\\"/></div>"} },"values":[["f01","u"],["b01","d"],["left01","l"],["right01","r"]],"class":"alpha f07 neg", "font":2.5]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"input":{"digit":1,"css":{"font-size":"2.2em","width":"7.0em"},"values":[["haut","u"],["bas","d"],["gauche","l"],["droite","r"]]},"comment":"Dans quelle [b]direction[/b] va la flèche ?"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"input":{"digit":1,"attr":[2.2,7,1.2],"values":[["haut","u"],["bas","d"],["gauche","l"],["droite","r"]]},"comment":"Dans quelle [b]direction[/b] va la flèche ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>mathematics</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -30,7 +30,7 @@
         <dct:identifier>lr03</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier, sans contrainte de temps, la position de Lottie par rapport à un carton.</dct:title>
         <dct:description><![CDATA["time":0,"number":15,"template":"template.html","regexp":{"input": { "from": "(..)","to":"<div class=\\\"icon center\\\" style=\\\"border:2px solid black\\\"><img src=\\\"res/img/ppvc/box$1.svg\\\"/></div>"} },"values":[["01","i"],["02","b"],["03","f"],["04","n"],["05","u"],["06","d"]],"class":"alpha f07 neg", "font":3.5]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"input":{"digit":1,"css":{"font-size":"2em","width":"5.0em"},"values":[["dedans","i"],["derrière","b"],["devant","f"],["à côté","n"],["dessus","u"],["dessous","d"]]},"comment":"Où est [red]Lottie[/red] par [b]rapport au carton[/b] ?"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"input":{"digit":1,"attr":[2,5,1.2],"values":[["dedans","i"],["derrière","b"],["devant","f"],["à côté","n"],["dessus","u"],["dessous","d"]]},"comment":"Où est [red]Lottie[/red] par [b]rapport au carton[/b] ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>mathematics</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>

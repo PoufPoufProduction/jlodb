@@ -150,9 +150,6 @@
                             }
                             $(this).html(helpers.format(vLabel.toString())).addClass("bluekeypad").bind("click touchstart",function(event) {
                                 $this.sequence('key',vValue, this); event.preventDefault(); });
-                                
-    if (settings.input.css) { for (var i in settings.input.css) { $(this).css(i, settings.input.css[i]); } } //deprecated
-    
                             if (settings.input.attr) {
                                 var css=["font-size","width","height"];
                                 for (var i=0; i<settings.input.attr.length; i++) { $(this).css(css[i], settings.input.attr[i]+"em"); }
