@@ -98,6 +98,9 @@
                     if ($.isArray(value)) {  for (var i in value) { $this.find("#"+id).append("<p>"+value[i]+"</p>"); } }
                     else { $this.find("#"+id).html(value); }
                 }); }
+                
+                // Optional devmode
+                if (settings.dev) { $this.find("#devmode").show(); }
 
                 // Exercice
                 if ($.isArray(settings.exercice)) {
@@ -138,6 +141,10 @@
                         helpers.loader.css($this);
                     }
                 });
+            },
+            devmode: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+                $this.find("#devoutput textarea").val("Debug output").parent().show();
             },
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);

@@ -156,8 +156,6 @@
                        onclick="$(this).closest('.logo').logo('stop');" class="icon"><img src="res/img/control/stop.svg"/></div>
         <div id="play" ontouchstart="$(this).closest('.logo').logo('play');event.preventDefault();"
                        onclick="$(this).closest('.logo').logo('play');" class="icon"><img src="res/img/control/play.svg"/></div>
-        <div id="debug" ontouchstart="$(this).closest('.logo').logo('debug');event.preventDefault();"
-                       onclick="$(this).closest('.logo').logo('debug');" class="icon"><img src="res/img/control/debug.svg"/></div>
         </div>
       </div>
       <div id="exercice"><div></div></div>
@@ -171,9 +169,14 @@
 
   <div id="export" ontouchstart="$(this).hide();event.preventDefault();"
                    onclick="$(this).hide();"></div>
-  <div id="dbg" ontouchstart="$(this).hide();event.preventDefault();"
-                   onclick="$(this).hide();"><pre></pre></div>
-
+                   
+    <div id="devmode" ontouchstart="$(this).closest('.logo').logo('devmode');event.preventDefault();"
+                      onclick="$(this).closest('.logo').logo('devmode');" ><img src="res/img/white/snapshot.svg"/></div>
+                      
+    <div id="devoutput" ontouchstart="$(this).hide();event.preventDefault();" onclick="$(this).hide();">
+        <textarea ontouchstart="$(this).focus();event.stopPropagation();event.preventDefault();"
+                  onclick="$(this).focus();event.stopPropagation();"></textarea>
+    </div>
 
     <div id="splashex" ontouchstart="$(this).hide().closest('.logo').logo('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.logo').logo('next');"><div>

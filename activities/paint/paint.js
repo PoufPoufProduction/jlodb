@@ -254,6 +254,8 @@
                     });
                     $(this).attr("id","c"+_index);
             });
+            
+            if (settings.dev) { $this.find("#devmode").show(); }
 
 
             if (!exercice && settings.values) { exercice = settings.values[settings.id].exercice; }
@@ -329,13 +331,15 @@
                     while(str.length<Math.ceil(settings.dev.data[0]/2)) { str=" "+str; }
                     e+=str;
                 }
-                alert("{\"result\":\""+_result+"\",\"t\":\""+e+"\"}");
+                // TODO check grid validity
+                return "{\"result\":\""+_result+"\",\"t\":\""+e+"\"}";
             },
             bitmap: function($this, _result) {
                 var settings = helpers.settings($this);
                 var e="",h="";
                 for (var j=0; j<settings.dev.data[1]; j++) {
                     var val=0;
+                    
                     for (var i=0; i<settings.dev.data[0]; i++) {
                         var v = _result[j*settings.dev.data[0]+i];
                         if (v!=' ' && v!=0) {
@@ -349,7 +353,7 @@
                     var rc = val.toString(16); while(rc.length<settings.dev.data[2]) { rc="0"+rc; }
                     h+="\""+rc+"\"";
                 }
-                alert("{\"result\":\""+_result+"\",\"t\":["+e+"],\"t\":["+h+"]}");
+                return "DEC: {\"result\":\""+_result+"\",\"t\":["+e+"]}\nHEX: {\"result\":\""+_result+"\",\"t\":["+h+"]}";
             },
             paint: function($this, _result) {
                 var settings = helpers.settings($this);
@@ -368,7 +372,7 @@
                         }
                     }
                 }
-                alert("{\"result\":\""+_result+"\",\"o\":\""+o+"\"}");
+                return "{\"result\":\""+_result+"\",\"o\":\""+o+"\"}";
             }
         }
     };
@@ -415,6 +419,15 @@
                 var $this = $(this) , settings = helpers.settings($this);
                 settings.interactive = true;
             },
+            devmode: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+                if (settings.dev) {
+                    var result=helpers.result($this);
+                    if (helpers.dev[settings.dev.mode]) { result = helpers.dev[settings.dev.mode]($this,result); }
+                    $this.find("#devoutput textarea").val(result);
+                    $this.find("#devoutput").show();
+                }
+            },
             valid: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 if (settings.interactive) {
@@ -453,12 +466,6 @@
                     else {
                         $this.find("#submit>img").hide(); $this.find("#subgood").show();
                         if (settings.effects) { $this.find("#effects #good").show(); $this.find("#effects").show(); }
-                    }
-
-                    // Developper mode
-                    if (settings.dev) {
-                        if (helpers.dev[settings.dev.mode]) { helpers.dev[settings.dev.mode]($this,result); }
-                        else { alert(result); }
                     }
 
                     if (settings.score<0) { settings.score = 0; }

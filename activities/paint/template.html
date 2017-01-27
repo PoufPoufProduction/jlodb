@@ -15,6 +15,14 @@
         <img src="res/img/icon/swgood.svg" id="subgood"/>
         <img src="res/img/icon/swwrong.svg" id="subwrong"/>
     </div>
+    
+    <div id="devmode" ontouchstart="$(this).closest('.paint').paint('devmode');event.preventDefault();"
+                      onclick="$(this).closest('.paint').paint('devmode');" ><img src="res/img/white/snapshot.svg"/></div>
+                      
+    <div id="devoutput" ontouchstart="$(this).hide();event.preventDefault();" onclick="$(this).hide();">
+        <textarea ontouchstart="$(this).focus();event.stopPropagation();event.preventDefault();"
+                  onclick="$(this).focus();event.stopPropagation();"></textarea>
+    </div>
 
 
     <div id="splashex" ontouchstart="$(this).hide().closest('.paint').paint('next');event.preventDefault();"

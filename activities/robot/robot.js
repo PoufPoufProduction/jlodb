@@ -239,6 +239,9 @@
 
                 // Target offset
                 settings.targetoffset=[-$this.find("#t1").offset().top,-$this.find("#t1").offset().left];
+                
+                // DevMode
+                if (settings.dev) { $this.find("#devmode").show(); }
 
                 // Locale handling
                 if (settings.exercice) { $this.find("#exercice").html(settings.exercice); }
@@ -1162,6 +1165,11 @@
                         }
                     }
                 }
+            },
+            devmode: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+                                
+                $this.find("#devoutput textarea").val("").parent().show();
             },
             down: function(_id) {
                 var $this = $(this) , settings = helpers.settings($this);

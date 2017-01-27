@@ -137,7 +137,7 @@
                     $clone.appendTo($("#background", settings.svg.root()));
                 }
 
-                if (settings.dev) { $this.find("#controls #debug").show(); }
+                if (settings.dev) { $this.find("#devmode").show(); }
 
                 if ($.isArray(settings.locale.guide)) {
                     $this.find("#guide").html("");
@@ -704,65 +704,71 @@
                     }
                 }
             },
-            debug: function() {
+            devmode: function() {
                 var $this = $(this), settings = helpers.settings($this);
-
-                var c = {}; for (var i in helpers.process.color) { c[helpers.process.color[i]]=i; }
-                var nb = $("#board line", settings.svg.root()).length - 1;
-                var nbret = 0;
-                var ratio = nb?9/nb:0;
-                var ret = "";
                 var svg = "";
-                var last = [-1, -1, 0];
-                var path = "";
-                var line = "";
-
-                $("#board line", settings.svg.root()).each(function(_index) {
-                    if ($(this).attr("class")!="hide") {
-                        if ( (helpers.round($(this).attr("x1")) == last[0]) && (helpers.round($(this).attr("y1")) == last[1]) &&
-                             ($(this).attr("class") == last[2]) )
-                        {
-                            line="";
-                            path+=" L "+ helpers.round($(this).attr("x2"))+ ","+helpers.round($(this).attr("y2"));
-                        }
-                        else
-                        {
-                            if (svg.length) { svg+=","; }
-                            if (line) { svg+=line; line = ""; }
-                            else if (path) {  svg+="{\"id\":\"path\",\"attr\":{\"d\":\""+path+"\"}}"; path = ""; last=[-1,-1, 0]; }
-
-                            path = "M "+helpers.round($(this).attr("x1"))+ ","+helpers.round($(this).attr("y1"))+
-                                  " L "+helpers.round($(this).attr("x2"))+ ","+helpers.round($(this).attr("y2"));
-                            line = "{\"id\":\"line\",\"attr\":{\"x1\":"+helpers.round($(this).attr("x1"))+ ",\"y1\":"+
-                                helpers.round($(this).attr("y1"))+",\"x2\":"+helpers.round($(this).attr("x2"))+",\"y2\":"+
-                                helpers.round($(this).attr("y2"))+"}}";
-                        }
-                        last = [ helpers.round($(this).attr("x2")), helpers.round($(this).attr("y2")), $(this).attr("class") ];
-
-
-                        if (nbret/(_index+1)<ratio) {
-                            if (ret.length) { ret+=","; }
-                            ret+="["+helpers.round($(this).attr("x1"))+","+helpers.round($(this).attr("y1"))+","+
-                                    helpers.round($(this).attr("x2"))+","+helpers.round($(this).attr("y2"))+","+
-                                    c[$(this).attr("class")]+"]";
-                            nbret++;
-                        }
+                
+                if (settings.data.running) {
+                    var current = $.extend(true, {}, settings.data);
+                    for (var i in current.stack) {
+                        if (current.stack[i].$elt)   { current.stack[i].$elt = current.stack[i].$elt.children().first().attr("id"); }
+                        if (current.stack[i].$first) { current.stack[i].$first = current.stack[i].$first.children().first().attr("id"); }
                     }
-                });
-                if (svg.length) { svg+=","; } 
-                if (line) { svg+=line; line = ""; }
-                else if (path) { svg+="{\"id\":\"path\",\"attr\":{\"d\":\""+path+"\"}}"; path = ""; last=[-1,-1, 0]; }
-
-                svg+="\n\n\"result\":{\"nb\":"+nb+",\"values\":["+ret+"],\"fo\":\""+
-                                            $("#bg",settings.svg.root()).attr("class")+"\",\"mt\":"+
-                                            (!$("#rotturtle", settings.svg.root()).attr("class") ||
-                                             !$("#rotturtle", settings.svg.root()).attr("class").length)+"}";
-
-                if (settings.debug) {
-                    //$this.find("#dbg>pre").html(svg);
-                    //$this.find("#dbg").show();
-                    alert(svg);
+                    svg = JSON.stringify(current);
                 }
+                    else {
+                    var c = {}; for (var i in helpers.process.color) { c[helpers.process.color[i]]=i; }
+                    var nb = $("#board line", settings.svg.root()).length - 1;
+                    var nbret = 0;
+                    var ratio = nb?9/nb:0;
+                    var ret = "";
+                    var last = [-1, -1, 0];
+                    var path = "";
+                    var line = "";
+
+                    $("#board line", settings.svg.root()).each(function(_index) {
+                        if ($(this).attr("class")!="hide") {
+                            if ( (helpers.round($(this).attr("x1")) == last[0]) && (helpers.round($(this).attr("y1")) == last[1]) &&
+                                 ($(this).attr("class") == last[2]) )
+                            {
+                                line="";
+                                path+=" L "+ helpers.round($(this).attr("x2"))+ ","+helpers.round($(this).attr("y2"));
+                            }
+                            else
+                            {
+                                if (svg.length) { svg+=","; }
+                                if (line) { svg+=line; line = ""; }
+                                else if (path) {  svg+="{\"id\":\"path\",\"attr\":{\"d\":\""+path+"\"}}"; path = ""; last=[-1,-1, 0]; }
+
+                                path = "M "+helpers.round($(this).attr("x1"))+ ","+helpers.round($(this).attr("y1"))+
+                                      " L "+helpers.round($(this).attr("x2"))+ ","+helpers.round($(this).attr("y2"));
+                                line = "{\"id\":\"line\",\"attr\":{\"x1\":"+helpers.round($(this).attr("x1"))+ ",\"y1\":"+
+                                    helpers.round($(this).attr("y1"))+",\"x2\":"+helpers.round($(this).attr("x2"))+",\"y2\":"+
+                                    helpers.round($(this).attr("y2"))+"}}";
+                            }
+                            last = [ helpers.round($(this).attr("x2")), helpers.round($(this).attr("y2")), $(this).attr("class") ];
+
+
+                            if (nbret/(_index+1)<ratio) {
+                                if (ret.length) { ret+=","; }
+                                ret+="["+helpers.round($(this).attr("x1"))+","+helpers.round($(this).attr("y1"))+","+
+                                        helpers.round($(this).attr("x2"))+","+helpers.round($(this).attr("y2"))+","+
+                                        c[$(this).attr("class")]+"]";
+                                nbret++;
+                            }
+                        }
+                    });
+                    if (svg.length) { svg+=","; } 
+                    if (line) { svg+=line; line = ""; }
+                    else if (path) { svg+="{\"id\":\"path\",\"attr\":{\"d\":\""+path+"\"}}"; path = ""; last=[-1,-1, 0]; }
+
+                    svg+="\n\n\"result\":{\"nb\":"+nb+",\"values\":["+ret+"],\"fo\":\""+
+                                                $("#bg",settings.svg.root()).attr("class")+"\",\"mt\":"+
+                                                (!$("#rotturtle", settings.svg.root()).attr("class") ||
+                                                 !$("#rotturtle", settings.svg.root()).attr("class").length)+"}";
+                }
+                
+                $this.find("#devoutput textarea").val(svg).parent().show();
             },
             submit: function() {
                 var $this = $(this), settings = helpers.settings($this);
@@ -814,7 +820,6 @@
                         settings.score = Math.round(5 - (nberror+(errcolor?1:0)+valerror+(cterror?5:0)+(bgerror?5:0)));
                         if (settings.score<0) { settings.score=0; }
                     }
-                    //alert(settings.score);
 
                     setTimeout(function() { helpers.end($this); }, 500);
                 }

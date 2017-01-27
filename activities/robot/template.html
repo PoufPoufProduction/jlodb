@@ -797,6 +797,15 @@
     </div></div>
 
     <div id="touch01" ><div><img src="res/img/effects/touch01.svg"/></div></div>
+    
+    
+    <div id="devmode" ontouchstart="$(this).closest('.robot').robot('devmode');event.preventDefault();"
+                      onclick="$(this).closest('.robot').robot('devmode');" ><img src="res/img/white/snapshot.svg"/></div>
+                      
+    <div id="devoutput" ontouchstart="$(this).hide();event.preventDefault();" onclick="$(this).hide();">
+        <textarea ontouchstart="$(this).focus();event.stopPropagation();event.preventDefault();"
+                  onclick="$(this).focus();event.stopPropagation();"></textarea>
+    </div>
 
     <div id="splashex" ontouchstart="$(this).hide().closest('.robot').robot('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.robot').robot('next');"><div>
