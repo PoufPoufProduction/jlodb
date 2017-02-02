@@ -62,9 +62,8 @@
             // GET EXERCICE FROM DATABASE AND LAUNCH
             var url     = "api/exercice.php"+args;
 
-
             $.getJSON(url, function (data) {
-                if (data.status=="error") { helpers.exercice($this, {id:"ioy"}); }
+                if (data.status=="error") { helpers.exercice($this, {id:"nlx"}); }
                 else {
                     var d = data.data;
                     if (data.locale) { if (d.locale) { d.locale = $.extend(d.locale, data.locale); } else { d.locale = data.locale; } }
