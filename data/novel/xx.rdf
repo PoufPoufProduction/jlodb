@@ -2,17 +2,46 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dct="http://purl.org/dc/terms/">
 
+         
     <rdf:Description>
         <dct:identifier>x</dct:identifier>
+        <dct:title xml:lang="fr-FR">Indiquer un exercice inconnu.</dct:title>
+        <dct:description><![CDATA["class":"nosplash","content":{"def":{"bg":{"img":{"it":"res/img/layers/it_1_01.svg"},"attr":{}},"troy":{"text":"Troy","img":{"default":"res/img/characters/imp_default_t01.svg"},"attr":{"class":"portrait","name":"value","background-color":"rgba(0,20,40,0.8)"}}},"story":{"init":[{"type":"show","value":"bg it"},{"type":"show","value":"troy default","attr":{"anim":"fromright","left":"40%"}},{"type":"dialog","from":"troy","text":"d0"},{"type":"dialogg","from":"troy","text":"d1"},{"type":"hide","value":"troy","attr":{"anim":"toright"}},{"type":"dialog"}]}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"glossary":{"d0":"C'est ennuyeux mais je [b]ne trouve pas[/b] l'exercice demandé.","d1":"[br]Désolé..."}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>root</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>x</dct:alternative>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>a</dct:identifier>
+        <dct:title xml:lang="fr-FR">Créer, à partir de ce template, un roman visuel.</dct:title>
+        <dct:description><![CDATA["dev":true,"content":{"def":{"bg":{"img":{"board":"res/img/layers/board_1_01.svg","building":"res/img/layers/building_1_01.svg","city":"res/img/layers/city_1_01.svg","house":"res/img/layers/house_1_01.svg","it":"res/img/layers/it_1_01.svg"},"attr":{}},"wikipe":{"text":"Wikipe","img":{"happy":"res/img/characters/wikipe01.svg"},"attr":{"class":"char"}},"richard":{"text":"Richard","img":{"m":"res/img/characters/richard_default_m01.svg"},"attr":{"class":"portrait","background-color":"rgba(40,0,40,0.8)"}},"tux":{"text":"Tux","img":{"r":"res/img/characters/tux_default_r01.svg"},"attr":{"class":"portrait","name":"rgba(0,20,40,0.8)"}},"rey":{"text":"Rey","img":{"default":"res/img/characters/imp_default_r01.svg"},"attr":{"class":"portrait","background-color":"rgba(0,40,20,0.8)"}},"troy":{"text":"Troy","img":{"default":"res/img/characters/imp_default_t01.svg"},"attr":{"class":"portrait","name":"value","background-color":"rgba(0,20,40,0.8)"}}},"story":{"init":[{"type":"show","value":"bg it"},{"type":"show","value":"rey default","attr":{"anim":"fromright","left":"40%"}},{"type":"dialog","from":"rey","text":"d0"},{"type":"dialogg","from":"rey","text":"d1"},{"type":"hide","value":"troy","attr":{"anim":"toright"}},{"type":"dialog"}]}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"glossary":{"d0":"C'est ennuyeux mais je [b]ne trouve pas[/b] l'exercice demandé.","d1":"[br]Désolé..."}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>root</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>a</dct:alternative>
+    </rdf:Description>
+         
+         
+    <rdf:Description>
+        <dct:identifier>b</dct:identifier>
         <dct:title xml:lang="fr-FR">Roman graphique de test.</dct:title>
-        <dct:description><![CDATA["content":{"def":{ "e": { "text":"Wikipe","img":{"happy":"characters/wikipe01.svg"}, "attr":{"class":"char"} },"l": { "text":"Lapin","img":{"default":"ppvc/bunny01.svg"}, "attr":{"background-color":"red" } }, "bg": { "img":{"normal":"background/board.svg"} }},"story":{"init":[{"type":"op","value":"$first=true"},{"type":"show","value":"bg normal"},{"type": "show","value":"e happy","attr":{"anim":"fromright","left":"25%"}}],"next":[{"type": "dialog", "text":"d1", "from": "e" },{ "type": "dialogg", "text":["$first","d2","d2b"] },{"type": "error"},{"type": "dialog", "text":["$first","d3","d3b"], "from": "e" },{"type": "dialog", "text":"d4", "from": "e" },{"type": "show","value":"e happy","attr":{"left":"-25%","anim":"move 2"}},{"type": "dialogg", "text":"d5" },{"type": "dialog", "text":"d6", "from": "e" },{ "type": "menu","value":[{"text":["$first","recommencer","recommencer (encore)"],"story":[{"type":"op","value":"$first=false"},{ "type": "dialog", "text":"Très bien. ", "from":"e" },{ "type": "dialogg", "text":"C'est reparti." },{"type": "dialog"},{"type": "show","value":"e happy","attr":{"anim":"move","left":"25%"}},{"type":"jump","value":"next" }] },{ "text" : "quitter", "story": [ { "type": "dialog", "text":"A bientôt !","from":"e" },{"type": "dialog"},{"type": "hide","value":"e","attr":{"anim":"toleft"}} ] }]}]}}]]></dct:description>
+        <dct:description><![CDATA["content":{"def":{ "e": { "text":"Wikipe","img":{"happy":"res/img/characters/wikipe01.svg"}, "attr":{"class":"char"} },"l": { "text":"Lapin","img":{"default":"res/img/ppvc/bunny01.svg"}, "attr":{"background-color":"red" } }, "bg": { "img":{"normal":"res/img/layers/board_1_01.svg"} }},"story":{"init":[{"type":"op","value":"$first=true"},{"type":"op","value":"$valeur=1"},{"type":"op","value":"$tableau=[1,2,3,4]"},{"type":"show","value":"bg normal"},{"type": "show","value":"e happy","attr":{"anim":"fromright","left":"25%"}}],"next":[{"type": "dialog", "text":"d1", "from": "e" },{ "type": "dialogg", "text":["$first","d2","d2b"] },{"type": "error"},{"type": "dialog", "text":["$first","d3","d3b"], "from": "e" },{"type": "dialog", "text":"d4", "from": "e" },{"type": "show","value":"e happy","attr":{"left":"-25%","anim":"move 2"}},{"type": "dialogg", "text":"d5" },{"type": "dialog", "text":"d6", "from": "e" },{ "type": "menu","value":[{"text":["$first","recommencer","recommencer (encore)"],"story":[{"type":"op","value":"$first=false"},{ "type": "dialog", "text":"Très bien. ", "from":"e" },{ "type": "dialogg", "text":"C'est reparti." },{"type": "dialog"},{"type": "show","value":"e happy","attr":{"anim":"move","left":"25%"}},{"type":"jump","value":"next" }] },{ "text" : "quitter", "story": [ { "type": "dialog", "text":"A bientôt !","from":"e" },{"type": "dialog"},{"type": "hide","value":"e","attr":{"anim":"toleft"}} ] }]}]}},"dev":true]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"glossary":{"d1":"[b]Bonjour[/b] tout le [red]monde[/red] ![br]","d2":"Bienvenue dans ce tout premier roman graphique.","d2b":"Encore vous ?!?","d3":"Vous ne l'avez certainement pas vu, mais vous venez de commettre une [b]erreur[/b]. Votre note vient de baisser d'un point. Pas de chance !","d3b":"Vous venez de faire encore une erreur. Décidément.","d4":"Je me déplace un peu pour laisser de la place au menu.[br]","d5":"Voila.","d6":"Que choisissez-vous de faire désormais ?"}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>x</dct:alternative>
+        <dct:alternative>a</dct:alternative>
     </rdf:Description>
+    
+    
+    
 
 
 </rdf:RDF>

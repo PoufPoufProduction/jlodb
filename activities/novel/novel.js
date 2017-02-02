@@ -95,11 +95,16 @@
                 }); }
 
                 $this.find("#board").bind("mousedown touchstart", function(_event) {
-                    switch (settings.state) {
-                        case "dialog" : settings.state=""; setTimeout(function(){helpers.run($this);}, 10); break;
+                    var settings = helpers.settings($this);
+                    if (settings.interactive) {
+                        switch (settings.state) {
+                            case "dialog" : settings.state=""; setTimeout(function(){helpers.run($this);}, 10); break;
+                        }
                     }
                     _event.preventDefault();
                 });
+                
+                if (settings.dev) { $this.find("#devmode").show(); }
 
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
@@ -118,10 +123,12 @@
         init: function($this) {
             var settings = helpers.settings($this);
             var first = false, name = "init";
+            settings.state  = "";
+            settings.pc     = [];
+            $this.find("#board").html("");
             for (var i in settings.content.story) { if (!first) { first = true; name = i;} }
             settings.pc.push({story:settings.content.story[name], p:0, n:name });
             settings.def = $.extend(true, {}, settings.def, settings.content.def);
-
             helpers.run($this);
         },
         run: function($this) {
@@ -155,13 +162,13 @@
                             html+= "</div>";
                             $this.find("#board").append(html);
                             timer = -1;
-                            setTimeout(function(){ settings.state = "dialog"}, 200);
+                            setTimeout(function(){ settings.state = "dialog"; }, 200);
                         }
                         break;
                     case "dialogg" :
                         $this.find("#board #dialog .content").append(helpers.text($this, elt.text)).parent().show();
                         timer = -1;
-                        setTimeout(function(){ settings.state = "dialog"}, 200);
+                        setTimeout(function(){ settings.state = "dialog"; }, 200);
                         break;
                     case "error" : settings.score -= elt.value?elt.value:1; break;
                     case "hide" :
@@ -216,20 +223,9 @@
                             if ($elt.length) {
                                 oldleft  = $elt.css("left");
                                 oldtop = $elt.css("top");
-                                if (e.length>1) { $elt.find("img").attr("src","res/img/"+def.img[e[1]]); }
+                                if (e.length>1) { $elt.find("img").attr("src",def.img[e[1]]); }
                             }
-                            else {
-                                var style="";
-                                if (def.attr&&def.attr.width)       { style+="width:"+def.attr.width+"em;" }
-                                if (def.attr&&def.attr.height)      { style+="height:"+def.attr.height+"em;" }
-                                if (def.attr&&def.attr.opacity)     { style+="opacity:"+def.attr.opacity+";" }
-                                if (def.attr&&def.attr.zindex)      { style+="z-index:"+def.attr.index+";" }
-                                if (def.attr&&def.attr.size)        { style+="font-size:"+def.attr.size+"em;" }
-                                $elt = $("<div "+(def.attr&&def.attr.class?"class='"+def.attr.class+"' ":"")+"id='elt"+e[0]+"'"+
-                                         (style?" style='"+style+"'":"")+
-                                         "><img src='res/img/"+def.img[e[1]]+"'/></div>");
-                                $this.find("#board").append($elt);
-                            }
+                            else { $elt = $(helpers.imgfromdef(def.img[e[1]], e[0], def.attr)); $this.find("#board").append($elt); }
 
                             var leftv= (elt.attr && elt.attr.left)? elt.attr.left : ( (def.attr && def.attr.left)?def.attr.left:-1 );
                             var topv= (elt.attr && elt.attr.top)? elt.attr.top : ( (def.attr && def.attr.top)?def.attr.top:-1 );
@@ -275,8 +271,477 @@
                         setTimeout(function(){helpers.run($this);}, 100);
                     }
                     else {
-                        if (settings.score<0) { settings.score = 0; }
-                        setTimeout(function(){helpers.end($this);}, 500);
+                        if (!settings.dev)
+                        {
+                            if (settings.score<0) { settings.score = 0; }
+                            setTimeout(function(){helpers.end($this);}, 500);
+                        }
+                    }
+                }
+            }
+        },
+        imgfromdef: function(_img, _id, _attr) {
+            var style="";
+            if (_attr&&_attr.width)       { style+="width:"+_attr.width+"em;" }
+            if (_attr&&_attr.height)      { style+="height:"+_attr.height+"em;" }
+            if (_attr&&_attr.opacity)     { style+="opacity:"+_attr.opacity+";" }
+            if (_attr&&_attr.zindex)      { style+="z-index:"+_attr.index+";" }
+            if (_attr&&_attr.size)        { style+="font-size:"+_attr.size+"em;" }
+            elt = "<div "+(_attr&&_attr.class?"class='"+_attr.class+"' ":"")+"id='elt"+_id+"'"+
+                    (style?" style='"+style+"'":"")+"><img src='"+_img+"'/></div>";
+            return elt;
+            
+        },
+        devmode: {
+            devvar: {
+                update: function($this) {
+                    var settings    = helpers.settings($this);
+                    var html="";
+                    html+="<div class='elt'><div class='label'>score</div><div class='type tnumber'>number</div>"+
+                          "<div class='value'>"+settings.score+"</div></div>";
+                    for (var i in settings.data) {
+                        var t = typeof(settings.data[i]);
+                        html+="<div class='elt' id='"+i+"'>";
+                        html+="<div class='label'>"+i+"</div>";
+                        html+="<div class='type t"+t+"'>"+t+"</div>";
+                        switch (t) {
+                            case "boolean":
+                                html+="<select class='value'><option>true</option>"+
+                                      "<option "+(settings.data[i]?"":"selected='selected'")+">false</option></select>";
+                            break;
+                            default:
+                                html+="<input class='value' value=\""+settings.data[i]+"\"/>";
+                            break;
+                        }
+                        html+="</div>";
+                    }
+                    $this.find("#devvarpanel").html(html).show();
+                    $this.find("#devvarpanel .value").change(function() { helpers.devmode.devvar.save($this); });
+                },
+                save: function($this) {
+                    var settings    = helpers.settings($this);
+                    for (var i in settings.data) {
+                        var t = typeof(settings.data[i]);
+                        var v = $this.find("#devvarpanel #"+i+" .value").val();
+                        switch(t) {
+                            case "boolean": settings.data[i] = (v=='true');    break;
+                            case "number" : settings.data[i] = parseInt(v);    break;
+                            case "string" : settings.data[i] = v;              break;
+                            case "object" : settings.data[i] = v.split(',');   break;
+                        }
+                    }
+                }
+            },
+            devdef: {
+                elt: function(_id, _elt) {
+                    var html="";
+                    html+="<div class='elt' id='"+_id+"'>";
+                    html+="<input class='label eltdata' value=\""+_id+"\"/>";
+                    html+="<input class='value eltdata' value=\""+(_elt.text?_elt.text:"")+"\"/>";
+                    html+="<div class='icon' id='addimg'><img src='res/img/white/add.svg'/></div>";
+                    html+="<div class='icon' id='addattr'><img src='res/img/white/add.svg'/></div>";
+                    html+="<div class='icon' id='removeelt'><img src='res/img/white/delete.svg'/></div>";
+                    html+="</div>";
+                    var $html=$(html);
+                    $html.children("input").change(function() { $(this).closest("#devdefpanel").find("#savedef").addClass("s"); });
+                    
+                    for (var j in _elt.img)  { $html.append(helpers.devmode.devdef.img (j, _elt.img[j]));  }
+                    for (var j in _elt.attr) { $html.append(helpers.devmode.devdef.attr(j, _elt.attr[j])); }
+                    
+                    $html.children("#addimg").bind("mousedown touchstart", function(event) {
+                        $(this).closest("#devdefpanel").find("#savedef").addClass("s");
+                        $(this).closest(".elt").addClass("s").append(helpers.devmode.devdef.img("name", "url"));
+                        event.preventDefault();
+                    });
+                    $html.children("#addattr").bind("mousedown touchstart", function(event) {
+                        $(this).closest("#devdefpanel").find("#savedef").addClass("s");
+                        $(this).closest(".elt").addClass("s").append(helpers.devmode.devdef.attr("name", "value"));
+                        event.preventDefault();
+                    });
+                    $html.children("#removeelt").bind("mousedown touchstart", function(event) {
+                        $(this).closest("#devdefpanel").find("#savedef").addClass("s");
+                        $(this).closest(".elt").detach();
+                        event.preventDefault();
+                    });
+                    
+                    $html.children().first().bind("mousedown touchstart", function(event) {
+                        $(this).parent().toggleClass("s");
+                    });
+                    
+                    return $html;
+                },
+                img: function(_name, _value) {
+                    var html="<div class='eltimg toggle'>"
+                    html+="<input class='label' value=\""+_name+"\"/>";
+                    html+="<input class='value' value=\""+_value+"\"/>";
+                    html+="<div class='icon snapshot'><img src='res/img/white/snapshot.svg'/></div>";
+                    html+="<div class='icon' id='removeimg'><img src='res/img/white/delete.svg'/></div>";
+                    html+="</div>";
+                    var $html = $(html);
+                    
+                    $html.children("input").change(function() { $(this).closest("#devdefpanel").find("#savedef").addClass("s"); });
+                    
+                    $html.children("#removeimg").bind("mousedown touchstart", function(event) {
+                        $(this).closest("#devdefpanel").find("#savedef").addClass("s");
+                        $(this).closest(".eltimg").detach();
+                        event.preventDefault();
+                    });
+                    
+                    $html.children(".snapshot").bind("mousedown touchstart", function(event) {
+                        var def = {};
+                        $(this).closest(".elt").find(".eltattr").each(function() {
+                            def[$(this).find('.label').val()] = $(this).find(".value").val();
+                        });
+                        $(this).closest("#devpanel").find("#devexport").html(helpers.imgfromdef($(this).prev().val(), "x", def));
+                        event.preventDefault();
+                    });
+                    
+                    return $html;
+                },
+                attr: function(_name, _value) {
+                    var html="<div class='eltattr toggle'>"
+                    html+="<input class='label' value=\""+_name+"\"/>";
+                    html+="<input class='value' value=\""+_value+"\"/>";
+                    html+="<div class='icon' id='removeattr'><img src='res/img/white/delete.svg'/></div>";
+                    html+="</div>";
+                    var $html = $(html);
+                    
+                    $html.children("input").change(function() { $(this).closest("#devdefpanel").find("#savedef").addClass("s"); });
+                    
+                    $html.children("#removeattr").bind("mousedown touchstart", function(event) {
+                        $(this).closest("#devdefpanel").find("#savedef").addClass("s");
+                        $(this).closest(".eltattr").detach();
+                        event.preventDefault();
+                    });
+                    
+                    return $html;
+                },
+                update: function($this) {
+                    var settings    = helpers.settings($this);
+                    var html="<div id='devdefmenu' class='menu'><div id='adddef'>add</div><div id='savedef'>save</div></div>";
+                    $this.find("#devdefpanel").html(html);
+                    for (var i in settings.content.def) {
+                        $this.find("#devdefpanel").append(helpers.devmode.devdef.elt(i, settings.content.def[i]));
+                    }
+                    $this.children("#devdefpanel #adddef").bind("mousedown touchstart", function(event) {
+                        $(this).next().addClass("s");
+                        $this.find("#devdefpanel").append(helpers.devmode.devdef.elt("new", {text:"name"}));
+                        event.preventDefault();
+                    });
+                    $this.children("#devdefpanel #savedef").bind("mousedown touchstart", function(event) {
+                        $(this).removeClass("s");
+                        helpers.devmode.devdef.save($this);
+                        event.preventDefault();
+                    });
+                    
+                    $this.find("#devdefpanel").show();
+                },
+                save: function($this) {
+                    var settings    = helpers.settings($this);
+                    var def={};
+                    $this.find("#devdefpanel .elt").each(function() {
+                        var elt     = {};
+                        var img     = {};
+                        var attr    = {};
+                        var id      = $(this).find(".label.eltdata").val();
+                        var text    = $(this).find(".value.eltdata").val();
+                        if (text) { elt.text = text; }
+                        $(this).find(".eltimg").each(function() { img[$(this).find(".label").val()] = $(this).find(".value").val(); });
+                        $(this).find(".eltattr").each(function() { attr[$(this).find(".label").val()] = $(this).find(".value").val(); });
+                        
+                        if (img)  { elt.img = img; }
+                        if (attr) { elt.attr = attr; }
+                        def[id]=elt;
+                    });
+                    settings.content.def = def;
+                    settings.def = def;
+                }
+            },
+            devsto: {
+                story: function($this, _id, _def) {
+                    var settings    = helpers.settings($this);
+                    var html="";
+                    html+="<div class='elt'>";
+                    html+="<div class='move' id='up'>↑</div>";
+                    html+="<div class='move' id='down'>↓</div>";
+                    var name = _id;
+                    if ($.isArray(_id)) {
+                        var id1 = _id[1], id2 = _id[2];
+                        if (id1 && settings.glossary[id1]) { id1 = settings.glossary[id1]; }
+                        if (id2 && settings.glossary[id2]) { id2 = settings.glossary[id2]; }
+                        name="["+_id[0]+","+id1+","+id2+"]";
+                    }
+                    else if (name && settings.glossary[name]) { name = settings.glossary[name]; }
+                    
+                    
+                    html+="<input class='label' id='storyname' value=\""+name+"\"/>";
+                    html+="<select class='operation'>";
+                    html+="<option>dialog</option><option>dialogg</option><option>hide</option><option>if</option>";
+                    html+="<option>jump</option><option>menu</option><option>op</option><option>pause</option><option>show</option>";
+                    html+="</select>";
+                    html+="<div class='icon' id='addop'><img src='res/img/white/add.svg'/></div>";
+                    html+="<div class='icon' id='removeelt'><img src='res/img/white/delete.svg'/></div>";
+                    html+="</div>";
+                    var $html=$(html);
+                    
+                    for (var j in _def)  { $html.append(helpers.devmode.devsto.op ($this, _def[j]));  }
+                    
+                    $html.children("#removeelt").bind("mousedown touchstart", function(event) {
+                        $(this).closest("#devstopanel").find("#savesto").addClass("s");
+                        $(this).closest(".elt").detach();
+                        event.preventDefault();
+                    });
+                    
+                    $html.children("#addop").bind("mousedown touchstart", function(event) {
+                        $(this).closest("#devstopanel").find("#savesto").addClass("s");
+                        $(this).closest(".elt").addClass("s").append(
+                            helpers.devmode.devsto.op($this, {type: $(this).closest(".elt").find(".operation").val() }));
+                        event.preventDefault();
+                    });
+                    
+                    $html.children("#up").bind("mousedown touchstart", function(event) {
+                        var elt = $(this).parent(), prev = elt.prev();
+                        if (prev.hasClass("elt")) {
+                            $(this).closest("#devstopanel").find("#savesto").addClass("s");
+                            elt.detach().insertBefore(prev);
+                        }
+                        event.preventDefault();
+                    });
+                    
+                    $html.children("#down").bind("mousedown touchstart", function(event) {
+                        var elt = $(this).parent(), next = elt.next();
+                        if (next.hasClass("elt")) {
+                            $(this).closest("#devstopanel").find("#savesto").addClass("s");
+                            elt.detach().insertAfter(next);
+                        }
+                        event.preventDefault();
+                    });
+                    
+                    $html.children(".label").first().bind("mousedown touchstart", function(event) {
+                        $(this).parent().toggleClass("s");
+                    });
+                    
+                    return $html;
+                },
+                attr: function(_name, _value) {
+                    var html="<div class='elt eltattr'>"
+                    html+="<input class='label' value=\""+_name+"\"/>";
+                    html+="<input class='value' value=\""+_value+"\"/>";
+                    html+="<div class='icon' id='removeattr'><img src='res/img/white/delete.svg'/></div>";
+                    html+="</div>";
+                    var $html = $(html);
+                    
+                    $html.children("input").change(function() { $(this).closest("#devstopanel").find("#savesto").addClass("s"); });
+                    
+                    $html.children("#removeattr").bind("mousedown touchstart", function(event) {
+                        $(this).closest("#devstopanel").find("#savesto").addClass("s");
+                        $(this).closest(".eltattr").detach();
+                        event.preventDefault();
+                    });
+                    
+                    return $html;
+                },
+                op: function($this, _def) {
+                    var settings    = helpers.settings($this);
+                    var html="<div class='elt eltaction toggle'>"
+                    html+="<div class='move' id='up'>↑</div>";
+                    html+="<div class='move' id='down'>↓</div>";
+                    html+="<div class='label'>"+_def.type+"</div>";
+                    switch(_def.type) {
+                        case "show": case "hide":
+                            html+="<input class='value' value=\""+(_def.value?_def.value:"")+"\"/>";
+                            html+="<div class='icon' id='addattr'><img src='res/img/white/add.svg'/></div>";
+                            html+="<div class='icon' id='removeop'><img src='res/img/white/delete.svg'/></div>";
+                        break;
+                        case "dialog" : case "dialogg" :
+                            html+="<input class='value' id='dialogvalue' value=\""+(_def.from?_def.from:"")+"\"/>";
+                            var test="", d1=_def.text, d2="";
+                            if ($.isArray(_def.text)) { test = _def.text[0]; d1 = _def.text[1], d2  = _def.text[2]; }
+                            html+="<input id='dialogtest' class='value' value=\""+(test?test:"")+"\"/>";
+                            if (d1 && settings.glossary[d1]) { d1 = settings.glossary[d1]; }
+                            if (d2 && settings.glossary[d2]) { d2 = settings.glossary[d2]; }
+                            
+                            html+="<div class='icon' id='removeop'><img src='res/img/white/delete.svg'/></div>";
+                            
+                            html+="<textarea id='dialogd1' class='value'>"+(d1?d1:"")+"</textarea>";
+                            html+="<textarea id='dialogd2' class='value'>"+(d2?d2:"")+"</textarea>";
+                        break;
+                        case "if" :
+                            html+="<input class='value' value=\""+(_def.cond?_def.cond:"")+"\"/>";
+                            html+="<div class='icon' id='removeop'><img src='res/img/white/delete.svg'/></div>";
+                            html+="<div class='substory'></div>";
+                        break;
+                        case "menu" :
+                            html+="<div class='icon' id='addstory'><img src='res/img/white/add.svg'/></div>";
+                            html+="<div class='icon' id='removeop'><img src='res/img/white/delete.svg'/></div>";
+                            html+="<div class='substory'></div>"; break;
+                        default :
+                            html+="<input class='value' value=\""+(_def.value?_def.value:"")+"\"/>";
+                            html+="<div class='icon' id='removeop'><img src='res/img/white/delete.svg'/></div>";
+                        break;
+                    }
+                    html+="</div>";
+                    var $html = $(html);
+                    
+                    for (var j in _def.attr) { $html.append(helpers.devmode.devsto.attr(j, _def.attr[j])); }
+                    
+                    $html.children("#up").bind("mousedown touchstart", function(event) {
+                        var elt = $(this).parent(), prev = elt.prev();
+                        if (prev.hasClass("eltaction")) {
+                            $(this).closest("#devstopanel").find("#savesto").addClass("s");
+                            elt.detach().insertBefore(prev);
+                        }
+                        event.preventDefault();
+                    });
+                    
+                    $html.children("#down").bind("mousedown touchstart", function(event) {
+                        var elt = $(this).parent(), next = elt.next();
+                        if (next.hasClass("eltaction")) {
+                            $(this).closest("#devstopanel").find("#savesto").addClass("s");
+                            elt.detach().insertAfter(next);
+                        }
+                        event.preventDefault();
+                    });
+                    
+                    $html.children("#removeop").bind("mousedown touchstart", function(event) {
+                        $(this).closest("#devstopanel").find("#savesto").addClass("s");
+                        $(this).closest(".eltaction").detach();
+                        event.preventDefault();
+                    });
+                    
+                    $html.children("#addattr").bind("mousedown touchstart", function(event) {
+                        $(this).closest("#devstopanel").find("#savesto").addClass("s");
+                        $(this).closest(".eltaction").append( helpers.devmode.devsto.attr("new", ""));
+                        event.preventDefault();
+                    });
+                    
+                    $html.children("#addstory").bind("mousedown touchstart", function(event) {
+                        $(this).closest("#devstopanel").find("#savesto").addClass("s");
+                        $(this).parent().children(".substory").append(helpers.devmode.devsto.story($this, "choice",{}));
+                        
+                        event.preventDefault();
+                    });
+                    
+                    if (_def.type=="menu") {
+                        for (var i in _def.value) {
+                            $html.children(".substory").append(helpers.devmode.devsto.story($this, _def.value[i].text, _def.value[i].story));
+                        }
+                    }
+                    else if (_def.type=="if") {
+                        $html.children(".substory").append(helpers.devmode.devsto.story($this, "then", _def.value?_def.value[0]:{}));
+                        $html.children(".substory").append(helpers.devmode.devsto.story($this, "else", _def.value?_def.value[1]:{}));
+                    }
+                    
+                    return $html;
+                },
+                update: function($this) {
+                    var settings    = helpers.settings($this);
+                    var html="<div id='devstomenu' class='menu'><div id='addsto'>add</div><div id='savesto'>save</div></div>";
+                    $this.find("#devstopanel").html(html);
+                    for (var i in settings.content.story) {
+                        $this.find("#devstopanel").append(helpers.devmode.devsto.story($this, i, settings.content.story[i]));
+                    }
+                    
+                    $this.find("#devstopanel #addsto").bind("mousedown touchstart", function(event) {
+                        $(this).next().addClass("s");
+                        $this.find("#devstopanel").append(helpers.devmode.devsto.story($this, "new", []));
+                        event.preventDefault();
+                    });
+                    $this.find("#devstopanel #savesto").bind("mousedown touchstart", function(event) {
+                        $(this).removeClass("s");
+                        helpers.devmode.devsto.save.all($this);
+                        event.preventDefault();
+                    });
+                    
+                    $this.find("#devstopanel").show();
+                    
+                },
+                save: {
+                    action: function(_actions, _glossary, $action) {
+                        var t=$action.children(".label").text();
+                        var v=$action.children(".value").val();
+                        var ret={type:t};
+                        switch(t) {
+                            case "show" : case "hide" :
+                                if (v) { ret.value = v; }
+                                var attr={}, empty=true;
+                                $action.find(".eltattr").each(function() {
+                                    var t=$(this).find(".label").val();
+                                    var v=$(this).find(".value").val();
+                                    if (t&&v) { empty=false; attr[t]=v; }
+                                });
+                                if (!empty) { ret.attr = attr; }
+                            break;
+                            case "if":
+                                ret.cond=v;
+                                var stories=[];
+                                $action.children(".substory").children().each(function() {
+                                    var actions=[];
+                                    $(this).children(".eltaction").each(function() {
+                                        helpers.devmode.devsto.save.action(actions, _glossary, $(this));
+                                    });
+                                    stories.push(actions);
+                                });
+                                ret.value=stories;
+                                break;
+                            case "menu" :
+                                var menu=[];
+                                $action.children(".substory").children().each(function() {
+                                    var n = Object.keys(_glossary).length;
+                                    var label = $(this).children("#storyname").val();
+                                    if (label&&label[0]=='[') {
+                                        label=label.substr(1,label.length-2);
+                                        label=label.split(",");
+                                        
+                                        _glossary["d"+n]    =label[1]; label[1] = "d"+n;
+                                        _glossary["d"+(n+1)]=label[2]; label[2] = "d"+(n+1);
+                                    }
+                                    else { _glossary["d"+n] =label ;   label = "d"+n; }
+                                    var actions=[];
+                                    $(this).children(".eltaction").each(function() {
+                                        helpers.devmode.devsto.save.action(actions, _glossary, $(this));
+                                    });
+                                    menu.push({text:label, story:actions});
+                                });
+                                ret.value=menu;
+                            break;
+                            case "dialog" : case "dialogg" :
+                                if (v) { ret.from = v; }
+                                var test = $action.find("#dialogtest").val();
+                                var d1 = $action.find("#dialogd1").val();
+                                var d2 = $action.find("#dialogd2").val();
+                                if (d1) {
+                                    var n=Object.keys(_glossary).length;
+                                    _glossary["d"+n]=d1;
+                                    if (test&&d2) {
+                                        ret.text=[test,"d"+n,"d"+(n+1)];
+                                        _glossary["d"+(n+1)]=d2;
+                                    }
+                                    else { ret.text = "d"+n; }
+                                }
+                            break;
+                            default: if (v) { ret.value = v; } break;
+                        }
+                        _actions.push(ret);
+                    },
+                    story: function(_story, _glossary, $elt) {
+                        var label = $elt.children("#storyname").val();
+                        var actions=[];
+                        $elt.children(".eltaction").each(function() {
+                            helpers.devmode.devsto.save.action(actions, _glossary, $(this));
+                        });
+                        _story[label]=actions;
+                    },
+                    all: function($this) {
+                        var settings    = helpers.settings($this);
+                        $this.find("#devcon").hide();
+                        var story    = {};
+                        var glossary = {};
+                        $this.find("#devstopanel>.elt").each(function() {
+                            helpers.devmode.devsto.save.story(story, glossary, $(this)); }
+                        );
+                        settings.content.story = story;
+                        settings.glossary = glossary;
                     }
                 }
             }
@@ -295,7 +760,8 @@
                     score           : 5,
                     pc              : [],
                     data            : {},
-                    def             : { default: { text:"default" } }
+                    def             : { default: { text:"default" } },
+                    interactive     : false
                 };
 
                 return this.each(function() {
@@ -317,25 +783,95 @@
             },
             menu: function(_elt, _index) {
                 var $this = $(this) , settings = helpers.settings($this);
-                $(_elt).addClass("touch"); setTimeout(function() { $(_elt).removeClass("touch"); }, 50);
+                if (settings.interactive) {
+                    $(_elt).addClass("touch"); setTimeout(function() { $(_elt).removeClass("touch"); }, 50);
 
-            
-                var pc          = settings.pc[settings.pc.length-1];
-                if (pc.p<pc.story.length) {
-                    var elt         = pc.story[pc.p];
-                    pc.p++;
-                    settings.pc.push({story:elt.value[_index].story, p:0, n:"menu"});
-                    setTimeout(function() { $this.find("#menu").detach(); helpers.run($this); }, 100);
+                    var pc          = settings.pc[settings.pc.length-1];
+                    if (pc.p<pc.story.length) {
+                        var elt         = pc.story[pc.p];
+                        pc.p++;
+                        settings.pc.push({story:elt.value[_index].story, p:0, n:"menu"});
+                        setTimeout(function() { $this.find("#menu").detach(); helpers.run($this); }, 100);
+                    }
                 }
-
             },
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
+                $this.find("#devpanel").hide();
+                settings.interactive = true;
                 helpers.init($this);
             },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 settings.context.onquit($this,{'status':'abort'});
+            },
+            devcon: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+                $this.find("#devpanel").hide();
+                settings.interactive = true;
+            },
+            devvar: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+                $this.find("#devmenu>div").removeClass("s");
+                $this.find("#devvar").addClass("s");
+                $this.find(".devpanel").hide();
+                helpers.devmode.devvar.update($this);
+            },
+            devdef: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+                $this.find("#devmenu>div").removeClass("s");
+                $this.find("#devdef").addClass("s");
+                $this.find(".devpanel").hide();
+                helpers.devmode.devdef.update($this);
+            },
+            devsto: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+                $this.find("#devmenu>div").removeClass("s");
+                $this.find("#devsto").addClass("s");
+                $this.find(".devpanel").hide();
+                helpers.devmode.devsto.update($this);
+            },
+            devmode: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+                settings.interactive = false;
+                var selected = $this.find("#devmenu .s").attr("id");
+                if (selected && helpers.devmode[selected] && helpers.devmode[selected].update) { helpers.devmode[selected].update($this); }
+                $this.find("#devcon").show();
+                $this.find('#devpanel').show()
+            },
+            devexp: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+                $this.find("#devmenu>div").removeClass("s");
+                $this.find("#devexp").addClass("s");
+                $this.find(".devpanel").hide();
+                var data = "";
+                data+='"content":'+JSON.stringify(settings.content);
+                data+=",";
+                data+='"glossary":'+JSON.stringify(settings.glossary);
+                $this.find("#devexppanel textarea").val(data);
+                $this.find("#devexppanel").show();
+            },
+            devimp: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+                $this.find("#devmenu>div").removeClass("s");
+                $this.find("#devimp").addClass("s");
+                $this.find(".devpanel").hide();
+                $this.find("#devimppanel").show();
+            },
+            import: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+                $this.find("#devmenu>div").removeClass("s");
+                $this.find(".devpanel").hide();
+                var data = $this.find("#devimppanel textarea").val();
+                if (data[0]!='{') { data = '{'+data+'}'; }
+                try { data = jQuery.parseJSON(data); } catch (e) { alert("[JSON ERROR] "+e.message); return; }
+                $this.find("#devcon").hide();
+                $this.find("#devimppanel textarea").val("");
+                settings = $.extend({}, settings, data);
+                settings.pc  = [];
+                settings.data= {};
+                helpers.settings($this, settings);
+                
             }
         };
 
