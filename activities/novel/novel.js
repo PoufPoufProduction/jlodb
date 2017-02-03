@@ -43,7 +43,7 @@
         end: function($this) {
             var settings = helpers.settings($this);
             helpers.unbind($this);
-            settings.context.onquit($this,{'status':'success','score':settings.score});
+            settings.context.onquit($this,{'status':'success','score':settings.score,'data':settings.data});
         },
         format: function(_text) {
             for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
@@ -123,8 +123,9 @@
         init: function($this) {
             var settings = helpers.settings($this);
             var first = false, name = "init";
-            settings.state  = "";
-            settings.pc     = [];
+            settings.state      = "";
+            settings.pc         = [];
+            settings.running    = false;
             $this.find("#board").html("");
             for (var i in settings.content.story) { if (!first) { first = true; name = i;} }
             settings.pc.push({story:settings.content.story[name], p:0, n:name });
@@ -134,7 +135,10 @@
         run: function($this) {
             var settings    = helpers.settings($this);
             var pc          = settings.pc[settings.pc.length-1];
-
+            
+            // Some critical animation may last too long, just waiting for a little bit more.
+            if (settings.running) { setTimeout(function(){helpers.run($this);}, 100 ); return; }
+            
             if (pc.p<pc.story.length) {
                 var elt         = pc.story[pc.p];
                 var timer       = 0;
@@ -176,12 +180,13 @@
                         var $elt = $this.find("#elt"+e[0]);
                         if ($elt.length) {
                             if (elt.attr && elt.attr.anim) {
+                                settings.running = true;
                                 var anim = elt.attr.anim.split(" ");
                                 timer = parseFloat(anim.length>1?anim[1]:1)*1000;
                                 switch(anim[0]) {
-                                    case "dissolve"  : $elt.animate({opacity:0}, timer, function() { $(this).detach(); }); break;
-                                    case "toright" : $elt.animate({left:"100%"}, timer, function() { $(this).detach(); }); break;
-                                    case "toleft" : $elt.animate({left:"-100%"}, timer, function() { $(this).detach(); }); break;
+                                    case "dissolve" : $elt.animate({opacity:0}, timer, function() { settings.running = false; $(this).detach(); }); break;
+                                    case "toright"  : $elt.animate({left:"100%"}, timer, function() { settings.running = false; $(this).detach(); }); break;
+                                    case "toleft"   : $elt.animate({left:"-100%"}, timer, function() { settings.running = false; $(this).detach(); }); break;
                                 }
                             }
                             else { $elt.detach(); }
@@ -194,7 +199,17 @@
                         if (rep) { settings.pc.push({story:elt.value[0], p:0, n:"if"}); }
                         else if (elt.value.length>1) { settings.pc.push({story:elt.value[1], p:0, n:"if"}); }
                         break;
-                    case "jump" : settings.pc = [ {story: settings.content.story[elt.value], p:0 , n:elt.value } ]; next =false; break;
+                    case "jump" :
+                        var dest = elt.value, reg = new RegExp("[$]","g");
+                        if (elt.value[0]=='$') {
+                            try { dest = eval(dest.replace(reg,"settings.data.")); }
+                            catch (e) { alert("error with: "+dest); }
+                        }
+                        if (settings.content.story[dest]) {
+                            settings.pc = [ {story: settings.content.story[dest], p:0 , n:dest } ];
+                            next =false;
+                        }
+                        break;
                     case "menu" :
                         next = false; timer = -1;
                         var $html=$("<div id='menu'></menu>");
@@ -423,12 +438,12 @@
                     for (var i in settings.content.def) {
                         $this.find("#devdefpanel").append(helpers.devmode.devdef.elt(i, settings.content.def[i]));
                     }
-                    $this.children("#devdefpanel #adddef").bind("mousedown touchstart", function(event) {
+                    $this.find("#devdefmenu #adddef").bind("mousedown touchstart", function(event) {
                         $(this).next().addClass("s");
                         $this.find("#devdefpanel").append(helpers.devmode.devdef.elt("new", {text:"name"}));
                         event.preventDefault();
                     });
-                    $this.children("#devdefpanel #savedef").bind("mousedown touchstart", function(event) {
+                    $this.find("#devdefmenu #savedef").bind("mousedown touchstart", function(event) {
                         $(this).removeClass("s");
                         helpers.devmode.devdef.save($this);
                         event.preventDefault();
@@ -642,12 +657,12 @@
                         $this.find("#devstopanel").append(helpers.devmode.devsto.story($this, i, settings.content.story[i]));
                     }
                     
-                    $this.find("#devstopanel #addsto").bind("mousedown touchstart", function(event) {
+                    $this.find("#devstomenu #addsto").bind("mousedown touchstart", function(event) {
                         $(this).next().addClass("s");
                         $this.find("#devstopanel").append(helpers.devmode.devsto.story($this, "new", []));
                         event.preventDefault();
                     });
-                    $this.find("#devstopanel #savesto").bind("mousedown touchstart", function(event) {
+                    $this.find("#devstomenu #savesto").bind("mousedown touchstart", function(event) {
                         $(this).removeClass("s");
                         helpers.devmode.devsto.save.all($this);
                         event.preventDefault();
@@ -759,6 +774,7 @@
                     state           : "",
                     score           : 5,
                     pc              : [],
+                    running         : false,
                     data            : {},
                     def             : { default: { text:"default" } },
                     interactive     : false

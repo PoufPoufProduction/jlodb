@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>jLoDb</title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="js/jquery.svg.min.js"></script>
+    <script type="text/javascript" src="js/jquery.jlodb.js"></script>
+    <script type="text/javascript" src="js/jlodb-ext.js"></script>
+    <script type="text/javascript" src="activities/novel/novel.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/jlodb.css" media="all" />
+    <link type="text/css" rel="stylesheet" href="activities/novel/style.css" media="all" />
+
+    <script>
+    
+var data={"content":{"def":{"bg":{"img":{"board":"res/img/layers/board_1_01.svg","building":"res/img/layers/building_1_01.svg","city":"res/img/layers/city_1_01.svg","house":"res/img/layers/house_1_01.svg","it":"res/img/layers/it_1_01.svg"},"attr":{}},"richard":{"text":"Richard","img":{"m":"res/img/characters/richard_default_n01.svg"},"attr":{"class":"portrait","background-color":"rgba(40,0,40,0.8)"}},"tux":{"text":"Tux","img":{"r":"res/img/characters/tux_default_r01.svg"},"attr":{"class":"portrait","background-color":"rgba(0,20,40,0.8)"}},"board":{"img":{"d":"res/img/site/board01.svg"},"attr":{"class":"sprite","size":"8"}},"img":{"img":{"d":"res/img/characters/richard_default_n01.svg","a":"res/img/art/box01.svg","b":"res/img/clipart/animal/zebra01.svg","c":"res/img/svginventoryicons/tool/compass01.svg"},"attr":{"class":"sprite","size":"7","top":"2%","left":"52%"}},"small":{"img":{"b":"res/img/clipart/animal/zebra01.svg"},"attr":{"class":"sprite","top":"22%","left":"72%"}}},"story":{"init":[{"type":"op","value":"$chapter='intro'"},{"type":"op","value":"$activity='puzzle'"},{"type":"op","value":"$jlodb=false"},{"type":"jump","value":"$chapter"}],"intro":[{"type":"show","value":"bg board","attr":{"anim":"dissolve 1"}},{"type":"show","value":"tux r","attr":{"anim":"fromright","left":"40%"}},{"type":"dialog","from":"tux","text":"d0"},{"type":"dialogg","from":"tux","text":"d1"},{"type":"dialog","from":"tux","text":"d2"},{"type":"dialogg","text":"d3"},{"type":"dialog"},{"type":"show","value":"tux r","attr":{"anim":"move 1","left":"-10%"}}],"menu":[{"type":"dialog","from":"tux","text":"d4"},{"type":"op","value":"$chapter='intro'"},{"type":"menu","value":[{"text":"d5","story":[{"type":"dialog","from":"tux","text":"d6"},{"type":"dialogg","text":"d7"},{"type":"dialog","from":"tux","text":"d8"},{"type":"dialog"},{"type":"hide","value":"tux","attr":{"anim":"toleft"}},{"type":"show","value":"richard m","attr":{"anim":"fromleft","left":"-10%"}},{"type":"dialog","from":"richard","text":"d9"},{"type":"dialogg","text":"d10"},{"type":"dialogg","text":"d11"},{"type":"jump","value":"jlodb"}]},{"text":"d12","story":[{"type":"dialog","from":"tux","text":"d13"},{"type":"dialog","from":"tux","text":"d14"},{"type":"dialog"},{"type":"hide","value":"tux","attr":{"anim":"toleft"}},{"type":"hide","value":"bg","attr":{"anim":"dissolve 1"}},{"type":"show","value":"bg building","attr":{"anim":"dissolve 1"}},{"type":"show","value":"tux r","attr":{"anim":"fromleft","left":"-10%"}},{"type":"jump","value":"activity"}]},{"text":"d15","story":[{"type":"jump","value":"module"}]}]}],"jlodb":[{"type":"dialog","from":"richard","text":["$jlodb","d16","d17"]},{"type":"op","value":"$jlodb=true"},{"type":"menu","value":[{"text":"d18","story":[{"type":"show","value":"board d","attr":{"anim":"fromright","left":"50%"}},{"type":"dialog","from":"richard","text":"d19"},{"type":"dialog","from":"richard","text":"d20"},{"type":"dialogg","text":"d21"},{"type":"dialog","from":"richard","text":"d22"},{"type":"dialogg","text":"d23"},{"type":"dialogg","text":"d24"},{"type":"dialogg","text":"d25"},{"type":"dialogg","text":"d26"},{"type":"dialog","from":"richard","text":"d27"},{"type":"dialogg","text":"d28"},{"type":"hide","value":"board","attr":{"anim":"toright"}},{"type":"jump","value":"jlodb"}]},{"text":"d29","story":[{"type":"dialog","from":"richard","text":"d30"},{"type":"dialogg","text":"d31"},{"type":"dialogg","text":"d32"},{"type":"dialogg","text":"d33"},{"type":"dialogg","text":"d34"},{"type":"dialog","from":"richard","text":"d35"},{"type":"dialogg","text":"d36"},{"type":"dialog","from":"richard","text":"d37"},{"type":"dialogg","text":"d38"},{"type":"dialog"},{"type":"show","value":"board d","attr":{"anim":"fromright","left":"50%"}},{"type":"dialog","from":"richard","text":"d39"},{"type":"show","value":"small b"},{"type":"dialog","from":"richard","text":"d40"},{"type":"hide","value":"small"},{"type":"show","value":"img b"},{"type":"dialogg","text":"d41"},{"type":"dialogg","text":"d42"},{"type":"dialog","from":"richard","text":"d43"},{"type":"hide","value":"img"},{"type":"hide","value":"board","attr":{"anim":"toright"}},{"type":"dialog"},{"type":"jump","value":"jlodb"}]},{"text":"d44","story":[{"type":"dialog","from":"richard","text":"d45"},{"type":"dialogg","text":"d46"},{"type":"show","value":"tux r","attr":{"anim":"fromright","left":"40%"}},{"type":"dialog","from":"tux","text":"d47"},{"type":"dialog","from":"richard","text":"d48"},{"type":"dialogg","text":"d49"},{"type":"hide","value":"tux","attr":{"anim":"toright"}},{"type":"dialog","from":"richard","text":"d50"},{"type":"dialogg","text":"d51"},{"type":"dialogg","text":"d52"},{"type":"dialogg","text":"d53"},{"type":"show","value":"board d","attr":{"anim":"fromright","left":"50%"}},{"type":"dialog","from":"richard","text":"d54"},{"type":"show","value":"img a"},{"type":"dialog","from":"richard","text":"d55"},{"type":"show","value":"img b"},{"type":"dialog","from":"richard","text":"d56"},{"type":"show","value":"img c"},{"type":"dialog","from":"richard","text":"d57"},{"type":"show","value":"img d"},{"type":"dialog","from":"richard","text":"d58"},{"type":"dialogg","text":"d59"},{"type":"dialogg","text":"d60"},{"type":"hide","value":"img"},{"type":"hide","value":"board","attr":{"anim":"toright"}},{"type":"dialog"},{"type":"jump","value":"jlodb"}]},{"text":"d61","story":[{"type":"dialog","from":"richard","text":"d62"},{"type":"dialog"},{"type":"hide","value":"richard","attr":{"anim":"toleft"}},{"type":"show","value":"tux r","attr":{"anim":"fromleft","left":"-10%"}},{"type":"dialog","from":"tux","text":"d63"},{"type":"jump","value":"menu"}]}]}],"prepactivity":[{"type":"show","value":"bg building","attr":{"anim":"dissolve 1"}},{"type":"show","value":"tux r","attr":{"left":"-10%","anim":"fromleft"}},{"type":"jump","value":"$activity"}],"activity":[{"type":"dialog","from":"tux","text":"d64"},{"type":"op","value":"$chapter='preactivity'"},{"type":"menu","value":[{"text":"d65","story":[{"type":"dialog","from":"tux","text":"d66"},{"type":"dialogg","text":"d67"},{"type":"jump","value":"activity_generic"}]},{"text":"d68","story":[]},{"text":"d69","story":[]},{"text":"d70","story":[]},{"text":"d71","story":[{"type":"dialog","from":"tux","text":"d72"},{"type":"dialogg","text":"d73"},{"type":"dialog"},{"type":"hide","value":"tux","attr":{"anim":"toleft"}},{"type":"hide","value":"bg","attr":{"anim":"dissolve 1"}},{"type":"show","value":"bg board","attr":{"anim":"dissolve 1"}},{"type":"show","value":"tux r","attr":{"anim":"fromleft","left":"-10%"}},{"type":"jump","value":"menu"}]}]}],"module":[],"activity_generic":[{"type":"dialog","from":"tux","text":"d74"},{"type":"menu","value":[{"text":"d75","story":[{"type":"dialog","from":"tux","text":"d76"},{"type":"jump","value":"puzzle"}]},{"text":"d77","story":[]},{"text":"d78","story":[]},{"text":"d79","story":[]},{"text":"d80","story":[]},{"text":"d81","story":[{"type":"jump","value":"activity"}]}]}],"puzzle":[{"type":"op","value":"$activity='puzzle'"},{"type":"dialog","from":"tux","text":"d82"},{"type":"menu","value":[{"text":"d83","story":[{"type":"op","value":"$id='peta101'"},{"type":"jump","value":"end"}]},{"text":"d84","story":[{"type":"op","value":"$id='pefrr201'"},{"type":"jump","value":"end"}]},{"text":"d85","story":[{"type":"op","value":"$id='peler10'"},{"type":"jump","value":"end"}]},{"text":"d86","story":[{"type":"op","value":"$id='pesya22'"},{"type":"jump","value":"end"}]},{"text":"d87","story":[{"type":"jump","value":"activity_generic"}]}]}],"end":[{"type":"dialog","from":"tux","text":"d88"},{"type":"dialog"},{"type":"hide","value":"tux","attr":{"anim":"toleft"}},{"type":"hide","value":"bg","attr":{"anim":"dissolve 1"}}]}},"glossary":{"d0":"Bonjour.","d1":"[br]Bienvenue sur la page de [red]présentation[/red] du projet [b]jLoDb[/b].","d2":"Vous aimeriez en savoir d'avantage sur [b]jLoDb[/b] ?","d3":"[br]Cela tombe bien car je vous propose justement de faire plus ample connaissance avec cette base logicielle.","d4":"Quel point voulez-vous aborder ?","d5":"La base","d6":"Vous avez de la chance car un spécialiste de [b]jLoDb[/b] est là aujourd'hui.","d7":"[br]Je vous laisse avec lui.","d8":"A tout de suite.","d9":"Bonjour tout le monde ! Moi, c'est [b]Richard[/b].","d10":"[br]Je viens vous présenter les différents aspects du projet [b]jLoDb[/b].","d11":" Et il y a beaucoup à dire.","d12":"Les activités","d13":"Le projet [b]jLoDb[/b] propose de nombreux exercices basés sur des proprammes spécifiques. Je vous propose de regarder de plus près ce que proposent ces différentes activités.","d14":"Allons faire un tour dehors.","d15":"Les modules","d16":"Que voulez-vous voir d'autre ?","d17":"Par où voulez-vous commencer ?","d18":"C'est quoi jLoDb ?","d19":"[b]jLoDb[/b] est une base de données applicative. Elle [b]référence[/b] des exercices, des jeux et tout un tas d'activités ludiques ou éducatives.","d20":"Chaque élément référencé dans cette base représente un exercice (ou un niveau de jeu, c'est un peu la même chose). ","d21":"Tous ces exercices disposent d'un certain nombre d'attributs qui permettent d'en avoir une meilleure visibilité.","d22":"Un identifiant unique, ","d23":"un domaine d'application, ","d24":"la tranche d'âge concernée, ","d25":"la difficulté et le temps moyen de résolution ","d26":"et diverses références permettant de mettre en avant les synergies entre exercices de la base.","d27":"L'objectif est de pouvoir retrouver n'importe quel exercice grâce au moteur de recherche. ","d28":"Par ailleurs, tous les exercices sont techniquement identiques et peuvent s'exécuter indifférement.","d29":"Comment ?","d30":"Le projet [b]jLoDb[/b] repose sur les [i]technologies web[/i] :","d31":" [b]HTML[/b],","d32":" [b]Javascript[/b]","d33":" et [b]PHP[/b].","d34":" Un serveur de type [b]AMP[/b] (Apache, mySQL et PHP) suffit à faire tourner [b]jLoDb[/b].","d35":"Côté client, un simple navigateur suffit. Attention, celui-ci doit gérer correctement l'affichage [b]SVG[/b] et la gestion des formules [b]MathML[/b].","d36":" [b]Firefox[/b] est conseillé, même si [b]Chrome[/b] et [b]Safari[/b] restent compatibles.","d37":"D'autres configurations sont actuellement à l'étude.","d38":" Une publication des exercices sous la forme d'un ebook au format [b]epub3[/b] est, d'ailleurs, en cours de développement.","d39":"Par ailleurs, les graphismes étant au format vectoriel, [b]jLoDb[/b] est indépendant de la résolution d'affichage.","d40":"Petit...","d41":" ou grand. Cela ne fait aucune différence.","d42":"[br]Au final, seul le format [b]4/3 paysage[/b] est imposé aux différentes pages du projet.","d43":"Un usage plein écran est d'ailleurs conseillé. Cela s'effectue en général avec les touches [b]F11[/b] et [b]F5[/b] ([i]Attention, utilisé ici, cela aura pour résultat de relancer l'animation[/i]) ","d44":"Sous quelle license ?","d45":"Tout le projet [b]jLoDb[/b] est publié sous la license [b]libre[/b] [red]GPL-3[/red].","d46":"[br]Cela signifie que n'importe qui peut [b]récupérer[/b] le logiciel, l'[b]exécuter[/b], le [b]modifier[/b] et le [b]distribuer[/b].","d47":"Mais c'est incroyable !","d48":"N'est-ce pas ?","d49":"[br]La seule contrainte est que les [b]mêmes droits[/b] s'appliquent sur les travaux [b]dérivés[/b].","d50":"En outre, cette liberté s'applique à tous les composants du projet : ","d51":"le code, ","d52":"les données ([i]c'est-à-dire la description de tous les exercices et niveaux[/i])  ","d53":"et les graphismes.","d54":"Eh oui ! Toutes les [b]images[/b] affichées dans les différentes activités sont libres ! Toutes !","d55":"Cette image par exemple est libre. Chacun peut en faire ce qu'il veut.","d56":"Celle-là aussi. Elle fait d'ailleurs partie d'une bibliothèque de plus de 500 images.","d57":"Celle-là encore.","d58":"Et puis celle-là au...","d59":" Ah... C'est moi !","d60":"[br]Effectivement, comme le reste du projet, moi aussi, je suis [b]libre[/b].","d61":"Retour au menu","d62":"Bon, je vous laisse. N'hésitez pas à me recontacter si vous avez d'autres questions. A bientôt.","d63":"Merci [b]Richard[/b].","d64":"Quelle type d'activité vous intéresse ?","d65":"Générique","d66":"Les activités génériques proposent des systèmes de jeu qui autorisent des exercices de n'importe quelle nature.","d67":"[br][b]jLoDb[/b] référence plusieurs activités génériques.","d68":"Littéraire","d69":"Scientifique","d70":"Jeu","d71":"Retour au menu","d72":"Il commence à faire un peu froid. Même pour un manchot.","d73":"[br]Rentrons nous mettre au chaud.","d74":"De quelle activité générique voulez-vous discuter ?","d75":"Puzzle","d76":"Comme son nom l'indique, l'activité [b]puzzle[/b] propose à l'utilisateur des puzzles à résoudre. Celui-ci doit placer certaines pièces mobiles aux endroits demandés par la consigne.","d77":"Séquence","d78":"Bouton","d79":"Déplacement","d80":"Peinture","d81":"Retour aux activités","d82":"Vous pouvez tester ici quelques exemples.","d83":"tangram","d84":"rébus","d85":"mesure","d86":"symétrie","d87":"retour","d88":"Bon jeu !"}};
+
+var options = {};
+var sav = {};
+var jlodb = function($elt) {
+    $elt.show().parent().find("#score").removeClass().hide();
+    $elt.jlodb({ isvisible:true,
+                onexercice: function($this, _id, _activity) { document.title = "jLoDb ["+_id+"]"; },
+                onfinish:   function($this)       { $this.parent().find("#score").removeClass().hide(); },
+                onscore:    function($this, _ret) { $this.parent().find("#score").attr("class","s"+_ret.score).show(); 
+                                                    setTimeout(function() { $this.parent().find("#score").addClass("active"); },0); return true; }
+                }, options);
+}
+var novel = function(_relaunch) {
+
+    $("#score").removeClass().hide();
+    
+    if (_relaunch) {
+        data.content.story.init[0].value="$chapter='prepactivity'";
+        data.content.story.init[1].value="$activity='puzzle'";
+        
+        
+        // data.content.story.init[0].value="$chapter='"+sav.chapter+"'";
+        // data.content.story.init[1].value="$activity='"+sav.activity+"'";
+    }
+    
+    $("#launcher").jlodb(
+    {
+        onscore:    function($this, _ret) {
+            options={id:_ret.data.id}; sav = _ret.data;
+            jlodb($("#launcher")); return true; }
+    },
+    { activity:"novel", args:data });
+    
+};
+
+$(window).ready(function() {
+    // SPECIAL STUFF
+    document.ontouchmove = function(e) { e.preventDefault(); }
+
+    // GET AND RESIZE THE BEST PANEL
+    var x = Math.floor($(window).width()/16);
+    var y = Math.floor($(window).height()/12);
+    $("body").css("font-size", (Math.min(x,y))+"px");
+    $("body>div").css("margin-top", Math.floor(($(window).height()-$("body>div").height())/2-2)+"px").show();
+
+    novel(false);
+});
+
+    </script>
+</head>
+
+<body><div>
+<div id="launcher">
+    <div id="activity"></div>
+    <div id="score"><div>
+        <div class="content">
+            <div class="value"></div>
+            <div class="stars"></div>
+            <div class="icon" id="reload" ontouchstart="$(this).closest('#launcher').jlodb('reload');event.preventDefault();"
+                 onclick="$(this).closest('#launcher').jlodb('reload');" ><img src="res/img/icon/reload.svg"/></div>
+
+            <div class="icon" id="next" ontouchstart="novel(true);"
+                 onclick="novel(true);"><img src="res/img/icon/next.svg"/></div>
+
+    </div></div></div>
+    </div>
+
+</div>
+</body>
+</html>

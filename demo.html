@@ -67,7 +67,7 @@ $(window).ready(function() {
             <div class="icon" id="reload" ontouchstart="$(this).closest('#launcher').jlodb('reload');event.preventDefault();"
                  onclick="$(this).closest('#launcher').jlodb('reload');" ><img src="res/img/icon/reload.svg"/></div>
 
-            <div class="icon" id="next" ontouchstart="event.preventDefault();"
+            <div class="icon" id="next" ontouchstart="jlodb($('#launcher'));event.preventDefault();"
                  onclick="jlodb($('#launcher'));"><img src="res/img/icon/next.svg"/></div>
 
     </div></div></div>
