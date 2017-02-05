@@ -104,6 +104,8 @@
                     _event.preventDefault();
                 });
                 
+                settings.data = $.extend(true,{},settings.init);
+                
                 if (settings.dev) { $this.find("#devmode").show(); }
 
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
@@ -495,6 +497,7 @@
                     html+="<option>jump</option><option>menu</option><option>op</option><option>pause</option><option>show</option>";
                     html+="</select>";
                     html+="<div class='icon' id='addop'><img src='res/img/white/add.svg'/></div>";
+                    html+="<div class='icon' id='dupop'><img src='res/img/white/add.svg'/></div>";
                     html+="<div class='icon' id='removeelt'><img src='res/img/white/delete.svg'/></div>";
                     html+="</div>";
                     var $html=$(html);
@@ -511,6 +514,13 @@
                         $(this).closest("#devstopanel").find("#savesto").addClass("s");
                         $(this).closest(".elt").addClass("s").append(
                             helpers.devmode.devsto.op($this, {type: $(this).closest(".elt").find(".operation").val() }));
+                        event.preventDefault();
+                    });
+                    
+                    $html.children("#dupop").bind("mousedown touchstart", function(event) {
+                        $(this).closest("#devstopanel").find("#savesto").addClass("s");
+                        var $story=$(this).parent();
+                        $story.clone().insertAfter($story);
                         event.preventDefault();
                     });
                     
