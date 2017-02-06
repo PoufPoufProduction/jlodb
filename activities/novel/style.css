@@ -19,8 +19,8 @@
 .novel div.board .portrait        { width:11em; height:11em; top:1em; left:0; }
 .novel div.board .sprite            { width:1em; height:1em;  }
 
-.novel div#board #menu              { position:absolute; width:auto; height:auto;
-                                      top:10%; left:60%; font-size:.5em; background-color:rgba(0,0,0,0.5); padding:.1em; }
+.novel div#board #menu              { position:absolute; width:auto; height:auto; z-index:201;
+                             top:10%; left:60%; font-size:.5em; background-color:rgba(0,0,0,0.5); padding:.1em; }
 .novel div#board #menu>div          { width:10em; padding:.1em .5em; margin:.1em; color:white; border:2px solid white;
                                       border-radius:.1em; cursor:pointer;}
 
@@ -32,7 +32,8 @@
 .novel #devmenu>div             { margin-top:.2em; padding-left:.5em; cursor:pointer; }
 .novel #devmenu>div.s          {background-color:black; color:white; }
 .novel #devexport               { position:absolute; top:80%; left:5%; font-size:0.3em; border:.1em solid black; }
-.novel .devpanel                { display:none; height:100%; overflow:auto; }
+.novel .devpanel                { display:none; height:100%;}
+.novel .devpanel>.content { overflow:auto; height:95%; }
 .novel .devpanel  .elt         { clear:both; }
 .novel .devpanel  .elt>*        { float:left; height:1.2em; margin:.1em; padding-left:.1em;  }
 .novel .devpanel  .elt .label   { width:6em; background-color:rgba(0,200,255,0.9); color:white; font-size:1em; border:0; }
@@ -43,7 +44,7 @@
 .novel .devpanel .elt .tobject { background-color:rgba(0,0,255,0.9); }
 .novel .devpanel .elt .value { border:0; font-size:1em; height:1.2em; color:white; background-color:#444; padding-left:.5em; width:12em; }
 
-.novel .devpanel  .elt .toggle  { clear:both; margin-left:2em; font-size:0.8em; display:none; }
+.novel .devpanel  .elt .toggle  { clear:both; margin-left:0.9em; font-size:0.9em; display:none; }
 .novel .devpanel .elt.s>.toggle { display:inherit; }
 .novel .devpanel  .elt .toggle>* { padding-left:.5em;  }
 .novel .devpanel  .toggle .label   { border:0; font-size:1em; width:10em; background-color:rgba(0,220,0,0.9); color:white; }
@@ -57,8 +58,9 @@
 .novel .devpanel  .elt #addattr.icon   { background-color:rgba(240,0,0,0.9); }
 
 .novel .devpanel .menu { height:1.2em; color:white; background-color:#444;}
-.novel .devpanel .menu>div      { width:5em; text-align:center; float:left; cursor:pointer; }
-.novel .devpanel .menu>div.s    { color:red; }
+.novel .devpanel .menu>.icon    { font-size:1.2em; }
+.novel .devpanel .menu>div      { margin:0 .5em; text-align:center; float:left; cursor:pointer; }
+.novel .devpanel .menu>div.s    { background-color:red; }
 
 .novel .devpanel  .elt .move { cursor:pointer; margin:.1em; padding:0; font-size:.8em;
                              color:#444; text-align:center; width:0.6em; height:1.4em; }
@@ -71,10 +73,10 @@
 .novel #devstopanel .operation { border:0; font-size:0.5em; height:2.4em; color:white; background-color:rgba(0,220,0,0.9); padding-left:.5em; width:12em; }
 .novel #devstopanel .eltaction { height:inherit; }
 .novel #devstopanel .eltaction>.label { width:4em; }
-.novel #devstopanel .eltaction>.eltattr { margin-left:3em; }
+.novel #devstopanel .eltaction>.eltattr { margin-left:2.6em; }
 .novel #devstopanel .eltaction>.eltattr .label { width:4em; }
 .novel #devstopanel .eltaction #dialogvalue { width:7.3em; }
-.novel #devstopanel .eltaction #dialogtest { width:4em; }
+.novel #devstopanel .eltaction #dialogtest { width:5.5em; }
 .novel #devstopanel .substory { clear:both; font-size:0.9em; height:inherit !important; }
 .novel #devstopanel #storyname { width:12em; background-color:rgba(0,200,255,0.9); color:white; font-size:1em; border:0; }
 .novel #devstopanel #dupop	{ background-color:gray; }
@@ -85,7 +87,8 @@
 .novel #devexppanel textarea     { font-size:0.4em; height:100%; width:100%; overflow:auto;}
 .novel #devimppanel { overflow:hidden; }
 .novel #devimppanel textarea     { font-size:0.4em; height:80%; width:100%; overflow:auto;}
-.novel #devimppanel .menu       { cursor:pointer; text-align:center; }
+.novel #devimppanel .menu       { cursor:pointer; }
+.novel #devimppanel .menu>div { float:none; margin:0 auto; }
                                      
 .novel .bluekeypad                   { background-color:rgba(84,137,184,0.9);
                                   -webkit-transition: background-color 1000ms ease-in;

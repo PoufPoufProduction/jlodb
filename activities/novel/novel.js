@@ -435,14 +435,18 @@
                 },
                 update: function($this) {
                     var settings    = helpers.settings($this);
-                    var html="<div id='devdefmenu' class='menu'><div id='adddef'>add</div><div id='savedef'>save</div></div>";
+                    var html="<div id='devdefmenu' class='menu'>"
+                    html+="<div id='adddef' class='icon'><img src='res/img/white/add.svg'/></div>"
+                    html+="<div id='savedef' class='icon'><img src='res/img/white/import.svg'/></div>"
+                    html+="</div>";
+                    html+="<div class='content'></div>";
                     $this.find("#devdefpanel").html(html);
                     for (var i in settings.content.def) {
-                        $this.find("#devdefpanel").append(helpers.devmode.devdef.elt(i, settings.content.def[i]));
+                        $this.find("#devdefpanel>.content").append(helpers.devmode.devdef.elt(i, settings.content.def[i]));
                     }
                     $this.find("#devdefmenu #adddef").bind("mousedown touchstart", function(event) {
                         $(this).next().addClass("s");
-                        $this.find("#devdefpanel").append(helpers.devmode.devdef.elt("new", {text:"name"}));
+                        $this.find("#devdefpanel>.content").append(helpers.devmode.devdef.elt("new", {text:"name"}));
                         event.preventDefault();
                     });
                     $this.find("#devdefmenu #savedef").bind("mousedown touchstart", function(event) {
@@ -456,7 +460,7 @@
                 save: function($this) {
                     var settings    = helpers.settings($this);
                     var def={};
-                    $this.find("#devdefpanel .elt").each(function() {
+                    $this.find("#devdefpanel>.content .elt").each(function() {
                         var elt     = {};
                         var img     = {};
                         var attr    = {};
@@ -475,6 +479,112 @@
                 }
             },
             devsto: {
+                bind: {
+                    story:function($this, $html) {
+                        var settings    = helpers.settings($this);
+                        
+                        $html.children("#removeelt").bind("mousedown touchstart", function(event) {
+                            $(this).closest("#devstopanel").find("#savesto").addClass("s");
+                            $(this).closest(".elt").detach();
+                            event.preventDefault();
+                        });
+                        
+                        $html.children("#addop").bind("mousedown touchstart", function(event) {
+                            $(this).closest("#devstopanel").find("#savesto").addClass("s");
+                            $(this).closest(".elt").addClass("s").append(
+                                helpers.devmode.devsto.op($this, {type: $(this).closest(".elt").find(".operation").val() }));
+                            event.preventDefault();
+                        });
+                        
+                        $html.children("#dupop").bind("mousedown touchstart", function(event) {
+                            $(this).closest("#devstopanel").find("#savesto").addClass("s");
+                            var $story=$(this).parent();
+                            var $clone=$story.clone();
+                            helpers.devmode.devsto.bind.story($this,$clone);
+                            $clone.children("#storyname").val("story_"+(Math.floor(Math.random()*9000)+1000));
+                            $clone.children(".elt").each(function() { helpers.devmode.devsto.bind.op($this, $(this));});
+                            $clone.insertAfter($story);
+                            event.preventDefault();
+                        });
+                        
+                        $html.children("#up").bind("mousedown touchstart", function(event) {
+                            var elt = $(this).parent(), prev = elt.prev();
+                            if (prev.hasClass("elt")) {
+                                $(this).closest("#devstopanel").find("#savesto").addClass("s");
+                                elt.detach().insertBefore(prev);
+                            }
+                            event.preventDefault();
+                        });
+                        
+                        $html.children("#down").bind("mousedown touchstart", function(event) {
+                            var elt = $(this).parent(), next = elt.next();
+                            if (next.hasClass("elt")) {
+                                $(this).closest("#devstopanel").find("#savesto").addClass("s");
+                                elt.detach().insertAfter(next);
+                            }
+                            event.preventDefault();
+                        });
+                        
+                        $html.children(".label").first().bind("mousedown touchstart", function(event) {
+                            $(this).parent().toggleClass("s");
+                        });
+                    },
+                    attr:function($this, $html) {
+                        var settings    = helpers.settings($this);
+                        
+                        $html.children("input").change(function() { $(this).closest("#devstopanel").find("#savesto").addClass("s"); });
+                        
+                        $html.children("#removeattr").bind("mousedown touchstart", function(event) {
+                            $(this).closest("#devstopanel").find("#savesto").addClass("s");
+                            $(this).closest(".eltattr").detach();
+                            event.preventDefault();
+                        });
+                    },
+                    op:function($this, $html) {
+                        var settings    = helpers.settings($this);
+                        
+                        $html.children(".eltattr").each(function() { helpers.devmode.devsto.bind.attr($this, $(this)); });
+                        $html.children(".substory").children(".elt").each(function() { helpers.devmode.devsto.bind.story($this, $(this)); });
+                        
+                        $html.children("#up").bind("mousedown touchstart", function(event) {
+                            var elt = $(this).parent(), prev = elt.prev();
+                            if (prev.hasClass("eltaction")) {
+                                $(this).closest("#devstopanel").find("#savesto").addClass("s");
+                                elt.detach().insertBefore(prev);
+                            }
+                            event.preventDefault();
+                        });
+                        
+                        $html.children("#down").bind("mousedown touchstart", function(event) {
+                            var elt = $(this).parent(), next = elt.next();
+                            if (next.hasClass("eltaction")) {
+                                $(this).closest("#devstopanel").find("#savesto").addClass("s");
+                                elt.detach().insertAfter(next);
+                            }
+                            event.preventDefault();
+                        });
+                        
+                        $html.children("#removeop").bind("mousedown touchstart", function(event) {
+                            $(this).closest("#devstopanel").find("#savesto").addClass("s");
+                            $(this).closest(".eltaction").detach();
+                            event.preventDefault();
+                        });
+                        
+                        $html.children("#addattr").bind("mousedown touchstart", function(event) {
+                            $(this).closest("#devstopanel").find("#savesto").addClass("s");
+                            $(this).closest(".eltaction").append( helpers.devmode.devsto.attr($this, "new", ""));
+                            event.preventDefault();
+                        });
+                        
+                        $html.children("#addstory").bind("mousedown touchstart", function(event) {
+                            $(this).closest("#devstopanel").find("#savesto").addClass("s");
+                            $(this).parent().children(".substory").append(helpers.devmode.devsto.story($this, "choice",{}));
+                            
+                            event.preventDefault();
+                        });
+                    }
+                    
+                },
                 story: function($this, _id, _def) {
                     var settings    = helpers.settings($this);
                     var html="";
@@ -502,53 +612,14 @@
                     html+="</div>";
                     var $html=$(html);
                     
+                    helpers.devmode.devsto.bind.story($this, $html);
+                    
                     for (var j in _def)  { $html.append(helpers.devmode.devsto.op ($this, _def[j]));  }
                     
-                    $html.children("#removeelt").bind("mousedown touchstart", function(event) {
-                        $(this).closest("#devstopanel").find("#savesto").addClass("s");
-                        $(this).closest(".elt").detach();
-                        event.preventDefault();
-                    });
-                    
-                    $html.children("#addop").bind("mousedown touchstart", function(event) {
-                        $(this).closest("#devstopanel").find("#savesto").addClass("s");
-                        $(this).closest(".elt").addClass("s").append(
-                            helpers.devmode.devsto.op($this, {type: $(this).closest(".elt").find(".operation").val() }));
-                        event.preventDefault();
-                    });
-                    
-                    $html.children("#dupop").bind("mousedown touchstart", function(event) {
-                        $(this).closest("#devstopanel").find("#savesto").addClass("s");
-                        var $story=$(this).parent();
-                        $story.clone().insertAfter($story);
-                        event.preventDefault();
-                    });
-                    
-                    $html.children("#up").bind("mousedown touchstart", function(event) {
-                        var elt = $(this).parent(), prev = elt.prev();
-                        if (prev.hasClass("elt")) {
-                            $(this).closest("#devstopanel").find("#savesto").addClass("s");
-                            elt.detach().insertBefore(prev);
-                        }
-                        event.preventDefault();
-                    });
-                    
-                    $html.children("#down").bind("mousedown touchstart", function(event) {
-                        var elt = $(this).parent(), next = elt.next();
-                        if (next.hasClass("elt")) {
-                            $(this).closest("#devstopanel").find("#savesto").addClass("s");
-                            elt.detach().insertAfter(next);
-                        }
-                        event.preventDefault();
-                    });
-                    
-                    $html.children(".label").first().bind("mousedown touchstart", function(event) {
-                        $(this).parent().toggleClass("s");
-                    });
                     
                     return $html;
                 },
-                attr: function(_name, _value) {
+                attr: function($this, _name, _value) {
                     var html="<div class='elt eltattr'>"
                     html+="<input class='label' value=\""+_name+"\"/>";
                     html+="<input class='value' value=\""+_value+"\"/>";
@@ -556,13 +627,7 @@
                     html+="</div>";
                     var $html = $(html);
                     
-                    $html.children("input").change(function() { $(this).closest("#devstopanel").find("#savesto").addClass("s"); });
-                    
-                    $html.children("#removeattr").bind("mousedown touchstart", function(event) {
-                        $(this).closest("#devstopanel").find("#savesto").addClass("s");
-                        $(this).closest(".eltattr").detach();
-                        event.preventDefault();
-                    });
+                    helpers.devmode.devsto.bind.attr($this, $html);
                     
                     return $html;
                 },
@@ -608,44 +673,9 @@
                     html+="</div>";
                     var $html = $(html);
                     
-                    for (var j in _def.attr) { $html.append(helpers.devmode.devsto.attr(j, _def.attr[j])); }
+                    helpers.devmode.devsto.bind.op($this, $html);
                     
-                    $html.children("#up").bind("mousedown touchstart", function(event) {
-                        var elt = $(this).parent(), prev = elt.prev();
-                        if (prev.hasClass("eltaction")) {
-                            $(this).closest("#devstopanel").find("#savesto").addClass("s");
-                            elt.detach().insertBefore(prev);
-                        }
-                        event.preventDefault();
-                    });
-                    
-                    $html.children("#down").bind("mousedown touchstart", function(event) {
-                        var elt = $(this).parent(), next = elt.next();
-                        if (next.hasClass("eltaction")) {
-                            $(this).closest("#devstopanel").find("#savesto").addClass("s");
-                            elt.detach().insertAfter(next);
-                        }
-                        event.preventDefault();
-                    });
-                    
-                    $html.children("#removeop").bind("mousedown touchstart", function(event) {
-                        $(this).closest("#devstopanel").find("#savesto").addClass("s");
-                        $(this).closest(".eltaction").detach();
-                        event.preventDefault();
-                    });
-                    
-                    $html.children("#addattr").bind("mousedown touchstart", function(event) {
-                        $(this).closest("#devstopanel").find("#savesto").addClass("s");
-                        $(this).closest(".eltaction").append( helpers.devmode.devsto.attr("new", ""));
-                        event.preventDefault();
-                    });
-                    
-                    $html.children("#addstory").bind("mousedown touchstart", function(event) {
-                        $(this).closest("#devstopanel").find("#savesto").addClass("s");
-                        $(this).parent().children(".substory").append(helpers.devmode.devsto.story($this, "choice",{}));
-                        
-                        event.preventDefault();
-                    });
+                    for (var j in _def.attr) { $html.append(helpers.devmode.devsto.attr($this, j, _def.attr[j])); }
                     
                     if (_def.type=="menu") {
                         for (var i in _def.value) {
@@ -661,15 +691,20 @@
                 },
                 update: function($this) {
                     var settings    = helpers.settings($this);
-                    var html="<div id='devstomenu' class='menu'><div id='addsto'>add</div><div id='savesto'>save</div></div>";
+                    
+                    var html="<div id='devstomenu' class='menu'>"
+                    html+="<div id='addsto' class='icon'><img src='res/img/white/add.svg'/></div>"
+                    html+="<div id='savesto' class='icon'><img src='res/img/white/import.svg'/></div>"
+                    html+="</div>";
+                    html+="<div class='content'></div>";
                     $this.find("#devstopanel").html(html);
                     for (var i in settings.content.story) {
-                        $this.find("#devstopanel").append(helpers.devmode.devsto.story($this, i, settings.content.story[i]));
+                        $this.find("#devstopanel>.content").append(helpers.devmode.devsto.story($this, i, settings.content.story[i]));
                     }
                     
                     $this.find("#devstomenu #addsto").bind("mousedown touchstart", function(event) {
                         $(this).next().addClass("s");
-                        $this.find("#devstopanel").append(helpers.devmode.devsto.story($this, "new", []));
+                        $this.find("#devstopanel>.content").append(helpers.devmode.devsto.story($this, "new", []));
                         event.preventDefault();
                     });
                     $this.find("#devstomenu #savesto").bind("mousedown touchstart", function(event) {
@@ -762,7 +797,7 @@
                         $this.find("#devcon").hide();
                         var story    = {};
                         var glossary = {};
-                        $this.find("#devstopanel>.elt").each(function() {
+                        $this.find("#devstopanel>.content>.elt").each(function() {
                             helpers.devmode.devsto.save.story(story, glossary, $(this)); }
                         );
                         settings.content.story = story;
