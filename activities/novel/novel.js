@@ -146,6 +146,11 @@
                 var timer       = 0;
                 var next        = true;
                 switch(elt.type) {
+                    case "callback" :
+                        if (settings.callback && settings.callback[elt.value]) {
+                            settings.callback[elt.value]($this, elt.attr, settings.data);
+                        }
+                        break;
                     case "dialog" :
                         $this.find("#dialog").detach();
                         if (elt.text && elt.text.length) {
@@ -230,6 +235,7 @@
                             catch (e) { alert("error with: "+elt.value); }
                         break;
                     case "pause"  : timer = parseFloat(elt.value)*1000; break;
+                    case "stop"   : next = false; timer = -1; break;
                     case "show" :
                         var e = elt.value.split(" ");
                         var def = settings.def[e[0]];
@@ -238,8 +244,8 @@
                             var $elt = $this.find("#elt"+e[0]), oldleft = 0, oldtop;
 
                             if ($elt.length) {
-                                oldleft  = $elt.css("left");
-                                oldtop = $elt.css("top");
+                                oldleft     = $elt.css("left");
+                                oldtop      = $elt.css("top");
                                 if (e.length>1) { $elt.find("img").attr("src",def.img[e[1]]); }
                             }
                             else { $elt = $(helpers.imgfromdef(def.img[e[1]], e[0], def.attr)); $this.find("#board").append($elt); }
@@ -249,6 +255,24 @@
 
                             if (leftv!=-1)  { $elt.css("left", leftv); }
                             if (topv!=-1)   { $elt.css("top", topv); }
+                            
+                            if (elt.attr&&elt.attr.onclick) {
+                                $elt.find("img").attr("id",elt.attr.onclick);
+                                $elt.unbind("mousedown touchstart");
+                                $elt.bind("mousedown touchstart", function(_event) {
+                                    var dest = $(this).find("img").attr("id"), reg = new RegExp("[$]","g");
+                                    if (elt.value[0]=='$') {
+                                        try { dest = eval(dest.replace(reg,"settings.data.")); }
+                                        catch (e) { alert("error with: "+dest); }
+                                    }
+                                    if (settings.content.story[dest]) {
+                                        settings.pc = [ {story: settings.content.story[dest], p:0 , n:dest } ];
+                                        helpers.run($this);
+                                    }
+                                    
+                                    _event.preventDefault();
+                                });
+                            }
 
                             if (elt.attr&&elt.attr.anim) {
                                 var anim = elt.attr.anim.split(" ");
@@ -603,8 +627,10 @@
                     
                     html+="<input class='label' id='storyname' value=\""+name+"\"/>";
                     html+="<select class='operation'>";
-                    html+="<option>dialog</option><option>dialogg</option><option>hide</option><option>if</option>";
+                    html+="<option>callback</option>";
+                    html+="<option selected='selected'>dialog</option><option>dialogg</option><option>hide</option><option>if</option>";
                     html+="<option>jump</option><option>menu</option><option>op</option><option>pause</option><option>show</option>";
+                    html+="<option>stop</option>";
                     html+="</select>";
                     html+="<div class='icon' id='addop'><img src='res/img/white/add.svg'/></div>";
                     html+="<div class='icon' id='dupop'><img src='res/img/white/add.svg'/></div>";
@@ -638,7 +664,7 @@
                     html+="<div class='move' id='down'>↓</div>";
                     html+="<div class='label'>"+_def.type+"</div>";
                     switch(_def.type) {
-                        case "show": case "hide":
+                        case "callback" : case "show": case "hide":
                             html+="<input class='value' value=\""+(_def.value?_def.value:"")+"\"/>";
                             html+="<div class='icon' id='addattr'><img src='res/img/white/add.svg'/></div>";
                             html+="<div class='icon' id='removeop'><img src='res/img/white/delete.svg'/></div>";
@@ -722,7 +748,7 @@
                         var v=$action.children(".value").val();
                         var ret={type:t};
                         switch(t) {
-                            case "show" : case "hide" :
+                            case "callback" : case "show" : case "hide" :
                                 if (v) { ret.value = v; }
                                 var attr={}, empty=true;
                                 $action.find(".eltattr").each(function() {
