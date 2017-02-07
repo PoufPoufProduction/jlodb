@@ -165,12 +165,13 @@
                             if (settings.interactive) {
                                 var mode = $this.find("#grid").hasClass("f");
                                 if (mode) {
+                                    $(this).closest("td.cell").removeClass("wrong");
                                     $(this).closest('.hint').hide().prev().text($(this).text()).show();
                                     $(this).closest('.cell').removeClass("h");
                                     if (helpers.check($this)) {
                                         settings.interactive = false;
                                         if (settings.timer.id) { clearTimeout(settings.timer.id); settings.timer.id=0; }
-                                        settings.score = helpers.score(settings.level, settings.timer.value);
+                                        settings.score = helpers.score(settings.level, settings.timer.value, settings.help);
                                         setTimeout(function() { helpers.end($this); }, 1000);
                                     }
                                 }
@@ -231,10 +232,10 @@
                     if (settings.key!=-1 && settings.keypad) {
                         var vVal = settings.$keys[settings.key].text();
                         settings.keypad.text(vVal==0?"":vVal);
+                        settings.keypad.closest('td.cell').removeClass("wrong");
+                        
                         if (vVal!=0) {
-
                             if (settings.keypad.hasClass("fill")) {
-
                                 for (var i in settings.highlight) {
                                     if (settings.highlight[i].length>3) {
                                         var done = true;
@@ -249,12 +250,9 @@
                                     }
                                 }
 
-
-
-
                                 if (helpers.check($this)) {
                                     settings.interactive = false;
-                                    settings.score = helpers.score(settings.level, settings.timer.value);
+                                    settings.score = helpers.score(settings.level, settings.timer.value, settings.help);
                                     if (settings.timer.id) { clearTimeout(settings.timer.id); settings.timer.id=0; }
                                     setTimeout(function() { helpers.end($this); }, 1000);
                                 }
@@ -328,13 +326,14 @@
             settings.timer.id = setTimeout(function() { helpers.timer($this); }, 1000);
         },
         // compute the score regarding the time and the grid level
-        score:function(level, time) {
+        score:function(level, time, help) {
             var timeref = 1000*level;
             var score = 1;
             if (time<timeref)       { score = 5; } else
             if (time<timeref*1.2)   { score = 4; } else
             if (time<timeref*1.5)   { score = 3; } else
             if (time<timeref*2)     { score = 2; }
+            score=Math.max(0,score-help);
             return score;
         }
     };
@@ -356,6 +355,7 @@
                     score       : 1,        // The score (from 1 to 5)
                     keypad      : 0,
                     key         : -1,
+                    help        : 0,        // number of help
                     $keys       : []
                 };
 
@@ -432,6 +432,18 @@
                 settings.interactive = false;
                 if (settings.timer.id) { clearTimeout(settings.timer.id); settings.timer.id=0; }
                 settings.context.onquit($this,{'status':'abort'});
+            },
+            help: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+                $this.find("#mask").hide();
+                settings.help++;
+                
+                $this.find("div.fill").each(function(index) {
+                    var vY = Math.floor(index/9) + (Math.floor((index%9)/3)) - Math.floor((index%27)/9);
+                    var vX = index%3 + 3*Math.floor((index%27)/9);
+                    var elt = settings.data[vY*settings.width+vX];
+                    if (mapping[elt] != $(this).text()) { $(this).closest("td").addClass("wrong"); }
+                });
             }
         };
 

@@ -205,6 +205,18 @@
     <div class="k" id="key9">9</div>
 </div>
 
+<div id="check" class="icon" ontouchstart="$(this).next().show();event.preventDefault();"
+                 onclick="$(this).next().show();"><img src="res/img/white/look.svg"/></div>
+<div id="mask"><div>
+    <div id="help"></div>
+    <div>
+        <div class="icon" ontouchstart="$(this).closest('.sudoku').sudoku('help');event.preventDefault();"
+                          onclick="$(this).closest('.sudoku').sudoku('help');"><img src="res/img/white/valid.svg"/></div>
+        <div class="icon" ontouchstart="$(this).closest('#mask').hide();event.preventDefault();"
+                          onclick="$(this).closest('#mask').hide();"><img src="res/img/white/cancel.svg"/></div>
+    </div>
+</div></div>
+
 <div id="effects"><img src="res/img/effects/alert02.svg"/></div>
 
 <div id="splashex" ontouchstart="$(this).hide().closest('.sudoku').sudoku('next');event.preventDefault();"

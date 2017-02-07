@@ -1,5 +1,5 @@
 .sudoku                         { font-family: "Courier New" Courier monospace;
-                                  background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat;}
+                     background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat;}
 .sudoku table                   { border-spacing:0;  font-size:1em; }
 .sudoku td                      { margin:0; padding:0; }
 .sudoku td.grid3x3              { border: 1px solid rgb(53,34,34); }
@@ -27,6 +27,7 @@
 .sudoku td.cell div.border      { width:3.6em; height:3.6em; overflow:hidden; position:relative; }
 .sudoku td.cell div.fill        { width:1.2em; height:1.2em; font-size:3em; text-align:center; cursor:pointer; position:absolute; }
 .sudoku td.cell div.fill.value  { color:red; }
+.sudoku td.wrong        { background-color:rgba(255,0,0,0.4) !important; }
 
 .sudoku #grid td.cell.blue div.fill         { background-color:rgba(0,0,200,0.3); }
 .sudoku #grid td.cell.red div.fill          { background-color:rgba(200,0,0,0.3); }
@@ -68,3 +69,8 @@
 
 .sudoku div#splash div.icon     { border:0; border-radius:.5em;}
 .sudoku #effects                { width:1em; height:1em; position:absolute; z-index:2; font-size:15em; top:2%; left:60%; display:none;}
+
+.sudoku #check { font-size:.5em; cursor:help; border:.2em solid white; border-radius:.2em; position:absolute; top:83%; left:20%; background-color:gray; }
+.sudoku #mask { display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.1); }
+.sudoku #mask>div { font-size:1.2em; background-color:rgba(255,255,255,0.9); border:1px solid black; border-width:1px 0 1px 0; width:80%; padding:.2em 10%; height:25%; margin:20% auto; }
+.sudoku #mask .icon { float:left; margin:.5em 4em; background-color:gray; cursor:pointer; font-size:.8em; }
