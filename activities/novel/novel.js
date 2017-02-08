@@ -145,6 +145,7 @@
                 var elt         = pc.story[pc.p];
                 var timer       = 0;
                 var next        = true;
+                var reg         = new RegExp("[$]","g");
                 switch(elt.type) {
                     case "callback" :
                         if (settings.callback && settings.callback[elt.value]) {
@@ -183,7 +184,12 @@
                         break;
                     case "error" : settings.score -= elt.value?elt.value:1; break;
                     case "hide" :
-                        var e = elt.value.split(" ");
+                        var value = elt.value;
+                        if (value.indexOf("$")!=-1) {
+                            try { value = eval(value.replace(reg,"settings.data.")+";"); }
+                            catch (e) { alert("error with: "+value); }
+                        }
+                        var e = value.split(" ");
                         var $elt = $this.find("#elt"+e[0]);
                         if ($elt.length) {
                             if (elt.attr && elt.attr.anim) {
@@ -200,14 +206,14 @@
                         }
                         break;
                     case "if"   :
-                        var reg = new RegExp("[$]","g"), rep = true;
+                        var rep = true;
                         try { rep = eval(elt.cond.replace(reg,"settings.data.")+";"); }
                         catch (e) { alert("error with: "+elt.cond); }
                         if (rep) { settings.pc.push({story:elt.value[0], p:0, n:"if"}); }
                         else if (elt.value.length>1) { settings.pc.push({story:elt.value[1], p:0, n:"if"}); }
                         break;
                     case "jump" :
-                        var dest = elt.value, reg = new RegExp("[$]","g");
+                        var dest = elt.value;
                         if (elt.value[0]=='$') {
                             try { dest = eval(dest.replace(reg,"settings.data.")); }
                             catch (e) { alert("error with: "+dest); }
@@ -230,14 +236,18 @@
                         $this.find("#board").append($html);
                         break;
                     case "op" :
-                            var reg = new RegExp("[$]","g");
                             try { eval(elt.value.replace(reg,"settings.data.")+";"); }
                             catch (e) { alert("error with: "+elt.value); }
                         break;
                     case "pause"  : timer = parseFloat(elt.value)*1000; break;
                     case "stop"   : next = false; timer = -1; break;
                     case "show" :
-                        var e = elt.value.split(" ");
+                        var value = elt.value;
+                        if (value.indexOf("$")!=-1) {
+                            try { value = eval(value.replace(reg,"settings.data.")+";"); }
+                            catch (e) { alert("error with: "+value); }
+                        }
+                        var e = value.split(" ");
                         var def = settings.def[e[0]];
                         if (def) {
 
@@ -250,11 +260,20 @@
                             }
                             else { $elt = $(helpers.imgfromdef(def.img[e[1]], e[0], def.attr)); $this.find("#board").append($elt); }
 
-                            var leftv= (elt.attr && elt.attr.left)? elt.attr.left : ( (def.attr && def.attr.left)?def.attr.left:-1 );
-                            var topv= (elt.attr && elt.attr.top)? elt.attr.top : ( (def.attr && def.attr.top)?def.attr.top:-1 );
+                            var leftv= (elt.attr && elt.attr.left)? elt.attr.left : ( (def.attr && def.attr.left)?def.attr.left:"" );
+                            var topv= (elt.attr && elt.attr.top)? elt.attr.top : ( (def.attr && def.attr.top)?def.attr.top:"" );
+                            
+                            if (leftv.indexOf("$")!=-1) {
+                                try { leftv = eval(leftv.replace(reg,"settings.data.")+";"); }
+                                catch (e) { alert("error with: "+leftv); }
+                            }
+                            if (topv.indexOf("$")!=-1) {
+                                try { topv = eval(topv.replace(reg,"settings.data.")+";"); }
+                                catch (e) { alert("error with: "+topv); }
+                            }
 
-                            if (leftv!=-1)  { $elt.css("left", leftv); }
-                            if (topv!=-1)   { $elt.css("top", topv); }
+                            if (leftv)  { $elt.css("left", leftv); }
+                            if (topv)   { $elt.css("top", topv); }
                             
                             if (elt.attr&&elt.attr.onclick) {
                                 $elt.find("img").attr("id",elt.attr.onclick);
@@ -283,8 +302,8 @@
                                     case "fromleft" : $elt.css("left","-100%").animate({left:leftv}, timer); break;
                                     case "move":
                                         var aa = { };
-                                        if (leftv!=-1)  { aa["left"]    = leftv; }
-                                        if (topv!=-1)   { aa["top"]     = topv; }
+                                        if (leftv)  { aa["left"]    = leftv; }
+                                        if (topv)   { aa["top"]     = topv; }
                                         $elt.css("left",oldleft).css("top",oldtop).animate(aa, timer); break;
                                 }
                             }

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dct="http://purl.org/dc/terms/">
+
+    <rdf:Description>
+        <dct:identifier>x</dct:identifier>
+        <dct:title xml:lang="fr-FR">Tour de hanoi (dev mode).</dct:title>
+        <dct:description><![CDATA["dev":true,"content":{"def":{"bg":{"img":{"d":"res/img/layers/table_1_01.svg"},"attr":{}},"rey":{"text":"Rey","img":{"default":"res/img/characters/imp_default_r01.svg"},"attr":{"class":"portrait","background-color":"rgba(0,40,20,0.8)"}},"towers":{"img":{"d":"res/img/layers/hanoi_1_01.svg"},"attr":{}},"fg":{"img":{"d":"res/img/layers/table_1_02.svg"},"attr":{}},"p1":{"img":{"d":"res/img/layers/hanoi_2_01.svg"},"attr":{"class":"sprite","size":"4.9"}},"p2":{"img":{"d":"res/img/layers/hanoi_2_02.svg"},"attr":{"class":"sprite","size":"4.9"}},"p3":{"img":{"d":"res/img/layers/hanoi_2_03.svg"},"attr":{"class":"sprite","size":"4.9"}},"p4":{"img":{"d":"res/img/layers/hanoi_2_04.svg"},"attr":{"class":"sprite","size":"4.9"}},"p5":{"img":{"d":"res/img/layers/hanoi_2_05.svg"},"attr":{"class":"sprite","size":"4.9"}},"p6":{"img":{"d":"res/img/layers/hanoi_2_06.svg"},"attr":{"class":"sprite","size":"4.9"}},"p7":{"img":{"d":"res/img/layers/hanoi_2_07.svg"},"attr":{"class":"sprite","size":"4.9"}},"p8":{"img":{"d":"res/img/layers/hanoi_2_08.svg"},"attr":{"class":"sprite","size":"4.9"}}},"story":{"init":[{"type":"show","value":"bg d"},{"type":"show","value":"towers d"},{"type":"show","value":"fg d"}],"prep":[{"type":"op","value":"$val=8"},{"type":"op","value":"$ta=[0,0,0,0,0,0,0,0]"},{"type":"op","value":"$tb=[0,0,0,0,0,0,0,0]"},{"type":"op","value":"$tc=[0,0,0,0,0,0,0,0]"},{"type":"op","value":"$na=$val"},{"type":"op","value":"$nb=0"},{"type":"op","value":"$nc=0"},{"type":"op","value":"for (var i=0;i<$val;i++) { $ta[$val-i-1]=i+1; }"},{"type":"op","value":"$i=0"}],"prepna":[{"type":"op","value":"$left='3.57%'"},{"type":"op","value":"$top=(26-$i*5)+'%'"},{"type":"op","value":"$e='p'+$ta[$i]+' d'"},{"type":"if","cond":"$ta[$i]>0","value":[[{"type":"show","value":"$e","attr":{"top":"$top","left":"$left"}}],[]]},{"type":"op","value":"$i++"},{"type":"if","cond":"$i<8","value":[[{"type":"jump","value":"prepna"}],[]]}],"next":[{"type":"stop"}]}},"glossary":{}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>game</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>x</dct:alternative>
+    </rdf:Description>
+
+
+</rdf:RDF>
+
