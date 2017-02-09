@@ -275,9 +275,9 @@
                             if (leftv)  { $elt.css("left", leftv); }
                             if (topv)   { $elt.css("top", topv); }
                             
+                            $elt.unbind("mousedown touchstart");
                             if (elt.attr&&elt.attr.onclick) {
                                 $elt.find("img").attr("id",elt.attr.onclick);
-                                $elt.unbind("mousedown touchstart");
                                 $elt.bind("mousedown touchstart", function(_event) {
                                     var dest = $(this).find("img").attr("id"), reg = new RegExp("[$]","g");
                                     if (elt.value[0]=='$') {
@@ -318,7 +318,7 @@
             else {
                 if (settings.pc.length>1) {
                     settings.pc.pop();
-                    setTimeout(function(){helpers.run($this);}, 100);
+                    helpers.run($this);
                 }
                 else {
                     var found = false, name = "";
@@ -328,7 +328,7 @@
 
                     if (name) {
                         settings.pc = [{story:settings.content.story[name], p:0, n:name }];
-                        setTimeout(function(){helpers.run($this);}, 100);
+                        helpers.run($this);
                     }
                     else {
                         if (!settings.dev)
@@ -345,7 +345,7 @@
             if (_attr&&_attr.width)       { style+="width:"+_attr.width+"em;" }
             if (_attr&&_attr.height)      { style+="height:"+_attr.height+"em;" }
             if (_attr&&_attr.opacity)     { style+="opacity:"+_attr.opacity+";" }
-            if (_attr&&_attr.zindex)      { style+="z-index:"+_attr.index+";" }
+            if (_attr&&_attr.index)       { style+="z-index:"+_attr.index+";" }
             if (_attr&&_attr.size)        { style+="font-size:"+_attr.size+"em;" }
             elt = "<div "+(_attr&&_attr.class?"class='"+_attr.class+"' ":"")+"id='elt"+_id+"'"+
                     (style?" style='"+style+"'":"")+"><img src='"+_img+"'/></div>";
