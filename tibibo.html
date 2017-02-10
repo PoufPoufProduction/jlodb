@@ -27,7 +27,7 @@
 .devmode                                { display:none; }
 
 #bomain                                 { display:relative; background-image:url('res/img/background/book02.svg'); }
-#bomain.devmode #bopage #devmode        { opacity:1; }
+#bomain.devmode #bopage #edmode        { opacity:1; }
 #bomain.devmode.ownbook #editown.menu   { display:inline; }
 #bomain.devmode.book #editother.menu    { display:inline; }
 #bomain.devmode .usermode               { display:none; }
@@ -42,7 +42,7 @@
 #bopage #profile #avatar                { width:1em; height:1em; background-color:#444; font-size:3em; border-radius:.1em; cursor:pointer; }
 #bopage #profile #label                 { margin-left:.2em;  font-size:.7em; width:5.2em; }
 #bopage #profile #sub                   { font-size:.8em; color:yellow; }
-#bopage #profile #devmode               { font-size:2em; opacity:0.3; display:none; }
+#bopage #profile #edmode               { font-size:2em; opacity:0.3; display:none; }
 #bopage #profile .icon                  { font-size:3em; cursor:pointer; }
 #bopage #profile #gdx                   { display:none; }
 #bopage #profile #gdx.s                 { background-color:red; border-radius:.5em; }
@@ -165,7 +165,7 @@ user.onEvent = function() {
         $("#profile #label #sub").html("#"+user.settings.tag);
 
         if (user.settings.devmode)  { $("#bomain").addClass("devmode"); }
-        $("#profile #label #devmode").show();
+        $("#profile #label #edmode").show();
 
         $("#bomain #profile #gdx").show();
 
@@ -181,7 +181,7 @@ user.onEvent = function() {
         $("#profile #avatar").html("<img src='mods/tibibi/res/img/people.svg'/>");
         $("#profile #label #name").html("");
         $("#profile #label #sub").html("");
-        $("#profile #label #devmode").hide();
+        $("#profile #label #edmode").hide();
         $("#bomain #profile #gdx").hide();
 
         tibibo.init();
@@ -943,7 +943,7 @@ $(window).ready(function() {
                 <div id="label">
                     <div id="name">&nbsp;</div>
                     <div id="sub"></div>
-                    <div id="devmode" class="icon" ontouchstart="tibibo.devmode();event.preventDefault();"
+                    <div id="edmode" class="icon" ontouchstart="tibibo.devmode();event.preventDefault();"
                         onclick="tibibo.devmode();"><img src="mods/tibibi/res/img/edit.svg"/></div>
                 </div>
                 <div id="gdx" class="icon" ontouchstart="user.logout($(this));event.preventDefault();"

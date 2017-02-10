@@ -42,8 +42,8 @@
 #bumain #profile #avatar                { width:1em; height:1em; background-color:#444; font-size:3em; cursor:pointer; }
 #bumain #profile #label                 { margin-left:.2em;  font-size:.7em; width:5.2em; }
 #bumain #profile #sub                   { font-size:.8em; color:yellow; }
-#bumain #profile #devmode               { font-size:2em; opacity:0.3; }
-#bumain.devmode #profile #devmode       { opacity:1; }
+#bumain #profile #edmode                { font-size:2em; opacity:0.3; }
+#bumain.devmode #profile #edmode        { opacity:1; }
 #bumain #profile .icon                  { font-size:3em; cursor:pointer; }
 #bumain #profile #gdx                   { display:none; }
 #bumain #profile #gdx.s                 { background-color:red; border-radius:.5em; }
@@ -1089,7 +1089,7 @@ $(window).ready(function() {
                 <div id="label">
                     <div id="name">&nbsp;</div>
                     <div id="sub"></div>
-                    <div id="devmode" class="icon" ontouchstart="tibibu.devmode();event.preventDefault();"
+                    <div id="edmode" class="icon" ontouchstart="tibibu.devmode();event.preventDefault();"
                         onmousedown="tibibu.devmode();"><img src="res/img/white/edit.svg"/></div>
                 </div>
                 <div id="gdx" class="icon" ontouchstart="user.logout($(this));event.preventDefault();"
