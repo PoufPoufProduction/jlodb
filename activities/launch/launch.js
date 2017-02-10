@@ -140,7 +140,6 @@
                             settings.action.last    = [ e.clientX, e.clientY ];
                             settings.action.angle   = settings.angle;
                         }
-                        else  if (settings.interactive) { helpers.launch($this); }
                     }
 
                     helpers.tip($this);
@@ -162,9 +161,10 @@
                              _event.originalEvent.touches && _event.originalEvent.touches.length)?
                              _event.originalEvent.touches[0]:_event;
 
-                        settings.action.move = true;
-                        settings.action.angle = settings.angle +
-                            (e.clientX - settings.action.first[0])*settings.ratio*settings.action.first[1]/430;
+                        var angle = (e.clientX - settings.action.first[0])*settings.ratio*settings.action.first[1]/430;
+                             
+                        if (Math.abs(angle)>1) { settings.action.move = true; }
+                        settings.action.angle = settings.angle + angle;
                         
                         if (settings.action.angle>80) { settings.action.angle = 80; } else
                         if (settings.action.angle<-80){ settings.action.angle =-80; }
