@@ -226,6 +226,14 @@
                     case "menu" :
                         next = false; timer = -1;
                         var $html=$("<div id='menu'></menu>");
+                        if (elt.attr&&elt.attr["class"]) {
+                            var value = elt.attr["class"];
+                            if (value.indexOf("$")!=-1) {
+                                try { value = eval(value.replace(reg,"settings.data.")+";"); }
+                                catch (e) { alert("error with: "+value); }
+                            }
+                            $html.addClass(value);
+                        }
                         for (var i in elt.value) {
                             var m = "<div class='bluekeypad' id='r"+i+"'";
                             m+=" onclick='$(this).closest(\".novel\").novel(\"menu\",this,"+i+");'";
@@ -306,6 +314,7 @@
                                         if (topv)   { aa["top"]     = topv; }
                                         $elt.css("left",oldleft).css("top",oldtop).animate(aa, timer); break;
                                 }
+                                if (elt.attr.nodelay) { timer = 0; }
                             }
 
 
@@ -347,7 +356,7 @@
             if (_attr&&_attr.opacity)     { style+="opacity:"+_attr.opacity+";" }
             if (_attr&&_attr.index)       { style+="z-index:"+_attr.index+";" }
             if (_attr&&_attr.size)        { style+="font-size:"+_attr.size+"em;" }
-            elt = "<div "+(_attr&&_attr.class?"class='"+_attr.class+"' ":"")+"id='elt"+_id+"'"+
+            elt = "<div "+(_attr&&_attr["class"]?"class='"+_attr["class"]+"' ":"")+"id='elt"+_id+"'"+
                     (style?" style='"+style+"'":"")+"><img src='"+_img+"'/></div>";
             return elt;
             
@@ -647,7 +656,8 @@
                     html+="<input class='label' id='storyname' value=\""+name+"\"/>";
                     html+="<select class='operation'>";
                     html+="<option>callback</option>";
-                    html+="<option selected='selected'>dialog</option><option>dialogg</option><option>hide</option><option>if</option>";
+                    html+="<option selected='selected'>dialog</option><option>dialogg</option><option>error</option>";
+                    html+="<option>hide</option><option>if</option>";
                     html+="<option>jump</option><option>menu</option><option>op</option><option>pause</option><option>show</option>";
                     html+="<option>stop</option>";
                     html+="</select>";
