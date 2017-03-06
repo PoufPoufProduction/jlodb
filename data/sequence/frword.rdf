@@ -8,7 +8,7 @@
         <dct:identifier>wl01</dct:identifier>
         <dct:title xml:lang="fr-FR">Compter, sans contrainte de temps, le nombre de lettres composant chaque mot [de 3 à 6].</dct:title>
         <dct:description><![CDATA["time":0,"regexp":{"input": { "from": "(.+) (.+)","to":"<div class='icon' style='font-size:3.6em;float:none;margin:0 auto;'><img src='res/img/clipart/$1.svg'/></div><div style='font-size:2em;'>$2</div>"}},"input":{"digit":1,"speed":0},"values":[["animal/bear01 ours","4"],["animal/cat01 chat","4"],["animal/cow01 vache","5"],["animal/dog04 chien","5"],["animal/goose01 oie","3"],["animal/rabbit01 lapin","5"],["building/house01 maison","6"],["clothes/bag01 sac","3"],["food/icecream01 glace","5"],["furniture/bed01 lit","3"],["furniture/chair02 chaise","6"],["furniture/table01 table","5"],["human/foot01 pied","4"],["human/hand01 main","4"],["music/piano01 piano","5"],["object/book01 livre","5"],["object/box01 boîte","5"],["object/gift01 cadeau","6"],["object/key01 clé","3"],["sport/football01 ballon","6"],["sport/golfball01 balle","5"],["vehicle/bus02 bus","3"]],"class":"neg alpha h60","font":0.6]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"[b]Combien de lettres[/b] dans chacun des mots ?"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Combien de lettres[/b] dans chacun des mots ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>frword</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
@@ -20,7 +20,7 @@
         <dct:identifier>wl02</dct:identifier>
         <dct:title xml:lang="fr-FR">Compter, sans contrainte de temps, le nombre de lettres composant chaque mot [6 et plus].</dct:title>
         <dct:description><![CDATA["time":0,"regexp":{"input": { "from": "(.+) (.+)","to":"<div class='icon' style='font-size:3.6em;float:none;margin:0 auto;'><img src='res/img/clipart/$1.svg'/></div><div style='font-size:2em;'>$2</div>"}},"input":{"digit":2,"speed":5000},"values":[["animal/rhinoceros01 rhinoceros","10"],["animal/octopus01 pieuvre","7"],["animal/goldfish01 poisson","7"],["animal/elephant01 éléphant","8"],["animal/crocodile01 crocodile","9"],["animal/dinosaur01 dinosaure","9"],["building/building02 immeuble","8"],["clothes/glasses01 lunettes","8"],["clothes/shoe01 chaussure","9"],["clothes/shirt03 chemise","7"],["food/sandwich01 sandwich","8"],["furniture/sofa01 canapé","6"],["furniture/tv01 télévision","10"],["hardware/computer01 ordinateur","10"],["music/bugle01 trompette","9"],["music/violin01 violon","6"],["object/bulb01 ampoule","7"],["object/domino01 domino","6"],["object/tap01 robinet","7"],["sport/dancer01 danseuse","8"],["sport/tabletennis01 raquette","8"],["vehicle/tractor01 tracteur","8"]],"class":"neg alpha h60","font":0.6]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"[b]Combien de lettres[/b] dans chacun des mots ?"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Combien de lettres[/b] dans chacun des mots ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>frword</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
@@ -33,7 +33,7 @@
         <dct:identifier>wl03</dct:identifier>
         <dct:title xml:lang="fr-FR">Compter, sans contrainte de temps, le nombre de lettres différentes composant chaque mot.</dct:title>
         <dct:description><![CDATA["number":"10","time":0,"regexp":{"input": { "from": "(.+) (.+)","to":"<div class='icon' style='font-size:3.6em;float:none;margin:0 auto;'><img src='res/img/clipart/$1.svg'/></div><div style='font-size:2em;'>$2</div>"}},"input":{"digit":1,"speed":0},"values":[["animal/turtle01 tortue","5"],["animal/octopus01 pieuvre","6"],["animal/goldfish01 poisson","5"],["animal/mice01 souris","5"],["animal/hog01 cochon","4"],["animal/panda02 panda","4"],["animal/duck01 canard","5"],["food/cake03 gâteau","5"],["object/domino01 domino","5"],["sport/baseball01 balle","4"],["vegetable/banana01 banane","4"],["vehicle/tractor01 tracteur","6"]],"class":"neg alpha h60","font":0.6]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"[b]Combien de lettres[/b] [red]différentes[/red] dans chacun des mots ?"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Combien de lettres[/b] [red]différentes[/red] dans chacun des mots ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>frword</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
@@ -48,7 +48,7 @@
         <dct:identifier>wmai01</dct:identifier>
         <dct:title xml:lang="fr-FR">Compléter, sans contrainte de temps, les mots par 'a' ou 'i'.</dct:title>
         <dct:description><![CDATA["number":20,"time":0,"regexp":{"output":"\\\\.\\\\.\\\\.","input": { "from": "(.+) (.+)","to":"<div class='icon' style='font-size:3.6em;float:none;margin:0 auto;'><img src='res/img/clipart/$1.svg'/></div><div style='font-size:2em;'>$2</div>"}},"template":"template.html","input":{"attr":[5,3,1.2],"digit":1,"speed":0,"values":["a","i"]},"values":[["vegetable/banana01 b...n...ne","a"],["animal/bison01 b...son","i"],["object/gift01 c...deau","a"],["vegetable/carrot01 c...rrotte","a"],["object/box01 c...rton","a"],["clothes/hat01 ch...peau","a"],["animal/cat01 ch...t","a"],["clothes/shirt03 chem...se","i"],["tool/scissors01 c...seaux","i"],["animal/crocodile01 crocod...le","i"],["object/domino01 dom...no","i"],["bugs/ant01 fourm...","i"],["food/cake03 g...teau","a"],["object/lamp01 l...mpe","a"],["furniture/bed01 l...t","i"],["animal/panda01 p...nd...","a"],["object/pipe01 p...pe","i"],["animal/fox02 ren...rd","a"],["animal/rhinoceros01 rh...noceros","i"],["object/tap01 rob...net","i"],["furniture/table01 t...ble","a"],["furniture/tv01 télév...sion","i"],["animal/mice01 sour...s","i"],["animal/cow01 v...che","a"],["object/vase01 v...se","a"]],"class":"neg alpha h60","font":0.6]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Complétez le mot par [b]a[/b] ou [b]i[/b] ?"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Complétez le mot par [b]a[/b] ou [b]i[/b] ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>frword</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -61,7 +61,7 @@
         <dct:identifier>wmo01</dct:identifier>
         <dct:title xml:lang="fr-FR">Compléter, sans contrainte de temps, les mots par 'o' ou 'eau'.</dct:title>
         <dct:description><![CDATA["number":15,"time":0,"regexp":{"output":"\\\\.\\\\.\\\\.","input": { "from": "(.+) (.+)","to":"<div class='icon' style='font-size:3.6em;float:none;margin:0 auto;'><img src='res/img/clipart/$1.svg'/></div><div style='font-size:2em;'>$2</div>"}},"template":"template.html","input":{"attr":[5,3,1.2],"digit":1,"speed":0,"values":["o","eau"]},"values":[["clothes/hat01 chap...","eau"],["food/cake03 gat...","eau"],["object/gift01 cad...","eau"],["tool/basket01 s...","eau"],["tool/scissors01 cis...x","eau"],["vehicle/ship01 bat...","eau"],["animal/crocodile01 cr...c...dile","o"],["animal/hog01 c...chon","o"],["animal/rhinoceros01 rhin...ceros","o"],["music/piano01 pian...","o"],["object/domino01 d...min...","o"],["object/tap01 r...binet","o"],["vehicle/bike01 vél...","o"]],"class":"neg alpha h60","font":0.6]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Complétez le mot par [b]o[/b] ou [b]eau[/b] ?"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Complétez le mot par [b]o[/b] ou [b]eau[/b] ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>frword</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -76,72 +76,84 @@
         <dct:identifier>waa</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier, en moins de 2 minutes, les ajectifs synonymes</dct:title>
         <dct:description><![CDATA["time":6,"template":"template.html","input":{"attr":[5,3,1.2],"digit":1,"speed":0,"values":[["oui","o"],["non","n"]]},"values":[["jaloux,envieux","o"],["beau,joli","o"],["doux,gentil","o"],["fatigué,épuisé","o"],["lâche,pleutre","o"],["changé,modifié","o"],["réduit,diminué","o"],["fini,terminé","o"],["cassé,abîmé","o"],["clair,lumineux","o"],["vieux,ancien","o"],["court,bref","o"],["gros,énorme","o"],["riche,fortuné","o"],["agité,remuant","o"],["doué,bon","o"],["troqué,échangé","o"],["vieux,sombre","n"],["gai,absent","n"],["perdu,doux","n"],["riche,cassé","n"],["doux,jaloux","n"],["clair,lâche","n"],["remuant,beau","n"],["gros,petit","n"],["beau,moche","n"],["gentil,méchant","n"],["sombre,absent","n"],["présent,gentil","n"]],"class":"f14 alpha"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"<span style='font-size:2em;'>Les 2 mots sont-ils <b>synonymes</b> ?</span>"]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Les 2 mots sont-ils [b]synonymes[/b] ?","fontex":2]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>frword</dct:subject>
-        <dct:educationLevel>3</dct:educationLevel>
+        <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>wa0</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:isPartOf>synonymy</dct:isPartOf>
+        <dct:alternative>waa</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>wab</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier, en moins de 2 minutes, les verbes synonymes</dct:title>
         <dct:description><![CDATA["time":6,"template":"template.html","input":{"attr":[5,3,1.2],"digit":1,"speed":0,"values":[["oui","o"],["non","n"]]},"values":[["briser,casser","o"],["obtenir,avoir","o"],["voler,dérober","o"],["troquer,échanger","o"],["chercher,fouiller","o"],["aimer,adorer","o"],["s'enfuir,s'évader","o"],["découvrir,trouver","o"],["finir,terminer","o"],["séparer,détacher","o"],["donner,offrir","o"],["réunir,assembler","o"],["décorer,orner","o"],["aimer,détester","n"],["voler,fouiller","n"],["troquer,partir","n"],["chercher,finir","n"],["décorer,débuter","n"],["remuer,donner","n"],["réduire,casser","n"],["finir,offrir","n"],["s'enfuir,adorer","n"],["avoir,être","n"],["casser,obtenir","n"],["commencer,finir","n"],["valider,réunir","n"]],"class":"f14 alpha"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"<span style='font-size:2em;'>Les 2 mots sont-ils <b>synonymes</b> ?</span>"]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Les 2 mots sont-ils [b]synonymes[/b] ?","fontex":2]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>frword</dct:subject>
-        <dct:educationLevel>3</dct:educationLevel>
+        <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>wa0</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:isPartOf>synonymy</dct:isPartOf>
+        <dct:alternative>waa</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>wac</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier, en moins de 2 minutes, les noms synonymes</dct:title>
         <dct:description><![CDATA["time":6,"template":"template.html","input":{"attr":[5,3,1.2],"digit":1,"speed":0,"values":[["oui","o"],["non","n"]]},"values":[["problème,souci","o"],["maison,demeure","o"],["travail,métier","o"],["roi,souverain","o"],["source,origine","o"],["aide,soutien","o"],["bébé,nourrisson","o"],["élève,étudiant","o"],["échec,défaite","o"],["ragot,rumeur","o"],["embarras,gêne","o"],["manière,façon","o"],["corvée,besogne","o"],["prison,geôle","o"],["affront,outrage","o"],["bateau,navire","o"],["rêve,songe","o"],["livre,ouvrage","o"],["succès,réussite","o"],["vélo,bicyclette","o"],["fin,bout","o"],["texte,écrit","o"],["passage,accès","o"],["lutte,combat","o"],["acteur,comédien","o"],["éloge,compliment","o"],["machine,appareil","o"],["maison,chemin","n"],["bébé,navire","n"],["défaite,succès","n"],["vélo,besogne","n"],["table,songe","n"],["chaise,aide","n"],["élève,maître","n"],["reine,combat","n"],["souci,acteur","n"],["bus,source","n"],["rumeur,geôle","n"],["crayon,corvée","n"],["bout,prison","n"],["sapin,bateau","n"],["écran,nuage","n"],["étoile,valise","n"],["verre,livre","n"],["main,échec","n"],["navire,plante","n"],["rideau,corvée","n"]],"class":"f14 alpha"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"<span style='font-size:2em;'>Les 2 mots sont-ils <b>synonymes</b> ?</span>"]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Les 2 mots sont-ils [b]synonymes[/b] ?","fontex":2]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>frword</dct:subject>
-        <dct:educationLevel>3</dct:educationLevel>
+        <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>wa0</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:isPartOf>synonymy</dct:isPartOf>
+        <dct:alternative>waa</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>waaa</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier, en moins de 2 minutes, les ajectifs antonymes</dct:title>
         <dct:description><![CDATA["time":6,"template":"template.html","input":{"attr":[5,3,1.2],"digit":1,"speed":0,"values":[["oui","o"],["non","n"]]},"values":[["beau,moche","o"],["lâche,courageux","o"],["laid,beau","o"],["cassé,intact","o"],["clair,obscur","o"],["lumineux,sombre","o"],["vieux,jeune","o"],["court,long","o"],["gros,maigre","o"],["grand,petit","o"],["riche,pauvre","o"],["agité,calme","o"],["mauvais,bon","o"],["léger,lourd","o"],["long,court","o"],["large,étroit","o"],["gai,triste","o"],["rapide,lent","o"],["habile,maladroit","o"],["dur,mou","o"],["long,large","n"],["triste,rond","n"],["perdu,debout","n"],["moche,laid","n"],["obscur,sombre","n"],["jeune,féminin","n"],["long,grand","n"],["gros,obèse","n"],["caché,habile","n"],["snob,triste","n"],["aisé,riche","n"],["terne,fin","n"],["léger,calme","n"],["absent,mauvais","n"]],"class":"f14 alpha"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"<span style='font-size:2em;'>Les 2 mots sont-ils <b>antonymes</b> ?</span>"]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Les 2 mots sont-ils [b]antonymes[/b] ?","fontex":2]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>frword</dct:subject>
-        <dct:educationLevel>3</dct:educationLevel>
+        <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>wa0</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:isPartOf>synonymy</dct:isPartOf>
+        <dct:alternative>waa</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>wabb</dct:identifier>
         <dct:title xml:lang="fr-FR">Construire, en moins de 2 minutes, les ajectifs antonymes grâce aux préfixes adéquats.</dct:title>
         <dct:description><![CDATA["time":6,"template":"template.html","input":{"attr":[2,3,1.2],"digit":1,"speed":0,"values":["a","mal","in","im","ir","il","dé","dés","dis"]},"regexp": { "output": " " },"values":[[" adroit","mal"],[" apte","in"],[" probable","im"],[" logique","il"],[" constant","in"],[" prudent","im"],[" possible","im"],[" honnête","mal"],[" accessible","in"],[" lisible","il"],[" branché","dé"],[" fini","in"],[" givré","dé"],[" perméable","im"],[" coloré","dé"],[" poli","im"],[" connu","in"],[" plié","dé"],[" chargé","dé"],[" capable","in"],[" juste","in"],[" plaisant","dé"],[" direct","in"],[" personnel","im"],[" réel","ir"],[" actif","in"],[" régulier","ir"],[" pair","im"],[" obéissant","dés"],[" agréable","dés"],[" continu","dis"],[" normal","a"]],"class":"f14 alpha"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"<span style='font-size:2em;'>Construire l'<b>antonyme</b> des adjectifs.</span>"]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Construire l'[b]antonyme[/b] des adjectifs.","fontex":2]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>frword</dct:subject>
-        <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>wa0</dct:alternative>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:isPartOf>synonymy</dct:isPartOf>
+        <dct:alternative>waa</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>wa0</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier, en moins de 2 minutes, les ajectifs synonymes et antonymes</dct:title>
-        <dct:description><![CDATA["time":6,"template":"template.html","input":{"attr":[5,3,1.2],"digit":1,"speed":0,"values":[["syn.","s"],["ant.","a"]]},"values":[["beau,moche","a"],["lâche,courageux","a"],["laid,beau","a"],["cassé,intact","a"],["clair,obscur","a"],["lumineux,sombre","a"],["vieux,jeune","a"],["court,long","a"],["gros,maigre","a"],["grand,petit","a"],["riche,pauvre","a"],["agité,calme","a"],["mauvais,bon","a"],["léger,lourd","a"],["long,court","a"],["large,étroit","a"],["gai,triste","a"],["rapide,lent","a"],["habile,maladroit","a"],["dur,mou","a"],["jaloux,envieux","s"],["beau,joli","s"],["doux,gentil","s"],["fatigué,épuisé","s"],["lâche,pleutre","s"],["changé,modifié","s"],["réduit,diminué","s"],["fini,terminé","s"],["cassé,abîmé","s"],["clair,lumineux","s"],["vieux,ancien","s"],["court,bref","s"],["gros,énorme","s"],["riche,fortuné","s"],["agité,remuant","s"],["doué,bon","s"],["troqué,échangé","s"]],"class":"f14 alpha"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"<span style='font-size:2em;'>Synonyme ou antonyme ?</span>"]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:description><![CDATA["time":6,"template":"template.html","input":{"attr":[2.2,14,1.2],"digit":1,"speed":0,"values":[["synonyme","s"],["antonyme","a"]]},"values":[["beau,moche","a"],["lâche,courageux","a"],["laid,beau","a"],["cassé,intact","a"],["clair,obscur","a"],["lumineux,sombre","a"],["vieux,jeune","a"],["court,long","a"],["gros,maigre","a"],["grand,petit","a"],["riche,pauvre","a"],["agité,calme","a"],["mauvais,bon","a"],["léger,lourd","a"],["long,court","a"],["large,étroit","a"],["gai,triste","a"],["rapide,lent","a"],["habile,maladroit","a"],["dur,mou","a"],["jaloux,envieux","s"],["beau,joli","s"],["doux,gentil","s"],["fatigué,épuisé","s"],["lâche,pleutre","s"],["changé,modifié","s"],["réduit,diminué","s"],["fini,terminé","s"],["cassé,abîmé","s"],["clair,lumineux","s"],["vieux,ancien","s"],["court,bref","s"],["gros,énorme","s"],["riche,fortuné","s"],["agité,remuant","s"],["doué,bon","s"],["troqué,échangé","s"]],"class":"f14 alpha"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Les 2 mots sont-ils des [b]synonymes[/b] ou des [b]antonymes[/b] ?","fontex":1.3]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>frword</dct:subject>
-        <dct:educationLevel>3</dct:educationLevel>
+        <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>wa0</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:isPartOf>synonymy</dct:isPartOf>
+        <dct:alternative>waa</dct:alternative>
     </rdf:Description>
 
 </rdf:RDF>
