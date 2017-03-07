@@ -30,7 +30,7 @@
         "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>",
         "\\\[math\\\](.+)\\\[/math\\\]",            "<div class='math'><math>$1</math></div>",
         "\\\[mathxl\\\](.+)\\\[/mathxl\\\]",        "<div class='mathxl'><math>$1</math></div>",
-        "\\\[icon\\\](.+)\\\[/icon\\\]",            "<div class='img'><div class='icon'><img src='res/img/$1.svg'/></div></div>"
+        "\\\[icon\\\](.+)\\\[/icon\\\]",            "<div class='img'><div class='icon'><img src='$1.svg'/></div></div>"
     ];
 
     var ntype = { normal:0, scientific:1, physics:2 };
@@ -689,7 +689,6 @@
                 _text = _text.replace(vReg,"<span class='data' id='d"+i+"'>$1</span>");
             }
 
-
             return _text;
         },
         loader: {
@@ -898,7 +897,8 @@
             var settings = helpers.settings($this);
             var data        = (settings.data?settings.data[settings.dataid]:settings);
             var values      = (settings.data&&settings.data[settings.dataid].values?settings.data[settings.dataid].values:settings.values);
-            var exercice    = (settings.data?settings.exercice[settings.dataid%settings.exercice.length]:settings.exercice);
+            var exercice    = (settings.data&&$.isArray(settings.exercice)?
+                                 settings.exercice[settings.dataid%settings.exercice.length]:settings.exercice);
             var figure      = (settings.data&&settings.data[settings.dataid].figure?settings.data[settings.dataid].figure:settings.figure);
 
             settings.cvalues = [];
@@ -941,7 +941,9 @@
                             (exercice[i].length?helpers.format(exercice[i]):"&#xA0;")+"</div>"; }
                 $this.find("#exercice>div").html(html);
             }
-            else { $this.find("#exercice>div").html(helpers.format(exercice)); }
+            else {
+                $this.find("#exercice>div").html("<div style='font-size:"+settings.font+"em;'>"+helpers.format(exercice)+"</div>");
+            }
 
             $this.find("#inventory .z").each(function(_index) {
                 if (values && _index<values.length) {
@@ -960,7 +962,7 @@
             $elt.bind("mousedown touchstart", function(event) { /* helpers.node.mathml($this,parseInt($(this).attr("id")));*/ });
             $elt.draggable({containment:$this, helper:"clone", 
                 start:function( event, ui) {
-                    $("#exercice .data#d"+$(this).attr("id")).addClass("s").parent().addClass("hl");
+                    $("#exercice .data#d"+$(this).attr("id")).addClass("hl");
                     if (settings.cvalues[$(this).attr("id")].children.length ||
                         settings.cvalues[$(this).attr("id")].type == "action" ) {
                         $this.find("#editor").editor("mathml",settings.cvalues[$(this).attr("id")]);
@@ -976,8 +978,7 @@
                 stop: function( event, ui) {
                     var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
                                     event.originalEvent.touches[0]:event;
-                    $("#exercice .data").removeClass("s");
-                    $("#exercice div").removeClass("hl");
+                    $("#exercice .data").removeClass("hl");
                     $this.find("#editor").editor("mathml");
                     
                     if (settings.svg) {
