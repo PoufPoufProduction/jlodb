@@ -6,7 +6,9 @@
         css         : "style.css",              // Activity css style sheet
         lang        : "fr-FR",                  // now localization
         url         : "desktop/equation.svg",   // The equation svg
-        font        : 1,                        // Font size of the exercice
+        figure      : "",                       // Help figure
+        exercice    : "",
+        fontex      : 1,                        // Font size of the exercice
         scalemax    : 2,                        // The scale max
         source      : [],                       // Source element
         a           : { all         : true,     // Authorization : everything
@@ -41,6 +43,17 @@
         numerator   : 1,
         denominator : 2
     }
+    
+    
+    var regExp = [
+        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
+        "\\\[bb\\\](.+)\\\[/bb\\\]",                "<b>$1</b>",
+        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
+        "\\\[br\\\]",                               "<br/>",
+        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
+        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
+        "\\\[math\\\](.+)\\\[/math\\\]",            "<div class='math'><math>$1</math></div>"
+    ];
 
     // private methods
     var helpers = {
@@ -67,6 +80,13 @@
             var settings = helpers.settings($this);
             helpers.unbind($this);
             settings.context.onquit($this,{'status':'success', 'score':settings.score});
+        },
+        format: function(_text) {
+            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
+                var vReg = new RegExp(regExp[i*2],"g");
+                _text = _text.replace(vReg,regExp[i*2+1]);
+            }
+            return _text;
         },
         loader: {
             css: function($this) {
@@ -117,16 +137,50 @@
                 if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
 
                 // EXERCICE AND FIGURE
-                if (settings.figure) { $this.find("#figure").html("<img src='res/img/"+settings.figure+"'/>"); }
+                if (settings.figure && settings.figure.length) { $this.find("#figure").html("<img src='res/img/"+settings.figure+"'/>"); }
                 if (settings.exercice) {
                     if ($.isArray(settings.exercice)) {
-                        $this.find("#exercice").html("");
-                        for (var i in settings.exercice) { $this.find("#exercice").append("<p>"+settings.exercice[i]+"</p>"); }
+                        // TODO: remove this part - do not use exercice as array anymore - use [br] instead.
+                        settings.fontex*=0.8;
+                        $this.find("#exercice>div").html("");
+                        for (var i in settings.exercice) { $this.find("#exercice>div").append("<p>"+settings.exercice[i]+"</p>"); }
                     }
-                    else { $this.find("#exercice").html("<p>"+settings.exercice+"</p>"); }
+                    else { $this.find("#exercice>div").html(helpers.format(settings.exercice)); }
                 }
-                $this.find("#exercice p").css("font-size",(0.6*settings.font)+"em");
+                $this.find("#exercice>div").css("font-size",settings.fontex+"em");
 
+                // HELPS
+                if (!settings.a.all) {
+                    $this.find(".help").addClass("inactive");
+                    $this.find(".help.all").removeClass("inactive");
+                    for (var i in settings.a) {
+                        var v=settings.a[i];
+                        switch(i) {
+                            case "move":    if (v&1) { $this.find(".help.move1").removeClass("inactive"); }
+                                            if (v&2) { $this.find(".help.move2").removeClass("inactive"); }
+                                            if (v&4) { $this.find(".help.move4").removeClass("inactive"); } break;
+                            case "source":  if ((v&1) && settings.source ) { $this.find(".help#heqa").removeClass("inactive"); }
+                                            if ((v&2) && settings.source ) { $this.find(".help#heqm").removeClass("inactive"); }
+                                            if ((v&4) && settings.source ) { $this.find(".help#heqd").removeClass("inactive"); } break;
+                            case "target":  if (v&1) { $this.find(".help.target1").removeClass("inactive"); }
+                                            if (v&2) { $this.find(".help.target2").removeClass("inactive"); } break;
+                            case "equation" : if (v)    { $this.find(".help.equ").removeClass("inactive"); } break;
+                            default : if (v)    { $this.find(".help."+i).removeClass("inactive"); } break;
+                        }
+                    }
+                }
+                
+                
+                $this.find(".help").bind("mousedown touchstart", function(_event) {
+                    if (!$(this).hasClass("inactive")) {
+                        var id=$(this).attr("id").substr(1);
+                        $this.find(".help").removeClass("s");
+                        $(this).addClass("s");
+                        $this.find("#hcontent").html("").html(helpers.format(settings.locale.hlabel[id]));
+                    }
+                    _event.preventDefault();
+                });
+                
                 // SOURCE
                 for (var i in settings.source) { helpers.addSource($this, settings.source[i], 0); }
 
@@ -875,28 +929,30 @@ else
         else {
           // NO TARGET NODE NOR TARGET ELEMENT... MAYBE A JUMP
           if (!settings.action.source && eq.tree.value=="=" && settings.action.fromleft !=(settings.action.coord[0]<eq.sep+eq.margin.now[0]) ) {
-            var node = settings.action.node;
-            var son  = 0;
-            while (node.parent!=eq.tree) { son=node; node=node.parent; }
-              // JUMP OF UNIQUE VALUE IS NOT ALLOWED
-            if (son && node.value=="+") {
-                eq.remove(son);
-                var elt = helpers.element(); elt.type = c.op; elt.value = "+";
-                elt.origin = [settings.action.node.elt[0].pos.now[0], settings.action.node.elt[0].pos.now[1]];
+            if (settings.a.all || settings.a.jump) {
+                var node = settings.action.node;
+                var son  = 0;
+                while (node.parent!=eq.tree) { son=node; node=node.parent; }
+                  // JUMP OF UNIQUE VALUE IS NOT ALLOWED
+                if (son && node.value=="+") {
+                    eq.remove(son);
+                    var elt = helpers.element(); elt.type = c.op; elt.value = "+";
+                    elt.origin = [settings.action.node.elt[0].pos.now[0], settings.action.node.elt[0].pos.now[1]];
 
-                if (son.type==c.val) {
-                  if (son.value[0]=='-') {  son.value=son.value.substr(1); } else { son.value="-"+son.value; }
-                  elt.children=[eq.tree.children[settings.action.fromleft?1:0],son];
-                  eq.replace(eq.tree.children[settings.action.fromleft?1:0], elt);
-                }
-                else {
-                  var min = helpers.element(); min.type = c.val; min.value = "-1";
-                  min.origin = [settings.action.node.elt[0].pos.now[0], settings.action.node.elt[0].pos.now[1]];
-                  var mul = helpers.element(); mul.type = c.op; mul.value = "*";
-                  mul.origin = [settings.action.node.elt[0].pos.now[0], settings.action.node.elt[0].pos.now[1]];
-                  mul.children = [ min, son ];
-                  elt.children=[eq.tree.children[settings.action.fromleft?1:0],mul];
-                  eq.replace(eq.tree.children[settings.action.fromleft?1:0], elt);
+                    if (son.type==c.val) {
+                      if (son.value[0]=='-') {  son.value=son.value.substr(1); } else { son.value="-"+son.value; }
+                      elt.children=[eq.tree.children[settings.action.fromleft?1:0],son];
+                      eq.replace(eq.tree.children[settings.action.fromleft?1:0], elt);
+                    }
+                    else {
+                      var min = helpers.element(); min.type = c.val; min.value = "-1";
+                      min.origin = [settings.action.node.elt[0].pos.now[0], settings.action.node.elt[0].pos.now[1]];
+                      var mul = helpers.element(); mul.type = c.op; mul.value = "*";
+                      mul.origin = [settings.action.node.elt[0].pos.now[0], settings.action.node.elt[0].pos.now[1]];
+                      mul.children = [ min, son ];
+                      elt.children=[eq.tree.children[settings.action.fromleft?1:0],mul];
+                      eq.replace(eq.tree.children[settings.action.fromleft?1:0], elt);
+                    }
                 }
             }
           }

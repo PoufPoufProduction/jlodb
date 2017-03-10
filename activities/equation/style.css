@@ -1,14 +1,16 @@
 .equation                               { background-image:url("../../res/img/background/book04.svg"); background-repeat:repeat;
-                                          width:100%; height:100%; position:relative; }
+                           width:100%; height:100%; position:relative; }
+.equation>div                         { background-image:url("../../res/img/background/equation.svg"); }
 .equation div#splashex                  { background-image:url("../../res/img/banners/equation.svg");  }
 .equation div#splashex h1               { position:absolute; top:20%; left:50%; font-size:1.3em; color:yellow; white-space:nowrap;}
 .equation div#splashex #guide           { position:absolute; top:30%; left:50%; font-size:0.9em; width:45%; color:#2fbe50;
                                           text-align:justify; }
 .equation div#svg                       { position:relative; }
-.equation div#figure                    { position:absolute; width:16em; height:12em; left:0; top:0;}
+.equation div#figure                    { position:absolute; width:16em; height:5em; left:0; top:0;}
 .equation div#exercice                  { background-image:url("../../res/img/background/book02.svg"); background-repeat:repeat;
-                                          border-radius:.25em; position:absolute; height:1.6em; width:14.3em; top: 10.35em; left:1.6em; }
-.equation div#exercice p                { font-size:.5em; margin:0 .5em; }
+                                font-size:0.5em; border-radius:.5em; position:absolute;
+                                height:20%; width:91%; top: 86.5%; left:11%; }
+.equation div#exercice>div                { margin:0 .5em; }
 .equation div#submit                    { font-size:1.5em; height:1em;width:1em; cursor:pointer;
                                          position:absolute; top:7em; left:0em; z-index:3; }
 
@@ -22,3 +24,21 @@
                                           z-index:100; display:none; }
 .equation div#error>div                 { width:28em; height:15em; position:relative; top:2em; left:2em; background-color:black;
                                           color:lightgreen; font-size:0.5em; padding-left:.2em; }
+                                          
+                                          
+.equation #phelp                       { width:16em; height:12em; position:absolute;top:0;left:0; background-color:rgba(0,0,0,0.5);
+                                      z-index:2002; cursor:pointer; display:none; }
+.equation #phelp>div                   { width:98%; height:98%; margin:.2em auto;
+                                      background-color:rgba(255,255,255,0.8); }
+.equation #phelp #hquit         { cursor:pointer; }
+.equation #phelp #hcontent  { float:right; font-size:.4em; width:90%; padding:0 .2em; margin:.2em; height:4.2em;
+                            color:#444; background-color:rgba(255,255,255,0.8);
+                            border:1px solid black;}
+.equation #phelp #hhr         { clear:both; width:100%; height:5%;  }
+.equation #phelp #helpers { margin-left:2%; }
+.equation #phelp .help              { width:16em; height:5em; font-size:.18em; border:1px solid black; margin:1px; float:left;
+                              background-color:#eedd99; }
+.equation #phelp .help.inactive { opacity:0.2; cursor:auto; }
+.equation #phelp .help.s { border:1px solid red; background-color:#ee8811; }
+.equation #help                 { position:absolute; font-size:.8em; cursor:pointer; width:1em; height:1em; top:0.5%; left:94.5%; z-index:99; }
+

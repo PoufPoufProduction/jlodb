@@ -1,7 +1,7 @@
-<div >
+<div>
     <div id="figure"></div>
     <div id="svg"></div>
-    <div id="exercice" onclick="$(this).closest('.equation').equation('dump');"><p></p></div>
+    <div id="exercice" onclick="$(this).closest('.equation').equation('dump');"><div></div></div>
     <div id="submit" ontouchstart="$(this).closest('.equation').equation('submit');event.preventDefault();"
                      onclick="$(this).closest('.equation').equation('submit');">
         <img src="res/img/icon/swvalid.svg" id="subvalid"/>
@@ -9,6 +9,50 @@
         <img src="res/img/icon/swwrong.svg" id="subwrong"/>
     </div>
 
+    <div id="help" ontouchstart="$(this).next().show();event.preventDefault();" onclick="$(this).next().show();">
+        <img src="res/img/icon/about.svg"/></div>
+        
+    <div id="phelp"><div>
+        <div id="hcontent"></div>
+        <div id="hquit" class="icon" ontouchstart="$(this).parent().parent().hide();event.preventDefault();"
+                                     onclick="$(this).parent().parent().hide();">
+            <img src="res/img/icon/quit.svg"/>
+        </div>
+        <div id="hhr"></div>
+        <div id="helpers">
+        <div class="help all" id="h0ad"><img src="res/img/help/equation/0ad.svg"/></div>
+        <div class="help all" id="h0mu"><img src="res/img/help/equation/0mu.svg"/></div>
+        <div class="help all" id="h0di"><img src="res/img/help/equation/0di.svg"/></div>
+        <div class="help all" id="h1mu"><img src="res/img/help/equation/1mu.svg"/></div>
+        <div class="help all" id="h1di"><img src="res/img/help/equation/1di.svg"/></div>
+        <div class="help decompose" id="hdec"><img src="res/img/help/equation/dec.svg"/></div>
+        <div class="help minus1" id="hdecn"><img src="res/img/help/equation/decn.svg"/></div>
+        <div class="help move1" id="had"><img src="res/img/help/equation/ad.svg"/></div>
+        <div class="help addition" id="hauto"><img src="res/img/help/equation/auto.svg"/></div>
+        <div class="help target1" id="h1new"><img src="res/img/help/equation/1new.svg"/></div>
+        <div class="help target2" id="h1fr"><img src="res/img/help/equation/1fr.svg"/></div>
+        <div class="help fraction" id="hfrad"><img src="res/img/help/equation/frad.svg"/></div>
+        <div class="help fraction" id="hfrmu"><img src="res/img/help/equation/frmu.svg"/></div>
+        <div class="help" id="hfrs"><img src="res/img/help/equation/frs.svg"/></div>
+        <div class="help" id="hfrup"><img src="res/img/help/equation/frup.svg"/></div>
+        <div class="help move4" id="haddbra"><img src="res/img/help/equation/addbra.svg"/></div>
+        <div class="help delbracket" id="hbra"><img src="res/img/help/equation/bra.svg"/></div>
+        <div class="help bracket" id="hdist"><img src="res/img/help/equation/dist.svg"/></div>
+        <div class="help target2" id="hfact"><img src="res/img/help/equation/fact.svg"/></div>
+        <div class="help" id="huser"><img src="res/img/help/equation/user.svg"/></div>
+        <div class="help jump" id="hjump"><img src="res/img/help/equation/jump.svg"/></div>
+        <div class="help" id="heqa"><img src="res/img/help/equation/eqa.svg"/></div>
+        <div class="help" id="heqd"><img src="res/img/help/equation/eqd.svg"/></div>
+        <div class="help" id="heqm"><img src="res/img/help/equation/eqm.svg"/></div>
+        <div class="help equ" id="heq2add"><img src="res/img/help/equation/eq2add.svg"/></div>
+        <div class="help equ" id="heq2rep"><img src="res/img/help/equation/eq2rep.svg"/></div>
+        <div class="help"></div>
+        <div class="help"></div>
+        <div class="help"></div>
+        <div class="help"></div>
+        </div>
+    </div></div>
+    
     <div id="output" style="width:16em; height:1em;top:0; left:0; position:absolute; background-color:white;opacity:0.8;text-align:center;display:none;"></div>
 
     <div id="error"><div></div></div>
