@@ -10,7 +10,7 @@
         withbars    : true,                             // Add the bars A,B,C,D,... 1,2,3,4,...
         sp          : 0.1,                              // space between cells
         font        : 1,                                // cell font size
-        fontex        : 1,                              // exercice font size
+        fontex      : 1,                                // exercice font size
         tabs        : ["calc","img","math","txt","graph"], // authorized tabs
         withtabs    : false,                            // display the tabs
         imgsize     : 2,                                // img tab font-size in em
@@ -26,6 +26,8 @@
         callen      : 6,                                // calculator length
         checkempty  : false,                            // Do not valid if empty cells
         reference   : "A1",                             // reference value
+        po          : {},                               // localisation
+        dev         : false,                            // Editor mode
         debug       : true                              // Debug mode
     };
 
@@ -36,8 +38,9 @@
         "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
         "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
         "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>",
-        "\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='img'><div class='icon'><img src='res/img/$1.svg'/></div></div>",
-        "\\\[icon2\\\]([^\\\[]+)\\\[/icon2\\\]",    "<div class='icon' style='float:left;font-size:2em;'><img src='res/img/$1.svg'/></div>",
+        "\\\[img\\\]([^\\\[]+)\\\[/img\\\]",        "<div class='imgage'><img src='$1.svg'/></div>",
+        "\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='img'><div class='icon'><img src='$1.svg'/></div></div>",
+        "\\\[icon2\\\]([^\\\[]+)\\\[/icon2\\\]",    "<div class='icon' style='float:left;font-size:2em;'><img src='$1.svg'/></div>",
         "\\\[small\\\]([^\\\[]+)\\\[/small\\\]",    "<span style='font-size:0.5em'>$1</span>"
     ];
 
@@ -114,10 +117,11 @@
                 if (settings.context.onload) { settings.context.onload($this); }
 
                 $this.css("font-size", ($this.height()/12)+"px");
-                $this.find("#board>div").css("font-size", settings.font+"em");
 
                 if (settings.nodec) { $this.find("#paddec").addClass("graykeypad"); }
                 if (settings.noneg) { $this.find("#padneg").addClass("graykeypad"); }
+                
+                if (settings.dev) { $this.addClass("devmode"); }
 
                 // handle math editor
                 helpers.reference($this, settings.reference);
@@ -194,44 +198,94 @@
                 }
 
                 // Build the grid
-                var $board = $this.find("#board>div");
-                for (var i in settings.cells) {
-                    var m = i.match(/c([0-9]*)x([0-9]*)/);
-                    if (parseInt(m[1])>settings.size[0]) { settings.size[0] = parseInt(m[1]); }
-                    if (parseInt(m[2])>settings.size[1]) { settings.size[1] = parseInt(m[2]); }
+                if (settings.dev) {
+                    settings.size=[5,5];
+                    $this.find("#detail").bind("touchstart mousedown",function(_event) {
+                        if (!$this.find("#detail #valid").is(":visible")) {
+                            $this.find("#detail #valid").show();
+                            $this.find("#detail #detailg").show();
+                            settings.edit.type="sheet";
+                            _event.preventDefault();
+                        }
+                    });
                 }
-                for (var i in settings.cols) {
-                    var m = i.match(/col([0-9]*)/); if (parseInt(m[1])>settings.size[0]) { settings.size[0] = parseInt(m[1]); }
-                }
-                for (var i in settings.rows) {
-                    var m = i.match(/row([0-9]*)/); if (parseInt(m[1])>settings.size[1]) { settings.size[1] = parseInt(m[1]); }
-                }
-                for (var i in settings.fill) {
-                    for (var j=0; j<2; j++) {
-                        if (settings.fill[i].cell[j]+settings.fill[i].cell[2+j]-1>settings.size[j]) {
-                            settings.size[j] = settings.fill[i].cell[j]+settings.fill[i].cell[2+j]-1;
+                else {
+                    // Compute the size regarding the filled cells
+                    for (var i in settings.cells) {
+                        var m = i.match(/c([0-9]*)x([0-9]*)/);
+                        if (parseInt(m[1])>settings.size[0]) { settings.size[0] = parseInt(m[1]); }
+                        if (parseInt(m[2])>settings.size[1]) { settings.size[1] = parseInt(m[2]); }
+                    }
+                    for (var i in settings.cols) {
+                        var m = i.match(/col([0-9]*)/); if (parseInt(m[1])>settings.size[0]) { settings.size[0] = parseInt(m[1]); }
+                    }
+                    for (var i in settings.rows) {
+                        var m = i.match(/row([0-9]*)/); if (parseInt(m[1])>settings.size[1]) { settings.size[1] = parseInt(m[1]); }
+                    }
+                    for (var i in settings.fill) {
+                        for (var j=0; j<2; j++) {
+                            if (settings.fill[i].cell[j]+settings.fill[i].cell[2+j]-1>settings.size[j]) {
+                                settings.size[j] = settings.fill[i].cell[j]+settings.fill[i].cell[2+j]-1;
+                            }
                         }
                     }
                 }
+                
+                helpers.build($this);
+
+                // Exercice
+                if ($.isArray(settings.exercice)) {
+                    $this.find("#exercice>div").html("");
+                    for (var i in settings.exercice) { $this.find("#exercice>div").append(
+                        "<p>"+(settings.exercice[i].length?helpers.format(settings.exercice[i]):"&#xA0;")+"</p>"); }
+                } else { $this.find("#exercice>div").html(helpers.format(settings.exercice)); }
+                $this.find("#exercice>div").css("font-size",settings.fontex+"em");
+
+                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+            }
+        },
+        build: function($this) {
+            var settings = helpers.settings($this);
+                var $board = $this.find("#board>div");
+                $board.html("").css("font-size", settings.font+"em");
+            
                 // the bars
                 var w       = helpers.value($this,0,0,"width",1.2);
                 var h       = helpers.value($this,0,0,"height",1.2);
                 var width   = w;
                 var height  = h;
-                $board.append('<div class="cell g" style="width:'+(w-settings.sp)+'em;height:'+(h-settings.sp)+'em;"></div>');
+                var html    = "";
+                
+                html = '<div class="cell g" style="width:'+(w-settings.sp)+'em;height:'+(h-settings.sp)+'em;" ';
+                if (settings.dev) {
+                    html+= 'onmousedown=\'$(this).closest(".calc").calc("bar","all");\' ';
+                    html+= 'ontouchstart=\'$(this).closest(".calc").calc("bar","all");event.preventDefault();\' ';
+                }
+                html+= '></div>';
+                $board.append(html);
                 for (var i=0; i<settings.size[0]; i++) {
                     w = helpers.value($this,(i+1),0,"width",2);
                     h = helpers.value($this,(i+1),0,"height",1.2);
-                    $board.append('<div class="cell g" style="left:'+width+'em;width:'+(w-settings.sp)+'em;height:'+(h-settings.sp)+'em;">'+
-                        (settings.withbars?String.fromCharCode(65 + i):"")+'</div>');
+                    html = '<div class="cell g" style="left:'+width+'em;width:'+(w-settings.sp)+'em;height:'+(h-settings.sp)+'em;" ';
+                    if (settings.dev) {
+                        html+= 'onmousedown=\'$(this).closest(".calc").calc("bar","col",'+(i+1)+');\' ';
+                        html+= 'ontouchstart=\'$(this).closest(".calc").calc("bar","col",'+(i+1)+');event.preventDefault();\' ';
+                    }
+                    html+= '>'+(settings.withbars?String.fromCharCode(65 + i):"")+'</div>';
+                    $board.append(html);
                     width+=w;
                 }
                     
                 for (var j=0; j<settings.size[1]; j++) {
                     w = helpers.value($this,0,(j+1),"width",1.2);
                     h = helpers.value($this,0,(j+1),"height",1.2);
-                    $board.append('<div class="cell g" style="top:'+height+'em;width:'+(w-settings.sp)+'em;height:'+(h-settings.sp)+'em;">'+
-                        (settings.withbars?(j+1):"")+'</div>');
+                    html = '<div class="cell g" style="top:'+height+'em;width:'+(w-settings.sp)+'em;height:'+(h-settings.sp)+'em;" ';
+                    if (settings.dev) {
+                        html+= 'onmousedown=\'$(this).closest(".calc").calc("bar","row",'+(j+1)+');\' ';
+                        html+= 'ontouchstart=\'$(this).closest(".calc").calc("bar","row",'+(j+1)+');event.preventDefault();\' ';
+                    }
+                    html+='>'+(settings.withbars?(j+1):"")+'</div>'
+                    $board.append(html);
                     height+=h;
                 }
 
@@ -277,11 +331,11 @@
                         if (settings.sheet[j][i].type!="hide") {
                             var vClass="cell "+settings.sheet[j][i].type;
                             if (settings.sheet[j][i].opt) { vClass+=" "+settings.sheet[j][i].opt; }
-                            var html = '<div class="'+vClass+'" style="top:'+height+'em;left:'+width+'em;width:'+(w-settings.sp)+'em;'+
+                            html = '<div class="'+vClass+'" style="top:'+height+'em;left:'+width+'em;width:'+(w-settings.sp)+'em;'+
                                 'height:'+(h-settings.sp)+'em;background-color:'+helpers.value($this,(i+1),(j+1),"background","white")+';'+
                                 'color:'+helpers.value($this,(i+1),(j+1),"color","black")+';" ';
                             html+='id="c'+(i+1)+'x'+(j+1)+'" ';
-                            if (!settings.sheet[j][i].fixed) {
+                            if (!settings.sheet[j][i].fixed || settings.dev) {
                                 html+='onmousedown=\'$(this).closest(".calc").calc("cell",this);\' ';
                                 html+='ontouchstart=\'$(this).closest(".calc").calc("cell",this);event.preventDefault();\' ';
                             }
@@ -369,17 +423,6 @@
                         } else { $target.removeClass("s").hide(); settings.auto.sheet=[]; helpers.update($this); }
                     }
                 });
-
-                // Exercice
-                if ($.isArray(settings.exercice)) {
-                    $this.find("#exercice>div").html("");
-                    for (var i in settings.exercice) { $this.find("#exercice>div").append(
-                        "<p>"+(settings.exercice[i].length?helpers.format(settings.exercice[i]):"&#xA0;")+"</p>"); }
-                } else { $this.find("#exercice>div").html(helpers.format(settings.exercice)); }
-                $this.find("#exercice>div").css("font-size",settings.fontex+"em");
-
-                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
-            }
         },
         ref: {
             // Get all the reference from a cell
@@ -527,6 +570,7 @@
             }
             var type = cell.type;
             cell.tmp = cell.value;
+            if (settings.dev&&cell.result) { cell.tmp = cell.result; }
             if (true) {
                 switch(type) {
                     case "img" :
@@ -638,6 +682,36 @@
                     $this.find("."+n.id+" .label").html(n.label());
                 }
             }
+        },
+        devcell: function($this, i, j, c, _frompanel) {
+            var settings = helpers.settings($this);
+            $this.find("#detail .detdiv").hide();
+            $this.find("#detail #detlabele").html("cell"+i+"x"+j);
+            $this.find("#detail #detaile").show();
+            $this.find("#detail #valid").show();
+            
+            if (!c) { c={fixed:false, result:false, width:0, height:0, background:"", color:""}; }
+            
+            if (!_frompanel) {
+                $this.find("#detaile #setcelle").val("["+(c.width?c.width:0)+","+(c.height?c.height:0)+"]");
+                $this.find("#detaile #setbge").val(c.background);
+                $this.find("#detaile #setcolore").val(c.color);
+                $this.find("#detaile #setfixed").prop('checked',c.fixed?true:false);
+                $this.find("#detaile #setresult").prop('checked',c.result&&c.result.toString().length);
+            }else
+            {
+                if (!settings.cells)                { settings.cells={}; }
+                if (!settings.cells["c"+i+"x"+j])   { settings.cells["c"+i+"x"+j]={}; }
+                settings.cells["c"+i+"x"+j].type = c.type;
+                settings.cells["c"+i+"x"+j].value = c.value;
+            }
+            
+            var value = c.result?c.result:c.value;
+            $this.find("#detaile #setvaluee").val(typeof(value)=="object"?JSON.stringify(value):value);
+            $this.find("#detaile #settypee").val(c.type);
+
+            settings.edit.type="cell";
+            settings.edit.value=[i,j];
         }
     };
 
@@ -650,12 +724,14 @@
                 // The settings
                 var settings = {
                     interactive     : false,
-                    size            : [0,0],
-                    sheet           : [],
+                    sheet           : [],       // take care : sheet[0][0] and cells["c1x1"] are A1.
                     calculator      : "",
+                    countbar        : 0,
                     timers          : { clear:0 },
                     target          : 0,
                     mathnodes       : [],
+                    size            : [0,0],
+                    edit            : { type:"", value:"" },
                     auto            : { origin:[], target:[], sheet:[], size:[] }
                 };
 
@@ -716,7 +792,7 @@
                             $this.find("#graphvalues .ref.s").removeClass("s").html(String.fromCharCode(64 + parseInt(target[1]))+target[2]);
                         }
                         else {
-                            if (settings.target[0]!=target[0]) {
+                            if (settings.target[0]!=target[0] || settings.dev) {
                                 var c=settings.sheet[parseInt(target[2]-1)][parseInt(target[1]-1)];
                                 settings.target=target;
 
@@ -726,6 +802,9 @@
                                 $this.find("#graphmenu .icon").removeClass("s");
                                 $this.find("#graphvalues .line").hide();
                                 helpers.key($this, 'c', false);
+                                
+                                if (settings.dev) {
+                                    helpers.devcell($this, target[1], target[2], settings.cells?settings.cells["c"+target[1]+"x"+target[2]]:0); }
 
                                 if (settings.tabs.length) {
                                     var tab=settings.tabs[0];
@@ -756,6 +835,8 @@
                                                 }
                                             });
                                             break;
+                                        case "fixed":
+                                            break;
                                         default:
                                             var value = c.value.toString();
                                             if (value.length==0 || (value.length==1&&value[0]=='-')) { value="0"; }
@@ -778,6 +859,7 @@
                     else {
                         $target.hide();
                         $this.find("#panel").hide();
+                        if (settings.dev) { $this.find("#detail .detdiv").hide(); }
                     }
                 }
             },
@@ -894,15 +976,89 @@
                 if (ok) {
                     helpers.update($this);
 
-                    var cell=0;
-                    if (!settings.nonext && j+1<settings.size[1] && settings.sheet[j+1][i].type!="hide" && !settings.sheet[j+1][i].fixed) {
-                        cell=$this.find("#c"+settings.target[1]+"x"+(parseInt(settings.target[2])+1));
+                    if (settings.dev) { helpers.devcell($this, i+1,j+1,settings.sheet[j][i], true); }
+                    else {
+                        var cell=0;
+                        if (!settings.nonext && j+1<settings.size[1] &&
+                             settings.sheet[j+1][i].type!="hide" && !settings.sheet[j+1][i].fixed) {
+                            cell=$this.find("#c"+settings.target[1]+"x"+(parseInt(settings.target[2])+1));
+                        }
+                        $this.calc("cell",cell);
                     }
-                    $this.calc("cell",cell);
                 }
+            },
+            set: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+                    var type = settings.edit.type, value = settings.edit.value;
+                    switch(type) {
+                    case "row": case "col": case "all":
+                        var val = {};
+                        try {
+                            var size = eval($this.find("#setcell").val());
+                            if (size && size[0] && type!="row") { val.width = size[0]; }
+                            if (size && size[1] && type!="col") { val.height = size[1]; }
+                        } catch(e) { alert("error with size"); }
+                        if ($this.find("#setbg").val()) { val.background = $this.find("#setbg").val(); }
+                        if ($this.find("#setcolor").val()) { val.color = $this.find("#setcolor").val(); }
+                        
+                        if (type=="all") { settings[type] = val; }
+                        else {
+                            var val2 = {};
+                            val2[type+value] = val;
+                            settings[type+"s"] = $.extend({}, settings[type+"s"],val2); }
+                        break;
+                    case "cell":
+                        var val={};
+                        try {
+                            var size = eval($this.find("#setcelle").val());
+                            if (size && size[0]) { val.width = size[0]; }
+                            if (size && size[1]) { val.height = size[1]; }
+                        } catch(e) { alert("error with size"); }
+                        if ($this.find("#setbge").val()) { val.background = $this.find("#setbge").val(); }
+                        if ($this.find("#setcolore").val()) { val.color = $this.find("#setcolore").val(); }
+                        if ($this.find("#setfixed").is(':checked')) { val.fixed = true; }
+                        if ($this.find("#settypee").val()=="fixed") {
+                            val.type="fixed";
+                            val.value=$this.find("#setvaluee").val();
+                        }
+                        if (!settings.cells) { settings.cells={}; }
+                        var id = "c"+value[0]+"x"+value[1];
+                        settings.cells[id] = $.extend({}, settings.cells[id], val);
+                        if ($this.find("#setresult").is(':checked')) {
+                            settings.cells[id].result = settings.cells[id].value;
+                            settings.cells[id].value = "";
+                        }
+                        break;
+                    default:
+                        try { settings.hide = eval($this.find("#sethide").val()); } catch(e) { alert("error with fill"); }
+                        try { settings.size = eval($this.find("#setsize").val()); } catch(e) { alert("error with size"); }
+                        try { settings.font = eval($this.find("#setfont").val()); } catch(e) { alert("error with font"); }
+                        try { settings.withbars = eval($this.find("#setbars").val()); } catch(e) { alert("error with bars"); }
+                        try { settings.sp = eval($this.find("#setsp").val()); } catch(e) { alert("error with space"); }
+                        break;
+                }
+                $this.find("#target").hide();
+                $this.find("#panel").hide();
+                $this.find("#detail .detdiv").hide();
+                helpers.build($this);
             },
             submit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
+                if (settings.dev) {
+                    var content=[];
+                    if (settings.sp!=0.1)   { content.push('"sp":'+settings.sp); }
+                    if (settings.font!=1)   { content.push('"font":'+settings.font); }
+                    if (settings.hide && JSON.stringify(settings.hide)!="[[]]" ) { content.push('"hide":'+JSON.stringify(settings.hide)); }
+                    if (!settings.withbars) { content.push('"withbars":false'); }
+                    if (settings.all)       { content.push('"all":'+JSON.stringify(settings.all)); }
+                    if (settings.cols)      { content.push('"cols":'+JSON.stringify(settings.cols)); }
+                    if (settings.rows)      { content.push('"rows":'+JSON.stringify(settings.rows)); }
+                    if (settings.cells)     { content.push('"cells":'+JSON.stringify(settings.cells).replace('"value":"",','')); }
+                    content.push('"po":'+JSON.stringify(settings.po));
+                    $this.find("#mask textarea").val(content.join(','));
+                    $this.find("#mask").show();
+                }
+                else
                 if (settings.interactive) {
                     settings.interactive = false;
                     $this.calc("cell",0);
@@ -943,7 +1099,69 @@
                     }
                 }
             },
-            clear:function() { $(this).find("#editor").editor('clear'); }
+            bar: function(_type, _value) {
+                var $this = $(this) , settings = helpers.settings($this);
+                $this.find("#target").hide();
+                $this.find("#panel").hide();
+                if (_type=="all") {
+                    _value = 0;
+                    if (settings.countbar==1) { _type="col"; } else
+                    if (settings.countbar==2) { _type="row"; }
+                    settings.countbar=(settings.countbar+1)%3;
+                }
+                var elt = settings.all;
+                if (_type=="col" && settings.cols) { elt=settings.cols["col"+_value]; }
+                if (_type=="row" && settings.rows) { elt=settings.rows["row"+_value]; }
+
+                var size=[0,0];
+                if (elt && elt.width)  { size[0] = elt.width; }
+                if (elt && elt.height) { size[1] = elt.height; }
+                    
+                $this.find("#detailc #setcell").val("["+size[0]+","+size[1]+"]");
+                $this.find("#detailc #setbg").val(elt?elt.background:"");
+                $this.find("#detailc #setcolor").val(elt?elt.color:"");
+                    
+              
+                $this.find("#detail .detdiv").hide();
+                $this.find("#detail #valid").show();
+                $this.find("#detail #detailc #detlabel").html(_type+" #"+_value);
+                
+                settings.edit.type=_type;
+                settings.edit.value=_value;
+                
+                $this.find("#detail #detailc").show();
+            },
+            clear:function() { $(this).find("#editor").editor('clear'); },
+            import: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+                var val = jQuery.parseJSON('{'+$this.find("#mask textarea").val()+'}');
+                settings = $.extend(true, {}, settings, val);
+                helpers.settings($this, settings);
+                
+                
+                $this.find("#mask").hide();
+                
+                if (settings.sp) { $this.find("#setsp").val(settings.sp); }
+                if (settings.font) { $this.find("#setfont").val(settings.font); }
+                $this.find("#setbars").val(settings.bars?"true":"false");
+                if (settings.hide) { $this.find("#sethide").val(JSON.stringify(settings.hide)); }
+                
+                helpers.build($this);
+                
+            },
+            locale: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+                $this.find("#glossary").hide();
+                settings.po={};
+                $this.find("#glossary .elt").each(function(_index) {
+                    if (_index>0) {
+                        var key = $(this).find("input.label").val();
+                        var value = $(this).find("input.value").val();
+                        if (key && key!="key" && value) { settings.po[key]=value; } else { $(this).detach(); }
+                    }
+                });
+                helpers.build($this);
+            }
         };
 
         if (methods[method])    { return methods[method].apply(this, Array.prototype.slice.call(arguments, 1)); } 

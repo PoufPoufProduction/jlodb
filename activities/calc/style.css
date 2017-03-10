@@ -3,11 +3,28 @@
 .calc div#splashex h1            { position:absolute; top:47%; left:75%; font-size:2em; }
 .calc div#splashex #guide        { position:absolute; top:57%; left:30%; font-size:1.2em; width:60%;
                                           text-align:justify; }
+.calc.devmode div#exercice { display:none; }
 .calc div#exercice               { width:90%; margin-left:10%; height:5em; font-size:0.4em; background-repeat:repeat; border-radius:1em 0 0 0;
                                    background-image:url("../../res/img/background/book02.svg"); text-align:justify; }
 .calc div#exercice>div          { margin-left:1em; margin-right:0.5em;}
 .calc div#exercice .strong       { color:red; font-weight:bold; border: 1px solid red; border-width:1px 0; }
 
+.calc.devmode div#detail { display:inherit; }
+.calc div#detail               { width:90%; margin-left:10%; height:5em; font-size:0.4em; background-repeat:repeat; border-radius:1em 0 0 0;
+                        background-image:url("../../res/img/background/book02.svg"); text-align:justify; display:none; }
+.calc div#detail>div          { margin-left:1em; margin-right:0.5em;}
+.calc div#detail .detdiv    { display:none; }
+.calc div#detail #valid     { float:right; background-color:gray; border-radius:.5em; cursor:pointer; font-size:3em; margin:.2em; }
+
+.calc div#detail .settings     { font-size:.8em; background-color:gray; color:white; margin:.1em; padding:.1em .5em; width:15em; float:left; }
+.calc div#detail .settings.small { width: 2em; }
+.calc div#detail .settings.small .label { width:1em; }
+.calc div#detail .settings.small input { border:0; font-size:1em; width:0.5em; }
+.calc div#detail .label     { width:3em; float:left; overflow:visible; white-space:nowrap; }
+.calc div#detail input          { width:11em; border:0; background-color:rgba(0,0,0,0.2); color:white; padding:0 .5em; }
+
+.calc.devmode div#locale { display:inherit; }
+.calc div#locale { position:absolute; top:1%; left:96%; background-color:gray; border-radius:0.5em; font-size:0.5em; cursor:pointer; display:none; }
 
 .calc div#board                 { margin-top:0.5em; height:12.5em; font-size:0.8em; padding:0.02em 0 0 0.02em;}
 .calc div#board>div             { position:relative; height:120%; width:120%; }
@@ -38,6 +55,7 @@
 
 .calc div#board .cell.fixed .img       { border:1px solid black; border-width:1px 0 1px 0; margin-top:.5em; }
 .calc div#board .cell.fixed .icon      { font-size:3em; margin:0 auto;}
+.calc div#board .cell.fixed .image  { width:100%; }
 
 .calc div#panel                 { position:absolute; top:5%; left:60%; width:6em; height:8em;
                                   border:0.15em solid white; border-radius:.2em; overflow:visible;display:none; }
@@ -100,6 +118,21 @@
 .calc div#submit.good #subgood       { display:inline; }
 .calc div#submit.wrong #subwrong     { display:inline; }
 
+
+
+.calc.devmode div#panel		{ font-size:.4em; left:65%; }
+.calc .mask { position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.4); z-index:200; display:none; }
+.calc .mask>div { background-color:rgba(255,255,255,0.8); width:90%; height:90%; margin:5%; }
+.calc .mask .icon { cursor:pointer; }
+.calc #mask textarea { border:0; font-size:.25em; margin:0 2%; width:95%; height:70%; }
+.calc #mask #import { background-color:gray; width:100%; cursor:pointer; }
+.calc #mask #import .icon { margin:0 auto; }
+
+.calc #glossary .elt { float:left; font-size:.4em; width:16.5em; height:1.3em; background-color:gray; margin:.1em; padding:.1em 0; display:none; }
+.calc #glossary  input { margin-left:.2em; width:12em; border:0; font-size:1em; background-color:rgba(0,0,0,0.4); color:white; padding:0 .4em; float:left; }
+.calc #glossary  input.label { width:2em; }
+
+.calc #glossary #gadd { float:right; background-color:gray; border-radius:.5em; }
 
 .calc #escreen                  { height:1em; color:white; }
 

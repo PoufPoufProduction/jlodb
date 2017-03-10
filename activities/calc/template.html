@@ -2,6 +2,34 @@
 
     <div id="board"><div></div></div>
     <div id="exercice"><div></div></div>
+    <div id="detail"><div>
+        <div class="detdiv icon" id="valid"
+                     ontouchstart="$(this).closest('.calc').calc('set');event.preventDefault();event.stopPropagation();"
+                     onclick="$(this).closest('.calc').calc('set');event.stopPropagation();"><img src="res/img/white/valid.svg"/></div>
+        <div class="detdiv" id="detailg">
+            <div class="settings"><div class='label'>hide</div><input id="sethide" value="[[]]"/></div>
+            <div class="settings"><div class='label'>size</div><input id="setsize" value="[5,5]"/></div>
+            <div class="settings"><div class='label'>font</div><input id="setfont" value="1"/></div>
+            <div class="settings"><div class='label'>bars</div><input id="setbars" value="true"/></div>
+            <div class="settings"><div class='label'>space</div><input id="setsp" value="0.1"/></div>
+        </div>
+        <div class="detdiv" id="detailc">
+            <div class="settings"><div class="label" id="detlabel">all</div></div>
+            <div class="settings"><div class='label'>size</div><input id="setcell" value="[1.2,1.2]"/></div>
+            <div class="settings"><div class='label'>bg</div><input id="setbg" value="white"/></div>
+            <div class="settings"><div class='label'>color</div><input id="setcolor" value="black"/></div>
+        </div>
+        <div class="detdiv" id="detaile">
+            <div class="settings"><div class="label" id="detlabele">all</div></div>
+            <div class="settings"><div class='label'>size</div><input id="setcelle" value="[1.2,1.2]"/></div>
+            <div class="settings small"><div class='label'>?</div><input id="setresult" type="checkbox"/></div>
+            <div class="settings"><div class='label'>bg</div><input id="setbge" value="white"/></div>
+            <div class="settings"><div class='label'>color</div><input id="setcolore" value="black"/></div>
+            <div class="settings small"><div class='label'>F</div><input id="setfixed" type="checkbox"/></div>
+            <div class="settings"><div class='label'>value</div><input id="setvaluee" value="black"/></div>
+            <div class="settings"><div class='label'>type</div><input id="settypee" value="black"/></div>
+        </div>
+    </div></div>
 
     <div id="submit" ontouchstart="$(this).closest('.calc').calc('submit');event.preventDefault();"
                      onclick="$(this).closest('.calc').calc('submit');">
@@ -141,6 +169,34 @@
     <div id="wrong" class="alert"><img src="res/img/effects/alert01.svg"/></div>
     
     <div style="position:absolute; top:0; left:3" id="output"></div>
+    
+    
+    <div id="mask" class="mask"><div>
+        <div class="icon" ontouchstart="$(this).closest('.mask').hide();event.preventDefault();"
+                          onclick="$(this).closest('.mask').hide();">
+            <img src="res/img/icon/quit.svg"/>
+        </div>
+        <textarea></textarea>
+        <div id="import" ontouchstart="$(this).closest('.calc').calc('import');event.preventDefault();"
+                              onclick="$(this).closest('.calc').calc('import');">
+            <div class="icon"><img src="res/img/white/import.svg"/></div>
+        </div>
+    </div></div>
+    
+    <div id="locale" class="icon" ontouchstart="$(this).next().show();event.preventDefault();"
+                          onclick="$(this).next().show();"><img src="res/img/white/edit.svg"/></div>
+                          
+    <div id="glossary" class="mask"><div>
+        <div id="gadd" class="icon" ontouchstart="$(this).next().next().clone().appendTo($(this).parent()).show();event.preventDefault();"
+                          onclick="$(this).next().next().clone().appendTo($(this).parent()).show();">
+            <img src="res/img/white/add.svg"/>
+        </div>
+        <div class="icon" ontouchstart="$(this).closest('.calc').calc('locale');event.preventDefault();"
+                              onclick="$(this).closest('.calc').calc('locale');">
+            <img src="res/img/icon/quit.svg"/>
+        </div>
+        <div class="elt"><input class="label" value="key"/><input class="value" value="value"/></div>
+    </div></div>
 
     <div id="splashex" ontouchstart="$(this).hide().closest('.calc').calc('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.calc').calc('next');"><div>
