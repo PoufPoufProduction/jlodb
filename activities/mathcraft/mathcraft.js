@@ -29,6 +29,7 @@
         "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
         "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>",
         "\\\[math\\\](.+)\\\[/math\\\]",            "<div class='math'><math>$1</math></div>",
+        "\\\[mathsmall\\\](.+)\\\[/mathsmall\\\]",  "<div class='maths'><math>$1</math></div>",
         "\\\[mathxl\\\](.+)\\\[/mathxl\\\]",        "<div class='mathxl'><math>$1</math></div>",
         "\\\[icon\\\](.+)\\\[/icon\\\]",            "<div class='img'><div class='icon'><img src='$1.svg'/></div></div>"
     ];
@@ -58,31 +59,7 @@
     };
 
     var nodetype = {
-/*
-        add:   {
-            type:"action", value:"+", l:1, c:2, d:1,
-            check: function(_node,_id) {
-                var ret = helpers.node.filled(_node.children[_id]);
-                if (_id==1) { ret = ret && (_node.children[1] && _node.children[1].type=="op" &&
-                                ( _node.children[1].value=="eq" || _node.children[1].value=="gt" || _node.children[1].value=="lt" )); }
-                return ret;
-            },
-            process: function(_node) {
-                var ret = 0;
-                if (this.check(_node,0)&&this.check(_node,1)) {
-                    ret = helpers.node.create("n"+(nodecounter++));
-                    ret.type = "op"; ret.value = _node.children[1].value;
-                    for (var i=0; i<2; i++) {
-                        var tmp = helpers.node.create("n"+(nodecounter++));
-                        tmp.type = "op"; tmp.value="plus";
-                        tmp.children.push(helpers.node.clone(_node.children[0]));
-                        tmp.children.push(helpers.node.clone(_node.children[1].children[i]));
-                        ret.children.push(tmp);
-                    }
-                }
-                return ret;
-            }
-        },
+        /*
         change: {
             type:"action", value:"A", l:1, c:1,
             check: function(_node,_id) {
@@ -144,35 +121,24 @@
             },
             process: function(_node) { return (this.check(_node))?this.compute(_node.children[0]):0; }
         },
+        */
         eval:   {
             type:"action", value:"=", l:1,    c:1,
             check: function(_node,_id) { return (helpers.node.filled(_node)?true:false); },
-            compute: function(_node) {
-            for (var i in _node.children) { action.eval.compute(_node.children[i]); }
-                if (_node.type=="v") {
-                    if (typeof(_node.value)=="number") { _node.tmp=[true,parseFloat(_node.value)]; }
-                    else                               { _node.tmp=[false]; }
-                }
-                else if (_node.type=="op") {
-                    var ok = true, children = [];
-                    for (var i in _node.children) {
-                        if (_node.children[i].tmp[0]) { children.push(_node.children[i].tmp[1]); } else { ok = false; } }
-                    if (ok && op[_node.value].process) { _node.tmp=[true, op[_node.value].process(children)]; }
-                    else                               { _node.tmp=[false]; }
-                }
-              },
-              build: function(_node) {
+            build: function(_node) {
                 var ret = helpers.node.create("n"+(nodecounter++));
                 if (_node.tmp[0]) { ret.type = "v"; ret.value = _node.tmp[1]; }
                 else              { helpers.node.extend(ret,_node);
-                                    for (var i in _node.children) { ret.children.push(action.eval.build(_node.children[i])); } }
+                                    for (var i in _node.children) { ret.children.push(this.build(_node.children[i])); } }
                 return ret;
               },
-              process: function(_node) {
-                action.eval.compute(_node);
-                return action.eval.build(_node.children[0]);
-              }
+            process: function($this) {
+                var e = this.children[0].process(), ret=0;
+                if (typeof(e)=="number") { ret = $this.find("#editor").editor("tonode", {"value":e});}
+                return ret;
+            }
         },
+        /*
         exnode: {
             type:"action", value:"n", l:1, c:2, d:1,
             check: function(_node,_id) {
@@ -256,7 +222,7 @@
             check: function(_id) {
                 return (this.children[_id].filled() && this.children[_id].type=="op" && this.children[_id].id=="middle");
             },
-            process: function() {
+            process: function($this) {
                 var ret = 0;
                 if (this.check(0)&&this.check(1)) {
                     if (this.children[0].children[0].type=="value" && this.children[0].children[0].value.length==1 &&
@@ -305,33 +271,6 @@
                             { type:"v", subtype:"segment", value: v[1] }
                         ] };
                         ret = helpers.node.init(tmp);
-                    }
-                }
-                return ret;
-            }
-        },
-        mult:   {
-            type:"action", value:"*", l:1, c:2, d:1,
-            check: function(_node,_id) {
-                var ret = helpers.node.filled(_node.children[_id]);
-                if (_id==1) { ret = ret && (_node.children[1] && _node.children[1].type=="op" &&
-                                ( _node.children[1].value=="eq" || _node.children[1].value=="gt" || _node.children[1].value=="lt" )); }
-                return ret;
-            },
-            process: function(_node) {
-                var ret = 0;
-                if (this.check(_node,0)&&this.check(_node,1)) {
-                    ret = helpers.node.create("n"+(nodecounter++));
-                    ret.type = "op"; ret.value = _node.children[1].value;
-                    if (_node.children[0].type=="v" && typeof(_node.children[0].value)=="number" && _node.children[0].value<0) {
-                        if (ret.value=="gt") { ret.value="lt"; } else if (ret.value=="lt") { ret.value="gt"; }
-                    }
-                    for (var i=0; i<2; i++) {
-                        var tmp = helpers.node.create("n"+(nodecounter++));
-                        tmp.type = "op"; tmp.value="mult";
-                        tmp.children.push(helpers.node.clone(_node.children[0]));
-                        tmp.children.push(helpers.node.clone(_node.children[1].children[i]));
-                        ret.children.push(tmp);
                     }
                 }
                 return ret;
@@ -437,14 +376,14 @@
             check: function(_id) {
                 return (this.children[_id].filled() && this.children[_id].type=="op" && this.children[_id].id=="par");
             },
-            process: function() { return (this.check(0)&&this.check(1))?action.par3(this,"par"):0; }
+            process: function($this) { return (this.check(0)&&this.check(1))?action.par3(this,"par"):0; }
         },
         parid: {
             type:"action", value:"<img src='res/img/icon/geometry/parallel02.svg'/>", l:1, c:1,
             check: function() {
                 return (this.children[0].filled() && this.children[0].type=="op" && this.children[0].id=="par");
             },
-            process: function(_node) {
+            process: function($this) {
                 var ret = 0;
                 if (this.check()) {
                     if (this.children[0].children[0].value.length == 2 &&
@@ -465,14 +404,14 @@
             check: function(_id) {
                 return (this.children[_id].filled() && this.children[_id].type=="op" && this.children[_id].id=="perp" );
             },
-            process: function() { return (this.check(0)&&this.check(1))?action.par3(this,"par"):0; }
+            process: function($this) { return (this.check(0)&&this.check(1))?action.par3(this,"par"):0; }
         },
         pperp: {
             type:"action", value:"<img src='res/img/icon/geometry/parperp02.svg'/>", l:1, c:2,
             check: function(_id) {
                 return (this.children[_id].filled() && this.children[_id].type=="op" && this.children[_id].id==(_id?"perp":"par"));
             },
-            process: function() { return (this.check(0)&&this.check(1))?action.par3(this,"perp"):0; }
+            process: function($this) { return (this.check(0)&&this.check(1))?action.par3(this,"perp"):0; }
         },
 /*
         pythagore:    {
@@ -1120,7 +1059,7 @@
                 var $this = $(this) , settings = helpers.settings($this);
                 if (settings.interactive && $this.find("#exec").hasClass("s")) {
                     var root    = $this.find("#editor").editor("value");
-                    var n       = root.process();
+                    var n       = root.process($this);
 
                     $this.find("#mask").css({"opacity":0,"background-color":n?"#0F0":"#F00"}).show().animate({opacity:1},500);
                     setTimeout(function(){
