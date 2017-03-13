@@ -18,7 +18,7 @@
         img         : [],                               // img filename
 		txtsize		: 1,								// text tab font-size em
 		txt			: [],								// text values
-        txtstyle    : "default",                        // default or inline
+        txtstyle    : "default",                        // default, small or inline
         errratio    : 1,                                // ratio error
         noneg       : false,                            // no negative number
         nodec       : false,                            // no decimal number
@@ -570,26 +570,24 @@
             }
             var type = cell.type;
             cell.tmp = cell.value;
-            if (settings.dev&&cell.result) { cell.tmp = cell.result; }
-            if (true) {
-                switch(type) {
-                    case "img" :
-                        cell.tmp = cell.tmp.toString().length ? "<img src='"+settings.imgprefix+settings.img[cell.tmp]+".svg'/>":"";
-                        break;
-                    case "math":
-                        cell.tmp = cell.tmp.process();
-                        break;
-                    case "txt":
-                        cell.tmp = cell.tmp.toString().length?settings.txt[cell.tmp]:"";
-                        break;
-                    case "fixed" :
-                        if (settings.po && settings.po[cell.tmp]) { cell.tmp = settings.po[cell.tmp]; }
-                        cell.tmp =helpers.format(cell.tmp.toString());
-                        break;
-                    case "graph" :
-                        cell.tmp = helpers.graph($this,cell.tmp);
-                        break;
-                }
+            if (settings.dev&&typeof(cell.result)!="undefined"&&cell.result.toString().length) { cell.tmp = cell.result; }
+            switch(type) {
+                case "img" :
+                    cell.tmp = cell.tmp.toString().length ? "<img src='"+settings.imgprefix+settings.img[cell.tmp]+".svg'/>":"";
+                    break;
+                case "math":
+                    cell.tmp = cell.tmp.process();
+                    break;
+                case "txt":
+                    cell.tmp = cell.tmp.toString().length?settings.txt[cell.tmp]:"";
+                    break;
+                case "fixed" :
+                    if (settings.po && settings.po[cell.tmp]) { cell.tmp = settings.po[cell.tmp]; }
+                    cell.tmp =helpers.format(cell.tmp.toString());
+                    break;
+                case "graph" :
+                    cell.tmp = helpers.graph($this,cell.tmp);
+                    break;
             }
             cell.update = true;
             return cell.tmp;
@@ -690,22 +688,21 @@
             $this.find("#detail #detaile").show();
             $this.find("#detail #valid").show();
             
-            if (!c) { c={fixed:false, result:false, width:0, height:0, background:"", color:""}; }
+            if (!c) { c={fixed:false, result:"", width:0, height:0, background:"", color:""}; }
             
             if (!_frompanel) {
                 $this.find("#detaile #setcelle").val("["+(c.width?c.width:0)+","+(c.height?c.height:0)+"]");
                 $this.find("#detaile #setbge").val(c.background);
                 $this.find("#detaile #setcolore").val(c.color);
-                $this.find("#detaile #setfixed").prop('checked',c.fixed?true:false);
-                $this.find("#detaile #setresult").prop('checked',c.result&&c.result.toString().length);
-            }else
-            {
+            } else {
                 if (!settings.cells)                { settings.cells={}; }
                 if (!settings.cells["c"+i+"x"+j])   { settings.cells["c"+i+"x"+j]={}; }
                 settings.cells["c"+i+"x"+j].type = c.type;
                 settings.cells["c"+i+"x"+j].value = c.value;
             }
             
+            $this.find("#detaile #setfixed").prop('checked',c.fixed?true:false);
+            $this.find("#detaile #setresult").prop('checked',typeof(c.result)!="undefined"&&c.result.toString().length?true:false);
             var value = c.result?c.result:c.value;
             $this.find("#detaile #setvaluee").val(typeof(value)=="object"?JSON.stringify(value):value);
             $this.find("#detaile #settypee").val(c.type);
@@ -1000,6 +997,7 @@
                         } catch(e) { alert("error with size"); }
                         if ($this.find("#setbg").val()) { val.background = $this.find("#setbg").val(); }
                         if ($this.find("#setcolor").val()) { val.color = $this.find("#setcolor").val(); }
+                        if ($this.find("#setfixedc").is(':checked')) { val.fixed = true; }
                         
                         if (type=="all") { settings[type] = val; }
                         else {
@@ -1053,7 +1051,10 @@
                     if (settings.all)       { content.push('"all":'+JSON.stringify(settings.all)); }
                     if (settings.cols)      { content.push('"cols":'+JSON.stringify(settings.cols)); }
                     if (settings.rows)      { content.push('"rows":'+JSON.stringify(settings.rows)); }
-                    if (settings.cells)     { content.push('"cells":'+JSON.stringify(settings.cells).replace('"value":"",','')); }
+                    if (settings.cells)     {
+                        var vReg = new RegExp('"value":"",',"g");
+                        content.push('"cells":'+JSON.stringify(settings.cells).replace(vReg,''));
+                    }
                     content.push('"po":'+JSON.stringify(settings.po));
                     $this.find("#mask textarea").val(content.join(','));
                     $this.find("#mask").show();
@@ -1120,6 +1121,7 @@
                 $this.find("#detailc #setcell").val("["+size[0]+","+size[1]+"]");
                 $this.find("#detailc #setbg").val(elt?elt.background:"");
                 $this.find("#detailc #setcolor").val(elt?elt.color:"");
+                $this.find("#detailc #setfixedc").prop('checked',(elt&&elt.fixed)?true:false);
                     
               
                 $this.find("#detail .detdiv").hide();
