@@ -151,11 +151,11 @@ var nodemathtype = { final:1, rootonly:2, commutative :4, associative:8 };
 
     var nodecounter = 1;
     var nodetype = {
-        abs:    { type:"op", value:"abs", abstract:"", l:.6, c:1, m:"<mo>|</mo>c0<mo>|</mo>", t:"|c0|",
+        abs:    { type:"op", value:"abs", l:.6, c:1, m:"<mo>|</mo>c0<mo>|</mo>", t:"|c0|",
                   process:function() { return Math.abs(this.children[0].process()); } },
-        cos:    { type:"op", value:"cos", abstract:"", l:.6, c:1, m:"<mi>cos</mi><mo>&#x2061;</mo><mo>(</mo>c0<mo>)</mo>", t:"cos(c0)",
+        cos:    { type:"op", value:"cos", l:.6, c:1, m:"<mi>cos</mi><mo>&#x2061;</mo><mo>(</mo>c0<mo>)</mo>", t:"cos(c0)",
                   process:function() { return Math.cos(this.children[0].process()); } },
-        div:    { type:"op", value:"/", abstract:"", c:2, m:"<mfrac><mrow>c0</mrow><mrow>c1</mrow></mfrac>",
+        div:    { type:"op", value:"/", c:2, m:"<mfrac><mrow>c0</mrow><mrow>c1</mrow></mfrac>",
             needbracket:function() {
                 ret = [false, false];
                 for (var i=0; i<2; i++)
@@ -168,19 +168,19 @@ var nodemathtype = { final:1, rootonly:2, commutative :4, associative:8 };
             t:function() { var bra = this.needbracket(); return (bra[0]?"(c0)":"c0")+"/"+(bra[1]?"(c1)":"c1"); },
             process:function() { return this.children[0].process()/this.children[1].process(); }
         },
-        eq :    { type:"op", value:"=", abstract:"", c:2, m:"c0<mo>=</mo>c1", t:["c0=c1","c1=c0"],
+        eq :    { type:"op", value:"=", c:2, m:"c0<mo>=</mo>c1", t:["c0=c1","c1=c0"],
                   p:function() { return nodemathtype.commutative | nodemathtype.associative; },
                   process:function() { return (this.children[0].process()==this.children[1].process()); } },
-        exp:    { type:"op", value:"exp", abstract:"", l:.6, c:1, m:"<mi>exp</mi><mo>(</mo>c0<mo>)</mo>", t:"exp(c0)",
+        exp:    { type:"op", value:"exp", l:.6, c:1, m:"<mi>exp</mi><mo>(</mo>c0<mo>)</mo>", t:"exp(c0)",
                   process:function() { return Math.exp(this.children[0].process()); } },
-        gt :    { type:"op", value:">", abstract:"", c:2, m:"c0<mo>&gt;</mo>c1", t:["c0>c1","c1<c0"],
+        gt :    { type:"op", value:">", c:2, m:"c0<mo>&gt;</mo>c1", t:["c0>c1","c1<c0"],
                   process:function() { return (this.children[0].process()>this.children[1].process()); } },
-        ident:  { type:"op", value:"", abstract:"",  c:1, m:"c0", t:"c0", process:function() { return this.children[0].process(); } },
-        log:    { type:"op", value:"log", abstract:"", l:.6, c:1, m:"<mi>log</mi><mo>(</mo>c0<mo>)</mo>", t:"log(c0)",
+        ident:  { type:"op", value:"", c:1, m:"c0", t:"c0", process:function() { return this.children[0].process(); } },
+        log:    { type:"op", value:"log", l:.6, c:1, m:"<mi>log</mi><mo>(</mo>c0<mo>)</mo>", t:"log(c0)",
                   process:function() { return Math.log(this.children[0].process()); } },
-        lt :    { type:"op", value:"<", abstract:"", c:2, m:"c0<mo>&lt;</mo>c1", t:["c0<c1","c1>c0"],
+        lt :    { type:"op", value:"<", c:2, m:"c0<mo>&lt;</mo>c1", t:["c0<c1","c1>c0"],
                   process:function() { return (this.children[0].process()<this.children[1].process()); } },
-        minus:  { type:"op", value:"-", abstract:"", c:2,
+        minus:  { type:"op", value:"-", c:2,
             needbracket:function() {
                 ret = [false, false];
                 for (var i=0; i<2; i++)
@@ -202,7 +202,7 @@ var nodemathtype = { final:1, rootonly:2, commutative :4, associative:8 };
             },
             process:function() { return this.children[0].process()-this.children[1].process(); }
         },
-        mult:   { type:"op", value:"×", abstract:"", c:2, p:function() { return nodemathtype.commutative | nodemathtype.associative; },
+        mult:   { type:"op", value:"×", c:2, p:function() { return nodemathtype.commutative | nodemathtype.associative; },
             needbracket:function() {
                 ret = [false, false];
                 for (var i=0; i<2; i++)
@@ -224,7 +224,7 @@ var nodemathtype = { final:1, rootonly:2, commutative :4, associative:8 };
             },
             process:function() { return this.children[0].process()*this.children[1].process(); }
         },
-        neg:  { type:"op", value:"-", abstract:"", c:1,
+        neg:  { type:"op", value:"-", c:1,
             needbracket:function() {
                 ret = false;
                 if (this.children&&this.children[0]&&this.children[0].type=="op")
@@ -237,10 +237,10 @@ var nodemathtype = { final:1, rootonly:2, commutative :4, associative:8 };
             process:function() { return -this.children[0].process(); }
         },
         pi:     { type:"value", abstract:"π", value:Math.PI},
-        plus:   { type:"op", value:"+", abstract:"", c:2, m:"c0<mo>+</mo>c1", t:["c0+c1","c1+c0"],
+        plus:   { type:"op", value:"+", c:2, m:"c0<mo>+</mo>c1", t:["c0+c1","c1+c0"],
                   p:function() { return nodemathtype.commutative | nodemathtype.associative; },
                   process:function() { return this.children[0].process()+this.children[1].process(); } },
-        pow:    { type:"op", value:"^", abstract:"", c:2,
+        pow:    { type:"op", value:"^", c:2,
             needbracket:function() {
                 ret = false;
                 if (this.children&&this.children[0]&&this.children[0].type=="op")
@@ -298,7 +298,7 @@ var nodemathtype = { final:1, rootonly:2, commutative :4, associative:8 };
                                         children:   [],
                                         width:      0,
                                         left:       0,
-                                        process: function() { return this.value; } }, _elt);
+                                        process:    function() { return this.value; } }, _elt);
             for (var i in args) { this[i]=args[i]; }
 
             // BUILD PROTOTYPE
