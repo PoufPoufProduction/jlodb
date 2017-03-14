@@ -287,8 +287,7 @@ var nodemathtype = { final:1, rootonly:2, commutative :4, associative:8 };
         },
         node: function (_elt) {
             // INIT ATTRIBUTES
-            var args = $.extend(true, { idx:        nodecounter++,
-                                        id:         "",
+            var args = $.extend(true, { id:         "",
                                         type:       "",
                                         subtype:    "",
                                         value:      "",
@@ -298,8 +297,10 @@ var nodemathtype = { final:1, rootonly:2, commutative :4, associative:8 };
                                         children:   [],
                                         width:      0,
                                         left:       0,
-                                        process:    function() { return this.value; } }, _elt);
+                                        process:    function() { return this.value; } }, _elt, { idx: nodecounter++}
+                                       );
             for (var i in args) { this[i]=args[i]; }
+            
 
             // BUILD PROTOTYPE
             this.find = function (_idx) {
@@ -676,7 +677,7 @@ var nodemathtype = { final:1, rootonly:2, commutative :4, associative:8 };
             },
             tonode: function(_val) {
                 var $this = $(this), settings = helpers.settings($this), ret, val = $.extend(true, {}, _val);
-
+                
                 if (typeof(val.value)!="undefined")     { ret = {type:"value"}; }
                 else                                    { ret = nodetype[val.id]; }
                 if (!ret)                               { ret = settings.getnode?settings.getnode($this, val):{}; }

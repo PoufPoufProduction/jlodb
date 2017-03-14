@@ -999,7 +999,7 @@
                     var min = 5;
                     var values = $this.find("#editor").editor("text");
                     if (settings.onlyone) { values = [ values[0] ]; }
-                    for (var i in values) for (var j in result ) { min = Math.min (min,helpers.levenshtein(values[i], result[j])); }
+                    for (var i in values) for (var j in result ) { min = Math.min (min,helpers.levenshtein(values[i], result[j].toString()));  }
                     min = Math.min(5,min*settings.errratio);
                     $this.find("#escreen").addClass("s"+min);
 

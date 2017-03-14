@@ -135,8 +135,9 @@
                     getnode:function($editor, _val) {
                         var ret =0;
                         if (typeof(_val)=="object") {
+                            var reference = _val.abstract?_val.abstract:settings.reference;
                             ret = { type:"value", id:_val.id, subtype:"ref",
-                                    abstract:helpers.ref.format(settings.reference,_val.id[3]), value:settings.reference,
+                                    abstract:helpers.ref.format(reference,_val.id[3]), value:reference,
                                 process:function() {
                                     var i = this.value.charCodeAt(0)-65, j = parseInt(this.value.substr(1))-1;
                                     return helpers.content($this,i,j);
@@ -318,6 +319,10 @@
                         settings.sheet[j][i].value  = helpers.value($this,(i+1),(j+1),"value","");
                         settings.sheet[j][i].result = helpers.value($this,(i+1),(j+1),"result","");
                         settings.sheet[j][i].opt    = helpers.value($this,(i+1),(j+1),"opt","");
+                        
+                        if (settings.sheet[j][i].type=="math") {
+                            settings.sheet[j][i].value = $this.find("#editor").editor("tonode", settings.sheet[j][i].value);
+                        }
                     }
                 }
                 
@@ -576,7 +581,7 @@
                     cell.tmp = cell.tmp.toString().length ? "<img src='"+settings.imgprefix+settings.img[cell.tmp]+".svg'/>":"";
                     break;
                 case "math":
-                    cell.tmp = cell.tmp.process();
+                    if (cell.tmp.process) { cell.tmp = cell.tmp.process(); }
                     break;
                 case "txt":
                     cell.tmp = cell.tmp.toString().length?settings.txt[cell.tmp]:"";
