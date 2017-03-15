@@ -100,9 +100,9 @@ if (!$error) {
     // COUNT THE NUMBER OF MATCHING EXERCICES (WITHOU ORDER, LIMIT NOR ALTERNATIVE GROUP)
     $sql = "SELECT COUNT(*) FROM `".$_SESSION['prefix']."exercice`";
     if (strlen($where)) { $sql.=" WHERE".$where; }
-	$ret 	= mysql_query($sql);
+	$ret 	= mysqli_query($link, $sql);
 	$count 	= 0;
-    if ($ret) { $count = mysql_fetch_array($ret); }
+    if ($ret) { $count = mysqli_fetch_array($ret); }
 
     // THE VARIANT
     if (!array_key_exists("id",$_GET) && !array_key_exists("alt",$_GET)) {
@@ -130,10 +130,10 @@ if (!$error) {
         $sql = "SELECT * FROM `".$_SESSION['prefix']."exercice`";
     }
 
-    $exercice = mysql_query($sql);
+    $exercice = mysqli_query($link, $sql);
     $json = "";
 	if ($exercice) {
-		while($row = mysql_fetch_array($exercice)) {
+		while($row = mysqli_fetch_array($exercice)) {
 			if (strlen($json)) { $json.=array_key_exists("raw",$_GET)?"\n":","; }
 			$json.='{ "id":"'.$row["Exercice_Id"].'","label":"'.$row["Exercice_Title"].'",'.
 				   '"activity":"'.$row["Exercice_Activity"].'","classification":"'.$row["Exercice_Classification"].'",'.
@@ -146,16 +146,14 @@ if (!$error) {
 }
 
 // PUBLISH DATA UNDER JSON FORMAT
-if (array_key_exists("raw",$_GET)) {
-    echo $json;
-}
+if (array_key_exists("raw",$_GET)) { echo $json; }
 else {
     echo '{';
-    echo '  "status" : "'.$status.'",';
-    if ($error)     { echo '  "error" : '.$error.','; }
-    echo '  "textStatus" : "'.$textstatus.'",';
-    echo '  "nb" : '.($count?$count[0]:0).',';
-    echo '  "exercices" : ['.$json.']';
-    echo '}';
+    if (isset($status))                 { echo '  "status" : "'.$status.'",'; }
+    if (isset($error) && $error)        { echo '  "error" : '.$error.','; }
+    if (isset($textstatus))             { echo '  "textStatus" : "'.$textstatus.'",'; }
+    if (isset($count))                  { echo '  "nb" : '.($count?$count[0]:0).','; }
+    if (isset($json))                   { echo '  "exercices" : ['.$json.'],'; }
+    echo '  "from" : "jlodb/api" }';
 }
 ?>

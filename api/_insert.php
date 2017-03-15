@@ -16,19 +16,19 @@ function exName($file, $key, $id, &$warnings)
     return $ret;
 }
 
-function mysql_query_array(&$sql, &$id, $link, &$warnings, $delete) {
+function mysqli_query_array($link, &$sql, &$id, &$warnings, $delete) {
     if ($delete) {
-        mysql_query("DELETE FROM `".$_SESSION['prefix']."exercice` WHERE `Exercice_Id` IN (".implode(',',$id).")", $link);
+        mysqli_query($link, "DELETE FROM `".$_SESSION['prefix']."exercice` WHERE `Exercice_Id` IN (".implode(',',$id).")");
     }
 
     $init = "INSERT INTO `".$_SESSION['prefix']."exercice` (`Exercice_Id`,`Exercice_Activity`,".
                 "`Exercice_Title`,`Exercice_Parameters`,`Exercice_Level`,`Exercice_Difficulty`,".
                 "`Exercice_Classification`,`Exercice_Duration`,`Exercice_Tags`,`Exercice_Variant`,".
                 "`Exercice_Reference`,`Exercice_Nb`) VALUES ";
-    if (!mysql_query($init.implode(',',$sql) , $link)) {
+    if (!mysqli_query($link, $init.implode(',',$sql))) {
         for ($i=0; $i<count($sql); $i++) {
-            if (!mysql_query($init.$sql[$i], $link)) {
-                array_push($warnings, "(W) Can not insert exercice ".$id[$i]." : ".mysql_error());
+            if (!mysqli_query($link, $init.$sql[$i])) {
+                array_push($warnings, "(W) Can not insert exercice ".$id[$i]." : ".mysqli_error($link));
             }
         }
     }
@@ -98,12 +98,12 @@ function insertIntoDB($link,$activity,$key,$file,$lang,&$warnings, &$tags, $dele
                     foreach ($ts as $v) { if (!in_array($v,$tags)) { array_push($tags,$v);} }
                 }
 
-                if (count($sql)>100) {  mysql_query_array($sql, $id, $link,$warnings,$delete); }
+                if (count($sql)>100) {  mysqli_query_array($link, $sql, $id, $warnings,$delete); }
             }
         }
         $count++;
     }
-    if (count($sql)) {  mysql_query_array($sql, $id, $link,$warnings,$delete); }
+    if (count($sql)) {  mysqli_query_array($link, $sql, $id, $warnings,$delete); }
 }
 
 ?> 

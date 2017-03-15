@@ -1,17 +1,17 @@
 <?php
 
 // INSERT A NEW USER IN THE DATABASE
-function insertNewUser($id, $password, $avatar, $firsname, $lastname)
+function insertNewUser($link, $id, $password, $avatar, $firsname, $lastname)
 {
     $md5 = md5($password);
 
     // GET USERS WITH THE SAME USERNAME
-    $user = mysql_query("SELECT * FROM `".$_SESSION['prefix']."user` WHERE `User_Id` = '".$id."'");
+    $user = mysqli_query($link, "SELECT * FROM `".$_SESSION['prefix']."user` WHERE `User_Id` = '".$id."'");
     $good = true;
     $tags = array();
 
     // CAN'T CREATE USER IF SOMEONE HAS ALREADY THE SAME USERNAME/PASSWORD
-    while($u = mysql_fetch_array($user)) {
+    while($u = mysqli_fetch_array($user)) {
         if (!strcmp($u["User_Password"], $md5)) { $good = false; }
         array_push($tags, $u["User_Tag"]);
     }
@@ -28,7 +28,7 @@ function insertNewUser($id, $password, $avatar, $firsname, $lastname)
         } while(!$ok);
 
         // INSERT THE NEW USER
-        $good = mysql_query("INSERT INTO `".$_SESSION['prefix']."user` ".
+        $good = mysqli_query($link, "INSERT INTO `".$_SESSION['prefix']."user` ".
                     "(`User_Id`, `User_Password`, `User_Avatar`, `User_FirstName`, `User_LastName`, `User_Tag`,`User_Date`) VALUES ".
                     "('".$id."', '".$md5."', '".$avatar."', ".
                     "'".$firsname."', '".ucfirst($lastname)."', ".$tag.", '".date("y-m-d H:i:s")."')");

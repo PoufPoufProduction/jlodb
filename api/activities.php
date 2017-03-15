@@ -3,9 +3,9 @@
 include "database.php";
 
 if (!$error) {
-    $activity = mysql_query("SELECT * FROM `".$_SESSION['prefix']."activity`");
+    $activity = mysqli_query($link, "SELECT * FROM `".$_SESSION['prefix']."activity`");
     $json = "";
-    while($row = mysql_fetch_array($activity)) {
+    while($row = mysqli_fetch_array($activity)) {
         if (strlen($json)) { $json.=","; }
         if (array_key_exists("locale",$_GET)) {
             $json.='"'.$row["Activity_Name"].'":{'.$row["Activity_Locale"].'}';
@@ -27,11 +27,12 @@ if (array_key_exists("format",$_GET) && $_GET["format"]=="html") {
 else {
     // PUBLISH DATA UNDER JSON FORMAT
     echo '{';
-    echo '  "status" : "'.$status.'",';
-    if ($error)     { echo '  "error" : '.$error.','; }
-    echo '  "textStatus" : "'.$textstatus.'",';
-    if (array_key_exists("locale",$_GET)) { echo '  "locale" : {'.$json.'}'; } else { echo '  "activities" : ['.$json.']'; }
-    echo '}';
+    if (isset($status))                     { echo '  "status" : "'.$status.'",'; }
+    if (isset($error) && $error)            { echo '  "error" : '.$error.','; }
+    if (isset($textstatus))                 { echo '  "textStatus" : "'.$textstatus.'",'; }
+    if (array_key_exists("locale",$_GET))   { echo '  "locale" : {'.$json.'},'; } else 
+    if (isset($json))                       { echo '  "activities" : ['.$json.'],'; }
+    echo '  "from" : "jlodb/api" }';
 }
 
 ?>

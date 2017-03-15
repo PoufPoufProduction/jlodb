@@ -3,9 +3,9 @@
 include_once "database.php";
 
 if (!$error) {
-    $result = mysql_query("SELECT * FROM `".$_SESSION['prefix']."jlodb` LIMIT 1");
+    $result = mysqli_query($link, "SELECT * FROM `".$_SESSION['prefix']."jlodb` LIMIT 1");
     if ($result) {
-        $row = mysql_fetch_array($result);
+        $row = mysqli_fetch_array($result);
 
         $lock = false;
         if ($row["Lock"]) {
@@ -15,10 +15,10 @@ if (!$error) {
         }
         else { $status = "success"; }
 
-        $a=mysql_query("SELECT count(*) FROM `".$_SESSION['prefix']."activity`");
-        $b=mysql_fetch_array($a);
-        $a=mysql_query("SELECT count(*) FROM `".$_SESSION['prefix']."exercice`");
-        $c=mysql_fetch_array($a);
+        $a=mysqli_query($link, "SELECT count(*) FROM `".$_SESSION['prefix']."activity`");
+        $b=mysqli_fetch_array($a);
+        $a=mysqli_query($link, "SELECT count(*) FROM `".$_SESSION['prefix']."exercice`");
+        $c=mysqli_fetch_array($a);
 
         $overview = '"version":"'.$row["Version"].'", "date":"'.$row["Date"].'", "lang":"'.$row["Language"].
                     '", "activities":'.$b[0].', "exercices":'.$c[0].', "lock":'.($lock?"true":"false");
@@ -31,11 +31,11 @@ if (!$error) {
 
 // PUBLISH DATA UNDER JSON FORMAT
 echo '{';
-echo '  "status" : "'.$status.'",';
-if ($error)     		{ echo '  "error" : '.$error.','; }
-if (isset($overview))  	{ echo $overview.','; }
-if ($_SESSION['url']) 	{ echo ' "url" : "'.$_SESSION['url'].'",'; }
-echo '  "textStatus" : "'.$textstatus.'"';
-echo '}';
+if (isset($status))                     { echo '  "status" : "'.$status.'",'; }
+if (isset($error) && $error)     		{ echo '  "error" : '.$error.','; }
+if (isset($overview))  	                { echo $overview.','; }
+if (array_key_exists("url",$_SESSION)) 	{ echo ' "url" : "'.$_SESSION['url'].'",'; }
+if (isset($textstatus))                 { echo '  "textStatus" : "'.$textstatus.'",'; }
+echo '  "from" : "jlodb/api" }';
 
 ?>

@@ -18,10 +18,10 @@ login($username, $password, $status, $textstatus, $error);
 
 // PUBLISH DATA UNDER JSON FORMAT
 echo '{';
-echo '  "status" : "'.$status.'",';
-if ($error) { echo '  "error" : '.$error.','; }
-echo '  "textStatus" : "'.$textstatus.'"';
-echo '}';
+if (isset($status))             { echo '  "status" : "'.$status.'",'; }
+if (isset($error) && $error)    { echo '  "error" : '.$error.','; }
+if (isset($textstatus))         { echo '  "textStatus" : "'.$textstatus.'",'; }
+echo '  "from" : "jlodb/api" }';
 
 ?>
 

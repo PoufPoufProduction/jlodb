@@ -17,9 +17,9 @@ if (!$error) {
             $error = 11;
         }
         else {
-            $result = mysql_query("SELECT * FROM `".$_SESSION['prefix']."activity` WHERE `Activity_Name`='".$_GET["activity"]."'");
+            $result = mysqli_query($link, "SELECT * FROM `".$_SESSION['prefix']."activity` WHERE `Activity_Name`='".$_GET["activity"]."'");
 			if ($result) {
-				while ($row = mysql_fetch_array($result)) {
+				while ($row = mysqli_fetch_array($result)) {
 					insertIntoDB($link,$row["Activity_Name"],$row["Activity_Key"],$_GET["filename"],$lang,$warnings,$tags,true);
 					$status = "success";
 				}
@@ -31,9 +31,9 @@ if (!$error) {
 // PUBLISH DATA UNDER JSON FORMAT
 echo '{';
 echo $config;
-echo '  "status" : "'.$status.'",';
-if ($error) { echo '  "error" : '.$error.','; }
-echo '  "textStatus" : "'.$textstatus.'"';
-echo '}';
+if (isset($status))             { echo '  "status" : "'.$status.'",'; }
+if (isset($error) && $error)    { echo '  "error" : '.$error.','; }
+if (isset($textstatus))         { echo '  "textStatus" : "'.$textstatus.'",'; }
+echo '  "from" : "jlodb/api" }';
 
 ?>

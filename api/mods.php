@@ -30,9 +30,11 @@ if ($handle = opendir("../mods")) {
                     if (strcmp($childName,"dct_source")==0)        { $source=$child; }
                 }
  
-                if (strlen($json)) { $json.=","; }
-                $json.='{"id" :"'.$file.'", "name" :"'.$name.'", "abstract" :"'.$abstract.
-                       '", "requires" :"'.$requires.'", "source" : "'.$source.'"}';
+                if ($source != "deleted") {
+                    if (strlen($json)) { $json.=","; }
+                    $json.='{"id" :"'.$file.'", "name" :"'.$name.'", "abstract" :"'.$abstract.
+                           '", "requires" :"'.$requires.'", "source" : "'.$source.'"}';
+                }
             }
         }
     }
@@ -40,11 +42,11 @@ if ($handle = opendir("../mods")) {
 
 // PUBLISH DATA UNDER JSON FORMAT
 echo '{';
-echo '  "status" : "'.$status.'",';
-if ($error)     { echo '  "error" : '.$error.','; }
-echo '  "textStatus" : "'.$textstatus.'",';
-echo '  "mods" :['.$json.']';
-echo '}';
+if (isset($status))             { echo '  "status" : "'.$status.'",'; }
+if (isset($error) && $error)    { echo '  "error" : '.$error.','; }
+if (isset($textstatus))         { echo '  "textStatus" : "'.$textstatus.'",'; }
+if (isset($json))               { echo '  "mods" :['.$json.'],'; }
+echo '  "from" : "jlodb/api" }';
 
 
 ?> 

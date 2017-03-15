@@ -2,11 +2,11 @@
 include_once "../../api/database.php";
 include_once "_new.php";
 
-if (!$error && strlen($_GET["username"])) {
+if (!$error && array_key_exists("username",$_GET)) {
 
-    if (strlen($_GET["password"]) && strlen($_GET["confirm"]) && (strcmp($_GET["password"], $_GET["confirm"])==0))
+    if (array_key_exists("password",$_GET) && array_key_exists("confirm",$_GET) && (strcmp($_GET["password"], $_GET["confirm"])==0))
     {
-        if (insertNewUser($_GET["username"], $_GET["password"], "", "", "" )) {
+        if (insertNewUser($link, $_GET["username"], $_GET["password"], "", "", "" )) {
             $error = 0;
             $textstatus="new user";
         }

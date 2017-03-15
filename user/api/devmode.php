@@ -1,15 +1,15 @@
 <?php
 
-
 session_start();
 
-if (!$apipath) { $apipath="./"; }
+if (!isset($apipath)) { $apipath="./"; }
 $filename   = $apipath."../../conf/jlodb.ini";
 $status     = "success";
 $error      = 0;
 $textstatus = "";
+$_SESSION['User_DevMode'] = 0;
 
-if ( strlen($_GET["password"] ))
+if ( array_key_exists("password",$_GET))
 {
     if (!file_exists($filename)) {
         $textstatus = "$filename: configuration file is missing";
@@ -24,16 +24,15 @@ if ( strlen($_GET["password"] ))
 
     }
 }
-else { $_SESSION['User_DevMode'] = 0; }
-
 
 // PUBLISH DATA UNDER JSON FORMAT
 echo '{';
-echo '  "status" : "'.$status.'",';
-if ($error)     { echo '  "error" : '.$error.','; }
-echo '  "textStatus" : "'.$textstatus.'",';
-echo '  "devmode": '.($_SESSION['User_DevMode']?'1':'0');
-echo '}';
+if (isset($status))             { echo '  "status" : "'.$status.'",'; }
+if (isset($error) && $error)    { echo '  "error" : '.$error.','; }
+if (isset($textStatus))         { echo '  "textStatus" : "'.$textstatus.'",'; }
+
+echo '  "devmode": '.($_SESSION['User_DevMode']?'1':'0').',';
+echo '  "from" : "user/api" }';
 
 
 ?> 

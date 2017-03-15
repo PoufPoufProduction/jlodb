@@ -4,22 +4,22 @@ include "database.php";
 
 if (!$error) {
     if (array_key_exists("name",$_GET)) {
-        $activitiy = mysql_query("SELECT * FROM `".$_SESSION['prefix']."activity` WHERE ".
+        $activitiy = mysqli_query($link, "SELECT * FROM `".$_SESSION['prefix']."activity` WHERE ".
                                 "`Activity_Name` = '".$_GET["name"]."' LIMIT 1");
 
-        $row = $activitiy?mysql_fetch_array($activitiy):0;
+        $row = $activitiy?mysqli_fetch_array($activitiy):0;
         if ($row) {
 
             // NUMBER OF EXERCICES
-            $number=mysql_fetch_array(mysql_query("SELECT COUNT(*) FROM `".$_SESSION['prefix']."exercice` WHERE ".
+            $number=mysqli_fetch_array(mysqli_query($link, "SELECT COUNT(*) FROM `".$_SESSION['prefix']."exercice` WHERE ".
                                 "`Exercice_Activity` = '".$_GET["name"]."'"));
 
             // CLASSIFICATION
-            $classification=mysql_query("SELECT DISTINCT `Exercice_Classification` FROM `".$_SESSION['prefix']."exercice` WHERE ".
+            $classification=mysqli_query($link, "SELECT DISTINCT `Exercice_Classification` FROM `".$_SESSION['prefix']."exercice` WHERE ".
                                 "`Exercice_Activity` = '".$_GET["name"]."'");
 
             $class = "";
-            while ($classit = mysql_fetch_array($classification)) {
+            while ($classit = mysqli_fetch_array($classification)) {
                 if ($class) { $class.=","; }
                 $class.='"'.$classit["Exercice_Classification"].'"';
             }
@@ -55,17 +55,16 @@ if (!$error) {
 
 // PUBLISH DATA UNDER JSON FORMAT
 echo '{';
-echo '  "status" : "'.$status.'",';
-echo '  "textStatus" : "'.$textstatus.'",';
-if ($error)     { echo '  "error" : '.$error; } else {
-echo '  "name": "'.$name.'",';
-echo '  "lang": "'.$_SESSION['lang'].'",';
-echo '  "label": "'.$label.'",';
-echo '  "exercices": '.$number[0].',';
-echo '  "classification": ['.$class.'],';
-echo '  "files": ['.$files.'],';
-echo '  "locale": {'.$locale.'}';
-}
-echo '}';
+if (isset($status))                     { echo '  "status" : "'.$status.'",'; }
+if (isset($textstatus))                 { echo '  "textStatus" : "'.$textstatus.'",'; }
+if (isset($error) && $error)            { echo '  "error" : '.$error; }
+if (isset($name))                       { echo '  "name": "'.$name.'",'; }
+if (array_key_exists("lang",$_SESSION)) { echo '  "lang": "'.$_SESSION['lang'].'",'; }
+if (isset($label))                      { echo '  "label": "'.$label.'",'; }
+if (isset($number))                     { echo '  "exercices": '.$number[0].','; }
+if (isset($class))                      { echo '  "classification": ['.$class.'],'; }
+if (isset($files))                      { echo '  "files": ['.$files.'],'; }
+if (isset($locale))                     { echo '  "locale": {'.$locale.'},'; }
+echo '  "from" : "jlodb/api" }';
 
 ?>

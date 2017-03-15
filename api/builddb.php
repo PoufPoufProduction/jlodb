@@ -29,27 +29,27 @@ if (!$error) {
         $error = 100;
     }
     else {
-        mysql_query('DROP TABLE '.$_SESSION['prefix'].'tags');
-        mysql_query('DROP TABLE '.$_SESSION['prefix'].'exercice');
-        mysql_query('DROP TABLE '.$_SESSION['prefix'].'activity');
-        mysql_query('DROP TABLE '.$_SESSION['prefix'].'jlodb');
+        mysqli_query($link, 'DROP TABLE '.$_SESSION['prefix'].'tags');
+        mysqli_query($link, 'DROP TABLE '.$_SESSION['prefix'].'exercice');
+        mysqli_query($link, 'DROP TABLE '.$_SESSION['prefix'].'activity');
+        mysqli_query($link, 'DROP TABLE '.$_SESSION['prefix'].'jlodb');
 
         // BUILD THE TABLES
-       if (mysql_query('CREATE TABLE `'.$_SESSION['prefix'].'jlodb` ('.
+       if (mysqli_query($link, 'CREATE TABLE `'.$_SESSION['prefix'].'jlodb` ('.
                             '`Version`                  VARCHAR(50)     NOT NULL, '.
                             '`Date`                     DATE            NOT NULL, '.
                             '`Language`                 VARCHAR(50)     NOT NULL, '.
                             '`Lock`                     BOOL DEFAULT false'.
-                        ') ENGINE=InnoDB', $link) &&
-           mysql_query('CREATE TABLE `'.$_SESSION['prefix'].'activity` ('.
+                        ') ENGINE=InnoDB') &&
+           mysqli_query($link, 'CREATE TABLE `'.$_SESSION['prefix'].'activity` ('.
                             '`Activity_Name`            VARCHAR( 64 )   NOT NULL , '.
                             '`Activity_Title`           VARCHAR( 64 )   NOT NULL , '.
                             '`Activity_Key`             VARCHAR( 4 )    NOT NULL , '.
                             '`Activity_Description`     TEXT            NOT NULL , '.
                             '`Activity_External`        VARCHAR( 255 ) , '.
                             '`Activity_Locale`          TEXT , '.
-                       'PRIMARY KEY (  `Activity_Name` ) ) ENGINE=InnoDB', $link) &&
-           mysql_query('CREATE TABLE  `'.$_SESSION['prefix'].'exercice` ('.
+                       'PRIMARY KEY (  `Activity_Name` ) ) ENGINE=InnoDB') &&
+           mysqli_query($link, 'CREATE TABLE  `'.$_SESSION['prefix'].'exercice` ('.
                             '`Exercice_Id`              VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL , '.
                             '`Exercice_Activity`        VARCHAR( 64 )   NOT NULL , '.
                             '`Exercice_Title`           VARCHAR( 255 )  NOT NULL , '.
@@ -64,9 +64,8 @@ if (!$error) {
                             '`Exercice_Nb`              INT , '.
                        'PRIMARY KEY (  `Exercice_Id` ), '.
                        'FOREIGN KEY ( `Exercice_Activity` ) REFERENCES '.$_SESSION['prefix'].'activity(`Activity_Name`)) '.
-                       'ENGINE=InnoDB',
-                       $link) &&
-            mysql_query('CREATE TABLE `'.$_SESSION['prefix'].'tags` (`Tag` VARCHAR(50) NOT NULL ) ENGINE=InnoDB', $link)
+                       'ENGINE=InnoDB') &&
+            mysqli_query($link, 'CREATE TABLE `'.$_SESSION['prefix'].'tags` (`Tag` VARCHAR(50) NOT NULL ) ENGINE=InnoDB')
             ) {
 
             // FILL THE ACTIVITY TABLE THANKS TO THE ACTIVITIES.RDF FILE
@@ -113,15 +112,15 @@ if (!$error) {
                                $activityName."','".$activityTitle."','".substr($activityName,0,1).substr($activityName, -1)."','".
                                $activityDescription."',".(strlen($activityExternal)?("'".$activityExternal."'"):"NULL").",".
                                (strlen($activityLocale)?("'".$activityLocale."'"):"NULL").")";
-                        mysql_query($sql , $link);
+                        mysqli_query($link, $sql);
                     }
                 }
 
                 $tags = array();
 
                 // BROWSE THE ACTIVITIES DIRECTORY FOR FILLING THE EXERCICES TABLE
-                $result = mysql_query("SELECT * FROM `".$_SESSION['prefix']."activity`");
-                while ($row = mysql_fetch_array($result)) {
+                $result = mysqli_query($link, "SELECT * FROM `".$_SESSION['prefix']."activity`");
+                while ($row = mysqli_fetch_array($result)) {
                     if ($handle = opendir("../data/".$row["Activity_Name"])) {
                         while (false !== ($file = readdir($handle))) {
                             if ($file != "." && $file != ".." && strpos($file,".rdf")) {
@@ -133,11 +132,11 @@ if (!$error) {
                 }
 
                 // FILL THE NB COLUMN
-                $nb = mysql_query("SELECT `Exercice_Variant`,count(*) as NB FROM `".$_SESSION['prefix']."exercice`".
+                $nb = mysqli_query($link, "SELECT `Exercice_Variant`,count(*) as NB FROM `".$_SESSION['prefix']."exercice`".
                                   " GROUP BY `Exercice_Variant`");
-                while ($n = mysql_fetch_array($nb)) {
+                while ($n = mysqli_fetch_array($nb)) {
                     if (strlen($n["Exercice_Variant"])) {
-                        mysql_query("UPDATE `".$_SESSION['prefix']."exercice` SET `Exercice_Nb`=".$n["NB"].
+                        mysqli_query($link, "UPDATE `".$_SESSION['prefix']."exercice` SET `Exercice_Nb`=".$n["NB"].
                                     " WHERE `Exercice_Id`='".$n["Exercice_Variant"]."'");
                     }
                 }
@@ -145,20 +144,20 @@ if (!$error) {
                 // FILL THE TAGS TABLE
                 foreach ($tags as $tag) {
                     $sql = "INSERT INTO `".$_SESSION['prefix']."tags` (`Tag`) VALUES ('".$tag."')";
-                    mysql_query($sql , $link);
+                    mysqli_query($link, $sql);
                 }
 
                 // FILL THE JLODB TABLE
                 $sql = "INSERT INTO `".$_SESSION['prefix']."jlodb` (`Version`,`Date`,`Language`,`Lock`) VALUES ('".
                        $version."','".date("Ymd")."','".$lang."',false)";
-                mysql_query($sql , $link);
+                mysqli_query($link, $sql);
 
                 $status = "success";
             }
         }
         else {
             $error = 6;
-            $textstatus = mysql_error();
+            $textstatus = mysqli_error($link);
         }
     }
 }
@@ -166,12 +165,14 @@ if (!$error) {
 // PUBLISH DATA UNDER JSON FORMAT
 echo '{';
 echo $config;
-echo '  "status" : "'.$status.'",';
-if ($error) { echo '  "error" : '.$error.','; }
-echo '  "textStatus" : "'.$textstatus.'",';
-echo '  "warnings": [';
-    foreach ($warnings as $k=>$value) { if ($k) { echo ","; } echo '"'.$value.'"'; }
-echo ' ]';
-echo '}';
+if (isset($status))             { echo '  "status" : "'.$status.'",'; }
+if (isset($error) && $error)    { echo '  "error" : '.$error.','; }
+if (isset($textstatus))         { echo '  "textStatus" : "'.$textstatus.'",'; }
+if (isset($warnings)) { 
+    echo '  "warnings": [';
+        foreach ($warnings as $k=>$value) { if ($k) { echo ","; } echo '"'.$value.'"'; }
+    echo ' ],';
+}
+echo '  "from" : "jlodb/api" }';
 
 ?>

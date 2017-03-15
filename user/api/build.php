@@ -8,9 +8,9 @@ if (!$error) {
         $error = 100;
     }
     else {
-        if (!mysql_query("SELECT * FROM `".$_SESSION['prefix']."user`")) {
+        if (!mysqli_query($link, "SELECT * FROM `".$_SESSION['prefix']."user`")) {
             // CREATE THE TABLE
-            mysql_query('CREATE TABLE `'.$_SESSION['prefix'].'user` ('.
+            mysqli_query($link, 'CREATE TABLE `'.$_SESSION['prefix'].'user` ('.
                             '`User_Key`                 INT NOT NULL AUTO_INCREMENT, '.
                             '`User_Id`                  VARCHAR( 64 )   NOT NULL , '.
                             '`User_Password`            VARCHAR( 64 )   NOT NULL , '.
@@ -24,19 +24,19 @@ if (!$error) {
                             '`User_Theme`               VARCHAR( 128) , '.
                             '`User_Days`                INT DEFAULT 1 , '.
                             '`User_Date`                DATETIME DEFAULT NULL, '.
-                            'PRIMARY KEY (  `User_Key` ) ) ENGINE=InnoDB', $link);
+                            'PRIMARY KEY (  `User_Key` ) ) ENGINE=InnoDB');
         }
 
         // UPDATE COLUMN WITHOUT DELETING TABLE
-        if (mysql_query("SELECT * FROM `".$_SESSION['prefix']."user`")) {
+        if (mysqli_query($link, "SELECT * FROM `".$_SESSION['prefix']."user`")) {
             // GET THE COLUMN NAMES
             $userDays = false;
-            $columns = mysql_query('SHOW COLUMNS FROM `'.$_SESSION['prefix'].'user`');
-            while($row = mysql_fetch_array($columns)) {
+            $columns = mysqli_query($link, 'SHOW COLUMNS FROM `'.$_SESSION['prefix'].'user`');
+            while($row = mysqli_fetch_array($columns)) {
                 if ($row[0]=="User_Days") { $userDays = true; }
             }
             // ADD COLUMNS
-            if (!$userDays) { mysql_query('ALTER TABLE `'.$_SESSION['prefix'].'user` '.
+            if (!$userDays) { mysqli_query($link, 'ALTER TABLE `'.$_SESSION['prefix'].'user` '.
                                            'ADD `User_Days` INT DEFAULT 1 AFTER `User_Theme`'); }
         }
         else {
@@ -51,7 +51,7 @@ if (!$error) {
         $lastname = array("ma","mi","mu","mo","pa","pi","pu","po","ta","ti","tu","to","man","min","mun","mon","pan","pin","pun","pon","tan","tin","tun","ton","ra","ri","ru","ro","ran","rin","run","ron");
         for ($i=0; $i<50; $i++) {
             $ln=$lastname[($i*7)%count($lastname)].$lastname[(floor($i/3)*5)%count($lastname)].$lastname[($i*11)%count($lastname)];
-            mysql_query("DELETE FROM `".$_SESSION['prefix']."user` WHERE `User_Id`='test".$i."'");
+            mysqli_query($link, "DELETE FROM `".$_SESSION['prefix']."user` WHERE `User_Id`='test".$i."'");
             insertNewUser("test".$i, "test".$i, $avatars[$i%count($avatars)], $firsnames[$i%count($firsnames)], ucfirst($ln) );
         }
         // CHECK HOMONYMES
@@ -62,19 +62,19 @@ if (!$error) {
         */
 
         // USER GROUP OF FRIENDS
-        if (!mysql_query("SELECT * FROM `".$_SESSION['prefix']."circle`")) {
-            mysql_query('CREATE TABLE  `'.$_SESSION['prefix'].'circle` ('.
+        if (!mysqli_query($link, "SELECT * FROM `".$_SESSION['prefix']."circle`")) {
+            mysqli_query($link, 'CREATE TABLE  `'.$_SESSION['prefix'].'circle` ('.
                             '`Circle_Key`              INT NOT NULL AUTO_INCREMENT, '.
                             '`Circle_Name`             VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL, '.
                             '`User_Key`                INT NOT NULL, '.
                             ' CONSTRAINT `'.$_SESSION['prefix'].'Circle_User_Key` FOREIGN KEY (`User_Key`) REFERENCES `'.$_SESSION['prefix'].'user` '.
                             ' (`User_Key`) ON DELETE CASCADE,'.
-                            ' PRIMARY KEY ( `Circle_Key` )) ENGINE=InnoDB', $link);
+                            ' PRIMARY KEY ( `Circle_Key` )) ENGINE=InnoDB');
         }
 
         // USER FRIENDS
-        if (!mysql_query("SELECT * FROM `".$_SESSION['prefix']."friend`")) {
-            mysql_query('CREATE TABLE  `'.$_SESSION['prefix'].'friend` ('.
+        if (!mysqli_query($link, "SELECT * FROM `".$_SESSION['prefix']."friend`")) {
+            mysqli_query($link, 'CREATE TABLE  `'.$_SESSION['prefix'].'friend` ('.
                             '`User_Key`                 INT NOT NULL, '.
                             '`Friend_Key`               INT NOT NULL, '.
                             '`Timestamp`                TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, '.
@@ -83,19 +83,19 @@ if (!$error) {
                             ' (`User_Key`) ON DELETE CASCADE,'.
                             ' CONSTRAINT `'.$_SESSION['prefix'].'User_Friend_Key` FOREIGN KEY (`Friend_Key`) REFERENCES `'.$_SESSION['prefix'].'user` '.
                             ' (`User_Key`) ON DELETE CASCADE,'.
-                            ' PRIMARY KEY ( `User_Key`, `Friend_Key` )) ENGINE=InnoDB', $link);
+                            ' PRIMARY KEY ( `User_Key`, `Friend_Key` )) ENGINE=InnoDB');
         }
 
 
-        if (!mysql_query("SELECT * FROM `".$_SESSION['prefix']."friendbycircle`")) {
-            mysql_query('CREATE TABLE  `'.$_SESSION['prefix'].'friendbycircle` ('.
+        if (!mysqli_query($link, "SELECT * FROM `".$_SESSION['prefix']."friendbycircle`")) {
+            mysqli_query($link, 'CREATE TABLE  `'.$_SESSION['prefix'].'friendbycircle` ('.
                             '`Circle_Key`              INT NOT NULL, '.
                             '`Friend_Key`              INT NOT NULL, '.
                             ' CONSTRAINT `'.$_SESSION['prefix'].'FriendByCircle_Circle_Key` FOREIGN KEY (`Circle_Key`) REFERENCES `'.$_SESSION['prefix'].'circle` '.
                             ' (`Circle_Key`) ON DELETE CASCADE,'.
                             ' CONSTRAINT `'.$_SESSION['prefix'].'FriendByCircle_Friend_Key` FOREIGN KEY (`Friend_Key`) REFERENCES `'.$_SESSION['prefix'].'user` '.
                             ' (`User_Key`) ON DELETE CASCADE,'.
-                            ' PRIMARY KEY ( `Circle_Key`, `Friend_Key` )) ENGINE=InnoDB', $link);
+                            ' PRIMARY KEY ( `Circle_Key`, `Friend_Key` )) ENGINE=InnoDB');
         }
 
 

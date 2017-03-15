@@ -2,9 +2,9 @@
 include_once "../../api/database.php";
 include_once "check.php";
 
-if (!$error && strlen($_GET["value"])) {
+if (!$error && array_key_exists("value",$_GET)) {
 
-    $user = mysql_query("SELECT * FROM `".$_SESSION['prefix']."user` WHERE ".
+    $user = mysqli_query($link, "SELECT * FROM `".$_SESSION['prefix']."user` WHERE ".
                         " `User_Id` = '".$_GET["value"]."' OR ".
                         " CONCAT(`User_FirstName`,' ',`User_LastName`) LIKE '%".$_GET["value"]."%' LIMIT 20");
 
@@ -12,12 +12,12 @@ if (!$error && strlen($_GET["value"])) {
     // CHECK IF THE FOUND USER IS NOT THE CURRENT USER OR ONE OF HIS FRIENDS
     $json       = "";
     $nbfriends  = 0;
-    while(($nbfriends < 50) && ($row = mysql_fetch_array($user)) ) {
+    while(($nbfriends < 50) && ($row = mysqli_fetch_array($user)) ) {
         $good = false;
         if ($row["User_Key"]!=$_SESSION['User_Key'] ) {
-            $count1 = mysql_fetch_array(mysql_query("SELECT COUNT(`User_Key`) FROM `".$_SESSION['prefix']."friend` WHERE ".
+            $count1 = mysqli_fetch_array(mysqli_query($link, "SELECT COUNT(`User_Key`) FROM `".$_SESSION['prefix']."friend` WHERE ".
                     "Friend_Key='".$_SESSION['User_Key']."' AND `User_Key`='".$row["User_Key"]."'"));
-            $count2 = mysql_fetch_array(mysql_query("SELECT COUNT(`User_Key`) FROM `".$_SESSION['prefix']."friend` WHERE ".
+            $count2 = mysqli_fetch_array(mysqli_query($link, "SELECT COUNT(`User_Key`) FROM `".$_SESSION['prefix']."friend` WHERE ".
                     "Friend_Key='".$row["User_Key"]."' AND `User_Key`='".$_SESSION['User_Key']."'"));
 
             $good = ($count1[0]==0 ) && ($count2[0]==0);
@@ -37,11 +37,12 @@ if (!$error && strlen($_GET["value"])) {
 
 // PUBLISH DATA UNDER JSON FORMAT
 echo '{';
-echo '  "status" : "'.$status.'",';
-if ($error)     { echo '  "error" : '.$error.','; }
-echo '  "textStatus" : "'.$textstatus.'",';
-echo '  "users" : ['.$json.']';
-echo '}';
+if (isset($status))             { echo '  "status" : "'.$status.'",'; }
+if (isset($error) && $error)    { echo '  "error" : '.$error.','; }
+if (isset($textstatus))         { echo '  "textStatus" : "'.$textstatus.'",'; }
+if (isset($json))               { echo '  "users" : ['.$json.'],'; }
+echo '  "from" : "user/api" }';
+
 
 
 ?>

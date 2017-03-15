@@ -3,10 +3,10 @@
 include "database.php";
 
 if (!$error) {
-    $activity = mysql_query("SELECT * FROM `".$_SESSION['prefix']."tags` ORDER BY Tag");
+    $activity = mysqli_query($link, "SELECT * FROM `".$_SESSION['prefix']."tags` ORDER BY Tag");
     $json = "";
 	if ($activity) {
-		while($row = mysql_fetch_array($activity)) {
+		while($row = mysqli_fetch_array($activity)) {
 			if (strlen($json)) { $json.=","; }
 			$json.='"'.$row["Tag"].'"';
 		}
@@ -16,10 +16,10 @@ if (!$error) {
 
 // PUBLISH DATA UNDER JSON FORMAT
 echo '{';
-echo '  "status" : "'.$status.'",';
-if ($error)     { echo '  "error" : '.$error.','; }
-echo '  "textStatus" : "'.$textstatus.'",';
-echo '  "tags" : ['.$json.']';
-echo '}';
+if (isset($status))             { echo '  "status" : "'.$status.'",'; }
+if (isset($error) && $error)    { echo '  "error" : '.$error.','; }
+if (isset($textstatus))         { echo '  "textStatus" : "'.$textstatus.'",'; }
+if (isset($json))               { echo '  "tags" : ['.$json.'],'; }
+echo '  "from" : "jlodb/api" }';
 
 ?>

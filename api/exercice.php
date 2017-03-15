@@ -43,10 +43,10 @@ if (!$error) {
     else                                        { $where.= " AND `Exercice_Tags` NOT LIKE '%debug%'"; }
     
 
-    $exercice = mysql_query("SELECT * FROM `".$_SESSION['prefix']."exercice`, `".$_SESSION['prefix']."activity` WHERE ".
+    $exercice = mysqli_query($link, "SELECT * FROM `".$_SESSION['prefix']."exercice`, `".$_SESSION['prefix']."activity` WHERE ".
                             " `Exercice_Activity` = `Activity_Name`".$where." ORDER BY RAND( ) LIMIT 1");
 
-    $row = mysql_fetch_array($exercice);
+    $row = mysqli_fetch_array($exercice);
     if ($row) {
         $activity   = $row["Exercice_Activity"];
         $label      = $row["Activity_Title"];
@@ -69,21 +69,21 @@ if (!$error) {
 
 // PUBLISH DATA UNDER JSON FORMAT
 echo '{';
-echo '  "status" : "'.$status.'",';
-if ($error)     { echo '  "error" : '.$error.','; }
-echo '  "textStatus" : "'.$textstatus.'",';
-echo '  "id": "'.$id.'",';
-echo '  "lang": "'.$_SESSION['lang'].'",';
-echo '  "activity": "'.$activity.'",';
-echo '  "label": "'.$label.'",';
-echo '  "title": "'.$title.'",';
-echo '  "level": "'.$level.'",';
-echo '  "difficulty": "'.$diff.'",';
-echo '  "time": "'.$time.'",';
-echo '  "classification": "'.$class.'",';
-echo '  "ext": "'.$ext.'",';
-echo '  "data": {'.$param.'},';
-echo '  "locale": {'.$locale.'}';
-echo '}';
+if (isset($status))                     { echo '  "status" : "'.$status.'",'; }
+if (isset($error) && $error)            { echo '  "error" : '.$error.','; }
+if (isset($textstatus))                 { echo '  "textStatus" : "'.$textstatus.'",'; }
+if (isset($id))                         { echo '  "id": "'.$id.'",'; }
+if (array_key_exists("lang",$_SESSION)) { echo '  "lang": "'.$_SESSION['lang'].'",'; }
+if (isset($activity))                   { echo '  "activity": "'.$activity.'",'; }
+if (isset($label))                      { echo '  "label": "'.$label.'",'; }
+if (isset($title))                      { echo '  "title": "'.$title.'",'; }
+if (isset($level))                      { echo '  "level": "'.$level.'",'; }
+if (isset($diff))                       { echo '  "difficulty": "'.$diff.'",'; }
+if (isset($time))                       { echo '  "time": "'.$time.'",'; }
+if (isset($class))                      { echo '  "classification": "'.$class.'",'; }
+if (isset($ext))                        { echo '  "ext": "'.$ext.'",'; }
+if (isset($param))                      { echo '  "data": {'.$param.'},'; }
+if (isset($locale))                     { echo '  "locale": {'.$locale.'},'; }
+echo '  "from" : "jlodb/api" }';
 
 ?>

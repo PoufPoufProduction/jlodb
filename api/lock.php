@@ -11,12 +11,12 @@ if (!$error) {
     }
     else {
 		if (array_key_exists("action",$_GET)) {
-			if ($_GET["action"]=="lock")        { mysql_query("UPDATE `".$_SESSION['prefix']."jlodb` SET `Lock`=true"); }
-			else if ($_GET["action"]=="unlock") { mysql_query("UPDATE `".$_SESSION['prefix']."jlodb` SET `Lock`=false"); }
+			if ($_GET["action"]=="lock")        { mysqli_query($link, "UPDATE `".$_SESSION['prefix']."jlodb` SET `Lock`=true"); }
+			else if ($_GET["action"]=="unlock") { mysqli_query($link, "UPDATE `".$_SESSION['prefix']."jlodb` SET `Lock`=false"); }
 		}
 
-        $lock = mysql_query("SELECT `Lock` FROM `".$_SESSION['prefix']."jlodb` LIMIT 1");
-        $l = mysql_fetch_array($lock);
+        $lock = mysqli_query($link, "SELECT `Lock` FROM `".$_SESSION['prefix']."jlodb` LIMIT 1");
+        $l = mysqli_fetch_array($lock);
 
         $status="success";
     }
@@ -25,11 +25,10 @@ if (!$error) {
 
 // PUBLISH DATA UNDER JSON FORMAT
 echo '{';
-echo '  "status" : "'.$status.'",';
-if ($error) { echo '  "error" : '.$error.','; }
-echo '  "textStatus" : "'.$textstatus.'",';
-echo '  "lock" : '.$l[0];
-echo '}';
-
+if (isset($status))             { echo '  "status" : "'.$status.'",'; }
+if (isset($error) && $error)    { echo '  "error" : '.$error.','; }
+if (isset($textstatus))         { echo '  "textStatus" : "'.$textstatus.'",'; }
+if (isset($l))                  { echo '  "lock" : '.$l[0].','; }
+echo '  "from" : "jlodb/api" }';
 
 ?> 

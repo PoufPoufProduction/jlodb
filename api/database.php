@@ -34,31 +34,32 @@ if (!array_key_exists("database",$_SESSION) || isset($forceReadFile))  {
     }
 }
 
+
 // CONNECT TO THE DATABASE
-$link = @mysql_connect($_SESSION['host'], $_SESSION['username'], $_SESSION['password']);
+$link = @mysqli_connect($_SESSION['host'], $_SESSION['username'], $_SESSION['password']);
 if (!$link) {
-    $textstatus = mysql_error();
+    $textstatus = mysqli_error($link);
     $error = 2;
 }
 else {
     // CONNECT TO THE DATABASE. CREATE IT IF NECESSARY
-    $db = @mysql_select_db($_SESSION['database'], $link);
+    $db = @mysqli_select_db($link, $_SESSION['database']);
     if (!$db) {
         $sql = 'CREATE DATABASE '.$_SESSION['database'];
-        if (mysql_query($sql, $link)) { $db = @mysql_select_db($_SESSION['database'], $link); }
+        if (mysqli_query($link, $sql)) { $db = @mysqli_select_db($_SESSION['database'], $link); }
     }
 
     // CHECK THE DATABASE
     if (!$db) {
-        $textstatus = mysql_error();
+        $textstatus = mysqli_error($link);
         $error = 3;
     }
     else {
         // GET THE LANG
         if (!array_key_exists("lang",$_SESSION)) {
-            $jlodb = mysql_query("SELECT * FROM `".$_SESSION['prefix']."jlodb` LIMIT 1");
+            $jlodb = mysqli_query($link, "SELECT * FROM `".$_SESSION['prefix']."jlodb` LIMIT 1");
             if ($jlodb) {
-                $row = mysql_fetch_array($jlodb);
+                $row = mysqli_fetch_array($jlodb);
                 $_SESSION['lang'] = $row["Language"];
             }
         }
