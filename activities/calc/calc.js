@@ -189,7 +189,7 @@
                 $this.find("h1#label").html(settings.label);
                 if (settings.locale) { $.each(settings.locale, function(id,value) {
                     if ($.isArray(value)) {  for (var i in value) { $this.find("#"+id).append("<p>"+value[i]+"</p>"); } }
-                    else { $this.find("#"+id).html(value); }
+                    else { $this.find("#"+id).html(helpers.format(value)); }
                 }); }
 
                 // GEN
