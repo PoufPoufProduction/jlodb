@@ -6,18 +6,21 @@
         <dct:title xml:lang="fr-FR">Le boulier</dct:title>
         <dct:abstract xml:lang="fr-FR">L'activité du boulier permet à l'utilisateur d'utiliser un boulier chinois ou japonais pour compter, additioner ou multiplier.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["guide":"Déplacer les billes du boulier pour répondre aux problèmes demandés." ]]></dct:description>
+        <dct:source>res/img/banners/operations.svg,res/img/desktop/abacus/</dct:source>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:alchemist">
         <dct:title xml:lang="fr-FR">L'alchimiste</dct:title>
         <dct:abstract xml:lang="fr-FR">L'alchimiste est un jeu de logique dans lequel le joueur doit combiner au moins 3 éléments de même type afin de les transmuter en un élément de qualité supérieure.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["guide":"Positionner $1 éléments de même type côte-à-côte pour les transmuter en un élément de qualité supérieure.","goallabel":"Objectifs","withtime":"Temps limité","goaltxt":{"survive":"Survivre $1 tours","max":"En moins de $1 tours","level":"Transmuter l'élément $1","empty":"Vider la zone rouge","fill":"Remplir la zone jaune d'éléments $1 ou plus","frozen":"Dégeler tous les éléments","remove":"Éliminer l'élément $1"} ]]></dct:description>
+        <dct:source>res/img/banners/alchemist.svg,res/img/svginventoryicons/mineral/,res/img/svginventoryicons/potion/,res/img/svginventoryicons/space/,res/img/svginventoryicons/vegetable/,res/img/svginventoryicons/misc/salt01.svg,res/img/runes/,res/img/background/asset/potion01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:asm">
         <dct:title xml:lang="fr-FR">Assembleur 6502</dct:title>
         <dct:abstract xml:lang="fr-FR">Cette activité permet de réaliser des programmes en langage assembleur pour processeur 6502. Cet émulateur dispose en outre, d'une sortie standard, d'un écran graphique et d'une manette de jeu.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["guide":"Glisser les différents opérateurs et paramètres proposés par l'exercice vers la zone centrale. Lancer le programme en appuyant sur le bouton de lecture.","title":"Guide de l'assembleur 6502"]]></dct:description>
+        <dct:source>res/img/banners/it.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:balance">
@@ -103,7 +106,7 @@
     <rdf:Description rdf:about="urn:activity:logo">
         <dct:title xml:lang="fr-FR">LOGO</dct:title>
         <dct:abstract xml:lang="fr-FR">Cette activité de programmation permet de réaliser avec le langage LOGO les figures géométriques demandées par l'énoncé.</dct:abstract>
-        <dct:description xml:lang="fr-FR"><![CDATA["guide":["Déplacer les instructions depuis le code source en haut à gauche vers la zone de programmation plus en bas. Réaliser le programme permettant de tracer la figure demandée, lancer l'exécution et soumettre le résultat avec le bouton de validation","La note finale ne dépend que de la justesse de la figure tracée par l'utilisateur."],"source":{"av":"AVANCE","re":"RECULE","td":"TOURNE DROITE","tg":"TOURNE GAUCHE","lc":"LEVE CRAYON","bc":"BAISSE CRAYON","ct":"CACHE TORTUE","mt":"MONTRE TORTUE","or":"ORIGINE","ve":"VIDE ECRAN","ne":"NETTOIE","co":"COULEUR","fo":"FOND","ca":"CAP","po":"POSITION","int":"ENTIER","round":"ARRONDI","rand":"HASARD","sqrt":"RACINE","rep":"REPETE","fct1":"POUR MÉTHODE_1","call1":"MÉTHODE_1","fct2":"POUR MÉTHODE_2 X","call2":"MÉTHODE_2","fct3":"POUR MÉTHODE_3 X Y","call3":"MÉTHODE_3","black":"NOIR","white":"BLANC","red":"ROUGE","green":"VERT","blue":"BLEU","gt":"SI","gte":"SI","lte":"SI","lt":"SI","eq":"SI","no":"SI"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA["guide":["Déplacer les instructions depuis le code source en haut à gauche vers la zone de programmation plus en bas. Réaliser le programme permettant de tracer la figure demandée, lancer l'exécution et soumettre le résultat avec le bouton de validation","La note finale ne dépend que de la justesse de la figure tracée par l'utilisateur."],"source":{"av":"AVANCE","re":"RECULE","td":"TOURNE DROITE","tg":"TOURNE GAUCHE","lc":"LEVE CRAYON","bc":"BAISSE CRAYON","ct":"CACHE TORTUE","mt":"MONTRE TORTUE","or":"ORIGINE","ve":"VIDE ECRAN","ne":"NETTOIE","co":"COULEUR","fo":"FOND","ca":"CAP","po":"POSITION","int":"ENTIER","round":"ARRONDI","rand":"HASARD","sqrt":"RACINE","rep":"REPETE","fct1":"POUR MÉTHODE_1","call1":"MÉTHODE_1","fct2":"POUR MÉTHODE_2 X","call2":"MÉTHODE_2","fct3":"POUR MÉTHODE_3 X Y","call3":"MÉTHODE_3","black":"NOIR","white":"BLANC","red":"ROUGE","green":"VERT","blue":"BLEU","gt":"SI","gte":"SI","lte":"SI","lt":"SI","eq":"SI","no":"SI"},"manav":"La tortue avance d'une distance numérique égale à D.","manre":"La tortue avance  d'une distance numérique égale à D.","mantg":"La tortue tourne dans le sens antihoraire d'un angle de A degrés.","mantd":"La tortue tourne dans le sens horaire d'un angle de A degrés.","manco":"Utilise la couleur C pour les tracés effectués par la tortue.","manfo":"Colorie le fond de l'écran avec la couleur C.","manlc":"La tortue ne dessine plus lorsqu'elle se déplace.","manbc":"La tortue effectue un tracé à chacun de ses déplacements.","manor":"La tortue reprend sa position d'origine.","manca":"La tortue se tourne vers la direction A en degré.","manpo":"La tortue se déplace à l'endroit du plan de coordonnées (X,Y).","manxx":"La variable locale X prend la valeur V.","manyy":"La variable locale Y prend la valeur V.","manzz":"La variable locale Z prend la valeur V.","manii":"La variable globale I prend la valeur V.","manjj":"La variable globale J prend la valeur V.","mancall1":"Le programme exécute Méthode_1.","mancall2":"Le programme exécute Méthode_2 en renseignant la variable X.","mancall3":"Le programme exécute Méthode_3 en renseignant les variables X et Y."]]></dct:description>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:marker">

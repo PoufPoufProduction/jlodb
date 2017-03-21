@@ -1,6 +1,6 @@
 <div>
     <div id="banner" ontouchstart="$(this).parent().find('#splashex').show();event.preventDefault();"
-                     onclick="$(this).parent().find('#splashex').show();"><img src='res/img/background/alchemist.svg' alt=''/></div>
+                     onclick="$(this).parent().find('#splashex').show();"><img src='res/img/background/asset/potion01.svg' alt=''/></div>
     <table id="game"><tr>
     <td>
     <div id="board">
@@ -33,21 +33,21 @@
                 <tr><td></td><td>
                     <div class="alphakeypad" id="up" ontouchstart="$(this).closest('.alchemist').alchemist('click', 'up');event.preventDefault();"
                                  onclick="$(this).closest('.alchemist').alchemist('click', this);">
-                        <img src="res/img/generic/up.svg" alt="^"/>
+                        <img src="res/img/default/icon/arr_up01.svg" alt="^"/>
                     </div>
                 </td><td></td></tr>
                 <tr>
                     <td><div class="alphakeypad" id="left" ontouchstart="$(this).closest('.alchemist').alchemist('click', 'left');event.preventDefault();"
                                        onclick="$(this).closest('.alchemist').alchemist('click', this);">
-                        <img src="res/img/generic/left.svg" alt="<"/>
+                        <img src="res/img/default/icon/arr_left01.svg" alt="<"/>
                         </div></td>
                     <td><div class="alphakeypad" id="down" ontouchstart="$(this).closest('.alchemist').alchemist('click', 'down');event.preventDefault();"
                                        onclick="$(this).closest('.alchemist').alchemist('click', this);">
-                        <img src="res/img/generic/down.svg" alt="v"/>
+                        <img src="res/img/default/icon/arr_down01.svg" alt="v"/>
                         </div></td>
                     <td><div class="alphakeypad" id="right" ontouchstart="$(this).closest('.alchemist').alchemist('click', 'right');event.preventDefault();"
                                        onclick="$(this).closest('.alchemist').alchemist('click', this);">
-                        <img src="res/img/generic/right.svg" alt=">"/>
+                        <img src="res/img/default/icon/arr_right01.svg" alt=">"/>
                         </div></td>
                 </tr>
             </table>
@@ -55,8 +55,8 @@
     </div></td></tr></table>
     
     
-    <div id="good" class="alert"><img src="res/img/effects/alert02.svg"/></div>
-    <div id="wrong" class="alert"><img src="res/img/effects/alert01.svg"/></div>
+    <div id="good" class="alert"><img src="res/img/default/popup/alert02.svg"/></div>
+    <div id="wrong" class="alert"><img src="res/img/default/popup/alert01.svg"/></div>
 
     <div id="splashex" ontouchstart="$(this).hide().closest('.alchemist').alchemist('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.alchemist').alchemist('next');"><div>

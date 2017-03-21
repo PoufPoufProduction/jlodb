@@ -9,7 +9,7 @@
     <rdf:Description>
         <dct:identifier>10aa</dct:identifier>
         <dct:title xml:lang="fr-FR">Soustraire pas à pas deux nombres compris entre 1 et 10 sur un boulier classique [9-4,6-5,8-2].</dct:title>
-        <dct:description><![CDATA["type":"abacus","data":[{"value":["-","9","4"],"target":[[0,9],[0,8],[0,7],[0,6]],"init":9},{"value":["-","6","5"],"target":[[0,6],[0,5],[0,4],[0,3],[0,2]],"init":6},{"value":["-","8","2"],"target":[[0,8],[0,7]],"init":8}]]]></dct:description>
+        <dct:description><![CDATA["type":"classic","data":[{"value":["-","9","4"],"target":[[0,9],[0,8],[0,7],[0,6]],"init":9},{"value":["-","6","5"],"target":[[0,6],[0,5],[0,4],[0,3],[0,2]],"init":6},{"value":["-","8","2"],"target":[[0,8],[0,7]],"init":8}]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"fontex":0.8,"exercice":["[b]Effectuez[/b] les [b]soustractions[/b] demandées grâce au boulier.","Pour vous aider dans cet exercice, le [red]premier opérande[/red] est déjà placé sur le boulier et les billes à déplacer, pas à pas, sont [red]coloriées[/red]."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>subtraction</dct:subject>
@@ -22,7 +22,7 @@
     <rdf:Description>
         <dct:identifier>10a</dct:identifier>
         <dct:title xml:lang="fr-FR">Soustraire deux nombres compris entre 1 et 10 sur un boulier classique [8-3,7-5,9-7].</dct:title>
-        <dct:description><![CDATA["type":"abacus","data":[{"value":["-","8","3"],"target":[[0,6]],"init":8},{"value":["-","7","5"],"target":[[0,3]],"init":7},{"value":["-","9","7"],"target":[[0,3]],"init":9}]]]></dct:description>
+        <dct:description><![CDATA["type":"classic","data":[{"value":["-","8","3"],"target":[[0,6]],"init":8},{"value":["-","7","5"],"target":[[0,3]],"init":7},{"value":["-","9","7"],"target":[[0,3]],"init":9}]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"fontex":0.8,"exercice":["[b]Effectuez[/b] les [b]soustractions[/b] demandées grâce au boulier.","Pour vous aider dans cet exercice, le [red]premier opérande[/red] est déjà placé sur le boulier et les billes à déplacer sont [red]coloriées[/red]."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>subtraction</dct:subject>
@@ -35,7 +35,7 @@
     <rdf:Description>
         <dct:identifier>10o</dct:identifier>
         <dct:title xml:lang="fr-FR">Soustraire deux nombres compris entre 1 et 10 sur un boulier classique.</dct:title>
-        <dct:description><![CDATA["number":5,"type":"abacus","gen":"function(_value){var a=Math.floor(Math.random()*8)+2,b=Math.floor(Math.random()*(a-1))+1; return {\\\"value\\\":[\\\"-\\\",a,b],\\\"init\\\":a}; }"]]></dct:description>
+        <dct:description><![CDATA["number":5,"type":"classic","gen":"function(_value){var a=Math.floor(Math.random()*8)+2,b=Math.floor(Math.random()*(a-1))+1; return {\\\"value\\\":[\\\"-\\\",a,b],\\\"init\\\":a}; }"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"fontex":0.8,"exercice":["[b]Effectuez[/b] les [b]soustractions[/b] demandées grâce au boulier."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>subtraction</dct:subject>
@@ -48,7 +48,7 @@
     <rdf:Description>
         <dct:identifier>100ra</dct:identifier>
         <dct:title xml:lang="fr-FR">Soustraire sans retenue deux nombres compris entre 1 et 100 sur un boulier classique [85-32,71-51,98-72].</dct:title>
-        <dct:description><![CDATA["type":"abacus","data":[{"value":["-","85","32"],"target":[[0,4],[1,6]],"init":85},{"value":["-","71","51"],"target":[[0,1],[1,3]],"init":71},{"value":["-","98","72"],"target":[[0,7],[1,3]],"init":98}]]]></dct:description>
+        <dct:description><![CDATA["type":"classic","data":[{"value":["-","85","32"],"target":[[0,4],[1,6]],"init":85},{"value":["-","71","51"],"target":[[0,1],[1,3]],"init":71},{"value":["-","98","72"],"target":[[0,7],[1,3]],"init":98}]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"fontex":0.8,"exercice":["[b]Effectuez[/b] les [b]soustractions[/b] demandées grâce au boulier.","Sans [red]retenue[/red], la soustraction s'effectue en traitant chaque colonne [b]séparément[/b].","[red]Il faut toujours commencer par les unités.[/red]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>subtraction</dct:subject>
@@ -61,7 +61,7 @@
     <rdf:Description>
         <dct:identifier>100ro</dct:identifier>
         <dct:title xml:lang="fr-FR">Soustraire sans retenue deux nombres compris entre 1 et 100 sur un boulier classique.</dct:title>
-        <dct:description><![CDATA["number":5,"type":"abacus","gen":"function(_value){var a,b; do { a=Math.floor(Math.random()*88)+12; b=Math.floor(Math.random()*(a-1))+1; } while (a%10<b%10); return {\\\"value\\\":[\\\"-\\\",a,b],\\\"init\\\":a}; }"]]></dct:description>
+        <dct:description><![CDATA["number":5,"type":"classic","gen":"function(_value){var a,b; do { a=Math.floor(Math.random()*88)+12; b=Math.floor(Math.random()*(a-1))+1; } while (a%10<b%10); return {\\\"value\\\":[\\\"-\\\",a,b],\\\"init\\\":a}; }"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"fontex":0.8,"exercice":["[b]Effectuez[/b] les [b]soustractions[/b] demandées grâce au boulier."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>subtraction</dct:subject>

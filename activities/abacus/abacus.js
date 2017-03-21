@@ -7,7 +7,7 @@
         css         : "style.css",                              // Activity's css style sheet
         lang        : "en-US",                                  // Current localization
         exercice    : [],                                       // Exercice
-        type        : "suanpan",                                // Abacus type (suanpan/soroban)
+        type        : "suanpan",                                // Abacus type (suanpan/soroban/classic)
         mode        : "normal",                                 // Mode (normal, hexa)
         number      : 3,                                        // Number of exercices
         fontex      : 1,                                        // Exercice font size
@@ -19,7 +19,7 @@
     var c = {
         suanpan: { b:[5,2],  u:[8,6] },
         soroban: { b:[4,1],  u:[8,6] },
-        abacus:  { b:[10,0], u:[13,0] }
+        classic:  { b:[10,0], u:[13,0] }
     };
 
 
@@ -101,7 +101,7 @@
                 settings.svg = elt.svg('get');
                 $(settings.svg).attr("class",settings["class"]);
 
-                settings.svg.load('res/img/desktop/'+settings.type+'.svg'+ debug,
+                settings.svg.load('res/img/desktop/abacus/'+settings.type+'.svg'+ debug,
                     { addTo: true, changeSize: true, onLoad:function() { helpers.loader.build($this); }
                 });
             },

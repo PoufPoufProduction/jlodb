@@ -59,6 +59,11 @@ if (!$error) {
         $class      = $row["Exercice_Classification"];
         $locale     = $row["Activity_Locale"];
         $ext        = $row["Activity_External"];
+        if (array_key_exists("withsource",$_GET)) {
+            $source = $row["Activity_Source"];
+            if (strlen($source) && strlen($row["Exercice_Source"])) { $source.=","; }
+            $source.= $row["Exercice_Source"];
+        }
         $status     = "success";
     }
     else {
@@ -84,6 +89,7 @@ if (isset($class))                      { echo '  "classification": "'.$class.'"
 if (isset($ext))                        { echo '  "ext": "'.$ext.'",'; }
 if (isset($param))                      { echo '  "data": {'.$param.'},'; }
 if (isset($locale))                     { echo '  "locale": {'.$locale.'},'; }
+if (isset($source))                     { echo '  "source": "'.$source.'",'; }
 echo '  "from" : "jlodb/api" }';
 
 ?>

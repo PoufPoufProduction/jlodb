@@ -9,7 +9,7 @@
     <rdf:Description>
         <dct:identifier>5aa</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner pas à pas deux nombres compris entre 1 et 5 sur un boulier classique [2+2,2+1,1+4].</dct:title>
-        <dct:description><![CDATA["type":"abacus","data":[{"value":["+","2","2"],"target":[[0,3],[0,4]],"init":2},{"value":["+","2","1"],"target":[[0,3]],"init":2},{"value":["+","1","4"],"target":[[0,2],[0,3],[0,4],[0,5]],"init":1}]]]></dct:description>
+        <dct:description><![CDATA["type":"classic","data":[{"value":["+","2","2"],"target":[[0,3],[0,4]],"init":2},{"value":["+","2","1"],"target":[[0,3]],"init":2},{"value":["+","1","4"],"target":[[0,2],[0,3],[0,4],[0,5]],"init":1}]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"fontex":0.8,"exercice":["[b]Effectuez[/b] les [b]additions[/b] demandées grâce au boulier.","Pour vous aider dans cet exercice, le [red]premier opérande[/red] est déjà placé sur le boulier et les billes à déplacer (pas à pas) sont [red]coloriées[/red]."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>addition</dct:subject>
@@ -22,7 +22,7 @@
     <rdf:Description>
         <dct:identifier>5a</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner deux nombres compris entre 1 et 5 sur un boulier classique [4+2,3+4,3+5].</dct:title>
-        <dct:description><![CDATA["type":"abacus","data":[{"value":["+","4","2"],"target":[[0,6]],"init":4},{"value":["+","3","4"],"target":[[0,7]],"init":3},{"value":["+","3","5"],"target":[[0,8]],"init":3}]]]></dct:description>
+        <dct:description><![CDATA["type":"classic","data":[{"value":["+","4","2"],"target":[[0,6]],"init":4},{"value":["+","3","4"],"target":[[0,7]],"init":3},{"value":["+","3","5"],"target":[[0,8]],"init":3}]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"fontex":0.8,"exercice":["[b]Effectuez[/b] les [b]additions[/b] demandées grâce au boulier.","Pour vous aider dans cet exercice, le [red]premier opérande[/red] est déjà placé sur le boulier et les billes à déplacer sont [red]coloriées[/red]."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>addition</dct:subject>
@@ -35,7 +35,7 @@
     <rdf:Description>
         <dct:identifier>5b</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner deux nombres compris entre 1 et 5 sur un boulier classique [1+2,3+3,5+2].</dct:title>
-        <dct:description><![CDATA["type":"abacus","data":[{"value":["+","1","2"],"target":[[0,1],[0,3]]},{"value":["+","3","5"],"target":[[0,3],[0,8]]},{"value":["+","5","2"],"target":[[0,5],[0,7]]}]]]></dct:description>
+        <dct:description><![CDATA["type":"classic","data":[{"value":["+","1","2"],"target":[[0,1],[0,3]]},{"value":["+","3","5"],"target":[[0,3],[0,8]]},{"value":["+","5","2"],"target":[[0,5],[0,7]]}]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"fontex":0.8,"exercice":["[b]Effectuez[/b] les [b]additions[/b] demandées grâce au boulier.","Pour vous aider dans cet exercice, les billes à déplacer sont [red]coloriées[/red]."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>addition</dct:subject>
@@ -48,7 +48,7 @@
     <rdf:Description>
         <dct:identifier>5o</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner deux nombres dont les opérandes sont compris entre 1 et 5 sur un boulier classique.</dct:title>
-        <dct:description><![CDATA["type":"abacus","number":5,"gen":"function(_value){var a=Math.floor(Math.random()*5)+1,b; do { b=Math.floor(Math.random()*5)+1; } while(a+b>=10); return {\\\"value\\\":[\\\"+\\\",a,b]}; }"]]></dct:description>
+        <dct:description><![CDATA["type":"classic","number":5,"gen":"function(_value){var a=Math.floor(Math.random()*5)+1,b; do { b=Math.floor(Math.random()*5)+1; } while(a+b>=10); return {\\\"value\\\":[\\\"+\\\",a,b]}; }"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Effectuez[/b] les [red]additions[/red] demandées."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>addition</dct:subject>
@@ -61,7 +61,7 @@
     <rdf:Description>
         <dct:identifier>10o</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner deux nombres dont la somme est comprise entre 2 et 10 sur un boulier classique.</dct:title>
-        <dct:description><![CDATA["type":"abacus","number":5,"gen":"function(_value){var a=Math.floor(Math.random()*9)+1,b; do { b=Math.floor(Math.random()*9)+1; } while(a+b>=10); return {\\\"value\\\":[\\\"+\\\",a,b]}; }"]]></dct:description>
+        <dct:description><![CDATA["type":"classic","number":5,"gen":"function(_value){var a=Math.floor(Math.random()*9)+1,b; do { b=Math.floor(Math.random()*9)+1; } while(a+b>=10); return {\\\"value\\\":[\\\"+\\\",a,b]}; }"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Effectuez[/b] les [red]additions[/red] demandées."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>addition</dct:subject>
@@ -74,7 +74,7 @@
     <rdf:Description>
         <dct:identifier>10a</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner les nombres 4 et 6 sur un boulier classique.</dct:title>
-        <dct:description><![CDATA["errratio":5,"type":"abacus","data":[{"value":["+","4","6"],"target":[[0,"a"],[0,1],[1,1]],"init":4}]]]></dct:description>
+        <dct:description><![CDATA["errratio":5,"type":"classic","data":[{"value":["+","4","6"],"target":[[0,"a"],[0,1],[1,1]],"init":4}]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"fontex":0.8,"exercice":["[b]Effectuez[/b] l'[b]addition[/b] demandée grâce au boulier.","[strong]Quand le X rouge apparaît, il faut penser à convertir 10 unités en 1 dizaine.[/strong]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>addition</dct:subject>
@@ -88,7 +88,7 @@
     <rdf:Description>
         <dct:identifier>12a</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner les nombres 7 et 5 sur un boulier classique.</dct:title>
-        <dct:description><![CDATA["errratio":5,"type":"abacus","data":[{"value":["+","7","5"],"target":[[0,"a"],[0,1],[1,1],[0,2]],"init":7}]]]></dct:description>
+        <dct:description><![CDATA["errratio":5,"type":"classic","data":[{"value":["+","7","5"],"target":[[0,"a"],[0,1],[1,1],[0,2]],"init":7}]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"fontex":0.8,"exercice":["[b]Effectuez[/b] l'[b]addition[/b] demandée grâce au boulier.","Pour ajouter 5 aux 7 déjà présents, [b]commencez par rajouter 3[/b], puis après avoir [red]changé 10 unités en 1 dizaine[/red], [b]ajoutez les 2 restant[/b]."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>addition</dct:subject>
@@ -101,7 +101,7 @@
     <rdf:Description>
         <dct:identifier>14a</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner les nombres 8 et 6 sur un boulier classique.</dct:title>
-        <dct:description><![CDATA["errratio":5,"type":"abacus","data":[{"value":["+","8","6"],"target":[[0,"a"],[0,1],[1,1],[0,4]],"init":8}]]]></dct:description>
+        <dct:description><![CDATA["errratio":5,"type":"classic","data":[{"value":["+","8","6"],"target":[[0,"a"],[0,1],[1,1],[0,4]],"init":8}]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"fontex":0.8,"exercice":["[b]Effectuez[/b] l'[b]addition[/b] demandée grâce au boulier.","Pour ajouter 6 aux 8 déjà présents, [b]commencez par rajouter 2[/b], puis après avoir [red]changé 10 unités en 1 dizaine[/red], [b]ajoutez les 4 restant[/b]."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>addition</dct:subject>
@@ -114,7 +114,7 @@
     <rdf:Description>
         <dct:identifier>15a</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner les nombres 6 et 9 sur un boulier classique.</dct:title>
-        <dct:description><![CDATA["errratio":5,"type":"abacus","data":[{"value":["+","6","9"],"target":[[0,6],[0,"a"],[0,1],[1,1],[0,5]]}]]]></dct:description>
+        <dct:description><![CDATA["errratio":5,"type":"classic","data":[{"value":["+","6","9"],"target":[[0,6],[0,"a"],[0,1],[1,1],[0,5]]}]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"fontex":0.7,"exercice":["[b]Effectuez[/b] l'[b]addition[/b] demandée grâce au boulier.","[b]Placez les 6 premières billes[/b] correspondant à la première opérande. Ensuite, pour ajouter 9, [b]commencez par rajouter 4[/b], puis après avoir [red]changé 10 unités en 1 dizaine[/red], [b]ajoutez les 5 restant[/b]."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>addition</dct:subject>
@@ -127,7 +127,7 @@
     <rdf:Description>
         <dct:identifier>20o</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner deux nombres inférieurs à 10 et dont la somme est comprise entre 10 et 19 sur un boulier classique.</dct:title>
-        <dct:description><![CDATA["type":"abacus","number":5,"gen":"function(_value){var a=Math.floor(Math.random()*9)+1,b; do { b=Math.floor(Math.random()*9)+1; } while(a+b<10); return {\\\"value\\\":[\\\"+\\\",a,b]}; }"]]></dct:description>
+        <dct:description><![CDATA["type":"classic","number":5,"gen":"function(_value){var a=Math.floor(Math.random()*9)+1,b; do { b=Math.floor(Math.random()*9)+1; } while(a+b<10); return {\\\"value\\\":[\\\"+\\\",a,b]}; }"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Effectuez[/b] les [red]additions[/red] demandées."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>addition</dct:subject>

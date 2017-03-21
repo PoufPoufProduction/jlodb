@@ -116,6 +116,7 @@
                         "<p>"+(settings.exercice[i].length?helpers.format(settings.exercice[i]):"&#xA0;")+"</p>"); }
                 } else { $this.find("#exercice>div").html(helpers.format(settings.exercice)); }
                 $.each(settings.locale.source, function(id,value) { $this.find("#"+id+" .label").html(value); });
+                $.each(settings.locale, function(id,value) { if (typeof(value)=="string") {$this.find("#"+id).html(helpers.format(value)); }});
 
                 for (var i in settings.a) {
                     if (settings.a[i]) {

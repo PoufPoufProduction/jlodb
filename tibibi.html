@@ -447,7 +447,7 @@ $(window).ready(function() {
             tibibi.url  = _check.url;
 
             user.load.logpanel($("#bimain"), {}, function() { user.init(tibibi.lang); });
-
+            
             // BROWSER LOADING
             $.getJSON("locale/"+tibibi.lang+"/classification.json", function(data) {
                 tibibi.classification = $(data);
@@ -559,12 +559,12 @@ $(window).ready(function() {
         <div id="biscreen">
             <div id="list"></div>
             <div id="quit" ontouchstart="$('#biscreen').hide();event.preventDefault();"
-                           onclick="$('#biscreen').hide();"><img src="res/img/icon/quit.svg"/></div>
+                           onclick="$('#biscreen').hide();"><img src="res/img/default/icon/nw_quit01.svg"/></div>
         </div>
  
         <div id="launcher">
             <div id="quit" ontouchstart="$('#launcher').jlodb('quit');event.preventDefault();"
-                           onclick="$('#launcher').jlodb('quit');"><img src="res/img/icon/quit.svg"/></div>
+                           onclick="$('#launcher').jlodb('quit');"><img src="res/img/default/icon/nw_quit01.svg"/></div>
             <div id="activity"></div>
         </div>
 

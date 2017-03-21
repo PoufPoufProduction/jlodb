@@ -24,7 +24,7 @@ function mysqli_query_array($link, &$sql, &$id, &$warnings, $delete) {
     $init = "INSERT INTO `".$_SESSION['prefix']."exercice` (`Exercice_Id`,`Exercice_Activity`,".
                 "`Exercice_Title`,`Exercice_Parameters`,`Exercice_Level`,`Exercice_Difficulty`,".
                 "`Exercice_Classification`,`Exercice_Duration`,`Exercice_Tags`,`Exercice_Variant`,".
-                "`Exercice_Reference`,`Exercice_Nb`) VALUES ";
+                "`Exercice_Reference`,`Exercice_Source`,`Exercice_Nb`) VALUES ";
     if (!mysqli_query($link, $init.implode(',',$sql))) {
         for ($i=0; $i<count($sql); $i++) {
             if (!mysqli_query($link, $init.$sql[$i])) {
@@ -57,6 +57,7 @@ function insertIntoDB($link,$activity,$key,$file,$lang,&$warnings, &$tags, $dele
         $exerciceVar    = "";
         $exerciceTag    = "";
         $exerciceRef    = "";
+        $exerciceSource = "";
         if (strcmp($childName,"rdf_Description")==0) {
             foreach ($child->children() as $dcName=>$dc) {
                 if (strcmp($dcName,"dct_title")==0) {
@@ -74,6 +75,7 @@ function insertIntoDB($link,$activity,$key,$file,$lang,&$warnings, &$tags, $dele
                     if (strcmp($dcName,"dct_identifier")==0)            { $exerciceId       = $dc; } else
                     if (strcmp($dcName,"dct_alternative")==0)           { $exerciceVar      = $dc; } else
                     if (strcmp($dcName,"dct_isPartOf")==0)              { $exerciceRef      = $dc; } else
+                    if (strcmp($dcName,"dct_source")==0)                { $exerciceSource   = $dc; } else
                     if (strcmp($dcName,"dct_coverage")==0 && strcmp($dc->attributes()->xml_lang, $lang)==0)
                                                                         { $exerciceTag      = $dc; }
             }
@@ -89,7 +91,7 @@ function insertIntoDB($link,$activity,$key,$file,$lang,&$warnings, &$tags, $dele
                 array_push($sql, "('".
                     $exerciceId."','".$activity."','".$exerciceTitle."','".$exerciceDesc."',".
                     $exerciceLevel.",".$exerciceDiff.",'".$exerciceClass."',".$exerciceTime.",'".
-                    $exerciceTag."','".$exerciceVar."','".$exerciceRef."',0)");
+                    $exerciceTag."','".$exerciceVar."','".$exerciceRef."','".$exerciceSource."',0)");
                 array_push($id, "'".$exerciceId."'");
 
                 // HANDLE THE TAGS

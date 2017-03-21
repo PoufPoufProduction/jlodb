@@ -46,6 +46,7 @@ if (!$error) {
                             '`Activity_Title`           VARCHAR( 64 )   NOT NULL , '.
                             '`Activity_Key`             VARCHAR( 4 )    NOT NULL , '.
                             '`Activity_Description`     TEXT            NOT NULL , '.
+                            '`Activity_Source`          TEXT , '.
                             '`Activity_External`        VARCHAR( 255 ) , '.
                             '`Activity_Locale`          TEXT , '.
                        'PRIMARY KEY (  `Activity_Name` ) ) ENGINE=InnoDB') &&
@@ -61,6 +62,7 @@ if (!$error) {
                             '`Exercice_Tags`            VARCHAR( 128 ) , '.
                             '`Exercice_Variant`         VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_bin , '.
                             '`Exercice_Reference`       VARCHAR( 64 ) , '.
+                            '`Exercice_Source`          TEXT , '.
                             '`Exercice_Nb`              INT , '.
                        'PRIMARY KEY (  `Exercice_Id` ), '.
                        'FOREIGN KEY ( `Exercice_Activity` ) REFERENCES '.$_SESSION['prefix'].'activity(`Activity_Name`)) '.
@@ -89,15 +91,17 @@ if (!$error) {
                     $activityDescription    = "";
                     $activityExternal       = "";
                     $activityLocale         = "";
+                    $activitySource         = "";
                     if (strcmp($childName,"rdf_Description")==0) {
                         $activityName = str_replace("urn:activity:", "", $child->attributes()->rdf_about);
                         foreach ($child->children() as $dcName=>$dc) {
                             if (strcmp($dc->attributes()->xml_lang, $lang)==0) {
                                 if (strcmp($dcName,"dct_title")==0)         { $activityTitle=$dc; }         else
                                 if (strcmp($dcName,"dct_abstract")==0)      { $activityDescription=$dc; }   else
-                                if (strcmp($dcName,"dct_description")==0)   { $activityLocale=$dc; }
+                                if (strcmp($dcName,"dct_description")==0)   { $activityLocale=$dc; }        
                             }
-                            if (strcmp($dcName,"dct_requires")==0)      { $activityExternal=$dc; }
+                            if (strcmp($dcName,"dct_requires")==0)      { $activityExternal=$dc; }          else
+                            if (strcmp($dcName,"dct_source")==0)        { $activitySource=$dc; }
                         }
                     }
 
@@ -108,10 +112,12 @@ if (!$error) {
                         $activityDescription = str_replace("'", "\'", $activityDescription);
 
                         $sql = "INSERT INTO `".$_SESSION['prefix']."activity` (`Activity_Name`, `Activity_Title`, `Activity_Key`, ".
-                               "`Activity_Description`, `Activity_External`, `Activity_Locale` ) VALUES ('".
+                               "`Activity_Description`, `Activity_Source`, `Activity_External`, `Activity_Locale` ) VALUES ('".
                                $activityName."','".$activityTitle."','".substr($activityName,0,1).substr($activityName, -1)."','".
-                               $activityDescription."',".(strlen($activityExternal)?("'".$activityExternal."'"):"NULL").",".
-                               (strlen($activityLocale)?("'".$activityLocale."'"):"NULL").")";
+                               $activityDescription."',"
+                               .(strlen($activitySource)?("'".$activitySource."'"):"NULL").","
+                               .(strlen($activityExternal)?("'".$activityExternal."'"):"NULL").","
+                               .(strlen($activityLocale)?("'".$activityLocale."'"):"NULL").")";
                         mysqli_query($link, $sql);
                     }
                 }
