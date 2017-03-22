@@ -3,7 +3,7 @@
          xmlns:dct="http://purl.org/dc/terms/">
 
     <rdf:Description>
-        <dct:identifier>lr01</dct:identifier>
+        <dct:identifier>001</dct:identifier>
         <dct:title xml:lang="fr-FR">Différencier main droite et main gauche.</dct:title>
         <dct:description><![CDATA["time":0,"number":15,"template":"template.html","regexp":{"input": { "from": "(.*[0-9]{2})","to":"<div class=\\\"icon center\\\"><img src=\\\"res/img/svginventoryicons/human/$1.svg\\\"/></div>"} },"values":[["lefthand00","l"],["lefthand05","l"],["lefthand10","l"],["righthand00","r"],["righthand05","r"],["righthand10","r"]],"class":"alpha f07 neg", "font":2.5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"input":{"digit":1,"attr":[3,5,1.2],"values":[["gauche","l"],["droite","r"]]},"comment":"Main droite ou main gauche ?"]]></dct:description>
@@ -11,11 +11,12 @@
         <dct:subject>mathematics</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>lr01</dct:alternative>
+        <dct:alternative>001</dct:alternative>
+        <dct:source>res/img/svginventoryicons/human/*hand*.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>lr02</dct:identifier>
+        <dct:identifier>002</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier, sans contrainte de temps, une direction.</dct:title>
         <dct:description><![CDATA["time":0,"number":15,"template":"template.html","regexp":{"input": { "from": "(.*)","to":"<div class=\\\"icon center\\\"><img src=\\\"res/img/action/$1.svg\\\"/></div>"} },"values":[["f01","u"],["b01","d"],["left01","l"],["right01","r"]],"class":"alpha f07 neg", "font":2.5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"input":{"digit":1,"attr":[2.2,7,1.2],"values":[["haut","u"],["bas","d"],["gauche","l"],["droite","r"]]},"comment":"Dans quelle [b]direction[/b] va la flèche ?"]]></dct:description>
@@ -23,11 +24,12 @@
         <dct:subject>mathematics</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>lr01</dct:alternative>
+        <dct:alternative>001</dct:alternative>
+        <dct:source>res/img/action/f01.svg,res/img/action/b01.svg,res/img/action/left01.svg,res/img/action/right01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>lr03</dct:identifier>
+        <dct:identifier>003</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier, sans contrainte de temps, la position de Lottie par rapport à un carton.</dct:title>
         <dct:description><![CDATA["time":0,"number":15,"template":"template.html","regexp":{"input": { "from": "(..)","to":"<div class=\\\"icon center\\\" style=\\\"border:2px solid black\\\"><img src=\\\"res/img/ppvc/box$1.svg\\\"/></div>"} },"values":[["01","i"],["02","b"],["03","f"],["04","n"],["05","u"],["06","d"]],"class":"alpha f07 neg", "font":3.5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"input":{"digit":1,"attr":[2,5,1.2],"values":[["dedans","i"],["derrière","b"],["devant","f"],["à côté","n"],["dessus","u"],["dessous","d"]]},"comment":"Où est [red]Lottie[/red] par [b]rapport au carton[/b] ?"]]></dct:description>
@@ -35,19 +37,21 @@
         <dct:subject>mathematics</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>lr01</dct:alternative>
+        <dct:alternative>001</dct:alternative>
+        <dct:source>res/img/ppvc/box*.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>lr04</dct:identifier>
+        <dct:identifier>004</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier, sans contrainte de temps, un animal suivant sa position [haut, bas, gauche, droite].</dct:title>
-        <dct:description><![CDATA["number":15,"time":0,"template":"svg.html","keyboard":false,"input":{"digit":1,"svg":"res/img/board/animals.svg","key":".key"},"class":"alpha neg h12", "font":0.6]]></dct:description>
+        <dct:description><![CDATA["number":15,"time":0,"template":"svg.html","keyboard":false,"input":{"digit":1,"svg":"res/img/desktop/animals01.svg","key":".key"},"class":"alpha neg h12", "font":0.6]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Qui suis-je ?","values":[["Je suis [b]au-dessus[/b] du [red]dromadaire[/red]","dog"],["Je suis [b]au-dessus[/b] du [red]panda[/red]","frog"],["Je suis [b]au-dessus[/b] du [red]corbeau[/red]","snake"],["Je suis [b]au-dessus[/b] de la [red]tortue[/red]","crow"],["Je suis [b]au-dessus[/b] du [red]poisson[/red]","crocodile"],["Je suis à [b]gauche[/b] de l'[red]éléphant[/red]","panda"],["Je suis à [b]gauche[/b] du [red]poisson[/red]","octopus"],["Je suis à [b]gauche[/b] de l'[red]escargot[/red]","zebra"],["Je suis à [b]gauche[/b] de la [red]grenouille[/red]","girafe"],["Je suis à [b]gauche[/b] du [red]panda[/red]","cat"],["Je suis [b]au-dessous[/b] du [red]crabe[/red]","girafe"],["Je suis [b]au-dessous[/b] du [red]cochon[/red]","whale"],["Je suis [b]au-dessous[/b] de l'[red]aigle[/red]","mice"],["Je suis [b]au-dessous[/b] de l'[red]abeille[/red]","octopus"],["Je suis [b]au-dessous[/b] de la [red]poule[/red]","frog"],["Je suis à [b]droite[/b] du [red]serpent[/red]","rhinoceros"],["Je suis à [b]droite[/b] du [red]bison[/red]","girafe"],["Je suis à [b]droite[/b] de la [red]vache[/red]","crab"],["Je suis à [b]droite[/b] du [red]crocodile[/red]","cat"],["Je suis à [b]droite[/b] de la [red]grenouille[/red]","mice"]]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>mathematics</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>lr01</dct:alternative>
+        <dct:alternative>001</dct:alternative>
+        <dct:source>res/img/desktop/animals01.svg</dct:source>
     </rdf:Description>
 
 </rdf:RDF>
