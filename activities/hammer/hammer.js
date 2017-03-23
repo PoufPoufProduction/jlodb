@@ -27,13 +27,13 @@
     ];
    
     var predefined = {
-        bunny       : { type: "img", src:"ppvc/bunny01",    wrong:"ppvc/bunny02",   good:"ppvc/bunny03" },
-        lizzie      : { type: "img", src:"ppvc/lizzie01",   wrong:"ppvc/lizzie03",  good:"ppvc/lizzie04" },
-        lottie      : { type: "img", src:"ppvc/lottie01",   wrong:"ppvc/lottie02",  good:"ppvc/lottie04" },
-        blueball    : { type: "img", src:"balls/blue01",    wrong:"balls/gray02",   good:"balls/blue02" },
-        redball     : { type: "img", src:"balls/red01",     wrong:"balls/gray02",   good:"balls/red02" },
-        greenball   : { type: "img", src:"balls/green01",   wrong:"balls/gray02",   good:"balls/green02" },
-        purpleball  : { type: "img", src:"balls/purple01",  wrong:"balls/gray02",   good:"balls/purple02" }
+        bunny       : { type: "img", src:"res/img/ppvc/bunny01",    wrong:"res/img/ppvc/bunny02",   good:"res/img/ppvc/bunny03" },
+        lizzie      : { type: "img", src:"res/img/ppvc/lizzie01",   wrong:"res/img/ppvc/lizzie03",  good:"res/img/ppvc/lizzie04" },
+        lottie      : { type: "img", src:"res/img/ppvc/lottie01",   wrong:"res/img/ppvc/lottie02",  good:"res/img/ppvc/lottie04" },
+        blueball    : { type: "img", src:"res/img/balls/blue01",    wrong:"res/img/balls/gray02",   good:"res/img/balls/blue02" },
+        redball     : { type: "img", src:"res/img/balls/red01",     wrong:"res/img/balls/gray02",   good:"res/img/balls/red02" },
+        greenball   : { type: "img", src:"res/img/balls/green01",   wrong:"res/img/balls/gray02",   good:"res/img/balls/green02" },
+        purpleball  : { type: "img", src:"res/img/balls/purple01",  wrong:"res/img/balls/gray02",   good:"res/img/balls/purple02" }
     };
 
     // private methods
@@ -122,9 +122,9 @@
                     for (var i in settings[arr[j]]) {
                         var elt = $.extend({},predefined[settings[arr[j]][i]]?predefined[settings[arr[j]][i]]:settings[arr[j]][i],true);
                         if (typeof(elt)=="string") { alert("Error: "+elt+" unknown"); } else {
-                            if (elt.type=="sig") { elt.src = "ppvc/sign01"; }
-                            if (elt.src)        { elt.$src = $("<img src='res/img/"+elt.src+".svg'/>"); }
-                            if (elt[arr[j]])    { elt.$src2 = $("<img src='res/img/"+elt[arr[j]]+".svg'/>"); }
+                            if (elt.type=="sig") { elt.src = "res/img/ppvc/sign01"; }
+                            if (elt.src)        { elt.$src = $("<img src='"+elt.src+".svg'/>"); }
+                            if (elt[arr[j]])    { elt.$src2 = $("<img src='"+elt[arr[j]]+".svg'/>"); }
                             settings.elt[arr[j]].push(elt);
                         } 
                     }
@@ -132,7 +132,7 @@
                 
                 if (settings.tag) {
                     var value = settings.tag;
-                    if (value.toString().indexOf(".svg")!=-1) { value = "<img src='res/img/"+value+"'/>"; }
+                    if (value.toString().indexOf(".svg")!=-1) { value = "<img src='"+value+"'/>"; }
                     if (settings.fonttag) {
                         var m = (1-settings.fonttag)/(2*settings.fonttag);
                         value="<div style='margin-top:"+m+"em;font-size:"+settings.fonttag+"em;'>"+value+"</div>";

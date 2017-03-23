@@ -366,7 +366,7 @@
             run: function($this) {
                 var settings = helpers.settings($this);
                 if (settings.cc.timerid)    { clearTimeout(settings.cc.timerid); settings.cc.timerid = 0; }
-                if (settings.art)           { $this.find("#art").html("<img src='res/img/"+settings.art+".svg'/>").show(); }
+                if (settings.art)           { $this.find("#art").html("<img src='"+settings.art+"'/>").show(); }
                 $this.find("#course").show();
                 
                 settings.cc.page    = 0;
