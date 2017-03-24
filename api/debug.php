@@ -1,3 +1,4 @@
 <?php
-echo "jlodb debug page"
+echo "jlodb debug page";
+phpinfo();
 ?>

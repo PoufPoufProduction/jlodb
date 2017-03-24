@@ -5,7 +5,7 @@
         <div id="data"></div>
         <div id="target" class="anim12" ontouchstart="$(this).closest('.operation').operation('target',event);event.preventDefault();"
                                         onmousedown="$(this).closest('.operation').operation('target',event);event.preventDefault();">
-            <div><img src="res/img/effects/target01.svg"/></div></div>
+            <div><img src="res/img/default/anim/target01.svg"/></div></div>
         <div id="box"></div>
         <div id="exercice"><div></div></div>
     </div>
@@ -33,14 +33,14 @@
 
     <div id="submit" ontouchstart="$(this).closest('.operation').operation('valid');event.preventDefault();"
                      onclick="$(this).closest('.operation').operation('valid');">
-        <img src="res/img/icon/swvalid.svg" id="subvalid"/>
-        <img src="res/img/icon/swgood.svg" id="subgood"/>
-        <img src="res/img/icon/swwrong.svg" id="subwrong"/>
+        <img src="res/img/default/icon/swvalid.svg" id="subvalid"/>
+        <img src="res/img/default/icon/swgood.svg" id="subgood"/>
+        <img src="res/img/default/icon/swwrong.svg" id="subwrong"/>
     </div>
 
     <div id="effects">
-        <div id="good"><img src="res/img/effects/alert02.svg"/></div>
-        <div id="wrong"><img src="res/img/effects/alert01.svg"/></div>
+        <div id="good"><img src="res/img/default/popup/good01.svg"/></div>
+        <div id="wrong"><img src="res/img/default/popup/wrong01.svg"/></div>
     </div>
 
     <div id="splashex" ontouchstart="$(this).hide().closest('.operation').operation('next');event.preventDefault();"

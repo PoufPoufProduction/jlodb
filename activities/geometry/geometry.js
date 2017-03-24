@@ -907,8 +907,8 @@
                 var $this = $(this) , settings = helpers.settings($this);
                 if (!$(elt).hasClass("disable") && !settings.finish) {
                     settings.small = !settings.small;
-                    if (settings.small)    { $this.find("#stroke img").attr("src", "res/img/generic/dice01.svg") }
-                    else                    {$this.find("#stroke img").attr("src", "res/img/generic/dice01big.svg") }
+                    if (settings.small)    { $this.find("#stroke img").attr("src", "res/img/numbers/dice01.svg") }
+                    else                    {$this.find("#stroke img").attr("src", "res/img/numbers/dice01big.svg") }
                 }
             },
             color: function(elt) {
