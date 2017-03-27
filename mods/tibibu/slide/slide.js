@@ -105,8 +105,8 @@
             var settings = helpers.settings($this);
 
             $this.html("<div id='slpage'></div><div id='slcontrol'><img src='res/img/icon/about.svg'/></div>"+
-                       "<div id='slmenu'><div><div class='icon' id='slback'><img src='res/img/generic/left.svg'/></div>"+
-                       "<div id='sllist'></div><div class='icon' id='slforward'><img src='res/img/generic/right.svg'/></div>"+
+                       "<div id='slmenu'><div><div class='icon' id='slback'><img src='res/img/default/icon/arr_left01.svg'/></div>"+
+                       "<div id='sllist'></div><div class='icon' id='slforward'><img src='res/img/default/icon/arr_right01.svg'/></div>"+
                        "<div id='slactions'>"+
                        "<div class='icon' id='slcomment'><img src='res/img/white/edit.svg'/></div>"+
                        "<div class='icon'></div><div class='icon'></div>"+

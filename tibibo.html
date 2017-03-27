@@ -56,7 +56,7 @@
 #bofooter #menu>div .icon.f             { float:right; }
 #bobrowser                              { font-size:2.4em; margin-left:.2em; }
 #bocontent>#omenu                       { font-size:1.4em; height:6.5em; }
-#bocontent>#omenu .icon                 { background-image:url('res/img/icon/menu02bg.svg') !important; }
+#bocontent>#omenu .icon                 { background-image:url('res/img/default/icon/menu02bg.svg') !important; }
 #bocontent #omenu .ostate               { font-size:.5em; background-color:#ADF; margin:.1em; height:1.2em; width:15em; }
 #bocontent #omenu .ostate .user         { font-size:0.5em; width:7em; }
 #bocontent #omenu .ostate>div           { float:left; }
@@ -398,7 +398,7 @@ var tibibo = {
                 if (_incstar) { tibibo.node.edit.star = (tibibo.node.edit.star+1)%5; }
 
                 if (tibibo.node.edit.star!=0) {
-                    $("#boeditnode .node .star img").attr("src", "res/img/icon/menu01st"+(tibibo.node.edit.star-1)+".svg");
+                    $("#boeditnode .node .star img").attr("src", "res/img/default/icon/menu01st"+(tibibo.node.edit.star-1)+".svg");
                 }
 
                 $("#boeditnode .node").toggleClass("s",  (tibibo.node.edit.star!=0));
@@ -684,7 +684,7 @@ var tibibo = {
                     html+="ontouchstart='tibibo.node.click($(this).parent(),\""+_from+"\");event.preventDefault();' ";
                     html+="onmousedown='tibibo.node.click($(this).parent(),\""+_from+"\");' ";
                 }
-                html+="><img src='res/img/icon/menu01st"+(elt.nbstar-1)+".svg'/></div>";
+                html+="><img src='res/img/default/icon/menu01st"+(elt.nbstar-1)+".svg'/></div>";
                 }
             
             if (!_from)         {
@@ -1087,7 +1087,7 @@ $(window).ready(function() {
                                           ontouchstart="tibibo.node.edit.refresh(true);event.preventDefault();">
                     <div class="icon"><img src="res/img/classification/root.svg"/></div>
                     <div class="type"><img src="res/img/icon/plus01.svg"/></div>
-                    <div class="star"><img src="res/img/icon/menu01st0.svg"/></div>
+                    <div class="star"><img src="res/img/default/icon/menu01st0.svg"/></div>
             </div>
             <textarea id="elabel"
                     onclick="tibibo.textarea(this);" 

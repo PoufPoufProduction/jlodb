@@ -625,7 +625,7 @@
                       "jewels/white06v", "jewels/orange07v", "", "", "",
                       "jewels/red01c", "jewels/blue02c", "jewels/yellow03c", "jewels/purple04c", "jewels/green05c", 
                       "jewels/white06c", "jewels/orange07c", "", "", "",
-                      "icon/life01", "","","",""];
+                      "icon/skill/life01", "","","",""];
 
             var ret       = {
                 pos         : [_i,_j],

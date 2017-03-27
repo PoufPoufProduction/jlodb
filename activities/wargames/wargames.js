@@ -753,7 +753,7 @@
 								case "ammo" : img="munition01"; break;
 								case "fix"  : img="support01"; break;
 							}
-							if (img) { $this.find("#stats #portrait>#ptype").html("<img src='res/img/icon/"+img+".svg'/>").show(); }
+							if (img) { $this.find("#stats #portrait>#ptype").html("<img src='res/img/icon/skill/"+img+".svg'/>").show(); }
 						}
 						if (this.freight.type) {
 							$this.find("#stats #portrait>#ptransport").show();

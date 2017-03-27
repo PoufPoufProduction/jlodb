@@ -399,11 +399,11 @@
                         html+="<div id='"+j+"' class='move"+opclass+"' style='top:"+top+"em;left:"+left+"em;' ";
                         html+="onclick=\"$(this).closest('.operation').operation('move', this, true);\" ";
                         html+="ontouchstart=\"$(this).closest('.operation').operation('move', this, true);event.preventDefault();\" ";
-                        html+="><img src='res/img/generic/futoshiki05.svg'/></div>";
+                        html+="><img src='res/img/icon/cell/futoshiki05.svg'/></div>";
                     }
                     else {
                         html+="<div class='move' style='top:"+top+"em;left:"+left+"em;'>";
-                        html+="<img src='res/img/generic/futoshiki04.svg'/></div>";
+                        html+="<img src='res/img/icon/cell/futoshiki04.svg'/></div>";
                     }
                     left+=.25;
 
@@ -421,11 +421,11 @@
                         html+="<div id='"+j+"' class='move"+opclass+"' style='top:"+top+"em;left:"+left+"em;' ";
                         html+="onclick=\"$(this).closest('.operation').operation('move', this, false);\" ";
                         html+="ontouchstart=\"$(this).closest('.operation').operation('move', this, false);event.preventDefault();\" ";
-                        html+="><img src='res/img/generic/futoshiki06.svg'/></div>";
+                        html+="><img src='res/img/icon/cell/futoshiki06.svg'/></div>";
                     }
                     else {
                         html+="<div class='move' style='top:"+top+"em;left:"+left+"em;'>";
-                        html+="<img src='res/img/generic/futoshiki04.svg'/></div>";
+                        html+="<img src='res/img/icon/cell/futoshiki04.svg'/></div>";
                     }
                     left+=.25;
 
