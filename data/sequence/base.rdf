@@ -7,67 +7,67 @@
     <rdf:Description>
         <dct:identifier>801</dct:identifier>
         <dct:title xml:lang="fr-FR">En base 8, évaluer, sans contrainte de temps, des quantités comprise entre 01 et 016.</dct:title>
-        <dct:description><![CDATA["time":0,"template":"keypad8.html","input":{"digit":3,"speed":5000},"regexp":{"input": { "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/numbers/box$1.svg\\\"/></div>"} },"gen":"function(){var a=Math.floor(Math.random()*16)+1, b=a, ret=\\\"\\\"; while(a>0) { if (ret.length) { ret+=\\\" \\\"; } if (a>=64) { ret+=\\\"64\\\"; a-=64; } else if (a>=32) { ret+=\\\"32\\\"; a-=32; } else if (a>=24) { ret+=\\\"24\\\"; a-=24; } else if (a>=16) { ret+=\\\"16\\\"; a-=16; } else if (a>=8) { ret+=\\\"08b\\\"; a-=8; } else { ret+=\\\"0\\\"+a; a=0; } } return [ret, [ b.toString(8), \\\"0\\\"+b.toString(8)]];}","class":"wrong gray","font":3.4]]></dct:description>
+        <dct:description><![CDATA["time":0,"template":"keypad8.html","input":{"digit":3,"speed":5000},"regexp":{"input": { "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/numbers/box/box$1.svg\\\"/></div>"} },"gen":"function(){var a=Math.floor(Math.random()*16)+1, b=a, ret=\\\"\\\"; while(a>0) { if (ret.length) { ret+=\\\" \\\"; } if (a>=64) { ret+=\\\"64\\\"; a-=64; } else if (a>=32) { ret+=\\\"32\\\"; a-=32; } else if (a>=24) { ret+=\\\"24\\\"; a-=24; } else if (a>=16) { ret+=\\\"16\\\"; a-=16; } else if (a>=8) { ret+=\\\"08b\\\"; a-=8; } else { ret+=\\\"0\\\"+a; a=0; } } return [ret, [ b.toString(8), \\\"0\\\"+b.toString(8)]];}","class":"wrong gray","font":3.4]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel est le nombre de cubes <b>en base 8</b> ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>803</dct:alternative>
-        <dct:source>res/img/numbers/box*.svg</dct:source>
+        <dct:source>res/img/numbers/box/box*.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>802</dct:identifier>
         <dct:title xml:lang="fr-FR">En base 8, évaluer, sans contrainte de temps, des quantités comprise entre 01 et 064.</dct:title>
-        <dct:description><![CDATA["time":0,"template":"keypad8.html","input":{"digit":3,"speed":5000},"regexp":{"input": { "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/numbers/box$1.svg\\\"/></div>"} },"gen":"function(){var a=Math.floor(Math.random()*64)+1, b=a, ret=\\\"\\\"; while(a>0) { if (ret.length) { ret+=\\\" \\\"; } if (a>=64) { ret+=\\\"64\\\"; a-=64; } else if (a>=32) { ret+=\\\"32\\\"; a-=32; } else if (a>=24) { ret+=\\\"24\\\"; a-=24; } else if (a>=16) { ret+=\\\"16\\\"; a-=16; } else if (a>=8) { ret+=\\\"08b\\\"; a-=8; } else { ret+=\\\"0\\\"+a; a=0; } } return [ret, [ b.toString(8), \\\"0\\\"+b.toString(8)]];}","class":"wrong gray","font":2.1]]></dct:description>
+        <dct:description><![CDATA["time":0,"template":"keypad8.html","input":{"digit":3,"speed":5000},"regexp":{"input": { "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/numbers/box/box$1.svg\\\"/></div>"} },"gen":"function(){var a=Math.floor(Math.random()*64)+1, b=a, ret=\\\"\\\"; while(a>0) { if (ret.length) { ret+=\\\" \\\"; } if (a>=64) { ret+=\\\"64\\\"; a-=64; } else if (a>=32) { ret+=\\\"32\\\"; a-=32; } else if (a>=24) { ret+=\\\"24\\\"; a-=24; } else if (a>=16) { ret+=\\\"16\\\"; a-=16; } else if (a>=8) { ret+=\\\"08b\\\"; a-=8; } else { ret+=\\\"0\\\"+a; a=0; } } return [ret, [ b.toString(8), \\\"0\\\"+b.toString(8)]];}","class":"wrong gray","font":2.1]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel est le nombre de cubes <b>en base 8</b> ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>803</dct:alternative>
-        <dct:source>res/img/numbers/box*.svg</dct:source>
+        <dct:source>res/img/numbers/box/box*.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>803</dct:identifier>
         <dct:title xml:lang="fr-FR">En base 8, évaluer, sans contrainte de temps, des quantités comprise entre 01 et 0127.</dct:title>
-        <dct:description><![CDATA["time":0,"template":"keypad8.html","input":{"digit":4,"speed":5000},"regexp":{"input": { "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/numbers/box$1.svg\\\"/></div>"} },"gen":"function(){var a=Math.floor(Math.random()*127)+1, b=a, ret=\\\"\\\"; while(a>0) { if (ret.length) { ret+=\\\" \\\"; } if (a>=64) { ret+=\\\"64\\\"; a-=64; } else if (a>=32) { ret+=\\\"32\\\"; a-=32; } else if (a>=24) { ret+=\\\"24\\\"; a-=24; } else if (a>=16) { ret+=\\\"16\\\"; a-=16; } else if (a>=8) { ret+=\\\"08b\\\"; a-=8; } else { ret+=\\\"0\\\"+a; a=0; } } return [ret, [ b.toString(8), \\\"0\\\"+b.toString(8)]];}","class":"wrong gray","font":1.6]]></dct:description>
+        <dct:description><![CDATA["time":0,"template":"keypad8.html","input":{"digit":4,"speed":5000},"regexp":{"input": { "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/numbers/box/box$1.svg\\\"/></div>"} },"gen":"function(){var a=Math.floor(Math.random()*127)+1, b=a, ret=\\\"\\\"; while(a>0) { if (ret.length) { ret+=\\\" \\\"; } if (a>=64) { ret+=\\\"64\\\"; a-=64; } else if (a>=32) { ret+=\\\"32\\\"; a-=32; } else if (a>=24) { ret+=\\\"24\\\"; a-=24; } else if (a>=16) { ret+=\\\"16\\\"; a-=16; } else if (a>=8) { ret+=\\\"08b\\\"; a-=8; } else { ret+=\\\"0\\\"+a; a=0; } } return [ret, [ b.toString(8), \\\"0\\\"+b.toString(8)]];}","class":"wrong gray","font":1.6]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel est le nombre de cubes <b>en base 8</b> ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>803</dct:alternative>
-        <dct:source>res/img/numbers/box*.svg</dct:source>
+        <dct:source>res/img/numbers/box/box*.svg</dct:source>
     </rdf:Description>
 
 
     <rdf:Description>
         <dct:identifier>811</dct:identifier>
         <dct:title xml:lang="fr-FR">En base 10, évaluer, sans contrainte de temps, des quantités comprise entre 01 et 016.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":5000},"regexp":{"input": { "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/numbers/box$1.svg\\\"/></div>"} },"gen":"function(){var a=Math.floor(Math.random()*16)+1, b=a, ret=\\\"\\\"; while(a>0) { if (ret.length) { ret+=\\\" \\\"; } if (a>=64) { ret+=\\\"64\\\"; a-=64; } else if (a>=32) { ret+=\\\"32\\\"; a-=32; } else if (a>=24) { ret+=\\\"24\\\"; a-=24; } else if (a>=16) { ret+=\\\"16\\\"; a-=16; } else if (a>=8) { ret+=\\\"08b\\\"; a-=8; } else { ret+=\\\"0\\\"+a; a=0; } } return [ret, b.toString(10)];}","class":"wrong gray","font":3.4]]></dct:description>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":5000},"regexp":{"input": { "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/numbers/box/box$1.svg\\\"/></div>"} },"gen":"function(){var a=Math.floor(Math.random()*16)+1, b=a, ret=\\\"\\\"; while(a>0) { if (ret.length) { ret+=\\\" \\\"; } if (a>=64) { ret+=\\\"64\\\"; a-=64; } else if (a>=32) { ret+=\\\"32\\\"; a-=32; } else if (a>=24) { ret+=\\\"24\\\"; a-=24; } else if (a>=16) { ret+=\\\"16\\\"; a-=16; } else if (a>=8) { ret+=\\\"08b\\\"; a-=8; } else { ret+=\\\"0\\\"+a; a=0; } } return [ret, b.toString(10)];}","class":"wrong gray","font":3.4]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel est le nombre de cubes <b>en base 10</b> ?"]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>803</dct:alternative>
-        <dct:source>res/img/numbers/box*.svg</dct:source>
+        <dct:source>res/img/numbers/box/box*.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>812</dct:identifier>
         <dct:title xml:lang="fr-FR">En base 10, évaluer, sans contrainte de temps, des quantités comprise entre 01 et 064.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":5000},"regexp":{"input": { "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/numbers/box$1.svg\\\"/></div>"} },"gen":"function(){var a=Math.floor(Math.random()*64)+1, b=a, ret=\\\"\\\"; while(a>0) { if (ret.length) { ret+=\\\" \\\"; } if (a>=64) { ret+=\\\"64\\\"; a-=64; } else if (a>=32) { ret+=\\\"32\\\"; a-=32; } else if (a>=24) { ret+=\\\"24\\\"; a-=24; } else if (a>=16) { ret+=\\\"16\\\"; a-=16; } else if (a>=8) { ret+=\\\"08b\\\"; a-=8; } else { ret+=\\\"0\\\"+a; a=0; } } return [ret, b.toString(10)];}","class":"wrong gray","font":2.1]]></dct:description>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":5000},"regexp":{"input": { "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/numbers/box/box$1.svg\\\"/></div>"} },"gen":"function(){var a=Math.floor(Math.random()*64)+1, b=a, ret=\\\"\\\"; while(a>0) { if (ret.length) { ret+=\\\" \\\"; } if (a>=64) { ret+=\\\"64\\\"; a-=64; } else if (a>=32) { ret+=\\\"32\\\"; a-=32; } else if (a>=24) { ret+=\\\"24\\\"; a-=24; } else if (a>=16) { ret+=\\\"16\\\"; a-=16; } else if (a>=8) { ret+=\\\"08b\\\"; a-=8; } else { ret+=\\\"0\\\"+a; a=0; } } return [ret, b.toString(10)];}","class":"wrong gray","font":2.1]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel est le nombre de cubes <b>en base 10</b> ?"]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>803</dct:alternative>
-        <dct:source>res/img/numbers/box*.svg</dct:source>
+        <dct:source>res/img/numbers/box/box*.svg</dct:source>
     </rdf:Description>
 
     <!-- BASE 2: 2[a-z] -->
@@ -75,79 +75,79 @@
     <rdf:Description>
         <dct:identifier>201</dct:identifier>
         <dct:title xml:lang="fr-FR">En base 2, évaluer, sans contrainte de temps, des quantités comprise entre 1 et 11.</dct:title>
-        <dct:description><![CDATA["time":0,"template":"keypad2.html","input":{"digit":2,"speed":5000},"regexp":{"input": { "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/numbers/box$1.svg\\\"/></div>"} },"gen":"function(){var a=Math.floor(Math.random()*3)+1, b=a, ret=\\\"\\\"; while(a>0) { if (ret.length) { ret+=\\\" \\\"; } if (a>=8) { ret+=\\\"08c\\\"; a-=8; } else if (a>=4) { ret+=\\\"04b\\\"; a-=4; } else if (a>=2) { ret+=\\\"02b\\\"; a-=2; } else { ret+=\\\"01b\\\"; a=0; } } return [ret, b.toString(2)];}","class":"wrong gray","font":3.4]]></dct:description>
+        <dct:description><![CDATA["time":0,"template":"keypad2.html","input":{"digit":2,"speed":5000},"regexp":{"input": { "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/numbers/box/box$1.svg\\\"/></div>"} },"gen":"function(){var a=Math.floor(Math.random()*3)+1, b=a, ret=\\\"\\\"; while(a>0) { if (ret.length) { ret+=\\\" \\\"; } if (a>=8) { ret+=\\\"08c\\\"; a-=8; } else if (a>=4) { ret+=\\\"04b\\\"; a-=4; } else if (a>=2) { ret+=\\\"02b\\\"; a-=2; } else { ret+=\\\"01b\\\"; a=0; } } return [ret, b.toString(2)];}","class":"wrong gray","font":3.4]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel est le nombre de cubes <b>en base 2</b> ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>803</dct:alternative>
-        <dct:source>res/img/numbers/box*.svg</dct:source>
+        <dct:source>res/img/numbers/box/box*.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>202</dct:identifier>
         <dct:title xml:lang="fr-FR">En base 2, évaluer, sans contrainte de temps, des quantités comprise entre 1 et 111.</dct:title>
-        <dct:description><![CDATA["time":0,"template":"keypad2.html","input":{"digit":3,"speed":5000},"regexp":{"input": { "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/numbers/box$1.svg\\\"/></div>"} },"gen":"function(){var a=Math.floor(Math.random()*7)+1, b=a, ret=\\\"\\\"; while(a>0) { if (ret.length) { ret+=\\\" \\\"; } if (a>=8) { ret+=\\\"08c\\\"; a-=8; } else if (a>=4) { ret+=\\\"04b\\\"; a-=4; } else if (a>=2) { ret+=\\\"02b\\\"; a-=2; } else { ret+=\\\"01b\\\"; a=0; } } return [ret, b.toString(2)];}","class":"wrong gray","font":2.3]]></dct:description>
+        <dct:description><![CDATA["time":0,"template":"keypad2.html","input":{"digit":3,"speed":5000},"regexp":{"input": { "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/numbers/box/box$1.svg\\\"/></div>"} },"gen":"function(){var a=Math.floor(Math.random()*7)+1, b=a, ret=\\\"\\\"; while(a>0) { if (ret.length) { ret+=\\\" \\\"; } if (a>=8) { ret+=\\\"08c\\\"; a-=8; } else if (a>=4) { ret+=\\\"04b\\\"; a-=4; } else if (a>=2) { ret+=\\\"02b\\\"; a-=2; } else { ret+=\\\"01b\\\"; a=0; } } return [ret, b.toString(2)];}","class":"wrong gray","font":2.3]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel est le nombre de cubes <b>en base 2</b> ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>803</dct:alternative>
-        <dct:source>res/img/numbers/box*.svg</dct:source>
+        <dct:source>res/img/numbers/box/box*.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>203</dct:identifier>
         <dct:title xml:lang="fr-FR">En base 2, évaluer, sans contrainte de temps, des quantités comprise entre 1 et 1111.</dct:title>
-        <dct:description><![CDATA["time":0,"template":"keypad2.html","input":{"digit":4,"speed":5000},"regexp":{"input": { "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/numbers/box$1.svg\\\"/></div>"} },"gen":"function(){var a=Math.floor(Math.random()*15)+1, b=a, ret=\\\"\\\"; while(a>0) { if (ret.length) { ret+=\\\" \\\"; } if (a>=8) { ret+=\\\"08c\\\"; a-=8; } else if (a>=4) { ret+=\\\"04b\\\"; a-=4; } else if (a>=2) { ret+=\\\"02b\\\"; a-=2; } else { ret+=\\\"01b\\\"; a=0; } } return [ret, b.toString(2)];}","class":"wrong gray","font":1.5]]></dct:description>
+        <dct:description><![CDATA["time":0,"template":"keypad2.html","input":{"digit":4,"speed":5000},"regexp":{"input": { "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/numbers/box/box$1.svg\\\"/></div>"} },"gen":"function(){var a=Math.floor(Math.random()*15)+1, b=a, ret=\\\"\\\"; while(a>0) { if (ret.length) { ret+=\\\" \\\"; } if (a>=8) { ret+=\\\"08c\\\"; a-=8; } else if (a>=4) { ret+=\\\"04b\\\"; a-=4; } else if (a>=2) { ret+=\\\"02b\\\"; a-=2; } else { ret+=\\\"01b\\\"; a=0; } } return [ret, b.toString(2)];}","class":"wrong gray","font":1.5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel est le nombre de cubes <b>en base 2</b> ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>803</dct:alternative>
-        <dct:source>res/img/numbers/box*.svg</dct:source>
+        <dct:source>res/img/numbers/box/box*.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>211</dct:identifier>
         <dct:title xml:lang="fr-FR">En base 10, évaluer, sans contrainte de temps, des quantités comprise entre 1 et 11.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":5000},"regexp":{"input": { "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/numbers/box$1.svg\\\"/></div>"} },"gen":"function(){var a=Math.floor(Math.random()*3)+1, b=a, ret=\\\"\\\"; while(a>0) { if (ret.length) { ret+=\\\" \\\"; } if (a>=8) { ret+=\\\"08c\\\"; a-=8; } else if (a>=4) { ret+=\\\"04b\\\"; a-=4; } else if (a>=2) { ret+=\\\"02b\\\"; a-=2; } else { ret+=\\\"01b\\\"; a=0; } } return [ret, b.toString(10)];}","class":"wrong gray","font":3.4]]></dct:description>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":5000},"regexp":{"input": { "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/numbers/box/box$1.svg\\\"/></div>"} },"gen":"function(){var a=Math.floor(Math.random()*3)+1, b=a, ret=\\\"\\\"; while(a>0) { if (ret.length) { ret+=\\\" \\\"; } if (a>=8) { ret+=\\\"08c\\\"; a-=8; } else if (a>=4) { ret+=\\\"04b\\\"; a-=4; } else if (a>=2) { ret+=\\\"02b\\\"; a-=2; } else { ret+=\\\"01b\\\"; a=0; } } return [ret, b.toString(10)];}","class":"wrong gray","font":3.4]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel est le nombre de cubes <b>en base 10</b> ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>803</dct:alternative>
-        <dct:source>res/img/numbers/box*.svg</dct:source>
+        <dct:source>res/img/numbers/box/box*.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>212</dct:identifier>
         <dct:title xml:lang="fr-FR">En base 10, évaluer, sans contrainte de temps, des quantités comprise entre 1 et 111.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":5000},"regexp":{"input": { "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/numbers/box$1.svg\\\"/></div>"} },"gen":"function(){var a=Math.floor(Math.random()*7)+1, b=a, ret=\\\"\\\"; while(a>0) { if (ret.length) { ret+=\\\" \\\"; } if (a>=8) { ret+=\\\"08c\\\"; a-=8; } else if (a>=4) { ret+=\\\"04b\\\"; a-=4; } else if (a>=2) { ret+=\\\"02b\\\"; a-=2; } else { ret+=\\\"01b\\\"; a=0; } } return [ret, b.toString(10)];}","class":"wrong gray","font":2.3]]></dct:description>
+        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":5000},"regexp":{"input": { "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/numbers/box/box$1.svg\\\"/></div>"} },"gen":"function(){var a=Math.floor(Math.random()*7)+1, b=a, ret=\\\"\\\"; while(a>0) { if (ret.length) { ret+=\\\" \\\"; } if (a>=8) { ret+=\\\"08c\\\"; a-=8; } else if (a>=4) { ret+=\\\"04b\\\"; a-=4; } else if (a>=2) { ret+=\\\"02b\\\"; a-=2; } else { ret+=\\\"01b\\\"; a=0; } } return [ret, b.toString(10)];}","class":"wrong gray","font":2.3]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel est le nombre de cubes <b>en base 10</b> ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>803</dct:alternative>
-        <dct:source>res/img/numbers/box*.svg</dct:source>
+        <dct:source>res/img/numbers/box/box*.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>213</dct:identifier>
         <dct:title xml:lang="fr-FR">En base 10, évaluer, sans contrainte de temps, des quantités comprise entre 1 et 1111.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":5000},"regexp":{"input": { "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/numbers/box$1.svg\\\"/></div>"} },"gen":"function(){var a=Math.floor(Math.random()*15)+1, b=a, ret=\\\"\\\"; while(a>0) { if (ret.length) { ret+=\\\" \\\"; } if (a>=8) { ret+=\\\"08c\\\"; a-=8; } else if (a>=4) { ret+=\\\"04b\\\"; a-=4; } else if (a>=2) { ret+=\\\"02b\\\"; a-=2; } else { ret+=\\\"01b\\\"; a=0; } } return [ret, b.toString(10)];}","class":"wrong gray","font":1.5]]></dct:description>
+        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":5000},"regexp":{"input": { "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/numbers/box/box$1.svg\\\"/></div>"} },"gen":"function(){var a=Math.floor(Math.random()*15)+1, b=a, ret=\\\"\\\"; while(a>0) { if (ret.length) { ret+=\\\" \\\"; } if (a>=8) { ret+=\\\"08c\\\"; a-=8; } else if (a>=4) { ret+=\\\"04b\\\"; a-=4; } else if (a>=2) { ret+=\\\"02b\\\"; a-=2; } else { ret+=\\\"01b\\\"; a=0; } } return [ret, b.toString(10)];}","class":"wrong gray","font":1.5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel est le nombre de cubes <b>en base 10</b> ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>803</dct:alternative>
-        <dct:source>res/img/numbers/box*.svg</dct:source>
+        <dct:source>res/img/numbers/box/box*.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
@@ -197,7 +197,7 @@
     <rdf:Description>
         <dct:identifier>251</dct:identifier>
         <dct:title xml:lang="fr-FR">Convertir en base 10, sans contrainte de temps, un nombre binaire (compris entre 000 et 111) à l'aide de sa représentation graphique.</dct:title>
-        <dct:description><![CDATA["time":0,"regexp":{"input": { "from": "s([^ ^e]+)e","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/numbers/box$1.svg\\\"/></div>"} },"input":{"digit":1,"speed":5000},"values":[["s00es00es00e000","0"],["s00es00es01be001","1"],["s00es02bes00e010","2"],["s00es02bes01be011","3"],["s04bes00es00e100","4"],["s04bes00es01be101","5"],["s04bes02bes00e110","6"],["s04bes02bes01be111","7"]],"class":"wrong gray","font":1.2]]></dct:description>
+        <dct:description><![CDATA["time":0,"regexp":{"input": { "from": "s([^ ^e]+)e","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/numbers/box/box$1.svg\\\"/></div>"} },"input":{"digit":1,"speed":5000},"values":[["s00es00es00e000","0"],["s00es00es01be001","1"],["s00es02bes00e010","2"],["s00es02bes01be011","3"],["s04bes00es00e100","4"],["s04bes00es01be101","5"],["s04bes02bes00e110","6"],["s04bes02bes01be111","7"]],"class":"wrong gray","font":1.2]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel est le nombre de cubes <b>en base 10</b> ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -245,14 +245,14 @@
     <rdf:Description>
         <dct:identifier>261</dct:identifier>
         <dct:title xml:lang="fr-FR">Convertir en base 10, sans contrainte de temps, un nombre binaire (compris entre 0000 et 1111) à l'aide de sa représentation graphique.</dct:title>
-        <dct:description><![CDATA["time":0,"regexp":{"input": { "from": "s([^ ^e]+)e","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/numbers/box$1.svg\\\"/></div>"} },"input":{"digit":2,"speed":5000},"values":[["s00es00es00es00e0000","0"],["s00es00es00es01be0001","1"],["s00es00es02bes00e0010","2"],["s00es00es02bes01be0011","3"],["s00es04bes00es00e0100","4"],["s00es04bes00es01be0101","5"],["s00es04bes02bes00e0110","6"],["s00es04bes02bes01be0111","7"],["s08ces00es00es00e1000","8"],["s08ces00es00es01be1001","9"],["s08ces00es02bes00e1010","10"],["s08ces00es02bes01be1011","11"],["s08ces04bes00es00e1100","12"],["s08ces04bes00es01be1101","13"],["s08ces04bes02bes00e1110","14"],["s08ces04bes02bes01be1111","15"]],"class":"wrong gray","font":1]]></dct:description>
+        <dct:description><![CDATA["time":0,"regexp":{"input": { "from": "s([^ ^e]+)e","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/numbers/box/box$1.svg\\\"/></div>"} },"input":{"digit":2,"speed":5000},"values":[["s00es00es00es00e0000","0"],["s00es00es00es01be0001","1"],["s00es00es02bes00e0010","2"],["s00es00es02bes01be0011","3"],["s00es04bes00es00e0100","4"],["s00es04bes00es01be0101","5"],["s00es04bes02bes00e0110","6"],["s00es04bes02bes01be0111","7"],["s08ces00es00es00e1000","8"],["s08ces00es00es01be1001","9"],["s08ces00es02bes00e1010","10"],["s08ces00es02bes01be1011","11"],["s08ces04bes00es00e1100","12"],["s08ces04bes00es01be1101","13"],["s08ces04bes02bes00e1110","14"],["s08ces04bes02bes01be1111","15"]],"class":"wrong gray","font":1]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel est le nombre de cubes <b>en base 10</b> ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>803</dct:alternative>
-        <dct:source>res/img/numbers/box*.svg</dct:source>
+        <dct:source>res/img/numbers/box/box*.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
@@ -295,27 +295,27 @@
     <rdf:Description>
         <dct:identifier>270</dct:identifier>
         <dct:title xml:lang="fr-FR">En base 16, évaluer, sans contrainte de temps, des quantités comprise entre 1 et 1111.</dct:title>
-        <dct:description><![CDATA["time":0,"template":"keypad16.html","input":{"digit":1,"speed":5000},"regexp":{"input": { "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/numbers/box$1.svg\\\"/></div>"} },"gen":"function(){var a=Math.floor(Math.random()*15)+1, b=a, ret=\\\"\\\"; while(a>0) { if (ret.length) { ret+=\\\" \\\"; } if (a>=8) { ret+=\\\"08c\\\"; a-=8; } else if (a>=4) { ret+=\\\"04b\\\"; a-=4; } else if (a>=2) { ret+=\\\"02b\\\"; a-=2; } else { ret+=\\\"01b\\\"; a=0; } } return [ret, b.toString(16)];}","class":"wrong gray","font":1.5]]></dct:description>
+        <dct:description><![CDATA["time":0,"template":"keypad16.html","input":{"digit":1,"speed":5000},"regexp":{"input": { "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/numbers/box/box$1.svg\\\"/></div>"} },"gen":"function(){var a=Math.floor(Math.random()*15)+1, b=a, ret=\\\"\\\"; while(a>0) { if (ret.length) { ret+=\\\" \\\"; } if (a>=8) { ret+=\\\"08c\\\"; a-=8; } else if (a>=4) { ret+=\\\"04b\\\"; a-=4; } else if (a>=2) { ret+=\\\"02b\\\"; a-=2; } else { ret+=\\\"01b\\\"; a=0; } } return [ret, b.toString(16)];}","class":"wrong gray","font":1.5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel est le nombre de cubes <b>en base 16</b> ?<br/>Pour rappel: (10=0xA) (11=0xB) (12=0xC) (13=0xD) (14=0XE) (15=0XF)"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>803</dct:alternative>
-        <dct:source>res/img/numbers/box*.svg</dct:source>
+        <dct:source>res/img/numbers/box/box*.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>271</dct:identifier>
         <dct:title xml:lang="fr-FR">Convertir en base 16, sans contrainte de temps, un nombre binaire (compris entre 0000 et 1111) à l'aide de sa représentation graphique.</dct:title>
-        <dct:description><![CDATA["time":0,"regexp":{"input": { "from": "s([^ ^e]+)e","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/numbers/box$1.svg\\\"/></div>"} },"template":"keypad16.html","input":{"digit":1,"speed":5000},"values":[["s00es00es00es00e0000","0"],["s00es00es00es01be0001","1"],["s00es00es02bes00e0010","2"],["s00es00es02bes01be0011","3"],["s00es04bes00es00e0100","4"],["s00es04bes00es01be0101","5"],["s00es04bes02bes00e0110","6"],["s00es04bes02bes01be0111","7"],["s08ces00es00es00e1000","8"],["s08ces00es00es01be1001","9"],["s08ces00es02bes00e1010","a"],["s08ces00es02bes01be1011","b"],["s08ces04bes00es00e1100","c"],["s08ces04bes00es01be1101","d"],["s08ces04bes02bes00e1110","e"],["s08ces04bes02bes01be1111","f"]],"class":"wrong gray","font":1]]></dct:description>
+        <dct:description><![CDATA["time":0,"regexp":{"input": { "from": "s([^ ^e]+)e","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/numbers/box/box$1.svg\\\"/></div>"} },"template":"keypad16.html","input":{"digit":1,"speed":5000},"values":[["s00es00es00es00e0000","0"],["s00es00es00es01be0001","1"],["s00es00es02bes00e0010","2"],["s00es00es02bes01be0011","3"],["s00es04bes00es00e0100","4"],["s00es04bes00es01be0101","5"],["s00es04bes02bes00e0110","6"],["s00es04bes02bes01be0111","7"],["s08ces00es00es00e1000","8"],["s08ces00es00es01be1001","9"],["s08ces00es02bes00e1010","a"],["s08ces00es02bes01be1011","b"],["s08ces04bes00es00e1100","c"],["s08ces04bes00es01be1101","d"],["s08ces04bes02bes00e1110","e"],["s08ces04bes02bes01be1111","f"]],"class":"wrong gray","font":1]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quel est le nombre de cubes <b>en base 16</b> ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>803</dct:alternative>
-        <dct:source>res/img/numbers/box*.svg</dct:source>
+        <dct:source>res/img/numbers/box/box*.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>

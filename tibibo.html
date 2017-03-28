@@ -26,7 +26,7 @@
 .usermode                               { display:inline; }
 .devmode                                { display:none; }
 
-#bomain                                 { display:relative; background-image:url('res/img/background/book02.svg'); }
+#bomain                                 { display:relative; background-image:url('res/img/default/pattern/line01.svg'); }
 #bomain.devmode #bopage #edmode        { opacity:1; }
 #bomain.devmode.ownbook #editown.menu   { display:inline; }
 #bomain.devmode.book #editother.menu    { display:inline; }
@@ -90,7 +90,7 @@
 #bofirefox                              { position:absolute; top:79%; left:83%; font-size:.2em; width:15em; height:3em; border:2px solid orange; border-radius:1.5em 0 0 1.5em; background-color:rgba(0,0,0,0.1); font-weight:bold; color:brown; }
 #bofirefox>img                          { float:left; font-size:3em; width:1em; height:1em; margin-left:.1em; margin-right:.2em; }
 #bodbrowser                             { position:absolute; top:0; left:0; width:16em; height:12em; background-color: rgba(0,0,0,0.2); display:none;}
-#bodbrowser>div                         { position:absolute; font-size:.4em; width:26em; height:21em; top:2em; left:2em;  background-color:rgba(200,200,200,0.9); border:.2em solid white; color:black;  border-radius:.5em; background-image:url("res/img/background/book06.svg"); background-repeat:repeat; }
+#bodbrowser>div                         { position:absolute; font-size:.4em; width:26em; height:21em; top:2em; left:2em;  background-color:rgba(200,200,200,0.9); border:.2em solid white; color:black;  border-radius:.5em; background-image:url("res/img/default/pattern/line04.svg"); background-repeat:repeat; }
 #bodbrowser #dcontent                   { font-size:1.5em; overflow:auto; height:14em; }
 #bodbrowser ul                          { padding-left:0.5em; clear:both; }
 #bodbrowser ul.sub                      { display:none; }
@@ -100,7 +100,7 @@
 #bodbrowser .state                      { width:4em; height:1.3em; font-size:.8em; background-color:rgba(255,255,255,0.8); border-radius:0 .2em .2em 0; text-align:center;padding-top:.2em; cursor:pointer;}
 #bodbrowser .move                       { font-size:1.2em;width:1em; height:1em; background-color:rgba(0,0,0,0.8); border-radius:0 .2em .2em 0; padding:0 .2em; text-align:center; cursor:pointer;}
 #boeditnode                             { position:absolute; top:0; left:0; width:16em; height:12em; background-color: rgba(0,0,0,0.2); display:none; }
-#boeditnode>div                         { position:absolute; font-size:.4em; width:20em; height:21em; top:2em; left:2em;  background-color:rgba(128,120,100,0.9); border:.2em solid white; color:black; border-radius:.5em; background-image:url("res/img/background/book06.svg"); background-repeat:repeat; }
+#boeditnode>div                         { position:absolute; font-size:.4em; width:20em; height:21em; top:2em; left:2em;  background-color:rgba(128,120,100,0.9); border:.2em solid white; color:black; border-radius:.5em; background-image:url("res/img/default/pattern/line04.svg"); background-repeat:repeat; }
 #boeditnode #eimg                       { width:15em; left:23em; }
 #boeditnode #eimg .icon                 { float:left; cursor:pointer; margin:0.05em; font-size:1.4em; }
 #boeditnode #settings                   { height:16em; }
@@ -1077,7 +1077,7 @@ $(window).ready(function() {
     
     <div id="bocomment" onmousedown="$(this).hide();" ontouchstart="$(this).hide();event.preventDefault();">
         <div id="boccomment"></div>
-        <div id="boquit" class="icon" onmousedown="document.location='tibibo.html';event.stopPropagation();" ontouchstart="document.location='tibibo.html';event.stopPropagation();event.preventDefault();"><img src="res/img/white/logout.svg"/></div>
+        <div id="boquit" class="icon" onmousedown="document.location='tibibo.html';event.stopPropagation();" ontouchstart="document.location='tibibo.html';event.stopPropagation();event.preventDefault();"><img src="res/img/icon/white/logout.svg"/></div>
     </div>
 
     <div id="boeditnode">

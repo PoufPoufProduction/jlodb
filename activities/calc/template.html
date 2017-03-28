@@ -5,7 +5,7 @@
     <div id="detail"><div>
         <div class="detdiv icon" id="valid"
                      ontouchstart="$(this).closest('.calc').calc('set');event.preventDefault();event.stopPropagation();"
-                     onclick="$(this).closest('.calc').calc('set');event.stopPropagation();"><img src="res/img/white/valid.svg"/></div>
+                     onclick="$(this).closest('.calc').calc('set');event.stopPropagation();"><img src="res/img/icon/white/valid.svg"/></div>
         <div class="detdiv" id="detailg">
             <div class="settings"><div class='label'>hide</div><input id="sethide" value="[[]]"/></div>
             <div class="settings"><div class='label'>size</div><input id="setsize" value="[5,5]"/></div>
@@ -180,17 +180,17 @@
         <textarea></textarea>
         <div id="import" ontouchstart="$(this).closest('.calc').calc('import');event.preventDefault();"
                               onclick="$(this).closest('.calc').calc('import');">
-            <div class="icon"><img src="res/img/white/import.svg"/></div>
+            <div class="icon"><img src="res/img/icon/white/import.svg"/></div>
         </div>
     </div></div>
     
     <div id="locale" class="icon" ontouchstart="$(this).next().show();event.preventDefault();"
-                          onclick="$(this).next().show();"><img src="res/img/white/edit.svg"/></div>
+                          onclick="$(this).next().show();"><img src="res/img/icon/white/edit.svg"/></div>
                           
     <div id="glossary" class="mask"><div>
         <div id="gadd" class="icon" ontouchstart="$(this).next().next().clone().appendTo($(this).parent()).show();event.preventDefault();"
                           onclick="$(this).next().next().clone().appendTo($(this).parent()).show();">
-            <img src="res/img/white/add.svg"/>
+            <img src="res/img/icon/white/add.svg"/>
         </div>
         <div class="icon" ontouchstart="$(this).closest('.calc').calc('locale');event.preventDefault();"
                               onclick="$(this).closest('.calc').calc('locale');">

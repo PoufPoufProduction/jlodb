@@ -93,7 +93,7 @@
         #jlodb #edition textarea            { resize:none; margin:.5em; width:50em; font-size:.25em; }
         #jlodb #edition .icon               { text-align:center; margin-left:.1em; cursor:pointer; }
         #jlodb #edition #edargs             { height:20em; }
-        #jlodb #edition #edlabel            { height:4em; background-image:url("res/img/background/book02.svg"); background-repeat:repeat;}
+        #jlodb #edition #edlabel            { height:4em; background-image:url("res/img/default/pattern/line01.svg"); background-repeat:repeat;}
         #jlodb #edition #edmenu             { height:1em; font-size:.8em; }
         #jlodb #edition #edmenu>*           { float:left; }
         #jlodb #edition #edmenu #edlevel    { background-image:url("res/img/icon/icon.svg"); background-size:100%; }
@@ -371,7 +371,7 @@ jlodb = {
             },
             diff: function(_inc) {
                 if (_inc) { this.data.diff=this.data.diff%5+1; }
-                $("#jlodb #edition #eddiff img").attr("src","res/img/star/star"+this.data.diff+".svg");
+                $("#jlodb #edition #eddiff img").attr("src","res/img/numbers/star/star"+this.data.diff+".svg");
             },
             duration: function(_inc) {
                 if (_inc) { this.data.duration=(this.data.duration+1)%this.data.d.length; }
@@ -632,9 +632,9 @@ $(window).resize(function() { $("#jlconsole").html($(window).width()+" x "+$(win
     <!-- SPECIAL EVENT -->
     <!--
     <div id="specialevent" style="position:absolute;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.4);">
-        <div style="width:16em;height:12em;font-size:.9em;background-color:white;margin:0.5em auto;border:2px solid black;overflow:hide;position:relative;background-image:url('res/img/background/book03.svg'); background-repeat:repeat;">
+        <div style="width:16em;height:12em;font-size:.9em;background-color:white;margin:0.5em auto;border:2px solid black;overflow:hide;position:relative;background-image:url('res/img/default/pattern/grid01.svg'); background-repeat:repeat;">
             <div style="position:absolute;transform: rotate(45deg);top:1em;left:11em;background-color:red;color:white;width:7em;text-align:center;">Annonce</div>
-            <div style="margin-top:1em;padding:0 1em 0 1em;background-color:gray;font-size:0.8em;border:1px solid black;border-width:2px 0;overflow:visible;background-image:url('res/img/background/book05.svg'); background-repeat:repeat;">
+            <div style="margin-top:1em;padding:0 1em 0 1em;background-color:gray;font-size:0.8em;border:1px solid black;border-width:2px 0;overflow:visible;background-image:url('res/img/default/pattern/line03.svg'); background-repeat:repeat;">
                 <div style="font-size:1.4em;font-weight:bold;padding:.1em;background-color:black;width:8em;text-align:center;border-radius:.2em;color:white;transform: rotate(-5deg);margin:-.1em 0 .2em -.2em;">GESTIONNAIRE</div>
                 <div style="font-size:0.8em; margin:0.5em 0;">de fiches de préparations <b>numériques</b></div>
             </div>
