@@ -622,7 +622,7 @@
 
 
                 // Locale handling
-                $this.find("h1#label").html(settings.label);
+
                 $this.find("#exercice").html(settings.exercice);
                 if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(helpers.format(value)); }); }
 

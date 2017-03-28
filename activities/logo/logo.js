@@ -109,7 +109,7 @@
                 $this.css("font-size", ($this.height()/12)+"px");
 
                 // Locale handling
-                $this.find("h1#label").html(settings.label);
+
                 if ($.isArray(settings.exercice)) {
                     $this.find("#exercice>div").html("");
                     for (var i in settings.exercice) { $this.find("#exercice>div").append(

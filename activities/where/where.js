@@ -117,7 +117,7 @@
                 }
 
                 // LOCALE HANDLING
-                $this.find("h1#label").html(settings.label);
+
                 $this.find("#guide").html(settings.guide);
                 $this.find("#comment>div").html(helpers.format(settings.comment));
                 $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); });

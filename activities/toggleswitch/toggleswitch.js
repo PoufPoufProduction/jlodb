@@ -107,7 +107,6 @@
                 $this.css("font-size", ($this.height()/12)+"px");
 
                 // Locale handling
-                $this.find("h1#label").html(settings.label);
                 $this.find("#guide").html(settings.guide);
                 $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); });
                 setTimeout(function() { helpers.build($this); }, 500);
@@ -238,7 +237,7 @@
                     $this.find("#exercice #content").html(helpers.format(settings.exercice));
                 } else {
                     $this.find("#exercice #content").html(helpers.format(settings.exercice.value));
-                    if (settings.current.tag) { $this.find("#exercice #label").html(settings.current.tag).show(); }
+                    if (settings.current.tag) { $this.find("#exercice #tag").html(settings.current.tag).show(); }
                     if (settings.exercice.font) { $this.find("#exercice #content").css("font-size",settings.exercice.font+"em"); }
                 }
                 $this.find("#exercice").show();

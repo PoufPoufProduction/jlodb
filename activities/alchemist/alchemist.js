@@ -115,7 +115,7 @@
                 setTimeout(function() { helpers.goals.init($this); }, 100);
 
                 // Locale handling
-                $this.find("h1#label").html(settings.label);
+
                 if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
                 var txt = $this.find("#guide").html();
                 txt = txt.replace("$1","<span class='l'>"+settings.number+"</span>");

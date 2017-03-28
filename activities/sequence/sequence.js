@@ -216,7 +216,7 @@
                  $this.css("font-size", Math.floor($this.width()/10)+"px");
 
                 // Locale handling
-                $this.find("h1#label").html(settings.label);
+
                 if (settings.comment && !settings.exercice ) { settings.exercice = settings.comment; } // OLD DEFINITION (TO REMOVE IN DATA)
                 if (settings.exercice) {
                     if ($.isArray(settings.exercice)) {

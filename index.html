@@ -302,7 +302,7 @@ jlodb = {
                     html += this.abstract+"</p></td></tr>";
                     $("#classification table.list").append(html);
                 });
-                $.getJSON("api/exercices.php?classification='"+node.node.attr("id")+"'", function(data) {
+                $.getJSON("api/exercice.php?classification='"+node.node.attr("id")+"'", function(data) {
                         $("#classification #nbexercices").html(data.nb);
                     });
 
@@ -387,21 +387,23 @@ jlodb = {
                 $("#jlodb #edition #edactivity img").attr("src","res/img/activity/"+$("#jlodb #edition select#activities").val()+".svg");
             },
             open: function(_id) {
-                $.getJSON("api/exercice.php?id="+_id, function(data) {
-                    $("#jlodb #edition textarea#edargs").val(JSON.stringify(data.data));
-                    $("#jlodb #edition textarea#edlabel").val(data.title);
-                    jlodb.page.edition.data.level = data.level;     jlodb.page.edition.level(false);
-                    jlodb.page.edition.data.diff = data.difficulty; jlodb.page.edition.diff(false);
-                    for (var i in jlodb.page.edition.data.d) {
-                        if (jlodb.page.edition.data.d[i]==data.time) { jlodb.page.edition.data.duration = parseInt(i); } }
-                    jlodb.page.edition.duration(false);
-                    $("#jlodb #edition select#activities").val(data.activity);
-                    jlodb.page.edition.activity();
+                $.getJSON("api/exercice.php?detail&id="+_id, function(data) {
+                    if (data && data.exercices && data.exercices[0]) {
+                        $("#jlodb #edition textarea#edargs").val(JSON.stringify(data.exercices[0].data));
+                        $("#jlodb #edition textarea#edlabel").val(data.exercices[0].label);
+                        jlodb.page.edition.data.level = data.exercices[0].level;    jlodb.page.edition.level(false);
+                        jlodb.page.edition.data.diff = data.exercices[0].diff;      jlodb.page.edition.diff(false);
+                        for (var i in jlodb.page.edition.data.d) {
+                            if (jlodb.page.edition.data.d[i]==data.exercices[0].time) { jlodb.page.edition.data.duration = parseInt(i); } }
+                        jlodb.page.edition.duration(false);
+                        $("#jlodb #edition select#activities").val(data.exercices[0].activity);
+                        jlodb.page.edition.activity();
 
-                    $("#jlodb #edition select#edcl").val(data.classification);
-                    jlodb.page.edition.classification();
+                        $("#jlodb #edition select#edcl").val(data.exercices[0].classification);
+                        jlodb.page.edition.classification();
 
-                    jlodb.page.edition.load();
+                        jlodb.page.edition.load();
+                    }
                 });
             },
             build: function() {

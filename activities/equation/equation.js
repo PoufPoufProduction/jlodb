@@ -133,7 +133,7 @@
                 $this.css("font-size", ($this.height()/12)+"px");
 
                 // LOCALE HANDLING
-                $this.find("h1#label").html(settings.label);
+
                 if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
 
                 // EXERCICE AND FIGURE

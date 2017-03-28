@@ -39,7 +39,7 @@ var t001 = {
             }
         }
 
-        ret="{\"svgclass\":\"l"+(l+1)+"\",\"values\":{"+ret+"},\"area\":[220,350,480,450],\"url\":\"puzzle/sentence.svg\"}";
+        ret="{\"svgclass\":\"l"+(l+1)+"\",\"values\":{"+ret+"},\"area\":[220,350,480,450],\"url\":\"desktop/puzzle/sentence.svg\"}";
         alert(ret);
     }
 };
@@ -114,7 +114,7 @@ var t003 = {
 
         }
 
-    alert('<![CDATA["decoys":["dd01","dd02","dd03","dd04","dd05","dd06","dd07","dd08","dd09"],"init":{"pos":[[425,60],[495,60],[565,60],[425,130],[495,130],[565,130],[425,200],[495,200],[565,200],[425,270],[495,270],[565,270]]},"url":"puzzle/word.svg",'+
+    alert('<![CDATA["decoys":["dd01","dd02","dd03","dd04","dd05","dd06","dd07","dd08","dd09"],"init":{"pos":[[425,60],[495,60],[565,60],[425,130],[495,130],[565,130],[425,200],[495,200],[565,200],[425,270],[495,270],[565,270]]},"url":"desktop/puzzle/word.svg",'+
     '"timg":['+img+'],"svgclass":['+svgClass+'],"values":['+values+']'+
     ((issame)?',"same":'+JSON.stringify(same):'')+
     ']]>');
@@ -236,7 +236,7 @@ var t003 = {
     <h4>Alternative : Reconstruction de mots</h4>
     <div class="margin">
         <ul>
-            <li><b>"url":"puzzle/word.svg"</b></li>
+            <li><b>"url":"desktop/puzzle/word.svg"</b></li>
             <li><b>"svgclass"</b> peut prendre les valeurs "l2","l3"..."l11","l12"(valeur par défaut) en fonction du nombre de lettres contenus dans le mot à reconstruire.</li>
             <li><b>"decoys":["dd01","dd02","dd03","dd04","dd05","dd06","dd07","dd08","dd09"]</b> permet de définir de fausses lettres. Evidemment, elles ne doivent pas être communes avec les lettres du mot en cours.</li>
             <li><b>"values":{"p01":'Lettre1',"p02":'Lettre2',...,"dd01":'Fausse lettre'}</b>.</li>
@@ -251,7 +251,7 @@ var t003 = {
     <h4>Alternative : Reconstruction de phrases</h4>
     <div class="margin">
         <ul>
-            <li><b>"url":"puzzle/sentence.svg"</b></li>
+            <li><b>"url":"desktop/puzzle/sentence.svg"</b></li>
             <li><b>"svgclass"</b> peut prendre les valeurs "l1","l2","l3" ou "l4" en fonction du nombre de lignes nécessaires à l'exercice.</li>
             <li><b>"values":{"1-00-2":"Mot1","1-02-5":"Mot2","1-07-5":"Mot3"}</b>. L'ensemble des pièces du puzzle sont définies par 3 nombres successifs [numéro de ligne-position-taille]. Ainsi 1-00-2 représente la pièce de taille 2 qui se trouve à la position 0 de la ligne 1.La pièce suivante 1-02-5 se trouve à la position 2 de la ligne 1 (juste derrière la première pièce). La taille des pièces peut être comprise entre 1 et 5 inclus, et la taille d'une ligne est de 12. Par conséquent, la triplette définissant la dernière pièce d'une ligne doit vérifier [position]+[taille] = 12. Dans notre exemple, la dernière pièce est en position 7 et a une taille de 5 ; on a bien 7+5=12 : la ligne est remplie entièrement.</li>
         </ul>

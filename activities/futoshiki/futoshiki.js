@@ -178,7 +178,7 @@
                 });
 
                 // Locale handling
-                $this.find("h1#label").html(settings.label);
+
                 $this.find("#guide").html(settings.guide);
                 $this.find("#guide2").html(settings.guide2);
                 if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }

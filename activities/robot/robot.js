@@ -245,7 +245,7 @@
 
                 // Locale handling
                 if (settings.exercice) { $this.find("#exercice").html(settings.exercice); }
-                $this.find("h1#label").html(settings.label);
+
                 var list=["a","b","c","d","e","f","g"];
                 for (var i in settings.locale.legend) { $this.find("#"+i).html(settings.locale.legend[i]); }
                 if ($.isArray(settings.locale.guide)) {

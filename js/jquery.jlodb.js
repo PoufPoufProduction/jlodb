@@ -56,24 +56,26 @@
             var settings = helpers.settings($this);
             // HANDLE ARGS
             var tmp     = new Date();
-            var args    = "?debug="+tmp.getTime();
+            var args    = "?limit=1&order=rand&detail&debug="+tmp.getTime();
             for (var i in _args) { args+="&"+i+"="+_args[i]; }
 
             // GET EXERCICE FROM DATABASE AND LAUNCH
             var url     = "api/exercice.php"+args;
 
             $.getJSON(url, function (data) {
-                if (data.status=="error") { helpers.exercice($this, {id:"nlx"}); }
+                if (data.status=="error" || data.nb==0) { helpers.exercice($this, {id:"nlx"}); }
                 else {
-                    var d = data.data;
-                    if (data.locale) { if (d.locale) { d.locale = $.extend(d.locale, data.locale); } else { d.locale = data.locale; } }
-                    d.label = data.label;
-                    if (settings.onexercice) { settings.onexercice($this, data.id, data.activity); }
+                    var d = data.exercices[0].data;
+                    if (data.exercices[0].locale) {
+                        if (d.locale) { d.locale = $.extend(d.locale, data.exercices[0].locale); }
+                        else { d.locale = data.exercices[0].locale; } }
+                    d.label = data.exercices[0].label;
+                    if (settings.onexercice) { settings.onexercice($this, data.exercices[0].id, data.exercices[0].activity); }
 
-                    if (data.ext && jlodbext && jlodbext[data.ext]) {
-                        jlodbext[data.ext].js(function() { helpers.run($this,data.activity, d); });
+                    if (data.exercices[0].ext && jlodbext && jlodbext[data.exercices[0].ext]) {
+                        jlodbext[data.exercices[0].ext].js(function() { helpers.run($this,data.exercices[0].activity, d); });
                     }
-                    else { helpers.run($this,data.activity, d); }
+                    else { helpers.run($this,data.exercices[0].activity, d); }
                 }
             });
         },

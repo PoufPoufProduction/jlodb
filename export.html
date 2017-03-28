@@ -57,7 +57,7 @@ format: function(_text) {
         },
 
 ids: function(_target, _ids) {
-    $.getJSON("api/exercices.php?id="+_ids, function(data) {
+    $.getJSON("api/exercice.php?id="+_ids, function(data) {
         var html="";
         html+="<div class='ids'>"+_ids+"</div>";
         var ids = decodeURIComponent(_ids).split(",");

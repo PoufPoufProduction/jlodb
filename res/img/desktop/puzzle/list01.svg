@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="100%" height="100%" viewBox="0 0 640 480" id="list01">
+<defs id="defs2385">
+ <style type="text/css">
+    svg#list01 .disable                 { display:none; }
+    svg#list01 .hide                    { display:none; }
+    svg#list01 #pieces .result          { fill:white; fill-opacity:0; cursor:move; }
+    svg#list01 #pieces .wrong .result   { fill:red; fill-opacity:0.5; }
+    svg#list01 #pieces .good .result    { fill:#0F0; fill-opacity:0.5; }
+    svg#list01 text                     { font-size:48px;text-anchor:middle;fill:white;opacity:0.7; }
+    svg#list01 #target text.bg          { fill:#ccc; }
+    svg#list01 #tt circle               { fill:gray; }
+    svg#list01 #tp circle.bg            { fill:#c27642; }
+    svg#list01.img #tt circle.bg        { fill:white; }
+    svg#list01.img #tp circle.bg        { fill:#ffdd88; }
+    svg#list01.alpha #target image      { opacity:0.5; }
+ </style>
+</defs>
+
+
+    <rect x="40" y="40" width="550" height="120" ry="60" style="fill:#AAA;fill-opacity:1;stroke:white;stroke-width:10px;"/>
+
+<g class="disable">
+    <g id="tt"> <circle cx="0" cy="0" r="45" class="border"/><circle cx="0" cy="0" r="40" class="bg"/>
+    </g>
+    <g id="tp">
+        <circle cx="0" cy="0" r="40" style="fill:#8e572b;"/>
+        <circle cx="0" cy="0" r="35" class="bg"/>
+        <path d="M 0 -40 C -18.56 -40 -34.17 -27.36 -38.68 -10.21 C -27.43 -6.91 -14.19 -5 0 -5 C 14.19 -5 27.44 -6.92 38.68 -10.21 C 34.17 -27.36 18.56 -40 0 -40 z" style="fill:#ffc593;fill-opacity:0.15;"/>
+        <circle cx="0" cy="0" r="40" style="fill:none;stroke:#463326;stroke-width:2;"/>
+    </g>
+</g>
+
+
+<g id="bg">
+
+    <g id="target">
+        <g id="t01" transform="translate(100,100)" class="hide">
+            <use x="0" y="0" xlink:href="#tt"/>
+            <text y="14" class="bg" id="txt01"></text>
+            <image id="i01" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        </g>
+        <g id="t02" transform="translate(185,100)">
+            <use x="0" y="0" xlink:href="#tt"/>
+            <text y="14" class="bg" id="txt02"></text>
+            <image id="i02" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        </g>
+        <g id="t03" transform="translate(270,100)">
+            <use x="0" y="0" xlink:href="#tt"/>
+            <text y="14" class="bg" id="txt03"></text>
+            <image id="i03" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        </g>
+        <g id="t04" transform="translate(355,100)">
+            <use x="0" y="0" xlink:href="#tt"/>
+            <text y="14" class="bg" id="txt04"></text>
+            <image id="i04" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        </g>
+        <g id="t05" transform="translate(440,100)">
+            <use x="0" y="0" xlink:href="#tt"/>
+            <text y="14" class="bg" id="txt05"></text>
+            <image id="i05" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        </g>
+        <g id="t06" transform="translate(525,100)">
+            <use x="0" y="0" xlink:href="#tt"/>
+            <text y="14" class="bg" id="txt06"></text>
+            <image id="i06" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        </g>
+        <g id="t00" transform="translate(100,100)" class="hide">
+            <use x="0" y="0" xlink:href="#tt"/>
+            <circle cx="0" cy="0" r="40" style="fill:#8e572b;"/>
+            <circle cx="0" cy="0" r="35" style="fill:#c27642;"/>
+            <path d="M 0 -40 C -18.560591 -40 -34.172464 -27.361411 -38.6875 -10.21875 C -27.439467 -6.9192853 -14.193093 -5 0 -5 C 14.193093 -5 27.439467 -6.9192853 38.6875 -10.21875 C 34.172464 -27.361411 18.560591 -40 0 -40 z" style="fill:#ffc593;fill-opacity:0.15;"/>
+            <text y="14" id="txt00"></text>
+            <image id="i00" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        </g>
+    </g>
+</g>
+
+<g id="pieces">
+    <g id="pp01" transform="translate(100,100)"><g class="scale"><g class="rot">
+        <use x="0" y="0" xlink:href="#tp"/>
+        <text y="14" id="p01"></text>
+        <image id="pi01" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        <circle cx="0" cy="0" r="43" class="result"/>
+    </g></g></g>
+    <g id="pp02" transform="translate(185,100)"><g class="scale"><g class="rot">
+        <use x="0" y="0" xlink:href="#tp"/>
+        <text y="14" id="p02"></text>
+        <image id="pi02" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        <circle cx="0" cy="0" r="43" class="result"/>
+    </g></g></g>
+    <g id="pp03" transform="translate(270,100)"><g class="scale"><g class="rot">
+        <use x="0" y="0" xlink:href="#tp"/>
+        <text y="14" id="p03"></text>
+        <image id="pi03" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        <circle cx="0" cy="0" r="43" class="result"/>
+    </g></g></g>
+    <g id="pp04" transform="translate(355,100)"><g class="scale"><g class="rot">
+        <use x="0" y="0" xlink:href="#tp"/>
+        <text y="14" id="p04"></text>
+        <image id="pi04" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        <circle cx="0" cy="0" r="43" class="result"/>
+    </g></g></g>
+    <g id="pp05" transform="translate(440,100)"><g class="scale"><g class="rot">
+        <use x="0" y="0" xlink:href="#tp"/>
+        <text y="14" id="p05"></text>
+        <image id="pi05" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        <circle cx="0" cy="0" r="43" class="result"/>
+    </g></g></g>
+    <g id="pp06" transform="translate(525,100)"><g class="scale"><g class="rot">
+        <use x="0" y="0" xlink:href="#tp"/>
+        <text y="14" id="p06"></text>
+        <image id="pi06" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        <circle cx="0" cy="0" r="43" class="result"/>
+    </g></g></g>
+
+    <g id="dd01" transform="translate(100,200)"><g class="scale"><g class="rot">
+        <use x="0" y="0" xlink:href="#tp"/>
+        <text y="14" id="d01"></text>
+        <image id="di05" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        <circle cx="0" cy="0" r="43" class="result"/>
+    </g></g></g>
+    <g id="dd02" transform="translate(185,200)"><g class="scale"><g class="rot">
+        <use x="0" y="0" xlink:href="#tp"/>
+        <text y="14" id="d02"></text>
+        <image id="di04" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        <circle cx="0" cy="0" r="43" class="result"/>
+    </g></g></g>
+    <g id="dd03" transform="translate(270,200)"><g class="scale"><g class="rot">
+        <use x="0" y="0" xlink:href="#tp"/>
+        <text y="14" id="d03"></text>
+        <image id="di03" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        <circle cx="0" cy="0" r="43" class="result"/>
+    </g></g></g>
+    <g id="dd04" transform="translate(355,200)"><g class="scale"><g class="rot">
+        <use x="0" y="0" xlink:href="#tp"/>
+        <text y="14" id="d04"></text>
+        <image id="di04" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        <circle cx="0" cy="0" r="43" class="result"/>
+    </g></g></g>
+    <g id="dd05" transform="translate(440,200)"><g class="scale"><g class="rot">
+        <use x="0" y="0" xlink:href="#tp"/>
+        <text y="14" id="d05"></text>
+        <image id="di05" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        <circle cx="0" cy="0" r="43" class="result"/>
+    </g></g></g>
+    <g id="dd06" transform="translate(525,200)"><g class="scale"><g class="rot">
+        <use x="0" y="0" xlink:href="#tp"/>
+        <text y="14" id="d06"></text>
+        <image id="di06" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        <circle cx="0" cy="0" r="43" class="result"/>
+    </g></g></g>
+
+
+</g>
+
+
+
+
+
+
+
+</svg>

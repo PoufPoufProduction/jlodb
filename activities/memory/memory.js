@@ -74,7 +74,7 @@
                 $this.css("font-size", Math.floor((Math.min($this.width(),$this.height())-7)/5)+"px");
 
                 // Locale handling
-                $this.find("h1#label").html(settings.label);
+
                 if(settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
                 var n = settings.level;
                 if (settings.inclevel) n=n+"+";

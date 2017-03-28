@@ -107,7 +107,7 @@
                 $this.find("#exercice>div").css("font-size",settings.fontex+"em").show();
 
                 // LOCALE HANDLING
-                $this.find("h1#label").html(settings.label);
+
                 if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
 
                 // ADD BACKGROUND

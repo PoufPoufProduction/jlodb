@@ -106,7 +106,7 @@
                 }
 
                 // Locale handling
-                $this.find("h1#label").html(settings.label);
+
                 if(settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
                 if (settings.exercice) { $this.find("#exercice").show().find(">div").html(settings.exercice); }
 

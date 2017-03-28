@@ -367,7 +367,7 @@ var tibibi = {
         overview: function() {
             var html="";
             for (var i in tibibi.course.ex) { if (html) { html+=","; } html+=tibibi.course.ex[i]; }
-             $.getJSON("api/exercices.php?id="+html, function(data2) {
+             $.getJSON("api/exercice.php?id="+html, function(data2) {
                 $("#biscreen #list").html("");
                 for (var i in tibibi.course.ex) {
                     var elt = 0;

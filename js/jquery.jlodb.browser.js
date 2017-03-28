@@ -197,7 +197,7 @@
                 html+="<div "+helpers.onclick(['classification',e.classification])+">"+
                       "<img src='res/img/classification/"+e.classification+".svg'/></div>";
                 html+="<div>"+e.level+"</div>";
-                html+="<div><img src='res/img/star/star"+e.diff+".svg'/></div>";
+                html+="<div><img src='res/img/numbers/star/star"+e.diff+".svg'/></div>";
                 html+="<div class='time'>"+e.extend+"</div>";
                 html+="</div>";
 
@@ -289,7 +289,7 @@
                 if (args.length) { args = args.substr(1); }
 
                 //SEND THE REQUEST AND SHOW THE RESULTS
-                $.getJSON("api/exercices.php?"+args, function (data) {
+                $.getJSON("api/exercice.php?"+args, function (data) {
                     if (data.status=="success") { helpers.buildExercices($this, data); }
                     _fct();
                 });

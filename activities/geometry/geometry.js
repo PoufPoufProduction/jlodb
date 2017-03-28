@@ -134,7 +134,7 @@
                 $this.find("#gnote").html(settings.number);
 
                 // LOCALE HANDLING
-                $this.find("h1#label").html(settings.label);
+
                 if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
 
                 // LOAD SVG

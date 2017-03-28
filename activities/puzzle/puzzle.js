@@ -136,7 +136,7 @@
                 }
                 
                 // LOCALE HANDLING
-                $this.find("h1#label").html(settings.label);
+
                 $this.find("#guide").html(settings.locale.guide);
                 //$.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); });
 
