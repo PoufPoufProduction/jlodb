@@ -30,10 +30,10 @@
         bunny       : { type: "img", src:"res/img/ppvc/bunny01",    wrong:"res/img/ppvc/bunny02",   good:"res/img/ppvc/bunny03" },
         lizzie      : { type: "img", src:"res/img/ppvc/lizzie01",   wrong:"res/img/ppvc/lizzie03",  good:"res/img/ppvc/lizzie04" },
         lottie      : { type: "img", src:"res/img/ppvc/lottie01",   wrong:"res/img/ppvc/lottie02",  good:"res/img/ppvc/lottie04" },
-        blueball    : { type: "img", src:"res/img/balls/blue01",    wrong:"res/img/balls/gray02",   good:"res/img/balls/blue02" },
-        redball     : { type: "img", src:"res/img/balls/red01",     wrong:"res/img/balls/gray02",   good:"res/img/balls/red02" },
-        greenball   : { type: "img", src:"res/img/balls/green01",   wrong:"res/img/balls/gray02",   good:"res/img/balls/green02" },
-        purpleball  : { type: "img", src:"res/img/balls/purple01",  wrong:"res/img/balls/gray02",   good:"res/img/balls/purple02" }
+        blueball    : { type: "img", src:"res/img/asset/balls/blue01",    wrong:"res/img/asset/balls/gray02",   good:"res/img/asset/balls/blue02" },
+        redball     : { type: "img", src:"res/img/asset/balls/red01",     wrong:"res/img/asset/balls/gray02",   good:"res/img/asset/balls/red02" },
+        greenball   : { type: "img", src:"res/img/asset/balls/green01",   wrong:"res/img/asset/balls/gray02",   good:"res/img/asset/balls/green02" },
+        purpleball  : { type: "img", src:"res/img/asset/balls/purple01",  wrong:"res/img/asset/balls/gray02",   good:"res/img/asset/balls/purple02" }
     };
 
     // private methods

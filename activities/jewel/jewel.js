@@ -617,14 +617,14 @@
         jewel: function($this, _i, _j, _val) {
             var settings  = helpers.settings($this);
             var j = [ "",
-                      "jewels/red01", "jewels/blue02", "jewels/yellow03", "jewels/purple04", "jewels/green05", 
-                      "jewels/white06", "jewels/orange07", "", "", "",
-                      "jewels/red01h", "jewels/blue02h", "jewels/yellow03h", "jewels/purple04h", "jewels/green05h", 
-                      "jewels/white06h", "jewels/orange07h", "", "", "",
-                      "jewels/red01v", "jewels/blue02v", "jewels/yellow03v", "jewels/purple04v", "jewels/green05", 
-                      "jewels/white06v", "jewels/orange07v", "", "", "",
-                      "jewels/red01c", "jewels/blue02c", "jewels/yellow03c", "jewels/purple04c", "jewels/green05c", 
-                      "jewels/white06c", "jewels/orange07c", "", "", "",
+                      "asset/jewels/red01", "asset/jewels/blue02", "asset/jewels/yellow03", "asset/jewels/purple04", "asset/jewels/green05", 
+                      "asset/jewels/white06", "asset/jewels/orange07", "", "", "",
+                      "asset/jewels/red01h", "asset/jewels/blue02h", "asset/jewels/yellow03h", "asset/jewels/purple04h", "asset/jewels/green05h", 
+                      "asset/jewels/white06h", "asset/jewels/orange07h", "", "", "",
+                      "asset/jewels/red01v", "asset/jewels/blue02v", "asset/jewels/yellow03v", "asset/jewels/purple04v", "asset/jewels/green05", 
+                      "asset/jewels/white06v", "asset/jewels/orange07v", "", "", "",
+                      "asset/jewels/red01c", "asset/jewels/blue02c", "asset/jewels/yellow03c", "asset/jewels/purple04c", "asset/jewels/green05c", 
+                      "asset/jewels/white06c", "asset/jewels/orange07c", "", "", "",
                       "icon/skill/life01", "","","",""];
 
             var ret       = {

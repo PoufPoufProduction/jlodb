@@ -138,7 +138,7 @@
         img : function($this,_val) {
             var settings = helpers.settings($this);
             _val=parseInt(_val)%200;
-            return "res/img/"+((_val<100)?"svginventoryicons/"+tiles[settings.theme][_val%20]:"runes/"+settings.bonus[_val%100][1])+".svg";
+            return "res/img/"+((_val<100)?"svginventoryicons/"+tiles[settings.theme][_val%20]:"asset/runes/"+settings.bonus[_val%100][1])+".svg";
         },
         val : function($this,_elt, _val) {
             var settings = helpers.settings($this);
