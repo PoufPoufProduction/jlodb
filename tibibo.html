@@ -676,7 +676,7 @@ var tibibo = {
             }
             html+="><img src='"+elt.src+"'/></div>";
 
-            if (!_from)         { html+="<div class='type'><img src='res/img/icon/plus01.svg'/></div>"; }
+            if (!_from)         { html+="<div class='type'><img src='res/img/icon/skill/plus01.svg'/></div>"; }
             if (!_from)         { html+="<div class='progress usermode'><div style='width:"+(r[1]?r[0]/r[1]:1)+"em';></div></div>"; }
             if (elt.nbstar>0)   {
                 html+="<div class='star' ";
@@ -1077,7 +1077,7 @@ $(window).ready(function() {
     
     <div id="bocomment" onmousedown="$(this).hide();" ontouchstart="$(this).hide();event.preventDefault();">
         <div id="boccomment"></div>
-        <div id="boquit" class="icon" onmousedown="document.location='tibibo.html';event.stopPropagation();" ontouchstart="document.location='tibibo.html';event.stopPropagation();event.preventDefault();"><img src="res/img/icon/white/logout.svg"/></div>
+        <div id="boquit" class="icon" onmousedown="document.location='tibibo.html';event.stopPropagation();" ontouchstart="document.location='tibibo.html';event.stopPropagation();event.preventDefault();"><img src="res/img/default/white/logout.svg"/></div>
     </div>
 
     <div id="boeditnode">
@@ -1086,7 +1086,7 @@ $(window).ready(function() {
             <div id="nodeimg" class="node" onclick="tibibo.node.edit.refresh(true);" 
                                           ontouchstart="tibibo.node.edit.refresh(true);event.preventDefault();">
                     <div class="icon"><img src="res/img/classification/root.svg"/></div>
-                    <div class="type"><img src="res/img/icon/plus01.svg"/></div>
+                    <div class="type"><img src="res/img/icon/skill/plus01.svg"/></div>
                     <div class="star"><img src="res/img/default/icon/menu01st0.svg"/></div>
             </div>
             <textarea id="elabel"
@@ -1202,12 +1202,12 @@ $(window).ready(function() {
             <div class="content">
                 <div class="value"></div><div class="stars"></div>
                 <div class="icon" id="reload" ontouchstart="$('#launcher').jlodb('reload');event.preventDefault();"
-                    onclick="$('#launcher').jlodb('reload');" ><img src="res/img/icon/reload.svg"/></div>
+                    onclick="$('#launcher').jlodb('reload');" ><img src="res/img/default/icon/action_reload01.svg"/></div>
                 <div class="icon" id="menu" ontouchstart="$('#launcher').jlodb('close',true);event.preventDefault();"
-                    onclick="$('#launcher').jlodb('close', true);" ><img src="res/img/icon/menu.svg"/></div>
+                    onclick="$('#launcher').jlodb('close', true);" ><img src="res/img/default/icon/action_menu01.svg"/></div>
                 <div class="icon" id="next"
                     ontouchstart="$('#launcher').jlodb('close',false);$('#omenu').menu('next');event.preventDefault();"
-                    onclick="$('#launcher').jlodb('close',false);$('#omenu').menu('next');"><img src="res/img/icon/next.svg"/></div>
+                    onclick="$('#launcher').jlodb('close',false);$('#omenu').menu('next');"><img src="res/img/default/icon/action_next01.svg"/></div>
             </div>
         </div></div>
  

@@ -708,8 +708,8 @@
                 default : ret.val = parseInt(_val); break;
             }
             ret.$html.append("<div><img src='res/img/"+j[ret.val]+".svg'/></div>");
-            if (ret.frozen) { ret.$html.append("<div class='frozen'><img src='res/img/icon/ice01.svg'/></div>"); }
-            if (ret.locked) { ret.$html.append("<div class='locked'><img src='res/img/icon/locked0"+ret.locked+".svg'/></div>"); }
+            if (ret.frozen) { ret.$html.append("<div class='frozen'><img src='res/img/asset/fx/ice01.svg'/></div>"); }
+            if (ret.locked) { ret.$html.append("<div class='locked'><img src='res/img/asset/fx/locked0"+ret.locked+".svg'/></div>"); }
             ret.$html.unbind("mousedown touchstart").bind("mousedown touchstart", function(_event) {
                 if (settings.interactive) {
                     var e = (_event && _event.originalEvent &&

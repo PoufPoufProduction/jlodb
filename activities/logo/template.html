@@ -5,13 +5,13 @@
         <div id="tabs">
             <div></div>
             <div onclick="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#op').show();"
-                 ontouchstart="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#op').show();event.preventDefault();" class="s"><img src="res/img/icon/tab01.svg"/></div>
+                 ontouchstart="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#op').show();event.preventDefault();" class="s"><img src="res/img/icon/tab/tab01.svg"/></div>
             <div onclick="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#va').show();"
-                 ontouchstart="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#va').show();event.preventDefault();"><img src="res/img/icon/tab02.svg"/></div>
+                 ontouchstart="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#va').show();event.preventDefault();"><img src="res/img/icon/tab/tab02.svg"/></div>
             <div onclick="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#ma').show();"
-                 ontouchstart="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#ma').show();event.preventDefault();"><img src="res/img/icon/tab03.svg"/></div>
+                 ontouchstart="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#ma').show();event.preventDefault();"><img src="res/img/icon/tab/tab03.svg"/></div>
             <div onclick="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#cl').show();"
-                 ontouchstart="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#cl').show();event.preventDefault();"><img src="res/img/icon/tab04.svg"/></div>
+                 ontouchstart="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#cl').show();event.preventDefault();"><img src="res/img/icon/tab/tab04.svg"/></div>
         </div>
         <div id="panels">
             <div id="op">
@@ -164,7 +164,7 @@
   </div>
   
   <div id="help" class="icon" ontouchstart="$(this).next().show();event.preventDefault();"
-                  onclick="$(this).next().show();"><img src="res/img/icon/about.svg"/></div>
+                  onclick="$(this).next().show();"><img src="res/img/default/icon/about.svg"/></div>
   <div id="phelp" ontouchstart="$(this).hide();event.preventDefault();"
                   onclick="$(this).hide();"><div>
     <div>
@@ -255,7 +255,7 @@
                    onclick="$(this).hide();"></div>
                    
     <div id="devmode" ontouchstart="$(this).closest('.logo').logo('devmode');event.preventDefault();"
-                      onclick="$(this).closest('.logo').logo('devmode');" ><img src="res/img/icon/white/snapshot.svg"/></div>
+                      onclick="$(this).closest('.logo').logo('devmode');" ><img src="res/img/default/white/snapshot.svg"/></div>
                       
     <div id="devoutput" ontouchstart="$(this).hide();event.preventDefault();" onclick="$(this).hide();">
         <textarea ontouchstart="$(this).focus();event.stopPropagation();event.preventDefault();"

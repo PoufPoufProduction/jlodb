@@ -5,7 +5,7 @@
     <div id="detail"><div>
         <div class="detdiv icon" id="valid"
                      ontouchstart="$(this).closest('.calc').calc('set');event.preventDefault();event.stopPropagation();"
-                     onclick="$(this).closest('.calc').calc('set');event.stopPropagation();"><img src="res/img/icon/white/valid.svg"/></div>
+                     onclick="$(this).closest('.calc').calc('set');event.stopPropagation();"><img src="res/img/default/white/valid.svg"/></div>
         <div class="detdiv" id="detailg">
             <div class="settings"><div class='label'>hide</div><input id="sethide" value="[[]]"/></div>
             <div class="settings"><div class='label'>size</div><input id="setsize" value="[5,5]"/></div>
@@ -141,9 +141,9 @@
         </div>
         <div id="phandle">
             <div class="icon" id="pcancel" ontouchstart="$(this).closest('.calc').calc('cell', 0);event.preventDefault();"
-                              onclick="$(this).closest('.calc').calc('cell', 0);"><img src="res/img/icon/cancel2.svg"/></div>
+                              onclick="$(this).closest('.calc').calc('cell', 0);"><img src="res/img/default/white/cancel02.svg"/></div>
             <div class="icon" id="pvalid" ontouchstart="$(this).closest('.calc').calc('valid');event.preventDefault();"
-                              onclick="$(this).closest('.calc').calc('valid');"><img src="res/img/icon/valid2.svg"/></div>
+                              onclick="$(this).closest('.calc').calc('valid');"><img src="res/img/default/white/valid02.svg"/></div>
             <div id="escreen"></div>
         </div>
         <div id="pmenu">
@@ -175,26 +175,26 @@
     <div id="mask" class="mask"><div>
         <div class="icon" ontouchstart="$(this).closest('.mask').hide();event.preventDefault();"
                           onclick="$(this).closest('.mask').hide();">
-            <img src="res/img/icon/quit.svg"/>
+            <img src="res/img/default/icon/nw_quit01.svg"/>
         </div>
         <textarea></textarea>
         <div id="import" ontouchstart="$(this).closest('.calc').calc('import');event.preventDefault();"
                               onclick="$(this).closest('.calc').calc('import');">
-            <div class="icon"><img src="res/img/icon/white/import.svg"/></div>
+            <div class="icon"><img src="res/img/default/white/import.svg"/></div>
         </div>
     </div></div>
     
     <div id="locale" class="icon" ontouchstart="$(this).next().show();event.preventDefault();"
-                          onclick="$(this).next().show();"><img src="res/img/icon/white/edit.svg"/></div>
+                          onclick="$(this).next().show();"><img src="res/img/default/white/edit.svg"/></div>
                           
     <div id="glossary" class="mask"><div>
         <div id="gadd" class="icon" ontouchstart="$(this).next().next().clone().appendTo($(this).parent()).show();event.preventDefault();"
                           onclick="$(this).next().next().clone().appendTo($(this).parent()).show();">
-            <img src="res/img/icon/white/add.svg"/>
+            <img src="res/img/default/white/add.svg"/>
         </div>
         <div class="icon" ontouchstart="$(this).closest('.calc').calc('locale');event.preventDefault();"
                               onclick="$(this).closest('.calc').calc('locale');">
-            <img src="res/img/icon/quit.svg"/>
+            <img src="res/img/default/icon/nw_quit01.svg"/>
         </div>
         <div class="elt"><input class="label" value="key"/><input class="value" value="value"/></div>
     </div></div>

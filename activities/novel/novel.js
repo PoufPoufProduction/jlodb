@@ -407,9 +407,9 @@
                     html+="<div class='elt' id='"+_id+"'>";
                     html+="<input class='label eltdata' value=\""+_id+"\"/>";
                     html+="<input class='value eltdata' value=\""+(_elt.text?_elt.text:"")+"\"/>";
-                    html+="<div class='icon' id='addimg'><img src='res/img/icon/white/add.svg'/></div>";
-                    html+="<div class='icon' id='addattr'><img src='res/img/icon/white/add.svg'/></div>";
-                    html+="<div class='icon' id='removeelt'><img src='res/img/icon/white/delete.svg'/></div>";
+                    html+="<div class='icon' id='addimg'><img src='res/img/default/white/add.svg'/></div>";
+                    html+="<div class='icon' id='addattr'><img src='res/img/default/white/add.svg'/></div>";
+                    html+="<div class='icon' id='removeelt'><img src='res/img/default/white/delete.svg'/></div>";
                     html+="</div>";
                     var $html=$(html);
                     $html.children("input").change(function() { $(this).closest("#devdefpanel").find("#savedef").addClass("s"); });
@@ -443,8 +443,8 @@
                     var html="<div class='eltimg toggle'>"
                     html+="<input class='label' value=\""+_name+"\"/>";
                     html+="<input class='value' value=\""+_value+"\"/>";
-                    html+="<div class='icon snapshot'><img src='res/img/icon/white/snapshot.svg'/></div>";
-                    html+="<div class='icon' id='removeimg'><img src='res/img/icon/white/delete.svg'/></div>";
+                    html+="<div class='icon snapshot'><img src='res/img/default/white/snapshot.svg'/></div>";
+                    html+="<div class='icon' id='removeimg'><img src='res/img/default/white/delete.svg'/></div>";
                     html+="</div>";
                     var $html = $(html);
                     
@@ -471,7 +471,7 @@
                     var html="<div class='eltattr toggle'>"
                     html+="<input class='label' value=\""+_name+"\"/>";
                     html+="<input class='value' value=\""+_value+"\"/>";
-                    html+="<div class='icon' id='removeattr'><img src='res/img/icon/white/delete.svg'/></div>";
+                    html+="<div class='icon' id='removeattr'><img src='res/img/default/white/delete.svg'/></div>";
                     html+="</div>";
                     var $html = $(html);
                     
@@ -488,8 +488,8 @@
                 update: function($this) {
                     var settings    = helpers.settings($this);
                     var html="<div id='devdefmenu' class='menu'>"
-                    html+="<div id='adddef' class='icon'><img src='res/img/icon/white/add.svg'/></div>"
-                    html+="<div id='savedef' class='icon'><img src='res/img/icon/white/import.svg'/></div>"
+                    html+="<div id='adddef' class='icon'><img src='res/img/default/white/add.svg'/></div>"
+                    html+="<div id='savedef' class='icon'><img src='res/img/default/white/import.svg'/></div>"
                     html+="</div>";
                     html+="<div class='content'></div>";
                     $this.find("#devdefpanel").html(html);
@@ -661,9 +661,9 @@
                     html+="<option>jump</option><option>menu</option><option>op</option><option>pause</option><option>show</option>";
                     html+="<option>stop</option>";
                     html+="</select>";
-                    html+="<div class='icon' id='addop'><img src='res/img/icon/white/add.svg'/></div>";
-                    html+="<div class='icon' id='dupop'><img src='res/img/icon/white/add.svg'/></div>";
-                    html+="<div class='icon' id='removeelt'><img src='res/img/icon/white/delete.svg'/></div>";
+                    html+="<div class='icon' id='addop'><img src='res/img/default/white/add.svg'/></div>";
+                    html+="<div class='icon' id='dupop'><img src='res/img/default/white/add.svg'/></div>";
+                    html+="<div class='icon' id='removeelt'><img src='res/img/default/white/delete.svg'/></div>";
                     html+="</div>";
                     var $html=$(html);
                     
@@ -678,7 +678,7 @@
                     var html="<div class='elt eltattr'>"
                     html+="<input class='label' value=\""+_name+"\"/>";
                     html+="<input class='value' value=\""+_value+"\"/>";
-                    html+="<div class='icon' id='removeattr'><img src='res/img/icon/white/delete.svg'/></div>";
+                    html+="<div class='icon' id='removeattr'><img src='res/img/default/white/delete.svg'/></div>";
                     html+="</div>";
                     var $html = $(html);
                     
@@ -695,8 +695,8 @@
                     switch(_def.type) {
                         case "callback" : case "show": case "hide":
                             html+="<input class='value' value=\""+(_def.value?_def.value:"")+"\"/>";
-                            html+="<div class='icon' id='addattr'><img src='res/img/icon/white/add.svg'/></div>";
-                            html+="<div class='icon' id='removeop'><img src='res/img/icon/white/delete.svg'/></div>";
+                            html+="<div class='icon' id='addattr'><img src='res/img/default/white/add.svg'/></div>";
+                            html+="<div class='icon' id='removeop'><img src='res/img/default/white/delete.svg'/></div>";
                         break;
                         case "dialog" : case "dialogg" :
                             html+="<input class='value' id='dialogvalue' value=\""+(_def.from?_def.from:"")+"\"/>";
@@ -706,23 +706,23 @@
                             if (d1 && settings.glossary[d1]) { d1 = settings.glossary[d1]; }
                             if (d2 && settings.glossary[d2]) { d2 = settings.glossary[d2]; }
                             
-                            html+="<div class='icon' id='removeop'><img src='res/img/icon/white/delete.svg'/></div>";
+                            html+="<div class='icon' id='removeop'><img src='res/img/default/white/delete.svg'/></div>";
                             
                             html+="<textarea id='dialogd1' class='value'>"+(d1?d1:"")+"</textarea>";
                             html+="<textarea id='dialogd2' class='value'>"+(d2?d2:"")+"</textarea>";
                         break;
                         case "if" :
                             html+="<input class='value' value=\""+(_def.cond?_def.cond:"")+"\"/>";
-                            html+="<div class='icon' id='removeop'><img src='res/img/icon/white/delete.svg'/></div>";
+                            html+="<div class='icon' id='removeop'><img src='res/img/default/white/delete.svg'/></div>";
                             html+="<div class='substory'></div>";
                         break;
                         case "menu" :
-                            html+="<div class='icon' id='addstory'><img src='res/img/icon/white/add.svg'/></div>";
-                            html+="<div class='icon' id='removeop'><img src='res/img/icon/white/delete.svg'/></div>";
+                            html+="<div class='icon' id='addstory'><img src='res/img/default/white/add.svg'/></div>";
+                            html+="<div class='icon' id='removeop'><img src='res/img/default/white/delete.svg'/></div>";
                             html+="<div class='substory'></div>"; break;
                         default :
                             html+="<input class='value' value=\""+(_def.value?_def.value:"")+"\"/>";
-                            html+="<div class='icon' id='removeop'><img src='res/img/icon/white/delete.svg'/></div>";
+                            html+="<div class='icon' id='removeop'><img src='res/img/default/white/delete.svg'/></div>";
                         break;
                     }
                     html+="</div>";
@@ -748,8 +748,8 @@
                     var settings    = helpers.settings($this);
                     
                     var html="<div id='devstomenu' class='menu'>"
-                    html+="<div id='addsto' class='icon'><img src='res/img/icon/white/add.svg'/></div>"
-                    html+="<div id='savesto' class='icon'><img src='res/img/icon/white/import.svg'/></div>"
+                    html+="<div id='addsto' class='icon'><img src='res/img/default/white/add.svg'/></div>"
+                    html+="<div id='savesto' class='icon'><img src='res/img/default/white/import.svg'/></div>"
                     html+="</div>";
                     html+="<div class='content'></div>";
                     $this.find("#devstopanel").html(html);

@@ -111,7 +111,7 @@ if (!$error) {
     if ($ret) { $count = mysqli_fetch_array($ret); }
 
     // THE VARIANT
-    if (!array_key_exists("id",$_GET) && !array_key_exists("alt",$_GET)) {
+    if (!array_key_exists("id",$_GET) && !array_key_exists("alt",$_GET) && !array_key_exists("detail",$_GET)) {
         if (strlen($where)) { $where.=" AND"; }
         $where.=" `Exercice_Variant`=''";
     }

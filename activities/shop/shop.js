@@ -280,7 +280,7 @@
                 var html="";
                 html+="<div class='lineplus'><div class='sale'>";
                 html+="<div class='icon' ontouchstart=\"$(this).closest('.shop').shop('del',this);event.preventDefault();\" "+
-                      "onclick=\"$(this).closest('.shop').shop('del',this);\"><img src='res/img/icon/cancel2.svg'/></div>";
+                      "onclick=\"$(this).closest('.shop').shop('del',this);\"><img src='res/img/default/white/cancel02.svg'/></div>";
                 if (_sale.type==0) { html+="<div class='label'><div>"+_sale.value+"</div></div><div class='cell a'></div></div>"; }
                 else { html+="<div class='label'>&#xA0;</div><div class='cell fixed'>"+_sale.value+"</div></div>"; }
                 html+="<div class='line'><div class='total'>&#xA0;</div><div class='cell a'></div></div></div>";

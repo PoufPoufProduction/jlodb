@@ -125,7 +125,7 @@
                 }
                 for (var i in settings.labels) {
                     $this.find("#objectives").append("<tr><td><div class='icon' style='cursor:default;'>"+
-                        "<img src='res/img/icon/cancel.svg' alt='x'/></div></td><td>&#xA0;"+
+                        "<img src='res/img/default/icon/cancel01.svg' alt='x'/></div></td><td>&#xA0;"+
                         helpers.format(settings.labels[i])+"</td></tr>");
                 }
                 for (var i in settings.objectives) for (var j in settings.objectives[i]) {
@@ -208,7 +208,7 @@
                     if (!settings.objectives[i][j].done) { complete = false; settings.finish = false; }
                 }
                 if (complete) {
-                    $($this.find("#objectives .icon img")[i]).attr("src", "res/img/icon/ok.svg");
+                    $($this.find("#objectives .icon img")[i]).attr("src", "res/img/default/icon/valid01.svg");
                 }
             }
             if (settings.finish) {
