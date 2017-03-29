@@ -160,7 +160,9 @@ if (!$error) {
             if (array_key_exists("detail",$_GET)) {
                 $json.='"data":{'.$row["Exercice_Parameters"].'},';
                 $json.='"ext":"'.$row["Activity_External"].'",';
-                $json.='"locale":{"label":"'.$row["Activity_Title"].'",'.$row["Activity_Locale"].'},';
+                if (!array_key_exists("nolocale",$_GET)) {
+                    $json.='"locale":{"label":"'.$row["Activity_Title"].'",'.$row["Activity_Locale"].'},';
+                }
             }
             
             if (array_key_exists("source",$_GET)) {
