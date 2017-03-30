@@ -59,7 +59,7 @@
         loadActivities: function($this) {
             var settings = helpers.settings($this);
             if (settings.activities) { helpers.loadTags($this); } else {
-                $.getJSON("api/activities.php", function (data) { settings.activities = data.activities; helpers.loadTags($this); });
+                $.getJSON("api/activity.php", function (data) { settings.activities = data.activities; helpers.loadTags($this); });
             }
         },
         loadTags: function($this) {

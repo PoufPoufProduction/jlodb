@@ -47,9 +47,16 @@ if (!$error) {
         }
 
     } else {
-        $status = "error";
-        $error = 9;
-        $textstatus = "activity name is missing";
+        $activity = mysqli_query($link, "SELECT * FROM `".$_SESSION['prefix']."activity`");
+        $json = "";
+        while($row = mysqli_fetch_array($activity)) {
+            if (strlen($json)) { $json.=","; }
+            $json.='{"id":"'.$row["Activity_Name"].'","name":"'.$row["Activity_Name"].'","label":"'.$row["Activity_Title"].'",'.
+                   '"description":"'.$row["Activity_Description"].'"';
+            if (array_key_exists("locale",$_GET)) { $json.=',"locale":{'.$row["Activity_Locale"].'}'; }
+            $json.='}';
+        }
+        $status     = "success";
     }
 }
 
@@ -65,6 +72,7 @@ if (isset($number))                     { echo '  "exercices": '.$number[0].',';
 if (isset($class))                      { echo '  "classification": ['.$class.'],'; }
 if (isset($files))                      { echo '  "files": ['.$files.'],'; }
 if (isset($locale))                     { echo '  "locale": {'.$locale.'},'; }
+if (isset($json))                       { echo '  "activities" : ['.$json.'],'; }
 echo '  "from" : "jlodb/api" }';
 
 ?>

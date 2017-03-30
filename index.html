@@ -240,7 +240,7 @@ jlodb = {
                     $("#jlcontent>div").hide();
                     $("#jlcontenta").load("locale/"+jlodb.checkdb.lang+"/activities.html"+"?debug="+Math.floor(Math.random()*99999),
                         function(response, status, xhr) {
-                        $.getJSON("api/activities.php", function (data) {
+                        $.getJSON("api/activity.php", function (data) {
                             for (var i=0; i<data.activities.length; i++) {
                                 var html="<tr><td class='icon'><div class='icon' onclick='jlodb.page.activities.detail(\"";
                                 html += data.activities[i].name+"\");'><img src='res/img/activity/";
@@ -407,7 +407,7 @@ jlodb = {
                 });
             },
             build: function() {
-                $.getJSON("api/activities.php", function(data) {
+                $.getJSON("api/activity.php", function(data) {
                     $("#jlcontentc").load("locale/"+jlodb.checkdb.lang+"/edition.html"+"?debug="+Math.floor(Math.random()*99999),
                     function(response, status, xhr) {
                         $("#jlodb #edition select").html("");
