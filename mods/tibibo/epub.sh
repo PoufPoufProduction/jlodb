@@ -15,8 +15,8 @@ fi
 echo ----- CLEAN and INITIALIZE -----
 dest=output
 IFS=$'\n'
-rm -f *.tmp
-rm -rf $dest
+rm -f p_*.tmp
+#rm -rf $dest
 
 # GET JSON FILE
 file=""
@@ -26,41 +26,45 @@ else
     echo "get book from website"
 fi
 fi
-echo ----- CONVERT $file into UTF-8 -----
-iconv -f "windows-1252" -t "UTF-8" $file > tmp.json
-mv -f tmp.json $file
+
+if [ `file $file | grep "UTF-8" | wc -l` -eq 0 ]; then
+    echo ----- CONVERT $file into UTF-8 -----
+    iconv -f "windows-1252" -t "UTF-8" $file > tmp.tmp ; mv -f tmp.tmp $file
+fi
 
 # GET ACTIVITIES DATA
 echo ----- GET activities information -----
-echo "var locale = {" >> locale.tmp
-wget "$1/api/activity.php?locale" -O tmp.json
+echo "var activities = {" >> p_activities.tmp
+wget "$1/api/activity.php?locale" -O p_json.tmp
 echo -n "+ processing"
-for a in `cat tmp.json | sed -e 's/{"id":/\n{"id":/g'` ; do
+for a in `cat p_json.tmp | sed -e 's/{"id":/\n{"id":/g'` ; do
     if [ `echo $a | grep label | wc -l` -eq 1 ]; then
         id=`echo $a | sed -e 's/^.*id":"\([^"]\+\).*$/\1/g'`
         label=`echo $a | sed -e 's/^.*label":"\([^"]\+\).*$/\1/g'`
         locale=`echo $a | sed -e 's/^.*locale":\(.\+}\)}.*$/\1/g'`
         echo -n " $id"
-        echo "<!--  <script type=\"text/javascript\" src=\"activities/${id}/${id}.js\"></script> -->" >> header.tmp
-        echo "<!--  <link type=\"text/css\" rel=\"stylesheet\" href=\"activities/${id}/style.css\" media=\"all\"/> -->" >> header.tmp
-        echo "// ${id}:${locale}," >> locale.tmp
+        echo "<!--  <script type=\"text/javascript\" src=\"activities/${id}/${id}.js\"></script> -->" >> p_header.tmp
+        echo "<!--  <link type=\"text/css\" rel=\"stylesheet\" href=\"activities/${id}/style.css\" media=\"all\"/> -->" >> p_header.tmp
+        echo "// ${id}:{label:\"${label}\",locale:${locale}}," >> p_activities.tmp
     fi
 done
-echo "zzz:{}" >> locale.tmp
-echo "}" >> locale.tmp
+echo "zzz:{}" >> p_activities.tmp
+echo "}" >> p_activities.tmp
 echo "... OK"
 
 
 # BUILD FOLDER
 echo ----- PREPARE folder $dest -----
-mkdir $dest
-mkdir $dest/conf
-cp conf/jlodb.ini $dest/conf
-cp -r mods/tibibo/epub/META-INF/ $dest/
-cp -f mods/tibibo/epub/mimetype $dest/
-mkdir -p $dest/res/img/
-cp -r res/img/default $dest/res/img/
-cp -r js $dest/
+#mkdir $dest
+#mkdir $dest/conf
+#cp conf/jlodb.ini $dest/conf
+#cp -r mods/tibibo/epub/META-INF/ $dest/
+#cp -f mods/tibibo/epub/mimetype $dest/
+#mkdir -p $dest/res/img/
+#cp -r res/img/default $dest/res/img/
+#cp -r js $dest/
+#mkdir -p $dest/css
+#cp css/jlodb.css $dest/css/
 
 
 page=1
@@ -75,22 +79,22 @@ for line in `cat $file | sed -e "s/{/\n/g"` ; do
         
         echo ----- PUBLISH page $p -----
 
-        cp mods/tibibo/epub/page_header.xhtml $dest/page_$p.xhtml
-        cp locale.tmp locale$p.tmp
-        cp header.tmp header$p.tmp
+        cp mods/tibibo/epub/page_header.html $dest/page_$p.html
+        cp p_activities.tmp p_locale$p.tmp
+        cp p_header.tmp p_header$p.tmp
             
-        wget "$1/api/exercice.php?detail&source&nolocale&id=$label" -O tmp.json
-        echo "var ex={" > ex.tmp
-        for ex in `cat tmp.json | sed -e 's/{"id":/\n{"id":/g'` ; do
+        wget "$1/api/exercice.php?detail&source&nolocale&id=$label" -O p_json.tmp
+        echo "var exercices={" > p_exercices.tmp
+        for ex in `cat p_json.tmp | sed -e 's/{"id":/\n{"id":/g'` ; do
             if [ `echo $ex | grep activity | wc -l` -eq 1 ] ; then
                 id=`echo $ex | sed -e 's/^.*id":"\([^"]\+\).*$/\1/g'`
                 source=`echo $ex | sed -e 's/^.*source":"\([^"]\+\).*$/\1/g'`
                 echo "+ processing $id"
                 activity=`echo $ex | sed -e 's/^.*activity":"\([^"]\+\).*$/\1/g'`
                 data=`echo $ex | sed -e 's/^.*,"data":\({.\+\),"ext".*$/\1/g'`
-                cat header$p.tmp | sed -e "s|<!--  \(.*${activity}/.*\) -->|\1|g" > tmp.tmp; mv tmp.tmp header$p.tmp
-                cat locale$p.tmp | sed -e "s|// \(${activity}:.*$\)|\1|g" > tmp.tmp; mv tmp.tmp locale$p.tmp
-                echo "$id:$data," >> ex.tmp
+                cat p_header$p.tmp | sed -e "s|<!--  \(.*${activity}/.*\) -->|\1|g" > tmp.tmp; mv tmp.tmp p_header$p.tmp
+                cat p_locale$p.tmp | sed -e "s|// \(${activity}:.*$\)|\1|g" > tmp.tmp; mv tmp.tmp p_locale$p.tmp
+                echo "$id:{activity:$activity,arg:$data}," >> p_exercices.tmp
                 
                 IFS=,
                 ary=($source)
@@ -108,20 +112,22 @@ for line in `cat $file | sed -e "s/{/\n/g"` ; do
             fi
         done
         
-        cat header$p.tmp | sed -e "s/<\!.*$//g" | grep -e . >> $dest/page_$p.xhtml
-        echo "<script>" >> $dest/page_$p.xhtml
-        cat locale$p.tmp | sed -e "s|^//.*$||g" | grep -e . >> $dest/page_$p.xhtml
+        cat p_header$p.tmp | sed -e "s/<\!.*$//g" | grep -e . >> $dest/page_$p.html
+        echo "<script>" >> $dest/page_$p.html
+        cat p_locale$p.tmp | sed -e "s|^//.*$||g" | grep -e . >> $dest/page_$p.html
         
-        echo "var content='$label';" >> $dest/page_$p.xhtml
+        echo "var content='$label';" >> $dest/page_$p.html
         
-        cat ex.tmp >> $dest/page_$p.xhtml
-        echo "zz:0};" >> $dest/page_$p.xhtml
+        cat p_exercices.tmp >> $dest/page_$p.html
+        echo "zz:0};" >> $dest/page_$p.html
         
+        cat tibibo/epub/page_footer.html >> $dest/page_$p.html
         
-        rm header$p.tmp locale$p.tmp ex.tmp
+        rm p_header$p.tmp p_locale$p.tmp p_exercices.tmp
+        
         exit 1
     fi
 done
 
 
-rm -f *.tmp
+rm -f p_*.tmp

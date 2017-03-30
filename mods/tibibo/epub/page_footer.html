@@ -1,0 +1,65 @@
+
+jSav = jQuery;
+$(window).load(function() {
+    // Some epub readers overwrite jQuery with their own instance. WTF !!!
+    setTimeout(function() {
+        $ = jQuery = jSav; 
+
+        $("#jlodb").css("font-size", Math.floor($("body").width()/16)+"px");
+
+        var list = content.split(',');
+        var state = "";
+        for (var i in list) { state+="."; }
+        // if ( localStorage && localStorage.getItem("jlodb") ) { state = localStorage.getItem("jlodb"); }
+        for (var i=state.length; i<list.length; i++) { state+="."; }
+
+
+        $("#rmenu").menu({
+            list    : list,
+            state   : state,
+            onupdate: function($this, _state) {
+                if (localStorage) { localStorage.setItem("jlodb", _state); }
+            },
+            onclick : function($this, _args) {
+                var args = $.extend({}, {activity:"memory3", args:exercices[_args.id]});
+                // args.args.locale = locale[exercices[_args.id].activity];
+                $("#rmenu").hide(); $("#activity").show();
+                $("#jlodb").jlodb({
+                    onstart:    function($this) { },
+                    onfinish:   function($this) { 
+                        $("#rmenu").show(); $("#score").removeClass().hide(); },
+                    onscore:    function($this, _ret) {
+                                var isnext = false;
+                                if (_ret.score>=2) { isnext = $("#rmenu").menu('score', _ret.score).menu('more'); }
+                                $("#score #next").toggle(isnext);
+                                $("#score").attr("class","s"+_ret.score).show();
+                                return true; } }, args );
+            }
+        });
+    }, 1);
+});
+
+    </script>
+</head>
+
+<body><div>
+    <div id="jlodb">
+        <div id="rmenu" class="theme2"></div>
+        <div id="activity"></div>
+        
+        <div id="score"><div>
+            <div class="content">
+                <div class="value"></div><div class="stars"></div>
+                <div class="icon" id="reload" ontouchstart="$('#jlodb').jlodb('reload');event.preventDefault();"
+                    onclick="$('#jlodb').jlodb('reload');" ><img src="res/img/icon/reload.svg"/></div>
+                <div class="icon" id="menu" ontouchstart="$('#jlodb').jlodb('close',false);event.preventDefault();"
+                    onclick="$('#jlodb').jlodb('close', false);" ><img src="res/img/icon/menu.svg"/></div>
+                <div class="icon" id="next"
+                    ontouchstart="$('#jlodb').jlodb('close',false);$('#rmenu').menu('next');event.preventDefault();"
+                    onclick="$('#jlodb').jlodb('close',false);$('#rmenu').menu('next');"><img src="res/img/icon/next.svg"/></div>
+            </div>
+        </div></div>
+    </div>
+
+</div></body>
+</html>
