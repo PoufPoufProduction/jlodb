@@ -16,7 +16,7 @@ echo ----- CLEAN and INITIALIZE -----
 dest=output
 IFS=$'\n'
 rm -f p_*.tmp
-#rm -rf $dest
+rm -rf $dest
 
 # GET JSON FILE
 file=""
@@ -24,6 +24,10 @@ if [ -f $2 ]; then file=$2
 else if [ -f "$2.json" ]; then file="$2.json"
 else
     echo "get book from website"
+    file="$2.json"
+    wget "$1/mods/tibibo/api/book.php?value=$2" -O p_json.tmp
+    cat p_json.tmp | sed -e 's/^.*description":\[//g' -e 's/\],  "comment".*$//g' > $file
+    rm -f p_json.tmp
 fi
 fi
 
@@ -55,29 +59,27 @@ echo "... OK"
 
 # BUILD FOLDER
 echo ----- PREPARE folder $dest -----
-#mkdir $dest
-#mkdir $dest/conf
-#cp conf/jlodb.ini $dest/conf
-#cp -r mods/tibibo/epub/META-INF/ $dest/
-#cp -f mods/tibibo/epub/mimetype $dest/
-#mkdir -p $dest/res/img/
-#cp -r res/img/default $dest/res/img/
-#cp -r js $dest/
-#mkdir -p $dest/css
-#cp css/jlodb.css $dest/css/
-
+mkdir -p $dest/res/img/ $dest/css $dest/activities
+cp -r mods/tibibo/epub/META-INF/ $dest/
+cp -f mods/tibibo/epub/mimetype $dest/
+cp -f mods/tibibo/epub/toc.ncx $dest/
+cp -r res/img/default $dest/res/img/
+cp -r js $dest/
+cp -f css/jlodb.css $dest/css/
 
 page=1
 for line in `cat $file | sed -e "s/{/\n/g"` ; do
-    value=`echo $line | sed -e 's/^.*label":"//g' -e 's/","description.*$//g'`
+if [ ! `echo $line | grep "[^ ]" | wc -l` -eq 0 ] ; then
+
+    value=`echo $line | sed -e 's/^.*label":"//g' -e 's/","description.*$//g' -e 's/\[[^]]*\]//g'`
     label=`echo $line | sed -e 's/^.*description":"//g' -e 's/","children.*$//g' -e 's/\[//g'`
-    
     
     if [ ! -z $label ]; then
  
         if [ $page -lt 10 ]; then p=00$page; else if [ $page -lt 100 ]; then p=0$page; else p=$page; fi; fi
         
         echo ----- PUBLISH page $p -----
+        echo $value
 
         cp mods/tibibo/epub/page_header.html $dest/page_$p.html
         cp p_activities.tmp p_locale$p.tmp
@@ -87,14 +89,19 @@ for line in `cat $file | sed -e "s/{/\n/g"` ; do
         echo "var exercices={" > p_exercices.tmp
         for ex in `cat p_json.tmp | sed -e 's/{"id":/\n{"id":/g'` ; do
             if [ `echo $ex | grep activity | wc -l` -eq 1 ] ; then
-                id=`echo $ex | sed -e 's/^.*id":"\([^"]\+\).*$/\1/g'`
+                id=`echo $ex | sed -e 's/^.*id":"\([^"]\+\)","label":.*$/\1/g'`
                 source=`echo $ex | sed -e 's/^.*source":"\([^"]\+\).*$/\1/g'`
                 echo "+ processing $id"
                 activity=`echo $ex | sed -e 's/^.*activity":"\([^"]\+\).*$/\1/g'`
                 data=`echo $ex | sed -e 's/^.*,"data":\({.\+\),"ext".*$/\1/g'`
                 cat p_header$p.tmp | sed -e "s|<!--  \(.*${activity}/.*\) -->|\1|g" > tmp.tmp; mv tmp.tmp p_header$p.tmp
                 cat p_locale$p.tmp | sed -e "s|// \(${activity}:.*$\)|\1|g" > tmp.tmp; mv tmp.tmp p_locale$p.tmp
-                echo "$id:{activity:$activity,arg:$data}," >> p_exercices.tmp
+                echo "$id:{activity:\"$activity\",args:$data}," >> p_exercices.tmp
+                
+                if [ ! -d $dest/activities/$activity ] ; then
+                    echo "  - copy activities/$activity"
+                    cp -rf activities/$activity $dest/activities/
+                fi
                 
                 IFS=,
                 ary=($source)
@@ -102,10 +109,10 @@ for line in `cat $file | sed -e "s/{/\n/g"` ; do
                     s="${ary[$key]}"
                     d=`dirname $s`
                     if [ ! -d "$dest/$d" ] ; then
-                        echo "  - build $dest/$d"
+                        echo "  - build $d"
                         mkdir -p $dest/$d
                     fi
-                    cp $s $dest/$d
+                    cp -rf $s $dest/$d
                 done
                 IFS=$'\n'
                 
@@ -121,13 +128,17 @@ for line in `cat $file | sed -e "s/{/\n/g"` ; do
         cat p_exercices.tmp >> $dest/page_$p.html
         echo "zz:0};" >> $dest/page_$p.html
         
-        cat tibibo/epub/page_footer.html >> $dest/page_$p.html
+        cat mods/tibibo/epub/page_footer.html | sed -e "s/%content%/${value}/g" >> $dest/page_$p.html
         
         rm p_header$p.tmp p_locale$p.tmp p_exercices.tmp
         
         exit 1
     fi
+fi
 done
+
+echo ----- BUILD manifest -----
+mods/tibibo/epub/content.sh $dest > $dest/content.opf
 
 
 rm -f p_*.tmp
