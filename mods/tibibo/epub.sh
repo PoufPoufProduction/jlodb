@@ -132,7 +132,8 @@ if [ ! `echo $line | grep "[^ ]" | wc -l` -eq 0 ] ; then
         
         rm p_header$p.tmp p_locale$p.tmp p_exercices.tmp
         
-        exit 1
+        page=$((page+1))
+
     fi
 fi
 done

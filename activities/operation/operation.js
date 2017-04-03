@@ -568,8 +568,8 @@
             if (settings.target && settings.targetid<settings.target.length) {
                 var $data = $this.find("#data");
 
-                if (typeof settings.target[settings.targetid].id != "undefined") {
-                    var $cell = $($this.find(".active,.value").get(settings.target[settings.targetid].id));
+                if (typeof settings.target[settings.targetid].index != "undefined") {
+                    var $cell = $($this.find(".active,.value").get(settings.target[settings.targetid].index));
                     var vCarry = 0;
                     if ($cell.parent().hasClass("carry")) { $cell = $cell.parent(); vCarry = $cell.height()/2; }
                     var $target = $this.find("#target");
@@ -674,7 +674,7 @@
             },
             target: function(event) {
                 var $this = $(this) , settings = helpers.settings($this);
-                helpers.mousedown($this.find(".active,.value").get(settings.target[settings.targetid].id), event, true);
+                helpers.mousedown($this.find(".active,.value").get(settings.target[settings.targetid].index), event, true);
             },
             valid: function() {
                 var $this = $(this) , settings = helpers.settings($this);
