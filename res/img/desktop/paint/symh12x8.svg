@@ -28,14 +28,14 @@
         .table .tableline   { display:inline; }
         .table .bg5         { stroke:black; }
 
-        text#label          { text-anchor:start; font-size:15px; fill:#AADDFF; }
+        text.comment          { text-anchor:start; font-size:15px; fill:#AADDFF; }
     </style>
 </defs>
 
-<g id="label" transform="translate(70,430)">
+<g transform="translate(70,430)">
     <rect x="0" y="0" width="350" height="40" class="bg1"/>
-   <text id="label" transform="translate(8,15)" class="t"></text>
-   <text id="label" transform="translate(8,32)" class="t"></text>
+   <text transform="translate(8,15)" class="t comment"></text>
+   <text transform="translate(8,32)" class="t comment"></text>
 </g>
 
 <g id="source" transform="translate(0,430)">

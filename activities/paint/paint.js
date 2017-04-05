@@ -114,7 +114,7 @@
                 // Send the onLoad callback
                 if (settings.context.onload) { settings.context.onload($this); }
 
-                $this.css("font-size", Math.floor($this.height()/12)+"px");
+                $this.css("font-size", ($this.height()/12)+"px");
 
                 if (settings.data) { settings.nbcolor = settings.data.length; }
 
@@ -195,12 +195,12 @@
             }
 
             var exercice = settings.exercice;
-            var label    = settings.exlabel;
+            var tag      = settings.tag;
             if (settings.gen) {
                 var vValue = eval('('+settings.gen+')')();
                 if (vValue.exercice) { exercice = vValue.exercice; }
                 if (vValue.arg)      { settings.scorearg = vValue.arg; }
-                if (vValue.label)    { label = vValue.label; }
+                if (vValue.tag)      { tag = vValue.tag; }
                 if (vValue.result)   { settings.result = vValue.result; }
                 if (vValue.t)        { settings.t = vValue.t; }
             }
@@ -267,7 +267,7 @@
                 else { $this.find("#exercice #content").html(helpers.format(exercice)); }
                 $this.find("#exercice").show();
             }
-            if (label) { $this.find("#exercice #label").html(label).show(); }
+            if (tag) { $this.find("#exercice #tag").html(tag).show(); }
 
             $this.find("#submit>img").hide(); $this.find("#subvalid").show();
             $this.find("#effects>div").hide(); $this.find("#effects").hide();

@@ -1,8 +1,7 @@
 <div>
     <div id="banner" ontouchstart="$(this).parent().find('#splashex').show();event.preventDefault();"
                      onclick="$(this).parent().find('#splashex').show();"><img src='res/img/background/asset/potion01.svg' alt=''/></div>
-    <table id="game"><tr>
-    <td>
+    
     <div id="board">
         <div id="area"></div>
         <div id="preview"><div id="preview1"></div><div id="preview2"></div></div>
@@ -10,22 +9,22 @@
         <div id="counter"></div>
         <div id="timer"><div></div></div>
     </div>
-    </td>
-    <td><div id="menu">
+   
+    <div id="menu">
         <div id="overview">
             <table>
-                <tr><td><div><div class='n'>1</div><div class="icon img"></div><div class="icon no"><img src='res/img/default/icon/check_wrong01.svg'/></div></div></td>
-                    <td><div><div class='n'>2</div><div class="icon img"></div><div class="icon no"><img src='res/img/default/icon/check_wrong01.svg'/></div></div></td>
-                    <td><div><div class='n'>3</div><div class="icon img"></div><div class="icon no"><img src='res/img/default/icon/check_wrong01.svg'/></div></div></td></tr>
-                <tr><td><div><div class='n'>4</div><div class="icon img"></div><div class="icon no"><img src='res/img/default/icon/check_wrong01.svg'/></div></div></td>
-                    <td><div><div class='n'>5</div><div class="icon img"></div><div class="icon no"><img src='res/img/default/icon/check_wrong01.svg'/></div></div></td>
-                    <td><div><div class='n'>6</div><div class="icon img"></div><div class="icon no"><img src='res/img/default/icon/check_wrong01.svg'/></div></div></td></tr>
-                <tr><td><div><div class='n'>7</div><div class="icon img"></div><div class="icon no"><img src='res/img/default/icon/check_wrong01.svg'/></div></div></td>
-                    <td><div><div class='n'>8</div><div class="icon img"></div><div class="icon no"><img src='res/img/default/icon/check_wrong01.svg'/></div></div></td>
-                    <td><div><div class='n'>9</div><div class="icon img"></div><div class="icon no"><img src='res/img/default/icon/check_wrong01.svg'/></div></div></td></tr>
-                <tr><td><div><div class='n'>10</div><div class="icon img"></div><div class="icon no"><img src='res/img/default/icon/check_wrong01.svg'/></div></div></td>
-                    <td><div><div class='n'>11</div><div class="icon img"></div><div class="icon no"><img src='res/img/default/icon/check_wrong01.svg'/></div></div></td>
-                    <td><div><div class='n'>12</div><div class="icon img"></div><div class="icon no"><img src='res/img/default/icon/check_wrong01.svg'/></div></div></td></tr>
+                <tr><td><div><div class='n'>1</div><div class="icon img"></div><div class="icon no"><img src='res/img/default/icon/check_wrong01.svg' alt=''/></div></div></td>
+                    <td><div><div class='n'>2</div><div class="icon img"></div><div class="icon no"><img src='res/img/default/icon/check_wrong01.svg' alt=''/></div></div></td>
+                    <td><div><div class='n'>3</div><div class="icon img"></div><div class="icon no"><img src='res/img/default/icon/check_wrong01.svg' alt=''/></div></div></td></tr>
+                <tr><td><div><div class='n'>4</div><div class="icon img"></div><div class="icon no"><img src='res/img/default/icon/check_wrong01.svg' alt=''/></div></div></td>
+                    <td><div><div class='n'>5</div><div class="icon img"></div><div class="icon no"><img src='res/img/default/icon/check_wrong01.svg' alt=''/></div></div></td>
+                    <td><div><div class='n'>6</div><div class="icon img"></div><div class="icon no"><img src='res/img/default/icon/check_wrong01.svg' alt=''/></div></div></td></tr>
+                <tr><td><div><div class='n'>7</div><div class="icon img"></div><div class="icon no"><img src='res/img/default/icon/check_wrong01.svg' alt=''/></div></div></td>
+                    <td><div><div class='n'>8</div><div class="icon img"></div><div class="icon no"><img src='res/img/default/icon/check_wrong01.svg' alt=''/></div></div></td>
+                    <td><div><div class='n'>9</div><div class="icon img"></div><div class="icon no"><img src='res/img/default/icon/check_wrong01.svg' alt=''/></div></div></td></tr>
+                <tr><td><div><div class='n'>10</div><div class="icon img"></div><div class="icon no"><img src='res/img/default/icon/check_wrong01.svg' alt=''/></div></div></td>
+                    <td><div><div class='n'>11</div><div class="icon img"></div><div class="icon no"><img src='res/img/default/icon/check_wrong01.svg' alt=''/></div></div></td>
+                    <td><div><div class='n'>12</div><div class="icon img"></div><div class="icon no"><img src='res/img/default/icon/check_wrong01.svg' alt=''/></div></div></td></tr>
             </table>
         </div>
         <div id="keypad">
@@ -33,34 +32,34 @@
                 <tr><td></td><td>
                     <div class="alphakeypad" id="up" ontouchstart="$(this).closest('.alchemist').alchemist('click', 'up');event.preventDefault();"
                                  onclick="$(this).closest('.alchemist').alchemist('click', this);">
-                        <img src="res/img/default/icon/arr_up01.svg" alt="^"/>
+                        <img src="res/img/default/icon/arr_up01.svg" alt=""/>
                     </div>
                 </td><td></td></tr>
                 <tr>
                     <td><div class="alphakeypad" id="left" ontouchstart="$(this).closest('.alchemist').alchemist('click', 'left');event.preventDefault();"
                                        onclick="$(this).closest('.alchemist').alchemist('click', this);">
-                        <img src="res/img/default/icon/arr_left01.svg" alt="<"/>
+                        <img src="res/img/default/icon/arr_left01.svg" alt=""/>
                         </div></td>
                     <td><div class="alphakeypad" id="down" ontouchstart="$(this).closest('.alchemist').alchemist('click', 'down');event.preventDefault();"
                                        onclick="$(this).closest('.alchemist').alchemist('click', this);">
-                        <img src="res/img/default/icon/arr_down01.svg" alt="v"/>
+                        <img src="res/img/default/icon/arr_down01.svg" alt=""/>
                         </div></td>
                     <td><div class="alphakeypad" id="right" ontouchstart="$(this).closest('.alchemist').alchemist('click', 'right');event.preventDefault();"
                                        onclick="$(this).closest('.alchemist').alchemist('click', this);">
-                        <img src="res/img/default/icon/arr_right01.svg" alt=">"/>
+                        <img src="res/img/default/icon/arr_right01.svg" alt=""/>
                         </div></td>
                 </tr>
             </table>
         </div>
-    </div></td></tr></table>
+    </div>
     
     
-    <div id="good" class="alert"><img src="res/img/default/popup/alert02.svg"/></div>
-    <div id="wrong" class="alert"><img src="res/img/default/popup/alert01.svg"/></div>
+    <div id="good" class="alert"><img src="res/img/default/popup/alert02.svg" alt=''/></div>
+    <div id="wrong" class="alert"><img src="res/img/default/popup/alert01.svg" alt=''/></div>
 
     <div id="splashex" ontouchstart="$(this).hide().closest('.alchemist').alchemist('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.alchemist').alchemist('next');"><div>
-        <h1 id="label"></h1>
+        <h1 id="label">alchemist</h1>
         <div id="guide"></div>
         <div id="goals">
             <div id="goallabel"></div>

@@ -11,6 +11,39 @@ if [ "$#" -lt 2 ]; then
     exit 1
 fi
 
+uuid()
+{
+    local N B T
+
+    for (( N=0; N < 16; ++N ))
+    do
+        B=$(( $RANDOM%255 ))
+
+        if (( N == 6 ))
+        then
+            printf '4%x' $(( B%15 ))
+        elif (( N == 8 ))
+        then
+            local C='89ab'
+            printf '%c%x' ${C:$(( $RANDOM%${#C} )):1} $(( B%15 ))
+        else
+            printf '%02x' $B
+        fi
+
+        for T in 3 5 7 9
+        do
+            if (( T == N ))
+            then
+                printf '-'
+                break
+            fi
+        done
+    done
+
+    echo
+}
+uid=`uuid`
+
 # CLEANING STUFF
 echo ----- CLEAN and INITIALIZE -----
 dest=output
@@ -24,7 +57,7 @@ if [ -f $2 ]; then file=$2
 else if [ -f "$2.json" ]; then file="$2.json"
 else
     echo "get book from website"
-    file="$2.json"
+    file="p_$2.tmp"
     wget "$1/mods/tibibo/api/book.php?value=$2" -O p_json.tmp
     cat p_json.tmp | sed -e 's/^.*description":\[//g' -e 's/\],  "comment".*$//g' > $file
     rm -f p_json.tmp
@@ -59,19 +92,23 @@ echo "... OK"
 
 # BUILD FOLDER
 echo ----- PREPARE folder $dest -----
-mkdir -p $dest/res/img/ $dest/css $dest/activities
+mkdir -p $dest/OEBPS $dest/OEBPS/res/img/ $dest/OEBPS/css $dest/OEBPS/activities
 cp -r mods/tibibo/epub/META-INF/ $dest/
 cp -f mods/tibibo/epub/mimetype $dest/
-cp -f mods/tibibo/epub/toc.ncx $dest/
-cp -r res/img/default $dest/res/img/
-cp -r js $dest/
-cp -f css/jlodb.css $dest/css/
+cp -r res/img/default $dest/OEBPS/res/img/
+cp -r js $dest/OEBPS/
+cp -f css/jlodb.css $dest/OEBPS/css/
+
+
+#TOC.NCX
+echo ----- BUILD TABLE OF CONTENT toc.ncx -----
+sed -e "s/%uuid%/${uid}/g" mods/tibibo/epub/toc.ncx > $dest/OEBPS/toc.ncx
 
 page=1
 for line in `cat $file | sed -e "s/{/\n/g"` ; do
 if [ ! `echo $line | grep "[^ ]" | wc -l` -eq 0 ] ; then
 
-    value=`echo $line | sed -e 's/^.*label":"//g' -e 's/","description.*$//g' -e 's/\[[^]]*\]//g'`
+    value=`echo $line | sed -e 's/^.*label":"\([^"]\+\).*$/\1/g'`
     label=`echo $line | sed -e 's/^.*description":"//g' -e 's/","children.*$//g' -e 's/\[//g'`
     
     if [ ! -z $label ]; then
@@ -81,7 +118,7 @@ if [ ! `echo $line | grep "[^ ]" | wc -l` -eq 0 ] ; then
         echo ----- PUBLISH page $p -----
         echo $value
 
-        cp mods/tibibo/epub/page_header.html $dest/page_$p.html
+        cp mods/tibibo/epub/page_header.xhtml $dest/OEBPS/page_$p.xhtml
         cp p_activities.tmp p_locale$p.tmp
         cp p_header.tmp p_header$p.tmp
             
@@ -98,9 +135,9 @@ if [ ! `echo $line | grep "[^ ]" | wc -l` -eq 0 ] ; then
                 cat p_locale$p.tmp | sed -e "s|// \(${activity}:.*$\)|\1|g" > tmp.tmp; mv tmp.tmp p_locale$p.tmp
                 echo "$id:{activity:\"$activity\",args:$data}," >> p_exercices.tmp
                 
-                if [ ! -d $dest/activities/$activity ] ; then
+                if [ ! -d $dest/OEBPS/activities/$activity ] ; then
                     echo "  - copy activities/$activity"
-                    cp -rf activities/$activity $dest/activities/
+                    cp -rf activities/$activity $dest/OEBPS/activities/
                 fi
                 
                 IFS=,
@@ -108,27 +145,27 @@ if [ ! `echo $line | grep "[^ ]" | wc -l` -eq 0 ] ; then
                 for key in "${!ary[@]}"; do
                     s="${ary[$key]}"
                     d=`dirname $s`
-                    if [ ! -d "$dest/$d" ] ; then
+                    if [ ! -d "$dest/OEBPS/$d" ] ; then
                         echo "  - build $d"
-                        mkdir -p $dest/$d
+                        mkdir -p $dest/OEBPS/$d
                     fi
-                    cp -rf $s $dest/$d
+                    cp -rf $s $dest/OEBPS/$d
                 done
                 IFS=$'\n'
                 
             fi
         done
         
-        cat p_header$p.tmp | sed -e "s/<\!.*$//g" | grep -e . >> $dest/page_$p.html
-        echo "<script>" >> $dest/page_$p.html
-        cat p_locale$p.tmp | sed -e "s|^//.*$||g" | grep -e . >> $dest/page_$p.html
+        cat p_header$p.tmp | sed -e "s/<\!.*$//g" | grep -e . >> $dest/OEBPS/page_$p.xhtml
+        echo "<script><![CDATA[" >> $dest/OEBPS/page_$p.xhtml
+        cat p_locale$p.tmp | sed -e "s|^//.*$||g" | grep -e . >> $dest/OEBPS/page_$p.xhtml
         
-        echo "var content='$label';" >> $dest/page_$p.html
+        echo "var content='$label';" >> $dest/OEBPS/page_$p.xhtml
         
-        cat p_exercices.tmp >> $dest/page_$p.html
-        echo "zz:0};" >> $dest/page_$p.html
+        cat p_exercices.tmp >> $dest/OEBPS/page_$p.xhtml
+        echo "zz:0};" >> $dest/OEBPS/page_$p.xhtml
         
-        cat mods/tibibo/epub/page_footer.html | sed -e "s/%content%/${value}/g" >> $dest/page_$p.html
+        cat mods/tibibo/epub/page_footer.xhtml | sed -e "s/%content%/${value}/g" >> $dest/OEBPS/page_$p.xhtml
         
         rm p_header$p.tmp p_locale$p.tmp p_exercices.tmp
         
@@ -139,7 +176,7 @@ fi
 done
 
 echo ----- BUILD manifest -----
-mods/tibibo/epub/content.sh $dest > $dest/content.opf
+mods/tibibo/epub/content.sh $dest/OEBPS > $dest/OEBPS/content.opf
 
 
 rm -f p_*.tmp

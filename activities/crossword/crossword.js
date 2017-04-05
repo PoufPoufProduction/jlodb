@@ -182,13 +182,12 @@
         key: function($this, _val) {
             var settings = helpers.settings($this);
             var vRegexp = 0;
-            if (settings.keypad=="num") { vRegexp = new RegExp("[1-9]", "g"); } else
-            if (settings.keypad=="abc") { _val = _val.toUpperCase(); vRegexp = new RegExp("[A-Z]", "g"); } else
-            if (settings.keypad=="fr")  { _val = _val.toLowerCase(); vRegexp = new RegExp("[a-zéèêàç]", "g"); }
+            if (settings.keypad=="num") { vRegexp = new RegExp("[ 1-9]", "g"); } else
+            if (settings.keypad=="abc") { _val = _val.toUpperCase(); vRegexp = new RegExp("[ A-Z]", "g"); } else
+            if (settings.keypad=="fr")  { _val = _val.toLowerCase(); vRegexp = new RegExp("[ a-zéèêàç]", "g"); }
             var vOk = true;
             if (vRegexp) { vOk = (_val.match(vRegexp)); }
-
-
+            
             if (settings.interactive && vOk) {
                 if (settings.mode) {
                     if (settings.elt.pos[0]!=-1 && settings.elt.pos[1]!=-1) {

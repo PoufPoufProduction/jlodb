@@ -4,7 +4,7 @@
     </div>
     <div id="menu">
         <div id="banner">
-            <div id="art"><img src="res/img/background/asset/robot02.svg"/></div>
+            <div id="art"><img src="res/img/background/asset/robot02.svg" alt=""/></div>
             <div id="sokoscore">
                 <div id="nbmoves">
                     <div class="label" id="lmoves">moves</div>
@@ -16,28 +16,28 @@
                 </div>
             </div>
             <div id="reset" ontouchstart="$(this).closest('.sokoban').sokoban('reset');event.preventDefault();"
-                                 onclick="$(this).closest('.sokoban').sokoban('reset');"><img src="res/img/default/icon/action_reload01.svg"/></div>
+                                 onclick="$(this).closest('.sokoban').sokoban('reset');"><img src="res/img/default/icon/action_reload01.svg" alt=""/></div>
         </div>
         <div id="keypad">
             <table>
                 <tr><td></td><td>
                     <div id="up" ontouchstart="$(this).closest('.sokoban').sokoban('click', 'up');event.preventDefault();"
                                  onclick="$(this).closest('.sokoban').sokoban('click', 'up');">
-                        <img src="res/img/default/icon/arr_up01.svg" alt="^"/>
+                        <img src="res/img/default/icon/arr_up01.svg" alt=""/>
                     </div>
                 </td><td></td></tr>
                 <tr>
                     <td><div id="left" ontouchstart="$(this).closest('.sokoban').sokoban('click', 'left');event.preventDefault();"
                                        onclick="$(this).closest('.sokoban').sokoban('click', 'left');">
-                        <img src="res/img/default/icon/arr_left01.svg" alt="<"/>
+                        <img src="res/img/default/icon/arr_left01.svg" alt=""/>
                         </div></td>
                     <td><div id="down" ontouchstart="$(this).closest('.sokoban').sokoban('click', 'down');event.preventDefault();"
                                        onclick="$(this).closest('.sokoban').sokoban('click', 'down');">
-                        <img src="res/img/tileset/iso/robot/draft1.svg" alt="v"/>
+                        <img src="res/img/tileset/iso/robot/draft1.svg" alt=""/>
                         </div></td>
                     <td><div id="right" ontouchstart="$(this).closest('.sokoban').sokoban('click', 'right');event.preventDefault();"
                                        onclick="$(this).closest('.sokoban').sokoban('click', 'right');">
-                        <img src="res/img/default/icon/arr_right01.svg" alt=">"/>
+                        <img src="res/img/default/icon/arr_right01.svg" alt=""/>
                         </div></td>
                 </tr>
             </table>
@@ -46,7 +46,7 @@
 
     <div id="splashex" ontouchstart="$(this).hide().closest('.sokoban').sokoban('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.sokoban').sokoban('next');"><div>
-            <h1 id="label"></h1>
+            <h1 id="label">sokoban</h1>
             <div id="guide">
         </div>
     </div></div>

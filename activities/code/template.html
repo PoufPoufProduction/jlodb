@@ -5,15 +5,15 @@
                 <div id="header"></div>
                 <div id="tabs">
                     <div class="icon s" ontouchstart="$(this).closest('.code').code('tab', this, 'op');event.preventDefault();"
-                                      onclick="$(this).closest('.code').code('tab', this, 'op');"><img src="res/img/icon/tab/tab00.svg"/></div>
+                                      onclick="$(this).closest('.code').code('tab', this, 'op');"><img src="res/img/icon/tab/tab00.svg" alt=""/></div>
                     <div class="icon" ontouchstart="$(this).closest('.code').code('tab', this, 'va');event.preventDefault();"
-                                      onclick="$(this).closest('.code').code('tab', this, 'va');"><img src="res/img/icon/tab/tab02.svg"/></div>
+                                      onclick="$(this).closest('.code').code('tab', this, 'va');"><img src="res/img/icon/tab/tab02.svg" alt=""/></div>
                     <div class="icon" ontouchstart="$(this).closest('.code').code('tab', this, 'ma');event.preventDefault();"
-                                      onclick="$(this).closest('.code').code('tab', this, 'ma');"><img src="res/img/icon/tab/tab03.svg"/></div>
+                                      onclick="$(this).closest('.code').code('tab', this, 'ma');"><img src="res/img/icon/tab/tab03.svg" alt=""/></div>
                     <div class="icon" ontouchstart="$(this).closest('.code').code('tab', this, 'cl');event.preventDefault();"
-                                      onclick="$(this).closest('.code').code('tab', this, 'cl');"><img src="res/img/icon/tab/tab04.svg"/></div>
+                                      onclick="$(this).closest('.code').code('tab', this, 'cl');"><img src="res/img/icon/tab/tab04.svg" alt=""/></div>
                     <div class="icon" ontouchstart="$(this).closest('.code').code('tab', this, 'no');event.preventDefault();"
-                                      onclick="$(this).closest('.code').code('tab', this, 'no');"><img src="res/img/icon/tab/tab00.svg"/></div>
+                                      onclick="$(this).closest('.code').code('tab', this, 'no');"><img src="res/img/icon/tab/tab00.svg" alt=""/></div>
                 </div>
                 <div class="filler"></div>
                 <div id="ops"><div>
@@ -160,12 +160,14 @@
                         <div class="a ma v" id="sub"><div class="label">SUBSTR</div><div class="d va c"></div><div class="d va"></div><div class="d va"></div></div>
                         <div class="a ma v" id="sub2"><div class="label">SUBSTR</div><div class="d va c"></div><div class="d va"></div></div>
                         <div class="a ma v" id="match"><div class="label">MATCH</div><div class="d va c"></div><div class="d va c"></div></div>
-                        <div class="a ma v" id="rep"><div class="label">REPLACE</div><div class="d va c"></div><div class="d va c"></div><div class="d va c"></div></div>
+                        <!-- <div class="a ma v" id="rep"><div class="label">REPLACE</div><div class="d va c"></div><div class="d va c"></div><div class="d va c"></div></div> -->
                         <div class="a ma v" id="color"><div class="label">RGB</div></div>
                         <div class="a ma v" id="read"><div class="label">READ</div></div>
+                        <!--
                         <div class="a ma v" id="call1"><div class="label">F1</div></div>
                         <div class="a ma v" id="call2"><div class="label">F2</div><div class="d va"></div></div>
                         <div class="a ma v" id="call3"><div class="label">F3</div><div class="d va"></div><div class="d va"></div></div>
+                        -->
                     </div>
                     <div id="cl" class="tab">
                         <div class="a cl o" id="rep"><div class="label">REPEAT</div><div class="d va"></div><div class="d op"></div></div>
@@ -196,7 +198,7 @@
                              onclick="$(this).closest('.code').code('stdout');"><pre></pre></div>
             <div id="canvas"><canvas></canvas></div>
             <div id="keypad">
-                <img src="res/img/control/keypad01.svg"/>
+                <img src="res/img/control/keypad01.svg" alt=""/>
                 <div id="left"  ontouchstart="$(this).closest('.code').code('click', 37);event.preventDefault();"
                                 onclick="$(this).closest('.code').code('click', 37);"></div>
                 <div id="down"  ontouchstart="$(this).closest('.code').code('click', 40);event.preventDefault();"
@@ -213,29 +215,29 @@
             <div id="controls">
                 <div id="buttons">
                     <div id="speed" ontouchstart="$(this).closest('.code').code('speed');event.preventDefault();"
-                                    onclick="$(this).closest('.code').code('speed');"><img src="res/img/control/x2.svg"/></div>
+                                    onclick="$(this).closest('.code').code('speed');"><img src="res/img/control/x2.svg" alt=""/></div>
                     <div id="stop" ontouchstart="$(this).closest('.code').code('stop');event.preventDefault();"
-                                   onclick="$(this).closest('.code').code('stop');"><img src="res/img/control/stop.svg"/></div>
+                                   onclick="$(this).closest('.code').code('stop');"><img src="res/img/control/stop.svg" alt=""/></div>
                     <div id="play" ontouchstart="$(this).closest('.code').code('play');event.preventDefault();"
-                                   onclick="$(this).closest('.code').code('play');"><img src="res/img/control/play.svg"/></div>
+                                   onclick="$(this).closest('.code').code('play');"><img src="res/img/control/play.svg" alt=""/></div>
                 </div>
             </div>
         </div>
     </div>
 
     <div id="effects">
-        <div id="good"><img src="res/img/default/popup/good01.svg"/></div>
-        <div id="wrong"><img src="res/img/default/popup/wrong01.svg"/></div>
+        <div id="good"><img src="res/img/default/popup/good01.svg" alt=""/></div>
+        <div id="wrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
     </div>
 
-    <div id="touch01" ><div><img src="res/img/default/anim/touch01.svg"/></div></div>
+    <div id="touch01" ><div><img src="res/img/default/anim/touch01.svg" alt=""/></div></div>
 
     <div id="mask" class="mask"></div>
 
 
     <div id="splashex" ontouchstart="$(this).hide().closest('.code').code('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.code').code('next');"><div>
-        <h1 id="label"></h1>
+        <h1 id="label">code</h1>
         <div id="guide"></div>
     </div></div>
 

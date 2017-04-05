@@ -5,13 +5,13 @@
         <div id="tabs">
             <div></div>
             <div onclick="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#op').show();"
-                 ontouchstart="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#op').show();event.preventDefault();" class="s"><img src="res/img/icon/tab/tab01.svg"/></div>
+                 ontouchstart="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#op').show();event.preventDefault();" class="s"><img src="res/img/icon/tab/tab01.svg" alt=""/></div>
             <div onclick="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#va').show();"
-                 ontouchstart="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#va').show();event.preventDefault();"><img src="res/img/icon/tab/tab02.svg"/></div>
+                 ontouchstart="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#va').show();event.preventDefault();"><img src="res/img/icon/tab/tab02.svg" alt=""/></div>
             <div onclick="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#ma').show();"
-                 ontouchstart="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#ma').show();event.preventDefault();"><img src="res/img/icon/tab/tab03.svg"/></div>
+                 ontouchstart="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#ma').show();event.preventDefault();"><img src="res/img/icon/tab/tab03.svg" alt=""/></div>
             <div onclick="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#cl').show();"
-                 ontouchstart="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#cl').show();event.preventDefault();"><img src="res/img/icon/tab/tab04.svg"/></div>
+                 ontouchstart="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#cl').show();event.preventDefault();"><img src="res/img/icon/tab/tab04.svg" alt=""/></div>
         </div>
         <div id="panels">
             <div id="op">
@@ -119,7 +119,7 @@
             </div>
             <div id="cl">
                 <div class="a cl o" id="rep"><div class="label"></div><div class="d va"></div><div class="d op"></div></div>
-                <div class="a cl o" id="stop"><div class="label">STOP</div></div>
+                <div class="a cl o" id="break"><div class="label">BREAK</div></div>
                 <div style="clear:both"></div>
                 <div class="a cl o" id="fct1"><div class="label"></div><div class="d op"></div></div>
                 <div style="clear:both"></div>
@@ -143,111 +143,112 @@
         <div id="footer"></div>
     </div>
   </div>
+  
   <div id="output">
     <div id="board" ontouchstart="$(this).closest('.logo').logo('board');event.preventDefault();"
                     onclick="$(this).closest('.logo').logo('board');"></div>
     <div id="controls">
       <div id="buttons">
         <div id="submit" ontouchstart="$(this).closest('.logo').logo('submit');event.preventDefault();"
-                        onclick="$(this).closest('.logo').logo('submit');" class="icon"><img src="res/img/control/valid.svg"/></div>
+                        onclick="$(this).closest('.logo').logo('submit');" class="icon"><img src="res/img/control/valid.svg" alt=""/></div>
         <div id="speed" ontouchstart="$(this).closest('.logo').logo('speed');event.preventDefault();"
-                        onclick="$(this).closest('.logo').logo('speed');" class="icon"><img src="res/img/control/x2.svg"/></div>
+                        onclick="$(this).closest('.logo').logo('speed');" class="icon"><img src="res/img/control/x2.svg" alt=""/></div>
         <div id="stop" ontouchstart="$(this).closest('.logo').logo('stop');event.preventDefault();"
-                       onclick="$(this).closest('.logo').logo('stop');" class="icon"><img src="res/img/control/stop.svg"/></div>
+                       onclick="$(this).closest('.logo').logo('stop');" class="icon"><img src="res/img/control/stop.svg" alt=""/></div>
         <div id="play" ontouchstart="$(this).closest('.logo').logo('play');event.preventDefault();"
-                       onclick="$(this).closest('.logo').logo('play');" class="icon"><img src="res/img/control/play.svg"/></div>
-        </div>
+                       onclick="$(this).closest('.logo').logo('play');" class="icon"><img src="res/img/control/play.svg" alt=""/></div>
       </div>
-      <div id="exercice"><div></div></div>
     </div>
-
+    <div id="exercice"><div></div></div>
   </div>
+
+
   
   <div id="help" class="icon" ontouchstart="$(this).next().show();event.preventDefault();"
-                  onclick="$(this).next().show();"><img src="res/img/default/icon/about.svg"/></div>
+                  onclick="$(this).next().show();"><img src="res/img/default/icon/about.svg" alt=""/></div>
   <div id="phelp" ontouchstart="$(this).hide();event.preventDefault();"
                   onclick="$(this).hide();"><div>
     <div>
         <div class="inst">
-            <div id="av" class="linst"><div class="label"></div><div class="arg">D</div></div>
+            <div id="hav" class="linst"><div class="label"></div><div class="arg">D</div></div>
             <div id="manav"></div>
         </div>
         <div class="inst">
-            <div id="re" class="linst"><div class="label"></div><div class="arg">D</div></div>
+            <div id="hre" class="linst"><div class="label"></div><div class="arg">D</div></div>
             <div id="manre"></div>
         </div>
         <div class="inst">
-            <div id="tg" class="linst"><div class="label"></div><div class="arg">A</div></div>
+            <div id="htg" class="linst"><div class="label"></div><div class="arg">A</div></div>
             <div id="mantg"></div>
         </div>
         <div class="inst">
-            <div id="td" class="linst"><div class="label"></div><div class="arg">A</div></div>
+            <div id="htd" class="linst"><div class="label"></div><div class="arg">A</div></div>
             <div id="mantd"></div>
         </div>
         <div class="inst">
-            <div id="co" class="linst"><div class="label"></div><div class="arg">C</div></div>
+            <div id="hco" class="linst"><div class="label"></div><div class="arg">C</div></div>
             <div id="manco"></div>
         </div>
         <div class="inst">
-            <div id="fo" class="linst"><div class="label"></div><div class="arg">C</div></div>
+            <div id="hfo" class="linst"><div class="label"></div><div class="arg">C</div></div>
             <div id="manfo"></div>
         </div>
         <div class="inst">
-            <div id="lc" class="linst"><div class="label"></div></div>
+            <div id="hlc" class="linst"><div class="label"></div></div>
             <div id="manlc"></div>
         </div>
         <div class="inst">
-            <div id="bc" class="linst"><div class="label"></div></div>
+            <div id="hbc" class="linst"><div class="label"></div></div>
             <div id="manbc"></div>
         </div>
         <div class="inst">
-            <div id="or" class="linst"><div class="label"></div></div>
+            <div id="hor" class="linst"><div class="label"></div></div>
             <div id="manor"></div>
         </div>
         <div class="inst">
-            <div id="ca" class="linst"><div class="label"></div><div class="arg">A</div></div>
+            <div id="hca" class="linst"><div class="label"></div><div class="arg">A</div></div>
             <div id="manca"></div>
         </div>
         <div class="inst">
-            <div id="po" class="linst"><div class="label"></div><div class="arg">Y</div><div class="arg">X</div></div>
+            <div id="hpo" class="linst"><div class="label"></div><div class="arg">Y</div><div class="arg">X</div></div>
             <div id="manpo"></div>
         </div>
         <div class="inst">
-            <div id="xx" class="linst"><div class="label">X=</div><div class="arg">V</div></div>
+            <div id="hxx" class="linst"><div class="label">X=</div><div class="arg">V</div></div>
             <div id="manxx"></div>
         </div>
         <div class="inst">
-            <div id="yy" class="linst"><div class="label">Y=</div><div class="arg">V</div></div>
+            <div id="hyy" class="linst"><div class="label">Y=</div><div class="arg">V</div></div>
             <div id="manyy"></div>
         </div>
         <div class="inst">
-            <div id="zz" class="linst"><div class="label">Z=</div><div class="arg">V</div></div>
+            <div id="hzz" class="linst"><div class="label">Z=</div><div class="arg">V</div></div>
             <div id="manzz"></div>
         </div>
         <div class="inst">
-            <div id="ii" class="linst"><div class="label">I=</div><div class="arg">V</div></div>
+            <div id="hii" class="linst"><div class="label">I=</div><div class="arg">V</div></div>
             <div id="manii"></div>
         </div>
         <div class="inst">
-            <div id="jj" class="linst"><div class="label">J=</div><div class="arg">V</div></div>
+            <div id="hjj" class="linst"><div class="label">J=</div><div class="arg">V</div></div>
             <div id="manjj"></div>
         </div>
         <div class="inst">
-            <div id="call1" class="linst"><div class="label"></div></div>
+            <div id="hcall1" class="linst"><div class="label"></div></div>
             <div id="mancall1"></div>
         </div>
         <div class="inst">
-            <div id="call2" class="linst"><div class="label"></div><div class="arg">X</div></div>
+            <div id="hcall2" class="linst"><div class="label"></div><div class="arg">X</div></div>
             <div id="mancall2"></div>
         </div>
         <div class="inst">
-            <div id="call3" class="linst"><div class="label"></div><div class="arg">Y</div><div class="arg">X</div></div>
+            <div id="hcall3" class="linst"><div class="label"></div><div class="arg">Y</div><div class="arg">X</div></div>
             <div id="mancall3"></div>
         </div>
     </div>
   </div></div>
 
-  <div id="touch01" ><div><img src="res/img/default/anim/touch01.svg"/></div></div>
+  <div id="touch01" ><div><img src="res/img/default/anim/touch01.svg" alt=""/></div></div>
 
   <div class="mask"></div>
 
@@ -255,7 +256,7 @@
                    onclick="$(this).hide();"></div>
                    
     <div id="devmode" ontouchstart="$(this).closest('.logo').logo('devmode');event.preventDefault();"
-                      onclick="$(this).closest('.logo').logo('devmode');" ><img src="res/img/default/white/snapshot.svg"/></div>
+                      onclick="$(this).closest('.logo').logo('devmode');" ><img src="res/img/default/white/snapshot.svg" alt=""/></div>
                       
     <div id="devoutput" ontouchstart="$(this).hide();event.preventDefault();" onclick="$(this).hide();">
         <textarea ontouchstart="$(this).focus();event.stopPropagation();event.preventDefault();"
@@ -264,7 +265,7 @@
 
     <div id="splashex" ontouchstart="$(this).hide().closest('.logo').logo('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.logo').logo('next');"><div>
-            <h1 id="label"></h1>
+            <h1 id="label">LOGO</h1>
             <div id="guide"></div>
     </div></div>
 

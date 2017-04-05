@@ -2,22 +2,22 @@
 
     <div id="sources"></div>
     <div id="board"></div>
-    <div id="exercice"><div><div id="label"></div><div id="content"></div></div></div>
+    <div id="exercice"><div><div id="tag"></div><div id="content"></div></div></div>
 
     <div id="effects">
-        <div id="good"><img src="res/img/default/popup/good01.svg"/></div>
-        <div id="wrong"><img src="res/img/default/popup/wrong01.svg"/></div>
+        <div id="good"><img src="res/img/default/popup/good01.svg" alt=""/></div>
+        <div id="wrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
     </div>
 
     <div id="submit" ontouchstart="$(this).closest('.paint').paint('valid');event.preventDefault();"
                      onclick="$(this).closest('.paint').paint('valid');">
-        <img src="res/img/default/icon/swvalid.svg" id="subvalid"/>
-        <img src="res/img/default/icon/swgood.svg" id="subgood"/>
-        <img src="res/img/default/icon/swwrong.svg" id="subwrong"/>
+        <img src="res/img/default/icon/swvalid.svg" id="subvalid" alt=""/>
+        <img src="res/img/default/icon/swgood.svg" id="subgood" alt=""/>
+        <img src="res/img/default/icon/swwrong.svg" id="subwrong" alt=""/>
     </div>
     
     <div id="devmode" ontouchstart="$(this).closest('.paint').paint('devmode');event.preventDefault();"
-                      onclick="$(this).closest('.paint').paint('devmode');" ><img src="res/img/default/white/snapshot.svg"/></div>
+                      onclick="$(this).closest('.paint').paint('devmode');" ><img src="res/img/default/white/snapshot.svg" alt=""/></div>
                       
     <div id="devoutput" ontouchstart="$(this).hide();event.preventDefault();" onclick="$(this).hide();">
         <textarea ontouchstart="$(this).focus();event.stopPropagation();event.preventDefault();"
@@ -28,12 +28,12 @@
     <div id="splashex" ontouchstart="$(this).hide().closest('.paint').paint('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.paint').paint('next');"><div>
         <div class="text" id="default">
-            <h1 id="label"></h1>
+            <h1 id="label">paint</h1>
             <div id="guide" class="guide"></div>
         </div>
         <div class="text" id="picross">
             <div id="piguide" class="guide"></div>
-            <h1 id="pilabel"></h1>
+            <h1 id="pilabel">picross</h1>
         </div>
     </div></div>
 

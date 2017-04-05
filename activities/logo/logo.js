@@ -115,7 +115,7 @@
                     for (var i in settings.exercice) { $this.find("#exercice>div").append(
                         "<p>"+(settings.exercice[i].length?helpers.format(settings.exercice[i]):"&#xA0;")+"</p>"); }
                 } else { $this.find("#exercice>div").html(helpers.format(settings.exercice)); }
-                $.each(settings.locale.source, function(id,value) { $this.find("#"+id+" .label").html(value); });
+                $.each(settings.locale.source, function(id,value) { $this.find("#"+id+" .label").html(value); $this.find("#h"+id+" .label").html(value);});
                 $.each(settings.locale, function(id,value) { if (typeof(value)=="string") {$this.find("#"+id).html(helpers.format(value)); }});
 
                 for (var i in settings.a) {
@@ -484,7 +484,7 @@
                 }
                 return !ret;
             },
-            stop: function($this, $elt) { helpers.popstack($this); return false; },
+            "break": function($this, $elt) { helpers.popstack($this); return false; },
             cmp: function($this, $elt, _cmp) {
                 var settings = helpers.settings($this);
                 var v1 = Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first()));
@@ -523,7 +523,7 @@
             settings.data.pencil = true;
             settings.data.bg = helpers.process.color.length-1;
 
-            $("#board line", settings.svg.root()).each(function(_index) {
+            $("#board>line", settings.svg.root()).each(function(_index) {
                 if ($(this).attr("class")!="hide") { $(this).detach(); } });
             $("#pencil", settings.svg.root()).attr("class","");
             $("#rotturtle", settings.svg.root()).attr("class","");
@@ -581,14 +581,14 @@
                         else                   { helpers.popstack($this); }
                     }
 
-                        if (debug || settings.data.paused) { $this.find("#controls #play img").attr("src","res/img/control/play.svg"); }
+                    if (debug || settings.data.paused) { $this.find("#controls #play img").attr("src","res/img/control/play.svg"); }
+                    else {
+                        if (speed) { settings.data.timer = setTimeout(function() { helpers.run($this); }, speed); }
                         else {
-                            if (speed) { settings.data.timer = setTimeout(function() { helpers.run($this); }, speed); }
-                            else {
-                                if (settings.data.count%97) { donotstop = true; }
-                                else                        { settings.data.timer = setTimeout(function() { helpers.run($this); }, 0); }
-                            }
+                            if (settings.data.count%97) { donotstop = true; }
+                            else                        { settings.data.timer = setTimeout(function() { helpers.run($this); }, 0); }
                         }
+                    }
                 }
                 else { setTimeout(function() { helpers.finish($this, false); }, 1000); return; }
             } while (donotstop);

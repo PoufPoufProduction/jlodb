@@ -1,8 +1,13 @@
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 
+<!-- Strict XHTML header
+ <?xml version='1.0' encoding='utf-8'?>
+ <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+-->
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>jLoDb</title>
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/jquery-ui.min.js"></script>
@@ -13,8 +18,9 @@
     <link type="text/css" rel="stylesheet" href="css/jlodb.css" media="all" />
 
     <script>
+//<![CDATA[
 
-var options = {};
+var options = {order:"rand",limit:1};
 var jlodb = function($elt) {
     $elt.show().parent().find("#score").removeClass().hide();
     $elt.jlodb({ isvisible:true,
@@ -54,7 +60,8 @@ $(window).ready(function() {
     jlodb($("#launcher"));
 });
 
-    </script>
+//]]>
+</script>
 </head>
 
 <body><div>

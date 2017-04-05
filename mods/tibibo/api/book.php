@@ -89,14 +89,14 @@ else {
 
 // PUBLISH DATA UNDER JSON FORMAT
 echo '{';
-if (isset($status))             { echo '  "status" : "'.$status.'",'; }
-if (isset($error) && ($error))  { echo '  "error" : '.$error.','; }
-if (isset($textstatus))         { echo '  "textStatus" : "'.$textstatus.'",'; }
-if (isset($value))              { echo '  "value" : "'.$value.'",'; }
-if (isset($owner))              { echo '  "owner" : "'.$owner.'",'; }
-if (isset($description))        { echo '  "description":'.$description.','; }
-if (isset($comment))            { echo '  "comment" : "'.$comment.'",'; }
-if (isset($json))               { echo '  "books":['.$json.'],'; }
+if (isset($status))                                 { echo '  "status" : "'.$status.'",'; }
+if (isset($error) && ($error))                      { echo '  "error" : '.$error.','; }
+if (isset($textstatus))                             { echo '  "textStatus" : "'.$textstatus.'",'; }
+if (isset($value))                                  { echo '  "value" : "'.$value.'",'; }
+if (isset($owner))                                  { echo '  "owner" : "'.$owner.'",'; }
+if (isset($description) && strlen($description) )   { echo '  "description":'.$description.','; }
+if (isset($comment))                                { echo '  "comment" : "'.$comment.'",'; }
+if (isset($json))                                   { echo '  "books":['.$json.'],'; }
 echo '  "from" : "mods/tibibo/api" }';
 
 

@@ -28,9 +28,9 @@
         "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
         "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
         "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>",
-        "\\\[math\\\](.+)\\\[/math\\\]",            "<div class='math'><math>$1</math></div>",
-        "\\\[mathsmall\\\](.+)\\\[/mathsmall\\\]",  "<div class='maths'><math>$1</math></div>",
-        "\\\[mathxl\\\](.+)\\\[/mathxl\\\]",        "<div class='mathxl'><math>$1</math></div>",
+        "\\\[math\\\](.+)\\\[/math\\\]",            "<div class='math'><math xmlns='http://www.w3.org/1998/Math/MathML'>$1</math></div>",
+        "\\\[mathsmall\\\](.+)\\\[/mathsmall\\\]",  "<div class='maths'><math xmlns='http://www.w3.org/1998/Math/MathML'>$1</math></div>",
+        "\\\[mathxl\\\](.+)\\\[/mathxl\\\]",        "<div class='mathxl'><math xmlns='http://www.w3.org/1998/Math/MathML'>$1</math></div>",
         "\\\[icon\\\](.+)\\\[/icon\\\]",            "<div class='img'><div class='icon'><img src='$1.svg'/></div></div>"
     ];
 

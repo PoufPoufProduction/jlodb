@@ -5,7 +5,7 @@
     <div id="detail"><div>
         <div class="detdiv icon" id="valid"
                      ontouchstart="$(this).closest('.calc').calc('set');event.preventDefault();event.stopPropagation();"
-                     onclick="$(this).closest('.calc').calc('set');event.stopPropagation();"><img src="res/img/default/white/valid.svg"/></div>
+                     onclick="$(this).closest('.calc').calc('set');event.stopPropagation();"><img src="res/img/default/white/valid.svg" alt=""/></div>
         <div class="detdiv" id="detailg">
             <div class="settings"><div class='label'>hide</div><input id="sethide" value="[[]]"/></div>
             <div class="settings"><div class='label'>size</div><input id="setsize" value="[5,5]"/></div>
@@ -34,9 +34,9 @@
 
     <div id="submit" ontouchstart="$(this).closest('.calc').calc('submit');event.preventDefault();"
                      onclick="$(this).closest('.calc').calc('submit');">
-        <img src="res/img/default/icon/swvalid.svg" id="subvalid"/>
-        <img src="res/img/default/icon/swgood.svg" id="subgood"/>
-        <img src="res/img/default/icon/swwrong.svg" id="subwrong"/>
+        <img src="res/img/default/icon/swvalid.svg" id="subvalid" alt=""/>
+        <img src="res/img/default/icon/swgood.svg" id="subgood" alt=""/>
+        <img src="res/img/default/icon/swwrong.svg" id="subwrong" alt=""/>
     </div>
 
     <div id="target" ontouchstart="$(this).closest('.calc').calc('cell', 0);event.preventDefault();"
@@ -49,7 +49,7 @@
         <div id="ppanel">
             <div id="pcalc">
                 <table>
-                    <tr><td colspan="3"><div id="screen"ontouchstart="$(this).closest('.calc').calc('key', 'c', this);event.preventDefault();"
+                    <tr><td colspan="3"><div id="screen" ontouchstart="$(this).closest('.calc').calc('key', 'c', this);event.preventDefault();"
                             onclick="$(this).closest('.calc').calc('key', 'c', this);">0</div></td></tr>
                     <tr>
                         <td ontouchstart="$(this).closest('.calc').calc('key', 7, this);event.preventDefault();"
@@ -81,8 +81,7 @@
                         <td ontouchstart="$(this).closest('.calc').calc('key', 0, this);event.preventDefault();"
                             onclick="$(this).closest('.calc').calc('key', 0, this);" class="bluekeypad"><div>0</div></td>
                         <td ontouchstart="$(this).closest('.calc').calc('key', '-', this);event.preventDefault();"
-                            onclick="$(this).closest('.calc').calc('key', '-', this);" class="bluekeypad" id="padneg"><div>-</div></div>
-                        </td>
+                            onclick="$(this).closest('.calc').calc('key', '-', this);" class="bluekeypad" id="padneg"><div>-</div></td>
                     </tr>
                 </table>
             </div>
@@ -101,12 +100,12 @@
                 <div id="graphmenu">
 <!--
                     <div id="gpie" class="icon"  ontouchstart="$(this).closest('.calc').calc('graph','pie');event.preventDefault();"
-                     onclick="$(this).closest('.calc').calc('graph','pie');"><img src="res/img/icon/charts/pie01.svg"/></div>
+                     onclick="$(this).closest('.calc').calc('graph','pie');"><img src="res/img/icon/charts/pie01.svg" alt=""/></div>
 -->
                     <div id="gbar" class="icon"  ontouchstart="$(this).closest('.calc').calc('graph','bar');event.preventDefault();"
-                     onclick="$(this).closest('.calc').calc('graph','bar');"><img src="res/img/icon/charts/bar01.svg"/></div>
+                     onclick="$(this).closest('.calc').calc('graph','bar');"><img src="res/img/icon/charts/bar01.svg" alt=""/></div>
                     <div id="gfct" class="icon"  ontouchstart="$(this).closest('.calc').calc('graph','fct');event.preventDefault();"
-                     onclick="$(this).closest('.calc').calc('graph','fct');"><img src="res/img/icon/charts/fct01.svg"/></div>
+                     onclick="$(this).closest('.calc').calc('graph','fct');"><img src="res/img/icon/charts/fct01.svg" alt=""/></div>
                 </div>
                 <div id="graphvalues">
                     <div class="line">
@@ -141,33 +140,33 @@
         </div>
         <div id="phandle">
             <div class="icon" id="pcancel" ontouchstart="$(this).closest('.calc').calc('cell', 0);event.preventDefault();"
-                              onclick="$(this).closest('.calc').calc('cell', 0);"><img src="res/img/default/white/cancel02.svg"/></div>
+                              onclick="$(this).closest('.calc').calc('cell', 0);"><img src="res/img/default/white/cancel02.svg" alt=""/></div>
             <div class="icon" id="pvalid" ontouchstart="$(this).closest('.calc').calc('valid');event.preventDefault();"
-                              onclick="$(this).closest('.calc').calc('valid');"><img src="res/img/default/white/valid02.svg"/></div>
+                              onclick="$(this).closest('.calc').calc('valid');"><img src="res/img/default/white/valid02.svg" alt=""/></div>
             <div id="escreen"></div>
         </div>
         <div id="pmenu">
             <div class="icon" id="tabcalc" ontouchstart="$(this).closest('.calc').calc('tab', 'pcalc', this);event.preventDefault();"
                               onclick="$(this).closest('.calc').calc('tab', 'pcalc', this);">
-                <img src="res/img/svginventoryicons/hardware/calculator01.svg"/></div>
+                <img src="res/img/svginventoryicons/hardware/calculator01.svg" alt=""/></div>
             <div class="icon" id="tabimg" ontouchstart="$(this).closest('.calc').calc('tab', 'pimg', this);event.preventDefault();"
                               onclick="$(this).closest('.calc').calc('tab', 'pimg', this);">
-                <img src="res/img/svginventoryicons/hardware/camera01.svg"/></div>
+                <img src="res/img/svginventoryicons/hardware/camera01.svg" alt=""/></div>
             <div class="icon" id="tabmath" ontouchstart="$(this).closest('.calc').calc('tab', 'pmath', this);event.preventDefault();"
                               onclick="$(this).closest('.calc').calc('tab', 'pmath', this);">
-                <img src="res/img/svginventoryicons/tool/abacus01.svg"/></div>
+                <img src="res/img/svginventoryicons/tool/abacus01.svg" alt=""/></div>
             <div class="icon" id="tabtxt" ontouchstart="$(this).closest('.calc').calc('tab', 'ptxt', this);event.preventDefault();"
                               onclick="$(this).closest('.calc').calc('tab', 'ptxt', this);">
-                <img src="res/img/svginventoryicons/pencil/pen01.svg"/></div>
+                <img src="res/img/svginventoryicons/pencil/pen01.svg" alt=""/></div>
             <div class="icon" id="tabgraph" ontouchstart="$(this).closest('.calc').calc('tab', 'pgraph', this);event.preventDefault();"
                               onclick="$(this).closest('.calc').calc('tab', 'pgraph', this);">
-                <img src="res/img/svginventoryicons/action/gears01.svg"/></div>
+                <img src="res/img/svginventoryicons/action/gears01.svg" alt=""/></div>
         </div>
     </div>
 
     
-    <div id="good" class="alert"><img src="res/img/default/popup/good01.svg"/></div>
-    <div id="wrong" class="alert"><img src="res/img/default/popup/wrong01.svg"/></div>
+    <div id="good" class="alert"><img src="res/img/default/popup/good01.svg" alt=""/></div>
+    <div id="wrong" class="alert"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
     
     <div style="position:absolute; top:0; left:3" id="output"></div>
     
@@ -175,33 +174,33 @@
     <div id="mask" class="mask"><div>
         <div class="icon" ontouchstart="$(this).closest('.mask').hide();event.preventDefault();"
                           onclick="$(this).closest('.mask').hide();">
-            <img src="res/img/default/icon/nw_quit01.svg"/>
+            <img src="res/img/default/icon/nw_quit01.svg" alt=""/>
         </div>
         <textarea></textarea>
         <div id="import" ontouchstart="$(this).closest('.calc').calc('import');event.preventDefault();"
                               onclick="$(this).closest('.calc').calc('import');">
-            <div class="icon"><img src="res/img/default/white/import.svg"/></div>
+            <div class="icon"><img src="res/img/default/white/import.svg" alt=""/></div>
         </div>
     </div></div>
     
     <div id="locale" class="icon" ontouchstart="$(this).next().show();event.preventDefault();"
-                          onclick="$(this).next().show();"><img src="res/img/default/white/edit.svg"/></div>
+                          onclick="$(this).next().show();"><img src="res/img/default/white/edit.svg" alt=""/></div>
                           
     <div id="glossary" class="mask"><div>
         <div id="gadd" class="icon" ontouchstart="$(this).next().next().clone().appendTo($(this).parent()).show();event.preventDefault();"
                           onclick="$(this).next().next().clone().appendTo($(this).parent()).show();">
-            <img src="res/img/default/white/add.svg"/>
+            <img src="res/img/default/white/add.svg" alt=""/>
         </div>
         <div class="icon" ontouchstart="$(this).closest('.calc').calc('locale');event.preventDefault();"
                               onclick="$(this).closest('.calc').calc('locale');">
-            <img src="res/img/default/icon/nw_quit01.svg"/>
+            <img src="res/img/default/icon/nw_quit01.svg" alt=""/>
         </div>
         <div class="elt"><input class="label" value="key"/><input class="value" value="value"/></div>
     </div></div>
 
     <div id="splashex" ontouchstart="$(this).hide().closest('.calc').calc('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.calc').calc('next');"><div>
-        <h1 id="label"></h1>
+        <h1 id="label">calc</h1>
         <div id="guide"></div>
     </div></div>
 

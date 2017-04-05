@@ -168,9 +168,9 @@
                 $this.find("#pimg").css("font-size",settings.imgsize+"em");
                 for (var i in settings.img) {
                     var html="<div id='img"+i+"' class='icon'";
-                    html+='onmousedown=\'$(this).closest(".calc").calc("img",this);\' ';
-                    html+='ontouchstart=\'$(this).closest(".calc").calc("img",this);event.preventDefault();\' ';
-                    html+="><img src='"+settings.imgprefix+settings.img[i]+".svg'/></div>";
+                    html+=' onmousedown=\'$(this).closest(".calc").calc("img",this);\'';
+                    html+=' ontouchstart=\'$(this).closest(".calc").calc("img",this);event.preventDefault();\'';
+                    html+="><img src='"+settings.imgprefix+settings.img[i]+".svg' alt=''/></div>";
                     $this.find("#pimg").append(html);
                 }
                 $this.find("#panel").draggable({handle:"#escreen",containment:$this}).css("position","absolute");
@@ -178,8 +178,8 @@
                 $this.find("#ptxt").css("font-size",settings.txtsize+"em");
                 for (var i in settings.txt) {
                     var html="<div id='txt"+i+"' class='"+settings.txtstyle+"'";
-                    html+='onmousedown=\'$(this).closest(".calc").calc("txt",this);\' ';
-                    html+='ontouchstart=\'$(this).closest(".calc").calc("txt",this);event.preventDefault();\' ';
+                    html+=' onmousedown=\'$(this).closest(".calc").calc("txt",this);\'';
+                    html+=' ontouchstart=\'$(this).closest(".calc").calc("txt",this);event.preventDefault();\'';
                     html+=">"+settings.txt[i]+"</div>";
                     $this.find("#ptxt").append(html);
 				}

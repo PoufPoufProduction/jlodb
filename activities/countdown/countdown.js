@@ -70,7 +70,7 @@
                 // Send the onLoad callback
                 if (settings.context.onload) { settings.context.onload($this); }
 
-                $this.css("font-size", Math.floor($this.height()/12)+"px");
+                $this.css("font-size", ($this.height()/12)+"px");
 
                 $this.find("#keypad .k").each(function() { settings.$keys.push($(this)); });
 

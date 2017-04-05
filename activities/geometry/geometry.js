@@ -102,7 +102,7 @@
                 if (settings.context.onload) { settings.context.onload($this); }
 
                 // RESIZE THE TEMPLATE
-                $this.css("font-size", Math.floor($this.height()/12)+"px");
+                $this.css("font-size", ($this.height()/12)+"px");
 
                 // HANDLE THE BUTTONS
                 if (settings.available) {
@@ -125,7 +125,7 @@
                 }
                 for (var i in settings.labels) {
                     $this.find("#objectives").append("<tr><td><div class='icon' style='cursor:default;'>"+
-                        "<img src='res/img/default/icon/cancel01.svg' alt='x'/></div></td><td>&#xA0;"+
+                        "<img src='res/img/default/icon/check_unchecked01.svg' alt='x'/></div></td><td>&#xA0;"+
                         helpers.format(settings.labels[i])+"</td></tr>");
                 }
                 for (var i in settings.objectives) for (var j in settings.objectives[i]) {
@@ -208,7 +208,7 @@
                     if (!settings.objectives[i][j].done) { complete = false; settings.finish = false; }
                 }
                 if (complete) {
-                    $($this.find("#objectives .icon img")[i]).attr("src", "res/img/default/icon/valid01.svg");
+                    $($this.find("#objectives .icon img")[i]).attr("src", "res/img/default/icon/check_checked01.svg");
                 }
             }
             if (settings.finish) {
@@ -980,7 +980,7 @@
                     }
                     for (var i in settings.objectives) {
                         for (var j in settings.objectives[i]) { settings.objectives[i][j].done = false; }
-                        $($this.find("#objectives .icon img")[i]).attr("src", "res/img/icon/cancel.svg");
+                        $($this.find("#objectives .icon img")[i]).attr("src", "res/img/default/icon/check_unchecked01.svg");
                     }
                     for (var i in settings.points) { helpers.check($this, settings.points[i], false); }
                     for (var i in settings.lines) { helpers.check($this, settings.lines[i], false); }

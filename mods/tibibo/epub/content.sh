@@ -19,6 +19,7 @@ echo "</metadata>"
 
 echo "<manifest>"
 
+i=0
 for f in `find $1 -depth` ; do
     if [ -f $f ] ; then
         filename=`echo $f | sed -e "s|$1/||g"`
@@ -26,13 +27,16 @@ for f in `find $1 -depth` ; do
         fid=`basename $f .$extension`
         
         case "$extension" in
-            "svg")  echo "  <item href=\"${filename}\" id=\"${fid}\" media-type=\"image/svg+xml\"/>" ;;
-            "js")   echo "  <item href=\"${filename}\" id=\"${fid}\" media-type=\"application/javascript\"/>" ;;
-            "html") echo "  <item href=\"${filename}\" id=\"${fid}\" media-type=\"application/xml+html\"/>" ;;
-            "css")  echo "  <item href=\"${filename}\" id=\"${fid}\" media-type=\"text/css\"/>" ;;
-            "ncx")  echo "  <item href=\"${filename}\" id=\"${fid}\" media-type=\"application/x-dtbncx+xml\"/>" ;;
+            "svg")      echo "  <item href=\"${filename}\" id=\"${fid}_${extension}_${i}\" media-type=\"image/svg+xml\"/>" ;;
+            "js")       echo "  <item href=\"${filename}\" id=\"${fid}_${extension}\" media-type=\"application/javascript\"/>" ;;
+            "html")     echo "  <item href=\"${filename}\" id=\"${fid}_${i}\" media-type=\"application/xhtml+xml\"/>" ;;
+            "xhtml")    echo "  <item href=\"${filename}\" id=\"${fid}\" media-type=\"application/xhtml+xml\"/>" ;;
+            "css")      echo "  <item href=\"${filename}\" id=\"${fid}_${extension}\" media-type=\"text/css\"/>" ;;
+            "ncx")      echo "  <item href=\"${filename}\" id=\"${fid}\" media-type=\"application/x-dtbncx+xml\"/>" ;;
             *) ;;
         esac
+        
+        i=$((i+1))
     fi
 done
 
@@ -40,15 +44,15 @@ echo "</manifest>"
 
 
 # SPINE
-echo '  <spine toc="ncx">'
-for f in $1/page*.html; do
-    echo '    <itemref idref="'`basename $f .html`'"/>'
+echo '<spine toc="toc">'
+for f in $1/page*.xhtml; do
+    echo '  <itemref idref="'`basename $f .xhtml`'"/>'
 done
-echo '  </spine>'
+echo '</spine>'
 
 # GUIDE
-echo '  <guide>'
-echo '    <reference href="page_001.html" title="Title" type="cover"/>'
-echo '  </guide>'
+echo '<guide>'
+echo '  <reference href="page_001.xhtml" title="Title" type="cover"/>'
+echo '</guide>'
 
 echo '</package>'

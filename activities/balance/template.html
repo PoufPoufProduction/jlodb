@@ -3,10 +3,10 @@
     <div id="svg"></div>
     <div id="calc" class="button" ontouchstart="$(this).closest('.balance').balance('calc');event.preventDefault();"
                                   onclick="$(this).closest('.balance').balance('calc');">
-        <img src="res/img/svginventoryicons/hardware/calculator01.svg"/></div>
+        <img src="res/img/svginventoryicons/hardware/calculator01.svg" alt=""/></div>
     <div id="fill" class="button" ontouchstart="$(this).closest('.balance').balance('fill');event.preventDefault();"
                                   onclick="$(this).closest('.balance').balance('fill');">
-        <img src="res/img/svginventoryicons/action/gears01.svg"/></div>
+        <img src="res/img/svginventoryicons/action/gears01.svg" alt=""/></div>
 
     <div id="calculator">
         <table>
@@ -40,13 +40,13 @@
                     onclick="$(this).closest('.balance').balance('key', 0, this);" colspan="2" class="bluekeypad">0</td>
                 <td ontouchstart="$(this).closest('.balance').balance('key', 'c', this);event.preventDefault();"
                     onclick="$(this).closest('.balance').balance('key', 'c', this);" class="bluekeypad">
-                        <div class="icon" style="margin:0 auto;"><img src="res/img/default/white/cancel02.svg"/></div>
+                        <div class="icon" style="margin:0 auto;"><img src="res/img/default/white/cancel02.svg" alt=""/></div>
                 </td>
             </tr>
             <tr>
                 <td ontouchstart="$(this).closest('.balance').balance('key', 'v', this);event.preventDefault();"
                     onclick="$(this).closest('.balance').balance('key', 'v', this);" colspan="3" class="bluekeypad">
-                        <div class="icon" style="margin:0 auto;"><img src="res/img/default/white/valid02.svg"/></div>
+                        <div class="icon" style="margin:0 auto;"><img src="res/img/default/white/valid02.svg" alt=""/></div>
                 </td>
             </tr>
         </table>
@@ -54,8 +54,8 @@
 
 
     <div id="effects">
-        <div id="good"><img src="res/img/default/popup/good01.svg"/></div>
-        <div id="wrong"><img src="res/img/default/popup/wrong01.svg"/></div>
+        <div id="good"><img src="res/img/default/popup/good01.svg" alt=""/></div>
+        <div id="wrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
     </div>
 
     <div id="course" ontouchstart="$(this).closest('.balance').balance('course');event.preventDefault();"
@@ -66,7 +66,7 @@
 
     <div id="splashex" ontouchstart="$(this).hide().closest('.balance').balance('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.balance').balance('next');"><div>
-        <h1 id="label"></h1>
+        <h1 id="label">balance</h1>
         <div id="guide"></div>
     </div></div>
 

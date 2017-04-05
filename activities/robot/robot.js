@@ -86,7 +86,7 @@
             build: function($this) {
                 var settings = helpers.settings($this);
                 if (settings.context.onload) { settings.context.onload($this); }
-                $this.css("font-size", Math.floor($this.height()/12)+"px");
+                $this.css("font-size", ($this.height()/12)+"px");
 
                 // compute scale and offset if not given
                 var xmin=0, xmax=0, ymin=0, ymax=0;

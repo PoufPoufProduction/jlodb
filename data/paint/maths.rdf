@@ -7,7 +7,7 @@
     <rdf:Description>
         <dct:identifier>d001</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier dans une grille 10x10 tous les diviseurs d'un nombre compris entre 10 et 99.</dct:title>
-        <dct:description><![CDATA["url":"desktop/paint/numbers10x10.svg","data":[{"skip":true},{"toggle":true}],"selected":1,"number":3,"class":"nozero nosource","gen":"function(){var result=' ',a=Math.floor(Math.random()*90)+10; for (var i=1; i<100; i++) { result+=(i>a||a%i)?' ':'1'; } return {'label':a.toString(),'result':result};}","remove":true]]></dct:description>
+        <dct:description><![CDATA["url":"desktop/paint/numbers10x10.svg","data":[{"skip":true},{"toggle":true}],"selected":1,"number":3,"class":"nozero nosource","gen":"function(){var result=' ',a=Math.floor(Math.random()*90)+10; for (var i=1; i<100; i++) { result+=(i>a||a%i)?' ':'1'; } return {'tag':a.toString(),'result':result};}","remove":true]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Coloriez TOUS les diviseurs du nombre suivant."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>division</dct:subject>
@@ -57,7 +57,7 @@
     <rdf:Description>
         <dct:identifier>f001</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier un rectangle 2x4 pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 8.</dct:title>
-        <dct:description><![CDATA["url":"desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"canvas":"square2x4","gen":"function(){var dets=[8],d=dets[Math.floor(Math.random()*dets.length)],n=Math.floor(Math.random()*(d-1))+1; return {'label':n.toString()+'/'+d.toString(),'arg':8*n/d};}","scorefct":"function($this,_result,_arg){var r=Math.abs(_result.split('1').length-_arg-1); return r<2?r:2;}","number":5]]></dct:description>
+        <dct:description><![CDATA["url":"desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"canvas":"square2x4","gen":"function(){var dets=[8],d=dets[Math.floor(Math.random()*dets.length)],n=Math.floor(Math.random()*(d-1))+1; return {'tag':n.toString()+'/'+d.toString(),'arg':8*n/d};}","scorefct":"function($this,_result,_arg){var r=Math.abs(_result.split('1').length-_arg-1); return r<2?r:2;}","number":5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez les cases[/b] du rectangles pour que la part de cases rouges soit égale à la [red]fraction suivante[/red].","fontex":0.8]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>division</dct:subject>
@@ -69,7 +69,7 @@
     <rdf:Description>
         <dct:identifier>f002</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier un rectangle 2x4 pour que la part de cases rouges soit égale à une fraction dont les dénominateur peut être 2, 4 ou 8.</dct:title>
-        <dct:description><![CDATA["url":"desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"canvas":"square2x4","gen":"function(){var dets=[2,4,4,8],d=dets[Math.floor(Math.random()*dets.length)],n=Math.floor(Math.random()*(d-1))+1; return {'label':n.toString()+'/'+d.toString(),'arg':8*n/d};}","scorefct":"function($this,_result,_arg){var r=Math.abs(_result.split('1').length-_arg-1); return r<2?r:2;}","number":10]]></dct:description>
+        <dct:description><![CDATA["url":"desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"canvas":"square2x4","gen":"function(){var dets=[2,4,4,8],d=dets[Math.floor(Math.random()*dets.length)],n=Math.floor(Math.random()*(d-1))+1; return {'tag':n.toString()+'/'+d.toString(),'arg':8*n/d};}","scorefct":"function($this,_result,_arg){var r=Math.abs(_result.split('1').length-_arg-1); return r<2?r:2;}","number":10]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez les cases[/b] du rectangles pour que la part de cases rouges soit égale à la [red]fraction suivante[/red].","fontex":0.8]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
@@ -81,7 +81,7 @@
     <rdf:Description>
         <dct:identifier>f011</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier un rectangle 3x4 pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 12.</dct:title>
-        <dct:description><![CDATA["url":"desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"canvas":"square3x4","gen":"function(){var dets=[2,3,3,4,4,6,6,12],d=dets[Math.floor(Math.random()*dets.length)],n=Math.floor(Math.random()*(d-1))+1; return {'label':n.toString()+'/'+d.toString(),'arg':12*n/d};}","scorefct":"function($this,_result,_arg){var r=Math.abs(_result.split('1').length-_arg-1); return r<2?r:2;}","number":5]]></dct:description>
+        <dct:description><![CDATA["url":"desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"canvas":"square3x4","gen":"function(){var dets=[2,3,3,4,4,6,6,12],d=dets[Math.floor(Math.random()*dets.length)],n=Math.floor(Math.random()*(d-1))+1; return {'tag':n.toString()+'/'+d.toString(),'arg':12*n/d};}","scorefct":"function($this,_result,_arg){var r=Math.abs(_result.split('1').length-_arg-1); return r<2?r:2;}","number":5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez les cases[/b] du rectangles pour que la part de cases rouges soit égale à la [red]fraction suivante[/red].","fontex":0.8]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>division</dct:subject>
@@ -93,7 +93,7 @@
     <rdf:Description>
         <dct:identifier>f012</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier un rectangle 3x4 pour que la part de cases rouges soit égale à une fraction dont les dénominateur peut être 3 ou 4.</dct:title>
-        <dct:description><![CDATA["url":"desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"canvas":"square3x4","gen":"function(){var dets=[2,3,3,4,4,6,6,12],d=dets[Math.floor(Math.random()*dets.length)],n=Math.floor(Math.random()*(d-1))+1; return {'label':n.toString()+'/'+d.toString(),'arg':12*n/d};}","scorefct":"function($this,_result,_arg){var r=Math.abs(_result.split('1').length-_arg-1); return r<2?r:2;}","number":5]]></dct:description>
+        <dct:description><![CDATA["url":"desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"canvas":"square3x4","gen":"function(){var dets=[2,3,3,4,4,6,6,12],d=dets[Math.floor(Math.random()*dets.length)],n=Math.floor(Math.random()*(d-1))+1; return {'tag':n.toString()+'/'+d.toString(),'arg':12*n/d};}","scorefct":"function($this,_result,_arg){var r=Math.abs(_result.split('1').length-_arg-1); return r<2?r:2;}","number":5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez les cases[/b] du rectangles pour que la part de cases rouges soit égale à la [red]fraction suivante[/red].","fontex":0.8]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>division</dct:subject>
@@ -105,7 +105,7 @@
     <rdf:Description>
         <dct:identifier>f013</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier un rectangle 3x4 pour que la part de cases rouges soit égale à une fraction dont les dénominateur peut être 2, 3, 4 ou 12.</dct:title>
-        <dct:description><![CDATA["url":"desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"canvas":"square3x4","gen":"function(){var dets=[2,3,3,4,4,6,6,12],d=dets[Math.floor(Math.random()*dets.length)],n=Math.floor(Math.random()*(d-1))+1; return {'label':n.toString()+'/'+d.toString(),'arg':12*n/d};}","scorefct":"function($this,_result,_arg){var r=Math.abs(_result.split('1').length-_arg-1); return r<2?r:2;}","number":10]]></dct:description>
+        <dct:description><![CDATA["url":"desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"canvas":"square3x4","gen":"function(){var dets=[2,3,3,4,4,6,6,12],d=dets[Math.floor(Math.random()*dets.length)],n=Math.floor(Math.random()*(d-1))+1; return {'tag':n.toString()+'/'+d.toString(),'arg':12*n/d};}","scorefct":"function($this,_result,_arg){var r=Math.abs(_result.split('1').length-_arg-1); return r<2?r:2;}","number":10]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez les cases[/b] du rectangles pour que la part de cases rouges soit égale à la [red]fraction suivante[/red].","fontex":0.8]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
@@ -117,7 +117,7 @@
     <rdf:Description>
         <dct:identifier>f021</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier un carré 4x4 pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 16.</dct:title>
-        <dct:description><![CDATA["url":"desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"canvas":"square4x4","gen":"function(){var dets=[16],d=dets[Math.floor(Math.random()*dets.length)],n=Math.floor(Math.random()*(d-1))+1; return {'label':n.toString()+'/'+d.toString(),'arg':16*n/d};}","scorefct":"function($this,_result,_arg){var r=Math.abs(_result.split('1').length-_arg-1); return r<2?r:2;}","number":5]]></dct:description>
+        <dct:description><![CDATA["url":"desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"canvas":"square4x4","gen":"function(){var dets=[16],d=dets[Math.floor(Math.random()*dets.length)],n=Math.floor(Math.random()*(d-1))+1; return {'tag':n.toString()+'/'+d.toString(),'arg':16*n/d};}","scorefct":"function($this,_result,_arg){var r=Math.abs(_result.split('1').length-_arg-1); return r<2?r:2;}","number":5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Coloriez le carré pour que la part de cases rouges soit égale à la fraction suivante."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>division</dct:subject>
@@ -129,7 +129,7 @@
     <rdf:Description>
         <dct:identifier>f022</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier un carré 4x4 pour que la part de cases rouges soit égale à une fraction dont les dénominateur peut être 4 ou 16.</dct:title>
-        <dct:description><![CDATA["url":"desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"canvas":"square4x4","gen":"function(){var dets=[4,16],d=dets[Math.floor(Math.random()*dets.length)],n=Math.floor(Math.random()*(d-1))+1; return {'label':n.toString()+'/'+d.toString(),'arg':16*n/d};}","scorefct":"function($this,_result,_arg){var r=Math.abs(_result.split('1').length-_arg-1); return r<2?r:2;}","number":5]]></dct:description>
+        <dct:description><![CDATA["url":"desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"canvas":"square4x4","gen":"function(){var dets=[4,16],d=dets[Math.floor(Math.random()*dets.length)],n=Math.floor(Math.random()*(d-1))+1; return {'tag':n.toString()+'/'+d.toString(),'arg':16*n/d};}","scorefct":"function($this,_result,_arg){var r=Math.abs(_result.split('1').length-_arg-1); return r<2?r:2;}","number":5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Coloriez le carré pour que la part de cases rouges soit égale à la fraction suivante."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>division</dct:subject>
@@ -141,7 +141,7 @@
     <rdf:Description>
         <dct:identifier>f023</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier un carré 4x4 pour que la part de cases rouges soit égale à une fraction dont les dénominateur peut être 2, 4, 8 ou 16.</dct:title>
-        <dct:description><![CDATA["url":"desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"canvas":"square4x4","gen":"function(){var dets=[2,4,4,8,8,8,8,16,16],d=dets[Math.floor(Math.random()*dets.length)],n=Math.floor(Math.random()*(d-1))+1; return {'label':n.toString()+'/'+d.toString(),'arg':16*n/d};}","scorefct":"function($this,_result,_arg){var r=Math.abs(_result.split('1').length-_arg-1); return r<2?r:2;}","number":10]]></dct:description>
+        <dct:description><![CDATA["url":"desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"canvas":"square4x4","gen":"function(){var dets=[2,4,4,8,8,8,8,16,16],d=dets[Math.floor(Math.random()*dets.length)],n=Math.floor(Math.random()*(d-1))+1; return {'tag':n.toString()+'/'+d.toString(),'arg':16*n/d};}","scorefct":"function($this,_result,_arg){var r=Math.abs(_result.split('1').length-_arg-1); return r<2?r:2;}","number":10]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Coloriez le carré pour que la part de cases rouges soit égale à la fraction suivante."]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
@@ -153,7 +153,7 @@
     <rdf:Description>
         <dct:identifier>f031</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier un rectangle 5x4 pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 20.</dct:title>
-        <dct:description><![CDATA["url":"desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"canvas":"square5x4","gen":"function(){var dets=[20],d=dets[Math.floor(Math.random()*dets.length)],n=Math.floor(Math.random()*(d-1))+1; return {'label':n.toString()+'/'+d.toString(),'arg':20*n/d};}","scorefct":"function($this,_result,_arg){var r=Math.abs(_result.split('1').length-_arg-1); return r<2?r:2;}","number":5]]></dct:description>
+        <dct:description><![CDATA["url":"desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"canvas":"square5x4","gen":"function(){var dets=[20],d=dets[Math.floor(Math.random()*dets.length)],n=Math.floor(Math.random()*(d-1))+1; return {'tag':n.toString()+'/'+d.toString(),'arg':20*n/d};}","scorefct":"function($this,_result,_arg){var r=Math.abs(_result.split('1').length-_arg-1); return r<2?r:2;}","number":5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez les cases[/b] du rectangles pour que la part de cases rouges soit égale à la [red]fraction suivante[/red].","fontex":0.8]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>division</dct:subject>
@@ -165,7 +165,7 @@
     <rdf:Description>
         <dct:identifier>f032</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier un rectangle 5x4 pour que la part de cases rouges soit égale à une fraction dont les dénominateur peut être 4 ou 5.</dct:title>
-        <dct:description><![CDATA["url":"desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"canvas":"square5x4","gen":"function(){var dets=[4,5],d=dets[Math.floor(Math.random()*dets.length)],n=Math.floor(Math.random()*(d-1))+1; return {'label':n.toString()+'/'+d.toString(),'arg':20*n/d};}","scorefct":"function($this,_result,_arg){var r=Math.abs(_result.split('1').length-_arg-1); return r<2?r:2;}","number":10]]></dct:description>
+        <dct:description><![CDATA["url":"desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"canvas":"square5x4","gen":"function(){var dets=[4,5],d=dets[Math.floor(Math.random()*dets.length)],n=Math.floor(Math.random()*(d-1))+1; return {'tag':n.toString()+'/'+d.toString(),'arg':20*n/d};}","scorefct":"function($this,_result,_arg){var r=Math.abs(_result.split('1').length-_arg-1); return r<2?r:2;}","number":10]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez les cases[/b] du rectangles pour que la part de cases rouges soit égale à la [red]fraction suivante[/red].","fontex":0.8]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
@@ -177,7 +177,7 @@
     <rdf:Description>
         <dct:identifier>f033</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier un rectangle 5x4 pour que la part de cases rouges soit égale à une fraction dont les dénominateur peut être 2, 4, 5, 10 ou 20.</dct:title>
-        <dct:description><![CDATA["url":"desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"canvas":"square5x4","gen":"function(){var dets=[2,4,4,5,5,10,10,20],d=dets[Math.floor(Math.random()*dets.length)],n=Math.floor(Math.random()*(d-1))+1; return {'label':n.toString()+'/'+d.toString(),'arg':20*n/d};}","scorefct":"function($this,_result,_arg){var r=Math.abs(_result.split('1').length-_arg-1); return r<2?r:2;}","number":10]]></dct:description>
+        <dct:description><![CDATA["url":"desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"canvas":"square5x4","gen":"function(){var dets=[2,4,4,5,5,10,10,20],d=dets[Math.floor(Math.random()*dets.length)],n=Math.floor(Math.random()*(d-1))+1; return {'tag':n.toString()+'/'+d.toString(),'arg':20*n/d};}","scorefct":"function($this,_result,_arg){var r=Math.abs(_result.split('1').length-_arg-1); return r<2?r:2;}","number":10]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez les cases[/b] du rectangles pour que la part de cases rouges soit égale à la [red]fraction suivante[/red].","fontex":0.8]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
@@ -189,7 +189,7 @@
     <rdf:Description>
         <dct:identifier>f101</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier deux rectangles 2x4 pour que la part de cases rouges soit égale à une fraction dont les dénominateur peut être 2, 4 ou 8.</dct:title>
-        <dct:description><![CDATA["url":"desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"canvas":"square2x4x2","gen":"function(){var dets=[2,4,4,8],d=dets[Math.floor(Math.random()*dets.length)],n=Math.floor(Math.random()*(2*d-1))+1; return {'label':n.toString()+'/'+d.toString(),'arg':8*n/d};}","scorefct":"function($this,_result,_arg){var r=Math.abs(_result.split('1').length-_arg-1); return r<2?r:2;}","number":10]]></dct:description>
+        <dct:description><![CDATA["url":"desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"canvas":"square2x4x2","gen":"function(){var dets=[2,4,4,8],d=dets[Math.floor(Math.random()*dets.length)],n=Math.floor(Math.random()*(2*d-1))+1; return {'tag':n.toString()+'/'+d.toString(),'arg':8*n/d};}","scorefct":"function($this,_result,_arg){var r=Math.abs(_result.split('1').length-_arg-1); return r<2?r:2;}","number":10]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez les cases[/b] du ou des rectangles pour que la part de cases rouges soit égale à la [red]fraction suivante[/red].","fontex":0.8]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
@@ -201,7 +201,7 @@
     <rdf:Description>
         <dct:identifier>f111</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier deux rectangles 3x4 pour que la part de cases rouges soit égale à une fraction dont les dénominateur peut être 2, 3, 4 ou 11.</dct:title>
-        <dct:description><![CDATA["url":"desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"canvas":"square3x4x2","gen":"function(){var dets=[2,3,3,4,4,6,6,12],d=dets[Math.floor(Math.random()*dets.length)],n=Math.floor(Math.random()*(2*d-1))+1; return {'label':n.toString()+'/'+d.toString(),'arg':12*n/d};}","scorefct":"function($this,_result,_arg){var r=Math.abs(_result.split('1').length-_arg-1); return r<2?r:2;}","number":10]]></dct:description>
+        <dct:description><![CDATA["url":"desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"canvas":"square3x4x2","gen":"function(){var dets=[2,3,3,4,4,6,6,12],d=dets[Math.floor(Math.random()*dets.length)],n=Math.floor(Math.random()*(2*d-1))+1; return {'tag':n.toString()+'/'+d.toString(),'arg':12*n/d};}","scorefct":"function($this,_result,_arg){var r=Math.abs(_result.split('1').length-_arg-1); return r<2?r:2;}","number":10]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez les cases[/b] du ou des rectangles pour que la part de cases rouges soit égale à la [red]fraction suivante[/red].","fontex":0.8]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
@@ -213,7 +213,7 @@
     <rdf:Description>
         <dct:identifier>f121</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier deux carrés 4x4 pour que la part de cases rouges soit égale à une fraction dont les dénominateur peut être 2, 4, 8 ou 16.</dct:title>
-        <dct:description><![CDATA["url":"desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"canvas":"square4x4x2","gen":"function(){var dets=[2,4,4,8,8,8,8,16,16],d=dets[Math.floor(Math.random()*dets.length)],n=Math.floor(Math.random()*(2*d-1))+1; return {'label':n.toString()+'/'+d.toString(),'arg':16*n/d};}","scorefct":"function($this,_result,_arg){var r=Math.abs(_result.split('1').length-_arg-1); return r<2?r:2;}","number":10]]></dct:description>
+        <dct:description><![CDATA["url":"desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"canvas":"square4x4x2","gen":"function(){var dets=[2,4,4,8,8,8,8,16,16],d=dets[Math.floor(Math.random()*dets.length)],n=Math.floor(Math.random()*(2*d-1))+1; return {'tag':n.toString()+'/'+d.toString(),'arg':16*n/d};}","scorefct":"function($this,_result,_arg){var r=Math.abs(_result.split('1').length-_arg-1); return r<2?r:2;}","number":10]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez les cases[/b] du ou des rectangles pour que la part de cases rouges soit égale à la [red]fraction suivante[/red].","fontex":0.8]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
