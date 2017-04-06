@@ -454,13 +454,13 @@ $(window).ready(function() {
                 $("#bibrowser").browser({url:tibibi.url, lang:tibibi.lang, classification:tibibi.classification,
                     onRefresh:function($this) { tibibi.course.highlight(); },
                     context:[
-                    { icon:"mods/tibibi/res/img/run.svg",       process:function(_id){ tibibi.run({id:_id}); } },
-                    { icon:"mods/tibibi/res/img/import.svg",    process:function(_id){
+                    { icon:"res/img/default/white/run.svg",       process:function(_id){ tibibi.run({id:_id}); } },
+                    { icon:"res/img/default/white/import.svg",    process:function(_id){
                         if ($("#bielts .elt.s").length)  { tibibi.course.ex.splice($("#bielts .elt.s").attr("id"),0,_id); }
                         else                            { tibibi.course.ex.push(_id); }
                         tibibi.course.update();
                     } },
-                    { icon:"mods/tibibi/res/img/snapshot.svg",  process:function(_id) {
+                    { icon:"res/img/default/white/snapshot.svg",  process:function(_id) {
                         window.open('demo.html?id='+_id,'_blank',
                             'width=640, height=480,toolbar=no,location=no,status=no,menubar=no,'+
                             'scrollbars=no,resizable=no,status=no,titlebar=no'); }
@@ -489,32 +489,32 @@ $(window).ready(function() {
     <div id="bimain">
         <div id="bitopmenu">
             <div class="icon l" onclick="tibibi.group.open();" ontouchstart="tibibi.group.open();event.preventDefault();">
-                <img src="mods/tibibi/res/img/newpeople.svg"/></div>
+                <img src="res/img/default/white/newpeople.svg"/></div>
             <select id="biggroups" onchange="tibibi.menu.build();"><option></option></select>
             <div class="icon e" onclick="tibibi.group.edit();" ontouchstart="tibibi.group.edit();event.preventDefault();">
-                <img src="mods/tibibi/res/img/edit.svg"/></div>
+                <img src="res/img/default/white/edit.svg"/></div>
             <div id="bigdg" class="icon d" onclick="tibibi.group.remove();"
                                          ontouchstart="tibibi.group.remove();event.preventDefault();">
-                <img src="mods/tibibi/res/img/delete.svg"/></div>
+                <img src="res/img/default/white/delete.svg"/></div>
 
             <div class="icon l" onclick="tibibi.course.open();" ontouchstart="tibibi.course.open();event.preventDefault();">
-                <img src="mods/tibibi/res/img/newcourse.svg"/></div>
+                <img src="res/img/default/white/newcourse.svg"/></div>
             <select id="bigcourses" onchange="tibibi.course.load($(this).val(),false,true);"></select>
             <div class="icon e" onclick="tibibi.course.edit();" ontouchstart="tibibi.course.edit();event.preventDefault();">
-                <img src="mods/tibibi/res/img/edit.svg"/></div>
+                <img src="res/img/default/white/edit.svg"/></div>
             <div id="bigdc" class="icon d" onclick="tibibi.course.remove();" 
                                          ontouchstart="tibibi.course.remove();event.preventDefault();">
-                <img src="mods/tibibi/res/img/delete.svg"/></div>
+                <img src="res/img/default/white/delete.svg"/></div>
 
             <div id="bigde" class="icon x" onclick="tibibi.edit();" ontouchstart="tibibi.edit();event.preventDefault();">
-                <img src="mods/tibibi/res/img/settings.svg"/>
+                <img src="res/img/default/white/settings.svg"/>
             </div>
 
             <div id="bigdx" class="icon x" onclick="user.logout($(this));"  ontouchstart="user.logout($(this));event.preventDefault();">
-                <img src="mods/tibibi/res/img/logout.svg"/>
+                <img src="res/img/default/white/logout.svg"/>
             </div>
             <div id="bigdr" class="icon x" onclick="tibibi.quit();"  ontouchstart="tibibi.quit();event.preventDefault();">
-                <img src="mods/tibibi/res/img/valid.svg"/>
+                <img src="res/img/default/white/valid.svg"/>
             </div>
 
         </div>
@@ -524,18 +524,18 @@ $(window).ready(function() {
                 <div id="bilist">
                     <div id="bielts"></div>
                     <div id="bieltact">
-                        <div class="icon" onclick="tibibi.course.action('up');"><img src="mods/tibibi/res/img/up.svg"/></div>
-                        <div class="icon" onclick="tibibi.course.action('down');"><img src="mods/tibibi/res/img/down.svg"/></div>
-                        <div class="icon" onclick="tibibi.course.action('exe');"><img src="mods/tibibi/res/img/run.svg"/></div>
-                        <div class="icon" onclick="tibibi.course.action('snapshot');"><img src="mods/tibibi/res/img/snapshot.svg"/></div>
-                        <div class="icon" onclick="tibibi.course.action('look');"><img src="mods/tibibi/res/img/look.svg"/></div>
-                        <div id="bidelex" class="icon" onclick="tibibi.course.action('del');"><img src="mods/tibibi/res/img/delete.svg"/></div>
+                        <div class="icon" onclick="tibibi.course.action('up');"><img src="res/img/default/white/up.svg"/></div>
+                        <div class="icon" onclick="tibibi.course.action('down');"><img src="res/img/default/white/down.svg"/></div>
+                        <div class="icon" onclick="tibibi.course.action('exe');"><img src="res/img/default/white/run.svg"/></div>
+                        <div class="icon" onclick="tibibi.course.action('snapshot');"><img src="res/img/default/white/snapshot.svg"/></div>
+                        <div class="icon" onclick="tibibi.course.action('look');"><img src="res/img/default/white/look.svg"/></div>
+                        <div id="bidelex" class="icon" onclick="tibibi.course.action('del');"><img src="res/img/default/white/delete.svg"/></div>
                     </div>
                     <div id="biactions">
-                        <div class="icon" onclick="tibibi.course.expo();"><img src="mods/tibibi/res/img/export.svg"/></div>
-                        <div class="icon" onclick="tibibi.course.impo();"><img src="mods/tibibi/res/img/import.svg"/></div>
-                        <div class="icon" onclick="tibibi.course.overview();"><img src="mods/tibibi/res/img/snapshot.svg"/></div>
-                        <div class="icon" onclick="tibibi.course.snapshot();"><img src="mods/tibibi/res/img/list.svg"/></div>
+                        <div class="icon" onclick="tibibi.course.expo();"><img src="res/img/default/white/export.svg"/></div>
+                        <div class="icon" onclick="tibibi.course.impo();"><img src="res/img/default/white/import.svg"/></div>
+                        <div class="icon" onclick="tibibi.course.overview();"><img src="res/img/default/white/snapshot.svg"/></div>
+                        <div class="icon" onclick="tibibi.course.snapshot();"><img src="res/img/default/white/list.svg"/></div>
                     </div>
                 </div>
                 <div id="bibrowser"></div></div>
@@ -574,7 +574,7 @@ $(window).ready(function() {
                 </input>
                 <div class="icon" onclick="tibibi.popup.valid(); event.stopPropagation();"
                                   ontouchstart="tibibi.popup.valid();event.stopPropagation();event.preventDefault();">
-                    <img src="mods/tibibi/res/img/valid.svg"/>
+                    <img src="res/img/default/white/valid.svg"/>
                 </div>
             </div></div>
         </div>

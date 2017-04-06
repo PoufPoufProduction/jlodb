@@ -132,7 +132,7 @@
                             color       : "blue",           // The color effects
                             opacity     : .2,               // The opacitiy effects
                             init        : [0,0],            // Initial position of the cursor
-                            id          : "cursor",         // Cursor id
+                            cid         : "cursor",         // Cursor id
                             translate   : [0,0],            // The current position of the cursor
                             boundaries  : 0,                // The translation boundaries
                             targettype  : "circle",         // The target type (circle, rect)
@@ -140,10 +140,10 @@
                             offset      : [0,0],            // Offset for the effects
                             center      : 0                 // Rotation center
                         }, settings.cursor[i]);
-                    settings.cursors[vCursor.id] = vCursor;
+                    settings.cursors[vCursor.cid] = vCursor;
 
                     // HANDLE THE CURSOR DRAG
-                    var $cursor = $("#"+vCursor.id, settings.svg.root());
+                    var $cursor = $("#"+vCursor.cid, settings.svg.root());
 
                     if (vCursor.center) {
                         if ($.isArray(vCursor.init))        { vCursor.init = vCursor.init[0]; }
@@ -160,6 +160,7 @@
                     $cursor.bind('touchstart mousedown', function(event) {
                         var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
                                 event.originalEvent.touches[0]:event;
+                                
 
                         if (!settings.timer.id) { settings.timer.id = setTimeout(function() { helpers.timer($this); }, 1000); }
                         if (settings.interactive) {
@@ -167,8 +168,9 @@
                             $(this).attr("class","drag");
                             $this.addClass("active");
                             settings.mouse = [ vEvent.clientX, vEvent.clientY];
+                            
 
-                            var vCursor = settings.cursors[this.id];
+                            var vCursor = settings.cursors[$(this).attr("id")];
                             if (vCursor.center) {
                                 settings.control.center = [ vCursor.center[0]*settings.ratio + $this.offset().left,
                                                             vCursor.center[1]*settings.ratio + $this.offset().top];
@@ -189,7 +191,7 @@
                 $this.bind('touchend touchleave mouseup mouseleave', function() {
                     if (settings.elt) {
                         $(settings.elt).attr("class","");
-                        var vCursor = settings.cursors[settings.elt.id];
+                        var vCursor = settings.cursors[$(settings.elt).attr("id")];
                         $this.removeClass("active");
 
                         // RELEASE THE DISPLACEMENT
@@ -230,7 +232,7 @@
 
                     if (settings.interactive && settings.elt) {
                         // COMPUTE TRANSLATION_X
-                        var vCursor = settings.cursors[settings.elt.id];
+                        var vCursor = settings.cursors[$(settings.elt).attr("id")];
                         var vOnmoveArgs=0;
                         if (vCursor.center) {
                             var vB = [ vEvent.clientX - settings.control.center[0], vEvent.clientY - settings.control.center[1] ];

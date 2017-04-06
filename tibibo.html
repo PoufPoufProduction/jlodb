@@ -178,7 +178,7 @@ user.onEvent = function() {
 
     }
     else {
-        $("#profile #avatar").html("<img src='mods/tibibi/res/img/people.svg'/>");
+        $("#profile #avatar").html("<img src='res/img/default/white/people.svg'/>");
         $("#profile #label #name").html("");
         $("#profile #label #sub").html("");
         $("#profile #label #edmode").hide();
@@ -326,7 +326,7 @@ var tibibo = {
                         var html="<div class='label' style='width:26.4em;margin-bottom:.1em;'>"+tibibo.book.data.value+"</div></div>"+
                                  "<div class='move' onmousedown='tibibo.book.move("+id+",-1)' "+
                                  "ontouchstart='tibibo.book.move("+id+",-1);event.preventDefault();'>"+
-                                 "<img src='mods/tibibi/res/img/import.svg'/></div>";
+                                 "<img src='res/img/default/white/import.svg'/></div>";
                         html+=tibibo.book.browse.dump({action:"move",id:id});
                         $("#bodbrowser #dcontent").html(html);
                     }
@@ -551,7 +551,7 @@ var tibibo = {
                         if (!_node.description && !_args.same) {
                             ret+="<div class='move' onmousedown='tibibo.book.move("+_args.id+","+_node.id+")' "+
                                  "ontouchstart='tibibo.book.move("+_args.id+","+_node.id+");event.preventDefault();'>"+
-                                 "<img src='mods/tibibi/res/img/import.svg'/>"+
+                                 "<img src='res/img/default/white/import.svg'/>"+
                                  "</div>";
                         }
                     }
@@ -944,10 +944,10 @@ $(window).ready(function() {
                     <div id="name">&nbsp;</div>
                     <div id="sub"></div>
                     <div id="edmode" class="icon" ontouchstart="tibibo.devmode();event.preventDefault();"
-                        onclick="tibibo.devmode();"><img src="mods/tibibi/res/img/edit.svg"/></div>
+                        onclick="tibibo.devmode();"><img src="res/img/default/white/edit.svg"/></div>
                 </div>
                 <div id="gdx" class="icon" ontouchstart="user.logout($(this));event.preventDefault();"
-                    onclick="user.logout($(this));"><img src="mods/tibibi/res/img/logout.svg"/></div>
+                    onclick="user.logout($(this));"><img src="res/img/default/white/logout.svg"/></div>
             </div>
 
         </div>
@@ -969,7 +969,7 @@ $(window).ready(function() {
                     <div class="icon"
         onmousedown="if ($('#chooseid input').val()) document.location='tibibo.html?id='+$('#chooseid input').val();"
         ontouchstart="if ($('#chooseid input').val()) document.location='tibibo.html?id='+$('#chooseid input').val();event.preventDefault();">
-                        <img src="mods/tibibi/res/img/valid.svg"/></div>
+                        <img src="res/img/default/white/valid.svg"/></div>
                 </div>
                 <div id="clastid" class="booklist">
                     <div id="clist" class="title"></div>
@@ -985,7 +985,7 @@ $(window).ready(function() {
                     <div id="dlabel" class="label"></div>
                     <input id="dval" class="s" onfocus="if ($(this).hasClass('s')) { $(this).removeClass('s').val(''); }"></input>
                     <div class="icon" onmousedown="tibibo.book.create();" ontouchstart="tibibo.book.create();event.preventDefault();" >
-                        <img src="mods/tibibi/res/img/valid.svg"/></div>
+                        <img src="res/img/default/white/valid.svg"/></div>
                 </div>
 
                 <!-- LIST OF USER OWN BOOKS -->
@@ -1010,13 +1010,13 @@ $(window).ready(function() {
                 <div id="editown" class="menu devmode">
                     <div class="icon e" onmousedown="tibibo.node.edit.open();"
                         ontouchstart="tibibo.node.edit.open();event.preventDefault();" >
-                        <img src="mods/tibibi/res/img/newcourse.svg"/></div>
+                        <img src="res/img/default/white/newcourse.svg"/></div>
                     <div id="mdelete" class="icon e" onmousedown="tibibo.node.menu($(this));"
                         ontouchstart="tibibo.node.menu($(this));event.preventDefault();" >
-                        <img src="mods/tibibi/res/img/delete.svg"/></div>
+                        <img src="res/img/default/white/delete.svg"/></div>
                     <div id="medit" class="icon e" onmousedown="tibibo.node.menu($(this));"
                         ontouchstart="tibibo.node.menu($(this));event.preventDefault();" >
-                        <img src="mods/tibibi/res/img/edit.svg"/></div>
+                        <img src="res/img/default/white/edit.svg"/></div>
                     <div id="mleft" class="icon e" onmousedown="tibibo.node.menu($(this));"
                         ontouchstart="tibibo.node.menu($(this));event.preventDefault();" >
                         <img src="mods/tibibo/res/img/left.svg"/></div>
@@ -1025,20 +1025,20 @@ $(window).ready(function() {
                         <img src="mods/tibibo/res/img/right.svg"/></div>
                     <div id="mmove" class="icon e" onmousedown="tibibo.node.menu($(this));"
                         ontouchstart="tibibo.node.menu($(this));event.preventDefault();" >
-                        <img src="mods/tibibi/res/img/courses.svg"/></div>
+                        <img src="res/img/default/white/courses.svg"/></div>
                     <div id="mexport" class="icon e" onmousedown="tibibo.node.export();"
                         ontouchstart="tibibo.node.export($(this));event.preventDefault();" >
-                        <img src="mods/tibibi/res/img/export.svg"/></div>
+                        <img src="res/img/default/white/export.svg"/></div>
                     <div id="mimport" class="icon e" onmousedown="$('#boeimport').show();"
                         ontouchstart="$('#boeimport').show();event.preventDefault();" >
-                        <img src="mods/tibibi/res/img/import.svg"/></div>
+                        <img src="res/img/default/white/import.svg"/></div>
                 </div>
 
                 <!-- DEVMODE ON OTHER ONE BOOK -->
                 <div id="editother" class="menu devmode">
                     <div id="mexport" class="icon e" onmousedown="tibibo.node.export();"
                         ontouchstart="tibibo.node.export($(this));event.preventDefault();" >
-                        <img src="mods/tibibi/res/img/export.svg"/></div>
+                        <img src="res/img/default/white/export.svg"/></div>
                 </div>
 
                 <!-- USERMODE -->
@@ -1057,7 +1057,7 @@ $(window).ready(function() {
         <textarea id="areaimport"></textarea>
         <div class="button"><div class="icon" onmousedown="tibibo.node.import();"
                             ontouchstart="tibibo.node.import($(this));event.preventDefault();">
-            <img src="mods/tibibi/res/img/import.svg"/></div></div>
+            <img src="res/img/default/white/import.svg"/></div></div>
     </div></div>
     
     
@@ -1099,7 +1099,7 @@ $(window).ready(function() {
                 <select></select>
                 <div class="icon" onclick="tibibo.node.edit.tibibi();" 
                                   ontouchstart="tibibo.node.edit.tibibi();event.preventDefault();">
-                    <img src="mods/tibibi/res/img/import.svg"/></div>
+                    <img src="res/img/default/white/import.svg"/></div>
                 <textarea id="etibibi"
                     onclick="tibibo.textarea(this);" 
                     ontouchstart="tibibo.textarea(this);event.preventDefault();"
