@@ -37,15 +37,17 @@ math                            { display: block; text-align: center; }
 .anim12 div                     { position:relative; width:1em; height:12em; animation-duration: 1s; animation-name:anim; animation-timing-function:step-start; animation-iteration-count:infinite; animation-play-state:paused; -webkit-animation-duration: 1s; -webkit-animation-name:anim; -webkit-animation-timing-function:step-start; -webkit-animation-iteration-count:infinite; -webkit-animation-play-state:paused; }
 .anim12 div.running             { animation-play-state:running; -webkit-animation-play-state:running; }
 
+.anim12.noloop div              { animation-iteration-count:1; -webkit-animation-iteration-count:1; margin-top:-11em; }
+
 #touch01                        { position:absolute; width:1em; height:1em; font-size:4em; display:none; }
 #touch01 div                    { position:relative; width:1em; height:12em; margin-top:1em; animation-duration: 0.5s; animation-name:anim; animation-play-state:paused; animation-timing-function:step-start; -webkit-animation-duration: 0.5s; -webkit-animation-name:anim; -webkit-animation-timing-function:step-start; -webkit-animation-play-state:paused; }
 #touch01 div.running            { animation-play-state:running; -webkit-animation-play-state:running; }
 
-#launcher                       { width:100%; height:100%; background-color:black; position:absolute; top:0; left:0; display:none; z-index:2000;}
-#launcher #quit                 { font-size:.8em; width:1em; height:1em; position:absolute; top:0; left:0; cursor:pointer; z-index:2001;}
-#launcher #activity             { width:100%; height:100%; position:relative; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+.jlodb                          { width:100%; height:100%; background-color:black; position:absolute; top:0; left:0; display:none; z-index:2000;}
+.jlodb #quit                    { font-size:.8em; width:1em; height:1em; position:absolute; top:0; left:0; cursor:pointer; z-index:2001;}
+.jlodb #activity                { width:100%; height:100%; position:relative; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
 
-#score                          { width:100%; height:100%; position:absolute; top:0; left:0; z-index:2002; background-image:url("../res/img/default/score/background01.svg");display:none; }
+#score                          { width:100%; height:100%; position:absolute; top:0; left:0; z-index:2002; background-image:url("../res/img/default/score/background01.svg"); display:none; }
 #score .value                   { width:1em; height:1em; text-align:center; position:absolute; font-weight:bold; overflow:visible; font-size:3em; opacity:1; top:8%; left:25%; }
 #score.s5 .value:before         { content:"A"; color:red;}
 #score.s4 .value:before         { content:"B"; color:orange;}
@@ -53,10 +55,14 @@ math                            { display: block; text-align: center; }
 #score.s2 .value:before         { content:"D"; color:blue;}
 #score.s1 .value:before         { content:"E"; color:purple;}
 #score.s0 .value:before         { content:"F"; color:rgb(64,64,64);}
-#score .stars                   { width:100%; height:100%; position:absolute; top:0; left:0; }
-#score.s5 .stars                { background-image:url("../res/img/default/score/score3.svg"); }
-#score.s4 .stars                { background-image:url("../res/img/default/score/score2.svg"); }
-#score.s3 .stars                { background-image:url("../res/img/default/score/score1.svg"); }
+#score .star                    { position:absolute; font-size:3em; }
+#score .fire                    { position:absolute; font-size:6em; }
+#score #star1.star              { top:31.5%; left:14.2%; }
+#score #star2.star              { top:32%; left:26%; }
+#score #star3.star              { top:31.5%; left:37.5%; }
+#score #fire1.fire              { top:15%; left:30%; }
+#score #fire2.fire              { top:5%; left:0;}
+#score #fire3.fire              { top:15%; left:5;}
 #score .icon                    { width:1em; height:1em; font-size:1.6em; position:absolute; cursor:pointer; top:49.5%;}
 #score #reload                  { left:6.6em; }
 #score #menu                    { left:7.7em; }

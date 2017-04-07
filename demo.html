@@ -21,14 +21,13 @@
 //<![CDATA[
 
 var options = {order:"rand",limit:1};
-var jlodb = function($elt) {
-    $elt.show().parent().find("#score").removeClass().hide();
-    $elt.jlodb({ isvisible:true,
-                onexercice: function($this, _id, _activity) { document.title = "jLoDb ["+_id+"]"; },
-                onfinish:   function($this)       { $this.parent().find("#score").removeClass().hide(); },
-                onscore:    function($this, _ret) { $this.parent().find("#score").attr("class","s"+_ret.score).show(); 
-                                                    setTimeout(function() { $this.parent().find("#score").addClass("active"); },0); return true; }
-                }, options);
+var jlodb = function() {
+    $("#score").score('hide');
+    $("#activity").jlodb({
+        onexercice: function($this, _id, _activity) { document.title = "jLoDb ["+_id+"]"; },
+        onfinish:   function($this, _hide)          { $("#score").score('hide'); },
+        onscore:    function($this, _ret)           { $("#score").score('show',_ret.score); return true; }
+    }, options);
 }
 
 $(window).ready(function() {
@@ -41,6 +40,7 @@ $(window).ready(function() {
     $("body").css("font-size", (Math.min(x,y))+"px");
     $("body>div").css("margin-top", Math.floor(($(window).height()-$("body>div").height())/2-2)+"px").show();
 
+    // HANDLE ARGUMENTS
     var args = {}
     var a = location.search.substring(1).split('&');
     for (var i in a) { var p= a[i].split('='); args[p[0]]=p[1]; }
@@ -50,14 +50,14 @@ $(window).ready(function() {
         if (args.classification)    { options.classification = args.classification; }
     }
     if (args.nosplash) { $("body").addClass("nosplash"); }
+    
+    $("#score").score({
+        onreload:function($this) { $('#activity').jlodb('reload'); },
+        onnext:  function($this) { jlodb(); } 
+    });
 
-    if (args.id && args.snapshot) {
-        window.open('demo.html?nosplash=1&id='+args.id,'_blank',
-            'width=640, height=480,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,status=no,titlebar=no');
-        return;
-    }
-
-    jlodb($("#launcher"));
+    // LAUNCH EXERCICE
+    jlodb();
 });
 
 //]]>
@@ -65,20 +65,10 @@ $(window).ready(function() {
 </head>
 
 <body><div>
-<div id="launcher">
+<div class="jlodb" style="display:inherit;">
     <div id="activity"></div>
-    <div id="score"><div>
-        <div class="content">
-            <div class="value"></div>
-            <div class="stars"></div>
-            <div class="icon" id="reload" ontouchstart="$(this).closest('#launcher').jlodb('reload');event.preventDefault();"
-                 onclick="$(this).closest('#launcher').jlodb('reload');" ><img src="res/img/default/icon/action_reload01.svg"/></div>
-
-            <div class="icon" id="next" ontouchstart="jlodb($('#launcher'));event.preventDefault();"
-                 onclick="jlodb($('#launcher'));"><img src="res/img/default/icon/action_next01.svg"/></div>
-
-    </div></div></div>
-    </div>
+    <div id="score"></div>
+</div>
 
 </div>
 </body>

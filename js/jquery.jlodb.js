@@ -1,16 +1,15 @@
-(function($) {
+//================
+// JLODB PLUGIN
+//================
 
-    // NOT SURE TO REMEMBER WHY (maybe because of class handling or score)
-    // BUT JLODB PLUGIN HAS TO BE APPLIED ON A PARENT OBJECT OF THE ACTIVITY
-    // NOT DIRECTLY ON THE ACTIVITY IT SELF
+(function($) {
 
     var defaults = {
         debug       : false,
         url         : "",               // cross platform json (not available for the moment)
-        id          : "activity",       // activity id
         // OVERWRITABLE METHODS
-        onevent     : function($this, _begin)   { if (_begin) { helpers.settings($this).onstart($this); }
-                                                  else        { helpers.settings($this).onfinish($this); } },
+        onevent     : function($this, _begin, _hide)   { if (_begin) { helpers.settings($this).onstart($this); }
+                                                         else        { helpers.settings($this).onfinish($this, _hide); } },
         onstart     : function($this)           { /** START THE ACTIVITY */ },
         onfinish    : function($this)           { /** FINISH THE ACTIVITY */ },
         onscore     : function($this, _ret)     { /** HANDLE THE SCORE */ return false; },
@@ -21,7 +20,7 @@
     // private methods
     var helpers = {
         // Get the settings
-        settings: function($this, _val) { if (_val) { $this.data("settings", _val); } return $this.data("settings"); },
+        settings: function($this, _val) { if (_val) { $this.data("jlodb", _val); } return $this.data("jlodb"); },
 
         rerun       : function($this) {
             var settings = helpers.settings($this);
@@ -32,23 +31,23 @@
         run         : function($this, _name, _args) {
             var settings = helpers.settings($this);
 
+            // SAVE ARGS FOR RERUN
             settings.last = _name;
             settings.args = $.extend(true, {},_args);
 
+            // ADD CONTEXT
             var args = $.extend({ 'context': settings.context } , _args);
             args.context = settings.context;
-
-            if (typeof($this[_name])=='undefined') {
-                $.getScript('activities/'+_name+'/'+_name+'.js', function() { 
-                    $this.find("#"+settings.id)[_name](args); });
-            }
-            else { $this.find("#"+settings.id)[_name](args); }
+            
+            // LAUNCH EXERCICE
+            if (typeof($this[_name])=='undefined')  { $.getScript('activities/'+_name+'/'+_name+'.js', function() { $this[_name](args); }); }
+            else                                    { $this[_name](args); }
         },
 
         // FORCE QUIT FROM THE CURRENT EXERCICE
         quit        : function($this) {
             var settings = helpers.settings($this);
-            $this.find("#"+settings.id)[settings.last]('quit');
+            $this[settings.last]('quit');
         },
 
             // GET EXERCICE AND LAUNCH
@@ -69,7 +68,6 @@
                     if (data.exercices[0].locale) {
                         if (d.locale) { d.locale = $.extend(d.locale, data.exercices[0].locale); }
                         else { d.locale = data.exercices[0].locale; } }
-                    d.label = data.exercices[0].label;
                     if (settings.onexercice) { settings.onexercice($this, data.exercices[0].id, data.exercices[0].activity); }
 
                     if (data.exercices[0].ext && jlodbext && jlodbext[data.exercices[0].ext]) {
@@ -83,13 +81,9 @@
         // CLOSE THE EXERCICE
         end: function($this, _hide) {
             var settings = helpers.settings($this);
-            if (_hide) {
-                $this.find("#"+settings.id).html("").hide();
-                $this.hide();
-            }
-            settings.onevent($this,false);
+            if (_hide) { $this.html("").hide(); }
+            settings.onevent($this,false,_hide);
         }
-
     };
 
     // The plugin
@@ -103,14 +97,13 @@
                     last        : "",
                     args        : "",
                     context     : {
-                        onquit : function($activity, _ret) {
-                            var $this = $activity.closest(".jlodb"), settings = helpers.settings($this);
+                        onquit : function($this, _ret) {
+                            var settings = helpers.settings($this);
                             if (_ret.status!="success" || !settings.onscore($this, _ret)) { helpers.end($this, true); }
                         },
-                        onload: function($activity) {
-                            var $this = $activity.closest(".jlodb"), settings = helpers.settings($this);
+                        onload: function($this) {
+                            var settings = helpers.settings($this);
                             if (!$this.is(":visible")) { $this.css("opacity",0).show().animate({opacity:1},1000); }
-                            $this.find("#"+settings.id).show();
                             settings.onevent($this,true);
                         }
                     }
@@ -121,7 +114,8 @@
 
                     var $settings = $.extend(true, {}, defaults, options, settings);
                     helpers.settings($this, $settings);
-                    $this.addClass("jlodb");
+                    
+                    // LAUNCH EXERCICE DIRECTLY WITH PROVIDEN ARGUMENTS OR GET IT FROM DATABASE
                     if (args && args.activity && args.args) { helpers.run($this, args.activity, args.args); }
                     else                                    { helpers.exercice($this, args); }
                 });
@@ -137,7 +131,139 @@
     };
 })(jQuery);
 
-// editor plugin
+//================
+// SCORE PLUGIN
+//================
+
+(function($) {
+
+    // JLODB PLUGIN 
+
+    var defaults = {
+        debug       : false,
+        onreload    : false,
+        onmenu      : false,
+        onnext      : false
+    };
+
+    // private methods
+    var helpers = {
+        // Get the settings
+        settings: function($this, _val) { if (_val) { $this.data("settings", _val); } return $this.data("settings"); },
+
+        // Build the score panel
+        build         : function($this) {
+            var settings = helpers.settings($this);
+            $this.html("");
+            
+            $this.append("<div class='value'></div>");
+            
+            $this.append("<div id='star1' class='star anim12 noloop'><div><img src='res/img/default/anim/star01.svg'/></div></div>");
+            $this.append("<div id='star2' class='star anim12 noloop'><div><img src='res/img/default/anim/star02.svg'/></div></div>");
+            $this.append("<div id='star3' class='star anim12 noloop'><div><img src='res/img/default/anim/star03.svg'/></div></div>");
+            
+            
+            $this.append("<div id='fire1' class='fire anim12'><div><img src='res/img/default/anim/fireworks01.svg'/></div></div>");
+            $this.append("<div id='fire2' class='fire anim12'><div><img src='res/img/default/anim/fireworks02.svg'/></div></div>");
+            $this.append("<div id='fire3' class='fire anim12'><div><img src='res/img/default/anim/fireworks01.svg'/></div></div>");
+            
+            if (settings.onreload) {
+                var $reload = $("<div class='icon' id='reload'><img src='res/img/default/icon/action_reload01.svg' alt=''/></div>");
+                $reload.bind("touchstart mousedown", function(_event) { $this.score("reload"); _event.preventDefault(); });
+                $this.append($reload);
+            }
+            
+            if (settings.onmenu) {
+                var $menu = $("<div class='icon' id='menu'><img src='res/img/default/icon/action_menu01.svg' alt=''/></div>");
+                $menu.bind("touchstart mousedown", function(_event) { $this.score("menu"); _event.preventDefault(); });
+                $this.append($menu);
+            }
+            
+            if (settings.onnext) {
+                var $next = $("<div class='icon' id='next'><img src='res/img/default/icon/action_next01.svg' alt=''/></div>");
+                $next.bind("touchstart mousedown", function(_event) { $this.score("next"); _event.preventDefault(); });
+                $this.append($next);
+            }
+        }
+    };
+
+    // The plugin
+    $.fn.score = function(method) {
+
+        // public methods
+        var methods = {
+            init: function(options, args) {
+                // The settings
+                var settings = {
+                    interactive : false,
+                    last        : "",
+                    args        : "",
+                    context     : {
+                        onquit : function($this) {}
+                    }
+                };
+
+                return this.each(function() {
+                    var $this = $(this);
+
+                    var $settings = $.extend(true, {}, defaults, options, settings);
+                    helpers.settings($this, $settings);
+                    
+                    helpers.build($this);
+                });
+            },
+            reload: function() {
+                var $this=$(this), settings = helpers.settings($this);
+                if (settings.onreload && settings.interactive) { settings.onreload($this); }
+            },
+            menu: function() {
+                var $this=$(this), settings = helpers.settings($this);
+                if (settings.onmenu && settings.interactive) { settings.onmenu($this); }
+            },
+            next: function() {
+                var $this=$(this), settings = helpers.settings($this);
+                if (settings.onnext && settings.interactive) { settings.onnext($this); }
+            },
+            hide: function(_args) {
+                var $this=$(this), settings = helpers.settings($this);
+                for (var i=0; i<10; i++) { $this.removeClass("s"+i); }
+                $this.find(".star>div").removeClass("running").parent().hide();
+                $this.find(".fire>div").removeClass("running").parent().hide();
+                $this.hide();
+            },
+            show: function(_score, _args) {
+                var $this=$(this), settings = helpers.settings($this);
+                var time = 100;
+                settings.interactive = false;
+                $this.find(".star>div").removeClass("running").parent().hide();
+                $this.find(".fire>div").removeClass("running").parent().hide();
+                $this.show();
+                if (_score>2) { setTimeout(function() { $this.find("#star1>div").addClass("running").parent().show(); }, time); time+=300; }
+                if (_score>3) { setTimeout(function() { $this.find("#star2>div").addClass("running").parent().show(); }, time); time+=300; }
+                if (_score>4) { setTimeout(function() { $this.find("#star3>div").addClass("running").parent().show(); }, time); time+=300; }
+                setTimeout(function() {
+                    $this.addClass("s"+_score);
+                    settings.interactive=true;
+                    
+                    if (_score==5) {
+                        setTimeout(function() { $this.find("#fire1>div").addClass("running").parent().show(); }, 100);
+                        setTimeout(function() { $this.find("#fire2>div").addClass("running").parent().show(); }, 300);
+                        setTimeout(function() { $this.find("#fire3>div").addClass("running").parent().show(); }, 500);
+                    }
+                }, time);
+                
+            }
+        };
+
+        if (methods[method])    { return methods[method].apply(this, Array.prototype.slice.call(arguments, 1)); } 
+        else if (typeof method === 'object' || !method) { return methods.init.apply(this, arguments); }
+        else { $.error( 'Method "' +  method + '" does not exist in score plugin!'); }
+    };
+})(jQuery);
+
+//================
+// EDITOR PLUGIN
+//================
 
 var displaytype =  { normal:0, scientific:1, physics:2 };
 var nodemathtype = { final:1, rootonly:2, commutative :4, associative:8 };

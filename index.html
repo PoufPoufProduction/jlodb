@@ -206,7 +206,7 @@ jlodb = {
                                 html    +="<div class='snap' onclick=\"window.open('"+data.mods[i].id+".html',"+
                                           "'_blank', 'width=640, height=480,toolbar=no,location=no,status=no,menubar=no," +
                                           "scrollbars=no,resizable=no,status=no,titlebar=no');\">"+
-                                          "<img src='mods/tibibi/res/img/snapshot.svg'/></div>";
+                                          "<img src='res/img/default/white/snapshot.svg'/></div>";
                                 if (data.mods[i].source.length) {
                                     html+="<div class='action' id='"+data.mods[i].source+
                                           "' onclick='jlodb.page.mods.build(this);'>+</div>";
@@ -490,10 +490,11 @@ jlodb = {
     run        : function(_args, _update) {
         jlodb.ubr = _update;
         $("#waiting").show().find("div").addClass("running");
-        $("#launcher").jlodb({ onstart:    function($this)       { $("#jlodb").hide();
+        $("#activity").jlodb({ onstart:    function($this)       { $("#jlodb").hide(); $this.parent().show();
                                                                    $("#waiting").hide().find("div").removeClass("running"); },
-                               onfinish:   function($this)       { $("#jlodb").show(); $("#score").removeClass().hide(); },
-                               onscore:    function($this, _ret) { $("#score").attr("class","s"+_ret.score).show(); return true; },
+                               onfinish:   function($this, _hide){ if (_hide) { $("#jlodb").show(); $this.parent().hide(); }
+                                                                   $("#score").score('hide'); },
+                               onscore:    function($this, _ret) { $("#score").score('show',_ret.score); return true; },
                                onexercice: function($this,_id,_a){ if (jlodb.ubr) { $("#jlcontentb").browser("id",_id); } } },_args);
     },
     content     : function(_url) { $("#jlcontenta").load(_url+"?debug="+Math.floor(Math.random()*99999)); },
@@ -545,9 +546,9 @@ jlodb = {
                       },
                       url:jlodb.checkdb.url,
                       lang:jlodb.checkdb.lang, classification:jlodb.classification.data, context:[
-                        { icon:"mods/tibibi/res/img/run.svg", process :function(_id){ jlodb.run({id:_id}, false); } },
-                        { icon:"mods/tibibi/res/img/edit.svg", process:function(_id){ jlodb.page.edition.open(_id); } },
-                        { icon:"mods/tibibi/res/img/snapshot.svg", process:function(_id) {
+                        { icon:"res/img/default/white/run.svg", process :function(_id){ jlodb.run({id:_id}, false); } },
+                        { icon:"res/img/default/white/edit.svg", process:function(_id){ jlodb.page.edition.open(_id); } },
+                        { icon:"res/img/default/white/snapshot.svg", process:function(_id) {
                             window.open('demo.html?id='+_id,'_blank',
                                 'width=640, height=480,toolbar=no,location=no,status=no,menubar=no,'+
                                 'scrollbars=no,resizable=no,status=no,titlebar=no'); } } ]
@@ -564,6 +565,11 @@ $(window).ready(function() {
     // SPECIAL STUFF
     $("#activity").ontouchmove = function(e) { e.preventDefault(); }
 
+    $("#score").score({
+        onreload:function($this) { $('#activity').jlodb('reload'); },
+        onmenu:  function($this) { $('#activity').jlodb('close', true); } 
+    });
+    
     // GET AND RESIZE THE BEST PANEL
     var x = Math.floor($(window).width()/16);
     var y = Math.floor($(window).height()/12);
@@ -610,23 +616,11 @@ $(window).resize(function() { $("#jlconsole").html($(window).width()+" x "+$(win
     <div id="waiting" class="anim12"><div><img src="res/img/default/anim/waiting_red.svg"/></div></div>
     <div id="waitingCount"><div></div></div>
 
-    <div id="score"><div>
-        <div class="content">
-            <div class="value"></div><div class="stars"></div>
-            <div class="icon" id="reload" ontouchstart="$('#launcher').jlodb('reload');event.preventDefault();"
-                 onclick="$('#launcher').jlodb('reload');" ><img src="res/img/default/icon/action_reload01.svg"/></div>
-            <div class="icon" id="menu" ontouchstart="$('#launcher').jlodb('close');event.preventDefault();"
-                 onclick="$('#launcher').jlodb('close', true);" ><img src="res/img/default/icon/action_menu01.svg"/></div>
-            <!--
-            <div class="icon" id="next" ontouchstart="$('#launcher').jlodb('next');event.preventDefault();"
-                 onclick="$('#launcher').jlodb('next');"><img src="res/img/default/icon/action_next01.svg"/></div>
-            -->
-        </div>
-    </div></div>
+    <div id="score"></div>
 
-    <div id="launcher">
-        <div id="quit" ontouchstart="$('#launcher').jlodb('quit');event.preventDefault();"
-                       onclick="$('#launcher').jlodb('quit');"><img src="res/img/default/icon/nw_quit01.svg"/></div>
+    <div class="jlodb">
+        <div id="quit" ontouchstart="$('#activity').jlodb('quit');event.preventDefault();"
+                       onclick="$('#activity').jlodb('quit');"><img src="res/img/default/icon/nw_quit01.svg" alt=""/></div>
         <div id="activity"></div>
     </div>
 

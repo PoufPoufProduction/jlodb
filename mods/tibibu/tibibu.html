@@ -161,8 +161,6 @@
 .buquit                                 { position:absolute; z-index:2000; width:1em; height:1em; cursor:pointer; }
 #buex                                   { margin:.5em 0 0 .5em; }
 
-#bulauncher #activity                   { position:relative; width:100%; height:100%; }
-
 #bupresults>div                         { background-color:#56B; color:white; margin:.1em; padding-left:.2em; cursor:pointer; }
 #bupresults>div .e                      { float:right; width:1em; height:1em; }
 #busendpanel.d input                    { color:gray; }
@@ -304,9 +302,13 @@ var tibibu = {
                 onupdate: function($this, _state) {},
                 onclick : function($this, _args)  {
                     $("#waiting").show().find("div").addClass("running");
-                    $("#bulauncher").jlodb({
-                            onstart:    function($this) { $("#buexercices").hide(); $("#waiting").hide().find("div").removeClass("running"); },
-                            onfinish:   function($this) { $("#buexercices").show(); },
+                    $("#activity").jlodb({
+                            onstart:    function($this) {
+                                $("#buexercices").hide(); $this.parent().show();
+                                $("#waiting").hide().find("div").removeClass("running"); },
+                            onfinish:   function($this, _hide) {
+                                if (_hide) { $("#buexercices").show(); $this.parent().hide(); }
+                            },
                             onscore:    function($this, _ret) {
                                 var isnext = $("#buexercices #buex").menu('more');
                                 if (_ret.score>=2) { $("#buexercices #buex").menu('score', _ret.score); }
@@ -862,9 +864,12 @@ var tibibu = {
                         onupdate: function($this, _state) {},
                         onclick : function($this, _args)  {
                             $("#waiting").show().find("div").addClass("running");
-                            $("#bulauncher").jlodb({
-                                    onstart:    function($this) { $("#buexercices").hide(); $("#waiting").hide().find("div").removeClass("running"); },
-                                    onfinish:   function($this) { $("#buexercices").show(); },
+                            $("#activity").jlodb({
+                                    onstart:    function($this) {
+                                        $("#buexercices").hide(); $this.parent().show();
+                                        $("#waiting").hide().find("div").removeClass("running"); },
+                                    onfinish:   function($this, _hide) {
+                                        if (_hide) { $("#buexercices").show(); $this.parent().hide(); } },
                                     onscore:    function($this, _ret) {
                                         var isnext = $("#buexercices #buex").menu('more');
                                         if (_ret.score>=2) { $("#buexercices #buex").menu('score', _ret.score); }
@@ -1210,9 +1215,9 @@ $(window).ready(function() {
             <div id="buex"></div>
         </div>
 
-        <div id="bulauncher" class="bupanel">
-            <div class="buquit" ontouchstart="$('#bulauncher').jlodb('quit');event.preventDefault();"
-                           onmousedown="$('#bulauncher').jlodb('quit');"><img src="res/img/default/icon/nw_quit01.svg"/></div>
+        <div class="jlodb bupanel">
+            <div class="buquit" ontouchstart="$('#activity').jlodb('quit');event.preventDefault();"
+                           onmousedown="$('#activity').jlodb('quit');"><img src="res/img/default/icon/nw_quit01.svg"/></div>
             <div id="activity"></div>
         </div>
 

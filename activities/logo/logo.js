@@ -131,10 +131,10 @@
                 helpers.addline($this,$this.find("#code #lines"));
 
                 for (var i in settings.bg) {
-                    var $clone = $("#background #"+settings.bg[i].id+".hide", settings.svg.root()).clone();
+                    var $clone = $("#background #"+settings.bg[i].type+".hide", settings.svg.root()).clone();
                     $clone.attr("id","bg"+i).attr("class","");
                     for (var j in settings.bg[i].attr) { $clone.attr(j, settings.bg[i].attr[j]); }
-                    if (settings.bg[i].id=="text") { $clone.text(settings.bg[i].text); }
+                    if (settings.bg[i].type=="text") { $clone.text(settings.bg[i].text); }
                     $clone.appendTo($("#background", settings.svg.root()));
                 }
 

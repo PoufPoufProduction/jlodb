@@ -239,17 +239,17 @@ game = {
         }
 
         game.success = false;
-        $("#launcher").jlodb({
-            onstart:    function($this)       { $("#da").hide(); $("#launcher").show();
+        $("#activity").jlodb({
+            onstart:    function($this)       { $("#da").hide(); $this.parent().show();
                                                 $("#waiting").hide().find("div").removeClass("running"); },
-            onfinish:   function($this)       { $("#da").show(); $("#score").removeClass().hide();
+            onfinish:   function($this)       { $("#da").show(); $this.parent().hide(); $("#score").score('hide');
                                                 if (game.success) {
                                                     game.validmove();
                                                     if (game.nbmove && game.settings.nbmove>=game.nbmove) { game.nextplayer(); }
                                                     else                                                  { game.nextmove(); }
                                                 }
                                                 else { game.cancelmove(); setTimeout(game.nextplayer,1500); } },
-            onscore:    function($this, _ret) { $("#score").attr("class","s"+_ret.score).show();
+            onscore:    function($this, _ret) { $("#score").score('show',_ret.score);
                                                 $("#da").show();
                                                 game.success=(_ret.score>2);
                                                 return true; } }, args);
@@ -293,6 +293,10 @@ $(window).ready(function() {
         else {
             $("#main").html(_check.status+": "+_check.textStatus);
         }
+    });
+    
+    $("#score").score({
+        onnext:  function($this) { $('#activity').jlodb('close', true); } 
     });
 
     // GET AND RESIZE THE BEST PANEL
@@ -442,23 +446,16 @@ $(window).ready(function() {
     <div id="waiting" class="anim12"><div><img src="res/img/default/anim/waiting.svg" alt=""/></div></div>
 </div>
 
-<div id="launcher">
-    <div id="quit" onclick="$('#launcher').jlodb('quit');" ontouchstart="$('#launcher').jlodb('quit');event.preventDefault();">
+<div class="jlodb">
+    <div id="quit" onclick="$('#activity').jlodb('quit');" ontouchstart="$('#activity').jlodb('quit');event.preventDefault();">
         <img src="res/img/default/icon/nw_quit01.svg" alt=""/>
     </div>
     <div id="activity"></div>
 </div>
 
 
-<div id="score"><div>
-    <div class="content">
-        <div class="value"></div>
-        <div class="stars"></div>
-        <div class="icon" id="next" ontouchstart="$('#launcher').jlodb('close');event.preventDefault();"
-                                     onclick="$('#launcher').jlodb('close', true);">
-            <img src="res/img/default/icon/action_next01.svg" alt=""/></div>
-        </div>
-</div></div>
+<div id="score"></div>
+
 </div>
 </body>
 </html>

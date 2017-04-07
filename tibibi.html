@@ -103,14 +103,16 @@ var tibibi = {
                     } },
                     onclick : function($this, _args) {
                         $("#waiting").show().find("div").addClass("running");
-                        $("#launcher").jlodb({
-                            onstart:    function($this) { $("#rmenu").hide(); $("#waiting").hide().find("div").removeClass("running"); },
-                            onfinish:   function($this) { $("#rmenu").show(); $("#score").removeClass().hide(); },
+                        $("#activity").jlodb({
+                            onstart:    function($this) { $("#rmenu").hide(); $this.parent().show();
+                                                          $("#waiting").hide().find("div").removeClass("running"); },
+                            onfinish:   function($this, _hide) { if (_hide) { $("#rmenu").show(); $this.parent().hide(); }
+                                                                 $("#score").score('hide'); },
                             onscore:    function($this, _ret) {
                                 var isnext = false;
                                 if (_ret.score>=2) { isnext = $("#bimenu").menu('score', _ret.score).menu('more'); }
                                 $("#score #next").toggle(isnext);
-                                $("#score").attr("class","s"+_ret.score).show();
+                                $("#score").score('show',_ret.score);
                                 return true; } },_args);
                     }
                 });
@@ -414,8 +416,10 @@ var tibibi = {
     },
     run : function(_args) {
         $("#waiting").show().find("div").addClass("running");
-        $("#launcher").jlodb({ onstart: function($this) { $("#bicontent").hide(); $("#waiting").hide().find("div").removeClass("running"); },
-                               onfinish:function($this) { $("#bicontent").show(); $("#score").removeClass().hide(); }},_args);
+        $("#activity").jlodb({ onstart: function($this) { $("#bicontent").hide(); $this.parent().show();
+                                                          $("#waiting").hide().find("div").removeClass("running"); },
+                               onfinish:function($this) { $("#bicontent").show(); $this.parent().hide();
+                                                          $("#score").score('hide'); }},_args);
     },
     qtimer : 0,
     quit : function() {
@@ -473,6 +477,12 @@ $(window).ready(function() {
         else {
             $("#bimain").html(_check.status+": "+_check.textStatus);
         }
+    });
+    
+    $("#score").score({
+        onreload:function($this) { $('#activity').jlodb('reload'); },
+        onmenu:  function($this) { $('#activity').jlodb('close', true); },
+        onnext:  function($this) { $('#activity').jlodb('close',false);$('#bimenu').menu('next'); } 
     });
 
     // GET AND RESIZE THE BEST PANEL
@@ -543,18 +553,7 @@ $(window).ready(function() {
 
         <div id="waiting"><div><img src="res/img/default/anim/waiting.svg"/></div></div>
 
-        <div id="score"><div>
-            <div class="bicontent">
-                <div class="value"></div><div class="stars"></div>
-                <div class="icon" id="reload" ontouchstart="$('#launcher').jlodb('reload');event.preventDefault();"
-                    onclick="$('#launcher').jlodb('reload');" ><img src="res/img/default/icon/action_reload01.svg"/></div>
-                <div class="icon" id="menu" ontouchstart="$('#launcher').jlodb('close',true);event.preventDefault();"
-                    onclick="$('#launcher').jlodb('close', true);" ><img src="res/img/default/icon/action_menu01.svg"/></div>
-                <div class="icon" id="next"
-                    ontouchstart="$('#launcher').jlodb('close',false);$('#bimenu').menu('next');event.preventDefault();"
-                    onclick="$('#launcher').jlodb('close',false);$('#bimenu').menu('next');"><img src="res/img/default/icon/action_next01.svg"/></div>
-            </div>
-        </div></div>
+        <div id="score"></div>
 
         <div id="biscreen">
             <div id="list"></div>
@@ -562,9 +561,9 @@ $(window).ready(function() {
                            onclick="$('#biscreen').hide();"><img src="res/img/default/icon/nw_quit01.svg"/></div>
         </div>
  
-        <div id="launcher">
-            <div id="quit" ontouchstart="$('#launcher').jlodb('quit');event.preventDefault();"
-                           onclick="$('#launcher').jlodb('quit');"><img src="res/img/default/icon/nw_quit01.svg"/></div>
+        <div class="jlodb">
+            <div id="quit" ontouchstart="$('#activity').jlodb('quit');event.preventDefault();"
+                           onclick="$('#activity').jlodb('quit');"><img src="res/img/default/icon/nw_quit01.svg"/></div>
             <div id="activity"></div>
         </div>
 
