@@ -30,9 +30,9 @@
         "\\\[green\\\]([^\\\[]+)\\\[/green\\\]",    "<span style='color:green'>$1</span>",
         "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
         "\\\[h1\\\]([^\\\[]+)\\\[/h1\\\]",          "<div style='text-align:center; font-size:3em;font-weight:bold;'>$1</div>",
-        "\\\[img\\\]([^\\\[]+)\\\[/img\\\]",        "<div style='width:100%'><img src='$1'/></div>",
-        "\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='icon' style='font-size:1.2em;float:left'><img src='$1'/></div>",
-        "\\\[icon2\\\]([^\\\[]+)\\\[/icon2\\\]",    "<div class='icon' style='font-size:2em;float:left'><img src='$1'/></div>"
+        "\\\[img\\\]([^\\\[]+)\\\[/img\\\]",        "<div style='width:100%'><img src='$1' alt=''/></div>",
+        "\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='icon' style='font-size:1.2em;float:left'><img src='$1' alt=''/></div>",
+        "\\\[icon2\\\]([^\\\[]+)\\\[/icon2\\\]",    "<div class='icon' style='font-size:2em;float:left'><img src='$1' alt=''/></div>"
     ];
 
     var onClicks = {
