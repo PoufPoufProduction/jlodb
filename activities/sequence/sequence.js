@@ -356,7 +356,11 @@
                     var vQuestion = $this.find("#values li").get(settings.it);
                     if (settings.regexp && settings.regexp.output) {
                         var vReg = new RegExp(settings.regexp.output, "g");
-                        $(vQuestion).html($(vQuestion).html().replace(vReg, settings.response.value));
+                        var value = settings.response.value;
+                        if (vRet && $.isArray(settings.questions[settings.it].response)) {
+                            value = settings.questions[settings.it].response[0];
+                        }
+                        $(vQuestion).html($(vQuestion).html().replace(vReg, value));
                     }
                     $(vQuestion).removeClass("select").addClass(vRet?"good":"wrong");
 

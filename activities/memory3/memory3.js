@@ -104,6 +104,7 @@
                     html+="</div></div>";
                     $this.find("#board").append(html);
                 }
+                
 
                 // Locale handling
 
@@ -176,6 +177,27 @@
                             (settings.cards[settings.show[0]].nb++ | settings.cards[settings.show[1]].nb++ )) {
                             $this.find("#wrong").show();
                             if (settings.score) { settings.score--; }
+                        }
+                        
+                        if (settings.cards[settings.show[0]].val == settings.cards[settings.show[1]].val)
+                        {
+                            var first = $this.find("#board #"+settings.show[0]).offset();
+                            var second = $this.find("#board #"+settings.show[1]).offset();
+                            var board = $this.offset();
+                            $this.find("#first>div").addClass("running").parent()
+                                .css("left",(first.left-board.left)+"px")
+                                .css("top",(first.top-board.top)+"px")
+                                .show();
+                                
+                            $this.find("#second>div").addClass("running").parent()
+                                .css("left",(second.left-board.left)+"px")
+                                .css("top",(second.top-board.top)+"px")
+                                .show();
+                            
+                            setTimeout(function(){
+                                $this.find("#first>div").removeClass("running").parent().hide();
+                                $this.find("#second>div").removeClass("running").parent().hide();
+                            },800);
                         }
                     }
                 }

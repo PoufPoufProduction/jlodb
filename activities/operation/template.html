@@ -3,6 +3,7 @@
     <div id="nbdec" class="tab"><div id="lnbdec" class="label">DEC</div><span></span></div>
     <div id="board">
         <div id="data"></div>
+        <div id="fill" class="anim12 flash noloop"><div><img src="res/img/default/anim/star04.svg"/></div></div>
         <div id="target" class="anim12" ontouchstart="$(this).closest('.operation').operation('target',event);event.preventDefault();"
                                         onmousedown="$(this).closest('.operation').operation('target',event);event.preventDefault();">
             <div><img src="res/img/default/anim/target01.svg" alt=""/></div></div>
@@ -37,7 +38,8 @@
         <img src="res/img/default/icon/swgood.svg" id="subgood" alt=""/>
         <img src="res/img/default/icon/swwrong.svg" id="subwrong" alt=""/>
     </div>
-
+    
+    
     <div id="effects">
         <div id="good"><img src="res/img/default/popup/good01.svg" alt=""/></div>
         <div id="wrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>

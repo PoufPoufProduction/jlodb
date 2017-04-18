@@ -457,6 +457,12 @@
                 if (settings.key!=-1 && settings.keypad) {
                     vVal = settings.$keys[settings.key].text();
                     settings.keypad.html("<div>"+((settings.keypad.html()==vVal&&settings.keypad.html().length)?"":vVal)+"</div>");
+
+                    $this.find("#fill>div").addClass("running").parent()
+                                .css("left",(settings.keypad.offset().left-$this.find("#board").offset().left)+"px")
+                                .css("top",(settings.keypad.offset().top-$this.find("#board").offset().top)+"px")
+                                .show();
+                    setTimeout(function(){ $this.find("#fill>div").removeClass("running").parent().hide(); },500);
                 }
 
                 $this.find(".active").removeClass("s");
@@ -517,9 +523,11 @@
                   .css("left", Math.floor(($board.width()-((width+off[0])*vFont))/2)+"px");
             if (settings.type!="/") helpers.showop($this);
 
+            
+            var vTargetFont = 1.2*vFont*12/$this.height();
+            vTargetFont = Math.floor($this.height()/12*vTargetFont)/($this.height()/12);
+            $this.find("#fill").css("font-size",vTargetFont+"em");
             if (settings.target) {
-                var vTargetFont = 1.2*vFont*12/$this.height();
-                vTargetFont = Math.floor($this.height()/12*vTargetFont)/($this.height()/12);
                 $this.find("#target").css("font-size",vTargetFont+"em");
                 helpers.target($this, false);
                 $this.find("#target").show();

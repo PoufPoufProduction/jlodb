@@ -11,6 +11,7 @@
         mode        : "normal",                                 // Mode (normal, hexa)
         number      : 3,                                        // Number of exercices
         fontex      : 1,                                        // Exercice font size
+        fx          : true,                                     // Add FX
         errratio    : 1,                                        // Ratio error
         reset       : true,                                     // Reset abacus after each question
         debug       : true                                     // Debug mode
@@ -213,6 +214,18 @@
                                 settings.status[settings.mouse.col][0] = settings.mouse.row-(settings.mouse.up?0:1);
                             }
                             settings.ballid++;
+                            
+                            if (settings.fx) {
+                                var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?event.originalEvent.touches[0]:event;
+                                var x           = vEvent.clientX-$this.offset().left;
+                                var y           = vEvent.clientY-$this.offset().top;
+                                $this.find("#fx>div").addClass("running").parent()
+                                    .css("left",Math.floor(x)+"px")
+                                    .css("top",Math.floor(y)+"px")
+                                    .show();
+                                setTimeout(function(){$this.find("#fx>div").removeClass("running").parent().hide(); },500);
+                            }
+                        
                         }
                     }
                     helpers.update($this);
@@ -242,7 +255,7 @@
                     switch (settings.type) {
                         case "suanpan" :
                             if (settings.status[i][0]==5 || settings.status[i][1]==2) { value="X"; vErr="err"; } break;
-                        case "abacus" :
+                        case "classic" :
                             if (settings.status[i][0]==10) { value="X"; vErr="err"; } break;
                     }
                 }
@@ -287,7 +300,7 @@
                 var val = data.init;
                 for (var i=0; i<13; i++) {
                     var v = val%10, status=[0,0];
-                    if (v>=5 && settings.type!= "abacus") { status[1] = 1; v=v-5; }
+                    if (v>=5 && settings.type!= "classic") { status[1] = 1; v=v-5; }
                     status[0] = v;
                     val = Math.floor(val/10);
                     settings.status.push(status);
