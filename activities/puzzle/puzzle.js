@@ -201,6 +201,7 @@
                 if (gen.id)     { settings.id = gen.id; }
                 if (gen.txt)    { settings.txt = gen.txt; }
                 if (gen.show)   { settings.show = gen.show; }
+                if (gen.decoys) { settings.decoys = gen.decoys; }
                 if (gen.init)	{ settings.init = $.extend(true,{},settings.init,gen.init);}
             }
 
@@ -222,8 +223,9 @@
             }
 
             // HIDE AND SHOW ELEMENT
+            $("#"+pgroup+">g").css("display","none");
+            $(".hide",settings.svg.root()).css("display","none");
             if (settings.show) {
-                $(".hide",settings.svg.root()).css("display","none");
                 var show = $.isArray(settings.show[0])?settings.show[settings.puzzleid]:settings.show;
                 for (var i in show) { $("#"+show[i],settings.svg.root()).css("display","inline"); }
             }

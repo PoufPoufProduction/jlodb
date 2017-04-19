@@ -4,17 +4,18 @@
 <defs id="defs2385">
  <style type="text/css">
     svg#ruler02 #template               { display:none; }
-    svg#ruler02 .panel                  { display:none; }
+    svg#ruler02 .hide                   { display:none; }
     svg#ruler02 .box                    { fill:#553300; fill-opacity:0.95;}
     svg#ruler02 #pieces>g               { display:none; }
-    svg#ruler02 #pieces text            { font-size:40px; }
+    svg#ruler02 #pieces text            { font-size:40px; cursor:move; }
+    svg#ruler02.small #pieces text      { font-size:30px; }
     svg#ruler02 #pieces .result         { fill:#ccc; fill-opacity:0.9;stroke:#eee;stroke-width:2; cursor:move; }
     svg#ruler02 #pieces .wrong .result  { fill:red; fill-opacity:0.8; }
     svg#ruler02 #pieces .good .result   { fill:#0F0; fill-opacity:0.8; }
 
     
     svg#ruler02 text                    { font-size:24px;text-anchor:middle;fill:black;font-weight:bold;}
-    svg#ruler02 #big line               { fill:none;stroke:black;stroke-width:3;display:none; }
+    svg#ruler02 #big line               { fill:none;stroke:black;stroke-width:3;}
     svg#ruler02 #small line             { fill:none;stroke:black;stroke-width:1.5; }
     svg#ruler02 .bg                     { fill:white;stroke:black;stroke-width:1.5; }
     svg#ruler02 .bgl                    { fill:none;stroke:black;stroke-width:1.5; }
@@ -48,27 +49,27 @@
 
 <g id="big">
     <line x1="10" y1="340" x2="630" y2="340" style="display:inherit;"/>
-    <line x1="20" y1="325" x2="20" y2="355" id="s01"/>
-    <line x1="50" y1="325" x2="50" y2="355" id="s02"/>
-    <line x1="80" y1="325" x2="80" y2="355" id="s03"/>
-    <line x1="110" y1="325" x2="110" y2="355" id="s04"/>
-    <line x1="140" y1="325" x2="140" y2="355" id="s05"/>
-    <line x1="170" y1="325" x2="170" y2="355" id="s06"/>
-    <line x1="200" y1="325" x2="200" y2="355" id="s07"/>
-    <line x1="230" y1="325" x2="230" y2="355" id="s08"/>
-    <line x1="260" y1="325" x2="260" y2="355" id="s09"/>
-    <line x1="290" y1="325" x2="290" y2="355" id="s10"/>
-    <line x1="320" y1="325" x2="320" y2="355" id="s11"/>
-    <line x1="350" y1="325" x2="350" y2="355" id="s12"/>
-    <line x1="380" y1="325" x2="380" y2="355" id="s13"/>
-    <line x1="410" y1="325" x2="410" y2="355" id="s14"/>
-    <line x1="440" y1="325" x2="440" y2="355" id="s15"/>
-    <line x1="470" y1="325" x2="470" y2="355" id="s16"/>
-    <line x1="500" y1="325" x2="500" y2="355" id="s17"/>
-    <line x1="530" y1="325" x2="530" y2="355" id="s18"/>
-    <line x1="560" y1="325" x2="560" y2="355" id="s19"/>
-    <line x1="590" y1="325" x2="590" y2="355" id="s20"/>
-    <line x1="620" y1="325" x2="620" y2="355" id="s21"/>
+    <line x1="20" y1="325" x2="20" y2="355" id="s01" class="hide"/>
+    <line x1="50" y1="325" x2="50" y2="355" id="s02" class="hide"/>
+    <line x1="80" y1="325" x2="80" y2="355" id="s03" class="hide"/>
+    <line x1="110" y1="325" x2="110" y2="355" id="s04" class="hide"/>
+    <line x1="140" y1="325" x2="140" y2="355" id="s05" class="hide"/>
+    <line x1="170" y1="325" x2="170" y2="355" id="s06" class="hide"/>
+    <line x1="200" y1="325" x2="200" y2="355" id="s07" class="hide"/>
+    <line x1="230" y1="325" x2="230" y2="355" id="s08" class="hide"/>
+    <line x1="260" y1="325" x2="260" y2="355" id="s09" class="hide"/>
+    <line x1="290" y1="325" x2="290" y2="355" id="s10" class="hide"/>
+    <line x1="320" y1="325" x2="320" y2="355" id="s11" class="hide"/>
+    <line x1="350" y1="325" x2="350" y2="355" id="s12" class="hide"/>
+    <line x1="380" y1="325" x2="380" y2="355" id="s13" class="hide"/>
+    <line x1="410" y1="325" x2="410" y2="355" id="s14" class="hide"/>
+    <line x1="440" y1="325" x2="440" y2="355" id="s15" class="hide"/>
+    <line x1="470" y1="325" x2="470" y2="355" id="s16" class="hide"/>
+    <line x1="500" y1="325" x2="500" y2="355" id="s17" class="hide"/>
+    <line x1="530" y1="325" x2="530" y2="355" id="s18" class="hide"/>
+    <line x1="560" y1="325" x2="560" y2="355" id="s19" class="hide"/>
+    <line x1="590" y1="325" x2="590" y2="355" id="s20" class="hide"/>
+    <line x1="620" y1="325" x2="620" y2="355" id="s21" class="hide"/>
 </g>
 <g id="small">
     <line x1="20" y1="325" x2="20" y2="355"/>
@@ -94,47 +95,47 @@
     <line x1="620" y1="325" x2="620" y2="355"/>
 </g>
 
-<text transform="translate(20,380)" id="t01"></text>
-<text transform="translate(50,380)" id="t02"></text>
-<text transform="translate(80,380)" id="t03"></text>
-<text transform="translate(110,380)" id="t04"></text>
-<text transform="translate(140,380)" id="t05"></text>
-<text transform="translate(170,380)" id="t06"></text>
-<text transform="translate(200,380)" id="t07"></text>
-<text transform="translate(230,380)" id="t08"></text>
-<text transform="translate(260,380)" id="t09"></text>
-<text transform="translate(290,380)" id="t10"></text>
-<text transform="translate(320,380)" id="t11"></text>
-<text transform="translate(350,380)" id="t12"></text>
-<text transform="translate(380,380)" id="t13"></text>
-<text transform="translate(410,380)" id="t14"></text>
-<text transform="translate(440,380)" id="t15"></text>
-<text transform="translate(470,380)" id="t16"></text>
-<text transform="translate(500,380)" id="t17"></text>
-<text transform="translate(530,380)" id="t18"></text>
-<text transform="translate(560,380)" id="t19"></text>
-<text transform="translate(590,380)" id="t20"></text>
-<text transform="translate(620,380)" id="t21"></text>
+<text transform="translate(20,380)" id="t01" class="hide"></text>
+<text transform="translate(50,380)" id="t02" class="hide"></text>
+<text transform="translate(80,380)" id="t03" class="hide"></text>
+<text transform="translate(110,380)" id="t04" class="hide"></text>
+<text transform="translate(140,380)" id="t05" class="hide"></text>
+<text transform="translate(170,380)" id="t06" class="hide"></text>
+<text transform="translate(200,380)" id="t07" class="hide"></text>
+<text transform="translate(230,380)" id="t08" class="hide"></text>
+<text transform="translate(260,380)" id="t09" class="hide"></text>
+<text transform="translate(290,380)" id="t10" class="hide"></text>
+<text transform="translate(320,380)" id="t11" class="hide"></text>
+<text transform="translate(350,380)" id="t12" class="hide"></text>
+<text transform="translate(380,380)" id="t13" class="hide"></text>
+<text transform="translate(410,380)" id="t14" class="hide"></text>
+<text transform="translate(440,380)" id="t15" class="hide"></text>
+<text transform="translate(470,380)" id="t16" class="hide"></text>
+<text transform="translate(500,380)" id="t17" class="hide"></text>
+<text transform="translate(530,380)" id="t18" class="hide"></text>
+<text transform="translate(560,380)" id="t19" class="hide"></text>
+<text transform="translate(590,380)" id="t20" class="hide"></text>
+<text transform="translate(620,380)" id="t21" class="hide"></text>
 
-<use xlink:href="#panel" transform="translate(50,240)" width="100%" height="100%" class="panel" id="pa02"/>
-<use xlink:href="#panel" transform="translate(80,240)" width="100%" height="100%" class="panel" id="pa03"/>
-<use xlink:href="#panel" transform="translate(110,240)" width="100%" height="100%" class="panel" id="pa04"/>
-<use xlink:href="#panel" transform="translate(140,240)" width="100%" height="100%" class="panel" id="pa05"/>
-<use xlink:href="#panel" transform="translate(170,240)" width="100%" height="100%" class="panel" id="pa06"/>
-<use xlink:href="#panel" transform="translate(200,240)" width="100%" height="100%" class="panel" id="pa07"/>
-<use xlink:href="#panel" transform="translate(230,240)" width="100%" height="100%" class="panel" id="pa08"/>
-<use xlink:href="#panel" transform="translate(260,240)" width="100%" height="100%" class="panel" id="pa09"/>
-<use xlink:href="#panel" transform="translate(290,240)" width="100%" height="100%" class="panel" id="pa10"/>
-<use xlink:href="#panel" transform="translate(320,240)" width="100%" height="100%" class="panel" id="pa11"/>
-<use xlink:href="#panel" transform="translate(350,240)" width="100%" height="100%" class="panel" id="pa12"/>
-<use xlink:href="#panel" transform="translate(380,240)" width="100%" height="100%" class="panel" id="pa13"/>
-<use xlink:href="#panel" transform="translate(410,240)" width="100%" height="100%" class="panel" id="pa14"/>
-<use xlink:href="#panel" transform="translate(440,240)" width="100%" height="100%" class="panel" id="pa15"/>
-<use xlink:href="#panel" transform="translate(470,240)" width="100%" height="100%" class="panel" id="pa16"/>
-<use xlink:href="#panel" transform="translate(500,240)" width="100%" height="100%" class="panel" id="pa17"/>
-<use xlink:href="#panel" transform="translate(530,240)" width="100%" height="100%" class="panel" id="pa18"/>
-<use xlink:href="#panel" transform="translate(560,240)" width="100%" height="100%" class="panel" id="pa19"/>
-<use xlink:href="#panel" transform="translate(590,240)" width="100%" height="100%" class="panel" id="pa20"/>
+<use xlink:href="#panel" transform="translate(50,240)" width="100%" height="100%" class="hide" id="pa02"/>
+<use xlink:href="#panel" transform="translate(80,240)" width="100%" height="100%" class="hide" id="pa03"/>
+<use xlink:href="#panel" transform="translate(110,240)" width="100%" height="100%" class="hide" id="pa04"/>
+<use xlink:href="#panel" transform="translate(140,240)" width="100%" height="100%" class="hide" id="pa05"/>
+<use xlink:href="#panel" transform="translate(170,240)" width="100%" height="100%" class="hide" id="pa06"/>
+<use xlink:href="#panel" transform="translate(200,240)" width="100%" height="100%" class="hide" id="pa07"/>
+<use xlink:href="#panel" transform="translate(230,240)" width="100%" height="100%" class="hide" id="pa08"/>
+<use xlink:href="#panel" transform="translate(260,240)" width="100%" height="100%" class="hide" id="pa09"/>
+<use xlink:href="#panel" transform="translate(290,240)" width="100%" height="100%" class="hide" id="pa10"/>
+<use xlink:href="#panel" transform="translate(320,240)" width="100%" height="100%" class="hide" id="pa11"/>
+<use xlink:href="#panel" transform="translate(350,240)" width="100%" height="100%" class="hide" id="pa12"/>
+<use xlink:href="#panel" transform="translate(380,240)" width="100%" height="100%" class="hide" id="pa13"/>
+<use xlink:href="#panel" transform="translate(410,240)" width="100%" height="100%" class="hide" id="pa14"/>
+<use xlink:href="#panel" transform="translate(440,240)" width="100%" height="100%" class="hide" id="pa15"/>
+<use xlink:href="#panel" transform="translate(470,240)" width="100%" height="100%" class="hide" id="pa16"/>
+<use xlink:href="#panel" transform="translate(500,240)" width="100%" height="100%" class="hide" id="pa17"/>
+<use xlink:href="#panel" transform="translate(530,240)" width="100%" height="100%" class="hide" id="pa18"/>
+<use xlink:href="#panel" transform="translate(560,240)" width="100%" height="100%" class="hide" id="pa19"/>
+<use xlink:href="#panel" transform="translate(590,240)" width="100%" height="100%" class="hide" id="pa20"/>
 
 
 <g id="pieces">
@@ -250,6 +251,122 @@
 <g transform="translate(590,240)" id="p20">
      <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
     <image id="i20" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
+    <text y="12"></text>
+</g>
+
+
+
+<g transform="translate(50,240)" id="d02">
+    <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
+    <image id="id02" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
+    <text y="12"></text>
+</g>
+
+<g transform="translate(80,240)" id="d03">
+     <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
+    <image id="id03" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
+    <text y="12"></text>
+</g>
+
+<g transform="translate(110,240)" id="d04">
+     <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
+    <image id="id04" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
+    <text y="12"></text>
+</g>
+
+<g transform="translate(140,240)" id="d05">
+     <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
+    <image id="id05" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
+    <text y="12"></text>
+</g>
+
+<g transform="translate(170,240)" id="d06">
+     <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
+    <image id="id06" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
+    <text y="12"></text>
+</g>
+
+<g transform="translate(200,240)" id="d07">
+     <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
+    <image id="id07" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
+    <text y="12"></text>
+</g>
+
+<g transform="translate(230,240)" id="d08">
+     <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
+    <image id="id08" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
+    <text y="12"></text>
+</g>
+
+<g transform="translate(260,240)" id="d09">
+     <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
+    <image id="id09" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
+    <text y="12"></text>
+</g>
+
+<g transform="translate(290,240)" id="d10">
+     <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
+    <image id="id10" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
+    <text y="12"></text>
+</g>
+
+<g transform="translate(320,240)" id="d11">
+     <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
+    <image id="id11" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
+    <text y="12"></text>
+</g>
+
+<g transform="translate(350,240)" id="d12">
+     <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
+    <image id="id12" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
+    <text y="12"></text>
+</g>
+
+<g transform="translate(380,240)" id="d13">
+     <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
+    <image id="id13" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
+    <text y="12"></text>
+</g>
+
+<g transform="translate(410,240)" id="d14">
+     <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
+    <image id="id14" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
+    <text y="12"></text>
+</g>
+
+<g transform="translate(440,240)" id="d15">
+     <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
+    <image id="id15" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
+    <text y="12"></text>
+</g>
+
+<g transform="translate(470,240)" id="d16">
+     <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
+    <image id="id16" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
+    <text y="12"></text>
+</g>
+
+<g transform="translate(500,240)" id="d17">
+     <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
+    <image id="id17" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
+    <text y="12"></text>
+</g>
+
+<g transform="translate(530,240)" id="d18">
+     <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
+    <image id="id18" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
+    <text y="12"></text>
+</g>
+
+<g transform="translate(560,240)" id="d19">
+     <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
+    <image id="id19" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
+    <text y="12"></text>
+</g>
+
+<g transform="translate(590,240)" id="d20">
+     <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
+    <image id="id20" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
     <text y="12"></text>
 </g>
 
