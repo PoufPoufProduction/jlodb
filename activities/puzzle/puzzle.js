@@ -127,7 +127,7 @@
 
                 // GENERATE VALUES
                 if (settings.init && settings.init.pos) {
-                    for (var i=0; i<10; i++) { settings.init.pos.sort(function(a,b){return 0.5-Math.random(); }); }
+                    for (var i=0; i<settings.init.pos.length; i++) { settings.init.pos.sort(function(a,b){return 0.5-Math.random(); }); }
                 }
                 if (!settings.gen) {
                     if (settings.id && $.isArray(settings.id[0]))       { settings.number = settings.id.length; }
