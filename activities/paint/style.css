@@ -26,7 +26,8 @@
 .paint div#exercice #content          { margin:0 1em; text-align:justify; font-style:italic; }
 .paint div#exercice #tag            { font-size:2em; float:right; width:2.0em; height:1.2em; font-weight:bold;
                                  color:white; background-color:black; border-radius:.2em; text-align:center;
-                                 margin:0 .15em; display:none; }
+                                 margin:0 .15em; display:none; cursor:pointer; }
+.paint div#exercice #tag .char  { margin-left:.4em; }
 .paint div#board                      { position:absolute; top:0; width:16em; height:12em; }
 .paint.full div#board                    { font-size:0.8em; top:5%; left:18%; border:.1em solid white;}
 .paint div#sources                  { display:none; width:2.7em; height:9.7em; margin-top:.5em;}
@@ -47,3 +48,12 @@
 
 .paint #effects                     { position:absolute; font-size:6em; top:2%; left:60%; width:1em; height:1em; display:none; }
 .paint #effects>div                 { width:1em; height:1em; display:none; }
+
+
+.paint #legend                     { position:absolute; font-size:.4em; top:2%; left:0; width:100%; height:30%; opacity:0.95; z-index:4;
+                                     background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat; 
+                                     padding:.1em 1em; border:.2em solid white; border-width:.2em 0 .2em 0; display:none; cursor:move; }
+                                     
+.paint #legend>div          { height:1.2em; margin-bottom:.1em;  }
+.paint #legend .label       { background-color:gray; color:white; width:3em; text-align:center; float:left; }
+.paint #legend .value       { float:left; width:35em; margin-left:.5em; }

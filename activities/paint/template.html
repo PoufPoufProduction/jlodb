@@ -2,7 +2,11 @@
 
     <div id="sources"></div>
     <div id="board"></div>
-    <div id="exercice"><div><div id="tag"></div><div id="content"></div></div></div>
+    <div id="exercice"><div>
+        <div id="tag" ontouchstart="$(this).closest('.paint').paint('tag');event.preventDefault();"
+                      onclick="$(this).closest('.paint').paint('tag');"></div>
+        <div id="content"></div>
+    </div></div>
 
     <div id="effects">
         <div id="good"><img src="res/img/default/popup/good01.svg" alt=""/></div>
@@ -23,6 +27,9 @@
         <textarea ontouchstart="$(this).focus();event.stopPropagation();event.preventDefault();"
                   onclick="$(this).focus();event.stopPropagation();"></textarea>
     </div>
+    
+    
+    <div id="legend"></div>
 
 
     <div id="splashex" ontouchstart="$(this).hide().closest('.paint').paint('next');event.preventDefault();"

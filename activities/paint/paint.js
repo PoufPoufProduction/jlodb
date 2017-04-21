@@ -203,6 +203,7 @@
                 if (vValue.tag)      { tag = vValue.tag; }
                 if (vValue.result)   { settings.result = vValue.result; }
                 if (vValue.t)        { settings.t = vValue.t; }
+                if (vValue.legend)   { settings.legend = vValue.legend; }
             }
 
             var t = settings.t;
@@ -214,6 +215,17 @@
                         else { $(this).text(t[_index].charCodeAt(0)>60?t[_index].charCodeAt(0)-55:t[_index]); }
                     }
                 });
+            }
+            
+            if (settings.legend) {
+                var legend = settings.legend;
+                if ($.isArray(legend)) { legend = legend[settings.id%legend.length]; }
+                var html="";
+                for (var i in legend) {
+                    html+="<div><div class='label'>"+i+"</div><div class='value'>"+helpers.format(legend[i])+"</div></div>";
+                }
+                
+                $this.find("#legend").html(html).draggable({axis:'y',containment:'parent'}).show();
             }
 
             var o = settings.o;
@@ -267,7 +279,10 @@
                 else { $this.find("#exercice #content").html(helpers.format(exercice)); }
                 $this.find("#exercice").show();
             }
-            if (tag) { $this.find("#exercice #tag").html(tag).show(); }
+            if (tag) {
+                if (tag.indexOf(".svg")!=-1) { tag="<div class='char'><img src='"+tag+"' alt=''/></div>"; }
+                $this.find("#exercice #tag").html(tag).show();
+            }
 
             $this.find("#submit>img").hide(); $this.find("#subvalid").show();
             $this.find("#effects>div").hide(); $this.find("#effects").hide();
@@ -427,6 +442,10 @@
                     $this.find("#devoutput textarea").val(result);
                     $this.find("#devoutput").show();
                 }
+            },
+            tag: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+                if (settings.interactive && settings.legend) { $this.find("#legend").toggle(); }
             },
             valid: function() {
                 var $this = $(this) , settings = helpers.settings($this);
