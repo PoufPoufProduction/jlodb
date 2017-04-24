@@ -475,6 +475,8 @@
                         }
                     }
                     settings.score-=nbErrors;
+                    
+                    $this.find("#legend").hide();
 
                     // DISPLAY ALERT
                     $this.find("#effects>div").hide();
