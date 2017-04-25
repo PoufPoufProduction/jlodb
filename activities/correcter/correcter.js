@@ -15,6 +15,15 @@
         debug       : true                                     // Debug mode
     };
 
+    
+    var regExp = [
+        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
+        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
+        "\\\[br\\\]",                               "<br/>",
+        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
+        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>"
+    ];
+    
     // private methods
     var helpers = {
         // @generic: Check the context
@@ -40,6 +49,13 @@
             var settings = helpers.settings($this);
             helpers.unbind($this);
             settings.context.onquit($this,{'status':'success','score':settings.score});
+        },
+        format: function(_text) {
+            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
+                var vReg = new RegExp(regExp[i*2],"g");
+                _text = _text.replace(vReg,regExp[i*2+1]);
+            }
+            return _text;
         },
         loader: {
             css: function($this) {
@@ -183,8 +199,8 @@
                     
                 // Locale handling
 
-                $this.find("#exercice").html(settings.exercice);
-                if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
+                if (settings.exercice)  { $this.find("#exercice").html(helpers.format(settings.exercice)); }
+                if (settings.locale)    { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
 
                 $this.children().show()
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
@@ -254,7 +270,13 @@
                         if (settings.dictionary[goodWord]) {
                             for (var i=0; i<settings.dictionary[goodWord].length; i++) { response.push(settings.dictionary[goodWord][i]); }
                         }
-                        response.sort();
+                        response.sort(function() { return (Math.random()<0.5); });
+                        response.sort(function(_a,_b) {
+                            var r={"à":"a","À":"A"};
+                            var a=_a,b=_b;
+                            for (var i in r) { a=a.replace(i,r[i]); b=b.replace(i,r[i]); }
+                            return (a>b);
+                        });
 
                         // Fill the popup
                         var reg=new RegExp("(')" ,"g"), nb = 1;
@@ -302,10 +324,16 @@
                             $(value).addClass("wrong");
                         }
                     });
+                    
+                    $this.find("#good").toggle(nbErrors==0);
+                    $this.find("#wrong").toggle(nbErrors>0);
+                    $this.find("#effects").show();
+                    $this.find("#submit").addClass(nbErrors?"wrong":"good");
+                    
                     settings.score = 5-nbErrors;
                     if (settings.score<0) { settings.score = 0; }
                     $(this).find("#valid").hide();
-                    setTimeout(function() { helpers.end($this); }, nbErrors?3000:500);
+                    setTimeout(function() { helpers.end($this); }, nbErrors?3000:1000);
                 }
             }
         };
