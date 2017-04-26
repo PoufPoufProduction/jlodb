@@ -23,11 +23,11 @@
 .marker div#data p span.c3              { border-radius:.25em; }
 .marker div#menu                        { width:12em; height:3.8em; background-color:white; border-radius:.5em 0 0 .5em;
                                           margin-top:.25em; margin-left:15%; font-size:.7em; float:left;}
-.marker div#menu>div                    { background-color:white; padding:.05em 0; clear:both; cursor:pointer;}
+.marker div#menu>div                    { height:1.2em; background-color:white; padding:.05em 0; clear:both; cursor:pointer;}
 .marker div#menu>div.odd                { background-color:#DDD; }
 .marker #menu .color                    { padding:.1em; border-radius:.25em; float:left; margin-left:.5em;}
 .marker #menu .color.s                  { background-color:black; }
-.marker #menu .color>div                { width:1em; height:1em; border-radius:.25em;  }
+.marker #menu .color>div                { width:0.9em; height:0.9em; border-radius:.25em;  }
 .marker #menu #c1 .color>div            { background-color:blue;  }
 .marker #menu #c2 .color>div            { background-color:red;}
 .marker #menu #c3 .color>div            { background-color:green; }
@@ -50,4 +50,9 @@
 .marker div#valid                       { font-size:1.6em; position:absolute; background-color:rgba(255,255,255,0.8);
                                           display:none; top:1em; left:3em; border-radius:.25em; }
 .marker div#valid div.button            { width:1.8em; height:1.8em; margin:.1em; cursor:pointer; }
+
+
+
+.marker #effects                       { display:none; width:5em; height:5em; position:absolute; top:0.5em; left:10.5em;  z-index:20;}
+.marker #effects>div                   { font-size:5em; width:1em; height:1em; display:none;}
 

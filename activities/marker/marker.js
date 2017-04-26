@@ -320,11 +320,11 @@
                 var $this = $(this) , settings = helpers.settings($this);
                 if (!settings.finish) {
                     settings.finish = true;
-                    settings.score = 5;
+                    var nbErrors = 0;
                     // FIND THE WRONG WORDS
                     for (var i in settings.words) {
                         if (settings.words[i][2]!=9 && settings.words[i][2]!=settings.words[i][0]) {
-                            settings.score--;
+                            nbErrors++;
                             $(this).find("#s"+i).addClass("wrong");
                             settings.words[i][0]=-2;
                         }
@@ -338,6 +338,13 @@
                             $(this).find("#s"+i).addClass("wrong");
                         }
                     }
+                    
+                    $this.find("#good").toggle(nbErrors==0);
+                    $this.find("#wrong").toggle(nbErrors>0);
+                    $this.find("#effects").show();
+                    $this.find("#submit").addClass(nbErrors?"wrong":"good");
+                    
+                    settings.score = 5 - nbErrors;
                     if (settings.score<0) { settings.score = 0; }
                     $(this).find("#valid").hide();
                     setTimeout(function() { helpers.end($this); }, (settings.score!=5)?3000:500);
