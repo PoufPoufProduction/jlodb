@@ -12,6 +12,7 @@
         scale       : 1.2,                                      // The move scale of the pgroup
         radius      : 20,                                       // The magnetic radius
         zhandling   : true,                                     // Handle the z-index
+        withrottimer: true,
         pieces      : "pieces",                                 // The pgroup group name
         errratio    : 1,                                        // Error ratio
         number      : 1,                                        // Number of puzzle
@@ -202,6 +203,7 @@
                 if (gen.txt)    { settings.txt = gen.txt; }
                 if (gen.show)   { settings.show = gen.show; }
                 if (gen.decoys) { settings.decoys = gen.decoys; }
+                if (gen.add)    { settings.add = gen.add; }
                 if (gen.init)	{ settings.init = $.extend(true,{},settings.init,gen.init);}
             }
 
@@ -236,6 +238,23 @@
                 for (var i in txt) {
                     if (txt[i].toString().indexOf(".svg")!=-1)  { $("#"+i,settings.svg.root()).attr("xlink:href",txt[i]).show(); }
 					else 							            { $("#"+i,settings.svg.root()).text(txt[i]).show(); }
+                }
+            }
+            
+            // HANDLE STATIC SVG ELEMENT
+            $(".puzzleadd",settings.svg.root()).detach();
+            if (settings.add) {
+                var add = $.isArray(settings.add)?settings.add[settings.puzzleid]:settings.add;
+                for (var i in add) {
+                    switch(add[i][0]) {
+                        case "rect" :
+                            settings.svg.rect($("#"+i,settings.svg.root()), add[i][1], add[i][2], add[i][3], add[i][4],
+                                              {'class':'puzzleadd'});
+                            break;
+                        case "circle" :
+                            settings.svg.circle($("#"+i,settings.svg.root()), add[i][1], add[i][2], add[i][3], {'class':'add'});
+                            break;
+                    }
                 }
             }
             
@@ -507,7 +526,7 @@
                         for (var si in vSame) for (var sj in vSame[si]) {
                             if (vSame[si][sj]==settings.origin.translate[i][0]) { pieces = vSame[si]; } }
                     }
-
+                    
                     // CHECK IF THE POSITION OF EACH PIECES IN THE LIST IS MATCHING THE CURRENT POSITION
                     var findone = false;
                     for (var p in pieces) {
@@ -582,8 +601,10 @@
         },
         rottimer: function($this) {
             var settings = helpers.settings($this);
-            helpers.rotate($this, $(settings.elt.id));
-            settings.rottimerid = setTimeout(function() { helpers.rottimer($this);}, 400);  
+            if (settings.withrottimer) {
+                helpers.rotate($this, $(settings.elt.id));
+                settings.rottimerid = setTimeout(function() { helpers.rottimer($this);}, 400);
+            }
         },
         rotate:function($this, $elt) {
             var settings = helpers.settings($this);
