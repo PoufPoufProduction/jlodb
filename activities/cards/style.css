@@ -6,8 +6,16 @@
 .cards div#exercice .strong       { color:red; font-weight:bold; border: 1px solid red; border-width:1px 0; }
 .cards div#board                  { height:12em; width:16em; font-size:.6em; position:relative; }
 
-.cards .card.slot                 { background-image:url("../../res/img/cards/00drop01.svg"); }
-.cards .card                      { cursor:move; position:absolute; background-repeat:no-repeat;}
+.cards .card.slot                 { background-image:url("../../res/img/cards/00drop01.svg"); z-index:0;}
+.cards .card.slot.s               { background-color:rgba(255,255,0,0.3); }
+.cards .card                      { cursor:move; position:absolute; background-repeat:no-repeat;top:0;left:0; }
+.cards .card.blank                { background-image:url("../../res/img/cards/00back01.svg"); }
+.cards .card .txt                 { width:1.65em; text-align:center; position:absolute; top:0.4em; }
+.cards .card .img                 { margin:.05em; }
+.cards .card.withimg .txt         { top:1.2em; } 
+.cards .card .back                { display:none; }
+.cards .card.down .back           { display:inherit; }
+.cards .card.down .front          { display:none; }
 
 .cards .card.foundation.hearts    { background-image:url("../../res/img/cards/00drophearts01.svg"); }
 .cards .card.foundation.spades    { background-image:url("../../res/img/cards/00dropspades01.svg"); }

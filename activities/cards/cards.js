@@ -7,8 +7,9 @@
         css         : "style.css",                              // Activity's css style sheet
         lang        : "en-US",                                  // Current localization
         exercice    : [],                                       // Exercice
+        back        : "res/img/cards/00back02.svg",            // Back image
         font        : 1.2, 
-        debug       : false                                     // Debug mode
+        debug       : true                                     // Debug mode
     };
 
     var regExp = [
@@ -105,7 +106,27 @@
                     else { $this.find("#"+id).html(value); }
                 }); }
                 
+                // Prepare cards
+                if (settings.cards) {
+                    for (var i in settings.cards) {
+                        var c = settings.cards[i];
+                        settings.data[i] = [];
+                        if (c.type=="c52") { for (var k=0;k<52;k++) { settings.data[i].push({value:k});  } }
+                        else if (c.data) {
+                            for (var j in c.data) {
+                                var elt=$.extend({},c.data[j]);
+                                if (c.font) { elt.font = c.font; }
+                                settings.data[i].push(elt);
+                            }
+                        }
+                    }
+                }
+                else { settings.data.c52 = []; for (var i=0;i<52;i++) { settings.data.c52.push({value:i});  } }
                 
+                for (var i in settings.data) { for (var k=0;k<50;k++) { settings.data[i].sort(function(){return Math.random()>0.5; }); } }
+                
+                // Prepare gaming elements
+                $this.find("#board").html("");
                 var elts=["stock","waste","foundation","rowstack"];
                 for (var i in elts) {
                     var e = elts[i];
@@ -119,8 +140,6 @@
                     }}
                 }
                 
-                
-                $this.find("#board").html("");
                 for (var i in settings.elts) {  $this.find("#board").append(settings.elts[i].$html); }
                 
                 // Optional devmode
@@ -133,24 +152,68 @@
             }
         },
         build: {
-            id : { stock:0, waste: 0, foundation: 0, rowstack: 0},
+            id : { stock:0, waste: 0, foundation: 0, rowstack: 0, cards : 0},
             stock: function($this, _data) {
                 var settings = helpers.settings($this);
                 var ret = {
                     id          : "s"+helpers.build.id.stock++,
+                    pos         : [_data.pos[0], _data.pos[1]],
                     type        : "stock",
                     waste       : _data.waste?"w"+_data.waste:"w0",
                     cards       : [],
+                    nbcards     : 52,
                     number      : 3,
                     isempty     : function() { return (this.cards.length==0); },
-                    draw        : function() {
-                        this.$html.html(this.isempty()?"":"<div class='card'><img src='res/img/cards/00back01.svg'/></div>");
+                    draw        : function($this) {
+                        var settings = helpers.settings($this);
+                        this.$html.html(this.isempty()?"":"<div class='card'><img src='"+settings.back+"'/></div>");
                     }                        
                 };
                 
+                // Compute number of cards
+                if (_data.nbcards) { ret.nbcards = _data.nbcards; }
+                else {
+                    if (_data.cards) {
+                        if ($.isArray(_data.cards)) {
+                            ret.nbcards = 0;
+                            for (var i in _data.cards) { ret.nbcards += settings.data[_data.cards[i]].length; }
+                        }
+                        else { ret.nbcards = settings.data[_data.cards].length; }
+                    }
+                }
+                
                 // Fill cards and sort
-                for (var i=0;i<52;i++) { ret.cards.push({value:i}); }
-                for (var i=0;i<50;i++) { ret.cards.sort(function(){return Math.random()>0.5; }); }
+                while (ret.cards.length<ret.nbcards) {
+                    var c = "c52";
+                    if (_data.cards) {
+                        if ($.isArray(_data.cards)) { var i=Math.floor(Math.random()*_data.cards.length); c=_data.cards[i]; }
+                        else                        { c=_data.cards; }
+                    }
+                    if (settings.data[c].length) {
+                        var card = settings.data[c].pop();
+                        card.$html=$("<div class='card' id='c"+(helpers.build.id.cards++)+"'><div class='back'>"+
+                                     "<img src='"+settings.back+"' alt=''/></div><div class='front'></div></div>");
+                        if (typeof(card.value) != 'undefined') {
+                            card.$html.find(".front").append("<img src='res/img/cards/"+values[card.value%13]+
+                                              colors[Math.floor(card.value/13)]+".svg' alt=''/>");
+                        }
+                        else if (card.label) {
+                            var font=0.5*(card.font?card.font:1);
+                            if (card.img) {
+                                card.$html.addClass("withimg")
+                                          .find(".front").append("<div class='img'><img src='"+card.img+"' alt=''/></div>");
+                            }
+                            card.$html.addClass("withtxt blank")
+                                      .find(".front").append("<div class='txt'><span style='font-size:"+font+"em;'>"+card.label+"<span></div>");
+                        }
+                        else if (card.img) {
+                            card.$html.addClass("blank withimg")
+                                      .find(".front").append("<div class='img'><img src='"+card.img+"' alt=''/></div>");
+                        }
+                        $this.find("#board").append(card.$html.hide());
+                        ret.cards.push(card);
+                    }
+                }
                 
                 ret.$html = $("<div class='card slot stock' id='"+ret.id+"'></div>");
                 ret.$html.css("top",topx(_data.pos[1])+"em").css("left",lefty(_data.pos[0])+"em");
@@ -160,7 +223,11 @@
                     var settings = helpers.settings($this);
                     var stock    = settings.elts[$(this).attr("id")];
                     if (stock.isempty()) {
-                        while (!settings.elts[stock.waste].isempty()) { stock.cards.push(settings.elts[stock.waste].cards.pop()); }
+                        while (!settings.elts[stock.waste].isempty()) {
+                            var elt = settings.elts[stock.waste].cards.pop();
+                            elt.$html.hide();
+                            stock.cards.push(elt);
+                        }
                     }
                     else {
                         var cpt      = 0;
@@ -169,11 +236,11 @@
                             cpt++;
                         }
                     }
-                    stock.draw();
+                    stock.draw($this);
                     settings.elts[stock.waste].update();
                     _event.preventDefault();
                 });
-                ret.draw();
+                ret.draw($this);
                     
                 return ret;
             },
@@ -181,23 +248,40 @@
                 var settings = helpers.settings($this);
                 var ret = {
                     id      : "w"+helpers.build.id.waste++,
+                    pos     : [_data.pos[0], _data.pos[1]],
                     type    : "waste",
                     stock   : _data.stock?"s"+_data.stock:"s0",
+                    fanned  : _data.fanned?[_data.fanned[0],_data.fanned[1]]:[0,0],
                     cards   : [],
+                    zIndex  : 1,
                     isempty : function() { return (this.cards.length==0); },
                     update  : function() {
+                        this.zIndex=1;
                         if (this.isempty()) { this.$html.html(""); }
-                        else
-                        for (var i=this.$html.children().length; i<this.cards.length; i++) {
-                            var c=this.cards[i];
-                            var $html=$("<div class='card'><img src='res/img/cards/"+values[c.value%13]+colors[Math.floor(c.value/13)]+
-                                        ".svg' alt=''/></div>");
-                            this.$html.append($html);
+                        else {
+                            for (var i=0; i<this.cards.length; i++) {
+                                var c=this.cards[i];
+                                c.$html.css("top",(topx(this.pos[1])+this.fanned[1]*i)+"em")
+                                       .css("left",(lefty(this.pos[0])+this.fanned[0]*i)+"em")
+                                       .css("z-index",this.zIndex++)
+                                       .show();
+                            }
+                            var $last = this.cards[this.cards.length-1].$html;
+                            if ($last) {
+                                settings.from[$last.attr("id")]=this.id;
+                                $last.draggable({
+                                        revert:true, zIndex:100,
+                                        stop: function( event, ui ) {
+                                            $(this).parent().find(".slot").removeClass("s");
+                                        }
+                                    }).css("position","absolute");
+                            }
                         }
+                        
                     }
                 };
                 ret.$html = $("<div class='card slot waste' id='"+ret.id+"'></div>");
-                ret.$html.css("top",topx(_data.pos[1])+"em").css("left",lefty(_data.pos[0])+"em");
+                ret.$html.css("top",topx(ret.pos[1])+"em").css("left",lefty(ret.pos[0])+"em");
                 
                 return ret;
             },
@@ -206,10 +290,60 @@
                 var ret = {
                     id      : "f"+helpers.build.id.foundation++,
                     type    : "foundation",
-                    color   : _data.color
+                    fanned  : _data.fanned?[_data.fanned[0],_data.fanned[1]]:[0,0],
+                    pos     : [_data.pos[0], _data.pos[1]],
+                    cards   : [],
+                    isempty : function() { return (this.cards.length==0); },
+                    color   : _data.color,
+                    zIndex  : 1,
+                    update  : function() {
+                        this.zIndex=1;
+                        if (this.isempty()) { this.$html.html(""); }
+                        else {
+                            for (var i=0; i<this.cards.length; i++) {
+                                var c=this.cards[i];
+                                c.$html.css("top",(topx(this.pos[1])+this.fanned[1]*i)+"em")
+                                       .css("left",(lefty(this.pos[0])+this.fanned[0]*i)+"em")
+                                       .css("z-index",this.zIndex++)
+                                       .show();
+                            }
+                            if (false) {
+                                var $last = this.cards[this.cards.length-1].$html;
+                                if ($last) {
+                                    settings.from[$last.attr("id")]=this.id;
+                                    $last.draggable({
+                                            revert:true, zIndex:100,
+                                            stop: function( event, ui ) {
+                                                $(this).parent().find(".slot").removeClass("s");
+                                            }
+                                        }).css("position","absolute");
+                                }
+                            }
+                        }
+                    }
                 };
                 ret.$html = $("<div class='card slot foundation "+ret.color+"' id='"+ret.id+"'></div>");
                 ret.$html.css("top",topx(_data.pos[1])+"em").css("left",lefty(_data.pos[0])+"em");
+                ret.$html.droppable({
+                    over: function( event, ui ) { $(this).addClass("s"); },
+                    out: function( event, ui )  { $(this).removeClass("s"); },
+                    drop: function( event, ui ) {
+                        $(this).parent().find(".slot").removeClass("s");
+                        var name    = settings.from[ui.draggable.attr("id")];
+                        var from    = settings.elts[name];
+                        var elt     = from.cards.pop();
+                        var to      = settings.elts[$(this).attr("id")];
+                        to.cards.push(elt);
+                        
+                        // avoid the draggable revert: maybe better way?
+                        elt.$html=ui.draggable.clone();
+                        elt.$html.appendTo($(this).parent());
+                        ui.draggable.detach();
+                        
+                        to.update();
+                        from.update();
+                    }
+                });
                 
                 return ret;
             },
@@ -217,11 +351,26 @@
                 var settings = helpers.settings($this);
                 var ret = {
                     id      : "r"+helpers.build.id.rowstack++,
+                    stock   : _data.stock?"s"+_data.stock:"s0",
+                    fanned  : _data.fanned?[_data.fanned[0],_data.fanned[1]]:[0,0],
+                    pos     : [_data.pos[0], _data.pos[1]],
                     type    : "rowstack",
                     cards   : []
                 };
                 ret.$html = $("<div class='card slot rowstack' id='"+ret.id+"'></div>");
                 ret.$html.css("top",topx(_data.pos[1])+"em").css("left",lefty(_data.pos[0])+"em");
+                
+                var nbcards = _data.nbcards?_data.nbcards:1;
+                for (var i=0; i<nbcards; i++) {
+                    var elt = settings.elts[ret.stock].cards.pop();
+                    elt.from = ret.id;
+                    elt.$html.css("top",(topx(ret.pos[1])+ret.fanned[1]*(nbcards-i-1))+"em")
+                             .css("left",(lefty(ret.pos[0])+ret.fanned[0]*(nbcards-i-1))+"em")
+                             .css("z-index",nbcards-i).show();
+                    switch(_data.type) {
+                        default: if (i!=0) { elt.$html.addClass("down"); }
+                    }
+                }
                 
                 return ret;
             }
@@ -236,8 +385,10 @@
             init: function(options) {
                 // The settings
                 var settings = {
-                    interactive     : false,
-                    elts            : {}
+                    interactive     : false,        // can player play ?
+                    elts            : {},           // all gaming elements
+                    data            : {},           // all cards
+                    from            : {}
                 };
 
                 return this.each(function() {
