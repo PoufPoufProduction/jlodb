@@ -140,7 +140,10 @@
                     }}
                 }
                 
-                for (var i in settings.elts) {  $this.find("#board").append(settings.elts[i].$html); }
+                for (var i in settings.elts) {
+                    $this.find("#board").append(settings.elts[i].$html);
+                    settings.elts[i].update();
+                }
                 
                 // Optional devmode
                 if (settings.dev) { $this.find("#devmode").show(); }
@@ -151,8 +154,65 @@
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
+        getElt: function($this, _id) {
+            var settings = helpers.settings($this);
+            var ret = 0;
+            for (var i in settings.elts) {
+                if (settings.elts[i].id==_id) { ret = settings.elts[i]; break; }
+                for (var j in settings.elts[i].cards) {  if (settings.elts[i].cards[j].id==_id) { ret = settings.elts[i]; break; } }
+            }
+            return ret;
+        },
+        getCard: function($this, _id) {
+            var settings = helpers.settings($this);
+            var ret = 0;
+            for (var i in settings.elts) {
+                for (var j in settings.elts[i].cards) {  if (settings.elts[i].cards[j].id==_id) { ret = settings.elts[i].cards[j]; break; } }
+            }
+            return ret;
+        },
         build: {
             id : { stock:0, waste: 0, foundation: 0, rowstack: 0, cards : 0},
+            droppable: function($elt, _args) {
+                $elt.addClass("droppable").droppable({
+                    over: function( event, ui ) { $(this).addClass("s"); },
+                    out: function( event, ui )  { $(this).removeClass("s"); },
+                    drop: function( event, ui ) {
+                        var $this=$(this).closest(".cards");
+                        var settings = helpers.settings($this);
+                        $(this).parent().find(".s").removeClass("s");
+                        var from    = helpers.getElt($this, ui.draggable.attr("id"));
+                        var to      = helpers.getElt($this, $(this).attr("id"));
+                        var c       = helpers.getCard($this, ui.draggable.attr("id"));
+                        var up      = 0;
+                        var accept  = to.accept;
+                        var ok      = true;
+                        
+                        if (to.isempty()) { if (to.first) { accept = to.first; } }
+                        else              { up = to.cards[0]; }
+
+                        switch(accept) {
+case "heartsup" :   ok =(typeof(c.value)!="undefined" && c.value>=0  && c.value<13 && c.value%13==to.cards.length); break;
+case "spadesup" :   ok =(typeof(c.value)!="undefined" && c.value>=13 && c.value<26 && c.value%13==to.cards.length); break;
+case "diamondsup":  ok =(typeof(c.value)!="undefined" && c.value>=26 && c.value<39 && c.value%13==to.cards.length); break;
+case "clubsup" :    ok =(typeof(c.value)!="undefined" && c.value>=39 && c.value<52 && c.value%13==to.cards.length); break;
+                        }
+                        
+                        if (ok) {
+                            var elt     = from.cards.pop();
+                            to.cards.push(elt);
+                            
+                            // avoid the draggable revert: maybe better way?
+                            elt.$html=ui.draggable.clone();
+                            elt.$html.appendTo($(this).parent());
+                            ui.draggable.detach();
+                            
+                            to.update();
+                            from.update();
+                        }
+                    }
+                });
+            },
             stock: function($this, _data) {
                 var settings = helpers.settings($this);
                 var ret = {
@@ -162,10 +222,9 @@
                     waste       : _data.waste?"w"+_data.waste:"w0",
                     cards       : [],
                     nbcards     : 52,
-                    number      : 3,
+                    number      : 1,
                     isempty     : function() { return (this.cards.length==0); },
-                    draw        : function($this) {
-                        var settings = helpers.settings($this);
+                    update      : function() {
                         this.$html.html(this.isempty()?"":"<div class='card'><img src='"+settings.back+"'/></div>");
                     }                        
                 };
@@ -191,8 +250,9 @@
                     }
                     if (settings.data[c].length) {
                         var card = settings.data[c].pop();
-                        card.$html=$("<div class='card' id='c"+(helpers.build.id.cards++)+"'><div class='back'>"+
-                                     "<img src='"+settings.back+"' alt=''/></div><div class='front'></div></div>");
+                        card.id  = "c"+helpers.build.id.cards++;
+                        card.$html = $("<div class='card' id='"+card.id+"'><div class='back'>"+
+                                       "<img src='"+settings.back+"' alt=''/></div><div class='front'></div></div>");
                         if (typeof(card.value) != 'undefined') {
                             card.$html.find(".front").append("<img src='res/img/cards/"+values[card.value%13]+
                                               colors[Math.floor(card.value/13)]+".svg' alt=''/>");
@@ -236,11 +296,10 @@
                             cpt++;
                         }
                     }
-                    stock.draw($this);
+                    stock.update($this);
                     settings.elts[stock.waste].update();
                     _event.preventDefault();
                 });
-                ret.draw($this);
                     
                 return ret;
             },
@@ -253,27 +312,22 @@
                     stock   : _data.stock?"s"+_data.stock:"s0",
                     fanned  : _data.fanned?[_data.fanned[0],_data.fanned[1]]:[0,0],
                     cards   : [],
-                    zIndex  : 1,
                     isempty : function() { return (this.cards.length==0); },
                     update  : function() {
-                        this.zIndex=1;
                         if (this.isempty()) { this.$html.html(""); }
                         else {
                             for (var i=0; i<this.cards.length; i++) {
                                 var c=this.cards[i];
                                 c.$html.css("top",(topx(this.pos[1])+this.fanned[1]*i)+"em")
                                        .css("left",(lefty(this.pos[0])+this.fanned[0]*i)+"em")
-                                       .css("z-index",this.zIndex++)
+                                       .css("z-index",i)
                                        .show();
                             }
                             var $last = this.cards[this.cards.length-1].$html;
                             if ($last) {
-                                settings.from[$last.attr("id")]=this.id;
                                 $last.draggable({
                                         revert:true, zIndex:100,
-                                        stop: function( event, ui ) {
-                                            $(this).parent().find(".slot").removeClass("s");
-                                        }
+                                        stop: function( event, ui ) { $(this).parent().find(".s").removeClass("s"); }
                                     }).css("position","absolute");
                             }
                         }
@@ -294,56 +348,31 @@
                     pos     : [_data.pos[0], _data.pos[1]],
                     cards   : [],
                     isempty : function() { return (this.cards.length==0); },
-                    color   : _data.color,
-                    zIndex  : 1,
+                    bg      : _data.background?_data.background:"res/img/cards/00drop01.svg",
+                    accept  : _data.accept,
                     update  : function() {
-                        this.zIndex=1;
-                        if (this.isempty()) { this.$html.html(""); }
-                        else {
-                            for (var i=0; i<this.cards.length; i++) {
-                                var c=this.cards[i];
-                                c.$html.css("top",(topx(this.pos[1])+this.fanned[1]*i)+"em")
-                                       .css("left",(lefty(this.pos[0])+this.fanned[0]*i)+"em")
-                                       .css("z-index",this.zIndex++)
-                                       .show();
-                            }
-                            if (false) {
-                                var $last = this.cards[this.cards.length-1].$html;
-                                if ($last) {
-                                    settings.from[$last.attr("id")]=this.id;
-                                    $last.draggable({
-                                            revert:true, zIndex:100,
-                                            stop: function( event, ui ) {
-                                                $(this).parent().find(".slot").removeClass("s");
-                                            }
-                                        }).css("position","absolute");
-                                }
+                        for (var i=0; i<this.cards.length; i++) {
+                            var c=this.cards[i];
+                            c.$html.css("top",(topx(this.pos[1])+this.fanned[1]*i)+"em")
+                                   .css("left",(lefty(this.pos[0])+this.fanned[0]*i)+"em")
+                                   .css("z-index",i)
+                                   .show();
+                        }
+                        if (false) {
+                            var $last = this.cards[this.cards.length-1].$html;
+                            if ($last) {
+                                $last.draggable({
+                                        revert:true, zIndex:100,
+                                        stop: function( event, ui ) { $(this).parent().find(".s").removeClass("s"); }
+                                    }).css("position","absolute");
                             }
                         }
                     }
                 };
-                ret.$html = $("<div class='card slot foundation "+ret.color+"' id='"+ret.id+"'></div>");
-                ret.$html.css("top",topx(_data.pos[1])+"em").css("left",lefty(_data.pos[0])+"em");
-                ret.$html.droppable({
-                    over: function( event, ui ) { $(this).addClass("s"); },
-                    out: function( event, ui )  { $(this).removeClass("s"); },
-                    drop: function( event, ui ) {
-                        $(this).parent().find(".slot").removeClass("s");
-                        var name    = settings.from[ui.draggable.attr("id")];
-                        var from    = settings.elts[name];
-                        var elt     = from.cards.pop();
-                        var to      = settings.elts[$(this).attr("id")];
-                        to.cards.push(elt);
-                        
-                        // avoid the draggable revert: maybe better way?
-                        elt.$html=ui.draggable.clone();
-                        elt.$html.appendTo($(this).parent());
-                        ui.draggable.detach();
-                        
-                        to.update();
-                        from.update();
-                    }
-                });
+                ret.$html = $("<div class='card slot foundation' id='"+ret.id+"'></div>");
+                ret.$html.css("top",topx(_data.pos[1])+"em").css("left",lefty(_data.pos[0])+"em")
+                         .css("background-image","url("+ret.bg+")");
+                helpers.build.droppable(ret.$html);
                 
                 return ret;
             },
@@ -355,7 +384,21 @@
                     fanned  : _data.fanned?[_data.fanned[0],_data.fanned[1]]:[0,0],
                     pos     : [_data.pos[0], _data.pos[1]],
                     type    : "rowstack",
-                    cards   : []
+                    cards   : [],
+                    isempty : function() { return (this.cards.length==0); },
+                    update  : function() {
+                        if (this.$html.hasClass("droppable")) { this.$html.droppable("disable"); }
+                        for (i=0; i<this.cards.length; i++) {
+                            var elt=this.cards[i];
+                            elt.$html.css("top",(topx(ret.pos[1])+ret.fanned[1]*i)+"em")
+                                     .css("left",(lefty(ret.pos[0])+ret.fanned[0]*i)+"em")
+                                     .css("z-index",i).show();
+                            if (elt.$html.hasClass("droppable")) { elt.$html.droppable("disable"); }
+                        }
+                        var $drop = this.$html;
+                        if (!this.isempty()) { $drop = this.cards[this.cards.length-1].$html; }
+                        helpers.build.droppable($drop);
+                    }
                 };
                 ret.$html = $("<div class='card slot rowstack' id='"+ret.id+"'></div>");
                 ret.$html.css("top",topx(_data.pos[1])+"em").css("left",lefty(_data.pos[0])+"em");
@@ -363,13 +406,8 @@
                 var nbcards = _data.nbcards?_data.nbcards:1;
                 for (var i=0; i<nbcards; i++) {
                     var elt = settings.elts[ret.stock].cards.pop();
-                    elt.from = ret.id;
-                    elt.$html.css("top",(topx(ret.pos[1])+ret.fanned[1]*(nbcards-i-1))+"em")
-                             .css("left",(lefty(ret.pos[0])+ret.fanned[0]*(nbcards-i-1))+"em")
-                             .css("z-index",nbcards-i).show();
-                    switch(_data.type) {
-                        default: if (i!=0) { elt.$html.addClass("down"); }
-                    }
+                    if (i!=nbcards-1) {  elt.$html.addClass("down"); }
+                    ret.cards.push(elt);
                 }
                 
                 return ret;
