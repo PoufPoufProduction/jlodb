@@ -189,13 +189,15 @@
                         var ok      = true;
                         
                         if (to.isempty()) { if (to.first) { accept = to.first; } }
-                        else              { up = to.cards[0]; }
+                        else              { up = to.cards[to.cards.length-1]; }
 
                         switch(accept) {
 case "heartsup" :   ok =(typeof(c.value)!="undefined" && c.value>=0  && c.value<13 && c.value%13==to.cards.length); break;
 case "spadesup" :   ok =(typeof(c.value)!="undefined" && c.value>=13 && c.value<26 && c.value%13==to.cards.length); break;
 case "diamondsup":  ok =(typeof(c.value)!="undefined" && c.value>=26 && c.value<39 && c.value%13==to.cards.length); break;
 case "clubsup" :    ok =(typeof(c.value)!="undefined" && c.value>=39 && c.value<52 && c.value%13==to.cards.length); break;
+case "togglecolordown": ok = (typeof(c.value)!="undefined" && typeof(up.value)!="undefined" &&
+                             (Math.floor(c.value/13)%2!=Math.floor(up.value/13)%2) && (c.value%13)==(up.value%13)-1 ); break;
                         }
                         
                         if (ok) {
@@ -204,11 +206,19 @@ case "clubsup" :    ok =(typeof(c.value)!="undefined" && c.value>=39 && c.value<
                             
                             // avoid the draggable revert: maybe better way?
                             elt.$html=ui.draggable.clone();
+                            elt.$html.removeClass("ui-draggable-dragging");
                             elt.$html.appendTo($(this).parent());
                             ui.draggable.detach();
                             
                             to.update();
                             from.update();
+                            
+                            $this.find("#fx>div").addClass("running").parent()
+                                .css("left",($(this).offset().left-$this.find("#board").offset().left)+"px")
+                                .css("top",($(this).offset().top-$this.find("#board").offset().top)+"px")
+                                .show();
+                            setTimeout(function(){ $this.find("#fx>div").removeClass("running").parent().hide(); },500);
+                    
                         }
                     }
                 });
@@ -320,7 +330,7 @@ case "clubsup" :    ok =(typeof(c.value)!="undefined" && c.value>=39 && c.value<
                                 var c=this.cards[i];
                                 c.$html.css("top",(topx(this.pos[1])+this.fanned[1]*i)+"em")
                                        .css("left",(lefty(this.pos[0])+this.fanned[0]*i)+"em")
-                                       .css("z-index",i)
+                                       .css("z-index",i+2)
                                        .show();
                             }
                             var $last = this.cards[this.cards.length-1].$html;
@@ -355,7 +365,7 @@ case "clubsup" :    ok =(typeof(c.value)!="undefined" && c.value>=39 && c.value<
                             var c=this.cards[i];
                             c.$html.css("top",(topx(this.pos[1])+this.fanned[1]*i)+"em")
                                    .css("left",(lefty(this.pos[0])+this.fanned[0]*i)+"em")
-                                   .css("z-index",i)
+                                   .css("z-index",i+2)
                                    .show();
                         }
                         if (false) {
@@ -385,6 +395,7 @@ case "clubsup" :    ok =(typeof(c.value)!="undefined" && c.value>=39 && c.value<
                     pos     : [_data.pos[0], _data.pos[1]],
                     type    : "rowstack",
                     cards   : [],
+                    accept  : _data.accept,
                     isempty : function() { return (this.cards.length==0); },
                     update  : function() {
                         if (this.$html.hasClass("droppable")) { this.$html.droppable("disable"); }
@@ -392,7 +403,7 @@ case "clubsup" :    ok =(typeof(c.value)!="undefined" && c.value>=39 && c.value<
                             var elt=this.cards[i];
                             elt.$html.css("top",(topx(ret.pos[1])+ret.fanned[1]*i)+"em")
                                      .css("left",(lefty(ret.pos[0])+ret.fanned[0]*i)+"em")
-                                     .css("z-index",i).show();
+                                     .css("z-index",i+2).show();
                             if (elt.$html.hasClass("droppable")) { elt.$html.droppable("disable"); }
                         }
                         var $drop = this.$html;
