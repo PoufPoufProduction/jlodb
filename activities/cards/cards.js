@@ -6,9 +6,8 @@
         template    : "template.html",                          // Activity's html template
         css         : "style.css",                              // Activity's css style sheet
         lang        : "en-US",                                  // Current localization
-        exercice    : [],                                       // Exercice
         back        : "res/img/cards/00back02.svg",            // Back image
-        font        : 1.2, 
+        font        : 1, 
         debug       : true                                     // Debug mode
     };
 
@@ -58,9 +57,11 @@
             // if (settings.timerid) { clearTimeout(settings.timerid); }
         },
         format: function(_text) {
-            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
-                var vReg = new RegExp(regExp[i*2],"g");
-                _text = _text.replace(vReg,regExp[i*2+1]);
+            if (_text && _text.length) {
+                for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
+                    var vReg = new RegExp(regExp[i*2],"g");
+                    _text = _text.replace(vReg,regExp[i*2+1]);
+                }
             }
             return _text;
         },
@@ -141,7 +142,7 @@
                 }
                 
                 for (var i in settings.elts) {
-                    $this.find("#board").append(settings.elts[i].$html);
+                    if (settings.elts[i].$html) { $this.find("#board").append(settings.elts[i].$html); }
                     settings.elts[i].update();
                 }
                 
@@ -149,7 +150,7 @@
                 if (settings.dev) { $this.find("#devmode").show(); }
 
                 // Exercice
-                $this.find("#exercice").html(helpers.format(settings.exercice));
+                if (settings.exercice) { $this.find("#exercice").html(helpers.format(settings.exercice)); }
 
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
@@ -171,8 +172,36 @@
             }
             return ret;
         },
+        valid: {
+            g:function(_top,_back) {
+                return ( typeof(_top.value)!="undefined" && !_top.$html.hasClass("down") &&
+                        (!_back || (typeof(_back.value)!="undefined" && !_back.$html.hasClass("down"))));
+            },
+            heartsup: function(_top, _back) {
+                return (this.g(_top, _back) && _top.value>=0  && _top.value<13 && _top.value%13==(_back?(_back.value%13)+1:0));
+            },
+            spadesup: function(_top, _back) {
+                return (this.g(_top, _back) && _top.value>=13 && _top.value<26 && _top.value%13==(_back?(_back.value%13)+1:0));
+            },
+            diamondsup: function(_top, _back) {
+                return (this.g(_top, _back) && _top.value>=26 && _top.value<39 && _top.value%13==(_back?(_back.value%13)+1:0));
+            },
+            clubsup: function(_top, _back) {
+                return (this.g(_top, _back) && _top.value>=39 && _top.value<52 && _top.value%13==(_back?(_back.value%13)+1:0));
+            },
+            togglecolordown: function(_top, _back) {
+                return (this.g(_top, _back) &&
+                        (Math.floor(_top.value/13)%2!=Math.floor(_back.value/13)%2) && (_top.value%13)==(_back.value%13)-1 );
+            },
+            king: function(_top, _back) {
+                return (this.g(_top, _back) && _top.value%13==12);
+            },
+            onlyone: function(_top, _back) { return (_back==0); },
+            all: function(_top, _back) { return true; },
+            none: function(_top, _back) { return false; }
+            
+        },
         build: {
-            id : { stock:0, waste: 0, foundation: 0, rowstack: 0, cards : 0},
             droppable: function($elt, _args) {
                 $elt.addClass("droppable").droppable({
                     over: function( event, ui ) { $(this).addClass("s"); },
@@ -184,32 +213,35 @@
                         var from    = helpers.getElt($this, ui.draggable.attr("id"));
                         var to      = helpers.getElt($this, $(this).attr("id"));
                         var c       = helpers.getCard($this, ui.draggable.attr("id"));
-                        var up      = 0;
+                        var down    = 0;
                         var accept  = to.accept;
                         var ok      = true;
                         
-                        if (to.isempty()) { if (to.first) { accept = to.first; } }
-                        else              { up = to.cards[to.cards.length-1]; }
-
-                        switch(accept) {
-case "heartsup" :   ok =(typeof(c.value)!="undefined" && c.value>=0  && c.value<13 && c.value%13==to.cards.length); break;
-case "spadesup" :   ok =(typeof(c.value)!="undefined" && c.value>=13 && c.value<26 && c.value%13==to.cards.length); break;
-case "diamondsup":  ok =(typeof(c.value)!="undefined" && c.value>=26 && c.value<39 && c.value%13==to.cards.length); break;
-case "clubsup" :    ok =(typeof(c.value)!="undefined" && c.value>=39 && c.value<52 && c.value%13==to.cards.length); break;
-case "togglecolordown": ok = (typeof(c.value)!="undefined" && typeof(up.value)!="undefined" &&
-                             (Math.floor(c.value/13)%2!=Math.floor(up.value/13)%2) && (c.value%13)==(up.value%13)-1 ); break;
-                        }
                         
+                        if (to.isempty()) { if (to.first) { accept = to.first; } }
+                        else              { down = to.cards[to.cards.length-1]; }
+                        
+                        if (helpers.valid[accept]) { ok = helpers.valid[accept](c,down); }
+
                         if (ok) {
-                            var elt     = from.cards.pop();
-                            to.cards.push(elt);
+                            var cards = [];
+                            for (var i in settings.tomove)
+                            {
+                                var elt     = from.cards.pop();
+                                cards.push(elt);
+                                
+                                var $clone = elt.$html.clone();
+                                elt.$html.detach();
+                                elt.$html = $clone;
+                                elt.$html.removeClass("ui-draggable-dragging droppable draggable");
+                                elt.$html.appendTo($(this).parent());
+                            }
+                            cards.reverse();
+                            for (var i in cards) { to.cards.push(cards[i]); }
+                            settings.tomove=[];
                             
-                            // avoid the draggable revert: maybe better way?
-                            elt.$html=ui.draggable.clone();
-                            elt.$html.removeClass("ui-draggable-dragging");
-                            elt.$html.appendTo($(this).parent());
-                            ui.draggable.detach();
                             
+                            console.log("update : "+to.id+" + "+from.id);
                             to.update();
                             from.update();
                             
@@ -218,24 +250,28 @@ case "togglecolordown": ok = (typeof(c.value)!="undefined" && typeof(up.value)!=
                                 .css("top",($(this).offset().top-$this.find("#board").offset().top)+"px")
                                 .show();
                             setTimeout(function(){ $this.find("#fx>div").removeClass("running").parent().hide(); },500);
+                            
+                            helpers.check($this);
                     
                         }
                     }
-                });
+                }).droppable("enable");
             },
             stock: function($this, _data) {
                 var settings = helpers.settings($this);
                 var ret = {
-                    id          : "s"+helpers.build.id.stock++,
-                    pos         : [_data.pos[0], _data.pos[1]],
+                    id          : "s"+settings.ids.stock++,
+                    $html       : 0,
+                    pos         : _data.pos?[_data.pos[0], _data.pos[1]]:0,
                     type        : "stock",
                     waste       : _data.waste?"w"+_data.waste:"w0",
                     cards       : [],
                     nbcards     : 52,
-                    number      : 1,
+                    number      : _data.number?_data.number:1,
+                    success     : _data.success,
                     isempty     : function() { return (this.cards.length==0); },
                     update      : function() {
-                        this.$html.html(this.isempty()?"":"<div class='card'><img src='"+settings.back+"'/></div>");
+                        if (this.$html) { this.$html.html(this.isempty()?"":"<div class='card'><img src='"+settings.back+"'/></div>"); }
                     }                        
                 };
                 
@@ -260,7 +296,7 @@ case "togglecolordown": ok = (typeof(c.value)!="undefined" && typeof(up.value)!=
                     }
                     if (settings.data[c].length) {
                         var card = settings.data[c].pop();
-                        card.id  = "c"+helpers.build.id.cards++;
+                        card.id  = "c"+settings.ids.cards++;
                         card.$html = $("<div class='card' id='"+card.id+"'><div class='back'>"+
                                        "<img src='"+settings.back+"' alt=''/></div><div class='front'></div></div>");
                         if (typeof(card.value) != 'undefined') {
@@ -285,60 +321,68 @@ case "togglecolordown": ok = (typeof(c.value)!="undefined" && typeof(up.value)!=
                     }
                 }
                 
-                ret.$html = $("<div class='card slot stock' id='"+ret.id+"'></div>");
-                ret.$html.css("top",topx(_data.pos[1])+"em").css("left",lefty(_data.pos[0])+"em");
-                
-                ret.$html.bind("mousedown touchstart", function(_event) {
-                    var $this    = $(this).closest(".cards");
-                    var settings = helpers.settings($this);
-                    var stock    = settings.elts[$(this).attr("id")];
-                    if (stock.isempty()) {
-                        while (!settings.elts[stock.waste].isempty()) {
-                            var elt = settings.elts[stock.waste].cards.pop();
-                            elt.$html.hide();
-                            stock.cards.push(elt);
+                if (ret.pos) {
+                    ret.$html = $("<div class='card slot stock' id='"+ret.id+"'></div>");
+                    ret.$html.css("top",topx(_data.pos[1])+"em").css("left",lefty(_data.pos[0])+"em");
+                    
+                    ret.$html.bind("mousedown touchstart", function(_event) {
+                        var $this    = $(this).closest(".cards");
+                        var settings = helpers.settings($this);
+                        var stock    = settings.elts[$(this).attr("id")];
+                        if (stock.isempty()) {
+                            while (!settings.elts[stock.waste].isempty()) {
+                                var elt = settings.elts[stock.waste].cards.pop();
+                                elt.$html.hide();
+                                stock.cards.push(elt);
+                            }
                         }
-                    }
-                    else {
-                        var cpt      = 0;
-                        while (cpt<stock.number && !stock.isempty()) {
-                            settings.elts[stock.waste].cards.push(stock.cards.pop());
-                            cpt++;
+                        else {
+                            var cpt      = 0;
+                            while (cpt<stock.number && !stock.isempty()) {
+                                settings.elts[stock.waste].cards.push(stock.cards.pop());
+                                cpt++;
+                            }
                         }
-                    }
-                    stock.update($this);
-                    settings.elts[stock.waste].update();
-                    _event.preventDefault();
-                });
+                        stock.update($this);
+                        settings.elts[stock.waste].update();
+                        _event.preventDefault();
+                    });
+                }
                     
                 return ret;
             },
             waste: function($this, _data) {
                 var settings = helpers.settings($this);
                 var ret = {
-                    id      : "w"+helpers.build.id.waste++,
+                    id      : "w"+settings.ids.waste++,
                     pos     : [_data.pos[0], _data.pos[1]],
                     type    : "waste",
                     stock   : _data.stock?"s"+_data.stock:"s0",
                     fanned  : _data.fanned?[_data.fanned[0],_data.fanned[1]]:[0,0],
                     cards   : [],
+                    success : _data.success,
                     isempty : function() { return (this.cards.length==0); },
                     update  : function() {
                         if (this.isempty()) { this.$html.html(""); }
                         else {
                             for (var i=0; i<this.cards.length; i++) {
-                                var c=this.cards[i];
-                                c.$html.css("top",(topx(this.pos[1])+this.fanned[1]*i)+"em")
+                                var elt=this.cards[i];
+                                elt.$html.css("top",(topx(this.pos[1])+this.fanned[1]*i)+"em")
                                        .css("left",(lefty(this.pos[0])+this.fanned[0]*i)+"em")
                                        .css("z-index",i+2)
                                        .show();
+                                       
+                                if (elt.$html.hasClass("draggable")) { elt.$html.draggable("disable"); }
                             }
                             var $last = this.cards[this.cards.length-1].$html;
                             if ($last) {
-                                $last.draggable({
+                                $last.addClass("draggable").draggable({
+                                        start: function(event, ui) {
+                                            settings.tomove=[helpers.getCard($this, $(this).attr("id"))];
+                                        },
                                         revert:true, zIndex:100,
-                                        stop: function( event, ui ) { $(this).parent().find(".s").removeClass("s"); }
-                                    }).css("position","absolute");
+                                        stop: function( event, ui ) { settings.tomove=[]; $(this).parent().find(".s").removeClass("s"); }
+                                    }).draggable("enable").css("position","absolute");
                             }
                         }
                         
@@ -349,79 +393,160 @@ case "togglecolordown": ok = (typeof(c.value)!="undefined" && typeof(up.value)!=
                 
                 return ret;
             },
-            foundation: function($this, _data) {
-                var settings = helpers.settings($this);
-                var ret = {
-                    id      : "f"+helpers.build.id.foundation++,
-                    type    : "foundation",
-                    fanned  : _data.fanned?[_data.fanned[0],_data.fanned[1]]:[0,0],
-                    pos     : [_data.pos[0], _data.pos[1]],
-                    cards   : [],
-                    isempty : function() { return (this.cards.length==0); },
-                    bg      : _data.background?_data.background:"res/img/cards/00drop01.svg",
-                    accept  : _data.accept,
-                    update  : function() {
-                        for (var i=0; i<this.cards.length; i++) {
-                            var c=this.cards[i];
-                            c.$html.css("top",(topx(this.pos[1])+this.fanned[1]*i)+"em")
-                                   .css("left",(lefty(this.pos[0])+this.fanned[0]*i)+"em")
-                                   .css("z-index",i+2)
-                                   .show();
-                        }
-                        if (false) {
-                            var $last = this.cards[this.cards.length-1].$html;
-                            if ($last) {
-                                $last.draggable({
-                                        revert:true, zIndex:100,
-                                        stop: function( event, ui ) { $(this).parent().find(".s").removeClass("s"); }
-                                    }).css("position","absolute");
-                            }
-                        }
-                    }
-                };
-                ret.$html = $("<div class='card slot foundation' id='"+ret.id+"'></div>");
-                ret.$html.css("top",topx(_data.pos[1])+"em").css("left",lefty(_data.pos[0])+"em")
-                         .css("background-image","url("+ret.bg+")");
-                helpers.build.droppable(ret.$html);
-                
-                return ret;
-            },
             rowstack: function($this, _data) {
                 var settings = helpers.settings($this);
                 var ret = {
-                    id      : "r"+helpers.build.id.rowstack++,
+                    id      : "r"+settings.ids.rowstack++,
+                    type    : "rowstack",
                     stock   : _data.stock?"s"+_data.stock:"s0",
                     fanned  : _data.fanned?[_data.fanned[0],_data.fanned[1]]:[0,0],
                     pos     : [_data.pos[0], _data.pos[1]],
                     type    : "rowstack",
                     cards   : [],
+                    bg      : _data.background?_data.background:"res/img/cards/00drop01.svg",
                     accept  : _data.accept,
+                    first   : _data.first,
+                    success : _data.success,
+                    pinned  : _data.pinned,
                     isempty : function() { return (this.cards.length==0); },
                     update  : function() {
+                        var log="";
+                        log+="UPDATE "+this.id+" (nbcards: "+this.cards.length+") ";
+                        // CLEAR AND SHOW CARDS
                         if (this.$html.hasClass("droppable")) { this.$html.droppable("disable"); }
+                        var dropd = 0, dragd = 0;
                         for (i=0; i<this.cards.length; i++) {
                             var elt=this.cards[i];
                             elt.$html.css("top",(topx(ret.pos[1])+ret.fanned[1]*i)+"em")
                                      .css("left",(lefty(ret.pos[0])+ret.fanned[0]*i)+"em")
-                                     .css("z-index",i+2).show();
-                            if (elt.$html.hasClass("droppable")) { elt.$html.droppable("disable"); }
+                                     .css("z-index",i+2)
+                                     .show();
+                            if (elt.$html.hasClass("droppable")) { elt.$html.droppable("disable"); dropd++; }
+                            if (elt.$html.hasClass("draggable")) { elt.$html.draggable("disable"); dragd++; }
                         }
+                        log+="(drop: "+dropd+") (drag: "+dragd+") ";
                         var $drop = this.$html;
-                        if (!this.isempty()) { $drop = this.cards[this.cards.length-1].$html; }
-                        helpers.build.droppable($drop);
+                        if (!this.isempty()) {
+                            var lastcard = this.cards[this.cards.length-1];
+                            $drop = lastcard.$html;
+                            var $last = lastcard.$html;
+                            
+                            // TOP CARD IS DOWN-FACED
+                            if ($last.hasClass("down")) {
+                                $last.bind("mousedown touchstart", function(_event) {
+                                    $(this).unbind("mousedown touchstart").removeClass("down");
+                                    var stack  = helpers.getElt($this, $(this).attr("id"));
+                                    stack.update();
+                                    _event.preventDefault();
+                                });
+                                $drop=0;
+                            }
+                            else if (!this.pinned) {
+                                var ok, cpt=this.cards.length-1;
+                                do {
+                                    ok = true;
+                                    var card=this.cards[cpt];
+                                    if (cpt<this.cards.length-1) {
+                                        var top=this.cards[cpt+1];
+                                        if (this.accept && helpers.valid[this.accept]) {                                   
+                                            ok = helpers.valid[this.accept](top,card);
+                                        }      
+                                    }
+                                    cpt--;
+                                    if (ok) {
+                                        card.$html.addClass("draggable").draggable({
+                                            start:function() {
+                                                var id          = $(this).attr("id");
+                                                var stock       = helpers.getElt($this, id);
+                                                settings.tomove = [];
+                                                for (var i=stock.cards.length-1; i>=0; i--) {
+                                                    var $html=stock.cards[i].$html, $board=$html.closest("#board");
+                                                    var c = stock.cards[i];
+                                                    c.origin = [$html.offset().left - $board.offset().left,
+                                                                $html.offset().top - $board.offset().top];
+                                                    c.$html.css("z-index",100+i);
+                                                    settings.tomove.push(c);
+                                                    if (c.$html.hasClass("droppable")) { 
+                                                        c.$html.removeClass("droppable").droppable("disable");
+                                                    }
+                                                    if (c.id==id) { break; }
+                                                }
+                                            },
+                                            drag: function(event, ui) {
+                                                var id          = $(this).attr("id");
+                                                var currentLoc  = $(this).position();
+                                                var orig        = ui.originalPosition;
+                                                var offsetLeft  = currentLoc.left-orig.left;
+                                                var offsetTop   = currentLoc.top-orig.top;
+                                                
+                                                for (var i in settings.tomove) {
+                                                    if (settings.tomove[i].id!=id) {
+                                                        var $html = settings.tomove[i].$html;
+                                                        $html.css('left', settings.tomove[i].origin[0]+offsetLeft);
+                                                        $html.css('top', settings.tomove[i].origin[1]+offsetTop);
+                                                    }
+                                                }
+                                            },
+                                            stop: function( event, ui ) {
+                                                $(this).parent().find(".s").removeClass("s");
+                                              
+                                                for (var i in settings.tomove) {
+                                                    var c=settings.tomove[i];
+                                                    c.$html.animate({left:c.origin[0],top:c.origin[1]},200);
+                                                }
+                                                if (settings.tomove.length) {
+                                                    setTimeout(function() {
+                                                        var from = helpers.getElt($this, settings.tomove[0].$html.attr("id"));
+                                                        settings.tomove=[];
+                                                        from.update();
+                                                    }, 300);
+                                                }
+                                            }
+                                        }).draggable("enable").css("position","absolute");
+                                    }
+                                    
+                                } while (ok && cpt>=0);
+                            }
+                        }
+                        if ($drop) { log+="[drop: "+$drop.attr("id")+"]"; helpers.build.droppable($drop); }
+                        console.log(log);
                     }
                 };
                 ret.$html = $("<div class='card slot rowstack' id='"+ret.id+"'></div>");
-                ret.$html.css("top",topx(_data.pos[1])+"em").css("left",lefty(_data.pos[0])+"em");
+                ret.$html.css("top",topx(_data.pos[1])+"em").css("left",lefty(_data.pos[0])+"em")
+                         .css("background-image","url("+ret.bg+")");
                 
-                var nbcards = _data.nbcards?_data.nbcards:1;
+                var nbcards = _data.nbcards?_data.nbcards:0;
+                var list="";
+                for (var i in settings.elts) { list+=" "+i; }
+                console.log("DEBUG "+ret.stock+" ("+list+")");
                 for (var i=0; i<nbcards; i++) {
                     var elt = settings.elts[ret.stock].cards.pop();
-                    if (i!=nbcards-1) {  elt.$html.addClass("down"); }
+                    if (i!=nbcards-1 && _data.type=="lastup") {  elt.$html.addClass("down"); }
                     ret.cards.push(elt);
                 }
                 
                 return ret;
+            }
+        },
+        check: function($this) {
+            var settings = helpers.settings($this);
+            var success = true;
+            for (var i in settings.elts) {
+                if (typeof (settings.elts[i].success) == "number") {
+                    console.log(i+": "+settings.elts[i].success+" <> "+settings.elts[i].cards.length);
+                    if (settings.elts[i].success != settings.elts[i].cards.length) { success = false; }
+                }
+                else if (typeof (settings.elts[i].success) != "undefined") {
+                }
+            }
+            
+            if (success) {
+                settings.score = 5;
+                $this.find("#good").toggle(success);
+                $this.find("#wrong").toggle(!success);
+                $this.find("#effects").show();
+                setTimeout(function() { helpers.end($this); }, 2000);
             }
         }
     };
@@ -437,7 +562,9 @@ case "togglecolordown": ok = (typeof(c.value)!="undefined" && typeof(up.value)!=
                     interactive     : false,        // can player play ?
                     elts            : {},           // all gaming elements
                     data            : {},           // all cards
-                    from            : {}
+                    from            : {},
+                    ids             : { stock:0, waste: 0, rowstack: 0, cards : 0},
+                    tomove          : []
                 };
 
                 return this.each(function() {

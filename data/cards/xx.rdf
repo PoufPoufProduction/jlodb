@@ -3,16 +3,37 @@
          xmlns:dct="http://purl.org/dc/terms/">
 
     <rdf:Description>
-        <dct:identifier>x</dct:identifier>
-        <dct:title xml:lang="fr-FR">Utiliser la version de développement de l'activité cards.</dct:title>
-        <dct:description><![CDATA["cards":{"c52":{"type":"c52"},"user":{"font":0.6,"data":[{"id":0,"label":"carte"},{"id":1,"label":"vache","img":"res/img/clipart/animal/cow01.svg"},{"id":2,"img":"res/img/clipart/animal/zebra01.svg"},{"id":3,"label":"crocodile","img":"res/img/clipart/animal/crocodile01.svg"},{"id":4,"label":"chien","img":"res/img/clipart/animal/dog01.svg"},{"id":5,"label":"poule","img":"res/img/clipart/animal/chicken01.svg"}]}},"stock":{"pos":[0,0],"cards":["user","c52"]},"waste":{"pos":[1,0],"fanned":[0.05,0]},"foundations":[{"pos":[3,0],"background":"res/img/cards/00drophearts01.svg","accept":"heartsup"},{"pos":[4,0],"background":"res/img/cards/00dropspades01.svg","accept":"spadesup"},{"pos":[5,0],"background":"res/img/cards/00dropdiamonds01.svg","accept":"diamondsup"},{"pos":[6,0],"background":"res/img/cards/00dropclubs01.svg","accept":"clubsup"}],"rowstacks":[{"fanned":[0,0.3],"pos":[0,1],"nbcards":1,"type":"lastup","accept":"togglecolordown"},{"fanned":[0,0.3],"pos":[1,1],"nbcards":2,"type":"lastup","accept":"togglecolordown"},{"fanned":[0,0.3],"pos":[2,1],"nbcards":3,"type":"lastup","accept":"togglecolordown"},{"fanned":[0,0.3],"pos":[3,1],"nbcards":4,"type":"lastup","accept":"togglecolordown"},{"fanned":[0,0.3],"pos":[4,1],"nbcards":5,"type":"lastup","accept":"togglecolordown"},{"fanned":[0,0.3],"pos":[5,1],"nbcards":6,"type":"lastup","accept":"togglecolordown"},{"fanned":[0,0.3],"pos":[6,1],"nbcards":7,"type":"lastup","accept":"togglecolordown"}]]]></dct:description>
-        <dct:extent>15</dct:extent>
+        <dct:identifier>k1</dct:identifier>
+        <dct:title xml:lang="fr-FR">Jouer au jeu de patience Klondike à 1 carte.</dct:title>
+        <dct:description><![CDATA["cards":{"c52":{"type":"c52"}},"stock":{"pos":[0,0],"cards":["c52"]},"waste":{"pos":[1,0],"fanned":[0.05,0]},"rowstacks":[{"pos":[3,0],"background":"res/img/cards/00drophearts01.svg","accept":"heartsup","pinned":true,"success":13},{"pos":[4,0],"background":"res/img/cards/00dropspades01.svg","accept":"spadesup","pinned":true,"success":13},{"pos":[5,0],"background":"res/img/cards/00dropdiamonds01.svg","accept":"diamondsup","pinned":true,"success":13},{"pos":[6,0],"background":"res/img/cards/00dropclubs01.svg","accept":"clubsup","pinned":true,"success":13},{"fanned":[0,0.3],"pos":[0,1],"nbcards":1,"type":"lastup","accept":"togglecolordown","first":"king"},{"fanned":[0,0.3],"pos":[1,1],"nbcards":2,"type":"lastup","accept":"togglecolordown","first":"king"},{"fanned":[0,0.3],"pos":[2,1],"nbcards":3,"type":"lastup","accept":"togglecolordown","first":"king"},{"fanned":[0,0.3],"pos":[3,1],"nbcards":4,"type":"lastup","accept":"togglecolordown","first":"king"},{"fanned":[0,0.3],"pos":[4,1],"nbcards":5,"type":"lastup","accept":"togglecolordown","first":"king"},{"fanned":[0,0.3],"pos":[5,1],"nbcards":6,"type":"lastup","accept":"togglecolordown","first":"king"},{"fanned":[0,0.3],"pos":[6,1],"nbcards":7,"type":"lastup","accept":"togglecolordown","first":"king"}],"font":1.2]]></dct:description>
+        <dct:extent>10</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>4</dct:type>
-        <dct:alternative>x</dct:alternative>
+        <dct:type>2</dct:type>
+        <dct:alternative>k1</dct:alternative>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>k3</dct:identifier>
+        <dct:title xml:lang="fr-FR">Jouer au jeu de patience Klondike à 3 carte.</dct:title>
+        <dct:description><![CDATA["cards":{"c52":{"type":"c52"}},"stock":{"pos":[0,0],"cards":["c52"],"number":3},"waste":{"pos":[1,0],"fanned":[0.05,0]},"rowstacks":[{"pos":[3,0],"background":"res/img/cards/00drophearts01.svg","accept":"heartsup","pinned":true,"success":13},{"pos":[4,0],"background":"res/img/cards/00dropspades01.svg","accept":"spadesup","pinned":true,"success":13},{"pos":[5,0],"background":"res/img/cards/00dropdiamonds01.svg","accept":"diamondsup","pinned":true,"success":13},{"pos":[6,0],"background":"res/img/cards/00dropclubs01.svg","accept":"clubsup","pinned":true,"success":13},{"fanned":[0,0.3],"pos":[0,1],"nbcards":1,"type":"lastup","accept":"togglecolordown","first":"king"},{"fanned":[0,0.3],"pos":[1,1],"nbcards":2,"type":"lastup","accept":"togglecolordown","first":"king"},{"fanned":[0,0.3],"pos":[2,1],"nbcards":3,"type":"lastup","accept":"togglecolordown","first":"king"},{"fanned":[0,0.3],"pos":[3,1],"nbcards":4,"type":"lastup","accept":"togglecolordown","first":"king"},{"fanned":[0,0.3],"pos":[4,1],"nbcards":5,"type":"lastup","accept":"togglecolordown","first":"king"},{"fanned":[0,0.3],"pos":[5,1],"nbcards":6,"type":"lastup","accept":"togglecolordown","first":"king"},{"fanned":[0,0.3],"pos":[6,1],"nbcards":7,"type":"lastup","accept":"togglecolordown","first":"king"}],"font":1.2]]></dct:description>
+        <dct:extent>10</dct:extent>
+        <dct:subject>game</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>k1</dct:alternative>
     </rdf:Description>
 
+    <rdf:Description>
+        <dct:identifier>f1</dct:identifier>
+        <dct:title xml:lang="fr-FR">Jouer au jeu de patience Freecell.</dct:title>
+        <dct:description><![CDATA["cards":{"c52":{"type":"c52"}},"stock":{"cards":["c52"]},"rowstacks":[{"pos":[0,0],"accept":"onlyone"},{"pos":[1,0],"accept":"onlyone"},{"pos":[2,0],"accept":"onlyone"},{"pos":[3,0],"accept":"onlyone"},{"pos":[4,0],"background":"res/img/cards/00drophearts01.svg","accept":"heartsup","pinned":true,"success":13},{"pos":[5,0],"background":"res/img/cards/00dropspades01.svg","accept":"spadesup","pinned":true,"success":13},{"pos":[6,0],"background":"res/img/cards/00dropdiamonds01.svg","accept":"diamondsup","pinned":true,"success":13},{"pos":[7,0],"background":"res/img/cards/00dropclubs01.svg","accept":"clubsup","pinned":true,"success":13},{"fanned":[0,0.3],"pos":[0,1],"nbcards":7,"accept":"togglecolordown","first":"all"},{"fanned":[0,0.3],"pos":[1,1],"nbcards":7,"accept":"togglecolordown","first":"all"},{"fanned":[0,0.3],"pos":[2,1],"nbcards":7,"accept":"togglecolordown","first":"all"},{"fanned":[0,0.3],"pos":[3,1],"nbcards":7,"accept":"togglecolordown","first":"all"},{"fanned":[0,0.3],"pos":[4,1],"nbcards":6,"accept":"togglecolordown","first":"all"},{"fanned":[0,0.3],"pos":[5,1],"nbcards":6,"accept":"togglecolordown","first":"all"},{"fanned":[0,0.3],"pos":[6,1],"nbcards":6,"accept":"togglecolordown","first":"all"},{"fanned":[0,0.3],"pos":[7,1],"nbcards":6,"accept":"togglecolordown","first":"all"}],"font":1.05]]></dct:description>
+        <dct:extent>10</dct:extent>
+        <dct:subject>game</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>k1</dct:alternative>
+    </rdf:Description>
 
 </rdf:RDF>
 
