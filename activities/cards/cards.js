@@ -146,6 +146,12 @@
                     settings.elts[i].update();
                 }
                 
+                if (settings.game) {
+                    for (var g in settings.game) {
+                        $this.find("#userguide ul").append("<li>"+helpers.format(settings.game[g])+"</li>");
+                    }
+                }
+                
                 // Optional devmode
                 if (settings.dev) { $this.find("#devmode").show(); }
 
@@ -153,6 +159,51 @@
                 if (settings.exercice) { $this.find("#exercice").html(helpers.format(settings.exercice)); }
 
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+            }
+        },
+        processclick: function() {
+            var $this       = $(this).closest(".cards");
+            var settings    = helpers.settings($this);
+            if ( ! $(this).is('.ui-draggable-dragging') ) {
+                if (settings.timerid) {
+                    clearTimeout(settings.timerid);
+                    settings.timerid=0;               
+                    var id          = $(this).attr("id");
+                    var stock       = helpers.getElt($this, id);
+                    
+                    if (stock.cards[stock.cards.length-1].id == id) {
+                        var good = 0;
+                        var card = stock.cards[stock.cards.length-1];
+                        for (var i in settings.elts) {
+                            var elt     = settings.elts[i];
+                            var accept  = elt.accept;
+                            var ok      = true;
+                            var down    = 0;
+
+                            if (elt.isempty())          { if (elt.first) { accept = elt.first; } }
+                            else                        { down = elt.cards[elt.cards.length-1]; }
+                            if (helpers.valid[accept])  { ok = helpers.valid[accept](card,down); }
+                            if (elt.success && ok)      { good = i; }
+                            
+                        }
+                        if (good) {
+                            $this.find("#fx>div").addClass("running").parent()
+                                .css("left",($(this).offset().left-$this.find("#board").offset().left)+"px")
+                                .css("top",($(this).offset().top-$this.find("#board").offset().top)+"px")
+                                .show();
+                            setTimeout(function(){ $this.find("#fx>div").removeClass("running").parent().hide(); },500);
+                                
+                            stock.cards.pop();
+                            settings.elts[good].cards.push(card);
+                            stock.update();
+                            settings.elts[good].update();
+                            
+                            helpers.check($this);
+                            
+                        }
+                    }
+                }
+                else { settings.timerid=setTimeout(function() { settings.timerid=0; }, 300); }
             }
         },
         getElt: function($this, _id) {
@@ -202,6 +253,62 @@
             
         },
         build: {
+            draggable: function($elt) {
+                $elt.addClass("draggable").draggable({
+                    start:function() {
+                        var $this       = $(this).closest(".cards");
+                        var settings    = helpers.settings($this);
+                        var id          = $(this).attr("id");
+                        var stock       = helpers.getElt($this, id);
+                        settings.tomove = [];
+                        settings.timerid=0;
+                        for (var i=stock.cards.length-1; i>=0; i--) {
+                            var $html=stock.cards[i].$html, $board=$html.closest("#board");
+                            var c = stock.cards[i];
+                            c.origin = [$html.offset().left - $board.offset().left, $html.offset().top - $board.offset().top];
+                            c.$html.css("z-index",100+i);
+                            settings.tomove.push(c);
+                            if (c.$html.hasClass("droppable")) { c.$html.removeClass("droppable").droppable("disable"); }
+                            if (c.id==id) { break; }
+                        }
+                    },
+                    drag: function(event, ui) {
+                        var $this       = $(this).closest(".cards");
+                        var settings    = helpers.settings($this);
+                        var id          = $(this).attr("id");
+                        var currentLoc  = $(this).position();
+                        var orig        = ui.originalPosition;
+                        var offsetLeft  = currentLoc.left-orig.left;
+                        var offsetTop   = currentLoc.top-orig.top;
+                                                
+                        for (var i in settings.tomove) {
+                            if (settings.tomove[i].id!=id) {
+                                var $html = settings.tomove[i].$html;
+                                $html.css('left', settings.tomove[i].origin[0]+offsetLeft);
+                                $html.css('top', settings.tomove[i].origin[1]+offsetTop);
+                            }
+                        }
+                    },
+                    stop: function( event, ui ) {
+                        var $this       = $(this).closest(".cards");
+                        var settings    = helpers.settings($this);
+                        $(this).parent().find(".s").removeClass("s");
+                        
+                        for (var i in settings.tomove) {
+                            var c=settings.tomove[i];
+                            c.$html.animate({left:c.origin[0],top:c.origin[1]},200);
+                        }
+                        if (settings.tomove.length) {
+                            setTimeout(function() {
+                                var from = helpers.getElt($this, settings.tomove[0].$html.attr("id"));
+                                settings.tomove=[];
+                                from.update();
+                            }, 300);
+                        }
+                    }
+                }).draggable("enable").css("position","absolute")
+                .unbind("mousedown touchstart", helpers.processclick).bind("mousedown touchstart", helpers.processclick);
+            },
             droppable: function($elt, _args) {
                 $elt.addClass("droppable").droppable({
                     over: function( event, ui ) { $(this).addClass("s"); },
@@ -213,16 +320,18 @@
                         var from    = helpers.getElt($this, ui.draggable.attr("id"));
                         var to      = helpers.getElt($this, $(this).attr("id"));
                         var c       = helpers.getCard($this, ui.draggable.attr("id"));
-                        var down    = 0;
-                        var accept  = to.accept;
+                        var down    = to.isempty()?0:to.cards[to.cards.length-1];
                         var ok      = true;
                         
+                        var checkdown = down;
+                        for (var i=settings.tomove.length-1; i>=0; i--) {
+                            var checkup = settings.tomove[i];
+                            var accept = to.accept;
+                            if (checkdown==0 && to.first) { accept = to.first; }
+                            if (ok && helpers.valid[accept]) { ok = helpers.valid[accept](checkup,checkdown); }
+                            checkdown = checkup;
+                        }
                         
-                        if (to.isempty()) { if (to.first) { accept = to.first; } }
-                        else              { down = to.cards[to.cards.length-1]; }
-                        
-                        if (helpers.valid[accept]) { ok = helpers.valid[accept](c,down); }
-
                         if (ok) {
                             var cards = [];
                             for (var i in settings.tomove)
@@ -375,15 +484,7 @@
                                 if (elt.$html.hasClass("draggable")) { elt.$html.draggable("disable"); }
                             }
                             var $last = this.cards[this.cards.length-1].$html;
-                            if ($last) {
-                                $last.addClass("draggable").draggable({
-                                        start: function(event, ui) {
-                                            settings.tomove=[helpers.getCard($this, $(this).attr("id"))];
-                                        },
-                                        revert:true, zIndex:100,
-                                        stop: function( event, ui ) { settings.tomove=[]; $(this).parent().find(".s").removeClass("s"); }
-                                    }).draggable("enable").css("position","absolute");
-                            }
+                            if ($last) { helpers.build.draggable($last); }
                         }
                         
                     }
@@ -453,57 +554,7 @@
                                         }      
                                     }
                                     cpt--;
-                                    if (ok) {
-                                        card.$html.addClass("draggable").draggable({
-                                            start:function() {
-                                                var id          = $(this).attr("id");
-                                                var stock       = helpers.getElt($this, id);
-                                                settings.tomove = [];
-                                                for (var i=stock.cards.length-1; i>=0; i--) {
-                                                    var $html=stock.cards[i].$html, $board=$html.closest("#board");
-                                                    var c = stock.cards[i];
-                                                    c.origin = [$html.offset().left - $board.offset().left,
-                                                                $html.offset().top - $board.offset().top];
-                                                    c.$html.css("z-index",100+i);
-                                                    settings.tomove.push(c);
-                                                    if (c.$html.hasClass("droppable")) { 
-                                                        c.$html.removeClass("droppable").droppable("disable");
-                                                    }
-                                                    if (c.id==id) { break; }
-                                                }
-                                            },
-                                            drag: function(event, ui) {
-                                                var id          = $(this).attr("id");
-                                                var currentLoc  = $(this).position();
-                                                var orig        = ui.originalPosition;
-                                                var offsetLeft  = currentLoc.left-orig.left;
-                                                var offsetTop   = currentLoc.top-orig.top;
-                                                
-                                                for (var i in settings.tomove) {
-                                                    if (settings.tomove[i].id!=id) {
-                                                        var $html = settings.tomove[i].$html;
-                                                        $html.css('left', settings.tomove[i].origin[0]+offsetLeft);
-                                                        $html.css('top', settings.tomove[i].origin[1]+offsetTop);
-                                                    }
-                                                }
-                                            },
-                                            stop: function( event, ui ) {
-                                                $(this).parent().find(".s").removeClass("s");
-                                              
-                                                for (var i in settings.tomove) {
-                                                    var c=settings.tomove[i];
-                                                    c.$html.animate({left:c.origin[0],top:c.origin[1]},200);
-                                                }
-                                                if (settings.tomove.length) {
-                                                    setTimeout(function() {
-                                                        var from = helpers.getElt($this, settings.tomove[0].$html.attr("id"));
-                                                        settings.tomove=[];
-                                                        from.update();
-                                                    }, 300);
-                                                }
-                                            }
-                                        }).draggable("enable").css("position","absolute");
-                                    }
+                                    if (ok) { helpers.build.draggable(card.$html); }
                                     
                                 } while (ok && cpt>=0);
                             }
@@ -564,7 +615,8 @@
                     data            : {},           // all cards
                     from            : {},
                     ids             : { stock:0, waste: 0, rowstack: 0, cards : 0},
-                    tomove          : []
+                    tomove          : [],
+                    timerid         : 0
                 };
 
                 return this.each(function() {

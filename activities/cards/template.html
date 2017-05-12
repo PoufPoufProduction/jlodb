@@ -18,6 +18,14 @@
         <div id="wrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
     </div>
     
+    <div id="help" class="icon" ontouchstart="$(this).next().show();event.preventDefault();" onclick="$(this).next().show();">
+        <img src="res/img/default/white/about.svg"/>
+    </div>
+    <div id="userguide" ontouchstart="$(this).hide();event.preventDefault();" onclick="$(this).hide();"><div>
+        <div id="description"></div>
+        <ul></ul>
+    </div></div>
+    
     <!-- Optional devmode -->
     <div id="devmode" ontouchstart="$(this).closest('.cards').cards('devmode');event.preventDefault();"
                       onclick="$(this).closest('.cards').cards('devmode');" ><img src="res/img/default/white/snapshot.svg"/></div>
