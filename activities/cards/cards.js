@@ -113,11 +113,15 @@
                         var c = settings.cards[i];
                         settings.data[i] = [];
                         if (c.type=="c52") { for (var k=0;k<52;k++) { settings.data[i].push({value:k});  } }
-                        else if (c.data) {
-                            for (var j in c.data) {
-                                var elt=$.extend({},c.data[j]);
-                                if (c.font) { elt.font = c.font; }
-                                settings.data[i].push(elt);
+                        else {
+                            var data = c.data; 
+                            if (c.gen) { data = eval('('+c.gen+')')($this); }
+                            if (data) {
+                                for (var j in data) {
+                                    var elt=$.extend({},data[j]);
+                                    if (c.font) { elt.font = c.font; }
+                                    settings.data[i].push(elt);
+                                }
                             }
                         }
                     }
@@ -128,7 +132,7 @@
                 
                 // Prepare gaming elements
                 $this.find("#board").html("");
-                var elts=["stock","waste","foundation","rowstack"];
+                var elts=["stock","rowstack"];
                 for (var i in elts) {
                     var e = elts[i];
                     if (settings[e])     {
@@ -157,6 +161,8 @@
 
                 // Exercice
                 if (settings.exercice) { $this.find("#exercice").html(helpers.format(settings.exercice)); }
+                
+                if (settings.showgame) { $this.find("#userguide").show(); }
 
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
@@ -247,6 +253,10 @@
             king: function(_top, _back) {
                 return (this.g(_top, _back) && _top.value%13==12);
             },
+            nextprev: function(_top, _back) {
+                return (this.g(_top, _back) && _back && 
+                    ( (_top.value%13-1==_back.value%13) || (_top.value%13==_back.value%13-1 ) ) );
+            },
             onlyone: function(_top, _back) { return (_back==0); },
             all: function(_top, _back) { return true; },
             none: function(_top, _back) { return false; }
@@ -255,7 +265,7 @@
         build: {
             draggable: function($elt) {
                 $elt.addClass("draggable").draggable({
-                    start:function() {
+                    start:function(event, ui) {
                         var $this       = $(this).closest(".cards");
                         var settings    = helpers.settings($this);
                         var id          = $(this).attr("id");
@@ -292,18 +302,20 @@
                     stop: function( event, ui ) {
                         var $this       = $(this).closest(".cards");
                         var settings    = helpers.settings($this);
-                        $(this).parent().find(".s").removeClass("s");
-                        
-                        for (var i in settings.tomove) {
-                            var c=settings.tomove[i];
-                            c.$html.animate({left:c.origin[0],top:c.origin[1]},200);
-                        }
-                        if (settings.tomove.length) {
-                            setTimeout(function() {
-                                var from = helpers.getElt($this, settings.tomove[0].$html.attr("id"));
-                                settings.tomove=[];
-                                from.update();
-                            }, 300);
+                        if (settings) {
+                            $this.find(".s").removeClass("s");
+                            
+                            for (var i in settings.tomove) {
+                                var c=settings.tomove[i];
+                                c.$html.animate({left:c.origin[0],top:c.origin[1]},200);
+                            }
+                            if (settings.tomove.length) {
+                                setTimeout(function() {
+                                    var from = helpers.getElt($this, settings.tomove[0].$html.attr("id"));
+                                    settings.tomove=[];
+                                    from.update();
+                                }, 300);
+                            }
                         }
                     }
                 }).draggable("enable").css("position","absolute")
@@ -328,7 +340,12 @@
                             var checkup = settings.tomove[i];
                             var accept = to.accept;
                             if (checkdown==0 && to.first) { accept = to.first; }
-                            if (ok && helpers.valid[accept]) { ok = helpers.valid[accept](checkup,checkdown); }
+                            if (ok) {
+                                if (helpers.valid[accept])                    { ok = helpers.valid[accept](checkup,checkdown); } else
+                                if (settings.valid && settings.valid[accept]) {
+                                    ok = eval('('+settings.valid[accept]+')')($this,checkup,checkdown);
+                                }
+                            }
                             checkdown = checkup;
                         }
                         
@@ -349,8 +366,6 @@
                             for (var i in cards) { to.cards.push(cards[i]); }
                             settings.tomove=[];
                             
-                            
-                            console.log("update : "+to.id+" + "+from.id);
                             to.update();
                             from.update();
                             
@@ -372,8 +387,8 @@
                     id          : "s"+settings.ids.stock++,
                     $html       : 0,
                     pos         : _data.pos?[_data.pos[0], _data.pos[1]]:0,
-                    type        : "stock",
                     waste       : _data.waste?"w"+_data.waste:"w0",
+                    reroll      : _data.reroll,
                     cards       : [],
                     nbcards     : 52,
                     number      : _data.number?_data.number:1,
@@ -412,7 +427,7 @@
                             card.$html.find(".front").append("<img src='res/img/cards/"+values[card.value%13]+
                                               colors[Math.floor(card.value/13)]+".svg' alt=''/>");
                         }
-                        else if (card.label) {
+                        else if (typeof(card.label) != 'undefined') {
                             var font=0.5*(card.font?card.font:1);
                             if (card.img) {
                                 card.$html.addClass("withimg")
@@ -438,7 +453,7 @@
                         var $this    = $(this).closest(".cards");
                         var settings = helpers.settings($this);
                         var stock    = settings.elts[$(this).attr("id")];
-                        if (stock.isempty()) {
+                        if (stock.isempty() && stock.reroll ) {
                             while (!settings.elts[stock.waste].isempty()) {
                                 var elt = settings.elts[stock.waste].cards.pop();
                                 elt.$html.hide();
@@ -454,61 +469,29 @@
                         }
                         stock.update($this);
                         settings.elts[stock.waste].update();
+                        helpers.check($this);
                         _event.preventDefault();
                     });
                 }
                     
                 return ret;
             },
-            waste: function($this, _data) {
-                var settings = helpers.settings($this);
-                var ret = {
-                    id      : "w"+settings.ids.waste++,
-                    pos     : [_data.pos[0], _data.pos[1]],
-                    type    : "waste",
-                    stock   : _data.stock?"s"+_data.stock:"s0",
-                    fanned  : _data.fanned?[_data.fanned[0],_data.fanned[1]]:[0,0],
-                    cards   : [],
-                    success : _data.success,
-                    isempty : function() { return (this.cards.length==0); },
-                    update  : function() {
-                        if (this.isempty()) { this.$html.html(""); }
-                        else {
-                            for (var i=0; i<this.cards.length; i++) {
-                                var elt=this.cards[i];
-                                elt.$html.css("top",(topx(this.pos[1])+this.fanned[1]*i)+"em")
-                                       .css("left",(lefty(this.pos[0])+this.fanned[0]*i)+"em")
-                                       .css("z-index",i+2)
-                                       .show();
-                                       
-                                if (elt.$html.hasClass("draggable")) { elt.$html.draggable("disable"); }
-                            }
-                            var $last = this.cards[this.cards.length-1].$html;
-                            if ($last) { helpers.build.draggable($last); }
-                        }
-                        
-                    }
-                };
-                ret.$html = $("<div class='card slot waste' id='"+ret.id+"'></div>");
-                ret.$html.css("top",topx(ret.pos[1])+"em").css("left",lefty(ret.pos[0])+"em");
-                
-                return ret;
-            },
             rowstack: function($this, _data) {
                 var settings = helpers.settings($this);
                 var ret = {
-                    id      : "r"+settings.ids.rowstack++,
-                    type    : "rowstack",
+                    id      : (_data.type&&_data.type=="waste")?"w"+settings.ids.waste++:"r"+settings.ids.rowstack++,
+                    type    : _data.type?_data.type:"rowstack",
                     stock   : _data.stock?"s"+_data.stock:"s0",
                     fanned  : _data.fanned?[_data.fanned[0],_data.fanned[1]]:[0,0],
                     pos     : [_data.pos[0], _data.pos[1]],
-                    type    : "rowstack",
                     cards   : [],
                     bg      : _data.background?_data.background:"res/img/cards/00drop01.svg",
                     accept  : _data.accept,
                     first   : _data.first,
+                    pick    : _data.pick,
+                    init    : _data.init,
                     success : _data.success,
-                    pinned  : _data.pinned,
+                    user    : _data.user,
                     isempty : function() { return (this.cards.length==0); },
                     update  : function() {
                         var log="";
@@ -525,7 +508,6 @@
                             if (elt.$html.hasClass("droppable")) { elt.$html.droppable("disable"); dropd++; }
                             if (elt.$html.hasClass("draggable")) { elt.$html.draggable("disable"); dragd++; }
                         }
-                        log+="(drop: "+dropd+") (drag: "+dragd+") ";
                         var $drop = this.$html;
                         if (!this.isempty()) {
                             var lastcard = this.cards[this.cards.length-1];
@@ -542,25 +524,29 @@
                                 });
                                 $drop=0;
                             }
-                            else if (!this.pinned) {
+                            else {
                                 var ok, cpt=this.cards.length-1;
                                 do {
                                     ok = true;
+                                    if (this.pick && this.pick=="none") { ok = false; }
                                     var card=this.cards[cpt];
                                     if (cpt<this.cards.length-1) {
                                         var top=this.cards[cpt+1];
-                                        if (this.accept && helpers.valid[this.accept]) {                                   
-                                            ok = helpers.valid[this.accept](top,card);
+                                        if (this.pick && helpers.valid[this.pick]) {                                         
+                                            ok = helpers.valid[this.pick](top,card);
                                         }      
                                     }
                                     cpt--;
+                                    
                                     if (ok) { helpers.build.draggable(card.$html); }
                                     
                                 } while (ok && cpt>=0);
                             }
                         }
-                        if ($drop) { log+="[drop: "+$drop.attr("id")+"]"; helpers.build.droppable($drop); }
-                        console.log(log);
+                        
+                        var accept = this.accept;
+                        if (this.isempty() && this.firts ) { accept = this.first; }
+                        if ($drop && accept!="none") { helpers.build.droppable($drop); }
                     }
                 };
                 ret.$html = $("<div class='card slot rowstack' id='"+ret.id+"'></div>");
@@ -570,10 +556,9 @@
                 var nbcards = _data.nbcards?_data.nbcards:0;
                 var list="";
                 for (var i in settings.elts) { list+=" "+i; }
-                console.log("DEBUG "+ret.stock+" ("+list+")");
                 for (var i=0; i<nbcards; i++) {
                     var elt = settings.elts[ret.stock].cards.pop();
-                    if (i!=nbcards-1 && _data.type=="lastup") {  elt.$html.addClass("down"); }
+                    if (i!=nbcards-1 && ret.init=="lastup") {  elt.$html.addClass("down"); }
                     ret.cards.push(elt);
                 }
                 
@@ -585,7 +570,6 @@
             var success = true;
             for (var i in settings.elts) {
                 if (typeof (settings.elts[i].success) == "number") {
-                    console.log(i+": "+settings.elts[i].success+" <> "+settings.elts[i].cards.length);
                     if (settings.elts[i].success != settings.elts[i].cards.length) { success = false; }
                 }
                 else if (typeof (settings.elts[i].success) != "undefined") {
