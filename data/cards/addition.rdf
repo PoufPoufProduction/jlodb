@@ -6,28 +6,28 @@
 
     <rdf:Description>
         <dct:identifier>g1</dct:identifier>
-        <dct:title xml:lang="fr-FR">Jouer au jeu de patience Golf.</dct:title>
+        <dct:title xml:lang="fr-FR">Jouer au jeu de patience Golf en résolvant les additions proposées dont les sommes varient de 1 à 10 [avec illustration du résultat].</dct:title>
         <dct:description><![CDATA["showgame":true,"valid":{"user":"function($this,_top,_down){ return ( _down && (_top.user-1==_down.user || _top.user==_down.user-1));}"},"cards":{"user":{"gen":"function(){var ret=[],val=[1,2,3,4,5,6,7,8,9,10]; for (var i=0; i<52;i++) { var v=val[i%val.length],a=Math.floor(Math.random()*(v+1)),b=v-a; ret.push({'label':a+'+'+b,'img':'res/img/numbers/box/box'+(a+b<10?'0'+(a+b):(a+b))+'.svg','user':a+b}); } return ret;}","font":1.2}},"stock":{"cards":["user"],"pos":[0,2]},"rowstacks":[{"pos":[1,2],"type":"waste","accept":"user","pick":"none","fanned":[0.1,0]},{"fanned":[0,0.5],"pos":[0,0],"nbcards":5,"accept":"none","pick":"onlyone","success":0},{"fanned":[0,0.5],"pos":[1,0],"nbcards":5,"accept":"none","pick":"onlyone","success":0},{"fanned":[0,0.5],"pos":[2,0],"nbcards":5,"accept":"none","pick":"onlyone","success":0},{"fanned":[0,0.5],"pos":[3,0],"nbcards":5,"accept":"none","first":"all","pick":"onlyone","success":0},{"fanned":[0,0.5],"pos":[4,0],"nbcards":5,"accept":"none","first":"all","pick":"onlyone","success":0},{"fanned":[0,0.5],"pos":[5,0],"nbcards":5,"accept":"none","first":"all","pick":"onlyone","success":0}],"font":1.4]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"game":["[b]Objectif[/b]: [b]Vider[/b] les 7 colonnes supérieures en déplaçant les cartes vers la ligne inférieure.","La pioche délivre une carte à la fois et ne peut être reconduite.","Une carte peut être posée sur une autre dont la valeur est directement [b]supérieure[/b] ou [b]inférieure[/b] à la sienne."]]]></dct:description>
         <dct:extent>10</dct:extent>
-        <dct:subject>game</dct:subject>
+        <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>k1</dct:alternative>
+        <dct:alternative>g1</dct:alternative>
         <dct:source>res/img/numbers/box/</dct:source>
     </rdf:Description>
     
     
     <rdf:Description>
         <dct:identifier>g2</dct:identifier>
-        <dct:title xml:lang="fr-FR">Jouer au jeu de patience Golf.</dct:title>
+        <dct:title xml:lang="fr-FR">Jouer au jeu de patience Golf en résolvant les additions proposées dont les sommes varient de 1 à 10.</dct:title>
         <dct:description><![CDATA["showgame":true,"valid":{"user":"function($this,_top,_down){ return ( _down && (_top.user-1==_down.user || _top.user==_down.user-1));}"},"cards":{"user":{"gen":"function(){var ret=[],val=[1,2,3,4,5,6,7,8,9,10],img=['crocodile01','zebra01','chicken01','dog03','cat01','fish01','cow02','lama01','albatross01','ape01','badger01','bear01','bird01','bison01','bull02','camel01','dodo01','donkey01','duck01','eagle01','elephant01','frog01','goat01','goose01','horse01','lion01','lobster01','mice01','monkey01','penguin01','pig01','rabbit03','rhinoceros01','rooster02','octopus01']; for (var i=0; i<52;i++) { var v=val[i%val.length],a=Math.floor(Math.random()*(v+1)),b=v-a; ret.push({'label':a+'+'+b,'img':'res/img/clipart/animal/'+img[a+b]+'.svg','user':a+b}); } return ret;}","font":1.2}},"stock":{"cards":["user"],"pos":[0,2]},"rowstacks":[{"pos":[1,2],"type":"waste","accept":"user","pick":"none","fanned":[0.1,0]},{"fanned":[0,0.5],"pos":[0,0],"nbcards":5,"accept":"none","pick":"onlyone","success":0},{"fanned":[0,0.5],"pos":[1,0],"nbcards":5,"accept":"none","pick":"onlyone","success":0},{"fanned":[0,0.5],"pos":[2,0],"nbcards":5,"accept":"none","pick":"onlyone","success":0},{"fanned":[0,0.5],"pos":[3,0],"nbcards":5,"accept":"none","first":"all","pick":"onlyone","success":0},{"fanned":[0,0.5],"pos":[4,0],"nbcards":5,"accept":"none","first":"all","pick":"onlyone","success":0},{"fanned":[0,0.5],"pos":[5,0],"nbcards":5,"accept":"none","first":"all","pick":"onlyone","success":0}],"font":1.4]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"game":["[b]Objectif[/b]: [b]Vider[/b] les 7 colonnes supérieures en déplaçant les cartes vers la ligne inférieure.","La pioche délivre une carte à la fois et ne peut être reconduite.","Une carte peut être posée sur une autre dont la valeur est directement [b]supérieure[/b] ou [b]inférieure[/b] à la sienne."]]]></dct:description>
         <dct:extent>10</dct:extent>
-        <dct:subject>game</dct:subject>
+        <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>k1</dct:alternative>
+        <dct:alternative>g1</dct:alternative>
         <dct:source>res/img/clipart/animal/</dct:source>
     </rdf:Description>
 
