@@ -230,8 +230,8 @@
                             settings.selected=elt;
                             elt.$html.addClass("s");
                             $this.find("#tg1>div").addClass("running").parent()
-                                .css("top",elt.$html.offset().top-settings.twidth/20)
-                                .css("left",elt.$html.offset().left-settings.twidth/8)
+                                .css("top",elt.$html.offset().top-settings.twidth/20 - $this.offset().top)
+                                .css("left",elt.$html.offset().left-settings.twidth/8 - $this.offset().left)
                                 .css("z-index", elt.zindex+1)
                                 .show();
                         }
@@ -240,8 +240,8 @@
                                 
                                 elt.$html.addClass("s");
                                 $this.find("#tg2>div").addClass("running").parent()
-                                    .css("top",elt.$html.offset().top-settings.twidth/20)
-                                    .css("left",elt.$html.offset().left-settings.twidth/8)
+                                    .css("top",elt.$html.offset().top-settings.twidth/20 - $this.offset().top)
+                                    .css("left",elt.$html.offset().left-settings.twidth/8 - $this.offset().left)
                                     .css("z-index", elt.zindex+1)
                                     .show();
                                         
