@@ -1,5 +1,28 @@
 <div>
     <div id="board"><div></div></div>
+    
+    <div id="tg1" class="anim12 target" ontouchstart="$(this).closest('.mahjong').mahjong('clean');event.preventDefault();"
+                                        onmousedown="$(this).closest('.mahjong').mahjong('clean');event.preventDefault();"><div><img src="res/img/default/anim/target01.svg" alt=""/></div></div>
+    <div id="tg2" class="anim12 target"><div><img src="res/img/default/anim/target01.svg" alt=""/></div></div>
+    
+    <div id="effects">
+        <div id="good"><img src="res/img/default/popup/good01.svg" alt=""/></div>
+        <div id="wrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
+    </div>
+    
+    <div id="help" class="icon" ontouchstart="$(this).next().show();event.preventDefault();"
+                                onclick="$(this).next().show();">
+        <img src="res/img/default/white/about.svg" alt="?"/>
+    </div>
+    <div id="mask"><div>
+        <div id="hint">yoyoyo</div>
+        <div>
+            <div class="icon" ontouchstart="$(this).closest('.mahjong').mahjong('hint');event.preventDefault();"
+                              onclick="$(this).closest('.mahjong').mahjong('hint');"><img src="res/img/default/white/valid.svg" alt=""/></div>
+            <div class="icon" ontouchstart="$(this).closest('#mask').hide();event.preventDefault();"
+                              onclick="$(this).closest('#mask').hide();"><img src="res/img/default/white/cancel.svg" alt=""/></div>
+        </div>
+    </div></div>
 
     <div id="splashex" ontouchstart="$(this).hide().closest('.mahjong').mahjong('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.mahjong').mahjong('next');"><div>

@@ -6,4 +6,20 @@
 .mahjong #board                     { font-size:0.5em;}
 .mahjong #board>div                 { position:relative; width:32em; height:24em; }
 .mahjong #board .mjtile             { position:absolute; cursor:pointer; }
-.mahjong #board .mjtile.s           { border:2px solid red; margin-top:-2px; margin-left:-2px;}
+.mahjong #board .mjtile>*           { position:absolute; top:0; left:0; }
+.mahjong #board .mjtile .hg         { width:1.6em; height:2.3em; top:0.1em; left:0.3em; background-color:rgba(255,0,0,0.4); display:none; }
+.mahjong #board .mjtile.s .hg       { display:inherit; background-color:rgba(255,0,0,0.4) !important;}
+.mahjong #board .mjtile.h .hg       { display:inherit; background-color:rgba(255,255,0,0.4); }
+
+.mahjong .target                    { position:absolute; top:0; left:0; z-index:700; }
+
+.mahjong #effects                   { width:5em; height:5em; position:absolute; top:0.5em; left:10.5em;  z-index:700; display:none;}
+.mahjong #effects>div               { font-size:5em; width:1em; height:1em; display:none;}
+
+.mahjong #help                      { position:absolute; top:92%; left:94%; cursor:help; font-size:.8em; }
+
+
+
+.mahjong #mask { font-size:0.5em; display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.1); z-index:901; }
+.mahjong #mask>div { font-size:1.2em; background-color:rgba(255,255,255,0.9); border:1px solid black; border-width:1px 0 1px 0; width:80%; padding:.2em 10%; height:25%; margin:20% auto; }
+.mahjong #mask .icon { float:left; margin:.2em 2em; background-color:gray; cursor:pointer; font-size:2em; }

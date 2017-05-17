@@ -93,6 +93,8 @@
 
                 $this.css("font-size", ($this.height()/12)+"px");
                 $this.find("#board>div").css("font-size", settings.font+"em");
+                settings.twidth = Math.floor($this.find(".target").width()*1.4*settings.font);
+                $this.find(".target").css("font-size", settings.twidth+"px");
 
                 // Locale handling
 
@@ -154,13 +156,51 @@
                 for (var i in settings.elts)
                 {
                     var elt=settings.elts[i];
+                    elt.zindex = Math.floor((20-elt.pos[0])+elt.pos[1]*2+100*elt.pos[2]);
                     elt.$html.css("top",(elt.pos[1]*2.5-elt.pos[2]*0.25+settings.offset[1])+"em")
                              .css("left",(elt.pos[0]*1.75+elt.pos[2]*0.25+settings.offset[0])+"em")
-                             .css("z-index",Math.floor((20-elt.pos[0])+elt.pos[1]*2+100*elt.pos[2]));
+                             .css("z-index",elt.zindex);
                     $this.find("#board>div").append(elt.$html);
                 }
+                
+                helpers.check($this);
 
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+            }
+        },
+        isfree: function($this, elt) {
+            var settings = helpers.settings($this);
+            var up=true, right=true, left=true;
+            for (var i in settings.elts) {
+                var c = settings.elts[i];
+                if (c.id!=elt.id && c.active) {
+                    if (c.pos[2]==elt.pos[2] && Math.abs(c.pos[1]-elt.pos[1])<0.9 && Math.abs(c.pos[0]-elt.pos[0])<1.5) {
+                        if (c.pos[0]<elt.pos[0]) { left=false; } else { right=false; }
+                    }
+                    else if (c.pos[2]==elt.pos[2]+1 && Math.abs(c.pos[1]-elt.pos[1])<0.9 && Math.abs(c.pos[0]-elt.pos[0])<0.9) {
+                        up = false;
+                    }
+                }
+            }
+            return (up && (left||right));
+        },
+        check: function($this, elt) {
+            var settings = helpers.settings($this);
+            settings.hints={};
+            for (var i in settings.elts) {
+                var c = settings.elts[i];
+                c.free = helpers.isfree($this,c);
+                if (c.active && c.free) {
+                    if (settings.hints[c.value]) { settings.hints[c.value].push(c); } else { settings.hints[c.value]=[c]; } }
+            }
+            var still=false;
+            for (var i in settings.hints) { if (settings.hints[i].length>1) { still=true; } }
+            
+            if (!still) {
+                settings.interactive=false;
+                settings.score=0;
+                $this.find("#wrong").show().parent().show();
+                setTimeout(function() {helpers.end($this);}, 1000);
             }
         },
         tile: function($this,_data) {
@@ -170,44 +210,71 @@
                 value       : _data.value,
                 src         : _data.src?_data.src:_data.value,
                 $html       : 0,
+                free        : false,
                 pos         : [0,0,0],
+                zindex      : 0,
                 active      : true
             };
             
-            ret.$html=$("<div class='mjtile' id='"+ret.id+"'><img src='res/img/asset/mahjong/"+ret.src+".svg' alt='' /></div>");
+            ret.$html=$("<div class='mjtile' id='"+ret.id+"'>"+
+                            "<img src='res/img/asset/mahjong/"+ret.src+".svg' alt='' />"+
+                            "<div class='hg'></div>"+
+                        "</div>");
             ret.$html.bind("mousedown touchstart", function(_event) {
                 if (settings.interactive) {
-                    var elt=0, up=true, right=true, left=true;
+                    var elt=0;
                     for (var i in settings.elts) { if (settings.elts[i].id == $(this).attr("id")) { elt=settings.elts[i]; }}
-                    for (var i in settings.elts) {
-                        var c = settings.elts[i];
-                        if (c.id!=elt.id && c.active) {
-                            if (c.pos[2]==elt.pos[2] && Math.abs(c.pos[1]-elt.pos[1])<0.9 && Math.abs(c.pos[0]-elt.pos[0])<1.5) {
-                                if (c.pos[0]<elt.pos[0]) { left=false; } else { right=false; }
-                            }
-                            else if (c.pos[2]==elt.pos[2]+1 && Math.abs(c.pos[1]-elt.pos[1])<0.9 && Math.abs(c.pos[0]-elt.pos[0])<0.9) {
-                                up = false;
-                            }
-                        }
-                    }
                     
-                    if (up && (left||right)) {
-                        if (settings.selected==0) { settings.selected=elt; elt.$html.addClass("s");} else {
+                    if (elt && elt.free) {
+                        if (settings.selected==0) {
+                            settings.selected=elt;
+                            elt.$html.addClass("s");
+                            $this.find("#tg1>div").addClass("running").parent()
+                                .css("top",elt.$html.offset().top-settings.twidth/20)
+                                .css("left",elt.$html.offset().left-settings.twidth/8)
+                                .css("z-index", elt.zindex+1)
+                                .show();
+                        }
+                        else {
                             if (settings.selected.id!=elt.id) {
+                                
+                                elt.$html.addClass("s");
+                                $this.find("#tg2>div").addClass("running").parent()
+                                    .css("top",elt.$html.offset().top-settings.twidth/20)
+                                    .css("left",elt.$html.offset().left-settings.twidth/8)
+                                    .css("z-index", elt.zindex+1)
+                                    .show();
+                                        
                                 if (settings.selected.value==elt.value) {
-                                    settings.selected.active = false;
-                                    elt.active = false;
-                                    settings.selected.$html.detach();
-                                    elt.$html.detach();
+                                    
+                                    setTimeout(function() {
+                                        settings.selected.active = false;
+                                        elt.active = false;
+                                        
+                                        settings.selected.$html.animate({opacity:0}, 200, function() { $(this).detach(); });
+                                        elt.$html.animate({opacity:0}, 200, function() { $(this).detach(); });
+                                        helpers.clean($this);
+                                        
+                                        helpers.check($this);
+                                        
+                                    }, 1000);
                                     
                                     var finish=true;
                                     for (var i in settings.elts) { if (settings.elts[i].active) { finish=false; } }
-                                    if (finish) { settings.interactive = false; helpers.end($this); }
+                                    if (finish) {
+                                        settings.interactive = false;
+                                        setTimeout(function() { helpers.end($this); }, 1000); }
                                 }
-                                else { alert("wrong"); }
+                                else {
+                                    $this.find("#wrong").show().parent().show();
+                                    settings.selected.active = false;
+                                    setTimeout(function() {
+                                        helpers.clean($this);
+                                        $this.find("#wrong").hide().parent().hide();
+                                        settings.selected.active = true; }, 1000); 
+                                }
                             }
-                            settings.selected.$html.removeClass("s");
-                            settings.selected=0;
+                            else { helpers.clean($this); }
                         }                        
                     }
                 
@@ -216,6 +283,12 @@
             });
             
             return ret;
+        },
+        clean : function($this) {
+            var settings = helpers.settings($this);
+            $this.find(".mjtile.s").removeClass("s");
+            settings.selected=0;
+            $this.find(".target>div").removeClass("running").parent().hide();
         }
     };
 
@@ -231,7 +304,9 @@
                     score           : 5,
                     count           : 0,
                     elts            : [],
-                    selected        : 0
+                    selected        : 0,
+                    twidth          : 0,
+                    hints           : {}
                 };
 
                 return this.each(function() {
@@ -263,6 +338,19 @@
                 var $this = $(this) , settings = helpers.settings($this);
                 helpers.quit($this);
                 settings.context.onquit($this,{'status':'abort'});
+            },
+            clean: function() { helpers.clean($(this)); },
+            hint: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+                for (var i in settings.hints) {
+                    if (settings.hints[i].length>1) {
+                        settings.hints[i][0].$html.addClass("h");
+                        settings.hints[i][1].$html.addClass("h");
+                        if (--settings.score<0) { settings.score=0; }
+                        break;
+                    }
+                }
+                $this.find("#mask").hide();
             }
         };
 
