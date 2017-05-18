@@ -106,27 +106,38 @@
                 // Optional devmode
                 if (settings.dev) { $this.find("#devmode").show(); }
                 
-                switch (settings.tiles) {
-                    case "all" :
-                        for (var i=1; i<10; i++) for (var j=0; j<4; j++) {
-                            settings.elts.push(helpers.tile($this, { value:"bam0"+i }));
-                            settings.elts.push(helpers.tile($this, { value:"dot0"+i }));
-                            settings.elts.push(helpers.tile($this, { value:"num0"+i }));
-                        }
-                        for (var j=0; j<4; j++) {
-                            settings.elts.push(helpers.tile($this, { value:"east" }));
-                            settings.elts.push(helpers.tile($this, { value:"west" }));
-                            settings.elts.push(helpers.tile($this, { value:"south" }));
-                            settings.elts.push(helpers.tile($this, { value:"north" }));
-                            settings.elts.push(helpers.tile($this, { value:"summer", src:"summer0"+(j+1) }));
-                            settings.elts.push(helpers.tile($this, { value:"winter", src:"winter0"+(j+1) }));
-                            settings.elts.push(helpers.tile($this, { value:"red" }));
-                            settings.elts.push(helpers.tile($this, { value:"green" }));
-                            settings.elts.push(helpers.tile($this, { value:"gears" }));
-                        }
-                        
-                    break;    
+                if ($.isArray(settings.tiles)) {
+                    for (var i in settings.tiles) { settings.elts.push(helpers.tile($this, settings.tiles[i])); }
                 }
+                else {
+                    if (settings.tiles.indexOf("function")!=-1) {
+                        var tiles = eval('('+settings.tiles+')')();
+                        for (var i in tiles) { settings.elts.push(helpers.tile($this, tiles[i])); }
+                    }
+                    else
+                    switch (settings.tiles) {
+                        case "all" :
+                            for (var i=1; i<10; i++) for (var j=0; j<4; j++) {
+                                settings.elts.push(helpers.tile($this, { value:"bam0"+i, src:"bam0"+i }));
+                                settings.elts.push(helpers.tile($this, { value:"dot0"+i, src:"dot0"+i }));
+                                settings.elts.push(helpers.tile($this, { value:"num0"+i, src:"num0"+i }));
+                            }
+                            for (var j=0; j<4; j++) {
+                                settings.elts.push(helpers.tile($this, { value:"east", src:"east" }));
+                                settings.elts.push(helpers.tile($this, { value:"west", src:"west" }));
+                                settings.elts.push(helpers.tile($this, { value:"south", src:"south" }));
+                                settings.elts.push(helpers.tile($this, { value:"north", src:"north" }));
+                                settings.elts.push(helpers.tile($this, { value:"summer", src:"summer0"+(j+1) }));
+                                settings.elts.push(helpers.tile($this, { value:"winter", src:"winter0"+(j+1) }));
+                                settings.elts.push(helpers.tile($this, { value:"red", src:"red" }));
+                                settings.elts.push(helpers.tile($this, { value:"green", src:"green" }));
+                                settings.elts.push(helpers.tile($this, { value:"gears", src:"gears" }));
+                            }
+                            
+                        break;    
+                    }
+                }
+                
                 
                 // Sort
                 for (var i=0; i<50; i++) { settings.elts.sort(function() { return Math.random()>0.5; }); }
@@ -208,7 +219,6 @@
             var ret = {
                 id          : "t"+(settings.count++),
                 value       : _data.value,
-                src         : _data.src?_data.src:_data.value,
                 $html       : 0,
                 free        : false,
                 pos         : [0,0,0],
@@ -217,9 +227,19 @@
             };
             
             ret.$html=$("<div class='mjtile' id='"+ret.id+"'>"+
-                            "<img src='res/img/asset/mahjong/"+ret.src+".svg' alt='' />"+
+                            "<img src='res/img/asset/mahjong/"+(_data.src?_data.src:"void")+".svg' alt='' />"+
+                            "<div class='img'></div>"+
+                            "<div class='txt'><div></div></div>"+
+                            "<div class='sub'><div></div></div>"+
                             "<div class='hg'></div>"+
                         "</div>");
+            
+            if (_data.img) { ret.$html.find(".img").append("<img src='"+_data.img+"' alt=''/>").show(); }
+            if (_data.txt) { ret.$html.find(".txt>div").css("font-size",(_data.txtfont?_data.txtfont:1)+"em")
+                                      .append(_data.txt).parent().show(); }
+            if (_data.sub) { ret.$html.find(".sub>div").css("font-size",(_data.subfont?_data.subfont:1)+"em")
+                                      .append(_data.sub).parent().show(); }
+            
             ret.$html.bind("mousedown touchstart", function(_event) {
                 if (settings.interactive) {
                     var elt=0;
@@ -246,24 +266,21 @@
                                     .show();
                                         
                                 if (settings.selected.value==elt.value) {
-                                    
+                                    settings.selected.active = false;
+                                    elt.active = false;
+                                        
                                     setTimeout(function() {
-                                        settings.selected.active = false;
-                                        elt.active = false;
                                         
                                         settings.selected.$html.animate({opacity:0}, 200, function() { $(this).detach(); });
                                         elt.$html.animate({opacity:0}, 200, function() { $(this).detach(); });
                                         helpers.clean($this);
                                         
-                                        helpers.check($this);
-                                        
                                     }, 1000);
                                     
                                     var finish=true;
                                     for (var i in settings.elts) { if (settings.elts[i].active) { finish=false; } }
-                                    if (finish) {
-                                        settings.interactive = false;
-                                        setTimeout(function() { helpers.end($this); }, 1000); }
+                                    if (finish) { settings.interactive = false; setTimeout(function() { helpers.end($this); }, 1000); }
+                                    else        { helpers.check($this); }
                                 }
                                 else {
                                     $this.find("#wrong").show().parent().show();
