@@ -257,17 +257,41 @@
                         }
                         var e = value.split(" ");
                         var def = settings.def[e[0]];
+                        
                         if (def) {
 
                             var $elt = $this.find("#elt"+e[0]), oldleft = 0, oldtop;
+                            var type = def.attr?def.attr.type:"img";
 
+                            var url="";
+                            if (e.length>1) { url = def.url[e[1]]; }
+                            if (url.indexOf("$")!=-1) {
+                                try { url = eval(url.replace(reg,"settings.data.")+";"); }
+                                catch (e) { alert("error with: "+url); }
+                            }
+                            
                             if ($elt.length) {
                                 oldleft     = $elt.css("left");
                                 oldtop      = $elt.css("top");
-                                if (e.length>1) { $elt.find("img").attr("src",def.img[e[1]]); }
-                            }
-                            else { $elt = $(helpers.imgfromdef(def.img[e[1]], e[0], def.attr)); $this.find("#board").append($elt); }
 
+                                
+                                switch(type) {
+                                    case "frame":   $elt.replace($(helpers.framefromdef($this, url, e[0], def.attr)));   break;
+                                    case "text":    $elt.replace($(helpers.textfromdef($this, e[0], def.attr)));        break;
+                                    default:        if (e.length>1) { $elt.find("img").attr("src",url); }     break;
+                                }
+                            }
+                            else {
+                                switch(type) {
+                                    case "frame":   $elt = $(helpers.framefromdef($this, url, e[0], def.attr));   break;
+                                    case "text":    $elt = $(helpers.textfromdef($this, e[0], def.attr));                   break;
+                                    default:        $elt = $(helpers.imgfromdef($this, url, e[0], def.attr));     break;
+                                }
+                                
+                                $this.find("#board").append($elt);
+                            }
+
+                            // UPDATE POSITION
                             var leftv= (elt.attr && elt.attr.left)? elt.attr.left : ( (def.attr && def.attr.left)?def.attr.left:"" );
                             var topv= (elt.attr && elt.attr.top)? elt.attr.top : ( (def.attr && def.attr.top)?def.attr.top:"" );
                             
@@ -282,6 +306,7 @@
 
                             if (leftv)  { $elt.css("left", leftv); }
                             if (topv)   { $elt.css("top", topv); }
+                            
                             
                             $elt.unbind("mousedown touchstart");
                             if (elt.attr&&elt.attr.onclick) {
@@ -349,7 +374,8 @@
                 }
             }
         },
-        imgfromdef: function(_img, _id, _attr) {
+        imgfromdef: function($this, _url, _id, _attr) {
+            var settings    = helpers.settings($this);
             var style="";
             if (_attr&&_attr.width)       { style+="width:"+_attr.width+"em;" }
             if (_attr&&_attr.height)      { style+="height:"+_attr.height+"em;" }
@@ -357,7 +383,38 @@
             if (_attr&&_attr.index)       { style+="z-index:"+_attr.index+";" }
             if (_attr&&_attr.size)        { style+="font-size:"+_attr.size+"em;" }
             elt = "<div "+(_attr&&_attr["class"]?"class='"+_attr["class"]+"' ":"")+"id='elt"+_id+"'"+
-                    (style?" style='"+style+"'":"")+"><img src='"+_img+"'/></div>";
+                    (style?" style='"+style+"'":"")+"><img src='"+_url+"'/></div>";
+            return elt;
+            
+        },
+        textfromdef: function($this, _id, _attr) {
+            var settings    = helpers.settings($this);
+            var style="";
+            if (_attr&&_attr.opacity)     { style+="opacity:"+_attr.opacity+";" }
+            if (_attr&&_attr.index)       { style+="z-index:"+_attr.index+";" }
+            if (_attr&&_attr.size)        { style+="font-size:"+_attr.size+"em;" }
+            if (_attr&&_attr.color)       { style+="color:"+_attr.color+";" }
+            
+            var value = _attr.value;
+            if (value.indexOf("$")!=-1) {
+                try { value = eval(value.replace(reg,"settings.data.")+";"); }
+                catch (e) { alert("error with: "+value); }
+            }
+                            
+            elt = "<div "+(_attr&&_attr["class"]?"class='"+_attr["class"]+"' ":"")+"id='elt"+_id+"'"+
+                    (style?" style='"+style+"'":"")+">"+value+"</div>";
+            return elt;
+            
+        },
+        framefromdef: function($this, _url, _id, _attr) {
+            var settings    = helpers.settings($this);
+            var style="width:8em;height:6em;";
+            if (_attr&&_attr.opacity)     { style+="opacity:"+_attr.opacity+";" }
+            if (_attr&&_attr.index)       { style+="z-index:"+_attr.index+";" }
+            if (_attr&&_attr.size)        { style+="font-size:"+_attr.size+"em;" }
+                            
+            elt = "<div "+(_attr&&_attr["class"]?"class='"+_attr["class"]+"' ":"")+"id='elt"+_id+"'"+
+                    " style='"+style+"'><iframe style='width:8.1em;height:6em;border:0;' src='"+_url+"'></iframe></div>";
             return elt;
             
         },
@@ -414,12 +471,12 @@
                     var $html=$(html);
                     $html.children("input").change(function() { $(this).closest("#devdefpanel").find("#savedef").addClass("s"); });
                     
-                    for (var j in _elt.img)  { $html.append(helpers.devmode.devdef.img (j, _elt.img[j]));  }
+                    for (var j in _elt.url)  { $html.append(helpers.devmode.devdef.url (j, _elt.url[j]));  }
                     for (var j in _elt.attr) { $html.append(helpers.devmode.devdef.attr(j, _elt.attr[j])); }
                     
                     $html.children("#addimg").bind("mousedown touchstart", function(event) {
                         $(this).closest("#devdefpanel").find("#savedef").addClass("s");
-                        $(this).closest(".elt").addClass("s").append(helpers.devmode.devdef.img("name", "url"));
+                        $(this).closest(".elt").addClass("s").append(helpers.devmode.devdef.url("name", "url"));
                         event.preventDefault();
                     });
                     $html.children("#addattr").bind("mousedown touchstart", function(event) {
@@ -439,7 +496,7 @@
                     
                     return $html;
                 },
-                img: function(_name, _value) {
+                url: function(_name, _value) {
                     var html="<div class='eltimg toggle'>"
                     html+="<input class='label' value=\""+_name+"\"/>";
                     html+="<input class='value' value=\""+_value+"\"/>";
@@ -461,7 +518,7 @@
                         $(this).closest(".elt").find(".eltattr").each(function() {
                             def[$(this).find('.label').val()] = $(this).find(".value").val();
                         });
-                        $(this).closest("#devpanel").find("#devexport").html(helpers.imgfromdef($(this).prev().val(), "x", def));
+                        $(this).closest("#devpanel").find("#devexport").html(helpers.imgfromdef($(this).closest(".novel"),$(this).prev().val(), "x", def));
                         event.preventDefault();
                     });
                     
@@ -514,15 +571,15 @@
                     var def={};
                     $this.find("#devdefpanel>.content .elt").each(function() {
                         var elt     = {};
-                        var img     = {};
+                        var url     = {};
                         var attr    = {};
                         var id      = $(this).find(".label.eltdata").val();
                         var text    = $(this).find(".value.eltdata").val();
                         if (text) { elt.text = text; }
-                        $(this).find(".eltimg").each(function() { img[$(this).find(".label").val()] = $(this).find(".value").val(); });
+                        $(this).find(".eltimg").each(function() { url[$(this).find(".label").val()] = $(this).find(".value").val(); });
                         $(this).find(".eltattr").each(function() { attr[$(this).find(".label").val()] = $(this).find(".value").val(); });
                         
-                        if (img)  { elt.img = img; }
+                        if (url)  { elt.url = url; }
                         if (attr) { elt.attr = attr; }
                         def[id]=elt;
                     });
