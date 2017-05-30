@@ -114,9 +114,11 @@
 
                 $this.find("#ops .a.s").draggable({ containment:$this, helper:"clone", appendTo:$this.find("#lines")});
                 helpers.addline($this,$this.find("#code #lines"));
-
-                helpers.screen.init($this);
-
+                
+                setTimeout(function() {
+                    helpers.screen.init($this);
+                }, 100);
+                    
                 // Locale handling
 
                 if (settings.locale) { $.each(settings.locale, function(id,value) {

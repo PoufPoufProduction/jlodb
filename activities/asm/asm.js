@@ -266,14 +266,17 @@
                 settings.data.$this = $this;
                 settings.data.random = settings.random;
 
-                helpers.loader.speed($this);
-
-                helpers.process.init(settings.data);
-                helpers.memory.init(settings.data);
-                helpers.memory.clear(settings.data);
-                helpers.screen.init($this);
-                helpers.process.display(settings.data);
-                helpers.stdout.splash($this);
+                setTimeout(function() {
+                    helpers.loader.speed($this);
+                    helpers.process.init(settings.data);
+                    helpers.memory.init(settings.data);
+                    helpers.memory.clear(settings.data);
+                    helpers.screen.init($this);
+                    helpers.process.display(settings.data);
+                    helpers.stdout.splash($this);
+                }, 100);
+                
+                
                 if ($.isArray(settings.exercice)) {
                     $this.find("#exercice").html("");
                     for (var i in settings.exercice) {
