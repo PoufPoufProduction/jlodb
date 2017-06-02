@@ -15,6 +15,7 @@
         move        : true,                                     // Move after key
         keypad      : "num",                                    // The keypad
         number      : 1,                                        // Number of exercices
+        fontex      : 1,                                        // Font ex
         errratio    : 1,                                        // Error ratio
         debug       : true                                      // Debug mode
     };
@@ -131,10 +132,12 @@
             if (!settings.exercice)        { $this.addClass("noex"); }
             if (!settings.definition)      { $this.addClass("nodef"); }
 
+            $this.find("#exercice>div").css("font-size",settings.fontex+"em");
             if (settings.exercice) {
-                if ($.isArray(settings.exercice)) { $this.find("#exercice").html(helpers.format(settings.exercice[settings.id])); }
-                else                              { $this.find("#exercice").html(helpers.format(settings.exercice)); }
+                if ($.isArray(settings.exercice)) { $this.find("#exercice>div").html(helpers.format(settings.exercice[settings.id])); }
+                else                              { $this.find("#exercice>div").html(helpers.format(settings.exercice)); }
             }
+            
 
             // BUILD TABLE
             var rbut = 0.9;
