@@ -800,7 +800,7 @@ var nodemathtype = { final:1, rootonly:2, commutative :4, associative:8 };
                               else      { settings.root=helpers.editor.insert($this,true, $.extend(true, {},_value));
                                           helpers.editor.display($this); helpers.mathml($this); }
                             }
-                else        { ret = settings.root.clone(); }
+                else        { ret = (settings.root && settings.root.clone ? settings.root.clone():0); }
                 return ret;
             },
             text: function() {  var $this = $(this), settings = helpers.settings($this); return helpers.text($(this)); },

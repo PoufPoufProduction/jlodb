@@ -27,6 +27,7 @@
         checkempty  : false,                            // Do not valid if empty cells
         reference   : "A1",                             // reference value
         po          : {},                               // localisation
+        nocellref   : false,                            // Cell pointer
         dev         : false,                            // Editor mode
         debug       : true                              // Debug mode
     };
@@ -161,6 +162,7 @@
                     if (vNode.subtype=="ref") { vClass+=" "+vNode.id; isRef = true;}
                     $this.find("#esource").append("<div class='"+vClass+" "+vNode.type+"' id='"+i+"'><div class='label'>"+vNode.label()+"</div></div>");
                 }
+                if (settings.nocellref) { $this.find("#echange").detach(); }
                 $this.find(".ea").draggable({containment:$this, helper:"clone", appendTo:$this});
 
 
@@ -320,7 +322,7 @@
                         settings.sheet[j][i].result = helpers.value($this,(i+1),(j+1),"result","");
                         settings.sheet[j][i].opt    = helpers.value($this,(i+1),(j+1),"opt","");
                         
-                        if (settings.sheet[j][i].type=="math") {
+                        if (settings.sheet[j][i].type=="math" && settings.sheet[j][i].value) {
                             settings.sheet[j][i].value = $this.find("#editor").editor("tonode", settings.sheet[j][i].value);
                         }
                     }
@@ -1089,7 +1091,9 @@
                         for (var j=0; j<settings.size[1]; j++) for (var i=0; i<settings.size[0]; i++) {
                             var r = settings.sheet[j][i];
                             if (r.result.toString().length) {
-                                if (r.result.toString()!=r.value.toString()) {
+                                var uservalue = r.value;
+                                if (r.type=="math") { uservalue = $this.find("#c"+(i+1)+"x"+(j+1)).text(); }
+                                if (r.result.toString()!=uservalue.toString()) {
                                     error++;
                                     $this.find("#c"+(i+1)+"x"+(j+1)).addClass("wrong");
                                 }
