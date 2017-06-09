@@ -215,6 +215,7 @@
                             }
                             settings.ballid++;
                             
+                            /*
                             if (settings.fx) {
                                 var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?event.originalEvent.touches[0]:event;
                                 var x           = vEvent.clientX-$this.offset().left;
@@ -225,6 +226,7 @@
                                     .show();
                                 setTimeout(function(){$this.find("#fx>div").removeClass("running").parent().hide(); },500);
                             }
+                            */
                         
                         }
                     }
@@ -294,6 +296,15 @@
             settings.ballid = 0;
 
             var data = settings.data[settings.id], val, i;
+            
+            if (settings.svgclass) {
+                $(settings.svg.root()).attr("class",$.isArray(settings.svgclass)?settings.svgclass[settings.puzzleid]:settings.svgclass);
+            }
+            
+            $(".b", settings.svg.root()).each(function() {
+                var tmp = $(this).attr("class");
+                $(this).attr("class",tmp.replace(" wrong",""));
+            });
 
             if (data.init) {
                 settings.status = [];
@@ -368,7 +379,14 @@
                 var data = settings.data[settings.id], result = data.result, wrongs = 0;
                 for (var i=0; i<13; i++) {
                     var $v = $("#val2 #c"+i, settings.svg.root());
-                    if ($v.text()!=(result%10).toString()) { wrongs++; $v.attr("class","err"); }
+                    if ($v.text()!=(result%10).toString()) {
+                        wrongs++;
+                        $v.attr("class","err");
+                        $("#c"+i+" .b", settings.svg.root()).each(function() {
+                            var tmp = $(this).attr("class");
+                            $(this).attr("class",tmp+" wrong");
+                        });
+                    }
                     result=Math.floor(result/10);
                 }
                 settings.id++;

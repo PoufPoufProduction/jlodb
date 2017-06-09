@@ -3,14 +3,16 @@
 
 <defs>
 <style>
-    text        { font-size:10px;text-anchor:middle;font-weight:bold;fill:#332920; }
-    text.err    { fill:red; }
-    .b          { fill:#663020;stroke:#160903;stroke-width:0.5;cursor:move; }
-    .b.tgt      { fill:yellow; }
-    .b.up.tgt   { fill:yellow; }
-    .b.up       { fill:gray; }
-
-    .b.m        { fill:red; }
+    svg#abacus text         { font-size:10px;text-anchor:middle;font-weight:bold;fill:#332920; }
+    svg#abacus text.err     { fill:red !important; }
+    svg#abacus .b           { fill:#663020;stroke:#160903;stroke-width:0.5;cursor:move; }
+    svg#abacus .b.tgt       { fill:yellow; }
+    svg#abacus .b.up.tgt    { fill:yellow; }
+    svg#abacus .b.up        { fill:gray; }
+    svg#abacus .b.wrong     { fill:red !important; }
+    svg#abacus .b.m         { fill:green; }
+    svg#abacus #val2 text   { fill:gray; } 
+    svg#abacus.nohint #val2 { display:none; } 
 </style>
 </defs>
 <g transform="translate(6,3)">

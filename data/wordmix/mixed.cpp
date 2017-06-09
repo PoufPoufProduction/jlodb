@@ -148,7 +148,7 @@ int main(int argc, char * argv[])
 
                 if (newvalueisok) {
                     corpus.push_back(value);
-                    if (value.compare(name)) { values.insert(std::pair<std::string,std::string>(value,name)); }
+                    if (value.compare(icon)) { values.insert(std::pair<std::string,std::string>(value,icon)); }
                 }
             }
         }

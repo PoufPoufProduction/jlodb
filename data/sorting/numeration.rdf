@@ -471,5 +471,57 @@
         <dct:type>2</dct:type>
         <dct:alternative>ec1m</dct:alternative>
     </rdf:Description>
+    
+    <!-- roman number -->
+
+    <rdf:Description>
+        <dct:identifier>ro10</dct:identifier>
+        <dct:title xml:lang="fr-FR">Associer un nombre romain inférieur à 10 à sa valeur numérique.</dct:title>
+        <dct:description><![CDATA["class":"h12","gen":"function() { var roman=[[\\\"\\\", \\\"I\\\", \\\"II\\\", \\\"III\\\", \\\"IV\\\", \\\"V\\\", \\\"VI\\\", \\\"VII\\\", \\\"VIII\\\", \\\"IX\\\"]], val=[1+Math.floor(Math.random()*9)]; return [roman[0][val[0]], val[0]]; }","nbvalues":6,"number":3,"font":1.1,"len":10]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>ro3k</dct:alternative>
+        <dct:isPartOf>oddnum</dct:isPartOf>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>ro100</dct:identifier>
+        <dct:title xml:lang="fr-FR">Associer un nombre romain inférieur à 100 à sa valeur numérique.</dct:title>
+        <dct:description><![CDATA["class":"h12","gen":"function() { var roman=[[\\\"\\\", \\\"I\\\", \\\"II\\\", \\\"III\\\", \\\"IV\\\", \\\"V\\\", \\\"VI\\\", \\\"VII\\\", \\\"VIII\\\", \\\"IX\\\"], [\\\"\\\", \\\"X\\\", \\\"XX\\\", \\\"XXX\\\", \\\"XL\\\", \\\"L\\\", \\\"LX\\\", \\\"LXX\\\", \\\"LXXX\\\", \\\"XC\\\"]], val=[Math.floor(Math.random()*10), Math.floor(Math.random()*10)], value=val[0]+val[1]*10; if (!value) { val[0]++; value++; } return([roman[1][val[1]]+roman[0][val[0]], value]); }","nbvalues":6,"number":3,"font":1.1,"len":10]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>ro3k</dct:alternative>
+        <dct:isPartOf>oddnum</dct:isPartOf>
+    </rdf:Description>
+    
+
+    <rdf:Description>
+        <dct:identifier>ro1k</dct:identifier>
+        <dct:title xml:lang="fr-FR">Associer un nombre romain inférieur à 1 000 à sa valeur numérique.</dct:title>
+        <dct:description><![CDATA["class":"h12","gen":"function() { var roman=[[\\\"\\\", \\\"I\\\", \\\"II\\\", \\\"III\\\", \\\"IV\\\", \\\"V\\\", \\\"VI\\\", \\\"VII\\\", \\\"VIII\\\", \\\"IX\\\"], [\\\"\\\", \\\"X\\\", \\\"XX\\\", \\\"XXX\\\", \\\"XL\\\", \\\"L\\\", \\\"LX\\\", \\\"LXX\\\", \\\"LXXX\\\", \\\"XC\\\"],[\\\"\\\", \\\"C\\\", \\\"CC\\\", \\\"CCC\\\", \\\"CD\\\", \\\"D\\\", \\\"DC\\\", \\\"DCC\\\", \\\"DCCC\\\", \\\"CM\\\"]], val=[Math.floor(Math.random()*10), Math.floor(Math.random()*10), Math.floor(Math.random()*10)], value=val[0]+val[1]*10+val[2]*100; if (!value) { val[0]++; value++; } return([roman[2][val[2]]+roman[1][val[1]]+roman[0][val[0]], value]); }","nbvalues":6,"number":3,"font":1.1,"len":10]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>ro3k</dct:alternative>
+        <dct:isPartOf>oddnum</dct:isPartOf>
+    </rdf:Description>
+    
+
+    <rdf:Description>
+        <dct:identifier>ro3k</dct:identifier>
+        <dct:title xml:lang="fr-FR">Associer un nombre romain inférieur à 3 000 à sa valeur numérique.</dct:title>
+        <dct:description><![CDATA["class":"h12","gen":"function() { var roman=[[\\\"\\\", \\\"I\\\", \\\"II\\\", \\\"III\\\", \\\"IV\\\", \\\"V\\\", \\\"VI\\\", \\\"VII\\\", \\\"VIII\\\", \\\"IX\\\"], [\\\"\\\", \\\"X\\\", \\\"XX\\\", \\\"XXX\\\", \\\"XL\\\", \\\"L\\\", \\\"LX\\\", \\\"LXX\\\", \\\"LXXX\\\", \\\"XC\\\"],[\\\"\\\", \\\"C\\\", \\\"CC\\\", \\\"CCC\\\", \\\"CD\\\", \\\"D\\\", \\\"DC\\\", \\\"DCC\\\", \\\"DCCC\\\", \\\"CM\\\"], [\\\"\\\", \\\"M\\\", \\\"MM\\\"]], val=[Math.floor(Math.random()*10), Math.floor(Math.random()*10), Math.floor(Math.random()*10), Math.floor(Math.random()*3)], value=val[0]+val[1]*10+val[2]*100+val[3]*1000; if (!value) { val[0]++; value++; } return([roman[3][val[3]]+roman[2][val[2]]+roman[1][val[1]]+roman[0][val[0]], value]); }","nbvalues":6,"number":3,"font":1.1,"len":10]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>ro3k</dct:alternative>
+        <dct:isPartOf>oddnum</dct:isPartOf>
+    </rdf:Description>
 
 </rdf:RDF>

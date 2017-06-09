@@ -201,12 +201,15 @@
                 if (gen.values) { settings.values = gen.values; }
                 if (gen.id)     { settings.id = gen.id; }
                 if (gen.txt)    { settings.txt = gen.txt; }
+                if (gen.ttxt)   { settings.ttxt = gen.ttxt; }
                 if (gen.show)   { settings.show = gen.show; }
                 if (gen.decoys) { settings.decoys = gen.decoys; }
                 if (gen.add)    { settings.add = gen.add; }
+                if (gen.svgclass)    { settings.svgclass = gen.svgclass; }
+                if (gen.same)    { settings.same = gen.same; }
                 if (gen.init)	{ settings.init = $.extend(true,{},settings.init,gen.init);}
             }
-
+            
             // PREPARE THE SCREEN
             if (settings.svgclass) {
                 $(settings.svg.root()).attr("class",$.isArray(settings.svgclass)?settings.svgclass[settings.puzzleid]:settings.svgclass);
@@ -221,7 +224,7 @@
             }
             if (settings.ttxt) {
                 var txt = $.isArray(settings.ttxt)?settings.ttxt[settings.puzzleid]:settings.ttxt;
-                if (txt) { $this.find("#ttxt").html(helpers.format(txt)).parent().show(); }
+                if (txt) { $this.find("#ttxt").html(helpers.format(txt.toString())).parent().show(); }
             }
 
             // HIDE AND SHOW ELEMENT

@@ -674,7 +674,7 @@
             }
             var value = settings.calculator;
             if (value.length==0 || (value.length==1&&value[0]=='-')) { value="0"; }
-            $this.find("#screen").html(value);
+            $this.find("#screen>div").html(value);
         },
         reference: function($this, value) {
             var settings = helpers.settings($this);
@@ -844,7 +844,7 @@
                                         default:
                                             var value = c.value.toString();
                                             if (value.length==0 || (value.length==1&&value[0]=='-')) { value="0"; }
-                                            $this.find("#screen").html(value);
+                                            $this.find("#screen>div").html(value);
                                             break;
                                     }
                                     $this.find("#ppanel>div").hide();

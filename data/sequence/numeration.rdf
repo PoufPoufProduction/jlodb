@@ -1880,7 +1880,7 @@
     <rdf:Description>
         <dct:identifier>po1ka</dct:identifier>
         <dct:title xml:lang="fr-FR">Retrouver, sans contrainte de temps, l'unité d'une graduation dont l'échelle est variable.</dct:title>
-        <dct:description><![CDATA["time":0,"template":"template2.html","len":10,"input":{"digit":1,"values":[["1",1],["10",10]]},"gen":"function(){var ret=\\\"<div style='width:7em;height:1em;overflow:visible;'><svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 100 10'>\\\"; var offset=Math.floor(Math.random()*10),correct=[3.5,2,0.5,0],step=[1,10,100,1000],stepid=Math.floor(Math.random()*2)+1,first=Math.floor(Math.random()*((stepid==1)?98:8)),ball=Math.floor(Math.random()*20); for (var i=0; i<31; i++) { ret+=\\\"<line x1='\\\"+(5+i*3)+\\\"' y1='\\\"+(i%10==offset?2:3.5)+\\\"' x2='\\\"+(5+i*3)+\\\"' y2='\\\"+(i%10==offset?8:6.5)+\\\"' style='stroke:\\\"+(i%10==offset?\\\"black\\\":\\\"gray\\\")+\\\";stroke-width:.25'/>\\\"; } for (var i=0; i<3; i++) { ret+=\\\"<text x='\\\"+(i*30+offset*3+correct[stepid])+\\\"' y='1.5' style='font-size:4px;'>\\\"+(first+i)*step[stepid]+\\\"</text>\\\"; } ret+=\\\"<line x1='5' y1='5' x2='95' y2='5' style='stroke:black;stroke-width:.25'/><circle cy='5' cx='\\\"+(5+(offset+ball)*3)+\\\"' r='1.5' style='fill:red'/></svg></div>\\\"; return [ret, step[stepid-1]];}","class":"neg alpha p02"]]></dct:description>
+        <dct:description><![CDATA["time":0,"template":"template2.html","len":10,"input":{"attr":[1.2,2,1.2],"digit":1,"values":[["1",1],["10",10]]},"gen":"function(){var ret=\\\"<div style='width:7em;height:1em;overflow:visible;'><svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 100 10'>\\\"; var offset=Math.floor(Math.random()*10),correct=[3.5,2,0.5,0],step=[1,10,100,1000],stepid=Math.floor(Math.random()*2)+1,first=Math.floor(Math.random()*((stepid==1)?98:8)),ball=Math.floor(Math.random()*20); for (var i=0; i<31; i++) { ret+=\\\"<line x1='\\\"+(5+i*3)+\\\"' y1='\\\"+(i%10==offset?2:3.5)+\\\"' x2='\\\"+(5+i*3)+\\\"' y2='\\\"+(i%10==offset?8:6.5)+\\\"' style='stroke:\\\"+(i%10==offset?\\\"black\\\":\\\"gray\\\")+\\\";stroke-width:.25'/>\\\"; } for (var i=0; i<3; i++) { ret+=\\\"<text x='\\\"+(i*30+offset*3+correct[stepid])+\\\"' y='1.5' style='font-size:4px;'>\\\"+(first+i)*step[stepid]+\\\"</text>\\\"; } ret+=\\\"<line x1='5' y1='5' x2='95' y2='5' style='stroke:black;stroke-width:.25'/><circle cy='5' cx='\\\"+(5+(offset+ball)*3)+\\\"' r='1.5' style='fill:red'/></svg></div>\\\"; return [ret, step[stepid-1]];}","class":"neg alpha p02"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Quelle est l'unité de la graduation ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -2355,47 +2355,51 @@
     <!-- roman number -->
 
     <rdf:Description>
-        <dct:identifier>ro1</dct:identifier>
-        <dct:title xml:lang="fr-FR">Convertir un nombre romain composé d'1 chiffre</dct:title>
-        <dct:description><![CDATA["class":"h12","time":1,"len":4,"input":{"digit":1,"speed":5000},"gen":"function() { var roman=[[\\\"\\\", \\\"I\\\", \\\"II\\\", \\\"III\\\", \\\"IV\\\", \\\"V\\\", \\\"VI\\\", \\\"VII\\\", \\\"VIII\\\", \\\"IX\\\"]], val=[1+Math.floor(Math.random()*9)]; return([roman[0][val[0]], val[0]]); }"]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:identifier>ro10</dct:identifier>
+        <dct:title xml:lang="fr-FR">Convertir, sans contrainte de temps, un nombre romain inférieur à 10.</dct:title>
+        <dct:description><![CDATA["number":15,"class":"h12","time":0,"len":4,"input":{"digit":1,"speed":5000},"gen":"function() { var roman=[[\\\"\\\", \\\"I\\\", \\\"II\\\", \\\"III\\\", \\\"IV\\\", \\\"V\\\", \\\"VI\\\", \\\"VII\\\", \\\"VIII\\\", \\\"IX\\\"]], val=[1+Math.floor(Math.random()*9)]; return([roman[0][val[0]], val[0]]); }"]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>ro4</dct:alternative>
+        <dct:alternative>ro3k</dct:alternative>
+        <dct:isPartOf>oddnum</dct:isPartOf>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>ro2</dct:identifier>
-        <dct:title xml:lang="fr-FR">Convertir un nombre romain composé de 2 chiffres</dct:title>
-        <dct:description><![CDATA["class":"h12","time":2,"input":{"digit":2,"speed":5000},"gen":"function() { var roman=[[\\\"\\\", \\\"I\\\", \\\"II\\\", \\\"III\\\", \\\"IV\\\", \\\"V\\\", \\\"VI\\\", \\\"VII\\\", \\\"VIII\\\", \\\"IX\\\"], [\\\"\\\", \\\"X\\\", \\\"XX\\\", \\\"XXX\\\", \\\"XL\\\", \\\"L\\\", \\\"LX\\\", \\\"LXX\\\", \\\"LXXX\\\", \\\"XC\\\"]], val=[Math.floor(Math.random()*10), Math.floor(Math.random()*10)], value=val[0]+val[1]*10; if (!value) { val[0]++; value++; } return([roman[1][val[1]]+roman[0][val[0]], value]); }"]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:identifier>ro100</dct:identifier>
+        <dct:title xml:lang="fr-FR">Convertir, sans contrainte de temps, un nombre romain inférieur à 100.</dct:title>
+        <dct:description><![CDATA["number":15,"class":"h12","time":0,"input":{"digit":2,"speed":5000},"gen":"function() { var roman=[[\\\"\\\", \\\"I\\\", \\\"II\\\", \\\"III\\\", \\\"IV\\\", \\\"V\\\", \\\"VI\\\", \\\"VII\\\", \\\"VIII\\\", \\\"IX\\\"], [\\\"\\\", \\\"X\\\", \\\"XX\\\", \\\"XXX\\\", \\\"XL\\\", \\\"L\\\", \\\"LX\\\", \\\"LXX\\\", \\\"LXXX\\\", \\\"XC\\\"]], val=[Math.floor(Math.random()*10), Math.floor(Math.random()*10)], value=val[0]+val[1]*10; if (!value) { val[0]++; value++; } return([roman[1][val[1]]+roman[0][val[0]], value]); }"]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>ro4</dct:alternative>
+        <dct:alternative>ro3k</dct:alternative>
+        <dct:isPartOf>oddnum</dct:isPartOf>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>ro3</dct:identifier>
-        <dct:title xml:lang="fr-FR">Convertir un nombre romain composé de 3 chiffres</dct:title>
-        <dct:description><![CDATA["class":"h12","time":4,"input":{"digit":3,"speed":5000},"gen":"function() { var roman=[[\\\"\\\", \\\"I\\\", \\\"II\\\", \\\"III\\\", \\\"IV\\\", \\\"V\\\", \\\"VI\\\", \\\"VII\\\", \\\"VIII\\\", \\\"IX\\\"], [\\\"\\\", \\\"X\\\", \\\"XX\\\", \\\"XXX\\\", \\\"XL\\\", \\\"L\\\", \\\"LX\\\", \\\"LXX\\\", \\\"LXXX\\\", \\\"XC\\\"],[\\\"\\\", \\\"C\\\", \\\"CC\\\", \\\"CCC\\\", \\\"CD\\\", \\\"D\\\", \\\"DC\\\", \\\"DCC\\\", \\\"DCCC\\\", \\\"CM\\\"]], val=[Math.floor(Math.random()*10), Math.floor(Math.random()*10), Math.floor(Math.random()*10)], value=val[0]+val[1]*10+val[2]*100; if (!value) { val[0]++; value++; } return([roman[2][val[2]]+roman[1][val[1]]+roman[0][val[0]], value]); }","font":0.9]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:identifier>ro1k</dct:identifier>
+        <dct:title xml:lang="fr-FR">Convertir, sans contrainte de temps, un nombre romain inférieur à 1 000.</dct:title>
+        <dct:description><![CDATA["number":10,"class":"h12","time":0,"input":{"digit":3,"speed":5000},"gen":"function() { var roman=[[\\\"\\\", \\\"I\\\", \\\"II\\\", \\\"III\\\", \\\"IV\\\", \\\"V\\\", \\\"VI\\\", \\\"VII\\\", \\\"VIII\\\", \\\"IX\\\"], [\\\"\\\", \\\"X\\\", \\\"XX\\\", \\\"XXX\\\", \\\"XL\\\", \\\"L\\\", \\\"LX\\\", \\\"LXX\\\", \\\"LXXX\\\", \\\"XC\\\"],[\\\"\\\", \\\"C\\\", \\\"CC\\\", \\\"CCC\\\", \\\"CD\\\", \\\"D\\\", \\\"DC\\\", \\\"DCC\\\", \\\"DCCC\\\", \\\"CM\\\"]], val=[Math.floor(Math.random()*10), Math.floor(Math.random()*10), Math.floor(Math.random()*10)], value=val[0]+val[1]*10+val[2]*100; if (!value) { val[0]++; value++; } return([roman[2][val[2]]+roman[1][val[1]]+roman[0][val[0]], value]); }","font":0.9]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
-        <dct:alternative>ro4</dct:alternative>
+        <dct:alternative>ro3k</dct:alternative>
+        <dct:isPartOf>oddnum</dct:isPartOf>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>ro4</dct:identifier>
-        <dct:title xml:lang="fr-FR">Convertir un nombre romain composé de 4 chiffres</dct:title>
-        <dct:description><![CDATA["class":"h12","time":5,"input":{"digit":4,"speed":5000},"gen":"function() { var roman=[[\\\"\\\", \\\"I\\\", \\\"II\\\", \\\"III\\\", \\\"IV\\\", \\\"V\\\", \\\"VI\\\", \\\"VII\\\", \\\"VIII\\\", \\\"IX\\\"], [\\\"\\\", \\\"X\\\", \\\"XX\\\", \\\"XXX\\\", \\\"XL\\\", \\\"L\\\", \\\"LX\\\", \\\"LXX\\\", \\\"LXXX\\\", \\\"XC\\\"],[\\\"\\\", \\\"C\\\", \\\"CC\\\", \\\"CCC\\\", \\\"CD\\\", \\\"D\\\", \\\"DC\\\", \\\"DCC\\\", \\\"DCCC\\\", \\\"CM\\\"], [\\\"\\\", \\\"M\\\", \\\"MM\\\"]], val=[Math.floor(Math.random()*10), Math.floor(Math.random()*10), Math.floor(Math.random()*10), Math.floor(Math.random()*3)], value=val[0]+val[1]*10+val[2]*100+val[3]*1000; if (!value) { val[0]++; value++; } return([roman[3][val[3]]+roman[2][val[2]]+roman[1][val[1]]+roman[0][val[0]], value]); }","font":0.8]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:identifier>ro3k</dct:identifier>
+        <dct:title xml:lang="fr-FR">Convertir, sans contrainte de temps, un nombre romain inférieur à 3 000.</dct:title>
+        <dct:description><![CDATA["number":10,"class":"h12","time":0,"input":{"digit":4,"speed":5000},"gen":"function() { var roman=[[\\\"\\\", \\\"I\\\", \\\"II\\\", \\\"III\\\", \\\"IV\\\", \\\"V\\\", \\\"VI\\\", \\\"VII\\\", \\\"VIII\\\", \\\"IX\\\"], [\\\"\\\", \\\"X\\\", \\\"XX\\\", \\\"XXX\\\", \\\"XL\\\", \\\"L\\\", \\\"LX\\\", \\\"LXX\\\", \\\"LXXX\\\", \\\"XC\\\"],[\\\"\\\", \\\"C\\\", \\\"CC\\\", \\\"CCC\\\", \\\"CD\\\", \\\"D\\\", \\\"DC\\\", \\\"DCC\\\", \\\"DCCC\\\", \\\"CM\\\"], [\\\"\\\", \\\"M\\\", \\\"MM\\\"]], val=[Math.floor(Math.random()*10), Math.floor(Math.random()*10), Math.floor(Math.random()*10), Math.floor(Math.random()*3)], value=val[0]+val[1]*10+val[2]*100+val[3]*1000; if (!value) { val[0]++; value++; } return([roman[3][val[3]]+roman[2][val[2]]+roman[1][val[1]]+roman[0][val[0]], value]); }","font":0.8]]></dct:description>
+        <dct:extent>3</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>4</dct:type>
-        <dct:alternative>ro4</dct:alternative>
+        <dct:alternative>ro3k</dct:alternative>
+        <dct:isPartOf>oddnum</dct:isPartOf>
     </rdf:Description>
 
     <!-- NEGATIVE -->

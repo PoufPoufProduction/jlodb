@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.0" width="100%" height="100%" viewBox="0 0 160 90" id="classic">
+<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.0" width="100%" height="100%" viewBox="0 0 160 90" id="abacus">
 
 <defs>
 <style>
-    svg#classic text        { font-size:10px;text-anchor:middle;font-weight:bold;fill:#332920; }
-    svg#classic text.err    { fill:red; }
-    svg#classic .b          { fill:#663020;stroke:#160903;stroke-width:0.5;cursor:move; }
-    svg#classic .g          { fill:#306620; }
-    svg#classic .b.tgt      { fill:yellow; }
-    svg#classic .b.up.tgt   { fill:yellow; }
-    svg#classic .b.up       { fill:gray; }
-
-    svg#classic .b.m        { fill:red; }
+    svg#abacus text         { font-size:10px;text-anchor:middle;font-weight:bold;fill:#332920; }
+    svg#abacus text.err     { fill:red !important; }
+    svg#abacus .b           { fill:#663020;stroke:#160903;stroke-width:0.5;cursor:move; }
+    svg#abacus .b.tgt       { fill:yellow; }
+    svg#abacus .b.up.tgt    { fill:yellow; }
+    svg#abacus .b.up        { fill:gray; }
+    svg#abacus .b.wrong     { fill:red !important; }
+    svg#abacus .b.m         { fill:green; }
+    svg#abacus #val2 text   { fill:gray; } 
+    svg#abacus.nohint #val2 { display:none; } 
 </style>
 </defs>
 <g transform="translate(6,3)">
