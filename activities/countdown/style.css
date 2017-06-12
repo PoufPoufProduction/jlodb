@@ -1,4 +1,5 @@
 .countdown                                { background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat;}
+.countdown>div                            { height:12em; }
 .countdown div#splashex                   { background-image:url("../../res/img/banners/countdown.svg"); }
 .countdown div#splashex  h1               { position:absolute; top:51%; left:10%; font-size:1.5em; color:#432;}
 .countdown div#splashex #guide               { position:absolute; top:61%; left:10%; width:50%; color:#321;
@@ -12,6 +13,7 @@
 .countdown #header #result                { width:3.4em;  color:white;
                                             background-color:white; border-radius:.1em; text-align:center; font-weight:bold; }
 .countdown #header #result>div            { margin:.1em; height:1.1em; background-color:black;}
+.countdown.noresult #header #result     { display:none; }
 
 .countdown #board                        { margin-top:.2em; height:8em; width:100%; background-color:gray; font-size:1.2em; 
                                            background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat;}
@@ -51,7 +53,11 @@
 .countdown #keypad #bg1            { background-image:url("../../res/img/asset/fx/target02.svg"); font-size:3em; position:absolute; 
                                      width:1em; height:1em; top:-0.5em; left:-0.5em; font-size:2.4em; }
 
-.countdown .ui-draggable-dragging         { cursor:none !important; background-color:gray; color:white; }
+.countdown .t.ui-draggable-dragging         { cursor:none !important; background-color:gray; color:white; }
+.countdown #legend                     { position:absolute; font-size:.4em; top:78%; left:0; width:98%; height:20%; opacity:0.95; z-index:4;
+                                     background-image:url("../../res/img/default/pattern/grid01.svg"); background-repeat:repeat; 
+                                     padding:.1em 1em; border:.2em solid gray; border-width:.2em 0 .2em 0; cursor:move; display:none; }
+                                     
 
 
 .countdown #effects                       { width:100%; height:100%; position:absolute; top:0; left:0; background-color:rgba(0,0,0,0);

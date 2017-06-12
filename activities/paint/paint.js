@@ -5,7 +5,10 @@
         label       : "Paint",                                  // The activity label
         template    : "template.html",                          // Activity's html template
         css         : "style.css",                              // Activity's css style sheet
-        url         : "",                                       // The svg element
+        url         : "",                                       // The board as svg url, html url or element
+        board       : "",                                       // The board content
+        boardsize   : 1,                                        // The board font-size
+        mode        : "class",                                  // Fill mone [class,content]
         lang        : "en-US",                                  // Current localization
         nbcolor     : 2,                                        // Number of colors
         fontex      : 1,                                        // The font-size multiplicator
@@ -98,13 +101,24 @@
             svg:function($this) {
                 var settings = helpers.settings($this),debug = "";
                 if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
-                var elt= $("<div id='svg'></div>").appendTo($this.find("#board"));
-                elt.svg();
-                settings.svg = elt.svg('get');
+                
+                if (settings.url.indexOf(".html")!=-1) {
+                    var templatepath = settings.url+debug;
+                    $this.find("#board").load( templatepath, function(response, status, xhr) { helpers.loader.build($this); });
+                }
+                else if (settings.url.indexOf(".svg")!=-1) {
+                    var elt= $("<div id='svg'></div>").appendTo($this.find("#board"));
+                    elt.svg();
+                    settings.svg = elt.svg('get');
 
-                settings.svg.load('res/img/'+settings.url + debug,
-                    { addTo: true, changeSize: true, onLoad:function() { helpers.loader.build($this); }
-                });
+                    settings.svg.load('res/img/'+settings.url + debug,
+                        { addTo: true, changeSize: true, onLoad:function() { helpers.loader.build($this); }
+                    });
+                }
+                else {
+                    $this.find("#board").html(settings.url);
+                    helpers.loader.build($this);
+                }
             },
             build: function($this) {
                 var settings = helpers.settings($this);
@@ -126,7 +140,16 @@
                     $this.find("#sources").html("");
                     for (var i=0; i<source.length; i++) {
                         var s = source[i];
-                        var $html=$("<div id='s"+s[0]+"' style='color:"+s[3]+";background-color:"+s[2]+";'>"+s[1]+"</div>");
+                        var $html;
+                        
+                        if (settings.mode=="content" && s.length>4) {
+                            $html = $("<div id='s"+s[0]+"' style='color:"+s[3]+";background-color:"+s[2]+";'></div>");
+                            $html.append("<div class='val2'>"+s[4]+"</div>");
+                            $html.append("<div class='val1'>"+(s.length>5?s[5]:s[1])+"</div>");
+                        }
+                        else {
+                            $html = $("<div id='s"+s[0]+"' style='color:"+s[3]+";background-color:"+s[2]+";'>"+s[1]+"</div>");
+                        }
                         $this.find("#sources").append($html);
                         
                         $html.bind('touchstart mousedown', function(event) {
@@ -135,7 +158,7 @@
                             if (settings.interactive) {
                                 $this.find("#sources>div").removeClass("s");
                                 $(this).attr("class","s");
-                                settings.color = [parseInt($(this).attr("id").substr(1)),-1];
+                                settings.color = [$(this).attr("id").substr(1),-1];
                             }
                             event.preventDefault();
                         });
@@ -149,20 +172,23 @@
                 }
                 else {
                     for (var i=0; i<settings.nbcolor; i++) {
-                        var $elt = $("#"+source[0]+" #"+source[1]+i, settings.svg.root());
-                        $elt.bind('touchstart mousedown', function(event) {
-                            var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
-                                    event.originalEvent.touches[0]:event;
-                            if (settings.interactive) {
-                                $("#"+source[0]+" .s", settings.svg.root()).attr("class","");
-                                $(this).attr("class","s");
-                                settings.color = [parseInt($(this).attr("id").substr(source[1].length)),-1];
-                            }
-                            event.preventDefault();
-                        });
+                        if (settings.svg) {
+                            var $elt = $("#"+source[0]+" #"+source[1]+i, settings.svg.root());
+                            $elt.bind('touchstart mousedown', function(event) {
+                                var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
+                                        event.originalEvent.touches[0]:event;
+                                if (settings.interactive) {
+                                    $("#"+source[0]+" .s", settings.svg.root()).attr("class","");
+                                    $(this).attr("class","s");
+                                    settings.color = [parseInt($(this).attr("id").substr(source[1].length)),-1];
+                                }
+                                event.preventDefault();
+                            });
+                        }
                     }
                     if (typeof(settings.selected) != "undefined") {
-                        $("#"+source[0]+" #"+source[1]+settings.selected, settings.svg.root()).attr("class","s");
+                        
+                        if (settings.svg) { $("#"+source[0]+" #"+source[1]+settings.selected, settings.svg.root()).attr("class","s"); }
                         settings.color = [settings.selected,-1];
                     }
                 }
@@ -171,7 +197,6 @@
                                     .bind('touchend touchleave mouseup mouseleave', function(_event) { settings.elt=0; settings.down=false; _event.preventDefault();});
 
                 $this.find("#exercice #content").css("font-size",settings.fontex+"em");
-
                 helpers.build($this);
 
                 // Locale handling
@@ -182,15 +207,39 @@
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
+        board: {
+            text: function($this){
+                var settings    = helpers.settings($this);
+                var html        = "<div class='word'>";
+                var r           = $.isArray(settings.result)?settings.result[0]:settings.result;
+                
+                settings.number = 1;
+                    
+                for (var i in r) {
+                    if (r[i]==' ')  { html+="</div><div class='c'></div><div class='word'>"; }
+                    else            {
+                        var val = r[i];
+                        if (settings.source) { for (var s in settings.source) { if (settings.source[s][0]==r[i]) { val=settings.source[s][1]; }} }
+                        var font=1;
+                        if (val.length>1) { font-=val.length*0.1; }
+                        html+="<div><div class='label' style='font-size:"+font+"em;'>"+val+"</div><div class='c'></div></div>";
+                    }
+                }
+                $this.find("#board").addClass("text")
+                     .html("<div id='canvas'  style='font-size:"+settings.boardsize+"em;'>"+html+"</div></div>");
+            }
+        },
         build: function($this) {
             var settings = helpers.settings($this);
 
             for (var i=0; i<settings.result.length; i++) {
-                var vClass=$("#"+settings.canvas+" #c"+i, settings.svg.root()).attr("class");
-                if (vClass) {
-                    vClass=vClass.replace(" wrong","");
-                    if (settings.remove) { vClass=vClass.replace(/ c[0-9]/g,""); }
-                    $("#"+settings.canvas+" #c"+i, settings.svg.root()).attr("class",vClass);
+                if (settings.svg) {
+                    var vClass=$("#"+settings.canvas+" #c"+i, settings.svg.root()).attr("class");
+                    if (vClass) {
+                        vClass=vClass.replace(" wrong","");
+                        if (settings.remove) { vClass=vClass.replace(/ c[0-9]/g,""); }
+                        $("#"+settings.canvas+" #c"+i, settings.svg.root()).attr("class",vClass);
+                    }
                 }
             }
 
@@ -205,16 +254,22 @@
                 if (vValue.t)        { settings.t = vValue.t; }
                 if (vValue.legend)   { settings.legend = vValue.legend; }
             }
+            
+            if (helpers.board[settings.board]) { helpers.board[settings.board]($this); }
+            else {
+            }
 
             var t = settings.t;
             if (!t && settings.values) { number=settings.values.length; t = settings.values[settings.id%settings.values.length].t; }
             if (t) {
-                $("text.t", settings.svg.root()).each(function(_index) {
-                    if (_index<t.length) {
-                        if ($.isArray(t)) { $(this).text(t[_index]); }
-                        else { $(this).text(t[_index].charCodeAt(0)>60?t[_index].charCodeAt(0)-55:t[_index]); }
-                    }
-                });
+                if (settings.svg) {
+                    $("text.t", settings.svg.root()).each(function(_index) {
+                        if (_index<t.length) {
+                            if ($.isArray(t)) { $(this).text(t[_index]); }
+                            else { $(this).text(t[_index].charCodeAt(0)>60?t[_index].charCodeAt(0)-55:t[_index]); }
+                        }
+                    });
+                }
             }
             
             if (settings.legend) {
@@ -236,17 +291,30 @@
                 });
             }
 
-            var svgClass = $.isArray(settings.svgClass)?settings.svgClass[settings.id%settings.svgClass.length]:settings.svgClass;
-            $this.find("svg").attr("class",svgClass);
+            // SVGCLASS
+            if (settings.svg) { 
+                var svgClass = $.isArray(settings.svgClass)?settings.svgClass[settings.id%settings.svgClass.length]:settings.svgClass;
+                $this.find("svg").attr("class",svgClass);
+            }
 
-            $("."+settings.toggle, settings.svg.root()).unbind('touchmove mousemove');
+            // UNBIND
+            if (settings.svg) { $("."+settings.toggle, settings.svg.root()).unbind('touchmove mousemove'); }
+            else              { $this.find("#board ."+settings.toggle).unbind('touchmove mousemove'); }
+            
+            // HANDLE CANVAS
             var canvas = settings.canvas;
             if ($.isArray(canvas)) {
                 for (var i in canvas) { $("#"+canvas[i], settings.svg.root()).css("display","none"); }
                 canvas = canvas[settings.id%canvas.length];
             }
-            $("#"+canvas, settings.svg.root()).css("display","inline");
-            $("#"+canvas+" ."+settings.toggle, settings.svg.root()).each(function(_index) {
+            if (settings.svg) { $("#"+canvas, settings.svg.root()).css("display","inline"); }
+            else              { $this.find("#board #"+canvas).css("display","inherit"); }
+            
+            var toggles = settings.svg?
+                $("#"+canvas+" ."+settings.toggle, settings.svg.root()):
+                $this.find("#board #"+canvas+" ."+settings.toggle);
+                
+            toggles.each(function(_index) {
                     $(this).unbind('touchmove mousemove touchstart mousedown');
                     $(this).bind('touchmove mousemove', function(_event) {
                         if (settings.interactive && settings.color[0]!=-1 && settings.down && settings.elt!=this) {
@@ -291,7 +359,10 @@
         result: function($this) {
             var result="", settings = helpers.settings($this);
             var canvas = $.isArray(settings.canvas)?settings.canvas[settings.id%settings.canvas.length]:settings.canvas;
-            $("#"+canvas+" ."+settings.toggle, settings.svg.root()).each(function(_index) {
+            var $elts;
+            if (settings.svg) { $elts = $("#"+canvas+" ."+settings.toggle, settings.svg.root()); }
+            else              { $elts = $this.find("#board #"+canvas+" ."+settings.toggle); }
+            $elts.each(function(_index) {
                 var val = $(this).attr("class").substr(-1);
                 if (val==settings.toggle) { val=" "; } else
                 if (settings.data&&settings.data[val]&&settings.data[val].skip) { val =" "; }
@@ -304,7 +375,7 @@
             var ok = true;
             var c = $elt.attr("class").substr(-1);
             if (c=="c") { c = -1; }
-
+            
             if (_begin) {
                 settings.color[1] = settings.color[0];
                 if (    c!=-1 && settings.data && settings.data[c] &&
@@ -316,7 +387,19 @@
                 if (c!=-1 && settings.data[c] && settings.data[c].notover && c!=settings.color[0]) { ok = false; }
             }
 
-            if (ok) { $elt.attr("class",settings.color[1]!=-1?"c c"+settings.color[1]:"c"); }
+            if (ok) {
+                $elt.attr("class",settings.color[1]!=-1?"c c"+settings.color[1]:"c");
+                if (settings.mode=="content") {
+                    var val="";
+                    if ( settings.color[1]!=-1 && settings.source ) {
+                        var s=0;
+                        for (var ss in settings.source) {
+                            if (settings.source[ss][0]==settings.color[1]) {s=settings.source[ss]; break; }}
+                        if (s.length>4) { val = s[4]; }
+                    }
+                    $elt.html(val);
+                }
+            }
         },
         dev: {
             picross: function($this, _result) {
@@ -468,8 +551,10 @@
                         var r = $.isArray(settings.result)?settings.result[settings.id%settings.result.length]:settings.result;
                         for (var i=0; i<r.length; i++) {
                             if (r[i]!=result[i]) {
-                                $("#"+canvas+" #c"+i, settings.svg.root()).attr("class",
-                                    $("#"+canvas+" #c"+i, settings.svg.root()).attr("class")+" wrong");
+                                var $elt;
+                                if (settings.svg) { $elt = $("#"+canvas+" #c"+i, settings.svg.root()); }
+                                else              { $elt = $this.find("#board #"+canvas+" #c"+i); }
+                                $elt.attr("class", $elt.attr("class")+" wrong");
                                 nbErrors++;
                             }
                         }

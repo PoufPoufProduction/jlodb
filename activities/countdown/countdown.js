@@ -8,9 +8,18 @@
         lang        : "en-US",                                  // Current localization
         number      : 2,                                        // Number of games in case of gen
         fontex      : 1,                                        // exercice font size
+        max         : 1000,                                      // max value
         debug       : true                                     // Debug mode
     };
 
+    var regExp = [
+        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
+        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
+        "\\\[br\\\]",                               "<br/>",
+        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
+        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>"
+    ];
+    
     // private methods
     var helpers = {
         // @generic: Check the context
@@ -36,6 +45,13 @@
             var settings = helpers.settings($this);
             helpers.unbind($this);
             settings.context.onquit($this,{'status':'success','score':settings.score});
+        },
+        format: function(_text) {
+            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
+                var vReg = new RegExp(regExp[i*2],"g");
+                _text = _text.replace(vReg,regExp[i*2+1]);
+            }
+            return _text;
         },
         loader: {
             css: function($this) {
@@ -197,12 +213,18 @@
                     case '/': ret = val[0]/val[1]; break;
                     default:  ret = val[0]*val[1]; break;
                 }
-                if (ret>0 && ret<1000 && ret==Math.floor(ret)) {
+                if (ret>0 && ret<settings.max && ret==Math.floor(ret)) {
                    settings.compute = Math.floor(ret);
                    $line.find(".c").addClass("cc");
                 }
                 else { $line.find(".c").removeClass("cc"); }
             }
+        },
+        gett: function(_id, _value) {
+            var f = 1, m = 0;
+            var l=_value.toString().length;
+            if (l>3) { f=1-0.2*Math.sqrt(l-3); m=0.05*Math.sqrt(l-3); }
+            return "<div class='t' id='"+_id+"'><div style='font-size:"+f+"em;margin-top:"+m+"em;'>"+_value+"<div></div>"
         },
         build: function($this) {
             var settings = helpers.settings($this);
@@ -211,7 +233,7 @@
             $this.find("#header #result>div").text(settings.data[settings.id].result);
             $this.find("#header #values").html("");
             for (var i in settings.data[settings.id].values) {
-                $this.find("#header #values").append("<div class='t' id='"+i+"'>"+settings.data[settings.id].values[i]+"</div>");
+                $this.find("#header #values").append(helpers.gett(i,settings.data[settings.id].values[i]));
             }
             $this.find(".t").draggable({ containment:$this, helper:"clone", appendTo:$this.find("#board"),
                             start:function() {} });
@@ -225,6 +247,12 @@
 
                 $this.find("#keypad").hide();
             });
+            
+            if (settings.legend) {
+                var legend = settings.legend;
+                if ($.isArray(legend)) { legend = legend[settings.id%legend.length]; }
+                $this.find("#legend>div").html(helpers.format(legend)).parent().draggable({axis:'y',containment:'parent'}).show();
+            }
 
             if (settings.op) {
                 $this.find("#keypad .k").hide();
@@ -310,7 +338,7 @@
 
                     $line = $(_elt).closest(".line");
                     var id= 100+parseInt($line.attr("id").substr(1));
-                    var $t = $("<div class='t' id='"+id+"'>"+settings.compute+"</div>");
+                    var $t = $(helpers.gett(id,settings.compute));
                     if (id<104) { $t.draggable({ containment:$this, helper:"clone", appendTo:$this.find("#board") }); }
                     $(_elt).parent().removeClass("cc").addClass("s").append($t);
 

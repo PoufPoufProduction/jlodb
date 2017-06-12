@@ -32,6 +32,8 @@
 .paint.full div#board                    { font-size:0.8em; top:5%; left:18%; border:.1em solid white;}
 .paint div#sources                  { display:none; width:2.7em; height:9.7em; margin-top:.5em;}
 .paint div#sources>div          { font-size:0.5em; width:5em; height:1.4em; border:.2em solid white; text-align:center; margin:.1em; cursor:pointer; float:left;}
+.paint.full div#sources .val1       { background-color:black; color:white; height:1.4em; }
+.paint.full div#sources .val2       { float:right; width:2em; height:1.4em; }
 .paint.square div#sources>div { font-size:2.5em; width:1em; height:1em; border-width:0.05em; margin:0.02em; }
 .paint div#sources>div.s { border-color:red; }
 .paint.full div#sources         { display:inherit; }
@@ -58,3 +60,10 @@
 .paint #legend .label       { background-color:gray; color:white; width:3em; text-align:center; float:left; }
 .paint #legend .value       { float:left; width:35em; margin-left:.5em; }
 .paint.legend2 #legend .value{ width:15em; }
+
+.paint #board.text            { background-image:url("../../res/img/default/pattern/grid01.svg"); background-repeat:repeat; }
+.paint #board .word             { float:left; margin-right:1em; }
+.paint #board .word>div         { float:left; margin:.1em; border:.05em solid black; height:2.4em; width:1em; border-radius:.2em; }
+.paint #board .word>div .label  { background-color:black; color:white; height:1.2em; text-align:center; }
+.paint #board .word>div .c      { background-color:white; height:1.2em; text-align:center; cursor:pointer; }
+.paint #board .word>div .c.wrong{ background-color:red; }
