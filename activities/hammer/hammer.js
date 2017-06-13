@@ -317,10 +317,18 @@
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 settings.interactive = true;
-                settings.timerid = setTimeout(function() { 
-                    settings.time.begin = Date.now();
-                    helpers.run($this);
-                }, settings.exercice?3000:1000);
+                $this.find("#countdown").show().animate({left:"75%"},500, function() {
+                    setTimeout(function() { $this.find("#countdown").html(3); }, 0);
+                    setTimeout(function() { $this.find("#countdown").html(2); }, 1000);
+                    setTimeout(function() { $this.find("#countdown").html(1); }, 2000);
+                    setTimeout(function() {
+                        $this.find("#countdown").animate({left:"120%"},500, function() {
+                            $(this).hide();
+                            settings.time.begin = Date.now();
+                            helpers.run($this);
+                        });
+                    }, 3000);
+                });
             },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);

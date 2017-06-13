@@ -222,7 +222,7 @@
                         if (settings.source) { for (var s in settings.source) { if (settings.source[s][0]==r[i]) { val=settings.source[s][1]; }} }
                         var font=1;
                         if (val.length>1) { font-=val.length*0.1; }
-                        html+="<div><div class='label' style='font-size:"+font+"em;'>"+val+"</div><div class='c'></div></div>";
+                        html+="<div><div class='label' style='font-size:"+font+"em;height:"+(1.2/font)+"em;'>"+val+"</div><div class='c'></div></div>";
                     }
                 }
                 $this.find("#board").addClass("text")
