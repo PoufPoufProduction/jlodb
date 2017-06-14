@@ -15,6 +15,7 @@
         fontex      : 1,                    // Exercice font
         highlight   : [],                   // Highlight cells
         exercice    : "",                   // Exercice
+        hint        : false,                // With hint for division
         debug       : true                  // Debug mode
     };
 
@@ -366,6 +367,17 @@
                 // BG
                 html+="<div class='bg' style='top:-0.1em;left:-0.1em;width:"+(wtmp[0]+0.2)+"em;height:"+(top+0.2)+"em;'></div>";
                 html+="<div class='bg' style='top:-0.1em;left:"+(wtmp[0]-0.95)+"em;width:"+(wtmp[1]+1.15)+"em;height:2.3em;'></div>";
+                
+                // HINT
+                if (settings.hint) {
+                    $this.find("#help").show();
+                    var hint="";
+                    for (var i=1; i<10; i++) {
+                        hint+="<div class='elt'><div class='label'>"+i+"×"+vOperation[1]+"</div>"+
+                              "<div class='result'>"+(i*vOperation[1])+"</div></div>";
+                    }
+                    $this.find("#phelp>div").html(hint);
+                }
             }
             // BUILD THE TABLE FOR ALL OPERATIONS BUT DIVISION
             else {

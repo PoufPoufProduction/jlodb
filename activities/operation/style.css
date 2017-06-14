@@ -78,3 +78,13 @@
 .operation #fill                        { z-index:3; margin-top:-.1em; margin-left:-.1em;}
 .operation #box                         { position:absolute; top:0; left:0; width:1em; height:2em; z-index:2; border:5px solid red;
                                           display:none; }
+                                          
+                                          
+.operation #help                 { position:absolute; font-size:.8em; cursor:pointer; width:1em; height:1em; top:80%; left:94.5%; z-index:99; display:none; }
+.operation #phelp                       { width:16em; height:12em; position:absolute;top:0;left:0; background-color:rgba(0,0,0,0.5);
+                                      z-index:2002; cursor:pointer; display:none; }
+.operation #phelp>div            { width:40%; height:98%; margin-top:.2em; margin-left:59%; background-color:rgba(255,255,255,0.8); }
+.operation #phelp #hquit         { cursor:pointer;}
+.operation #phelp .elt           { margin:.1em; font-size:.75em;  }
+.operation #phelp .elt .label    { float:left; width:4em; background-color:white; text-align:center; }
+.operation #phelp .elt .result    { float:left; width:4em; background-color:gray; color:white; text-align:center; }

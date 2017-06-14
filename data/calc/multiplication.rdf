@@ -3,6 +3,8 @@
          xmlns:dct="http://purl.org/dc/terms/">
   
     
+    <!-- WITH TABLE -->
+    
     <rdf:Description>
         <dct:identifier>t34</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver le résultat de la multiplication 3x4 en utilisant la table correspondante.</dct:title>
@@ -142,6 +144,62 @@
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
         <dct:source>res/img/svginventoryicons/hardware/calculator01.svg</dct:source>
     </rdf:Description>
+    
+    <!-- QUIZZ -->
+    
+    <rdf:Description>
+        <dct:identifier>q2</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver le résultat de multiplications par 2.</dct:title>
+        <dct:description><![CDATA["errratio":2,"class":"smallpanel","checkempty":true,"callen":4,"noneg":true,"nodec":true,"withtabs":false,"sp":0.1,"rows":{"row0":{"height":0.2}},"cols":{"col0":{"width":0.2},"col1":{"fixed":true,"width":8},"col2":{"width":5}},"withbars":false,"all":{"height":1.2},"gen":"function() { var cells={},v=[]; for (var i=0; i<10; i++) { v.push(['2×'+(i+1),2*(i+1)]); } for (var i=0; i<50; i++) { v.sort(function(){ return (Math.random()>0.5); }); }; for (var j=0;j<6;j++) { cells['c1x'+(j+1)]={'fixed':true,'value':v[j][0],'background':'#FEC','color':'#886'}; cells['c2x'+(j+1)]={'result':v[j][1]}; } return {'cells':cells}; }","font":1.5]]></dct:description>
+        <dct:description xml:lang="fr-FR">,"exercice":"[b]Complétez les multiplications proposées par l'exercice[/b]."</dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>q10o</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>q10o</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver le résultat de multiplications de deux nombres compris entre 1 et 10.</dct:title>
+        <dct:description><![CDATA["errratio":2,"class":"smallpanel","checkempty":true,"callen":4,"noneg":true,"nodec":true,"withtabs":false,"sp":0.1,"rows":{"row0":{"height":0.2}},"cols":{"col0":{"width":0.2},"col1":{"fixed":true,"width":8},"col2":{"width":5}},"withbars":false,"all":{"height":1.2},"gen":"function() { var cells={},v=[]; for (var j=0; j<10; j++) for (var i=0; i<10; i++) { v.push([(j+1)+'×'+(i+1),(j+1)*(i+1)]); } for (var i=0; i<50; i++) { v.sort(function(){ return (Math.random()>0.5); }); }; for (var j=0;j<6;j++) { cells['c1x'+(j+1)]={'fixed':true,'value':v[j][0],'background':'#FEC','color':'#886'}; cells['c2x'+(j+1)]={'result':v[j][1]}; } return {'cells':cells}; }","font":1.5]]></dct:description>
+        <dct:description xml:lang="fr-FR">,"exercice":"[b]Complétez les multiplications proposées par l'exercice[/b]."</dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>q10o</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+    </rdf:Description>
+    
+    
+    <rdf:Description>
+        <dct:identifier>qm01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Calculer, sans poser les opérations, des multiplications complexes.</dct:title>
+        <dct:description><![CDATA["errratio":2,"class":"smallpanel","checkempty":true,"callen":7,"noneg":true,"nodec":true,"withtabs":false,"sp":0.1,"rows":{"row0":{"height":0.2}},"cols":{"col0":{"width":0.2},"col1":{"fixed":true,"width":8},"col2":{"width":5}},"withbars":false,"all":{"height":1.2},"gen":"function() { var cells={},v=[['20×70',1400],['125×80',10000],['25×2×3',150],['9×40×5',1800],['4×1425×25×10',1425000],['17×25×2×4×5×2',34000]]; for (var i=0; i<50; i++) { v.sort(function(){ return (Math.random()>0.5); }); }; for (var j=0;j<6;j++) { cells['c1x'+(j+1)]={'fixed':true,'value':v[j][0],'background':'#FEC','color':'#886'}; cells['c2x'+(j+1)]={'result':v[j][1]}; } return {'cells':cells}; }","font":1.5]]></dct:description>
+        <dct:description xml:lang="fr-FR">,"exercice":"[b]Calculez sans poser les opérations[/b]."</dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>q10o</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>qm02</dct:identifier>
+        <dct:title xml:lang="fr-FR">A partir d'une égalité donné, calculer, sans poser les opérations, des multiplications complexes.</dct:title>
+        <dct:description><![CDATA["errratio":2,"class":"smallpanel","checkempty":true,"callen":7,"noneg":true,"nodec":true,"withtabs":false,"sp":0.1,"rows":{"row0":{"height":0.2}},"cols":{"col0":{"width":0.2},"col1":{"fixed":true,"width":8},"col2":{"width":5}},"withbars":false,"all":{"height":1.2},"gen":"function() { var cells={},v=[['190×56',10640],['560×1900',1064000],['56×2×19',2128],['19×25×46×4',106400],['19×2×10×28',10640],['8×56×25×19',21280]]; for (var j=0;j<6;j++) { cells['c1x'+(j+1)]={'fixed':true,'value':v[j][0],'background':'#FEC','color':'#886'}; cells['c2x'+(j+1)]={'result':v[j][1]}; } return {'cells':cells}; }","font":1.5]]></dct:description>
+        <dct:description xml:lang="fr-FR">,"exercice":"On donne l'égalité [red]19×56 = 1064[/red]. Sans poser d'opération, [b]donnez le résultats des calculs ci-dessus[/b]."</dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>q10o</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+    </rdf:Description>
+    
     
 
 </rdf:RDF>

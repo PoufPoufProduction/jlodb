@@ -121,7 +121,7 @@
     <rdf:Description>
         <dct:identifier>10</dct:identifier>
         <dct:title xml:lang="fr-FR">Effectuer la division entière de reste non nul dont les diviseurs sont inférieurs à 10.</dct:title>
-        <dct:description><![CDATA["time":20,"gen":"function() { var l =Math.floor(2+Math.random()*8), m = Math.floor(1+Math.random()*(l-1)); return \\\"\\\"+(m+l*Math.floor(2+Math.random()*8))+\\\"/\\\"+l; }"]]></dct:description>
+        <dct:description><![CDATA["gen":"function() { var l =Math.floor(2+Math.random()*8), m = Math.floor(1+Math.random()*(l-1)); return \\\"\\\"+(m+l*Math.floor(2+Math.random()*8))+\\\"/\\\"+l; }"]]></dct:description>
         <dct:extent>4</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>4</dct:educationLevel>
@@ -158,8 +158,8 @@
     <rdf:Description>
         <dct:identifier>50c</dct:identifier>
         <dct:title xml:lang="fr-FR">Effectuer la division de 35/13.</dct:title>
-        <dct:description><![CDATA["values":["35/13"],"number":1,"ratioerr":3,"highlight":{"green":[4,5],"blue":[6],"red":[9]},"target":[{"index":6,"block":"2"},{"index":4,"block":"2"},{"index":5,"block":"6"},{"index":9,"block":"9","box":[0,5]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Divisez 35 par 13. Toute la difficulté est ici de trouver la bonne valeur à mettre dans la case bleue. Il faut pour cela, trouver [b]la plus grande valeur possible qui multipliée par 13 donne un résultat inférieur à 35[/b]. Dans ce cas, cette valeur est [blue]2[/blue] ([blue]2[/blue]*13 = 26 et 26 < 35 tandis que [blue]3[/blue]*13 = 39 et 39 > 35)."],"fontex":0.3]]></dct:description>
+        <dct:description><![CDATA["hint":true,"values":["35/13"],"number":1,"ratioerr":3,"highlight":{"green":[4,5],"blue":[6],"red":[9]},"target":[{"index":6,"block":"2"},{"index":4,"block":"2"},{"index":5,"block":"6"},{"index":9,"block":"9","box":[0,5]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Toute la difficulté est ici de trouver la bonne valeur à mettre dans la case bleue. Il faut pour cela, trouver [b]la plus grande valeur possible qui multipliée par 13 donne un résultat inférieur à 35[/b].[br]En cliquant sur l'icône [b]?[/b] en bas à droite de l'écran, une table permet de voir que la valeur qui convient ici est [blue]2[/blue] car [blue]2[/blue]*13 = 26 et 26 < 35 tandis que [blue]3[/blue] est [b]trop grand[/b] car [blue]3[/blue]*13 = 39 et 39 > 35."],"fontex":0.25]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -171,8 +171,8 @@
     <rdf:Description>
         <dct:identifier>50d</dct:identifier>
         <dct:title xml:lang="fr-FR">Effectuer la division de 43/11.</dct:title>
-        <dct:description><![CDATA["values":["43/11"],"number":1,"ratioerr":3,"highlight":{"red":[8,9]},"target":[{"index":6,"block":"3"},{"index":4,"block":"3"},{"index":5,"block":"3"},{"index":9,"block":"0","box":[0,5]},{"index":8,"block":"1","box":[0,5]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Divisez 43 par 11. La valeur bleue est bonne, si le résultat de la multiplication en vert est inférieur au nombre à diviser et si le résultat de la soustraction (c'est à dire, le reste) est inférieur au diviseur 11. Ici, le reste devrait être [red]10[/red] et 10 est bien inférieur à 11."],"fontex":0.3]]></dct:description>
+        <dct:description><![CDATA["hint":true,"values":["43/11"],"number":1,"ratioerr":3,"highlight":{"red":[8,9]},"target":[{"index":6,"block":"3"},{"index":4,"block":"3"},{"index":5,"block":"3"},{"index":9,"block":"0","box":[0,5]},{"index":8,"block":"1","box":[0,5]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["La valeur bleue est bonne, si le résultat de la multiplication en vert est inférieur au nombre à diviser et si le résultat de la soustraction (c'est à dire, le reste) est inférieur au diviseur 11. Ici, le reste devrait être [red]10[/red] et 10 est bien inférieur à 11."],"fontex":0.3]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -184,18 +184,29 @@
     <rdf:Description>
         <dct:identifier>1020</dct:identifier>
         <dct:title xml:lang="fr-FR">Effectuer la division entière de reste non nul dont les diviseurs sont respectivement inférieurs à 20 et à 10.</dct:title>
-        <dct:description><![CDATA["time":20,"gen":"function() { var l =Math.floor(12+Math.random()*8), m = Math.floor(1+Math.random()*(l-1)); return \\\"\\\"+(m+l*Math.floor(2+Math.random()*8))+\\\"/\\\"+l; }"]]></dct:description>
+        <dct:description><![CDATA["number":3,"gen":"function() { var l =Math.floor(12+Math.random()*8), m = Math.floor(1+Math.random()*(l-1)); return \\\"\\\"+(m+l*Math.floor(2+Math.random()*8))+\\\"/\\\"+l; }"]]></dct:description>
         <dct:extent>4</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>4</dct:educationLevel>
         <dct:type>3</dct:type>
+        <dct:alternative>100</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>1020h</dct:identifier>
+        <dct:title xml:lang="fr-FR">En utilisant la table de multiplication, effectuer la division entière de reste non nul dont les diviseurs sont respectivement inférieurs à 20 et à 10.</dct:title>
+        <dct:description><![CDATA["hint":true,"number":3,"gen":"function() { var l =Math.floor(12+Math.random()*8), m = Math.floor(1+Math.random()*(l-1)); return \\\"\\\"+(m+l*Math.floor(2+Math.random()*8))+\\\"/\\\"+l; }"]]></dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>4</dct:educationLevel>
+        <dct:type>2</dct:type>
         <dct:alternative>100</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>1050</dct:identifier>
         <dct:title xml:lang="fr-FR">Effectuer la division entière de reste non nul dont les diviseurs sont respectivement inférieurs à 50 et à 10.</dct:title>
-        <dct:description><![CDATA["time":20,"gen":"function() { var l =Math.floor(42+Math.random()*8), m = Math.floor(1+Math.random()*(l-1)); return \\\"\\\"+(m+l*Math.floor(2+Math.random()*8))+\\\"/\\\"+l; }"]]></dct:description>
+        <dct:description><![CDATA["number":3,"gen":"function() { var l =Math.floor(42+Math.random()*8), m = Math.floor(1+Math.random()*(l-1)); return \\\"\\\"+(m+l*Math.floor(2+Math.random()*8))+\\\"/\\\"+l; }"]]></dct:description>
         <dct:extent>4</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>4</dct:educationLevel>
@@ -204,13 +215,35 @@
     </rdf:Description>
 
     <rdf:Description>
+        <dct:identifier>1050h</dct:identifier>
+        <dct:title xml:lang="fr-FR">En utilisant la table de multiplication, effectuer la division entière de reste non nul dont les diviseurs sont respectivement inférieurs à 50 et à 10.</dct:title>
+        <dct:description><![CDATA["hint":true,"number":3,"gen":"function() { var l =Math.floor(42+Math.random()*8), m = Math.floor(1+Math.random()*(l-1)); return \\\"\\\"+(m+l*Math.floor(2+Math.random()*8))+\\\"/\\\"+l; }"]]></dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>4</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>100</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
         <dct:identifier>050</dct:identifier>
         <dct:title xml:lang="fr-FR">Effectuer la division entière de reste nul dont les diviseurs sont inférieurs à 50.</dct:title>
-        <dct:description><![CDATA["time":0,"gen":"function() { var l =Math.floor(11+Math.random()*38); return \\\"\\\"+(l*Math.floor(11+Math.random()*38))+\\\"/\\\"+l; }"]]></dct:description>
+        <dct:description><![CDATA["number":3,"time":0,"gen":"function() { var l =Math.floor(11+Math.random()*38); return \\\"\\\"+(l*Math.floor(11+Math.random()*38))+\\\"/\\\"+l; }"]]></dct:description>
         <dct:extent>4</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>4</dct:educationLevel>
         <dct:type>3</dct:type>
+        <dct:alternative>100</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>050h</dct:identifier>
+        <dct:title xml:lang="fr-FR">En utilisant la table de multiplication, effectuer la division entière de reste nul dont les diviseurs sont inférieurs à 50.</dct:title>
+        <dct:description><![CDATA["hint":true,"number":3,"time":0,"gen":"function() { var l =Math.floor(11+Math.random()*38); return \\\"\\\"+(l*Math.floor(11+Math.random()*38))+\\\"/\\\"+l; }"]]></dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>4</dct:educationLevel>
+        <dct:type>2</dct:type>
         <dct:alternative>100</dct:alternative>
     </rdf:Description>
 
@@ -226,9 +259,20 @@
     </rdf:Description>
 
     <rdf:Description>
+        <dct:identifier>0100h</dct:identifier>
+        <dct:title xml:lang="fr-FR">En utilisant la table de multiplication, effectuer la division entière de reste nul dont les diviseurs sont inférieurs à 100.</dct:title>
+        <dct:description><![CDATA["hint":true,"time":0,"gen":"function() { var l =Math.floor(11+Math.random()*88); return \\\"\\\"+(l*Math.floor(11+Math.random()*88))+\\\"/\\\"+l; }","number":3]]></dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>4</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>100</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
         <dct:identifier>50</dct:identifier>
         <dct:title xml:lang="fr-FR">Effectuer la division entière de reste non nul dont les diviseurs sont inférieurs à 50.</dct:title>
-        <dct:description><![CDATA["time":20,"gen":"function() { var l =Math.floor(11+Math.random()*38), m = Math.floor(1+Math.random()*(l-1)); return \\\"\\\"+(m+l*Math.floor(11+Math.random()*38))+\\\"/\\\"+l; }"]]></dct:description>
+        <dct:description><![CDATA["number":3,"gen":"function() { var l =Math.floor(11+Math.random()*38), m = Math.floor(1+Math.random()*(l-1)); return \\\"\\\"+(m+l*Math.floor(11+Math.random()*38))+\\\"/\\\"+l; }"]]></dct:description>
         <dct:extent>4</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>4</dct:educationLevel>
@@ -237,9 +281,20 @@
     </rdf:Description>
 
     <rdf:Description>
+        <dct:identifier>50h</dct:identifier>
+        <dct:title xml:lang="fr-FR">En utilisant la table de multiplication, effectuer la division entière de reste non nul dont les diviseurs sont inférieurs à 50.</dct:title>
+        <dct:description><![CDATA["hint":true,"number":3,"gen":"function() { var l =Math.floor(11+Math.random()*38), m = Math.floor(1+Math.random()*(l-1)); return \\\"\\\"+(m+l*Math.floor(11+Math.random()*38))+\\\"/\\\"+l; }"]]></dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>4</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>100</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
         <dct:identifier>100</dct:identifier>
         <dct:title xml:lang="fr-FR">Effectuer la division entière de reste non nul dont les diviseurs sont inférieurs à 100.</dct:title>
-        <dct:description><![CDATA["time":20,"gen":"function() { var l =Math.floor(11+Math.random()*88), m = Math.floor(1+Math.random()*(l-1)); return \\\"\\\"+(m+l*Math.floor(11+Math.random()*88))+\\\"/\\\"+l; }","number":3]]></dct:description>
+        <dct:description><![CDATA["gen":"function() { var l =Math.floor(11+Math.random()*88), m = Math.floor(1+Math.random()*(l-1)); return \\\"\\\"+(m+l*Math.floor(11+Math.random()*88))+\\\"/\\\"+l; }","number":3]]></dct:description>
         <dct:extent>4</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>4</dct:educationLevel>
@@ -248,14 +303,59 @@
     </rdf:Description>
 
     <rdf:Description>
+        <dct:identifier>100h</dct:identifier>
+        <dct:title xml:lang="fr-FR">En utilisant la table de multiplication, effectuer la division entière de reste non nul dont les diviseurs sont inférieurs à 100.</dct:title>
+        <dct:description><![CDATA["hint":true,"gen":"function() { var l =Math.floor(11+Math.random()*88), m = Math.floor(1+Math.random()*(l-1)); return \\\"\\\"+(m+l*Math.floor(11+Math.random()*88))+\\\"/\\\"+l; }","number":3]]></dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>4</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>100</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
         <dct:identifier>500</dct:identifier>
         <dct:title xml:lang="fr-FR">Effectuer la division entière de reste non nul dont les diviseurs sont inférieurs à 500.</dct:title>
-        <dct:description><![CDATA["time":20,"gen":"function() { var l =Math.floor(11+Math.random()*488), m = Math.floor(1+Math.random()*(l-1)); return \\\"\\\"+(m+l*Math.floor(11+Math.random()*488))+\\\"/\\\"+l; }","number":3]]></dct:description>
+        <dct:description><![CDATA["gen":"function() { var l =Math.floor(11+Math.random()*488), m = Math.floor(1+Math.random()*(l-1)); return \\\"\\\"+(m+l*Math.floor(11+Math.random()*488))+\\\"/\\\"+l; }","number":2]]></dct:description>
         <dct:extent>4</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>4</dct:educationLevel>
         <dct:type>5</dct:type>
         <dct:alternative>100</dct:alternative>
     </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>500h</dct:identifier>
+        <dct:title xml:lang="fr-FR">En utilisant la table de multiplication, effectuer la division entière de reste non nul dont les diviseurs sont inférieurs à 500.</dct:title>
+        <dct:description><![CDATA["hint":true,"gen":"function() { var l =Math.floor(11+Math.random()*488), m = Math.floor(1+Math.random()*(l-1)); return \\\"\\\"+(m+l*Math.floor(11+Math.random()*488))+\\\"/\\\"+l; }","number":2]]></dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>4</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:alternative>100</dct:alternative>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>1k10</dct:identifier>
+        <dct:title xml:lang="fr-FR">Effectuer la division entière de reste non nul dont les diviseurs sont respectivement inférieurs à 10 et à 1000.</dct:title>
+        <dct:description><![CDATA["number":3,"gen":"function() { return \\\"\\\"+Math.floor(100+Math.random()*900)+\\\"/\\\"+Math.floor(2+Math.random()*8); }"]]></dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>4</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>100</dct:alternative>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>10k10</dct:identifier>
+        <dct:title xml:lang="fr-FR">Effectuer la division entière de reste non nul dont les diviseurs sont respectivement inférieurs à 10 et à 10000.</dct:title>
+        <dct:description><![CDATA["number":3,"gen":"function() { return \\\"\\\"+Math.floor(1000+Math.random()*9000)+\\\"/\\\"+Math.floor(2+Math.random()*8); }"]]></dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>4</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>100</dct:alternative>
+    </rdf:Description>
+    
 </rdf:RDF>
 
