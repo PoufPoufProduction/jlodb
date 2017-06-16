@@ -36,6 +36,10 @@ function mysqli_query_array($link, &$sql, &$id, &$warnings, $delete) {
 }
 
 function insertIntoDB($link,$activity,$key,$file,$lang,&$warnings, &$tags, $delete) {
+    
+    // ALLOW TIME FOR THIS OPERATION
+    set_time_limit(60);
+    
     // READ THE RDF FILE
     $rdf = file_get_contents("../data/".$activity."/".$file);
     $rdf = str_replace('rdf:','rdf_', $rdf);
