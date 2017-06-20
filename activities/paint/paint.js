@@ -18,6 +18,8 @@
         toggle      : "c",                                      // Toggle element class
         remove      : false,                                    // Remove previous painting
         number      : 1,                                        // Number of exercices
+        tag         : 0,
+        tagsize     : 1,
         scorearg    : 0,
         effects     : true,                                     // Show effects
         debug       : true                                     // Debug mode
@@ -231,28 +233,33 @@
         },
         build: function($this) {
             var settings = helpers.settings($this);
+            
+            if (settings.lastcanvas) {
+                    var vElt = 0;
+                    if (settings.svg) { vElt = $("#"+settings.lastcanvas+" ."+settings.toggle, settings.svg.root()); }
+                    else              { vElt = $this.find("#"+settings.lastcanvas+" ."+settings.toggle); }
 
-            for (var i=0; i<settings.result.length; i++) {
-                if (settings.svg) {
-                    var vClass=$("#"+settings.canvas+" #c"+i, settings.svg.root()).attr("class");
-                    if (vClass) {
-                        vClass=vClass.replace(" wrong","");
-                        if (settings.remove) { vClass=vClass.replace(/ c[0-9]/g,""); }
-                        $("#"+settings.canvas+" #c"+i, settings.svg.root()).attr("class",vClass);
-                    }
-                }
+                    vElt.each(function() {
+                        var vClass=$(this).attr("class");
+                        if (vClass) {
+                            vClass=vClass.replace(" wrong","");
+                            if (settings.remove) { vClass=vClass.replace(/ c[0-9]/g,""); }
+                            $(this).attr("class",vClass);
+                        }
+                    });
             }
 
             var exercice = settings.exercice;
             var tag      = settings.tag;
             if (settings.gen) {
-                var vValue = eval('('+settings.gen+')')();
+                var vValue = eval('('+settings.gen+')')($this, settings);
                 if (vValue.exercice) { exercice = vValue.exercice; }
-                if (vValue.arg)      { settings.scorearg = vValue.arg; }
                 if (vValue.tag)      { tag = vValue.tag; }
                 if (vValue.result)   { settings.result = vValue.result; }
                 if (vValue.t)        { settings.t = vValue.t; }
                 if (vValue.legend)   { settings.legend = vValue.legend; }
+                if (vValue.canvas)   { settings.canvas = vValue.canvas; }
+                settings.scorearg = vValue.scorearg;
             }
             
             if (helpers.board[settings.board]) { helpers.board[settings.board]($this); }
@@ -303,12 +310,16 @@
             
             // HANDLE CANVAS
             var canvas = settings.canvas;
-            if ($.isArray(canvas)) {
-                for (var i in canvas) { $("#"+canvas[i], settings.svg.root()).css("display","none"); }
-                canvas = canvas[settings.id%canvas.length];
+            if ($.isArray(canvas)) { canvas = canvas[settings.id%canvas.length]; }
+            if (settings.svg) {
+                if (settings.lastcanvas) { $("#"+settings.lastcanvas, settings.svg.root()).css("display","none"); }
+                $("#"+canvas, settings.svg.root()).css("display","inline");
             }
-            if (settings.svg) { $("#"+canvas, settings.svg.root()).css("display","inline"); }
-            else              { $this.find("#board #"+canvas).css("display","inherit"); }
+            else              {
+                if (settings.lastcanvas) {$("#"+settings.lastcanvas, settings.svg.root()).css("display","none"); }
+                $this.find("#board #"+canvas).css("display","inherit");
+            }
+            settings.lastcanvas = canvas;
             
             var toggles = settings.svg?
                 $("#"+canvas+" ."+settings.toggle, settings.svg.root()):
@@ -349,6 +360,7 @@
             }
             if (tag) {
                 if (tag.indexOf(".svg")!=-1) { tag="<div class='char'><img src='"+tag+"' alt=''/></div>"; }
+                else                         { tag="<div style='font-size:"+settings.tagsize+"em;'>"+tag+"</div>"; }
                 $this.find("#exercice #tag").html(tag).show();
             }
 
@@ -488,7 +500,8 @@
                     score           : 5,
                     color           : [-1,-1],
                     elt             : 0,
-                    id              : 0
+                    id              : 0,
+                    lastcanvas      : 0
                 };
 
                 return this.each(function() {

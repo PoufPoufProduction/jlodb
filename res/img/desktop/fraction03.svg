@@ -1,30 +1,77 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 
-<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="100%" height="100%" viewBox="0 0 640 480" title="0 0 640 480" id="slider01">
+<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="100%" height="100%" viewBox="0 0 640 480" title="0 0 640 480" id="fraction03">
 <defs id="defs2385">
     <style type="text/css">
-        #cursor     { cursor:pointer; }
-        .bg         { opacity:1;fill:#e2ce91;fill-opacity:1;stroke:none;marker:none; }
-        #template   { display:none; }
-        .f          { fill:#008080;stroke:#4ca6ae;stroke-width:10; }
-        .c0         { fill:white !important; }
-        .c1         { fill:red !important; }
-        .c          { fill:white; }
-
-        .fraction rect  { stroke:black;stroke-width:1px; }
-        .fraction   { display:none; }
-        .square4x4  #square4x4  { display:inline; }
+        svg#fraction03 #cursor              { cursor:pointer; }
+        svg#fraction03 #template            { display:none; }
+        svg#fraction03 .f                   { fill:#008080;stroke:#4ca6ae;stroke-width:10; }
+        svg#fraction03 .c0                  { fill:blue !important; }
+        svg#fraction03 .c1                  { fill:red !important; }
+        svg#fraction03 .c2                  { fill:green !important; }
+        svg#fraction03 .c                   { fill:white; }
+        svg#fraction03 .fraction rect       { stroke:black;stroke-width:1px; }
+        svg#fraction03 .fraction path       { stroke:black;stroke-width:1px; }
+        svg#fraction03 .fraction            { display:none; }
+        svg#fraction03 #source              { display:none; cursor:pointer; }
+        svg#fraction03.withsource #source   { display:inline; }
+        svg#fraction03.withsource #source .s rect   { stroke:black; stroke-width:2; }
+        svg#fraction03 #source text                 { text-anchor:start; font-size:15px; }
     </style>
 </defs>
 
-<rect width="640" height="480" x="0" y="0" id="background" class="bg"/>
 
-<g id="template">
-<path d="M 7.5,-172.12 L 7.5,-4.34 L 152.93,79.62 C 165.38,55.78 172.5,28.76 172.5,0 C 172.5,-92.77 99.29,-168.17 7.5,-172.12 z" id="d3" class="f"/>
-<path d="M 7.5,-172.12 L 7.5,-7.5 L 172.12,-7.5 C 168.28,-96.79 96.79,-168.28 7.5,-172.12 z" id="d4" class="f"/>
-<path d="M 7.5,-172.25 L 7.5,-13 L 145.40,-92.62 C 116.02,-138.62 65.52,-169.75 7.5,-172.25 z" id="d6" class="f"/>
-<path d="M 7.5,-172.12 L 7.5,-18.12 L 116.37,-127 C 87.40,-153.57 49.45,-170.31 7.5,-172.12 z" id="d8" class="f"/>
+<g id="source">
+    <g id="0" transform="translate(150,10)">
+        <rect x="0" y="0" width="24" height="24" class="c0"/>
+        <text transform="translate(30,15)" class="t"></text>
+    </g>
+    <g id="1" transform="translate(150,40)">
+        <rect x="0" y="0" width="24" height="24" class="c1"/>
+        <text transform="translate(30,15)"  class="t"></text>
+    </g>
+    <g id="2" transform="translate(150,70)">
+        <rect x="0" y="0" width="24" height="24" class="c2"/>
+        <text transform="translate(30,15)"  class="t"></text>
+    </g>
 </g>
+
+<g transform="translate(150,150)" id="square2x2" class="fraction">
+    <rect x="0" y="0" height="75" width="75" class="c"/>
+    <rect x="75" y="0" height="75" width="75" class="c"/>
+    <rect x="0" y="75" height="75" width="75" class="c"/>
+    <rect x="75" y="75" height="75" width="75" class="c"/>
+    <rect x="0" y="0" height="150" width="150" style="fill:none;stroke-width:2px;"/>
+</g>
+
+<g id="circle4" class="fraction">
+    <path class="c" d="M 80.074 258.527 A 120 120 0 0 0 80 260 A 120 120 0 0 0 200 380 A 120 120 0 0 0 201.970 379.902 L 201.970 258.527 L 80.074 258.527 z " />
+    <path class="c" d="M 200 140 A 120 120 0 0 0 80.052 258.527 L 201.970 258.527 L 201.970 140.097 A 120 120 0 0 0 200 140 z " />
+    <path class="c" d="M 201.970 258.527 L 201.970 379.929 A 120 120 0 0 0 320 260 A 120 120 0 0 0 319.925 258.527 L 201.970 258.527 z " />
+    <path class="c" d="M 201.970 140.058 L 201.970 258.527 L 319.947 258.527 A 120 120 0 0 0 201.970 140.058 z " />
+    <circle cx="200" cy="260" r="120" style="fill:none;stroke-width:2px;stroke:black;"/>
+ </g>
+ 
+ 
+<g transform="translate(200,100)" id="square2x3" class="fraction">
+    <rect x="0" y="0" height="75" width="75" class="c"/>
+    <rect x="75" y="0" height="75" width="75" class="c"/>
+    <rect x="0" y="75" height="75" width="75" class="c"/>
+    <rect x="75" y="75" height="75" width="75" class="c"/>
+    <rect x="0" y="150" height="75" width="75" class="c"/>
+    <rect x="75" y="150" height="75" width="75" class="c"/>
+    <rect x="0" y="0" height="225" width="150" style="fill:none;stroke-width:2px;"/>
+</g>
+ 
+ <g id="circle6" class="fraction">
+    <path class="c" d="M 80 259.998 A 120 120 0 0 0 80 260 A 120 120 0 0 0 140.052 363.830 L 200 259.998 L 80 259.998 z " />
+    <path class="c" d="M 140.076 156.205 A 120 120 0 0 0 80 259.998 L 200.001 259.998 L 140.076 156.205 z " />
+    <path class="c" d="M 200 140 A 120 120 0 0 0 140.076 156.205 L 200.001 260 L 259.947 156.169 A 120 120 0 0 0 200 140 z " />
+    <path class="c" d="M 259.947 156.169 L 200 260.001 L 320 260.001 A 120 120 0 0 0 320 260 A 120 120 0 0 0 259.947 156.169 z " />
+    <path class="c" d="M 199.998 260.001 L 259.923 363.794 A 120 120 0 0 0 320 260.001 L 199.998 260.001 z " />
+    <path class="c" d="M 199.998 260 L 140.052 363.830 A 120 120 0 0 0 200 380 A 120 120 0 0 0 259.923 363.794 L 199.998 260 z " />
+    <circle cx="200" cy="260" r="120" style="fill:none;stroke-width:2px;stroke:black;"/>
+ </g>
 
 <g transform="translate(200,100)" id="square2x4" class="fraction">
     <rect x="0" y="0" height="75" width="75" class="c"/>
@@ -36,6 +83,18 @@
     <rect x="0" y="225" height="75" width="75" class="c"/>
     <rect x="75" y="225" height="75" width="75" class="c"/>
     <rect x="0" y="0" height="300" width="150" style="fill:none;stroke-width:2px;"/>
+</g>
+
+<g id="circle8" class="fraction">
+    <path class="c" d="M 201.146 140.035 A 120 120 0 0 0 116.349 174.056 L 201.146 258.853 L 201.146 140.035 z "/>
+    <path class="c" d="M 80.113 258.853 A 120 120 0 0 0 115.146 344.853 L 201.146 258.853 L 80.113 258.853 z "/>
+    <path class="c" d="M 201.146 258.853 L 115.146 344.853 A 120 120 0 0 0 284.853 344.853 A 120 120 0 0 0 285.958 343.666 L 201.146 258.853 z "/>
+    <path class="c" d="M 201.146 258.853 L 201.146 379.966 A 120 120 0 0 0 284.853 344.853 A 120 120 0 0 0 285.958 343.666 L 201.146 258.853 z "/>
+    <path class="c" d="M 201.146 258.853 L 285.958 343.666 A 120 120 0 0 0 319.871 258.853 L 201.146 258.853 z "/>
+    <path class="c" d="M 201.751 140.013 A 120 120 0 0 0 201.146 140.035 L 201.146 258.853 L 284.853 175.146 A 120 120 0 0 0 201.751 140.013 z "/>
+    <path class="c" d="M 284.853 175.146 L 201.146 258.853 L 319.884 258.853 A 120 120 0 0 0 284.853 175.146 z "/>
+    <path class="c" d="M 116.349 174.056 A 120 120 0 0 0 115.146 175.146 A 120 120 0 0 0 80.113 258.853 L 201.146 258.853 L 116.349 174.056 z "/>
+    <circle cx="200" cy="260" r="120" style="fill:none;stroke-width:2px;stroke:black;"/>
 </g>
 
 <g transform="translate(200,100)" id="square3x4" class="fraction">
@@ -52,6 +111,22 @@
     <rect x="75" y="225" height="75" width="75" class="c"/>
     <rect x="150" y="225" height="75" width="75" class="c"/>
     <rect x="0" y="0" height="300" width="225" style="fill:none;stroke-width:2px;"/>
+</g>
+
+<g id="circle12" class="fraction">
+    <path class="c" d="M 96.169 200.052 A 120 120 0 0 0 80 259.998 L 200 259.998 L 96.169 200.052 z "/>
+    <path class="c" d="M 140.076 156.205 A 120 120 0 0 0 96.169 200.052 L 200.001 259.998 L 140.076 156.205 z "/>
+    <path class="c" d="M 200 140 A 120 120 0 0 0 140.076 156.205 L 200.001 259.998 L 200.001 140 A 120 120 0 0 0 200 140 z "/>
+    <path class="c" d="M 200.001 140 L 200.001 260 L 259.947 156.169 A 120 120 0 0 0 200.001 140 z "/>
+    <path class="c" d="M 259.947 156.169 L 200.001 260 L 303.794 200.076 A 120 120 0 0 0 259.947 156.169 z "/>
+    <path class="c" d="M 303.794 200.076 L 200.001 260.001 L 320 260.001 A 120 120 0 0 0 320 260 A 120 120 0 0 0 303.794 200.076 z "/>
+    <path class="c" d="M 200 260.001 L 303.830 319.947 A 120 120 0 0 0 320 260.001 L 200 260.001 z "/>
+    <path class="c" d="M 200 260.001 L 259.923 363.794 A 120 120 0 0 0 303.830 319.947 L 200 260.001 z "/>
+    <path class="c" d="M 199.998 260.001 L 199.998 380 A 120 120 0 0 0 200 380 A 120 120 0 0 0 259.923 363.794 L 199.998 260.001 z "/>
+    <path class="c" d="M 199.998 260 L 140.052 363.830 A 120 120 0 0 0 199.998 380 L 199.998 260 z "/>
+    <path class="c" d="M 199.998 260 L 96.205 319.923 A 120 120 0 0 0 140.052 363.830 L 199.998 260 z "/>
+    <path class="c" d="M 80 259.998 A 120 120 0 0 0 80 260 A 120 120 0 0 0 96.205 319.923 L 200 259.998 L 80 259.998 z " />
+    <circle cx="200" cy="260" r="120" style="fill:none;stroke-width:2px;stroke:black;"/>
 </g>
 
 <g transform="translate(200,100)" id="square4x4" class="fraction">
@@ -98,6 +173,51 @@
     <rect x="0" y="0" height="300" width="375" style="fill:none;stroke-width:2px;"/>
 </g>
 
+<g transform="translate(100,100)" id="square6x4" class="fraction">
+    <rect x="0" y="0" height="75" width="75" class="c"/>
+    <rect x="75" y="0" height="75" width="75" class="c"/>
+    <rect x="150" y="0" height="75" width="75" class="c"/>
+    <rect x="225" y="0" height="75" width="75" class="c"/>
+    <rect x="300" y="0" height="75" width="75" class="c"/>
+    <rect x="375" y="0" height="75" width="75" class="c"/>
+    <rect x="0" y="75" height="75" width="75" class="c"/>
+    <rect x="75" y="75" height="75" width="75" class="c"/>
+    <rect x="150" y="75" height="75" width="75" class="c"/>
+    <rect x="225" y="75" height="75" width="75" class="c"/>
+    <rect x="300" y="75" height="75" width="75" class="c"/>
+    <rect x="375" y="75" height="75" width="75" class="c"/>
+    <rect x="0" y="150" height="75" width="75" class="c"/>
+    <rect x="75" y="150" height="75" width="75" class="c"/>
+    <rect x="150" y="150" height="75" width="75" class="c"/>
+    <rect x="225" y="150" height="75" width="75" class="c"/>
+    <rect x="300" y="150" height="75" width="75" class="c"/>
+    <rect x="375" y="150" height="75" width="75" class="c"/>
+    <rect x="0" y="225" height="75" width="75" class="c"/>
+    <rect x="75" y="225" height="75" width="75" class="c"/>
+    <rect x="150" y="225" height="75" width="75" class="c"/>
+    <rect x="225" y="225" height="75" width="75" class="c"/>
+    <rect x="300" y="225" height="75" width="75" class="c"/>
+    <rect x="375" y="225" height="75" width="75" class="c"/>
+    <rect x="0" y="0" height="300" width="450" style="fill:none;stroke-width:2px;"/>
+</g>
+
+
+<g id="square2x2x2" class="fraction">
+    <g transform="translate(100,100)">
+        <rect x="0" y="0" height="75" width="75" class="c"/>
+        <rect x="75" y="0" height="75" width="75" class="c"/>
+        <rect x="0" y="75" height="75" width="75" class="c"/>
+        <rect x="75" y="75" height="75" width="75" class="c"/>
+        <rect x="0" y="0" height="150" width="150" style="fill:none;stroke-width:2px;"/>
+    </g>
+    <g transform="translate(300,100)">
+        <rect x="0" y="0" height="75" width="75" class="c"/>
+        <rect x="75" y="0" height="75" width="75" class="c"/>
+        <rect x="0" y="75" height="75" width="75" class="c"/>
+        <rect x="75" y="75" height="75" width="75" class="c"/>
+        <rect x="0" y="0" height="150" width="150" style="fill:none;stroke-width:2px;"/>
+    </g>
+</g>
 
 <g id="square2x4x2" class="fraction">
     <g transform="translate(100,100)">
@@ -124,47 +244,114 @@
     </g>
 </g>
 
-<g id="square4x4x2" class="fraction">
-    <g transform="translate(15,100)">
-        <rect x="0" y="0" height="75" width="75" class="c"/>
-        <rect x="75" y="0" height="75" width="75" class="c"/>
-        <rect x="150" y="0" height="75" width="75" class="c"/>
-        <rect x="225" y="0" height="75" width="75" class="c"/>
-        <rect x="0" y="75" height="75" width="75" class="c"/>
-        <rect x="75" y="75" height="75" width="75" class="c"/>
-        <rect x="150" y="75" height="75" width="75" class="c"/>
-        <rect x="225" y="75" height="75" width="75" class="c"/>
-        <rect x="0" y="150" height="75" width="75" class="c"/>
-        <rect x="75" y="150" height="75" width="75" class="c"/>
-        <rect x="150" y="150" height="75" width="75" class="c"/>
-        <rect x="225" y="150" height="75" width="75" class="c"/>
-        <rect x="0" y="225" height="75" width="75" class="c"/>
-        <rect x="75" y="225" height="75" width="75" class="c"/>
-        <rect x="150" y="225" height="75" width="75" class="c"/>
-        <rect x="225" y="225" height="75" width="75" class="c"/>
-        <rect x="0" y="0" height="300" width="300" style="fill:none;stroke-width:2px;"/>
+<g id="circle4x2" class="fraction">
+    <g>
+        <path class="c" d="M 80.074 258.527 A 120 120 0 0 0 80 260 A 120 120 0 0 0 200 380 A 120 120 0 0 0 201.970 379.902 L 201.970 258.527 L 80.074 258.527 z " />
+        <path class="c" d="M 200 140 A 120 120 0 0 0 80.052 258.527 L 201.970 258.527 L 201.970 140.097 A 120 120 0 0 0 200 140 z " />
+        <path class="c" d="M 201.970 258.527 L 201.970 379.929 A 120 120 0 0 0 320 260 A 120 120 0 0 0 319.925 258.527 L 201.970 258.527 z " />
+        <path class="c" d="M 201.970 140.058 L 201.970 258.527 L 319.947 258.527 A 120 120 0 0 0 201.970 140.058 z " />
+        <circle cx="200" cy="260" r="120" style="fill:none;stroke-width:2px;stroke:black;"/>
     </g>
-    <g transform="translate(325,100)">
+    <g transform="translate(300,0)">
+        <path class="c" d="M 80.074 258.527 A 120 120 0 0 0 80 260 A 120 120 0 0 0 200 380 A 120 120 0 0 0 201.970 379.902 L 201.970 258.527 L 80.074 258.527 z " />
+        <path class="c" d="M 200 140 A 120 120 0 0 0 80.052 258.527 L 201.970 258.527 L 201.970 140.097 A 120 120 0 0 0 200 140 z " />
+        <path class="c" d="M 201.970 258.527 L 201.970 379.929 A 120 120 0 0 0 320 260 A 120 120 0 0 0 319.925 258.527 L 201.970 258.527 z " />
+        <path class="c" d="M 201.970 140.058 L 201.970 258.527 L 319.947 258.527 A 120 120 0 0 0 201.970 140.058 z " />
+        <circle cx="200" cy="260" r="120" style="fill:none;stroke-width:2px;stroke:black;"/>
+    </g>
+ </g>
+
+<g id="square2x3x2" class="fraction">
+    <g transform="translate(100,100)">
         <rect x="0" y="0" height="75" width="75" class="c"/>
         <rect x="75" y="0" height="75" width="75" class="c"/>
-        <rect x="150" y="0" height="75" width="75" class="c"/>
-        <rect x="225" y="0" height="75" width="75" class="c"/>
         <rect x="0" y="75" height="75" width="75" class="c"/>
         <rect x="75" y="75" height="75" width="75" class="c"/>
-        <rect x="150" y="75" height="75" width="75" class="c"/>
-        <rect x="225" y="75" height="75" width="75" class="c"/>
         <rect x="0" y="150" height="75" width="75" class="c"/>
         <rect x="75" y="150" height="75" width="75" class="c"/>
-        <rect x="150" y="150" height="75" width="75" class="c"/>
-        <rect x="225" y="150" height="75" width="75" class="c"/>
+        <rect x="0" y="0" height="225" width="150" style="fill:none;stroke-width:2px;"/>
+    </g>
+    <g transform="translate(300,100)">
+        <rect x="0" y="0" height="75" width="75" class="c"/>
+        <rect x="75" y="0" height="75" width="75" class="c"/>
+        <rect x="0" y="75" height="75" width="75" class="c"/>
+        <rect x="75" y="75" height="75" width="75" class="c"/>
+        <rect x="0" y="150" height="75" width="75" class="c"/>
+        <rect x="75" y="150" height="75" width="75" class="c"/>
+        <rect x="0" y="0" height="225" width="150" style="fill:none;stroke-width:2px;"/>
+    </g>
+</g>
+ 
+ <g id="circle6x2" class="fraction">
+    <g>
+        <path class="c" d="M 80 259.998 A 120 120 0 0 0 80 260 A 120 120 0 0 0 140.052 363.830 L 200 259.998 L 80 259.998 z " />
+        <path class="c" d="M 140.076 156.205 A 120 120 0 0 0 80 259.998 L 200.001 259.998 L 140.076 156.205 z " />
+        <path class="c" d="M 200 140 A 120 120 0 0 0 140.076 156.205 L 200.001 260 L 259.947 156.169 A 120 120 0 0 0 200 140 z " />
+        <path class="c" d="M 259.947 156.169 L 200 260.001 L 320 260.001 A 120 120 0 0 0 320 260 A 120 120 0 0 0 259.947 156.169 z " />
+        <path class="c" d="M 199.998 260.001 L 259.923 363.794 A 120 120 0 0 0 320 260.001 L 199.998 260.001 z " />
+        <path class="c" d="M 199.998 260 L 140.052 363.830 A 120 120 0 0 0 200 380 A 120 120 0 0 0 259.923 363.794 L 199.998 260 z " />
+        <circle cx="200" cy="260" r="120" style="fill:none;stroke-width:2px;stroke:black;"/>
+    </g>
+    <g transform="translate(300,0)">
+        <path class="c" d="M 80 259.998 A 120 120 0 0 0 80 260 A 120 120 0 0 0 140.052 363.830 L 200 259.998 L 80 259.998 z " />
+        <path class="c" d="M 140.076 156.205 A 120 120 0 0 0 80 259.998 L 200.001 259.998 L 140.076 156.205 z " />
+        <path class="c" d="M 200 140 A 120 120 0 0 0 140.076 156.205 L 200.001 260 L 259.947 156.169 A 120 120 0 0 0 200 140 z " />
+        <path class="c" d="M 259.947 156.169 L 200 260.001 L 320 260.001 A 120 120 0 0 0 320 260 A 120 120 0 0 0 259.947 156.169 z " />
+        <path class="c" d="M 199.998 260.001 L 259.923 363.794 A 120 120 0 0 0 320 260.001 L 199.998 260.001 z " />
+        <path class="c" d="M 199.998 260 L 140.052 363.830 A 120 120 0 0 0 200 380 A 120 120 0 0 0 259.923 363.794 L 199.998 260 z " />
+        <circle cx="200" cy="260" r="120" style="fill:none;stroke-width:2px;stroke:black;"/>
+    </g>
+ </g>
+
+<g id="square2x4x2" class="fraction">
+    <g transform="translate(100,100)">
+        <rect x="0" y="0" height="75" width="75" class="c"/>
+        <rect x="75" y="0" height="75" width="75" class="c"/>
+        <rect x="0" y="75" height="75" width="75" class="c"/>
+        <rect x="75" y="75" height="75" width="75" class="c"/>
+        <rect x="0" y="150" height="75" width="75" class="c"/>
+        <rect x="75" y="150" height="75" width="75" class="c"/>
         <rect x="0" y="225" height="75" width="75" class="c"/>
         <rect x="75" y="225" height="75" width="75" class="c"/>
-        <rect x="150" y="225" height="75" width="75" class="c"/>
-        <rect x="225" y="225" height="75" width="75" class="c"/>
-        <rect x="0" y="0" height="300" width="300" style="fill:none;stroke-width:2px;"/>
+        <rect x="0" y="0" height="300" width="150" style="fill:none;stroke-width:2px;"/>
+    </g>
+    <g transform="translate(300,100)">
+        <rect x="0" y="0" height="75" width="75" class="c"/>
+        <rect x="75" y="0" height="75" width="75" class="c"/>
+        <rect x="0" y="75" height="75" width="75" class="c"/>
+        <rect x="75" y="75" height="75" width="75" class="c"/>
+        <rect x="0" y="150" height="75" width="75" class="c"/>
+        <rect x="75" y="150" height="75" width="75" class="c"/>
+        <rect x="0" y="225" height="75" width="75" class="c"/>
+        <rect x="75" y="225" height="75" width="75" class="c"/>
+        <rect x="0" y="0" height="300" width="150" style="fill:none;stroke-width:2px;"/>
     </g>
 </g>
 
+<g id="circle8x2" class="fraction">
+    <g>
+        <path class="c" d="M 201.146 140.035 A 120 120 0 0 0 116.349 174.056 L 201.146 258.853 L 201.146 140.035 z "/>
+        <path class="c" d="M 80.113 258.853 A 120 120 0 0 0 115.146 344.853 L 201.146 258.853 L 80.113 258.853 z "/>
+        <path class="c" d="M 201.146 258.853 L 115.146 344.853 A 120 120 0 0 0 284.853 344.853 A 120 120 0 0 0 285.958 343.666 L 201.146 258.853 z "/>
+        <path class="c" d="M 201.146 258.853 L 201.146 379.966 A 120 120 0 0 0 284.853 344.853 A 120 120 0 0 0 285.958 343.666 L 201.146 258.853 z "/>
+        <path class="c" d="M 201.146 258.853 L 285.958 343.666 A 120 120 0 0 0 319.871 258.853 L 201.146 258.853 z "/>
+        <path class="c" d="M 201.751 140.013 A 120 120 0 0 0 201.146 140.035 L 201.146 258.853 L 284.853 175.146 A 120 120 0 0 0 201.751 140.013 z "/>
+        <path class="c" d="M 284.853 175.146 L 201.146 258.853 L 319.884 258.853 A 120 120 0 0 0 284.853 175.146 z "/>
+        <path class="c" d="M 116.349 174.056 A 120 120 0 0 0 115.146 175.146 A 120 120 0 0 0 80.113 258.853 L 201.146 258.853 L 116.349 174.056 z "/>
+        <circle cx="200" cy="260" r="120" style="fill:none;stroke-width:2px;stroke:black;"/>
+    </g>
+    <g transform="translate(300,0)">
+        <path class="c" d="M 201.146 140.035 A 120 120 0 0 0 116.349 174.056 L 201.146 258.853 L 201.146 140.035 z "/>
+        <path class="c" d="M 80.113 258.853 A 120 120 0 0 0 115.146 344.853 L 201.146 258.853 L 80.113 258.853 z "/>
+        <path class="c" d="M 201.146 258.853 L 115.146 344.853 A 120 120 0 0 0 284.853 344.853 A 120 120 0 0 0 285.958 343.666 L 201.146 258.853 z "/>
+        <path class="c" d="M 201.146 258.853 L 201.146 379.966 A 120 120 0 0 0 284.853 344.853 A 120 120 0 0 0 285.958 343.666 L 201.146 258.853 z "/>
+        <path class="c" d="M 201.146 258.853 L 285.958 343.666 A 120 120 0 0 0 319.871 258.853 L 201.146 258.853 z "/>
+        <path class="c" d="M 201.751 140.013 A 120 120 0 0 0 201.146 140.035 L 201.146 258.853 L 284.853 175.146 A 120 120 0 0 0 201.751 140.013 z "/>
+        <path class="c" d="M 284.853 175.146 L 201.146 258.853 L 319.884 258.853 A 120 120 0 0 0 284.853 175.146 z "/>
+        <path class="c" d="M 116.349 174.056 A 120 120 0 0 0 115.146 175.146 A 120 120 0 0 0 80.113 258.853 L 201.146 258.853 L 116.349 174.056 z "/>
+        <circle cx="200" cy="260" r="120" style="fill:none;stroke-width:2px;stroke:black;"/>
+    </g>
+</g>
 
 <g id="square3x4x2" class="fraction">
     <g transform="translate(60,100)">
@@ -198,5 +385,41 @@
         <rect x="0" y="0" height="300" width="225" style="fill:none;stroke-width:2px;"/>
     </g>
 </g>
+
+
+<g id="circle12x2" class="fraction">
+    <g>
+        <path class="c" d="M 96.169 200.052 A 120 120 0 0 0 80 259.998 L 200 259.998 L 96.169 200.052 z "/>
+        <path class="c" d="M 140.076 156.205 A 120 120 0 0 0 96.169 200.052 L 200.001 259.998 L 140.076 156.205 z "/>
+        <path class="c" d="M 200 140 A 120 120 0 0 0 140.076 156.205 L 200.001 259.998 L 200.001 140 A 120 120 0 0 0 200 140 z "/>
+        <path class="c" d="M 200.001 140 L 200.001 260 L 259.947 156.169 A 120 120 0 0 0 200.001 140 z "/>
+        <path class="c" d="M 259.947 156.169 L 200.001 260 L 303.794 200.076 A 120 120 0 0 0 259.947 156.169 z "/>
+        <path class="c" d="M 303.794 200.076 L 200.001 260.001 L 320 260.001 A 120 120 0 0 0 320 260 A 120 120 0 0 0 303.794 200.076 z "/>
+        <path class="c" d="M 200 260.001 L 303.830 319.947 A 120 120 0 0 0 320 260.001 L 200 260.001 z "/>
+        <path class="c" d="M 200 260.001 L 259.923 363.794 A 120 120 0 0 0 303.830 319.947 L 200 260.001 z "/>
+        <path class="c" d="M 199.998 260.001 L 199.998 380 A 120 120 0 0 0 200 380 A 120 120 0 0 0 259.923 363.794 L 199.998 260.001 z "/>
+        <path class="c" d="M 199.998 260 L 140.052 363.830 A 120 120 0 0 0 199.998 380 L 199.998 260 z "/>
+        <path class="c" d="M 199.998 260 L 96.205 319.923 A 120 120 0 0 0 140.052 363.830 L 199.998 260 z "/>
+        <path class="c" d="M 80 259.998 A 120 120 0 0 0 80 260 A 120 120 0 0 0 96.205 319.923 L 200 259.998 L 80 259.998 z " />
+        <circle cx="200" cy="260" r="120" style="fill:none;stroke-width:2px;stroke:black;"/>
+    </g>
+    <g transform="translate(300,0)">
+        <path class="c" d="M 96.169 200.052 A 120 120 0 0 0 80 259.998 L 200 259.998 L 96.169 200.052 z "/>
+        <path class="c" d="M 140.076 156.205 A 120 120 0 0 0 96.169 200.052 L 200.001 259.998 L 140.076 156.205 z "/>
+        <path class="c" d="M 200 140 A 120 120 0 0 0 140.076 156.205 L 200.001 259.998 L 200.001 140 A 120 120 0 0 0 200 140 z "/>
+        <path class="c" d="M 200.001 140 L 200.001 260 L 259.947 156.169 A 120 120 0 0 0 200.001 140 z "/>
+        <path class="c" d="M 259.947 156.169 L 200.001 260 L 303.794 200.076 A 120 120 0 0 0 259.947 156.169 z "/>
+        <path class="c" d="M 303.794 200.076 L 200.001 260.001 L 320 260.001 A 120 120 0 0 0 320 260 A 120 120 0 0 0 303.794 200.076 z "/>
+        <path class="c" d="M 200 260.001 L 303.830 319.947 A 120 120 0 0 0 320 260.001 L 200 260.001 z "/>
+        <path class="c" d="M 200 260.001 L 259.923 363.794 A 120 120 0 0 0 303.830 319.947 L 200 260.001 z "/>
+        <path class="c" d="M 199.998 260.001 L 199.998 380 A 120 120 0 0 0 200 380 A 120 120 0 0 0 259.923 363.794 L 199.998 260.001 z "/>
+        <path class="c" d="M 199.998 260 L 140.052 363.830 A 120 120 0 0 0 199.998 380 L 199.998 260 z "/>
+        <path class="c" d="M 199.998 260 L 96.205 319.923 A 120 120 0 0 0 140.052 363.830 L 199.998 260 z "/>
+        <path class="c" d="M 80 259.998 A 120 120 0 0 0 80 260 A 120 120 0 0 0 96.205 319.923 L 200 259.998 L 80 259.998 z " />
+        <circle cx="200" cy="260" r="120" style="fill:none;stroke-width:2px;stroke:black;"/>
+    </g>
+</g>
+
+
 
 </svg>
