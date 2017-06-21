@@ -485,9 +485,9 @@
 
     <rdf:Description>
         <dct:identifier>a01</dct:identifier>
-        <dct:title xml:lang="fr-FR">Additioner des fractions [1/2+3/2].</dct:title>
+        <dct:title xml:lang="fr-FR">Additioner deux fractions [1/2+3/2].</dct:title>
         <dct:description><![CDATA["figure":"help/equation/frad.svg","font":1,"data":[{"value":"1/2+3/2"}],"source":[],"result":["2"],"top":168, "a":{"all":false,"move":1,"decompose":true,"fraction":true}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Il est possible d'ajouter deux fractions lorsque celle-ci ont le même dénominateur. Alors, seuls les numérateurs s'ajoutent. Ajoutez les 2 fractions et simplifiez le résultat ainsi obtenu."],"font":0.6]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Il est possible d'ajouter deux fractions lorsque celle-ci ont [red]le même dénominateur[/red]. [blue]Seuls les numérateurs s'ajoutent[/blue]. [b]Ajoutez[/b] les 2 fractions et [b]simplifiez[/b] le résultat ainsi obtenu.","fontex":0.8]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -495,6 +495,20 @@
         <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
         <dct:alternative>a05</dct:alternative>
     </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>a01s</dct:identifier>
+        <dct:title xml:lang="fr-FR">Additioner deux fractions [1/2+3/2].</dct:title>
+        <dct:description><![CDATA["figure":"help/equation/frad.svg","font":1,"data":[{"value":"1/2+3/2"}],"source":[],"result":["4/2"],"top":168, "a":{"all":false,"move":1,"fraction":true}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Il est possible d'ajouter deux fractions lorsque celle-ci ont [red]le même dénominateur[/red]. [blue]Seuls les numérateurs s'ajoutent[/blue]. [b]Ajoutez[/b] les 2 fractions pour obtenir le résultat de [b]quatre demis[/b].","fontex":0.8]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:alternative>a05</dct:alternative>
+    </rdf:Description>
+    
 
     <rdf:Description>
         <dct:identifier>a02</dct:identifier>
@@ -817,10 +831,10 @@
         <dct:identifier>f01</dct:identifier>
         <dct:title xml:lang="fr-FR">Résoudre des opérations sur les fractions [1+1/2].</dct:title>
         <dct:description><![CDATA["figure":"help/equation/1fr.svg","data":[{"value":"1+1/2"}],"source":[],"result":["3/2"],"top":168, "a":{"all":false,"move":1,"target":2,"delbracket":true,"fraction":true}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["La valeur 1 est le résultat de la division d'un nombre par lui-même. Il peut donc être remplacer par une fraction dont le numérateur est égal au dénominateur.","Transformez la valeur 1 en une fraction et resolvez l'addition."],"font":0.6]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[blue]La valeur 1 peut être remplacer par une fraction dont le numérateur est égal au dénominateur.[/blue] [b]Transformez[/b] la valeur 1 en une fraction dont le dénominateur est 2 et [b]additionnez[/b] les 2 fractions.","fontex":0.7]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>division</dct:subject>
-        <dct:educationLevel>3</dct:educationLevel>
+        <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
         <dct:alternative>f03</dct:alternative>
@@ -828,6 +842,30 @@
 
     <rdf:Description>
         <dct:identifier>f02</dct:identifier>
+        <dct:title xml:lang="fr-FR">Résoudre des opérations sur les fractions [1+11/9].</dct:title>
+        <dct:description><![CDATA["font":0.7,"data":[{"value":"1+11/9"}],"source":[],"result":["20/9"],"top":168, "a":{"all":false,"move":1,"target":2,"decompose":true,"delbracket":true,"fraction":true}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Transformez[/b] la [red]valeur 1[/red] en fraction et procédez à l'[b]addition[/b] des deux opérandes."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>f03</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>f03</dct:identifier>
+        <dct:title xml:lang="fr-FR">Résoudre des opérations sur les fractions [4/7+1].</dct:title>
+        <dct:description><![CDATA["font":0.7,"data":[{"value":"4/7+1"}],"source":[],"result":["11/7"],"top":168, "a":{"all":false,"move":1,"target":2,"decompose":true,"delbracket":true,"fraction":true}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Transformez[/b] la [red]valeur 1[/red] en fraction et procédez à l'[b]addition[/b] des deux opérandes."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>f03</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>f41</dct:identifier>
         <dct:title xml:lang="fr-FR">Résoudre des opérations sur les fractions [(1+2/3)*4].</dct:title>
         <dct:description><![CDATA["font":0.7,"data":[{"value":"(1+2/3)*4"}],"source":[],"result":["20/3"],"top":168, "a":{"all":false,"move":1,"target":2,"decompose":true,"delbracket":true,"fraction":true}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Réduisez l'expression sous la forme d'une fraction irréductible ou d'une valeur numérique."]]]></dct:description>
@@ -839,7 +877,7 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>f03</dct:identifier>
+        <dct:identifier>f42</dct:identifier>
         <dct:title xml:lang="fr-FR">Résoudre des opérations sur les fractions [(1+1/3)*3/2].</dct:title>
         <dct:description><![CDATA["font":0.7,"data":[{"value":"(1+1/3)*3/2"}],"source":[],"result":["2"],"top":168, "a":{"all":false,"move":1,"target":2,"decompose":true,"delbracket":true,"fraction":true}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Calculez l'expression."]]]></dct:description>
@@ -988,7 +1026,7 @@
         <dct:identifier>101</dct:identifier>
         <dct:title xml:lang="fr-FR">Résoudre des opérations sur les fractions [3+1/2].</dct:title>
         <dct:description><![CDATA["figure":"help/equation/1new.svg","font":0.7,"data":[{"value":"3+1/2"}],"source":[],"result":["7/2"],"top":168, "a":{"all":false,"move":1,"target":3,"delbracket":true,"fraction":true}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["1 est l'élément neutre de la multiplication. On peut le supprimer des opérandes sans changer le résultat de l'opération. On peut également le rajouter.","Transformez la valeur 3 en une fraction et procédez à l'addition des 2 fractions."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"En glissant la valeur sur la droite, multipliez 3 par 1. Transformez ensuite la valeur 1 en une fraction et procédez à l'addition des 2 fractions.","fontex":0.8]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>

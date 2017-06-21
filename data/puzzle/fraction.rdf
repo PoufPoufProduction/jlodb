@@ -118,22 +118,88 @@
     </rdf:Description>
 
      <!-- FILL -->
-
+    
     <rdf:Description>
-        <dct:identifier>dr4</dct:identifier>
-        <dct:title xml:lang="fr-FR">Renseigner correctement une graduation [inférieure à 20].</dct:title>
-        <dct:description><![CDATA["txt":[{"t01":"0","t05":"1","t09":"2","t13":"3","t17":"4","t21":"5"}],"show":[["s01","s05","s09","s13","s17","s21","pa08","pa19","pa03"]],"decoys":[["p02","p05","p06"]],"values":[{"p03":"2/4","p08":"7/4","p19":"18/4","p02":"4/4","p05":"9/4","p06":"12/4"}],"init":{"pos":[[110,45],[195,45],[280,45],[365,45],[450,45],[535,45]]},"url":"desktop/puzzle/ruler02.svg","same":[[]]]]></dct:description>
+        <dct:identifier>dr40</dct:identifier>
+        <dct:title xml:lang="fr-FR">Renseigner correctement une graduation en 1/4 commençant par 0.</dct:title>
+        <dct:description><![CDATA["errratio":2,"svgclass":"small","number":2,"gen":"function(){var ds=[4],nb=4,e=12,d=ds[Math.floor(Math.random()*ds.length)],omin=0,omax=0,o=Math.floor(Math.random()*(omax-omin))+omin,txt={},show=[],p=[],count=0,values={},y=[],decoys=[],name=function(_v,_d){var r=0; if (Math.random()>=r || _v<_d || (_v%_d)==0) { return _v+'/'+_d;} else { return Math.floor(_v/_d)+'+'+(_v%_d)+'/'+_d; }}; for(var i=0; i<21;i++) { if ((o+i)%d==0) { txt['t'+(i<9?'0':'')+(i+1)]=(o+i)/d; show.push('s'+(i<9?'0':'')+(i+1)); } } do { var pp=Math.floor(Math.random()*19)+1, ok=true; for (var i in p) { if (Math.abs(pp-p[i])<3) { ok=false; }} if (ok && ((o+pp)%d)!=0) { p.push(pp); } count++; } while(p.length<nb && count<100); for (var i in p) { show.push('pa'+(p[i]<9?'0':'')+(p[i]+1)); values['p'+(p[i]<9?'0':'')+(p[i]+1)]=name(o+p[i],d); } do {var ok=true,decoy=Math.floor(Math.random()*19)+1; for (var i in p) { if (p[i]==decoy) {ok = false; }} for (var i in y) { if (y[i]==decoy) {ok = false; }} if (ok) {y.push(decoy); } }while(y.length<(e-p.length)); for (var i in y) { values['d'+(y[i]<9?'0':'')+(y[i]+1)]=name(o+y[i],d); decoys.push('d'+(y[i]<9?'0':'')+(y[i]+1)); } return { 'txt':txt,'show':show,'values':values,'decoys':decoys};  }","init":{"pos":[[110,45],[195,45],[280,45],[365,45],[450,45],[535,45],[110,130],[195,130],[280,130],[365,130],[450,130],[535,130]]},"url":"desktop/puzzle/ruler02.svg","same":[[]]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Complétez[/b] les cases vides en respectant la graduation."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>dr4</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:type>3</dct:type>
+        <dct:alternative>dr</dct:alternative>
+        <dct:source>res/img/desktop/puzzle/ruler02.svg</dct:source>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>dr0</dct:identifier>
+        <dct:title xml:lang="fr-FR">Renseigner correctement une graduation commençant par 0.</dct:title>
+        <dct:description><![CDATA["errratio":2,"svgclass":"small","number":2,"gen":"function(){var ds=[4,5,6,7],nb=4,e=12,d=ds[Math.floor(Math.random()*ds.length)],omin=0,omax=0,o=Math.floor(Math.random()*(omax-omin))+omin,txt={},show=[],p=[],count=0,values={},y=[],decoys=[],name=function(_v,_d){var r=0; if (Math.random()>=r || _v<_d || (_v%_d)==0) { return _v+'/'+_d;} else { return Math.floor(_v/_d)+'+'+(_v%_d)+'/'+_d; }}; for(var i=0; i<21;i++) { if ((o+i)%d==0) { txt['t'+(i<9?'0':'')+(i+1)]=(o+i)/d; show.push('s'+(i<9?'0':'')+(i+1)); } } do { var pp=Math.floor(Math.random()*19)+1, ok=true; for (var i in p) { if (Math.abs(pp-p[i])<3) { ok=false; }} if (ok && ((o+pp)%d)!=0) { p.push(pp); } count++; } while(p.length<nb && count<100); for (var i in p) { show.push('pa'+(p[i]<9?'0':'')+(p[i]+1)); values['p'+(p[i]<9?'0':'')+(p[i]+1)]=name(o+p[i],d); } do {var ok=true,decoy=Math.floor(Math.random()*19)+1; for (var i in p) { if (p[i]==decoy) {ok = false; }} for (var i in y) { if (y[i]==decoy) {ok = false; }} if (ok) {y.push(decoy); } }while(y.length<(e-p.length)); for (var i in y) { values['d'+(y[i]<9?'0':'')+(y[i]+1)]=name(o+y[i],d); decoys.push('d'+(y[i]<9?'0':'')+(y[i]+1)); } return { 'txt':txt,'show':show,'values':values,'decoys':decoys};  }","init":{"pos":[[110,45],[195,45],[280,45],[365,45],[450,45],[535,45],[110,130],[195,130],[280,130],[365,130],[450,130],[535,130]]},"url":"desktop/puzzle/ruler02.svg","same":[[]]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Complétez[/b] les cases vides en respectant la graduation."]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>dr</dct:alternative>
+        <dct:source>res/img/desktop/puzzle/ruler02.svg</dct:source>
+    </rdf:Description>
+    
+    
+    <rdf:Description>
+        <dct:identifier>dr0x</dct:identifier>
+        <dct:title xml:lang="fr-FR">Renseigner correctement une graduation commençant par 0 avec décomposition possible.</dct:title>
+        <dct:description><![CDATA["errratio":2,"svgclass":"tiny","number":2,"gen":"function(){var ds=[4,5,6,7],nb=4,e=12,d=ds[Math.floor(Math.random()*ds.length)],omin=0,omax=0,o=Math.floor(Math.random()*(omax-omin))+omin,txt={},show=[],p=[],count=0,values={},y=[],decoys=[],name=function(_v,_d){var r=0.5; if (Math.random()>=r || _v<_d || (_v%_d)==0) { return _v+'/'+_d;} else { return Math.floor(_v/_d)+'+'+(_v%_d)+'/'+_d; }}; for(var i=0; i<21;i++) { if ((o+i)%d==0) { txt['t'+(i<9?'0':'')+(i+1)]=(o+i)/d; show.push('s'+(i<9?'0':'')+(i+1)); } } do { var pp=Math.floor(Math.random()*19)+1, ok=true; for (var i in p) { if (Math.abs(pp-p[i])<3) { ok=false; }} if (ok && ((o+pp)%d)!=0) { p.push(pp); } count++; } while(p.length<nb && count<100); for (var i in p) { show.push('pa'+(p[i]<9?'0':'')+(p[i]+1)); values['p'+(p[i]<9?'0':'')+(p[i]+1)]=name(o+p[i],d); } do {var ok=true,decoy=Math.floor(Math.random()*19)+1; for (var i in p) { if (p[i]==decoy) {ok = false; }} for (var i in y) { if (y[i]==decoy) {ok = false; }} if (ok) {y.push(decoy); } }while(y.length<(e-p.length)); for (var i in y) { values['d'+(y[i]<9?'0':'')+(y[i]+1)]=name(o+y[i],d); decoys.push('d'+(y[i]<9?'0':'')+(y[i]+1)); } return { 'txt':txt,'show':show,'values':values,'decoys':decoys};  }","init":{"pos":[[110,45],[195,45],[280,45],[365,45],[450,45],[535,45],[110,130],[195,130],[280,130],[365,130],[450,130],[535,130]]},"url":"desktop/puzzle/ruler02.svg","same":[[]]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Complétez[/b] les cases vides en respectant la graduation."]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>dr</dct:alternative>
+        <dct:source>res/img/desktop/puzzle/ruler02.svg</dct:source>
+    </rdf:Description>
+    
+
+    <rdf:Description>
+        <dct:identifier>dr</dct:identifier>
+        <dct:title xml:lang="fr-FR">Renseigner correctement une graduation.</dct:title>
+        <dct:description><![CDATA["errratio":2,"svgclass":"small","number":2,"gen":"function(){var ds=[4,5,6,7],nb=4,e=12,d=ds[Math.floor(Math.random()*ds.length)],omin=0,omax=d*5,o=Math.floor(Math.random()*(omax-omin))+omin,txt={},show=[],p=[],count=0,values={},y=[],decoys=[],name=function(_v,_d){var r=0; if (Math.random()>=r || _v<_d || (_v%_d)==0) { return _v+'/'+_d;} else { return Math.floor(_v/_d)+'+'+(_v%_d)+'/'+_d; }}; for(var i=0; i<21;i++) { if ((o+i)%d==0) { txt['t'+(i<9?'0':'')+(i+1)]=(o+i)/d; show.push('s'+(i<9?'0':'')+(i+1)); } } do { var pp=Math.floor(Math.random()*19)+1, ok=true; for (var i in p) { if (Math.abs(pp-p[i])<3) { ok=false; }} if (ok && ((o+pp)%d)!=0) { p.push(pp); } count++; } while(p.length<nb && count<100); for (var i in p) { show.push('pa'+(p[i]<9?'0':'')+(p[i]+1)); values['p'+(p[i]<9?'0':'')+(p[i]+1)]=name(o+p[i],d); } do {var ok=true,decoy=Math.floor(Math.random()*19)+1; for (var i in p) { if (p[i]==decoy) {ok = false; }} for (var i in y) { if (y[i]==decoy) {ok = false; }} if (ok) {y.push(decoy); } }while(y.length<(e-p.length)); for (var i in y) { values['d'+(y[i]<9?'0':'')+(y[i]+1)]=name(o+y[i],d); decoys.push('d'+(y[i]<9?'0':'')+(y[i]+1)); } return { 'txt':txt,'show':show,'values':values,'decoys':decoys};  }","init":{"pos":[[110,45],[195,45],[280,45],[365,45],[450,45],[535,45],[110,130],[195,130],[280,130],[365,130],[450,130],[535,130]]},"url":"desktop/puzzle/ruler02.svg","same":[[]]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Complétez[/b] les cases vides en respectant la graduation."]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>dr</dct:alternative>
+        <dct:source>res/img/desktop/puzzle/ruler02.svg</dct:source>
+    </rdf:Description>
+    
+    
+    <rdf:Description>
+        <dct:identifier>drx</dct:identifier>
+        <dct:title xml:lang="fr-FR">Renseigner correctement une graduation avec décomposition possible.</dct:title>
+        <dct:description><![CDATA["errratio":2,"svgclass":"tiny","number":2,"gen":"function(){var ds=[4,5,6,7],nb=4,e=12,d=ds[Math.floor(Math.random()*ds.length)],omin=0,omax=d*5,o=Math.floor(Math.random()*(omax-omin))+omin,txt={},show=[],p=[],count=0,values={},y=[],decoys=[],name=function(_v,_d){var r=0.5; if (Math.random()>=r || _v<_d || (_v%_d)==0) { return _v+'/'+_d;} else { return Math.floor(_v/_d)+'+'+(_v%_d)+'/'+_d; }}; for(var i=0; i<21;i++) { if ((o+i)%d==0) { txt['t'+(i<9?'0':'')+(i+1)]=(o+i)/d; show.push('s'+(i<9?'0':'')+(i+1)); } } do { var pp=Math.floor(Math.random()*19)+1, ok=true; for (var i in p) { if (Math.abs(pp-p[i])<3) { ok=false; }} if (ok && ((o+pp)%d)!=0) { p.push(pp); } count++; } while(p.length<nb && count<100); for (var i in p) { show.push('pa'+(p[i]<9?'0':'')+(p[i]+1)); values['p'+(p[i]<9?'0':'')+(p[i]+1)]=name(o+p[i],d); } do {var ok=true,decoy=Math.floor(Math.random()*19)+1; for (var i in p) { if (p[i]==decoy) {ok = false; }} for (var i in y) { if (y[i]==decoy) {ok = false; }} if (ok) {y.push(decoy); } }while(y.length<(e-p.length)); for (var i in y) { values['d'+(y[i]<9?'0':'')+(y[i]+1)]=name(o+y[i],d); decoys.push('d'+(y[i]<9?'0':'')+(y[i]+1)); } return { 'txt':txt,'show':show,'values':values,'decoys':decoys};  }","init":{"pos":[[110,45],[195,45],[280,45],[365,45],[450,45],[535,45],[110,130],[195,130],[280,130],[365,130],[450,130],[535,130]]},"url":"desktop/puzzle/ruler02.svg","same":[[]]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Complétez[/b] les cases vides en respectant la graduation."]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>dr</dct:alternative>
         <dct:source>res/img/desktop/puzzle/ruler02.svg</dct:source>
     </rdf:Description>
 
+    <!-- Compare -->
     
+    <rdf:Description>
+        <dct:identifier>dca</dct:identifier>
+        <dct:title xml:lang="fr-FR">Classer les fractions suivant qu'elles soient supérieures, inférieures ou égales à 1.</dct:title>
+        <dct:description><![CDATA["init":{"pos":[[215,28],[215,65],[215,102],[320,28],[320,65],[320,102],[425,28],[425,65],[425,102],[530,28],[530,65],[530,102]]},"same":[["a","b","c","d"],["e","f","g","h"],["i","j","k","l"]],"url":"desktop/puzzle/groups3-4.svg", "values":[{"a":"99/101","b":"8/88","c":"23/54","d":"29/39","e":"19/19","f":"100/100","g":"65/65","h":"88/88","i":"57/56","j":"44/14","k":"12/7","l":"121/2"}],"txt":{"text1":"<1","text2":"=1","text3":">1"},"exercice":"[b]Classez[/b] les fractions suivant qu'elles soient [red]supérieures[/red], [red]inférieures[/red] ou [red]égales[/red] à 1."]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>dca</dct:alternative>
+        <dct:source>res/img/desktop/puzzle/groups3-4.svg</dct:source>
+    </rdf:Description>
     
 </rdf:RDF>
 

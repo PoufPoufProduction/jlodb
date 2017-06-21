@@ -2,9 +2,10 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dct="http://purl.org/dc/terms/">
 
-
+    <!-- FRACTION FROM IMG -->
+         
     <rdf:Description>
-        <dct:identifier>24</dct:identifier>
+        <dct:identifier>f4a</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier une fraction représentée par un disque découpé entre 2 et 4 fois.</dct:title>
         <dct:description><![CDATA["number":5,"values":[{"value":1},{"value":2},{"value":3},{"value":4},{"value":5},{"value":6},{"value":7},{"value":8},{"value":9},{"value":10},{"value":11},{"value":12},{"value":13},{"value":14},{"value":15},{"value":16},{"id":"div"}],"gen":"function(){var des=[2,3,4],de=des[Math.floor(Math.random()*des.length)],num=Math.floor(Math.random()*de)+1,ret=\\\"<div style='width:1em;height:1em;margin-left:.2em;font-size:5em;'><svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 48 48'><def><style>.s {fill:none;stroke:black;stroke-width:0.5;}.f{fill:red;}</style></def>\\\";if (num==de) { ret+=\\\"<circle cx='24' cy='24' r='22' class='f'/>\\\"; } else { ret+=\\\"<path d='M24,24 v-22 a22,22 0 \\\"+(num>de/2?1:0)+\\\",1 \\\"+(22*Math.sin(2*Math.PI*num/de))+\\\",\\\"+(22-22*Math.cos(2*Math.PI*num/de))+\\\" z' class='f'/>\\\"; } for (var i=0;i<de;i++) { ret+=\\\"<line x1='24' y1='24' x2='\\\"+(24+22*Math.sin(2*Math.PI*i/de))+\\\"' y2='\\\"+(24-22*Math.cos(2*Math.PI*i/de))+\\\"' class='s'/>\\\"; } ret+=\\\"<circle cx='24' cy='24' r='22' class='s'/></svg></div>\\\"; return {\\\"figure\\\":{\\\"content\\\":ret},\\\"result\\\":num+\\\"/\\\"+de } }","errratio":2]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Représentez [b]sous la forme d'une fraction[/b] la valeur ci-dessus."]]></dct:description>
@@ -12,11 +13,11 @@
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
-        <dct:alternative>216</dct:alternative>
+        <dct:alternative>f16a</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>248</dct:identifier>
+        <dct:identifier>f8a</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier une fraction représentée par un disque découpé entre 2 et 8 fois.</dct:title>
         <dct:description><![CDATA["number":5,"values":[{"value":1},{"value":2},{"value":3},{"value":4},{"value":5},{"value":6},{"value":7},{"value":8},{"value":9},{"value":10},{"value":11},{"value":12},{"value":13},{"value":14},{"value":15},{"value":16},{"id":"div"}],"gen":"function(){var des=[2,4,4,8,8],de=des[Math.floor(Math.random()*des.length)],num=Math.floor(Math.random()*de)+1,ret=\\\"<div style='width:1em;height:1em;margin-left:.2em;font-size:5em;'><svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 48 48'><def><style>.s {fill:none;stroke:black;stroke-width:0.5;}.f{fill:red;}</style></def>\\\";if (num==de) { ret+=\\\"<circle cx='24' cy='24' r='22' class='f'/>\\\"; } else { ret+=\\\"<path d='M24,24 v-22 a22,22 0 \\\"+(num>de/2?1:0)+\\\",1 \\\"+(22*Math.sin(2*Math.PI*num/de))+\\\",\\\"+(22-22*Math.cos(2*Math.PI*num/de))+\\\" z' class='f'/>\\\"; } for (var i=0;i<de;i++) { ret+=\\\"<line x1='24' y1='24' x2='\\\"+(24+22*Math.sin(2*Math.PI*i/de))+\\\"' y2='\\\"+(24-22*Math.cos(2*Math.PI*i/de))+\\\"' class='s'/>\\\"; } ret+=\\\"<circle cx='24' cy='24' r='22' class='s'/></svg></div>\\\"; return {\\\"figure\\\":{\\\"content\\\":ret},\\\"result\\\":num+\\\"/\\\"+de } }","errratio":2]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Représentez [b]sous la forme d'une fraction[/b] la valeur ci-dessus."]]></dct:description>
@@ -24,11 +25,11 @@
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
-        <dct:alternative>216</dct:alternative>
+        <dct:alternative>f16a</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>216</dct:identifier>
+        <dct:identifier>f16a</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier une fraction représentée par un disque découpé entre 2 et 16 fois.</dct:title>
         <dct:description><![CDATA["number":5,"values":[{"value":1},{"value":2},{"value":3},{"value":4},{"value":5},{"value":6},{"value":7},{"value":8},{"value":9},{"value":10},{"value":11},{"value":12},{"value":13},{"value":14},{"value":15},{"value":16},{"id":"div"}],"gen":"function(){var des=[2,3,4,5,6,8,9,12,16],de=des[Math.floor(Math.random()*des.length)],num=Math.floor(Math.random()*de)+1,ret=\\\"<div style='width:1em;height:1em;margin-left:.2em;font-size:5em;'><svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 48 48'><def><style>.s {fill:none;stroke:black;stroke-width:0.5;}.f{fill:red;}</style></def>\\\";if (num==de) { ret+=\\\"<circle cx='24' cy='24' r='22' class='f'/>\\\"; } else { ret+=\\\"<path d='M24,24 v-22 a22,22 0 \\\"+(num>de/2?1:0)+\\\",1 \\\"+(22*Math.sin(2*Math.PI*num/de))+\\\",\\\"+(22-22*Math.cos(2*Math.PI*num/de))+\\\" z' class='f'/>\\\"; } for (var i=0;i<de;i++) { ret+=\\\"<line x1='24' y1='24' x2='\\\"+(24+22*Math.sin(2*Math.PI*i/de))+\\\"' y2='\\\"+(24-22*Math.cos(2*Math.PI*i/de))+\\\"' class='s'/>\\\"; } ret+=\\\"<circle cx='24' cy='24' r='22' class='s'/></svg></div>\\\"; return {\\\"figure\\\":{\\\"content\\\":ret},\\\"result\\\":num+\\\"/\\\"+de } }","errratio":2]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Représentez [b]sous la forme d'une fraction[/b] la valeur ci-dessus."]]></dct:description>
@@ -36,6 +37,57 @@
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
-        <dct:alternative>216</dct:alternative>
+        <dct:alternative>f16a</dct:alternative>
     </rdf:Description>
+    
+    <!-- FRACTION DECOMPOSITION -->
+    
+    <rdf:Description>
+        <dct:identifier>fd1</dct:identifier>
+        <dct:title xml:lang="fr-FR">Ecrire une fraction comme la somme d'un nombre entier et d'une fraction inférieure à 1 [16/9, 19/6].</dct:title>
+        <dct:description><![CDATA["class":"nofig","values":[{"value":1},{"value":2},{"value":3},{"value":4},{"value":5},{"value":6},{"value":7},{"value":8},{"value":9},{"value":10},{"id":"plus"},{"id":"mult"},{"id":"div"}],"data":[{"result":"1+7/9"},{"result":"3+1/6"}],"errratio":2]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Ecrivez[/b] la fraction suivante comme la somme d'un nombre entier et d'une fraction inférieure à 1. [math]<mrow><mfrac><mrow><mn>16</mn></mrow><mrow><mn>9</mn></mrow></mfrac></mrow>[/math]","[b]Ecrivez[/b] la fraction suivante comme la somme d'un nombre entier et d'une fraction inférieure à 1. [math]<mrow><mfrac><mrow><mn>19</mn></mrow><mrow><mn>6</mn></mrow></mfrac></mrow>[/math]"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>fd1</dct:alternative>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>fd2</dct:identifier>
+        <dct:title xml:lang="fr-FR">Ecrire une fraction comme la somme d'un nombre entier et d'une fraction inférieure à 1 [13/5, 25/4].</dct:title>
+        <dct:description><![CDATA["class":"nofig","values":[{"value":1},{"value":2},{"value":3},{"value":4},{"value":5},{"value":6},{"value":7},{"value":8},{"value":9},{"value":10},{"id":"plus"},{"id":"mult"},{"id":"div"}],"data":[{"result":"2+3/5"},{"result":"6+1/4"}],"errratio":2]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Ecrivez[/b] la fraction suivante comme la somme d'un nombre entier et d'une fraction inférieure à 1. [math]<mrow><mfrac><mrow><mn>13</mn></mrow><mrow><mn>5</mn></mrow></mfrac></mrow>[/math]","[b]Ecrivez[/b] la fraction suivante comme la somme d'un nombre entier et d'une fraction inférieure à 1. [math]<mrow><mfrac><mrow><mn>25</mn></mrow><mrow><mn>4</mn></mrow></mfrac></mrow>[/math]"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>fd1</dct:alternative>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>fd3</dct:identifier>
+        <dct:title xml:lang="fr-FR">Ecrire une fraction comme la somme d'un nombre entier et d'une fraction inférieure à 1 [23/3, 47/8].</dct:title>
+        <dct:description><![CDATA["class":"nofig","values":[{"value":1},{"value":2},{"value":3},{"value":4},{"value":5},{"value":6},{"value":7},{"value":8},{"value":9},{"value":10},{"id":"plus"},{"id":"mult"},{"id":"div"}],"data":[{"result":"7+2/3"},{"result":"5+7/8"}],"errratio":2]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Ecrivez[/b] la fraction suivante comme la somme d'un nombre entier et d'une fraction inférieure à 1. [math]<mrow><mfrac><mrow><mn>23</mn></mrow><mrow><mn>3</mn></mrow></mfrac></mrow>[/math]","[b]Ecrivez[/b] la fraction suivante comme la somme d'un nombre entier et d'une fraction inférieure à 1. [math]<mrow><mfrac><mrow><mn>47</mn></mrow><mrow><mn>8</mn></mrow></mfrac></mrow>[/math]"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>fd1</dct:alternative>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>fd4</dct:identifier>
+        <dct:title xml:lang="fr-FR">Ecrire une fraction comme la somme d'un nombre entier et d'une fraction inférieure à 1 [32/7, 58/9].</dct:title>
+        <dct:description><![CDATA["class":"nofig","values":[{"value":1},{"value":2},{"value":3},{"value":4},{"value":5},{"value":6},{"value":7},{"value":8},{"value":9},{"value":10},{"id":"plus"},{"id":"mult"},{"id":"div"}],"data":[{"result":"4+4/7"},{"result":"6+4/9"}],"errratio":2]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Ecrivez[/b] la fraction suivante comme la somme d'un nombre entier et d'une fraction inférieure à 1. [math]<mrow><mfrac><mrow><mn>32</mn></mrow><mrow><mn>7</mn></mrow></mfrac></mrow>[/math]","[b]Ecrivez[/b] la fraction suivante comme la somme d'un nombre entier et d'une fraction inférieure à 1. [math]<mrow><mfrac><mrow><mn>58</mn></mrow><mrow><mn>9</mn></mrow></mfrac></mrow>[/math]"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>fd1</dct:alternative>
+    </rdf:Description>
+    
 </rdf:RDF>
