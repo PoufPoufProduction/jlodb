@@ -12,11 +12,12 @@
         keyboard    : true,                     // The keyboard is authorized
         vertical    : 2,                        // The vertical position of the current question
         filter      : [],                       // Filter the entry
-        erase       : '.',                      // The erase caracter
+        erase       : '*',                      // The erase caracter
         font        : 1,                        // Questions font factor
         screenc     : false,                    // Clear the screen between question
         strict      : false,                    // Strictly test the values (Not sure is still mandatory)
-        negative    : false,                    // Accept negative value
+        decimal     : false,                    // Accept decimal values
+        negative    : false,                    // Accept negative values
         fontex      : 1,                        // exercice font
         debug       : true                     // Debug mode
     };
@@ -216,6 +217,9 @@
 
                 if (settings.context.onload) { settings.context.onload($this); }
                  $this.css("font-size", Math.floor($this.width()/10)+"px");
+                 
+                if (settings.decimal)   { $this.find("#keydec").removeClass("disable"); }
+                if (settings.negative)  { $this.find("#keyneg").removeClass("disable"); }
 
                 // Locale handling
 
@@ -282,12 +286,25 @@
 
                 if (settings.interactive) {
                     if (value==settings.erase ){ settings.response.value = ""; settings.response.digit = 0; }
-                    else if (value=='-' && settings.negative) {
-                        if (settings.response.digit!=0) {
-                            if (settings.response.value[0]=='-') { settings.response.value = settings.response.value.substr(1); }
-                            else                                 { settings.response.value = "-"+settings.response.value; }
+                    else if (value=='.') {
+                        if (settings.decimal) {
+                            if (settings.response.digit!=0) {
+                                if (settings.response.value.indexOf(".")==-1) { settings.response.value+="."; }
+                            }
+                            else {
+                                settings.response.value = "0.";
+                                settings.response.digit = 1;
+                            }
                         }
-                        else { settings.response.value = "-"; }
+                    }
+                    else if (value=='-') {
+                        if (settings.negative) {
+                            if (settings.response.digit!=0) {
+                                if (settings.response.value[0]=='-') { settings.response.value = settings.response.value.substr(1); }
+                                else                                 { settings.response.value = "-"+settings.response.value; }
+                            }
+                            else { settings.response.value = "-"; }
+                        }
                     }
                     else            {
                         if (settings.response.digit==0 ) {

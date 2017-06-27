@@ -2,7 +2,8 @@
     <div id="values"><div id="exercice"><div></div></div><ul></ul></div>
     <div id="board">
         <div id="time" class="time">00:00:00</div>
-        <div id="screen"><div></div></div>
+        <div id="screen"><div ontouchstart="$(this).closest('.sequence').sequence('key', '*', this);event.preventDefault();"
+                        onclick="$(this).closest('.sequence').sequence('key', '*', this);"></div></div>
         <div id="keypad">
             <div>
                 <div class="input bluekeypad" ontouchstart="$(this).closest('.sequence').sequence('key', 'A', this);event.preventDefault();"
@@ -51,8 +52,8 @@
             <div style="margin-left:1em;">
                 <div class="input bluekeypad" ontouchstart="$(this).closest('.sequence').sequence('key', 'W', this);event.preventDefault();"
                                    onclick="$(this).closest('.sequence').sequence('key', 'W', this);">W</div>
-                <div class="input bluekeypad" ontouchstart="$(this).closest('.sequence').sequence('key', 'X', this);event.preventDefault();"
-                                   onclick="$(this).closest('.sequence').sequence('key', 'X', this);">X</div>
+                <div class="input bluekeypad" ontouchstart="$(this).closest('.sequence').sequence('key', '*', this);event.preventDefault();"
+                                   onclick="$(this).closest('.sequence').sequence('key', '*', this);">X</div>
                 <div class="input bluekeypad" ontouchstart="$(this).closest('.sequence').sequence('key', 'C', this);event.preventDefault();"
                                    onclick="$(this).closest('.sequence').sequence('key', 'C', this);">C</div>
                 <div class="input bluekeypad" ontouchstart="$(this).closest('.sequence').sequence('key', 'V', this);event.preventDefault();"
@@ -61,8 +62,8 @@
                                    onclick="$(this).closest('.sequence').sequence('key', 'B', this);">B</div>
                 <div class="input bluekeypad" ontouchstart="$(this).closest('.sequence').sequence('key', 'N', this);event.preventDefault();"
                                    onclick="$(this).closest('.sequence').sequence('key', 'N', this);">N</div>
-                <div class="input bluekeypad" ontouchstart="$(this).closest('.sequence').sequence('key', '.', this);event.preventDefault();"
-                                   onclick="$(this).closest('.sequence').sequence('key', '.', this);" style="width:2em;">&lArr;</div>
+                <div class="input bluekeypad" ontouchstart="$(this).closest('.sequence').sequence('key', '*', this);event.preventDefault();"
+                                   onclick="$(this).closest('.sequence').sequence('key', '*', this);" style="width:2em;">&lArr;</div>
             </div>
         </div>
     </div>

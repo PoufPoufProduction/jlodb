@@ -4,9 +4,10 @@
 
     <!-- PREFIX LIST
         c           : circle
-        s           ; square
+        s           : square
         t           : compare
-        i           ; irreductible
+        i           : irreductible
+        d           : decimal values
     -->
 
     <rdf:Description>
@@ -1051,18 +1052,33 @@
         <dct:alternative>t1100</dct:alternative>
     </rdf:Description>
 
-    <!-- -->
+    <!-- i -->
 
     <rdf:Description>
-        <dct:identifier>i001</dct:identifier>
+        <dct:identifier>i01</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier, sans contrainte de temps, les fractions irréductibles.</dct:title>
         <dct:description><![CDATA["time":0,"template":"template2.html","gen":"function(){ var a=Math.floor(Math.random()*100)+1,b=Math.floor(Math.random()*100)+1, ret=a+\\\"/\\\"+b,irr=false; for (var i=2; i<Math.min(a,b)+1;i++) {if (a%i==0 && b%i==0) { irr=true; } } return [ret, irr?'0':'1'];}","class":"h12 alpha blank","font":2.5]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"input":{"attr":[1,2.7,1.2],"digit":1,"values":[["oui",1],["non",0]]},"comment":"La fraction est-elle [red]irréductible[/red] ?"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"input":{"attr":[1,2.7,1.2],"digit":1,"values":[["oui",1],["non",0]]},"exercice":"La fraction est-elle [red]irréductible[/red] ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>i001</dct:alternative>
+        <dct:alternative>i01</dct:alternative>
     </rdf:Description>
+    
+    
+    <!-- d -->
+
+    <rdf:Description>
+        <dct:identifier>d01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Ecrire, sans contrainte de temps, chaque fraction décimale sous forme d'un nombre en écriture décimale.</dct:title>
+        <dct:description><![CDATA["time":0,"input":{"digit":4,"speed":5000},"decimal":true,"gen":"function(){ var decs=[10,100,1000],a=Math.floor(Math.random()*1000)+1,b=decs[Math.floor(Math.random()*decs.length)], ret=a+\\\"/\\\"+b; return [ret, a/b];}","class":"h12 alpha blank","font":1]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>d01</dct:alternative>
+    </rdf:Description>
+    
 </rdf:RDF>
 

@@ -29,9 +29,11 @@
         "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
         "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>",
         "\\\[math\\\](.+)\\\[/math\\\]",            "<div class='math'><math xmlns='http://www.w3.org/1998/Math/MathML'>$1</math></div>",
+        "\\\[math(.+)\\\](.+)\\\[/math\\\]",        "<div class='math' style='font-size:$1em;'><math xmlns='http://www.w3.org/1998/Math/MathML'>$2</math></div>",
         "\\\[mathsmall\\\](.+)\\\[/mathsmall\\\]",  "<div class='maths'><math xmlns='http://www.w3.org/1998/Math/MathML'>$1</math></div>",
         "\\\[mathxl\\\](.+)\\\[/mathxl\\\]",        "<div class='mathxl'><math xmlns='http://www.w3.org/1998/Math/MathML'>$1</math></div>",
-        "\\\[icon\\\](.+)\\\[/icon\\\]",            "<div class='img'><div class='icon'><img src='$1.svg'/></div></div>"
+        "\\\[icon\\\](.+)\\\[/icon\\\]",            "<div class='img'><div class='icon'><img src='$1.svg'/></div></div>",
+        "\\\[div(.+)\\\](.+)\\\[/div\\\]",        "<div style='font-size:$1em;text-align:center'>$2</div>",
     ];
 
     var ntype = { normal:0, scientific:1, physics:2 };
@@ -797,7 +799,7 @@
                 if (settings.data) { settings.number = settings.data.length; }
                 if (settings.gen) {
                     settings.data = [];
-                    for (var i=0; i<settings.number; i++) { settings.data.push(eval('('+settings.gen+')')()); }
+                    for (var i=0; i<settings.number; i++) { settings.data.push(eval('('+settings.gen+')')($this,settings,i)); }
                 }
 
                 // Update the action node type
@@ -847,7 +849,8 @@
             if (figure) {
                 if (figure.url)        { $this.find("#figure").html("<img src='"+figure.url+"'/>"); } else
                 if (figure.content)    {
-                    if (figure.content.indexOf("<svg")==-1) {
+                    switch(figure.type){
+                    case "svg":
                         var svgContent = "<svg xmlns:svg='http://www.w3.org/2000/svg' xmlns='http://www.w3.org/2000/svg' "+
                             " width='100%' height='100%' viewBox='0 0 640 480'><def><style>"+
                             ".a { stroke-dasharray:8,8; }"+
@@ -868,8 +871,14 @@
                         $figure.svg();
                         settings.svg = $figure.svg('get');
                         settings.svg.load(svgContent, { addTo: false, changeSize: true});
+                    break;
+                    case "txt":
+                        $this.find("#figure").html(helpers.format(figure.content));
+                    break;
+                    default:
+                        $this.find("#figure").html(figure.content);
+                    break;
                     }
-                    else { $this.find("#figure").html(figure.content); }
                 }
             }
 
@@ -999,7 +1008,8 @@
                     var min = 5;
                     var values = $this.find("#editor").editor("text");
                     if (settings.onlyone) { values = [ values[0] ]; }
-                    for (var i in values) for (var j in result ) { min = Math.min (min,helpers.levenshtein(values[i], result[j].toString()));  }
+                    
+                    for (var i in values) for (var j in result ) { min = Math.min (min,helpers.levenshtein(values[i], result[j].toString())); }
                     min = Math.min(5,min*settings.errratio);
                     $this.find("#escreen").addClass("s"+min);
 

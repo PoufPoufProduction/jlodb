@@ -150,6 +150,7 @@
         <dct:alternative>ft12b</dct:alternative>
     </rdf:Description>
     
+    
     <rdf:Description>
         <dct:identifier>f12</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 12, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 12.</dct:title>
@@ -351,6 +352,19 @@
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>4</dct:type>
+        <dct:alternative>ft12b</dct:alternative>
+    </rdf:Description>
+    
+    
+    <rdf:Description>
+        <dct:identifier>fu10</dct:identifier>
+        <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 10, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 10.</dct:title>
+        <dct:description><![CDATA["errratio":2,"remove":true,"url":"desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'square1x10','det':10,'dets':[10],'max':1,'min':1},{'id':'square1x10x2','det':10,'dets':[10],'max':2,'min':11},{'id':'square1x10x3','det':10,'dets':[10],'max':3,'min':21}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(d*val.max-(val.min)))+val.min; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":6,"tagsize":0.6]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez différentes cases[/b] pour que la part de cases rouges soit égale à la [red]fraction suivante[/red].","fontex":0.8]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>division</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
         <dct:alternative>ft12b</dct:alternative>
     </rdf:Description>
     
