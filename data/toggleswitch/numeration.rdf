@@ -11,6 +11,7 @@
          g : count candles
          m : count matches
          e : space between number class
+         f : fraction/decimal
     -->
     
     <rdf:Description>
@@ -733,5 +734,18 @@
         <dct:coverage xml:lang="fr-FR">CM2</dct:coverage>
     </rdf:Description>
     
+    
+    <rdf:Description>
+        <dct:identifier>f01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Valider des propositions générales relatives à une illustration.</dct:title>
+        <dct:description><![CDATA["class":"small","states":{ "nb":2,"style":[{"background-image":"url('res/img/default/icon/check_unchecked01.svg')"},{"background-image":"url('res/img/default/icon/check_checked01.svg')"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"legend":["[img]res/img/svginventoryicons/hardware/calculator01.svg[/img]Dans le nombre [h1]734.321[/h1]","[img]res/img/svginventoryicons/hardware/calculator01.svg[/img]Dans le nombre [h1]601.908[/h1]"],"values":[{"template":"check5r","result":"10010","t":["Les chiffres des [b]dizaines[/b] et des [b]dixièmes[/b] sont [red]égaux[/red].","Le chiffre des [b]unités[/b] est le [red]double[/red] de celui des [b]dixièmes[/b].","Le chiffre des [b]dizaines[/b] est [red]inférieur[/red] au chiffre des [b]centièmes[/b].","Le chiffre des [b]dixièmes[/b] est égal à la [red]somme[/red] du chiffre des [b]centièmes[/b] et de celui des [b]millièmes[/b].","Le chiffre des [b]millièmes[/b] est [red]3[/red]."]},{"template":"check5r","result":"01011","t":["Le chiffre des [b]dixièmes[/b] est [red]0[/red].", "Le chiffre des [b]dizaines[/b] est [red]0[/red].","Le chiffre des [b]centaines[/b] est plus [red]petit[/red] que le chiffre des [b]centièmes[/b].","Le chiffre des [b]unités[/b] est [red]1[/red].","Le chiffre des [b]centièmes[/b] est plus [red]petit[/red] que le chiffre des [b]unités[/b]."]}],"exercice":"Cochez les [b]affirmations exactes[/b]."]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>mathematics</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>f01</dct:alternative>
+        <dct:source>res/img/svginventoryicons/hardware/calculator01.svg</dct:source>
+    </rdf:Description>
     
 </rdf:RDF>

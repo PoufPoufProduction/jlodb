@@ -18,6 +18,7 @@
         illustration: "",                                       // Add an illustration (text or image)
         errratio    : 1,                                        // Ratio error
         fontex      : 1,
+        fonttag     : 1,
         debug       : true                                      // Debug mode
     };
 
@@ -32,7 +33,8 @@
         "\\\[h1\\\]([^\\\[]+)\\\[/h1\\\]",          "<div style='text-align:center; font-size:3em;font-weight:bold;'>$1</div>",
         "\\\[img\\\]([^\\\[]+)\\\[/img\\\]",        "<div style='width:100%'><img src='$1' alt=''/></div>",
         "\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='icon' style='font-size:1.2em;float:left'><img src='$1' alt=''/></div>",
-        "\\\[icon2\\\]([^\\\[]+)\\\[/icon2\\\]",    "<div class='icon' style='font-size:2em;float:left'><img src='$1' alt=''/></div>"
+        "\\\[icon2\\\]([^\\\[]+)\\\[/icon2\\\]",    "<div class='icon' style='font-size:2em;float:left'><img src='$1' alt=''/></div>",
+        "\\\[math\\\]([^\\\[]+)\\\[/math\\\]",      "<div class='math'><math>$1</math></div>"
     ];
 
     var onClicks = {
@@ -237,8 +239,17 @@
                     $this.find("#exercice #content").html(helpers.format(settings.exercice));
                 } else {
                     $this.find("#exercice #content").html(helpers.format(settings.exercice.value));
-                    if (settings.current.tag) { $this.find("#exercice #tag").html(settings.current.tag).show(); }
-                    if (settings.exercice.font) { $this.find("#exercice #content").css("font-size",settings.exercice.font+"em"); }
+                    if (settings.current.tag) {
+                        if ($.isArray(settings.current.tag)) {
+                            $this.find("#exercice #tag>div").html(settings.current.tag[settings.it%settings.current.tag.length]).parent().show();
+                        }
+                        else {
+                            $this.find("#exercice #tag>div").html(settings.current.tag).parent().show();
+                        }
+                        $this.find("#exercice #tag>div").css("font-size",settings.fonttag+"em");
+                    }
+                    if (settings.exercice.font) { $this.find("#exercice #content").css("font-size",settings.exercice.font+"em");
+                    }
                 }
                 $this.find("#exercice").show();
             } else

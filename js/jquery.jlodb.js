@@ -533,8 +533,8 @@ var nodemathtype = { final:1, rootonly:2, commutative :4, associative:8 };
                 }
 
                 size = (this.l&&!this.abstract)?this.l:1-(ret.toString().length-1)*0.2;
-                if (size<0.2 && (!_args || !_args.mathml) )     { ret = ret.substr(0,3)+"~"; size=0.4; }
-                if (size!=1 &&  (!_args || !_args.onlytext) )   { ret = "<span style='font-size:"+size+"em;'>"+ret+"</span>"; }
+                if (size<0.2 && (!_args || (!_args.mathml && !_args.onlytext)) )  { ret = ret.substr(0,3)+"~"; size=0.4; }
+                if (size!=1 &&  (!_args || !_args.onlytext) )                   { ret = "<span style='font-size:"+size+"em;'>"+ret+"</span>"; }
 
                 return ret;
             };
