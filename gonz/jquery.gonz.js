@@ -282,10 +282,10 @@
                         if (text.search("xlink:href")==-1)  { text = text.replace(/href/,'xlink:href'); }
 
                         $elt.svg("destroy");
-                        $elt.html("<img title='avatar' src='data:image/svg+xml;charset=utf-8,"+encodeURIComponent(text)+"' "+
-                                  "onclick='$(this).closest(\".gonz\").gonz(\"callback\");' "+
-                                  "ontouchstart='$(this).closest(\".gonz\").gonz(\"callback\");event.preventDefault();' "+
-                                  "/>");
+                        $elt.html("<div onclick='$(this).closest(\".gonz\").gonz(\"callback\");' "+
+                                  "ontouchstart='$(this).closest(\".gonz\").gonz(\"callback\");event.preventDefault();' >"+
+                                  "<img title='avatar' src='data:image/svg+xml;charset=utf-8,"+encodeURIComponent(text)+"'/>"+
+                                  "</div>");
                         $this.find("#export").show();
                 }});
         }
