@@ -70,9 +70,6 @@
                 var settings = helpers.settings($this);
                 if (settings.context.onload) { settings.context.onload($this); }
 
-                // Resize the template
-                $this.css("font-size", Math.floor((Math.min($this.width(),$this.height())-7)/5)+"px");
-
                 // Locale handling
 
                 if(settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }

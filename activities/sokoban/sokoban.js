@@ -69,8 +69,6 @@
             build: function($this) {
                 var settings = helpers.settings($this);
                 if (settings.context.onload) { settings.context.onload($this); }
-                $this.css("font-size", ($this.height()/12)+"px");
-
                 // Convert from xsb
                 if (!settings.board && settings.xsb) { helpers.xsb($this); }
 

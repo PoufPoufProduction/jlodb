@@ -96,9 +96,7 @@
                 var settings = helpers.settings($this);
 
                 // Send the onLoad callback
-                if (settings.context.onload) { settings.context.onload($this); }
-
-                $this.css("font-size", ($this.height()/12)+"px");
+                if (settings.context.onload) { settings.context.onload($this); } 
                 $this.find("#board").css("font-size", settings.font+"em");
 
                 // Locale handling

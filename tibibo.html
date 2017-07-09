@@ -876,8 +876,6 @@ var tibibo = {
 
 
 $(window).ready(function() {
-    // SPECIAL STUFF
-    $("#activity").ontouchmove = function(e) { e.preventDefault(); }
 
     var a = location.search.substring(1).split('&');
     for (var i in a) { var p= a[i].split('='); tibibo.args[p[0]]=p[1]; }
@@ -931,13 +929,6 @@ $(window).ready(function() {
         onmenu:  function($this) { $('#activity').jlodb('close', true); },
         onnext:  function($this) { $('#activity').jlodb('close',false);$('#omenu').menu('next'); } 
     });
-    
-    // GET AND RESIZE THE BEST PANEL
-    var x = Math.floor($(window).width()/16);
-    var y = Math.floor($(window).height()/12);
-    $("body").css("font-size", (Math.min(x,y))+"px");
-    $("#bomain").css("margin-top", Math.floor(($(window).height()-$("#bomain").height())/2-2)+"px").show();
-
 
 });
     </script>

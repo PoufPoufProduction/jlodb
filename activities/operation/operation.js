@@ -94,9 +94,6 @@
                 var settings = helpers.settings($this);
                 if (settings.context.onload) { settings.context.onload($this); }
 
-                // Generic resize
-                $this.css("font-size", ($this.height()/12)+"px");
-
                 // Base and nbdec
                 $this.find("#base").toggle(settings.base!=10).find("span").html(settings.base);
                 $this.find("#nbdec").toggle(settings.nbdec!=0).find("span").html(settings.nbdec);

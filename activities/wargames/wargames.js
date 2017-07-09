@@ -408,8 +408,6 @@
                 // Send the onLoad callback
                 if (settings.context.onload) { settings.context.onload($this); }
 
-                $this.css("font-size", ($this.height()/12)+"px");
-
                 // Mode
                 $this.find("#header #playmode").html("<img src='res/img/control/"+
                     (settings.playmode==0?"group01.svg":"single01.svg")+"'/>");

@@ -73,8 +73,6 @@
                 var settings = helpers.settings($this);
                 if (settings.context.onload) { settings.context.onload($this); }
 
-                // Resize the template
-                $this.css("font-size", ($this.height()/12)+"px");
 
                 var nb = settings.data.length*2;
                 settings.still = settings.data.length;

@@ -258,10 +258,6 @@ game = {
 }
 
 $(window).ready(function() {
-
-    // SPECIAL STUFF
-    document.ontouchmove = function(e) { e.preventDefault(); }
-
     $.getJSON("api/checkdb.php", function (_check) {
         if (_check.status=="success") {
             game.lang=_check.lang;
@@ -298,12 +294,6 @@ $(window).ready(function() {
     $("#score").score({
         onnext:  function($this) { $('#activity').jlodb('close', true); } 
     });
-
-    // GET AND RESIZE THE BEST PANEL
-    var x = Math.floor($(window).width()/16);
-    var y = Math.floor($(window).height()/12);
-    $("body").css("font-size", (Math.min(x,y))+"px");
-    $("#main").css("margin-top", Math.floor(($(window).height()-$("#main").height())/2)+"px");
 
     $("#gpopup1").show();
 });

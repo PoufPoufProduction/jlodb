@@ -31,14 +31,8 @@ var jlodb = function() {
 }
 
 $(window).ready(function() {
-    // SPECIAL STUFF
-    document.ontouchmove = function(e) { e.preventDefault(); }
 
-    // GET AND RESIZE THE BEST PANEL
-    var x = Math.floor($(window).width()/16);
-    var y = Math.floor($(window).height()/12);
-    $("body").css("font-size", (Math.min(x,y))+"px");
-    $("body>div").css("margin-top", Math.floor(($(window).height()-$("body>div").height())/2-2)+"px").show();
+	$(window).resize();
 
     // HANDLE ARGUMENTS
     var args = {}

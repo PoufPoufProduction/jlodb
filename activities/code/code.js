@@ -96,8 +96,6 @@
                 // Send the onLoad callback
                 if (settings.context.onload) { settings.context.onload($this); }
 
-                $this.css("font-size", ($this.height()/12)+"px");
-
                 // Add specific value
                 for (var i in settings.values) {
                     $this.find("#ops #va").append("<div class='a va v s c' id='"+i+"'><div class='label'>"+i+"</div></div>");

@@ -70,8 +70,6 @@
                 // Send the onLoad callback
                 if (settings.context.onload) { settings.context.onload($this); }
 
-                $this.css("font-size", ($this.height()/12)+"px");
-
                 // BUILD TABLE
                 var size = Math.floor(($this.find("#board").height()*0.9)/(settings.data.length*2));
                 var size = Math.floor(size/4)*4;

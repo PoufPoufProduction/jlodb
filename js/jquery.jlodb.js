@@ -1,3 +1,14 @@
+// SPECIAL STUFF
+document.ontouchmove = function(e) { e.preventDefault(); }
+
+// IS A CSS ALTERNATIVE POSSIBLE ?
+$(window).resize(function() {
+    var x = Math.floor($(window).width()/16);
+    var y = Math.floor($(window).height()/12);
+    $("body").css("font-size", (Math.min(x,y))+"px");
+    $("body>div").css("margin-top", Math.floor(($(window).height()-$("body>div").height())/2-2)+"px");
+});
+
 //================
 // JLODB PLUGIN
 //================

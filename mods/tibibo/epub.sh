@@ -7,9 +7,11 @@ if [ ! -f "index.html" ]; then
 fi
 
 if [ "$#" -lt 2 ]; then
-    echo "usage : `basename $0` host [json file|tibibo id]"
+    echo "usage : `basename $0` host [json file|tibibo id] [epub|cordova]"
     exit 1
 fi
+
+type="epub"
 
 uuid()
 {
@@ -54,9 +56,11 @@ rm -rf $dest
 # GET JSON FILE
 file=""
 if [ -f $2 ]; then file=$2
-else if [ -f "$2.json" ]; then file="$2.json"
+else if [ -f "$2.json" ]; then
+    echo "+ Get book from file"
+	file="$2.json"
 else
-    echo "get book from website"
+    echo "+ Get book from website"
     file="p_$2.tmp"
     wget "$1/mods/tibibo/api/book.php?value=$2" -O p_json.tmp
     cat p_json.tmp | sed -e 's/^.*description":\[//g' -e 's/\],  "comment".*$//g' > $file
@@ -88,7 +92,6 @@ done
 echo "zzz:{}" >> p_activities.tmp
 echo "}" >> p_activities.tmp
 echo "... OK"
-
 
 # BUILD FOLDER
 echo ----- PREPARE folder $dest -----
@@ -124,7 +127,9 @@ if [ ! `echo $line | grep "[^ ]" | wc -l` -eq 0 ] ; then
             
         wget "$1/api/exercice.php?detail&source&nolocale&id=$label" -O p_json.tmp
         echo "var exercices={" > p_exercices.tmp
-        for ex in `cat p_json.tmp | sed -e 's/{"id":/\n{"id":/g'` ; do
+        cat p_json.tmp | sed -e 's/{\("id":"[^"]*","label"\)/\n{\1/g'
+        
+        for ex in `cat p_json.tmp | sed -e 's/{\("id":"[^"]*","label"\)/\n{\1/g'` ; do
             if [ `echo $ex | grep activity | wc -l` -eq 1 ] ; then
                 id=`echo $ex | sed -e 's/^.*id":"\([^"]\+\)","label":.*$/\1/g'`
                 source=`echo $ex | sed -e 's/^.*source":"\([^"]\+\).*$/\1/g'`
@@ -152,7 +157,6 @@ if [ ! `echo $line | grep "[^ ]" | wc -l` -eq 0 ] ; then
                     cp -rf $s $dest/OEBPS/$d
                 done
                 IFS=$'\n'
-                
             fi
         done
         
@@ -165,7 +169,8 @@ if [ ! `echo $line | grep "[^ ]" | wc -l` -eq 0 ] ; then
         cat p_exercices.tmp >> $dest/OEBPS/page_$p.xhtml
         echo "zz:0};" >> $dest/OEBPS/page_$p.xhtml
         
-        cat mods/tibibo/epub/page_footer.xhtml | sed -e "s/%content%/${value}/g" >> $dest/OEBPS/page_$p.xhtml
+        
+        cat mods/tibibo/epub/page_footer.xhtml | sed -e "s/%content%/Titre/g" >> $dest/OEBPS/page_$p.xhtml
         
         rm p_header$p.tmp p_locale$p.tmp p_exercices.tmp
         

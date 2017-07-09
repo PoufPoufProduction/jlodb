@@ -99,7 +99,6 @@
             build: function($this) {
                 var settings = helpers.settings($this);
                 if (settings.context.onload) { settings.context.onload($this); }
-                $this.css("font-size", ($this.height()/12)+"px");
 
                 var vWidth = Math.floor($this.find("#values").width());
                 $this.find("#values").css("font-size", settings.font+"em");

@@ -109,9 +109,6 @@
                 
                 if (settings.context.onload) { settings.context.onload($this); }
 
-                // Resize the template
-                $this.css("font-size", ($this.height()/12)+"px");
-
                 // COMPUTE RATIO
                 var vWidth = $this.find("#board").width();
                 if ($(settings.svg.root()).attr("title")) {

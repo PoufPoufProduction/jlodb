@@ -562,19 +562,11 @@ jlodb = {
 };
 
 $(window).ready(function() {
-    // SPECIAL STUFF
-    $("#activity").ontouchmove = function(e) { e.preventDefault(); }
 
     $("#score").score({
         onreload:function($this) { $('#activity').jlodb('reload'); },
         onmenu:  function($this) { $('#activity').jlodb('close', true); } 
     });
-    
-    // GET AND RESIZE THE BEST PANEL
-    var x = Math.floor($(window).width()/16);
-    var y = Math.floor($(window).height()/12);
-    $("body").css("font-size", (Math.min(x,y))+"px");
-    $("body>div").css("margin-top", Math.floor(($(window).height()-$("body>div").height())/2-2)+"px").show();
 
     jlodb.home();
 });

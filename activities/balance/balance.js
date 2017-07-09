@@ -105,8 +105,6 @@
                 // Send the onLoad callback
                 if (settings.context.onload) { settings.context.onload($this); }
 
-                $this.css("font-size", ($this.height()/12)+"px");
-
                 // Handle weights
                 if (settings.weights) {
                     $("#weights>g",settings.svg.root()).hide();

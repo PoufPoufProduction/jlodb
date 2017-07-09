@@ -160,7 +160,6 @@
                 }
 
                 $this.find("#data").html(content);
-                $this.css("font-size", ($this.height()/12)+"px");
                 $this.find("#options").css("font-size",settings.font+"em");
                 $this.find("#data").css("font-size",settings.font+"em");
 

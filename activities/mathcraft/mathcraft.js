@@ -665,8 +665,6 @@
                 // Send the onLoad callback
                 if (settings.context.onload) { settings.context.onload($this); }
 
-                $this.css("font-size", ($this.height()/12)+"px");
-
                 // Build panel droppable
                 $this.find("#editor").editor({
                     size: [3.5,5.5],

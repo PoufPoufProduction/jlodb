@@ -88,8 +88,6 @@
             build: function($this) {
                 var settings = helpers.settings($this);
 
-                $this.css("font-size", ($this.height()/12)+"px");
-
                 var svgContent = "<svg xmlns:svg='http://www.w3.org/2000/svg' xmlns='http://www.w3.org/2000/svg' "+
                             " width='100%' height='100%' viewBox='0 0 "+settings.size[0]+" "+settings.size[1]+"' id='jdraw'><def><style>"+
                             "svg#jdraw path,circle,line,rect {fill:none; stroke:black; stroke-linecap:round;stroke-linejoin:round}"+

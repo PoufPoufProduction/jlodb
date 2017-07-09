@@ -217,7 +217,6 @@
                 }
 
                 if (settings.context.onload) { settings.context.onload($this); }
-                 $this.css("font-size", Math.floor($this.width()/10)+"px");
                  
                 if (settings.decimal)   { $this.find("#keydec").removeClass("disable"); }
                 if (settings.negative)  { $this.find("#keyneg").removeClass("disable"); }

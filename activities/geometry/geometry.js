@@ -101,9 +101,6 @@
                 // SEND THE ONLOAD CALLBACK
                 if (settings.context.onload) { settings.context.onload($this); }
 
-                // RESIZE THE TEMPLATE
-                $this.css("font-size", ($this.height()/12)+"px");
-
                 // HANDLE THE BUTTONS
                 if (settings.available) {
                     $this.find(".action").addClass("disable");

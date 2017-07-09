@@ -84,9 +84,7 @@
 
                 // Send the onLoad callback
                 if (settings.context.onload) { settings.context.onload($this); }
-                $this.css("font-size", ($this.height()/12)+"px");
-
-                //
+                
                 $this.find("#menu>div").hide();
                 for (var i in settings.questions) {
                     $this.find("#menu #c"+(parseInt(i)+1)+" .legend").html(settings.questions[i].label);

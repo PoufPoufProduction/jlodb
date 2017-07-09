@@ -99,7 +99,6 @@
                 // RESIZE THE TEMPLATE
                 $this.find("#board").addClass(settings.type);
                 $this.find("#splashex").addClass(settings.type);
-                $this.css("font-size", Math.floor($this.height()/12)+"px");
                 $this.find("#interactive>div").css("font-size",settings.font+"em");
 
                 // DISPLAY STUFF

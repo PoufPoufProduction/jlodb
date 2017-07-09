@@ -119,8 +119,7 @@
 
                 // Send the onLoad callback
                 if (settings.context.onload) { settings.context.onload($this); }
-
-                $this.css("font-size", ($this.height()/12)+"px");
+                
 
                 // Build the nodes
                 if (typeof(settings.dots)=="string") {

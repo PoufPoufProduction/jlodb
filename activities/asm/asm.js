@@ -157,9 +157,6 @@
                 var settings = helpers.settings($this);
                 if (settings.context.onload) { settings.context.onload($this); }
 
-                // Resize the template
-                $this.css("font-size", ($this.height()/12)+"px");
-
                 // Build source code
                 if (settings.ops.length) {
                     $this.find("#source #ops .a").addClass("d");

@@ -90,8 +90,6 @@
                 // Send the onLoad callback
                 if (settings.context.onload) { settings.context.onload($this); }
 
-                $this.css("font-size", ($this.height()/12)+"px");
-
                 // Locale handling
 
                 if (settings.locale) { $.each(settings.locale, function(id,value) {

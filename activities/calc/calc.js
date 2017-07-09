@@ -117,8 +117,6 @@
                 // Send the onLoad callback
                 if (settings.context.onload) { settings.context.onload($this); }
 
-                $this.css("font-size", ($this.height()/12)+"px");
-
                 if (settings.nodec) { $this.find("#paddec").addClass("graykeypad"); }
                 if (settings.noneg) { $this.find("#padneg").addClass("graykeypad"); }
                 

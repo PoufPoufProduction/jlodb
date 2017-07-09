@@ -115,8 +115,6 @@
 
                 // Send the onLoad callback
                 if (settings.context.onload) { settings.context.onload($this); }
-
-                $this.css("font-size", ($this.height()/12)+"px");
                 
                 $this.bind("touchstart mousedown", function(_event) {
                     var e = (_event && _event.originalEvent &&
