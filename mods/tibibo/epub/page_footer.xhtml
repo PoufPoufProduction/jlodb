@@ -1,5 +1,10 @@
 
 jSav = jQuery;
+
+$(window).ready(function() {
+
+	$(window).resize();
+});
 $(window).load(function() {
     // Some epub readers overwrite jQuery with their own instance. WTF !!!
     setTimeout(function() {

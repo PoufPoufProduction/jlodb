@@ -127,7 +127,6 @@ if [ ! `echo $line | grep "[^ ]" | wc -l` -eq 0 ] ; then
             
         wget "$1/api/exercice.php?detail&source&nolocale&id=$label" -O p_json.tmp
         echo "var exercices={" > p_exercices.tmp
-        cat p_json.tmp | sed -e 's/{\("id":"[^"]*","label"\)/\n{\1/g'
         
         for ex in `cat p_json.tmp | sed -e 's/{\("id":"[^"]*","label"\)/\n{\1/g'` ; do
             if [ `echo $ex | grep activity | wc -l` -eq 1 ] ; then
