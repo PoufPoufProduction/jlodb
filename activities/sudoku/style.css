@@ -1,11 +1,9 @@
-.sudoku                         { 
-                     background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat;}
+.sudoku                         { font-size:.45em; background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat;}
 .sudoku table                   { border-spacing:0;  font-size:1em; }
 .sudoku td                      { margin:0; padding:0; }
 .sudoku td.grid3x3              { border: 1px solid rgb(53,34,34); }
-.sudoku #menu                   { float:left; padding:.1em; margin-top:2em; }
-.sudoku #menu #comment          { font-style:italic; width:6em; height:8em; margin-bottom:.1em; border-radius:.5em .5em 0 0;
-                                  background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat; }
+.sudoku #menu                   { float:left; padding:.1em; margin-top:2em; font-size:1.45em;}
+.sudoku #menu #comment          { font-style:italic; width:6em; height:8em; margin-bottom:.1em; border-radius:.5em .5em 0 0; background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat; }
 .sudoku #menu #comment>div      { font-size:0.4em; margin:.5em; text-align:justify; }
 .sudoku #menu #toggle           { width:6em; height:6em; cursor:pointer; margin-bottom:.1em;
                                   background-color:rgba(150,150,150,0.9);
@@ -15,7 +13,7 @@
                                   text-align:center; cursor:pointer; background-color:rgba(255,255,255,0.9);
                                   font-weight:bold; color:rgb(53,34,34); }
 .sudoku #grid                   { padding-top:2px; }
-.sudoku #keypad                 { position:absolute; overflow:visible; display:none; font-weight:bold; }
+.sudoku #keypad                 { position:absolute; overflow:visible; display:none; font-weight:bold; font-size:1.75em; }
 .sudoku #keypad div.k           { font-size:.8em; width:1.2em; height:1.2em; overflow:hidden; text-align:center;
                            background-image:url("../../res/img/asset/fx/target01.svg"); border-radius:0.5em;
                            background-size:100%; color:rgb(17,95,130); background-position:0 0; cursor:pointer;
@@ -69,7 +67,7 @@
 .sudoku div#splash div.icon     { border:0; border-radius:.5em;}
 .sudoku #effects                { width:1em; height:1em; position:absolute; z-index:2; font-size:15em; top:2%; left:60%; display:none;}
 
-.sudoku #check { font-size:.5em; cursor:help; border:.2em solid white; border-radius:.2em; position:absolute; top:83%; left:20%; background-color:gray; }
+.sudoku #check { font-size:.5em; cursor:help; border:.2em solid white; border-radius:.2em; position:absolute; top:80%; left:20%; background-color:gray; }
 .sudoku #mask { display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.1); }
 .sudoku #mask>div { font-size:1.2em; background-color:rgba(255,255,255,0.9); border:1px solid black; border-width:1px 0 1px 0; width:80%; padding:.2em 10%; height:25%; margin:20% auto; }
 .sudoku #mask .icon { float:left; margin:.5em 4em; background-color:gray; cursor:pointer; font-size:.8em; }

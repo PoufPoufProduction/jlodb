@@ -72,12 +72,6 @@
                 var settings = helpers.settings($this);
                 if (settings.context.onload) { settings.context.onload($this); }
 
-                // Resize the template
-                var fontSize= Math.floor(($this.height()-11)/27);
-                $this.css("font-size", fontSize+"px");
-                $this.find("#menu").css("font-size", Math.floor(($this.width()-$this.height())/6)+"px");
-                $this.find("#keypad").css("font-size", Math.floor(2*fontSize)+"px");
-
                 // Update the grid
                 $this.find("div.border").each(function(index) {
                     var r = Math.floor(Math.random()*2)+1;
