@@ -122,6 +122,8 @@
                         var e = (_event && _event.originalEvent &&
                              _event.originalEvent.touches && _event.originalEvent.touches.length)?
                              _event.originalEvent.touches[0]:_event;
+                                  
+                        settings.ratio = $this.width()/640;
 
                         settings.elt.id = $(this).attr("id");
                         settings.elt.pos = [ e.clientX, e.clientY ];
@@ -471,7 +473,6 @@
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 $this.find("#splashex").hide();
-                settings.ratio = $this.width()/640;
                 helpers.build($this);
             },
             quit: function() {

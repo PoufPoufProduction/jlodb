@@ -97,7 +97,6 @@
             build: function($this) {
                 var settings = helpers.settings($this);
                 if (settings.context.onload) { settings.context.onload($this); }
-                $this.css("font-size", Math.floor(($this.height()-7)/9)+"px");
 
                 // overview
                 $this.find("#overview div.icon.img").each(function(_id) {
@@ -125,10 +124,13 @@
             }
         },
         // Display the discovered elements
-        overview: function($this) {
+        overview: function($this, _animid) {
             var settings = helpers.settings($this);
             $this.find("#overview div.img img").each(function(index) {
-                if (index<=settings.level && !$(this).children().length) { $(this).show(); }
+                if (index<=settings.level && !$(this).children().length) {
+                    $(this).show();
+                    if (_animid==index) { $(this).css("opacity",0).animate({opacity:1},800); }
+                }
             });
         },
         effect: function($this, _i, _j, _style) {
@@ -587,22 +589,56 @@
                         }
                     }
                     if (Value>10) { Value = 10; }
-                    if (Value==settings.level && !isfrozen ) { settings.level++; helpers.overview($this);}
+                    if (Value==settings.level && !isfrozen ) {
+                        settings.level++;
+                        $this.find("#neweltfx").css("top",(0.05+Math.floor(settings.level/3))+"em")
+                                                .css("left",(5.08+settings.level%3)+"em").show();
+                        $this.find("#neweltfx>div>div").addClass("running");
+                        helpers.overview($this,settings.level);
+                        helpers.alchemist($this,"happy");
+                        setTimeout(function() {
+                            $this.find("#neweltfx").hide();
+                            $this.find("#neweltfx>div>div").removeClass("running");
+                            } , 1000);
+                    }
 
                     if (!isfrozen) { settings.board[y][x] = helpers.tile($this,x,y,(200+Value+1)); }
                 }
             }
             return ret;
         },
+        alchemist:function($this, _type) {
+            var settings = $this.data("settings");
+            settings.alchemist = true;
+            $this.find("#newelt .icon").hide();
+            $this.find("#newelt .label").hide();
+            $this.find("#newelt #default").show();
+            $this.find("#newelt").css("left","-13em").show().animate({left:"-.2em"},400);
+            $this.find("#newelt #"+_type+"label").show();
+            
+            setTimeout(function() { $this.find("#newelt #default").hide(); $this.find("#newelt #"+_type).show();},1000);
+            setTimeout(function() { $this.find("#newelt").animate({left:"-13em"},300,function() { $(this).hide(); settings.alchemist = false; }); } , 1800);
+            
+        },
         // compute the score
         score:function($this,level) {
             var settings = $this.data("settings");
             var l = 0;
 			var transmut = false;
+            var d = settings.alchemist?2500:0;
 
             if (settings.goals) {
                 l = (helpers.goals.check($this, false)!=s.success?0:5);
-				if (l==0) { transmut = true; $this.find("#wrong").show(); } else { $this.find("#good").show(); }
+                for (var i=0; i<6; i++) for (var j=0; j<2; j++) { if (settings.board[j][i]!=0) { l = 0; } }
+                if (d) { settings.waitend=500; }
+				if (l==0) {
+                    transmut = true;
+                    $this.find("#wrong").show();
+                    setTimeout(function(){helpers.alchemist($this,"lost")},d);
+                } else {
+                    $this.find("#good").show();
+                    setTimeout(function(){helpers.alchemist($this,"win")},d);
+                }
                 if (l==5 && settings.ref) {
                     if (settings.points<settings.ref*0.5)   { l = 2; } else
                     if (settings.points<settings.ref*0.8)   { l = 3; } else
@@ -614,6 +650,8 @@
                 l = settings.level-6;
                 if (l>5) { l=5; }
                 if (l<0) { l=0; }
+                
+                setTimeout(function(){helpers.alchemist($this,"lost")},d);
             }
             
             if (transmut) {
@@ -643,7 +681,7 @@
                 else {
                     settings.interactive = false;
                     settings.score = helpers.score($this);
-                    setTimeout(function() { helpers.end($this); }, 2000);
+                    setTimeout(function() { helpers.end($this); }, 3000+settings.waitend);
                 }
             }
         }
@@ -662,6 +700,8 @@
                     points          : 0,
                     pieces          : 0,
                     bonusdone       : false,
+                    alchemist       : false,
+                    waitend         : 0,
                     bonus           : [
  [ "stone","null01",0 ],
  [ "stone1","one01",0 ], ["stone2","two01",0], ["stone3","three01",0], ["stone4","four01",0], ["stone5","five01",0],
@@ -712,7 +752,7 @@
                         }
                     }
                     helpers.addpoints($this, 0);
-                    helpers.overview($this);
+                    helpers.overview($this,-1);
                     helpers.preview($this);
                     setTimeout(function() { helpers.drop($this,true); }, settings.init?500:0);
                 }

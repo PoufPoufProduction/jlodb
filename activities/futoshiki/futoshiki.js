@@ -71,10 +71,9 @@
                 if (settings.context.onload) { settings.context.onload($this); }
 
                 // BUILD TABLE
-                var size = Math.floor(($this.find("#board").height()*0.9)/(settings.data.length*2));
-                var size = Math.floor(size/4)*4;
+                var size = 5/(settings.data.length);
 
-                html="<table id='t' style='font-size:"+size+"px;'>";
+                html="<table id='t' style='font-size:"+size+"em;'>";
                 for (var i=0; i<settings.data.length; i++) {
                     html+="<tr"+(i%2?" class='inter'":"")+">";
                     for (var j=0; j<settings.data[i].length; j++) {

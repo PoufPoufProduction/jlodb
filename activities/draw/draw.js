@@ -107,11 +107,8 @@
                              _event.originalEvent.touches && _event.originalEvent.touches.length)?
                              _event.originalEvent.touches[0]:_event;
 
-                    if (!settings.ratio) {
-                        settings.ratio  = settings.size[0]/$(this).width();
-                        settings.offset = [$(this).offset().left, $(this).offset().top];
-                    }
-
+                    settings.ratio  = settings.size[0]/$(this).width();
+                    settings.offset = [$(this).offset().left, $(this).offset().top];
                     settings.first  = [ e.clientX, e.clientY ];
                     settings.last   = [ e.clientX, e.clientY ];
                     settings.path = settings.svg.createPath();

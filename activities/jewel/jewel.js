@@ -713,6 +713,7 @@
                     var e = (_event && _event.originalEvent &&
                              _event.originalEvent.touches && _event.originalEvent.touches.length)?
                              _event.originalEvent.touches[0]:_event;
+                    settings.width = $this.find("#board .cell").first().width();
                     var id      = $(this).css("z-index",3).attr("id");
                     var m       = id.match(/c([0-9]*)x([0-9]*)/);
                     var cell    = helpers.cell($this, m[1], m[2]);
@@ -768,7 +769,6 @@
             },
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                settings.width = $this.find("#board .cell").first().width();
                 settings.interactive = true;
             },
             quit: function() {

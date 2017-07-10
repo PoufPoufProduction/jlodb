@@ -122,10 +122,8 @@
                              _event.originalEvent.touches[0]:_event;
 
                    
-                    if (!settings.ratio) {
-                            settings.ratio  = 640/$(this).width();
-                            settings.offset = [$(this).offset().left, $(this).offset().top];
-                    }
+                    settings.ratio  = 640/$(this).width();
+                    settings.offset = [$(this).offset().left, $(this).offset().top];
                     var x = (e.clientX - settings.offset[0])*settings.ratio;
                     var y = (e.clientY - settings.offset[1])*settings.ratio;
 

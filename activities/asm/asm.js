@@ -15,7 +15,7 @@
         footer      : 0,
         font        : 0,                                        // Font-size of the source
         export      : false,                                    // Show code
-        debug       : true                                     // Debug mode
+        debug       : true                                      // Debug mode
     };
 
     var regExp = [
@@ -254,9 +254,14 @@
                 var vRunning = Math.floor($this.find("#running").width()/12)*12;
                 $this.find("#running").css("font-size",vRunning+"px");
 
-                if ($this.find("#code #lines").height()<$this.find("#code").height()) {
-                    var html="<div class='filler' style='height:"+($this.find("#code").height()-$this.find("#code #lines").height()-2)+
-                             "px;margin-top:2px;'></div>";
+                var nblines = $this.find("#code #lines .line").length;
+                var total, correc;
+                if ($this.hasClass("large"))        { total = 9;  correct =-0.2; }
+                else if ($this.hasClass("huge"))    { total = 8;  correct = 0; }
+                else                                { total = 11; correct = 0.15; }
+                
+                if (nblines<total) {
+                    var html="<div class='filler' style='height:"+((total-nblines)*1.5+correct)+"em;'></div>";
                     $this.find("#code #lines").append(html);
                 }
 

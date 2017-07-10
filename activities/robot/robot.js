@@ -100,12 +100,10 @@
                 // +8 : 4 for the tile thickness, 4 for the robot head in the top of the board
                 var vx = ((xmax-xmin)*2)+8+settings.padding, vy = (ymax-ymin+2)*4, vv = Math.max(vx,vy);
                 settings.scale=(22/(vv+settings.margin*2));
-                var font = Math.floor($this.height()*settings.scale/12);
-                $this.find("#tiles").css("font-size", font+"px");
-                var around = Math.floor(($this.height() - font*12/settings.scale)/2);
+                $this.find("#tiles").css("font-size", settings.scale+"em");
 
-                settings.offset=[-2*ymin+(vv-vy)/4+settings.margin/2 + around/font,
-                                 1+settings.padding/2-2*xmin+(vv-vx)/6+settings.margin/2 + around/font];
+                settings.offset=[-2*ymin+(vv-vy)/4+settings.margin/2,
+                                 1+settings.padding/2-2*xmin+(vv-vx)/6+settings.margin/2];
 
 
                 // Update the gui

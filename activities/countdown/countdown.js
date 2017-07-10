@@ -249,7 +249,8 @@
             if (settings.legend) {
                 var legend = settings.legend;
                 if ($.isArray(legend)) { legend = legend[settings.id%legend.length]; }
-                $this.find("#legend>div").html(helpers.format(legend)).parent().draggable({axis:'y',containment:'parent'}).show();
+                $this.find("#legend>div").html(helpers.format(legend)).parent().show();
+                $this.find("#legend").draggable({axis:'y',containment:'parent'});
             }
 
             if (settings.op) {

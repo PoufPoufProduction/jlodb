@@ -5,7 +5,9 @@ document.ontouchmove = function(e) { e.preventDefault(); }
 $(window).resize(function() {
     var x = Math.floor($(window).width()/16);
     var y = Math.floor($(window).height()/12);
-    $("body").css("font-size", (Math.min(x,y))+"px");
+    var r = 1;
+    var font=Math.floor(Math.min(x,y)/r)*r;
+    $("body").css("font-size", font+"px");
     $("body>div").css("margin-top", Math.floor(($(window).height()-$("body>div").height())/2-2)+"px");
 });
 

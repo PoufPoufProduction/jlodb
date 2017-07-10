@@ -1,4 +1,4 @@
-.alchemist     { background-image:url("../../res/img/default/pattern/grid01.svg"); background-repeat:repeat;}
+.alchemist                          { width:110% !important; font-size:1.3em;background-image:url("../../res/img/default/pattern/grid01.svg"); background-repeat:repeat;}
 .alchemist table                    { border-collapse:collapse; border-spacing:0;  font-size:1em; }
 .alchemist td                       { margin:0; padding:0; }
 .alchemist #banner                  { float:left; top:0; left:0; height:9.2em; width:1.5em; cursor:help; }
@@ -25,7 +25,7 @@
 .alchemist #board #timer            { display:none; background-color:gray; position:absolute; opacity:0.5; top:0; left:95.2%; width:1em; height:5.1em; font-size:.4em;}
 .alchemist #board #timer>div        { width:100%; height:0; background-color:red; }
 .alchemist #board.withtime #timer   { display:inherit; }
-.alchemist #board.withtime #points  { left:62%; }
+.alchemist #board.withtime #points  { left:60%; }
 .alchemist #board #points           { background-color:orange; color:white; border-radius:0 0 0 .5em; position:absolute; font-size:.4em; opacity:0.5; top:0; left:65%; width:5.3em; height:1.2em; font-weight:bold; }
 .alchemist #board #points.s #slide  { background-color:green; }
 .alchemist #board #points>div       { position:absolute; top:0; text-align:center; width:100%;}
@@ -65,3 +65,14 @@
 .alchemist #tutorial div.icon       { width:2em; height:2em; display:inline-block; border:0; background-color:transparent; }
 .alchemist .alphakeypad             { border-radius:.5em; cursor:pointer; }
 .alchemist .alert					{ z-index:4; display:none;position:absolute; font-size:4em; width:1em; height:1em; top:2%; left:50%; }
+
+
+.alchemist #newelt                  { position:absolute; top:80%; left:-.2em; padding-left:7em; font-size:.5em; width:5em; height:1.2em; background-color:#F56; color:white; white-space:nowrap; border:.2em white solid; border-radius:0 .5em .5em 0; overflow:visible; font-weight:bold; z-index:3; display:none; }
+.alchemist #newelt.lost             { background-color:black; }
+.alchemist #newelt .icon            { position:absolute; top:-0.872em; left:-0.1em; font-size:8em; display:none;}
+.alchemist #newelt .label           { display:none; overflow:visible; }
+
+.alchemist #neweltfx                { position:absolute; top:0.05em; left:5.08em; overflow:visible; font-size:1.5em; display:none; }
+.alchemist #neweltfx>div                { display:inline; }
+.alchemist #neweltfx #star05fx      { font-size:1.5em; margin-top:-.2em; margin-left:-.2em; }
+

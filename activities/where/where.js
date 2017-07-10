@@ -12,6 +12,7 @@
         font        : 1,                        // Font size
         fontex      : 1,
         effects     : true,                     // Display effects
+        width       : 640,
         debug       : true                     // Debug mode
     };
 
@@ -104,11 +105,7 @@
                 $this.find("#values").css("font-size", settings.font+"em");
 
                 // COMPUTE RATIO
-                var vReg = new RegExp("[ ]", "g");
-                var vSize = $(settings.svg.root()).attr("title").split(vReg);
-                var vWidth = $this.find("#keypad").width();
-                settings.ratio = vWidth/(vSize[2]-vSize[0]);
-                if (settings.ratio<=0) { settings.ratio=1; }
+                //if ($(settings.svg.root()).attr("title")) { settings.width = parseInt($(settings.svg.root()).attr("title")); }
 
                 // USER TEXT
                 if (settings.txt) {
@@ -160,7 +157,8 @@
                         var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
                                 event.originalEvent.touches[0]:event;
                                 
-
+                        settings.ratio = $this.width()/settings.width;
+                
                         if (!settings.timer.id) { settings.timer.id = setTimeout(function() { helpers.timer($this); }, 1000); }
                         if (settings.interactive) {
                             settings.elt = this;

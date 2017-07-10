@@ -269,6 +269,10 @@
             var i           = helpers.utility.XtoI($this, x);                       // THE I AXIS MOUSE COORDINATE
             var j           = helpers.utility.YtoJ($this, y);                       // THE J AXIS MOUSE COORDINATE
             var o           = helpers.closer($this, i, j );
+            
+            settings.board.pixelWidth = $this.find("#board").width();
+            settings.board.pixelHeight = $this.find("#board").height();
+            
             if (settings.controls.first) {
                 helpers.preview[settings.controls.action]($this, i, j, o);
             }
@@ -285,7 +289,7 @@
         },
         mousedown: function($this) {
             var settings    = helpers.settings($this); if (settings.finish) { return; }
-
+            
             if (settings.controls.preview) {
                 settings.svg.remove(settings.controls.preview);
                 settings.controls.preview = 0;
@@ -719,8 +723,6 @@
 
             // GET THE DIMENSION OF THE BOARD (SVG.TITLE IS USED TO GET THE WIDTH)
             var $main = $("#main", settings.svg.root());
-            settings.board.pixelWidth = $this.find("#board").width();
-            settings.board.pixelHeight = $this.find("#board").height();
             if ($(settings.svg.root()).attr("title")) { settings.board.svgWidth = parseInt($(settings.svg.root()).attr("title")); }
             settings.board.svgHeight = 3*settings.board.svgWidth/4;
             $main.attr("transform", "translate("+settings.translate[0]+","+settings.translate[1]+")");

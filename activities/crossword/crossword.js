@@ -140,11 +140,12 @@
             // BUILD TABLE
             var rbut = 0.9;
             var horiz = settings.horiz?1.2:1;
-            var size = Math.floor(Math.min((($this.find("#board").width()*0.98)/(settings.values[0].length+settings.margin)),
-                                           (($this.find("#board").height()*rbut)/(settings.values.length*horiz+settings.margin))));
-            var mtop= Math.floor(($this.find("#board").height()*rbut-(size*settings.values.length*horiz))/2);
-            var mleft= Math.floor(($this.find("#board").width()-(size*settings.values[0].length))/2);
-            html="<table style='font-size:"+size+"px;margin-top:"+mtop+"px;margin-left:"+mleft+"px;'>";
+            var size = Math.min((11/(settings.values[0].length+settings.margin)),
+                                (10/(settings.values.length*horiz+settings.margin)));
+            
+            var mtop= (10-(size*settings.values.length*horiz))/(2*size);
+            var mleft=(11-(size*settings.values[0].length))/(2*size);
+            html="<table style='font-size:"+size+"em;margin-top:"+(mtop+0.1)+"em;margin-left:"+(mleft+0.1)+"em;'>";
             for (var row in settings.values) {
                 html+="<tr>";
                 for (var col in settings.values[row]) {

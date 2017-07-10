@@ -169,6 +169,8 @@
                             var e = (_event && _event.originalEvent &&
                                  _event.originalEvent.touches && _event.originalEvent.touches.length)?
                                  _event.originalEvent.touches[0]:_event;
+                                      
+                            settings.ratio = $this.width()/settings.width;
 
                             var id = $(this).attr("id"), nid = parseInt(id.substr(1));
                             settings.current = nid;
@@ -387,7 +389,6 @@
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 settings.interactive = true;
-                settings.ratio = $this.width()/settings.width;
             },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);

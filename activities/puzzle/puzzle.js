@@ -18,6 +18,7 @@
         number      : 1,                                        // Number of puzzle
         fontex      : 1,                                        // Exercice font
         decoyfx     : true,                                     // No magnetic for decoy
+        width       : 640,
         debug       : true                                      // Debug mode
     };
 
@@ -110,12 +111,7 @@
                 if (settings.context.onload) { settings.context.onload($this); }
 
                 // COMPUTE RATIO
-                var vWidth = $this.find("#board").width();
-                if ($(settings.svg.root()).attr("title")) {
-                    settings.ratio = vWidth/parseInt($(settings.svg.root()).attr("title"));
-                }
-                else { settings.ratio = vWidth/640; }
-                if (settings.ratio<=0) { settings.ratio=1; }
+                if ($(settings.svg.root()).attr("title")) { settings.width = parseInt($(settings.svg.root()).attr("title")); }
 
                 // CHECK THE DEPARTURE AREA REGARDING THE BOUNDARIES
                 if (settings.boundaries[0]!=-1 && settings.boundaries[0]>settings.area[0]) { settings.area[0] = settings.boundaries[0]; }
@@ -333,6 +329,8 @@
                     $(this).bind('touchstart mousedown', function(event) {
                         var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
                                 event.originalEvent.touches[0]:event;
+                                
+                        settings.ratio = $this.find("#board").width()/settings.width;
 
                         if (!settings.timer.id) { settings.timer.id = setTimeout(function() { helpers.timer($this); }, 1000); }
                         if (settings.interactive) {

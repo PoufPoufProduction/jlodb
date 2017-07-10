@@ -130,13 +130,13 @@
                 }
                 else { settings.number = settings.data.length; }
 
-                settings.ratio = $this.find("#board").height()/90;
-
                 // Balls
                  $(".b", settings.svg.root()).bind("touchstart mousedown", function(event) {
                     var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
                             event.originalEvent.touches[0]:event;
                     $(".b", settings.svg.root()).each(function() { $(this).attr("class",$(this).attr("class").replace(" m","")); });
+                    
+                    settings.ratio = $this.find("#board").height()/90;
 
                     var vOk = settings.interactive;
                     if (settings.data[settings.id].target && $(this).attr("class").indexOf("tgt")==-1) { vOk = false; }

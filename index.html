@@ -562,6 +562,7 @@ jlodb = {
 };
 
 $(window).ready(function() {
+	$(window).resize();
 
     $("#score").score({
         onreload:function($this) { $('#activity').jlodb('reload'); },
@@ -570,9 +571,6 @@ $(window).ready(function() {
 
     jlodb.home();
 });
-
-$(window).resize(function() { $("#jlconsole").html($(window).width()+" x "+$(window).height()); } );
-
     </script>
 </head>
 

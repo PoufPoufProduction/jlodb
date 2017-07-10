@@ -184,7 +184,6 @@
                 for (var i in settings.source) { helpers.addSource($this, settings.source[i], 0); }
 
                 // EQUATIONS
-                settings.ratio = 640/$this.width();
                 var ok = true;
                 for (var i=0; i<settings.data.length; i++) {
                     settings.data[i] = $.extend(helpers.equation(), settings.data[i]);
@@ -203,6 +202,7 @@
 
                     settings.data[i].$svg.find("#smallbg").bind("mousedown touchstart", function(e) {
                         var $this=$(this).closest(".equation"), settings = helpers.settings($this);
+                        settings.ratio = 640/$this.width();
                         if (settings.interactive && (settings.a.equation || settings.a.all) ) {
                             var ve = (e && e.originalEvent && e.originalEvent.touches && e.originalEvent.touches.length)?
                                       e.originalEvent.touches[0]:e;
@@ -1380,6 +1380,7 @@ helpers.equations.get($this).label();
                                         pos : { now:[_node.origin[0],_node.origin[1]], to:[_node.origin[0],_node.origin[1]] } };
                             elt.$svg.bind("mousedown touchstart", function(e) {
                                 var $this=$(this).closest(".equation"), settings = helpers.settings($this);
+                                settings.ratio = 640/$this.width();
                                 if (settings.interactive) {
                                     var ve = (e && e.originalEvent && e.originalEvent.touches && e.originalEvent.touches.length)?
                                                 e.originalEvent.touches[0]:e;
@@ -1690,7 +1691,8 @@ helpers.equations.get($this).label();
             settings.sourcedef.push({elt: _elt, value: _source });
 
             $val.bind("mousedown touchstart", function(e) {
-                var settings = helpers.settings($(this).closest(".equation"));
+                var $this = $(this).closest(".equation"), settings = helpers.settings($this);
+                settings.ratio = 640/$this.width();
                 if (settings.interactive) {
                     var ve = (e && e.originalEvent && e.originalEvent.touches && e.originalEvent.touches.length)?
                             e.originalEvent.touches[0]:e;

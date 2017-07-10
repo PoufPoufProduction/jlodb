@@ -92,8 +92,7 @@
                 if (settings.context.onload) { settings.context.onload($this); }
 
                 $this.find("#board>div").css("font-size", settings.font+"em");
-                settings.twidth = Math.floor($this.find(".target").width()*1.4*settings.font);
-                $this.find(".target").css("font-size", settings.twidth+"px");
+                $this.find(".target").css("font-size",(Math.floor(1.4*settings.font*10)/10)+"em");
 
                 // Locale handling
 
