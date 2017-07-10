@@ -6,12 +6,30 @@ if [ ! -f "index.html" ]; then
     exit 1
 fi
 
-if [ "$#" -lt 2 ]; then
-    echo "usage : `basename $0` host [json file|tibibo id] [epub|cordova]"
-    exit 1
-fi
-
+url="jlodb.poufpoufproduction.fr"
 type="epub"
+book="prog"
+
+OPTIND=1
+
+while getopts "h?u:t:b:" opt; do
+    case "$opt" in
+    h|\?)
+        echo usage: $0 -u url -t type -b book_id
+        exit 0
+        ;;
+    u)  url=$OPTARG
+        ;;
+    t)  type=$OPTARG
+        ;;
+    b)  book=$OPTARG
+        ;;
+    esac
+done
+
+shift $((OPTIND-1))
+
+[ "$1" = "--" ] && shift
 
 uuid()
 {
@@ -55,14 +73,14 @@ rm -rf $dest
 
 # GET JSON FILE
 file=""
-if [ -f $2 ]; then file=$2
-else if [ -f "$2.json" ]; then
-    echo "+ Get book from file"
-	file="$2.json"
+if [ -f $book ]; then file=$book
+else if [ -f "$book.json" ]; then
+    echo "+ book book from file"
+	file="$id.json"
 else
     echo "+ Get book from website"
-    file="p_$2.tmp"
-    wget "$1/mods/tibibo/api/book.php?value=$2" -O p_json.tmp
+    file="p_$book.tmp"
+    wget "$url/mods/tibibo/api/book.php?value=$book" -O p_json.tmp
     cat p_json.tmp | sed -e 's/^.*description":\[//g' -e 's/\],  "comment".*$//g' > $file
     rm -f p_json.tmp
 fi
@@ -76,7 +94,7 @@ fi
 # GET ACTIVITIES DATA
 echo ----- GET activities information -----
 echo "var activities = {" >> p_activities.tmp
-wget "$1/api/activity.php?locale" -O p_json.tmp
+wget "$url/api/activity.php?locale" -O p_json.tmp
 echo -n "+ processing"
 for a in `cat p_json.tmp | sed -e 's/{"id":/\n{"id":/g'` ; do
     if [ `echo $a | grep label | wc -l` -eq 1 ]; then
@@ -125,7 +143,7 @@ if [ ! `echo $line | grep "[^ ]" | wc -l` -eq 0 ] ; then
         cp p_activities.tmp p_locale$p.tmp
         cp p_header.tmp p_header$p.tmp
             
-        wget "$1/api/exercice.php?detail&source&nolocale&id=$label" -O p_json.tmp
+        wget "$url/api/exercice.php?detail&source&nolocale&id=$label" -O p_json.tmp
         echo "var exercices={" > p_exercices.tmp
         
         for ex in `cat p_json.tmp | sed -e 's/{\("id":"[^"]*","label"\)/\n{\1/g'` ; do
@@ -168,8 +186,8 @@ if [ ! `echo $line | grep "[^ ]" | wc -l` -eq 0 ] ; then
         cat p_exercices.tmp >> $dest/OEBPS/page_$p.xhtml
         echo "zz:0};" >> $dest/OEBPS/page_$p.xhtml
         
-        
-        cat mods/tibibo/epub/page_footer.xhtml | sed -e "s/%content%/Titre/g" >> $dest/OEBPS/page_$p.xhtml
+        title=`echo $value | sed -e "s/\[[^]]*\]//g"`
+        cat mods/tibibo/epub/page_footer.xhtml | sed -e "s/%content%/${title}/g" >> $dest/OEBPS/page_$p.xhtml
         
         rm p_header$p.tmp p_locale$p.tmp p_exercices.tmp
         
