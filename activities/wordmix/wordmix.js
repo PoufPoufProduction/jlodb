@@ -130,8 +130,8 @@
                 svgContent += "<rect x='0' y='0' width='"+sx*ss+"' height='"+sy*ss+"' style='fill:#ccc;'/>";
                 for (var j=0; j<settings.grid.length; j++) for (var i=0; i<settings.grid[j].length; i++) {
                     svgContent += "<g transform='translate("+((i+0.5)*ss)+","+((j+0.5)*ss)+")' >";
-                    svgContent += "<rect x='"+(-0.48*ss)+"' y='"+(-0.48*ss)+"' height='"+(0.96*ss)+"' width='"+(0.96*ss)+"' "+
-                                    "transform='rotate("+((Math.random()-0.5)*2)+")' style='fill:white;'/>";
+                    svgContent += "<rect x='"+(-0.47*ss)+"' y='"+(-0.47*ss)+"' height='"+(0.94*ss)+"' width='"+(0.94*ss)+"' "+
+                                    "transform='rotate("+((Math.random()-0.5)*5)+")' style='fill:white;'/>";
                     svgContent += "<text y='"+ss/3+"'>"+settings.grid[j][i]+"</text>";
                     svgContent += "</g>";
                 }

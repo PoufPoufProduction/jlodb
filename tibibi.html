@@ -436,6 +436,8 @@ var urlargs = {}
 
 $(window).ready(function() {
 
+	$(window).resize();
+
     // URL ARGUMENTS
     var a = location.search.substring(1).split('&');
     for (var i in a) { var p= a[i].split('='); urlargs[p[0]]=p[1]; }

@@ -1,16 +1,34 @@
 <div>
-    <div id="board">
-        <div id="effects">
-            <div id="warnfx"><img src="res/img/effects/alertrobot01.svg" alt=""/></div>
-            <div id="robotfx"><img src="res/img/tileset/iso/robot/draft1.svg" alt=""/></div>
-            <div id="tilefx"><img src="res/img/tileset/iso/set1/000.svg" alt=""/></div>
+    <div id="leftpart">
+        <div id="board">
+            <div id="effects">
+                <div id="warnfx"><img src="res/img/effects/alertrobot01.svg" alt=""/></div>
+                <div id="robotfx"><img src="res/img/tileset/iso/robot/draft1.svg" alt=""/></div>
+                <div id="tilefx"><img src="res/img/tileset/iso/set1/000.svg" alt=""/></div>
+            </div>
+            <div id="bg"><img src="res/img/background/gears01.svg" alt=""/></div>
+            <div id="tiles"></div>
+            <div id="fg"></div>
         </div>
-        <div id="bg"><img src="res/img/background/gears01.svg" alt=""/></div>
-        <div id="tiles"></div>
-        <div id="fg"></div>
-        <div id="help"  ontouchstart="$('#phelp').show();event.preventDefault();" onclick="$('#phelp').show();">
-            <img src="res/img/default/icon/about.svg" alt=""/></div>
+        
+        <div id="buttons">
+            <div id="help"  ontouchstart="$('#phelp').show();event.preventDefault();" onclick="$('#phelp').show();">
+                <img src="res/img/control/about.svg" alt=""/></div>
+            <div id="speed" ontouchstart="$(this).closest('.robot').robot('speed');event.preventDefault();"
+                            onclick="$(this).closest('.robot').robot('speed');">
+                <img src="res/img/control/x2.svg" alt=""/>
+            </div>
+            <div id="stop" ontouchstart="$(this).closest('.robot').robot('stop');event.preventDefault();"
+                            onclick="$(this).closest('.robot').robot('stop');">
+                <img src="res/img/control/stop.svg" alt=""/>
+            </div>
+            <div id="play" ontouchstart="$(this).closest('.robot').robot('play');event.preventDefault();"
+                            onclick="$(this).closest('.robot').robot('play');">
+                <img src="res/img/control/play.svg" alt=""/>
+            </div>
+        </div>
     </div>
+        
     <div id="menu">
         <div id="action">
             <div id="tab">
@@ -590,22 +608,7 @@
                 </div>
             </div>
         </div>
-        <div id="buttons">
-            <div id="speed" ontouchstart="$(this).closest('.robot').robot('speed');event.preventDefault();"
-                            onclick="$(this).closest('.robot').robot('speed');">
-                <img src="res/img/control/x2.svg" alt=""/>
-            </div>
-            <div id="stop" ontouchstart="$(this).closest('.robot').robot('stop');event.preventDefault();"
-                            onclick="$(this).closest('.robot').robot('stop');">
-                <img src="res/img/control/stop.svg" alt=""/>
-            </div>
-            <div id="play" ontouchstart="$(this).closest('.robot').robot('play');event.preventDefault();"
-                            onclick="$(this).closest('.robot').robot('play');">
-                <img src="res/img/control/play.svg" alt=""/>
-            </div>
-        </div>
         <div id="cache"></div>
-        <div id="exercice"></div>
     </div>
 
     <div id="phelp" ontouchstart="$(this).hide();event.preventDefault();" onclick="$(this).hide();"><div>

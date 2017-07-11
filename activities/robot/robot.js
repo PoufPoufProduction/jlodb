@@ -99,7 +99,7 @@
 
                 // +8 : 4 for the tile thickness, 4 for the robot head in the top of the board
                 var vx = ((xmax-xmin)*2)+8+settings.padding, vy = (ymax-ymin+2)*4, vv = Math.max(vx,vy);
-                settings.scale=(22/(vv+settings.margin*2));
+                settings.scale=(18/(vv+settings.margin*2));
                 $this.find("#tiles").css("font-size", settings.scale+"em");
 
                 settings.offset=[-2*ymin+(vv-vy)/4+settings.margin/2,
@@ -230,18 +230,12 @@
 
 
                         if ($(this).children().size()) { $(this).children().detach().appendTo(ui.draggable.parent()); }
-                        $(ui.draggable).detach().css("top",0).css("left",0);
+                        $(ui.draggable).detach().css("top",0).css("left",0).css("width","inherit").css("height","inherit");
                         $(this).append(ui.draggable);
                 } });
-
-                // Target offset
-                settings.targetoffset=[-$this.find("#t1").offset().top,-$this.find("#t1").offset().left];
                 
                 // DevMode
                 if (settings.dev) { $this.find("#devmode").show(); }
-
-                // Locale handling
-                if (settings.exercice) { $this.find("#exercice").html(settings.exercice); }
 
                 var list=["a","b","c","d","e","f","g"];
                 for (var i in settings.locale.legend) { $this.find("#"+i).html(settings.locale.legend[i]); }
@@ -808,6 +802,10 @@
             // INITIALISATION OF THE PROGRAM
             init: function($this) {
                 var settings = helpers.settings($this);
+                
+                // Target offset
+                settings.targetoffset=[-$this.find("#t1").offset().top,-$this.find("#t1").offset().left];
+                
                 // INITIALIZE THE ROBOTS
                 for (var i in settings.robots) {
                     settings.robots[i].pos=[settings.robots[i].origin[0], settings.robots[i].origin[1], settings.robots[i].origin[2]];

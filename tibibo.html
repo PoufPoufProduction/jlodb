@@ -26,7 +26,7 @@
 .usermode                               { display:inline; }
 .devmode                                { display:none; }
 
-#bomain                                 { display:relative; background-image:url('res/img/default/pattern/line01.svg'); }
+#bomain                                 { display:inherit !important; position:relative; background-image:url('res/img/default/pattern/line01.svg'); }
 #bomain.devmode #bopage #edmode        { opacity:1; }
 #bomain.devmode.ownbook #editown.menu   { display:inline; }
 #bomain.devmode.book #editother.menu    { display:inline; }
@@ -62,12 +62,12 @@
 #bocontent #omenu .ostate>div           { float:left; }
 #bocontent #omenu .ostate .jmenu        { width:6em; }
 #bocontent #omenu .ostate .date         { font-size:0.4em; }
-#bocontent .input                       { background-color:red; color:white; margin-top:1em; font-size:0.8em; height:1.2em; }
+#bocontent .input                       { background-color:red; width:110%; color:white; margin-top:1em; font-size:0.8em; height:1.2em; }
 #bocontent .input>*                     { float:left; margin-left:.5em; }
 #bocontent .input .label                { width:8em; white-space:nowrap; }
-#bocontent .input input                 { font-size:1em; width:7em; color:#500; padding-left:.5em; }
+#bocontent .input input                 { font-size:1em; width:7em; color:#500; padding-left:.5em; float:left; }
 #bocontent .input input.s               { color:gray; }
-#bocontent .input .icon                 { float:right; font-size:1.2em; cursor:pointer; margin-right:.5em; }
+#bocontent .input .icon                 { font-size:1.2em; cursor:pointer;  }
 #bocontent .booklist                    { font-size:0.5em; border:1px solid black; border-width:0 0 .2em 0; margin-top:1em; height:12.5em;}
 #bocontent .booklist .title             { background-color:black; color: white; padding-left:2em; height:1.2em; }
 #bocontent .booklist .list              { height:12.5em; overflow:auto; }
@@ -880,6 +880,7 @@ $(window).ready(function() {
     var a = location.search.substring(1).split('&');
     for (var i in a) { var p= a[i].split('='); tibibo.args[p[0]]=p[1]; }
     
+	$(window).resize();
 
     $.getJSON("api/checkdb.php", function (_check) {
 

@@ -258,6 +258,9 @@ game = {
 }
 
 $(window).ready(function() {
+
+	$(window).resize();
+    
     $.getJSON("api/checkdb.php", function (_check) {
         if (_check.status=="success") {
             game.lang=_check.lang;
