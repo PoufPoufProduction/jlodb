@@ -90,7 +90,6 @@
             build: function($this) {
                 var settings = helpers.settings($this);
                 if (settings.context.onload) { settings.context.onload($this); }
-                $this.css("font-size", Math.floor((Math.min($this.width(),$this.height())-7)/5)+"px");
 
                 if (jlodbext && jlodbext.midi) { jlodbext.midi.setVolume(0, 127); }
                 else                           { helpers.exterror($this); }

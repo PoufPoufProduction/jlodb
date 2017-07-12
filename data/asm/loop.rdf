@@ -5,8 +5,8 @@
     <rdf:Description>
         <dct:identifier>000</dct:identifier>
         <dct:title xml:lang="fr-FR">Copier une zone mémoire vers un écran 16x16x256 et afficher ainsi l'image mystère (Mona Lisa).</dct:title>
-        <dct:description><![CDATA["ops":["ldx","lda","sta","inx","cpx","bne"],"args":[{"value":"00","type":"v"},{"value":"0200","type":"x"},{"value":"loop","type":"label"},{"value":"data","type":"label x"}],"nblines":7,"valid":{"mem":{"200":"8884","241":"9d","2FE":"1828"}},"footer":[{"label":"wait","value":"brk","code":"a90085ffa5ffc900f0fa00","rts":false},{"label":"data","value":"","code":"888484868587766360697b818687807f908d8e8d85534b3b2f262a5688898584929395925465755d3c271a1654908c8a97999c6c84b5b8a4743a1c15147b9494a19d9645a3bcbeb28d56291610438c91a5a76c48a3b3b5ab977f4217111c6d74aaa84e498c999f787c6441191414536695924047747a84836772571c14164852615d3950aaaa94a4b296491916183f544b3f2d3aa5a78f9ca577351b1a1638524a392626809d5a848b62301a1a162b4148432d216590747285582b1c19162a4753503023277d9f7b5b3e231a18162b4e5e642f201a284e44372e2a1d191720486e683a231f22485943474f2c18191c4562573821202952897574774521251828","rts":false}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["La ligne précompilée 'data' contient une image 16x16x256.","","En effectuant une boucle sur X de 0x00 à 0xFF (inclus), transférer le contenu de cette image vers l'écran.","Appuyez sur une touche pour finir l'exercice."]]]></dct:description>
+        <dct:description><![CDATA["ops":["ldx","lda","sta","inx","cpx","bne"],"args":[{"value":"00","type":"v"},{"value":"0200","type":"x"},{"value":"loop","type":"label"},{"value":"data","type":"label x"}],"nblines":7,"valid":{"mem":{"200":"8884","241":"9d","2FE":"1828"}},"footer":[{"label":"BRK","value":"","code":"00","rts":false},{"label":"data","value":"","code":"888484868587766360697b818687807f908d8e8d85534b3b2f262a5688898584929395925465755d3c271a1654908c8a97999c6c84b5b8a4743a1c15147b9494a19d9645a3bcbeb28d56291610438c91a5a76c48a3b3b5ab977f4217111c6d74aaa84e498c999f787c6441191414536695924047747a84836772571c14164852615d3950aaaa94a4b296491916183f544b3f2d3aa5a78f9ca577351b1a1638524a392626809d5a848b62301a1a162b4148432d216590747285582b1c19162a4753503023277d9f7b5b3e231a18162b4e5e642f201a284e44372e2a1d191720486e683a231f22485943474f2c18191c4562573821202952897574774521251828","rts":false}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"La ligne précompilée 'data' contient une [red]image 16x16x256[/red].[br][br]En effectuant une [blue]boucle[/blue] sur X de [b]#0x00[/b] à [b]#0xFF[/b] (inclus), [b]transférez[/b] le contenu de cette image vers l'écran."]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -14,8 +14,6 @@
         <dct:alternative>000</dct:alternative>
     </rdf:Description>
 
-
-    <!-- ,"header":[{"label":"finish","value":"LDX #0x10","code":"8a9d0002e8e000d0f7","rts":false}] -->
 
 </rdf:RDF>
 

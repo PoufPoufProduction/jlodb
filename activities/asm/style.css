@@ -7,15 +7,16 @@
 .asm div#board                      { font-size:.5em; width:105%; }
 .asm div#board>div                  { float:left; }
 /*---------------------------------------------------------------------------------------------------------------------------*/
-.asm div#board #screens>*           { font-size:.75em; margin:.1em; }
+.asm div#board #screens>*           { font-size:.75em; margin-left:.2em; }
 .asm #screens #output               { width:11.6em; height:5.6em; background-color:#030; color:#0F0; font-weight:bold;
-                                      padding:.2em; border-radius:.5em; line-height:.8em;
+                                      padding:.2em; line-height:.8em; margin-top:.1em;
                                       background-image:url("../../res/img/default/pattern/line03.svg"); background-repeat:repeat;}
 .asm #screens #output pre           { overflow:visible; font-family: "Courier New",Courier,monospace; }
-.asm #screens #canvas               { width:12em; height:12em; background-color:black; border-radius:.5em; position:relative; }
+.asm #screens #canvas               { width:12em; height:12em; background-color:black; position:relative; }
+.asm #screens #canvas>div           { width:12em; height:12em; }
 .asm #screens.s2 #canvas            { height:8em; }
 .asm #screens.s3 #canvas            { height:10.8em; }
-.asm #screens #keypad               { width:12em; height:4em; background-color:white; border-radius:.5em; position:relative; }
+.asm #screens #keypad               { width:12em; height:8em; background-color:white; position:relative; }
 .asm #screens #keypad>div           { position:absolute; width:1.7em; height:1.7em; cursor:pointer; }
 .asm #screens #keypad>div.b         { width:2em; height:2em; border-radius:1em; }
 .asm #screens #keypad #left         { top:2.1em; left:.7em; }
@@ -24,17 +25,17 @@
 .asm #screens #keypad #up           { top:0.3em; left:2.5em; }
 .asm #screens #keypad #a            { top:1em; left:7em; }
 .asm #screens #keypad #b            { top:1em; left:9.4em; }
-.asm #screens #controls             { width:12em; height:9.4em; background-color:#AAA; border-radius:.5em; position:relative;
+.asm #screens #controls             { width:12em; height:5.5em; background-color:#AAA; position:relative;
                                       background-image:url("../../res/img/default/pattern/steel01.svg"); background-repeat:repeat; }
 .asm #screens #controls #running    { top:.09em; left:.02em; font-size:15em;opacity:0.2; }
 .asm #screens #controls.running     { background-color:#5BB; }
-.asm #screens.s2 #controls          { height:13.4em; }
-.asm #screens.s3 #controls          { height:10.6em; }
+.asm #screens.s2 #controls          { height:9.5em; }
+.asm #screens.s3 #controls          { height:6.7em; }
 .asm #screens #buttons              { position:absolute; top:0; left:.5em; }
 .asm #screens #buttons>div          { font-size:3em; width:1em; height:1em; margin:.1em; float:left; cursor:pointer;}
 /*---------------------------------------------------------------------------------------------------------------------------*/
-.asm div#board #central>*           { font-size:.75em; margin:.1em; width:20em; border-radius:.5em; }
-.asm #central #code                 { height:25em; background-color:black; overflow:auto;
+.asm div#board #central>*           { font-size:.75em; margin-left:.2em; width:20em;  }
+.asm #central #code                 { height:25em; background-color:black; overflow:auto; margin-top:.1em;
                                       background-image:url("../../res/img/background/asset/it01.svg"); background-repeat:no-repeat; }
 .asm #central #code #lines          { font-size:1.5em; }
 .asm #central #code #lines .line.i  { background-color:rgba(100,200,100,0.1); }
@@ -60,8 +61,8 @@
 .asm #central #exercice .strong      { color:red; font-weight:bold; border: 1px solid red; border-width:1px 0; }
 
 /*---------------------------------------------------------------------------------------------------------------------------*/
-.asm div#board #detail>*            { font-size:.75em;margin:.1em; width:10em; border-radius:.5em;}
-.asm #detail #source                { height:25em; background-color:#112211; 
+.asm div#board #detail>*            { font-size:.75em;width:10em; margin-left:.1em; }
+.asm #detail #source                { height:25em; background-color:#112211; margin-top:.1em; 
                                       background-image:url("../../res/img/default/pattern/line03.svg"); background-repeat:repeat;}
 .asm #detail #source>div            { clear:both; }
 .asm #detail #source .a             { float:left; }
@@ -131,8 +132,8 @@
 .asm #detail #check .c              { left:3.5em; top:2em; }
 
 /*---------------------------------------------------------------------------------------------------------------------------*/
-.asm #effects                       { width:25%; height:25%; position:absolute; top:5%; left:50%; display:none; }
-.asm #effects>div                   { font-size:3em; width:1em; height:1em; display:none; }
+.asm #effects                       { position:absolute; top:45%; left:10%; display:none; }
+.asm #effects>div                   { font-size:5em; width:1em; height:1em; display:none; }
 
 
 .asm .mask                          { position:absolute; top:0; background-color:rgba(0,0,0,0); }
@@ -149,5 +150,8 @@
 
 .asm #touch01                          { top:0; left:0; font-size:2em; }
 
+.asm #it                            { position:absolute; width:12em; height:4em; top:60%; left:30%; display:none; }
+.asm #continue                      { position:absolute; width:16em; height:16em; top:0; left:0; display:none; }
+.asm #continue>div                  { font-size:3em; position:absolute; top:55%; left:70%; cursor:pointer; }
 
 

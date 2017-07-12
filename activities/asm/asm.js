@@ -364,22 +364,19 @@
 
                 $this.find("#screens").addClass("s"+settings.model);
 
-                settings.screen.p = Math.floor($this.find("#canvas").width()/model[0]);
-                $this.find("#canvas canvas").attr("width",(model[0]*settings.screen.p)+"px")
-                                            .attr("height",(model[1]*settings.screen.p)+"px")
-                                            .css("width",(model[0]*settings.screen.p)+"px")
-                                            .css("height",(model[1]*settings.screen.p)+"px")
-                                            .css("margin-left",Math.floor(($this.find("#canvas").width()%model[0])/2)+"px")
-                                            .css("margin-top",Math.floor(($this.find("#canvas").height()%model[1])/2)+"px");
-
-                settings.screen.ctxt = $this.find("#canvas canvas")[0].getContext('2d');
+                settings.screen.s = 640/model[0];
+                settings.screen.h = model[1]*settings.screen.s;
+                
+                var elt=$this.find("#canvas svg");
+                elt.svg();
+                settings.screen.svg = elt.svg('get');
+                settings.screen.g = settings.screen.svg.group();
                 this.clear($this);
             },
             clear: function($this) {
                 var settings = helpers.settings($this);
-                settings.screen.ctxt.fillStyle = this.colors[settings.model][0];
-                settings.screen.ctxt.fillRect(0, 0, this.models[settings.model][0]*settings.screen.p,
-                                                    this.models[settings.model][1]*settings.screen.p);
+                $("rect",settings.screen.g).detach();
+                settings.screen.svg.rect( settings.screen.g,0,0,640,settings.screen.h,{fill:this.colors[settings.model][0]});
             },
             name: function($this) {
                 var settings = helpers.settings($this);
@@ -395,8 +392,8 @@
                     var color = (_val&(mask<<s))>>s;
                     var x = pixel%this.models[settings.model][0];
                     var y = Math.floor(pixel/this.models[settings.model][0]);
-                    settings.screen.ctxt.fillStyle = this.colors[settings.model][color];
-                    settings.screen.ctxt.fillRect(x*settings.screen.p, y*settings.screen.p, settings.screen.p, settings.screen.p);
+                    settings.screen.svg.rect( settings.screen.g,
+                        x*settings.screen.s,y*settings.screen.s,settings.screen.s,settings.screen.s,{fill:this.colors[settings.model][color]});
                 }
             }
         },
@@ -906,8 +903,23 @@
                 }
 
                 $this.find("#effects>div").hide();
-                if (success && _finished) { $this.find("#effects #good").show(); setTimeout(function(){helpers.end($this);}, 2000); }
-                else                      { $this.find("#effects #wrong").show(); setTimeout(function(){helpers.next($this);},2000); }
+                $this.find("#it img").hide();
+                if (success && _finished) {
+                    $this.find("#it #itgood").show();
+                    $this.find("#effects #good").show();
+                    $this.find("#it").css("left","110%").show().animate({left:"30%"},500, function() {
+                        $this.find("#continue").show();
+                    });
+                }
+                else {
+                    $this.find("#it #itwrong").show();
+                    $this.find("#it").css("left","110%").show().animate({left:"30%"},500);
+                    $this.find("#effects #wrong").show();
+                    setTimeout(function(){
+                        $this.find("#it").animate({left:"110%"},500,function() { $(this).hide(); });
+                        helpers.next($this);
+                    },2000);
+                }
                 $this.find("#effects").show();
                 $this.find("#controls #play img").attr("src","res/img/control/play.svg");
                 $this.find("#controls").removeClass("running");
@@ -1069,6 +1081,13 @@
                     if (settings.data.timer) { clearTimeout(settings.data.timer); settings.data.timer = 0; }
                     helpers.check.process($this, false);
                 }
+            },
+            end: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+                $this.find("#it").animate({left:"110%"},1000,function() { $(this).hide(); });
+                $this.find("#continue").hide();
+                $this.find("#effects").hide();
+                helpers.end($this);
             },
             stdout: function() { helpers.stdout.splash($(this)); }
 

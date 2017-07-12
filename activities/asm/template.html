@@ -114,7 +114,9 @@
         <div id="screens">
             <div id="output" ontouchstart="$(this).closest('.asm').asm('stdout');event.preventDefault();"
                              onclick="$(this).closest('.asm').asm('stdout');"><pre></pre></div>
-            <div id="canvas"><canvas></canvas></div>
+            <div id="canvas"><div>
+                    <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.0" width="100%" height="100%" viewBox="0 0 640 640" style="display:inline"></svg>
+            </div></div>
             <div id="keypad">
                 <img src="res/img/control/keypad01.svg" alt=""/>
                 <div id="left"  ontouchstart="$(this).closest('.asm').asm('click', 37);event.preventDefault();"
@@ -143,6 +145,11 @@
             </div>
         </div>
     </div>
+    
+    <div id="it">
+        <img id="itwrong" src="res/img/asset/misc/it01.svg" alt=""/>
+        <img id="itgood" src="res/img/asset/misc/it02.svg" alt=""/>
+    </div>
 
     <div id="effects">
         <div id="good"><img src="res/img/default/popup/good01.svg" alt=""/></div>
@@ -153,6 +160,11 @@
 
     <div id="m1" class="mask"></div>
     <div id="m2" class="mask"></div>
+    
+    <div id="continue">
+        <div class="icon" ontouchstart="$(this).closest('.asm').asm('end');event.preventDefault();"
+                          onclick="$(this).closest('.asm').asm('end');"><img src="res/img/control/play02.svg" alt=""/></div>
+    </div>
 
     <div id="binary"><div ontouchstart="$(this).parent().hide();event.preventDefault();"
                           onclick="$(this).parent().hide();"></div></div>

@@ -121,8 +121,6 @@
                 }
 
                 // sketchbook
-                settings.sketchbook.$svg
-
                 var elt=$this.find("#psketchbook>svg");
                 elt.svg();
                 settings.sketchbook.svg = elt.svg('get');

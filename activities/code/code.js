@@ -211,77 +211,65 @@
         screen: {
             init: function($this) {
                 var settings = helpers.settings($this);
-                settings.screen.p = Math.floor($this.find("#canvas").width()/settings.screen.model[0]);
-                $this.find("#canvas canvas").attr("width",(settings.screen.model[0]*settings.screen.p)+"px")
-                                            .attr("height",(settings.screen.model[1]*settings.screen.p)+"px")
-                                            .css("width",(settings.screen.model[0]*settings.screen.p)+"px")
-                                            .css("height",(settings.screen.model[1]*settings.screen.p)+"px")
-                                            .css("margin-left",Math.floor(($this.find("#canvas").width()%settings.screen.model[0])/2)+"px")
-                                            .css("margin-top",Math.floor(($this.find("#canvas").height()%settings.screen.model[1])/2)+"px");
-
-                settings.screen.ctxt = $this.find("#canvas canvas")[0].getContext('2d');
+                
+                settings.screen.s = 640/settings.screen.model[0];
+                settings.screen.h = settings.screen.model[1]*settings.screen.s;
+                
+                var elt=$this.find("#canvas svg");
+                elt.svg();
+                settings.screen.svg = elt.svg('get');
+                settings.screen.g = settings.screen.svg.group();
                 this.clear($this);
             },
             clear: function($this) {
                 var settings = helpers.settings($this);
-                settings.screen.ctxt.fillStyle = "#000000";
-                settings.screen.ctxt.fillRect(0, 0, settings.screen.model[0]*settings.screen.p,
-                                                    settings.screen.model[1]*settings.screen.p);
+                $("rect",settings.screen.g).detach();
+                settings.screen.svg.rect( settings.screen.g,0,0,640,settings.screen.h,{fill:"black"});
+                settings.screen.data=[];
+                for (var i=0; i<settings.screen.model[0]*settings.screen.model[1]*3; i++) { settings.screen.data.push(0); }
+                
                 for (var i in settings.initsc) {
                     var ii = settings.initsc[i];
-                    settings.screen.ctxt.fillStyle = "rgb("+ii.rgb[0]+","+ii.rgb[1]+","+ii.rgb[2]+")";
-                    if (ii.coord.length==4) {
-                        helpers.screen[ii.svg]($this, ii.coord[0], ii.coord[1], ii.coord[2], ii.coord[3], false);
-                    }
-                    else { helpers.screen[ii.svg]($this, ii.coord[0], ii.coord[1], ii.coord[2], false); }
+                    if (ii.coord.length==3) { helpers.screen[ii.svg]($this, ii.coord[0], ii.coord[1], ii.coord[2], ii.rgb); }
+                    else { helpers.screen[ii.svg]($this, ii.coord[0], ii.coord[1], ii.coord[2], ii.coord[3], ii.rgb); }
                 }
 
             },
-            pixel: function($this, _i, _j) {
+            pixel: function($this, _i, _j, _color) {
                 var settings = helpers.settings($this);
-                settings.screen.ctxt.fillStyle = "rgb("+settings.data.color[0]+","+settings.data.color[1]+","+
-                                                 settings.data.color[2]+")";
-                settings.screen.ctxt.fillRect(_i*settings.screen.p, _j*settings.screen.p, settings.screen.p, settings.screen.p);
+                var color = "rgb("+_color[0]+","+_color[1]+","+_color[2]+")";
+                for (var i=0; i<3; i++) {    
+                    settings.screen.data[(_i+_j*settings.screen.model[0])*3+i] = _color[i];
+                }
+                settings.screen.svg.rect( settings.screen.g,
+                        _i*settings.screen.s,_j*settings.screen.s,settings.screen.s+1,settings.screen.s+1,{fill:color});
             },
             circle: function($this, _i, _j, _r, _color) {
                 var settings = helpers.settings($this);
-                if (_color) {
-                    settings.screen.ctxt.fillStyle = "rgb("+settings.data.color[0]+","+settings.data.color[1]+","+
-                                                 settings.data.color[2]+")";
-                }
                 for (var i=Math.max(0,_i-_r); i<Math.min(settings.screen.model[0],_i+_r+1); i++)
                 for (var j=Math.max(0,_j-_r); j<Math.min(settings.screen.model[1],_j+_r+1); j++) {
-                if ((i-_i)*(i-_i)+(j-_j)*(j-_j)<(_r+1)*(_r+1)) {
-                    settings.screen.ctxt.fillRect(i*settings.screen.p, j*settings.screen.p, settings.screen.p, settings.screen.p);
-                }}
+                    if ((i-_i)*(i-_i)+(j-_j)*(j-_j)<(_r+1)*(_r+1)) { this.pixel($this,i,j,_color); }
+                }
             },
             rect: function($this, _i, _j, _w, _h, _color) {
                 var settings = helpers.settings($this);
-                if (_color) {
-                    settings.screen.ctxt.fillStyle = "rgb("+settings.data.color[0]+","+settings.data.color[1]+","+
-                                                 settings.data.color[2]+")";
+                
+                for (var i=Math.max(0,_i); i<Math.min(settings.screen.model[0],_i+_w); i++)
+                for (var j=Math.max(0,_j); j<Math.min(settings.screen.model[1],_j+_h); j++) {
+                    this.pixel($this,i,j,_color);
                 }
-                settings.screen.ctxt.fillRect(_i*settings.screen.p, _j*settings.screen.p, _w*settings.screen.p, _h*settings.screen.p);
             },
             line: function($this, _x1, _y1, _x2, _y2, _color) {
                 var settings = helpers.settings($this);
-                if (_color) {
-                    settings.screen.ctxt.fillStyle = "rgb("+settings.data.color[0]+","+settings.data.color[1]+","+
-                                                 settings.data.color[2]+")";
-                }
                 var vRatio = (_y1==_y2)?10000:(_x1-_x2)/(_y1-_y2);
                 if (Math.abs(vRatio)>1) {
                     for (var i=Math.min(_x1,_x2); i<=Math.max(_x1,_x2); i++) {
-                        settings.screen.ctxt.fillRect(
-                            i*settings.screen.p, Math.round((_x1<_x2?_y1:_y2)+(i-Math.min(_x1,_x2))/vRatio)*settings.screen.p,
-                                                      settings.screen.p, settings.screen.p);
+                        this.pixel($this,i,Math.round((_x1<_x2?_y1:_y2)+(i-Math.min(_x1,_x2))/vRatio),_color);
                     }
                 }
                 else {
-                    for (var i=Math.min(_y1,_y2); i<=Math.max(_y1,_y2); i++) {
-                        settings.screen.ctxt.fillRect(
-                            Math.round((_y1<_y2?_x1:_x2)+(i-Math.min(_y1,_y2))*vRatio)*settings.screen.p, i*settings.screen.p, 
-                            settings.screen.p, settings.screen.p);
+                    for (var j=Math.min(_y1,_y2); j<=Math.max(_y1,_y2); j++) {
+                        this.pixel($this,Math.round((_y1<_y2?_x1:_x2)+(j-Math.min(_y1,_y2))*vRatio),j,_color);
                     }
                 }
             },
@@ -289,21 +277,13 @@
                 var settings = helpers.settings($this);
                 for (var j=0; j<_h; j++) {
                 for (var i=0; i<_w; i++) {
-                    settings.screen.ctxt.fillStyle = "rgb("+_spr[(i+j*_w)*3+0]+","+_spr[(i+j*_w)*3+1]+","+_spr[(i+j*_w)*3+2]+")";
-                    settings.screen.ctxt.fillRect((_i+i)*settings.screen.p, (_j+j)*settings.screen.p, settings.screen.p, settings.screen.p);
-                }
-                }
+                    var color = [_spr[(i+j*_w)*3+0],_spr[(i+j*_w)*3+1],_spr[(i+j*_w)*3+2]];
+                    this.pixel($this,(_i+i),(_j+j),color);
+                }}
             },
             crc32: function($this) {
                 var settings = helpers.settings($this);
-                var val=[];
-                for (var j=0; j<settings.screen.model[1]; j++)
-                for (var i=0; i<settings.screen.model[0]; i++)
-                {
-                    var data = settings.screen.ctxt.getImageData(i*settings.screen.p, j*settings.screen.p, 1, 1).data;
-                    for (var k=0; k<3; k++) { val.push(data[k]);}
-                }
-                return helpers.crc32(val);
+                return helpers.crc32(settings.screen.data);
             }
         },
         dropvalue: function($this, $e) {
@@ -547,7 +527,7 @@
             pixel: function($this, $elt) {
                 var settings = helpers.settings($this);
                 helpers.screen.pixel( $this, helpers.process.value.get($this, $elt.find(".d.va").first())%settings.screen.model[0],
-                                              helpers.process.value.get($this, $elt.find(".d.va").first().next())%settings.screen.model[1] );
+                                              helpers.process.value.get($this, $elt.find(".d.va").first().next())%settings.screen.model[1], settings.data.color );
                 return true;
             },
             print: function($this, $elt) {
@@ -556,23 +536,26 @@
                 return true;
             },
             circle: function($this, $elt) {
+                var settings = helpers.settings($this);
                 helpers.screen.circle( $this, Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first())),
                         Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first().next())),
-                        Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first().next().next())), true);
+                        Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first().next().next())), settings.data.color);
                 return true;
             },
             rect: function($this, $elt) {
+                var settings = helpers.settings($this);
                 helpers.screen.rect( $this, Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first())),
                         Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first().next())),
                         Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first().next().next())),
-                        Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first().next().next().next())), true);
+                        Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first().next().next().next())), settings.data.color);
                 return true;
             },
             line: function($this, $elt) {
+                var settings = helpers.settings($this);
                 helpers.screen.line( $this, Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first())),
                         Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first().next())),
                         Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first().next().next())),
-                        Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first().next().next().next())),true);
+                        Math.floor(helpers.process.value.get($this, $elt.find(".d.va").first().next().next().next())),settings.data.color);
                 return true;
             },
             call1: function($this, $elt) {
@@ -634,10 +617,10 @@
             },
             pick: function($this, $elt) {
                 var settings = helpers.settings($this);
-                var vc = settings.screen.ctxt.getImageData(
-                    helpers.process.value.get($this, $elt.find(".d.va").first())*settings.screen.p,
-                    helpers.process.value.get($this, $elt.find(".d.va").first().next())*settings.screen.p, 1, 1).data;
-                settings.data.color=[vc[0],vc[1],vc[2]];
+                var pos = 3 * ( helpers.process.value.get($this, $elt.find(".d.va").first()) +
+                            helpers.process.value.get($this, $elt.find(".d.va").first().next()) * settings.screen.model[0]);
+                
+                settings.data.color=[settings.screen.data[pos],settings.screen.data[pos+1],settings.screen.data[pos+2]];
                 return true;
             },
             xx: function($this, $elt) {
@@ -801,8 +784,23 @@
             }
 
             $this.find("#effects>div").hide();
-            if (good) { $this.find("#effects #good").show(); setTimeout(function(){helpers.end($this);}, 2000); }
-            else      { $this.find("#effects #wrong").show(); setTimeout(function(){helpers.next($this);},2000); }
+            $this.find("#it img").hide();
+            if (good) {
+                $this.find("#it #itgood").show();
+                $this.find("#effects #good").show();
+                $this.find("#it").css("left","110%").show().animate({left:"30%"},500, function() {
+                    $this.find("#continue").show();
+                });
+            }
+            else {
+                $this.find("#it #itwrong").show();
+                $this.find("#it").css("left","110%").show().animate({left:"30%"},500);
+                $this.find("#effects #wrong").show();
+                setTimeout(function(){
+                    $this.find("#it").animate({left:"110%"},500,function() { $(this).hide(); });
+                    helpers.next($this);
+                },2000);
+            }
             $this.find("#effects").show();
         },
         next: function($this) {
@@ -918,6 +916,13 @@
                         helpers.finish($this, true);
                     }
                 }
+            },
+            end: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+                $this.find("#it").animate({left:"110%"},1000,function() { $(this).hide(); });
+                $this.find("#continue").hide();
+                $this.find("#effects").hide();
+                helpers.end($this);
             },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
