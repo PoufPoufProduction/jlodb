@@ -230,16 +230,20 @@
         // Handle the interactive inputs
         key:function($this, value) {
             var settings = helpers.settings($this);
+            var k = "";
             if (settings.interactive) {
                 // Move the current tile in the upper area
                 if (value==37 || value=="left") {
+                    k = "left";
                     if (settings.tile.posx>0) { settings.tile.posx--; }
                 }
                 else if (value==38 || value=="up") {
+                    k = "up";
                     settings.tile.orientation = (settings.tile.orientation+1)%4;
                     if ((settings.tile.posx==5) && (settings.tile.orientation%2==0)) { settings.tile.posx = 4; }
                 }
                 else if (value==39 || value=="right"){
+                    k = "right";
                     if ( ((settings.tile.posx<4)&&(settings.tile.orientation%2==0)) ||
                          ((settings.tile.posx<5)&&(settings.tile.orientation%2==1)) ) {
                         settings.tile.posx++;
@@ -258,9 +262,17 @@
 
                 // If down is pressed, drop the current tile
                 if (value==40 || value=="down") {
+                    k = "down";
                     settings.board[top1][left1] = settings.tile.div1;
                     settings.board[top2][left2] = settings.tile.div2;
                     helpers.drop($this);
+                }
+                
+                if (k) {
+                    $this.find("#keypad .s").removeClass("s"); 
+                    $this.find("#keypad #"+k).addClass("s");
+                    if (settings.keytimerid) { clearTimeout(settings.keytimerid); }
+                    settings.keytimerid = setTimeout(function() { $this.find("#keypad .s").removeClass("s"); }, 300 );
                 }
             }
         },
@@ -702,6 +714,7 @@
                     bonusdone       : false,
                     alchemist       : false,
                     waitend         : 0,
+                    keytimerid      : 0,
                     bonus           : [
  [ "stone","null01",0 ],
  [ "stone1","one01",0 ], ["stone2","two01",0], ["stone3","three01",0], ["stone4","four01",0], ["stone5","five01",0],
@@ -735,7 +748,6 @@
             },
             click: function(elt) {
                 $(elt).addClass("touch");
-                setTimeout(function() { $(elt).removeClass("touch"); }, 100);
                 helpers.key($(this), $(elt).attr("id"));
             },
             next: function() {

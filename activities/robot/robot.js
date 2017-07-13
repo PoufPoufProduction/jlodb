@@ -710,7 +710,11 @@
             if (!settings.stop && helpers.success($this, _count)) {
                 settings.score = 5-settings.wrong;
                 if (settings.score<2) { settings.score = 2; }
-                helpers.end($this);
+                $this.find("#goal").css("left","110%").show().animate({left:"50%"},500);
+                setTimeout(function() {
+                    helpers.end($this);
+                    $this.find("#goal").animate({left:"110%"},1000);
+                }, 1000);
             }
             else {
                 helpers.restore($this);

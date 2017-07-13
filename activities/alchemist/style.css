@@ -39,7 +39,10 @@
 .alchemist #menu                    { float:left; width:3em; border:1px solid #507099; overflow:hidden; margin:1px; font-size:1.5em; border-radius:.13em; }
 .alchemist #menu table div          { width:1em; height:1em; overflow:hidden; text-align:center; background-size: 1em; background-repeat:no-repeat; }
 .alchemist #menu #keypad            { width:3em; height:2em; overflow:hidden; background-color:rgba(255,210,140,0.8); }
-.alchemist #menu #keypad img        { width:.9em; height:.9em; cursor:pointer; }
+.alchemist #menu #keypad div        { width:1em; height:1em; cursor:pointer;}
+.alchemist #menu #keypad .down      { display:none; }
+.alchemist #menu #keypad .s .up     { display:none; }
+.alchemist #menu #keypad .s .down   { display:inherit; }
 .alchemist #overview                { width:3em; height:4em; background-color:rgba(255,220,162,0.8); cursor:pointer;}
 .alchemist #overview td             { position:relative; }
 .alchemist #overview div.n          { position:absolute; font-size:.2em; overflow:visible; font-weight:bold; color:#631;}
@@ -63,7 +66,6 @@
 .alchemist #tutorial p              { margin:0 .5em .5em .5em; font-size:.8em; text-align:justify; }
 .alchemist #tutorial>div            { border:1px solid black; width:14em; margin:0 auto; }
 .alchemist #tutorial div.icon       { width:2em; height:2em; display:inline-block; border:0; background-color:transparent; }
-.alchemist .alphakeypad             { border-radius:.5em; cursor:pointer; }
 .alchemist .alert					{ z-index:4; display:none;position:absolute; font-size:4em; width:1em; height:1em; top:2%; left:50%; }
 
 

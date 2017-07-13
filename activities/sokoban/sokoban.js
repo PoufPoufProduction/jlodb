@@ -556,26 +556,36 @@
         // KEY HANDLER
         key: function($this, _value) {
             var settings = helpers.settings($this);
+            var k="";
             if (settings.interactive) {
                 if (_value==37 || _value=="left") {
+                    k="left";
                     var v = settings.robots[settings.robotid].isinverted?1:3;
                     settings.robots[settings.robotid].pos[2] = (settings.robots[settings.robotid].pos[2]+v)%4;
                     helpers.updrobot($this, settings.robotid);
                 }
                 else if (_value==39 || _value=="right"){
+                    k="right"
                     var v = settings.robots[settings.robotid].isinverted?3:1;
                     settings.robots[settings.robotid].pos[2] = (settings.robots[settings.robotid].pos[2]+v)%4;
                     helpers.updrobot($this, settings.robotid);
                 }
                 else if ((_value==38 || _value=="up") && settings.robots[settings.robotid].active) {
+                    k="up"
                     var v = settings.robots[settings.robotid].isinverted?2:0;
                     settings.robots[settings.robotid].speed = (settings.robots[settings.robotid].pos[2]+v)%4;
                     settings.countpush = false;
                     settings.nbmoves+=helpers.prepare($this);
                     $this.find("#nbmoves .value").html(settings.nbmoves);
                 }
-                else if (_value==40 || _value=="down") { helpers.togglerobot($this, settings.robotid+1); }
+                else if (_value==40 || _value=="down") { k="down"; helpers.togglerobot($this, settings.robotid+1); }
 
+                if (k) {
+                    $this.find("#keypad .s").removeClass("s"); 
+                    $this.find("#keypad #"+k).addClass("s");
+                    if (settings.keytimerid) { clearTimeout(settings.keytimerid); }
+                    settings.keytimerid = setTimeout(function() { $this.find("#keypad .s").removeClass("s"); }, 300 );
+                }
             }
             else if ($this.find("#intro").is(":visible")) { $this.sokoban('next'); }
         }
@@ -603,6 +613,7 @@
                     nbgames         : 0,
                     nbmoves         : 0,
                     nbpushes        : 0,
+                    keytimerid      : 0,
                     countpush       : false
                 };
 

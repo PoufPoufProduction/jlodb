@@ -30,23 +30,27 @@
         <div id="keypad">
             <table>
                 <tr><td></td><td>
-                    <div class="alphakeypad" id="up" ontouchstart="$(this).closest('.alchemist').alchemist('click', 'up');event.preventDefault();"
+                    <div id="up" ontouchstart="$(this).closest('.alchemist').alchemist('click', 'up');event.preventDefault();"
                                  onclick="$(this).closest('.alchemist').alchemist('click', this);">
-                        <img src="res/img/default/icon/arr_up02.svg" alt=""/>
+                        <img src="res/img/default/control/up02.svg" alt="" class="up"/>
+                        <img src="res/img/default/control/up02a.svg" alt="" class="down"/>
                     </div>
                 </td><td></td></tr>
                 <tr>
-                    <td><div class="alphakeypad" id="left" ontouchstart="$(this).closest('.alchemist').alchemist('click', 'left');event.preventDefault();"
+                    <td><div id="left" ontouchstart="$(this).closest('.alchemist').alchemist('click', 'left');event.preventDefault();"
                                        onclick="$(this).closest('.alchemist').alchemist('click', this);">
-                        <img src="res/img/default/icon/arr_left02.svg" alt=""/>
+                            <img src="res/img/default/control/left02.svg" alt="" class="up"/>
+                            <img src="res/img/default/control/left02a.svg" alt="" class="down"/>
                         </div></td>
-                    <td><div class="alphakeypad" id="down" ontouchstart="$(this).closest('.alchemist').alchemist('click', 'down');event.preventDefault();"
+                    <td><div id="down" ontouchstart="$(this).closest('.alchemist').alchemist('click', 'down');event.preventDefault();"
                                        onclick="$(this).closest('.alchemist').alchemist('click', this);">
-                        <img src="res/img/default/icon/arr_down02.svg" alt=""/>
+                            <img src="res/img/default/control/down02.svg" alt="" class="up"/>
+                            <img src="res/img/default/control/down02a.svg" alt="" class="down"/>
                         </div></td>
-                    <td><div class="alphakeypad" id="right" ontouchstart="$(this).closest('.alchemist').alchemist('click', 'right');event.preventDefault();"
+                    <td><div id="right" ontouchstart="$(this).closest('.alchemist').alchemist('click', 'right');event.preventDefault();"
                                        onclick="$(this).closest('.alchemist').alchemist('click', this);">
-                        <img src="res/img/default/icon/arr_right02.svg" alt=""/>
+                            <img src="res/img/default/control/right02.svg" alt="" class="up"/>
+                            <img src="res/img/default/control/right02a.svg" alt="" class="down"/>
                         </div></td>
                 </tr>
             </table>

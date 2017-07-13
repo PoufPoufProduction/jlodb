@@ -30,7 +30,7 @@
 .robot #board #fg                   { z-index:99; font-size:.3em; font-family:Courier New, Courier, monospace;}
 .robot #board #bg                   {  width:11em; height:11em; 
                                        background-image:linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0)); }
-.robot #cache                       { width:6.4em; height:11em; position:absolute; top:0.75em; left:.25em; z-index:1999;
+.robot #cache                       { width:6.4em; height:11em; position:absolute; top:0.75em; left:.25em; z-index:100;
                                       background-color:rgba(0,0,0,0.5); display:none; }
 
 .robot #menu                        { font-size:1em; width:6.7em; height:18em; float:left; position:relative; }
@@ -99,3 +99,4 @@
 
 .robot #devmode                     { top:87%; left:63%; }
 .robot #devoutput                { z-index:100; }
+.robot #goal					{ z-index:101; display:none; position:absolute; font-size:6em; width:1em; height:1em; top:45%; left:50%; }

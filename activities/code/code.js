@@ -202,9 +202,10 @@
             get : function($this) { var settings = helpers.settings($this); return settings.stdout.lines[settings.stdout.pos]; },
             crc32: function($this) {
                 var settings = helpers.settings($this);
-                var val=[];
+                var val=[], ret = 0;
                 for (var i=0; i<7; i++) for (var j=0; j<19; j++) {
-                    val.push(j<settings.stdout.lines[i].length?settings.stdout.lines[i].charCodeAt(j):0); }
+                    val.push((settings.stdout.lines && settings.stdout.lines[i] && j<settings.stdout.lines[i].length)?
+                                settings.stdout.lines[i].charCodeAt(j):0); }
                 return helpers.crc32(val);
             }
         },
@@ -929,6 +930,14 @@
                 settings.interactive = false;
                 $this.find("#mask").show();
                 settings.context.onquit($this,{'status':'abort'});
+            },
+            stdout: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+                console.log(helpers.stdout.crc32($this));
+            },
+            screen: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+                console.log(helpers.screen.crc32($this));
             }
         };
 

@@ -244,8 +244,14 @@
                 settings.score = 5 - Math.ceil((settings.moves.length-settings.objective)/2);
                 if (settings.score<2) { settings.score = 2; }
                 if (settings.score>5) { settings.score = 5; }
-                $this.find("#good").show();
-                setTimeout(function() { helpers.end($this); }, 1500);
+                $this.find("#goal").css("left","110%").show().animate({left:"55%"},500, function() {
+                    //$this.find("#good").show().css("opacity",0).animate({opacity:1}, 500);
+                    settings.cars[0].$car.animate({left:"100%"}, 1000, function() {
+                        $this.find("#goal").animate({left:"110%"},1000);
+                        //$this.find("#good").animate({opacity:0}, 1000);
+                    });
+                });
+                setTimeout(function() { helpers.end($this); }, 2000);
             }
         },
         board: function($this) {
