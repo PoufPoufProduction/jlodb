@@ -201,19 +201,36 @@
                 <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.0" width="100%" height="100%" viewBox="0 0 640 640" style="display:inline"></svg>
             </div></div>
             <div id="keypad">
-                <img src="res/img/control/keypad01.svg" alt=""/>
                 <div id="left"  ontouchstart="$(this).closest('.code').code('click', 37);event.preventDefault();"
-                                onclick="$(this).closest('.code').code('click', 37);"></div>
+                                onclick="$(this).closest('.code').code('click', 37);">
+                    <img src="res/img/default/control/left02.svg" alt="" class="up"/>
+                    <img src="res/img/default/control/left02a.svg" alt="" class="down"/>
+                </div>
                 <div id="down"  ontouchstart="$(this).closest('.code').code('click', 40);event.preventDefault();"
-                                onclick="$(this).closest('.code').code('click', 40);"></div>
+                                onclick="$(this).closest('.code').code('click', 40);">
+                    <img src="res/img/default/control/down02.svg" alt="" class="up"/>
+                    <img src="res/img/default/control/down02a.svg" alt="" class="down"/>
+                </div>
                 <div id="right" ontouchstart="$(this).closest('.code').code('click', 39);event.preventDefault();"
-                                onclick="$(this).closest('.code').code('click', 39);"></div>
+                                onclick="$(this).closest('.code').code('click', 39);">
+                    <img src="res/img/default/control/right02.svg" alt="" class="up"/>
+                    <img src="res/img/default/control/right02a.svg" alt="" class="down"/>
+                </div>
                 <div id="up"    ontouchstart="$(this).closest('.code').code('click', 38);event.preventDefault();"
-                                onclick="$(this).closest('.code').code('click', 38);"></div>
-                <div id="a" class="b" ontouchstart="$(this).closest('.code').code('click', 65);event.preventDefault();"
-                                      onclick="$(this).closest('.code').code('click', 65);"></div>
-                <div id="b" class="b" ontouchstart="$(this).closest('.code').code('click', 66);event.preventDefault();"
-                                      onclick="$(this).closest('.code').code('click', 66);"></div>
+                                onclick="$(this).closest('.code').code('click', 38);">
+                    <img src="res/img/default/control/up02.svg" alt="" class="up"/>
+                    <img src="res/img/default/control/up02a.svg" alt="" class="down"/>
+                </div>
+                <div id="a" ontouchstart="$(this).closest('.code').code('click', 65);event.preventDefault();"
+                                      onclick="$(this).closest('.code').code('click', 65);">
+                    <img src="res/img/default/control/a02.svg" alt="" class="up"/>
+                    <img src="res/img/default/control/a02a.svg" alt="" class="down"/>
+                </div>
+                <div id="b" ontouchstart="$(this).closest('.code').code('click', 66);event.preventDefault();"
+                                      onclick="$(this).closest('.code').code('click', 66);">
+                    <img src="res/img/default/control/b02.svg" alt="" class="up"/>
+                    <img src="res/img/default/control/b02a.svg" alt="" class="down"/>
+                </div>
             </div>
             <div id="controls">
                 <div id="buttons">

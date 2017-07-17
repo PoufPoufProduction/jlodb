@@ -952,7 +952,19 @@
             $this.find("#effects #wrong").hide();
             $this.find(".line.x").removeClass("c");
         },
-        key:function($this, _value) { helpers.memory.set(helpers.settings($this).data, helpers.c.offset.key, _value & 0xff); }
+        key:function($this, _value) {
+            var settings = helpers.settings($this);
+            var buttons = { "v37":"left", "v38":"up", "v39":"right", "v40":"down", "v65":"a", "v66":"b" };
+            var b=buttons["v"+_value];
+            if (b) {
+                helpers.memory.set(helpers.settings($this).data, helpers.c.offset.key, _value & 0xff);
+                
+                $this.find("#keypad .s").removeClass("s"); 
+                $this.find("#keypad #"+b).addClass("s");
+                if (settings.keytimerid) { clearTimeout(settings.keytimerid); }
+                settings.keytimerid = setTimeout(function() { $this.find("#keypad .s").removeClass("s"); }, 300 );
+            }
+        }
     };
 
     // The plugin
@@ -977,6 +989,7 @@
                         speed       : 2,
                         count       : 0,
                         address     : {},
+                        keytimerid  : 0,
                         timer       : 0
                     },
                     stdout: { lines : ["","","","","","",""], pos: 0 },
@@ -986,7 +999,8 @@
                 return this.each(function() {
                     var $this = $(this);
                     helpers.unbind($this);
-
+                    $(document).keydown(function(_e) { if (_e.which!=116) { helpers.key($this, _e.which); _e.preventDefault(); } });
+                    
                     var $settings = $.extend({}, defaults, options, settings);
                     var checkContext = helpers.checkContext($settings);
                     if (checkContext.length) {

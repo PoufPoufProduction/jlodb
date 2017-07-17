@@ -448,6 +448,14 @@
             $this.find("#scorepanel #points #v").html(settings.points);
 			if (settings.ref) {
 				$this.find("#scorepanel #slide").width($this.find("#scorepanel #points").width()*Math.min(1,settings.points/settings.ref));
+                
+                if (settings.points>=settings.ref && settings.goal) {
+                    settings.goal = false;
+                    $this.find("#goal").css("left","-50%").show().animate({left:"-2%"}, 300);
+                    setTimeout(function() {
+                        $this.find("#goal").animate({left:"-50%"}, 500, function() { $(this).hide(); });
+                    }, 1500);
+                }
 			}
         },
         move: function($this, _force) {
@@ -664,7 +672,7 @@
             ret.canmove     = function() { return !this.locked; }
             ret.unfreeze    = function() { this.frozen = false; this.$html.find(".frozen").detach(); }
             ret.unlock      = function() {
-                if (this.locked==2) { this.locked = 1; this.$html.find(".locked img").attr("src", "res/img/icon/locked01.svg"); }
+                if (this.locked==2) { this.locked = 1; this.$html.find(".locked img").attr("src", "res/img/asset/fx/locked01.svg"); }
                 else                { this.locked = 0; this.$html.find(".locked").detach(); }
             }
 
@@ -747,6 +755,7 @@
                     action          : { pos:0, elt1:0, elt2:0, ok:false, count:0 },
 					points			: 0,
                     score           : 0,
+                    goal            : true,
 					timer			: { val:0, id:0 }
                 };
 

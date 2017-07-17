@@ -16,15 +16,17 @@
 .code #screens #canvas>div           { width:12em; height:12em; }
 .code #screens.s2 #canvas            { height:8em; }
 .code #screens.s3 #canvas            { height:10.8em; }
-.code #screens #keypad               { width:12em; height:8em; background-color:white; position:relative; }
-.code #screens #keypad>div           { position:absolute; width:1.7em; height:1.7em; cursor:pointer; }
-.code #screens #keypad>div.b         { width:2em; height:2em; border-radius:1em; }
-.code #screens #keypad #left         { top:2.1em; left:.7em; }
-.code #screens #keypad #down         { top:2.1em; left:2.5em; }
-.code #screens #keypad #right        { top:2.1em; left:4.3em; }
-.code #screens #keypad #up           { top:0.3em; left:2.5em; }
-.code #screens #keypad #a            { top:1em; left:7em; }
-.code #screens #keypad #b            { top:1em; left:9.4em; }
+.code #screens #keypad               { width:12em; height:8em; background-color:white; position:relative; background-image:url("../../res/img/default/control/bg02.svg");  }
+.code #screens #keypad>div           { position:absolute; z-index:1; width:1em; height:1em; cursor:pointer; font-size:2em; }
+.code #screens #keypad #left         { top:1.5em; left:0.5em; }
+.code #screens #keypad #down         { top:2.5em; left:1.5em; }
+.code #screens #keypad #right        { top:1.5em; left:2.5em; }
+.code #screens #keypad #up           { top:0.5em; left:1.5em; }
+.code #screens #keypad #a            { top:1em; left:4.5em; }
+.code #screens #keypad #b            { top:2.5em; left:4.5em; }
+.code #screens #keypad .down         { display:none; }
+.code #screens #keypad .s .up        { display:none; }
+.code #screens #keypad .s .down      { display:inherit; }
 .code #screens #controls             { width:12em; height:5.5em; background-color:#AAA;
                                       background-image:url("../../res/img/default/pattern/steel01.svg"); background-repeat:repeat; }
 .code #screens #controls.running     { background-color:#5BB; }
@@ -85,7 +87,7 @@
 .code #detail #source .a             { padding:0;  }
 
 /*---------------------------------------------------------------------------------------------------------------------------*/
-.code #effects                       { position:absolute; top:45%; left:10%; display:none; }
+.code #effects                       { position:absolute; top:45%; left:10%; display:none; z-index:2; }
 .code #effects>div                   { font-size:5em; width:1em; height:1em; display:none; }
 
 .code #mask                          { width:71%; height:100%; position:absolute; left:0; top:0; background-color:rgba(0,0,0,0);
@@ -141,8 +143,8 @@
 .code #lines .cl>.va                 { min-width:1.8em; }
 .code #lines .ma>.va                 { min-width:1.8em; }
 
-.code #it                            { position:absolute; width:12em; height:4em; top:60%; left:30%; display:none; }
-.code #continue                      { position:absolute; width:16em; height:16em; top:0; left:0; display:none; }
+.code #it                            { position:absolute; width:12em; height:4em; top:60%; left:30%; display:none; z-index:2; }
+.code #continue                      { position:absolute; width:16em; height:16em; top:0; left:0; display:none; z-index:2; }
 .code #continue>div                  { font-size:3em; position:absolute; top:55%; left:70%; cursor:pointer; }
 
 

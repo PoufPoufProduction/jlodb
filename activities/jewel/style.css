@@ -1,15 +1,15 @@
-.jewel                            { background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat;}
-.jewel #board                       { height:12em; float:left; width:12em; }
+.jewel                            { background-image:url("../../res/img/background/landscape/landscape01.svg"); }
+.jewel #board                       { height:12em; float:left; width:12em; background-color:rgba(0,0,0,0.4); }
 .jewel #board>div                   { position:relative; height:12em; width:12em;  }
-.jewel #board .bg                   { background-color:rgba(0,0,0,0.5); position:absolute; width:1em; height:1em; z-index:1; }
+.jewel #board .bg                   { background-color:rgba(255,255,255,0.4); position:absolute; width:1em; height:1em; z-index:1; }
 .jewel #board .cell                 { position:absolute; width:1em; height:1em; z-index:2; }
 .jewel #board .cell>div             { width:1em; height:1em; position:absolute; top:0; cursor:move; }
 .jewel #board .fx                   { position:absolute; background-color:rgba(255,255,0,0.5); z-index:4; border-radius:.2em; }
-.jewel #leftmenu                    { height:12em; background-color:rgba(255,255,255,0.2); float:left; width:1em; }
-.jewel #rightmenu                   { height:12em; background-color:rgba(255,255,255,0.2); float:left; width:3em; }
+.jewel #leftmenu                    { height:12em; float:left; width:1em; }
+.jewel #rightmenu                   { height:12em; float:left; width:3em; }
 .jewel #board .score                { position:absolute; z-index:4; text-align:center; font-weight:bold; color:yellow; }
 .jewel #board .score.line>div       { color:orange; font-size:.5em; }
-.jewel #sctitle                     { color:white; text-align:center; font-size:.4em; margin-top:1em; background-color:rgba(0,0,0,0.5);  }
+.jewel #sctitle                     { color:white; text-align:center; font-size:.4em; margin-top:1em; background-color:rgba(0,0,0,0.9);  }
 .jewel #scvalue                     { text-align:right; font-size:.6em; padding-right:.2em; }
 .jewel div#splashex                 { background-image:url("../../res/img/banners/jewel.svg"); background-color:rgba(0,0,0,0.4); }
 .jewel div#splashex h1              { position:absolute; top:7%; left:48%; font-size:1.1em; color:#222;}
@@ -24,13 +24,16 @@
 .jewel div#splashex .l          { background-color:red; color:white; padding:0 0.5em; border-radius:.5em; }
 .jewel .alert					{ z-index:4; display:none; position:absolute; font-size:6em; width:1em; height:1em; top:2%; left:60%; }
 
-.jewel #scorepanel #points           { background-color:orange; color:white; position:relative; font-size:.6em; opacity:0.5; width:5em; height:1.2em; font-weight:bold; }
+.jewel #scorepanel #points           { background-color:orange; color:white; position:relative; font-size:.6em; opacity:0.9; width:5em; height:1.2em; font-weight:bold; }
 .jewel #scorepanel #points.s #slide  { background-color:green; }
 .jewel #scorepanel #points>div       { position:absolute; top:0; text-align:center; width:100%;}
 .jewel #scorepanel #points #slide    { background-color:red; height:1.2em; }
 
-.jewel #counter          { margin-top:.2em;font-size:.6em; opacity:0.5; font-weight:bold; text-align:center;  height:1.2em; background-color:green; color:white; display:none; }
+.jewel #counter          { margin-top:.2em;font-size:.6em; opacity:0.9; font-weight:bold; text-align:center;  height:1.2em; background-color:green; color:white; display:none; }
 .jewel #counter.s        { background-color:red; }
 
-.jewel #time          { display:none; margin-top:.2em;font-size:.6em; opacity:0.5; font-weight:bold; text-align:center;  height:1.2em; background-color:gray;  }
+.jewel #time          { display:none; margin-top:.2em;font-size:.6em; opacity:0.9; font-weight:bold; text-align:center;  height:1.2em; background-color:gray;  }
 .jewel #time>div	{ height:1.2em; background-color:red; width:0; }
+
+
+.jewel #goal					{ z-index:101; display:none; position:absolute; font-size:6em; width:1em; height:1em; top:45%; left:-2%; }

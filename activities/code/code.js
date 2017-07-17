@@ -810,7 +810,20 @@
             $this.find("#effects #wrong").hide();
             $this.find("#code #lines .line").removeClass("s");
             if (--settings.score<0) { settings.score = 0; }
-        }
+        },
+        key:function($this, _value) {
+            var settings = helpers.settings($this);
+            var buttons = { "v37":"left", "v38":"up", "v39":"right", "v40":"down", "v65":"a", "v66":"b" };
+            var b=buttons["v"+_value];
+            if (b) {
+                settings.data.lastkey = _value;
+                
+                $this.find("#keypad .s").removeClass("s"); 
+                $this.find("#keypad #"+b).addClass("s");
+                if (settings.keytimerid) { clearTimeout(settings.keytimerid); }
+                settings.keytimerid = setTimeout(function() { $this.find("#keypad .s").removeClass("s"); }, 300 );
+            }
+        }   
     };
 
     // The plugin
@@ -827,6 +840,7 @@
                     screen          : { model   : [32,32],  p   : 1 },
                     sav             : { stdout  :[],        screen:[]},
                     score           : 5,
+                    keytimerid  : 0,
                     data : {
                         running     : false,
                         paused      : false,
@@ -844,6 +858,7 @@
                 return this.each(function() {
                     var $this = $(this);
                     helpers.unbind($this);
+                    $(document).keydown(function(_e) { if (_e.which!=116) { helpers.key($this, _e.which); _e.preventDefault(); } });
 
                     var $settings = $.extend({}, defaults, options, settings);
                     var checkContext = helpers.checkContext($settings);
@@ -860,7 +875,7 @@
             },
             click: function(_key) {
                 var $this = $(this) , settings = helpers.settings($this);
-                settings.data.lastkey = _key;
+                helpers.key($this, _key);
 
             },
             next: function() {

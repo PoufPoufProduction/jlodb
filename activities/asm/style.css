@@ -16,15 +16,18 @@
 .asm #screens #canvas>div           { width:12em; height:12em; }
 .asm #screens.s2 #canvas            { height:8em; }
 .asm #screens.s3 #canvas            { height:10.8em; }
-.asm #screens #keypad               { width:12em; height:8em; background-color:white; position:relative; }
-.asm #screens #keypad>div           { position:absolute; width:1.7em; height:1.7em; cursor:pointer; }
-.asm #screens #keypad>div.b         { width:2em; height:2em; border-radius:1em; }
-.asm #screens #keypad #left         { top:2.1em; left:.7em; }
-.asm #screens #keypad #down         { top:2.1em; left:2.5em; }
-.asm #screens #keypad #right        { top:2.1em; left:4.3em; }
-.asm #screens #keypad #up           { top:0.3em; left:2.5em; }
-.asm #screens #keypad #a            { top:1em; left:7em; }
-.asm #screens #keypad #b            { top:1em; left:9.4em; }
+.asm #screens #keypad               { width:12em; height:8em; background-color:white; position:relative; background-image:url("../../res/img/default/control/bg02.svg");  }
+.asm #screens #keypad>div           { position:absolute; z-index:1; width:1em; height:1em; cursor:pointer; font-size:2em; }
+.asm #screens #keypad #left         { top:1.5em; left:0.5em; }
+.asm #screens #keypad #down         { top:2.5em; left:1.5em; }
+.asm #screens #keypad #right        { top:1.5em; left:2.5em; }
+.asm #screens #keypad #up           { top:0.5em; left:1.5em; }
+.asm #screens #keypad #a            { top:1em; left:4.5em; }
+.asm #screens #keypad #b            { top:2.5em; left:4.5em; }
+.asm #screens #keypad .down         { display:none; }
+.asm #screens #keypad .s .up        { display:none; }
+.asm #screens #keypad .s .down      { display:inherit; }
+
 .asm #screens #controls             { width:12em; height:5.5em; background-color:#AAA; position:relative;
                                       background-image:url("../../res/img/default/pattern/steel01.svg"); background-repeat:repeat; }
 .asm #screens #controls #running    { top:.09em; left:.02em; font-size:15em;opacity:0.2; }
@@ -106,7 +109,7 @@
 .asm .a.arg.label.iy:before         { content:'('; }
 
 
-.asm .ui-draggable-dragging         { cursor:none !important; }
+.asm .ui-draggable-dragging         { cursor:none !important; z-index:2; }
 
 
 .asm #detail #register              { height:6.5em; background-color:gray; font-weight:bold; cursor:pointer; position:relative;}
@@ -132,7 +135,7 @@
 .asm #detail #check .c              { left:3.5em; top:2em; }
 
 /*---------------------------------------------------------------------------------------------------------------------------*/
-.asm #effects                       { position:absolute; top:45%; left:10%; display:none; }
+.asm #effects                       { position:absolute; top:45%; left:10%; display:none; z-index:2;  }
 .asm #effects>div                   { font-size:5em; width:1em; height:1em; display:none; }
 
 
@@ -150,8 +153,8 @@
 
 .asm #touch01                          { top:0; left:0; font-size:2em; }
 
-.asm #it                            { position:absolute; width:12em; height:4em; top:60%; left:30%; display:none; }
-.asm #continue                      { position:absolute; width:16em; height:16em; top:0; left:0; display:none; }
+.asm #it                            { position:absolute; width:12em; height:4em; top:60%; left:30%; display:none; z-index:2;  }
+.asm #continue                      { position:absolute; width:16em; height:16em; top:0; left:0; display:none; z-index:2;  }
 .asm #continue>div                  { font-size:3em; position:absolute; top:55%; left:70%; cursor:pointer; }
 
 
