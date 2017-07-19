@@ -9,13 +9,14 @@ fi
 url="jlodb.poufpoufproduction.fr"
 type="epub"
 book="prog"
+format="xhtml"
 
 OPTIND=1
 
-while getopts "h?u:t:b:" opt; do
+while getopts "h?u:t:b:f:" opt; do
     case "$opt" in
     h|\?)
-        echo usage: $0 -u url -t type -b book_id
+        echo usage: $0 -u url -t type -b book_id -f [xhtml|html]
         exit 0
         ;;
     u)  url=$OPTARG
@@ -23,6 +24,9 @@ while getopts "h?u:t:b:" opt; do
     t)  type=$OPTARG
         ;;
     b)  book=$OPTARG
+        ;;
+    f)  format=$OPTARG
+		if [ ! "$format" = "html" ] ; then format="xhtml"; fi
         ;;
     esac
 done
@@ -114,8 +118,8 @@ echo "... OK"
 # BUILD FOLDER
 echo ----- PREPARE folder $dest -----
 mkdir -p $dest/OEBPS $dest/OEBPS/res/img/ $dest/OEBPS/css $dest/OEBPS/activities
-cp -r mods/tibibo/epub/META-INF/ $dest/
-cp -f mods/tibibo/epub/mimetype $dest/
+cp -r mods/tibibo/data/META-INF/ $dest/
+cp -f mods/tibibo/data/mimetype $dest/
 cp -r res/img/default $dest/OEBPS/res/img/
 cp -r js $dest/OEBPS/
 cp -f css/jlodb.css $dest/OEBPS/css/
@@ -123,7 +127,7 @@ cp -f css/jlodb.css $dest/OEBPS/css/
 
 #TOC.NCX
 echo ----- BUILD TABLE OF CONTENT toc.ncx -----
-sed -e "s/%uuid%/${uid}/g" mods/tibibo/epub/toc.ncx > $dest/OEBPS/toc.ncx
+sed -e "s/%uuid%/${uid}/g" mods/tibibo/data/toc.ncx > $dest/OEBPS/toc.ncx
 
 page=1
 for line in `cat $file | sed -e "s/{/\n/g"` ; do
@@ -139,7 +143,17 @@ if [ ! `echo $line | grep "[^ ]" | wc -l` -eq 0 ] ; then
         echo ----- PUBLISH page $p -----
         echo $value
 
-        cp mods/tibibo/epub/page_header.xhtml $dest/OEBPS/page_$p.xhtml
+		file=$dest/OEBPS/page_$p.$format
+		touch $file
+		
+		if [ "$format" = "xhtml" ] ; then
+			echo "<?xml version='1.0' encoding='utf-8'?>" >> $file
+			echo "<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en'>" >> $file
+		else
+			echo "<!DOCTYPE HTML>" >> $file
+			echo "<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='fr' lang='fr'>" >> $file
+		fi
+        cat mods/tibibo/data/page_header.xhtml >> $file
         cp p_activities.tmp p_locale$p.tmp
         cp p_header.tmp p_header$p.tmp
             
@@ -177,17 +191,26 @@ if [ ! `echo $line | grep "[^ ]" | wc -l` -eq 0 ] ; then
             fi
         done
         
-        cat p_header$p.tmp | sed -e "s/<\!.*$//g" | grep -e . >> $dest/OEBPS/page_$p.xhtml
-        echo "<script><![CDATA[" >> $dest/OEBPS/page_$p.xhtml
-        cat p_locale$p.tmp | sed -e "s|^//.*$||g" | grep -e . >> $dest/OEBPS/page_$p.xhtml
+        cat p_header$p.tmp | sed -e "s/<\!.*$//g" | grep -e . >> $file
+        if [ "$format" = "xhtml" ] ; then
+			echo "<script><![CDATA[" >> $file
+		else
+			echo "<script>" >> $file
+		fi
+        cat p_locale$p.tmp | sed -e "s|^//.*$||g" | grep -e . >> $file
         
-        echo "var content='$label';" >> $dest/OEBPS/page_$p.xhtml
+        echo "var content='$label';" >> $file
         
-        cat p_exercices.tmp >> $dest/OEBPS/page_$p.xhtml
-        echo "zz:0};" >> $dest/OEBPS/page_$p.xhtml
+        cat p_exercices.tmp >> $file
+        echo "zz:0};" >> $file
         
         title=`echo $value | sed -e "s/\[[^]]*\]//g"`
-        cat mods/tibibo/epub/page_footer.xhtml | sed -e "s/%content%/${title}/g" >> $dest/OEBPS/page_$p.xhtml
+        
+        if [ "$format" = "xhtml" ] ; then
+			cat mods/tibibo/data/page_footer.xhtml | sed -e "s/%content%/${title}/g" >> $file
+		else
+			cat mods/tibibo/data/page_footer.xhtml | sed -e "s/%content%/${title}/g" -e "s/]]>//g" >> $file
+		fi
         
         rm p_header$p.tmp p_locale$p.tmp p_exercices.tmp
         
@@ -198,7 +221,7 @@ fi
 done
 
 echo ----- BUILD manifest -----
-mods/tibibo/epub/content.sh $dest/OEBPS > $dest/OEBPS/content.opf
+mods/tibibo/data/content.sh $dest/OEBPS > $dest/OEBPS/content.opf
 
 
 rm -f p_*.tmp
