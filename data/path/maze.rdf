@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dct="http://purl.org/dc/terms/">
+
+    <rdf:Description>
+        <dct:identifier>6</dct:identifier>
+        <dct:title xml:lang="fr-FR">Atteindre l'extrémité d'un labyrinthe 6x8.</dct:title>
+        <dct:description><![CDATA["sizepath":24,"colorpathf":"red","sizepoint":18,"limit":33,"radius":10,"gen":"function(){var svg='',nodes=[],w=32,off=[40,20],maze=new jlodbmaze({x:6,y:8}), m=maze.gen().get(); for (var l=0; l<m.length; l++) for (var r=0; r<m[l].length; r++) { var cell=m[l][r]; svg+='<rect x=\\\"'+(r*w+off[0])+'\\\" y=\\\"'+(l*w+off[1])+'\\\" width=\\\"'+w+'\\\" height=\\\"'+w+'\\\" style=\\\"fill:'+(cell==' '?'white':'black')+';fill-opacity:'+(cell==' '?0.5:0.9)+'\\\"/>'; if (cell==' ') { nodes.push([(r+0.5)*w+off[0], (l+0.5)*w+off[1]]); } } var f=6; for (var i=0;i<f;i++) for (var j=0;j<f;j++) { if ((i+j)%2==0) svg+='<rect x=\\\"'+((maze.y*2-1+i/f)*w+off[0])+'\\\" y=\\\"'+((maze.x*2-1+j/f)*w+off[1])+'\\\" width=\\\"'+(w/f)+'\\\" height=\\\"'+(w/f)+'\\\" style=\\\"fill:#26A\\\"/>'; } return {svg:svg, nodes:nodes, result:nodes.length-1}; }","url":"desktop/path/empty.svg","background":"res/img/background/landscape/landscape01.svg","constraint":"ortho"]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>game</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>12</dct:alternative>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>12</dct:identifier>
+        <dct:title xml:lang="fr-FR">Atteindre l'extrémité d'un labyrinthe 12x16.</dct:title>
+        <dct:description><![CDATA["sizepath":12,"colorpathf":"red","sizepoint":9,"limit":17,"radius":5,"gen":"function(){var svg='',nodes=[],w=16,off=[40,20],maze=new jlodbmaze({x:12,y:16}), m=maze.gen().get(); for (var l=0; l<m.length; l++) for (var r=0; r<m[l].length; r++) { var cell=m[l][r]; svg+='<rect x=\\\"'+(r*w+off[0])+'\\\" y=\\\"'+(l*w+off[1])+'\\\" width=\\\"'+w+'\\\" height=\\\"'+w+'\\\" style=\\\"fill:'+(cell==' '?'white':'black')+';fill-opacity:'+(cell==' '?0.5:0.9)+'\\\"/>'; if (cell==' ') { nodes.push([(r+0.5)*w+off[0], (l+0.5)*w+off[1]]); } } var f=6; for (var i=0;i<f;i++) for (var j=0;j<f;j++) { if ((i+j)%2==0) svg+='<rect x=\\\"'+((maze.y*2-1+i/f)*w+off[0])+'\\\" y=\\\"'+((maze.x*2-1+j/f)*w+off[1])+'\\\" width=\\\"'+(w/f)+'\\\" height=\\\"'+(w/f)+'\\\" style=\\\"fill:#26A\\\"/>'; } return {svg:svg, nodes:nodes, result:nodes.length-1}; }","url":"desktop/path/empty.svg","background":"res/img/background/landscape/landscape01.svg","constraint":"ortho"]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>game</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>12</dct:alternative>
+    </rdf:Description>
+
+
+
+</rdf:RDF>

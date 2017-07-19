@@ -12,6 +12,67 @@ $(window).resize(function() {
 });
 
 //================
+// JLODB TOOLS
+//================
+
+jlodbmaze = function(options) { if (options) for (var p in options) { this[p] = options[p]; } };
+jlodbmaze.prototype = {
+    constructor     : jlodbmaze,
+    x               : 10,
+    y               : 10,
+    horiz           : [],
+    verti           : [],
+    gen             : function() {
+        var n=this.x*this.y-1;
+        for (var j= 0; j<this.x+1; j++) { this.horiz[j]= []; this.verti[j]= []; }
+        var here= [Math.floor(Math.random()*this.x), Math.floor(Math.random()*this.y)];
+        var path= [here];
+        var unvisited= [];
+        for (var j= 0; j<this.x+2; j++) {
+            unvisited[j]= [];
+            for (var k=0; k<this.y+2; k++)
+                unvisited[j].push(j>0 && j<this.x+1 && k>0 && k<this.y+1 && (j != here[0]+1 || k != here[1]+1));
+        }
+        while (0<n) {
+            var potential= [[here[0]+1, here[1]], [here[0],here[1]+1], [here[0]-1, here[1]], [here[0],here[1]-1]];
+            var neighbors= [];
+            for (var j= 0; j < 4; j++)
+                if (unvisited[potential[j][0]+1][potential[j][1]+1])
+                    neighbors.push(potential[j]);
+            if (neighbors.length) {
+                n= n-1;
+                next= neighbors[Math.floor(Math.random()*neighbors.length)];
+                unvisited[next[0]+1][next[1]+1]= false;
+                if (next[0] == here[0])
+                    this.horiz[next[0]][(next[1]+here[1]-1)/2]= true;
+                else {
+                    this.verti[(next[0]+here[0]-1)/2][next[1]]= true;
+                }
+                path.push(here= next);
+            } else  { here= path.pop(); }
+        }
+        return this;
+    },
+    get : function(_from, _to) {
+        var ret= [];
+        for (var j= 0; j<this.x*2+1; j++) {
+            var line= [];
+            if (0 == j%2)
+                for (var k=0; k<this.y*2+1; k++)
+                    if (0 == k%2)   { line[k]= 'x'; }
+                    else            { line[k]= (j>0 && this.verti[j/2-1][Math.floor(k/2)])?' ':'x'; }
+            else
+                for (var k=0; k<this.y*2+1; k++)
+                    if (0 == k%2)   { line[k]= (k>0 && this.horiz[(j-1)/2][k/2-1])?' ':'x'; }
+                    else            { line[k]= ' '; }
+            ret.push(line);
+        }
+        return ret;
+    }
+};  
+
+
+//================
 // JLODB PLUGIN
 //================
 

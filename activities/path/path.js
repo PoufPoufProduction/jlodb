@@ -22,7 +22,8 @@
         groupname   : "paths",
         group       : 0,
         width       : 640,
-        effects     : false,
+        effects     : true,
+        background  : "",
         debug       : true                                     // Debug mode
     };
 
@@ -120,8 +121,18 @@
                 // Send the onLoad callback
                 if (settings.context.onload) { settings.context.onload($this); }
                 
-
-                // Build the nodes
+                // AUTOMATIC FILL
+                if (settings.gen) {
+                    var gen = eval('('+settings.gen+')')();
+                    if (gen.svg)    { $("#background",settings.svg.root()).html(gen.svg); }
+                    if (gen.nodes)  { settings.nodes = gen.nodes; }
+                    if (gen.result) { settings.result = gen.result; }
+                }
+                
+                // HANDLE BACKGROUND
+                if (settings.background) { $this.css("background-image","url("+settings.background+")"); }
+                
+                // GET THE NODES FROM SVG
                 if (typeof(settings.dots)=="string") {
                     var gloss={};
 
@@ -143,6 +154,29 @@
                     });
                 }
 
+                // BUILD A HASHTABLE OF NODE PROXIMITY IF ANY
+                var limit = 0;
+                settings.neighboor=[];
+                if (settings.limit) { limit = $.isArray(settings.limit)?settings.limit[settings.current%settings.limit.length]:settings.limit; }
+                if (limit) {
+                    for (var i=0; i<settings.nodes.length; i++) { settings.neighboor[i] = []; }
+                    for (var i=0; i<settings.nodes.length; i++) {
+                        for (var j=i+1; j<settings.nodes.length; j++) {
+                            if (helpers.isreachable(settings.nodes[i][0],settings.nodes[i][1],
+                                    settings.nodes[j][0],settings.nodes[j][1], limit)) {
+                                settings.neighboor[i].push(j);
+                                settings.neighboor[j].push(i);
+                            }
+                        }
+                    }
+                }
+                else {
+                    for (var i=0; i<settings.nodes.length; i++) { settings.neighboor[i] = [];
+                        for (var j=0; j<settings.nodes.length; j++) {
+                            if (i!=j) { settings.neighboor[i].push(j); }
+                        }
+                    }
+                }
 
                 settings.group = $("#"+settings.groupname, settings.svg.root());
                 if (!settings.group.length) {
@@ -206,33 +240,30 @@
                         var id = "c"+settings.current;
                         var x  = settings.cursor.init[2] + (e.clientX - settings.cursor.init[0])/settings.ratio;
                         var y  = settings.cursor.init[3] + (e.clientY - settings.cursor.init[1])/settings.ratio;
+                        var begin = settings.nodes[settings.begin[id]];
                         
+                        var dx = Math.abs(x-begin[0]), dy = Math.abs(y-begin[1]);
+                        
+                        if (settings.constraint=="ortho") {
+                            if (dx>dy) { y = begin[1]; } else { x = begin[0]; }
+                        }
+                            
                         var ok = true, limit = 0;
                         if (settings.limit) { limit = $.isArray(settings.limit)?settings.limit[settings.current%settings.limit.length]:settings.limit; }
-                        if (limit) { 
-                            if (typeof(limit)=="object") {
-                                ok = ( Math.abs(x-settings.nodes[settings.begin[id]][0]) < limit.x) &&
-                                     ( Math.abs(y-settings.nodes[settings.begin[id]][1]) < limit.y);
-                            }
-                            else {
-                                var d = (x-settings.nodes[settings.begin[id]][0])*(x-settings.nodes[settings.begin[id]][0]) +
-                                        (y-settings.nodes[settings.begin[id]][1])*(y-settings.nodes[settings.begin[id]][1]);
-                                ok = (d<=limit*limit);
-                            }
-                        }
+                        if (limit) { ok = helpers.isreachable(x,y, begin[0],begin[1],limit); }
                             
 
                         if (ok) {
                             var dist    = -1;
                             var current = -1;
-                            
-                            for (var i=0; i<settings.nodes.length; i++) {
-                                if (i!= settings.begin[id]) {
-                                    var d = (x-settings.nodes[i][0])*(x-settings.nodes[i][0]) +
-                                            (y-settings.nodes[i][1])*(y-settings.nodes[i][1]);
+                            for (var i=0; i<settings.neighboor[settings.begin[id]].length; i++) {
+                                var index   = settings.neighboor[settings.begin[id]][i];
+                                var node    = settings.nodes[index];
+                                var d       = (x-node[0])*(x-node[0]) + (y-node[1])*(y-node[1]);
 
-                                    if ((dist==-1||d<dist) && d<settings.radius*settings.radius) {
-                                        current = i; dist = d;
+                                if ((dist==-1||d<dist) && d<settings.radius*settings.radius) {
+                                    if ((limit==0) || ( helpers.isreachable(x, y, node[0], node[1], limit) )) {
+                                        current = index; dist = d;
                                     }
                                 }
                             }
@@ -312,7 +343,10 @@
                         if (good) {
                             for (var i=0; i<ff.length; i++) { $("#c"+i,settings.svg.root()).hide(); }
                             $this.find("#board>svg").attr("class",settings["class"]+" done");
-                            if (settings.effects) { $this.find("#effects").show(); }
+                            if (settings.effects) {
+                                $this.find("#goal").css("left","110%").show().animate({left:"60%"},300);
+                                setTimeout(function() { $this.find("#effects").show(); }, 1000);
+                            }
                             settings.interactive = false;
                             setTimeout(function() { helpers.end($this);}, 2000);
                         }
@@ -347,6 +381,12 @@
                 }
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
+        },
+        isreachable: function (_x1,_y1,_x2,_y2,_limit) {
+            var ret;
+            if (typeof(_limit)=="object") { ok = ( Math.abs(_x1-_x2) < _limit.x) && ( Math.abs(_y1-_y2) < _limit.y); }
+            else                          { ok = ((_x1-_x2)*(_x1-_x2) + (_y1-_y2)*(_y1-_y2) <= _limit*_limit); }
+            return ok;
         }
     };
 
