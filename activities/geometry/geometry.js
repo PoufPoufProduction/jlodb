@@ -3,7 +3,7 @@
     var defaults = {
         name        : "geometry",               // The activity name
         template    : "template.html",          // Activity's html template
-        filename    : "geometry/default.svg",   // The initial svg filename
+        filename    : "desktop/geometry/default.svg",   // The initial svg filename
         css         : "style.css",              // Activity's css style sheet
         lang        : "fr",                     // Current localization
         score       : 1,                        // The score (from 1 to 5)

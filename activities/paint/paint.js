@@ -113,7 +113,7 @@
                     elt.svg();
                     settings.svg = elt.svg('get');
 
-                    settings.svg.load('res/img/'+settings.url + debug,
+                    settings.svg.load(settings.url + debug,
                         { addTo: true, changeSize: true, onLoad:function() { helpers.loader.build($this); }
                     });
                 }

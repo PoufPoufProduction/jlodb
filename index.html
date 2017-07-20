@@ -563,26 +563,6 @@ jlodb = {
 
 $(window).ready(function() {
 	$(window).resize();
-    
-    var maze = new jlodbmaze({
-    width: 20,
-    height: 20,
-
-    perfect: true,
-    braid: false,
-    checkOver: false
-    
-    });
-    
-    maze.init();
-     maze.startNode = maze.getRandomNode();
-    do {
-        maze.endNode = maze.getRandomNode();
-    } while (maze.startNode == maze.endNode);
-    
-    maze.generate();
-    
-    alert(JSON.stringify(maze));
 
     $("#score").score({
         onreload:function($this) { $('#activity').jlodb('reload'); },
