@@ -8,15 +8,16 @@ fi
 
 url="jlodb.poufpoufproduction.fr"
 type="epub"
-book="prog"
+book=""
 format="xhtml"
+feat="mods/tibibo/book"
 
 OPTIND=1
 
-while getopts "h?u:t:b:f:" opt; do
+while getopts "h?u:t:b:f:d:" opt; do
     case "$opt" in
     h|\?)
-        echo usage: $0 -u url -t type -b book_id -f [xhtml|html]
+        echo usage: $0 -u url -t type -b book_id -f [xhtml|html] -d data_path
         exit 0
         ;;
     u)  url=$OPTARG
@@ -24,6 +25,8 @@ while getopts "h?u:t:b:f:" opt; do
     t)  type=$OPTARG
         ;;
     b)  book=$OPTARG
+        ;;
+    d)  feat=$OPTARG
         ;;
     f)  format=$OPTARG
 		if [ ! "$format" = "html" ] ; then format="xhtml"; fi
@@ -34,6 +37,11 @@ done
 shift $((OPTIND-1))
 
 [ "$1" = "--" ] && shift
+
+if [ -z $book ] ; then
+	echo no book
+	exit 0
+fi
 
 uuid()
 {
@@ -124,6 +132,8 @@ cp -r res/img/default $dest/OEBPS/res/img/
 cp -r js $dest/OEBPS/
 cp -f css/jlodb.css $dest/OEBPS/css/
 
+if [ -d $feat/import ] ; then cp -r $feat/import $dest/OEBPS/ ; fi
+
 
 #TOC.NCX
 echo ----- BUILD TABLE OF CONTENT toc.ncx -----
@@ -135,6 +145,8 @@ if [ ! `echo $line | grep "[^ ]" | wc -l` -eq 0 ] ; then
 
     value=`echo $line | sed -e 's/^.*label":"\([^"]\+\).*$/\1/g'`
     label=`echo $line | sed -e 's/^.*description":"//g' -e 's/","children.*$//g' -e 's/\[//g'`
+    idpage=`echo $line | sed -e 's/^"id":\([0-9]\+\).*$/\1/g'`
+
     
     if [ ! -z $label ]; then
  
@@ -153,7 +165,7 @@ if [ ! `echo $line | grep "[^ ]" | wc -l` -eq 0 ] ; then
 			echo "<!DOCTYPE HTML>" >> $file
 			echo "<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='fr' lang='fr'>" >> $file
 		fi
-        cat mods/tibibo/data/page_header.xhtml >> $file
+        cat mods/tibibo/data/page_001.xhtml >> $file
         cp p_activities.tmp p_locale$p.tmp
         cp p_header.tmp p_header$p.tmp
             
@@ -207,11 +219,19 @@ if [ ! `echo $line | grep "[^ ]" | wc -l` -eq 0 ] ; then
         title=`echo $value | sed -e "s/\[[^]]*\]//g"`
         
         if [ "$format" = "xhtml" ] ; then
-			cat mods/tibibo/data/page_footer.xhtml | sed -e "s/%content%/${title}/g" >> $file
-		else
-			cat mods/tibibo/data/page_footer.xhtml | sed -e "s/%content%/${title}/g" -e "s/]]>//g" >> $file
-		fi
-        
+		cat mods/tibibo/data/page_002.xhtml >> $file
+	else
+		cat mods/tibibo/data/page_002.xhtml | sed -e "s/]]>//g" >> $file
+	fi
+
+	if [ -f "$feat/page_$idpage.html" ] ; then
+		cat $feat/page_$idpage.html >> $file
+	else
+		echo "<div id='rcontent' class='rmenu'><h1>$title</h1><h2>page_$idpage.html</h2></div>" >> $file
+	fi
+
+	cat mods/tibibo/data/page_003.xhtml >> $file
+ 
         rm p_header$p.tmp p_locale$p.tmp p_exercices.tmp
         
         page=$((page+1))
