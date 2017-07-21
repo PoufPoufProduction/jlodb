@@ -101,10 +101,14 @@
                     _event.preventDefault();
                 });
                 
-                settings.data = $.extend(true,{},settings.init);
+                // ADD CONTENT FROM GEN FUNCTION
+                if (settings.gen) {
+                    var data = eval('('+settings.gen+')')();
+                    if (data.def)   { settings.content.def=$.extend(true,{},settings.content.def, data.def); }
+                    if (data.data)  { settings.data = $.extend(true,{},settings.data, data.data); }
+                }
                 
                 if (settings.dev) { $this.find("#devmode").show(); }
-
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
@@ -308,6 +312,7 @@
                             $elt.unbind("mousedown touchstart");
                             if (elt.attr&&elt.attr.onclick) {
                                 $elt.find("img").attr("id",elt.attr.onclick);
+                                $elt.addClass("pointer");
                                 $elt.bind("mousedown touchstart", function(_event) {
                                     var dest = $(this).find("img").attr("id"), reg = new RegExp("[$]","g");
                                     if (elt.value[0]=='$') {
@@ -322,6 +327,7 @@
                                     _event.preventDefault();
                                 });
                             }
+                            else { $elt.removeClass("pointer"); }
 
                             if (elt.attr&&elt.attr.anim) {
                                 var anim = elt.attr.anim.split(" ");
@@ -374,13 +380,17 @@
         imgfromdef: function($this, _url, _id, _attr) {
             var settings    = helpers.settings($this);
             var style="";
+            var content="";
             if (_attr&&_attr.width)       { style+="width:"+_attr.width+"em;" }
             if (_attr&&_attr.height)      { style+="height:"+_attr.height+"em;" }
             if (_attr&&_attr.opacity)     { style+="opacity:"+_attr.opacity+";" }
             if (_attr&&_attr.index)       { style+="z-index:"+_attr.index+";" }
             if (_attr&&_attr.size)        { style+="font-size:"+_attr.size+"em;" }
+            if (_url.indexOf("<svg")!=-1) { content = _url; } 
+            else                          { content = "<img src='"+_url+"'/>"; }
+            
             elt = "<div "+(_attr&&_attr["class"]?"class='"+_attr["class"]+"' ":"")+"id='elt"+_id+"'"+
-                    (style?" style='"+style+"'":"")+"><img src='"+_url+"'/></div>";
+                    (style?" style='"+style+"'":"")+">"+content+"</div>";
             return elt;
             
         },

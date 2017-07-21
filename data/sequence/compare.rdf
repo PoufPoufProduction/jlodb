@@ -541,6 +541,20 @@
         <dct:type>1</dct:type>
         <dct:alternative>1kx</dct:alternative>
     </rdf:Description>
+    
+    <!-- decimal -->
+
+    <rdf:Description>
+        <dct:identifier>d10</dct:identifier>
+        <dct:title xml:lang="fr-FR">Comparer, sans contrainte de temps, 2 entiers décimaux.</dct:title>
+        <dct:description><![CDATA["number":20,"time":0,"input":{"attr":[1.8,1.2,1.2],"digit":1,"values":["&lt;","&gt;"]},"regexp": { "output": "\\\\.\\\\.\\\\." },"template":"template2.html","gen":"function() { var max=7,ss=[10,100,1000],s=ss[Math.floor(Math.random()*ss.length)],a=Math.floor(Math.random()*max*s)+2,p; do { p=(Math.floor(Math.random()*2)*2-1)*Math.floor(1+Math.random()*s/10)*2; } while (a+p<=0); var b=a+p; return [\\\"<div style='margin-left:.2em;'><div style='width:3em;'>\\\"+(a/s)+\\\"</div><div style='width:1.1em;'>...</div><div style='width:3em;'>\\\"+(b/s)+\\\"</div></div>\\\", (a<b)?'&lt;':'&gt;']}","class":"h12 alpha left","font":0.9]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>1kx</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">decimal</dct:coverage>
+    </rdf:Description>
 
     <!-- Negative -->
 
