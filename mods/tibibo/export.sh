@@ -9,15 +9,14 @@ fi
 url="jlodb.poufpoufproduction.fr"
 type="epub"
 book=""
-format="xhtml"
 feat="mods/tibibo/book"
 
 OPTIND=1
 
-while getopts "h?u:t:b:f:d:" opt; do
+while getopts "h?u:t:b:d:" opt; do
     case "$opt" in
     h|\?)
-        echo usage: $0 -u url -t type -b book_id -f [xhtml|html] -d data_path
+        echo usage: $0 -u url -t type -b book_id -d data_path
         exit 0
         ;;
     u)  url=$OPTARG
@@ -27,9 +26,6 @@ while getopts "h?u:t:b:f:d:" opt; do
     b)  book=$OPTARG
         ;;
     d)  feat=$OPTARG
-        ;;
-    f)  format=$OPTARG
-		if [ ! "$format" = "html" ] ; then format="xhtml"; fi
         ;;
     esac
 done
@@ -155,17 +151,10 @@ if [ ! `echo $line | grep "[^ ]" | wc -l` -eq 0 ] ; then
         echo ----- PUBLISH page $p -----
         echo $value
 
-		file=$dest/OEBPS/page_$p.$format
+		file=$dest/OEBPS/page_$p.html
 		touch $file
 		
-		if [ "$format" = "xhtml" ] ; then
-			echo "<?xml version='1.0' encoding='utf-8'?>" >> $file
-			echo "<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en'>" >> $file
-		else
-			echo "<!DOCTYPE HTML>" >> $file
-			echo "<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='fr' lang='fr'>" >> $file
-		fi
-        cat mods/tibibo/data/page_001.xhtml >> $file
+        cat mods/tibibo/data/page_001.html >> $file
         cp p_activities.tmp p_locale$p.tmp
         cp p_header.tmp p_header$p.tmp
             
@@ -204,11 +193,7 @@ if [ ! `echo $line | grep "[^ ]" | wc -l` -eq 0 ] ; then
         done
         
         cat p_header$p.tmp | sed -e "s/<\!.*$//g" | grep -e . >> $file
-        if [ "$format" = "xhtml" ] ; then
-			echo "<script><![CDATA[" >> $file
-		else
-			echo "<script>" >> $file
-		fi
+        echo "<script>" >> $file
         cat p_locale$p.tmp | sed -e "s|^//.*$||g" | grep -e . >> $file
         
         echo "var content='$label';" >> $file
@@ -218,19 +203,16 @@ if [ ! `echo $line | grep "[^ ]" | wc -l` -eq 0 ] ; then
         
         title=`echo $value | sed -e "s/\[[^]]*\]//g"`
         
-        if [ "$format" = "xhtml" ] ; then
-		cat mods/tibibo/data/page_002.xhtml >> $file
-	else
-		cat mods/tibibo/data/page_002.xhtml | sed -e "s/]]>//g" >> $file
-	fi
+        
+		cat mods/tibibo/data/page_002.html >> $file
 
-	if [ -f "$feat/page_$idpage.html" ] ; then
-		cat $feat/page_$idpage.html >> $file
-	else
-		echo "<div id='rcontent' class='rmenu'><h1>$title</h1><h2>page_$idpage.html</h2></div>" >> $file
-	fi
+        if [ -f "$feat/page_$idpage.html" ] ; then
+            cat $feat/page_$idpage.html >> $file
+        else
+            echo "<div id='rcontent' class='rmenu'><h1>$title</h1><h2>page_$idpage.html</h2></div>" >> $file
+        fi
 
-	cat mods/tibibo/data/page_003.xhtml >> $file
+        cat mods/tibibo/data/page_003.html >> $file
  
         rm p_header$p.tmp p_locale$p.tmp p_exercices.tmp
         
