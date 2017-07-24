@@ -7,6 +7,7 @@
         css         : "style.css",                              // Activity's css style sheet
         lang        : "en-US",                                  // Current localization
         exercice    : [],                                       // Exercice
+        keys        : {},                                 // keys mapping
         debug       : true                                     // Debug mode
     };
 
@@ -205,6 +206,7 @@
                             }
                             else { $elt.detach(); }
                         }
+                        settings.keys[e[0]]=0;
                         break;
                     case "if"   :
                         var rep = true;
@@ -310,20 +312,18 @@
                             
                             
                             $elt.unbind("mousedown touchstart");
+                            settings.keys[e[0]]=0;
                             if (elt.attr&&elt.attr.onclick) {
-                                $elt.find("img").attr("id",elt.attr.onclick);
+                                var callback=elt.attr.onclick.split(' ');
+                                settings.keys[e[0]]=callback;
+                                $elt.find("img").attr("id",callback[0]);
                                 $elt.addClass("pointer");
                                 $elt.bind("mousedown touchstart", function(_event) {
                                     var dest = $(this).find("img").attr("id"), reg = new RegExp("[$]","g");
-                                    if (elt.value[0]=='$') {
-                                        try { dest = eval(dest.replace(reg,"settings.data.")); }
-                                        catch (e) { alert("error with: "+dest); }
-                                    }
                                     if (settings.content.story[dest]) {
                                         settings.pc = [ {story: settings.content.story[dest], p:0 , n:dest } ];
                                         helpers.run($this);
                                     }
-                                    
                                     _event.preventDefault();
                                 });
                             }
@@ -924,6 +924,15 @@
                     }
                 }
             }
+        },
+        key: function($this, _value) {
+            var settings    = helpers.settings($this);
+            for (var i in settings.keys) {
+                if (settings.keys[i] && settings.keys[i][1]==_value && settings.content.story[settings.keys[i][0]]) {
+                    settings.pc = [ {story: settings.content.story[settings.keys[i][0]], p:0 , n:settings.keys[i][0] } ];
+                    helpers.run($this);
+                }
+            }
         }
     };
 
@@ -947,6 +956,10 @@
                 return this.each(function() {
                     var $this = $(this);
                     helpers.unbind($this);
+                    
+                    $(document).keypress(function(_e) {
+                        if (_e.keyCode!=116) { helpers.key($this, _e.keyCode); _e.preventDefault(); }
+                    });
 
                     var $settings = $.extend({}, defaults, options, settings);
                     var checkContext = helpers.checkContext($settings);
