@@ -1,0 +1,40 @@
+<script>
+var data    = {};
+var lang    = "";
+var user    = "user0";
+var pageid  = "%page%";
+var chapid  = "%chapid%";
+</script>
+    
+</head>
+
+<body><div>
+    <div id="aapage">
+        <div id="aacontent">
+            <div id="aatemplate"></div>
+            <div id="aanav">
+                <div onclick="changepage(-1)" ontouchstart="changepage(-1);event.preventDefault();">
+                    <img src="res/img/default/icon/action_prev01.svg" alt=""/>
+                </div>
+                <div onclick="document.location.href='page_999.html'"
+                     ontouchstart="document.location.href='page_999.html';event.preventDefault();">
+                    <img src="res/img/default/icon/action_menu01.svg" alt=""/>
+                </div>
+                <div onclick="changepage(1)" ontouchstart="changepage(1);event.preventDefault();">
+                    <img src="res/img/default/icon/action_next01.svg" alt=""/>
+                </div>
+            </div>
+        </div>
+        <div id="aamenu" class="theme2"></div>
+    </div>
+        
+    <div id="score"></div>
+
+    <div class="jlodb">
+        <div id="quit" ontouchstart="$('#activity').jlodb('quit');event.preventDefault();"
+                       onclick="$('#activity').jlodb('quit');"><img src="res/img/default/icon/nw_quit01.svg"/></div>
+        <div id="activity"></div>
+    </div>
+
+</div></body>
+</html>

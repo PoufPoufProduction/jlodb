@@ -6,27 +6,33 @@ if [ ! -f "index.html" ]; then
     exit 1
 fi
 
-url="jlodb.poufpoufproduction.fr"
-type="epub"
+# PARAMETER DEFAULT VALUES
+add=0
 book=""
-feat="mods/tibibo/book"
+dest="output"
+feat="."
+url="jlodb.poufpoufproduction.fr"
+stat=0
 
 OPTIND=1
 
-while getopts "h?u:t:b:d:" opt; do
+while getopts "h?ab:d:o:su:" opt; do
     case "$opt" in
     h|\?)
-        echo usage: $0 -u url -t type -b book_id -d data_path
+        echo "usage: $0 -b book_id [OPTIONS]"
+        echo "  -a          : add new langage to book      [false]"
+        echo "  -d [PATH]   : static data path             [.]"
+        echo "  -o [NAME]   : output folder                [output]"
+        echo "  -u [URL]    : jlodb website url            [jlodb.poufpoufproduction.fr]"
+        echo "  -s          : activity download is static  [false]"
         exit 0
         ;;
-    u)  url=$OPTARG
-        ;;
-    t)  type=$OPTARG
-        ;;
-    b)  book=$OPTARG
-        ;;
-    d)  feat=$OPTARG
-        ;;
+    a)  add=1 ;;
+    b)  book=$OPTARG ;;
+    d)  feat=$OPTARG ;;
+    o)  dest=$OPTARG ;;
+    s)  stat=1 ;;
+    u)  url=$OPTARG ;;
     esac
 done
 
@@ -34,6 +40,7 @@ shift $((OPTIND-1))
 
 [ "$1" = "--" ] && shift
 
+# CHECK BOOK
 if [ -z $book ] ; then
 	echo no book
 	exit 0
@@ -71,20 +78,50 @@ uuid()
     echo
 }
 uid=`uuid`
+IFS=$'\n'
 
 # CLEANING STUFF
 echo ----- CLEAN and INITIALIZE -----
-dest=output
-IFS=$'\n'
 rm -f p_*.tmp
-rm -rf $dest
+if [ $add -eq 0 ] ; then echo "+ delete $dest"; rm -rf $dest; else echo "+ keep $dest"; fi
+
+# GET LANG
+echo ----- GET language -----
+wget "$url/api/checkdb.php" -O p_json.tmp
+lang=`cat p_json.tmp | grep lang | sed -e 's/.*lang":"\([^"]\+\)\+",.*/\1/g'`
+echo "+ lang: ${lang}"
+
+# BUILD FOLDER
+echo ----- PREPARE folder $dest -----
+mkdir -p $dest/OEBPS $dest/OEBPS/res/img/ $dest/OEBPS/css $dest/OEBPS/activities
+mkdir -p $dest/OEBPS/data $dest/OEBPS/data/$lang
+cp -r mods/tibibo/data/META-INF/ $dest/
+cp -f mods/tibibo/data/mimetype $dest/
+cp -r res/img/default $dest/OEBPS/res/img/
+cp -r js $dest/OEBPS/
+cp -f css/jlodb.css $dest/OEBPS/css/
+cp -f mods/tibibo/data/style.css $dest/OEBPS/css/
+cp -f mods/tibibo/data/page.js $dest/OEBPS/js/
+
+# HANDLE lang.json
+echo ----- HANDLE $dest/OEBPS/data/lang.json -----
+if [ -f $dest/OEBPS/data/lang.json ] ; then
+    if [ `cat $dest/OEBPS/data/lang.json | grep $lang | wc -l` -eq 0 ] ; then
+        cat $dest/OEBPS/data/lang.json | sed -e "s/\]/,\"${lang}\"\]/g" >> p_tmp.tmp
+        mv p_tmp.tmp $dest/OEBPS/data/lang.json
+    fi
+else
+    echo "[\"${lang}\"]" > $dest/OEBPS/data/lang.json
+fi
+
+# if [ -d $feat ] ; then cp -r $feat $dest/OEBPS/data/ ; fi
+
 
 # GET JSON FILE
+echo ----- GET BOOK $book -----
 file=""
-if [ -f $book ]; then file=$book
-else if [ -f "$book.json" ]; then
-    echo "+ book book from file"
-	file="$id.json"
+if [ -f $book ]; then file=$book; echo "+ Get book from $file"
+else if [ -f "$book.json" ]; then file="$book.json"; echo "+ Get book from ${file}"
 else
     echo "+ Get book from website"
     file="p_$book.tmp"
@@ -99,36 +136,29 @@ if [ `file $file | grep "UTF-8" | wc -l` -eq 0 ]; then
     iconv -f "windows-1252" -t "UTF-8" $file > tmp.tmp ; mv -f tmp.tmp $file
 fi
 
-# GET ACTIVITIES DATA
-echo ----- GET activities information -----
-echo "var activities = {" >> p_activities.tmp
-wget "$url/api/activity.php?locale" -O p_json.tmp
-echo -n "+ processing"
-for a in `cat p_json.tmp | sed -e 's/{"id":/\n{"id":/g'` ; do
-    if [ `echo $a | grep label | wc -l` -eq 1 ]; then
-        id=`echo $a | sed -e 's/^.*id":"\([^"]\+\).*$/\1/g'`
-        label=`echo $a | sed -e 's/^.*label":"\([^"]\+\).*$/\1/g'`
-        locale=`echo $a | sed -e 's/^.*locale":\(.\+}\)}.*$/\1/g'`
-        echo -n " $id"
-        echo "<!--  <script type=\"text/javascript\" src=\"activities/${id}/${id}.js\"></script> -->" >> p_header.tmp
-        echo "<!--  <link type=\"text/css\" rel=\"stylesheet\" href=\"activities/${id}/style.css\" media=\"all\"/> -->" >> p_header.tmp
-        echo "// ${id}:{label:\"${label}\",locale:${locale}}," >> p_activities.tmp
-    fi
-done
-echo "zzz:{}" >> p_activities.tmp
-echo "}" >> p_activities.tmp
-echo "... OK"
+# GET ACTIVITIES DATA (TO ENHANCE IN ORDER TO KEEP ONLY USED ACTIVITIES)
+echo ----- GET activities information in $dest/OEBPS/data/$lang/activities.json -----
+if [ ! -f $dest/OEBPS/data/$lang/activities.json ] ; then
+    echo "{" > $dest/OEBPS/data/$lang/activities.json
+    wget "$url/api/activity.php?locale" -O p_json.tmp
+    echo -n "+ processing"
+    for a in `cat p_json.tmp | sed -e 's/{"id":/\n{"id":/g'` ; do
+        if [ `echo $a | grep label | wc -l` -eq 1 ]; then
+            id=`echo $a | sed -e 's/^.*id":"\([^"]\+\).*$/\1/g'`
+            label=`echo $a | sed -e 's/^.*label":"\([^"]\+\).*$/\1/g'`
+            locale=`echo $a | sed -e 's/^.*locale":\(.\+}\)}.*$/\1/g'`
+            echo -n " $id"
 
-# BUILD FOLDER
-echo ----- PREPARE folder $dest -----
-mkdir -p $dest/OEBPS $dest/OEBPS/res/img/ $dest/OEBPS/css $dest/OEBPS/activities
-cp -r mods/tibibo/data/META-INF/ $dest/
-cp -f mods/tibibo/data/mimetype $dest/
-cp -r res/img/default $dest/OEBPS/res/img/
-cp -r js $dest/OEBPS/
-cp -f css/jlodb.css $dest/OEBPS/css/
-
-if [ -d $feat/import ] ; then cp -r $feat/import $dest/OEBPS/ ; fi
+            # FILL FILE
+            echo "  \"${id}\":{\"label\":\"${label}\",\"locale\":${locale}}," >> $dest/OEBPS/data/$lang/activities.json
+        fi
+    done
+    echo "  \"zzz\":{}" >> $dest/OEBPS/data/$lang/activities.json
+    echo "}" >> $dest/OEBPS/data/$lang/activities.json
+    echo "... OK"
+else
+    echo "+ keep current file"
+fi
 
 
 #TOC.NCX
@@ -148,18 +178,37 @@ if [ ! `echo $line | grep "[^ ]" | wc -l` -eq 0 ] ; then
  
         if [ $page -lt 10 ]; then p=00$page; else if [ $page -lt 100 ]; then p=0$page; else p=$page; fi; fi
         
-        echo ----- PUBLISH page $p -----
-        echo $value
+        echo ----- PUBLISH page $p ----
+        title=`echo $value | sed -e "s/\[[^]]*\]//g"`
+        echo "+ chapter : $title"
 
 		file=$dest/OEBPS/page_$p.html
 		touch $file
 		
-        cat mods/tibibo/data/page_001.html >> $file
-        cp p_activities.tmp p_locale$p.tmp
-        cp p_header.tmp p_header$p.tmp
-            
+        # HANDLE HEADER
+        cat mods/tibibo/data/page_header.html | sed -e "s/%title%/${book} ${title} - ${page}/g" > $file
+        
+        echo -n "+ javascript : "
+        echo "    <script type=\"text/javascript\" src=\"js/jquery.min.js\"></script>" >> $file
+        for js in $dest/OEBPS/js/*.js ; do
+            jsname=`basename $js`
+            echo -n "$jsname "
+            if [ `grep $jsname $file | wc -l` -eq 0 ] ; then
+                echo "    <script type=\"text/javascript\" src=\"js/$jsname\"></script>" >> $file
+            fi
+        done
+        echo
+        
+        echo -n "+ style : "
+        for css in $dest/OEBPS/css/*.css ; do
+            cssname=`basename $css`
+            echo -n "$cssname "
+            echo "    <link type=\"text/css\" rel=\"stylesheet\" href=\"css/$cssname\" media=\"all\"/>" >> $file
+        done
+        echo
+        
         wget "$url/api/exercice.php?detail&source&nolocale&id=$label" -O p_json.tmp
-        echo "var exercices={" > p_exercices.tmp
+        echo "{" > $dest/OEBPS/data/$lang/exercices_$idpage.json
         
         for ex in `cat p_json.tmp | sed -e 's/{\("id":"[^"]*","label"\)/\n{\1/g'` ; do
             if [ `echo $ex | grep activity | wc -l` -eq 1 ] ; then
@@ -168,9 +217,17 @@ if [ ! `echo $line | grep "[^ ]" | wc -l` -eq 0 ] ; then
                 echo "+ processing $id"
                 activity=`echo $ex | sed -e 's/^.*activity":"\([^"]\+\).*$/\1/g'`
                 data=`echo $ex | sed -e 's/^.*,"data":\({.\+\),"ext".*$/\1/g'`
-                cat p_header$p.tmp | sed -e "s|<!--  \(.*${activity}/.*\) -->|\1|g" > tmp.tmp; mv tmp.tmp p_header$p.tmp
-                cat p_locale$p.tmp | sed -e "s|// \(${activity}:.*$\)|\1|g" > tmp.tmp; mv tmp.tmp p_locale$p.tmp
-                echo "$id:{activity:\"$activity\",args:$data}," >> p_exercices.tmp
+                
+                echo "\"$id\":{\"activity\":\"$activity\",\"args\":$data}," >> $dest/OEBPS/data/$lang/exercices_$idpage.json
+                
+                if [ $stat -eq 1 ] ; then
+                    if [ `grep ${activity}.js $file | wc -l` -eq 0 ] ; then
+                        echo "    <script type=\"text/javascript\" src=\"activities/${activity}/${activity}.js\"></script>" >> $file
+                        echo "    <link type=\"text/css\" rel=\"stylesheet\" href=\"activities/${activity}/style.css\" media=\"all\"/>" >> $file
+
+                        echo "    - add $activity static javascript and style"
+                    fi
+                fi
                 
                 if [ ! -d $dest/OEBPS/activities/$activity ] ; then
                     echo "  - copy activities/$activity"
@@ -192,29 +249,14 @@ if [ ! `echo $line | grep "[^ ]" | wc -l` -eq 0 ] ; then
             fi
         done
         
-        cat p_header$p.tmp | sed -e "s/<\!.*$//g" | grep -e . >> $file
-        echo "<script>" >> $file
-        cat p_locale$p.tmp | sed -e "s|^//.*$||g" | grep -e . >> $file
+        echo "\"zz\":0}" >> $dest/OEBPS/data/$lang/exercices_$idpage.json
+        echo "{\"content\":\"${label}\"}" > $dest/OEBPS/data/$lang/content_$idpage.json
         
-        echo "var content='$label';" >> $file
+		cat mods/tibibo/data/page_footer.html | sed -e "s/%page%/${p}/g" -e "s/%chapid%/${idpage}/g" >> $file
         
-        cat p_exercices.tmp >> $file
-        echo "zz:0};" >> $file
-        
-        title=`echo $value | sed -e "s/\[[^]]*\]//g"`
-        
-        
-		cat mods/tibibo/data/page_002.html >> $file
-
-        if [ -f "$feat/page_$idpage.html" ] ; then
-            cat $feat/page_$idpage.html >> $file
-        else
-            echo "<div id='rcontent' class='rmenu'><h1>$title</h1><h2>page_$idpage.html</h2></div>" >> $file
+        if [ ! -f $dest/OEBPS/data/$lang/content_$idpage.html ] ; then
+            echo "<h1>$title</h1><h2>chapter : $idpage</h2>" > $dest/OEBPS/data/$lang/content_$idpage.html
         fi
-
-        cat mods/tibibo/data/page_003.html >> $file
- 
-        rm p_header$p.tmp p_locale$p.tmp p_exercices.tmp
         
         page=$((page+1))
 
@@ -223,7 +265,7 @@ fi
 done
 
 echo ----- BUILD manifest -----
-mods/tibibo/data/content.sh $dest/OEBPS > $dest/OEBPS/content.opf
+#mods/tibibo/data/content.sh $dest/OEBPS > $dest/OEBPS/content.opf
 
 
 rm -f p_*.tmp
