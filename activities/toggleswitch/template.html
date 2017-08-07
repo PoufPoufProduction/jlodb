@@ -4,6 +4,8 @@
         <div id="data"></div>
         <div id="exercice"><div><div id="tag"><div></div></div><div id="content"></div></div></div>
     </div>
+    
+    <div id="timer">00:00:00</div>
 
     <div id="submit" ontouchstart="$(this).closest('.toggleswitch').toggleswitch('valid');event.preventDefault();"
                      onclick="$(this).closest('.toggleswitch').toggleswitch('valid');">
@@ -16,6 +18,8 @@
         <div id="good"><img src="res/img/default/popup/good01.svg" alt=""/></div>
         <div id="wrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
     </div>
+    
+    <div id="error"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
 
     <div id="splashex" ontouchstart="$(this).hide().closest('.toggleswitch').toggleswitch('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.toggleswitch').toggleswitch('next');"><div>
@@ -32,6 +36,7 @@
             <p id="guide_diff7" class="guide"></p>
             <p id="guide_diff7b"></p>
         </div>
+        <div id="timeattack"></div>
     </div>
 
 </div>

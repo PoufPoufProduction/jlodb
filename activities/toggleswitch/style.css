@@ -12,6 +12,7 @@
                                               text-align:justify; font-style:italic; }
 .toggleswitch div#splashex #search          { display:none; }
 .toggleswitch div#splashex #diff7           { display:none; }
+.toggleswitch div#splashex #timeattack      { position:absolute; font-weight:bold; top:92%; left:70%; width:9em; text-align:right; color:white; display:none; }
 .toggleswitch div#submit                    { font-size:1.5em; height:1em;width:1em; cursor:pointer; display:none;
                                               position:absolute; top:7em; left:0em; z-index:3; }
 .toggleswitch div#submit>img                { display:none; }
@@ -59,9 +60,18 @@
                                               text-align:justify; font-style:italic; display:none; }
 .toggleswitch.diff7.inv div#splashex #guide_diff7b  { display:inline; }
 
+.toggleswitch.timeattack div#splashex #timeattack { display:inline; }
+
 /* TEMPLATE ALTERNATIVES */
 .toggleswitch.small .t                   { font-size:.6em; }
 .toggleswitch.big .t                       { font-size:2em; }
 
 .toggleswitch .illustration #legend              { top:0; font-size:.4em; width:98%; text-align:justify; }
+
+.toggleswitch #error                      { position:absolute; display:none; font-size:2em; width:1em; height:1em; top:0; left:0; margin-top:-.5em; margin-left:-.5em; }
+
+.toggleswitch #timer    { position:absolute; border:2px solid white; background-color:black; color:white; top:0; left:50%; width:5em; margin-left:-2.5em; text-align:center; font-size:.5em; display:none; }
+.toggleswitch #timer.s  { background-color:red; }
+.toggleswitch #timer.s.err  { background-color:yellow; }
+.toggleswitch.timeattack #timer { display:inline; }
 

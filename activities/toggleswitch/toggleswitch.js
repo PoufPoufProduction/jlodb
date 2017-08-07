@@ -19,6 +19,7 @@
         errratio    : 1,                                        // Ratio error
         fontex      : 1,
         fonttag     : 1,
+        errelt      : "",                                       // wrong element
         debug       : true                                      // Debug mode
     };
 
@@ -111,6 +112,7 @@
                 $this.find("#guide").html(settings.guide);
                 $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); });
                 setTimeout(function() { helpers.build($this); }, 500);
+                if (settings.time) { $this.addClass("timeattack"); }
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
@@ -203,6 +205,26 @@
             if ($.isArray(vLegend)) { vLegend = vLegend[settings.it%vLegend.length]; }
 
             if (vLegend) { $this.find("#legend").html(helpers.format(vLegend)); }
+            
+            // HANDLE THE ERRELT
+            if (settings.errelt) {
+                $this.find((settings.current.group?"#"+settings.current.group+" ":"")+"#"+settings.errelt).bind(
+                    "mousedown touchstart",function(event) {
+                        
+                    var vEvent = (event && event.originalEvent && event.originalEvent.touches &&
+                                  event.originalEvent.touches.length)?event.originalEvent.touches[0]:event;
+
+                    if (settings.interactive) {
+                        $this.find("#error").css("left", vEvent.clientX-$this.offset().left)
+                                            .css("top",  vEvent.clientY-$this.offset().top)
+                                            .css("opacity", 1)
+                                            .animate({opacity:0}, 500, function(){$(this).hide(); })
+                                            .show();
+                        settings.wrongs++;
+                    }
+                    event.preventDefault();
+                });
+            }
   
 
             settings.interactive = true;
@@ -306,6 +328,23 @@
                     if (settings.current.t && settings.current.t.length>index) { $(this).text(value); }});
                 helpers.fill($this);
             }
+        },
+        timer: function($this) {
+            var settings = helpers.settings($this);
+            settings.timer.id = 0;
+            $this.find("#timer").removeClass("err");
+            var delta = Date.now()-settings.timer.begin;
+            var t = settings.time-Math.floor(delta/1000);
+            $this.find("#timer").html(jlodbtime(t));
+            if (t<=0) {
+                if (!$this.find("#timer").hasClass("s")) { $this.find("#timer").addClass("s"); }
+                if (Math.abs(t)>=settings.timer.err*settings.time/5) {
+                    settings.timer.err++;
+                    settings.wrongs++;
+                    $this.find("#timer").addClass("err");
+                }
+            }
+            if (settings.interactive) { settings.timer.id = setTimeout(function() { helpers.timer($this); },200); }
         }
 
     };
@@ -326,6 +365,11 @@
                         t       : [],
                         result  : "",
                         values  : []
+                    },
+                    timer       : {
+                        begin   : 0,
+                        id      : 0,
+                        err     : 0
                     },
                     svg         : 0
                 };
@@ -369,7 +413,7 @@
 
                     var value = wrongs?"wrong":"good";
                     $this.find("#submit").addClass(value);
-                    settings.wrongs+=wrongs;
+                    settings.wrongs+=settings.errratio*wrongs;
                     settings.it++;
                     $this.addClass("end");
 
@@ -380,13 +424,16 @@
 
                     if (settings.it>=settings.number) {
 
-                        settings.score = 5-settings.errratio*settings.wrongs;
+                        settings.score = 5-settings.wrongs;
                         if (settings.score<0) { settings.score = 0; }
                         $(this).find("#valid").hide();
                         setTimeout(function() { helpers.end($this); }, wrongs?2000:1000);
                     }
                     else {
-                        setTimeout(function() { helpers.build($this); }, wrongs?2000:1000);
+                        setTimeout(function() {
+                            helpers.build($this);
+                            $this[settings.name]('next');
+                        }, wrongs?2000:1000);
                     }
                 }
             },
@@ -397,6 +444,11 @@
             },
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
+                if (settings.time) {
+                    $this.find("#timer").removeClass("s").html(jlodbtime(settings.time));
+                    settings.timer.begin = Date.now();
+                    settings.timer.id = setTimeout(function() { helpers.timer($this); },200);
+                }
                 $(this).find("#submit").show();
             },
             refresh: function() {

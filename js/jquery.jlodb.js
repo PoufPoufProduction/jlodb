@@ -15,6 +15,14 @@ $(window).resize(function() {
 // JLODB TOOLS
 //================
 
+jlodbtime = function(_seconds) {
+    _seconds=Math.abs(_seconds);
+    var h=Math.floor(_seconds/3600);
+    var m=Math.floor(_seconds/60)%60;
+    var s=_seconds%60;
+    return (h<10?"0":"")+h+":"+(m<10?"0":"")+m+":"+(s<10?"0":"")+s;
+}
+
 jlodbmaze = function(options) { if (options) for (var p in options) { this[p] = options[p]; } };
 jlodbmaze.prototype = {
     constructor     : jlodbmaze,
