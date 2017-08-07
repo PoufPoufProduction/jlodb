@@ -29,7 +29,7 @@ for f in `find $1 -depth` ; do
         case "$extension" in
             "svg")      echo "  <item href=\"${filename}\" id=\"${fid}_${extension}_${i}\" media-type=\"image/svg+xml\"/>" ;;
             "js")       echo "  <item href=\"${filename}\" id=\"${fid}_${extension}\" media-type=\"application/javascript\"/>" ;;
-            "html")     echo "  <item href=\"${filename}\" id=\"${fid}_${i}\" media-type=\"application/xhtml+xml\"/>" ;;
+            "html")     echo "  <item href=\"${filename}\" id=\"${fid}\" media-type=\"text/html\"/>" ;;
             "xhtml")    echo "  <item href=\"${filename}\" id=\"${fid}\" media-type=\"application/xhtml+xml\"/>" ;;
             "css")      echo "  <item href=\"${filename}\" id=\"${fid}_${extension}\" media-type=\"text/css\"/>" ;;
             "ncx")      echo "  <item href=\"${filename}\" id=\"${fid}\" media-type=\"application/x-dtbncx+xml\"/>" ;;
@@ -45,14 +45,14 @@ echo "</manifest>"
 
 # SPINE
 echo '<spine toc="toc">'
-for f in $1/page*.xhtml; do
-    echo '  <itemref idref="'`basename $f .xhtml`'"/>'
+for f in $1/page*.html; do
+    echo '  <itemref idref="'`basename $f .html`'"/>'
 done
 echo '</spine>'
 
 # GUIDE
 echo '<guide>'
-echo '  <reference href="page_001.xhtml" title="Title" type="cover"/>'
+echo '  <reference href="page_001.html" title="Title" type="cover"/>'
 echo '</guide>'
 
 echo '</package>'
