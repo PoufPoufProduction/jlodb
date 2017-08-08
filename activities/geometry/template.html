@@ -33,8 +33,8 @@
                              ontouchstart="$(this).closest('.geometry').geometry('click', this);event.preventDefault();">
                         <div></div></div></td></tr>
                 <tr><td><div class="action" id="info" onclick="$(this).closest('.geometry').geometry('cancel');"
-                             ontouchstart="$(this).closest('.geometry').geometry('cancel', this);event.preventDefault();">
-                            <div id="nbelts"></div><div id="cancel"><img src="res/img/default/control/left01.svg" alt=""/></div></div></td>
+                             ontouchstart="$(this).closest('.geometry').geometry('cancel');event.preventDefault();">
+                            <div id="nbelts"></div><div id="cancel"><img src="res/img/default/control/left02.svg" alt=""/></div></div></td>
                     <td><div class="action a2" ></div></td></tr>
             </table>
         </div>
@@ -48,6 +48,10 @@
         <table id="objectives">
         </table>
     </div>
+    
+    <div id="cancel2" onclick="$(this).closest('.geometry').geometry('cancel');"
+                      ontouchstart="$(this).closest('.geometry').geometry('cancel');event.preventDefault();">
+        <img src="res/img/default/control/left02.svg" alt=""/></div>
 
     <div id="splashex" ontouchstart="$(this).hide().closest('.geometry').geometry('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.geometry').geometry('next');"><div>

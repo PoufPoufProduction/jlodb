@@ -215,10 +215,11 @@
                                   event.originalEvent.touches.length)?event.originalEvent.touches[0]:event;
 
                     if (settings.interactive) {
+                        settings.interactive = false;
                         $this.find("#error").css("left", vEvent.clientX-$this.offset().left)
                                             .css("top",  vEvent.clientY-$this.offset().top)
                                             .css("opacity", 1)
-                                            .animate({opacity:0}, 500, function(){$(this).hide(); })
+                                            .animate({opacity:0}, 500, function(){$(this).hide();settings.interactive = true; })
                                             .show();
                         settings.wrongs++;
                     }

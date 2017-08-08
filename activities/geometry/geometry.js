@@ -21,7 +21,8 @@
         translate   : [0,0],                    // The translation values
         timerend    : 2000,                     // Timer before display the score panel
         style       : false,                    // The style changing is disable
-        active    : false,                      // Activate all data by default
+        withcancel  : false,                    // Show cancel2 button (for "large" class usage)
+        active      : false,                      // Activate all data by default
         debug       : true                      // Debug mode
     };
 
@@ -144,6 +145,9 @@
                 });
 
                 helpers.update($this, false);
+                
+                // CANCEL2 BUTTON
+                if (settings.withcancel) { $this.find("#cancel2").show(); }
 
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
@@ -958,7 +962,7 @@
             },
             cancel: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                if (settings.histo.length) {
+                if (settings.histo.length && !settings.finish) {
                     var vElt = settings.histo.pop();
                     switch(vElt)
                     {

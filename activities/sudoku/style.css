@@ -1,7 +1,5 @@
 .sudoku                         { font-size:.45em; background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat;}
-.sudoku table                   { border-spacing:0;  font-size:1em; }
-.sudoku td                      { margin:0; padding:0; }
-.sudoku td.grid3x3              { border: .1em solid rgb(53,34,34); }
+
 .sudoku #menu                   { float:left; padding:.1em; margin-top:2em; font-size:1.45em;}
 .sudoku #menu #comment          { font-style:italic; width:6em; height:8em; margin-bottom:.1em; border-radius:.5em .5em 0 0; background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat; }
 .sudoku #menu #comment>div      { font-size:0.4em; margin:.5em; text-align:justify; }
@@ -13,11 +11,16 @@
                                   text-align:center; cursor:pointer; background-color:rgba(255,255,255,0.9);
                                   font-weight:bold; color:rgb(53,34,34); }
 .sudoku #grid                   { padding-top:2px; }
+.sudoku table                   { border-spacing:0;  font-size:1em; }
+.sudoku td                      { margin:0; padding:0; }
+.sudoku td.group                { border: .1em solid rgb(53,34,34); }
 .sudoku #keypad                 { position:absolute; overflow:visible; display:none; font-weight:bold; font-size:1.75em; }
 .sudoku #keypad div.k           { font-size:.8em; width:1.2em; height:1.2em; overflow:hidden; text-align:center;
                            background-image:url("../../res/img/asset/fx/target01.svg"); border-radius:0.5em;
                            background-size:100%; color:rgb(17,95,130); background-position:0 0; cursor:pointer;
                            position:absolute; display:none; background-color:rgba(200,235,235,0.8);}
+.sudoku #keypad.s4 div.k        { font-size:1.4em; }
+.sudoku #keypad.s6 div.k        { font-size:1em; }
 .sudoku #keypad div.k.s         { background-color:rgba(17,95,130,0.8); color:rgb(200,235,235); }
 .sudoku #keypad #bg1            { background-image:url("../../res/img/asset/fx/target02.svg"); font-size:3em; position:absolute; 
                                   width:1em; height:1em; top:-0.47em; left:-0.47em; font-size:3em; }
@@ -25,6 +28,7 @@
 .sudoku td.cell div.border      { width:3.6em; height:3.6em; overflow:hidden; position:relative; }
 .sudoku td.cell div.fill        { width:1.2em; height:1.2em; font-size:3em; text-align:center; cursor:pointer; position:absolute; }
 .sudoku td.cell div.fill.value  { color:red; }
+.sudoku.img td.cell div.fill.value  { background-color:rgba(255,0,0,0.5);}
 .sudoku td.wrong        { background-color:rgba(255,0,0,0.4) !important; }
 
 .sudoku #grid td.cell.blue div.fill         { background-color:rgba(0,0,200,0.3); }
@@ -43,9 +47,14 @@
 
 .sudoku td.cell table.hint      { position:absolute; display:none; }
 .sudoku td.cell div.final       { cursor:default; color:rgb(53,34,34); }
-.sudoku table.hint div          { width:1.2em; height:1.2em; overflow:hidden; text-align:center; cursor:pointer;}
-.sudoku #grid9x9                { font-size: 0.8em; collapse-border:collapse; border: .2em solid rgb(53,34,34);
+.sudoku.img td.cell div.final   { background-color:rgba(53,34,34,0.3); }
+.sudoku table.hint div          { width:1.2em; height:1.2em; overflow:hidden; text-align:center; cursor:pointer; }
+.sudoku .s4 table.hint div      { font-size:1.5em; }
+.sudoku #grid>table               { font-size: 0.8em; collapse-border:collapse; border: .2em solid rgb(53,34,34);
                                   background-color:rgba(255,252,246,0.8); display:none; }
+.sudoku #grid.s4>table          { font-size:1.7em; }
+.sudoku #grid.s6>table          { font-size:1.15em; }
+.sudoku #grid.s8>table          { font-size:0.85em; }
 .sudoku #grid.f td.cell.level1  { background-color:rgba(255,231,184,0.8); }
 .sudoku #grid.f td.cell.level2  { background-color:rgba(255,220,162,0.8); }
 .sudoku #grid.f td.cell.level3  { background-color:rgba(255,210,140,0.8); }

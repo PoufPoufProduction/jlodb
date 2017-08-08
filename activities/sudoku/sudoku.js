@@ -8,12 +8,14 @@
         level       : 1,                    // Grid level
         highlight   : [],                   // Elements to highlight for tutorial
         comment     : "",
-        width       : 9,                    // Line width
-        debug       : true                 // Debug mode
+        nbelts      : 9,                    // Number of values
+        mapping     : 0,
+        debug       : true                  // Debug mode
     };
 
     var mapping = { 'a':1, 'b':2, 'c':3, 'd':4, 'e':5, 'f':6, 'g':7, 'h':8, 'i':9,
                     '1':1, '2':2, '3':3, '4':4, '5':5, '6':6, '7':7, '8':8, '9':9 };
+    var sizes={ s4: [2,2], s6: [3,2], s8: [4,2], s9: [3,3] };
 
     // private methods
     var helpers = {
@@ -72,13 +74,57 @@
                 var settings = helpers.settings($this);
                 if (settings.context.onload) { settings.context.onload($this); }
 
-                // Update the grid
+                // BUILD THE GRID
+                var size=sizes["s"+settings.nbelts];
+                var nbhints=(settings.nbelts==4?2:3);
+                var html="";
+                var index = 0;
+                // LINE OF GROUPS
+                for (var j=0; j<size[0]; j++) {
+                    html+='<tr>';
+                    // GROUPS
+                    for (var i=0; i<size[1]; i++) {
+                        html+='<td class="group"><table>';
+                        // LINE OF CELLS
+                        for (var jj=0; jj<size[1]; jj++) {
+                            html+='<tr>';
+                            // CELLS
+                            for (var ii=0; ii<size[0]; ii++) {
+                                
+                                var vY = Math.floor((index%settings.nbelts)/size[0]) +
+                                         size[1]*Math.floor(index/(size[1]*settings.nbelts));
+                                var vX = Math.floor(index%size[0]) +
+                                         size[0]*Math.floor(index%(size[1]*settings.nbelts)/settings.nbelts);
+                                index++;
+                                html+='<td class="cell"><div class="border"><div class="fill" id="c'+vX+vY+'"></div>';
+                                html+='<table class="hint">';
+                                // LINE OF HINTS
+                                for (var jjj=0; jjj<nbhints; jjj++) {
+                                    html+='<tr>';
+                                    // HINTS
+                                    for (var iii=0; iii<nbhints; iii++) {
+                                        html+='<td><div></div></td>';
+                                    }
+                                    html+='</tr>';
+                                }
+                                html+='</table></div></td>';
+                            }
+                            html+='</tr>';
+                        }
+                        html+='</table></td>';
+                    }
+                    html+='</tr>';
+                }
+                $this.find("#grid").addClass("s"+settings.nbelts).html("<table>"+html+"</table>");
+                
+                
+                // UPDATE THE GRID
                 $this.find("div.border").each(function(index) {
                     var r = Math.floor(Math.random()*2)+1;
                     $(this).css("background-image", "url('res/img/svginventoryicons/background/border/square0"+r+".svg')");
                 });
 
-                // HIGHLIGHT
+                // TODO : HIGHLIGHT
                 for (var i in settings.highlight) {
                     switch (settings.highlight[i][0]) {
                         case "col":
@@ -109,30 +155,30 @@
                 }
 
                 $this.find("div.fill").each(function(index) {
-                    var vY = Math.floor(index/9) + (Math.floor((index%9)/3)) - Math.floor((index%27)/9);
-                    var vX = index%3 + 3*Math.floor((index%27)/9);
-                    var elt = settings.data[vY*settings.width+vX];
+                    var id=$(this).attr("id"), vX=parseInt(id[1]), vY=parseInt(id[2]);
+                    var elt = settings.data[vY*settings.nbelts+vX];
                     if (elt>='1' && elt<='9') {
-                        $(this).text(mapping[elt]).addClass("final");
+                        $(this).html(helpers.display($this,elt)).addClass("final");
                         $(this).bind("mousedown touchstart",function(event) {
-                            var val=$(this).text();
+                            var val=$(this).html();
                             $this.find("div.fill").each(function() {
-                                $(this).toggleClass("value", ($(this).text()==val));
+                                $(this).toggleClass("value", ($(this).html()==val));
                             });
                         });
                     }
                     else {
                         $(this).bind("mousedown touchstart",function(event) {
+                            var id=$(this).attr("id"), vX=parseInt(id[1]), vY=parseInt(id[2]);
                             if (settings.interactive) {
                                 var $keypad = $this.find("#keypad");
                                 var vEvent = (event && event.originalEvent &&
                                             event.originalEvent.touches && event.originalEvent.touches.length)?
                                                 event.originalEvent.touches[0]:event;
 
-                                var val=$(this).text();
+                                var val=$(this).html();
                                 if (val.length) {
                                     $this.find("div.fill").each(function() {
-                                        $(this).toggleClass("value", ($(this).text()==val));
+                                        $(this).toggleClass("value", ($(this).html()==val));
                                     });
                                 } else $this.find("div.fill.value").removeClass("value");
 
@@ -160,7 +206,8 @@
                                 var mode = $this.find("#grid").hasClass("f");
                                 if (mode) {
                                     $(this).closest("td.cell").removeClass("wrong");
-                                    $(this).closest('.hint').hide().prev().text($(this).text()).show();
+                                    $(this).closest('.hint').hide().prev().html($(this).html()).show();
+                                    
                                     $(this).closest('.cell').removeClass("h");
                                     if (helpers.check($this)) {
                                         settings.interactive = false;
@@ -224,8 +271,10 @@
                     var settings = helpers.settings($this), $keypad = $this.find("#keypad");
 
                     if (settings.key!=-1 && settings.keypad) {
-                        var vVal = settings.$keys[settings.key].text();
-                        settings.keypad.text(vVal==0?"":vVal);
+                        var vVal;
+                        if (settings.mapping)   { vVal=settings.$keys[settings.key].find("img").attr("alt"); }
+                        else                    { vVal=settings.$keys[settings.key].text(); }
+                        settings.keypad.html(vVal==0?"":helpers.display($this,vVal));
                         settings.keypad.closest('td.cell').removeClass("wrong");
                         
                         if (vVal!=0) {
@@ -260,11 +309,13 @@
                     }
 
                     $this.find(".active").removeClass("s");
+                    $this.find(".value").removeClass("value");
                     $keypad.hide();
                     settings.keypad = 0;
                     event.preventDefault();
                 });
 
+                if (settings.mapping) { $this.addClass("img"); }
 
                 // COMMENT
                 if ($.isArray(settings.comment)) {
@@ -281,29 +332,41 @@
         },
         // Highlight the row, the col and the subgrid which contain the selected cell
         highlight:function($this, _posX, _posY) {
+            var settings = helpers.settings($this);
+            var size=sizes["s"+settings.nbelts];
+            var vSquare = Math.floor(_posY/size[1])*size[1]+Math.floor(_posX/size[0]);
             $this.find("td.cell").each(function(index) {
                 $(this).removeClass("level1").removeClass("level2").removeClass("level3");
                 if (_posX>=0) {
-                    var vY = Math.floor(index/9) + (Math.floor((index%9)/3)) - Math.floor((index%27)/9);
-                    var vX = index%3 + 3*Math.floor((index%27)/9);
-                    var vSquare = Math.floor(_posY/3)*3+Math.floor(_posX/3);
+                    var id=$(this).find(".fill").attr("id"), vX=parseInt(id[1]), vY=parseInt(id[2]);
+                    var vS = Math.floor(vY/size[1])*size[1]+Math.floor(vX/size[0]);
                     var vValue = 0;
                     if (vX==_posX) { vValue++; }
                     if (vY==_posY) { vValue++; }
-                    if (Math.floor(index/9)==vSquare) { vValue++; }
+                    if (vS==vSquare) { vValue++; }
                     if (vValue) { $(this).addClass("level"+vValue); }
                 }
             });
+        },
+        display:function($this, _value) {
+            var settings = helpers.settings($this);
+            var ret = _value?mapping[_value]:0;
+            if (settings.mapping && settings.mapping[ret]) {
+                ret="<img src='"+settings.mapping[ret]+".svg' alt='"+ret+"'/>";
+            }
+            return ret;
         },
         // Check if the grid is done
         check:function($this) {
             var settings = helpers.settings($this);
             var finish = true;
             $this.find("div.fill").each(function(index) {
-                var vY = Math.floor(index/9) + (Math.floor((index%9)/3)) - Math.floor((index%27)/9);
-                var vX = index%3 + 3*Math.floor((index%27)/9);
-                 var elt = settings.data[vY*settings.width+vX];
-                if (mapping[elt] != $(this).text()) { finish= false; }
+                var id=$(this).attr("id"), vX=parseInt(id[1]), vY=parseInt(id[2]);
+                var vVal;
+                if (settings.mapping)   { vVal=$(this).find("img").attr("alt"); }
+                else                    { vVal=$(this).text(); }
+                var elt = settings.data[vY*settings.nbelts+vX];
+                if (mapping[elt] != vVal) { finish= false; }
             });
             if (finish) { $this.find("#effects").show(); }
             return finish;
@@ -376,11 +439,11 @@
                 var $this = $(this) , settings = helpers.settings($this);
                 if (settings.timer.id) {
                     clearTimeout(settings.timer.id); settings.timer.id=0;
-                    $this.find("#grid9x9").hide();
+                    $this.find("#grid>table").hide();
                 }
                 else {
                     helpers.timer($this);
-                    $this.find("#grid9x9").show();
+                    $this.find("#grid>table").show();
                 }
             },
             // Toggle the game mode
@@ -394,26 +457,32 @@
                         $this.find("div.fill").each(function(index) {
                             var vHintEmpty = true;
                             $(this).next().find("div").each(function(_index) {
-                                if ($(this).text()) { vHintEmpty = false; } });
+                                if ($(this).html().length) { vHintEmpty = false; } });
                             if (vHintEmpty) { $(this).show().next().hide(); } });
                     }
                     else {
                         $this.find("#grid").removeClass("f");
                         $this.find("#toggle>img").attr("src", "res/img/svginventoryicons/pencil/pencil01.svg");
                         helpers.highlight($this, -1,-1);
-                        $this.find("div.fill").each(function(index) { if (!$(this).text()) { $(this).hide().next().show(); } });
+                        $this.find("div.fill").each(function(index) { if (!$(this).html().length) { $(this).hide().next().show(); } });
                     }
                 }
             },
             // Close the help and display the grid
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                $(this).find("#grid9x9").show();
+                $(this).find("#grid>table").show();
 
                 // Keypad
-                for (var i=0; i<10; i++) {
-                    settings.$keys.push($this.find("#keypad #key"+i).css("top",(1.8*Math.cos(2*Math.PI*(i/10))-0.5)+"em")
-                                       .css("left",(1.8*Math.sin(2*Math.PI*(i/10))-0.5)+"em")
+                var nb = settings.nbelts+1;
+                var l = 1.8;
+                $this.find("#keypad").addClass("s"+settings.nbelts);
+                if (settings.nbelts==4) { l=1; } else
+                if (settings.nbelts==6) { l=1.4; }
+                for (var i=0; i<nb; i++) {
+                    settings.$keys.push($this.find("#keypad #key"+i).css("top",(l*Math.cos(2*Math.PI*(i/nb))-0.5)+"em")
+                                       .css("left",(l*Math.sin(2*Math.PI*(i/nb))-0.5)+"em")
+                                       .html(helpers.display($this,i))
                                        .show());
                 }
 
@@ -433,10 +502,11 @@
                 settings.help++;
                 
                 $this.find("div.fill").each(function(index) {
-                    var vY = Math.floor(index/9) + (Math.floor((index%9)/3)) - Math.floor((index%27)/9);
-                    var vX = index%3 + 3*Math.floor((index%27)/9);
-                    var elt = settings.data[vY*settings.width+vX];
-                    if (mapping[elt] != $(this).text()) { $(this).closest("td").addClass("wrong"); }
+                    var id=$(this).attr("id"), vX=parseInt(id[1]), vY=parseInt(id[2]), vVal;
+                    var elt = settings.data[vY*settings.nbelts+vX];
+                    if (settings.mapping)   { vVal=$(this).find("img").attr("alt"); }
+                    else                    { vVal=$(this).text(); }
+                    if (vVal.length && mapping[elt] != vVal) { $(this).closest("td").addClass("wrong"); }
                 });
             }
         };
