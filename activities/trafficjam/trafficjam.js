@@ -311,6 +311,8 @@
             },
             back: function() {
                 var $this = $(this) , settings = helpers.settings($this);
+                $this.find("#left1").hide();
+                setTimeout(function() { $this.find("#left1").show(); }, 300);
                 if (settings.moves.length) {
                     var sav = settings.moves.pop();
                     for (var i=0; i<settings.cars.length; i++) {

@@ -130,7 +130,7 @@
                 }
                 
                 // HANDLE BACKGROUND
-                if (settings.background) { $this.css("background-image","url("+settings.background+")"); }
+                if (settings.background) { $this.children().first().css("background-image","url("+settings.background+")"); }
                 
                 // GET THE NODES FROM SVG
                 if (typeof(settings.dots)=="string") {

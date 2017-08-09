@@ -7,6 +7,7 @@
         css         : "style.css",                              // Activity's css style sheet
         lang        : "en-US",                                  // Current localization
         exercice    : [],                                       // Exercice
+        background  : "",
         debug       : false                                     // Debug mode
     };
 

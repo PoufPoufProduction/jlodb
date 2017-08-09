@@ -38,7 +38,9 @@
 .trafficjam div#buttons .label       { margin-left:.5em; float:left; width:5.8em; font-size:.7em; color:rgb(20,80,100);}
 .trafficjam div#buttons .value      { position:relative; font-size:1.5em; top:-.2em; left:.4em; background-color:rgb(50,100,128);
                                       border-radius:.25em; width:1.2em; height:1em; }
-.trafficjam div#buttons .value>div  { position:relative; font-weight:bold; width:1.4em; font-size:0.9em; text-align:center; top:-.1em; color:rgb(200,240,255); }
+.trafficjam div#buttons .value.d>div { position:relative; font-weight:bold; width:1.4em; font-size:0.9em; text-align:center; top:-.1em; color:rgb(200,240,255); }
+.trafficjam div#buttons .value.i  { background-color:transparent; font-size:1.8em; top:-.3em; }
+
 
 
 .trafficjam div#buttons>div.wrong .value { background-color:rgb(128,50,50); }

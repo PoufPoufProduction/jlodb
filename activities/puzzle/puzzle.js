@@ -19,6 +19,7 @@
         fontex      : 1,                                        // Exercice font
         decoyfx     : true,                                     // No magnetic for decoy
         width       : 640,
+        background  : "",
         debug       : true                                      // Debug mode
     };
 
@@ -139,6 +140,9 @@
                     if (settings.labelex) { $this.find("#exercice #label").html(settings.labelex).show(); }
                     $this.find("#exercice").show();
                 }
+                
+                // HANDLE BACKGROUND
+                if (settings.background) { $this.children().first().css("background-image","url("+settings.background+")"); }
 
                 helpers.build($this);
 

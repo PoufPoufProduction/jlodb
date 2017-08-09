@@ -128,22 +128,20 @@
                 for (var i in settings.highlight) {
                     switch (settings.highlight[i][0]) {
                         case "col":
-                            for (var j=0; j<3; j++) for (var k=0; k<3; k++) {
-                                $($this.find("#grid.f td.cell")
-                                    .get(Math.floor(settings.highlight[i][1]/3)*9+settings.highlight[i][1]%3+k*3+j*27))
-                                    .addClass(settings.highlight[i][2]).addClass("hl"+i);
+                            for (var j=0; j<settings.nbelts; j++) {
+                                $this.find("#c"+settings.highlight[i][1]+j).closest(".cell").
+                                    addClass(settings.highlight[i][2]).addClass("hl"+i);
                             }
                         break;
                         case "row":
-                            for (var j=0; j<3; j++) for (var k=0; k<3; k++) {
-                                $($this.find("#grid.f td.cell")
-                                    .get(Math.floor(settings.highlight[i][1]/3)*27+3*(settings.highlight[i][1]%3)+k*9+j))
-                                    .addClass(settings.highlight[i][2]).addClass("hl"+i);
+                            for (var j=0; j<settings.nbelts; j++) {
+                                $this.find("#c"+j+settings.highlight[i][1]).closest(".cell").
+                                    addClass(settings.highlight[i][2]).addClass("hl"+i);
                             }
                         break;
                         case "box":
-                            for (var j=0; j<9; j++) {
-                                $($this.find("#grid.f td.cell").get(j+settings.highlight[i][1]*9))
+                            for (var j=0; j<settings.nbelts; j++) {
+                                $($this.find("#grid.f td.cell").get(j+settings.highlight[i][1]*settings.nbelts))
                                     .addClass(settings.highlight[i][2]).addClass("hl"+i);
                             }
                         break;
@@ -446,26 +444,28 @@
                     $this.find("#grid>table").show();
                 }
             },
-            // Toggle the game mode
-            toggle: function() {
+            fill: function(_elt) {
                 var $this = $(this) , settings = helpers.settings($this);
                 if (settings.interactive) {
-                    var mode = $this.find("#grid").hasClass("f");
-                    if (!mode) {
-                        $this.find("#grid").addClass("f");
-                        $this.find("#toggle>img").attr("src", "res/img/svginventoryicons/pencil/pen01.svg");
-                        $this.find("div.fill").each(function(index) {
-                            var vHintEmpty = true;
-                            $(this).next().find("div").each(function(_index) {
-                                if ($(this).html().length) { vHintEmpty = false; } });
-                            if (vHintEmpty) { $(this).show().next().hide(); } });
-                    }
-                    else {
-                        $this.find("#grid").removeClass("f");
-                        $this.find("#toggle>img").attr("src", "res/img/svginventoryicons/pencil/pencil01.svg");
-                        helpers.highlight($this, -1,-1);
-                        $this.find("div.fill").each(function(index) { if (!$(this).html().length) { $(this).hide().next().show(); } });
-                    }
+                    $this.find("#buttons .s").removeClass("s");
+                    $(_elt).addClass("s");
+                    $this.find("#grid").addClass("f");
+                    $this.find("div.fill").each(function(index) {
+                        var vHintEmpty = true;
+                        $(this).next().find("div").each(function(_index) {
+                            if ($(this).html().length) { vHintEmpty = false; } });
+                        if (vHintEmpty) { $(this).show().next().hide(); } });
+                }
+            },
+            hint: function(_elt) {
+                var $this = $(this) , settings = helpers.settings($this);
+                if (settings.interactive) {
+                    $this.find("#buttons .s").removeClass("s");
+                    $(_elt).addClass("s");
+                    $this.find("#grid").removeClass("f");
+                    $this.find("#toggle>img").attr("src", "res/img/svginventoryicons/pencil/pencil01.svg");
+                    helpers.highlight($this, -1,-1);
+                    $this.find("div.fill").each(function(index) { if (!$(this).html().length) { $(this).hide().next().show(); } });
                 }
             },
             // Close the help and display the grid

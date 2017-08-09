@@ -4,11 +4,14 @@
 
     <div id="menu">
         <div id="buttons">
-            <div id="nbmoves"><div class="label" id="mlabel"></div><div class="value"><div></div></div></div>
-            <div id="nbfinal"><div class="label" id="olabel"></div><div class="value"><div></div></div></div>
+            <div id="nbmoves"><div class="label" id="mlabel"></div><div class="value d"><div></div></div></div>
+            <div id="nbfinal"><div class="label" id="olabel"></div><div class="value d"><div></div></div></div>
             <div id="back" ontouchstart="$(this).closest('.trafficjam').trafficjam('back');event.preventDefault();"
                            onclick="$(this).closest('.trafficjam').trafficjam('back');">
-                <div class="label" id="clabel"></div><div class="value"><div>X</div></div></div>
+                <div class="label" id="clabel"></div><div class="value i">
+                    <div class="icon" id="left1"><img src="res/img/default/control/left02.svg" alt="X"/></div>
+                    <div class="icon" id="left2"><img src="res/img/default/control/left02a.svg" alt="X"/></div>
+                </div></div>
         </div>
     </div>
 
