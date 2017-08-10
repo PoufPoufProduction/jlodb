@@ -1,48 +1,52 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.0" width="100%" height="100%" viewBox="0 0 640 480" id="equation" style="display:inline">
+<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.0" width="100%" height="100%" viewBox="0 0 640 480" id="equ" style="display:inline">
 <defs id="defs2385">
  <style type="text/css">
-    .val                { cursor:move; }
-    .val text           { font-size:38px;text-anchor:middle;fill:#443000;font-weight:bold; }
-    .val .v             { fill:#FFF5EE;fill-opacity:1;stroke:#443000;stroke-width:2;stroke-linecap:round; }
-    .val.type3 .v       { fill:#FFEECC;fill-opacity:1;stroke:#443000;stroke-width:2;stroke-linecap:round; }
-    .val .s             { stroke:red;stroke-width:10;stroke-linecap:round; }
-    .val .op            { fill:none;stroke:none; }
-    .val #over          { fill:none; }
-    .bra                { fill:none; stroke:#443000; stroke-width:2; display:none; }
-    .bracket .bra       { display:inline; }
-    .bracket.type0 .v   { fill-opacity:0.2; }
-    .var                { display:none; fill:red; }
-    .newvar .var        { display:inline; }
-    .newvar.type0 .v    { fill-opacity:0.2; }
-    .equ .source        { opacity:0.5; }
-    .equ .bg            { fill:#CC9555;fill-opacity:0.5;stroke:#110B00;stroke-width:1; }
-    .equ .bt            { fill:#FFF5EE;stroke:#886622;stroke-width:1; }
-    .equ .small text    { font-size:20px; fill:#443000;}
-    .equ .label         { font-size:30px;font-weight:bold; }
-    .equ .type1 text    { font-size:32px; }
-    .empty rect.v       { fill:#DDBB99; stroke-dasharray:5,3; }
-    .equ .banner        { fill:white;fill-opacity:0.5; }
-    .equ.s0 .bg         { fill:limegreen; }
-    .equ.s1 .bg         { fill:greenyellow; }
-    .equ.s2 .bg         { fill:yellow; }
-    .equ.s3 .bg         { fill:orange; }
-    .equ.s4 .bg         { fill:red; }
-    .equ.s5 .bg         { fill:purple; }
-    .hide               { display:none; }
-    #maximize           { cursor:pointer; }
+    svg#equ .sources            { fill:gray;fill-opacity:0.95;stroke:white;stroke-width:2; }
+    svg#equ .val                { cursor:move; }
+    svg#equ .val text           { font-size:38px;text-anchor:middle;fill:#443000;font-weight:bold; }
+    svg#equ .val .v             { fill:#FFF5EE;fill-opacity:1;stroke:#443000;stroke-width:2;stroke-linecap:round; }
+    svg#equ .val.type3 .v       { fill:#FFEECC;fill-opacity:1;stroke:#443000;stroke-width:2;stroke-linecap:round; }
+    svg#equ .val .s             { stroke:red;stroke-width:10;stroke-linecap:round; }
+    svg#equ .val .op            { fill:none;stroke:none; }
+    svg#equ .val #over          { fill:none; }
+    svg#equ .bra                { fill:none; stroke:#443000; stroke-width:2; display:none; }
+    svg#equ .bracket .bra       { display:inline; }
+    svg#equ .bracket.type0 .v   { fill-opacity:0.2; }
+    svg#equ .var                { display:none; fill:red; }
+    svg#equ .newvar .var        { display:inline; }
+    svg#equ .newvar.type0 .v    { fill-opacity:0.2; }
+    svg#equ .equ .source        { opacity:0.5; }
+    svg#equ .equ .bg            { fill:#bbb;fill-opacity:0.95;stroke:white;stroke-width:2; }
+    svg#equ .equ .bt            { fill:#FFF5EE;stroke:#886622;stroke-width:1; }
+    svg#equ .equ .small text    { font-size:20px; fill:#443000;}
+    svg#equ .equ .label         { font-size:30px;font-weight:bold; }
+    svg#equ .equ .type1 text    { font-size:32px; }
+    svg#equ .empty rect.v       { fill:#DDBB99; stroke-dasharray:5,3; }
+    svg#equ .equ .banner        { fill:white;fill-opacity:0.5; }
+    svg#equ .equ.s0 .bg         { fill:limegreen; }
+    svg#equ .equ.s1 .bg         { fill:greenyellow; }
+    svg#equ .equ.s2 .bg         { fill:yellow; }
+    svg#equ .equ.s3 .bg         { fill:orange; }
+    svg#equ .equ.s4 .bg         { fill:red; }
+    svg#equ .equ.s5 .bg         { fill:purple; }
+    svg#equ .hide               { display:none; }
+    svg#equ #maximize           { cursor:pointer; }
 
-    #target *           { fill-opacity:0.5;fill:none;stroke:#55ddff;stroke-width:1; }
-    #target path        { fill:#aaeeff; }
-    #target.top #top    { fill:red; fill-opacity:1;}
-    #target.left #left  { fill:red; fill-opacity:1;}
-    #target.right #right { fill:red; fill-opacity:1;}
-    #target.bottom #bottom { fill:red; fill-opacity:1;}
+    svg#equ #target *           { fill-opacity:0.5;fill:none;stroke:#55ddff;stroke-width:1; }
+    svg#equ #target path        { fill:#aaeeff; }
+    svg#equ #target.top #top    { fill:red; fill-opacity:1;}
+    svg#equ #target.left #left  { fill:red; fill-opacity:1;}
+    svg#equ #target.right #right { fill:red; fill-opacity:1;}
+    svg#equ #target.bottom #bottom { fill:red; fill-opacity:1;}
 
-    #arrow path         { fill:red; fill-opacity:0.8; display:none; }
+    svg#equ #arrow path         { fill:red; fill-opacity:0.8; display:none; }
 
  </style>
 </defs>
+
+
+<rect width="68" height="403" ry="10" x="7" y="7" id="rect6" class="sources"/>
 
 <g id="template" >
     <g class="val type0 hide">

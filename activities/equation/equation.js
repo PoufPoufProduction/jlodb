@@ -27,6 +27,7 @@
                         addeq       : false     // Authorization : add equations (blue arrow). Not conceirned by a.all
                       },
         top         : 5,                        // top position of the first equation
+        background  : "res/img/background/landscape/gears01.svg",
         debug       : true                      // Debug mode
     };
 
@@ -134,9 +135,12 @@
                 // LOCALE HANDLING
 
                 if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
+                
+                // HANDLE BACKGROUND
+                if (settings.background) { $this.children().first().css("background-image","url("+settings.background+")"); }
 
                 // EXERCICE AND FIGURE
-                if (settings.figure && settings.figure.length) { $this.find("#figure").html("<img src='res/img/"+settings.figure+"'/>"); }
+                if (settings.figure && settings.figure.length) { $this.find("#figure").html("<img src='res/img/"+settings.figure+"'/>").show(); }
                 if (settings.exercice) {
                     if ($.isArray(settings.exercice)) {
                         // TODO: remove this part - do not use exercice as array anymore - use [br] instead.
