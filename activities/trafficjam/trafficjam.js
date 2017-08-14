@@ -196,7 +196,7 @@
                 $this.find("#board>div").html("");
 
                 $this.find("#board>div").append("<div class='b nw' style='top:"+((1-0.66))+"em;left:0em;z-index:0'></div>");
-                $this.find("#board>div").append("<div class='b ne' style='top:"+((1-0.66))+"em;left:1em;z-index:0'></div>");
+                $this.find("#board>div").append("<div class='b ne' style='top:"+((1-0.66))+"em;left:"+(settings.size[0]+1)+"em;z-index:0'></div>");
                 $this.find("#board>div").append("<div class='n n1' style='top:0;left:1em;z-index:0'></div>");
                 $this.find("#board>div").append("<div class='n n1' style='top:0;left:3em;z-index:0'></div>");
                 $this.find("#board>div").append("<div class='n n1' style='top:0;left:5em;z-index:0'></div>");

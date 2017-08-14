@@ -46,6 +46,20 @@ math                            { display: block; text-align: center; }
 #touch01 div                    { position:relative; width:1em; height:12em; margin-top:1em; animation-duration: 0.5s; animation-name:anim; animation-play-state:paused; animation-timing-function:step-start; -webkit-animation-duration: 0.5s; -webkit-animation-name:anim; -webkit-animation-timing-function:step-start; -webkit-animation-play-state:paused; }
 #touch01 div.running            { animation-play-state:running; -webkit-animation-play-state:running; }
 
+#tip                            { position:relative; }
+#tip>div                        { position:absolute; font-size:.25em; top:2.6em; left:2.6em; background-color:#444; color:white; width:1.2em; height:1.2em; text-align:center; border-radius:.5em; }
+#ptip                           { position:absolute;top:0;left:0; width:16em; height:12em;background-color:rgba(0,0,0,0.5); z-index:100; display:none; }
+#ptip>div                       { font-size:.4em; width:20em; height:25em; background-color:rgba(255,255,255,0.8); border:.2em solid white; }
+#ptip .tip                      { border:.2em solid white; height:6em; margin:.1em; cursor:help; opacity:0.2;}
+#ptip .tip.s                    { opacity:1; }
+#ptip .tip1                     { background-color:rgba(150,250,150,0.8); }
+#ptip .tip2                     { background-color:rgba(220,220,180,0.8); }
+#ptip .tip3                     { background-color:rgba(250,150,150,0.8); }
+#ptip .tip .label               { font-size:5em; float:left; width:1em; text-align:center; font-weight:bold; color:rgba(0,0,0,0.5); }
+#ptip #tipconfirm               { margin-top:.5em; display:none; }
+#ptip #tipconfirm .icon         { cursor:pointer; font-size:4em; float:right; margin:.05em; }
+#ptip #tipconfirm .label        { font-size:0.8em; margin:0 0.5em; text-align:justify; font-style:italic; width:13em; }
+
 .jlodb                          { width:100%; height:100%; background-color:black; position:absolute; top:0; left:0; display:none; z-index:2000;}
 .jlodb #quit                    { font-size:.8em; width:1em; height:1em; position:absolute; top:0; left:0; cursor:pointer; z-index:2001;}
 .jlodb #activity                { width:100%; height:100%; position:relative; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }

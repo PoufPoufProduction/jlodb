@@ -26,7 +26,11 @@ var jlodb = function() {
     $("#activity").jlodb({
         onexercice: function($this, _id, _activity) { document.title = "jLoDb ["+_id+"]"; },
         onfinish:   function($this, _hide)          { $("#score").score('hide'); },
-        onscore:    function($this, _ret)           { $("#score").score('show',_ret.score); return true; }
+        onscore:    function($this, _ret)           {
+            if (window.top.document.title != document.title) { window.top.postMessage(_ret, '*'); }
+            $("#score").score('show',_ret.score);
+            return true;
+        }
     }, options);
 }
 
@@ -45,13 +49,14 @@ $(window).ready(function() {
     }
     if (args.nosplash) { $("body").addClass("nosplash"); }
     
-    $("#score").score({
-        onreload:function($this) { $('#activity').jlodb('reload'); },
-        onnext:  function($this) { jlodb(); } 
+    $("#score").score(args.nonext?{}:{
+        onreload    : function($this) { $('#activity').jlodb('reload'); },
+        onnext      : function($this) { jlodb(); } 
     });
 
     // LAUNCH EXERCICE
     jlodb();
+
 });
 
 //]]>
@@ -62,12 +67,6 @@ $(window).ready(function() {
 <div class="jlodb" style="display:inherit;">
     <div id="activity"></div>
     <div id="score"></div>
-    
-    <!-- Test animation here -->
-    <!--
-    <div class="anim12 quick" style="position:absolute;top:0;left:0;display:inherit;font-size:5em;z-index:200;"><div class="running"><img src="res/img/default/anim/star04.svg"/></div></div>
-    -->
-    
 </div>
 
 </div>

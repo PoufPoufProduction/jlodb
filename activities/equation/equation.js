@@ -27,7 +27,7 @@
                         addeq       : false     // Authorization : add equations (blue arrow). Not conceirned by a.all
                       },
         top         : 5,                        // top position of the first equation
-        background  : "res/img/background/landscape/gears01.svg",
+        background  : "",
         debug       : true                      // Debug mode
     };
 

@@ -12,8 +12,7 @@
 .robot #buttons               { width:9em; height:2.1em; background-color:gray;
                                       border-radius:0 0 .25em .25em;
                                       background-image:url("../../res/img/default/pattern/steel01.svg"); background-repeat:repeat; }
-.robot #buttons>div           { width:1em; height:1em; float:left; font-size:1.75em; cursor:pointer; margin:.1em .12em; }
-.robot #buttons #speed        { margin-left:.15em; }
+.robot #buttons>div           { width:1em; height:1em; float:left; font-size:1.46em; cursor:pointer; margin:.2em .1em; }
 
 .robot #board                       { background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat; height:9em; border-radius:.2em .2em 0 0; position:relative; }
 .robot #board>div                   { position:absolute; top:0; left:0; }
@@ -76,10 +75,12 @@
 .robot .source .slider .down        { margin-top:1.2em; }
 .robot .a                           { width:1em; height:1em; cursor:crosshair; }
 
+.robot #ptip>div                    { margin-top:5%; margin-left:45%; }
+
 .robot #phelp                       { width:16em; height:12em; position:absolute;top:0;left:0; background-color:rgba(0,0,0,0.5);
                                       z-index:2002; cursor:pointer; display:none; }
 .robot #phelp>div                   { font-size:.3em; width:98%; height:98%; margin:.2em auto;
-                                      background-color:rgba(255,255,255,0.8); }
+                                      background-color:rgba(255,255,255,0.8); border:.2em solid white; }
 .robot #phelp .h1                   { clear:both; font-size:1.5em; padding-left:5em; margin-top:.5em; border:1px solid black;
                                       border-width:0 0 1px 0;}
 .robot #phelp .elt                  { float:left; width:24em; height:1.4em; padding:.1em; margin:.1em .5em;

@@ -933,6 +933,14 @@
                     helpers.run($this);
                 }
             }
+        },
+        onmessage: function($this, _e) {
+            var settings = helpers.settings($this);
+            settings.data.frame = _e.data;
+            if (settings.content.story["onmessage"]) {
+                settings.pc = [ {story: settings.content.story["onmessage"], p:0 , n:"onmessage" } ];
+                helpers.run($this);
+            }
         }
     };
 
@@ -957,9 +965,14 @@
                     var $this = $(this);
                     helpers.unbind($this);
                     
-                    $(document).keypress(function(_e) {
-                        if (_e.keyCode!=116) { helpers.key($this, _e.keyCode); _e.preventDefault(); }
-                    });
+                    if (!options.dev) {
+                        $(document).keypress(function(_e) {
+                            if (_e.keyCode!=116) { helpers.key($this, _e.keyCode); _e.preventDefault(); }
+                        });
+                    }
+                    
+                    // HANDLE FRAME STUFF
+                    window.onmessage = function(_e){ helpers.onmessage($this, _e); };
 
                     var $settings = $.extend({}, defaults, options, settings);
                     var checkContext = helpers.checkContext($settings);

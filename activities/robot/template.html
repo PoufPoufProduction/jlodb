@@ -12,8 +12,15 @@
         </div>
         
         <div id="buttons">
-            <div id="help"  ontouchstart="$('#phelp').show();event.preventDefault();" onclick="$('#phelp').show();">
-                <img src="res/img/control/about.svg" alt=""/></div>
+            <div id="help"  ontouchstart="$(this).closest('.robot').find('#phelp').show();event.preventDefault();"
+                            onclick="$(this).closest('.robot').find('#phelp').show();">
+                <img src="res/img/control/about.svg" alt=""/>
+            </div>
+            <div id="tip"  ontouchstart="$(this).closest('.robot').find('#ptip').show();event.preventDefault();"
+                            onclick="$(this).closest('.robot').find('#ptip').show();">
+                <img src="res/img/control/tip.svg" alt=""/>
+                <div>0</div>
+            </div>
             <div id="speed" ontouchstart="$(this).closest('.robot').robot('speed');event.preventDefault();"
                             onclick="$(this).closest('.robot').robot('speed');">
                 <img src="res/img/control/x2.svg" alt=""/>
@@ -797,6 +804,26 @@
                      onclick="$(this).closest('.robot').robot('course');"><div class="panel">
         <div id="art"><img src="res/img/background/asset/robot01.svg" alt=""/></div>
         <div id="pre"></div>
+    </div></div>
+    
+    <div id="ptip" ontouchstart="$(this).hide().find('#tipconfirm').hide();event.preventDefault();" onclick="$(this).hide().find('#tipconfirm').hide();"><div>
+        <div class="tip tip1" ontouchstart="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();event.preventDefault();" onclick="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();">
+            <div class="label">1</div>
+            <div class="content">Afficher le premier indice</div>
+        </div>
+        <div class="tip tip2" ontouchstart="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();event.preventDefault();" onclick="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();">
+            <div class="label">2</div>
+            <div class="content">Afficher le deuxième indice</div>
+        </div>
+        <div class="tip tip3" ontouchstart="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();event.preventDefault();" onclick="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();">
+            <div class="label">3</div>
+            <div class="content">Afficher le troisième indice</div>
+        </div>
+        <div id="tipconfirm">
+            <div class="icon"><img src="res/img/default/icon/valid01.svg" alt=""/></div>
+            <div class="icon" ontouchstart="$(this).parent().hide();event.stopPropagation();event.preventDefault();" onclick="$(this).parent().hide();event.stopPropagation();"><img src="res/img/default/icon/cancel01.svg" alt=""/></div>
+            <div class="label">Un indice coûte 1 point sur la note finale, souhaitez-vous continuer ?</div>
+        </div>
     </div></div>
 
     
