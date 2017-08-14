@@ -9,6 +9,7 @@
         constraint  : [0,0],                                    // Grid for pgroup
         rotation    : 0,                                        // Rotation step
         boundaries  : [-1,-1,-1,-1],                            // Piece move boundaries
+        delay       : [1000,3000],                              // Delay before end [good, wrong]
         scale       : 1.2,                                      // The move scale of the pgroup
         radius      : 20,                                       // The magnetic radius
         zhandling   : true,                                     // Handle the z-index
@@ -590,14 +591,15 @@
                 if (wrongs) { $this.find("#submit").addClass("wrong"); } else { $this.find("#submit").addClass("good"); }
                 
                 if ( settings.puzzleid<settings.number ) {
-                    setTimeout(function() { helpers.rebuild($this); settings.interactive = true; }, wrongs?2500:1000);
+                    setTimeout(function() { helpers.rebuild($this); settings.interactive = true; },
+                        wrongs?settings.delay[1]:settings.delay[0]);
                 }
                 else {
                     settings.interactive = false;
                     settings.score = 5-Math.ceil(settings.errratio*settings.wrongs);
                     if (settings.score<0) { settings.score = 0; }
                     clearTimeout(settings.timer.id);
-                    setTimeout(function() { helpers.end($this); }, wrongs?3000:1000);
+                    setTimeout(function() { helpers.end($this); }, wrongs?settings.delay[1]:settings.delay[0]);
                 }
             }
         },
