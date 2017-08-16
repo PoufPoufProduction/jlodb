@@ -70,12 +70,14 @@
                                       background-size:100%; }
 
 .robot .source .slider              { width:0.9em; height:3em; float:right; background-color:rgba(255,255,255,0.5); border-radius:.5em; }
-.robot .source .slider>div          { width:0.9em; height:0.9em; background-color:rgba(255,255,255,0.5); color:gray; border-radius:.5em;
-                                      text-align:center; cursor:pointer;}
-.robot .source .slider .down        { margin-top:1.2em; }
+.robot .source .slider>div          { font-size:0.9em; width:1em; height:1em; cursor:pointer;}
+.robot .source .slider .down        { margin-top:1.33em; }
 .robot .a                           { width:1em; height:1em; cursor:crosshair; }
 
-.robot #ptip>div                    { margin-top:5%; margin-left:45%; }
+.robot #ptip .cc                    { background-color:rgba(0,40,0,0.4); color:#444; padding:.1em; margin:.2em 0; font-size:2em;height:1em;  }
+.robot #ptip .cc>.icon              { float:left; }
+.robot #ptip .cc>.icon.o1           { opacity:0.5; }
+.robot #ptip .cc>.icon.o2           { opacity:0.1; }
 
 .robot #phelp                       { width:16em; height:12em; position:absolute;top:0;left:0; background-color:rgba(0,0,0,0.5);
                                       z-index:2002; cursor:pointer; display:none; }
@@ -101,3 +103,4 @@
 .robot #devmode                     { top:87%; left:63%; }
 .robot #devoutput                { z-index:100; }
 .robot #goal					{ z-index:101; display:none; position:absolute; font-size:6em; width:1em; height:1em; top:45%; left:50%; }
+

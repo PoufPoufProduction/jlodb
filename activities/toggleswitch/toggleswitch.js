@@ -20,6 +20,7 @@
         fontex      : 1,
         fonttag     : 1,
         errelt      : "",                                       // wrong element
+        //background  : "",
         debug       : true                                      // Debug mode
     };
 
@@ -108,6 +109,9 @@
                 var settings = helpers.settings($this);
                 if (settings.context.onload) { settings.context.onload($this); }
 
+                // HANDLE BACKGROUND
+                if (settings.background) { $this.children().first().css("background-image","url("+settings.background+")"); }
+                
                 // Locale handling
                 $this.find("#guide").html(settings.guide);
                 $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); });

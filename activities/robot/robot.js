@@ -28,7 +28,21 @@
         [[0,1],[0,0,1],[0,0,0,1],[0,0,0,0,1],[0,0,0,0,0,1],[0,0,0,0,0,0,1],[0,0,1,0,0,0,1]],
         [[0,1,2],[0,0,1,2],[0,0,0,1,2],[0,0,0,0,1,2],[0,0,0,0,0,1,2],[0,0,0,0,0,0,1,2]],
         [[0,1,2,3],[0,0,1,2,3],[0,0,0,1,2,3],[0,0,0,0,0,0,1,2,3]]
-    ]
+    ];
+    
+    
+    var regExp = [
+        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
+        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
+        "\\\[br\\\]",                               "<br/>",
+        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
+        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
+        "\\\[code\\\](.+)\\\[/code\\\]",            "<div class='cc'>$1</div>",
+        "\\\[a\\\]([^\\\[]+)\\\[/a\\\]",            "<div class='icon'><img src='res/img/action/$1.svg' alt=''/></div>",
+        "\\\[a1\\\]([^\\\[]+)\\\[/a1\\\]",          "<div class='icon o1'><img src='res/img/action/$1.svg' alt=''/></div>",
+        "\\\[a2\\\]([^\\\[]+)\\\[/a2\\\]",          "<div class='icon o2'><img src='res/img/action/$1.svg' alt=''/></div>"
+    ];
+
 
     // private methods
     var helpers = {
@@ -55,6 +69,13 @@
             var settings = helpers.settings($this);
             helpers.unbind($this);
             settings.context.onquit($this,{'status':'success','score':settings.score});
+        },
+        format: function(_text) {
+            for (var j=0; j<5; j++) for (var i=0; i<regExp.length/2; i++) {
+                var vReg = new RegExp(regExp[i*2],"g");
+                _text = _text.replace(vReg,regExp[i*2+1]);
+            }
+            return _text;
         },
         loader: {
             css: function($this) {
@@ -234,16 +255,22 @@
                         $(this).append(ui.draggable);
                 } });
                 
+                // HANDLE THE TIPS
+                if (settings.tips) {
+                    $this.find("#tip>div").html(settings.tips.length);
+                    $this.find("#ptip .tip1").addClass("s");
+                }
+                
                 // DevMode
                 if (settings.dev) { $this.find("#devmode").show(); }
 
-                var list=["a","b","c","d","e","f","g"];
-                for (var i in settings.locale.legend) { $this.find("#"+i).html(settings.locale.legend[i]); }
-                if ($.isArray(settings.locale.guide)) {
-                    $this.find("#guide").html("");
-                    for (var i in settings.locale.guide) { $this.find("#guide").append("<p>"+settings.locale.guide[i]+"</p>"); }
-                }
-                else { $this.find("#guide").html(settings.locale.guide); }
+                // LOCALE
+                if (settings.locale) { $.each(settings.locale, function(id,value) {
+                    if (id=="legend") { for (var i in value) { $this.find("#"+i).html(value[i]); }}
+                    else { $this.find("#"+id).html(helpers.format(value)); }
+                }); }
+                
+                
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
@@ -695,7 +722,6 @@
             $this.find("#cache").hide();
             $this.find(".target").hide();
             $this.find("#play img").attr("src","res/img/control/play.svg");
-            settings.wrong++;
         },
         success: function($this, _count) {
             var settings = helpers.settings($this);
@@ -1100,7 +1126,8 @@
                     lastcount       : -1,
                     lastelt         : 0,
                     scale           : 1,
-                    cc              : { count:0, page:0, timerid:0, available:false, time:0, width:100, pre:0 }
+                    cc              : { count:0, page:0, timerid:0, available:false, time:0, width:100, pre:0 },
+                    tipid           : 0
                 };
 
                 return this.each(function() {
@@ -1191,7 +1218,22 @@
             },
             valid: function() {
             },
-            course: function() { helpers.course.click($(this)); }
+            course: function() { helpers.course.click($(this)); },
+            tip: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+                if (settings.tipid<settings.tips.length) {
+                    $this.find("#ptip .tip"+(settings.tipid+1)).removeClass("s").addClass("f")
+                         .find(".content").html(helpers.format(settings.tips[settings.tipid]));
+                         
+                    settings.tipid++;
+                    $this.find("#tip>div").html(settings.tips.length-settings.tipid);
+                    $this.find("#ptip .tip"+(settings.tipid+1)).addClass("s");
+                    $this.find("#tipconfirm").hide();
+                    $this.find("#tippopup").css("opacity",1).show()
+                         .animate({opacity:0},1000,function() { $(this).hide(); });
+                    settings.wrong++;
+                }
+            }
         };
 
         if (methods[method])    { return methods[method].apply(this, Array.prototype.slice.call(arguments, 1)); } 
