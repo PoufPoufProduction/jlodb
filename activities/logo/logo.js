@@ -7,7 +7,6 @@
         url         : "desktop/logo.svg",                       // The initial svg filename
         css         : "style.css",                              // Activity's css style sheet
         lang        : "en-US",                                  // Current localization
-        score       : 1,                                        // The score (from 1 to 5)
         a           : {                                         // Authorizations
             op      : true,
             va      : true,
@@ -599,7 +598,72 @@
             settings.data.running = false;
             settings.data.paused = false;
 
-            if (!_stopped) { $this.find("#submit").addClass("s"); }
+            if (!_stopped) {
+                
+                settings.interactive = false;
+                $this.find("#it img").hide();
+                if (helpers.check($this)) {
+                    $this.find("#it #itgood").show();
+                    $this.find("#effects").show();
+                    $this.find("#it").css("left","110%").show().animate({left:"30%"},500, function() {
+                        $this.find("#continue").show();
+                    });
+                }
+                else {
+                    $this.find("#it #itwrong").show();
+                    $this.find("#it").css("left","110%").show().animate({left:"30%"},500);
+                    setTimeout(function(){
+                        settings.interactive = true;
+                        $this.find("#effects").hide();
+                        $this.find("#it").animate({left:"110%"},500,function() { $(this).hide(); });
+                    },2000);
+                }
+              
+            }
+        },
+        check: function($this) {
+            var settings = helpers.settings($this), ret=true;
+            if (settings.result) {
+                var c = {}; for (var i in helpers.process.color) { c[helpers.process.color[i]]=i; }
+                var nb = $("#board line", settings.svg.root()).length - 1;
+                if (nb!=settings.result.nb) { ret = false; }
+                
+                if (ret) {
+                    for (var i in settings.result.values) {
+                        var found = false;
+                        $("#board line", settings.svg.root()).each(function(_index) {
+                            if ($(this).attr("class")!="hide") {
+                                if ( ( (helpers.round($(this).attr("x1")) == settings.result.values[i][0] ) &&
+                                       (helpers.round($(this).attr("y1")) == settings.result.values[i][1] ) &&
+                                       (helpers.round($(this).attr("x2")) == settings.result.values[i][2] ) &&
+                                       (helpers.round($(this).attr("y2")) == settings.result.values[i][3] ) ) ||
+                                     ( (helpers.round($(this).attr("x2")) == settings.result.values[i][0] ) &&
+                                       (helpers.round($(this).attr("y2")) == settings.result.values[i][1] ) &&
+                                       (helpers.round($(this).attr("x1")) == settings.result.values[i][2] ) &&
+                                       (helpers.round($(this).attr("y1")) == settings.result.values[i][3] ) ) ) {
+                                    found = true;
+                                    if (c[$(this).attr("class")]!=settings.result.values[i][4]) { ret=false; }
+                                }
+                            }
+                        });
+
+                        if (!found) { ret=false; }
+                    }
+
+                    if (ret && typeof(settings.result.ct)!="undefined") {
+                        var ct = (!$("#rotturtle", settings.svg.root()).attr("class") ||
+                                  !$("#rotturtle", settings.svg.root()).attr("class").length)
+                        if (ct!=settings.result.ct) { ret = false; }
+                    }
+
+                    if (ret && typeof(settings.result.bg)!="undefined") {
+                        if ($("#bg",settings.svg.root()).attr("class")!=settings.result.bg) { ret=false; }
+                    }
+
+                }
+            }
+            else { ret = false; }
+            return ret;
         }
     };
 
@@ -613,6 +677,7 @@
                 var settings = {
                     interactive     : false,
                     codeid          : 0,
+                    score           : 5,
                     data : {
                         running     : false,
                         paused      : false,
@@ -769,59 +834,12 @@
                 
                 $this.find("#devoutput textarea").val(svg).parent().show();
             },
-            submit: function() {
-                var $this = $(this), settings = helpers.settings($this);
-                if (settings.interactive && $this.find("#submit").hasClass("s")) {
-                    settings.interactive = false;
-
-                    if (settings.result) {
-                        var c = {}; for (var i in helpers.process.color) { c[helpers.process.color[i]]=i; }
-                        var nb = $("#board line", settings.svg.root()).length - 1;
-                        var nberror = Math.floor(5*Math.abs(nb-settings.result.nb)/(settings.result.nb?settings.result.nb:1));
-                        var errvalue = settings.result.nb?5/settings.result.nb:0;
-                        var errcolor = false;
-
-                        var valerror = 0;
-                        for (var i in settings.result.values) {
-                            var found = false;
-
-                            $("#board line", settings.svg.root()).each(function(_index) {
-                                if ($(this).attr("class")!="hide") {
-                                    if ( ( (helpers.round($(this).attr("x1")) == settings.result.values[i][0] ) &&
-                                        (helpers.round($(this).attr("y1")) == settings.result.values[i][1] ) &&
-                                        (helpers.round($(this).attr("x2")) == settings.result.values[i][2] ) &&
-                                        (helpers.round($(this).attr("y2")) == settings.result.values[i][3] ) ) ||
-                                        ( (helpers.round($(this).attr("x2")) == settings.result.values[i][0] ) &&
-                                        (helpers.round($(this).attr("y2")) == settings.result.values[i][1] ) &&
-                                        (helpers.round($(this).attr("x1")) == settings.result.values[i][2] ) &&
-                                        (helpers.round($(this).attr("y1")) == settings.result.values[i][3] ) ) ) {
-                                        found = true;
-                                        if (c[$(this).attr("class")]!=settings.result.values[i][4]) { errcolor = true; }
-                                    }
-                                }
-                            });
-
-                            if (!found) { valerror+=errvalue; }
-                        }
-
-                        var cterror = false;
-                        if (typeof(settings.result.ct)!="undefined") {
-                            var ct = (!$("#rotturtle", settings.svg.root()).attr("class") ||
-                                    !$("#rotturtle", settings.svg.root()).attr("class").length)
-                            cterror = (ct!=settings.result.ct);
-                        }
-
-                        var bgerror = false;
-                        if (typeof(settings.result.bg)!="undefined") {
-                            var bgerror = $("#bg",settings.svg.root()).attr("class")!=settings.result.bg;
-                        }
-
-                        settings.score = Math.round(5 - (nberror+(errcolor?1:0)+valerror+(cterror?5:0)+(bgerror?5:0)));
-                        if (settings.score<0) { settings.score=0; }
-                    }
-
-                    setTimeout(function() { helpers.end($this); }, 500);
-                }
+            end: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+                $this.find("#it").animate({left:"110%"},1000,function() { $(this).hide(); });
+                $this.find("#continue").hide();
+                $this.find("#effects").hide();
+                helpers.end($this);
             },
             board: function() {
                 var $this = $(this) , settings = helpers.settings($this);

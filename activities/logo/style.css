@@ -16,8 +16,6 @@
 .logo div#controls.running           { background-color:#5BB; }
 .logo div#controls #debug            { display:none; }
 .logo div#buttons>div                { float:left; margin-left:.2em; cursor:pointer;}
-.logo div#buttons #submit            { float:right; margin-right:.2em; opacity:0.2; cursor:auto;}
-.logo div#buttons #submit.s          { opacity:1; cursor:pointer; }
 .logo div#exercice                   { width:7.8em; height:4.5em;
                                        text-align:justify; background-repeat:repeat; padding:.05em .1em;
                                       background-image:url("../../res/img/default/pattern/line01.svg"); }
@@ -90,6 +88,10 @@
 .logo #phelp .arg                   { float:right; width:2em; background-color:gray; text-align:center; margin-left:.1em; }
 
 
-
+.logo #it                            { position:absolute; width:12em; height:4em; top:60%; left:30%; display:none; z-index:2;  }
+.logo #continue                      { position:absolute; width:16em; height:16em; top:0; left:0; display:none; z-index:2;  }
+.logo #continue>div                  { font-size:3em; position:absolute; top:55%; left:70%; cursor:pointer; border-radius:.5em;}
+.logo #effects                       { position:absolute; top:45%; left:10%; display:none; z-index:2;  }
+.logo #effects>div                   { font-size:5em; width:1em; height:1em; }
 
 

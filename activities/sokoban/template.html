@@ -15,8 +15,10 @@
                     <div class="value">0</div>
                 </div>
             </div>
+            <!--
             <div id="reset" ontouchstart="$(this).closest('.sokoban').sokoban('reset');event.preventDefault();"
                                  onclick="$(this).closest('.sokoban').sokoban('reset');"><img src="res/img/default/icon/action_reload01.svg" alt=""/></div>
+            -->
         </div>
         <div id="keypad">
             <table>
@@ -50,9 +52,10 @@
 
     <div id="splashex" ontouchstart="$(this).hide().closest('.sokoban').sokoban('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.sokoban').sokoban('next');"><div>
-            <h1 id="label">sokoban</h1>
-            <div id="guide">
-        </div>
+            <h1 id="label"></h1>
+            <div id="guide" class="guide"></div>
+            <div id="guidelight" class="guide"></div>
+            <div id="light"></div>
     </div></div>
 
 </div>

@@ -10,6 +10,8 @@
         padding     : 3,                                        // Padding top
         margin      : 0.5,                                      // Margin
         delay       : 150,                                      // Time between two cases
+        mode        : "normal",                                 // Normal|Light
+        background  : "",                                       // Background
         debug       : true                                      // Debug mode
     };
 
@@ -71,7 +73,13 @@
                 if (settings.context.onload) { settings.context.onload($this); }
                 // Convert from xsb
                 if (!settings.board && settings.xsb) { helpers.xsb($this); }
-
+                
+                // AUTOMATIC GENERATION
+                if (settings.gen) {
+                    var gen = eval('('+settings.gen+')')();
+                    if (gen.board) { settings.board = gen.board; }
+                }
+                
                 // compute scale and offset if not given
                 var xmin=0, xmax=0, ymin=0, ymax=0;
                 for (var j=0; j<settings.board.length; j++) for (var i=0; i<settings.board[j].length; i++) if (settings.board[j][i]) {
@@ -90,14 +98,19 @@
                 settings.offset=[-2*ymin+(vv-vy)/4+settings.margin/2,
                                  1+settings.padding/2-2*xmin+(vv-vx)/6+settings.margin/2];
                                  
+                // MODE
+                $this.addClass(settings.mode);
+                
+                // HANDLE BACKGROUND
+                if (settings.background) { $this.children().first().css("background-image","url("+settings.background+")"); }
 
-                // Build the board
+                // BUILD THE BOARD
                 settings.tiles.size=[settings.board[0].length,settings.board.length];
 
-                // Locale handling
-
+                // LOCALE HANDLING
                 if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                
                 helpers.build($this);
             }
         },
@@ -442,14 +455,27 @@
 
                 // IS IT THE END?
                 var isend = true;
-                for (var i in settings.boxes) {
-                    isend&=(settings.boxes[i].active&settings.boxes[i].isclosed); }
+                if (settings.mode=="light") {
+                    var color=0;
+                    for (var i in settings.robots) {
+                        if (settings.robots[i].active) {
+                            tile = helpers.tiles.get($this, settings.robots[i].pos);
+                            if (tile!=2+color) { isend = false; }
+                            color+=100;
+                        }
+                        else { isend = false; }
+                    }
+                }
+                else {
+                    for (var i in settings.boxes) { isend&=(settings.boxes[i].active&settings.boxes[i].isclosed); }
+                }    
+                
                 if (isend)  {
                     settings.score = 5-settings.nbgames;
                     if (settings.mp) {
                         // PUSHES COUNT TWICE
                         settings.score-= Math.floor((settings.nbmoves-settings.mp[0])/settings.mp[0] +
-                                                    2*(settings.nbpushes-settings.mp[1])/settings.mp[1]);
+                                                    (settings.mp[1]?(2*(settings.nbpushes-settings.mp[1])/settings.mp[1]):0));
                     }
                     if (settings.score>5) { settings.score = 5; }
                     if (settings.score<0) { settings.score = 0; }

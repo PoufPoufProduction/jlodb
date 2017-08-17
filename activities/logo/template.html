@@ -149,10 +149,13 @@
                     onclick="$(this).closest('.logo').logo('board');"></div>
     <div id="controls">
       <div id="buttons">
-        <div id="submit" ontouchstart="$(this).closest('.logo').logo('submit');event.preventDefault();"
-                        onclick="$(this).closest('.logo').logo('submit');" class="icon"><img src="res/img/control/valid.svg" alt=""/></div>
         <div id="help" ontouchstart="$(this).closest('.logo').find('#phelp').show();event.preventDefault();"
                   onclick="$(this).closest('.logo').find('#phelp').show();" class="icon"><img src="res/img/control/about.svg" alt=""/></div>
+        <div id="tip"  ontouchstart="$(this).closest('.logo').find('#ptip').show();event.preventDefault();"
+                            onclick="$(this).closest('.logo').find('#ptip').show();" class="icon">
+            <img src="res/img/control/tip.svg" alt=""/>
+            <div>0</div>
+        </div>
         <div id="speed" ontouchstart="$(this).closest('.logo').logo('speed');event.preventDefault();"
                         onclick="$(this).closest('.logo').logo('speed');" class="icon"><img src="res/img/control/x2.svg" alt=""/></div>
         <div id="stop" ontouchstart="$(this).closest('.logo').logo('stop');event.preventDefault();"
@@ -249,6 +252,45 @@
   <div id="touch01" ><div><img src="res/img/default/anim/touch01.svg" alt=""/></div></div>
 
   <div class="mask"></div>
+  
+    <div id="it">
+        <img id="itwrong" src="res/img/asset/misc/it01.svg" alt=""/>
+        <img id="itgood" src="res/img/asset/misc/it02.svg" alt=""/>
+    </div>
+  
+    <div id="effects">
+        <div id="good"><img src="res/img/default/popup/good01.svg" alt=""/></div>
+    </div>
+    
+    <div id="continue">
+        <div class="icon" ontouchstart="$(this).closest('.logo').logo('end');event.preventDefault();"
+                          onclick="$(this).closest('.logo').logo('end');"><img src="res/img/default/icon/action_next01.svg" alt=""/></div>
+    </div>
+  
+    <div id="ptip" ontouchstart="$(this).hide().find('#tipconfirm').hide();event.preventDefault();" onclick="$(this).hide().find('#tipconfirm').hide();"><div>
+        <div id="tippopup"><img src="res/img/default/popup/minus01.svg" alt=""/></div>
+        <div class="tip tip1" ontouchstart="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();event.preventDefault();" onclick="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();">
+            <div class="label">1</div>
+            <div id="tipc1" class="content"></div>
+        </div>
+        <div class="tip tip2" ontouchstart="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();event.preventDefault();" onclick="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();">
+            <div class="label">2</div>
+            <div id="tipc2" class="content"></div>
+        </div>
+        <div class="tip tip3" ontouchstart="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();event.preventDefault();" onclick="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();">
+            <div class="label">3</div>
+            <div id="tipc3" class="content"></div>
+        </div>
+        <div id="tipconfirm">
+            <div class="icon"
+                ontouchstart="$(this).closest('.logo').logo('tip');event.stopPropagation();event.preventDefault();"
+                onclick="$(this).closest('.logo').logo('tip');event.stopPropagation();">
+                <img src="res/img/default/icon/valid01.svg" alt=""/></div>
+            <div class="icon" ontouchstart="$(this).parent().hide();event.stopPropagation();event.preventDefault();" onclick="$(this).parent().hide();event.stopPropagation();"><img src="res/img/default/icon/cancel01.svg" alt=""/></div>
+            <div id="tipcc" class="label"></div>
+        </div>
+    </div></div>
+    
 
   <div id="export" ontouchstart="$(this).hide();event.preventDefault();"
                    onclick="$(this).hide();"></div>

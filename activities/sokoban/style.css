@@ -1,10 +1,16 @@
 .sokoban .both *                        { overflow:visible; }
-.sokoban                                { background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat;}
+.sokoban                                { background-image:url("../../res/img/background/landscape/blueboard01.svg"); background-repeat:repeat;}
 
 .sokoban div#splashex                  { background-image:url("../../res/img/banners/sokoban.svg"); color:lime; }
 .sokoban div#splashex h1               { position:absolute; top:45%; left:60%; font-size:1.5em; }
-.sokoban div#splashex #guide           { position:absolute; top:54%; left:45%; font-size:.75em; width:48%;;
+.sokoban div#splashex .guide           { position:absolute; top:56%; left:45%; font-size:.75em; width:48%;;
                                           text-align:justify; }
+.sokoban div#splashex #guidelight       { display:none; }
+.sokoban.light div#splashex #guidelight { display:inherit; }
+.sokoban.light div#splashex #guide      { display:none; }
+.sokoban div#splashex #light           { position:absolute; top:74%; left:65%; font-size:1.2em; width:10em; height:1.2em;
+                                          text-align:center; background-color:rgba(0,0,0,0.8); border-radius:.5em 0 0 .5em; display:none; }
+.sokoban.light div#splashex #light      { display:inherit; }
 .sokoban #board                         { background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat;
                                           width:11em; height:11em; border-radius:.5em; margin:0.5em 0 0 .25em;
                                           position:relative; float:left; }
@@ -18,16 +24,13 @@
 .sokoban #board #tiles .engine #img     { width:1em; height:1em; font-size:3.2em; margin-top:-.4em;margin-left:.1em;
                                           position:relative; }
 .sokoban #menu                          { width:4.3em; height:12em; float:left; position:relative; margin:0.5em 0 0 .25em; }
-.sokoban #menu #banner                  { height:7.95em; background-color:rgba(255,255,255,0.5); border-radius:.5em .5em 0 0;
-                                          position:relative; color:#444444;}
-.sokoban #menu #banner #reset           { position:absolute; width:1em; height:1em; cursor:pointer; font-size:1.5em;
-                                          top:.1em; left:1.8em; }
-.sokoban #menu #banner #art             { margin-top:1.2em; }
-.sokoban #menu #banner #sokoscore       { font-size:.4em;
-                                          background-color:rgba(255,255,255,0.5); }
+.sokoban #menu #banner                  { height:7.95em; background-color:white; border-radius:.5em .5em 0 0;
+                                          position:relative; color:#444444; opacity:0.7;}
+.sokoban #menu #banner #reset           { width:1em; height:1em; cursor:pointer; font-size:1em; border-radius:.5em; }
+.sokoban #menu #banner #sokoscore       { font-size:.4em; background-color:rgba(0,0,0,0.5); color:white; height:2.8em; }
 .sokoban #menu #banner .label           { clear:both; float:left; width:7em; text-align:right; margin-right:.5em; }
 .sokoban #menu #banner .value           { float:left; }
-.sokoban #menu #keypad                  { border-radius:0 0 .5em .5em; }
+.sokoban #menu #keypad                  { border-radius:0 0 .5em .5em; background-image:url("../../res/img/default/pattern/line03.svg") }
 .sokoban #menu #keypad.r0               { background-color:#90cce0; }
 .sokoban #menu #keypad.r1               { background-color:#e09090; }
 .sokoban #menu #keypad.r2               { background-color:#82ca82; }
