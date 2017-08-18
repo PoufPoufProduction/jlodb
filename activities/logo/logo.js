@@ -23,6 +23,8 @@
         "\\\[br\\\]",                               "<br/>",
         "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
         "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
+        "\\\[o1\\\]([^\\\[]+)\\\[/o1\\\]",          "<span style='opacity:0.5'>$1</span>",
+        "\\\[o2\\\]([^\\\[]+)\\\[/o2\\\]",          "<span style='opacity:0.1'>$1</span>",
         "\\\[svg\\\]([^\\\[]+)\\\[/svg\\\]",        "<div class='svg'><div><svg width='100%' height='100%' viewBox='0 0 32 32'><rect x='0' y='0' width='32' height='32' style='fill:black'/>$1</svg></div></div>",
         "\\\[code\\\](.+)\\\[/code\\\]",            "<div class='cc'>$1</div>",
         "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>"
@@ -104,9 +106,14 @@
 
                 // Send the onLoad callback
                 if (settings.context.onload) { settings.context.onload($this); }
+                
+                // HANDLE THE TIPS
+                if (settings.tips) {
+                    $this.find("#tip>div").html(settings.tips.length);
+                    $this.find("#ptip .tip1").addClass("s");
+                }
 
-                // Locale handling
-
+                // LOCALE HANDLING
                 if ($.isArray(settings.exercice)) {
                     $this.find("#exercice>div").html("");
                     for (var i in settings.exercice) { $this.find("#exercice>div").append(
@@ -693,6 +700,8 @@
                         cap         : 0,
                         stack       : []
                     },
+                    tipid           : 0,
+                    wrong           : 0
                 };
 
 
@@ -839,6 +848,7 @@
                 $this.find("#it").animate({left:"110%"},1000,function() { $(this).hide(); });
                 $this.find("#continue").hide();
                 $this.find("#effects").hide();
+                settings.score=5-settings.wrong;
                 helpers.end($this);
             },
             board: function() {
@@ -858,6 +868,21 @@
                     text = text.replace(/id="pencil"/, 'id="pencil" style="display:none;"');
                     $(this).find("#export").html("<img title='export' src='data:image/svg+xml;charset=utf-8,"+
                                                   encodeURIComponent(text)+"'/>").show();
+            },
+            tip: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+                if (settings.tipid<settings.tips.length) {
+                    $this.find("#ptip .tip"+(settings.tipid+1)).removeClass("s").addClass("f")
+                         .find(".content").html(helpers.format(settings.tips[settings.tipid]));
+                         
+                    settings.tipid++;
+                    $this.find("#tip>div").html(settings.tips.length-settings.tipid);
+                    if (settings.tipid<settings.tips.length) { $this.find("#ptip .tip"+(settings.tipid+1)).addClass("s"); }
+                    $this.find("#tipconfirm").hide();
+                    $this.find("#tippopup").css("opacity",1).show()
+                         .animate({opacity:0},1000,function() { $(this).hide(); });
+                    settings.wrong++;
+                }
             }
         };
 

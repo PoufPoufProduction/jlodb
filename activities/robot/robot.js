@@ -1227,7 +1227,7 @@
                          
                     settings.tipid++;
                     $this.find("#tip>div").html(settings.tips.length-settings.tipid);
-                    $this.find("#ptip .tip"+(settings.tipid+1)).addClass("s");
+                    if (settings.tipid<settings.tips.length) { $this.find("#ptip .tip"+(settings.tipid+1)).addClass("s"); }
                     $this.find("#tipconfirm").hide();
                     $this.find("#tippopup").css("opacity",1).show()
                          .animate({opacity:0},1000,function() { $(this).hide(); });
