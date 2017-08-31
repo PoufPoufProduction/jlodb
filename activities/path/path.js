@@ -36,7 +36,7 @@
         "\\\[strong\\\]([^\\\[]+)\\\[/strong\\\]",  "<div class='strong'>$1</div>",
         "\\\[h1\\\]([^\\\[]+)\\\[/h1\\\]",          "<div class='h1'>$1</div>",
         "\\\[small\\\]([^\\\[]+)\\\[/small\\\]",    "<div class='small'>$1</div>",
-        "\\\[img\\\]([^\\\[]+)\\\[/img\\\]",        "<div class='img'><img src='res/img/$1.svg'/></div>",
+        "\\\[img\\\]([^\\\[]+)\\\[/img\\\]",        "<div class='img'><img src='$1.svg'/></div>",
         "\\\[a\\\]([^\\\[]+)\\\[/a\\\]",            "<div class='icon' style='float:left;margin:.1em;font-size:2em;'><img src='res/img/action/$1.svg'/></div>"
     ];
 
@@ -127,6 +127,7 @@
                     if (gen.svg)    { $("#background",settings.svg.root()).html(gen.svg); }
                     if (gen.nodes)  { settings.nodes = gen.nodes; }
                     if (gen.result) { settings.result = gen.result; }
+                    if (gen.limits) { settings.limits = gen.limits; }
                 }
                 
                 // HANDLE BACKGROUND
@@ -224,7 +225,8 @@
                                             "stroke:"+($.isArray(settings.colorpath)?settings.colorpath[i%settings.colorpath.length]:settings.colorpath)
                                 }
                             );
-                            // $("#"+id, settings.svg.root()).detach().appendTo(settings.svg.root());
+                            
+                            settings.currentlimit = helpers.getlimit($this, settings.begin[id].toString());
                             
                         }
                         _event.preventDefault();
@@ -243,14 +245,10 @@
                         var begin = settings.nodes[settings.begin[id]];
                         
                         var dx = Math.abs(x-begin[0]), dy = Math.abs(y-begin[1]);
-                        
-                        if (settings.constraint=="ortho") {
-                            if (dx>dy) { y = begin[1]; } else { x = begin[0]; }
-                        }
+                        if (settings.constraint=="ortho") { if (dx>dy) { y = begin[1]; } else { x = begin[0]; } }
                             
-                        var ok = true, limit = 0;
-                        if (settings.limit) { limit = $.isArray(settings.limit)?settings.limit[settings.current%settings.limit.length]:settings.limit; }
-                        if (limit) { ok = helpers.isreachable(x,y, begin[0],begin[1],limit); }
+                        var ok = true;
+                        if (settings.currentlimit) { ok = helpers.isreachable(x,y, begin[0],begin[1],settings.currentlimit); }
                             
 
                         if (ok) {
@@ -271,14 +269,15 @@
                             if (current!=-1) {
                                 x = settings.nodes[current][0]; y = settings.nodes[current][1];
 
+                                // BACKWARD: REMOVE LAST PATH
                                 if (settings.paths[id] && settings.paths[id].nodes && settings.paths[id].nodes.length &&
                                                 current == settings.paths[id].nodes[settings.paths[id].nodes.length-1] ) {
                                     $("#cc"+settings.current+"x"+(settings.paths[id].paths.length-1), settings.svg.root()).detach();
                                     settings.paths[id].nodes.splice(-1,1);
                                     settings.paths[id].paths.splice(-1,1);
                                 }
+                                // FORWARD: DRAW NEW PATH
                                 else {
-
                                     if (!settings.paths[id]) { settings.paths[id] = { paths:[], nodes:[] }; }
 
                                     settings.paths[id].paths.push(settings.svg.line( settings.group,
@@ -292,7 +291,9 @@
                                     settings.paths[id].nodes.push(settings.begin[id]);
                                     $(settings.path).detach().appendTo(settings.group);
                                 }
-
+                                
+                                settings.currentlimit = helpers.getlimit($this, current.toString());
+                                
                                 $(settings.path).attr("x1",x).attr("y1",y);
                                 settings.begin[id] = current;
                             }
@@ -384,9 +385,24 @@
         },
         isreachable: function (_x1,_y1,_x2,_y2,_limit) {
             var ret;
+            if ($.isArray(_limit))        { ok = (_y2-_y1<=_limit[0]) && (_y1-_y2<=_limit[2]) &&
+                                                 (_x2-_x1<=_limit[3]) && (_x1-_x2<=_limit[1]); } else
             if (typeof(_limit)=="object") { ok = ( Math.abs(_x1-_x2) < _limit.x) && ( Math.abs(_y1-_y2) < _limit.y); }
             else                          { ok = ((_x1-_x2)*(_x1-_x2) + (_y1-_y2)*(_y1-_y2) <= _limit*_limit); }
             return ok;
+        },
+        getlimit: function($this, _id) {
+            var settings = helpers.settings($this);
+            var ret = 0;
+            if (settings.limit) {
+                ret = $.isArray(settings.limit)?settings.limit[settings.current%settings.limit.length]:settings.limit;
+            }
+            if (settings.limits) {
+                var limits = $.isArray(settings.limits)?
+                    settings.limits[settings.current%settings.limits.length]:settings.limits;
+                if (limits[_id]) { ret = limits[_id]; }
+            }
+            return ret;
         }
     };
 
@@ -403,6 +419,7 @@
                     nodes           : [],
                     ratio           : 1,
                     current         : -1,                               // current path pointer
+                    currentlimit    : 0,
                     cursor          : { init:[], current: -1 },         // mouse position
                     begin           : {},                               // point of the current path (by pointer id)
                     path            : 0,                                // the current path (not validated)

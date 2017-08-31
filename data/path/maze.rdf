@@ -3,26 +3,55 @@
          xmlns:dct="http://purl.org/dc/terms/">
 
     <rdf:Description>
-        <dct:identifier>6</dct:identifier>
-        <dct:title xml:lang="fr-FR">Atteindre l'extrémité d'un labyrinthe 6x8.</dct:title>
+        <dct:identifier>a01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Atteindre l'extrémité d'un labyrinthe plein 6x8.</dct:title>
         <dct:description><![CDATA["sizepath":24,"colorpathf":"red","sizepoint":18,"limit":33,"radius":10,"gen":"function(){var svg='',nodes=[],w=32,off=[40,20],maze=new jlodbmaze({x:6,y:8}), m=maze.gen().get(); for (var l=0; l<m.length; l++) for (var r=0; r<m[l].length; r++) { var cell=m[l][r]; svg+='<rect x=\\\"'+(r*w+off[0])+'\\\" y=\\\"'+(l*w+off[1])+'\\\" width=\\\"'+w+'\\\" height=\\\"'+w+'\\\" style=\\\"fill:'+(cell==' '?'white':'black')+';fill-opacity:'+(cell==' '?0.5:0.9)+'\\\"/>'; if (cell==' ') { nodes.push([(r+0.5)*w+off[0], (l+0.5)*w+off[1]]); } } var f=6; for (var i=0;i<f;i++) for (var j=0;j<f;j++) { if ((i+j)%2==0) svg+='<rect x=\\\"'+((maze.y*2-1+i/f)*w+off[0])+'\\\" y=\\\"'+((maze.x*2-1+j/f)*w+off[1])+'\\\" width=\\\"'+(w/f)+'\\\" height=\\\"'+(w/f)+'\\\" style=\\\"fill:#26A\\\"/>'; } return {svg:svg, nodes:nodes, result:nodes.length-1}; }","url":"desktop/path/empty.svg","background":"res/img/background/landscape/landscape01.svg","constraint":"ortho"]]></dct:description>
         <dct:extent>1</dct:extent>
-        <dct:subject>game</dct:subject>
+        <dct:subject>observation</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>12</dct:alternative>
+        <dct:alternative>a01</dct:alternative>
+        <dct:source>res/img/desktop/path/empty.svg,res/img/background/landscape/landscape01.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
-        <dct:identifier>12</dct:identifier>
-        <dct:title xml:lang="fr-FR">Atteindre l'extrémité d'un labyrinthe 12x16.</dct:title>
+        <dct:identifier>a02</dct:identifier>
+        <dct:title xml:lang="fr-FR">Atteindre l'extrémité d'un labyrinthe plein 12x16.</dct:title>
         <dct:description><![CDATA["sizepath":12,"colorpathf":"red","sizepoint":9,"limit":17,"radius":5,"gen":"function(){var svg='',nodes=[],w=16,off=[40,20],maze=new jlodbmaze({x:12,y:16}), m=maze.gen().get(); for (var l=0; l<m.length; l++) for (var r=0; r<m[l].length; r++) { var cell=m[l][r]; svg+='<rect x=\\\"'+(r*w+off[0])+'\\\" y=\\\"'+(l*w+off[1])+'\\\" width=\\\"'+w+'\\\" height=\\\"'+w+'\\\" style=\\\"fill:'+(cell==' '?'white':'black')+';fill-opacity:'+(cell==' '?0.5:0.9)+'\\\"/>'; if (cell==' ') { nodes.push([(r+0.5)*w+off[0], (l+0.5)*w+off[1]]); } } var f=6; for (var i=0;i<f;i++) for (var j=0;j<f;j++) { if ((i+j)%2==0) svg+='<rect x=\\\"'+((maze.y*2-1+i/f)*w+off[0])+'\\\" y=\\\"'+((maze.x*2-1+j/f)*w+off[1])+'\\\" width=\\\"'+(w/f)+'\\\" height=\\\"'+(w/f)+'\\\" style=\\\"fill:#26A\\\"/>'; } return {svg:svg, nodes:nodes, result:nodes.length-1}; }","url":"desktop/path/empty.svg","background":"res/img/background/landscape/landscape01.svg","constraint":"ortho"]]></dct:description>
         <dct:extent>1</dct:extent>
-        <dct:subject>game</dct:subject>
+        <dct:subject>observation</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>a01</dct:alternative>
+        <dct:source>res/img/desktop/path/empty.svg,res/img/background/landscape/landscape01.svg</dct:source>
+    </rdf:Description>
+    
+    
+    
+    <rdf:Description>
+        <dct:identifier>b01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Atteindre l'extrémité d'un labyrinthe 10x10.</dct:title>
+        <dct:description><![CDATA["sizepath":32,"colorpathf":"red","sizepoint":19,"radius":5,"gen":"function(){var svg='',nodes=[],w=40,s=[10,10],off=[20,20],maze=new jlodbmaze({x:s[0],y:s[1]}), m=maze.gen(),limits={}; svg+='<rect x=\\\"'+off[0]+'\\\" y=\\\"'+off[1]+'\\\" width=\\\"'+(maze.y*w)+'\\\" height=\\\"'+(maze.x*w)+'\\\" style=\\\"fill:white;stroke:#26A;stroke-width:2;\\\"/>';for (var i=0; i<s[0]; i++) for (var j=0; j<s[1]; j++) { var limit=[w,w,w,w]; nodes.push([(i+0.5)*w+off[0], (j+0.5)*w+off[1]]); if (!m.horiz[i][j]) {svg+='<line y1=\\\"'+(off[1]+i*w)+'\\\" y2=\\\"'+(off[1]+(i+1)*w)+'\\\" x1=\\\"'+(off[0]+(j+1)*w)+'\\\" x2=\\\"'+(off[0]+(j+1)*w)+'\\\" style=\\\"stroke:#26A;stroke-width:2;stroke-linecap:round;\\\"/>'; limit[1]=0; } if (j==0 || !m.horiz[i][j-1]) { limit[3]=0;} if (!m.verti[i][j]) {svg+='<line x1=\\\"'+(off[0]+j*w)+'\\\" x2=\\\"'+(off[0]+(j+1)*w)+'\\\" y1=\\\"'+(off[1]+(i+1)*w)+'\\\" y2=\\\"'+(off[1]+(i+1)*w)+'\\\" style=\\\"stroke:#26A;stroke-width:2;stroke-linecap:round;\\\"/>'; limit[2]=0; } if (i==0 || !m.verti[i-1][j]) { limit[0]=0;} limits[(i+j*s[0]).toString()]=limit;}  var f=6; for (var i=0;i<f;i++) for (var j=0;j<f;j++) { if ((i+j)%2==0) svg+='<rect x=\\\"'+((maze.y-1+i/f)*w+off[0])+'\\\" y=\\\"'+((maze.x-1+j/f)*w+off[1])+'\\\" width=\\\"'+(w/f)+'\\\" height=\\\"'+(w/f)+'\\\" style=\\\"fill:#26A\\\"/>'; } return {svg:svg, limits:limits, nodes:nodes, result:nodes.length-1}; }","url":"desktop/path/empty.svg","background":"res/img/background/landscape/landscape01.svg","constraint":"ortho"]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>observation</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>12</dct:alternative>
+        <dct:alternative>b01</dct:alternative>
+        <dct:source>res/img/desktop/path/empty.svg,res/img/background/landscape/landscape01.svg</dct:source>
     </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>b02</dct:identifier>
+        <dct:title xml:lang="fr-FR">Atteindre l'extrémité d'un labyrinthe 20x20.</dct:title>
+        <dct:description><![CDATA["sizepath":12,"colorpathf":"red","sizepoint":9,"radius":5,"gen":"function(){var svg='',nodes=[],w=20,s=[20,20],off=[20,20],maze=new jlodbmaze({x:s[0],y:s[1]}), m=maze.gen(),limits={}; svg+='<rect x=\\\"'+off[0]+'\\\" y=\\\"'+off[1]+'\\\" width=\\\"'+(maze.y*w)+'\\\" height=\\\"'+(maze.x*w)+'\\\" style=\\\"fill:white;stroke:#26A;stroke-width:2;\\\"/>';for (var i=0; i<s[0]; i++) for (var j=0; j<s[1]; j++) { var limit=[w,w,w,w]; nodes.push([(i+0.5)*w+off[0], (j+0.5)*w+off[1]]); if (!m.horiz[i][j]) {svg+='<line y1=\\\"'+(off[1]+i*w)+'\\\" y2=\\\"'+(off[1]+(i+1)*w)+'\\\" x1=\\\"'+(off[0]+(j+1)*w)+'\\\" x2=\\\"'+(off[0]+(j+1)*w)+'\\\" style=\\\"stroke:#26A;stroke-width:2;stroke-linecap:round;\\\"/>'; limit[1]=0; } if (j==0 || !m.horiz[i][j-1]) { limit[3]=0;} if (!m.verti[i][j]) {svg+='<line x1=\\\"'+(off[0]+j*w)+'\\\" x2=\\\"'+(off[0]+(j+1)*w)+'\\\" y1=\\\"'+(off[1]+(i+1)*w)+'\\\" y2=\\\"'+(off[1]+(i+1)*w)+'\\\" style=\\\"stroke:#26A;stroke-width:2;stroke-linecap:round;\\\"/>'; limit[2]=0; } if (i==0 || !m.verti[i-1][j]) { limit[0]=0;} limits[(i+j*s[0]).toString()]=limit;}  var f=6; for (var i=0;i<f;i++) for (var j=0;j<f;j++) { if ((i+j)%2==0) svg+='<rect x=\\\"'+((maze.y-1+i/f)*w+off[0])+'\\\" y=\\\"'+((maze.x-1+j/f)*w+off[1])+'\\\" width=\\\"'+(w/f)+'\\\" height=\\\"'+(w/f)+'\\\" style=\\\"fill:#26A\\\"/>'; } return {svg:svg, limits:limits, nodes:nodes, result:nodes.length-1}; }","url":"desktop/path/empty.svg","background":"res/img/background/landscape/landscape01.svg","constraint":"ortho"]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>observation</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>b01</dct:alternative>
+        <dct:source>res/img/desktop/path/empty.svg,res/img/background/landscape/landscape01.svg</dct:source>
+    </rdf:Description>
+    
 
 
 

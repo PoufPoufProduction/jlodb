@@ -21,6 +21,7 @@
         decoyfx     : true,                                     // No magnetic for decoy
         width       : 640,
         background  : "",
+        cumul       : [],
         debug       : true                                      // Debug mode
     };
 
@@ -173,19 +174,15 @@
         },
         rebuild: function($this) {
             var settings = helpers.settings($this);
-            var pgroup = $.isArray(settings.pieces)?settings.pieces[settings.puzzleid-1]:settings.pieces;
-            for (var i in settings.origin.translate) {
-                $("#"+pgroup+">g#"+settings.origin.translate[i][0],settings.svg.root()).attr("transform",
-                    "translate("+settings.origin.translate[i][1]+","+settings.origin.translate[i][2]+")").hide();
+            for (var i in settings.elts) {
+                helpers.update($this, i, settings.elts[i].origin.translate, settings.elts[i].origin.rotate).hide();
             }
             helpers.build($this);
         },
         // Build the question
         build: function($this) {
             var settings = helpers.settings($this);
-            settings.origin.translate = [];
-            settings.origin.rotate    = {};
-            settings.origin.decoys    = [];
+            settings.elts             = {};
             $this.find("#submit").removeClass();
             $this.find(".t").hide();
             var inituse               = [];
@@ -310,26 +307,25 @@
 						}
                     }
                     
-                    if (!helpers.isdecoy($this, $(this).attr("id")))
-                    {
-                        // SAVE THE ORIGINALE POSITION AND ROTATION
-                        var translate = [$(this).attr("id"),0,0];
-                        if ($(this).attr("transform")) {
-                            var reg = new RegExp("[( ),]","g");
-                            var vSplit = $(this).attr("transform").split(reg);
-                            translate = [$(this).attr("id"),vSplit[1], vSplit[2]];
-                        }
-                        settings.origin.translate.push(translate);
-                        var rotate = [$(this).attr("id"),0];
-                        if ($(this).find(".rot") && $(this).find(".rot").attr("transform")) {
-                            var reg = new RegExp("[( ),]","g");
-                            var vSplit = $(this).find(".rot").attr("transform").split(reg);
-                            rotate = [ $(this).attr("id"),vSplit[1]];
-                        }
-                        settings.origin.rotate[rotate[0]]=rotate[1];
+                    // GET THE ORIGINALE POSITION AND ROTATION FROM SVG ATTRIBUTES
+                    var translate = [0,0];
+                    if ($(this).attr("transform")) {
+                        var reg = new RegExp("[( ),]","g");
+                        var vSplit = $(this).attr("transform").split(reg);
+                        translate = [parseFloat(vSplit[1]), parseFloat(vSplit[2])];
                     }
-                    else { settings.origin.decoys.push($(this).attr("id")); }
-
+                    var rotate = 0;
+                    if ($(this).find(".rot") && $(this).find(".rot").attr("transform")) {
+                        var reg = new RegExp("[( ),]","g");
+                        var vSplit = $(this).find(".rot").attr("transform").split(reg);
+                        rotate = parseFloat(vSplit[1]);
+                    }
+                    var elt = { $elt   : $(this),
+                                good   : false,
+                                origin : { translate:translate, rotate:rotate },
+                                decoy  : (helpers.isdecoy($this, $(this).attr("id"))) };
+                    settings.elts[$(this).attr("id")] = elt;
+                    
                     // CLICK ON PIECES
                     $(this).bind('touchstart mousedown', function(event) {
                         var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
@@ -339,38 +335,34 @@
 
                         if (!settings.timer.id) { settings.timer.id = setTimeout(function() { helpers.timer($this); }, 1000); }
                         if (settings.interactive) {
-                            var pgroup  = $.isArray(settings.pieces)?settings.pieces[settings.puzzleid]:settings.pieces;
-                            settings.elt.id = this;
-                            settings.elt.translate = [0,0];
-                            if ($(this).attr("transform")) {
-                                var reg = new RegExp("[( ),]","g");
-                                var vSplit = $(this).attr("transform").split(reg);
-                                settings.elt.translate.origin = [parseInt(vSplit[1]), parseInt(vSplit[2])];
-                                settings.elt.translate.current = [parseInt(vSplit[1]), parseInt(vSplit[2])];
-                            }
                             $(this).attr("class","drag");
                             $this.addClass("active");
-                            settings.mouse = [ vEvent.clientX, vEvent.clientY];
+                            
+                            settings.action.id      = $(this).attr("id");
+                            settings.action.mouse   = [ vEvent.clientX, vEvent.clientY];
+                            
+                            // GET THE ELEMENT
+                            var elt = settings.elts[settings.action.id];
+                            elt.begin               = [ elt.current.translate[0], elt.current.translate[1] ];
 
-                            if ( settings.decoyfx || !helpers.isdecoy($this, $(this).attr("id"))) {
+                            if ( settings.decoyfx || !elt.decoy) {
                                 $(this).find(".scale").attr("transform","scale("+settings.scale+")");
                             }
 
                             if (settings.zhandling) { $(this).detach().appendTo($("#"+pgroup,settings.svg.root())); }
 
                             var now = new Date();
-                            settings.elt.tick = now.getTime();
-                            settings.rottimerid = setTimeout(function() { helpers.rottimer($this);}, 500);
+                            settings.action.tick  = now.getTime();
+                            settings.rottimerid   = setTimeout(function() { helpers.rottimer($this);}, 500);
                         }
                         event.preventDefault();
                     });
 
                     // INITIALIZE THE PIECE
-                    var vX = 100, vY = 100, vZ = 0;
+                    var vX = translate[0], vY = translate[1], vZ = 0;
                     var id = $(this).attr("id");
                     if (settings.rotation>0 && $(this).find(".rot")) {
                         vZ = settings.rotation*Math.floor(Math.random()*(360/settings.rotation));
-                        $(this).find(".rot").attr("transform","rotate("+vZ+")");
                     }
                     if (settings.init) {
                         if (settings.init.id && settings.init.id[id]) {
@@ -388,13 +380,10 @@
                             vX = settings.init.area[0]+Math.floor(Math.random()*(settings.init.area[2]-settings.init.area[0]));
                             vY = settings.init.area[1]+Math.floor(Math.random()*(settings.init.area[3]-settings.init.area[1]));
                         }
-                        $(this).attr("transform", "translate("+vX+" "+vY+")");
                     }
-                    $(this).show();
+                    helpers.update($this, id, [vX,vY], vZ).show();
                 }
-                else {
-                    $(this).attr("class","disable");
-                }
+                else { $(this).attr("class","disable"); }
             });
 
             // MIX THE PIECES Z-ORDER
@@ -406,38 +395,41 @@
 
             // BUILD THE MAGNETIC ZONES
             settings.magzone = [];
-            for (var i in settings.origin.translate) {
-                settings.magzone.push([settings.origin.translate[i][1], settings.origin.translate[i][2]]); }
+            for (var i in settings.elts) {
+                settings.magzone.push([settings.elts[i].origin.translate[0], settings.elts[i].origin.translate[1]]); }
             if (settings.magnetic) { for (var i in settings.magnetic) { settings.magzone.push(settings.magnetic[i]); } }
             
             // MOVE PIECES
             $this.bind('touchmove mousemove', function(event) {
-                if (settings.interactive && settings.elt.id) {
+                if (settings.interactive && settings.action.id) {
                     var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
                                   event.originalEvent.touches[0]:event;
                     
                     if (settings.rottimerid) { clearTimeout(settings.rottimerid); }
                     settings.rottimerid = setTimeout(function() { helpers.rottimer($this);}, 1000);
                     
+                    // GET THE ELEMENT
+                    var elt = settings.elts[settings.action.id];
+                    
                     // COMPUTE TRANSLATION_X
-                    var vX = settings.elt.translate.origin[0];
+                    var vX = elt.begin[0];
                     if (settings.constraint[0]==0) {
-                        vX += (vEvent.clientX-settings.mouse[0])/settings.ratio;
+                        vX += (vEvent.clientX-settings.action.mouse[0])/settings.ratio;
                     }
                     else if (settings.constraint[0]>0) {
-                        var vValue = ((vEvent.clientX-settings.mouse[0])/settings.ratio)/settings.constraint[0];
+                        var vValue = ((vEvent.clientX-settings.action.mouse[0])/settings.ratio)/settings.constraint[0];
                         var vStep = Math.round(vValue);
                         var vOffset = Math.pow((vValue-vStep)*2,5)/2;
                         vX += (vStep+vOffset) * settings.constraint[0];
                     }
 
                     // COMPUTE TRANSLATION_Y
-                    var vY = settings.elt.translate.origin[1];
+                    var vY = elt.begin[1];
                     if (settings.constraint[1]==0) {
-                        vY += (vEvent.clientY-settings.mouse[1])/settings.ratio;
+                        vY += (vEvent.clientY-settings.action.mouse[1])/settings.ratio;
                     }
                     else if (settings.constraint[1]>0) {
-                        var vValue = ((vEvent.clientY-settings.mouse[1])/settings.ratio)/settings.constraint[1]
+                        var vValue = ((vEvent.clientY-settings.action.mouse[1])/settings.ratio)/settings.constraint[1]
                         var vStep = Math.round(vValue);
                         var vOffset = Math.pow((vValue-vStep)*2,5)/2;
                         vY += (vStep+vOffset)  * settings.constraint[1];
@@ -448,143 +440,153 @@
                     if (settings.boundaries[2]>=0 && vX>settings.boundaries[2]) { vX = settings.boundaries[2]; }
                     if (settings.boundaries[3]>=0 && vY>settings.boundaries[3]) { vY = settings.boundaries[3]; }
 
-                    settings.elt.translate.current = [vX,vY];
-                    $(settings.elt.id).attr("transform", "translate("+vX+" "+vY+")");
+                    helpers.update($this, settings.action.id, [vX, vY], elt.current.rotate);
                 }
                 event.preventDefault();
             });
 
             // RELEASE PIECES
             $this.bind('touchend touchleave mouseup mouseleave', function() {
-                if (settings.interactive && settings.elt.id) {
+                if (settings.interactive && settings.action.id) {
+                    
+                    // GET THE ELEMENT
+                    var elt = settings.elts[settings.action.id];
                     
                     $this.removeClass("active");
-                    $(settings.elt.id).attr("class","");
+                    elt.$elt.attr("class","");
                     
                     if (settings.rottimerid) { clearTimeout(settings.rottimerid); }
 
-                    // ROTATION ?
-                    
-                    var tdist = Math.pow( settings.elt.translate.current[0] - settings.elt.translate.origin[0], 2) +
-                                Math.pow( settings.elt.translate.current[1] - settings.elt.translate.origin[1], 2);
-                               
+                    // HANDLE ROTATION
+                    var tdist = Math.pow( elt.current.translate[0] - elt.begin[0], 2) +
+                                Math.pow( elt.current.translate[1] - elt.begin[1], 2);
                     var now         = new Date();
                     var rotation    = -1;
-                    if (tdist<10 && now.getTime()-settings.elt.tick<400) { rotation = helpers.rotate($this, $(settings.elt.id)); }
+                    if (tdist<10 && now.getTime()-settings.action.tick<400) {
+                        elt.current.rotate = (elt.current.rotate+settings.rotation)%360;
+                    }
 
                     // CHECK MAGNETIC
-                    if (settings.decoyfx || !helpers.isdecoy($this, $(settings.elt.id).attr("id")))
+                    if (settings.decoyfx || !elt.decoy)
                     {
                         var dist=-1;
                         var distid=-1;
                         for (var i in settings.magzone) {
-                            var d = ((settings.magzone[i][0]-settings.elt.translate.current[0]) *
-                                     (settings.magzone[i][0]-settings.elt.translate.current[0])) +
-                                    ((settings.magzone[i][1]-settings.elt.translate.current[1]) *
-                                     (settings.magzone[i][1]-settings.elt.translate.current[1]));
+                            var d = ((settings.magzone[i][0]-elt.current.translate[0]) *
+                                     (settings.magzone[i][0]-elt.current.translate[0])) +
+                                    ((settings.magzone[i][1]-elt.current.translate[1]) *
+                                     (settings.magzone[i][1]-elt.current.translate[1]));
                             if (dist<0 || d<dist) { dist = d; distid = i; }
                         }
-                        if (dist<settings.radius*settings.radius) {
-                            settings.elt.translate.current[0] = settings.magzone[distid][0];
-                            settings.elt.translate.current[1] = settings.magzone[distid][1];
+                        if (distid!=-1 && dist<settings.radius*settings.radius) {
+                            elt.current.translate[0] = settings.magzone[distid][0];
+                            elt.current.translate[1] = settings.magzone[distid][1];
+                        }
+                        
+                        // CHECK IF CUMUL IS AUTHORIZED HERE
+                        var cumul = false;
+                        for (var c in settings.cumul) {
+                            if (settings.cumul[c][0] == elt.current.translate[0] &&
+                                settings.cumul[c][1] == elt.current.translate[1] ) { cumul = true; }
+                        }
+                        
+                        // AVOID STACK BY DEPLACING PIECE AT SAME PLACE
+                        if (!cumul) for (var i in settings.elts) {
+                            
+                            if (settings.action.id != i &&
+                                elt.current.translate[0] == settings.elts[i].current.translate[0] &&
+                                elt.current.translate[1] == settings.elts[i].current.translate[1] )
+                            {
+                                var a=Math.random()*2*Math.PI;
+                                helpers.update($this, i,
+                                    [ settings.elts[i].current.translate[0] +settings.radius*1.2*Math.cos(a) ,
+                                      settings.elts[i].current.translate[1] +settings.radius*1.2*Math.sin(a) ],
+                                      settings.elts[i].current.rotate);
+                            }
                         }
                     }
 
-                    $(settings.elt.id).attr("transform","translate("+settings.elt.translate.current[0]+" "+
-                                                                     settings.elt.translate.current[1]+")");
-
-                    // CHECK THE POSITION
-                    var vOK = false;
-                    for (var i in settings.origin.translate) {
-                        vOK= vOK || (settings.origin.translate[i][0] == $(settings.elt.id).attr("id") &&
-                            settings.origin.translate[i][1] == settings.elt.translate.current[0] &&
-                            settings.origin.translate[i][2] == settings.elt.translate.current[1] &&
-                            (rotation==-1 || rotation == settings.origin.rotate[settings.origin.translate[i][0]]) );
-                    }
-
-                    // END MOVE
-                    $(settings.elt.id).find(".scale").attr("transform","scale(1)");
-                    settings.elt.id = 0;
+                    helpers.update($this, settings.action.id, elt.current.translate,elt.current.rotate)
+                           .find(".scale").attr("transform","scale(1)");
+                    settings.action.id = 0;
                 }
             });
             settings.interactive = true;
         },
+        update: function($this, _id, _pos, _rot) {
+            var settings = helpers.settings($this);
+            var elt = settings.elts[_id];
+            var ret = 0;
+            if (elt) {
+                ret = elt.$elt;
+                elt.$elt.find(".rot").attr("transform","rotate("+_rot+")");
+                elt.$elt.attr("transform", "translate("+_pos[0]+" "+_pos[1]+")");
+                elt.current = { translate: _pos, rotate: _rot };
+            }
+            return ret;
+        },
         submit: function($this) {
             var settings = helpers.settings($this);
-            var pgroup = $.isArray(settings.pieces)?settings.pieces[settings.puzzleid]:settings.pieces;
             var wrongs =0;
             if (settings.interactive) {
                 settings.interactive = false;
 
                 $this.addClass("finished");
 
-                for (var i in settings.origin.translate) {
-                    var translate = [0,0];
+                for (var i in settings.elts) {
                     // BUILD THE LIST OF PIECES PUZZLE WHICH CAN USE THE CURRENT POSITION
-                    var pieces = [ settings.origin.translate[i][0] ];
-                    if (settings.same) {
-                        var vSame = settings.same;
-                        if (typeof(vSame[0][0])!="string") { vSame = settings.same[settings.puzzleid]; }
-
-                        for (var si in vSame) for (var sj in vSame[si]) {
-                            if (vSame[si][sj]==settings.origin.translate[i][0]) { pieces = vSame[si]; } }
-                    }
-                    
-                    // CHECK IF THE POSITION OF EACH PIECES IN THE LIST IS MATCHING THE CURRENT POSITION
-                    var findone = false;
-                    for (var p in pieces) {
-                        var isgood = false;
-
-                        var $piece = $("#"+pgroup+">g#"+pieces[p],settings.svg.root());
-                        if ($piece.attr("transform")) {
-                            var reg = new RegExp("[( ),]","g");
-                            var vSplit = $piece.attr("transform").split(reg);
-                            translate = [vSplit[1], vSplit[2]];
+                    var elt    = settings.elts[i];
+                    if (!elt.decoy) {
+                        var pieces = [ i ];
+                        if (settings.same) {
+                            var vSame = settings.same;
+                            if (typeof(vSame[0][0])!="string") { vSame = settings.same[settings.puzzleid]; }
+                            for (var si in vSame) for (var sj in vSame[si]) { if (vSame[si][sj]==i) { pieces = vSame[si]; } }
                         }
-                        if ((settings.origin.translate[i][1]==translate[0])&&(settings.origin.translate[i][2]==translate[1])) {
-                            isgood = true;
-                            // CHECK THE ROTATION
-                            if (settings.rotation && $piece.find(".rot") && $piece.find(".rot").attr("transform")) {
-                                var reg = new RegExp("[( ),]","g");
-                                var vSplit = $piece.find(".rot").attr("transform").split(reg);
-                                var diff = 360+parseInt(settings.origin.rotate[settings.origin.translate[i][0]])-parseInt(vSplit[1]);
-                                var modulo = (settings.sym&&settings.sym[pieces[p]])?settings.sym[pieces[p]]:360;
-                                if (diff%modulo!=0) { isgood = false; }
-                            }
-                        }
-                        findone |= isgood;
-                        if (isgood) { $piece.attr("class","good"); }
-                    }
-                    if (!findone) { wrongs++;}
-                    settings.all++;
-                }
-
-                // check if some decoys are on good places 
-                if (settings.decoyfx && settings.decoys) {
-                    var decoys = ($.isArray(settings.decoys[0]))?settings.decoys[settings.puzzleid%settings.decoys.length]:settings.decoys;
-                    for (var i in decoys) {
-                        var $piece = $("#"+pgroup+">g#"+decoys[i],settings.svg.root());
-                        var isActualDecoy = false;
-                        for (var j in settings.origin.decoys) { if (settings.origin.decoys[j]==decoys[i]) { isActualDecoy=true; } }
-                        if (isActualDecoy && $piece.attr("transform")) {
-                            var reg = new RegExp("[( ),]","g");
-                            var vSplit = $piece.attr("transform").split(reg);
-                            var translate = [vSplit[1], vSplit[2]];
-                            for (var t in settings.origin.translate) {
-                                if ((settings.origin.translate[t][1]==translate[0])&&(settings.origin.translate[t][2]==translate[1])) {
-                                    wrongs++;
-                                    $piece.attr("class","wrong");
+                        
+                        // CHECK IF THE POSITION OF EACH PIECES IN THE LIST IS MATCHING THE CURRENT POSITION
+                        for (var p in pieces) {
+                            var isgood = false;
+                            var target = settings.elts[pieces[p]];
+                            
+                            if ((target.current.translate[0]==elt.origin.translate[0])&&
+                                (target.current.translate[1]==elt.origin.translate[1])) {
+                                isgood = true;
+                                // CHECK THE ROTATION
+                                if (settings.rotation) {
+                                    var diff = 360+target.current.rotate-elt.origin.rotate;
+                                    var modulo = (settings.sym&&settings.sym[pieces[p]])?settings.sym[pieces[p]]:360;
+                                    if (diff%modulo!=0) { isgood = false; }
                                 }
                             }
+                            if (isgood) {
+                                target.$elt.attr("class","good");
+                                target.good = true;
+                            }
                         }
                     }
                 }
 
-                for (var i in settings.origin.translate) {
-                    var $piece = $("#"+pgroup+">g#"+settings.origin.translate[i][0],settings.svg.root());
-                    if (!$piece.attr("class").length) { $piece.attr("class","wrong"); }
+                for (var i in settings.elts) {
+                    var elt = settings.elts[i];
+                    var wrong = false;
+                    if (elt.decoy) {
+                        // CHECK IF DECOY IS IN A GOOD PLACE
+                        for (var j in settings.elts) {
+                            var piece = settings.elts[j];
+                            if (!piece.decoy && piece.origin.translate[0]==elt.current.translate[0]
+                                             && piece.origin.translate[1]==elt.current.translate[1] ) { wrong = true; }
+                        }
+                    }
+                        // DISPLAY PIECES AT WRONG PLACE
+                    else if (!elt.good) { wrong = true; }
+                    
+                    if (wrong) { wrongs++; elt.$elt.attr("class","wrong"); }
                 }
 
+                
+                
+                
                 settings.wrongs+=wrongs;
                 settings.puzzleid++;
 
@@ -609,18 +611,6 @@
                 helpers.rotate($this, $(settings.elt.id));
                 settings.rottimerid = setTimeout(function() { helpers.rottimer($this);}, 400);
             }
-        },
-        rotate:function($this, $elt) {
-            var settings = helpers.settings($this);
-            var rotation    = -1;
-            if (settings.rotation>0 && $elt.find(".rot")) {
-                var reg = new RegExp("[( ),]","g");
-                var vSplit = $elt.find(".rot").attr("transform").split(reg);
-                var rotation = parseInt(vSplit[1]);
-                rotation = (rotation+settings.rotation)%360;
-                $elt.find(".rot").attr("transform","rotate("+rotation+")");
-            }
-            return rotation;
         }
     };
 
@@ -642,7 +632,8 @@
                         tick        : 0,
                         translate   : { origin: [0,0], current: [0,0] }
                     },
-                    interactive : false,
+                    action          : { id:0, mouse:[] },
+                    elts            : {},
                     origin      : {
                         translate   : [],
                         rotate      : [],

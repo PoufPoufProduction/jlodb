@@ -8,7 +8,7 @@
         <dct:identifier>aa</dct:identifier>
         <dct:title xml:lang="fr-FR">En anticipant l'action d'une case de déplacement automatique, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[476,476],[1,7],[0,2]],"robots":[{"origin":[0,1,0],"code":[1,0,0],"actions":["f01"]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Certaines cases du plateau peuvent avoir des comportements particuliers. Dans ce niveau, une case va déplacer automatiquement le robot dans le sens de la flèche. Il faut évidemment prendre en compte ces interactions au moment d'écrire le programme."],"tips":["Il est [b]inutile[/b] de faire tourner le robot.","La case [b]automatique[/b] déplace le robot directement sur la case d'arrivée.","Il suffit d'avancer le robot vers la case [b]automatique[/b] :[code][a]f01[/a][/code]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Certaines cases du plateau peuvent avoir des comportements particuliers. Dans ce niveau, une case va déplacer automatiquement le robot dans le sens de la flèche. Il faut évidemment prendre en compte ces interactions au moment d'écrire le programme."],"tips":["Il est [b]inutile[/b] de faire tourner le robot.","La case [b]dynamique[/b] déplace le robot directement sur la case d'arrivée.","Il suffit d'avancer le robot vers la case [b]dynamique[/b] :[code][a]f01[/a][/code]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -21,7 +21,7 @@
         <dct:identifier>ab</dct:identifier>
         <dct:title xml:lang="fr-FR">En anticipant l'action de 3 cases de déplacement successives et alignées, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[474,401,401,474,401],[2,8,8,8,1]],"robots":[{"origin":[4,1,2],"code":[1,0,0],"actions":["f01"]}],"padding":12]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Les cases [b]automatiques[/b] peuvent s'enchaîner.","La [b]1ère[/b] case amène sur la [b]2ème[/b] qui amène à son tour sur la [b]3ème[/b], etc.","Il suffit d'avancer sur la [b]1ère[/b] case :[code][a]f01[/a][/code]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Les cases [b]dynamiques[/b] peuvent s'enchaîner.","La [b]1ère[/b] case amène sur la [b]2ème[/b] qui amène à son tour sur la [b]3ème[/b], etc.","Il suffit d'avancer sur la [b]1ère[/b] case :[code][a]f01[/a][/code]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -33,7 +33,7 @@
         <dct:identifier>ac</dct:identifier>
         <dct:title xml:lang="fr-FR">En anticipant l'action de 3 cases de déplacement successives mais non alignées, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[460,7,1],[7,8,0],[2,0,0]],"robots":[{"origin":[2,0,2],"code":[18,0,0],"actions":["f01","f01","f01","f01","f01","turnleft","turnleft","turnleft","turnleft","turnleft","turnright","turnright","turnright","turnright","turnright"]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["La case [b]automatique[/b] de déplacement ne fait pas tourner le robot.","La [b]1ère[/b] case amène sur la [b]2ème[/b] qui amène à son tour sur la [b]3ème[/b], etc.","Il suffit d'avancer sur la [b]1ère[/b] case :[code][a]f01[/a][/code]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["La case [b]dynamique[/b] de déplacement ne fait pas tourner le robot.","La [b]1ère[/b] case amène sur la [b]2ème[/b] qui amène à son tour sur la [b]3ème[/b], etc.","Il suffit d'avancer sur la [b]1ère[/b] case :[code][a]f01[/a][/code]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -45,7 +45,7 @@
         <dct:identifier>ad</dct:identifier>
         <dct:title xml:lang="fr-FR">Optimiser le déplacement d'un robot grâce aux cases de déplacement automatique.</dct:title>
         <dct:description><![CDATA["board":[[1,0,0],[6,6,1],[0,468,2]],"robots":[{"origin":[0,0,1],"code":[18,0,0],"actions":["f01","f01","f01","f01","f01","turnleft","turnleft","turnleft","turnleft","turnleft","turnright","turnright","turnright","turnright","turnright"]}],"padding":0]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["La case [b]automatique[/b] de déplacement ne fait pas tourner le robot.","Après les [b]2 cases automatiques[/b], l'orientation du robot n'a pas changé.","Le robot doit [b]avancer 2 fois[/b].[code][a]f01[/a][a]f01[/a][/code]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["La case [b]dynamique[/b] de déplacement ne fait pas tourner le robot.","Après les [b]2 cases dynamiques[/b], l'orientation du robot n'a pas changé.","Le robot doit [b]avancer 2 fois[/b].[code][a]f01[/a][a]f01[/a][/code]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -57,7 +57,7 @@
         <dct:identifier>ae</dct:identifier>
         <dct:title xml:lang="fr-FR">Optimiser le déplacement d'un robot grâce aux cases de déplacement automatique.</dct:title>
         <dct:description><![CDATA["board":[[1,0,0],[1,6,1],[0,468,2]],"robots":[{"origin":[0,0,1],"code":[18,0,0],"actions":["f01","f01","f01","f01","f01","turnleft","turnleft","turnleft","turnleft","turnleft","turnright","turnright","turnright","turnright","turnright"]}],"padding":0]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Sur un parcours linéaire, la case [b]automatique[/b] de déplacement revient à une absence de case.","En tout, le robot doit [b]avancer 3 fois[/b].","Le programme [b]principal[/b] devrait être :[code][a]f01[/a][a]turnleft[/a][a]f01[/a][a]turnright[/a][a]f01[/a][/code]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Sur un parcours linéaire, la case [b]dynamique[/b] de déplacement revient à une absence de case.","En tout, le robot doit [b]avancer 3 fois[/b].","Le programme [b]principal[/b] devrait être :[code][a]f01[/a][a]turnleft[/a][a]f01[/a][a]turnright[/a][a]f01[/a][/code]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -69,7 +69,7 @@
         <dct:identifier>af</dct:identifier>
         <dct:title xml:lang="fr-FR">En anticipant l'action de plusieurs cases de déplacement automatique, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[1,6,7],[461,475,1],[2,8,8]],"robots":[{"origin":[0,0,0],"code":[18,0,0],"actions":["f01","f01","f01","f01","f01","b01","b01","b01","b01","b01","turnleft","turnleft","turnright","turnright","turnright"]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["La case [b]automatique[/b] de déplacement ne fait pas tourner le robot.","Après les [b]2 premières cases automatiques[/b], l'orientation du robot n'a pas changé. Il doit donc [b]tourner[/b].","Le programme [b]principal[/b] devrait être :[code][a]f01[/a][a]turnright[/a][a]f01[/a][/code]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["La case [b]dynamique[/b] de déplacement ne fait pas tourner le robot.","Après les [b]2 premières cases dynamiques[/b], l'orientation du robot n'a pas changé. Il doit donc [b]tourner[/b].","Le programme [b]principal[/b] devrait être :[code][a]f01[/a][a]turnright[/a][a]f01[/a][/code]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -81,7 +81,7 @@
         <dct:identifier>ag</dct:identifier>
         <dct:title xml:lang="fr-FR">En anticipant l'action de plusieurs cases de déplacement automatique et sans pouvoir avancer, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[454,7,1],[1,1,0],[2,0,0]],"robots":[{"origin":[2,0,0],"code":[18,0,0],"actions":["b01","b01","b01","b01","b01","turnleft","turnleft","turnleft","turnleft","turnleft","turnright","turnright","turnright","turnright","turnright"]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["La case [b]automatique[/b] de déplacement fonctionne également en marche arrière.","Le robot devoit [b]reculer 3 fois[/b] et [b]tourner 1 fois[/b].","Le programme [b]principal[/b] devrait être :[code][a]b01[/a][a]b01[/a][a]turnleft[/a][a]b01[/a][/code]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["La case [b]dynamique[/b] de déplacement fonctionne également en marche arrière.","Le robot devoit [b]reculer 3 fois[/b] et [b]tourner 1 fois[/b].","Le programme [b]principal[/b] devrait être :[code][a]b01[/a][a]b01[/a][a]turnleft[/a][a]b01[/a][/code]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -93,7 +93,7 @@
         <dct:identifier>ah</dct:identifier>
         <dct:title xml:lang="fr-FR">En anticipant l'action de plusieurs cases de déplacement automatique, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[462,1,1,7],[460,5,0,1],[1,5,0,1],[1,468,401,2]],"robots":[{"origin":[0,3,3],"code":[18,0,0],"actions":["f01","f01","f01","f01","f01","f01","f01","f01","f01","f01","turnleft","turnleft","turnleft","turnright","turnright"]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Grâce aux [b]2 premières cases automatiques[/b], le robot évite 2 virages.","Il doit néanmoins tourner après la [b]dernière[/b] case automatique.","Le programme [b]principal[/b] devrait commencer ainsi :[code][a]f01[/a][a]turnright[/a][a]f01[/a][a]f01[/a][a]f01[/a][a1]turnright[/a1][a2]f01[/a2][/code]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Grâce aux [b]2 premières cases dynamiques[/b], le robot évite 2 virages.","Il doit néanmoins tourner après la [b]dernière[/b] case automatique.","Le programme [b]principal[/b] devrait commencer ainsi :[code][a]f01[/a][a]turnright[/a][a]f01[/a][a]f01[/a][a]f01[/a][a1]turnright[/a1][a2]f01[/a2][/code]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -105,7 +105,7 @@
         <dct:identifier>ai</dct:identifier>
         <dct:title xml:lang="fr-FR">En anticipant l'action de plusieurs cases de déplacement automatique, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[6,6,6,1],[1,474,0,1],[5,0,7,1],[1,0,2,0]],"robots":[{"origin":[0,3,3],"code":[18,0,0],"actions":["f01","f01","f01","f01","f01","b01","b01","b01","b01","b01","turnleft","turnleft","turnleft","turnleft","turnleft"]}],"padding":8]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Grâce aux [b]cases automatiques[/b], le robot peut ne [b]tourner[/b] qu'1 seule fois sur l'ensemble du parcours.","Il est possible de tout faire en [b]marche avant[/b], mais avec un [b]nombre[/b] d'actions utilisées plus grand.","Le programme [b]principal[/b] devrait être :[code][a]f01[/a][a]b01[/a][a]b01[/a][a]turnleft[/a][a]f01[/a][/code]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Grâce aux [b]cases dynamiques[/b], le robot peut ne [b]tourner[/b] qu'1 seule fois sur l'ensemble du parcours.","Il est possible de tout faire en [b]marche avant[/b], mais avec un [b]nombre[/b] d'actions utilisées plus grand.","Le programme [b]principal[/b] devrait être :[code][a]f01[/a][a]b01[/a][a]b01[/a][a]turnleft[/a][a]f01[/a][/code]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -117,7 +117,7 @@
         <dct:identifier>aj</dct:identifier>
         <dct:title xml:lang="fr-FR">En anticipant l'action de plusieurs cases de déplacement automatique, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[1,475,7,8,1],[7,401,7,0,5],[7,401,2,0,5],[7,475,0,0,5],[1,1,6,6,1]],"robots":[{"origin":[0,0,1],"code":[18,0,0],"actions":["f01","f01","f01","f01","f01","f01","f01","f01","f01","f01","turnleft","turnleft","turnleft","turnleft","turnleft"]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Les cases [b]automatiques[/b] de déplacement réduisent les distances.","En tout, le robot doit [b]avancer 5 fois[/b] et [b]tourner 3 fois[/b].","Le programme [b]principal[/b] devrait commencer ainsi :[code][a]f01[/a][a]turnleft[/a][a]f01[/a][a]f01[/a][a]turnleft[/a][a1]f01[/a1][a2]turnleft[/a2][/code]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Les cases [b]dynamiques[/b] de déplacement réduisent les distances.","En tout, le robot doit [b]avancer 5 fois[/b] et [b]tourner 3 fois[/b].","Le programme [b]principal[/b] devrait commencer ainsi :[code][a]f01[/a][a]turnleft[/a][a]f01[/a][a]f01[/a][a]turnleft[/a][a1]f01[/a1][a2]turnleft[/a2][/code]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -131,7 +131,7 @@
         <dct:identifier>ba</dct:identifier>
         <dct:title xml:lang="fr-FR">En anticipant l'action d'un case de rotation automatique, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[461,461],[1,4],[0,2]],"robots":[{"origin":[0,1,0],"code":[2,0,0],"actions":["f01","f01"]}],"padding":4]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["La case [b]automatique[/b] est une case de [b]rotation[/b].","La case [b]automatique[/b] tourne le robot vers la [b]droite[/b] en direction de la case d'arrivée.","Il suffit d'avancer le robot 2 fois :[code][a]f01[/a][a]f01[/a][/code]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["La case [b]dynamique[/b] est une case de [b]rotation[/b].","La case [b]dynamique[/b] tourne le robot vers la [b]droite[/b] en direction de la case d'arrivée.","Il suffit d'avancer le robot 2 fois :[code][a]f01[/a][a]f01[/a][/code]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -143,7 +143,7 @@
         <dct:identifier>bb</dct:identifier>
         <dct:title xml:lang="fr-FR">En anticipant l'action de plusieurs cases de rotation automatique, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[51,3,1],[3,4,0],[2,0,0]],"robots":[{"origin":[2,0,2],"code":[18,0,0],"actions":["f01","f01","f01","f01","f01"]}],"padding":4]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["La case [b]automatique[/b] de [b]rotation[/b] peut tourner le robot vers la [b]gauche[/b] ou vers la [b]droite[/b] suivant les flèches.","Le robot, qui tourne grace aux cases [b]automatiques[/b], doit simplement avancer de [b]4 cases[/b].","Le programme [b]principal[/b] devrait être :[code][a]f01[/a][a]f01[/a][a]f01[/a][a]f01[/a][/code]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["La case [b]dynamique[/b] de [b]rotation[/b] peut tourner le robot vers la [b]gauche[/b] ou vers la [b]droite[/b] suivant les flèches.","Le robot, qui tourne grace aux cases [b]dynamiques[/b], doit simplement avancer de [b]4 cases[/b].","Le programme [b]principal[/b] devrait être :[code][a]f01[/a][a]f01[/a][a]f01[/a][a]f01[/a][/code]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -155,7 +155,7 @@
         <dct:identifier>bc</dct:identifier>
         <dct:title xml:lang="fr-FR">En anticipant l'action d'un case de rotation automatique, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[461,470],[2,4],[0,1]],"robots":[{"origin":[1,2,3],"code":[6,0,0],"actions":["f01","f01","turnleft","turnleft"]}],"padding":4]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Les cases automatiques n'agissent que lorsque le robot ARRIVE sur la case. S'il reste immobile sur cette même case, celle-ci ne s'active pas. Un robot sur une case de rotation ne tourne qu'une fois (lorsqu'il arrive sur la case)."],"tips":["La case [b]automatique[/b] de [b]rotation[/b] tourne le robot dans le [b]mauvais sens[/b].","Le robot doit faire demi-tour en tournant [b]2 fois[/b] sur la gauche.","Le programme [b]principal[/b] devrait être :[code][a]f01[/a][a]turnleft[/a][a]turnleft[/a][a]f01[/a][/code]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Les cases automatiques n'agissent que lorsque le robot ARRIVE sur la case. S'il reste immobile sur cette même case, celle-ci ne s'active pas. Un robot sur une case de rotation ne tourne qu'une fois (lorsqu'il arrive sur la case)."],"tips":["La case [b]dynamique[/b] de [b]rotation[/b] tourne le robot dans le [b]mauvais sens[/b].","Le robot doit faire demi-tour en tournant [b]2 fois[/b] sur la gauche.","Le programme [b]principal[/b] devrait être :[code][a]f01[/a][a]turnleft[/a][a]turnleft[/a][a]f01[/a][/code]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -168,7 +168,7 @@
         <dct:identifier>bd</dct:identifier>
         <dct:title xml:lang="fr-FR">En anticipant l'action d'un case de rotation automatique, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[476,2],[0,1],[0,3],[0,1],[452,1]],"robots":[{"origin":[1,4,3],"code":[18,0,0],"actions":["f01","f01","f01","f01","f01","turnright","turnright","turnright","turnright","turnright","turnleft","turnleft","turnleft","turnleft","turnleft"]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["La case [b]automatique[/b] tourne le robot vers la [b]gauche[/b] en pleine ligne droite.","Le robot doit tourner vers la [b]droite[/b] pour pouvoir reprendre sa progression.","Le programme [b]principal[/b] devrait être :[code][a]f01[/a][a]f01[/a][a]turnright[/a][a]f01[/a][a]f01[/a][/code]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["La case [b]dynamique[/b] tourne le robot vers la [b]gauche[/b] en pleine ligne droite.","Le robot doit tourner vers la [b]droite[/b] pour pouvoir reprendre sa progression.","Le programme [b]principal[/b] devrait être :[code][a]f01[/a][a]f01[/a][a]turnright[/a][a]f01[/a][a]f01[/a][/code]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -180,7 +180,7 @@
         <dct:identifier>be</dct:identifier>
         <dct:title xml:lang="fr-FR">En anticipant l'action de plusieurs cases de rotation automatique, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[454,2],[0,4],[0,3],[0,4],[454,1]],"robots":[{"origin":[1,4,3],"code":[18,0,0],"actions":["f01","f01","f01","f01","f01","turnright","turnright","turnright","turnright","turnright","turnright","turnright","turnright","turnright","turnright"]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Les cases [b]automatiques[/b] n'agissent que lorsque le robot [b]arrive[/b] sur la case.","Les cases [b]automatiques[/b] sont inactives lorsque le robot [b]reste[/b] sur la case.","Le programme [b]principal[/b] devrait être :[code][a]f01[/a][a]turnleft[/a][a]f01[/a][a]turnright[/a][a]f01[/a][a]turnleft[/a][a]f01[/a][/code]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Les cases [b]dynamiques[/b] n'agissent que lorsque le robot [b]arrive[/b] sur la case.","Les cases [b]dynamiques[/b] sont inactives lorsque le robot [b]reste[/b] sur la case.","Le programme [b]principal[/b] devrait être :[code][a]f01[/a][a]turnleft[/a][a]f01[/a][a]turnright[/a][a]f01[/a][a]turnleft[/a][a]f01[/a][/code]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -192,7 +192,7 @@
         <dct:identifier>bf</dct:identifier>
         <dct:title xml:lang="fr-FR">En anticipant l'action de plusieurs cases de rotation et de déplacement automatiques, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[1,6,3],[51,9,1],[2,8,4]],"robots":[{"origin":[0,0,0],"code":[18,0,0],"actions":["f01","f01","f01","f01","f01","b01","b01","b01","b01","b01"]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Il est important de bien regarder le [b]sens[/b] des flèches sur les cases [b]automatiques[/b] de rotation.","Grâce aux cases [b]automatiques[/b], le robot n'a que [b]4 déplacements[/b] à faire.","Le programme [b]principal[/b] devrait être :[code][a]f01[/a][a]b01[/a][a]b01[/a][a]b01[/a][/code]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Il est important de bien regarder le [b]sens[/b] des flèches sur les cases [b]dynamiques[/b] de rotation.","Grâce aux cases [b]dynamiques[/b], le robot n'a que [b]4 déplacements[/b] à faire.","Le programme [b]principal[/b] devrait être :[code][a]f01[/a][a]b01[/a][a]b01[/a][a]b01[/a][/code]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -216,7 +216,7 @@
         <dct:identifier>bh</dct:identifier>
         <dct:title xml:lang="fr-FR">En anticipant l'action de plusieurs cases de rotation et de déplacement automatiques, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[0,475,7,1],[475,3,4,474],[4,8,0,0],[2,0,0,0]],"robots":[{"origin":[3,0,2],"code":[18,0,0],"actions":["f01","f01","f01","f01","f01","b01","b01","b01","b01","b01","turnleft","turnleft","turnleft","turnleft","turnleft"]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Il faut orienter le robot après chaque cases [b]automatiques[/b] de déplacement.","Le parcours du robot se fait naturellement en [b]marche avant[/b].","Le programme [b]principal[/b] devrait être :[code][a]f01[/a][a]turnleft[/a][a]f01[/a][a]f01[/a][a]turnleft[/a][a]f01[/a][/code]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Il faut orienter le robot après chaque cases [b]dynamiques[/b] de déplacement.","Le parcours du robot se fait naturellement en [b]marche avant[/b].","Le programme [b]principal[/b] devrait être :[code][a]f01[/a][a]turnleft[/a][a]f01[/a][a]f01[/a][a]turnleft[/a][a]f01[/a][/code]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -240,7 +240,7 @@
         <dct:identifier>bj</dct:identifier>
         <dct:title xml:lang="fr-FR">En anticipant l'action de plusieurs cases de rotation et de déplacement automatiques, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[1,9,7,8,4],[7,0,7,0,5],[3,0,2,0,5],[7,0,0,0,5],[3,3,6,6,4]],"robots":[{"origin":[0,0,1],"code":[18,0,0],"actions":["f01","f01","f01","f01","f01","b01","b01","b01","b01","b01","turnleft","turnleft","turnleft","turnleft","turnleft"]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Il ne faut pas hésiter à lancer le [b]programme[/b] même incomplet pour en [b]tester[/b] l'efficacité.","Les case [b]automatiques[/b] de rotation en ligne droite nécessite de tourner le robot pour l'aligner.","Le programme [b]principal[/b] devrait commencer ainsi : [code][a]f01[/a][a]turnleft[/a][a]b01[/a][a]b01[/a][a]turnleft[/a][a1]f01[/a1][a2]b01[/a2][/code]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Il ne faut pas hésiter à lancer le [b]programme[/b] même incomplet pour en [b]tester[/b] l'efficacité.","Les case [b]dynamiques[/b] de rotation en ligne droite nécessite de tourner le robot pour l'aligner.","Le programme [b]principal[/b] devrait commencer ainsi : [code][a]f01[/a][a]turnleft[/a][a]b01[/a][a]b01[/a][a]turnleft[/a][a1]f01[/a1][a2]b01[/a2][/code]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -252,7 +252,7 @@
         <dct:identifier>bk</dct:identifier>
         <dct:title xml:lang="fr-FR">En anticipant l'action de plusieurs cases de rotation et de déplacement automatiques, et sans pouvoir tourner, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[2,4,8,0,0],[0,6,4,0,0],[0,0,3,8,0],[0,0,0,5,0],[0,0,0,3,1]],"robots":[{"origin":[4,4,2],"code":[7,0,0],"actions":["f01","f01","f01","f01","f01","b01","b01","b01","b01","b01"]}],"padding":0]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Il est important de bien regarder le [b]sens[/b] des flèches sur les cases [b]automatiques[/b] de rotation.","Le robot [b]tourne[/b] lorsqu'il revient sur une case de [b]rotation[/b].","Le programme [b]principal[/b] devrait être :[code][a]f01[/a][a]b01[/a][a]f01[/a][a]f01[/a][a]b01[/a][a]b01[/a][a]f01[/a][/code]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Il est important de bien regarder le [b]sens[/b] des flèches sur les cases [b]dynamiques[/b] de rotation.","Le robot [b]tourne[/b] lorsqu'il revient sur une case de [b]rotation[/b].","Le programme [b]principal[/b] devrait être :[code][a]f01[/a][a]b01[/a][a]f01[/a][a]f01[/a][a]b01[/a][a]b01[/a][a]f01[/a][/code]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -279,7 +279,7 @@
         <dct:identifier>ca</dct:identifier>
         <dct:title xml:lang="fr-FR">Programmer un robot afin qu'il atteigne la case d'arrivée sans tomber dans la case transparente.</dct:title>
         <dct:description><![CDATA["board":[[1,1,1],[9,0,1],[2,1,1]],"robots":[{"origin":[0,0,0],"code":[18,0,0],"actions":["f01","f01","f01","f01","f01","f01","f01","f01","f01","f01","turnright","turnright","turnright","turnright"]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"La case en pointillé est vide."]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["La case en pointillé est [b]vide[/b] : le robot ne peut pas l'emprunter.","Le robot doit [b]faire le tour[/b].","Le programme [b]principal[/b] commence ainsi :[code][a]f01[/a][a]f01[/a][a]turnright[/a][a]f01[/a][a]f01[/a][a1]turnright[/a1][a2]f01[/a2][/code]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -291,6 +291,7 @@
         <dct:identifier>cb</dct:identifier>
         <dct:title xml:lang="fr-FR">En utilisant l'interrupteur pour faire aparaître la case transparente, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[0,2],[451,9],[0,20],[0,1]],"robots":[{"origin":[1,3,3],"code":[18,0,0],"actions":["f01","f01","f01","f01","f01"]}],"padding":11]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["[i]Uniquement dans le saut depuis la tête du lion, pourra-t-il prouver sa valeur ?[/i]","La case [b]dynamique[/b] de type [blue]bouton[/blue] [b]transforme[/b] une case en pointillé en case pleine.","Le programme [b]principal[/b] devrait être :[code][a]f01[/a][a]f01[/a][a]f01[/a][/code]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -302,6 +303,7 @@
         <dct:identifier>cc</dct:identifier>
         <dct:title xml:lang="fr-FR">En utilisant l'interrupteur, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[0,2],[455,9],[455,9],[0,1],[0,20]],"robots":[{"origin":[1,3,3],"code":[18,0,0],"actions":["f01","f01","f01","f01","f01","b01","b01","b01","b01","b01"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Il faut parfois savoir [b]reculer[/b] pour mieux [b]sauter[/b]. Voire, pour ne pas sauter du tout.","La case [b]dynamique[/b] de type [blue]bouton[/blue] [b]transforme[/b] toutes les cases en pointillé en cases pleines.","Le programme [b]principal[/b] devrait être :[code][a]b01[/a][a]f01[/a][a]f01[/a][a]f01[/a][a]f01[/a][/code]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -313,6 +315,7 @@
         <dct:identifier>cd</dct:identifier>
         <dct:title xml:lang="fr-FR">En anticipant l'action de plusieurs cases de déplacement automatique et en utilisant l'interrupteur, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[20,6,7],[5,473,7],[1,8,8],[1,0,0],[1,9,2]],"robots":[{"origin":[0,4,3],"code":[18,0,0],"actions":["f01","f01","f01","f01","f01","f01","f01","f01","f01","f01","turnright","turnright","turnleft","turnleft"]}],"padding":8]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Pour atteindre sa case d'arrivée, le robot doit d'abord [b]activer[/b] le bouton.","Les cases [b]dynamiques[/b] imposent le chemin à prendre.","Le programme [b]principal[/b] devrait commencer ainsi :[code][a]f01[/a][a]f01[/a][a]f01[/a][a]turnright[/a][a]f01[/a][a1]turnright[/a1][a2]f01[/a2][/code]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -324,6 +327,7 @@
         <dct:identifier>ce</dct:identifier>
         <dct:title xml:lang="fr-FR">En utilisant les deux interrupteurs, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[2],[9],[109],[20],[120],[1]],"robots":[{"origin":[0,5,3],"code":[18,0,0],"actions":["f01","f01","f01","f01","f01","f01","f01","f01","f01","f01","f01","f01","f01","f01","f01"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Le bouton [b]rouge[/b] active les cases en pointillés [b]rouges[/b].","Le bouton [b]bleu[/b] active les cases en pointillés [b]bleu[/b].","Le programme [b]principal[/b] devrait être :[code][a]f01[/a][a]f01[/a][a]f01[/a][a]f01[/a][a]f01[/a][/code]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -335,7 +339,7 @@
         <dct:identifier>cf</dct:identifier>
         <dct:title xml:lang="fr-FR">En utilisant les trois interrupteurs, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[462,462,120,0,0],[461,461,9,0,0],[20,1,4,109,220],[0,0,209,0,0],[0,0,2,0,0]],"robots":[{"origin":[2,2,2],"code":[18,0,0],"actions":["f01","f01","f01","f01","f01","f01","f01","f01","b01","b01","b01","b01","b01","b01","b01"]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"La case de départ tourne le robot vers la droite."]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["La case de [b]départ[/b] est une case [b]dynamique[/b] de rotation à [b]droite[/b].","Le robot doit [b]avancer[/b] jusqu'à chaque bouton puis il [b]recule[/b] jusqu'à la case de départ avant d'accéder à l'arrivée.","Le programme [b]principal[/b] devrait commencer ainsi :[code][a]f01[/a][a]f01[/a][a]b01[/a][a]b01[/a][a]f01[/a][a1]f01[/a1][a2]b01[/a2][/code]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -347,6 +351,7 @@
         <dct:identifier>cg</dct:identifier>
         <dct:title xml:lang="fr-FR">En anticipant l'action de plusieurs cases de rotation et de déplacement automatiques, et en utilisant l'interrupteur, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[475,20,0],[9,1,1],[7,9,0],[2,0,0]],"robots":[{"origin":[2,1,2],"code":[18,0,0],"actions":["f01","f01","f01","f01","f01","b01","b01","b01","b01","b01","turnleft","turnleft","turnright","turnright","turnright"]}],"padding":5]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Le robot doit passer sur la case [b]dynamique[/b] de type 'bouton' pour pouvoir atteindre la case d'arrivée.","Plusieurs chemins sont possibles mais le plus court est celui qui fait [b]reculer[/b] le robot [b]3 fois[/b] après le bouton.","Le programme [b]principal[/b] devrait commencer ainsi :[code][a]f01[/a][a]turnright[/a][a]f01[/a][a]b01[/a][a]b01[/a][a1]b01[/a1][a2]turnleft[/a2][/code]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -358,6 +363,7 @@
         <dct:identifier>ch</dct:identifier>
         <dct:title xml:lang="fr-FR">En anticipant l'action de plusieurs cases de rotation et de déplacement automatiques, et en utilisant l'interrupteur, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[20,3,8],[4,9,1],[9,3,7],[2,473,0]],"robots":[{"origin":[2,1,2],"code":[18,0,0],"actions":["f01","f01","f01","f01","f01","b01","b01","b01","b01","b01","turnleft","turnleft","turnright","turnright","turnright"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Le robot doit passer sur la case [b]dynamique[/b] de type 'bouton' pour pouvoir atteindre la case d'arrivée.","N'essayez pas de faire partir le robot à [b]gauche[/b] au début : il [b]tomberait[/b].","Le programme [b]principal[/b] devrait commencer ainsi :[code][a]turnright[/a][a]f01[/a][a]f01[/a][a]turnleft[/a][a]f01[/a][a1]turnleft[/a1][a2]f01[/a2][/code]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -369,6 +375,7 @@
         <dct:identifier>ci</dct:identifier>
         <dct:title xml:lang="fr-FR">En anticipant l'action de plusieurs cases de rotation et de déplacement automatiques, et en utilisant les 2 interrupteurs, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[20,109,3,7],[4,109,8,1],[9,120,8,3],[2,0,0,0]],"robots":[{"origin":[3,1,2],"code":[18,0,0],"actions":["f01","f01","f01","f01","f01","b01","b01","b01","b01","b01","turnleft","turnleft","turnright","turnright","turnright"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Le robot doit passer sur le [b]bouton rouge[/b] avant d'aller sur le [b]bouton bleu[/b].","Faute de virages en nombre suffisant, le robot devra rouler en [b]arrière[/b] régulièrement.","Le programme [b]principal[/b] devrait commencer ainsi :[code][a]turnleft[/a][a]f01[/a][a]b01[/a][a]turnleft[/a][a]f01[/a][a1]f01[/a1][a2]turnright[/a2][/code]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -380,6 +387,7 @@
         <dct:identifier>cj</dct:identifier>
         <dct:title xml:lang="fr-FR">En anticipant l'action de plusieurs cases de rotation et de déplacement automatiques, et en utilisant les 2 interrupteurs, programmer un robot afin qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[2,109,20],[109,0,1],[206,206,201],[5,473,9],[1,9,120]],"robots":[{"origin":[0,4,3],"code":[18,0,0],"actions":["f01","f01","f01","f01","f01","f01","f01","f01","f01","b01","b01","b01","b01","b01","turnleft"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Le robot doit passer sur le [b]bouton bleu[/b] avant d'aller sur le [b]bouton rouge[/b].","L'action [red][b]TOURNER[/b][/red] doit être utilisée lorsque le robot est sur le [b]bouton bleu[/b] pour la 2ème fois.","Le programme [b]principal[/b] devrait commencer ainsi :[code][a]f01[/a][a]f01[/a][a]f01[/a][a]b01[/a][a]b01[/a][a1]b01[/a1][a2]b01[/a2][/code]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -391,6 +399,7 @@
         <dct:identifier>ck</dct:identifier>
         <dct:title xml:lang="fr-FR">En anticipant l'action de plusieurs cases de rotation et de déplacement automatiques, et en utilisant les différents interrupteurs, programmer un robot afin qu'il atteigne la case d'arrivée du parcours n°1.</dct:title>
         <dct:description><![CDATA["board":[[0,1,3,0],[651,0,1,0],[460,0,1,0],[0,0,7,0],[0,6,4,2]],"robots":[{"origin":[1,0,0],"code":[18,0,0],"actions":["f01","f01","f01","f01","f01","f01","f01","f01","f01","f01","turnleft","turnleft"]}],"padding":6]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Le robot doit faire [b]demi-tour[/b] après la 1ère case [b]dynamique[/b] de rotation.","Le robot doit passer [b]plusieurs fois[/b] sur la 2ème case [b]dynamique[/b] de rotation avant d'atteindre la case d'arrivée.","Le programme [b]principal[/b] devrait commencer ainsi :[code][a]f01[/a][a]turnleft[/a][a]turnleft[/a][a]f01[/a][a]f01[/a][a1]f01[/a1][a2]f01[/a2][/code]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -402,6 +411,7 @@
         <dct:identifier>cl</dct:identifier>
         <dct:title xml:lang="fr-FR">En anticipant l'action de plusieurs cases de rotation et de déplacement automatiques, et en utilisant les différents interrupteurs, programmer un robot afin qu'il atteigne la case d'arrivée du parcours n°2.</dct:title>
         <dct:description><![CDATA["board":[[0,120,9,1],[652,0,0,1],[460,220,109,20],[0,209,0,0],[0,6,6,2]],"robots":[{"origin":[3,0,1],"code":[18,0,0],"actions":["f01","f01","f01","f01","f01","f01","f01","f01","f01","f01","b01","b01","b01","b01","turnleft","turnleft","turnright","turnright"]}],"padding":6]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Le robot doit passer sur les boutons [b]bleu[/b], [b]rouge[/b] puis [b]vert[/b] avant d'aller sur la case d'arrivée.","Toutes les actions disponibles ne sont pas visibles directement : utilisez [b]+[/b] et [b]-[/b] pour les faire défiler.","Le programme [b]principal[/b] devrait commencer ainsi :[code][a]f01[/a][a]f01[/a][a]b01[/a][a]b01[/a][a]turnright[/a][a1]f01[/a1][a2]f01[/a2][/code]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -413,6 +423,7 @@
         <dct:identifier>cm</dct:identifier>
         <dct:title xml:lang="fr-FR">En anticipant l'action de plusieurs cases de rotation et de déplacement automatiques, et en utilisant les différents interrupteurs, programmer un robot afin qu'il atteigne la case d'arrivée du parcours n°3.</dct:title>
         <dct:description><![CDATA["board":[[0,1,1,1],[653,0,0,1],[460,20,1,3],[0,0,0,9],[0,2,1,1]],"robots":[{"origin":[1,0,0],"code":[18,0,0],"actions":["f01","f01","f01","f01","f01","f01","f01","f01","b01","b01","b01","b01","turnleft","turnright"]}],"padding":6]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Le robot doit passer sur le [b]bouton bleu[/b] pour pouvoir atteindre la case d'arrivée.","Il faut bien regarder le sens des flèches de la case [b]dynamique[/b] de rotation.","Le programme [b]principal[/b] devrait commencer ainsi :[code][a]f01[/a][a]f01[/a][a]turnright[/a][a]f01[/a][a]f01[/a][a1]b01[/a1][a2]b01[/a2][/code]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -424,6 +435,7 @@
         <dct:identifier>cn</dct:identifier>
         <dct:title xml:lang="fr-FR">En anticipant l'action de plusieurs cases de rotation et de déplacement automatiques, et en utilisant les différents interrupteurs, programmer un robot afin qu'il atteigne la case d'arrivée du parcours n°4.</dct:title>
         <dct:description><![CDATA["board":[[0,1,0,7],[654,1,0,20],[460,6,1,3],[0,0,0,9],[0,0,0,2]],"robots":[{"origin":[1,0,1],"code":[18,0,0],"actions":["f01","f01","f01","f01","f01","f01","f01","f01","f01","f01","b01","b01","b01","b01","turnleft"]}],"padding":6]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Certaines [b]cases[/b] ne sont pas forcément destinées à être parcourues par le robot.","Dans son trajet, le robot va devoir [b]sortir[/b] puis [b]revenir[/b] volontairement sur la case [b]dynamique[/b] de rotation.","Le programme [b]principal[/b] devrait commencer ainsi :[code][a]f01[/a][a]f01[/a][a]turnleft[/a][a]f01[/a][a]f01[/a][a1]b01[/a1][a2]f01[/a2][/code]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -435,6 +447,7 @@
         <dct:identifier>co</dct:identifier>
         <dct:title xml:lang="fr-FR">En anticipant l'action de plusieurs cases de rotation et de déplacement automatiques, et en utilisant les différents interrupteurs, programmer un robot afin qu'il atteigne la case d'arrivée du parcours n°5.</dct:title>
         <dct:description><![CDATA["board":[[0,9,1,2],[655,1,0,0],[460,4,20,9],[0,0,0,1],[0,2,1,3]],"robots":[{"origin":[1,1,1],"code":[18,0,0],"actions":["f01","f01","f01","b01","b01","b01","b01","turnleft"]}],"padding":6]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["L'une des arrivées n'est pas accessible à cause d'un nombre insuffisant d'actions [red][b]AVANCER[/b][/red].","Le robot ne peut atteindre que l'arrivée la plus en [b]bas[/b] du tableau.","Le programme [b]principal[/b] devrait commencer ainsi :[code][a]f01[/a][a]b01[/a][a]b01[/a][a]turnleft[/a][a]f01[/a][a1]f01[/a1][a2]b01[/a2][/code]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
