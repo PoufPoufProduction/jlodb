@@ -27,7 +27,7 @@
 
 .calc div#board                 { margin-top:0.5em; height:12.5em; font-size:0.8em; padding:0.02em 0 0 0.02em;}
 .calc div#board>div             { position:relative; height:120%; width:120%; }
-.calc div#board .cell           { position:absolute; background-color:white;
+.calc div#board .cell           { position:absolute; background-color:white; background-size:100%;
                                    text-align:center; cursor:pointer; }
 .calc div#board .cell.graph>div { width:100%; height:100%; }
 .calc div#board .cell.left      { text-align:left; }
@@ -57,6 +57,7 @@
 .calc div#board .cell.fixed .img       { border:1px solid black; border-width:1px 0 1px 0; margin-top:.5em; }
 .calc div#board .cell.fixed .icon      { font-size:3em; margin:0 auto;}
 .calc div#board .cell.fixed .image  { width:100%; }
+.calc div#board .cell.fixed>div { line-height:1.2em; }
 
 .calc div#panel                 { position:absolute; top:5%; left:60%; width:6em; height:8em;
                                   border:0.15em solid white; border-radius:.2em; overflow:visible;display:none; }
@@ -145,3 +146,5 @@
 #esource #echange             { width:1em; height:1em; background-color:#e4e4e4; color:black; text-align:center; border-radius:.2em; }
 #esource #echange.s           { background-color:#A00; color:red;}
 .calc #eclear                 { top:33em; left:19em;  }
+
+.calc #tip                  { position:absolute; top:1%; left:93%; cursor:help; width:1em; height:1em; display:none; }

@@ -28,6 +28,7 @@
         reference   : "A1",                             // reference value
         po          : {},                               // localisation
         nocellref   : false,                            // Cell pointer
+        background  : "",                               // Background image
         dev         : false,                            // Editor mode
         debug       : true                              // Debug mode
     };
@@ -38,6 +39,9 @@
         "\\\[br\\\]",                               "<br/>",
         "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
         "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
+        "\\\[green\\\]([^\\\[]+)\\\[/green\\\]",    "<span style='color:green'>$1</span>",
+        "\\\[purple\\\]([^\\\[]+)\\\[/purple\\\]",  "<span style='color:purple'>$1</span>",
+        "\\\[orange\\\]([^\\\[]+)\\\[/orange\\\]",  "<span style='color:orange'>$1</span>",
         "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>",
         "\\\[img\\\]([^\\\[]+)\\\[/img\\\]",        "<div class='imgage'><img src='$1.svg'/></div>",
         "\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='img'><div class='icon'><img src='$1.svg'/></div></div>",
@@ -249,6 +253,15 @@
             var settings = helpers.settings($this);
                 var $board = $this.find("#board>div");
                 $board.html("").css("font-size", settings.font+"em");
+                
+                // HANDLE BACKGROUND
+                if (settings.background) { $this.children().first().css("background-image","url("+settings.background+")"); }
+            
+                // HANDLE THE TIPS
+                if (settings.tips) {
+                    $this.find("#tip>div").html(settings.tips.length).parent().show();
+                    $this.find("#ptip .tip1").addClass("s");
+                }
             
                 // the bars
                 var w       = helpers.value($this,0,0,"width",1.2);
@@ -319,6 +332,7 @@
                         settings.sheet[j][i].value  = helpers.value($this,(i+1),(j+1),"value","");
                         settings.sheet[j][i].result = helpers.value($this,(i+1),(j+1),"result","");
                         settings.sheet[j][i].opt    = helpers.value($this,(i+1),(j+1),"opt","");
+                        settings.sheet[j][i].bgimg  = helpers.value($this,(i+1),(j+1),"bgimg","");
                         
                         if (settings.sheet[j][i].type=="math" && settings.sheet[j][i].value) {
                             settings.sheet[j][i].value = $this.find("#editor").editor("tonode", settings.sheet[j][i].value);
@@ -338,6 +352,7 @@
                             if (settings.sheet[j][i].opt) { vClass+=" "+settings.sheet[j][i].opt; }
                             html = '<div class="'+vClass+'" style="top:'+height+'em;left:'+width+'em;width:'+(w-settings.sp)+'em;'+
                                 'height:'+(h-settings.sp)+'em;background-color:'+helpers.value($this,(i+1),(j+1),"background","white")+';'+
+                                (settings.sheet[j][i].bgimg?"background-image:url('"+settings.sheet[j][i].bgimg+"');":"")+
                                 'color:'+helpers.value($this,(i+1),(j+1),"color","black")+';" ';
                             html+='id="c'+(i+1)+'x'+(j+1)+'" ';
                             if (!settings.sheet[j][i].fixed || settings.dev) {
@@ -734,6 +749,8 @@
                     mathnodes       : [],
                     size            : [0,0],
                     edit            : { type:"", value:"" },
+                    wrong           : 0,
+                    tipid           : 0,
                     auto            : { origin:[], target:[], sheet:[], size:[] }
                 };
 
@@ -1100,9 +1117,9 @@
                         $this.find("#subvalid").hide();
                         $this.find("#sub"+(error?"wrong":"good")).show();
 
-                        settings.score = 5 - error*settings.errratio;
+                        settings.score = 5 - error*settings.errratio - settings.wrong;
                         if (settings.score<0) { settings.score = 0; }
-                        $this.find(settings.score==5?"#good":"#wrong").show();
+                        $this.find(error==0?"#good":"#wrong").show();
                         setTimeout(function() { helpers.end($this); } , 2000);
                     }
                 }
@@ -1170,6 +1187,21 @@
                     }
                 });
                 helpers.build($this);
+            },
+            tip: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+                if (settings.tipid<settings.tips.length) {
+                    $this.find("#ptip .tip"+(settings.tipid+1)).removeClass("s").addClass("f")
+                         .find(".content").html(helpers.format(settings.tips[settings.tipid]));
+                         
+                    settings.tipid++;
+                    $this.find("#tip>div").html(settings.tips.length-settings.tipid);
+                    if (settings.tipid<settings.tips.length) { $this.find("#ptip .tip"+(settings.tipid+1)).addClass("s"); }
+                    $this.find("#tipconfirm").hide();
+                    $this.find("#tippopup").css("opacity",1).show()
+                         .animate({opacity:0},1000,function() { $(this).hide(); });
+                    settings.wrong++;
+                }
             }
         };
 

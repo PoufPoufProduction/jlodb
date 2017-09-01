@@ -168,6 +168,38 @@
     <div id="good" class="alert"><img src="res/img/default/popup/good01.svg" alt=""/></div>
     <div id="wrong" class="alert"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
     
+    
+    <div id="tip"  ontouchstart="$(this).next().show();event.preventDefault();"
+                   onclick="$(this).next().show();">
+        <img src="res/img/control/tip.svg" alt=""/>
+        <div>0</div>
+    </div>
+            
+    <div id="ptip" ontouchstart="$(this).hide().find('#tipconfirm').hide();event.preventDefault();" onclick="$(this).hide().find('#tipconfirm').hide();"><div>
+        <div id="tippopup"><img src="res/img/default/popup/minus01.svg" alt=""/></div>
+        <div class="tip tip1" ontouchstart="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();event.preventDefault();" onclick="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();">
+            <div class="label">1</div>
+            <div id="tipc1" class="content"></div>
+        </div>
+        <div class="tip tip2" ontouchstart="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();event.preventDefault();" onclick="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();">
+            <div class="label">2</div>
+            <div id="tipc2" class="content"></div>
+        </div>
+        <div class="tip tip3" ontouchstart="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();event.preventDefault();" onclick="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();">
+            <div class="label">3</div>
+            <div id="tipc3" class="content"></div>
+        </div>
+        <div id="tipconfirm">
+            <div class="icon"
+                ontouchstart="$(this).closest('.calc').calc('tip');event.stopPropagation();event.preventDefault();"
+                onclick="$(this).closest('.calc').calc('tip');event.stopPropagation();">
+                <img src="res/img/default/icon/valid01.svg" alt=""/></div>
+            <div class="icon" ontouchstart="$(this).parent().hide();event.stopPropagation();event.preventDefault();" onclick="$(this).parent().hide();event.stopPropagation();"><img src="res/img/default/icon/cancel01.svg" alt=""/></div>
+            <div id="tipcc" class="label"></div>
+        </div>
+    </div></div>
+    
+    
     <div style="position:absolute; top:0; left:3" id="output"></div>
     
     
