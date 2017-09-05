@@ -1,32 +1,24 @@
 .trafficjam>div                     { height:100%; background-image:url("../../res/img/background/landscape/blueboard01.svg"); background-repeat:repeat; }
 .trafficjam div#splashex            { background-image:url("../../res/img/banners/trafficjam.svg"); color:white;}
 .trafficjam div#splashex h1         { position:absolute; top:51%; left:10%; font-size:1.5em; }
-.trafficjam div#splashex #guide     { position:absolute; top:62%; left:10%; font-size:.7em; width:25%; font-style:italic; text-align:justify; }
+.trafficjam div#splashex .guide     { position:absolute; top:62%; left:10%; font-size:.7em; width:25%; font-style:italic; text-align:justify; }
+.trafficjam div#splashex #guidegen  { display:none; }
+.trafficjam.gen div#splashex #guide { display:none; }
+.trafficjam.gen div#splashex #guidegen { display:inherit; }
+
 
 .trafficjam div#board               { width:12em; height:12em; float:left; cursor:move; }
-.trafficjam div#board>div           { font-size:1.35em; height:100%; margin-left:0.5em; position:relative;}
-.trafficjam div#board .r            { position:absolute; background-image:url("../../res/img/tileset/ortho/traffic/road01.svg");
-                                      width:1em; height:1em; }
+.trafficjam div#board>div           { height:100%; position:relative;}
+
+.trafficjam div#board .r            { position:absolute; width:1em; height:1em; }
 .trafficjam div#board .b            { position:absolute; width:1em; height:1.67em; }
-.trafficjam div#board .s           { background-image:url("../../res/img/tileset/ortho/traffic/s01.svg"); }
-.trafficjam div#board .sw          { background-image:url("../../res/img/tileset/ortho/traffic/sw01.svg"); }
-.trafficjam div#board .se          { background-image:url("../../res/img/tileset/ortho/traffic/se01.svg"); }
-.trafficjam div#board .se2          { background-image:url("../../res/img/tileset/ortho/traffic/se02.svg"); }
-.trafficjam div#board .e          { background-image:url("../../res/img/tileset/ortho/traffic/e01.svg"); }
-.trafficjam div#board .e2          { background-image:url("../../res/img/tileset/ortho/traffic/e02.svg"); }
-.trafficjam div#board .e3          { background-image:url("../../res/img/tileset/ortho/traffic/e03.svg"); }
-.trafficjam div#board .w          { background-image:url("../../res/img/tileset/ortho/traffic/w01.svg"); }
-.trafficjam div#board .ne          { background-image:url("../../res/img/tileset/ortho/traffic/ne01.svg"); }
-.trafficjam div#board .nw          { background-image:url("../../res/img/tileset/ortho/traffic/nw01.svg"); }
-
 .trafficjam div#board .n            { position:absolute; width:2em; height:2em;}
-.trafficjam div#board .n1          { background-image:url("../../res/img/tileset/ortho/traffic/n01.svg"); }
-
 .trafficjam div#board .c            { position:absolute; }
 .trafficjam div#board .c.h2         { width:2em; height:1.67em; }
 .trafficjam div#board .c.h3         { width:3em; height:1.67em; }
 .trafficjam div#board .c.v2         { width:1em; height:2.67em; }
 .trafficjam div#board .c.v3         { width:1em; height:3.67em; }
+
 .trafficjam div#menu                { width:3.9em; height:12em;
                                       background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat;
                                      border:.1em solid black; border-width:0 0 0 .1em;}
@@ -46,7 +38,8 @@
 .trafficjam div#buttons>div.wrong .value { background-color:rgb(128,50,50); }
 .trafficjam div#buttons>div.wrong .value>div { color:rgb(255,200,200); }
 
-.trafficjam div#pressure            { position:absolute; z-index:100; width:1em; height:1em; top:1.9em; left:2.8em; font-size:4em; }
+.trafficjam div#illustration            { position:absolute; z-index:100; width:1em; height:1em; top:1.9em; left:2.8em; font-size:4em; }
+.trafficjam div#exercice            { position:absolute; top:27%; left:77%; width:22%; height:35%; font-size:.35em; }
 .trafficjam .alert					{ z-index:102; display:none; position:absolute; font-size:3em; width:1em; height:1em; top:48%; left:80%; }
 .trafficjam #goal					{ z-index:101; display:none; position:absolute; font-size:6em; width:1em; height:1em; top:45%; left:55%; }
 

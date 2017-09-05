@@ -6,12 +6,28 @@
         template    : "template.html",                          // Activity's html template
         css         : "style.css",                              // Activity's css style sheet
         lang        : "en-US",                                  // Current localization
-        size        : [6,6],                                    // Size of the board
-        goal        : [5,2],
-        cars        : [],                                       // List of cars
+        size        : [6,6,1.35],                               // Size of the board + scale
+        goal        : [{id:0,targets:[[4,2]]}],                 // Objectives
+        anim        : [{id:0,args:{left:"100%"}}],              // End animation
+        offelt      : [1.5,4/3],                                // Element offset
+        offclic     : [0,0.45],                                 // Click offset
+        elts        : [],                                       // Puzzle pieces
         objective   : 6,                                        // Objectives
-        debug       : true                                     // Debug mode
+        background  : "",                                       // Main background
+        board       : "",                                       // Board background
+        illustration: "",                                       // Replace the pressure illustration
+        fontex      : 1,                                        // Exercice font
+        debug       : true                                      // Debug mode
     };
+    
+    
+    var regExp = [
+        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
+        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
+        "\\\[br\\\]",                               "<br/>",
+        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
+        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>"
+    ];
 
     // private methods
     var helpers = {
@@ -38,6 +54,13 @@
             var settings = helpers.settings($this);
             helpers.unbind($this);
             settings.context.onquit($this,{'status':'success','score':settings.score});
+        },
+        format: function(_text) {
+            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
+                var vReg = new RegExp(regExp[i*2],"g");
+                _text = _text.replace(vReg,regExp[i*2+1]);
+            }
+            return _text;
         },
         loader: {
             css: function($this) {
@@ -74,46 +97,41 @@
 
                 $this.find("#nbfinal .value>div").html(settings.objective);
                 
+                // HANDLE BACKGROUND
+                if (settings.background) { $this.children().first().css("background-image","url("+settings.background+")"); }
+                if (settings.board)      { $this.find("#board").css("background-image","url("+settings.board+")"); }
+                if (settings.illustration) { $this.find("#illustration img").attr("src",settings.illustration); }
+                
+                if (settings.exercice) {
+                    $this.find("#exercice>div").css("font-size",settings.fontex+"em").html(helpers.format(settings.exercice));
+                }
+                
                 $this.find("#board").bind("mousedown touchstart", function(event){
                     var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
                                   event.originalEvent.touches[0]:event;
 
                     if (settings.interactive) {
-                        settings.width = $this.find("#board .n1").width()/2;
+                        settings.width = $this.find("#board").width()*settings.size[2]/12;
                         
-                        var ii = Math.floor((vEvent.clientX-$(this).offset().left-settings.width/2)/settings.width-1);
-                        var jj = Math.floor((vEvent.clientY-$(this).offset().top)/settings.width-1.8);
+                        var ii = Math.floor((vEvent.clientX-$(this).offset().left)/settings.width
+                                 - settings.offelt[0] - settings.offclic[0]);
+                        var jj = Math.floor((vEvent.clientY-$(this).offset().top)/settings.width
+                                 - settings.offelt[1] - settings.offclic[1]);
+                        
                         settings.nav.id = -1;
-                        for (var i=0; i<settings.cars.length; i++) {
-                            var c = settings.cars[i];
-                            for (var j=0; j<parseInt(c[0][1]); j++) {
-                                if ( c[1]+(c[0][0]=='h'?j:0) == ii && c[2]+(c[0][0]=='v'?j:0) == jj) { settings.nav.id = i; }
+                        for (var i=0; i<settings.elts.length; i++) {
+                            var elt=settings.elts[i];
+                            for (var j in elt.shape) {
+                                if (ii==elt.pos[0]+elt.shape[j][0] && jj==elt.pos[1]+elt.shape[j][1]) {
+                                    settings.nav.id = i;
+                                }
                             }
                         }
-                
+                        
                         if (settings.nav.id!=-1) {
                             settings.nav.mouse = [ vEvent.clientX, vEvent.clientY];
-                            settings.nav.move = [0,0];
-
-                            var x,y;
-                            var vCar    = settings.cars[settings.nav.id];
-
-                            if (vCar[0][0]=='h')
-                            {
-                                x = vCar[1]-1;
-                                while (x>=0 && settings.board[vCar[2]][x]==-1) { x--; }
-                                y = vCar[1]+parseInt(vCar[0][1]);
-                                while (y<settings.size[0] && settings.board[vCar[2]][y]==-1) { y++; }
-                                settings.nav.max=[x-vCar[1]+1,y-vCar[1]-parseInt(vCar[0][1])];
-                            }
-                            else
-                            {
-                                x = vCar[2]-1;
-                                while (x>=0 && settings.board[x][vCar[1]]==-1) { x--; }
-                                y = vCar[2]+parseInt(vCar[0][1]);
-                                while (y<settings.size[1] && settings.board[y][vCar[1]]==-1) { y++; }
-                                settings.nav.max=[x-vCar[2]+1,y-vCar[2]-parseInt(vCar[0][1])];
-                            }
+                            settings.nav.move  = 0;
+                            settings.nav.dir   = -1;
                         }
                         
 
@@ -129,15 +147,19 @@
 
                     if (settings.nav.id!=-1) {
 
-                        if (settings.nav.move[0]!=0 || settings.nav.move[1]!=0) {
+                        
+                        settings.nav.move = Math.round(settings.nav.move);
+                        if (settings.nav.move!=0) {
                             var snapshot = [];
-                            for (var i in settings.cars) { snapshot.push([settings.cars[i][1],settings.cars[i][2]]); }
+                            for (var i in settings.elts) { snapshot.push([settings.elts[i].pos[0],settings.elts[i].pos[1]]); }
                             settings.moves.push(snapshot);
                         }
 
-                        var vCar = settings.cars[settings.nav.id];
-                        vCar[1]+=settings.nav.move[0];
-                        vCar[2]+=settings.nav.move[1];
+                        var elt = settings.elts[settings.nav.id];
+                        if (settings.nav.dir==0) { elt.pos[0]+=settings.nav.move; } else
+                        if (settings.nav.dir==1) { elt.pos[1]+=settings.nav.move; }
+   
+                        
                         helpers.update($this);
                         settings.nav.id = -1;
                     }
@@ -147,29 +169,40 @@
 
 
                 $this.bind("mousemove touchmove", function(event) {
-                    var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
-                                  event.originalEvent.touches[0]:event;
+                    var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?event.originalEvent.touches[0]:event;
 
                     if (settings.nav.id!=-1) {
-                        var vCar = settings.cars[settings.nav.id];
-                        var vTop  = (2+vCar[2]-2/3)*settings.width;
-                        var vLeft = (1+vCar[1])*settings.width;
-                        if (vCar[0][0]=='h') {
-                            var vMove = (vEvent.clientX - settings.nav.mouse[0])/settings.width;
-                            if (vMove<settings.nav.max[0]) { vMove = settings.nav.max[0]; }
-                            if (vMove>settings.nav.max[1]) { vMove = settings.nav.max[1]; }
-                            settings.nav.move=[Math.round(vMove),0];
-                            vLeft += vMove*settings.width;
-                            vCar.$car.css("left",vLeft+"px");
+                        var elt         = settings.elts[settings.nav.id];
+                        var threshold   = 10;
+                        
+                        // GET SIDE OF MOVE: -1 non, 0 horizontal, 1 vertical
+                        if (settings.nav.dir==-1) {
+                            if (Math.abs(vEvent.clientX - settings.nav.mouse[0])>threshold && elt.horiz) {
+                                settings.nav.dir = 0;
+                                settings.nav.max = helpers.getlimits($this, settings.nav.id, 0);
+                            }
+                            else
+                            if (Math.abs(vEvent.clientY - settings.nav.mouse[1])>threshold && elt.vert) {
+                                settings.nav.dir = 1;
+                                settings.nav.max = helpers.getlimits($this, settings.nav.id, 1);
+                            }
                         }
-                        else {
-                            var vMove = (vEvent.clientY - settings.nav.mouse[1])/settings.width;
-                            if (vMove<settings.nav.max[0]) { vMove = settings.nav.max[0]; }
-                            if (vMove>settings.nav.max[1]) { vMove = settings.nav.max[1]; }
-                            settings.nav.move=[0,Math.round(vMove)];
-                            vTop += vMove*settings.width;
-                            vCar.$car.css("top",vTop+"px");
+                        else if ( settings.nav.move==0 ||
+                                 (Math.abs(vEvent.clientX - settings.nav.mouse[0])<threshold &&
+                                  Math.abs(vEvent.clientY - settings.nav.mouse[1])<threshold) ) {
+                            settings.nav.dir = -1;
                         }
+                        
+                        // COMPUTE NUMBER OF CASES
+                        vMove = 0;
+                        var vMove = ((settings.nav.dir==0?vEvent.clientX:vEvent.clientY) -
+                                      settings.nav.mouse[settings.nav.dir])/settings.width;
+                        if (vMove<-settings.nav.max[0]) { vMove = -settings.nav.max[0]; }
+                        if (vMove>settings.nav.max[1])  { vMove =  settings.nav.max[1]; }
+                        
+                        helpers.pos($this, elt.$elt, elt.pos[0]+(settings.nav.dir==0?vMove:0),
+                                                     elt.pos[1]+(settings.nav.dir==1?vMove:0));
+                        settings.nav.move = vMove;
                     }
 
                     event.stopPropagation();
@@ -193,65 +226,88 @@
           
                 var vBoardSize = $this.find("#board").width();
                                 
-                $this.find("#board>div").html("");
+                $this.find("#board>div").css("font-size",settings.size[2]+"em").html("");
 
-                $this.find("#board>div").append("<div class='b nw' style='top:"+((1-0.66))+"em;left:0em;z-index:0'></div>");
-                $this.find("#board>div").append("<div class='b ne' style='top:"+((1-0.66))+"em;left:"+(settings.size[0]+1)+"em;z-index:0'></div>");
-                $this.find("#board>div").append("<div class='n n1' style='top:0;left:1em;z-index:0'></div>");
-                $this.find("#board>div").append("<div class='n n1' style='top:0;left:3em;z-index:0'></div>");
-                $this.find("#board>div").append("<div class='n n1' style='top:0;left:5em;z-index:0'></div>");
+                if (settings.cars) {
+                    settings.elts=[];
+                    
+                    $this.find("#board>div").load( "activities/"+settings.name+"/trafficjam.html",
+                        function(response, status, xhr) {  
 
-                for (var i=0; i<settings.size[0]; i++) for (var j=0; j<settings.size[1]; j++) {
-                    $this.find("#board>div").append("<div class='r' style='top:"+(2+j)+"em;left:"+(1+i)+"em;'></div>");
+                        for (var i in settings.cars) {
+                            var elt={};
+                            elt.horiz=false;
+                            elt.vert=false;
+                            elt.shape=[];
+                            if (settings.cars[i][0][0]=="h") {
+                                elt.horiz=true;
+                                for (var j=0; j<parseInt(settings.cars[i][0][1]); j++) { elt.shape.push([j,0]); }
+                            }
+                            else {
+                                elt.vert=true;
+                                for (var j=0; j<parseInt(settings.cars[i][0][1]); j++) { elt.shape.push([0,j]); }
+                            }
+                            elt.pos=[settings.cars[i][1],settings.cars[i][2]];
+                            elt.$elt = $("<div id='"+i+"' class='c "+settings.cars[i][0].substr(0,2)+"'>"+
+                                       "<img src='res/img/tileset/ortho/traffic/"+settings.cars[i][0]+".svg'/></div>");
+                            settings.cars[i].$car = elt.$elt;
+                            settings.elts.push(elt);
+                            $this.find("#board>div").append(elt.$elt);
+                        }
+                        helpers.update($this);  
+                    });
                 }
-                for (var i=-1; i<settings.size[0]+1; i++) {
-                    var c = "s";
-                    if (i==-1) { c="sw"; } else if (i==settings.size[0]) { c="se"; }
-                    $this.find("#board>div").append("<div class='b "+c+"' style='top:"+(2-0.66+settings.size[1])+"em;"+
-                                                    "left:"+(1+i)+"em;z-index:"+settings.size[1]+"'></div>");
+                else {
+                    for (var i in settings.elts) {
+                        var elt=settings.elts[i];
+                        elt.$elt = $("<div id='"+i+"' class='c' style='width:"+elt.size[0]+"em;height:"+elt.size[1]+"em;'>"+
+                                   "<img src='"+elt.url+"'/></div>");
+                        $this.find("#board>div").append(elt.$elt);
+                    }
+                    helpers.update($this);  
                 }
-                for (var j=0; j<settings.size[1]; j++) {
-                    var c= "e";
-                    if (j==settings.goal[1]-1) { c="se2"; } else if (j==settings.goal[1]) { c="e3"; } else
-                    if (j==settings.goal[1]+1) { c="e2"; }
-                    $this.find("#board>div").append("<div class='b "+c+"' style='top:"+(2-0.66+j)+"em;"+
-                                                    "left:"+(settings.size[0]+1)+"em;z-index:"+j+"'></div>");
-                    $this.find("#board>div").append("<div class='b w' style='top:"+(2-0.66+j)+"em;"+
-                                                    "left:0em;z-index:"+j+"'></div>");
-                }
-
-                for (var i in settings.cars) {
-                    settings.cars[i].$car = $("<div id='"+i+"' class='c "+settings.cars[i][0].substr(0,2)+"'>"+
-                                                "<img src='res/img/tileset/ortho/traffic/"+settings.cars[i][0]+".svg'/></div>");
-                    $this.find("#board>div").append(settings.cars[i].$car);
-                }
-                helpers.update($this);  
+                
+        },
+        pos:function($this,$elt,_x,_y) {
+            var settings = helpers.settings($this);
+            $elt.css("top",(settings.offelt[1]+_y)+"em")
+               .css("left",(settings.offelt[0]+_x)+"em").css("z-index",_y);
+            return $elt;
         },
         update:function($this) {
             var settings = helpers.settings($this);
-            for (var i in settings.cars) {
-                settings.cars[i].$car.css("top",(2+settings.cars[i][2]-2/3)+"em")
-                                     .css("left",(1+settings.cars[i][1])+"em")
-                                     .css("z-index",settings.cars[i][2]);
+            for (var i in settings.elts) {
+                var elt=settings.elts[i];
+                helpers.pos($this, elt.$elt, elt.pos[0], elt.pos[1]);
             }
-            settings.board = helpers.board($this);
+            var vBoard = helpers.board($this);
 
             $this.find("#nbmoves .value>div").html(settings.moves.length);
             $this.find("#nbmoves").toggleClass("wrong", settings.moves.length>settings.objective);
 
-            if (settings.board[settings.goal[1]][settings.goal[0]]==0) {
+            var vOk = true;
+            
+            for (var i in settings.goal) {
+                var vGood = false;
+                var elt = settings.elts[settings.goal[i].id];
+                for (var j in settings.goal[i].targets) {
+                    var t = settings.goal[i].targets[j];
+                    if (elt.pos[0] == t[0] && elt.pos[1] == t[1] ) { vGood = true; }
+                }
+                if (!vGood) { vOk = false; }
+            }
+            if (vOk) {
                 settings.interactive = false;
                 settings.score = 5 - Math.ceil((settings.moves.length-settings.objective)/2);
                 if (settings.score<2) { settings.score = 2; }
                 if (settings.score>5) { settings.score = 5; }
                 $this.find("#goal").css("left","110%").show().animate({left:"55%"},500, function() {
-                    //$this.find("#good").show().css("opacity",0).animate({opacity:1}, 500);
-                    settings.cars[0].$car.animate({left:"100%"}, 1000, function() {
-                        $this.find("#goal").animate({left:"110%"},1000);
-                        //$this.find("#good").animate({opacity:0}, 1000);
-                    });
+                    for (var i in settings.anim) {
+                        var a = settings.anim[i];
+                        settings.elts[a.id].$elt.animate(a.args,1000);
+                    }
                 });
-                setTimeout(function() { helpers.end($this); }, 2000);
+                setTimeout(function() { $this.find("#goal").animate({left:"110%"},1000); helpers.end($this); }, 2000);
             }
         },
         board: function($this) {
@@ -262,13 +318,44 @@
                 for (var i=0; i<settings.size[0]; i++) { line.push(-1); }
                 ret.push(line);
             }
-            for (var i in settings.cars) {
-                var vCar = settings.cars[i];
-                var vMove = (vCar[0][0]=='h')?[1,0]:[0,1];
-                for (var j=0; j<parseInt(vCar[0][1]);j++) {
-                    ret[vCar[2]+j*vMove[1]][vCar[1]+j*vMove[0]]=i;
-                }
+            for (var id in settings.elts) {
+                var elt = settings.elts[id];
+                for (var i in elt.shape) { ret[elt.pos[1]+elt.shape[i][1]][elt.pos[0]+elt.shape[i][0]] = id; }
             }
+            return ret;
+        },
+        getlimits:function($this, _id, _dir) {
+            var settings = helpers.settings($this);
+            var board = helpers.board($this);
+            var elt = settings.elts[_id];
+            var ret=[0,0];
+            var ok;
+            
+            ok = true;
+            do {
+                var p=ret[0]+1;
+                for (var i in elt.shape) {
+                    var x=elt.pos[0]+elt.shape[i][0]-(_dir==0?p:0);
+                    var y=elt.pos[1]+elt.shape[i][1]-(_dir==1?p:0);
+                    if (x<0 || y<0) { ok = false; }
+                    else if (board[y][x]!=-1 && board[y][x]!=_id) { ok=false; }
+                }
+                if (ok) { ret[0]=p; }
+            }while(ok);
+            
+            ok = true;
+            do {
+                var p=ret[1]+1;
+                for (var i in elt.shape) {
+                    var x=elt.pos[0]+elt.shape[i][0]+(_dir==0?p:0);
+                    var y=elt.pos[1]+elt.shape[i][1]+(_dir==1?p:0);
+                    if (x>=settings.size[0] || y>=settings.size[1]) { ok = false; }
+                    else if (board[y][x]!=-1 && board[y][x]!=_id) { ok=false; }
+                }
+                if (ok) { ret[1]=p; }
+            }while(ok);
+            
+            
             return ret;
         }
     };
@@ -282,7 +369,6 @@
                 // The settings
                 var settings = {
                     interactive     : false,
-                    board           : [],
                     width           : 1,
                     nav             : { id:-1, mouse:0, max:[1,1], move:[0,0] },
                     moves           : []
@@ -315,9 +401,9 @@
                 setTimeout(function() { $this.find("#left1").show(); }, 300);
                 if (settings.moves.length) {
                     var sav = settings.moves.pop();
-                    for (var i=0; i<settings.cars.length; i++) {
-                        settings.cars[i][1] = sav[i][0];
-                        settings.cars[i][2] = sav[i][1];
+                    for (var i=0; i<settings.elts.length; i++) {
+                        settings.elts[i].pos[0] = sav[i][0];
+                        settings.elts[i].pos[1] = sav[i][1];
                     }
                     helpers.update($this);
                 }
