@@ -10,7 +10,7 @@
         goal        : [{id:0,targets:[[4,2]]}],                 // Objectives
         anim        : [{id:0,args:{left:"100%"}}],              // End animation
         offelt      : [1.5,4/3],                                // Element offset
-        offclic     : [0,0.45],                                 // Click offset
+        offclic     : [0,0],                                    // Click offset
         elts        : [],                                       // Puzzle pieces
         objective   : 6,                                        // Objectives
         background  : "",                                       // Main background
@@ -122,7 +122,7 @@
                         for (var i=0; i<settings.elts.length; i++) {
                             var elt=settings.elts[i];
                             for (var j in elt.shape) {
-                                if (ii==elt.pos[0]+elt.shape[j][0] && jj==elt.pos[1]+elt.shape[j][1]) {
+                                if (ii==elt.pos[0]+elt.shape[j][0] && jj==elt.pos[1]+elt.shape[j][1] && elt.size) {
                                     settings.nav.id = i;
                                 }
                             }
@@ -147,7 +147,6 @@
 
                     if (settings.nav.id!=-1) {
 
-                        
                         settings.nav.move = Math.round(settings.nav.move);
                         if (settings.nav.move!=0) {
                             var snapshot = [];
@@ -194,11 +193,13 @@
                         }
                         
                         // COMPUTE NUMBER OF CASES
-                        vMove = 0;
-                        var vMove = ((settings.nav.dir==0?vEvent.clientX:vEvent.clientY) -
-                                      settings.nav.mouse[settings.nav.dir])/settings.width;
-                        if (vMove<-settings.nav.max[0]) { vMove = -settings.nav.max[0]; }
-                        if (vMove>settings.nav.max[1])  { vMove =  settings.nav.max[1]; }
+                        vMove = settings.nav.move;
+                        if (settings.nav.dir != -1) {
+                            var vMove = ((settings.nav.dir==0?vEvent.clientX:vEvent.clientY) -
+                                          settings.nav.mouse[settings.nav.dir])/settings.width;
+                            if (vMove<-settings.nav.max[0]) { vMove = -settings.nav.max[0]; }
+                            if (vMove>settings.nav.max[1])  { vMove =  settings.nav.max[1]; }
+                        }
                         
                         helpers.pos($this, elt.$elt, elt.pos[0]+(settings.nav.dir==0?vMove:0),
                                                      elt.pos[1]+(settings.nav.dir==1?vMove:0));
@@ -230,6 +231,7 @@
 
                 if (settings.cars) {
                     settings.elts=[];
+                    settings.offclic=[0,0.45],
                     
                     $this.find("#board>div").load( "activities/"+settings.name+"/trafficjam.html",
                         function(response, status, xhr) {  
@@ -260,9 +262,12 @@
                 else {
                     for (var i in settings.elts) {
                         var elt=settings.elts[i];
-                        elt.$elt = $("<div id='"+i+"' class='c' style='width:"+elt.size[0]+"em;height:"+elt.size[1]+"em;'>"+
-                                   "<img src='"+elt.url+"'/></div>");
-                        $this.find("#board>div").append(elt.$elt);
+                        elt.$elt = (elt.size?
+                            $("<div id='"+i+"' class='c' style='width:"+elt.size[0]+"em;height:"+elt.size[1]+"em;'>"+
+                            "<img src='"+elt.url+"'/></div>") : 0);
+                        
+                        if (elt.background && elt.$elt) { elt.$elt.css("background-image","url("+elt.background+")"); }
+                        if (elt.$elt) { $this.find("#board>div").append(elt.$elt); }
                     }
                     helpers.update($this);  
                 }
@@ -270,8 +275,8 @@
         },
         pos:function($this,$elt,_x,_y) {
             var settings = helpers.settings($this);
-            $elt.css("top",(settings.offelt[1]+_y)+"em")
-               .css("left",(settings.offelt[0]+_x)+"em").css("z-index",_y);
+            if ($elt) { $elt.css("top",(settings.offelt[1]+_y)+"em").css("left",(settings.offelt[0]+_x)+"em")
+                            .css("z-index",_y); }
             return $elt;
         },
         update:function($this) {
