@@ -194,8 +194,7 @@
                         var e = value.split(" ");
                         var $elt = $this.find("#elt"+e[0]);
                         if ($elt.length) {
-                            if (elt.attr && elt.attr.anim) {
-                                settings.running = true;
+                            if (elt.attr && elt.attr.anim) { 
                                 var anim = elt.attr.anim.split(" ");
                                 timer = parseFloat(anim.length>1?anim[1]:1)*1000;
                                 switch(anim[0]) {
@@ -203,6 +202,8 @@
                                     case "toright"  : $elt.animate({left:"100%"}, timer, function() { settings.running = false; $(this).detach(); }); break;
                                     case "toleft"   : $elt.animate({left:"-100%"}, timer, function() { settings.running = false; $(this).detach(); }); break;
                                 }
+                                
+                                if (elt.attr.nodelay) { timer = 0; } else { settings.running = true; }
                             }
                             else { $elt.detach(); }
                         }
@@ -268,7 +269,7 @@
 
                             var url="";
                             if (e.length>1) { url = def.url[e[1]]; }
-                            if (url.indexOf("$")!=-1) {
+                            if (url && url.indexOf("$")!=-1) {
                                 try { url = eval(url.replace(reg,"settings.data.")+";"); }
                                 catch (e) { alert("error with: "+url); }
                             }
@@ -409,7 +410,7 @@
             }
                             
             elt = "<div "+(_attr&&_attr["class"]?"class='"+_attr["class"]+"' ":"")+"id='elt"+_id+"'"+
-                    (style?" style='"+style+"'":"")+">"+value+"</div>";
+                    (style?" style='"+style+"'":"")+">"+helpers.format(value)+"</div>";
             return elt;
             
         },
@@ -956,7 +957,6 @@
                     score           : 5,
                     pc              : [],
                     running         : false,
-                    data            : {},
                     def             : { default: { text:"default" } },
                     interactive     : false
                 };

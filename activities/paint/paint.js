@@ -22,6 +22,7 @@
         tagsize     : 1,
         scorearg    : 0,
         effects     : true,                                     // Show effects
+        background  : "",
         debug       : true                                     // Debug mode
     };
 
@@ -129,6 +130,9 @@
 
                 // Send the onLoad callback
                 if (settings.context.onload) { settings.context.onload($this); }
+                
+                // HANDLE BACKGROUND
+                if (settings.background) { $this.children().first().css("background-image","url("+settings.background+")"); }
 
                 if (settings.data) { settings.nbcolor = settings.data.length; }
 

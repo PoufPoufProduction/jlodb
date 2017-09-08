@@ -119,6 +119,7 @@
                                  - settings.offelt[1] - settings.offclic[1]);
                         
                         settings.nav.id = -1;
+                        
                         for (var i=0; i<settings.elts.length; i++) {
                             var elt=settings.elts[i];
                             for (var j in elt.shape) {
@@ -231,7 +232,7 @@
 
                 if (settings.cars) {
                     settings.elts=[];
-                    settings.offclic=[0,0.45],
+                    settings.offclic=[0,0.2],
                     
                     $this.find("#board>div").load( "activities/"+settings.name+"/trafficjam.html",
                         function(response, status, xhr) {  
@@ -243,10 +244,12 @@
                             elt.shape=[];
                             if (settings.cars[i][0][0]=="h") {
                                 elt.horiz=true;
+                                elt.size=[parseInt(settings.cars[i][0][1]),1];
                                 for (var j=0; j<parseInt(settings.cars[i][0][1]); j++) { elt.shape.push([j,0]); }
                             }
                             else {
                                 elt.vert=true;
+                                elt.size=[1,parseInt(settings.cars[i][0][1])];
                                 for (var j=0; j<parseInt(settings.cars[i][0][1]); j++) { elt.shape.push([0,j]); }
                             }
                             elt.pos=[settings.cars[i][1],settings.cars[i][2]];
