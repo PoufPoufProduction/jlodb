@@ -8,6 +8,7 @@
         lang        : "en-US",                                  // Current localization
         exercice    : [],                                       // Exercice
         keys        : {},                                 // keys mapping
+        data        : {},
         debug       : true                                     // Debug mode
     };
 
@@ -118,7 +119,7 @@
             var ret = _txt;
             if ($.isArray(ret)) {
                 try { var test = eval(ret[0].replace("$","settings.data.")); ret = ret[test?1:2]; }
-                catch (e) { ret = ret[0]; }
+                catch (e) { ret = ret[1]; }
             }
 
             if (settings.glossary && settings.glossary[ret]) { ret = settings.glossary[ret]; }
