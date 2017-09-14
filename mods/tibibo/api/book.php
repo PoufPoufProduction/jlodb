@@ -79,6 +79,12 @@ else {
     $courses = mysqli_query($link, "SELECT * FROM `".$_SESSION['prefix']."book` B INNER JOIN `".$_SESSION['prefix']."user` U WHERE ".
                 "B.User_Key=U.User_Key AND B.Book_Name='".$_GET["value"]."'");
     $description = "";
+    
+    $value = "notFound";
+    $description="[{\"id\":0,\"label\":\"none\",\"description\":\"nlx\",\"children\":[]}]";
+    $comment= "notFound";
+    $owner = "0";
+    
     while($c = mysqli_fetch_array($courses)) {
         $value          = $c["Book_Label"];
         $description    = $c["Book_Description"];

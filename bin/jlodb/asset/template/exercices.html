@@ -1,23 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+
+  <head>
+    <title>%title%</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="author" content="poufpoufproduction"/>
+    <meta name="keywords" content="e-learning"/>
+    <meta name="Copyright" content="CC0"/>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="js/jquery.svg.min.js"></script>
+    <script type="text/javascript" src="js/jquery.jlodb.js"></script>
+    <script type="text/javascript" src="js/jquery.jlodb.menu.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/jlodb.css" media="all" />
+    <link type="text/css" rel="stylesheet" href="css/style.css" media="all" />
+    
+ <!-- ACTIVITIES JS CSS --> 
+
+<script>
+
+var data    = {};
+var lang    = "";
+var pageid  = "%pageid%";
+
 jSav = jQuery; // EPUB READER OVERWRITING
 $(window).ready(function() { $(window).resize(); });
 
 $(window).load(function() {
     $.getJSON("data/lang.json", function(_lang) {
         lang=_lang[0];
-        
-    $.getJSON("data/"+lang+"/activities.json", function(_activities) {
-        data.activities = _activities;
-            
-    $.getJSON("data/"+lang+"/content_"+chapid+".json", function(_content) {
-        data.content = _content.content;
-                
-    $.getJSON("data/"+lang+"/exercices_"+chapid+".json", function(_exercices) {
-        data.exercices = _exercices;
-        
-        // SPECIFIC CONTENT
-        $("#aatemplate").load( "data/"+lang+"/content_"+chapid+".html");
+        // GET LANG AND USER FROM LOCAL STORAGE OR COOKIES
+
+    $.getJSON("data/"+lang+"/"+pageid+".json", function (_data) {
     
         $ = jQuery = jSav; // EPUB READER OVERWRITING
+        data = _data;
       
         // LIST AND STATE
         var list = data.content.split(',');
@@ -51,9 +69,6 @@ $(window).load(function() {
                                 return true; } },args);
             }
         });
-        
-    });
-    });
     });
     });
     
@@ -64,9 +79,31 @@ $(window).load(function() {
     });
     
 });
+</script>
+    
+</head>
 
-var changepage=function(_offset) {
-    var id = parseInt(pageid)+_offset;
-    if (id<10) id="00"+id; else if (id<100) id="0"+id;
-    document.location.href="page_"+id+".html";
-}
+<body><div>
+
+    <div id="aapage">
+        <div id="aacontent">
+            <div id="aatemplate"></div>
+            <div id="aanav">
+                <div onclick="document.location.href='%prev%'"><img src="res/img/default/icon/action_prev01.svg" alt=""/></div>
+                <div onclick="document.location.href='%menu%'"><img src="res/img/default/icon/action_menu01.svg" alt=""/></div>
+                <div onclick="document.location.href='%next%'"><img src="res/img/default/icon/action_next01.svg" alt=""/></div>
+            </div>
+        </div>
+        <div id="aamenu" class="theme2"></div>
+    </div>
+        
+    <div id="score"></div>
+
+    <div class="jlodb">
+        <div id="quit" ontouchstart="$('#activity').jlodb('quit');event.preventDefault();"
+                       onclick="$('#activity').jlodb('quit');"><img src="res/img/default/icon/nw_quit01.svg"/></div>
+        <div id="activity"></div>
+    </div>
+
+</div></body>
+</html>

@@ -9,22 +9,28 @@ fi
 # PARAMETER DEFAULT VALUES
 book=""
 url="jlodb.poufpoufproduction.fr"
+folder="."
 chapter=""
 quiet=""
+filename=""
 
 OPTIND=1
 
-while getopts "h?b:c:qu:" opt; do
+while getopts "h?b:c:f:qu:o:" opt; do
     case "$opt" in
     h|\?)
         echo "usage: $0 -b book_id [OPTIONS]"
         echo "  -c [INT]    : chapter id                   []"
+        echo "  -f [NAME]   : folder                       [.]"
         echo "  -q          : quiet                        [false]"
         echo "  -u [URL]    : jlodb website url            [jlodb.poufpoufproduction.fr]"
+        echo "  -o [FILE]   : save book in file            []"
         exit 0
         ;;
     b)  book=$OPTARG ;;
     c)  chapter=$OPTARG ;;
+    f)  folder=$OPTARG ;;
+    o)  filename=$OPTARG ;;
     q)  quiet="-q" ;;
     u)  url=$OPTARG ;;
     esac
@@ -40,8 +46,8 @@ if [ -z $book ] ; then
 	exit 0
 fi
 
-if [ -f "p_$book.tmp" ]; then
-	file="p_$book.tmp";
+if [ -f "$folder/$book.json" ]; then
+	file="$folder/$book.json";
 	if [ -z $quiet ]; then echo "+ Get book from $file" ; fi
 else
 	if [ -z $quiet ]; then echo "+ Get book from website" ; fi
@@ -52,7 +58,7 @@ else
 fi
 
 if [ `file $file | grep "UTF-8" | wc -l` -eq 0 ]; then
-    echo ----- CONVERT $file into UTF-8 -----
+    if [ -z $quiet ]; then echo ----- CONVERT $file into UTF-8 ----- ; fi
     iconv -f "windows-1252" -t "UTF-8" $file > tmp.tmp ; mv -f tmp.tmp $file
 fi
 
@@ -76,4 +82,10 @@ if [ ! `echo $line | grep "[^ ]" | wc -l` -eq 0 ] ; then
     fi
 fi
 done
+
+if [ ! -z $filename ]; then
+    if [ ! "$file" = "$folder/$filename" ]; then mv $file $folder/$filename ; fi
+else
+    rm -f $file
+fi
 

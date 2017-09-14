@@ -8,21 +8,27 @@ fi
 
 # PARAMETER DEFAULT VALUES
 exs=""
-dest="output"
+dest=""
 url="jlodb.poufpoufproduction.fr"
+folder="."
+quiet=""
 
 OPTIND=1
 
-while getopts "h?o:u:i:" opt; do
+while getopts "h?f:i:o:qu:" opt; do
     case "$opt" in
     h|\?)
         echo "usage: $0 -i id [OPTIONS]"
-        echo "  -i [ID]     : exercice ids                 []"
+        echo "  -f [NAME]   : folder                       [.]"
+        echo "  -q          : quiet                        [false]"
+        echo "  -o          : integrated exercices output  []"
         echo "  -u [URL]    : jlodb website url            [jlodb.poufpoufproduction.fr]"
         exit 0
         ;;
+    f)  folder=$OPTARG ;;
     i)  exs=$OPTARG ;;
     o)  dest=$OPTARG ;;
+    q)  quiet="-q" ;;
     u)  url=$OPTARG ;;
     esac
 done
@@ -40,30 +46,34 @@ fi
 
 main()
 {
-wget "$url/api/exercice.php?detail&source&id=$1" -O p_json.tmp
+wget "$url/api/exercice.php?detail&source&id=$1" -O p_json.tmp $quiet
 IFS=$'\n'
 
+echo "{"
 
 for ex in `cat p_json.tmp | sed -e 's/{\("id":"[^"]*","label"\)/\n{\1/g'` ; do
 	if [ `echo $ex | grep activity | wc -l` -eq 1 ] ; then
 		id=`echo $ex | sed -e 's/^.*id":"\([^"]\+\)","label":.*$/\1/g'`
 		source=`echo $ex | sed -e 's/^.*source":"\([^"]\+\).*$/\1/g'`
-        echo "+ processing $id"
+        if [ -z $quiet ]; then  echo "+ processing $id"; fi
         activity=`echo $ex | sed -e 's/^.*activity":"\([^"]\+\).*$/\1/g'`
         data=`echo $ex | sed -e 's/^.*,"data":\({.\+\),"ext".*$/\1/g'`
                 
         echo "\"$id\":{\"activity\":\"$activity\",\"args\":$data},"
-          
-        IFS=,
-        ary=($source)
-        for key in "${!ary[@]}"; do
-			s="${ary[$key]}"
-			if [[ $s == [* ]] ; then
-				ref=`echo $s | sed -e 's/\[\(.*\)\]/\1/g'`
-				echo -n "$ref," >> p_ref.tmp
-			fi
-        done
-        IFS=$'\n'
+        
+        if [ ! -z $dest ] ; then 
+        
+            IFS=,
+            ary=($source)
+            for key in "${!ary[@]}"; do
+                s="${ary[$key]}"
+                if [[ $s == [* ]] ; then
+                    ref=`echo $s | sed -e 's/\[\(.*\)\]/\1/g'`
+                    echo -n "$ref," >> p_ex.tmp
+                fi
+            done
+            IFS=$'\n'
+        fi
     fi
 done
 
@@ -71,9 +81,15 @@ echo "\"zz\":0}"
 
 }
 
-echo "" > p_ref.tmp
+if [ ! -z $dest ] ; then
+    if [ -z $quiet ]; then  echo "+ handle embedded exercices"; fi
+    echo "" > p_ex.tmp
+fi
 main $exs
-exs=`cat p_ref.tmp | sed -e 's/\(.*\),$/\1/g'`
-if [ ! -z $exs ] ; then main $exs ; fi
 
-rm -f p_*.tmp
+if [ ! -z $dest ] ; then
+    exs=`cat p_ex.tmp | sed -e 's/\(.*\),$/\1/g'`
+    if [ ! -z $exs ] ; then main $exs ; fi
+fi
+
+rm -f p_ex.tmp
