@@ -1,4 +1,5 @@
 jSav = jQuery; // EPUB READER OVERWRITING
+data = {};
 $(window).ready(function() { $(window).resize(); });
 
 $(window).load(function() {
@@ -16,21 +17,20 @@ $(window).load(function() {
             data.activities = _activities;
                 
         $.getJSON("data/"+lang+"/content_"+pageid+".json", function(_content) {
-            data.content = _content.content;
+            data.content = _content;
                     
         $.getJSON("data/"+lang+"/exercices_"+pageid+".json", function(_exercices) {
             data.exercices = _exercices;
-            
-            // LIST AND STATE
-            var list = data.content.split(',');
-            var state = ""; for (var i in list) { state+="."; }
+ 
+            // STATE
+            var state = ""; for (var i in data.content) { state+="."; }
 
             // if ( localStorage && localStorage.getItem("jlodb") ) { state = localStorage.getItem("jlodb"); }
             
-            for (var i=state.length; i<list.length; i++) { state+="."; }
+            for (var i=state.length; i<data.content.length; i++) { state+="."; }
 
             $("#aamenu").menu({
-                list    : list,
+                list    : data.content,
                 state   : state,
                 onupdate: function($this, _state) {
                     // if (localStorage) { localStorage.setItem("jlodb", _state); }

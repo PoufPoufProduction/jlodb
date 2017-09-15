@@ -7,32 +7,35 @@ if [ ! -f "index.html" ]; then
 fi
 
 # PARAMETER DEFAULT VALUES
-book=""
+id=""
 url="jlodb.poufpoufproduction.fr"
 folder="."
 chapter=""
 quiet=""
 filename=""
+source="tibibo"
 
 OPTIND=1
 
-while getopts "h?b:c:f:qu:o:" opt; do
+while getopts "h?i:c:f:qu:o:s:" opt; do
     case "$opt" in
     h|\?)
-        echo "usage: $0 -b book_id [OPTIONS]"
+        echo "usage: $0 -i id [OPTIONS]"
         echo "  -c [INT]    : chapter id                   []"
         echo "  -f [NAME]   : folder                       [.]"
         echo "  -q          : quiet                        [false]"
         echo "  -u [URL]    : jlodb website url            [jlodb.poufpoufproduction.fr]"
-        echo "  -o [FILE]   : save book in file            []"
+        echo "  -o [FILE]   : save data in file            []"
+        echo "  -o [NAME]   : source                       [tibibo]"
         exit 0
         ;;
-    b)  book=$OPTARG ;;
+    i)  id=$OPTARG ;;
     c)  chapter=$OPTARG ;;
     f)  folder=$OPTARG ;;
     o)  filename=$OPTARG ;;
     q)  quiet="-q" ;;
     u)  url=$OPTARG ;;
+    s)  source=$OPTARG ;;
     esac
 done
 
@@ -40,25 +43,29 @@ shift $((OPTIND-1))
 
 [ "$1" = "--" ] && shift
 
-# CHECK BOOK
-if [ -z $book ] ; then
-	echo no book
+# CHECK ID
+if [ -z $id ] ; then
+	echo no id
 	exit 0
 fi
 
-if [ -f "$folder/$book.json" ]; then
-	file="$folder/$book.json";
+case "$source" in
+
+"tibibo")
+
+if [ -f "$folder/$id.json" ]; then
+	file="$folder/$id.json";
 	if [ -z $quiet ]; then echo "+ Get book from $file" ; fi
 else
 	if [ -z $quiet ]; then echo "+ Get book from website" ; fi
-	file="p_$book.tmp"
-	wget "$url/mods/tibibo/api/book.php?value=$book" -O p_json.tmp $quiet
+	file="p_$id.tmp"
+	wget "$url/mods/tibibo/api/book.php?value=$id" -O p_json.tmp $quiet
 	cat p_json.tmp | sed -e 's/^.*description":\[//g' -e 's/\],  "comment".*$//g' > $file
 	rm -f p_json.tmp
 fi
 
 if [ `file $file | grep "UTF-8" | wc -l` -eq 0 ]; then
-    if [ -z $quiet ]; then echo ----- CONVERT $file into UTF-8 ----- ; fi
+    if [ -z $quiet ]; then echo "+ convert $file into UTF-8" ; fi
     iconv -f "windows-1252" -t "UTF-8" $file > tmp.tmp ; mv -f tmp.tmp $file
 fi
 
@@ -88,4 +95,10 @@ if [ ! -z $filename ]; then
 else
     rm -f $file
 fi
+
+;;
+
+*) echo $id ;; 
+
+esac
 

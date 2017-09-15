@@ -46,7 +46,7 @@ fi
 
 main()
 {
-wget "$url/api/exercice.php?detail&source&id=$1" -O p_json.tmp $quiet
+wget "$url/api/exercice.php?detail&novariant&source&id=$1" -O p_json.tmp $quiet
 IFS=$'\n'
 
 echo "{"

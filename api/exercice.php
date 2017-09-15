@@ -98,7 +98,9 @@ if (!$error) {
             $where.= " `Exercice_Id` IN ( ".$ids." )";
         }
         else {
-            if (array_key_exists("detail",$_GET)) { $where.=" `Exercice_Id`='".$_GET["id"]."'"; }
+            if (array_key_exists("detail",$_GET) || array_key_exists("novariant",$_GET)) {
+                $where.=" `Exercice_Id`='".$_GET["id"]."'";
+            }
             else { $where.=" (`Exercice_Id`='".$_GET["id"]."' OR `Exercice_Variant`='".$_GET["id"]."')"; }
         }
     }
