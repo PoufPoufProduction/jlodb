@@ -21,7 +21,7 @@ while getopts "h?b:f:i:kt:" opt; do
     h|\?)
         echo "usage: $0 -b book_path [OPTIONS]"
         echo "  -f [NAME]   : output folder                [book]"
-        echo "  -i [STRING] : title name                   [tibibo]"
+        echo "  -i [STRING] : title name                   [...]"
         echo "  -k          : keep existing data           []"
         echo "  -t [STRING] : export type                  [web]"
         exit 0
@@ -168,12 +168,12 @@ case "$l" in
         fi
     fi
     
-    if [ -f $book/data/$cl/$pageid.html ] ; then
+    if [ -f $book/data/$cl/content_$pageid.html ] ; then
         if [ ! -d $content/data/$cl ] ; then mkdir -p "$content/data/$cl" ; fi
-        echo "  - copy $book/data/$cl/$pageid.html as $content/data/$cl/content_$pageid.html"
-        cp $book/data/$cl/$pageid.html $content/data/$cl/content_$pageid.html
+        echo "  - copy $book/data/$cl/content_$pageid.html as $content/data/$cl/content_$pageid.html"
+        cp $book/data/$cl/content_$pageid.html $content/data/$cl/content_$pageid.html
     else
-        echo "  - WARNING: unable to find $book/data/$cl/$pageid.html"
+        echo "  - WARNING: unable to find $book/data/$cl/content_$pageid.html"
         echo "No content" > $content/data/$cl/content_$pageid.html
     fi
 ;;

@@ -1,11 +1,16 @@
 body>div        { background-color:white; display:inherit; }
-#aamenu         { position:absolute; font-size:1.1em; width:60%; height:100%; top:0; left:40%; background-color:gray;}
+#aamenu         { position:absolute; font-size:0.9em; width:60%; height:100%; top:0; left:40%; background-color:gray;}
+#aamenu .jmenu .slider { display:none; }
 #aacontent      { position:absolute; font-size:.5em; width:40%; height:100%; float:left; top:0; left:0; }
-#aatemplate     { height:100%; }
-#aanav          { background-color:gray; font-size:3em; position:absolute; top:80%; width:100%; height:1.2em; }
+#aatemplate     { height:100%; font-size:.75em; }
+#aanav          { background-color:rgba(0,0,0,0.5);border:.1em solid white; border-width:.1em 0; font-size:3em; position:absolute; top:80%; width:100%; height:1.2em; }
 #aanav>div      { width:1em; height:1em; cursor:pointer; position:absolute; border-radius:.5em; }
 #aanav #abprev  { top:0.1em; left:.3em; }
 #aanav #abmenu  { top:0.1em; left:1.7em; }
 #aanav #abnext  { top:0.1em; left:3.1em; }
 
 .default #aacontent     { width:100%; height:100%; }
+
+#aatemplate h1 { font-size:1.2em; color:white; background-color:red; padding:.1em 0; text-align:center; }
+#aatemplate h2 { font-size:1em; color:white; background-color:gray; padding:.1em .5em; text-align:right; font-weight:normal;}
+#aatemplate div { padding:.1em .2em 0 .5em; text-align:justify; }

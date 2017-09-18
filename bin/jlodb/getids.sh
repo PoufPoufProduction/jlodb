@@ -71,6 +71,7 @@ fi
 
 IFS=$'\n'
 
+
 for line in `cat $file | sed -e "s/{/\n/g"` ; do
 if [ ! `echo $line | grep "[^ ]" | wc -l` -eq 0 ] ; then
 
@@ -80,7 +81,7 @@ if [ ! `echo $line | grep "[^ ]" | wc -l` -eq 0 ] ; then
     title=`echo $label | sed -e "s/\[[^]]*\]//g"`
 
     
-    if [ ! -z $ids ]; then
+    if [ ! -z $ids ] && [ ! `echo $line | grep label | wc -l` -eq 0 ]; then
 		if [ -z $chapter ]; then
 			echo "$idpage:$title"
 		else
@@ -92,8 +93,6 @@ done
 
 if [ ! -z $filename ]; then
     if [ ! "$file" = "$folder/$filename" ]; then mv $file $folder/$filename ; fi
-else
-    rm -f $file
 fi
 
 ;;
