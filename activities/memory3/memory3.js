@@ -8,6 +8,7 @@
         delay       : 0,                    // Time of display the values
         prefix      : "",                   // Prefix for data
         font        : 0.8,
+        background  : "",
         debug       : true                 // Debug mode
     };
 
@@ -73,7 +74,9 @@
                 var settings = helpers.settings($this);
                 if (settings.context.onload) { settings.context.onload($this); }
 
-
+                // HANDLE BACKGROUND
+                if (settings.background) { $this.children().first().css("background-image","url("+settings.background+")"); }
+                
                 var nb = settings.data.length*2;
                 settings.still = settings.data.length;
                 $this.addClass("nb"+nb);
