@@ -202,6 +202,8 @@
                                     case "dissolve" : $elt.animate({opacity:0}, timer, function() { settings.running = false; $(this).detach(); }); break;
                                     case "toright"  : $elt.animate({left:"100%"}, timer, function() { settings.running = false; $(this).detach(); }); break;
                                     case "toleft"   : $elt.animate({left:"-100%"}, timer, function() { settings.running = false; $(this).detach(); }); break;
+                                    case "totop"   : $elt.animate({top:"-100%"}, timer, function() { settings.running = false; $(this).detach(); }); break;
+                                    case "tobottom"  : $elt.animate({top:"100%"}, timer, function() { settings.running = false; $(this).detach(); }); break;
                                 }
                                 
                                 if (elt.attr.nodelay) { timer = 0; } else { settings.running = true; }
@@ -338,6 +340,8 @@
                                     case "dissolve"  : $elt.css("opacity",0).animate({opacity:1}, timer); break;
                                     case "fromright" : $elt.css("left","100%").animate({left:leftv}, timer); break;
                                     case "fromleft" : $elt.css("left","-100%").animate({left:leftv}, timer); break;
+                                    case "fromtop"  : $elt.css("top","-100%").animate({top:topv}, timer); break;
+                                    case "frombottom" : $elt.css("top","100%").animate({top:topv}, timer); break;
                                     case "move":
                                         var aa = { };
                                         if (leftv)  { aa["left"]    = leftv; }

@@ -14,6 +14,7 @@
 .sokoban #board                         { background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat;
                                           width:11em; height:11em; border-radius:.5em; margin:0.5em 0 0 .25em;
                                           position:relative; float:left; }
+.sokoban #board #comment                { position:absolute; top:80%; left:0; font-size:.4em; width:98%; height:20%; padding:1%; display:none; z-index:100; background-color:rgba(255,255,255,0.3); }
 .sokoban #board #tiles                  { width:100%; height:100%; }
 .sokoban #board #tiles .tile            { width:4em; height:3em; position:absolute; }
 .sokoban #board #tiles .tile.s1         { height:11em; margin-top:-8em;}

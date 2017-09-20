@@ -13,23 +13,26 @@ type="web"
 tmp=".tmp"
 noclean=""
 title="jlodb local web site"
+save="cookie"
 
 OPTIND=1
 
-while getopts "h?b:f:i:kt:" opt; do
+while getopts "h?b:f:i:ks:t:" opt; do
     case "$opt" in
     h|\?)
         echo "usage: $0 -b book_path [OPTIONS]"
         echo "  -f [NAME]   : output folder                [book]"
         echo "  -i [STRING] : title name                   [...]"
         echo "  -k          : keep existing data           []"
-        echo "  -t [STRING] : export type                  [web]"
+        echo "  -s          : save mode (cookie|local)     [cookie]"
+        echo "  -t [STRING] : export type (epub|web)       [web]"
         exit 0
         ;;
     b)  book=$OPTARG ;;
     f)  folder=$OPTARG ;;
     i)  title=$OPTARG ;;
     k)  noclean="1" ;;
+    s)  save=$OPTARG ;;
     t)  type=$OPTARG ;;
     esac
 done
@@ -67,6 +70,15 @@ if [ -z $noclean ] ; then
     cp -r js/* $content/js/
     cp -f css/jlodb.css $content/css/
     cp -rf $book/asset/* $content/
+    
+    assets=( ext/noto/svg/emoji_u1f1eb_1f1f7.svg ext/noto/svg/emoji_u1f42d.svg ext/noto/svg/emoji_u1f42e.svg ext/noto/svg/emoji_u1f42f.svg ext/noto/svg/emoji_u1f43a.svg ext/noto/svg/emoji_u1f43b.svg ext/noto/svg/emoji_u1f43c.svg ext/noto/svg/emoji_u1f435.svg ext/noto/svg/emoji_u1f437.svg )
+    for a in "${assets[@]}"; do
+        f="$a"
+        d=`dirname $f`
+        if [ ! -d $content/$d ] ; then echo "  - build $content/$d" ; mkdir -p $content/$d ; fi
+        cp -r $f $content/$f
+    done
+    
     chmod 755 $folder
 else
     if [ "$type" = "epub" ] ; then content="$folder/OEBPS"; fi
@@ -89,6 +101,9 @@ case "$l" in
 "next"*) next="$val"; echo "  - next page is $next" ;;
 "prev"*) prev="$val"; echo "  - prev page is $prev" ;;
 "menu"*) menu="$val"; echo "  - menu page is $menu" ;;
+"lang"*)
+    echo "  - langs are $val"
+;;
 "content"*)
     if [ `echo $val | tr -cd '|' | wc -c` -eq 0 ]; then
         cl=$val
@@ -101,16 +116,6 @@ case "$l" in
         ci=`echo $val | sed -e "s:.*|.*|.*|.*|\([^|]*\):\1:g"`
         
         cids=`./bin/jlodb/getids.sh -i $cb -u $cu -o "$cb.json" -c $ci -f $tmp -q -s $cf`
-        
-        if [ ! -f $content/data/lang.json ] ; then
-            echo "  - create $content/data/lang.json for $cl"
-            echo "[\"$cl\"]" > $content/data/lang.json
-        else
-            if [ `cat $content/data/lang.json | grep $cl | wc -l` -eq 0 ] ; then
-                echo "  - add $cl to $content/data/lang.json"
-                echo " TODO"
-            fi
-        fi
         
         acfile="$content/data/$cl/activities.json"
         if [ ! -f $acfile ] ; then
@@ -141,6 +146,16 @@ case "$l" in
         
         ./bin/jlodb/cpsrc.sh -u $cu -i $cids -f $content
     fi
+    
+    if [ ! -f $content/data/lang.json ] ; then
+        echo "  - create $content/data/lang.json for $cl"
+        echo "[\"$cl\"]" > $content/data/lang.json
+    else
+        if [ `cat $content/data/lang.json | grep $cl | wc -l` -eq 0 ] ; then
+            echo "  - add $cl to $content/data/lang.json"
+            echo " TODO"
+        fi
+    fi
 
 ;;
 "type"*)
@@ -148,6 +163,13 @@ case "$l" in
     htmlfile="$content/page_$pageid.html"
     if [ ! -f "$htmlfile" ] ; then
         cat ./bin/jlodb/asset/template/$val.html | sed -e "s|%pageid%|$pageid|g" -e "s|%title%|$title|g" > "$htmlfile"
+        
+        if [ "$save" = "cookie" ] ; then
+            echo "  - persistence by cookies"
+        else
+            echo "  - persistence by localStorage"
+            cat $htmlfile | grep -v "js/jquery.cookie.js" > $tmpfile; mv $tmpfile $htmlfile
+        fi
 
         if [ -z $next ] ; then
             cat $htmlfile | grep -v "%next%" > $tmpfile; mv $tmpfile $htmlfile
@@ -180,3 +202,5 @@ case "$l" in
 esac
 
 done
+
+if [ -f "$content/page_0.html" ] ; then cp $content/page_0.html $content/index.html ; fi
