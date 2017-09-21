@@ -20,7 +20,7 @@
         fontex      : 1,
         fonttag     : 1,
         errelt      : "",                                       // wrong element
-        //background  : "",
+        background  : "",
         debug       : true                                      // Debug mode
     };
 

@@ -15,7 +15,6 @@
     <script type="text/javascript" src="js/page.js"></script>
     <link type="text/css" rel="stylesheet" href="css/style.css" media="all" />
 <script>
-var lang    = "";
 var pageid  = "%pageid%";
 </script>
     
@@ -27,23 +26,41 @@ var pageid  = "%pageid%";
         <div id="aacontent">
             <div id="aatoc">
                 <div id="aalangs">
-                    <div class="icon"><img src="ext/noto/svg/emoji_u1f1eb_1f1f7.svg" alt="1"/></div>
+                    <div class="icon" id="fr-FR"><img src="ext/noto/svg/emoji_u1f1eb_1f1f7.svg" alt="1"/></div>
                 </div>
                 <div id="aausers">
-                    <div class="icon"><img src="ext/noto/svg/emoji_u1f42d.svg" alt="1"/></div>
-                    <div class="icon"><img src="ext/noto/svg/emoji_u1f42e.svg" alt="1"/></div>
-                    <div class="icon"><img src="ext/noto/svg/emoji_u1f42f.svg" alt="1"/></div>
-                    <div class="icon"><img src="ext/noto/svg/emoji_u1f43a.svg" alt="1"/></div>
-                    <div class="icon"><img src="ext/noto/svg/emoji_u1f43b.svg" alt="1"/></div>
-                    <div class="icon"><img src="ext/noto/svg/emoji_u1f43c.svg" alt="1"/></div>
-                    <div class="icon"><img src="ext/noto/svg/emoji_u1f435.svg" alt="1"/></div>
-                    <div class="icon"><img src="ext/noto/svg/emoji_u1f437.svg" alt="1"/></div>
+                    <div class="icon" id="u1" onclick="changeuser(this,1);" ontouchstart="changeuser(this,1);event.preventDefault();" >
+                        <img src="ext/noto/svg/emoji_u1f42d.svg" alt="1"/>
+                    </div>
+                    <div class="icon" id="u2" onclick="changeuser(this,2);" ontouchstart="changeuser(this,1);event.preventDefault();" >
+                        <img src="ext/noto/svg/emoji_u1f42e.svg" alt="2"/>
+                    </div>
+                    <div class="icon" id="u3" onclick="changeuser(this,3);" ontouchstart="changeuser(this,1);event.preventDefault();" >
+                        <img src="ext/noto/svg/emoji_u1f42f.svg" alt="3"/>
+                    </div>
+                    <div class="icon" id="u4" onclick="changeuser(this,4);" ontouchstart="changeuser(this,1);event.preventDefault();" >
+                        <img src="ext/noto/svg/emoji_u1f43a.svg" alt="4"/>
+                    </div>
+                    <div class="icon" id="u5" onclick="changeuser(this,5);" ontouchstart="changeuser(this,1);event.preventDefault();" >
+                        <img src="ext/noto/svg/emoji_u1f43b.svg" alt="5"/>
+                    </div>
+                    <div class="icon" id="u6" onclick="changeuser(this,6);" ontouchstart="changeuser(this,1);event.preventDefault();" >
+                        <img src="ext/noto/svg/emoji_u1f43c.svg" alt="6"/>
+                    </div>
+                    <div class="icon" id="u7" onclick="changeuser(this,7);" ontouchstart="changeuser(this,1);event.preventDefault();" >
+                        <img src="ext/noto/svg/emoji_u1f435.svg" alt="7"/>
+                    </div>
+                    <div class="icon" id="u8" onclick="changeuser(this,8);" ontouchstart="changeuser(this,1);event.preventDefault();" >
+                        <img src="ext/noto/svg/emoji_u1f437.svg" alt="8"/>
+                    </div>
+                    <div class="icon" id="u9" onclick="changeuser(this,9);" ontouchstart="changeuser(this,1);event.preventDefault();" >
+                        <img src="ext/noto/svg/emoji_u1f436.svg" alt="9"/>
+                    </div>
                 </div>
             </div>
             <div id="aanav">
-                <div id="abprev" onclick="document.location.href='%prev%'"><img src="res/img/default/icon/action_prev01.svg" alt=""/></div>
-                <div id="abmenu" onclick="document.location.href='%menu%'"><img src="res/img/default/icon/action_menu01.svg" alt=""/></div>
-                <div id="abnext" onclick="document.location.href='%next%'"><img src="res/img/default/icon/action_next01.svg" alt=""/></div>
+                <div id="abprev" onclick="document.location.href='page_0.html'"><img src="res/img/default/icon/action_prev01.svg" alt=""/></div>
+                <div id="abnext" onclick="document.location.href='page_1.html'"><img src="res/img/default/icon/action_next01.svg" alt=""/></div>
             </div>
         </div>
         <div id="aatemplate"></div>

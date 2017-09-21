@@ -1,13 +1,52 @@
 jSav = jQuery; // EPUB READER OVERWRITING
 data = {};
+lang = "";
+user = 0;
 $(window).ready(function() { $(window).resize(); });
+
+var store = function(_name, _value) {
+    var ret = 0;
+    if ($.cookie) {
+        if (typeof(_value)=="undefined") { ret = $.cookie(_name); }
+        else                             { $.cookie(_name, _value, { expires:365 }); }
+    }
+    else if (localStorage) {
+        alert("local storage");
+    }
+    return ret;
+}
+
+var changeuser = function(_this, _value) {
+    if ($(_this).hasClass("s")) { $(_this).removeClass("s"); store("user",0); }
+    else { $(_this).siblings().removeClass("s"); $(_this).addClass("s"); store("user",_value); }
+}
 
 $(window).load(function() {
     $.getJSON("data/lang.json", function(_lang) {
-        lang=_lang[0];
+        
+        // COOKIE HANDLING
+        lang = store("lang");
+        if (!lang) { lang=_lang[0]; store("lang",lang); }
+        user = store("user");
         
         // SPECIFIC CONTENT
-        $("#aatemplate").load( "data/"+lang+"/content_"+pageid+".html");
+        $("#aatemplate").load( "data/"+lang+"/content_"+pageid+".html", function() {
+            // TOC UPDATE
+            if ($("#aatoc").length) {
+                $("#aatoc .icon").removeClass("s");
+                $("#aausers #u"+user).addClass("s");
+                $("#aalangs #"+lang).addClass("s");
+                $("#aatemplate h1").bind("mousedown touchstart", function(e) {
+                    $(this).next().toggle();
+                    e.preventDefault();
+                });
+                $("#aatemplate h2").bind("mousedown touchstart", function(e) {
+                    document.location="page_"+$(this).attr("class").substr(1)+".html";
+                    e.preventDefault();
+                });
+            }
+        
+        });
     
         $ = jQuery = jSav; // EPUB READER OVERWRITING
         
@@ -24,17 +63,18 @@ $(window).load(function() {
  
             // STATE
             var state = ""; for (var i in data.content) { state+="."; }
+            if (user!=0) {
+                state = store("p"+pageid+"u"+user);
+                if (!state) { state="."; }
+                for (var i=state.length; i<data.content.length; i++) { state+="l"; }
+            }
 
-            // if ( localStorage && localStorage.getItem("jlodb") ) { state = localStorage.getItem("jlodb"); }
             
-            for (var i=state.length; i<data.content.length; i++) { state+="."; }
 
             $("#aamenu").menu({
                 list    : data.content,
                 state   : state,
-                onupdate: function($this, _state) {
-                    // if (localStorage) { localStorage.setItem("jlodb", _state); }
-                },
+                onupdate: function($this, _state) { store("p"+pageid+"u"+user, _state); },
                 onclick : function($this, _args) {
                 
                     var args = $.extend({}, {activity:data.exercices[_args.id].activity, args:data.exercices[_args.id].args});

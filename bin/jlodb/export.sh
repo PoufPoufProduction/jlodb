@@ -71,7 +71,7 @@ if [ -z $noclean ] ; then
     cp -f css/jlodb.css $content/css/
     cp -rf $book/asset/* $content/
     
-    assets=( ext/noto/svg/emoji_u1f1eb_1f1f7.svg ext/noto/svg/emoji_u1f42d.svg ext/noto/svg/emoji_u1f42e.svg ext/noto/svg/emoji_u1f42f.svg ext/noto/svg/emoji_u1f43a.svg ext/noto/svg/emoji_u1f43b.svg ext/noto/svg/emoji_u1f43c.svg ext/noto/svg/emoji_u1f435.svg ext/noto/svg/emoji_u1f437.svg )
+    assets=( ext/noto/svg/emoji_u1f1eb_1f1f7.svg ext/noto/svg/emoji_u1f42d.svg ext/noto/svg/emoji_u1f42e.svg ext/noto/svg/emoji_u1f42f.svg ext/noto/svg/emoji_u1f43a.svg ext/noto/svg/emoji_u1f43b.svg ext/noto/svg/emoji_u1f43c.svg ext/noto/svg/emoji_u1f435.svg ext/noto/svg/emoji_u1f437.svg ext/noto/svg/emoji_u1f436.svg )
     for a in "${assets[@]}"; do
         f="$a"
         d=`dirname $f`
