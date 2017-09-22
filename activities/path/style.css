@@ -19,3 +19,13 @@
 
 .path div#effects               { position:absolute; top:0%; left:47%; width:1em; height:1em; font-size:5em; display:none;}
 .path div#goal                  { position:absolute; top:2%; left:60%; width:1em; height:1em; font-size:7em; display:none;}
+
+
+.path #mask     { position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.1); display:none; }
+.path #mask>div { font-size:0.5em; background-color:rgba(255,255,255,0.9); border:1px solid black; border-width:1px 0 1px 0; width:80%; padding:.2em 10%; height:35%; margin:20% auto; }
+.path #mask .icon { font-size:4em; float:left; margin:.1em .5em; cursor:pointer;  }
+.path #mask #help { height:3.6em; }
+.path #mask #illus { position:absolute; top:40%; left:70%; font-size:8em; width:1em; height:1em; }
+
+.path #tip                  { position:absolute; top:1%; left:93%; cursor:help; width:1em; height:1em; display:none; }
+

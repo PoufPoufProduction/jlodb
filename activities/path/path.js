@@ -37,7 +37,8 @@
         "\\\[h1\\\]([^\\\[]+)\\\[/h1\\\]",          "<div class='h1'>$1</div>",
         "\\\[small\\\]([^\\\[]+)\\\[/small\\\]",    "<div class='small'>$1</div>",
         "\\\[img\\\]([^\\\[]+)\\\[/img\\\]",        "<div class='img'><img src='$1.svg'/></div>",
-        "\\\[a\\\]([^\\\[]+)\\\[/a\\\]",            "<div class='icon' style='float:left;margin:.1em;font-size:2em;'><img src='res/img/action/$1.svg'/></div>"
+        "\\\[a\\\]([^\\\[]+)\\\[/a\\\]",            "<div class='icon' style='float:left;margin:.1em;font-size:2em;'><img src='res/img/action/$1.svg'/></div>",
+        "\\\[a2\\\]([^\\\[]+)\\\[/a2\\\]",          "<div class='icon' style='float:left;margin:.1em;font-size:4em;'><img src='res/img/action/$1.svg'/></div>"
     ];
 
     // private methods
@@ -345,8 +346,11 @@
                             for (var i=0; i<ff.length; i++) { $("#c"+i,settings.svg.root()).hide(); }
                             $this.find("#board>svg").attr("class",settings["class"]+" done");
                             if (settings.effects) {
-                                $this.find("#goal").css("left","110%").show().animate({left:"60%"},300);
+                                $this.find("#goal").css("left","110%").show().delay(400).animate({left:"60%"},300);
                                 setTimeout(function() { $this.find("#effects").show(); }, 1000);
+                            }
+                            if ($("#flags", settings.svg.root()).length) {
+                                $($("#flags>*", settings.svg.root()).get(rr[rr.length-1])).show();
                             }
                             settings.interactive = false;
                             setTimeout(function() { helpers.end($this);}, 2000);
@@ -355,6 +359,11 @@
                         _event.preventDefault();
                 });
 
+                // Tips
+                if (settings.tips) {
+                    $this.find("#tip>div").html(settings.tips.length).parent().show();
+                }
+                
                 // Locale handling
 
                 if (settings.locale) { $.each(settings.locale, function(id,value) {
@@ -423,7 +432,8 @@
                     cursor          : { init:[], current: -1 },         // mouse position
                     begin           : {},                               // point of the current path (by pointer id)
                     path            : 0,                                // the current path (not validated)
-                    paths           : {}                                // validated path (by pointer id)
+                    paths           : {},                               // validated path (by pointer id)
+                    tipid           : 0
                 };
 
                 return this.each(function() {
@@ -450,6 +460,31 @@
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 settings.context.onquit($this,{'status':'abort'});
+            },
+            showhelp: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+                if (settings.tipid<settings.tips.length) { $this.find("#mask").show(); }
+            },
+            help: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+                if (settings.tipid<settings.tips.length) {
+                    var tip=settings.tips[settings.tipid];
+                    var begin = tip[0];
+                    for (var i=1; i<tip.length; i++) {
+                        var end=tip[i];
+                        
+                        settings.svg.line( $("#tips", settings.svg.root()),
+                            settings.nodes[begin][0], settings.nodes[begin][1],
+                            settings.nodes[end][0], settings.nodes[end][1] );
+                        
+                        begin=end;
+                    }
+                    settings.score--;
+                    settings.tipid++;
+                    
+                    $this.find("#tip>div").html(settings.tips.length-settings.tipid);
+                }
+                $this.find("#mask").hide();
             }
         };
 
