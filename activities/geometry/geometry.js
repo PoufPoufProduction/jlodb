@@ -22,7 +22,9 @@
         timerend    : 2000,                     // Timer before display the score panel
         style       : false,                    // The style changing is disable
         withcancel  : false,                    // Show cancel2 button (for "large" class usage)
+        withzoom    : false,                    // Show id zoom for small dots
         active      : false,                      // Activate all data by default
+        background  : "",                       // Add a background
         debug       : true                      // Debug mode
     };
 
@@ -102,6 +104,9 @@
                 // SEND THE ONLOAD CALLBACK
                 if (settings.context.onload) { settings.context.onload($this); }
 
+                // HANDLE BACKGROUND
+                if (settings.background) { $this.children().first().css("background-image","url("+settings.background+")"); }
+
                 // HANDLE THE BUTTONS
                 if (settings.available) {
                     $this.find(".action").addClass("disable");
@@ -112,6 +117,7 @@
                     settings.controls.action = settings.selected;
                     settings.controls.mask = settings.mask[settings.controls.action][0];
                 }
+                
 
                 // MANAGE THE OBJECTIVES
                 if (settings.statement) {
@@ -214,6 +220,8 @@
             }
             if (settings.finish) {
                 settings.score = helpers.score(settings.histo.length, settings.number);
+                $this.find("#zoom").hide();
+                $this.find("#cancel2").hide();
                 $(settings.svg.root()).attr("class",$(settings.svg.root()).attr("class")+" done");
 
                 setTimeout(function() { helpers.end($this); }, settings.timerend);
@@ -276,6 +284,11 @@
             
             settings.board.pixelWidth = $this.find("#board").width();
             settings.board.pixelHeight = $this.find("#board").height();
+            
+            if (settings.withzoom)
+            {
+                if (o && o.id) { $this.find("#zoom").html(o.id).show(); } else { $this.find("#zoom").hide(); }
+            }
             
             if (settings.controls.first) {
                 helpers.preview[settings.controls.action]($this, i, j, o);
@@ -751,6 +764,7 @@
                     if (elt.active==true) { settings.points.push(object); }
                     // POINT NAME
                     if (elt.id) {
+                        object.id = elt.id;
                         var angle = (typeof(elt.idpos)!="undefined")?elt.idpos:45;
                         var newPosX = elt.value[0] - settings.sizepoint/1.5  + Math.cos(angle*Math.PI/180)*settings.sizepoint*1.5;
                         var newPosY = elt.value[1] + settings.sizepoint/1.5 + Math.sin(-angle*Math.PI/180)*settings.sizepoint*2;
@@ -950,7 +964,7 @@
 
                 $(this).find("#board").bind("mousemove", function(e) { helpers.mousemove($this, e); });
                 $(this).find("#board").bind("mousedown", function() { helpers.mousedown($this); });
-                $(this).find("#board").bind("mouseup", function() { helpers.mouseup($this); });
+                $(this).find("#board").bind("mouseup", function(e) { helpers.mouseup($this); helpers.mousemove($this, e); });
                 $(this).find("#board").mouseleave(function(e) { helpers.mouseleave($this, e); });
 
                 $(this).find("#board").bind("touchmove", function(e) {
