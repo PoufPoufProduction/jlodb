@@ -53,5 +53,19 @@
         <dct:alternative>001</dct:alternative>
         <dct:source>res/img/desktop/animals01.svg</dct:source>
     </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>011</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver dans quelle direction doit tourner le robot pour atteindre sa case d'arrivée.</dct:title>
+        <dct:description><![CDATA["number":10,"time":0,"template":"template.html","class":"alpha neg","input":{"attr":[6,2.5,1],"digit":1,"values":[["[icon][img]res/img/default/control/left02.svg[/img][/icon]",1],["[icon][img]res/img/default/control/right02.svg[/img][/icon]",2]]},"gen":"function(){var p=[[0,2,1,1,2,1,1],[0,1,2,1,1,2,2],[1,0,1,2,0,2,1],[2,0,1,1,3,3,2],[1,1,0,2,0,1,2],[2,1,0,1,3,4,1],[1,1,2,0,1,3,1],[1,2,1,0,2,4,2]],o=[[1,0],[2,1],[0,1],[1,2]],v=p[Math.floor(Math.random()*p.length)],ret=\\\"<div style='width:1em;margin-left:.5em;'><svg xmlns:xlink='http://www.w3.org/1999/xlink' xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 96 96'>\\\";for(var i=0;i<4;i++){ if (v[i]) { ret+=\\\"<image xlink:href='res/img/tileset/iso/set1/00\\\"+v[i]+\\\".svg' width='48' height='36' x='\\\"+(o[i][0]*24)+\\\"' y='\\\"+(o[i][1]*12+24)+\\\"'/>\\\"; } } ret+=\\\"<image xlink:href='res/img/tileset/iso/robot/robot0\\\"+v[5]+\\\".svg' width='48' height='48' x='\\\"+(o[v[4]][0]*24)+\\\"' y='\\\"+(o[v[4]][1]*12+2)+\\\"'/></svg></div>\\\"; return [ret, v[6]];}","font":4]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Dans quelle [b]direction[/b] devra tourner le robot pour atteindre sa case d'arrivée ?"]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>mathematics</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>001</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">robot</dct:coverage>
+        <dct:source>res/img/tileset/iso/set1/00*.svg,res/img/tileset/iso/robot/robot0*.svg</dct:source>
+    </rdf:Description>
 
 </rdf:RDF>

@@ -14,13 +14,14 @@
         fx          : true,                                     // Add FX
         errratio    : 1,                                        // Ratio error
         reset       : true,                                     // Reset abacus after each question
+        background  : "",                                       // Background image
         debug       : true                                     // Debug mode
     };
 
     var c = {
-        suanpan: { b:[5,2],  u:[8,6] },
-        soroban: { b:[4,1],  u:[8,6] },
-        classic:  { b:[10,0], u:[13,0] }
+        suanpan: { b:[5,2],  u:[8,6], nb:13, defmove:true },
+        soroban: { b:[4,1],  u:[8,6], nb:13, defmove:true },
+        classic: { b:[10,0], u:[13,0],nb:13, defmove:true }
     };
 
 
@@ -111,6 +112,9 @@
 
                 // Send the onLoad callback
                 if (settings.context.onload) { settings.context.onload($this); }
+                
+                // HANDLE BACKGROUND
+                if (settings.background) { $this.children().first().css("background-image","url("+settings.background+")"); }
 
                 // Locale handling
                 if (settings.locale) { $.each(settings.locale, function(id,value) {
@@ -171,6 +175,7 @@
                             }
                         }
                         settings.mouse.clientY = event.clientY;
+                        settings.mouse.clientX = event.clientX;
                         settings.mouse.move = 0;
 
                     }
@@ -181,7 +186,12 @@
                     if (settings.interactive && settings.mouse.clientY) {
                         var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
                             event.originalEvent.touches[0]:event;
-                        settings.mouse.move = ((event.clientY - settings.mouse.clientY)/settings.ratio);
+                        if (c[settings.type].defmove) {
+                            settings.mouse.move = ((event.clientY - settings.mouse.clientY)/settings.ratio);
+                        }
+                        else {
+                            settings.mouse.move = ((event.clientX - settings.mouse.clientX)/settings.ratio);
+                        }
 
                         var vMax = (settings.mouse.row>c[settings.type].b[0]?c[settings.type].u[1]:c[settings.type].u[0]);
                         if (settings.mouse.up)    {
@@ -248,7 +258,7 @@
         update:function($this) {
             var settings = helpers.settings($this);
 
-            for (var i=0; i<13; i++) {
+            for (var i=0; i<c[settings.type].nb; i++) {
                 var value = settings.status[i][0]+5*settings.status[i][1];
                 var vErr = "";
                 if (settings.mode=="normal") {
@@ -307,7 +317,7 @@
             if (data.init) {
                 settings.status = [];
                 var val = data.init;
-                for (var i=0; i<13; i++) {
+                for (var i=0; i<c[settings.type].nb; i++) {
                     var v = val%10, status=[0,0];
                     if (v>=5 && settings.type!= "classic") { status[1] = 1; v=v-5; }
                     status[0] = v;
@@ -316,7 +326,7 @@
                 }
             }
             else
-            if (_reset) { settings.status = []; for (var i=0; i<13; i++) { settings.status.push([0,0]); } }
+            if (_reset) { settings.status = []; for (var i=0; i<c[settings.type].nb; i++) { settings.status.push([0,0]); } }
 
             if ($.isArray(data.value)) {
                 i = 0; val = data.value[1];
@@ -375,7 +385,7 @@
                 var $this = $(this) , settings = helpers.settings($this);
 
                 var data = settings.data[settings.id], result = data.result, wrongs = 0;
-                for (var i=0; i<13; i++) {
+                for (var i=0; i<c[settings.type].nb; i++) {
                     var $v = $("#val2 #c"+i, settings.svg.root());
                     if ($v.text()!=(result%10).toString()) {
                         wrongs++;

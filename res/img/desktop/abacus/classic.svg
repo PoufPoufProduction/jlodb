@@ -3,7 +3,7 @@
 
 <defs>
 <style>
-    svg#abacus text         { font-size:10px;text-anchor:middle;font-weight:bold;fill:#332920; }
+    svg#abacus text         { font-size:8px;text-anchor:middle;font-weight:bold;fill:white; }
     svg#abacus text.err     { fill:red !important; }
     svg#abacus .b           { fill:#663020;stroke:#160903;stroke-width:0.5;cursor:move; }
     svg#abacus .b.g         { fill:#402015; }
@@ -12,15 +12,19 @@
     svg#abacus .b.up        { fill:gray; }
     svg#abacus .b.wrong     { fill:red !important; }
     svg#abacus .b.m         { fill:green; }
-    svg#abacus #val2 text   { fill:gray; } 
+    svg#abacus #val2 text   { fill:white; } 
     svg#abacus.nohint #val2 { display:none; } 
 </style>
 </defs>
 <g transform="translate(6,3)">
 
+
+<rect x="8" y="18" width="134" height="59" ry="1" style="fill:white;fill-opacity:0.2;stroke:white;stroke-width:4"/>
+
 <path d="M 14.343,18.718 L 14.343,76.281 L 15.656,76.281 L 15.656,18.718 L 14.343,18.718 z M 24.343,18.718 L 24.343,76.281 L 25.656,76.281 L 25.656,18.718 L 24.343,18.718 z M 34.343,18.718 L 34.343,76.281 L 35.656,76.281 L 35.656,18.718 L 34.343,18.718 z M 44.343,18.718 L 44.343,76.281 L 45.656,76.281 L 45.656,18.718 L 44.343,18.718 z M 54.343,18.718 L 54.343,76.281 L 55.656,76.281 L 55.656,18.718 L 54.343,18.718 z M 64.343,18.718 L 64.343,76.281 L 65.656,76.281 L 65.656,18.718 L 64.343,18.718 z M 74.343,18.718 L 74.343,76.281 L 75.656,76.281 L 75.656,18.718 L 74.343,18.718 z M 84.343,18.718 L 84.343,76.281 L 85.656,76.281 L 85.656,18.718 L 84.343,18.718 z M 94.343,18.718 L 94.343,76.281 L 95.656,76.281 L 95.656,18.718 L 94.343,18.718 z M 104.343,18.718 L 104.343,76.281 L 105.656,76.281 L 105.656,18.718 L 104.343,18.718 z M 114.343,18.718 L 114.343,76.281 L 115.656,76.281 L 115.656,18.718 L 114.343,18.718 z M 124.343,18.718 L 124.343,76.281 L 125.656,76.281 L 125.656,18.718 L 124.343,18.718 z M 134.343,18.718 L 134.343,76.281 L 135.656,76.281 L 135.656,18.718 L 134.343,18.718 z" style="fill:#e1a656;fill-opacity:1;stroke:#632d10;stroke-width:0.5;"/>
 
 <path transform="translate(-6,-3)" d="M 14.90,21 C 14.39,21.048 14,21.482 14,22 l 0,57 c 0,0.552 0.447,1 1,1 l 132,0 c 0.552,-0.001 1,-0.448 1,-1 l 0,-57 c -0.001,-0.553 -0.448,-1 -1,-1 L 15,21 c -0.032,-0.002 -0.06275,0 -0.09375,0 z M 16,23 l 130,0 0,55 -130,0 z" style="fill:#332920;fill-opacity:1;stroke:#160903;stroke-width:0.5;stroke-linejoin:round;"/>
+
 
 
 <g transform="translate(15,5)" id="val0" class="val">
@@ -56,7 +60,7 @@
     <text id="b0" transform="translate(120,0)"></text>
 </g>
 
-<g transform="translate(15,86)" id="val2" class="val">
+<g transform="translate(15,87)" id="val2" class="val">
     <text id="c12" transform="translate(0,0)"></text>
     <text id="c11" transform="translate(10,0)"></text>
     <text id="c10" transform="translate(20,0)"></text>
