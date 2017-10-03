@@ -3,17 +3,19 @@
     var defaults = {
         name        : "hammer",                            // The activity name
         label       : "Hammer",                            // The activity label
-        template    : "template.html",                          // Activity's html template
-        css         : "style.css",                              // Activity's css style sheet
-        lang        : "en-US",                                  // Current localization
-        exercice    : [],                                       // Exercice
+        template    : "template.html",                     // Activity's html template
+        css         : "style.css",                         // Activity's css style sheet
+        lang        : "en-US",                             // Current localization
+        board       : "classic.html",                       // Board template
+        exercice    : "",                                  // Exercice
         fontex      : 1,
         tags        : "",
         mode        : "default",
         totaltime   : 40,
         freq        : 1,
-        duration    : 4,
         animation   : 1,
+        goodfx      : false,
+        background  : "",                                   // Background image
         debug       : true                                     // Debug mode
     };
 
@@ -26,15 +28,19 @@
         "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>"
     ];
    
-    var predefined = {
-        bunny       : { type: "img", src:"res/img/ppvc/bunny01",    wrong:"res/img/ppvc/bunny02",   good:"res/img/ppvc/bunny03" },
-        lizzie      : { type: "img", src:"res/img/ppvc/lizzie01",   wrong:"res/img/ppvc/lizzie03",  good:"res/img/ppvc/lizzie04" },
-        lottie      : { type: "img", src:"res/img/ppvc/lottie01",   wrong:"res/img/ppvc/lottie02",  good:"res/img/ppvc/lottie04" },
-        blueball    : { type: "img", src:"res/img/asset/balls/blue01",    wrong:"res/img/asset/balls/gray02",   good:"res/img/asset/balls/blue02" },
-        redball     : { type: "img", src:"res/img/asset/balls/red01",     wrong:"res/img/asset/balls/gray02",   good:"res/img/asset/balls/red02" },
-        greenball   : { type: "img", src:"res/img/asset/balls/green01",   wrong:"res/img/asset/balls/gray02",   good:"res/img/asset/balls/green02" },
-        purpleball  : { type: "img", src:"res/img/asset/balls/purple01",  wrong:"res/img/asset/balls/gray02",   good:"res/img/asset/balls/purple02" }
+    var chars = {
+        bunny : { type: "default", src:["res/img/ppvc/bunny01.svg", "res/img/ppvc/bunny03.svg", "res/img/ppvc/bunny02.svg"] },
+        lizzie: { type: "default", src:["res/img/ppvc/lizzie01.svg","res/img/ppvc/lizzie04.svg","res/img/ppvc/lizzie03.svg"] },
+        lottie: { type: "default", src:["res/img/ppvc/lottie01.svg","res/img/ppvc/lottie04.svg","res/img/ppvc/lottie02.svg"] },
+        blueball: { type:"default", src:["res/img/asset/balls/blue01.svg", "res/img/asset/balls/blue02.svg", "res/img/asset/balls/blue02.svg"] },
+        redball: { type:"default", src:["res/img/asset/balls/red01.svg", "res/img/asset/balls/red02.svg", "res/img/asset/balls/red02.svg"] },
+        greenball: { type:"default", src:["res/img/asset/balls/green01.svg", "res/img/asset/balls/green02.svg", "res/img/asset/balls/green02.svg"] },
+        purpleball: { type:"default", src:["res/img/asset/balls/purple01.svg", "res/img/asset/balls/purple02.svg", "res/img/asset/balls/purple02.svg"] }
     };
+    
+    var srcs = {
+        bubble: [ "res/img/default/background/ball01.svg", "res/img/default/background/ball02.svg", "res/img/default/background/ball03.svg"]
+    }
 
     // private methods
     var helpers = {
@@ -99,7 +105,15 @@
 
                 // Load the template
                 var templatepath = "activities/"+settings.name+"/"+settings.template+debug;
-                $this.load( templatepath, function(response, status, xhr) { helpers.loader.build($this); });
+                $this.load( templatepath, function(response, status, xhr) { helpers.loader.board($this); });
+            },
+            board: function($this) {
+                var settings = helpers.settings($this), debug = "";
+                if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
+
+                // Load the template
+                var templatepath = "activities/"+settings.name+"/template/"+settings.board+debug;
+                $this.find("#board").load( templatepath, function(response, status, xhr) { helpers.loader.build($this); });
             },
             build: function($this) {
                 var settings = helpers.settings($this);
@@ -107,7 +121,8 @@
                 // Send the onLoad callback
                 if (settings.context.onload) { settings.context.onload($this); }
 
-                $this.addClass(settings.mode);
+                // HANDLE BACKGROUND
+                if (settings.background) { $this.children().first().css("background-image","url("+settings.background+")"); }
 
                 // Locale handling
 
@@ -116,19 +131,67 @@
                     else { $this.find("#"+id).html(value); }
                 }); }
                 
-                var arr=["good","wrong"];
-                for (var j in arr) {
-                    for (var i in settings[arr[j]]) {
-                        var elt = $.extend({},predefined[settings[arr[j]][i]]?predefined[settings[arr[j]][i]]:settings[arr[j]][i],true);
-                        if (typeof(elt)=="string") { alert("Error: "+elt+" unknown"); } else {
-                            if (elt.type=="sig") { elt.src = "res/img/ppvc/sign01"; }
-                            if (elt.src)        { elt.$src = $("<img src='"+elt.src+".svg'/>"); }
-                            if (elt[arr[j]])    { elt.$src2 = $("<img src='"+elt[arr[j]]+".svg'/>"); }
-                            settings.elt[arr[j]].push(elt);
-                        } 
+                
+                
+                
+                // Prepare sprite packs
+                var firstpack="";
+                for (var p in settings.data) {
+                    if (!firstpack) { firstpack=p; }
+                    settings.totalweight[p] = 0;
+                    var pack = settings.data[p];
+                    for (var e in pack) {
+                        pack[e]=$.extend(
+                            { weight:1 }, (chars[e]?chars[e]:{}), pack[e]);
+                        
+                        pack[e].$img=[];
+                        
+                        if (srcs[pack[e].src]) { pack[e].src = srcs[pack[e].src]; }
+                        
+                        if ($.isArray(pack[e].src)) {
+                            for (var s in pack[e].src) { pack[e].$img.push($("<img src='"+pack[e].src[s]+"'/>")); }
+                        }
+                        else for (var s=0; s<3; s++) { pack[e].$img.push($("<img src='"+pack[e].src+"'/>")); }
+                        
+                        if (pack[e].type=="embed") {
+                            pack[e].$embed = $("<img src='"+
+                                (pack[e].embed?pack[e].embed:"res/img/ppvc/sign01.svg")+"' alt=''/>"); }
+                        
+                        settings.totalweight[p]+=pack[e].weight;
                     }
                 }
                 
+                // Handle holes
+                if (typeof(settings.holes)=="string") {
+                    switch(settings.holes) {
+                        case "classic" : settings.holes = {
+                            p00:{ pack:firstpack, anim:{top:[0.5,-0.28,-0.28,0.5]}, clickanim:{top:0.5},
+                                  duration:[4,1]},
+                            p10:"p00", p20:"p00", p30:"p00",
+                            p01:"p00", p11:"p00", p21:"p00", p31:"p00",
+                            p02:"p00", p12:"p00", p22:"p00", p32:"p00"
+                            };
+                            break
+                        case "simple": settings.holes = {
+                            p00:{ pack:firstpack, anim:{opacity:[0,1,1,0]}, clickanim:{opacity:0}, duration:[4,1]},
+                            p10:"p00", p20:"p00", p30:"p00",
+                            p01:"p00", p11:"p00", p21:"p00", p31:"p00",
+                            p02:"p00", p12:"p00", p22:"p00", p32:"p00"
+                            };
+                            break
+                    };
+                    
+                }
+                for (var h in settings.holes) {
+                    var hole = settings.holes[h];
+                    if (typeof(hole == "string" ) && settings.holes[hole]) {
+                        settings.holes[h]=$.extend({}, settings.holes[hole]);
+                    }
+                    if (!hole.duration) { hole.duration = [4,1]; }
+                    settings.emptyholes.push(h);
+                }
+                for (var i=0;i<5;i++) { settings.emptyholes.sort(function() { return Math.random()<0.5; }); }
+               
                 if (settings.tag) {
                     var value = settings.tag;
                     if (value.toString().indexOf(".svg")!=-1) { value = "<img src='"+value+"'/>"; }
@@ -140,57 +203,14 @@
                     $this.find("#tag").html(value).show();
                 }
                 
-                $this.bind("mousedown touchstart", function(event){
-                    var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
-                                  event.originalEvent.touches[0]:event;
-
-                    if (settings.interactive) {
-                        var x = ((vEvent.clientX-$this.offset().left)/$this.width() - 0.02)/0.218;
-                        var y = ((vEvent.clientY-$this.offset().top)/$this.height() - 0.12)/0.295;
-                        var ok = true;
-                        
-                        if (settings.mode=="default")
-                        {
-                            var xx = Math.floor(x*100)%100;
-                            ok = (xx>=18) && (xx<=82);
-                            y+=0.3;
-                        }
-                        x=Math.floor(x); y=Math.floor(y);
-                        if (ok && x>=0 && x<4 && y>=0 && y<3) {
-                            var e = settings.grid[x+y*4];
-                            if (e && !e.clicked) {
-                                e.clicked = true;
-                                if (e.from=="good") { $fx = $this.find("#g"+x.toString()+y.toString()).show(); }
-                                else                { $fx = $this.find("#w"+x.toString()+y.toString()).show(); settings.score--; }
-                                e.$html.addClass(e.from);
-                                var now     = Date.now();
-                                var delta   = Math.max(0,settings.animation*1000-(now-e.begin),(now-e.begin)-(settings.duration-settings.animation)*1000);
-                                e.begin = Date.now()-(settings.duration-settings.animation)*1000-delta;
-                                
-                                switch(e.type) {
-                                    case "img" :
-                                        if (e.$src2) {
-                                            e.$html.find("img").detach();
-                                            e.$html.append(e.$src2);
-                                        }
-                                        break;
-                                }
-                                
-                                setTimeout(function() { $fx.hide(); } , 200);
-                            }
-                            
-                        }
-                    }
+                $this.find(".touch").bind("mousedown touchstart", function(event){
+                    if (settings.interactive) { helpers.touch($this,$(this).attr("id").substr(1)); }
                     event.preventDefault();
                 });
 
                 // Exercice
-                if ($.isArray(settings.exercice)) {
-                    $this.find("#exercice>div").html("");
-                    for (var i in settings.exercice) { $this.find("#exercice>div").append(
-                        "<p>"+(settings.exercice[i].length?helpers.format(settings.exercice[i]):"&#xA0;")+"</p>"); }
-                } else { $this.find("#exercice>div").html(helpers.format(settings.exercice)); }
-                $this.find("#exercice>div").css("font-size",settings.fontex+"em");
+                $this.find("#exercice>div").html(helpers.format(settings.exercice))
+                                               .css("font-size",settings.fontex+"em");
 
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
@@ -202,79 +222,174 @@
             
             // CHECK ELT EVERY 100 ms
             if (d-settings.time.last>100 && d-settings.time.begin<settings.totaltime*1000) {
-                if (settings.count<12 && Math.random()*((d-settings.time.begin)/(settings.freq*1000)-settings.total)>0.5) {
-                    var from = "good";
-                    if (settings.elt.wrong.length) { from = Math.random()>0.5?"wrong":"good"; }
-                    var elt=settings.elt[from][Math.floor(Math.random()*settings.elt[from].length)];
-                    var to = -1;
-                    do { to =Math.floor(Math.random()*12); } while (settings.grid[to]!=0);
-                    var e = { type:elt.type, from:from, begin:d, clicked:false, inpos:false };
-                    e.$html=$("<div class='icon'></div>");
+                if (settings.emptyholes.length &&
+                    Math.random()*((d-settings.time.begin)/(settings.freq*1000)-settings.total)>0.5) {
                     
-                    var top= Math.floor(to/4)+(settings.mode=="default"?0.52:0);
-                    e.$html.css("z-index",Math.floor(to/4))
-                           .css("top",top+"em")
-                           .css("left",(to%4)+"em");
-                    switch(e.type) {
-                        case "img" :
-                            e.$html.append(elt.$src.clone());
-                            if (elt.$src2) { e.$src2 = elt.$src2.clone(); }
-                            break;
-                        case "txt" :
-                            var value = elt.value;
-                            if (elt.gen) { value = eval('('+elt.gen+')')(); }
-                            if (value.toString().indexOf(".svg")!=-1) { value = "<img src='"+value+"'/>"; }
-                            e.$html.addClass("text").append("<div>"+value+"</div>");
-                            break;
-                        case "sig" :
-                            var value = elt.value;
-                            if (elt.gen) { value = eval('('+elt.gen+')')(); }
-                            if (value.toString().indexOf(".svg")!=-1) { value = "<img src='"+value+"'/>"; }
-                            if (elt.font) {
-                                var m = (1-elt.font)/(2*elt.font);
-                                value="<div style='margin-top:"+m+"em;font-size:"+elt.font+"em;'>"+value+"</div>";
+                    // Choose hole and sprite element
+                    var holeid  = settings.emptyholes.pop();
+                    var hole    = settings.holes[holeid];
+                    var pack    = settings.data[hole.pack];
+                    var w       = Math.random()*settings.totalweight[hole.pack];
+                    var wi      = 0;
+                    var elt;
+                    for (elt in pack) { wi+=pack[elt].weight; if (wi>w) { break; } }
+
+                    // Build sprite
+                    var sprite = $.extend({type:"default"}, pack[elt],
+                                    { clicked: false, inpos:false, begin: d, hole:hole, current:{opacity:1} });
+                    sprite.$html=$("<div class='icon "+sprite.type+"' id='p"+holeid+"'></div>");
+                    for (var arg in hole.anim) {
+                        switch(arg) {
+                            case "top"      : sprite.$html.css("top",hole.anim[arg][0]+"em"); break;
+                            case "left"     : sprite.$html.css("left",hole.anim[arg][0]+"em"); break;
+                            case "opacity"  : sprite.$html.css("opacity",hole.anim[arg][0]); break;
+                        }
+                    }
+                    var legend = sprite.legend;
+                    if (sprite.gen) {
+                        var gen = eval('('+sprite.gen+')')();
+                        if (typeof(gen.legend)!="undefined")     { legend = gen.legend.toString(); }
+                        if (gen.alignment)  { sprite.alignment = gen.alignment; }
+                        if (gen.src)        {
+                            sprite.src=[];
+                            sprite.$img=[];
+                            if ($.isArray(gen.src)) {
+                                for (var s in gen.src) {
+                                    sprite.src.push(gen.src[s]);
+                                    sprite.$imgpush($("<img src='"+gen.src[s]+"'/>"));
+                                }
                             }
-                            e.$html.append(elt.$src.clone()).append("<div class='label'>"+value+"</div>");
+                            else for (var s=0; s<3; s++) {
+                                sprite.src.push(gen.src);
+                                sprite.$imgpush($("<img src='"+gen.src+"'/>")); 
+                            }
+                        }
+                    }
+                    if (legend) {
+                        if (legend.indexOf(".svg")!=-1) { } else
+                        if (legend.indexOf("<svg")!=-1) { } else {
+                            legend ="<div class='legend'>"+legend+"</div>";
+                        }
+                    }
+                    switch(sprite.type) {
+                        case "embed" :
+                            var $label = $("<div class='label'></div>");
+                            if (sprite.src) { $label.append(sprite.$img[0].clone().addClass("toggle")); }
+                            if (legend)     { $label.append(legend); }
+                            sprite.$html.append(sprite.$embed.clone()).append($label);
+                            break;
+                        default:
+                            if (sprite.src) { sprite.$html.append(sprite.$img[0].clone().addClass("toggle")) };
+                            if (legend)     { sprite.$html.append(legend); }
                             break;
                     }
-                    $this.find("#elts").append(e.$html);
-                    settings.grid[to] = e;
+                    if (!sprite.noclickable) {
+                        sprite.$html.bind("touchstart mousedown", function(event) {
+                            helpers.touch($this, $(this).attr("id").substr(1));
+                        });
+                    }
                     
-                    settings.count++;
+                    $this.find("#"+holeid).append(sprite.$html);
+                    settings.sprites[holeid] = sprite;
+
                     settings.total++;
                 }
                 settings.time.last = d;
             }
-
-            for (var i=0; i<12; i++) if (settings.grid[i]) {
-                var e = settings.grid[i];
-                var still = (settings.duration*1000-(d-e.begin));
-                var alpha = Math.min((d-e.begin)/(settings.animation*1000), still/(settings.animation*1000));
-                if (settings.mode=="default") {
-                    if (alpha<1)     { e.$html.css("top",(Math.floor(i/4)+0.52*(1-alpha)-0.25*alpha)+"em"); } else
-                    if (!e.inpos)    { e.$html.css("top",(Math.floor(i/4)-0.25)+"em"); e.inpos = true; }
-                }
-                else {
-                    if (alpha<1)     { e.$html.css("opacity",alpha); } else
-                    if (!e.inpos)    { e.$html.css("opacity",1); e.inpos = true; }
-                }
-
-                if (still<=0) { 
-                    e.$html.detach(); settings.count--; settings.grid[i] = 0;
-                    if (e.from=="good" && !e.clicked) { 
-                        settings.score--;
-                        var $fx = $this.find("#w"+(i%4).toString()+Math.floor(i/4).toString());
-                        $fx.show();
-                        setTimeout(function() { $fx.hide(); } , 200);
+            
+            // HANDLE ACTIVE SPRITES
+            var attrs=["top","left","opacity"];
+            var empty=true;
+            for (var s in settings.sprites) {
+                var sprite = settings.sprites[s];
+                if (sprite) {
+                    empty=false;
+                    if (sprite.clicked) {
+                        var alpha = (d-sprite.begin)/(sprite.hole.duration[1]*1000);
+                        
+                        for (var a in attrs) {
+                            if (typeof(sprite.hole.clickanim[attrs[a]])!="undefined") {
+                                var attr    = sprite.hole.clickanim[attrs[a]];
+                                var value   = sprite.current[attrs[a]]*(1-alpha)+alpha*attr;
+                                switch(attrs[a]) {
+                                    case "top"      : sprite.$html.css("top",value+"em"); break;
+                                    case "left"     : sprite.$html.css("left",value+"em"); break;
+                                    case "opacity"  : sprite.$html.css("opacity",value); break;
+                                }
+                            }
+                        }
                     }
+                    else {
+                        var alpha = (d-sprite.begin)/(sprite.hole.duration[0]*1000);
+                        
+                        for (var a in attrs) {
+                            if (sprite.hole.anim[attrs[a]]) {
+                                var attr    = sprite.hole.anim[attrs[a]];
+                                var nb      = attr.length-1;
+                                var stepid  = Math.min(nb-1,Math.floor(alpha*nb));
+                                var offset  = Math.min(1,alpha*nb-stepid);
+                                
+                                var value   = attr[stepid]*(1-offset)+offset*attr[stepid+1];
+                                sprite.current[attrs[a]]=value;
+                                
+                                switch(attrs[a]) {
+                                    case "top"      : sprite.$html.css("top",value+"em"); break;
+                                    case "left"     : sprite.$html.css("left",value+"em"); break;
+                                    case "opacity"  : sprite.$html.css("opacity",value); break;
+                                }
+                            }
+                        }
+                    }
+                    
+                    if (alpha>=1) {
+                        var vAlign = sprite.alignment;
+                        if (!sprite.clicked) {
+                            if (vAlign=="good") {
+                                $this.find(".fx#w"+s).css("opacity",1).show().animate({opacity:0},400,function(){$(this).hide(); });
+                                settings.score--;
+                            }
+                            else if (vAlign="wrong" && settings.goodfx) {
+                                $this.find(".fx#g"+s).css("opacity",1).show().animate({opacity:0},400,function(){$(this).hide(); });
+                            }
+                        }
+                
+                        sprite.$html.detach();
+                        settings.sprites[s] = 0;
+                        settings.emptyholes.push(s);
+                        for (var i=0;i<5;i++) { settings.emptyholes.sort(function() { return Math.random()<0.5; }); }
+                    }
+                    
                 }
             }
             
-            if (settings.score<=0 || (d-settings.time.begin>settings.totaltime*1000 && settings.count==0)) {
+            if ( settings.score<=0 ||
+                ( d-settings.time.begin>settings.totaltime*1000 && empty ) ) {
                 settings.interactive = false;
                 setTimeout(function() { helpers.end($this); }, 500);
             }
             else { settings.timerid = setTimeout(function() { helpers.run($this); }, 5); }
+        },
+        touch: function($this, _holeid) {
+            var settings = helpers.settings($this);
+            var d = Date.now();
+            var sprite = settings.sprites[_holeid];
+            if (sprite && !sprite.clicked) {
+                sprite.begin=d;
+                sprite.clicked=true;
+                
+                var vAlign = sprite.alignment;
+                if (vAlign=="wrong") {
+                    sprite.$html.addClass("wrong");
+                    sprite.$html.find(".toggle").replaceWith(sprite.$img[2].clone());
+                    settings.score--;
+                    $this.find(".fx#w"+_holeid).css("opacity",1).show().animate({opacity:0},400,function(){$(this).hide(); });
+                }
+                else if (vAlign=="good") {
+                    sprite.$html.addClass("good");
+                    sprite.$html.find(".toggle").replaceWith(sprite.$img[1].clone());
+                    $this.find(".fx#g"+_holeid).css("opacity",1).show().animate({opacity:0},400,function(){$(this).hide(); });
+                }
+            }
         }
     };
 
@@ -287,13 +402,13 @@
                 // The settings
                 var settings = {
                     interactive     : false,
-                    elt             : { good:[], wrong:[] },
-                    grid            : [0,0,0,0,0,0,0,0,0,0,0,0],
+                    totalweight     : {},
                     total           : 0,
-                    count           : 0,
                     score           : 5,
                     time            : { begin : 0, last : 0, newelt : 0 },
-                    timerid         : 0
+                    timerid         : 0,
+                    emptyholes      : [],
+                    sprites         : {}
                 };
 
                 return this.each(function() {
@@ -315,13 +430,13 @@
             },
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                settings.interactive = true;
                 $this.find("#countdown").show().animate({left:"75%"},500, function() {
                     setTimeout(function() { $this.find("#countdown").html(3); }, 0);
                     setTimeout(function() { $this.find("#countdown").html(2); }, 1000);
                     setTimeout(function() { $this.find("#countdown").html(1); }, 2000);
                     setTimeout(function() {
                         $this.find("#countdown").animate({left:"120%"},500, function() {
+                            settings.interactive = true;
                             $(this).hide();
                             settings.time.begin = Date.now();
                             helpers.run($this);

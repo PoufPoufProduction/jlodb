@@ -6,7 +6,7 @@
     <rdf:Description>
         <dct:identifier>c10</dct:identifier>
         <dct:title xml:lang="fr-FR">Cliquez sur les additions exactes et dont la somme est inférieure ou égale à 10.</dct:title>
-        <dct:description><![CDATA["good":[{"type":"sig","font":0.3,"gen":"function() { var a=Math.floor(Math.random()*9)+1,b; do {b=Math.floor(Math.random()*10)+1;} while(a+b>10); return ''+a+'+'+b+'='+(a+b);}"}],"wrong":[{"type":"sig","font":0.3,"gen":"function() { var a=Math.floor(Math.random()*9)+1,b,c; do {b=Math.floor(Math.random()*10)+1;} while(a+b>10); do { c=Math.floor(Math.random()*10)+1; } while(c==a+b); return ''+a+'+'+b+'='+c;}"}]]]></dct:description>
+        <dct:description><![CDATA["class":"smalllegend","holes":"classic","data":{"d":[{"alignment":"good","type":"embed","gen":"function(){var a=Math.floor(Math.random()*9)+1,b; do {b=Math.floor(Math.random()*10)+1;} while(a+b>10); return {legend:''+a+'+'+b+'='+(a+b)};}"},{"alignment":"wrong","type":"embed","gen":"function(){var a=Math.floor(Math.random()*9)+1,b,c; do {b=Math.floor(Math.random()*10)+1;} while(a+b>10); do { c=Math.floor(Math.random()*10)+1; } while(c==a+b); return {legend:''+a+'+'+b+'='+c};}"}]}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Cliquez sur les additions [b]exactes[/b]."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
@@ -16,10 +16,12 @@
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
     </rdf:Description>
     
+    
+    
     <rdf:Description>
         <dct:identifier>c20</dct:identifier>
         <dct:title xml:lang="fr-FR">Cliquez sur les additions exactes et dont les opérandes sont inférieures ou égales à 10.</dct:title>
-        <dct:description><![CDATA["good":[{"type":"sig","font":0.3,"gen":"function() { var a=Math.floor(Math.random()*10)+1,b=Math.floor(Math.random()*10)+1; return ''+a+'+'+b+'='+(a+b);}"}],"wrong":[{"type":"sig","font":0.3,"gen":"function() { var a=Math.floor(Math.random()*10)+1,b=Math.floor(Math.random()*10)+1,c; do { c=Math.floor(Math.random()*5)-2;}while(c==0 || a+b+c<0 || a+b+c>20); return ''+a+'+'+b+'='+(a+b+c);}"}]]]></dct:description>
+        <dct:description><![CDATA["class":"smalllegend","holes":"classic","data":{"d":[{"alignment":"good","type":"embed","gen":"function(){var a=Math.floor(Math.random()*10)+1,b=Math.floor(Math.random()*10)+1; return {legend:''+a+'+'+b+'='+(a+b)};}"},{"alignment":"wrong","type":"embed","gen":"function(){var a=Math.floor(Math.random()*10)+1,b=Math.floor(Math.random()*10)+1,c; do { c=Math.floor(Math.random()*5)-2;}while(c<=0 || a+b+c<0 || a+b+c>20); return {legend:''+a+'+'+b+'='+c};}"}]}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Cliquez sur les additions [b]exactes[/b]."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
@@ -30,10 +32,12 @@
     </rdf:Description>
     
     
+    
+    
     <rdf:Description>
         <dct:identifier>e10</dct:identifier>
         <dct:title xml:lang="fr-FR">Cliquez sur les additions dont la somme est 10.</dct:title>
-        <dct:description><![CDATA["good":[{"type":"sig","font":0.5,"gen":"function() { var a=Math.floor(Math.random()*9)+1; return ''+a+'+'+(10-a);}"}],"wrong":[{"type":"sig","font":0.5,"gen":"function() { var a=Math.floor(Math.random()*9)+1,c; do { c=Math.floor(Math.random()*5)-2;}while(c==0 || 10-a+c<0 || 10-a+c>10); return ''+a+'+'+(10-a+c);}"}],"tag":"10"]]></dct:description>
+        <dct:description><![CDATA[ "holes":"classic","data":{"d":[{"alignment":"good","type":"embed","gen":"function(){var a=Math.floor(Math.random()*9)+1; return {legend:''+a+'+'+(10-a)};}"},{"alignment":"wrong","type":"embed","gen":"function(){var a=Math.floor(Math.random()*9)+1,c; do { c=Math.floor(Math.random()*5)-2;}while(c==0 || 10-a+c<0 || 10-a+c>10); return {legend:''+a+'+'+(10-a+c)};}"}]},"tag":"10"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Cliquez sur les additions dont la [b]somme est égale à 10[/b]."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
@@ -43,6 +47,8 @@
         <dct:isPartOf>complement</dct:isPartOf>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
     </rdf:Description>
+ 
+
  
     
 </rdf:RDF>
