@@ -162,7 +162,7 @@ case "$l" in
 
     htmlfile="$content/page_$pageid.html"
     if [ ! -f "$htmlfile" ] ; then
-        cat ./bin/jlodb/asset/template/$val.html | sed -e "s|%pageid%|$pageid|g" -e "s|%title%|$title|g" > "$htmlfile"
+        cat ./bin/jlodb/asset/template/$val.html | sed -e "s|%pageid%|$pageid|g" -e "s|%title%|$title|g" > $htmlfile
         
         if [ "$save" = "cookie" ] ; then
             echo "  - persistence by cookies"
