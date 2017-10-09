@@ -13,6 +13,7 @@
         fontex      : 1,
         effects     : true,                     // Display effects
         width       : 640,
+        background  : "",
         debug       : true                     // Debug mode
     };
 
@@ -93,7 +94,7 @@
                 elt.svg();
                 settings.svg = elt.svg('get');
                 $(settings.svg).attr("class",settings["class"]);
-                settings.svg.load('res/img/'+settings.url + debug,
+                settings.svg.load(settings.url + debug,
                     { addTo: true, changeSize: true, onLoad:function() { helpers.loader.build($this); }
                 });
             },
@@ -103,9 +104,10 @@
 
                 var vWidth = Math.floor($this.find("#values").width());
                 $this.find("#values").css("font-size", settings.font+"em");
+                
+                // HANDLE BACKGROUND
+                if (settings.background) { $this.children().first().css("background-image","url("+settings.background+")"); }
 
-                // COMPUTE RATIO
-                //if ($(settings.svg.root()).attr("title")) { settings.width = parseInt($(settings.svg.root()).attr("title")); }
 
                 // USER TEXT
                 if (settings.txt) {
@@ -152,6 +154,8 @@
                         vCursor.translate=[vCursor.init[0], vCursor.init[1]];
                         $cursor.show().attr("transform", "translate("+vCursor.translate[0]+" "+vCursor.translate[1]+")");
                     }
+                    
+                    if (settings.svgclass) { $(settings.svg.root()).attr("class",settings.svgclass); }
 
                     $cursor.bind('touchstart mousedown', function(event) {
                         var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?

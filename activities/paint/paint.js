@@ -301,9 +301,9 @@
             }
 
             // SVGCLASS
-            if (settings.svg) { 
-                var svgClass = $.isArray(settings.svgClass)?settings.svgClass[settings.id%settings.svgClass.length]:settings.svgClass;
-                $this.find("svg").attr("class",svgClass);
+            if (settings.svgclass) {
+                var svgclass = $.isArray(settings.svgclass)?settings.svgclass[settings.id%settings.svgclass.length]:settings.svgclass;
+                $this.find("svg").attr("class",svgclass);
             }
 
             // UNBIND
