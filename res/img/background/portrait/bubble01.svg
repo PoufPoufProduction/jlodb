@@ -13,84 +13,7 @@
  height="100%"
  width="100%">
 
- <defs>
-
-     <style>
-     svg#bubble .bubble .fx { display:none; }
-     svg#bubble .bubble.fx .fx { display:inline; }
-     svg#bubble .bubble.fx .res { display:none; }
-     
-     svg#bubble .bubble .circle1 { fill:#6c6c6c;stroke:none;}
-     svg#bubble .bubble .circle2 { fill:#676767;stroke:none;}
-     svg#bubble .bubble .circle3 { fill:#6b6b6b;stroke:none;}
-     svg#bubble .bubble .circle4 { fill:none;stroke:#616161;stroke-width:2;}
-     svg#bubble .bubble .path1 { fill:#525252;fill-opacity:0.22;stroke:none;}
-     svg#bubble .bubble .path2 { fill:#787878;stroke:none; }
-     
-     svg#bubble .bubble.blue .circle1 { fill:#3259df;stroke:none;}
-     svg#bubble .bubble.blue .circle2 { fill:#1b42c7;stroke:none;}
-     svg#bubble .bubble.blue .circle3 { fill:#1d45d0;stroke:none;}
-     svg#bubble .bubble.blue .circle4 { fill:none;stroke:#0a296c;stroke-width:2;}
-     svg#bubble .bubble.blue .path1 { fill:#102e99;fill-opacity:0.37;stroke:none;}
-     svg#bubble .bubble.blue .path2 { fill:#4064e2;stroke:none; }
-     
-     svg#bubble .bubble.red .circle1 { fill:#df3232;stroke:none;}
-     svg#bubble .bubble.red .circle2 { fill:#c71b1b;stroke:none;}
-     svg#bubble .bubble.red .circle3 { fill:#d01d1d;stroke:none;}
-     svg#bubble .bubble.red .circle4 { fill:none;stroke:#6c0a0a;stroke-width:2;}
-     svg#bubble .bubble.red .path1 { fill:#991010;fill-opacity:0.37;stroke:none;}
-     svg#bubble .bubble.red .path2 { fill:#ed5454;stroke:none; }
-     
-     svg#bubble .bubble.green .circle1 { fill:#32df4d;stroke:none;}
-     svg#bubble .bubble.green .circle2 { fill:#1bc71f;stroke:none;}
-     svg#bubble .bubble.green .circle3 { fill:#1dd033;stroke:none;}
-     svg#bubble .bubble.green .circle4 { fill:none;stroke:#136314;stroke-width:2;}
-     svg#bubble .bubble.green .path1 { fill:#0e8711;fill-opacity:0.37;stroke:none;}
-     svg#bubble .bubble.green .path2 { fill:#54ed57;stroke:none; }
-     
-     svg#bubble .bubble.yellow .circle1 { fill:#ffe283;stroke:none;}
-     svg#bubble .bubble.yellow .circle2 { fill:#cfdc11;stroke:none;}
-     svg#bubble .bubble.yellow .circle3 { fill:#dcdb11;stroke:none;}
-     svg#bubble .bubble.yellow .circle4 { fill:none;stroke:#ba970e;stroke-width:2;}
-     svg#bubble .bubble.yellow .path1 { fill:#eba70a;fill-opacity:0.21;stroke:none;}
-     svg#bubble .bubble.yellow .path2 { fill:#f4ee58;stroke:none; }
-     
-     svg#bubble .bubble.purple .circle1 { fill:#dc17e9;stroke:none;}
-     svg#bubble .bubble.purple .circle2 { fill:#c60fcc;stroke:none;}
-     svg#bubble .bubble.purple .circle3 { fill:#cf10ce;stroke:none;}
-     svg#bubble .bubble.purple .circle4 { fill:none;stroke:#76126e;stroke-width:2;}
-     svg#bubble .bubble.purple .path1 { fill:#840c76;fill-opacity:0.21;stroke:none;}
-     svg#bubble .bubble.purple .path2 { fill:#f560ea;stroke:none; }
-     
-     svg#bubble .bubble.orange .circle1 { fill:#e98617;stroke:none;}
-     svg#bubble .bubble.orange .circle2 { fill:#d36608;stroke:none;}
-     svg#bubble .bubble.orange .circle3 { fill:#d1730e;stroke:none;}
-     svg#bubble .bubble.orange .circle4 { fill:none;stroke:#763612;stroke-width:2;}
-     svg#bubble .bubble.orange .path1 { fill:#96520e;fill-opacity:0.21;stroke:none;}
-     svg#bubble .bubble.orange .path2 { fill:#f3a43d;stroke:none; }
-     
-     svg#bubble .bubble.black .circle1 { fill:#3f3f3f;stroke:none;}
-     svg#bubble .bubble.black .circle2 { fill:#252525;stroke:none;}
-     svg#bubble .bubble.black .circle3 { fill:#272727;stroke:none;}
-     svg#bubble .bubble.black .circle4 { fill:none;stroke:#212121;stroke-width:2;}
-     svg#bubble .bubble.black .path1 { fill:#000000;fill-opacity:0.21;stroke:none;}
-     svg#bubble .bubble.black .path2 { fill:#4c4c4c;stroke:none; }
-     
-     svg#bubble .bubble.white .circle1 { fill:#ededed;stroke:none;}
-     svg#bubble .bubble.white .circle2 { fill:#dcdcdc;stroke:none;}
-     svg#bubble .bubble.white .circle3 { fill:#dddddd;stroke:none;}
-     svg#bubble .bubble.white .circle4 { fill:none;stroke:#c0c0c0;stroke-width:2;}
-     svg#bubble .bubble.white .path1 { fill:#a8a8a8;fill-opacity:0.21;stroke:none;}
-     svg#bubble .bubble.white .path2 { fill:#ededed;stroke:none; }
-     
-     svg#bubble #warning { display:none; }
-     svg#bubble #tip { display:none; }
-     svg#bubble #tip path { fill:none;stroke:red;stroke-width:2; }
-     svg#bubble #tip circle { fill:none;stroke:red;stroke-width:1; }
-     
-     </style>
-
- </defs>
+ <defs/>
  
  <g>
  <g id="template" style="display:none;">
@@ -219,28 +142,24 @@
 </g>
  <g id="area" transform="translate(120,78)">
      <g id="blue" class="bubble blue" transform="translate(0,0)">
-         <g class="res">
-         <circle class="circle1" cx="0" cy="0" r="19" />
-         <circle class="circle2" cx="0" cy="0" r="16" />
-         <path d="M 0,-19.5 A 19.5,19.5 0 0 0 -19.5,0 19.5,19.5 0 0 0 -19.45,1.22 21.89,19.97 0 0 0 0,12.14 21.89,19.97 0 0 0 19.43,1.32 19.5,19.5 0 0 0 19.5,0 19.5,19.5 0 0 0 0,-19.5 Z" class="path1" />
-         <circle r="9.78" cy="-6.75" cx="-4.45" class="circle3" />
-         <path class="path2" d="M -3.62,-14.32 A 3.53,3.53 0 0 0 -7.16,-10.78 3.53,3.53 0 0 0 -3.62,-7.25 3.53,3.53 0 0 0 -0.08,-10.78 3.53,3.53 0 0 0 -3.62,-14.32 Z m -6.25,6.25 a 2,2 0 0 0 -2,2 2,2 0 0 0 2,2 2,2 0 0 0 2,-2 2,2 0 0 0 -2,-2 z M 13.74,-0.57 A 2,2 0 0 0 11.73,1.43 2,2 0 0 0 13.74,3.44 2,2 0 0 0 15.75,1.43 2,2 0 0 0 13.74,-0.57 Z" />
-         <circle r="19" cy="0" cx="0" class="circle4" />
-         </g>
+        <circle class="circle1" cx="0" cy="0" r="19" style="fill:#3259df;stroke:none;"/>
+        <circle class="circle2" cx="0" cy="0" r="16" style="fill:#1b42c7;stroke:none;" />
+        <path d="M 0,-19.5 A 19.5,19.5 0 0 0 -19.5,0 19.5,19.5 0 0 0 -19.45,1.22 21.89,19.97 0 0 0 0,12.14 21.89,19.97 0 0 0 19.43,1.32 19.5,19.5 0 0 0 19.5,0 19.5,19.5 0 0 0 0,-19.5 Z" class="path1" style="fill:#102e99;fill-opacity:0.37;stroke:none;" />
+        <circle r="9.78" cy="-6.75" cx="-4.45" class="circle3" style="fill:#1d45d0;stroke:none;" />
+        <path class="path2" d="M -3.62,-14.32 A 3.53,3.53 0 0 0 -7.16,-10.78 3.53,3.53 0 0 0 -3.62,-7.25 3.53,3.53 0 0 0 -0.08,-10.78 3.53,3.53 0 0 0 -3.62,-14.32 Z m -6.25,6.25 a 2,2 0 0 0 -2,2 2,2 0 0 0 2,2 2,2 0 0 0 2,-2 2,2 0 0 0 -2,-2 z M 13.74,-0.57 A 2,2 0 0 0 11.73,1.43 2,2 0 0 0 13.74,3.44 2,2 0 0 0 15.75,1.43 2,2 0 0 0 13.74,-0.57 Z" style="fill:#4064e2;stroke:none;" />
+        <circle r="19" cy="0" cx="0" class="circle4" style="fill:none;stroke:#0a296c;stroke-width:2;" />
      </g>
     <use x="0" y="0" xlink:href="#blue" transform="translate(40,0)" width="100%" height="100%" />
     <use x="0" y="0" xlink:href="#blue" transform="translate(20,34)" width="100%" height="100%" />
     <use x="0" y="0" xlink:href="#blue" transform="translate(60,34)" width="100%" height="100%" />
     
      <g id="green" class="bubble green" transform="translate(80,0)">
-         <g class="res">
-         <circle class="circle1" cx="0" cy="0" r="19" />
-         <circle class="circle2" cx="0" cy="0" r="16" />
-         <path d="M 0,-19.5 A 19.5,19.5 0 0 0 -19.5,0 19.5,19.5 0 0 0 -19.45,1.22 21.89,19.97 0 0 0 0,12.14 21.89,19.97 0 0 0 19.43,1.32 19.5,19.5 0 0 0 19.5,0 19.5,19.5 0 0 0 0,-19.5 Z" class="path1" />
-         <circle r="9.78" cy="-6.75" cx="-4.45" class="circle3" />
-         <path class="path2" d="M -3.62,-14.32 A 3.53,3.53 0 0 0 -7.16,-10.78 3.53,3.53 0 0 0 -3.62,-7.25 3.53,3.53 0 0 0 -0.08,-10.78 3.53,3.53 0 0 0 -3.62,-14.32 Z m -6.25,6.25 a 2,2 0 0 0 -2,2 2,2 0 0 0 2,2 2,2 0 0 0 2,-2 2,2 0 0 0 -2,-2 z M 13.74,-0.57 A 2,2 0 0 0 11.73,1.43 2,2 0 0 0 13.74,3.44 2,2 0 0 0 15.75,1.43 2,2 0 0 0 13.74,-0.57 Z" />
-         <circle r="19" cy="0" cx="0" class="circle4" />
-         </g>
+        <circle class="circle1" cx="0" cy="0" r="19" style="fill:#32df4d;stroke:none;"/>
+        <circle class="circle2" cx="0" cy="0" r="16" style="fill:#1bc71f;stroke:none;" />
+        <path d="M 0,-19.5 A 19.5,19.5 0 0 0 -19.5,0 19.5,19.5 0 0 0 -19.45,1.22 21.89,19.97 0 0 0 0,12.14 21.89,19.97 0 0 0 19.43,1.32 19.5,19.5 0 0 0 19.5,0 19.5,19.5 0 0 0 0,-19.5 Z" class="path1" style="fill:#0e8711;fill-opacity:0.37;stroke:none;" />
+        <circle r="9.78" cy="-6.75" cx="-4.45" class="circle3" style="fill:#1dd033;stroke:none;" />
+        <path class="path2" d="M -3.62,-14.32 A 3.53,3.53 0 0 0 -7.16,-10.78 3.53,3.53 0 0 0 -3.62,-7.25 3.53,3.53 0 0 0 -0.08,-10.78 3.53,3.53 0 0 0 -3.62,-14.32 Z m -6.25,6.25 a 2,2 0 0 0 -2,2 2,2 0 0 0 2,2 2,2 0 0 0 2,-2 2,2 0 0 0 -2,-2 z M 13.74,-0.57 A 2,2 0 0 0 11.73,1.43 2,2 0 0 0 13.74,3.44 2,2 0 0 0 15.75,1.43 2,2 0 0 0 13.74,-0.57 Z" style="fill:#54ed57;stroke:none;" />
+        <circle r="19" cy="0" cx="0" class="circle4" style="fill:none;stroke:#136314;stroke-width:2;" />
      </g>
     <use x="0" y="0" xlink:href="#green" transform="translate(40,0)" width="100%" height="100%" />
     <use x="0" y="0" xlink:href="#green" transform="translate(80,0)" width="100%" height="100%" />
@@ -249,77 +168,65 @@
     
     
     <g id="red" class="bubble red" transform="translate(280,0)">
-         <g class="res">
-         <circle class="circle1" cx="0" cy="0" r="19" />
-         <circle class="circle2" cx="0" cy="0" r="16" />
-         <path d="M 0,-19.5 A 19.5,19.5 0 0 0 -19.5,0 19.5,19.5 0 0 0 -19.45,1.22 21.89,19.97 0 0 0 0,12.14 21.89,19.97 0 0 0 19.43,1.32 19.5,19.5 0 0 0 19.5,0 19.5,19.5 0 0 0 0,-19.5 Z" class="path1" />
-         <circle r="9.78" cy="-6.75" cx="-4.45" class="circle3" />
-         <path class="path2" d="M -3.62,-14.32 A 3.53,3.53 0 0 0 -7.16,-10.78 3.53,3.53 0 0 0 -3.62,-7.25 3.53,3.53 0 0 0 -0.08,-10.78 3.53,3.53 0 0 0 -3.62,-14.32 Z m -6.25,6.25 a 2,2 0 0 0 -2,2 2,2 0 0 0 2,2 2,2 0 0 0 2,-2 2,2 0 0 0 -2,-2 z M 13.74,-0.57 A 2,2 0 0 0 11.73,1.43 2,2 0 0 0 13.74,3.44 2,2 0 0 0 15.75,1.43 2,2 0 0 0 13.74,-0.57 Z" />
-         <circle r="19" cy="0" cx="0" class="circle4" />
-         </g>
+        <circle class="circle1" cx="0" cy="0" r="19" style="fill:#df3232;stroke:none;"/>
+        <circle class="circle2" cx="0" cy="0" r="16" style="fill:#c71b1b;stroke:none;" />
+        <path d="M 0,-19.5 A 19.5,19.5 0 0 0 -19.5,0 19.5,19.5 0 0 0 -19.45,1.22 21.89,19.97 0 0 0 0,12.14 21.89,19.97 0 0 0 19.43,1.32 19.5,19.5 0 0 0 19.5,0 19.5,19.5 0 0 0 0,-19.5 Z" class="path1" style="fill:#991010;fill-opacity:0.37;stroke:none;" />
+        <circle r="9.78" cy="-6.75" cx="-4.45" class="circle3" style="fill:#d01d1d;stroke:none;" />
+        <path class="path2" d="M -3.62,-14.32 A 3.53,3.53 0 0 0 -7.16,-10.78 3.53,3.53 0 0 0 -3.62,-7.25 3.53,3.53 0 0 0 -0.08,-10.78 3.53,3.53 0 0 0 -3.62,-14.32 Z m -6.25,6.25 a 2,2 0 0 0 -2,2 2,2 0 0 0 2,2 2,2 0 0 0 2,-2 2,2 0 0 0 -2,-2 z M 13.74,-0.57 A 2,2 0 0 0 11.73,1.43 2,2 0 0 0 13.74,3.44 2,2 0 0 0 15.75,1.43 2,2 0 0 0 13.74,-0.57 Z" style="fill:#ed5454;stroke:none;" />
+        <circle r="19" cy="0" cx="0" class="circle4" style="fill:none;stroke:#6c0a0a;stroke-width:2;" />
      </g>
     <use x="0" y="0" xlink:href="#red" transform="translate(-20,34)" width="100%" height="100%" />
     <use x="0" y="0" xlink:href="#red" transform="translate(0,68)" width="100%" height="100%" />
     <use x="0" y="0" xlink:href="#red" transform="translate(-20,102)" width="100%" height="100%" />
     
     <g id="purple" class="bubble purple" transform="translate(100,34)">
-         <g class="res">
-         <circle class="circle1" cx="0" cy="0" r="19" />
-         <circle class="circle2" cx="0" cy="0" r="16" />
-         <path d="M 0,-19.5 A 19.5,19.5 0 0 0 -19.5,0 19.5,19.5 0 0 0 -19.45,1.22 21.89,19.97 0 0 0 0,12.14 21.89,19.97 0 0 0 19.43,1.32 19.5,19.5 0 0 0 19.5,0 19.5,19.5 0 0 0 0,-19.5 Z" class="path1" />
-         <circle r="9.78" cy="-6.75" cx="-4.45" class="circle3" />
-         <path class="path2" d="M -3.62,-14.32 A 3.53,3.53 0 0 0 -7.16,-10.78 3.53,3.53 0 0 0 -3.62,-7.25 3.53,3.53 0 0 0 -0.08,-10.78 3.53,3.53 0 0 0 -3.62,-14.32 Z m -6.25,6.25 a 2,2 0 0 0 -2,2 2,2 0 0 0 2,2 2,2 0 0 0 2,-2 2,2 0 0 0 -2,-2 z M 13.74,-0.57 A 2,2 0 0 0 11.73,1.43 2,2 0 0 0 13.74,3.44 2,2 0 0 0 15.75,1.43 2,2 0 0 0 13.74,-0.57 Z" />
-         <circle r="19" cy="0" cx="0" class="circle4" />
-         </g>
+        <circle class="circle1" cx="0" cy="0" r="19" style="fill:#dc17e9;stroke:none;"/>
+        <circle class="circle2" cx="0" cy="0" r="16" style="fill:#c60fcc;stroke:none;" />
+        <path d="M 0,-19.5 A 19.5,19.5 0 0 0 -19.5,0 19.5,19.5 0 0 0 -19.45,1.22 21.89,19.97 0 0 0 0,12.14 21.89,19.97 0 0 0 19.43,1.32 19.5,19.5 0 0 0 19.5,0 19.5,19.5 0 0 0 0,-19.5 Z" class="path1" style="fill:#840c76;fill-opacity:0.37;stroke:none;" />
+        <circle r="9.78" cy="-6.75" cx="-4.45" class="circle3" style="fill:#cf10ce;stroke:none;" />
+        <path class="path2" d="M -3.62,-14.32 A 3.53,3.53 0 0 0 -7.16,-10.78 3.53,3.53 0 0 0 -3.62,-7.25 3.53,3.53 0 0 0 -0.08,-10.78 3.53,3.53 0 0 0 -3.62,-14.32 Z m -6.25,6.25 a 2,2 0 0 0 -2,2 2,2 0 0 0 2,2 2,2 0 0 0 2,-2 2,2 0 0 0 -2,-2 z M 13.74,-0.57 A 2,2 0 0 0 11.73,1.43 2,2 0 0 0 13.74,3.44 2,2 0 0 0 15.75,1.43 2,2 0 0 0 13.74,-0.57 Z" style="fill:#f560ea;stroke:none;" />
+        <circle r="19" cy="0" cx="0" class="circle4" style="fill:none;stroke:#76126e;stroke-width:2;" />
      </g>
     <use x="0" y="0" xlink:href="#purple" transform="translate(40,0)" width="100%" height="100%" />
     <use x="0" y="0" xlink:href="#purple" transform="translate(80,0)" width="100%" height="100%" />
     
     <g id="black" class="bubble black" transform="translate(220,34)">
-         <g class="res">
-         <circle class="circle1" cx="0" cy="0" r="19" />
-         <circle class="circle2" cx="0" cy="0" r="16" />
-         <path d="M 0,-19.5 A 19.5,19.5 0 0 0 -19.5,0 19.5,19.5 0 0 0 -19.45,1.22 21.89,19.97 0 0 0 0,12.14 21.89,19.97 0 0 0 19.43,1.32 19.5,19.5 0 0 0 19.5,0 19.5,19.5 0 0 0 0,-19.5 Z" class="path1" />
-         <circle r="9.78" cy="-6.75" cx="-4.45" class="circle3" />
-         <path class="path2" d="M -3.62,-14.32 A 3.53,3.53 0 0 0 -7.16,-10.78 3.53,3.53 0 0 0 -3.62,-7.25 3.53,3.53 0 0 0 -0.08,-10.78 3.53,3.53 0 0 0 -3.62,-14.32 Z m -6.25,6.25 a 2,2 0 0 0 -2,2 2,2 0 0 0 2,2 2,2 0 0 0 2,-2 2,2 0 0 0 -2,-2 z M 13.74,-0.57 A 2,2 0 0 0 11.73,1.43 2,2 0 0 0 13.74,3.44 2,2 0 0 0 15.75,1.43 2,2 0 0 0 13.74,-0.57 Z" />
-         <circle r="19" cy="0" cx="0" class="circle4" />
-         </g>
+        <circle class="circle1" cx="0" cy="0" r="19" style="fill:#3f3f3f;stroke:none;"/>
+        <circle class="circle2" cx="0" cy="0" r="16" style="fill:#252525;stroke:none;" />
+        <path d="M 0,-19.5 A 19.5,19.5 0 0 0 -19.5,0 19.5,19.5 0 0 0 -19.45,1.22 21.89,19.97 0 0 0 0,12.14 21.89,19.97 0 0 0 19.43,1.32 19.5,19.5 0 0 0 19.5,0 19.5,19.5 0 0 0 0,-19.5 Z" class="path1" style="fill:#000000;fill-opacity:0.37;stroke:none;" />
+        <circle r="9.78" cy="-6.75" cx="-4.45" class="circle3" style="fill:#272727;stroke:none;" />
+        <path class="path2" d="M -3.62,-14.32 A 3.53,3.53 0 0 0 -7.16,-10.78 3.53,3.53 0 0 0 -3.62,-7.25 3.53,3.53 0 0 0 -0.08,-10.78 3.53,3.53 0 0 0 -3.62,-14.32 Z m -6.25,6.25 a 2,2 0 0 0 -2,2 2,2 0 0 0 2,2 2,2 0 0 0 2,-2 2,2 0 0 0 -2,-2 z M 13.74,-0.57 A 2,2 0 0 0 11.73,1.43 2,2 0 0 0 13.74,3.44 2,2 0 0 0 15.75,1.43 2,2 0 0 0 13.74,-0.57 Z" style="fill:#4c4c4c;stroke:none;" />
+        <circle r="19" cy="0" cx="0" class="circle4" style="fill:none;stroke:#212121;stroke-width:2;" />
      </g>
     <use x="0" y="0" xlink:href="#black" transform="translate(20,34)" width="100%" height="100%" />
     
     <g id="white" class="bubble white" transform="translate(0,68)">
-         <g class="res">
-         <circle class="circle1" cx="0" cy="0" r="19" />
-         <circle class="circle2" cx="0" cy="0" r="16" />
-         <path d="M 0,-19.5 A 19.5,19.5 0 0 0 -19.5,0 19.5,19.5 0 0 0 -19.45,1.22 21.89,19.97 0 0 0 0,12.14 21.89,19.97 0 0 0 19.43,1.32 19.5,19.5 0 0 0 19.5,0 19.5,19.5 0 0 0 0,-19.5 Z" class="path1" />
-         <circle r="9.78" cy="-6.75" cx="-4.45" class="circle3" />
-         <path class="path2" d="M -3.62,-14.32 A 3.53,3.53 0 0 0 -7.16,-10.78 3.53,3.53 0 0 0 -3.62,-7.25 3.53,3.53 0 0 0 -0.08,-10.78 3.53,3.53 0 0 0 -3.62,-14.32 Z m -6.25,6.25 a 2,2 0 0 0 -2,2 2,2 0 0 0 2,2 2,2 0 0 0 2,-2 2,2 0 0 0 -2,-2 z M 13.74,-0.57 A 2,2 0 0 0 11.73,1.43 2,2 0 0 0 13.74,3.44 2,2 0 0 0 15.75,1.43 2,2 0 0 0 13.74,-0.57 Z" />
-         <circle r="19" cy="0" cx="0" class="circle4" />
-         </g>
+        <circle class="circle1" cx="0" cy="0" r="19" style="fill:#ededed;stroke:none;"/>
+        <circle class="circle2" cx="0" cy="0" r="16" style="fill:#dcdcdc;stroke:none;" />
+        <path d="M 0,-19.5 A 19.5,19.5 0 0 0 -19.5,0 19.5,19.5 0 0 0 -19.45,1.22 21.89,19.97 0 0 0 0,12.14 21.89,19.97 0 0 0 19.43,1.32 19.5,19.5 0 0 0 19.5,0 19.5,19.5 0 0 0 0,-19.5 Z" class="path1" style="fill:#a8a8a8;fill-opacity:0.37;stroke:none;" />
+        <circle r="9.78" cy="-6.75" cx="-4.45" class="circle3" style="fill:#dddddd;stroke:none;" />
+        <path class="path2" d="M -3.62,-14.32 A 3.53,3.53 0 0 0 -7.16,-10.78 3.53,3.53 0 0 0 -3.62,-7.25 3.53,3.53 0 0 0 -0.08,-10.78 3.53,3.53 0 0 0 -3.62,-14.32 Z m -6.25,6.25 a 2,2 0 0 0 -2,2 2,2 0 0 0 2,2 2,2 0 0 0 2,-2 2,2 0 0 0 -2,-2 z M 13.74,-0.57 A 2,2 0 0 0 11.73,1.43 2,2 0 0 0 13.74,3.44 2,2 0 0 0 15.75,1.43 2,2 0 0 0 13.74,-0.57 Z" style="fill:#ededed;stroke:none;" />
+        <circle r="19" cy="0" cx="0" class="circle4" style="fill:none;stroke:#c0c0c0;stroke-width:2;" />
      </g>
      
     <g id="orange" class="bubble orange" transform="translate(40,68)">
-         <g class="res">
-         <circle class="circle1" cx="0" cy="0" r="19" />
-         <circle class="circle2" cx="0" cy="0" r="16" />
-         <path d="M 0,-19.5 A 19.5,19.5 0 0 0 -19.5,0 19.5,19.5 0 0 0 -19.45,1.22 21.89,19.97 0 0 0 0,12.14 21.89,19.97 0 0 0 19.43,1.32 19.5,19.5 0 0 0 19.5,0 19.5,19.5 0 0 0 0,-19.5 Z" class="path1" />
-         <circle r="9.78" cy="-6.75" cx="-4.45" class="circle3" />
-         <path class="path2" d="M -3.62,-14.32 A 3.53,3.53 0 0 0 -7.16,-10.78 3.53,3.53 0 0 0 -3.62,-7.25 3.53,3.53 0 0 0 -0.08,-10.78 3.53,3.53 0 0 0 -3.62,-14.32 Z m -6.25,6.25 a 2,2 0 0 0 -2,2 2,2 0 0 0 2,2 2,2 0 0 0 2,-2 2,2 0 0 0 -2,-2 z M 13.74,-0.57 A 2,2 0 0 0 11.73,1.43 2,2 0 0 0 13.74,3.44 2,2 0 0 0 15.75,1.43 2,2 0 0 0 13.74,-0.57 Z" />
-         <circle r="19" cy="0" cx="0" class="circle4" />
-         </g>
+        <circle class="circle1" cx="0" cy="0" r="19" style="fill:#e98617;stroke:none;"/>
+        <circle class="circle2" cx="0" cy="0" r="16" style="fill:#d36608;stroke:none;" />
+        <path d="M 0,-19.5 A 19.5,19.5 0 0 0 -19.5,0 19.5,19.5 0 0 0 -19.45,1.22 21.89,19.97 0 0 0 0,12.14 21.89,19.97 0 0 0 19.43,1.32 19.5,19.5 0 0 0 19.5,0 19.5,19.5 0 0 0 0,-19.5 Z" class="path1" style="fill:#96520e;fill-opacity:0.37;stroke:none;" />
+        <circle r="9.78" cy="-6.75" cx="-4.45" class="circle3" style="fill:#d1730e;stroke:none;" />
+        <path class="path2" d="M -3.62,-14.32 A 3.53,3.53 0 0 0 -7.16,-10.78 3.53,3.53 0 0 0 -3.62,-7.25 3.53,3.53 0 0 0 -0.08,-10.78 3.53,3.53 0 0 0 -3.62,-14.32 Z m -6.25,6.25 a 2,2 0 0 0 -2,2 2,2 0 0 0 2,2 2,2 0 0 0 2,-2 2,2 0 0 0 -2,-2 z M 13.74,-0.57 A 2,2 0 0 0 11.73,1.43 2,2 0 0 0 13.74,3.44 2,2 0 0 0 15.75,1.43 2,2 0 0 0 13.74,-0.57 Z" style="fill:#f3a43d;stroke:none;" />
+        <circle r="19" cy="0" cx="0" class="circle4" style="fill:none;stroke:#763612;stroke-width:2;" />
      </g>
     <use x="0" y="0" xlink:href="#orange" transform="translate(-20,34)" width="100%" height="100%" />
     <use x="0" y="0" xlink:href="#orange" transform="translate(40,0)" width="100%" height="100%" />
     
     <g id="yellow" class="bubble yellow" transform="translate(120,68)">
-         <g class="res">
-         <circle class="circle1" cx="0" cy="0" r="19" />
-         <circle class="circle2" cx="0" cy="0" r="16" />
-         <path d="M 0,-19.5 A 19.5,19.5 0 0 0 -19.5,0 19.5,19.5 0 0 0 -19.45,1.22 21.89,19.97 0 0 0 0,12.14 21.89,19.97 0 0 0 19.43,1.32 19.5,19.5 0 0 0 19.5,0 19.5,19.5 0 0 0 0,-19.5 Z" class="path1" />
-         <circle r="9.78" cy="-6.75" cx="-4.45" class="circle3" />
-         <path class="path2" d="M -3.62,-14.32 A 3.53,3.53 0 0 0 -7.16,-10.78 3.53,3.53 0 0 0 -3.62,-7.25 3.53,3.53 0 0 0 -0.08,-10.78 3.53,3.53 0 0 0 -3.62,-14.32 Z m -6.25,6.25 a 2,2 0 0 0 -2,2 2,2 0 0 0 2,2 2,2 0 0 0 2,-2 2,2 0 0 0 -2,-2 z M 13.74,-0.57 A 2,2 0 0 0 11.73,1.43 2,2 0 0 0 13.74,3.44 2,2 0 0 0 15.75,1.43 2,2 0 0 0 13.74,-0.57 Z" />
-         <circle r="19" cy="0" cx="0" class="circle4" />
-         </g>
+        <circle class="circle1" cx="0" cy="0" r="19" style="fill:#ffe283;stroke:none;"/>
+        <circle class="circle2" cx="0" cy="0" r="16" style="fill:#cfdc11;stroke:none;" />
+        <path d="M 0,-19.5 A 19.5,19.5 0 0 0 -19.5,0 19.5,19.5 0 0 0 -19.45,1.22 21.89,19.97 0 0 0 0,12.14 21.89,19.97 0 0 0 19.43,1.32 19.5,19.5 0 0 0 19.5,0 19.5,19.5 0 0 0 0,-19.5 Z" class="path1" style="fill:#eba70a;fill-opacity:0.37;stroke:none;" />
+        <circle r="9.78" cy="-6.75" cx="-4.45" class="circle3" style="fill:#dcdb11;stroke:none;" />
+        <path class="path2" d="M -3.62,-14.32 A 3.53,3.53 0 0 0 -7.16,-10.78 3.53,3.53 0 0 0 -3.62,-7.25 3.53,3.53 0 0 0 -0.08,-10.78 3.53,3.53 0 0 0 -3.62,-14.32 Z m -6.25,6.25 a 2,2 0 0 0 -2,2 2,2 0 0 0 2,2 2,2 0 0 0 2,-2 2,2 0 0 0 -2,-2 z M 13.74,-0.57 A 2,2 0 0 0 11.73,1.43 2,2 0 0 0 13.74,3.44 2,2 0 0 0 15.75,1.43 2,2 0 0 0 13.74,-0.57 Z" style="fill:#f4ee58;stroke:none;" />
+        <circle r="19" cy="0" cx="0" class="circle4" style="fill:none;stroke:#ba970e;stroke-width:2;" />
      </g>
     <use x="0" y="0" xlink:href="#yellow" transform="translate(40,0)" width="100%" height="100%" />
     <use x="0" y="0" xlink:href="#yellow" transform="translate(80,0)" width="100%" height="100%" />
