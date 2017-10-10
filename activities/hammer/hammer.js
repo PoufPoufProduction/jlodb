@@ -136,10 +136,10 @@
                 
                 // Prepare sprite packs
                 var firstpack="";
-                for (var p in settings.data) {
+                for (var p in settings.sprdata) {
                     if (!firstpack) { firstpack=p; }
                     settings.totalweight[p] = 0;
-                    var pack = settings.data[p];
+                    var pack = settings.sprdata[p];
                     for (var e in pack) {
                         pack[e]=$.extend(
                             { weight:1 }, (chars[e]?chars[e]:{}), pack[e]);
@@ -228,7 +228,7 @@
                     // Choose hole and sprite element
                     var holeid  = settings.emptyholes.pop();
                     var hole    = settings.holes[holeid];
-                    var pack    = settings.data[hole.pack];
+                    var pack    = settings.sprdata[hole.pack];
                     var w       = Math.random()*settings.totalweight[hole.pack];
                     var wi      = 0;
                     var elt;
