@@ -111,7 +111,7 @@
                 }
                 
                 if (settings.dev) { $this.find("#devmode").show(); }
-                if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
+                setTimeout(function() { $this[settings.name]('next'); }, 500);
             }
         },
         text: function($this, _txt) {
