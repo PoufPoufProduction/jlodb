@@ -8,6 +8,7 @@
         lang        : "en-US",                                  // Current localization
         prefix      : "",                                   // prefix for illustration
         grid        : [""],
+        background  : "",
         debug       : true                                     // Debug mode
     };
 
@@ -85,9 +86,11 @@
 
                 // Send the onLoad callback
                 if (settings.context.onload) { settings.context.onload($this); }
+                
+                // HANDLE BACKGROUND
+                if (settings.background) { $this.children().first().css("background-image","url("+settings.background+")"); }
 
                 // Locale handling
-
                 if (settings.locale) { $.each(settings.locale, function(id,value) {
                     if ($.isArray(value)) {  for (var i in value) { $this.find("#"+id).append("<p>"+value[i]+"</p>"); } }
                     else { $this.find("#"+id).html(value); }
