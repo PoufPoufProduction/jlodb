@@ -57,7 +57,7 @@ for ex in `cat p_json.tmp | sed -e 's/{\("id":"[^"]*","label"\)/\n{\1/g'` ; do
 		source=`echo $ex | sed -e 's/^.*source":"\([^"]\+\).*$/\1/g'`
         if [ -z $quiet ]; then  echo "+ processing $id"; fi
         activity=`echo $ex | sed -e 's/^.*activity":"\([^"]\+\).*$/\1/g'`
-        data=`echo $ex | sed -e 's/^.*,"data":\({.\+\),"ext".*$/\1/g'`
+        data=`echo $ex | sed -e 's/^.*,"reference":[^{]\+,"data":\({.\+\),"ext".*$/\1/g'`
                 
         echo "\"$id\":{\"activity\":\"$activity\",\"args\":$data},"
         
