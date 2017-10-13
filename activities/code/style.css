@@ -6,7 +6,8 @@
                                           text-align:justify; }
 .code div#board                      { font-size:.5em; width:105%; }
 .code div#board>div                  { float:left; }
-/*---------------------------------------------------------------------------------------------------------------------------*/
+
+/*-----------------------------------------------------------------------------------------------------*/
 .code div#board #screens>*           { font-size:.75em; margin-left:.2em; }
 .code #screens #output               { width:11.6em; height:5.6em; background-color:#030; color:#0F0; font-weight:bold;
                                       padding:.2em; line-height:.8em;
@@ -32,9 +33,12 @@
 .code #screens #controls.running     { background-color:#5BB; }
 .code #screens.s2 #controls          { height:9.5em; }
 .code #screens.s3 #controls          { height:6.7em; }
-.code #screens #buttons              { margin-left:.5em; }
-.code #screens #buttons>div          { font-size:3em; width:1em; height:1em; margin:.1em; float:left; cursor:pointer;}
-/*---------------------------------------------------------------------------------------------------------------------------*/
+.code #screens #buttons              { margin-left:1.2em; margin-top:.3em; }
+.code #screens #buttons .icon        { font-size:2em; width:1em; height:1em; margin:.1em; float:left; cursor:pointer;}
+.code #screens #buttons #lbut        { width:4.9em; float:left; }
+.code #screens #buttons #play        { font-size:4.4em; margin:.05em; }
+
+/*-----------------------------------------------------------------------------------------------------*/
 .code div#board #central>*           { font-size:.75em; margin-left:.2em; width:20em; }
 .code #central #code                 { height:25.2em; background-color:#222; overflow:auto; background-size:100%;
                                       background-image:url("../../res/img/background/asset/it01.svg"); background-repeat:no-repeat; margin-top:.1em; }
@@ -70,7 +74,8 @@
 .code.l1 #central #code             { height:20.2em; }
 .code.l2 #central #exercice         { height:24.1em; }
 .code.l2 #central #code             { height:15.3em; }
-/*---------------------------------------------------------------------------------------------------------------------------*/
+
+/*-----------------------------------------------------------------------------------------------------*/
 .code div#board #detail>*            { font-size:.75em;margin-left:.1em; width:10em; }
 .code #detail #source                { height:31.5em; background-color:#121; margin-top:.1em; }
 .code #detail #source>div            { clear:both; }
@@ -86,7 +91,8 @@
 .code #detail #source #ops #op       { display:inherit; }
 .code #detail #source .a             { padding:0;  }
 
-/*---------------------------------------------------------------------------------------------------------------------------*/
+
+/*-----------------------------------------------------------------------------------------------------*/
 .code #effects                       { position:absolute; top:45%; left:10%; display:none; z-index:2; }
 .code #effects>div                   { font-size:5em; width:1em; height:1em; display:none; }
 
@@ -146,5 +152,15 @@
 .code #it                            { position:absolute; width:12em; height:4em; top:60%; left:30%; display:none; z-index:2; }
 .code #continue                      { position:absolute; width:16em; height:16em; top:0; left:0; display:none; z-index:2; }
 .code #continue>div                  { font-size:3em; position:absolute; top:55%; left:70%; cursor:pointer; border-radius:.5em; }
+
+.code #phelp                            { width:16em; height:12em; position:absolute;top:0;left:0; background-color:rgba(0,0,0,0.5);
+                                      z-index:2002; cursor:pointer; display:none; }
+.code #phelp>div                   { width:98%; height:98%; margin:.5em auto; font-size:.3em;  
+                                      background-color:rgba(255,255,255,0.8); }
+.code #phelp .inst              { margin:.1em .2em; }
+.code #phelp .linst             { background-color:#468; color:white; width:14em; padding:.1em; float:left; margin-right:.2em; }
+.code #phelp .linst.ex          { background-color:#555; color:#EEE; }
+.code #phelp .arg                   { float:right; width:2em; background-color:gray; text-align:center; margin-left:.1em; }
+.code div#ptip .cc                   { padding:.1em .5em; font-size:.6em; background-color:rgba(0,40,0,0.9); color:lime; padding:.5em; margin:.4em 0; }
 
 

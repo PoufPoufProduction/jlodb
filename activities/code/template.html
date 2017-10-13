@@ -234,12 +234,31 @@
             </div>
             <div id="controls">
                 <div id="buttons">
-                    <div id="speed" ontouchstart="$(this).closest('.code').code('speed');event.preventDefault();"
-                                    onclick="$(this).closest('.code').code('speed');"><img src="res/img/control/x2.svg" alt=""/></div>
-                    <div id="stop" ontouchstart="$(this).closest('.code').code('stop');event.preventDefault();"
-                                   onclick="$(this).closest('.code').code('stop');"><img src="res/img/control/stop.svg" alt=""/></div>
-                    <div id="play" ontouchstart="$(this).closest('.code').code('play');event.preventDefault();"
-                                   onclick="$(this).closest('.code').code('play');"><img src="res/img/control/play.svg" alt=""/></div>
+<div id="lbut">
+<div id="speed" ontouchstart="$(this).closest('.code').code('speed');event.preventDefault();"
+                onclick="$(this).closest('.code').code('speed');" class="icon">
+    <img src="res/img/control/x2.svg" alt=""/>
+</div>
+<div id="stop" ontouchstart="$(this).closest('.code').code('stop');event.preventDefault();"
+               onclick="$(this).closest('.code').code('stop');" class="icon">
+    <img src="res/img/control/stop.svg" alt=""/>
+</div>
+<div id="help" ontouchstart="$(this).closest('.code').find('#phelp').show();event.preventDefault();"
+               onclick="$(this).closest('.code').find('#phelp').show();" class="icon">
+    <img src="res/img/control/about.svg" alt=""/>
+</div>
+<div id="tip" ontouchstart="$(this).closest('.code').find('#ptip').show();event.preventDefault();"
+              onclick="$(this).closest('.code').find('#ptip').show();" class="icon">
+    <img src="res/img/control/tip.svg" alt=""/>
+    <div>0</div>
+</div>
+</div>
+
+<div id="play" ontouchstart="$(this).closest('.code').code('play');event.preventDefault();"
+               onclick="$(this).closest('.code').code('play');" class="icon">
+    <img src="res/img/control/play.svg" alt=""/>
+</div>
+
                 </div>
             </div>
         </div>
@@ -258,6 +277,126 @@
     <div id="touch01" ><div><img src="res/img/default/anim/touch01.svg" alt=""/></div></div>
 
     <div id="mask" class="mask"></div>
+    
+    <div id="ptip" ontouchstart="$(this).hide().find('#tipconfirm').hide();event.preventDefault();" onclick="$(this).hide().find('#tipconfirm').hide();"><div>
+        <div id="tippopup"><img src="res/img/default/popup/minus01.svg" alt=""/></div>
+        <div class="tip tip1" ontouchstart="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();event.preventDefault();" onclick="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();">
+            <div class="label">1</div>
+            <div id="tipc1" class="content"></div>
+        </div>
+        <div class="tip tip2" ontouchstart="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();event.preventDefault();" onclick="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();">
+            <div class="label">2</div>
+            <div id="tipc2" class="content"></div>
+        </div>
+        <div class="tip tip3" ontouchstart="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();event.preventDefault();" onclick="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();">
+            <div class="label">3</div>
+            <div id="tipc3" class="content"></div>
+        </div>
+        <div id="tipconfirm">
+            <div class="icon"
+                ontouchstart="$(this).closest('.code').code('tip');event.stopPropagation();event.preventDefault();"
+                onclick="$(this).closest('.code').code('tip');event.stopPropagation();">
+                <img src="res/img/default/icon/valid01.svg" alt=""/></div>
+            <div class="icon" ontouchstart="$(this).parent().hide();event.stopPropagation();event.preventDefault();" onclick="$(this).parent().hide();event.stopPropagation();"><img src="res/img/default/icon/cancel01.svg" alt=""/></div>
+            <div id="tipcc" class="label"></div>
+        </div>
+    </div></div>
+    
+    <div id="phelp" ontouchstart="$(this).hide();event.preventDefault();"
+                  onclick="$(this).hide();"><div>
+    <div>
+        <div class="inst">
+            <div class="linst"><div class="arg">H</div><div class="arg">W</div><div class="arg">Y</div><div class="arg">X</div><div class="arg">S</div><div class="label">DRAW</div></div>
+            <div id="mandraw"></div>
+        </div>
+        <div class="inst">
+            <div class="linst"><div class="arg">V</div><div class="label">DUMP</div></div>
+            <div id="mandump"></div>
+        </div>
+        <div class="inst">
+            <div class="linst"><div class="arg">V</div><div class="label">PRINT</div></div>
+            <div id="manprint"></div>
+        </div>
+        <div class="inst">
+            <div class="linst"><div class="arg">Y</div><div class="arg">X</div><div class="label">PIXEL</div></div>
+            <div id="manpixel"></div>
+        </div>
+        <div class="inst">
+            <div class="linst"><div class="arg">H</div><div class="arg">W</div><div class="arg">Y</div><div class="arg">X</div><div class="label">RECT</div></div>
+            <div id="manrect"></div>
+        </div>
+        <div class="inst">
+            <div class="linst"><div class="arg">Y2</div><div class="arg">X1</div><div class="arg">Y2</div><div class="arg">X2</div><div class="label">LINE</div></div>
+            <div id="manline"></div>
+        </div>
+        <div class="inst">
+            <div class="linst"><div class="arg">R</div><div class="arg">Y</div><div class="arg">X</div><div class="label">CIRCLE</div></div>
+            <div id="mancircle"></div>
+        </div>
+        <div class="inst">
+            <div class="linst"><div class="arg">V</div><div class="label">RETURN</div></div>
+            <div id="manreturn"></div>
+        </div>
+        <div class="inst">
+            <div class="linst"><div class="arg">B</div><div class="arg">G</div><div class="arg">R</div><div class="label">RGB</div></div>
+            <div id="manrgb"></div>
+        </div>
+        <div class="inst">
+            <div class="linst"><div class="arg">Y</div><div class="arg">X</div><div class="label">PICK</div></div>
+            <div id="manpick"></div>
+        </div>
+        <div class="inst">
+            <div class="linst ex"><div class="arg">V</div><div class="label">FLOOR</div></div>
+            <div id="manfloor"></div>
+        </div>
+        <div class="inst">
+            <div class="linst ex"><div class="arg">V</div><div class="label">CEIL</div></div>
+            <div id="manceil"></div>
+        </div>
+        <div class="inst">
+            <div class="linst ex"><div class="arg">V</div><div class="label">SQRT</div></div>
+            <div id="mansqrt"></div>
+        </div>
+        <div class="inst">
+            <div class="linst ex"><div class="arg">V</div><div class="label">COS</div></div>
+            <div id="mancos"></div>
+        </div>
+        <div class="inst">
+            <div class="linst ex"><div class="arg">V</div><div class="label">ABS</div></div>
+            <div id="manabs"></div>
+        </div>
+        <div class="inst">
+            <div class="linst ex"><div class="arg">O</div><div class="label">LENGTH</div></div>
+            <div id="manlen"></div>
+        </div>
+        <div class="inst">
+            <div class="linst ex"><div class="arg">I</div><div class="arg">O</div><div class="label">GET</div></div>
+            <div id="manget"></div>
+        </div>
+        <div class="inst">
+            <div class="linst ex"><div class="arg">V</div><div class="arg">O</div><div class="label">FIND</div></div>
+            <div id="manfind"></div>
+        </div>
+        <div class="inst">
+            <div class="linst ex"><div class="arg">I</div><div class="arg">A</div><div class="label">SUBSTR</div></div>
+            <div id="mansub"></div>
+        </div>
+        <div class="inst">
+            <div class="linst ex"><div class="arg">V</div><div class="arg">I</div><div class="arg">A</div><div class="label">SUBSTR</div></div>
+            <div id="mansub2"></div>
+        </div>
+        <div class="inst">
+            <div class="linst ex"><div class="label">RGB</div></div>
+            <div id="manrgb2"></div>
+        </div>
+        <div class="inst">
+            <div class="linst ex"><div class="label">READ</div></div>
+            <div id="manread"></div>
+        </div>
+    </div>
+    
+    </div></div>
+        
 
     <div id="continue">
         <div class="icon" ontouchstart="$(this).closest('.code').code('end');event.preventDefault();"

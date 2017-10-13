@@ -6,9 +6,9 @@
 
     <rdf:Description>
         <dct:identifier>001</dct:identifier>
-        <dct:title xml:lang="fr-FR">Afficher le mot \\\"HELLO\\\" sur la sortie standard grâce à la commande PRINT.</dct:title>
-        <dct:description><![CDATA["class":"l2","a":{"op":["print"]},"values":{"\\\"HELLO\\\"":"HELLO"},"valid":{"stdout":1404283036}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez le mot \\\"[i]HELLO[/i]\\\" sur la sortie standard.[/b]","","La commande [red]PRINT[/red] ('imprimer' en anglais) est accessible depuis le [b]premier onglet[/b] de la fenêtre SOURCE à gauche de l'écran. Elle permet d'afficher un texte sur la sortie standard et s'utilise avec un argument au format texte.","","Le mot \\\"[i]HELLO[/i]\\\", comme toutes les valeurs statiques, est disponible dans le [b]deuxième onglet[/b]."]]]></dct:description>
+        <dct:title xml:lang="fr-FR">Afficher la phrase \\\"HELLO WORLD\\\" sur la sortie standard grâce à la commande PRINT.</dct:title>
+        <dct:description><![CDATA["class":"l2","a":{"op":["print"]},"values":{"\\\"HELLO WORLD\\\"":"HELLO WORLD"},"valid":{"stdout":-1836225323}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Affichez la phrase \\\"[i]HELLO WORLD[/i]\\\" sur la sortie standard.[/b][br][br]La commande [red][b]PRINT[/b][/red] ('imprimer' en anglais) est accessible depuis le [b]premier onglet[/b] de la fenêtre SOURCE à gauche de l'écran. Elle permet d'afficher un texte sur la sortie standard et s'utilise avec un argument au format texte.[br][br]L'expression \\\"[i]HELLO WORLD[/i]\\\", comme toutes les valeurs statiques, est disponible dans le [b]deuxième onglet[/b].","tips":["Afficher \\\"[i]HELLO WORLD[/i]\\\" est connu comme le [b]1er[/b] code généralement écrit depuis un nouvel environnement.","L'expression \\\"[i]HELLO WORLD[/i]\\\" doit être placée en [b]paramètre[/b] de la commande [red][b]PRINT[/b][/red].","Le code devrait être :[code]PRINT(\\\"HELLO WORLD\\\")[/code]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -21,7 +21,7 @@
         <dct:identifier>002</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher le caracètre 'A' sur la sortie standard grâce à la commande PRINT.</dct:title>
         <dct:description><![CDATA["class":"l2","a":{"op":["print"],"va":["VA"]},"valid":{"stdout":710635761}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez le caractère '[i]A[/i]' sur la sortie standard.[/b]","","La commande [red]PRINT[/red] peut afficher n'importe quel texte du moment que celui-ci est lisible. [red]PRINT[/red] peut donc aussi bien afficher le [b]mot \\\"[i]HELLO[/i]\\\"[/b] que le [b]simple caractère '[i]A[/i]'[/b].","","[strong]Il est important de remarquer que les valeurs de type texte sont notées entre double-quotes (\\\"HELLO\\\"), tandisqu'une valeur de type caractère est notée entre simple quote ('A').[/strong]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Affichez le caractère '[i]A[/i]' sur la sortie standard.[/b][br][br]La commande [red]PRINT[/red] peut afficher n'importe quel texte du moment que celui-ci est lisible. [red]PRINT[/red] peut donc aussi bien afficher le [b]mot \\\"[i]HELLO[/i]\\\"[/b] que le [b]simple caractère '[i]A[/i]'[/b].[br][br][strong]Il est important de remarquer que les valeurs de type texte sont notées entre double-quotes (\\\"HELLO\\\"), tandisqu'une valeur de type caractère est notée entre simple quote ('A').[/strong][br]Cette notation est communément admise dans la plupart des langages de programmation.","tips":["Dans un premier temps, il faut faire glisser la commande [red][b]PRINT[/b][/red] vers la [b]1ère ligne[/b] de la zone centrale.","Le caractère '[i]A[/i]' doit être placée ensuite en [b]paramètre[/b] de la commande [red][b]PRINT[/b][/red].","Le code devrait être :[code]PRINT('A')[/code]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -33,7 +33,7 @@
         <dct:identifier>003</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher, lettre à lettre, le mot \\\"HELLO\\\" sur la sortie standard grâce à la commande PRINT.</dct:title>
         <dct:description><![CDATA["a":{"op":["print"],"va":["VE","VH","VL","VO"]},"valid":{"stdout":1404283036}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]En décomposant le mot lettre à lettre, affichez \\\"[i]HELLO[/i]\\\" sur la sortie standard.[/b]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"En décomposant le mot lettre à lettre, [b]affichez \\\"[i]HELLO[/i]\\\" sur la sortie standard.[/b]","tips":["Le programme qui va devoir afficher [b]5 caractères[/b], devra faire appel à la commande [red][b]PRINT[/b][/red] [b]5 fois[/b].","Les paramètres des commandes [red][b]PRINT[/b][/red] sont respectivement '[i]H[/i]', '[i]E[/i]', '[i]L[/i]', '[i]L[/i]' et '[i]O[/i]'.","[code]PRINT('H')[br]PRINT('E')[br]PRINT('L')[br]PRINT('L')[br]PRINT('O')[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -45,7 +45,7 @@
         <dct:identifier>004</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher le text \\\"HELLO WORLD\\\" sur la sortie standard grâce à la commande PRINT.</dct:title>
         <dct:description><![CDATA["a":{"op":["print"],"va":["VSP"]},"values":{"\\\"HELLO\\\"":"HELLO","\\\"WORLD\\\"":"WORLD"},"valid":{"stdout":-1836225323}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez le texte \\\"[i]HELLO WORLD[/i]\\\" sans oublier pas l'espace entre les deux mots.[/b]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Affichez le texte \\\"[i]HELLO WORLD[/i]\\\" sans oublier pas l'espace entre les deux mots.[/b]","tips":["Le programme qui va devoir afficher [b]3 éléments[/b], devra faire appel à la commande [red][b]PRINT[/b][/red] [b]3 fois[/b].","Les paramètres des commandes [red][b]PRINT[/b][/red] sont respectivement \\\"[i]HELLO[/i]\\\", '[i] [/i]' (espace) et \\\"[i]WORLD[/i]\\\".","[code]PRINT(\\\"HELLO\\\")[br]PRINT(' ')[br]PRINT(\\\"WORLD\\\")[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -57,7 +57,7 @@
         <dct:identifier>005</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser la commande PRINT avec la valeur ASCII du caractère 'A'.</dct:title>
         <dct:description><![CDATA["class":"l2","a":{"op":["print"],"va":["V065"]},"valid":{"stdout":710635761}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez le caractère '[i]A[/i]' grâce à son code [blue]ASCII[/blue][/b].","","Il est possible d'utiliser la commande [red]PRINT[/red] avec un nombre. Dans ce cas, la commande [red]PRINT[/red] va associer la valeur fournie en argument au caractère [blue]ASCII[/blue] correspondant et va afficher celui-ci lorsque cela est possible.","","Le code [blue]ASCII[/blue] est une table qui associe chaque caractère à une valeur numérique. Ainsi le caractère '[i]A[/i]' est associé à la valeur 65. [red]PRINT 'A'[/red] est donc équivalent à [red]PRINT 65[/red].","","[i]Pour information, voici quelques valeurs issues de la table [blue]ASCII[/blue][/i]","[code]| 40 '(' | 41 ')' | 42 '*' | 43 '+' | 44 ',' | 45 '-' | 46 '.' | 47 '/' |[br]| 48 '0' | 49 '1' | 50 '2' | 51 '3' | 52 '4' | 53 '5' | 54 '6' | 56 '8' | 57 '9' |[br]| 65 'A' | 66 'B' | 67 'C' | 68 'D' | 69 'E' | 88 'X' | 89 'Y' | 90 'Z' |[br]| 97 'a' | 98 'b' | 99 'c' | 100 'd' | 101 'e' | 120 'x' | 121 'y' | 122 'z' |[/code]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Affichez le caractère '[i]A[/i]' grâce à son code [blue]ASCII[/blue][/b].[br][br]Il est possible d'utiliser la commande [red]PRINT[/red] avec un nombre. Dans ce cas, la commande [red]PRINT[/red] va associer la valeur fournie en argument au caractère [blue]ASCII[/blue] correspondant et va afficher celui-ci lorsque cela est possible.[br][br]Le code [blue]ASCII[/blue] est une table qui associe chaque caractère à une valeur numérique. Ainsi le caractère '[i]A[/i]' est associé à la valeur 65. [red]PRINT 'A'[/red] est donc équivalent à [red]PRINT 65[/red].[br][br][i]Pour information, voici quelques valeurs issues de la table [blue]ASCII[/blue][/i][code]| 40 '(' | 41 ')' | 42 '*' | 43 '+' | 44 ',' | 45 '-' | 46 '.' | 47 '/' | 48 '0' | 49 '1' | 50 '2' | 51 '3' | 52 '4' | 53 '5' | 54 '6' | 56 '8' | 57 '9' | 65 'A' | 66 'B' | 67 'C' | 68 'D' | 69 'E' | 88 'X' | 89 'Y' | 90 'Z' |[br]| 97 'a' | 98 'b' | 99 'c' | 100 'd' | 101 'e' | 120 'x' | 121 'y' | 122 'z' |[/code]","tips":["La valeur entière [b]65[/b] est équivalente au caractère '[i]A[/i]'.","Afficher le caractère '[i]A[/i]' revient à afficher le caractère [b]65[/b] de la table [blue]ASCII[/blue].","[code]PRINT(65)[/code]Le code [blue]ASCII[/blue] est une norme reconnue partout."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -70,7 +70,7 @@
         <dct:identifier>006</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser la commande PRINT avec une valeur ASCII non affichable.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["print"],"va":["V001"]},"valid":{"stdout":-2054528355}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Tentez d'afficher le caractère dont le code [blue]ASCII[/blue] est 1[/b].","","Toutes les valeurs [blue]ASCII[/blue] [b]ne sont pas forcément affichables[/b]. Certaines, comme la valeur 1, sont des caractères de contrôle et ne correspondent à aucun signe. Dans ces cas-là, l'écran affiche un [b]'.'[/b] pour signifier un caractère [b]non affichable[/b]."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Tentez d'afficher le caractère dont le code [blue]ASCII[/blue] est 1[/b].[br][br]Toutes les valeurs [blue]ASCII[/blue] [b]ne sont pas forcément affichables[/b]. Certaines, comme la valeur 1, sont des caractères de contrôle et ne correspondent à aucun signe. Dans ces cas-là, l'écran affiche un [b]'.'[/b] pour signifier un caractère [b]non affichable[/b]."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -83,7 +83,7 @@
         <dct:identifier>007</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser la commande PRINT avec des valeurs ASCII quelconques.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["print"],"va":["V100","V080","V050","V010","V070","V032","V063"]},"valid":{"stdout":58117324}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez successivement les caractères ASCII 100, 80, 50, 10, 70, 32 et 63.[/b]","","Certaines valeurs [blue]ASCII[/blue] sont à retenir :",". [b]10[/b] n'est pas un caractère affichable mais correspond au [b]retour à la ligne[/b] (que l'on note parfois [b]'\\\\n'[/b])",". [b]32[/b] est le caractère [b]espace ' '[/b].",". [b]48[/b] correspond au caractère [b]'0'[/b] et les autres chiffres suivent derrière '1'=49, '2'=50, etc.",". [b]65[/b] correspond au caractère masjucule [b]'A'[/b] et les autres lettre suivent également derrière."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez successivement les caractères ASCII 100, 80, 50, 10, 70, 32 et 63.[/b][br][br]Certaines valeurs [blue]ASCII[/blue] sont à retenir :",". [b]10[/b] n'est pas un caractère affichable mais correspond au [b]retour à la ligne[/b] (que l'on note parfois [b]'\\\\n'[/b])",". [b]32[/b] est le caractère [b]espace ' '[/b].",". [b]48[/b] correspond au caractère [b]'0'[/b] et les autres chiffres suivent derrière '1'=49, '2'=50, etc.",". [b]65[/b] correspond au caractère masjucule [b]'A'[/b] et les autres lettre suivent également derrière."]]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -95,7 +95,7 @@
         <dct:identifier>008</dct:identifier>
         <dct:title xml:lang="fr-FR">Ne pas confondre la valeur 1 avec le caractère '1'. Un exemple avec la commande PRINT.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["print"],"va":["V001","V1"]},"valid":{"stdout":1031329430}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]A l'aide de la commande [red]PRINT[/red], affichez la valeur '[i]1[/i]' sur l'écran de sortie standard.[/b]","","Il est nécessaire, pour cet exercice, de bien comprendre la différence entre la valeur [b]1[/b] qui représente un caractère [blue]ASCII[/blue] non affichable et le caractère [b]'1'[/b] qui, en [blue]ASCII[/blue], vaut [b]49[/b]."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]A l'aide de la commande [red]PRINT[/red], affichez la valeur '[i]1[/i]' sur l'écran de sortie standard.[/b][br][br]Il est nécessaire, pour cet exercice, de bien comprendre la différence entre la valeur [b]1[/b] qui représente un caractère [blue]ASCII[/blue] non affichable et le caractère [b]'1'[/b] qui, en [blue]ASCII[/blue], vaut [b]49[/b]."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -109,7 +109,7 @@
         <dct:identifier>011</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher le chiffre 1 en utilisant la commande DUMP.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["dump"],"va":["V001"]},"valid":{"stdout":-1859215137}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez le chiffre 1 grâce à la commande DUMP.[/b]","","Contrairement à la commande [red]PRINT[/red] qui convertit les nombres en caractères [blue]ASCII[/blue], [red]DUMP[/red] ('déposer' ou 'copier' en anglais) affiche directement la valeur numérique.","","Par ailleurs, même si cela n'est pas visible avec cet exercice, il faut savoir que [red]DUMP[/red] rajoute une espace après chaque appel."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez le chiffre 1 grâce à la commande DUMP.[/b][br][br]Contrairement à la commande [red]PRINT[/red] qui convertit les nombres en caractères [blue]ASCII[/blue], [red]DUMP[/red] ('déposer' ou 'copier' en anglais) affiche directement la valeur numérique.[br][br]Par ailleurs, même si cela n'est pas visible avec cet exercice, il faut savoir que [red]DUMP[/red] rajoute une espace après chaque appel."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -122,7 +122,7 @@
         <dct:identifier>012</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher le chiffre 65 en utilisant la commande DUMP.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["dump"],"va":["VA"]},"valid":{"stdout":-1027289413}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez le chiffre 65 grâce à la commande DUMP.[/b]","","La commande [red]DUMP[/red] utilisée avec un caractère affiche la valeur numérique [blue]ASCII[/blue] correspondant. Pour rappel, le caractère [b]'[i]A[/i]'[/b] correspond à la valeur [blue]ASCII[/blue] [b]65[/b]."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez le chiffre 65 grâce à la commande DUMP.[/b][br][br]La commande [red]DUMP[/red] utilisée avec un caractère affiche la valeur numérique [blue]ASCII[/blue] correspondant. Pour rappel, le caractère [b]'[i]A[/i]'[/b] correspond à la valeur [blue]ASCII[/blue] [b]65[/b]."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -135,7 +135,7 @@
         <dct:identifier>013</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher les valeurs ASCII de chacune des lettres du mot HELLO en utilisant la commande DUMP.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["dump"]},"values":{"\\\"HELLO\\\"":"HELLO"},"valid":{"stdout":2055117396}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]A l'aide de la commande DUMP, affichez les valeurs ASCII des lettres composants le mot \\\"HELLO\\\".[/b]","","La commande [red]DUMP[/red], lorsqu'elle est utilisée avec un mot (ce que l'on appelle aussi [i]une chaîne de caractères[/i]), affiche les valeurs [blue]ASCII[/blue] de chacune des lettres."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]A l'aide de la commande DUMP, affichez les valeurs ASCII des lettres composants le mot \\\"HELLO\\\".[/b][br][br]La commande [red]DUMP[/red], lorsqu'elle est utilisée avec un mot (ce que l'on appelle aussi [i]une chaîne de caractères[/i]), affiche les valeurs [blue]ASCII[/blue] de chacune des lettres."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -147,7 +147,7 @@
         <dct:identifier>014</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher la valeur PI en utilisant la commande DUMP.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["dump"],"va":["PI"]},"valid":{"stdout":457316377}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez la valeur numérique de la constantet PI.[/b]","","La commande [red]DUMP[/red] permet également d'afficher des valeurs négatives ou décimales. De telles valeurs sont évidemment incompatibles avec la commande [red]PRINT[/red] qui ne peut afficher que des valeurs [blue]ASCII[/blue], c'est à dire des valeurs entières comprises entre [b]0 et 255[/b]."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez la valeur numérique de la constantet PI.[/b][br][br]La commande [red]DUMP[/red] permet également d'afficher des valeurs négatives ou décimales. De telles valeurs sont évidemment incompatibles avec la commande [red]PRINT[/red] qui ne peut afficher que des valeurs [blue]ASCII[/blue], c'est à dire des valeurs entières comprises entre [b]0 et 255[/b]."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -159,7 +159,7 @@
         <dct:identifier>015</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher le contenu d'un tableau en utilisant la commande DUMP.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["dump"]},"values":{"[lost]":[4,8,15,16,23,42]},"valid":{"stdout":1600336412}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[bb]Affichez le contenu du tableau [lost].[/bb]","","Un tableau est une suite de valeurs numériques. Cette structure est très similaire à un mot qui n'est, au final, qu'une suite de caracatères (et donc de valeurs numériques entières comprises entre 0 et 255).","","Du point de vue de la notation :",". Une valeur numérique se note simplement",". Une lettre se note entre simple quote",". Un mot se note entre double quotes",". Un tableau se note entre crochets"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[bb]Affichez le contenu du tableau [lost].[/bb][br][br]Un tableau est une suite de valeurs numériques. Cette structure est très similaire à un mot qui n'est, au final, qu'une suite de caracatères (et donc de valeurs numériques entières comprises entre 0 et 255).[br][br]Du point de vue de la notation :",". Une valeur numérique se note simplement",". Une lettre se note entre simple quote",". Un mot se note entre double quotes",". Un tableau se note entre crochets"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -172,7 +172,7 @@
         <dct:identifier>016</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher le contenu d'un tableau en utilisant la commande DUMP.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["dump"]},"values":{"[tmp]":[-3,-1.25,0.01,32.42,234.72]},"valid":{"stdout":238819168}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[bb]Affichez le contenu du tableau [tmp][/bb] (l'abréviation de temporaire est généralement utilisée pour une valeur qui n'est pas destinée à perdurer).","","Un tableau est une suite de valeur numérique. Ces valeurs numériques peuvent être indifférement négatives ou décimales."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[bb]Affichez le contenu du tableau [tmp][/bb] (l'abréviation de temporaire est généralement utilisée pour une valeur qui n'est pas destinée à perdurer).[br][br]Un tableau est une suite de valeur numérique. Ces valeurs numériques peuvent être indifférement négatives ou décimales."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -187,7 +187,7 @@
         <dct:identifier>031</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher le caractère '1' avec les commandes DUMP et PRINT.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["dump","print"],"va":["V1"]},"valid":{"stdout":-995599074}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez '49 1' sur la sortie standard grâce aux commandes DUMP et PRINT.[/b]","","Pour rappel, [b]'[i]1[/i]'[/b] est le caractère [blue]ASCII[/blue] représentant le chiffre [b]1[/b] (en tant que caractère) et dont la valeur est [b]49[/b]."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez '49 1' sur la sortie standard grâce aux commandes DUMP et PRINT.[/b][br][br]Pour rappel, [b]'[i]1[/i]'[/b] est le caractère [blue]ASCII[/blue] représentant le chiffre [b]1[/b] (en tant que caractère) et dont la valeur est [b]49[/b]."]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -201,7 +201,7 @@
         <dct:identifier>051</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher un pixel de l'écran graphique grâce à la commande PIXEL.</dct:title>
         <dct:description><![CDATA["class":"l2","a":{"op":["pixel"],"va":["V000","V001","V002","V003","V004","V005","V006","V007","V008","V009","V010"]},"valid":{"screen":-763939344}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Coloriez en blanc le pixel en haut à gauche de l'écran graphique[/b].","","La commande [red]PIXEL(I,J)[/red] permet de colorier le [b]Ième pixel de la Jème ligne[/b] de l'écran graphique avec la couleur courrante. Par défault, cette couleur est blanche. Sachant qu'en informatique, les numérotations commencent la plupart du temps par 0, [blue]le pixel en haut à gauche de l'écran a (0,0) pour coordonnées[/blue].","","[svg]<rect x='0' y='0' width='3' height='3' style='fill:white;'/>[/svg]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Coloriez en blanc le pixel en haut à gauche de l'écran graphique[/b].[br][br]La commande [red]PIXEL(I,J)[/red] permet de colorier le [b]Ième pixel de la Jème ligne[/b] de l'écran graphique avec la couleur courrante. Par défault, cette couleur est blanche. Sachant qu'en informatique, les numérotations commencent la plupart du temps par 0, [blue]le pixel en haut à gauche de l'écran a (0,0) pour coordonnées[/blue].[br][br][svg]<rect x='0' y='0' width='3' height='3' style='fill:white;'/>[/svg]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -214,7 +214,7 @@
         <dct:identifier>052</dct:identifier>
         <dct:title xml:lang="fr-FR">Coloriez les 4 coins de l'écran graphique grâce à la commande PIXEL.</dct:title>
         <dct:description><![CDATA["class":"l2","a":{"op":["pixel"],"va":["V000","V001","V002","V003","V004","V005","V006","V007","V008","V009","V010","V031"]},"valid":{"screen":1640471626}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Coloriez en blanc les pixels des 4 coins de l'écran.[/b]","","Pour information, l'écran graphique a une résolution de [red]32x32[/red].","","[i]Petite astuce pour gagner du temps : un paramètre non renseigné prend automatiquement la valeur 0.[/i]","","[svg]<rect x='0' y='0' width='3' height='3' style='fill:white;'/><rect x='29' y='0' width='3' height='3' style='fill:white;'/><rect x='0' y='29' width='3' height='3' style='fill:white;'/><rect x='29' y='29' width='3' height='3' style='fill:white;'/>[/svg]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Coloriez en blanc les pixels des 4 coins de l'écran.[/b][br][br]Pour information, l'écran graphique a une résolution de [red]32x32[/red].[br][br][i]Petite astuce pour gagner du temps : un paramètre non renseigné prend automatiquement la valeur 0.[/i][br][br][svg]<rect x='0' y='0' width='3' height='3' style='fill:white;'/><rect x='29' y='0' width='3' height='3' style='fill:white;'/><rect x='0' y='29' width='3' height='3' style='fill:white;'/><rect x='29' y='29' width='3' height='3' style='fill:white;'/>[/svg]"]]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -228,7 +228,7 @@
         <dct:identifier>061</dct:identifier>
         <dct:title xml:lang="fr-FR">Peindre en blanc l'écran graphique grâce à la commande RECT.</dct:title>
         <dct:description><![CDATA["class":"l2","a":{"op":["rect"],"va":["V000","V001","V002","V003","V004","V005","V006","V007","V008","V009","V010","V016","V032"]},"valid":{"screen":-1115342634}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Coloriez en blanc l'ensemble de l'écran graphique.[/b]","","La commande [red]RECT(I,J,LARGEUR,HAUTEUR)[/red] permet de colorier un rectangle dont le coin supérieur gauche a pour coordonnées (I,J) et dont la taille est spécifiée par les 2 arguments suivants.","","[i]Pour rappel, l'écran graphique a une résolution de 32x32.[/i]","","[svg]<rect x='0' y='0' width='32' height='32' style='fill:white;'/>[/svg]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Coloriez en blanc l'ensemble de l'écran graphique.[/b][br][br]La commande [red]RECT(I,J,LARGEUR,HAUTEUR)[/red] permet de colorier un rectangle dont le coin supérieur gauche a pour coordonnées (I,J) et dont la taille est spécifiée par les 2 arguments suivants.[br][br][i]Pour rappel, l'écran graphique a une résolution de 32x32.[/i][br][br][svg]<rect x='0' y='0' width='32' height='32' style='fill:white;'/>[/svg]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -241,7 +241,7 @@
         <dct:identifier>062</dct:identifier>
         <dct:title xml:lang="fr-FR">Peindre en blanc la moitié inférieure de l'écran graphique grâce à la commande RECT.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["rect"],"va":["V000","V001","V002","V003","V004","V005","V006","V007","V008","V009","V010","V016","V032"]},"valid":{"screen":568599214}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Coloriez en blanc la moitié inférieure de l'écran graphique.[/b]","","[svg]<rect x='0' y='16' width='32' height='16' style='fill:white;'/>[/svg]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Coloriez en blanc la moitié inférieure de l'écran graphique.[/b][br][br][svg]<rect x='0' y='16' width='32' height='16' style='fill:white;'/>[/svg]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -253,7 +253,7 @@
         <dct:identifier>063</dct:identifier>
         <dct:title xml:lang="fr-FR">Peindre en blanc 4 barres verticales grâce à la commande RECT.</dct:title>
         <dct:description><![CDATA["class":"l2","a":{"op":["rect"],"va":["V000","V001","V002","V003","V004","V005","V006","V007","V008","V009","V010","V016","V024","V032"]},"valid":{"screen":-1807686071}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Dessinez des rayures verticales en coloriant en blanc 4 rectangles verticaux de dimension 4x32 uniformément distribués.[/b]","","Si le premier rectangle a pour point d'origine le point (0,0), le second part du point (8,0). A vous de trouvez les 2 autres.","","[svg]<rect x='0' y='0' width='4' height='32' style='fill:white;'/><rect x='8' y='0' width='4' height='32' style='fill:white;'/><rect x='16' y='0' width='4' height='32' style='fill:white;'/><rect x='24' y='0' width='4' height='32' style='fill:white;'/>[/svg]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Dessinez des rayures verticales en coloriant en blanc 4 rectangles verticaux de dimension 4x32 uniformément distribués.[/b][br][br]Si le premier rectangle a pour point d'origine le point (0,0), le second part du point (8,0). A vous de trouvez les 2 autres.[br][br][svg]<rect x='0' y='0' width='4' height='32' style='fill:white;'/><rect x='8' y='0' width='4' height='32' style='fill:white;'/><rect x='16' y='0' width='4' height='32' style='fill:white;'/><rect x='24' y='0' width='4' height='32' style='fill:white;'/>[/svg]"]]]></dct:description>
         <dct:extent>4</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -268,7 +268,7 @@
         <dct:identifier>066</dct:identifier>
         <dct:title xml:lang="fr-FR">Tracer la diagonale principale de l'écran graphique grâce à la commande LINE.</dct:title>
         <dct:description><![CDATA["class":"l2","a":{"op":["line"],"va":["V000","V031"]},"valid":{"screen":-1974189523}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Tracez en blanc la diagonale principale de l'écran graphique.[/b]","","La commande [red]LINE(I1,J1,I2,J2)[/red] (LIGNE en anglais) permet de tracer une ligne depuis le point de coordonnées [b](I1,J1)[/b] vers le point de coordonnées [b](I2,J2)[/b].","","[svg]<line x1='0' y1='0' x2='32' y2='32' style='fill:none;stroke:white;stroke-width:1px;'/>[/svg]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Tracez en blanc la diagonale principale de l'écran graphique.[/b][br][br]La commande [red]LINE(I1,J1,I2,J2)[/red] (LIGNE en anglais) permet de tracer une ligne depuis le point de coordonnées [b](I1,J1)[/b] vers le point de coordonnées [b](I2,J2)[/b].[br][br][svg]<line x1='0' y1='0' x2='32' y2='32' style='fill:none;stroke:white;stroke-width:1px;'/>[/svg]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -281,7 +281,7 @@
         <dct:identifier>067</dct:identifier>
         <dct:title xml:lang="fr-FR">Tracer la première et dernière colonne de l'écran graphique grâce à la commande LINE.</dct:title>
         <dct:description><![CDATA["class":"l2","a":{"op":["line"],"va":["V000","V031"]},"valid":{"screen":407328167}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Tracez en blanc la première et dernière colonne de l'écran graphique.[/b]","","[i]Il est intéressant de remarquer qu'une ligne horizontale ou verticale peut également être tracée à l'aide d'un [b]rectangle[/b] de hauteur ou de largeur 1.[/i]","","[svg]<line x1='0' y1='0' x2='0' y2='32' style='fill:none;stroke:white;stroke-width:3px;'/><line x1='32' y1='0' x2='32' y2='32' style='fill:none;stroke:white;stroke-width:3px;'/>[/svg]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Tracez en blanc la première et dernière colonne de l'écran graphique.[/b][br][br][i]Il est intéressant de remarquer qu'une ligne horizontale ou verticale peut également être tracée à l'aide d'un [b]rectangle[/b] de hauteur ou de largeur 1.[/i][br][br][svg]<line x1='0' y1='0' x2='0' y2='32' style='fill:none;stroke:white;stroke-width:3px;'/><line x1='32' y1='0' x2='32' y2='32' style='fill:none;stroke:white;stroke-width:3px;'/>[/svg]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -293,7 +293,7 @@
         <dct:identifier>068</dct:identifier>
         <dct:title xml:lang="fr-FR">Tracer les 2 diagonales de l'écran graphique grâce à la commande LINE.</dct:title>
         <dct:description><![CDATA["class":"l2","a":{"op":["line"],"va":["V000","V031"]},"valid":{"screen":1334803318}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Tracez en blanc les 2 diagonales de l'écran graphique.[/b]","","[svg]<line x1='0' y1='0' x2='32' y2='32' style='fill:none;stroke:white;stroke-width:1px;'/><line x1='0' y1='32' x2='32' y2='0' style='fill:none;stroke:white;stroke-width:1px;'/>[/svg]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Tracez en blanc les 2 diagonales de l'écran graphique.[/b][br][br][svg]<line x1='0' y1='0' x2='32' y2='32' style='fill:none;stroke:white;stroke-width:1px;'/><line x1='0' y1='32' x2='32' y2='0' style='fill:none;stroke:white;stroke-width:1px;'/>[/svg]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -307,7 +307,7 @@
         <dct:identifier>071</dct:identifier>
         <dct:title xml:lang="fr-FR">Peindre en rouge l'écran graphique grâce aux commandes RECT et RGB.</dct:title>
         <dct:description><![CDATA["class":"l2","a":{"op":["rect","rgb"],"va":["V000","V001","V002","V003","V004","V005","V006","V007","V008","V009","V010","V016","V032","V255"]},"valid":{"screen":-859398104}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Coloriez en rouge l'ensemble de l'écran graphique.[/b]","","La commande [red]RGB[/red] (les initiales de ROUGE,VERT,BLEU en anglais) permet de modifier la couleur courante en spécifiant chacune de ses 3 composantes. [b]0[/b] signifie une absence totale de la tonalité (rouge, vert ou bleu), tandisque [b]255[/b] signifie une présence maximale de ce ton.","","Quelques couleurs simples à connaître :", "[blue][b]noir&nbsp;&nbsp;&nbsp;= (0,0,0)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;blanc&nbsp;= (255,255,255)[/b][/blue]","[blue][b]rouge&nbsp;&nbsp;= (255,0,0)&nbsp;&nbsp;&nbsp;&nbsp;vert&nbsp;&nbsp;= (0,255,0)[/b][/blue]","[blue][b]bleu&nbsp;&nbsp;&nbsp;= (0,0,255)&nbsp;&nbsp;&nbsp;&nbsp;jaune&nbsp;= (255,255,0)[/b][/blue]","[blue][b]violet&nbsp;= (255,0,255)&nbsp;&nbsp;cyan&nbsp;&nbsp;= (0,255,255)[/b][/blue]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Coloriez en rouge l'ensemble de l'écran graphique.[/b][br][br]La commande [red]RGB[/red] (les initiales de ROUGE,VERT,BLEU en anglais) permet de modifier la couleur courante en spécifiant chacune de ses 3 composantes. [b]0[/b] signifie une absence totale de la tonalité (rouge, vert ou bleu), tandisque [b]255[/b] signifie une présence maximale de ce ton.[br][br]Quelques couleurs simples à connaître :", "[blue][b]noir&nbsp;&nbsp;&nbsp;= (0,0,0)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;blanc&nbsp;= (255,255,255)[/b][/blue]","[blue][b]rouge&nbsp;&nbsp;= (255,0,0)&nbsp;&nbsp;&nbsp;&nbsp;vert&nbsp;&nbsp;= (0,255,0)[/b][/blue]","[blue][b]bleu&nbsp;&nbsp;&nbsp;= (0,0,255)&nbsp;&nbsp;&nbsp;&nbsp;jaune&nbsp;= (255,255,0)[/b][/blue]","[blue][b]violet&nbsp;= (255,0,255)&nbsp;&nbsp;cyan&nbsp;&nbsp;= (0,255,255)[/b][/blue]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -320,7 +320,7 @@
         <dct:identifier>072</dct:identifier>
         <dct:title xml:lang="fr-FR">Coloriez les 4 coins de l'écran graphique en bleu grâce aux commandes PIXEL et RGB.</dct:title>
         <dct:description><![CDATA["class":"l2","a":{"op":["pixel","rgb"],"va":["V000","V001","V002","V003","V004","V005","V006","V007","V008","V009","V010","V030","V031","V032","V255"]},"valid":{"screen":-1063194785}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Coloriez en bleu les pixels des 4 coins de l'écran.[/b]","","Pour rappel, [red]RGB[/red] est l'accronyme de RED-GREEN-BLUE soit [blue]ROUGE-VERT-BLEU[/blue] en français. Chaque composante peut prendre une valeur comprise entre 0 (absence de la composante) à 255 (présence maximale). La couleur bleu est définie par une absence de rouge et de vert, et d'une présence maximale de bleu.","","[svg]<rect x='0' y='0' width='3' height='3' style='fill:#00F;'/><rect x='29' y='0' width='3' height='3' style='fill:#00F;'/><rect x='0' y='29' width='3' height='3' style='fill:#00F;'/><rect x='29' y='29' width='3' height='3' style='fill:#00F;'/>[/svg]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Coloriez en bleu les pixels des 4 coins de l'écran.[/b][br][br]Pour rappel, [red]RGB[/red] est l'accronyme de RED-GREEN-BLUE soit [blue]ROUGE-VERT-BLEU[/blue] en français. Chaque composante peut prendre une valeur comprise entre 0 (absence de la composante) à 255 (présence maximale). La couleur bleu est définie par une absence de rouge et de vert, et d'une présence maximale de bleu.[br][br][svg]<rect x='0' y='0' width='3' height='3' style='fill:#00F;'/><rect x='29' y='0' width='3' height='3' style='fill:#00F;'/><rect x='0' y='29' width='3' height='3' style='fill:#00F;'/><rect x='29' y='29' width='3' height='3' style='fill:#00F;'/>[/svg]"]]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -332,7 +332,7 @@
         <dct:identifier>073</dct:identifier>
         <dct:title xml:lang="fr-FR">Affichez un cadre vert grâce aux commandes RECT et RGB.</dct:title>
         <dct:description><![CDATA["class":"l2","a":{"op":["rect","rgb"],"va":["V000","V004","V024","V032","V255"]},"valid":{"screen":2104596147}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez un cadre vert de 4 pixels d'épaisseur remplissant l'écran.[/b]","","Dans un premier temps coloriez l'écran graphique en [b]vert[/b] puis tracez un rectangle [b]noir[/b] de dimension 24x24 centré au milieu de l'écran.","","[svg]<rect x='0' y='0' width='32' height='32' style='fill:#0F0;'/><rect x='4' y='4' width='24' height='24' style='fill:black;'/>[/svg]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez un cadre vert de 4 pixels d'épaisseur remplissant l'écran.[/b][br][br]Dans un premier temps coloriez l'écran graphique en [b]vert[/b] puis tracez un rectangle [b]noir[/b] de dimension 24x24 centré au milieu de l'écran.[br][br][svg]<rect x='0' y='0' width='32' height='32' style='fill:#0F0;'/><rect x='4' y='4' width='24' height='24' style='fill:black;'/>[/svg]"]]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -344,7 +344,7 @@
         <dct:identifier>074</dct:identifier>
         <dct:title xml:lang="fr-FR">Affichez le drapeau français grâce aux commandes RECT et RGB.</dct:title>
         <dct:description><![CDATA["class":"l2","a":{"op":["rect","rgb"],"va":["V000","V010","V020","V032","V255"]},"valid":{"screen":1415721917}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Grâce à 3 rectangles de dimensions 10x32 et de couleur respective bleu, blanc et rouge (de gauche à droite), affichez le drapeau français.[/b]","","L'écran graphique ayant une largeur de 32, il y aura à droite 2 colonnes de pixels qui resteront noires.","","[svg]<rect x='0' y='0' width='10' height='32' style='fill:#00F;'/><rect x='10' y='0' width='10' height='32' style='fill:white;'/><rect x='20' y='0' width='10' height='32' style='fill:#F00;'/>[/svg]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Grâce à 3 rectangles de dimensions 10x32 et de couleur respective bleu, blanc et rouge (de gauche à droite), affichez le drapeau français.[/b][br][br]L'écran graphique ayant une largeur de 32, il y aura à droite 2 colonnes de pixels qui resteront noires.[br][br][svg]<rect x='0' y='0' width='10' height='32' style='fill:#00F;'/><rect x='10' y='0' width='10' height='32' style='fill:white;'/><rect x='20' y='0' width='10' height='32' style='fill:#F00;'/>[/svg]"]]]></dct:description>
         <dct:extent>4</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -356,7 +356,7 @@
         <dct:identifier>075</dct:identifier>
         <dct:title xml:lang="fr-FR">Affichez le drapeau bolivien grâce aux commandes RECT et RGB.</dct:title>
         <dct:description><![CDATA["class":"l2","a":{"op":["rect","rgb"],"va":["V000","V010","V020","V032","V255"]},"valid":{"screen":-1215407637}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Grâce à 3 rectangles de dimensions 32x10 et de couleur respective rouge, jaune et vert (de haut en bas), affichez le drapeau bolivien.[/b]","","L'écran graphique ayant une hauteur de 32, il y aura en bas 2 lignes de pixels qui resteront noires. Pour rappel, la couleur [b]jaune[/b] est un mélange de [b]rouge[/b] et de [b]vert[/b].","","[svg]<rect x='0' y='0' width='32' height='10' style='fill:#F00;'/><rect x='0' y='10' width='32' height='10' style='fill:#FF0;'/><rect x='0' y='20' width='32' height='10' style='fill:#0F0;'/>[/svg]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Grâce à 3 rectangles de dimensions 32x10 et de couleur respective rouge, jaune et vert (de haut en bas), affichez le drapeau bolivien.[/b][br][br]L'écran graphique ayant une hauteur de 32, il y aura en bas 2 lignes de pixels qui resteront noires. Pour rappel, la couleur [b]jaune[/b] est un mélange de [b]rouge[/b] et de [b]vert[/b].[br][br][svg]<rect x='0' y='0' width='32' height='10' style='fill:#F00;'/><rect x='0' y='10' width='32' height='10' style='fill:#FF0;'/><rect x='0' y='20' width='32' height='10' style='fill:#0F0;'/>[/svg]"]]]></dct:description>
         <dct:extent>4</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -368,7 +368,7 @@
         <dct:identifier>076</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier une ligne en violet grâce aux commandes RECT et RGB.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["rect","rgb"],"va":["V000","V001","V016","V032","V255"]},"valid":{"screen":-601650623}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Grâce à un rectangle de hauteur 1, coloriez la 17ème ligne de l'écran en violet[/b].","","Le [b]violet[/b] est un mélange de [b]rouge[/b] et de [b]bleu[/b].","","[svg]<rect x='0' y='16' width='32' height='1' style='fill:#F0F;'/>[/svg]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Grâce à un rectangle de hauteur 1, coloriez la 17ème ligne de l'écran en violet[/b].[br][br]Le [b]violet[/b] est un mélange de [b]rouge[/b] et de [b]bleu[/b].[br][br][svg]<rect x='0' y='16' width='32' height='1' style='fill:#F0F;'/>[/svg]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -380,7 +380,7 @@
         <dct:identifier>077</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher en haut à gauche de l'écran, 3 carrés de taille différente grâce aux commandes RECT et RGB.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["rect","rgb"],"va":["V000","V010","V020","V030","V255"]},"valid":{"screen":-1749991432}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez en haut à gauche de l'écran, 3 carrés de taille respective 30, 20 et 10 et de couleur respective rouge, vert et bleu.[/b]","","[svg]<rect x='0' y='0' width='30' height='30' style='fill:#F00;'/><rect x='0' y='0' width='20' height='20' style='fill:#0F0;'/><rect x='0' y='0' width='10' height='10' style='fill:#00F;'/>[/svg]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez en haut à gauche de l'écran, 3 carrés de taille respective 30, 20 et 10 et de couleur respective rouge, vert et bleu.[/b][br][br][svg]<rect x='0' y='0' width='30' height='30' style='fill:#F00;'/><rect x='0' y='0' width='20' height='20' style='fill:#0F0;'/><rect x='0' y='0' width='10' height='10' style='fill:#00F;'/>[/svg]"]]]></dct:description>
         <dct:extent>4</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -392,7 +392,7 @@
         <dct:identifier>078</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher 3 carrés de taille différente centrés au milieu grâce aux commandes RECT et RGB.</dct:title>
         <dct:description><![CDATA["class":"l2","a":{"op":["rect","rgb"],"va":["V000","V008","V004","V016","V024","V032","V255"]},"valid":{"screen":1631898427}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez 3 carrés de taille respective 32, 24 et 16 et de couleur respective jaune, bleu et violet, tous les 3 centrés au milieu.[/b]","","Pour rappel, le [b]jaune[/b] est un mélange de [b]vert[/b] et de [b]rouge[/b], tandis que le [b]violet[/b] est un mélange de [b]bleu[/b] et de [b]rouge[/b].","","[svg]<rect x='0' y='0' width='32' height='32' style='fill:#FF0;'/><rect x='4' y='4' width='24' height='24' style='fill:#00F;'/><rect x='8' y='8' width='16' height='16' style='fill:#F0F;'/>[/svg]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez 3 carrés de taille respective 32, 24 et 16 et de couleur respective jaune, bleu et violet, tous les 3 centrés au milieu.[/b][br][br]Pour rappel, le [b]jaune[/b] est un mélange de [b]vert[/b] et de [b]rouge[/b], tandis que le [b]violet[/b] est un mélange de [b]bleu[/b] et de [b]rouge[/b].[br][br][svg]<rect x='0' y='0' width='32' height='32' style='fill:#FF0;'/><rect x='4' y='4' width='24' height='24' style='fill:#00F;'/><rect x='8' y='8' width='16' height='16' style='fill:#F0F;'/>[/svg]"]]]></dct:description>
         <dct:extent>4</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -404,7 +404,7 @@
         <dct:identifier>079</dct:identifier>
         <dct:title xml:lang="fr-FR">Dessiner 3 carrés rouge pour compléter un damier.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["rect","rgb"],"va":["V000","V008","V016","V024","V032","V255"]},"valid":{"screen":190952629},"initsc":[{"svg":"rect","coord":[0,0,32,32],"rgb":[255,255,255]},{"svg":"rect","coord":[0,0,8,8],"rgb":[255,0,0]},{"svg":"rect","coord":[8,24,8,8],"rgb":[255,0,0]},{"svg":"rect","coord":[0,16,8,8],"rgb":[255,0,0]},{"svg":"rect","coord":[16,16,8,8],"rgb":[255,0,0]},{"svg":"rect","coord":[8,8,8,8],"rgb":[255,0,0]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Tracez les 3 carrés manquants pour compléter le damier[/b].","","[svg]<rect x='0' y='0' width='32' height='32' style='fill:white;'/><rect x='0' y='0' width='8' height='8' style='fill:#F00;'/><rect x='16' y='0' width='8' height='8' style='fill:#F00;'/><rect x='8' y='8' width='8' height='8' style='fill:#F00;'/><rect x='24' y='8' width='8' height='8' style='fill:#F00;'/><rect x='0' y='16' width='8' height='8' style='fill:#F00;'/><rect x='16' y='16' width='8' height='8' style='fill:#F00;'/><rect x='8' y='24' width='8' height='8' style='fill:#F00;'/><rect x='24' y='24' width='8' height='8' style='fill:#F00;'/>[/svg]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Tracez les 3 carrés manquants pour compléter le damier[/b].[br][br][svg]<rect x='0' y='0' width='32' height='32' style='fill:white;'/><rect x='0' y='0' width='8' height='8' style='fill:#F00;'/><rect x='16' y='0' width='8' height='8' style='fill:#F00;'/><rect x='8' y='8' width='8' height='8' style='fill:#F00;'/><rect x='24' y='8' width='8' height='8' style='fill:#F00;'/><rect x='0' y='16' width='8' height='8' style='fill:#F00;'/><rect x='16' y='16' width='8' height='8' style='fill:#F00;'/><rect x='8' y='24' width='8' height='8' style='fill:#F00;'/><rect x='24' y='24' width='8' height='8' style='fill:#F00;'/>[/svg]"]]]></dct:description>
         <dct:extent>4</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -416,7 +416,7 @@
         <dct:identifier>080</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier l'intersection de 2 carrés.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["rect","rgb"],"va":["V000","V008","V016","V024","V032","V255"]},"valid":{"screen":-2133807900},"initsc":[{"svg":"rect","coord":[0,0,32,32],"rgb":[255,255,255]},{"svg":"rect","coord":[0,0,24,24],"rgb":[255,0,0]},{"svg":"rect","coord":[8,8,24,24],"rgb":[0,255,0]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Coloriez en jaune l'intersection de deux carrés de dimension 24[/b].","","[svg]<rect x='0' y='0' width='32' height='32' style='fill:white;'/><rect x='0' y='0' width='24' height='24' style='fill:#F00;'/><rect x='8' y='8' width='24' height='24' style='fill:#0F0;'/><rect x='8' y='8' width='16' height='16' style='fill:#FF0;'/>[/svg]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Coloriez en jaune l'intersection de deux carrés de dimension 24[/b].[br][br][svg]<rect x='0' y='0' width='32' height='32' style='fill:white;'/><rect x='0' y='0' width='24' height='24' style='fill:#F00;'/><rect x='8' y='8' width='24' height='24' style='fill:#0F0;'/><rect x='8' y='8' width='16' height='16' style='fill:#FF0;'/>[/svg]"]]]></dct:description>
         <dct:extent>4</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -428,7 +428,7 @@
         <dct:identifier>081</dct:identifier>
         <dct:title xml:lang="fr-FR">Affichez un cadre barrée grâce aux commandes RECT, LINE et RGB.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["rect","line","rgb"],"va":["V000","V001","V030","V031","V032","V255"]},"valid":{"screen":-1177570500}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Sur un fond jaune, tracez en rouge les pixels du bord de l'écran ainsi que ceux des 2 diagonales.[/b]","","[svg]<rect x='0' y='0' width='32' height='32' style='fill:#F00;'/><rect x='1' y='1' width='30' height='30' style='fill:#FF0;'/><line x1='0' y1='0' x2='32' y2='32' style='fill:node;stroke:red;stroke-width:1px;'/><line x1='0' y1='32' x2='32' y2='0' style='fill:node;stroke:red;stroke-width:1px;'/>[/svg]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Sur un fond jaune, tracez en rouge les pixels du bord de l'écran ainsi que ceux des 2 diagonales.[/b][br][br][svg]<rect x='0' y='0' width='32' height='32' style='fill:#F00;'/><rect x='1' y='1' width='30' height='30' style='fill:#FF0;'/><line x1='0' y1='0' x2='32' y2='32' style='fill:node;stroke:red;stroke-width:1px;'/><line x1='0' y1='32' x2='32' y2='0' style='fill:node;stroke:red;stroke-width:1px;'/>[/svg]"]]]></dct:description>
         <dct:extent>4</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -440,7 +440,7 @@
         <dct:identifier>082</dct:identifier>
         <dct:title xml:lang="fr-FR">Tracez 3 lignes obliques grâce aux commandes LINE et RGB.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["line","rgb"],"va":["V000","V001","V002","V003","V004","V005","V006","V007","V008","V009","V010","V030","V031","V032","V255"]},"valid":{"screen":-278460145}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Tracez en rouge la ligne reliant les points (0,2) et (31,8) puis tracez en blanc les lignes du dessus et du dessous.[/b]","","[svg]<line x1='0' y1='2' x2='32' y2='8' style='fill:node;stroke:red;stroke-width:1px;'/><line x1='0' y1='1' x2='32' y2='7' style='fill:node;stroke:white;stroke-width:1px;'/><line x1='0' y1='3' x2='32' y2='9' style='fill:node;stroke:white;stroke-width:1px;'/>[/svg]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Tracez en rouge la ligne reliant les points (0,2) et (31,8) puis tracez en blanc les lignes du dessus et du dessous.[/b][br][br][svg]<line x1='0' y1='2' x2='32' y2='8' style='fill:node;stroke:red;stroke-width:1px;'/><line x1='0' y1='1' x2='32' y2='7' style='fill:node;stroke:white;stroke-width:1px;'/><line x1='0' y1='3' x2='32' y2='9' style='fill:node;stroke:white;stroke-width:1px;'/>[/svg]"]]]></dct:description>
         <dct:extent>4</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -452,7 +452,7 @@
         <dct:identifier>083</dct:identifier>
         <dct:title xml:lang="fr-FR">Tracez les diagonales de 2 carrés.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["line","rgb"],"va":["V000","V001","V002","V003","V004","V005","V006","V007","V008","V009","V010","V015","V016","V023","V024","V031","V032","V255"]},"valid":{"screen":137847833},"initsc":[{"svg":"rect","coord":[0,0,8,8],"rgb":[255,255,255]},{"svg":"rect","coord":[24,8,8,8],"rgb":[255,255,255]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Tracez en rouge les diagonales des 2 carrés 8x8.[/b]","","[svg]<rect x='0' y='0' width='8' height='8' style='fill:white;'/><rect x='24' y='8' width='8' height='8' style='fill:white;'/><line x1='0' y1='0' x2='8' y2='8' style='fill:node;stroke:red;stroke-width:1px;'/><line x1='8' y1='0' x2='0' y2='8' style='fill:node;stroke:red;stroke-width:1px;'/><line x1='24' y1='8' x2='32' y2='16' style='fill:node;stroke:red;stroke-width:1px;'/><line x1='24' y1='16' x2='32' y2='8' style='fill:node;stroke:red;stroke-width:1px;'/>[/svg]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Tracez en rouge les diagonales des 2 carrés 8x8.[/b][br][br][svg]<rect x='0' y='0' width='8' height='8' style='fill:white;'/><rect x='24' y='8' width='8' height='8' style='fill:white;'/><line x1='0' y1='0' x2='8' y2='8' style='fill:node;stroke:red;stroke-width:1px;'/><line x1='8' y1='0' x2='0' y2='8' style='fill:node;stroke:red;stroke-width:1px;'/><line x1='24' y1='8' x2='32' y2='16' style='fill:node;stroke:red;stroke-width:1px;'/><line x1='24' y1='16' x2='32' y2='8' style='fill:node;stroke:red;stroke-width:1px;'/>[/svg]"]]]></dct:description>
         <dct:extent>4</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -464,7 +464,7 @@
         <dct:identifier>084</dct:identifier>
         <dct:title xml:lang="fr-FR">Tracez une forme géométrique.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["line","rect","rgb"],"va":["V000","V008","V023","V024","V031","V032","V255"]},"valid":{"screen":-249152631}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Tracez la figure suivante :[/b]","","[svg]<rect x='0' y='0' width='8' height='32' style='fill:#FF0;'/><rect x='24' y='0' width='8' height='32' style='fill:#0F0;'/><line x1='8' y1='0' x2='24' y2='32' style='fill:node;stroke:red;stroke-width:1px;'/><line x1='24' y1='0' x2='8' y2='32' style='fill:node;stroke:red;stroke-width:1px;'/>[/svg]","[i]Les deux lignes rouges ne touchent pas les rectangles jaunes et verts.[/i]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Tracez la figure suivante :[/b][br][br][svg]<rect x='0' y='0' width='8' height='32' style='fill:#FF0;'/><rect x='24' y='0' width='8' height='32' style='fill:#0F0;'/><line x1='8' y1='0' x2='24' y2='32' style='fill:node;stroke:red;stroke-width:1px;'/><line x1='24' y1='0' x2='8' y2='32' style='fill:node;stroke:red;stroke-width:1px;'/>[/svg]","[i]Les deux lignes rouges ne touchent pas les rectangles jaunes et verts.[/i]"]]]></dct:description>
         <dct:extent>4</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -478,7 +478,7 @@
         <dct:identifier>101</dct:identifier>
         <dct:title xml:lang="fr-FR">Tracer un cercle blanc centré.</dct:title>
         <dct:description><![CDATA["class":"l2","a":{"op":["circle"],"va":["V015"]},"valid":{"screen":1113322744}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Dessinez dans l'écran graphique un cercle blanc (à peu près) centré.[/b]","","La commande [red]CIRCLE(I,J,R)[/red] (CERCLE en anglais) permet de tracer un cercle plein de centre [b](I,J)[/b] et de rayon [b]R[/b].","","[svg]<circle cx='15' cy='15' r='15' style='fill:white;'/>[/svg]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Dessinez dans l'écran graphique un cercle blanc (à peu près) centré.[/b][br][br]La commande [red]CIRCLE(I,J,R)[/red] (CERCLE en anglais) permet de tracer un cercle plein de centre [b](I,J)[/b] et de rayon [b]R[/b].[br][br][svg]<circle cx='15' cy='15' r='15' style='fill:white;'/>[/svg]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -491,7 +491,7 @@
         <dct:identifier>102</dct:identifier>
         <dct:title xml:lang="fr-FR">Dessiner deux cercles imbriqués.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["rgb","circle"],"va":["V000","V015","V013","V255"]},"valid":{"screen":1952717838}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]A l'aide de 2 cercles, dessinez un disque de couleur rouge à bord blanc.[/b]","","[svg]<circle cx='15.5' cy='15.5' r='15' style='fill:white;'/><circle cx='15.5' cy='15.5' r='13' style='fill:#F00;'/>[/svg]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]A l'aide de 2 cercles, dessinez un disque de couleur rouge à bord blanc.[/b][br][br][svg]<circle cx='15.5' cy='15.5' r='15' style='fill:white;'/><circle cx='15.5' cy='15.5' r='13' style='fill:#F00;'/>[/svg]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -503,7 +503,7 @@
         <dct:identifier>103</dct:identifier>
         <dct:title xml:lang="fr-FR">Dessiner la tête d'une souris.</dct:title>
         <dct:description><![CDATA["class":"l2","a":{"op":["rgb","circle"],"va":["V000","V006","V010","V015","V020","V024","V255"]},"valid":{"screen":1861767258}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]A l'aide de 3 cercles, dessinez en violet la tête d'une souris.[/b]","","Le cercle principal a pour centre le point de coordonnées [b](15,20)[/b] et a pour rayon [b]10[/b].","","[svg]<circle cx='15.5' cy='20.5' r='11' style='fill:#F0F;'/><circle cx='6.5' cy='6.5' r='7' style='fill:#F0F;'/><circle cx='24.5' cy='6.5' r='7' style='fill:#F0F;'/>[/svg]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]A l'aide de 3 cercles, dessinez en violet la tête d'une souris.[/b][br][br]Le cercle principal a pour centre le point de coordonnées [b](15,20)[/b] et a pour rayon [b]10[/b].[br][br][svg]<circle cx='15.5' cy='20.5' r='11' style='fill:#F0F;'/><circle cx='6.5' cy='6.5' r='7' style='fill:#F0F;'/><circle cx='24.5' cy='6.5' r='7' style='fill:#F0F;'/>[/svg]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -515,7 +515,7 @@
         <dct:identifier>104</dct:identifier>
         <dct:title xml:lang="fr-FR">Dessiner un croissant de lune.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["rgb","circle"],"va":["V000","V015","V024","V032","V255"]},"valid":{"screen":1231528735}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]A l'aide d'un cercle jaune et d'un cercle noir, dessinez un croissant de lune.[/b]","","[svg]<circle cx='24.5' cy='15.5' r='15' style='fill:#FF0;'/><circle cx='32.5' cy='15.5' r='15' style='fill:black;'/>[/svg]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]A l'aide d'un cercle jaune et d'un cercle noir, dessinez un croissant de lune.[/b][br][br][svg]<circle cx='24.5' cy='15.5' r='15' style='fill:#FF0;'/><circle cx='32.5' cy='15.5' r='15' style='fill:black;'/>[/svg]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -529,7 +529,7 @@
         <dct:identifier>201</dct:identifier>
         <dct:title xml:lang="fr-FR">Récuperer une information de couleur et colorier l'écran.</dct:title>
         <dct:description><![CDATA["class":"l2","a":{"op":["rect","pick"],"va":["V000","V032"]},"valid":{"screen":-859398104},"initsc":[{"svg":"rect","coord":[0,0,1,1],"rgb":[255,0,0]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Colorier l'écran graphique en rouge[/b].","","L'opérateur [red]PICK[/red] permet de définir la couleur courrante à partir d'un pixel de l'écran graphique. Ainsi, dans cet exercice [red]PICK(0,0)[/red] prend la couleur du premier pixel de l'écran (rouge) comme le ferait l'instruction [red]RGB(255,0,0)[/red]","","[svg]<rect x='0' y='0' width='32' height='32' style='fill:#F00;'/>[/svg]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Colorier l'écran graphique en rouge[/b].[br][br]L'opérateur [red]PICK[/red] permet de définir la couleur courrante à partir d'un pixel de l'écran graphique. Ainsi, dans cet exercice [red]PICK(0,0)[/red] prend la couleur du premier pixel de l'écran (rouge) comme le ferait l'instruction [red]RGB(255,0,0)[/red][br][br][svg]<rect x='0' y='0' width='32' height='32' style='fill:#F00;'/>[/svg]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -542,7 +542,7 @@
         <dct:identifier>202</dct:identifier>
         <dct:title xml:lang="fr-FR">Récuperer des informations de couleurs et dessiner une mozaïque sur l'écran graphique.</dct:title>
         <dct:description><![CDATA["class":"l1","a":{"op":["rect","pick"],"va":["V000","V016","V031"]},"valid":{"screen":1337293785},"initsc":[{"svg":"rect","coord":[0,0,1,1],"rgb":[255,0,0]},{"svg":"rect","coord":[31,0,1,1],"rgb":[255,255,0]},{"svg":"rect","coord":[0,31,1,1],"rgb":[255,255,255]},{"svg":"rect","coord":[31,31,1,1],"rgb":[255,0,255]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Pour chaque coin de l'écran graphique, récupérez la couleur du pixel et coloriez le quart d'écran correspondant[/b].","","[svg]<rect x='0' y='0' width='16' height='16' style='fill:#F00;'/><rect x='16' y='0' width='16' height='16' style='fill:#FF0;'/><rect x='0' y='16' width='16' height='16' style='fill:white;'/><rect x='16' y='16' width='16' height='16' style='fill:#F0F;'/>[/svg]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Pour chaque coin de l'écran graphique, récupérez la couleur du pixel et coloriez le quart d'écran correspondant[/b].[br][br][svg]<rect x='0' y='0' width='16' height='16' style='fill:#F00;'/><rect x='16' y='0' width='16' height='16' style='fill:#FF0;'/><rect x='0' y='16' width='16' height='16' style='fill:white;'/><rect x='16' y='16' width='16' height='16' style='fill:#F0F;'/>[/svg]"]]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -556,7 +556,7 @@
         <dct:identifier>251</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher un sprite sur l'écran grahique.</dct:title>
         <dct:description><![CDATA["class":"l2","a":{"op":["draw"],"va":["V000","V020"]},"values":{"[sprite]":[255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,94,28,40,94,28,40,94,28,40,94,28,40,94,28,40,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,94,28,40,94,28,40,188,58,196,188,58,196,188,58,196,227,207,42,188,58,196,94,28,40,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,94,28,40,188,58,196,188,58,196,130,35,100,130,35,100,227,207,42,227,207,42,227,207,42,94,28,40,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,94,28,40,130,35,100,188,58,196,130,35,100,130,35,100,27,25,24,27,25,24,27,25,24,27,25,24,27,25,24,27,25,24,27,25,24,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,94,28,40,130,35,100,130,35,100,130,35,100,27,25,24,27,25,24,27,25,24,27,25,24,27,25,24,27,25,24,27,25,24,27,25,24,27,25,24,27,25,24,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,94,28,40,210,143,143,27,25,24,27,25,24,27,25,24,181,75,103,27,25,24,181,75,103,27,25,24,181,75,103,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,94,28,40,210,143,143,100,57,10,210,143,143,27,25,24,181,75,103,210,143,143,27,25,24,210,143,143,27,25,24,210,143,143,100,57,10,100,57,10,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,94,28,40,181,75,103,100,57,10,210,143,143,27,25,24,27,25,24,210,143,143,210,143,143,210,143,143,210,143,143,210,143,143,210,143,143,210,143,143,100,57,10,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,94,28,40,27,25,24,181,75,103,210,143,143,27,25,24,210,143,143,210,143,143,27,25,24,181,75,103,181,75,103,181,75,103,181,75,103,181,75,103,100,57,10,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,27,25,24,27,25,24,181,75,103,181,75,103,210,143,143,27,25,24,27,25,24,27,25,24,27,25,24,27,25,24,27,25,24,27,25,24,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,27,25,24,100,57,10,181,75,103,181,75,103,181,75,103,181,75,103,27,25,24,27,25,24,27,25,24,27,25,24,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,100,57,10,130,35,100,100,57,10,100,57,10,100,57,10,100,57,10,100,57,10,44,46,152,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,100,57,10,130,35,100,130,35,100,188,58,196,100,57,10,45,102,107,56,191,203,56,191,203,44,46,152,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,27,25,24,100,57,10,255,255,255,255,255,255,255,255,255,100,57,10,255,255,255,255,255,255,56,191,203,255,255,255,44,46,152,27,25,24,27,25,24,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,27,25,24,100,57,10,100,57,10,255,255,255,255,255,255,100,57,10,45,102,107,255,255,255,255,255,255,56,191,203,255,255,255,27,25,24,255,255,255,27,25,24,27,25,24,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,27,25,24,100,57,10,100,57,10,255,255,255,255,255,255,100,57,10,45,102,107,45,102,107,45,102,107,56,191,203,44,46,152,27,25,24,100,57,10,27,25,24,27,25,24,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,27,25,24,100,57,10,44,46,152,100,57,10,100,57,10,45,102,107,45,102,107,45,102,107,45,102,107,44,46,152,27,25,24,100,57,10,27,25,24,27,25,24,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,27,25,24,100,57,10,255,255,255,27,25,24,255,255,255,44,46,152,44,46,152,44,46,152,44,46,152,255,255,255,27,25,24,100,57,10,27,25,24,27,25,24,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,27,25,24,27,25,24,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,27,25,24,27,25,24,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255]},"initsc":[{"svg":"rect","coord":[0,0,32,32],"rgb":[255,255,255]}],"valid":{"screen":-847763855}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez un sprite de dimension 20x20 sur le coin supérieur gauche de l'écran graphique[/b].","","L'opérateur [red]DRAW[/red] permet d'afficher un [b]SPRITE[/b] ('lutin' en anglais) sur l'écran graphique. Un sprite est un [b]tableau[/b] d'entiers représentant les couleurs [b]RGB[/b] de chaque point de l'image.","[strong][Rouge_1, Vert_1, Bleu_1, Rouge_2, Vert_2, Bleu_2, Rouge_3,...][/strong]","","L'appel à [red]DRAW[/red] se fait ainsi :","[code]DRAW (SPRITE, I, J, LARGEUR, HAUTEUR)[/code]","[b]SPRITE[/b] est l'image à afficher, [b](I,J)[/b] sont les coordonées du coin supérieur gauche de l'image, et [b](LARGEUR,HAUTEUR)[/b] sont les dimensions de l'image. A part l'argument supplémentaire [b]SPRITE[/b], les autres paramètres sont identiques à ceux utilisés lors d'un appel à [red]RECT[/red]."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Affichez un sprite de dimension 20x20 sur le coin supérieur gauche de l'écran graphique[/b].[br][br]L'opérateur [red]DRAW[/red] permet d'afficher un [b]SPRITE[/b] ('lutin' en anglais) sur l'écran graphique. Un sprite est un [b]tableau[/b] d'entiers représentant les couleurs [b]RGB[/b] de chaque point de l'image.","[strong][Rouge_1, Vert_1, Bleu_1, Rouge_2, Vert_2, Bleu_2, Rouge_3,...][/strong][br][br]L'appel à [red]DRAW[/red] se fait ainsi :","[code]DRAW (SPRITE, I, J, LARGEUR, HAUTEUR)[/code]","[b]SPRITE[/b] est l'image à afficher, [b](I,J)[/b] sont les coordonées du coin supérieur gauche de l'image, et [b](LARGEUR,HAUTEUR)[/b] sont les dimensions de l'image. A part l'argument supplémentaire [b]SPRITE[/b], les autres paramètres sont identiques à ceux utilisés lors d'un appel à [red]RECT[/red]."]]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -570,7 +570,7 @@
         <dct:identifier>252</dct:identifier>
         <dct:title xml:lang="fr-FR">Recopier un programme pour afficher un sprite décalé.</dct:title>
         <dct:description><![CDATA["class":"l2","a":{"op":["draw"],"va":["V000","V016","V015"]},"values":{"[sprite]":[0,255,0,0,255,0,0,255,0,0,255,0,0,255,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,255,0,0,255,0,0,255,0,0,255,0,0,255,0,0,255,0,0,255,0,0,255,0,0,0,0,0,0,0,0,0,0,171,13,65,255,255,255,255,255,255,171,13,65,0,0,0,0,0,0,0,0,0,0,255,0,0,255,0,0,255,0,0,255,0,0,255,0,0,0,0,0,0,0,171,13,65,171,13,65,171,13,65,255,255,255,255,255,255,171,13,65,171,13,65,171,13,65,0,0,0,0,0,0,0,255,0,0,255,0,0,255,0,0,0,0,0,0,0,255,255,255,171,13,65,171,13,65,255,255,255,255,255,255,255,255,255,255,255,255,171,13,65,171,13,65,255,255,255,0,0,0,0,0,0,0,255,0,0,255,0,0,0,0,171,13,65,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,171,13,65,0,0,0,0,255,0,0,0,0,0,0,0,171,13,65,171,13,65,255,255,255,255,255,255,171,13,65,171,13,65,171,13,65,171,13,65,255,255,255,255,255,255,171,13,65,171,13,65,0,0,0,0,0,0,0,0,0,171,13,65,171,13,65,171,13,65,255,255,255,171,13,65,171,13,65,171,13,65,171,13,65,171,13,65,171,13,65,255,255,255,171,13,65,171,13,65,171,13,65,0,0,0,0,0,0,171,13,65,171,13,65,171,13,65,255,255,255,171,13,65,171,13,65,171,13,65,171,13,65,171,13,65,171,13,65,255,255,255,171,13,65,171,13,65,171,13,65,0,0,0,0,0,0,171,13,65,171,13,65,255,255,255,255,255,255,171,13,65,171,13,65,171,13,65,171,13,65,171,13,65,171,13,65,255,255,255,255,255,255,171,13,65,171,13,65,0,0,0,0,0,0,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,171,13,65,171,13,65,171,13,65,171,13,65,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,0,0,0,0,0,0,255,255,255,255,255,255,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,255,255,255,255,255,255,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,255,255,255,255,255,255,0,0,0,255,255,255,255,255,255,0,0,0,255,255,255,255,255,255,0,0,0,0,0,0,0,0,0,0,0,0,0,255,0,0,0,0,0,0,0,255,255,255,255,255,255,255,255,255,0,0,0,255,255,255,255,255,255,0,0,0,255,255,255,255,255,255,255,255,255,0,0,0,0,0,0,0,255,0,0,255,0,0,255,0,0,0,0,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,0,0,0,0,255,0,0,255,0,0,255,0,0,255,0,0,0,0,0,0,0,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,0,0,0,0,0,0,0,255,0,0,255,0,0,255,0,0,255,0,0,255,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,255,0,0,255,0,0,255,0]},"initsc":[{"svg":"rect","coord":[0,0,32,32],"rgb":[0,255,0]}],"valid":{"screen":413240250}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Recopiez le programme suivant et affichez deux sprites de dimension 16x16 dont l'un est \\\"décalé\\\"[/b].","","[code]DRAW([sprite],0,0,16,16)[br]DRAW([sprite],16,16,[b]15[/b],16)[/code]","","Remarquez la valeur [b]15[/b] dans le deuxième appel à [red]DRAW[/red] qui ne correspond pas à la largeur de l'image contenue dans la variable [bb][sprite][/bb] et qui crée un [b]décalage[/b] dans l'affichage de celui-ci."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Recopiez le programme suivant et affichez deux sprites de dimension 16x16 dont l'un est \\\"décalé\\\"[/b].[br][br][code]DRAW([sprite],0,0,16,16)[br]DRAW([sprite],16,16,[b]15[/b],16)[/code][br][br]Remarquez la valeur [b]15[/b] dans le deuxième appel à [red]DRAW[/red] qui ne correspond pas à la largeur de l'image contenue dans la variable [bb][sprite][/bb] et qui crée un [b]décalage[/b] dans l'affichage de celui-ci."]]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>

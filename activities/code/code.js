@@ -95,6 +95,12 @@
 
                 // Send the onLoad callback
                 if (settings.context.onload) { settings.context.onload($this); }
+                
+                // HANDLE THE TIPS
+                if (settings.tips) {
+                    $this.find("#tip>div").html(settings.tips.length);
+                    $this.find("#ptip .tip1").addClass("s");
+                }
 
                 // Add specific value
                 for (var i in settings.values) {
@@ -840,7 +846,8 @@
                     screen          : { model   : [32,32],  p   : 1 },
                     sav             : { stdout  :[],        screen:[]},
                     score           : 5,
-                    keytimerid  : 0,
+                    keytimerid      : 0,
+                    tipid           : 0,
                     data : {
                         running     : false,
                         paused      : false,
@@ -953,6 +960,21 @@
             screen: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 console.log(helpers.screen.crc32($this));
+            },
+            tip: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+                if (settings.tipid<settings.tips.length) {
+                    $this.find("#ptip .tip"+(settings.tipid+1)).removeClass("s").addClass("f")
+                         .find(".content").html(helpers.format(settings.tips[settings.tipid]));
+                         
+                    settings.tipid++;
+                    $this.find("#tip>div").html(settings.tips.length-settings.tipid);
+                    if (settings.tipid<settings.tips.length) { $this.find("#ptip .tip"+(settings.tipid+1)).addClass("s"); }
+                    $this.find("#tipconfirm").hide();
+                    $this.find("#tippopup").css("opacity",1).show()
+                         .animate({opacity:0},1000,function() { $(this).hide(); });
+                    settings.wrong++;
+                }
             }
         };
 
