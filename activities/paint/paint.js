@@ -21,6 +21,7 @@
         tag         : 0,
         tagsize     : 1,
         scorearg    : 0,
+        errratio    : 1,
         effects     : true,                                     // Show effects
         background  : "",
         debug       : true                                     // Debug mode
@@ -574,7 +575,7 @@
                             }
                         }
                     }
-                    settings.score-=nbErrors;
+                    settings.score-=nbErrors*settings.errratio;
                     
                     $this.find("#legend").hide();
 
