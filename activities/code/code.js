@@ -25,6 +25,8 @@
         "\\\[br\\\]",                               "<br/>",
         "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
         "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
+        "\\\[o1\\\]([^\\\[]+)\\\[/o1\\\]",          "<span style='opacity:0.5'>$1</span>",
+        "\\\[o2\\\]([^\\\[]+)\\\[/o2\\\]",          "<span style='opacity:0.1'>$1</span>",
         "\\\[svg\\\]([^\\\[]+)\\\[/svg\\\]",        "<div class='svg'><div><svg width='100%' height='100%' viewBox='0 0 32 32'><rect x='0' y='0' width='32' height='32' style='fill:black'/>$1</svg></div></div>",
         "\\\[code\\\](.+)\\\[/code\\\]",            "<div class='cc'>$1</div>",
         "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>"
