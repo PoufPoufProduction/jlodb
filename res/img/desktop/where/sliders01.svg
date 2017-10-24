@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.0" width="100%" height="100%" viewBox="0 0 640 480" title="0 0 640 480" id="sliders01">
+<defs id="defs2385">
+    <style type="text/css">
+        #graduation>g { display:none; }
+    </style>
+</defs>
+
+<g id="sliders">
+    <g id="slider01">
+        <rect x="110" y="80" width="310" height="40" ry="20" style="fill:none;stroke:white;stroke-width:10"/>
+        <rect x="110" y="80" width="310" height="40" ry="20" style="fill:#FEC"/>
+    </g>
+    <g id="slider02" transform="translate(0,70)">
+        <rect x="110" y="80" width="310" height="40" ry="20" style="fill:none;stroke:white;stroke-width:10"/>
+        <rect x="110" y="80" width="310" height="40" ry="20" style="fill:#FEC"/>
+    </g>
+    <g id="slider03" transform="translate(0,140)">
+        <rect x="110" y="80" width="310" height="40" ry="20" style="fill:none;stroke:white;stroke-width:10"/>
+        <rect x="110" y="80" width="310" height="40" ry="20" style="fill:#FEC"/>
+    </g>
+    <g id="slider04" transform="translate(0,210)">
+        <rect x="110" y="80" width="310" height="40" ry="20" style="fill:none;stroke:white;stroke-width:10"/>
+        <rect x="110" y="80" width="310" height="40" ry="20" style="fill:#FEC"/>
+    </g>
+    <g id="slider05" transform="translate(0,280)">
+        <rect x="110" y="80" width="310" height="40" ry="20" style="fill:none;stroke:white;stroke-width:10"/>
+        <rect x="110" y="80" width="310" height="40" ry="20" style="fill:#FEC"/>
+    </g>
+</g>
+
+<g id="graduation">
+    <line x1="130" y1="60" x2="130" y2="420" style="fill:none;stroke:white;stroke-width:2"/>
+    <line x1="400" y1="60" x2="400" y2="420" style="fill:none;stroke:white;stroke-width:2"/>
+    
+    <g id="gr2">
+        <line x1="265" y1="60" x2="265" y2="420" style="fill:none;stroke:white;stroke-width:2"/>
+    </g>
+    
+    <g id="gr3">
+        <line x1="220" y1="60" x2="220" y2="420" style="fill:none;stroke:white;stroke-width:2"/>
+        <line x1="310" y1="60" x2="310" y2="420" style="fill:none;stroke:white;stroke-width:2"/>
+    </g>
+    
+    <g id="gr4">
+        <line x1="195.5" y1="60" x2="195.5" y2="420" style="fill:none;stroke:white;stroke-width:2"/>
+        <line x1="265" y1="60" x2="265" y2="420" style="fill:none;stroke:white;stroke-width:2"/>
+        <line x1="330.5" y1="60" x2="330.5" y2="420" style="fill:none;stroke:white;stroke-width:2"/>
+    </g>
+    
+</g>
+
+
+
+<!-- ROUND CURSOR WITH BAR -->
+<g class="cursor">
+<g id="bar">
+    <path d="M 30,0 A 30,30 0 1 1 -30,3.67e-15 A 30,30 0 1 1 30,-7.34e-15 z"/>
+    <rect width="640" height="60.66" x="-640" y="-30" style="fill-opacity:0.5;"/>
+</g>
+
+<!-- RECT CURSOR WITH BAR -->
+<g id="rect">
+    <rect width="5" height="60.66" x="-2.5" y="-30"/>
+    <rect width="640" height="60.66" x="-640" y="-30" style="fill-opacity:0.5;"/>
+</g>
+
+<!-- INTERVAL CURSOR -->
+<g id="interval">
+    <rect width="5" height="60.66" x="-2.5" y="-30"/>
+    <rect width="5" height="60.66" x="-56.5" y="-30"/>
+    <rect width="54" height="60.66" x="-54" y="-30" style="fill-opacity:0.5;"/>
+</g>
+
+<!-- ROUND CURSOR WITHOUT BAR -->
+<g id="round">
+    <path d="M 30,0 A 30,30 0 1 1 -30,3.67e-15 A 30,30 0 1 1 30,-7.34e-15 z"/>
+</g>
+</g>
+
+<!-- FIXED RESULTS + DYNAMIC FLOATING RESULT -->
+<g class="results" style="display:none;">
+    <circle id="r05" cx="50" cy="300" r="30"/>
+    <circle id="r15" cx="158" cy="300" r="30"/>
+    <circle id="r25" cx="266" cy="300" r="30"/>
+    <circle id="r35" cx="374" cy="300" r="30"/>
+    <circle id="r45" cx="482" cy="300" r="30"/>
+    <circle id="r55" cx="590" cy="300" r="30"/>
+
+    <circle id="r010" cx="50" cy="300" r="30"/>
+    <circle id="r110" cx="104" cy="300" r="30"/>
+    <circle id="r210" cx="158" cy="300" r="30"/>
+    <circle id="r310" cx="212" cy="300" r="30"/>
+    <circle id="r410" cx="266" cy="300" r="30"/>
+    <circle id="r510" cx="320" cy="300" r="30"/>
+    <circle id="r610" cx="374" cy="300" r="30"/>
+    <circle id="r710" cx="428" cy="300" r="30"/>
+    <circle id="r810" cx="482" cy="300" r="30"/>
+    <circle id="r910" cx="536" cy="300" r="30"/>
+    <circle id="r1010" cx="590" cy="300" r="30"/>
+</g>
+<rect id="result" width="8" height="52" x="-4" y="-30"/>
+
+
+</svg>
