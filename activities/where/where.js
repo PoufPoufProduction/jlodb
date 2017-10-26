@@ -117,7 +117,8 @@
                 // LOCALE HANDLING
 
                 $this.find("#guide").html(settings.guide);
-                $this.find("#comment>div").html(helpers.format(settings.comment));
+                $this.find("#comment>div").html(helpers.format(settings.comment))
+                                          .css("font-size",settings.fontex+"em");
                 $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); });
 
                 // BUILD THE CURSORS LIST
@@ -154,6 +155,7 @@
                         vCursor.translate=[vCursor.init[0], vCursor.init[1]];
                         $cursor.show().attr("transform", "translate("+vCursor.translate[0]+" "+vCursor.translate[1]+")");
                     }
+                    vCursor.current=vCursor.translate;
                     
                     if (settings.svgclass) { $(settings.svg.root()).attr("class",settings.svgclass); }
 
@@ -166,7 +168,8 @@
                         if (!settings.timer.id) { settings.timer.id = setTimeout(function() { helpers.timer($this); }, 1000); }
                         if (settings.interactive) {
                             settings.elt = this;
-                            $(this).attr("class","drag");
+                            var vclass= $(this).attr("class");
+                            $(this).attr("class",vclass+" drag");
                             $this.addClass("active");
                             settings.mouse = [ vEvent.clientX, vEvent.clientY];
                             
@@ -185,13 +188,13 @@
                         }
                         event.preventDefault();
                     });
-
-                    if (vCursor.onmove) { eval('('+vCursor.onmove+')')($this, settings.svg.root(), vCursor.translate); }
                 }
+                if (settings.onmove) { eval('('+settings.onmove+')')($this, settings.svg.root(), settings.cursors); }
 
                 $this.bind('touchend touchleave mouseup mouseleave', function() {
                     if (settings.elt) {
-                        $(settings.elt).attr("class","");
+                        var vclass=$(settings.elt).attr("class");
+                        $(settings.elt).attr("class",vclass.replace(" drag",""));
                         var vCursor = settings.cursors[$(settings.elt).attr("id")];
                         $this.removeClass("active");
 
@@ -207,6 +210,7 @@
                             
                             $(settings.elt).attr("transform", "rotate("+vSplit[1]+")");
                             vCursor.translate=parseFloat(vSplit[1]);
+                            vCursor.current=vCursor.translate;
                         }
                         else {
                             var reg = new RegExp("[( )]","g");
@@ -222,8 +226,9 @@
                             }
                             $(settings.elt).attr("transform", "translate("+vSplit[1]+" "+vSplit[2]+")");
                             vCursor.translate=[parseFloat(vSplit[1]),parseFloat(vSplit[2])];
+                            vCursor.current=vCursor.translate;
                         }
-                        if (vCursor.onmove) { eval('('+vCursor.onmove+')')($this, settings.svg.root(), vCursor.translate); }
+                        if (settings.onmove) { eval('('+settings.onmove+')')($this, settings.svg.root(), settings.cursors); }
                     }
                     settings.elt = 0;
                 });
@@ -234,7 +239,6 @@
                     if (settings.interactive && settings.elt) {
                         // COMPUTE TRANSLATION_X
                         var vCursor = settings.cursors[$(settings.elt).attr("id")];
-                        var vOnmoveArgs=0;
                         if (vCursor.center) {
                             var vB = [ vEvent.clientX - settings.control.center[0], vEvent.clientY - settings.control.center[1] ];
                             var lB = Math.sqrt(vB[0]*vB[0] + vB[1]*vB[1]);
@@ -249,7 +253,7 @@
                             if (vCursor.boundaries && vRot>vCursor.boundaries[1]) { vRot = vCursor.boundaries[1]; }
 
                             $(settings.elt).attr("transform", "rotate("+vRot+")");
-                            vOnmoveArgs=vRot;
+                            vCursor.current=vRot;
                             settings.control.rot = vRot;
                             settings.control.current = [ vB[0],vB[1] ];
                         }
@@ -280,9 +284,9 @@
                             if (vCursor.boundaries && vX>vCursor.boundaries[2]) { vX = vCursor.boundaries[2]; }
                             if (vCursor.boundaries && vY>vCursor.boundaries[3]) { vY = vCursor.boundaries[3]; }
                             $(settings.elt).attr("transform", "translate("+vX+" "+vY+")");
-                            vOnmoveArgs=[vX,vY];
+                            vCursor.current=[vX,vY];
                         }
-                        if (vCursor.onmove) { eval('('+vCursor.onmove+')')($this, settings.svg.root(), vOnmoveArgs); }
+                        if (settings.onmove) { eval('('+settings.onmove+')')($this, settings.svg.root(), settings.cursors); }
                     }
                     event.preventDefault();
                 });
@@ -308,7 +312,7 @@
                         while ((settings.values.length>2)&&(vNew==vLast));
                         vValue = settings.values[vNew];
                     }
-
+                    
                     // FILL THE DOM ELEMENT, USE A REGEXP IF NEEDED
                     if (vRegexp)    { $li.html(vValue[0].replace(vRegexp, settings.regexp.to)); }
                     else            { $li.html(vValue[0]); }
@@ -345,6 +349,9 @@
             if (settings.it<settings.questions.length && settings.questions[settings.it] && settings.questions[settings.it][2]) {
                 for (var i in settings.questions[settings.it][2]) {
                     if (i=="class") { $("#svgclass",settings.svg.root()).attr("class",settings.questions[settings.it][2][i]); }
+                    else if (i=="onvalue") {
+                        if (settings.onvalue) { eval('('+settings.onvalue+')')($this, settings.svg.root(), settings.cursors, settings.questions[settings.it][2][i]); }
+                    }
                     else { $("#"+i,settings.svg.root()).text(settings.questions[settings.it][2][i]); }
                 }
             }
