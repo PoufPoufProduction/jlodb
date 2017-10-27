@@ -22,18 +22,54 @@
     </linearGradient>
     <linearGradient xlink:href="#linearblue" id="grablue"
        x1="110" y1="0" x2="420" y2="0" gradientUnits="userSpaceOnUse" />
+       
+    <linearGradient id="linearcyan">
+      <stop style="stop-color:#00ffff;stop-opacity:0" offset="0"/>
+      <stop style="stop-color:#00ffff;stop-opacity:1" offset="1"/>
+    </linearGradient>
+    <linearGradient xlink:href="#linearcyan" id="gracyan"
+       x1="110" y1="0" x2="420" y2="0" gradientUnits="userSpaceOnUse" />
+       
+    <linearGradient id="linearmagenta">
+      <stop style="stop-color:#ff00ff;stop-opacity:0" offset="0"/>
+      <stop style="stop-color:#ff00ff;stop-opacity:1" offset="1"/>
+    </linearGradient>
+    <linearGradient xlink:href="#linearmagenta" id="gramagenta"
+       x1="110" y1="0" x2="420" y2="0" gradientUnits="userSpaceOnUse" />
+       
+    <linearGradient id="linearyellow">
+      <stop style="stop-color:#ffff00;stop-opacity:0" offset="0"/>
+      <stop style="stop-color:#ffff00;stop-opacity:1" offset="1"/>
+    </linearGradient>
+    <linearGradient xlink:href="#linearyellow" id="grayellow"
+       x1="110" y1="0" x2="420" y2="0" gradientUnits="userSpaceOnUse" />
+       
+    <linearGradient id="linearblack">
+      <stop style="stop-color:#000000;stop-opacity:0" offset="0"/>
+      <stop style="stop-color:#000000;stop-opacity:1" offset="1"/>
+    </linearGradient>
+    <linearGradient xlink:href="#linearblack" id="grablack"
+       x1="110" y1="0" x2="420" y2="0" gradientUnits="userSpaceOnUse" />
     
 
     <style type="text/css">
         svg#sliders01 #sliders>g            { display:none; }
         svg#sliders01 #sliders .rgb         { display:none; }
-        svg#sliders01.rgb #sliders .rgb     { display:inline; }
+        svg#sliders01 #sliders .fx          { display:none; }
+        svg#sliders01.rgb #sliders #fx2     { display:inline; fill:url(#grared);}
+        svg#sliders01.rgb #sliders #fx3     { display:inline; fill:url(#gragreen);}
+        svg#sliders01.rgb #sliders #fx4     { display:inline; fill:url(#grablue);}
+        svg#sliders01.cmyk #sliders #fx2    { display:inline; fill:url(#gracyan);}
+        svg#sliders01.cmyk #sliders #fx3    { display:inline; fill:url(#gramagenta);}
+        svg#sliders01.cmyk #sliders #fx4    { display:inline; fill:url(#grayellow);}
+        svg#sliders01.cmyk #sliders #fx5    { display:inline; fill:url(#grablack);}
         svg#sliders01.s1 #slider01          { display:inline; }
         svg#sliders01.s2 #slider02          { display:inline; }
         svg#sliders01.s3 #slider03          { display:inline; }
         svg#sliders01.s4 #slider04          { display:inline; }
         svg#sliders01.s5 #slider05          { display:inline; }
         svg#sliders01 text                  { font-size:25px; fill:white; }
+        svg#sliders01.small text            { font-size:20px; }
         svg#sliders01 .graduation text      { fill:#444; text-anchor:middle; font-weight:bold; }
         svg#sliders01 .graduation line      { fill:none;stroke:#444;stroke-width:2; }
         svg#sliders01 .graduation>g         { display:none; }
@@ -45,6 +81,7 @@
         svg#sliders01 .cursor.drag circle   { fill:#844; }
         svg#sliders01 .control              { display:none; }
         svg#sliders01.rgb #crgb             { display:inline; }
+        svg#sliders01.cmyk #crgb            { display:inline; }
     </style>
 </defs>
 
@@ -91,7 +128,7 @@
             <rect x="-50" y="75" width="475" height="50" ry="25" style="fill:#888;stroke:white;stroke-width:10"/>
             <rect x="110" y="80" width="310" height="40" ry="20" style="fill:none;stroke:#444;stroke-width:10"/>
             <rect x="110" y="80" width="310" height="40" ry="20" style="fill:#FEC;"/>
-            <rect class="rgb" x="110" y="80" width="310" height="40" ry="20" style="fill:url(#grared);"/>
+            <rect class="fx" id="fx2" x="110" y="80" width="310" height="40" ry="20"/>
         </g>
         <text id="t02" transform="translate(5,108)"></text>
         <g class="graduation">
@@ -128,7 +165,7 @@
             <rect x="-50" y="75" width="475" height="50" ry="25" style="fill:#888;stroke:white;stroke-width:10"/>
             <rect x="110" y="80" width="310" height="40" ry="20" style="fill:none;stroke:#444;stroke-width:10"/>
             <rect x="110" y="80" width="310" height="40" ry="20" style="fill:#FEC"/>
-            <rect class="rgb" x="110" y="80" width="310" height="40" ry="20" style="fill:url(#gragreen);"/>
+            <rect class="fx" id="fx3" x="110" y="80" width="310" height="40" ry="20"/>
         </g>
         <text id="t03" transform="translate(5,108)"></text>
         <g class="graduation">
@@ -165,7 +202,7 @@
             <rect x="-50" y="75" width="475" height="50" ry="25" style="fill:#888;stroke:white;stroke-width:10"/>
             <rect x="110" y="80" width="310" height="40" ry="20" style="fill:none;stroke:#444;stroke-width:10"/>
             <rect x="110" y="80" width="310" height="40" ry="20" style="fill:#FEC"/>
-            <rect class="rgb" x="110" y="80" width="310" height="40" ry="20" style="fill:url(#grablue);"/>
+            <rect class="fx" id="fx4" x="110" y="80" width="310" height="40" ry="20"/>
         </g>
         <text id="t04" transform="translate(5,108)"></text>
         <g class="graduation">
@@ -202,6 +239,7 @@
             <rect x="-50" y="75" width="475" height="50" ry="25" style="fill:#888;stroke:white;stroke-width:10"/>
             <rect x="110" y="80" width="310" height="40" ry="20" style="fill:none;stroke:#444;stroke-width:10"/>
             <rect x="110" y="80" width="310" height="40" ry="20" style="fill:#FEC"/>
+            <rect class="fx" id="fx5" x="110" y="80" width="310" height="40" ry="20"/>
         </g>
         <text id="t05" transform="translate(5,108)"></text>
         <g class="graduation">

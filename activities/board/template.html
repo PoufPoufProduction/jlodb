@@ -1,0 +1,34 @@
+<div>
+
+    <div id="board">hello world</div>
+    <div id="menu"><div>
+        <div class="h1" id="mmode"></div>
+        <div id="modes">
+            <span id="mmode0"></span>
+            <span id="mmode1"></span>
+            <span id="mmode2"></span>
+            <span id="mmode3"></span>
+        </div>
+        <div class="h1" id="mbrush"></div>
+        <div id="brushes"></div>
+        <div class="h1" id="mcolor"></div>
+        <div id="colors"></div>
+    </div></div>
+    
+    <div id="splashex" ontouchstart="$(this).hide().closest('.board').board('next');event.preventDefault();"
+                     onclick="$(this).hide().closest('.board').board('next');"><div>
+        <h1 id="label"></h1>
+        <div id="guide"></div>
+    </div></div>
+    
+    <!-- Optional devmode -->
+    <div id="devmode" ontouchstart="$(this).closest('.board').board('devmode');event.preventDefault();"
+                      onclick="$(this).closest('.board').board('devmode');" ><img src="res/img/default/white/snapshot.svg"/></div>
+                      
+    <div id="devoutput" ontouchstart="$(this).hide();event.preventDefault();" onclick="$(this).hide();">
+        <textarea ontouchstart="$(this).focus();event.stopPropagation();event.preventDefault();"
+                  onclick="$(this).focus();event.stopPropagation();"></textarea>
+    </div>
+
+</div>
+
