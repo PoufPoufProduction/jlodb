@@ -1,6 +1,6 @@
 <div>
 
-    <div id="board">hello world</div>
+    <div id="board"><div></div></div>
     <div id="menu"><div>
         <div class="h1" id="mmode"></div>
         <div id="modes">
@@ -13,7 +13,32 @@
         <div id="brushes"></div>
         <div class="h1" id="mcolor"></div>
         <div id="colors"></div>
+        <div id="counter">
+			<div id="bar">
+				<div id="slider"></div>
+				<div id="cvalue">12</div>
+			</div>
+			<div id="back" ontouchstart="$(this).closest('.board').board('back');event.preventDefault();"
+							   onclick="$(this).closest('.board').board('back');">
+				<div class="icon" id="left1"><img src="res/img/default/control/left02.svg" alt="X"/></div>
+				<div class="icon" id="left2"><img src="res/img/default/control/left02a.svg" alt="X"/></div>
+			</div>
+		</div>
+		<div id="model"></div>
     </div></div>
+    
+    <div id="submit" ontouchstart="$(this).closest('.board').board('valid');event.preventDefault();"
+                     onclick="$(this).closest('.board').board('valid');">
+        <img src="res/img/default/icon/swvalid.svg" id="subvalid" alt=""/>
+        <img src="res/img/default/icon/swgood.svg" id="subgood" alt=""/>
+        <img src="res/img/default/icon/swwrong.svg" id="subwrong" alt=""/>
+    </div>
+    
+    <div id="paint" ontouchstart="$(this).closest('.board').board('paint');event.preventDefault();"
+                     onclick="$(this).closest('.board').board('paint');">
+        <img src="res/img/svginventoryicons/pencil/brush01.svg" alt=""/>
+    </div>
+    
     
     <div id="splashex" ontouchstart="$(this).hide().closest('.board').board('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.board').board('next');"><div>
