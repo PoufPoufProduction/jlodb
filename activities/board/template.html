@@ -16,7 +16,7 @@
         <div id="counter">
 			<div id="bar">
 				<div id="slider"></div>
-				<div id="cvalue">12</div>
+				<div id="cvalue"></div>
 			</div>
 			<div id="back" ontouchstart="$(this).closest('.board').board('back');event.preventDefault();"
 							   onclick="$(this).closest('.board').board('back');">
@@ -39,6 +39,8 @@
         <img src="res/img/svginventoryicons/pencil/brush01.svg" alt=""/>
     </div>
     
+    <div id="good" class="alert"><img src="res/img/default/popup/good01.svg" alt=""/></div>
+    <div id="wrong" class="alert"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
     
     <div id="splashex" ontouchstart="$(this).hide().closest('.board').board('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.board').board('next');"><div>

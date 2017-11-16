@@ -224,6 +224,7 @@
 
             // HIDE AND SHOW ELEMENT
             $("#"+pgroup+">g").css("display","none");
+            $("#"+pgroup).show();
             $(".hide",settings.svg.root()).css("display","none");
             if (settings.show) {
                 var show = $.isArray(settings.show[0])?settings.show[settings.puzzleid]:settings.show;
@@ -284,11 +285,13 @@
             $("#"+pgroup+">g",settings.svg.root()).unbind('touchstart mousedown');
 
             // PARSE ALL THE PIECES
-            var count = 0;
+            var count = 0, idcount = 0;
             
             $("#"+pgroup+">g",settings.svg.root()).each(function(_index) {
                 $(this).attr("class","");
                 var vOK = true;
+                
+                if (!$(this).attr("id")) { $(this).attr("id","ipp"+(idcount++)); }
                 
                 if (ids.length) { vOK = false; for (var i in ids) { vOK = vOK || (ids[i]==$(this).attr("id")); } }
 
@@ -306,7 +309,7 @@
 							}
 						}
                     }
-                    
+
                     // GET THE ORIGINALE POSITION AND ROTATION FROM SVG ATTRIBUTES
                     var translate = [0,0];
                     if ($(this).attr("transform")) {
@@ -328,6 +331,7 @@
                     
                     // CLICK ON PIECES
                     $(this).bind('touchstart mousedown', function(event) {
+
                         var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
                                 event.originalEvent.touches[0]:event;
                                 
@@ -540,8 +544,11 @@
                         var pieces = [ i ];
                         if (settings.same) {
                             var vSame = settings.same;
-                            if (typeof(vSame[0][0])!="string") { vSame = settings.same[settings.puzzleid]; }
-                            for (var si in vSame) for (var sj in vSame[si]) { if (vSame[si][sj]==i) { pieces = vSame[si]; } }
+                            if (vSame=="all") { pieces=Object.keys(settings.elts); }
+                            else {
+                                if (typeof(vSame[0][0])!="string") { vSame = settings.same[settings.puzzleid]; }
+                                for (var si in vSame) for (var sj in vSame[si]) { if (vSame[si][sj]==i) { pieces = vSame[si]; } }
+                            }
                         }
                         
                         // CHECK IF THE POSITION OF EACH PIECES IN THE LIST IS MATCHING THE CURRENT POSITION
@@ -555,7 +562,11 @@
                                 // CHECK THE ROTATION
                                 if (settings.rotation) {
                                     var diff = 360+target.current.rotate-elt.origin.rotate;
-                                    var modulo = (settings.sym&&settings.sym[pieces[p]])?settings.sym[pieces[p]]:360;
+                                    var modulo = 360;
+                                    if (settings.sym) {
+                                        if (settings.sym["all"])    { modulo = settings.sym["all"]; }
+                                        if (settings.sym[pieces[p]]){ modulo = settings.sym[pieces[p]]; }
+                                    }
                                     if (diff%modulo!=0) { isgood = false; }
                                 }
                             }
@@ -605,10 +616,18 @@
                 }
             }
         },
+        rotate: function($this, _id) {
+            var settings = helpers.settings($this);
+            var elt = settings.elts[_id];
+            if (elt) {
+                elt.current.rotate = (elt.current.rotate+settings.rotation)%360;
+                helpers.update($this, _id, elt.current.translate, elt.current.rotate);
+            }
+        },
         rottimer: function($this) {
             var settings = helpers.settings($this);
             if (settings.withrottimer) {
-                helpers.rotate($this, $(settings.elt.id));
+                helpers.rotate($this, settings.action.id);
                 settings.rottimerid = setTimeout(function() { helpers.rottimer($this);}, 400);
             }
         }
