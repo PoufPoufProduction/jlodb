@@ -59,6 +59,7 @@ if (array_key_exists("User_Key",$_SESSION) && array_key_exists("action",$_GET) &
         $description    = $c["Book_Description"];
         $comment        = $c["Book_Comment"];
         $owner          = $c["User_Id"];
+        $ownerkey       = $c["User_Key"];
     }
 }
 else
@@ -84,12 +85,15 @@ else {
     $description="[{\"id\":0,\"label\":\"none\",\"description\":\"nlx\",\"children\":[]}]";
     $comment= "notFound";
     $owner = "0";
+    $error = 404;
     
     while($c = mysqli_fetch_array($courses)) {
         $value          = $c["Book_Label"];
         $description    = $c["Book_Description"];
         $comment        = $c["Book_Comment"];
         $owner          = $c["User_Id"];
+        $ownerkey       = $c["User_Key"];
+        $error          = 0;
     }
 }
 
@@ -100,6 +104,7 @@ if (isset($error) && ($error))                      { echo '  "error" : '.$error
 if (isset($textstatus))                             { echo '  "textStatus" : "'.$textstatus.'",'; }
 if (isset($value))                                  { echo '  "value" : "'.$value.'",'; }
 if (isset($owner))                                  { echo '  "owner" : "'.$owner.'",'; }
+if (isset($ownerkey))                               { echo '  "ownerkey" : "'.$ownerkey.'",'; }
 if (isset($description) && strlen($description) )   { echo '  "description":'.$description.','; }
 if (isset($comment))                                { echo '  "comment" : "'.$comment.'",'; }
 if (isset($json))                                   { echo '  "books":['.$json.'],'; }

@@ -10,13 +10,13 @@ if (!$error) {
     }
     else
     if (array_key_exists("action",$_GET) && $_GET["action"]=="list") {
-        $books = mysqli_query($link, "SELECT o.Book_Name, b.Book_Label FROM `".$_SESSION['prefix']."tibibo` o ".
+        $list = mysqli_query($link, "SELECT o.Book_Name, b.Book_Label FROM `".$_SESSION['prefix']."tibibo` o ".
                 "INNER JOIN `".$_SESSION['prefix']."book` b WHERE o.Book_Name = b.Book_Name AND ".
                 "o.User_Key='".$_SESSION['User_Key']."' GROUP BY o.Book_Name ORDER BY Node_Date DESC");
-        $json = "";
-        while($c = mysqli_fetch_array($books)) {
-            if (strlen($json)) { $json.=","; }
-            $json.='{"id":"'.$c["Book_Name"].'","label":"'.$c["Book_Label"].'"}';
+        $books = "";
+        while($c = mysqli_fetch_array($list)) {
+            if (strlen($books)) { $books.=","; }
+            $books.='{"id":"'.$c["Book_Name"].'","label":"'.$c["Book_Label"].'"}';
         }
     }
     else
@@ -69,6 +69,7 @@ if (isset($status))             { echo '  "status" : "'.$status.'",'; }
 if (isset($error) && ($error))  { echo '  "error" : '.$error.','; }
 if (isset($textstatus))         { echo '  "textStatus" : "'.$textstatus.'",'; }
 if (isset($value))              { echo '  "value" : "'.$value.'",'; }
+if (isset($books))              { echo '  "books":['.$books.'],'; }
 if (isset($json))               { echo '  "description":['.$json.'],'; }
 if (isset($state))              { echo '  "state" : {'.$state.'},'; }
 echo '  "from" : "mods/tibibo/api" }';

@@ -17,7 +17,7 @@ var user = {
         var url = _url+"?username="+user.settings.name+"&code="+user.settings.code;
         if (typeof(_args)=="object") {  for (var i in _args) { url+="&"+i+"="+_args[i]; } }
         else if (_args.length) { url+=(_args[0]=='&'?"":"&")+_args; }
-        if (_alert){ alert(url); }
+        if (_alert){ console.log("+ user.getJSON( "+url+" )"); }
         if (user.onrequest) { user.onrequest(); }
         if (_post) { $.post(url, _post, function(_data) {if (user.onreply) { user.onreply(); } if(_data.error==102){location.reload();} else { _cbk(_data); } }, "json"); }
         else       { $.getJSON(url, function(_data)     {if (user.onreply) { user.onreply(); } if(_data.error==102){location.reload();} else { _cbk(_data); } }); }
@@ -60,6 +60,7 @@ var user = {
         }
         else { $.getJSON("user/api/devmode.php", function(_data) { user.settings.devmode = _data.devmode; user.onEvent(); }); }
     },
+    islogged: function() { return (user.settings && user.settings.name); },
     login: function() {
         if ($("#logpanel").hasClass("s")) {
             $.getJSON("user/api/usernew.php"+
