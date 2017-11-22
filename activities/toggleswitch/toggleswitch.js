@@ -336,7 +336,6 @@
         },
         timer: function($this) {
             var settings = helpers.settings($this);
-            settings.timer.id = 0;
             $this.find("#timer").removeClass("err");
             var delta = Date.now()-settings.timer.begin;
             var t = settings.time-Math.floor(delta/1000);

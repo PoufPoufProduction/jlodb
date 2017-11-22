@@ -14,13 +14,15 @@ var user = {
     onEvent : function() { },  // To override 
             
     getJSON : function(_url, _args, _post, _cbk, _alert) {
-        var url = _url+"?username="+user.settings.name+"&code="+user.settings.code;
+        var url = _url;
+        if (user.islogged()) { url+="?username="+user.settings.name+"&code="+user.settings.code; }
+        else                 { url+="?anonymous=1"; }
         if (typeof(_args)=="object") {  for (var i in _args) { url+="&"+i+"="+_args[i]; } }
         else if (_args.length) { url+=(_args[0]=='&'?"":"&")+_args; }
         if (_alert){ console.log("+ user.getJSON( "+url+" )"); }
         if (user.onrequest) { user.onrequest(); }
         if (_post) { $.post(url, _post, function(_data) {if (user.onreply) { user.onreply(); } if(_data.error==102){location.reload();} else { _cbk(_data); } }, "json"); }
-        else       { $.getJSON(url, function(_data)     {if (user.onreply) { user.onreply(); } if(_data.error==102){location.reload();} else { _cbk(_data); } }); }
+        else       { $.getJSON(url, function(_data)     { if (user.onreply) { user.onreply(); } if(_data.error==102){ alert("user error (url: "+url+") :"+_data.error); } else { _cbk(_data); } }); }
     },
     load: {
         logpanel: function($elt, _args, _cbk) {

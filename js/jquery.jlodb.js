@@ -88,6 +88,7 @@ jlodbmaze.prototype = {
 
     var defaults = {
         debug       : false,
+        standalone  : false,
         url         : "",               // cross platform json (not available for the moment)
         // OVERWRITABLE METHODS
         onevent     : function($this, _begin, _hide)   { if (_begin) { helpers.settings($this).onstart($this); }
@@ -132,32 +133,42 @@ jlodbmaze.prototype = {
             $this[settings.last]('quit');
         },
 
+        onexercice  : function($this, data) {
+            var settings = helpers.settings($this);
+            if (data.status=="error" || data.nb==0) { helpers.exercice($this, {id:"nlx"}); }
+            else {
+                var d = data.exercices[0].data;
+                if (data.exercices[0].locale) {
+                    if (d.locale) { d.locale = $.extend(d.locale, data.exercices[0].locale); }
+                    else { d.locale = data.exercices[0].locale; } }
+                if (settings.onexercice) { settings.onexercice($this, data.exercices[0].id, data.exercices[0].activity); }
+
+                if (data.exercices[0].ext && jlodbext && jlodbext[data.exercices[0].ext]) {
+                    jlodbext[data.exercices[0].ext].js(function() { helpers.run($this,data.exercices[0].activity, d); });
+                }
+                else { helpers.run($this,data.exercices[0].activity, d); }
+            }
+        },
             // GET EXERCICE AND LAUNCH
         exercice    : function($this, _args) {
             var settings = helpers.settings($this);
-            // HANDLE ARGS
-            var tmp     = new Date();
-            var args    = "?limit=1&order=rand&detail&debug="+tmp.getTime();
-            for (var i in _args) { args+="&"+i+"="+_args[i]; }
-
-            // GET EXERCICE FROM DATABASE AND LAUNCH
-            var url     = "api/exercice.php"+args;
-
-            $.getJSON(url, function (data) {
-                if (data.status=="error" || data.nb==0) { helpers.exercice($this, {id:"nlx"}); }
-                else {
-                    var d = data.exercices[0].data;
-                    if (data.exercices[0].locale) {
-                        if (d.locale) { d.locale = $.extend(d.locale, data.exercices[0].locale); }
-                        else { d.locale = data.exercices[0].locale; } }
-                    if (settings.onexercice) { settings.onexercice($this, data.exercices[0].id, data.exercices[0].activity); }
-
-                    if (data.exercices[0].ext && jlodbext && jlodbext[data.exercices[0].ext]) {
-                        jlodbext[data.exercices[0].ext].js(function() { helpers.run($this,data.exercices[0].activity, d); });
-                    }
-                    else { helpers.run($this,data.exercices[0].activity, d); }
-                }
-            });
+            if (settings.standalone && _args.id) {
+                $.getJSON("standalone/exercice/"+_args.id+".json", function (exercice) {
+                    $.getJSON("standalone/activity/"+exercice.activity+".json", function (activity) {
+                        exercice.locale=activity;
+                        var data={exercices:[exercice]};
+                        helpers.onexercice($this, data);
+                    });
+                });
+            }
+            else {
+                var tmp     = new Date();
+                var args    = "?limit=1&order=rand&detail&debug="+tmp.getTime();
+                for (var i in _args) { args+="&"+i+"="+_args[i]; }
+                var url     = "api/exercice.php"+args;
+                $.getJSON(url, function (data) { helpers.onexercice($this, data); });
+            }
+            
         },
 
         // CLOSE THE EXERCICE

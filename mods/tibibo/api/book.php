@@ -86,6 +86,7 @@ else {
     $comment= "notFound";
     $owner = "0";
     $error = 404;
+    $bookid = $_GET["value"];
     
     while($c = mysqli_fetch_array($courses)) {
         $value          = $c["Book_Label"];
@@ -107,6 +108,7 @@ if (isset($owner))                                  { echo '  "owner" : "'.$owne
 if (isset($ownerkey))                               { echo '  "ownerkey" : "'.$ownerkey.'",'; }
 if (isset($description) && strlen($description) )   { echo '  "description":'.$description.','; }
 if (isset($comment))                                { echo '  "comment" : "'.$comment.'",'; }
+if (isset($bookid))                                 { echo '  "id" : "'.$bookid.'",'; }
 if (isset($json))                                   { echo '  "books":['.$json.'],'; }
 echo '  "from" : "mods/tibibo/api" }';
 

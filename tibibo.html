@@ -34,7 +34,7 @@
 .topdown                    { font-size:.3em; width:105%; margin:.5em 0 .2em 0; }
 .topdown>div                { height:3em; border-radius:.25em; float:left; margin-left:1em;  }
 #bonav                      { background-color:#DD5; width:40em; overflow:visible; }
-#boheader #bonav .label     { float:right; width:14em; }
+#boheader #bonav .label     { float:right; width:14em; border:0; font-size:1em; background-color:#DD5;}
 #boheader #bonav .node      { font-size:2.8em; margin:.05em .1em; }
 
 #boheader #profile          { background-color:#9B6; width:10em; color:white;}
@@ -63,7 +63,7 @@
 .booklist .list             { height:12.5em; overflow:auto; }
 .booklist .list>div         { margin:.2em 0.2em; cursor:pointer; clear:both; }
 .booklist .list .bookid     { float:left; width:5em; background-color:rgba(150,220,255,0.6); padding-right:.5em; color:#345; text-align:right; font-weight:bold; }
-.booklist .list .label      { float:left; margin-left:.1em; background-color:rgba(255,220,150,0.6); color:#543; width:24em; padding-left:.5em; font-style:italic; }
+.booklist .list .label      { float:left; margin-left:.1em; background-color:rgba(255,220,150,0.6); color:#543; width:24em; padding-left:.5em; font-style:italic; white-space:nowrap; }
 
 
 #bomain .node               { width:1em; height:1.35em; margin:.08em; cursor:pointer; float:left; position:relative; }
@@ -136,11 +136,17 @@ var regExp = [
 user.onEvent = function() {
     // IDENTIFIED
     if (user.islogged()) {
-        $("#profile #avatar").gonz({interactive:false, code:user.settings.avatar,
+        if (tibibo.standalone) {
+            $("#profile #avatar").html($("#logpanel #u"+user.settings.id+" img").clone());
+            $("#profile #label #edmode").hide();
+        }
+        else {
+            $("#profile #avatar").gonz({interactive:false, code:user.settings.avatar,
                                     context:{onclick:function($this){},onquit:function($this, _ret){}}});
+            $("#profile #label #edmode").show();
+        }
         $("#profile #label #name").html(user.settings.name);
-        $("#profile #label #sub").html("#"+user.settings.tag);
-        $("#profile #label #edmode").show();
+        if (user.settings.tag) { $("#profile #label #sub").html("#"+user.settings.tag); }
         $("#bomain #profile #out").show();
     }
     // ANONYMOUS MODE
@@ -153,7 +159,6 @@ user.onEvent = function() {
     }
     
     tibibo.init();
-
 };
 
 var tibibo = {
@@ -274,13 +279,15 @@ var tibibo = {
             onclick : function($this, _args) {
                 $("#waiting").show().find("div").addClass("running");
                 $("#activity").jlodb({
+                    standalone: tibibo.standalone,
                     onstart:    function($this) {
-                        $this.parent().css("opacity",0)
-                                      .animate({opacity:1},500, function() { $("#bopage").hide(); }).show();
+                        if ($("#bopage").is(":visible")) {
+                            $this.parent().css("opacity",0)
+                                .animate({opacity:1},500, function() { $("#bopage").hide(); }).show();
+                        }
                         $("#waiting").hide().find("div").removeClass("running"); },
                     onfinish:   function($this, _hide) {
-                        if (_hide) { $this.parent().hide(); }
-                        $("#bopage").show();
+                        if (_hide) { $this.parent().hide(); $("#bopage").show(); }
                         $("#score").score('hide'); },
                     onscore:    function($this, _ret) {
                         var isnext = false;
@@ -387,7 +394,7 @@ var tibibo = {
                 if ($("#boeditnode #tibibi select").val().length) {
                     user.getJSON("mods/tibibi/api/course.php",{value:$("#boeditnode #tibibi select").val()}, "",
                     function(_data) {
-                        if (_data.status=="success" && _data.description && _data.description.length>0) {
+                        if (_data && _data.status=="success" && _data.description && _data.description.length>0) {
                             tibibo.textarea($("#boeditnode #etibibi"));
                             var val = $("#boeditnode #etibibi").val();
                             if (val.length) { val+=','; }
@@ -479,8 +486,21 @@ var tibibo = {
             console.log("+ display node: "+(node.id)+" - nbelts: "+(node.children.length));
             
             // NAVIGATION IN HEADER
-            $("#bonav").append("<div class='label'>"+
-                tibibo.helpers.format(tibibo.book.nodeid==-1?tibibo.book.data.value:node.label)+"</div>");
+            var $label;
+            if (tibibo.book.nodeid==-1) {
+                if (user.settings.devmode) {
+                    $label=$("<textarea class='label' autocomplete='off' autocorrect='off' autocapitalize='off' spellcheck='false'></textarea>");
+                    $label.val(tibibo.book.data.value);
+                    $label.bind("focusout",function() {
+                        user.getJSON("mods/tibibo/api/book.php",
+                            {action:"upd",book:tibibo.args.id,value:$("#bonav textarea").val()}, {},
+                            function(_data) {});
+                    });
+                }
+                else { $label=$("<div class='label'>"+tibibo.helpers.format(tibibo.book.data.value)+"</div>"); }
+            }
+            else { $label=$("<div class='label'>"+tibibo.helpers.format(node.label)+"</div>"); }
+            $("#bonav").append($label);
             var parents = tibibo.book.data.nav.getparents(tibibo.book.nodeid);
             for (var i=parents.length; i>0; i--) {
                 $("#bonav").append(tibibo.node.icon(tibibo.book.data.nav.getnode(parents[i-1])));
@@ -547,7 +567,7 @@ var tibibo = {
         // A BOOK IS REQUIRED
         if (tibibo.args.id) {
             console.log("+ asking book "+tibibo.args.id);
-            $.getJSON("mods/tibibo/api/book.php?value="+tibibo.args.id, function(_data) {
+            user.getJSON("mods/tibibo/api/book.php", {value:tibibo.args.id}, 0, function(_data) {
                 if (_data.error) {
                     console.log("  - not found");
                     $("#boerror").html(tibibo.locale.error.booknotfound.replace("$1",tibibo.args.id)).show();
@@ -566,7 +586,7 @@ var tibibo = {
                     if (user.islogged()) {
                         $("#tibibi select").html("");
                         user.getJSON("mods/tibibi/api/course.php",{action:"list"}, "",function(_data) {
-                            for (var i in _data.courses) {
+                            if (_data) for (var i in _data.courses) {
                                 $("#tibibi select").append("<option>"+_data.courses[i]+"</option>"); }
                         });
                     }
@@ -619,8 +639,39 @@ $(window).ready(function() {
 	$(window).resize();
 
     if (tibibo.standalone) {
-        // LOCALE VERSION
-        user.load.logpanel($("#bomain"), {close:true}, function() { user.init(); });
+        // LOCALISATION
+        $.getJSON("standalone/locale.json", function(_locale) {
+            for (var i in _locale.locale) { $("#"+i).html(_locale.locale[i]); }
+            tibibo.locale = _locale;
+            
+            // LOCALE VERSION
+            user.load.logpanel($("#bomain"), {close:true}, function() { user.init(); });
+        });
+        
+        user.getJSON = function(_url, _args, _post, _cbk, _alert) {
+            console.log("+ standalone getJSON: "+_url+" - "+JSON.stringify(_args));
+            if (_url.indexOf("book.php")!=-1) {
+                $.getJSON("standalone/book.json", function(_data) {
+                    tibibo.args.id = _data.id; _cbk(_data); });
+            }
+            else if (_url.indexOf("tibibo.php")!=-1) {
+                switch(_args.action) {
+                    case "upd" :
+                        console.log("+ save "+tibibo.args.id+user.settings.id+" state");
+                        console.log(JSON.stringify(tibibo.book.data.state));
+                        $.cookie(tibibo.args.id+user.settings.id, JSON.stringify(tibibo.book.data.state), { expires : 365 });
+                        _cbk(0);
+                    break;
+                    default :
+                        console.log("+ load "+tibibo.args.id+user.settings.id+" state");
+                        var state = $.cookie(tibibo.args.id+user.settings.id);
+                        console.log(state);
+                        _cbk({state:state?JSON.parse(state):{}});
+                    break;
+                }
+            }
+            else { _cbk(0); }
+        }
     }
     else {
         // CLIENT VERSION
@@ -651,7 +702,7 @@ $(window).ready(function() {
 
         // HANDLE ICON
         var icons = [
-        "res/img/activity/abacus.svg", "res/img/activity/alchemist.svg","res/img/activity/asm.svg","res/img/activity/balance.svg","res/img/activity/board.svg","res/img/activity/cards.svg","res/img/activity/code.svg","res/img/activity/correcter.svg","res/img/activity/countdown.svg","res/img/activity/crossword.svg","res/img/activity/equation.svg","res/img/activity/futoshiki.svg","res/img/activity/geometry.svg","res/img/activity/hammer.svg","res/img/activity/info.svg","res/img/activity/jewel.svg","res/img/activity/launch.svg","res/img/activity/logo.svg","res/img/activity/mahjong.svg","res/img/activity/marker.svg","res/img/activity/mathcraft.svg","res/img/activity/memory.svg","res/img/activity/memory2.svg","res/img/activity/memory3.svg","res/img/activity/operation.svg","res/img/activity/paint.svg","res/img/activity/puzzle.svg","res/img/activity/robot.svg","res/img/activity/sequence.svg","res/img/activity/shop.svg","res/img/activity/sokoban.svg","res/img/activity/sorting.svg","res/img/activity/sudoku.svg","res/img/activity/toggleswitch.svg","res/img/activity/trafficjam.svg","res/img/activity/where.svg","res/img/activity/wordmix.svg","res/img/classification/addition.svg","res/img/classification/animal.svg","res/img/classification/arithmetic.svg","res/img/classification/arts.svg","res/img/classification/division.svg","res/img/classification/french.svg","res/img/classification/game.svg","res/img/classification/geography.svg","res/img/classification/geometry.svg","res/img/classification/grammar.svg","res/img/classification/gravity.svg","res/img/classification/health.svg","res/img/classification/it.svg","res/img/classification/languages.svg","res/img/classification/logic.svg","res/img/classification/mathematics.svg","res/img/classification/measure.svg","res/img/classification/money.svg","res/img/classification/multiplication.svg","res/img/classification/negative.svg","res/img/classification/numeration.svg","res/img/classification/observation.svg","res/img/classification/operations.svg","res/img/classification/physics.svg","res/img/classification/reading.svg","res/img/classification/reflexion.svg","res/img/classification/root.svg","res/img/classification/sciences.svg","res/img/classification/social.svg","res/img/classification/subtraction.svg","res/img/classification/symmetry.svg","res/img/classification/technology.svg","res/img/classification/time.svg","res/img/classification/vegetable.svg","res/img/classification/word.svg","mods/tibibo/res/img/thumbnail/bear01.svg","mods/tibibo/res/img/thumbnail/bunny01.svg","mods/tibibo/res/img/thumbnail/pinguin01.svg","mods/tibibo/res/img/thumbnail/pig01.svg"
+        "res/img/activity/abacus.svg", "res/img/activity/alchemist.svg","res/img/activity/asm.svg","res/img/activity/balance.svg","res/img/activity/board.svg","res/img/activity/cards.svg","res/img/activity/code.svg","res/img/activity/correcter.svg","res/img/activity/countdown.svg","res/img/activity/crossword.svg","res/img/activity/equation.svg","res/img/activity/futoshiki.svg","res/img/activity/geometry.svg","res/img/activity/hammer.svg","res/img/activity/info.svg","res/img/activity/jewel.svg","res/img/activity/launch.svg","res/img/activity/logo.svg","res/img/activity/mahjong.svg","res/img/activity/marker.svg","res/img/activity/mathcraft.svg","res/img/activity/memory.svg","res/img/activity/memory2.svg","res/img/activity/memory3.svg","res/img/activity/novel.svg","res/img/activity/operation.svg","res/img/activity/paint.svg","res/img/activity/puzzle.svg","res/img/activity/robot.svg","res/img/activity/sequence.svg","res/img/activity/shop.svg","res/img/activity/sokoban.svg","res/img/activity/sorting.svg","res/img/activity/sudoku.svg","res/img/activity/toggleswitch.svg","res/img/activity/trafficjam.svg","res/img/activity/where.svg","res/img/activity/wordmix.svg","res/img/classification/addition.svg","res/img/classification/animal.svg","res/img/classification/arithmetic.svg","res/img/classification/arts.svg","res/img/classification/division.svg","res/img/classification/french.svg","res/img/classification/game.svg","res/img/classification/geography.svg","res/img/classification/geometry.svg","res/img/classification/grammar.svg","res/img/classification/gravity.svg","res/img/classification/health.svg","res/img/classification/it.svg","res/img/classification/languages.svg","res/img/classification/logic.svg","res/img/classification/mathematics.svg","res/img/classification/measure.svg","res/img/classification/money.svg","res/img/classification/multiplication.svg","res/img/classification/negative.svg","res/img/classification/numeration.svg","res/img/classification/observation.svg","res/img/classification/operations.svg","res/img/classification/physics.svg","res/img/classification/reading.svg","res/img/classification/reflexion.svg","res/img/classification/root.svg","res/img/classification/sciences.svg","res/img/classification/social.svg","res/img/classification/subtraction.svg","res/img/classification/symmetry.svg","res/img/classification/technology.svg","res/img/classification/time.svg","res/img/classification/vegetable.svg","res/img/classification/word.svg","mods/tibibo/res/img/thumbnail/bear01.svg","mods/tibibo/res/img/thumbnail/bunny01.svg","mods/tibibo/res/img/thumbnail/pinguin01.svg","mods/tibibo/res/img/thumbnail/pig01.svg"
         ];
         
         $("#eimg").html("");

@@ -21,9 +21,11 @@
 //<![CDATA[
 
 var options = {order:"rand",limit:1};
+var standalone = false;
 var jlodb = function() {
     $("#score").score('hide');
     $("#activity").jlodb({
+        standalone : standalone,
         onexercice: function($this, _id, _activity) { document.title = "jLoDb ["+_id+"]"; },
         onfinish:   function($this, _hide)          { $("#score").score('hide'); },
         onscore:    function($this, _ret)           {
@@ -47,7 +49,8 @@ $(window).ready(function() {
         if (args.activity)          { options.activity = args.activity; }
         if (args.classification)    { options.classification = args.classification; }
     }
-    if (args.nosplash) { $("body").addClass("nosplash"); }
+    if (args.nosplash)   { $("body").addClass("nosplash"); }
+    if (args.standalone) { standalone = true; }
     
     $("#score").score(args.nonext?{}:{
         onreload    : function($this) { $('#activity').jlodb('reload'); },
