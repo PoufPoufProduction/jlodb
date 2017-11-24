@@ -34,7 +34,8 @@
 .topdown                    { font-size:.3em; width:105%; margin:.5em 0 .2em 0; }
 .topdown>div                { height:3em; border-radius:.25em; float:left; margin-left:1em;  }
 #bonav                      { background-color:#DD5; width:40em; overflow:visible; }
-#boheader #bonav .label     { float:right; width:14em; border:0; font-size:1em; background-color:#DD5;}
+#boheader #bonav .label     { float:right; width:14em; border:0; font-size:1em; background-color:#DD5; color:#048;}
+#boheader #bonav .label.ex  { font-size:2.2em; font-family:inherit; font-weight:bold;  }
 #boheader #bonav .node      { font-size:2.8em; margin:.05em .1em; }
 
 #boheader #profile          { background-color:#9B6; width:10em; color:white;}
@@ -60,8 +61,8 @@
 #bohome .input .icon        { font-size:1.2em; cursor:pointer; }
 .booklist                   { font-size:0.5em; border:.2em solid black; margin-top:1em; height:12.5em;}
 .booklist .title            { background-color:black; color: white; padding-left:2em; height:1.2em; }
-.booklist .list             { height:12.5em; overflow:auto; }
-.booklist .list>div         { margin:.2em 0.2em; cursor:pointer; clear:both; }
+.booklist .list             { height:11.3em; overflow-x:none; overflow-y:auto; }
+.booklist .list>div         { margin:.2em 0.2em; cursor:pointer; clear:both; height:1.2em; width:31em; }
 .booklist .list .bookid     { float:left; width:5em; background-color:rgba(150,220,255,0.6); padding-right:.5em; color:#345; text-align:right; font-weight:bold; }
 .booklist .list .label      { float:left; margin-left:.1em; background-color:rgba(255,220,150,0.6); color:#543; width:24em; padding-left:.5em; font-style:italic; white-space:nowrap; }
 
@@ -86,8 +87,12 @@
 #bofooter #olist .value     { position:absolute;text-align:center;font-size:.8em;width:1.2em;height:1.2em;top:0;z-index:2; }
 #bofooter #olist .slide     { background-color:#5b6;position:absolute;width:1em;height:1em;top:1em;z-index:1; }
 #bofooter #oquit            { float:right; margin-right:.2em; }
-#bofooter .actions .icon.s  { background-color:#A00; }
-#bofooter .actions .icon    { background-image:url("res/img/icon/tab/tab00.svg"); border-radius:.5em; float:left; margin-right:.1em; }
+#bofooter #ocomment         { float:right; font-size:1em; width:20em; height:5em; }
+#bofooter .action.icon.s    { background-color:#A00; }
+#bofooter .action.icon      { background-image:url("res/img/icon/tab/tab00.svg"); border-radius:.5em; float:left; margin-right:.1em; width:1em; height:1em; }
+#bofooter .bolink           { font-style:italic; }
+#bofooter .bolink:before    { content:"("; }
+#bofooter .bolink:after     { content:")"; }
 
 #boeditnode                 { position:absolute; top:0; left:0; width:16em; height:12em; background-color: rgba(0,0,0,0.2); display:none; }
 #boeditnode>div             { position:absolute; font-size:.4em; width:20em; height:21em; top:2em; left:2em;  background-color:rgba(128,120,100,0.9); border:.2em solid white; color:black; border-radius:.5em; background-image:url("res/img/default/pattern/line04.svg"); background-repeat:repeat; }
@@ -111,7 +116,7 @@
 #boframe .jmenu .icon       { background-image:url('res/img/default/icon/menu02bg.svg') !important; }
 
 
-#bomain .label .strong      { font-size:1.5em; font-weight:bold; text-align:center; }
+.bostrong            { font-size:1.5em; font-weight:bold; text-align:center; }
 
 
 
@@ -129,7 +134,7 @@ var regExp = [
         "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
         "\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='icon'><img src='$1'/></div>",
         "\\\[img\\\]([^\\\[]+)\\\[/img\\\]",        "<div class='img'><img src='$1'/></div>",
-        "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>"
+        "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='bostrong'>$1</div>"
     ];
 
 // USER EVENT CALLBACK (FROM user/user.js)
@@ -466,6 +471,10 @@ var tibibo = {
             console.log("==== open book: "+_id+" ====");
             document.location = "tibibo.html?id="+_id;
         },
+        chapter: function(_id) {
+            tibibo.book.nodeid = _id;
+            tibibo.book.display();
+        },
         create: function(_value) {
             _value=tibibo.helpers.cleantext(_value);
             console.log("==== create new book: "+_value+" ====");
@@ -489,7 +498,7 @@ var tibibo = {
             var $label;
             if (tibibo.book.nodeid==-1) {
                 if (user.settings.devmode) {
-                    $label=$("<textarea class='label' autocomplete='off' autocorrect='off' autocapitalize='off' spellcheck='false'></textarea>");
+                    $label=$("<textarea class='label ex' autocomplete='off' autocorrect='off' autocapitalize='off' spellcheck='false'></textarea>");
                     $label.val(tibibo.book.data.value);
                     $label.bind("focusout",function() {
                         user.getJSON("mods/tibibo/api/book.php",
@@ -497,7 +506,7 @@ var tibibo = {
                             function(_data) {});
                     });
                 }
-                else { $label=$("<div class='label'>"+tibibo.helpers.format(tibibo.book.data.value)+"</div>"); }
+                else { $label=$("<div class='label ex'>"+tibibo.helpers.format(tibibo.book.data.value)+"</div>"); }
             }
             else { $label=$("<div class='label'>"+tibibo.helpers.format(node.label)+"</div>"); }
             $("#bonav").append($label);
@@ -543,6 +552,24 @@ var tibibo = {
                 $("#olist .value").html(Math.floor(100*prog[0]/prog[1]));
                 $("#bofooter #olist").show();
             }
+            
+            // HANDLE FOOTER COMMENT
+            var comment ="";
+            if (node.comment) {
+                comment=tibibo.helpers.format(node.comment);
+                var res = comment.match(/\[\d*\]/g);
+                for (var i in res) {
+                    var tmp = tibibo.book.data.nav.getnode(res[i].substr(1,res[i].length-2));
+                    if (tmp) {
+                        var html="<span class='bolink'"+
+                            "onclick='tibibo.book.chapter("+res[i]+")' "+
+                            "ontouchstart='tibibo.book.chapter("+res[i]+");event.preventDefault();'"+
+                                ">"+tibibo.helpers.format(tmp.label)+"</span>";
+                            comment = comment.replace(res[i],html);
+                    }
+                }
+            }
+            $("#bofooter #ocomment").html(comment).show();
             
 
             $("#boframe").show();
@@ -611,16 +638,25 @@ var tibibo = {
                 user.getJSON("mods/tibibo/api/"+(user.settings.devmode?"book.php":"tibibo.php"),
                              {action:"list"},0, function(_data) {
                     for (var i in _data.books) {
-                        var $elt=$("<div></div>");
+                        var $elt=$("<div id='"+_data.books[i].id+"'></div>");
                         $elt.append("<div class='bookid'>"+_data.books[i].id+"</div>");
                         $elt.append("<div class='label'>"+_data.books[i].label+"</div></div>");
                         $elt.bind("touchstart mousedown",function(event) {
-                            tibibo.book.open($(this).find(".bookid").text());
+                            if ( user.settings.devmode && $("#bofooter #odelete").hasClass("s")) {
+                                var value=$(this).attr("id");
+                                console.log("+ remove book "+value);
+                                user.getJSON("mods/tibibo/api/book.php",{action:"del", value:value},0,
+                                    function(_data) { document.location="tibibo.html"; });
+                            }
+                            else { tibibo.book.open($(this).find(".bookid").text()); }
+                            
                             event.preventDefault();
                         });
                         $("#bohome .list").append($elt);
                     }
                 });
+                $("#bofooter #odelete").removeClass("s");
+                if (user.settings.devmode) { $("#bofooter #odelete").show(); }
             }
             $("#bohome").show();
         }
@@ -797,37 +833,44 @@ $(window).ready(function() {
                  ontouchstart="document.location='tibibo.html';event.preventDefault();" >
                  <img src="res/img/default/icon/cancel01.svg"/></div>
                  
-            <div id="oactions" class="actions">
-                <div class="icon" onmousedown="tibibo.node.edit.open();"
+            <div id="ocomment"></div>
+                 
+            <div id="oactions">
+                <div class="icon action" onmousedown="tibibo.node.edit.open();"
                     ontouchstart="tibibo.node.edit.open();event.preventDefault();" >
                     <img src="res/img/default/white/newcourse.svg"/></div>
-                <div id="mdelete" class="icon"
+                <div id="mdelete" class="icon action"
                     onmousedown="$(this).toggleClass('s').siblings().removeClass('s');"
                     ontouchstart="$(this).toggleClass('s').siblings().removeClass('s');event.preventDefault();" >
                     <img src="res/img/default/white/delete.svg"/></div>
-                <div id="medit" class="icon"
+                <div id="medit" class="icon action"
                     onmousedown="$(this).toggleClass('s').siblings().removeClass('s');"
                     ontouchstart="$(this).toggleClass('s').siblings().removeClass('s');event.preventDefault();" >
                     <img src="res/img/default/white/edit.svg"/></div>
-                <div id="mleft" class="icon"
+                <div id="mleft" class="icon action"
                     onmousedown="$(this).toggleClass('s').siblings().removeClass('s');"
                     ontouchstart="$(this).toggleClass('s').siblings().removeClass('s');event.preventDefault();" >
                     <img src="mods/tibibo/res/img/left.svg"/></div>
-                <div id="mright" class="icon"
+                <div id="mright" class="icon action"
                     onmousedown="$(this).toggleClass('s').siblings().removeClass('s');"
                     ontouchstart="$(this).toggleClass('s').siblings().removeClass('s');event.preventDefault();" >
                     <img src="mods/tibibo/res/img/right.svg"/></div>
                     <!--
-                <div id="mexport" class="icon"
+                <div id="mexport" class="icon action"
                     onmousedown="$(this).toggleClass('s').siblings().removeClass('s');"
                     ontouchstart="$(this).toggleClass('s').siblings().removeClass('s');event.preventDefault();" >
                     <img src="res/img/default/white/export.svg"/></div>
-                <div id="mimport" class="icon"
+                <div id="mimport" class="icon action"
                     onmousedown="$(this).toggleClass('s').siblings().removeClass('s');"
                     ontouchstart="$(this).toggleClass('s').siblings().removeClass('s');event.preventDefault();" >
                     <img src="res/img/default/white/import.svg"/></div>
                     -->
             </div>
+            
+            <div id="odelete" class="icon action"
+                onmousedown="$(this).toggleClass('s');"
+                ontouchstart="$(this).toggleClass('s');event.preventDefault();" >
+            <img src="res/img/default/white/delete.svg"/></div>
             
             <div id="olist">
                 <div class="slide"></div>

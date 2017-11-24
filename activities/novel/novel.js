@@ -93,7 +93,7 @@
                     else { $this.find("#"+id).html(value); }
                 }); }
 
-                $this.find("#board").bind("mousedown touchstart", function(_event) {
+                $this.find("#nlboard").bind("mousedown touchstart", function(_event) {
                     var settings = helpers.settings($this);
                     if (settings.interactive) {
                         switch (settings.state) {
@@ -131,7 +131,7 @@
             settings.state      = "";
             settings.pc         = [];
             settings.running    = false;
-            $this.find("#board").html("");
+            $this.find("#nlboard").html("");
             for (var i in settings.content.story) { if (!first) { first = true; name = i;} }
             settings.pc.push({story:settings.content.story[name], p:0, n:name });
             settings.def = $.extend(true, {}, settings.def, settings.content.def);
@@ -175,13 +175,13 @@
                             }
                             html+="<div class='content'>"+helpers.text($this, elt.text)+"</div>";
                             html+= "</div>";
-                            $this.find("#board").append(html);
+                            $this.find("#nlboard").append(html);
                             timer = -1;
                             setTimeout(function(){ settings.state = "dialog"; }, 200);
                         }
                         break;
                     case "dialogg" :
-                        $this.find("#board #dialog .content").append(helpers.text($this, elt.text)).parent().show();
+                        $this.find("#nlboard #dialog .content").append(helpers.text($this, elt.text)).parent().show();
                         timer = -1;
                         setTimeout(function(){ settings.state = "dialog"; }, 200);
                         break;
@@ -248,7 +248,7 @@
                             m+=">"+helpers.text($this,elt.value[i].text)+"</div>";
                             $html.append(m);
                         }
-                        $this.find("#board").append($html);
+                        $this.find("#nlboard").append($html);
                         break;
                     case "op" :
                             try { eval(elt.value.replace(reg,"settings.data.")+";"); }
@@ -295,7 +295,7 @@
                                     default:        $elt = $(helpers.imgfromdef($this, url, e[0], def.attr));     break;
                                 }
                                 
-                                $this.find("#board").append($elt);
+                                $this.find("#nlboard").append($elt);
                             }
 
                             // UPDATE POSITION
@@ -1014,6 +1014,7 @@
             },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
+                helpers.unbind($this);
                 settings.context.onquit($this,{'status':'abort'});
             },
             devcon: function() {

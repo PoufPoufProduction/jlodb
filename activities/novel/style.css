@@ -1,24 +1,24 @@
 .novel                              { background-color:black;}
 
-.novel div#board #dialog            { position:absolute; top:70%; left:0; height:30%; width:100%; z-index:200;
+.novel div#nlboard #dialog            { position:absolute; top:70%; left:0; height:30%; width:100%; z-index:200;
                                       color:white; background-color:rgba(0,0,0,0.7); font-size:.5em; }
-.novel div#board #dialog .label     { margin-left:.5em; }
-.novel div#board #dialog .content   { margin: 0 1em; }
+.novel div#nlboard #dialog .label     { margin-left:.5em; }
+.novel div#nlboard #dialog .content   { margin: 0 1em; }
 
-.novel div.board                    { position:relative; width:16em; height:12em; }
-.novel div.board>div                { position: absolute; top:0; left:0; width:16em; height:12em; }
+.novel div.nlboard                    { position:relative; width:16em; height:12em; }
+.novel div.nlboard>div                { position: absolute; top:0; left:0; width:16em; height:12em; }
 
-.novel div.board .char                { width:16em; height:16em; top:10%; left:0; }
-.novel div.board .ppvc                { width:16em; height:16em; top:-2em; left:0; }
-.novel div.board .tinyppvc        { width:20em; height:20em; top:-6em; left:0; }
-.novel div.board .portrait        { width:11em; height:11em; top:1em; left:0; }
-.novel div.board .sprite            { width:1em; height:1em;  }
-.novel div.board .sprite.round      { border-radius:.5em;  }
+.novel div.nlboard .char                { width:16em; height:16em; top:10%; left:0; }
+.novel div.nlboard .ppvc                { width:16em; height:16em; top:-2em; left:0; }
+.novel div.nlboard .tinyppvc        { width:20em; height:20em; top:-6em; left:0; }
+.novel div.nlboard .portrait        { width:11em; height:11em; top:1em; left:0; }
+.novel div.nlboard .sprite            { width:1em; height:1em;  }
+.novel div.nlboard .sprite.round      { border-radius:.5em;  }
 
-.novel div#board #menu              { position:absolute; width:auto; height:auto; z-index:201;
+.novel div#nlboard #menu              { position:absolute; width:auto; height:auto; z-index:201;
                              top:10%; left:60%; font-size:.5em; background-color:rgba(0,0,0,0.5); padding:.1em; }
-.novel div#board #menu.left     { left:5%; }
-.novel div#board #menu>div          { width:10em; padding:.1em .5em; margin:.1em; color:white; border:2px solid white;
+.novel div#nlboard #menu.left     { left:5%; }
+.novel div#nlboard #menu>div          { width:10em; padding:.1em .5em; margin:.1em; color:white; border:2px solid white;
                                       border-radius:.1em; cursor:pointer;}
 
 .novel #devpanel                 { position:absolute; width:100%; height:100%; opacity:0.9; 

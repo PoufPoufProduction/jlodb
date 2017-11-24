@@ -469,6 +469,7 @@
             quit: function() {
                 var $this = $(this), settings = helpers.settings($this);
                 if (settings.timer.id) { clearTimeout(settings.timer.id); settings.timer.id=0; }
+                helpers.unbind($this);
                 settings.finish = true;
                 settings.context.onquit($this,{'status':'abort'});
             }
