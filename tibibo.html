@@ -31,11 +31,11 @@
 #bomain                     { position:relative; background-image:url('res/img/background/landscape/blueboard01.svg'); }
 
 
-.topdown                    { font-size:.3em; width:105%; margin:.5em 0 .2em 0; }
+.topdown                    { font-size:.3em; width:105%; margin:.5em 0 .2em 0; overflow:visible; }
 .topdown>div                { height:3em; border-radius:.25em; float:left; margin-left:1em;  }
 #bonav                      { background-color:#DD5; width:40em; overflow:visible; }
-#boheader #bonav .label     { float:right; width:14em; border:0; font-size:1em; background-color:#DD5; color:#048;}
-#boheader #bonav .label.ex  { font-size:2.2em; font-family:inherit; font-weight:bold;  }
+#boheader #bonav .label     { float:right; width:14em; border:0; font-size:1em; background-color:#DD5; border-radius:.25em; color:#048;  }
+#boheader #bonav .label.ex  { font-size:2.2em; font-family:inherit; font-weight:bold; height:1.2em; }
 #boheader #bonav .node      { font-size:2.8em; margin:.05em .1em; }
 
 #boheader #profile          { background-color:#9B6; width:10em; color:white;}
@@ -50,6 +50,21 @@
 
 #bocontent                  { width:100%; height:9em; }
 #bocontent>div              { width:100%; display:none; }
+
+#boawards                   { position:absolute;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.4); display:none; }
+#boawards>div               { background-color:rgba(255,255,240,0.9); width:92%;height:73%;margin-top:7%;margin-left:4%;border:.1em solid white; }
+#boawards #boawardsedit     { font-size:0.5em; height:3em; background-color:#9B6;padding:.1em 0; }
+#boawards #boawardsedit>*   { float:left; margin-left:1%; height:100%; }
+#boawards #img              { font-size:3em; background-image:url("res/img/icon/tab/tab00.svg"); border-radius:.5em; overflow:visible; background-color:red; cursor:pointer; }
+#boawards #colors           { width:3em; }
+#boawards #colors>div       { font-size:.72em; float:left; cursor:pointer; }
+#boawards textarea          { background-color:rgba(255,255,255,0.4); font-size:.5em; width:30%; height:95%; border:0; font-family:inherit;padding:0 .2em; }
+#boawards #goals            { width:35%; font-size:.4em; }
+#boawards #goals>*          { margin-bottom:.4em; }
+#boawards .goal>*           { float:left; }
+#boawards .goal select      { width:35%; border:0; background-color:rgba(255,255,255,0.4); font-size:1em; }
+#boawards .goal input       { width:12%; border:0; font-size:1em; text-align:right;font-family:inherit; }
+#boawards .goal .max        { float:left; background-color:rgba(255,255,255,0.4); width:12%; }
 
 #boerror                    { position:absolute; top:72%; font-size:.7em; display:none; text-align:center;  }
 #bomain .redline            { background-color:red; width:102%; color:white; opacity:0.9; height:1.2em; }
@@ -68,6 +83,7 @@
 
 
 #bomain .node               { width:1em; height:1.35em; margin:.08em; cursor:pointer; float:left; position:relative; }
+#boheader #bonav .node      { height:1em; margin:0.05em; border-radius:.2em; overflow:visible; }
 #bomain .node .type         { width:1em; height:1em; font-size:.25em; position:absolute; top:-0.1em; left:-0.1em; display:none;}
 #bomain .node .icon         { width:1em; height:1em; }
 #bomain .node .star         { width:1em; height:1em; position:absolute; top:0.1em; left:0.03em; display:none; }
@@ -78,6 +94,7 @@
 #bomain .node .progress     { width:1em; height:0.2em; position:absolute; top:93%; background-color:#dd5; }
 #bomain .node .progress>div { height:100%; background-color:#5b6; }
 #bomain .node .id           { position:absolute; top:70%; left:40%; width:50%; text-align:right; font-size:0.4em; font-weight:bold; opacity:0.1; }
+#bomain .node .mask         { position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(255,255,0,0.8); border-radius:.2em; opacity:0; }
 
 #boframe .node              { margin:.02em; padding:.02em; background-color:rgba(0,0,0,0.6); border-radius:.26em; border:.04em solid white; color:white}
 
@@ -88,6 +105,7 @@
 #bofooter #olist .slide     { background-color:#5b6;position:absolute;width:1em;height:1em;top:1em;z-index:1; }
 #bofooter #oquit            { float:right; margin-right:.2em; }
 #bofooter #ocomment         { float:right; font-size:1em; width:20em; height:5em; }
+#bofooter #oactions         { font-size:2em; }
 #bofooter .action.icon.s    { background-color:#A00; }
 #bofooter .action.icon      { background-image:url("res/img/icon/tab/tab00.svg"); border-radius:.5em; float:left; margin-right:.1em; width:1em; height:1em; }
 #bofooter .bolink           { font-style:italic; }
@@ -176,11 +194,11 @@ var tibibo = {
         else                                          { $("#logpanel").show(); }
     },
     helpers         : {
-        format: function(_text) {
+        format: function(_text, _to) {
             if (_text) {
                 for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
                     var vReg = new RegExp(regExp[i*2],"g");
-                    _text = _text.replace(vReg,regExp[i*2+1]);
+                    _text = _text.replace(vReg,_to?_to:regExp[i*2+1]);
                 }
             } else {_text=""; }
             return _text;
@@ -196,7 +214,7 @@ var tibibo = {
         nav : function(_data) {
             if (!_data) { _data = []; }
             return {
-                content : {id:-1, description:"", children:_data },
+                content : {id:-1, description:"", label:"(*)", children:_data },
                 root    : function() { return -1; },
                 getnode : function(_id, _node) {
                     if (!_node) { _node=this.content; }
@@ -260,6 +278,73 @@ var tibibo = {
                 if (_hide) { $("#bocontent").show(); $this.parent().hide(); }
                 $("#score").score('hide'); }},
           _args);
+    },
+    
+    awards: {
+        colors: ["#FFF","#F00","#0F0","#00F","#0FF","#F0F","#FF0","#800","#080","#008","#0F8","#08F","#80F","#F08","#F80","#8F0"],
+        icons: [ "res/img/svginventoryicons/pencil/brush01.svg",
+                 "res/img/svginventoryicons/pencil/brush02.svg",
+                 "res/img/svginventoryicons/pencil/pencil01.svg"],
+        init    : {color:0, icon:0, description:"description", type:[1,0,0,0], value:[0,0,0,0] },
+        current : 0,
+        id      : -1,
+        color   : function(_c) { tibibo.awards.current.color=_c; tibibo.awards.update(); },
+        icon    : function() {
+            tibibo.awards.current.icon=(tibibo.awards.current.icon+1)%tibibo.awards.icons.length;
+            tibibo.awards.update();
+        },
+        onselect: function() {
+            for (var i=0; i<4; i++) {
+                tibibo.awards.current.type[i] = $("#boawards #type"+(i+1)).val();
+                tibibo.awards.current.node[i] = $("#boawards #chapter"+(i+1)).val();
+                tibibo.awards.current.value[i]= $("#boawards #goal"+(i+1)+" input").val();
+                var n=tibibo.book.data.nav.getnode(tibibo.awards.current.node[i]), ex=0;
+                tibibo.book.data.nav.each(n, function(_node) {
+                        if (_node.description) { ex+=_node.description.split(',').length; } });
+                $("#boawards #max"+(i+1)).html(ex*(tibibo.awards.current.type[i]==2?3:1));
+            }
+        },
+        update: function(_elt, _id) {
+            if (_elt) { tibibo.awards.current=_elt; tibibo.awards.id=_id; }
+            else if (!tibibo.awards.current) {
+                var n=tibibo.book.data.nav.root();
+                tibibo.awards.current=$.extend({node:[n,n,n,n]},tibibo.awards.init, true); }
+            $("#boawards #img img").attr("src",tibibo.awards.icons[tibibo.awards.current.icon]);
+            $("#boawards #img").css("background-color",tibibo.awards.colors[tibibo.awards.current.color]);
+            $("#boawards textarea").val(tibibo.awards.current.description);
+            for (var i=0; i<4; i++) {
+                $("#boawards #type"+(i+1)).val(tibibo.awards.current.type[i]);
+                $("#boawards #chapter"+(i+1)).val(tibibo.awards.current.node[i]);
+                $("#boawards #goal"+(i+1)+" input").val(tibibo.awards.current.value[i]);
+            }
+            tibibo.awards.onselect();
+        },
+        open: function() {
+            if (user.islogged() && user.settings.devmode) {
+                $("#boawards #colors").html("");
+                for( var i in tibibo.awards.colors) {
+                    var $elt=$("<div id='c"+i+"' class='icon' style='background-color:"+tibibo.awards.colors[i]+"'></div>");
+                    $elt.bind("mousedown touchstart",function(_e) {
+                        tibibo.awards.color($(this).attr("id").substr(1));
+                        _e.preventDefault();
+                    });
+                    $("#boawards #colors").append($elt);
+                }
+                
+                var n = tibibo.book.data.nav.getnode(tibibo.book.data.nav.root());
+                $("#boawards .chapter").html("");
+                tibibo.book.data.nav.each(n, function(_node) {
+                    $("#boawards .chapter").append("<option value='"+_node.id+"'>"+
+                        tibibo.helpers.format(_node.label,"$1")+"</option>");
+                });
+                
+                tibibo.awards.update();
+                $("#boawardsedit").show();
+            }
+            else { $("#boawardsedit").hide(); }
+            
+            $("#boawards").css("opacity",0).show().animate({opacity:1},500);
+        }
     },
     
     menu:function(_list) {
@@ -336,29 +421,49 @@ var tibibo = {
             if (_args.label) { $elt.append("<div class='label'>"+tibibo.helpers.format(_elt.label)+"</div>"); }
             if (_args.done && _args.progress && _args.progress[0]==_args.progress[1]) {
                     $elt.append("<div class='done'>"+tibibo.locale.donelabel+"</div>"); }
+                    
+            $elt.append("<div class='mask'></div>");
 
             return $elt;
         },
+        interactive : true,
         click: function($node) {
-            var id  = $node.attr("id").substr(1);
-            var elt = tibibo.book.data.nav.getnode(id);
-            var upd = true;
-            var rem = true;
-            var sav = false;
+            if (tibibo.node.interactive) {
+                var id  = $node.attr("id").substr(1);
+                var elt = tibibo.book.data.nav.getnode(id);
+                var upd = true;
+                var rem = true;
+                var sav = false;
+                var tra = false;
             
-            console.log("+ click on node #"+id);
-            if (!elt) { console.log("  - node not found"); return; }
-            
-            switch($("#bofooter .s").attr("id")) {
-                case "mdelete"  : tibibo.book.data.nav.del(id); sav = true; break;
-                case "mleft"    : tibibo.book.data.nav.left(id);  sav = true; rem = false; break;
-                case "mright"   : tibibo.book.data.nav.right(id); sav = true; rem = false; break;
-                case "medit"    : if (id!=-1) { tibibo.node.edit.open(elt); } upd =false; break;
-                default: tibibo.book.nodeid = id; break;
+                console.log("+ click on node #"+id);
+                if (!elt) { console.log("  - node not found"); return; }
+                
+                switch($("#bofooter .s").attr("id")) {
+                    case "mdelete"  : tibibo.book.data.nav.del(id); sav = true; break;
+                    case "mleft"    : tibibo.book.data.nav.left(id);  sav = true; rem = false; break;
+                    case "mright"   : tibibo.book.data.nav.right(id); sav = true; rem = false; break;
+                    case "medit"    : if (id!=-1) { tibibo.node.edit.open(elt); } upd =false; break;
+                    default: tibibo.book.nodeid = id; tra = true; break;
+                }
+                if (rem) { $("#bofooter .s").removeClass("s"); }
+                if (sav) { tibibo.book.save(); }
+                
+                if (upd) {
+                    if (tra) {
+                        tibibo.node.interactive = false;
+                        $node.find(".mask").css("opacity",0).animate({opacity:1}, 200, function() {
+                            $("#boframe").animate({opacity:0},500, function() {
+                                tibibo.book.display();
+                                $("#boframe").animate({opacity:1},500, function() {
+                                    tibibo.node.interactive = true;
+                                });
+                            });
+                        });
+                    }
+                    else { tibibo.book.display(); }
+                }
             }
-            if (upd) { tibibo.book.display(); }
-            if (rem) { $("#bofooter .s").removeClass("s"); }
-            if (sav) { tibibo.book.save(); }
         
             return;
         },
@@ -540,18 +645,17 @@ var tibibo = {
                     $("#bofooter #oactions").show();
                 }
             }
-            else {
-                var n = tibibo.book.data.nav.getnode(tibibo.book.data.nav.root()), prog=[0,0];
-                tibibo.book.data.nav.each(n, function(_node) {
-                    if (_node.description.length) { prog[1]+=_node.description.split(',').length; }
-                        if (tibibo.book.data.state && tibibo.book.data.state[_node.id]) {
-                            prog[0]+=(tibibo.book.data.state[_node.id].match(/[\d]/g) || []).length;
-                    }
-                });
-                $("#olist .slide").css("top",(1-(prog[0]/prog[1]))+"em");
-                $("#olist .value").html(Math.floor(100*prog[0]/prog[1]));
-                $("#bofooter #olist").show();
-            }
+            
+            var n = tibibo.book.data.nav.getnode(tibibo.book.data.nav.root()), prog=[0,0];
+            tibibo.book.data.nav.each(n, function(_node) {
+                if (_node.description.length) { prog[1]+=_node.description.split(',').length; }
+                    if (tibibo.book.data.state && tibibo.book.data.state[_node.id]) {
+                        prog[0]+=(tibibo.book.data.state[_node.id].match(/[\d]/g) || []).length;
+                }
+            });
+            $("#olist .slide").css("top",(1-(prog[0]/prog[1]))+"em");
+            $("#olist .value").html(Math.floor(100*prog[0]/prog[1]));
+            $("#bofooter #olist").show();
             
             // HANDLE FOOTER COMMENT
             var comment ="";
@@ -821,6 +925,65 @@ $(window).ready(function() {
             </div>
 
         </div>
+        
+        <!-- AWARDS PAGE-->
+        <div id="boawards" onmousedown="$(this).hide();"
+            ontouchstart="$(this).hide();event.preventDefault();" >
+        <div onmousedown="event.stopPropagation();"
+             ontouchstart="event.stopPropagation();event.preventDefault();">
+            <div id="boawardsedit">
+                <div class="icon" id="img" onmousedown="tibibo.awards.icon();"
+                    ontouchstart="tibibo.awards.icon();event.preventDefault();">
+                    <img src="res/img/svginventoryicons/pencil/brush01.svg" alt=""/></div>
+                <div id="colors"></div>
+                <textarea id="description" autocomplete='off' autocorrect='off' autocapitalize='off' spellcheck='false'></textarea>
+                <div id="goals">
+                    <div id="goal1" class="goal">
+                        <select id="chapter1" class="chapter" onchange="tibibo.awards.onselect()"></select>
+                        <select id="type1" onchange="tibibo.awards.onselect()">
+                            <option value="0">None</option>
+                            <option value="1">Exercices</option>
+                            <option value="2">Stars</option>
+                        </select>
+                        <input onchange="tibibo.awards.onselect()"/>
+                        <div id="max1" class="max">xx</div>
+                    </div>
+                    <div id="goal2" class="goal">
+                        <select id="chapter2" class="chapter" onchange="tibibo.awards.onselect()"></select>
+                        <select id="type2" onchange="tibibo.awards.onselect()">
+                            <option value="0">None</option>
+                            <option value="1">Exercices</option>
+                            <option value="2">Stars</option>
+                        </select>
+                        <input onchange="tibibo.awards.onselect()"/>
+                        <div id="max2" class="max">xx</div>
+                    </div>
+                    <div id="goal3" class="goal">
+                        <select id="chapter3" class="chapter" onchange="tibibo.awards.onselect()"></select>
+                        <select id="type3" onchange="tibibo.awards.onselect()">
+                            <option value="0">None</option>
+                            <option value="1">Exercices</option>
+                            <option value="2">Stars</option>
+                        </select>
+                        <input onchange="tibibo.awards.onselect()"/>
+                        <div id="max3" class="max">xx</div>
+                    </div>
+                    <div id="goal4" class="goal">
+                        <select id="chapter4" class="chapter" onchange="tibibo.awards.onselect()"></select>
+                        <select id="type4" onchange="tibibo.awards.onselect()">
+                            <option value="0">None</option>
+                            <option value="1">Exercices</option>
+                            <option value="2">Stars</option>
+                        </select>
+                        <input onchange="tibibo.awards.onselect()"/>
+                        <div id="max4" class="max">xx</div>
+                    </div>
+                </div>
+                 
+            </div>
+            <div id="boawardscontent">
+            </div>
+        </div></div>
 
         <!-- ERROR LOG PANEL (WRONG BOOK ID)-->
         <div id="boerror" class="redline"></div>
@@ -834,6 +997,17 @@ $(window).ready(function() {
                  <img src="res/img/default/icon/cancel01.svg"/></div>
                  
             <div id="ocomment"></div>
+            
+            <div id="odelete" class="icon action"
+                onmousedown="$(this).toggleClass('s');"
+                ontouchstart="$(this).toggleClass('s');event.preventDefault();" >
+                <img src="res/img/default/white/delete.svg"/></div>
+            
+            <div id="olist" onmousedown="tibibo.awards.open();"
+                    ontouchstart="tibibo.awards.open();event.preventDefault();">
+                <div class="slide"></div>
+                <div class="value">0</div>
+            </div>
                  
             <div id="oactions">
                 <div class="icon action" onmousedown="tibibo.node.edit.open();"
@@ -867,15 +1041,8 @@ $(window).ready(function() {
                     -->
             </div>
             
-            <div id="odelete" class="icon action"
-                onmousedown="$(this).toggleClass('s');"
-                ontouchstart="$(this).toggleClass('s');event.preventDefault();" >
-            <img src="res/img/default/white/delete.svg"/></div>
-            
-            <div id="olist">
-                <div class="slide"></div>
-                <div class="value">0</div>
-            </div>
+
+           
             
         </div>
     </div>

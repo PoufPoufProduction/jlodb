@@ -62,6 +62,7 @@
         // End all timers
         quit: function($this) {
             var settings = helpers.settings($this);
+            settings.interactive = false;
             if (settings.moves.timerid) { clearTimeout(settings.moves.timerid); }
             if (settings.timer.id)      { clearTimeout(settings.timer.id);}
         },
@@ -208,102 +209,104 @@
         launch:function($this) {
             var settings = helpers.settings($this);
             
-            if (settings.action.last) { settings.angle = settings.action.angle; }
-            settings.action.last = 0;
+            if (settings.interactive) {
             
-            if (settings.timer.id) { clearTimeout(settings.timer.id); }
-            
-            if (settings.tip) { $("#tip",settings.svg.root()).hide(); }
-            settings.interactive = false;
-            settings.action.path = helpers.path($this,settings.wheel, settings.action.angle);
-            settings.current.moveto(settings.action.path, 16, function() {
-                var dd, pp=0;
-                for (var j=0; j<(12+1); j++) for (var i=0; i<8; i++) {
-                    if (!settings.data[j][i]) {
-                        var pos = helpers.ijtopos($this, i,j);
-                        var d   = (settings.current.pos[0]-pos[0])*(settings.current.pos[0]-pos[0]) +
-                                   (settings.current.pos[1]-pos[1])*(settings.current.pos[1]-pos[1]);
-                        if (pp==0 || d<dd) { dd=d; pp = [i,j]; }
+                if (settings.action.last) { settings.angle = settings.action.angle; }
+                settings.action.last = 0;
+                
+                if (settings.timer.id) { clearTimeout(settings.timer.id); }
+                
+                if (settings.tip) { $("#tip",settings.svg.root()).hide(); }
+                settings.interactive = false;
+                settings.action.path = helpers.path($this,settings.wheel, settings.action.angle);
+                settings.current.moveto(settings.action.path, 16, function() {
+                    var dd, pp=0;
+                    for (var j=0; j<(12+1); j++) for (var i=0; i<8; i++) {
+                        if (!settings.data[j][i]) {
+                            var pos = helpers.ijtopos($this, i,j);
+                            var d   = (settings.current.pos[0]-pos[0])*(settings.current.pos[0]-pos[0]) +
+                                       (settings.current.pos[1]-pos[1])*(settings.current.pos[1]-pos[1]);
+                            if (pp==0 || d<dd) { dd=d; pp = [i,j]; }
+                        }
+                         else { settings.data[j][i].tmp = 0; }
                     }
-                     else { settings.data[j][i].tmp = 0; }
-                }
-                settings.data[pp[1]][pp[0]]=settings.current;
-                var check = [[pp[0],pp[1]]];
+                    settings.data[pp[1]][pp[0]]=settings.current;
+                    var check = [[pp[0],pp[1]]];
 
-                                    var elts=[];
-                                    do {
-                                        var pos = check.shift();
-                                        var e = helpers.getbubble($this, pos );
-                                        if (e && e.tmp==0 && e.val==settings.current.val) {
-                                            elts.push([e,pos[1]]);
-                                            e.tmp = 1;
-                                            check.push([pos[0]-1, pos[1]]);
-                                            check.push([pos[0]+1, pos[1]]);
-                                            check.push([pos[0], pos[1]-1]);
-                                            check.push([pos[0]+(pos[1]%2?1:-1), pos[1]-1]);
-                                            check.push([pos[0], pos[1]+1]);
-                                            check.push([pos[0]+(pos[1]%2?1:-1), pos[1]+1]);
+                                        var elts=[];
+                                        do {
+                                            var pos = check.shift();
+                                            var e = helpers.getbubble($this, pos );
+                                            if (e && e.tmp==0 && e.val==settings.current.val) {
+                                                elts.push([e,pos[1]]);
+                                                e.tmp = 1;
+                                                check.push([pos[0]-1, pos[1]]);
+                                                check.push([pos[0]+1, pos[1]]);
+                                                check.push([pos[0], pos[1]-1]);
+                                                check.push([pos[0]+(pos[1]%2?1:-1), pos[1]-1]);
+                                                check.push([pos[0], pos[1]+1]);
+                                                check.push([pos[0]+(pos[1]%2?1:-1), pos[1]+1]);
+                                            }
+                                        } while(check.length);
+                                        
+                                        if (elts.length>2) {
+                                                for (var j=0; j<(12+1); j++) for (var i=0; i<8; i++) {
+                                                    var e = helpers.getbubble($this, [i,j] );
+                                                    if (e) { e.tmp = 0; }
+                                                }
+                                                do {
+                                                    var elt = elts.shift(), e = elt[0];
+                                                    e.remove = true; e.tmp = 1;
+                                                    // e.$svg.attr("class","bubble fx");
+                                                } while (elts.length);
+                                                check = [];
+                                                for (var i=0; i<8; i++) {
+                                                    var e = helpers.getbubble($this, [i,0] );
+                                                    if (e && !e.remove) { check.push([i,0]); }
+                                                }
+                                                var finish = !(check.length);
+                                                while (check.length) {
+                                                    var pos = check.shift();
+                                                    var e = helpers.getbubble($this, pos );
+                                                    if (e && e.tmp==0) {
+                                                        e.tmp = 1;
+                                                        check.push([pos[0]-1, pos[1]]);
+                                                        check.push([pos[0]+1, pos[1]]);
+                                                        check.push([pos[0], pos[1]-1]);
+                                                        check.push([pos[0]+(pos[1]%2?1:-1), pos[1]-1]);
+                                                        check.push([pos[0], pos[1]+1]);
+                                                        check.push([pos[0]+(pos[1]%2?1:-1), pos[1]+1]);
+                                                    }
+                                                };
+                                                
+                                                var highest = 12;
+                                                for (var j=0; j<(12+1); j++) for (var i=0; i<8; i++) {
+                                                    var e = helpers.getbubble($this, [i,j] );
+                                                    if (e && (e.tmp==0 || e.remove)) { if (highest>j) { highest = j; break; }}
+                                                }
+                                                
+                                                for (var j=0; j<(12+1); j++) for (var i=0; i<8; i++) {
+                                                    var e = helpers.getbubble($this, [i,j] );
+                                                    if (e && (e.tmp==0 || e.remove)) {
+                                                        settings.data[j][i] = 0;
+                                                        var path=[];
+                                                        var alea = (Math.random()-0.5)*200;
+                                                        path.push([e.pos[0],e.pos[1]]);
+                                                        path.push([e.pos[0]+alea/6,e.pos[1]-40, 14]);
+                                                        path.push([e.pos[0]+alea,e.pos[1]+480]);
+                                                        e.moveto(path,18+(j-highest), function() { this.$svg.detach(); });
+                                                    }
+                                                }
+                                                
+                                                if (finish) { settings.score = 5; setTimeout(function() { helpers.end($this);}, 1000 ); }
+                                                else        { setTimeout(function() { helpers.display($this); helpers.run($this);}, 1000 ); }
+
                                         }
-                                    } while(check.length);
-                                    
-                                    if (elts.length>2) {
-                                            for (var j=0; j<(12+1); j++) for (var i=0; i<8; i++) {
-                                                var e = helpers.getbubble($this, [i,j] );
-                                                if (e) { e.tmp = 0; }
-                                            }
-                                            do {
-                                                var elt = elts.shift(), e = elt[0];
-                                                e.remove = true; e.tmp = 1;
-                                                // e.$svg.attr("class","bubble fx");
-                                            } while (elts.length);
-                                            check = [];
-                                            for (var i=0; i<8; i++) {
-                                                var e = helpers.getbubble($this, [i,0] );
-                                                if (e && !e.remove) { check.push([i,0]); }
-                                            }
-                                            var finish = !(check.length);
-                                            while (check.length) {
-                                                var pos = check.shift();
-                                                var e = helpers.getbubble($this, pos );
-                                                if (e && e.tmp==0) {
-                                                    e.tmp = 1;
-                                                    check.push([pos[0]-1, pos[1]]);
-                                                    check.push([pos[0]+1, pos[1]]);
-                                                    check.push([pos[0], pos[1]-1]);
-                                                    check.push([pos[0]+(pos[1]%2?1:-1), pos[1]-1]);
-                                                    check.push([pos[0], pos[1]+1]);
-                                                    check.push([pos[0]+(pos[1]%2?1:-1), pos[1]+1]);
-                                                }
-                                            };
-                                            
-                                            var highest = 12;
-                                            for (var j=0; j<(12+1); j++) for (var i=0; i<8; i++) {
-                                                var e = helpers.getbubble($this, [i,j] );
-                                                if (e && (e.tmp==0 || e.remove)) { if (highest>j) { highest = j; break; }}
-                                            }
-                                            
-                                            for (var j=0; j<(12+1); j++) for (var i=0; i<8; i++) {
-                                                var e = helpers.getbubble($this, [i,j] );
-                                                if (e && (e.tmp==0 || e.remove)) {
-                                                    settings.data[j][i] = 0;
-                                                    var path=[];
-                                                    var alea = (Math.random()-0.5)*200;
-                                                    path.push([e.pos[0],e.pos[1]]);
-                                                    path.push([e.pos[0]+alea/6,e.pos[1]-40, 14]);
-                                                    path.push([e.pos[0]+alea,e.pos[1]+480]);
-                                                    e.moveto(path,18+(j-highest), function() { this.$svg.detach(); });
-                                                }
-                                            }
-                                            
-                                            if (finish) { settings.score = 5; setTimeout(function() { helpers.end($this);}, 1000 ); }
-                                            else        { setTimeout(function() { helpers.display($this); helpers.run($this);}, 1000 ); }
-
-                                    }
-                                    else { setTimeout(function() { helpers.display($this); helpers.run($this);} , 100); }
-                                    
-                                    
-                                });
-            
+                                        else { setTimeout(function() { helpers.display($this); helpers.run($this);} , 100); }
+                                        
+                                        
+                                    });
+            }
         },
         getbubble: function($this, _pos) {
             var settings = helpers.settings($this);
@@ -527,16 +530,16 @@
         },
         time:function($this) {
             var settings = helpers.settings($this);
-            var ratio = Math.min(1,(Date.now()-settings.timer.begin)/settings.time);
-            $("#slide",settings.svg.root()).attr("transform","translate(0,"+((1-ratio)*62)+")");
-            
-            if (ratio>=1) {
-                settings.timer.id = 0;
-                helpers.launch($this);
+            if (settings.interactive) {
+                var ratio = Math.min(1,(Date.now()-settings.timer.begin)/settings.time);
+                $("#slide",settings.svg.root()).attr("transform","translate(0,"+((1-ratio)*62)+")");
+                
+                if (ratio>=1) {
+                    settings.timer.id = 0;
+                    helpers.launch($this);
+                }
+                else { settings.timer.id = setTimeout(function() { helpers.time($this);}, 50); }
             }
-            else { settings.timer.id = setTimeout(function() { helpers.time($this);}, 50); }
-            
-            
         },
         failed: function($this, count) {
             var settings = helpers.settings($this);

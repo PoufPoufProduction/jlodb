@@ -44,6 +44,12 @@ if (array_key_exists("User_Key",$_SESSION) && array_key_exists("action",$_GET) &
                     "WHERE `Book_Name`='".$_GET["book"]."' AND User_Key='".$_SESSION['User_Key']."'");
     }
     else
+    if ( array_key_exists("awards",$_POST)) {
+        
+        mysqli_query($link, "UPDATE `".$_SESSION['prefix']."book` SET `Book_Awards`='".$_POST["awards"]."' ".
+                    "WHERE `Book_Name`='".$_GET["book"]."' AND User_Key='".$_SESSION['User_Key']."'");
+    }
+    else
     if ( array_key_exists("description",$_POST)) {
         $v = str_replace("'","\'", $_POST["description"]);
         
@@ -57,6 +63,7 @@ if (array_key_exists("User_Key",$_SESSION) && array_key_exists("action",$_GET) &
     while($c = mysqli_fetch_array($courses)) {
         $value          = $c["Book_Label"];
         $description    = $c["Book_Description"];
+        $awards         = $c["Book_Awards"];
         $comment        = $c["Book_Comment"];
         $owner          = $c["User_Id"];
         $ownerkey       = $c["User_Key"];
@@ -92,6 +99,7 @@ else {
         $value          = $c["Book_Label"];
         $description    = $c["Book_Description"];
         $comment        = $c["Book_Comment"];
+        $awards         = $c["Book_Awards"];
         $owner          = $c["User_Id"];
         $ownerkey       = $c["User_Key"];
         $error          = 0;
@@ -108,6 +116,7 @@ if (isset($owner))                                  { echo '  "owner" : "'.$owne
 if (isset($ownerkey))                               { echo '  "ownerkey" : "'.$ownerkey.'",'; }
 if (isset($description) && strlen($description) )   { echo '  "description":'.$description.','; }
 if (isset($comment))                                { echo '  "comment" : "'.$comment.'",'; }
+if (isset($awards) && strlen($awards) )             { echo '  "awards":'.$awards.','; }
 if (isset($bookid))                                 { echo '  "id" : "'.$bookid.'",'; }
 if (isset($json))                                   { echo '  "books":['.$json.'],'; }
 echo '  "from" : "mods/tibibo/api" }';

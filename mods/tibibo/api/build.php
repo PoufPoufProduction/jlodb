@@ -17,6 +17,7 @@ if (!$error) {
                             '`User_Key`              INT NOT NULL, '.
                             '`Book_Label`            TEXT NOT NULL, '.
                             '`Book_Comment`          TEXT, '.
+                            '`Book_Awards`           TEXT, '.
                             '`Book_Description`      TEXT NOT NULL, '.
                             ' CONSTRAINT `'.$_SESSION['prefix'].'Book_User_Key` FOREIGN KEY (`User_Key`) REFERENCES `'.$_SESSION['prefix'].'user` '.
                             ' (`User_Key`) ON DELETE CASCADE,'.
@@ -25,10 +26,13 @@ if (!$error) {
         
         $columns = mysqli_query($link, 'SHOW COLUMNS FROM `'.$_SESSION['prefix'].'book`');
         $bookComment = false;
+        $bookAwards = false;
         while($row = mysqli_fetch_array($columns)) {
-            if ($row[0]=="Book_Comment") { $bookComment = true; }
+            if ($row[0]=="Book_Comment") { $bookComment = true; } else
+            if ($row[0]=="Book_Awards")  { $bookAwards = true; }
         }
         if (!$bookComment) { mysqli_query($link, 'ALTER TABLE `'.$_SESSION['prefix'].'book` ADD `Book_Comment` TEXT AFTER `Book_Label`'); }
+        if (!$bookAwards) { mysqli_query($link, 'ALTER TABLE `'.$_SESSION['prefix'].'book` ADD `Book_Awards` TEXT AFTER `Book_Comment`'); }
 
     
         if (!mysqli_query($link, "SELECT * FROM `".$_SESSION['prefix']."tibibo`")) {

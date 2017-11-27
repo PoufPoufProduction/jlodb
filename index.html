@@ -506,55 +506,63 @@ jlodb = {
     },
     // LOAD JLODB HOME'S PAGE
     home        : function() {
-        jlodb.islogged();
         var results = new RegExp('[?]id=([^&]*)').exec(window.location.href);
 
         $("#jlcontent>div").hide();
         $("#jlcontenta").show();
 
         // CHECK THE DATABASE
-        $.getJSON("api/checkdb.php", function (data) {
-            jlodb.checkdb = data;
-            if (data.error && data.error!=4) {
-                $("#jlcontenta").load( "locale/zxx/unavailable.html", function(response, status, xhr) {
-                });
+        $.get("api/checkdb.php", function (_data) {
+            $("#jlconsole").html("");
+            if (_data.substr(0,5)=="<?php") {
+                $("#jlcontenta").load( "locale/zxx/nophp.html", function(response, status, xhr) {});
             }
-            else {
-                if (!results) {
-                    $("#jlcontenta").load("locale/"+data.lang+"/home.html", function(response, status, xhr) {
-                        $("div#home #nbActivities").html(data.activities);
-                        $("div#home #nbExercices").html(data.exercices);
+            else
+            {
+                jlodb.islogged();
+                
+                data=JSON.parse(_data);
+                jlodb.checkdb = data;
+                if (data.error && data.error!=4) {
+                    $("#jlcontenta").load( "locale/zxx/nodb.html", function(response, status, xhr) {});
+                }
+                else {
+                    if (!results) {
+                        $("#jlcontenta").load("locale/"+data.lang+"/home.html", function(response, status, xhr) {
+                            $("div#home #nbActivities").html(data.activities);
+                            $("div#home #nbExercices").html(data.exercices);
+                        });
+                    }
+
+                    // LOAD THE MENU
+                    $("#jlnav").load("locale/"+data.lang+"/menu.html", function(response, status, xhr) {});
+
+                    // GET THE CLASSIFICATION
+                    $.getJSON("locale/"+data.lang+"/classification.json", function(data) {
+                        jlodb.classification.data = $(data);
+                        jlodb.classification.build();
+                        jlodb.page.edition.build();
+                        jlodb.page.classification.elt=$(data).attr("id");
+                        jlodb.page.browser.elt=$(data).attr("id");
+
+                        if (results) { jlodb.page.browser.load(results[1]); }
+
+                        $("#jlcontentb").browser({
+                          onReady:function($this){
+                            $("#jlcontentb #jbrmenu").append("<div onclick='jlodb.page.browser.ex();'>export</div>");
+                          },
+                          url:jlodb.checkdb.url,
+                          lang:jlodb.checkdb.lang, classification:jlodb.classification.data, context:[
+                            { icon:"res/img/default/white/run.svg", process :function(_id){ jlodb.run({id:_id}, false); } },
+                            { icon:"res/img/default/white/edit.svg", process:function(_id){ jlodb.page.edition.open(_id); } },
+                            { icon:"res/img/default/white/snapshot.svg", process:function(_id) {
+                                window.open('demo.html?id='+_id,'_blank',
+                                    'width=640, height=480,toolbar=no,location=no,status=no,menubar=no,'+
+                                    'scrollbars=no,resizable=no,status=no,titlebar=no'); } } ]
+                    });
+
                     });
                 }
-
-                // LOAD THE MENU
-                $("#jlnav").load("locale/"+data.lang+"/menu.html", function(response, status, xhr) {});
-
-                // GET THE CLASSIFICATION
-                $.getJSON("locale/"+data.lang+"/classification.json", function(data) {
-                    jlodb.classification.data = $(data);
-                    jlodb.classification.build();
-                    jlodb.page.edition.build();
-                    jlodb.page.classification.elt=$(data).attr("id");
-                    jlodb.page.browser.elt=$(data).attr("id");
-
-                    if (results) { jlodb.page.browser.load(results[1]); }
-
-                    $("#jlcontentb").browser({
-                      onReady:function($this){
-                        $("#jlcontentb #jbrmenu").append("<div onclick='jlodb.page.browser.ex();'>export</div>");
-                      },
-                      url:jlodb.checkdb.url,
-                      lang:jlodb.checkdb.lang, classification:jlodb.classification.data, context:[
-                        { icon:"res/img/default/white/run.svg", process :function(_id){ jlodb.run({id:_id}, false); } },
-                        { icon:"res/img/default/white/edit.svg", process:function(_id){ jlodb.page.edition.open(_id); } },
-                        { icon:"res/img/default/white/snapshot.svg", process:function(_id) {
-                            window.open('demo.html?id='+_id,'_blank',
-                                'width=640, height=480,toolbar=no,location=no,status=no,menubar=no,'+
-                                'scrollbars=no,resizable=no,status=no,titlebar=no'); } } ]
-                });
-
-                });
             }
         });
 
@@ -568,7 +576,6 @@ $(window).ready(function() {
         onreload:function($this) { $('#activity').jlodb('reload'); },
         onmenu:  function($this) { $('#activity').jlodb('close', true); } 
     });
-
     jlodb.home();
 });
     </script>
@@ -593,7 +600,7 @@ $(window).ready(function() {
                 <div id="jlcontentc" class="jlcontent"></div>
             </div>
 
-            <div id="jlfooter"><div id="jlconsole"></div></div>
+            <div id="jlfooter"><div id="jlconsole">Waiting for server response...</div></div>
 
         </div>
         <div id="mask"></div>
@@ -614,27 +621,6 @@ $(window).ready(function() {
         <div id="activity"></div>
     </div>
 
-
-    <!-- SPECIAL EVENT -->
-    <!--
-    <div id="specialevent" style="position:absolute;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.4);">
-        <div style="width:16em;height:12em;font-size:.9em;background-color:white;margin:0.5em auto;border:2px solid black;overflow:hide;position:relative;background-image:url('res/img/default/pattern/grid01.svg'); background-repeat:repeat;">
-            <div style="position:absolute;transform: rotate(45deg);top:1em;left:11em;background-color:red;color:white;width:7em;text-align:center;">Annonce</div>
-            <div style="margin-top:1em;padding:0 1em 0 1em;background-color:gray;font-size:0.8em;border:1px solid black;border-width:2px 0;overflow:visible;background-image:url('res/img/default/pattern/line03.svg'); background-repeat:repeat;">
-                <div style="font-size:1.4em;font-weight:bold;padding:.1em;background-color:black;width:8em;text-align:center;border-radius:.2em;color:white;transform: rotate(-5deg);margin:-.1em 0 .2em -.2em;">GESTIONNAIRE</div>
-                <div style="font-size:0.8em; margin:0.5em 0;">de fiches de préparations <b>numériques</b></div>
-            </div>
-            <div style="text-align:center;">recherche</div>
-            <div style="font-size:0.4em;text-align:center;margin-bottom:2em;"><i>test(eurs/euses), pédagogues, forces de propositions et bonnes volontées.</i></div>
-            <div style="font-size:0.5em;color:white;">
-            <a href="tibibu.html"><div style="background-color:black;height:1.2em;width:18em;border-radius:0 .5em .5em 0;margin:.1em 0;padding-left:1em;">Tester le logiciel (version dev)</div></a>
-            <div onclick="$('#specialevent').hide();" style="cursor:pointer;background-color:black;height:1.2em;width:18em;border-radius:0 .5em .5em 0;margin:.1em 0;padding-left:1em;">Continuer sur le site principal</div>
-            <div style="background-color:gray;height:1.2em;width:18em;border-radius:0 .5em .5em 0;margin:.1em 0;padding-left:1em;margin-top:1em;"><div style="width:4em;float:left;">mail</div>johannc@poufpoufproduction.fr</div>
-            <a href="https://twitter.com/jlodb1"><div style="background-color:gray;height:1.2em;width:18em;border-radius:0 .5em .5em 0;margin:.1em 0;padding-left:1em;"><div style="width:4em;float:left;">twitter</div>@jlodb1</div></a>
-            </div>
-        </div>
-    </div>
-    -->
 
 </div></body>
 </html>
