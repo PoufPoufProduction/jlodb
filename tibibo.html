@@ -405,10 +405,12 @@ var tibibo = {
         },
         insert: function() {
             tibibo.awards.onselect();
+            console.log("New award: "+JSON.stringify(tibibo.awards.current));
             tibibo.awards.list.push($.extend(true,{},tibibo.awards.current));
             tibibo.awards.save();
         },
         save: function() {
+			console.log("Save :"+JSON.stringify(tibibo.awards.list));
             user.getJSON("mods/tibibo/api/book.php",{ action:"upd", book:tibibo.args.id},
                 {awards:JSON.stringify(tibibo.awards.list)}, function(_data){});
             tibibo.awards.display();
@@ -909,7 +911,7 @@ var tibibo = {
                         value      : _data.value
                     };
                     tibibo.book.nodeid = tibibo.args.chapter?tibibo.args.chapter:tibibo.book.data.nav.root();
-                    tibibo.awards.list = _data.awards;
+                    tibibo.awards.list = _data.awards?_data.awards:[];
 
                     // GET THE COURSE LIST FROM TIBIBI TO FILL NODE IN DEVMODE
                     if (user.islogged()) {
