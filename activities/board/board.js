@@ -189,7 +189,7 @@
                     var cell={
                         $elt:$("<div class='c' id='c"+_i+"x"+_j+"' "+
                             "style='top:"+(1.2*(_j+_margin[1]))+"em;left:"+(1.2*(_i+_margin[0]))+"em;'></div>"),
-                            color: $.extend({},_color,true),
+                            color: $.extend(true,{},_color),
                             update: function() {
                                 this.$elt.css("background-color","rgb("+this.color.rgb[0]+","+this.color.rgb[1]+","+this.color.rgb[2]+")");
                                 if (this.color.content) {

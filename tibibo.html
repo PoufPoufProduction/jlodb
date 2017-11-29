@@ -30,6 +30,8 @@
 #bomain.devmode .devmode    { display:inline; }
 #bomain                     { position:relative; background-image:url('res/img/background/landscape/blueboard01.svg'); }
 
+#bomain #scoreaward         { position:absolute; font-size:4em; top:10%; left:70%; background-image:url("res/img/icon/tab/tab00.svg"); border-radius:.5em; overflow:visible; background-color:#69b5cd;}
+
 
 .topdown                    { font-size:.3em; width:105%; margin:.5em 0 .2em 0; overflow:visible; }
 .topdown>div                { height:3em; border-radius:.25em; float:left; margin-left:1em;  }
@@ -51,20 +53,47 @@
 #bocontent                  { width:100%; height:9em; }
 #bocontent>div              { width:100%; display:none; }
 
-#boawards                   { position:absolute;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.4); display:none; }
+#boawards                   { position:absolute;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.4); display:none;z-index:2; }
 #boawards>div               { background-color:rgba(255,255,240,0.9); width:92%;height:73%;margin-top:7%;margin-left:4%;border:.1em solid white; }
 #boawards #boawardsedit     { font-size:0.5em; height:3em; background-color:#9B6;padding:.1em 0; }
 #boawards #boawardsedit>*   { float:left; margin-left:1%; height:100%; }
 #boawards #img              { font-size:3em; background-image:url("res/img/icon/tab/tab00.svg"); border-radius:.5em; overflow:visible; background-color:red; cursor:pointer; }
 #boawards #colors           { width:3em; }
 #boawards #colors>div       { font-size:.72em; float:left; cursor:pointer; }
-#boawards textarea          { background-color:rgba(255,255,255,0.4); font-size:.5em; width:30%; height:95%; border:0; font-family:inherit;padding:0 .2em; }
+#boawards textarea          { background-color:rgba(255,255,255,0.4); font-size:.5em; width:27%; height:95%; border:0; font-family:inherit;padding:0 .2em; }
 #boawards #goals            { width:35%; font-size:.4em; }
 #boawards #goals>*          { margin-bottom:.4em; }
 #boawards .goal>*           { float:left; }
 #boawards .goal select      { width:35%; border:0; background-color:rgba(255,255,255,0.4); font-size:1em; }
 #boawards .goal input       { width:12%; border:0; font-size:1em; text-align:right;font-family:inherit; }
 #boawards .goal .max        { float:left; background-color:rgba(255,255,255,0.4); width:12%; }
+#boawards #add              { font-size:3em; cursor:pointer; }
+
+#boawardscontent            { overflow-x:none; overflow-y:auto; }
+#boawardscontent .boawelt   { font-size:1.4em; float:left; width:5em; height:1em; background-color:rgba(150,150,150,0.6); margin:.05em; padding:.05em 0; position:relative; }
+#boawardscontent .boawelt.new { background-color:rgba(255,150,150,0.6); cursor:help; }
+#boawardscontent .boawelt.done { background-color:rgba(150,220,255,0.6); }
+#boawardscontent .label     { font-size:.15em; width:50%; margin-left:1em; }
+#boawardscontent .img       { background-image:url("res/img/icon/tab/tab00.svg"); border-radius:.5em; overflow:visible; margin-left:.05em; }
+.boawelt>div                { float:left; overflow:visible; }
+#boawardscontent .progress  { width:25%; height:100%; font-size:.2em; cursor:pointer; }
+#boawardscontent .progress.n1 .slider { height:5em; }
+#boawardscontent .progress.n1 .value  { top:1.5em; }
+#boawardscontent .progress.n2 .slider { height:2.5em; }
+#boawardscontent .progress.n2 .value  { top:0.75em; }
+#boawardscontent .progress.n3 .slider { height:1.6em; }
+#boawardscontent .progress.n3 .value  { top:0.2em; }
+#boawardscontent .slider    { width:100%; height:1.2em; background-color:#dd5; position:relative; margin:.05em 0; overflow:visible; }
+#boawardscontent .slider .bar { position:absolute; top:0; left:0; height:100%; width:0%; background-color:#5b6; }
+#boawardscontent .slider .value { position:absolute; top:0; left:0; width:100%; color:white; text-align:center; }
+#boawardscontent .progress .icon { position:absolute; top:0; left:0; font-size:1em;  }
+#boawardscontent #edit       { font-size:.5em; position:absolute; top:60%; left:20%; cursor:pointer; }
+#boawardscontent #move       { font-size:.5em; position:absolute; top:60%; left:30%; cursor:pointer; }
+#boawardscontent #del        { font-size:.5em; position:absolute; top:60%; left:65%; cursor:pointer; }
+
+#boawardscontent .anim12    { position:absolute; font-size:2em; }
+#boawardscontent .fire1     { top:-.3em; left:-.3em; }
+#boawardscontent .fire2     { top:-.2em; left:-.2em; }
 
 #boerror                    { position:absolute; top:72%; font-size:.7em; display:none; text-align:center;  }
 #bomain .redline            { background-color:red; width:102%; color:white; opacity:0.9; height:1.2em; }
@@ -285,13 +314,67 @@ var tibibo = {
         icons: [ "res/img/svginventoryicons/pencil/brush01.svg",
                  "res/img/svginventoryicons/pencil/brush02.svg",
                  "res/img/svginventoryicons/pencil/pencil01.svg"],
-        init    : {color:0, icon:0, description:"description", type:[1,0,0,0], value:[0,0,0,0] },
+        init    : {color:0, icon:0, label:"description", type:[1,0,0,0], value:[0,0,0,0] },
         current : 0,
-        id      : -1,
-        color   : function(_c) { tibibo.awards.current.color=_c; tibibo.awards.update(); },
+        list    : [],
+        color   : function(_c) {
+            tibibo.awards.current.color=_c;
+            $("#boawards #img").css("background-color",tibibo.awards.colors[tibibo.awards.current.color]);
+        },
         icon    : function() {
             tibibo.awards.current.icon=(tibibo.awards.current.icon+1)%tibibo.awards.icons.length;
-            tibibo.awards.update();
+            $("#boawards #img img").attr("src",tibibo.awards.icons[tibibo.awards.current.icon]);
+        },
+        state: function(_book, _state, _last) {
+            var ret=[];
+            for (var i in tibibo.awards.list) {
+                var award = tibibo.awards.list[i];
+                var count = [0,0,0,0,0]; // 5th is prev
+                for (var j=0; j<4; j++) {
+                    if (award.type[j]!=0) {
+                        var node = _book.getnode(award.node[j]);
+                        _book.each(node, function(_node) {
+                            if (_state&&_state[_node.id]) {
+                                if (award.type[j]==1) {
+                                    count[j]+=  (_state[_node.id].match(/[\d]/g) || []).length;
+                                }
+                                else {
+                                    count[j]+=  (_state[_node.id].match(/5/g) || []).length*3 +
+                                                (_state[_node.id].match(/4/g) || []).length*2 +
+                                                (_state[_node.id].match(/3/g) || []).length*1 ;
+                                } 
+                            }
+                        });
+                    }
+                }
+                if (_last && _last[i]) { count[4] = _last[i][4]; }
+                ret.push(count);
+            }
+            return ret;
+        },
+        check: function(_update) {
+            var ret = false;
+            var state = tibibo.awards.state(tibibo.book.data.nav, tibibo.book.data.state, tibibo.book.data.awards);
+            for (var i=0; i<tibibo.awards.list.length; i++) {
+                var award   = tibibo.awards.list[i];
+                var done=true;
+                for (var j=0; j<4; j++) {
+                    if (award.type[j]!=0) { if (state[i][j]<award.value[j]) { done=false; } }
+                }
+                if (done) {
+                    if (state[i][4]==0) { ret = true; }
+                    if (_update)        { state[i][4] = 1; tibibo.book.data.awards = state.slice(); }
+                }
+            }
+            return ret;
+        },
+        up: function(_id) {
+            if (_id>0) { tibibo.awards.list.splice(_id-1, 0, tibibo.awards.list.splice(_id, 1)[0]); }
+            tibibo.awards.save();
+        },
+        del: function(_id) {
+            tibibo.awards.list.splice(_id,1);
+            tibibo.awards.save();
         },
         onselect: function() {
             for (var i=0; i<4; i++) {
@@ -303,21 +386,132 @@ var tibibo = {
                         if (_node.description) { ex+=_node.description.split(',').length; } });
                 $("#boawards #max"+(i+1)).html(ex*(tibibo.awards.current.type[i]==2?3:1));
             }
+            tibibo.awards.current.label = $("#boawards textarea").val();
         },
-        update: function(_elt, _id) {
-            if (_elt) { tibibo.awards.current=_elt; tibibo.awards.id=_id; }
+        update: function(_elt) {
+            if (_elt) { tibibo.awards.current=$.extend(true,{}, _elt); }
             else if (!tibibo.awards.current) {
                 var n=tibibo.book.data.nav.root();
-                tibibo.awards.current=$.extend({node:[n,n,n,n]},tibibo.awards.init, true); }
+                tibibo.awards.current=$.extend(true,{node:[n,n,n,n]},tibibo.awards.init); }
             $("#boawards #img img").attr("src",tibibo.awards.icons[tibibo.awards.current.icon]);
             $("#boawards #img").css("background-color",tibibo.awards.colors[tibibo.awards.current.color]);
-            $("#boawards textarea").val(tibibo.awards.current.description);
+            $("#boawards textarea").val(tibibo.awards.current.label);
             for (var i=0; i<4; i++) {
                 $("#boawards #type"+(i+1)).val(tibibo.awards.current.type[i]);
                 $("#boawards #chapter"+(i+1)).val(tibibo.awards.current.node[i]);
                 $("#boawards #goal"+(i+1)+" input").val(tibibo.awards.current.value[i]);
             }
             tibibo.awards.onselect();
+        },
+        insert: function() {
+            tibibo.awards.onselect();
+            tibibo.awards.list.push($.extend(true,{},tibibo.awards.current));
+            tibibo.awards.save();
+        },
+        save: function() {
+            user.getJSON("mods/tibibo/api/book.php",{ action:"upd", book:tibibo.args.id},
+                {awards:JSON.stringify(tibibo.awards.list)}, function(_data){});
+            tibibo.awards.display();
+        },
+        display:function() {
+            tibibo.book.data.awards =
+                tibibo.awards.state(tibibo.book.data.nav, tibibo.book.data.state, tibibo.book.data.awards);
+            $("#boawardscontent").html("");
+            for (var i=0; i<tibibo.awards.list.length; i++) {
+                var award   = tibibo.awards.list[i];
+                var $elt    = $("<div class='boawelt' id='a"+i+"'></div>");
+                var $img    = $("<div class='img icon'></div>")
+                              .css("background-color",tibibo.awards.colors[award.color]);
+                var $label  = $("<div class='label'></div>");
+                $elt.append($img);
+                $elt.append($label);
+                var $prog = $("<div class='progress'></div>");
+                var nb=0, done=true, prev=(tibibo.book.data.awards[i][4]!=0);
+                for (var j=0; j<4; j++) {
+                    if (award.type[j]!=0) {
+                        nb++;
+                        var value = tibibo.book.data.awards[i][j];
+                        var max   = award.value[j];
+                        var $slider = $("<div class='slider' id='p"+award.node[j]+"'><div class='bar'></div>"+
+                          "<div class='value'>"+
+                          (value>=max?tibibo.locale.donelabel:value+"/"+max)+
+                          "</div></div>");
+                        $slider.append("<div class='icon'><img src='res/img/default/white/"+
+                            (award.type[j]==1?"settings":"star")+".svg' alt=''/></div>");
+                        $slider.bind("touchstart mousedown", function(_e) {
+                            tibibo.book.nodeid=$(this).attr("id").substr(1);
+                            tibibo.book.display();
+                            tibibo.awards.close();
+                            _e.preventDefault();
+                        });
+                        $slider.find(".bar").css("width",(100*Math.min(value,max)/max)+"%");
+                        $prog.append($slider);
+                        if (value<max) { done = false; }
+                    }
+                }
+                
+                var src="res/img/default/white/about.svg";
+                if (done) {
+                    if (prev) { src = tibibo.awards.icons[award.icon]; $elt.addClass("done"); }
+                    if (tibibo.book.data.awards[i][4]==-1) { tibibo.book.data.awards[i][4] = 1; }
+                }
+                else { tibibo.book.data.awards[i][4] = 0; }
+                $img.append("<img src='"+src+"' alt=''/>");
+                if (done && !prev) {
+                    
+                    $elt.append("<div class='fire1 icon anim12 noloop'><div><img src='res/img/default/anim/star05.svg'/></div></div>");
+                    $elt.append("<div class='fire2 icon anim12 noloop'><div><img src='res/img/default/anim/star06.svg'/></div></div>");
+            
+                    $elt.addClass("new").bind("touchstart mousedown", function(_event) {
+                        $(this).removeClass("new").addClass("done");
+                        var id = $(this).attr("id").substr(1);
+                        var award   = tibibo.awards.list[id];
+                        $(this).find(".img img").attr("src", tibibo.awards.icons[award.icon])
+                            .css("opacity",0).animate({opacity:1},1500);
+                        tibibo.book.data.awards[id][4] = 1;
+                        $(this).find(".anim12").show().find("div").addClass("running");
+                        setTimeout(function(){
+                            $("#boawards .anim12").hide().find("div").removeClass("running");
+                        }, 1000);
+                        $(this).unbind("touchstart mousedown");
+                        _event.preventDefault();
+                        _event.stopPropagation();
+                    });
+                }
+                
+                var label   = tibibo.helpers.format(award.label);
+                $label.html(label);
+                
+                $elt.append($prog.addClass("n"+nb));
+                
+                if (user.islogged() && user.settings.devmode) {
+                    var $edit = $("<div id='edit' class='icon'><img src='res/img/default/white/edit.svg' alt=''/></div>");
+                    $elt.append($edit);
+                    $edit.bind("touchstart mousedown", function(_event) {
+                        tibibo.awards.update(tibibo.awards.list[$(this).parent().attr("id").substr(1)]);
+                        _event.preventDefault();
+                    });
+                    
+                    
+                    var $left = $("<div id='move' class='icon'><img src='res/img/default/white/up.svg' alt=''/></div>");
+                    $elt.append($left);
+                    $left.bind("touchstart mousedown", function(_event) {
+                        tibibo.awards.up($(this).parent().attr("id").substr(1));
+                        _event.preventDefault();
+                    });
+                    
+                    var $del = $("<div id='del' class='icon'><img src='res/img/default/white/delete.svg' alt=''/></div>");
+                    $elt.append($del);
+                    $del.bind("touchstart mousedown", function(_event) {
+                        tibibo.awards.del($(this).parent().attr("id").substr(1));
+                        _event.preventDefault();
+                    });
+                }
+                
+                $("#boawardscontent").append($elt);
+            }
+        },
+        close: function() { $("#boawards").hide();
         },
         open: function() {
             if (user.islogged() && user.settings.devmode) {
@@ -343,6 +537,7 @@ var tibibo = {
             }
             else { $("#boawardsedit").hide(); }
             
+            tibibo.awards.display();
             $("#boawards").css("opacity",0).show().animate({opacity:1},500);
         }
     },
@@ -384,6 +579,7 @@ var tibibo = {
                         if (_ret.score>=2) { isnext = $("#boframe").menu('score', _ret.score).menu('more'); }
                         $("#score #next").toggle(isnext);
                         $("#score").score('show',_ret.score);
+                        $("#scoreaward").toggle(tibibo.awards.check());
                         return true; } },_args);
                 }
         });
@@ -570,7 +766,7 @@ var tibibo = {
         }
     },
     book: {
-        data    : { nav : 0, ownerkey : 0, value : "", state:{} },
+        data    : { nav : 0, ownerkey : 0, value : "", state:{}, awards:[] },
         nodeid  : -1,
         open: function(_id) {
             console.log("==== open book: "+_id+" ====");
@@ -636,6 +832,7 @@ var tibibo = {
                 }
             }
             else if (node.description.length) { tibibo.menu(node.description.split(",")); }
+            
             
             // FOOTER CONTENT
             $("#bofooter>div").hide();
@@ -712,6 +909,7 @@ var tibibo = {
                         value      : _data.value
                     };
                     tibibo.book.nodeid = tibibo.args.chapter?tibibo.args.chapter:tibibo.book.data.nav.root();
+                    tibibo.awards.list = _data.awards;
 
                     // GET THE COURSE LIST FROM TIBIBI TO FILL NODE IN DEVMODE
                     if (user.islogged()) {
@@ -727,6 +925,7 @@ var tibibo = {
                             function(_data) {
                                 tibibo.book.data.state = _data.state;
                                 tibibo.book.display();
+                                tibibo.awards.check(true);
                         });
                     }
                     else { tibibo.book.display(); }
@@ -862,6 +1061,14 @@ $(window).ready(function() {
         onmenu:  function($this) { $('#activity').jlodb('close', true); },
         onnext:  function($this) { $('#activity').jlodb('close',false);$('#boframe').menu('next'); } 
     });
+    
+    var $award = $("<div id='scoreaward' class='icon'><img src='res/img/default/white/new.svg' alt=''/></div>").insertAfter("#score #fire3").bind("touchstart mousedown", function(_event) {
+        $("#score").hide();
+        $(".jlodb").hide();
+        $("#bopage").show();
+        tibibo.awards.open();
+        _event.preventDefault();
+    });
 
 });
     </script>
@@ -979,11 +1186,16 @@ $(window).ready(function() {
                         <div id="max4" class="max">xx</div>
                     </div>
                 </div>
+                <div class="icon" id="add" onmousedown="tibibo.awards.insert();"
+                    ontouchstart="tibibo.awards.icon();event.preventDefault();">
+                    <img src="res/img/default/white/add.svg" alt=""/></div>
                  
             </div>
             <div id="boawardscontent">
             </div>
-        </div></div>
+        </div>
+        
+        </div>
 
         <!-- ERROR LOG PANEL (WRONG BOOK ID)-->
         <div id="boerror" class="redline"></div>
