@@ -69,7 +69,8 @@
 #boawards .goal .max        { float:left; background-color:rgba(255,255,255,0.4); width:12%; }
 #boawards #add              { font-size:3em; cursor:pointer; }
 
-#boawardscontent            { overflow-x:none; overflow-y:auto; }
+#boawardscontent            { overflow-y:auto; height:100%; width:100%; }
+#boawardscontent.small      { height:80%; }
 #boawardscontent .boawelt   { font-size:1.4em; float:left; width:5em; height:1em; background-color:rgba(150,150,150,0.6); margin:.05em; padding:.05em 0; position:relative; }
 #boawardscontent .boawelt.new { background-color:rgba(255,150,150,0.6); cursor:help; }
 #boawardscontent .boawelt.done { background-color:rgba(150,220,255,0.6); }
@@ -311,11 +312,15 @@ var tibibo = {
     
     awards: {
         colors: ["#FFF","#F00","#0F0","#00F","#0FF","#F0F","#FF0","#800","#080","#008","#0F8","#08F","#80F","#F08","#F80","#8F0"],
-        icons: [ "res/img/svginventoryicons/pencil/brush01.svg",
-                 "res/img/svginventoryicons/pencil/brush02.svg",
-                 "res/img/svginventoryicons/pencil/pencil01.svg"],
+        icons: [ "res/img/svginventoryicons/award/diploma01.svg",
+                 "res/img/svginventoryicons/award/diploma02.svg",
+                 "res/img/svginventoryicons/award/diploma03.svg",
+                 "res/img/svginventoryicons/award/diploma04.svg",
+                 "res/img/svginventoryicons/award/diploma05.svg",
+                 "res/img/svginventoryicons/award/medal01.svg"],
         init    : {color:0, icon:0, label:"description", type:[1,0,0,0], value:[0,0,0,0] },
         current : 0,
+        selected: -1,
         list    : [],
         color   : function(_c) {
             tibibo.awards.current.color=_c;
@@ -405,8 +410,16 @@ var tibibo = {
         },
         insert: function() {
             tibibo.awards.onselect();
-            console.log("New award: "+JSON.stringify(tibibo.awards.current));
-            tibibo.awards.list.push($.extend(true,{},tibibo.awards.current));
+            if (tibibo.awards.selected==-1) {
+                console.log("New award: "+JSON.stringify(tibibo.awards.current));
+                tibibo.awards.list.push($.extend(true,{},tibibo.awards.current));
+            }
+            else {
+                console.log("Upd award#"+tibibo.awards.selected+": "+JSON.stringify(tibibo.awards.current));
+                tibibo.awards.list[tibibo.awards.selected]=$.extend(true,{},tibibo.awards.current);
+            }
+            $(".boawelt").removeClass("new");
+            tibibo.awards.selected=-1;
             tibibo.awards.save();
         },
         save: function() {
@@ -458,6 +471,8 @@ var tibibo = {
                     if (tibibo.book.data.awards[i][4]==-1) { tibibo.book.data.awards[i][4] = 1; }
                 }
                 else { tibibo.book.data.awards[i][4] = 0; }
+                
+                if (user.islogged() && user.settings.devmode) { src = tibibo.awards.icons[award.icon]; }
                 $img.append("<img src='"+src+"' alt=''/>");
                 if (done && !prev) {
                     
@@ -490,7 +505,10 @@ var tibibo = {
                     var $edit = $("<div id='edit' class='icon'><img src='res/img/default/white/edit.svg' alt=''/></div>");
                     $elt.append($edit);
                     $edit.bind("touchstart mousedown", function(_event) {
-                        tibibo.awards.update(tibibo.awards.list[$(this).parent().attr("id").substr(1)]);
+                        $(".boawelt").removeClass("new");
+                        $(this).parent().addClass("new");
+                        tibibo.awards.selected = $(this).parent().attr("id").substr(1);
+                        tibibo.awards.update(tibibo.awards.list[tibibo.awards.selected]);
                         _event.preventDefault();
                     });
                     
@@ -536,8 +554,9 @@ var tibibo = {
                 
                 tibibo.awards.update();
                 $("#boawardsedit").show();
+                $("#boawardscontent").addClass("small");
             }
-            else { $("#boawardsedit").hide(); }
+            else { $("#boawardsedit").hide(); $("#boawardscontent").removeClass("small"); }
             
             tibibo.awards.display();
             $("#boawards").css("opacity",0).show().animate({opacity:1},500);
