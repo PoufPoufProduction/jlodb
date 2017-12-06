@@ -263,6 +263,7 @@
                         settings.action.mouse   = [ vEvent.clientX, vEvent.clientY];
                         settings.action.save    = [ settings.brushpos[0], settings.brushpos[1]];
                         settings.action.size    = $(this).find(".t").width();
+                        settings.action.dist    = 0;
                         $this.find("#cursor").addClass("dragging");
                     }
                     event.preventDefault();
@@ -277,6 +278,8 @@
                         var vY = (vEvent.clientY - settings.action.mouse[1])
                                 +(settings.action.save[1]*settings.action.size);
                         
+                        settings.action.dist = Math.pow( vEvent.clientX - settings.action.mouse[0], 2) +
+                                               Math.pow( vEvent.clientY - settings.action.mouse[1], 2);
 
                         if (vX<settings.boundaries[0]*settings.action.size) {
                             vX = settings.boundaries[0]*settings.action.size; }
@@ -299,26 +302,20 @@
                     }
                 });
                 
-                $this.find("#board").bind("touchend touchleave mouseup mouseleave", function(event) {
+                $this.find("#board").bind("touchend touchleave mouseup mouseleave", function() {
                     if (settings.interactive && settings.action.mouse) {
-                        var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?event.originalEvent.touches[0]:event;
-                        
-                        // HANDLE ROTATION
-                        var tdist = Math.pow( vEvent.clientX - settings.action.mouse[0], 2) +
-                                    Math.pow( vEvent.clientY - settings.action.mouse[1], 2);
                         var now         = new Date();
                         var rotation    = -1;
-                        if (tdist<10 && now.getTime()-settings.action.tick<400) {
+
+                        if (now.getTime()-settings.action.tick<400 && settings.action.dist < 10) {
                             settings.brushpos[2]=(settings.brushpos[2]+1)%4;
                         }
-                        
-                        
+
                         $this.find("#cursor").removeClass("dragging");
                         helpers.drawbrush($this);
                     }
                     
                     settings.action.mouse   = 0;
-                    event.preventDefault();
                 });
                 
                 helpers.brush($this,0);
@@ -529,7 +526,7 @@
                     brushdata		: [],
                     brushpos		: [0,0,0],
                     brushid			: -1,
-                    action          : { tick:0, mouse:0, size:0, save:0, brushsize:[1,1] },
+                    action          : { tick:0, mouse:0, size:0, save:0, brushsize:[1,1], dist:0 },
                     colorid			: -1,
                     stack           : [],
                     bitmap          : [],

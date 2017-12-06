@@ -20,6 +20,7 @@
 .board div#board .c				  { position:absolute;width:1.2em;height:1.2em;text-align:center; }
 .board div#board .t				  { position:absolute;font-size:1.2em;width:1em;height:1em; border:1px solid black; cursor:move; }
 .board.red div#board .t           { border:1px solid red; }
+.board.gray div#board .t          { border:1px solid gray; }
 .board div#board .dragging .t     { background-color:rgba(255,255,0,0.4); }
 .board div#menu                   { width:4em; height:12em; background-color:gray; border:1px solid white; border-width:0 0 0 .1em; }
 .board div#menu>div               { font-size:0.6em; }
@@ -29,6 +30,7 @@
 .board div#menu #colors .icon     { position:relative;overflow:visible;width:1.2em; height:1.2em; text-align:center; float:left; border-radius:.2em; margin-left:.05em; border:.08em solid gray; cursor:pointer; font-size:0.9em; }
 .board div#menu #colors .icon.s   { border-color:black; }
 .board.red div#menu #colors .icon.s   { border-color:red; }
+.board.gray div#menu #colors .icon.s   { border-color:#333; }
 .board div#menu #colors .icon.d   { opacity:0.2; }
 .board div#menu #colors .number	  { border:.2em solid gray; font-size:.25em; position:absolute;top:3.3em; left:3.3em;width:1.2em;height:1.2em;text-align:center;background-color:blue;color:white;border-radius:.6em; }
 .board div#menu #brushes          { width:110%; margin-top:.1em; }

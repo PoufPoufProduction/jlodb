@@ -264,10 +264,11 @@
         </div>
     </div>
 
-    <div id="it">
-        <img id="itwrong" src="res/img/asset/misc/it01.svg" alt=""/>
-        <img id="itgood" src="res/img/asset/misc/it02.svg" alt=""/>
-    </div>
+    <div id="it"><div>
+        <div class="it" id="itwrong"><img src="res/img/asset/misc/it01.svg" alt=""/></div>
+        <div class="it" id="itgood"><img src="res/img/asset/misc/it02.svg" alt=""/></div>
+        <div id="dialog"><div></div></div>
+    </div></div>
     
     <div id="effects">
         <div id="good"><img src="res/img/default/popup/good01.svg" alt=""/></div>
@@ -399,8 +400,8 @@
         
 
     <div id="continue">
-        <div class="icon" ontouchstart="$(this).closest('.code').code('end');event.preventDefault();"
-                          onclick="$(this).closest('.code').code('end');"><img src="res/img/default/icon/action_next01.svg" alt=""/></div>
+        <div class="icon" ontouchstart="$(this).closest('.code').code('cont');event.preventDefault();"
+                          onclick="$(this).closest('.code').code('cont');"><img src="res/img/default/icon/action_next01.svg" alt=""/></div>
     </div>
 
     <div id="splashex" ontouchstart="$(this).hide().closest('.code').code('next');event.preventDefault();"

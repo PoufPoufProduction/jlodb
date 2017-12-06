@@ -793,31 +793,69 @@
             }
 
             $this.find("#effects>div").hide();
-            $this.find("#it img").hide();
+            $this.find("#it .it").hide();
             if (good) {
                 $this.find("#it #itgood").show();
                 $this.find("#effects #good").show();
-                $this.find("#it").css("left","110%").show().animate({left:"30%"},500, function() {
+                $this.find("#it>div").css("left","110%").animate({left:"30%"},500, function() {
                     $this.find("#continue").show();
-                });
+                }).parent().show();
+                settings.interactive = false;
             }
             else {
                 $this.find("#it #itwrong").show();
-                $this.find("#it").css("left","110%").show().animate({left:"30%"},500);
                 $this.find("#effects #wrong").show();
-                setTimeout(function(){
-                    $this.find("#it").animate({left:"110%"},500,function() { $(this).hide(); });
-                    helpers.next($this);
-                },2000);
+                
+                $this.find("#it>div").css("left","110%").animate({left:"30%"},500, function() {
+                    var stdout = helpers.stdout.crc32($this);
+                    var screen = helpers.screen.crc32($this);
+                    var helpid = -1;
+                    if (settings.help) for (var i in settings.help) {
+                        var help = settings.help[i], stdoutok = false, screenok=false;
+                        if (help.stdout) {
+                            if ($.isArray(help.stdout)) {
+                                for (var j in help.stdout) { if (help.stdout[j] == stdout) { stdoutok = true; }}
+                            }
+                            else if (help.stdout == stdout) { stdoutok = true; }
+                        }
+                        else { stdoutok = true; }
+
+                        if (help.screen) {
+                            if ($.isArray(help.screen)) {
+                                for (var j in help.screen) { if (help.screen[j] == screen) { screenok = true; }}
+                            }
+                            else if (help.screen == screen) { screenok = true; }
+                        }
+                        else { screenok = true; }
+
+                        if (stdoutok && screenok) { helpid = i; }
+                    }
+                    if (helpid!=-1) {
+                        $this.find("#dialog>div").html(helpers.format(settings.help[helpid].dialog)).parent().show();
+                        $this.find("#continue").show();
+                    }
+                    else {
+                        setTimeout(function(){
+                            $this.find("#it>div").animate({left:"110%"},500,function() {
+                                $(this).parent().hide(); });
+                            helpers.clean($this);
+                        },1500);
+                    }
+                    
+                }).parent().show();
+                
+                
             }
             $this.find("#effects").show();
         },
-        next: function($this) {
+        clean: function($this) {
             var settings = helpers.settings($this);
             $this.find("#effects").hide();
             $this.find("#effects #wrong").hide();
+            $this.find("#continue").hide();
+            $this.find("#dialog>div").html("").parent().hide();
             $this.find("#code #lines .line").removeClass("s");
-            if (--settings.score<0) { settings.score = 0; }
+
         },
         key:function($this, _value) {
             var settings = helpers.settings($this);
@@ -942,12 +980,14 @@
                     }
                 }
             },
-            end: function() {
+            cont: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                $this.find("#it").animate({left:"110%"},1000,function() { $(this).hide(); });
-                $this.find("#continue").hide();
-                $this.find("#effects").hide();
-                helpers.end($this);
+                
+                helpers.clean($this);
+                $this.find("#it>div").animate({left:"110%"},1000,function() { 
+                    $(this).parent().hide();
+                    if (!settings.interactive) { helpers.end($this); }
+                });
             },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
