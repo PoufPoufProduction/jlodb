@@ -33,6 +33,7 @@
         "\\\[green\\\]([^\\\[]+)\\\[/green\\\]",    "<span style='color:green'>$1</span>",
         "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
         "\\\[h1\\\]([^\\\[]+)\\\[/h1\\\]",          "<div style='text-align:center; font-size:3em;font-weight:bold;'>$1</div>",
+        "\\\[h2\\\]([^\\\[]+)\\\[/h2\\\]",          "<div style='text-align:center; font-size:1.5em;font-weight:bold;'>$1</div>",
         "\\\[img\\\]([^\\\[]+)\\\[/img\\\]",        "<div style='width:100%'><img src='$1' alt=''/></div>",
         "\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='icon' style='font-size:1.2em;float:left'><img src='$1' alt=''/></div>",
         "\\\[icon2\\\]([^\\\[]+)\\\[/icon2\\\]",    "<div class='icon' style='font-size:2em;float:left'><img src='$1' alt=''/></div>",
@@ -204,8 +205,8 @@
                 else { $this.find("#illustration").html("<img src='"+vIllus+"'/>"); }
             }
 
-            // HANDLE THE LEGEND
-            var vLegend = settings.legend;
+             // HANDLE THE LEGEND
+            var vLegend = settings.current.legend || settings.legend;
             if ($.isArray(vLegend)) { vLegend = vLegend[settings.it%vLegend.length]; }
 
             if (vLegend) { $this.find("#legend").html(helpers.format(vLegend)); }

@@ -2,7 +2,34 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dct="http://purl.org/dc/terms/">
 
-         
+    <rdf:Description>
+        <dct:identifier>rgb4</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier la couleur correspondant au codage RGB proposé.</dct:title>
+        <dct:description><![CDATA["number":3,"background":"res/img/background/landscape/blueboard01.svg","onclick":"onlyone","states":{ "nb":2,"style":[{"background-color":"white","border-color":"white"},{"background-color":"white","border-color":"black"}]},"wrong":{"style":{"border-color":"red"}},"gen":"function(){var num=4,r=Math.min(255,Math.floor(Math.random()*(num+1))*256/num),g=Math.min(255,Math.floor(Math.random()*(num+1))*256/num),b=Math.min(255,Math.floor(Math.random()*(num+1))*256/num), c=Math.floor(Math.random()*6),min=20000, res='',tt=[],cc=[]; for (var i=0; i<6; i++) {var rr=0,gg=0,bb=0; if (i==c) { rr=r;gg=g;bb=b; res+='1'; } else { res+='0'; var dist=0; do { rr=Math.min(255,Math.floor(Math.random()*(num+1))*256/num); gg=Math.min(255,Math.floor(Math.random()*(num+1))*256/num); bb=Math.min(255,Math.floor(Math.random()*(num+1))*256/num); dist=Math.pow(rr-r,2)+ Math.pow(gg-g,2)+ Math.pow(bb-b,2); for (var j in cc) { var dtmp = Math.pow(rr-cc[j][0],2)+ Math.pow(gg-cc[j][1],2)+ Math.pow(bb-cc[j][2],2); if (dtmp<dist) { dist=dtmp; }} } while(dist<min); } cc.push([rr,gg,bb]); tt.push('<div class=\\\"icon\\\" style=\\\"background-color:rgb('+rr+','+gg+','+bb+');\\\"></div>');} return {result:res, t:tt,legend:'[h2]('+r+','+g+','+b+')[/h2]'}}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"font":1,"template":"array3x2r","exercice":{"value":"Sélectionnez la couleur correspondant au code couleur [b]RVB[/b] ci-dessus."}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>rgb4</dct:alternative>
+        <dct:source>res/img/background/landscape/blueboard01.svg</dct:source>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>rgb8</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier la couleur correspondant au codage RGB proposé.</dct:title>
+        <dct:description><![CDATA["number":3,"background":"res/img/background/landscape/blueboard01.svg","onclick":"onlyone","states":{ "nb":2,"style":[{"background-color":"white","border-color":"white"},{"background-color":"white","border-color":"black"}]},"wrong":{"style":{"border-color":"red"}},"gen":"function(){var num=8,r=Math.min(255,Math.floor(Math.random()*(num+1))*256/num),g=Math.min(255,Math.floor(Math.random()*(num+1))*256/num),b=Math.min(255,Math.floor(Math.random()*(num+1))*256/num), c=Math.floor(Math.random()*6),min=5000, res='',tt=[],cc=[]; for (var i=0; i<6; i++) {var rr=0,gg=0,bb=0; if (i==c) { rr=r;gg=g;bb=b; res+='1'; } else { res+='0'; var dist=0; do { rr=Math.min(255,Math.floor(Math.random()*(num+1))*256/num); gg=Math.min(255,Math.floor(Math.random()*(num+1))*256/num); bb=Math.min(255,Math.floor(Math.random()*(num+1))*256/num); dist=Math.pow(rr-r,2)+ Math.pow(gg-g,2)+ Math.pow(bb-b,2); for (var j in cc) { var dtmp = Math.pow(rr-cc[j][0],2)+ Math.pow(gg-cc[j][1],2)+ Math.pow(bb-cc[j][2],2); if (dtmp<dist) { dist=dtmp; }} } while(dist<min); } cc.push([rr,gg,bb]); tt.push('<div class=\\\"icon\\\" style=\\\"background-color:rgb('+rr+','+gg+','+bb+');\\\"></div>');} return {result:res, t:tt,legend:'[h2]('+r+','+g+','+b+')[/h2]'}}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"font":1,"template":"array3x2r","exercice":{"value":"Sélectionnez la couleur correspondant au code couleur [b]RVB[/b] ci-dessus."}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>rgb4</dct:alternative>
+        <dct:source>res/img/background/landscape/blueboard01.svg</dct:source>
+    </rdf:Description>
+    
+    
+    
     <rdf:Description>
         <dct:identifier>q001</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver les bonnes commandes à utiliser pour permettre à un robot d'atteindre sa ligne d'arrivée.</dct:title>
