@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dct="http://purl.org/dc/terms/">
+
+    
+    <rdf:Description>
+        <dct:identifier>p1</dct:identifier>
+        <dct:title xml:lang="fr-FR">Reproduire la sortie standard d'un programme [PRINT]</dct:title>
+        <dct:description><![CDATA["class":"smalltxt","background":"res/img/background/landscape/blueboard01.svg","decoys":["dd01","dd02","dd03","dd04","dd05","dd06","dd07","dd08","dd09"],"init":{"pos":[[425,60],[495,60],[565,60],[425,130],[495,130],[565,130],[425,200],[495,200],[565,200],[425,270],[495,270],[565,270]]},"url":"desktop/puzzle/word.svg","svgclass":["l5"],"ttxt":["[blue][b]ASCII[/b][/blue][br][ '0' = 48 ] [ '1' = 49 ][br][ 'A' = 65 ] [ 'B' = 66 ][br][br][code]PRINT 'A'[br]PRINT 48[br]PRINT 'B'[br]PRINT 1[br]PRINT \\\"BA\\\"[/code]"],"values":[{"p01":"A","p02":"0","p03":"B","p04":".","p05":"BA","dd02":"1","dd03":"48","dd04":"65","dd05":"66","dd06":"49","dd07":"C","dd08":"AB"}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"A partir du programme ci-dessus et en vous aidant de la table ASCII, [b]affichez[/b] le résultat obtenue sur la [b]sortie standard[/b].","fontex":0.8]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>p5</dct:alternative>
+        <dct:source>res/img/desktop/puzzle/word.svg,res/img/background/landscape/blueboard01.svg</dct:source>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>p2</dct:identifier>
+        <dct:title xml:lang="fr-FR">Reproduire la sortie standard d'un programme [DUMP]</dct:title>
+        <dct:description><![CDATA["class":"smalltxt","background":"res/img/background/landscape/blueboard01.svg","decoys":["dd01","dd02","dd03","dd04","dd05","dd06","dd07","dd08","dd09"],"init":{"pos":[[425,60],[495,60],[565,60],[425,130],[495,130],[565,130],[425,200],[495,200],[565,200],[425,270],[495,270],[565,270]]},"url":"desktop/puzzle/word.svg","svgclass":["l5"],"ttxt":["[blue][b]ASCII[/b][/blue][br][ '0' = 48 ] [ '1' = 49 ][br][ 'A' = 65 ] [ 'B' = 66 ][br][br][code]DUMP 'A'[br]DUMP 48[br]DUMP 'B'[br]DUMP '1'[br]DUMP 1[/code]"],"values":[{"p01":"65","p02":"48","p03":"66","p04":"49","p05":"1","dd02":"A","dd03":"B","dd04":"0","dd05":"32","dd06":".","dd07":"C","dd08":"AB"}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"A partir du programme ci-dessus et en vous aidant de la table ASCII, affichez le résultat obtenue sur la sortie standard.","fontex":0.8]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>p5</dct:alternative>
+        <dct:source>res/img/desktop/puzzle/word.svg,res/img/background/landscape/blueboard01.svg</dct:source>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>p5</dct:identifier>
+        <dct:title xml:lang="fr-FR">Reproduire la sortie standard d'un programme [PRINT - DUMP]</dct:title>
+        <dct:description><![CDATA["class":"smalltxt","background":"res/img/background/landscape/blueboard01.svg","decoys":["dd01","dd02","dd03","dd04","dd05","dd06","dd07","dd08","dd09"],"init":{"pos":[[425,60],[495,60],[565,60],[425,130],[495,130],[565,130],[425,200],[495,200],[565,200],[425,270],[495,270],[565,270]]},"url":"desktop/puzzle/word.svg","svgclass":["l8"],"ttxt":["[blue][b]ASCII[/b][/blue][br][ '0' = 48 ] [ '1' = 49 ][br][ 'A' = 65 ] [ 'B' = 66 ][br][br][code]PRINT 'A'[br]DUMP 65[br]DUMP 'B'[br]PRINT 1[br]DUMP 1[br]DUMP 'A'[br]PRINT 49[br]DUMP '0'[/code]"],"values":[{"p01":"A","p02":"65","p03":"66","p04":".","p05":"1","p06":"65","p07":"1","p08":"48","dd05":"B","dd06":"0","dd07":"49","dd08":"49"}],"same":[["p02","p06"]]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"A partir du programme ci-dessus et en vous aidant de la table ASCII, affichez le résultat obtenue sur la sortie standard.","fontex":0.8]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>p5</dct:alternative>
+        <dct:source>res/img/desktop/puzzle/word.svg,res/img/background/landscape/blueboard01.svg</dct:source>
+    </rdf:Description>
+    
+    
+
+</rdf:RDF>
+

@@ -6,13 +6,19 @@
 .puzzle div#splashex #guide     { position:absolute; top:25%; left:50%; font-size:0.8em; width:40%; font-style:italic; text-align:justify;
                                   background-image:url("../../res/img/default/pattern/grid01.svg"); background-repeat:repeat;
                                   border:.5em solid white; padding:.2em 1em; }
+                                  
+                                  
 .puzzle div#timg                        { position:absolute; width:1em; height:1em; font-size:7.5em; top:.05em; left:.1em;
-                                          border:.01em solid #e1a94b; background-color:rgba(255,255,255,0.5); border-radius:.1em;
+                                          border:.01em solid white; background-color:rgba(255,255,255,0.5);
                                           display:none; overflow:hidden;}
 .puzzle div#ttext                       { position:absolute; width:9em; height:9em; font-size:0.75em; top:.5em; left:1em;
-                                          border:.1em solid #e1a94b; background-color:rgba(255,255,255,0.5); border-radius:1em;
+                                          border:.1em solid white; background-color:rgba(255,255,255,0.5);
                                           overflow:hidden; padding:.5em; display:none;}
+.puzzle.smalltxt div#ttext #ttxt         { font-size:.5em; }
 .puzzle div#ttext.legend        { top:8em; height:auto; border-radius:0; border-width:.1em; padding:.1em .5em; text-align:center; background-color:rgba(255,255,255,0.8); }
+.puzzle .code               { color:#AFA; background-color:#040; border:1px solid black; padding:0 .5em;  }
+
+
 .puzzle div#exercice                    { position:absolute; width:87.5%; height:12.5%; top:87.5%; left:12.5%; border-radius:1em 0 0 0;
                                background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat;
                                display:none; font-size:.5em; border:.3em solid white;}

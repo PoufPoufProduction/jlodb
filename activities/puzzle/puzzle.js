@@ -35,7 +35,8 @@
         "\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='icon' style='float:left'><img src='$1'/></div>",
         "\\\[icon2\\\]([^\\\[]+)\\\[/icon2\\\]",    "<div class='icon' style='float:left;font-size:2em;'><img src='$1'/></div>",
         "\\\[icon3\\\]([^\\\[]+)\\\[/icon3\\\]",    "<div class='icon' style='float:left;font-size:3em;'><img src='$1'/></div>",
-        "\\\[icon4\\\]([^\\\[]+)\\\[/icon4\\\]",    "<div class='icon' style='float:left;font-size:4em;'><img src='$1'/></div>"
+        "\\\[icon4\\\]([^\\\[]+)\\\[/icon4\\\]",    "<div class='icon' style='float:left;font-size:4em;'><img src='$1'/></div>",
+        "\\\[code](.+)\\\[/code]",                  "<div class='code'>$1</div>"
     ];
 
     // private methods
