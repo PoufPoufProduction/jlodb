@@ -60,7 +60,7 @@
     <rdf:Description>
         <dct:identifier>d1k</dct:identifier>
         <dct:title xml:lang="fr-FR">Recopier 5 nombres, compris entre 1 et 1 000, grâce à leur décomposition.</dct:title>
-        <dct:description><![CDATA["math":[{"value":1},{"value":2},{"value":3},{"value":4},{"value":5},{"value":6},{"value":7},{"value":8},{"value":9},{"value":10},{"value":100},{"id":"plus"},{"id":"mult"}],"nocellref":true,"errratio":3,"withtabs":false,"sp":0.02,"font":2,"withbars":false,"all":{"width":4.5,"height":1.2},"cols":{"col0":{"width":0.2},"col1":{"background":"#FEC","fixed":true}},"rows":{"row0":{"height":0.2,"background":"#FF0000"}},"gen":"function(){var dg=3,c=0.5,ret={}; for (var i=1;i<6;i++) { var v=0; do { v=0; for (var j=0; j<dg; j++) { v=v*10+(Math.random()>c?Math.floor(Math.random()*9+1):0); } } while (v<10); ret['c1x'+i]={'type':'value','value':v}; ret['c2x'+i]={'type':'math','result':v}; } return {'cells':ret}; }"]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/darkboard01.svg","math":[{"value":1},{"value":2},{"value":3},{"value":4},{"value":5},{"value":6},{"value":7},{"value":8},{"value":9},{"value":10},{"value":100},{"id":"plus"},{"id":"mult"}],"nocellref":true,"errratio":3,"withtabs":false,"sp":0.02,"font":2,"withbars":false,"all":{"width":4.5,"height":1.2},"cols":{"col0":{"width":0.2},"col1":{"background":"#FEC","fixed":true}},"rows":{"row0":{"height":0.2,"background":"#FF0000"}},"gen":"function(){var dg=3,c=0.5,ret={}; for (var i=1;i<6;i++) { var v=0; do { v=0; for (var j=0; j<dg; j++) { v=v*10+(Math.random()>c?Math.floor(Math.random()*9+1):0); } } while (v<10); ret['c1x'+i]={'type':'value','value':v}; ret['c2x'+i]={'type':'math','result':v}; } return {'cells':ret}; }"]]></dct:description>
         <dct:description xml:lang="fr-FR">,"exercice":"[b]Recopiez[/b] chaque nombre grâce à sa décomposion."</dct:description>
         <dct:extent>4</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -68,12 +68,13 @@
         <dct:type>3</dct:type>
         <dct:alternative>d1m</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CM2</dct:coverage>
+        <dct:source>res/img/background/landscape/darkboard01.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>d10k</dct:identifier>
         <dct:title xml:lang="fr-FR">Recopier 5 nombres, compris entre 1 et 10 000, grâce à leur décomposition.</dct:title>
-        <dct:description><![CDATA["math":[{"value":1},{"value":2},{"value":3},{"value":4},{"value":5},{"value":6},{"value":7},{"value":8},{"value":9},{"value":10},{"value":100},{"value":1000,"abstract":"1K"},{"id":"plus"},{"id":"mult"}],"nocellref":true,"errratio":3,"withtabs":false,"sp":0.02,"font":2,"withbars":false,"all":{"width":4.5,"height":1.2},"cols":{"col0":{"width":0.2},"col1":{"background":"#FEC","fixed":true}},"rows":{"row0":{"height":0.2,"background":"#FF0000"}},"gen":"function(){var dg=4,c=0.5,ret={}; for (var i=1;i<6;i++) { var v=0; do { v=0; for (var j=0; j<dg; j++) { v=v*10+(Math.random()>c?Math.floor(Math.random()*9+1):0); } } while (v<10); var vv='',tmp=v,dd=0; while (tmp>0) { vv=(tmp%10).toString()+vv; if (dd%3==2 && tmp>=10) {vv=' '+vv;} tmp=Math.floor(tmp/10); dd++; } ret['c1x'+i]={'type':'value','value':vv}; ret['c2x'+i]={'type':'math','result':v}; } return {'cells':ret}; }"]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/darkboard01.svg","math":[{"value":1},{"value":2},{"value":3},{"value":4},{"value":5},{"value":6},{"value":7},{"value":8},{"value":9},{"value":10},{"value":100},{"value":1000,"abstract":"1K"},{"id":"plus"},{"id":"mult"}],"nocellref":true,"errratio":3,"withtabs":false,"sp":0.02,"font":2,"withbars":false,"all":{"width":4.5,"height":1.2},"cols":{"col0":{"width":0.2},"col1":{"background":"#FEC","fixed":true}},"rows":{"row0":{"height":0.2,"background":"#FF0000"}},"gen":"function(){var dg=4,c=0.5,ret={}; for (var i=1;i<6;i++) { var v=0; do { v=0; for (var j=0; j<dg; j++) { v=v*10+(Math.random()>c?Math.floor(Math.random()*9+1):0); } } while (v<10); var vv='',tmp=v,dd=0; while (tmp>0) { vv=(tmp%10).toString()+vv; if (dd%3==2 && tmp>=10) {vv=' '+vv;} tmp=Math.floor(tmp/10); dd++; } ret['c1x'+i]={'type':'value','value':vv}; ret['c2x'+i]={'type':'math','result':v}; } return {'cells':ret}; }"]]></dct:description>
         <dct:description xml:lang="fr-FR">,"exercice":"[b]Recopiez[/b] chaque nombre grâce à sa décomposion."</dct:description>
         <dct:extent>4</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -81,12 +82,13 @@
         <dct:type>3</dct:type>
         <dct:alternative>d1m</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CM2</dct:coverage>
+        <dct:source>res/img/background/landscape/darkboard01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>d1m</dct:identifier>
         <dct:title xml:lang="fr-FR">Recopier 5 nombres, compris entre 1 et 1 000 000, grâce à leur décomposition.</dct:title>
-        <dct:description><![CDATA["math":[{"value":1},{"value":2},{"value":3},{"value":4},{"value":5},{"value":6},{"value":7},{"value":8},{"value":9},{"value":10},{"value":100},{"value":1000,"abstract":"1K"},{"value":10000,"abstract":"10K"},{"value":100000,"abstract":"100K"},{"id":"plus"},{"id":"mult"}],"nocellref":true,"errratio":3,"withtabs":false,"sp":0.02,"font":2,"withbars":false,"all":{"width":4.5,"height":1.2},"cols":{"col0":{"width":0.2},"col1":{"background":"#FEC","fixed":true}},"rows":{"row0":{"height":0.2,"background":"#FF0000"}},"gen":"function(){var dg=6,c=0.7,ret={}; for (var i=1;i<6;i++) { var v=0; do { v=0; for (var j=0; j<dg; j++) { v=v*10+(Math.random()>c?Math.floor(Math.random()*9+1):0); } } while (v<10); var vv='',tmp=v,dd=0; while (tmp>0) { vv=(tmp%10).toString()+vv; if (dd%3==2 && tmp>=10) {vv=' '+vv;} tmp=Math.floor(tmp/10); dd++; } ret['c1x'+i]={'type':'value','value':vv}; ret['c2x'+i]={'type':'math','result':v}; } return {'cells':ret}; }"]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/darkboard01.svg","math":[{"value":1},{"value":2},{"value":3},{"value":4},{"value":5},{"value":6},{"value":7},{"value":8},{"value":9},{"value":10},{"value":100},{"value":1000,"abstract":"1K"},{"value":10000,"abstract":"10K"},{"value":100000,"abstract":"100K"},{"id":"plus"},{"id":"mult"}],"nocellref":true,"errratio":3,"withtabs":false,"sp":0.02,"font":2,"withbars":false,"all":{"width":4.5,"height":1.2},"cols":{"col0":{"width":0.2},"col1":{"background":"#FEC","fixed":true}},"rows":{"row0":{"height":0.2,"background":"#FF0000"}},"gen":"function(){var dg=6,c=0.7,ret={}; for (var i=1;i<6;i++) { var v=0; do { v=0; for (var j=0; j<dg; j++) { v=v*10+(Math.random()>c?Math.floor(Math.random()*9+1):0); } } while (v<10); var vv='',tmp=v,dd=0; while (tmp>0) { vv=(tmp%10).toString()+vv; if (dd%3==2 && tmp>=10) {vv=' '+vv;} tmp=Math.floor(tmp/10); dd++; } ret['c1x'+i]={'type':'value','value':vv}; ret['c2x'+i]={'type':'math','result':v}; } return {'cells':ret}; }"]]></dct:description>
         <dct:description xml:lang="fr-FR">,"exercice":"[b]Recopiez[/b] chaque nombre grâce à sa décomposion."</dct:description>
         <dct:extent>4</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -94,6 +96,7 @@
         <dct:type>3</dct:type>
         <dct:alternative>d1m</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CM2</dct:coverage>
+        <dct:source>res/img/background/landscape/darkboard01.svg</dct:source>
     </rdf:Description>
     
     <!-- Decomposition question -->

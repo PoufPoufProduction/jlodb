@@ -16,6 +16,7 @@
         highlight   : [],                   // Highlight cells
         exercice    : "",                   // Exercice
         hint        : false,                // With hint for division
+        background  : "",
         debug       : true                  // Debug mode
     };
 
@@ -93,6 +94,9 @@
             build: function($this) {
                 var settings = helpers.settings($this);
                 if (settings.context.onload) { settings.context.onload($this); }
+                
+                // HANDLE BACKGROUND
+                if (settings.background) { $this.children().first().css("background-image","url("+settings.background+")"); }
 
                 // Base and nbdec
                 $this.find("#base").toggle(settings.base!=10).find("span").html(settings.base);
@@ -188,6 +192,8 @@
             var vReg = new RegExp("["+settings.type+"]", "g");
             var vOperation = vOpTmp.split(vReg);
             settings.op=[];
+            
+            console.log("["+settings.type+"] ("+vOperation.join(',')+")");
 
             // Compute the size of the table
             var height = 0 , width = 0;         // HEIGHT AND WIDTH OF THE TABLE
@@ -310,6 +316,10 @@
 
                 settings.offset = wtmp[0] - rtmp[0].toString(settings.base).length;
             }
+            
+            console.log(JSON.stringify(settings.op));
+            console.log("result: "+settings.result+" ("+settings.modulo+")");
+            console.log("("+width+"x"+height+") (offset: "+settings.offset+")");
 
             // BUILD THE TABLE FOR THE DIVISION OPERATION
             var html = "", top = 0, left = 0;
@@ -523,23 +533,28 @@
 
             // Resize
             settings.size= [width, height];
-            var off = (settings.type=="/")?[0,0]:[1,0.5];
+            var border = (settings.type=="/")?[0,0]:[1,0.2];
 
-            var vFont = Math.floor(0.9*Math.min($board.width()/(width+off[0]), $board.height()/(height+off[1])));
-            vFont = Math.floor(vFont/4)*4;
-            $board.css("font-size", vFont+"px")
-                  .css("top", Math.floor(($board.height()-(height+off[1])*vFont)/2)+"px")
-                  .css("left", Math.floor(($board.width()-((width+off[0])*vFont))/2)+"px");
+            var vFont = Math.floor(Math.min(90*16/(width+border[0]), 70*12/(height+border[1])))/100;
+            
+            console.log((90*16/(width+border[0]))+" / "+(70*12/(height+border[1])) );
+            
+            $board.css("font-size", vFont+"em")
+                .css("top", (0.2+(0.7*12-(height+border[1])*vFont)/(2*vFont))+"em")
+                .css("left", (0.2+(0.9*16-((width+border[0])*vFont))/(2*vFont))+"em");
             if (settings.type!="/") helpers.showop($this);
 
-            
-            var vTargetFont = 1.2*vFont*12/$this.height();
-            vTargetFont = Math.floor($this.height()/12*vTargetFont)/($this.height()/12);
+ 
+            var vTargetFont = 1.2*vFont;
             $this.find("#fill").css("font-size",vTargetFont+"em");
             if (settings.target) {
                 $this.find("#target").css("font-size",vTargetFont+"em");
                 helpers.target($this, false);
-                $this.find("#target").show();
+                $this.find("#target").show()
+                    .bind("touchstart mousedown", function(event) {
+                        helpers.mousedown(
+                            $this.find(".active,.value").get(settings.target[settings.targetid].index),
+                            event, true); });
 
                 setTimeout(function() { $this.find("#target>div").addClass("running"); },0);
             }
@@ -688,10 +703,6 @@
                     }
                     helpers.showop($this);
                 }
-            },
-            target: function(event) {
-                var $this = $(this) , settings = helpers.settings($this);
-                helpers.mousedown($this.find(".active,.value").get(settings.target[settings.targetid].index), event, true);
             },
             valid: function() {
                 var $this = $(this) , settings = helpers.settings($this);
