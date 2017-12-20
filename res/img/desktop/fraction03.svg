@@ -9,7 +9,9 @@
         svg#fraction03 .c0                  { fill:blue !important; }
         svg#fraction03 .c1                  { fill:red !important; }
         svg#fraction03 .c2                  { fill:green !important; }
-        svg#fraction03 .c                   { fill:white; }
+        svg#fraction03 .c                   { fill:#fec; }
+        svg#fraction03 .fraction .border    { fill:none;stroke:white;stroke-width:15px }
+        svg#fraction03 .fraction .shadow    { fill:black;stroke:black;stroke-width:15px;opacity:0.5 }
         svg#fraction03 .fraction rect       { stroke:black;stroke-width:1px; }
         svg#fraction03 .fraction path       { stroke:black;stroke-width:1px; }
         svg#fraction03 .fraction            { display:none; }
@@ -37,6 +39,8 @@
 </g>
 
 <g transform="translate(150,150)" id="square2x2" class="fraction">
+    <rect transform="translate(-10,10)" x="0" y="0" height="150" width="150" class="shadow"/>
+    <rect x="0" y="0" height="150" width="150" class="border"/>
     <rect x="0" y="0" height="75" width="75" class="c"/>
     <rect x="75" y="0" height="75" width="75" class="c"/>
     <rect x="0" y="75" height="75" width="75" class="c"/>
@@ -45,6 +49,8 @@
 </g>
 
 <g id="circle4" class="fraction">
+    <circle transform="translate(-10,10)" cx="200" cy="260" r="120" class="shadow"/>
+    <circle cx="200" cy="260" r="120" class="border"/>
     <path class="c" d="M 80.074 258.527 A 120 120 0 0 0 80 260 A 120 120 0 0 0 200 380 A 120 120 0 0 0 201.970 379.902 L 201.970 258.527 L 80.074 258.527 z " />
     <path class="c" d="M 200 140 A 120 120 0 0 0 80.052 258.527 L 201.970 258.527 L 201.970 140.097 A 120 120 0 0 0 200 140 z " />
     <path class="c" d="M 201.970 258.527 L 201.970 379.929 A 120 120 0 0 0 320 260 A 120 120 0 0 0 319.925 258.527 L 201.970 258.527 z " />
@@ -54,6 +60,8 @@
  
  
 <g transform="translate(200,100)" id="square2x3" class="fraction">
+    <rect transform="translate(-10,10)" x="0" y="0" height="225" width="150" class="shadow"/>
+    <rect x="0" y="0" height="225" width="150" class="border"/>
     <rect x="0" y="0" height="75" width="75" class="c"/>
     <rect x="75" y="0" height="75" width="75" class="c"/>
     <rect x="0" y="75" height="75" width="75" class="c"/>
@@ -64,6 +72,8 @@
 </g>
  
  <g id="circle6" class="fraction">
+    <circle transform="translate(-10,10)" cx="200" cy="260" r="120" class="shadow"/>
+    <circle cx="200" cy="260" r="120" class="border"/>
     <path class="c" d="M 80 259.998 A 120 120 0 0 0 80 260 A 120 120 0 0 0 140.052 363.830 L 200 259.998 L 80 259.998 z " />
     <path class="c" d="M 140.076 156.205 A 120 120 0 0 0 80 259.998 L 200.001 259.998 L 140.076 156.205 z " />
     <path class="c" d="M 200 140 A 120 120 0 0 0 140.076 156.205 L 200.001 260 L 259.947 156.169 A 120 120 0 0 0 200 140 z " />
@@ -74,6 +84,8 @@
  </g>
 
 <g transform="translate(200,100)" id="square2x4" class="fraction">
+    <rect transform="translate(-10,10)" x="0" y="0" height="300" width="150" class="shadow"/>
+    <rect x="0" y="0" height="300" width="150" class="border"/>
     <rect x="0" y="0" height="75" width="75" class="c"/>
     <rect x="75" y="0" height="75" width="75" class="c"/>
     <rect x="0" y="75" height="75" width="75" class="c"/>
@@ -86,6 +98,8 @@
 </g>
 
 <g id="circle8" class="fraction">
+    <circle transform="translate(-10,10)" cx="200" cy="260" r="120" class="shadow"/>
+    <circle cx="200" cy="260" r="120" class="border"/>
     <path class="c" d="M 201.146 140.035 A 120 120 0 0 0 116.349 174.056 L 201.146 258.853 L 201.146 140.035 z "/>
     <path class="c" d="M 80.113 258.853 A 120 120 0 0 0 115.146 344.853 L 201.146 258.853 L 80.113 258.853 z "/>
     <path class="c" d="M 201.146 258.853 L 115.146 344.853 A 120 120 0 0 0 284.853 344.853 A 120 120 0 0 0 285.958 343.666 L 201.146 258.853 z "/>
@@ -99,6 +113,8 @@
 
 
 <g transform="translate(200,10)" id="square1x10" class="fraction">
+    <rect transform="translate(-10,10)" x="0" y="0" height="400" width="40" class="shadow"/>
+    <rect x="0" y="0" height="400" width="40" class="border"/>
     <rect x="0" y="0" height="40" width="40" class="c"/>
     <rect x="0" y="40" height="40" width="40" class="c"/>
     <rect x="0" y="80" height="40" width="40" class="c"/>
@@ -113,6 +129,8 @@
 </g>
 
 <g transform="translate(200,100)" id="square3x4" class="fraction">
+    <rect transform="translate(-10,10)" x="0" y="0" height="300" width="225" class="shadow"/>
+    <rect x="0" y="0" height="300" width="225" class="border"/>
     <rect x="0" y="0" height="75" width="75" class="c"/>
     <rect x="75" y="0" height="75" width="75" class="c"/>
     <rect x="150" y="0" height="75" width="75" class="c"/>
@@ -129,6 +147,8 @@
 </g>
 
 <g id="circle12" class="fraction">
+    <circle transform="translate(-10,10)" cx="200" cy="260" r="120" class="shadow"/>
+    <circle cx="200" cy="260" r="120" class="border"/>
     <path class="c" d="M 96.169 200.052 A 120 120 0 0 0 80 259.998 L 200 259.998 L 96.169 200.052 z "/>
     <path class="c" d="M 140.076 156.205 A 120 120 0 0 0 96.169 200.052 L 200.001 259.998 L 140.076 156.205 z "/>
     <path class="c" d="M 200 140 A 120 120 0 0 0 140.076 156.205 L 200.001 259.998 L 200.001 140 A 120 120 0 0 0 200 140 z "/>
@@ -145,6 +165,8 @@
 </g>
 
 <g transform="translate(200,100)" id="square4x4" class="fraction">
+    <rect transform="translate(-10,10)" x="0" y="0" height="300" width="300" class="shadow"/>
+    <rect x="0" y="0" height="300" width="300" class="border"/>
     <rect x="0" y="0" height="75" width="75" class="c"/>
     <rect x="75" y="0" height="75" width="75" class="c"/>
     <rect x="150" y="0" height="75" width="75" class="c"/>
@@ -219,6 +241,8 @@
 
 <g id="square2x2x2" class="fraction">
     <g transform="translate(100,100)">
+        <rect transform="translate(-10,10)" x="0" y="0" height="150" width="150" class="shadow"/>
+        <rect x="0" y="0" height="150" width="150" class="border"/>
         <rect x="0" y="0" height="75" width="75" class="c"/>
         <rect x="75" y="0" height="75" width="75" class="c"/>
         <rect x="0" y="75" height="75" width="75" class="c"/>
@@ -226,6 +250,8 @@
         <rect x="0" y="0" height="150" width="150" style="fill:none;stroke-width:2px;"/>
     </g>
     <g transform="translate(300,100)">
+        <rect transform="translate(-10,10)" x="0" y="0" height="150" width="150" class="shadow"/>
+        <rect x="0" y="0" height="150" width="150" class="border"/>
         <rect x="0" y="0" height="75" width="75" class="c"/>
         <rect x="75" y="0" height="75" width="75" class="c"/>
         <rect x="0" y="75" height="75" width="75" class="c"/>
@@ -236,6 +262,8 @@
 
 <g id="square2x4x2" class="fraction">
     <g transform="translate(100,100)">
+        <rect transform="translate(-10,10)" x="0" y="0" height="300" width="150" class="shadow"/>
+        <rect x="0" y="0" height="300" width="150" class="border"/>
         <rect x="0" y="0" height="75" width="75" class="c"/>
         <rect x="75" y="0" height="75" width="75" class="c"/>
         <rect x="0" y="75" height="75" width="75" class="c"/>
@@ -247,6 +275,8 @@
         <rect x="0" y="0" height="300" width="150" style="fill:none;stroke-width:2px;"/>
     </g>
     <g transform="translate(300,100)">
+        <rect transform="translate(-10,10)" x="0" y="0" height="300" width="150" class="shadow"/>
+        <rect x="0" y="0" height="300" width="150" class="border"/>
         <rect x="0" y="0" height="75" width="75" class="c"/>
         <rect x="75" y="0" height="75" width="75" class="c"/>
         <rect x="0" y="75" height="75" width="75" class="c"/>
@@ -261,6 +291,8 @@
 
 <g id="circle4x2" class="fraction">
     <g>
+        <circle transform="translate(-10,10)" cx="200" cy="260" r="120" class="shadow"/>
+        <circle cx="200" cy="260" r="120" class="border"/>
         <path class="c" d="M 80.074 258.527 A 120 120 0 0 0 80 260 A 120 120 0 0 0 200 380 A 120 120 0 0 0 201.970 379.902 L 201.970 258.527 L 80.074 258.527 z " />
         <path class="c" d="M 200 140 A 120 120 0 0 0 80.052 258.527 L 201.970 258.527 L 201.970 140.097 A 120 120 0 0 0 200 140 z " />
         <path class="c" d="M 201.970 258.527 L 201.970 379.929 A 120 120 0 0 0 320 260 A 120 120 0 0 0 319.925 258.527 L 201.970 258.527 z " />
@@ -268,6 +300,8 @@
         <circle cx="200" cy="260" r="120" style="fill:none;stroke-width:2px;stroke:black;"/>
     </g>
     <g transform="translate(300,0)">
+        <circle transform="translate(-10,10)" cx="200" cy="260" r="120" class="shadow"/>
+        <circle cx="200" cy="260" r="120" class="border"/>
         <path class="c" d="M 80.074 258.527 A 120 120 0 0 0 80 260 A 120 120 0 0 0 200 380 A 120 120 0 0 0 201.970 379.902 L 201.970 258.527 L 80.074 258.527 z " />
         <path class="c" d="M 200 140 A 120 120 0 0 0 80.052 258.527 L 201.970 258.527 L 201.970 140.097 A 120 120 0 0 0 200 140 z " />
         <path class="c" d="M 201.970 258.527 L 201.970 379.929 A 120 120 0 0 0 320 260 A 120 120 0 0 0 319.925 258.527 L 201.970 258.527 z " />
@@ -278,6 +312,8 @@
 
 <g id="square2x3x2" class="fraction">
     <g transform="translate(100,100)">
+        <rect transform="translate(-10,10)" x="0" y="0" height="225" width="150" class="shadow"/>
+        <rect x="0" y="0" height="225" width="150" class="border"/>
         <rect x="0" y="0" height="75" width="75" class="c"/>
         <rect x="75" y="0" height="75" width="75" class="c"/>
         <rect x="0" y="75" height="75" width="75" class="c"/>
@@ -287,6 +323,8 @@
         <rect x="0" y="0" height="225" width="150" style="fill:none;stroke-width:2px;"/>
     </g>
     <g transform="translate(300,100)">
+        <rect transform="translate(-10,10)" x="0" y="0" height="225" width="150" class="shadow"/>
+        <rect x="0" y="0" height="225" width="150" class="border"/>
         <rect x="0" y="0" height="75" width="75" class="c"/>
         <rect x="75" y="0" height="75" width="75" class="c"/>
         <rect x="0" y="75" height="75" width="75" class="c"/>
@@ -299,6 +337,8 @@
  
  <g id="circle6x2" class="fraction">
     <g>
+        <circle transform="translate(-10,10)" cx="200" cy="260" r="120" class="shadow"/>
+        <circle cx="200" cy="260" r="120" class="border"/>
         <path class="c" d="M 80 259.998 A 120 120 0 0 0 80 260 A 120 120 0 0 0 140.052 363.830 L 200 259.998 L 80 259.998 z " />
         <path class="c" d="M 140.076 156.205 A 120 120 0 0 0 80 259.998 L 200.001 259.998 L 140.076 156.205 z " />
         <path class="c" d="M 200 140 A 120 120 0 0 0 140.076 156.205 L 200.001 260 L 259.947 156.169 A 120 120 0 0 0 200 140 z " />
@@ -308,6 +348,8 @@
         <circle cx="200" cy="260" r="120" style="fill:none;stroke-width:2px;stroke:black;"/>
     </g>
     <g transform="translate(300,0)">
+        <circle transform="translate(-10,10)" cx="200" cy="260" r="120" class="shadow"/>
+        <circle cx="200" cy="260" r="120" class="border"/>
         <path class="c" d="M 80 259.998 A 120 120 0 0 0 80 260 A 120 120 0 0 0 140.052 363.830 L 200 259.998 L 80 259.998 z " />
         <path class="c" d="M 140.076 156.205 A 120 120 0 0 0 80 259.998 L 200.001 259.998 L 140.076 156.205 z " />
         <path class="c" d="M 200 140 A 120 120 0 0 0 140.076 156.205 L 200.001 260 L 259.947 156.169 A 120 120 0 0 0 200 140 z " />
@@ -320,6 +362,8 @@
 
 <g id="square2x4x2" class="fraction">
     <g transform="translate(100,100)">
+        <rect transform="translate(-10,10)" x="0" y="0" height="300" width="150" class="shadow"/>
+        <rect x="0" y="0" height="300" width="150" class="border"/>
         <rect x="0" y="0" height="75" width="75" class="c"/>
         <rect x="75" y="0" height="75" width="75" class="c"/>
         <rect x="0" y="75" height="75" width="75" class="c"/>
@@ -331,6 +375,8 @@
         <rect x="0" y="0" height="300" width="150" style="fill:none;stroke-width:2px;"/>
     </g>
     <g transform="translate(300,100)">
+        <rect transform="translate(-10,10)" x="0" y="0" height="300" width="150" class="shadow"/>
+        <rect x="0" y="0" height="300" width="150" class="border"/>
         <rect x="0" y="0" height="75" width="75" class="c"/>
         <rect x="75" y="0" height="75" width="75" class="c"/>
         <rect x="0" y="75" height="75" width="75" class="c"/>
@@ -345,6 +391,8 @@
 
 <g id="circle8x2" class="fraction">
     <g>
+        <circle transform="translate(-10,10)" cx="200" cy="260" r="120" class="shadow"/>
+        <circle cx="200" cy="260" r="120" class="border"/>
         <path class="c" d="M 201.146 140.035 A 120 120 0 0 0 116.349 174.056 L 201.146 258.853 L 201.146 140.035 z "/>
         <path class="c" d="M 80.113 258.853 A 120 120 0 0 0 115.146 344.853 L 201.146 258.853 L 80.113 258.853 z "/>
         <path class="c" d="M 201.146 258.853 L 115.146 344.853 A 120 120 0 0 0 284.853 344.853 A 120 120 0 0 0 285.958 343.666 L 201.146 258.853 z "/>
@@ -356,6 +404,8 @@
         <circle cx="200" cy="260" r="120" style="fill:none;stroke-width:2px;stroke:black;"/>
     </g>
     <g transform="translate(300,0)">
+        <circle transform="translate(-10,10)" cx="200" cy="260" r="120" class="shadow"/>
+        <circle cx="200" cy="260" r="120" class="border"/>
         <path class="c" d="M 201.146 140.035 A 120 120 0 0 0 116.349 174.056 L 201.146 258.853 L 201.146 140.035 z "/>
         <path class="c" d="M 80.113 258.853 A 120 120 0 0 0 115.146 344.853 L 201.146 258.853 L 80.113 258.853 z "/>
         <path class="c" d="M 201.146 258.853 L 115.146 344.853 A 120 120 0 0 0 284.853 344.853 A 120 120 0 0 0 285.958 343.666 L 201.146 258.853 z "/>
@@ -370,6 +420,8 @@
 
 
 <g transform="translate(200,10)" id="square1x10x2" class="fraction">
+        <rect transform="translate(-10,10)" x="0" y="0" height="400" width="40" class="shadow"/>
+        <rect x="0" y="0" height="400" width="40" class="border"/>
     <rect x="0" y="0" height="40" width="40" class="c"/>
     <rect x="0" y="40" height="40" width="40" class="c"/>
     <rect x="0" y="80" height="40" width="40" class="c"/>
@@ -382,6 +434,8 @@
     <rect x="0" y="360" height="40" width="40" class="c"/>
     <rect x="0" y="0" height="400" width="40" style="fill:none;stroke-width:2px;"/>
     <g transform="translate(80,0)">
+        <rect transform="translate(-10,10)" x="0" y="0" height="400" width="40" class="shadow"/>
+        <rect x="0" y="0" height="400" width="40" class="border"/>
         <rect x="0" y="0" height="40" width="40" class="c"/>
         <rect x="0" y="40" height="40" width="40" class="c"/>
         <rect x="0" y="80" height="40" width="40" class="c"/>
@@ -398,6 +452,8 @@
 
 <g id="square3x4x2" class="fraction">
     <g transform="translate(60,100)">
+        <rect transform="translate(-10,10)" x="0" y="0" height="300" width="225" class="shadow"/>
+        <rect x="0" y="0" height="300" width="225" class="border"/>
         <rect x="0" y="0" height="75" width="75" class="c"/>
         <rect x="75" y="0" height="75" width="75" class="c"/>
         <rect x="150" y="0" height="75" width="75" class="c"/>
@@ -413,6 +469,8 @@
         <rect x="0" y="0" height="300" width="225" style="fill:none;stroke-width:2px;"/>
     </g>
     <g transform="translate(350,100)">
+        <rect transform="translate(-10,10)" x="0" y="0" height="300" width="225" class="shadow"/>
+        <rect x="0" y="0" height="300" width="225" class="border"/>
         <rect x="0" y="0" height="75" width="75" class="c"/>
         <rect x="75" y="0" height="75" width="75" class="c"/>
         <rect x="150" y="0" height="75" width="75" class="c"/>
@@ -432,6 +490,8 @@
 
 <g id="circle12x2" class="fraction">
     <g>
+        <circle transform="translate(-10,10)" cx="200" cy="260" r="120" class="shadow"/>
+        <circle cx="200" cy="260" r="120" class="border"/>
         <path class="c" d="M 96.169 200.052 A 120 120 0 0 0 80 259.998 L 200 259.998 L 96.169 200.052 z "/>
         <path class="c" d="M 140.076 156.205 A 120 120 0 0 0 96.169 200.052 L 200.001 259.998 L 140.076 156.205 z "/>
         <path class="c" d="M 200 140 A 120 120 0 0 0 140.076 156.205 L 200.001 259.998 L 200.001 140 A 120 120 0 0 0 200 140 z "/>
@@ -447,6 +507,8 @@
         <circle cx="200" cy="260" r="120" style="fill:none;stroke-width:2px;stroke:black;"/>
     </g>
     <g transform="translate(300,0)">
+        <circle transform="translate(-10,10)" cx="200" cy="260" r="120" class="shadow"/>
+        <circle cx="200" cy="260" r="120" class="border"/>
         <path class="c" d="M 96.169 200.052 A 120 120 0 0 0 80 259.998 L 200 259.998 L 96.169 200.052 z "/>
         <path class="c" d="M 140.076 156.205 A 120 120 0 0 0 96.169 200.052 L 200.001 259.998 L 140.076 156.205 z "/>
         <path class="c" d="M 200 140 A 120 120 0 0 0 140.076 156.205 L 200.001 259.998 L 200.001 140 A 120 120 0 0 0 200 140 z "/>
@@ -465,6 +527,8 @@
 
 
 <g transform="translate(200,10)" id="square1x10x3" class="fraction">
+        <rect transform="translate(-10,10)" x="0" y="0" height="400" width="40" class="shadow"/>
+        <rect x="0" y="0" height="400" width="40" class="border"/>
     <rect x="0" y="0" height="40" width="40" class="c"/>
     <rect x="0" y="40" height="40" width="40" class="c"/>
     <rect x="0" y="80" height="40" width="40" class="c"/>
@@ -477,6 +541,8 @@
     <rect x="0" y="360" height="40" width="40" class="c"/>
     <rect x="0" y="0" height="400" width="40" style="fill:none;stroke-width:2px;"/>
     <g transform="translate(80,0)">
+        <rect transform="translate(-10,10)" x="0" y="0" height="400" width="40" class="shadow"/>
+        <rect x="0" y="0" height="400" width="40" class="border"/>
         <rect x="0" y="0" height="40" width="40" class="c"/>
         <rect x="0" y="40" height="40" width="40" class="c"/>
         <rect x="0" y="80" height="40" width="40" class="c"/>
@@ -490,6 +556,8 @@
         <rect x="0" y="0" height="400" width="40" style="fill:none;stroke-width:2px;"/>
     </g>
     <g transform="translate(160,0)">
+        <rect transform="translate(-10,10)" x="0" y="0" height="400" width="40" class="shadow"/>
+        <rect x="0" y="0" height="400" width="40" class="border"/>
         <rect x="0" y="0" height="40" width="40" class="c"/>
         <rect x="0" y="40" height="40" width="40" class="c"/>
         <rect x="0" y="80" height="40" width="40" class="c"/>

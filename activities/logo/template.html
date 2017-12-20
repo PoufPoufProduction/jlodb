@@ -253,18 +253,19 @@
 
   <div class="mask"></div>
   
-    <div id="it">
-        <img id="itwrong" src="res/img/asset/misc/it01.svg" alt=""/>
-        <img id="itgood" src="res/img/asset/misc/it02.svg" alt=""/>
-    </div>
+    <div id="it"><div>
+        <div class="it" id="itwrong"><img src="res/img/asset/misc/it01.svg" alt=""/></div>
+        <div class="it" id="itgood"><img src="res/img/asset/misc/it02.svg" alt=""/></div>
+        <div id="dialog"><div></div></div>
+    </div></div>
   
     <div id="effects">
         <div id="good"><img src="res/img/default/popup/good01.svg" alt=""/></div>
     </div>
     
     <div id="continue">
-        <div class="icon" ontouchstart="$(this).closest('.logo').logo('end');event.preventDefault();"
-                          onclick="$(this).closest('.logo').logo('end');"><img src="res/img/default/icon/action_next01.svg" alt=""/></div>
+        <div class="icon" ontouchstart="$(this).closest('.logo').logo('cont');event.preventDefault();"
+                          onclick="$(this).closest('.logo').logo('cont');"><img src="res/img/default/icon/action_next01.svg" alt=""/></div>
     </div>
   
     <div id="ptip" ontouchstart="$(this).hide().find('#tipconfirm').hide();event.preventDefault();" onclick="$(this).hide().find('#tipconfirm').hide();"><div>

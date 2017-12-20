@@ -37,8 +37,8 @@
     ];
     
     var sources = {
-        db16 : [["0","","#140c1c","white"],["1","","#442434","white"],["2","","#30346d","white"],["3","","#4e4a4f","white"],["4","","#854c30","white"],["5","","#346524","white"],["6","","#d04648","white"],["7","","#757161","white"],["8","","#597dce","white"],["9","","#d27d2c","white"],["10","","#8595a1","white"],["11","","#6daa2c","white"],["12","","#d2aa99","white"],["13","","#6dc2ca","white"],["14","","#dad45e","white"],["15","","#deeed6","white"]],
-        db32 : [["0","","#000000","white"],["1","","#231f34","white"],["2","","#44283c","white"],["3","","#663931","white"],["4","","#8f563b","white"],["5","","#df7126","white"],["6","","#d99f65","white"],["7","","#eec49b","white"],["8","","#faf235","white"],["9","","#99e550","white"],["10","","#6bbd2f","white"],["11","","#36946e","white"],["12","","#4b692e","white"],["13","","#534b25","white"],["14","","#323c39","white"],["15","","#3f3e73","white"],["16","","#2f6082","white"],["17","","#5a6ee1","white"],["18","","#649aff","white"],["19","","#5fcde4","white"],["20","","#cbdbfc","white"],["21","","#ffffff","white"],["22","","#9badb7","white"],["23","","#847e87","white"],["24","","#696a6a","white"],["25","","#595651","white"],["26","","#75418a","white"],["27","","#ac3232","white"],["28","","#d95662","white"],["29","","#d67bba","white"],["30","","#8f974a","white"],["31","","#896e2f","white"]]
+        db16 : [["1","","#140c1c","white"],["2","","#442434","white"],["3","","#30346d","white"],["4","","#4e4a4f","white"],["5","","#854c30","white"],["6","","#346524","white"],["7","","#d04648","white"],["8","","#757161","white"],["9","","#597dce","white"],["a","","#d27d2c","white"],["b","","#8595a1","white"],["c","","#6daa2c","white"],["d","","#d2aa99","white"],["e","","#6dc2ca","white"],["f","","#dad45e","white"],["g","","#deeed6","white"]],
+        db32 : [["1","","#000000","white"],["2","","#231f34","white"],["3","","#44283c","white"],["4","","#663931","white"],["5","","#8f563b","white"],["6","","#df7126","white"],["7","","#d99f65","white"],["8","","#eec49b","white"],["9","","#faf235","white"],["a","","#99e550","white"],["b","","#6bbd2f","white"],["c","","#36946e","white"],["d","","#4b692e","white"],["e","","#534b25","white"],["f","","#323c39","white"],["g","","#3f3e73","white"],["h","","#2f6082","white"],["i","","#5a6ee1","white"],["j","","#649aff","white"],["k","","#5fcde4","white"],["l","","#cbdbfc","white"],["m","","#ffffff","white"],["n","","#9badb7","white"],["o","","#847e87","white"],["p","","#696a6a","white"],["q","","#595651","white"],["r","","#75418a","white"],["s","","#ac3232","white"],["t","","#d95662","white"],["u","","#d67bba","white"],["v","","#8f974a","white"],["w","","#896e2f","white"]]
     };
 
     // private methods
@@ -378,8 +378,8 @@
             if (settings.svg) { $elts = $("#"+canvas+" ."+settings.toggle, settings.svg.root()); }
             else              { $elts = $this.find("#board #"+canvas+" ."+settings.toggle); }
             $elts.each(function(_index) {
-                var val = $(this).attr("class").substr(-1);
-                if (val==settings.toggle) { val=" "; } else
+                var vClass = $(this).attr("class"), val;
+                if (vClass==settings.toggle) { val=" "; } else { val = vClass.substr(-1); }
                 if (settings.data&&settings.data[val]&&settings.data[val].skip) { val =" "; }
                 result+=val;
             });

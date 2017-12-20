@@ -61,341 +61,341 @@
     <rdf:Description>
         <dct:identifier>f4</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 4, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 4.</dct:title>
-        <dct:description><![CDATA["errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle4','det':4,'dets':[4]},{'id':'square2x2','det':4,'dets':[4]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(d+1)); } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":5]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/gears01.svg","errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle4','det':4,'dets':[4]},{'id':'square2x2','det':4,'dets':[4]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(d+1)); } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez différentes cases[/b] pour que la part de cases rouges soit égale à la [red]fraction suivante[/red].","fontex":0.8]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>ft12b</dct:alternative>
-        <dct:source>res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>f4a</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 4, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 2 ou 4.</dct:title>
-        <dct:description><![CDATA["errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle4','det':4,'dets':[2,4]},{'id':'square2x2','det':4,'dets':[2,4]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(d+1)); } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":8]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/gears01.svg","errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle4','det':4,'dets':[2,4]},{'id':'square2x2','det':4,'dets':[2,4]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(d+1)); } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":8]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez différentes cases[/b] pour que la part de cases rouges soit égale à la [red]fraction suivante[/red].","fontex":0.8]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>ft12b</dct:alternative>
-        <dct:source>res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>f6</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 6, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 6.</dct:title>
-        <dct:description><![CDATA["errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle6','det':6,'dets':[6]},{'id':'square2x3','det':6,'dets':[6]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(d-1))+1; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":8]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/gears01.svg","errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle6','det':6,'dets':[6]},{'id':'square2x3','det':6,'dets':[6]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(d-1))+1; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":8]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez différentes cases[/b] pour que la part de cases rouges soit égale à la [red]fraction suivante[/red].","fontex":0.8]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>ft12b</dct:alternative>
-        <dct:source>res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>f6a</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 6, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 2,3 ou 6.</dct:title>
-        <dct:description><![CDATA["errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle6','det':6,'dets':[2,3,6]},{'id':'square2x3','det':6,'dets':[2,3,6]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(d-1))+1; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":8]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/gears01.svg","errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle6','det':6,'dets':[2,3,6]},{'id':'square2x3','det':6,'dets':[2,3,6]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(d-1))+1; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":8]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez différentes cases[/b] pour que la part de cases rouges soit égale à la [red]fraction suivante[/red].","fontex":0.8]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>ft12b</dct:alternative>
-        <dct:source>res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/gears01.svg,res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>f6b</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 6 ou en 4, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 2, 3, 4 ou 6.</dct:title>
-        <dct:description><![CDATA["errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle4','det':4,'dets':[2,4]},{'id':'square2x2','det':4,'dets':[2,4]},{'id':'circle6','det':6,'dets':[2,3,6]},{'id':'square2x3','det':6,'dets':[2,3,6]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(d-1))+1; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":8]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/gears01.svg","errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle4','det':4,'dets':[2,4]},{'id':'square2x2','det':4,'dets':[2,4]},{'id':'circle6','det':6,'dets':[2,3,6]},{'id':'square2x3','det':6,'dets':[2,3,6]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(d-1))+1; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":8]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez différentes cases[/b] pour que la part de cases rouges soit égale à la [red]fraction suivante[/red].","fontex":0.8]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>ft12b</dct:alternative>
-        <dct:source>res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>f8</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 8, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 8.</dct:title>
-        <dct:description><![CDATA["errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle8','det':8,'dets':[8]},{'id':'square2x4','det':8,'dets':[8]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(d-1))+1; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":8]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/gears01.svg","errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle8','det':8,'dets':[8]},{'id':'square2x4','det':8,'dets':[8]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(d-1))+1; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":8]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez différentes cases[/b] pour que la part de cases rouges soit égale à la [red]fraction suivante[/red].","fontex":0.8]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>ft12b</dct:alternative>
-        <dct:source>res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>f8a</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 8, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 2,4 ou 8.</dct:title>
-        <dct:description><![CDATA["errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle8','det':8,'dets':[2,4,8]},{'id':'square2x4','det':8,'dets':[2,4,8]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(d-1))+1; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":8]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/gears01.svg","errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle8','det':8,'dets':[2,4,8]},{'id':'square2x4','det':8,'dets':[2,4,8]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(d-1))+1; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":8]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez différentes cases[/b] pour que la part de cases rouges soit égale à la [red]fraction suivante[/red].","fontex":0.8]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>ft12b</dct:alternative>
-        <dct:source>res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>f8b</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 8 ou en 4, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 2, 4 ou 8.</dct:title>
-        <dct:description><![CDATA["errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle4','det':4,'dets':[2,4]},{'id':'square2x2','det':4,'dets':[2,4]},{'id':'circle8','det':8,'dets':[2,4,8]},{'id':'square2x4','det':8,'dets':[2,4,8]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(d-1))+1; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":8]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/gears01.svg","errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle4','det':4,'dets':[2,4]},{'id':'square2x2','det':4,'dets':[2,4]},{'id':'circle8','det':8,'dets':[2,4,8]},{'id':'square2x4','det':8,'dets':[2,4,8]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(d-1))+1; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":8]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez différentes cases[/b] pour que la part de cases rouges soit égale à la [red]fraction suivante[/red].","fontex":0.8]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>ft12b</dct:alternative>
-        <dct:source>res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
     
     
     <rdf:Description>
         <dct:identifier>f12</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 12, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 12.</dct:title>
-        <dct:description><![CDATA["errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle12','det':12,'dets':[12]},{'id':'square3x4','det':12,'dets':[12]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(d-1))+1; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":8,"tagsize":0.8]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/gears01.svg","errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle12','det':12,'dets':[12]},{'id':'square3x4','det':12,'dets':[12]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(d-1))+1; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":8,"tagsize":0.8]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez différentes cases[/b] pour que la part de cases rouges soit égale à la [red]fraction suivante[/red].","fontex":0.8]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>ft12b</dct:alternative>
-        <dct:source>res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>f12a</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 12, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 2, 3, 4, 6 ou 12.</dct:title>
-        <dct:description><![CDATA["errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle12','det':12,'dets':[2,3,4,6,12]},{'id':'square3x4','det':12,'dets':[2,3,4,6,12]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(d-1))+1; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":8,"tagsize":0.8]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/gears01.svg","errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle12','det':12,'dets':[2,3,4,6,12]},{'id':'square3x4','det':12,'dets':[2,3,4,6,12]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(d-1))+1; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":8,"tagsize":0.8]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez différentes cases[/b] pour que la part de cases rouges soit égale à la [red]fraction suivante[/red].","fontex":0.8]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>ft12b</dct:alternative>
-        <dct:source>res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>f12b</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 12, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 2, 3, 4, 6 ou 12.</dct:title>
-        <dct:description><![CDATA["errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle4','det':4,'dets':[2,4]},{'id':'square2x2','det':4,'dets':[2,4]},{'id':'circle6','det':6,'dets':[2,3,6]},{'id':'square2x3','det':6,'dets':[2,3,6]},{'id':'circle12','det':12,'dets':[2,3,4,6,12]},{'id':'square3x4','det':12,'dets':[2,3,4,6,12]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(d-1))+1; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":8,"tagsize":0.8]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/gears01.svg","errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle4','det':4,'dets':[2,4]},{'id':'square2x2','det':4,'dets':[2,4]},{'id':'circle6','det':6,'dets':[2,3,6]},{'id':'square2x3','det':6,'dets':[2,3,6]},{'id':'circle12','det':12,'dets':[2,3,4,6,12]},{'id':'square3x4','det':12,'dets':[2,3,4,6,12]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(d-1))+1; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":8,"tagsize":0.8]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez différentes cases[/b] pour que la part de cases rouges soit égale à la [red]fraction suivante[/red].","fontex":0.8]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>ft12b</dct:alternative>
-        <dct:source>res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>f12o</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 4, 6, 8 ou 12, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est respectivement de 4, 6, 8 ou 12.</dct:title>
-        <dct:description><![CDATA["errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle4','det':4,'dets':[4]},{'id':'square2x2','det':4,'dets':[4]},{'id':'circle6','det':6,'dets':[6]},{'id':'square2x3','det':6,'dets':[6]},{'id':'circle8','det':8,'dets':[8]},{'id':'square2x4','det':8,'dets':[8]},{'id':'circle12','det':12,'dets':[12]},{'id':'square3x4','det':12,'dets':[12]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(d-1))+1; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":8,"tagsize":0.6]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/gears01.svg","errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle4','det':4,'dets':[4]},{'id':'square2x2','det':4,'dets':[4]},{'id':'circle6','det':6,'dets':[6]},{'id':'square2x3','det':6,'dets':[6]},{'id':'circle8','det':8,'dets':[8]},{'id':'square2x4','det':8,'dets':[8]},{'id':'circle12','det':12,'dets':[12]},{'id':'square3x4','det':12,'dets':[12]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(d-1))+1; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":8,"tagsize":0.6]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez différentes cases[/b] pour que la part de cases rouges soit égale à la [red]fraction suivante[/red].","fontex":0.8]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>ft12b</dct:alternative>
-        <dct:source>res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>f16a</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 16, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 2, 4, 8 ou 16.</dct:title>
-        <dct:description><![CDATA["errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'square4x4','det':16,'dets':[2,4,8,16]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(d-1))+1; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":8,"tagsize":0.6]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/gears01.svg","errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'square4x4','det':16,'dets':[2,4,8,16]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(d-1))+1; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":8,"tagsize":0.6]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez différentes cases[/b] pour que la part de cases rouges soit égale à la [red]fraction suivante[/red].","fontex":0.8]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>ft12b</dct:alternative>
-        <dct:source>res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>f20a</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 20, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 2, 4, 5, 10 ou 20.</dct:title>
-        <dct:description><![CDATA["errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'square5x4','det':20,'dets':[2,4,5,10,20]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(d-1))+1; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":8,"tagsize":0.6]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/gears01.svg","errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'square5x4','det':20,'dets':[2,4,5,10,20]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(d-1))+1; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":8,"tagsize":0.6]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez différentes cases[/b] pour que la part de cases rouges soit égale à la [red]fraction suivante[/red].","fontex":0.8]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>ft12b</dct:alternative>
-        <dct:source>res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>f20o</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 4, 6, 8, 12, 16 ou 20, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est respectivement 4, 6, 8, 12, 16 ou 20.</dct:title>
-        <dct:description><![CDATA["errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'square2x2','det':4,'dets':[4]},{'id':'square2x3','det':6,'dets':[6]},{'id':'square2x4','det':8,'dets':[8]},{'id':'square3x4','det':12,'dets':[12]},{'id':'square4x4','det':16,'dets':[16]},{'id':'square5x4','det':20,'dets':[20]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(d-1))+1; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":8,"tagsize":0.6]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/gears01.svg","errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'square2x2','det':4,'dets':[4]},{'id':'square2x3','det':6,'dets':[6]},{'id':'square2x4','det':8,'dets':[8]},{'id':'square3x4','det':12,'dets':[12]},{'id':'square4x4','det':16,'dets':[16]},{'id':'square5x4','det':20,'dets':[20]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(d-1))+1; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":8,"tagsize":0.6]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez différentes cases[/b] pour que la part de cases rouges soit égale à la [red]fraction suivante[/red].","fontex":0.8]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>ft12b</dct:alternative>
-        <dct:source>res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>ft4</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier les cases de 2 objets divisés en 4, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 4.</dct:title>
-        <dct:description><![CDATA["errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle4x2','det':4,'dets':[4]},{'id':'square2x2x2','det':4,'dets':[4]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(2*d+1)); } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":5,"tagsize":0.8]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/gears01.svg","errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle4x2','det':4,'dets':[4]},{'id':'square2x2x2','det':4,'dets':[4]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(2*d+1)); } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":5,"tagsize":0.8]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Voici 2 objets : [b]coloriez différentes cases[/b] pour que la part de cases rouges soit égale à la [red]fraction suivante[/red].","fontex":0.8]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>ft12b</dct:alternative>
-        <dct:source>res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>ft4a</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier les cases de 2 objets divisés en 4, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 2 ou 4.</dct:title>
-        <dct:description><![CDATA["errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle4x2','det':4,'dets':[2,4]},{'id':'square2x2x2','det':4,'dets':[2,4]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(2*d+1)); } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":5,"tagsize":0.8]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/gears01.svg","errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle4x2','det':4,'dets':[2,4]},{'id':'square2x2x2','det':4,'dets':[2,4]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(2*d+1)); } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":5,"tagsize":0.8]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Voici 2 objets : [b]coloriez différentes cases[/b] pour que la part de cases rouges soit égale à la [red]fraction suivante[/red].","fontex":0.8]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>ft12b</dct:alternative>
-        <dct:source>res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>ft6</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier les cases de 2 objets divisés en 6, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 6.</dct:title>
-        <dct:description><![CDATA["errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle6x2','det':6,'dets':[6]},{'id':'square2x3x2','det':6,'dets':[6]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(2*d-1))+1; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":5,"tagsize":0.8]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/gears01.svg","errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle6x2','det':6,'dets':[6]},{'id':'square2x3x2','det':6,'dets':[6]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(2*d-1))+1; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":5,"tagsize":0.8]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Voici 2 objets : [b]coloriez différentes cases[/b] pour que la part de cases rouges soit égale à la [red]fraction suivante[/red].","fontex":0.8]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>ft12b</dct:alternative>
-        <dct:source>res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>ft6a</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier les cases de 2 objets divisés en 6, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 2, 3 ou 6.</dct:title>
-        <dct:description><![CDATA["errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle6x2','det':6,'dets':[2,3,6]},{'id':'square2x3x2','det':6,'dets':[2,3,6]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(2*d-1))+1; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":5,"tagsize":0.8]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/gears01.svg","errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle6x2','det':6,'dets':[2,3,6]},{'id':'square2x3x2','det':6,'dets':[2,3,6]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(2*d-1))+1; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":5,"tagsize":0.8]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Voici 2 objets : [b]coloriez différentes cases[/b] pour que la part de cases rouges soit égale à la [red]fraction suivante[/red].","fontex":0.8]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>ft12b</dct:alternative>
-        <dct:source>res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>ft8</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier les cases de 2 objets divisés en 8, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 8.</dct:title>
-        <dct:description><![CDATA["errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle8x2','det':8,'dets':[8]},{'id':'square2x4x2','det':8,'dets':[8]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(2*d-1))+1; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":5,"tagsize":0.8]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/gears01.svg","errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle8x2','det':8,'dets':[8]},{'id':'square2x4x2','det':8,'dets':[8]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(2*d-1))+1; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":5,"tagsize":0.8]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Voici 2 objets : [b]coloriez différentes cases[/b] pour que la part de cases rouges soit égale à la [red]fraction suivante[/red].","fontex":0.8]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>ft12b</dct:alternative>
-        <dct:source>res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>ft8a</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier les cases de 2 objets divisés en 8, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 2, 4 ou 8.</dct:title>
-        <dct:description><![CDATA["errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle8x2','det':8,'dets':[2,4,8]},{'id':'square2x4x2','det':8,'dets':[2,4,8]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(2*d-1))+1; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":5,"tagsize":0.8]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/gears01.svg","errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle8x2','det':8,'dets':[2,4,8]},{'id':'square2x4x2','det':8,'dets':[2,4,8]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(2*d-1))+1; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":5,"tagsize":0.8]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Voici 2 objets : [b]coloriez différentes cases[/b] pour que la part de cases rouges soit égale à la [red]fraction suivante[/red].","fontex":0.8]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>ft12b</dct:alternative>
-        <dct:source>res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>ft8b</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier les cases de 2 objets divisés en 8 ou en 4, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 2, 4 ou 8.</dct:title>
-        <dct:description><![CDATA["errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle4x2','det':4,'dets':[2,4]},{'id':'square2x2x2','det':4,'dets':[2,4]},{'id':'circle8x2','det':8,'dets':[2,4,8]},{'id':'square2x4x2','det':8,'dets':[2,4,8]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(2*d-1))+1; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":5,"tagsize":0.8]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/gears01.svg","errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle4x2','det':4,'dets':[2,4]},{'id':'square2x2x2','det':4,'dets':[2,4]},{'id':'circle8x2','det':8,'dets':[2,4,8]},{'id':'square2x4x2','det':8,'dets':[2,4,8]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(2*d-1))+1; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":5,"tagsize":0.8]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Voici 2 objets : [b]coloriez différentes cases[/b] pour que la part de cases rouges soit égale à la [red]fraction suivante[/red].","fontex":0.8]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>ft12b</dct:alternative>
-        <dct:source>res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>ft12</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier les cases de 2 objets divisés en 12, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 12.</dct:title>
-        <dct:description><![CDATA["errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle12x2','det':12,'dets':[12]},{'id':'square3x4x2','det':12,'dets':[12]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(2*d-1))+1; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":5,"tagsize":0.6]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/gears01.svg","errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle12x2','det':12,'dets':[12]},{'id':'square3x4x2','det':12,'dets':[12]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(2*d-1))+1; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":5,"tagsize":0.6]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Voici 2 objets : [b]coloriez différentes cases[/b] pour que la part de cases rouges soit égale à la [red]fraction suivante[/red].","fontex":0.8]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>ft12b</dct:alternative>
-        <dct:source>res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>ft12a</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier les cases de 2 objets divisés en 12, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 2, 3, 4, 6 ou 12.</dct:title>
-        <dct:description><![CDATA["errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle12x2','det':12,'dets':[2,3,4,6,12]},{'id':'square3x4x2','det':12,'dets':[2,3,4,6,12]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(2*d-1))+1; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":5,"tagsize":0.6]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/gears01.svg","errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle12x2','det':12,'dets':[2,3,4,6,12]},{'id':'square3x4x2','det':12,'dets':[2,3,4,6,12]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(2*d-1))+1; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":5,"tagsize":0.6]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Voici 2 objets : [b]coloriez différentes cases[/b] pour que la part de cases rouges soit égale à la [red]fraction suivante[/red].","fontex":0.8]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>4</dct:type>
         <dct:alternative>ft12b</dct:alternative>
-        <dct:source>res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>ft12b</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier les cases de 2 objets divisés en 4, 6 ou 12, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 2, 3, 4, 6 ou 12.</dct:title>
-        <dct:description><![CDATA["errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle6x2','det':6,'dets':[2,3,6]},{'id':'square2x3x2','det':6,'dets':[2,3,6]},{'id':'circle4x2','det':4,'dets':[2,4]},{'id':'square2x2x2','det':4,'dets':[2,4]},{'id':'circle12x2','det':12,'dets':[2,3,4,6,12]},{'id':'square3x4x2','det':12,'dets':[2,3,4,6,12]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(2*d-1))+1; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":5,"tagsize":0.6]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/gears01.svg","errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'circle6x2','det':6,'dets':[2,3,6]},{'id':'square2x3x2','det':6,'dets':[2,3,6]},{'id':'circle4x2','det':4,'dets':[2,4]},{'id':'square2x2x2','det':4,'dets':[2,4]},{'id':'circle12x2','det':12,'dets':[2,3,4,6,12]},{'id':'square3x4x2','det':12,'dets':[2,3,4,6,12]}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(2*d-1))+1; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":5,"tagsize":0.6]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Voici 2 objets : [b]coloriez différentes cases[/b] pour que la part de cases rouges soit égale à la [red]fraction suivante[/red].","fontex":0.8]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>4</dct:type>
         <dct:alternative>ft12b</dct:alternative>
-        <dct:source>res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
     
     
     <rdf:Description>
         <dct:identifier>fu10</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier les cases d'un objet divisé en 10, pour que la part de cases rouges soit égale à une fraction dont les dénominateur est 10.</dct:title>
-        <dct:description><![CDATA["errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'square1x10','det':10,'dets':[10],'max':1,'min':1},{'id':'square1x10x2','det':10,'dets':[10],'max':2,'min':11},{'id':'square1x10x3','det':10,'dets':[10],'max':3,'min':21}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(d*val.max-(val.min)))+val.min; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":6,"tagsize":0.6]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/gears01.svg","errratio":2,"remove":true,"url":"res/img/desktop/fraction03.svg","data":[{},{"toggle":true}],"selected":1,"gen":"function($this,settings){var data=[{'id':'square1x10','det':10,'dets':[10],'max':1,'min':1},{'id':'square1x10x2','det':10,'dets':[10],'max':2,'min':11},{'id':'square1x10x3','det':10,'dets':[10],'max':3,'min':21}],val=data[Math.floor(Math.random()*data.length)],d,n; do { d=val.dets[Math.floor(Math.random()*val.dets.length)]; n=Math.floor(Math.random()*(d*val.max-(val.min)))+val.min; } while(val.det*n/d==settings.scorearg); return {'tag':n.toString()+'/'+d.toString(),'scorearg':val.det*n/d,'canvas':val.id};}","scorefct":"function($this,_result,_arg){var nb=0; for (var i=0;i<_result.length;i++) { if (_result[i]=='1') { nb++; } } r=Math.abs(nb-_arg); return r<2?r:2;}","number":6,"tagsize":0.6]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez différentes cases[/b] pour que la part de cases rouges soit égale à la [red]fraction suivante[/red].","fontex":0.8]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>ft12b</dct:alternative>
-        <dct:source>res/img/desktop/fraction03.svg</dct:source>
+        <dct:source>res/img/background/landscape/gears01.svg,res/img/desktop/fraction03.svg</dct:source>
     </rdf:Description>
     
     
