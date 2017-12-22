@@ -311,7 +311,7 @@
         <rect x="-160" y="-25" width="320" height="50" class="r1"/>
         <rect x="-160" y="-25" width="320" height="20" class="r2"/>
         <path d="M -150,-25 L -150,-5" class="r3"/>
-        <g id="grid">
+        <g>
             <path d="M -140,-25 L -140,-15" class="r4"/>
             <path d="M -130,-25 L -130,-15" class="r4"/>
             <path d="M -120,-25 L -120,-15" class="r4"/>
@@ -323,8 +323,30 @@
             <path d="M -60,-25 L -60,-15" class="r4"/>
             <path d="M -50,-25 L -50,-5" class="r3"/>
         </g>
-        <use x="0" y="0" xlink:href="#grid" transform="translate(100,0)"/>
-        <use x="0" y="0" xlink:href="#grid" transform="translate(200,0)"/>
+        <g transform="translate(100,0)">
+            <path d="M -140,-25 L -140,-15" class="r4"/>
+            <path d="M -130,-25 L -130,-15" class="r4"/>
+            <path d="M -120,-25 L -120,-15" class="r4"/>
+            <path d="M -110,-25 L -110,-15" class="r4"/>
+            <path d="M -100,-25 L -100,-15" class="r3"/>
+            <path d="M -90,-25 L -90,-15" class="r4"/>
+            <path d="M -80,-25 L -80,-15" class="r4"/>
+            <path d="M -70,-25 L -70,-15" class="r4"/>
+            <path d="M -60,-25 L -60,-15" class="r4"/>
+            <path d="M -50,-25 L -50,-5" class="r3"/>
+        </g>
+        <g transform="translate(200,0)">
+            <path d="M -140,-25 L -140,-15" class="r4"/>
+            <path d="M -130,-25 L -130,-15" class="r4"/>
+            <path d="M -120,-25 L -120,-15" class="r4"/>
+            <path d="M -110,-25 L -110,-15" class="r4"/>
+            <path d="M -100,-25 L -100,-15" class="r3"/>
+            <path d="M -90,-25 L -90,-15" class="r4"/>
+            <path d="M -80,-25 L -80,-15" class="r4"/>
+            <path d="M -70,-25 L -70,-15" class="r4"/>
+            <path d="M -60,-25 L -60,-15" class="r4"/>
+            <path d="M -50,-25 L -50,-5" class="r3"/>
+        </g>
         
         <g transform="translate(-150,-5)"><text y="14">0</text></g>
         <g transform="translate(-50,-5)"><text y="14">10</text></g>

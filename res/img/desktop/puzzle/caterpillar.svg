@@ -6,6 +6,8 @@
     svg#caterpillar .wrong circle.fg    { fill:red; }
     svg#caterpillar .good circle.bg     { fill:#080; }
     svg#caterpillar .good circle.fg     { fill:#0D0; }
+    svg#caterpillar .shadow             { fill-opacity:0.5; display:none; }
+    svg#caterpillar .drag .shadow       { display:inline; }
     svg#caterpillar circle.bg           { fill:#532; }
     svg#caterpillar circle.fg           { fill:#A64; }
     svg#caterpillar.small text          { font-size:36px; }
@@ -111,78 +113,91 @@
 
 <g id="pieces"> 
 <g transform="translate(82,97)" id="p01"><g class="scale"><g class="rot">
+    <circle r="34" transform="translate(5,5)" cy="0" cx="0" class="shadow"/>
     <circle r="34" cy="0" cx="0" class="bg"/>
     <circle r="30" cy="0" cx="0" class="fg"/>
     <image transform="translate(-30,-30)" xlink:href="" width="60" height="60" x="0" y="0" id="i01"/>
     <text y="14" id="t01"></text>
 </g></g></g>
 <g transform="translate(151,66)" id="p02"><g class="scale"><g class="rot">
+    <circle r="34" transform="translate(5,5)" cy="0" cx="0" class="shadow"/>
     <circle r="34" cy="0" cx="0" class="bg"/>
     <circle r="30" cy="0" cx="0" class="fg"/>
     <image transform="translate(-30,-30)" xlink:href="" width="60" height="60" x="0" y="0" id="i02"/>
     <text y="14" id="t02"></text>
 </g></g></g>
 <g transform="translate(224,63)" id="p03"><g class="scale"><g class="rot">
+    <circle r="34" transform="translate(5,5)" cy="0" cx="0" class="shadow"/>
     <circle r="34" cy="0" cx="0" class="bg"/>
     <circle r="30" cy="0" cx="0" class="fg"/>
     <image transform="translate(-30,-30)" xlink:href="" width="60" height="60" x="0" y="0" id="i03"/>
     <text y="14" id="t03"></text>
 </g></g></g>
 <g transform="translate(285,107)" id="p04"><g class="scale"><g class="rot">
+    <circle r="34" transform="translate(5,5)" cy="0" cx="0" class="shadow"/>
     <circle r="34" cy="0" cx="0" class="bg"/>
     <circle r="30" cy="0" cx="0" class="fg"/>
     <image transform="translate(-30,-30)" xlink:href="" width="60" height="60" x="0" y="0" id="i04"/>
     <text y="14" id="t04"></text>
 </g></g></g>
 <g transform="translate(277,178)" id="p05"><g class="scale"><g class="rot">
+    <circle r="34" transform="translate(5,5)" cy="0" cx="0" class="shadow"/>
     <circle r="34" cy="0" cx="0" class="bg"/>
     <circle r="30" cy="0" cx="0" class="fg"/>
     <image transform="translate(-30,-30)" xlink:href="" width="60" height="60" x="0" y="0" id="i05"/>
     <text y="14" id="t05"></text>
 </g></g></g>
 <g transform="translate(207,203)" id="p06"><g class="scale"><g class="rot">
+    <circle r="34" transform="translate(5,5)" cy="0" cx="0" class="shadow"/>
     <circle r="34" cy="0" cx="0" class="bg"/>
     <circle r="30" cy="0" cx="0" class="fg"/>
     <image transform="translate(-30,-30)" xlink:href="" width="60" height="60" x="0" y="0" id="i06"/>
     <text y="14" id="t06"></text>
 </g></g></g>
 <g transform="translate(134,195)" id="p07"><g class="scale"><g class="rot">
+    <circle r="34" transform="translate(5,5)" cy="0" cx="0" class="shadow"/>
     <circle r="34" cy="0" cx="0" class="bg"/>
     <circle r="30" cy="0" cx="0" class="fg"/>
     <image transform="translate(-30,-30)" xlink:href="" width="60" height="60" x="0" y="0" id="i07"/>
     <text y="14" id="t07"></text>
 </g></g></g>
 <g transform="translate(72,231)" id="p08"><g class="scale"><g class="rot">
+    <circle r="34" transform="translate(5,5)" cy="0" cx="0" class="shadow"/>
     <circle r="34" cy="0" cx="0" class="bg"/>
     <circle r="30" cy="0" cx="0" class="fg"/>
     <image transform="translate(-30,-30)" xlink:href="" width="60" height="60" x="0" y="0" id="i08"/>
     <text y="14" id="t08"></text>
 </g></g></g>
 <g transform="translate(67,302)" id="p09"><g class="scale"><g class="rot">
+    <circle r="34" transform="translate(5,5)" cy="0" cx="0" class="shadow"/>
     <circle r="34" cy="0" cx="0" class="bg"/>
     <circle r="30" cy="0" cx="0" class="fg"/>
     <image transform="translate(-30,-30)" xlink:href="" width="60" height="60" x="0" y="0" id="i09"/>
     <text y="14" id="t09"></text>
 </g></g></g>
 <g transform="translate(130,342)" id="p10"><g class="scale"><g class="rot">
+    <circle r="34" transform="translate(5,5)" cy="0" cx="0" class="shadow"/>
     <circle r="34" cy="0" cx="0" class="bg"/>
     <circle r="30" cy="0" cx="0" class="fg"/>
     <image transform="translate(-30,-30)" xlink:href="" width="60" height="60" x="0" y="0" id="i10"/>
     <text y="14" id="t10"></text>
 </g></g></g>
 <g transform="translate(201,330)" id="p11"><g class="scale"><g class="rot">
+    <circle r="34" transform="translate(5,5)" cy="0" cx="0" class="shadow"/>
     <circle r="34" cy="0" cx="0" class="bg"/>
     <circle r="30" cy="0" cx="0" class="fg"/>
     <image transform="translate(-30,-30)" xlink:href="" width="60" height="60" x="0" y="0" id="i11"/>
     <text y="14" id="t11"></text>
 </g></g></g>
 <g transform="translate(266,297)" id="p12"><g class="scale"><g class="rot">
+    <circle r="34" transform="translate(5,5)" cy="0" cx="0" class="shadow"/>
     <circle r="34" cy="0" cx="0" class="bg"/>
     <circle r="30" cy="0" cx="0" class="fg"/>
     <image transform="translate(-30,-30)" xlink:href="" width="60" height="60" x="0" y="0" id="i12"/>
     <text y="14" id="t12"></text>
 </g></g></g>
 <g transform="translate(333,263)" id="p13"><g class="scale"><g class="rot">
+    <circle r="34" transform="translate(5,5)" cy="0" cx="0" class="shadow"/>
     <circle r="34" cy="0" cx="0" class="bg"/>
     <circle r="30" cy="0" cx="0" class="fg"/>
     <image transform="translate(-30,-30)" xlink:href="" width="60" height="60" x="0" y="0" id="i13"/>
@@ -192,78 +207,91 @@
 
 
 <g transform="translate(82,97)" id="p14"><g class="scale"><g class="rot">
+    <circle r="34" transform="translate(5,5)" cy="0" cx="0" class="shadow"/>
     <circle r="34" cy="0" cx="0" class="bg"/>
     <circle r="30" cy="0" cx="0" class="fg"/>
     <image transform="translate(-30,-30)" xlink:href="" width="60" height="60" x="0" y="0" id="i14"/>
     <text y="14" id="t14"></text>
 </g></g></g>
 <g transform="translate(151,66)" id="p15"><g class="scale"><g class="rot">
+    <circle r="34" transform="translate(5,5)" cy="0" cx="0" class="shadow"/>
     <circle r="34" cy="0" cx="0" class="bg"/>
     <circle r="30" cy="0" cx="0" class="fg"/>
     <image transform="translate(-30,-30)" xlink:href="" width="60" height="60" x="0" y="0" id="i15"/>
     <text y="14" id="t15"></text>
 </g></g></g>
 <g transform="translate(224,63)" id="p16"><g class="scale"><g class="rot">
+    <circle r="34" transform="translate(5,5)" cy="0" cx="0" class="shadow"/>
     <circle r="34" cy="0" cx="0" class="bg"/>
     <circle r="30" cy="0" cx="0" class="fg"/>
     <image transform="translate(-30,-30)" xlink:href="" width="60" height="60" x="0" y="0" id="i16"/>
     <text y="14" id="t16"></text>
 </g></g></g>
 <g transform="translate(285,107)" id="p17"><g class="scale"><g class="rot">
+    <circle r="34" transform="translate(5,5)" cy="0" cx="0" class="shadow"/>
     <circle r="34" cy="0" cx="0" class="bg"/>
     <circle r="30" cy="0" cx="0" class="fg"/>
     <image transform="translate(-30,-30)" xlink:href="" width="60" height="60" x="0" y="0" id="i17"/>
     <text y="14" id="t17"></text>
 </g></g></g>
 <g transform="translate(277,178)" id="p18"><g class="scale"><g class="rot">
+    <circle r="34" transform="translate(5,5)" cy="0" cx="0" class="shadow"/>
     <circle r="34" cy="0" cx="0" class="bg"/>
     <circle r="30" cy="0" cx="0" class="fg"/>
     <image transform="translate(-30,-30)" xlink:href="" width="60" height="60" x="0" y="0" id="i18"/>
     <text y="14" id="t18"></text>
 </g></g></g>
 <g transform="translate(207,203)" id="p19"><g class="scale"><g class="rot">
+    <circle r="34" transform="translate(5,5)" cy="0" cx="0" class="shadow"/>
     <circle r="34" cy="0" cx="0" class="bg"/>
     <circle r="30" cy="0" cx="0" class="fg"/>
     <image transform="translate(-30,-30)" xlink:href="" width="60" height="60" x="0" y="0" id="i19"/>
     <text y="14" id="t19"></text>
 </g></g></g>
 <g transform="translate(134,195)" id="p20"><g class="scale"><g class="rot">
+    <circle r="34" transform="translate(5,5)" cy="0" cx="0" class="shadow"/>
     <circle r="34" cy="0" cx="0" class="bg"/>
     <circle r="30" cy="0" cx="0" class="fg"/>
     <image transform="translate(-30,-30)" xlink:href="" width="60" height="60" x="0" y="0" id="i20"/>
     <text y="14" id="t20"></text>
 </g></g></g>
 <g transform="translate(72,231)" id="p21"><g class="scale"><g class="rot">
+    <circle r="34" transform="translate(5,5)" cy="0" cx="0" class="shadow"/>
     <circle r="34" cy="0" cx="0" class="bg"/>
     <circle r="30" cy="0" cx="0" class="fg"/>
     <image transform="translate(-30,-30)" xlink:href="" width="60" height="60" x="0" y="0" id="i21"/>
     <text y="14" id="t21"></text>
 </g></g></g>
 <g transform="translate(67,302)" id="p22"><g class="scale"><g class="rot">
+    <circle r="34" transform="translate(5,5)" cy="0" cx="0" class="shadow"/>
     <circle r="34" cy="0" cx="0" class="bg"/>
     <circle r="30" cy="0" cx="0" class="fg"/>
     <image transform="translate(-30,-30)" xlink:href="" width="60" height="60" x="0" y="0" id="i22"/>
     <text y="14" id="t22"></text>
 </g></g></g>
 <g transform="translate(130,342)" id="p23"><g class="scale"><g class="rot">
+    <circle r="34" transform="translate(5,5)" cy="0" cx="0" class="shadow"/>
     <circle r="34" cy="0" cx="0" class="bg"/>
     <circle r="30" cy="0" cx="0" class="fg"/>
     <image transform="translate(-30,-30)" xlink:href="" width="60" height="60" x="0" y="0" id="i23"/>
     <text y="14" id="t23"></text>
 </g></g></g>
 <g transform="translate(201,330)" id="p24"><g class="scale"><g class="rot">
+    <circle r="34" transform="translate(5,5)" cy="0" cx="0" class="shadow"/>
     <circle r="34" cy="0" cx="0" class="bg"/>
     <circle r="30" cy="0" cx="0" class="fg"/>
     <image transform="translate(-30,-30)" xlink:href="" width="60" height="60" x="0" y="0" id="i24"/>
     <text y="14" id="t24"></text>
 </g></g></g>
 <g transform="translate(266,297)" id="p25"><g class="scale"><g class="rot">
+    <circle r="34" transform="translate(5,5)" cy="0" cx="0" class="shadow"/>
     <circle r="34" cy="0" cx="0" class="bg"/>
     <circle r="30" cy="0" cx="0" class="fg"/>
     <image transform="translate(-30,-30)" xlink:href="" width="60" height="60" x="0" y="0" id="i25"/>
     <text y="14" id="t25"></text>
 </g></g></g>
 <g transform="translate(333,263)" id="p26"><g class="scale"><g class="rot">
+    <circle r="34" transform="translate(5,5)" cy="0" cx="0" class="shadow"/>
     <circle r="34" cy="0" cx="0" class="bg"/>
     <circle r="30" cy="0" cx="0" class="fg"/>
     <image transform="translate(-30,-30)" xlink:href="" width="60" height="60" x="0" y="0" id="i26"/>
