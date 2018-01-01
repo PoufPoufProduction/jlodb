@@ -156,11 +156,22 @@ if (!$error) {
             $json.='"diff":'.$row["Exercice_Difficulty"].',';
             $json.='"extend":'.$row["Exercice_Duration"].',';
             $json.='"variant":"'.$row["Exercice_Variant"].'",';
+            $json.='"base":"'.$row["Exercice_Base"].'",';
             $json.='"tag":"'.$row["Exercice_Tags"].'",';
             $json.='"reference":"'.$row["Exercice_Reference"].'",';
             
             if (array_key_exists("detail",$_GET)) {
-                $json.='"data":{'.$row["Exercice_Parameters"].'},';
+                
+                if ($row["Exercice_Base"]) {
+					$base = mysqli_query($link, "SELECT Exercice_Parameters FROM `".$_SESSION['prefix']."exercice` ".
+												"WHERE `Exercice_Id`='".$row["Exercice_Base"]."'");
+					if ($rowbase = mysqli_fetch_array($base)) {
+						$json.='"data":{'.$rowbase["Exercice_Parameters"].',"dataex":{'.$row["Exercice_Parameters"].'}},';
+					}
+				}
+				else { $json.='"data":{'.$row["Exercice_Parameters"].'},'; }
+				
+				
                 $json.='"ext":"'.$row["Activity_External"].'",';
                 if (!array_key_exists("nolocale",$_GET)) {
                     $json.='"locale":{"label":"'.$row["Activity_Title"].'",'.$row["Activity_Locale"].'},';

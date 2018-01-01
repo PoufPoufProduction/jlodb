@@ -23,7 +23,7 @@ function mysqli_query_array($link, &$sql, &$id, &$warnings, $delete) {
 
     $init = "INSERT INTO `".$_SESSION['prefix']."exercice` (`Exercice_Id`,`Exercice_Activity`,".
                 "`Exercice_Title`,`Exercice_Parameters`,`Exercice_Level`,`Exercice_Difficulty`,".
-                "`Exercice_Classification`,`Exercice_Duration`,`Exercice_Tags`,`Exercice_Variant`,".
+                "`Exercice_Classification`,`Exercice_Duration`,`Exercice_Tags`,`Exercice_Variant`,`Exercice_Base`,".
                 "`Exercice_Reference`,`Exercice_Source`,`Exercice_Nb`) VALUES ";
     if (!mysqli_query($link, $init.implode(',',$sql))) {
         for ($i=0; $i<count($sql); $i++) {
@@ -59,6 +59,7 @@ function insertIntoDB($link,$activity,$key,$file,$lang,&$warnings, &$tags, $dele
         $exerciceTime   = 60;
         $exerciceId     = "";
         $exerciceVar    = "";
+        $exerciceBase	= "";
         $exerciceTag    = "";
         $exerciceRef    = "";
         $exerciceSource = "";
@@ -78,6 +79,7 @@ function insertIntoDB($link,$activity,$key,$file,$lang,&$warnings, &$tags, $dele
                     if (strcmp($dcName,"dct_type")==0)                  { $exerciceDiff     = $dc; } else
                     if (strcmp($dcName,"dct_identifier")==0)            { $exerciceId       = $dc; } else
                     if (strcmp($dcName,"dct_alternative")==0)           { $exerciceVar      = $dc; } else
+                    if (strcmp($dcName,"dct_relation")==0)              { $exerciceBase     = $dc; } else
                     if (strcmp($dcName,"dct_isPartOf")==0)              { $exerciceRef      = $dc; } else
                     if (strcmp($dcName,"dct_source")==0)                { $exerciceSource   = $dc; } else
                     if (strcmp($dcName,"dct_coverage")==0 && strcmp($dc->attributes()->xml_lang, $lang)==0)
@@ -85,8 +87,10 @@ function insertIntoDB($link,$activity,$key,$file,$lang,&$warnings, &$tags, $dele
             }
             $exerciceId = exName($file, $key, $exerciceId,$warnings);
             if (strlen($exerciceId)) {
-                if (strlen($exerciceVar)) { $exerciceVar = exName($file, $key, $exerciceVar,$warnings); }
+                if (strlen($exerciceVar))  { $exerciceVar  = exName($file, $key, $exerciceVar,  $warnings); }
+                if (strlen($exerciceBase)) { $exerciceBase = exName($file, $key, $exerciceBase, $warnings); }
                 if ($exerciceVar == $exerciceId) { $exerciceVar =""; }
+                if ($exerciceBase== $exerciceId) { $exerciceBase=""; }
 
                 // FILL THE TABLE
                 $exerciceTitle = str_replace("'", "\'", $exerciceTitle);
@@ -95,7 +99,7 @@ function insertIntoDB($link,$activity,$key,$file,$lang,&$warnings, &$tags, $dele
                 array_push($sql, "('".
                     $exerciceId."','".$activity."','".$exerciceTitle."','".$exerciceDesc."',".
                     $exerciceLevel.",".$exerciceDiff.",'".$exerciceClass."',".$exerciceTime.",'".
-                    $exerciceTag."','".$exerciceVar."','".$exerciceRef."','".$exerciceSource."',0)");
+                    $exerciceTag."','".$exerciceVar."','".$exerciceBase."','".$exerciceRef."','".$exerciceSource."',0)");
                 array_push($id, "'".$exerciceId."'");
 
                 // HANDLE THE TAGS

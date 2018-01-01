@@ -113,6 +113,9 @@ jlodbmaze.prototype = {
         // RUN THE EXERCICE REGARDING THE ACTIVITY NAME AND ITS ARGUMENTS
         run         : function($this, _name, _args) {
             var settings = helpers.settings($this);
+            
+            // HANDLE BASE/RELATION
+            if (_args.dataex) { _args=$.extend(true, {}, _args, _args.dataex); _args.dataex=0; }
 
             // SAVE ARGS FOR RERUN
             settings.last = _name;

@@ -61,6 +61,7 @@ if (!$error) {
                             '`Exercice_Duration`        INT             NOT NULL, '.
                             '`Exercice_Tags`            VARCHAR( 128 ) , '.
                             '`Exercice_Variant`         VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_bin , '.
+                            '`Exercice_Base`            VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_bin , '.
                             '`Exercice_Reference`       VARCHAR( 64 ) , '.
                             '`Exercice_Source`          TEXT , '.
                             '`Exercice_Nb`              INT , '.
