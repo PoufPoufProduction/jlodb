@@ -3,1540 +3,1812 @@
          xmlns:dct="http://purl.org/dc/terms/">
 
 
+    <!-- EDITOR GRID -->
 
+    <!-- TEMPLATE GRID -->
     <rdf:Description>
-        <dct:identifier>c001</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [lamp].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"   0      000     000    00000     0       0       0      000   ","t":"       1  31   8  31   1           1   3   3   5   1   1   1   3","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:identifier>c000</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [lamp].</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"   0      000     000    00000     0       0       0      000   ","t":"       1  31   8  31   1           1   3   3   5   1   1   1   3","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross","onpaint":"function($this, _settings, _val) { for (var i=0;i<_val.length;i++) { $('#p'+i, settings.svg.root()).attr('class','f'+_val[i]); } }","txt":{"tfinal":"..."}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
+        <dct:coverage xml:lang="fr-FR">debug</dct:coverage>
         <dct:alternative>c001</dct:alternative>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
-
+    
+    <!-- GRIDS -->
     <rdf:Description>
-        <dct:identifier>c002</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [dollar].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"   0     00000   0 0     00000     0 0   00000     0            ","t":"      31 111   7 111  13           1   5  11   5  11   5   1    ","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:identifier>c001</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [lamp].</dct:title>
+        <dct:description><![CDATA["result":"   0      000     000    00000     0       0       0      000   ","t":"       1  31   8  31   1           1   3   3   5   1   1   1   3"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Une lampe"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
+        <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>c002</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [dollar].</dct:title>
+        <dct:description><![CDATA["result":"   0     00000   0 0     00000     0 0   00000     0            ","t":"      31 111   7 111  13           1   5  11   5  11   5   1    "]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un dollar"}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>game</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c003</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [plunger].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"   0       0       0       0       0       0      000    00000  ","t":"       1   2   8   2   1           1   1   1   1   1   1   3   5","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [plunger].</dct:title>
+        <dct:description><![CDATA["result":"   0       0       0       0       0       0      000    00000  ","t":"       1   2   8   2   1           1   1   1   1   1   1   3   5"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un piston"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c004</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [letter].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"        000000000      0000  0000  00  00      000000000        ","t":"   6 111 111 111 111 111 111   6       8  11  33 121  11   8    ","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [letter].</dct:title>
+        <dct:description><![CDATA["result":"        000000000      0000  0000  00  00      000000000        ","t":"   6 111 111 111 111 111 111   6       8  11  33 121  11   8    "]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Une lettre"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c005</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [heart].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":" 00 00  0 00000 0000000 0000 00  00 00    000      0            ","t":"   3  13   6  32  32   5   3      22  15   7  42  22   3   1    ","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [heart].</dct:title>
+        <dct:description><![CDATA["result":" 00 00  0 00000 0000000 0000 00  00 00    000      0            ","t":"   3  13   6  32  32   5   3      22  15   7  42  22   3   1    "]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un coeur"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c006</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [wine glass].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":" 00000   0   0   00000    000      0       0      0 0    00000  ","t":"      31 122 141 122  31           5  11   5   3   1   1  11   5","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [wine glass].</dct:title>
+        <dct:description><![CDATA["result":" 00000   0   0   00000    000      0       0      0 0    00000  ","t":"      31 122 141 122  31           5  11   5   3   1   1  11   5"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un verre de vin"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c007</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [bowling ball].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"  0000   000000 000 0 0000000000000000000000 000 000000   0000  ","t":"   4   6   8  25  52  25   6   4   4   6 312   8   8  43   6   4","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [bowling ball].</dct:title>
+        <dct:description><![CDATA["result":"  0000   000000 000 0 0000000000000000000000 000 000000   0000  ","t":"   4   6   8  25  52  25   6   4   4   6 312   8   8  43   6   4"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Une boule de bowling"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c008</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [rake].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"   0       0       0       0      000    0 0 0  0000000 0 0 0 0 ","t":"   2   2  12   7  12   2   2       1   1   1   1   3 111   71111","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [rake].</dct:title>
+        <dct:description><![CDATA["result":"   0       0       0       0      000    0 0 0  0000000 0 0 0 0 ","t":"   2   2  12   7  12   2   2       1   1   1   1   3 111   71111"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un rateau"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c009</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [pill].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"         00000  0  0  0 0  0  0 0000000  00000                  ","t":"   3  12  12   5  12  12   3           5 111 111   7   5        ","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [pill].</dct:title>
+        <dct:description><![CDATA["result":"         00000  0  0  0 0  0  0 0000000  00000                  ","t":"   3  12  12   5  12  12   3           5 111 111   7   5        "]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Une pilule"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c010</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [outlet].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":" 00000  0     0 0 0 0 0 0 0 0 0 0     0 0  0  0 0     0  00000  ","t":"   6  11 121 111 121  11   6       5  1111111111  11 111  11   5","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [outlet].</dct:title>
+        <dct:description><![CDATA["result":" 00000  0     0 0 0 0 0 0 0 0 0 0     0 0  0  0 0     0  00000  ","t":"   6  11 121 111 121  11   6       5  1111111111  11 111  11   5"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Une sortie"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c011</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [piano].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"00000000000000000 0 0  00 0 0  00 0 0  0                00000000","t":"  51  21  51  21  51  21  21  51   8   8111111111111           8","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [piano].</dct:title>
+        <dct:description><![CDATA["result":"00000000000000000 0 0  00 0 0  00 0 0  0                00000000","t":"  51  21  51  21  51  21  21  51   8   8111111111111           8"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un piano"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c012</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [pi].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":" 0000000000000000 0 00    0 00   00 00   00 00   00 00   00  00 ","t":"   2  24   8   2   7   8  21   2   7   8 112  12  22  22  22  22","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [pi].</dct:title>
+        <dct:description><![CDATA["result":" 0000000000000000 0 00    0 00   00 00   00 00   00 00   00  00 ","t":"   2  24   8   2   7   8  21   2   7   8 112  12  22  22  22  22"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"3.14"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c013</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [snowman].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"000  00000    00000  00000    0000    000      00      000    00","t":"   8  51  11          11  51   8  33  22  33  22  22  11  11  22","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [snowman].</dct:title>
+        <dct:description><![CDATA["result":"000  00000    00000  00000    0000    000      00      000    00","t":"   8  51  11          11  51   8  33  22  33  22  22  11  11  22"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un bonhomme de neige"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c014</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [microscope].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"  0       000     0 00    0  00      00  000 00   00 00 00000000","t":"   1  11  43  13  21   6   5   1   1   3  12  12   2  32  22   8","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [microscope].</dct:title>
+        <dct:description><![CDATA["result":"  0       000     0 00    0  00      00  000 00   00 00 00000000","t":"   1  11  43  13  21   6   5   1   1   3  12  12   2  32  22   8"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un microscope"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c015</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [giraffe].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"     0       00      0       0    0000   0 000     0 0     0 0  ","t":"       1   1   4   2   8   1       1   2   1   1   4  13  11  11","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [giraffe].</dct:title>
+        <dct:description><![CDATA["result":"     0       00      0       0    0000   0 000     0 0     0 0  ","t":"       1   1   4   2   8   1       1   2   1   1   4  13  11  11"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Une giraffe"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c016</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [rattle].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"  000    00000   0   0    000      0      000     0 0     000   ","t":"       2 213 231 213   2           3   5  11   3   1   3  11   3","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [rattle].</dct:title>
+        <dct:description><![CDATA["result":"  000    00000   0   0    000      0      000     0 0     000   ","t":"       2 213 231 213   2           3   5  11   3   1   3  11   3"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un hochet"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c017</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [boot].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"           00000    000     000    0000  000000  000 00         ","t":"       2   2  13   5   6   6   1       5   3   3   4   6  32    ","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [boot].</dct:title>
+        <dct:description><![CDATA["result":"           00000    000     000    0000  000000  000 00         ","t":"       2   2  13   5   6   6   1       5   3   3   4   6  32    "]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Une botte"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c018</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [cursor].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":" 0       00      000     0000    00000   0 0        0       0   ","t":"       6   4   4  22   1           1   2   3   4   5  11   1   1","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [cursor].</dct:title>
+        <dct:description><![CDATA["result":" 0       00      000     0000    00000   0 0        0       0   ","t":"       6   4   4  22   1           1   2   3   4   5  11   1   1"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un curseur"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c019</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [spanner].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"         00     0000      000000000000 0 00  000                ","t":"  11  22   5   3   2   3  11   3       2   4   6  61  23        ","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [spanner].</dct:title>
+        <dct:description><![CDATA["result":"         00     0000      000000000000 0 00  000                ","t":"  11  22   5   3   2   3  11   3       2   4   6  61  23        "]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Une clé"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c020</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [car].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"                   000    0 000 0000000000000000 00  00         ","t":"   2   3   4  12   4   5   4   2           3  13   8   8  22    ","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [car].</dct:title>
+        <dct:description><![CDATA["result":"                   000    0 000 0000000000000000 00  00         ","t":"   2   3   4  12   4   5   4   2           3  13   8   8  22    "]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Une voiture"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c021</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [lipstick].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"    0      00      00     0000    0  0    0  0    0  0    0000  ","t":"           5  31  41   5           1   2   2   4  11  11  11   4","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [lipstick].</dct:title>
+        <dct:description><![CDATA["result":"    0      00      00     0000    0  0    0  0    0  0    0000  ","t":"           5  31  41   5           1   2   2   4  11  11  11   4"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un rouge à lèvres"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c022</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [trophy].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"  0000  000000000 0000 00 0000 0 000000    00     0000   000000 ","t":"   3 111  52   8   8  52 111   3   4   8 141 141   6   2   4   6","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [trophy].</dct:title>
+        <dct:description><![CDATA["result":"  0000  000000000 0000 00 0000 0 000000    00     0000   000000 ","t":"   3 111  52   8   8  52 111   3   4   8 141 141   6   2   4   6"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un trophée"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c023</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [blender].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"  0000    000000  0  0 0  0  0 0  0  000  0000   000000  000000 ","t":"       2   8  23  23   8 112   4   4   6 111 111  13   4   6   6","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [blender].</dct:title>
+        <dct:description><![CDATA["result":"  0000    000000  0  0 0  0  0 0  0  000  0000   000000  000000 ","t":"       2   8  23  23   8 112   4   4   6 111 111  13   4   6   6"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un mixeur"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c024</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [pogo stick].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"         00000     0       0       0      000      0       0    ","t":"       1  11   7  11   1               5   1   1   1   3   1   1","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [pogo stick].</dct:title>
+        <dct:description><![CDATA["result":"         00000     0       0       0      000      0       0    ","t":"       1  11   7  11   1               5   1   1   1   3   1   1"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un baton"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c025</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [mushroom].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"  000    00000  0000000 0000000   0 0     0 0     0 0     000   ","t":"   2   3   8  41   8   3   2       3   5   7   7  11  11  11   3","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [mushroom].</dct:title>
+        <dct:description><![CDATA["result":"  000    00000  0000000 0000000   0 0     0 0     0 0     000   ","t":"   2   3   8  41   8   3   2       3   5   7   7  11  11  11   3"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un champignon"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c026</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [toolbox].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"  0000    0  0  000000000      0000000000  00  00      000000000","t":"   6 111 31111211121 311 111   6   4  11   8  11   8 121  11   8","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [toolbox].</dct:title>
+        <dct:description><![CDATA["result":"  0000    0  0  000000000      0000000000  00  00      000000000","t":"   6 111 31111211121 311 111   6   4  11   8  11   8 121  11   8"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Une boîte à outils"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c027</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [cane].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"  000    00000   00 00      00      00      00      00      00  ","t":"       2   3   2   8   7           3   5  22   2   2   2   2   2","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [cane].</dct:title>
+        <dct:description><![CDATA["result":"  000    00000   00 00      00      00      00      00      00  ","t":"       2   3   2   8   7           3   5  22   2   2   2   2   2"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Une canne"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c028</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [sythe].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"   0000  000000 00   0       0       0       0       0       0  ","t":"   1   2   1   2   2   8   2       4   6  21   1   1   1   1   1","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [sythe].</dct:title>
+        <dct:description><![CDATA["result":"   0000  000000 00   0       0       0       0       0       0  ","t":"   1   2   1   2   2   8   2       4   6  21   1   1   1   1   1"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"..."}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c029</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [snake].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"  0000    0 00    00      000     0       00       00     00    ","t":"          61 123 211   2           4  12   2   3   1   2   2   2","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [snake].</dct:title>
+        <dct:description><![CDATA["result":"  0000    0 00    00      000     0       00       00     00    ","t":"          61 123 211   2           4  12   2   3   1   2   2   2"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un serpent"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c030</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [clipboard].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":" 00 00   0   0   00000   00000   00000   00000   00000   00000  ","t":"       8  16   6  16   8          22  11   5   5   5   5   5   5","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [clipboard].</dct:title>
+        <dct:description><![CDATA["result":" 00 00   0   0   00000   00000   00000   00000   00000   00000  ","t":"       8  16   6  16   8          22  11   5   5   5   5   5   5"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un presse-papiers"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c031</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [file cabinet].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":" 000000  0 00 0  0    0  000000  0 00 0  0    0  0    0  000000 ","t":"       8 111 221 221 111   8       6 121  11   6 121  11  11   6","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [file cabinet].</dct:title>
+        <dct:description><![CDATA["result":" 000000  0 00 0  0    0  000000  0 00 0  0    0  0    0  000000 ","t":"       8 111 221 221 111   8       6 121  11   6 121  11  11   6"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un meuble"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c032</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [stapler].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"         00000000000000000    0 0000000 00      00000000        ","t":"   5   6 211 211 211 211  41  21       7   8  21   7   2   8    ","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [stapler].</dct:title>
+        <dct:description><![CDATA["result":"         00000000000000000    0 0000000 00      00000000        ","t":"   5   6 211 211 211 211  41  21       7   8  21   7   2   8    "]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Une agrafeuse"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c033</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [stamp].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"   0      000     000      0       0     00000   00000          ","t":"       2  22   7  22   2           1   3   3   1   1   5   5    ","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [stamp].</dct:title>
+        <dct:description><![CDATA["result":"   0      000     000      0       0     00000   00000          ","t":"       2  22   7  22   2           1   3   3   1   1   5   5    "]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un timbre"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c034</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [hippopotamus].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"          0 000 0000000000000000   00000  00000   00 00         ","t":"   2   2  32   5   5   6   6   3      13   8   8   5   5  22    ","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [hippopotamus].</dct:title>
+        <dct:description><![CDATA["result":"          0 000 0000000000000000   00000  00000   00 00         ","t":"   2   2  32   5   5   6   6   3      13   8   8   5   5  22    "]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un hippopotame"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c035</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [telescope].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"             0000 0000 0000  0 00 0000 0     000                ","t":"   3   1   3  11  11   5  11   5       3 141 311 141   3        ","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [telescope].</dct:title>
+        <dct:description><![CDATA["result":"             0000 0000 0000  0 00 0000 0     000                ","t":"   3   1   3  11  11   5  11   5       3 141 311 141   3        "]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un téléscope"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c036</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [security camera].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"0 000000000 0000000000000 000000     0       0 0     000       0","t":"   4   2   4  12   4   7  41  43  16  34   8  16   1  11   3   1","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [security camera].</dct:title>
+        <dct:description><![CDATA["result":"0 000000000 0000000000000 000000     0       0 0     000       0","t":"   4   2   4  12   4   7  41  43  16  34   8  16   1  11   3   1"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Une caméra de sécurité"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c037</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [toilet].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"     000     00      00      00 0000000  00000     00     0000  ","t":"   1   2  21   4   4  61   5   1   3   2   2   2   7   5   2   4","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [toilet].</dct:title>
+        <dct:description><![CDATA["result":"     000     00      00      00 0000000  00000     00     0000  ","t":"   1   2  21   4   4  61   5   1   3   2   2   2   7   5   2   4"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Des WC"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c038</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [pawn].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"   00     0 00    0000     00    000000   0000   000000  000000 ","t":"      12  24  16   8  24  12       2  12   4   2   6   4   6   6","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [pawn].</dct:title>
+        <dct:description><![CDATA["result":"   00     0 00    0000     00    000000   0000   000000  000000 ","t":"      12  24  16   8  24  12       2  12   4   2   6   4   6   6"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un pion"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c039</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [waffle].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":" 00000  00   00 0 0 0 0 0     0 0 0 0 0 00   00  00000          ","t":"   5  221111  111111  22   5       5  221111  111111  22   5    ","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [waffle].</dct:title>
+        <dct:description><![CDATA["result":" 00000  00   00 0 0 0 0 0     0 0 0 0 0 00   00  00000          ","t":"   5  221111  111111  22   5       5  221111  111111  22   5    "]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Une gauffre"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c040</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [ink bottle].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"  0000    0000     00    000000 0 000000000000000000000000000000","t":"   4  13  25   8   8  25   5   4   4   4   2   6  16   8   8   8","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [ink bottle].</dct:title>
+        <dct:description><![CDATA["result":"  0000    0000     00    000000 0 000000000000000000000000000000","t":"   4  13  25   8   8  25   5   4   4   4   2   6  16   8   8   8"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Une bouteille d'encre"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c041</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [scales].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"   0     00000     0       0    00 0 00    0       0      000   ","t":"   1  11  11   8  11  11   1       1   5   1   1 212   1   1   3","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [scales].</dct:title>
+        <dct:description><![CDATA["result":"   0     00000     0       0    00 0 00    0       0      000   ","t":"   1  11  11   8  11  11   1       1   5   1   1 212   1   1   3"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Une balance"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c042</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [duffle bag].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"   00     0  0    0  0   000000 0 0  0 00 0  0 00 0  0 0 000000 ","t":"   3  11   7 111 111   7  11   3   2  11  11   6111111111111   6","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [duffle bag].</dct:title>
+        <dct:description><![CDATA["result":"   00     0  0    0  0   000000 0 0  0 00 0  0 00 0  0 0 000000 ","t":"   3  11   7 111 111   7  11   3   2  11  11   6111111111111   6"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un sac"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c043</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [game pad].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"   0       0    0000000000 000000   00 000 00 0000000000        ","t":"   5  22  11  42   5  31  22   5   1   1   8  25 121 222   8    ","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [game pad].</dct:title>
+        <dct:description><![CDATA["result":"   0       0    0000000000 000000   00 000 00 0000000000        ","t":"   5  22  11  42   5  31  22   5   1   1   8  25 121 222   8    "]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Une manette de jeu"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c044</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [snail].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"     0 0     000 000  0 0   0 0 0   0 0 0   0 0  000000 000000  ","t":"  31  12  12  12   5  22   6   2  11   3  31 111 111 111   6   6","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [snail].</dct:title>
+        <dct:description><![CDATA["result":"     0 0     000 000  0 0   0 0 0   0 0 0   0 0  000000 000000  ","t":"  31  12  12  12   5  22   6   2  11   3  31 111 111 111   6   6"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un escargot"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c045</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [cactus].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"   00      00    0 00    0 00 0  0000 0    0000    00      00   ","t":"       3   1   8   8   1   3       2   2  12 121  41   4   2   2","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [cactus].</dct:title>
+        <dct:description><![CDATA["result":"   00      00    0 00    0 00 0  0000 0    0000    00      00   ","t":"       3   1   8   8   1   3       2   2  12 121  41   4   2   2"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un cactus"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c046</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [palm tree].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"  00 00  0000000 0 00  0 0  00 0    0       0      00      00   ","t":"       3   2  32   7  21   2   3  22   7 121 121   1   1   2   2","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [palm tree].</dct:title>
+        <dct:description><![CDATA["result":"  00 00  0000000 0 00  0 0  00 0    0       0      00      00   ","t":"       3   2  32   7  21   2   3  22   7 121 121   1   1   2   2"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un palmier"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c047</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [notes].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"  000     0  000  000  0  0  000  0    0000    0000  000     000","t":"   2   2   7  11  11 112 112   7   3  13  31  13  11  31  33   3","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [notes].</dct:title>
+        <dct:description><![CDATA["result":"  000     0  000  000  0  0  000  0    0000    0000  000     000","t":"   2   2   7  11  11 112 112   7   3  13  31  13  11  31  33   3"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Des notes"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c048</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [owl].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":" 0   0   00000   00 00    0 0    00000   00 00   0   0    000   ","t":"      33  51 111  51  33          11   5  22  11   5  22  11   3","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [owl].</dct:title>
+        <dct:description><![CDATA["result":" 0   0   00000   00 00    0 0    00000   00 00   0   0    000   ","t":"      33  51 111  51  33          11   5  22  11   5  22  11   3"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Une chouette"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c049</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [fire helmet].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"          000    00000   0  00   0  00  00000000      00        ","t":"   1   4  21  21   5   4   2   2       3   5  12  12   8   2    ","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [fire helmet].</dct:title>
+        <dct:description><![CDATA["result":"          000    00000   0  00   0  00  00000000      00        ","t":"   1   4  21  21   5   4   2   2       3   5  12  12   8   2    "]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un casque"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c050</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [pliers].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":" 00 00   0   0   00000    000    00 00  00   00 00   00  00 00  ","t":"   2  34 131   2 131  34   2      22  11   5   3  22  22  22  22","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [pliers].</dct:title>
+        <dct:description><![CDATA["result":" 00 00   0   0   00000    000    00 00  00   00 00   00  00 00  ","t":"   2  34 131   2 131  34   2      22  11   5   3  22  22  22  22"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Une pince"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c051</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [hammer].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":" 0 0000  0000000 0 000 0    0      0 0     0 0     0 0     000  ","t":"       3   1  34  41  34   2   2  14   7 131   1  11  11  11   3","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [hammer].</dct:title>
+        <dct:description><![CDATA["result":" 0 0000  0000000 0 000 0    0      0 0     0 0     0 0     000  ","t":"       3   1  34  41  34   2   2  14   7 131   1  11  11  11   3"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un marteau"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c052</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [house].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"          0 0     0000    00000  0000000  00000   0 0 0   0 000 ","t":"       1   7   4   7  41   5   1      11   4   5   7   5 111  13","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [house].</dct:title>
+        <dct:description><![CDATA["result":"          0 0     0000    00000  0000000  00000   0 0 0   0 000 ","t":"       1   7   4   7  41   5   1      11   4   5   7   5 111  13"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Une maison"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c053</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [lightning].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"  0000    000    000     000000     00     00     00      0     ","t":"       2  42  42  23  12   1       4   3   3   6   2   2   2   1","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [lightning].</dct:title>
+        <dct:description><![CDATA["result":"  0000    000    000     000000     00     00     00      0     ","t":"       2  42  42  23  12   1       4   3   3   6   2   2   2   1"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un éclair"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c054</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [microphone].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"   00      00    0 00 0  0 00 0  00  00   0000     00     0000  ","t":"       3  21  43  43  21   3       2   2 121 121  22   4   2   4","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [microphone].</dct:title>
+        <dct:description><![CDATA["result":"   00      00    0 00 0  0 00 0  00  00   0000     00     0000  ","t":"       3  21  43  43  21   3       2   2 121 121  22   4   2   4"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un microphone"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c055</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [yo-yo].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"000000 00000  00000 0000000 000000 0  000 0    00 0    000 0  00","t":"   8  51  42 211  12  12  41   8  61  42  34  34 212 111 111 212","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [yo-yo].</dct:title>
+        <dct:description><![CDATA["result":"000000 00000  00000 0000000 000000 0  000 0    00 0    000 0  00","t":"   8  51  42 211  12  12  41   8  61  42  34  34 212 111 111 212"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un yoyo"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c056</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [doughnut].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"         000000 0      00  00  000    0000000000 000000         ","t":"   4  13  12 112 112  12  13   4       6  11 121  22   8   6    ","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [doughnut].</dct:title>
+        <dct:description><![CDATA["result":"         000000 0      00  00  000    0000000000 000000         ","t":"   4  13  12 112 112  12  13   4       6  11 121  22   8   6    "]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un donut"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c057</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [ladle].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"  00 00    0 0    0  0    00 0       0    0000    0  0     00   ","t":"         1222111  11   7   1      22  11  11  21   1   4  11   2","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [ladle].</dct:title>
+        <dct:description><![CDATA["result":"  00 00    0 0    0  0    00 0       0    0000    0  0     00   ","t":"         1222111  11   7   1      22  11  11  21   1   4  11   2"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Une louche"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c058</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [alarm clock].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"         00 00  0000000 00 0 00  0 000   0   0    000    00 00  ","t":"   2  51  22  31 212  51   2          22   7 212  13  11   3  22","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [alarm clock].</dct:title>
+        <dct:description><![CDATA["result":"         00 00  0000000 00 0 00  0 000   0   0    000    00 00  ","t":"   2  51  22  31 212  51   2          22   7 212  13  11   3  22"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un réveil"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c059</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [balloon].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"  000    0 000   00000   00000    000      0       00       0   ","t":"       3  13   7  52   3           3  13   5   5   3   1   2   1","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [balloon].</dct:title>
+        <dct:description><![CDATA["result":"  000    0 000   00000   00000    000      0       00       0   ","t":"       3  13   7  52   3           3  13   5   5   3   1   2   1"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un ballon"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c060</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [penny].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"00    000  00  0  000     0000     00     000   0 0000 000    00","t":"  22  11  22   6   6  11  11  22  22 121   3   4   2   3 141  22","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [penny].</dct:title>
+        <dct:description><![CDATA["result":"00    000  00  0  000     0000     00     000   0 0000 000    00","t":"  22  11  22   6   6  11  11  22  22 121   3   4   2   3 141  22"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un penny"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c061</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [paw print].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"          0 0   0 0 0 0 0     0   000    00000   00000   00 00  ","t":"   2   3  24   3  24   3   2          111111  11   3   5   5  22","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [paw print].</dct:title>
+        <dct:description><![CDATA["result":"          0 0   0 0 0 0 0     0   000    00000   00000   00 00  ","t":"   2   3  24   3  24   3   2          111111  11   3   5   5  22"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"..."}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c062</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [train].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"000      0  0000 0   0 0 00000 000   000 0000000 000000000 0  00","t":" 111   8 112  13 112   6  14   7   3  14 111  51  23   7   7 212","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [train].</dct:title>
+        <dct:description><![CDATA["result":"000      0  0000 0   0 0 00000 000   000 0000000 000000000 0  00","t":" 111   8 112  13 112   6  14   7   3  14 111  51  23   7   7 212"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un train"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c063</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [surf wave].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"    00     0000   000 0   00     000     0000   000000  00000000","t":"   2   4   6   7  33  22  21   1   2   4  31   2   3   4   6   8","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [surf wave].</dct:title>
+        <dct:description><![CDATA["result":"    00     0000   000 0   00     000     0000   000000  00000000","t":"   2   4   6   7  33  22  21   1   2   4  31   2   3   4   6   8"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Une vague"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c064</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [squirrel].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"     00   0 0000 00 00  000  00   00  00 0000 00   0000   000   ","t":"   1  21  51   4  23  41  24  12   2  14  22  32  22  42   4   3","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [squirrel].</dct:title>
+        <dct:description><![CDATA["result":"     00   0 0000 00 00  000  00   00  00 0000 00   0000   000   ","t":"   1  21  51   4  23  41  24  12   2  14  22  32  22  42   4   3"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un écureuil"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c065</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [smile].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":" 00000  00 0 00 00 0 00 0000000 0 000 0 00   00  00000          ","t":"   5  42 121  51 121  42   5       5 212 212   7 131  22   5    ","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [smile].</dct:title>
+        <dct:description><![CDATA["result":" 00000  00 0 00 00 0 00 0000000 0 000 0 00   00  00000          ","t":"   5  42 121  51 121  42   5       5 212 212   7 131  22   5    "]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un sourire"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c066</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [butterfly].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"  0 0   000 000 0  0  0 0  0  0 00 0 00  0 0 0   00 00          ","t":"   4  13  21   4  21  13   4      11  33 111 111 212 111  22    ","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [butterfly].</dct:title>
+        <dct:description><![CDATA["result":"  0 0   000 000 0  0  0 0  0  0 00 0 00  0 0 0   00 00          ","t":"   4  13  21   4  21  13   4      11  33 111 111 212 111  22    "]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un papillon"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c067</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [whistle].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"        0000000 00000 0000000 00   00000   00000    000         ","t":"   3   3   3   5   6  13   6   4       7  52  52   5   5   3    ","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [whistle].</dct:title>
+        <dct:description><![CDATA["result":"        0000000 00000 0000000 00   00000   00000    000         ","t":"   3   3   3   5   6  13   6   4       7  52  52   5   5   3    "]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un sifflet"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c068</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [price tag].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"00      0    0      000  0  00   0   00     000 0    0  00      ","t":"  22 121          21   6  12       2  11   3  12  12   3  11   2","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [price tag].</dct:title>
+        <dct:description><![CDATA["result":"00      0    0      000  0  00   0   00     000 0    0  00      ","t":"  22 121          21   6  12       2  11   3  12  12   3  11   2"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un prix"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c069</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [floppy disk].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"000000000 0  0 00 0  0 00 0000 00      00 0000 00 0 00 0 0000000","t":"   7  11  431111 113  43  11   8   811111111 141  11 1411121   7","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [floppy disk].</dct:title>
+        <dct:description><![CDATA["result":"000000000 0  0 00 0  0 00 0000 00      00 0000 00 0 00 0 0000000","t":"   7  11  431111 113  43  11   8   811111111 141  11 1411121   7"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Une disquette"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c070</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [oil can].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"        0000       0       0000   000  0 00000 0 00000 0 00000  ","t":"   1  13  14   7   5  13   1   3       4   1   4  31  51  51   5","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [oil can].</dct:title>
+        <dct:description><![CDATA["result":"        0000       0       0000   000  0 00000 0 00000 0 00000  ","t":"   1  13  14   7   5  13   1   3       4   1   4  31  51  51   5"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un barril"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c071</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [hamburger].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"         000000 0 0 0  00      000000000000000000      0 000000 ","t":"   5 121 221 121 221 121 121   5       61111  11   8   8  11   6","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [hamburger].</dct:title>
+        <dct:description><![CDATA["result":"         000000 0 0 0  00      000000000000000000      0 000000 ","t":"   5 121 221 121 221 121 121   5       61111  11   8   8  11   6"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un hamburger"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c072</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [faucet].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"  00000     0       0      000   00000000000000000 000  00      ","t":"   3   4  12  14   7  14  12   2   5   1   1   3   7   8  23   2","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [faucet].</dct:title>
+        <dct:description><![CDATA["result":"  00000     0       0      000   00000000000000000 000  00      ","t":"   3   4  12  14   7  14  12   2   5   1   1   3   7   8  23   2"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un robinet"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c073</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [broccoli].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"  00 00 0000000000000 00 0 0 00  00000    000      00      00   ","t":"   2   4  32   8  24  22   4   2  22   8  52 112   5   3   2   2","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [broccoli].</dct:title>
+        <dct:description><![CDATA["result":"  00 00 0000000000000 00 0 0 00  00000    000      00      00   ","t":"   2   4  32   8  24  22   4   2  22   8  52 112   5   3   2   2"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un broccoli"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c074</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [chip and dip].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"             000    0  0 0000 00000000000      0 00  00   0000  ","t":"   2  21  22  21  31 112 121   5       3  11  42   8  11  22   4","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [chip and dip].</dct:title>
+        <dct:description><![CDATA["result":"             000    0  0 0000 00000000000      0 00  00   0000  ","t":"   2  21  22  21  31 112 121   5       3  11  42   8  11  22   4"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Du guacamole"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c075</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [swan].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":" 00     0000       0      00     00  00000 0000 0000000  00000  ","t":"  12  24 222  33   3   4   3   1   2   4   1   2  23  24   7   5","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [swan].</dct:title>
+        <dct:description><![CDATA["result":" 00     0000       0      00     00  00000 0000 0000000  00000  ","t":"  12  24 222  33   3   4   3   1   2   4   1   2  23  24   7   5"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un cigne"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c076</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [sumo wrestler].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"   0      000    00 00  0     0 0 000 0  0 0 0  0  0  0 000 000 ","t":"  22 111 211  23 211 111  22       1   3  22  11 131 111 111  33","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [sumo wrestler].</dct:title>
+        <dct:description><![CDATA["result":"   0      000    00 00  0     0 0 000 0  0 0 0  0  0  0 000 000 ","t":"  22 111 211  23 211 111  22       1   3  22  11 131 111 111  33"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un sumotori"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c077</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [baby carriage].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":" 000     0 0    0  0    000000000000000   0000   00  00  00  00 ","t":"   3 222  15   6   3   5  22   1   3  11  11   8   7   4  22  22","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [baby carriage].</dct:title>
+        <dct:description><![CDATA["result":" 000     0 0    0  0    000000000000000   0000   00  00  00  00 ","t":"   3 222  15   6   3   5  22   1   3  11  11   8   7   4  22  22"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Une poucette"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c078</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [pruning shears].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"  00 00  00 00   00 00    000    00 00  00   00 00   00 00   00 ","t":"   3  24   5  11   4  34  13      22  22  22   3  22  22  22  22","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [pruning shears].</dct:title>
+        <dct:description><![CDATA["result":"  00 00  00 00   00 00    000    00 00  00   00 00   00 00   00 ","t":"   3  24   5  11   4  34  13      22  22  22   3  22  22  22  22"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Des cisailles"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c079</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [gas mask].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":" 00000  0000000 0  0  0 0  0  0  00000    000 00 0000000 0000000","t":"   3 212  24   8  24 212  33   3   5   7 111 111   5  32   7   7","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [gas mask].</dct:title>
+        <dct:description><![CDATA["result":" 00000  0000000 0  0  0 0  0  0  00000    000 00 0000000 0000000","t":"   3 212  24   8  24 212  33   3   5   7 111 111   5  32   7   7"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un masque à gaz"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c080</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [clamp].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":" 00000  00      00 000  00  0   00  0    00000      0     00000 ","t":"   4   6 1111111  161111   1       5   2  23  21  21   5   1   5","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [clamp].</dct:title>
+        <dct:description><![CDATA["result":" 00000  00      00 000  00  0   00  0    00000      0     00000 ","t":"   4   6 1111111  161111   1       5   2  23  21  21   5   1   5"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un coquillage"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c081</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [knight].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"   000    00000  000000  00 000    0000   0000   000000  000000 ","t":"      22  33  34   8   8  42       3   5   6  23   4   4   6   6","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [knight].</dct:title>
+        <dct:description><![CDATA["result":"   000    00000  000000  00 000    0000   0000   000000  000000 ","t":"      22  33  34   8   8  42       3   5   6  23   4   4   6   6"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un chevalier"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c082</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [stovetop].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":" 00     0000 00 0000 00  00          00  00 0000 00 0000     00 ","t":"   2  42  42   2   2  24  24   2   2  42  42   2   2  24  24   2","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [stovetop].</dct:title>
+        <dct:description><![CDATA["result":" 00     0000 00 0000 00  00          00  00 0000 00 0000     00 ","t":"   2  42  42   2   2  24  24   2   2  42  42   2   2  24  24   2"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Une cuisinière"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c083</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [lollipop].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"  000    0  00   0 000   000 0    000      0       0       0    ","t":"       3  12  16  31   3           3  12  13  31   3   1   1   1","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [lollipop].</dct:title>
+        <dct:description><![CDATA["result":"  000    0  00   0 000   000 0    000      0       0       0    ","t":"       3  12  16  31   3           3  12  13  31   3   1   1   1"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Une sucette"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c084</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [sombrero].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"           00     0  0    0  0  000000000      0 000000         ","t":"   2  11  31 111 111  31  11   2       2  11  11   8  11   6    ","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [sombrero].</dct:title>
+        <dct:description><![CDATA["result":"           00     0  0    0  0  000000000      0 000000         ","t":"   2  11  31 111 111  31  11   2       2  11  11   8  11   6    "]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un sombrero"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c085</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [tuba].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"000000   0000     00 00   0000 0 0000000  0000 0  000 00   0000 ","t":"   1  21   7   8  25 141 112   4   6   4  22  41   7  41  32   4","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [tuba].</dct:title>
+        <dct:description><![CDATA["result":"000000   0000     00 00   0000 0 0000000  0000 0  000 00   0000 ","t":"   1  21   7   8  25 141 112   4   6   4  22  41   7  41  32   4"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un tuba"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c086</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [medal].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":" 000000 00    00 00  00   0  0     00     0000    0000     00   ","t":"   1   3 122  14  14 122   3   1   6  22  22  11   2   4   4   2","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [medal].</dct:title>
+        <dct:description><![CDATA["result":" 000000 00    00 00  00   0  0     00     0000    0000     00   ","t":"   1   3 122  14  14 122   3   1   6  22  22  11   2   4   4   2"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Une médaille"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c087</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [two cents].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"  0     0000    0 0     0000  0   0 0000    0 0     0000      0 ","t":"   3  11   5  11   3  11   5  11   1   4  11  41  14  11   4   1","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [two cents].</dct:title>
+        <dct:description><![CDATA["result":"  0     0000    0 0     0000  0   0 0000    0 0     0000      0 ","t":"   3  11   5  11   3  11   5  11   1   4  11  41  14  11   4   1"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Deux cents américains"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c088</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [drop].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"    0      00     0 00    0 00   000000  0000 0   0  0     00   ","t":"       2   5 121  61  31   2       1   2  12  12   6  41  11   2","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [drop].</dct:title>
+        <dct:description><![CDATA["result":"    0      00     0 00    0 00   000000  0000 0   0  0     00   ","t":"       2   5 121  61  31   2       1   2  12  12   6  41  11   2"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Une goutte"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c089</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [baby].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"              00 000  00 0 00000 0 000    00 0  0000 00         ","t":"   1  31  12   5   2   4  31   3       2  32  15  13  21  42    ","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [baby].</dct:title>
+        <dct:description><![CDATA["result":"              00 000  00 0 00000 0 000    00 0  0000 00         ","t":"   1  31  12   5   2   4  31   3       2  32  15  13  21  42    "]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un bébé"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c090</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [scorpion].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"00      0        000      000000   00 0    0       00      0    ","t":"   2  11   2   6  21   1   2   1   2   1   3   6  21   1   2   1","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [scorpion].</dct:title>
+        <dct:description><![CDATA["result":"00      0        000      000000   00 0    0       00      0    ","t":"   2  11   2   6  21   1   2   1   2   1   3   6  21   1   2   1"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un scorpion"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c091</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [flower].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"  000    00 00   0 0 0   00 00    000       00       00       0 ","t":"       3  22 111  23  32   2       3  22 111  22   3   2   2   1","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [flower].</dct:title>
+        <dct:description><![CDATA["result":"  000    00 00   0 0 0   00 00    000       00       00       0 ","t":"       3  22 111  23  32   2       3  22 111  22   3   2   2   1"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Une fleur"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c092</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [tissue box].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":" 00 0    0 0 0    0  0    0 0    00000   0   0   0   0   00000  ","t":"      24 131 111 121  24          21 111  11  11   5  11  11   5","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [tissue box].</dct:title>
+        <dct:description><![CDATA["result":" 00 0    0 0 0    0  0    0 0    00000   0   0   0   0   00000  ","t":"      24 131 111 121  24          21 111  11  11   5  11  11   5"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Une boite"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c093</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [slingshot].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"        00  00  0 0 0 0 00 00  0 000 000  0   00  0       0     ","t":"   3  12  14   2   3  11  12   3      221111 221  33  12   1   1","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [slingshot].</dct:title>
+        <dct:description><![CDATA["result":"        00  00  0 0 0 0 00 00  0 000 000  0   00  0       0     ","t":"   3  12  14   2   3  11  12   3      221111 221  33  12   1   1"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un lance-pierres"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c094</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [cat].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":" 0 0     000     000      0   0   00 0    00 0    0000   0000   ","t":"      31   7  34   2   3   1      11   3   3  11  21  21   4   4","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [cat].</dct:title>
+        <dct:description><![CDATA["result":" 0 0     000     000      0   0   00 0    00 0    0000   0000   ","t":"      31   7  34   2   3   1      11   3   3  11  21  21   4   4"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un chat"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c095</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [tyrannosaur].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"000     0000      00    000000     0000   0 0000    00 0   000  ","t":"  21  21  41  41   5   5   2   2   3   4   2   6   4  14  21   3","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [tyrannosaur].</dct:title>
+        <dct:description><![CDATA["result":"000     0000      00    000000     0000   0 0000    00 0   000  ","t":"  21  21  41  41   5   5   2   2   3   4   2   6   4  14  21   3"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un tyrannosaure"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c096</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [banana].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"    00      00      0 0    0  0    0  0   0  00  00 00   0000   ","t":"       2   3  21  32  22   4       2   2  11  11  11  12  22   4","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [banana].</dct:title>
+        <dct:description><![CDATA["result":"    00      00      0 0    0  0    0  0   0  00  00 00   0000   ","t":"       2   3  21  32  22   4       2   2  11  11  11  12  22   4"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Une banane"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c097</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [bubble].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"  0000   00  00 00 0  000 0    00      000    00 00  00   0000  ","t":"   4  22 212 111  11  22  22   4   4  22 212 111  11  22  22   4","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [bubble].</dct:title>
+        <dct:description><![CDATA["result":"  0000   00  00 00 0  000 0    00      000    00 00  00   0000  ","t":"   4  22 212 111  11  22  22   4   4  22 212 111  11  22  22   4"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Une bulle"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c098</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [chocolate kiss].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":" 000    00 0       0      0 0    0  00  00   00 0    00  00000  ","t":"  12 221 111  31  21   4   2       3  21   1  11  12  22  12   5","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [chocolate kiss].</dct:title>
+        <dct:description><![CDATA["result":" 000    00 0       0      0 0    0  00  00   00 0    00  00000  ","t":"  12 221 111  31  21   4   2       3  21   1  11  12  22  12   5"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"..."}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c099</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [chair].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"   00    0000    00 0    0 00000 0000000 0 0 0 0 0 0 0 0 0   0  ","t":"       7  21  24   5   5   2   4   2   4  21  15   711111111  11","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [chair].</dct:title>
+        <dct:description><![CDATA["result":"   00    0000    00 0    0 00000 0000000 0 0 0 0 0 0 0 0 0   0  ","t":"       7  21  24   5   5   2   4   2   4  21  15   711111111  11"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Une chaise"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c100</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [fist].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":" 00000  0 0 0 0 0 0 0 0 0 000000000    00  000 00      0 0    0 ","t":"   6 111   5 111  41 111  31   4   511111111  16  31 131  11  11","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [fist].</dct:title>
+        <dct:description><![CDATA["result":" 00000  0 0 0 0 0 0 0 0 0 000000000    00  000 00      0 0    0 ","t":"   6 111   5 111  41 111  31   4   511111111  16  31 131  11  11"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un poing"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c101</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [french horn].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"      0    00 0   00 00   0   0 0 00 00 00 000  00000   00      ","t":"   4   3  31  23  12  12   5       1  21  22  11 122  23   5   2","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [french horn].</dct:title>
+        <dct:description><![CDATA["result":"      0    00 0   00 00   0   0 0 00 00 00 000  00000   00      ","t":"   4   3  31  23  12  12   5       1  21  22  11 122  23   5   2"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"..."}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c102</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [horse].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"  0 0     000    00 00   00  0  00    0 000    000 00  00  0 000","t":"   4   5  41  12  31  21  11   3  11   3  22  21  21  31 221 113","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [horse].</dct:title>
+        <dct:description><![CDATA["result":"  0 0     000    00 00   00  0  00    0 000    000 00  00  0 000","t":"   4   5  41  12  31  21  11   3  11   3  22  21  21  31 221 113"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un cheval"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c103</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [shopping cart].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"00       0000000 0 0 0 0 0 0 0 0 000000  0       0000000 00   00","t":"   1   8 112  41 111  41 112  32   2   711111111   6   1   7  22","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [shopping cart].</dct:title>
+        <dct:description><![CDATA["result":"00       0000000 0 0 0 0 0 0 0 0 000000  0       0000000 00   00","t":"   1   8 112  41 111  41 112  32   2   711111111   6   1   7  22"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un caddy"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c104</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [steering wheel].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"  0000   00  00 00    000  00  00000000000    00 00  00   0000  ","t":"   4  23 212 121 121 212  23   4   4  22  22 121   8  22  22   4","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [steering wheel].</dct:title>
+        <dct:description><![CDATA["result":"  0000   00  00 00    000  00  00000000000    00 00  00   0000  ","t":"   4  23 212 121 121 212  23   4   4  22  22 121   8  22  22   4"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un volant"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c105</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [enyo].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"  0000   0 00 0  00  00  0 0000  00  00  0 00 0   0  0     00   ","t":"       5111121112111 131   5       4 121  22  14  22 121  11   2","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [enyo].</dct:title>
+        <dct:description><![CDATA["result":"  0000   0 00 0  00  00  0 0000  00  00  0 00 0   0  0     00   ","t":"       5111121112111 131   5       4 121  22  14  22 121  11   2"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"..."}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c106</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [camel].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"         00 0 0 000 000   000000  000000    0  0   00 00        ","t":"   1   2   4  21   6   3  41   4     211  33   6   6  11  22    ","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [camel].</dct:title>
+        <dct:description><![CDATA["result":"         00 0 0 000 000   000000  000000    0  0   00 00        ","t":"   1   2   4  21   6   3  41   4     211  33   6   6  11  22    "]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un chameau"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c107</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [rooster].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"00  00   00  00 000  000  0 00   00000    000      0       00   ","t":"  11  31   5   4 131   5   2   1  22  22  33  12   5   3   1   2","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [rooster].</dct:title>
+        <dct:description><![CDATA["result":"00  00   00  00 000  000  0 00   00000    000      0       00   ","t":"  11  31   5   4 131   5   2   1  22  22  33  12   5   3   1   2"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un coq"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c108</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [moth].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"   000     0  0   00  0000000  00  000 00   0000 00  0    0000  ","t":"   3  11  22  51 131  14  21   4   3  11  22  51 131  14  21   4","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [moth].</dct:title>
+        <dct:description><![CDATA["result":"   000     0  0   00  0000000  00  000 00   0000 00  0    0000  ","t":"   3  11  22  51 131  14  21   4   3  11  22  51 131  14  21   4"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un papillon de nuit"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c109</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [cherries].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"  0000     00      00     0 0    00 00  0  0  0 0  0  0  00 00  ","t":"   2  11 121  32  51 111   2       4   2   2  11  22 111 111  22","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [cherries].</dct:title>
+        <dct:description><![CDATA["result":"  0000     00      00     0 0    00 00  0  0  0 0  0  0  00 00  ","t":"   2  11 121  32  51 111   2       4   2   2  11  22 111 111  22"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Des cerises"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c110</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [submarine].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"   00       0   0000 000000   00         0 0 0  0      000000000","t":"  22 211  211111  21 111  21  22   2   1  43  32     111  11   8","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [submarine].</dct:title>
+        <dct:description><![CDATA["result":"   00       0   0000 000000   00         0 0 0  0      000000000","t":"  22 211  211111  21 111  21  22   2   1  43  32     111  11   8"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un sous-marin"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c111</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [saw blade].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":" 00  0    0000 000000000 00  00  00  00 000000000 0000    0  00 ","t":"  12  14   8  22  22   8  41  21  21  41   8  22  22   8  14  12","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [saw blade].</dct:title>
+        <dct:description><![CDATA["result":" 00  0    0000 000000000 00  00  00  00 000000000 0000    0  00 ","t":"  12  14   8  22  22   8  41  21  21  41   8  22  22   8  14  12"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Une épée"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c112</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [torch].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"   00   000 000 0 0 0 0 0     0  00000    000      0       0    ","t":"   3  11  22  14  32  11   3       2  331111  11   5   3   1   1","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [torch].</dct:title>
+        <dct:description><![CDATA["result":"   00   000 000 0 0 0 0 0     0  00000    000      0       0    ","t":"   3  11  22  14  32  11   3       2  331111  11   5   3   1   1"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Une torche"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c113</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [viking ship].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"    0     0000     0  0    0  0   0000  0   0  000000000 000000 ","t":"   2   2 112  42  24 112  22   2   1   4  11  11   4 111   8   6","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [viking ship].</dct:title>
+        <dct:description><![CDATA["result":"    0     0000     0  0    0  0   0000  0   0  000000000 000000 ","t":"   2   2 112  42  24 112  22   2   1   4  11  11   4 111   8   6"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un drakar viking"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c114</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [sheep].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"  00    000   00000000 0  0    0  0   0   00000    0  0    0  0 ","t":"   2   2   6 113  11  11  14   3   2  32  61  11  11   5  11  11","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [sheep].</dct:title>
+        <dct:description><![CDATA["result":"  00    000   00000000 0  0    0  0   0   00000    0  0    0  0 ","t":"   2   2   6 113  11  11  14   3   2  32  61  11  11   5  11  11"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un mouton"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c115</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [binoculars].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"         00 00   00000  000 000 0000000 000 000 000 000         ","t":"   4   6   6  11   6   6   4          22   5  33   7  33  33    ","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [binoculars].</dct:title>
+        <dct:description><![CDATA["result":"         00 00   00000  000 000 0000000 000 000 000 000         ","t":"   4   6   6  11   6   6   4          22   5  33   7  33  33    "]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Des jumelles"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c116</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [watering can].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"    0      0 0     0 0  0  0000 00 000 00 0000 0   0000    000  ","t":"   3   1   1   7  15   7  11   2   1  11  11  14 231 141   4   3","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [watering can].</dct:title>
+        <dct:description><![CDATA["result":"    0      0 0     0 0  0  0000 00 000 00 0000 0   0000    000  ","t":"   3   1   1   7  15   7  11   2   1  11  11  14 231 141   4   3"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"..."}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c117</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [ladybug].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"  000    00000  0 000 0 0  0  0 00 0 00 0  0  0  0 0 0    000   ","t":"   4 111  31   8  31 111   4       3   5 131 111 212 111 111   3","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [ladybug].</dct:title>
+        <dct:description><![CDATA["result":"  000    00000  0 000 0 0  0  0 00 0 00 0  0  0  0 0 0    000   ","t":"   4 111  31   8  31 111   4       3   5 131 111 212 111 111   3"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Une coccinelle"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c118</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [football].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"    0000  000000 00  000 0  000000 0000 0000000 000000  0000    ","t":"   4   6  23  14  24   7   6   4   4   6  23  14  24   7   6   4","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [football].</dct:title>
+        <dct:description><![CDATA["result":"    0000  000000 00  000 0  000000 0000 0000000 000000  0000    ","t":"   4   6  23  14  24   7   6   4   4   6  23  14  24   7   6   4"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un ballon de football"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c119</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [compass].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"  0000   0    0 0  00  00   0  000    000 000000 0  000   0000  ","t":"   4 111 1111111 123  13  13   4   4  11 121 111  22  16  13   4","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [compass].</dct:title>
+        <dct:description><![CDATA["result":"  0000   0    0 0  00  00   0  000    000 000000 0  000   0000  ","t":"   4 111 1111111 123  13  13   4   4  11 121 111  22  16  13   4"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Une boussole"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c120</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [soccer ball].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"  0000   0 00 0 00    000  00  00  00  0000  000 00  00   0000  ","t":"   4  22  13 221 221  13  22   4   4 121  22 121 121  33  22   4","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [soccer ball].</dct:title>
+        <dct:description><![CDATA["result":"  0000   0 00 0 00    000  00  00  00  0000  000 00  00   0000  ","t":"   4  22  13 221 221  13  22   4   4 121  22 121 121  33  22   4"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un ballon de football"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c121</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [football helmet].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"  00000  000  00   00000    0000000000000   00 00  00000000 00  ","t":"   4 111 211 311  16  16  51   6   5  32   5   4   8 121  15  32","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [football helmet].</dct:title>
+        <dct:description><![CDATA["result":"  00000  000  00   00000    0000000000000   00 00  00000000 00  ","t":"   4 111 211 311  16  16  51   6   5  32   5   4   8 121  15  32"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un casque"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c122</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [perfume].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":" 00 00  0000000  00 00     0  0   0    0  0    0   0  0    0000 ","t":"   1   3  32 112  31  31 112   2  22   7  22  11  11  11  11   4","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [perfume].</dct:title>
+        <dct:description><![CDATA["result":" 00 00  0000000  00 00     0  0   0    0  0    0   0  0    0000 ","t":"   1   3  32 112  31  31 112   2  22   7  22  11  11  11  11   4"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Du parfum"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c123</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [flying bird].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"0000      00 00    00000   000  00000000 00   00  0    0       0","t":"  11  12  23   5   3   4  22  14   4  22   5   3   8  22  11   1","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [flying bird].</dct:title>
+        <dct:description><![CDATA["result":"0000      00 00    00000   000  00000000 00   00  0    0       0","t":"  11  12  23   5   3   4  22  14   4  22   5   3   8  22  11   1"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un oiseau"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c124</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [ice auger].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"  000      0     000     0       000       00     00       0    ","t":"       31111  34  11               3   1   3   1   3   2   2   1","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [ice auger].</dct:title>
+        <dct:description><![CDATA["result":"  000      0     000     0       000       00     00       0    ","t":"       31111  34  11               3   1   3   1   3   2   2   1"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"..."}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c125</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [apatosaur].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"      00      0       0       0    00 0   00000  00000  00 0 0  ","t":"   1   2   2   4   3   3   6   1   2   1   1   1  21   5   5 211","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [apatosaur].</dct:title>
+        <dct:description><![CDATA["result":"      00      0       0       0    00 0   00000  00000  00 0 0  ","t":"   1   2   2   4   3   3   6   1   2   1   1   1  21   5   5 211"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un apatosaure"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c126</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [acorn].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"  000 00 0  00   00  00 0  0  0 0 000 0 000000  0000            ","t":"   4  22 113  14  22  21  13   1  32  12  22 111 131   6   4    ","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [acorn].</dct:title>
+        <dct:description><![CDATA["result":"  000 00 0  00   00  00 0  0  0 0 000 0 000000  0000            ","t":"   4  22 113  14  22  21  13   1  32  12  22 111 131   6   4    "]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"..."}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c127</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [rocking horse].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"  0      00     0000      00000   00000   0  0  000  000 000000 ","t":"  11  22   8  31  21   5  22   1   1   2   4   5   5  11  33   6","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [rocking horse].</dct:title>
+        <dct:description><![CDATA["result":"  0      00     0000      00000   00000   0  0  000  000 000000 ","t":"  11  22   8  31  21   5  22   1   1   2   4   5   5  11  33   6"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un cheval à bascule"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>c128</dct:identifier>
-        <dct:title xml:lang="fr-FR">Completer la grille de Picross 8x8 et retrouver le dessin cache [megaphone].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","url":"res/img/desktop/paint/picross8x8.svg","result":"0       00      0 00000 0   00000 00000000   00 0    00     000 ","t":"   7  11  11  11  31   6   6   2   1   2  15  14  16  22  12   3","data":[{"notover":true},{"notover":true,"skip":true}],"selected":0,"class":"picross"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compléter la grille de Picross 8x8 et retrouver le dessin caché [megaphone].</dct:title>
+        <dct:description><![CDATA["result":"0       00      0 00000 0   00000 00000000   00 0    00     000 ","t":"   7  11  11  11  31   6   6   2   1   2  15  14  16  22  12   3"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"txt":{"tfinal":"Un mégaphone"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>game</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c001</dct:alternative>
+		<dct:relation>c000</dct:relation>
         <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/picross8x8.svg</dct:source>
     </rdf:Description>
 

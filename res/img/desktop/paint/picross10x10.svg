@@ -14,8 +14,15 @@
         svg#picross .bg3        { fill:#77CCFF; }
         svg#picross .bg4        { fill:#AAEEFF; }
         svg#picross .bg5        { stroke:#5599BB; stroke-width:2px; }
+        
+        svg#picross .f          { display:none; }
+        svg#picross .f0         { fill:#5599BB; }
 
         svg#picross text    { font-size:30px;text-anchor:middle;fill:white;font-weight:bold; }
+        
+        svg#picross #result         { display:none; }
+        .good svg#picross #result   { display:inline; }
+        svg#picross #result text    { text-anchor:start; }
 
     </style>
 </defs>
@@ -70,6 +77,128 @@
     <rect x="-1" y="-1" width="450" height="450" class="border"/>
     <rect x="-1" y="-1" width="450" height="450" class="bg3"/>
     <rect x="0" y="0" width="149" height="149" class="bg4"/>
+    
+    <g transform="translate(4,4)">
+        <rect x="0" y="0" width="14.1" height="14.1" class="f" id="p0"/>
+        <rect x="14" y="0" width="14.1" height="14.1" class="f" id="p1"/>
+        <rect x="28" y="0" width="14.1" height="14.1" class="f" id="p2"/>
+        <rect x="42" y="0" width="14.1" height="14.1" class="f" id="p3"/>
+        <rect x="56" y="0" width="14.1" height="14.1" class="f" id="p4"/>
+        <rect x="70" y="0" width="14.1" height="14.1" class="f" id="p5"/>
+        <rect x="84" y="0" width="14.1" height="14.1" class="f" id="p6"/>
+        <rect x="98" y="0" width="14.1" height="14.1" class="f" id="p7"/>
+        <rect x="112" y="0" width="14.1" height="14.1" class="f" id="p8"/>
+        <rect x="126" y="0" width="14.1" height="14.1" class="f" id="p9"/>
+    </g>
+    <g transform="translate(4,18)">
+        <rect x="0" y="0" width="14.1" height="14.1" class="f" id="p10"/>
+        <rect x="14" y="0" width="14.1" height="14.1" class="f" id="p11"/>
+        <rect x="28" y="0" width="14.1" height="14.1" class="f" id="p12"/>
+        <rect x="42" y="0" width="14.1" height="14.1" class="f" id="p13"/>
+        <rect x="56" y="0" width="14.1" height="14.1" class="f" id="p14"/>
+        <rect x="70" y="0" width="14.1" height="14.1" class="f" id="p15"/>
+        <rect x="84" y="0" width="14.1" height="14.1" class="f" id="p16"/>
+        <rect x="98" y="0" width="14.1" height="14.1" class="f" id="p17"/>
+        <rect x="112" y="0" width="14.1" height="14.1" class="f" id="p18"/>
+        <rect x="126" y="0" width="14.1" height="14.1" class="f" id="p19"/>
+    </g>
+    <g transform="translate(4,32)">
+        <rect x="0" y="0" width="14.1" height="14.1" class="f" id="p20"/>
+        <rect x="14" y="0" width="14.1" height="14.1" class="f" id="p21"/>
+        <rect x="28" y="0" width="14.1" height="14.1" class="f" id="p22"/>
+        <rect x="42" y="0" width="14.1" height="14.1" class="f" id="p23"/>
+        <rect x="56" y="0" width="14.1" height="14.1" class="f" id="p24"/>
+        <rect x="70" y="0" width="14.1" height="14.1" class="f" id="p25"/>
+        <rect x="84" y="0" width="14.1" height="14.1" class="f" id="p26"/>
+        <rect x="98" y="0" width="14.1" height="14.1" class="f" id="p27"/>
+        <rect x="112" y="0" width="14.1" height="14.1" class="f" id="p28"/>
+        <rect x="126" y="0" width="14.1" height="14.1" class="f" id="p29"/>
+    </g>
+    <g transform="translate(4,46)">
+        <rect x="0" y="0" width="14.1" height="14.1" class="f" id="p30"/>
+        <rect x="14" y="0" width="14.1" height="14.1" class="f" id="p31"/>
+        <rect x="28" y="0" width="14.1" height="14.1" class="f" id="p32"/>
+        <rect x="42" y="0" width="14.1" height="14.1" class="f" id="p33"/>
+        <rect x="56" y="0" width="14.1" height="14.1" class="f" id="p34"/>
+        <rect x="70" y="0" width="14.1" height="14.1" class="f" id="p35"/>
+        <rect x="84" y="0" width="14.1" height="14.1" class="f" id="p36"/>
+        <rect x="98" y="0" width="14.1" height="14.1" class="f" id="p37"/>
+        <rect x="112" y="0" width="14.1" height="14.1" class="f" id="p38"/>
+        <rect x="126" y="0" width="14.1" height="14.1" class="f" id="p39"/>
+    </g>
+    <g transform="translate(4,60)">
+        <rect x="0" y="0" width="14.1" height="14.1" class="f" id="p40"/>
+        <rect x="14" y="0" width="14.1" height="14.1" class="f" id="p41"/>
+        <rect x="28" y="0" width="14.1" height="14.1" class="f" id="p42"/>
+        <rect x="42" y="0" width="14.1" height="14.1" class="f" id="p43"/>
+        <rect x="56" y="0" width="14.1" height="14.1" class="f" id="p44"/>
+        <rect x="70" y="0" width="14.1" height="14.1" class="f" id="p45"/>
+        <rect x="84" y="0" width="14.1" height="14.1" class="f" id="p46"/>
+        <rect x="98" y="0" width="14.1" height="14.1" class="f" id="p47"/>
+        <rect x="112" y="0" width="14.1" height="14.1" class="f" id="p48"/>
+        <rect x="126" y="0" width="14.1" height="14.1" class="f" id="p49"/>
+    </g>
+    <g transform="translate(4,74)">
+        <rect x="0" y="0" width="14.1" height="14.1" class="f" id="p50"/>
+        <rect x="14" y="0" width="14.1" height="14.1" class="f" id="p51"/>
+        <rect x="28" y="0" width="14.1" height="14.1" class="f" id="p52"/>
+        <rect x="42" y="0" width="14.1" height="14.1" class="f" id="p53"/>
+        <rect x="56" y="0" width="14.1" height="14.1" class="f" id="p54"/>
+        <rect x="70" y="0" width="14.1" height="14.1" class="f" id="p55"/>
+        <rect x="84" y="0" width="14.1" height="14.1" class="f" id="p56"/>
+        <rect x="98" y="0" width="14.1" height="14.1" class="f" id="p57"/>
+        <rect x="112" y="0" width="14.1" height="14.1" class="f" id="p58"/>
+        <rect x="126" y="0" width="14.1" height="14.1" class="f" id="p59"/>
+    </g>
+    <g transform="translate(4,88)">
+        <rect x="0" y="0" width="14.1" height="14.1" class="f" id="p60"/>
+        <rect x="14" y="0" width="14.1" height="14.1" class="f" id="p61"/>
+        <rect x="28" y="0" width="14.1" height="14.1" class="f" id="p62"/>
+        <rect x="42" y="0" width="14.1" height="14.1" class="f" id="p63"/>
+        <rect x="56" y="0" width="14.1" height="14.1" class="f" id="p64"/>
+        <rect x="70" y="0" width="14.1" height="14.1" class="f" id="p65"/>
+        <rect x="84" y="0" width="14.1" height="14.1" class="f" id="p66"/>
+        <rect x="98" y="0" width="14.1" height="14.1" class="f" id="p67"/>
+        <rect x="112" y="0" width="14.1" height="14.1" class="f" id="p68"/>
+        <rect x="126" y="0" width="14.1" height="14.1" class="f" id="p69"/>
+    </g>
+    <g transform="translate(4,102)">
+        <rect x="0" y="0" width="14.1" height="14.1" class="f" id="p70"/>
+        <rect x="14" y="0" width="14.1" height="14.1" class="f" id="p71"/>
+        <rect x="28" y="0" width="14.1" height="14.1" class="f" id="p72"/>
+        <rect x="42" y="0" width="14.1" height="14.1" class="f" id="p73"/>
+        <rect x="56" y="0" width="14.1" height="14.1" class="f" id="p74"/>
+        <rect x="70" y="0" width="14.1" height="14.1" class="f" id="p75"/>
+        <rect x="84" y="0" width="14.1" height="14.1" class="f" id="p76"/>
+        <rect x="98" y="0" width="14.1" height="14.1" class="f" id="p77"/>
+        <rect x="112" y="0" width="14.1" height="14.1" class="f" id="p78"/>
+        <rect x="126" y="0" width="14.1" height="14.1" class="f" id="p79"/>
+    </g>
+    <g transform="translate(4,116)">
+        <rect x="0" y="0" width="14.1" height="14.1" class="f" id="p80"/>
+        <rect x="14" y="0" width="14.1" height="14.1" class="f" id="p81"/>
+        <rect x="28" y="0" width="14.1" height="14.1" class="f" id="p82"/>
+        <rect x="42" y="0" width="14.1" height="14.1" class="f" id="p83"/>
+        <rect x="56" y="0" width="14.1" height="14.1" class="f" id="p84"/>
+        <rect x="70" y="0" width="14.1" height="14.1" class="f" id="p85"/>
+        <rect x="84" y="0" width="14.1" height="14.1" class="f" id="p86"/>
+        <rect x="98" y="0" width="14.1" height="14.1" class="f" id="p87"/>
+        <rect x="112" y="0" width="14.1" height="14.1" class="f" id="p88"/>
+        <rect x="126" y="0" width="14.1" height="14.1" class="f" id="p89"/>
+    </g>
+    <g transform="translate(4,130)">
+        <rect x="0" y="0" width="14.1" height="14.1" class="f" id="p90"/>
+        <rect x="14" y="0" width="14.1" height="14.1" class="f" id="p91"/>
+        <rect x="28" y="0" width="14.1" height="14.1" class="f" id="p92"/>
+        <rect x="42" y="0" width="14.1" height="14.1" class="f" id="p93"/>
+        <rect x="56" y="0" width="14.1" height="14.1" class="f" id="p94"/>
+        <rect x="70" y="0" width="14.1" height="14.1" class="f" id="p95"/>
+        <rect x="84" y="0" width="14.1" height="14.1" class="f" id="p96"/>
+        <rect x="98" y="0" width="14.1" height="14.1" class="f" id="p97"/>
+        <rect x="112" y="0" width="14.1" height="14.1" class="f" id="p98"/>
+        <rect x="126" y="0" width="14.1" height="14.1" class="f" id="p99"/>
+    </g>
+    
     <g>
         <use transform="translate(150,0)" xlink:href="#v1"/>
         <use transform="translate(180,0)" xlink:href="#v2"/>
@@ -348,8 +477,11 @@
 
     <line x1="300" y1="150" x2="300" y2="450" class="bg5"/>
     <line y1="300" x1="150" y2="300" x2="450" class="bg5"/>
+</g>
 
-
+<g id="result">
+    <rect x="200" y="350" width="500" ry="20" height="50" style="stroke:white;stroke-width:5;fill:#5599BB;fill-opacity:0.8"/>
+    <text transform="translate(220,392)" id="tfinal"></text>
 </g>
 
 

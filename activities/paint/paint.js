@@ -255,20 +255,19 @@
             var exercice = settings.exercice;
             var tag      = settings.tag;
             if (settings.gen) {
-                var vValue = eval('('+settings.gen+')')($this, settings);
+                var vValue = eval('('+settings.gen+')')($this, settings,settings.id);
                 if (vValue.exercice) { exercice = vValue.exercice; }
                 if (vValue.tag)      { tag = vValue.tag; }
                 if (vValue.result)   { settings.result = vValue.result; }
                 if (vValue.t)        { settings.t = vValue.t; }
+                if (vValue.txt)      { settings.txt = vValue.txt; }
                 if (vValue.legend)   { settings.legend = vValue.legend; }
                 if (vValue.canvas)   { settings.canvas = vValue.canvas; }
                 settings.scorearg = vValue.scorearg;
             }
             
             if (helpers.board[settings.board]) { helpers.board[settings.board]($this); }
-            else {
-            }
-
+ 
             var t = settings.t;
             if (!t && settings.values) { number=settings.values.length; t = settings.values[settings.id%settings.values.length].t; }
             if (t) {
@@ -279,6 +278,12 @@
                             else { $(this).text(t[_index].charCodeAt(0)>60?t[_index].charCodeAt(0)-55:t[_index]); }
                         }
                     });
+                }
+            }
+            
+            if (settings.txt) {
+                for (var i in settings.txt) {
+                    if (settings.svg) { $("text#"+i, settings.svg.root()).text(settings.txt[i]); }
                 }
             }
             
@@ -404,6 +409,7 @@
 
             if (ok) {
                 $elt.attr("class",settings.color[1]!=-1?"c c"+settings.color[1]:"c");
+
                 if (settings.mode=="content") {
                     var val="";
                     if ( settings.color[1]!=-1 && settings.source ) {
@@ -414,6 +420,8 @@
                     }
                     $elt.html(val);
                 }
+                
+                if (settings.onpaint) { eval('('+settings.onpaint+')')($this, settings,helpers.result($this)); }
             }
         },
         dev: {
@@ -581,6 +589,9 @@
 
                     // DISPLAY ALERT
                     $this.find("#effects>div").hide();
+                    $this.find("#board").addClass(nbErrors?"wrong":"good");
+                    
+                    
                     if (nbErrors) {
                         $this.find("#submit>img").hide(); $this.find("#subwrong").show();
                         if (settings.effects) { $this.find("#effects #wrong").show(); $this.find("#effects").show(); }

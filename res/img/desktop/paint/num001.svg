@@ -4,256 +4,512 @@
 <defs>
     <style type="text/css">
         svg#num001 .bg         { opacity:1;fill:#e2ce91;fill-opacity:1;stroke:none;marker:none; }
-        svg#num001 .c0         { fill:white !important;  }
-        svg#num001 .c1         { fill:red !important;  fill-opacity:0.8 !important;}
-        svg#num001 .c          { fill:white; fill-opacity:0.4;}
+        svg#num001 .c0         { fill:#ED5 !important; cursor:pointer; }
+        svg#num001 .c1         { fill:#F50 !important; cursor:pointer; }
+        svg#num001 .c          { fill:#ED5; cursor:pointer; }
 
-        svg#num001 .canvas *  { stroke:black;stroke-width:1px; }
-        svg#num001 .canvas    { display:none; }
+        svg#num001 .canvas .background *    { fill:none;stroke:white;stroke-width:15; }
+        svg#num001 .canvas .dynamic *       { stroke:#431;stroke-width:2; }
+        svg#num001 .canvas                  { display:none; }
     </style>
 </defs>
 
-<path d="m 31.34,0 c 6.55,29.44 13.75,59.90 21.5,90.21 -15.58,5.09 -30.39,11.92 -44.18,20.25 C 5.78,106.07 2.88,101.69 0,97.31 l 0,141.78 c 21.89,11.79 43.43,22.77 64.06,32.43 -0.96,2.26 -1.81,4.63 -2.5,7.03 C 42.12,273.43 21.43,268.31 0,263.28 l 0,75.87 c 22.20,-6.73 43.62,-13.73 63.68,-21 0.94,2.31 2.04,4.55 3.25,6.71 C 45.68,337.24 23.13,350.97 0,365.46 L 0,480 l 72.43,0 c -12.90,-3.30 -25.30,-7.93 -37,-13.71 22.71,-39.26 43.88,-78.55 60.96,-115.06 2.25,0.94 4.58,1.76 6.96,2.43 C 93.19,392.14 83.14,435.54 73.56,480 l 157.68,0 c 0.03,-0.01 0.06,-0.04 0.09,-0.06 0.01,0.01 0.01,0.04 0.03,0.06 l 84.53,0 c -4.44,-4.83 -8.92,-9.66 -13.43,-14.5 5.62,4.86 11.23,9.68 16.84,14.5 l 131.71,0 c -41.65,-27.58 -89.68,-58.29 -138.65,-87.31 7.24,-14.27 12.93,-29.46 16.87,-45.34 139.52,29.27 281.60,52.64 310.75,57.37 l 0,-98.25 c -17.49,-1.88 -47.77,-5.01 -88.15,-8.43 C 500.70,293.69 435.88,289.12 369.18,286.81 487.88,278.23 600.01,266.33 640,261.93 l 0,-98.46 c -0.50,0.07 -160.08,25.15 -315,64.78 -5.07,-15.53 -11.87,-30.30 -20.15,-44.06 133.70,-87.33 265.25,-182.71 265.25,-182.71 L 568.90,0 417.81,0 C 380.27,31.85 335.13,71.24 290.12,113.25 324.40,73.62 357.39,34.34 385.84,0 L 281.5,0 C 260.51,32.43 238.59,67.42 217.56,102.90 203.26,95.63 188.00,89.95 172.09,86 178.15,57.13 183.95,28.11 189.40,0 l -75.93,0 C 112.70,15.28 112.04,30.82 111.5,46.46 110.36,30.82 109.16,15.30 107.93,0 L 31.34,0 z m 135.56,110.37 c 13.29,3.36 26.01,8.13 38.03,14.12 -22.71,39.25 -43.84,78.55 -60.93,115.06 -2.25,-0.97 -4.58,-1.83 -6.96,-2.53 10.19,-38.58 20.27,-82.10 29.87,-126.65 z m -107.75,4.06 c 11.69,43.82 24.52,86.55 38.25,124.46 -2.32,0.92 -4.57,1.98 -6.75,3.18 C 70.57,207.60 46.95,169.71 22.25,131.43 c 11.57,-6.91 23.91,-12.63 36.90,-17 z M 283.87,197.78 c 6.87,11.54 12.56,23.86 16.90,36.81 -43.82,11.70 -86.54,24.54 -124.43,38.28 -0.91,-2.29 -1.94,-4.53 -3.12,-6.68 34.48,-20.06 72.36,-43.69 110.65,-68.40 z M 132.53,253.68 c 1.46,0.44 2.88,0.97 4.28,1.56 -2.25,5.06 -4.40,10.07 -6.46,15 -0.73,-0.30 -1.48,-0.57 -2.25,-0.81 1.47,-5.12 2.95,-10.38 4.43,-15.75 z m -29.09,1.40 c 1.98,5.16 3.98,10.24 6,15.18 -0.74,0.31 -1.47,0.65 -2.18,1.03 -2.57,-4.65 -5.22,-9.42 -7.96,-14.25 1.34,-0.72 2.73,-1.38 4.15,-1.96 z m 54.78,19.68 c 0.71,1.33 1.36,2.71 1.93,4.12 -5.17,1.98 -10.24,3.97 -15.18,6 -0.29,-0.71 -0.64,-1.43 -1,-2.12 4.66,-2.57 9.40,-5.25 14.25,-8 z M 79.75,278.75 c 5.06,2.25 10.07,4.39 15,6.46 -0.29,0.74 -0.55,1.50 -0.78,2.28 -5.11,-1.47 -10.36,-2.96 -15.71,-4.43 0.43,-1.47 0.92,-2.91 1.5,-4.31 z m 66.06,24.53 c 5.11,1.47 10.36,2.96 15.71,4.43 -0.43,1.43 -0.92,2.87 -1.5,4.25 -5.07,-2.25 -10.06,-4.43 -15,-6.5 0.29,-0.71 0.55,-1.44 0.78,-2.18 z M 95.09,306.12 c 0.32,0.74 0.67,1.45 1.06,2.15 -4.66,2.57 -9.44,5.21 -14.28,7.96 -0.73,-1.33 -1.40,-2.71 -2,-4.12 5.17,-1.98 10.27,-3.98 15.21,-6 z m 83.09,6.09 c 38.56,10.19 82.09,20.30 126.65,29.90 -3.34,13.24 -8.10,25.92 -14.06,37.90 C 251.52,357.32 212.24,336.19 175.75,319.12 c 0.95,-2.23 1.75,-4.54 2.43,-6.90 z m -45.40,6.90 c 2.57,4.66 5.22,9.38 7.96,14.21 -1.31,0.72 -2.66,1.38 -4.06,1.96 -1.98,-5.16 -3.97,-10.25 -6,-15.18 0.71,-0.31 1.40,-0.62 2.09,-1 z m -22.68,1.37 c 0.72,0.28 1.46,0.56 2.21,0.78 -1.47,5.11 -2.96,10.36 -4.43,15.71 -1.46,-0.42 -2.88,-0.93 -4.28,-1.5 2.25,-5.06 4.43,-10.07 6.5,-15 z M 149.37,348.34 C 169.42,382.81 193.04,420.70 217.75,459 206.24,465.89 193.94,471.60 181.03,475.96 169.32,432.12 156.49,389.39 142.75,351.5 c 2.28,-0.92 4.48,-1.96 6.62,-3.15 z" id="rect3029" style="color:#000000;fill:#adadad;fill-opacity:0.18;fill-rule:nonzero;stroke:none;stroke-width:2.70;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
-<path d="M 304.06,50.93 C 216.18,51.01 116.24,66.90 0,107.09 l 0,15.93 C 224.41,63.12 453.25,89.29 595.59,194 610.96,205.30 625.81,215.01 640,223.34 l 0,-91.75 C 546.15,88.13 439.39,50.81 304.06,50.93 z m 56.46,99.65 c -1.61,-0.00 -3.23,0.01 -4.84,0.03 C 226.80,151.90 102.70,214.04 0,329.81 l 0,4.78 C 136.97,197.78 335.47,146.50 565.43,272.43 593.68,287.90 618.37,299.74 640,308.62 l 0,-60.03 c -91.36,-66.04 -186.60,-97.82 -279.46,-98 z M 318.62,220 C 180.30,220.23 60.04,282.17 0,356.78 l 0,4.15 C 79.98,299.10 163.43,249.20 358.25,463.5 c 5.11,5.62 10.16,11.10 15.18,16.5 L 640,480 640,342.12 C 534.48,253.78 421.55,219.82 318.62,220 z" id="path2985" style="fill:#adadad;fill-opacity:0.27;stroke:none" />
-
 
 <g id="rect4" class="canvas">
-    <rect x="100" y="100" height="75" width="75" class="c"/>
-    <rect x="275" y="250" height="75" width="75" class="c"/>
-    <rect x="150" y="200" height="75" width="75" class="c"/>
-    <rect x="400" y="220" height="75" width="75" class="c"/>
+    <g class="background">
+        <rect x="100" y="100" height="75" width="75"/>
+        <rect x="275" y="250" height="75" width="75"/>
+        <rect x="150" y="200" height="75" width="75"/>
+        <rect x="400" y="220" height="75" width="75"/>
+    </g>
+    <g class="dynamic">
+        <rect x="100" y="100" height="75" width="75" class="c"/>
+        <rect x="275" y="250" height="75" width="75" class="c"/>
+        <rect x="150" y="200" height="75" width="75" class="c"/>
+        <rect x="400" y="220" height="75" width="75" class="c"/>
+    </g>
 </g>
 
 <g id="rect6" class="canvas">
-    <rect x="50" y="130" height="75" width="75" class="c"/>
-    <rect x="275" y="250" height="75" width="75" class="c"/>
-    <rect x="150" y="200" height="75" width="75" class="c"/>
-    <rect x="400" y="220" height="75" width="75" class="c"/>
-    <rect x="500" y="120" height="75" width="75" class="c"/>
-    <rect x="250" y="100" height="75" width="75" class="c"/>
+    <g class="background">
+        <rect x="50" y="130" height="75" width="75"/>
+        <rect x="275" y="250" height="75" width="75"/>
+        <rect x="150" y="200" height="75" width="75"/>
+        <rect x="400" y="220" height="75" width="75"/>
+        <rect x="500" y="120" height="75" width="75"/>
+        <rect x="250" y="100" height="75" width="75"/>
+    </g>
+    <g class="dynamic">
+        <rect x="50" y="130" height="75" width="75" class="c"/>
+        <rect x="275" y="250" height="75" width="75" class="c"/>
+        <rect x="150" y="200" height="75" width="75" class="c"/>
+        <rect x="400" y="220" height="75" width="75" class="c"/>
+        <rect x="500" y="120" height="75" width="75" class="c"/>
+        <rect x="250" y="100" height="75" width="75" class="c"/>
+    </g>
 </g>
 
 <g id="rect8" class="canvas">
-    <rect x="50" y="130" height="75" width="75" class="c"/>
-    <rect x="275" y="250" height="75" width="75" class="c"/>
-    <rect x="150" y="200" height="75" width="75" class="c"/>
-    <rect x="400" y="220" height="75" width="75" class="c"/>
-    <rect x="500" y="120" height="75" width="75" class="c"/>
-    <rect x="250" y="100" height="75" width="75" class="c"/>
-    <rect x="100" y="300" height="75" width="75" class="c"/>
-    <rect x="550" y="250" height="75" width="75" class="c"/>
+    <g class="background">
+        <rect x="50" y="130" height="75" width="75"/>
+        <rect x="275" y="250" height="75" width="75"/>
+        <rect x="150" y="200" height="75" width="75"/>
+        <rect x="400" y="220" height="75" width="75"/>
+        <rect x="500" y="120" height="75" width="75"/>
+        <rect x="250" y="100" height="75" width="75"/>
+        <rect x="100" y="300" height="75" width="75"/>
+        <rect x="550" y="250" height="75" width="75"/>
+    </g>
+    <g class="dynamic">
+        <rect x="50" y="130" height="75" width="75" class="c"/>
+        <rect x="275" y="250" height="75" width="75" class="c"/>
+        <rect x="150" y="200" height="75" width="75" class="c"/>
+        <rect x="400" y="220" height="75" width="75" class="c"/>
+        <rect x="500" y="120" height="75" width="75" class="c"/>
+        <rect x="250" y="100" height="75" width="75" class="c"/>
+        <rect x="100" y="300" height="75" width="75" class="c"/>
+        <rect x="550" y="250" height="75" width="75" class="c"/>
+    </g>
 </g>
 
 <g id="rect10" class="canvas">
-    <rect x="50" y="130" height="75" width="75" class="c"/>
-    <rect x="275" y="250" height="75" width="75" class="c"/>
-    <rect x="150" y="200" height="75" width="75" class="c"/>
-    <rect x="400" y="220" height="75" width="75" class="c"/>
-    <rect x="500" y="120" height="75" width="75" class="c"/>
-    <rect x="250" y="100" height="75" width="75" class="c"/>
-    <rect x="100" y="300" height="75" width="75" class="c"/>
-    <rect x="550" y="250" height="75" width="75" class="c"/>
-    <rect x="420" y="330" height="75" width="75" class="c"/>
-    <rect x="350" y="80" height="75" width="75" class="c"/>
+    <g class="background">
+        <rect x="50" y="130" height="75" width="75"/>
+        <rect x="275" y="250" height="75" width="75"/>
+        <rect x="150" y="200" height="75" width="75"/>
+        <rect x="400" y="220" height="75" width="75"/>
+        <rect x="500" y="120" height="75" width="75"/>
+        <rect x="250" y="100" height="75" width="75"/>
+        <rect x="100" y="300" height="75" width="75"/>
+        <rect x="550" y="250" height="75" width="75"/>
+        <rect x="420" y="330" height="75" width="75"/>
+        <rect x="350" y="80" height="75" width="75"/>
+    </g>
+    <g class="dynamic">
+        <rect x="50" y="130" height="75" width="75" class="c"/>
+        <rect x="275" y="250" height="75" width="75" class="c"/>
+        <rect x="150" y="200" height="75" width="75" class="c"/>
+        <rect x="400" y="220" height="75" width="75" class="c"/>
+        <rect x="500" y="120" height="75" width="75" class="c"/>
+        <rect x="250" y="100" height="75" width="75" class="c"/>
+        <rect x="100" y="300" height="75" width="75" class="c"/>
+        <rect x="550" y="250" height="75" width="75" class="c"/>
+        <rect x="420" y="330" height="75" width="75" class="c"/>
+        <rect x="350" y="80" height="75" width="75" class="c"/>
+    </g>
 </g>
 
 <g id="circle4" class="canvas">
-    <circle cx="100" cy="120" r="35" class="c"/>
-    <circle cx="280" cy="160" r="35" class="c"/>
-    <circle cx="200" cy="350" r="35" class="c"/>
-    <circle cx="400" cy="200" r="35" class="c"/>
+    <g class="background">
+        <circle cx="100" cy="120" r="35"/>
+        <circle cx="280" cy="160" r="35"/>
+        <circle cx="200" cy="350" r="35"/>
+        <circle cx="400" cy="200" r="35"/>
+    </g>
+    <g class="dynamic">
+        <circle cx="100" cy="120" r="35" class="c"/>
+        <circle cx="280" cy="160" r="35" class="c"/>
+        <circle cx="200" cy="350" r="35" class="c"/>
+        <circle cx="400" cy="200" r="35" class="c"/>
+    </g>
 </g>
 
 <g id="circle6" class="canvas">
-    <circle cx="100" cy="120" r="35" class="c"/>
-    <circle cx="280" cy="160" r="35" class="c"/>
-    <circle cx="200" cy="350" r="35" class="c"/>
-    <circle cx="400" cy="200" r="35" class="c"/>
-    <circle cx="480" cy="140" r="35" class="c"/>
-    <circle cx="550" cy="310" r="35" class="c"/>
+    <g class="background">
+        <circle cx="100" cy="120" r="35"/>
+        <circle cx="280" cy="160" r="35"/>
+        <circle cx="200" cy="350" r="35"/>
+        <circle cx="400" cy="200" r="35"/>
+        <circle cx="480" cy="140" r="35"/>
+        <circle cx="550" cy="310" r="35"/>
+    </g>
+    <g class="dynamic">
+        <circle cx="100" cy="120" r="35" class="c"/>
+        <circle cx="280" cy="160" r="35" class="c"/>
+        <circle cx="200" cy="350" r="35" class="c"/>
+        <circle cx="400" cy="200" r="35" class="c"/>
+        <circle cx="480" cy="140" r="35" class="c"/>
+        <circle cx="550" cy="310" r="35" class="c"/>
+    </g>
 </g>
 
 <g id="circle8" class="canvas">
-    <circle cx="100" cy="120" r="35" class="c"/>
-    <circle cx="280" cy="160" r="35" class="c"/>
-    <circle cx="200" cy="350" r="35" class="c"/>
-    <circle cx="400" cy="200" r="35" class="c"/>
-    <circle cx="480" cy="140" r="35" class="c"/>
-    <circle cx="550" cy="310" r="35" class="c"/>
-    <circle cx="150" cy="250" r="35" class="c"/>
-    <circle cx="450" cy="300" r="35" class="c"/>
+    <g class="background">
+        <circle cx="100" cy="120" r="35"/>
+        <circle cx="280" cy="160" r="35"/>
+        <circle cx="200" cy="350" r="35"/>
+        <circle cx="400" cy="200" r="35"/>
+        <circle cx="480" cy="140" r="35"/>
+        <circle cx="550" cy="310" r="35"/>
+        <circle cx="150" cy="250" r="35"/>
+        <circle cx="450" cy="300" r="35"/>
+    </g>
+    <g class="dynamic">
+        <circle cx="100" cy="120" r="35" class="c"/>
+        <circle cx="280" cy="160" r="35" class="c"/>
+        <circle cx="200" cy="350" r="35" class="c"/>
+        <circle cx="400" cy="200" r="35" class="c"/>
+        <circle cx="480" cy="140" r="35" class="c"/>
+        <circle cx="550" cy="310" r="35" class="c"/>
+        <circle cx="150" cy="250" r="35" class="c"/>
+        <circle cx="450" cy="300" r="35" class="c"/>
+    </g>
 </g>
 
 <g id="circle10" class="canvas">
-    <circle cx="100" cy="120" r="35" class="c"/>
-    <circle cx="280" cy="160" r="35" class="c"/>
-    <circle cx="200" cy="350" r="35" class="c"/>
-    <circle cx="400" cy="200" r="35" class="c"/>
-    <circle cx="480" cy="140" r="35" class="c"/>
-    <circle cx="550" cy="310" r="35" class="c"/>
-    <circle cx="150" cy="250" r="35" class="c"/>
-    <circle cx="450" cy="300" r="35" class="c"/>
-    <circle cx="350" cy="280" r="35" class="c"/>
-    <circle cx="80" cy="300" r="35" class="c"/>
+    <g class="background">
+        <circle cx="100" cy="120" r="35"/>
+        <circle cx="280" cy="160" r="35"/>
+        <circle cx="200" cy="350" r="35"/>
+        <circle cx="400" cy="200" r="35"/>
+        <circle cx="480" cy="140" r="35"/>
+        <circle cx="550" cy="310" r="35"/>
+        <circle cx="150" cy="250" r="35"/>
+        <circle cx="450" cy="300" r="35"/>
+        <circle cx="350" cy="280" r="35"/>
+        <circle cx="80" cy="300" r="35"/>
+    </g>
+    <g class="dynamic">
+        <circle cx="100" cy="120" r="35" class="c"/>
+        <circle cx="280" cy="160" r="35" class="c"/>
+        <circle cx="200" cy="350" r="35" class="c"/>
+        <circle cx="400" cy="200" r="35" class="c"/>
+        <circle cx="480" cy="140" r="35" class="c"/>
+        <circle cx="550" cy="310" r="35" class="c"/>
+        <circle cx="150" cy="250" r="35" class="c"/>
+        <circle cx="450" cy="300" r="35" class="c"/>
+        <circle cx="350" cy="280" r="35" class="c"/>
+        <circle cx="80" cy="300" r="35" class="c"/>
+    </g>
 </g>
 
 <g id="elt28" class="canvas">
-    <rect x="50" y="300" height="50" width="50" class="c"/>
-    <rect x="400" y="220" height="50" width="50" class="c"/>
-    <circle cx="150" cy="300" r="30" class="c"/>
-    <circle cx="300" cy="100" r="30" class="c"/>
-    <circle cx="550" cy="250" r="30" class="c"/>
-    <circle cx="450" cy="150" r="30" class="c"/>
-    <circle cx="400" cy="350" r="30" class="c"/>
-    <circle cx="50" cy="220" r="30" class="c"/>
-    <circle cx="250" cy="380" r="30" class="c"/>
-    <circle cx="350" cy="180" r="30" class="c"/>
+    <g class="background">
+        <rect x="50" y="300" height="50" width="50"/>
+        <rect x="400" y="220" height="50" width="50"/>
+        <circle cx="150" cy="300" r="30"/>
+        <circle cx="300" cy="100" r="30"/>
+        <circle cx="550" cy="250" r="30"/>
+        <circle cx="450" cy="150" r="30"/>
+        <circle cx="400" cy="350" r="30"/>
+        <circle cx="50" cy="220" r="30"/>
+        <circle cx="250" cy="380" r="30"/>
+        <circle cx="350" cy="180" r="30"/>
+    </g>
+    <g class="dynamic">
+        <rect x="50" y="300" height="50" width="50" class="c"/>
+        <rect x="400" y="220" height="50" width="50" class="c"/>
+        <circle cx="150" cy="300" r="30" class="c"/>
+        <circle cx="300" cy="100" r="30" class="c"/>
+        <circle cx="550" cy="250" r="30" class="c"/>
+        <circle cx="450" cy="150" r="30" class="c"/>
+        <circle cx="400" cy="350" r="30" class="c"/>
+        <circle cx="50" cy="220" r="30" class="c"/>
+        <circle cx="250" cy="380" r="30" class="c"/>
+        <circle cx="350" cy="180" r="30" class="c"/>
+    </g>
 </g>
 
 <g id="elt44" class="canvas">
-    <rect x="100" y="100" height="50" width="50" class="c"/>
-    <rect x="275" y="250" height="50" width="50" class="c"/>
-    <rect x="150" y="200" height="50" width="50" class="c"/>
-    <rect x="400" y="220" height="50" width="50" class="c"/>
-    <circle cx="150" cy="350" r="30" class="c"/>
-    <circle cx="300" cy="100" r="30" class="c"/>
-    <circle cx="550" cy="250" r="30" class="c"/>
-    <circle cx="450" cy="150" r="30" class="c"/>
+    <g class="background">
+        <rect x="100" y="100" height="50" width="50"/>
+        <rect x="275" y="250" height="50" width="50"/>
+        <rect x="150" y="200" height="50" width="50"/>
+        <rect x="400" y="220" height="50" width="50"/>
+        <circle cx="150" cy="350" r="30"/>
+        <circle cx="300" cy="100" r="30"/>
+        <circle cx="550" cy="250" r="30"/>
+        <circle cx="450" cy="150" r="30"/>
+    </g>
+    <g class="dynamic">
+        <rect x="100" y="100" height="50" width="50" class="c"/>
+        <rect x="275" y="250" height="50" width="50" class="c"/>
+        <rect x="150" y="200" height="50" width="50" class="c"/>
+        <rect x="400" y="220" height="50" width="50" class="c"/>
+        <circle cx="150" cy="350" r="30" class="c"/>
+        <circle cx="300" cy="100" r="30" class="c"/>
+        <circle cx="550" cy="250" r="30" class="c"/>
+        <circle cx="450" cy="150" r="30" class="c"/>
+    </g>
 </g>
 
 <g id="elt46" class="canvas">
-    <rect x="100" y="100" height="50" width="50" class="c"/>
-    <rect x="275" y="250" height="50" width="50" class="c"/>
-    <rect x="150" y="200" height="50" width="50" class="c"/>
-    <rect x="400" y="220" height="50" width="50" class="c"/>
-    <circle cx="150" cy="300" r="30" class="c"/>
-    <circle cx="300" cy="100" r="30" class="c"/>
-    <circle cx="550" cy="250" r="30" class="c"/>
-    <circle cx="450" cy="150" r="30" class="c"/>
-    <circle cx="400" cy="350" r="30" class="c"/>
-    <circle cx="50" cy="220" r="30" class="c"/>
+    <g class="background">
+        <rect x="100" y="100" height="50" width="50"/>
+        <rect x="275" y="250" height="50" width="50"/>
+        <rect x="150" y="200" height="50" width="50"/>
+        <rect x="400" y="220" height="50" width="50"/>
+        <circle cx="150" cy="300" r="30"/>
+        <circle cx="300" cy="100" r="30"/>
+        <circle cx="550" cy="250" r="30"/>
+        <circle cx="450" cy="150" r="30"/>
+        <circle cx="400" cy="350" r="30"/>
+        <circle cx="50" cy="220" r="30"/>
+    </g>
+    <g class="dynamic">
+        <rect x="100" y="100" height="50" width="50" class="c"/>
+        <rect x="275" y="250" height="50" width="50" class="c"/>
+        <rect x="150" y="200" height="50" width="50" class="c"/>
+        <rect x="400" y="220" height="50" width="50" class="c"/>
+        <circle cx="150" cy="300" r="30" class="c"/>
+        <circle cx="300" cy="100" r="30" class="c"/>
+        <circle cx="550" cy="250" r="30" class="c"/>
+        <circle cx="450" cy="150" r="30" class="c"/>
+        <circle cx="400" cy="350" r="30" class="c"/>
+        <circle cx="50" cy="220" r="30" class="c"/>
+    </g>
 </g>
 
 <g id="elt48" class="canvas">
-    <rect x="50" y="300" height="50" width="50" class="c"/>
-    <rect x="500" y="300" height="50" width="50" class="c"/>
-    <rect x="100" y="100" height="50" width="50" class="c"/>
-    <rect x="220" y="150" height="50" width="50" class="c"/>
-    <circle cx="150" cy="300" r="30" class="c"/>
-    <circle cx="300" cy="100" r="30" class="c"/>
-    <circle cx="550" cy="250" r="30" class="c"/>
-    <circle cx="450" cy="150" r="30" class="c"/>
-    <circle cx="400" cy="350" r="30" class="c"/>
-    <circle cx="50" cy="220" r="30" class="c"/>
-    <circle cx="250" cy="380" r="30" class="c"/>
-    <circle cx="350" cy="180" r="30" class="c"/>
+    <g class="background">
+        <rect x="50" y="300" height="50" width="50"/>
+        <rect x="500" y="300" height="50" width="50"/>
+        <rect x="100" y="100" height="50" width="50"/>
+        <rect x="220" y="150" height="50" width="50"/>
+        <circle cx="150" cy="300" r="30"/>
+        <circle cx="300" cy="100" r="30"/>
+        <circle cx="550" cy="250" r="30"/>
+        <circle cx="450" cy="150" r="30"/>
+        <circle cx="400" cy="350" r="30"/>
+        <circle cx="50" cy="220" r="30"/>
+        <circle cx="250" cy="380" r="30"/>
+        <circle cx="350" cy="180" r="30"/>
+    </g>
+    <g class="dynamic">
+        <rect x="50" y="300" height="50" width="50" class="c"/>
+        <rect x="500" y="300" height="50" width="50" class="c"/>
+        <rect x="100" y="100" height="50" width="50" class="c"/>
+        <rect x="220" y="150" height="50" width="50" class="c"/>
+        <circle cx="150" cy="300" r="30" class="c"/>
+        <circle cx="300" cy="100" r="30" class="c"/>
+        <circle cx="550" cy="250" r="30" class="c"/>
+        <circle cx="450" cy="150" r="30" class="c"/>
+        <circle cx="400" cy="350" r="30" class="c"/>
+        <circle cx="50" cy="220" r="30" class="c"/>
+        <circle cx="250" cy="380" r="30" class="c"/>
+        <circle cx="350" cy="180" r="30" class="c"/>
+    </g>
 </g>
 
 <g id="elt62" class="canvas">
-    <rect x="50" y="300" height="50" width="50" class="c"/>
-    <rect x="500" y="300" height="50" width="50" class="c"/>
-    <rect x="100" y="100" height="50" width="50" class="c"/>
-    <rect x="275" y="250" height="50" width="50" class="c"/>
-    <rect x="150" y="200" height="50" width="50" class="c"/>
-    <rect x="400" y="220" height="50" width="50" class="c"/>
-    <circle cx="150" cy="300" r="30" class="c"/>
-    <circle cx="300" cy="100" r="30" class="c"/>
+    <g class="background">
+        <rect x="50" y="300" height="50" width="50"/>
+        <rect x="500" y="300" height="50" width="50"/>
+        <rect x="100" y="100" height="50" width="50"/>
+        <rect x="275" y="250" height="50" width="50"/>
+        <rect x="150" y="200" height="50" width="50"/>
+        <rect x="400" y="220" height="50" width="50"/>
+        <circle cx="150" cy="300" r="30"/>
+        <circle cx="300" cy="100" r="30"/>
+    </g>
+    <g class="dynamic">
+        <rect x="50" y="300" height="50" width="50" class="c"/>
+        <rect x="500" y="300" height="50" width="50" class="c"/>
+        <rect x="100" y="100" height="50" width="50" class="c"/>
+        <rect x="275" y="250" height="50" width="50" class="c"/>
+        <rect x="150" y="200" height="50" width="50" class="c"/>
+        <rect x="400" y="220" height="50" width="50" class="c"/>
+        <circle cx="150" cy="300" r="30" class="c"/>
+        <circle cx="300" cy="100" r="30" class="c"/>
+    </g>
 </g>
 
 <g id="elt66" class="canvas">
-    <rect x="50" y="300" height="50" width="50" class="c"/>
-    <rect x="500" y="300" height="50" width="50" class="c"/>
-    <rect x="100" y="100" height="50" width="50" class="c"/>
-    <rect x="275" y="250" height="50" width="50" class="c"/>
-    <rect x="150" y="200" height="50" width="50" class="c"/>
-    <rect x="400" y="220" height="50" width="50" class="c"/>
-    <circle cx="150" cy="300" r="30" class="c"/>
-    <circle cx="300" cy="100" r="30" class="c"/>
-    <circle cx="550" cy="250" r="30" class="c"/>
-    <circle cx="450" cy="150" r="30" class="c"/>
-    <circle cx="400" cy="350" r="30" class="c"/>
-    <circle cx="50" cy="220" r="30" class="c"/>
+    <g class="background">
+        <rect x="50" y="300" height="50" width="50"/>
+        <rect x="500" y="300" height="50" width="50"/>
+        <rect x="100" y="100" height="50" width="50"/>
+        <rect x="275" y="250" height="50" width="50"/>
+        <rect x="150" y="200" height="50" width="50"/>
+        <rect x="400" y="220" height="50" width="50"/>
+        <circle cx="150" cy="300" r="30"/>
+        <circle cx="300" cy="100" r="30"/>
+        <circle cx="550" cy="250" r="30"/>
+        <circle cx="450" cy="150" r="30"/>
+        <circle cx="400" cy="350" r="30"/>
+        <circle cx="50" cy="220" r="30"/>
+    </g>
+    <g class="dynamic">
+        <rect x="50" y="300" height="50" width="50" class="c"/>
+        <rect x="500" y="300" height="50" width="50" class="c"/>
+        <rect x="100" y="100" height="50" width="50" class="c"/>
+        <rect x="275" y="250" height="50" width="50" class="c"/>
+        <rect x="150" y="200" height="50" width="50" class="c"/>
+        <rect x="400" y="220" height="50" width="50" class="c"/>
+        <circle cx="150" cy="300" r="30" class="c"/>
+        <circle cx="300" cy="100" r="30" class="c"/>
+        <circle cx="550" cy="250" r="30" class="c"/>
+        <circle cx="450" cy="150" r="30" class="c"/>
+        <circle cx="400" cy="350" r="30" class="c"/>
+        <circle cx="50" cy="220" r="30" class="c"/>
+    </g>
 </g>
 
 <g id="elt68" class="canvas">
-    <rect x="50" y="300" height="50" width="50" class="c"/>
-    <rect x="500" y="300" height="50" width="50" class="c"/>
-    <rect x="100" y="100" height="50" width="50" class="c"/>
-    <rect x="275" y="250" height="50" width="50" class="c"/>
-    <rect x="150" y="200" height="50" width="50" class="c"/>
-    <rect x="400" y="220" height="50" width="50" class="c"/>
-    <circle cx="150" cy="300" r="30" class="c"/>
-    <circle cx="300" cy="100" r="30" class="c"/>
-    <circle cx="550" cy="250" r="30" class="c"/>
-    <circle cx="450" cy="150" r="30" class="c"/>
-    <circle cx="400" cy="350" r="30" class="c"/>
-    <circle cx="50" cy="220" r="30" class="c"/>
-    <circle cx="250" cy="380" r="30" class="c"/>
-    <circle cx="350" cy="180" r="30" class="c"/>
+    <g class="background">
+        <rect x="50" y="300" height="50" width="50"/>
+        <rect x="500" y="300" height="50" width="50"/>
+        <rect x="100" y="100" height="50" width="50"/>
+        <rect x="275" y="250" height="50" width="50"/>
+        <rect x="150" y="200" height="50" width="50"/>
+        <rect x="400" y="220" height="50" width="50"/>
+        <circle cx="150" cy="300" r="30"/>
+        <circle cx="300" cy="100" r="30"/>
+        <circle cx="550" cy="250" r="30"/>
+        <circle cx="450" cy="150" r="30"/>
+        <circle cx="400" cy="350" r="30"/>
+        <circle cx="50" cy="220" r="30"/>
+        <circle cx="250" cy="380" r="30"/>
+        <circle cx="350" cy="180" r="30"/>
+    </g>
+    <g class="dynamic">
+        <rect x="50" y="300" height="50" width="50" class="c"/>
+        <rect x="500" y="300" height="50" width="50" class="c"/>
+        <rect x="100" y="100" height="50" width="50" class="c"/>
+        <rect x="275" y="250" height="50" width="50" class="c"/>
+        <rect x="150" y="200" height="50" width="50" class="c"/>
+        <rect x="400" y="220" height="50" width="50" class="c"/>
+        <circle cx="150" cy="300" r="30" class="c"/>
+        <circle cx="300" cy="100" r="30" class="c"/>
+        <circle cx="550" cy="250" r="30" class="c"/>
+        <circle cx="450" cy="150" r="30" class="c"/>
+        <circle cx="400" cy="350" r="30" class="c"/>
+        <circle cx="50" cy="220" r="30" class="c"/>
+        <circle cx="250" cy="380" r="30" class="c"/>
+        <circle cx="350" cy="180" r="30" class="c"/>
+    </g>
 </g>
 
 <g id="elt82" class="canvas">
-    <rect x="50" y="300" height="50" width="50" class="c"/>
-    <rect x="500" y="300" height="50" width="50" class="c"/>
-    <rect x="100" y="100" height="50" width="50" class="c"/>
-    <rect x="220" y="150" height="50" width="50" class="c"/>
-    <rect x="275" y="250" height="50" width="50" class="c"/>
-    <rect x="150" y="200" height="50" width="50" class="c"/>
-    <rect x="400" y="220" height="50" width="50" class="c"/>
-    <rect x="550" y="120" height="50" width="50" class="c"/>
-    <circle cx="150" cy="300" r="30" class="c"/>
-    <circle cx="300" cy="100" r="30" class="c"/>
+    <g class="background">
+        <rect x="50" y="300" height="50" width="50"/>
+        <rect x="500" y="300" height="50" width="50"/>
+        <rect x="100" y="100" height="50" width="50"/>
+        <rect x="220" y="150" height="50" width="50"/>
+        <rect x="275" y="250" height="50" width="50"/>
+        <rect x="150" y="200" height="50" width="50"/>
+        <rect x="400" y="220" height="50" width="50"/>
+        <rect x="550" y="120" height="50" width="50"/>
+        <circle cx="150" cy="300" r="30"/>
+        <circle cx="300" cy="100" r="30"/>
+    </g>
+    <g class="dynamic">
+        <rect x="50" y="300" height="50" width="50" class="c"/>
+        <rect x="500" y="300" height="50" width="50" class="c"/>
+        <rect x="100" y="100" height="50" width="50" class="c"/>
+        <rect x="220" y="150" height="50" width="50" class="c"/>
+        <rect x="275" y="250" height="50" width="50" class="c"/>
+        <rect x="150" y="200" height="50" width="50" class="c"/>
+        <rect x="400" y="220" height="50" width="50" class="c"/>
+        <rect x="550" y="120" height="50" width="50" class="c"/>
+        <circle cx="150" cy="300" r="30" class="c"/>
+        <circle cx="300" cy="100" r="30" class="c"/>
+    </g>
 </g>
 
 <g id="elt84" class="canvas">
-    <rect x="50" y="300" height="50" width="50" class="c"/>
-    <rect x="500" y="300" height="50" width="50" class="c"/>
-    <rect x="100" y="100" height="50" width="50" class="c"/>
-    <rect x="220" y="150" height="50" width="50" class="c"/>
-    <rect x="275" y="250" height="50" width="50" class="c"/>
-    <rect x="150" y="200" height="50" width="50" class="c"/>
-    <rect x="400" y="220" height="50" width="50" class="c"/>
-    <rect x="550" y="120" height="50" width="50" class="c"/>
-    <circle cx="150" cy="300" r="30" class="c"/>
-    <circle cx="300" cy="100" r="30" class="c"/>
-    <circle cx="550" cy="250" r="30" class="c"/>
-    <circle cx="450" cy="150" r="30" class="c"/>
+    <g class="background">
+        <rect x="50" y="300" height="50" width="50"/>
+        <rect x="500" y="300" height="50" width="50"/>
+        <rect x="100" y="100" height="50" width="50"/>
+        <rect x="220" y="150" height="50" width="50"/>
+        <rect x="275" y="250" height="50" width="50"/>
+        <rect x="150" y="200" height="50" width="50"/>
+        <rect x="400" y="220" height="50" width="50"/>
+        <rect x="550" y="120" height="50" width="50"/>
+        <circle cx="150" cy="300" r="30"/>
+        <circle cx="300" cy="100" r="30"/>
+        <circle cx="550" cy="250" r="30"/>
+        <circle cx="450" cy="150" r="30"/>
+    </g>
+    <g class="dynamic">
+        <rect x="50" y="300" height="50" width="50" class="c"/>
+        <rect x="500" y="300" height="50" width="50" class="c"/>
+        <rect x="100" y="100" height="50" width="50" class="c"/>
+        <rect x="220" y="150" height="50" width="50" class="c"/>
+        <rect x="275" y="250" height="50" width="50" class="c"/>
+        <rect x="150" y="200" height="50" width="50" class="c"/>
+        <rect x="400" y="220" height="50" width="50" class="c"/>
+        <rect x="550" y="120" height="50" width="50" class="c"/>
+        <circle cx="150" cy="300" r="30" class="c"/>
+        <circle cx="300" cy="100" r="30" class="c"/>
+        <circle cx="550" cy="250" r="30" class="c"/>
+        <circle cx="450" cy="150" r="30" class="c"/>
+    </g>
 </g>
 
 <g id="elt86" class="canvas">
-    <rect x="50" y="300" height="50" width="50" class="c"/>
-    <rect x="500" y="300" height="50" width="50" class="c"/>
-    <rect x="100" y="100" height="50" width="50" class="c"/>
-    <rect x="220" y="150" height="50" width="50" class="c"/>
-    <rect x="275" y="250" height="50" width="50" class="c"/>
-    <rect x="150" y="200" height="50" width="50" class="c"/>
-    <rect x="400" y="220" height="50" width="50" class="c"/>
-    <rect x="550" y="120" height="50" width="50" class="c"/>
-    <circle cx="150" cy="300" r="30" class="c"/>
-    <circle cx="300" cy="100" r="30" class="c"/>
-    <circle cx="550" cy="250" r="30" class="c"/>
-    <circle cx="450" cy="150" r="30" class="c"/>
-    <circle cx="400" cy="350" r="30" class="c"/>
-    <circle cx="50" cy="220" r="30" class="c"/>
+    <g class="background">
+        <rect x="50" y="300" height="50" width="50"/>
+        <rect x="500" y="300" height="50" width="50"/>
+        <rect x="100" y="100" height="50" width="50"/>
+        <rect x="220" y="150" height="50" width="50"/>
+        <rect x="275" y="250" height="50" width="50"/>
+        <rect x="150" y="200" height="50" width="50"/>
+        <rect x="400" y="220" height="50" width="50"/>
+        <rect x="550" y="120" height="50" width="50"/>
+        <circle cx="150" cy="300" r="30"/>
+        <circle cx="300" cy="100" r="30"/>
+        <circle cx="550" cy="250" r="30"/>
+        <circle cx="450" cy="150" r="30"/>
+        <circle cx="400" cy="350" r="30"/>
+        <circle cx="50" cy="220" r="30"/>
+    </g>
+    <g class="dynamic">
+        <rect x="50" y="300" height="50" width="50" class="c"/>
+        <rect x="500" y="300" height="50" width="50" class="c"/>
+        <rect x="100" y="100" height="50" width="50" class="c"/>
+        <rect x="220" y="150" height="50" width="50" class="c"/>
+        <rect x="275" y="250" height="50" width="50" class="c"/>
+        <rect x="150" y="200" height="50" width="50" class="c"/>
+        <rect x="400" y="220" height="50" width="50" class="c"/>
+        <rect x="550" y="120" height="50" width="50" class="c"/>
+        <circle cx="150" cy="300" r="30" class="c"/>
+        <circle cx="300" cy="100" r="30" class="c"/>
+        <circle cx="550" cy="250" r="30" class="c"/>
+        <circle cx="450" cy="150" r="30" class="c"/>
+        <circle cx="400" cy="350" r="30" class="c"/>
+        <circle cx="50" cy="220" r="30" class="c"/>
+    </g>
 </g>
 
 <g id="elt88" class="canvas">
-    <rect x="50" y="300" height="50" width="50" class="c"/>
-    <rect x="500" y="300" height="50" width="50" class="c"/>
-    <rect x="100" y="100" height="50" width="50" class="c"/>
-    <rect x="220" y="150" height="50" width="50" class="c"/>
-    <rect x="275" y="250" height="50" width="50" class="c"/>
-    <rect x="150" y="200" height="50" width="50" class="c"/>
-    <rect x="400" y="220" height="50" width="50" class="c"/>
-    <rect x="550" y="120" height="50" width="50" class="c"/>
-    <circle cx="150" cy="300" r="30" class="c"/>
-    <circle cx="300" cy="100" r="30" class="c"/>
-    <circle cx="550" cy="250" r="30" class="c"/>
-    <circle cx="450" cy="150" r="30" class="c"/>
-    <circle cx="400" cy="350" r="30" class="c"/>
-    <circle cx="50" cy="220" r="30" class="c"/>
-    <circle cx="250" cy="380" r="30" class="c"/>
-    <circle cx="350" cy="180" r="30" class="c"/>
+    <g class="background">
+        <rect x="50" y="300" height="50" width="50"/>
+        <rect x="500" y="300" height="50" width="50"/>
+        <rect x="100" y="100" height="50" width="50"/>
+        <rect x="220" y="150" height="50" width="50"/>
+        <rect x="275" y="250" height="50" width="50"/>
+        <rect x="150" y="200" height="50" width="50"/>
+        <rect x="400" y="220" height="50" width="50"/>
+        <rect x="550" y="120" height="50" width="50"/>
+        <circle cx="150" cy="300" r="30"/>
+        <circle cx="300" cy="100" r="30"/>
+        <circle cx="550" cy="250" r="30"/>
+        <circle cx="450" cy="150" r="30"/>
+        <circle cx="400" cy="350" r="30"/>
+        <circle cx="50" cy="220" r="30"/>
+        <circle cx="250" cy="380" r="30"/>
+        <circle cx="350" cy="180" r="30"/>
+    </g>
+    <g class="dynamic">
+        <rect x="50" y="300" height="50" width="50" class="c"/>
+        <rect x="500" y="300" height="50" width="50" class="c"/>
+        <rect x="100" y="100" height="50" width="50" class="c"/>
+        <rect x="220" y="150" height="50" width="50" class="c"/>
+        <rect x="275" y="250" height="50" width="50" class="c"/>
+        <rect x="150" y="200" height="50" width="50" class="c"/>
+        <rect x="400" y="220" height="50" width="50" class="c"/>
+        <rect x="550" y="120" height="50" width="50" class="c"/>
+        <circle cx="150" cy="300" r="30" class="c"/>
+        <circle cx="300" cy="100" r="30" class="c"/>
+        <circle cx="550" cy="250" r="30" class="c"/>
+        <circle cx="450" cy="150" r="30" class="c"/>
+        <circle cx="400" cy="350" r="30" class="c"/>
+        <circle cx="50" cy="220" r="30" class="c"/>
+        <circle cx="250" cy="380" r="30" class="c"/>
+        <circle cx="350" cy="180" r="30" class="c"/>
+    </g>
 </g>
 
 </svg>

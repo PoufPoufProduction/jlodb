@@ -14,8 +14,15 @@
         svg#picross .bg3        { fill:#77CCFF; }
         svg#picross .bg4        { fill:#AAEEFF; }
         svg#picross .bg5        { stroke:#5599BB; stroke-width:2px; }
+        
+        svg#picross .f          { display:none; }
+        svg#picross .f0         { fill:#5599BB; }
 
-        svg#picross text    { font-size:50px;text-anchor:middle;fill:white;font-weight:bold; }
+        svg#picross text        { font-size:50px;text-anchor:middle;fill:white;font-weight:bold; }
+        
+        svg#picross #result         { display:none; }
+        .good svg#picross #result   { display:inline; }
+        svg#picross #result text    { text-anchor:start; }
 
     </style>
 </defs>
@@ -62,6 +69,43 @@
     <rect x="-1" y="-1" width="400" height="400" class="border"/>
     <rect x="-1" y="-1" width="400" height="400" class="bg3"/>
     <rect x="0" y="0" width="149" height="149" class="bg4"/>
+
+    <g transform="translate(2,2)">
+        <rect x="0" y="0" width="29.2" height="29.2" class="f" id="p0"/>
+        <rect x="29" y="0" width="29.2" height="29.2" class="f" id="p1"/>
+        <rect x="58" y="0" width="29.2" height="29.2" class="f" id="p2"/>
+        <rect x="87" y="0" width="29.2" height="29.2" class="f" id="p3"/>
+        <rect x="116" y="0" width="29.2" height="29.2" class="f" id="p4"/>
+    </g>
+    <g transform="translate(2,31)">
+        <rect x="0" y="0" width="29.2" height="29.2" class="f" id="p5"/>
+        <rect x="29" y="0" width="29.2" height="29.2" class="f" id="p6"/>
+        <rect x="58" y="0" width="29.2" height="29.2" class="f" id="p7"/>
+        <rect x="87" y="0" width="29.2" height="29.2" class="f" id="p8"/>
+        <rect x="116" y="0" width="29.2" height="29.2" class="f" id="p9"/>
+    </g>
+    <g transform="translate(2,60)">
+        <rect x="0" y="0" width="29.2" height="29.2" class="f" id="p10"/>
+        <rect x="29" y="0" width="29.2" height="29.2" class="f" id="p11"/>
+        <rect x="58" y="0" width="29.2" height="29.2" class="f" id="p12"/>
+        <rect x="87" y="0" width="29.2" height="29.2" class="f" id="p13"/>
+        <rect x="116" y="0" width="29.2" height="29.2" class="f" id="p14"/>
+    </g>
+    <g transform="translate(2,89)">
+        <rect x="0" y="0" width="29.2" height="29.2" class="f" id="p15"/>
+        <rect x="29" y="0" width="29.2" height="29.2" class="f" id="p16"/>
+        <rect x="58" y="0" width="29.2" height="29.2" class="f" id="p17"/>
+        <rect x="87" y="0" width="29.2" height="29.2" class="f" id="p18"/>
+        <rect x="116" y="0" width="29.2" height="29.2" class="f" id="p19"/>
+    </g>
+    <g transform="translate(2,118)">
+        <rect x="0" y="0" width="29.2" height="29.2" class="f" id="p20"/>
+        <rect x="29" y="0" width="29.2" height="29.2" class="f" id="p21"/>
+        <rect x="58" y="0" width="29.2" height="29.2" class="f" id="p22"/>
+        <rect x="87" y="0" width="29.2" height="29.2" class="f" id="p23"/>
+        <rect x="116" y="0" width="29.2" height="29.2" class="f" id="p24"/>
+    </g>
+    
     <g>
         <use transform="translate(150,0)" xlink:href="#v1"/>
         <use transform="translate(200,0)" xlink:href="#v2"/>
@@ -158,6 +202,11 @@
     <rect x="300" y="350" width="49" height="49" class="c"/>
     <rect x="350" y="350" width="49" height="49" class="c"/>
 
+</g>
+
+<g id="result">
+    <rect x="200" y="350" width="500" ry="20" height="50" style="stroke:white;stroke-width:5;fill:#5599BB;fill-opacity:0.8"/>
+    <text transform="translate(220,392)" id="tfinal"></text>
 </g>
 
 

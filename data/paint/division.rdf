@@ -7,53 +7,56 @@
     <rdf:Description>
         <dct:identifier>d201</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier la moitié des éléments présents [4 à 6].</dct:title>
-        <dct:description><![CDATA["scorearg":[4,4,6],"url":"res/img/desktop/paint/num001.svg","data":[{},{"toggle":true}],"selected":1,"canvas":["rect4","circle4","rect6"],"scorefct":"function($this,_result,_arg){var n=[0,0],l=_result.length;for (i=0;i<l;i++) { if (_result[i]=='1') n[i<_arg?0:1]++; } return Math.abs(n[0]-_arg/2)+Math.abs(n[1]-(l-_arg)/2);}","number":3,"font":0.5]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","scorearg":[4,4,6],"url":"res/img/desktop/paint/num001.svg","data":[{},{"toggle":true}],"selected":1,"canvas":["rect4","circle4","rect6"],"scorefct":"function($this,_result,_arg){var n=[0,0],l=_result.length;for (i=0;i<l;i++) { if (_result[i]=='1') n[i<_arg?0:1]++; } return Math.abs(n[0]-_arg/2)+Math.abs(n[1]-(l-_arg)/2);}","number":3,"font":0.5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Coloriez en rouge la [b]moitié[/b] des objets présents."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>d201</dct:alternative>
-        <dct:source>res/img/desktop/paint/num001.svg</dct:source>
+        <dct:source>res/img/background/landscape/yellowboard02.svg,res/img/desktop/paint/num001.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>d202</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier la moitié des éléments présents [6 à 10].</dct:title>
-        <dct:description><![CDATA["scorearg":[6,8,8,10],"url":"res/img/desktop/paint/num001.svg","data":[{},{"toggle":true}],"selected":1,"canvas":["circle6","rect8","circle8","rect10"],"scorefct":"function($this,_result,_arg){var n=[0,0],l=_result.length;for (i=0;i<l;i++) { if (_result[i]=='1') n[i<_arg?0:1]++; } return Math.abs(n[0]-_arg/2)+Math.abs(n[1]-(l-_arg)/2);}","number":4,"font":0.5]]></dct:description>
+        <dct:description><![CDATA["scorearg":[6,8,8,10],"canvas":["circle6","rect8","circle8","rect10"],"number":4]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Coloriez en rouge la [b]moitié[/b] des objets présents."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>d201</dct:alternative>
-        <dct:source>res/img/desktop/paint/num001.svg</dct:source>
+        <dct:relation>d201</dct:relation>
+        <dct:source>res/img/background/landscape/yellowboard02.svg,res/img/desktop/paint/num001.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>d205</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier la moitié des carrés et cercles présents [en nombre identique 4,6,8].</dct:title>
-        <dct:description><![CDATA["scorearg":[4,6,8],"url":"res/img/desktop/paint/num001.svg","data":[{},{"toggle":true}],"selected":1,"canvas":["elt44","elt66","elt88"],"scorefct":"function($this,_result,_arg){var n=[0,0],l=_result.length;for (i=0;i<l;i++) { if (_result[i]=='1') n[i<_arg?0:1]++; } return Math.abs(n[0]-_arg/2)+Math.abs(n[1]-(l-_arg)/2);}","number":3,"font":0.5]]></dct:description>
+        <dct:description><![CDATA["scorearg":[4,6,8],"canvas":["elt44","elt66","elt88"],"number":3]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Coloriez en rouge la [b]moitié[/b] des [red]carrés[/red] présents et la [b]moitié[/b] des [red]cercles[/red]."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>d201</dct:alternative>
-        <dct:source>res/img/desktop/paint/num001.svg</dct:source>
+        <dct:relation>d201</dct:relation>
+        <dct:source>res/img/background/landscape/yellowboard02.svg,res/img/desktop/paint/num001.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>d206</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier la moitié des carrés et cercles présents [de 2 à 8].</dct:title>
-        <dct:description><![CDATA["scorearg":[4,2,6,8],"url":"res/img/desktop/paint/num001.svg","data":[{},{"toggle":true}],"selected":1,"canvas":["elt46","elt28","elt68","elt84"],"scorefct":"function($this,_result,_arg){var n=[0,0],l=_result.length;for (i=0;i<l;i++) { if (_result[i]=='1') n[i<_arg?0:1]++; } return Math.abs(n[0]-_arg/2)+Math.abs(n[1]-(l-_arg)/2);}","number":4,"font":0.5]]></dct:description>
+        <dct:description><![CDATA["scorearg":[4,2,6,8],"canvas":["elt46","elt28","elt68","elt84"],"number":4]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Coloriez en rouge la [b]moitié[/b] des [red]carrés[/red] présents et la [b]moitié[/b] des [red]cercles[/red]."]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>d201</dct:alternative>
-        <dct:source>res/img/desktop/paint/num001.svg</dct:source>
+        <dct:relation>d201</dct:relation>
+        <dct:source>res/img/background/landscape/yellowboard02.svg,res/img/desktop/paint/num001.svg</dct:source>
     </rdf:Description>
 
 
