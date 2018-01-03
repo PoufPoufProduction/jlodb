@@ -355,7 +355,7 @@
         <dct:identifier>054</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser CAP et l'opération MODULO pour tracer un carré.</dct:title>
         <dct:description><![CDATA["a":{"op":["av","ca","ct","mt"],"va":["V200","V180","V270"],"ma":["modulo"]},"bg":[{"type":"grid100","attr":{"class":"tiny"}},{"type":"text","attr":{"transform":"translate(312,30)"},"text":"90"},{"type":"text","attr":{"transform":"translate(600,240)"},"text":"0"},{"type":"text","attr":{"transform":"translate(300,470)"},"text":"270"},{"type":"text","attr":{"transform":"translate(10,240)"},"text":"180"},{"type":"line","attr":{"x1":320,"y1":240,"x2":320,"y2":440}},{"type":"line","attr":{"x1":320,"y1":440,"x2":120,"y2":440}},{"type":"line","attr":{"x1":120,"y1":440,"x2":120,"y2":240}},{"type":"line","attr":{"x1":120,"y1":240,"x2":320,"y2":240}}],"result":{"nb":4,"values":[[320,240,320,440,0],[320,440,120,440,0],[120,440,120,240,0],[120,240,320,240,0]]}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]En utilisant la grille 100×100 pour vous repérer, tracez le carré de dimension 200x200.[/b][br]Pour calculer les directions 0° et 90°, utilisez l'opération [red]MODULO 180[/red]. A ce propos [blue]A%A = 0[/blue] quelque soit A."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"En utilisant la grille 100×100 pour vous repérer, [b]tracez le carré de dimension 200x200.[/b][br].","tips":["Pour calculer les [b]directions 0° et 90°[/b], il faudra utiliser l'opération [red]MODULO 180[/red].","[b]A % A = 0[/b] quelque soit A.","[code]CAP 180[br]AVANCE 200[br]CAP 270[br]AVANCE 200[br]CAP 270 % 180[br][o1]AVANCE 200[/o1][br][o2]CAP 180 % 180[/o2][/code]"]]]></dct:description>
         <dct:extent>4</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -367,7 +367,7 @@
         <dct:identifier>055</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser CAP et l'opération MODULO pour tracer un carré.</dct:title>
         <dct:description><![CDATA["a":{"op":["av","ca","ct","mt"],"va":["V100","V180","V315","V225"],"ma":["modulo"]},"bg":[{"type":"grid100","attr":{"class":"tiny"}},{"type":"text","attr":{"transform":"translate(312,30)"},"text":"90"},{"type":"text","attr":{"transform":"translate(600,240)"},"text":"0"},{"type":"text","attr":{"transform":"translate(300,470)"},"text":"270"},{"type":"text","attr":{"transform":"translate(10,240)"},"text":"180"},{"type":"line","attr":{"x1":320,"y1":240,"x2":390.71,"y2":169.29}},{"type":"line","attr":{"x1":390.71,"y1":169.29,"x2":320,"y2":98.58}},{"type":"line","attr":{"x1":320,"y1":98.58,"x2":249.29,"y2":169.29}},{"type":"line","attr":{"x1":249.29,"y1":169.29,"x2":320,"y2":240}}],"result":{"nb":4,"values":[[320,240,390.71,169.29,0],[390.71,169.29,320,98.58,0],[320,98.58,249.29,169.29,0],[249.29,169.29,320,240,0]]}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]En utilisant la grille 100×100 pour vous repérer, tracez le carré de dimension 100×100.[/b][br]Pour calculer les directions 45° et 135°, utilisez l'opération [red]MODULO 180[/red]."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"En utilisant la grille 100×100 pour vous repérer, [b]tracez le carré de dimension 100×100.[/b]","tips":["Pour calculer les [b]directions 45° et 135°[/b], il faudra utiliser l'opération [red]MODULO 180[/red].","[b]225 % 180 = 45[/b] et[br][b]315 % 180 = 135[/b].","[code]CAP 225 % 180[br]AVANCE 100[br]CAP 315 % 180[br]AVANCE 100[br]CAP 225[br][o1]AVANCE 100[/o1][br][o2]CAP 315[/o2][/code]"],"help":[{"screen":[-730544740,1941009907,-71095325],"dialog":"La tortue n'est pas partie du [b]bon côté[/b].[br]Avez-vous pensez à utiliser l'opérateur [red]MODULO[/red] ?"},{"screen":[804578507,177169669],"dialog":"C'est un [b]bon début[/b] ! [br]Continuez ainsi."}]]]></dct:description>
         <dct:extent>4</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -379,50 +379,11 @@
         <dct:identifier>056</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser l'opérateur CAP et les opérations MODULO et NEG pour tracer un segment.</dct:title>
         <dct:description><![CDATA["a":{"op":["av","ca","ct","mt"],"va":["V200","V225","V180"],"ma":["modulo","neg"]},"bg":[{"type":"circle","attr":{"cx":320,"cy":240,"r":200,"class":"tiny"}},{"type":"text","attr":{"transform":"translate(312,30)"},"text":"90"},{"type":"text","attr":{"transform":"translate(600,240)"},"text":"0"},{"type":"text","attr":{"transform":"translate(300,470)"},"text":"270"},{"type":"text","attr":{"transform":"translate(10,240)"},"text":"180"},{"type":"line","attr":{"x1":320,"y1":240,"x2":461.42,"y2":381.42}}],"result":{"nb":1,"values":[[320,240,461.42,381.42,0]]}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Grâce aux opérations [red]MODULO[/red] et [red]NEG[/red], orientez la tortue dans la direction de 315° et avancez celle-ci de 200.[/b][br]Là encore, deux angles dont la différence fait 360° sont égaux. Ainsi [b]-45° et 315° représente le même angle[/b]."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Grâce aux opérations [red]MODULO[/red] et [red]NEG[/red], [b]orientez la tortue dans la direction de 315° et avancez celle-ci de 200.[/b]","tips":["En degrés : [b]315 = -45[/b].","[b]225 % 180 = 45[/b]","[code]CAP -( 225 % 180)[br]AVANCE 200[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>001</dct:alternative>
-    </rdf:Description>
-
-
-    <!-- COLORS AND MODULO -->
-
-    <rdf:Description>
-        <dct:identifier>061</dct:identifier>
-        <dct:title xml:lang="fr-FR">Changer la couleur du fond de l'écran à partir d'une valeur numérique.</dct:title>
-        <dct:description><![CDATA["a":{"op":["fo"],"va":["V000","V001","V002","V003","V004"]},"result":{"nb":0,"bg":"red"}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Dans l'onglet des valeurs, les couleurs proposées correspondent en réalité des nombres. La correspondance est la suivante:","[code]Noir = 0, Rouge = 1, Vert = 2, Bleu = 3 et Blanc = 4.[/code][br]Il n'y a [b]pas de différence à utiliser 3 à la place de 'Bleu' et réciproquement[/b]. Les couleurs ne sont proposées que par facilité d'utilisation. Cela évite d'avoir à retenir la table de correspondance.[br][b]Changez la couleur du fond en rouge.[/b]"]]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>it</dct:subject>
-        <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>001</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>062</dct:identifier>
-        <dct:title xml:lang="fr-FR">Changer la couleur du fond de l'écran à partir d'une valeur numérique supérieure à 4.</dct:title>
-        <dct:description><![CDATA["a":{"op":["fo"],"va":["V005","V006","V007","V008","V009"]},"result":{"nb":0,"bg":"green"}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[code]Noir = 0, Rouge = 1, Vert = 2, Bleu = 3 et Blanc = 4.[/code][br]Lorsque le paramètre utilisé pour l'opérateur [red]FOND[/red] n'est pas dans la table de correspondance ci-dessus, le processeur utilise l'opération [red]MODULO 5[/red] pour calculer la couleur de fond à utiliser. Par exemple, avec l'opération [red]FOND 13[/red], la couleur utilisée comme couleur de fond a pour valeur 13%5. Soit le reste de la division entière de 13 par 5, soit 3. Donc le Bleu d'après la table de correspondance.","[b]A l'aide des valeurs proposées, changez la couleur du fond en vert.[/b]"]]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>it</dct:subject>
-        <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>001</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>063</dct:identifier>
-        <dct:title xml:lang="fr-FR">Changer la couleur du fond de l'écran à partir d'une valeur numérique supérieure à 4.</dct:title>
-        <dct:description><![CDATA["a":{"op":["fo"],"va":["V005","V006","V007","V008","V009"]},"result":{"nb":0,"bg":"black"}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[code]Noir = 0, Rouge = 1, Vert = 2, Bleu = 3 et Blanc = 4.[/code][br][b]Changez la couleur du fond en noir.[/b]"]]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>it</dct:subject>
-        <dct:educationLevel>3</dct:educationLevel>
-        <dct:type>3</dct:type>
+        <dct:type>4</dct:type>
         <dct:alternative>001</dct:alternative>
     </rdf:Description>
 

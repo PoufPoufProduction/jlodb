@@ -11,8 +11,19 @@
 .sequence td#screen>div              { width:inherit; text-align:center; }
 .sequence .keyboard #screen             { float:right; font-size:3em; width:2.5em; border-radius:.25em; margin-right:.05em;
                                           text-align:center; margin-top:0.2em; }
-.sequence #time                         { font-size:.5em; width:6em; height:1.2em; overflow:hidden; text-align:center; }
-.sequence #time.late                    { color:red; }
+                                          
+                                          
+                                          
+                                          
+.sequence #time             { font-size:.5em; width:5.9em; height:1.2em; overflow:hidden; text-align:center; border:0; float:none; position:relative; margin:.05em; background-color:gray; }
+.sequence #time>div         { position:absolute;top:0;left:0;width:100%;height:100%;color:white; }
+.sequence #time>#timeslider       { background-color:#0A0; width:0; }
+.sequence #time.late>#timeslider        { background-color:red; }
+.sequence .svg #time        { font-size:1em; width:100%; text-align:right; position:absolute; z-index:2000;}
+.sequence .template #time   { font-size:1em; width:100%; text-align:right; }
+
+
+
 .sequence div#splashex                  { background-image:url("../../res/img/banners/sequence.svg"); }
 .sequence div#splashex h1               { position:absolute; top:33%; left:50%; font-size:.7em; white-space:nowrap; }
 .sequence div#splashex .guide           { position:absolute; top:42%; left:51%; font-size:.4em; width:25%; font-style:italic;
@@ -31,8 +42,7 @@
                                           background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat; }
 .sequence .svg #values                  { height:1em; width:100%; overflow:hidden; float:none; position:relative;
                                           background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat; }
-.sequence .svg #time                    { font-size:1em; width:100%; border:0; float:none; text-align:right;
-                                          position:absolute; z-index:2000;}
+
 .sequence .svg #board                   { float:none; width:100%; height:1em; font-size:.3em; overflow:hidden;
                                           border:1px solid black; border-width:0 0 1px 0;}
 .sequence .svg #board table             { width:100%; }
