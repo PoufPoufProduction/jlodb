@@ -6,6 +6,7 @@
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <style>
 body               { font-family:"Century Gothic", sans-serif; }
+a                  { text-decoration:none; }
 .exercice          { border:2px solid gray; height:14em; width:14em; margin:2px; overflow:hidden; float:left; position:relative;
                      cursor:pointer; }
 .eximg             { width: 14em; height:10.5em; background-color:gray; border:0; 
@@ -22,7 +23,7 @@ body               { font-family:"Century Gothic", sans-serif; }
 .exercice .label             { margin-left:2.5em; float:left; margin-right:3px; text-align:right; }
 
 .chapter                     { clear:both; }
-.chapter .strong             { font-size:1.5em; font-weight:bold; }
+.chapter .strong             { font-weight:bold; display:inline; }
 .chapter .label              { cursor:pointer; }
 .chapter .overview           { display:none; }
 .chapter .overview.s         { display:inherit; }
@@ -108,7 +109,9 @@ node: function(_target, _nodes, _level) {
         var html="";
         var id = "c"+(render.count++);
         html+="<div class='chapter' id='"+id+"'>";
-        html+="<div class='label' style='margin-left:"+_level+"em;'>"+render.format(n.label)+"</div>";
+        html+="<div class='label' style='margin-left:"+_level+"em;'>"+
+            "<a href='tibibo.html?id="+args.tibibo+"&chapter="+n.id+"'>["+n.id+"]</a> "+
+            render.format(n.label)+"</div>";
         html+="<div class='overview'></div>";
         html+="</div>";
         var $html=$(html);
@@ -140,9 +143,9 @@ node: function(_target, _nodes, _level) {
 
 };
 
+var args = {}
 $(window).ready(function() {
 
-    var args = {}
     var a = location.search.substring(1).split('&');
     for (var i in a) { var p= a[i].split('='); args[p[0]]=p[1]; }
     

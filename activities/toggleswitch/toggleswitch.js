@@ -248,7 +248,7 @@
             settings.current=settings.values?settings.values[settings.it%settings.values.length]:settings;
             
             if (settings.current.gen) {
-                var gen = eval('('+settings.current.gen+')')();
+                var gen = eval('('+settings.current.gen+')')($this,settings,settings.it);
                 settings.current = $.extend({}, gen);
             }
             

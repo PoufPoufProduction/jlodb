@@ -643,7 +643,7 @@
     <rdf:Description>
         <dct:identifier>10</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner, sans contrainte de temps, 2 nombres compris entre 1 et 10</dct:title>
-        <dct:description><![CDATA["class":"h12","time":0,"input":{"digit":2,"speed":5000},"gen":"function() { return \\\"\\\"+(Math.floor(Math.random()*10)+1)+\\\"+\\\"+(Math.floor(Math.random()*10)+1); }","font":2.5,"number":10]]></dct:description>
+        <dct:description><![CDATA["class":"h12","time":0,"input":{"digit":2,"speed":5000},"gen":"function() { return \\\"\\\"+(Math.floor(Math.random()*10)+1)+\\\"+\\\"+(Math.floor(Math.random()*10)+1); }","font":2.4,"number":10]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -654,27 +654,56 @@
 
     <rdf:Description>
         <dct:identifier>10x</dct:identifier>
-        <dct:title xml:lang="fr-FR">Additioner, en moins de 5 secondes par opération, 2 nombres compris entre 1 et 10</dct:title>
-        <dct:description><![CDATA["class":"h12","timemode":1,"time":5,"input":{"digit":2,"speed":5000},"gen":"function() { return \\\"\\\"+(Math.floor(Math.random()*10)+1)+\\\"+\\\"+(Math.floor(Math.random()*10)+1); }","font":2.5,"number":10]]></dct:description>
+        <dct:title xml:lang="fr-FR">Additioner, en moins de 5 secondes, 2 nombres compris entre 1 et 10</dct:title>
+        <dct:description><![CDATA["time":5]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>10</dct:alternative>
+        <dct:relation>10</dct:relation>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>10y</dct:identifier>
-        <dct:title xml:lang="fr-FR">Additioner, en moins de 20 secondes, 2 nombres compris entre 1 et 10</dct:title>
-        <dct:description><![CDATA["class":"h12","time":1,"input":{"digit":2,"speed":5000},"gen":"function() { return \\\"\\\"+(Math.floor(Math.random()*10)+1)+\\\"+\\\"+(Math.floor(Math.random()*10)+1); }","font":2.5,"number":10]]></dct:description>
+        <dct:title xml:lang="fr-FR">Additioner, en moins de 3 secondes, 2 nombres compris entre 1 et 10</dct:title>
+        <dct:description><![CDATA["time":3]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>3</dct:type>
+        <dct:type>4</dct:type>
         <dct:alternative>10</dct:alternative>
+        <dct:relation>10</dct:relation>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
     </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>10u</dct:identifier>
+        <dct:title xml:lang="fr-FR">Additioner, en moins de 5 secondes par opération, 2 nombres compris entre 1 et 10</dct:title>
+        <dct:description><![CDATA["time":5,"timemode":1]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>10</dct:alternative>
+        <dct:relation>10</dct:relation>
+        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>10v</dct:identifier>
+        <dct:title xml:lang="fr-FR">Additioner, en moins de 3 secondes par opération, 2 nombres compris entre 1 et 10</dct:title>
+        <dct:description><![CDATA["time":3,"timemode":1]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:alternative>10</dct:alternative>
+        <dct:relation>10</dct:relation>
+        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
+    </rdf:Description>
+    
 
     <rdf:Description>
         <dct:identifier>10s</dct:identifier>
@@ -688,17 +717,6 @@
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
     </rdf:Description>
     
-    <rdf:Description>
-        <dct:identifier>10n</dct:identifier>
-        <dct:title xml:lang="fr-FR">Additioner, sans contrainte de temps, 2 nombres compris entre 1 et 10  dont la somme est inférieure ou égale à 10</dct:title>
-        <dct:description><![CDATA["class":"h12","time":0,"input":{"digit":2,"speed":5000},"gen":"function() { var a,b; do { a=Math.floor(Math.random()*10)+1; b=Math.floor(Math.random()*10)+1; } while(a+b>10); return a.toString()+\\\"+\\\"+b.toString(); }","font":2.5,"number":20]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>addition</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>10</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
-    </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>49</dct:identifier>
@@ -714,8 +732,8 @@
 
     <rdf:Description>
         <dct:identifier>49x</dct:identifier>
-        <dct:title xml:lang="fr-FR">Additioner, en moins de 40 secondes, 2 nombres compris entre 0 et 49</dct:title>
-        <dct:description><![CDATA["class":"h12","time":0,"input":{"digit":2,"speed":5000},"gen":"function() { return \\\"\\\"+Math.floor(Math.random()*50)+\\\"+\\\"+Math.floor(Math.random()*50); }","font":1.8]]></dct:description>
+        <dct:title xml:lang="fr-FR">Additioner, en moins de 5 secondes, 2 nombres compris entre 0 et 49</dct:title>
+        <dct:description><![CDATA["class":"h12","time":5,"input":{"digit":2,"speed":5000},"gen":"function() { return \\\"\\\"+Math.floor(Math.random()*50)+\\\"+\\\"+Math.floor(Math.random()*50); }","font":1.8]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>

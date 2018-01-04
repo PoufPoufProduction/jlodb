@@ -183,7 +183,7 @@
                     var $li = $("<li></li>").appendTo($ul), vNewValue, vValue = { question:0, response:0};
 
                     // Get the question
-                    if (settings.gen)   { vNewValue = eval('('+settings.gen+')')(); }
+                    if (settings.gen)   { vNewValue = eval('('+settings.gen+')')($this,settings,i); }
                     else                { vNewValue = vValueArray[i%vValueArray.length]; }
 
                     // The question may be an array [question, response], otherwise response is evaluated from the question

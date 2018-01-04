@@ -173,9 +173,7 @@
 
             // Get the operation
             var vOpTmp;
-            if (settings.gen) {
-                vOpTmp = eval('('+settings.gen+')')();
-            }
+            if (settings.gen) { vOpTmp = eval('('+settings.gen+')')($this,settings,0); }
             else {
                 var vNew;
                 do  { vNew = settings.values.length==settings.number?settings.count:Math.floor(Math.random()*settings.values.length); }
