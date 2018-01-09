@@ -5,12 +5,11 @@
         template    : "template.html",      // Activity's html template
         css         : "style.css",          // Activity's css style sheet
         locale      : "fr",                 // Current localization
-        number      : 4,                    // Number of exercices
+        number      : 3,                    // Number of exercices
         base        : 10,                   // Base of the exercice
         nbdec       : 0,                    // Number of decimal for division
-        withmove    : true,                 // Does user need to move the decimal value
+        withmove    : false,                // Does user need to move the decimal value
         removezero  : true,                 // No space allowed for 0 multiplicator
-        time        : 1,                    // Perfect time to solve the operation
         ratioerr    : 1,                    // Error ratio
         fontex      : 1,                    // Exercice font
         highlight   : [],                   // Highlight cells
@@ -95,33 +94,39 @@
                 var settings = helpers.settings($this);
                 if (settings.context.onload) { settings.context.onload($this); }
                 
+                settings.background="res/img/background/landscape/bluecarpet01.svg";
+                //settings.base = 11;
+                
                 // HANDLE BACKGROUND
                 if (settings.background) { $this.children().first().css("background-image","url("+settings.background+")"); }
+                
 
                 // Base and nbdec
                 $this.find("#base").toggle(settings.base!=10).find("span").html(settings.base);
                 $this.find("#nbdec").toggle(settings.nbdec!=0).find("span").html(settings.nbdec);
 
                 // Keypad
-                var nb = Math.min(settings.base,10);
-                var r = settings.base>10?2:1.8;
-                for (var i=0; i<nb; i++) {
-                    settings.$keys.push(
-                        $this.find("#keypad #key"+i).css("top",(r*Math.pow(nb/10,0.3)*Math.cos(2*Math.PI*(i/nb))-0.5)+"em")
-                            .css("left",(r*Math.pow(nb/10,0.3)*Math.sin(2*Math.PI*(i/nb))-0.5)+"em")
-                            .addClass(settings.base>10?"small":"normal")
-                            .show()
-                    );
-                }
-                nb=settings.base - 10;
-                if (nb>0) for (var i=0; i<nb; i++) {
-                    settings.$keys.push(
-                        $this.find("#keypad #key"+(i+10)).css("top",(1.2*Math.pow(nb/10,0.3)*Math.cos(2*Math.PI*(i/nb))-0.5)+"em")
-                            .css("left",(1.2*Math.pow(nb/10,0.3)*Math.sin(2*Math.PI*(i/nb))-0.5)+"em")
-                            .addClass(settings.base>10?"small":"normal")
-                            .show()
-                    );
-                }
+                setTimeout(function() {
+                    var nb = Math.min(settings.base,10);
+                    var r = settings.base>10?2:1.8;
+                    for (var i=0; i<nb; i++) {
+                        settings.$keys.push(
+                            $this.find("#keypad #key"+i).css("top",(r*Math.pow(nb/10,0.3)*Math.cos(2*Math.PI*(i/nb))-0.5)+"em")
+                                .css("left",(r*Math.pow(nb/10,0.3)*Math.sin(2*Math.PI*(i/nb))-0.5)+"em")
+                                .addClass(settings.base>10?"small":"normal")
+                                .show()
+                        );
+                    }
+                    nb=settings.base - 10;
+                    if (nb>0) for (var i=0; i<nb; i++) {
+                        settings.$keys.push(
+                            $this.find("#keypad #key"+(i+10)).css("top",(1.2*Math.pow(nb/10,0.3)*Math.cos(2*Math.PI*(i/nb))-0.5)+"em")
+                                .css("left",(1.2*Math.pow(nb/10,0.3)*Math.sin(2*Math.PI*(i/nb))-0.5)+"em")
+                                .addClass(settings.base>10?"small":"normal")
+                                .show()
+                        );
+                    }
+                },100);
 
                 // exercice
                 if ($.isArray(settings.exercice)) {
@@ -138,26 +143,21 @@
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
+        // PLACE THE OPERANDS ACCORDING TO THE MOVE POSITION
         showop: function($this) {
             var settings = helpers.settings($this);
             $this.find(".value.l1").html("");
+            $this.find(".dec.decop").detach();
             for (var i=0; i<settings.op.length; i++) {
 
-                var v=(settings.type=="*")?settings.op[i].value.toString(settings.base):
-                        settings.op[i].value[0].toString(settings.base) + 
-                        settings.op[i].value[1].toString(settings.base).substr(0, settings.op[i].dec);
-
-                if (settings.type=="*") { while(v.length<=settings.op[i].dec) { v = "0"+v; } }
+                var v=settings.op[i].alpha[0] + settings.op[i].alpha[1];
 
                 for (var j=0; j<v.length; j++) {
-                    var $cell = $this.find("#c"+(j+settings.size[0]-v.length-settings.op[i].pos)+"x"+i);
-                    $cell.html("<div>"+v[j]+"</div>");
+                    var elt=settings.cells.get(settings.size[0]*(i+1)+j+settings.op[i].pos);
+                    elt.$elt.html("<div>"+v[j]+"</div>");
 
-                    if (settings.op[i].dec && j==v.length-settings.op[i].dec-1) {
-                        if (settings.op[i].$elt) { settings.op[i].$elt.detach(); }
-                        settings.op[i].$elt =
-                            $("<div class='dec s' style='top:"+$cell.css("top")+";left:"+$cell.css("left")+";'><div></div></div>");
-                        $this.find("#data").append(settings.op[i].$elt);
+                    if ( settings.op[i].alpha[1].length && j==settings.op[i].alpha[0].length-1) {
+                        $this.find("#data").append($("<div class='dec decop s' style='top:"+elt.pos[1]+"em;left:"+elt.pos[0]+"em;'><div></div></div>"));
                     }
 
                 }
@@ -181,290 +181,241 @@
                     vOpTmp = settings.values[vNew];
                     settings.last = vNew;
             }
+            
+            //settings.base = 10;
+            //settings.nbdec= 1;
+            //vOpTmp="136.02/4.9";
+            //settings.withmove = true;
 
-            // Split the operation regarding the operation type
+            // SPLIT THE OPERATION REGARDING THE OPERATION TYPE
             if (vOpTmp.indexOf("*")>=0) { settings.type = "*"; } else
             if (vOpTmp.indexOf("/")>=0) { settings.type = "/"; } else
             if (vOpTmp.indexOf("-")>=0) { settings.type = "-"; } else
                                         { settings.type = "+"; }
-            var vReg = new RegExp("["+settings.type+"]", "g");
-            var vOperation = vOpTmp.split(vReg);
-            settings.op=[];
+            var vReg        = new RegExp("["+settings.type+"]", "g");
+            var vOperation  = vOpTmp.split(vReg);
+            settings.op     = [];
+            settings.max    = [0,0];
             
-            console.log("["+settings.type+"] ("+vOperation.join(',')+")");
-
-            // Compute the size of the table
-            var height = 0 , width = 0;         // HEIGHT AND WIDTH OF THE TABLE
-            var dec = false;                    // DOES THE RESULT HAS DECIMAL
-            var wtmp = [0,0];                   // temporary width : unit width, decimal width
-            if (settings.type=="*") {
-                for (var i=0; i<2; i++) {
-                    var comma = vOperation[i].indexOf(".");
-                    var op = { value:0, dec:0, pos:0, $elt:0 };
-                    if (comma!=-1) {
-                        var tmp = vOperation[i].substr(0,comma)+vOperation[i].substr(comma+1);
-                        op.value = parseInt(tmp, settings.base);
-                        op.dec = vOperation[i].length-comma-1;
-                        dec = true;
-                    }
-                    else { op.value = parseInt(vOperation[i], settings.base); }
-                    settings.op.push(op);
-                }
-
-                settings.withmove = false;
-                settings.result = (settings.op[0].value * settings.op[1].value).toString(settings.base);
-                settings.dec    = settings.op[0].dec+settings.op[1].dec;
-                while (settings.result.length<=settings.dec) { settings.result="0"+settings.result; }
-                width = settings.result.length;
-                var tmp = Math.max(settings.op[1].value.toString(settings.base).length,settings.op[1].dec);
-                height = 2+ (tmp>1?tmp:0) + 1;
+            for (var i=0; i<vOperation.length; i++) {
+                var comma = Math.max(0,vOperation[i].indexOf("."));
+                var op = { value: 0,        // Value without comma (last max[1] digits are decimal part)
+                           alpha: ["",""],  // Int and dec parts of the value in native base
+                           width: 0,        // Width of the integer and decimal part
+                           pos  : 0,        // First column position
+                           $elt : 0 };      // Graphical element from DOM
+                if (comma)  { op.alpha    = [ vOperation[i].substr(0, comma), vOperation[i].substr(comma+1) ]; }
+                else        { op.alpha[0] = vOperation[i]; }
+                for (j=0; j<2; j++) { settings.max[j]=Math.max(op.alpha[j].length,settings.max[j]); }
+                op.width = op.alpha[0].length + op.alpha[1].length;
+                settings.op.push(op);
             }
-            else if (settings.type=="/") {
-                for (var i=0; i<2; i++) {
-                    var comma = vOperation[i].indexOf(".");
-                    var op = { value:0, dec:0, pos:0, $elt:0 };
-                    if (comma!=-1) {
-                        var tmp = vOperation[i].substr(0,comma)+vOperation[i].substr(comma+1);
-                        op.value = parseInt(tmp, settings.base);
-                        op.dec = vOperation[i].length-comma-1;
-                        dec = true;
-                    }
-                    else { op.value = parseInt(vOperation[i], settings.base); }
-                    settings.op.push(op);
-                }
+            for (var i in settings.op) {
+                var val = settings.op[i].alpha[0] + settings.op[i].alpha[1];
+                for (var j=0; j<settings.max[1]-settings.op[i].alpha[1].length; j++) { val+="0"; }
+                settings.op[i].value = parseInt(val, settings.base);
+            }
+            
+            // COMPUTE RESULT AND PREPARE BOARD SETTINGS ACCORDING TO THE OPERATION TYPE
+            if (settings.type=="/") {
+                var nbd = settings.nbdec?settings.nbdec:settings.max[1];
+                var v   = Math.floor(Math.pow(settings.base,nbd)*settings.op[0].value/settings.op[1].value);
+                var m   = settings.op[0].value*Math.pow(10,settings.nbdec) - v*settings.op[1].value;
+                v       = v.toString(settings.base);
+                var p   = v.length-nbd;
+                settings.size[0]        = settings.max[0]+Math.max(settings.max[1],nbd)+
+                                          Math.max(p+nbd,settings.op[1].alpha[0].length+settings.op[1].alpha[1].length);
+                settings.size[1]        = 1+2*v.length;
+                settings.size[2]        = settings.max[0]+Math.max(settings.max[1],nbd);
+                settings.result.value   = [v.slice(0, p), '.', v.slice(p,p+nbd)].join('');
+                settings.result.nbdec   = nbd;
+                settings.result.modulo  = m;
+            }
+            else if (settings.type=="*") {
+                var v   = (settings.op[0].value * settings.op[1].value).toString(settings.base);
+                var p   = v.length-(settings.max[1]*2);
+                var nbd = settings.op[0].alpha[1].length + settings.op[1].alpha[1].length;
+                var tmp = settings.op[1].alpha[0].length+settings.op[1].alpha[1].length;
 
-                settings.withmove = false;
-                var tmp = (settings.op[0].value/settings.op[1].value).toString(settings.base);
-                var comma = tmp.indexOf(".");
-                if (comma!=-1) { tmp = tmp.substr(0,comma)+tmp.substr(comma+1); } else { comma = tmp.length; }
-
-                var delta = settings.op[0].dec-settings.op[1].dec;
-                if (delta>0)      { for (var i=0; i<delta; i++) { if (comma>1) { comma--; } else { tmp = "0"+tmp; } } }
-                else if (delta<0) { for (var i=0; i<-delta;i++) { if (tmp[0]=='0') { tmp=tmp.substr(1);} else
-                                                                  if (comma<tmp.length) { comma++; } else { tmp+="0"; comma++;} } }
-                settings.dec = Math.min(tmp.length-comma, settings.nbdec);
-                settings.result = tmp.substr(0,comma+settings.dec);
-                if (settings.dec>0) { dec=true; }
-
-                var op2 = parseInt(settings.result, settings.base)*settings.op[1].value;
-                var dec2= settings.dec+settings.op[1].dec;
-                var op1 = settings.op[0].value;
-                var dec1= settings.op[0].dec;
-                if (dec2>dec1) { for (var i=dec1; i<dec2; i++) { op1*=10; } }
-                settings.modulo = (op1-op2).toString(settings.base);
-
-                wtmp[0] = settings.op[0].value.toString(settings.base).length + settings.nbdec - settings.op[0].dec + settings.op[1].dec;
-                wtmp[1] = Math.max(settings.op[1].value.toString(settings.base).length, settings.result.length);
-
-                width = wtmp[0] + wtmp[1];
-
-                height = (settings.result.length - (settings.removezero?settings.result.split("0").length:0) )*2+3;
+                settings.size[0]        = p+nbd;
+                settings.size[1]        = settings.op.length + (tmp>1?tmp:0) + 1;
+                settings.max[0]         = Math.max(settings.max[0], p);
+                settings.result.value   = [v.slice(0, p), '.', v.slice(p,p+nbd)].join('');
+                settings.result.nbdec   = nbd;
+                settings.result.modulo  = 0;
             }
             else {
-                var rtmp = [0,0]; // temporary result: settings.base^0 (units), settings.base^-10 decimals
-                settings.dec = 0;
-                for (var i=0; i<vOperation.length; i++) {
-                    var comma = vOperation[i].indexOf(".");
-                    var op = { value:[0,0], dec:0, pos:0, $elt:0 };
-                    if (comma!=-1) {
-                        var zero = ""; for (var j=(vOperation[i].length-comma); j<10; j++) { zero+="0"; }
-                        op.value[0] = parseInt(vOperation[i].substr(0, comma),settings.base);
-                        op.value[1] = parseInt(vOperation[i].substr(comma+1)+zero, settings.base);
-                        op.dec = vOperation[i].length-comma-1;
-                        if (op.dec>settings.dec) { settings.dec = op.dec; }
-                        dec = true;
-                    }
-                    else { op.value[0] = parseInt(vOperation[i], settings.base); comma = vOperation[i].length; }
-
-                    wtmp[0] = Math.max(wtmp[0], comma);
-                    wtmp[1] = Math.max(wtmp[1], op.dec);
-
-                    if (settings.type=="+") {             rtmp = [rtmp[0]+op.value[0],rtmp[1]+op.value[1]]; } else
-                    if (settings.type=="-") { if (i==0) { rtmp = [op.value[0], op.value[1]];}
-                                              else      { rtmp = [rtmp[0]-op.value[0],rtmp[1]-op.value[1]];}}
-                    settings.op.push(op);
-                }
-
-                if (!settings.withmove) for (var i in settings.op) { settings.op[i].pos = settings.dec - settings.op[i].dec; }
-
-                // handle the decimal part and the carry
-                var decimal = rtmp[1].toString(settings.base);
-                if (decimal[0]=='-') {
-                    while(decimal[0]=='-') {
-                        rtmp[0]--;
-                        rtmp[1]+=parseInt("1000000000",settings.base);
-                        decimal = rtmp[1].toString(settings.base);
-                    }
-                }
-                else
-                while (decimal.length>9) {
-                    rtmp[0]++;
-                    rtmp[1]-=parseInt("1000000000",settings.base);
-                    decimal = rtmp[1].toString(settings.base);
-                }
-                decimal = rtmp[1].toString(settings.base);
-                while (decimal.length<9) { decimal = "0"+decimal; }
-
-                // build the real result;
-                settings.result = rtmp[0].toString(settings.base) + decimal.substr(0,settings.dec);
-                wtmp[0] = Math.max(wtmp[0], rtmp[0].toString(settings.base).length);
-                wtmp[1] = Math.max(wtmp[1], rtmp[1].toString(settings.base).substr(0,settings.dec).length);
-                width = wtmp[0]+wtmp[1];
-                height = vOperation.length+1;
-
-                settings.offset = wtmp[0] - rtmp[0].toString(settings.base).length;
+                var v   = settings.op[0].value;
+                for (var i=1; i<settings.op.length; i++) { v+=(settings.type=="+"?1:-1)*settings.op[i].value; }
+                v       = v.toString(settings.base);
+                var p   = v.length-settings.max[1];
+                
+                settings.max[0]         = Math.max(settings.max[0], p);
+                settings.size[0]        = settings.max[0]+settings.max[1];
+                settings.size[1]        = settings.op.length + 1;
+                settings.result.value   = [v.slice(0, p), '.', v.slice(p)].join('');
+                settings.result.nbdec   = v.length-p;
+                settings.result.modulo  = 0;
             }
             
-            console.log(JSON.stringify(settings.op));
-            console.log("result: "+settings.result+" ("+settings.modulo+")");
-            console.log("("+width+"x"+height+") (offset: "+settings.offset+")");
+            for (var i in settings.op) {
+                settings.op[i].pos = settings.withmove?0:
+                    settings.size[0] - settings.max[1] - settings.op[i].alpha[0].length;
+            }
+            
+            console.log("[value: "+vOpTmp+"] [operation: "+settings.type+"] ("+JSON.stringify(settings.op));
+            console.log("[max: "+settings.max+"]");
+            console.log("[result: "+JSON.stringify(settings.result)+"]");
+            console.log("[size: "+settings.size[0]+"x"+settings.size[1]+"]"+(settings.size[2]?" ("+settings.size[2]+")":""));
 
             // BUILD THE TABLE FOR THE DIVISION OPERATION
-            var html = "", top = 0, left = 0;
+            var top = 0, left = 0;
+            settings.cells.clear();
+            
             if (settings.type=="/") {
-                for (var j=0; j<height; j++) {
-                    left = 0;
+                
+                $board.append("<div class='bg' style='top:-0.1em;left:-0.1em;width:"+(settings.size[2]+0.2)+"em;height:"+(settings.size[1]+0.2)+"em;'></div>");
+                $board.append("<div class='bg' style='top:-0.1em;left:"+settings.size[2]+"em;width:"+(settings.size[0]-settings.size[2]+0.2)+"em;height:2.3em;'></div>");
 
-                    for (var i=0; i<width; i++) {
-                        var opclass="";
+                // LEFT COLUMN
+                for (var j=0; j<settings.size[1]; j++) {
+                    left = 0;
+                    for (var i=0; i<settings.size[2]; i++) {
+                        var opclass=j?(j%2?" active l3":" active l2"):" l1";
                         var opcontent = "";
                         var add = true;
                         var offset = 0;
 
-                        // TYPE AND CONTENT OF THE CELL
                         if (j==0) {
-                            if (i<settings.op[0].value.toString(settings.base).length) {
-                                opcontent = settings.op[0].value.toString(settings.base)[i]; }
-                            else if (i>=wtmp[0] && i-wtmp[0]<settings.op[1].value.toString(settings.base).length) {
-                                opcontent = settings.op[1].value.toString(settings.base)[i-wtmp[0]]; }
-                        }
-                        if (i<wtmp[0]) { opclass=j?(j%2?" active l3":" active l2"):" l1"; }
-                        else { if (j>1) { add = false; } else { opclass=j?" result active l2":" l1"; offset=j?0.1:0; } }
-
-                        // BUILD THE CELL
-                        if (add) {
-                            html+="<div id='c"+i+"x"+j+"' class='value s"+Math.floor(Math.random()*2)+opclass+
-                                "' style='top:"+(top+offset)+"em;left:"+left+"em;'><div>"+opcontent+"</div></div>";
-                        }
-
-                        // STATIC COMMA IF NEEDED
-                        if (j==0) {
-                            if (settings.op[0].dec && i==settings.op[0].value.toString(settings.base).length-settings.op[0].dec-1) {
-                                html+="<div class='dec s' style='top:"+top+"em;left:"+left+"em;'><div></div></div>";
-                            }
-                            if (settings.op[1].dec &&
-                                i-wtmp[0]== settings.op[1].value.toString(settings.base).length-settings.op[1].dec-1) {
-                                html+="<div class='dec s' style='top:"+top+"em;left:"+left+"em;'><div></div></div>";
+                            var o  = settings.op[0];
+                            var op = o.alpha[0]+o.alpha[1];
+                            if (i<op.length) { opcontent = op[i]; }
+                            if (o.alpha[1].length && i+1==o.alpha[0].length) {
+                                $board.append("<div class='dec s' style='top:"+top+"em;left:"+left+"em;'><div></div></div>");
                             }
                         }
-
-                        // DYNAMIC COMMA
-                        if (j==1 && i>=wtmp[0] && dec && i<width-1) {
-                            html+="<div class='dec result' style='top:"+top+"em;left:"+left+"em;'><div></div></div>";
-                        }
-
+                        $board.append(settings.cells.push(
+                            "<div class='value s"+Math.floor(Math.random()*2)+opclass+"'><div>"+opcontent+"</div></div>",
+                            left, top));
 
                         left+=1;
-                        if (i==wtmp[0]-1) { left+=0.1; }
                     }
                     top+=1;
                 }
-                // BG
-                html+="<div class='bg' style='top:-0.1em;left:-0.1em;width:"+(wtmp[0]+0.2)+"em;height:"+(top+0.2)+"em;'></div>";
-                html+="<div class='bg' style='top:-0.1em;left:"+(wtmp[0]-0.95)+"em;width:"+(wtmp[1]+1.15)+"em;height:2.3em;'></div>";
-                
-                // HINT
-                if (settings.hint) {
-                    $this.find("#help").show();
-                    var hint="";
-                    for (var i=1; i<10; i++) {
-                        hint+="<div class='elt'><div class='label'>"+i+"×"+vOperation[1]+"</div>"+
-                              "<div class='result'>"+(i*vOperation[1])+"</div></div>";
+                // RIGHT COLUMN
+                left = settings.size[2]+0.1;
+                for (var i=0; i<settings.size[0]-settings.size[2]; i++) {
+                    var o  = settings.op[1];
+                    var op = o.alpha[0]+o.alpha[1];
+                    var opcontent = (i<op.length)?op[i]:"";
+                    
+                    if (o.alpha[1].length && i+1==o.alpha[0].length) {
+                        $board.append("<div class='dec s' style='top0em;left:"+left+"em;'><div></div></div>");
                     }
-                    $this.find("#phelp>div").html(hint);
+                    $board.append(settings.cells.push(
+                        "<div class='value s"+Math.floor(Math.random()*2)+" l1'><div>"+opcontent+"</div></div>",
+                        left, 0));
+                    $board.append(settings.cells.push(
+                        "<div class='value s"+Math.floor(Math.random()*2)+" result active l2'><div></div></div>",
+                        left, 1.1));
+                    left+=1;
                 }
+                
+               /*
+                        // DYNAMIC COMMA
+                        if (j==1 && i>=wtmp[0] && dec && i<settings.size[0]-1) {
+                            html+="<div class='dec result' style='top:"+top+"em;left:"+left+"em;'><div></div></div>";
+                        }
+
+                        */
             }
             // BUILD THE TABLE FOR ALL OPERATIONS BUT DIVISION
             else {
 
+                $board.append("<div class='bg' style='top:-0.1em;left:0.675em;width:"+(settings.size[0]+0.67)+"em;height:"+(settings.size[1]+0.8)+"em;'></div>");
+            
                 // HEADER
-                left+=0.75;
-                html+="<div class='corner' style='top:"+top+"em;left:"+left+"em;'></div>"; left+=.25;
-                for (var i=0; i<width; i++) {
-                    html+="<div class='carry' style='top:"+top+"em;left:"+left+"em;'><div class='active'></div></div>";
+                left+=1; // SPACE FOR LEFT OPERATORS ('+', '-' or '*')
+                for (var i=0; i<settings.size[0]; i++) {
+                    $board.append(settings.cells.push("<div class='carry active'></div>", left, top));
                     left+=1;
                 }
-                html+="<div class='corner' style='top:"+top+"em;left:"+left+"em;'></div>"; left+=.25;
                 top+=0.55;
 
                 // DATA
-                for (var j=0; j<height; j++) {
+                for (var j=0; j<settings.size[1]; j++) {
                     left = 0;
 
-                    // UPDATE DATA
-                    var optxt = "", opclass="", opdec = false;
-                    if (j>=0 && j<settings.op.length)               { opclass = " l1"; opdec = true; if (j>0) { optxt = settings.type; } }
-                    else if (j>=settings.op.length && j<height-1)   { opclass = " l2 active"; if (j>settings.op.length) optxt = "+"; }
-                    else if (j==height-1)                           { opclass = " result active"; }
+                    // GET INFORMATION FROM CURRENT LINE (OPERAND, INTERMEDIARY COMPUTATION, RESULT)
+                    var optxt = "", opclass=" line"+j, opdec = false;
+                    if (j>=0 && j<settings.op.length)
+                        { opclass += " l1"; opdec = true; if (j>0) { optxt = settings.type; } }
+                    else if (j>=settings.op.length && j<settings.size[1]-1)
+                        { opclass += " l2 active"; if (j>settings.op.length) optxt = "+"; }
+                    else if (j==settings.size[1]-1)
+                        { opclass += " result active"; }
 
                     if (optxt=="*")                                 { optxt = "×"; }
-
-                    html+="<div class='op' style='top:"+top+"em;left:"+left+"em;'>"+optxt+"</div>";
+                    
+                    // OPERATOR LABELS
+                    $board.append("<div class='op' style='top:"+top+"em;left:"+left+"em;'>"+optxt+"</div>");
                     left+=0.75;
 
-                    if (dec && settings.withmove && opdec) {
-                        html+="<div id='"+j+"' class='move"+opclass+"' style='top:"+top+"em;left:"+left+"em;' ";
-                        html+="onclick=\"$(this).closest('.operation').operation('move', this, true);\" ";
-                        html+="ontouchstart=\"$(this).closest('.operation').operation('move', this, true);event.preventDefault();\" ";
-                        html+="><img src='res/img/icon/cell/futoshiki05.svg'/></div>";
+                    var $ml = $("<div class='move' style='top:"+top+"em;left:"+left+"em;'></div>");
+                    if (opdec && settings.withmove) {
+                        $ml.addClass("ml").attr("id",j).bind("mousedown touchstart", function(event) {
+                            $(this).closest('.operation').operation('move', this, true);
+                            event.preventDefault();
+                        });
                     }
-                    else {
-                        html+="<div class='move' style='top:"+top+"em;left:"+left+"em;'>";
-                        html+="<img src='res/img/icon/cell/futoshiki04.svg'/></div>";
-                    }
+                    $board.append($ml);
                     left+=.25;
 
-                    for (var i=0; i<width; i++) {
-                        html+="<div id='c"+i+"x"+j+"' class='value s"+Math.floor(Math.random()*2)+opclass+
-                              "' style='top:"+top+"em;left:"+left+"em;'></div>";
+                    for (var i=0; i<settings.size[0]; i++) {
+                        // ADD A NEW CELL
+                        $board.append(settings.cells.push(
+                            "<div class='value s"+Math.floor(Math.random()*2)+opclass+"'></div>", left, top));
 
-                        if (dec && i<width-1 && j==height-1) {
-                            html+="<div id='d"+i+"x"+j+"' class='dec result' style='top:"+top+"em;left:"+left+"em;'><div></div></div>";
+                        // ADD DECIMAL POINT TO RESULT LINE
+                        if (settings.max[1] && i<settings.size[0]-1 && j==settings.size[1]-1) {
+                            $board.append("<div id='d"+i+"x"+j+"' class='dec result' style='top:"+top+"em;left:"+left+"em;'><div></div></div>");
                         }
                         left+=1;
                     }
 
-                    if (dec && settings.withmove && opdec) {
-                        html+="<div id='"+j+"' class='move"+opclass+"' style='top:"+top+"em;left:"+left+"em;' ";
-                        html+="onclick=\"$(this).closest('.operation').operation('move', this, false);\" ";
-                        html+="ontouchstart=\"$(this).closest('.operation').operation('move', this, false);event.preventDefault();\" ";
-                        html+="><img src='res/img/icon/cell/futoshiki06.svg'/></div>";
+                    var $mr = $("<div class='move' style='top:"+top+"em;left:"+left+"em;'></div>");
+                    if (opdec && settings.withmove) {
+                        $mr.addClass("mr").attr("id",j).bind("mousedown touchstart", function(event) {
+                            $(this).closest('.operation').operation('move', this, false);
+                            event.preventDefault();
+                        });
                     }
-                    else {
-                        html+="<div class='move' style='top:"+top+"em;left:"+left+"em;'>";
-                        html+="<img src='res/img/icon/cell/futoshiki04.svg'/></div>";
-                    }
+                    $board.append($mr);
+                    
                     left+=.25;
-
-                    top+=1;
-                    if (j==height-2) { top+=0.05; }
-                    if (j==settings.op.length-1) { top+=0.05; }
+                    top +=(j==settings.size[1]-2)?1.05:1;
                 }
-
-                // BG
-                html+="<div class='bg' style='top:-0.1em;left:0.675em;width:"+(width+0.67)+"em;height:"+(top+0.15)+"em;'></div>";
+                
+                helpers.showop($this);
             }
-            $board.append(html);
 
+            // HIGHLIGHT
             for (var i in settings.highlight) {
                 for (var j in settings.highlight[i]) {
-                    $($this.find(".active,.value").get(settings.highlight[i][j])).addClass(i);
+                    $($this.find(".cell").get(settings.highlight[i][j])).addClass(i);
                 }
             }
-
-            $this.find(".corner").bind("mousedown touchstart", function(event) {
-                $this.find(".carry .active").html(""); event.preventDefault();
-            });
+            
+            // HINT
+            if (settings.hint) {
+                $this.find("#help").show();
+                var hint="";
+                for (var i=1; i<10; i++) {
+                    hint+="<div class='elt'><div class='label'>"+i+"×"+vOperation[1]+"</div>"+
+                          "<div class='result'>"+(i*vOperation[1])+"</div></div>";
+                }
+                $this.find("#phelp>div").html(hint);
+            }
 
             $this.find(".active").bind("mousedown touchstart", function(event) { helpers.mousedown(this, event, false); });
 
@@ -529,24 +480,21 @@
 
             });
 
-            // Resize
-            settings.size= [width, height];
+            // HANDLE SIZE
             var border = (settings.type=="/")?[0,0]:[1,0.2];
-
-            var vFont = Math.floor(Math.min(90*16/(width+border[0]), 70*12/(height+border[1])))/100;
+            var vFont = Math.floor(100*Math.min(0.9*16/(settings.size[0]+border[0]),
+                                                0.7*12/(settings.size[1]+border[1])))/100;
+            settings.margin = [ 0.2+(0.9*16-((settings.size[0]+border[0])*vFont))/(2*vFont),
+                                0.2+(0.7*12-(settings.size[1]+border[1])*vFont)/(2*vFont) ];
+            $board.css("font-size", vFont+"em").css("top", settings.margin[1]+"em").css("left", settings.margin[0]+"em");
             
-            console.log((90*16/(width+border[0]))+" / "+(70*12/(height+border[1])) );
-            
-            $board.css("font-size", vFont+"em")
-                .css("top", (0.2+(0.7*12-(height+border[1])*vFont)/(2*vFont))+"em")
-                .css("left", (0.2+(0.9*16-((width+border[0])*vFont))/(2*vFont))+"em");
-            if (settings.type!="/") helpers.showop($this);
+            console.log("[margin: "+settings.margin+"] [font: "+vFont+"]");
 
- 
-            var vTargetFont = 1.2*vFont;
-            $this.find("#fill").css("font-size",vTargetFont+"em");
+            // SET TARGET
+            $this.find("#fill").css("font-size",vFont+"em");
+            $this.find("#box").css("font-size",vFont+"em");
             if (settings.target) {
-                $this.find("#target").css("font-size",vTargetFont+"em");
+                $this.find("#target").css("font-size",vFont+"em");
                 helpers.target($this, false);
                 $this.find("#target").show()
                     .bind("touchstart mousedown", function(event) {
@@ -598,30 +546,29 @@
             if (settings.target && settings.targetid<settings.target.length) {
                 var $data = $this.find("#data");
 
+                // TARGET POSITION
                 if (typeof settings.target[settings.targetid].index != "undefined") {
-                    var $cell = $($this.find(".active,.value").get(settings.target[settings.targetid].index));
-                    var vCarry = 0;
-                    if ($cell.parent().hasClass("carry")) { $cell = $cell.parent(); vCarry = $cell.height()/2; }
-                    var $target = $this.find("#target");
-                    var offset = Math.floor($target.width()-$cell.width())/2;
-                    $target.animate({left : ($cell.position().left+$data.position().left-offset)+"px",
-                                     top  : ($cell.position().top+$data.position().top-offset-vCarry)+"px" },
-                                    _anim?500:0 );
+                    var elt = settings.cells.get(settings.target[settings.targetid].index);
+                    if (elt) {
+                        var vTop = (elt.$elt.hasClass("carry"))?0.25:0;
+                        $this.find("#target").animate(
+                            {    left : (elt.pos[0]+settings.margin[0])+"em",
+                                top  : (elt.pos[1]-vTop+settings.margin[1])+"em"}, _anim?500:0 );
+                    }
+                    else { alert("issue on cell #settings.target[settings.targetid].index"); }
                 }
 
+                // BOX POSITION AND SIZE
                 if (settings.target[settings.targetid].box) {
-                    var $cell1 = $($this.find(".active,.value").get(settings.target[settings.targetid].box[0]));
-                    var $cell2 = $($this.find(".active,.value").get(settings.target[settings.targetid].box[1]));
-                    if ($cell1.parent().hasClass("carry")) { $cell1 = $cell1.parent(); }
-                    if ($cell2.parent().hasClass("carry")) { $cell2 = $cell2.parent(); }
-
-                    var x1 = $cell1.position().left+$data.position().left;
-                    var y1 = $cell1.position().top+$data.position().top;
-                    var x2 = $cell2.position().left+$data.position().left+$cell2.width();
-                    var y2 = $cell2.position().top+$data.position().top+$cell2.height();
-                    $this.find("#box").css("left",x1+"px").css("top",y1+"px")
-                                      .css("width",(x2-x1-10)+"px").css("height",(y2-y1-10)+"px")
-                                      .css("opacity",1).show();
+                    var c1 = settings.cells.get(settings.target[settings.targetid].box[0]);
+                    var c2 = settings.cells.get(settings.target[settings.targetid].box[1]);
+                    
+                    $this.find("#box")
+                        .css("left", (c1.pos[0]+settings.margin[0]-0.1)+"em")
+                        .css("top", (c1.pos[1]+settings.margin[1]-0.1)+"em")
+                        .css("width",(c2.pos[0]-c1.pos[0]+1)+"em")
+                        .css("height",(c2.pos[1]-c1.pos[1]+1)+"em")
+                        .css("opacity",1).show();
 
                 }
                 else if ($this.find("#box").is(":visible"))
@@ -647,14 +594,26 @@
                 var settings = {
                     last        : -1,
                     size        : [0,0],
-                    result      : 0,
-                    offset      : 0,
-                    dec         : 0,
-                    modulo      : 0,
+                    result      : { value:0, nbdec:0, modulo: 0},
+                    cells       : {
+                        id        : 0,
+                        data    : {},
+                        clear    : function() { this.id=0; this.data={}; },
+                        push    : function(_html, _left, _top) {
+                            var $ret = $(_html);
+                            this.data["c"+(this.id++)] = { $elt : $ret, pos  : [ _left, _top] };
+                            $ret.addClass("cell").css("top",_top+"em").css("left",_left+"em");
+                            return $ret;
+                        },
+                        get        : function(_id) { return this.data["c"+_id]; }
+                    },
                     score       : 5,
                     elt         : 0,
                     keypad      : 0,
                     key         : -1,
+                    max            : [0,0],    // Maximum number of digits [integer part, decimal]
+                    size        : [0,0],    // Operation table size
+                    margin        : [0,0],    // Margin table size
                     $keys       : [],
                     interactive : false,
                     count       : 0,
@@ -691,14 +650,15 @@
                 settings.finish = true;
                 settings.context.onquit($this,{'status':'abort'});
             },
-            move: function(elt, side) {
+            move: function(elt, _side) {
                 var $this = $(this) , settings = helpers.settings($this);
                 if (settings.interactive) {
-                    var op = settings.op[$(elt).attr("id")];
-                    var val = op.value[0].toString(settings.base) + op.value[1].toString(settings.base).substr(0, op.dec);
-                    if (side)   { if (op.pos+val.length<settings.size[0]) { settings.op[$(elt).attr("id")].pos++; } }
-                    else        { if (op.pos>0) { settings.op[$(elt).attr("id")].pos--; }
-                    }
+                    $(elt).addClass("s");
+                    setTimeout(function() { $this.find(".move").removeClass("s"); }, 300);
+                    var p = settings.op[$(elt).attr("id")].pos;
+                    var w = settings.op[$(elt).attr("id")].width;
+                    if (_side)  { if (p>0) { p--; } } else { if (p+w<settings.size[0]) { p++; } }
+                    settings.op[$(elt).attr("id")].pos = p;
                     helpers.showop($this);
                 }
             },
@@ -707,19 +667,45 @@
                 if (settings.interactive) {
                     var error = 0;
                     settings.interactive = false;
+                    
+                    // CHECK WITHMOVE
+                    if (settings.withmove) for (var i in settings.op) {
+                        if (settings.op[i].pos != settings.size[0] - settings.max[1] - settings.op[i].alpha[0].length) {
+                            $(".line"+i).addClass("wrong");
+                            error++;
+                        }
+                    }
 
+                    // CHECK RESULT VALUES
+                    var result = settings.result.value.replace('.','');
                     $this.find(".value.result").each(function(_index) {
-                        var it = _index-settings.offset;
-                        if (it>=0 && it<settings.result.length && settings.result[it]!=$(this).text()) {
-                            error++; $(this).addClass("wrong"); }
+                        var comma = settings.result.value.indexOf(".");
+                        var sint  = comma==-1?settings.result.length:comma;
+                        var it    = _index-(settings.max[0]-sint);
+                        var isw   = false;
+                        if (it<0 || it>=result.length) {
+                            isw = ($(this).text().length && $(this).text()!="0")
+                        }
+                        else { isw = (result[it]!=$(this).text()); }
+                        if (isw) { error++; $(this).addClass("wrong"); }
                     });
 
+                    
+                    // CHECK THE DECIMAL POINT
+                    var nbdec = $this.find(".dec.result").length;
+                    if (nbdec) {
+                        var p=nbdec-settings.result.nbdec;
+                        $this.find(".dec.result").each(function(_index) {
+                            if ($(this).hasClass("s")) {
+                                if (_index!=p)       { $(this).removeClass("s").addClass("wrong"); error++; }
+                            }
+                            else if (_index==p)    { $(this).addClass("wrong"); error++; }
+                        });
+                    }
+                    
+                    /*
                     var indexdec = settings.type=="/"?settings.result.length-settings.dec-1:settings.size[0]-settings.dec-1;
-                    $this.find(".dec.result").each(function(_index) {
-                        if ($(this).hasClass("s")) {
-                            if (_index!=indexdec)       { $(this).removeClass("s").addClass("wrong"); error++; }
-                        } else if (_index==indexdec)    { $(this).addClass("wrong"); }
-                    });
+                    
 
                     if (settings.type=="/" && settings.nbdec == 0) {
                         var k = settings.modulo.length-1;
@@ -732,7 +718,7 @@
                             }
                         }
                     }
-
+                    */
                     settings.score-=error*settings.ratioerr;
                     if (settings.score<0) { settings.score = 0; }
                     $this.find("#effects").toggleClass("division", settings.type=="/").show();
