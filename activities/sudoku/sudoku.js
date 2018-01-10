@@ -350,7 +350,9 @@
             var settings = helpers.settings($this);
             var ret = _value?mapping[_value]:0;
             if (settings.mapping && settings.mapping[ret]) {
-                ret="<img src='"+settings.mapping[ret]+".svg' alt='"+ret+"'/>";
+                var img = settings.mapping[ret];
+                if (img.indexOf(".svg")==-1) { img+=".svg"; }
+                ret="<img src='"+img+"' alt='"+ret+"'/>";
             }
             return ret;
         },
@@ -506,7 +508,9 @@
                     var elt = settings.data[vY*settings.nbelts+vX];
                     if (settings.mapping)   { vVal=$(this).find("img").attr("alt"); }
                     else                    { vVal=$(this).text(); }
-                    if (vVal.length && mapping[elt] != vVal) { $(this).closest("td").addClass("wrong"); }
+                    if (typeof(vVal)!="undefined" && vVal.length && mapping[elt] != vVal) {
+                        $(this).closest("td").addClass("wrong");
+                    }
                 });
             }
         };

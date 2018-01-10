@@ -193,7 +193,7 @@
             
             // AUTOMATIC GENERATION
             if (settings.gen) {
-                var gen = eval('('+settings.gen+')')(settings.puzzleid);
+                var gen = eval('('+settings.gen+')')($this,settings,settings.puzzleid);
                 if (gen.values) { settings.values = gen.values; }
                 if (gen.id)     { settings.id = gen.id; }
                 if (gen.txt)    { settings.txt = gen.txt; }

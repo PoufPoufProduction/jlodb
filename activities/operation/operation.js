@@ -93,10 +93,7 @@
             build: function($this) {
                 var settings = helpers.settings($this);
                 if (settings.context.onload) { settings.context.onload($this); }
-                
-                settings.background="res/img/background/landscape/bluecarpet01.svg";
-                //settings.base = 11;
-                
+
                 // HANDLE BACKGROUND
                 if (settings.background) { $this.children().first().css("background-image","url("+settings.background+")"); }
                 
@@ -182,11 +179,6 @@
                     settings.last = vNew;
             }
             
-            //settings.base = 10;
-            //settings.nbdec= 1;
-            //vOpTmp="136.02/4.9";
-            //settings.withmove = true;
-
             // SPLIT THE OPERATION REGARDING THE OPERATION TYPE
             if (vOpTmp.indexOf("*")>=0) { settings.type = "*"; } else
             if (vOpTmp.indexOf("/")>=0) { settings.type = "/"; } else
@@ -227,9 +219,10 @@
                                           Math.max(p+nbd,settings.op[1].alpha[0].length+settings.op[1].alpha[1].length);
                 settings.size[1]        = 1+2*v.length;
                 settings.size[2]        = settings.max[0]+Math.max(settings.max[1],nbd);
+                settings.max[0]         = Math.max(op.alpha[1].length, p);
                 settings.result.value   = [v.slice(0, p), '.', v.slice(p,p+nbd)].join('');
                 settings.result.nbdec   = nbd;
-                settings.result.modulo  = m;
+                settings.result.modulo  = Math.floor(m/Math.pow(10,settings.nbdec));
             }
             else if (settings.type=="*") {
                 var v   = (settings.op[0].value * settings.op[1].value).toString(settings.base);
@@ -263,10 +256,13 @@
                     settings.size[0] - settings.max[1] - settings.op[i].alpha[0].length;
             }
             
-            console.log("[value: "+vOpTmp+"] [operation: "+settings.type+"] ("+JSON.stringify(settings.op));
-            console.log("[max: "+settings.max+"]");
-            console.log("[result: "+JSON.stringify(settings.result)+"]");
-            console.log("[size: "+settings.size[0]+"x"+settings.size[1]+"]"+(settings.size[2]?" ("+settings.size[2]+")":""));
+            if (settings.debug) {
+                console.log("[value: "+vOpTmp+"] [operation: "+settings.type+"] ("+JSON.stringify(settings.op));
+                console.log("[max: "+settings.max+"]");
+                console.log("[result: "+JSON.stringify(settings.result)+"]");
+                console.log("[size: "+settings.size[0]+"x"+settings.size[1]+"]"+
+                            (settings.size[2]?" ("+settings.size[2]+")":""));
+            }
 
             // BUILD THE TABLE FOR THE DIVISION OPERATION
             var top = 0, left = 0;
@@ -279,21 +275,20 @@
 
                 // LEFT COLUMN
                 for (var j=0; j<settings.size[1]; j++) {
-                    left = 0;
+                    left    = 0;
+                    var o   = settings.op[0];
+                    var op  = o.alpha[0]+o.alpha[1];
                     for (var i=0; i<settings.size[2]; i++) {
-                        var opclass=j?(j%2?" active l3":" active l2"):" l1";
-                        var opcontent = "";
-                        var add = true;
-                        var offset = 0;
-
-                        if (j==0) {
-                            var o  = settings.op[0];
-                            var op = o.alpha[0]+o.alpha[1];
-                            if (i<op.length) { opcontent = op[i]; }
-                            if (o.alpha[1].length && i+1==o.alpha[0].length) {
-                                $board.append("<div class='dec s' style='top:"+top+"em;left:"+left+"em;'><div></div></div>");
-                            }
+                        var opclass     = j?(j==settings.size[1]-1?" active modulo":(j%2?" active l3":" active l2")):" l1";
+                        var opcontent   = "";
+                        var add         = true;
+                        var offset      = 0;
+                        
+                        if (j==0 && i<op.length) { opcontent = op[i]; }
+                        if (o.alpha[1].length && i+1==o.alpha[0].length) {
+                            $board.append("<div class='dec s' style='top:"+top+"em;left:"+left+"em;'><div></div></div>");
                         }
+
                         $board.append(settings.cells.push(
                             "<div class='value s"+Math.floor(Math.random()*2)+opclass+"'><div>"+opcontent+"</div></div>",
                             left, top));
@@ -303,14 +298,17 @@
                     top+=1;
                 }
                 // RIGHT COLUMN
-                left = settings.size[2]+0.1;
+                left    = settings.size[2]+0.1;
+                var o   = settings.op[1];
+                var op  = o.alpha[0]+o.alpha[1];
                 for (var i=0; i<settings.size[0]-settings.size[2]; i++) {
-                    var o  = settings.op[1];
-                    var op = o.alpha[0]+o.alpha[1];
                     var opcontent = (i<op.length)?op[i]:"";
                     
                     if (o.alpha[1].length && i+1==o.alpha[0].length) {
                         $board.append("<div class='dec s' style='top0em;left:"+left+"em;'><div></div></div>");
+                    }
+                    if (settings.nbdec && i<settings.size[0]-settings.size[2]-1) {
+                        $board.append("<div class='dec result' style='top:1.1em;left:"+left+"em;'><div></div></div>");
                     }
                     $board.append(settings.cells.push(
                         "<div class='value s"+Math.floor(Math.random()*2)+" l1'><div>"+opcontent+"</div></div>",
@@ -320,14 +318,6 @@
                         left, 1.1));
                     left+=1;
                 }
-                
-               /*
-                        // DYNAMIC COMMA
-                        if (j==1 && i>=wtmp[0] && dec && i<settings.size[0]-1) {
-                            html+="<div class='dec result' style='top:"+top+"em;left:"+left+"em;'><div></div></div>";
-                        }
-
-                        */
             }
             // BUILD THE TABLE FOR ALL OPERATIONS BUT DIVISION
             else {
@@ -488,7 +478,7 @@
                                 0.2+(0.7*12-(settings.size[1]+border[1])*vFont)/(2*vFont) ];
             $board.css("font-size", vFont+"em").css("top", settings.margin[1]+"em").css("left", settings.margin[0]+"em");
             
-            console.log("[margin: "+settings.margin+"] [font: "+vFont+"]");
+            if (settings.debug) { console.log("[margin: "+settings.margin+"] [font: "+vFont+"]"); }
 
             // SET TARGET
             $this.find("#fill").css("font-size",vFont+"em");
@@ -683,10 +673,14 @@
                         var sint  = comma==-1?settings.result.length:comma;
                         var it    = _index-(settings.max[0]-sint);
                         var isw   = false;
-                        if (it<0 || it>=result.length) {
-                            isw = ($(this).text().length && $(this).text()!="0")
+                        var val   = $(this).text();
+                        if (it<0 || it>=result.length)  { isw = (val.length && val!="0") }
+                        else                            { isw = (result[it]!=val); }
+                        
+                        if (settings.debug) {
+                            console.log("[RESULT "+_index+"] [comma: "+comma+"] [int size: "+sint+"] [it: "+it+"] "+
+                                        "[val: "+val+"] "+(isw?"(KO)":"(OK)"));
                         }
-                        else { isw = (result[it]!=$(this).text()); }
                         if (isw) { error++; $(this).addClass("wrong"); }
                     });
 
@@ -703,22 +697,26 @@
                         });
                     }
                     
-                    /*
-                    var indexdec = settings.type=="/"?settings.result.length-settings.dec-1:settings.size[0]-settings.dec-1;
                     
-
-                    if (settings.type=="/" && settings.nbdec == 0) {
-                        var k = settings.modulo.length-1;
-                        for (var i=settings.size[0]; i>=0; i--) {
-                            $elt = this.find("#c"+i+"x"+(settings.size[1]-1));
-                            if ($elt.length) {
-                                if (k>=0){ if ($elt.text()!=settings.modulo[k]) { $elt.addClass("wrong"); error++; } }
-                                else     { if ($elt.text().length) { $elt.addClass("wrong"); error++; } }
-                                k--;
+                    // CHECK THE MODULO
+                    if (settings.type=="/") {
+                        var modulo = settings.result.modulo.toString(settings.base);
+                        var offset = settings.size[2]-modulo.length;
+                        $this.find(".modulo").each(function(_index) {
+                            var it    = _index-offset;
+                            var isw   = false;
+                            var val   = $(this).text();
+                            if (it<0)   { isw = (val.length && val!="0") }
+                            else        { isw = (modulo[it]!=val); }
+                            
+                            if (settings.debug) {
+                                console.log("[MODULO "+_index+"] [modulo: "+modulo+"] [it: "+it+"] "+
+                                            "[val: "+val+"] "+(isw?"(KO)":"(OK)"));
                             }
-                        }
+                            if (isw) { error++; $(this).addClass("wrong"); }
+                        });
                     }
-                    */
+
                     settings.score-=error*settings.ratioerr;
                     if (settings.score<0) { settings.score = 0; }
                     $this.find("#effects").toggleClass("division", settings.type=="/").show();
