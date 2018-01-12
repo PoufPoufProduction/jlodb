@@ -203,7 +203,7 @@
     <rdf:Description>
         <dct:identifier>03</dct:identifier>
         <dct:title xml:lang="fr-FR">Vérifier l'inégalité de 2 nombres, compris entre 0 et 3.</dct:title>
-        <dct:description><![CDATA["number":2,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var a=Math.floor(Math.random()*4), c=Math.floor(Math.random()*2), b=1; do { b=Math.floor(Math.random()*4);  } while(b==a); result+=((c==0&&a<b)||(c==1&&a>b))?\\\"0\\\":\\\"1\\\"; ret.push(a+((c==0)?\\\"<\\\":\\\">\\\")+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}},"font":0.9]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","number":2,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var a=Math.floor(Math.random()*4), c=Math.floor(Math.random()*2), b=1; do { b=Math.floor(Math.random()*4);  } while(b==a); result+=((c==0&&a<b)||(c==1&&a>b))?\\\"0\\\":\\\"1\\\"; ret.push(a+((c==0)?\\\"<\\\":\\\">\\\")+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}},"font":0.9]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Barrez[/b] les écritures [b]erronées[/b]."]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -211,12 +211,13 @@
         <dct:type>2</dct:type>
         <dct:alternative>03</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
+		<dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>3</dct:identifier>
         <dct:title xml:lang="fr-FR">Vérifier l'inégalité de 2 nombres, compris entre 1 et 3.</dct:title>
-        <dct:description><![CDATA["number":2,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var a=Math.floor(Math.random()*3)+1, c=Math.floor(Math.random()*2), b=1; do { b=Math.floor(Math.random()*3)+1;  } while(b==a); result+=((c==0&&a<b)||(c==1&&a>b))?\\\"0\\\":\\\"1\\\"; ret.push(a+((c==0)?\\\"<\\\":\\\">\\\")+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}},"font":0.9]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","number":2,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var a=Math.floor(Math.random()*3)+1, c=Math.floor(Math.random()*2), b=1; do { b=Math.floor(Math.random()*3)+1;  } while(b==a); result+=((c==0&&a<b)||(c==1&&a>b))?\\\"0\\\":\\\"1\\\"; ret.push(a+((c==0)?\\\"<\\\":\\\">\\\")+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}},"font":0.9]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Barrez[/b] les écritures [b]erronées[/b]."]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -224,12 +225,13 @@
         <dct:type>2</dct:type>
         <dct:alternative>03</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
+		<dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>4</dct:identifier>
         <dct:title xml:lang="fr-FR">Vérifier l'inégalité de 2 nombres, compris entre 1 et 4.</dct:title>
-        <dct:description><![CDATA["number":2,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var a=Math.floor(Math.random()*4)+1, c=Math.floor(Math.random()*2), b=1; do { b=Math.floor(Math.random()*4)+1;  } while(b==a); result+=((c==0&&a<b)||(c==1&&a>b))?\\\"0\\\":\\\"1\\\"; ret.push(a+((c==0)?\\\"<\\\":\\\">\\\")+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}},"font":0.9]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","number":2,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var a=Math.floor(Math.random()*4)+1, c=Math.floor(Math.random()*2), b=1; do { b=Math.floor(Math.random()*4)+1;  } while(b==a); result+=((c==0&&a<b)||(c==1&&a>b))?\\\"0\\\":\\\"1\\\"; ret.push(a+((c==0)?\\\"<\\\":\\\">\\\")+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}},"font":0.9]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Barrez[/b] les écritures [b]erronées[/b]."]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -237,12 +239,13 @@
         <dct:type>2</dct:type>
         <dct:alternative>03</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
+		<dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>05</dct:identifier>
         <dct:title xml:lang="fr-FR">Vérifier l'inégalité de 2 nombres, compris entre 0 et 5.</dct:title>
-        <dct:description><![CDATA["number":2,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var a=Math.floor(Math.random()*6), c=Math.floor(Math.random()*2), b=1; do { b=Math.floor(Math.random()*6);  } while(b==a); result+=((c==0&&a<b)||(c==1&&a>b))?\\\"0\\\":\\\"1\\\"; ret.push(a+((c==0)?\\\"<\\\":\\\">\\\")+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}},"font":0.9]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","number":2,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var a=Math.floor(Math.random()*6), c=Math.floor(Math.random()*2), b=1; do { b=Math.floor(Math.random()*6);  } while(b==a); result+=((c==0&&a<b)||(c==1&&a>b))?\\\"0\\\":\\\"1\\\"; ret.push(a+((c==0)?\\\"<\\\":\\\">\\\")+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}},"font":0.9]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Barrez[/b] les écritures [b]erronées[/b]."]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -250,12 +253,13 @@
         <dct:type>2</dct:type>
         <dct:alternative>03</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
+		<dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>5</dct:identifier>
         <dct:title xml:lang="fr-FR">Vérifier l'inégalité de 2 nombres, compris entre 1 et 5.</dct:title>
-        <dct:description><![CDATA["number":2,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var a=Math.floor(Math.random()*5)+1, c=Math.floor(Math.random()*2), b=1; do { b=Math.floor(Math.random()*5)+1;  } while(b==a); result+=((c==0&&a<b)||(c==1&&a>b))?\\\"0\\\":\\\"1\\\"; ret.push(a+((c==0)?\\\"<\\\":\\\">\\\")+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}},"font":0.9]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","number":2,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var a=Math.floor(Math.random()*5)+1, c=Math.floor(Math.random()*2), b=1; do { b=Math.floor(Math.random()*5)+1;  } while(b==a); result+=((c==0&&a<b)||(c==1&&a>b))?\\\"0\\\":\\\"1\\\"; ret.push(a+((c==0)?\\\"<\\\":\\\">\\\")+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}},"font":0.9]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Barrez[/b] les écritures [b]erronées[/b]."]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -263,64 +267,13 @@
         <dct:type>3</dct:type>
         <dct:alternative>03</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>6</dct:identifier>
-        <dct:title xml:lang="fr-FR">Vérifier l'inégalité de 2 nombres, compris entre 1 et 6.</dct:title>
-        <dct:description><![CDATA["number":2,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var a=Math.floor(Math.random()*6)+1, c=Math.floor(Math.random()*2), b=1; do { b=Math.floor(Math.random()*6)+1;  } while(b==a); result+=((c==0&&a<b)||(c==1&&a>b))?\\\"0\\\":\\\"1\\\"; ret.push(a+((c==0)?\\\"<\\\":\\\">\\\")+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}},"font":0.9]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Barrez[/b] les écritures [b]erronées[/b]."]]></dct:description>
-        <dct:extent>2</dct:extent>
-        <dct:subject>numeration</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>3</dct:type>
-        <dct:alternative>03</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>7</dct:identifier>
-        <dct:title xml:lang="fr-FR">Vérifier l'inégalité de 2 nombres, compris entre 1 et 7.</dct:title>
-        <dct:description><![CDATA["number":2,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var a=Math.floor(Math.random()*7)+1, c=Math.floor(Math.random()*2), b=1; do { b=Math.floor(Math.random()*7)+1;  } while(b==a); result+=((c==0&&a<b)||(c==1&&a>b))?\\\"0\\\":\\\"1\\\"; ret.push(a+((c==0)?\\\"<\\\":\\\">\\\")+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}},"font":0.9]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Barrez[/b] les écritures [b]erronées[/b]."]]></dct:description>
-        <dct:extent>2</dct:extent>
-        <dct:subject>numeration</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>3</dct:type>
-        <dct:alternative>03</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>8</dct:identifier>
-        <dct:title xml:lang="fr-FR">Vérifier l'inégalité de 2 nombres, compris entre 1 et 8.</dct:title>
-        <dct:description><![CDATA["number":2,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var a=Math.floor(Math.random()*8)+1, c=Math.floor(Math.random()*2), b=1; do { b=Math.floor(Math.random()*8)+1;  } while(b==a); result+=((c==0&&a<b)||(c==1&&a>b))?\\\"0\\\":\\\"1\\\"; ret.push(a+((c==0)?\\\"<\\\":\\\">\\\")+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}},"font":0.9]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Barrez[/b] les écritures [b]erronées[/b]."]]></dct:description>
-        <dct:extent>2</dct:extent>
-        <dct:subject>numeration</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>3</dct:type>
-        <dct:alternative>03</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>9</dct:identifier>
-        <dct:title xml:lang="fr-FR">Vérifier l'inégalité de 2 nombres, compris entre 1 et 9.</dct:title>
-        <dct:description><![CDATA["number":2,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var a=Math.floor(Math.random()*9)+1, c=Math.floor(Math.random()*2), b=1; do { b=Math.floor(Math.random()*9)+1;  } while(b==a); result+=((c==0&&a<b)||(c==1&&a>b))?\\\"0\\\":\\\"1\\\"; ret.push(a+((c==0)?\\\"<\\\":\\\">\\\")+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}},"font":0.9]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Barrez[/b] les écritures [b]erronées[/b]."]]></dct:description>
-        <dct:extent>2</dct:extent>
-        <dct:subject>numeration</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>3</dct:type>
-        <dct:alternative>03</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
+		<dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>010</dct:identifier>
         <dct:title xml:lang="fr-FR">Vérifier l'inégalité de 2 nombres, compris entre 0 et 10.</dct:title>
-        <dct:description><![CDATA["number":2,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var a=Math.floor(Math.random()*11), c=Math.floor(Math.random()*2), b=1; do { b=Math.floor(Math.random()*11);  } while(b==a); result+=((c==0&&a<b)||(c==1&&a>b))?\\\"0\\\":\\\"1\\\"; ret.push(a+((c==0)?\\\"<\\\":\\\">\\\")+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}},"font":0.7]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","number":2,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var a=Math.floor(Math.random()*11), c=Math.floor(Math.random()*2), b=1; do { b=Math.floor(Math.random()*11);  } while(b==a); result+=((c==0&&a<b)||(c==1&&a>b))?\\\"0\\\":\\\"1\\\"; ret.push(a+((c==0)?\\\"<\\\":\\\">\\\")+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}},"font":0.7]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Barrez[/b] les écritures [b]erronées[/b]."]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -328,12 +281,13 @@
         <dct:type>2</dct:type>
         <dct:alternative>03</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
+		<dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>10</dct:identifier>
         <dct:title xml:lang="fr-FR">Vérifier l'inégalité de 2 nombres, compris entre 1 et 10.</dct:title>
-        <dct:description><![CDATA["number":2,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var a=Math.floor(Math.random()*10)+1, c=Math.floor(Math.random()*2), b=1; do { b=Math.floor(Math.random()*10)+1;  } while(b==a); result+=((c==0&&a<b)||(c==1&&a>b))?\\\"0\\\":\\\"1\\\"; ret.push(a+((c==0)?\\\"<\\\":\\\">\\\")+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}},"font":0.7]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","number":2,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var a=Math.floor(Math.random()*10)+1, c=Math.floor(Math.random()*2), b=1; do { b=Math.floor(Math.random()*10)+1;  } while(b==a); result+=((c==0&&a<b)||(c==1&&a>b))?\\\"0\\\":\\\"1\\\"; ret.push(a+((c==0)?\\\"<\\\":\\\">\\\")+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}},"font":0.7]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Barrez[/b] les écritures [b]erronées[/b]."]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -341,12 +295,13 @@
         <dct:type>4</dct:type>
         <dct:alternative>03</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
+		<dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>20</dct:identifier>
         <dct:title xml:lang="fr-FR">Vérifier l'inégalité de 2 nombres, compris entre 1 et 20.</dct:title>
-        <dct:description><![CDATA["number":2,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var a=Math.floor(Math.random()*20)+1, c=Math.floor(Math.random()*2), b=1; do { b=Math.floor(Math.random()*20)+1;  } while(b==a); result+=((c==0&&a<b)||(c==1&&a>b))?\\\"0\\\":\\\"1\\\"; ret.push(a+((c==0)?\\\"<\\\":\\\">\\\")+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}},"font":0.6]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","number":2,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var a=Math.floor(Math.random()*20)+1, c=Math.floor(Math.random()*2), b=1; do { b=Math.floor(Math.random()*20)+1;  } while(b==a); result+=((c==0&&a<b)||(c==1&&a>b))?\\\"0\\\":\\\"1\\\"; ret.push(a+((c==0)?\\\"<\\\":\\\">\\\")+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}},"font":0.6]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Barrez[/b] les écritures [b]erronées[/b]."]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -354,12 +309,13 @@
         <dct:type>1</dct:type>
         <dct:alternative>03</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
+		<dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>100</dct:identifier>
         <dct:title xml:lang="fr-FR">Vérifier l'inégalité de 2 nombres, compris entre 1 et 100.</dct:title>
-        <dct:description><![CDATA["number":2,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var a=Math.floor(Math.random()*100)+1, c=Math.floor(Math.random()*2), b=1; do { b=Math.floor(Math.random()*100)+1;  } while(b==a); result+=((c==0&&a<b)||(c==1&&a>b))?\\\"0\\\":\\\"1\\\"; ret.push(a+((c==0)?\\\"<\\\":\\\">\\\")+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}},"font":0.6]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","number":2,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var a=Math.floor(Math.random()*100)+1, c=Math.floor(Math.random()*2), b=1; do { b=Math.floor(Math.random()*100)+1;  } while(b==a); result+=((c==0&&a<b)||(c==1&&a>b))?\\\"0\\\":\\\"1\\\"; ret.push(a+((c==0)?\\\"<\\\":\\\">\\\")+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}},"font":0.6]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Barrez[/b] les écritures [b]erronées[/b]."]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -367,12 +323,13 @@
         <dct:type>2</dct:type>
         <dct:alternative>03</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
+		<dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>200</dct:identifier>
         <dct:title xml:lang="fr-FR">Vérifier l'inégalité de 2 nombres, compris entre 1 et 200.</dct:title>
-        <dct:description><![CDATA["number":2,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var a=Math.floor(Math.random()*200)+1, c=Math.floor(Math.random()*2), b=1; do { b=Math.floor(Math.random()*200)+1;  } while(b==a); result+=((c==0&&a<b)||(c==1&&a>b))?\\\"0\\\":\\\"1\\\"; ret.push(a+((c==0)?\\\"<\\\":\\\">\\\")+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}},"font":0.5]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","number":2,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var a=Math.floor(Math.random()*200)+1, c=Math.floor(Math.random()*2), b=1; do { b=Math.floor(Math.random()*200)+1;  } while(b==a); result+=((c==0&&a<b)||(c==1&&a>b))?\\\"0\\\":\\\"1\\\"; ret.push(a+((c==0)?\\\"<\\\":\\\">\\\")+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}},"font":0.5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Barrez[/b] les écritures [b]erronées[/b]."]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -380,12 +337,13 @@
         <dct:type>2</dct:type>
         <dct:alternative>03</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+		<dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>1000</dct:identifier>
         <dct:title xml:lang="fr-FR">Vérifier l'inégalité de 2 nombres, compris entre 1 et 1000.</dct:title>
-        <dct:description><![CDATA["number":2,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var a=Math.floor(Math.random()*1000)+1, c=Math.floor(Math.random()*2), b=1; do { b=Math.floor(Math.random()*1000)+1;  } while(b==a); result+=((c==0&&a<b)||(c==1&&a>b))?\\\"0\\\":\\\"1\\\"; ret.push(a+((c==0)?\\\"<\\\":\\\">\\\")+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}},"font":0.5]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","number":2,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var a=Math.floor(Math.random()*1000)+1, c=Math.floor(Math.random()*2), b=1; do { b=Math.floor(Math.random()*1000)+1;  } while(b==a); result+=((c==0&&a<b)||(c==1&&a>b))?\\\"0\\\":\\\"1\\\"; ret.push(a+((c==0)?\\\"<\\\":\\\">\\\")+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}},"font":0.5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Barrez[/b] les écritures [b]erronées[/b]."]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -393,6 +351,7 @@
         <dct:type>2</dct:type>
         <dct:alternative>03</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+		<dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
     </rdf:Description>
 
     <!-- gte or lte -->
