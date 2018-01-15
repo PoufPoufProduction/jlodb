@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dct="http://purl.org/dc/terms/">
+
+    <rdf:Description>
+        <dct:identifier>a01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Inverser des stickers pour réaliser une figure symétrique.</dct:title>
+        <dct:description><![CDATA["errratio":5,"background":"res/img/background/landscape/blueboard01.svg","template":"desktop/toggleswitch/sym01.svg","states":{ "nb":2, "class":["c0","c1"]},"wrong":{"class":"wrong"},"svgclass":"groupf","group":"groupf","gen":"function($this,settings,_i){var nb=6,imgs=['3b2','3c8','4e6','5ff','31c','36d','40b','41b','69a','98e','349','494'],init='',result='',txt={}; for (var i=0;i<nb;i++) { result+='1'; init+=(Math.random()<0.5?'0':'1'); var im='ext/noto/stickers/emoji_u1f'+imgs[Math.floor(Math.random()*imgs.length)]+'.svg'; txt['if'+i]=im; txt['iif'+i+'a']=im; txt['iif'+i+'b']=im;} return { init:init,result:result,txt:txt}; }"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Cliquez[/b] sur les autocollants à [b]droite[/b] pour réaliser le [b]symétrique[/b] de la partie de gauche."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>symetry</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>a01</dct:alternative>
+        <dct:source>res/img/desktop/toggleswitch/sym01.svg,res/img/background/blueboard01.svg</dct:source>
+    </rdf:Description>
+
+
+</rdf:RDF>

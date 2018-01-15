@@ -21,7 +21,7 @@
     <rdf:Description>
         <dct:identifier>i02</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier 2 images symétriques [divers noto].</dct:title>
-        <dct:description><![CDATA["number":20,"template":"template2.html","time":0,"class":"p02 neg alpha","font":3.4,"gen":"function() { var imgs=['emoji_u1f3ad','emoji_u1f3af','emoji_u1f3b0','emoji_u1f375','emoji_u1f3b3','emoji_u1f3b6','emoji_u1f3c0','emoji_u1f3c8','emoji_u1f3c2','emoji_u1f3c4','emoji_u1f6a7','emoji_u1f419','emoji_u1f557','emoji_u26be','emoji_u26bd','emoji_u26f5','emoji_u1f383','emoji_u1f384','emoji_u1f377','emoji_u1f378'],i=Math.floor(Math.random()*imgs.length),r=Math.floor(Math.random()*2); return ['[icon][svg48]<image xlink:href=\\\"ext/noto/svg/'+imgs[i]+'.svg\\\" width=\\\"48\\\" height=\\\"48\\\" x=\\\"0\\\" y=\\\"0\\\"/>[/svg48][/icon][icon][svg48]<image '+(r?'transform=\\\"matrix(-1,0,0,1,48,0)\\\" ':'')+'xlink:href=\\\"ext/noto/svg/'+imgs[i]+'.svg\\\" width=\\\"48\\\" height=\\\"48\\\" x=\\\"0\\\" y=\\\"0\\\"/>[/svg48][/icon]',r];}"]]></dct:description>
+        <dct:description><![CDATA["number":20,"template":"template2.html","time":0,"class":"p02 neg alpha","font":3.4,"gen":"function() { var imgs=['emoji_u1f3ad','emoji_u1f3b3','emoji_u1f3b6','emoji_u1f4a3','emoji_u1f4f7','emoji_u1f33d','emoji_u1f40b','emoji_u1f54a','emoji_u1f55e','emoji_u1f69a','emoji_u1f98e','emoji_u1f993','emoji_u1f325','emoji_u1f368','emoji_u1f407','emoji_u1f412','emoji_u1f988','emoji_u1f955','emoji_u1f94a','emoji_u1f36c'],i=Math.floor(Math.random()*imgs.length),r=Math.floor(Math.random()*2); return ['[icon][svg48]<image xlink:href=\\\"ext/noto/svg/'+imgs[i]+'.svg\\\" width=\\\"48\\\" height=\\\"48\\\" x=\\\"0\\\" y=\\\"0\\\"/>[/svg48][/icon][icon][svg48]<image '+(r?'transform=\\\"matrix(-1,0,0,1,48,0)\\\" ':'')+'xlink:href=\\\"ext/noto/svg/'+imgs[i]+'.svg\\\" width=\\\"48\\\" height=\\\"48\\\" x=\\\"0\\\" y=\\\"0\\\"/>[/svg48][/icon]',r];}"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"input":{"digit":1,"attr":[1,2.5,1.2],"values":[["oui",1],["non",0]]},"exercice":"Les [red]2 images[/red] sont-elles [b]symétriques[/b] ?","fontex":1.2]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>symmetry</dct:subject>
@@ -32,7 +32,20 @@
         <dct:source>ext/noto/svg/</dct:source>
     </rdf:Description>
         
-        
+    
+    <rdf:Description>
+        <dct:identifier>i03</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier 2 images symétriques [villes].</dct:title>
+        <dct:description><![CDATA["number":10,"template":"template2.html","time":0,"class":"p02 neg alpha","font":1,"gen":"function() { var imgs=['emoji_u1f3d7','emoji_u1f3da','emoji_u1f3e0','emoji_u1f3e1','emoji_u1f3ea','emoji_u1f3ec','emoji_u1f3ed'],ret='',r=Math.floor(Math.random()*2),ims=[Math.floor(Math.random()*imgs.length),Math.floor(Math.random()*imgs.length),Math.floor(Math.random()*imgs.length)],rr=[true,true,true],order=[0,1,2]; if (!r) { if (Math.random()<0.7) {for (var i=0;i<Math.floor(Math.random()*3)+1; i++) { rr[Math.floor(Math.random()*3)]=false; } } else { var oo=[[1,2,0],[2,0,1],[2,1,0]]; order=oo[Math.floor(Math.random()*oo.length)]; } } for (var i=0; i<3; i++) { ret+='<image xlink:href=\\\"ext/noto/svg/'+imgs[ims[i]]+'.svg\\\" width=\\\"8\\\" height=\\\"8\\\" x=\\\"'+(i*8)+'\\\" y=\\\"0\\\"/>'+(rr[i]?'<g tranform=\\\"translate(24,0)\\\"><image transform=\\\"matrix(-1,0,0,1,48,0)\\\" xlink:href=\\\"ext/noto/svg/'+imgs[ims[order[i]]]+'.svg\\\" width=\\\"8\\\" height=\\\"8\\\" x=\\\"'+(i*8)+'\\\" y=\\\"0\\\"/></g>':'<image xlink:href=\\\"ext/noto/svg/'+imgs[ims[order[i]]]+'.svg\\\" width=\\\"8\\\" height=\\\"8\\\" x=\\\"'+(40-i*8)+'\\\" y=\\\"0\\\"/>'); } return ['<div style=\\\"width:6em;height:1em;\\\"><svg xmlns:xlink=\\\"http://www.w3.org/1999/xlink\\\" xmlns:svg=\\\"http://www.w3.org/2000/svg\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\" version=\\\"1.0\\\" viewBox=\\\"0 0 48 8\\\">'+ret+'</svg></div>',r];}"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"input":{"digit":1,"attr":[1,2.5,1.2],"values":[["oui",1],["non",0]]},"exercice":"La [red]ville[/red] est-elle [b]symétrique[/b] ?","fontex":1.2]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>symmetry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>i01</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:source>ext/noto/svg/</dct:source>
+    </rdf:Description>
         
     
 

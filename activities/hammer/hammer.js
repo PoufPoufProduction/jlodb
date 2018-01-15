@@ -13,7 +13,6 @@
         mode        : "default",
         totaltime   : 40,
         freq        : 1,
-        animation   : 1,
         goodfx      : false,
         background  : "",                                   // Background image
         debug       : true                                     // Debug mode
@@ -247,7 +246,7 @@
                     }
                     var legend = sprite.legend;
                     if (sprite.gen) {
-                        var gen = eval('('+sprite.gen+')')();
+                        var gen = eval('('+sprite.gen+')')($this,settings);
                         if (typeof(gen.legend)!="undefined")     { legend = gen.legend.toString(); }
                         if (gen.alignment)  { sprite.alignment = gen.alignment; }
                         if (gen.src)        {
