@@ -114,6 +114,7 @@
                 }
                 if (!settings.style) { $this.find(".simple").addClass("disable"); }
                 if (settings.selected) {
+					$this.find("#"+settings.selected).addClass("s");
                     settings.controls.action = settings.selected;
                     settings.controls.mask = settings.mask[settings.controls.action][0];
                 }

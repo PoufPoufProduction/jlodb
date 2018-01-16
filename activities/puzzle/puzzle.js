@@ -262,6 +262,7 @@
             if (settings.rot) {
                 var rot = $.isArray(settings.rot)?settings.rot[settings.puzzleid]:settings.rot;
                 for (var i in rot) {$("#"+i+" .rot",settings.svg.root()).attr("transform","rotate("+rot[i]+")"); }
+				
             }
             
             // FIX THE TRANSLATION OF PIECES
@@ -319,9 +320,9 @@
                         translate = [parseFloat(vSplit[1]), parseFloat(vSplit[2])];
                     }
                     var rotate = 0;
-                    if ($(this).find(".rot") && $(this).find(".rot").attr("transform")) {
+                    if ($(this).find(".rot") && $(this).find(".rot").last().attr("transform")) {
                         var reg = new RegExp("[( ),]","g");
-                        var vSplit = $(this).find(".rot").attr("transform").split(reg);
+                        var vSplit = $(this).find(".rot").last().attr("transform").split(reg);
                         rotate = parseFloat(vSplit[1]);
                     }
                     var elt = { $elt   : $(this),
@@ -364,7 +365,7 @@
                     });
 
                     // INITIALIZE THE PIECE
-                    var vX = translate[0], vY = translate[1], vZ = 0;
+                    var vX = translate[0], vY = translate[1], vZ = rotate;
                     var id = $(this).attr("id");
                     if (settings.rotation>0 && $(this).find(".rot")) {
                         vZ = settings.rotation*Math.floor(Math.random()*(360/settings.rotation));
