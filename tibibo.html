@@ -235,8 +235,8 @@ var tibibo = {
             return _text;
         },
         cleantext: function(_text) {
-            var vReg = new RegExp("['\"]","g");
-            return _text.replace(vReg,"_");
+            var vReg = new RegExp("[\"]","g");
+            return _text.replace(vReg,"'");
         },
         devmode: function() {
             if ($("#bomain").hasClass("devmode")) { user.devmode(); } else { $("#udevmode").show(); }
@@ -395,7 +395,7 @@ var tibibo = {
                         if (_node.description) { ex+=_node.description.split(',').length; } });
                 $("#boawards #max"+(i+1)).html(ex*(tibibo.awards.current.type[i]==2?3:1));
             }
-            tibibo.awards.current.label = $("#boawards textarea").val();
+            tibibo.awards.current.label = tibibo.helpers.cleantext($("#boawards textarea").val());
         },
         update: function(_elt) {
             if (_elt) { tibibo.awards.current=$.extend(true,{}, _elt); }

@@ -21,7 +21,16 @@ var user = {
         else if (_args.length) { url+=(_args[0]=='&'?"":"&")+_args; }
         if (_alert){ console.log("+ user.getJSON( "+url+" )"); }
         if (user.onrequest) { user.onrequest(); }
-        if (_post) { $.post(url, _post, function(_data) {if (user.onreply) { user.onreply(); } if(_data.error==102){location.reload();} else { _cbk(_data); } }, "json"); }
+        if (_post) {
+			for (var i in _post) {
+				if (typeof(_post[i]) == "string") {
+					var vReg = new RegExp("[']","g");
+					_post[i] = _post[i].replace(vReg,"\\\'");
+				}
+			}
+			$.post(url, _post, function(_data) {
+				if (user.onreply) { user.onreply(); } if(_data.error==102){location.reload();} else { _cbk(_data); } }, "json");
+		}
         else       { $.getJSON(url, function(_data)     { if (user.onreply) { user.onreply(); } if(_data.error==102){ alert("user error (url: "+url+") :"+_data.error); } else { _cbk(_data); } }); }
     },
     load: {

@@ -147,33 +147,148 @@
     
     <!-- QUIZZ -->
     
+    
+    <rdf:Description>
+        <dct:identifier>q10</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver le résultat de la multiplication de deux nombres compris entre 1 et 10.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/redcarpet01.svg","gg":{"a":[10,1],"b":[9,2]},"errratio":2,"class":"smallpanel","checkempty":true,"callen":4,"noneg":true,"nodec":true,"withtabs":false,"sp":0.1,"rows":{"row0":{"height":0.2}},"cols":{"col0":{"width":0.2},"col1":{"fixed":true,"width":8},"col2":{"width":5}},"withbars":false,"all":{"height":1.2},"gen":"function($this, _s, _i) { var val={d:[],push:function(_val){this.d.push(_val);},exist:function(_val){var r=false; for (var id in this.d) { if (this.d[id]==_val) { r=true; }} return r;}},cells={}; for (var i=0; i<6; i++) { var a,b,t; do { a = Math.floor(Math.random()*_s.gg.a[0])+_s.gg.a[1]; b = Math.floor(Math.random()*_s.gg.b[0])+_s.gg.b[1]; t=a+'×'+b; } while (val.exist(t)); val.push(t); cells['c1x'+(i+1)]={'fixed':true,'value':t,'background':'#FEC','color':'#444'}; cells['c2x'+(i+1)]={'result':a*b}; } return {'cells':cells}; }","font":1.5]]></dct:description>
+        <dct:description xml:lang="fr-FR">,"exercice":"[b]Donnez le résultat[/b] correspondant à chaque multiplications proposées par l'exercice."</dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>q10</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+		<dct:source>res/img/background/landscape/redcarpet01.svg</dct:source>
+    </rdf:Description>
+	
     <rdf:Description>
         <dct:identifier>q2</dct:identifier>
-        <dct:title xml:lang="fr-FR">Trouver le résultat de multiplications par 2.</dct:title>
-        <dct:description><![CDATA["errratio":2,"class":"smallpanel","checkempty":true,"callen":4,"noneg":true,"nodec":true,"withtabs":false,"sp":0.1,"rows":{"row0":{"height":0.2}},"cols":{"col0":{"width":0.2},"col1":{"fixed":true,"width":8},"col2":{"width":5}},"withbars":false,"all":{"height":1.2},"gen":"function() { var cells={},v=[]; for (var i=0; i<10; i++) { v.push(['2×'+(i+1),2*(i+1)]); } for (var i=0; i<50; i++) { v.sort(function(){ return (Math.random()>0.5); }); }; for (var j=0;j<6;j++) { cells['c1x'+(j+1)]={'fixed':true,'value':v[j][0],'background':'#FEC','color':'#444'}; cells['c2x'+(j+1)]={'result':v[j][1]}; } return {'cells':cells}; }","font":1.5]]></dct:description>
-        <dct:description xml:lang="fr-FR">,"exercice":"[b]Complétez les multiplications proposées par l'exercice[/b]."</dct:description>
-        <dct:extent>2</dct:extent>
+        <dct:title xml:lang="fr-FR">Trouver le résultat de la multiplication de 2 avec un nombre compris entre 1 et 10.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[0,2],"b":[9,2]}]]></dct:description>
+        <dct:extent>3</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>q10o</dct:alternative>
+        <dct:type>3</dct:type>
+        <dct:alternative>q10</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+		<dct:relation>q10</dct:relation>
+		<dct:source>res/img/background/landscape/redcarpet01.svg</dct:source>
     </rdf:Description>
-    
+	
     <rdf:Description>
-        <dct:identifier>q10o</dct:identifier>
-        <dct:title xml:lang="fr-FR">Trouver le résultat de multiplications de deux nombres compris entre 1 et 10.</dct:title>
-        <dct:description><![CDATA["errratio":2,"class":"smallpanel","checkempty":true,"callen":4,"noneg":true,"nodec":true,"withtabs":false,"sp":0.1,"rows":{"row0":{"height":0.2}},"cols":{"col0":{"width":0.2},"col1":{"fixed":true,"width":8},"col2":{"width":5}},"withbars":false,"all":{"height":1.2},"gen":"function() { var cells={},v=[]; for (var j=0; j<10; j++) for (var i=0; i<10; i++) { v.push([(j+1)+'×'+(i+1),(j+1)*(i+1)]); } for (var i=0; i<50; i++) { v.sort(function(){ return (Math.random()>0.5); }); }; for (var j=0;j<6;j++) { cells['c1x'+(j+1)]={'fixed':true,'value':v[j][0],'background':'#FEC','color':'#444'}; cells['c2x'+(j+1)]={'result':v[j][1]}; } return {'cells':cells}; }","font":1.5]]></dct:description>
-        <dct:description xml:lang="fr-FR">,"exercice":"[b]Complétez les multiplications proposées par l'exercice[/b]."</dct:description>
-        <dct:extent>2</dct:extent>
+        <dct:identifier>q3</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver le résultat de la multiplication de 3 avec un nombre compris entre 1 et 10.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[0,3],"b":[9,2]}]]></dct:description>
+        <dct:extent>3</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>q10o</dct:alternative>
+        <dct:type>3</dct:type>
+        <dct:alternative>q10</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+		<dct:relation>q10</dct:relation>
+		<dct:source>res/img/background/landscape/redcarpet01.svg</dct:source>
     </rdf:Description>
-    
-    
+	
+    <rdf:Description>
+        <dct:identifier>q4</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver le résultat de la multiplication de 4 avec un nombre compris entre 1 et 10.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[0,4],"b":[9,2]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>q10</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+		<dct:relation>q10</dct:relation>
+		<dct:source>res/img/background/landscape/redcarpet01.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>q5</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver le résultat de la multiplication de 5 avec un nombre compris entre 1 et 10.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[0,5],"b":[9,2]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>q10</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+		<dct:relation>q10</dct:relation>
+		<dct:source>res/img/background/landscape/redcarpet01.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>q25</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver le résultat de la multiplication de 2,3,4 ou 5 avec un nombre compris entre 1 et 10.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[4,2],"b":[9,2]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>q10</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+		<dct:relation>q10</dct:relation>
+		<dct:source>res/img/background/landscape/redcarpet01.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>q6</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver le résultat de la multiplication de 6 avec un nombre compris entre 1 et 10.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[0,6],"b":[9,2]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>q10</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+		<dct:relation>q10</dct:relation>
+		<dct:source>res/img/background/landscape/redcarpet01.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>q7</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver le résultat de la multiplication de 7 avec un nombre compris entre 1 et 10.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[0,7],"b":[9,2]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>q10</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+		<dct:relation>q10</dct:relation>
+		<dct:source>res/img/background/landscape/redcarpet01.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>q8</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver le résultat de la multiplication de 8 avec un nombre compris entre 1 et 10.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[0,8],"b":[9,2]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>q10</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+		<dct:relation>q10</dct:relation>
+		<dct:source>res/img/background/landscape/redcarpet01.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>q9</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver le résultat de la multiplication de 9 avec un nombre compris entre 1 et 10.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[0,9],"b":[9,2]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>q10</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+		<dct:relation>q10</dct:relation>
+		<dct:source>res/img/background/landscape/redcarpet01.svg</dct:source>
+    </rdf:Description>
+	
+	
     <rdf:Description>
         <dct:identifier>qm01</dct:identifier>
         <dct:title xml:lang="fr-FR">Calculer, sans poser les opérations, des multiplications complexes.</dct:title>

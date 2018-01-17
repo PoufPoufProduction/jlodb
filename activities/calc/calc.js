@@ -198,7 +198,7 @@
 
                 // GEN
                 if (settings.gen) {
-                    var gen = eval('('+settings.gen+')')();
+                    var gen = eval('('+settings.gen+')')($this,settings,0);
                     if (gen.cells) { settings.cells = gen.cells; }
                 }
 
