@@ -10,12 +10,16 @@
     svg#caterpillar .drag .shadow       { display:inline; }
     svg#caterpillar circle.bg           { fill:#532; }
     svg#caterpillar circle.fg           { fill:#A64; }
-    svg#caterpillar.small text          { font-size:36px; }
     svg#caterpillar text                { font-size:48px;text-anchor:middle;fill:white;font-family:Times New Roman;opacity:0.7; }
     svg#caterpillar #pieces>g           { cursor:move; display:none; }
     svg#caterpillar #info text          { opacity:0.8; fill:#FD8; display:none; }
     svg#caterpillar #info image         { display:none; }
     svg#caterpillar #parts>g            { display:none; }
+	
+	svg#caterpillar.smalltt #info text 		{ font-size:32px; }
+	svg#caterpillar.smallpt #pieces text 	{ font-size:32px; }
+    svg#caterpillar.small text          	{ font-size:36px; }
+	
 </style>
 </defs> 
 <g id="bg"> 

@@ -2,16 +2,16 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dct="http://purl.org/dc/terms/">
 
-
+	
     <rdf:Description>
         <dct:identifier>i01</dct:identifier>
-        <dct:title xml:lang="fr-FR">Identifier 2 images symétriques [mains].</dct:title>
-        <dct:description><![CDATA["number":20,"template":"template2.html","time":0,"regexp":{"input":{"from":"([^ ]+)","to":"[icon][img]res/img/svginventoryicons/human/$1.svg[/img][/icon]"}},"class":"neg alpha","font":3.4,"values":[["lefthand00 lefthand00",0],["lefthand01 lefthand01",0],["lefthand02 lefthand02",0],["lefthand03 lefthand03",0],["lefthand04 lefthand04",0],["lefthand05 lefthand05",0],["righthand00 righthand00",0],["righthand01 righthand01",0],["righthand02 righthand02",0],["righthand03 righthand03",0],["righthand04 righthand04",0],["righthand05 righthand05",0],["lefthand00 righthand00",1],["lefthand01 righthand01",1],["lefthand02 righthand02",1],["lefthand03 righthand03",1],["lefthand04 righthand04",1],["lefthand05 righthand05",1],["righthand00 lefthand00",1],["righthand01 lefthand01",1],["righthand02 lefthand02",1],["righthand03 lefthand03",1],["righthand04 lefthand04",1],["righthand05 lefthand05",1]]]]></dct:description>
+        <dct:title xml:lang="fr-FR">Identifier 2 images symétriques [divers noto].</dct:title>
+        <dct:description><![CDATA["number":20,"template":"template2.html","time":0,"class":"p02 neg alpha","font":3.3,"gen":"function() { var imgs=['lefthand00','lefthand01','lefthand02','lefthand03','lefthand04','lefthand05','righthand00','righthand01','righthand02','righthand03','righthand04','righthand05'],i=Math.floor(Math.random()*imgs.length),r=Math.floor(Math.random()*2); return ['[icon][svg48]<image xlink:href=\\\"res/img/svginventoryicons/human/'+imgs[i]+'.svg\\\" width=\\\"48\\\" height=\\\"48\\\" x=\\\"0\\\" y=\\\"0\\\"/>[/svg48][/icon]<div style=\\\"width:.01em;height:1em;background-color:red;float:left\\\"></div>[icon][svg48]<image '+(r?'transform=\\\"matrix(-1,0,0,1,48,0)\\\" ':'')+'xlink:href=\\\"res/img/svginventoryicons/human/'+imgs[i]+'.svg\\\" width=\\\"48\\\" height=\\\"48\\\" x=\\\"0\\\" y=\\\"0\\\"/>[/svg48][/icon]',r];}"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"input":{"digit":1,"attr":[1,2.5,1.2],"values":[["oui",1],["non",0]]},"exercice":"Les [red]2 images[/red] sont-elles [b]symétriques[/b] ?","fontex":1.2]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>symmetry</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>2</dct:type>
         <dct:alternative>i01</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
         <dct:source>res/img/svginventoryicons/human/*hand*.svg</dct:source>
@@ -21,7 +21,7 @@
     <rdf:Description>
         <dct:identifier>i02</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier 2 images symétriques [divers noto].</dct:title>
-        <dct:description><![CDATA["number":20,"template":"template2.html","time":0,"class":"p02 neg alpha","font":3.4,"gen":"function() { var imgs=['emoji_u1f3ad','emoji_u1f3b3','emoji_u1f3b6','emoji_u1f4a3','emoji_u1f4f7','emoji_u1f33d','emoji_u1f40b','emoji_u1f54a','emoji_u1f55e','emoji_u1f69a','emoji_u1f98e','emoji_u1f993','emoji_u1f325','emoji_u1f368','emoji_u1f407','emoji_u1f412','emoji_u1f988','emoji_u1f955','emoji_u1f94a','emoji_u1f36c'],i=Math.floor(Math.random()*imgs.length),r=Math.floor(Math.random()*2); return ['[icon][svg48]<image xlink:href=\\\"ext/noto/svg/'+imgs[i]+'.svg\\\" width=\\\"48\\\" height=\\\"48\\\" x=\\\"0\\\" y=\\\"0\\\"/>[/svg48][/icon][icon][svg48]<image '+(r?'transform=\\\"matrix(-1,0,0,1,48,0)\\\" ':'')+'xlink:href=\\\"ext/noto/svg/'+imgs[i]+'.svg\\\" width=\\\"48\\\" height=\\\"48\\\" x=\\\"0\\\" y=\\\"0\\\"/>[/svg48][/icon]',r];}"]]></dct:description>
+        <dct:description><![CDATA["number":20,"template":"template2.html","time":0,"class":"p02 neg alpha","font":3.3,"gen":"function() { var imgs=['emoji_u1f3ad','emoji_u1f3b3','emoji_u1f3b6','emoji_u1f4a3','emoji_u1f4f7','emoji_u1f33d','emoji_u1f40b','emoji_u1f54a','emoji_u1f55e','emoji_u1f69a','emoji_u1f98e','emoji_u1f993','emoji_u1f325','emoji_u1f368','emoji_u1f407','emoji_u1f412','emoji_u1f988','emoji_u1f955','emoji_u1f94a','emoji_u1f36c'],i=Math.floor(Math.random()*imgs.length),r=Math.floor(Math.random()*2); return ['[icon][svg48]<image xlink:href=\\\"ext/noto/svg/'+imgs[i]+'.svg\\\" width=\\\"48\\\" height=\\\"48\\\" x=\\\"0\\\" y=\\\"0\\\"/>[/svg48][/icon]<div style=\\\"width:.01em;height:1em;background-color:red;float:left\\\"></div>[icon][svg48]<image '+(r?'transform=\\\"matrix(-1,0,0,1,48,0)\\\" ':'')+'xlink:href=\\\"ext/noto/svg/'+imgs[i]+'.svg\\\" width=\\\"48\\\" height=\\\"48\\\" x=\\\"0\\\" y=\\\"0\\\"/>[/svg48][/icon]',r];}"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"input":{"digit":1,"attr":[1,2.5,1.2],"values":[["oui",1],["non",0]]},"exercice":"Les [red]2 images[/red] sont-elles [b]symétriques[/b] ?","fontex":1.2]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>symmetry</dct:subject>

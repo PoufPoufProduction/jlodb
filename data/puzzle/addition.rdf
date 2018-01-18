@@ -8,7 +8,7 @@
     <rdf:Description>
         <dct:identifier>20</dct:identifier>
         <dct:title xml:lang="fr-FR">Retrouver les sommes correspondant à une addition dont les opérandes sont compris entre 1 et 10.</dct:title>
-        <dct:description><![CDATA["number":2,"gg":{"or":[1,10],"rr":[2,20],"t":true},"background":"res/img/background/landscape/graycarpet01.svg","number":2,"init":{"pos":[[60,300],[210,300],[360,300],[510,300],[135,250],[285,250],[435,250],[585,250],[135,350],[285,350],[435,350],[585,350]],"area":[0,0,100,100]},"decoys":["dd01","dd02","dd03","dd04","dd05","dd06"],"scale":1.5,"url":"desktop/puzzle/list01.svg","gen":"function($this,settings,_id){var or=settings.gg.or,rr=settings.gg.rr,t=settings.gg.t,val={d:[],push:function(_val){this.d.push(_val);},exist:function(_val){var r=false; for (var id in this.d) { if (this.d[id]==_val) { r=true; }} return r;}},ret={};for (var i=0;i<12;i++) { var a,b; do { a=Math.floor(Math.random()*or[1])+or[0]; b=Math.floor(Math.random()*or[1])+or[0];} while (a+b>rr[1] || a+b<rr[0] || val.exist(a+b)); val.push(a+b); if (i<6) { ret['txt0'+(i+1)]=t?a+'+'+b:a+b; ret['p0'+(i+1)]=t?a+b:a+'+'+b; } else { ret['d0'+(i+1-6)]=t?a+b:a+'+'+b;} } return {'txt':ret,'svgclass':(t?'smalltt':'smallpt')} }","show":["t01"],"same":[["pp01","pp02","pp03","pp04","pp05","pp06"]]]]></dct:description>
+        <dct:description><![CDATA["number":2,"errratio":2,"gg":{"or":[1,10],"rr":[2,20],"t":true},"background":"res/img/background/landscape/graycarpet01.svg","number":2,"init":{"pos":[[60,300],[210,300],[360,300],[510,300],[135,250],[285,250],[435,250],[585,250],[135,350],[285,350],[435,350],[585,350]],"area":[0,0,100,100]},"decoys":["dd01","dd02","dd03","dd04","dd05","dd06"],"scale":1.5,"url":"desktop/puzzle/list01.svg","gen":"function($this,settings,_id){var or=settings.gg.or,rr=settings.gg.rr,t=settings.gg.t,val={d:[],push:function(_val){this.d.push(_val);},exist:function(_val){var r=false; for (var id in this.d) { if (this.d[id]==_val) { r=true; }} return r;}},ret={};for (var i=0;i<12;i++) { var a,b; do { a=Math.floor(Math.random()*or[1])+or[0]; b=Math.floor(Math.random()*or[1])+or[0];} while (a+b>rr[1] || a+b<rr[0] || val.exist(a+b)); val.push(a+b); if (i<6) { ret['txt0'+(i+1)]=t?a+'+'+b:a+b; ret['p0'+(i+1)]=t?a+b:a+'+'+b; } else { ret['d0'+(i+1-6)]=t?a+b:a+'+'+b;} } return {'txt':ret,'svgclass':(t?'smalltt':'smallpt')} }","show":["t01"],"same":[["pp01","pp02","pp03","pp04","pp05","pp06"]]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Faites glisser dans les zones grises, les résultats correspondant aux différentes [b]addition[/b]."]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>addition</dct:subject>
@@ -23,12 +23,12 @@
     <rdf:Description>
         <dct:identifier>20i</dct:identifier>
         <dct:title xml:lang="fr-FR">Retrouver les additions correspondant à une somme dont les opérandes sont compris entre 1 et 10.</dct:title>
-        <dct:description><![CDATA["number":1,"gg":{"or":[1,10],"rr":[2,20],"t":false}]]></dct:description>
+        <dct:description><![CDATA["number":1,"errratio":3,"gg":{"or":[1,10],"rr":[2,20],"t":false}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Faites glisser dans les zones grises, les additions correspondant aux différentes [b]sommes[/b]."]]></dct:description>
-        <dct:extent>2</dct:extent>
+        <dct:extent>3</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
+        <dct:type>3</dct:type>
         <dct:alternative>20</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP,CE1</dct:coverage>
 		<dct:relation>20</dct:relation>
