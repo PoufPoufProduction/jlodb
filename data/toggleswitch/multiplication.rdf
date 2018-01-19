@@ -16,305 +16,273 @@
         <dct:alternative>ac20</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
     </rdf:Description>
+	
+	<!-- MULTIPLE -->
     
     <rdf:Description>
         <dct:identifier>2</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier les valeurs (paires) appartenant à la table de multiplication de 2.</dct:title>
-        <dct:description><![CDATA["number":3,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var nb=2, c=Math.floor(Math.random()*2), a=c==0?nb*(Math.floor(Math.random()*10)+1):nb*Math.floor(Math.random()*10)+1+Math.floor(Math.random()*(nb-1)); result+=(a%nb==0)?\\\"1\\\":\\\"0\\\"; ret.push(a);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"yellow","color":"orange"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:yellow;'><b>JAUNE</b></span>, les valeurs [red]paires[/red] c'est à dire, appartenant à la table de multiplication de <b>2</b>.","tag":"×2"}]]></dct:description>
+        <dct:description><![CDATA["gg":2,"number":2,"background":"res/img/background/landscape/brownboard01.svg","template":"array3x3","gen":"function($this,_s,_id){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var c=(Math.random()<0.5), a=c?_s.gg*(Math.floor(Math.random()*10)+1):_s.gg*Math.floor(Math.random()*10)+1+Math.floor(Math.random()*(_s.gg-1)); result+=(a%_s.gg==0)?'1':'0'; ret.push(a);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"orange","color":"white"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:orange;'><b>ORANGE</b></span>, les valeurs [red]paires[/red] c'est à dire, appartenant à la table de multiplication de <b>2</b>.","tag":"×2"}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>9</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP,CE1</dct:coverage>
+		<dct:source>res/img/background/landscape/brownboard01.svg</dct:source>
     </rdf:Description>
-
+    
     <rdf:Description>
         <dct:identifier>3</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier les valeurs appartenant à la table de multiplication de 3.</dct:title>
-        <dct:description><![CDATA["number":3,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var nb=3, c=Math.floor(Math.random()*2), a=c==0?nb*(Math.floor(Math.random()*10)+1):nb*Math.floor(Math.random()*10)+1+Math.floor(Math.random()*(nb-1)); result+=(a%nb==0)?\\\"1\\\":\\\"0\\\"; ret.push(a);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"lightgreen","color":"green"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:lightgreen;'><b>VERT CLAIR</b></span>, les valeurs appartenant à la table de multiplication de <b>3</b>.","tag":"×3"}]]></dct:description>
+        <dct:description><![CDATA["gg":3]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:orange;'><b>ORANGE</b></span>, les valeurs appartenant à la table de multiplication de <b>3</b>.","tag":"×3"}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>9</dct:alternative>
+		<dct:relation>2</dct:relation>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+		<dct:source>res/img/background/landscape/brownboard01.svg</dct:source>
     </rdf:Description>
-
+    
     <rdf:Description>
         <dct:identifier>4</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier les valeurs appartenant à la table de multiplication de 4.</dct:title>
-        <dct:description><![CDATA["number":3,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var nb=4, c=Math.floor(Math.random()*2), a=c==0?nb*(Math.floor(Math.random()*10)+1):nb*Math.floor(Math.random()*10)+1+Math.floor(Math.random()*(nb-1)); result+=(a%nb==0)?\\\"1\\\":\\\"0\\\"; ret.push(a);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"cyan","color":"blue"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:cyan;'><b>BLEU CLAIR</b></span>, les valeurs appartenant à la table de multiplication de <b>4</b>.","tag":"×4"}]]></dct:description>
+        <dct:description><![CDATA["gg":4]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:orange;'><b>ORANGE</b></span>, les valeurs appartenant à la table de multiplication de <b>4</b>.","tag":"×4"}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>9</dct:alternative>
+		<dct:relation>2</dct:relation>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+		<dct:source>res/img/background/landscape/brownboard01.svg</dct:source>
     </rdf:Description>
-
+    
     <rdf:Description>
         <dct:identifier>5</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier les valeurs appartenant à la table de multiplication de 5.</dct:title>
-        <dct:description><![CDATA["number":3,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var nb=5, c=Math.floor(Math.random()*2), a=c==0?nb*(Math.floor(Math.random()*10)+1):nb*Math.floor(Math.random()*10)+1+Math.floor(Math.random()*(nb-1)); result+=(a%nb==0)?\\\"1\\\":\\\"0\\\"; ret.push(a);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"darksalmon","color":"red"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:darksalmon;'><b>ROSE</b></span>, les valeurs appartenant à la table de multiplication de <b>5</b>.","tag":"×5"}]]></dct:description>
+        <dct:description><![CDATA["gg":5]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:orange;'><b>ORANGE</b></span>, les valeurs appartenant à la table de multiplication de <b>5</b>.","tag":"×5"}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>9</dct:alternative>
+		<dct:relation>2</dct:relation>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+		<dct:source>res/img/background/landscape/brownboard01.svg</dct:source>
     </rdf:Description>
-
+    
     <rdf:Description>
         <dct:identifier>6</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier les valeurs appartenant à la table de multiplication de 6.</dct:title>
-        <dct:description><![CDATA["number":3,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var nb=6, c=Math.floor(Math.random()*2), a=c==0?nb*(Math.floor(Math.random()*10)+1):nb*Math.floor(Math.random()*10)+1+Math.floor(Math.random()*(nb-1)); result+=(a%nb==0)?\\\"1\\\":\\\"0\\\"; ret.push(a);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"orange","color":"saddlebrown"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["gg":6]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:orange;'><b>ORANGE</b></span>, les valeurs appartenant à la table de multiplication de <b>6</b>.","tag":"×6"}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>9</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+		<dct:relation>2</dct:relation>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+		<dct:source>res/img/background/landscape/brownboard01.svg</dct:source>
     </rdf:Description>
-
+    
     <rdf:Description>
         <dct:identifier>7</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier les valeurs appartenant à la table de multiplication de 7.</dct:title>
-        <dct:description><![CDATA["number":3,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var nb=7, c=Math.floor(Math.random()*2), a=c==0?nb*(Math.floor(Math.random()*10)+1):nb*Math.floor(Math.random()*10)+1+Math.floor(Math.random()*(nb-1)); result+=(a%nb==0)?\\\"1\\\":\\\"0\\\"; ret.push(a);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"yellowgreen","color":"green"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:yellowgreen;'><b>VERT</b></span>, les valeurs appartenant à la table de multiplication de <b>7</b>.","tag":"×7"}]]></dct:description>
+        <dct:description><![CDATA["gg":7]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:orange;'><b>ORANGE</b></span>, les valeurs appartenant à la table de multiplication de <b>7</b>.","tag":"×7"}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>9</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+		<dct:relation>2</dct:relation>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+		<dct:source>res/img/background/landscape/brownboard01.svg</dct:source>
     </rdf:Description>
-
+    
     <rdf:Description>
         <dct:identifier>8</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier les valeurs appartenant à la table de multiplication de 8.</dct:title>
-        <dct:description><![CDATA["number":3,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var nb=8, c=Math.floor(Math.random()*2), a=c==0?nb*(Math.floor(Math.random()*10)+1):nb*Math.floor(Math.random()*10)+1+Math.floor(Math.random()*(nb-1)); result+=(a%nb==0)?\\\"1\\\":\\\"0\\\"; ret.push(a);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"green","color":"darkgreen"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:green;'><b>VERT</b></span>, les valeurs appartenant à la table de multiplication de <b>8</b>.","tag":"×8"}]]></dct:description>
+        <dct:description><![CDATA["gg":8]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:orange;'><b>ORANGE</b></span>, les valeurs appartenant à la table de multiplication de <b>8</b>.","tag":"×8"}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>9</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+		<dct:relation>2</dct:relation>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+		<dct:source>res/img/background/landscape/brownboard01.svg</dct:source>
     </rdf:Description>
-
+    
     <rdf:Description>
         <dct:identifier>9</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier les valeurs appartenant à la table de multiplication de 9.</dct:title>
-        <dct:description><![CDATA["number":3,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var nb=9, c=Math.floor(Math.random()*2), a=c==0?nb*(Math.floor(Math.random()*10)+1):nb*Math.floor(Math.random()*10)+1+Math.floor(Math.random()*(nb-1)); result+=(a%nb==0)?\\\"1\\\":\\\"0\\\"; ret.push(a);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"blue","color":"darkblue"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:blue;'><b>BLEU</b></span>, les valeurs appartenant à la table de multiplication de <b>9</b>.","tag":"×9"}]]></dct:description>
+        <dct:description><![CDATA["gg":9]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:orange;'><b>ORANGE</b></span>, les valeurs appartenant à la table de multiplication de <b>9</b>.","tag":"×9"}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>9</dct:alternative>
+		<dct:relation>2</dct:relation>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+		<dct:source>res/img/background/landscape/brownboard01.svg</dct:source>
     </rdf:Description>
 
-    <rdf:Description>
-        <dct:identifier>10</dct:identifier>
-        <dct:title xml:lang="fr-FR">Identifier les valeurs appartenant à la table de multiplication de 10.</dct:title>
-        <dct:description><![CDATA["number":3,"template":"array3x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var nb=10, c=Math.floor(Math.random()*2), a=c==0?nb*(Math.floor(Math.random()*10)+1):nb*Math.floor(Math.random()*10)+1+Math.floor(Math.random()*(nb-1)); result+=(a%nb==0)?\\\"1\\\":\\\"0\\\"; ret.push(a);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"purple","color":"#400040"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:purple;'><b>VIOLET</b></span>, les valeurs appartenant à la table de multiplication de <b>10</b>.","tag":"×10"}]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>multiplication</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>9</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-    </rdf:Description>
+	
+	<!-- CHECK -->
 
     <rdf:Description>
-        <dct:identifier>w2</dct:identifier>
+        <dct:identifier>c2</dct:identifier>
         <dct:title xml:lang="fr-FR">Vérifier le résultat d'une multiplication par 2.</dct:title>
-        <dct:description><![CDATA["number":3,"template":"array2x4","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var chance=Math.floor(Math.random()*2), val=2, a=Math.floor(Math.random()*10)+1, c=(chance==0)?a*val:a*val+(Math.floor(Math.random()*2)*2-1)*Math.floor(Math.random()*val+1); result+=(a*val==c)?\\\"0\\\":\\\"1\\\"; ret.push(val+\\\"×\\\"+a+\\\"=\\\"+c);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Barrez les opérations erronées."}]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:description><![CDATA["gg":[1,2,10,1],"number":2,"background":"res/img/background/landscape/grayboard01.svg","template":"array2x4","gen":"function($this,_s,_i){var result='',ret=[]; for (var i=0; i<9; i++) { var chance=(Math.random()<0.5), a=Math.floor(Math.random()*_s.gg[0])+_s.gg[1],b=Math.floor(Math.random()*_s.gg[2])+_s.gg[3], c=a*b; if (chance) { do {c=Math.floor(Math.random()*_s.gg[0]*_s.gg[2])+_s.gg[1]*_s.gg[3]; } while (c==a*b); } result+=(a*b==c)?'0':'1'; ret.push(a+'×'+b+'='+c);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"[b]Barrez[/b] les opérations erronées."}]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>w29</dct:alternative>
+        <dct:type>2</dct:type>
+        <dct:alternative>c29</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP,CE1</dct:coverage>
+		<dct:source>res/img/background/landscape/grayboard01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>w3</dct:identifier>
+        <dct:identifier>c3</dct:identifier>
         <dct:title xml:lang="fr-FR">Vérifier le résultat d'une multiplication par 3.</dct:title>
-        <dct:description><![CDATA["number":3,"template":"array2x4","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var chance=Math.floor(Math.random()*2), val=3, a=Math.floor(Math.random()*10)+1, c=(chance==0)?a*val:a*val+(Math.floor(Math.random()*2)*2-1)*Math.floor(Math.random()*val+1); result+=(a*val==c)?\\\"0\\\":\\\"1\\\"; ret.push(val+\\\"×\\\"+a+\\\"=\\\"+c);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Barrez les opérations erronées."}]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:description><![CDATA["gg":[1,3,10,1]]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>w29</dct:alternative>
+        <dct:alternative>c29</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+		<dct:relation>c2</dct:relation>
+		<dct:source>res/img/background/landscape/grayboard01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>w4</dct:identifier>
+        <dct:identifier>c4</dct:identifier>
         <dct:title xml:lang="fr-FR">Vérifier le résultat d'une multiplication par 4.</dct:title>
-        <dct:description><![CDATA["number":3,"template":"array2x4","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var chance=Math.floor(Math.random()*2), val=4, a=Math.floor(Math.random()*10)+1, c=(chance==0)?a*val:a*val+(Math.floor(Math.random()*2)*2-1)*Math.floor(Math.random()*val+1); result+=(a*val==c)?\\\"0\\\":\\\"1\\\"; ret.push(val+\\\"×\\\"+a+\\\"=\\\"+c);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Barrez les opérations erronées."}]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:description><![CDATA["gg":[1,4,10,1]]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>w29</dct:alternative>
+        <dct:alternative>c29</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+		<dct:relation>c2</dct:relation>
+		<dct:source>res/img/background/landscape/grayboard01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>w5</dct:identifier>
-        <dct:title xml:lang="fr-FR">Vérifier le résultat d'une multiplication par 5.</dct:title>
-        <dct:description><![CDATA["number":3,"template":"array2x4","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var chance=Math.floor(Math.random()*2), val=5, a=Math.floor(Math.random()*10)+1, c=(chance==0)?a*val:a*val+(Math.floor(Math.random()*2)*2-1)*Math.floor(Math.random()*val+1); result+=(a*val==c)?\\\"0\\\":\\\"1\\\"; ret.push(val+\\\"×\\\"+a+\\\"=\\\"+c);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Barrez les opérations erronées."}]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>multiplication</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>w29</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>w6</dct:identifier>
-        <dct:title xml:lang="fr-FR">Vérifier le résultat d'une multiplication par 6.</dct:title>
-        <dct:description><![CDATA["number":3,"template":"array2x4","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var chance=Math.floor(Math.random()*2), val=6, a=Math.floor(Math.random()*10)+1, c=(chance==0)?a*val:a*val+(Math.floor(Math.random()*2)*2-1)*Math.floor(Math.random()*val+1); result+=(a*val==c)?\\\"0\\\":\\\"1\\\"; ret.push(val+\\\"×\\\"+a+\\\"=\\\"+c);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Barrez les opérations erronées."}]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>multiplication</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>3</dct:type>
-        <dct:alternative>w29</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>w7</dct:identifier>
-        <dct:title xml:lang="fr-FR">Vérifier le résultat d'une multiplication par 7.</dct:title>
-        <dct:description><![CDATA["number":3,"template":"array2x4","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var chance=Math.floor(Math.random()*2), val=7, a=Math.floor(Math.random()*10)+1, c=(chance==0)?a*val:a*val+(Math.floor(Math.random()*2)*2-1)*Math.floor(Math.random()*val+1); result+=(a*val==c)?\\\"0\\\":\\\"1\\\"; ret.push(val+\\\"×\\\"+a+\\\"=\\\"+c);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Barrez les opérations erronées."}]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>multiplication</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>3</dct:type>
-        <dct:alternative>w29</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>w8</dct:identifier>
-        <dct:title xml:lang="fr-FR">Vérifier le résultat d'une multiplication par 8.</dct:title>
-        <dct:description><![CDATA["number":3,"template":"array2x4","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var chance=Math.floor(Math.random()*2), val=8, a=Math.floor(Math.random()*10)+1, c=(chance==0)?a*val:a*val+(Math.floor(Math.random()*2)*2-1)*Math.floor(Math.random()*val+1); result+=(a*val==c)?\\\"0\\\":\\\"1\\\"; ret.push(val+\\\"×\\\"+a+\\\"=\\\"+c);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Barrez les opérations erronées."}]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>multiplication</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>3</dct:type>
-        <dct:alternative>w29</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>w9</dct:identifier>
-        <dct:title xml:lang="fr-FR">Vérifier le résultat d'une multiplication par 9.</dct:title>
-        <dct:description><![CDATA["number":3,"template":"array2x4","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var chance=Math.floor(Math.random()*2), val=9, a=Math.floor(Math.random()*10)+1, c=(chance==0)?a*val:a*val+(Math.floor(Math.random()*2)*2-1)*Math.floor(Math.random()*val+1); result+=(a*val==c)?\\\"0\\\":\\\"1\\\"; ret.push(val+\\\"×\\\"+a+\\\"=\\\"+c);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Barrez les opérations erronées."}]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>multiplication</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>3</dct:type>
-        <dct:alternative>w29</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>w23</dct:identifier>
-        <dct:title xml:lang="fr-FR">Vérifier le résultat d'une multiplication par 2 ou 3.</dct:title>
-        <dct:description><![CDATA["number":3,"template":"array2x4","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var chance=Math.floor(Math.random()*2), val=Math.floor(Math.random()*2)+2, a=Math.floor(Math.random()*10)+1, c=(chance==0)?a*val:a*val+(Math.floor(Math.random()*2)*2-1)*Math.floor(Math.random()*val+1); result+=(a*val==c)?\\\"0\\\":\\\"1\\\"; ret.push(val+\\\"×\\\"+a+\\\"=\\\"+c);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Barrez les opérations erronées."}]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>multiplication</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>w29</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>w25</dct:identifier>
+        <dct:identifier>c25</dct:identifier>
         <dct:title xml:lang="fr-FR">Vérifier le résultat d'une multiplication par 2,3,4 ou 5.</dct:title>
-        <dct:description><![CDATA["number":3,"template":"array2x4","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var chance=Math.floor(Math.random()*2), val=Math.floor(Math.random()*4)+2, a=Math.floor(Math.random()*10)+1, c=(chance==0)?a*val:a*val+(Math.floor(Math.random()*2)*2-1)*Math.floor(Math.random()*val+1); result+=(a*val==c)?\\\"0\\\":\\\"1\\\"; ret.push(val+\\\"×\\\"+a+\\\"=\\\"+c);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Barrez les opérations erronées."}]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:description><![CDATA["gg":[4,2,10,1]]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>w29</dct:alternative>
+        <dct:alternative>c29</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+		<dct:relation>c2</dct:relation>
+		<dct:source>res/img/background/landscape/grayboard01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>w29</dct:identifier>
-        <dct:title xml:lang="fr-FR">Vérifier le résultat d'une multiplication de deux nombres compris entre 1 et 9.</dct:title>
-        <dct:description><![CDATA["number":3,"template":"array2x4","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var chance=Math.floor(Math.random()*2), val=Math.floor(Math.random()*8)+2, a=Math.floor(Math.random()*10)+1, c=(chance==0)?a*val:a*val+(Math.floor(Math.random()*2)*2-1)*Math.floor(Math.random()*val+1); result+=(a*val==c)?\\\"0\\\":\\\"1\\\"; ret.push(val+\\\"×\\\"+a+\\\"=\\\"+c);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Barrez les opérations erronées."}]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:identifier>c5</dct:identifier>
+        <dct:title xml:lang="fr-FR">Vérifier le résultat d'une multiplication par 5.</dct:title>
+        <dct:description><![CDATA["gg":[1,5,10,1]]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>3</dct:type>
-        <dct:alternative>w29</dct:alternative>
+        <dct:type>2</dct:type>
+        <dct:alternative>c29</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+		<dct:relation>c2</dct:relation>
+		<dct:source>res/img/background/landscape/grayboard01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>w59</dct:identifier>
-        <dct:title xml:lang="fr-FR">Vérifier le résultat d'une multiplication par 5,6,7,8 ou 9.</dct:title>
-        <dct:description><![CDATA["number":3,"template":"array2x4","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var chance=Math.floor(Math.random()*2), val=Math.floor(Math.random()*5)+5, a=Math.floor(Math.random()*10)+1, c=(chance==0)?a*val:a*val+(Math.floor(Math.random()*2)*2-1)*Math.floor(Math.random()*val+1); result+=(a*val==c)?\\\"0\\\":\\\"1\\\"; ret.push(val+\\\"×\\\"+a+\\\"=\\\"+c);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Barrez les opérations erronées."}]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:identifier>c6</dct:identifier>
+        <dct:title xml:lang="fr-FR">Vérifier le résultat d'une multiplication par 6.</dct:title>
+        <dct:description><![CDATA["gg":[1,6,10,1]]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>4</dct:type>
-        <dct:alternative>w29</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:type>2</dct:type>
+        <dct:alternative>c29</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+		<dct:relation>c2</dct:relation>
+		<dct:source>res/img/background/landscape/grayboard01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>w67</dct:identifier>
-        <dct:title xml:lang="fr-FR">Vérifier le résultat d'une multiplication par 6 ou 7.</dct:title>
-        <dct:description><![CDATA["number":3,"template":"array2x4","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var chance=Math.floor(Math.random()*2), val=Math.floor(Math.random()*2)+6, a=Math.floor(Math.random()*10)+1, c=(chance==0)?a*val:a*val+(Math.floor(Math.random()*2)*2-1)*Math.floor(Math.random()*val+1); result+=(a*val==c)?\\\"0\\\":\\\"1\\\"; ret.push(val+\\\"×\\\"+a+\\\"=\\\"+c);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Barrez les opérations erronées."}]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:identifier>c7</dct:identifier>
+        <dct:title xml:lang="fr-FR">Vérifier le résultat d'une multiplication par 7.</dct:title>
+        <dct:description><![CDATA["gg":[1,7,10,1]]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>4</dct:type>
-        <dct:alternative>w29</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:type>2</dct:type>
+        <dct:alternative>c29</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+		<dct:relation>c2</dct:relation>
+		<dct:source>res/img/background/landscape/grayboard01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>w78</dct:identifier>
-        <dct:title xml:lang="fr-FR">Vérifier le résultat d'une multiplication par 7 ou 8.</dct:title>
-        <dct:description><![CDATA["number":3,"template":"array2x4","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var chance=Math.floor(Math.random()*2), val=Math.floor(Math.random()*2)+7, a=Math.floor(Math.random()*10)+1, c=(chance==0)?a*val:a*val+(Math.floor(Math.random()*2)*2-1)*Math.floor(Math.random()*val+1); result+=(a*val==c)?\\\"0\\\":\\\"1\\\"; ret.push(val+\\\"×\\\"+a+\\\"=\\\"+c);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Barrez les opérations erronées."}]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:identifier>c8</dct:identifier>
+        <dct:title xml:lang="fr-FR">Vérifier le résultat d'une multiplication par 8.</dct:title>
+        <dct:description><![CDATA["gg":[1,8,10,1]]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>4</dct:type>
-        <dct:alternative>w29</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:type>2</dct:type>
+        <dct:alternative>c29</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+		<dct:relation>c2</dct:relation>
+		<dct:source>res/img/background/landscape/grayboard01.svg</dct:source>
     </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>c9</dct:identifier>
+        <dct:title xml:lang="fr-FR">Vérifier le résultat d'une multiplication par 9.</dct:title>
+        <dct:description><![CDATA["gg":[1,9,10,1]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>c29</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+		<dct:relation>c2</dct:relation>
+		<dct:source>res/img/background/landscape/grayboard01.svg</dct:source>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>c29</dct:identifier>
+        <dct:title xml:lang="fr-FR">Vérifier le résultat d'une multiplication.</dct:title>
+        <dct:description><![CDATA["gg":[8,2,10,1]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>c29</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+		<dct:relation>c2</dct:relation>
+		<dct:source>res/img/background/landscape/grayboard01.svg</dct:source>
+    </rdf:Description>
+
+	
+	<!-- NEGATIVE -->
 
     <rdf:Description>
         <dct:identifier>n2gt0</dct:identifier>

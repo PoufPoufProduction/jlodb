@@ -57,7 +57,7 @@
 
         #jlcontent>.jlcontent .banner     { padding:0 .3em 0 .3em; margin:.5em; line-height:1.4em; }
         div#home h1             { font-size:1.6em; overflow:visible; }
-        div#home #overview      { text-align:right; ont-size:.8em; font-family: "Courier New", Courier, mono; line-height:1em;}
+        div#home #overview      { text-align:right; font-family: "Courier New", Courier, mono; line-height:1em;}
         div#home #overview span { color:black; }
         div#home #right         { font-size:.8em; width:28em; overflow:hidden; float:left; }
         div#home #left          { font-size:.8em; width:25em; overflow:hidden; float:left; }
@@ -201,12 +201,12 @@ jlodb = {
                             for (var i=0; i<data.mods.length; i++) {
                                 var html ="<div class='mod' id='"+data.mods[i].id+"'><div class='icon'><a href='"+
                                           data.mods[i].id+".html' target='blank'>";
-                                html    +="<img src='mods/"+data.mods[i].id+"/icon.svg'/></a></div>";
+                                html    +="<img src='mods/"+data.mods[i].id+"/icon.svg' alt=''/></a></div>";
                                 html    +="<div class='text'>";
                                 html    +="<div class='snap' onclick=\"window.open('"+data.mods[i].id+".html',"+
                                           "'_blank', 'width=640, height=480,toolbar=no,location=no,status=no,menubar=no," +
                                           "scrollbars=no,resizable=no,status=no,titlebar=no');\">"+
-                                          "<img src='res/img/default/white/snapshot.svg'/></div>";
+                                          "<img src='res/img/default/white/snapshot.svg' alt='s'/></div>";
                                 if (data.mods[i].source.length) {
                                     html+="<div class='action' id='"+data.mods[i].source+
                                           "' onclick='jlodb.page.mods.build(this);'>+</div>";
@@ -606,11 +606,11 @@ $(window).ready(function() {
         <div id="mask"></div>
         <div id="screen">
             <textarea></textarea>
-            <div id="quit" ontouchstart="$('#jlodb #screen').hide();event.preventDefault();"
-                           onclick="$('#jlodb #screen').hide();"><img src="res/img/default/icon/nw_quit01.svg"/></div>
+            <div id="scquit" ontouchstart="$('#jlodb #screen').hide();event.preventDefault();"
+                           onclick="$('#jlodb #screen').hide();"><img src="res/img/default/icon/nw_quit01.svg" alt="x"/></div>
         </div>
     </div>
-    <div id="waiting" class="anim12"><div><img src="res/img/default/anim/waiting_red.svg"/></div></div>
+    <div id="waiting" class="anim12"><div><img src="res/img/default/anim/waiting_red.svg" alt=""/></div></div>
     <div id="waitingCount"><div></div></div>
 
     <div id="score"></div>

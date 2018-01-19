@@ -3,10 +3,12 @@
          xmlns:dct="http://purl.org/dc/terms/">
 
     
+	<!-- MULTIPLE -->
+	
     <rdf:Description>
         <dct:identifier>3</dct:identifier>
         <dct:title xml:lang="fr-FR">Cliquer sur les multiples de 3.</dct:title>
-        <dct:description><![CDATA["holes":"classic","sprdata":{"d":[{"alignment":"good","type":"embed","gen":"function(){return {legend:Math.floor(Math.random()*10+1)*3}}"},{"alignment":"wrong","type":"embed","gen":"function(){return {legend:Math.floor(Math.random()*9+1)*3+Math.floor(Math.random()*2+1)};}"}]},"tag":"×3"]]></dct:description>
+        <dct:description><![CDATA["gg":3,"tag":"×3","holes":"classic","sprdata":{"d":[{"alignment":"good","type":"embed","gen":"function($this,_s){return {legend:Math.floor(Math.random()*10+1)*_s.gg}}"},{"alignment":"wrong","type":"embed","gen":"function($this,_s){return {legend:Math.floor(Math.random()*9+1)*_s.gg+Math.floor(Math.random()*(_s.gg-1)+1)};}"}]}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Cliquez sur les [b]multiples de 3[/b], c'est à dire dont la valeur appartient à la table de multiplication par 3."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
@@ -15,13 +17,11 @@
         <dct:alternative>3</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
     </rdf:Description>
-    
-        
-    
+	
     <rdf:Description>
         <dct:identifier>4</dct:identifier>
         <dct:title xml:lang="fr-FR">Cliquer sur les multiples de 4.</dct:title>
-        <dct:description><![CDATA["holes":"classic","sprdata":{"d":[{"alignment":"good","type":"embed","gen":"function(){return {legend:Math.floor(Math.random()*10+1)*4}}"},{"alignment":"wrong","type":"embed","gen":"function(){return {legend:Math.floor(Math.random()*9+1)*4+Math.floor(Math.random()*3+1)};}"}]},"tag":"×4"]]></dct:description>
+        <dct:description><![CDATA["gg":4,"tag":"×4"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Cliquez sur les [b]multiples de 4[/b], c'est à dire dont la valeur appartient à la table de multiplication par 4."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
@@ -29,12 +29,13 @@
         <dct:type>3</dct:type>
         <dct:alternative>3</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+		<dct:relation>3</dct:relation>
     </rdf:Description>
-    
+	
     <rdf:Description>
         <dct:identifier>5</dct:identifier>
         <dct:title xml:lang="fr-FR">Cliquer sur les multiples de 5.</dct:title>
-        <dct:description><![CDATA["holes":"classic","sprdata":{"d":[{"alignment":"good","type":"embed","gen":"function(){return {legend:Math.floor(Math.random()*10+1)*5}}"},{"alignment":"wrong","type":"embed","gen":"function(){return {legend:Math.floor(Math.random()*9+1)*5+Math.floor(Math.random()*4+1)};}"}]},"tag":"×5"]]></dct:description>
+        <dct:description><![CDATA["gg":5,"tag":"×5"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Cliquez sur les [b]multiples de 5[/b], c'est à dire dont la valeur appartient à la table de multiplication par 5."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
@@ -42,59 +43,198 @@
         <dct:type>3</dct:type>
         <dct:alternative>3</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+		<dct:relation>3</dct:relation>
     </rdf:Description>
-    
+	
     <rdf:Description>
         <dct:identifier>6</dct:identifier>
         <dct:title xml:lang="fr-FR">Cliquer sur les multiples de 6.</dct:title>
-        <dct:description><![CDATA["holes":"classic","sprdata":{"d":[{"alignment":"good","type":"embed","gen":"function(){return {legend:Math.floor(Math.random()*10+1)*6}}"},{"alignment":"wrong","type":"embed","gen":"function(){return {legend:Math.floor(Math.random()*9+1)*6+Math.floor(Math.random()*5+1)};}"}]},"tag":"×6"]]></dct:description>
+        <dct:description><![CDATA["gg":6,"tag":"×6"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Cliquez sur les [b]multiples de 6[/b], c'est à dire dont la valeur appartient à la table de multiplication par 6."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>3</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+		<dct:relation>3</dct:relation>
     </rdf:Description>
-    
+	
     <rdf:Description>
         <dct:identifier>7</dct:identifier>
         <dct:title xml:lang="fr-FR">Cliquer sur les multiples de 7.</dct:title>
-        <dct:description><![CDATA["holes":"classic","sprdata":{"d":[{"alignment":"good","type":"embed","gen":"function(){return {legend:Math.floor(Math.random()*10+1)*7}}"},{"alignment":"wrong","type":"embed","gen":"function(){return {legend:Math.floor(Math.random()*9+1)*7+Math.floor(Math.random()*6+1)};}"}]},"tag":"×7"]]></dct:description>
+        <dct:description><![CDATA["gg":7,"tag":"×7"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Cliquez sur les [b]multiples de 7[/b], c'est à dire dont la valeur appartient à la table de multiplication par 7."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>3</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+		<dct:relation>3</dct:relation>
     </rdf:Description>
-    
+	
     <rdf:Description>
         <dct:identifier>8</dct:identifier>
         <dct:title xml:lang="fr-FR">Cliquer sur les multiples de 8.</dct:title>
-        <dct:description><![CDATA["holes":"classic","sprdata":{"d":[{"alignment":"good","type":"embed","gen":"function(){return {legend:Math.floor(Math.random()*10+1)*8}}"},{"alignment":"wrong","type":"embed","gen":"function(){return {legend:Math.floor(Math.random()*9+1)*8+Math.floor(Math.random()*7+1)};}"}]},"tag":"×8"]]></dct:description>
+        <dct:description><![CDATA["gg":8,"tag":"×8"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Cliquez sur les [b]multiples de 8[/b], c'est à dire dont la valeur appartient à la table de multiplication par 8."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>3</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+		<dct:relation>3</dct:relation>
     </rdf:Description>
-    
+	
     <rdf:Description>
         <dct:identifier>9</dct:identifier>
         <dct:title xml:lang="fr-FR">Cliquer sur les multiples de 9.</dct:title>
-        <dct:description><![CDATA["holes":"classic","sprdata":{"d":[{"alignment":"good","type":"embed","gen":"function(){return {legend:Math.floor(Math.random()*10+1)*9}}"},{"alignment":"wrong","type":"embed","gen":"function(){return {legend:Math.floor(Math.random()*9+1)*9+Math.floor(Math.random()*8+1)};}"}]},"tag":"×9"]]></dct:description>
+        <dct:description><![CDATA["gg":9,"tag":"×9"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Cliquez sur les [b]multiples de 9[/b], c'est à dire dont la valeur appartient à la table de multiplication par 9."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>3</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+		<dct:relation>3</dct:relation>
+    </rdf:Description>
+	
+	<!-- CHECK -->
+	
+	
+    <rdf:Description>
+        <dct:identifier>c2</dct:identifier>
+        <dct:title xml:lang="fr-FR">Cliquez sur les multiplications par 2 dont le résultat est exact.</dct:title>
+        <dct:description><![CDATA["gg":[1,2,10,1],"freq":2,"class":"smalllegend","holes":"classic","sprdata":{"d":[{"alignment":"good","type":"embed","gen":"function($this,_s){var a=Math.floor(Math.random()*_s.gg[0])+_s.gg[1],b=Math.floor(Math.random()*_s.gg[2])+_s.gg[3]; return {legend:''+a+'×'+b+'='+(a*b)};}"},{"alignment":"wrong","type":"embed","gen":"function($this,_s){var a=Math.floor(Math.random()*_s.gg[0])+_s.gg[1],b=Math.floor(Math.random()*_s.gg[2])+_s.gg[3],c; do {c=Math.floor(Math.random()*((_s.gg[0]+_s.gg[1]-1)*(_s.gg[2]+_s.gg[3]-1)-(_s.gg[1]+_s.gg[3])))+_s.gg[1]+_s.gg[3];} while(c==a*b); return {legend:''+a+'×'+b+'='+c};}"}]}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Cliquez sur les multiplications [b]exactes[/b]."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>c10</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
     </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>c3</dct:identifier>
+        <dct:title xml:lang="fr-FR">Cliquez sur les multiplications par 3 dont le résultat est exact.</dct:title>
+        <dct:description><![CDATA["gg":[1,3,10,1]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>c10</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+		<dct:relation>c2</dct:relation>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>c4</dct:identifier>
+        <dct:title xml:lang="fr-FR">Cliquez sur les multiplications par 4 dont le résultat est exact.</dct:title>
+        <dct:description><![CDATA["gg":[1,4,10,1]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>c10</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+		<dct:relation>c2</dct:relation>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>c5</dct:identifier>
+        <dct:title xml:lang="fr-FR">Cliquez sur les multiplications par 5 dont le résultat est exact.</dct:title>
+        <dct:description><![CDATA["gg":[1,5,10,1]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>c10</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+		<dct:relation>c2</dct:relation>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>c15</dct:identifier>
+        <dct:title xml:lang="fr-FR">Cliquez sur les multiplications par 2,3,4 ou 5 dont le résultat est exact.</dct:title>
+        <dct:description><![CDATA["gg":[4,2,10,1]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>c10</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+		<dct:relation>c2</dct:relation>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>c6</dct:identifier>
+        <dct:title xml:lang="fr-FR">Cliquez sur les multiplications par 6 dont le résultat est exact.</dct:title>
+        <dct:description><![CDATA["gg":[1,6,10,1]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>c10</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+		<dct:relation>c2</dct:relation>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>c7</dct:identifier>
+        <dct:title xml:lang="fr-FR">Cliquez sur les multiplications par 7 dont le résultat est exact.</dct:title>
+        <dct:description><![CDATA["gg":[1,7,10,1]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>c10</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+		<dct:relation>c2</dct:relation>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>c8</dct:identifier>
+        <dct:title xml:lang="fr-FR">Cliquez sur les multiplications par 8 dont le résultat est exact.</dct:title>
+        <dct:description><![CDATA["gg":[1,8,10,1]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>c10</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+		<dct:relation>c2</dct:relation>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>c9</dct:identifier>
+        <dct:title xml:lang="fr-FR">Cliquez sur les multiplications par 9 dont le résultat est exact.</dct:title>
+        <dct:description><![CDATA["gg":[1,9,10,1]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>c10</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+		<dct:relation>c2</dct:relation>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>c10</dct:identifier>
+        <dct:title xml:lang="fr-FR">Cliquez sur les multiplications dont le résultat est exact.</dct:title>
+        <dct:description><![CDATA["gg":[9,1,10,1]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>c10</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+		<dct:relation>c2</dct:relation>
+    </rdf:Description>
+	
 
 </rdf:RDF>
 
