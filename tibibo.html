@@ -235,8 +235,14 @@ var tibibo = {
             return _text;
         },
         cleantext: function(_text) {
-            var vReg = new RegExp("[\"]","g");
-            return _text.replace(vReg,"'");
+			if (_text) {
+				var vReg1 = new RegExp("\"","g");
+				_text = _text.replace(vReg1,"'");
+				
+				var vReg2 = new RegExp("\n","g");
+				_text = _text.replace(vReg2,"[br]");
+			}
+            return _text; 
         },
         devmode: function() {
             if ($("#bomain").hasClass("devmode")) { user.devmode(); } else { $("#udevmode").show(); }
@@ -429,8 +435,13 @@ var tibibo = {
         save: function() {
 			console.log("Save :"+JSON.stringify(tibibo.awards.list));
             user.getJSON("mods/tibibo/api/book.php",{ action:"upd", book:tibibo.args.id},
-                {awards:JSON.stringify(tibibo.awards.list)}, function(_data){});
-            tibibo.awards.display();
+                {awards:JSON.stringify(tibibo.awards.list)}, function(_data){
+				if (_data && _data.awards) {
+					tibibo.awards.selected	= -1;
+					tibibo.awards.list		= _data.awards;
+				}
+				tibibo.awards.display();
+			});
         },
         display:function() {
             tibibo.book.data.awards =
@@ -756,8 +767,8 @@ var tibibo = {
                      $("#boeditnode #tibibi textarea").val().length==0));
             },
             update: function() {
-                var label = $("#boeditnode #elabel").hasClass("d")?"":$("#boeditnode #elabel").val().replace(/\"/g,"'").replace(/\n/g,"[br]");
-                var comment = $("#boeditnode #ecomment").hasClass("d")?"":$("#boeditnode #ecomment").val().replace(/\"/g,"'").replace(/\n/g,"[br]");
+                var label = $("#boeditnode #elabel").hasClass("d")?"":tibibo.helpers.cleantext($("#boeditnode #elabel").val());
+                var comment = $("#boeditnode #ecomment").hasClass("d")?"":tibibo.helpers.cleantext($("#boeditnode #ecomment").val());
                 var desc = $("#boeditnode #etibibi").hasClass("d")?"":$("#boeditnode #etibibi").val();
                 
                 if (tibibo.node.edit.elt) {

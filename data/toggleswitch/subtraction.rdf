@@ -2,65 +2,185 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dct="http://purl.org/dc/terms/">
 
-
+	<!-- CHECK RESULTS -->
+		 
     <rdf:Description>
-        <dct:identifier>t5</dct:identifier>
+        <dct:identifier>c5</dct:identifier>
         <dct:title xml:lang="fr-FR">Vérifier le résultat de soustractions dont le diminuteur et la différence sont compris entre 1 et 5.</dct:title>
-        <dct:description><![CDATA["number":4,"template":"array2x4","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var chance=Math.floor(Math.random()*2), max=5, a=Math.floor(Math.random()*max)+1, b=Math.floor(Math.random()*max)+1, c=(chance==0)?a+b:b+Math.floor(Math.random()*a)+1; result+=(a+b==c)?\\\"0\\\":\\\"1\\\"; ret.push(c+\\\"-\\\"+b+\\\"=\\\"+a);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"[b]Barrez les opérations erronées.[/b]","font":0.8}]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>subtraction</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>t10</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>t10</dct:identifier>
-        <dct:title xml:lang="fr-FR">Vérifier le résultat de soustractions dont le diminuteur et la différence sont compris entre 1 et 10.</dct:title>
-        <dct:description><![CDATA["number":4,"template":"array2x4","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var chance=Math.floor(Math.random()*2), max=10, a=Math.floor(Math.random()*max)+1, b=Math.floor(Math.random()*max)+1, c=(chance==0)?a+b:b+Math.floor(Math.random()*a)+1; result+=(a+b==c)?\\\"0\\\":\\\"1\\\"; ret.push(c+\\\"-\\\"+b+\\\"=\\\"+a);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}},"font":0.8]]></dct:description>
+        <dct:description><![CDATA["gg":5,"background":"res/img/background/landscape/bluecarpet01.svg","number":2,"template":"array2x4","gen":"function($this,_s,_id){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var chance=Math.floor(Math.random()*2),a=Math.floor(Math.random()*_s.gg)+1, b=Math.floor(Math.random()*_s.gg)+1, c=(chance==0)?a+b:b+Math.floor(Math.random()*a)+1; result+=(a+b==c)?\\\"0\\\":\\\"1\\\"; ret.push(c+\\\"-\\\"+b+\\\"=\\\"+a);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}},"font":0.8]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"[b]Barrez les opérations erronées.[/b]"}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>subtraction</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>t10</dct:alternative>
+        <dct:alternative>c10</dct:alternative>
+		<dct:source>res/img/background/landscape/bluecarpet01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>t20</dct:identifier>
+        <dct:identifier>c10</dct:identifier>
+        <dct:title xml:lang="fr-FR">Vérifier le résultat de soustractions dont le diminuteur et la différence sont compris entre 1 et 10.</dct:title>
+        <dct:description><![CDATA["gg":10,"font":0.8]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>subtraction</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+		<dct:relation>c5</dct:relation>
+        <dct:alternative>c10</dct:alternative>
+		<dct:source>res/img/background/landscape/bluecarpet01.svg</dct:source>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>c20</dct:identifier>
         <dct:title xml:lang="fr-FR">Vérifier le résultat de soustractions dont le diminuteur et la différence sont compris entre 1 et 20.</dct:title>
-        <dct:description><![CDATA["number":4,"template":"array2x4","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var chance=Math.floor(Math.random()*2), max=20, a=Math.floor(Math.random()*max)+1, b=Math.floor(Math.random()*max)+1, c=(chance==0)?a+b:b+Math.floor(Math.random()*a)+1; result+=(a+b==c)?\\\"0\\\":\\\"1\\\"; ret.push(c+\\\"-\\\"+b+\\\"=\\\"+a);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}},"font":0.7]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Barrez les opérations erronées."}]]></dct:description>
+        <dct:description><![CDATA["gg":20,"font":0.7]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>subtraction</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>t10</dct:alternative>
+		<dct:relation>c5</dct:relation>
+        <dct:alternative>c10</dct:alternative>
+		<dct:source>res/img/background/landscape/bluecarpet01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>t50</dct:identifier>
+        <dct:identifier>c50</dct:identifier>
         <dct:title xml:lang="fr-FR">Vérifier le résultat de soustractions dont le diminuteur et la différence sont compris entre 1 et 50.</dct:title>
-        <dct:description><![CDATA["number":4,"template":"array2x4","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var chance=Math.floor(Math.random()*2), max=50, a=Math.floor(Math.random()*max)+1, b=Math.floor(Math.random()*max)+1, c=a+b+(chance==0?0:Math.floor(Math.random()*20)-10); if (c<=0) { c = a+b; } result+=(a+b==c)?\\\"0\\\":\\\"1\\\"; ret.push(c+\\\"-\\\"+b+\\\"=\\\"+a);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}},"font":0.7]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Barrez les opérations erronées."}]]></dct:description>
+        <dct:description><![CDATA["gg":50,"font":0.7]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>subtraction</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>t10</dct:alternative>
+		<dct:relation>c5</dct:relation>
+        <dct:alternative>c10</dct:alternative>
+		<dct:source>res/img/background/landscape/bluecarpet01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>t100</dct:identifier>
+        <dct:identifier>c100</dct:identifier>
         <dct:title xml:lang="fr-FR">Vérifier le résultat de soustractions dont le diminuteur et la différence sont compris entre 1 et 100.</dct:title>
-        <dct:description><![CDATA["number":4,"template":"array2x4","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var chance=Math.floor(Math.random()*2), max=100, a=Math.floor(Math.random()*max)+1, b=Math.floor(Math.random()*max)+1, c=a+b+(chance==0?0:Math.floor(Math.random()*20)-10); if (c<=0) { c = a+b; } result+=(a+b==c)?\\\"0\\\":\\\"1\\\"; ret.push(c+\\\"-\\\"+b+\\\"=\\\"+a);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}},"font":0.6]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Barrez les opérations erronées."}]]></dct:description>
+        <dct:description><![CDATA["gg":100,"font":0.6]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>subtraction</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>t10</dct:alternative>
+		<dct:relation>c5</dct:relation>
+        <dct:alternative>c10</dct:alternative>
+		<dct:source>res/img/background/landscape/bluecarpet01.svg</dct:source>
     </rdf:Description>
+	
+	<!-- IDENTIFY RESULT -->
+
+    <rdf:Description>
+        <dct:identifier>3</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier le nombre 3 à partir d'une soustraction de 2 nombres (compris entre 1 et 10)</dct:title>
+        <dct:description><![CDATA["gg":{"r":3,"max":10,"min":1},"background":"res/img/background/landscape/grayboard01.svg","number":3,"template":"array3x3","gen":"function($this,_s,_id){var result=\\\"\\\",ret=[]; for (var i=0; i<9; i++) { var c=(Math.random()<0.5),a,b; if (c) { do { a=Math.floor(Math.random()*_s.gg.max)+_s.gg.min; b=Math.floor(Math.random()*(a-_s.gg.min))+_s.gg.min; } while(a-b==_s.gg.r); } else { do { a=Math.floor(Math.random()*(_s.gg.max-_s.gg.r))+_s.gg.r+_s.gg.min,b=a-_s.gg.r; } while(b<_s.gg.min); } result+=(a-b==_s.gg.r)?\\\"1\\\":\\\"0\\\"; ret.push(a+\\\"-\\\"+b);} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"orange","color":"white"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Surlignez en <span style='color:orange;'><b>ORANGE</b></span>, les soustractions dont le résultat vaut <b>3</b>.","tag":"3"}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>subtraction</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>3</dct:alternative>
+        <dct:source>res/img/background/landscape/grayboard01.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>3b</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier le nombre 3 à partir d'une soustraction de 2 nombres (compris entre 1 et 20)</dct:title>
+        <dct:description><![CDATA["gg":{"r":3,"max":20,"min":1},"font":0.7]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Surlignez en <span style='color:orange;'><b>ORANGE</b></span>, les soustractions dont le résultat vaut <b>3</b>.","tag":"3"}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>subtraction</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+		<dct:relation>3</dct:relation>
+        <dct:alternative>3</dct:alternative>
+        <dct:source>res/img/background/landscape/grayboard01.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>4</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier le nombre 4 à partir d'une soustraction de 2 nombres (compris entre 1 et 10)</dct:title>
+        <dct:description><![CDATA["gg":{"r":4,"max":10,"min":1}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Surlignez en <span style='color:orange;'><b>ORANGE</b></span>, les soustractions dont le résultat vaut <b>4</b>.","tag":"4"}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>subtraction</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+		<dct:relation>3</dct:relation>
+        <dct:alternative>3</dct:alternative>
+        <dct:source>res/img/background/landscape/grayboard01.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>4b</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier le nombre 4 à partir d'une soustraction de 2 nombres (compris entre 1 et 20)</dct:title>
+        <dct:description><![CDATA["gg":{"r":4,"max":20,"min":1},"font":0.7]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Surlignez en <span style='color:orange;'><b>ORANGE</b></span>, les soustractions dont le résultat vaut <b>4</b>.","tag":"4"}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>subtraction</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+		<dct:relation>3</dct:relation>
+        <dct:alternative>3</dct:alternative>
+        <dct:source>res/img/background/landscape/grayboard01.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>5</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier le nombre 5 à partir d'une soustraction de 2 nombres (compris entre 1 et 20)</dct:title>
+        <dct:description><![CDATA["gg":{"r":5,"max":20,"min":1},"font":0.7]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Surlignez en <span style='color:orange;'><b>ORANGE</b></span>, les soustractions dont le résultat vaut <b>5</b>.","tag":"5"}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>subtraction</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+		<dct:relation>3</dct:relation>
+        <dct:alternative>3</dct:alternative>
+        <dct:source>res/img/background/landscape/grayboard01.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>6</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier le nombre 6 à partir d'une soustraction de 2 nombres (compris entre 1 et 20)</dct:title>
+        <dct:description><![CDATA["gg":{"r":6,"max":20,"min":1},"font":0.7]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Surlignez en <span style='color:orange;'><b>ORANGE</b></span>, les soustractions dont le résultat vaut <b>6</b>.","tag":"6"}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>subtraction</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+		<dct:relation>3</dct:relation>
+        <dct:alternative>3</dct:alternative>
+        <dct:source>res/img/background/landscape/grayboard01.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>7</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier le nombre 7 à partir d'une soustraction de 2 nombres (compris entre 1 et 20)</dct:title>
+        <dct:description><![CDATA["gg":{"r":7,"max":20,"min":1},"font":0.7]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Surlignez en <span style='color:orange;'><b>ORANGE</b></span>, les soustractions dont le résultat vaut <b>7</b>.","tag":"7"}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>subtraction</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+		<dct:relation>3</dct:relation>
+        <dct:alternative>3</dct:alternative>
+        <dct:source>res/img/background/landscape/grayboard01.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>8</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier le nombre 8 à partir d'une soustraction de 2 nombres (compris entre 1 et 20)</dct:title>
+        <dct:description><![CDATA["gg":{"r":8,"max":20,"min":1},"font":0.7]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Surlignez en <span style='color:orange;'><b>ORANGE</b></span>, les soustractions dont le résultat vaut <b>8</b>.","tag":"8"}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>subtraction</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+		<dct:relation>3</dct:relation>
+        <dct:alternative>3</dct:alternative>
+        <dct:source>res/img/background/landscape/grayboard01.svg</dct:source>
+    </rdf:Description>
+	
 
 </rdf:RDF>

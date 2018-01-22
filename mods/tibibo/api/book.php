@@ -45,8 +45,9 @@ if (array_key_exists("User_Key",$_SESSION) && array_key_exists("action",$_GET) &
     }
     else
     if ( array_key_exists("awards",$_POST)) {
-        
-        mysqli_query($link, "UPDATE `".$_SESSION['prefix']."book` SET `Book_Awards`='".$_POST["awards"]."' ".
+		$v = str_replace("'","\'", $_POST["awards"]);
+		
+        mysqli_query($link, "UPDATE `".$_SESSION['prefix']."book` SET `Book_Awards`='".$v."' ".
                     "WHERE `Book_Name`='".$_GET["book"]."' AND User_Key='".$_SESSION['User_Key']."'");
     }
     else

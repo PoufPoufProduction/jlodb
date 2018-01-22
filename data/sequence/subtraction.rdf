@@ -27,6 +27,18 @@
     </rdf:Description>
 
     <rdf:Description>
+        <dct:identifier>20u</dct:identifier>
+        <dct:title xml:lang="fr-FR">Effectuer, en moins de 5 secondes par opération, des soustractions dont la diminuende est comprise entre 15 et 20, et la différence positive.</dct:title>
+        <dct:description><![CDATA["class":"h12","time":5,"timemode":1,"input":{"digit":2,"speed":5000},"gen":"function() { var a=Math.floor(Math.random()*15)+6; return \\\"\\\"+a+\\\"-\\\"+(Math.floor(Math.random()*a)+1); }","font":2.4]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>subtraction</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>100</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP,CE1</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
         <dct:identifier>50</dct:identifier>
         <dct:title xml:lang="fr-FR">Effectuer, sans contrainte de temps, des soustractions dont la diminuende est comprise entre 10 et 50, et la différence positive</dct:title>
         <dct:description><![CDATA["class":"h12","time":0,"input":{"digit":2,"speed":5000},"gen":"function() { var a = Math.floor(10+Math.random()*40), b = Math.floor(1+Math.random()*(a-1)); return \\\"\\\"+a+\\\"-\\\"+b;}","font":2.2]]></dct:description>
