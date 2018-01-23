@@ -41,4 +41,32 @@
         <dct:source>res/img/desktop/toggleswitch/sym01.svg,res/img/background/blueboard01.svg</dct:source>
     </rdf:Description>
 	
+	
+    <rdf:Description>
+        <dct:identifier>snf</dct:identifier>
+        <dct:title xml:lang="fr-FR">Inverser 6 plantes pour réaliser un jardin symétrique.</dct:title>
+        <dct:description><![CDATA["errratio":3,"number":2,"background":"res/img/background/landscape/greenboard01.svg","template":"desktop/toggleswitch/sym02.svg","states":{ "nb":2, "class":["c0","c1"]},"wrong":{"class":"wrong"},"gg":{"nb":[6]},"gen":"function($this,settings,_i){var nb=settings.gg.nb[_i%settings.gg.nb.length],l=String.fromCharCode(96+nb),imgs=['01','02','03','04','05','06'],init='',result='',txt={}; for (var i=0;i<nb;i++) { result+='1'; init+=(Math.random()<0.5?'0':'1'); var im='res/img/ppvc/hammer/hole_asset'+imgs[Math.floor(Math.random()*imgs.length)]+'.svg'; txt['i'+l+i]=im; txt['ii'+l+i+'a']=im; txt['ii'+l+i+'b']=im;} return { init:init,result:result,txt:txt,svgclass:'group'+l,group:'group'+l}; }"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Cliquez[/b] sur les plantes de [b]droite[/b] pour réaliser un jardin parfaitement [b]symétrique[/b]."]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>symmetry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>sf</dct:alternative>
+        <dct:source>res/img/desktop/toggleswitch/sym02.svg,res/img/background/blueboard01.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>snh</dct:identifier>
+        <dct:title xml:lang="fr-FR">Inverser 8 plantes pour réaliser un jardin symétrique.</dct:title>
+        <dct:description><![CDATA["gg":{"nb":[8]}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>symmetry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>sf</dct:alternative>
+        <dct:relation>snf</dct:relation>
+        <dct:source>res/img/desktop/toggleswitch/sym02.svg,res/img/background/blueboard01.svg</dct:source>
+    </rdf:Description>
+	
+	
 </rdf:RDF>

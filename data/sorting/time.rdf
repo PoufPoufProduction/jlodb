@@ -7,7 +7,7 @@
     <rdf:Description>
         <dct:identifier>c01</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer à chaque horloge les minutes correspondantes.</dct:title>
-        <dct:description><![CDATA["class":"h12","regexp":{"question":{ "from": "^(.*)$","to":"<div class=\\\"char\\\"><img src=\\\"res/img/clock/clockA$1.svg\\\"/></div>"}},"gen":"function(i,elts){var ret=\\\"\\\", h=elts.length?parseInt(elts[0][0].substr(0,2)):Math.floor(Math.random()*12), m=Math.floor(Math.random()*12)*5; if (h<10) { h='0'+h; } if (m<10) { m='0'+m; } return [h.toString()+m,h.toString()+':'+m];}","len":3,"nbvalues":4,"number":3,"font":1.8]]></dct:description>
+        <dct:description><![CDATA["class":"h12","regexp":{"question":{ "from": "^(.*)$","to":"<div class=\\\"char\\\"><img src=\\\"res/img/clock/clockA$1.svg\\\"/></div>"}},"gen":"function($this,settings,i){var ret=\\\"\\\", h=settings.elts.length?parseInt(settings.elts[0][0].substr(0,2)):Math.floor(Math.random()*12), m=Math.floor(Math.random()*12)*5; if (h<10) { h='0'+h; } if (m<10) { m='0'+m; } return [h.toString()+m,h.toString()+':'+m];}","len":3,"nbvalues":4,"number":3,"font":1.8]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>time</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -20,7 +20,7 @@
     <rdf:Description>
         <dct:identifier>c02</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer à chaque horloge dont l'aiguille des minutes est sur le 0, les heures correspondantes.</dct:title>
-        <dct:description><![CDATA["class":"h12","regexp":{"question":{ "from": "^(.*)$","to":"<div class=\\\"char\\\"><img src=\\\"res/img/clock/clockA$1.svg\\\"/></div>"}},"gen":"function(i,elts){var ret=\\\"\\\", h=Math.floor(Math.random()*12), m=0; if (h<10) { h='0'+h; } if (m<10) { m='0'+m; } return [h.toString()+m,h.toString()+':'+m];}","len":3,"nbvalues":4,"number":3,"font":1.8]]></dct:description>
+        <dct:description><![CDATA["class":"h12","regexp":{"question":{ "from": "^(.*)$","to":"<div class=\\\"char\\\"><img src=\\\"res/img/clock/clockA$1.svg\\\"/></div>"}},"gen":"function($this,settings,i){var ret=\\\"\\\", h=Math.floor(Math.random()*12), m=0; if (h<10) { h='0'+h; } if (m<10) { m='0'+m; } return [h.toString()+m,h.toString()+':'+m];}","len":3,"nbvalues":4,"number":3,"font":1.8]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>time</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -32,7 +32,7 @@
     <rdf:Description>
         <dct:identifier>c02o</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer à chaque horloge les heures correspondantes.</dct:title>
-        <dct:description><![CDATA["class":"h12","regexp":{"question":{ "from": "^(.*)$","to":"<div class=\\\"char\\\"><img src=\\\"res/img/clock/clockA$1.svg\\\"/></div>"}},"gen":"function(i,elts){var ret=\\\"\\\", h=Math.floor(Math.random()*12), m=elts.length?parseInt(elts[0][0].substr(2,2)):Math.floor(Math.random()*12)*5; if (h<10) { h='0'+h; } if (m<10) { m='0'+m; } return [h.toString()+m,h.toString()+':'+m];}","len":3,"nbvalues":4,"number":3,"font":1.8]]></dct:description>
+        <dct:description><![CDATA["class":"h12","regexp":{"question":{ "from": "^(.*)$","to":"<div class=\\\"char\\\"><img src=\\\"res/img/clock/clockA$1.svg\\\"/></div>"}},"gen":"function($this,settings,i){var ret=\\\"\\\", h=Math.floor(Math.random()*12), m=settings.elts.length?parseInt(settings.elts[0][0].substr(2,2)):Math.floor(Math.random()*12)*5; if (h<10) { h='0'+h; } if (m<10) { m='0'+m; } return [h.toString()+m,h.toString()+':'+m];}","len":3,"nbvalues":4,"number":3,"font":1.8]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>time</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -45,7 +45,7 @@
     <rdf:Description>
         <dct:identifier>c03</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer à chaque horloge l'heure correspondante.</dct:title>
-        <dct:description><![CDATA["class":"h12","regexp":{"question":{ "from": "^(.*)$","to":"<div class=\\\"char\\\"><img src=\\\"res/img/clock/clockA$1.svg\\\"/></div>"}},"gen":"function(i){var ret=\\\"\\\", h=Math.floor(Math.random()*12), m=Math.floor(Math.random()*12)*5; if (h<10) { h='0'+h; } if (m<10) { m='0'+m; } return [h.toString()+m,h.toString()+':'+m];}","len":3,"nbvalues":4,"number":3,"font":1.8]]></dct:description>
+        <dct:description><![CDATA["class":"h12","regexp":{"question":{ "from": "^(.*)$","to":"<div class=\\\"char\\\"><img src=\\\"res/img/clock/clockA$1.svg\\\"/></div>"}},"gen":"function(){var ret=\\\"\\\", h=Math.floor(Math.random()*12), m=Math.floor(Math.random()*12)*5; if (h<10) { h='0'+h; } if (m<10) { m='0'+m; } return [h.toString()+m,h.toString()+':'+m];}","len":3,"nbvalues":4,"number":3,"font":1.8]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>time</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>

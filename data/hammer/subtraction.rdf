@@ -5,23 +5,23 @@
  
     <rdf:Description>
         <dct:identifier>c10</dct:identifier>
-        <dct:title xml:lang="fr-FR">Cliquez sur les additions exactes et dont la somme est inférieure ou égale à 10.</dct:title>
-        <dct:description><![CDATA["freq":2,"class":"smalllegend","holes":"classic","sprdata":{"d":[{"alignment":"good","type":"embed","gen":"function(){var a=Math.floor(Math.random()*9)+1,b; do {b=Math.floor(Math.random()*10)+1;} while(a+b>10); return {legend:''+a+'+'+b+'='+(a+b)};}"},{"alignment":"wrong","type":"embed","gen":"function(){var a=Math.floor(Math.random()*9)+1,b,c; do {b=Math.floor(Math.random()*10)+1;} while(a+b>10); do { c=Math.floor(Math.random()*10)+1; } while(c==a+b); return {legend:''+a+'+'+b+'='+c};}"}]}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Cliquez sur les additions [b]exactes[/b]."]]></dct:description>
+        <dct:title xml:lang="fr-FR">Cliquez sur les soustractions exactes dont les opérandes sont inférieures ou égales à 10.</dct:title>
+        <dct:description><![CDATA["freq":2,"class":"smalllegend","holes":"classic","sprdata":{"d":[{"alignment":"good","type":"embed","gen":"function(){var a=Math.floor(Math.random()*9)+2,b=Math.floor(Math.random()*(a-1))+1; return {legend:''+a+'-'+b+'='+(a-b)};}"},{"alignment":"wrong","type":"embed","gen":"function(){var c,a=Math.floor(Math.random()*9)+2,b=Math.floor(Math.random()*(a-1))+1; do { c=Math.floor(Math.random()*10)+1; } while(c==a-b); return {legend:''+a+'-'+b+'='+c};}"}]}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Cliquez sur les soustractions [b]exactes[/b]."]]></dct:description>
         <dct:extent>1</dct:extent>
-        <dct:subject>addition</dct:subject>
+        <dct:subject>subtraction</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c10</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>c10x</dct:identifier>
-        <dct:title xml:lang="fr-FR">Cliquez sur les additions exactes et dont la somme est inférieure ou égale à 10.</dct:title>
+        <dct:title xml:lang="fr-FR">Cliquez sur les soustractions exactes dont les opérandes sont inférieures ou égales à 10.</dct:title>
         <dct:description><![CDATA["freq":1.5]]></dct:description>
         <dct:extent>1</dct:extent>
-        <dct:subject>addition</dct:subject>
+        <dct:subject>subtraction</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c10</dct:alternative>
@@ -31,10 +31,10 @@
     
     <rdf:Description>
         <dct:identifier>c10y</dct:identifier>
-        <dct:title xml:lang="fr-FR">Cliquez sur les additions exactes et dont la somme est inférieure ou égale à 10.</dct:title>
+        <dct:title xml:lang="fr-FR">Cliquez sur les soustractions exactes dont les opérandes sont inférieures ou égales à 10.</dct:title>
         <dct:description><![CDATA["freq":1]]></dct:description>
         <dct:extent>1</dct:extent>
-        <dct:subject>addition</dct:subject>
+        <dct:subject>subtraction</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>4</dct:type>
         <dct:alternative>c10</dct:alternative>
@@ -44,10 +44,10 @@
 	
     <rdf:Description>
         <dct:identifier>c103</dct:identifier>
-        <dct:title xml:lang="fr-FR">Cliquez sur les additions exactes et dont la somme est inférieure ou égale à 10.</dct:title>
+        <dct:title xml:lang="fr-FR">Cliquez sur les soustractions exactes dont les opérandes sont inférieures ou égales à 10.</dct:title>
         <dct:description><![CDATA["holes":"classic_3","board":"classic_3.html"]]></dct:description>
         <dct:extent>1</dct:extent>
-        <dct:subject>addition</dct:subject>
+        <dct:subject>subtraction</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c10</dct:alternative>
@@ -57,10 +57,10 @@
 	
     <rdf:Description>
         <dct:identifier>c106</dct:identifier>
-        <dct:title xml:lang="fr-FR">Cliquez sur les additions exactes et dont la somme est inférieure ou égale à 10.</dct:title>
+        <dct:title xml:lang="fr-FR">Cliquez sur les soustractions exactes dont les opérandes sont inférieures ou égales à 10.</dct:title>
         <dct:description><![CDATA["holes":"classic_6","board":"classic_6.html"]]></dct:description>
         <dct:extent>1</dct:extent>
-        <dct:subject>addition</dct:subject>
+        <dct:subject>subtraction</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c10</dct:alternative>
@@ -70,11 +70,11 @@
     
     <rdf:Description>
         <dct:identifier>c20</dct:identifier>
-        <dct:title xml:lang="fr-FR">Cliquez sur les additions exactes et dont les opérandes sont inférieures ou égales à 10.</dct:title>
-        <dct:description><![CDATA["freq":2,"class":"smalllegend","holes":"classic","sprdata":{"d":[{"alignment":"good","type":"embed","gen":"function(){var a=Math.floor(Math.random()*10)+1,b=Math.floor(Math.random()*10)+1; return {legend:''+a+'+'+b+'='+(a+b)};}"},{"alignment":"wrong","type":"embed","gen":"function(){var a=Math.floor(Math.random()*10)+1,b=Math.floor(Math.random()*10)+1,c; do { c=Math.floor(Math.random()*5)-2;}while(c<=0 || a+b+c<0 || a+b+c>20); return {legend:''+a+'+'+b+'='+c};}"}]}]]></dct:description>
+        <dct:title xml:lang="fr-FR">Cliquez sur les soustractions exactes dont la diminuende est inférieure à 20.</dct:title>
+        <dct:description><![CDATA["freq":2,"class":"smalllegend","holes":"classic","sprdata":{"d":[{"alignment":"good","type":"embed","gen":"function(){var a=Math.floor(Math.random()*19)+1,b; do { b=Math.floor(Math.random()*10)+1; } while (b>=a || a-b>10); return {legend:''+a+'-'+b+'='+(a-b)};}"},{"alignment":"wrong","type":"embed","gen":"function(){var a=Math.floor(Math.random()*19)+1,b,c; do { b=Math.floor(Math.random()*10)+1; c=Math.floor(Math.random()*10)+1; } while (b>=a || a-b>10 || c==a-b); return {legend:''+a+'-'+b+'='+c};}"}]}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Cliquez sur les additions [b]exactes[/b]."]]></dct:description>
         <dct:extent>1</dct:extent>
-        <dct:subject>addition</dct:subject>
+        <dct:subject>subtraction</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c10</dct:alternative>
@@ -83,10 +83,10 @@
     
     <rdf:Description>
         <dct:identifier>c20x</dct:identifier>
-        <dct:title xml:lang="fr-FR">Cliquez sur les additions exactes et dont les opérandes sont inférieures ou égales à 10.</dct:title>
+        <dct:title xml:lang="fr-FR">Cliquez sur les soustractions exactes dont la diminuende est inférieure à 20.</dct:title>
         <dct:description><![CDATA["freq":1.5]]></dct:description>
         <dct:extent>1</dct:extent>
-        <dct:subject>addition</dct:subject>
+        <dct:subject>subtraction</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>4</dct:type>
         <dct:alternative>c10</dct:alternative>
@@ -96,10 +96,10 @@
     
     <rdf:Description>
         <dct:identifier>c20y</dct:identifier>
-        <dct:title xml:lang="fr-FR">Cliquez sur les additions exactes et dont les opérandes sont inférieures ou égales à 10.</dct:title>
+        <dct:title xml:lang="fr-FR">Cliquez sur les soustractions exactes dont la diminuende est inférieure à 20.</dct:title>
         <dct:description><![CDATA["freq":1]]></dct:description>
         <dct:extent>1</dct:extent>
-        <dct:subject>addition</dct:subject>
+        <dct:subject>subtraction</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>5</dct:type>
         <dct:alternative>c10</dct:alternative>
@@ -109,10 +109,10 @@
 	
     <rdf:Description>
         <dct:identifier>c203</dct:identifier>
-        <dct:title xml:lang="fr-FR">Cliquez sur les additions exactes et dont les opérandes sont inférieures ou égales à 10.</dct:title>
+        <dct:title xml:lang="fr-FR">Cliquez sur les soustractions exactes dont la diminuende est inférieure à 20.</dct:title>
         <dct:description><![CDATA["holes":"classic_3","board":"classic_3.html"]]></dct:description>
         <dct:extent>1</dct:extent>
-        <dct:subject>addition</dct:subject>
+        <dct:subject>subtraction</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c10</dct:alternative>
@@ -122,10 +122,10 @@
 	
     <rdf:Description>
         <dct:identifier>c206</dct:identifier>
-        <dct:title xml:lang="fr-FR">Cliquez sur les additions exactes et dont les opérandes sont inférieures ou égales à 10.</dct:title>
+        <dct:title xml:lang="fr-FR">Cliquez sur les soustractions exactes dont la diminuende est inférieure à 20.</dct:title>
         <dct:description><![CDATA["holes":"classic_6","board":"classic_6.html"]]></dct:description>
         <dct:extent>1</dct:extent>
-        <dct:subject>addition</dct:subject>
+        <dct:subject>subtraction</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c10</dct:alternative>

@@ -162,7 +162,7 @@
             for (var i=0; i<nbvalues; i++) {
                 var vValue;
                 do {
-                    if (settings.gen)  { vValue = eval('('+settings.gen+')')(i,settings.elts); }
+                    if (settings.gen)  { vValue = eval('('+settings.gen+')')($this, settings, i); }
                     else {
                         if (nbvalues==vValues.length) { vValue = vValues[i]; }
                         else {

@@ -32,7 +32,7 @@
     <rdf:Description>
         <dct:identifier>u1k</dct:identifier>
         <dct:title xml:lang="fr-FR">Rangez dans l'ordre croissant 6 nombres positifs inférieurs à 1 000.</dct:title>
-        <dct:description><![CDATA["class":"h12","gen":"function(j,elts){var limit=1000,nb=6,min=elts.length?parseInt(elts[elts.length-1][1].replace(/ /g,'')):0,max=limit*(1-(nb-j-1)/nb),a=Math.floor(Math.random()*(max-min))+min,aa=\\\"\\\",i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a%10).toString()+aa; a=Math.floor(a/10); i++; };return aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.2,"color":["transparent","black"]]]></dct:description>
+        <dct:description><![CDATA["class":"h12","gen":"function($this,settings,j){var limit=1000,nb=6,min=settings.elts.length?parseInt(settings.elts[settings.elts.length-1][1].replace(/ /g,'')):0,max=limit*(1-(nb-j-1)/nb),a=Math.floor(Math.random()*(max-min))+min,aa=\\\"\\\",i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a%10).toString()+aa; a=Math.floor(a/10); i++; };return aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.2,"color":["transparent","black"]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Rangez de haut en bas et dans l'ordre <b>croissant</b> les nombres ci-dessous.","fontex":0.6]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -45,7 +45,7 @@
     <rdf:Description>
         <dct:identifier>u10k</dct:identifier>
         <dct:title xml:lang="fr-FR">Rangez dans l'ordre croissant 6 nombres positifs inférieurs à 10 000.</dct:title>
-        <dct:description><![CDATA["class":"h12","gen":"function(j,elts){var limit=10000,nb=6,min=elts.length?parseInt(elts[elts.length-1][1].replace(/ /g,'')):0,max=limit*(1-(nb-j-1)/nb),a=Math.floor(Math.random()*(max-min))+min,aa=\\\"\\\",i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a%10).toString()+aa; a=Math.floor(a/10); i++; };return aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.2,"color":["transparent","black"]]]></dct:description>
+        <dct:description><![CDATA["class":"h12","gen":"function($this,settings,j){var limit=10000,nb=6,min=settings.elts.length?parseInt(settings.elts[settings.elts.length-1][1].replace(/ /g,'')):0,max=limit*(1-(nb-j-1)/nb),a=Math.floor(Math.random()*(max-min))+min,aa=\\\"\\\",i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a%10).toString()+aa; a=Math.floor(a/10); i++; };return aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.2,"color":["transparent","black"]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Rangez de haut en bas et dans l'ordre <b>croissant</b> les nombres ci-dessous.","fontex":0.6]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -58,7 +58,7 @@
     <rdf:Description>
         <dct:identifier>u10m</dct:identifier>
         <dct:title xml:lang="fr-FR">Rangez dans l'ordre croissant 6 nombres positifs inférieurs à 1 000 000.</dct:title>
-        <dct:description><![CDATA["class":"h12","gen":"function(j,elts){var limit=10000000,nb=6,min=elts.length?parseInt(elts[elts.length-1][1].replace(/ /g,'')):0,max=limit*(1-(nb-j-1)/nb),a=Math.floor(Math.random()*(max-min))+min,aa=\\\"\\\",i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a%10).toString()+aa; a=Math.floor(a/10); i++; };return aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.2,"color":["transparent","black"]]]></dct:description>
+        <dct:description><![CDATA["class":"h12","gen":"function($this,settings,j){var limit=10000000,nb=6,min=settings.elts.length?parseInt(settings.elts[settings.elts.length-1][1].replace(/ /g,'')):0,max=limit*(1-(nb-j-1)/nb),a=Math.floor(Math.random()*(max-min))+min,aa=\\\"\\\",i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a%10).toString()+aa; a=Math.floor(a/10); i++; };return aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.2,"color":["transparent","black"]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Rangez de haut en bas et dans l'ordre <b>croissant</b> les nombres ci-dessous.","fontex":0.6]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -95,7 +95,7 @@
     <rdf:Description>
         <dct:identifier>d1k</dct:identifier>
         <dct:title xml:lang="fr-FR">Rangez dans l'ordre décroissant 6 nombres positifs inférieurs à 1 000.</dct:title>
-        <dct:description><![CDATA["class":"h12","gen":"function(j,elts){var limit=1000,nb=6,max=elts.length?parseInt(elts[elts.length-1][1].replace(/ /g,'')):limit,min=limit*(nb-j-1)/nb,a=Math.floor(Math.random()*(max-min)+min),aa=\\\"\\\",i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a%10).toString()+aa; a=Math.floor(a/10); i++; };return aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.2,"color":["transparent","black"]]]></dct:description>
+        <dct:description><![CDATA["class":"h12","gen":"function($this,settings,j){var limit=1000,nb=6,max=settings.elts.length?parseInt(settings.elts[settings.elts.length-1][1].replace(/ /g,'')):limit,min=limit*(nb-j-1)/nb,a=Math.floor(Math.random()*(max-min)+min),aa=\\\"\\\",i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a%10).toString()+aa; a=Math.floor(a/10); i++; };return aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.2,"color":["transparent","black"]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Rangez de haut en bas et dans l'ordre <b>décroissant</b> les nombres ci-dessous.","fontex":0.6]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -108,7 +108,7 @@
     <rdf:Description>
         <dct:identifier>d10k</dct:identifier>
         <dct:title xml:lang="fr-FR">Rangez dans l'ordre décroissant 6 nombres positifs inférieurs à 10 000.</dct:title>
-        <dct:description><![CDATA["class":"h12","gen":"function(j,elts){var limit=10000,nb=6,max=elts.length?parseInt(elts[elts.length-1][1].replace(/ /g,'')):limit,min=limit*(nb-j-1)/nb,a=Math.floor(Math.random()*(max-min)+min),aa=\\\"\\\",i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a%10).toString()+aa; a=Math.floor(a/10); i++; };return aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.2,"color":["transparent","black"]]]></dct:description>
+        <dct:description><![CDATA["class":"h12","gen":"function($this,settings,j){var limit=10000,nb=6,max=settings.elts.length?parseInt(settings.elts[settings.elts.length-1][1].replace(/ /g,'')):limit,min=limit*(nb-j-1)/nb,a=Math.floor(Math.random()*(max-min)+min),aa=\\\"\\\",i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a%10).toString()+aa; a=Math.floor(a/10); i++; };return aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.2,"color":["transparent","black"]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Rangez de haut en bas et dans l'ordre <b>décroissant</b> les nombres ci-dessous.","fontex":0.6]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -121,7 +121,7 @@
     <rdf:Description>
         <dct:identifier>d1m</dct:identifier>
         <dct:title xml:lang="fr-FR">Rangez dans l'ordre décroissant 6 nombres positifs inférieurs à 1 000 000.</dct:title>
-        <dct:description><![CDATA["class":"h12","gen":"function(j,elts){var limit=1000000,nb=6,max=elts.length?parseInt(elts[elts.length-1][1].replace(/ /g,'')):limit,min=limit*(nb-j-1)/nb,a=Math.floor(Math.random()*(max-min)+min),aa=\\\"\\\",i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a%10).toString()+aa; a=Math.floor(a/10); i++; };return aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.2,"color":["transparent","black"]]]></dct:description>
+        <dct:description><![CDATA["class":"h12","gen":"function($this,settings,j){var limit=1000000,nb=6,max=settings.elts.length?parseInt(settings.elts[settings.elts.length-1][1].replace(/ /g,'')):limit,min=limit*(nb-j-1)/nb,a=Math.floor(Math.random()*(max-min)+min),aa=\\\"\\\",i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a%10).toString()+aa; a=Math.floor(a/10); i++; };return aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.2,"color":["transparent","black"]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Rangez de haut en bas et dans l'ordre <b>décroissant</b> les nombres ci-dessous.","fontex":0.6]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -136,7 +136,7 @@
     <rdf:Description>
         <dct:identifier>un1k</dct:identifier>
         <dct:title xml:lang="fr-FR">Rangez dans l'ordre croissant 6 nombres dont la valeur absolue est inférieure à 1 000.</dct:title>
-        <dct:description><![CDATA["class":"h12","gen":"function(j,elts){var limit=1000,nb=6,min=elts.length?parseInt(elts[elts.length-1][1].replace(/ /g,'')):-limit,max=2*limit*(1-(nb-j-1)/nb)-limit,a=Math.floor(Math.random()*(max-min))+min,neg=(a<0),aa=\\\"\\\",a=Math.abs(a),i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(Math.abs(a)%10).toString()+aa; a=Math.floor(a/10); i++; };return (neg?\\\"-\\\":\\\"\\\")+aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.2,"color":["transparent","black"]]]></dct:description>
+        <dct:description><![CDATA["class":"h12","gen":"function($this,settings,j){var limit=1000,nb=6,min=settings.elts.length?parseInt(settings.elts[settings.elts.length-1][1].replace(/ /g,'')):-limit,max=2*limit*(1-(nb-j-1)/nb)-limit,a=Math.floor(Math.random()*(max-min))+min,neg=(a<0),aa=\\\"\\\",a=Math.abs(a),i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(Math.abs(a)%10).toString()+aa; a=Math.floor(a/10); i++; };return (neg?\\\"-\\\":\\\"\\\")+aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.2,"color":["transparent","black"]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Rangez de haut en bas et dans l'ordre <b>croissant</b> les nombres ci-dessous.","fontex":0.6]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -149,7 +149,7 @@
     <rdf:Description>
         <dct:identifier>un10k</dct:identifier>
         <dct:title xml:lang="fr-FR">Rangez dans l'ordre croissant 6 nombres dont la valeur absolue est inférieure à 10 000.</dct:title>
-        <dct:description><![CDATA["class":"h12","gen":"function(j,elts){var limit=10000,nb=6,min=elts.length?parseInt(elts[elts.length-1][1].replace(/ /g,'')):-limit,max=2*limit*(1-(nb-j-1)/nb)-limit,a=Math.floor(Math.random()*(max-min))+min,neg=(a<0),aa=\\\"\\\",a=Math.abs(a),i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(Math.abs(a)%10).toString()+aa; a=Math.floor(a/10); i++; };return (neg?\\\"-\\\":\\\"\\\")+aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.2,"color":["transparent","black"]]]></dct:description>
+        <dct:description><![CDATA["class":"h12","gen":"function($this,settings,j){var limit=10000,nb=6,min=settings.elts.length?parseInt(settings.elts[settings.elts.length-1][1].replace(/ /g,'')):-limit,max=2*limit*(1-(nb-j-1)/nb)-limit,a=Math.floor(Math.random()*(max-min))+min,neg=(a<0),aa=\\\"\\\",a=Math.abs(a),i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(Math.abs(a)%10).toString()+aa; a=Math.floor(a/10); i++; };return (neg?\\\"-\\\":\\\"\\\")+aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.2,"color":["transparent","black"]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Rangez de haut en bas et dans l'ordre <b>croissant</b> les nombres ci-dessous.","fontex":0.6]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -162,7 +162,7 @@
     <rdf:Description>
         <dct:identifier>un1m</dct:identifier>
         <dct:title xml:lang="fr-FR">Rangez dans l'ordre croissant 6 nombres dont la valeur absolue est inférieure à 1 000 000.</dct:title>
-        <dct:description><![CDATA["class":"h12","gen":"function(j,elts){var limit=1000000,nb=6,min=elts.length?parseInt(elts[elts.length-1][1].replace(/ /g,'')):-limit,max=2*limit*(1-(nb-j-1)/nb)-limit,a=Math.floor(Math.random()*(max-min))+min,neg=(a<0),aa=\\\"\\\",a=Math.abs(a),i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(Math.abs(a)%10).toString()+aa; a=Math.floor(a/10); i++; };return (neg?\\\"-\\\":\\\"\\\")+aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.2,"color":["transparent","black"]]]></dct:description>
+        <dct:description><![CDATA["class":"h12","gen":"function($this,settings,j){var limit=1000000,nb=6,min=settings.elts.length?parseInt(settings.elts[settings.elts.length-1][1].replace(/ /g,'')):-limit,max=2*limit*(1-(nb-j-1)/nb)-limit,a=Math.floor(Math.random()*(max-min))+min,neg=(a<0),aa=\\\"\\\",a=Math.abs(a),i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(Math.abs(a)%10).toString()+aa; a=Math.floor(a/10); i++; };return (neg?\\\"-\\\":\\\"\\\")+aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.2,"color":["transparent","black"]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Rangez de haut en bas et dans l'ordre <b>croissant</b> les nombres ci-dessous.","fontex":0.6]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -175,7 +175,7 @@
     <rdf:Description>
         <dct:identifier>dn1k</dct:identifier>
         <dct:title xml:lang="fr-FR">Rangez dans l'ordre décroissant 6 nombres dont la valeur absolue est inférieure à 1 000.</dct:title>
-        <dct:description><![CDATA["class":"h12","gen":"function(j,elts){var limit=1000,nb=6,max=elts.length?parseInt(elts[elts.length-1][1].replace(/ /g,'')):limit,min=2*limit*(nb-j-1)/nb-limit,a=Math.floor(Math.random()*(max-min)+min),neg=(a<0),aa=\\\"\\\",a=Math.abs(a),aa=\\\"\\\",i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a%10).toString()+aa; a=Math.floor(a/10); i++; };return (neg?\\\"-\\\":\\\"\\\")+aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.2,"color":["transparent","black"]]]></dct:description>
+        <dct:description><![CDATA["class":"h12","gen":"function($this,settings,j){var limit=1000,nb=6,max=settings.elts.length?parseInt(settings.elts[settings.elts.length-1][1].replace(/ /g,'')):limit,min=2*limit*(nb-j-1)/nb-limit,a=Math.floor(Math.random()*(max-min)+min),neg=(a<0),aa=\\\"\\\",a=Math.abs(a),aa=\\\"\\\",i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a%10).toString()+aa; a=Math.floor(a/10); i++; };return (neg?\\\"-\\\":\\\"\\\")+aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.2,"color":["transparent","black"]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Rangez de haut en bas et dans l'ordre <b>décroissant</b> les nombres ci-dessous.","fontex":0.6]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -188,7 +188,7 @@
     <rdf:Description>
         <dct:identifier>dn10k</dct:identifier>
         <dct:title xml:lang="fr-FR">Rangez dans l'ordre décroissant 6 nombres dont la valeur absolue est inférieure à 10 000.</dct:title>
-        <dct:description><![CDATA["class":"h12","gen":"function(j,elts){var limit=10000,nb=6,max=elts.length?parseInt(elts[elts.length-1][1].replace(/ /g,'')):limit,min=2*limit*(nb-j-1)/nb-limit,a=Math.floor(Math.random()*(max-min)+min),neg=(a<0),aa=\\\"\\\",a=Math.abs(a),aa=\\\"\\\",i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a%10).toString()+aa; a=Math.floor(a/10); i++; };return (neg?\\\"-\\\":\\\"\\\")+aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.2,"color":["transparent","black"]]]></dct:description>
+        <dct:description><![CDATA["class":"h12","gen":"function($this,settings,j){var limit=10000,nb=6,max=settings.elts.length?parseInt(settings.elts[settings.elts.length-1][1].replace(/ /g,'')):limit,min=2*limit*(nb-j-1)/nb-limit,a=Math.floor(Math.random()*(max-min)+min),neg=(a<0),aa=\\\"\\\",a=Math.abs(a),aa=\\\"\\\",i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a%10).toString()+aa; a=Math.floor(a/10); i++; };return (neg?\\\"-\\\":\\\"\\\")+aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.2,"color":["transparent","black"]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Rangez de haut en bas et dans l'ordre <b>décroissant</b> les nombres ci-dessous.","fontex":0.6]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -201,7 +201,7 @@
     <rdf:Description>
         <dct:identifier>dn1m</dct:identifier>
         <dct:title xml:lang="fr-FR">Rangez dans l'ordre décroissant 6 nombres dont la valeur absolue est inférieure à 1 000 000.</dct:title>
-        <dct:description><![CDATA["class":"h12","gen":"function(j,elts){var limit=1000000,nb=6,max=elts.length?parseInt(elts[elts.length-1][1].replace(/ /g,'')):limit,min=2*limit*(nb-j-1)/nb-limit,a=Math.floor(Math.random()*(max-min)+min),neg=(a<0),aa=\\\"\\\",a=Math.abs(a),aa=\\\"\\\",i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a%10).toString()+aa; a=Math.floor(a/10); i++; };return (neg?\\\"-\\\":\\\"\\\")+aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.2,"color":["transparent","black"]]]></dct:description>
+        <dct:description><![CDATA["class":"h12","gen":"function($this,settings,j){var limit=1000000,nb=6,max=settings.elts.length?parseInt(settings.elts[settings.elts.length-1][1].replace(/ /g,'')):limit,min=2*limit*(nb-j-1)/nb-limit,a=Math.floor(Math.random()*(max-min)+min),neg=(a<0),aa=\\\"\\\",a=Math.abs(a),aa=\\\"\\\",i=0; while(a>0) { if (i!=0 && i%3==0) { aa=\\\" \\\"+aa; } aa=(a%10).toString()+aa; a=Math.floor(a/10); i++; };return (neg?\\\"-\\\":\\\"\\\")+aa;}","type":"move","nbvalues":6,"number":4,"len":2,"font":1.2,"color":["transparent","black"]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Rangez de haut en bas et dans l'ordre <b>décroissant</b> les nombres ci-dessous.","fontex":0.6]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>

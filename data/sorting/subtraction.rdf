@@ -6,7 +6,7 @@
     <rdf:Description>
         <dct:identifier>5</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer chaque soustraction, de diminuteur et de différence compris entre 1 et 5, à son résultat.</dct:title>
-        <dct:description><![CDATA["class":"h12","gen":"function(i){var a = Math.floor(Math.random()*5)+1, b = Math.floor(Math.random()*5)+1; return [\\\"\\\"+(a+b)+\\\"-\\\"+b,a];}","nbvalues":5,"number":5,"len":4,"font":1.5]]></dct:description>
+        <dct:description><![CDATA["gg":[9,2,10,1,5,1,0],"class":"h12","gen":"function($this,_s,_i){var a,b; do { a = Math.floor(Math.random()*_s.gg[0])+_s.gg[1]; b = Math.floor(Math.random()*_s.gg[2])+_s.gg[3];} while (a-b>_s.gg[4] || a-b<_s.gg[5] || (_s.gg[6]==1&&(a%10<b%10) )); return [\\\"\\\"+a+\\\"-\\\"+b,a-b];}","nbvalues":5,"number":3,"len":4,"font":1.5]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>subtraction</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
@@ -17,67 +17,62 @@
     <rdf:Description>
         <dct:identifier>10</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer chaque soustraction, de diminuteur et de différence compris entre 1 et 10, à son résultat.</dct:title>
-        <dct:description><![CDATA["class":"h12","gen":"function(i){var a = Math.floor(Math.random()*10)+1, b = Math.floor(Math.random()*10)+1; return [\\\"\\\"+(a+b)+\\\"-\\\"+b,a];}","nbvalues":5,"number":5,"len":4,"font":1.5]]></dct:description>
+        <dct:description><![CDATA["gg":[9,2,10,1,10,1,0]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>subtraction</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>10</dct:alternative>
+        <dct:relation>5</dct:relation>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>20</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer chaque soustraction, de diminuteur et de différence compris entre 1 et 20, à son résultat.</dct:title>
-        <dct:description><![CDATA["class":"h12","gen":"function(i){var a = Math.floor(Math.random()*20)+1, b = Math.floor(Math.random()*20)+1; return [\\\"\\\"+(a+b)+\\\"-\\\"+b,a];}","nbvalues":5,"number":5,"len":4,"font":1.5]]></dct:description>
+        <dct:description><![CDATA["gg":[19,2,20,1,20,1,0]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>subtraction</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>10</dct:alternative>
+        <dct:relation>5</dct:relation>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>50</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer chaque soustraction, de diminuteur et de différence compris entre 1 et 50, à son résultat.</dct:title>
-        <dct:description><![CDATA["class":"h12","gen":"function(i){var a = Math.floor(Math.random()*50)+1, b = Math.floor(Math.random()*50)+1; return [\\\"\\\"+(a+b)+\\\"-\\\"+b,a];}","nbvalues":5,"number":5,"len":4,"font":1.5]]></dct:description>
+        <dct:description><![CDATA["gg":[39,12,50,1,50,1,0]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>subtraction</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>10</dct:alternative>
+        <dct:relation>5</dct:relation>
     </rdf:Description>
 
-    <rdf:Description>
-        <dct:identifier>50t</dct:identifier>
-        <dct:title xml:lang="fr-FR">Associer chaque soustraction, de diminuende compris entre 10 et 50, à son résultat.</dct:title>
-        <dct:description><![CDATA["class":"h12","gen":"function(i){ var a = Math.floor(10+Math.random()*40), b = Math.floor(1+Math.random()*(a-1)); return [\\\"\\\"+a+\\\"-\\\"+b,a-b];}","nbvalues":5,"number":5,"len":4,"font":1.5]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>subtraction</dct:subject>
-        <dct:educationLevel>1</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>10</dct:alternative>
-    </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>50rt</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer chaque soustraction, de diminuende compris entre 10 et 50, à son résultat (sans retenue).</dct:title>
-        <dct:description><![CDATA["class":"h12","gen":"function(i){ var a = Math.floor(1+Math.random()*4)*10+Math.floor(1+Math.random()*9), b; do { b = Math.floor(1+Math.random()*(a-1)); } while (a%10<b%10); return [\\\"\\\"+a+\\\"-\\\"+b,a-b];}","nbvalues":5,"number":5,"len":4,"font":1.5]]></dct:description>
+        <dct:description><![CDATA["gg":[39,12,50,1,50,1,1]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>subtraction</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>10</dct:alternative>
+        <dct:relation>5</dct:relation>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>100</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer chaque soustraction, de diminuteur et de différence compris entre 1 et 100, à son résultat.</dct:title>
-        <dct:description><![CDATA["class":"h12","gen":"function(i){var a = Math.floor(Math.random()*100)+1, b = Math.floor(Math.random()*100)+1; return [\\\"\\\"+(a+b)+\\\"-\\\"+b,a];}","nbvalues":5,"number":5,"len":4,"font":1.5]]></dct:description>
+        <dct:description><![CDATA["gg":[89,12,100,1,100,1,0]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>subtraction</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>10</dct:alternative>
+        <dct:relation>5</dct:relation>
     </rdf:Description>
 
 </rdf:RDF>
