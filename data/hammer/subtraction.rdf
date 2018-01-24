@@ -71,8 +71,8 @@
     <rdf:Description>
         <dct:identifier>c20</dct:identifier>
         <dct:title xml:lang="fr-FR">Cliquez sur les soustractions exactes dont la diminuende est inférieure à 20.</dct:title>
-        <dct:description><![CDATA["freq":2,"class":"smalllegend","holes":"classic","sprdata":{"d":[{"alignment":"good","type":"embed","gen":"function(){var a=Math.floor(Math.random()*19)+1,b; do { b=Math.floor(Math.random()*10)+1; } while (b>=a || a-b>10); return {legend:''+a+'-'+b+'='+(a-b)};}"},{"alignment":"wrong","type":"embed","gen":"function(){var a=Math.floor(Math.random()*19)+1,b,c; do { b=Math.floor(Math.random()*10)+1; c=Math.floor(Math.random()*10)+1; } while (b>=a || a-b>10 || c==a-b); return {legend:''+a+'-'+b+'='+c};}"}]}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Cliquez sur les additions [b]exactes[/b]."]]></dct:description>
+        <dct:description><![CDATA["freq":2,"class":"smalllegend","holes":"classic","sprdata":{"d":[{"alignment":"good","type":"embed","gen":"function(){var a=Math.floor(Math.random()*19)+2,b; do { b=Math.floor(Math.random()*10)+1; } while (b>=a || a-b>10); return {legend:''+a+'-'+b+'='+(a-b)};}"},{"alignment":"wrong","type":"embed","gen":"function(){var a=Math.floor(Math.random()*19)+2,b,c; do { b=Math.floor(Math.random()*10)+1; c=Math.floor(Math.random()*10)+1; } while (b>=a || a-b>10 || c==a-b); return {legend:''+a+'-'+b+'='+c};}"}]}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Cliquez sur les soustractions [b]exactes[/b]."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>subtraction</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -132,25 +132,7 @@
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
 		<dct:relation>c20</dct:relation>
     </rdf:Description>
-    
-    
-    
-    <rdf:Description>
-        <dct:identifier>e10</dct:identifier>
-        <dct:title xml:lang="fr-FR">Cliquez sur les additions dont la somme est 10.</dct:title>
-        <dct:description><![CDATA[ "holes":"classic","sprdata":{"d":[{"alignment":"good","type":"embed","gen":"function(){var a=Math.floor(Math.random()*9)+1; return {legend:''+a+'+'+(10-a)};}"},{"alignment":"wrong","type":"embed","gen":"function(){var a=Math.floor(Math.random()*9)+1,c; do { c=Math.floor(Math.random()*5)-2;}while(c==0 || 10-a+c<0 || 10-a+c>10); return {legend:''+a+'+'+(10-a+c)};}"}]},"tag":"10"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Cliquez sur les additions dont la [b]somme est égale à 10[/b]."]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>addition</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>3</dct:type>
-        <dct:alternative>e10</dct:alternative>
-        <dct:isPartOf>complement</dct:isPartOf>
-        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
-    </rdf:Description>
- 
 
- 
     
 </rdf:RDF>
 
