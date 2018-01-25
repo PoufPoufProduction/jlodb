@@ -71,7 +71,7 @@
     <rdf:Description>
         <dct:identifier>c20</dct:identifier>
         <dct:title xml:lang="fr-FR">Cliquez sur les additions exactes et dont les opérandes sont inférieures ou égales à 10.</dct:title>
-        <dct:description><![CDATA["freq":2,"class":"smalllegend","holes":"classic","sprdata":{"d":[{"alignment":"good","type":"embed","gen":"function(){var a=Math.floor(Math.random()*10)+1,b=Math.floor(Math.random()*10)+1; return {legend:''+a+'+'+b+'='+(a+b)};}"},{"alignment":"wrong","type":"embed","gen":"function(){var a=Math.floor(Math.random()*10)+1,b=Math.floor(Math.random()*10)+1,c; do { c=Math.floor(Math.random()*5)-2;}while(c<=0 || a+b+c<0 || a+b+c>20); return {legend:''+a+'+'+b+'='+c};}"}]}]]></dct:description>
+        <dct:description><![CDATA["freq":2,"class":"smalllegend","holes":"classic","sprdata":{"d":[{"alignment":"good","type":"embed","gen":"function(){var a=Math.floor(Math.random()*10)+1,b=Math.floor(Math.random()*10)+1; return {legend:''+a+'+'+b+'='+(a+b)};}"},{"alignment":"wrong","type":"embed","gen":"function(){var a=Math.floor(Math.random()*10)+1,b=Math.floor(Math.random()*10)+1,c; do { c=Math.floor(Math.random()*5)-2;}while(c==0 || a+b+c<0 || a+b+c>20); return {legend:''+a+'+'+b+'='+(a+b+c)};}"}]}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Cliquez sur les additions [b]exactes[/b]."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
