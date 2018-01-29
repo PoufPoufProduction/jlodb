@@ -10,7 +10,7 @@
     svg#ruler02 #pieces text            { font-size:40px; cursor:move; }
     svg#ruler02.small #pieces text      { font-size:30px; }
     svg#ruler02.tiny #pieces text       { font-size:20px; }
-    svg#ruler02 #pieces .result         { fill:#ccc; fill-opacity:0.9;stroke:#eee;stroke-width:2; cursor:move; }
+    svg#ruler02 #pieces .result         { fill:#ccc; stroke:#eee;stroke-width:2; cursor:move; }
     svg#ruler02 #pieces .wrong .result  { fill:red; fill-opacity:0.8; }
     svg#ruler02 #pieces .good .result   { fill:#0F0; fill-opacity:0.8; }
 
@@ -20,6 +20,9 @@
     svg#ruler02 #small line             { fill:none;stroke:black;stroke-width:1.5; }
     svg#ruler02 .bg                     { fill:white;stroke:black;stroke-width:1.5; }
     svg#ruler02 .bgl                    { fill:none;stroke:black;stroke-width:1.5; }
+	
+	svg#ruler02 .shadow					{ fill:black;fill-opacity:0.5;display:none; }
+	svg#ruler02 .drag .shadow			{ display:inline; }
  </style>
 </defs>
 
@@ -36,17 +39,8 @@
     </g>
 </g>
 
-<g style="opacity:0.5">
-<rect style="fill:#ffffff;fill-rule:nonzero;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;marker:none;" id="rect4197" width="640" height="180" x="0" y="0" rx="0" ry="0" />
- <path id="path4215" d="m 306.378,93.735 6.906,-4.129 2.516,-0.767 12.479,1.469 1.846,5.432 -8.998,8.769 -2.462,0.924 -7.992,0.934 -0.746,11.457 7.803,1.963 2.322,1.236 7.785,9.862 -2.535,5.146 -12.564,-0.162 -2.395,-1.087 -6.312,-4.990 -8.629,7.574 4.129,6.906 0.767,2.516 -1.469,12.479 -5.432,1.846 -8.769,-8.998 -0.924,-2.462 -0.934,-7.992 -11.457,-0.746 -1.963,7.803 -1.236,2.322 -9.862,7.785 -5.146,-2.535 0.162,-12.564 1.087,-2.395 4.990,-6.312 -7.574,-8.629 -6.906,4.129 -2.516,0.767 -12.479,-1.469 -1.846,-5.431 8.998,-8.769 2.462,-0.924 7.992,-0.934 0.746,-11.457 -7.803,-1.963 -2.322,-1.236 -7.785,-9.862 2.535,-5.146 12.564,0.162 2.395,1.087 6.312,4.990 8.629,-7.574 -4.129,-6.906 -0.767,-2.516 1.469,-12.479 5.432,-1.846 8.769,8.998 0.924,2.462 0.934,7.992 11.457,0.746 1.963,-7.803 1.236,-2.322 9.862,-7.785 5.146,2.535 -0.162,12.564 -1.087,2.395 -4.990,6.312 z" style="fill:none;stroke:#3576b5;stroke-width:4;stroke-opacity:1" />
- <ellipse transform="matrix(0.946,-0.321,0.321,0.946,0,0)" ry="16.658" rx="16.658" id="path4217" style="fill:none;stroke:#3576b5;stroke-width:4;stroke-opacity:1" cx="228.806" cy="194.016" />
- <path id="path4253" d="M 566.263 -39.291 L 562.154 -29.654 L 561.287 -23.890 L 561.636 -20.177 L 551.011 -18.494 L 550.193 -22.134 L 547.589 -27.347 L 540.703 -35.242 L 534.494 -33.224 L 533.564 -22.791 L 534.521 -17.041 L 536 -13.617 L 526.414 -8.732 L 524.513 -11.941 L 520.423 -16.095 L 511.435 -21.476 L 506.154 -17.638 L 508.494 -7.427 L 511.179 -2.255 L 513.644 0.544 L 506.039 8.150 L 503.238 5.685 L 498.066 3 L 487.855 0.660 L 484.017 5.943 L 489.398 14.929 L 493.550 19.019 L 496.759 20.919 L 491.876 30.505 L 488.453 29.027 L 482.703 28.070 L 472.269 29 L 470.251 35.208 L 478.146 42.095 L 483.359 44.701 L 487 45.517 L 485.316 56.142 L 481.603 55.792 L 475.839 56.660 L 466.203 60.769 L 466.203 67.298 L 475.839 71.408 L 481.603 72.273 L 485.316 71.925 L 487 82.550 L 483.359 83.367 L 478.146 85.972 L 470.251 92.857 L 472.269 99.068 L 482.703 99.998 L 488.453 99.041 L 491.876 97.562 L 496.759 107.146 L 493.550 109.048 L 489.398 113.136 L 484.017 122.125 L 487.855 127.408 L 498.066 125.068 L 503.238 122.380 L 506.039 119.916 L 513.644 127.523 L 511.179 130.324 L 508.494 135.496 L 506.154 145.707 L 511.435 149.542 L 520.423 144.164 L 524.513 140.009 L 526.414 136.800 L 536 141.685 L 534.521 145.109 L 533.564 150.857 L 534.494 161.292 L 540.703 163.310 L 547.589 155.416 L 550.193 150.201 L 551.011 146.562 L 561.636 148.246 L 561.287 151.958 L 562.154 157.722 L 566.263 167.357 L 572.792 167.357 L 576.900 157.722 L 577.767 151.958 L 577.419 148.246 L 588.044 146.562 L 588.861 150.201 L 591.466 155.416 L 598.351 163.310 L 604.562 161.292 L 605.492 150.857 L 604.535 145.109 L 603.056 141.685 L 612.640 136.800 L 614.542 140.009 L 618.630 144.164 L 627.619 149.542 L 632.902 145.707 L 630.562 135.496 L 627.875 130.324 L 625.410 127.523 L 633.017 119.916 L 635.816 122.380 L 640.988 125.068 L 651.199 127.408 L 655.037 122.125 L 649.656 113.136 L 645.503 109.048 L 642.294 107.146 L 647.177 97.562 L 650.603 99.041 L 656.351 99.998 L 666.785 99.068 L 668.804 92.857 L 660.908 85.972 L 655.695 83.367 L 652.056 82.550 L 653.738 71.925 L 657.453 72.273 L 663.216 71.408 L 672.851 67.298 L 672.851 60.769 L 663.216 56.660 L 657.453 55.792 L 653.738 56.142 L 652.056 45.517 L 655.695 44.701 L 660.908 42.095 L 668.804 35.208 L 666.785 29 L 656.351 28.070 L 650.603 29.027 L 647.177 30.505 L 642.294 20.919 L 645.503 19.019 L 649.656 14.929 L 655.037 5.943 L 651.199 0.660 L 640.988 3 L 635.816 5.685 L 633.017 8.150 L 625.410 0.544 L 627.875 -2.255 L 630.562 -7.427 L 632.902 -17.638 L 627.619 -21.476 L 618.630 -16.095 L 614.542 -11.941 L 612.640 -8.732 L 603.056 -13.617 L 604.535 -17.041 L 605.492 -22.791 L 604.562 -33.224 L 598.351 -35.242 L 591.466 -27.347 L 588.861 -22.134 L 588.044 -18.494 L 577.419 -20.177 L 577.767 -23.890 L 576.900 -29.654 L 572.792 -39.291 L 566.263 -39.291 z M 569.527 20.703 A 43.331 43.331 0 0 1 586.732 24.283 L 575.644 43.486 A 22.381 22.381 0 0 0 554.630 49.125 L 535.082 37.837 A 43.331 43.331 0 0 1 569.527 20.703 z M 597.544 30.990 A 43.331 43.331 0 0 1 612.859 64.033 A 43.331 43.331 0 0 1 609.480 80.792 L 591.892 70.638 A 22.381 22.381 0 0 0 586.593 49.958 L 597.544 30.990 z M 528.951 48.988 L 548.392 60.212 A 22.381 22.381 0 0 0 554.132 80.746 L 543.722 98.779 A 43.331 43.331 0 0 1 526.197 64.033 A 43.331 43.331 0 0 1 528.951 48.988 z M 585.417 81.589 L 602.880 91.669 A 43.331 43.331 0 0 1 569.527 107.365 A 43.331 43.331 0 0 1 554.943 104.779 L 565.218 86.982 A 22.381 22.381 0 0 0 585.417 81.589 z " style="fill:none;stroke:#3576b5;stroke-width:4;stroke-opacity:1" />
- <path id="path4297" d="m 459.088,40.433 5.070,-0.575 4.850,0.632 10.179,4.450 0,6.562 -10.179,4.450 -4.850,0.632 -5.070,-0.575 -2.239,11.260 4.904,1.408 4.239,2.440 7.701,8.007 -2.511,6.062 -11.107,0.216 -4.723,-1.272 -4.464,-2.472 -6.378,9.546 3.992,3.178 2.982,3.877 4.050,10.344 -4.640,4.640 -10.344,-4.050 -3.877,-2.982 -3.178,-3.992 -9.546,6.378 2.472,4.464 1.272,4.723 -0.216,11.107 -6.062,2.511 -8.007,-7.701 -2.440,-4.239 -1.408,-4.904 -11.261,2.239 0.575,5.070 -0.632,4.850 -4.450,10.179 -6.562,0 -4.450,-10.179 -0.632,-4.850 0.575,-5.070 -11.261,-2.239 -1.408,4.904 -2.440,4.239 -8.007,7.701 -6.062,-2.511 -0.216,-11.107 1.272,-4.723 2.472,-4.464 -9.546,-6.378 -3.178,3.992 -3.877,2.982 -10.344,4.050 -4.640,-4.640 4.050,-10.344 2.982,-3.877 3.992,-3.178 -6.378,-9.546 -4.464,2.472 -4.723,1.272 -11.107,-0.216 -2.511,-6.062 7.701,-8.007 4.239,-2.440 4.904,-1.408 -2.239,-11.260 -5.070,0.575 -4.850,-0.632 -10.179,-4.450 0,-6.562 10.179,-4.450 4.850,-0.632 5.070,0.575 2.239,-11.260 -4.904,-1.408 -4.239,-2.440 -7.701,-8.007 2.511,-6.062 11.107,-0.216 4.723,1.272 4.464,2.472 6.378,-9.546 -3.992,-3.178 -2.982,-3.877 -4.050,-10.344 4.640,-4.640 10.344,4.050 3.877,2.982 3.178,3.992 9.546,-6.378 -2.472,-4.464 -1.272,-4.723 0.216,-11.107 6.062,-2.511 8.007,7.701 2.440,4.239 1.408,4.904 11.261,-2.239 -0.575,-5.070 0.632,-4.850 4.450,-10.179 6.562,0 4.450,10.179 0.632,4.850 -0.575,5.070 11.261,2.239 1.408,-4.904 2.440,-4.239 8.007,-7.701 6.062,2.511 0.216,11.107 -1.272,4.723 -2.472,4.464 9.546,6.378 3.178,-3.992 3.877,-2.982 10.344,-4.050 4.640,4.640 -4.050,10.344 -2.982,3.877 -3.992,3.178 6.378,9.546 4.464,-2.472 4.723,-1.272 11.107,0.216 2.511,6.062 -7.701,8.007 -4.239,2.440 -4.904,1.408 z" style="fill:none;stroke:#3576b5;stroke-width:4;stroke-opacity:1" />
- <circle id="path4299" style="fill:none;stroke:#3576b5;stroke-width:4;stroke-opacity:1" cx="390.507" cy="48.221" r="15.488" />
- <path id="path4339" d="m 122.833,-13.086 -0.786,11.082 1.027,4.782 2.238,4.585 -9.861,5.879 -2.968,-4.150 -3.718,-3.178 -10.122,-4.578 -4.872,4.395 3.512,10.539 2.779,4.026 3.823,3.379 -6.860,9.205 -4.330,-2.699 -4.651,-1.513 -11.105,-0.355 -2.819,5.926 7.280,8.392 4.107,2.655 4.826,1.657 -2.815,11.131 -5.035,-0.835 -4.876,0.382 -10.394,3.919 -0.337,6.554 9.937,4.966 4.810,0.881 5.094,-0.313 1.656,11.360 -4.970,1.154 -4.357,2.219 -8.104,7.600 2.198,6.183 11.080,0.787 4.782,-1.027 4.585,-2.238 5.879,9.861 -4.150,2.967 -3.178,3.718 -4.577,10.124 4.395,4.872 10.539,-3.512 4.026,-2.779 3.378,-3.825 9.206,6.862 -2.699,4.330 -1.513,4.651 -0.354,11.103 5.924,2.820 8.393,-7.278 2.654,-4.108 1.658,-4.824 11.131,2.815 -0.836,5.033 0.382,4.876 3.920,10.395 6.554,0.337 4.968,-9.938 0.881,-4.810 -0.314,-5.093 11.361,-1.658 1.153,4.971 2.220,4.359 7.599,8.102 6.184,-2.196 0.787,-11.080 -1.027,-4.782 -2.239,-4.586 9.862,-5.878 2.968,4.150 3.718,3.178 10.122,4.578 4.872,-4.395 -3.513,-10.540 -2.778,-4.024 -3.823,-3.379 6.860,-9.205 4.330,2.697 4.652,1.514 11.104,0.353 2.820,-5.924 -7.280,-8.392 -4.107,-2.655 -4.827,-1.659 2.816,-11.129 5.035,0.835 4.876,-0.382 10.393,-3.921 0.338,-6.552 -9.938,-4.968 -4.810,-0.881 -5.093,0.314 -1.657,-11.362 4.970,-1.154 4.358,-2.217 8.103,-7.602 -2.197,-6.181 -11.081,-0.789 -4.782,1.027 -4.584,2.240 -5.879,-9.861 4.150,-2.968 3.178,-3.718 4.578,-10.122 -4.396,-4.874 -10.538,3.514 -4.026,2.779 -3.379,3.823 -9.205,-6.860 2.698,-4.332 1.513,-4.651 0.354,-11.103 -5.924,-2.820 -8.393,7.278 -2.654,4.108 -1.657,4.826 -11.132,-2.817 0.836,-5.033 -0.382,-4.876 -3.920,-10.395 -6.553,-0.335 -4.969,9.936 -0.880,4.812 0.314,5.093 -11.362,1.657 -1.153,-4.971 -2.219,-4.357 -7.600,-8.104 -6.184,2.196 z m 16.640,35.853 a 49.348,49.348 0 0 1 31.796,-0.117 l -11.693,28.521 a 18.662,18.662 0 0 0 -8.198,0.045 l -11.905,-28.449 z m -5.838,2.496 11.898,28.434 a 18.662,18.662 0 0 0 -5.707,5.723 L 111.276,47.717 A 49.348,49.348 0 0 1 133.634,25.263 Z m 43.527,-0.254 a 49.348,49.348 0 0 1 22.560,22.406 l -28.433,11.898 a 18.662,18.662 0 0 0 -5.824,-5.773 l 11.697,-28.531 z m -68.258,28.595 28.511,11.688 a 18.662,18.662 0 0 0 -0.002,8.196 l -28.461,11.910 a 49.348,49.348 0 0 1 -0.047,-31.795 z m 2.527,37.641 28.422,-11.893 a 18.662,18.662 0 0 0 5.786,5.808 L 133.935,113.710 A 49.348,49.348 0 0 1 111.431,91.246 Z m 62.339,-26.086 28.449,-11.905 a 49.348,49.348 0 0 1 0.117,31.796 L 173.814,73.356 a 18.662,18.662 0 0 0 -0.042,-8.197 z m -22.257,22.411 a 18.662,18.662 0 0 0 8.195,0.004 l 11.910,28.461 a 49.348,49.348 0 0 1 -31.795,0.047 l 11.690,-28.513 z m 19.933,-8.324 28.531,11.697 A 49.348,49.348 0 0 1 177.465,113.556 L 165.571,85.134 a 18.662,18.662 0 0 0 5.875,-5.888 z" style="fill:none;stroke:#3576b5;stroke-width:4;stroke-opacity:1" />
- <path style="fill:none;stroke:#3576b5;stroke-width:4;stroke-opacity:1" d="m 58.776,78.921 6.906,-4.129 2.516,-0.767 12.479,1.469 1.846,5.432 -8.998,8.769 -2.462,0.924 -7.992,0.934 -0.746,11.457 7.803,1.963 2.322,1.236 7.785,9.862 -2.535,5.146 -12.564,-0.162 -2.395,-1.087 -6.312,-4.990 -8.629,7.574 4.129,6.906 0.767,2.516 -1.469,12.479 -5.432,1.846 -8.769,-8.998 -0.924,-2.462 -0.934,-7.992 -11.457,-0.746 -1.963,7.803 -1.236,2.322 -9.862,7.785 -5.146,-2.535 0.162,-12.564 1.087,-2.395 4.990,-6.312 -7.574,-8.629 -6.906,4.129 -2.516,0.767 -12.479,-1.469 -1.846,-5.431 8.998,-8.769 2.462,-0.924 7.992,-0.934 0.746,-11.457 -7.803,-1.963 -2.322,-1.236 -7.785,-9.862 2.535,-5.146 12.564,0.162 2.395,1.087 6.312,4.990 8.629,-7.574 -4.129,-6.906 -0.767,-2.516 1.469,-12.479 5.432,-1.846 8.769,8.998 0.924,2.462 0.934,7.992 11.457,0.746 1.963,-7.803 1.236,-2.322 9.862,-7.785 5.146,2.535 -0.162,12.564 -1.087,2.395 -4.990,6.312 z" id="path4357" />
- <ellipse cy="100.309" cx="-0.855" style="fill:none;stroke:#3576b5;stroke-width:4;stroke-opacity:1" id="ellipse4359" rx="10.309" ry="10.309" transform="matrix(0.946,-0.321,0.321,0.946,0,0)" />
- </g>
+<rect style="fill:#000;fill-opacity:0.3;stroke:white;stroke-width:5" width="700" height="200" x="-10" y="-20" rx="0" ry="0" />
+
 
 <g id="big">
     <line x1="10" y1="340" x2="630" y2="340" style="display:inherit;"/>
@@ -141,235 +135,273 @@
 
 <g id="pieces">
 
-<g transform="translate(50,240)" id="p02">
+<g transform="translate(50,240)" id="p02"><g class="scale">
+    <rect x="-33" y="-30" height="76" width="76" ry="10" class="shadow"/>
     <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
     <image id="i02" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
     <text y="12"></text>
-</g>
+</g></g>
 
-<g transform="translate(80,240)" id="p03">
+<g transform="translate(80,240)" id="p03"><g class="scale">
+    <rect x="-33" y="-30" height="76" width="76" ry="10" class="shadow"/>
      <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
     <image id="i03" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
     <text y="12"></text>
-</g>
+</g></g>
 
-<g transform="translate(110,240)" id="p04">
+<g transform="translate(110,240)" id="p04"><g class="scale">
+    <rect x="-33" y="-30" height="76" width="76" ry="10" class="shadow"/>
      <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
     <image id="i04" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
     <text y="12"></text>
-</g>
+</g></g>
 
-<g transform="translate(140,240)" id="p05">
+<g transform="translate(140,240)" id="p05"><g class="scale">
+    <rect x="-33" y="-30" height="76" width="76" ry="10" class="shadow"/>
      <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
     <image id="i05" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
     <text y="12"></text>
-</g>
+</g></g>
 
-<g transform="translate(170,240)" id="p06">
+<g transform="translate(170,240)" id="p06"><g class="scale">
+    <rect x="-33" y="-30" height="76" width="76" ry="10" class="shadow"/>
      <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
     <image id="i06" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
     <text y="12"></text>
-</g>
+</g></g>
 
-<g transform="translate(200,240)" id="p07">
+<g transform="translate(200,240)" id="p07"><g class="scale">
+    <rect x="-33" y="-30" height="76" width="76" ry="10" class="shadow"/>
      <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
     <image id="i07" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
     <text y="12"></text>
-</g>
+</g></g>
 
-<g transform="translate(230,240)" id="p08">
+<g transform="translate(230,240)" id="p08"><g class="scale">
+    <rect x="-33" y="-30" height="76" width="76" ry="10" class="shadow"/>
      <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
     <image id="i08" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
     <text y="12"></text>
-</g>
+</g></g>
 
-<g transform="translate(260,240)" id="p09">
+<g transform="translate(260,240)" id="p09"><g class="scale">
+    <rect x="-33" y="-30" height="76" width="76" ry="10" class="shadow"/>
      <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
     <image id="i09" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
     <text y="12"></text>
-</g>
+</g></g>
 
-<g transform="translate(290,240)" id="p10">
+<g transform="translate(290,240)" id="p10"><g class="scale">
+    <rect x="-33" y="-30" height="76" width="76" ry="10" class="shadow"/>
      <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
     <image id="i10" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
     <text y="12"></text>
-</g>
+</g></g>
 
-<g transform="translate(320,240)" id="p11">
+<g transform="translate(320,240)" id="p11"><g class="scale">
+    <rect x="-33" y="-30" height="76" width="76" ry="10" class="shadow"/>
      <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
     <image id="i11" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
     <text y="12"></text>
-</g>
+</g></g>
 
-<g transform="translate(350,240)" id="p12">
+<g transform="translate(350,240)" id="p12"><g class="scale">
+    <rect x="-33" y="-30" height="76" width="76" ry="10" class="shadow"/>
      <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
     <image id="i12" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
     <text y="12"></text>
-</g>
+</g></g>
 
-<g transform="translate(380,240)" id="p13">
+<g transform="translate(380,240)" id="p13"><g class="scale">
+    <rect x="-33" y="-30" height="76" width="76" ry="10" class="shadow"/>
      <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
     <image id="i13" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
     <text y="12"></text>
-</g>
+</g></g>
 
-<g transform="translate(410,240)" id="p14">
+<g transform="translate(410,240)" id="p14"><g class="scale">
+    <rect x="-33" y="-30" height="76" width="76" ry="10" class="shadow"/>
      <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
     <image id="i14" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
     <text y="12"></text>
-</g>
+</g></g>
 
-<g transform="translate(440,240)" id="p15">
+<g transform="translate(440,240)" id="p15"><g class="scale">
+    <rect x="-33" y="-30" height="76" width="76" ry="10" class="shadow"/>
      <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
     <image id="i15" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
     <text y="12"></text>
-</g>
+</g></g>
 
-<g transform="translate(470,240)" id="p16">
+<g transform="translate(470,240)" id="p16"><g class="scale">
+    <rect x="-33" y="-30" height="76" width="76" ry="10" class="shadow"/>
      <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
     <image id="i16" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
     <text y="12"></text>
-</g>
+</g></g>
 
-<g transform="translate(500,240)" id="p17">
+<g transform="translate(500,240)" id="p17"><g class="scale">
+    <rect x="-33" y="-30" height="76" width="76" ry="10" class="shadow"/>
      <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
     <image id="i17" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
     <text y="12"></text>
-</g>
+</g></g>
 
-<g transform="translate(530,240)" id="p18">
+<g transform="translate(530,240)" id="p18"><g class="scale">
+    <rect x="-33" y="-30" height="76" width="76" ry="10" class="shadow"/>
      <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
     <image id="i18" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
     <text y="12"></text>
-</g>
+</g></g>
 
-<g transform="translate(560,240)" id="p19">
+<g transform="translate(560,240)" id="p19"><g class="scale">
+    <rect x="-33" y="-30" height="76" width="76" ry="10" class="shadow"/>
      <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
     <image id="i19" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
     <text y="12"></text>
-</g>
+</g></g>
 
-<g transform="translate(590,240)" id="p20">
+<g transform="translate(590,240)" id="p20"><g class="scale">
+    <rect x="-33" y="-30" height="76" width="76" ry="10" class="shadow"/>
      <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
     <image id="i20" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
     <text y="12"></text>
-</g>
+</g></g>
 
 
 
-<g transform="translate(50,240)" id="d02">
+<g transform="translate(50,240)" id="d02"><g class="scale">
+    <rect x="-33" y="-30" height="76" width="76" ry="10" class="shadow"/>
     <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
     <image id="id02" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
     <text y="12"></text>
-</g>
+</g></g>
 
-<g transform="translate(80,240)" id="d03">
+<g transform="translate(80,240)" id="d03"><g class="scale">
+    <rect x="-33" y="-30" height="76" width="76" ry="10" class="shadow"/>
      <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
     <image id="id03" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
     <text y="12"></text>
-</g>
+</g></g>
 
-<g transform="translate(110,240)" id="d04">
+<g transform="translate(110,240)" id="d04"><g class="scale">
+    <rect x="-33" y="-30" height="76" width="76" ry="10" class="shadow"/>
      <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
     <image id="id04" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
     <text y="12"></text>
-</g>
+</g></g>
 
-<g transform="translate(140,240)" id="d05">
+<g transform="translate(140,240)" id="d05"><g class="scale">
+    <rect x="-33" y="-30" height="76" width="76" ry="10" class="shadow"/>
      <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
     <image id="id05" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
     <text y="12"></text>
-</g>
+</g></g>
 
-<g transform="translate(170,240)" id="d06">
+<g transform="translate(170,240)" id="d06"><g class="scale">
+    <rect x="-33" y="-30" height="76" width="76" ry="10" class="shadow"/>
      <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
     <image id="id06" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
     <text y="12"></text>
-</g>
+</g></g>
 
-<g transform="translate(200,240)" id="d07">
+<g transform="translate(200,240)" id="d07"><g class="scale">
+    <rect x="-33" y="-30" height="76" width="76" ry="10" class="shadow"/>
      <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
     <image id="id07" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
     <text y="12"></text>
-</g>
+</g></g>
 
-<g transform="translate(230,240)" id="d08">
+<g transform="translate(230,240)" id="d08"><g class="scale">
+    <rect x="-33" y="-30" height="76" width="76" ry="10" class="shadow"/>
      <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
     <image id="id08" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
     <text y="12"></text>
-</g>
+</g></g>
 
-<g transform="translate(260,240)" id="d09">
+<g transform="translate(260,240)" id="d09"><g class="scale">
+    <rect x="-33" y="-30" height="76" width="76" ry="10" class="shadow"/>
      <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
     <image id="id09" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
     <text y="12"></text>
-</g>
+</g></g>
 
-<g transform="translate(290,240)" id="d10">
+<g transform="translate(290,240)" id="d10"><g class="scale">
+    <rect x="-33" y="-30" height="76" width="76" ry="10" class="shadow"/>
      <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
     <image id="id10" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
     <text y="12"></text>
-</g>
+</g></g>
 
-<g transform="translate(320,240)" id="d11">
+<g transform="translate(320,240)" id="d11"><g class="scale">
+    <rect x="-33" y="-30" height="76" width="76" ry="10" class="shadow"/>
      <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
     <image id="id11" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
     <text y="12"></text>
-</g>
+</g></g>
 
-<g transform="translate(350,240)" id="d12">
+<g transform="translate(350,240)" id="d12"><g class="scale">
+    <rect x="-33" y="-30" height="76" width="76" ry="10" class="shadow"/>
      <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
     <image id="id12" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
     <text y="12"></text>
-</g>
+</g></g>
 
-<g transform="translate(380,240)" id="d13">
+<g transform="translate(380,240)" id="d13"><g class="scale">
+    <rect x="-33" y="-30" height="76" width="76" ry="10" class="shadow"/>
      <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
     <image id="id13" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
     <text y="12"></text>
-</g>
+</g></g>
 
-<g transform="translate(410,240)" id="d14">
+<g transform="translate(410,240)" id="d14"><g class="scale">
+    <rect x="-33" y="-30" height="76" width="76" ry="10" class="shadow"/>
      <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
     <image id="id14" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
     <text y="12"></text>
-</g>
+</g></g>
 
-<g transform="translate(440,240)" id="d15">
+<g transform="translate(440,240)" id="d15"><g class="scale">
+    <rect x="-33" y="-30" height="76" width="76" ry="10" class="shadow"/>
      <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
     <image id="id15" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
     <text y="12"></text>
-</g>
+</g></g>
 
-<g transform="translate(470,240)" id="d16">
+<g transform="translate(470,240)" id="d16"><g class="scale">
+    <rect x="-33" y="-30" height="76" width="76" ry="10" class="shadow"/>
      <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
     <image id="id16" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
     <text y="12"></text>
-</g>
+</g></g>
 
-<g transform="translate(500,240)" id="d17">
+<g transform="translate(500,240)" id="d17"><g class="scale">
+    <rect x="-33" y="-30" height="76" width="76" ry="10" class="shadow"/>
      <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
     <image id="id17" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
     <text y="12"></text>
-</g>
+</g></g>
 
-<g transform="translate(530,240)" id="d18">
+<g transform="translate(530,240)" id="d18"><g class="scale">
+    <rect x="-33" y="-30" height="76" width="76" ry="10" class="shadow"/>
      <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
     <image id="id18" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
     <text y="12"></text>
-</g>
+</g></g>
 
-<g transform="translate(560,240)" id="d19">
+<g transform="translate(560,240)" id="d19"><g class="scale">
+    <rect x="-33" y="-30" height="76" width="76" ry="10" class="shadow"/>
      <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
     <image id="id19" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
     <text y="12"></text>
-</g>
+</g></g>
 
-<g transform="translate(590,240)" id="d20">
+<g transform="translate(590,240)" id="d20"><g class="scale">
+    <rect x="-33" y="-30" height="76" width="76" ry="10" class="shadow"/>
      <rect x="-38" y="-38" height="76" width="76" ry="10" class="result"/>
     <image id="id20" transform="translate(-38,-38)" xlink:href="" width="76" height="76" x="0" y="0"/>
     <text y="12"></text>
-</g>
+</g></g>
 
 </g>
 
