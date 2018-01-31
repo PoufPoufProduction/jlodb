@@ -5,7 +5,7 @@
     <rdf:Description>
         <dct:identifier>10</dct:identifier>
         <dct:title xml:lang="fr-FR">Effectuer, sans contrainte de temps, des soustractions dont la diminuende est comprise entre 5 et 10, et la différence positive.</dct:title>
-        <dct:description><![CDATA["class":"h12","time":0,"input":{"digit":2,"speed":5000},"gen":"function() { var a=Math.floor(Math.random()*5)+6; return \\\"\\\"+a+\\\"-\\\"+(Math.floor(Math.random()*a)+1); }","font":2.4]]></dct:description>
+        <dct:description><![CDATA["gg":{"dim":[5,6]},"class":"h12","time":0,"input":{"digit":2,"speed":5000},"gen":"function($this,_s,_id) { var ret=''; if (_s.gg.dim) { var a=Math.floor(Math.random()*_s.gg.dim[0])+_s.gg.dim[1]; ret = a+'-'+(Math.floor(Math.random()*a)+1); } else { var a=Math.floor(Math.random()*_s.gg.val[0])+_s.gg.val[1], b=Math.floor(Math.random()*_s.gg.val[2])+_s.gg.val[3]; ret=(a+b)+'-'+b; } return ret; }","font":2.4]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>subtraction</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -13,41 +13,70 @@
         <dct:alternative>100</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
     </rdf:Description>
-
+	
     <rdf:Description>
-        <dct:identifier>20</dct:identifier>
-        <dct:title xml:lang="fr-FR">Effectuer, sans contrainte de temps, des soustractions dont la diminuende est comprise entre 15 et 20, et la différence positive.</dct:title>
-        <dct:description><![CDATA["class":"h12","time":0,"input":{"digit":2,"speed":5000},"gen":"function() { var a=Math.floor(Math.random()*15)+6; return \\\"\\\"+a+\\\"-\\\"+(Math.floor(Math.random()*a)+1); }","font":2.4]]></dct:description>
+        <dct:identifier>10a</dct:identifier>
+        <dct:title xml:lang="fr-FR">Effectuer, sans contrainte de temps, des soustractions dont les opérandes sont comprises entre 1 et 10.</dct:title>
+        <dct:description><![CDATA["gg":{"dim":false,"val":[9,1,10,1]}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>subtraction</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>100</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP,CE1</dct:coverage>
+        <dct:relation>10</dct:relation>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>10au</dct:identifier>
+        <dct:title xml:lang="fr-FR">Effectuer, en moins de 5 secondes par opération, des soustractions dont les opérandes sont comprises entre 1 et 10.</dct:title>
+        <dct:description><![CDATA["gg":{"dim":false,"val":[9,1,10,1]},"time":5,"timemode":1]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>subtraction</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>100</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP,CE1</dct:coverage>
+        <dct:relation>10</dct:relation>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>20</dct:identifier>
+        <dct:title xml:lang="fr-FR">Effectuer, sans contrainte de temps, des soustractions dont la diminuende est comprise entre 15 et 20, et la différence positive.</dct:title>
+        <dct:description><![CDATA["gg":{"dim":[15,6]}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>subtraction</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>100</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP,CE1</dct:coverage>
+        <dct:relation>10</dct:relation>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>20u</dct:identifier>
         <dct:title xml:lang="fr-FR">Effectuer, en moins de 5 secondes par opération, des soustractions dont la diminuende est comprise entre 15 et 20, et la différence positive.</dct:title>
-        <dct:description><![CDATA["class":"h12","time":5,"timemode":1,"input":{"digit":2,"speed":5000},"gen":"function() { var a=Math.floor(Math.random()*15)+6; return \\\"\\\"+a+\\\"-\\\"+(Math.floor(Math.random()*a)+1); }","font":2.4]]></dct:description>
+        <dct:description><![CDATA["gg":{"dim":[5,6]},"time":5,"timemode":1]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>subtraction</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>100</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CP,CE1</dct:coverage>
+        <dct:relation>10</dct:relation>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>50</dct:identifier>
         <dct:title xml:lang="fr-FR">Effectuer, sans contrainte de temps, des soustractions dont la diminuende est comprise entre 10 et 50, et la différence positive</dct:title>
-        <dct:description><![CDATA["class":"h12","time":0,"input":{"digit":2,"speed":5000},"gen":"function() { var a = Math.floor(10+Math.random()*40), b = Math.floor(1+Math.random()*(a-1)); return \\\"\\\"+a+\\\"-\\\"+b;}","font":2.2]]></dct:description>
+        <dct:description><![CDATA["gg":{"dim":[40,10]},"font":2.2]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>subtraction</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>100</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:relation>10</dct:relation>
     </rdf:Description>
 
     <rdf:Description>
@@ -65,12 +94,13 @@
     <rdf:Description>
         <dct:identifier>100</dct:identifier>
         <dct:title xml:lang="fr-FR">Effectuer, sans contrainte de temps, des soustractions dont la diminuende est comprise entre 90 et 100, et la différence positive.</dct:title>
-        <dct:description><![CDATA["class":"h12","time":0,"input":{"digit":2,"speed":5000},"gen":"function() { var a=Math.floor(Math.random()*90)+11; return \\\"\\\"+a+\\\"-\\\"+(Math.floor(Math.random()*a)+1); }","font":1.8]]></dct:description>
+        <dct:description><![CDATA["gg":{"dim":[90,11]},"font":1.8]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>subtraction</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>100</dct:alternative>
+        <dct:relation>10</dct:relation>
     </rdf:Description>
 
     <rdf:Description>
