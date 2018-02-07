@@ -471,6 +471,12 @@
                     if (tdist<10 && now.getTime()-settings.action.tick<400) {
                         elt.current.rotate = (elt.current.rotate+settings.rotation)%360;
                     }
+					
+					// STAY IN DESKTOP
+					if (elt.current.translate[0]<0) 					{ elt.current.translate[0] = 0; }
+					if (elt.current.translate[1]<0) 					{ elt.current.translate[1] = 0; }
+					if (elt.current.translate[0]>settings.width) 		{ elt.current.translate[0] = settings.width; }
+					if (elt.current.translate[1]>2.5*settings.width/4) 	{ elt.current.translate[1] = 2.5*settings.width/4; }
 
                     // CHECK MAGNETIC
                     if (settings.decoyfx || !elt.decoy)
