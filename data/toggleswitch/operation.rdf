@@ -5,28 +5,19 @@
 
          
     <rdf:Description>
-        <dct:identifier>6</dct:identifier>
-        <dct:title xml:lang="fr-FR">Identifier le nombre 6 à partir d'opérations simples [addition, soustraction, multiplication et division par 2].</dct:title>
-        <dct:description><![CDATA["template":"array3x3","values":[{"template":"array3x2","result":"010101001","t":["2+3","8-2","10-3","3×2","5+2","12-6","4×2","4+1","8-2"]},{"template":"array3x2","result":"011111110","t":["9-4","9-3","3+3","6×1","5+1","8-2","12/2","13-7","5+2"]}],"states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"orange","color":"saddlebrown"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:orange;'><b>ORANGE</b></span>, les opérations dont le résultat est <b>6</b>.","tag":"6"}]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>operation</dct:subject>
+        <dct:identifier>c10</dct:identifier>
+        <dct:title xml:lang="fr-FR">Vérifier les soustractions, additions, multiplications jusqu'à 5 et divisions par 2, de valeurs comprises entre 1 et 10.</dct:title>
+        <dct:description><![CDATA["gg":{"ad":[7,3,7,3],"su":[7,3,7,3],"mu":[4,2,10,1],"di":[9,2,1,2]},"background":"res/img/background/landscape/wallpaper02.svg","template":"array3x3","gen":"function($this,_s,_id){var val=[function(_e) { var a=Math.floor(Math.random()*_s.gg.ad[0]+_s.gg.ad[1]),b=Math.floor(Math.random()*_s.gg.ad[2]+_s.gg.ad[3]); return a+'+'+b+'='+(a+b+_e); }, function(_e) { var a = Math.floor(Math.random()*_s.gg.su[0]+_s.gg.su[1]), b = Math.floor(Math.random()*_s.gg.su[2]+_s.gg.su[3]); return (a+b)+'-'+b+'='+(a+_e); }, function(_e) { var a=Math.floor(Math.random()*_s.gg.mu[0]+_s.gg.mu[1]),b = Math.floor(Math.random()*_s.gg.mu[2]+_s.gg.mu[3]); return a+'×'+b+'='+(a*b+_e);}, function(_e) { var a = Math.floor(Math.random()*_s.gg.di[0]+_s.gg.di[1]), b = Math.floor(Math.random()*_s.gg.di[2]+_s.gg.di[3]); return (a*b)+'/'+b+'='+(a+_e); }],res='',t=[]; for (var i=0; i<9; i++) { var c=Math.floor(Math.random()*2),er=0,v=Math.floor(Math.random()*val.length); res+=(1-c).toString(); if (c==0) { do { er = Math.floor(Math.random()*5)-2; } while (er==0); } t.push(val[v](er)); }; return { 'result':res,'t':t}; }","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"#333"},{"background-color":"black","color":"#222222"}]},"wrong":{"style":{"background-color":"red","color":"pink"}},"font":0.5,"number":3]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"[b]Barrez[/b] les opérations [red]erronées[/red]."}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>operations</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>8</dct:alternative>
+        <dct:type>2</dct:type>
+        <dct:alternative>c10</dct:alternative>
+		<dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
     </rdf:Description>
          
-    <rdf:Description>
-        <dct:identifier>8</dct:identifier>
-        <dct:title xml:lang="fr-FR">Identifier le nombre 8 à partir d'opérations simples [addition, soustraction, multiplication et division par 2].</dct:title>
-        <dct:description><![CDATA["template":"array3x3","values":[{"template":"array3x2","result":"001100011","t":["2+8","6+4","10-2","2×4","7+2","12-3","3×2","7+1","2+6"]},{"template":"array3x2","result":"111011101","t":["12-4","16/2","3+5","5×2","7+1","14-6","4×2","4+6","17-9"]}],"states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"green","color":"darkgreen"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez en <span style='color:green;'><b>VERT</b></span>, les opérations dont le résultat est <b>8</b>.","tag":"8"}]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>operation</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>8</dct:alternative>
-    </rdf:Description>
+
     
 
 

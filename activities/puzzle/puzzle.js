@@ -476,7 +476,9 @@
 					if (elt.current.translate[0]<0) 					{ elt.current.translate[0] = 0; }
 					if (elt.current.translate[1]<0) 					{ elt.current.translate[1] = 0; }
 					if (elt.current.translate[0]>settings.width) 		{ elt.current.translate[0] = settings.width; }
-					if (elt.current.translate[1]>2.5*settings.width/4) 	{ elt.current.translate[1] = 2.5*settings.width/4; }
+					
+					var footer = $this.hasClass("exup")?0.8:1;
+					if (elt.current.translate[1]>3*footer*settings.width/4) 	{ elt.current.translate[1] = 3*footer*settings.width/4; }
 
                     // CHECK MAGNETIC
                     if (settings.decoyfx || !elt.decoy)
@@ -564,7 +566,8 @@
                             var isgood = false;
                             var target = settings.elts[pieces[p]];
                             
-                            if ((target.current.translate[0]==elt.origin.translate[0])&&
+                            if ( target &&
+								(target.current.translate[0]==elt.origin.translate[0])&&
                                 (target.current.translate[1]==elt.origin.translate[1])) {
                                 isgood = true;
                                 // CHECK THE ROTATION
