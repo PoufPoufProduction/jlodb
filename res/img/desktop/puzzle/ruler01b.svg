@@ -21,10 +21,13 @@
     svg#ruler #pieces .r5 { fill:none; stroke:black; stroke-width:1; }
     svg#ruler text { font-size:12px;fill:black;opacity:0.7;text-anchor:middle; cursor:move; }
     
-    svg#ruler #bg circle    { fill:white;fill-opacity:0.5;stroke:black; }
-    svg#ruler #bg text      { font-size:24px; cursor:auto; }
+    svg#ruler #bg .c1    { fill:#8e572b;fill-opacity:0.2;stroke:black; }
+	svg#ruler #bg .c2    { fill:white;fill-opacity:0.8; }
+    svg#ruler #bg text   { font-size:20px; cursor:auto; }
     
     svg#ruler #elts rect    { fill:#cef; stroke:black;stroke-width:1px;}
+	svg#ruler .shadow				{ fill:black; fill-opacity:0.5; display:none; }
+	svg#ruler .drag .shadow			{ display:inline; }
  </style>
 </defs>
 
@@ -44,37 +47,37 @@
 </g>
 
 <g id="bg">
-<g transform="translate(55,350)"><circle cx="0" cy="0" r="15"/><text y="8">1</text></g>
-<g transform="translate(90,350)"><circle cx="0" cy="0" r="15"/><text y="8">2</text></g>
-<g transform="translate(125,350)"><circle cx="0" cy="0" r="15"/><text y="8">3</text></g>
-<g transform="translate(160,350)"><circle cx="0" cy="0" r="15"/><text y="8">4</text></g>
-<g transform="translate(195,350)"><circle cx="0" cy="0" r="15"/><text y="8">5</text></g>
-<g transform="translate(230,350)"><circle cx="0" cy="0" r="15"/><text y="8">6</text></g>
-<g transform="translate(265,350)"><circle cx="0" cy="0" r="15"/><text y="8">7</text></g>
-<g transform="translate(300,350)"><circle cx="0" cy="0" r="15"/><text y="8">8</text></g>
-<g transform="translate(335,350)"><circle cx="0" cy="0" r="15"/><text y="8">9</text></g>
-<g transform="translate(370,350)"><circle cx="0" cy="0" r="15"/><text y="8">10</text></g>
-<g transform="translate(405,350)"><circle cx="0" cy="0" r="15"/><text y="8">11</text></g>
-<g transform="translate(440,350)"><circle cx="0" cy="0" r="15"/><text y="8">12</text></g>
-<g transform="translate(475,350)"><circle cx="0" cy="0" r="15"/><text y="8">13</text></g>
-<g transform="translate(510,350)"><circle cx="0" cy="0" r="15"/><text y="8">14</text></g>
-<g transform="translate(545,350)"><circle cx="0" cy="0" r="15"/><text y="8">15</text></g>
+<g transform="translate(55,350)"><circle cx="0" cy="0" r="18" class="c2"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8">1</text></g>
+<g transform="translate(90,350)"><circle cx="0" cy="0" r="18" class="c2"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8">2</text></g>
+<g transform="translate(125,350)"><circle cx="0" cy="0" r="18" class="c2"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8">3</text></g>
+<g transform="translate(160,350)"><circle cx="0" cy="0" r="18" class="c2"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8">4</text></g>
+<g transform="translate(195,350)"><circle cx="0" cy="0" r="18" class="c2"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8">5</text></g>
+<g transform="translate(230,350)"><circle cx="0" cy="0" r="18" class="c2"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8">6</text></g>
+<g transform="translate(265,350)"><circle cx="0" cy="0" r="18" class="c2"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8">7</text></g>
+<g transform="translate(300,350)"><circle cx="0" cy="0" r="18" class="c2"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8">8</text></g>
+<g transform="translate(335,350)"><circle cx="0" cy="0" r="18" class="c2"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8">9</text></g>
+<g transform="translate(370,350)"><circle cx="0" cy="0" r="18" class="c2"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8">10</text></g>
+<g transform="translate(405,350)"><circle cx="0" cy="0" r="18" class="c2"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8">11</text></g>
+<g transform="translate(440,350)"><circle cx="0" cy="0" r="18" class="c2"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8">12</text></g>
+<g transform="translate(475,350)"><circle cx="0" cy="0" r="18" class="c2"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8">13</text></g>
+<g transform="translate(510,350)"><circle cx="0" cy="0" r="18" class="c2"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8">14</text></g>
+<g transform="translate(545,350)"><circle cx="0" cy="0" r="18" class="c2"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8">15</text></g>
 
-<g transform="translate(55,385)"><circle cx="0" cy="0" r="15"/><text y="8">16</text></g>
-<g transform="translate(90,385)"><circle cx="0" cy="0" r="15"/><text y="8">17</text></g>
-<g transform="translate(125,385)"><circle cx="0" cy="0" r="15"/><text y="8">18</text></g>
-<g transform="translate(160,385)"><circle cx="0" cy="0" r="15"/><text y="8">19</text></g>
-<g transform="translate(195,385)"><circle cx="0" cy="0" r="15"/><text y="8">20</text></g>
-<g transform="translate(230,385)"><circle cx="0" cy="0" r="15"/><text y="8">21</text></g>
-<g transform="translate(265,385)"><circle cx="0" cy="0" r="15"/><text y="8">22</text></g>
-<g transform="translate(300,385)"><circle cx="0" cy="0" r="15"/><text y="8">23</text></g>
-<g transform="translate(335,385)"><circle cx="0" cy="0" r="15"/><text y="8">24</text></g>
-<g transform="translate(370,385)"><circle cx="0" cy="0" r="15"/><text y="8">25</text></g>
-<g transform="translate(405,385)"><circle cx="0" cy="0" r="15"/><text y="8">26</text></g>
-<g transform="translate(440,385)"><circle cx="0" cy="0" r="15"/><text y="8">27</text></g>
-<g transform="translate(475,385)"><circle cx="0" cy="0" r="15"/><text y="8">28</text></g>
-<g transform="translate(510,385)"><circle cx="0" cy="0" r="15"/><text y="8">29</text></g>
-<g transform="translate(545,385)"><circle cx="0" cy="0" r="15"/><text y="8">30</text></g>
+<g transform="translate(55,385)"><circle cx="0" cy="0" r="18" class="c2"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8">16</text></g>
+<g transform="translate(90,385)"><circle cx="0" cy="0" r="18" class="c2"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8">17</text></g>
+<g transform="translate(125,385)"><circle cx="0" cy="0" r="18" class="c2"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8">18</text></g>
+<g transform="translate(160,385)"><circle cx="0" cy="0" r="18" class="c2"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8">19</text></g>
+<g transform="translate(195,385)"><circle cx="0" cy="0" r="18" class="c2"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8">20</text></g>
+<g transform="translate(230,385)"><circle cx="0" cy="0" r="18" class="c2"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8">21</text></g>
+<g transform="translate(265,385)"><circle cx="0" cy="0" r="18" class="c2"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8">22</text></g>
+<g transform="translate(300,385)"><circle cx="0" cy="0" r="18" class="c2"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8">23</text></g>
+<g transform="translate(335,385)"><circle cx="0" cy="0" r="18" class="c2"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8">24</text></g>
+<g transform="translate(370,385)"><circle cx="0" cy="0" r="18" class="c2"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8">25</text></g>
+<g transform="translate(405,385)"><circle cx="0" cy="0" r="18" class="c2"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8">26</text></g>
+<g transform="translate(440,385)"><circle cx="0" cy="0" r="18" class="c2"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8">27</text></g>
+<g transform="translate(475,385)"><circle cx="0" cy="0" r="18" class="c2"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8">28</text></g>
+<g transform="translate(510,385)"><circle cx="0" cy="0" r="18" class="c2"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8">29</text></g>
+<g transform="translate(545,385)"><circle cx="0" cy="0" r="18" class="c2"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8">30</text></g>
 </g>
 
 <g id="pieces">
@@ -82,7 +85,7 @@
         <rect x="-160" y="-25" width="320" height="50" class="r1"/>
         <rect x="-160" y="-25" width="320" height="20" class="r2"/>
         <path d="M -150,-25 L -150,-5" class="r3"/>
-        <g id="grid">
+        <g>
             <path d="M -140,-25 L -140,-15" class="r4"/>
             <path d="M -130,-25 L -130,-15" class="r4"/>
             <path d="M -120,-25 L -120,-15" class="r4"/>
@@ -94,8 +97,30 @@
             <path d="M -60,-25 L -60,-15" class="r4"/>
             <path d="M -50,-25 L -50,-5" class="r3"/>
         </g>
-        <use x="0" y="0" xlink:href="#grid" transform="translate(100,0)"/>
-        <use x="0" y="0" xlink:href="#grid" transform="translate(200,0)"/>
+        <g transform="translate(100,0)">
+            <path d="M -140,-25 L -140,-15" class="r4"/>
+            <path d="M -130,-25 L -130,-15" class="r4"/>
+            <path d="M -120,-25 L -120,-15" class="r4"/>
+            <path d="M -110,-25 L -110,-15" class="r4"/>
+            <path d="M -100,-25 L -100,-15" class="r3"/>
+            <path d="M -90,-25 L -90,-15" class="r4"/>
+            <path d="M -80,-25 L -80,-15" class="r4"/>
+            <path d="M -70,-25 L -70,-15" class="r4"/>
+            <path d="M -60,-25 L -60,-15" class="r4"/>
+            <path d="M -50,-25 L -50,-5" class="r3"/>
+        </g>
+        <g transform="translate(200,0)">
+            <path d="M -140,-25 L -140,-15" class="r4"/>
+            <path d="M -130,-25 L -130,-15" class="r4"/>
+            <path d="M -120,-25 L -120,-15" class="r4"/>
+            <path d="M -110,-25 L -110,-15" class="r4"/>
+            <path d="M -100,-25 L -100,-15" class="r3"/>
+            <path d="M -90,-25 L -90,-15" class="r4"/>
+            <path d="M -80,-25 L -80,-15" class="r4"/>
+            <path d="M -70,-25 L -70,-15" class="r4"/>
+            <path d="M -60,-25 L -60,-15" class="r4"/>
+            <path d="M -50,-25 L -50,-5" class="r3"/>
+        </g>
         
         <g transform="translate(-150,-5)"><text y="14">0</text></g>
         <g transform="translate(-50,-5)"><text y="14">10</text></g>
@@ -105,123 +130,153 @@
         <circle cx="0" cy="0" r="7" style="fill:none;stroke:black;stroke-width:0.5px;"/>
     </g></g></g>
     
-    <g id="pp01" transform="translate(55,350)"><g class="scale"><g class="rot">
+    <g id="pp01" transform="translate(55,350)"><g class="scale">
+		<circle transform="translate(-2,4)" cx="0" cy="0" r="15" class="shadow"/><g class="rot">
         <use x="0" y="0" xlink:href="#tp"/><circle cx="0" cy="0" r="21" class="result"/>
     </g></g></g>
     
-    <g id="pp02" transform="translate(90,350)"><g class="scale"><g class="rot">
+    <g id="pp02" transform="translate(90,350)"><g class="scale">
+		<circle transform="translate(-2,4)" cx="0" cy="0" r="15" class="shadow"/><g class="rot">
         <use x="0" y="0" xlink:href="#tp"/><circle cx="0" cy="0" r="21" class="result"/>
     </g></g></g>
     
-    <g id="pp03" transform="translate(125,350)"><g class="scale"><g class="rot">
+    <g id="pp03" transform="translate(125,350)"><g class="scale">
+		<circle transform="translate(-2,4)" cx="0" cy="0" r="15" class="shadow"/><g class="rot">
         <use x="0" y="0" xlink:href="#tp"/><circle cx="0" cy="0" r="21" class="result"/>
     </g></g></g>
     
-    <g id="pp04" transform="translate(160,350)"><g class="scale"><g class="rot">
+    <g id="pp04" transform="translate(160,350)"><g class="scale">
+		<circle transform="translate(-2,4)" cx="0" cy="0" r="15" class="shadow"/><g class="rot">
         <use x="0" y="0" xlink:href="#tp"/><circle cx="0" cy="0" r="21" class="result"/>
     </g></g></g>
     
-    <g id="pp05" transform="translate(195,350)"><g class="scale"><g class="rot">
+    <g id="pp05" transform="translate(195,350)"><g class="scale">
+		<circle transform="translate(-2,4)" cx="0" cy="0" r="15" class="shadow"/><g class="rot">
         <use x="0" y="0" xlink:href="#tp"/><circle cx="0" cy="0" r="21" class="result"/>
     </g></g></g>
     
-    <g id="pp06" transform="translate(230,350)"><g class="scale"><g class="rot">
+    <g id="pp06" transform="translate(230,350)"><g class="scale">
+		<circle transform="translate(-2,4)" cx="0" cy="0" r="15" class="shadow"/><g class="rot">
         <use x="0" y="0" xlink:href="#tp"/><circle cx="0" cy="0" r="21" class="result"/>
     </g></g></g>
     
-    <g id="pp07" transform="translate(265,350)"><g class="scale"><g class="rot">
+    <g id="pp07" transform="translate(265,350)"><g class="scale">
+		<circle transform="translate(-2,4)" cx="0" cy="0" r="15" class="shadow"/><g class="rot">
         <use x="0" y="0" xlink:href="#tp"/><circle cx="0" cy="0" r="21" class="result"/>
     </g></g></g>
     
-    <g id="pp08" transform="translate(300,350)"><g class="scale"><g class="rot">
+    <g id="pp08" transform="translate(300,350)"><g class="scale">
+		<circle transform="translate(-2,4)" cx="0" cy="0" r="15" class="shadow"/><g class="rot">
         <use x="0" y="0" xlink:href="#tp"/><circle cx="0" cy="0" r="21" class="result"/>
     </g></g></g>
     
-    <g id="pp09" transform="translate(335,350)"><g class="scale"><g class="rot">
+    <g id="pp09" transform="translate(335,350)"><g class="scale">
+		<circle transform="translate(-2,4)" cx="0" cy="0" r="15" class="shadow"/><g class="rot">
         <use x="0" y="0" xlink:href="#tp"/><circle cx="0" cy="0" r="21" class="result"/>
     </g></g></g>
     
-    <g id="pp10" transform="translate(370,350)"><g class="scale"><g class="rot">
+    <g id="pp10" transform="translate(370,350)"><g class="scale">
+		<circle transform="translate(-2,4)" cx="0" cy="0" r="15" class="shadow"/><g class="rot">
         <use x="0" y="0" xlink:href="#tp"/><circle cx="0" cy="0" r="21" class="result"/>
     </g></g></g>
     
-    <g id="pp11" transform="translate(405,350)"><g class="scale"><g class="rot">
+    <g id="pp11" transform="translate(405,350)"><g class="scale">
+		<circle transform="translate(-2,4)" cx="0" cy="0" r="15" class="shadow"/><g class="rot">
         <use x="0" y="0" xlink:href="#tp"/><circle cx="0" cy="0" r="21" class="result"/>
     </g></g></g>
     
-    <g id="pp12" transform="translate(440,350)"><g class="scale"><g class="rot">
+    <g id="pp12" transform="translate(440,350)"><g class="scale">
+		<circle transform="translate(-2,4)" cx="0" cy="0" r="15" class="shadow"/><g class="rot">
         <use x="0" y="0" xlink:href="#tp"/><circle cx="0" cy="0" r="21" class="result"/>
     </g></g></g>
     
-    <g id="pp13" transform="translate(475,350)"><g class="scale"><g class="rot">
+    <g id="pp13" transform="translate(475,350)"><g class="scale">
+		<circle transform="translate(-2,4)" cx="0" cy="0" r="15" class="shadow"/><g class="rot">
         <use x="0" y="0" xlink:href="#tp"/><circle cx="0" cy="0" r="21" class="result"/>
     </g></g></g>
     
-    <g id="pp14" transform="translate(510,350)"><g class="scale"><g class="rot">
+    <g id="pp14" transform="translate(510,350)"><g class="scale">
+		<circle transform="translate(-2,4)" cx="0" cy="0" r="15" class="shadow"/><g class="rot">
         <use x="0" y="0" xlink:href="#tp"/><circle cx="0" cy="0" r="21" class="result"/>
     </g></g></g>
     
-    <g id="pp15" transform="translate(545,350)"><g class="scale"><g class="rot">
+    <g id="pp15" transform="translate(545,350)"><g class="scale">
+		<circle transform="translate(-2,4)" cx="0" cy="0" r="15" class="shadow"/><g class="rot">
         <use x="0" y="0" xlink:href="#tp"/><circle cx="0" cy="0" r="21" class="result"/>
     </g></g></g>
     
-    <g id="pp16" transform="translate(55,385)"><g class="scale"><g class="rot">
+    <g id="pp16" transform="translate(55,385)"><g class="scale">
+		<circle transform="translate(-2,4)" cx="0" cy="0" r="15" class="shadow"/><g class="rot">
         <use x="0" y="0" xlink:href="#tp"/><circle cx="0" cy="0" r="21" class="result"/>
     </g></g></g>
     
-    <g id="pp17" transform="translate(90,385)"><g class="scale"><g class="rot">
+    <g id="pp17" transform="translate(90,385)"><g class="scale">
+		<circle transform="translate(-2,4)" cx="0" cy="0" r="15" class="shadow"/><g class="rot">
         <use x="0" y="0" xlink:href="#tp"/><circle cx="0" cy="0" r="21" class="result"/>
     </g></g></g>
     
-    <g id="pp18" transform="translate(125,385)"><g class="scale"><g class="rot">
+    <g id="pp18" transform="translate(125,385)"><g class="scale">
+		<circle transform="translate(-2,4)" cx="0" cy="0" r="15" class="shadow"/><g class="rot">
         <use x="0" y="0" xlink:href="#tp"/><circle cx="0" cy="0" r="21" class="result"/>
     </g></g></g>
     
-    <g id="pp19" transform="translate(160,385)"><g class="scale"><g class="rot">
+    <g id="pp19" transform="translate(160,385)"><g class="scale">
+		<circle transform="translate(-2,4)" cx="0" cy="0" r="15" class="shadow"/><g class="rot">
         <use x="0" y="0" xlink:href="#tp"/><circle cx="0" cy="0" r="21" class="result"/>
     </g></g></g>
     
-    <g id="pp20" transform="translate(195,385)"><g class="scale"><g class="rot">
+    <g id="pp20" transform="translate(195,385)"><g class="scale">
+		<circle transform="translate(-2,4)" cx="0" cy="0" r="15" class="shadow"/><g class="rot">
         <use x="0" y="0" xlink:href="#tp"/><circle cx="0" cy="0" r="21" class="result"/>
     </g></g></g>
     
-    <g id="pp21" transform="translate(230,385)"><g class="scale"><g class="rot">
+    <g id="pp21" transform="translate(230,385)"><g class="scale">
+		<circle transform="translate(-2,4)" cx="0" cy="0" r="15" class="shadow"/><g class="rot">
         <use x="0" y="0" xlink:href="#tp"/><circle cx="0" cy="0" r="21" class="result"/>
     </g></g></g>
     
-    <g id="pp22" transform="translate(265,385)"><g class="scale"><g class="rot">
+    <g id="pp22" transform="translate(265,385)"><g class="scale">
+		<circle transform="translate(-2,4)" cx="0" cy="0" r="15" class="shadow"/><g class="rot">
         <use x="0" y="0" xlink:href="#tp"/><circle cx="0" cy="0" r="21" class="result"/>
     </g></g></g>
     
-    <g id="pp23" transform="translate(300,385)"><g class="scale"><g class="rot">
+    <g id="pp23" transform="translate(300,385)"><g class="scale">
+		<circle transform="translate(-2,4)" cx="0" cy="0" r="15" class="shadow"/><g class="rot">
         <use x="0" y="0" xlink:href="#tp"/><circle cx="0" cy="0" r="21" class="result"/>
     </g></g></g>
     
-    <g id="pp24" transform="translate(335,385)"><g class="scale"><g class="rot">
+    <g id="pp24" transform="translate(335,385)"><g class="scale">
+		<circle transform="translate(-2,4)" cx="0" cy="0" r="15" class="shadow"/><g class="rot">
         <use x="0" y="0" xlink:href="#tp"/><circle cx="0" cy="0" r="21" class="result"/>
     </g></g></g>
     
-    <g id="pp25" transform="translate(370,385)"><g class="scale"><g class="rot">
+    <g id="pp25" transform="translate(370,385)"><g class="scale">
+		<circle transform="translate(-2,4)" cx="0" cy="0" r="15" class="shadow"/><g class="rot">
         <use x="0" y="0" xlink:href="#tp"/><circle cx="0" cy="0" r="21" class="result"/>
     </g></g></g>
     
-    <g id="pp26" transform="translate(405,385)"><g class="scale"><g class="rot">
+    <g id="pp26" transform="translate(405,385)"><g class="scale">
+		<circle transform="translate(-2,4)" cx="0" cy="0" r="15" class="shadow"/><g class="rot">
         <use x="0" y="0" xlink:href="#tp"/><circle cx="0" cy="0" r="21" class="result"/>
     </g></g></g>
     
-    <g id="pp27" transform="translate(440,385)"><g class="scale"><g class="rot">
+    <g id="pp27" transform="translate(440,385)"><g class="scale">
+		<circle transform="translate(-2,4)" cx="0" cy="0" r="15" class="shadow"/><g class="rot">
         <use x="0" y="0" xlink:href="#tp"/><circle cx="0" cy="0" r="21" class="result"/>
     </g></g></g>
     
-    <g id="pp28" transform="translate(475,385)"><g class="scale"><g class="rot">
+    <g id="pp28" transform="translate(475,385)"><g class="scale">
+		<circle transform="translate(-2,4)" cx="0" cy="0" r="15" class="shadow"/><g class="rot">
         <use x="0" y="0" xlink:href="#tp"/><circle cx="0" cy="0" r="21" class="result"/>
     </g></g></g>
     
-    <g id="pp29" transform="translate(510,385)"><g class="scale"><g class="rot">
+    <g id="pp29" transform="translate(510,385)"><g class="scale">
+		<circle transform="translate(-2,4)" cx="0" cy="0" r="15" class="shadow"/><g class="rot">
         <use x="0" y="0" xlink:href="#tp"/><circle cx="0" cy="0" r="21" class="result"/>
     </g></g></g>
     
-    <g id="pp30" transform="translate(545,385)"><g class="scale"><g class="rot">
+    <g id="pp30" transform="translate(545,385)"><g class="scale">
+		<circle transform="translate(-2,4)" cx="0" cy="0" r="15" class="shadow"/><g class="rot">
         <use x="0" y="0" xlink:href="#tp"/><circle cx="0" cy="0" r="21" class="result"/>
     </g></g></g>
     

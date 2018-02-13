@@ -137,9 +137,14 @@
                     settings.objectives[i][j].done = false;
                 }
                 $this.find("#gnote").html(settings.number);
+				
+				// INITIAL RADIUS
+				if (settings.radiusrange && $.isArray(settings.radiusrange)) {
+                     settings.radius = settings.radiusrange[0] +
+                                    Math.random()*(settings.radiusrange[1]-settings.radiusrange[0]);
+                }
 
                 // LOCALE HANDLING
-
                 if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
 
                 // LOAD SVG
