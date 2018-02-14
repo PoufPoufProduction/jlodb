@@ -51,7 +51,7 @@
 	<rdf:Description>
         <dct:identifier>r4a</dct:identifier>
         <dct:title xml:lang="fr-FR">Mesurer 4 bandes grises à l'aide d'une règle graduée.</dct:title>
-        <dct:description><![CDATA["gg":{"v":[3,4,5,6,7,8,9,10,11,12,13,14,15,16],"pp":[[50,30],[100,30],[150,30],[200,30]],"b":["01","02","07","08"]},"background":"res/img/background/landscape/grayboard01.svg","class":"r4","number":3,"errratio":1,"init":{"id":{"ruler":[460,30],"ref":[500,30]},"area":[0,0,100,100]},"decoys":["ruler"],"url":"desktop/puzzle/ruler01.svg","decoyfx":false,"gen":"function($this,settings,_id){ var pp=settings.gg.pp,p={},b=settings.gg.b,v=settings.gg.v,val={},s=[]; for (var i=0;i<10;i++) v.sort(function(){return Math.random()-0.5;});for (var i=0;i<pp.length;i++) { s.push('b'+b[i]+(v[i]<10?'0':'')+(v[i])); val['pp'+b[i]]=v[i]; p['pp'+b[i]]=pp[i]; } return {'values':val,'show':s,'id':['ruler'],'init':{'id':p}}; }"]]></dct:description>
+        <dct:description><![CDATA["gg":{"v":[3,4,5,6,7,8,9],"pp":[[50,30],[100,30],[150,30],[200,30]],"b":["01","02","07","08"]},"background":"res/img/background/landscape/grayboard01.svg","class":"r4","number":3,"errratio":1,"init":{"id":{"ruler":[460,30],"ref":[500,30]},"area":[0,0,100,100]},"decoys":["ruler"],"url":"desktop/puzzle/ruler01.svg","decoyfx":false,"gen":"function($this,settings,_id){ var pp=settings.gg.pp,p={},b=settings.gg.b,v=settings.gg.v,val={},s=[]; for (var i=0;i<10;i++) v.sort(function(){return Math.random()-0.5;});for (var i=0;i<pp.length;i++) { s.push('b'+b[i]+(v[i]<10?'0':'')+(v[i])); val['pp'+b[i]]=v[i]; p['pp'+b[i]]=pp[i]; } return {'values':val,'show':s,'id':['ruler'],'init':{'id':p}}; }"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"En utilisant la règle graduée, mesurez les [b]bandes grises[/b] et [b]faites glisser[/b] les jetons correspondants dans les zones associées.","fontex":0.7]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -77,7 +77,7 @@
 	<rdf:Description>
         <dct:identifier>r6a</dct:identifier>
         <dct:title xml:lang="fr-FR">Mesurer 6 bandes grises à l'aide d'une règle graduée.</dct:title>
-        <dct:description><![CDATA["class":"r6","gg":{"v":[3,4,5,6,7,8,9,10,11,12,13,14,15,16],"pp":[[50,30],[100,30],[150,30],[50,80],[100,80],[150,80]],"b":["01","02","04","05","07","08"]}]]></dct:description>
+        <dct:description><![CDATA["class":"r6","gg":{"v":[3,4,5,6,7,8,9,10,11],"pp":[[50,30],[100,30],[150,30],[50,80],[100,80],[150,80]],"b":["01","02","04","05","07","08"]}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
