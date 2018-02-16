@@ -12,6 +12,7 @@
         multiple    : 0,                                        // The multiple occurence separator
         font        : 1,                                        // The font-size multiplicator
         first       : false,                                    // Don't choose randomly the wrong words, use the first one
+        background  : "",                               		// Background image
         debug       : true                                     // Debug mode
     };
 
@@ -91,6 +92,9 @@
 
                 // Send the onLoad callback
                 if (settings.context.onload) { settings.context.onload($this); }
+				
+                // HANDLE BACKGROUND
+                if (settings.background) { $this.children().first().css("background-image","url("+settings.background+")"); }
 
                 // Build the data the data
                 var content ="";

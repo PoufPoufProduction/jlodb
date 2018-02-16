@@ -3,14 +3,16 @@
          xmlns:dct="http://purl.org/dc/terms/">
 
 
+	<!-- IDENTIFY -->
+		 
     <rdf:Description>
         <dct:identifier>a01</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier les balances dont la position est compatible avec les valeurs numériques fournies.</dct:title>
         <dct:description><![CDATA["background":"res/img/background/landscape/redcarpet01.svg","regexp":{ "from": "([^ ]+)","to":"<div class='icon'><img src=\\\"res/img/weight/$1.svg\\\"/></div>"},"states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"yellow"}]},"wrong":{"style":{"background-color":"red"}},"legend":["[red][b]A[/b] = 100g[/red] | [green][b]B[/b] = 50g[/green] | [blue][b]C[/b] = 2g[/blue]","[red][b]A[/b] = 21g[/red] | [green][b]B[/b] = 10g[/green] | [blue][b]C[/b] = 50g[/blue]"]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"font":1,"values":[{"template":"array3x2r","result":"001101","t":["A_eq_B","B_lt_C","A_wt_C","B_wt_C","A_lt_B","A_wt_B"]},{"template":"array3x2r","result":"000111","t":["A_wt_C","A_lt_B","B_wt_C","A_lt_C","B_lt_C","A_wt_B"]}],"exercice":{"value":"Coloriez en [b]jaune[/b], les balances dont la position est [b]compatible[/b] avec les valeurs fournies plus haut."}]]></dct:description>
         <dct:extent>2</dct:extent>
-        <dct:subject>gravity</dct:subject>
-        <dct:educationLevel>1</dct:educationLevel>
+        <dct:subject>measure</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:source>res/img/weight/A_eq_B.svg,res/img/weight/B_lt_C.svg,res/img/weight/A_wt_C.svg,res/img/weight/B_wt_C.svg,res/img/weight/A_lt_B.svg,res/img/weight/A_wt_B.svg,res/img/weight/A_wt_C.svg,res/img/weight/A_lt_B.svg,res/img/weight/B_wt_C.svg,res/img/weight/A_lt_C.svg,res/img/weight/B_lt_C.svg,res/img/weight/A_wt_B.svg,res/img/background/landscape/redcarpet01.svg</dct:source>
@@ -22,8 +24,8 @@
         <dct:description><![CDATA["background":"res/img/background/landscape/redcarpet01.svg","regexp":{ "from": "([^ ]+)","to":"<div class='icon'><img src=\\\"res/img/weight/$1.svg\\\"/></div>"},"states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"yellow"}]},"wrong":{"style":{"background-color":"red"}},"legend":["[red][b]A[/b] = 80g[/red] | [green][b]B[/b] = 15g[/green] | [blue][b]C[/b] = 15g[/blue]","[red][b]A[/b] = 20g[/red] | [green][b]B[/b] = 10g[/green] | [blue][b]C[/b] = 15g[/blue]"]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"font":1,"values":[{"template":"array3x2r","result":"011001","t":["A_eq_B","B_eq_C","A_wt_C","B_wt_C","A_lt_B","A_wt_B"]},{"template":"array3x2r","result":"010111","t":["A_lt_C","A_eq_BB","B_eq_C","A_wt_B","B_lt_C","A_wt_C"]}],"exercice":{"value":"Coloriez en [b]jaune[/b], les balances dont la position est [b]compatible[/b] avec les valeurs fournies plus haut."}]]></dct:description>
         <dct:extent>2</dct:extent>
-        <dct:subject>gravity</dct:subject>
-        <dct:educationLevel>1</dct:educationLevel>
+        <dct:subject>measure</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:source>res/img/weight/A_eq_B.svg,res/img/weight/B_eq_C.svg,res/img/weight/A_wt_C.svg,res/img/weight/B_wt_C.svg,res/img/weight/A_lt_B.svg,res/img/weight/A_wt_B.svg,res/img/weight/A_lt_C.svg,res/img/weight/A_eq_BB.svg,res/img/weight/B_eq_C.svg,res/img/weight/A_wt_B.svg,res/img/weight/B_lt_C.svg,res/img/weight/A_wt_C.svg,res/img/background/landscape/redcarpet01.svg</dct:source>
@@ -35,21 +37,23 @@
         <dct:description><![CDATA["background":"res/img/background/landscape/redcarpet01.svg","regexp":{ "from": "([^ ]+)","to":"<div class='icon'><img src=\\\"res/img/weight/$1.svg\\\"/></div>"},"states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"yellow"}]},"wrong":{"style":{"background-color":"red"}},"legend":["[red][b]A[/b] = 20g[/red] | [green][b]B[/b] = 10g[/green] | [blue][b]C[/b] = 30g[/blue]","[red][b]A[/b] = 20g[/red] | [green][b]B[/b] = 10g[/green] | [blue][b]C[/b] = 15g[/blue]"]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"font":1,"values":[{"template":"array3x2r","result":"010011","t":["AA_lt_BC","A_eq_BB","AB_wt_CC","A_lt_B","AA_eq_BC","AB_lt_CC"]},{"template":"array3x2r","result":"101100","t":["AA_wt_BC","AA_lt_C","AB_eq_CC","A_wt_B","AA_lt_BC","AB_wt_CC"]}],"exercice":{"value":"Coloriez en [b]jaune[/b], les balances dont la position est [b]compatible[/b] avec les valeurs fournies plus haut."}]]></dct:description>
         <dct:extent>2</dct:extent>
-        <dct:subject>gravity</dct:subject>
-        <dct:educationLevel>1</dct:educationLevel>
+        <dct:subject>measure</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>a01</dct:alternative>
         <dct:source>res/img/weight/AA_lt_BC.svg,res/img/weight/A_eq_BB.svg,res/img/weight/AB_wt_CC.svg,res/img/weight/A_lt_B.svg,res/img/weight/AA_eq_BC.svg,res/img/weight/AB_lt_CC.svg,res/img/weight/AA_wt_BC.svg,res/img/weight/AA_lt_C.svg,res/img/weight/AB_eq_CC.svg,res/img/weight/A_wt_B.svg,res/img/weight/AA_lt_BC.svg,res/img/weight/AB_wt_CC.svg,res/img/background/landscape/redcarpet01.svg</dct:source>
     </rdf:Description>
 
+	<!-- QUIZZ -->
+	
     <rdf:Description>
         <dct:identifier>b01</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier les propositions exactes relatives à différentes pesées.</dct:title>
         <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","illustration":"res/img/weight/A01.svg","states":{ "nb":2,"style":[{"background-image":"url('res/img/default/icon/check_unchecked01.svg')"},{"background-image":"url('res/img/default/icon/check_checked01.svg')"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"font":1,"values":[{"template":"check5r","result":"01101","t":["A est plus [red]lourd[/red] que B","A est plus [red]léger[/red] que C","C est plus [red]lourd[/red] que A","B est plus [red]léger[/red] que A","A est [red]le plus léger[/red]"]},{"template":"check5r","result":"01001","t":["A est plus [red]lourd[/red] que C","B est plus [red]lourd[/red] que A","B est plus [red]lourd[/red] que C","C est plus [red]lourd[/red] que B","On [red]ne sait pas[/red] qui de B ou de C est le plus lourd"]},{"template":"check5r","result":"00011","t":["A est [red]le plus lourd[/red]","B est [red]le plus lourd[/red]","C est [red]le plus lourd[/red]","A [b]n'est pas[/b] le plus [red]lourd[/red]","B et C [b]ne sont pas[/b] les plus [red]légers[/red]"]}],"exercice":{"value":"Compte tenu de l'illustration ci-contre, [b]validez[/b] les propositions [red]exactes[/red]."}]]></dct:description>
         <dct:extent>2</dct:extent>
-        <dct:subject>gravity</dct:subject>
-        <dct:educationLevel>1</dct:educationLevel>
+        <dct:subject>measure</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>b01</dct:alternative>
         <dct:source>res/img/weight/A01.svg,res/img/background/landscape/yellowboard02.svg</dct:source>
@@ -61,8 +65,8 @@
         <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","illustration":"res/img/weight/A02.svg","states":{ "nb":2,"style":[{"background-image":"url('res/img/default/icon/check_unchecked01.svg')"},{"background-image":"url('res/img/default/icon/check_checked01.svg')"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"font":1,"values":[{"template":"check5r","result":"11011","t":["A est plus [red]léger[/red] que B","B est plus [red]léger[/red] que C","C est plus [red]léger[/red] que B","A est [red]le plus léger[/red]","C est [red]le plus lourd[/red]"]},{"template":"check5r","result":"01011","t":["B est plus [red]lourd[/red] que C","B est plus [red]lourd[/red] que A","A est plus [red]lourd[/red] que B","C est plus [red]lourd[/red] que B","C est plus [red]lourd[/red] que A"]},{"template":"check5r","result":"11111","t":["A est [red]le plus léger[/red]","B n'est [red]ni le plus lourd[/red], [red]ni le plus léger[/red].","C est [red]le plus lourd[/red]","A [b]n'est pas[/b] le plus [red]lourd[/red]","B et C [b]ne sont pas[/b] les plus [red]légers[/red]"]}],"exercice":{"value":"Compte tenu de l'illustration ci-contre, [b]validez[/b] les propositions [red]exactes[/red]."}]]></dct:description>
         <dct:extent>2</dct:extent>
-        <dct:subject>gravity</dct:subject>
-        <dct:educationLevel>1</dct:educationLevel>
+        <dct:subject>measure</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>b01</dct:alternative>
         <dct:source>res/img/weight/A02.svg,res/img/background/landscape/yellowboard02.svg</dct:source>
@@ -74,13 +78,26 @@
         <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","illustration":"res/img/weight/A03.svg","states":{ "nb":2,"style":[{"background-image":"url('res/img/default/icon/check_unchecked01.svg')"},{"background-image":"url('res/img/default/icon/check_checked01.svg')"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"font":1,"values":[{"template":"check5r","result":"10011","t":["A est plus [red]léger[/red] que B","B est plus [red]léger[/red] que C","C est plus [red]léger[/red] que B","B et C ont [red]le même poids[/red]","A est [red]le plus léger[/red]"]},{"template":"check5r","result":"01101","t":["A est plus [red]lourd[/red] que C","A est plus [red]léger[/red] que C","B [b]n'est pas[/b] [red]le plus léger[/red]","C est [red]le plus léger[/red]","C est plus [red]lourd[/red] que A"]},{"template":"check5r","result":"01111","t":["A et B ont le [red]même poids[/red]","B est [red]le plus lourd[/red]","C est [b]également[/b] [red]le plus lourd[/red]","A et C [b]n'ont pas[/b] le [red]même poids[/red]","B [b]n'est pas[/b] [red]plus lourd[/red] que C"]}],"exercice":{"value":"Compte tenu de l'illustration ci-contre, [b]validez[/b] les propositions [red]exactes[/red]."}]]></dct:description>
         <dct:extent>2</dct:extent>
-        <dct:subject>gravity</dct:subject>
-        <dct:educationLevel>1</dct:educationLevel>
+        <dct:subject>measure</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>b01</dct:alternative>
         <dct:source>res/img/weight/A03.svg,res/img/background/landscape/yellowboard02.svg</dct:source>
     </rdf:Description>
 
+	<!-- CHECK -->
 
-
+    <rdf:Description>
+        <dct:identifier>c01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Barrer les phrases abérrantes du point de vue de la masse mise en jeu.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/bluecarpet01.svg","states":{"nb":2,"style":[{"background-color":"white"},{"background-color":"#222"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"values":[{"template":"array1x5","result":"10100","t":["Un éléphant peut peser 3 grammes.","Il y a 1000 grammes dans 1 kilogramme.","Un litre d'eau pèse 100 kilogrammes.","Un litre d'eau pèse 1 kilogramme.","Un camion pèse plus de 1000kg."]},{"template":"array1x5","result":"01110","t":["Un oeuf de poule pèse environ 50g.","1 gramme est plus lourd qu'1 kilogramme.","Un stylo pèse plusieurs kilogrammes.","Une personne adulte peut peser 25g.","Une personne adulte peut peser 70kg."]}],"exercice":"[b]Barrez[/b] les phrases [b]fausses[/b]."]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>measure</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>c01</dct:alternative>
+		<dct:source>res/img/background/landscape/bluecarpet01.svg</dct:source>
+    </rdf:Description>
+	
 </rdf:RDF>

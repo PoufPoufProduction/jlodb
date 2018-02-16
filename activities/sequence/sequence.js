@@ -174,9 +174,9 @@
                 if (!settings.gen) {
                     var cpt = 0;
                     for (var i=0; i<settings.values.length; i++) { vValueArray.push(settings.values[i]); }
-                    if (settings.shuffle) { vValueArray.sort(function(){return Math.random()-0.5; }); }
+                    if (settings.shuffle) { for (var i=0;i<50;i++) { vValueArray.sort(function(){return (Math.random()>0.5); }); } }
                     for (var i=0; i<settings.number-settings.values.length; i++) { vValueArray.push(vValueArray[i%settings.values.length]); }
-                    if (settings.shuffle) { vValueArray.sort(function(){return Math.random()-0.5; }); }
+                    if (settings.shuffle) { for (var i=0;i<50;i++) { vValueArray.sort(function(){return (Math.random()>0.5); }); } }
                 }
 
                 for (var i=0; i<settings.number; i++) {
@@ -355,6 +355,7 @@
             var settings = helpers.settings($this);
             clearTimeout(settings.keypadtimer);
             settings.keypadtimer=0;
+			settings.response.value="";
             helpers.check($this,true);
         },
         // Check the user entry
@@ -365,19 +366,22 @@
             if (settings.interactive) {
 
                 // Check the response
-                if ($.isArray(settings.questions[settings.it].response)) {
-                  for (var i in settings.questions[settings.it].response) {
-                    if ((!settings.strict&&settings.questions[settings.it].response[i]==settings.response.value) ||
-                         (settings.strict&&settings.questions[settings.it].response[i].toString()==settings.response.value.toString()))
-                    {
-                      vRet = true;
-                    }
-                  }
-                }
-                else {
-                    vRet=((!settings.strict && settings.questions[settings.it].response == settings.response.value) ||
-                          ( settings.strict && settings.questions[settings.it].response.toString()==settings.response.value.toString()));
-                }
+				if (settings.response.value.toString().length)
+				{
+					if ($.isArray(settings.questions[settings.it].response)) {
+					  for (var i in settings.questions[settings.it].response) {
+						if ((!settings.strict&&settings.questions[settings.it].response[i]==settings.response.value) ||
+							 (settings.strict&&settings.questions[settings.it].response[i].toString()==settings.response.value.toString()))
+						{
+						  vRet = true;
+						}
+					  }
+					}
+					else {
+						vRet=((!settings.strict && settings.questions[settings.it].response == settings.response.value) ||
+							  ( settings.strict && settings.questions[settings.it].response.toString()==settings.response.value.toString()));
+					}
+				}
 
                 if (vRet || force) {
 

@@ -3,6 +3,8 @@
          xmlns:dct="http://purl.org/dc/terms/">
 
 
+	<!-- BALANCE -->
+		 
     <rdf:Description>
         <dct:identifier>b201</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver parmi 2 objets et sans contrainte de temps, l'objet le plus lourd grâce aux pesées proposées.</dct:title>
@@ -111,6 +113,34 @@
         <dct:type>3</dct:type>
         <dct:alternative>b201</dct:alternative>
         <dct:source>res/img/weight/</dct:source>
+    </rdf:Description>
+	
+	<!-- unity -->
+	
+    <rdf:Description>
+        <dct:identifier>u1</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver l'unité la plus adaptée pour effectuer une pesée [g,kg].</dct:title>
+        <dct:description><![CDATA["number":"15","template":"template.html","input":{"attr":[5,3,1.2],"digit":1,"speed":0,"values":[["g","g"],["kg","k"]]},"time":0,"regexp":{"input": { "from": "(.+)","to":"<div class='icon' style='margin:0 0.5em;'><img src='ext/noto/svg/emoji_u$1.svg'/></div>"}},"values":[["1f3b2","g"],["1f6f5","k"],["1f9e2","g"],["1f9e6","g"],["1f40c","g"],["1f36d","g"],["1f40e","k"],["1f58d","g"],["1f69a","k"],["1f95a","g"],["1f404","k"],["1f416","k"],["1f697","k"],["1f4ce","g"],["1f4cf","g"],["1f4cc","g"],["1f682","k"],["1f400","g"],["1f98b","g"],["1f41b","g"],["1f42a","k"],["1f40f","k"]],"class":"neg alpha","font":4]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[red]1 kilogramme (kg) = 1 000 grammes (g)[/red][br]Quelle unité est la plus [b]adaptée[/b] pour peser les objets suivant ?"]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>gravity</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>u1</dct:alternative>
+        <dct:source>ext/noto/svg/emoji_u1f3b2.svg,ext/noto/svg/emoji_u1f6f5.svg,ext/noto/svg/emoji_u1f9e2.svg,ext/noto/svg/emoji_u1f9e6.svg,ext/noto/svg/emoji_u1f40c.svg,ext/noto/svg/emoji_u1f36d.svg,ext/noto/svg/emoji_u1f40e.svg,ext/noto/svg/emoji_u1f58d.svg,ext/noto/svg/emoji_u1f69a.svg,ext/noto/svg/emoji_u1f95a.svg,ext/noto/svg/emoji_u1f404.svg,ext/noto/svg/emoji_u1f416.svg,ext/noto/svg/emoji_u1f697.svg,ext/noto/svg/emoji_u1f4ce.svg,ext/noto/svg/emoji_u1f4cf.svg,ext/noto/svg/emoji_u1f4cc.svg,ext/noto/svg/emoji_u1f682.svg,ext/noto/svg/emoji_u1f400.svg,ext/noto/svg/emoji_u1f98b.svg,ext/noto/svg/emoji_u1f41b.svg,ext/noto/svg/emoji_u1f42a.svg,ext/noto/svg/emoji_u1f40f.svg</dct:source>
+    </rdf:Description>
+
+	<rdf:Description>
+        <dct:identifier>ua</dct:identifier>
+        <dct:title xml:lang="fr-FR">Vérifier le réalisme des grandeurs proposées [g,kg].</dct:title>
+        <dct:description><![CDATA["number":15,"time":0,"regexp":{"output":"\\\\.\\\\.\\\\.","input": { "from": "(.+) (.+)","to":"<div class='icon' style='font-size:3.6em;float:none;margin:0 auto;'><img src='ext/noto/svg/emoji_u$1.svg'/></div><div style='font-size:2em;'>$2</div>"}},"template":"template.html","input":{"attr":[5,3,1.2],"digit":1,"speed":0,"values":[["oui","o"],["non","n"]]},"values":[["1f3b8 90kg","n"],["1f3cd 25g","n"],["1f4a1 40g","o"],["1f4a9 50kg","n"],["1f4bb 2kg","o"],["1f4ce 2g","o"],["1f4cf 30g","o"],["1f4f1 300kg","n"],["1f6b2 8kg","o"],["1f6f5 60kg","o"],["1f34e 2g","n"],["1f35e 200g","o"],["1f40c 15kg","n"],["1f41b 3g","o"],["1f41c 1kg","n"],["1f69c 800g","n"],["1f95a 50g","o"],["1f404 800kg","o"],["1f408 1g","n"],["1f418 5kg","n"],["1f697 1000kg","o"],["1f692 30kg","n"],["1f695 800g","n"],["270f 10g","o"]],"class":"neg alpha h60","font":0.6]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"La masse proposée est-elle [b]réaliste[/b] ?"]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>gravity</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:alternative>ua</dct:alternative>
+        <dct:source>ext/noto/svg/emoji_u1f3b8.svg,ext/noto/svg/emoji_u1f3cd.svg,ext/noto/svg/emoji_u1f4a1.svg,ext/noto/svg/emoji_u1f4a9.svg,ext/noto/svg/emoji_u1f4bb.svg,ext/noto/svg/emoji_u1f4ce.svg,ext/noto/svg/emoji_u1f4cf.svg,ext/noto/svg/emoji_u1f4f1.svg,ext/noto/svg/emoji_u1f6b2.svg,ext/noto/svg/emoji_u1f6f5.svg,ext/noto/svg/emoji_u1f34e.svg,ext/noto/svg/emoji_u1f35e.svg,ext/noto/svg/emoji_u1f40c.svg,ext/noto/svg/emoji_u1f41b.svg,ext/noto/svg/emoji_u1f41c.svg,ext/noto/svg/emoji_u1f69c.svg,ext/noto/svg/emoji_u1f95a.svg,ext/noto/svg/emoji_u1f404.svg,ext/noto/svg/emoji_u1f408.svg,ext/noto/svg/emoji_u1f418.svg,ext/noto/svg/emoji_u1f697.svg,ext/noto/svg/emoji_u1f692.svg,ext/noto/svg/emoji_u1f695.svg,ext/noto/svg/emoji_u270f.svg</dct:source>
     </rdf:Description>
 
 </rdf:RDF>
