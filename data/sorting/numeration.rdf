@@ -98,7 +98,7 @@
     <rdf:Description>
         <dct:identifier>p45</dct:identifier>
         <dct:title xml:lang="fr-FR">Dénombrer suivant un critère de sélection (de 1 à 5)</dct:title>
-        <dct:description><![CDATA["class":"h12","regexp":{"response":{ "from": "([^ ]+)([ ]*)","to":"<div class=\\\"char\\\"><img src=\\\"res/img/svginventoryicons/potion/$1.svg\\\"/></div>"}},"values":[["1","red01 yellow03 purple03 blue04 green02"],["2","red03 red01 red04 blue02 blue02"],["3","blue02 blue03 blue01 purple01 white04"],["4","blue01 blue02 blue02 blue04 red01"],["5","blue04 blue04 blue04 blue04 blue04"]],"nbvalues":4,"number":4,"font":1.9,"len":2]]></dct:description>
+        <dct:description><![CDATA["class":"h12","regexp":{"response":{ "from": "([^ ]+)([ ]*)","to":"<div class=\\\"char\\\"><img src=\\\"res/img/svginventoryicons/potion/$1.svg\\\"/></div>"}},"values":[["1","red01 yellow03 purple03 blue04 green02"],["2","red03 red01 red04 blue02 blue02"],["3","blue02 blue03 blue01 purple01 white04"],["4","blue01 blue02 blue02 blue04 red01"],["5","blue04 blue04 blue04 blue04 blue04"]],"nbvalues":4,"number":3,"font":1.8,"len":2]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"fontex":0.5,"exercice":"Quel est le nombre de potions <span style='color:blue;'>BLEUES</span> ?"]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -112,7 +112,7 @@
     <rdf:Description>
         <dct:identifier>s33</dct:identifier>
         <dct:title xml:lang="fr-FR">Compter les étoiles (de 1 à 3)</dct:title>
-        <dct:description><![CDATA["class":"h12","regexp":{"response":{ "from": "([1-9])([ ]*)","to":"<div class=\\\"char\\\"><img src=\\\"res/img/numbers/star/starr$1.svg\\\"/></div>"}},"gen":"function($this,settings,i){var ret=\\\"\\\", b=i+1; do { var a = Math.floor(Math.random()*b)+1; ret+=a; b-=a;}while(b>0); return [(i+1).toString(),ret];}","nbvalues":3,"number":4,"font":2.5]]></dct:description>
+        <dct:description><![CDATA["class":"h12","regexp":{"response":{ "from": "([1-9])([ ]*)","to":"<div class=\\\"char\\\"><img src=\\\"res/img/numbers/star/starr$1.svg\\\"/></div>"}},"gen":"function($this,settings,i){var ret=\\\"\\\", b=i+1; do { var a = Math.floor(Math.random()*b)+1; ret+=a; b-=a;}while(b>0); return [(i+1).toString(),ret];}","nbvalues":3,"number":3,"font":2.5]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
@@ -124,7 +124,7 @@
     <rdf:Description>
         <dct:identifier>s44</dct:identifier>
         <dct:title xml:lang="fr-FR">Compter les étoiles (de 1 à 4)</dct:title>
-        <dct:description><![CDATA["class":"h12","regexp":{"response":{ "from": "([1-9])([ ]*)","to":"<div class=\\\"char\\\"><img src=\\\"res/img/numbers/star/starr$1.svg\\\"/></div>"}},"gen":"function($this,settings,i){var ret=\\\"\\\", b=i+1; do { var a = Math.floor(Math.random()*b)+1; ret+=a; b-=a;}while(b>0); return [(i+1).toString(),ret];}","nbvalues":4,"number":4,"font":2]]></dct:description>
+        <dct:description><![CDATA["class":"h12","regexp":{"response":{ "from": "([1-9])([ ]*)","to":"<div class=\\\"char\\\"><img src=\\\"res/img/numbers/star/starr$1.svg\\\"/></div>"}},"gen":"function($this,settings,i){var ret=\\\"\\\", b=i+1; do { var a = Math.floor(Math.random()*b)+1; ret+=a; b-=a;}while(b>0); return [(i+1).toString(),ret];}","nbvalues":4,"number":3,"font":1.8]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
@@ -137,7 +137,7 @@
     <rdf:Description>
         <dct:identifier>s55</dct:identifier>
         <dct:title xml:lang="fr-FR">Compter les étoiles (de 1 à 5)</dct:title>
-        <dct:description><![CDATA["class":"h12","regexp":{"response":{ "from": "([1-9])([ ]*)","to":"<div class=\\\"char\\\"><img src=\\\"res/img/numbers/star/starr$1.svg\\\"/></div>"}},"gen":"function($this,settings,i){var ret=\\\"\\\", b=i+1; do { var a = Math.floor(Math.random()*b)+1; ret+=a; b-=a;}while(b>0); return [(i+1).toString(),ret];}","nbvalues":5,"number":4,"font":1.7]]></dct:description>
+        <dct:description><![CDATA["class":"h12","regexp":{"response":{ "from": "([1-9])([ ]*)","to":"<div class=\\\"char\\\"><img src=\\\"res/img/numbers/star/starr$1.svg\\\"/></div>"}},"gen":"function($this,settings,i){var ret=\\\"\\\", b=i+1; do { var a = Math.floor(Math.random()*b)+1; ret+=a; b-=a;}while(b>0); return [(i+1).toString(),ret];}","nbvalues":5,"number":3,"font":1.5]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
@@ -150,7 +150,7 @@
     <rdf:Description>
         <dct:identifier>s45</dct:identifier>
         <dct:title xml:lang="fr-FR">Compter les étoiles (de 1 à 5)</dct:title>
-        <dct:description><![CDATA["class":"h12","regexp":{"response":{ "from": "([1-9])([ ]*)","to":"<div class=\\\"char\\\"><img src=\\\"res/img/numbers/star/starr$1.svg\\\"/></div>"}},"values":[["1","1"],["2","1 1"],["2","2"],["3","3"],["3","1 2"],["3","2 1"],["3","1 1 1"],["4","1 1 1 1"],["4","2 1 1"],["4","1 2 1"],["4","1 1 2"],["4","3 1"],["4","2 2"],["4","1 3"],["4","4"],["5","1 1 1 1 1"],["5","2 1 1 1"],["5","1 2 1 1"],["5","1 1 2 1"],["5","1 1 1 2"],["5","3 1 1"],["5","2 2 1"],["5","1 3 1"],["5","1 2 2"],["5","1 1 3"],["5","2 1 2"],["5","1 4"],["5","2 3"],["5","3 2"],["5","4 1"],["5","5"]],"nbvalues":4,"number":4,"font":2]]></dct:description>
+        <dct:description><![CDATA["class":"h12","regexp":{"response":{ "from": "([1-9])([ ]*)","to":"<div class=\\\"char\\\"><img src=\\\"res/img/numbers/star/starr$1.svg\\\"/></div>"}},"values":[["1","1"],["2","1 1"],["2","2"],["3","3"],["3","1 2"],["3","2 1"],["3","1 1 1"],["4","1 1 1 1"],["4","2 1 1"],["4","1 2 1"],["4","1 1 2"],["4","3 1"],["4","2 2"],["4","1 3"],["4","4"],["5","1 1 1 1 1"],["5","2 1 1 1"],["5","1 2 1 1"],["5","1 1 2 1"],["5","1 1 1 2"],["5","3 1 1"],["5","2 2 1"],["5","1 3 1"],["5","1 2 2"],["5","1 1 3"],["5","2 1 2"],["5","1 4"],["5","2 3"],["5","3 2"],["5","4 1"],["5","5"]],"nbvalues":4,"number":3,"font":1.8]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
@@ -163,7 +163,7 @@
     <rdf:Description>
         <dct:identifier>s46</dct:identifier>
         <dct:title xml:lang="fr-FR">Compter les étoiles (de 1 à 6)</dct:title>
-        <dct:description><![CDATA["class":"h12","regexp":{"response":{ "from": "([1-9])([ ]*)","to":"<div class=\\\"char\\\"><img src=\\\"res/img/numbers/star/starr$1.svg\\\"/></div>"}},"values":[["1","1"],["2","1 1"],["2","2"],["3","3"],["3","1 2"],["3","2 1"],["3","1 1 1"],["4","1 1 1 1"],["4","2 1 1"],["4","1 2 1"],["4","1 1 2"],["4","3 1"],["4","2 2"],["4","1 3"],["4","4"],["5","1 1 1 1 1"],["5","2 1 1 1"],["5","1 2 1 1"],["5","1 1 2 1"],["5","1 1 1 2"],["5","3 1 1"],["5","2 2 1"],["5","1 3 1"],["5","1 2 2"],["5","1 1 3"],["5","2 1 2"],["5","1 4"],["5","2 3"],["5","3 2"],["5","4 1"],["5","5"],["6","2 1 1 1 1"],["6","1 2 1 1 1"],["6","1 1 2 1 1"],["6","1 1 1 2 1"],["6","1 1 1 1 2"],["6","2 2 1 1"],["6","2 1 2 1"],["6","2 1 1 2"],["6","1 2 2 1"],["6","1 2 1 2"],["6","1 1 2 2"],["6","3 1 1 1"],["6","1 3 1 1"],["6","1 1 3 1"],["6","1 1 1 3"],["6","5 1"],["6","4 2"],["6","3 3"],["6","2 4"],["6","1 5"]],"nbvalues":4,"number":4,"font":1.8]]></dct:description>
+        <dct:description><![CDATA["class":"h12","regexp":{"response":{ "from": "([1-9])([ ]*)","to":"<div class=\\\"char\\\"><img src=\\\"res/img/numbers/star/starr$1.svg\\\"/></div>"}},"values":[["1","1"],["2","1 1"],["2","2"],["3","3"],["3","1 2"],["3","2 1"],["3","1 1 1"],["4","1 1 1 1"],["4","2 1 1"],["4","1 2 1"],["4","1 1 2"],["4","3 1"],["4","2 2"],["4","1 3"],["4","4"],["5","1 1 1 1 1"],["5","2 1 1 1"],["5","1 2 1 1"],["5","1 1 2 1"],["5","1 1 1 2"],["5","3 1 1"],["5","2 2 1"],["5","1 3 1"],["5","1 2 2"],["5","1 1 3"],["5","2 1 2"],["5","1 4"],["5","2 3"],["5","3 2"],["5","4 1"],["5","5"],["6","2 1 1 1 1"],["6","1 2 1 1 1"],["6","1 1 2 1 1"],["6","1 1 1 2 1"],["6","1 1 1 1 2"],["6","2 2 1 1"],["6","2 1 2 1"],["6","2 1 1 2"],["6","1 2 2 1"],["6","1 2 1 2"],["6","1 1 2 2"],["6","3 1 1 1"],["6","1 3 1 1"],["6","1 1 3 1"],["6","1 1 1 3"],["6","5 1"],["6","4 2"],["6","3 3"],["6","2 4"],["6","1 5"]],"nbvalues":4,"number":3,"font":1.8]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
@@ -289,7 +289,7 @@
     <rdf:Description>
         <dct:identifier>e100</dct:identifier>
         <dct:title xml:lang="fr-FR">Compter les boîtes de 1 à 100.</dct:title>
-        <dct:description><![CDATA["class":"h12","regexp":{"response":{ "from": "([0-9]+)","to":"<div class=\\\"char\\\"><img src=\\\"res/img/numbers/box/box$1.svg\\\"/></div>"}},"gen":"function($this,settings,i){var ret=[], box=['100','50','40','30','20','10','09','08','07','06','05','04','03','02','01'], a = Math.floor(Math.random()*100)+1, b=a, ii=0; do { if (box[ii]<=b) {ret.push(box[ii]); b=b-box[ii];} else {ii++;} } while(b>0); return [a,ret.join(\\\" \\\")];}","nbvalues":5,"number":4,"font":1.5,"len":3]]></dct:description>
+        <dct:description><![CDATA["class":"h12","regexp":{"response":{ "from": "([0-9]+)","to":"<div class=\\\"char\\\"><img src=\\\"res/img/numbers/box/box$1.svg\\\"/></div>"}},"gen":"function($this,settings,i){var ret=[], box=['100','50','40','30','20','10','09','08','07','06','05','04','03','02','01'], a = Math.floor(Math.random()*100)+1, b=a, ii=0; do { if (box[ii]<=b) {ret.push(box[ii]); b=b-box[ii];} else {ii++;} } while(b>0); return [a,ret.join(\\\" \\\")];}","nbvalues":5,"number":3,"font":1.5,"len":3]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
@@ -317,7 +317,7 @@
     <rdf:Description>
         <dct:identifier>e300</dct:identifier>
         <dct:title xml:lang="fr-FR">Compter les boîtes de 1 à 300.</dct:title>
-        <dct:description><![CDATA["class":"h12","regexp":{"response":{ "from": "([0-9]+)","to":"<div class=\\\"char\\\"><img src=\\\"res/img/numbers/box/box$1.svg\\\"/></div>"}},"gen":"function($this,settings,i){var ret=[], box=['100','50','40','30','20','10','09','08','07','06','05','04','03','02','01'], a = Math.floor(Math.random()*300)+1, b=a, ii=0; do { if (box[ii]<=b) {ret.push(box[ii]); b=b-box[ii];} else {ii++;} } while(b>0); return [a,ret.join(\\\" \\\")];}","nbvalues":5,"number":4,"font":1.5,"len":3]]></dct:description>
+        <dct:description><![CDATA["class":"h12","regexp":{"response":{ "from": "([0-9]+)","to":"<div class=\\\"char\\\"><img src=\\\"res/img/numbers/box/box$1.svg\\\"/></div>"}},"gen":"function($this,settings,i){var ret=[], box=['100','50','40','30','20','10','09','08','07','06','05','04','03','02','01'], a = Math.floor(Math.random()*300)+1, b=a, ii=0; do { if (box[ii]<=b) {ret.push(box[ii]); b=b-box[ii];} else {ii++;} } while(b>0); return [a,ret.join(\\\" \\\")];}","nbvalues":5,"number":3,"font":1.5,"len":3]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>

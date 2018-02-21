@@ -8,7 +8,11 @@
         svg#grid6x6 #paths                { opacity:0.5; }
         svg#grid6x6 .t                    { font-size:25px;font-weight:bold;text-align:center;opacity:0.8;
                                             text-anchor:middle;fill:black; }
-        svg#grid6x6 #largetext .t         { font-size:60px; }
+        svg#grid6x6 #text .t              { font-size:60px; }
+		svg#grid6x6.small #text .t        { font-size:20px; }
+		
+        svg#grid6x6 #tips           { opacity:0.7; }
+        svg#grid6x6 #tips line      { fill:none; stroke:yellow; stroke-width:5; stroke-linecap:round; }
         
     </style>
 </defs>
@@ -23,11 +27,46 @@
         <rect x="470" y="20" width="60" height="60" class="b"/><rect x="475" y="25" width="50" height="50" class="f"/>
         <rect x="530" y="20" width="60" height="60" class="b"/><rect x="535" y="25" width="50" height="50" class="f"/>
     </g>
-    <use transform="translate(0,60)" xlink:href="#line" />
-    <use transform="translate(0,120)" xlink:href="#line" />
-    <use transform="translate(0,180)" xlink:href="#line" />
-    <use transform="translate(0,240)" xlink:href="#line" />
-    <use transform="translate(0,300)" xlink:href="#line" />
+    <g id="line" transform="translate(0,60)">
+        <rect x="230" y="20" width="60" height="60" class="b"/><rect x="235" y="25" width="50" height="50" class="f"/>
+        <rect x="290" y="20" width="60" height="60" class="b"/><rect x="295" y="25" width="50" height="50" class="f"/>
+        <rect x="350" y="20" width="60" height="60" class="b"/><rect x="355" y="25" width="50" height="50" class="f"/>
+        <rect x="410" y="20" width="60" height="60" class="b"/><rect x="415" y="25" width="50" height="50" class="f"/>
+        <rect x="470" y="20" width="60" height="60" class="b"/><rect x="475" y="25" width="50" height="50" class="f"/>
+        <rect x="530" y="20" width="60" height="60" class="b"/><rect x="535" y="25" width="50" height="50" class="f"/>
+    </g>
+    <g id="line" transform="translate(0,120)">
+        <rect x="230" y="20" width="60" height="60" class="b"/><rect x="235" y="25" width="50" height="50" class="f"/>
+        <rect x="290" y="20" width="60" height="60" class="b"/><rect x="295" y="25" width="50" height="50" class="f"/>
+        <rect x="350" y="20" width="60" height="60" class="b"/><rect x="355" y="25" width="50" height="50" class="f"/>
+        <rect x="410" y="20" width="60" height="60" class="b"/><rect x="415" y="25" width="50" height="50" class="f"/>
+        <rect x="470" y="20" width="60" height="60" class="b"/><rect x="475" y="25" width="50" height="50" class="f"/>
+        <rect x="530" y="20" width="60" height="60" class="b"/><rect x="535" y="25" width="50" height="50" class="f"/>
+    </g>
+    <g id="line" transform="translate(0,180)">
+        <rect x="230" y="20" width="60" height="60" class="b"/><rect x="235" y="25" width="50" height="50" class="f"/>
+        <rect x="290" y="20" width="60" height="60" class="b"/><rect x="295" y="25" width="50" height="50" class="f"/>
+        <rect x="350" y="20" width="60" height="60" class="b"/><rect x="355" y="25" width="50" height="50" class="f"/>
+        <rect x="410" y="20" width="60" height="60" class="b"/><rect x="415" y="25" width="50" height="50" class="f"/>
+        <rect x="470" y="20" width="60" height="60" class="b"/><rect x="475" y="25" width="50" height="50" class="f"/>
+        <rect x="530" y="20" width="60" height="60" class="b"/><rect x="535" y="25" width="50" height="50" class="f"/>
+    </g>
+    <g id="line" transform="translate(0,240)">
+        <rect x="230" y="20" width="60" height="60" class="b"/><rect x="235" y="25" width="50" height="50" class="f"/>
+        <rect x="290" y="20" width="60" height="60" class="b"/><rect x="295" y="25" width="50" height="50" class="f"/>
+        <rect x="350" y="20" width="60" height="60" class="b"/><rect x="355" y="25" width="50" height="50" class="f"/>
+        <rect x="410" y="20" width="60" height="60" class="b"/><rect x="415" y="25" width="50" height="50" class="f"/>
+        <rect x="470" y="20" width="60" height="60" class="b"/><rect x="475" y="25" width="50" height="50" class="f"/>
+        <rect x="530" y="20" width="60" height="60" class="b"/><rect x="535" y="25" width="50" height="50" class="f"/>
+    </g>
+    <g id="line" transform="translate(0,300)">
+        <rect x="230" y="20" width="60" height="60" class="b"/><rect x="235" y="25" width="50" height="50" class="f"/>
+        <rect x="290" y="20" width="60" height="60" class="b"/><rect x="295" y="25" width="50" height="50" class="f"/>
+        <rect x="350" y="20" width="60" height="60" class="b"/><rect x="355" y="25" width="50" height="50" class="f"/>
+        <rect x="410" y="20" width="60" height="60" class="b"/><rect x="415" y="25" width="50" height="50" class="f"/>
+        <rect x="470" y="20" width="60" height="60" class="b"/><rect x="475" y="25" width="50" height="50" class="f"/>
+        <rect x="530" y="20" width="60" height="60" class="b"/><rect x="535" y="25" width="50" height="50" class="f"/>
+    </g>
     
     
     <g id="grid">
@@ -80,44 +119,45 @@
 <use transform="translate(240,300)" xlink:href="#pp" />
 <use transform="translate(300,300)" xlink:href="#pp" />
 </g>
-<g id="largetext">
-    <text class="t" x="260" y="70" xml:space="preserve"></text>
-    <text class="t" x="320" y="70" xml:space="preserve"></text>
-    <text class="t" x="380" y="70" xml:space="preserve"></text>
-    <text class="t" x="440" y="70" xml:space="preserve"></text>
-    <text class="t" x="500" y="70" xml:space="preserve"></text>
-    <text class="t" x="560" y="70" xml:space="preserve"></text>
-    <text class="t" x="260" y="130" xml:space="preserve"></text>
-    <text class="t" x="320" y="130" xml:space="preserve"></text>
-    <text class="t" x="380" y="130" xml:space="preserve"></text>
-    <text class="t" x="440" y="130" xml:space="preserve"></text>
-    <text class="t" x="500" y="130" xml:space="preserve"></text>
-    <text class="t" x="560" y="130" xml:space="preserve"></text>
-    <text class="t" x="260" y="190" xml:space="preserve"></text>
-    <text class="t" x="320" y="190" xml:space="preserve"></text>
-    <text class="t" x="380" y="190" xml:space="preserve"></text>
-    <text class="t" x="440" y="190" xml:space="preserve"></text>
-    <text class="t" x="500" y="190" xml:space="preserve"></text>
-    <text class="t" x="560" y="190" xml:space="preserve"></text>
-    <text class="t" x="260" y="250" xml:space="preserve"></text>
-    <text class="t" x="320" y="250" xml:space="preserve"></text>
-    <text class="t" x="380" y="250" xml:space="preserve"></text>
-    <text class="t" x="440" y="250" xml:space="preserve"></text>
-    <text class="t" x="500" y="250" xml:space="preserve"></text>
-    <text class="t" x="560" y="250" xml:space="preserve"></text>
-    <text class="t" x="260" y="310" xml:space="preserve"></text>
-    <text class="t" x="320" y="310" xml:space="preserve"></text>
-    <text class="t" x="380" y="310" xml:space="preserve"></text>
-    <text class="t" x="440" y="310" xml:space="preserve"></text>
-    <text class="t" x="500" y="310" xml:space="preserve"></text>
-    <text class="t" x="560" y="310" xml:space="preserve"></text>
-    <text class="t" x="260" y="370" xml:space="preserve"></text>
-    <text class="t" x="320" y="370" xml:space="preserve"></text>
-    <text class="t" x="380" y="370" xml:space="preserve"></text>
-    <text class="t" x="440" y="370" xml:space="preserve"></text>
-    <text class="t" x="500" y="370" xml:space="preserve"></text>
-    <text class="t" x="560" y="370" xml:space="preserve"></text>
+<g id="text">
+    <text id="0" class="t" x="260" y="70" xml:space="preserve"></text>
+    <text id="1" class="t" x="320" y="70" xml:space="preserve"></text>
+    <text id="2" class="t" x="380" y="70" xml:space="preserve"></text>
+    <text id="3" class="t" x="440" y="70" xml:space="preserve"></text>
+    <text id="4" class="t" x="500" y="70" xml:space="preserve"></text>
+    <text id="5" class="t" x="560" y="70" xml:space="preserve"></text>
+    <text id="6" class="t" x="260" y="130" xml:space="preserve"></text>
+    <text id="7" class="t" x="320" y="130" xml:space="preserve"></text>
+    <text id="8" class="t" x="380" y="130" xml:space="preserve"></text>
+    <text id="9" class="t" x="440" y="130" xml:space="preserve"></text>
+    <text id="10" class="t" x="500" y="130" xml:space="preserve"></text>
+    <text id="11" class="t" x="560" y="130" xml:space="preserve"></text>
+    <text id="12" class="t" x="260" y="190" xml:space="preserve"></text>
+    <text id="13" class="t" x="320" y="190" xml:space="preserve"></text>
+    <text id="14" class="t" x="380" y="190" xml:space="preserve"></text>
+    <text id="15" class="t" x="440" y="190" xml:space="preserve"></text>
+    <text id="16" class="t" x="500" y="190" xml:space="preserve"></text>
+    <text id="17" class="t" x="560" y="190" xml:space="preserve"></text>
+    <text id="18" class="t" x="260" y="250" xml:space="preserve"></text>
+    <text id="19" class="t" x="320" y="250" xml:space="preserve"></text>
+    <text id="20" class="t" x="380" y="250" xml:space="preserve"></text>
+    <text id="21" class="t" x="440" y="250" xml:space="preserve"></text>
+    <text id="22" class="t" x="500" y="250" xml:space="preserve"></text>
+    <text id="23" class="t" x="560" y="250" xml:space="preserve"></text>
+    <text id="24" class="t" x="260" y="310" xml:space="preserve"></text>
+    <text id="25" class="t" x="320" y="310" xml:space="preserve"></text>
+    <text id="26" class="t" x="380" y="310" xml:space="preserve"></text>
+    <text id="27" class="t" x="440" y="310" xml:space="preserve"></text>
+    <text id="28" class="t" x="500" y="310" xml:space="preserve"></text>
+    <text id="29" class="t" x="560" y="310" xml:space="preserve"></text>
+    <text id="30" class="t" x="260" y="370" xml:space="preserve"></text>
+    <text id="31" class="t" x="320" y="370" xml:space="preserve"></text>
+    <text id="32" class="t" x="380" y="370" xml:space="preserve"></text>
+    <text id="33" class="t" x="440" y="370" xml:space="preserve"></text>
+    <text id="34" class="t" x="500" y="370" xml:space="preserve"></text>
+    <text id="35" class="t" x="560" y="370" xml:space="preserve"></text>
 </g>
+<g id="tips"></g>
 <g id="paths"></g>
 <g id="c0" style="cursor:move;">
     <rect x="-25" y="-25" width="50" height="50" style="fill:white;fill-opacity:0.2;stroke:red;stroke-width:5;"/>
