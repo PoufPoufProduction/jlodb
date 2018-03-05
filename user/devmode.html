@@ -1,12 +1,15 @@
 <div>
-<input type="password" name="devmode"
-    onmousedown="$(this).focus();event.stopPropagation();"
-    ontouchstart="$(this).focus();event.stopPropagation();event.preventDefault();"/>
+<form action="javascript:user.devmode(true)">
+	<input value="jlodb edition password" style="display:none;"/>
+	<input type="password" name="devmode"
+		onmousedown="$(this).focus();event.stopPropagation();"
+		ontouchstart="$(this).focus();event.stopPropagation();event.preventDefault();"/>
 
-<div class="icon" onmousedown="user.devmode(true);event.stopPropagation();"
-                  ontouchstart="user.devmode(true);event.stopPropagation();event.preventDefault();">
-    <img src="user/res/img/valid.svg"/>
-</div>
-
+	<div class="icon" onmousedown="$(this).parent().submit();event.stopPropagation();"
+					  ontouchstart="$(this).parent().submit();event.stopPropagation();event.preventDefault();">
+		<img src="user/res/img/valid.svg"/>
+	</div>
+	<input type="submit" style="display:none;"/>
+</form>
 </div>
 

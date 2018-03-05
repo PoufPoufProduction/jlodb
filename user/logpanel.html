@@ -1,4 +1,7 @@
 <div><div>
+
+<form action="javascript:user.login()">
+
     <div class="param" id="ll">
         <div class="label" id="loclog"></div><div class="input"><input type="text" name="username"
             onmousedown="$(this).focus();event.stopPropagation();"
@@ -17,6 +20,9 @@
             onmousedown="$(this).focus();event.stopPropagation();"
             ontouchstart="$(this).focus();event.stopPropagation();event.preventDefault();"/></div>
     </div>
-    <div class="button" id="logvalid" onmousedown="user.login();event.stopPropagation();"
-                                      ontouchstart="user.login();event.stopPropagation();event.preventDefault();">Valid</div>
+    <div class="button" id="logvalid" onmousedown="$(this).parent().submit();event.stopPropagation();"
+        ontouchstart="$(this).parent().submit();event.stopPropagation();event.preventDefault();">Valid</div>
+	<input type="submit" style="display:none;"/>
+									  
+</form>
 </div></div>

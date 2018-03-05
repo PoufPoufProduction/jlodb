@@ -99,7 +99,7 @@
 #boerror                    { position:absolute; top:72%; font-size:.7em; display:none; text-align:center;  }
 #bomain .redline            { background-color:red; width:102%; color:white; opacity:0.9; height:1.2em; }
 #bohome .input              { margin-top:1em; font-size:0.8em; }
-#bohome .input>div>*        { float:left; margin-left:.5em; }
+#bohome .input form>*       { float:left; margin-left:.5em; }
 #bohome .input .label       { width:9em; white-space:nowrap; }
 #bohome .input input        { font-size:1em; width:7em; color:#500; padding-left:.5em; float:left; }
 #bohome .input input.s      { color:gray; }
@@ -1145,20 +1145,26 @@ $(window).ready(function() {
             <div id="bohome">
                 <div class="input redline">
                     <div class="usermode">
-                        <div id="clabel" class="label"></div>
-                        <input></input>
-                        <div class="icon" onmousedown="tibibo.book.open($(this).prev().val());"
-                             ontouchstart="tibibo.book.open($(this).prev().val());event.preventDefault();">
-                            <img src="res/img/default/white/valid.svg"/>
-                        </div>
+						<form action="javascript:tibibo.book.open($('#bocinput').val())">
+							<div id="clabel" class="label"></div>
+							<input id="bocinput"></input>
+							<div class="icon" onmousedown="$(this).parent().submit()"
+								 ontouchstart="$(this).parent().submit();event.preventDefault()">
+								<img src="res/img/default/white/valid.svg"/>
+							</div>
+							<input type="submit" style="display:none;"/>
+						</form>
                     </div>
                     <div class="devmode">
-                        <div id="dlabel" class="label"></div>
-                        <input></input>
-                        <div class="icon" onmousedown="tibibo.book.create($(this).prev().val());"
-                             ontouchstart="tibibo.book.create($(this).prev().val());event.preventDefault();">
-                            <img src="res/img/default/white/valid.svg"/>
-                        </div>
+						<form action="javascript:tibibo.book.create($('#bodinput').val())">
+							<div id="dlabel" class="label"></div>
+							<input id="bodinput"></input>
+							<div class="icon" onmousedown="$(this).parent().submit();"
+								 ontouchstart="$(this).parent().submit();event.preventDefault();">
+								<img src="res/img/default/white/valid.svg"/>
+							</div>
+							<input type="submit" style="display:none;"/>
+						</form>
                     </div>
                 </div>
                 <div class="booklist">

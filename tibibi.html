@@ -563,12 +563,15 @@ $(window).ready(function() {
 
         <div id="bipopup1" class="bipopup" onclick="$(this).hide();" ontouchstart="$(this).hide();event.preventDefault();">
             <div><div>
-                <input type="text" onclick="event.stopPropagation();" ontouchstart="event.stopPropagation();">
-                </input>
-                <div class="icon" onclick="tibibi.popup.valid(); event.stopPropagation();"
-                                  ontouchstart="tibibi.popup.valid();event.stopPropagation();event.preventDefault();">
-                    <img src="res/img/default/white/valid.svg"/>
-                </div>
+				<form action="javascript:tibibi.popup.valid()">
+					<input type="text" onclick="event.stopPropagation();" ontouchstart="event.stopPropagation();">
+					</input>
+					<div class="icon" onclick="$(this).parent().submit();event.stopPropagation();"
+                                  ontouchstart="$(this).parent().submit();event.stopPropagation();event.preventDefault();">
+						<img src="res/img/default/white/valid.svg"/>
+					</div>
+					<input type="submit" style="display:none;"/>
+				</form>
             </div></div>
         </div>
 

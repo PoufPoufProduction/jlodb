@@ -355,7 +355,7 @@
                     $this.find("#timer").addClass("err");
                 }
             }
-            if (settings.interactive) { settings.timer.id = setTimeout(function() { helpers.timer($this); },200); }
+            if (settings.timer.id) { settings.timer.id = setTimeout(function() { helpers.timer($this); },200); }
         }
 
     };
@@ -408,6 +408,7 @@
                 var $this   = $(this) , settings = helpers.settings($this);
                 if (settings.interactive) {
                     settings.interactive = false;
+					if (settings.timer.id) { clearTimeout(settings.timer.id); settings.timer.id = 0; }
                     var wrongs  = 0;
                     if (settings.scorefct) { wrongs = eval('('+settings.scorefct+')')($this, settings.current.elts, settings); }
                     else {
@@ -450,7 +451,8 @@
             },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                settings.interactive = false;
+                settings.interactive 	= false;
+				if (settings.timer.id) { clearTimeout(settings.timer.id); settings.timer.id = 0; }
                 settings.context.onquit($this,{'status':'abort'});
             },
             next: function() {

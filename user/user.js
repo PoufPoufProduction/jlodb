@@ -58,12 +58,13 @@ var user = {
     },
     devmode: function(_login) {
         if (_login) {
-            $.getJSON("user/api/devmode.php?password="+$("#udevmode input").val(), function(_data) {
-                user.settings.devmode = _data.devmode; user.onEvent(); $("#udevmode input").val("");
+            $.getJSON("user/api/devmode.php?password="+$("input[name=devmode]").val(), function(_data) {
+                user.settings.devmode = _data.devmode; user.onEvent();
             });
             $("#udevmode").hide();
         }
         else { $.getJSON("user/api/devmode.php", function(_data) { user.settings.devmode = _data.devmode; user.onEvent(); }); }
+		$("input[name=devmode]").val("");
     },
     islogged: function() { return (user.settings && user.settings.name); },
     login: function() {
@@ -98,7 +99,7 @@ var user = {
 
             $.cookie("jlodb-name", _data.name, { expires : 1 });
             $.cookie("jlodb-code", _data.code, { expires : 1 });
-
+			
             user.onEvent();
         }
         else {

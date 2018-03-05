@@ -41,12 +41,14 @@ if (!$error && array_key_exists("username",$_GET)) {
                 }
             }
         }
+		else { $_SESSION['User_DevMode'] = 0; }
 
         // Just the first and only one
         if (!$error && !$param) {
             $param = '"avatar":"'.$u["User_Avatar"].'", "first":"'.$u["User_FirstName"].'",'.
                  ' "last":"'.$u["User_LastName"].'", "email":"'.$u["User_eMail"].'",'.
-                 ' "theme":"'.$u["User_Theme"].'", "key":"'.$u["User_Key"].'", "tag":"'.$u["User_Tag"].'", "devmode":'.($_SESSION['User_DevMode']?'1':'0');
+                 ' "theme":"'.$u["User_Theme"].'", "key":"'.$u["User_Key"].'", "tag":"'.$u["User_Tag"].'", "devmode":'.
+				 ((array_key_exists("User_DevMode",$_SESSION)&&$_SESSION['User_DevMode'])?'1':'0');
 
             $_SESSION['User_Date'] = $u["User_Date"];
             $_SESSION['User_Code'] = $u["User_Code"];

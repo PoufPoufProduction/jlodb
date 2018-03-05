@@ -4,6 +4,7 @@ include_once "database.php";
 
 if (!$error) {
     $result = mysqli_query($link, "SELECT * FROM `".$_SESSION['prefix']."jlodb` LIMIT 1");
+
     if ($result) {
         $row = mysqli_fetch_array($result);
 
@@ -19,9 +20,17 @@ if (!$error) {
         $b=mysqli_fetch_array($a);
         $a=mysqli_query($link, "SELECT count(*) FROM `".$_SESSION['prefix']."exercice`");
         $c=mysqli_fetch_array($a);
+		
+		$user	= (mysqli_query($link, "SELECT 1 FROM `".$_SESSION['prefix']."user` LIMIT 1"));
+		$tibibo	= (mysqli_query($link, "SELECT 1 FROM `".$_SESSION['prefix']."tibibo` LIMIT 1"));
+		$tibibi	= (mysqli_query($link, "SELECT 1 FROM `".$_SESSION['prefix']."tibibi` LIMIT 1"));
+		
 
         $overview = '"version":"'.$row["Version"].'", "date":"'.$row["Date"].'", "lang":"'.$row["Language"].
-                    '", "activities":'.$b[0].', "exercices":'.$c[0].', "lock":'.($lock?"true":"false");
+                    '", "activities":'.$b[0].', "exercices":'.$c[0].', "lock":'.($lock?"true":"false").', '.
+					'"user":'.($user?"true":"false").', '.
+					'"tibibo":'.($tibibo?"true":"false").', '.
+					'"tibibi":'.($tibibi?"true":"false");
 
     }
     else {

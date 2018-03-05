@@ -1,0 +1,25 @@
+<div id="jladmin">
+
+<div class="ifnotlogged">
+	<form action="javascript:jlodb.page.admin.perform(true)">
+		<div class="left">
+			<div><div class="label">Username</div><input type="text" name="username"/></div>
+			<div><div class="label">Password</div><input type="password" name="password"/></div>
+		</div>
+
+		<div class="login" onclick="$(this).parent().submit()"><img src="res/img/default/white/valid02.svg" alt=""/></div>
+		<input type="submit" style="display:none;"/>
+	</form>
+</div>
+
+<div class="iflogged">
+    <div class="logout" onclick="jlodb.page.admin.perform(false);">Logout</div>
+    <div>
+        <select class="lang"><option>fr-FR</option></select>
+        <div class="install" onclick="jlodb.page.admin.install();">Build the database</div>
+        <div id="lockjlodb"></div>
+    </div>
+    <div id="buildlog"></div>
+</div>
+
+</div>
