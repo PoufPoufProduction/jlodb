@@ -1,5 +1,5 @@
 <?php
-// $forceReadFile = true;
+$forceReadFile = (array_key_exists("clean",$_GET));
 include_once "database.php";
 
 if (!$error) {

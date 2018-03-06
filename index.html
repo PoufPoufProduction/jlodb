@@ -520,7 +520,7 @@ jlodb = {
         $("#jlcontenta").show();
 
         // CHECK THE DATABASE
-        $.get("api/checkdb.php", function (_data) {
+        $.get("api/checkdb.php?clean=1", function (_data) {
             $("#jlconsole").html("");
             if (_data.substr(0,5)=="<?php") {
                 $("#jlcontenta").load( "locale/zxx/nophp.html", function(response, status, xhr) {});

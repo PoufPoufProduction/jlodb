@@ -15,13 +15,13 @@ $textstatus = "";
 
 session_start();
 
-if (!array_key_exists("database",$_SESSION) || isset($forceReadFile))  {
+if ( !array_key_exists("database",$_SESSION) || (isset($forceReadFile)&&$forceReadFile))  {
     if (!file_exists($filename)) {
         $textstatus = "$filename: configuration file is missing";
         $error = 1;
     }
     else {
-         // GET THE CONFIGURATION FILE
+        // GET THE CONFIGURATION FILE
         $ini_array = parse_ini_file($filename, true);
         $_SESSION['database']   = $ini_array["db"]["database"];
         $_SESSION['prefix']     = $ini_array["db"]["prefix"];
@@ -33,7 +33,6 @@ if (!array_key_exists("database",$_SESSION) || isset($forceReadFile))  {
 		date_default_timezone_set('UTC');
     }
 }
-
 
 // CONNECT TO THE DATABASE
 $link = @mysqli_connect($_SESSION['host'], $_SESSION['username'], $_SESSION['password']);

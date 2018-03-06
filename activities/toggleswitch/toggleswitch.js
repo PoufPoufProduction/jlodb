@@ -20,6 +20,7 @@
         fontex      : 1,
         fonttag     : 1,
         errelt      : "",                                       // wrong element
+		automatic	: 0,										// Automatic submit
         background  : "",
         debug       : true                                      // Debug mode
     };
@@ -43,8 +44,23 @@
     var onClicks = {
         onlyone : function($this, elts, id, settings) {
             var nb=0; for (var i in elts) { if (elts[i].state==1) nb++; } return (elts[id].state==1 || nb<1);
+        },
+        onlytwo : function($this, elts, id, settings) {
+            var nb=0; for (var i in elts) { if (elts[i].state==1) nb++; } return (elts[id].state==1 || nb<2);
         }
     }
+	
+	var autos = {
+		one : function($this, elts, id, settings) {
+            var nb=0; for (var i in elts) { if (elts[i].state==1) nb++; } return (nb==1);
+        },
+		two : function($this, elts, id, settings) {
+            var nb=0; for (var i in elts) { if (elts[i].state==1) nb++; } return (nb==2);
+        },
+		full : function($this, elts, id, settings) {
+            var nb=0; for (var i in elts) { if (elts[i].state==0) nb++; } return (nb==0);
+        }
+	}
 
     // private methods
     var helpers = {
@@ -177,6 +193,15 @@
                     }
                     else { helpers.refresh($this, elt); }
                 }
+				
+				if (settings.automatic) {
+					var toSubmit = false;
+					if (autos[settings.automatic])
+						 { toSubmit = autos[settings.automatic]($this, settings.current.elts, id, settings); }
+					else { toSubmit = eval('('+settings.automatic+')')($this, settings.current.elts, id, settings); }
+					
+					if (toSubmit) { $this.toggleswitch('valid'); }
+				}
             }
         },
         fill: function($this) {
@@ -217,8 +242,9 @@
             }
             
             // HANDLE THE ERRELT
-            if (settings.errelt) {
-                $this.find((settings.current.group?"#"+settings.current.group+" ":"")+"#"+settings.errelt).bind(
+			var errelt = settings.current.errelt || settings.errelt;
+            if (errelt) {
+                $this.find((settings.current.group?"#"+settings.current.group+" ":"")+"#"+errelt).bind(
                     "mousedown touchstart",function(event) {
                         
                     var vEvent = (event && event.originalEvent && event.originalEvent.touches &&
@@ -289,6 +315,11 @@
                 $this.find("#exercice").show(); }
             else { $this.find("#exercice").hide(); }
             $this.find("#exercice #content").css("font-size",settings.fontex+"em");
+			
+			// AUTOMATIC VALIDATION
+			if (settings.automatic) {
+				$this.addClass("automatic");
+			}
 
             if (settings.current.template) {
                 var debug = "";
@@ -462,7 +493,7 @@
                     settings.timer.begin = Date.now();
                     settings.timer.id = setTimeout(function() { helpers.timer($this); },200);
                 }
-                $(this).find("#submit").show();
+                if (!settings.automatic) { $(this).find("#submit").show(); }
             },
             refresh: function() {
                 var $this = $(this) , settings = helpers.settings($this);
