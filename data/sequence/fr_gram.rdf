@@ -5,7 +5,7 @@
 	<!-- GENDER -->
 
     <rdf:Description>
-        <dct:identifier>gg001</dct:identifier>
+        <dct:identifier>_gg001</dct:identifier>
         <dct:title xml:lang="fr-FR">Rajouter, sans contrainte de temps, l'article indéfini 'Un' ou 'Une' en fonction du genre du mot proposé.</dct:title>
         <dct:description><![CDATA["time":0,"template":"template.html","input":{"attr":[5,3,1.2],"digit":1,"speed":0,"values":["un","une"]},"regexp":{"output":"\\\\.\\\\.\\\\.","input": { "from": "(.+) (.+)","to":"<div class='icon' style='font-size:3.6em;float:none;margin:0 auto;'><img src='res/img/clipart/$1.svg'/></div><div style='font-size:2em;'>... $2</div>"}},"values":[["animal/bear01 ours","un"],["animal/cat01 chat","un"],["animal/cow01 vache","une"],["animal/dog04 chien","un"],["animal/goose01 oie","une"],["animal/rabbit01 lapin","un"],["building/house01 maison","une"],["clothes/bag01 sac","un"],["food/icecream01 glace","une"],["furniture/bed01 lit","un"],["furniture/chair02 chaise","une"],["furniture/table01 table","une"],["human/foot01 pied","un"],["human/hand01 main","une"],["music/piano01 piano","un"],["object/book01 livre","un"],["object/box01 boîte","une"],["object/gift01 cadeau","un"],["object/key01 clé","une"],["sport/football01 ballon","un"],["sport/golfball01 balle","une"],["vehicle/bus02 bus","un"]],"class":"neg alpha h60","font":0.6]]></dct:description>
         <dct:extent>1</dct:extent>
@@ -17,7 +17,7 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>gg005</dct:identifier>
+        <dct:identifier>_gg005</dct:identifier>
         <dct:title xml:lang="fr-FR">Rajouter, sans contrainte de temps, l'article indéfini 'Le', 'La' ou 'L' en fonction du genre du mot proposé.</dct:title>
         <dct:description><![CDATA["time":0,"template":"template.html","input":{"attr":[3,3.3,1.2],"digit":1,"speed":0,"values":["le ","la ","l'"]},"regexp":{"output":"\\\\.\\\\.\\\\. ","input": { "from": "(.+) (.+)","to":"<div class='icon' style='font-size:3.6em;float:none;margin:0 auto;'><img src='res/img/clipart/$1.svg'/></div><div style='font-size:2em;'>... $2</div>"}},"values":[["animal/bear01 ours","l'"],["animal/elephant01 éléphant","l'"],["animal/seahorse01 hippocampe","l'"],["animal/dog04 chien","le "],["animal/goose01 oie","l'"],["animal/rabbit01 lapin","le "],["building/house01 maison","la "],["clothes/bag01 sac","le "],["food/icecream01 glace","la "],["furniture/bed01 lit","le "],["furniture/chair02 chaise","la "],["furniture/table01 table","la "],["human/foot01 pied","le "],["human/hand01 main","la "],["music/piano01 piano","le "],["object/book01 livre","le "],["object/box01 boîte","la "],["object/gift01 cadeau","le "],["object/key01 clé","la "],["sport/football01 ballon","le "],["sport/golfball01 balle","la "],["vehicle/bus02 bus","le "]],"class":"neg alpha h60","font":0.6]]></dct:description>
         <dct:extent>1</dct:extent>
@@ -29,7 +29,7 @@
     </rdf:Description>
     
     <rdf:Description>
-        <dct:identifier>gg051</dct:identifier>
+        <dct:identifier>_gg051</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier, sans contrainte de temps et à l'aide de son article, le genre du mot proposé.</dct:title>
         <dct:description><![CDATA["time":0,"template":"template.html","input":{"attr":[2.8,5.4,1.2],"digit":1,"speed":0,"values":[["masculin","m"],["féminin","f"]]},"regexp":{"input": { "from": "(.+) (.+) (.+)","to":"<div class='icon' style='font-size:3.6em;float:none;margin:0 auto;'><img src='res/img/clipart/$1.svg'/></div><div style='font-size:2em;'><span style='color:red;'>$2</span> $3</div>"}},"values":[["animal/giraffe02 une girafe","f"],["animal/chicken02 la poule","f"],["animal/bear01 un ours","m"],["animal/cat01 le chat","m"],["animal/cow01 une vache","f"],["animal/dog04 un chien","m"],["animal/goose01 une oie","f"],["animal/rabbit01 le lapin","m"],["building/house01 la maison","f"],["clothes/bag01 un sac","m"],["food/icecream01 une glace","f"],["furniture/bed01 le lit","m"],["furniture/chair02 une chaise","f"],["furniture/table01 la table","f"],["human/foot01 un pied","m"],["human/hand01 une main","f"],["music/piano01 le piano","m"],["object/book01 le livre","m"],["object/box01 une boîte","f"],["object/gift01 un cadeau","m"],["object/key01 la clé","f"],["sport/football01 le ballon","m"],["sport/golfball01 la balle","f"],["vehicle/bus02 un bus","m"]],"class":"neg alpha h60","font":0.6]]></dct:description>
         <dct:extent>1</dct:extent>
@@ -41,7 +41,7 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>gn001</dct:identifier>
+        <dct:identifier>_gn001</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier, sans contrainte de temps et à l'aide de son article, le nombre du mot proposé.</dct:title>
         <dct:description><![CDATA["time":0,"template":"template.html","input":{"attr":[2.8,5.4,1.2],"digit":1,"speed":0,"values":[["singulier","s"],["pluriel","p"]]},"regexp":{"input": { "from": "(.+) (.+)","to":"<span style='color:red;'>$1</span> $2"}},"values":[["une girafe","s"],["des cerises","p"],["des nuages","p"],["le soleil","s"],["une maison","s"],["des livres","p"],["Un crocodile","s"],["des lunettes","p"],["des ciseaux","p"],["les enfants","p"],["une orange","s"],["une table","s"],["les chaises","p"],["une voiture","s"],["les vélos","p"],["un abricot","s"],["des boîtes","p"],["une bouteille","s"],["la clé","s"]],"class":"alpha h12","font":1]]></dct:description>
         <dct:extent>1</dct:extent>

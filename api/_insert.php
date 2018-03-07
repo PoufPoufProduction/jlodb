@@ -3,16 +3,14 @@
 function exName($file, $key, $id, &$warnings)
 {
     $ret = "";
-    if (substr($id,0,1)=='_') { $ret = substr($id,1); }
-    else {
-        $subname = substr($file,0,2);
-        if ($subname=="xx") {
-            if (strlen($id)>2) { array_push($warnings, "(W) Can not insert exercice ".$id." as its length>2 in xx.rdf [".$key."]"); }
-            else               { $ret = $key.$id; }
+    
+    $subname = substr($file,0,2);
+    if ($subname=="xx") {
+        if (strlen($id)>2) { array_push($warnings, "(W) Can not insert exercice ".$id." as its length>2 in xx.rdf [".$key."]"); }
+        else               { $ret = $key.$id; }
             
-        }
-        else { $ret = $key.$subname.$id; }
     }
+    else { $ret = $key.$subname.$id; }
     return $ret;
 }
 

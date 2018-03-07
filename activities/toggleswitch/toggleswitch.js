@@ -217,7 +217,7 @@
                 $(this).bind("mousedown touchstart",function(event){ helpers.click($this,index); event.preventDefault();});
             });
 
-            // HANDLE THE ILLUSTRATION
+            // HANDLE THE ILLUSTRATION (deprecated : use [img] instead in legend)
             var vIllus = settings.illustration;
             if ($.isArray(vIllus)) { vIllus = vIllus[settings.it%vIllus.length]; }
 
@@ -231,6 +231,7 @@
             if ($.isArray(vLegend)) { vLegend = vLegend[settings.it%vLegend.length]; }
 
             if (vLegend) { $this.find("#legend").html(helpers.format(vLegend)); }
+			if (settings.legendsize) { $this.find("#legend").css("font-size",(0.4*settings.legendsize)+"em"); }
 			
 			// HANDLE STATIC TEXT OR IMAGE IN SVG
             var txt = settings.current.txt;
@@ -356,7 +357,8 @@
                             if (vRegexp) { value = value.replace(vRegexp, settings.regexp.to); }
                             if (settings.current.t && settings.current.t.length>index) {
                                 $(this).html("<div style='font-size:"+settings.font+"em;margin-top:"+
-                                             (1-settings.font)/(2*settings.font)+"em;'>"+helpers.format(value.toString())+"</div>"); }});
+                                             (settings.font<1?(1-settings.font)/(2*settings.font):0)+"em;'>"+
+											 helpers.format(value.toString())+"</div>"); }});
                         helpers.fill($this);
                     });
                 }
@@ -447,7 +449,15 @@
                             if(!settings.current.result || settings.current.result.length<i ||
                                 settings.current.elts[i].state!=settings.current.result[i]) {
                                 wrongs++;
-                                settings.current.elts[i].state = -1;
+								
+								var state = -1;
+								if (settings.wrong && settings.wrong.mask) {
+									if (settings.wrong.mask.indexOf(settings.current.elts[i].state)==-1) {
+										state = settings.current.elts[i].state;
+									}
+								}
+								
+                                settings.current.elts[i].state = state;
                             }
                         }
                     }
@@ -461,8 +471,8 @@
                     $this.addClass("end");
 
                     $this.find("#effects>div").hide();
-                    if (!wrongs) { $this.find("#effects #good").show(); }
-                    else         { $this.find("#effects #wrong").show(); }
+                    if (!wrongs) { $this.find("#effects #good").css("opacity",0).show().animate({opacity:1},500); }
+                    else         { $this.find("#effects #wrong").css("opacity",0).show().animate({opacity:1},500); }
                     $this.find("#effects").show();
 
                     if (settings.it>=settings.number) {

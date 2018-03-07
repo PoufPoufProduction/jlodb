@@ -5,232 +5,239 @@
     <!-- character -->
 
     <rdf:Description>
-        <dct:identifier>wl01</dct:identifier>
+        <dct:identifier>_wl01</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier les lettres en majuscules de l'alphabet.</dct:title>
-        <dct:description><![CDATA["number":3,"template":"array4x3","gen":"function(){var result=\\\"\\\",ret=[],w=['1','2','3','4','5','6','7','8','9','&','+','-','/',';',',','§','!','?',')','(','[',']','$','£','€','*','%']; for (var i=0; i<12; i++) { var a=(Math.random()<0.5); result+=a?\\\"1\\\":\\\"0\\\"; ret.push(\\\"<p style='font-size:0.8em;'>\\\"+(a?String.fromCharCode(65+Math.floor(Math.random()*26)):w[Math.floor(Math.random()*w.length)])+\\\"</p>\\\");} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)"},{"background-color":"#F88"}]},"wrong":{"style":{"background-color":"black"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/wallpaper02.svg","number":3,"template":"array4x3","gen":"function(){var result=\\\"\\\",ret=[],w=['1','2','3','4','5','6','7','8','9','&','+','-','/',';',',','§','!','?',')','(','[',']','$','£','€','*','%']; for (var i=0; i<12; i++) { var a=(Math.random()<0.5); result+=a?\\\"1\\\":\\\"0\\\"; ret.push(\\\"<p style='font-size:0.8em;'>\\\"+(a?String.fromCharCode(65+Math.floor(Math.random()*26)):w[Math.floor(Math.random()*w.length)])+\\\"</p>\\\");} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)"},{"background-color":"#F88"}]},"wrong":{"style":{"background-color":"black"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez les [b]lettres[/b] de l'alphabet.","tag":"AZ"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>frword</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>wl03</dct:alternative>
+        <dct:alternative>_wl03</dct:alternative>
+		<dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
-        <dct:identifier>wl02</dct:identifier>
+        <dct:identifier>_wl02</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier les lettres en minuscules de l'alphabet.</dct:title>
-        <dct:description><![CDATA["number":3,"template":"array4x3","gen":"function(){var result=\\\"\\\",ret=[],w=['1','2','3','4','5','6','7','8','9','&','+','-','/',';',',','§','!','?',')','(','[',']','$','£','€','*','%']; for (var i=0; i<12; i++) { var a=(Math.random()<0.5); result+=a?\\\"1\\\":\\\"0\\\"; ret.push(\\\"<p style='font-size:0.8em;'>\\\"+(a?String.fromCharCode(97 +Math.floor(Math.random()*26)):w[Math.floor(Math.random()*w.length)])+\\\"</p>\\\");} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)"},{"background-color":"#F88"}]},"wrong":{"style":{"background-color":"black"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/wallpaper02.svg","number":3,"template":"array4x3","gen":"function(){var result=\\\"\\\",ret=[],w=['1','2','3','4','5','6','7','8','9','&','+','-','/',';',',','§','!','?',')','(','[',']','$','£','€','*','%']; for (var i=0; i<12; i++) { var a=(Math.random()<0.5); result+=a?\\\"1\\\":\\\"0\\\"; ret.push(\\\"<p style='font-size:0.8em;'>\\\"+(a?String.fromCharCode(97 +Math.floor(Math.random()*26)):w[Math.floor(Math.random()*w.length)])+\\\"</p>\\\");} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)"},{"background-color":"#F88"}]},"wrong":{"style":{"background-color":"black"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez les [b]lettres[/b] de l'alphabet.","tag":"az"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>frword</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>wl03</dct:alternative>
+        <dct:alternative>_wl03</dct:alternative>
+		<dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>wl03</dct:identifier>
+        <dct:identifier>_wl03</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier les lettres de l'alphabet.</dct:title>
-        <dct:description><![CDATA["number":3,"template":"array4x3","gen":"function(){var result=\\\"\\\",ret=[],w=['1','2','3','4','5','6','7','8','9','&','+','-','/',';',',','§','!','?',')','(','[',']','$','£','€','*','%']; for (var i=0; i<12; i++) { var a=(Math.random()<0.5); result+=a?\\\"1\\\":\\\"0\\\"; ret.push(\\\"<p style='font-size:0.8em;'>\\\"+(a?String.fromCharCode((Math.random()<0.5?65:97) +Math.floor(Math.random()*26)):w[Math.floor(Math.random()*w.length)])+\\\"</p>\\\");} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)"},{"background-color":"#F88"}]},"wrong":{"style":{"background-color":"black"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/wallpaper02.svg","number":3,"template":"array4x3","gen":"function(){var result=\\\"\\\",ret=[],w=['1','2','3','4','5','6','7','8','9','&','+','-','/',';',',','§','!','?',')','(','[',']','$','£','€','*','%']; for (var i=0; i<12; i++) { var a=(Math.random()<0.5); result+=a?\\\"1\\\":\\\"0\\\"; ret.push(\\\"<p style='font-size:0.8em;'>\\\"+(a?String.fromCharCode((Math.random()<0.5?65:97) +Math.floor(Math.random()*26)):w[Math.floor(Math.random()*w.length)])+\\\"</p>\\\");} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)"},{"background-color":"#F88"}]},"wrong":{"style":{"background-color":"black"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez les [b]lettres[/b] de l'alphabet, majuscules et minuscules.","tag":"aZ"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>frword</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>wl03</dct:alternative>
+        <dct:alternative>_wl03</dct:alternative>
+		<dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
     </rdf:Description>
 
 
     <rdf:Description>
-        <dct:identifier>wl04</dct:identifier>
+        <dct:identifier>_wl04</dct:identifier>
         <dct:title xml:lang="fr-FR">Différencier majuscules et minuscules.</dct:title>
-        <dct:description><![CDATA["number":5,"template":"array4x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<12; i++) { var a=(Math.random()<0.5); result+=a?\\\"1\\\":\\\"0\\\"; ret.push(\\\"<p style='font-size:0.8em;'>\\\"+(a?String.fromCharCode(65+Math.floor(Math.random()*26)):String.fromCharCode(97+Math.floor(Math.random()*26)))+\\\"</p>\\\");} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)"},{"background-color":"#F88"}]},"wrong":{"style":{"background-color":"black"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/wallpaper02.svg","number":5,"template":"array4x3","gen":"function(){var result=\\\"\\\",ret=[]; for (var i=0; i<12; i++) { var a=(Math.random()<0.5); result+=a?\\\"1\\\":\\\"0\\\"; ret.push(\\\"<p style='font-size:0.8em;'>\\\"+(a?String.fromCharCode(65+Math.floor(Math.random()*26)):String.fromCharCode(97+Math.floor(Math.random()*26)))+\\\"</p>\\\");} return {result:result,t:ret}}","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)"},{"background-color":"#F88"}]},"wrong":{"style":{"background-color":"black"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez les [b]lettres majuscules[/b] de l'alphabet.","tag":"AZ"}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>frword</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>wl03</dct:alternative>
+        <dct:alternative>_wl03</dct:alternative>
+		<dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
     </rdf:Description>
     
     
     
     <rdf:Description>
-        <dct:identifier>wl11</dct:identifier>
+        <dct:identifier>_wl11</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier les lettres d'un mot [lapin, vache, girafe].</dct:title>
-        <dct:description><![CDATA["states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"#F88"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"#F88"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"values":[{"template":"checkazr","result":"10000000100101010000000000"},{"template":"checkazr","result":"10101001000000000000010000"},{"template":"checkazr","result":"10001110100000000100000000"}],"legend":["[img]res/img/clipart/animal/rabbit01.svg[/img][h1]lapin[/h1]","[img]res/img/clipart/animal/cow01.svg[/img][h1]vache[/h1]","[img]res/img/clipart/animal/giraffe02.svg[/img][h1]girafe[/h1]"],"exercice":{"value":"Coloriez les [b]lettres[/b] composant chaque mot."}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>frword</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>wl11</dct:alternative>
-        <dct:source>res/img/clipart/animal/rabbit01.svg,res/img/clipart/animal/cow01.svg,res/img/clipart/animal/giraffe02.svg</dct:source>
+        <dct:alternative>_wl11</dct:alternative>
+        <dct:source>res/img/background/landscape/yellowboard02.svg,res/img/clipart/animal/rabbit01.svg,res/img/clipart/animal/cow01.svg,res/img/clipart/animal/giraffe02.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
-        <dct:identifier>wl12</dct:identifier>
+        <dct:identifier>_wl12</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier les lettres d'un mot [panda, souris, poisson].</dct:title>
-        <dct:description><![CDATA["states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"#F88"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"#F88"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"values":[{"template":"checkazr","result":"10010000000001010000000000"},{"template":"checkazr","result":"00000000100000100110100000"},{"template":"checkazr","result":"00000000100001110010000000"}],"legend":["[img]res/img/clipart/animal/panda02.svg[/img][h1]panda[/h1]","[img]res/img/clipart/animal/mice01.svg[/img][h1]souris[/h1]","[img]res/img/clipart/animal/goldfish01.svg[/img][h1]poisson[/h1]"],"exercice":{"value":"Coloriez les [b]lettres[/b] composant chaque mot."}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>frword</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>wl11</dct:alternative>
-        <dct:source>res/img/clipart/animal/panda02.svg,res/img/clipart/animal/mice01.svg,res/img/clipart/animal/goldfish01.svg</dct:source>
+        <dct:alternative>_wl11</dct:alternative>
+        <dct:source>res/img/background/landscape/yellowboard02.svg,res/img/clipart/animal/panda02.svg,res/img/clipart/animal/mice01.svg,res/img/clipart/animal/goldfish01.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
-        <dct:identifier>wl13</dct:identifier>
+        <dct:identifier>_wl13</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier les lettres d'un mot [crocodile, grenouille, hippocampe].</dct:title>
-        <dct:description><![CDATA["states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"#F88"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"#F88"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"values":[{"template":"checkazr","result":"00111000100100100100000000"},{"template":"checkazr","result":"00001010100101100100100000"},{"template":"checkazr","result":"10101001100010110000000000"}],"legend":["[img]res/img/clipart/animal/crocodile01.svg[/img][h1]crocodile[/h1]","[img]res/img/clipart/animal/frog01.svg[/img][h1]grenouille[/h1]","[img]res/img/clipart/animal/seahorse01.svg[/img][h1]hippocampe[/h1]"],"exercice":{"value":"Coloriez les [b]lettres[/b] composant chaque mot."}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>frword</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>wl11</dct:alternative>
-        <dct:source>res/img/clipart/animal/crocodile01.svg,res/img/clipart/animal/frog01.svg,res/img/clipart/animal/seahorse01.svg</dct:source>
+        <dct:alternative>_wl11</dct:alternative>
+        <dct:source>res/img/background/landscape/yellowboard02.svg,res/img/clipart/animal/crocodile01.svg,res/img/clipart/animal/frog01.svg,res/img/clipart/animal/seahorse01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>wl14</dct:identifier>
+        <dct:identifier>_wl14</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier les lettres d'un mot [poireau, kiwi, cerise].</dct:title>
-        <dct:description><![CDATA["states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"#F88"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"#F88"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"values":[{"template":"checkazr","result":"10001000100000110100100000"},{"template":"checkazr","result":"00000000101000000000001000"},{"template":"checkazr","result":"00101000100000000110000000"}],"legend":["[img]res/img/svginventoryicons/vegetable/leek01.svg[/img][h1]poireau[/h1]","[img]res/img/svginventoryicons/vegetable/kiwi01.svg[/img][h1]kiwi[/h1]","[img]res/img/svginventoryicons/vegetable/cherry01.svg[/img][h1]cerise[/h1]"],"exercice":{"value":"Coloriez les [b]lettres[/b] composant chaque mot."}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>frword</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>wl11</dct:alternative>
-        <dct:source>res/img/svginventoryicons/vegetable/leek01.svg,res/img/svginventoryicons/vegetable/kiwi01.svg,res/img/svginventoryicons/vegetable/cherry01.svg</dct:source>
+        <dct:alternative>_wl11</dct:alternative>
+        <dct:source>res/img/background/landscape/yellowboard02.svg,res/img/svginventoryicons/vegetable/leek01.svg,res/img/svginventoryicons/vegetable/kiwi01.svg,res/img/svginventoryicons/vegetable/cherry01.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
-        <dct:identifier>wl15</dct:identifier>
+        <dct:identifier>_wl15</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier les lettres d'un mot [aubergine, banane, champignon].</dct:title>
-        <dct:description><![CDATA["states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"#F88"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"#F88"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"values":[{"template":"checkazr","result":"11001010100001000100100000"},{"template":"checkazr","result":"11001000000001000000000000"},{"template":"checkazr","result":"10100011100011110000000000"}],"legend":["[img]res/img/svginventoryicons/vegetable/aubergine01.svg[/img][h1]aubergine[/h1]","[img]res/img/svginventoryicons/vegetable/banana01.svg[/img][h1]banane[/h1]","[img]res/img/svginventoryicons/vegetable/mushroom01.svg[/img][h1]champignon[/h1]"],"exercice":{"value":"Coloriez les [b]lettres[/b] composant chaque mot."}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>frword</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>wl11</dct:alternative>
-        <dct:source>res/img/svginventoryicons/vegetable/aubergine01.svg,res/img/svginventoryicons/vegetable/banana01.svg,res/img/svginventoryicons/vegetable/mushroom01.svg</dct:source>
+        <dct:alternative>_wl11</dct:alternative>
+        <dct:source>res/img/background/landscape/yellowboard02.svg,res/img/svginventoryicons/vegetable/aubergine01.svg,res/img/svginventoryicons/vegetable/banana01.svg,res/img/svginventoryicons/vegetable/mushroom01.svg</dct:source>
     </rdf:Description>
 
     <!-- words -->
 
     <rdf:Description>
-        <dct:identifier>ww01</dct:identifier>
+        <dct:identifier>_ww01</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier les occurences erronées d'un mot en minuscule [chapeau, robe, sac].</dct:title>
-        <dct:description><![CDATA["states":{ "nb":2,"style":[{"background-image":"url('res/img/default/icon/check_unchecked01.svg')"},{"background-image":"url('res/img/default/icon/check_checked01.svg')"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"font":1.5,"values":[{"template":"check5r","result":"10010","t":["chapeau","sapeau","chapo","chapeau","pacheau"]},{"template":"check5r","result":"00110","t":["bore","rebo","robe","robe","rob"]},{"template":"check5r","result":"10001","t":["sac","cac","sas","cas","sac"]}],"legend":["[img]res/img/clipart/clothes/hat01.svg[/img][h1]chapeau[/h1]","[img]res/img/clipart/clothes/dress02.svg[/img][h1]robe[/h1]","[img]res/img/clipart/clothes/bag02.svg[/img][h1]sac[/h1]"],"exercice":{"value":"Validez les mots correctement orthographiés."}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/grayboard01.svg","states":{ "nb":2,"style":[{"background-image":"url('res/img/default/icon/check_unchecked01.svg')"},{"background-image":"url('res/img/default/icon/check_checked01.svg')"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"font":1.5,"values":[{"template":"check5r","result":"10010","t":["chapeau","sapeau","chapo","chapeau","pacheau"]},{"template":"check5r","result":"00110","t":["bore","rebo","robe","robe","rob"]},{"template":"check5r","result":"10001","t":["sac","cac","sas","cas","sac"]}],"legend":["[img]res/img/clipart/clothes/hat01.svg[/img][h1]chapeau[/h1]","[img]res/img/clipart/clothes/dress02.svg[/img][h1]robe[/h1]","[img]res/img/clipart/clothes/bag02.svg[/img][h1]sac[/h1]"],"exercice":{"value":"[b]Validez[/b] les mots correctement orthographiés."}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>frword</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>ww01</dct:alternative>
-        <dct:source>res/img/clipart/clothes/hat01.svg,res/img/clipart/clothes/dress02.svg,res/img/clipart/clothes/bag02.svg</dct:source>
+        <dct:alternative>_ww01</dct:alternative>
+        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/clipart/clothes/hat01.svg,res/img/clipart/clothes/dress02.svg,res/img/clipart/clothes/bag02.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>ww02</dct:identifier>
+        <dct:identifier>_ww02</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier les occurences erronées d'un mot en minuscule [livre, vase, ampoule].</dct:title>
-        <dct:description><![CDATA["states":{ "nb":2,"style":[{"background-image":"url('res/img/default/icon/check_unchecked01.svg')"},{"background-image":"url('res/img/default/icon/check_checked01.svg')"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"font":1.5,"values":[{"template":"check5r","result":"00010","t":["lièvre","vreli","live","livre","lire"]},{"template":"check5r","result":"10001","t":["vase","save","vesa","vasse","vase"]},{"template":"check5r","result":"00101","t":["ampale","pampoule","ampoule","apoule","ampoule"]}],"legend":["[img]res/img/clipart/object/book01.svg[/img][h1]livre[/h1]","[img]res/img/clipart/object/vase01.svg[/img][h1]vase[/h1]","[img]res/img/clipart/object/bulb01.svg[/img][h1]ampoule[/h1]"],"exercice":{"value":"Validez les mots correctement orthographiés."}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/grayboard01.svg","states":{ "nb":2,"style":[{"background-image":"url('res/img/default/icon/check_unchecked01.svg')"},{"background-image":"url('res/img/default/icon/check_checked01.svg')"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"font":1.5,"values":[{"template":"check5r","result":"00010","t":["lièvre","vreli","live","livre","lire"]},{"template":"check5r","result":"10001","t":["vase","save","vesa","vasse","vase"]},{"template":"check5r","result":"00101","t":["ampale","pampoule","ampoule","apoule","ampoule"]}],"legend":["[img]res/img/clipart/object/book01.svg[/img][h1]livre[/h1]","[img]res/img/clipart/object/vase01.svg[/img][h1]vase[/h1]","[img]res/img/clipart/object/bulb01.svg[/img][h1]ampoule[/h1]"],"exercice":{"value":"[b]Validez[/b] les mots correctement orthographiés."}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>frword</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>ww01</dct:alternative>
-        <dct:source>res/img/clipart/object/book01.svg,res/img/clipart/object/vase01.svg,res/img/clipart/object/bulb01.svg</dct:source>
+        <dct:alternative>_ww01</dct:alternative>
+        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/clipart/object/book01.svg,res/img/clipart/object/vase01.svg,res/img/clipart/object/bulb01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>ww11</dct:identifier>
+        <dct:identifier>_ww11</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier les occurences erronées d'un mot en majuscule [maison, chemise, tracteur].</dct:title>
-        <dct:description><![CDATA["states":{ "nb":2,"style":[{"background-image":"url('res/img/default/icon/check_unchecked01.svg')"},{"background-image":"url('res/img/default/icon/check_checked01.svg')"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"font":1.5,"values":[{"template":"check5r","result":"10010","t":["MAISON","MASSON","MONSAI","MAISON","MISON"]},{"template":"check5r","result":"00110","t":["CHEMISE","CHIMESE","MECHISE","CHEMIS","CHEMISE"]},{"template":"check5r","result":"01010","t":["TRATEUR","TRACTEUR","TREUCTAR","TRACTEUR","TRACTUER"]}],"legend":["[img]res/img/clipart/building/house01.svg[/img][h1]MAISON[/h1]","[img]res/img/clipart/clothes/shirt03.svg[/img][h1]CHEMISE[/h1]","[img]res/img/clipart/vehicle/tractor01.svg[/img][h1]TRACTEUR[/h1]"],"exercice":{"value":"Validez les mots correctement orthographiés."}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/grayboard01.svg","states":{ "nb":2,"style":[{"background-image":"url('res/img/default/icon/check_unchecked01.svg')"},{"background-image":"url('res/img/default/icon/check_checked01.svg')"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"font":1.5,"values":[{"template":"check5r","result":"10010","t":["MAISON","MASSON","MONSAI","MAISON","MISON"]},{"template":"check5r","result":"00110","t":["CHEMISE","CHIMESE","MECHISE","CHEMIS","CHEMISE"]},{"template":"check5r","result":"01010","t":["TRATEUR","TRACTEUR","TREUCTAR","TRACTEUR","TRACTUER"]}],"legend":["[img]res/img/clipart/building/house01.svg[/img][h1]MAISON[/h1]","[img]res/img/clipart/clothes/shirt03.svg[/img][h1]CHEMISE[/h1]","[img]res/img/clipart/vehicle/tractor01.svg[/img][h1]TRACTEUR[/h1]"],"exercice":{"value":"[b]Validez[/b] les mots correctement orthographiés."}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>frword</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>ww01</dct:alternative>
-        <dct:source>res/img/clipart/building/house01.svg,res/img/clipart/clothes/shirt03.svg,res/img/clipart/vehicle/tractor01.svg</dct:source>
+        <dct:alternative>_ww01</dct:alternative>
+        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/clipart/building/house01.svg,res/img/clipart/clothes/shirt03.svg,res/img/clipart/vehicle/tractor01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>ww12</dct:identifier>
+        <dct:identifier>_ww12</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier les occurences erronées d'un mot en majuscule [danseuse, ballon, robinet].</dct:title>
-        <dct:description><![CDATA["states":{ "nb":2,"style":[{"background-image":"url('res/img/default/icon/check_unchecked01.svg')"},{"background-image":"url('res/img/default/icon/check_checked01.svg')"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"font":1.5,"values":[{"template":"check5r","result":"00110","t":["DANSESE","DENSEUSE","DANSEUSE","DANSEUSE","DANSAUSE"]},{"template":"check5r","result":"00000","t":["BONLA","BALON","BALLLON","BOLLON","BALLAN"]},{"template":"check5r","result":"00100","t":["RIBONET","ROBINER","ROBINET","BORINET","ROBONET"]}],"legend":["[img]res/img/clipart/sport/dancer01.svg[/img][h1]DANSEUSE[/h1]","[img]res/img/clipart/sport/football01.svg[/img][h1]BALLON[/h1]","[img]res/img/clipart/object/tap01.svg[/img][h1]ROBINET[/h1]"],"exercice":{"value":"Validez les mots correctement orthographiés."}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/grayboard01.svg","states":{ "nb":2,"style":[{"background-image":"url('res/img/default/icon/check_unchecked01.svg')"},{"background-image":"url('res/img/default/icon/check_checked01.svg')"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"font":1.5,"values":[{"template":"check5r","result":"00110","t":["DANSESE","DENSEUSE","DANSEUSE","DANSEUSE","DANSAUSE"]},{"template":"check5r","result":"00000","t":["BONLA","BALON","BALLLON","BOLLON","BALLAN"]},{"template":"check5r","result":"00100","t":["RIBONET","ROBINER","ROBINET","BORINET","ROBONET"]}],"legend":["[img]res/img/clipart/sport/dancer01.svg[/img][h1]DANSEUSE[/h1]","[img]res/img/clipart/sport/football01.svg[/img][h1]BALLON[/h1]","[img]res/img/clipart/object/tap01.svg[/img][h1]ROBINET[/h1]"],"exercice":{"value":"[b]Validez[/b] les mots correctement orthographiés."}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>frword</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>ww01</dct:alternative>
-        <dct:source>res/img/clipart/sport/dancer01.svg,res/img/clipart/sport/football01.svg,res/img/clipart/object/tap01.svg</dct:source>
+        <dct:alternative>_ww01</dct:alternative>
+        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/clipart/sport/dancer01.svg,res/img/clipart/sport/football01.svg,res/img/clipart/object/tap01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>ww21</dct:identifier>
+        <dct:identifier>_ww21</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier les occurences erronées d'un mot avec casse différente [crocodile, éléphant, rhinocéros].</dct:title>
-        <dct:description><![CDATA["states":{ "nb":2,"style":[{"background-image":"url('res/img/default/icon/check_unchecked01.svg')"},{"background-image":"url('res/img/default/icon/check_checked01.svg')"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"font":1.5,"values":[{"template":"check5r","result":"10100","t":["CROCODILE","crocrodile","Crocodile","COCRODILE","Crocrodile"]},{"template":"check5r","result":"00110","t":["Éléfant","éphélant","ÉLÉPHANT","éléphant","Élephan"]},{"template":"check5r","result":"01101","t":["rinocéros","rhinocéros","RHINOCÉROS","Rhicénoros","Rhinocéros"]}],"legend":["[img]res/img/clipart/animal/crocodile01.svg[/img][h1]crocodile[/h1]","[img]res/img/clipart/animal/elephant01.svg[/img][h1]éléphant[/h1]","[img]res/img/clipart/animal/rhinoceros01.svg[/img][h1]rhinocéros[/h1]"],"exercice":{"value":"Validez les mots correctement orthographiés."}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/grayboard01.svg","states":{ "nb":2,"style":[{"background-image":"url('res/img/default/icon/check_unchecked01.svg')"},{"background-image":"url('res/img/default/icon/check_checked01.svg')"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"font":1.5,"values":[{"template":"check5r","result":"10100","t":["CROCODILE","crocrodile","Crocodile","COCRODILE","Crocrodile"]},{"template":"check5r","result":"00110","t":["Éléfant","éphélant","ÉLÉPHANT","éléphant","Élephan"]},{"template":"check5r","result":"01101","t":["rinocéros","rhinocéros","RHINOCÉROS","Rhicénoros","Rhinocéros"]}],"legend":["[img]res/img/clipart/animal/crocodile01.svg[/img][h1]crocodile[/h1]","[img]res/img/clipart/animal/elephant01.svg[/img][h1]éléphant[/h1]","[img]res/img/clipart/animal/rhinoceros01.svg[/img][h1]rhinocéros[/h1]"],"exercice":{"value":"[b]Validez[/b] les mots correctement orthographiés."}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>frword</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>ww01</dct:alternative>
-        <dct:source>res/img/clipart/animal/crocodile01.svg,res/img/clipart/animal/elephant01.svg,res/img/clipart/animal/rhinoceros01.svg</dct:source>
+        <dct:alternative>_ww01</dct:alternative>
+        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/clipart/animal/crocodile01.svg,res/img/clipart/animal/elephant01.svg,res/img/clipart/animal/rhinoceros01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>ww22</dct:identifier>
+        <dct:identifier>_ww22</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier les occurences erronées d'un mot avec casse différente [table, chaise, lampe].</dct:title>
-        <dct:description><![CDATA["states":{ "nb":2,"style":[{"background-image":"url('res/img/default/icon/check_unchecked01.svg')"},{"background-image":"url('res/img/default/icon/check_checked01.svg')"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"font":1.5,"values":[{"template":"check5r","result":"10001","t":["table","TEBLA","tatable","Tabe","Table"]},{"template":"check5r","result":"00101","t":["Chase","caisse","CHAISE","cheise","Chaise"]},{"template":"check5r","result":"11100","t":["Lampe","lampe","LAMPE","Lapme","LEMPE"]}],"legend":["[img]res/img/clipart/furniture/table01.svg[/img][h1]table[/h1]","[img]res/img/clipart/furniture/chair02.svg[/img][h1]chaise[/h1]","[img]res/img/clipart/object/lamp01.svg[/img][h1]lampe[/h1]"],"exercice":{"value":"Validez les mots correctement orthographiés."}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/grayboard01.svg","states":{ "nb":2,"style":[{"background-image":"url('res/img/default/icon/check_unchecked01.svg')"},{"background-image":"url('res/img/default/icon/check_checked01.svg')"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"font":1.5,"values":[{"template":"check5r","result":"10001","t":["table","TEBLA","tatable","Tabe","Table"]},{"template":"check5r","result":"00101","t":["Chase","caisse","CHAISE","cheise","Chaise"]},{"template":"check5r","result":"11100","t":["Lampe","lampe","LAMPE","Lapme","LEMPE"]}],"legend":["[img]res/img/clipart/furniture/table01.svg[/img][h1]table[/h1]","[img]res/img/clipart/furniture/chair02.svg[/img][h1]chaise[/h1]","[img]res/img/clipart/object/lamp01.svg[/img][h1]lampe[/h1]"],"exercice":{"value":"[b]Validez[/b] les mots correctement orthographiés."}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>frword</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>ww01</dct:alternative>
-        <dct:source>res/img/clipart/furniture/table01.svg,res/img/clipart/furniture/chair02.svg,res/img/clipart/object/lamp01.svg</dct:source>
+        <dct:alternative>_ww01</dct:alternative>
+        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/clipart/furniture/table01.svg,res/img/clipart/furniture/chair02.svg,res/img/clipart/object/lamp01.svg</dct:source>
     </rdf:Description>
 
-    
+    <!-- Specific term -->
+	
     <rdf:Description>
-        <dct:identifier>ww51</dct:identifier>
+        <dct:identifier>_ww51</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser le bon terme pour identifier quelque chose ou quelqu'un.</dct:title>
-        <dct:description><![CDATA["legend":["[img]res/img/clipart/animal/eagle01.svg[/img]","[img]res/img/clipart/clothes/dress02.svg[/img]","[img]res/img/clipart/music/violin01.svg[/img]"],"onclick":"onlyone","states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"yellow"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"font":2,"values":[{"template":"qcm3","result":"001","t":["un animal","un oiseau","un aigle"]},{"template":"qcm3","result":"010","t":["du tissus","une robe","un vêtement"]},{"template":"qcm3","result":"001","t":["un instrument de musique","un objet","un violon"]}],"exercice":{"value":"Parmi les noms possibles correspondant à l'illustration, choisissez celui qui est le plus [red]précis[/red]."}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","automatic":"one","legend":["[img]res/img/clipart/animal/eagle01.svg[/img]","[img]res/img/clipart/clothes/dress02.svg[/img]","[img]res/img/clipart/music/violin01.svg[/img]"],"onclick":"onlyone","states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"yellow"}]},"wrong":{"mask":"0","style":{"background-color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"font":2,"values":[{"template":"qcm3","result":"001","t":["un animal","un oiseau","un aigle"]},{"template":"qcm3","result":"010","t":["du tissus","une robe","un vêtement"]},{"template":"qcm3","result":"001","t":["un instrument de musique","un objet","un violon"]}],"exercice":{"value":"Parmi les noms possibles correspondant à l'illustration, [b]choisissez[/b] celui qui est le plus [red]précis[/red]."}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>frword</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>ww21</dct:alternative>
-        <dct:source>res/img/clipart/animal/eagle01.svg,res/img/clipart/clothes/dress02.svg,res/img/clipart/music/violin01.svg</dct:source>
+        <dct:alternative>_ww21</dct:alternative>
+        <dct:source>res/img/background/landscape/blueboard01.svg,res/img/clipart/animal/eagle01.svg,res/img/clipart/clothes/dress02.svg,res/img/clipart/music/violin01.svg</dct:source>
     </rdf:Description>
 
 
     <rdf:Description>
-        <dct:identifier>ww52</dct:identifier>
+        <dct:identifier>_ww52</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser le bon terme pour identifier quelque chose ou quelqu'un.</dct:title>
-        <dct:description><![CDATA["legend":["[img]res/img/clipart/people/queen01.svg[/img]","[img]res/img/clipart/sport/tennisplayer01.svg[/img]","[img]res/img/clipart/vegetable/banana01.svg[/img]"],"onclick":"onlyone","states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"yellow"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"font":2,"values":[{"template":"qcm3","result":"100","t":["une reine","une femme","un être humain"]},{"template":"qcm3","result":"001","t":["une femme","une sportive","une joueuse de tennis"]},{"template":"qcm3","result":"010","t":["un aliment","une banane","un fruit"]}],"exercice":{"value":"Parmi les noms possibles correspondant à l'illustration, choisissez celui qui est le plus [red]précis[/red]."}]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","automatic":"one","legend":["[img]res/img/clipart/people/queen01.svg[/img]","[img]res/img/clipart/sport/tennisplayer01.svg[/img]","[img]res/img/clipart/vegetable/banana01.svg[/img]"],"onclick":"onlyone","states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"yellow"}]},"wrong":{"mask":"0","style":{"background-color":"red"}}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"font":2,"values":[{"template":"qcm3","result":"100","t":["une reine","une femme","un être humain"]},{"template":"qcm3","result":"001","t":["une femme","une sportive","une joueuse de tennis"]},{"template":"qcm3","result":"010","t":["un aliment","une banane","un fruit"]}],"exercice":{"value":"Parmi les noms possibles correspondant à l'illustration, [b]choisissez[/b] celui qui est le plus [red]précis[/red]."}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>frword</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>ww21</dct:alternative>
-        <dct:source>res/img/clipart/people/queen01.svg,res/img/clipart/sport/tennisplayer01.svg,res/img/clipart/vegetable/banana01.svg</dct:source>
+        <dct:alternative>_ww21</dct:alternative>
+        <dct:source>res/img/background/landscape/blueboard01.svg,res/img/clipart/people/queen01.svg,res/img/clipart/sport/tennisplayer01.svg,res/img/clipart/vegetable/banana01.svg</dct:source>
     </rdf:Description>
 
     
+	<!-- SPACE BETWEEN WORDS -->
+	
     <rdf:Description>
-        <dct:identifier>www01</dct:identifier>
+        <dct:identifier>_www01</dct:identifier>
         <dct:title xml:lang="fr-FR">Séparer par une espace les mots de la phrase [ Ilfaitduvélo, Legarçoncourt, Ellejouedelaguitare ].</dct:title>
         <dct:description><![CDATA["data":"<div style='margin-top:50%;margin-left:5%;font-size:1.2em;font-family: \\\"Courier New\\\" Courier monospace;color:#332200;height:1.2em;' class='overflow'><div style='margin-top:.2em;background-color:rgba(255,255,200,0.5);border-radius:.1em;width:12em;padding:.1em;height:1.2em;'><div class='t' style='height:1em;float:left;'></div><div class='a t' style='height:1em;float:left;'></div><div class='a t' style='height:1em;float:left;'></div><div class='a t' style='height:1em;float:left;'></div><div class='a t' style='height:1em;float:left;'></div><div class='a t' style='height:1em;float:left;'></div><div class='a t' style='height:1em;float:left;'></div><div class='a t' style='height:1em;float:left;'></div><div class='a t' style='height:1em;float:left;'></div><div class='a t' style='height:1em;float:left;'></div><div class='a t' style='height:1em;float:left;'></div><div class='a t' style='height:1em;float:left;'></div><div class='a t' style='height:1em;float:left;'></div><div class='a t' style='height:1em;float:left;'></div><div class='a t' style='height:1em;float:left;'></div><div class='a t' style='height:1em;float:left;'></div><div class='a t' style='height:1em;float:left;'></div><div class='a t' style='height:1em;float:left;'></div><div class='a t' style='height:1em;float:left;'></div><div class='a t' style='height:1em;float:left;'></div></div></div><div id='illustration' style='position:absolute;width:1em;height:1em;font-size:7.5em;top:1%;left:30%;background-color:white;border:2px solid black;'></div>","states":{ "nb":2,"style":[{"margin-left":"0"},{"margin-left":"0.3em"}]},"wrong":{"style":{"color":"red"}},"values":[{"result":"01000101000000000000","t":"Ilfaitduvélo."},{"result":"01000001000000000000","t":"Legarçoncourt."},{"result":"00010001010100000000","t":"Ellejouedelaguitare."}],"illustration":["res/img/clipart/sport/cyclist01.svg","res/img/clipart/event/runningboy01.svg","res/img/clipart/music/guitarplayer01.svg"]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Les mots de la phrase sont attachés. [b]Séparez-les[/b] en ajoutant [red]une espace devant[/red] les premières lettres de chaque mot.","fontex":0.8]]></dct:description>
@@ -238,13 +245,13 @@
         <dct:subject>frword</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>www01</dct:alternative>
+        <dct:alternative>_www01</dct:alternative>
         <dct:source>res/img/clipart/sport/cyclist01.svg,res/img/clipart/event/runningboy01.svg,res/img/clipart/music/guitarplayer01.svg</dct:source>
     </rdf:Description>
 
 
     <rdf:Description>
-        <dct:identifier>www02</dct:identifier>
+        <dct:identifier>_www02</dct:identifier>
         <dct:title xml:lang="fr-FR">Séparer par une espace les mots de la phrase [ Mononclelitlejournal, Ilvabientôtpleuvoir, Elsasauteàlacorde ].</dct:title>
         <dct:description><![CDATA["data":"<div style='margin-top:50%;margin-left:5%;font-size:1.2em;font-family: \\\"Courier New\\\" Courier monospace;color:#332200;height:1.2em;' class='overflow'><div style='margin-top:.2em;background-color:rgba(255,255,200,0.5);border-radius:.1em;width:12em;padding:.1em;height:1.2em;'><div class='t' style='height:1em;float:left;'></div><div class='a t' style='height:1em;float:left;'></div><div class='a t' style='height:1em;float:left;'></div><div class='a t' style='height:1em;float:left;'></div><div class='a t' style='height:1em;float:left;'></div><div class='a t' style='height:1em;float:left;'></div><div class='a t' style='height:1em;float:left;'></div><div class='a t' style='height:1em;float:left;'></div><div class='a t' style='height:1em;float:left;'></div><div class='a t' style='height:1em;float:left;'></div><div class='a t' style='height:1em;float:left;'></div><div class='a t' style='height:1em;float:left;'></div><div class='a t' style='height:1em;float:left;'></div><div class='a t' style='height:1em;float:left;'></div><div class='a t' style='height:1em;float:left;'></div><div class='a t' style='height:1em;float:left;'></div><div class='a t' style='height:1em;float:left;'></div><div class='a t' style='height:1em;float:left;'></div><div class='a t' style='height:1em;float:left;'></div><div class='a t' style='height:1em;float:left;'></div></div></div><div id='illustration' style='position:absolute;width:1em;height:1em;font-size:7.5em;top:1%;left:30%;background-color:white;border:2px solid black;'></div>","states":{ "nb":2,"style":[{"margin-left":"0"},{"margin-left":"0.3em"}]},"wrong":{"style":{"color":"red"}},"values":[{"result":"00100001001010000000","t":"Mononclelitlejournal"},{"result":"01010000001000000000","t":"Ilvabientôtpleuvoir."},{"result":"00010000110100000000","t":"Elsasauteàlacorde."}],"illustration":["res/img/clipart/event/reading01.svg","res/img/clipart/event/rainiscoming01.svg","res/img/clipart/sport/jumping01.svg"]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Les mots de la phrase sont attachés. [b]Séparez-les[/b] en ajoutant [red]une espace devant[/red] les premières lettres de chaque mot.","fontex":0.8]]></dct:description>
@@ -252,12 +259,12 @@
         <dct:subject>frword</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>www01</dct:alternative>
+        <dct:alternative>_www01</dct:alternative>
         <dct:source>res/img/clipart/event/reading01.svg,res/img/clipart/event/rainiscoming01.svg,res/img/clipart/sport/jumping01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>ws01</dct:identifier>
+        <dct:identifier>_ws01</dct:identifier>
         <dct:title xml:lang="fr-FR">Barrer les phrases syntaxiquement fausses.</dct:title>
         <dct:description><![CDATA["values":[{"template":"array1x5","result":"01100","t":["Il va bientôt pleuvoir.","Table la nappe la est sur.","Elle girafe à la crocodile.","Mon oncle lit son journal.","Amélie nage très bien."]},{"template":"array1x5","result":"01011","t":["Il fait du vélo.","Les soleil nuages.","Ce chien est très gentil.","Mer avoir calme la.","Cheval chien chat non."]},{"template":"array1x5","result":"00101","t":["La récréation est finie.","Marie mange une pomme.","La plage à la nous.","Thomas a de la chance.","Petit lait chat chat boit."]}],"states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"#222"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Barrez[/b] les phrases [red]erronées[/red]."]]></dct:description>
@@ -265,12 +272,12 @@
         <dct:subject>frword</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>ws01</dct:alternative>
+        <dct:alternative>_ws01</dct:alternative>
     </rdf:Description>
 
 
     <rdf:Description>
-        <dct:identifier>wss01</dct:identifier>
+        <dct:identifier>_wss01</dct:identifier>
         <dct:title xml:lang="fr-FR">Séparer les différentes phrases du texte.</dct:title>
         <dct:description><![CDATA["data":"<div style='margin-top:10%;padding:1%;margin-left:4%;background-color:rgba(255,255,200,0.5);border-radius:.1em;width:90%;height:60%;font-size:1em;font-family: \\\"Courier New\\\" Courier monospace;'><div class='t' style='float:left;margin-left:0.3em;'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div><div class='a t'></div></div>","states":{ "nb":2,"style":[{"margin-left":"0.3em","float":"left"},{"margin-left":"0.3em","float":"left"}]},"wrong":{"style":{"color":"red"}},"values":[{"result":"000000100000000010000000000000","t":["Ce","matin,","la","petite Lizzie","s'est","levée","tôt","elle","est","sortie","de","la","chambre","sans","réveiller","sa","soeur","à","la","cuisine,","elle","a","préparé","le","petit-déjeuner","pour","tout","le","monde."]},{"result":"000001000010000000000100000000","t":["La","fillette","a","sorti","des","bols","elle","a","ouvert","le","frigo","sur","la","table,","elle","a","posé","le","lait","et","la","confiture","quel","travail !"]}],"onclick":"function($this,elts,id){var c = elts[id].elt.html(); if (elts[id].state) { elts[id].elt.html(c[0].toLowerCase()+c.substr(1)); elts[id].elt.prev().html(elts[id].elt.prev().html().replace('.','')); } else { elts[id].elt.html(c[0].toUpperCase()+c.substr(1)); elts[id].elt.prev().append('.'); } return true;}"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Séparez[/b] les différentes phrases du texte en cliquant sur le [red]premier mot[/red] de chacune d'entre elles."]]></dct:description>
@@ -278,12 +285,12 @@
         <dct:subject>frword</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>wS01</dct:alternative>
+        <dct:alternative>_wS01</dct:alternative>
     </rdf:Description>
 
 
     <rdf:Description>
-        <dct:identifier>sa01</dct:identifier>
+        <dct:identifier>_sa01</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier, grâce aux images, les mots présentant le son 'a'.</dct:title>
         <dct:description><![CDATA["regexp":{ "from": "(.+)","to":"<img src=\\\"res/img/clipart/$1.svg\\\"/>"},"values":[{"template":"array4x3","result":"110100011000","t":["vehicle/airplane01","vegetable/banana01","tool/scissors01","sport/football01","object/book01","object/key01","vehicle/bike01","object/gift01","music/piano01","furniture/bed01","clothes/shirt03","clothes/shoes01"]},{"template":"array4x3","result":"101011011011","t":["clothes/bag01","animal/rooster03","vehicle/tractor01","animal/dog04","animal/cow01","food/cake03","animal/turtle01","food/icecream02","furniture/table01","object/domino01","animal/panda02","clothes/hat01"]}],"states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)"},{"background-color":"#F88"}]},"wrong":{"style":{"background-color":"black"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez les dessins des mots contenant le son [red]'a'[/red].","tag":"a"}]]></dct:description>
@@ -291,12 +298,12 @@
         <dct:subject>frword</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>3</dct:type>
-        <dct:alternative>sa01</dct:alternative>
+        <dct:alternative>_sa01</dct:alternative>
         <dct:source>res/img/clipart/vehicle/airplane01.svg,res/img/clipart/vegetable/banana01.svg,res/img/clipart/tool/scissors01.svg,res/img/clipart/sport/football01.svg,res/img/clipart/object/book01.svg,res/img/clipart/object/key01.svg,res/img/clipart/vehicle/bike01.svg,res/img/clipart/object/gift01.svg,res/img/clipart/music/piano01.svg,res/img/clipart/furniture/bed01.svg,res/img/clipart/clothes/shirt03.svg,res/img/clipart/clothes/shoes01.svg,res/img/clipart/animal/rooster03.svg,res/img/clipart/vehicle/tractor01.svg,res/img/clipart/animal/dog04.svg,res/img/clipart/animal/cow01.svg,res/img/clipart/food/cake03.svg,res/img/clipart/animal/turtle01.svg,res/img/clipart/food/icecream02.svg,res/img/clipart/furniture/table01.svg,res/img/clipart/object/domino01.svg,res/img/clipart/animal/panda02.svg,res/img/clipart/clothes/hat01.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
-        <dct:identifier>si01</dct:identifier>
+        <dct:identifier>_si01</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier, grâce aux images, les mots présentant le son 'i'.</dct:title>
         <dct:description><![CDATA["regexp":{ "from": "(.+)","to":"<img src=\\\"res/img/clipart/$1.svg\\\"/>"},"values":[{"template":"array4x3","result":"101011100011","t":["bugs/ant01","animal/chicken01","tool/scissors01","clothes/hat01","object/book01","furniture/bed01","bugs/butterfly02","object/gift01","vehicle/tire01","object/lamp01","clothes/shirt03","animal/mice01"]},{"template":"array4x3","result":"001010001101","t":["clothes/bag01","animal/zebra01","animal/giraffe01","bugs/fly02","animal/rhinoceros01","animal/panda02","clothes/glasses01","vehicle/bus01","object/tap01","object/domino01","building/tent01","animal/seahorse01"]}],"states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)"},{"background-color":"#F88"}]},"wrong":{"style":{"background-color":"black"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"Coloriez les dessins des mots contenant le son [red]'i'[/red].","tag":"i"}]]></dct:description>
@@ -304,7 +311,7 @@
         <dct:subject>frword</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>3</dct:type>
-        <dct:alternative>sa01</dct:alternative>
+        <dct:alternative>_sa01</dct:alternative>
         <dct:source>res/img/clipart/bugs/ant01.svg,res/img/clipart/animal/chicken01.svg,res/img/clipart/tool/scissors01.svg,res/img/clipart/clothes/hat01.svg,res/img/clipart/object/book01.svg,res/img/clipart/furniture/bed01.svg,res/img/clipart/bugs/butterfly02.svg,res/img/clipart/object/gift01.svg,res/img/clipart/vehicle/tire01.svg,res/img/clipart/object/lamp01.svg,res/img/clipart/clothes/shirt03.svg,res/img/clipart/animal/mice01.svg,res/img/clipart/clothes/bag01.svg,res/img/clipart/animal/zebra01.svg,res/img/clipart/animal/giraffe01.svg,res/img/clipart/bugs/fly02.svg,res/img/clipart/animal/rhinoceros01.svg,res/img/clipart/animal/panda02.svg,res/img/clipart/clothes/glasses01.svg,res/img/clipart/vehicle/bus01.svg,res/img/clipart/object/tap01.svg,res/img/clipart/object/domino01.svg,res/img/clipart/building/tent01.svg,res/img/clipart/animal/seahorse01.svg</dct:source>
     </rdf:Description>
 
@@ -313,7 +320,7 @@
 
 
     <rdf:Description>
-        <dct:identifier>wa541</dct:identifier>
+        <dct:identifier>_wa541</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier les noms dont la forme au pluriel est identique à celle au singulier.</dct:title>
         <dct:description><![CDATA["values":[{"template":"array2x5","result":"1101101011","t":["Buzz","Procés","Champs","Progrés","Nez","Képis","Poids","Bananes","Ananas","Os"]},{"template":"array2x5","result":"1111111111","t":["Anchois", "Blocus","Autobus","Puits","Noix","Remords","Rubis","Corps","Obus","Pancréas"]}],"states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"blue"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Identifiez les noms dont la forme au pluriel est identique à celle au singulier."]]></dct:description>
@@ -321,11 +328,11 @@
         <dct:subject>frword</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>wa541</dct:alternative>
+        <dct:alternative>_wa541</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>wa551</dct:identifier>
+        <dct:identifier>_wa551</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier les noms en -ou dont le pluriel est correctement écrit.</dct:title>
         <dct:description><![CDATA["values":[{"template":"array2x5","result":"1000010101","t":["Bijous","Voyous","Bisous","Hiboux","Poux","Troux","Ecrous","Coucoux","Joujoux","Mérous"]},{"template":"array2x5","result":"1010010100","t":["Chous", "Choux","Bamboux","Kangourous","Cailloux","Hibous","Froufrous","Manitoux","Bijoux","Clous"]}],"states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"#222"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Barrez les pluriels erronés."]]></dct:description>
@@ -333,11 +340,11 @@
         <dct:subject>frword</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
-        <dct:alternative>wa541</dct:alternative>
+        <dct:alternative>_wa541</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>wa561</dct:identifier>
+        <dct:identifier>_wa561</dct:identifier>
         <dct:title xml:lang="fr-FR">Identifier les noms en -al dont le pluriel est correctement écrit.</dct:title>
         <dct:description><![CDATA["values":[{"template":"array2x5","result":"0101000011","t":["Chevaux","Bocals","Bals","Carnavaux","Festivals","Récitals","Signaux","Totaux","Chacaux","Amirals"]},{"template":"array2x5","result":"1100101010","t":["Chevals", "Animals","Carnavals","Régals","Journals","Locaux","Générals","Oraux","Signals","Bocaux"]}],"states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"#222"}]},"wrong":{"style":{"background-color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Barrez les pluriels erronés."]]></dct:description>
@@ -345,7 +352,7 @@
         <dct:subject>frword</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>wa541</dct:alternative>
+        <dct:alternative>_wa541</dct:alternative>
     </rdf:Description>
 
 
