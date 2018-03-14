@@ -11,7 +11,7 @@
         evaluation  : [4,0.8],                  // The evaluation from the score average (4 for A, 3.5 for B, 3 for C, etc.)
         font        : 1,                        // Font size
         fontex      : 1,
-        effects     : true,                     // Display effects
+        fx     		: true,                     // Display effects
         width       : 640,
         background  : "",
         debug       : true                     // Debug mode
@@ -107,12 +107,23 @@
                 
                 // HANDLE BACKGROUND
                 if (settings.background) { $this.children().first().css("background-image","url("+settings.background+")"); }
-
-
-                // USER TEXT
-                if (settings.txt) {
-                    for (var i in settings.txt) { $("#"+i,settings.svg.root()).text(settings.txt[i]); }
-                }
+				
+				// HANDLE STATIC TEXT OR IMAGE IN SVG
+				if (settings.txt) {
+					var txt = settings.txt;
+					if (typeof(txt)=="string" && txt.indexOf("function")!=-1) { txt = eval('('+settings.txt+')')($this); }
+		
+					for (var i in txt) {
+						if (txt[i].toString().indexOf(".svg")!=-1) 
+						{ 
+							$("#"+i,settings.svg.root()).attr("xlink:href",txt[i]).show();
+						}
+						else
+						{
+							$("#"+i,settings.svg.root()).text(txt[i]).show();
+						}
+					}
+				}
 
                 // LOCALE HANDLING
 
@@ -304,7 +315,7 @@
                     $li.bind('touchstart click', function(event) { helpers.submit($this); event.preventDefault(); });
 
                     // GET THE QUESTION
-                    if (settings.gen) { vValue = eval('('+settings.gen+')')(); }
+                    if (settings.gen) { vValue = eval('('+settings.gen+')')($this, settings, 0); }
                     else {
                         do  {
                             vNew = (settings.shuffle)?Math.floor(Math.random()*settings.values.length):i;
@@ -420,6 +431,7 @@
                 clearTimeout(settings.timer.id);
 
                 var score = settings.score/(settings.number*settings.cursor.length);
+				
                 if (score>=settings.evaluation[0]-0*settings.evaluation[1])     { settings.score = 5; } else
                 if (score>=settings.evaluation[0]-1*settings.evaluation[1])     { settings.score = 4; } else
                 if (score>=settings.evaluation[0]-2*settings.evaluation[1])     { settings.score = 3; } else
@@ -440,87 +452,94 @@
                     var vResponse;
                     var vCursor = settings.cursors[i];
 
-                    // GET THE RESPONSE FOR EACH CURSOR
-                    if (settings.cursor.length>1)   { vResponse = settings.questions[settings.it][1][it]; } else
-                                                    { vResponse = settings.questions[settings.it][1]; }
+					// COMPUTE THE RESPONSE
+					if (settings.compute) {
+						vScore+=eval('('+settings.compute+')')($this, settings, i);
+					}
+					else {
+					
+						// GET THE RESPONSE FOR EACH CURSOR
+						if (settings.cursor.length>1)   { vResponse = settings.questions[settings.it][1][it]; } else
+														{ vResponse = settings.questions[settings.it][1]; }
 
-                    if (vCursor.center) {
-                        var vValue = vCursor.translate;
-                        if (!vCursor.boundaries) { while(vValue<0) { vValue+=360; } vValue=vValue%360; }
-                        var vDist = Math.abs(vValue-vResponse);
+						if (vCursor.center) {
+							var vValue = vCursor.translate;
+							if (!vCursor.boundaries) { while(vValue<0) { vValue+=360; } vValue=vValue%360; }
+							var vDist = Math.abs(vValue-vResponse);
 
-                        if (settings.scorefct) {
-                            vScore = eval('('+settings.scorefct+')')(vCursor.translate, vResponse);
-                        }
-                        else {
-                            if (vDist<=vCursor.steps[0])  { vScore+=5; } else
-                            if (vDist<=vCursor.steps[1])  { vScore+=4; } else
-                            if (vDist<=vCursor.steps[2])  { vScore+=3; } else
-                            if (vDist<=vCursor.steps[3])  { vScore+=2; } else
-                            if (vDist<=vCursor.steps[4])  { vScore+=1; }
-                        }
-                        vCursor.effects=[vResponse];
-                    }
-                    else {
-                        // NEED TO MOVE THE RESPONSE?
-                        var vTransX = -9999, vTransY = 0;
-                        if ($.isArray(vResponse)) { vTransX = vResponse[1]; vTransY = vResponse[2]; vResponse = vResponse[0];  }
+							if (settings.scorefct) {
+								vScore = eval('('+settings.scorefct+')')(vCursor.translate, vResponse);
+							}
+							else {
+								if (vDist<=vCursor.steps[0])  { vScore+=5; } else
+								if (vDist<=vCursor.steps[1])  { vScore+=4; } else
+								if (vDist<=vCursor.steps[2])  { vScore+=3; } else
+								if (vDist<=vCursor.steps[3])  { vScore+=2; } else
+								if (vDist<=vCursor.steps[4])  { vScore+=1; }
+							}
+							vCursor.effects=[vResponse];
+						}
+						else {
+							// NEED TO MOVE THE RESPONSE?
+							var vTransX = -9999, vTransY = 0;
+							if ($.isArray(vResponse)) { vTransX = vResponse[1]; vTransY = vResponse[2]; vResponse = vResponse[0];  }
 
-                        var $response = $("#"+vResponse, settings.svg.root());
-                        if ($response.attr("r")) {
-                            // MOVE RESPONSE
-                            if (vTransX!=-9999) { $response.attr("cx",vTransX); $response.attr("cy",vTransY); }
+							var $response = $("#"+vResponse, settings.svg.root());
+							if ($response.attr("r")) {
+								// MOVE RESPONSE
+								if (vTransX!=-9999) { $response.attr("cx",vTransX); $response.attr("cy",vTransY); }
 
-                            // GET VALUES FROM RESPONSE
-                            var vR  = parseFloat($response.attr("r"));
-                            var vS  = parseFloat((vCursor.step>=0)?vCursor.step:vR);
-                            var vCx = $response.attr("cx");
-                            var vCy = $response.attr("cy");
-                            var vDist = Math.sqrt((vCx-vCursor.translate[0])*(vCx-vCursor.translate[0]) +
-                                                (vCy-vCursor.translate[1])*(vCy-vCursor.translate[1]));
-                            if (settings.scorefct) {
-                                vScore = eval('('+settings.scorefct+')')(vCx-vCursor.translate[0], vCy-vCursor.translate[1]);
-                            }
-                            else {
-                                if (vDist<vR+vS*vCursor.steps[0])  { vScore+=5; } else
-                                if (vDist<vR+vS*vCursor.steps[1])  { vScore+=4; } else
-                                if (vDist<vR+vS*vCursor.steps[2])  { vScore+=3; } else
-                                if (vDist<vR+vS*vCursor.steps[3])  { vScore+=2; } else
-                                if (vDist<vR+vS*vCursor.steps[4])  { vScore+=1; }
-                            }
+								// GET VALUES FROM RESPONSE
+								var vR  = parseFloat($response.attr("r"));
+								var vS  = parseFloat((vCursor.step>=0)?vCursor.step:vR);
+								var vCx = $response.attr("cx");
+								var vCy = $response.attr("cy");
+								var vDist = Math.sqrt((vCx-vCursor.translate[0])*(vCx-vCursor.translate[0]) +
+													(vCy-vCursor.translate[1])*(vCy-vCursor.translate[1]));
+								if (settings.scorefct) {
+									vScore = eval('('+settings.scorefct+')')(vCx-vCursor.translate[0], vCy-vCursor.translate[1]);
+								}
+								else {
+									if (vDist<vR+vS*vCursor.steps[0])  { vScore+=5; } else
+									if (vDist<vR+vS*vCursor.steps[1])  { vScore+=4; } else
+									if (vDist<vR+vS*vCursor.steps[2])  { vScore+=3; } else
+									if (vDist<vR+vS*vCursor.steps[3])  { vScore+=2; } else
+									if (vDist<vR+vS*vCursor.steps[4])  { vScore+=1; }
+								}
 
-                            vCursor.effects=[vCx, vCy, vR, vS];
-                            vCursor.targettype="circle";
-                        }
-                        else {
-                            // MOVE RESPONSE
-                            if (vTransX!=-9999) { $response.attr("x",vTransX); $response.attr("y",vTransY); }
+								vCursor.effects=[vCx, vCy, vR, vS];
+								vCursor.targettype="circle";
+							}
+							else {
+								// MOVE RESPONSE
+								if (vTransX!=-9999) { $response.attr("x",vTransX); $response.attr("y",vTransY); }
 
-                            // GET VALUES FROM RESPONSE
-                            // COMPUTE DISTANCE FROM THE FAREST AXIS
-                            var vR = [ parseFloat($response.attr("width")), parseFloat($response.attr("height")) ];
-                            var vC = [ parseFloat($response.attr("x"))+(vR[0]/2), parseFloat($response.attr("y"))+(vR[1]/2) ];
-                            var vDist = [ Math.sqrt((vC[0]-vCursor.translate[0])*(vC[0]-vCursor.translate[0])),
-                                        Math.sqrt((vC[1]-vCursor.translate[1])*(vC[1]-vCursor.translate[1])) ];
-                            var k=(vDist[0]/vR[0]>vDist[1]/vR[1])?0:1;
-                            var vS = parseFloat((vCursor.step>=0)?vCursor.step:vR[k]/2);
+								// GET VALUES FROM RESPONSE
+								// COMPUTE DISTANCE FROM THE FAREST AXIS
+								var vR = [ parseFloat($response.attr("width")), parseFloat($response.attr("height")) ];
+								var vC = [ parseFloat($response.attr("x"))+(vR[0]/2), parseFloat($response.attr("y"))+(vR[1]/2) ];
+								var vDist = [ Math.sqrt((vC[0]-vCursor.translate[0])*(vC[0]-vCursor.translate[0])),
+											Math.sqrt((vC[1]-vCursor.translate[1])*(vC[1]-vCursor.translate[1])) ];
+								var k=(vDist[0]/vR[0]>vDist[1]/vR[1])?0:1;
+								var vS = parseFloat((vCursor.step>=0)?vCursor.step:vR[k]/2);
 
 
-                            if (settings.scorefct) {
-                                vScore = eval('('+settings.scorefct+')')(vC[0]-vCursor.translate[0], vC[1]-vCursor.translate[1]);
-                            }
-                            else {
-                                if (vDist[k]<vR[k]+vS*vCursor.steps[0])  { vScore+=5; } else
-                                if (vDist[k]<vR[k]+vS*vCursor.steps[1])  { vScore+=4; } else
-                                if (vDist[k]<vR[k]+vS*vCursor.steps[2])  { vScore+=3; } else
-                                if (vDist[k]<vR[k]+vS*vCursor.steps[3])  { vScore+=2; } else
-                                if (vDist[k]<vR[k]+vS*vCursor.steps[4])  { vScore+=1; }
-                            }
+								if (settings.scorefct) {
+									vScore = eval('('+settings.scorefct+')')(vC[0]-vCursor.translate[0], vC[1]-vCursor.translate[1]);
+								}
+								else {
+									if (vDist[k]<vR[k]+vS*vCursor.steps[0])  { vScore+=5; } else
+									if (vDist[k]<vR[k]+vS*vCursor.steps[1])  { vScore+=4; } else
+									if (vDist[k]<vR[k]+vS*vCursor.steps[2])  { vScore+=3; } else
+									if (vDist[k]<vR[k]+vS*vCursor.steps[3])  { vScore+=2; } else
+									if (vDist[k]<vR[k]+vS*vCursor.steps[4])  { vScore+=1; }
+								}
 
-                            vCursor.effects=[vC[0],vC[1],vR[0],vR[1]];
-                            vCursor.targettype="rect";
-                        }
-                    }
+								vCursor.effects=[vC[0],vC[1],vR[0],vR[1]];
+								vCursor.targettype="rect";
+							}
+						}
+					}
                     it++;
                 }
 
@@ -531,23 +550,25 @@
                 $this.find("#effects>div").hide();
                 if (Math.floor(vScore/it)==5) {
                     $this.find("#submit>img").hide(); $this.find("#subgood").show();
-                    if (settings.effects) { $this.find("#effects #good").show(); }
+                    $this.find("#effects #good").show();
                 }
                 if (Math.floor(vScore/it)==0) {
                     $this.find("#submit>img").hide(); $this.find("#subwrong").show();
-                    if (settings.effects) { $this.find("#effects #wrong").show(); }
+                    $this.find("#effects #wrong").show();
                 }
 
                 // COMPUTE SCORE AND SHOW EFFECTS
                 settings.score += vScore;
 
                 $this.find("#values").attr("class","nh s"+Math.floor(vScore/it));
-                setTimeout(function() { helpers.createEffects($this, 4); }, 100 );
-                setTimeout(function() { helpers.createEffects($this, 3); }, 250 );
-                setTimeout(function() { helpers.createEffects($this, 2); }, 400 );
-                setTimeout(function() { helpers.createEffects($this, 1); }, 550 );
-                setTimeout(function() { helpers.createEffects($this, 0); }, 700 );
-                setTimeout(function() { helpers.compute($this); }, 1500 );
+				if (settings.fx) {
+					setTimeout(function() { helpers.createEffects($this, 4); }, 100 );
+					setTimeout(function() { helpers.createEffects($this, 3); }, 250 );
+					setTimeout(function() { helpers.createEffects($this, 2); }, 400 );
+					setTimeout(function() { helpers.createEffects($this, 1); }, 550 );
+					setTimeout(function() { helpers.createEffects($this, 0); }, 700 );
+				}
+				setTimeout(function() { helpers.compute($this); }, 1500 );
             }
         },
     };
