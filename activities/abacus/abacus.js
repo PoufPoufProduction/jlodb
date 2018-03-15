@@ -174,9 +174,10 @@
                                       $("#e"+settings.mouse.col+(i==10?'a':i), settings.svg.root()).attr("class").replace(" up","")+" m"  ); }
                             }
                         }
-                        settings.mouse.clientY = event.clientY;
-                        settings.mouse.clientX = event.clientX;
+                        settings.mouse.clientY = vEvent.clientY;
+                        settings.mouse.clientX = vEvent.clientX;
                         settings.mouse.move = 0;
+						
 
                     }
                     event.preventDefault();
@@ -184,13 +185,14 @@
 
                 $this.find("#board").bind("mousemove touchmove", function(event) {
                     if (settings.interactive && settings.mouse.clientY) {
+						
                         var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
                             event.originalEvent.touches[0]:event;
                         if (c[settings.type].defmove) {
-                            settings.mouse.move = ((event.clientY - settings.mouse.clientY)/settings.ratio);
+                            settings.mouse.move = ((vEvent.clientY - settings.mouse.clientY)/settings.ratio);
                         }
                         else {
-                            settings.mouse.move = ((event.clientX - settings.mouse.clientX)/settings.ratio);
+                            settings.mouse.move = ((vEvent.clientX - settings.mouse.clientX)/settings.ratio);
                         }
 
                         var vMax = (settings.mouse.row>c[settings.type].b[0]?c[settings.type].u[1]:c[settings.type].u[0]);

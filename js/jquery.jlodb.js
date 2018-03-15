@@ -3,9 +3,9 @@ document.ontouchmove = function(e) { e.preventDefault(); }
 
 // IS A CSS ALTERNATIVE POSSIBLE ?
 $(window).resize(function() {
-    var x = Math.floor($(window).width()/16);
-    var y = Math.floor($(window).height()/12);
-    var r = 1;
+    var x = $(window).width()/16;
+    var y = $(window).height()/12;
+    var r = 0.1;
     var font=Math.floor(Math.min(x,y)/r)*r;
     $("body").css("font-size", font+"px");
     $("body>div").css("margin-top", Math.floor(($(window).height()-$("body>div").height())/2-2)+"px");
