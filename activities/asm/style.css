@@ -37,7 +37,8 @@
 .asm #screens #buttons              { position:absolute; top:0; left:.5em; }
 .asm #screens #buttons>div          { font-size:3em; width:1em; height:1em; margin:.1em; float:left; cursor:pointer;}
 /*---------------------------------------------------------------------------------------------------------------------------*/
-.asm div#board #central>*           { font-size:.75em; margin-left:.2em; width:20em;  }
+.asm div#board #central             { margin-left:.2em; width:45%; }
+.asm div#board #central>*           { font-size:.75em; width:100%;  }
 .asm #central #code                 { height:25em; background-color:black; overflow:auto; margin-top:.1em;
                                       background-image:url("../../res/img/background/asset/it01.svg"); background-repeat:no-repeat; }
 .asm #central #code #lines          { font-size:1.5em; }
@@ -64,7 +65,8 @@
 .asm #central #exercice .strong      { color:red; font-weight:bold; border: 1px solid red; border-width:1px 0; }
 
 /*---------------------------------------------------------------------------------------------------------------------------*/
-.asm div#board #detail>*            { font-size:.75em;width:10em; margin-left:.1em; }
+.asm div#board #detail				{ width:22%; }
+.asm div#board #detail>*            { font-size:.75em; margin-left:.1em; width:100%; }
 .asm #detail #source                { height:25em; background-color:#112211; margin-top:.1em; 
                                       background-image:url("../../res/img/default/pattern/line03.svg"); background-repeat:repeat;}
 .asm #detail #source>div            { clear:both; }

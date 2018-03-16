@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>TiBIbo</title>
+    <title>Tibibo</title>
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
@@ -70,12 +70,13 @@
 #boawards #add              { font-size:3em; cursor:pointer; }
 
 #boawardscontent            { overflow-y:auto; height:100%; width:100%; }
+#boawardscontent:after		{ content:" "; }
 #boawardscontent.small      { height:80%; }
 #boawardscontent .boawelt   { font-size:1.4em; float:left; width:5em; height:1em; background-color:rgba(150,150,150,0.6); margin:.05em; padding:.05em 0; position:relative; }
 #boawardscontent .boawelt.new { background-color:rgba(255,150,150,0.6); cursor:help; }
 #boawardscontent .boawelt.done { background-color:rgba(150,220,255,0.6); }
-#boawardscontent .label     { font-size:.12em; width:48%; margin-left:1em; }
-#boawardscontent .img       { background-image:url("res/img/icon/tab/tab00.svg"); border-radius:.5em; overflow:visible; margin-left:.05em; }
+#boawardscontent .label     { font-size:.12em; width:48%; margin-left:2%; }
+#boawardscontent .img       { background-image:url("res/img/icon/tab/tab00.svg"); border-radius:.5em; overflow:visible; margin-left:.05em; max-width:20%; background-repeat:no-repeat; }
 .boawelt>div                { float:left; overflow:visible; }
 #boawardscontent .progress  { width:25%; height:100%; font-size:.2em; cursor:pointer; float:right; margin-right:1%; }
 #boawardscontent .progress.n1 .slider { height:5em; }

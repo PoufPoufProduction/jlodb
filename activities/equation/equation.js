@@ -26,8 +26,9 @@
 
                         addeq       : false     // Authorization : add equations (blue arrow). Not conceirned by a.all
                       },
-        top         : 5,                        // top position of the first equation
+        top         : 168,                      // top position of the first equation
         background  : "",
+		errratio	: 1,
         debug       : true                      // Debug mode
     };
 
@@ -1662,20 +1663,20 @@ helpers.equations.get($this).label();
             // TO ENHANCE
             for (var i in settings.result) {
                 var reg = (settings.result[i][0]=='|')?new RegExp(settings.result[i].substr(1,settings.result[i].length-2)):0;
-                var dist = -1;
                 for (var j in settings.data) {
                     var d=5;
                     if (reg) { if (settings.data[j].value.match(reg,"g")) { d=0; } }
                     else     { d = helpers.levenshtein(settings.data[j].value, settings.result[i]); }
 
-
+					d = Math.min(5,Math.floor(d*settings.errratio));
+					
                     if (settings.data[j].dist == -1 || d<settings.data[j].dist) { settings.data[j].dist = d; }
-                    if (dist == -1 || d<dist) { dist = d; }
                 }
             }
             var total = 0;
             for (var j in settings.data) { total+=settings.data[j].dist;
                                            settings.data[j].$svg.attr("class", "equ s"+settings.data[j].dist); }
+	
             settings.score=total>5?0:5-total;
             $this.find("#submit").addClass(total?"wrong":"good");
 

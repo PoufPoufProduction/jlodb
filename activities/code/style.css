@@ -39,8 +39,8 @@
 .code #screens #buttons #play        { font-size:4.4em; margin:.05em; }
 
 /*-----------------------------------------------------------------------------------------------------*/
-.code div#board #central             { height:23.75em; margin-left:.2em; }
-.code div#board #central>*           { font-size:.75em;  width:20em; }
+.code div#board #central             { height:23.75em; margin-left:.2em; width:45%; }
+.code div#board #central>*           { font-size:.75em; width:100%; }
 .code #central #code                 { height:25.2em; background-color:#222; overflow:auto; background-size:100%;
                                       background-image:url("../../res/img/background/asset/it01.svg"); background-repeat:no-repeat; margin-top:.1em; }
 .code #central #code #lines          { font-size:1em; }
@@ -55,7 +55,7 @@
 .code #central #lines .code>div      { float:left; }
 .code #central #lines .codelabel     { width:3.7em; text-align:center; }
 .code #central #lines .codevalue     { margin-left:1em; font-size:.3em; width:22em; }
-.code #central #exercice             { width:30em !important; height:25em; background-repeat:repeat;
+.code #central #exercice             { height:25em; background-repeat:repeat;
                                       background-image:url("../../res/img/default/pattern/line01.svg"); text-align:justify;
                                        font-size:.5em !important; }
 .code #central #exercice #ex    { font-size:0.9em; }
@@ -74,7 +74,8 @@
 .code.exstate #central #code         { height:30.8em !important; }
 
 /*-----------------------------------------------------------------------------------------------------*/
-.code div#board #detail>*            { font-size:.75em;margin-left:.1em; width:10em; }
+.code div#board #detail				 { width:22%; }
+.code div#board #detail>*            { font-size:.75em; margin-left:.1em; width:100%; }
 .code #detail #source                { height:31.5em; background-color:#121; margin-top:.1em; }
 .code #detail #source>div            { clear:both; }
 .code #detail #source #header        { font-size:2em; height:1em; background-color:#121; position:inherit; }
