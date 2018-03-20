@@ -308,6 +308,649 @@
         <dct:alternative>n3gt0</dct:alternative>
     </rdf:Description>
 	
+	<!-- INTRUDER -->
+	
+	<rdf:Description>
+        <dct:identifier>i2</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 2 dont le résultat est exact.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[0,2],"b":[10,1],"g":true},"number":5,"background":"res/img/background/landscape/bluecarpet02.svg","automatic":"one","onclick":"onlyone","states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"yellow"}]},"wrong":{"mask":"0","style":{"background-color":"red"}},"class":"center","gen":"function($this,_s,_i) { var t=[{'t':'array2x4','n':8}],tt=t[Math.floor(Math.random()*t.length)],r='',txt=[],ii=Math.floor(Math.random()*tt.n); for (var i=0;i<tt.n;i++) { var a=Math.floor(Math.random()*_s.gg.a[0])+_s.gg.a[1], b=Math.floor(Math.random()*_s.gg.b[0])+_s.gg.b[1],c; do { c=a*b+Math.floor(Math.random()*10)-5; } while(c<=0 || c==a*b); if ((_s.gg.g&&i==ii)||((!_s.gg.g) && i!=ii)) { r+=_s.gg.g?'1':'0'; c=a*b; } else { r+=_s.gg.g?'0':'1'; } txt.push(a+'×'+b+'='+c); } return {'template':tt.t,'result':r,'t':txt}; }","font":0.9]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [blue]résultat est exact[/blue]."]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>i3</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 3 dont le résultat est exact.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[0,3],"b":[10,1],"g":true}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>i4</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 4 dont le résultat est exact.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[0,4],"b":[10,1],"g":true}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>i5</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 5 dont le résultat est exact.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[0,5],"b":[10,1],"g":true}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>i25</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 2,3,4 ou 5 dont le résultat est exact.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[4,2],"b":[10,1],"g":true}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>i6</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 6 dont le résultat est exact.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[0,6],"b":[10,1],"g":true}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>i7</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 7 dont le résultat est exact.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[0,7],"b":[10,1],"g":true}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>i8</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 8 dont le résultat est exact.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[0,8],"b":[10,1],"g":true}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>i9</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 9 dont le résultat est exact.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[0,3],"b":[10,1],"g":true}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>i29</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication de 2 à 9 dont le résultat est exact.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[8,2],"b":[10,1],"g":true}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>i69</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication de 6 à 9 dont le résultat est exact.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[4,6],"b":[10,1],"g":true}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
+	
+	<rdf:Description>
+        <dct:identifier>i2t</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 2 dont le résultat est exact, en moins de 20 secondes.</dct:title>
+        <dct:description><![CDATA["time":20,"gg":{"a":[0,2],"b":[10,1],"g":true}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>i3t</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 3 dont le résultat est exact, en moins de 20 secondes.</dct:title>
+        <dct:description><![CDATA["time":20,"gg":{"a":[0,3],"b":[10,1],"g":true}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>i4t</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 4 dont le résultat est exact, en moins de 20 secondes.</dct:title>
+        <dct:description><![CDATA["time":20,"gg":{"a":[0,4],"b":[10,1],"g":true}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>i5t</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 5 dont le résultat est exact, en moins de 20 secondes.</dct:title>
+        <dct:description><![CDATA["time":20,"gg":{"a":[0,5],"b":[10,1],"g":true}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>i25t</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 2,3,4 ou 5 dont le résultat est exact, en moins de 20 secondes.</dct:title>
+        <dct:description><![CDATA["time":20,"gg":{"a":[4,2],"b":[10,1],"g":true}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>i6t</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 6 dont le résultat est exact, en moins de 20 secondes.</dct:title>
+        <dct:description><![CDATA["time":20,"gg":{"a":[0,6],"b":[10,1],"g":true}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>i7t</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 7 dont le résultat est exact, en moins de 20 secondes.</dct:title>
+        <dct:description><![CDATA["time":20,"gg":{"a":[0,7],"b":[10,1],"g":true}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>i8t</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 8 dont le résultat est exact, en moins de 20 secondes.</dct:title>
+        <dct:description><![CDATA["time":20,"gg":{"a":[0,8],"b":[10,1],"g":true}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>i9t</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 9 dont le résultat est exact, en moins de 20 secondes.</dct:title>
+        <dct:description><![CDATA["time":20,"gg":{"a":[0,3],"b":[10,1],"g":true}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>i29t</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication de 2 à 9 dont le résultat est exact, en moins de 20 secondes.</dct:title>
+        <dct:description><![CDATA["time":20,"gg":{"a":[8,2],"b":[10,1],"g":true}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>i69t</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication de 6 à 9 dont le résultat est exact, en moins de 20 secondes.</dct:title>
+        <dct:description><![CDATA["time":20,"gg":{"a":[4,6],"b":[10,1],"g":true}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
+	
+	<rdf:Description>
+        <dct:identifier>ii2</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 2 dont le résultat est faux.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[0,2],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>ii3</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 3 dont le résultat est faux.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[0,3],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>ii4</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 4 dont le résultat est faux.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[0,4],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>ii5</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 5 dont le résultat est faux.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[0,5],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>ii25</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 2,3,4 ou 5 dont le résultat est faux.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[4,2],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>ii6</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 6 dont le résultat est faux.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[0,6],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>ii7</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 7 dont le résultat est faux.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[0,7],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>ii8</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 8 dont le résultat est faux.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[0,8],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>ii9</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 9 dont le résultat est faux.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[0,3],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>ii29</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication de 2 à 9 dont le résultat est faux.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[8,2],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>ii69</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication de 6 à 9 dont le résultat est faux.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[4,6],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
+	
+	<rdf:Description>
+        <dct:identifier>ii2t</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 2 dont le résultat est faux, en moins de 20 secondes.</dct:title>
+        <dct:description><![CDATA["time":20,"gg":{"a":[0,2],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>ii3t</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 3 dont le résultat est faux, en moins de 20 secondes.</dct:title>
+        <dct:description><![CDATA["time":20,"gg":{"a":[0,3],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>ii4t</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 4 dont le résultat est faux, en moins de 20 secondes.</dct:title>
+        <dct:description><![CDATA["time":20,"gg":{"a":[0,4],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>ii5t</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 5 dont le résultat est faux, en moins de 20 secondes.</dct:title>
+        <dct:description><![CDATA["time":20,"gg":{"a":[0,5],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>ii25t</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 2,3,4 ou 5 dont le résultat est faux, en moins de 20 secondes.</dct:title>
+        <dct:description><![CDATA["time":20,"gg":{"a":[4,2],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>ii6t</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 6 dont le résultat est faux, en moins de 20 secondes.</dct:title>
+        <dct:description><![CDATA["time":20,"gg":{"a":[0,6],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>ii7t</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 7 dont le résultat est faux, en moins de 20 secondes.</dct:title>
+        <dct:description><![CDATA["time":20,"gg":{"a":[0,7],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>ii8t</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 8 dont le résultat est faux, en moins de 20 secondes.</dct:title>
+        <dct:description><![CDATA["time":20,"gg":{"a":[0,8],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>ii9t</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication par 9 dont le résultat est faux, en moins de 20 secondes.</dct:title>
+        <dct:description><![CDATA["time":20,"gg":{"a":[0,3],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>ii29t</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication de 2 à 9 dont le résultat est faux, en moins de 20 secondes.</dct:title>
+        <dct:description><![CDATA["time":20,"gg":{"a":[8,2],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>ii69t</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule multiplication de 6 à 9 dont le résultat est faux, en moins de 20 secondes.</dct:title>
+        <dct:description><![CDATA["time":20,"gg":{"a":[4,6],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule multiplication dont le [red]résultat est faux[/red]."]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>i2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+		<dct:relation>i2</dct:relation>
+    </rdf:Description>
+	
 	<!-- QCM -->
 	
 	<rdf:Description>

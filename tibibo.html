@@ -595,7 +595,10 @@ var tibibo = {
                     if (user.islogged()) {
                         user.getJSON("mods/tibibo/api/tibibo.php",
                             { action:"upd",value:_state, book:tibibo.args.id, id:tibibo.book.nodeid}, "",
-                                function(_data) { }); }}},
+                                function(_data) { }); }
+					tibibo.book.progress();
+				}
+			},
             onclick : function($this, _args) {
                 $("#waiting").show().find("div").addClass("running");
                 $("#activity").jlodb({
@@ -817,6 +820,18 @@ var tibibo = {
                     else { $("#boerror").html(_data.error+" : "+_data.textStatus).show(); }
                 });
         },
+		progress: function() {
+			var n = tibibo.book.data.nav.getnode(tibibo.book.data.nav.root()), prog=[0,0];
+            tibibo.book.data.nav.each(n, function(_node) {
+                if (_node.description.length) { prog[1]+=_node.description.split(',').length; }
+                    if (tibibo.book.data.state && tibibo.book.data.state[_node.id]) {
+                        prog[0]+=(tibibo.book.data.state[_node.id].match(/[\d]/g) || []).length;
+                }
+            });
+            $("#olist .slide").css("top",(1-(prog[0]/prog[1]))+"em");
+            $("#olist .value").html(Math.floor(100*prog[0]/prog[1]));
+            $("#bofooter #olist").show();
+		},
         display: function() {
             $("#boframe").html(""); $("#bonav").html("");
             var node = tibibo.book.data.nav.getnode(tibibo.book.nodeid);
@@ -874,16 +889,7 @@ var tibibo = {
                 }
             }
             
-            var n = tibibo.book.data.nav.getnode(tibibo.book.data.nav.root()), prog=[0,0];
-            tibibo.book.data.nav.each(n, function(_node) {
-                if (_node.description.length) { prog[1]+=_node.description.split(',').length; }
-                    if (tibibo.book.data.state && tibibo.book.data.state[_node.id]) {
-                        prog[0]+=(tibibo.book.data.state[_node.id].match(/[\d]/g) || []).length;
-                }
-            });
-            $("#olist .slide").css("top",(1-(prog[0]/prog[1]))+"em");
-            $("#olist .value").html(Math.floor(100*prog[0]/prog[1]));
-            $("#bofooter #olist").show();
+            tibibo.book.progress();
             
             // HANDLE FOOTER COMMENT
             var comment ="";

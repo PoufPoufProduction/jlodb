@@ -20,7 +20,7 @@ if (!$error) {
                             '`Book_Awards`           TEXT, '.
                             '`Book_Description`      TEXT NOT NULL, '.
                             ' CONSTRAINT `'.$_SESSION['prefix'].'Book_User_Key` FOREIGN KEY (`User_Key`) REFERENCES `'.$_SESSION['prefix'].'user` '.
-                            ' (`User_Key`) ON DELETE CASCADE,'.
+                            ' (`User_Key`) ON UPDATE CASCADE ON DELETE CASCADE,'.
                             ' PRIMARY KEY ( `Book_Name` )) ENGINE=InnoDB');
         }
         
@@ -43,9 +43,9 @@ if (!$error) {
                             '`Node_State`            TEXT, '.
                             '`Node_Date`             DATETIME, '.
                             ' CONSTRAINT `'.$_SESSION['prefix'].'Tibibo_User_Key` FOREIGN KEY (`User_Key`) REFERENCES `'.$_SESSION['prefix'].'user` '.
-                            ' (`User_Key`) ON DELETE CASCADE,'.
+                            ' (`User_Key`) ON UPDATE CASCADE ON DELETE CASCADE,'.
                             ' CONSTRAINT `'.$_SESSION['prefix'].'Tibibo_Book_Name` FOREIGN KEY (`Book_Name`) REFERENCES `'.$_SESSION['prefix'].'book` '.
-                            ' (`Book_Name`) ON DELETE CASCADE,'.
+                            ' (`Book_Name`) ON UPDATE CASCADE ON DELETE CASCADE,'.
                             ' PRIMARY KEY ( `Book_Name`, `User_Key`, `Node_Id` )) ENGINE=InnoDB');
         }
 

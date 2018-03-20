@@ -435,5 +435,67 @@
         <dct:type>1</dct:type>
         <dct:alternative>a5</dct:alternative>
     </rdf:Description>
+	
+	
+	<!-- INTRUDER -->
+	
+	<rdf:Description>
+        <dct:identifier>i10</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule addition de deux nombres inférieurs à 10 dont le résultat est exact.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[10,1],"b":[10,1],"g":true},"number":5,"background":"res/img/background/landscape/bluecarpet02.svg","automatic":"one","onclick":"onlyone","states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"yellow"}]},"wrong":{"mask":"0","style":{"background-color":"red"}},"class":"center","gen":"function($this,_s,_i) { var t=[{'t':'array2x4','n':8}],tt=t[Math.floor(Math.random()*t.length)],r='',txt=[],ii=Math.floor(Math.random()*tt.n); for (var i=0;i<tt.n;i++) { var a=Math.floor(Math.random()*_s.gg.a[0])+_s.gg.a[1], b=Math.floor(Math.random()*_s.gg.b[0])+_s.gg.b[1],c; do { c=a+b+Math.floor(Math.random()*6)-3; } while(c<=0 || c==a+b); if ((_s.gg.g&&i==ii)||((!_s.gg.g) && i!=ii)) { r+=_s.gg.g?'1':'0'; c=a+b; } else { r+=_s.gg.g?'0':'1'; } txt.push(b+'+'+a+'='+c); } return {'template':tt.t,'result':r,'t':txt}; }","font":0.8]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule addition dont le [blue]résultat est exact[/blue]."]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>i10</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP,CE1</dct:coverage>
+        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>i10t</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule addition de deux nombres inférieurs à 10 dont le résultat est exact, en moins de 20 secondes.</dct:title>
+        <dct:description><![CDATA["time":20,"gg":{"a":[10,1],"b":[10,1],"g":true}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>i10</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP,CE1</dct:coverage>
+        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+		<dct:relation>i10</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>ii10</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule addition de deux nombres inférieurs à 10 dont le résultat est faux.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[0,2],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule addition dont le [red]résultat est faux[/red]."]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>i10</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP,CE1</dct:coverage>
+        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+		<dct:relation>i10</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>ii10t</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver parmi plusieurs candidats, la seule addition de deux nombres inférieurs à 10 dont le résultat est faux, en moins de 20 secondes.</dct:title>
+        <dct:description><![CDATA["time":20,"gg":{"a":[10,1],"b":[10,1],"g":false},"background":"res/img/background/landscape/redcarpet02.svg"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez[/b] parmi les différents candidats, la seule addition dont le [red]résultat est faux[/red]."]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>i10</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP,CE1</dct:coverage>
+        <dct:source>res/img/background/landscape/redcarpet02.svg</dct:source>
+		<dct:relation>i10</dct:relation>
+    </rdf:Description>
+	
 
 </rdf:RDF>
