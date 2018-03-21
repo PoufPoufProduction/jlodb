@@ -6,7 +6,7 @@
     <rdf:Description>
         <dct:identifier>50o</dct:identifier>
         <dct:title xml:lang="fr-FR">Retrouver le bon compte à partir de 2 valeurs parmi 6 comprises entre 10 et 50.</dct:title>
-        <dct:description><![CDATA["op":["minus"],"gen":"function(_index){ var range=[50,10],nb=2,tiles=[],value=0,t=0; for (var i=0;i<6;i++) { tiles.push(Math.floor(Math.random()*(range[0]-range[1]))+range[1]); } var a = Math.floor(Math.random()*tiles.length), b; do { b=Math.floor(Math.random()*tiles.length); } while (a==b); value=Math.abs(tiles[a]-tiles[b]);  tiles.sort(function(a,b){return (parseInt(a)>parseInt(b));}); return {\\\"values\\\":tiles,\\\"result\\\":value} }","number":5]]></dct:description>
+        <dct:description><![CDATA["op":["minus"],"gen":"function($this,_s,_index){ var range=[50,10],nb=2,tiles=[],value=0,t=0; for (var i=0;i<6;i++) { tiles.push(Math.floor(Math.random()*(range[0]-range[1]))+range[1]); } var a = Math.floor(Math.random()*tiles.length), b; do { b=Math.floor(Math.random()*tiles.length); } while (a==b); value=Math.abs(tiles[a]-tiles[b]);  tiles.sort(function(a,b){return (parseInt(a)>parseInt(b));}); return {\\\"values\\\":tiles,\\\"result\\\":value} }","number":5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Pour cet exercice, il vous faudra utiliser <b>2 tuiles</b> uniquement parmi les 6 proposées."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>subtraction</dct:subject>
@@ -19,7 +19,7 @@
     <rdf:Description>
         <dct:identifier>75o</dct:identifier>
         <dct:title xml:lang="fr-FR">Retrouver le bon compte à partir de 2 valeurs parmi 6 comprises entre 10 et 75.</dct:title>
-        <dct:description><![CDATA["op":["minus"],"gen":"function(_index){ var range=[75,10],nb=2,tiles=[],value=0,t=0; for (var i=0;i<6;i++) { tiles.push(Math.floor(Math.random()*(range[0]-range[1]))+range[1]); } var a = Math.floor(Math.random()*tiles.length), b; do { b=Math.floor(Math.random()*tiles.length); } while (a==b); value=Math.abs(tiles[a]-tiles[b]);  tiles.sort(function(a,b){return (parseInt(a)>parseInt(b));}); return {\\\"values\\\":tiles,\\\"result\\\":value} }","number":5]]></dct:description>
+        <dct:description><![CDATA["op":["minus"],"gen":"function($this,_s,_index){ var range=[75,10],nb=2,tiles=[],value=0,t=0; for (var i=0;i<6;i++) { tiles.push(Math.floor(Math.random()*(range[0]-range[1]))+range[1]); } var a = Math.floor(Math.random()*tiles.length), b; do { b=Math.floor(Math.random()*tiles.length); } while (a==b); value=Math.abs(tiles[a]-tiles[b]);  tiles.sort(function(a,b){return (parseInt(a)>parseInt(b));}); return {\\\"values\\\":tiles,\\\"result\\\":value} }","number":5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Pour cet exercice, il vous faudra utiliser <b>2 tuiles</b> uniquement parmi les 6 proposées."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>subtraction</dct:subject>
@@ -32,7 +32,7 @@
     <rdf:Description>
         <dct:identifier>100o</dct:identifier>
         <dct:title xml:lang="fr-FR">Retrouver le bon compte à partir de 2 valeurs parmi 6 comprises entre 10 et 100.</dct:title>
-        <dct:description><![CDATA["op":["minus"],"gen":"function(_index){ var range=[100,10],nb=2,tiles=[],value=0,t=0; for (var i=0;i<6;i++) { tiles.push(Math.floor(Math.random()*(range[0]-range[1]))+range[1]); } var a = Math.floor(Math.random()*tiles.length), b; do { b=Math.floor(Math.random()*tiles.length); } while (a==b); value=Math.abs(tiles[a]-tiles[b]);  tiles.sort(function(a,b){return (parseInt(a)>parseInt(b));}); return {\\\"values\\\":tiles,\\\"result\\\":value} }","number":5]]></dct:description>
+        <dct:description><![CDATA["op":["minus"],"gen":"function($this,_s,_index){ var range=[100,10],nb=2,tiles=[],value=0,t=0; for (var i=0;i<6;i++) { tiles.push(Math.floor(Math.random()*(range[0]-range[1]))+range[1]); } var a = Math.floor(Math.random()*tiles.length), b; do { b=Math.floor(Math.random()*tiles.length); } while (a==b); value=Math.abs(tiles[a]-tiles[b]);  tiles.sort(function(a,b){return (parseInt(a)>parseInt(b));}); return {\\\"values\\\":tiles,\\\"result\\\":value} }","number":5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Pour cet exercice, il vous faudra utiliser <b>2 tuiles</b> uniquement parmi les 6 proposées."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>subtraction</dct:subject>
@@ -45,7 +45,7 @@
     <rdf:Description>
         <dct:identifier>500o</dct:identifier>
         <dct:title xml:lang="fr-FR">Retrouver le bon compte à partir de 2 valeurs parmi 6 comprises entre 10 et 500.</dct:title>
-        <dct:description><![CDATA["op":["minus"],"gen":"function(_index){ var range=[500,10],nb=2,tiles=[],value=0,t=0; for (var i=0;i<6;i++) { tiles.push(Math.floor(Math.random()*(range[0]-range[1]))+range[1]); } var a = Math.floor(Math.random()*tiles.length), b; do { b=Math.floor(Math.random()*tiles.length); } while (a==b); value=Math.abs(tiles[a]-tiles[b]);  tiles.sort(function(a,b){return (parseInt(a)>parseInt(b));}); return {\\\"values\\\":tiles,\\\"result\\\":value} }","number":5]]></dct:description>
+        <dct:description><![CDATA["op":["minus"],"gen":"function($this,_s,_index){ var range=[500,10],nb=2,tiles=[],value=0,t=0; for (var i=0;i<6;i++) { tiles.push(Math.floor(Math.random()*(range[0]-range[1]))+range[1]); } var a = Math.floor(Math.random()*tiles.length), b; do { b=Math.floor(Math.random()*tiles.length); } while (a==b); value=Math.abs(tiles[a]-tiles[b]);  tiles.sort(function(a,b){return (parseInt(a)>parseInt(b));}); return {\\\"values\\\":tiles,\\\"result\\\":value} }","number":5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Pour cet exercice, il vous faudra utiliser <b>2 tuiles</b> uniquement parmi les 6 proposées."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>subtraction</dct:subject>
@@ -58,7 +58,7 @@
     <rdf:Description>
         <dct:identifier>1ko</dct:identifier>
         <dct:title xml:lang="fr-FR">Retrouver le bon compte à partir de 2 valeurs parmi 6 comprises entre 10 et 1 000.</dct:title>
-        <dct:description><![CDATA["op":["minus"],"gen":"function(_index){ var range=[1000,10],nb=2,tiles=[],value=0,t=0; for (var i=0;i<6;i++) { tiles.push(Math.floor(Math.random()*(range[0]-range[1]))+range[1]); } var a = Math.floor(Math.random()*tiles.length), b; do { b=Math.floor(Math.random()*tiles.length); } while (a==b); value=Math.abs(tiles[a]-tiles[b]);  tiles.sort(function(a,b){return (parseInt(a)>parseInt(b));}); return {\\\"values\\\":tiles,\\\"result\\\":value} }","number":5]]></dct:description>
+        <dct:description><![CDATA["op":["minus"],"gen":"function($this,_s,_index){ var range=[1000,10],nb=2,tiles=[],value=0,t=0; for (var i=0;i<6;i++) { tiles.push(Math.floor(Math.random()*(range[0]-range[1]))+range[1]); } var a = Math.floor(Math.random()*tiles.length), b; do { b=Math.floor(Math.random()*tiles.length); } while (a==b); value=Math.abs(tiles[a]-tiles[b]);  tiles.sort(function(a,b){return (parseInt(a)>parseInt(b));}); return {\\\"values\\\":tiles,\\\"result\\\":value} }","number":5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Pour cet exercice, il vous faudra utiliser <b>2 tuiles</b> uniquement parmi les 6 proposées."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>subtraction</dct:subject>

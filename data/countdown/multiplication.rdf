@@ -126,7 +126,7 @@
     <rdf:Description>
         <dct:identifier>10o</dct:identifier>
         <dct:title xml:lang="fr-FR">Retrouver le bon compte à partir de multiplications de 2 valeurs parmi 6 comprises entre 2 et 10.</dct:title>
-        <dct:description><![CDATA["op":["mult"],"gen":"function(_index){ var range=[10,2],nb=2,tiles=[],value=1,t=0; for (var i=0;i<6;i++) { tiles.push(Math.floor(Math.random()*(range[0]-range[1]))+range[1]); } for (var i=0;i<nb;i++) { var v; do { v=Math.floor(Math.random()*tiles.length); } while (t&(1<<v)); t=t|(1<<v); value*=tiles[v]; }  tiles.sort(function(a,b){return (parseInt(a)>parseInt(b));}); return {\\\"values\\\":tiles,\\\"result\\\":value} }","number":5]]></dct:description>
+        <dct:description><![CDATA["op":["mult"],"gen":"function($this,_s,_index){ var range=[10,2],nb=2,tiles=[],value=1,t=0; for (var i=0;i<6;i++) { tiles.push(Math.floor(Math.random()*(range[0]-range[1]))+range[1]); } for (var i=0;i<nb;i++) { var v; do { v=Math.floor(Math.random()*tiles.length); } while (t&(1<<v)); t=t|(1<<v); value*=tiles[v]; }  tiles.sort(function(a,b){return (parseInt(a)>parseInt(b));}); return {\\\"values\\\":tiles,\\\"result\\\":value} }","number":5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Pour cet exercice, il vous faudra utiliser <b>2 tuiles</b> uniquement parmi les 6 proposées."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>multiplication</dct:subject>
@@ -139,7 +139,7 @@
     <rdf:Description>
         <dct:identifier>104o</dct:identifier>
         <dct:title xml:lang="fr-FR">Retrouver le bon compte à partir de multiplications de 2 valeurs parmi 6 comprises entre 4 et 10.</dct:title>
-        <dct:description><![CDATA["op":["mult"],"gen":"function(_index){ var range=[10,5],nb=2,tiles=[4,5,6,7,8,9],value=1,t=0; for (var i=0;i<nb;i++) { var v; do { v=Math.floor(Math.random()*tiles.length); } while (t&(1<<v)); t=t|(1<<v); value*=tiles[v]; }  tiles.sort(function(a,b){return (parseInt(a)>parseInt(b));}); return {\\\"values\\\":tiles,\\\"result\\\":value} }","number":5]]></dct:description>
+        <dct:description><![CDATA["op":["mult"],"gen":"function($this,_s,_index){ var range=[10,5],nb=2,tiles=[4,5,6,7,8,9],value=1,t=0; for (var i=0;i<nb;i++) { var v; do { v=Math.floor(Math.random()*tiles.length); } while (t&(1<<v)); t=t|(1<<v); value*=tiles[v]; }  tiles.sort(function(a,b){return (parseInt(a)>parseInt(b));}); return {\\\"values\\\":tiles,\\\"result\\\":value} }","number":5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Pour cet exercice, il vous faudra utiliser <b>2 tuiles</b> uniquement parmi les 6 proposées."]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>multiplication</dct:subject>

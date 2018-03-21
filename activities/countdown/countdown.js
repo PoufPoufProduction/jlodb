@@ -113,7 +113,7 @@
                 // GENERATOR
                 if (settings.gen) {
                     settings.data = [];
-                    for (var i=0;i<settings.number;i++) { settings.data.push(eval('('+settings.gen+')')(i)); }
+                    for (var i=0;i<settings.number;i++) { settings.data.push(eval('('+settings.gen+')')($this,settings,i)); }
                 }
 
                 if (settings.exercice) {

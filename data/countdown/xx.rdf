@@ -5,8 +5,7 @@
     <rdf:Description>
         <dct:identifier>o</dct:identifier>
         <dct:title xml:lang="fr-FR">Retrouver le bon compte.</dct:title>
-        <dct:description><![CDATA["number":3,"gen":"function(_index){var small=[1,2,3,4,5,6,7,8,9,10], big=[25,75,50,100,200], nb=[6,4],op=15,alea=[900,100],value=0,tiles=[],test=function(_tiles,_level,_value){if (_tiles[_tiles.length-1]==_value) { return true;} else if (_tiles.length==1){ return false;} else for(var i=0;i<_tiles.length-1;i++)for(var j=i+1;j<_tiles.length;j++){var newtiles=[];for(var k=0;k<_tiles.length;k++) {if (k!=i&&k!=j){newtiles.push(_tiles[k]);}} newtiles.push(0); if (op&1){var n=_tiles[i]+_tiles[j]; if (n<1000) {newtiles[newtiles.length-1]=n; if(test(newtiles,_level+1,_value)) return true;}} if (op&2){var n=Math.abs(_tiles[i]-_tiles[j]); newtiles[newtiles.length-1]=n; if(test(newtiles,_level+1,_value)) return true;} if (op&4){var n=_tiles[i]*_tiles[j]; if (n<1000) {newtiles[newtiles.length-1]=n; if(test(newtiles,_level+1,_value)) return true;}} if (op&8){ if (_tiles[i]%_tiles[j]==0) {newtiles[newtiles.length-1]=_tiles[i]/_tiles[j]; if(test(newtiles,_level+1,_value)) return true;} else if (_tiles[j]%_tiles[i]==0) {newtiles[newtiles.length-1]=_tiles[j]/_tiles[i]; if(test(newtiles,_level+1,_value)) return true;}} } return false;}; for (var i=0;i<nb[1];i++){var id;do{id=Math.floor(Math.random()*small.length);}while(!small[id]); tiles.push(small[id]);small[id]=0;} for (var i=0;i<nb[0]-nb[1];i++){var id;do{id=Math.floor(Math.random()*big.length);}while(!big[id]); tiles.push(big[id]);big[id]=0;}for(var i=0;i<100;i++){var x=Math.floor(Math.random()*tiles.length),y=Math.floor(Math.random()*tiles.length),tmp;tmp=tiles[x];tiles[x]=tiles[y];tiles[y]=tmp;}do { value=Math.floor(Math.random()*alea[0])+alea[1]; } while (!test(tiles,0,value)); return {\\\"values\\\":tiles,\\\"result\\\":value} }"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[]]></dct:description>
+        <dct:description><![CDATA["gg":{"small":[1,2,3,4,5,6,7,8,9,10], "big":[25,75,50,100,200], "nb":[6,4],"op":15,"alea":[900,100]},"number":3,"gen":"function($this,_s,_index){var small=_s.gg.small.slice(), big=_s.gg.big.slice(), nb=_s.gg.nb.slice(),op=_s.gg.op,alea=_s.gg.alea.slice(),value=0,tiles=[],test=function(_tiles,_level,_value){if (_tiles[_tiles.length-1]==_value) { return true;} else if (_tiles.length==1){ return false;} else for(var i=0;i<_tiles.length-1;i++)for(var j=i+1;j<_tiles.length;j++){var newtiles=[];for(var k=0;k<_tiles.length;k++) {if (k!=i&&k!=j){newtiles.push(_tiles[k]);}} newtiles.push(0); if (op&1){var n=_tiles[i]+_tiles[j]; if (n<1000) {newtiles[newtiles.length-1]=n; if(test(newtiles,_level+1,_value)) return true;}} if (op&2){var n=Math.abs(_tiles[i]-_tiles[j]); newtiles[newtiles.length-1]=n; if(test(newtiles,_level+1,_value)) return true;} if (op&4){var n=_tiles[i]*_tiles[j]; if (n<1000) {newtiles[newtiles.length-1]=n; if(test(newtiles,_level+1,_value)) return true;}} if (op&8){ if (_tiles[i]%_tiles[j]==0) {newtiles[newtiles.length-1]=_tiles[i]/_tiles[j]; if(test(newtiles,_level+1,_value)) return true;} else if (_tiles[j]%_tiles[i]==0) {newtiles[newtiles.length-1]=_tiles[j]/_tiles[i]; if(test(newtiles,_level+1,_value)) return true;}} } return false;}; for (var i=0;i<nb[1];i++){var id;do{id=Math.floor(Math.random()*small.length);}while(!small[id]); tiles.push(small[id]);small[id]=0;} for (var i=0;i<nb[0]-nb[1];i++){var id;do{id=Math.floor(Math.random()*big.length);}while(!big[id]); tiles.push(big[id]);big[id]=0;}for(var i=0;i<100;i++){var x=Math.floor(Math.random()*tiles.length),y=Math.floor(Math.random()*tiles.length),tmp;tmp=tiles[x];tiles[x]=tiles[y];tiles[y]=tmp;}do { value=Math.floor(Math.random()*alea[0])+alea[1]; } while (!test(tiles,0,value)); return {\\\"values\\\":tiles,\\\"result\\\":value} }"]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>operations</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -14,17 +13,46 @@
         <dct:type>1</dct:type>
         <dct:isPartOf>countdown</dct:isPartOf>
     </rdf:Description>
-
+	
     <rdf:Description>
         <dct:identifier>ao</dct:identifier>
-        <dct:title xml:lang="fr-FR">Retrouver le bon compte, entre 100 et 500, avec 5 tuiles (25 et 75 sont exclues) et sans division.</dct:title>
-        <dct:description><![CDATA["number":3,"gen":"function(_index){var small=[1,2,3,4,5,6,7,8,9,10], big=[50,100,200], nb=[5,4],op=7,alea=[400,100],value=0,tiles=[],test=function(_tiles,_level,_value){if (_tiles[_tiles.length-1]==_value) { return true;} else if (_tiles.length==1){ return false;} else for(var i=0;i<_tiles.length-1;i++)for(var j=i+1;j<_tiles.length;j++){var newtiles=[];for(var k=0;k<_tiles.length;k++) {if (k!=i&&k!=j){newtiles.push(_tiles[k]);}} newtiles.push(0); if (op&1){var n=_tiles[i]+_tiles[j]; if (n<1000) {newtiles[newtiles.length-1]=n; if(test(newtiles,_level+1,_value)) return true;}} if (op&2){var n=Math.abs(_tiles[i]-_tiles[j]); newtiles[newtiles.length-1]=n; if(test(newtiles,_level+1,_value)) return true;} if (op&4){var n=_tiles[i]*_tiles[j]; if (n<1000) {newtiles[newtiles.length-1]=n; if(test(newtiles,_level+1,_value)) return true;}} if (op&8){ if (_tiles[i]%_tiles[j]==0) {newtiles[newtiles.length-1]=_tiles[i]/_tiles[j]; if(test(newtiles,_level+1,_value)) return true;} else if (_tiles[j]%_tiles[i]==0) {newtiles[newtiles.length-1]=_tiles[j]/_tiles[i]; if(test(newtiles,_level+1,_value)) return true;}} } return false;}; for (var i=0;i<nb[1];i++){var id;do{id=Math.floor(Math.random()*small.length);}while(!small[id]); tiles.push(small[id]);small[id]=0;} for (var i=0;i<nb[0]-nb[1];i++){var id;do{id=Math.floor(Math.random()*big.length);}while(!big[id]); tiles.push(big[id]);big[id]=0;}for(var i=0;i<100;i++){var x=Math.floor(Math.random()*tiles.length),y=Math.floor(Math.random()*tiles.length),tmp;tmp=tiles[x];tiles[x]=tiles[y];tiles[y]=tmp;}do { value=Math.floor(Math.random()*alea[0])+alea[1]; } while (!test(tiles,0,value)); return {\\\"values\\\":tiles,\\\"result\\\":value} }"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[]]></dct:description>
+        <dct:title xml:lang="fr-FR">Retrouver le bon compte, entre 100 et 200, avec 4 tuiles (25 et 75 sont exclues) et sans division.</dct:title>
+        <dct:description><![CDATA["gg":{"small":[1,2,3,4,5,10], "big":[50,100,200], "nb":[4,3],"op":7,"alea":[200,100]}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>operations</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
         <dct:type>1</dct:type>
+        <dct:alternative>o</dct:alternative>
+		<dct:relation>o</dct:relation>
     </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>eo</dct:identifier>
+        <dct:title xml:lang="fr-FR">Retrouver le bon compte, entre 100 et 200, avec 4 tuiles (25 et 75 sont exclues) et sans division.</dct:title>
+        <dct:description><![CDATA["gg":{"small":[1,2,3,4,5,6,7,8,9,10], "big":[50,100,200], "nb":[4,3],"op":7,"alea":[200,100]}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+        <dct:type>1</dct:type>
+        <dct:alternative>o</dct:alternative>
+		<dct:relation>o</dct:relation>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>fo</dct:identifier>
+        <dct:title xml:lang="fr-FR">Retrouver le bon compte, entre 100 et 500, avec 5 tuiles (25 et 75 sont exclues) et sans division.</dct:title>
+        <dct:description><![CDATA["gg":{"small":[1,2,3,4,5,6,7,8,9,10], "big":[50,100,200], "nb":[5,4],"op":7,"alea":[400,100]}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
+        <dct:type>1</dct:type>
+        <dct:alternative>o</dct:alternative>
+		<dct:relation>o</dct:relation>
+    </rdf:Description>
+	
+	
 </rdf:RDF>
 
