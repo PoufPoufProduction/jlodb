@@ -15,7 +15,7 @@ a                  { text-decoration:none; }
 .exn               { position:absolute; top:0; left:12.8em; width:1.2em; height:1.2em; text-align:center;
                      background-color:rgba(255,255,255,0.6); border:1px solid gray; border-radius:0 0 0 .5em;
                      border-width:0 0 1px 1px; }
-.extitle           { padding:0 .2em; font-size:0.6em; font-style:italic; text-align:justify; }
+.extitle           { padding:0 .2em; font-size:0.6em; font-style:italic; text-align:justify; background-color:#DDD; height:6em;}
 .exid              { position:absolute; top:.5em; left:0; background-color:rgba(255,255,255,0.6); border:1px solid gray;
                      border-radius:0 .5em .5em 0; border-width:1px 1px 1px 0; min-width:5em; text-align:center; color:black;}
 .exercice .param             { position:absolute; top:9.2em; left:0; width:14em; height:0.8em; background-color:gray; color:white; }
@@ -72,11 +72,11 @@ ids: function(_target, _ids) {
             }
             
             
-            html+="<div class='exercice' ";
+            html+="<div class='exercice'><div class='eximg' ";
             html+="onclick=\"window.open('demo.html?id="+e.id+"','_blank',"+
                       "'width=640, height=480,toolbar=no,location=no,status=no,menubar=no,"+
                       "scrollbars=no,resizable=no,status=no,titlebar=no');\"";
-            html+="><div class='eximg'>";
+            html+=">";
             if (snapshots) {
                 if (!url.length) {
                     url = snapshots+"/res/img/exercices/"+e.activity+"/";
@@ -89,7 +89,9 @@ ids: function(_target, _ids) {
             html+="</div>";
             html+="<div class='exn'>"+(parseInt(i)+1)+"</div>";
             html+="<div><div class='exid'>"+e.id+"</div>";
-            html+="<div class='extitle'>"+e.label+"</div></div>";
+            html+="<div class='extitle' ";
+			html+=">"+e.label+"</div>";
+			html+="</div>";
             html+="<div class='param'>";
             html+="<div class='label'>Niveau</div><div class='value'>"+e.level+"</div>";
             html+="<div class='label'>Difficulté</div><div class='value'>"+e.diff+"</div>";
@@ -152,7 +154,7 @@ $(window).ready(function() {
     $.getJSON("api/checkdb.php", function (_check) {
 
         if (_check.status=="success") {
-            snapshots  = _check.url;
+            snapshots	= _check.url;
 
             if (args.id) { render.ids($("body"),args.id); }
             else if (args.tibibo) {

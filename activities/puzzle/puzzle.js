@@ -215,8 +215,10 @@
             $this.find("#ttext").removeClass("legend");
             if (settings.timg) {
                 var img = $.isArray(settings.timg)?settings.timg[settings.puzzleid]:settings.timg;
-                if (img) { $this.find("#timg").html("<img src='"+img+"'/>").show();
-                           $this.find("#ttext").addClass("legend"); }
+                if (img) {
+					if (img.indexOf(".svg")!=-1) 	{ $this.find("#timg").html("<img src='"+img+"'/>").show(); }
+					else							{ $this.find("#timg").html(img).show(); }
+                    $this.find("#ttext").addClass("legend"); }
             }
             if (settings.ttxt) {
                 var txt = $.isArray(settings.ttxt)?settings.ttxt[settings.puzzleid]:settings.ttxt;

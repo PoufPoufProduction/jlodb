@@ -8,6 +8,7 @@
         lang        : "en-US",                                  // Current localization
         font        : 1,                                        // The font-size multiplicator
         sep         : " .,'-;:\"?!»«",                          // The separators
+        background  : "",
         debug       : true                                     // Debug mode
     };
 
@@ -139,6 +140,9 @@
                 }
 
                 helpers.color($this,0);
+				
+				// HANDLE BACKGROUND
+                if (settings.background) { $this.children().first().css("background-image","url("+settings.background+")"); }
 
                 $this.find("#data>div").css("font-size",settings.font+"em").html(content);
                 $this.bind("mouseup mouseleave touchend touchleave", function() { helpers.mouseup($this); });
