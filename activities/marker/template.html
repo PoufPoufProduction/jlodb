@@ -34,7 +34,7 @@
         <div id="wrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
     </div>
 
-    <div id="splashex" ontouchstart="$(this).hide().closest('.marker').marker('next');event.preventDefault();"
+    <div id="splashex" ontouchstart="event.preventDefault();event.stopPropagation();$(this).hide().closest('.marker').marker('next');"
                      onclick="$(this).hide().closest('.marker').marker('next');"><div>
             <h1 id="label">marker</h1>
             <div id="guide"></div>

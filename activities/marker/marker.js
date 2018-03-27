@@ -92,7 +92,7 @@
                     $this.find("#menu #c"+(parseInt(i)+1)).show();
                 }
 
-                var content ="";
+				var $content = $this.find("#data>div").css("font-size",settings.font+"em").html("");
                 var reg = new RegExp("[ ]", "g");
                 var t = -1, tnext;
                 var word = "";
@@ -103,7 +103,7 @@
 
                 // PARSE EACH PARAGRAPH
                 for (var i=0; i<settings.text.length; i++) {
-                    content+="<p>";
+					var $p=$("<p></p>");
                     for (var j=0; j<settings.text[i].length; j++) {
                         var vIsQuestion = false;
                         for (var k in settings.questions) {
@@ -117,7 +117,7 @@
 
                         if (settings.sep.indexOf(settings.text[i][j])==-1) {
                             if (lastLetterIsSep) {
-                                content+=helpers.word($this,word.replace(" ","&#xA0;"), vBeginGroup?-1:vGroup);
+                                $p.append(helpers.word($this,word.replace(" ","&#xA0;"), vBeginGroup?-1:vGroup));
                                 word="";
                                 if (vEndGroup) { vEndGroup=false; vGroup=-1; }
                             }
@@ -126,7 +126,7 @@
                         }
                         else {
                             if (!lastLetterIsSep) {
-                                content+=helpers.word($this,word, vGroup);
+                                $p.append(helpers.word($this,word, vGroup));
                                 word="";
                                 if (vEndGroup) { vEndGroup=false; vGroup=-1; }
                             }
@@ -135,16 +135,14 @@
                         }
                         vBeginGroup = false;
                     }
-                    content+=helpers.word($this,word, lastLetterIsSep?9:8); word="";
-                    content+="</p>";
+                    $p.append(helpers.word($this,word, lastLetterIsSep?9:8)); word="";
+					$content.append($p);
                 }
 
                 helpers.color($this,0);
 				
 				// HANDLE BACKGROUND
                 if (settings.background) { $this.children().first().css("background-image","url("+settings.background+")"); }
-
-                $this.find("#data>div").css("font-size",settings.font+"em").html(content);
                 $this.bind("mouseup mouseleave touchend touchleave", function() { helpers.mouseup($this); });
 
                 if (settings.exercice) { $this.find("#exercice>div").html(helpers.format(settings.exercice)); }
@@ -157,18 +155,24 @@
         },
         word: function($this, _word,_t) {
             var settings = helpers.settings($this);
-            var ret = "<span id='s"+(settings.it++)+"' ";
-            ret+="onmousedown='$(this).closest(\".marker\").marker(\"mousedown\", $(this));' ";
-            ret+="ontouchstart='$(this).closest(\".marker\").marker(\"mousedown\", $(this));event.preventDefault();' ";
-            ret+="onmousemove='$(this).closest(\".marker\").marker(\"mousemove\", $(this));' ";
-            ret+="ontouchmove='$(this).closest(\".marker\").marker(\"touchmove\", event);event.preventDefault();' ";
-            ret+=">"+_word+"</span>";
+            var $ret = $("<span id='s"+(settings.it++)+"'>"+_word+"</span>");
+			$ret.bind("mousedown touchstart",function(event) { helpers.mousedown($this, $(this)); event.preventDefault(); });
+			$ret.bind("mousemove", function(event) { helpers.mousemove($this, $(this)); });
+			$ret.bind("touchmove", function(event) {
+				var vEvent =
+					(event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
+                    event.originalEvent.touches[0]:event;
+                var $e=$(document.elementFromPoint(vEvent.pageX,vEvent.pageY));
+                if ($e && $e.attr("id") && $e.attr("id")[0]=='s') { helpers.mousemove($this, $e); }
+				event.preventDefault();
+			});
+			
             settings.words.push([-1,-1,_t]);
-            return ret;
+            return $ret;
         },
         mouseup: function($this) {
             var settings = helpers.settings($this);
-            if (settings.m.id == settings.m.first) {
+            if (settings.m.id!=-1 && settings.m.id == settings.m.first) {
                 if (settings.words[settings.m.id][1]==settings.color) {
                     settings.words[settings.m.id][0]=-1;
                     helpers.update($this);
@@ -176,6 +180,78 @@
             }
             settings.m.first = -1;
         },
+        mousedown:function($this,$elt) {
+                var settings = helpers.settings($this);
+                if (!settings.finish) {
+                    id = parseInt($elt.attr("id").substr(1));
+                    settings.m.first = id;
+                    settings.m.mode = 0;
+                    settings.m.max = id;
+                    settings.m.min = id;
+                    settings.m.id = id;
+                    if (settings.words[id][0]==settings.color) {
+                        var max=id, min=id;
+                        while (max<settings.words.length-1 && settings.words[max+1][0]==settings.color) { max++; }
+                        while (min>0 && settings.words[min-1][0]==settings.color) { min--; }
+                        settings.m.mode = (id-min<max-id)?1:2;
+                        if (id-min<max-id) { for (var i=min; i<id; i++) { settings.words[i][0] = -1; }
+                        } else { for (var i=id+1; i<=max; i++) { settings.words[i][0] = -1; } }
+                    }
+
+                    for (var i in settings.words) { settings.words[i][1] = settings.words[i][0]; }
+
+                    settings.words[settings.m.first][0]=settings.color;
+                    helpers.update($this);
+                }
+            },
+            mousemove:function($this,$elt) {
+                var settings = helpers.settings($this);
+
+
+                if (settings.m.first!=-1 && !settings.finish)  {
+                    var id= parseInt($elt.attr("id").substr(1));
+
+                    if (settings.m.order==-1) { settings.m.order=(id>settings.m.first?0:1); }
+
+                    if (id>settings.m.first) {
+                        if (settings.m.mode==1) {
+                            for (var i=settings.m.first; i<=id; i++) {
+                                if (settings.words[i][1]==settings.color) { settings.words[i][0]=-1; } else { break; }
+                            }
+                        }
+                        else {
+                            for (var i=settings.m.first; i<=id; i++) { settings.words[i][0]=settings.color; }
+                        }
+
+                        if (id>=settings.m.max) { settings.m.max = id; }
+                        for (var i=id+1; i<=settings.m.max; i++) { settings.words[i][0]=settings.words[i][1]; }
+
+                        if (settings.m.order==false) {
+                            for (var i=settings.m.min; i<settings.m.first; i++) {  settings.words[i][0]=settings.words[i][1]; }
+                        }
+                    }
+                    else {
+                        if (settings.m.mode==2) {
+                            for (var i=id; id<=settings.m.first; i++) {
+                                if (settings.words[i][1]==settings.color) { settings.words[i][0]=-1; } else { break; }
+                            }
+                        }
+                        else {for (var i=id; i<=settings.m.first; i++) { settings.words[i][0]=settings.color; }}
+
+                        if (id<=settings.m.min) { settings.m.min = id; }
+                        for (var i=settings.m.min; i<id; i++) { settings.words[i][0]=settings.words[i][1]; }
+
+                        if (settings.m.order==true) {
+                            for (var i=settings.m.first+1; i<=settings.m.max; i++) {  settings.words[i][0]=settings.words[i][1]; }
+                       }
+
+                    }
+
+                    settings.m.order=(id>settings.m.first);
+                    settings.m.id = id;
+                    helpers.update($this);
+                }
+            },
         color: function($this, _color) {
             var settings = helpers.settings($this);
             settings.color = _color;
@@ -240,84 +316,7 @@
                     }
                 });
             },
-            mousedown:function($elt) {
-                var $this = $(this) , settings = helpers.settings($this);
-                if (!settings.finish) {
-                    id = parseInt($elt.attr("id").substr(1));
-                    settings.m.first = id;
-                    settings.m.mode = 0;
-                    settings.m.max = id;
-                    settings.m.min = id;
-                    settings.m.id = id;
-                    if (settings.words[id][0]==settings.color) {
-                        var max=id, min=id;
-                        while (max<settings.words.length-1 && settings.words[max+1][0]==settings.color) { max++; }
-                        while (min>0 && settings.words[min-1][0]==settings.color) { min--; }
-                        settings.m.mode = (id-min<max-id)?1:2;
-                        if (id-min<max-id) { for (var i=min; i<id; i++) { settings.words[i][0] = -1; }
-                        } else { for (var i=id+1; i<=max; i++) { settings.words[i][0] = -1; } }
-                    }
-
-                    for (var i in settings.words) { settings.words[i][1] = settings.words[i][0]; }
-
-                    settings.words[settings.m.first][0]=settings.color;
-                    helpers.update($this);
-                }
-            },
-            touchmove:function(_event) {
-                var $e=$(document.elementFromPoint(_event.pageX,_event.pageY));
-                if ($e.attr("id")[0]=='s') { $(this).marker('mousemove',$e); }
-
-            },
-            mousemove:function($elt) {
-                var $this = $(this) , settings = helpers.settings($this);
-
-
-                if (settings.m.first!=-1 && !settings.finish)  {
-                    var id= parseInt($elt.attr("id").substr(1));
-
-                    if (settings.m.order==-1) { settings.m.order=(id>settings.m.first?0:1); }
-
-                    if (id>settings.m.first) {
-                        if (settings.m.mode==1) {
-                            for (var i=settings.m.first; i<=id; i++) {
-                                if (settings.words[i][1]==settings.color) { settings.words[i][0]=-1; } else { break; }
-                            }
-                        }
-                        else {
-                            for (var i=settings.m.first; i<=id; i++) { settings.words[i][0]=settings.color; }
-                        }
-
-                        if (id>=settings.m.max) { settings.m.max = id; }
-                        for (var i=id+1; i<=settings.m.max; i++) { settings.words[i][0]=settings.words[i][1]; }
-
-                        if (settings.m.order==false) {
-                            for (var i=settings.m.min; i<settings.m.first; i++) {  settings.words[i][0]=settings.words[i][1]; }
-                        }
-                    }
-                    else {
-                        if (settings.m.mode==2) {
-                            for (var i=id; id<=settings.m.first; i++) {
-                                if (settings.words[i][1]==settings.color) { settings.words[i][0]=-1; } else { break; }
-                            }
-                        }
-                        else {for (var i=id; i<=settings.m.first; i++) { settings.words[i][0]=settings.color; }}
-
-                        if (id<=settings.m.min) { settings.m.min = id; }
-                        for (var i=settings.m.min; i<id; i++) { settings.words[i][0]=settings.words[i][1]; }
-
-                        if (settings.m.order==true) {
-                            for (var i=settings.m.first+1; i<=settings.m.max; i++) {  settings.words[i][0]=settings.words[i][1]; }
-                       }
-
-                    }
-
-                    settings.m.order=(id>settings.m.first);
-                    settings.m.id = id;
-                    helpers.update($this);
-                }
-            },
-            next: function() { settings.interactive = true; },
+            next: function() { var $this = $(this) , settings = helpers.settings($this); settings.interactive = true; },
             valid: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 if (!settings.finish) {

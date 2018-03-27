@@ -335,20 +335,47 @@
                 
             toggles.each(function(_index) {
                     $(this).unbind('touchmove mousemove touchstart mousedown');
-                    $(this).bind('touchmove mousemove', function(_event) {
-                        if (settings.interactive && settings.color[0]!=-1 && settings.down && settings.elt!=this) {
-                            helpers.paint($this, $(this), false);
-                            if (settings.cbk) { eval('('+settings.cbk+')')(settings.svg.root(),helpers.result($this), $(this).attr("id").substr(1)); }
+					
+                    $(this).bind('touchmove', function(_event) {
+						var vEvent =
+							(_event && _event.originalEvent && _event.originalEvent.touches && _event.originalEvent.touches.length)?
+							_event.originalEvent.touches[0]:_event;
+						var $e=$(document.elementFromPoint(vEvent.pageX,vEvent.pageY));
+						
+						if ($e) {
+							var isToggle = false;
+							if ($e.attr("class")) {
+								var cc = $e.attr("class").split(" ");
+								for (var it in cc) { if (cc[it]==settings.toggle) { isToggle = true; } }
+							}
+							if (!isToggle) { $e = $e.parent("."+settings.toggle); }
+						}
+
+                        if (settings.interactive && settings.color[0]!=-1 && settings.down && $e && $e.attr("class") && settings.elt!=$e) {
+                            helpers.paint($this, $e, false);
+                            if (settings.cbk) { eval('('+settings.cbk+')')(settings.svg.root(),helpers.result($this), $e.attr("id").substr(1)); }
                         }
-                        settings.elt = this;
+                        settings.elt = $e;
+                        _event.preventDefault();
+                    });
+					
+                    $(this).bind('mousemove', function(_event) {
+						var $e = $(this);
+						
+                        if (settings.interactive && settings.color[0]!=-1 && settings.down && settings.elt!=$e) {
+                            helpers.paint($this, $(this), false);
+                            if (settings.cbk) { eval('('+settings.cbk+')')(settings.svg.root(),helpers.result($this), $e.attr("id").substr(1)); }
+                        }
+                        settings.elt = $e;
                         _event.preventDefault();
                     });
                     $(this).bind('touchstart mousedown', function(_event) {
+						var $e = $(this);
                         if (settings.interactive && settings.color[0]!=-1) {
-                            helpers.paint($this, $(this), true);
-                            if (settings.cbk) { eval('('+settings.cbk+')')(settings.svg.root(),helpers.result($this), $(this).attr("id").substr(1)); }
+                            helpers.paint($this, $e, true);
+                            if (settings.cbk) { eval('('+settings.cbk+')')(settings.svg.root(),helpers.result($this), $e.attr("id").substr(1)); }
                         }
-                        settings.elt = this;
+                        settings.elt = $e;
                         _event.preventDefault();
                     });
                     $(this).attr("id","c"+_index);
@@ -393,6 +420,7 @@
         paint: function($this, $elt, _begin) {
             var settings = helpers.settings($this);
             var ok = true;
+			
             var c = $elt.attr("class").substr(-1);
             if (c=="c") { c = -1; }
             

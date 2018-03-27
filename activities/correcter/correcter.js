@@ -13,6 +13,7 @@
         font        : 1,                                        // The font-size multiplicator
         first       : false,                                    // Don't choose randomly the wrong words, use the first one
         background  : "",                               		// Background image
+		commas		: ".,:;\"",									// Commas
         debug       : true                                     // Debug mode
     };
 
@@ -115,7 +116,7 @@
                             else { k=end; }
                         }
                         for (var k=end; k>begin; k--) {
-                            if ((text[j][k-1]=='.')||(text[j][k-1]==',')||(text[j][k-1]==':')||(text[j][k-1]==';')||(text[j][k-1]=='"'))
+							if (settings.commas.indexOf(text[j][k-1])!=-1)
                                 { end=k-1; }
                             else { k=begin; }
                         }
