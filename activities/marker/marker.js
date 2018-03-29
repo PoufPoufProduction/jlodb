@@ -105,6 +105,8 @@
                 for (var i=0; i<settings.text.length; i++) {
 					var $p=$("<p></p>");
                     for (var j=0; j<settings.text[i].length; j++) {
+						
+						// CHECK EXERCICE BRACKET
                         var vIsQuestion = false;
                         for (var k in settings.questions) {
                             if (settings.text[i][j]==settings.questions[k].s) {
@@ -112,29 +114,35 @@
                                 if (vGroup==-1) { vGroup=k; vBeginGroup = true; vEndGroup = false; } else { vEndGroup=true; }
                             }
                         }
-                        if (vIsQuestion) { continue; }
+                        if (vIsQuestion) { continue; } 
 
-
-                        if (settings.sep.indexOf(settings.text[i][j])==-1) {
-                            if (lastLetterIsSep) {
-                                $p.append(helpers.word($this,word.replace(" ","&#xA0;"), vBeginGroup?-1:vGroup));
-                                word="";
-                                if (vEndGroup) { vEndGroup=false; vGroup=-1; }
-                            }
-                            word+=settings.text[i][j];
-                            lastLetterIsSep=false;
-                        }
-                        else {
+						// CURRENT CHAR IS A SEPARATOR
+                        if (settings.sep.indexOf(settings.text[i][j])!=-1){
+							// A REAL WORD HAS TO BE PUSHED
                             if (!lastLetterIsSep) {
                                 $p.append(helpers.word($this,word, vGroup));
                                 word="";
                                 if (vEndGroup) { vEndGroup=false; vGroup=-1; }
                             }
+							// STORE THE CURRENT CHAR AS SEPARATOR
                             word+=settings.text[i][j];
                             lastLetterIsSep=true;
                         }
+						// CURRENT CHAR IS NOT A SEPARATOR
+						else {
+							// A SEPARATOR WORD HAS TO BE PUSHED
+                            if (lastLetterIsSep) {
+                                $p.append(helpers.word($this,word.replace(" ","&#xA0;"), 9));
+                                word="";
+                                if (vEndGroup) { vEndGroup=false; vGroup=-1; }
+                            }
+							// STORE THE CURRENT CHAR AS REAL WORD CHARACTER 
+                            word+=settings.text[i][j];
+                            lastLetterIsSep=false;
+                        }
                         vBeginGroup = false;
                     }
+					// PUSH THE LAST WORD
                     $p.append(helpers.word($this,word, lastLetterIsSep?9:8)); word="";
 					$content.append($p);
                 }
@@ -155,6 +163,11 @@
         },
         word: function($this, _word,_t) {
             var settings = helpers.settings($this);
+			
+			var onlysep = true;
+			for (var i in _word) { if (settings.sep.indexOf(_word[i])==-1) { onlysep=false; } }
+			if (onlysep) { console.log(_word+" "+_t); }
+			
             var $ret = $("<span id='s"+(settings.it++)+"'>"+_word+"</span>");
 			$ret.bind("mousedown touchstart",function(event) { helpers.mousedown($this, $(this)); event.preventDefault(); });
 			$ret.bind("mousemove", function(event) { helpers.mousemove($this, $(this)); });
@@ -330,21 +343,29 @@
                             settings.words[i][0]=-2;
                         }
                     }
-                    // ESPACE BETWEEN 2 WRONG WORDS BECOMES WRONG TOO
                     for (var i=1;i<settings.words.length-1;i++) {
-                        if (settings.words[i][2]==9 && (
-                                (settings.words[i-1][0]==-2 && settings.words[i+1][0]==-2) ||
-                                (settings.words[i-1][0]==-2 && settings.words[i+1][2]==9) ||
-                                (settings.words[i-1][2]==9 && settings.words[i+1][0]==-2))) {
-                            $(this).find("#s"+i).addClass("wrong");
+                        if (settings.words[i][2]==9) {
+							
+							// SEPARATOR BETWEEN 2 WRONG WORDS BECOMES WRONG TOO
+							if (	(settings.words[i-1][0]==-2 && settings.words[i+1][0]==-2) ||
+									(settings.words[i-1][0]==-2 && settings.words[i+1][2]==9) ||
+									(settings.words[i-1][2]==9 && settings.words[i+1][0]==-2)) {
+										$(this).find("#s"+i).addClass("wrong");
+							}
+							
+							// SELECTED SEPARATOR BETWEEN TWO NOT SELECTED WORD BECOME WRONG
+							if (settings.words[i][0]>=0 && settings.words[i-1][0]<0 && settings.words[i+1][0]<0) {
+								$(this).find("#s"+i).addClass("wrong");
+							}
                         }
+						
+						
                     }
-                    
                     $this.find("#good").toggle(nbErrors==0);
                     $this.find("#wrong").toggle(nbErrors>0);
                     $this.find("#effects").show();
                     $this.find("#submit").addClass(nbErrors?"wrong":"good");
-                    
+					
                     settings.score = 5 - nbErrors;
                     if (settings.score<0) { settings.score = 0; }
                     $(this).find("#valid").hide();
