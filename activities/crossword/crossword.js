@@ -17,6 +17,7 @@
         number      : 1,                                        // Number of exercices
         fontex      : 1,                                        // Font ex
         errratio    : 1,                                        // Error ratio
+        background  : "",                               		// Background image
         debug       : true                                      // Debug mode
     };
 
@@ -27,7 +28,9 @@
         "\\\[strong\\\]([^\\\[]+)\\\[/strong\\\]",  "<div class='strong'>$1</div>",
         "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
         "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
-        "\\\[small\\\]([^\\\[]+)\\\[/small\\\]",    "<span style='font-size:.6em;'>$1</span>"
+        "\\\[small\\\]([^\\\[]+)\\\[/small\\\]",    "<span style='font-size:.6em;'>$1</span>",
+		"\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",    	"<div class='icon' style='margin:0 auto;'><img src='$1' alt=''/></div>",
+		"\\\[svg\\\]([^\\\[]+)\\\[/svg\\\]",    	"<div class='icon' style='margin:0 auto;'><svg viewBox='0 0 48 48' width='100%' height='100%'>$1</svg></div>",
     ];
 
     // private methods
@@ -95,6 +98,9 @@
 
                 // Send the onLoad callback
                 if (settings.context.onload) { settings.context.onload($this); }
+				
+                // HANDLE BACKGROUND
+                if (settings.background) { $this.children().first().css("background-image","url("+settings.background+")"); }
 
                 // DISPLAY KEYPAD
                 $this.find("#menu #"+settings.keypad).show();
@@ -330,7 +336,7 @@
                     }
 
                     var $def = $this.find("#definition");
-                    $def.html("<div style='font-size:"+settings.font+"em;'>"+def+"</div>").toggleClass("center",(def.length<5));
+                    $def.html("<div style='font-size:"+settings.font+"em;'>"+helpers.format(def.toString())+"</div>").toggleClass("center",(def.length<5));
 
                     if (_hint) {
                         if (settings.mode) {
