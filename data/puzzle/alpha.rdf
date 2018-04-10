@@ -2,191 +2,208 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dct="http://purl.org/dc/terms/">
 
-    <!-- COMPARE -->
-
+		 
+    <!-- alphabet puzzle [am] -->
+	
     <rdf:Description>
-        <dct:identifier>nf</dct:identifier>
-        <dct:title xml:lang="fr-FR">Identifier les lettres situées avant le 'F' suivant l'ordre alphabétique.</dct:title>
-        <dct:description><![CDATA["number":2,"init":{"pos":[[60,300],[210,300],[360,300],[510,300],[135,250],[285,250],[435,250],[585,250],[135,350],[285,350],[435,350],[585,350]],"area":[0,0,100,100]},"decoys":["dd01","dd02","dd03","dd04","dd05","dd06"],"scale":1.5,"url":"desktop/puzzle/list01.svg","gen":"function($this,settings,_id){var ref='F',max=ref.charCodeAt(0)-65,ret={};for (var i=0;i<6;i++) { ret[\\\"txt0\\\"+(i+1)]=\\\"<\\\"+ref; ret[\\\"p0\\\"+(i+1)]=String.fromCharCode(65+Math.floor(Math.random()*max));ret[\\\"d0\\\"+(i+1)]=String.fromCharCode(65+max+1+Math.floor(Math.random()*(26-max-1)));} return {\\\"txt\\\":ret} }","show":["t01"],"same":[["pp01","pp02","pp03","pp04","pp05","pp06"]],"labelex":"&lt;F"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Faites glisser dans les zones grises, les lettres situées [b]avant le 'F'[/b] suivant [red]l'ordre alphabétique[/red].","fontex":0.8]]></dct:description>
-        <dct:extent>2</dct:extent>
+        <dct:identifier>m1</dct:identifier>
+        <dct:title xml:lang="fr-FR">Construire l'alphabet en majuscule.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","fullscreen":true,"init":{"area":[550,30,580,370]},"url":"desktop/puzzle/alphamaj.svg"]]></dct:description>
+        <dct:extent>3</dct:extent>
         <dct:subject>languages</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>nf</dct:alternative>
-        <dct:source>res/img/desktop/puzzle/list01.svg</dct:source>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>ng</dct:identifier>
-        <dct:title xml:lang="fr-FR">Identifier les lettres situées après le 'G' suivant l'ordre alphabétique.</dct:title>
-        <dct:description><![CDATA["number":2,"init":{"pos":[[60,300],[210,300],[360,300],[510,300],[135,250],[285,250],[435,250],[585,250],[135,350],[285,350],[435,350],[585,350]],"area":[0,0,100,100]},"decoys":["dd01","dd02","dd03","dd04","dd05","dd06"],"scale":1.5,"url":"desktop/puzzle/list01.svg","gen":"function($this,settings,_id){var ref='G',max=ref.charCodeAt(0)-65,ret={};for (var i=0;i<6;i++) { ret[\\\"txt0\\\"+(i+1)]=\\\">\\\"+ref; ret[\\\"p0\\\"+(i+1)]=String.fromCharCode(65+max+1+Math.floor(Math.random()*(26-max-1)));ret[\\\"d0\\\"+(i+1)]=String.fromCharCode(65+Math.floor(Math.random()*max));} return {\\\"txt\\\":ret} }","show":["t01"],"same":[["pp01","pp02","pp03","pp04","pp05","pp06"]],"labelex":"&gt;G"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Faites glisser dans les zones grises, les lettres situées [b]après le 'G'[/b] suivant [red]l'ordre alphabétique[/red].","fontex":0.8]]></dct:description>
-        <dct:extent>2</dct:extent>
-        <dct:subject>languages</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>nf</dct:alternative>
-        <dct:source>res/img/desktop/puzzle/list01.svg</dct:source>
-    </rdf:Description>
-
-
-    <rdf:Description>
-        <dct:identifier>ni</dct:identifier>
-        <dct:title xml:lang="fr-FR">Identifier les lettres situées après le 'I' suivant l'ordre alphabétique.</dct:title>
-        <dct:description><![CDATA["number":2,"init":{"pos":[[60,300],[210,300],[360,300],[510,300],[135,250],[285,250],[435,250],[585,250],[135,350],[285,350],[435,350],[585,350]],"area":[0,0,100,100]},"decoys":["dd01","dd02","dd03","dd04","dd05","dd06"],"scale":1.5,"url":"desktop/puzzle/list01.svg","gen":"function($this,settings,_id){var ref='I',max=ref.charCodeAt(0)-65,ret={};for (var i=0;i<6;i++) { ret[\\\"txt0\\\"+(i+1)]=\\\">\\\"+ref; ret[\\\"p0\\\"+(i+1)]=String.fromCharCode(65+max+1+Math.floor(Math.random()*(26-max-1)));ret[\\\"d0\\\"+(i+1)]=String.fromCharCode(65+Math.floor(Math.random()*max));} return {\\\"txt\\\":ret} }","show":["t01"],"same":[["pp01","pp02","pp03","pp04","pp05","pp06"]],"labelex":"&gt;I"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Faites glisser dans les zones grises, les lettres situées [b]après le 'I'[/b] suivant [red]l'ordre alphabétique[/red].","fontex":0.8]]></dct:description>
-        <dct:extent>2</dct:extent>
-        <dct:subject>languages</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>nf</dct:alternative>
-        <dct:source>res/img/desktop/puzzle/list01.svg</dct:source>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>nh</dct:identifier>
-        <dct:title xml:lang="fr-FR">Identifier les lettres situées avant le 'H' suivant l'ordre alphabétique.</dct:title>
-        <dct:description><![CDATA["number":2,"init":{"pos":[[60,300],[210,300],[360,300],[510,300],[135,250],[285,250],[435,250],[585,250],[135,350],[285,350],[435,350],[585,350]],"area":[0,0,100,100]},"decoys":["dd01","dd02","dd03","dd04","dd05","dd06"],"scale":1.5,"url":"desktop/puzzle/list01.svg","gen":"function($this,settings,_id){var ref='H',max=ref.charCodeAt(0)-65,ret={};for (var i=0;i<6;i++) { ret[\\\"txt0\\\"+(i+1)]=\\\"<\\\"+ref; ret[\\\"p0\\\"+(i+1)]=String.fromCharCode(65+Math.floor(Math.random()*max));ret[\\\"d0\\\"+(i+1)]=String.fromCharCode(65+max+1+Math.floor(Math.random()*(26-max-1)));} return {\\\"txt\\\":ret} }","show":["t01"],"same":[["pp01","pp02","pp03","pp04","pp05","pp06"]],"labelex":"&lt;H"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Faites glisser dans les zones grises, les lettres situées [b]avant le 'H'[/b] suivant [red]l'ordre alphabétique[/red].","fontex":0.8]]></dct:description>
-        <dct:extent>2</dct:extent>
-        <dct:subject>languages</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>nf</dct:alternative>
-        <dct:source>res/img/desktop/puzzle/list01.svg</dct:source>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>nj</dct:identifier>
-        <dct:title xml:lang="fr-FR">Identifier les lettres situées avant le 'J' suivant l'ordre alphabétique.</dct:title>
-        <dct:description><![CDATA["number":2,"init":{"pos":[[60,300],[210,300],[360,300],[510,300],[135,250],[285,250],[435,250],[585,250],[135,350],[285,350],[435,350],[585,350]],"area":[0,0,100,100]},"decoys":["dd01","dd02","dd03","dd04","dd05","dd06"],"scale":1.5,"url":"desktop/puzzle/list01.svg","gen":"function($this,settings,_id){var ref='J',max=ref.charCodeAt(0)-65,ret={};for (var i=0;i<6;i++) { ret[\\\"txt0\\\"+(i+1)]=\\\"<\\\"+ref; ret[\\\"p0\\\"+(i+1)]=String.fromCharCode(65+Math.floor(Math.random()*max));ret[\\\"d0\\\"+(i+1)]=String.fromCharCode(65+max+1+Math.floor(Math.random()*(26-max-1)));} return {\\\"txt\\\":ret} }","show":["t01"],"same":[["pp01","pp02","pp03","pp04","pp05","pp06"]],"labelex":"&lt;J"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Faites glisser dans les zones grises, les lettres situées [b]avant le 'J'[/b] suivant [red]l'ordre alphabétique[/red].","fontex":0.8]]></dct:description>
-        <dct:extent>2</dct:extent>
-        <dct:subject>languages</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>nf</dct:alternative>
-        <dct:source>res/img/desktop/puzzle/list01.svg</dct:source>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>nk</dct:identifier>
-        <dct:title xml:lang="fr-FR">Identifier les lettres situées après le 'K' suivant l'ordre alphabétique.</dct:title>
-        <dct:description><![CDATA["number":2,"init":{"pos":[[60,300],[210,300],[360,300],[510,300],[135,250],[285,250],[435,250],[585,250],[135,350],[285,350],[435,350],[585,350]],"area":[0,0,100,100]},"decoys":["dd01","dd02","dd03","dd04","dd05","dd06"],"scale":1.5,"url":"desktop/puzzle/list01.svg","gen":"function($this,settings,_id){var ref='K',max=ref.charCodeAt(0)-65,ret={};for (var i=0;i<6;i++) { ret[\\\"txt0\\\"+(i+1)]=\\\">\\\"+ref; ret[\\\"p0\\\"+(i+1)]=String.fromCharCode(65+max+1+Math.floor(Math.random()*(26-max-1)));ret[\\\"d0\\\"+(i+1)]=String.fromCharCode(65+Math.floor(Math.random()*max));} return {\\\"txt\\\":ret} }","show":["t01"],"same":[["pp01","pp02","pp03","pp04","pp05","pp06"]],"labelex":"&gt;K"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Faites glisser dans les zones grises, les lettres situées [b]après le 'K'[/b] suivant [red]l'ordre alphabétique[/red].","fontex":0.8]]></dct:description>
-        <dct:extent>2</dct:extent>
-        <dct:subject>languages</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>nf</dct:alternative>
-        <dct:source>res/img/desktop/puzzle/list01.svg</dct:source>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>nl</dct:identifier>
-        <dct:title xml:lang="fr-FR">Identifier les lettres situées avant le 'L' suivant l'ordre alphabétique.</dct:title>
-        <dct:description><![CDATA["number":2,"init":{"pos":[[60,300],[210,300],[360,300],[510,300],[135,250],[285,250],[435,250],[585,250],[135,350],[285,350],[435,350],[585,350]],"area":[0,0,100,100]},"decoys":["dd01","dd02","dd03","dd04","dd05","dd06"],"scale":1.5,"url":"desktop/puzzle/list01.svg","gen":"function($this,settings,_id){var ref='L',max=ref.charCodeAt(0)-65,ret={};for (var i=0;i<6;i++) { ret[\\\"txt0\\\"+(i+1)]=\\\"<\\\"+ref; ret[\\\"p0\\\"+(i+1)]=String.fromCharCode(65+Math.floor(Math.random()*max));ret[\\\"d0\\\"+(i+1)]=String.fromCharCode(65+max+1+Math.floor(Math.random()*(26-max-1)));} return {\\\"txt\\\":ret} }","show":["t01"],"same":[["pp01","pp02","pp03","pp04","pp05","pp06"]],"labelex":"&lt;L"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Faites glisser dans les zones grises, les lettres situées [b]avant le 'L'[/b] suivant [red]l'ordre alphabétique[/red].","fontex":0.8]]></dct:description>
-        <dct:extent>2</dct:extent>
-        <dct:subject>languages</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>nf</dct:alternative>
-        <dct:source>res/img/desktop/puzzle/list01.svg</dct:source>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>nm</dct:identifier>
-        <dct:title xml:lang="fr-FR">Identifier les lettres situées après le 'M' suivant l'ordre alphabétique.</dct:title>
-        <dct:description><![CDATA["number":2,"init":{"pos":[[60,300],[210,300],[360,300],[510,300],[135,250],[285,250],[435,250],[585,250],[135,350],[285,350],[435,350],[585,350]],"area":[0,0,100,100]},"decoys":["dd01","dd02","dd03","dd04","dd05","dd06"],"scale":1.5,"url":"desktop/puzzle/list01.svg","gen":"function($this,settings,_id){var ref='M',max=ref.charCodeAt(0)-65,ret={};for (var i=0;i<6;i++) { ret[\\\"txt0\\\"+(i+1)]=\\\">\\\"+ref; ret[\\\"p0\\\"+(i+1)]=String.fromCharCode(65+max+1+Math.floor(Math.random()*(26-max-1)));ret[\\\"d0\\\"+(i+1)]=String.fromCharCode(65+Math.floor(Math.random()*max));} return {\\\"txt\\\":ret} }","show":["t01"],"same":[["pp01","pp02","pp03","pp04","pp05","pp06"]],"labelex":"&gt;M"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Faites glisser dans les zones grises, les lettres situées [b]après le 'M'[/b] suivant [red]l'ordre alphabétique[/red].","fontex":0.8]]></dct:description>
-        <dct:extent>2</dct:extent>
-        <dct:subject>languages</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>nf</dct:alternative>
-        <dct:source>res/img/desktop/puzzle/list01.svg</dct:source>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>nn</dct:identifier>
-        <dct:title xml:lang="fr-FR">Identifier les lettres situées avant le 'N' suivant l'ordre alphabétique.</dct:title>
-        <dct:description><![CDATA["number":2,"init":{"pos":[[60,300],[210,300],[360,300],[510,300],[135,250],[285,250],[435,250],[585,250],[135,350],[285,350],[435,350],[585,350]],"area":[0,0,100,100]},"decoys":["dd01","dd02","dd03","dd04","dd05","dd06"],"scale":1.5,"url":"desktop/puzzle/list01.svg","gen":"function($this,settings,_id){var ref='N',max=ref.charCodeAt(0)-65,ret={};for (var i=0;i<6;i++) { ret[\\\"txt0\\\"+(i+1)]=\\\"<\\\"+ref; ret[\\\"p0\\\"+(i+1)]=String.fromCharCode(65+Math.floor(Math.random()*max));ret[\\\"d0\\\"+(i+1)]=String.fromCharCode(65+max+1+Math.floor(Math.random()*(26-max-1)));} return {\\\"txt\\\":ret} }","show":["t01"],"same":[["pp01","pp02","pp03","pp04","pp05","pp06"]],"labelex":"&lt;N"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Faites glisser dans les zones grises, les lettres situées [b]avant le 'N'[/b] suivant [red]l'ordre alphabétique[/red].","fontex":0.8]]></dct:description>
-        <dct:extent>2</dct:extent>
-        <dct:subject>languages</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>nf</dct:alternative>
-        <dct:source>res/img/desktop/puzzle/list01.svg</dct:source>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>no</dct:identifier>
-        <dct:title xml:lang="fr-FR">Identifier les lettres situées après le 'O' suivant l'ordre alphabétique.</dct:title>
-        <dct:description><![CDATA["number":2,"init":{"pos":[[60,300],[210,300],[360,300],[510,300],[135,250],[285,250],[435,250],[585,250],[135,350],[285,350],[435,350],[585,350]],"area":[0,0,100,100]},"decoys":["dd01","dd02","dd03","dd04","dd05","dd06"],"scale":1.5,"url":"desktop/puzzle/list01.svg","gen":"function($this,settings,_id){var ref='O',max=ref.charCodeAt(0)-65,ret={};for (var i=0;i<6;i++) { ret[\\\"txt0\\\"+(i+1)]=\\\">\\\"+ref; ret[\\\"p0\\\"+(i+1)]=String.fromCharCode(65+max+1+Math.floor(Math.random()*(26-max-1)));ret[\\\"d0\\\"+(i+1)]=String.fromCharCode(65+Math.floor(Math.random()*max));} return {\\\"txt\\\":ret} }","show":["t01"],"same":[["pp01","pp02","pp03","pp04","pp05","pp06"]],"labelex":"&gt;O"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Faites glisser dans les zones grises, les lettres situées [b]après le 'O'[/b] suivant [red]l'ordre alphabétique[/red].","fontex":0.8]]></dct:description>
-        <dct:extent>2</dct:extent>
-        <dct:subject>languages</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>nf</dct:alternative>
-        <dct:source>res/img/desktop/puzzle/list01.svg</dct:source>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>np</dct:identifier>
-        <dct:title xml:lang="fr-FR">Identifier les lettres situées avant le 'P' suivant l'ordre alphabétique.</dct:title>
-        <dct:description><![CDATA["number":2,"init":{"pos":[[60,300],[210,300],[360,300],[510,300],[135,250],[285,250],[435,250],[585,250],[135,350],[285,350],[435,350],[585,350]],"area":[0,0,100,100]},"decoys":["dd01","dd02","dd03","dd04","dd05","dd06"],"scale":1.5,"url":"desktop/puzzle/list01.svg","gen":"function($this,settings,_id){var ref='P',max=ref.charCodeAt(0)-65,ret={};for (var i=0;i<6;i++) { ret[\\\"txt0\\\"+(i+1)]=\\\"<\\\"+ref; ret[\\\"p0\\\"+(i+1)]=String.fromCharCode(65+Math.floor(Math.random()*max));ret[\\\"d0\\\"+(i+1)]=String.fromCharCode(65+max+1+Math.floor(Math.random()*(26-max-1)));} return {\\\"txt\\\":ret} }","show":["t01"],"same":[["pp01","pp02","pp03","pp04","pp05","pp06"]],"labelex":"&lt;P"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Faites glisser dans les zones grises, les lettres situées [b]avant le 'P'[/b] suivant [red]l'ordre alphabétique[/red].","fontex":0.8]]></dct:description>
-        <dct:extent>2</dct:extent>
-        <dct:subject>languages</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>nf</dct:alternative>
-        <dct:source>res/img/desktop/puzzle/list01.svg</dct:source>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>nq</dct:identifier>
-        <dct:title xml:lang="fr-FR">Identifier les lettres situées après le 'Q' suivant l'ordre alphabétique.</dct:title>
-        <dct:description><![CDATA["number":2,"init":{"pos":[[60,300],[210,300],[360,300],[510,300],[135,250],[285,250],[435,250],[585,250],[135,350],[285,350],[435,350],[585,350]],"area":[0,0,100,100]},"decoys":["dd01","dd02","dd03","dd04","dd05","dd06"],"scale":1.5,"url":"desktop/puzzle/list01.svg","gen":"function($this,settings,_id){var ref='Q',max=ref.charCodeAt(0)-65,ret={};for (var i=0;i<6;i++) { ret[\\\"txt0\\\"+(i+1)]=\\\">\\\"+ref; ret[\\\"p0\\\"+(i+1)]=String.fromCharCode(65+max+1+Math.floor(Math.random()*(26-max-1)));ret[\\\"d0\\\"+(i+1)]=String.fromCharCode(65+Math.floor(Math.random()*max));} return {\\\"txt\\\":ret} }","show":["t01"],"same":[["pp01","pp02","pp03","pp04","pp05","pp06"]],"labelex":"&gt;Q"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Faites glisser dans les zones grises, les lettres situées [b]après le 'Q'[/b] suivant [red]l'ordre alphabétique[/red].","fontex":0.8]]></dct:description>
-        <dct:extent>2</dct:extent>
-        <dct:subject>languages</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>nf</dct:alternative>
-        <dct:source>res/img/desktop/puzzle/list01.svg</dct:source>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>nr</dct:identifier>
-        <dct:title xml:lang="fr-FR">Identifier les lettres situées avant le 'R' suivant l'ordre alphabétique.</dct:title>
-        <dct:description><![CDATA["number":2,"init":{"pos":[[60,300],[210,300],[360,300],[510,300],[135,250],[285,250],[435,250],[585,250],[135,350],[285,350],[435,350],[585,350]],"area":[0,0,100,100]},"decoys":["dd01","dd02","dd03","dd04","dd05","dd06"],"scale":1.5,"url":"desktop/puzzle/list01.svg","gen":"function($this,settings,_id){var ref='R',max=ref.charCodeAt(0)-65,ret={};for (var i=0;i<6;i++) { ret[\\\"txt0\\\"+(i+1)]=\\\"<\\\"+ref; ret[\\\"p0\\\"+(i+1)]=String.fromCharCode(65+Math.floor(Math.random()*max));ret[\\\"d0\\\"+(i+1)]=String.fromCharCode(65+max+1+Math.floor(Math.random()*(26-max-1)));} return {\\\"txt\\\":ret} }","show":["t01"],"same":[["pp01","pp02","pp03","pp04","pp05","pp06"]],"labelex":"&lt;R"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Faites glisser dans les zones grises, les lettres situées [b]avant le 'R'[/b] suivant [red]l'ordre alphabétique[/red].","fontex":0.8]]></dct:description>
-        <dct:extent>2</dct:extent>
-        <dct:subject>languages</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>nf</dct:alternative>
-        <dct:source>res/img/desktop/puzzle/list01.svg</dct:source>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>ns</dct:identifier>
-        <dct:title xml:lang="fr-FR">Identifier les lettres situées après le 'S' suivant l'ordre alphabétique.</dct:title>
-        <dct:description><![CDATA["number":2,"init":{"pos":[[60,300],[210,300],[360,300],[510,300],[135,250],[285,250],[435,250],[585,250],[135,350],[285,350],[435,350],[585,350]],"area":[0,0,100,100]},"decoys":["dd01","dd02","dd03","dd04","dd05","dd06"],"scale":1.5,"url":"desktop/puzzle/list01.svg","gen":"function($this,settings,_id){var ref='S',max=ref.charCodeAt(0)-65,ret={};for (var i=0;i<6;i++) { ret[\\\"txt0\\\"+(i+1)]=\\\">\\\"+ref; ret[\\\"p0\\\"+(i+1)]=String.fromCharCode(65+max+1+Math.floor(Math.random()*(26-max-1)));ret[\\\"d0\\\"+(i+1)]=String.fromCharCode(65+Math.floor(Math.random()*max));} return {\\\"txt\\\":ret} }","show":["t01"],"same":[["pp01","pp02","pp03","pp04","pp05","pp06"]],"labelex":"&gt;S"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Faites glisser dans les zones grises, les lettres situées [b]après le 'S'[/b] suivant [red]l'ordre alphabétique[/red].","fontex":0.8]]></dct:description>
-        <dct:extent>2</dct:extent>
-        <dct:subject>languages</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>nf</dct:alternative>
-        <dct:source>res/img/desktop/puzzle/list01.svg</dct:source>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>m1</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">MAT</dct:coverage>
+        <dct:source>res/img/background/landscape/yellowboard02.svg,res/img/desktop/puzzle/alphamaj.svg</dct:source>
     </rdf:Description>
     
+    <rdf:Description>
+        <dct:identifier>m2</dct:identifier>
+        <dct:title xml:lang="fr-FR">Construire l'alphabet en majuscule.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","fullscreen":true,"init":{"area":[550,30,580,370]},"url":"desktop/puzzle/alphamaj.svg","svgclass":"l3"]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>languages</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>m1</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP,CE1</dct:coverage>
+        <dct:source>res/img/background/landscape/yellowboard02.svg,res/img/desktop/puzzle/alphamaj.svg</dct:source>
+    </rdf:Description>
 
+    <rdf:Description>
+        <dct:identifier>m3</dct:identifier>
+        <dct:title xml:lang="fr-FR">Construire l'alphabet en majuscule.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","fullscreen":true,"init":{"area":[550,30,580,370]},"url":"desktop/puzzle/alphamaj.svg","svgclass":"l2 l3"]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>languages</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>m1</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP,CE1</dct:coverage>
+        <dct:source>res/img/background/landscape/yellowboard02.svg,res/img/desktop/puzzle/alphamaj.svg</dct:source>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>a1</dct:identifier>
+        <dct:title xml:lang="fr-FR">Construire l'alphabet en minuscule.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","fullscreen":true,"init":{"area":[550,30,580,370]},"url":"desktop/puzzle/alphamin.svg"]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>languages</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>m1</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">MAT</dct:coverage>
+        <dct:source>res/img/background/landscape/yellowboard02.svg,res/img/desktop/puzzle/alphamin.svg</dct:source>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>a2</dct:identifier>
+        <dct:title xml:lang="fr-FR">Construire l'alphabet en minuscule.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","fullscreen":true,"init":{"area":[550,30,580,370]},"url":"desktop/puzzle/alphamin.svg","svgclass":"l3"]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>languages</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>m1</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP,CE1</dct:coverage>
+        <dct:source>res/img/background/landscape/yellowboard02.svg,res/img/desktop/puzzle/alphamin.svg</dct:source>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>a3</dct:identifier>
+        <dct:title xml:lang="fr-FR">Construire l'alphabet en minuscule.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","fullscreen":true,"init":{"area":[550,30,580,370]},"url":"desktop/puzzle/alphamin.svg","svgclass":"l2 l3"]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>languages</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>m1</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP,CE1</dct:coverage>
+        <dct:source>res/img/background/landscape/yellowboard02.svg,res/img/desktop/puzzle/alphamin.svg</dct:source>
+    </rdf:Description>
+		 
+    <!-- COMPARE [c] -->
+
+    <rdf:Description>
+        <dct:identifier>ca</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier les lettres situées avant la lettre de référence suivant l'ordre alphabétique.</dct:title>
+        <dct:description><![CDATA["gg":true,"background":"res/img/background/landscape/bluecarpet02.svg","number":2,"init":{"pos":[[60,300],[210,300],[360,300],[510,300],[135,250],[285,250],[435,250],[585,250],[135,350],[285,350],[435,350],[585,350]],"area":[0,0,100,100]},"decoys":["dd01","dd02","dd03","dd04","dd05","dd06"],"scale":1.5,"url":"desktop/puzzle/list01.svg","gen":"function($this,_s,_id){var val=Math.floor(Math.random()*15)+6,ref=String.fromCharCode(65+val),ret={};for (var i=0;i<6;i++) { ret['txt0'+(i+1)]=ref; ret[(_s.gg?'p0':'d0')+(i+1)]=String.fromCharCode(65+Math.floor(Math.random()*val));ret[(_s.gg?'d0':'p0')+(i+1)]=String.fromCharCode(65+val+1+Math.floor(Math.random()*(26-val-1)));} return {'txt':ret} }","show":["t01"],"same":[["pp01","pp02","pp03","pp04","pp05","pp06"]]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Faites glisser dans les zones grises, les lettres situées, selon l'ordre [red]alphabétique[/red], [b]AVANT[/b] la lettre de référence en gris.","fontex":0.8]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>languages</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>nf</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:source>res/img/background/landscape/bluecarpet02.svg,res/img/desktop/puzzle/list01.svg</dct:source>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>cp</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier les lettres situées après la lettre de référence suivant l'ordre alphabétique.</dct:title>
+        <dct:description><![CDATA["gg":false,"background":"res/img/background/landscape/bluecarpet01.svg"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Faites glisser dans les zones grises, les lettres situées, selon l'ordre [red]alphabétique[/red], [b]APRÈS[/b] la lettre de référence en gris.","fontex":0.8]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>languages</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>ca</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:source>res/img/background/landscape/bluecarpet01.svg,res/img/desktop/puzzle/list01.svg</dct:source>
+		<dct:relation>ca</dct:relation>
+    </rdf:Description>
+	
+	<!-- SORTING -->
+	
+	<rdf:Description>
+        <dct:identifier>s6</dct:identifier>
+        <dct:title xml:lang="fr-FR">Classer les 6 lettres proposés dans l'ordre alphabétiques.</dct:title>
+        <dct:description><![CDATA["gg":6,"number":2,"timg":"res/img/svginventoryicons/book/paper01.svg","background":"res/img/background/landscape/wallpaper02.svg","init":{"pos":[[425,60],[495,60],[565,60],[425,130],[495,130],[565,130],[425,200],[495,200],[565,200],[425,270],[495,270],[565,270]]},"url":"desktop/puzzle/word.svg","gen":"function($this,_s,_i){ var c=[],v={}; for (var i=0; i<26; i++) { c.push(i); c.sort(function() { return (Math.random()<0.5); }); } c.splice(_s.gg,26-_s.gg); c.sort(function(_a,_b) { return (_a>_b); }); for (var i=0;i<_s.gg;i++) { v['p'+(i<9?'0':'')+(i+1)]=String.fromCharCode(65+c[i]); } return { 'values':v, 'svgclass':'l'+_s.gg}; }"]]></dct:description>
+        <dct:description xml:lang="fr-FR">,"exercice":"[b]Classez[/b] les lettres proposées dans l'[red]ordre alphabétique[/red]."</dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>languages</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>s6</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:source>res/img/background/landscape/wallpaper02.svg,res/img/svginventoryicons/book/paper01.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>s8</dct:identifier>
+        <dct:title xml:lang="fr-FR">Classer les 8 lettres proposés dans l'ordre alphabétiques.</dct:title>
+        <dct:description><![CDATA["gg":8,"number":2]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>languages</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>s6</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:source>res/img/background/landscape/wallpaper02.svg,res/img/svginventoryicons/book/paper01.svg</dct:source>
+        <dct:relation>s6</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>s10</dct:identifier>
+        <dct:title xml:lang="fr-FR">Classer les 10 lettres proposés dans l'ordre alphabétiques.</dct:title>
+        <dct:description><![CDATA["gg":10,"number":1]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>languages</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>s6</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:source>res/img/background/landscape/wallpaper02.svg,res/img/svginventoryicons/book/paper01.svg</dct:source>
+        <dct:relation>s6</dct:relation>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>s12</dct:identifier>
+        <dct:title xml:lang="fr-FR">Classer les 12 lettres proposés dans l'ordre alphabétiques.</dct:title>
+        <dct:description><![CDATA["gg":12,"number":1]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>languages</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>s6</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:source>res/img/background/landscape/wallpaper02.svg,res/img/svginventoryicons/book/paper01.svg</dct:source>
+        <dct:relation>s6</dct:relation>
+    </rdf:Description>
+
+	<!-- GROUP [g] -->
+	
+	<rdf:Description>
+        <dct:identifier>g3</dct:identifier>
+        <dct:title xml:lang="fr-FR">Regrouper 12 lettres dans l'intervalle correspondant selon l'ordre alphabétique.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/grayboard01.svg","number":1,"init":{"pos":[[215,28],[215,65],[215,102],[320,28],[320,65],[320,102],[425,28],[425,65],[425,102],[530,28],[530,65],[530,102]]},"same":[["a","b","c","d"],["e","f","g","h"],["i","j","k","l"]],"url":"desktop/puzzle/groups3-4.svg","gen":"function($this,_s,_id){ var nb=4,m=25,l='',a=(nb+2)+Math.floor(Math.random()*(m-3*(nb+2))),range=[0,a,Math.floor(Math.random()*(m-a-2*(nb+2)))+a+nb+2,m],txt={},values={}; for (var i=0; i<range.length-1;i++){ txt['text'+(i+1)]='['+String.fromCharCode(65+range[i])+','+String.fromCharCode(65+range[i+1])+']'; for(var j=0;j<nb;j++) { var vv,cpt=0; do { vv = String.fromCharCode(65+Math.floor(Math.random()*(range[i+1]-range[i]-1))+range[i]+1);  cpt++; } while (l.indexOf(vv)!=-1 && cpt<10); values[String.fromCharCode(97 + j + i*nb)]=vv; l+=vv;  } } return {txt:txt, values:values};}","svgclass":"big"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Placez chaque lettre dans [b]son groupe correspondant[/b] suivant l'[red]ordre alphabétique[/red]."]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>languages</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>g3</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:source>res/img/desktop/puzzle/groups3-4.svg,res/img/background/landscape/grayboard01.svg</dct:source>
+    </rdf:Description>
+	
+	
+	
+	<rdf:Description>
+        <dct:identifier>g302</dct:identifier>
+        <dct:title xml:lang="fr-FR">Regrouper 12 lettres dans l'intervalle correspondant selon l'ordre alphabétique.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","number":1,"init":{"pos":[[215,28],[215,65],[215,102],[320,28],[320,65],[320,102],[425,28],[425,65],[425,102],[530,28],[530,65],[530,102]]},"same":[["a","b","c","d"],["e","f","g","h"],["i","j","k","l"]],"url":"desktop/puzzle/groups3-4.svg","txt":{"text1":"[A,I]","text2":"[I,P]","text3":"[P,Z]"},"values":{"a":"blanc","b":"bleu","c":"doré","d":"gris","e":"jaune","f":"marron","g":"noir","h":"orange","i":"rose","j":"rouge","k":"vert","l":"violet"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Placez chaque couleur dans [b]son groupe correspondant[/b] suivant l'[red]ordre alphabétique[/red]."]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>languages</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>g302</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:source>res/img/desktop/puzzle/groups3-4.svg,res/img/background/landscape/yellowboard02.svg</dct:source>
+    </rdf:Description>
+	
+	
 </rdf:RDF>
 
