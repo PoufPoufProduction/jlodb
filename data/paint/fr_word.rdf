@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dct="http://purl.org/dc/terms/">
+		 
+	<!-- SYNONYMY -->
+	
+	<rdf:Description>
+        <dct:identifier>_wasa</dct:identifier>
+        <dct:title xml:lang="fr-FR">Colorier librement chaque paire de synonymes.</dct:title>
+        <dct:description><![CDATA["scorearg":[[[4],[7],[9],[5],[0],[3],[8],[1],[6],[2]]],"t":["drôle","cogner","ancien","vélo","amusant","bicyclette","donner","frapper","offrir","vieux"],"errratio":2,"svgclass":"db16","class":"square tiny","background":"res/img/background/landscape/grayboard01.svg","url":"res/img/desktop/paint/boxt10.svg","selected":1,"font":0.5,"result":"function($this,_r,_arg){ var ret=''; for (var i=0; i<_r.length; i++) { var ok=true, nb=0; for (var j in _r) { if (_r[j]==_r[i]) nb++; } ok=(nb==(1+_arg[i].length)); if (ok) { for (var j in _arg[i]) { if (_r[i]!=_r[_arg[i][j]]) { ok = false; } } } ret+=ok?_r[i]:'@'; } return ret;}","remove":true,"source":"db16"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez[/b] chaque [red]paire[/red] de [red]synonymes[/red] avec la couleur de votre choix."]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>frword</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>_wasa</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:isPartOf>synonymy</dct:isPartOf>
+        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/paint/boxt10.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>_wask</dct:identifier>
+        <dct:title xml:lang="fr-FR">Colorier librement chaque groupe de synonymes.</dct:title>
+        <dct:description><![CDATA["scorearg":[[[6,8],[2,4,7],[1,4,7],[5,9],[1,2,7],[3,9],[0,8],[1,2,4],[0,6],[3,5]]],"t":["maison","élève","écolier","fort","étudiant","costaud","logis","collégien","demeure","solide"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez[/b] chaque [red]groupe[/red] de 3 ou 4 [red]synonymes[/red] avec la couleur de votre choix."]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>frword</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>_wasa</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:isPartOf>synonymy</dct:isPartOf>
+        <dct:relation>_wasa</dct:relation>
+        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/paint/boxt10.svg</dct:source>
+    </rdf:Description>
+	
+	
+
+    <rdf:Description>
+        <dct:identifier>_wan2</dct:identifier>
+        <dct:title xml:lang="fr-FR">Colorier un dessin en fonction du préfixe utilisé par l'antonyme de chaque adjectif [bateau sur l'eau - 13×4].</dct:title>
+        <dct:description><![CDATA["svgclass":"small","background":"res/img/background/landscape/graycarpet01.svg","url":"res/img/desktop/paint/img002.svg","selected":1,"font":0.5,"result":["4133122212112"],"remove":true,"source":[["1","in- im-","#C4D7ED","#183152"],["2","dé-","#ABC8E2","#183152"],["3","mal-","#375D81","#C4D7ED"],["4","a-","#183152","#C4D7ED"]],"t":["normal","fini","honnête","adroit","certain","branché","cousu","rangé","précis","coller","possible","apte","faire"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez l'image[/b] suivant le [b]préfixe[/b] utilisé pour construire l'antonyme de chaque mot."]]></dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>frword</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>_wan2</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:isPartOf>synonymy</dct:isPartOf>
+        <dct:source>res/img/background/landscape/graycarpet01.svg,res/img/desktop/paint/img002.svg</dct:source>
+    </rdf:Description>
+    
+
+	
+</rdf:RDF>
+

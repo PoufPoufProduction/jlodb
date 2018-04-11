@@ -601,6 +601,10 @@
                     }
                     else {
                         var r = $.isArray(settings.result)?settings.result[settings.id%settings.result.length]:settings.result;
+						if (r.indexOf("function")!=-1) {
+							var arg = $.isArray(settings.scorearg)?settings.scorearg[settings.id%settings.canvas.length]:settings.scorearg;
+                            r = eval('('+r+')')($this,result,arg);
+						}
                         for (var i=0; i<r.length; i++) {
                             if (r[i]!=result[i]) {
                                 var $elt;
