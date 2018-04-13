@@ -38,23 +38,21 @@
 .crossword div#board table.hint div.s     { background-color:rgba(53,34,34,0.2); }
 
 .crossword div#menu                       { width:3.9em; float:left; background-color:rgba(255,255,255,0.8); border-radius:0.2em;
-                                            margin-top:0.2em; }
-.crossword div#menu>div                   { clear:both; border:1px solid black; border-width:0 0 1px 0; }
+                                            margin-top:0.2em; height:11.6em; }
+.crossword div#menu>div                   { clear:both; }
 .crossword div#menu #title                { font-size:0.8em; text-align:center; height:1.2em; }
-.crossword.tinytitle div#menu #title      { font-size:0.6em; height:1.2em; }
-.crossword.notitle div#menu #title        { display:none; }
-.crossword div#menu #exercice             { font-size:0.35em; text-align:justify; padding:.1em .5em; height:2.4em;
+.crossword div#menu #exercice             { font-size:0.3em; text-align:justify; padding:.1em .5em; height:10%;
                                             background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat; }
-.crossword.noex div#menu #exercice        { display:none; }
-.crossword div#definition                 { font-size:.5em; padding:0 .2em; height:3.4em; background-color:white;  }
+.crossword div#definition                 { font-size:.4em; padding:0 .2em; height:18%; background-color:white;  }
 .crossword div#definition div             { text-align:justify;  }
 .crossword div#definition.center div        { text-align:center; }
-.crossword.notitle div#definition         { height:5.2em; }
-.crossword.noex div#definition            { height:5.2em; }
-.crossword.noex.notitle div#definition    { height:7em; }
+
+
 .crossword.nodef div#definition           { display:none; }
-.crossword.nodef div#menu div#exercice          { height:8em; }
-.crossword.nodef.notitle div#menu div#exercice  { height:10em; }
+.crossword.noex div#menu #exercice        { display:none; }
+.crossword.nohint div#buttons			  { display:none; }
+
+
 .crossword div#buttons                    { width:4.2em; }
 .crossword div#buttons .bg                   { float:left; font-size:1.5em; border-radius:.3em; margin:.05em .1em; padding:.05em; opacity:0.6; }
 .crossword div#buttons .bg.s                 { background-color:black; opacity:1; }

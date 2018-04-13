@@ -5,8 +5,8 @@
     <rdf:Description>
         <dct:identifier>_wv02a</dct:identifier>
         <dct:title xml:lang="fr-FR">Compléter la grille grâce aux 10 couleurs [BLEU,ROUGE,VERT,NOIR,JAUNE,ORANGE,BLANC,DORE,MARRON,GRIS].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/bluecarpet02.svg","hint":false,"keypad":"abc","regexp":{ "from": "([^ ]+)","to":"[svg]<circle cx='24' cy='24' r='20' style='fill:$1;stroke:black;stroke-width:0.2'/>[/svg]"},"data":["           B  ","       O  BLEU","       R G A  ","      MARRON  "," N V J N I C  ","DORE A G S    "," I ROUGE      "," R T N        ","     E        "],"def":{"horiz":{"0x5":"rgb(255,200,50)","3x6":"red","6x3":"rgb(100,50,0)","10x1":"blue"},"vert":{"1x4":"black","3x4":"#0F0","5x4":"yellow","7x1":"rgb(255,100,0)","9x2":"gray","11x0":"white"}},"font":5]]></dct:description>
-		<dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"La [b]couleur[/b] du disque."]]></dct:description>
+        <dct:description><![CDATA["class":"nohint","background":"res/img/background/landscape/bluecarpet02.svg","hint":false,"keypad":"abc","regexp":{ "from": "([^ ]+)","to":"[svg]<circle cx='24' cy='24' r='20' style='fill:$1;stroke:black;stroke-width:0.2'/>[/svg]"},"data":["           B  ","       O  BLEU","       R G A  ","      MARRON  "," N V J N I C  ","DORE A G S    "," I ROUGE      "," R T N        ","     E        "],"def":{"horiz":{"0x5":"rgb(255,200,50)","3x6":"red","6x3":"rgb(100,50,0)","10x1":"blue"},"vert":{"1x4":"black","3x4":"#0F0","5x4":"yellow","7x1":"rgb(255,100,0)","9x2":"gray","11x0":"white"}},"font":5]]></dct:description>
+		<dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Quelle est la [b]couleur[/b] du disque ?"]]></dct:description>
         <dct:extent>5</dct:extent>
         <dct:subject>french</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -18,8 +18,8 @@
 	<rdf:Description>
         <dct:identifier>_wv04a</dct:identifier>
         <dct:title xml:lang="fr-FR">Compléter la grille grâce aux 10 illustrations d'animaux [CHIEN,CANARI,OISEAU,TORTUE,RAT,CHEVAL,CHAT,LAPIN,GRENOUILLE,POISSON].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/landscape02.svg","hint":false,"keypad":"abc","regexp":{ "from": "([^ ]+)","to":"[icon]ext/noto/svg/emoji_u1f$1.svg[/icon]"},"data":["             R","             A","  L    P  CHAT","  A C  O  H   ","  P A  I  E O ","CHIEN  S  V I ","  N A  S  A S ","   GRENOUILLE ","    I  N    A ","        TORTUE"],"def":{"horiz":{"0x5":"415","3x7":"438","8x9":"422","10x2":"408"},"vert":{"2x2":"407","4x3":"425","7x2":"41f","10x2":"40e","13x0":"400","12x4":"426"}},"font":5]]></dct:description>
-		<dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Le [b]nom[/b] de l'animal."]]></dct:description>
+        <dct:description><![CDATA["class":"nohint","background":"res/img/background/landscape/landscape02.svg","hint":false,"keypad":"abc","regexp":{ "from": "([^ ]+)","to":"[icon]ext/noto/svg/emoji_u1f$1.svg[/icon]"},"data":["             R","             A","  L    P  CHAT","  A C  O  H   ","  P A  I  E O ","CHIEN  S  V I ","  N A  S  A S ","   GRENOUILLE ","    I  N    A ","        TORTUE"],"def":{"horiz":{"0x5":"415","3x7":"438","8x9":"422","10x2":"408"},"vert":{"2x2":"407","4x3":"425","7x2":"41f","10x2":"40e","13x0":"400","12x4":"426"}},"font":5]]></dct:description>
+		<dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Quelle est le [b]nom[/b] de l'animal ?"]]></dct:description>
         <dct:extent>5</dct:extent>
         <dct:subject>french</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -30,130 +30,6 @@
 
 
 	
-
-
-
-		 
-    <rdf:Description>
-        <dct:identifier>_w8a1</dct:identifier>
-        <dct:title xml:lang="fr-FR">Compléter la grille grâce aux 8 illustrations d'animaux [LAPIN,MOUTON,CHEVAL,SOURIS,ZEBRE,VACHE,LOUP,OURS].</dct:title>
-        <dct:description><![CDATA["hint":false,"keypad":"abc","regexp":{ "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/clipart/$1.svg\\\"/></div>"},"data":["        Z O","        E U","VACHE M B R","  H  SOURIS","  E L U E  ","  V O T    ","  A U O    ","  LAPIN    "],"def":{"horiz":{"2x7":"animal/rabbit02","5x3":"animal/mice01","0x2":"animal/cow01"},"vert":{"6x2":"animal/sheep01","2x2":"animal/horse01","8x0":"animal/zebra01","10x0":"animal/bear01","4x4":"animal/wolf01"}},"font":7]]></dct:description>
-        <dct:extent>5</dct:extent>
-        <dct:subject>french</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>_w8a1</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>_w8a2</dct:identifier>
-        <dct:title xml:lang="fr-FR">Compléter la grille grâce aux 8 illustrations d'animaux [TAUREAU,OURS,POULE,CHAT,CORBEAU,COQ,POISSON,CANARD].</dct:title>
-        <dct:description><![CDATA["hint":false,"keypad":"abc","regexp":{ "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/clipart/$1.svg\\\"/></div>"},"data":["    CANARD   ","COQ O        ","H   R POISSON","A O B O      ","TAUREAU      ","  R A L      ","  S U E      "],"def":{"horiz":{"0x4":"animal/bull01","0x1":"animal/rooster02","6x2":"animal/goldfish01","4x0":"animal/duck02"},"vert":{"2x3":"animal/bear01","6x2":"animal/chicken01","0x1":"animal/cat01","4x0":"animal/crow01"}},"font":7]]></dct:description>
-        <dct:extent>5</dct:extent>
-        <dct:subject>french</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>_w8a1</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>_w8a3</dct:identifier>
-        <dct:title xml:lang="fr-FR">Compléter la grille grâce aux 8 illustrations d'animaux [CHAMOIS,PIGEON,ZEBRE,CHIEN,CHEVRE,OIE,MANCHOT,RENARD].</dct:title>
-        <dct:description><![CDATA["hint":false,"keypad":"abc","regexp":{ "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/clipart/$1.svg\\\"/></div>"},"data":["  MANCHOT  "," C     I   "," H Z CHEVRE"," A E H   E "," M B I   N "," O R E   A ","PIGEON   R "," S       D "],"def":{"horiz":{"0x6":"animal/pigeon01","5x2":"animal/goat04","2x0":"animal/penguin01"},"vert":{"1x1":"animal/chamois01","3x2":"animal/zebra01","5x2":"animal/dog04","7x0":"animal/goose01","9x2":"animal/fox01"}},"font":7]]></dct:description>
-        <dct:extent>5</dct:extent>
-        <dct:subject>french</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>_w8a1</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>_w8a4</dct:identifier>
-        <dct:title xml:lang="fr-FR">Compléter la grille grâce aux 8 illustrations d'animaux [PELICAN,HIPPOCAMPE,CYGNE,FOURMILIER,LION,GRUE,MARMOTTE,PAON].</dct:title>
-        <dct:description><![CDATA["hint":false,"keypad":"abc","regexp":{ "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/clipart/$1.svg\\\"/></div>"},"data":["    H     "," PELICAN  ","    P     "," M  PAON  "," A  O     "," R  CYGNE "," M  A    G","FOURMILIER"," T  P I  U"," T  E O  E"," E    N   "],"def":{"horiz":{"1x1":"animal/pelican01","4x5":"animal/swan01","0x7":"animal/anteater01","4x3":"animal/peacock01"},"vert":{"4x0":"animal/seahorse01","6x7":"animal/lion01","9x6":"animal/crane01","1x3":"animal/prairiedog01"}},"font":7]]></dct:description>
-        <dct:extent>5</dct:extent>
-        <dct:subject>french</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>_w8a1</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>_w8a5</dct:identifier>
-        <dct:title xml:lang="fr-FR">Compléter la grille grâce aux 8 illustrations d'animaux [REQUIN,HIBOU,GRENOUILLE,PANDA,RHINOCEROS,ANE,SINGE,TORTUE].</dct:title>
-        <dct:description><![CDATA["hint":false,"keypad":"abc","regexp":{ "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/clipart/$1.svg\\\"/></div>"},"data":["   P  R  A ","   A  H  N ","GRENOUILLE "," E D  N    "," Q A TORTUE"," U    C    ","HIBOU E    "," N    R    ","      O    ","      SINGE"],"def":{"horiz":{"0x6":"animal/owl01","0x2":"animal/frog01","6x9":"animal/monkey01","5x4":"animal/turtle01"},"vert":{"1x2":"animal/shark01","3x0":"animal/panda02","6x0":"animal/rhinoceros01","9x0":"animal/mule01"}},"font":7]]></dct:description>
-        <dct:extent>5</dct:extent>
-        <dct:subject>french</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>_w8a1</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>_w8f1</dct:identifier>
-        <dct:title xml:lang="fr-FR">Compléter la grille grâce aux 8 illustrations de fruits et légumes [FRAISE,CLEMENTINE,POIREAU,AUBERGINE,BANANE,POIRE,POMME,PATATE].</dct:title>
-        <dct:description><![CDATA["hint":false,"keypad":"abc","regexp":{ "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/svginventoryicons/$1.svg\\\"/></div>"},"data":["      P C","P     O L","AUBERGINE","T     R M","A POMME E","T O     N","E I     T"," FRAISE I","  E     N"," BANANE E","  U      "],"def":{"horiz":{"2x4":"vegetable/apple01","1x9":"vegetable/banana01","1x7":"vegetable/strawberry01","0x2":"vegetable/aubergine01"},"vert":{"2x4":"vegetable/leek01","6x0":"vegetable/pear01","8x0":"vegetable/clementine01","0x1":"vegetable/potato01"}},"font":7]]></dct:description>
-        <dct:extent>5</dct:extent>
-        <dct:subject>french</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>_w8a1</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>_w8f2</dct:identifier>
-        <dct:title xml:lang="fr-FR">Compléter la grille grâce aux 8 illustrations de fruits et légumes [POIVRON,KIWI,ABRICOT,CHAMPIGNON,ORANGE,CERISE,TOMATE,RADIS].</dct:title>
-        <dct:description><![CDATA["hint":false,"keypad":"abc","regexp":{ "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/svginventoryicons/$1.svg\\\"/></div>"},"data":["CERISE    ","H         ","A  RADIS T","M K B    O","POIVRON  M","I W I    A","G I C    T","N   ORANGE","O   T     ","N         "],"def":{"horiz":{"0x4":"vegetable/pepper01","4x7":"vegetable/orange01","0x0":"vegetable/cherry01","3x2":"vegetable/radish01"},"vert":{"2x3":"vegetable/kiwi01","4x2":"vegetable/apricot01","0x0":"vegetable/mushroom01","9x2":"vegetable/tomato01"}},"font":7]]></dct:description>
-        <dct:extent>5</dct:extent>
-        <dct:subject>french</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>_w8a1</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>_w8i1</dct:identifier>
-        <dct:title xml:lang="fr-FR">Compléter la grille grâce aux 8 illustrations d'insectes [ARAIGNEE,PAPILLON,SCORPION,ABEILLE,GUEPE,MOUCHE,FOURMI,CIGALE].</dct:title>
-        <dct:description><![CDATA["hint":false,"keypad":"abc","regexp":{ "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/clipart/$1.svg\\\"/></div>"},"data":["     A    ","  SCORPION","     A    ","     I    ","     GUEPE"," F   N  A ","MOUCHE  P "," U I E  I "," R G    L "," M ABEILLE"," I L    O ","   E    N "],"def":{"horiz":{"5x4":"bugs/wasp01","0x6":"bugs/fly02","2x1":"bugs/scorpion01","3x9":"bugs/honeybee01"},"vert":{"5x0":"bugs/spider01","1x5":"bugs/ant01","3x6":"bugs/grasshopper01","8x4":"bugs/butterfly01"}},"font":7]]></dct:description>
-        <dct:extent>5</dct:extent>
-        <dct:subject>french</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>_w8a1</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>_w8o1</dct:identifier>
-        <dct:title xml:lang="fr-FR">Compléter la grille grâce aux 10 illustrations d'objets divers [ALLUMETTE,PILE,PELLE,JUMELLES,CALCULATRICE,AMPOULE,CADENAS,PIOCHE].</dct:title>
-        <dct:description><![CDATA["hint":false,"keypad":"abc","regexp":{ "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/svginventoryicons/$1.svg\\\"/></div>"},"data":["PIOCHE    ","   A    J "," PELLE  U "," I C    M ","ALLUMETTE "," E L    L ","   AMPOULE","   T    E ","   R    S ","   I      ","   CADENAS","   E      "],"def":{"horiz":{"0x4":"misc/match01","1x2":"tool/shovel01","3x6":"tool/bulb01","3x10":"tool/lock01","0x0":"tool/pickaxe01"},"vert":{"1x2":"misc/batterie01","8x1":"tool/binocular01","3x0":"hardware/calculator01"}},"font":7]]></dct:description>
-        <dct:extent>5</dct:extent>
-        <dct:subject>french</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>_w8a1</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>_wap1</dct:identifier>
-        <dct:title xml:lang="fr-FR">Compléter la grille grâce aux 10 illustrations d'affaires de bureau [CRAYON,MARQUEUR,CISEAUX,GOMME,COMPAS,PINCEAU,TAMPON,FEUTRE,REGLE,STYLO].</dct:title>
-        <dct:description><![CDATA["hint":false,"keypad":"abc","regexp":{ "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/svginventoryicons/$1.svg\\\"/></div>"},"data":["S   C      ","TAMPON    F","Y   M     E","L   PINCEAU","O   A     T","  CISEAUX R","  R       E"," MARQUEUR  ","  Y     E  "," GOMME  G  ","  N     L  ","        E  "],"def":{"horiz":{"1x7":"pencil/marker03","2x5":"tool/scissors02","1x9":"pencil/eraser02","4x3":"pencil/brush02","0x1":"pencil/stamp01"},"vert":{"2x5":"pencil/pencil01","4x0":"tool/compass02","10x1":"pencil/cyan03","8x7":"tool/ruler01","0x0":"pencil/blue02"}},"font":7]]></dct:description>
-        <dct:extent>5</dct:extent>
-        <dct:subject>french</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>_w8a1</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>_w8s1</dct:identifier>
-        <dct:title xml:lang="fr-FR">Compléter la grille grâce aux 8 illustrations d'animaux et d'insectes de la savane [RHINOCEROS,GORILLE,LION,SCORPION,FOURMI,ZEBRE,SINGE,GIRAFE].</dct:title>
-        <dct:description><![CDATA["hint":false,"keypad":"abc","regexp":{ "from": "([^ ]+)","to":"<div class=\\\"icon\\\"><img src=\\\"res/img/clipart/$1.svg\\\"/></div>"},"data":["      S   ","S    LION ","C     N   ","O G G G F ","RHINOCEROS","P R R   U ","I A I   R ","O F L   M ","N E L   I ","   ZEBRE  "],"def":{"horiz":{"0x4":"animal/rhinoceros01","5x1":"animal/lion01","3x9":"animal/zebra01"},"vert":{"6x0":"animal/monkey01","4x3":"animal/ape01","8x3":"bugs/ant01","2x3":"animal/giraffe01","0x1":"bugs/scorpion01"}},"font":7]]></dct:description>
-        <dct:extent>5</dct:extent>
-        <dct:subject>french</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>_w8a1</dct:alternative>
-    </rdf:Description>
 
 </rdf:RDF>
 

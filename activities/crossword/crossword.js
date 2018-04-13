@@ -132,7 +132,7 @@
                 settings.definition = gen.def; 
                 fixed               = gen.fixed;
             }
-            if (settings.title)            { $this.find("#title").html(settings.title); } else { $this.addClass("notitle"); }
+            if (settings.title)            { $this.find("#title").html(settings.title); }
             if (!settings.exercice)        { $this.addClass("noex"); }
             if (!settings.definition)      { $this.addClass("nodef"); }
 
