@@ -369,7 +369,7 @@
                     // INITIALIZE THE PIECE
                     var vX = translate[0], vY = translate[1], vZ = rotate;
                     var id = $(this).attr("id");
-                    if (settings.rotation>0 && $(this).find(".rot")) {
+                    if (settings.rotation>0 && $(this).find(".rot") && $(this).find(".rot").length) {
                         vZ = settings.rotation*Math.floor(Math.random()*(360/settings.rotation));
                     }
                     if (settings.init) {
@@ -500,8 +500,8 @@
                         }
                         
                         // CHECK IF CUMUL IS AUTHORIZED HERE
-                        var cumul = false;
-                        for (var c in settings.cumul) {
+                        var cumul = (typeof(settings.cumul)=="boolean")?settings.cumul:false;
+                        if (typeof(settings.cumul)=="object") for (var c in settings.cumul) {
                             if (settings.cumul[c][0] == elt.current.translate[0] &&
                                 settings.cumul[c][1] == elt.current.translate[1] ) { cumul = true; }
                         }

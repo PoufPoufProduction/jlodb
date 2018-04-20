@@ -338,6 +338,7 @@
                     settings.svg.load(templatepath, { addTo: true, changeSize: true, onLoad:function() {
                         
                         if (settings.current.svgclass) { $(settings.svg.root()).attr("class",settings.current.svgclass); }
+						if (settings.current.group)		{ $("#"+settings.current.group, settings.svg.root()).show(); }
                         $this.find(".t").each(function(index) {
                             var t = settings.current.t;
                             if (t && t.length>index) {
