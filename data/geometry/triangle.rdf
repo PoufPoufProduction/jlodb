@@ -2,6 +2,51 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dct="http://purl.org/dc/terms/">
 
+	<!-- GEOGRID ISOCELE TRIANGLE -->
+
+    <rdf:Description>
+        <dct:identifier>gi01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Construire un triangle depuis trois points.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/wallpaper02.svg","data":[{"type":"mesh", "value":[-210,-70,12,9,70,70],"active":false,"attr":{"style":"stroke-width:0.5;stroke:#dd8833;"}},{"type":"mesh", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:2;stroke:#dd8833;"}},{"type":"grid", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:8;stroke:#dd8833;"}},{"type":"point", "value":[70,350], "active":true}, {"type":"point", "value":[350,350], "active":true},{"type":"point", "value":[210,0], "active":true}],"number":3,"objectives":[[{"type":"segment", "values":[70,350,350,350]},{"type":"segment", "values":[350,350,210,0]},{"type":"segment", "values":[210,0,70,350]}]],"selected":"segment","available":["segment"],"translate":[105,30],"strokewidth":3,"sizepoint":12,"withcancel":true,"class":"blank hide large upcancel"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"[b]Reliez[/b] les 3 points pour former un triangle.","labels":["Triangle"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>gi01</dct:alternative>
+        <dct:isPartOf>geogrid</dct:isPartOf>
+        <dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>gi02</dct:identifier>
+        <dct:title xml:lang="fr-FR">Construire un triangle isocèle depuis trois points parmi 4.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/wallpaper02.svg","data":[{"type":"mesh", "value":[-165,-165,7,7,55,55],"active":false,"attr":{"style":"stroke-width:2;stroke:#dd8833;"}},{"type":"grid", "value":[-165,-165,7,7,55,55],"active":false,"attr":{"style":"stroke-width:8;stroke:#dd8833;"}},{"type":"point", "value":[-110,-55], "active":true}, {"type":"point", "value":[110,-55], "active":true},{"type":"point", "value":[-55,110], "active":true},{"type":"point", "value":[0,110], "active":true}],"number":3,"objectives":[[{"type":"segment", "values":[-110,-55,110,-55]},{"type":"segment", "values":[110,-55,0,110]},{"type":"segment", "values":[0,110,-110,-55]}]],"selected":"segment","available":["segment"],"translate":[320,185.5],"class":"blank hide"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"[b]Reliez[/b] 3 points parmi les 4 pour former un triangle [b]isocèle[/b].","labels":["Triangle isocèle"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>gi01</dct:alternative>
+        <dct:isPartOf>geogrid</dct:isPartOf>
+        <dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>gi21</dct:identifier>
+        <dct:title xml:lang="fr-FR">Construire tous les triangles isocèles depuis une base donnée.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/wallpaper02.svg","data":[{"type":"mesh", "value":[-165,-165,7,7,55,55],"active":false,"attr":{"style":"stroke-width:2;stroke:#dd8833;"}},{"type":"grid", "value":[-165,-165,7,7,55,55],"active":true,"attr":{"style":"stroke-width:8;stroke:#dd8833;"}},{"type":"segment", "value":[-165,-55,165,55], "active":false}],"number":4,"objectives":[[{"type":"segment", "values":[-165,-55,55,-165]},{"type":"segment", "values":[55,-165,165,55]}],[{"type":"segment", "values":[-165,-55,-55,165]},{"type":"segment", "values":[-55,165,165,55]}]],"selected":"segment","available":["segment"],"translate":[320,185.5],"class":"blank hide"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"[b]Construisez[/b] tous les triangles [b]isocèles[/b] dont les sommets sont des noeuds et dont la base est donnée.","labels":["Triangle 1","Triangle 2"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>gi21</dct:alternative>
+        <dct:isPartOf>geogrid</dct:isPartOf>
+        <dct:source>res/img/background/landscape/wallpaper02.svg</dct:source>
+    </rdf:Description>
+
+	<!-- CLASSIC -->
 
     <rdf:Description>
         <dct:identifier>001</dct:identifier>

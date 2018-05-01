@@ -2,6 +2,81 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dct="http://purl.org/dc/terms/">
 
+
+	<!-- GEOGRID  -->
+
+    <rdf:Description>
+        <dct:identifier>gs01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Construire un carré depuis quatre points.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","data":[{"type":"mesh", "value":[-165,-165,7,7,55,55],"active":false,"attr":{"style":"stroke-width:2;stroke:#dd8833;"}},{"type":"grid", "value":[-165,-165,7,7,55,55],"active":false,"attr":{"style":"stroke-width:8;stroke:#dd8833;"}},{"type":"point", "value":[-110,110], "active":true}, {"type":"point", "value":[110,110], "active":true},{"type":"point", "value":[110,-110], "active":true},{"type":"point", "value":[-110,-110], "active":true}],"number":4,"objectives":[[{"type":"segment", "values":[-110,-110,-110,110]},{"type":"segment", "values":[-110,110,110,110]},{"type":"segment", "values":[110,110,110,-110]},{"type":"segment", "values":[110,-110,-110,-110]}]],"selected":"segment","available":["segment"],"translate":[320,185.5],"class":"blank hide"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"[b]Reliez[/b] les 4 points pour former un [b]carré[/b].","labels":["Carré"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>gs01</dct:alternative>
+        <dct:isPartOf>geogrid</dct:isPartOf>
+        <dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>gs21</dct:identifier>
+        <dct:title xml:lang="fr-FR">Construire un carré depuis deux sommets opposés.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","data":[{"type":"mesh", "value":[-165,-165,7,7,55,55],"active":false,"attr":{"style":"stroke-width:2;stroke:#dd8833;"}},{"type":"grid", "value":[-165,-165,7,7,55,55],"active":true,"attr":{"style":"stroke-width:8;stroke:#dd8833;"}},{"type":"point", "value":[110,-110], "active":true}, {"type":"point", "value":[-110,110], "active":true}],"number":4,"objectives":[[{"type":"segment", "values":[-110,-110,110,-110]},{"type":"segment", "values":[110,-110,110,110]},{"type":"segment", "values":[110,110,-110,110]},{"type":"segment", "values":[-110,110,110,110]}]],"selected":"segment","available":["segment"],"translate":[320,185.5],"class":"blank hide"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"[b]Construisez[/b] un carré depuis les deux sommets opposés.","labels":["Carré"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>gs21</dct:alternative>
+        <dct:isPartOf>geogrid</dct:isPartOf>
+        <dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>gs22</dct:identifier>
+        <dct:title xml:lang="fr-FR">Construire un carré depuis deux sommets opposés.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","data":[{"type":"mesh", "value":[-165,-165,7,7,55,55],"active":false,"attr":{"style":"stroke-width:2;stroke:#dd8833;"}},{"type":"grid", "value":[-165,-165,7,7,55,55],"active":true,"attr":{"style":"stroke-width:8;stroke:#dd8833;"}},{"type":"point", "value":[-55,-110], "active":true}, {"type":"point", "value":[55,110], "active":true}],"number":4,"objectives":[[{"type":"segment", "values":[-55,-110,110,-55]},{"type":"segment", "values":[110,-55,55,110]},{"type":"segment", "values":[55,110,-110,55]},{"type":"segment", "values":[-110,55,-55,-110]}]],"selected":"segment","available":["segment"],"translate":[320,185.5],"class":"blank hide"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"[b]Construisez[/b] un carré depuis les deux sommets opposés.","labels":["Carré"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>gs21</dct:alternative>
+        <dct:isPartOf>geogrid</dct:isPartOf>
+        <dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
+    </rdf:Description>
+    
+
+    <rdf:Description>
+        <dct:identifier>gs41</dct:identifier>
+        <dct:title xml:lang="fr-FR">Construire un carré depuis un segment donné.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","data":[{"type":"mesh", "value":[-165,-165,7,7,55,55],"active":false,"attr":{"style":"stroke-width:2;stroke:#dd8833;"}},{"type":"grid", "value":[-165,-165,7,7,55,55],"active":true,"attr":{"style":"stroke-width:8;stroke:#dd8833;"}},{"type":"point", "value":[-110,-110], "active":true}, {"type":"point", "value":[-110,55], "active":true},{"type":"segment", "value":[-110,-110,-110,55], "active":false}],"number":3,"objectives":[[{"type":"segment", "values":[-110,-110,55,-110]},{"type":"segment", "values":[55,-110,55,55]},{"type":"segment", "values":[55,55,-110,55]}]],"selected":"segment","available":["segment"],"translate":[320,185.5],"class":"blank hide"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"[b]Construisez[/b] un carré en utilisant le segment donné comme côté.","labels":["Carré"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>gs41</dct:alternative>
+        <dct:isPartOf>geogrid</dct:isPartOf>
+        <dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>gs42</dct:identifier>
+        <dct:title xml:lang="fr-FR">Construire un carré depuis un segment donné.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/yellowboard02.svg","data":[{"type":"mesh", "value":[-165,-165,7,7,55,55],"active":false,"attr":{"style":"stroke-width:2;stroke:#dd8833;"}},{"type":"grid", "value":[-165,-165,7,7,55,55],"active":true,"attr":{"style":"stroke-width:8;stroke:#dd8833;"}},{"type":"point", "value":[55,165], "active":true}, {"type":"point", "value":[165,55], "active":true},{"type":"segment", "value":[55,165,165,55], "active":false}],"number":3,"objectives":[[{"type":"segment", "values":[55,165,-55,55]},{"type":"segment", "values":[-55,55,55,-55]},{"type":"segment", "values":[55,-55,165,55]}]],"selected":"segment","available":["segment"],"translate":[320,185.5],"class":"blank hide"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"[b]Construisez[/b] un carré en utilisant le segment donné comme côté.","labels":["Carré"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>gs41</dct:alternative>
+        <dct:isPartOf>geogrid</dct:isPartOf>
+        <dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
+    </rdf:Description>
+
+
     <!-- SQUARE and RECTANGLE -->
 
 

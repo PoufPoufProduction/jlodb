@@ -1,6 +1,163 @@
 <?xml version="1.0"?>
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dct="http://purl.org/dc/terms/">
+         
+    <!-- GEOGRID -->
+    
+    <rdf:Description>
+        <dct:identifier>gl01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Construire un segment depuis deux points.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","data":[{"type":"mesh", "value":[-210,-70,12,9,70,70],"active":false,"attr":{"style":"stroke-width:0.5;stroke:#dd8833;"}},{"type":"mesh", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:2;stroke:#dd8833;"}},{"type":"grid", "value":[0,0,7,7,70,70],"active":true,"attr":{"style":"stroke-width:8;stroke:#dd8833;"}},{"type":"point", "value":[140,70], "active":true}, {"type":"point", "value":[280,350], "active":true}],"number":1,"objectives":[[{"type":"segment", "values":[140,70,280,350],"attr":{"style":"stroke:green;stroke-width:5"}}]],"selected":"segment","available":["segment"],"translate":[105,30],"strokewidth":3,"sizepoint":12,"withcancel":true,"class":"blank hide large upcancel"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"[b]Tracez[/b] un [b]segment[/b] en reliant les deux points.","labels":["Segment"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>gl01</dct:alternative>
+        <dct:isPartOf>geogrid</dct:isPartOf>
+        <dct:source>res/img/background/landscape/blueboard01.svg</dct:source>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>gl11</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver le milieu d'un segment.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","data":[{"type":"mesh", "value":[-210,-70,12,9,70,70],"active":false,"attr":{"style":"stroke-width:0.5;stroke:#dd8833;"}},{"type":"mesh", "value":[0,0,7,7,70,70],"active":true,"attr":{"style":"stroke-width:2;stroke:#dd8833;"}},{"type":"grid", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:8;stroke:#dd8833;"}},{"type":"segment", "value":[280,70,140,350], "active":true},{"type":"point", "value":[280,70], "active":false},{"type":"point", "value":[140,350], "active":false}],"number":1,"objectives":[[{"type":"point", "values":[210,210],"attr":{"style":"stroke:green"}}]],"selected":"intersection","available":["intersection"],"translate":[105,30],"strokewidth":3,"sizepoint":12,"withcancel":true,"class":"blank hide large upcancel"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"A l'aide de l'outil d'[i]intersection[/i], [b]trouvez[/b] le milieu du segment.","labels":["Milieu du segment"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>gl11</dct:alternative>
+        <dct:isPartOf>geogrid</dct:isPartOf>
+        <dct:source>res/img/background/landscape/blueboard01.svg</dct:source>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>gl12</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver le milieu d'un segment.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","data":[{"type":"mesh", "value":[-210,-70,12,9,70,70],"active":false,"attr":{"style":"stroke-width:0.5;stroke:#dd8833;"}},{"type":"mesh", "value":[0,0,7,7,70,70],"active":true,"attr":{"style":"stroke-width:2;stroke:#dd8833;"}},{"type":"grid", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:8;stroke:#dd8833;"}},{"type":"segment", "value":[140,70,210,350], "active":true},{"type":"point", "value":[140,70], "active":false},{"type":"point", "value":[210,350], "active":false}],"number":1,"objectives":[[{"type":"point", "values":[175,210],"attr":{"style":"stroke:green"}}]],"selected":"intersection","available":["intersection"],"translate":[105,30],"strokewidth":3,"sizepoint":12,"withcancel":true,"class":"blank hide large upcancel"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"A l'aide de l'outil d'[i]intersection[/i], [b]trouvez[/b] le milieu du segment.","labels":["Milieu du segment"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>gl11</dct:alternative>
+        <dct:isPartOf>geogrid</dct:isPartOf>
+        <dct:source>res/img/background/landscape/blueboard01.svg</dct:source>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>gl21</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver le milieu d'un segment.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","data":[{"type":"mesh", "value":[-210,-70,12,9,70,70],"active":false,"attr":{"style":"stroke-width:0.5;stroke:#dd8833;"}},{"type":"mesh", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:2;stroke:#dd8833;"}},{"type":"grid", "value":[0,0,7,7,70,70],"active":true,"attr":{"style":"stroke-width:8;stroke:#dd8833;"}},{"type":"segment", "value":[70,140,420,350], "active":true},{"type":"point", "value":[70,140], "active":false},{"type":"point", "value":[420,350], "active":false}],"number":2,"objectives":[[{"type":"point", "values":[245,245],"attr":{"style":"stroke:green"}}]],"available":["line","intersection"],"translate":[105,30],"strokewidth":3,"sizepoint":12,"class":"blank large","style":true]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"A l'aide des outils [i]ligne[/i] et [i]intersection[/i], [b]trouvez[/b] le milieu du segment.","labels":["Milieu du segment"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>gl11</dct:alternative>
+        <dct:isPartOf>geogrid</dct:isPartOf>
+        <dct:source>res/img/background/landscape/blueboard01.svg</dct:source>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>gl22</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver le milieu d'un segment.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","data":[{"type":"mesh", "value":[-210,-70,12,9,70,70],"active":false,"attr":{"style":"stroke-width:0.5;stroke:#dd8833;"}},{"type":"mesh", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:2;stroke:#dd8833;"}},{"type":"grid", "value":[0,0,7,7,70,70],"active":true,"attr":{"style":"stroke-width:8;stroke:#dd8833;"}},{"type":"segment", "value":[0,70,0,420], "active":true},{"type":"point", "value":[0,70], "active":false},{"type":"point", "value":[0,420], "active":false}],"number":2,"objectives":[[{"type":"point", "values":[0,245],"attr":{"style":"stroke:green"}}]],"available":["line","intersection"],"translate":[105,30],"strokewidth":3,"sizepoint":12,"class":"blank large","style":true]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"A l'aide des outils [i]ligne[/i] et [i]intersection[/i], [b]trouvez[/b] le milieu du segment.","labels":["Milieu du segment"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>gl11</dct:alternative>
+        <dct:isPartOf>geogrid</dct:isPartOf>
+        <dct:source>res/img/background/landscape/blueboard01.svg</dct:source>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>gl41</dct:identifier>
+        <dct:title xml:lang="fr-FR">Séparer un segment en 3 parties égales.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","data":[{"type":"mesh", "value":[-210,-70,12,9,70,70],"active":false,"attr":{"style":"stroke-width:0.5;stroke:#dd8833;"}},{"type":"mesh", "value":[0,0,7,7,70,70],"active":true,"attr":{"style":"stroke-width:2;stroke:#dd8833;"}},{"type":"grid", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:8;stroke:#dd8833;"}},{"type":"segment", "value":[0,280,420,70], "active":true},{"type":"point", "value":[0,280], "active":false},{"type":"point", "value":[420,70], "active":false}],"number":2,"objectives":[[{"type":"point", "values":[140,210],"attr":{"style":"stroke:green"}}],[{"type":"point", "values":[280,140],"attr":{"style":"stroke:green"}}]],"selected":"intersection","available":["intersection"],"translate":[105,30],"strokewidth":3,"sizepoint":12,"withcancel":true,"class":"blank hide large upcancel"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"[b]Construisez[/b] les 2 points qui divisent le segment en trois parties égales.","labels":["Point 1","Point 2"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>gl11</dct:alternative>
+        <dct:isPartOf>geogrid</dct:isPartOf>
+        <dct:source>res/img/background/landscape/blueboard01.svg</dct:source>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>gl42</dct:identifier>
+        <dct:title xml:lang="fr-FR">Séparer un segment en 3 parties égales.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","data":[{"type":"mesh", "value":[-210,-70,12,9,70,70],"active":false,"attr":{"style":"stroke-width:0.5;stroke:#dd8833;"}},{"type":"mesh", "value":[0,0,7,7,70,70],"active":true,"attr":{"style":"stroke-width:2;stroke:#dd8833;"}},{"type":"grid", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:8;stroke:#dd8833;"}},{"type":"segment", "value":[0,70,420,210], "active":true},{"type":"point", "value":[0,70], "active":false},{"type":"point", "value":[420,210], "active":false}],"number":2,"objectives":[[{"type":"point", "values":[140,116.7],"attr":{"style":"stroke:green"}}],[{"type":"point", "values":[280,163.3],"attr":{"style":"stroke:green"}}]],"selected":"intersection","available":["intersection"],"translate":[105,30],"strokewidth":3,"sizepoint":12,"withcancel":true,"class":"blank hide large upcancel"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"[b]Construisez[/b] les 2 points qui divisent le segment en trois parties égales.","labels":["Point 1","Point 2"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>gl11</dct:alternative>
+        <dct:isPartOf>geogrid</dct:isPartOf>
+        <dct:source>res/img/background/landscape/blueboard01.svg</dct:source>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>gl51</dct:identifier>
+        <dct:title xml:lang="fr-FR">Séparer une ligne brisée en deux parties de même longueur.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","data":[{"type":"mesh", "value":[-210,-70,12,9,70,70],"active":false,"attr":{"style":"stroke-width:0.5;stroke:#dd8833;"}},{"type":"mesh", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:2;stroke:#dd8833;"}},{"type":"grid", "value":[0,0,7,7,70,70],"active":true,"attr":{"style":"stroke-width:8;stroke:#dd8833;"}},{"type":"segments+", "value":[70,420,0,350,140,210,70,70,350,70,280,210,420,350,350,420], "active":true}],"number":1,"objectives":[[{"type":"circle", "values":[210,70,8],"attr":{"style":"fill:#0F0;stroke:green"}}]],"selected":"circle","available":["circle"],"circle":"1point","radius":8,"radiusrange":[8,8],"translate":[105,30],"strokewidth":3,"sizepoint":12,"withcancel":true,"class":"blank hide large upcancel"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"[b]Construisez[/b] un point qui sépare la ligne brisée en deux parties de même longueur.","labels":["Milieu de la ligne brisée"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>gl11</dct:alternative>
+        <dct:isPartOf>geogrid</dct:isPartOf>
+        <dct:source>res/img/background/landscape/blueboard01.svg</dct:source>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>gl52</dct:identifier>
+        <dct:title xml:lang="fr-FR">Séparer une ligne brisée en deux parties de même longueur.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","data":[{"type":"mesh", "value":[-210,-70,12,9,70,70],"active":false,"attr":{"style":"stroke-width:0.5;stroke:#dd8833;"}},{"type":"mesh", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:2;stroke:#dd8833;"}},{"type":"grid", "value":[0,0,7,7,70,70],"active":true,"attr":{"style":"stroke-width:8;stroke:#dd8833;"}},{"type":"segments+", "value":[70,70,280,140,350,0,350,280,210,210,140,420], "active":true}],"number":1,"objectives":[[{"type":"circle", "values":[350,140,8],"attr":{"style":"fill:#0F0;stroke:green"}}]],"selected":"circle","available":["circle"],"circle":"1point","radius":8,"radiusrange":[8,8],"translate":[105,30],"strokewidth":3,"sizepoint":12,"withcancel":true,"class":"blank hide large upcancel"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"[b]Construisez[/b] un point qui sépare la ligne brisée en deux parties de même longueur.","labels":["Milieu de la ligne brisée"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>gl11</dct:alternative>
+        <dct:isPartOf>geogrid</dct:isPartOf>
+        <dct:source>res/img/background/landscape/blueboard01.svg</dct:source>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>gl53</dct:identifier>
+        <dct:title xml:lang="fr-FR">Séparer une ligne brisée en deux parties de même longueur.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","data":[{"type":"mesh", "value":[-210,-70,12,9,70,70],"active":false,"attr":{"style":"stroke-width:0.5;stroke:#dd8833;"}},{"type":"mesh", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:2;stroke:#dd8833;"}},{"type":"grid", "value":[0,0,7,7,70,70],"active":true,"attr":{"style":"stroke-width:8;stroke:#dd8833;"}},{"type":"segments+", "value":[420,0,350,70,140,210,70,70,70,350,280,210,350,280,210,350], "active":true}],"number":1,"objectives":[[{"type":"circle", "values":[70,210,8],"attr":{"style":"fill:#0F0;stroke:green"}}]],"selected":"circle","available":["circle"],"circle":"1point","radius":8,"radiusrange":[8,8],"translate":[105,30],"strokewidth":3,"sizepoint":12,"withcancel":true,"class":"blank hide large upcancel"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"[b]Construisez[/b] un point qui sépare la ligne brisée en deux parties de même longueur.","labels":["Milieu de la ligne brisée"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>gl11</dct:alternative>
+        <dct:isPartOf>geogrid</dct:isPartOf>
+        <dct:source>res/img/background/landscape/blueboard01.svg</dct:source>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>gl54</dct:identifier>
+        <dct:title xml:lang="fr-FR">Séparer une ligne brisée en deux parties de même longueur.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/blueboard01.svg","data":[{"type":"mesh", "value":[-210,-70,12,9,70,70],"active":false,"attr":{"style":"stroke-width:0.5;stroke:#dd8833;"}},{"type":"mesh", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:2;stroke:#dd8833;"}},{"type":"grid", "value":[0,0,7,7,70,70],"active":true,"attr":{"style":"stroke-width:8;stroke:#dd8833;"}},{"type":"segments+", "value":[70,0,280,140,140,280,350,210,210,420,70,280], "active":true}],"number":2,"objectives":[[{"type":"point", "values":[245,245],"attr":{"style":"stroke:green"}}]],"strokewidth":3,"sizepoint":12,"available":["line","intersection"],"translate":[105,30],"strokewidth":3,"sizepoint":12,"class":"blank large","style":true]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"[b]Construisez[/b] un point qui sépare la ligne brisée en deux parties de même longueur. N'hésitez pas à utiliser les [i]effets de style[/i] pour conserver une figure lisible.","labels":["Milieu de la ligne brisée"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>gl11</dct:alternative>
+        <dct:isPartOf>geogrid</dct:isPartOf>
+        <dct:source>res/img/background/landscape/blueboard01.svg</dct:source>
+    </rdf:Description>
+    
 
     <!-- SEGMENTS AND LINES -->
 

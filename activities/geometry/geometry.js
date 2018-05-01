@@ -23,8 +23,10 @@
         style       : false,                    // The style changing is disable
         withcancel  : false,                    // Show cancel2 button (for "large" class usage)
         withzoom    : false,                    // Show id zoom for small dots
+        withlimit	: false,					// Limit on segment
         active      : false,                      // Activate all data by default
         background  : "",                       // Add a background
+        width		: 640,						// Default with
         debug       : true                      // Debug mode
     };
 
@@ -188,27 +190,27 @@
                                  helpers.utility.equal(e.values[(1+k*2)%4], elt.coord[1]) &&
                                  helpers.utility.equal(e.values[(2+k*2)%4], elt.coord[2]) &&
                                  helpers.utility.equal(e.values[(3+k*2)%4], elt.coord[3]) )
-                                     { e.done=true; ret = true;}
+                                     { e.done=elt; ret = true;}
                         }
                     }
                     else
                     if ( e.type == "point" && elt.name=="point") {
                         if ( helpers.utility.equal(e.values[0], elt.coord[0]) &&
                              helpers.utility.equal(e.values[1], elt.coord[1]) )
-                                     { e.done=true; ret = true;}
+                                     { e.done=elt; ret = true;}
                     }
                     else
                     if ( e.type == "circle" && elt.name=="circle") {
                         if ( helpers.utility.equal(e.values[0], elt.coord[0]) &&
                              helpers.utility.equal(e.values[1], elt.coord[1]) &&
                              helpers.utility.equal(e.values[2], elt.coord[2]) )
-                                     { e.done=true; ret = true;}
+                                     { e.done=elt; ret = true;}
                     }
                     else
                     if ( e.type == "line" && elt.name=="line") {
                         var pos = helpers.utility.line.topairex(elt.coord[0], elt.coord[1], elt.coord[2], elt.coord[3]);
                         if ( helpers.utility.equal(e.values[0], pos[0]) && helpers.utility.equal(e.values[1], pos[1]))
-                                     { e.done=true; ret = true;}
+                                     { e.done=elt; ret = true;}
                     }
                 }
             }
@@ -221,6 +223,10 @@
                     if (!settings.objectives[i][j].done) { complete = false; settings.finish = false; }
                 }
                 if (complete) {
+					for (var j in settings.objectives[i]) {
+						var e = settings.objectives[i][j];
+						if (e.attr && e.attr.style) { $(e.done.svg).attr("style",e.attr.style); }
+					}
                     $($this.find("#objectives .icon img")[i]).attr("src", "res/img/default/icon/check_checked01.svg");
                 }
             }
@@ -291,13 +297,17 @@
             settings.board.pixelWidth = $this.find("#board").width();
             settings.board.pixelHeight = $this.find("#board").height();
             
+
+            
             if (settings.withzoom)
             {
                 if (o && o.id) { $this.find("#zoom").html(o.id).show(); } else { $this.find("#zoom").hide(); }
             }
             
             if (settings.controls.first) {
-                helpers.preview[settings.controls.action]($this, i, j, o);
+				if (settings.controls.action !="circle" || settings.circle!="1point" ) {
+					helpers.preview[settings.controls.action]($this, i, j, o);
+				}
             }
             if (settings.controls.current) {
                 if (settings.controls.current==o) {
@@ -535,7 +545,7 @@
             bisector: function($this, x, y, o) { this.intersection($this, x,y,o); }
         },
         factory : {
-            build : function($this, name, coord, attr) {
+            build : function($this, name, coord, attr, init) {
                 var settings = helpers.settings($this);
                 var ret = {
                     highlight   : helpers.factory[name]($this, settings.layers.highlight, coord, { display:'none' }),
@@ -543,29 +553,58 @@
                     coord       : coord,
                     name        : name
                 };
+                if (! init && helpers.factory.extra[name] ) {
+					ret.extra = helpers.factory.extra[name]($this, settings.layers.active, coord, attr);
+				}
                 if (! (attr && attr.style && attr.style.indexOf("stroke")!=-1)) { $(ret.svg).css("stroke",settings.color); }
                 if (settings.small) { $(ret.svg).attr("class","small "+$(ret.svg).attr("class")); }
                 return ret;
             },
+            extra: {
+				segment: function($this, group, coord, attr) {
+					var settings = helpers.settings($this);
+					var ret=0;
+					if (settings.withlimit) {
+						ret=settings.svg.group(group);
+						var path1 = settings.svg.createPath();
+						var pt1=settings.svg.path(ret, path1.move(coord[0], coord[1]).line(coord[0]+0.001, coord[1]),attr);
+						$(pt1).attr("class","point");
+						var path2 = settings.svg.createPath();
+						var pt2=settings.svg.path(ret, path2.move(coord[2], coord[3]).line(coord[2]+0.001, coord[3]),attr);
+						$(pt2).attr("class","point");
+					}
+					return ret;
+				}
+			},
             point : function($this, group, coord, attr) {
                 var settings = helpers.settings($this);
                 var path = settings.svg.createPath();
-                var ret=settings.svg.path(group, path.move(coord[0], coord[1]).line(coord[0]+0.001, coord[1]),attr);
+                var ret = settings.svg.path(group, path.move(coord[0], coord[1]).line(coord[0]+0.001, coord[1]),attr);
                 $(ret).attr("class","point");
-                $this.find("#log").html("P("+helpers.utility.round(coord[0])+","+helpers.utility.round(coord[1])+")");
+                if (!attr || attr.display!="none") {
+					var log = "P("+helpers.utility.round(coord[0])+","+helpers.utility.round(coord[1])+")";
+					console.log(log); $this.find("#log").html(log);
+				}
                 return ret;
             },
             circle : function($this, group, coord, attr) {
                 var settings = helpers.settings($this);
-                $this.find("#log").html("C("+helpers.utility.round(coord[0])+","+helpers.utility.round(coord[1])
-                                        +","+helpers.utility.round(coord[2])+")");
-                return settings.svg.circle(group, coord[0], coord[1], coord[2], attr);
+				var ret = settings.svg.circle(group, coord[0], coord[1], coord[2], attr);
+                if (!attr || attr.display!="none") {
+					var log = "C("+helpers.utility.round(coord[0])+","+helpers.utility.round(coord[1])
+								  +","+helpers.utility.round(coord[2])+")";
+					console.log(log); $this.find("#log").html(log);
+				}
+                return ret
             },
             segment : function($this, group, coord, attr) {
                 var settings = helpers.settings($this);
-                var ret = settings.svg.line(group, coord[0], coord[1], coord[2], coord[3], attr);
-                var pos = helpers.utility.line.topairex(coord[0], coord[1], coord[2], coord[3]);
-                $this.find("#log").html("L("+helpers.utility.round(pos[0])+","+helpers.utility.round(pos[1])+")");
+                var ret = settings.svg.line(group, coord[0], coord[1], coord[2], coord[3], attr);  
+                if (!attr || attr.display!="none") {
+					var pos = helpers.utility.line.topairex(coord[0], coord[1], coord[2], coord[3]);
+					var log = "L("+helpers.utility.round(pos[0])+","+helpers.utility.round(pos[1])+")";
+					console.log(log); $this.find("#log").html(log);
+				}
                 return ret;
             },
             line : function($this, group, coord, attr) { return helpers.factory.segment($this, group, coord, attr); }
@@ -599,13 +638,15 @@
                     var ret = { i1:i1,j1:j1,i2:i2,j2:j2 };
                     if ((i1==i2)&&(j1==j2)) { ret = 0; }
                     else {
+						var done;
                         do {
                             ret.i1+=settings.board.svgWidth/100*(i2-i1);
                             ret.j1+=settings.board.svgWidth/100*(j2-j1);
                             ret.i2-=settings.board.svgWidth/100*(i2-i1);
                             ret.j2-=settings.board.svgWidth/100*(j2-j1);
-                        } while ( (ret.i1*ret.i1+ret.j1*ret.j1)<2*settings.board.svgWidth*settings.board.svgWidth &&
-                                  (ret.i2*ret.i2+ret.j2*ret.j2)<2*settings.board.svgWidth*settings.board.svgWidth);
+                            done =  (Math.abs(ret.i1) > 2*settings.board.svgWidth && Math.abs(ret.i2)>2*settings.board.svgWidth && ret.i1*ret.i2<0) ||
+									(Math.abs(ret.j1) > 2*settings.board.svgWidth && Math.abs(ret.j2)>2*settings.board.svgWidth && ret.j1*ret.j2<0)
+                        } while ( !done );
                     }
                     return ret;
                 },
@@ -746,7 +787,11 @@
 
             // GET THE DIMENSION OF THE BOARD (SVG.TITLE IS USED TO GET THE WIDTH)
             var $main = $("#main", settings.svg.root());
+            settings.board.svgWidth = settings.width;
+            
+            // deprecated
             if ($(settings.svg.root()).attr("title")) { settings.board.svgWidth = parseInt($(settings.svg.root()).attr("title")); }
+            
             settings.board.svgHeight = 3*settings.board.svgWidth/4;
             $main.attr("transform", "translate("+settings.translate[0]+","+settings.translate[1]+")");
 
@@ -766,7 +811,7 @@
                 if (typeof(elt.active)=="undefined") { elt.active = settings.active; }
                 // ----------------------- POINT ----------------------------
                 if (elt.type=="point") {
-                    var object = helpers.factory.build($this, "point", elt.value, elt.attr);
+                    var object = helpers.factory.build($this, "point", elt.value, elt.attr, true);
                     if (elt.active==true) { settings.points.push(object); }
                     // POINT NAME
                     if (elt.id) {
@@ -783,30 +828,36 @@
                 else if (elt.type=="grid") {
                     for (var gi=0; gi<elt.value[2]; gi++) for (var gj=0; gj<elt.value[3]; gj++) {
                         var object = helpers.factory.build($this, "point",
-                            [elt.value[0]+gi*elt.value[4], elt.value[1]+gj*elt.value[5]], elt.attr);
+                            [elt.value[0]+gi*elt.value[4], elt.value[1]+gj*elt.value[5]], elt.attr, true);
+                        if (elt.active==true) { settings.points.push(object); }
+                    }
+                }
+                else if (elt.type=="points") {
+                    for (var gi=0; gi<Math.floor((elt.value.length)/2); gi++) {
+                        var object = helpers.factory.build($this, "point", [elt.value[gi*2], elt.value[gi*2+1]], elt.attr, true);
                         if (elt.active==true) { settings.points.push(object); }
                     }
                 }
                 // ----------------------- CIRCLE ----------------------------
                 else if (elt.type=="circle") {
-                    var object = helpers.factory.build($this, "circle", elt.value, elt.attr);
+                    var object = helpers.factory.build($this, "circle", elt.value, elt.attr, true);
                     if (elt.active==true) { settings.circles.push(object); }
                 }
                 // ----------------------- SEGMENT ----------------------------
                 else if (elt.type=="segment") {
-                    var object = helpers.factory.build($this, "segment", elt.value, elt.attr);
+                    var object = helpers.factory.build($this, "segment", elt.value, elt.attr, true);
                     if (elt.active==true) { settings.lines.push(object); }
                 }
-                else if (elt.type=="path" || elt.type=="path+") {
-                    if (elt.type=="path+") {
+                else if (elt.type=="path" || elt.type=="path+" || elt.type=="segments" || elt.type=="segments+") {
+                    if (elt.type=="path+" || elt.type=="segments+") {
                         for (var gi=0; gi<Math.floor((elt.value.length)/2); gi++) {
-                            var object = helpers.factory.build($this, "point", [elt.value[gi*2], elt.value[gi*2+1]], elt.attr);
+                            var object = helpers.factory.build($this, "point", [elt.value[gi*2], elt.value[gi*2+1]], elt.attr, true);
                             if (elt.active==true) { settings.points.push(object); }
                         }
                     }
                     for (var gi=0; gi<Math.floor((elt.value.length-2)/2); gi++) {
                         var object = helpers.factory.build($this, "segment",
-                            [elt.value[gi*2], elt.value[gi*2+1], elt.value[gi*2+2], elt.value[gi*2+3]], elt.attr);
+                            [elt.value[gi*2], elt.value[gi*2+1], elt.value[gi*2+2], elt.value[gi*2+3]], elt.attr, true);
                         if (elt.active==true) { settings.lines.push(object); }
                     }
                 }
@@ -823,9 +874,23 @@
                         pos = helpers.utility.line.convert2($this, elt.value[0], elt.value[1]);
                     }
                     if (pos) {
-                        var object = helpers.factory.build($this, "line", [pos.i1, pos.j1, pos.i2, pos.j2], elt.attr);
+                        var object = helpers.factory.build($this, "line", [pos.i1, pos.j1, pos.i2, pos.j2], elt.attr, true);
                         if (elt.active==true) { settings.lines.push(object); }
                     }
+                }
+                else if (elt.type=="mesh") {
+					for (var gi=0; gi<elt.value[2]; gi++) {
+						var object = helpers.factory.build($this, "line",
+							[ elt.value[0]+gi*elt.value[4], elt.value[1], 
+							  elt.value[0]+gi*elt.value[4], elt.value[1]+(elt.value[3]-1)*elt.value[5] ], elt.attr, true);
+                        if (elt.active==true) { settings.lines.push(object); }
+					}
+					for (var gj=0; gj<elt.value[3]; gj++) {
+						var object = helpers.factory.build($this, "line",
+							[ elt.value[0], elt.value[1]+gj*elt.value[5], 
+							  elt.value[0]+(elt.value[2]-1)*elt.value[4], elt.value[1]+gj*elt.value[5] ], elt.attr, true);
+                        if (elt.active==true) { settings.lines.push(object); }
+					}
                 }
             }
 
@@ -989,6 +1054,7 @@
                         case "points": case "lines": case "circles":
                             var vObject = settings[vElt].pop();
                             $(vObject.svg).detach(); $(vObject.highlight).detach();
+                            if (vObject.extra) { $(vObject.extra).detach(); }
                             break;
                         case "inter2":
                             var vObject = settings.points.pop();
