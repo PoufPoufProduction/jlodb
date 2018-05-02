@@ -27,6 +27,7 @@
         active      : false,                      // Activate all data by default
         background  : "",                       // Add a background
         width		: 640,						// Default with
+		locked		: false,					// The menu is locked
         debug       : true                      // Debug mode
     };
 
@@ -1009,7 +1010,7 @@
             },
             click: function(elt) {
                 var $this = $(this) , settings = helpers.settings($this);
-                if (!$(elt).hasClass("disable") && !settings.finish) {
+                if (!settings.locked && !$(elt).hasClass("disable") && !settings.finish) {
                      $this.find(".action").removeClass("s");
                     if (settings.controls.action != $(elt).attr("id")) {
                         $(elt).addClass("s");
