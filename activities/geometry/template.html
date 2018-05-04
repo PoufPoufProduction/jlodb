@@ -35,7 +35,8 @@
                 <tr><td><div class="action" id="info" onclick="$(this).closest('.geometry').geometry('cancel');"
                              ontouchstart="$(this).closest('.geometry').geometry('cancel');event.preventDefault();">
                             <div id="nbelts"></div><div id="cancel"><img src="res/img/default/control/left02.svg" alt=""/></div></div></td>
-                    <td><div class="action a2" ></div></td></tr>
+                    <td><div class="action a2" id="about" onclick="$(this).closest('.geometry').find('#help').show();"
+                             ontouchstart="$(this).closest('.geometry').find('#help').show();"><img src="res/img/default/white/about.svg" alt="?"/></div></td></tr>
             </table>
         </div>
         <div id="log"></div>
@@ -50,6 +51,53 @@
     </div>
     
     <div id="zoom"></div>
+	
+	<div id="help"><div class="icon" onclick="$(this).closest('#help').hide();"
+                        ontouchstart="$(this).closest('#help').hide();">
+		<div>
+			<div class="ehelp">
+				<div class="icon"><img src="res/img/icon/geometry/segment.svg" alt=""/></div>
+				<div class="label" id="hseg"></div>
+			</div>
+			<div class="ehelp">
+				<div class="icon"><img src="res/img/icon/geometry/line.svg" alt=""/></div>
+				<div class="label" id="hlin"></div>
+			</div>
+			<div class="ehelp">
+				<div class="icon"><img src="res/img/icon/geometry/circle.svg" alt=""/></div>
+				<div class="label" id="hcir"></div>
+			</div>
+			<div class="ehelp">
+				<div class="icon"><img src="res/img/icon/geometry/bisector.svg" alt=""/></div>
+				<div class="label" id="hbis"></div>
+			</div>
+			<div class="ehelp">
+				<div class="icon"><img src="res/img/icon/geometry/intersection.svg" alt=""/></div>
+				<div class="label" id="hint"></div>
+			</div>
+			<div class="ehelp">
+				<div class="icon"><img src="res/img/icon/geometry/midpoint.svg" alt=""/></div>
+				<div class="label" id="hmid"></div>
+			</div>
+			<div class="ehelp">
+				<div class="icon"><img src="res/img/icon/geometry/parallel.svg" alt=""/></div>
+				<div class="label" id="hpar"></div>
+			</div>
+			<div class="ehelp">
+				<div class="icon"><img src="res/img/icon/geometry/perpendicular.svg" alt=""/></div>
+				<div class="label" id="hper"></div>
+			</div>
+			<div class="ehelp">
+				<div class="icon"><img src="res/img/numbers/dice/dice01big.svg" alt=""/></div>
+				<div class="label" id="hsty"></div>
+			</div>
+			<div class="ehelp">
+				<div class="icon" style="background-color:rgb(53,34,34)"></div>
+				<div class="label" id="hcol"></div>
+			</div>
+			<div id="hwar"></div>
+		</div>
+	</div></div>
     
     <div id="cancel2" onclick="$(this).closest('.geometry').geometry('cancel');"
                       ontouchstart="$(this).closest('.geometry').geometry('cancel');event.preventDefault();">

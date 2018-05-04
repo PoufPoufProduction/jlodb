@@ -15,7 +15,7 @@
         strokewidth : 1.5,                      // The stroke size
         sizepoint   : 8,                        // The point stroke size
         hlcolor     : "blue",                   // The highlight color
-        goodcolor   : "#004488",                // The matching color
+        goodcolor   : "red",                   // The matching color
         color       : "black",                  // The current color
         color2      : 0,                        // The color used after init
         translate   : [0,0],                    // The translation values
@@ -32,6 +32,7 @@
     };
 
     var regExp = [
+        "\\\[br\\\]",            					"<br>",
         "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
         "\\\[bb\\\](.+)\\\[/bb\\\]",                "<b>$1</b>",
         "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
@@ -148,7 +149,7 @@
                 }
 
                 // LOCALE HANDLING
-                if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
+                if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(helpers.format(value)); }); }
 
                 // LOAD SVG
                 var debug = "";
