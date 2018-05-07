@@ -25,7 +25,7 @@
 .calc.devmode div#locale { display:inherit; }
 .calc div#locale { position:absolute; top:1%; left:96%; background-color:gray; border-radius:0.5em; font-size:0.5em; cursor:pointer; display:none; }
 
-.calc div#board                 { margin-top:0.5em; height:12.5em; font-size:0.8em; padding:0.02em 0 0 0.02em;}
+.calc div#board                 { height:12.5em; font-size:0.8em; }
 .calc div#board>div             { position:relative; height:120%; width:120%; }
 .calc div#board .cell           { position:absolute; background-color:white; background-size:100%;
                                    text-align:center; cursor:pointer; }
@@ -41,6 +41,7 @@
 .calc div#board .cell.f04>div   { font-size:0.4em; }
 .calc div#board .cell.f03>div   { font-size:0.3em; }
 .calc div#board .cell.f025>div  { font-size:0.25em; }
+.calc div#board .cell.f02>div   { font-size:0.2em; }
 .calc div#board .cell.f015>div  { font-size:0.15em; }
 .calc div#board .cell.vm02>div    { margin-top:0.2em; }
 .calc div#board .cell.vm05>div    { margin-top:0.5em; }
@@ -59,16 +60,14 @@
 .calc div#board .cell.fixed .image  { width:100%; }
 .calc div#board .cell.fixed>div { line-height:1.2em; }
 
-.calc div#panel                 { position:absolute; top:5%; left:60%; width:6em; height:8em;
-                                  border:0.15em solid white; border-radius:.2em; overflow:visible;display:none; }
-.calc.leftpanel div#panel       { left:5%; }
-.calc.smallpanel div#panel		{ font-size:.6em; left:65%; }
-.calc div#panel #ppanel         { width:6em; height:7em; background-color:rgba(255,255,255,0.8); }
-.calc div#panel #ppanel>div     { display:none; }
+.calc div#panel                 { position:absolute; width:6em; height:8em;
+                                  border:0.15em solid white; border-radius:.2em; overflow:visible;display:none; font-size:.6em; }
+.calc.largepanel div#panel		{ font-size:1em; }
+.calc div#panel #ppanel         { width:6em; height:7em; background-color:rgba(255,255,255,0.8); position:relative; }
+.calc div#panel #ppanel>div     { display:none;  }
 .calc div#panel #phandle        { background-image:url("../../res/img/background/asset/move01.svg"); cursor:move; }
 .calc #phandle #pcancel       { float:right; cursor:pointer;}
 .calc #phandle #pvalid      { float:left; cursor:pointer; }
-.calc #phandle #edscreen        { float:left; width:3.8em; height:1em; color:white; margin-left:0.1em; }
 .calc div#pmenu                  { position:absolute; left:-1em; top:0; }
 .calc div#pmenu>div              { background-color:white; border-radius:0.5em; background-image:url("../../res/img/icon/tab/tab00.svg");
                                   cursor:pointer; overflow:visible;display:none; }
@@ -85,8 +84,9 @@
 .calc.borderimg #pimg .icon.s   { background-color:inherit; border:.1em solid red; }
 .calc #ptxt>div			{ background-color:rgba(84,137,184,0.9); margin:.1em; color:white; cursor:pointer; }
 .calc #ptxt>div.small       { font-size:0.8em; }
-.calc #ptxt>div.inline      { width:auto; min-width:1em; float:left; text-align:center; }
+.calc #ptxt>div.inline      { width:auto; min-width:1.2em; float:left; text-align:center; }
 .calc #ptxt>div.s				{ background-color:rgba(256,220,50,0.9); }
+
 
 .calc #pgraph #graphmenu         { width:6em; height:3em; background-color:rgba(84,137,184,0.9); }
 .calc #pgraph #graphmenu>div     { border:.1em solid white; margin:.1em; float:left; background-color:rgba(255,255,255,0.8); cursor:pointer; }
@@ -98,8 +98,9 @@
 .calc #pgraph .line .ref.s      { background-color:red; }
 
 .calc table                 { border-spacing: 0; }
-.calc #pcalc td>div  { height:1.25em; }
-.calc #pcalc td>#screen       { font-size:1.2em; width:5em; height:1.3em; cursor:crosshair;
+.calc #pcalc td>div  { height:1.2em; }
+.calc #pcalc td>#cleancalc		{ font-size:.25em; height:1.2em; background-color:#030; color:#0F0; text-align:right; cursor:crosshair; padding-right:1em; margin-bottom:.2em; }
+.calc #pcalc td>#screen       { font-size:1.2em; width:5em; height:1.2em; cursor:crosshair;
                                    text-align:center; color:#0F0; font-weight:bold;
                                    background-color:#030;
                                    background-image:url("../../res/img/default/pattern/line03.svg"); background-repeat:repeat;}
@@ -107,12 +108,12 @@
 .calc .graykeypad               { background-color:rgba(128,128,128,0.9) !important;} 
 .calc .bluekeypad                { color:white; text-align:center; font-size:1em; cursor:pointer; border:.05em solid white; }
 
-.calc #target                   { position:absolute; width:1em;height:1em;top:0;left:0; border:2px solid blue;
-                                  overflow:visible;display:none; padding:2px; }
+.calc #board>#target            { position:absolute; border:.1em solid blue; margin:-.1em;
+                                  overflow:visible;display:none; }
 .calc #target>div               { width:20px;height:20px;margin-top:-15px;margin-left:-15px; cursor:move;
                                   position:absolute;top:100%;left:100%;background-color:blue; display:none; }
 .calc.auto #target>div          { display:inherit; }
-.calc #target.s                 { border:2px solid red; }
+.calc #target.s                 { border:.1em solid red; }
 .calc #target.s>div             { background-color:red; }
 
 .calc div#submit                     { font-size:1.5em; height:1em;width:1em; cursor:pointer;

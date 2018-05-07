@@ -2,6 +2,8 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dct="http://purl.org/dc/terms/">
 
+	<!-- DEBUG SHEET FOR DEVELOPMENT -->
+		 
     <rdf:Description>
         <dct:identifier>x</dct:identifier>
         <dct:title xml:lang="fr-FR">Pour le développement uniquement.</dct:title>
@@ -15,9 +17,45 @@
         <dct:source>res/img/clipart/animal/</dct:source>
     </rdf:Description>
     
+	<!-- CALC TUTORIAL -->
+	
+    <rdf:Description>
+        <dct:identifier>01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Remplir une première cellule en déplaçant la calculatrice.</dct:title>
+        <dct:description><![CDATA["margin":[0.2,0.2],"background":"res/img/background/landscape/yellowboard02.svg","sp":0.02,"font":2.4,"hide":[[3,1,1,1],[2,2,1,1],[3,3,1,1],[2,4,1,1]],"withbars":false,"all":{"width":1.2,"height":1.2},"cols":{"col0":{"width":0.2},"col2":{"width":2.4},"col4":{"width":0.2,"background":"red","fixed":true}},"rows":{"row0":{"height":0.2}},"cells":{"c2x1":{"width":3.6,"type":"fixed","value":"t1","opt":"f02"},"c1x2":{"width":3.6,"type":"fixed","value":"t2","opt":"f02"},"c2x3":{"width":3.6,"type":"fixed","value":"t3","opt":"f02"},"c1x4":{"width":3.6,"type":"fixed","value":"t4","opt":"f02"},"c1x1":{"type":"fixed","value":"[img]res/img/ppvc/lottie23[/img]","fixed":true,"background":"#FEC"},"c3x2":{"type":"fixed","value":"[img]res/img/ppvc/lottie26[/img]","background":"#FEC"},"c1x3":{"type":"fixed","value":"[img]res/img/ppvc/lottie22[/img]","background":"#FEC"},"c3x4":{"type":"fixed","value":"[img]res/img/ppvc/lottie29[/img]","background":"#FEC"},"c5x1":{"type":"fixed","value":"1","background":"#AA8"},"c5x2":{"type":"fixed","value":"2","background":"#AA8"},"c5x3":{"type":"fixed","value":"3","background":"#AA8"},"c5x4":{"type":"value","result":4,"background":"#F88"}},"pospanel":[60,50],"errratio":5,"checkempty":true]]></dct:description>
+        <dct:description xml:lang="fr-FR">,"po":{"t1":"[b]Cliquez[/b] sur la case en [red]rose[/red].","t2":"[b]Déplacez[/b] la [red]calculatrice[/red] en bougeant la barre [b]grise[/b] [img]res/img/background/asset/move01[/img].","t3":"[b]Entrez la valeur 4[/b] et [b]validez[/b]  avec [icon]res/img/default/icon/valid02[/icon]","t4":"[b]Validez[/b] le niveau en cliquant sur [icon]res/img/default/icon/swvalid[/icon]"},"exercice":"[b]Remplissez[/b] la dernière cellule avec la [b]valeur 4[/b]."</dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>mathematics</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>01</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:source>res/img/ppvc/lottie22.svg,res/img/ppvc/lottie23.svg,res/img/ppvc/lottie26.svg,res/img/ppvc/lottie29.svg,res/img/background/landscape/yellowboard02.svg</dct:source>
+    </rdf:Description>
+	
+	
+	
+	
+    <rdf:Description>
+        <dct:identifier>02</dct:identifier>
+        <dct:title xml:lang="fr-FR">Recopier les cellules de différents formats d'une colonne.</dct:title>
+        <dct:description><![CDATA["margin":[0.2,0.2],"imgprefix":"res/img/clipart/animal/","img":["bear01","bird01","cat02","duck01","dog02","mice01","lama01","ibis01","swan01"],"background":"res/img/background/landscape/yellowboard02.svg","txtstyle":"inline","sp":0.02,"font":2.4,"hide":[[3,1,1,1],[2,2,1,1],[3,3,1,1],[2,4,1,1]],"withbars":false,"all":{"width":1.2,"height":1.2},"cols":{"col0":{"width":0.2},"col2":{"width":2.4},"col4":{"width":0.2,"background":"red","fixed":true}},"rows":{"row0":{"height":0.2}},"cells":{"c2x1":{"width":3.6,"type":"fixed","value":"t1","opt":"f02"},"c1x2":{"width":3.6,"type":"fixed","value":"t2","opt":"f02"},"c2x3":{"width":3.6,"type":"fixed","value":"t3","opt":"f02"},"c1x4":{"width":3.6,"type":"fixed","value":"t4","opt":"f02"},"c1x1":{"type":"fixed","value":"[img]res/img/ppvc/lottie23[/img]","fixed":true,"background":"#FEC"},"c3x2":{"type":"fixed","value":"[img]res/img/ppvc/lottie32[/img]","background":"#FEC"},"c1x3":{"type":"fixed","value":"[img]res/img/ppvc/lottie22[/img]","background":"#FEC"},"c3x4":{"type":"fixed","value":"[img]res/img/ppvc/lottie31[/img]","background":"#FEC"},"c5x1":{"type":"fixed","value":"1","background":"#AA8"},"c5x2":{"type":"fixed","value":"2","background":"#AA8"},"c5x3":{"type":"fixed","value":"A","background":"#AA8"},"c5x4":{"type":"fixed","value":"[img]res/img/clipart/animal/cat02[/img]","background":"#AA8"},"c6x1":{"type":"fixed","value":"1"},"c6x2":{"type":"value","result":"2"},"c6x3":{"type":"txt","result":"0"},"c6x4":{"type":"img","result":2}},"errratio":5,"checkempty":true,"txt":["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P"]]]></dct:description>
+        <dct:description xml:lang="fr-FR">,"po":{"t1":"[b]Validez[/b] chaque cellule avec [icon]res/img/default/icon/valid02[/icon]","t2":"A chaque [red]validation[/red], on passe à la [b]case du dessous[/b] automatiquement.","t3":"La [b]calculatrice[/b] n'est proposée que pour les [red]nombres[/red].","t4":"[b]Déplacez[/b] la [red]calculatrice[/red] en bougeant la barre [b]grise[/b] [img]res/img/background/asset/move01[/img]."},"exercice":"[b]Recopiez[/b] les valeurs de la colonne [red]grise[/red] dans la dernière colonne."</dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>mathematics</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>01</dct:alternative>
+		<dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:source>res/img/ppvc/lottie22.svg,res/img/ppvc/lottie23.svg,res/img/ppvc/lottie31.svg,res/img/ppvc/lottie32.svg,res/img/background/landscape/yellowboard02.svg,res/img/clipart/animal/bear01.svg,res/img/clipart/animal/bird01.svg,res/img/clipart/animal/cat02.svg,res/img/clipart/animal/duck01.svg,res/img/clipart/animal/dog02.svg,res/img/clipart/animal/mice01.svg,res/img/clipart/animal/lama01.svg,res/img/clipart/animal/ibis01.svg,res/img/clipart/animal/swan01.svg</dct:source>
+    </rdf:Description>
+	
+	
+	<!-- SHEET EDITOR -->
+	
     <rdf:Description>
         <dct:identifier>a</dct:identifier>
-        <dct:title xml:lang="fr-FR">Editeur de feuille de calcul.</dct:title>
+        <dct:title xml:lang="fr-FR">Editer une feuille de calcul.</dct:title>
         <dct:description><![CDATA["dev":true,"withtabs":true,"imgprefix":"res/img/clipart/animal/","img":["bear01","bird01","cat02","duck01","dog02","mice01","lama01","ibis01","swan01"],"math":[{"id":"ref1"},{"value":1},{"value":2},{"value":3},{"value":4},{"value":5},{"value":6},{"value":7},{"value":8},{"value":9},{"value":10},{"id":"plus"},{"id":"minus"},{"id":"mult"},{"id":"div"}]]]></dct:description>
         <dct:description xml:lang="fr-FR">,"txt":["Texte_1","Texte_2","Texte_3","Texte_4","Texte_5","Texte_6","Texte_7"]</dct:description>
         <dct:extent>15</dct:extent>

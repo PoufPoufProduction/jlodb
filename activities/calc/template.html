@@ -1,6 +1,14 @@
 <div>
 
-    <div id="board"><div></div></div>
+    <div id="board">
+		<div></div>
+	    <div id="target" ontouchstart="$(this).closest('.calc').calc('cell', 0);event.preventDefault();"
+                     onclick="$(this).closest('.calc').calc('cell', 0);">
+			<div ontouchstart="$(this).closest('.calc').calc('auto',event);event.preventDefault();"
+				onmousedown="$(this).closest('.calc').calc('auto',event);"></div>
+		</div>
+	
+	</div>
     <div id="exercice"><div></div></div>
     <div id="detail"><div>
         <div class="detdiv icon" id="valid"
@@ -39,11 +47,7 @@
         <img src="res/img/default/icon/swwrong.svg" id="subwrong" alt=""/>
     </div>
 
-    <div id="target" ontouchstart="$(this).closest('.calc').calc('cell', 0);event.preventDefault();"
-                     onclick="$(this).closest('.calc').calc('cell', 0);">
-        <div ontouchstart="$(this).closest('.calc').calc('auto',event);event.preventDefault();"
-             onmousedown="$(this).closest('.calc').calc('auto',event);"></div>
-    </div>
+
 
     <div id="panel">
         <div id="ppanel">
@@ -51,6 +55,8 @@
                 <table>
                     <tr><td colspan="3"><div id="screen" ontouchstart="$(this).closest('.calc').calc('key', 'c', this);event.preventDefault();"
                             onclick="$(this).closest('.calc').calc('key', 'c', this);"><div>0</div></div></td></tr>
+                    <tr><td colspan="3"><div id="cleancalc" ontouchstart="$(this).closest('.calc').calc('key', 'c', this);event.preventDefault();"
+                            onclick="$(this).closest('.calc').calc('key', 'c', this);"></div></td></tr>
                     <tr>
                         <td ontouchstart="$(this).closest('.calc').calc('key', 7, this);event.preventDefault();"
                             onclick="$(this).closest('.calc').calc('key', 7, this);" class="bluekeypad"><div>7</div></td>
@@ -98,10 +104,6 @@
             <div id="ptxt"></div>
             <div id="pgraph">
                 <div id="graphmenu">
-<!--
-                    <div id="gpie" class="icon"  ontouchstart="$(this).closest('.calc').calc('graph','pie');event.preventDefault();"
-                     onclick="$(this).closest('.calc').calc('graph','pie');"><img src="res/img/icon/charts/pie01.svg" alt=""/></div>
--->
                     <div id="gbar" class="icon"  ontouchstart="$(this).closest('.calc').calc('graph','bar');event.preventDefault();"
                      onclick="$(this).closest('.calc').calc('graph','bar');"><img src="res/img/icon/charts/bar01.svg" alt=""/></div>
                     <div id="gfct" class="icon"  ontouchstart="$(this).closest('.calc').calc('graph','fct');event.preventDefault();"

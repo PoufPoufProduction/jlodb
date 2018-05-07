@@ -11,6 +11,8 @@
         sp          : 0.1,                              // space between cells
         font        : 1,                                // cell font size
         fontex      : 1,                                // exercice font size
+		pospanel	: [60,5],							// Initial panel position
+		margin		: [0.05,0.2],							// Board margin
         tabs        : ["calc","img","math","txt","graph"], // authorized tabs
         withtabs    : false,                            // display the tabs
         imgsize     : 2,                                // img tab font-size in em
@@ -43,7 +45,7 @@
         "\\\[purple\\\]([^\\\[]+)\\\[/purple\\\]",  "<span style='color:purple'>$1</span>",
         "\\\[orange\\\]([^\\\[]+)\\\[/orange\\\]",  "<span style='color:orange'>$1</span>",
         "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>",
-        "\\\[img\\\]([^\\\[]+)\\\[/img\\\]",        "<div class='imgage'><img src='$1.svg'/></div>",
+        "\\\[img\\\]([^\\\[]+)\\\[/img\\\]",        "<div class='image'><img src='$1.svg'/></div>",
         "\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='img'><div class='icon'><img src='$1.svg'/></div></div>",
         "\\\[icon2\\\]([^\\\[]+)\\\[/icon2\\\]",    "<div class='icon' style='float:left;font-size:2em;'><img src='$1.svg'/></div>",
         "\\\[small\\\]([^\\\[]+)\\\[/small\\\]",    "<span style='font-size:0.5em'>$1</span>"
@@ -177,7 +179,12 @@
                     html+="><img src='"+settings.imgprefix+settings.img[i]+".svg' alt=''/></div>";
                     $this.find("#pimg").append(html);
                 }
-                $this.find("#panel").draggable({handle:"#escreen",containment:$this}).css("position","absolute");
+                $this.find("#panel").draggable({handle:"#escreen",containment:$this,
+					stop: function( event, ui ) {
+						// BUG: After drag, size becomes in px.
+						$this.find("#panel").css("width","6em").css("height","8em");
+					}
+				}).css("position","absolute");
                 
                 $this.find("#ptxt").css("font-size",settings.txtsize+"em");
                 for (var i in settings.txt) {
@@ -253,6 +260,7 @@
             var settings = helpers.settings($this);
                 var $board = $this.find("#board>div");
                 $board.html("").css("font-size", settings.font+"em");
+				$this.find("#target").css("font-size", settings.font+"em");
                 
                 // HANDLE BACKGROUND
                 if (settings.background) { $this.children().first().css("background-image","url("+settings.background+")"); }
@@ -270,7 +278,7 @@
                 var height  = h;
                 var html    = "";
                 
-                html = '<div class="cell g" style="width:'+(w-settings.sp)+'em;height:'+(h-settings.sp)+'em;" ';
+                html = '<div class="cell g" style="width:'+(w-settings.sp)+'em;height:'+(h-settings.sp)+'em;top:'+settings.margin[1]+'em;left:'+settings.margin[0]+'em;" ';
                 if (settings.dev) {
                     html+= 'onmousedown=\'$(this).closest(".calc").calc("bar","all");\' ';
                     html+= 'ontouchstart=\'$(this).closest(".calc").calc("bar","all");event.preventDefault();\' ';
@@ -280,7 +288,7 @@
                 for (var i=0; i<settings.size[0]; i++) {
                     w = helpers.value($this,(i+1),0,"width",2);
                     h = helpers.value($this,(i+1),0,"height",1.2);
-                    html = '<div class="cell g" style="left:'+width+'em;width:'+(w-settings.sp)+'em;height:'+(h-settings.sp)+'em;" ';
+                    html = '<div class="cell g" style="top:'+settings.margin[1]+'em;left:'+(settings.margin[0]+width)+'em;width:'+(w-settings.sp)+'em;height:'+(h-settings.sp)+'em;" ';
                     if (settings.dev) {
                         html+= 'onmousedown=\'$(this).closest(".calc").calc("bar","col",'+(i+1)+');\' ';
                         html+= 'ontouchstart=\'$(this).closest(".calc").calc("bar","col",'+(i+1)+');event.preventDefault();\' ';
@@ -293,7 +301,7 @@
                 for (var j=0; j<settings.size[1]; j++) {
                     w = helpers.value($this,0,(j+1),"width",1.2);
                     h = helpers.value($this,0,(j+1),"height",1.2);
-                    html = '<div class="cell g" style="top:'+height+'em;width:'+(w-settings.sp)+'em;height:'+(h-settings.sp)+'em;" ';
+                    html = '<div class="cell g" style="top:'+(settings.margin[1]+height)+'em;left:'+settings.margin[0]+'em;width:'+(w-settings.sp)+'em;height:'+(h-settings.sp)+'em;" ';
                     if (settings.dev) {
                         html+= 'onmousedown=\'$(this).closest(".calc").calc("bar","row",'+(j+1)+');\' ';
                         html+= 'ontouchstart=\'$(this).closest(".calc").calc("bar","row",'+(j+1)+');event.preventDefault();\' ';
@@ -350,7 +358,9 @@
                         if (settings.sheet[j][i].type!="hide") {
                             var vClass="cell "+settings.sheet[j][i].type;
                             if (settings.sheet[j][i].opt) { vClass+=" "+settings.sheet[j][i].opt; }
-                            html = '<div class="'+vClass+'" style="top:'+height+'em;left:'+width+'em;width:'+(w-settings.sp)+'em;'+
+							settings.sheet[j][i].pos = [width,height];
+							settings.sheet[j][i].size = [w-settings.sp,h-settings.sp];
+                            html = '<div class="'+vClass+'" style="top:'+(settings.margin[1]+height)+'em;left:'+(settings.margin[0]+width)+'em;width:'+(w-settings.sp)+'em;'+
                                 'height:'+(h-settings.sp)+'em;background-color:'+helpers.value($this,(i+1),(j+1),"background","white")+';'+
                                 (settings.sheet[j][i].bgimg?"background-image:url('"+settings.sheet[j][i].bgimg+"');":"")+
                                 'color:'+helpers.value($this,(i+1),(j+1),"color","black")+';" ';
@@ -366,6 +376,10 @@
                     }
                     height+=helpers.value($this,0,(j+1),"height",1.2);
                 }
+				
+				// PANEL PREPARE
+				$this.find("#panel").css("top", settings.pospanel[1]+"%").css("left", settings.pospanel[0]+"%");
+
 
                 // HANDLE AUTOMATIC SELECT
                 settings.spinpx = $board.children().first().next().offset().left -
@@ -811,8 +825,8 @@
                             $this.find("#graphvalues .ref.s").removeClass("s").html(String.fromCharCode(64 + parseInt(target[1]))+target[2]);
                         }
                         else {
+                            var c=settings.sheet[parseInt(target[2]-1)][parseInt(target[1]-1)];
                             if (settings.target[0]!=target[0] || settings.dev) {
-                                var c=settings.sheet[parseInt(target[2]-1)][parseInt(target[1]-1)];
                                 settings.target=target;
 
                                 $this.find("#pimg .icon").removeClass("s");
@@ -869,9 +883,11 @@
                                 }
                                 $this.find("#escreen").css("opacity",c.type=="math"?1:0);
                             }
+
+							
                             $target.show();
-                            $target.width($(_cell).width()).height($(_cell).height())
-                                   .offset({top:$(_cell).offset().top-4, left:$(_cell).offset().left-4});
+							$target.css("left",(settings.margin[0]+c.pos[0])+"em").css("top",(settings.margin[1]+c.pos[1])+"em");
+							$target.css("width",c.size[0]+"em").css("height",c.size[1]+"em");
                             $this.find("#panel").show();
                         }
                     }
