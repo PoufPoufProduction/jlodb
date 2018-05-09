@@ -8,12 +8,20 @@
     svg#table5x5 .drag .shadow          { display:inline; }
 	svg#table5x5 .tab					{ fill:gray; }
 	svg#table5x5 .cell					{ fill:white; }
+	svg#table5x5 .piece					{ fill:#fec; stroke:black; cursor:pointer; }
+	
+	svg#table5x5 #pieces .good .piece			{ fill:#0f0; }
+	svg#table5x5 #pieces .wrong .piece			{ fill:#f00; }
  </style>
 </defs>
 
 <g id="bg">
 	<rect x="24" y="44" width="302" height="302" style="fill:none;stroke:white;stroke-width:20"/>
 	<rect x="24" y="44" width="302" height="302"/>
+	
+	<rect x="0" y="360" width="640" height="48" style="fill:white;fill-opacity:0.6"/>
+	
+	<text transform="translate(320,400)" id="title"></text>
 	
     <g transform="translate(50,70)">
         <rect x="-24" y="-24" height="48" width="48" class="tab"/>
@@ -23,57 +31,55 @@
 	
     <g transform="translate(100,70)">
         <rect x="-24" y="-24" height="48" width="48" class="tab"/>
-        <text y="12" id="ta"></text>
+        <text y="12" id="ta">A</text>
         <image id="ia" transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0"/>
     </g>
     <g transform="translate(150,70)">
         <rect x="-24" y="-24" height="48" width="48" class="tab"/>
-        <text y="12" id="tb"></text>
+        <text y="12" id="tb">B</text>
         <image id="ib" transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0"/>
     </g>
     <g transform="translate(200,70)">
         <rect x="-24" y="-24" height="48" width="48" class="tab"/>
-        <text y="12" id="tc"></text>
+        <text y="12" id="tc">C</text>
         <image id="ic" transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0"/>
     </g>
     <g transform="translate(250,70)">
         <rect x="-24" y="-24" height="48" width="48" class="tab"/>
-        <text y="12" id="td"></text>
+        <text y="12" id="td">D</text>
         <image id="id" transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0"/>
     </g>
     <g transform="translate(300,70)">
         <rect x="-24" y="-24" height="48" width="48" class="tab"/>
-        <text y="12" id="te"></text>
+        <text y="12" id="te">E</text>
         <image id="ie" transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0"/>
     </g>
     
     <g transform="translate(50,120)">
         <rect x="-24" y="-24" height="48" width="48" class="tab"/>
-        <text y="12" id="t1"></text>
+        <text y="12" id="t1">1</text>
         <image id="i1" transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0"/>
     </g>
     <g transform="translate(50,170)">
         <rect x="-24" y="-24" height="48" width="48" class="tab"/>
-        <text y="12" id="t2"></text>
+        <text y="12" id="t2">2</text>
         <image id="i2" transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0"/>
     </g>
     <g transform="translate(50,220)">
         <rect x="-24" y="-24" height="48" width="48" class="tab"/>
-        <text y="12" id="t3"></text>
+        <text y="12" id="t3">3</text>
         <image id="i3" transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0"/>
     </g>
     <g transform="translate(50,270)">
         <rect x="-24" y="-24" height="48" width="48" class="tab"/>
-        <text y="12" id="t4"></text>
+        <text y="12" id="t4">4</text>
         <image id="i4" transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0"/>
     </g>
     <g transform="translate(50,320)">
         <rect x="-24" y="-24" height="48" width="48" class="tab"/>
-        <text y="12" id="t5"></text>
+        <text y="12" id="t5">5</text>
         <image id="i5" transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0"/>
     </g>
-	
-	
 	
     <g transform="translate(100,120)">
         <rect x="-24" y="-24" height="48" width="48" class="cell"/>
@@ -210,11 +216,230 @@
 
 <g id="pieces">
 
-    <g id="pa1" transform="translate(50,70)"><g class="scale">
-        <rect transform="translate(10,8)" x="-24" y="-24" height="48" width="48" class="shadow"/><g class="rot">
+    <g id="p0" transform="translate(50,70)"><g class="scale">
+        <rect transform="translate(5,4)" x="-24" y="-24" height="48" width="48" class="shadow"/><g class="rot">
+        <rect x="-24" y="-24" height="48" width="48" class="piece"/>
+        <text y="8" id="pt0"></text>
+        <image transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0" id="pi0"/>
+    </g></g></g>
+
+    <g id="pa" transform="translate(100,70)"><g class="scale">
+        <rect transform="translate(5,4)" x="-24" y="-24" height="48" width="48" class="shadow"/><g class="rot">
+        <rect x="-24" y="-24" height="48" width="48" class="piece"/>
+        <text y="8" id="pta"></text>
+        <image transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0" id="pia"/>
+    </g></g></g>
+    <g id="pb" transform="translate(150,70)"><g class="scale">
+        <rect transform="translate(5,4)" x="-24" y="-24" height="48" width="48" class="shadow"/><g class="rot">
+        <rect x="-24" y="-24" height="48" width="48" class="piece"/>
+        <text y="8" id="ptb"></text>
+        <image transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0" id="pib"/>
+    </g></g></g>
+    <g id="pc" transform="translate(200,70)"><g class="scale">
+        <rect transform="translate(5,4)" x="-24" y="-24" height="48" width="48" class="shadow"/><g class="rot">
+        <rect x="-24" y="-24" height="48" width="48" class="piece"/>
+        <text y="8" id="ptc"></text>
+        <image transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0" id="pic"/>
+    </g></g></g>
+    <g id="pd" transform="translate(250,70)"><g class="scale">
+        <rect transform="translate(5,4)" x="-24" y="-24" height="48" width="48" class="shadow"/><g class="rot">
+        <rect x="-24" y="-24" height="48" width="48" class="piece"/>
+        <text y="8" id="ptd"></text>
+        <image transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0" id="pid"/>
+    </g></g></g>
+    <g id="pe" transform="translate(300,70)"><g class="scale">
+        <rect transform="translate(5,4)" x="-24" y="-24" height="48" width="48" class="shadow"/><g class="rot">
+        <rect x="-24" y="-24" height="48" width="48" class="piece"/>
+        <text y="8" id="pte"></text>
+        <image transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0" id="pie"/>
+    </g></g></g>
+
+    <g id="p1" transform="translate(50,120)"><g class="scale">
+        <rect transform="translate(5,4)" x="-24" y="-24" height="48" width="48" class="shadow"/><g class="rot">
+        <rect x="-24" y="-24" height="48" width="48" class="piece"/>
+        <text y="8" id="pt1"></text>
+        <image transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0" id="pi1"/>
+    </g></g></g>
+    <g id="p2" transform="translate(50,170)"><g class="scale">
+        <rect transform="translate(5,4)" x="-24" y="-24" height="48" width="48" class="shadow"/><g class="rot">
+        <rect x="-24" y="-24" height="48" width="48" class="piece"/>
+        <text y="8" id="pt2"></text>
+        <image transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0" id="pi2"/>
+    </g></g></g>
+    <g id="p3" transform="translate(50,220)"><g class="scale">
+        <rect transform="translate(5,4)" x="-24" y="-24" height="48" width="48" class="shadow"/><g class="rot">
+        <rect x="-24" y="-24" height="48" width="48" class="piece"/>
+        <text y="8" id="pt3"></text>
+        <image transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0" id="pi3"/>
+    </g></g></g>
+    <g id="p4" transform="translate(50,270)"><g class="scale">
+        <rect transform="translate(5,4)" x="-24" y="-24" height="48" width="48" class="shadow"/><g class="rot">
+        <rect x="-24" y="-24" height="48" width="48" class="piece"/>
+        <text y="8" id="pt4"></text>
+        <image transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0" id="pi4"/>
+    </g></g></g>
+    <g id="p5" transform="translate(50,320)"><g class="scale">
+        <rect transform="translate(5,4)" x="-24" y="-24" height="48" width="48" class="shadow"/><g class="rot">
+        <rect x="-24" y="-24" height="48" width="48" class="piece"/>
+        <text y="8" id="pt5"></text>
+        <image transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0" id="pi5"/>
+    </g></g></g>
+
+
+
+    <g id="pa1" transform="translate(100,120)"><g class="scale">
+        <rect transform="translate(5,4)" x="-24" y="-24" height="48" width="48" class="shadow"/><g class="rot">
         <rect x="-24" y="-24" height="48" width="48" class="piece"/>
         <text y="8" id="pta1"></text>
         <image transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0" id="pia1"/>
+    </g></g></g>
+    <g id="pb1" transform="translate(150,120)"><g class="scale">
+        <rect transform="translate(5,4)" x="-24" y="-24" height="48" width="48" class="shadow"/><g class="rot">
+        <rect x="-24" y="-24" height="48" width="48" class="piece"/>
+        <text y="8" id="ptb1"></text>
+        <image transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0" id="pib1"/>
+    </g></g></g>
+    <g id="pc1" transform="translate(200,120)"><g class="scale">
+        <rect transform="translate(5,4)" x="-24" y="-24" height="48" width="48" class="shadow"/><g class="rot">
+        <rect x="-24" y="-24" height="48" width="48" class="piece"/>
+        <text y="8" id="ptc1"></text>
+        <image transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0" id="pic1"/>
+    </g></g></g>
+    <g id="pd1" transform="translate(250,120)"><g class="scale">
+        <rect transform="translate(5,4)" x="-24" y="-24" height="48" width="48" class="shadow"/><g class="rot">
+        <rect x="-24" y="-24" height="48" width="48" class="piece"/>
+        <text y="8" id="ptd1"></text>
+        <image transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0" id="pid1"/>
+    </g></g></g>
+    <g id="pe1" transform="translate(300,120)"><g class="scale">
+        <rect transform="translate(5,4)" x="-24" y="-24" height="48" width="48" class="shadow"/><g class="rot">
+        <rect x="-24" y="-24" height="48" width="48" class="piece"/>
+        <text y="8" id="pte1"></text>
+        <image transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0" id="pie1"/>
+    </g></g></g>
+
+    <g id="pa2" transform="translate(100,170)"><g class="scale">
+        <rect transform="translate(5,4)" x="-24" y="-24" height="48" width="48" class="shadow"/><g class="rot">
+        <rect x="-24" y="-24" height="48" width="48" class="piece"/>
+        <text y="8" id="pta2"></text>
+        <image transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0" id="pia2"/>
+    </g></g></g>
+    <g id="pb2" transform="translate(150,170)"><g class="scale">
+        <rect transform="translate(5,4)" x="-24" y="-24" height="48" width="48" class="shadow"/><g class="rot">
+        <rect x="-24" y="-24" height="48" width="48" class="piece"/>
+        <text y="8" id="ptb2"></text>
+        <image transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0" id="pib2"/>
+    </g></g></g>
+    <g id="pc2" transform="translate(200,170)"><g class="scale">
+        <rect transform="translate(5,4)" x="-24" y="-24" height="48" width="48" class="shadow"/><g class="rot">
+        <rect x="-24" y="-24" height="48" width="48" class="piece"/>
+        <text y="8" id="ptc2"></text>
+        <image transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0" id="pic2"/>
+    </g></g></g>
+    <g id="pd2" transform="translate(250,170)"><g class="scale">
+        <rect transform="translate(5,4)" x="-24" y="-24" height="48" width="48" class="shadow"/><g class="rot">
+        <rect x="-24" y="-24" height="48" width="48" class="piece"/>
+        <text y="8" id="ptd2"></text>
+        <image transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0" id="pid2"/>
+    </g></g></g>
+    <g id="pe2" transform="translate(300,170)"><g class="scale">
+        <rect transform="translate(5,4)" x="-24" y="-24" height="48" width="48" class="shadow"/><g class="rot">
+        <rect x="-24" y="-24" height="48" width="48" class="piece"/>
+        <text y="8" id="pte2"></text>
+        <image transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0" id="pie2"/>
+    </g></g></g>
+
+    <g id="pa3" transform="translate(100,220)"><g class="scale">
+        <rect transform="translate(5,4)" x="-24" y="-24" height="48" width="48" class="shadow"/><g class="rot">
+        <rect x="-24" y="-24" height="48" width="48" class="piece"/>
+        <text y="8" id="pta3"></text>
+        <image transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0" id="pia3"/>
+    </g></g></g>
+    <g id="pb3" transform="translate(150,220)"><g class="scale">
+        <rect transform="translate(5,4)" x="-24" y="-24" height="48" width="48" class="shadow"/><g class="rot">
+        <rect x="-24" y="-24" height="48" width="48" class="piece"/>
+        <text y="8" id="ptb3"></text>
+        <image transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0" id="pib3"/>
+    </g></g></g>
+    <g id="pc3" transform="translate(200,220)"><g class="scale">
+        <rect transform="translate(5,4)" x="-24" y="-24" height="48" width="48" class="shadow"/><g class="rot">
+        <rect x="-24" y="-24" height="48" width="48" class="piece"/>
+        <text y="8" id="ptc3"></text>
+        <image transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0" id="pic3"/>
+    </g></g></g>
+    <g id="pd3" transform="translate(250,220)"><g class="scale">
+        <rect transform="translate(5,4)" x="-24" y="-24" height="48" width="48" class="shadow"/><g class="rot">
+        <rect x="-24" y="-24" height="48" width="48" class="piece"/>
+        <text y="8" id="ptd3"></text>
+        <image transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0" id="pid3"/>
+    </g></g></g>
+    <g id="pe3" transform="translate(300,220)"><g class="scale">
+        <rect transform="translate(5,4)" x="-24" y="-24" height="48" width="48" class="shadow"/><g class="rot">
+        <rect x="-24" y="-24" height="48" width="48" class="piece"/>
+        <text y="8" id="pte3"></text>
+        <image transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0" id="pie3"/>
+    </g></g></g>
+
+    <g id="pa4" transform="translate(100,270)"><g class="scale">
+        <rect transform="translate(5,4)" x="-24" y="-24" height="48" width="48" class="shadow"/><g class="rot">
+        <rect x="-24" y="-24" height="48" width="48" class="piece"/>
+        <text y="8" id="pta4"></text>
+        <image transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0" id="pia4"/>
+    </g></g></g>
+    <g id="pb4" transform="translate(150,270)"><g class="scale">
+        <rect transform="translate(5,4)" x="-24" y="-24" height="48" width="48" class="shadow"/><g class="rot">
+        <rect x="-24" y="-24" height="48" width="48" class="piece"/>
+        <text y="8" id="ptb4"></text>
+        <image transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0" id="pib4"/>
+    </g></g></g>
+    <g id="pc4" transform="translate(200,270)"><g class="scale">
+        <rect transform="translate(5,4)" x="-24" y="-24" height="48" width="48" class="shadow"/><g class="rot">
+        <rect x="-24" y="-24" height="48" width="48" class="piece"/>
+        <text y="8" id="ptc4"></text>
+        <image transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0" id="pic4"/>
+    </g></g></g>
+    <g id="pd4" transform="translate(250,270)"><g class="scale">
+        <rect transform="translate(5,4)" x="-24" y="-24" height="48" width="48" class="shadow"/><g class="rot">
+        <rect x="-24" y="-24" height="48" width="48" class="piece"/>
+        <text y="8" id="ptd4"></text>
+        <image transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0" id="pid4"/>
+    </g></g></g>
+    <g id="pe4" transform="translate(300,270)"><g class="scale">
+        <rect transform="translate(5,4)" x="-24" y="-24" height="48" width="48" class="shadow"/><g class="rot">
+        <rect x="-24" y="-24" height="48" width="48" class="piece"/>
+        <text y="8" id="pte4"></text>
+        <image transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0" id="pie4"/>
+    </g></g></g>
+
+    <g id="pa5" transform="translate(100,320)"><g class="scale">
+        <rect transform="translate(5,4)" x="-24" y="-24" height="48" width="48" class="shadow"/><g class="rot">
+        <rect x="-24" y="-24" height="48" width="48" class="piece"/>
+        <text y="8" id="pta5"></text>
+        <image transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0" id="pia5"/>
+    </g></g></g>
+    <g id="pb5" transform="translate(150,320)"><g class="scale">
+        <rect transform="translate(5,4)" x="-24" y="-24" height="48" width="48" class="shadow"/><g class="rot">
+        <rect x="-24" y="-24" height="48" width="48" class="piece"/>
+        <text y="8" id="ptb5"></text>
+        <image transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0" id="pib5"/>
+    </g></g></g>
+    <g id="pc5" transform="translate(200,320)"><g class="scale">
+        <rect transform="translate(5,4)" x="-24" y="-24" height="48" width="48" class="shadow"/><g class="rot">
+        <rect x="-24" y="-24" height="48" width="48" class="piece"/>
+        <text y="8" id="ptc5"></text>
+        <image transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0" id="pic5"/>
+    </g></g></g>
+    <g id="pd5" transform="translate(250,320)"><g class="scale">
+        <rect transform="translate(5,4)" x="-24" y="-24" height="48" width="48" class="shadow"/><g class="rot">
+        <rect x="-24" y="-24" height="48" width="48" class="piece"/>
+        <text y="8" id="ptd5"></text>
+        <image transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0" id="pid5"/>
+    </g></g></g>
+    <g id="pe5" transform="translate(300,320)"><g class="scale">
+        <rect transform="translate(5,4)" x="-24" y="-24" height="48" width="48" class="shadow"/><g class="rot">
+        <rect x="-24" y="-24" height="48" width="48" class="piece"/>
+        <text y="8" id="pte5"></text>
+        <image transform="translate(-24,-24)" xlink:href="" width="48" height="48" x="0" y="0" id="pie5"/>
     </g></g></g>
 
 </g>

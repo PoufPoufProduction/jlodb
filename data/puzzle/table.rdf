@@ -7,18 +7,20 @@
 	
 	<rdf:Description>
         <dct:identifier>p01</dct:identifier>
-        <dct:title xml:lang="fr-FR">Compléter une grille en recopiant sa partie gauche, avec 1er élément et sans leurre [animaux noto].</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/bluecarpet01.svg","class":"exup","init":{"area":[592,50,592,350]},"url":"desktop/puzzle/table5x5.svg","txt":{"ta":"A","tb":"B","tc":"C","td":"D","te":"E","t1":"1","t2":"2","t3":"3","t4":"4","t5":"5"},"scale":1.2,"values":{"pa1":"ext/noto/svg/emoji_u1f40a.svg"}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Complétez[/b] la grille en [red]recopiant[/red] la partie gauche."]]></dct:description>
+        <dct:title xml:lang="fr-FR">Placer des bateaux dans un tableau 5x5 selon les références fournies.</dct:title>
+        <dct:description><![CDATA["gg":6,"background":"res/img/background/landscape/bluecarpet01.svg","class":"exup","init":{"pos":[[400,100],[500,100],[400,200],[500,200],[400,300],[500,300]]},"magnetic":[[50,70,50,50,6,6]],"url":"desktop/puzzle/table5x5.svg","same":[["pa1","pb1","pc1","pd1","pe1","pa2","pb2","pc2","pd2","pe2","pa3","pb3","pc3","pd3","pe3","pa4","pb4","pc4","pd4","pe4","pa5","pb5","pc5","pd5","pe5"]],"scale":1.2,"gen":"function($this,_s,_i){ var d=['u1f6a2','u1f6f3','u1f6e5','u1f6a4','u1f6a3_1f3fe_200d_2642'],v={},t=[],title=''; for (var i=0; i<25;i++) { t.push(i); } for (var i=0; i<25;i++) { t.sort(function(){return (Math.random()<0.5);} ); } for (var i=0; i<_s.gg;i++) { var x=t[i]%5,y=Math.floor(t[i]/5); v['p'+String.fromCharCode(97+x)+(y+1)]='ext/noto/svg/emoji_'+d[Math.floor(Math.random()*d.length)]+'.svg'; title+=' '+String.fromCharCode(65+x)+(y+1)} return {'values':v,'txt':{'title':title}}; }"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Bataille navale[/b] : [b]placez[/b] vos bateaux suivant les références ci-dessus."]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>mathematics</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>p01</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
-        <dct:source>res/img/desktop/puzzle/table5x5.svg,res/img/background/landscape/bluecarpet01.svg</dct:source>
+        <dct:source>res/img/desktop/puzzle/table5x5.svg,res/img/background/landscape/bluecarpet01.svg,ext/noto/svg/emoji_u1f6a2.svg,ext/noto/svg/emoji_u1f6f3.svg,ext/noto/svg/emoji_u1f6e5.svg,ext/noto/svg/emoji_u1f6a4.svg,ext/noto/svg/emoji_u1f6a3_1f3fe_200d_2642.svg</dct:source>
     </rdf:Description>
-		 
+    
+    
+	 
     <!-- IDENTIFIER AS IN SYMETRY.RDF -->
          
     <rdf:Description>
