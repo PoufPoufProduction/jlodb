@@ -369,13 +369,14 @@
                                 html+='onmousedown=\'$(this).closest(".calc").calc("cell",this);\' ';
                                 html+='ontouchstart=\'$(this).closest(".calc").calc("cell",this);event.preventDefault();\' ';
                             }
-                            html+='><div>'+helpers.content($this,i,j)+'</div></div>';
+                            html+='><div></div></div>';
                             $board.append(html);
                         }
                         width+=helpers.value($this,(i+1),0,"width",2);
                     }
                     height+=helpers.value($this,0,(j+1),"height",1.2);
                 }
+				helpers.update($this);
 				
 				// PANEL PREPARE
 				$this.find("#panel").css("top", settings.pospanel[1]+"%").css("left", settings.pospanel[0]+"%");

@@ -268,74 +268,80 @@
         <dct:source>res/img/desktop/slider01.svg</dct:source>
     </rdf:Description>
 
+	<!-- DIAGRAM -->
 
     <rdf:Description>
-        <dct:identifier>t11001</dct:identifier>
+        <dct:identifier>ch110</dct:identifier>
         <dct:title xml:lang="fr-FR">Créer un diagramme à partir de données numériques (1 colonne de 0 à 10) avec légende de bas de page.</dct:title>
-        <dct:description><![CDATA["url":"res/img/desktop/table01.svg","cursor":[{"cid":"cursor1","init":[120,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[120,100,120,400]}],"gen":"function() { var x=Math.floor(Math.random()*11); return ([x,[\\\"r1\\\"+(x<10?\\\"0\\\":\\\"\\\")+x.toString()],{\\\"l1\\\":x}]); }","evaluation":[5,0.5],"number":8]]></dct:description>
+        <dct:description><![CDATA["url":"res/img/desktop/where/table01.svg","cursor":[{"cid":"cursor1","init":[120,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[120,100,120,400]}],"gen":"function() { var x=Math.floor(Math.random()*11); return ([x,[\\\"r1\\\"+(x<10?\\\"0\\\":\\\"\\\")+x.toString()],{\\\"l1\\\":x}]); }","evaluation":[5,0.5],"number":8]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Dans un repère de 0 à 10, positionner correctement la colonne"]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>t61002</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
-        <dct:source>res/img/desktop/table01.svg</dct:source>
+        <dct:alternative>ch610</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP,CE1</dct:coverage>
+		<dct:isPartOf>diagram</dct:isPartOf>
+        <dct:source>res/img/desktop/where/table01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>t31001</dct:identifier>
+        <dct:identifier>ch310</dct:identifier>
         <dct:title xml:lang="fr-FR">Créer un diagramme à partir de données numériques (3 colonnes de 0 à 10) avec légende de bas de page.</dct:title>
-        <dct:description><![CDATA["url":"res/img/desktop/table01.svg","cursor":[{"cid":"cursor1","init":[120,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[120,100,120,400]},{"cid":"cursor2","init":[200,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[200,100,200,400]},{"cid":"cursor3","init":[280,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[280,100,280,400]}],"gen":"function() { var ret=[],l={},s=\\\"[\\\"; for (var i=0;i<3;i++) { var x=Math.floor(Math.random()*11); if (i) { s+=\\\",\\\"; } s+=x.toString(); ret.push(\\\"r\\\"+(i+1).toString()+(x<10?\\\"0\\\":\\\"\\\")+x.toString()); l[\\\"l\\\"+(i+1).toString()]=x;} s+=\\\"]\\\"; return [s,ret,l]; }","evaluation":[5,0.5],"number":4]]></dct:description>
+        <dct:description><![CDATA["url":"res/img/desktop/where/table01.svg","cursor":[{"cid":"cursor1","init":[120,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[120,100,120,400]},{"cid":"cursor2","init":[200,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[200,100,200,400]},{"cid":"cursor3","init":[280,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[280,100,280,400]}],"gen":"function() { var ret=[],l={},s=\\\"[\\\"; for (var i=0;i<3;i++) { var x=Math.floor(Math.random()*11); if (i) { s+=\\\",\\\"; } s+=x.toString(); ret.push(\\\"r\\\"+(i+1).toString()+(x<10?\\\"0\\\":\\\"\\\")+x.toString()); l[\\\"l\\\"+(i+1).toString()]=x;} s+=\\\"]\\\"; return [s,ret,l]; }","evaluation":[5,0.5],"number":4]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Dans un repère de 0 à 10, positionner correctement les différentes colonnes"]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>t61002</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
-        <dct:source>res/img/desktop/table01.svg</dct:source>
+        <dct:alternative>ch610</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP,CE1</dct:coverage>
+		<dct:isPartOf>diagram</dct:isPartOf>
+        <dct:source>res/img/desktop/where/table01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>t61001</dct:identifier>
+        <dct:identifier>ch6l10</dct:identifier>
         <dct:title xml:lang="fr-FR">Créer un diagramme à partir de données numériques (6 colonnes de 0 à 10) avec légende de bas de page.</dct:title>
-        <dct:description><![CDATA["url":"res/img/desktop/table01.svg","cursor":[{"cid":"cursor1","init":[120,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[120,100,120,400]},{"cid":"cursor2","init":[200,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[200,100,200,400]},{"cid":"cursor3","init":[280,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[280,100,280,400]},{"cid":"cursor4","init":[360,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[360,100,360,400]},{"cid":"cursor5","init":[440,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[440,100,440,400]},{"cid":"cursor6","init":[520,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[520,100,520,400]}],"gen":"function() { var ret=[],l={},s=\\\"[\\\"; for (var i=0;i<6;i++) { var x=Math.floor(Math.random()*11); if (i) { s+=\\\",\\\"; } s+=x.toString(); ret.push(\\\"r\\\"+(i+1).toString()+(x<10?\\\"0\\\":\\\"\\\")+x.toString()); l[\\\"l\\\"+(i+1).toString()]=x;} s+=\\\"]\\\"; return [s,ret,l]; }","evaluation":[5,0.5],"number":2]]></dct:description>
+        <dct:description><![CDATA["url":"res/img/desktop/where/table01.svg","cursor":[{"cid":"cursor1","init":[120,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[120,100,120,400]},{"cid":"cursor2","init":[200,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[200,100,200,400]},{"cid":"cursor3","init":[280,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[280,100,280,400]},{"cid":"cursor4","init":[360,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[360,100,360,400]},{"cid":"cursor5","init":[440,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[440,100,440,400]},{"cid":"cursor6","init":[520,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[520,100,520,400]}],"gen":"function() { var ret=[],l={},s=\\\"[\\\"; for (var i=0;i<6;i++) { var x=Math.floor(Math.random()*11); if (i) { s+=\\\",\\\"; } s+=x.toString(); ret.push(\\\"r\\\"+(i+1).toString()+(x<10?\\\"0\\\":\\\"\\\")+x.toString()); l[\\\"l\\\"+(i+1).toString()]=x;} s+=\\\"]\\\"; return [s,ret,l]; }","evaluation":[5,0.5],"number":2]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Dans un repère de 0 à 10, positionner correctement les différentes colonnes"]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>t61002</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
-        <dct:source>res/img/desktop/table01.svg</dct:source>
+        <dct:alternative>ch610</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP,CE1</dct:coverage>
+		<dct:isPartOf>diagram</dct:isPartOf>
+        <dct:source>res/img/desktop/where/table01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>t61002</dct:identifier>
+        <dct:identifier>ch610</dct:identifier>
         <dct:title xml:lang="fr-FR">Créer un diagramme à partir de données numériques (6 colonnes de 0 à 10).</dct:title>
-        <dct:description><![CDATA["url":"res/img/desktop/table01.svg","cursor":[{"cid":"cursor1","init":[120,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[120,100,120,400]},{"cid":"cursor2","init":[200,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[200,100,200,400]},{"cid":"cursor3","init":[280,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[280,100,280,400]},{"cid":"cursor4","init":[360,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[360,100,360,400]},{"cid":"cursor5","init":[440,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[440,100,440,400]},{"cid":"cursor6","init":[520,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[520,100,520,400]}],"gen":"function() { var ret=[],l={},s=\\\"[\\\"; for (var i=0;i<6;i++) { var x=Math.floor(Math.random()*11); if (i) { s+=\\\",\\\"; } s+=x.toString(); ret.push(\\\"r\\\"+(i+1).toString()+(x<10?\\\"0\\\":\\\"\\\")+x.toString()); l[\\\"l\\\"+(i+1).toString()]=x;} s+=\\\"]\\\"; return [s,ret]; }","evaluation":[5,0.5],"number":2]]></dct:description>
+        <dct:description><![CDATA["url":"res/img/desktop/where/table01.svg","cursor":[{"cid":"cursor1","init":[120,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[120,100,120,400]},{"cid":"cursor2","init":[200,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[200,100,200,400]},{"cid":"cursor3","init":[280,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[280,100,280,400]},{"cid":"cursor4","init":[360,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[360,100,360,400]},{"cid":"cursor5","init":[440,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[440,100,440,400]},{"cid":"cursor6","init":[520,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[520,100,520,400]}],"gen":"function() { var ret=[],l={},s=\\\"[\\\"; for (var i=0;i<6;i++) { var x=Math.floor(Math.random()*11); if (i) { s+=\\\",\\\"; } s+=x.toString(); ret.push(\\\"r\\\"+(i+1).toString()+(x<10?\\\"0\\\":\\\"\\\")+x.toString()); l[\\\"l\\\"+(i+1).toString()]=x;} s+=\\\"]\\\"; return [s,ret]; }","evaluation":[5,0.5],"number":2]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Dans un repère de 0 à 10, positionner correctement les différentes colonnes"]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>t61002</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
-        <dct:source>res/img/desktop/table01.svg</dct:source>
+        <dct:alternative>ch610</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CP,CE1</dct:coverage>
+		<dct:isPartOf>diagram</dct:isPartOf>
+        <dct:source>res/img/desktop/where/table01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>t6n501</dct:identifier>
+        <dct:identifier>ch6n5</dct:identifier>
         <dct:title xml:lang="fr-FR">Créer un diagramme à partir de données numériques (6 colonnes de -5 à 5).</dct:title>
-        <dct:description><![CDATA["url":"res/img/desktop/table02.svg","cursor":[{"cid":"cursor1","init":[120,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[120,100,120,400],"onmove":"function($this,_root,_args){var vTop=_args[1]>250?250:_args[1],vHeight=Math.abs(_args[1]-250),vColor=_args[1]>250?\\\"red\\\":\\\"limegreen\\\";$(\\\"#bar1\\\",_root).attr(\\\"transform\\\",\\\"translate(120,\\\"+vTop+\\\")\\\").attr(\\\"height\\\",vHeight).css(\\\"fill\\\",vColor);}"},{"cid":"cursor2","init":[200,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[200,100,200,400],"onmove":"function($this,_root,_args){var vTop=_args[1]>250?250:_args[1],vHeight=Math.abs(_args[1]-250),vColor=_args[1]>250?\\\"red\\\":\\\"limegreen\\\";$(\\\"#bar2\\\",_root).attr(\\\"transform\\\",\\\"translate(200,\\\"+vTop+\\\")\\\").attr(\\\"height\\\",vHeight).css(\\\"fill\\\",vColor);}"},{"cid":"cursor3","init":[280,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[280,100,280,400],"onmove":"function($this,_root,_args){var vTop=_args[1]>250?250:_args[1],vHeight=Math.abs(_args[1]-250),vColor=_args[1]>250?\\\"red\\\":\\\"limegreen\\\";$(\\\"#bar3\\\",_root).attr(\\\"transform\\\",\\\"translate(280,\\\"+vTop+\\\")\\\").attr(\\\"height\\\",vHeight).css(\\\"fill\\\",vColor);}"},{"cid":"cursor4","init":[360,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[360,100,360,400],"onmove":"function($this,_root,_args){var vTop=_args[1]>250?250:_args[1],vHeight=Math.abs(_args[1]-250),vColor=_args[1]>250?\\\"red\\\":\\\"limegreen\\\";$(\\\"#bar4\\\",_root).attr(\\\"transform\\\",\\\"translate(360,\\\"+vTop+\\\")\\\").attr(\\\"height\\\",vHeight).css(\\\"fill\\\",vColor);}"},{"cid":"cursor5","init":[440,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[440,100,440,400],"onmove":"function($this,_root,_args){var vTop=_args[1]>250?250:_args[1],vHeight=Math.abs(_args[1]-250),vColor=_args[1]>250?\\\"red\\\":\\\"limegreen\\\";$(\\\"#bar5\\\",_root).attr(\\\"transform\\\",\\\"translate(440,\\\"+vTop+\\\")\\\").attr(\\\"height\\\",vHeight).css(\\\"fill\\\",vColor);}"},{"cid":"cursor6","init":[520,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[520,100,520,400],"onmove":"function($this,_root,_args){var vTop=_args[1]>250?250:_args[1],vHeight=Math.abs(_args[1]-250),vColor=_args[1]>250?\\\"red\\\":\\\"limegreen\\\";$(\\\"#bar6\\\",_root).attr(\\\"transform\\\",\\\"translate(520,\\\"+vTop+\\\")\\\").attr(\\\"height\\\",vHeight).css(\\\"fill\\\",vColor);}"}],"gen":"function() { var ret=[],l={},s=\\\"[\\\"; for (var i=0;i<6;i++) { var x=Math.floor(Math.random()*11); if (i) { s+=\\\",\\\"; } s+=(x-5).toString(); ret.push(\\\"r\\\"+(i+1).toString()+(x<10?\\\"0\\\":\\\"\\\")+x.toString()); l[\\\"l\\\"+(i+1).toString()]=x-5;} s+=\\\"]\\\"; return [s,ret,l]; }","evaluation":[5,0.5],"number":5]]></dct:description>
+        <dct:description><![CDATA["url":"res/img/desktop/where/table02.svg","cursor":[{"cid":"cursor1","init":[120,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[120,100,120,400],"onmove":"function($this,_root,_args){var vTop=_args[1]>250?250:_args[1],vHeight=Math.abs(_args[1]-250),vColor=_args[1]>250?\\\"red\\\":\\\"limegreen\\\";$(\\\"#bar1\\\",_root).attr(\\\"transform\\\",\\\"translate(120,\\\"+vTop+\\\")\\\").attr(\\\"height\\\",vHeight).css(\\\"fill\\\",vColor);}"},{"cid":"cursor2","init":[200,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[200,100,200,400],"onmove":"function($this,_root,_args){var vTop=_args[1]>250?250:_args[1],vHeight=Math.abs(_args[1]-250),vColor=_args[1]>250?\\\"red\\\":\\\"limegreen\\\";$(\\\"#bar2\\\",_root).attr(\\\"transform\\\",\\\"translate(200,\\\"+vTop+\\\")\\\").attr(\\\"height\\\",vHeight).css(\\\"fill\\\",vColor);}"},{"cid":"cursor3","init":[280,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[280,100,280,400],"onmove":"function($this,_root,_args){var vTop=_args[1]>250?250:_args[1],vHeight=Math.abs(_args[1]-250),vColor=_args[1]>250?\\\"red\\\":\\\"limegreen\\\";$(\\\"#bar3\\\",_root).attr(\\\"transform\\\",\\\"translate(280,\\\"+vTop+\\\")\\\").attr(\\\"height\\\",vHeight).css(\\\"fill\\\",vColor);}"},{"cid":"cursor4","init":[360,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[360,100,360,400],"onmove":"function($this,_root,_args){var vTop=_args[1]>250?250:_args[1],vHeight=Math.abs(_args[1]-250),vColor=_args[1]>250?\\\"red\\\":\\\"limegreen\\\";$(\\\"#bar4\\\",_root).attr(\\\"transform\\\",\\\"translate(360,\\\"+vTop+\\\")\\\").attr(\\\"height\\\",vHeight).css(\\\"fill\\\",vColor);}"},{"cid":"cursor5","init":[440,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[440,100,440,400],"onmove":"function($this,_root,_args){var vTop=_args[1]>250?250:_args[1],vHeight=Math.abs(_args[1]-250),vColor=_args[1]>250?\\\"red\\\":\\\"limegreen\\\";$(\\\"#bar5\\\",_root).attr(\\\"transform\\\",\\\"translate(440,\\\"+vTop+\\\")\\\").attr(\\\"height\\\",vHeight).css(\\\"fill\\\",vColor);}"},{"cid":"cursor6","init":[520,100],"constraint":[-1,30],"steps":[0,1,2,4],"boundaries":[520,100,520,400],"onmove":"function($this,_root,_args){var vTop=_args[1]>250?250:_args[1],vHeight=Math.abs(_args[1]-250),vColor=_args[1]>250?\\\"red\\\":\\\"limegreen\\\";$(\\\"#bar6\\\",_root).attr(\\\"transform\\\",\\\"translate(520,\\\"+vTop+\\\")\\\").attr(\\\"height\\\",vHeight).css(\\\"fill\\\",vColor);}"}],"gen":"function() { var ret=[],l={},s=\\\"[\\\"; for (var i=0;i<6;i++) { var x=Math.floor(Math.random()*11); if (i) { s+=\\\",\\\"; } s+=(x-5).toString(); ret.push(\\\"r\\\"+(i+1).toString()+(x<10?\\\"0\\\":\\\"\\\")+x.toString()); l[\\\"l\\\"+(i+1).toString()]=x-5;} s+=\\\"]\\\"; return [s,ret,l]; }","evaluation":[5,0.5],"number":5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"Dans un repère de -5 à 5, positionner correctement les différentes colonnes"]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>negative</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>t6n501</dct:alternative>
-        <dct:source>res/img/desktop/table02.svg</dct:source>
+        <dct:alternative>ch6n5</dct:alternative>
+		<dct:isPartOf>diagram</dct:isPartOf>
+        <dct:source>res/img/desktop/where/table02.svg</dct:source>
     </rdf:Description>
 
     <!-- tools01.svg -->
