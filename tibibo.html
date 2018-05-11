@@ -54,7 +54,7 @@
 #bocontent>div              { width:100%; display:none; }
 
 #boawards                   { position:absolute;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.4); display:none;z-index:3; }
-#boawards>div               { background-color:rgba(255,255,240,0.9); width:92%;height:73%;margin-top:7%;margin-left:4%;border:.1em solid white; }
+#boawards>div               { background-color:rgba(255,255,240,0.9); width:92%;height:80%;margin-top:7%;margin-left:4%;border:.1em solid white; }
 #boawards #boawardsedit     { font-size:0.5em; height:3em; background-color:#9B6;padding:.1em 0; }
 #boawards #boawardsedit>*   { float:left; margin-left:1%; height:100%; }
 #boawards #img              { font-size:3em; background-image:url("res/img/icon/tab/tab00.svg"); border-radius:.5em; overflow:visible; background-color:red; cursor:pointer; }
@@ -69,9 +69,8 @@
 #boawards .goal .max        { float:left; background-color:rgba(255,255,255,0.4); width:12%; }
 #boawards #add              { font-size:3em; cursor:pointer; }
 
-#boawardscontent            { overflow-y:auto; height:100%; width:100%; }
-#boawardscontent:after		{ content:" "; }
-#boawardscontent.small      { height:80%; }
+#boawardscontent            { height:90%; width:100%; overflow:auto; }
+#boawardscontent.small      { height:70%; }
 #boawardscontent .boawelt   { font-size:1.4em; float:left; width:5em; height:1em; background-color:rgba(150,150,150,0.6); margin:.05em; padding:.05em 0; position:relative; }
 #boawardscontent .boawelt.new { background-color:rgba(255,150,150,0.6); cursor:help; }
 #boawardscontent .boawelt.done { background-color:rgba(150,220,255,0.6); }
@@ -96,6 +95,10 @@
 #boawardscontent .anim12    { position:absolute; font-size:2em; }
 #boawardscontent .fire1     { top:-.3em; left:-.3em; }
 #boawardscontent .fire2     { top:-.2em; left:-.2em; }
+
+#boawardsnav				{ height:10%; width:100%; font-size:0.5em;  }
+#boawardsnav>div			{ float:left; cursor:pointer; margin:0.1em 0.5em; width:1.4em; height:1.4em; text-align:center; background-color:gray; color:white; border-radius:.2em; }
+#boawardsnav>div.s			{ background-color:red; }
 
 #boerror                    { position:absolute; top:72%; font-size:.7em; display:none; text-align:center;  }
 #bomain .redline            { background-color:red; width:102%; color:white; opacity:0.9; height:1.2em; }
@@ -165,6 +168,8 @@
 
 
 .bostrong            { font-size:1.5em; font-weight:bold; text-align:center; }
+
+#bomain #congrats			{ position:absolute; top:1%; left:30%; font-size:1em; background-color:rgba(20,200,50,0.8); color:white; width:75%; border:.1em solid white; z-index:3; border-radius:.5em; text-align:center; font-weight:bold; display:none; }
 
 
 
@@ -328,6 +333,7 @@ var tibibo = {
                  "res/img/svginventoryicons/award/medal03.svg",
                  "res/img/svginventoryicons/award/medal04.svg"],
         init    : {color:0, icon:0, label:"description", type:[1,0,0,0], value:[0,0,0,0] },
+		pageid	: 0,
         current : 0,
         selected: -1,
         list    : [],
@@ -445,8 +451,11 @@ var tibibo = {
         display:function() {
             tibibo.book.data.awards =
                 tibibo.awards.state(tibibo.book.data.nav, tibibo.book.data.state, tibibo.book.data.awards);
-            $("#boawardscontent").html("");
-            for (var i=0; i<tibibo.awards.list.length; i++) {
+			if (tibibo.awards.pageid*10>=tibibo.awards.list.length) { tibibo.awards.pageid = 0; }
+			
+			// AWARDS
+			$("#boawardscontent").html("");
+            for (var i=tibibo.awards.pageid*10; i<Math.min(tibibo.awards.pageid*10+10,tibibo.awards.list.length); i++) {
                 var award   = tibibo.awards.list[i];
                 var $elt    = $("<div class='boawelt' id='a"+i+"'></div>");
                 var $img    = $("<div class='img icon'></div>")
@@ -467,12 +476,16 @@ var tibibo = {
                           "</div></div>");
                         $slider.append("<div class='icon'><img src='res/img/default/white/"+
                             (award.type[j]==1?"settings":"star")+".svg' alt=''/></div>");
-                        $slider.bind("touchstart mousedown", function(_e) {
-                            tibibo.book.nodeid=$(this).attr("id").substr(1);
-                            tibibo.book.display();
-                            tibibo.awards.close();
-                            _e.preventDefault();
-                        });
+							
+						if (value<max) {
+							$slider.bind("touchstart mousedown", function(_e) {
+								tibibo.book.nodeid=$(this).attr("id").substr(1);
+								tibibo.book.display();
+								tibibo.awards.close();
+								_e.preventDefault();
+							});
+						}
+						
                         $slider.find(".bar").css("width",(100*Math.min(value,max)/max)+"%");
                         $prog.append($slider);
                         if (value<max) { done = false; }
@@ -503,7 +516,16 @@ var tibibo = {
                         $(this).find(".anim12").show().find("div").addClass("running");
                         setTimeout(function(){
                             $("#boawards .anim12").hide().find("div").removeClass("running");
+							
+							$("#bomain #congrats")
+								.html(tibibo.locale.congrats[Math.floor(Math.random()*tibibo.locale.congrats.length)])
+								.css("left","100%").show()
+								.animate({left:"30%"},400);
+							setTimeout(function() {
+								$("#bomain #congrats").animate({left:"100%"},400);
+							}, 1000);
                         }, 1000);
+						
                         $(this).unbind("touchstart mousedown");
                         _event.preventDefault();
                         _event.stopPropagation();
@@ -544,6 +566,24 @@ var tibibo = {
                 
                 $("#boawardscontent").append($elt);
             }
+			
+			// NAVIGATION
+			$("#boawardsnav").html("");
+			if (tibibo.awards.list.length>10) {
+				var nbPages = Math.ceil(tibibo.awards.list.length/10);
+				for (var i=0; i<nbPages; i++) {
+					var $nav = $("<div id='nav"+i+"'>"+i+"</div>");
+					if (i==tibibo.awards.pageid) { $nav.addClass("s"); }
+					
+                    $nav.bind("touchstart mousedown", function(_event) {
+						tibibo.awards.pageid = $(this).attr("id").substr(3);
+						tibibo.awards.display();
+                        _event.preventDefault();
+                    });
+					$("#boawardsnav").append($nav);
+				}
+			}
+			
         },
         close: function() { $("#boawards").hide();
         },
@@ -1236,8 +1276,8 @@ $(window).ready(function() {
                     <img src="res/img/default/white/add.svg" alt=""/></div>
                  
             </div>
-            <div id="boawardscontent">
-            </div>
+            <div id="boawardscontent"></div>
+			<div id="boawardsnav"></div>
         </div>
         
         </div>
@@ -1303,6 +1343,8 @@ $(window).ready(function() {
             
         </div>
     </div>
+	
+	<div id="congrats"></div>
     
     <div id="waiting" class="anim12"><div><img src="res/img/default/anim/waiting_red.svg"/></div></div>
     <div id="score"></div>
