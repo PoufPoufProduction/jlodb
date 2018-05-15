@@ -132,7 +132,9 @@
 
 #bofooter                   { clear:both; background-color:#aaa; width:100%; height:5.2em; color:white;}
 #bofooter>div               { font-size:4.2em; float:left; margin:.1em; cursor:pointer; border-radius:.1em; display:none; }
-#bofooter #olist            { font-size:3.7em; height:1em; width:1em; border:.1em solid white; padding:0; background-color:#dd5;position:relative; float:left;  }
+#bofooter #oshuffle			{ font-size:3.7em; float:left; height:1em; width:1em; border:.1em solid white; background-color:#5b6; }
+#bofooter #oshuffle.d		{ opacity:0.5; cursor:auto; background-color:#888; }
+#bofooter #olist            { font-size:3.7em; height:1em; width:1em; border:.1em solid white; padding:0; background-color:#dd5; position:relative; float:left;  }
 #bofooter #olist .value     { position:absolute;text-align:center;font-size:.8em;width:1.2em;height:1.2em;top:0;z-index:2; }
 #bofooter #olist .slide     { background-color:#5b6;position:absolute;width:1em;height:1em;top:1em;z-index:1; }
 #bofooter #oquit            { float:right; margin-right:.2em; }
@@ -309,18 +311,6 @@ var tibibo = {
             };
         }
     },
-    run : function(_args) {
-        $("#waiting").show().find("div").addClass("running");
-        $("#activity").jlodb({
-            onstart: function($this) {
-                $("#bocontent").hide(); $this.parent().show();
-                $("#waiting").hide().find("div").removeClass("running"); },
-            onfinish:function($this, _hide) {
-                if (_hide) { $("#bocontent").show(); $this.parent().hide(); }
-                $("#score").score('hide'); }},
-          _args);
-    },
-    
     awards: {
         colors: ["#FFF","#F00","#0F0","#00F","#0FF","#F0F","#FF0","#800","#080","#008","#0F8","#08F","#80F","#F08","#F80","#8F0"],
         icons: [ "res/img/svginventoryicons/award/diploma01.svg",
@@ -616,6 +606,73 @@ var tibibo = {
             $("#boawards").css("opacity",0).show().animate({opacity:1},500);
         }
     },
+	
+	process: {
+		shufflemode: false,
+		onupdate:function(_state) {
+			if (!user.settings.devmode) {
+                if (!tibibo.book.data.state) { tibibo.book.data.state={}; }
+                tibibo.book.data.state[tibibo.book.nodeid] = _state;
+                if (user.islogged()) {
+                    user.getJSON("mods/tibibo/api/tibibo.php",
+                        { action:"upd",value:_state, book:tibibo.args.id, id:tibibo.book.nodeid}, "",
+                            function(_data) { }); }
+				tibibo.book.progress();
+			}
+		},
+		launch: function(_args, _shuffle) {
+			tibibo.process.shufflemode = _shuffle;
+			$("#waiting").show().find("div").addClass("running");
+            $("#activity").jlodb({
+                standalone: tibibo.standalone,
+                onstart:    function($this) {
+                    if ($("#bopage").is(":visible")) {
+                        $this.parent().css("opacity",0)
+                             .animate({opacity:1},500, function() { $("#bopage").hide(); }).show();
+                    }
+                    $("#waiting").hide().find("div").removeClass("running"); },
+                onfinish:   function($this, _hide) {
+                    if (_hide) { $this.parent().hide(); $("#bopage").show(); }
+                    $("#score").score('hide'); },
+                onscore:    function($this, _ret) {
+                    var isnext = false;
+                    if (_ret.score>=2) {
+						if (tibibo.process.shufflemode) {
+							var s = tibibo.book.data.state[tibibo.book.nodeid];
+							var p = s.indexOf(".");
+							s = s.substr(0, p)+_ret.score.toString()+s.substr(p+1);
+							if (p<s.length-1) { s = s.substr(0, p+1)+"."+s.substr(p+2); }
+							tibibo.process.onupdate(s);
+							isnext = (tibibo.process.shuffle.next()!=0);
+						}
+						else { isnext = $("#boframe").menu('score', _ret.score).menu('more'); }
+					}
+                    $("#score #next").toggle(isnext);
+                    $("#score").score('show',_ret.score);
+                    $("#scoreaward").toggle(tibibo.awards.check());
+                    return true; } },_args);
+		},
+		shuffle: {
+			next: function() {
+				var ret = 0, exs=[];
+				for (var i in tibibo.book.data.state) {
+					var s  = tibibo.book.data.state[i];
+					var ex = s.indexOf(".");
+					if (ex!=-1 && tibibo.book.data.nav.getnode(i)) {
+						exs.push([i, tibibo.book.data.nav.getnode(i).description.split(",")[ex]]);
+					}
+				}
+				return exs.length?exs[Math.floor(Math.random()*exs.length)]:0;
+			},
+			run: function() {
+				var x=tibibo.process.shuffle.next();
+				if (x) {
+					tibibo.book.nodeid = x[0];
+					tibibo.process.launch({id: x[1]}, true);
+				}
+			}
+		}
+	},
     
     menu:function(_list) {
         var state = "";
@@ -628,38 +685,8 @@ var tibibo = {
             large   : 8,
             list    : _list,
             state   : state,
-            onupdate: function($this, _state) {
-                if (!user.settings.devmode) {
-                    if (!tibibo.book.data.state) { tibibo.book.data.state={}; }
-                    tibibo.book.data.state[tibibo.book.nodeid] = _state;
-                    if (user.islogged()) {
-                        user.getJSON("mods/tibibo/api/tibibo.php",
-                            { action:"upd",value:_state, book:tibibo.args.id, id:tibibo.book.nodeid}, "",
-                                function(_data) { }); }
-					tibibo.book.progress();
-				}
-			},
-            onclick : function($this, _args) {
-                $("#waiting").show().find("div").addClass("running");
-                $("#activity").jlodb({
-                    standalone: tibibo.standalone,
-                    onstart:    function($this) {
-                        if ($("#bopage").is(":visible")) {
-                            $this.parent().css("opacity",0)
-                                .animate({opacity:1},500, function() { $("#bopage").hide(); }).show();
-                        }
-                        $("#waiting").hide().find("div").removeClass("running"); },
-                    onfinish:   function($this, _hide) {
-                        if (_hide) { $this.parent().hide(); $("#bopage").show(); }
-                        $("#score").score('hide'); },
-                    onscore:    function($this, _ret) {
-                        var isnext = false;
-                        if (_ret.score>=2) { isnext = $("#boframe").menu('score', _ret.score).menu('more'); }
-                        $("#score #next").toggle(isnext);
-                        $("#score").score('show',_ret.score);
-                        $("#scoreaward").toggle(tibibo.awards.check());
-                        return true; } },_args);
-                }
+            onupdate: function($this, _state) { tibibo.process.onupdate(_state); },
+            onclick : function($this, _args)  { tibibo.process.launch(_args); }
         });
     },
     node : {
@@ -922,6 +949,7 @@ var tibibo = {
             
             // FOOTER CONTENT
             $("#bofooter>div").hide();
+			$("#bofooter #oshuffle").toggleClass("d",!tibibo.process.shuffle.next()).show();
             if (tibibo.book.nodeid == tibibo.book.data.nav.root() && !tibibo.standalone ) { $("#bofooter #oquit").show(); }
             if (user.islogged() && user.settings.devmode ) {
                 if (tibibo.book.data.ownerkey==user.settings.key && !node.description.length) {
@@ -1137,13 +1165,19 @@ $(window).ready(function() {
     
     $("#score").score({
         onreload:function($this) { $('#activity').jlodb('reload'); },
-        onmenu:  function($this) { $('#activity').jlodb('close', true); },
-        onnext:  function($this) { $('#activity').jlodb('close',false);$('#boframe').menu('next'); } 
+        onmenu:  function($this) { $('#activity').jlodb('close', true); 
+                                tibibo.book.display(); },
+        onnext:  function($this) {
+			$('#activity').jlodb('close',false);
+			if (tibibo.process.shufflemode) { tibibo.process.shuffle.run(); }
+			else 							{ $('#boframe').menu('next'); }
+		} 
     });
     
     var $award = $("<div id='scoreaward' class='icon'><img src='res/img/default/white/new.svg' alt=''/></div>").insertAfter("#score #fire3").bind("touchstart mousedown", function(_event) {
         $("#score").hide();
         $(".jlodb").hide();
+		tibibo.book.display();
         $("#bopage").show();
         tibibo.awards.open();
         _event.preventDefault();
@@ -1305,6 +1339,10 @@ $(window).ready(function() {
                 <div class="slide"></div>
                 <div class="value">0</div>
             </div>
+			
+			<div id="oshuffle" onmousedown="if (!$(this).hasClass('d')) { tibibo.process.shuffle.run();}"
+                    ontouchstart="if (!$(this).hasClass('d')) { tibibo.process.shuffle.run();} event.preventDefault();">
+				<img src="res/img/default/white/run.svg" alt=""/></div>
                  
             <div id="oactions">
                 <div class="icon action" onmousedown="tibibo.node.edit.open();"
