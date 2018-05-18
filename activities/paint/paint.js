@@ -24,6 +24,7 @@
         errratio    : 1,
         effects     : true,                                     // Show effects
         background  : "",
+		dev			: false,
         debug       : true                                     // Debug mode
     };
 

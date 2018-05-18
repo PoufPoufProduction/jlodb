@@ -28,6 +28,7 @@
         background  : "",                       // Add a background
         width		: 640,						// Default with
 		locked		: false,					// The menu is locked
+		dev			: false,					// dev mode
         debug       : true                      // Debug mode
     };
 
@@ -122,7 +123,8 @@
                     settings.controls.action = settings.selected;
                     settings.controls.mask = settings.mask[settings.controls.action][0];
                 }
-                
+				
+				if (settings.dev) { $this.find("#devmode").show(); }
 
                 // MANAGE THE OBJECTIVES
                 if (settings.statement) {
@@ -227,7 +229,10 @@
                 if (complete) {
 					for (var j in settings.objectives[i]) {
 						var e = settings.objectives[i][j];
-						if (e.attr && e.attr.style) { $(e.done.svg).attr("style",e.attr.style); }
+						if (e.attr && e.attr.style) { $(e.done.svg).attr("style",e.attr.style); } else
+						if (settings.good && settings.good[e.type] && settings.good[e.type].style ) {
+							$(e.done.svg).attr("style",settings.good[e.type].style);
+						}
 					}
                     $($this.find("#objectives .icon img")[i]).attr("src", "res/img/default/icon/check_checked01.svg");
                 }
@@ -1076,6 +1081,17 @@
                     for (var i in settings.points) { helpers.check($this, settings.points[i], false); }
                     for (var i in settings.lines) { helpers.check($this, settings.lines[i], false); }
                     for (var i in settings.circles) { helpers.check($this, settings.circles[i], false); }
+                }
+            },
+            devmode: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+                if (settings.dev) {
+					var result = [];
+					for (var i in settings.lines) {
+						result.push("{\"type\":\"segment\", \"values\":["+settings.lines[i].coord.join(",")+"]}");
+					}
+                    $this.find("#devoutput textarea").val(result.join(","));
+                    $this.find("#devoutput").show();
                 }
             },
             quit: function() {

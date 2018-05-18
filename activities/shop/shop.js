@@ -14,6 +14,16 @@
         debug       : true                                      // Debug mode
     };
 
+	
+    var regExp = [
+        "\\\[br\\\]",            					"<br>",
+        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
+        "\\\[bb\\\](.+)\\\[/bb\\\]",                "<b>$1</b>",
+        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
+        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
+        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>"
+    ];
+	
     var coins = [ "cent1","cent2","cent5","cent10","cent20","cent50","coin1b","coin2","bill5","bill10","bill20","bill50","bill100" ];
     var valc = [ 0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 50, 100 ];
     var cc = [ 0.9, 1.1, 1.3, 1.1, 1.5, 2, 1.7, 2, 0.5, 0.5, 0.5, 0.5, 1];
@@ -79,6 +89,13 @@
             helpers.unbind($this);
             settings.context.onquit($this,{'status':'success','score':settings.score});
         },
+        format: function(_text) {
+            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
+                var vReg = new RegExp(regExp[i*2],"g");
+                _text = _text.replace(vReg,regExp[i*2+1]);
+            }
+            return _text;
+        },
         loader: {
             css: function($this) {
                 var settings = helpers.settings($this), cssAlreadyLoaded = false, debug = "";
@@ -117,6 +134,7 @@
 
                 if (settings.menu) {
                     $this.find("#menu .tab").hide();
+					$this.find("#menu #phelp").show();
                     for (var i in settings.menu) { $this.find("#menu #"+settings.menu[i]).show(); }
                 }
 
@@ -248,10 +266,12 @@
                 helpers.fill($this, $this.find("#pwallet>div"), settings.wallet,settings.messy);
 
                 // Locale handling
-
+				
+				
+                // LOCALE HANDLING
                 if (settings.locale) { $.each(settings.locale, function(id,value) {
                     if ($.isArray(value)) {  for (var i in value) { $this.find("#"+id).append("<p>"+value[i]+"</p>"); } }
-                    else { $this.find("#"+id).html(value); }
+                    else { $this.find("#"+id).html(helpers.format(value)); }
                 }); }
 
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
@@ -330,8 +350,9 @@
                 if (!$.isArray(text)) { text = [text]; }
 
                 // DEAL WITH THE TUTORIAL TARGET
-                $this.find("#target").hide();
-                if (typeof(data.target)!="undefined") { $this.find("#target").css("left",(data.target*1.1)+"em").show(); }
+                $this.find("#background").html("").hide();
+                if (typeof(data.background)!="undefined") {
+					$this.find("#background").html("<img src='"+data.background+"' alt=''/>").show(); }
 
                 $this.find("#pinvoice .good").removeClass("good");
                 $this.find("#pinvoice .wrong").removeClass("wrong");
@@ -369,6 +390,7 @@
                         if (data.value==Math.floor(data.value)) { vv = data.value.toString(); }
                         else                                    { vv = data.value.toFixed(2).toString(); }
                         $this.find("#pbill #billval").html(vv.replace(".",","));
+						$this.find("#pbill #payed").hide();
                         $this.find("#pbill").removeClass();
                         if (data.subtype) { $this.find("#pbill").addClass(data.subtype); }
                         helpers.fx.show($this, "bill");
@@ -649,8 +671,11 @@
             if (itsgood) {
                 $this.find("#pmoney").addClass("good");
                 $this.find("#pmoney .a").animate({opacity:0},500, function() { $(this).detach(); });
-                helpers.fx.hide($this,"money",200); helpers.fx.hide($this,"bill");
-                setTimeout(function() { helpers.next($this); },1000);
+                helpers.fx.hide($this,"money",200);
+				$this.find("#pbill #payed").show();
+				helpers.fx.hide($this,"bill",800);
+				$this.find("#background").hide();
+                setTimeout(function() { helpers.next($this); },1500);
             }
             else {
                 settings.score -= settings.errratio;

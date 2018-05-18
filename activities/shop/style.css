@@ -1,13 +1,14 @@
 .shop                            { background-image:url("../../res/img/background/landscape/shop01.svg");}
 .shop div#splashex               { background-image:url("../../res/img/banners/operation.svg"); }
-.shop div#splashex h1            { position:absolute; top:22%; left:66%; font-size:1em; color:#222;}
-.shop div#splashex #guide        { position:absolute; top:30%; left:65%; font-size:.6em; width:34%; text-align:justify; font-style:italic; }
+.shop div#splashex h1            { position:absolute; top:22%; left:66%; font-size:1.4em; color:#222;}
+.shop div#splashex #guide        { position:absolute; top:30%; left:65%; font-size:1em; width:34%; text-align:justify; font-style:italic; }
 
 .shop div#board                  { height:20em; font-size:.6em; }
 
 .shop .bar                      { position:absolute; left:0; top:0; width:100%; background-color:rgba(0,0,0,0.7); }
 .shop #header                   { top:0; height:6%; }
 .shop #footer                   { top:85%; height:15%; }
+.shop #background				{ position:absolute; left:0; top:0; width:16em; height:12em; display:none; } 
 
 .shop #people                     { position:absolute; overflow:visible;font-size:6.2em; }
 .shop #people>div                 { width:1em; height:1em; position:absolute; top:0.6em; display:none; }
@@ -15,15 +16,16 @@
 .shop .cell                         { width:5em; height:1.2em; border:1px solid #600; text-align:center; font-weight:bold; color:#600;
                                     float:right; margin-right:0.2em; background-color:rgba(255,255,255,0.2); }
 
-.shop #pbill                       { position:absolute; width:9em; height:4em; background-color:white; border:.05em solid black;
-                                     display:none; top:2%; left:2%; }
-.shop #pbill>div                    { font-size:.4em; }
+.shop #pbill                       { position:absolute; width:33%; background-color:white; border:.25em solid black;
+                                     display:none; top:2%; left:2%; font-size:.4em; }
+.shop #pbill>div                    {  }
 .shop #pbill .header                { color:#004; text-align:right; margin-right:0.5em; }
 .shop #pbill .title                 { font-size:2em; padding-left:10%; }
 .shop #pbill .date                  { font-size:0.8em; padding-left:10%; border:1px solid black; border-width:0 0 0.1em 0; margin-bottom:1em; }
 .shop #pbill .topay                 { float:left; margin-left:1em; font-size:1.5em; color:red; }
 .shop #pbill #billval               { font-size:2em;   }
 .shop #pbill .footer                { padding:1em 0 0 1em; clear:both; font-size:.8em; color:#004; }
+.shop #pbill #payed					{ background-color:red; color:white; position:absolute;top:10%;left:50%; font-size:2em; padding:0 1em; -ms-transform: rotate(20deg); -webkit-transform: rotate(20deg); transform: rotate(20deg); display:none; }
 
 .shop #pbill.bill2                  { background-color:#99CCDD; }
 .shop #pbill.bill2 .header          { color:white; font-style:italic; }
@@ -32,13 +34,13 @@
 .shop #pbill.bill2 .topay           { color:#600; }
 
 
-.shop .panel                      { display:none; background-color:rgba(0,0,0,0.8); border:.1em solid black;
+.shop .panel                      { display:none; background-color:rgba(255,255,255,0.8); border:.1em solid black;
                                     border-radius:.25em; overflow:visible; width:8em; height:8em; padding:.06em;}
 .shop .pstack                     { opacity:0; }
-.shop .wallet>div                 { overflow:visible;  width:8em; height:8em; background-color:rgba(255,200,100,0.4); border-radius:.25em; }
+.shop .wallet>div                 { overflow:visible;  width:8em; height:8em; background-color:rgba(255,255,255,0.4); border-radius:.25em; }
 .shop .wallet.over                { background-color:rgba(255,255,0,0.8); }
 
-.shop #pmoney                     { position:absolute; top:2%; left:38%;  }
+.shop #pmoney                     { position:absolute; top:2%; left:38%; background-image:url("../../res/img/background/shop/money.svg"); }
 .shop #pmoney #pvalid             { position:absolute; top:3.5em; left:3.5em; font-size:2em; width:1em; height:1em;
                                     background-color:rgba(255,255,255,0.8); border-radius:0.5em; cursor:pointer;}
 .shop .wallet.good                { background-color:rgba(0,255,0,0.8); }
@@ -49,7 +51,7 @@
                                     z-index:100;display:none;}
 
 .shop #pwallet                    { position:absolute; top:45%; left:5%;  }
-.shop #pwallet>div                { background-image:url("../../res/img/default/pattern/line03.svg"); }
+.shop #pwallet>div                { background-image:url("../../res/img/background/shop/wallet.svg"); }
 .shop .coin                       { cursor:move; top:0; left:0; position:absolute;overflow:visible;}
 .shop .bill                       { cursor:move; top:0; left:0; position:absolute;overflow:visible; }
 .shop .coin>div                       { width:1em; height:1em; cursor:move; top:0; left:0; }
@@ -68,12 +70,20 @@
 .shop #pcalculator td             { width:1.2em; overflow:hidden; cursor:pointer; text-align:center; font-weight:bold;
                             color:rgb(220,231,241); border-radius:.25em; }
 
-.shop #menu                             { font-size:2em; position:absolute; left:5%; top:88%; }
+.shop #menu                             { font-size:2em; position:absolute; left:5%; top:88%; width:90%; }
 .shop #menu>*                           { width:1em; height:1em; float:left; margin-left:.1em; }
 .shop #menu .tab                        { background-image:url("../../res/img/icon/tab/tab00.svg");
                                     background-color:rgba(0,0,0,0.8); cursor:pointer; border-radius:.5em ; overflow:visible;}
 .shop #menu .tab.s                      { background-color:rgba(255,0,0,0.8); }
-.shop #menu #target                     { position:absolute; left:0; }
+
+.shop div#help		{ width:100%; height:100%; background-color:rgba(0,0,0,0.5);position:absolute;top:0;left:0; display:none; z-index:500; }
+.shop div#help>div	{ background-color:rgba(255,255,255,0.9); width:80%; height:80%; margin:5% 10%; font-size:0.5em; border:.2em solid white; cursor:pointer; }
+.shop div#help .ehelp { width:46%; border:.1em solid black; margin:.2em; float:left; height:5em; }
+.shop div#help .ehelp .icon { float:left; font-size:5em; margin-right:.1em;  }
+.shop div#help .ehelp .label { margin-left:.5em; font-size:.7em; }
+.shop div#help #hwar { clear:both; }
+
+
 
 /* SKETCHBOOK PANEL */
 .shop #psketchbook                 { width:16em; height:16em;  background-color:white; display:none; left:2%; top:1%; position:absolute;
@@ -161,17 +171,15 @@
                                    transition: none; }
 
 /* DIALOG BUBBLES */
-.shop #bubbles                  { position:absolute; top:0; left:0%; width:30em; height:20em; color:#530;  display:none;}
-.shop #bubbles .talk            { position:absolute; border-radius: .5em; background: #FE7; opacity:0.9; display:none;
-                                  border:.1em solid #530; padding:.2em .5em; font-size:.6em; overflow:visible; cursor:pointer; }
-.shop #bubbles .talk:before     { content:""; display : block; position:absolute; font-size:.5em; background: #FE7; border:.2em solid #530; }
-.shop #bubbles .talk .content   { font-size:.8em; }
-.shop #bubbles #owner           { width:40%; min-height:15%; left:40%; top:5%; }
-.shop #bubbles #owner:before    { width:2em; height:1em;  border-radius:.5em 0 0 .5em;  left:-2em; top:8em;
-                                  border-width:.2em 0 .2em .2em; }
-.shop #bubbles #client          { width:20%; min-height:12%; left:1%; top:7%; }
-.shop #bubbles #client:before   { width:1em; height:1.5em;  border-radius:0 0 .5em .5em;  left:6em; top:8.7em;
-                                  border-width:0 .2em .2em .2em; }
-.shop #bubbles #pre div  { display:inline-block; white-space: pre;}
+.shop #bubbles                  { position:absolute; top:0; left:0%; width:30em; height:20em; color:#310;  display:none;}
+.shop #bubbles .talk            { position:absolute; border-radius: .5em; opacity:0.9; display:none;
+                                  padding:.2em .5em; font-size:.6em; cursor:pointer; }
+
+.shop #bubbles #owner           { width:14em; height:14em; font-size:1em; left:38%; top:0; background-image:url("../../res/img/asset/fx/dialog02.svg"); background-repeat:no-repeat; }
+.shop #bubbles #client          { width:10em; height:10em; left:1%; top:0; background-image:url("../../res/img/asset/fx/dialog03.svg"); background-repeat:no-repeat; font-size:1em; }
+
+.shop #bubbles #pre	{ font-size:.7em; margin-left:2em; margin-top:1em; width:80%; }
+.shop #bubbles #client #pre		{ margin-top:.5em; margin-left:1.5em; }
+.shop #bubbles #pre div  { display:inline-block; white-space: pre;  }
 
 

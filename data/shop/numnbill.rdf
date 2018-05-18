@@ -7,14 +7,15 @@
     <rdf:Description>
         <dct:identifier>001</dct:identifier>
         <dct:title xml:lang="fr-FR">Appréhender l'activité et payer une première facture [10].</dct:title>
-        <dct:description><![CDATA["wallet":[0,0,0,0,0,0,1,1,0,1,0,0,0],"menu":["wallet"],"errratio":3,"data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"dialog","text":"d2","from":"client","here":"postman"},{"type":"dialog","text":"d3","from":"owner","here":"postman"},{"type":"dialog","text":"d4","from":"client","here":"postman"},{"type":"dialog","text":"d5","from":"owner","here":"postman"},{"type":"dialog","text":"d6","from":"owner","here":"postman","target":0},{"type":"bill","here":"postman","text":"b1","subtype":"bill1","value":10},{"type":"dialog","text":"d7","from":"owner"}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Bonjour et bienvenue dans ma boutique. Je suis ravie d'avoir enfin trouvé quelqu'un pour m'aider ici. Je suis sûre qu'ensemble, nous allons faire du bon travail.","Pour votre premier jour, nous allons commencer par payer quelques factures afin que vous vous familiarisiez avec les différents porte-monnaie.","Je crois que le facteur va nous apporter la première."],"d2":["Bonjour !"],"d3":["Bonjour monsieur le facteur. Qu'avez-vous pour nous aujourd'hui ?"],"d4":["Une facture."],"d5":["Je m'en doutais.","Pour payer une facture, il faut mettre la somme d'argent indiquée sur le document dans la zone de paiement puis confirmer la transaction en cliquant sur le bouton de validation."],"d6":["L'argent à déposer est dans le tiroir-caisse que l'on peut ouvrir et fermer en cliquant sur le bouton en bas à gauche de l'écran.","Pour cette première facture, il vous faut ouvrir le porte-monnaie, faire glisser le billet de 10 sous vers la zone de paiement et confirmer la transaction grâce au bouton de validation.","A vous de jouer !"],"d7":["Félicitations !"],"b1":["Document à conserver","Facture d'électricité","Du 1 Janvier au 31 Mars","A régler","Retrouvez l'explication de votre facture sur votre Espace Client"]}]]></dct:description>
+        <dct:description><![CDATA["wallet":[0,0,0,0,0,0,1,1,0,1,0,0,0],"menu":["wallet"],"errratio":3,"data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"dialog","text":"d2","from":"client","here":"postman"},{"type":"dialog","text":"d3","from":"owner","here":"postman"},{"type":"dialog","text":"d4","from":"client","here":"postman"},{"type":"dialog","text":"d5","from":"owner","here":"postman"},{"type":"dialog","text":"d6","from":"owner","here":"postman"},{"type":"bill","here":"postman","text":"b1","subtype":"bill1","value":10,"background":"res/img/background/shop/nu001.svg"},{"type":"dialog","text":"d7","from":"owner"}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Ah ! Voila venir le facteur."],"d2":["Bonjour !"],"d3":["Bonjour monsieur le facteur. Qu'avez-vous pour nous aujourd'hui ?"],"d4":["Une facture."],"d5":["Hum...Je m'en doutais."],"d6":["En suivant les instructions, pouvez - vous m'aider à payer cette première facture de 10 sous ?"],"d7":["Félicitations !"],"b1":["Document à conserver","Facture d'électricité","Du 1 Janvier au 31 Mars","A régler","Retrouvez l'explication de votre facture sur votre Espace Client"]}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>001</dct:alternative>
         <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+		<dct:source>res/img/background/shop/nu001.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
@@ -108,7 +109,7 @@
     <rdf:Description>
         <dct:identifier>101</dct:identifier>
         <dct:title xml:lang="fr-FR">Payer une facture en utilisant le monnayeur [5].</dct:title>
-        <dct:description><![CDATA["decimal":false,"wallet":[0,0,0,0,0,0,0,0,0,1,0,0,0],"menu":["wallet","change"],"errratio":3,"data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"dialog","text":"d2","from":"owner","target":1},{"type":"bill","text":"b1","subtype":"bill1","value":5},{"type":"dialog","text":"d3","from":"owner"}]]]></dct:description>
+        <dct:description><![CDATA["decimal":false,"wallet":[0,0,0,0,0,0,0,0,0,1,0,0,0],"menu":["wallet","change"],"errratio":3,"data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"dialog","text":"d2","from":"owner"},{"type":"bill","text":"b1","subtype":"bill1","value":5},{"type":"dialog","text":"d3","from":"owner"}]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Il arrive parfois que nous n'ayons pas la monnaie demandée pour le réglement d'une facture. Heureusement il est possible d'utiliser le monnayeur pour régler ce problème."],"d2":["Toute valeur introduite dans le monnayeur, situé en bas de l'écran, est automatiquement décomposée en petite monnaie.","A vous de jouer !"],"d3":["J'adore les photos de chatons !"],"b1":["Amicale des sapeurs pompiers","Calendrier","Modèle 'spécial chatons'","Prix","Tel: 18"]}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>

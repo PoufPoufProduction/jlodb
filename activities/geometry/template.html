@@ -36,7 +36,7 @@
                              ontouchstart="$(this).closest('.geometry').geometry('cancel');event.preventDefault();">
                             <div id="nbelts"></div><div id="cancel"><img src="res/img/default/control/left02.svg" alt=""/></div></div></td>
                     <td><div class="action a2" id="about" onclick="$(this).closest('.geometry').find('#help').show();"
-                             ontouchstart="$(this).closest('.geometry').find('#help').show();"><img src="res/img/default/white/about.svg" alt="?"/></div></td></tr>
+                             ontouchstart="$(this).closest('.geometry').find('#help').show();event.preventDefault();"><img src="res/img/default/white/about.svg" alt="?"/></div></td></tr>
             </table>
         </div>
         <div id="log"></div>
@@ -49,6 +49,15 @@
         <table id="objectives">
         </table>
     </div>
+	
+    <div id="devmode" ontouchstart="$(this).closest('.geometry').geometry('devmode');event.preventDefault();"
+                      onclick="$(this).closest('.geometry').geometry('devmode');" ><img src="res/img/default/white/snapshot.svg" alt=""/></div>
+                      
+    <div id="devoutput" ontouchstart="$(this).hide();event.preventDefault();" onclick="$(this).hide();">
+        <textarea ontouchstart="$(this).focus();event.stopPropagation();event.preventDefault();"
+                  onclick="$(this).focus();event.stopPropagation();"></textarea>
+    </div>
+	
     
     <div id="zoom"></div>
 	

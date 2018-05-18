@@ -1,4 +1,5 @@
 <div>
+	<div id="background"></div>
     <div id="board">
         <div id="header" class="bar"></div>
         <div id="footer" class="bar"></div>
@@ -98,6 +99,7 @@
             <div class="date f"></div>
             <div class="topay f"></div><div id="billval" class="cell"></div>
             <div class="footer f"></div>
+			<div id="payed"></div>
         </div></div>
 
 
@@ -114,7 +116,10 @@
             <div id="sketchbook" class="tab" onclick="$(this).closest('.shop').shop('menu','sketchbook');"
                     ontouchstart="$(this).closest('.shop').shop('menu','sketchbook');event.preventDefault();" >
                 <img src="res/img/svginventoryicons/book/sketchbook01.svg" alt=""/></div>
-            <div id="target" class="anim12"><div class="running"><img src="res/img/default/anim/target01.svg" alt=""/></div></div>
+			<div id="phelp" class="tab" onclick="$(this).closest('.shop').find('#help').show();event.stopPropagation();"
+    ontouchstart="$(this).closest('.shop').find('#help').show();event.stopPropagation();event.preventDefault();">
+				<img src="res/img/default/white/help01.svg" alt="?"/>
+			</div>
         </div>
 
 
@@ -124,7 +129,53 @@
             <div id="client" class="talk"><div id="pre"></div></div>
         </div>
 
-<!-- <div id="output" style="padding-left:.1em;color:#333;font-size:0.5em;width:5em;height:40em;position:absolute;top:0;left:0;background-color:rgba(255,255,255,0.4);"></div> -->
+		
+		<div id="help"><div class="icon" onclick="$(this).parent().hide();"
+                        ontouchstart="$(this).parent().hide();">
+			<div>
+				<div class="ehelp">
+					<div class="icon"></div>
+					<div class="label" id="hpfac"></div>
+				</div>
+				<div class="ehelp">
+					<div class="icon"></div>
+					<div class="label" id="hpinv"></div>
+				</div>
+				<div class="ehelp">
+					<div class="icon"><img src="res/img/background/shop/money.svg" alt=""/></div>
+					<div class="label" id="hpmon"></div>
+				</div>
+				<div class="ehelp">
+					<div class="icon"><img src="res/img/background/shop/change.svg" alt=""/></div>
+					<div class="label" id="hpcha"></div>
+				</div>
+				<div class="ehelp">
+					<div class="icon"><img src="res/img/background/shop/wallet.svg" alt=""/></div>
+					<div class="label" id="hpwal"></div>
+				</div>
+				<div class="ehelp">
+					<div class="icon"></div>
+					<div class="label" id="hpnon"></div>
+				</div>
+				<div class="ehelp">
+					<div class="icon"><img src="res/img/svginventoryicons/hardware/calculator01.svg" alt=""/></div>
+					<div class="label" id="hcal"></div>
+				</div>
+				<div class="ehelp">
+					<div class="icon"><img src="res/img/coin/coins.svg" alt=""/></div>
+					<div class="label" id="hwal"></div>
+				</div>
+				<div class="ehelp">
+					<div class="icon"><img src="res/img/coin/coin1.svg" alt=""/></div>
+					<div class="label" id="hcha"></div>
+				</div>
+				<div class="ehelp">
+					<div class="icon"><img src="res/img/svginventoryicons/book/sketchbook01.svg" alt=""/></div>
+					<div class="label" id="hske"></div>
+				</div>
+			</div>
+			<div id="hwar"></div>
+		</div>
 
     </div>
 
