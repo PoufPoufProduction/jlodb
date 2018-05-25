@@ -7,21 +7,22 @@
     <rdf:Description>
         <dct:identifier>001</dct:identifier>
         <dct:title xml:lang="fr-FR">Encaisser un premier client [10].</dct:title>
-        <dct:description><![CDATA["data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"dialog","text":"d2","here":"client01","from":"client"},{"type":"dialog","text":"d3","here":"client01","from":"owner"},{"type":"dialog","text":"d4","here":"client01","from":"client"},{"type":"dialog","text":"d5","here":"client01","from":"owner"},{"type":"invoice","here":"client01","value":[[2,1,10,1]],"total":10},{"type":"dialog","text":"d7","here":"client01","from":"client"},{"type":"dialog","text":"d8","here":"client01","from":"owner"},{"type":"sell","wallet":[0,0,0,0,0,0,0,0,0,1,0,0,0],"here":"client01"},{"type":"dialog","text":"d99","from":"owner"}],"wallet":[0,0,0,0,0,0,0,0,0,0,0,0,0],"menu":["wallet"]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Ca y est : le magasin est ouvert. Nous allons recevoir nos premiers clients."],"d2":["Bonjour !"],"d3":["Bonjour madame ! Que puis-je pour vous ?"],"d4":["Je vais vous prendre quelques confitures."],"d5":["Très bien.","Maintenant que la cliente est servie, il va falloir rédiger la note. Pour cette fois, c'est moi qui vais le faire. Vous n'avez qu'à valider la facture et on pourra passer à l'encaissement."],"d7":["Ca tombe bien : j'ai pile l'appoint."],"d8":["Comme elle paye la somme exacte, il suffit de faire glisser l'argent de la cliente vers le tiroir-caisse et de valider la transaction grâce au bouton de validation."],"d99":["C'est parfait."]}]]></dct:description>
+        <dct:description><![CDATA["data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"dialog","text":"d2","here":"client01","from":"client"},{"type":"dialog","text":"d3","here":"client01","from":"owner"},{"type":"dialog","text":"d4","here":"client01","from":"client"},{"type":"dialog","text":"d5","here":"client01","from":"owner"},{"type":"invoice","here":"client01","value":[[2,1,10,1]],"total":10,"background":"res/img/background/shop/in001a.svg"},{"type":"dialog","text":"d7","here":"client01","from":"client"},{"type":"dialog","text":"d8","here":"client01","from":"owner"},{"type":"sell","wallet":[0,0,0,0,0,0,0,0,0,1,0,0,0],"here":"client01","background":"res/img/background/shop/in001b.svg"},{"type":"dialog","text":"d99","from":"owner"}],"wallet":[0,0,0,0,0,0,0,0,0,0,0,0,0],"menu":["wallet"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Le magasin est ouvert : les premiers clients arrivent."],"d2":["Bonjour !"],"d3":["Bonjour madame ! Que puis-je pour vous ?"],"d4":["J'ai besoin de pots de confiture."],"d5":["Très bien.","Pouvez-vous valider la facture ?"],"d7":["Ca tombe bien : j'ai pile l'appoint."],"d8":["Il ne reste plus qu'à encaisser l'argent de la cliente."],"d99":["C'est parfait."]}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>operations</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>001</dct:alternative>
         <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+		<dct:source>res/img/background/shop/in001a.svg,res/img/background/shop/in001b.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>002</dct:identifier>
         <dct:title xml:lang="fr-FR">Encaisser 3 clients [5,10,15].</dct:title>
         <dct:description><![CDATA["data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"invoice","here":"client02","value":[[2,1,5,1]],"total":5},{"type":"sell","wallet":[0,0,0,0,0,0,0,0,1,0,0,0,0],"here":"client02"},{"type":"invoice","here":"client03","value":[[3,10,1,1]],"total":10},{"type":"sell","wallet":[0,0,0,0,0,0,0,0,2,0,0,0,0],"here":"client03"},{"type":"invoice","here":"client04","value":[[4,15,1,1]],"total":15},{"type":"sell","wallet":[0,0,0,0,0,0,0,0,1,1,0,0,0],"here":"client04"},{"type":"dialog","text":"d99","from":"owner"}],"wallet":[0,0,0,0,0,0,0,0,0,0,0,0,0],"menu":["wallet"]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Maintenant, pour chaque client, il vous faudra valider la note et encaisser la somme demandée. Je suis sûre que ça va aller."],"d99":["C'était très bien !"]}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Validez la note et encaissez la somme demandée."],"d99":["C'était très bien !"]}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>operations</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -32,21 +33,22 @@
     <rdf:Description>
         <dct:identifier>021</dct:identifier>
         <dct:title xml:lang="fr-FR">Facturer et encaisser 3 clients [2,10,15].</dct:title>
-        <dct:description><![CDATA["data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"invoice","here":"client01","value":[[4,2,1,1]]},{"type":"sell","wallet":[0,0,0,0,0,0,0,1,0,0,0,0,0],"here":"client01"},{"type":"invoice","here":"client03","value":[[3,1,10,1]]},{"type":"sell","wallet":[0,0,0,0,0,0,0,0,0,1,0,0,0],"here":"client03"},{"type":"invoice","here":"client05","value":[[0,1,15,1]]},{"type":"sell","wallet":[0,0,0,0,0,0,5,0,0,1,0,0,0],"here":"client05"},{"type":"dialog","text":"d99","from":"owner"}],"wallet":[0,0,0,0,0,0,0,0,0,0,0,0,0],"menu":["wallet","calculator"]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Je vois que vous vous en sortez très bien. Il est temps que vous ayez d'avantage de responsabilités.","Désormais, c'est à vous de remplir la case intitulée 'total' de la facture avant de valider celle-ci.","Ce n'est pas compliqué, pour l'instant, car nos premiers clients ont tendance à n'acheter qu'un même produit. Il suffit donc de reporter le montant du produit dans la case 'total'.","Cliquez sur la case à remplir et utilisez le clavier numérique pour entrer la bonne valeur."],"d99":["C'était très bien !"]}]]></dct:description>
+        <dct:description><![CDATA["data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"invoice","here":"client01","value":[[4,2,1,1]],"background":"res/img/background/shop/in021.svg"},{"type":"sell","wallet":[0,0,0,0,0,0,0,1,0,0,0,0,0],"here":"client01"},{"type":"invoice","here":"client03","value":[[3,1,10,1]]},{"type":"sell","wallet":[0,0,0,0,0,0,0,0,0,1,0,0,0],"here":"client03"},{"type":"invoice","here":"client05","value":[[0,1,15,1]]},{"type":"sell","wallet":[0,0,0,0,0,0,5,0,0,1,0,0,0],"here":"client05"},{"type":"dialog","text":"d99","from":"owner"}],"wallet":[0,0,0,0,0,0,0,0,0,0,0,0,0],"menu":["wallet","calculator"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Complétez la case 'Total' avant de valider."],"d99":["C'était très bien !"]}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>operations</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>001</dct:alternative>
         <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+		<dct:source>res/img/background/shop/in021.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>051</dct:identifier>
         <dct:title xml:lang="fr-FR">Valider une facture dont la valeur entière est inférieure à 20 sous et encaisser 3 clients.</dct:title>
         <dct:description><![CDATA["data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"invoice","here":"client01","value":"invoice"},{"type":"sell","wallet":"sell","here":"client01"},{"type":"invoice","here":"client03","value":"invoice"},{"type":"sell","wallet":"sell","here":"client03"},{"type":"invoice","here":"client05","value":"invoice"},{"type":"sell","wallet":"sell","here":"client05"},{"type":"dialog","text":"d99","from":"owner"}],"wallet":[0,0,0,0,0,0,0,0,0,0,0,0,0],"menu":["wallet","calculator"],"invoice":"function(){return [[Math.floor(Math.random()*20),1,Math.floor(Math.random()*20),1]]; }","sell":"function(_args){var valc=[100,50,20,10,5,2,1,0.5,0.2,0.1,0.05,0.02,0.01],v=_args.value,ret=[];for(var i in valc){var nb=0;if (i>=6 || Math.random()<0.5) { while(v>=valc[i]){nb++;v-=valc[i];} } ret.push(nb); };return ret.reverse()}"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Voici venir de nouveaux clients. A vous de jouer !"],"d99":["C'était très bien !"]}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Voici de nouveaux clients : à vous de jouer !"],"d99":["C'était très bien !"]}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>operations</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -60,7 +62,7 @@
         <dct:title xml:lang="fr-FR">Facturer et encaisser 3 clients puis payer une facture [75,23,61 - 115].</dct:title>
         <dct:description><![CDATA["data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"invoice","here":"alea","value":[[19,1,75,1]]},{"type":"sell","wallet":[0,0,0,0,0,0,0,0,1,0,1,1,0],"here":"same"},{"type":"invoice","here":"alea","value":[[6,1,23,1]]},{"type":"sell","wallet":[0,0,0,0,0,0,1,1,0,0,1,0,0],"here":"same"},{"type":"invoice","here":"alea","value":[[0,1,61,1]]},{"type":"sell","wallet":[0,0,0,0,0,0,1,0,0,1,0,1,0],"here":"same"},{"type":"dialog","text":"d2","from":"owner","here":"postman"},{"type":"bill","text":"b1","subtype":"bill1","value":115,"here":"postman"},{"type":"dialog","text":"d99","from":"owner"}],"wallet":[0,0,0,0,0,0,0,0,0,0,0,0,0],"menu":["wallet","calculator"]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["On continue. Ca va être une bonne journée. Je le sens."],"d2":["Ah ! Une facture."],"d99":["Très bien !"],"b1":["N° 2 8392 78 E","Fournisseur - grossiste","Conserves et confitures","A régler",""]}]]></dct:description>
-        <dct:extent>3</dct:extent>
+        <dct:extent>5</dct:extent>
         <dct:subject>operations</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
@@ -72,7 +74,7 @@
         <dct:title xml:lang="fr-FR">Facturer et encaisser 3 clients puis payer une facture [10,50,10 - 34].</dct:title>
         <dct:description><![CDATA["data":[{"type":"dialog","text":"d1","from":"owner"},{"type":"invoice","here":"alea","value":[[11,1,10,1]]},{"type":"sell","wallet":[0,0,0,0,0,0,0,0,0,1,0,0,0],"here":"same"},{"type":"invoice","here":"alea","value":[[16,1,50,1]]},{"type":"sell","wallet":[0,0,0,0,0,0,0,0,0,0,0,1,0],"here":"same"},{"type":"invoice","here":"alea","value":[[2,1,10,1]]},{"type":"sell","wallet":[0,0,0,0,0,0,0,0,0,1,0,0,0],"here":"same"},{"type":"dialog","text":"d2","from":"owner"},{"type":"bill","text":"b1","subtype":"bill1","value":34},{"type":"dialog","text":"d99","from":"owner"}],"wallet":[0,0,0,0,0,0,0,0,0,0,0,0,0],"menu":["wallet","calculator","change"],"decimal":false]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"dialog":{"d1":["Voici venir de nouveaux clients."],"d2":["J'ai oublié la facture d'un fournisseur. Pouvez-vous vous en occuper ? Merci."],"d99":["Très bien !"],"b1":["Entreprise 'Frise'","Fournisseur","Fruits et légumes","A régler",""]}]]></dct:description>
-        <dct:extent>3</dct:extent>
+        <dct:extent>5</dct:extent>
         <dct:subject>operations</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
@@ -92,6 +94,8 @@
         <dct:coverage xml:lang="fr-FR">aléatoire</dct:coverage>
     </rdf:Description>
     
+	<!-- DECIMAL -->
+	
     <rdf:Description>
         <dct:identifier>501</dct:identifier>
         <dct:title xml:lang="fr-FR">Facturer et encaisser 3 clients [2.3,3.35,2.19].</dct:title>

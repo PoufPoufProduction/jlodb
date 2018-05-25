@@ -66,7 +66,7 @@
 .shop .coin.v7>div                    { font-size:2em; }
 
 
-.shop #pcalculator                { position:absolute; top:2%; left:5%; width:5.2em; height:8.2em; padding:0; }
+.shop #pcalculator                { position:absolute; top:2%; left:5%; width:5.2em; height:8.2em; padding:0; z-index:300; }
 .shop #pcalculator td             { width:1.2em; overflow:hidden; cursor:pointer; text-align:center; font-weight:bold;
                             color:rgb(220,231,241); border-radius:.25em; }
 
@@ -182,4 +182,7 @@
 .shop #bubbles #client #pre		{ margin-top:.5em; margin-left:1.5em; }
 .shop #bubbles #pre div  { display:inline-block; white-space: pre;  }
 
+
+/* EFFECTS */
+.shop .fx						{ position:absolute; top:1%; left:55%; font-size:6em; display:none; z-index:300; }
 

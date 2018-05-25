@@ -669,19 +669,25 @@
             }
 
             if (itsgood) {
+				$this.find("#good.fx").show();
                 $this.find("#pmoney").addClass("good");
                 $this.find("#pmoney .a").animate({opacity:0},500, function() { $(this).detach(); });
                 helpers.fx.hide($this,"money",200);
 				$this.find("#pbill #payed").show();
 				helpers.fx.hide($this,"bill",800);
 				$this.find("#background").hide();
-                setTimeout(function() { helpers.next($this); },1500);
+                setTimeout(function() { helpers.next($this); },2000);
             }
             else {
+				$this.find("#wrong.fx").show();
                 settings.score -= settings.errratio;
                 $this.find("#pmoney").addClass("wrong");
             }
-            setTimeout(function() { $this.find("#pmoney").removeClass("good").removeClass("wrong"); settings.interactive = true; }, 800);
+            setTimeout(function() {
+				$this.find("#pmoney").removeClass("good").removeClass("wrong");
+				$this.find(".fx").hide();
+				settings.interactive = true;
+			}, 800);
         }
     };
 
@@ -857,6 +863,7 @@
 
                     if (good) {
                         $this.find("#pinvoice #svalid").addClass("good");
+						$this.find("#background").hide();
 
                         var vVal = n.toFloat($this.find("#pinvoice .cell").last().html());
                         var vTr = settings.locale.tr1;
@@ -864,6 +871,7 @@
                         var vTt = vTr[Math.floor(Math.random()*vTr.length)];
                         vTt = vTt.replace("X",Math.floor(vVal).toString()).replace("Y",(Math.round(vVal*100)%100).toString());
 
+                        helpers.fx.hide($this,"calculator");
                         helpers.fx.hide($this,"sketchbook");
 
                         helpers.text.run($this, { id:"owner", dialog:[vTt]}, function(){ helpers.next($this); } );

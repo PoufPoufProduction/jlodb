@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dct="http://purl.org/dc/terms/">
+
+
+    <rdf:Description>
+        <dct:identifier>c01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Evaluer une somme d'argent à partir de pièces et de billets [5 - 20 sous].</dct:title>
+        <dct:description><![CDATA["gg":{"nb":5,"p":[0,0,0,0,0,0,1,1,1,1,0,0,0],"e":[100,200,1000],"ee":3},"errratio":2,"number":3,"radius":50,"background":"res/img/background/landscape/grayboard01.svg","magnetic":[[430,210,70,70,3,3]],"init":{"area":[65,100,330,370],"id":{"p00":[550,100],"p01":[550,100],"p02":[550,100],"p03":[550,100],"p04":[550,100],"p05":[550,100],"p06":[550,100],"p07":[550,100],"p08":[550,100]}},"decoys":["t1-0","t1-1","t1-2","t1-3","t1-4","t2-0","t2-1","t2-2","t2-3","t2-4","t5-0","t5-1","t5-2","t5-3","t5-4","t10-0","t10-1","t10-2","t10-3","t10-4","t20-0","t20-1","t20-2","t20-3","t20-4","t50-0","t50-1","t50-2","t50-3","t50-4","t100-0","t100-1","t100-2","t100-3","t100-4","t200-0","t200-1","t200-2","t200-3","t200-4","t500-0","t500-1","t500-2","t500-3","t500-4","t1000-0","t1000-1","t1000-2","t1000-3","t1000-4","t2000-0","t2000-1","t2000-2","t2000-3","t2000-4","t5000-0","t5000-1","t5000-2","t5000-3","t5000-4","t10000-0","t10000-1","t10000-2","t10000-3","t10000-4"],"decoyfx":false,"url":"desktop/puzzle/money01.svg","scale":1.2,"gen":"function($this,_s,_id){var v=[1,2,5,10,20,50,100,200,500,1000,2000,5000,10000],u=[0,0,0,0,0,0,0,0,0,0,0,0,0],ids=[],ts={},c=Math.floor(Math.random()*9),p=0,val=0,vs=[]; for (var i in _s.gg.p) { p+=_s.gg.p[i]; } var i=0; do { var pp=Math.floor(Math.random()*p),pi=0,pj=0; for (var j=0; j<v.length; j++) { if (_s.gg.p[j]) { pj+=_s.gg.p[j]; if (pj>pp&&!pi) { pi=j; } } } if (u[pi]<5) { ids.push('t'+v[pi]+'-'+u[pi]); i++; u[pi]=u[pi]+1; val+=v[pi]; } } while (i<_s.gg.nb); i=0; do { var vv=val,ne=(i==c)?0:Math.floor(Math.random()*_s.gg.ee)+1; for (var j=0; j<ne; j++) { vv+=(Math.random()<0.5?-1:1)*_s.gg.e[Math.floor(Math.random()*_s.gg.e.length)]; } var isgood=((i==c)||(vv!=val))&&(vv>0); for (var j in vs) { if (vs[j]==vv) { isgood=false; }} if (isgood) { ts['t0'+i]=(vv/100).toString(); i++; vs.push(vv); } } while(i<9); ids.push('p0'+c); return {id:ids,txt:ts,svgclass:'f0'+c} }"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Comptez[/b] l'argent présent et [b]déplacez[/b] le [red]curseur[/red] sur la somme correspondant."]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>c01</dct:alternative>
+        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/puzzle/money01.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>c02</dct:identifier>
+        <dct:title xml:lang="fr-FR">Evaluer une somme d'argent à partir de pièces et de billets [8 - 30 sous].</dct:title>
+        <dct:description><![CDATA["gg":{"nb":8,"p":[0,0,0,0,0,0,1,1,1,1,0,0,0],"e":[100,200,1000],"ee":3},"errratio":3,"number":2]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>c01</dct:alternative>
+        <dct:relation>c01</dct:relation>
+        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/puzzle/money01.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>c03</dct:identifier>
+        <dct:title xml:lang="fr-FR">Evaluer une somme d'argent à partir de pièces et de billets [8 - 70 sous].</dct:title>
+        <dct:description><![CDATA["gg":{"nb":8,"p":[0,0,0,0,0,0,3,3,1,1,1,1,0],"e":[100,200,1000],"ee":3},"errratio":3,"number":2]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>c01</dct:alternative>
+        <dct:relation>c01</dct:relation>
+        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/puzzle/money01.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>c04</dct:identifier>
+        <dct:title xml:lang="fr-FR">Evaluer une somme d'argent à partir de pièces et de billets [10 - 100 sous].</dct:title>
+        <dct:description><![CDATA["gg":{"nb":10,"p":[0,0,0,0,0,0,3,3,1,1,1,1,0],"e":[100,200,1000],"ee":3},"errratio":3,"number":2]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>c01</dct:alternative>
+        <dct:relation>c01</dct:relation>
+        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/puzzle/money01.svg</dct:source>
+    </rdf:Description>
+	
+	
+
+</rdf:RDF>
+

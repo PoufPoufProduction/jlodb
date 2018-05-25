@@ -353,9 +353,7 @@
                             var elt = settings.elts[settings.action.id];
                             elt.begin               = [ elt.current.translate[0], elt.current.translate[1] ];
 
-                            if ( settings.decoyfx || !elt.decoy) {
-                                $(this).find(".scale").attr("transform","scale("+settings.scale+")");
-                            }
+                            $(this).find(".scale").attr("transform","scale("+settings.scale+")");
 
                             if (settings.zhandling) { $(this).detach().appendTo($("#"+pgroup,settings.svg.root())); }
 
@@ -622,7 +620,13 @@
                 settings.wrongs+=wrongs;
                 settings.puzzleid++;
 
-                if (wrongs) { $this.find("#submit").addClass("wrong"); } else { $this.find("#submit").addClass("good"); }
+                if (wrongs) {
+					$this.find("#submit").addClass("wrong");
+					$(settings.svg.root()).attr("class", $(settings.svg.root()).attr("class")+" wrong");
+				} else {
+					$this.find("#submit").addClass("good");
+					$(settings.svg.root()).attr("class", $(settings.svg.root()).attr("class")+" good");
+				}
                 
                 if ( settings.puzzleid<settings.number ) {
                     setTimeout(function() { helpers.rebuild($this); settings.interactive = true; },
