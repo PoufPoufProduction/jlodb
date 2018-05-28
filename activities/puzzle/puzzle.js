@@ -254,7 +254,10 @@
                                               {'class':'puzzleadd'});
                             break;
                         case "circle" :
-                            settings.svg.circle($("#"+i,settings.svg.root()), add[i][1], add[i][2], add[i][3], {'class':'add'});
+                            settings.svg.circle($("#"+i,settings.svg.root()), add[i][1], add[i][2], add[i][3], {'class':'puzzleadd'});
+                            break;
+						case "path" :
+							settings.svg.path($("#"+i,settings.svg.root()), add[i][1], {'class':'puzzleadd'});
                             break;
                     }
                 }

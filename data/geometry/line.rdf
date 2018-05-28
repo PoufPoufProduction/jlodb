@@ -1,7 +1,37 @@
 <?xml version="1.0"?>
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dct="http://purl.org/dc/terms/">
-         
+    
+	<!-- ALIGNMENT -->
+
+    <rdf:Description>
+        <dct:identifier>a01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Repérer les points alignés.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/bluecarpet01.svg","data":[{"type":"points", "value":[200,100,400,400,300,250,50,150,500,220,500,390,100,370,380,100], "active":true}],"selected":"line","available":["line"],"locked":true,"number":1,"objectives":[[{"type":"line", "values":[-200,56.3],"attr":{"style":"stroke:green;stroke-width:5"}}]],"strokewidth":3,"sizepoint":12,"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"[b]Repérez[/b] les points alignés et [b]tracez[/b] la ou les droites qui les relient entre eux.","labels":["Droite passant par 3 points alignés"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>a01</dct:alternative>
+		<dct:source>res/img/background/landscape/bluecarpet01.svg</dct:source>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>a02</dct:identifier>
+        <dct:title xml:lang="fr-FR">Repérer les points alignés.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/bluecarpet01.svg","data":[{"type":"points", "value":[320,180,50,280,428,140,50,70,200,300,230,346,500,300,480,400], "active":true}],"selected":"line","available":["line"],"locked":true,"number":2,"objectives":[[{"type":"line", "values":[298.5,-20.3],"attr":{"style":"stroke:green;stroke-width:5"}}],[{"type":"line", "values":[-6.7,56.9],"attr":{"style":"stroke:blue;stroke-width:5"}}]],"strokewidth":3,"sizepoint":12,"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"[b]Repérez[/b] les points alignés et [b]tracez[/b] la ou les droites qui les relient entre eux.","labels":["Droite passant par 3 points alignés","Droite passant par 3 points alignés"]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>a01</dct:alternative>
+		<dct:source>res/img/background/landscape/bluecarpet01.svg</dct:source>
+    </rdf:Description>
+
+	
+	
     <!-- GEOGRID -->
     
     <rdf:Description>
@@ -157,8 +187,7 @@
         <dct:isPartOf>geogrid</dct:isPartOf>
         <dct:source>res/img/background/landscape/blueboard01.svg</dct:source>
     </rdf:Description>
-    
-
+	
     <!-- SEGMENTS AND LINES -->
 
     <rdf:Description>

@@ -2,12 +2,28 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dct="http://purl.org/dc/terms/">
 
-         
+		 
+	
+	<rdf:Description>
+        <dct:identifier>rla</dct:identifier>
+        <dct:title xml:lang="fr-FR">Mesurer la longueur du ligne brisée.</dct:title>
+        <dct:description><![CDATA["gg":{"nb":4,"l":[6,20],"max":50},"background":"res/img/background/landscape/grayboard01.svg","number":2,"withrottimer":false,"errratio":3,"init":{"id":{"ruler":[460,180]},"pos":[[600,350],[600,385]]},"decoys":["ruler"],"magnetic":[[55,350],[90,350],[125,350],[160,350],[195,350],[230,350],[265,350],[300,350],[335,350],[370,350],[405,350],[440,350],[475,350],[510,350],[545,350],[55,385],[90,385],[125,385],[160,385],[195,385],[230,385],[265,385],[300,385],[335,385],[370,385],[405,385],[440,385],[475,385],[510,385],[545,385]],"same":[["pp01","pp02","pp03","pp04","pp05","pp06","pp07","pp08","pp09","pp10","pp11","pp12","pp13","pp14","pp15","pp16","pp17","pp18","pp19","pp20","pp21","pp22","pp23","pp24","pp25","pp26","pp27","pp28","pp29","pp30"]],"sym":{"pp01":15,"pp02":15,"pp03":15,"pp04":15,"pp05":15,"pp06":15,"pp07":15,"pp08":15,"pp09":15,"pp10":15,"pp11":15,"pp12":15,"pp13":15,"pp14":15,"pp15":15,"pp16":15,"pp17":15,"pp18":15,"pp19":15,"pp20":15,"pp21":15,"pp21":15,"pp23":15,"pp24":15,"pp25":15,"pp26":15,"pp27":15,"pp28":15,"pp29":15,"pp30":15},"url":"desktop/puzzle/ruler01b.svg","decoyfx":false,"gen":"function($this,_s,_id){var show={},ok=true,tl,ly; do { var p=[[0,0]]; tl = 0; for (var i=0; i<_s.gg.nb; i++) { var max=Math.min(_s.gg.max-(_s.gg.nb-(i+1))*_s.gg.l[0],_s.gg.l[1]),l=Math.floor(Math.random()*(max-_s.gg.l[0]))+_s.gg.l[0],aa=Math.floor(Math.random()*12)*15-75,last=p[p.length-1]; p.push([last[0]+l*10*Math.cos(Math.PI*aa/180), last[1]+l*10*Math.sin(Math.PI*aa/180)]); ly=p[p.length-1][1]; tl+=l; } } while(tl<21 || tl>50 || ly>100 ); tl-=20; var o=[p[p.length-1][0]/2,p[p.length-1][1]/2],path='M'; for (var i=0; i<p.length; i++) { if (i!=0) { path+=' L'; } path+=' '+(Math.round((p[i][0]-o[0])*10)/10)+','+(Math.round((p[i][1]-o[1])*10)/10); } show['fig'+(Math.floor(Math.random()*4)*15)]=['path',path]; return {'svgclass':'t21 pp'+(tl<10?'0'+tl:tl),'add':show,'id':['ruler','pp'+(tl<10?'0'+tl:tl)]}; }","rotation":15]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"En [b]orientant[/b] correctement la règle par [red]simple clic[/red], [b]mesurez[/b] la longueur totale de la ligne brisée et [b]placez[/b] le jeton sur la valeur correspondante.","fontex":0.7]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>rla</dct:alternative>
+        <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/puzzle/ruler01b.svg</dct:source>
+    </rdf:Description>
+	
+		 
+    <!-- RECTANGLE MESUREMENT -->
     
 	<rdf:Description>
         <dct:identifier>r2ro</dct:identifier>
         <dct:title xml:lang="fr-FR">Mesurer les deux côtés d'un rectangle.</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/grayboard01.svg","number":3,"withrottimer":false,"errratio":2,"init":{"id":{"ruler":[460,180]},"pos":[[600,350],[600,385]]},"decoys":["ruler"],"magnetic":[[55,350],[90,350],[125,350],[160,350],[195,350],[230,350],[265,350],[300,350],[335,350],[370,350],[405,350],[440,350],[475,350],[510,350],[545,350],[55,385],[90,385],[125,385],[160,385],[195,385],[230,385],[265,385],[300,385],[335,385],[370,385],[405,385],[440,385],[475,385],[510,385],[545,385]],"same":[["pp01","pp02","pp03","pp04","pp05","pp06","pp07","pp08","pp09","pp10","pp11","pp12","pp13","pp14","pp15","pp16","pp17","pp18","pp19","pp20","pp21","pp22","pp23","pp24","pp25","pp26","pp27","pp28","pp29","pp30"]],"sym":{"pp01":15,"pp02":15,"pp03":15,"pp04":15,"pp05":15,"pp06":15,"pp07":15,"pp08":15,"pp09":15,"pp10":15,"pp11":15,"pp12":15,"pp13":15,"pp14":15,"pp15":15,"pp16":15,"pp17":15,"pp18":15,"pp19":15,"pp20":15,"pp21":15,"pp21":15,"pp23":15,"pp24":15,"pp25":15,"pp26":15,"pp27":15,"pp28":15,"pp29":15,"pp30":15},"url":"desktop/puzzle/ruler01b.svg","decoyfx":false,"gen":"function($this,settings,_id){var r=Math.floor(Math.random()*4),a=Math.floor(Math.random()*30)+1,b,show={}; do { b=Math.floor(Math.random()*30)+1; } while(a==b); show['fig'+(r*15)]=['rect',-5*a,-5*b,10*a,10*b]; return {'add':show,'id':['ruler','pp'+(a<10?'0'+a:a),'pp'+(b<10?'0'+b:b)]}; }","rotation":15]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/grayboard01.svg","number":3,"withrottimer":false,"errratio":2,"init":{"id":{"ruler":[460,180]},"pos":[[600,350],[600,385]]},"decoys":["ruler"],"magnetic":[[55,350],[90,350],[125,350],[160,350],[195,350],[230,350],[265,350],[300,350],[335,350],[370,350],[405,350],[440,350],[475,350],[510,350],[545,350],[55,385],[90,385],[125,385],[160,385],[195,385],[230,385],[265,385],[300,385],[335,385],[370,385],[405,385],[440,385],[475,385],[510,385],[545,385]],"same":[["pp01","pp02","pp03","pp04","pp05","pp06","pp07","pp08","pp09","pp10","pp11","pp12","pp13","pp14","pp15","pp16","pp17","pp18","pp19","pp20","pp21","pp22","pp23","pp24","pp25","pp26","pp27","pp28","pp29","pp30"]],"sym":{"pp01":15,"pp02":15,"pp03":15,"pp04":15,"pp05":15,"pp06":15,"pp07":15,"pp08":15,"pp09":15,"pp10":15,"pp11":15,"pp12":15,"pp13":15,"pp14":15,"pp15":15,"pp16":15,"pp17":15,"pp18":15,"pp19":15,"pp20":15,"pp21":15,"pp21":15,"pp23":15,"pp24":15,"pp25":15,"pp26":15,"pp27":15,"pp28":15,"pp29":15,"pp30":15},"url":"desktop/puzzle/ruler01b.svg","decoyfx":false,"gen":"function($this,settings,_id){var r=Math.floor(Math.random()*4),a=Math.floor(Math.random()*30)+1,b,show={}; do { b=Math.floor(Math.random()*30)+1; } while(a==b); show['fig'+(r*15)]=['rect',-5*a,-5*b,10*a,10*b]; return {'svgclass':'pp'+(a<10?'0'+a:a)+' pp'+(b<10?'0'+b:b),'add':show,'id':['ruler','pp'+(a<10?'0'+a:a),'pp'+(b<10?'0'+b:b)]}; }","rotation":15]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"En [b]orientant[/b] correctement la règle par [red]simple clic[/red], [b]mesurez[/b] les 2 côtés du rectangle et [b]placez[/b] les jetons sur les valeurs correspondantes.","fontex":0.7]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -16,6 +32,10 @@
         <dct:alternative>r2ro</dct:alternative>
         <dct:source>res/img/background/landscape/grayboard01.svg,res/img/desktop/puzzle/ruler01b.svg</dct:source>
     </rdf:Description>
+	
+	
+	
+	
          
 	<!-- RULER SORTING -->
 	
