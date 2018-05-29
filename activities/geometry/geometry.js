@@ -3,7 +3,7 @@
     var defaults = {
         name        : "geometry",               // The activity name
         template    : "template.html",          // Activity's html template
-        filename    : "desktop/geometry/default.svg",   // The initial svg filename
+        filename    : "res/img/desktop/geometry/default.svg",   // The initial svg filename
         css         : "style.css",              // Activity's css style sheet
         lang        : "fr",                     // Current localization
         score       : 1,                        // The score (from 1 to 5)
@@ -159,7 +159,7 @@
                 $this.find("#board").svg();
                 settings.svg = $this.find("#board").svg('get');
                 settings.svg.load(
-                    'res/img/'+settings.filename + debug, { addTo: true, changeSize: true, onLoad:function() { helpers.build($this); }
+                    settings.filename + debug, { addTo: true, changeSize: true, onLoad:function() { helpers.build($this); }
                 });
 
                 helpers.update($this, false);

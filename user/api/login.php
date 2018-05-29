@@ -17,7 +17,7 @@ if (!$error && array_key_exists("username",$_GET)) {
             {
                 if (array_key_exists("action",$_GET)&&$_GET["action"]=="logout") {
                     mysqli_query($link, "UPDATE `".$_SESSION['prefix']."user` SET `User_Code` = '' WHERE `User_Key` = '".$u["User_Key"]."'");
-                    $status="logout"; $error = 0; $textstatus="logout";  $param=',"logout":true';
+                    $status="logout"; $error = 0; $textstatus="logout";  $param='"logout":true';
                 }
                 else {
                     $id = md5(uniqid());
@@ -33,7 +33,8 @@ if (!$error && array_key_exists("username",$_GET)) {
                 if (array_key_exists("action",$_GET) && $_GET["action"]=="logout") {
                     mysqli_query($link, "UPDATE `".$_SESSION['prefix']."user` SET `User_Code` = '' WHERE `User_Key` = '".$u["User_Key"]."'");
                     $_SESSION['User_DevMode'] = 0;
-                    $status="logout"; $error = 0; $textstatus="logout";  $param=',"logout":true,"devmode":'.($_SESSION['User_DevMode']?'1':'0');
+                    $status="logout"; $error = 0; $textstatus="logout";
+					$param='"logout":true,"devmode":'.($_SESSION['User_DevMode']?'1':'0');
                 }
                 else {
                     $id = $_GET["code"];
