@@ -14,6 +14,7 @@
             cl      : true
         },
         dev         : false,
+		maxlines	: 99,
         debug       : true                                      // Debug mode
     };
 
@@ -25,6 +26,7 @@
         "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
         "\\\[o1\\\]([^\\\[]+)\\\[/o1\\\]",          "<span style='opacity:0.5'>$1</span>",
         "\\\[o2\\\]([^\\\[]+)\\\[/o2\\\]",          "<span style='opacity:0.1'>$1</span>",
+        "\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='icon'><img src='$1' alt=''/></div>",
         "\\\[svg\\\]([^\\\[]+)\\\[/svg\\\]",        "<div class='svg'><div><svg width='100%' height='100%' viewBox='0 0 32 32'><rect x='0' y='0' width='32' height='32' style='fill:black'/>$1</svg></div></div>",
         "\\\[code\\\](.+)\\\[/code\\\]",            "<div class='cc'>$1</div>",
         "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>"
@@ -142,9 +144,19 @@
                 for (var i in settings.a) {
                     if (settings.a[i]) {
                         if ($.isArray(settings.a[i])) {
-                            for (var elt in settings.a[i]) { $this.find("#panels #"+i+" #"+settings.a[i][elt]+".a").addClass("s"); }
+                            for (var elt in settings.a[i]) {
+								if (typeof(settings.a[i][elt])=="string") {
+									$this.find("#panels #"+i+" #"+settings.a[i][elt]+".a").addClass("s");
+								}
+								else {
+									$this.find("#panels #"+i).append(
+										"<div class='a va v s' id='V"+settings.a[i][elt].value+"'><div class='label'>"+settings.a[i][elt].label+"</div></div>");
+								}
+							}
                         }
-                        else { $this.find("#panels #"+i+" .a").addClass("s"); }
+                        else {
+							$this.find("#panels #"+i+" .a").addClass("s");
+						}
                     }
                 }
 
@@ -155,11 +167,19 @@
                     var $clone = $("#background #"+settings.bg[i].type+".hide", settings.svg.root()).clone();
                     $clone.attr("id","bg"+i).attr("class","");
                     for (var j in settings.bg[i].attr) { $clone.attr(j, settings.bg[i].attr[j]); }
-                    if (settings.bg[i].type=="text") { $clone.text(settings.bg[i].text); }
+                    if (settings.bg[i].type=="text") {
+						var content = settings.bg[i].text;
+						if (settings.po && settings.po[content]) { content = settings.po[content]; }
+						$clone.text(content); }
                     $clone.appendTo($("#background", settings.svg.root()));
                 }
 
                 if (settings.dev) { $this.find("#devmode").show(); }
+				
+				// SLIDER
+				$this.find("#slider>div").draggable({axis:'y',containment:'parent',
+					stop:function(event, ui) { }
+				});
 
                 if ($.isArray(settings.locale.guide)) {
                     $this.find("#guide").html("");
@@ -239,7 +259,10 @@
 
             var $html=$_line?$_line:$("<div class='line' id='"+(settings.codeid++)+"'></div>");
             $html.droppable({greedy:true, accept:".o",
+			    over: function(event, ui) { $(this).addClass("over"); },
+                out: function(event, ui) { $(this).removeClass("over"); },
                 drop:function(event, ui) {
+				  $this.find(".line").removeClass("over");
                   if ($(this).offset().top>=$this.find("#code").offset().top)
                   {
                     var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
@@ -257,11 +280,15 @@
                                               .append($new.addClass("running")).show();
                         setTimeout(function(){$this.find("#touch01>div").removeClass("running").parent().hide(); },800);
 
+						// SCROLL HANDLING
                         $this.find("#code").scrollTop(500);
 
                         // HANDLE LINES
+						var nblines = $(this).parent().find(">.line").length;
                         var $last = $(this).parent().find(">.line").last();
-                        if ($last.html().length) { helpers.addline($this, $(this).parent()); }
+                        if ($last.html().length && nblines<settings.maxlines) {
+							helpers.addline($this, $(this).parent());
+						}
 
                         // MAKE THE NEW OPERATION DRAGGABLE
                         $e.draggable({ containment:$this, helper:"clone", appendTo:$this.find("#code #lines"),
@@ -377,7 +404,7 @@
                                     case "blue"     : ret = 3; break;
                                 }
                             }
-                            else { ret = parseInt($current.text()); }
+                            else { ret = parseInt($current.attr("id").substr(1)); }
                         }
                     }
                     return ret;

@@ -92,6 +92,7 @@
                 <div class="a va v" id="red"><div class="label"></div></div>
                 <div class="a va v" id="green"><div class="label"></div></div>
                 <div class="a va v" id="blue"><div class="label"></div></div>
+                <div style="clear:both"></div>
             </div>
             <div id="ma">
                 <div class="a ma v" id="plus"><div class="d va"></div><div class="label">+</div><div class="d va"></div></div>
@@ -139,10 +140,14 @@
         </div>
     </div>
     <div id="code">
-        <div id="lines"></div>
-        <div id="footer"></div>
+		<div id="ccode">
+			<div id="lines"></div>
+			<div id="footer"></div>
+		</div>
+		<div id="slider"><div></div></div>
     </div>
   </div>
+  
   
   <div id="output">
     <div id="board" ontouchstart="$(this).closest('.logo').logo('board');event.preventDefault();"
@@ -166,6 +171,11 @@
     </div>
     <div id="exercice"><div></div></div>
   </div>
+  
+  
+  <div id="programzone" class="legend"></div>
+  <div id="depotzone" class="legend"></div>
+  <div id="screenzone" class="legend"></div>
   
   <div id="phelp" ontouchstart="$(this).hide();event.preventDefault();"
                   onclick="$(this).hide();"><div>

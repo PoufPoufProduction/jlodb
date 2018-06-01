@@ -24,6 +24,7 @@
 .logo div#exercice .svg              { background-color:rgba(0,0,0,0.2); font-size:6em; }
 .logo div#exercice .svg>div          { width:1em; height:1em; margin:.1em auto; }
 .logo div#exercice .strong           { color:red; font-weight:bold; border: 1px solid red; border-width:1px 0; }
+.logo div#exercice .icon			 { display:inline-block; width:1em; height:1em; }
 .logo .cc                            { background-color:rgba(0,40,0,0.9); color:lime; padding:.5em; margin:.4em 0; }
 .logo div#ptip .cc                   { padding:.1em .5em; font-size:.6em; }
 .logo div#ptip>div                   { margin-left:2%; }
@@ -52,13 +53,13 @@
 .logo .cl>.op                    { height:1.2em; }
 .logo .label                         { margin:0 .1em; text-align:center; float:left; }
 .logo .a                             { margin:.1em; padding:0 .2em; float:left; opacity:0.2; white-space:nowrap;
-                                        border-radius:.25em; cursor:move; }
-.logo .a.s                           { opacity:1; }
+                                        border-radius:.25em; cursor:move; display:none; }
+.logo .a.s                           { opacity:1; display:inherit; }
 .logo .d                             { float:left; margin:.1em .1em .1em .2em;  min-height:1.2em; min-width:1.8em; border-radius:.25em; }
 .logo .d.va.over                     { background-color:red !important; }
 .logo .ui-draggable-dragging .d.op   { display:none; }
 .logo .ui-draggable-dragging .d.va   { opacity:0; }
-.logo .ui-draggable-dragging         { min-width:3em; cursor:none !important; }
+.logo .ui-draggable-dragging         { min-width:3em; z-index:3; cursor:none !important; }
 .logo .va.ui-draggable-dragging      { opacity:0.8 !important; height:1.2em; min-width:1.8em; }
 .logo .ma.ui-draggable-dragging      { opacity:0.8 !important; height:1.4em;}
 .logo .op.ui-draggable-dragging      { height:1.4em;}
@@ -66,21 +67,41 @@
 .logo .d>.a                          { font-size:0.75em; }
 
 .logo div#code                       { margin:.22em; width:18.8em; height:18.8em; background-color:#222222;
-                                       overflow:auto; font-size:0.4em; background-size:100%;
+                                       overflow:hidden; font-size:0.4em; background-size:90%;
                                        background-image:url("../../res/img/background/asset/it01.svg"); background-repeat:no-repeat; }
+.logo div#code #ccode				{ width:90%; height:100%; float:left;}
+.logo div#code #slider				{ width:10%; height:100%; background-color:white; }
+.logo div#code #slider>div			{ width:100%; height:3em; background-color:gray; cursor:move; }
+.logo div#code #slider>div.ui-draggable-dragging	{ background-color:red; }
+
+.logo.fixed div#code #ccode			{ width:100%; }
+.logo.fixed div#code #slider		{ display:none; }
+
 .logo div#code #footer               { width:100%; height:2em; border:1px solid #334466; border-width:4px 0 0 0;
                                        background-image:linear-gradient(to bottom, rgba(51,68,102,1), rgba(51,68,102,0)); }
 .logo div#code .line                 { width:100%; min-height:1em;
                                        background-color:rgba(20,40,50,0.9); border:1px solid #334466; border-width:0 0 1px 0;}
 .logo div#code .line.s               { background:yellow; }
+.logo div#code .line.over			 { background:red; }
 
-.logo div#code .line .op                      { width:95%; }
-.logo div#code .line .cl                        { height:inherit;  }
-.logo div#code .line .cl>.op            { height:auto !important;  }
+.logo div#code .line .op             { width:95%; }
+.logo div#code .line .cl             { height:inherit;  }
+.logo div#code .line .cl>.op         { height:auto !important;  }
 .logo div#code .cl.cc                 { width:95%; }
 .logo div#code .cc .d.op              { clear:both; width:98%; border-radius:0; }
 
+
+.logo.big .a						 { font-size:1.5em; }
+.logo.big .d>.a						 { font-size:0.75em; }
+.logo.big div#code .line			 { min-height:2.2em; }
+
 .logo #touch01                          { top:0; left:0; font-size:2em; }
+
+.logo .legend				{ position:absolute; text-align:right; font-size:0.4em; color:gray; display:none; z-index:2; }
+.logo #programzone			 { top:94%; left:20%; width:27%; }
+.logo #depotzone			 { top:30%; left:20%; width:27%; color:white; }
+.logo #screenzone			 { top:1%; left:50%; }
+.logo.legend .legend	{ display:inherit; }
 
 .logo #phelp                            { width:16em; height:12em; position:absolute;top:0;left:0; background-color:rgba(0,0,0,0.5);
                                       z-index:2002; cursor:pointer; display:none; }
