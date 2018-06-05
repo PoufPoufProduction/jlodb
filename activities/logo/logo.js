@@ -161,7 +161,7 @@
                 }
 
                 $this.find(".a.s").draggable({ containment:$this, helper:"clone", appendTo:$this.find("#code #lines")});
-                helpers.addline($this,$this.find("#code #lines"));
+                for (var i=0; i<20; i++) helpers.addline($this,$this.find("#code #lines"));
 
                 for (var i in settings.bg) {
                     var $clone = $("#background #"+settings.bg[i].type+".hide", settings.svg.root()).clone();
@@ -178,7 +178,16 @@
 				
 				// SLIDER
 				$this.find("#slider>div").draggable({axis:'y',containment:'parent',
-					stop:function(event, ui) { }
+					stop: function(event, ui) { },
+					start: function(event, ui) {
+						settings.slider.slider = $(this).parent().height() - $(this).height();
+						console.log(JSON.stringify(settings.slider));
+					},
+					drag: function(event, ui) {
+						var y = settings.slider.code*($(this).offset().top-settings.slider.top)/settings.slider.slider;
+						$this.find("#ccode").css("margin-top",-y+"px");
+						console.log(y);
+					}
 				});
 
                 if ($.isArray(settings.locale.guide)) {
@@ -254,6 +263,18 @@
                   }
             }});
         },
+        slider: {
+			height: function($this) {
+				var settings = helpers.settings($this);
+				var h1 = $this.find("#lines").height()+$this.find("#footer").height();
+				var h2 = $this.find("#code").height();
+				var sliderheight=Math.min(100, 100*h2/h1);
+                $this.find("#slider>div").css("height",sliderheight+"%");
+                settings.slider.top 	= $this.find("#slider>div").offset().top;
+                settings.slider.code    = Math.max(0, h1 - h2);
+                
+			}
+		},
         addline: function($this, $elt, $_line) {
             var settings = helpers.settings($this);
 
@@ -279,9 +300,6 @@
                                               .css("top",Math.floor(y - $this.find("#touch01").height()/2)+"px")
                                               .append($new.addClass("running")).show();
                         setTimeout(function(){$this.find("#touch01>div").removeClass("running").parent().hide(); },800);
-
-						// SCROLL HANDLING
-                        $this.find("#code").scrollTop(500);
 
                         // HANDLE LINES
 						var nblines = $(this).parent().find(">.line").length;
@@ -311,7 +329,7 @@
                     }
                   }
             }});
-            if (!$_line) { $elt.append($html); }
+            if (!$_line) { $elt.append($html);  helpers.slider.height($this); }
         },
         process: {
             color: ["black","red","green","blue","white"],
@@ -813,7 +831,8 @@
                         stack       : []
                     },
                     tipid           : 0,
-                    wrong           : 0
+                    wrong           : 0,
+                    slider			: { slider:0, code:0, top:0 }
                 };
 
 
