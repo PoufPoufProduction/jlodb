@@ -161,7 +161,7 @@
                 }
 
                 $this.find(".a.s").draggable({ containment:$this, helper:"clone", appendTo:$this.find("#code #lines")});
-                for (var i=0; i<20; i++) helpers.addline($this,$this.find("#code #lines"));
+                helpers.addline($this,$this.find("#code #lines"));
 
                 for (var i in settings.bg) {
                     var $clone = $("#background #"+settings.bg[i].type+".hide", settings.svg.root()).clone();
@@ -178,13 +178,13 @@
 				
 				// SLIDER
 				$this.find("#slider>div").draggable({axis:'y',containment:'parent',
-					stop: function(event, ui) { },
+					stop: function(event, ui) { helpers.slider.update($this); },
 					start: function(event, ui) {
-						settings.slider.slider = $(this).parent().height() - $(this).height();
+						helpers.slider.update($this);
 						console.log(JSON.stringify(settings.slider));
 					},
 					drag: function(event, ui) {
-						var y = settings.slider.code*($(this).offset().top-settings.slider.top)/settings.slider.slider;
+						var y = settings.slider.cod*($(this).offset().top-settings.slider.top)/settings.slider.gap;
 						$this.find("#ccode").css("margin-top",-y+"px");
 						console.log(y);
 					}
@@ -264,15 +264,20 @@
             }});
         },
         slider: {
-			height: function($this) {
+			update: function($this) {
 				var settings = helpers.settings($this);
 				var h1 = $this.find("#lines").height()+$this.find("#footer").height();
 				var h2 = $this.find("#code").height();
 				var sliderheight=Math.min(100, 100*h2/h1);
                 $this.find("#slider>div").css("height",sliderheight+"%");
-                settings.slider.top 	= $this.find("#slider>div").offset().top;
-                settings.slider.code    = Math.max(0, h1 - h2);
-                
+				
+				settings.slider.top		= $this.find("#code").offset().top;
+				settings.slider.gap		= $this.find("#slider").height() - $this.find("#slider>div").height();
+                settings.slider.pos 	= $this.find("#slider>div").offset().top;
+                settings.slider.cod		= Math.max(0, h1 - h2);
+				
+				var ptop = 100*(settings.slider.pos-settings.slider.top)/$this.find("#slider").height();
+				$this.find("#slider>div").css("top",ptop+"%");
 			}
 		},
         addline: function($this, $elt, $_line) {
@@ -329,7 +334,7 @@
                     }
                   }
             }});
-            if (!$_line) { $elt.append($html);  helpers.slider.height($this); }
+            if (!$_line) { $elt.append($html);  helpers.slider.update($this); }
         },
         process: {
             color: ["black","red","green","blue","white"],

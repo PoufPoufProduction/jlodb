@@ -142,7 +142,7 @@
     <rdf:Description>
         <dct:identifier>t01</dct:identifier>
         <dct:title xml:lang="fr-FR">Faire avancer et tourner vers la droite la tortue pour tracer deux segments consécutifs [sans valeur d'angle].</dct:title>
-        <dct:description><![CDATA["maxlines":6,"class":"fixed big","a":{"op":["av","td"],"va":["V200",{"label":"⊥","value":"090"}]},"bg":[{"type":"line","attr":{"x1":320,"y1":40,"x2":320,"y2":240}},{"type":"line","attr":{"x1":320,"y1":40,"x2":520,"y2":40}}],"result":{"nb":2,"values":[[320,240,320,40,0],[320,40,520,40,0]]}]]></dct:description>
+        <dct:description><![CDATA["maxlines":3,"class":"fixed big","a":{"op":["av","td"],"va":["V200",{"label":"⊥","value":"090"}]},"bg":[{"type":"line","attr":{"x1":320,"y1":40,"x2":320,"y2":240}},{"type":"line","attr":{"x1":320,"y1":40,"x2":520,"y2":40}}],"result":{"nb":2,"values":[[320,240,320,40,0],[320,40,520,40,0]]}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Tracez les deux segments de longeur 200.[/b][br][br]Ici, la tortue doit [b]tourner[/b] selon un [red]angle droit[/red] dont la valeur est [b]⊥[/b].","tips":["La tortue doit [b]TOURNER À DROITE[/b] entre [b]2[/b] actions [b]AVANCER[/b].","Les deux traits forment un [b]angle droit[/b] dont la valeur est [b]⊥[/b].","La figure à tracer est :[code]AVANCE 200[br]TOURNE DROITE ⊥[br]AVANCE 200[/code]"]]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>it</dct:subject>
@@ -155,7 +155,7 @@
     <rdf:Description>
         <dct:identifier>t02</dct:identifier>
         <dct:title xml:lang="fr-FR">Faire avancer et tourner vers la gauche la tortue pour tracer deux segments consécutifs [sans valeur d'angle].</dct:title>
-        <dct:description><![CDATA["maxlines":6,"class":"fixed big","a":{"op":["av","tg"],"va":["V100",{"label":"⊥","value":"090"}]},"bg":[{"type":"line","attr":{"x1":320,"y1":140,"x2":320,"y2":240}},{"type":"line","attr":{"x1":320,"y1":140,"x2":220,"y2":140}}],"result":{"nb":2,"values":[[320,240,320,140,0],[320,140,220,140,0]]}]]></dct:description>
+        <dct:description><![CDATA["maxlines":3,"class":"fixed big","a":{"op":["av","tg"],"va":["V100",{"label":"⊥","value":"090"}]},"bg":[{"type":"line","attr":{"x1":320,"y1":140,"x2":320,"y2":240}},{"type":"line","attr":{"x1":320,"y1":140,"x2":220,"y2":140}}],"result":{"nb":2,"values":[[320,240,320,140,0],[320,140,220,140,0]]}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Tracez[/b] les deux segments de longeur 200.","tips":["La tortue doit [b]TOURNER À GAUCHE[/b] entre [b]2[/b] actions [b]AVANCER[/b].","Les deux traits forment un [b]angle droit[/b] dont la valeur est [b]⊥[/b].","La figure à tracer est :[code]AVANCE 100[br]TOURNE GAUCHE 90[br]AVANCE 100[/code]"]]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>it</dct:subject>
@@ -331,14 +331,25 @@
 
 	
 	
-	
-	
     <rdf:Description>
         <dct:identifier>at41</dct:identifier>
-        <dct:title xml:lang="fr-FR">Tracer 2 carrés [sans valeur d'angle].</dct:title>
-        <dct:description><![CDATA["a":{"op":["av","re","tg","td","lc","bc","ct","mt"],"va":["V200","V100",{"label":"&ang;","value":"045"},{"label":"⊥","value":"090"}]},"bg":[{"type":"line","attr":{"x1":320,"y1":240,"x2":320,"y2":40}},{"type":"line","attr":{"x1":320,"y1":40,"x2":520,"y2":40}},{"type":"line","attr":{"x1":520,"y1":40,"x2":520,"y2":240}},{"type":"line","attr":{"x1":520,"y1":240,"x2":320,"y2":240}},{"type":"line","attr":{"x1":320,"y1":240,"x2":249.29,"y2":169.29}},{"type":"line","attr":{"x1":249.29,"y1":169.29,"x2":320,"y2":98.58}},{"type":"line","attr":{"x1":320,"y1":98.58,"x2":390.71,"y2":169.29}},{"type":"line","attr":{"x1":390.71,"y1":169.29,"x2":320,"y2":240}}],"result":{"nb":8,"values":[[320,240,320,40,0],[320,40,520,40,0],[520,40,520,240,0],[520,240,320,240,0],[320,240,249.29,169.29,0],[249.29,169.29,320,98.58,0],[320,98.58,390.71,169.29,0],[390.71,169.29,320,240,0]]}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Tracez[/b] le carré droit dont les côtés mesurent [red]200[/red] et le carré penché dont les côtés mesurent [red]100[/red].","tips":["Ainsi débute le code :[code]AVANCE 200[br]TOURNE DROITE ⊥[br][o1]AVANCE 200[/o1][br][o2]TOURNE DROITE ⊥[/o2][/code]","En changeant [red][b]200[/b][/red] par [red][b]100[/b][/red], le même code sert pour tracer le [b]deuxième[/b] carré.","[code]TOURNE DROITE &ang;[/code] permet d'enchaîner les [b]2 carrés[/b]."]]]></dct:description>
-        <dct:extent>6</dct:extent>
+        <dct:title xml:lang="fr-FR">Tracer une ligne brisée [sans valeur d'angle].</dct:title>
+        <dct:description><![CDATA["maxlines":11,"class":"fixed","a":{"op":["av","tg","td","lc","bc","ct","mt"],"va":["V100",{"label":"&ang;","value":"045"},{"label":"⊥","value":"090"}]},"bg":[{"type":"path","attr":{"d":"M 320,240 L 320,140 L 420,140 L 490.71,210.71 L 420,281.42 L 420,381.42 L 320,381.42"}}],"result":{"nb":6,"values":[[320,240,320,140,0],[320,140,420,140,0],[420,140,490.71,210.71,0],[490.71,210.71,420,281.42,0],[420,281.42,420,381.42,0],[420,381.42,320,381.42,0]]}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Tracez[/b] la ligne brisée dont chaque segment mesure [red]100[/red].","tips":["Le code est le suivant :[code]AVANCE 100[br]TOURNE DROITE ⊥[br]AVANCE 100[br][o1]TOURNE DROITE &ang;[/o1][/code]","[code]AVANCE 100[br]TOURNE DROITE ⊥[br]AVANCE 100[br][o1]TOURNE GAUCHE &ang;[/o1][/code]","[code]AVANCE 100[br]TOURNE DROITE ⊥[br]AVANCE 100[/code]"]]]></dct:description>
+        <dct:extent>8</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+		<dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:alternative>a01</dct:alternative>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>at42</dct:identifier>
+        <dct:title xml:lang="fr-FR">Tracer une ligne brisée [sans valeur d'angle].</dct:title>
+        <dct:description><![CDATA["maxlines":6,"class":"fixed big","a":{"op":["av","tg","td","ct","mt"],"va":["V200",{"label":"&ang;","value":"045"},{"label":"⊥","value":"090"}]},"bg":[{"type":"path","attr":{"d":"M 320,240 L 320,40 L 178.58,181.42"}}],"result":{"nb":2,"values":[[320,240,320,40,0],[320,40,178.58,181.42,0]]}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Tracez[/b] la ligne brisée dont chaque segment mesure [red]200[/red].","tips":["Il faut faire [b]tourner[/b] la tortue entre les 2 traits.","Le virage demandé ne peut se faire qu'en [red]2 fois[/red].","Le code est le suivant [code]AVANCE 200[br]TOURNE GAUCHE ⊥[br]TOURNE GAUCHE &ang;[br]AVANCE 200[/code]"]]]></dct:description>
+        <dct:extent>3</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>4</dct:type>
@@ -347,42 +358,262 @@
     </rdf:Description>
 	
 	
-
-    <!-- TURN 45 ANGLE -->
-	
-
-	<!--
     <rdf:Description>
-        <dct:identifier>101</dct:identifier>
-        <dct:title xml:lang="fr-FR">Faire avancer et tourner vers la gauche de 3/4 la tortue pour tracer deux segments consécutifs.</dct:title>
-        <dct:description><![CDATA["a":{"op":["av","tg"],"va":["V200","V090","V270"]},"bg":[{"type":"grid100","attr":{"class":"tiny"}},{"type":"line","attr":{"x1":320,"y1":40,"x2":320,"y2":240}},{"type":"line","attr":{"x1":320,"y1":40,"x2":520,"y2":40}}],"result":{"nb":2,"values":[[320,240,320,40,0],[320,40,520,40,0]]}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["En utilisant la [red]grille 100x100[/red] pour vous repérer, [b]tracez la figure demandée.[/b]","","[strong]Tourner à gauche de 270 degrés revient à tourner à droite de 90 degrés.[/strong]"],"tips":["Un [b]tour complet[/b] fait [b]360 degrés[/b]","Tourner de [b]359 degrés[/b] ([i]presque un tour complet[/i]) revient à tourner d'[b]1 petit degré[/b] dans l'[red]autre sens[/red].","Tourner de [b]270 degrés[/b] revient à tourner de [b]90 degrés[/b] dans l'[red]autre sens[/red]."]]]></dct:description>
-        <dct:extent>5</dct:extent>
+        <dct:identifier>at46</dct:identifier>
+        <dct:title xml:lang="fr-FR">Tracer 2 carrés [sans valeur d'angle].</dct:title>
+        <dct:description><![CDATA["a":{"op":["av","re","tg","td","lc","bc","ct","mt"],"va":["V200","V100",{"label":"&ang;","value":"045"},{"label":"⊥","value":"090"}]},"bg":[{"type":"line","attr":{"x1":320,"y1":240,"x2":320,"y2":40}},{"type":"line","attr":{"x1":320,"y1":40,"x2":520,"y2":40}},{"type":"line","attr":{"x1":520,"y1":40,"x2":520,"y2":240}},{"type":"line","attr":{"x1":520,"y1":240,"x2":320,"y2":240}},{"type":"line","attr":{"x1":320,"y1":240,"x2":249.29,"y2":169.29}},{"type":"line","attr":{"x1":249.29,"y1":169.29,"x2":320,"y2":98.58}},{"type":"line","attr":{"x1":320,"y1":98.58,"x2":390.71,"y2":169.29}},{"type":"line","attr":{"x1":390.71,"y1":169.29,"x2":320,"y2":240}}],"result":{"nb":8,"values":[[320,240,320,40,0],[320,40,520,40,0],[520,40,520,240,0],[520,240,320,240,0],[320,240,249.29,169.29,0],[249.29,169.29,320,98.58,0],[320,98.58,390.71,169.29,0],[390.71,169.29,320,240,0]]}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Tracez[/b] le carré droit dont les côtés mesurent [red]200[/red] et le carré penché dont les côtés mesurent [red]100[/red].","tips":["Ainsi débute le code :[code]AVANCE 200[br]TOURNE DROITE ⊥[br][o1]AVANCE 200[/o1][br][o2]TOURNE DROITE ⊥[/o2][/code]","En changeant [red][b]200[/b][/red] par [red][b]100[/b][/red], le même code sert pour tracer le [b]deuxième[/b] carré.","[code]TOURNE DROITE &ang;[/code] permet d'enchaîner les [b]2 carrés[/b]."]]]></dct:description>
+        <dct:extent>10</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
+        <dct:type>4</dct:type>
+		<dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:alternative>a01</dct:alternative>
     </rdf:Description>
-
+	
+	
+    <!-- ORIGIN -->
 
     <rdf:Description>
-        <dct:identifier>102</dct:identifier>
-        <dct:title xml:lang="fr-FR">Faire reculer et tourner la tortue de 3/4 pour tracer deux segments consécutifs.</dct:title>
-        <dct:description><![CDATA["a":{"op":["re","td","tg"],"va":["V200","V270"]},"bg":[{"type":"grid100","attr":{"class":"tiny"}},{"type":"line","attr":{"x1":320,"y1":240,"x2":320,"y2":440}},{"type":"line","attr":{"x1":320,"y1":440,"x2":120,"y2":440}}],"result":{"nb":2,"values":[[320,240,320,440,0],[320,440,120,440,0]]}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["En utilisant l'opérateur [red][b]RECULE[/b][/red], [b]tracez les deux segments de longeur 200.[/b]","","Attention, [b]la valeur 90 n'est pas disponible ici[/b]. Seule 270 l'est."],"tips":["En temps normal, le [b]virage[/b] de la tortue serait réalisée grâce à la commande [code]TOURNE DROITE 90[/code].","Ne disposant que de la valeur [b]270[/b], le virage doit se faire dans l'[red]autre sens[/red].","La solution est :[code]RECULE 200[br]TOURNE GAUCHE 270[br]RECULE 200[/code]"]]]></dct:description>
+        <dct:identifier>o01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Replacer la tortue à son point d'origine pour tracer un triangle.</dct:title>
+        <dct:description><![CDATA["class":"big fixed","maxlines":6,"a":{"op":["av","td","tg","or","ct","mt"],"va":["V200",{"label":"⊥","value":"090"}]},"bg":[{"type":"grid100","attr":{"class":"tiny"}},{"type":"line","attr":{"x1":320,"y1":240,"x2":320,"y2":40}},{"type":"line","attr":{"x1":320,"y1":40,"x2":520,"y2":40}},{"type":"line","attr":{"x1":520,"y1":40,"x2":320,"y2":240}}],"result":{"nb":3,"values":[[320,240,320,40,0],[320,40,520,40,0],[520,40,320,240,0]]}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"La commande [red][b]ORIGINE[/b][/red] permet de replacer la tortue à [b]son point d'origine[/b] (au milieu de l'écran).[br][br][b]Tracez[/b] la figure demandée","tips":["La tortue doit dessiner dans cet ordre : le trait [b]vertical[/b], [b]horizontal[/b] puis [b]oblique[/b].","Ainsi début le code :[code]AVANCE 200[br]TOURNE DROITE ⊥[br]AVANCE 200[/code]","Pour le trait oblique, il suffit de replacer la tortue à son [b]point d'origine[/b] avec :[code]ORIGIN[/code]"]]]></dct:description>
         <dct:extent>5</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>001</dct:alternative>
+        <dct:alternative>a01</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
     </rdf:Description>
-	
-	-->
 
-    
 
     <rdf:Description>
-        <dct:identifier>104</dct:identifier>
+        <dct:identifier>o02</dct:identifier>
+        <dct:title xml:lang="fr-FR">Replacer la tortue à son point d'origine pour tracer un triangle.</dct:title>
+        <dct:description><![CDATA["class":"big fixed","maxlines":6,"a":{"op":["av","td","tg","or","ct","mt"],"va":["V300","V100",{"label":"⊥","value":"090"}]},"bg":[{"type":"grid100","attr":{"class":"tiny"}},{"type":"line","attr":{"x1":320,"y1":240,"x2":320,"y2":140}},{"type":"line","attr":{"x1":320,"y1":140,"x2":20,"y2":140}},{"type":"line","attr":{"x1":20,"y1":140,"x2":320,"y2":240}}],"result":{"nb":3,"values":[[320,240,320,140,0],[320,140,20,140,0],[20,140,320,240,0]]}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"En utilisant la [red]grille 100x100[/red] pour vous repérer, [b]tracez la figure demandée.[/b]","tips":["La tortue doit dessiner dans cet ordre : le trait [b]vertical[/b], [b]horizontal[/b] puis [b]oblique[/b].","Ainsi début le code :[code]AVANCE 100[br]TOURNE GAUCHE ⊥[br]AVANCE 200[/code]","Pour le trait oblique, il suffit de replacer la tortue à son [b]point d'origine[/b] avec :[code]ORIGIN[/code]"]]]></dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>a01</dct:alternative>
+    </rdf:Description>
+	
+	
+    <!-- DIRECTION -->
+
+    <rdf:Description>
+        <dct:identifier>c01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Faire avancer et tourner de façon absolue la tortue pour tracer deux segments consécutifs.</dct:title>
+        <dct:description><![CDATA["class":"big fixed","maxlines":3,"a":{"op":["av","ca"],"va":["V100",{"label":"←","value":"180"}]},"bg":[{"type":"grid100","attr":{"class":"tiny"}},{"type":"text","attr":{"transform":"translate(312,30)"},"text":"↑"},{"type":"text","attr":{"transform":"translate(600,240)"},"text":"→"},{"type":"text","attr":{"transform":"translate(300,470)"},"text":"↓"},{"type":"text","attr":{"transform":"translate(10,240)"},"text":"←"},{"type":"line","attr":{"x1":320,"y1":240,"x2":320,"y2":140}},{"type":"line","attr":{"x1":320,"y1":140,"x2":220,"y2":140}}],"result":{"nb":2,"values":[[320,240,320,140,0],[320,140,220,140,0]]}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"En utilisant la [red]grille 100x100[/red] pour vous repérer, [b]tracez la figure demandée.[/b][br][strong]CAP permet d'orienter la tortue selon la direction voulue.[/strong]","tips":["La tortue doit dessiner [b]2 traits[/b] de longueur [b]100[/b]","Entre les 2 appels à [code]AVANCE 100[/code] la tortue doit tourner vers la [b]gauche de l'écran[/b].","[code]CAP ←[/code] [b]oriente[/b] la tortue vers la gauche de l'écran."]]]></dct:description>
+        <dct:extent>5</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:alternative>a01</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>c02</dct:identifier>
+        <dct:title xml:lang="fr-FR">Faire avancer et tourner de façon absolue la tortue pour tracer la figure demandée au sein d'une grille 100x100.</dct:title>
+        <dct:description><![CDATA["class":"fixed","maxlines":10,"a":{"op":["av","ca","ct","mt"],"va":["V200",{"label":"→","value":"000"},{"label":"↑","value":"090"},{"label":"←","value":"180"},{"label":"↓","value":"270"}]},"bg":[{"type":"grid100","attr":{"class":"tiny"}},{"type":"text","attr":{"transform":"translate(312,30)"},"text":"↑"},{"type":"text","attr":{"transform":"translate(600,240)"},"text":"→"},{"type":"text","attr":{"transform":"translate(300,470)"},"text":"↓"},{"type":"text","attr":{"transform":"translate(10,240)"},"text":"←"},{"type":"line","attr":{"x1":320,"y1":40,"x2":320,"y2":240}},{"type":"line","attr":{"x1":520,"y1":40,"x2":320,"y2":40}},{"type":"line","attr":{"x1":520,"y1":40,"x2":520,"y2":240}},{"type":"line","attr":{"x1":320,"y1":240,"x2":520,"y2":240}}],"result":{"nb":4,"values":[[320,40,320,240,0],[520,40,320,40,0],[520,40,520,240,0],[520,240,320,240,0]]}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"En utilisant la [red]grille 100x100[/red] pour vous repérer, [b]tracez la figure demandée.[/b]","tips":["La tortue doit [b]avancer 4 fois[/b] pour tracer un carré.","Après chaque déplacement, la tortue doit s'orienter avec l'opérateur [red][b]CAP[/b][/red].","La tortue doit utiliser [red][b]CAP[/b][/red] avec les 3 valeurs suivantes [b]→[/b], [b]↓[/b] et [b]←[/b]. Dans cet [b]ordre[/b]."]]]></dct:description>
+        <dct:extent>5</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>a01</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>c03</dct:identifier>
+        <dct:title xml:lang="fr-FR">Faire avancer et tourner de façon absolue la tortue pour tracer la figure demandée.</dct:title>
+        <dct:description><![CDATA["class":"big fixed","maxlines":6,"a":{"op":["av","ca","ct","mt","or"],"va":["V200",{"label":"→","value":"000"},{"label":"↑","value":"090"},{"label":"←","value":"180"},{"label":"↓","value":"270"},{"label":"&#8599;","value":"045"},{"label":"&#8598;","value":"135"},{"label":"&#8601;","value":"225"},{"label":"&#8600;","value":"315"}]},"bg":[{"type":"circle","attr":{"cx":320,"cy":240,"r":200,"class":"tiny"}},{"type":"text","attr":{"transform":"translate(312,30)"},"text":"↑"},{"type":"text","attr":{"transform":"translate(600,240)"},"text":"→"},{"type":"text","attr":{"transform":"translate(300,470)"},"text":"↓"},{"type":"text","attr":{"transform":"translate(10,240)"},"text":"←"},{"type":"line","attr":{"x1":320,"y1":240,"x2":461.42,"y2":98.58}},{"type":"line","attr":{"x1":461.42,"y1":98.58,"x2":602.84,"y2":240}},{"type":"line","attr":{"x1":602.84,"y1":240,"x2":320,"y2":240}}],"result":{"nb":3,"values":[[320,240,461.42,98.58,0],[461.42,98.58,602.84,240,0],[602.84,240,320,240,0]]}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Tracez le triangle dont les 2 côtés égaux mesurent 200.[/b]","tips":["[red][b]CAP[/b][/red] permet d'orienter la tortue pour tracer le haut de la figure.","Ainsi débute le code :[code]CAP &#8599;[br]AVANCE 200[br]CAP &#8600;[br]AVANCE 200[/code]","Enfin, il suffit de replacer la tortue à son [b]point d'origine[/b] avec :[code]ORIGIN[/code]"]]]></dct:description>
+        <dct:extent>5</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>a01</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>c04</dct:identifier>
+        <dct:title xml:lang="fr-FR">Faire avancer et tourner de façon absolue la tortue pour tracer la figure demandée.</dct:title>
+        <dct:description><![CDATA["class":"fixed","maxlines":10,"a":{"op":["av","re","ca","lc","bc","ct","mt","or"],"va":["V200",{"label":"→","value":"000"},{"label":"↑","value":"090"},{"label":"←","value":"180"},{"label":"↓","value":"270"},{"label":"&#8599;","value":"045"},{"label":"&#8598;","value":"135"},{"label":"&#8601;","value":"225"},{"label":"&#8600;","value":"315"}]},"bg":[{"type":"circle","attr":{"cx":320,"cy":240,"r":200,"class":"tiny"}},{"type":"text","attr":{"transform":"translate(312,30)"},"text":"↑"},{"type":"text","attr":{"transform":"translate(600,240)"},"text":"→"},{"type":"text","attr":{"transform":"translate(300,470)"},"text":"↓"},{"type":"text","attr":{"transform":"translate(10,240)"},"text":"←"},{"type":"line","attr":{"x1":320,"y1":240,"x2":178.58,"y2":98.58}},{"type":"line","attr":{"x1":178.58,"y1":98.58,"x2":37.16,"y2":240}},{"type":"line","attr":{"x1":37.16,"y1":240,"x2":178.58,"y2":381.42}},{"type":"line","attr":{"x1":178.58,"y1":381.42,"x2":320,"y2":240}}],"result":{"nb":4,"values":[[320,240,178.58,98.58,0],[178.58,98.58,37.16,240,0],[37.16,240,178.58,381.42,0],[178.58,381.42,320,240,0]]}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Tracez le carré de longueur 200.[/b]","tips":["[red][b]CAP[/b][/red] permet d'orienter la tortue pour tracer le carré.","Les valeurs utilisées par [red][b]CAP[/b][/red] sont respectivement [b]&#8598;[/b], [b]&#8601;[/b], [b]&#8600;[/b] et [b]&#8599;[/b].","Ainsi débute le code :[code]CAP &#8598;[br]AVANCE 200[br]CAP &#8601;[br][o1]AVANCE 200[/o1][br][o2]CAP &#8600;[/o2][/code]"]]]></dct:description>
+        <dct:extent>5</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>a01</dct:alternative>
+    </rdf:Description>
+	
+	
+    <!-- POSITION -->
+
+    <rdf:Description>
+        <dct:identifier>p01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Positionner la tortue suivant des coordonnées dans le plan et tracer un segment.</dct:title>
+        <dct:description><![CDATA["class":"big fixed","maxlines":1,"a":{"op":["po"],"va":["V200"]},"bg":[{"type":"grid100","attr":{"class":"tiny"}},{"type":"text","attr":{"transform":"translate(280,30)"},"text":"(0,200)"},{"type":"text","attr":{"transform":"translate(480,230)"},"text":"(200,0)"},{"type":"text","attr":{"transform":"translate(280,470)"},"text":"(0,-200)"},{"type":"text","attr":{"transform":"translate(70,230)"},"text":"(-200,0)"},{"type":"line","attr":{"x1":320,"y1":240,"x2":520,"y2":40}}],"result":{"nb":1,"values":[[320,240,520,40,0]]}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"En utilisant la [red]grille 100x100[/red] pour vous repérer, [b]tracez la figure demandée.[/b][br][br]L'opérateur [red][b]POSITION[/b][/red] permet de positionner la tortue suivant les coordonnées du plan.[br][br][strong][b]POSITION[/b] ne modifie pas l'orientation de la tortue[/strong]","tips":["L'opérateur [red][b]POSITION[/b][/red] utilise [b]2 arguments[/b] : une [b]abscisse[/b] et une [b]ordonnée[/b].","Ici l'[b]abscisse[/b] que doit atteindre la tortue vaut [b]200[/b]. L'[b]ordonnée[/b] aussi.","[code]POSITION 200 200[/code] permet de dessiner le trait demandé par l'énoncé."]]]></dct:description>
+        <dct:extent>5</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:alternative>a01</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>p02</dct:identifier>
+        <dct:title xml:lang="fr-FR">Positionner la tortue suivant des coordonnées dans le plan et tracer un rectangle.</dct:title>
+        <dct:description><![CDATA["class":"big fixed","maxlines":4,"a":{"op":["po"],"va":["V200","V100","V000"]},"bg":[{"type":"grid100","attr":{"class":"tiny"}},{"type":"text","attr":{"transform":"translate(280,30)"},"text":"(0,200)"},{"type":"text","attr":{"transform":"translate(480,230)"},"text":"(200,0)"},{"type":"text","attr":{"transform":"translate(280,470)"},"text":"(0,-200)"},{"type":"text","attr":{"transform":"translate(70,230)"},"text":"(-200,0)"},{"type":"line","attr":{"x1":320,"y1":240,"x2":420,"y2":240}},{"type":"line","attr":{"x1":420,"y1":240,"x2":420,"y2":40}},{"type":"line","attr":{"x1":420,"y1":40,"x2":320,"y2":40}},{"type":"line","attr":{"x1":320,"y1":40,"x2":320,"y2":240}}],"result":{"nb":4,"values":[[320,240,420,240,0],[420,240,420,40,0],[420,40,320,40,0],[320,40,320,240,0]]}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"En utilisant la [red]grille 100x100[/red] pour vous repérer, [b]tracez la figure demandée.[/b]","tips":["Pour tracer le rectangle, la tortue doit se rendre aux [b]4 coins[/b] de celui-ci.","Les coordonnées des 4 coins du rectangle sont respectivement [[b]0,200[/b]], [[b]100,200[/b]], [[b]100,0[/b]], [[b]0,0[/b]].","[code]POSITION 0 200[br]POSITION 100 200[br]POSITION 100 0[br]POSITION 0 0[/code] permet de dessiner le rectangle."]]]></dct:description>
+        <dct:extent>5</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>a01</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>p03</dct:identifier>
+        <dct:title xml:lang="fr-FR">Positionner la tortue suivant des coordonnées dans le plan et tracer la figure demandée.</dct:title>
+        <dct:description><![CDATA["class":"big fixed","maxlines":5,"a":{"op":["po"],"va":["V200","V100","V000"]},"bg":[{"type":"grid100","attr":{"class":"tiny"}},{"type":"text","attr":{"transform":"translate(280,30)"},"text":"(0,200)"},{"type":"text","attr":{"transform":"translate(480,230)"},"text":"(200,0)"},{"type":"text","attr":{"transform":"translate(280,470)"},"text":"(0,-200)"},{"type":"text","attr":{"transform":"translate(70,230)"},"text":"(-200,0)"},{"type":"line","attr":{"x1":320,"y1":240,"x2":520,"y2":240}},{"type":"line","attr":{"x1":520,"y1":240,"x2":520,"y2":40}},{"type":"line","attr":{"x1":520,"y1":40,"x2":420,"y2":140}},{"type":"line","attr":{"x1":420,"y1":140,"x2":320,"y2":40}},{"type":"line","attr":{"x1":320,"y1":40,"x2":320,"y2":240}}],"result":{"nb":5,"values":[[320,240,520,240,0],[520,240,520,40,0],[520,40,420,140,0],[420,140,320,40,0],[320,40,320,240,0]]}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"En utilisant la [red]grille 100x100[/red] pour vous repérer, [b]tracez la figure demandée.[/b]","tips":["La tortue doit se rendre aux [b]5 coins[/b] de la figure demandée par l'énoncé.","Les coordonnées des 5 points sont [[b]0,200[/b]], [[b]100,100[/b]], [[b]200,200[/b]], [[b]200,0[/b]], [[b]0,0[/b]].","Le code demandé est :[code]POSITION 0 200[br]POSITION 100 100[br]POSITION 200 200[br]POSITION 200 0[br]POSITION 0 0[/code]"]]]></dct:description>
+        <dct:extent>5</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>a01</dct:alternative>
+    </rdf:Description>
+
+	<!-- POSITION & ORIGIN -->
+	
+    <rdf:Description>
+        <dct:identifier>po01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Positionner la tortue suivant des coordonnées dans le plan et tracer la figure demandée.</dct:title>
+        <dct:description><![CDATA["class":"big fixed","maxlines":3,"a":{"op":["po","or","re"],"va":["V200"]},"bg":[{"type":"grid100","attr":{"class":"tiny"}},{"type":"text","attr":{"transform":"translate(280,30)"},"text":"(0,200)"},{"type":"text","attr":{"transform":"translate(480,230)"},"text":"(200,0)"},{"type":"text","attr":{"transform":"translate(280,470)"},"text":"(0,-200)"},{"type":"text","attr":{"transform":"translate(70,230)"},"text":"(-200,0)"},{"type":"path","attr":{"d":"M 320,240 L 320,440 L 520,40 L 320,240"}}],"result":{"nb":3,"values":[[320,240,320,440,0],[320,440,520,40,0],[520,40,320,240,0]]}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"En utilisant la [red]grille 100x100[/red] pour vous repérer, [b]tracez la figure demandée.[/b]","tips":["La tortue doit commencer par [b]reculer[/b].","Ensuite, elle doit rejoindre la position [[b]200,200[/b]] avant de retourner à son point de [b]départ[/b].","Le code demandé est :[code]RECULE 200[br]POSITION 200 200[br]ORIGIN[/code]"]]]></dct:description>
+        <dct:extent>5</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>a01</dct:alternative>
+    </rdf:Description>
+
+    <!-- COLOR -->
+
+    <rdf:Description>
+        <dct:identifier>co01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Changer la couleur du fond de l'écran</dct:title>
+        <dct:description><![CDATA["class":"big fixed","maxlines":1,"a":{"op":["fo"],"va":["black","white","red","green","blue"]},"result":{"nb":0,"bg":"red"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez en ROUGE[/b] le fond de l'écran grâce à l'opérateur [red]FOND[/red]."]]></dct:description>
+        <dct:extent>5</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:alternative>a01</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>co02</dct:identifier>
+        <dct:title xml:lang="fr-FR">Faire avancer la tortue et tracer un segment vertical bleu.</dct:title>
+        <dct:description><![CDATA["class":"big fixed","maxlines":2,"a":{"op":["av","co"],"va":["V200","black","white","red","green","blue"]},"bg":[{"type":"line","attr":{"x1":320,"y1":40,"x2":320,"y2":240}}],"result":{"nb":1,"values":[[320,240,320,40,3]]}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Changez la couleur[/b] de la tortue avec l'opération [red]COULEUR[/red] et [b]tracez en BLEU[/b] le segment de longeur 200.","tips":["Avant de dessiner le trait, la tortue doit [b]changer[/b] de couleur.","[code]AVANCE 200[/code] permet de [b]dessiner[/b] le trait demandé par l'énoncé.","Avant cela, le choix de la [b]couleur[/b] se fait grâce à :[code]COULEUR BLEU[/code]"]]]></dct:description>
+        <dct:extent>5</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+        <dct:alternative>a01</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>co03</dct:identifier>
+        <dct:title xml:lang="fr-FR">Faire avancer la tortue et tracer 4 segments verticaux consécutifs de couleur différente.</dct:title>
+        <dct:description><![CDATA["class":"fixed","maxlines":8,"a":{"op":["av","co"],"va":["V050","black","white","red","green","blue"]},"bg":[{"type":"line","attr":{"x1":320,"y1":40,"x2":320,"y2":240}}],"result":{"nb":4,"values":[[320,240,320,190,0],[320,190,320,140,1],[320,140,320,90,2],[320,90,320,40,3]]}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Tracez 4 segments consécutifs de longueur 50[/b] et dont les couleurs sont respectivement (du plus bas au plus haut) [b]noir, rouge, vert[/b] et [b]bleu[/b]."],"tips":["Le code doit comprendre 4 appels à :[code]AVANCE 50[/code]","Entre 2 déplacements, la tortue [b]doit changer[/b] de couleur.","Ainsi débute le code :[code]AVANCE 50[br]COULEUR ROUGE[br]AVANCE 50[br][o1]COULEUR VERT[/o1][br][o2]AVANCE 50[/o2][/code]"]]]></dct:description>
+        <dct:extent>5</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>a01</dct:alternative>
+    </rdf:Description>
+	
+	
+    <!-- EVERYTHING -->
+
+    <rdf:Description>
+        <dct:identifier>e01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Tracer un carré bicolore.</dct:title>
+        <dct:description><![CDATA["a":{"op":["av","re","td","tg","lc","bc","ct","mt","fo","co"],"va":["V200","V100","V000","black","white","red","green","blue",{"label":"⊥","value":"090"}]},"bg":[{"type":"grid100","attr":{"class":"tiny"}},{"type":"line","attr":{"x1":320,"y1":240,"x2":520,"y2":240}},{"type":"line","attr":{"x1":520,"y1":240,"x2":520,"y2":440}},{"type":"line","attr":{"x1":520,"y1":440,"x2":320,"y2":440}},{"type":"line","attr":{"x1":320,"y1":440,"x2":320,"y2":240}}],"result":{"nb":4,"values":[[320,240,520,240,1],[520,240,520,440,2],[520,440,320,440,1],[320,440,320,240,2]]}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Tracez le carré[/b] de sorte que les côtés [b]horizontaux[/b] soient [b]ROUGES[/b] et les côtés [b]verticaux[/b] soient [b]VERTS[/b].","tips":["Compte tenu de la position du carré, il est préférable de le dessiner en [b]reculant[/b].","[code]RECULE 200[br]TOURNE GAUCHE ⊥[/code] devra être utilisé [b]4 fois[/b].","Ainsi débute le code : [code]COULEUR VERT[br]RECULE 200[br]TOURNE GAUCHE ⊥[br][o1]COULEUR ROUGE[/o1][br][o2]RECULE 200[/o2][/code]"]]]></dct:description>
+        <dct:extent>5</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>a01</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>e02</dct:identifier>
+        <dct:title xml:lang="fr-FR">Tracer la lettre F</dct:title>
+        <dct:description><![CDATA["a":{"op":["av","re","td","tg","ca","lc","bc","ct","mt","or","fo","co"],"va":["V300","V200","V100","V400",{"label":"⊥","value":"090"},{"label":"→","value":"000"},{"label":"↑","value":"090"},{"label":"←","value":"180"},{"label":"↓","value":"270"}]},"bg":[{"type":"grid100","attr":{"class":"tiny"}},{"type":"line","attr":{"x1":320,"y1":240,"x2":320,"y2":140}},{"type":"line","attr":{"x1":320,"y1":140,"x2":520,"y2":140}},{"type":"line","attr":{"x1":520,"y1":140,"x2":520,"y2":40}},{"type":"line","attr":{"x1":520,"y1":40,"x2":220,"y2":40}},{"type":"line","attr":{"x1":220,"y1":40,"x2":220,"y2":440}},{"type":"line","attr":{"x1":220,"y1":440,"x2":320,"y2":440}},{"type":"line","attr":{"x1":320,"y1":440,"x2":320,"y2":340}},{"type":"line","attr":{"x1":320,"y1":340,"x2":420,"y2":340}},{"type":"line","attr":{"x1":420,"y1":340,"x2":420,"y2":240}},{"type":"line","attr":{"x1":420,"y1":240,"x2":320,"y2":240}}],"result":{"nb":10,"values":[[320,240,320,140,0],[320,140,520,140,0],[520,140,520,40,0],[520,40,220,40,0],[220,40,220,440,0],[220,440,320,440,0],[320,440,320,340,0],[320,340,420,340,0],[420,340,420,240,0],[420,240,320,240,0]]}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Tracez la lettre F[/b] en utilisant la grille 100x100 pour vous repérez.","tips":["[code]AVANCE 100[br]TOURNE DROITE ⊥[br]AVANCE 200[br]TOURNE GAUCHE ⊥[br]AVANCE 100[br]TOURNE GAUCHE ⊥[br]AVANCE 300[/code]","[code]TOURNE GAUCHE ⊥[br]AVANCE 400[br]TOURNE GAUCHE ⊥[br]AVANCE 100[br]TOURNE GAUCHE ⊥[br]AVANCE 100[br]TOURNE DROITE ⊥[/code]","[code]AVANCE 100[br]TOURNE GAUCHE ⊥[br]AVANCE 100[br]TOURNE GAUCHE ⊥[br]AVANCE 100[/code]"]]]></dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>a01</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>e03</dct:identifier>
+        <dct:title xml:lang="fr-FR">Tracer 2 carrés imbriqués de couleur différente.</dct:title>
+        <dct:description><![CDATA["a":{"op":["av","re","td","tg","lc","po","bc","ct","mt","or","fo","co"],"va":["V050","V200","V100","black","white","red","green","blue",{"label":"⊥","value":"090"}]},"bg":[{"type":"grid100","attr":{"class":"tiny"}},{"type":"path","attr":{"d":"M 320,240 L 320,40 L 520,40 L 520,240 L 320,240"}},{"type":"path","attr":{"d":"M 370,190 L 370,90 L 470,90 L 470,190 L 370,190"}}],"result":{"nb":8,"values":[[320,240,320,40,3],[320,40,520,40,3],[520,40,520,240,3],[520,240,320,240,3],[370,190,370,90,1],[370,90,470,90,1],[470,90,470,190,1],[470,190,370,190,1]]}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Tracez le grand carré en BLEU et le petit carré en ROUGE.[/b]"],"tips":["Le premier carré :[code]COULEUR BLEU[br]AVANCE 200[br]TOURNE DROITE ⊥[br][o1]AVANCE 200[/o1][br][o2]TOURNE DROITE ⊥[/o2][/code]","L'intervalle :[code][o2]AVANCE 200[/o2][br]LEVE CRAYON[br]POSITION 50 50[br]BAISSE CRAYON[/code]","Le deuxième carré :[code]COULEUR ROUGE[br]AVANCE 100[br]TOURNE GAUCHE ⊥[br][o1]AVANCE 100[/o1][br][o2]TOURNE GAUCHE ⊥[/o2][/code]"]]]></dct:description>
+        <dct:extent>10</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:alternative>a01</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>e04</dct:identifier>
+        <dct:title xml:lang="fr-FR">Tracer un polygone.</dct:title>
+        <dct:description><![CDATA["class":"fixed","maxlines":10,"a":{"op":["av","re","td","tg","po","ct","mt","or"],"va":["V200","V100",{"label":"&ang;","value":"045"},{"label":"⊥","value":"090"}]},"bg":[{"type":"grid100","attr":{"class":"tiny"}},{"type":"path","attr":{"d":"M 320,240 L 420,40 L 420,140 L 490.71,210.71 L 420,281.42 L 320,240"}}],"result":{"nb":5,"values":[[320,240,420,40,0],[420,40,420,140,0],[420,140,490.71,210.71,0],[490.71,210.71,420,281.42,0],[420,281.42,320,240,0]]}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"En utilisant la [red]grille 100x100[/red] pour vous repérer, [b]tracez la figure demandée.[/b]","tips":["Tous les traits mesurent [b]100[/b] sauf ceux partant de l'origine.","Utilisez [red]POSITION[/red] pour le premier trait et [red]ORIGIN[/red] pour le dernier.","[code]POSITION 100 200[br]RECULE 100[br]TOURNE GAUCHE &ang;[br]RECULE 100[br]TOURNE GAUCHE ⊥[br]AVANCE 100[br]ORIGIN[/code]"]]]></dct:description>
+        <dct:extent>10</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:alternative>a01</dct:alternative>
+    </rdf:Description>
+	
+
+	<!-- NUMERICAL ANGLE -->
+
+    <rdf:Description>
+        <dct:identifier>ee03</dct:identifier>
+        <dct:title xml:lang="fr-FR">Tracer un escalier.</dct:title>
+        <dct:description><![CDATA["a":{"op":["av","re","td","tg","lc","bc","ct","mt","or","po","fo","co"],"va":["V000","V180","V270","V300","V200","V100","V090","V000"]},"bg":[{"type":"grid100","attr":{"class":"tiny"}},{"type":"path","attr":{"d":"M 320,240 L 220,240 L 220,440 L 620,40 L 420,40 L 420,140 L 320,140 L 320,240"}}],"result":{"nb":7,"values":[[320,240,220,240,0],[220,240,220,440,0],[220,440,620,40,0],[620,40,420,40,0],[420,40,420,140,0],[420,140,320,140,0],[320,140,320,240,0]]}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Tracez l'escalier[/b] en utilisant la grille 100x100 pour vous repérez.","","[blue]Le trait oblique doit être tracé du point le plus bas vers le point dont la position est (300,200).[/blue]"],"tips":["[code]LEVE CRAYON[br]AVANCE 200[br]TOURNE DROITE 90[br]AVANCE 300[br]TOURNE DROITE 180[br]BAISSE CRAYON[/code]","[code]AVANCE 200[br]TOURNE GAUCHE 90[br]AVANCE 100[br]TOURNE DROITE 90[br]AVANCE 100[br]TOURNE GAUCHE 90[br]AVANCE 100[/code]","[code]TOURNE DROITE 90[br]AVANCE 100[br]TOURNE GAUCHE 90[br]AVANCE 200[br]POSITION 300 200[/code]"]]]></dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>ee04</dct:identifier>
         <dct:title xml:lang="fr-FR">Tracer un triangle équilatéral.</dct:title>
         <dct:description><![CDATA["a":{"op":["av","re","tg","td","lc","bc","ct","mt"],"va":["V200","V120"]},"bg":[{"type":"line","attr":{"x1":320,"y1":0,"x2":320,"y2":480,"class":"tiny"}},{"type":"line","attr":{"x1":0,"y1":240,"x2":640,"y2":240,"class":"tiny"}},{"type":"circle","attr":{"cx":320,"cy":240,"r":200,"class":"tiny"}},{"type":"line","attr":{"x1":320,"y1":240,"x2":320,"y2":40}},{"type":"line","attr":{"x1":320,"y1":40,"x2":146.79,"y2":140}},{"type":"line","attr":{"x1":146.79,"y1":140,"x2":320,"y2":240}}],"result":{"nb":3,"values":[[320,240,320,40,0],[320,40,146.79,140,0],[146.79,140,320,240,0]]}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Tracez le triangle équilatéral dont les côtés ont une longueur de 200.[/b]","","[strong]L'angle de rotation à utiliser pour tracer un triangle équilatéral (c'est à dire un triangle dont les côté sont tous égaux) est 120.[/strong]"],"tips":["Un [b]triangle[/b] a [b]3 côtés[/b]. La tortue doit donc réaliser [b]3 traits[/b].","Entre chaque trait, la tortue doit [b]tourner à gauche[/b] de [b]120 degrés[/b].","Ainsi débute le code :[code]AVANCE 200[br]TOURNE GAUCHE 120[br][o1]AVANCE 200[/o1][br][o2]TOURNE GAUCHE 120[/o2][/code]"]]]></dct:description>
@@ -392,6 +623,57 @@
         <dct:type>2</dct:type>
         <dct:alternative>001</dct:alternative>
     </rdf:Description>
+	
+	
+    <rdf:Description>
+        <dct:identifier>ee05</dct:identifier>
+        <dct:title xml:lang="fr-FR">Tracer un sablier.</dct:title>
+        <dct:description><![CDATA["a":{"op":["av","re","td","tg","lc","bc","ct","mt","or","fo","co"],"va":["V200","V030","V120","black","white","red","green","blue"]},"bg":[{"type":"circle","attr":{"cx":320,"cy":240,"r":200,"class":"tiny"}},{"type":"line","attr":{"x1":320,"y1":240,"x2":420,"y2":66.79}},{"type":"line","attr":{"x1":420,"y1":66.79,"x2":220,"y2":66.79}},{"type":"line","attr":{"x1":220,"y1":66.79,"x2":320,"y2":240}},{"type":"line","attr":{"x1":320,"y1":240,"x2":420,"y2":413.21}},{"type":"line","attr":{"x1":420,"y1":413.21,"x2":220,"y2":413.21}},{"type":"line","attr":{"x1":220,"y1":413.21,"x2":320,"y2":240}}],"result":{"nb":6,"values":[[320,240,420,66.79,2],[420,66.79,220,66.79,2],[220,66.79,320,240,2],[320,240,420,413.21,4],[420,413.21,220,413.21,4],[220,413.21,320,240,4]],"fo":"black"}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Changez la couleur du fond[/b] de la fenêtre en [b]NOIR[/b]. [b]Tracez[/b] le triangle équilatéral [b]supérieur[/b] (dont la longueur des arêtes vaut [b]200[/b]) en [b]vert[/b] puis tracez le triangle équilatéral [b]inférieur[/b] en [b]blanc[/b]."],"tips":["Préparation :[code]FOND NOIR[br]TOURNE DROITE 30[/code]","[code]COULEUR VERT[br]AVANCE 200[br]TOURNE GAUCHE[br]AVANCE 200[br]TOURNE GAUCHE[br]AVANCE 200[br]TOURNE GAUCHE[/code]","[code]COULEUR BLANC[br]AVANCE 200[br]TOURNE DROITE[br]AVANCE 200[br]TOURNE DROITE[br]AVANCE 200[br]TOURNE DROITE[/code]"]]]></dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>ee06</dct:identifier>
+        <dct:title xml:lang="fr-FR">Tracer une figure géométrique.</dct:title>
+        <dct:description><![CDATA["a":{"op":["av","re","td","tg","ca","lc","bc","ct","mt","or","po","fo","co"],"va":["V000","V180","V270","V045","V135","V225","V315","V300","V200","V100","V090"]},"bg":[{"type":"grid100","attr":{"class":"tiny"}},{"type":"path","attr":{"d":"M 220,340 L 320,340 L 520,140 L 520,40 L 420,40"}},{"type":"path","attr":{"d":"M 220,340 L 220,240 L 420,40"}}],"result":{"nb":6,"values":[[220,340,320,340,0],[320,340,520,140,0],[520,140,520,40,0],[520,40,420,40,0],[220,340,220,240,0],[220,240,420,40,0]]}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Tracez la figure demandée[/b] en utilisant la grille 100x100 pour vous repérez.","","La difficulté de cet exercice vient du fait qu'il est impossible de tracer les 2 segments obliques avec l'instruction [red][b]AVANCE[/b][/red] car la longueur de ces 2 segments n'est pas accessible. Décomposez la figure en 2 moitiés et utilisez la commande [red][b]POSITION[/b][/red] pour atteindre les points [b](100,200)[/b] et [b](200,100)[/b]."],"tips":["[code]LEVE CRAYON[br]RECULE 100[br]TOURNE GAUCHE 90[br]AVANCE 100[br]BAISSE CRAYON[br]RECULE 100[br]POSITION 200 100[/code]","[code]TOURNE DROITE 90[br]AVANCE 100[br]LEVE CRAYON[br]RECULE 300[br]TOURNE GAUCHE 90[br]AVANCE 300[br]BAISSE CRAYON[/code]","[code]TOURNE DROITE 90[br]AVANCE 100[br]POSITION 100 200[br]TOURNE DROITE 90[br]AVANCE 100[/code]"]]]></dct:description>
+        <dct:extent>5</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>ee07</dct:identifier>
+        <dct:title xml:lang="fr-FR">Tracer une figure géométrique.</dct:title>
+        <dct:description><![CDATA["a":{"op":["av","re","td","tg","ca","lc","bc","ct","mt","or","po","fo","co"],"va":["V180","V270","V045","V135","V225","V315","V000","V200","V100","V090"]},"bg":[{"type":"grid100","attr":{"class":"tiny"}},{"type":"path","attr":{"d":"M 320,240 L 320,340 L 520,340 L 520,240 L 420,240 L 420,140 L 320,240"}},{"type":"path","attr":{"d":"M 320,140 L 320,40 L 420,40 L 320,140"}}],"result":{"nb":9,"values":[[320,240,320,340,0],[320,340,520,340,0],[520,340,520,240,0],[520,240,420,240,0],[420,240,420,140,0],[420,140,320,240,0],[320,140,320,40,0],[320,40,420,40,0],[420,40,320,140,0]]}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Tracez la figure demandée[/b] en utilisant la grille 100x100 pour vous repérez."],"tips":["Pensez à utiliser judicieusement les commandes [red][b]AVANCE[/b][/red], [red][b]POSITION[/b][/red] et [red][b]ORIGIN[/b][/red].","[code]POSITION 100 100[br]RECULE 100[br]POSITION 200 0[br]RECULE 100[br]TOURNE GAUCHE 90[br]AVANCE 200[br]ORIGIN[/code]","[code]LEVE CRAYON[br]AVANCE 100[br]BAISSE CRAYON[br]AVANCE 100[br]POSITION 100 200[br]POSITION 0 100[/code]"]]]></dct:description>
+        <dct:extent>5</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+
+    <rdf:Description>
+        <dct:identifier>ee08</dct:identifier>
+        <dct:title xml:lang="fr-FR">Tracer une figure géométrique.</dct:title>
+        <dct:description><![CDATA["a":{"op":["av","re","td","tg","ca","lc","bc","ct","mt","or","po","fo","co"],"va":["V030","V000","V180","V270","V045","V135","V225","V315","V200","V100","V060","V090","V120","black","white","red","green","blue"]},"bg":[{"type":"grid100","attr":{"class":"tiny"}},{"type":"line","attr":{"x1":420,"y1":340,"x2":420,"y2":440}},{"type":"line","attr":{"x1":420,"y1":440,"x2":220,"y2":440}},{"type":"line","attr":{"x1":220,"y1":440,"x2":220,"y2":340}},{"type":"line","attr":{"x1":220,"y1":340,"x2":420,"y2":340}},{"type":"line","attr":{"x1":420,"y1":340,"x2":320,"y2":166.79}},{"type":"line","attr":{"x1":320,"y1":166.79,"x2":220,"y2":340}}],"result":{"nb":6,"values":[[420,340,420,440,3],[420,440,220,440,3],[220,440,220,340,3],[220,340,420,340,3],[420,340,320,166.79,1],[320,166.79,220,340,1]]}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Tracez la figure demandée[/b] en utilisant la grille 100x100 pour vous repérez.","","[blue]Le rectangle inférieur est BLEU[/blue] tandisque [red]les 2 traits obliques de longueur 200 sont ROUGES.[/red]"],"tips":["[code]LEVE CRAYON[br]RECULE 100[br]TOURNE GAUCHE 90[br]AVANCE 100[br]COULEUR BLEU[br]BAISSE CRAYON[/code]","[code]RECULE 200[br]TOURNE GAUCHE 90[br]AVANCE 100[br]TOURNE DROITE 90[br]AVANCE 200[br]TOURNE DROITE 90[br]AVANCE 100[/code]","[code]COULEUR ROUGE[br]TOURNE DROITE 30[br]AVANCE 200[br]TOURNE DROITE 120[br]AVANCE 200[/code]"]]]></dct:description>
+        <dct:extent>5</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+	
 
     <rdf:Description>
         <dct:identifier>105</dct:identifier>
@@ -453,263 +735,10 @@
         <dct:alternative>001</dct:alternative>
     </rdf:Description>
 
-    <!-- ORIGIN -->
-
-    <rdf:Description>
-        <dct:identifier>151</dct:identifier>
-        <dct:title xml:lang="fr-FR">Replacer la tortue à son point d'origine pour tracer un triangle.</dct:title>
-        <dct:description><![CDATA["a":{"op":["av","td","tg","or","ct","mt"],"va":["V200","V090"]},"bg":[{"type":"grid100","attr":{"class":"tiny"}},{"type":"line","attr":{"x1":320,"y1":240,"x2":320,"y2":40}},{"type":"line","attr":{"x1":320,"y1":40,"x2":520,"y2":40}},{"type":"line","attr":{"x1":520,"y1":40,"x2":320,"y2":240}}],"result":{"nb":3,"values":[[320,240,320,40,0],[320,40,520,40,0],[520,40,320,240,0]]}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["La commande [red][b]ORIGINE[/b][/red] permet de replacer la tortue à [b]son point d'origine[/b] (au milieu de l'écran). Si le crayon n'est pas levé lors de l'appel de cette commande, le chemin parcouru jusqu'au point de départ sera tracé.","","Pour cet exercice, commencez par les deux côtés verticaux et horizontaux de [b]longueur 200[/b] et tracez le dernier côté ([blue]dont on ne connaît pas la longueur[/blue]) en replaçant la tortue à son point d'origine."],"tips":["La tortue doit dessiner dans cet ordre : le trait [b]vertical[/b], [b]horizontal[/b] puis [b]oblique[/b].","Ainsi début le code :[code]AVANCE 200[br]TOURNE DROITE 90[br]AVANCE 200[/code]","Pour le trait oblique, il suffit de replacer la tortue à son [b]point d'origine[/b] avec :[code]ORIGIN[/code]"]]]></dct:description>
-        <dct:extent>5</dct:extent>
-        <dct:subject>it</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>001</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
-    </rdf:Description>
 
 
-    <rdf:Description>
-        <dct:identifier>152</dct:identifier>
-        <dct:title xml:lang="fr-FR">Replacer la tortue à son point d'origine pour tracer un triangle.</dct:title>
-        <dct:description><![CDATA["a":{"op":["av","td","tg","or","ct","mt"],"va":["V300","V100","V090"]},"bg":[{"type":"grid100","attr":{"class":"tiny"}},{"type":"line","attr":{"x1":320,"y1":240,"x2":320,"y2":140}},{"type":"line","attr":{"x1":320,"y1":140,"x2":20,"y2":140}},{"type":"line","attr":{"x1":20,"y1":140,"x2":320,"y2":240}}],"result":{"nb":3,"values":[[320,240,320,140,0],[320,140,20,140,0],[20,140,320,240,0]]}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"En utilisant la [red]grille 100x100[/red] pour vous repérer, [b]tracez la figure demandée.[/b]","tips":["La tortue doit dessiner dans cet ordre : le trait [b]vertical[/b], [b]horizontal[/b] puis [b]oblique[/b].","Ainsi début le code :[code]AVANCE 100[br]TOURNE GAUCHE 90[br]AVANCE 200[/code]","Pour le trait oblique, il suffit de replacer la tortue à son [b]point d'origine[/b] avec :[code]ORIGIN[/code]"]]]></dct:description>
-        <dct:extent>4</dct:extent>
-        <dct:subject>it</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>001</dct:alternative>
-    </rdf:Description>
-
-    <!-- DIRECTION -->
-
-    <rdf:Description>
-        <dct:identifier>161</dct:identifier>
-        <dct:title xml:lang="fr-FR">Faire avancer et tourner de façon absolue la tortue pour tracer deux segments consécutifs.</dct:title>
-        <dct:description><![CDATA["a":{"op":["av","ca"],"va":["V200","V180"]},"bg":[{"type":"grid100","attr":{"class":"tiny"}},{"type":"text","attr":{"transform":"translate(312,30)"},"text":"90"},{"type":"text","attr":{"transform":"translate(600,240)"},"text":"0"},{"type":"text","attr":{"transform":"translate(300,470)"},"text":"270"},{"type":"text","attr":{"transform":"translate(10,240)"},"text":"180"},{"type":"line","attr":{"x1":320,"y1":240,"x2":320,"y2":40}},{"type":"line","attr":{"x1":320,"y1":40,"x2":120,"y2":40}}],"result":{"nb":2,"values":[[320,240,320,40,0],[320,40,120,40,0]]}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["En utilisant la [red]grille 100x100[/red] pour vous repérer, [b]tracez la figure demandée.[/b]","","Tandis que [red][b]TOURNE GAUCHE[/b][/red] et [red][b]TOURNE DROIT[/b][/red] modifient l'orientation de la tortue par rapport à sa direction courante, l'opérateur [red][b]CAP[/b][/red] donne une valeur d'orientation absolue par rapport à l'espace de travail.","[strong]0 représente une direction vers la droite du plan, 90 vers le haut, 180 vers la gauche et 270 vers le bas.[/strong]","A l'origine, la tortue pointe vers le haut, c'est à dire, dans la direction de [b]90°[/b]."],"tips":["La tortue doit dessiner [b]2 traits[/b] de longueur [b]200[/b]","Entre les 2 appels à [code]AVANCE 200[/code] la tortue doit tourner vers la [b]gauche de l'écran[/b].","[code]CAP 180[/code] [b]oriente[/b] la tortue vers la gauche de l'écran."]]]></dct:description>
-        <dct:extent>5</dct:extent>
-        <dct:subject>it</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
-        <dct:alternative>001</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>162</dct:identifier>
-        <dct:title xml:lang="fr-FR">Faire avancer et tourner de façon absolue la tortue pour tracer la figure demandée au sein d'une grille 100x100.</dct:title>
-        <dct:description><![CDATA["a":{"op":["av","re","ca","lc","bc","ct","mt"],"va":["V200","V090","V180","V270","V000"]},"bg":[{"type":"grid100","attr":{"class":"tiny"}},{"type":"text","attr":{"transform":"translate(312,30)"},"text":"90"},{"type":"text","attr":{"transform":"translate(600,240)"},"text":"0"},{"type":"text","attr":{"transform":"translate(300,470)"},"text":"270"},{"type":"text","attr":{"transform":"translate(10,240)"},"text":"180"},{"type":"line","attr":{"x1":320,"y1":40,"x2":320,"y2":240}},{"type":"line","attr":{"x1":520,"y1":40,"x2":320,"y2":40}},{"type":"line","attr":{"x1":520,"y1":40,"x2":520,"y2":240}},{"type":"line","attr":{"x1":320,"y1":240,"x2":520,"y2":240}}],"result":{"nb":4,"values":[[320,40,320,240,0],[520,40,320,40,0],[520,40,520,240,0],[520,240,320,240,0]]}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"En utilisant la [red]grille 100x100[/red] pour vous repérer, [b]tracez la figure demandée.[/b]","tips":["La tortue doit [b]avancer 4 fois[/b] pour tracer un carré.","Après chaque déplacement, la tortue doit s'orienter avec l'opérateur [red][b]CAP[/b][/red].","La tortue doit utiliser [red][b]CAP[/b][/red] avec les 3 valeurs suivantes [b]0[/b], [b]270[/b] et [b]180[/b]. Dans cet [b]ordre[/b]."]]]></dct:description>
-        <dct:extent>5</dct:extent>
-        <dct:subject>it</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>001</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>163</dct:identifier>
-        <dct:title xml:lang="fr-FR">Faire avancer et tourner de façon absolue la tortue pour tracer la figure demandée.</dct:title>
-        <dct:description><![CDATA["a":{"op":["av","re","ca","lc","bc","ct","mt","or"],"va":["V200","V090","V180","V270","V000","V045","V135","V225","V315"]},"bg":[{"type":"circle","attr":{"cx":320,"cy":240,"r":200,"class":"tiny"}},{"type":"text","attr":{"transform":"translate(312,30)"},"text":"90"},{"type":"text","attr":{"transform":"translate(600,240)"},"text":"0"},{"type":"text","attr":{"transform":"translate(300,470)"},"text":"270"},{"type":"text","attr":{"transform":"translate(10,240)"},"text":"180"},{"type":"line","attr":{"x1":320,"y1":240,"x2":461.42,"y2":98.58}},{"type":"line","attr":{"x1":461.42,"y1":98.58,"x2":602.84,"y2":240}},{"type":"line","attr":{"x1":602.84,"y1":240,"x2":320,"y2":240}}],"result":{"nb":3,"values":[[320,240,461.42,98.58,0],[461.42,98.58,602.84,240,0],[602.84,240,320,240,0]]}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Tracez le triangle rectangle isocèle dont les 2 côtés égaux mesurent 200.[/b]","","Utilisez la commande [red][b]ORIGINE[/b][/red] pour tracer la base horizontale dont [blue]la longueur n'est pas accessible[/blue] dans cet exercice."],"tips":["[red][b]CAP[/b][/red] permet d'orienter la tortue pour tracer le haut de la figure.","Ainsi débute le code :[code]CAP 45[br]AVANCE 200[br]CAP 315[br]AVANCE 200[/code]","Enfin, il suffit de replacer la tortue à son [b]point d'origine[/b] avec :[code]ORIGIN[/code]"]]]></dct:description>
-        <dct:extent>5</dct:extent>
-        <dct:subject>it</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>001</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>164</dct:identifier>
-        <dct:title xml:lang="fr-FR">Faire avancer et tourner de façon absolue la tortue pour tracer la figure demandée.</dct:title>
-        <dct:description><![CDATA["a":{"op":["av","re","ca","lc","bc","ct","mt","or"],"va":["V200","V090","V180","V270","V000","V045","V135","V225","V315"]},"bg":[{"type":"circle","attr":{"cx":320,"cy":240,"r":200,"class":"tiny"}},{"type":"text","attr":{"transform":"translate(312,30)"},"text":"90"},{"type":"text","attr":{"transform":"translate(600,240)"},"text":"0"},{"type":"text","attr":{"transform":"translate(300,470)"},"text":"270"},{"type":"text","attr":{"transform":"translate(10,240)"},"text":"180"},{"type":"line","attr":{"x1":320,"y1":240,"x2":178.58,"y2":98.58}},{"type":"line","attr":{"x1":178.58,"y1":98.58,"x2":37.16,"y2":240}},{"type":"line","attr":{"x1":37.16,"y1":240,"x2":178.58,"y2":381.42}},{"type":"line","attr":{"x1":178.58,"y1":381.42,"x2":320,"y2":240}}],"result":{"nb":4,"values":[[320,240,178.58,98.58,0],[178.58,98.58,37.16,240,0],[37.16,240,178.58,381.42,0],[178.58,381.42,320,240,0]]}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Tracez le carré de longueur 200.[/b]"],"tips":["[red][b]CAP[/b][/red] permet d'orienter la tortue pour tracer le carré.","Les valeurs utilisées par [red][b]CAP[/b][/red] sont respectivement [b]135[/b], [b]225[/b], [b]315[/b] et [b]45[/b].","Ainsi débute le code :[code]CAP 135[br]AVANCE 200[br]CAP 225[br][o1]AVANCE 200[/o1][br][o2]CAP 315[/o2][/code]"]]]></dct:description>
-        <dct:extent>5</dct:extent>
-        <dct:subject>it</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>001</dct:alternative>
-    </rdf:Description>
 
 
-    <!-- POSITION -->
-
-    <rdf:Description>
-        <dct:identifier>181</dct:identifier>
-        <dct:title xml:lang="fr-FR">Positionner la tortue suivant des coordonnées dans le plan et tracer un segment.</dct:title>
-        <dct:description><![CDATA["a":{"op":["po"],"va":["V200"]},"bg":[{"type":"grid100","attr":{"class":"tiny"}},{"type":"text","attr":{"transform":"translate(280,30)"},"text":"(0,200)"},{"type":"text","attr":{"transform":"translate(480,230)"},"text":"(200,0)"},{"type":"text","attr":{"transform":"translate(280,470)"},"text":"(0,-200)"},{"type":"text","attr":{"transform":"translate(70,230)"},"text":"(-200,0)"},{"type":"line","attr":{"x1":320,"y1":240,"x2":520,"y2":40}}],"result":{"nb":1,"values":[[320,240,520,40,0]]}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["En utilisant la [red]grille 100x100[/red] pour vous repérer, [b]tracez la figure demandée.[/b]","","L'opérateur [red][b]POSITION[/b][/red] permet de positionner la tortue suivant les coordonnées du plan.","","[strong][b]POSITION[/b] ne modifie pas l'orientation de la tortue[/strong]"],"tips":["L'opérateur [red][b]POSITION[/b][/red] utilise [b]2 arguments[/b] : une [b]abscisse[/b] et une [b]ordonnée[/b].","Ici l'[b]abscisse[/b] que doit atteindre la tortue vaut [b]200[/b]. L'[b]ordonnée[/b] aussi.","[code]POSITION 200 200[/code] permet de dessiner le trait demandé par l'énoncé."]]]></dct:description>
-        <dct:extent>5</dct:extent>
-        <dct:subject>it</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
-        <dct:alternative>001</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>182</dct:identifier>
-        <dct:title xml:lang="fr-FR">Positionner la tortue suivant des coordonnées dans le plan et tracer un rectangle.</dct:title>
-        <dct:description><![CDATA["a":{"op":["po"],"va":["V200","V100","V000"]},"bg":[{"type":"grid100","attr":{"class":"tiny"}},{"type":"text","attr":{"transform":"translate(280,30)"},"text":"(0,200)"},{"type":"text","attr":{"transform":"translate(480,230)"},"text":"(200,0)"},{"type":"text","attr":{"transform":"translate(280,470)"},"text":"(0,-200)"},{"type":"text","attr":{"transform":"translate(70,230)"},"text":"(-200,0)"},{"type":"line","attr":{"x1":320,"y1":240,"x2":420,"y2":240}},{"type":"line","attr":{"x1":420,"y1":240,"x2":420,"y2":40}},{"type":"line","attr":{"x1":420,"y1":40,"x2":320,"y2":40}},{"type":"line","attr":{"x1":320,"y1":40,"x2":320,"y2":240}}],"result":{"nb":4,"values":[[320,240,420,240,0],[420,240,420,40,0],[420,40,320,40,0],[320,40,320,240,0]]}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["En utilisant la [red]grille 100x100[/red] pour vous repérer, [b]tracez la figure demandée.[/b]","","Au passage, on remarquera que la méthode [red][b]ORIGIN[/b][/red] est équivalente aux appels successifs de [red][b]POSITION 0 0[/b][/red] et [red][b]CAP 90[/b][/red]."],"tips":["Pour tracer le rectangle, la tortue doit se rendre aux [b]4 coins[/b] de celui-ci.","Les coordonnées des 4 coins du rectangle sont respectivement [[b]0,200[/b]], [[b]100,200[/b]], [[b]100,0[/b]], [[b]0,0[/b]].","[code]POSITION 0 200[br]POSITION 100 200[br]POSITION 100 0[br]POSITION 0 0[/code] permet de dessiner le rectangle."]]]></dct:description>
-        <dct:extent>5</dct:extent>
-        <dct:subject>it</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>001</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>183</dct:identifier>
-        <dct:title xml:lang="fr-FR">Positionner la tortue suivant des coordonnées dans le plan et tracer la figure demandée.</dct:title>
-        <dct:description><![CDATA["a":{"op":["po"],"va":["V200","V100","V000"]},"bg":[{"type":"grid100","attr":{"class":"tiny"}},{"type":"text","attr":{"transform":"translate(280,30)"},"text":"(0,200)"},{"type":"text","attr":{"transform":"translate(480,230)"},"text":"(200,0)"},{"type":"text","attr":{"transform":"translate(280,470)"},"text":"(0,-200)"},{"type":"text","attr":{"transform":"translate(70,230)"},"text":"(-200,0)"},{"type":"line","attr":{"x1":320,"y1":240,"x2":520,"y2":240}},{"type":"line","attr":{"x1":520,"y1":240,"x2":520,"y2":40}},{"type":"line","attr":{"x1":520,"y1":40,"x2":420,"y2":140}},{"type":"line","attr":{"x1":420,"y1":140,"x2":320,"y2":40}},{"type":"line","attr":{"x1":320,"y1":40,"x2":320,"y2":240}}],"result":{"nb":5,"values":[[320,240,520,240,0],[520,240,520,40,0],[520,40,420,140,0],[420,140,320,40,0],[320,40,320,240,0]]}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"En utilisant la [red]grille 100x100[/red] pour vous repérer, [b]tracez la figure demandée.[/b]","tips":["La tortue doit se rendre aux [b]5 coins[/b] de la figure demandée par l'énoncé.","Les coordonnées des 5 points sont [[b]0,200[/b]], [[b]100,100[/b]], [[b]200,200[/b]], [[b]200,0[/b]], [[b]0,0[/b]].","Le code demandé est :[code]POSITION 0 200[br]POSITION 100 100[br]POSITION 200 200[br]POSITION 200 0[br]POSITION 0 0[/code]"]]]></dct:description>
-        <dct:extent>5</dct:extent>
-        <dct:subject>it</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>001</dct:alternative>
-    </rdf:Description>
-
-    <!-- COLOR -->
-
-    <rdf:Description>
-        <dct:identifier>201</dct:identifier>
-        <dct:title xml:lang="fr-FR">Changer la couleur du fond de l'écran</dct:title>
-        <dct:description><![CDATA["a":{"op":["fo"],"va":["black","white","red","green","blue"]},"result":{"nb":0,"bg":"red"}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Coloriez en rouge le fond de l'écran grâce à l'opérateur FOND.[/b]","","A moins que cela soit demandé explicitement comme pour cet exercice, la couleur du fond est libre et n'intervient pas dans le calcul de la note finale. [blue]En plus, c'est moche.[/blue]"]]]></dct:description>
-        <dct:extent>5</dct:extent>
-        <dct:subject>it</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
-        <dct:alternative>001</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>202</dct:identifier>
-        <dct:title xml:lang="fr-FR">Faire avancer la tortue et tracer un segment vertical bleu.</dct:title>
-        <dct:description><![CDATA["a":{"op":["av","co"],"va":["V200","black","white","red","green","blue"]},"bg":[{"type":"line","attr":{"x1":320,"y1":40,"x2":320,"y2":240}}],"result":{"nb":1,"values":[[320,240,320,40,3]]}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Changez la couleur de la tortue avec l'opération COULEUR et tracez en BLEU le segment de longeur 200.[/b]","","Contrairement à la couleur du fond, la couleur des différents tracés est pris en compte dans l'évaluation finale. Lorsque cela n'est pas précisé, la couleur attendue est le [b]noir[/b]."],"tips":["Avant de dessiner le trait, la tortue doit [b]changer[/b] de couleur.","[code]AVANCE 200[/code] permet de [b]dessiner[/b] le trait demandé par l'énoncé.","Avant cela, le choix de la [b]couleur[/b] se fait grâce à :[code]COULEUR BLEU[/code]"]]]></dct:description>
-        <dct:extent>5</dct:extent>
-        <dct:subject>it</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
-        <dct:alternative>001</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>203</dct:identifier>
-        <dct:title xml:lang="fr-FR">Faire avancer la tortue et tracer 4 segments verticaux consécutifs de couleur différente.</dct:title>
-        <dct:description><![CDATA["a":{"op":["av","co"],"va":["V050","black","white","red","green","blue"]},"bg":[{"type":"line","attr":{"x1":320,"y1":40,"x2":320,"y2":240}}],"result":{"nb":4,"values":[[320,240,320,190,0],[320,190,320,140,1],[320,140,320,90,2],[320,90,320,40,3]]}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Tracez 4 segments consécutifs de longueur 50[/b] et dont les couleurs sont respectivement (du plus bas au plus haut) [b]noir, rouge, vert[/b] et [b]bleu[/b]."],"tips":["Le code doit comprendre 4 appels à :[code]AVANCE 50[/code]","Entre 2 déplacements, la tortue [b]doit changer[/b] de couleur.","Ainsi débute le code :[code]AVANCE 50[br]COULEUR ROUGE[br]AVANCE 50[br][o1]COULEUR VERT[/o1][br][o2]AVANCE 50[/o2][/code]"]]]></dct:description>
-        <dct:extent>5</dct:extent>
-        <dct:subject>it</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>001</dct:alternative>
-    </rdf:Description>
-
-    <!-- EVERYTHING -->
-
-    <rdf:Description>
-        <dct:identifier>301</dct:identifier>
-        <dct:title xml:lang="fr-FR">Tracer un carré bicolore.</dct:title>
-        <dct:description><![CDATA["a":{"op":["av","re","td","tg","lc","bc","ct","mt","fo","co"],"va":["V090","V200","V100","V000","black","white","red","green","blue"]},"bg":[{"type":"grid100","attr":{"class":"tiny"}},{"type":"line","attr":{"x1":320,"y1":240,"x2":520,"y2":240}},{"type":"line","attr":{"x1":520,"y1":240,"x2":520,"y2":440}},{"type":"line","attr":{"x1":520,"y1":440,"x2":320,"y2":440}},{"type":"line","attr":{"x1":320,"y1":440,"x2":320,"y2":240}}],"result":{"nb":4,"values":[[320,240,520,240,1],[520,240,520,440,2],[520,440,320,440,1],[320,440,320,240,2]]}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Tracez le carré[/b] de sorte que les côtés [b]horizontaux[/b] soient [b]ROUGES[/b] et les côtés [b]verticaux[/b] soient [b]VERTS[/b]."],"tips":["Compte tenu de la position du carré, il est préférable de le dessiner en [b]reculant[/b].","[code]RECULE 200[br]TOURNE GAUCHE 90[/code] devra être utilisé [b]4 fois[/b].","Ainsi débute le code : [code]COULEUR VERT[br]RECULE 200[br]TOURNE GAUCHE 90[br][o1]COULEUR ROUGE[/o1][br][o2]RECULE 200[/o2][/code]"]]]></dct:description>
-        <dct:extent>5</dct:extent>
-        <dct:subject>it</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>001</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>302</dct:identifier>
-        <dct:title xml:lang="fr-FR">Tracer la lettre F</dct:title>
-        <dct:description><![CDATA["a":{"op":["av","re","td","tg","ca","lc","bc","ct","mt","or","fo","co"],"va":["V000","V180","V270","V300","V200","V100","V400","V090"]},"bg":[{"type":"grid100","attr":{"class":"tiny"}},{"type":"line","attr":{"x1":320,"y1":240,"x2":320,"y2":140}},{"type":"line","attr":{"x1":320,"y1":140,"x2":520,"y2":140}},{"type":"line","attr":{"x1":520,"y1":140,"x2":520,"y2":40}},{"type":"line","attr":{"x1":520,"y1":40,"x2":220,"y2":40}},{"type":"line","attr":{"x1":220,"y1":40,"x2":220,"y2":440}},{"type":"line","attr":{"x1":220,"y1":440,"x2":320,"y2":440}},{"type":"line","attr":{"x1":320,"y1":440,"x2":320,"y2":340}},{"type":"line","attr":{"x1":320,"y1":340,"x2":420,"y2":340}},{"type":"line","attr":{"x1":420,"y1":340,"x2":420,"y2":240}},{"type":"line","attr":{"x1":420,"y1":240,"x2":320,"y2":240}}],"result":{"nb":10,"values":[[320,240,320,140,0],[320,140,520,140,0],[520,140,520,40,0],[520,40,220,40,0],[220,40,220,440,0],[220,440,320,440,0],[320,440,320,340,0],[320,340,420,340,0],[420,340,420,240,0],[420,240,320,240,0]]}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Tracez la lettre F[/b] en utilisant la grille 100x100 pour vous repérez."],"tips":["[code]AVANCE 100[br]TOURNE DROITE 90[br]AVANCE 200[br]TOURNE GAUCHE 90[br]AVANCE 100[br]TOURNE GAUCHE 90[br]AVANCE 300[/code]","[code]TOURNE GAUCHE 90[br]AVANCE 400[br]TOURNE GAUCHE 90[br]AVANCE 100[br]TOURNE GAUCHE 90[br]AVANCE 100[br]TOURNE DROITE 90[/code]","[code]AVANCE 100[br]TOURNE GAUCHE 90[br]AVANCE 100[br]TOURNE GAUCHE 90[br]AVANCE 100[/code]"]]]></dct:description>
-        <dct:extent>4</dct:extent>
-        <dct:subject>it</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>3</dct:type>
-        <dct:alternative>001</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>303</dct:identifier>
-        <dct:title xml:lang="fr-FR">Tracer un escalier.</dct:title>
-        <dct:description><![CDATA["a":{"op":["av","re","td","tg","lc","bc","ct","mt","or","po","fo","co"],"va":["V000","V180","V270","V300","V200","V100","V090","V000"]},"bg":[{"type":"grid100","attr":{"class":"tiny"}},{"type":"path","attr":{"d":"M 320,240 L 220,240 L 220,440 L 620,40 L 420,40 L 420,140 L 320,140 L 320,240"}}],"result":{"nb":7,"values":[[320,240,220,240,0],[220,240,220,440,0],[220,440,620,40,0],[620,40,420,40,0],[420,40,420,140,0],[420,140,320,140,0],[320,140,320,240,0]]}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Tracez l'escalier[/b] en utilisant la grille 100x100 pour vous repérez.","","[blue]Le trait oblique doit être tracé du point le plus bas vers le point dont la position est (300,200).[/blue]"],"tips":["[code]LEVE CRAYON[br]AVANCE 200[br]TOURNE DROITE 90[br]AVANCE 300[br]TOURNE DROITE 180[br]BAISSE CRAYON[/code]","[code]AVANCE 200[br]TOURNE GAUCHE 90[br]AVANCE 100[br]TOURNE DROITE 90[br]AVANCE 100[br]TOURNE GAUCHE 90[br]AVANCE 100[/code]","[code]TOURNE DROITE 90[br]AVANCE 100[br]TOURNE GAUCHE 90[br]AVANCE 200[br]POSITION 300 200[/code]"]]]></dct:description>
-        <dct:extent>4</dct:extent>
-        <dct:subject>it</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>3</dct:type>
-        <dct:alternative>001</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>304</dct:identifier>
-        <dct:title xml:lang="fr-FR">Tracer 2 carrés imbriqués de couleur différente.</dct:title>
-        <dct:description><![CDATA["a":{"op":["av","re","td","tg","ca","lc","bc","ct","mt","or","po","fo","co"],"va":["V000","V180","V270","V050","V200","V100","V090","V000","black","white","red","green","blue"]},"bg":[{"type":"grid100","attr":{"class":"tiny"}},{"type":"path","attr":{"d":"M 320,240 L 320,40 L 520,40 L 520,240 L 320,240"}},{"type":"path","attr":{"d":"M 370,190 L 370,90 L 470,90 L 470,190 L 370,190"}}],"result":{"nb":8,"values":[[320,240,320,40,3],[320,40,520,40,3],[520,40,520,240,3],[520,240,320,240,3],[370,190,370,90,1],[370,90,470,90,1],[470,90,470,190,1],[470,190,370,190,1]]}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Tracez le grand carré en BLEU et le petit carré en ROUGE.[/b]"],"tips":["Le premier carré :[code]COULEUR BLEU[br]AVANCE 200[br]TOURNE DROITE 90[br][o1]AVANCE 200[/o1][br][o2]TOURNE DROITE 90[/o2][/code]","L'intervalle :[code]LEVE CRAYON[br]POSITION 50 50[br]CAP 90[br]BAISSE CRAYON[/code]","Le deuxième carré :[code]COULEUR ROUGE[br]AVANCE 100[br]TOURNE DROITE 90[br][o1]AVANCE 100[/o1][br][o2]TOURNE DROITE 90[/o2][/code]"]]]></dct:description>
-        <dct:extent>4</dct:extent>
-        <dct:subject>it</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>3</dct:type>
-        <dct:alternative>001</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>305</dct:identifier>
-        <dct:title xml:lang="fr-FR">Tracer un sablier.</dct:title>
-        <dct:description><![CDATA["a":{"op":["av","re","td","tg","lc","bc","ct","mt","or","fo","co"],"va":["V200","V030","V120","black","white","red","green","blue"]},"bg":[{"type":"circle","attr":{"cx":320,"cy":240,"r":200,"class":"tiny"}},{"type":"line","attr":{"x1":320,"y1":240,"x2":420,"y2":66.79}},{"type":"line","attr":{"x1":420,"y1":66.79,"x2":220,"y2":66.79}},{"type":"line","attr":{"x1":220,"y1":66.79,"x2":320,"y2":240}},{"type":"line","attr":{"x1":320,"y1":240,"x2":420,"y2":413.21}},{"type":"line","attr":{"x1":420,"y1":413.21,"x2":220,"y2":413.21}},{"type":"line","attr":{"x1":220,"y1":413.21,"x2":320,"y2":240}}],"result":{"nb":6,"values":[[320,240,420,66.79,2],[420,66.79,220,66.79,2],[220,66.79,320,240,2],[320,240,420,413.21,4],[420,413.21,220,413.21,4],[220,413.21,320,240,4]],"fo":"black"}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Changez la couleur du fond[/b] de la fenêtre en [b]NOIR[/b]. [b]Tracez[/b] le triangle équilatéral [b]supérieur[/b] (dont la longueur des arêtes vaut [b]200[/b]) en [b]vert[/b] puis tracez le triangle équilatéral [b]inférieur[/b] en [b]blanc[/b]."],"tips":["Préparation :[code]FOND NOIR[br]TOURNE DROITE 30[/code]","[code]COULEUR VERT[br]AVANCE 200[br]TOURNE GAUCHE[br]AVANCE 200[br]TOURNE GAUCHE[br]AVANCE 200[br]TOURNE GAUCHE[/code]","[code]COULEUR BLANC[br]AVANCE 200[br]TOURNE DROITE[br]AVANCE 200[br]TOURNE DROITE[br]AVANCE 200[br]TOURNE DROITE[/code]"]]]></dct:description>
-        <dct:extent>4</dct:extent>
-        <dct:subject>it</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>3</dct:type>
-        <dct:alternative>001</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>306</dct:identifier>
-        <dct:title xml:lang="fr-FR">Tracer une figure géométrique.</dct:title>
-        <dct:description><![CDATA["a":{"op":["av","re","td","tg","ca","lc","bc","ct","mt","or","po","fo","co"],"va":["V000","V180","V270","V045","V135","V225","V315","V300","V200","V100","V090"]},"bg":[{"type":"grid100","attr":{"class":"tiny"}},{"type":"path","attr":{"d":"M 220,340 L 320,340 L 520,140 L 520,40 L 420,40"}},{"type":"path","attr":{"d":"M 220,340 L 220,240 L 420,40"}}],"result":{"nb":6,"values":[[220,340,320,340,0],[320,340,520,140,0],[520,140,520,40,0],[520,40,420,40,0],[220,340,220,240,0],[220,240,420,40,0]]}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Tracez la figure demandée[/b] en utilisant la grille 100x100 pour vous repérez.","","La difficulté de cet exercice vient du fait qu'il est impossible de tracer les 2 segments obliques avec l'instruction [red][b]AVANCE[/b][/red] car la longueur de ces 2 segments n'est pas accessible. Décomposez la figure en 2 moitiés et utilisez la commande [red][b]POSITION[/b][/red] pour atteindre les points [b](100,200)[/b] et [b](200,100)[/b]."],"tips":["[code]LEVE CRAYON[br]RECULE 100[br]TOURNE GAUCHE 90[br]AVANCE 100[br]BAISSE CRAYON[br]RECULE 100[br]POSITION 200 100[/code]","[code]TOURNE DROITE 90[br]AVANCE 100[br]LEVE CRAYON[br]RECULE 300[br]TOURNE GAUCHE 90[br]AVANCE 300[br]BAISSE CRAYON[/code]","[code]TOURNE DROITE 90[br]AVANCE 100[br]POSITION 100 200[br]TOURNE DROITE 90[br]AVANCE 100[/code]"]]]></dct:description>
-        <dct:extent>5</dct:extent>
-        <dct:subject>it</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>4</dct:type>
-        <dct:alternative>001</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>307</dct:identifier>
-        <dct:title xml:lang="fr-FR">Tracer une figure géométrique.</dct:title>
-        <dct:description><![CDATA["a":{"op":["av","re","td","tg","ca","lc","bc","ct","mt","or","po","fo","co"],"va":["V180","V270","V045","V135","V225","V315","V000","V200","V100","V090"]},"bg":[{"type":"grid100","attr":{"class":"tiny"}},{"type":"path","attr":{"d":"M 320,240 L 320,340 L 520,340 L 520,240 L 420,240 L 420,140 L 320,240"}},{"type":"path","attr":{"d":"M 320,140 L 320,40 L 420,40 L 320,140"}}],"result":{"nb":9,"values":[[320,240,320,340,0],[320,340,520,340,0],[520,340,520,240,0],[520,240,420,240,0],[420,240,420,140,0],[420,140,320,240,0],[320,140,320,40,0],[320,40,420,40,0],[420,40,320,140,0]]}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Tracez la figure demandée[/b] en utilisant la grille 100x100 pour vous repérez."],"tips":["Pensez à utiliser judicieusement les commandes [red][b]AVANCE[/b][/red], [red][b]POSITION[/b][/red] et [red][b]ORIGIN[/b][/red].","[code]POSITION 100 100[br]RECULE 100[br]POSITION 200 0[br]RECULE 100[br]TOURNE GAUCHE 90[br]AVANCE 200[br]ORIGIN[/code]","[code]LEVE CRAYON[br]AVANCE 100[br]BAISSE CRAYON[br]AVANCE 100[br]POSITION 100 200[br]POSITION 0 100[/code]"]]]></dct:description>
-        <dct:extent>5</dct:extent>
-        <dct:subject>it</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>4</dct:type>
-        <dct:alternative>001</dct:alternative>
-    </rdf:Description>
-
-
-    <rdf:Description>
-        <dct:identifier>308</dct:identifier>
-        <dct:title xml:lang="fr-FR">Tracer une figure géométrique.</dct:title>
-        <dct:description><![CDATA["a":{"op":["av","re","td","tg","ca","lc","bc","ct","mt","or","po","fo","co"],"va":["V030","V000","V180","V270","V045","V135","V225","V315","V200","V100","V060","V090","V120","black","white","red","green","blue"]},"bg":[{"type":"grid100","attr":{"class":"tiny"}},{"type":"line","attr":{"x1":420,"y1":340,"x2":420,"y2":440}},{"type":"line","attr":{"x1":420,"y1":440,"x2":220,"y2":440}},{"type":"line","attr":{"x1":220,"y1":440,"x2":220,"y2":340}},{"type":"line","attr":{"x1":220,"y1":340,"x2":420,"y2":340}},{"type":"line","attr":{"x1":420,"y1":340,"x2":320,"y2":166.79}},{"type":"line","attr":{"x1":320,"y1":166.79,"x2":220,"y2":340}}],"result":{"nb":6,"values":[[420,340,420,440,3],[420,440,220,440,3],[220,440,220,340,3],[220,340,420,340,3],[420,340,320,166.79,1],[320,166.79,220,340,1]]}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Tracez la figure demandée[/b] en utilisant la grille 100x100 pour vous repérez.","","[blue]Le rectangle inférieur est BLEU[/blue] tandisque [red]les 2 traits obliques de longueur 200 sont ROUGES.[/red]"],"tips":["[code]LEVE CRAYON[br]RECULE 100[br]TOURNE GAUCHE 90[br]AVANCE 100[br]COULEUR BLEU[br]BAISSE CRAYON[/code]","[code]RECULE 200[br]TOURNE GAUCHE 90[br]AVANCE 100[br]TOURNE DROITE 90[br]AVANCE 200[br]TOURNE DROITE 90[br]AVANCE 100[/code]","[code]COULEUR ROUGE[br]TOURNE DROITE 30[br]AVANCE 200[br]TOURNE DROITE 120[br]AVANCE 200[/code]"]]]></dct:description>
-        <dct:extent>5</dct:extent>
-        <dct:subject>it</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>4</dct:type>
-        <dct:alternative>001</dct:alternative>
-    </rdf:Description>
 
 </rdf:RDF>
 

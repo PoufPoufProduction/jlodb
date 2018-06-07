@@ -213,7 +213,7 @@
         <dct:title xml:lang="fr-FR">Robot</dct:title>
         <dct:abstract xml:lang="fr-FR">Avec cette activité de programmation, l'utilisateur doit trouver la bonne séquence d'instructions pour amener le ou les robots vers leur case d'arrivée respective.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["guide":"Diriger un ou plusieurs robots vers leur case d'arrivée respective. Utiliser les actions proposées dans le code source en les faisant glisser vers les différentes fonctions. Enfin, lancer le programme grâce au bouton de lecture situé en bas de l'écran.[br]La note finale dépend du nombre d'indices utilisés.","legend":{"actions":"Actions","f01":"Avancer d'une case","b01":"Reculer d'une case","turnleft":"Tourner à gauche","turnright":"Tourner à droite","nothing":"Ne rien faire","inv":"Inverser les commandes","num":"Changer la valeur de l'écran suivant la dalle","nums":"Changer la valeur de l'écran","numplus":"Ajouter 1 à la valeur de l'écran","numminus":"Enlever 1 à la valeur de l'écran","color":"Eclairer la lampe","notcolor":"Eteindre la lampe","fct1":"Appeler la fonction 1","fct2":"Appeler la fonction 2","tests":"Tests","ifeq":"Tester la valeur de la dalle","ifnoteq":"Tester une différence de valeur","iflcolor":"Tester l'éclairage de la lampe","iflnotcolor":"Tester le non-éclairage de la lampe","ifcolor":"Tester la couleur de la dalle","ifnotcolor":"Tester une différence de couleur","ifnums":"Tester la valeur de l'écran","ifnotnums":"Tester une non-valeur de l'écran","ifinvert":"Tester l'inversion des commandes","ifnotend":"Tester l'arrivée","loops":"Boucles","xnums":"De 2 à 5 fois","xnum":"Suivant la valeur de l'écran","whilelcolor":"Tant que la lampe est allumée","whilelnotcolor":"Tant que la lampe est éteinte","whilecolor":"Tant que la couleur de la dalle correspond","whilenotcolor":"Tant que la couleur de la dalle ne correspond pas","whilenotend":"Tant que la dalle n'est pas celle d'arrivée"},"tipc1":"Afficher le premier indice","tipc2":"Afficher le deuxième indice","tipc3":"Afficher le troisième indice","tipcc":"Un indice coûte 1 point sur la note finale, souhaitez-vous continuer ?"]]></dct:description>
-        <dct:source>res/img/banners/it.svg,res/img/background/gears01.svg,res/img/background/asset/robot01.svg,res/img/tileset/iso/robot/,res/img/tileset/iso/set1/,res/img/action/,res/img/icon/cell/cell01.svg,res/img/asset/misc/goal01.svg,res/img/control/,res/img/effects/alertrobot01.svg,res/img/icon/skill/minus01.svg,res/img/icon/skill/plus01.svg,res/img/asset/fx/target03.svg</dct:source>
+        <dct:source>res/img/banners/it.svg,res/img/background/gears01.svg,res/img/background/asset/robot01.svg,res/img/tileset/iso/robot/,res/img/tileset/iso/set1/,res/img/action/,res/img/icon/cell/cell01.svg,res/img/asset/misc/goal01.svg,res/img/control/,res/img/effects/alertrobot01.svg,res/img/icon/skill/minus01.svg,res/img/icon/skill/plus01.svg,res/img/asset/fx/target03.svg,res/img/background/landscape/grayboard01.svg</dct:source>
     </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:sequence">
@@ -247,6 +247,13 @@
         <dct:description xml:lang="fr-FR"><![CDATA["guide":"Faire correspondre les différents éléments de l'exercice en échangeant la position des éléments de droite.","guide2":"Ranger les éléments selon la consigne et terminer l'exercice en cliquant sur le bouton de validation."]]></dct:description>
         <dct:source>res/img/banners/sorting.svg,res/img/background/asset/sorting0*.svg,res/img/background/landscape/redcarpet01.svg</dct:source>
     </rdf:Description>
+	
+    <rdf:Description rdf:about="urn:activity:stories">
+        <dct:title xml:lang="fr-FR">Aventures numériques</dct:title>
+        <dct:abstract xml:lang="fr-FR">Cette activité propose des histoires et des aventures pour vos héros.</dct:abstract>
+        <dct:description xml:lang="fr-FR"><![CDATA["guide":"XXXX"]]></dct:description>
+        <dct:source></dct:source>
+    </rdf:Description>
 
     <rdf:Description rdf:about="urn:activity:sudoku">
         <dct:title xml:lang="fr-FR">Sudoku</dct:title>
@@ -269,12 +276,16 @@
         <dct:source>res/img/banners/trafficjam.svg,res/img/tileset/ortho/traffic/,res/img/asset/misc/goal01.svg,res/img/svginventoryicons/misc/pressure01.svg,res/img/background/landscape/blueboard01.svg</dct:source>
     </rdf:Description>
 
+	<!--
+	
     <rdf:Description rdf:about="urn:activity:wargames">
         <dct:title xml:lang="fr-FR">Jeux de guerre</dct:title>
         <dct:abstract xml:lang="fr-FR">Jeu de stratégie retraçant les grandes batailles historiques.</dct:abstract>
         <dct:description xml:lang="fr-FR"><![CDATA["guide":"TO DO","single":"En mode [b]individuel[/b], les unités jouent à tour de rôle suivant leur vitesse respective, indépendamment de l'équipe à laquelle elles appartiennent.","group":"En mode par [b]équipe[/b], chaque équipe joue à tour de rôle.","fog":"La présence de [b]brouillard de guerre[/b] empêche la vision complète du terrain. Certaines unités peuvent se cacher dans les cases grisées du plateau de jeu.","nofog":"En l'absence de [b]brouillard de guerre[/b], toutes les unités sur le plateau de jeu sont visibles.","plife":"[h1]Points de vie[/h1]La valeur diminue chaque fois que l'unité subit des dommages. Lorsque le nombre atteint la valeur 0, l'unité est détruite.","pmunition":"[h1]Capacité d'attaque[/h1]Cette valeur diminue après chaque attaque. Lorsque ce nombre est à 0, l'unité ne peut plus attaquer.","parmor":"[h1]Points d'armure[/h1]L'armure protège l'unité d'autant de points d'attaque.","pattack":"[h1]Points d'attaque[/h1]L'attaque indique le nombre de dégats infligés par l'unité à chaque combat.","pmove":"[h1]Points de déplacement[/h1]L'unité peut se déplacer d'autant de cases. Certaines cases peuvent présenter des malus ou des bonus dans le déplacement.","pvision":"[h1]Visibilité[/h1]Distance visible par l'unité en présence de brouillard de guerre.","pluck":"[h1]Point de chance[/h1]Probabilité de déclencher une attaque critique ou d'éviter une attaque adverse.","pspeed":"[h1]Vitesse[/h1]Fréquence d'attaque de l'unité en mode individuel."]]></dct:description>
         <dct:source>res/img/banners/wargames.svg</dct:source>
     </rdf:Description>
+	
+	-->
 
     <rdf:Description rdf:about="urn:activity:where">
         <dct:title xml:lang="en-US">Move objects to the right location</dct:title>

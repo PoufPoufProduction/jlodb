@@ -12,6 +12,7 @@
         worst       : [],                                       // The worst scenario (for multi-robots)
         max         : 200,                                      // Maximum operations allowed
         maxbt       : 20,                                       // Maximum bt allowed
+		speed		: 1,
         debug       : true                                     // Debug mode
     };
 
@@ -235,6 +236,7 @@
                 }
 
                 helpers.updatesource($this);
+				helpers.speed($this,false);
 
                 $this.find(".dd").droppable({accept:".a",
                     drop:function(event, ui) {
@@ -1089,7 +1091,12 @@
                     }
                 }
             }
-        }
+        },
+		speed: function($this, _inc) {
+			var settings = helpers.settings($this);
+			if (_inc) { settings.speed=(settings.speed+1)%3; }
+            $this.find("#speed img").attr("src","res/img/control/x"+(1+settings.speed)+".svg");
+		}
     };
 
     // The plugin
@@ -1109,7 +1116,6 @@
                         number      : 0
                     },
                     wrong           : 0,
-                    speed           : 1,
                     synchro         : false,
                     pause           : {
                         state       : false,
@@ -1159,10 +1165,7 @@
             },
             speed: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                if (settings.interactive) {
-                    settings.speed=(settings.speed+1)%3;
-                    $this.find("#speed img").attr("src","res/img/control/x"+(1+settings.speed)+".svg");
-                }
+                if (settings.interactive) { helpers.speed($this, true); }
             },
             play: function() {
                 var $this = $(this) , settings = helpers.settings($this);
@@ -1215,8 +1218,6 @@
                 var $this = $(this) , settings = helpers.settings($this);
                 settings.stop = true;
                 if (settings.pause.state) { helpers.restore($this); }
-            },
-            valid: function() {
             },
             course: function() { helpers.course.click($(this)); },
             tip: function() {

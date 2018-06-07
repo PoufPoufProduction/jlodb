@@ -1,0 +1,22 @@
+<div>
+
+    <div id="exercice"></div>
+    <div id="board">hello world</div>
+
+    <div id="splashex" ontouchstart="$(this).hide().closest('.stories').stories('next');event.preventDefault();"
+                     onclick="$(this).hide().closest('.stories').stories('next');"><div>
+        <h1 id="label"></h1>
+        <div id="guide"></div>
+    </div></div>
+    
+    <!-- Optional devmode -->
+    <div id="devmode" ontouchstart="$(this).closest('.stories').stories('devmode');event.preventDefault();"
+                      onclick="$(this).closest('.stories').stories('devmode');" ><img src="res/img/default/white/snapshot.svg"/></div>
+                      
+    <div id="devoutput" ontouchstart="$(this).hide();event.preventDefault();" onclick="$(this).hide();">
+        <textarea ontouchstart="$(this).focus();event.stopPropagation();event.preventDefault();"
+                  onclick="$(this).focus();event.stopPropagation();"></textarea>
+    </div>
+
+</div>
+

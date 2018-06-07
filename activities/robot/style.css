@@ -1,5 +1,5 @@
 .robot .both *                      { overflow:visible; }
-.robot                              { background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat;}
+.robot                              { background-image:url("../../res/img/background/landscape/grayboard01.svg"); }
 
 .robot div#splashex                  { background-image:url("../../res/img/banners/it.svg"); color:lime; }
 .robot div#splashex h1               { position:absolute; top:45%; left:80%; font-size:1.5em; }
@@ -104,3 +104,8 @@
 .robot #devoutput                { z-index:100; }
 .robot #goal					{ z-index:101; display:none; position:absolute; font-size:6em; width:1em; height:1em; top:45%; left:50%; }
 
+.robot .help					{ position:absolute; z-index:100; font-size:4em; cursor:auto; display:none;  }
+.robot #htomain					{ top:10%; left:35%; }
+.robot.htomain #htomain			{ display:inherit; }
+.robot #hrun					{ top:50%; left:35%; }
+.robot.hrun #hrun				{ display:inherit; }
