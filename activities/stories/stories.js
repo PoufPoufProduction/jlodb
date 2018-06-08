@@ -8,7 +8,14 @@
         lang        : "en-US",                                  // Current localization
         exercice    : [],                                       // Exercice
         background  : "",
-        debug       : false                                     // Debug mode
+		maps		: {
+			"start":{ "tileset":"set1",
+					"size":[8,16],
+					"bg":[0,0,1,1,1,1,2,2,0,1,2,3,2,3,1,1,3,4,1,1,4,4,4,4,2,3,3,1,1,1,2,2,2,3,3,2,2,2,2,2,2,3,3,1,1,3,2,2,2,3,3,4,4,1,4,4,4,3,4,4,1,1,2,2,4,4,1,1,1,1,2,2,4,1,2,3,2,3,1,1,3,4,1,1,4,4,4,4,2,3,3,1,1,1,2,2,2,3,3,2,2,2,2,2,2,3,3,1,1,3,2,2,2,3,3,4,4,1,4,4,4,3,4,4,1,1,2,2]
+			}
+		},
+		mapid		: "start",									// Starting map
+        debug       : true                                     // Debug mode
     };
 
     var regExp = [
@@ -20,6 +27,18 @@
         "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>"
     ];
 
+	var newtile = function(_tileset, _ref, _id, _pos) {
+		var ret = {
+			c : 1.02, // CORRECTION TO AVOID GAP
+			pos:[_pos[0],_pos[1]], size:[1,1], offset:[0,0],
+			$html:$("<div id='"+_id+"' class='elt'><img src='res/img/tileset/ortho/"+_tileset+"/"+_ref+".svg' alt=''/></div>")
+		};
+		ret.$html.css("left",ret.pos[0]+"em").css("top",ret.pos[1]+"em")
+				 .css("width",(ret.c*ret.size[0])+"em").css("height",(ret.c*ret.size[1])+"em");
+		
+		return ret;
+	}
+	
     // private methods
     var helpers = {
         // @generic: Check the context
@@ -103,9 +122,141 @@
                 // Optional devmode
                 if (settings.dev) { $this.find("#devmode").show(); }
 
-                // Exercice
-                $this.find("#exercice").html(helpers.format(settings.exercice));
+                // BUILD ALL MAPS
+				for (var m in settings.maps) {
+					
+					var map = $.extend(true, {
+// DEFAULT MAP CLASS
+zoommin		: 0,						// Number of tiles shown when zoom max
+zoommax 	: 2,						// Number of tiles shown when zoom min
+delta		: [0,0],					// Diff position with focus
+zoom		: 0,						// Zoom value (from 0/zoommin to 1 zoommax)
+$board		: $this.find("#board"),
+nav: function(_delta) {
+	if (!_delta) { _delta=[0,0]; }
+    var x = Math.min(this.size[0]-this.zoom, Math.max(0,this.focus[0] - (this.delta[0]+_delta[0]) - this.zoom/2));
+    var y = Math.min(this.size[1]-this.zoom, Math.max(0,this.focus[1] - (this.delta[1]+_delta[1]) - this.zoom/2));
+            
+	/*
+        $this.find("#eleft").toggle(x>0.001);
+        $this.find("#etop").toggle(y>0.001);
+        $this.find("#eright").toggle(x<settings.nav.size[0]-settings.nav.zoom-0.001);
+        $this.find("#ebottom").toggle(y<settings.nav.size[1]-settings.nav.zoom-0.001);
+	*/
 
+	this.$board.find(".map").css("left",-x+"em").css("top",-y+"em");
+	
+},
+setzoom: function(_zoom, _cbk) {
+	if (_zoom>=0 && _zoom<=1) { this.zoom = this.zoommin + (this.zoommax-this.zoommin)*_zoom; }
+
+	// vSize*vNoZoomSize HAS TO BE INTEGER (ELSE BORDER WILL APPEAR)
+	var vSize = 10/this.zoom;
+	/*
+	var vNoZoomSize = this.$board.width()/10;
+	var vActualSize = vSize * vNoZoomSize;
+	vSize -= (vActualSize - Math.floor(vActualSize))/vNoZoomSize;
+	*/
+	this.$map.css("font-size",vSize+"em");
+	for (var i=0; i<2; i++) {
+		this.focus[i]=Math.max(this.focus[i],this.zoom/2);
+		this.focus[i]=Math.min(this.focus[i], this.size[i]-this.zoom/2);
+	}
+	this.nav();
+}
+					}, settings.maps[m]);
+					
+					// INIT MAP
+					map.$map = $("<div class='map'><div class='bg'></div></div>");
+					map.$map.css("width",map.size[0]+"em").css("height",map.size[1]+"em");
+					
+					// BUILDS TILES
+					map.data = [];
+					for (var i=0; i<map.size[0]*map.size[1]; i++) {
+						
+						ref=map.bg[i].toString();
+						if (ref!="0") {
+							while (ref.length<3) { ref="0"+ref; }
+							var t = newtile(map.tileset, ref, i, [i%map.size[0],Math.floor(i/map.size[0])]);
+							
+							map.data.push(t);
+							map.$map.find(".bg").append(t.$html);
+						}
+					}
+					// HANDLE SIZE
+					if (!map.zoomin) { map.zoommin = Math.min(map.size[0],map.size[1]); }
+					map.focus = [ map.zoommin/2, map.zoommin/2 ];
+					
+					
+					settings.maps[m] = map;
+				}
+				
+				$this.find("#board").bind("mousedown touchstart", function(event) {
+                    var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?event.originalEvent.touches[0]:event;
+                    if (settings.interactive ) {
+                        settings.action.start 	= [ vEvent.clientX, vEvent.clientY];
+						settings.action.type	= 1;
+						
+                    }
+                    event.stopPropagation();
+                    event.preventDefault();
+                });
+				
+				$this.find("#board").bind("mousemove touchmove", function(event) {
+					var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?event.originalEvent.touches[0]:event;
+                    if (settings.interactive && settings.action.type ) {
+						switch(settings.action.type) {
+							case 1:
+								var s = $this.find("#board .map .elt").width();
+								settings.action.data =
+									[ (vEvent.clientX-settings.action.start[0])/s,
+									  (vEvent.clientY-settings.action.start[1])/s ]
+								settings.maps[settings.mapid].nav( settings.action.data );
+								break;
+						}
+							
+					}
+                    event.stopPropagation();
+                    event.preventDefault();
+				});
+				
+				$this.find("#board").bind("mouseup touchend mouseleave touchleave", function(event) {
+					if (settings.interactive && settings.action.type ) {
+						switch(settings.action.type) {
+							case 1:
+								settings.maps[settings.mapid].delta =
+									[ (settings.maps[settings.mapid].delta[0] + settings.action.data[0]),
+									  (settings.maps[settings.mapid].delta[1] + settings.action.data[1]) ];
+								settings.maps[settings.mapid].nav();
+								break;
+						}
+						
+						settings.action.type = 0;
+					}
+                    event.preventDefault();
+				});
+
+				setTimeout(function() {
+					
+					$this.find("#board").html(settings.maps[settings.mapid].$map);
+                    settings.maps[settings.mapid].setzoom(map.zoom);
+
+					// ZOOM SLIDER HANDLING
+                    $this.find("#zoom #cursor")
+                        .draggable({ axis:"x", containment:"parent",
+                            drag:function() {
+                                var x= ($(this).offset().left-$(this).parent().offset().left)/($(this).parent().width()-$(this).width());
+                                settings.maps[settings.mapid].setzoom(x);
+							},
+							stop: function() {
+								var x= 10*($(this).offset().left-$(this).parent().offset().left)/$(this).parent().width();
+								$(this).css("width", "50%").css("left", x+"em");
+							}
+						});
+                }, 1);
+				
+				
+				
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         }
@@ -119,7 +270,8 @@
             init: function(options) {
                 // The settings
                 var settings = {
-                    interactive     : false
+                    interactive     : false,
+					action : { start:0, type:0, data:0 }
                 };
 
                 return this.each(function() {

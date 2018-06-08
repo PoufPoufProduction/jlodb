@@ -1,7 +1,13 @@
 .stories                            { background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat;}
+.stories>div						{ width:16em; height:12em; }
 .stories div#splashex               { background-image:url("../../res/img/banners/it.svg"); }
 .stories div#splashex h1            { position:absolute; top:45%; left:80%; font-size:1.5em;  white-space:nowrap; }
 .stories div#splashex #guide        { position:absolute; top:52%; left:45%; font-size:.75em; width:48%; text-align:justify; }
-.stories div#exercice               { width:100%; height:20%; background-repeat:repeat; font-size:.5em; background-image:url("../../res/img/default/pattern/line01.svg"); text-align:justify; }
-.stories div#exercice .strong       { color:red; font-weight:bold; border: 1px solid red; border-width:1px 0; }
-.stories div#board                  { height:70%; font-size:.6em; }
+.stories div#map					{ margin:.5em; height:11em; width:10em; border:.2em solid white; }
+.stories div#board                  { font-size:1em; height:10em; width:10em; background-color:black;  }
+.stories .map						{ position:relative; }
+.stories .map .elt					{ position:absolute; }
+
+.stories div#zoom					{ font-size:1em; height:1em; width:10em; background-color:gray; }
+.stories div#zoom #cursor			{ height:1em; width:50%; background-color:white; cursor:move; }
+.stories div#zoom #cursor.ui-draggable-dragging	{ background-color: red; }
