@@ -4,9 +4,16 @@
 .stories div#splashex h1            { position:absolute; top:45%; left:80%; font-size:1.5em;  white-space:nowrap; }
 .stories div#splashex #guide        { position:absolute; top:52%; left:45%; font-size:.75em; width:48%; text-align:justify; }
 .stories div#map					{ margin:.5em; height:11em; width:10em; border:.2em solid white; }
-.stories div#board                  { font-size:1em; height:10em; width:10em; background-color:black;  }
+.stories div#board                  { font-size:1em; height:10em; width:10em; background-color:black; position:relative;  }
 .stories .map						{ position:relative; }
 .stories .map .elt					{ position:absolute; }
+
+.stories #board .border           { background-color:rgba(255,255,255,0.5); position:absolute; top:0; left:0; display:none; }
+.stories #board #eleft            { width:0.4em; height:11em; }
+.stories #board #eright           { width:0.4em; height:11em; left:9.6em;}
+.stories #board #etop             { width:11em; height:0.4em; }
+.stories #board #ebottom          { width:11em; height:0.4em; top:9.6em;}
+
 
 .stories div#zoom					{ font-size:1em; height:1em; width:10em; background-color:gray; }
 .stories div#zoom #cursor			{ height:1em; width:50%; background-color:white; cursor:move; }

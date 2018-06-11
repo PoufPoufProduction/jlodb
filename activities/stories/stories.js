@@ -9,9 +9,11 @@
         exercice    : [],                                       // Exercice
         background  : "",
 		maps		: {
-			"start":{ "tileset":"set1",
+			"start":{
+					"tileset":"set1",
+					"background":"#afc84b",
 					"size":[8,16],
-					"bg":[0,0,1,1,1,1,2,2,0,1,2,3,2,3,1,1,3,4,1,1,4,4,4,4,2,3,3,1,1,1,2,2,2,3,3,2,2,2,2,2,2,3,3,1,1,3,2,2,2,3,3,4,4,1,4,4,4,3,4,4,1,1,2,2,4,4,1,1,1,1,2,2,4,1,2,3,2,3,1,1,3,4,1,1,4,4,4,4,2,3,3,1,1,1,2,2,2,3,3,2,2,2,2,2,2,3,3,1,1,3,2,2,2,3,3,4,4,1,4,4,4,3,4,4,1,1,2,2]
+					"bg":[121,121,1,1,1,1,2,2,101,1,2,3,11,3,1,1,205,205,208,1,4,4,4,4,2,11,206,1,203,12,11,2,2,3,213,205,212,211,205,205,2,3,206,1,1,204,12,2,2,201,212,202,4,12,11,4,4,3,4,101,101,1,2,2,4,4,1,1,1,1,101,2,4,1,2,3,2,3,1,1,3,4,1,1,4,4,4,4,2,3,3,1,1,1,2,2,2,3,3,2,101,101,2,2,2,3,3,1,101,101,101,2,2,3,3,4,4,1,4,4,4,3,4,4,1,1,2,2]
 			}
 		},
 		mapid		: "start",									// Starting map
@@ -129,20 +131,25 @@
 // DEFAULT MAP CLASS
 zoommin		: 0,						// Number of tiles shown when zoom max
 zoommax 	: 2,						// Number of tiles shown when zoom min
-delta		: [0,0],					// Diff position with focus
 zoom		: 0,						// Zoom value (from 0/zoommin to 1 zoommax)
 $board		: $this.find("#board"),
 nav: function(_delta) {
+	for (var i=0; i<2; i++) {
+		this.focus[i]=Math.max(this.focus[i],this.zoom/2);
+		this.focus[i]=Math.min(this.focus[i],this.size[i]-this.zoom/2);
+	}
+	
 	if (!_delta) { _delta=[0,0]; }
-    var x = Math.min(this.size[0]-this.zoom, Math.max(0,this.focus[0] - (this.delta[0]+_delta[0]) - this.zoom/2));
-    var y = Math.min(this.size[1]-this.zoom, Math.max(0,this.focus[1] - (this.delta[1]+_delta[1]) - this.zoom/2));
+    var x = Math.min(this.size[0]-this.zoom, Math.max(0,this.focus[0] - _delta[0] - this.zoom/2));
+    var y = Math.min(this.size[1]-this.zoom, Math.max(0,this.focus[1] - _delta[1] - this.zoom/2));
+	
+	
+	console.log(this.focus[0]+" - "+ _delta[0] +" - "+ (this.zoom/2)+" -> "+x);
             
-	/*
-        $this.find("#eleft").toggle(x>0.001);
-        $this.find("#etop").toggle(y>0.001);
-        $this.find("#eright").toggle(x<settings.nav.size[0]-settings.nav.zoom-0.001);
-        $this.find("#ebottom").toggle(y<settings.nav.size[1]-settings.nav.zoom-0.001);
-	*/
+	this.$board.find("#eleft").toggle(x>0.001);
+    this.$board.find("#etop").toggle(y>0.001);
+    this.$board.find("#eright").toggle(x<this.size[0]-this.zoom-0.001);
+    this.$board.find("#ebottom").toggle(y<this.size[1]-this.zoom-0.001);
 
 	this.$board.find(".map").css("left",-x+"em").css("top",-y+"em");
 	
@@ -152,17 +159,15 @@ setzoom: function(_zoom, _cbk) {
 
 	// vSize*vNoZoomSize HAS TO BE INTEGER (ELSE BORDER WILL APPEAR)
 	var vSize = 10/this.zoom;
-	/*
-	var vNoZoomSize = this.$board.width()/10;
-	var vActualSize = vSize * vNoZoomSize;
-	vSize -= (vActualSize - Math.floor(vActualSize))/vNoZoomSize;
-	*/
 	this.$map.css("font-size",vSize+"em");
-	for (var i=0; i<2; i++) {
-		this.focus[i]=Math.max(this.focus[i],this.zoom/2);
-		this.focus[i]=Math.min(this.focus[i], this.size[i]-this.zoom/2);
-	}
 	this.nav();
+},
+show: function(_args) {
+	this.$board.find(".map").detach();
+	this.$board.prepend(this.$map)
+			   .css("background-color",this.background);
+    this.setzoom(this.zoom);
+					
 }
 					}, settings.maps[m]);
 					
@@ -224,9 +229,9 @@ setzoom: function(_zoom, _cbk) {
 					if (settings.interactive && settings.action.type ) {
 						switch(settings.action.type) {
 							case 1:
-								settings.maps[settings.mapid].delta =
-									[ (settings.maps[settings.mapid].delta[0] + settings.action.data[0]),
-									  (settings.maps[settings.mapid].delta[1] + settings.action.data[1]) ];
+								settings.maps[settings.mapid].focus =
+									[ (settings.maps[settings.mapid].focus[0] - settings.action.data[0]),
+									  (settings.maps[settings.mapid].focus[1] - settings.action.data[1]) ];
 								settings.maps[settings.mapid].nav();
 								break;
 						}
@@ -237,9 +242,7 @@ setzoom: function(_zoom, _cbk) {
 				});
 
 				setTimeout(function() {
-					
-					$this.find("#board").html(settings.maps[settings.mapid].$map);
-                    settings.maps[settings.mapid].setzoom(map.zoom);
+                    settings.maps[settings.mapid].show();
 
 					// ZOOM SLIDER HANDLING
                     $this.find("#zoom #cursor")
