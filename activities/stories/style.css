@@ -8,8 +8,9 @@
 .stories .map						{ position:absolute; }
 .stories .map .elt					{ position:absolute; }
 
+.stories .map .people .elt			{ z-index:5; }
 .stories .map .fog .elt				{ width:1em; height:1em; background-color:rgba(200,200,200,0.8);  }
-.stories .map .moves .elt			{ width:1em; height:1em; display:none; opacity:0.8; }
+.stories .map .moves .elt			{ width:1em; height:1em; display:none; opacity:0.8; background-repeat:no-repeat; }
 .stories .map .moves .elt.s			{ background-color:rgba(0,0,0,0.5); }
 .stories .map .moves .elt.a09		{ background-image:url("../../res/img/tileset/ortho/arrows/r01.svg");  }
 .stories .map .moves .elt.a19		{ background-image:url("../../res/img/tileset/ortho/arrows/r02.svg");  }
@@ -39,7 +40,7 @@
 .stories .map .toright2 .state.toright2	{ display:inherit; }
 .stories .map .toleft2 .state.toleft2	{ display:inherit; }
 
-.stories #board .border           { background-color:rgba(255,255,255,0.5); position:absolute; top:0; left:0; display:none; }
+.stories #board .border           { background-color:rgba(255,255,255,0.5); position:absolute; top:0; left:0; display:none; z-index:6; }
 .stories #board #eleft            { width:0.4em; height:11em; }
 .stories #board #eright           { width:0.4em; height:11em; left:9.6em;}
 .stories #board #etop             { width:11em; height:0.4em; }

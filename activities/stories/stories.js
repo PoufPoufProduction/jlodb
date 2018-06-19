@@ -14,31 +14,41 @@
 				"background": "#afc84b",
 				"fog"		: true,
 				"size"		: [8,16],
-				"bg"		: [121,121,1,1,1,1,2,2,101,1,2,3,11,3,1,1,205,205,208,1,4,4,4,4,2,11,206,1,203,12,11,2,2,3,213,205,212,211,205,205,2,3,206,1,1,204,12,2,2,201,212,202,4,12,11,4,4,3,4,101,101,1,2,2,4,4,1,1,1,1,101,2,4,1,2,3,2,3,1,1,3,4,1,1,4,4,4,4,2,3,3,1,1,1,2,2,2,3,3,2,101,101,2,2,2,3,3,1,101,101,101,2,2,3,3,4,4,1,4,4,4,3,4,4,1,1,2,2],
+				"bg"		: [401,401,1,1,1,1,2,2,41,1,2,401,11,3,1,1,205,205,208,1,4,4,4,4,2,11,206,1,203,12,11,2,2,3,213,205,212,211,205,205,2,3,206,1,1,204,12,2,2,201,212,202,4,12,11,4,4,3,4,41,41,1,2,2,135,141,135,138,1,1,41,2,4,136,2,136,2,401,1,1,3,121,1,139,123,124,135,135,2,122,3,1,1,1,2,2,2,136,3,107,105,111,102,2,105,125,105,110,41,106,41,2,2,121,3,4,4,109,111,105,4,106,4,4,1,1,106,2],
 				"people"	: [
 					{"id":"p01","pos":[1,1],"init":"toright", "team":0},
 					{"id":"p02","pos":[3,5],"init":"toleft", "team":0},
-					{"id":"p03","pos":[5,6],"init":"toright", "team":1}
+					{"id":"p03","pos":[5,6],"init":"toright", "team":1},
+					{"id":"p04","pos":[4,10],"init":"toleft", "team":0},
+					{"id":"p05","pos":[4,7],"init":"toright", "team":1}
 				]
 			}
 		},
 		people		: {		// PEOPLE LIBRARY
-			"p01" : { "prefix": "aab", "type":"human" },
-			"p02" : { "prefix": "acb", "type":"human" },
-			"p03" : { "prefix": "abr", "type":"human" }
+			"p01" : { "prefix": "aab", "type":"human", "inventory":"fist" },
+			"p02" : { "prefix": "acb", "type":"human", "inventory":"gun" },
+			"p03" : { "prefix": "abr", "type":"human" },
+			"p04" : { "prefix": "adb", "type":"human" },
+			"p05" : { "prefix": "abr", "type":"human" }
 		},
 		mapid		: "start",									// Starting map
         debug       : true                                     // Debug mode
     };
 	
+	var objectdef = {
+		"fist": { "range":1, "attack":2	},
+		"gun":  { "range":4, "attack":5 }
+	};
+	
 	var peopledef = {
 		"default": {
+			"life"	: 10,
 			"vision": 4,
 			"size"	: [1,1],
 			"state" : { "toright":"01", "toleft":"02" },
 			"move"	: 5,
 			"speed"	: [ 99,3,1,2,3 ],
-			"road"	: 0
+			"road"	: 0.5
 		}
 	};
 
@@ -60,13 +70,14 @@
 			move	: m[Math.floor(id/100)],	// TILE HEIGHT : 0 SEA, 1 RIVER, 2 GROUND, 3 HILL, 4 MOUNTAIN
 			road	: false,					// IS TILE A ROAD
 			hiding	: false,					// IS A HIDING PLACE
-			c 		: 1.02, 					// GRAPHIC CORRECTION TO AVOID GAP
+			c 		: 1.01, 					// GRAPHIC CORRECTION TO AVOID GAP
 			pos		:[_pos[0],_pos[1]], size:[1,1], offset:[0,0],
 			$html	:$("<div id='"+_id+"' class='elt'><img src='res/img/tileset/ortho/"+_tileset+"/"+_ref+".svg' alt=''/></div>")
 		};
 		
 		// APPLY GENERIC RULES
-		if (id==101) { ret.hiding = true; }
+		if (id==41) { ret.hiding = true; }
+		if (id>100 && id<200) { ret.road = true; }
 		
 		
 		ret.$html.css("left",ret.pos[0]+"em").css("top",ret.pos[1]+"em")
@@ -211,23 +222,25 @@ getgrid		: function(){
 	for (var j=0; j<this.size[1]*this.size[0]; j++) { ret.push(0); }
 	return ret;
 },
-updgrid		: function(_ret, _i, _j, _lvl, _fct) {
+updgrid		: function(_grid, _i, _j, _lvl, _fct) {
 	var next = [[-1,0],[1,0],[0,-1],[0,1]];
 	if ( _lvl>0 &&  this.inside(_i, _j) ) {
 		var idx = this.getidx(_i,_j);
-		if (_ret[idx]<_lvl) {
+		if (_grid[idx]<_lvl) {
 			var val = _lvl, dec = 1;
 			if (_fct) {
-				var f = _fct({ i:_i, j:_j, tile:this.data[idx], level:_lvl} );
+				var f = _fct({ i:_i, j:_j, tile:this.data[idx], level:_lvl, map:this} );
 				val = f[0]; dec = f[1];
 			}
-			_ret[idx] = val;
-			for (var i in next) {
-				_ret = this.updgrid(_ret, _i+next[i][0], _j+next[i][1], _lvl-dec, _fct);
+			_grid[idx] = val;
+			for (var i=0; i<next.length; i++) {
+				var ddec = dec;
+				if ($.isArray(ddec)) { ddec = ddec[i]; }
+				_grid = this.updgrid(_grid, _i+next[i][0], _j+next[i][1], _lvl-ddec, _fct);
 			}
 		}
 	}
-	return _ret;
+	return _grid;
 },
 nav: function(_delta) {
 	for (var i=0; i<2; i++) {
@@ -257,10 +270,30 @@ getmoves: function(_people) {
 	var pdat = this.peopleref[_people.id];
 	ret = this.updgrid(ret, _people.pos[0], _people.pos[1], pdat.move,
 		function(_args) {
-			var val = pdat.speed[_args.tile.move];
-			if (_args.tile.road) { val -= pdat.road; }
-			
-			return [_args.level, val];
+			var next = [[-1,0],[1,0],[0,-1],[0,1]];
+			var vals = [];
+			for (var n in next) {
+				var val = 99;
+				var ii=_args.i+next[n][0];
+				var jj=_args.j+next[n][1];
+				if (_args.map.inside(ii,jj)) {
+					var t = _args.map.data[_args.map.getidx(ii,jj)];
+					val = pdat.speed[t.move];
+					
+					for (var p in _args.map.people) {
+						var pos = _args.map.people[p].pos;
+						if (pos[0]==ii && pos[1]==jj) {
+							if (_args.map.people[p].team!=_people.team) {
+								if (!_args.map.fog || _args.map.foggrid[_args.map.getidx(ii,jj)]!=0) { val = 99; }
+							}
+						}
+					}
+					if (t.road) { val -= pdat.road; }
+				}
+				
+				vals.push(val);
+			}
+			return [_args.level, vals];
 		}
 	
 	);
@@ -370,6 +403,7 @@ show: function() {
 			this.$map.find(".bg").append(t.$html);
 		}
 	}
+	
 	this.$board.find(".map").detach();
 	this.$board.prepend(this.$map)
 			   .css("background-color",this.background);
@@ -406,6 +440,7 @@ show: function() {
 	
 					if (!map.zoomin) { map.zoommin = Math.min(map.size[0],map.size[1]); }
 					map.focus = [ map.zoommin/2, map.zoommin/2 ];
+					
 					
 					settings.maps[m] = map;
 				}
