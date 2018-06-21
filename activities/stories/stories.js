@@ -14,41 +14,47 @@
 				"background": "#afc84b",
 				"fog"		: true,
 				"size"		: [8,16],
-				"bg"		: [401,401,1,1,1,1,2,2,41,1,2,401,11,3,1,1,205,205,208,1,4,4,4,4,2,11,206,1,203,12,11,2,2,3,213,205,212,211,205,205,2,3,206,1,1,204,12,2,2,201,212,202,4,12,11,4,4,3,4,41,41,1,2,2,135,141,135,138,1,1,41,2,4,136,2,136,2,401,1,1,3,121,1,139,123,124,135,135,2,122,3,1,1,1,2,2,2,136,3,107,105,111,102,2,105,125,105,110,41,106,41,2,2,121,3,4,4,109,111,105,4,106,4,4,1,1,106,2],
+				"bg"		: [401,401,1,1,1,1,2,2,41,1,2,401,11,3,1,1,205,205,208,1,4,4,4,4,2,11,206,1,203,12,11,2,2,3,213,205,212,211,205,205,2,3,206,1,1,204,12,2,2,201,212,202,4,12,11,4,4,3,4,41,41,1,1,2,135,141,135,138,1,1,107,105,4,136,2,136,2,401,106,1,3,121,1,139,123,124,126,135,2,122,3,1,1,1,106,2,2,136,3,107,105,111,110,2,105,125,105,110,41,106,41,2,2,121,3,4,4,109,111,105,4,106,4,4,1,1,106,2],
 				"people"	: [
 					{"id":"p01","pos":[1,1],"init":"toright", "team":0},
 					{"id":"p02","pos":[3,5],"init":"toleft", "team":0},
 					{"id":"p03","pos":[5,6],"init":"toright", "team":1},
 					{"id":"p04","pos":[4,10],"init":"toleft", "team":0},
-					{"id":"p05","pos":[4,7],"init":"toright", "team":1}
+					{"id":"p05","pos":[4,7],"init":"toright", "team":1},
+					{"id":"p06","pos":[3,1],"init":"toright", "team":0}
 				]
 			}
 		},
+		objects: { },
 		people		: {		// PEOPLE LIBRARY
 			"p01" : { "prefix": "aab", "type":"human", "inventory":"fist" },
 			"p02" : { "prefix": "acb", "type":"human", "inventory":"gun" },
-			"p03" : { "prefix": "abr", "type":"human" },
-			"p04" : { "prefix": "adb", "type":"human" },
-			"p05" : { "prefix": "abr", "type":"human" }
+			"p03" : { "prefix": "abr", "type":"human", "inventory":"blast" },
+			"p04" : { "prefix": "adb", "type":"human", "inventory":"blast" },
+			"p05" : { "prefix": "abr", "type":"human" },
+			"p06" : { "prefix": "aeb", "type":"human", "inventory":"aid", "transport":2, "pass":[] }
 		},
 		mapid		: "start",									// Starting map
         debug       : true                                     // Debug mode
     };
 	
 	var objectdef = {
-		"fist": { "range":1, "attack":2	},
-		"gun":  { "range":4, "attack":5 }
+		"fist": { "range":[1,1], "target":"foe", "value":2	},
+		"gun":  { "range":[1.5,3.2], "target":"foe", "value":5 },
+		"blast":{ "range":[2.5,3.5], "target":"foe", "value":5, "plus":[[1,0,2],[0,1,2],[-1,0,2],[0,-1,2]] },
+		"aid":	{ "range":[1,1], "target":"all", "type":"life", "value":2 }
 	};
 	
 	var peopledef = {
-		"default": {
-			"life"	: 10,
-			"vision": 4,
-			"size"	: [1,1],
-			"state" : { "toright":"01", "toleft":"02" },
-			"move"	: 5,
-			"speed"	: [ 99,3,1,2,3 ],
-			"road"	: 0.5
+		default: {
+            stat    : {
+                life:       10,    		munition:   20,    attack:     5,      armor:      0,
+                vision:     4,          move:       5,          luck:       3,      speed:      1
+            },
+			size	: [1,1],
+			state 	: { "toright":"01", "toleft":"02" },
+			speed	: [ 99,3,1,2,3 ],	// SPEED REGARDING THE HEIGHT
+			road	: 0.5				// ROAD BONUS
 		}
 	};
 
@@ -177,10 +183,12 @@
 						pref = peopledef[settings.people[p].type];
 					}
 					var people = $.extend(true, {
-						"$html"	: "",		// GRAPHIC
-						"team"  : 0,		// TEAM ID
-						"npc"   : false,	// IS NPC
-						"update": function(_args) {
+						"$html"		: "",		// GRAPHIC
+						"team"  	: 0,		// TEAM ID
+						"npc"   	: false,	// IS NPC
+						"moves"		: [],		// MOVE GRID
+						"actions"	: [],		// ACTION GRID
+						"update"	: function(_args) {
 							if (_args.pos) { this.$html.css("left",_args.pos[0]+"em").css("top",_args.pos[1]+"em"); }
 							if (_args.init){ this.$html.attr("class","elt "+_args.init); }
 							return this;
@@ -196,6 +204,9 @@
 					
 					settings.people[p] = people;
 				}
+				
+				// PREPARE OBJECTS
+				settings.objects = $.extend(true, {}, objectdef, settings.objects);
 
                 // BUILD ALL MAPS
 				for (var m in settings.maps) {
@@ -203,7 +214,11 @@
 					var map = $.extend(true, {
 // DEFAULT MAP CLASS
 peopleref	: settings.people,			// People reference
-foggrid		: [],						// Last fog grid
+grid		: {
+	tiles	: [],						// Tiles
+	fog		: [],						// Fog tiles
+	moves	: []						// Move tiles
+},
 zoommin		: 0,						// Number of tiles shown when zoom max
 zoommax 	: 2,						// Number of tiles shown when zoom min
 zoom		: 0,						// Zoom value (from 0/zoommin to 1 zoommax)
@@ -229,7 +244,7 @@ updgrid		: function(_grid, _i, _j, _lvl, _fct) {
 		if (_grid[idx]<_lvl) {
 			var val = _lvl, dec = 1;
 			if (_fct) {
-				var f = _fct({ i:_i, j:_j, tile:this.data[idx], level:_lvl, map:this} );
+				var f = _fct({ i:_i, j:_j, tile:this.grid.tiles[idx], level:_lvl, map:this} );
 				val = f[0]; dec = f[1];
 			}
 			_grid[idx] = val;
@@ -268,7 +283,7 @@ setzoom: function(_zoom, _cbk) {
 getmoves: function(_people) {
 	var ret = this.getgrid();
 	var pdat = this.peopleref[_people.id];
-	ret = this.updgrid(ret, _people.pos[0], _people.pos[1], pdat.move,
+	ret = this.updgrid(ret, _people.pos[0], _people.pos[1], pdat.stat.move,
 		function(_args) {
 			var next = [[-1,0],[1,0],[0,-1],[0,1]];
 			var vals = [];
@@ -277,7 +292,7 @@ getmoves: function(_people) {
 				var ii=_args.i+next[n][0];
 				var jj=_args.j+next[n][1];
 				if (_args.map.inside(ii,jj)) {
-					var t = _args.map.data[_args.map.getidx(ii,jj)];
+					var t = _args.map.grid.tiles[_args.map.getidx(ii,jj)];
 					val = pdat.speed[t.move];
 					
 					for (var p in _args.map.people) {
@@ -299,13 +314,31 @@ getmoves: function(_people) {
 	);
 	return ret;
 },
+getactions: function(_people, _moves, _weapon) {
+	var ret = this.getgrid();
+	if (_weapon) {
+	
+		// SHOW TARGET FROM CURRENT POSITION
+		var min2 = _weapon.range[0]*_weapon.range[0];
+		var max2 = _weapon.range[1]*_weapon.range[1];
+		for (var j=-Math.ceil(_weapon.range[1]); j<=Math.ceil(_weapon.range[1]); j++)
+		for (var i=-Math.ceil(_weapon.range[1]); i<=Math.ceil(_weapon.range[1]); i++) {
+			var d = i*i + j*j;
+			if (d>=min2 && d<=max2) {
+				ret[this.getidx(_people.pos[0]+i, _people.pos[1]+j)] = 1;
+			}
+		}
+	}
+	
+	return ret;
+},
 getfog: function(_teamid) {
 	var ret = this.getgrid();
 	for (var p in this.people) {
 		var pref = this.people[p];
 		if (pref.team==_teamid) {
 			var pdat = this.peopleref[pref.id];
-			ret = this.updgrid(ret, pref.pos[0], pref.pos[1], pdat.vision,
+			ret = this.updgrid(ret, pref.pos[0], pref.pos[1], pdat.stat.vision,
 					function(_args) {
 						var val = _args.level;
 						if (_args.tile.hiding) {
@@ -344,19 +377,26 @@ updfog: function() {
 		}
 	}
 },
-updmoves: function(_moves) {
-	if (_moves) {
-		for (var i=0; i<this.size[0]*this.size[1]; i++) {
-			this.$map.find(".moves #m"+i).toggleClass("s", _moves[i]==0).show();
+updmoves: function( _moves, _actions) {
+	for (var i=0; i<this.size[0]*this.size[1]; i++) {
+		var m=this.grid.moves[i];
+		m.c=["elt"];
+		
+		if (_moves) {
+			if (_moves[i]==0) 				{ m.c.push("s"); }
+			if (_actions && _actions[i]==1)	{ m.c.push("c"); }
 		}
+		
+		m.$html.attr("class",m.getClass()).show();
 	}
-	else { this.$map.find(".moves .elt").attr("class","elt").hide(); }
 },
-drawmoves: function(_from, _to, _moves, _speed) {
-	this.$map.find(".moves .elt.a").attr("class","elt");
-	var next = [[-1,0],[1,0],[0,-1],[0,1]];
+drawmoves: function(_from, _to, _moves, _speed, _last) {
+	var next	= [[-1,0],[1,0],[0,-1],[0,1]];
+	var ret 	= [];
+	var ok		= true;
 	
 	// GET CLOSEST TILE
+	// FROM OUTSIDE AVAILABLE MOVES
 	if (_moves[this.getidx(_to)]==0) {
 		var d=99, ii=_to[0], jj=_to[1];
 		for (var j=0; j<this.size[1]; j++)
@@ -368,29 +408,56 @@ drawmoves: function(_from, _to, _moves, _speed) {
 		}
 		_to = [ii,jj];
 	}
+	else
+	// FROM ACTION TILE
+	if (_moves[this.getidx(_to)]>99) {
+		
+	}
+	
+	// CLEAN LAST IF ANY
+	if (_last) for (var i in _last) {
+		var elt = this.grid.moves[this.getidx(_last[i])];
+		elt.$html.attr("class",elt.getClass());
+	}
+	
 	
 	// BUILD PATH
-	if (_moves[this.getidx(_to)]!=0) {
-		var ti=_to[0], tj=_to[1], cpt=0; ln=9;
-		while (cpt++<100 && (ti!=_from[0] || tj!=_from[1])) {
-			var pn = -1, vald = 0, pi, pj;
-			for (var n in next) {
-				pi=ti+next[n][0]; pj=tj+next[n][1];
-				if (this.inside(pi, pj)) {
-					var td = _moves[this.getidx(pi, pj)];
-					if (td>vald) { pn = n; vald=td; }
-				}
-			}
-			this.$map.find(".moves #m"+this.getidx(ti,tj)).addClass("a a"+ln+pn);
-			ti+=next[pn][0]; tj+=next[pn][1];
-			ln = pn;
+	if (_moves[this.getidx(_to)]!=0 && (_to[0]!=_from[0] || _to[1]!=_from[1]) ) {
+		
+		var people  = this.getpeople(_to);
+			
+		if (people && (!this.fog || this.foggrid[this.getidx(_to)]!=0) ) {
+			ok = false;
+			var pdat =  this.peopleref[people.id];
+			if (pdat.transport && pdat.pass.length<pdat.transport) { ok = true; }
 		}
-		this.$map.find(".moves #m"+this.getidx(ti,tj)).addClass("a a"+ln+"9");
+		
+		if (ok) {
+			var ti=_to[0], tj=_to[1], cpt=0; ln=9;
+			while (cpt++<100 && (ti!=_from[0] || tj!=_from[1])) {
+				ret.push([ti,tj]);
+				var pn = -1, vald = 0, pi, pj;
+				for (var n in next) {
+					pi=ti+next[n][0]; pj=tj+next[n][1];
+					if (this.inside(pi, pj)) {
+						var td = _moves[this.getidx(pi, pj)];
+						if (td>vald) { pn = n; vald=td; }
+					}
+				}
+				this.$map.find(".moves #m"+this.getidx(ti,tj)).addClass("a a"+ln+pn);
+				ti+=next[pn][0]; tj+=next[pn][1];
+				ln = pn;
+			}
+			ret.push([_from[0],_from[1]]);
+			this.$map.find(".moves #m"+this.getidx(_from[0],_from[1])).addClass("a a"+ln+"9");
+		}
 	}
+	
+	return ret;
 },
 show: function() {
 	// BUILDS AND ADD TILES
-	this.data = [];
+	this.grid.tiles = [];
 	this.$map.find(".bg").html("");
 	for (var j=0; j<this.size[1]; j++)
 	for (var i=0; i<this.size[0]; i++) {
@@ -399,7 +466,7 @@ show: function() {
 			while (ref.length<3) { ref="0"+ref; }
 			var t = newtile(this.tileset, ref, this.getidx(i,j), [i,j]);
 							
-			this.data.push(t);
+			this.grid.tiles.push(t);
 			this.$map.find(".bg").append(t.$html);
 		}
 	}
@@ -411,15 +478,21 @@ show: function() {
 	// BUILDS FOG AND MOVES
 	this.$map.find(".fog").html("");
 	this.$map.find(".moves").html("");
+	this.grid.moves = [];
+	this.grid.fog = [];
 	for (var j=0; j<this.size[1]; j++)
 	for (var i=0; i<this.size[0]; i++) {
+		
 		if (this.fog) {
 			var $fog = $("<div class='elt' id='f"+this.getidx(i,j)+"'></div>");
 			$fog.css("top",j+"em").css("left",i+"em");
+			this.grid.fog.push({$html:$fog});
 			this.$map.find(".fog").append($fog);
 		}
+		
 		var $move = $("<div class='elt' id='m"+this.getidx(i,j)+"'></div>");
 		$move.css("top",j+"em").css("left",i+"em");
+		this.grid.moves.push({$html:$move, c:['elt'], getClass:function() { return this.c.join(" "); } });
 		this.$map.find(".moves").append($move);
 	}
 	if (this.fog) { this.updfog(); }
@@ -459,14 +532,18 @@ show: function() {
 						var people 	= vMap.getpeople(pos);
 						
 						if (people) {
-							if (people.team==0) {
-								people.moves = vMap.getmoves(people);
-								vMap.updmoves(people.moves);
 
-								settings.action.type 	= 2;
-								settings.action.people 	= people;
-								settings.action.pos		= pos;
-							}
+							var pdat = settings.people[people.id];
+							var weaponid = $.isArray(pdat.inventory)?pdat.inventory[pdat.inventoryid]:pdat.inventory;
+							people.moves 	= vMap.getmoves(people);
+							people.actions 	= vMap.getactions(people, people.moves,
+																  weaponid?settings.objects[weaponid]:0);
+							vMap.updmoves(people.moves, people.actions);
+
+							settings.action.type 	= (people.team==0)?2:3;
+							settings.action.people 	= people;
+							settings.action.pos		= pos;
+							settings.action.path	= [];
 						}
 						else { settings.action.type	= 1; }
 						
@@ -491,9 +568,9 @@ show: function() {
 								var pos 	= vMap.getpos([ vEvent.clientX, vEvent.clientY]);
 								if (pos[0]!=settings.action.pos[0] || pos[1]!=settings.action.pos[1]) {
 									settings.action.pos = [ pos[0], pos[1] ];
-									vMap.drawmoves(settings.action.people.pos, pos,
+									settings.action.path = vMap.drawmoves(settings.action.people.pos, pos,
 										settings.action.people.moves,
-										settings.people[settings.action.people.id].speed);
+										settings.people[settings.action.people.id].speed, settings.action.path);
 								}
 								break;
 						}
@@ -515,6 +592,7 @@ show: function() {
 								vMap.nav();
 								break;
 							case 2:
+							case 3:
 								vMap.updmoves(false);
 								break;
 						}						
