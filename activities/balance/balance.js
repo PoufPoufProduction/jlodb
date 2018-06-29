@@ -12,8 +12,10 @@
         weights     : 0,
         number      : 0,                                        // Number of weight
         value       : 500,                                      // Weight to find
+		legends		: [],
         type        : "value",                                    // Type of object to check
         ravailable  : false,                                    // Right plate is available
+		background  : "",
         debug       : true                                      // Debug mode
     };
 
@@ -104,6 +106,9 @@
 
                 // Send the onLoad callback
                 if (settings.context.onload) { settings.context.onload($this); }
+				
+                // HANDLE BACKGROUND
+                if (settings.background) { $this.children().first().css("background-image","url("+settings.background+")"); }
 
                 // Handle weights
                 if (settings.weights) {
@@ -123,21 +128,25 @@
                              _event.originalEvent.touches && _event.originalEvent.touches.length)?
                              _event.originalEvent.touches[0]:_event;
                                   
-                        settings.ratio = $this.width()/640;
+                        settings.ratio 	= $this.width()/640;
+						var piece		= $(this).attr("id");
 
-                        settings.elt.id = $(this).attr("id");
-                        settings.elt.pos = [ e.clientX, e.clientY ];
+						if (!settings.legend.piece || settings.legend.piece==piece ) {
+							settings.elt.id = piece;
+							settings.elt.pos = [ e.clientX, e.clientY ];
 
-                        var wleft=[], wright=[];
-                        for (var i in settings.wleft) { if (settings.wleft[i]!=settings.elt.id) { wleft.push(settings.wleft[i]); }}
-                        for (var i in settings.wright) { if (settings.wright[i]!=settings.elt.id) { wright.push(settings.wright[i]); }}
-                        settings.wleft = wleft;
-                        settings.wright = wright;
+							var wleft=[], wright=[];
+							for (var i in settings.wleft) { if (settings.wleft[i]!=settings.elt.id) { wleft.push(settings.wleft[i]); }}
+							for (var i in settings.wright) { if (settings.wright[i]!=settings.elt.id) { wright.push(settings.wright[i]); }}
+							settings.wleft = wleft;
+							settings.wright = wright;
 
-                        helpers.diff($this,true);
+							helpers.diff($this,true);
 
-                        $(this).detach();
-                        $("#weights",settings.svg.root()).append($(this));
+							$(this).detach();
+							$("#weights",settings.svg.root()).append($(this));
+						}
+						else { settings.elt.id = 0; }
                     }
                     _event.preventDefault();
                 });
@@ -174,12 +183,24 @@
                         
                         var plate = $(".frontplate.s",settings.svg.root());
                         if (plate.length) {
+							var left = true;
                             if (plate.attr("id")=="plateleft") { settings.wleft.push(settings.elt.id); }
-                            else { settings.wright.push(settings.elt.id); }
+                            else { settings.wright.push(settings.elt.id); left=false; }
+							
+							if (settings.legend.piece && !settings.legend.up && settings.legend.left == left ) {
+								settings.legend.id++;
+								helpers.legends($this, false);
+							}
                         }
                         else {
                             settings.move.x = settings.origin[settings.elt.id][0];
                             settings.move.y = settings.origin[settings.elt.id][1];
+							
+							if (settings.legend.piece && settings.legend.up ) {
+								settings.legend.id++;
+								helpers.legends($this, false);
+							}
+							
                         }
                         settings.elts[settings.elt.id]=[Math.round(settings.move.x),Math.round(settings.move.y)];
 
@@ -202,7 +223,6 @@
                 }
 
                 // Locale handling
-
                 if (settings.locale) { $.each(settings.locale, function(id,value) {
                     if ($.isArray(value)) {  for (var i in value) { $this.find("#"+id).append("<p>"+value[i]+"</p>"); } }
                     else { $this.find("#"+id).html(value); }
@@ -211,6 +231,21 @@
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
+		legends: function($this, _show) {
+            var settings  = helpers.settings($this);
+			
+			if (settings.legends) {
+				$("#legends>*", settings.svg.root()).hide();
+				if (_show && settings.legend.id < settings.legends.length) {
+					var value = settings.legends[settings.legend.id];
+					$("#legends #"+value, settings.svg.root()).show();
+					settings.legend.up 		= (value.substr(0,1)=="u");
+					settings.legend.left 	= (value.substr(1,1)=="l");
+					settings.legend.piece 	= value.substr(2);
+				}
+				else { settings.legend.piece=0; }
+			}
+		},
         next: function($this) {
             var settings = helpers.settings($this);
             settings.interactive = false;
@@ -222,8 +257,10 @@
             var settings = helpers.settings($this);
             $this.find("#effects>div").hide();
 
-            $this.find("#calc").removeClass("s");
+            $this.find("#calc").removeClass("s").removeClass("available");
             $this.find("#calculator").hide();
+			settings.calculator = 0;
+			$this.find("#screen").html("0");
 
             settings.wleft  = [];
             settings.wright = [];
@@ -280,6 +317,7 @@
                     settings.elts[$(this).attr("id")] = [ parseInt(m[1]), parseInt(m[2]) ];
                 }
             });
+			helpers.legends($this, true);
         },
         balance: function($this) {
             var settings = helpers.settings($this), step = 5;
@@ -307,7 +345,12 @@
             if (settings.anim.count++<step) { settings.anim.timerid = setTimeout(function() { helpers.balance($this); },100); }
             else                            {
                 helpers.position($this);
-                if (!settings.calc && settings.diff==0) { helpers.next($this); }
+				if (settings.diff==0) {
+					if (settings.calc) 	{ $this.find("#calc").addClass("available"); }
+					else 				{ helpers.next($this); }
+				}
+				else { $this.find("#calc").removeClass("available").removeClass("s");
+					   $this.find("#calculator").hide(); }
             }
         },
         diff: function($this, _anim) {
@@ -361,69 +404,6 @@
                 }
             }
             $this.find("#screen").html(settings.calculator.length?settings.calculator:"0");
-        },
-        course: {
-            run: function($this) {
-                var settings = helpers.settings($this);
-                if (settings.cc.timerid)    { clearTimeout(settings.cc.timerid); settings.cc.timerid = 0; }
-                if (settings.art)           { $this.find("#art").html("<img src='"+settings.art+"'/>").show(); }
-                $this.find("#course").show();
-                
-                settings.cc.page    = 0;
-                settings.cc.count   = 0;
-                settings.cc.time    = 0;
-                settings.cc.pre     = $("<div></div>");
-                settings.cc.width   = $this.find("#course #pre").width()*0.85;
-                
-                $this.find("#course #pre").html(settings.cc.pre);
-                $this.find("#course").css("opacity",0).animate({opacity:0.9}, 1000, function() {
-                    helpers.course.char($this); });
-            },
-            char: function($this) {
-                var settings = helpers.settings($this);
-                settings.cc.available = true;
-                if (!settings.cc.time) { settings.cc.time  = Date.now(); }
-                var count = Math.floor((Date.now()-settings.cc.time)/20);
-                if (settings.cc.count<settings.course[settings.cc.page].length) {
-                    for (var i=settings.cc.count; i<count; i++) {
-                        var c = settings.course[settings.cc.page][i];
-                        if (c=='|' || (c==' ' && settings.cc.pre.width()>settings.cc.width)) {
-                            settings.cc.pre = $("<div></div>");
-                            $this.find("#course #pre").append("<br/>").append(settings.cc.pre);
-                        } else { settings.cc.pre.append(c); }
-                    }
-                    settings.cc.count = count;
-                    settings.cc.timerid = setTimeout(function() { helpers.course.char($this); }, 10);
-                }
-                else { settings.cc.timerid = 0; settings.cc.time = 0; }
-            },
-            click: function($this) {
-                var settings = helpers.settings($this);
-                if (settings.cc.available) {
-                    if (settings.cc.timerid) {
-                        clearTimeout(settings.cc.timerid); settings.cc.timerid = 0; settings.cc.time = 0;
-                        for (var i=settings.cc.count; i<settings.course[settings.cc.page].length; i++) {
-                            var c = settings.course[settings.cc.page][i];
-                            if (c=='|' || (c==' ' && settings.cc.pre.width()>settings.cc.width)) {
-                                settings.cc.pre = $("<div></div>");
-                                $this.find("#course #pre").append("<br/>").append(settings.cc.pre);
-                            } else { settings.cc.pre.append(c); }
-                        }
-                    }
-                    else {
-                        settings.cc.count=0;
-                        if (++settings.cc.page<settings.course.length) {
-                            settings.cc.pre = $("<div></div>");
-                            $this.find("#course #pre").html(settings.cc.pre);
-                            helpers.course.char($this);
-                        }
-                        else {
-                            settings.cc.available = false;
-                            $this.find("#course>div").animate({opacity:0},400, function() { $(this).parent().hide(); });
-                        }
-                    }
-                }
-            }
         }
     };
 
@@ -436,6 +416,7 @@
                 // The settings
                 var settings = {
                     interactive     : false,
+					legend			: { id:0, piece:0, up:false, left:true },
                     calculator      : "",
                     calcreset       : false,
                     ratio           : 1,
@@ -449,7 +430,6 @@
                     score           : 5,
                     id              : 0,
                     move            : { x:0, y:0 },
-                    cc              : { count:0, page:0, timerid:0, available:false, time:0, width:100, pre:0 },
                     anim            : { init:0, diff:0, timerid:0, count: 0}
                 };
 
@@ -481,22 +461,27 @@
             },
             calc: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                if ($this.find("#calc").hasClass("s")) {
-                    $this.find("#calc").removeClass("s");
-                    $this.find("#calculator").hide();
-                }
-                else {
-                    settings.calcreset = true;
-                    $this.find("#calc").addClass("s");
-                    $this.find("#calculator").show();
-                }
+				var $calc = $this.find("#calc");
+				if ($calc.hasClass("available") && settings.interactive) {
+					if ($calc.hasClass("s")) {
+						$calc.removeClass("s");
+						$this.find("#calculator").hide();
+					}
+					else {
+						settings.calcreset = true;
+						$calc.addClass("s");
+						$this.find("#calculator").show();
+					}
+				}
             },
             key: function(value, _elt) {
-                var $this = $(this);
-                if (_elt) { $(_elt).addClass("touch");
-                    setTimeout(function() { $(_elt).removeClass("touch"); }, 50);
-                }
-                helpers.key($(this), value, false);
+                var $this = $(this) , settings = helpers.settings($this);
+				if (settings.interactive) {
+					if (_elt) { $(_elt).addClass("touch");
+						setTimeout(function() { $(_elt).removeClass("touch"); }, 50);
+					}
+					helpers.key($(this), value, false);
+				}
             },
             course: function() { helpers.course.click($(this)); }
         };

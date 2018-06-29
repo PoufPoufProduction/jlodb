@@ -7,9 +7,11 @@
                                       background-image:url("../../res/img/icon/tab/tab00.svg"); border-radius:.5em;
                                       background-color:white; cursor:pointer; display:none; }
 .balance .button.s                  { background-color:red; }
-.balance .button#calc               { left:3.5%; }
+.balance .button#calc               { left:3.5%; opacity:0.2; cursor:inherit; }
+.balance .button#calc.available		{ opacity:1; cursor:pointer; }
 .balance .button#fill               { left:84%; }
 .balance div#svg                    { position:relative;width:16em;height:12em; }
+
 
 .balance #course                  { position:absolute;top:0;left:0;background-color:rgba(0,0,0,0.2); width:100%; height:100%;
                                       font-size:0.5em; cursor:pointer; display:none; }

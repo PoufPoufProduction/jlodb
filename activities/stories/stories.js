@@ -16,24 +16,16 @@
 				"size"		: [8,16],
 				"bg"		: [401,401,1,1,1,1,2,2,41,1,2,401,11,3,1,1,205,205,208,1,4,4,4,4,2,11,206,1,203,12,11,2,2,3,213,205,212,211,205,205,2,3,206,1,1,204,12,2,2,201,212,202,4,12,11,4,4,3,4,41,41,1,1,2,135,141,135,138,1,1,107,105,4,136,2,136,2,401,106,1,3,121,1,139,123,124,126,135,2,122,3,1,1,1,106,2,2,136,3,107,105,111,110,2,105,125,105,110,41,106,41,2,2,121,3,4,4,109,111,105,4,106,4,4,1,1,106,2],
 				"people"	: [
-					{"id":"p01","pos":[1,1],"init":"toright", "team":0},
-					{"id":"p02","pos":[3,5],"init":"toleft", "team":0},
-					{"id":"p03","pos":[5,6],"init":"toright", "team":1},
-					{"id":"p04","pos":[4,10],"init":"toleft", "team":0},
-					{"id":"p05","pos":[4,7],"init":"toright", "team":1},
-					{"id":"p06","pos":[3,1],"init":"toright", "team":0}
+{"prefix": "aab", "type":"human", "inventory":"gun","pos":[1,2],"state":"right", "team":0},
+{"prefix": "acb", "type":"human", "inventory":"fist","stat":{"move":8},"pos":[3,5],"state":"left", "team":0},
+{"prefix": "abr", "type":"human", "inventory":"blast","pos":[5,6],"state":"right", "team":1},
+{"prefix": "adb", "type":"human", "inventory":"blast","pos":[4,10],"state":"left", "team":0},
+{"prefix": "abr", "type":"human","pos":[4,7],"state":"right", "team":1},
+{"prefix": "aeb", "type":"human", "inventory":"aid", /* "transport":2, "pass":[], */ "pos":[3,1],"state":"right", "team":0}
 				]
 			}
 		},
 		objects: { },
-		people		: {		// PEOPLE LIBRARY
-			"p01" : { "prefix": "aab", "type":"human", "inventory":"blast" },
-			"p02" : { "prefix": "acb", "type":"human", "inventory":"fist" },
-			"p03" : { "prefix": "abr", "type":"human", "inventory":"blast" },
-			"p04" : { "prefix": "adb", "type":"human", "inventory":"blast" },
-			"p05" : { "prefix": "abr", "type":"human" },
-			"p06" : { "prefix": "aeb", "type":"human", "inventory":"aid", "transport":2, "pass":[] }
-		},
 		game: {
 			solo	: true
 		},
@@ -43,10 +35,10 @@
 	
 	// TARGET VALUE: 0:friend, 1:foe, 2:all 
 	var objectdef = {
-		"fist": { "range":[1,1], "target":1, "value":2	},
-		"gun":  { "range":[1.5,3.2], "target":1, "value":5 },
-		"blast":{ "range":[2.5,3.5], "target":1, "value":5, "plus":[[1,0,2],[0,1,2],[-1,0,2],[0,-1,2]] },
-		"aid":	{ "range":[1,1], "target":2, "type":"life", "value":2 }
+		fist: 	{ range:[1,1], 		target:1, value:2, move: true },
+		gun:  	{ range:[1.5,3.2], 	target:1, value:5, move: true },
+		blast:	{ range:[2.5,3.5], 	target:1, value:5, plus:[[1,0,2],[0,1,2],[-1,0,2],[0,-1,2]], move: false },
+		aid:	{ range:[1,1], 		target:2, type:"life", value:2, move: true }
 	};
 	
 	var peopledef = {
@@ -56,8 +48,7 @@
                 vision:     4,          move:       5,          luck:       3,      speed:      1
             },
 			size	: [1,1],
-			state 	: { "toright":"01", "toleft":"02" },
-			movact	: true,				// CAN MOVE AND ATTACK IN THE SAME TURN
+			imgs    : { "right":"01", "left":"02", "uright":"03", "uleft":"04" },
 			speed	: [ 99,3,1,2,3 ],	// SPEED REGARDING THE HEIGHT
 			road	: 0.5				// ROAD BONUS
 		}
@@ -135,6 +126,15 @@
             }
             return _text;
         },
+		endmove: function($this, _args, _finished) {
+			var settings = helpers.settings($this);
+			var people = settings.action.people;
+			if (_args.move)		{ people.pos = [ _args.move[0], _args.move[1] ]; }
+			if (_args.state) 	{ people.state = _args.state; }
+			
+			settings.interactive = true;
+			
+		},
         loader: {
             css: function($this) {
                 var settings = helpers.settings($this), cssAlreadyLoaded = false, debug = "";
@@ -180,45 +180,97 @@
                 // Optional devmode
                 if (settings.dev) { $this.find("#devmode").show(); }
 				
-				// PREPARE ALL PEOPLE
-				for (var p in settings.people) {
-					// TODO: move to a function for advancewars people creation
-					var pref = peopledef["default"];
-					if (settings.people[p].type && peopledef[settings.people[p].type]) {
-						pref = peopledef[settings.people[p].type];
-					}
-					var people = $.extend(true, {
-						"$html"		: "",		// GRAPHIC
-						"team"  	: 0,		// TEAM ID
-						"npc"   	: false,	// IS NPC
-						"moves"		: [],		// MOVE GRID
-						"actions"	: [],		// ACTION GRID
-						"update"	: function(_args) {
-							if (_args.pos) { this.$html.css("left",_args.pos[0]+"em").css("top",_args.pos[1]+"em"); }
-							if (_args.init){ this.$html.attr("class","elt "+_args.init); }
-							return this;
-						}
-					}, pref,  settings.people[p]);
-					
-					people.$html = $("<div class='elt' style='width:"+people.size[0]+"em;height:"+people.size[1]+"em;'><div>");
-					
-					for (var s in people.state) {
-						people.$html.append(
-							"<img class='state "+s+"' src='res/img/tileset/ortho/people/"+people.prefix+people.state[s]+".svg' alt=''/>");
-					}
-					
-					settings.people[p] = people;
-				}
-				
 				// PREPARE OBJECTS
 				settings.objects = $.extend(true, {}, objectdef, settings.objects);
 
                 // BUILD ALL MAPS
+				var pidx = 0;
 				for (var m in settings.maps) {
 					
+					// PREPARE ALL PEOPLE
+					for (var p in settings.maps[m].people) {
+						// TODO: move to a function for advancewars people creation
+						var pref = peopledef["default"];
+						if (settings.maps[m].people[p].type && peopledef[settings.maps[m].people[p].type]) {
+							pref = peopledef[settings.maps[m].people[p].type];
+						}
+						var people = $.extend(true, {
+							id			: pidx++,	// PEOPLE ID
+							$html		: "",		// GRAPHIC
+							team  		: 0,		// TEAM ID
+							npc   		: false,	// IS NPC
+							moves		: [],		// MOVE GRID
+							actions		: [],		// ACTION GRID
+							update		: function(_args, _map) {
+								// GET THE TILE
+								var tile = _args.tile;
+								if (!tile && _map) { tile = _map.grid.tiles[_map.getidx(_args.pos)]; }
+								
+								if (_args.pos) { this.$html.css("left",_args.pos[0]+"em").css("top",_args.pos[1]+"em"); }
+								
+								if (_args.state){
+									var state = _args.state;
+									if (tile && tile.move<2 && this.imgs["u"+_args.state]) { state = "u"+_args.state; }
+									this.$html.attr("class","elt "+state);
+								}
+								
+								if (_args.move){
+									this.$html.animate({left:_args.move[0]+"em", top:_args.move[1]+"em"}, 100,
+										function() { setTimeout(function() { _args.people.animate(_args)}, 0); });
+								}
+								return this;
+							},
+							animate		: function(_args) {
+								if (_args.id>=_args.path.length) {
+									helpers.endmove(_args.$this, _args, true);
+								}
+								else {
+									var p1 = _args.path[_args.id-1];
+									var p2 = _args.path[_args.id];
+									var p3 = [(p1[0]+p2[0])/2, (p1[1]+p2[1])/2];
+										
+									if (_args.first) {
+										var people	= _args.map.getpeople(p2);
+										if (people && people.team!=this.team ) {
+											helpers.endmove(_args.$this, _args, false);
+										}
+										else {
+											_args.tile  = _args.map.grid.tiles[_args.map.getidx(p1)];
+											_args.move	= p3;
+											_args.first = false;
+											if (p1[0]>p2[0]) { _args.state = "left"; } else
+											if (p1[0]<p2[0]) { _args.state = "right"; }
+											this.update(_args, _args.map);
+										}
+									}
+									else {
+										this.pos=[p2[0], p2[1]];
+										_args.id++;
+										_args.tile	= 0;
+										_args.move	= p2;
+										_args.first = true;
+										_args.tile  = _args.map.grid.tiles[_args.map.getidx(p2)];
+										_args.map.updfog();
+										this.update(_args, _args.map);
+									}
+								}
+							}
+						}, pref,  settings.maps[m].people[p]);
+						
+						people.$html = $("<div class='elt' style='width:"+people.size[0]+"em;height:"+people.size[1]+"em;'><div>");
+						
+						for (var s in people.imgs) {
+							people.$html.append(
+								"<img class='state "+s+"' src='res/img/tileset/ortho/people/"+people.prefix+people.imgs[s]+".svg' alt=''/>");
+						}
+						
+						settings.maps[m].people[p] = people;
+					}
+					
+					
+					// PREPARE MAP
 					var map = $.extend(true, {
 // DEFAULT MAP CLASS
-peopleref	: settings.people,			// People reference
 grid		: {
 	tiles	: [],						// Tiles
 	fog		: [],						// Fog tiles
@@ -238,9 +290,13 @@ getidx		: function(_i, _j) {
 	if ($.isArray(_i)) { ret = _i[0]+_i[1]*this.size[0]; } else { ret = _i+_j*this.size[0]; }
 	return ret },
 getgrid		: function(){
-	var ret = [];
-	for (var j=0; j<this.size[1]*this.size[0]; j++) { ret.push(0); }
-	return ret;
+	var ret = []; for (var j=0; j<this.size[1]*this.size[0]; j++) { ret.push(0); } return ret;
+},
+reachable	: function(_attacker, _defender, _weapon) {
+	return 	( _attacker.id != _defender.id) &&
+			( !this.fog || this.grid.fog[this.getidx(_defender.pos)].visible ) &&
+			( ( _attacker.team==_defender.team && _weapon.target%2==0) ||
+			  ( _attacker.team!=_defender.team && _weapon.target!=0 ) );
 },
 updgrid		: function(_grid, _i, _j, _lvl, _fct) {
 	var next = [[-1,0],[1,0],[0,-1],[0,1]];
@@ -287,8 +343,7 @@ setzoom: function(_zoom, _cbk) {
 },
 getmoves: function(_people) {
 	var ret = this.getgrid();
-	var pdat = this.peopleref[_people.id];
-	ret = this.updgrid(ret, _people.pos[0], _people.pos[1], pdat.stat.move,
+	ret = this.updgrid(ret, _people.pos[0], _people.pos[1], _people.stat.move,
 		function(_args) {
 			var next = [[-1,0],[1,0],[0,-1],[0,1]];
 			var vals = [];
@@ -298,7 +353,7 @@ getmoves: function(_people) {
 				var jj=_args.j+next[n][1];
 				if (_args.map.inside(ii,jj)) {
 					var t = _args.map.grid.tiles[_args.map.getidx(ii,jj)];
-					val = pdat.speed[t.move];
+					val = _people.speed[t.move];
 					
 					for (var p in _args.map.people) {
 						var pos = _args.map.people[p].pos;
@@ -308,7 +363,7 @@ getmoves: function(_people) {
 							}
 						}
 					}
-					if (t.road) { val -= pdat.road; }
+					if (t.road) { val -= _people.road; }
 				}
 				
 				vals.push(val);
@@ -321,7 +376,6 @@ getmoves: function(_people) {
 },
 getactions: function(_people, _moves, _weapon) {
 	var ret = this.getgrid();
-	var pdat = this.peopleref[_people.id];
 	if (_weapon) {
 	
 		// SHOW TARGET FROM CURRENT POSITION
@@ -332,24 +386,20 @@ getactions: function(_people, _moves, _weapon) {
 			var d = i*i + j*j;
 			if (d!=0 && d>=min2 && d<=max2 && this.inside(_people.pos[0]+i, _people.pos[1]+j) ) {
 				var val = -1;
-				if (this.getpeople([_people.pos[0]+i, _people.pos[1]+j])) {
+				var people = this.getpeople([_people.pos[0]+i, _people.pos[1]+j]);
+				if (people && this.reachable(_people, people, _weapon) ) {
 					val = 1+this.getidx(_people.pos[0],_people.pos[1]);
 				}
-				console.log(val);
 				ret[this.getidx(_people.pos[0]+i, _people.pos[1]+j)] = val;
 			}
 		}
 		
 		// FIND TARGET FROM BEST POSITION
-		if ((_people.team==0) && pdat.movact)
+		if ((_people.team==0) && _weapon.move )
 		{
 			for (var p in this.people) {
 				var people = this.people[p];
-				if ( ( people.id != _people.id) &&
-					 ( !this.fog || this.grid.fog[this.getidx(people.pos)].visible ) &&
-					 ( ( people.team==_people.team && _weapon.target%2==0) ||
-					   ( people.team!=_people.team && _weapon.target!=0 ) ) ) {
-				
+				if ( this.reachable(_people, people, _weapon) ) {
 					var idx = -1, dd = 0, dh=0;
 					for (var j=-Math.ceil(_weapon.range[1]); j<=Math.ceil(_weapon.range[1]); j++)
 					for (var i=-Math.ceil(_weapon.range[1]); i<=Math.ceil(_weapon.range[1]); i++) {
@@ -372,14 +422,13 @@ getactions: function(_people, _moves, _weapon) {
 getfog: function(_teamid) {
 	var ret = this.getgrid();
 	for (var p in this.people) {
-		var pref = this.people[p];
-		if (pref.team==_teamid) {
-			var pdat = this.peopleref[pref.id];
-			ret = this.updgrid(ret, pref.pos[0], pref.pos[1], pdat.stat.vision,
+		var people = this.people[p];
+		if (people.team==_teamid) {
+			ret = this.updgrid(ret, people.pos[0], people.pos[1], people.stat.vision,
 					function(_args) {
 						var val = _args.level;
 						if (_args.tile.hiding) {
-							var d = Math.abs(_args.i-pref.pos[0])+Math.abs(_args.j-pref.pos[1]);
+							var d = Math.abs(_args.i-people.pos[0])+Math.abs(_args.j-people.pos[1]);
 							if (d>1) { val=0; }
 						}
 						return [val,1];
@@ -396,21 +445,22 @@ getpos: function(_coord) {
 getpeople: function(_pos) {
 	var ret = 0;
 	for (var p in this.people) {
-		var pref = this.people[p];
-		if (_pos[0]==pref.pos[0] && _pos[1]==pref.pos[1]) { ret = pref; }
+		var people = this.people[p];
+		if (_pos[0]==people.pos[0] && _pos[1]==people.pos[1]) { ret = people; }
 	}
 	return ret;
 },
 updfog: function() {
-	var fog = this.getfog(0);
-	for (var i=0; i<this.size[0]*this.size[1]; i++) {
-		this.grid.fog[i].visible = (fog[i]!=0);
-		this.grid.fog[i].$html.toggle(fog[i]==0);
-	}
-	for (var p in this.people) {
-		var pref = this.people[p];
-		var pdat = this.peopleref[pref.id];
-		pdat.$html.toggle( this.grid.fog[this.getidx(pref.pos[0], pref.pos[1])].visible );
+	if (this.fog) {
+		var fog = this.getfog(0);
+		for (var i=0; i<this.size[0]*this.size[1]; i++) {
+			this.grid.fog[i].visible = (fog[i]!=0);
+			this.grid.fog[i].$html.toggle(fog[i]==0);
+		}
+		for (var p in this.people) {
+			var people = this.people[p];
+			people.$html.toggle( this.grid.fog[this.getidx(people.pos[0], people.pos[1])].visible );
+		}
 	}
 },
 updmoves: function( _moves, _actions) {
@@ -470,8 +520,7 @@ drawmoves: function(_from, _to, _moves, _actions, _speed, _last) {
 			
 		if (people && (!this.fog || this.grid.fog[this.getidx(_to)].visible) ) {
 			ok = false;
-			var pdat =  this.peopleref[people.id];
-			if (pdat.transport && pdat.pass.length<pdat.transport) { ok = true; }
+			if (people.transport && people.pass.length<people.transport) { ok = true; }
 		}
 		
 		if (ok) {
@@ -537,13 +586,12 @@ show: function() {
 		this.grid.moves.push({$html:$move, c:['elt'], getClass:function() { return this.c.join(" "); } });
 		this.$map.find(".moves").append($move);
 	}
-	if (this.fog) { this.updfog(); }
-			   
+	this.updfog();
+
 	this.$map.find(".people").html("");
 	for (var p in this.people) {
-		var pref = this.people[p];
-		var pdat = this.peopleref[pref.id];
-		this.$board.find(".people").append(pdat.update(pref).$html);
+		var people = this.people[p];
+		this.$board.find(".people").append(people.update(people, this).$html);
 	}
     this.setzoom(this.zoom);
 }
@@ -576,8 +624,7 @@ show: function() {
 						
 						if (people && (!vMap.fog || vMap.grid.fog[idx].visible) ) {
 
-							var pdat = settings.people[people.id];
-							var weaponid = $.isArray(pdat.inventory)?pdat.inventory[pdat.inventoryid]:pdat.inventory;
+							var weaponid = $.isArray(people.inventory)?people.inventory[people.inventoryid]:people.inventory;
 							people.moves 	= vMap.getmoves(people);
 							people.actions 	= vMap.getactions(people, people.moves,
 								weaponid?settings.objects[weaponid]:0, (people.team==0) );
@@ -613,7 +660,7 @@ show: function() {
 									settings.action.pos = [ pos[0], pos[1] ];
 									settings.action.path = vMap.drawmoves(settings.action.people.pos, pos,
 										settings.action.people.moves, settings.action.people.actions,
-										settings.people[settings.action.people.id].speed, settings.action.path);
+										vMap.people[settings.action.people.id].speed, settings.action.path);
 								}
 								break;
 						}
@@ -626,17 +673,28 @@ show: function() {
 				$this.find("#board").bind("mouseup touchend mouseleave touchleave", function(event) {
 					if (settings.interactive && settings.action.type ) {
 						var vMap = settings.maps[settings.mapid];
-						
 						switch(settings.action.type) {
 							case 1:
-								settings.maps[settings.mapid].focus =
-									[ (vMap.focus[0] - settings.action.data[0]),
-									  (vMap.focus[1] - settings.action.data[1]) ];
+								vMap.focus = [ (vMap.focus[0] - settings.action.data[0]),
+											   (vMap.focus[1] - settings.action.data[1]) ];
 								vMap.nav();
 								break;
 							case 2:
 							case 3:
 								vMap.updmoves(false);
+								
+								// MOVE PEOPLE
+								if (settings.action.path.length && settings.action.path.length>1) {
+									settings.interactive = false;
+									settings.action.people.animate({
+										$this:$this, people:settings.action.people,
+										state:settings.action.people.state,
+										path:settings.action.path.reverse(),
+										id:1, first:true, map:vMap});
+								}
+								else {
+									// HANDLE ATTACK
+								}
 								break;
 						}						
 					}
@@ -666,7 +724,7 @@ show: function() {
 				
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
-        }
+        },
     };
 
     // The plugin

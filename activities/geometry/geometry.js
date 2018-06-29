@@ -156,8 +156,9 @@
                 // LOAD SVG
                 var debug = "";
                 if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
-                $this.find("#board").svg();
-                settings.svg = $this.find("#board").svg('get');
+				settings.board.$html = $this.find("#board");
+                settings.board.$html.svg();
+                settings.svg = settings.board.$html.svg('get');
                 settings.svg.load(
                     settings.filename + debug, { addTo: true, changeSize: true, onLoad:function() { helpers.build($this); }
                 });
@@ -252,7 +253,7 @@
             var settings    = helpers.settings($this);
             var o           = 0;                                // THE CLOSER OBJECT
             var dist        = -1;                               // THE DISTANCE*DISTANCE FROM THE CLOSER OBJECT
-
+			
             // DISTANCE FROM CIRCLES
             if (settings.controls.mask==0 || settings.controls.mask=="path" || settings.controls.mask=="circle") {
                 for (var it=0; it<settings.circles.length; it++) {
@@ -291,20 +292,21 @@
                     if (d<settings.zone*settings.zone && (dist<0 || d<dist)) { o = settings.points[it]; dist = d; }
                 }
             }
+			
             return o;
         },
         mousemove: function($this, event) {
-            var settings    = helpers.settings($this); if (settings.finish) { return; }
+            var settings    = helpers.settings($this);
+			if (settings.finish) { return; }
+			
+			settings.board.pixelWidth = settings.board.$html.width();
+            settings.board.pixelHeight = settings.board.$html.height();
+			
             var x           = event.clientX-$this.find("#board").offset().left;     // THE X AXIS MOUSE PIXEL COORDINATE
             var y           = event.clientY-$this.find("#board").offset().top;      // THE Y AXIS MOUSE PIXEL COORDINATE
             var i           = helpers.utility.XtoI($this, x);                       // THE I AXIS MOUSE COORDINATE
             var j           = helpers.utility.YtoJ($this, y);                       // THE J AXIS MOUSE COORDINATE
             var o           = helpers.closer($this, i, j );
-            
-            settings.board.pixelWidth = $this.find("#board").width();
-            settings.board.pixelHeight = $this.find("#board").height();
-            
-
             
             if (settings.withzoom)
             {
@@ -960,6 +962,7 @@
                         "bisector"      : [ "line", "line" ]
                     },
                     board           : {
+						$html		: 0,
                         pixelWidth  : 100,
                         pixelHeight : 100,
                         svgWidth    : 640,
