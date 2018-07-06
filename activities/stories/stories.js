@@ -8,6 +8,9 @@
         lang        : "en-US",                                  // Current localization
         exercice    : [],                                       // Exercice
         background  : "",
+		settings	: {										// GAME PARAMETERS
+			solo	: true									// BY TEAM OR UNIT BY UNIT
+		},
 		maps		: {
 			"start" : {
 				"tileset"	: "set1",
@@ -19,16 +22,13 @@
 {"prefix": "aab", "type":"human", "inventory":"gun","pos":[1,2],"state":"right", "team":0},
 {"prefix": "acb", "type":"human", "inventory":"fist","stat":{"move":8},"pos":[3,5],"state":"left", "team":0},
 {"prefix": "abr", "type":"human", "inventory":"blast","pos":[5,6],"state":"right", "team":1},
-{"prefix": "adb", "type":"human", "inventory":"blast","pos":[4,10],"state":"left", "team":0},
+{"prefix": "adb", "type":"human", "inventory":"blast","pos":[4,6],"state":"left", "team":0},
 {"prefix": "abr", "type":"human","pos":[4,7],"state":"right", "team":1},
 {"prefix": "aeb", "type":"human", "inventory":"aid", /* "transport":2, "pass":[], */ "pos":[3,1],"state":"right", "team":0}
 				]
 			}
 		},
 		objects: { },
-		game: {
-			solo	: true
-		},
 		mapid		: "start",									// Starting map
         debug       : true                                     // Debug mode
     };
@@ -47,10 +47,57 @@
                 life:       10,    		munition:   20,    		attack:     5,      armor:      0,
                 vision:     4,          move:       5,          luck:       3,      speed:      1
             },
+			bonus   : {
+                life:       {},    		munition:   {},    		attack:     {},     armor:      {},
+                vision:     {},         move:       {},         luck:       {},     speed:      {}
+            },
+			damages : 0,				// DAMAGES
+			actions	: 0,				// ONE MUNITION EACH TIME
+			
+			data	: {},				// GAME DATA
 			size	: [1,1],
 			imgs    : { "right":"01", "left":"02", "uright":"03", "uleft":"04" },
 			speed	: [ 99,3,1,2,3 ],	// SPEED REGARDING THE HEIGHT
-			road	: 0.5				// ROAD BONUS
+			road	: 0.5,				// ROAD BONUS
+			
+			// GET STAT VALUE WITH BONUS OR MALUS
+			value	: function(_stat) {
+				var ret = this.stat[_stat];
+				for (var b in this.bonus[_stat]) {
+					if (this.bonus[_stat][b]) {
+						var bb		= this.bonus[_stat][b].toString();
+						var bonus 	= (bb.substr(0,1)=="+");
+						var percent	= (bb.indexOf("%")!=-1);
+						var value	= parseInt(bb.substr(1,bb.length-percent?2:1));
+						if (percent) { value = value*this.stat[_stat]/100; }
+						if (bonus) { ret+=value; } else { ret-=value; }
+					}
+				}
+				return ret;
+			},
+			addbonus	: function(_stat, _id, _value) 	{ this.bonus[_stat][_id] = _value; },
+			delbonus	: function(_stat, _id)			{ this.bonus[_stat][_id] = 0; },
+			
+			dump	: function() {
+				var ret="";
+				ret+="["+this.team+"] ("+this.pos+")\n";
+				for (var s in this.stat) {
+					ret+=" + "+s+" : ("+this.stat[s]+" -> "+this.value(s);
+					if (s=="life") 		{ ret+=" - "+this.damages; } else
+					if (s=="munition")	{ ret+=" - "+this.actions; }
+					ret+=") ";
+					for (var b in this.bonus[s]) {
+						var bb=this.bonus[s][b];
+						ret+="["+bb+"] ";
+					}
+					ret+="\n";
+				}
+				return ret;
+			}
+			
+
+			
+			
 		}
 	};
 
@@ -280,6 +327,14 @@ zoommin		: 0,						// Number of tiles shown when zoom max
 zoommax 	: 2,						// Number of tiles shown when zoom min
 zoom		: 0,						// Zoom value (from 0/zoommin to 1 zoommax)
 $board		: $this.find("#board"),
+dump		: function() {
+	var ret = "";
+	for (var p in this.people) {
+		var people = this.people[p];
+		ret+= people.dump()+"\n";
+	}
+	return ret;
+},
 inside	: function(_i, _j) {
 	var ii=_i, jj=_j;
 	if ($.isArray(_i)) { ii=_i[0]; jj=_i[1]; }
@@ -343,7 +398,7 @@ setzoom: function(_zoom, _cbk) {
 },
 getmoves: function(_people) {
 	var ret = this.getgrid();
-	ret = this.updgrid(ret, _people.pos[0], _people.pos[1], _people.stat.move,
+	ret = this.updgrid(ret, _people.pos[0], _people.pos[1], _people.value("move"),
 		function(_args) {
 			var next = [[-1,0],[1,0],[0,-1],[0,1]];
 			var vals = [];
@@ -407,11 +462,12 @@ getactions: function(_people, _moves, _weapon) {
 						if (d!=0 && d>=min2 && d<=max2 &&
 							this.inside(people.pos[0]+i, people.pos[1]+j) ) {
 							var tidx = this.getidx(people.pos[0]+i, people.pos[1]+j);
+							var ispeople = this.getpeople([people.pos[0]+i, people.pos[1]+j]);
 							// TODO: ADD TILE ACTION BONUS IN CHOICE
-							if (_moves[tidx]>dd) { dd = _moves[tidx]; idx = tidx; }
+							if (!ispeople && _moves[tidx]>dd) { dd = _moves[tidx]; idx = tidx; }
 						}
 					}
-					if (dd>0) { ret[this.getidx(people.pos[0], people.pos[1])] = 1+idx; }
+					if (dd>0) { console.log(idx); ret[this.getidx(people.pos[0], people.pos[1])] = 1+idx; }
 				}
 			}
 		}
@@ -424,7 +480,7 @@ getfog: function(_teamid) {
 	for (var p in this.people) {
 		var people = this.people[p];
 		if (people.team==_teamid) {
-			ret = this.updgrid(ret, people.pos[0], people.pos[1], people.stat.vision,
+			ret = this.updgrid(ret, people.pos[0], people.pos[1], people.value("vision"),
 					function(_args) {
 						var val = _args.level;
 						if (_args.tile.hiding) {
@@ -704,7 +760,6 @@ show: function() {
 				});
 
 				setTimeout(function() {
-                    settings.maps[settings.mapid].show();
 
 					// ZOOM SLIDER HANDLING
                     $this.find("#zoom #cursor")
@@ -725,6 +780,19 @@ show: function() {
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
+		prepare: function($this) {
+			var settings = helpers.settings($this);
+            settings.maps[settings.mapid].show();
+			
+			console.log(settings.maps[settings.mapid].dump());
+			
+		},
+		turn: function($this) {
+		},
+		game: {
+		},
+		ai: {
+		}
     };
 
     // The plugin
@@ -736,7 +804,8 @@ show: function() {
                 // The settings
                 var settings = {
                     interactive     : false,
-					action : { start:0, type:0, data:0 }
+					game 			: { },
+					action 			: { start:0, type:0, data:0 }
                 };
 
                 return this.each(function() {
@@ -763,6 +832,7 @@ show: function() {
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 settings.interactive = true;
+				helpers.prepare($this);
             },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
