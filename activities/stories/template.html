@@ -8,6 +8,15 @@
 	<div id="zoom"><div id="cursor"></div></div>
 </div>
 
+<div id="control">
+	<div class="icon" ontouchstart="$(this).closest('.stories').stories('onpeople');event.preventDefault();"
+                      onclick="$(this).closest('.stories').stories('onpeople');">
+		<img src="res/img/default/white/look.svg" alt="o"/></div>
+	<div id="endturn" class="icon" ontouchstart="$(this).closest('.stories').stories('endturn');event.preventDefault();"
+                      onclick="$(this).closest('.stories').stories('endturn');">
+		<img src="res/img/default/white/valid.svg" alt="o"/></div>
+</div>
+
     <div id="splashex" ontouchstart="$(this).hide().closest('.stories').stories('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.stories').stories('next');"><div>
         <h1 id="label"></h1>

@@ -9,26 +9,11 @@
         exercice    : [],                                       // Exercice
         background  : "",
 		settings	: {										// GAME PARAMETERS
-			solo	: true									// BY TEAM OR UNIT BY UNIT
+			solo	: true,									// BY TEAM OR UNIT BY UNIT
+			team	: 0										// FIRST TEAM IN TEAM MODE
 		},
-		maps		: {
-			"start" : {
-				"tileset"	: "set1",
-				"background": "#afc84b",
-				"fog"		: true,
-				"size"		: [8,16],
-				"bg"		: [401,401,1,1,1,1,2,2,41,1,2,401,11,3,1,1,205,205,208,1,4,4,4,4,2,11,206,1,203,12,11,2,2,3,213,205,212,211,205,205,2,3,206,1,1,204,12,2,2,201,212,202,4,12,11,4,4,3,4,41,41,1,1,2,135,141,135,138,1,1,107,105,4,136,2,136,2,401,106,1,3,121,1,139,123,124,126,135,2,122,3,1,1,1,106,2,2,136,3,107,105,111,110,2,105,125,105,110,41,106,41,2,2,121,3,4,4,109,111,105,4,106,4,4,1,1,106,2],
-				"people"	: [
-{"prefix": "aab", "type":"human", "inventory":"gun","pos":[1,2],"state":"right", "team":0},
-{"prefix": "acb", "type":"human", "inventory":"fist","stat":{"move":8},"pos":[3,5],"state":"left", "team":0},
-{"prefix": "abr", "type":"human", "inventory":"blast","pos":[5,6],"state":"right", "team":1},
-{"prefix": "adb", "type":"human", "inventory":"blast","pos":[4,6],"state":"left", "team":0},
-{"prefix": "abr", "type":"human","pos":[4,7],"state":"right", "team":1},
-{"prefix": "aeb", "type":"human", "inventory":"aid", /* "transport":2, "pass":[], */ "pos":[3,1],"state":"right", "team":0}
-				]
-			}
-		},
-		objects: { },
+		maps		: {},
+		objects		: { },
 		mapid		: "start",									// Starting map
         debug       : true                                     // Debug mode
     };
@@ -45,59 +30,17 @@
 		default: {
             stat    : {
                 life:       10,    		munition:   20,    		attack:     5,      armor:      0,
-                vision:     4,          move:       5,          luck:       3,      speed:      1
+                vision:     4,          move:       5,          luck:       3,      speed:      5
             },
 			bonus   : {
                 life:       {},    		munition:   {},    		attack:     {},     armor:      {},
                 vision:     {},         move:       {},         luck:       {},     speed:      {}
             },
-			damages : 0,				// DAMAGES
-			actions	: 0,				// ONE MUNITION EACH TIME
-			
-			data	: {},				// GAME DATA
+
 			size	: [1,1],
 			imgs    : { "right":"01", "left":"02", "uright":"03", "uleft":"04" },
 			speed	: [ 99,3,1,2,3 ],	// SPEED REGARDING THE HEIGHT
-			road	: 0.5,				// ROAD BONUS
-			
-			// GET STAT VALUE WITH BONUS OR MALUS
-			value	: function(_stat) {
-				var ret = this.stat[_stat];
-				for (var b in this.bonus[_stat]) {
-					if (this.bonus[_stat][b]) {
-						var bb		= this.bonus[_stat][b].toString();
-						var bonus 	= (bb.substr(0,1)=="+");
-						var percent	= (bb.indexOf("%")!=-1);
-						var value	= parseInt(bb.substr(1,bb.length-percent?2:1));
-						if (percent) { value = value*this.stat[_stat]/100; }
-						if (bonus) { ret+=value; } else { ret-=value; }
-					}
-				}
-				return ret;
-			},
-			addbonus	: function(_stat, _id, _value) 	{ this.bonus[_stat][_id] = _value; },
-			delbonus	: function(_stat, _id)			{ this.bonus[_stat][_id] = 0; },
-			
-			dump	: function() {
-				var ret="";
-				ret+="["+this.team+"] ("+this.pos+")\n";
-				for (var s in this.stat) {
-					ret+=" + "+s+" : ("+this.stat[s]+" -> "+this.value(s);
-					if (s=="life") 		{ ret+=" - "+this.damages; } else
-					if (s=="munition")	{ ret+=" - "+this.actions; }
-					ret+=") ";
-					for (var b in this.bonus[s]) {
-						var bb=this.bonus[s][b];
-						ret+="["+bb+"] ";
-					}
-					ret+="\n";
-				}
-				return ret;
-			}
-			
-
-			
-			
+			road	: 0.5				// ROAD BONUS
 		}
 	};
 
@@ -176,8 +119,36 @@
 		endmove: function($this, _args, _finished) {
 			var settings = helpers.settings($this);
 			var people = settings.action.people;
-			if (_args.move)		{ people.pos = [ _args.move[0], _args.move[1] ]; }
-			if (_args.state) 	{ people.state = _args.state; }
+			if (_args && _args.move) { people.pos = [ _args.move[0], _args.move[1] ]; }
+			
+			var weaponid  		= people.weaponid();
+			var canstillattack 	= weaponid?settings.objects[weaponid].move:false;
+			people.endmove(canstillattack);
+			
+			settings.interactive = true;
+			
+			if (!_finished) { people.endattack(false); }
+			
+			if (people.canattack()) {
+				if( settings.maps[settings.mapid].getactions(people, 0, weaponid?settings.objects[weaponid]:0, true)==0) {
+					people.endattack(false);
+				}
+				else {
+					var target = settings.maps[settings.mapid].getpeople(settings.action.pos);
+					if (target.id!=people.id) { settings.interactive = false; helpers.endaction($this,people,target); }
+				}
+			}
+			if (!people.canattack() && settings.settings.solo ) { helpers.turn($this); }
+						
+		},
+		endaction: function($this, _people, _target) {
+			var settings = helpers.settings($this);
+			
+			var weaponid  		= _people.weaponid();
+			var canstillmove 	= weaponid?settings.objects[weaponid].move:false;
+			_people.endattack(canstillmove);
+
+			if (!_people.canmove()  && settings.settings.solo ) { helpers.turn($this); }
 			
 			settings.interactive = true;
 			
@@ -248,6 +219,78 @@
 							npc   		: false,	// IS NPC
 							moves		: [],		// MOVE GRID
 							actions		: [],		// ACTION GRID
+							state		: "",		// CURRENT STATE
+							damages 	: 0,		// DAMAGES
+							actions		: 0,		// ONE MUNITION EACH TIME
+							time		: {
+								last	: 0			// LAST TIME ACTION
+							},
+							data	: {				// GAME DATA
+								move   : false,
+								action : false,
+								endturn: true
+							},
+							prepare : function() {
+								this.data.move    = false;
+								this.data.action  = false;
+								this.data.endturn = false;
+								this.$html.addClass("active");
+							},
+							canmove	  : function() { return (!this.data.move && !this.data.endturn); },
+							canattack : function() { return (!this.data.action && !this.data.endturn); },
+							cando	  : function() { return (!this.data.endturn); },
+							endattack: function(_stillmove) {
+								this.data.action = true;
+								if (!_stillmove || this.data.move ) { this.endturn(); }
+							},
+							endmove : function(_stillattack) {
+								this.data.move = true;
+								if (!_stillattack || this.data.action ) { this.endturn(); }
+							},
+							getnexttime : function() { return this.value("speed") + this.time.last; },
+							endturn : function() {
+								if (this.$html.hasClass("active")) {
+									this.data.endturn 	= true;
+									this.time.last 		= this.getnexttime();
+									this.$html.removeClass("active");
+								}
+							},
+							
+							// GET STAT VALUE WITH BONUS OR MALUS
+							value	: function(_stat) {
+								var ret = this.stat[_stat];
+								for (var b in this.bonus[_stat]) {
+									if (this.bonus[_stat][b]) {
+										var bb		= this.bonus[_stat][b].toString();
+										var bonus 	= (bb.substr(0,1)=="+");
+										var percent	= (bb.indexOf("%")!=-1);
+										var value	= parseInt(bb.substr(1,bb.length-percent?2:1));
+										if (percent) { value = value*this.stat[_stat]/100; }
+										if (bonus) { ret+=value; } else { ret-=value; }
+									}
+								}
+								return ret;
+							},
+							addbonus	: function(_stat, _id, _value) 	{ this.bonus[_stat][_id] = _value; },
+							delbonus	: function(_stat, _id)			{ this.bonus[_stat][_id] = 0; },
+							
+							dump	: function() {
+								var ret="";
+								ret+="["+this.team+"] ("+this.pos+")\n";
+								for (var s in this.stat) {
+									ret+=" + "+s+" : ("+this.stat[s]+" -> "+this.value(s);
+									if (s=="life") 		{ ret+=" - "+this.damages; } else
+									if (s=="munition")	{ ret+=" - "+this.actions; }
+									ret+=") ";
+									for (var b in this.bonus[s]) {
+										var bb=this.bonus[s][b];
+										ret+="["+bb+"] ";
+									}
+									ret+="\n";
+								}
+								return ret;
+							},
+							
 							update		: function(_args, _map) {
 								// GET THE TILE
 								var tile = _args.tile;
@@ -256,9 +299,11 @@
 								if (_args.pos) { this.$html.css("left",_args.pos[0]+"em").css("top",_args.pos[1]+"em"); }
 								
 								if (_args.state){
-									var state = _args.state;
-									if (tile && tile.move<2 && this.imgs["u"+_args.state]) { state = "u"+_args.state; }
-									this.$html.attr("class","elt "+state);
+									if (this.state) { this.$html.removeClass(this.state); }
+									this.state = _args.state;
+									var state = this.state;
+									if (tile && tile.move<2 && this.imgs["u"+_args.state]) { state = "u"+state; }
+									this.$html.addClass(state);
 								}
 								
 								if (_args.move){
@@ -293,7 +338,6 @@
 									else {
 										this.pos=[p2[0], p2[1]];
 										_args.id++;
-										_args.tile	= 0;
 										_args.move	= p2;
 										_args.first = true;
 										_args.tile  = _args.map.grid.tiles[_args.map.getidx(p2)];
@@ -301,17 +345,30 @@
 										this.update(_args, _args.map);
 									}
 								}
+							},
+							weaponid: function() {
+								var ret = 0;
+								if (this.inventory) {
+									ret = $.isArray(this.inventory)?this.inventory[this.inventoryid]:this.inventory;
+								}
+								return ret;
+							},
+							init : function() {
+								this.$html = $("<div class='elt' style='width:"+people.size[0]+"em;height:"+people.size[1]+"em;'><div>");
+								
+								for (var s in this.imgs) {
+									this.$html.append(
+										"<img class='state "+s+"' src='res/img/tileset/ortho/people/"+this.prefix+this.imgs[s]+".svg' alt=''/>");
+								}
+								
+								this.time.last = Math.random()*this.stat.speed;
+								
+								return this;
+								
 							}
 						}, pref,  settings.maps[m].people[p]);
 						
-						people.$html = $("<div class='elt' style='width:"+people.size[0]+"em;height:"+people.size[1]+"em;'><div>");
-						
-						for (var s in people.imgs) {
-							people.$html.append(
-								"<img class='state "+s+"' src='res/img/tileset/ortho/people/"+people.prefix+people.imgs[s]+".svg' alt=''/>");
-						}
-						
-						settings.maps[m].people[p] = people;
+						settings.maps[m].people[p] = people.init();
 					}
 					
 					
@@ -429,9 +486,9 @@ getmoves: function(_people) {
 	);
 	return ret;
 },
-getactions: function(_people, _moves, _weapon) {
-	var ret = this.getgrid();
-	if (_weapon) {
+getactions: function(_people, _moves, _weapon, _nb) {
+	var grid = _nb?0:this.getgrid(), nb=0;
+	if (_weapon && _people.canattack()) {
 	
 		// SHOW TARGET FROM CURRENT POSITION
 		var min2 = _weapon.range[0]*_weapon.range[0];
@@ -443,14 +500,15 @@ getactions: function(_people, _moves, _weapon) {
 				var val = -1;
 				var people = this.getpeople([_people.pos[0]+i, _people.pos[1]+j]);
 				if (people && this.reachable(_people, people, _weapon) ) {
+					nb++;
 					val = 1+this.getidx(_people.pos[0],_people.pos[1]);
 				}
-				ret[this.getidx(_people.pos[0]+i, _people.pos[1]+j)] = val;
+				if (grid) { grid[this.getidx(_people.pos[0]+i, _people.pos[1]+j)] = val; }
 			}
 		}
 		
 		// FIND TARGET FROM BEST POSITION
-		if ((_people.team==0) && _weapon.move )
+		if ((_people.team==0) && _weapon.move && _people.canmove() && _moves)
 		{
 			for (var p in this.people) {
 				var people = this.people[p];
@@ -467,13 +525,18 @@ getactions: function(_people, _moves, _weapon) {
 							if (!ispeople && _moves[tidx]>dd) { dd = _moves[tidx]; idx = tidx; }
 						}
 					}
-					if (dd>0) { console.log(idx); ret[this.getidx(people.pos[0], people.pos[1])] = 1+idx; }
+					if (dd>0) {
+						nb++;
+						if (grid && grid[this.getidx(people.pos[0], people.pos[1])] == 0) {
+							grid[this.getidx(people.pos[0], people.pos[1])] = 1+idx;
+						}
+					}
 				}
 			}
 		}
 	}
 	
-	return ret;
+	return grid?grid:nb;
 },
 getfog: function(_teamid) {
 	var ret = this.getgrid();
@@ -503,6 +566,27 @@ getpeople: function(_pos) {
 	for (var p in this.people) {
 		var people = this.people[p];
 		if (_pos[0]==people.pos[0] && _pos[1]==people.pos[1]) { ret = people; }
+	}
+	return ret;
+},
+eachpeople: function(_args, _cbk) {
+	for (var p in this.people) {
+		var people  = this.people[p];
+		var ok		= true;
+		if (_args) { for (var a in _args) { if (people[a]!=_args[a]) { ok = false; } } }
+		if (ok) { _cbk(people); }
+	}
+},
+getnextpeople: function() {
+	var ret = 0;
+	var currenttime = -1;
+	for (var p in this.people) {
+		var people  = this.people[p];
+		var time	= people.getnexttime();
+		if (currenttime==-1 || time < currenttime) {
+			ret 		= people;
+			currenttime	= time;
+		}
 	}
 	return ret;
 },
@@ -540,7 +624,7 @@ drawmoves: function(_from, _to, _moves, _actions, _speed, _last) {
 	
 	// GET CLOSEST TILE
 	// FROM ACTION TILE
-	if (_actions[this.getidx(_to)]>0) {
+	if (_actions && _actions[this.getidx(_to)]>0) {
 		this.grid.moves[this.getidx(_to)].$html.addClass("e");
 		var idx=_actions[this.getidx(_to)]-1;
 		_to=[idx%this.size[0], Math.floor(idx/this.size[0])];
@@ -550,7 +634,7 @@ drawmoves: function(_from, _to, _moves, _actions, _speed, _last) {
 		this.$map.find(".moves .e").removeClass("e");
 		
 		// FROM OUTSIDE AVAILABLE MOVES
-		if (_moves[this.getidx(_to)]==0) {
+		if (_moves && _moves[this.getidx(_to)]==0) {
 			var d=99, ii=_to[0], jj=_to[1];
 			for (var j=0; j<this.size[1]; j++)
 			for (var i=0; i<this.size[0]; i++) {
@@ -570,7 +654,7 @@ drawmoves: function(_from, _to, _moves, _actions, _speed, _last) {
 	}
 	
 	// BUILD PATH
-	if (_moves[this.getidx(_to)]!=0 && (_to[0]!=_from[0] || _to[1]!=_from[1]) ) {
+	if (_moves && _moves[this.getidx(_to)]!=0 && (_to[0]!=_from[0] || _to[1]!=_from[1]) ) {
 		
 		var people  = this.getpeople(_to);
 			
@@ -680,10 +764,10 @@ show: function() {
 						
 						if (people && (!vMap.fog || vMap.grid.fog[idx].visible) ) {
 
-							var weaponid = $.isArray(people.inventory)?people.inventory[people.inventoryid]:people.inventory;
+							var weaponid = people.weaponid();
 							people.moves 	= vMap.getmoves(people);
 							people.actions 	= vMap.getactions(people, people.moves,
-								weaponid?settings.objects[weaponid]:0, (people.team==0) );
+								weaponid?settings.objects[weaponid]:0, false );
 							vMap.updmoves(people.moves, people.actions);
 
 							settings.action.type 	= (people.team==0)?2:3;
@@ -714,9 +798,11 @@ show: function() {
 								var pos 	= vMap.getpos([ vEvent.clientX, vEvent.clientY]);
 								if (pos[0]!=settings.action.pos[0] || pos[1]!=settings.action.pos[1]) {
 									settings.action.pos = [ pos[0], pos[1] ];
+									
 									settings.action.path = vMap.drawmoves(settings.action.people.pos, pos,
-										settings.action.people.moves, settings.action.people.actions,
-										vMap.people[settings.action.people.id].speed, settings.action.path);
+											settings.action.people.canmove()?settings.action.people.moves:0,
+											settings.action.people.canattack()?settings.action.people.actions:0,
+											vMap.people[settings.action.people.id].speed, settings.action.path);
 								}
 								break;
 						}
@@ -739,7 +825,7 @@ show: function() {
 							case 3:
 								vMap.updmoves(false);
 								
-								// MOVE PEOPLE
+								// MOVE PEOPLE AND MAY ATTACK
 								if (settings.action.path.length && settings.action.path.length>1) {
 									settings.interactive = false;
 									settings.action.people.animate({
@@ -748,9 +834,14 @@ show: function() {
 										path:settings.action.path.reverse(),
 										id:1, first:true, map:vMap});
 								}
+								// NO MOVE BUT ATTACK
 								else {
-									// HANDLE ATTACK
-								}
+									var target = settings.maps[settings.mapid].getpeople(settings.action.pos);
+									if (target.id!=settings.action.people.id) {
+										settings.interactive = false;
+										helpers.endaction($this,settings.action.people,target);
+										}
+									}
 								break;
 						}						
 					}
@@ -784,10 +875,48 @@ show: function() {
 			var settings = helpers.settings($this);
             settings.maps[settings.mapid].show();
 			
-			console.log(settings.maps[settings.mapid].dump());
+			settings.game.team = settings.settings.team - 1;
+			helpers.turn($this);
 			
 		},
 		turn: function($this) {
+			var settings = helpers.settings($this);
+
+			if (settings.settings.solo) {
+				settings.game.people = settings.maps[settings.mapid].getnextpeople();
+				settings.game.people.prepare();
+				settings.interactive = true;
+				
+				if (settings.game.people.team!=0) {
+					settings.interactive = false;
+					setTimeout(function() {
+						settings.game.people.endturn();
+						settings.interactive = true;
+						helpers.turn($this); }, 1000);
+				}
+				
+			}
+			else {
+				settings.game.team++;
+				var nbs = [0,0,0,0,0];
+				settings.maps[settings.mapid].eachpeople({}, function(_people) { nbs[_people.team]++; } );
+				while ( nbs[settings.game.team] == 0 ) {
+					settings.game.team = (settings.game.team+1)%nbs.length;
+				}
+				
+				settings.maps[settings.mapid].eachpeople({team:settings.game.team}, function(_people) { _people.prepare(); } );
+				settings.interactive = true;
+				
+				if (settings.game.team!=0) {
+					settings.interactive = false;
+					setTimeout(function() {
+						settings.maps[settings.mapid].eachpeople({team:settings.game.team}, function(_people) { _people.endturn(); } );
+						settings.interactive = true;
+						helpers.turn($this); }, 1000);
+				}
+				
+			}
+			
 		},
 		game: {
 		},
@@ -804,7 +933,12 @@ show: function() {
                 // The settings
                 var settings = {
                     interactive     : false,
-					game 			: { },
+					game 			: {
+						time		: 0,		// CURRENT TIME FOR SOLO MODE
+						people		: 0,		// CURRENT PEOPLE IN SOLO MODE
+						next		: 0,		// ONPEOPLE COUNTER
+						team		: 0			// CURRENT TEAM
+					},
 					action 			: { start:0, type:0, data:0 }
                 };
 
@@ -812,7 +946,7 @@ show: function() {
                     var $this = $(this);
                     helpers.unbind($this);
 
-                    var $settings = $.extend({}, defaults, options, settings);
+                    var $settings = $.extend(true, {}, defaults, options, settings);
                     var checkContext = helpers.checkContext($settings);
                     if (checkContext.length) {
                         alert("CONTEXT ERROR:\n"+checkContext);
@@ -826,19 +960,46 @@ show: function() {
                 });
             },
             devmode: function() {
-                var $this = $(this) , settings = helpers.settings($this);
+                var $this = $(this), settings = helpers.settings($this);
                 $this.find("#devoutput textarea").val("Debug output").parent().show();
             },
             next: function() {
-                var $this = $(this) , settings = helpers.settings($this);
+                var $this = $(this), settings = helpers.settings($this);
                 settings.interactive = true;
 				helpers.prepare($this);
             },
             quit: function() {
-                var $this = $(this) , settings = helpers.settings($this);
+                var $this = $(this), settings = helpers.settings($this);
                 helpers.quit($this);
                 settings.context.onquit($this,{'status':'abort'});
-            }
+            },
+			onpeople: function() {
+                var $this = $(this), settings = helpers.settings($this);
+				var f = 0;
+				if (settings.interactive) {
+					if (settings.settings.solo) { f = settings.game.people; }
+					else {
+						var peoples = [];
+						settings.maps[settings.mapid].eachpeople({team:0}, function(_people) {
+							if (_people.cando()) { peoples.push(_people); }
+						} );
+						if (peoples.length) { f = peoples[(settings.game.next++)%peoples.length]; }
+					}
+					if (f) {
+						settings.maps[settings.mapid].focus = [f.pos[0]+0.5, f.pos[1]+0.5]; 
+						settings.maps[settings.mapid].nav();
+					}
+				}
+			},
+			endturn: function() {
+                var $this = $(this), settings = helpers.settings($this);
+				settings.interactive = false;
+				$this.find("#endturn").addClass("s");
+				setTimeout(function() {
+					if (settings.game.people) { settings.game.people.endturn(); }
+					$this.find("#endturn").removeClass("s");
+					helpers.turn($this); }, 500);
+			}
         };
 
         if (methods[method])    { return methods[method].apply(this, Array.prototype.slice.call(arguments, 1)); } 

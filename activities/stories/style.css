@@ -1,14 +1,15 @@
 .stories                            { background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat;}
 .stories>div						{ width:16em; height:12em; }
 .stories div#splashex               { background-image:url("../../res/img/banners/it.svg"); }
-.stories div#splashex h1            { position:absolute; top:45%; left:80%; font-size:1.5em;  white-space:nowrap; }
-.stories div#splashex #guide        { position:absolute; top:52%; left:45%; font-size:.75em; width:48%; text-align:justify; }
+.stories div#splashex h1            { color:gold; position:absolute; top:45%; left:55%; font-size:1.2em;  white-space:nowrap; }
+.stories div#splashex #guide        { color:gold; position:absolute; top:52%; left:50%; font-size:.75em; width:43%; text-align:justify; }
 .stories div#map					{ margin:.5em; height:11em; width:10em; border:.2em solid white; }
-.stories div#board                  { font-size:1em; height:10em; width:10em; background-color:black; position:relative;  }
+.stories div#board                  { font-size:1em; height:10em; width:10em; background-color:black; position:relative; }
 .stories .map						{ position:absolute; }
 .stories .map .elt					{ position:absolute; }
 
 .stories .map .people .elt			{ z-index:5; }
+.stories .map .people .elt.active	{ background-image:url("../../res/img/asset/fx/target01.svg"); cursor:pointer; }
 .stories .map .fog .elt				{ width:1em; height:1em; background-color:rgba(200,200,200,0.8);  }
 .stories .map .moves .elt			{ width:1em; height:1em; display:none; opacity:0.8; background-repeat:no-repeat; }
 .stories .map .moves .elt.s			{ background-color:rgba(0,0,0,0.5); }
@@ -54,3 +55,7 @@
 .stories div#zoom					{ font-size:1em; height:1em; width:10em; background-color:gray; }
 .stories div#zoom #cursor			{ height:1em; width:50%; background-color:white; cursor:move; }
 .stories div#zoom #cursor.ui-draggable-dragging	{ background-color: red; }
+
+.stories div#control				{ position:absolute; top:0; left:70%; font-size:2em; }
+.stories div#control>.icon			{ cursor:pointer; border-radius:.5em; background-image:url("../../res/img/icon/tab/tab00.svg"); background-color:gray; margin:.1em; }
+.stories div#control>.icon.s		{ background-color:red; }
