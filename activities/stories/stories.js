@@ -299,7 +299,10 @@
 								if (_args.pos) { this.$html.css("left",_args.pos[0]+"em").css("top",_args.pos[1]+"em"); }
 								
 								if (_args.state){
-									if (this.state) { this.$html.removeClass(this.state); }
+									if (this.state) { 
+										this.$html.removeClass(this.state);
+										this.$html.removeClass("u"+this.state);
+									}
 									this.state = _args.state;
 									var state = this.state;
 									if (tile && tile.move<2 && this.imgs["u"+_args.state]) { state = "u"+state; }
