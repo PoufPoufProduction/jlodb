@@ -15,6 +15,8 @@
         board       : "",                                       // board
         change      : 9,
         time        : 0,
+		colors 		: [ "black","white","blue","green","yellow","purple","red","orange"],
+		content		: 0,
         debug       : true                                      // Debug mode
     };
 
@@ -29,7 +31,6 @@
         "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>"
     ];
     
-    var colors = [ "black","white","blue","green","yellow","purple","red","orange"];
     var touch = { none:0, ball:1, wall:2, top:3 };
 
     // private methods
@@ -433,8 +434,15 @@
 
             };
             
-            ret.$svg = $("#bubble", settings.svg.root()).clone().attr("id","").attr("class","bubble "+colors[_val])
+            ret.$svg = $("#bubble", settings.svg.root()).clone().attr("id","")
+						.attr("class","bubble "+settings.colors[_val%settings.colors.length])
                         .appendTo($("#area", settings.svg.root()));
+			
+			if (settings.content) {
+				var content = settings.content[_val%settings.content.length];
+				if (content && $.isArray(content)) { content = content[Math.floor(Math.random()*content.length)]; }
+				if (content) { ret.$svg.find("text").text(content); }
+			}
             
             return ret;
         },
@@ -481,15 +489,15 @@
             var settings = helpers.settings($this);
  
             
-            var ishere = [];
-            for (var i in colors) { ishere.push(false); }
+            var ishere 	= [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+			var maxhere = 0;
             for (var j=0; j<12; j++) for (var i=0; i<8; i++) {
                 var elt = settings.data[j][i];
-                if (elt) { ishere[elt.val] = true; }
+                if (elt) { ishere[elt.val] = 1; if (elt.val>maxhere) { maxhere = elt.val; } }
             }
-            
+
             var val;
-            do { val = Math.floor(Math.random()*colors.length); } while (!ishere[val]);
+            do { val = Math.floor(Math.random()*(maxhere+1)); } while (ishere[val]==0);
             
             settings.next = helpers.bubble($this, val);
             settings.next.moveto([142,432]);

@@ -56,7 +56,7 @@
         <dct:identifier>ad</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser l'opérateur x2 pour faire faire un demi-tour au robot.</dct:title>
         <dct:description><![CDATA["board":[[1,2]],"robots":[{"origin":[0,0,2],"code":[18,0,0],"actions":["f01","turnright","x2"]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":[""L'opération de multiplication peut s'appliquer sur [b]n'importe quelle action[/b].","Pour faire demi-tour, le robot doit tourner [b]2 fois[/b] sur lui-même.","Le programme [b]principal[/b] devrait être :[code][a]x2[/a][a]turnright[/a][a]f01[/a][/code]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["L'opération de multiplication peut s'appliquer sur [b]n'importe quelle action[/b].","Pour faire demi-tour, le robot doit tourner [b]2 fois[/b] sur lui-même.","Le programme [b]principal[/b] devrait être :[code][a]x2[/a][a]turnright[/a][a]f01[/a][/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -399,10 +399,10 @@
         <dct:title xml:lang="fr-FR">En anticipant l'action d'une case d'inversion, utiliser une boucle pour faire avancer le robot de 5 cases.</dct:title>
         <dct:description><![CDATA["board":[[461,463,401,401,556],[1,1,1,2,22]],"robots":[{"origin":[0,1,0],"code":[18,0,0],"actions":["f01","x5"]}]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["La case d'inversion fait [b]buguer[/b] le robot qui inverse alors les commandes.","Le robot doit passer la case d'arrivée pour [b]y revenir[/b] en marche arrière.","Le programme [b]principal[/b] devrait être:[code][a]x5[/a][a]f01[/a][/code]"]]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>2</dct:type>
         <dct:alternative>aa</dct:alternative>
         <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
     </rdf:Description>
@@ -412,32 +412,34 @@
         <dct:title xml:lang="fr-FR">Utiliser une case d'inversion et une boucle pour faire avancer le robot jusqu'à la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[0,0,0,556,0],[1,1,1,20,22],[9,0,469,0,0],[2,0,471,0,0]],"robots":[{"origin":[0,1,0],"code":[18,0,0],"actions":["f01","f01","x2","x2","x3","x3","x4","x4","x5","x5","turnleft","turnright"]}]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Le robot doit passer [b]sur le bouton[/b] pour faire apparaître la dalle absente.","La case d'[b]inversion[/b] permet de faire l'aller-retour avec une seule instruction.","Le programme [b]principal[/b] devrait être:[code][a]x2[/a][a]x4[/a][a]f01[/a][a]turnright[/a][a]f01[/a][/code]"]]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>2</dct:type>
         <dct:alternative>aa</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>cc</dct:identifier>
         <dct:title xml:lang="fr-FR">A l'aide d'une case d'inversion, faire atteindre au robot la case 19.</dct:title>
-        <dct:description><![CDATA["board":[[110,111,112,113,114,115,116,117,118,119,101,0],[1,1,1,1,1,1,1,1,1,1,4,210],[0,0,0,0,0,0,0,0,0,473,1,211],[0,0,0,0,0,0,0,0,0,0,1,212],[0,0,0,0,0,0,0,0,0,0,1,213],[0,0,0,0,0,0,0,0,0,0,1,214],[0,0,0,0,0,0,0,0,0,473,1,215],[0,0,0,0,0,0,0,0,0,0,1,216],[0,0,0,0,0,0,0,0,0,0,1,217],[0,0,0,0,0,0,0,0,0,454,1,218],[0,0,0,0,0,0,0,0,0,473,2,219],[0,0,0,0,0,0,0,0,0,0,22,201]],"robots":[{"origin":[0,1,0],"code":[12,0,0],"actions":["f01","b01","x2","x2","x2","x2","x2","x3","x3","x3","x3","x3"]}]]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:description><![CDATA["speed":2,"board":[[110,111,112,113,114,115,116,117,118,119,101,0],[1,1,1,1,1,1,1,1,1,1,4,210],[0,0,0,0,0,0,0,0,0,473,1,211],[0,0,0,0,0,0,0,0,0,0,1,212],[0,0,0,0,0,0,0,0,0,0,1,213],[0,0,0,0,0,0,0,0,0,0,1,214],[0,0,0,0,0,0,0,0,0,473,1,215],[0,0,0,0,0,0,0,0,0,0,1,216],[0,0,0,0,0,0,0,0,0,0,1,217],[0,0,0,0,0,0,0,0,0,454,1,218],[0,0,0,0,0,0,0,0,0,473,2,219],[0,0,0,0,0,0,0,0,0,0,22,201]],"robots":[{"origin":[0,1,0],"code":[12,0,0],"actions":["f01","b01","x2","x2","x2","x2","x2","x3","x3","x3","x3","x3"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Avec les valeurs proposées, le robot doit avancer de [b]24 cases[/b] puis revenir de [b]3[/b].","[b]24 = 3×2×2×2[/b]","Le programme [b]principal[/b] devrait être:[code][a]x2[/a][a]x2[/a][a]x2[/a][a]x3[/a][a]f01[/a][a]x3[/a][a]b01[/a][/code]"]]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>operations</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
         <dct:alternative>aa</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>cd</dct:identifier>
         <dct:title xml:lang="fr-FR">A l'aide d'une case d'inversion, faire atteindre au robot la case 28.</dct:title>
-        <dct:description><![CDATA["board":[[110,111,112,113,114,115,116,117,118,119,101,0],[1,1,1,1,1,1,1,1,1,1,4,210],[0,0,0,0,0,0,0,0,0,0,1,211],[476,476,476,476,476,476,476,476,476,0,1,212],[476,0,0,0,0,0,0,0,476,0,1,213],[476,0,0,0,0,0,0,0,476,0,1,214],[476,0,0,0,0,0,0,0,476,0,1,215],[476,0,0,0,0,0,0,0,476,0,1,216],[476,0,0,0,0,0,0,0,476,0,1,217],[476,476,476,476,476,476,476,476,476,0,1,218],[0,0,0,0,0,0,0,0,0,0,1,219],[22,1,2,1,1,1,1,1,1,1,4,201],[301,319,318,317,316,315,314,313,312,311,310,0]],"robots":[{"origin":[0,1,0],"code":[6,0,0],"actions":["f01","x2","x2","x2","x2","x2","x3","x3","x3","x3","x3"]}]]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:description><![CDATA["speed":2,"board":[[110,111,112,113,114,115,116,117,118,119,101,0],[1,1,1,1,1,1,1,1,1,1,4,210],[0,0,0,0,0,0,0,0,0,0,1,211],[476,476,476,476,476,476,476,476,476,0,1,212],[476,0,0,0,0,0,0,0,476,0,1,213],[476,0,0,0,0,0,0,0,476,0,1,214],[476,0,0,0,0,0,0,0,476,0,1,215],[476,0,0,0,0,0,0,0,476,0,1,216],[476,0,0,0,0,0,0,0,476,0,1,217],[476,476,476,476,476,476,476,476,476,0,1,218],[0,0,0,0,0,0,0,0,0,0,1,219],[22,1,2,1,1,1,1,1,1,1,4,201],[301,319,318,317,316,315,314,313,312,311,310,0]],"robots":[{"origin":[0,1,0],"code":[6,0,0],"actions":["f01","x2","x2","x2","x2","x2","x3","x3","x3","x3","x3"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Avec les valeurs proposées, le robot [b]ne[/b] peut [b]pas[/b] atteindre directement la [b]case 28[/b].","Par contre, grâce à la case d'[b]inversion[/b], il peut avancer de [b]32 cases[/b] et se retrouver sur celle d'arrivée.","Le programme [b]principal[/b] devrait être:[code][a]x2[/a][a]x2[/a][a]x2[/a][a]x2[/a][a]x2[/a][a]f01[/a][/code]"]]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>3</dct:type>
         <dct:alternative>aa</dct:alternative>
     </rdf:Description>
 
@@ -445,10 +447,11 @@
         <dct:identifier>ce</dct:identifier>
         <dct:title xml:lang="fr-FR">En anticipant l'action de cases d'inversion, déplacer le robot vers les 3 cases d'activation pour pouvoir atteindre la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[0,0,0,22,0,0,0],[0,463,463,20,0,0,0],[0,461,461,1,0,0,0],[2,1,209,4,9,120,22],[0,0,0,109,0,0,0],[0,0,0,220,0,0,0],[0,0,0,22,0,0,0]],"robots":[{"origin":[3,3,3],"code":[18,0,0],"actions":["f01","f01","f01","b01","b01","x2","x2","x2","x2","x2","x3","x3","x3","x3","x3"]}]]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Avant d'accéder à l'arrivée, le robot doit réaliser [b]trois[/b] aller-retour de [b]3 cases[/b].","Du fait de la case d'[b]inversion[/b], le robot doit [b]alterner[/b] avec les commanders [red]AVANCER[/red] et [red]RECULER[/red].","Le programme [b]principal[/b] devrait commencer ainsi :[code][a]x2[/a][a]x3[/a][a]f01[/a][a]x2[/a][a]x3[/a][a1]b01[/a1][a2]x2[/a2][/code]"]]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>4</dct:type>
         <dct:alternative>aa</dct:alternative>
     </rdf:Description>
 
@@ -456,10 +459,11 @@
         <dct:identifier>cf</dct:identifier>
         <dct:title xml:lang="fr-FR">Déterminer le nombre de pas vers l'avant à effectuer par le robot pour atteindre sa case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[472,456,22,0,0],[1,1,3,1,22],[0,473,2,0,0]],"robots":[{"origin":[0,1,0],"code":[18,0,0],"actions":["f01","x2","x2","x3","x3","x4","x4","x5","x5"]}]]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Contrairement à cet indice, cela ne coûte rien d'[b]essayer[/b] des programmes.","Sur ce terrain, le robot doit simplement avancer de [b]9 cases[/b].","Le programme [b]principal[/b] devrait être :[code][a]x3[/a][a]x3[/a][a]f01[/a][/code]"]]]></dct:description>
+        <dct:extent>3</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>2</dct:type>
         <dct:alternative>aa</dct:alternative>
     </rdf:Description>
 
@@ -467,29 +471,32 @@
         <dct:identifier>cg</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser 2 cases d'inversions et quelques boucles pour faire avancer le robot jusqu'à la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[0,0,22,0],[475,2,1,0],[461,461,1,468],[1,1,1,22]],"robots":[{"origin":[0,3,0],"code":[18,0,0],"actions":["f01","f01","f01","x3","x3","x4","x4","x5","x5","turnleft","turnleft","turnright","turnright"]}]]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Compte tenu des cases d'inversions, le robot doit avance successivement de [b]4[/b], [b]4[/b] et [b]1[/b] cases.","Entre chaque déplacement le robot doit tourner à [red]gauche[/red] ou à [red]droite[/red] selon son état d'inversion.","Le programme [b]principal[/b] devrait être :[code][a]x4[/a][a]f01[/a][a]turnleft[/a][a]x4[/a][a]f01[/a][a]turnright[/a][a]f01[/a][/code]"]]]></dct:description>
+        <dct:extent>3</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>3</dct:type>
         <dct:alternative>aa</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>ch</dct:identifier>
         <dct:title xml:lang="fr-FR">En anticipant l'action de cases d'inversion, déplacer le robot vers les 2 cases d'activation pour pouvoir atteindre la case d'arrivée.</dct:title>
-        <dct:description><![CDATA["board":[[2,9,1,120,122],[0,0,109,0,474],[0,454,20,476,0],[0,0,22,0,0]],"robots":[{"origin":[2,0,0],"code":[18,0,0],"actions":["f01","f01","f01","x2","x2","x3","x3","x4","x4","x5","x5","turnright","turnright"]}]]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:description><![CDATA["board":[[2,9,1,120,122],[0,0,109,0,474],[0,454,20,476,0],[0,0,22,0,0]],"robots":[{"origin":[2,0,0],"code":[18,0,0],"actions":["f01","f01","f01","x2","x2","x3","x3","x4","x4","x5","x5","turnright","turnleft"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Compte tenu des cases d'inversions, le robot doit avance successivement de [b]4[/b], [b]6[/b] et [b]2[/b] cases.","Entre chaque déplacement le robot doit tourner à [red]gauche[/red] ou à [red]droite[/red] selon son état d'inversion.","Le programme [b]principal[/b] devrait commencer ainsi :[code][a]x4[/a][a]f01[/a][a]turnright[/a][a]x2[/a][a]x3[/a][a1]f01[/a1][a2]turnleft[/a2][/code]"]]]></dct:description>
+        <dct:extent>3</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>3</dct:type>
         <dct:alternative>aa</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>ci</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser 2 cases d'inversions et quelques boucles pour faire avancer le robot jusqu'à la case d'arrivée.</dct:title>
-        <dct:description><![CDATA["board":[[463,471,22,1,2],[461,461,1,468,0],[22,1,1,0,0],[1,473,0,0,0],[1,0,0,0,0]],"robots":[{"origin":[0,4,3],"code":[18,0,0],"actions":["f01","f01","f01","f01","x2","x2","x2","x2","x3","x3","x3","turnright","turnright","turnright","turnright"]}]]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:description><![CDATA["board":[[463,471,2],[461,461,1],[22,1,1],[1,473,0],[1,0,0]],"robots":[{"origin":[0,4,3],"code":[18,0,0],"actions":["f01","f01","f01","f01","x2","x2","x2","x2","x3","x3","x3","turnright","turnright"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Le robot doit avancer [b]3 fois[/b] de [b]2 cases[/b].","Entre chaque déplacement le robot doit [red]tourner à droite[/red].","Le programme [b]principal[/b] devrait commencer ainsi :[code][a]x2[/a][a]f01[/a][a]turnright[/a][a]x2[/a][a]f01[/a][a1]x3[/a1][a2]turnright[/a2][/code]"]]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
@@ -499,11 +506,12 @@
     <rdf:Description>
         <dct:identifier>cj</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser 2 cases d'inversions et quelques boucles pour déplacer le robot vers la case d'activation qui lui permettra atteindre la case d'arrivée.</dct:title>
-        <dct:description><![CDATA["board":[[401,471,22,1,2],[452,461,1,474,0],[1,9,1,0,0],[20,0,0,0,0],[22,0,0,0,0]],"robots":[{"origin":[0,2,1],"code":[18,0,0],"actions":["f01","f01","f01","f01","x2","x2","x2","x2","x2","x3","x3","turnright","turnright","turnright","turnright"]}]]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:description><![CDATA["board":[[401,471,22,1,2],[452,461,1,474,0],[1,9,1,0,0],[20,0,0,0,0],[22,0,0,0,0]],"robots":[{"origin":[0,2,1],"code":[18,0,0],"actions":["f01","f01","f01","f01","x2","x2","x2","x4","turnright","turnleft","turnleft"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Le robot doit avance successivement de [b]4[/b], [b]4[/b], [b]4[/b] et [b]2[/b] cases.","Entre chaque déplacement le robot doit tourner à [red]gauche[/red] ou à [red]droite[/red] selon son état d'inversion.","Le programme [b]principal[/b] devrait commencer ainsi :[code][a]x4[/a][a]f01[/a][a]turnleft[/a][a]x2[/a][a]f01[/a][a1]turnright[/a1][a2]x2[/a2][/code]"]]]></dct:description>
+        <dct:extent>4</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>3</dct:type>
         <dct:alternative>aa</dct:alternative>
     </rdf:Description>
 
@@ -511,6 +519,7 @@
         <dct:identifier>ck</dct:identifier>
         <dct:title xml:lang="fr-FR">En anticipant l'action de cases d'inversion et d'une dalle de déplacement automatique, programmer le robot pour qu'il atteigne la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[475,475,475,475],[1,6,22,2]],"robots":[{"origin":[0,1,0],"code":[18,0,0],"actions":["f01","x2","x3","x4","x5"]}],"padding":6]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Contrairement à cet indice, cela ne coûte rien d'[b]essayer[/b] des programmes.","Sur ce terrain, le robot doit au final avancer de [b]3 cases[/b].","Le programme [b]principal[/b] devrait être :[code][a]x3[/a][a]f01[/a][/code]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -523,8 +532,8 @@
     <rdf:Description>
         <dct:identifier>da</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser l'action d'inversion pour faire avancer le robot jusqu'à la case d'arrivée.</dct:title>
-        <dct:description><![CDATA["board":[[1,2]],"robots":[{"origin":[0,0,0],"code":[2,0,0],"actions":["invert","b01"]}],"padding":0]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["L'opérateur 'INVERSION DES COMMANDES' ne change pas la position du robot mais lui permet de rentrer en mode bugué. Dans ce mode, les actions du programmes sont inversées par le processeur du robot."]]]></dct:description>
+        <dct:description><![CDATA["board":[[1,2]],"robots":[{"origin":[0,0,0],"code":[2,0,0],"actions":["b01","invert"]}],"padding":0]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["La commande d'[red]inversion[/red] fonctionne comme la dalle du même nom.","Lorsque le robot est [b]bugué[/b], la commande [red]reculer[/red] permet à celui-ci d'[b]avancer[/b].","Le programme [b]principal[/b] devrait être :[code][a]invert[/a][a]b01[/a][/code]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -537,7 +546,8 @@
         <dct:identifier>db</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser l'action d'inversion et une boucle pour faire avancer le robot jusqu'à la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[1,401,556],[3,1,2]],"robots":[{"origin":[0,0,1],"code":[4,0,0],"actions":["f01","b01","x2","invert"]}],"padding":8]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Utiliser la commande d'[red]inversion[/red] au bon [b]moment[/b].","N'hésitez pas à [b]faire des tests[/b] pour vérifier l'avancée de votre programme.","Le programme [b]principal[/b] devrait être :[code][a]f01[/a][a]invert[/a][a]x2[/a][a]b01[/a][/code]"]]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
@@ -548,7 +558,8 @@
         <dct:identifier>dc</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser l'action d'inversion et une boucle pour faire avancer le robot jusqu'à la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[1,461,470],[1,1,2]],"robots":[{"origin":[0,0,1],"code":[18,0,0],"actions":["f01","b01","x2","invert","turnleft"]}]]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Utiliser la commande d'[red]inversion[/red] au bon [b]moment[/b].","N'hésitez pas à [b]faire des tests[/b] pour vérifier l'avancée de votre programme.","Le programme [b]principal[/b] devrait être :[code][a]f01[/a][a]turnleft[/a][a]invert[/a][a]x2[/a][a]b01[/a][/code]"]]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
@@ -559,7 +570,8 @@
         <dct:identifier>dd</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser l'action d'inversion et une boucle pour faire avancer le robot jusqu'à la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[1,461,470],[1,1,2]],"robots":[{"origin":[0,0,1],"code":[18,0,0],"actions":["b01","b01","x2","invert","turnright"]}]]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Utiliser la commande d'[red]inversion[/red] au bon [b]moment[/b].","N'hésitez pas à [b]faire des tests[/b] pour vérifier l'avancée de votre programme.","Le programme [b]principal[/b] devrait être :[code][a]invert[/a][a]b01[/a][a]turnright[/a][a]x2[/a][a]b01[/a][/code]"]]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
@@ -569,9 +581,9 @@
     <rdf:Description>
         <dct:identifier>de</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser l'action d'inversion pour annuler l'effet d'une case d'inversion.</dct:title>
-        <dct:description><![CDATA["board":[[456,476,476,476,476,456],[1,1,1,22,1,2]],"robots":[{"origin":[0,1,0],"code":[18,0,0],"actions":["f01","f01","f01","x2","x2","x2","invert"]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Lorsque le robot est déjà bugué (avec le symbole au-dessus de sa tête), l'opérateur 'INVERSION DES COMMANDES' permet de rétablir un fonctionnement normal."]]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:description><![CDATA["board":[[456,476,476,476,476,456],[1,1,1,22,1,2]],"robots":[{"origin":[0,1,0],"code":[18,0,0],"actions":["f01","f01","x3","x2","invert"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["La commande d'[red]inversion[/red] permet également de revenir à l'état normal.","Le robot ne peut qu'avancer : il ne peut rester en mode [b]inversé[/b].","Le programme [b]principal[/b] devrait être :[code][a]x3[/a][a]f01[/a][a]invert[/a][a]x2[/a][a]f01[/a][/code]"]]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
@@ -583,7 +595,8 @@
         <dct:identifier>df</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser l'action d'inversion pour annuler l'effet d'une case d'inversion.</dct:title>
         <dct:description><![CDATA["board":[[51,0,0,51,0,0,51],[1,1,1,22,1,1,2],[51,0,0,51,0,0,51]],"robots":[{"origin":[0,1,0],"code":[18,0,0],"actions":["f01","f01","f01","x2","x3","x4","x5","invert"]}]]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["La commande d'[red]inversion[/red] permet également de revenir à l'état normal.","Le robot ne peut qu'avancer : il ne peut rester en mode [b]inversé[/b].","Le programme [b]principal[/b] devrait être :[code][a]x3[/a][a]f01[/a][a]invert[/a][a]x2[/a][a]f01[/a][a]f01[/a][/code]"]]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
@@ -593,11 +606,12 @@
     <rdf:Description>
         <dct:identifier>dg</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser plusieurs actions d'inversion et programmer le robot sur un parcours en 'S'.</dct:title>
-        <dct:description><![CDATA["board":[[1,1,1],[1,475,468],[3,1,1],[468,9,1],[2,1,4]],"robots":[{"origin":[2,0,0],"code":[18,0,0],"actions":["f01","f01","f01","x2","x4","x4","turnleft","turnright","invert","invert","invert"]}]]]></dct:description>
-        <dct:extent>2</dct:extent>
+        <dct:description><![CDATA["board":[[1,1,1],[1,475,468],[3,1,1],[468,9,1],[2,1,4]],"robots":[{"origin":[2,0,0],"code":[18,0,0],"actions":["f01","f01","f01","x2","x4","x4","turnleft","turnright","invert","invert"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Utilisez la commande d'[red]inversion[/red] pour pouvoir diriger le robot dans la bonne direction.","N'hésitez pas à [b]faire des tests[/b] pour vérifier l'avancée de votre programme.","Le programme [b]principal[/b] devrait commencer ainsi :[code][a]invert[/a][a]x2[/a][a]f01[/a][a]turnright[/a][a]x4[/a][a1]f01[/a1][a2]invert[/a2][/code]"]]]></dct:description>
+        <dct:extent>4</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
+        <dct:type>4</dct:type>
         <dct:alternative>aa</dct:alternative>
     </rdf:Description>
 
@@ -605,18 +619,20 @@
         <dct:identifier>dh</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser plusieurs actions d'inversion et programmer le robot sur un parcours complexe.</dct:title>
         <dct:description><![CDATA["board":[[1,1,1,1,475],[0,0,0,1,0],[0,0,460,1,1],[0,0,0,0,1],[0,0,0,0,1],[0,0,0,0,2]],"robots":[{"origin":[0,0,0],"code":[18,0,0],"actions":["f01","f01","f01","b01","x2","x2","x3","x3","turnleft","turnleft","turnleft","turnleft","invert","invert"]}]]]></dct:description>
-        <dct:extent>2</dct:extent>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Le niveau est complexe, il n'y a pas d'autres choix que de [b]programmer[/b], [b]tester[/b] et [b]corriger[/b].","Il existe [b]plusieurs[/b] solutions.","Le programme pourrait commencer ainsi :[code][a]x3[/a][a]f01[/a][a]turnleft[/a][a]invert[/a][a]x2[/a][a1]f01[/a1][a2]turnleft[/a2][/code]"]]]></dct:description>
+        <dct:extent>5</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
+        <dct:type>4</dct:type>
         <dct:alternative>aa</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>di</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser une action d'inversion et programmer le robot sur un parcours complexe muni d'une case d'inversion.</dct:title>
-        <dct:description><![CDATA["board":[[1,1,1,1,1],[1,468,0,468,1],[1,0,1,1,22],[1,51,1,0,0],[1,0,1,1,2]],"robots":[{"origin":[0,4,3],"code":[18,0,0],"actions":["f01","f01","f01","f01","f01","f01","x2","x2","x2","x2","x3","x4","x4","turnleft","turnleft","turnleft","turnleft","turnleft","invert"]}]]]></dct:description>
-        <dct:extent>3</dct:extent>
+        <dct:description><![CDATA["board":[[1,1,1,1,1],[1,468,0,468,1],[1,0,1,1,22],[1,51,1,0,0],[1,0,1,1,2]],"robots":[{"origin":[0,4,3],"code":[18,0,0],"actions":["f01","f01","f01","f01","f01","f01","x2","x2","x2","x2","x4","x4","turnleft","turnleft","turnleft","turnleft","turnleft","invert"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["La commande d'[red]inversion[/red] doit être utilisée après le [b]premier[/b] virage.","Le programme devrait débuter par : [code][a]x4[/a][a]f01[/a][a]turnleft[/a][a]invert[/a][a]x4[/a][a1]f01[/a1][a2]turnleft[/a2][/code]","... et se poursuivre ainsi :[code][a1]x2[/a1][a]f01[/a][a]turnleft[/a][a]x2[/a][a]f01[/a][a1]turnleft[/a1][a2]x2[/a2][/code]"]]]></dct:description>
+        <dct:extent>5</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
@@ -630,8 +646,8 @@
         <dct:identifier>ea</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser une boucle utilisateur (4 par défaut) et faire avancer le robot de 4 cases.</dct:title>
         <dct:description><![CDATA["board":[[470,470,470,470,654],[1,1,1,1,2]],"robots":[{"origin":[0,1,0],"code":[2,0,0],"actions":["f01","xnum"]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["L'opérateur de multiplication introduit dans ce niveau permet de répéter une action autant de fois que la valeur affichée sur l'écran analogique présent sur le plateau."]]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["La commande de [red]multiplication variable[/red] utilise la valeur affichée sur l'écran.","Ici, le nombre d'itérations est de [b]4[/b].","Le programme [b]principal[/b] devrait être :[code][a]xnum[/a][a]f01[/a][/code]"]]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
@@ -643,29 +659,30 @@
         <dct:identifier>eb</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser une boucle utilisateur (8 par défaut) et faire avancer le robot de 7 cases.</dct:title>
         <dct:description><![CDATA["board":[[658,0,0,0,0,0,0,0,0],[10,11,12,13,14,15,16,17,2]],"robots":[{"origin":[1,1,0],"code":[18,0,0],"actions":["f01","b01","xnum"]}],"padding":6]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Suivant la valeur de l'écran numérique, le nombre d'itérations est ici de [b]8[/b]","Le robot doit d'abord [b]reculer[/b] d'une case avant d'[b]avancer de 8[/b].","Le programme [b]principal[/b] devrait être :[code][a]b01[/a][a]xnum[/a][a]f01[/a][/code]"]]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>2</dct:type>
         <dct:alternative>aa</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>ec</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser plusieurs fois une même boucle utilisateur (3 par défaut) et faire avancer le robot jusqu'à la case d'arrivée.</dct:title>
-        <dct:description><![CDATA["board":[[1,1,1,1,1,1,1],[653,0,0,0,0,0,1],[0,0,0,0,0,0,1],[0,0,0,0,0,469,2]],"robots":[{"origin":[0,0,0],"code":[18,0,0],"actions":["f01","f01","xnum","xnum","x2","turnright","turnleft"]}],"padding":4]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:description><![CDATA["board":[[1,1,1,1,1,1,1],[653,0,0,0,0,0,1],[0,0,0,0,0,0,1],[0,0,0,0,0,469,2]],"robots":[{"origin":[0,0,0],"code":[18,0,0],"actions":["f01","f01","xnum","xnum","x2","turnright"]}],"padding":4]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["La commande de [red]multiplication variable[/red] peut se combiner avec une autre commande de [red]multiplication[/red]","[b]6 = 2×3[/b]","Le programme [b]principal[/b] devrait être :[code][a]x2[/a][a]xnum[/a][a]f01[/a][a]turnright[/a][a]xnum[/a][a]f01[/a][/code]"]]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>2</dct:type>
         <dct:alternative>aa</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>ed</dct:identifier>
         <dct:title xml:lang="fr-FR">Modifier le nombre d'itérations de la boucle utilisateur et faire avancer le robot de 4 cases.</dct:title>
-        <dct:description><![CDATA["board":[[461,461,463,470,658],[1,13,1,1,2]],"robots":[{"origin":[0,1,0],"code":[4,0,0],"actions":["f01","f01","xnum","num"]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Le nouvel opérateur introduit dans ce niveau permet de changer la valeur de l'écran analo- gique en la remplaçant par la valeur de la dalle sur laquelle se trouve le robot.","Dans le cas où la case n'est pas numérotée, l'opérateur ne fait rien et la valeur de l'écran analogique reste inchangée."]]]></dct:description>
+        <dct:description><![CDATA["class":"hrun","speed":0,"board":[[461,461,463,470,658],[1,13,1,1,2]],"robots":[{"origin":[0,1,0],"code":[["f01","num","xnum","f01"],0,0],"actions":[]}]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -677,11 +694,12 @@
     <rdf:Description>
         <dct:identifier>ef</dct:identifier>
         <dct:title xml:lang="fr-FR">Modifier le nombre d'itérations de la boucle utilisateur et faire avancer le robot jusqu'à la case d'arrivée.</dct:title>
-        <dct:description><![CDATA["board":[[1,13,1,1,12],[658,0,0,474,1],[0,0,0,0,2]],"robots":[{"origin":[0,0,0],"code":[18,0,0],"actions":["f01","f01","f01","xnum","xnum","xnum","num","num","turnright"]}]]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:description><![CDATA["board":[[1,13,1,1,12],[658,0,0,474,1],[0,0,0,0,2]],"robots":[{"origin":[0,0,0],"code":[18,0,0],"actions":["f01","f01","f01","xnum","xnum","num","num","turnright"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Utilisez la commande d'[red]affectation[/red] pour [b]changer[/b] la valeur de l'écran numérique.","Les dalles numériques [b]3[/b] et [b]2[/b] indiquent la distance à parcourir.","Le programme [b]principal[/b] devrait commencer ainsi :[code][a]f01[/a][a]num[/a][a]xnum[/a][a]f01[/a][a]turnright[/a][a1]num[/a1][a2]xnum[/a2][/code]"]]]></dct:description>
+        <dct:extent>3</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>2</dct:type>
         <dct:alternative>aa</dct:alternative>
     </rdf:Description>
 
@@ -689,10 +707,11 @@
         <dct:identifier>eg</dct:identifier>
         <dct:title xml:lang="fr-FR">Modifier le nombre d'itérations de la boucle utilisateur et trouver le bon chemin pour faire avancer le robot jusqu'à la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[0,0,0,0,0,0,0,0,650,0],[1,13,14,14,16,11,19,12,11,2]],"robots":[{"origin":[0,1,0],"code":[18,0,0],"actions":["f01","f01","f01","f01","b01","xnum","xnum","xnum","num","num","num"]}]]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Cherchez la [b]bonne combinaison[/b] permettant d'arriver sur la case finale.","La bonne combinaison est :[br][b]3 4 2[/b].","Le programme [b]principal[/b] devrait commencer ainsi :[code][a]f01[/a][a]num[/a][a]xnum[/a][a]f01[/a][a]b01[/a][a1]num[/a1][a2]xnum[/a2][/code]"]]]></dct:description>
+        <dct:extent>3</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
+        <dct:type>4</dct:type>
         <dct:alternative>aa</dct:alternative>
     </rdf:Description>
 
@@ -702,8 +721,8 @@
         <dct:identifier>fa</dct:identifier>
         <dct:title xml:lang="fr-FR">Modifier le nombre d'itérations de la boucle utilisateur grâce aux opérateurs fournis et faire avancer le robot jusqu'à la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[0,0,492,0,0,0,650,0],[1,1,1,1,1,1,1,2],[0,0,491,0,0,0,0,0]],"robots":[{"origin":[0,1,0],"code":[18,0,0],"actions":["f01","num7","xnum"]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["Il est possible de changer la valeur de l'écran analogique grâce à l'opérateur adéquat."]]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Utilisez la commande d'[red]affectation directe[/red] pour [b]changer[/b] la valeur de l'écran numérique.","Pour atteindre l'arrivée, le robot doit parcourir [b]7 cases[/b].","Le programme [b]principal[/b] devrait être :[code][a]num7[/a][a]xnum[/a][a]f01[/a][/code]"]]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
@@ -715,7 +734,8 @@
         <dct:identifier>fb</dct:identifier>
         <dct:title xml:lang="fr-FR">Modifier le nombre d'itérations de la boucle utilisateur grâce aux opérateurs fournis et faire avancer le robot jusqu'à la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[462,461,650],[462,1,2]],"robots":[{"origin":[1,1,2],"code":[18,0,0],"actions":["f01","turnleft","num2","xnum"]}]]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Tourner [b]2 fois[/b] permet de faire un [b]demi-tour[/b].","La commande de [red]multiplication variable[/red] s'applique aussi à la commande [red]tourner[/red].","Le programme [b]principal[/b] devrait être :[code][a]num2[/a][a]xnum[/a][a]turnleft[/a][a]f01[/a][/code]"]]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
@@ -726,10 +746,11 @@
         <dct:identifier>fc</dct:identifier>
         <dct:title xml:lang="fr-FR">Modifier le nombre d'itérations de la boucle utilisateur grâce aux opérateurs fournis et faire avancer le robot jusqu'à la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[462,461,650],[462,1,2]],"robots":[{"origin":[1,1,2],"code":[18,0,0],"actions":["f01","turnleft","num4","num5","num6","num7","xnum"]}]]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Tourner [b]4 fois[/b] revient à faire un tour complet et donc à [b]ne pas bouger[/b].","[b]6 = 4 + 2[/b][br]Tourner 6 fois revient à faire un tour complet + un demi-tour.","Le programme [b]principal[/b] devrait être :[code][a]num6[/a][a]xnum[/a][a]turnleft[/a][a]f01[/a][/code]"]]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
+        <dct:type>3</dct:type>
         <dct:alternative>aa</dct:alternative>
     </rdf:Description>
 
@@ -737,19 +758,20 @@
         <dct:identifier>fd</dct:identifier>
         <dct:title xml:lang="fr-FR">Modifier le nombre d'itérations de la boucle utilisateur grâce aux opérateurs fournis et faire avancer le robot jusqu'à la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[462,461,650],[462,1,2]],"robots":[{"origin":[1,1,3],"code":[18,0,0],"actions":["f01","turnleft","num4","num5","num6","num7","xnum"]}]]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Tourner [b]4 fois[/b] revient à faire un tour complet et donc à [b]ne pas bouger[/b].","Tourner [b]7 fois à gauche[/b] revient à faire un tour complet + un virage à droite.","Le programme [b]principal[/b] devrait être :[code][a]num7[/a][a]xnum[/a][a]turnleft[/a][a]f01[/a][/code]"]]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
+        <dct:type>3</dct:type>
         <dct:alternative>aa</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>ff</dct:identifier>
         <dct:title xml:lang="fr-FR">Modifier le nombre d'itérations de la boucle utilisateur grâce aux opérateurs fournis et faire avancer le robot jusqu'à la case d'arrivée.</dct:title>
-        <dct:description><![CDATA["board":[[0,0,0,0,0,655,0],[1,1,1,1,1,1,2],[0,0,0,0,0,0,0]],"robots":[{"origin":[0,1,0],"code":[18,0,0],"actions":["f01","numplus","xnum"]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["L'opérateur '++' permet d'ajounter 1 à la valeur de l'écran analogique."]]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:description><![CDATA["board":[[0,0,0,0,0,655,0],[1,1,1,1,1,1,2]],"robots":[{"origin":[0,1,0],"code":[18,0,0],"actions":["f01","numplus","xnum"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Pour atteindre l'arrivée, le robot doit avancer de [b]6 cases[/b].","La commande [red]++[/red] permet d'[b]ajouter 1[/b] à la valeur de l'écran numérique.","Le programme [b]principal[/b] devrait être :[code][a]numplus[/a][a]xnum[/a][a]f01[/a][/code]"]]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
@@ -761,7 +783,7 @@
         <dct:identifier>fg</dct:identifier>
         <dct:title xml:lang="fr-FR">Modifier le nombre d'itérations de la boucle utilisateur grâce aux opérateurs fournis et faire avancer le robot jusqu'à la case d'arrivée.</dct:title>
         <dct:description><![CDATA["board":[[480,1,1,1,1],[478,0,0,652,1],[2,1,1,1,1]],"robots":[{"origin":[1,0,0],"code":[18,0,0],"actions":["f01","f01","f01","numplus","numplus","numplus","numminus","turnright","turnright","xnum","xnum","xnum"]}]]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"course":["L'opérateur '--' permet de retrancher 1 à la valeur de l'écran analogique."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["La commande [red]++[/red] permet d'[b]ajouter 1[/b] à la valeur de l'écran numérique.","La commande [red]--[/red] permet d'[b]enlever 1[/b] à la valeur de l'écran numérique.","Le programme [b]principal[/b] devrait commencer ainsi :[code][a]numplus[/a][a]xnum[/a][a]f01[/a][a]turnright[/a][a]numminus[/a][a1]xnum[/a1][a2]f01[/a2][/code]"]]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -770,27 +792,36 @@
         <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
     </rdf:Description>
 
+	
+	<!-- A LITTLE BIT OF EVERYTHING: ff[a-z] -->
+	
+	
     <rdf:Description>
-        <dct:identifier>fh</dct:identifier>
-        <dct:title xml:lang="fr-FR">Modifier le nombre d'itérations de la boucle utilisateur grâce aux opérateurs fournis et faire avancer le robot jusqu'à la case d'arrivée.</dct:title>
-        <dct:description><![CDATA["board":[[4,4,650,0],[1,1,4,4],[1,1,1,1],[1,1,1,1],[1,3,3,1],[1,2,1,4]],"robots":[{"origin":[0,5,3],"code":[18,0,0],"actions":["f01","f01","f01","f01","f01","f01","f01","f01","num2","num5","numplus","numminus","numminus","xnum","xnum","xnum","xnum","xnum"]}]]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:identifier>ffa</dct:identifier>
+        <dct:title xml:lang="fr-FR">Utiliser les commandes itératives à disposition pour amener le robot à destination.</dct:title>
+        <dct:description><![CDATA["board":[[110,111,112,113,114,115,116,117,118,119,654],[1,1,1,1,1,1,1,1,1,2,1]],"robots":[{"origin":[0,1,0],"code":[18,0,0],"actions":["f01","xnum","xnum","numminus","numplus"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Pour arriver sur la case d'arrivée, le robot doit avancer [b]9 fois[/b].","[b]9 = 3×3[/b]","Le programme [b]principal[/b] devrait être:[code][a]numminus[/a][a]xnum[/a][a]xnum[/a][a]f01[/a][/code]"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>operations</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>aa</dct:alternative>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>ffb</dct:identifier>
+        <dct:title xml:lang="fr-FR">A l'aide d'une case d'inversion, faire atteindre au robot la case 28.</dct:title>
+        <dct:description><![CDATA["speed":2,"board":[[110,111,112,113,114,115,116,117,118,119,101,0],[1,1,1,1,1,1,1,1,1,1,4,210],[0,0,0,0,0,0,0,0,0,0,1,211],[476,476,476,476,476,476,476,476,476,0,1,212],[476,654,0,0,0,0,0,0,476,0,1,213],[476,0,0,0,0,0,0,0,476,0,1,214],[476,0,0,0,0,0,0,0,476,0,1,215],[476,0,0,0,0,0,0,0,476,0,1,216],[476,0,0,0,0,0,0,0,476,0,1,217],[476,476,476,476,476,476,476,476,476,0,1,218],[0,0,0,0,0,0,0,0,0,0,1,219],[22,1,1,1,1,1,2,1,1,1,4,201],[301,319,318,317,316,315,314,313,312,311,310,0]],"robots":[{"origin":[0,1,0],"code":[18,0,0],"actions":["f01","x2","x2","xnum","xnum","numminus","numplus"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"tips":["Avec les valeurs proposées, le robot [b]ne[/b] peut [b]pas[/b] atteindre directement la [b]case 24[/b].","Par contre, grâce à la case d'[b]inversion[/b], il peut avancer de [b]36 cases[/b] (6×6) et se retrouver sur celle d'arrivée.","Le programme [b]principal[/b] devrait être:[code][a]x2[/a][a]numplus[/a][a]xnum[/a][a]xnum[/a][a]f01[/a][/code]"]]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
+        <dct:type>4</dct:type>
         <dct:alternative>aa</dct:alternative>
     </rdf:Description>
 
-    <rdf:Description>
-        <dct:identifier>fi</dct:identifier>
-        <dct:title xml:lang="fr-FR">Modifier le nombre d'itérations de la boucle utilisateur grâce aux opérateurs fournis et faire avancer le robot jusqu'à la case d'arrivée.</dct:title>
-        <dct:description><![CDATA["board":[[1,1,1,1],[1,0,650,1],[1,0,468,1],[1,0,2,1]],"robots":[{"origin":[0,3,3],"code":[18,0,0],"actions":["f01","f01","f01","f01","turnleft","turnleft","turnleft","num2","numplus","numplus","numminus","numminus","xnum","xnum","xnum","xnum","xnum","xnum","xnum","xnum"]}]]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>it</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>aa</dct:alternative>
-    </rdf:Description>
+	
+
 
     <!-- WHILE: g[a-z] -->
 
