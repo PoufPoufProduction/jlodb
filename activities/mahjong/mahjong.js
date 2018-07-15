@@ -8,6 +8,8 @@
         lang        : "en-US",                                  // Current localization
         font        : 1,
         offset      : [0,0],
+        mask		: true,									// Mask blocked tile
+        shuffle		: true,									// Shuffle remaining tiles when no pair
         debug       : true                                     // Debug mode
     };
 
@@ -161,17 +163,7 @@
                 if (missing) { alert(missing+" tile(s) are missing"); }
                 if (count<settings.elts.length) { alert((settings.elts.length-count)+" are not used"); }
                
-                // Display tiles
-                for (var i in settings.elts)
-                {
-                    var elt=settings.elts[i];
-                    elt.zindex = Math.floor((20-elt.pos[0])+elt.pos[1]*2+100*elt.pos[2]);
-                    elt.$html.css("top",(elt.pos[1]*2.5-elt.pos[2]*0.25+settings.offset[1])+"em")
-                             .css("left",(elt.pos[0]*1.75+elt.pos[2]*0.25+settings.offset[0])+"em")
-                             .css("z-index",elt.zindex);
-                    $this.find("#board>div").append(elt.$html);
-                }
-                
+                helpers.display($this,true);
                 helpers.check($this);
 
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
@@ -193,12 +185,32 @@
             }
             return (up && (left||right));
         },
+        display: function($this,_init) {
+            var settings = helpers.settings($this);
+            
+            if (_init) { $this.find("#board>div").html(""); }
+            
+            for (var i in settings.elts)
+            {
+				var elt=settings.elts[i];
+				if (elt.active) {
+					elt.zindex = Math.floor((20-elt.pos[0])+elt.pos[1]*2+100*elt.pos[2]);
+					elt.$html.css("top",(elt.pos[1]*2.5-elt.pos[2]*0.25+settings.offset[1])+"em")
+							 .css("left",(elt.pos[0]*1.75+elt.pos[2]*0.25+settings.offset[0])+"em")
+							 .css("z-index",elt.zindex);
+					if (_init) {  $this.find("#board>div").append(elt.$html); }
+				}
+            }
+			
+		},
         check: function($this, elt) {
             var settings = helpers.settings($this);
             settings.hints={};
+            console.log("check");
             for (var i in settings.elts) {
                 var c = settings.elts[i];
                 c.free = helpers.isfree($this,c);
+                if (settings.mask) { c.$html.toggleClass("blocked", !c.free); }
                 if (c.active && c.free) {
                     if (settings.hints[c.value]) { settings.hints[c.value].push(c); } else { settings.hints[c.value]=[c]; } }
             }
@@ -206,10 +218,28 @@
             for (var i in settings.hints) { if (settings.hints[i].length>1) { still=true; } }
             
             if (!still) {
-                settings.interactive=false;
-                settings.score=0;
-                $this.find("#wrong").show().parent().show();
-                setTimeout(function() {helpers.end($this);}, 1000);
+				if (settings.shuffle && settings.security<100) {
+					var pos=[];
+					for (var i in settings.elts) {
+						var c = settings.elts[i];
+						if (c.active) { pos.push([c.pos[0], c.pos[1], c.pos[2]]); }
+					}
+					for (var i=0; i<10; i++) { pos.sort(function(){return (Math.random()<0.5); }); }
+					var idx=0;
+					for (var i in settings.elts) {
+						if (settings.elts[i].active) { settings.elts[i].pos=[pos[idx][0],pos[idx][1],pos[idx][2]]; idx++; }
+					}
+					settings.security++;
+					helpers.display($this);
+					helpers.check($this);
+					
+				}
+				else {
+					settings.interactive=false;
+					settings.score=0;
+					$this.find("#wrong").show().parent().show();
+					setTimeout(function() {helpers.end($this);}, 1000);
+				}
             }
         },
         tile: function($this,_data) {
@@ -230,6 +260,7 @@
                             "<div class='txt'><div></div></div>"+
                             "<div class='sub'><div></div></div>"+
                             "<div class='hg'></div>"+
+                            "<div class='mask'></div>"+
                         "</div>");
             
             if (_data.img) { ret.$html.find(".img").append("<img src='"+_data.img+"' alt=''/>").show(); }
@@ -247,21 +278,11 @@
                         if (settings.selected==0) {
                             settings.selected=elt;
                             elt.$html.addClass("s");
-                            $this.find("#tg1>div").addClass("running").parent()
-                                .css("top",elt.$html.offset().top-settings.twidth/20 - $this.offset().top)
-                                .css("left",elt.$html.offset().left-settings.twidth/8 - $this.offset().left)
-                                .css("z-index", elt.zindex+1)
-                                .show();
                         }
                         else {
                             if (settings.selected.id!=elt.id) {
                                 
                                 elt.$html.addClass("s");
-                                $this.find("#tg2>div").addClass("running").parent()
-                                    .css("top",elt.$html.offset().top-settings.twidth/20 - $this.offset().top)
-                                    .css("left",elt.$html.offset().left-settings.twidth/8 - $this.offset().left)
-                                    .css("z-index", elt.zindex+1)
-                                    .show();
                                         
                                 if (settings.selected.value==elt.value) {
                                     settings.selected.active = false;
@@ -273,20 +294,21 @@
                                         elt.$html.animate({opacity:0}, 200, function() { $(this).detach(); });
                                         helpers.clean($this);
                                         
-                                    }, 1000);
+                                        var finish=true;
+										for (var i in settings.elts) { if (settings.elts[i].active) { finish=false; } }
+										if (finish) { settings.interactive = false; setTimeout(function() { helpers.end($this); }, 1000); }
+										else        { helpers.check($this); }
                                     
-                                    var finish=true;
-                                    for (var i in settings.elts) { if (settings.elts[i].active) { finish=false; } }
-                                    if (finish) { settings.interactive = false; setTimeout(function() { helpers.end($this); }, 1000); }
-                                    else        { helpers.check($this); }
+                                        
+                                    }, 300);
+                                    
+                                    
                                 }
                                 else {
-                                    $this.find("#wrong").show().parent().show();
                                     settings.selected.active = false;
                                     setTimeout(function() {
                                         helpers.clean($this);
-                                        $this.find("#wrong").hide().parent().hide();
-                                        settings.selected.active = true; }, 1000); 
+                                        settings.selected.active = true; }, 300); 
                                 }
                             }
                             else { helpers.clean($this); }
@@ -303,7 +325,6 @@
             var settings = helpers.settings($this);
             $this.find(".mjtile.s").removeClass("s");
             settings.selected=0;
-            $this.find(".target>div").removeClass("running").parent().hide();
         }
     };
 
@@ -321,6 +342,7 @@
                     elts            : [],
                     selected        : 0,
                     twidth          : 0,
+                    security		: 0,
                     hints           : {}
                 };
 
