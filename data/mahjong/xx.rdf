@@ -3,7 +3,133 @@
          xmlns:dct="http://purl.org/dc/terms/">
 
     
-    
+	<!-- DEBUG AND TEST BOARDS -->
+	
+    <rdf:Description>
+        <dct:identifier>_a</dct:identifier>
+        <dct:title xml:lang="fr-FR">Bloquer un tableau de Mahjong.</dct:title>
+        <dct:description><![CDATA["tiles":[{"value":"red","src":"red"},{"value":"red","src":"red"},{"value":"red","src":"red"},{"value":"red","src":"red"}],"fill":{"cols":[{"z":0,"y":0,"left":0,"right":2}],"tiles":[{"z":1,"x":1,"y":0}]},"font":5,"offset":[0.5,1]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>game</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>_a</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">debug</dct:coverage>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>_b</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lancer un mélange automatique.</dct:title>
+        <dct:description><![CDATA["tiles":[{"value":"red","src":"red"},{"value":"red","src":"red"},{"value":"red","src":"red"},{"value":"red","src":"red"},{"value":"south","src":"south"},{"value":"south","src":"south"},{"value":"south","src":"south"},{"value":"south","src":"south"},{"value":"green","src":"green"},{"value":"green","src":"green"},{"value":"green","src":"green"},{"value":"green","src":"green"},{"value":"east","src":"east"},{"value":"east","src":"east"},{"value":"east","src":"east"},{"value":"east","src":"east"},{"value":"west","src":"west"},{"value":"west","src":"west"},{"value":"west","src":"west"},{"value":"west","src":"west"},{"value":"north","src":"north"},{"value":"north","src":"north"},{"value":"north","src":"north"},{"value":"north","src":"north"},{"value":"gears","src":"gears"},{"value":"gears","src":"gears"},{"value":"gears","src":"gears"},{"value":"gears","src":"gears"},{"value":"num01","src":"num01"},{"value":"num01","src":"num01"},{"value":"num01","src":"num01"},{"value":"num01","src":"num01"}],"fill":{"blocks":[{"z":0,"left":0,"right":6,"top":0,"bottom":1},{"z":1,"left":0,"right":6,"top":0,"bottom":1}]},"font":2.3,"offset":[0.5,2]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>game</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>_a</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">debug</dct:coverage>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>_c</dct:identifier>
+        <dct:title xml:lang="fr-FR">Tester l'accessibilité des tuiles.</dct:title>
+        <dct:description><![CDATA["tiles":"all","fill":{"blocks":[{"z":0,"left":1,"right":2,"top":1,"bottom":2}],"tiles":[{"z":1,"x":0.5,"y":0.5},{"z":1,"x":2.5,"y":0.5},{"z":1,"x":0.5,"y":2.5},{"z":1,"x":2.5,"y":2.5}]},"font":2,"offset":[1,0.3]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>game</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>_a</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">debug</dct:coverage>
+    </rdf:Description>
+	
+
+	<!-- TUTORIALS -->
+	
+	<rdf:Description>
+        <dct:identifier>01</dct:identifier>
+        <dct:title xml:lang="fr-FR">En associant les tuiles identiques deux à deux, vider le niveau à 4 pièces sur 1 niveau.</dct:title>
+        <dct:description><![CDATA["tiles":"all","fill":{"blocks":[{"z":0,"left":0,"right":1,"top":0,"bottom":1}]},"font":4,"offset":[2,0.3]]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>game</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>01</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>02</dct:identifier>
+        <dct:title xml:lang="fr-FR">En associant les tuiles identiques deux à deux, vider le niveau à 32 pièces sur 1 niveau.</dct:title>
+        <dct:description><![CDATA["tiles":"all","fill":{"blocks":[{"z":0,"left":0,"right":7,"top":0,"bottom":3}]},"font":2,"offset":[1,0.5]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>game</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>01</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>03</dct:identifier>
+        <dct:title xml:lang="fr-FR">En associant les tuiles identiques deux à deux, vider le niveau à 32 pièces sur 1 niveau.</dct:title>
+        <dct:description><![CDATA["tiles":"all","fill":{"blocks":[{"z":0,"left":0,"right":2,"top":0,"bottom":3},{"z":0,"left":4,"right":6,"top":0,"bottom":3}]},"font":2,"offset":[2,0.5]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>game</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>01</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>11</dct:identifier>
+        <dct:title xml:lang="fr-FR">En associant les tuiles identiques deux à deux, vider le niveau à 18 pièces.</dct:title>
+        <dct:description><![CDATA["tiles":"all","fill":{"cols":[{"z":0,"x":1,"top":0.5,"bottom":1.5},{"z":0,"x":2,"top":0,"bottom":2},{"z":0,"x":3,"top":0,"bottom":2},{"z":0,"x":4,"top":0.5,"bottom":1.5},{"z":1,"x":2.5,"top":0.5,"bottom":1.5}],"tiles":[{"z":0,"x":0,"y":1},{"z":0,"x":5,"y":1},{"z":1,"x":1.5,"y":1},{"z":1,"x":3.5,"y":1}]},"font":2.5,"offset":[1,0.5]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>game</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>01</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>12</dct:identifier>
+        <dct:title xml:lang="fr-FR">En associant les tuiles identiques deux à deux, vider le niveau à 28 pièces.</dct:title>
+        <dct:description><![CDATA["tiles":"all","fill":{"blocks":[{"z":0,"left":0,"right":6,"top":0,"bottom":1},{"z":1,"left":0,"right":6,"top":0,"bottom":1}]},"font":2.3,"offset":[0.5,2]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>game</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>01</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>13</dct:identifier>
+        <dct:title xml:lang="fr-FR">En associant les tuiles identiques deux à deux, vider le niveau à 54 pièces.</dct:title>
+        <dct:description><![CDATA["tiles":"all","fill":{"blocks":[{"z":0,"left":0,"right":4,"top":0,"bottom":4},{"z":1,"left":0.5,"right":3.5,"top":0.5,"bottom":3.5},{"z":2,"left":1,"right":3,"top":1,"bottom":3},{"z":3,"left":1.5,"right":2.5,"top":1.5,"bottom":2.5}]},"font":1.7,"offset":[3,0.5]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>game</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>01</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>14</dct:identifier>
+        <dct:title xml:lang="fr-FR">En associant les tuiles identiques deux à deux, vider le niveau à 56 pièces.</dct:title>
+        <dct:description><![CDATA["tiles":"all","fill":{"blocks":[{"z":0,"left":0,"right":7,"top":0,"bottom":4},{"z":1,"left":0.5,"right":1.5,"top":0.5,"bottom":3.5},{"z":1,"left":5.5,"right":6.5,"top":0.5,"bottom":3.5}]},"font":1.4,"offset":[5,0.5]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>game</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>01</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">tutoriel</dct:coverage>
+    </rdf:Description>
+	
+	
+	<!-- CLASSIC BOARDS -->
          
     <rdf:Description>
         <dct:identifier>b4</dct:identifier>

@@ -8,7 +8,7 @@
     <rdf:Description>
         <dct:identifier>x</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer les sommes identiques deux à deux.</dct:title>
-        <dct:description><![CDATA["tiles":"function(){var ret=[];for(var j=0; j<4;j++) { for(var i=1;i<11;i++){ var a = Math.floor(Math.random()*(i+1)); ret.push({'value':i,'txt':i,'sub':a+'+'+(i-a),'subfont':0.9});} ret.push({ 'value':'summer', 'src':'summer0'+(j+1)}); ret.push({ 'value':'winter', 'src':'winter0'+(j+1)}); ret.push({ 'value':'red', 'src':'red'});  ret.push({ 'value':'green', 'src':'green'});} return ret;}","fill":{"blocks":[{"z":0,"left":0,"right":7,"top":0,"bottom":4},{"z":1,"left":0.5,"right":1.5,"top":0.5,"bottom":3.5},{"z":1,"left":5.5,"right":6.5,"top":0.5,"bottom":3.5}]},"font":1.4,"offset":[5,0.5]]]></dct:description>
+        <dct:description><![CDATA["tiles":"function(){var ret=[];for(var j=0; j<4;j++) { for(var i=1;i<11;i++){ var a = Math.floor(Math.random()*(i+1)); ret.push({'value':i,'txt':j?'+':i,'sub':j?a+'+'+(i-a):i,'subfont':0.9});} ret.push({ 'value':'summer', 'src':'summer0'+(j+1)}); ret.push({ 'value':'winter', 'src':'winter0'+(j+1)}); ret.push({ 'value':'red', 'src':'red'});  ret.push({ 'value':'green', 'src':'green'});} return ret;}","fill":{"blocks":[{"z":0,"left":0,"right":7,"top":0,"bottom":4},{"z":1,"left":0.5,"right":1.5,"top":0.5,"bottom":3.5},{"z":1,"left":5.5,"right":6.5,"top":0.5,"bottom":3.5}]},"font":1.4,"offset":[5,0.5]]]></dct:description>
         <dct:extent>10</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>

@@ -3,14 +3,15 @@
     var defaults = {
         name        : "mahjong",                            // The activity name
         label       : "Mahjong",                            // The activity label
-        template    : "template.html",                          // Activity's html template
-        css         : "style.css",                              // Activity's css style sheet
-        lang        : "en-US",                                  // Current localization
+        template    : "template.html",                      // Activity's html template
+        css         : "style.css",                          // Activity's css style sheet
+        lang        : "en-US",                              // Current localization
         font        : 1,
         offset      : [0,0],
+		tiles		: "all",
         mask		: true,									// Mask blocked tile
         shuffle		: true,									// Shuffle remaining tiles when no pair
-        debug       : true                                     // Debug mode
+        debug       : true                                  // Debug mode
     };
 
     var regExp = [
@@ -21,6 +22,8 @@
         "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
         "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>"
     ];
+	
+	var tiles = [];
 
     // private methods
     var helpers = {
@@ -103,49 +106,10 @@
                     else { $this.find("#"+id).html(value); }
                 }); }
                 
-                // Optional devmode
-                if (settings.dev) { $this.find("#devmode").show(); }
-                
-                if ($.isArray(settings.tiles)) {
-                    for (var i in settings.tiles) { settings.elts.push(helpers.tile($this, settings.tiles[i])); }
-                }
-                else {
-                    if (settings.tiles.indexOf("function")!=-1) {
-                        var tiles = eval('('+settings.tiles+')')();
-                        for (var i in tiles) { settings.elts.push(helpers.tile($this, tiles[i])); }
-                    }
-                    else
-                    switch (settings.tiles) {
-                        case "all" :
-                            for (var i=1; i<10; i++) for (var j=0; j<4; j++) {
-                                settings.elts.push(helpers.tile($this, { value:"bam0"+i, src:"bam0"+i }));
-                                settings.elts.push(helpers.tile($this, { value:"dot0"+i, src:"dot0"+i }));
-                                settings.elts.push(helpers.tile($this, { value:"num0"+i, src:"num0"+i }));
-                            }
-                            for (var j=0; j<4; j++) {
-                                settings.elts.push(helpers.tile($this, { value:"east", src:"east" }));
-                                settings.elts.push(helpers.tile($this, { value:"west", src:"west" }));
-                                settings.elts.push(helpers.tile($this, { value:"south", src:"south" }));
-                                settings.elts.push(helpers.tile($this, { value:"north", src:"north" }));
-                                settings.elts.push(helpers.tile($this, { value:"summer", src:"summer0"+(j+1) }));
-                                settings.elts.push(helpers.tile($this, { value:"winter", src:"winter0"+(j+1) }));
-                                settings.elts.push(helpers.tile($this, { value:"red", src:"red" }));
-                                settings.elts.push(helpers.tile($this, { value:"green", src:"green" }));
-                                settings.elts.push(helpers.tile($this, { value:"gears", src:"gears" }));
-                            }
-                            
-                        break;    
-                    }
-                }
-                
-                
-                // Sort
-                for (var i=0; i<50; i++) { settings.elts.sort(function() { return Math.random()>0.5; }); }
-                
-                // Fill
-                var count=0;
-                var missing=0;
-                m=function(_x,_y,_z) { if (count<settings.elts.length) { settings.elts[count++].pos=[_x,_y,_z]; } else { missing++;} };
+				
+                // BUILD AVAILABLE POSITION
+				var pos = [];
+                m=function(_x,_y,_z) { pos.push([_x,_y,_z]) };
                 if (settings.fill.cols) for (var i in settings.fill.cols) {
                     var c = settings.fill.cols[i];
                     if (typeof c.x == "number") { for (var y=c.top; y<=c.bottom; y++) { m(c.x, y, c.z); } } else
@@ -159,88 +123,182 @@
                     var c = settings.fill.tiles[i];
                     m(c.x, c.y, c.z);
                 }
+				for (var p in pos) for (var i=0; i<3; i++) settings.size[i] = Math.max(settings.size[i], pos[p][i]+1);
+				settings.number = pos.length;
+				
+				// FILL ALL TILES (CAN BE MORE THAN NECESSARY)
+				if ($.isArray(settings.tiles)) { for (var i in settings.tiles) { settings.data.push(settings.tiles[i]); } }
+				else if (settings.tiles.indexOf("function")!=-1) { settings.data = eval('('+settings.tiles+')')($this,settings,0); }
+				else {
+					for (var z=0; z<2; z++) {
+						settings.data.push({ value:"summer", src:"summer0"+((2*z)+1) });
+						settings.data.push({ value:"summer", src:"summer0"+((2*z)+2) });
+						settings.data.push({ value:"winter", src:"winter0"+((2*z)+1) });
+						settings.data.push({ value:"winter", src:"winter0"+((2*z)+2) });
+						settings.data.push({ value:"red", src:"red" });
+						settings.data.push({ value:"red", src:"red" });
+						settings.data.push({ value:"green", src:"green" });
+						settings.data.push({ value:"green", src:"green" });
+						settings.data.push({ value:"gears", src:"gears" });
+						settings.data.push({ value:"gears", src:"gears" });
+						for (var i=1; i<10; i++)  {
+							settings.data.push({ value:"bam0"+i, src:"bam0"+i });
+							settings.data.push({ value:"bam0"+i, src:"bam0"+i });
+							settings.data.push({ value:"dot0"+i, src:"dot0"+i });
+							settings.data.push({ value:"dot0"+i, src:"dot0"+i });
+							settings.data.push({ value:"num0"+i, src:"num0"+i });
+							settings.data.push({ value:"num0"+i, src:"num0"+i });
+						}
+						
+						settings.data.push({ value:"east", src:"east" });
+						settings.data.push({ value:"east", src:"east" });
+						settings.data.push({ value:"west", src:"west" });
+						settings.data.push({ value:"west", src:"west" });
+						settings.data.push({ value:"south", src:"south" });
+						settings.data.push({ value:"south", src:"south" });
+						settings.data.push({ value:"north", src:"north" });
+						settings.data.push({ value:"north", src:"north" });
+					}
+				} 
+				
+				if (pos.length>settings.data.length) { alert("SIZE ISSUE (elt: "+settings.data.length+") ("+pos.length+")"); }
+				for (var i=0; i<pos.length; i++) { settings.elts.push(helpers.tile($this, settings.data[i])); }
+				
+                // Optional devmode
+                if (settings.dev) { $this.find("#devmode").show(); }
                 
-                if (missing) { alert(missing+" tile(s) are missing"); }
-                if (count<settings.elts.length) { alert((settings.elts.length-count)+" are not used"); }
-               
-                helpers.display($this,true);
-                helpers.check($this);
+				var nb=0;
+				do { helpers.setpos($this,pos,true); nb++; } while ( !helpers.simulation($this) && nb<10);
+				if (nb==10) { alert("Error on tiles ("+pos.length+")"); }
+				else {
+					helpers.display($this,true);
+					helpers.endturn($this);
+				}
 
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
-        isfree: function($this, elt) {
+		// PROVIDE RANDOMLY CHOSEN POSITION TO AVAILABLE TILES
+		setpos: function($this, _pos, _random) {
+            var settings = helpers.settings($this), tiles=[];
+			
+			if (_random) { for (var i=0; i<10; i++) { _pos.sort(function(){return (Math.random()<0.5); }); } }
+			
+			for (var i in settings.elts) { if (settings.elts[i].active) { tiles.push(settings.elts[i]); } }
+			if (_pos.length != tiles.length) { console.log("SIZE ISSUE ("+tiles.length+" / "+_pos.length+")"); }
+			else {
+				for (var i=0; i<tiles.length; i++) { tiles[i].pos = [ _pos[i][0], _pos[i][1], _pos[i][2] ]; }
+			}
+		},
+		// PROVIDE REMAINING POSITION
+		getpos: function($this) {
             var settings = helpers.settings($this);
-            var up=true, right=true, left=true;
-            for (var i in settings.elts) {
-                var c = settings.elts[i];
-                if (c.id!=elt.id && c.active) {
-                    if (c.pos[2]==elt.pos[2] && Math.abs(c.pos[1]-elt.pos[1])<0.9 && Math.abs(c.pos[0]-elt.pos[0])<1.5) {
-                        if (c.pos[0]<elt.pos[0]) { left=false; } else { right=false; }
-                    }
-                    else if (c.pos[2]==elt.pos[2]+1 && Math.abs(c.pos[1]-elt.pos[1])<0.9 && Math.abs(c.pos[0]-elt.pos[0])<0.9) {
-                        up = false;
-                    }
-                }
-            }
-            return (up && (left||right));
-        },
-        display: function($this,_init) {
+			var pos=[];
+			for (var i in settings.elts) {
+				var c = settings.elts[i];
+				if (c.active) { pos.push([c.pos[0], c.pos[1], c.pos[2]]); }
+			}
+			return pos;
+		},
+		// DISPLAY TILES ACCORDING TO THEIR POSITION
+        display: function($this,_clear) {
             var settings = helpers.settings($this);
-            
-            if (_init) { $this.find("#board>div").html(""); }
-            
+            if (_clear) { $this.find("#board>div").html(""); }
             for (var i in settings.elts)
             {
 				var elt=settings.elts[i];
 				if (elt.active) {
-					elt.zindex = Math.floor((20-elt.pos[0])+elt.pos[1]*2+100*elt.pos[2]);
+					elt.zindex = Math.floor(2.1*(settings.size[0]-elt.pos[0])+2*elt.pos[1]+
+										    (settings.size[0]+settings.size[1])*4*elt.pos[2] );
 					elt.$html.css("top",(elt.pos[1]*2.5-elt.pos[2]*0.25+settings.offset[1])+"em")
 							 .css("left",(elt.pos[0]*1.75+elt.pos[2]*0.25+settings.offset[0])+"em")
 							 .css("z-index",elt.zindex);
-					if (_init) {  $this.find("#board>div").append(elt.$html); }
+					if (settings.mask) { elt.$html.toggleClass("blocked", !elt.free); }
+					if (_clear) {  $this.find("#board>div").append(elt.$html); }
 				}
             }
-			
 		},
-        check: function($this, elt) {
+		// GET FREE TILES
+		getfree: function($this) {
             var settings = helpers.settings($this);
-            settings.hints={};
-            console.log("check");
+			var ret = {};
+			
             for (var i in settings.elts) {
                 var c = settings.elts[i];
-                c.free = helpers.isfree($this,c);
-                if (settings.mask) { c.$html.toggleClass("blocked", !c.free); }
+				c.update(settings.elts);
                 if (c.active && c.free) {
-                    if (settings.hints[c.value]) { settings.hints[c.value].push(c); } else { settings.hints[c.value]=[c]; } }
+                    if (ret[c.value]) { ret[c.value].push(c); } else { ret[c.value]=[c]; } }
             }
+			return ret;
+		},
+		// VALID AND UPDATE GRID
+		simulation: function($this) {
+            var settings = helpers.settings($this);
+			var ret = false, nbactives = 0, nbtry = 0;
+			// SAVE CURRENT STATE
+			for (var i in settings.elts) {
+				settings.elts[i].tmp = settings.elts[i].active;
+				if (settings.elts[i].active) { nbactives++; }
+			}
+			
+			do {
+				var frees = helpers.getfree($this);
+				nbtry++;
+				
+				// DISACTIVATE PAIRS
+				for (var i in frees) {
+					if (frees[i].length>1) {
+						frees[i][0].active = false; 	frees[i][1].active = false;
+						nbtry = 0;						nbactives-=2;
+				} }
+				// SHUFFLE REMAINING TILES IF NO PAIR THIS TURN (10 TIMES MAX)
+				if (nbtry!=0) {	helpers.setpos($this, helpers.getpos($this), true); }
+			} while (nbactives>0 && nbtry<10);
+			
+			if (nbactives == 0) { ret = true; }
+			
+			// RESTORE CURRENT STATE
+			for (var i in settings.elts) { settings.elts[i].active = settings.elts[i].tmp; }
+			helpers.getfree($this);
+			
+			return ret;
+			
+		},
+        endturn: function($this) {
+            var settings = helpers.settings($this);
+			settings.interactive=false;
+			
+            settings.hints=helpers.getfree($this);
             var still=false;
             for (var i in settings.hints) { if (settings.hints[i].length>1) { still=true; } }
-            
+			
             if (!still) {
-				if (settings.shuffle && settings.security<100) {
-					var pos=[];
-					for (var i in settings.elts) {
-						var c = settings.elts[i];
-						if (c.active) { pos.push([c.pos[0], c.pos[1], c.pos[2]]); }
+				var gameover = true;
+				if (settings.shuffle) {
+					var nb = 0;
+					do { nb++; helpers.setpos($this, helpers.getpos($this), true); } while ( !helpers.simulation($this) && nb<10);
+					if (nb<10) {
+						gameover = false;
+						$this.find("#shuffle").css("opacity",0).show().animate({opacity:1},300, function() {
+							$this.find(".mjtile").css("opacity",1).animate({opacity:0},500);
+							setTimeout(function() {
+								$this.find("#shuffle").animate({opacity:0},500, function() {
+									$(this).hide();
+									helpers.endturn($this);
+									$this.find(".mjtile").css("opacity",0).animate({opacity:1},500);
+								});
+							},800);
+						});
 					}
-					for (var i=0; i<10; i++) { pos.sort(function(){return (Math.random()<0.5); }); }
-					var idx=0;
-					for (var i in settings.elts) {
-						if (settings.elts[i].active) { settings.elts[i].pos=[pos[idx][0],pos[idx][1],pos[idx][2]]; idx++; }
-					}
-					settings.security++;
-					helpers.display($this);
-					helpers.check($this);
-					
 				}
-				else {
-					settings.interactive=false;
+				
+				if (gameover) {
 					settings.score=0;
 					$this.find("#wrong").show().parent().show();
 					setTimeout(function() {helpers.end($this);}, 1000);
 				}
             }
+			else { settings.interactive=true; helpers.display($this,false); }
         },
         tile: function($this,_data) {
             var settings = helpers.settings($this);
@@ -251,7 +309,24 @@
                 free        : false,
                 pos         : [0,0,0],
                 zindex      : 0,
-                active      : true
+                active      : true,
+				tmp			: true,
+				update: function(_elts) {
+					var up=true, right=true, left=true;
+					for (var i in _elts) {
+						var c = _elts[i];
+						if (c.id!=this.id && c.active && c.pos) {
+							if (c.pos[2]==this.pos[2] && Math.abs(c.pos[1]-this.pos[1])<0.9 && Math.abs(c.pos[0]-this.pos[0])<1.5) {
+								if (c.pos[0]<this.pos[0]) { left=false; } else { right=false; }
+							}
+							else if (c.pos[2]==this.pos[2]+1 && Math.abs(c.pos[1]-this.pos[1])<0.9 && Math.abs(c.pos[0]-this.pos[0])<0.9) {
+								up = false;
+							}
+						}
+					}
+					this.free = (up && (left||right));
+					return this.free;
+				}
             };
             
             ret.$html=$("<div class='mjtile' id='"+ret.id+"'>"+
@@ -297,7 +372,7 @@
                                         var finish=true;
 										for (var i in settings.elts) { if (settings.elts[i].active) { finish=false; } }
 										if (finish) { settings.interactive = false; setTimeout(function() { helpers.end($this); }, 1000); }
-										else        { helpers.check($this); }
+										else        { helpers.endturn($this); }
                                     
                                         
                                     }, 300);
@@ -339,10 +414,11 @@
                     interactive     : false,
                     score           : 5,
                     count           : 0,
+					data			: [],			// TILE DEFINITION
                     elts            : [],
+					size			: [0,0,0],		// GRID SIZE
+					number			: 0,			// NUMBER TILES
                     selected        : 0,
-                    twidth          : 0,
-                    security		: 0,
                     hints           : {}
                 };
 
