@@ -1,8 +1,8 @@
 .stories                            { background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat;}
 .stories>div						{ width:16em; height:12em; }
-.stories div#splashex               { background-image:url("../../res/img/banners/it.svg"); }
-.stories div#splashex h1            { color:gold; position:absolute; top:45%; left:55%; font-size:1.2em;  white-space:nowrap; }
-.stories div#splashex #guide        { color:gold; position:absolute; top:52%; left:50%; font-size:.75em; width:43%; text-align:justify; }
+.stories div#splashex               { background-image:url("../../res/img/banners/stories.svg"); }
+.stories div#splashex h1            { color:#210; position:absolute; top:7%; left:55%; font-size:1.2em;  white-space:nowrap; }
+.stories div#splashex #guide        { color:#210; position:absolute; top:15%; left:50%; font-size:.75em; width:43%; text-align:justify; }
 .stories div#map					{ margin:.5em; height:11em; width:10em; border:.2em solid white; }
 .stories div#board                  { font-size:1em; height:10em; width:10em; background-color:black; position:relative; }
 .stories .map						{ position:absolute; }
@@ -56,6 +56,29 @@
 .stories div#zoom #cursor			{ height:1em; width:50%; background-color:white; cursor:move; }
 .stories div#zoom #cursor.ui-draggable-dragging	{ background-color: red; }
 
-.stories div#control				{ position:absolute; top:0; left:70%; font-size:2em; }
-.stories div#control>.icon			{ cursor:pointer; border-radius:.5em; background-image:url("../../res/img/icon/tab/tab00.svg"); background-color:gray; margin:.1em; }
-.stories div#control>.icon.s		{ background-color:red; }
+.stories div#control				{ position:absolute; top:70%; left:66.8%; font-size:1em; width:30.5%; background-color:gray; border-radius:0 1.2em 1.2em 0; border:.2em solid white; }
+.stories div#control .icon			{ cursor:pointer; border-radius:.5em; background-image:url("../../res/img/icon/tab/tab00.svg"); background-color:gray; margin:.1em; float:left; }
+.stories div#control .icon.s		{ background-color:red; }
+.stories div#control #endturn		{ float:right; font-size:2em; }
+
+.stories .mask						{ position:absolute;top:0;left:0;width:16em;height:12em; background-color:rgba(0,0,0,0.8); z-index:100; display:none; }
+.stories .mask>div { font-size:.5em; width:80%; height:80%; margin:5% 8%; background-image:url("../../res/img/default/pattern/line01.svg"); border:.5em solid white; overflow:visible; }
+.stories .mask .quit			{ font-size:3em; position:absolute; top:2%; left:85%; cursor:pointer; border-radius:.5em; background-image:url("../../res/img/icon/tab/tab00.svg"); background-color:white; }
+
+.stories #story #stotab				{ width:90%; height:85%; margin:0 1em;}
+.stories #story #stotab>div			{ display:none; }
+.stories #story #stotab .first		{ margin-top:-.2em;height:1em;font-weight:bold;float:left;font-size:4em;overflow:visible }
+.stories #story #stotab .vr			{ float:right; width:24%; }
+
+.stories #story #stonav				{ width:100%; height:1em; font-size:3em; margin-left:8%; }
+.stories #story #stonav>div			{ float:left; }
+.stories #story #stonav>.icon		{ cursor:pointer; }
+.stories #story #stonav>.icon.d		{ opacity:0.2; }
+.stories #story #stopages			{ width:60%; }
+.stories #story #stopages>div		{ font-size:.5em; margin:.4em 1em; }
+.stories #story #stopages .page		{ width:1em; height:1em; float:left; margin:0 .2em; background-color:#888; border-radius:.5em; border:.14em solid #444 }
+.stories #story #stopages .page.s	{ background-color:#6e85fd; border:.14em solid #1f296b }
+
+.stories #help #helpcontrol .c		{ font-size:0.9em; width:48%; height:3em; border:.1em solid black; margin:.1em; float:left; }
+.stories #help #helpcontrol .icon	{ font-size:3em; border-radius:.5em; background-image:url("../../res/img/icon/tab/tab00.svg"); background-color:gray; float:left; }
+.stories #help #helpcontrol .label	{ font-size:.5em; width:70%; height:6em; padding-left:.5em; }

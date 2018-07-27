@@ -1,5 +1,29 @@
 <div>
 
+<div id="control">
+	
+	<div id="endturn" class="icon" ontouchstart="$(this).closest('.stories').stories('endturn');event.preventDefault();"
+                      onclick="$(this).closest('.stories').stories('endturn');">
+		<img src="res/img/default/white/valid.svg" alt="o"/></div>
+
+	<div id="buttons">
+		<div id="onpeople" class="icon"
+			ontouchstart="$(this).closest('.stories').stories('onpeople');event.preventDefault();"
+            onclick="$(this).closest('.stories').stories('onpeople');">
+			<img src="res/img/default/white/look.svg" alt="o"/></div>
+		<div id="onhelp" class="icon"
+			ontouchstart="$(this).closest('.stories').stories('help');event.preventDefault();"
+            onclick="$(this).closest('.stories').stories('help');">
+			<img src="res/img/default/white/help01.svg" alt="o"/></div>
+		<div id="onstory" class="icon"
+			ontouchstart="$(this).closest('.stories').stories('story');event.preventDefault();"
+            onclick="$(this).closest('.stories').stories('story');">
+			<img src="res/img/default/white/list.svg" alt="o"/></div>
+		<div class="icon">
+			<img src="res/img/default/white/star.svg" alt="o"/></div>
+	</div>
+</div>
+
 <div id="map">
     <div id="board">
         <div id="eleft" class="border"></div><div id="eright"  class="border"></div>
@@ -8,29 +32,68 @@
 	<div id="zoom"><div id="cursor"></div></div>
 </div>
 
-<div id="control">
-	<div class="icon" ontouchstart="$(this).closest('.stories').stories('onpeople');event.preventDefault();"
-                      onclick="$(this).closest('.stories').stories('onpeople');">
-		<img src="res/img/default/white/look.svg" alt="o"/></div>
-	<div id="endturn" class="icon" ontouchstart="$(this).closest('.stories').stories('endturn');event.preventDefault();"
-                      onclick="$(this).closest('.stories').stories('endturn');">
-		<img src="res/img/default/white/valid.svg" alt="o"/></div>
-</div>
+<div id="help" class="mask"><div>
+	<div class="icon quit" ontouchstart="$(this).closest('#help').hide();event.preventDefault();"
+                      onclick="$(this).closest('#help').hide();">
+		<img src="res/img/default/white/cancel01.svg" alt=""/>
+	</div>
+	<div id="helpcontrol">
+		<div class="c">
+			<div class="icon"><img src="res/img/default/white/valid.svg" alt="o"/></div>
+			<div class="label" id="hvalid"></div>
+		</div>
+		<div class="c">
+			<div class="icon"><img src="res/img/default/white/look.svg" alt="o"/></div>
+			<div class="label" id="hlook"></div>
+		</div>
+		<div class="c">
+			<div class="icon"><img src="res/img/default/white/help01.svg" alt="o"/></div>
+			<div class="label" id="hhelp"></div>
+		</div>
+		<div class="c">
+			<div class="icon"><img src="res/img/default/white/list.svg" alt="o"/></div>
+			<div class="label" id="hlist"></div>
+		</div>
+		<div class="c">
+			<div class="icon"><img src="res/img/default/white/star.svg" alt="o"/></div>
+			<div class="label" id="hstar"></div>
+		</div>
+		<div class="c">
+			<div class="icon"></div>
+			<div class="label"></div>
+		</div>
+	</div>
+</div></div>
 
-    <div id="splashex" ontouchstart="$(this).hide().closest('.stories').stories('next');event.preventDefault();"
+
+<div id="story" class="mask"><div>
+	<div class="icon quit" ontouchstart="$(this).closest('#story').hide();event.preventDefault();"
+                      onclick="$(this).closest('#story').hide();">
+		<img src="res/img/default/white/cancel01.svg" alt=""/>
+	</div>
+	<div id="stotab"></div>
+	<div id="stonav">
+		<div class="icon" id="stoleft"
+			ontouchstart="$(this).closest('.stories').stories('onstory',this,true);event.preventDefault();"
+            onclick="$(this).closest('.stories').stories('onstory',this,true);">
+			<div class="icon up"><img src="res/img/default/control/left02.svg" alt=""/></div>
+			<div class="icon down"><img src="res/img/default/control/left02a.svg" alt=""/></div>
+		</div>
+		<div class="icon" id="stopages"><div></div></div>
+		<div class="icon" id="storight"
+			ontouchstart="$(this).closest('.stories').stories('onstory',this,false);event.preventDefault();"
+            onclick="$(this).closest('.stories').stories('onstory',this,false);">
+			<div class="icon up"><img src="res/img/default/control/right02.svg" alt=""/></div>
+			<div class="icon down"><img src="res/img/default/control/right02a.svg" alt=""/></div>
+		</div>
+	</div>
+</div></div>
+
+<div id="splashex" ontouchstart="$(this).hide().closest('.stories').stories('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.stories').stories('next');"><div>
-        <h1 id="label"></h1>
-        <div id="guide"></div>
-    </div></div>
-    
-    <!-- Optional devmode -->
-    <div id="devmode" ontouchstart="$(this).closest('.stories').stories('devmode');event.preventDefault();"
-                      onclick="$(this).closest('.stories').stories('devmode');" ><img src="res/img/default/white/snapshot.svg"/></div>
-                      
-    <div id="devoutput" ontouchstart="$(this).hide();event.preventDefault();" onclick="$(this).hide();">
-        <textarea ontouchstart="$(this).focus();event.stopPropagation();event.preventDefault();"
-                  onclick="$(this).focus();event.stopPropagation();"></textarea>
-    </div>
+    <h1 id="label"></h1>
+    <div id="guide"></div>
+</div></div>
 
 </div>
 

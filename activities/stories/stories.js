@@ -12,18 +12,30 @@
 			solo	: true,									// BY TEAM OR UNIT BY UNIT
 			team	: 0										// FIRST TEAM IN TEAM MODE
 		},
+		intro		: [],									// INTRODUCTION
 		maps		: {},
 		objects		: { },
 		mapid		: "start",									// Starting map
         debug       : true                                     // Debug mode
     };
+
+    var regExp = [
+        "\\\[vr\\\]([^\\\[]+)\\\[/vr\\\]",          "<div class='vr'><img src='$1' alt=''/></div>",
+        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
+        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
+        "\\\[br\\\]",                               "<br/>",
+        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
+        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
+        "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>",
+		"\\\[l\\\]([^\\\[]+)\\\[/l\\\]",            "<div class='first'>$1</div>",
+    ];
 	
 	// TARGET VALUE: 0:friend, 1:foe, 2:all 
 	var objectdef = {
-		fist: 	{ range:[1,1], 		target:1, value:2, move: true },
-		gun:  	{ range:[1.5,3.2], 	target:1, value:5, move: true },
-		blast:	{ range:[2.5,3.5], 	target:1, value:5, plus:[[1,0,2],[0,1,2],[-1,0,2],[0,-1,2]], move: false },
-		aid:	{ range:[1,1], 		target:2, type:"life", value:2, move: true }
+		fist: 	{ type:"weapon", range:[1,1], 		target:1, value:2, move: true },
+		gun:  	{ type:"weapon", range:[1.5,3.2], 	target:1, value:5, move: true },
+		blast:	{ type:"weapon", range:[2.5,3.5], 	target:1, value:5, move: false },
+		aid:	{ type:"support",range:[1,1], 		target:2, value:2, move: true }
 	};
 	
 	var peopledef = {
@@ -36,22 +48,20 @@
                 life:       {},    		munition:   {},    		attack:     {},     armor:      {},
                 vision:     {},         move:       {},         luck:       {},     speed:      {}
             },
+			
+			action		: "",
+			
+			state		: "left",
+			inventory	: "",
+			team		: 0,
+			type		: "human", 
 
-			size	: [1,1],
-			imgs    : { "right":"01", "left":"02", "uright":"03", "uleft":"04" },
-			speed	: [ 99,3,1,2,3 ],	// SPEED REGARDING THE HEIGHT
-			road	: 0.5				// ROAD BONUS
+			size		: [1,1],
+			imgs    	: { "right":"01", "left":"02", "uright":"03", "uleft":"04" },
+			speed		: [ 99,3,1,2,3 ],	// SPEED REGARDING THE HEIGHT
+			road		: 0.5				// ROAD BONUS
 		}
 	};
-
-    var regExp = [
-        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
-        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
-        "\\\[br\\\]",                               "<br/>",
-        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
-        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
-        "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>"
-    ];
 
 	var newtile = function(_tileset, _ref, _id, _pos) {
 		
@@ -135,11 +145,31 @@
 				}
 				else {
 					var target = settings.maps[settings.mapid].getpeople(settings.action.pos);
-					if (target.id!=people.id) { settings.interactive = false; helpers.endaction($this,people,target); }
+					if (target.id!=people.id) { settings.interactive = false; helpers.action($this,people,target); }
 				}
 			}
 			if (!people.canattack() && settings.settings.solo ) { helpers.turn($this); }
 						
+		},
+		action: function($this, _people, _target) {
+			var settings = helpers.settings($this);
+			var weaponid = _people.weaponid();
+			var action   = "default";
+			if (weaponid)		{ action = settings.objects[weaponid].type; }
+			if (_target.action) { action = _target.action; }
+			
+			switch (action) {
+				case "weapon":
+					break;
+				case "support":
+					break;
+				case "dialog":
+					break;
+				default:
+					break;
+			}
+			
+			helpers.endaction($this,_people, _target);
 		},
 		endaction: function($this, _people, _target) {
 			var settings = helpers.settings($this);
@@ -842,7 +872,7 @@ show: function() {
 									var target = settings.maps[settings.mapid].getpeople(settings.action.pos);
 									if (target.id!=settings.action.people.id) {
 										settings.interactive = false;
-										helpers.endaction($this,settings.action.people,target);
+										helpers.action($this,settings.action.people,target);
 										}
 									}
 								break;
@@ -852,6 +882,26 @@ show: function() {
 					settings.action.type = 0;
                     event.preventDefault();
 				});
+				
+				// BUILD INTRODUCTION
+				if (!$.isArray(settings.intro)) { settings.intro=[settings.intro]; }
+				if (settings.intro.length) {
+					$this.find("#stotab").html("");
+					$this.find("#stopages>div").html("");
+					for (var i in settings.intro) {
+						$this.find("#stotab").append("<div id='p"+i+"'>"+helpers.format(settings.intro[i])+"</div>");
+						
+						var $tab=$("<div id='t"+i+"' class='page'></div>");
+						$tab.bind("mousedown touchstart", function(event) {
+							settings.pageid = parseInt($(this).attr("id").substr(1));
+							helpers.story($this);
+							event.preventDefault();
+						});
+						$this.find("#stopages>div").append($tab);
+					}
+					if (settings.intro.length == 1) { $this.find("#stonav").hide(); }
+					helpers.story($this);
+				}
 
 				setTimeout(function() {
 
@@ -874,6 +924,17 @@ show: function() {
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
+		story: function($this) {
+			var settings = helpers.settings($this);
+			$this.find("#stotab>div").hide();
+			$this.find("#stotab #p"+settings.pageid).show();
+			$this.find("#stonav .up").show();
+			$this.find("#stonav #stoleft").toggleClass("d", settings.pageid==0);
+			$this.find("#stonav #storight").toggleClass("d", settings.pageid==settings.intro.length-1);
+			
+			$this.find("#stonav .page").removeClass("s");
+			$this.find("#stonav #t"+settings.pageid).addClass("s");
+		},
 		prepare: function($this) {
 			var settings = helpers.settings($this);
             settings.maps[settings.mapid].show();
@@ -942,6 +1003,7 @@ show: function() {
 						next		: 0,		// ONPEOPLE COUNTER
 						team		: 0			// CURRENT TEAM
 					},
+					pageid			: 0,
 					action 			: { start:0, type:0, data:0 }
                 };
 
@@ -969,6 +1031,7 @@ show: function() {
             next: function() {
                 var $this = $(this), settings = helpers.settings($this);
                 settings.interactive = true;
+				if (settings.intro.length) { $this.find("#story").show(); }
 				helpers.prepare($this);
             },
             quit: function() {
@@ -980,6 +1043,11 @@ show: function() {
                 var $this = $(this), settings = helpers.settings($this);
 				var f = 0;
 				if (settings.interactive) {
+					$this.find("#onpeople").addClass("s");
+					settings.interactive = false;
+					setTimeout(function() {
+						$this.find("#onpeople").removeClass("s");
+						settings.interactive = true; }, 300);
 					if (settings.settings.solo) { f = settings.game.people; }
 					else {
 						var peoples = [];
@@ -996,12 +1064,52 @@ show: function() {
 			},
 			endturn: function() {
                 var $this = $(this), settings = helpers.settings($this);
-				settings.interactive = false;
-				$this.find("#endturn").addClass("s");
-				setTimeout(function() {
-					if (settings.game.people) { settings.game.people.endturn(); }
-					$this.find("#endturn").removeClass("s");
-					helpers.turn($this); }, 500);
+				if (settings.interactive) {
+					settings.interactive = false;
+					$this.find("#endturn").addClass("s");
+					setTimeout(function() {
+						if (settings.game.people) { settings.game.people.endturn(); }
+						$this.find("#endturn").removeClass("s");
+						helpers.turn($this); }, 500);
+				}
+			},
+			onstory: function(_elt, _back) {
+                var $this = $(this), settings = helpers.settings($this);
+				if (!$(_elt).hasClass("d") && settings.interactive) {
+					if (_back)  { settings.pageid = Math.max(0, settings.pageid-1); }
+					else		{ settings.pageid = Math.min(settings.intro.length-1, settings.pageid+1); }
+					
+					$(_elt).find(".up").hide();
+					settings.interactive = false;
+					setTimeout(function() { helpers.story($this); settings.interactive = true; }, 200 );
+				}
+			},
+			story: function() {
+                var $this = $(this), settings = helpers.settings($this);
+				var f = 0;
+				if (settings.interactive) {
+					$this.find("#onstory").addClass("s");
+					settings.interactive = false;
+					setTimeout(function() {
+						settings.pageid = 0;
+						helpers.story($this);
+						$this.find("#story").show(); }, 100);
+					setTimeout(function() { 
+						$this.find("#onstory").removeClass("s");
+						settings.interactive = true; }, 300);
+				}
+			},
+			help: function() {
+                var $this = $(this), settings = helpers.settings($this);
+				var f = 0;
+				if (settings.interactive) {
+					$this.find("#onhelp").addClass("s");
+					settings.interactive = false;
+					setTimeout(function() { $this.find("#help").show(); }, 100);
+					setTimeout(function() { 
+						$this.find("#onhelp").removeClass("s");
+						settings.interactive = true; }, 300);
+				}
 			}
         };
 
