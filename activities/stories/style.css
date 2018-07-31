@@ -45,7 +45,7 @@
 .stories .map .uright .state.uright	{ display:inherit; }
 .stories .map .uleft .state.uleft	{ display:inherit; }
 
-.stories #board .border           { background-color:rgba(255,255,255,0.5); position:absolute; top:0; left:0; display:none; z-index:6; }
+.stories #board .border           { background-color:rgba(255,255,255,0.5); position:absolute; top:0; left:0; display:none; z-index:32; }
 .stories #board #eleft            { width:0.4em; height:11em; }
 .stories #board #eright           { width:0.4em; height:11em; left:9.6em;}
 .stories #board #etop             { width:11em; height:0.4em; }
@@ -82,3 +82,9 @@
 .stories #help #helpcontrol .c		{ font-size:0.9em; width:48%; height:3em; border:.1em solid black; margin:.1em; float:left; }
 .stories #help #helpcontrol .icon	{ font-size:3em; border-radius:.5em; background-image:url("../../res/img/icon/tab/tab00.svg"); background-color:gray; float:left; }
 .stories #help #helpcontrol .label	{ font-size:.5em; width:70%; height:6em; padding-left:.5em; }
+
+.stories #objectives #objtitle		{ font-size:1.2em; text-align:center; border:1px solid black; border-width:0 0 .1em 0; }
+.stories #objectives #objelts .elt	{ margin:.2em; border:.05em solid black; height:3em; background-color:white;}
+.stories #objectives #objelts .icon { font-size:3em; float:left; }
+.stories #objectives #objelts .label	{ float:left; margin-left:.5em; width:70%;height:3em;  }
+.stories #objectives #objelts .elt>div	{ width:106%; }

@@ -13,6 +13,7 @@
 			team	: 0										// FIRST TEAM IN TEAM MODE
 		},
 		intro		: [],									// INTRODUCTION
+		objectives	: [],									// OBJECTIVES
 		maps		: {},
 		objects		: { },
 		mapid		: "start",									// Starting map
@@ -58,7 +59,7 @@
 
 			size		: [1,1],
 			imgs    	: { "right":"01", "left":"02", "uright":"03", "uleft":"04" },
-			speed		: [ 99,3,1,2,3 ],	// SPEED REGARDING THE HEIGHT
+			speed		: [ 99,3,1,2,3,99 ],	// SPEED REGARDING THE HEIGHT
 			road		: 0.5				// ROAD BONUS
 		}
 	};
@@ -66,14 +67,22 @@
 	var newtile = function(_tileset, _ref, _id, _pos) {
 		
 		var id = parseInt(_ref);
-		var m=[2,2,1,0,3,4];
+		var m=[2,2,1,0,3,4,5,5,5,5,5,5,5];
+		var size=[1,1];
+		var offset = [0,0];
+		if (id>600) {
+			size[1] = Math.floor(1+((id-1)%100)/30);
+			size[0] = Math.floor(1+(id-601)/100);
+			offset[1] = size[1]-1;
+			if (id>800) { offset[0] = 1; }
+		}
 		
 		var ret = {
 			move	: m[Math.floor(id/100)],	// TILE HEIGHT : 0 SEA, 1 RIVER, 2 GROUND, 3 HILL, 4 MOUNTAIN
 			road	: false,					// IS TILE A ROAD
 			hiding	: false,					// IS A HIDING PLACE
 			c 		: 1.01, 					// GRAPHIC CORRECTION TO AVOID GAP
-			pos		:[_pos[0],_pos[1]], size:[1,1], offset:[0,0],
+			pos		:[_pos[0],_pos[1]], size:[size[0],size[1]], offset:[offset[0],offset[1]],
 			$html	:$("<div id='"+_id+"' class='elt'><img src='res/img/tileset/ortho/"+_tileset+"/"+_ref+".svg' alt=''/></div>")
 		};
 		
@@ -82,8 +91,9 @@
 		if (id>100 && id<200) { ret.road = true; }
 		
 		
-		ret.$html.css("left",ret.pos[0]+"em").css("top",ret.pos[1]+"em")
-				 .css("width",(ret.c*ret.size[0])+"em").css("height",(ret.c*ret.size[1])+"em");
+		ret.$html.css("left",(ret.pos[0]-ret.offset[0])+"em").css("top",(ret.pos[1]-ret.offset[1])+"em")
+				 .css("width",(ret.c*ret.size[0])+"em").css("height",(ret.c*ret.size[1])+"em")
+				 .css("z-index",(ret.size[0]!=1 || ret.size[1]!=1)?ret.pos[1]+1:0);
 		
 		return ret;
 	}
@@ -326,7 +336,7 @@
 								var tile = _args.tile;
 								if (!tile && _map) { tile = _map.grid.tiles[_map.getidx(_args.pos)]; }
 								
-								if (_args.pos) { this.$html.css("left",_args.pos[0]+"em").css("top",_args.pos[1]+"em"); }
+								if (_args.pos) { this.$html.css("left",_args.pos[0]+"em").css("top",_args.pos[1]+"em").css("z-index",_args.pos[1]+1); }
 								
 								if (_args.state){
 									if (this.state) { 
@@ -340,6 +350,7 @@
 								}
 								
 								if (_args.move){
+									this.$html.css("z-index",_args.move[1]+1);
 									this.$html.animate({left:_args.move[0]+"em", top:_args.move[1]+"em"}, 100,
 										function() { setTimeout(function() { _args.people.animate(_args)}, 0); });
 								}
@@ -902,6 +913,28 @@ show: function() {
 					if (settings.intro.length == 1) { $this.find("#stonav").hide(); }
 					helpers.story($this);
 				}
+				
+				// HANDLE OBJECTIVES
+				var iconbytype = {
+					reach : "ext/noto/svg/emoji_u1f3af.svg"
+				};
+				if (!$.isArray(settings.objectives)) { settings.objectives=[settings.objectives]; }
+				if (settings.objectives.length) {
+					$this.find("#objelts").html("");
+					for (var i in settings.objectives) {
+						var o 	= settings.objectives[i];
+						var txt = (settings.glossary&&settings.glossary[o.label])?
+										settings.glossary[o.label]:o.label;
+						var html="<div class='elt' id='o"+i+"'><div>";
+						html+="<div class='icon'><img src='"+iconbytype[o.type]+"' alt=''/></div>";
+						html+="<div class='label'>"+txt+"</div>";
+						html+="<div class='icon ok'><img src='res/img/default/icon/valid02.svg' alt='V'/></div>";
+						html+="</div></div>";
+						$this.find("#objelts").append(html);
+					}
+					helpers.objectives($this);
+				}
+		
 
 				setTimeout(function() {
 
@@ -935,6 +968,29 @@ show: function() {
 			$this.find("#stonav .page").removeClass("s");
 			$this.find("#stonav #t"+settings.pageid).addClass("s");
 		},
+		objectives: function($this) {
+			var settings = helpers.settings($this);
+			var ret		 = (settings.objectives.length!=0);
+			
+			for (var i in settings.objectives) {
+				var isok = false;
+				var o = settings.objectives[i];
+				switch(o.type) {
+					case "reach":
+						var people = settings.maps[o.map]?settings.maps[o.map].getpeople(o.pos):0;
+						isok = (people && people.id == o.people);
+					break;
+				}
+
+				var $icon = $this.find("#objelts #o"+i+" .icon.ok");
+				if (isok) { $icon.show(); } else { $icon.hide(); }
+				
+				if (!isok) { ret = false; }
+			}
+			
+			
+			return ret;
+		},
 		prepare: function($this) {
 			var settings = helpers.settings($this);
             settings.maps[settings.mapid].show();
@@ -945,42 +1001,49 @@ show: function() {
 		},
 		turn: function($this) {
 			var settings = helpers.settings($this);
-
-			if (settings.settings.solo) {
-				settings.game.people = settings.maps[settings.mapid].getnextpeople();
-				settings.game.people.prepare();
-				settings.interactive = true;
-				
-				if (settings.game.people.team!=0) {
-					settings.interactive = false;
-					setTimeout(function() {
-						settings.game.people.endturn();
-						settings.interactive = true;
-						helpers.turn($this); }, 1000);
-				}
-				
+			
+			var goal = helpers.objectives($this);
+			if (goal) {
+				settings.interactive = false;
+				setTimeout(function(){helpers.end($this);}, 1000 );
 			}
 			else {
-				settings.game.team++;
-				var nbs = [0,0,0,0,0];
-				settings.maps[settings.mapid].eachpeople({}, function(_people) { nbs[_people.team]++; } );
-				while ( nbs[settings.game.team] == 0 ) {
-					settings.game.team = (settings.game.team+1)%nbs.length;
+
+				if (settings.settings.solo) {
+					settings.game.people = settings.maps[settings.mapid].getnextpeople();
+					settings.game.people.prepare();
+					settings.interactive = true;
+					
+					if (settings.game.people.team!=0) {
+						settings.interactive = false;
+						setTimeout(function() {
+							settings.game.people.endturn();
+							settings.interactive = true;
+							helpers.turn($this); }, 1000);
+					}
+					
 				}
-				
-				settings.maps[settings.mapid].eachpeople({team:settings.game.team}, function(_people) { _people.prepare(); } );
-				settings.interactive = true;
-				
-				if (settings.game.team!=0) {
-					settings.interactive = false;
-					setTimeout(function() {
-						settings.maps[settings.mapid].eachpeople({team:settings.game.team}, function(_people) { _people.endturn(); } );
-						settings.interactive = true;
-						helpers.turn($this); }, 1000);
+				else {
+					settings.game.team++;
+					var nbs = [0,0,0,0,0];
+					settings.maps[settings.mapid].eachpeople({}, function(_people) { nbs[_people.team]++; } );
+					while ( nbs[settings.game.team] == 0 ) {
+						settings.game.team = (settings.game.team+1)%nbs.length;
+					}
+					
+					settings.maps[settings.mapid].eachpeople({team:settings.game.team}, function(_people) { _people.prepare(); } );
+					settings.interactive = true;
+					
+					if (settings.game.team!=0) {
+						settings.interactive = false;
+						setTimeout(function() {
+							settings.maps[settings.mapid].eachpeople({team:settings.game.team}, function(_people) { _people.endturn(); } );
+							settings.interactive = true;
+							helpers.turn($this); }, 1000);
+					}
+					
 				}
-				
 			}
-			
 		},
 		game: {
 		},
@@ -1003,6 +1066,7 @@ show: function() {
 						next		: 0,		// ONPEOPLE COUNTER
 						team		: 0			// CURRENT TEAM
 					},
+					score			: 5,
 					pageid			: 0,
 					action 			: { start:0, type:0, data:0 }
                 };
@@ -1057,7 +1121,10 @@ show: function() {
 						if (peoples.length) { f = peoples[(settings.game.next++)%peoples.length]; }
 					}
 					if (f) {
-						settings.maps[settings.mapid].focus = [f.pos[0]+0.5, f.pos[1]+0.5]; 
+						settings.maps[settings.mapid].focus = [f.pos[0]+0.5, f.pos[1]+0.5];
+						settings.maps[settings.mapid].setzoom(1);
+						$this.find("#zoom #cursor").css("width", "50%").css("left", 5+"em");
+						
 						settings.maps[settings.mapid].nav();
 					}
 				}
@@ -1090,12 +1157,28 @@ show: function() {
 				if (settings.interactive) {
 					$this.find("#onstory").addClass("s");
 					settings.interactive = false;
-					setTimeout(function() {
-						settings.pageid = 0;
-						helpers.story($this);
-						$this.find("#story").show(); }, 100);
+					if (settings.intro && settings.intro.length) {
+						setTimeout(function() {
+							settings.pageid = 0;
+							helpers.story($this);
+							$this.find("#story").show(); }, 100);
+					}
 					setTimeout(function() { 
 						$this.find("#onstory").removeClass("s");
+						settings.interactive = true; }, 300);
+				}
+			},
+			objectives: function() {
+                var $this = $(this), settings = helpers.settings($this);
+				var f = 0;
+				if (settings.interactive) {
+					$this.find("#onobj").addClass("s");
+					settings.interactive = false;
+					if (settings.objectives && settings.objectives.length) {
+						setTimeout(function() { $this.find("#objectives").show(); }, 100);
+					}
+					setTimeout(function() { 
+						$this.find("#onobj").removeClass("s");
 						settings.interactive = true; }, 300);
 				}
 			},

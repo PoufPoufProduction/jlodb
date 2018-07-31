@@ -19,7 +19,9 @@
 			ontouchstart="$(this).closest('.stories').stories('story');event.preventDefault();"
             onclick="$(this).closest('.stories').stories('story');">
 			<img src="res/img/default/white/list.svg" alt="o"/></div>
-		<div class="icon">
+		<div id="onobj" class="icon"
+			ontouchstart="$(this).closest('.stories').stories('objectives');event.preventDefault();"
+            onclick="$(this).closest('.stories').stories('objectives');">
 			<img src="res/img/default/white/star.svg" alt="o"/></div>
 	</div>
 </div>
@@ -65,6 +67,14 @@
 	</div>
 </div></div>
 
+<div id="objectives" class="mask"><div>
+	<div class="icon quit" ontouchstart="$(this).closest('#objectives').hide();event.preventDefault();"
+                      onclick="$(this).closest('#objectives').hide();">
+		<img src="res/img/default/white/cancel01.svg" alt=""/>
+	</div>
+	<div id="objtitle"></div>
+	<div id="objelts"></div>
+</div></div>
 
 <div id="story" class="mask"><div>
 	<div class="icon quit" ontouchstart="$(this).closest('#story').hide();event.preventDefault();"
