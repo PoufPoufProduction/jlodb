@@ -51,6 +51,9 @@
 .stories #board #etop             { width:11em; height:0.4em; }
 .stories #board #ebottom          { width:11em; height:0.4em; top:9.6em;}
 
+.stories #stop					{ position:absolute; font-size:5em; top:1%; left:52%; display:none; z-index:100; }
+.stories #end                   { position:absolute; width:12em; height:4em;  z-index:100;top:2%; left:25%; display:none; }
+.stories #endtxt                  { position:absolute; width:8em; height:1.2em; z-index:100;top:30%; left:58%; background-color:#0A0; color:white; text-align:center; border-radius:.3em; border:.1em solid white; font-size:.8em;  -ms-transform: rotate(-5deg); -webkit-transform: rotate(-5deg); transform: rotate(-5deg); display:none; }
 
 .stories div#zoom					{ font-size:1em; height:1em; width:10em; background-color:gray; }
 .stories div#zoom #cursor			{ height:1em; width:50%; background-color:white; cursor:move; }
@@ -60,6 +63,7 @@
 .stories div#control .icon			{ cursor:pointer; border-radius:.5em; background-image:url("../../res/img/icon/tab/tab00.svg"); background-color:gray; margin:.1em; float:left; }
 .stories div#control .icon.s		{ background-color:red; }
 .stories div#control #endturn		{ float:right; font-size:2em; }
+.stories div#control #turnid		{ position:absolute; top:65%; left:50%; font-size:.5em; background-color:gray; border:.2em solid white; color:white; width:1.2em; height:1.2em; border-radius:.6em; text-align:center; }
 
 .stories .mask						{ position:absolute;top:0;left:0;width:16em;height:12em; background-color:rgba(0,0,0,0.8); z-index:100; display:none; }
 .stories .mask>div { font-size:.5em; width:80%; height:80%; margin:5% 8%; background-image:url("../../res/img/default/pattern/line01.svg"); border:.5em solid white; overflow:visible; }

@@ -147,7 +147,12 @@
 			
 			settings.interactive = true;
 			
-			if (!_finished) { people.endattack(false); }
+			// MOVER HAS BEEN STOPPED
+			if (!_finished) {
+				$this.find("#stop").css("opacity",1).show();
+				setTimeout(function(){$this.find("#stop").animate({opacity:0},300,function(){$(this).hide(); })},500);
+				people.endattack(false);
+			}
 			
 			if (people.canattack()) {
 				if( settings.maps[settings.mapid].getactions(people, 0, weaponid?settings.objects[weaponid]:0, true)==0) {
@@ -228,9 +233,10 @@
 
                 // LOCALE HANDLING
                 if (settings.locale) { $.each(settings.locale, function(id,value) {
-                    if ($.isArray(value)) {  for (var i in value) { $this.find("#"+id).append("<p>"+value[i]+"</p>"); } }
-                    else { $this.find("#"+id).html(value); }
+                    if (!$.isArray(value)) { $this.find("#"+id).html(value); }
                 }); }
+				$this.find("#endtxt").html(settings.locale.endtxts[
+					Math.floor(Math.random()*settings.locale.endtxts.length)]);
                 
                 // HANDLE BACKGROUND
                 if (settings.background) { $this.children().first().css("background-image","url("+settings.background+")"); }
@@ -942,12 +948,14 @@ show: function() {
                     $this.find("#zoom #cursor")
                         .draggable({ axis:"x", containment:"parent",
                             drag:function() {
-                                var x= ($(this).offset().left-$(this).parent().offset().left)/($(this).parent().width()-$(this).width());
+                                var x= Math.max(0,($(this).offset().left-$(this).parent().offset().left)/($(this).parent().width()-$(this).width()));
                                 settings.maps[settings.mapid].setzoom(x);
 							},
 							stop: function() {
-								var x= 10*($(this).offset().left-$(this).parent().offset().left)/$(this).parent().width();
-								$(this).css("width", "50%").css("left", x+"em");
+								var x=Math.max(0,($(this).offset().left-$(this).parent().offset().left)/$(this).parent().width());
+								var y = 10*x;
+								console.log(x);
+								$(this).css("width", "50%").css("left", y+"em");
 							}
 						});
                 }, 1);
@@ -1002,10 +1010,15 @@ show: function() {
 		turn: function($this) {
 			var settings = helpers.settings($this);
 			
+			settings.game.turnid++;
+			$this.find("#turnid").html(settings.game.turnid);
+			
 			var goal = helpers.objectives($this);
 			if (goal) {
 				settings.interactive = false;
-				setTimeout(function(){helpers.end($this);}, 1000 );
+				$this.find("#end").css("left","150%").show()
+					 .animate({left:"25%"},800, function(){$this.find("#endtxt").show();});
+				setTimeout(function(){helpers.end($this);}, 2500 );
 			}
 			else {
 
@@ -1061,6 +1074,7 @@ show: function() {
                 var settings = {
                     interactive     : false,
 					game 			: {
+						turnid		: 0,		// TURN ID
 						time		: 0,		// CURRENT TIME FOR SOLO MODE
 						people		: 0,		// CURRENT PEOPLE IN SOLO MODE
 						next		: 0,		// ONPEOPLE COUNTER
