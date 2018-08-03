@@ -60,8 +60,17 @@
 			size		: [1,1],
 			imgs    	: { "right":"01", "left":"02", "uright":"03", "uleft":"04" },
 			speed		: [ 99,3,1,2,3,99 ],	// SPEED REGARDING THE HEIGHT
-			road		: 0.5				// ROAD BONUS
+			road		: 0.5,					// ROAD BONUS
+			gambits		: ["moverandomly"]
 		}
+	};
+	
+	var gambitlist = {
+	};
+	
+	var gambitdefs = {
+		donothing: 		{ type:"none" },
+		moverandomly:	{ type:"move", value:"random" }
 	};
 
 	var newtile = function(_tileset, _ref, _id, _pos) {
@@ -138,14 +147,15 @@
         },
 		endmove: function($this, _args, _finished) {
 			var settings = helpers.settings($this);
-			var people = settings.action.people;
+			var people = _args.people;
 			if (_args && _args.move) { people.pos = [ _args.move[0], _args.move[1] ]; }
+			
+			
 			
 			var weaponid  		= people.weaponid();
 			var canstillattack 	= weaponid?settings.objects[weaponid].move:false;
 			people.endmove(canstillattack);
 			
-			settings.interactive = true;
 			
 			// MOVER HAS BEEN STOPPED
 			if (!_finished) {
@@ -163,8 +173,14 @@
 					if (target.id!=people.id) { settings.interactive = false; helpers.action($this,people,target); }
 				}
 			}
-			if (!people.canattack() && settings.settings.solo ) { helpers.turn($this); }
-						
+
+			console.log("+ endmove "+people.canattack());
+			
+			if (people.team==0) {
+				settings.interactive = true;
+				if (!people.canattack() && settings.settings.solo ) { helpers.turn($this); }
+			}
+			else { helpers.ai.play($this); }						
 		},
 		action: function($this, _people, _target) {
 			var settings = helpers.settings($this);
@@ -193,6 +209,9 @@
 			var canstillmove 	= weaponid?settings.objects[weaponid].move:false;
 			_people.endattack(canstillmove);
 
+			
+			console.log("+ endattack "+_people.canmove());
+			
 			if (!_people.canmove()  && settings.settings.solo ) { helpers.turn($this); }
 			
 			settings.interactive = true;
@@ -338,6 +357,7 @@
 							},
 							
 							update		: function(_args, _map) {
+								_args.people = this;
 								// GET THE TILE
 								var tile = _args.tile;
 								if (!tile && _map) { tile = _map.grid.tiles[_map.getidx(_args.pos)]; }
@@ -363,6 +383,7 @@
 								return this;
 							},
 							animate		: function(_args) {
+								_args.people = this;
 								if (_args.id>=_args.path.length) {
 									helpers.endmove(_args.$this, _args, true);
 								}
@@ -667,7 +688,7 @@ updmoves: function( _moves, _actions) {
 		m.$html.attr("class",m.getClass()).show();
 	}
 },
-drawmoves: function(_from, _to, _moves, _actions, _speed, _last) {
+drawmoves: function(_from, _to, _moves, _actions, _last, _team) {
 	var next	= [[-1,0],[1,0],[0,-1],[0,1]];
 	var ret 	= [];
 	var ok		= true;
@@ -725,12 +746,17 @@ drawmoves: function(_from, _to, _moves, _actions, _speed, _last) {
 						if (td>vald) { pn = n; vald=td; }
 					}
 				}
-				this.grid.moves[this.getidx(ti,tj)].$html.addClass("a a"+ln+pn);
+				if (!this.fog || _team==0 || this.grid.fog[this.getidx(ti,tj)].visible) {
+					this.grid.moves[this.getidx(ti,tj)].$html.addClass("a a"+ln+pn);
+				}
 				ti+=next[pn][0]; tj+=next[pn][1];
 				ln = pn;
 			}
 			ret.push([_from[0],_from[1]]);
-			this.grid.moves[this.getidx(_from[0],_from[1])].$html.addClass("a a"+ln+"9");
+			
+			if (!this.fog || _team==0 || this.grid.fog[this.getidx(_from)].visible) {
+				this.grid.moves[this.getidx(_from[0],_from[1])].$html.addClass("a a"+ln+"9");
+			}
 		}
 	}
 	
@@ -852,7 +878,7 @@ show: function() {
 									settings.action.path = vMap.drawmoves(settings.action.people.pos, pos,
 											settings.action.people.canmove()?settings.action.people.moves:0,
 											settings.action.people.canattack()?settings.action.people.actions:0,
-											vMap.people[settings.action.people.id].speed, settings.action.path);
+											settings.action.path, settings.action.people.team);
 								}
 								break;
 						}
@@ -879,7 +905,7 @@ show: function() {
 								if (settings.action.path.length && settings.action.path.length>1) {
 									settings.interactive = false;
 									settings.action.people.animate({
-										$this:$this, people:settings.action.people,
+										$this:$this,
 										state:settings.action.people.state,
 										path:settings.action.path.reverse(),
 										id:1, first:true, map:vMap});
@@ -1013,6 +1039,9 @@ show: function() {
 			settings.game.turnid++;
 			$this.find("#turnid").html(settings.game.turnid);
 			
+			
+			console.log("+ turn: "+settings.game.turnid);
+			
 			var goal = helpers.objectives($this);
 			if (goal) {
 				settings.interactive = false;
@@ -1022,20 +1051,21 @@ show: function() {
 			}
 			else {
 
+				// CLEAR PREVIOUS TURN
+				settings.maps[settings.mapid].eachpeople({}, function(_people) { _people.endturn(); });
+			
+				settings.game.gambitid 	= 0;
+				settings.game.people 	= 0;
+				settings.interactive 	= true;
+					
+				// SOLO NEW TURN
 				if (settings.settings.solo) {
 					settings.game.people = settings.maps[settings.mapid].getnextpeople();
 					settings.game.people.prepare();
-					settings.interactive = true;
 					
-					if (settings.game.people.team!=0) {
-						settings.interactive = false;
-						setTimeout(function() {
-							settings.game.people.endturn();
-							settings.interactive = true;
-							helpers.turn($this); }, 1000);
-					}
-					
+					if (settings.game.people.team!=0) { helpers.ai.play($this); }
 				}
+				// TEAM NEW TURN
 				else {
 					settings.game.team++;
 					var nbs = [0,0,0,0,0];
@@ -1045,22 +1075,113 @@ show: function() {
 					}
 					
 					settings.maps[settings.mapid].eachpeople({team:settings.game.team}, function(_people) { _people.prepare(); } );
-					settings.interactive = true;
 					
-					if (settings.game.team!=0) {
-						settings.interactive = false;
-						setTimeout(function() {
-							settings.maps[settings.mapid].eachpeople({team:settings.game.team}, function(_people) { _people.endturn(); } );
-							settings.interactive = true;
-							helpers.turn($this); }, 1000);
-					}
-					
+					if (settings.game.team!=0) { helpers.ai.play($this); }
 				}
 			}
 		},
-		game: {
-		},
+		// PLAY AI
 		ai: {
+			play: function($this) {
+				var settings 	= helpers.settings($this);
+				var endplay		= false;
+				var map			= settings.maps[settings.mapid];
+				settings.interactive = false;
+				
+				map.updmoves(false);
+				
+				
+				console.log("+ ai.play");
+				console.log("  . begin");
+				
+				while (!endplay) {
+					// GET ACTIVE PEOPLE FROM TEAM
+					if (!settings.game.people && !settings.settings.solo) {
+						map.eachpeople({team:settings.game.team}, function(_people) {
+							if (!settings.game.people && _people.cando()) { settings.game.people = _people; } });
+						settings.game.gambitid = 0;
+					}
+					
+					
+					console.log("  . people");
+				
+					// NO MORE PEOPLE TO PLAY -> ENDTURN
+					if (!settings.game.people) {
+						endplay = true;
+						setTimeout(function() { settings.interactive = true; helpers.turn($this); }, 500);
+					}
+					else {
+						// GET THE CURRENT GAMBIT
+						var people  = settings.game.people;
+						var gambits = people.gambits;
+						if (gambits && typeof(gambits)=="string") {	gambits = gambitlist[gambits]; }
+					
+						var gambit 	= 0;
+						if (gambits && settings.game.gambitid < gambits.length ) {
+							gambit = gambits[settings.game.gambitid++];
+						}
+						if (gambit && typeof(gambit)=="string") { gambit = gambitdefs[gambit]; }
+					
+						if (!gambit) {
+							// NO GAMBIT ANYMORE : CLEAR CURRENT PEOPLE TO GET A NEW ONE ON NEXT LOOP
+							settings.game.people.endturn();
+							settings.game.people = 0;
+						}
+						else {
+							// HANDLE GAMBIT CONDITION
+							var isok 			= true;
+							if (gambit.cond) { }
+						
+							if (isok) {
+								
+								console.log("  . gambit "+gambit.type);
+								
+								switch(gambit.type) {
+									case "move":
+										isok = people.canmove();
+										if (isok) {
+											// MOVE UNIT
+											var moves 	= map.getmoves(people);
+											var poss 	= [];
+											var to		= 0;
+											for (var m in moves) { if (moves[m]!=0) { poss.push(m); } }
+											
+											switch(gambit.value) {
+												default: to = poss[Math.floor(Math.random()*poss.length)]; break;
+											}
+											
+											
+											if (to) {
+												isok = false;
+												to=[to%map.size[0], Math.floor(to/map.size[0])];
+												map.updmoves(moves);
+												var path = map.drawmoves(people.pos, to, moves, 0, 0, people.team);
+												
+												endplay = true;
+												// CALL THIS ONCE AGAIN FROM ENDMOVE
+												people.animate({
+													$this:$this, state:people.state, path:path.reverse(),
+													id:1, first:true, map:map});
+												
+											}
+											else { isok = false; }
+										}
+									
+									break;
+									case "attack":
+									break;
+									default: break;
+								}
+							}
+		
+						}
+					}
+					
+				}
+				
+				console.log("  . end");
+			}
+			
 		}
     };
 
@@ -1078,7 +1199,8 @@ show: function() {
 						time		: 0,		// CURRENT TIME FOR SOLO MODE
 						people		: 0,		// CURRENT PEOPLE IN SOLO MODE
 						next		: 0,		// ONPEOPLE COUNTER
-						team		: 0			// CURRENT TEAM
+						team		: 0,		// CURRENT TEAM
+						gambitid	: 0			// CURRENT PEOPLE GAMBIT INDEX
 					},
 					score			: 5,
 					pageid			: 0,
@@ -1149,7 +1271,6 @@ show: function() {
 					settings.interactive = false;
 					$this.find("#endturn").addClass("s");
 					setTimeout(function() {
-						if (settings.game.people) { settings.game.people.endturn(); }
 						$this.find("#endturn").removeClass("s");
 						helpers.turn($this); }, 500);
 				}
