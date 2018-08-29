@@ -2,68 +2,113 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dct="http://purl.org/dc/terms/">
 
-
+		 
+	<!-- SORTING LITTERAL EXPRESSION -->
          
     <rdf:Description>
         <dct:identifier>_ne50a</dct:identifier>
         <dct:title xml:lang="fr-FR">Classer les différentes valeurs littérales de 1 à 50.</dct:title>
-        <dct:description xml:lang="fr-FR"><![CDATA["values":[["neuf","quinze","vingt-neuf","trente-deux","quarante","quarante et un","cinquante"],["zéro","onze","douze","trente et un","trente-neuf","quarante","quarante-neuf"]],"nbvalues":7,"type":"move","font":0.8,"exercice":"[b]Classez[/b] ces valeurs de la plus [red]petite[/red] à la plus [red]grande[/red].","fontex":0.6,"class":"h12"]]></dct:description> 
+        <dct:description><![CDATA["errratio":1,"gg":{"nb":7,"a":[50,1],"b":0,"c":0,"val":[]},"nbvalues":7,"number":3,"type":"move","font":0.7]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>ne100a</dct:alternative>
+        <dct:alternative>_ne10k</dct:alternative>
+        <dct:relation>_ne10k</dct:relation>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>_ne100a</dct:identifier>
         <dct:title xml:lang="fr-FR">Classer les différentes valeurs littérales de 1 à 100.</dct:title>
-        <dct:description xml:lang="fr-FR"><![CDATA["values":[["treize","quarante-trois","soixante et un","soixante-douze","soixante-dix-huit","quatre-vingt-cinq","quatre-vingt-onze"],["trente-huit","soixante-huit","soixante-quinze","soixante-dix-sept","quatre-vingt-sept","quatre-vingt-dix-huit","quatre-vingt-dix-neuf"]],"nbvalues":7,"type":"move","font":0.8,"exercice":"[b]Classez[/b] ces valeurs de la plus [red]petite[/red] à la plus [red]grande[/red].","fontex":0.6,"class":"h12"]]></dct:description> 
+        <dct:description><![CDATA["errratio":1,"gg":{"nb":7,"a":[99,1],"b":0,"c":0,"val":[]},"nbvalues":7,"number":3,"type":"move","font":0.7]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>ne100a</dct:alternative>
+        <dct:alternative>_ne10k</dct:alternative>
+        <dct:relation>_ne10k</dct:relation>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
     </rdf:Description>
-         
+	
+	<rdf:Description>
+        <dct:identifier>_ne1k</dct:identifier>
+        <dct:title xml:lang="fr-FR">Classer les différentes valeurs littérales de 1 et 1,000.</dct:title>
+        <dct:description><![CDATA["errratio":1,"gg":{"nb":7,"a":[100,0],"b":10,"c":0,"val":[]},"nbvalues":7,"number":2,"type":"move","font":0.7]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>_ne10k</dct:alternative>
+        <dct:relation>_ne10k</dct:relation>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+    </rdf:Description>
+
+	<rdf:Description>
+        <dct:identifier>_ne10k</dct:identifier>
+        <dct:title xml:lang="fr-FR">Classer les différentes valeurs littérales de 1 et 10,000.</dct:title>
+        <dct:description><![CDATA["errratio":1,"gg":{"nb":7,"a":[100,0],"b":10,"c":10,"val":[]},"nbvalues":7,"number":2,"type":"move","font":0.5,"class":"h12","gen":"function($this,_s,_i){if (_s.gg.val.length==0) { var max=(Math.max(0,_s.gg.c-1))*1000+(Math.max(0,_s.gg.b-1))*100+(_s.gg.a[0]-1),values=['zéro','un','deux','trois','quatre','cinq','six','sept','huit','neuf','dix','onze','douze','treize','quatorze','quinze','seize','dix-sept','dix-huit','dix-neuf','vingt','vingt-et-un','vingt-deux','vingt-trois','vingt-quatre','vingt-cinq','vingt-six','vingt-sept','vingt-huit','vingt-neuf','trente','trente-et-un','trente-deux','trente-trois','trente-quatre','trente-cinq','trente-six','trente-sept','trente-huit','trente-neuf','quarante','quarante-et-un','quarante-deux','quarante-trois','quarante-quatre','quarante-cinq','quarante-six','quarante-sept','quarante-huit','quarante-neuf','cinquante','cinquante-et-un','cinquante-deux','cinquante-trois','cinquante-quatre','cinquante-cinq','cinquante-six','cinquante-sept','cinquante-huit','cinquante-neuf','soixante','soixante-et-un','soixante-deux','soixante-trois','soixante-quatre','soixante-cinq','soixante-six','soixante-sept','soixante-huit','soixante-neuf','soixante-dix','soixante-et-onze','soixante-douze','soixante-treize','soixante-quatorze','soixante-quinze','soixante-seize','soixante-dix-sept','soixante-dix-huit','soixante-dix-neuf','quatre-vingts','quatre-vingt-un','quatre-vingt-deux','quatre-vingt-trois','quatre-vingt-quatre','quatre-vingt-cinq','quatre-vingt-six','quatre-vingt-sept','quatre-vingt-huit','quatre-vingt-neuf','quatre-vingt-dix','quatre-vingt-onze','quatre-vingt-douze','quatre-vingt-treize','quatre-vingt-quatorze','quatre-vingt-quinze','quatre-vingt-seize','quatre-vingt-dix-sept','quatre-vingt-dix-huit','quatre-vingt-dix-neuf'], a = Math.floor(Math.random()*_s.gg.a[0])+_s.gg.a[1], b = Math.floor(Math.random()*_s.gg.b), c = Math.floor(Math.random()*_s.gg.c),val=[]; do { var ok=true,v=Math.floor(Math.random()*max)+_s.gg.a[1]; for (var j in val) { if (val[j]==v) { ok = false; } } if (ok) { val.push(v); } } while(val.length<_s.gg.nb); val.sort(function(a,b){return (a>b);}); for (var j in val) { var a=val[j]%100,b=Math.floor(val[j]/100)%10,c=Math.floor(val[j]/1000); _s.gg.val.push(((c>0)?(c>1?values[c]+'-':'')+'mille':'')+(c>0&&b>0?'-':'')+((b>0)?(b>1?values[b]+'-':'')+'cent'+(a==0&&b>1?'s':''):'')+(a>0&&(c>0||b>0)?'-':'')+((a>0||(b==0&&c==0))?values[a]:''));} } return _s.gg.val[_i]; }"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Classez[/b] ces valeurs de la plus [red]petite[/red] à la plus [red]grande[/red].","fontex":0.5]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>_ne10k</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+    </rdf:Description>
+
+	<rdf:Description>
+        <dct:identifier>_ne100k</dct:identifier>
+        <dct:title xml:lang="fr-FR">Classer les différentes valeurs littérales de 1 et 100,000.</dct:title>
+        <dct:description><![CDATA["errratio":1,"gg":{"nb":7,"a":[100,0],"b":10,"c":100,"val":[]},"nbvalues":7,"number":2,"type":"move","font":0.5]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>_ne10k</dct:alternative>
+        <dct:relation>_ne10k</dct:relation>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+    </rdf:Description>
+	
+	<!-- MATCHING LITTERAL AND NUMERIC EXPRESSIONS -->
+	
 	<rdf:Description>
         <dct:identifier>_nu001</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer chaque nombre compris entre 1 et 20 à sa valeur.</dct:title>
-        <dct:description><![CDATA["values":[["1","un"],["2","deux"],["3","trois"],["4","quatre"],["5","cinq"],["6","six"],["7","sept"],["8","huit"],["9","neuf"],["10","dix"],["11","onze"],["12","douze"],["13","treize"],["14","quatorze"],["15","quinze"],["16","seize"],["17","dix-sept"],["18","dix-huit"],[19,"dix-neuf"],["20","vingt"]],"nbvalues":5,"number":4,"class":"h12","font":1.4,"len":3]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[20,1],"b":0,"c":0},"nbvalues":5,"number":4,"class":"h12","font":1.4,"len":3]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Associez[/b] chaque nombre à sa valeur.","fontex":0.5]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>nu001</dct:alternative>
+        <dct:alternative>_nu10k</dct:alternative>
+        <dct:relation>_nu10k</dct:relation>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
     </rdf:Description>
 
 	<rdf:Description>
         <dct:identifier>_nu002</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer chaque nombre compris entre 21 et 50 à sa valeur.</dct:title>
-        <dct:description><![CDATA["values":[["21","vingt et un"],["22","vingt-deux"],["23","vingt-trois"],["24","vingt-quatre"],["25","vingt-cinq"],["26","vingt-six"],["27","vingt-sept"],["28","vingt-huit"],["29","vingt-neuf"],["30","trente"],["31","trente et un"],["32","trente-deux"],["33","trente-trois"],["34","trente-quatre"],["35","trente-cinq"],["36","trente-six"],["37","trente-sept"],["38","trente-huit"],[39,"trente-neuf"],["40","quarante"],["41","quarante et un"],["42","quarante-deux"],["43","quarante-trois"],["44","quarante-quatre"],["45","quarante-cinq"],["46","quarante-six"],["47","quarante-sept"],["48","quarante-huit"],[49,"quarante-neuf"],["50","cinquante"]],"nbvalues":5,"number":4,"class":"h12","font":1.3,"len":3]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Associez[/b] chaque nombre à sa valeur.","fontex":0.5]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[30,21],"b":0,"c":0},"nbvalues":5,"number":4,"class":"h12","font":1.3,"len":3]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>nu001</dct:alternative>
+        <dct:alternative>_nu10k</dct:alternative>
+        <dct:relation>_nu10k</dct:relation>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
     </rdf:Description>
 
 	<rdf:Description>
         <dct:identifier>_nu003</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer chaque nombre compris entre 51 et 100 à sa valeur.</dct:title>
-        <dct:description><![CDATA["values":[["51","cinquante et un"],["52","cinquante-deux"],["53","cinquante-trois"],["54","cinquante-quatre"],["55","cinquante-cinq"],["56","cinquante-six"],["57","cinquante-sept"],["58","cinquante-huit"],[59,"cinquante-neuf"],["60","soixante"],["61","soixante et un"],["62","soixante-deux"],["63","soixante-trois"],["64","soixante-quatre"],["65","soixante-cinq"],["66","soixante-six"],["67","soixante-sept"],["68","soixante-huit"],[69,"soixante-neuf"],["70","soixante-dix"],["71","soixante et onze"],["72","soixante-douze"],["73","soixante-treize"],["74","soixante-quatorze"],["75","soixante-quinze"],["76","soixante-seize"],["77","soixante-dix-sept"],["78","soixante-dix-huit"],[79,"soixante-dix-neuf"],["80","quatre-vingts"],["81","quatre-vingt-un"],["82","quatre-vingt-deux"],["83","quatre-vingt-trois"],["84","quatre-vingt-quatre"],["85","quatre-vingt-cinq"],["86","quatre-vingt-six"],["87","quatre-vingt-sept"],["88","quatre-vingt-huit"],[89,"quatre-vingt-neuf"],["90","quatre-vingt-dix"],["91","quatre-vingt-onze"],["92","quatre-vingt-douze"],["93","quatre-vingt-treize"],["94","quatre-vingt-quatorze"],["95","quatre-vingt-quinze"],["96","quatre-vingt-seize"],["97","quatre-vingt-dix-sept"],["98","quatre-vingt-dix-huit"],[99,"quatre-vingt-dix-neuf"],["100","cent"]],"nbvalues":5,"number":4,"class":"h12","font":1,"len":3]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Associez[/b] chaque nombre à sa valeur.","fontex":0.5]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[50,51],"b":0,"c":0},"nbvalues":5,"number":4,"class":"h12","font":1,"len":3]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>nu001</dct:alternative>
+        <dct:alternative>_nu10k</dct:alternative>
+        <dct:relation>_nu10k</dct:relation>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
     </rdf:Description>
 
@@ -71,15 +116,56 @@
 	<rdf:Description>
         <dct:identifier>_nu005</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer chaque nombre compris entre 1 et 100 à sa valeur.</dct:title>
-        <dct:description><![CDATA["values":[["1","un"],["2","deux"],["3","trois"],["4","quatre"],["5","cinq"],["6","six"],["7","sept"],["8","huit"],["9","neuf"],["10","dix"],["11","onze"],["12","douze"],["13","treize"],["14","quatorze"],["15","quinze"],["16","seize"],["17","dix-sept"],["18","dix-huit"],[19,"dix-neuf"],["20","vingt"],["21","vingt et un"],["22","vingt-deux"],["23","vingt-trois"],["24","vingt-quatre"],["25","vingt-cinq"],["26","vingt-six"],["27","vingt-sept"],["28","vingt-huit"],["29","vingt-neuf"],["30","trente"],["31","trente et un"],["32","trente-deux"],["33","trente-trois"],["34","trente-quatre"],["35","trente-cinq"],["36","trente-six"],["37","trente-sept"],["38","trente-huit"],[39,"trente-neuf"],["40","quarante"],["41","quarante et un"],["42","quarante-deux"],["43","quarante-trois"],["44","quarante-quatre"],["45","quarante-cinq"],["46","quarante-six"],["47","quarante-sept"],["48","quarante-huit"],[49,"quarante-neuf"],["50","cinquante"],["51","cinquante et un"],["52","cinquante-deux"],["53","cinquante-trois"],["54","cinquante-quatre"],["55","cinquante-cinq"],["56","cinquante-six"],["57","cinquante-sept"],["58","cinquante-huit"],[59,"cinquante-neuf"],["60","soixante"],["61","soixante et un"],["62","soixante-deux"],["63","soixante-trois"],["64","soixante-quatre"],["65","soixante-cinq"],["66","soixante-six"],["67","soixante-sept"],["68","soixante-huit"],[69,"soixante-neuf"],["70","soixante-dix"],["71","soixante et onze"],["72","soixante-douze"],["73","soixante-treize"],["74","soixante-quatorze"],["75","soixante-quinze"],["76","soixante-seize"],["77","soixante-dix-sept"],["78","soixante-dix-huit"],[79,"soixante-dix-neuf"],["80","quatre-vingts"],["81","quatre-vingt-un"],["82","quatre-vingt-deux"],["83","quatre-vingt-trois"],["84","quatre-vingt-quatre"],["85","quatre-vingt-cinq"],["86","quatre-vingt-six"],["87","quatre-vingt-sept"],["88","quatre-vingt-huit"],[89,"quatre-vingt-neuf"],["90","quatre-vingt-dix"],["91","quatre-vingt-onze"],["92","quatre-vingt-douze"],["93","quatre-vingt-treize"],["94","quatre-vingt-quatorze"],["95","quatre-vingt-quinze"],["96","quatre-vingt-seize"],["97","quatre-vingt-dix-sept"],["98","quatre-vingt-dix-huit"],[99,"quatre-vingt-dix-neuf"],["100","cent"]],"nbvalues":5,"number":4,"class":"h12","font":1,"len":3]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Associez[/b] chaque nombre à sa valeur.","fontex":0.5]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[100,0],"b":0,"c":0},"nbvalues":5,"number":4,"class":"h12","font":1,"len":3]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>nu001</dct:alternative>
+        <dct:alternative>_nu10k</dct:alternative>
+        <dct:relation>_nu10k</dct:relation>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
     </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>_nu1k</dct:identifier>
+        <dct:title xml:lang="fr-FR">Associer chaque valeur littérale compris entre 1 et 1,000 à sa valeur numérique.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[100,0],"b":10,"c":0},"nbvalues":6,"number":2,"class":"h12","font":0.7,"len":3]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>_nu10k</dct:alternative>
+        <dct:relation>_nu10k</dct:relation>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>_nu10k</dct:identifier>
+        <dct:title xml:lang="fr-FR">Associer chaque valeur littérale compris entre 1 et 10,000 à sa valeur numérique.</dct:title>
+        <dct:description><![CDATA["errratio":1,"gg":{"a":[100,0],"b":10,"c":10},"nbvalues":6,"number":2,"class":"h12","font":0.6,"len":3,"gen":"function($this,_s,_i){var values=['zéro','un','deux','trois','quatre','cinq','six','sept','huit','neuf','dix','onze','douze','treize','quatorze','quinze','seize','dix-sept','dix-huit','dix-neuf','vingt','vingt-et-un','vingt-deux','vingt-trois','vingt-quatre','vingt-cinq','vingt-six','vingt-sept','vingt-huit','vingt-neuf','trente','trente-et-un','trente-deux','trente-trois','trente-quatre','trente-cinq','trente-six','trente-sept','trente-huit','trente-neuf','quarante','quarante-et-un','quarante-deux','quarante-trois','quarante-quatre','quarante-cinq','quarante-six','quarante-sept','quarante-huit','quarante-neuf','cinquante','cinquante-et-un','cinquante-deux','cinquante-trois','cinquante-quatre','cinquante-cinq','cinquante-six','cinquante-sept','cinquante-huit','cinquante-neuf','soixante','soixante-et-un','soixante-deux','soixante-trois','soixante-quatre','soixante-cinq','soixante-six','soixante-sept','soixante-huit','soixante-neuf','soixante-dix','soixante-et-onze','soixante-douze','soixante-treize','soixante-quatorze','soixante-quinze','soixante-seize','soixante-dix-sept','soixante-dix-huit','soixante-dix-neuf','quatre-vingts','quatre-vingt-un','quatre-vingt-deux','quatre-vingt-trois','quatre-vingt-quatre','quatre-vingt-cinq','quatre-vingt-six','quatre-vingt-sept','quatre-vingt-huit','quatre-vingt-neuf','quatre-vingt-dix','quatre-vingt-onze','quatre-vingt-douze','quatre-vingt-treize','quatre-vingt-quatorze','quatre-vingt-quinze','quatre-vingt-seize','quatre-vingt-dix-sept','quatre-vingt-dix-huit','quatre-vingt-dix-neuf'], a = Math.floor(Math.random()*_s.gg.a[0])+_s.gg.a[1], b = Math.floor(Math.random()*_s.gg.b), c = Math.floor(Math.random()*_s.gg.c); return [c*1000+b*100+a,((c>0)?(c>1?values[c]+'-':'')+'mille':'')+(c>0&&b>0?'-':'')+((b>0)?(b>1?values[b]+'-':'')+'cent'+(a==0&&b>1?'s':''):'')+(a>0&&(c>0||b>0)?'-':'')+((a>0||(b==0&&c==0))?values[a]:'')]; }"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Associez[/b] chaque nombre à sa valeur.","fontex":0.5]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>_nu10k</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>_nu100k</dct:identifier>
+        <dct:title xml:lang="fr-FR">Associer chaque valeur littérale compris entre 1 et 100,000 à sa valeur numérique.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[100,0],"b":10,"c":100},"nbvalues":10,"number":1,"class":"h12","font":0.5,"len":3]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>_nu10k</dct:alternative>
+        <dct:relation>_nu10k</dct:relation>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+    </rdf:Description>
+	
+	
 
 
 </rdf:RDF>

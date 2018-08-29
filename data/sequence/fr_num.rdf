@@ -6,67 +6,84 @@
     <rdf:Description>
         <dct:identifier>_nu10</dct:identifier>
         <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, les nombres de 1 à 9.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":1,"speed":0},"class":"alpha h14","values":[["un",1],["deux",2],["trois",3],["quatre",4],["cinq",5],["six",6],["sept",7],["huit",8],["neuf",9]],"font":1.3]]></dct:description>
+        <dct:description><![CDATA["number":10,"gg":{"a":[9,1],"b":0,"c":0},"input":{"digit":1,"speed":0},"font":1.3]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>nu10k</dct:alternative>
+        <dct:alternative>_nu10k</dct:alternative>
+        <dct:relation>_nu10k</dct:relation>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>_nu20</dct:identifier>
         <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, les nombres de 1 à 20.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":5000},"class":"alpha h14","values":[["un",1],["deux",2],["trois",3],["quatre",4],["cinq",5],["six",6],["sept",7],["huit",8],["neuf",9],["dix",10],["onze",11],["douze",12],["treize",13],["quatorze",14],["quinze",15],["seize",16],["dix-sept",17],["dix-huit",18],["dix-neuf",19],["vingt",20]],"font":1.3]]></dct:description>
+        <dct:description><![CDATA["number":12,"gg":{"a":[20,1],"b":0,"c":0},"input":{"digit":2,"speed":5000},"font":1.3]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>nu10k</dct:alternative>
+        <dct:alternative>_nu10k</dct:alternative>
+        <dct:relation>_nu10k</dct:relation>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>_nu50</dct:identifier>
         <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, les nombres de 0 à 50.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":5000},"class":"alpha h14","gen":"function(){var values=[\\\"zéro\\\",\\\"un\\\",\\\"deux\\\",\\\"trois\\\",\\\"quatre\\\",\\\"cinq\\\",\\\"six\\\",\\\"sept\\\",\\\"huit\\\",\\\"neuf\\\",\\\"dix\\\",\\\"onze\\\",\\\"douze\\\",\\\"treize\\\",\\\"quatorze\\\",\\\"quinze\\\",\\\"seize\\\",\\\"dix-sept\\\",\\\"dix-huit\\\",\\\"dix-neuf\\\",\\\"vingt\\\",\\\"vingt-et-un\\\",\\\"vingt-deux\\\",\\\"vingt-trois\\\",\\\"vingt-quatre\\\",\\\"vingt-cinq\\\",\\\"vingt-six\\\",\\\"vingt-sept\\\",\\\"vingt-huit\\\",\\\"vingt-neuf\\\",\\\"trente\\\",\\\"trente-et-un\\\",\\\"trente-deux\\\",\\\"trente-trois\\\",\\\"trente-quatre\\\",\\\"trente-cinq\\\",\\\"trente-six\\\",\\\"trente-sept\\\",\\\"trente-huit\\\",\\\"trente-neuf\\\",\\\"quarante\\\",\\\"quarante-et-un\\\",\\\"quarante-deux\\\",\\\"quarante-trois\\\",\\\"quarante-quatre\\\",\\\"quarante-cinq\\\",\\\"quarante-six\\\",\\\"quarante-sept\\\",\\\"quarante-huit\\\",\\\"quarante-neuf\\\",\\\"cinquante\\\"], a = Math.floor(Math.random()*50); return [values[a],a]; }","font":0.8]]></dct:description>
+        <dct:description><![CDATA["number":15,"gg":{"a":[50,0],"b":0,"c":0},"input":{"digit":2,"speed":5000},"font":0.8]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
-        <dct:educationLevel>3</dct:educationLevel>
+        <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>nu10k</dct:alternative>
+        <dct:alternative>_nu10k</dct:alternative>
+        <dct:relation>_nu10k</dct:relation>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>_nu100</dct:identifier>
         <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, les nombres de 0 à 100.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":5000},"class":"alpha h14","gen":"function(){var values=[\\\"zéro\\\",\\\"un\\\",\\\"deux\\\",\\\"trois\\\",\\\"quatre\\\",\\\"cinq\\\",\\\"six\\\",\\\"sept\\\",\\\"huit\\\",\\\"neuf\\\",\\\"dix\\\",\\\"onze\\\",\\\"douze\\\",\\\"treize\\\",\\\"quatorze\\\",\\\"quinze\\\",\\\"seize\\\",\\\"dix-sept\\\",\\\"dix-huit\\\",\\\"dix-neuf\\\",\\\"vingt\\\",\\\"vingt-et-un\\\",\\\"vingt-deux\\\",\\\"vingt-trois\\\",\\\"vingt-quatre\\\",\\\"vingt-cinq\\\",\\\"vingt-six\\\",\\\"vingt-sept\\\",\\\"vingt-huit\\\",\\\"vingt-neuf\\\",\\\"trente\\\",\\\"trente-et-un\\\",\\\"trente-deux\\\",\\\"trente-trois\\\",\\\"trente-quatre\\\",\\\"trente-cinq\\\",\\\"trente-six\\\",\\\"trente-sept\\\",\\\"trente-huit\\\",\\\"trente-neuf\\\",\\\"quarante\\\",\\\"quarante-et-un\\\",\\\"quarante-deux\\\",\\\"quarante-trois\\\",\\\"quarante-quatre\\\",\\\"quarante-cinq\\\",\\\"quarante-six\\\",\\\"quarante-sept\\\",\\\"quarante-huit\\\",\\\"quarante-neuf\\\",\\\"cinquante\\\",\\\"cinquante-et-un\\\",\\\"cinquante-deux\\\",\\\"cinquante-trois\\\",\\\"cinquante-quatre\\\",\\\"cinquante-cinq\\\",\\\"cinquante-six\\\",\\\"cinquante-sept\\\",\\\"cinquante-huit\\\",\\\"cinquante-neuf\\\",\\\"soixante\\\",\\\"soixante-et-un\\\",\\\"soixante-deux\\\",\\\"soixante-trois\\\",\\\"soixante-quatre\\\",\\\"soixante-cinq\\\",\\\"soixante-six\\\",\\\"soixante-sept\\\",\\\"soixante-huit\\\",\\\"soixante-neuf\\\",\\\"soixante-dix\\\",\\\"soixante-et-onze\\\",\\\"soixante-douze\\\",\\\"soixante-treize\\\",\\\"soixante-quatorze\\\",\\\"soixante-quinze\\\",\\\"soixante-seize\\\",\\\"soixante-dix-sept\\\",\\\"soixante-dix-huit\\\",\\\"soixante-dix-neuf\\\",\\\"quatre-vingts\\\",\\\"quatre-vingt-un\\\",\\\"quatre-vingt-deux\\\",\\\"quatre-vingt-trois\\\",\\\"quatre-vingt-quatre\\\",\\\"quatre-vingt-cinq\\\",\\\"quatre-vingt-six\\\",\\\"quatre-vingt-sept\\\",\\\"quatre-vingt-huit\\\",\\\"quatre-vingt-neuf\\\",\\\"quatre-vingt-dix\\\",\\\"quatre-vingt-onze\\\",\\\"quatre-vingt-douze\\\",\\\"quatre-vingt-treize\\\",\\\"quatre-vingt-quatorze\\\",\\\"quatre-vingt-quinze\\\",\\\"quatre-vingt-seize\\\",\\\"quatre-vingt-dix-sept\\\",\\\"quatre-vingt-dix-huit\\\",\\\"quatre-vingt-dix-neuf\\\"], a = Math.floor(Math.random()*100); return [values[a],a]; }","font":0.6]]></dct:description>
+        <dct:description><![CDATA["number":15,"gg":{"a":[100,0],"b":0,"c":0},"input":{"digit":2,"speed":5000},"font":0.6]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
-        <dct:educationLevel>3</dct:educationLevel>
+        <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
-        <dct:alternative>nu10k</dct:alternative>
+        <dct:alternative>_nu10k</dct:alternative>
+        <dct:relation>_nu10k</dct:relation>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>_nu1k</dct:identifier>
-        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, les nombres de 0 à 999.</dct:title>
-        <dct:description><![CDATA["number":15,"time":0,"input":{"digit":3,"speed":5000},"class":"alpha h14","gen":"function(){var values=[\\\"zéro\\\",\\\"un\\\",\\\"deux\\\",\\\"trois\\\",\\\"quatre\\\",\\\"cinq\\\",\\\"six\\\",\\\"sept\\\",\\\"huit\\\",\\\"neuf\\\",\\\"dix\\\",\\\"onze\\\",\\\"douze\\\",\\\"treize\\\",\\\"quatorze\\\",\\\"quinze\\\",\\\"seize\\\",\\\"dix-sept\\\",\\\"dix-huit\\\",\\\"dix-neuf\\\",\\\"vingt\\\",\\\"vingt-et-un\\\",\\\"vingt-deux\\\",\\\"vingt-trois\\\",\\\"vingt-quatre\\\",\\\"vingt-cinq\\\",\\\"vingt-six\\\",\\\"vingt-sept\\\",\\\"vingt-huit\\\",\\\"vingt-neuf\\\",\\\"trente\\\",\\\"trente-et-un\\\",\\\"trente-deux\\\",\\\"trente-trois\\\",\\\"trente-quatre\\\",\\\"trente-cinq\\\",\\\"trente-six\\\",\\\"trente-sept\\\",\\\"trente-huit\\\",\\\"trente-neuf\\\",\\\"quarante\\\",\\\"quarante-et-un\\\",\\\"quarante-deux\\\",\\\"quarante-trois\\\",\\\"quarante-quatre\\\",\\\"quarante-cinq\\\",\\\"quarante-six\\\",\\\"quarante-sept\\\",\\\"quarante-huit\\\",\\\"quarante-neuf\\\",\\\"cinquante\\\",\\\"cinquante-et-un\\\",\\\"cinquante-deux\\\",\\\"cinquante-trois\\\",\\\"cinquante-quatre\\\",\\\"cinquante-cinq\\\",\\\"cinquante-six\\\",\\\"cinquante-sept\\\",\\\"cinquante-huit\\\",\\\"cinquante-neuf\\\",\\\"soixante\\\",\\\"soixante-et-un\\\",\\\"soixante-deux\\\",\\\"soixante-trois\\\",\\\"soixante-quatre\\\",\\\"soixante-cinq\\\",\\\"soixante-six\\\",\\\"soixante-sept\\\",\\\"soixante-huit\\\",\\\"soixante-neuf\\\",\\\"soixante-dix\\\",\\\"soixante-et-onze\\\",\\\"soixante-douze\\\",\\\"soixante-treize\\\",\\\"soixante-quatorze\\\",\\\"soixante-quinze\\\",\\\"soixante-seize\\\",\\\"soixante-dix-sept\\\",\\\"soixante-dix-huit\\\",\\\"soixante-dix-neuf\\\",\\\"quatre-vingts\\\",\\\"quatre-vingt-un\\\",\\\"quatre-vingt-deux\\\",\\\"quatre-vingt-trois\\\",\\\"quatre-vingt-quatre\\\",\\\"quatre-vingt-cinq\\\",\\\"quatre-vingt-six\\\",\\\"quatre-vingt-sept\\\",\\\"quatre-vingt-huit\\\",\\\"quatre-vingt-neuf\\\",\\\"quatre-vingt-dix\\\",\\\"quatre-vingt-onze\\\",\\\"quatre-vingt-douze\\\",\\\"quatre-vingt-treize\\\",\\\"quatre-vingt-quatorze\\\",\\\"quatre-vingt-quinze\\\",\\\"quatre-vingt-seize\\\",\\\"quatre-vingt-dix-sept\\\",\\\"quatre-vingt-dix-huit\\\",\\\"quatre-vingt-dix-neuf\\\"], a = Math.floor(Math.random()*100), b = 1+Math.floor(Math.random()*9); return [((b>1)?values[b]+\\\"-\\\":\\\"\\\")+((a==0 && b>1)?\\\"cents\\\":\\\"cent\\\")+((a>0)?\\\"-\\\"+values[a]:\\\"\\\"),b*100+a]; }","font":0.4]]></dct:description>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, les nombres de 0 à 1,000.</dct:title>
+        <dct:description><![CDATA["number":15,"gg":{"a":[100,0],"b":10,"c":0},"input":{"digit":3,"speed":5000},"font":0.4]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>numeration</dct:subject>
-        <dct:educationLevel>3</dct:educationLevel>
+        <dct:educationLevel>2</dct:educationLevel>
         <dct:type>4</dct:type>
-        <dct:alternative>nu10k</dct:alternative>
+        <dct:alternative>_nu10k</dct:alternative>
+        <dct:relation>_nu10k</dct:relation>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>_nu10k</dct:identifier>
-        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, les nombres de 0 à 9999.</dct:title>
-        <dct:description><![CDATA["number":10,"time":0,"input":{"digit":4,"speed":5000},"class":"alpha h14","gen":"function(){var values=[\\\"zéro\\\",\\\"un\\\",\\\"deux\\\",\\\"trois\\\",\\\"quatre\\\",\\\"cinq\\\",\\\"six\\\",\\\"sept\\\",\\\"huit\\\",\\\"neuf\\\",\\\"dix\\\",\\\"onze\\\",\\\"douze\\\",\\\"treize\\\",\\\"quatorze\\\",\\\"quinze\\\",\\\"seize\\\",\\\"dix-sept\\\",\\\"dix-huit\\\",\\\"dix-neuf\\\",\\\"vingt\\\",\\\"vingt-et-un\\\",\\\"vingt-deux\\\",\\\"vingt-trois\\\",\\\"vingt-quatre\\\",\\\"vingt-cinq\\\",\\\"vingt-six\\\",\\\"vingt-sept\\\",\\\"vingt-huit\\\",\\\"vingt-neuf\\\",\\\"trente\\\",\\\"trente-et-un\\\",\\\"trente-deux\\\",\\\"trente-trois\\\",\\\"trente-quatre\\\",\\\"trente-cinq\\\",\\\"trente-six\\\",\\\"trente-sept\\\",\\\"trente-huit\\\",\\\"trente-neuf\\\",\\\"quarante\\\",\\\"quarante-et-un\\\",\\\"quarante-deux\\\",\\\"quarante-trois\\\",\\\"quarante-quatre\\\",\\\"quarante-cinq\\\",\\\"quarante-six\\\",\\\"quarante-sept\\\",\\\"quarante-huit\\\",\\\"quarante-neuf\\\",\\\"cinquante\\\",\\\"cinquante-et-un\\\",\\\"cinquante-deux\\\",\\\"cinquante-trois\\\",\\\"cinquante-quatre\\\",\\\"cinquante-cinq\\\",\\\"cinquante-six\\\",\\\"cinquante-sept\\\",\\\"cinquante-huit\\\",\\\"cinquante-neuf\\\",\\\"soixante\\\",\\\"soixante-et-un\\\",\\\"soixante-deux\\\",\\\"soixante-trois\\\",\\\"soixante-quatre\\\",\\\"soixante-cinq\\\",\\\"soixante-six\\\",\\\"soixante-sept\\\",\\\"soixante-huit\\\",\\\"soixante-neuf\\\",\\\"soixante-dix\\\",\\\"soixante-et-onze\\\",\\\"soixante-douze\\\",\\\"soixante-treize\\\",\\\"soixante-quatorze\\\",\\\"soixante-quinze\\\",\\\"soixante-seize\\\",\\\"soixante-dix-sept\\\",\\\"soixante-dix-huit\\\",\\\"soixante-dix-neuf\\\",\\\"quatre-vingts\\\",\\\"quatre-vingt-un\\\",\\\"quatre-vingt-deux\\\",\\\"quatre-vingt-trois\\\",\\\"quatre-vingt-quatre\\\",\\\"quatre-vingt-cinq\\\",\\\"quatre-vingt-six\\\",\\\"quatre-vingt-sept\\\",\\\"quatre-vingt-huit\\\",\\\"quatre-vingt-neuf\\\",\\\"quatre-vingt-dix\\\",\\\"quatre-vingt-onze\\\",\\\"quatre-vingt-douze\\\",\\\"quatre-vingt-treize\\\",\\\"quatre-vingt-quatorze\\\",\\\"quatre-vingt-quinze\\\",\\\"quatre-vingt-seize\\\",\\\"quatre-vingt-dix-sept\\\",\\\"quatre-vingt-dix-huit\\\",\\\"quatre-vingt-dix-neuf\\\"], a = Math.floor(Math.random()*100), b = 1+Math.floor(Math.random()*9), c = 1+Math.floor(Math.random()*9); return [((c>1)?values[c]+\\\"-\\\":\\\"\\\")+\\\"mille\\\"+((b>1)?\\\"-\\\"+values[b]:\\\"\\\")+((a==0 && b>1)?\\\"-cents\\\":\\\"-cent\\\")+((a>0)?\\\"-\\\"+values[a]:\\\"\\\"),c*1000+b*100+a]; }","font":0.3]]></dct:description>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, les nombres de 0 à 10,000.</dct:title>
+        <dct:description><![CDATA["number":10,"gg":{"a":[100,0],"b":10,"c":10},"time":0,"input":{"digit":4,"speed":5000},"class":"alpha h14","gen":"function($this,_s,_i){var values=['zéro','un','deux','trois','quatre','cinq','six','sept','huit','neuf','dix','onze','douze','treize','quatorze','quinze','seize','dix-sept','dix-huit','dix-neuf','vingt','vingt-et-un','vingt-deux','vingt-trois','vingt-quatre','vingt-cinq','vingt-six','vingt-sept','vingt-huit','vingt-neuf','trente','trente-et-un','trente-deux','trente-trois','trente-quatre','trente-cinq','trente-six','trente-sept','trente-huit','trente-neuf','quarante','quarante-et-un','quarante-deux','quarante-trois','quarante-quatre','quarante-cinq','quarante-six','quarante-sept','quarante-huit','quarante-neuf','cinquante','cinquante-et-un','cinquante-deux','cinquante-trois','cinquante-quatre','cinquante-cinq','cinquante-six','cinquante-sept','cinquante-huit','cinquante-neuf','soixante','soixante-et-un','soixante-deux','soixante-trois','soixante-quatre','soixante-cinq','soixante-six','soixante-sept','soixante-huit','soixante-neuf','soixante-dix','soixante-et-onze','soixante-douze','soixante-treize','soixante-quatorze','soixante-quinze','soixante-seize','soixante-dix-sept','soixante-dix-huit','soixante-dix-neuf','quatre-vingts','quatre-vingt-un','quatre-vingt-deux','quatre-vingt-trois','quatre-vingt-quatre','quatre-vingt-cinq','quatre-vingt-six','quatre-vingt-sept','quatre-vingt-huit','quatre-vingt-neuf','quatre-vingt-dix','quatre-vingt-onze','quatre-vingt-douze','quatre-vingt-treize','quatre-vingt-quatorze','quatre-vingt-quinze','quatre-vingt-seize','quatre-vingt-dix-sept','quatre-vingt-dix-huit','quatre-vingt-dix-neuf'], a = Math.floor(Math.random()*_s.gg.a[0])+_s.gg.a[1], b = Math.floor(Math.random()*_s.gg.b), c = Math.floor(Math.random()*_s.gg.c); return [((c>0)?(c>1?values[c]+'-':'')+'mille':'')+(c>0&&b>0?'-':'')+((b>0)?(b>1?values[b]+'-':'')+'cent'+(a==0&&b>1?'s':''):'')+(a>0&&(c>0||b>0)?'-':'')+((a>0||(b==0&&c==0))?values[a]:''),c*1000+b*100+a]; }","font":0.3]]></dct:description>
         <dct:extent>4</dct:extent>
         <dct:subject>numeration</dct:subject>
-        <dct:educationLevel>3</dct:educationLevel>
+        <dct:educationLevel>2</dct:educationLevel>
         <dct:type>5</dct:type>
-        <dct:alternative>nu10k</dct:alternative>
+        <dct:alternative>_nu10k</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>_nu100k</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, les nombres de 0 à 100,000.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[100,0],"b":10,"c":100},"input":{"digit":5,"speed":5000},"font":0.25]]></dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>5</dct:type>
+        <dct:alternative>_nu10k</dct:alternative>
+        <dct:relation>_nu10k</dct:relation>
     </rdf:Description>
 
 </rdf:RDF>

@@ -84,6 +84,32 @@
     </rdf:Description>
 
     <rdf:Description>
+        <dct:identifier>10ko</dct:identifier>
+        <dct:title xml:lang="fr-FR">Reproduire avec un boulier les nombres demandés compris entre 1 et 10 000.</dct:title>
+        <dct:description><![CDATA["type":"classic","gen":"function(_last){ var a; do { a=Math.floor(Math.random()*9999+1); } while(a==_last); return {\\\"type\\\":\\\"number\\\",\\\"value\\\":a}; }","number":4]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Reproduisez[/b] les nombres demandés."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>10to</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>10koa</dct:identifier>
+        <dct:title xml:lang="fr-FR">Reproduire avec un boulier les nombres demandés compris entre 1 et 10 000 sans remise à zéro entre les questions.</dct:title>
+        <dct:description><![CDATA["type":"classic","gen":"function(_last){ var a; do { a=Math.floor(Math.random()*9999+1); } while(a==_last); var ret={\\\"type\\\":\\\"number\\\",\\\"value\\\":a}; if (_last==-1) { ret.init = Math.floor(Math.random()*9999+1); } return ret;}","number":4, "reset":false]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Reproduisez les nombres demandés en partant d'un boulier [b]non remis à 0[/b]."]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>10to</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
         <dct:identifier>1mo</dct:identifier>
         <dct:title xml:lang="fr-FR">Reproduire avec un boulier les nombres demandés compris entre 1 et 1 000 000.</dct:title>
         <dct:description><![CDATA["type":"classic","gen":"function(_last){ var a; do { a=Math.floor(Math.random()*999999+1); } while(a==_last); return {\\\"type\\\":\\\"number\\\",\\\"value\\\":a}; }","number":4]]></dct:description>
@@ -369,6 +395,32 @@
         <dct:type>1</dct:type>
         <dct:alternative>s10to</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>s10ko</dct:identifier>
+        <dct:title xml:lang="fr-FR">Reproduire avec un boulier chinois les nombres demandés compris entre 1 et 10 000.</dct:title>
+        <dct:description><![CDATA["gen":"function(_last){ var a; do { a=Math.floor(Math.random()*9999+1); } while(a==_last); return {\\\"type\\\":\\\"number\\\",\\\"value\\\":a}; }","number":4]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Reproduisez[/b] les nombres demandés."]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>s10to</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>s10koa</dct:identifier>
+        <dct:title xml:lang="fr-FR">Reproduire avec un boulier chinois les nombres demandés compris entre 1 et 10 000 sans remise à zéro entre les questions.</dct:title>
+        <dct:description><![CDATA["gen":"function(_last){ var a; do { a=Math.floor(Math.random()*9999+1); } while(a==_last); var ret={\\\"type\\\":\\\"number\\\",\\\"value\\\":a}; if (_last==-1) { ret.init = Math.floor(Math.random()*9999+1); } return ret;}","number":4, "reset":false]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Reproduisez les nombres demandés en partant d'un boulier [b]non remis à 0[/b]."]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>s10to</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
     </rdf:Description>
 
     <rdf:Description>

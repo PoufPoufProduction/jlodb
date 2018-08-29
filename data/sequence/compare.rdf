@@ -657,222 +657,191 @@
         <dct:alternative>n010</dct:alternative>
     </rdf:Description>
 
-    <!-- 2 compares -->
+    <!-- 2 COMPARES -->
  
     <rdf:Description>
         <dct:identifier>st29</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre 2 et 9 complétant la double inégalité d'infériorité.</dct:title>
-        <dct:description><![CDATA["number":15,"time":0,"input":{"digit":1,"speed":0},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*8)+1; return [\\\"<div style='width:1.3em;margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:1em;'>&lt;</div><div style='width:1.1em;'>...</div><div style='width:1em;'>&lt;</div><div style='width:1.1em;'>\\\"+(a+2)+\\\"</div>\\\",(a+1)]}","class":"h12 alpha left","font":1.2]]></dct:description>
+        <dct:description><![CDATA["number":10,"gg":{"c":0,"a":[9,1],"b":0,"l":1.2},"font":1.1]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>t119x</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>st29x</dct:identifier>
-        <dct:title xml:lang="fr-FR">Trouver, en moins de 40 secondes, le nombre compris entre 2 et 9 complétant la double inégalité d'infériorité.</dct:title>
-        <dct:description><![CDATA["number":15,"time":2,"input":{"digit":1,"speed":0},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*8)+1; return [\\\"<div style='width:1.3em;margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:1em;'>&lt;</div><div style='width:1.1em;'>...</div><div style='width:1em;'>&lt;</div><div style='width:1.1em;'>\\\"+(a+2)+\\\"</div>\\\",(a+1)]}","class":"h12 alpha left","font":1.2]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>numeration</dct:subject>
-        <dct:educationLevel>1</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>t119x</dct:alternative>
+        <dct:relation>tm29</dct:relation>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>stm29</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, l'un des nombres compris entre 2 et 9 complétant la double inégalité d'infériorité.</dct:title>
-        <dct:description><![CDATA["number":15,"time":0,"input":{"digit":1,"speed":0},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var c=Math.floor(Math.random()*2)+1,a=Math.floor(Math.random()*(9-c))+1,vals=[]; for (var i=0; i<c; i++) { vals.push(a+1+i); } return [\\\"<div style='width:1.3em;margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:1em;'>&lt;</div><div style='width:1.1em;'>...</div><div style='width:1em;'>&lt;</div><div style='width:1.1em;'>\\\"+(a+c+1)+\\\"</div>\\\",vals]}","class":"h12 alpha left","font":1.2]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Trouvez une valeur vérifiant la double inégalité."]]></dct:description>
+        <dct:description><![CDATA["gg":{"c":2,"a":[9,1],"b":0,"l":1.2}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>t119x</dct:alternative>
+        <dct:relation>tm29</dct:relation>
     </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>ste10</dct:identifier>
-        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre 0 et 10 complétant la double inégalité d'infériorité.</dct:title>
-        <dct:description><![CDATA["number":15,"time":0,"input":{"digit":2,"speed":5000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var c=Math.floor(Math.random()*3),a=Math.floor(Math.random()*(c==0?9:10)); return [\\\"<div style='width:1.5em;margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:.6em;'>\\\"+(c==1?'&#8804;':'&lt;')+\\\"</div><div style='width:1.3em;text-align:center'>...</div><div style='width:.6em;'>\\\"+(c==2?'&#8804;':'&lt;')+\\\"</div><div style='width:1.5em;'>\\\"+(c==0?a+2:a+1)+\\\"</div>\\\",(c==1?a:a+1)]}","class":"h12 alpha left","font":1.1]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>numeration</dct:subject>
-        <dct:educationLevel>1</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>t119x</dct:alternative>
-     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>st119</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre 1 et 19 complétant la double inégalité d'infériorité.</dct:title>
-        <dct:description><![CDATA["number":15,"time":0,"input":{"digit":2,"speed":5000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*19); return [\\\"<div style='width:1.5em;margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:1em;'>&lt;</div><div style='width:1.3em;'>...</div><div style='width:1em;'>&lt;</div><div style='width:1.5em;'>\\\"+(a+2)+\\\"</div>\\\",(a+1)]}","class":"h12 alpha left","font":1.1]]></dct:description>
+        <dct:description><![CDATA["time":0,"gg":{"c":0,"a":[19,1],"b":0,"l":1.2},"input":{"digit":2,"speed":5000},"font":1.1]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>t119x</dct:alternative>
+        <dct:relation>tm29</dct:relation>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>st119x</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver, en moins de 40 secondes, le nombre compris entre 1 et 19 complétant la double inégalité d'infériorité.</dct:title>
-        <dct:description><![CDATA["number":15,"time":2,"input":{"digit":2,"speed":5000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*19); return [\\\"<div style='width:1.5em;margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:1em;'>&lt;</div><div style='width:1.3em;'>...</div><div style='width:1em;'>&lt;</div><div style='width:1.5em;'>\\\"+(a+2)+\\\"</div>\\\",(a+1)]}","class":"h12 alpha left","font":1.1]]></dct:description>
+        <dct:description><![CDATA["time":2,"gg":{"c":0,"a":[19,1],"b":0,"l":1.2},"input":{"digit":2,"speed":5000},"font":1.1]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>t119x</dct:alternative>
+        <dct:relation>tm29</dct:relation>
     </rdf:Description>
 
 
     <rdf:Description>
         <dct:identifier>gt29</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre 2 et 9 complétant la double inégalité de supériorité.</dct:title>
-        <dct:description><![CDATA["number":15,"time":0,"input":{"digit":1,"speed":0},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*8)+1; return [\\\"<div style='width:1.3em;margin-left:.1em;'>\\\"+(a+2)+\\\"</div><div style='width:1em;'>&gt;</div><div style='width:1.1em;'>...</div><div style='width:1em;'>&gt;</div><div style='width:1.1em;'>\\\"+a+\\\"</div>\\\",(a+1)]}","class":"h12 alpha left","font":1.2]]></dct:description>
+        <dct:description><![CDATA["number":10,"gg":{"c":0,"a":[9,1],"b":1,"l":1.2},"font":1.1]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>t119x</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>gt29x</dct:identifier>
-        <dct:title xml:lang="fr-FR">Trouver, en moins de 40 secondes, le nombre compris entre 2 et 9 complétant la double inégalité de supériorité.</dct:title>
-        <dct:description><![CDATA["number":15,"time":2,"input":{"digit":1,"speed":0},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*8)+1; return [\\\"<div style='width:1.3em;margin-left:.1em;'>\\\"+(a+2)+\\\"</div><div style='width:1em;'>&gt;</div><div style='width:1.1em;'>...</div><div style='width:1em;'>&gt;</div><div style='width:1.1em;'>\\\"+a+\\\"</div>\\\",(a+1)]}","class":"h12 alpha left","font":1.2]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>numeration</dct:subject>
-        <dct:educationLevel>1</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>t119x</dct:alternative>
+        <dct:relation>tm29</dct:relation>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>gtm29</dct:identifier>
-        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, l'un des nombres compris entre 2 et 9 complétant la double inégalité d'infériorité.</dct:title>
-        <dct:description><![CDATA["number":15,"time":0,"input":{"digit":1,"speed":0},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var c=Math.floor(Math.random()*2)+1,a=Math.floor(Math.random()*(9-c))+1,vals=[]; for (var i=0; i<c; i++) { vals.push(a+1+i); } return [\\\"<div style='width:1.3em;margin-left:.1em;'>\\\"+(a+c+1)+\\\"</div><div style='width:1em;'>&gt;</div><div style='width:1.1em;'>...</div><div style='width:1em;'>&gt;</div><div style='width:1.1em;'>\\\"+a+\\\"</div>\\\",vals]}","class":"h12 alpha left","font":1.2]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Trouvez une valeur vérifiant la double inégalité."]]></dct:description>
+        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, l'un des nombres compris entre 2 et 9 complétant la double inégalité de supériorité.</dct:title>
+        <dct:description><![CDATA["gg":{"c":2,"a":[9,1],"b":1,"l":1.2}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>t119x</dct:alternative>
+        <dct:relation>tm29</dct:relation>
     </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>gte10</dct:identifier>
-        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre 0 et 10 complétant la double inégalité de supériorité.</dct:title>
-        <dct:description><![CDATA["number":15,"time":0,"input":{"digit":2,"speed":5000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var c=Math.floor(Math.random()*3),a=Math.floor(Math.random()*(c==0?9:10)); return [\\\"<div style='width:1.5em;margin-left:.1em;'>\\\"+(c==0?a+2:a+1)+\\\"</div><div style='width:.6em;'>\\\"+(c==1?'&#8805;':'&gt;')+\\\"</div><div style='width:1.3em;text-align:center'>...</div><div style='width:.6em;'>\\\"+(c==2?'&#8805;':'&gt;')+\\\"</div><div style='width:1.5em;'>\\\"+a+\\\"</div>\\\",(c==2?a:a+1)]}","class":"h12 alpha left","font":1.1]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>numeration</dct:subject>
-        <dct:educationLevel>1</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>t119x</dct:alternative>
-     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>gt119</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre 1 et 19 complétant la double inégalité de supériorité.</dct:title>
-        <dct:description><![CDATA["number":15,"time":0,"input":{"digit":2,"speed":5000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*19); return [\\\"<div style='width:1.5em;margin-left:.1em;'>\\\"+(a+2)+\\\"</div><div style='width:1em;'>&gt;</div><div style='width:1.3em;'>...</div><div style='width:1em;'>&gt;</div><div style='width:1.5em;'>\\\"+a+\\\"</div>\\\",(a+1)]}","class":"h12 alpha left","font":1.1]]></dct:description>
+        <dct:description><![CDATA["time":0,"gg":{"c":0,"a":[19,1],"b":1,"l":1.2},"input":{"digit":2,"speed":5000},"font":1.1]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>t119x</dct:alternative>
+        <dct:relation>tm29</dct:relation>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>gt119x</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver, en moins de 40 secondes, le nombre compris entre 1 et 19 complétant la double inégalité de supériorité.</dct:title>
-        <dct:description><![CDATA["number":15,"time":2,"input":{"digit":2,"speed":5000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*19); return [\\\"<div style='width:1.5em;margin-left:.1em;'>\\\"+(a+2)+\\\"</div><div style='width:1em;'>&gt;</div><div style='width:1.3em;'>...</div><div style='width:1em;'>&gt;</div><div style='width:1.5em;'>\\\"+a+\\\"</div>\\\",(a+1)]}","class":"h12 alpha left","font":1.1]]></dct:description>
+        <dct:description><![CDATA["time":2,"gg":{"c":0,"a":[19,1],"b":1,"l":1.2},"input":{"digit":2,"speed":5000},"font":1.1]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>t119x</dct:alternative>
+        <dct:relation>tm29</dct:relation>
     </rdf:Description>
 
 
     <rdf:Description>
         <dct:identifier>t29</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre 2 et 9 complétant la double inégalité.</dct:title>
-        <dct:description><![CDATA["number":15,"time":0,"input":{"digit":1,"speed":0},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*8)+1, b=Math.floor(Math.random()*2); return [b?\\\"<div style='width:1.2em;margin-left:.1em;'>\\\"+(a+2)+\\\"</div><div style='width:1em;'>&gt;</div><div style='width:1.1em;'>...</div><div style='width:1em;'>&gt;</div><div style='width:1.2em;'>\\\"+a+\\\"</div>\\\":\\\"<div style='width:1.2em;margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:1em;'>&lt;</div><div style='width:1.1em;'>...</div><div style='width:1em;'>&lt;</div><div style='width:1.2em;'>\\\"+(a+2)+\\\"</div>\\\",(a+1)]}","class":"h12 alpha left","font":1.2]]></dct:description>
+        <dct:description><![CDATA["gg":{"c":0,"a":[9,1],"b":0,"l":1.2},"input":{"digit":1,"speed":0},"font":1.2]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>t119x</dct:alternative>
+        <dct:relation>tm29</dct:relation>
     </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>t29x</dct:identifier>
-        <dct:title xml:lang="fr-FR">Trouver, en moins de 40 secondes, le nombre compris entre 2 et 9 complétant la double inégalité.</dct:title>
-        <dct:description><![CDATA["number":15,"time":2,"input":{"digit":1,"speed":0},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*8)+1, b=Math.floor(Math.random()*2); return [b?\\\"<div style='width:1.2em;margin-left:.1em;'>\\\"+(a+2)+\\\"</div><div style='width:1em;'>&gt;</div><div style='width:1.1em;'>...</div><div style='width:1em;'>&gt;</div><div style='width:1.2em;'>\\\"+a+\\\"</div>\\\":\\\"<div style='width:1.2em;margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:1em;'>&lt;</div><div style='width:1.1em;'>...</div><div style='width:1em;'>&lt;</div><div style='width:1.2em;'>\\\"+(a+2)+\\\"</div>\\\",(a+1)]}","class":"h12 alpha left","font":1.2]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>numeration</dct:subject>
-        <dct:educationLevel>1</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>t119x</dct:alternative>
-    </rdf:Description>
-
-
+	
     <rdf:Description>
         <dct:identifier>tm29</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, l'un des nombres compris entre 2 et 9 complétant la double inégalité.</dct:title>
-        <dct:description><![CDATA["number":15,"time":0,"input":{"digit":1,"speed":0},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var c=Math.floor(Math.random()*2)+1,a=Math.floor(Math.random()*(9-c))+1,vals=[]; for (var i=0; i<c; i++) { vals.push(a+1+i); } var b=Math.floor(Math.random()*2); return [b?\\\"<div style='width:1.2em;margin-left:.1em;'>\\\"+(a+c+1)+\\\"</div><div style='width:1em;'>&gt;</div><div style='width:1.1em;'>...</div><div style='width:1em;'>&gt;</div><div style='width:1.2em;'>\\\"+a+\\\"</div>\\\":\\\"<div style='width:1.2em;margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:1em;'>&lt;</div><div style='width:1.1em;'>...</div><div style='width:1em;'>&lt;</div><div style='width:1.2em;'>\\\"+(a+c+1)+\\\"</div>\\\",vals]}","class":"h12 alpha left","font":1.2]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Trouvez une valeur vérifiant la double inégalité."]]></dct:description>
+        <dct:description><![CDATA["gg":{"c":2,"a":[9,1],"b":2,"l":1.2},"number":15,"time":0,"input":{"digit":1,"speed":0},"regexp": { "output": "\\\\.\\\\.\\\\.","keepval":true },"gen":"function($this,_s,_i) { var c=Math.floor(Math.random()*_s.gg.c)+1,a=Math.floor(Math.random()*(_s.gg.a[0]-c))+_s.gg.a[1],vals=[]; for (var i=0; i<c; i++) { vals.push(a+1+i); } var b=(_s.gg.b==2)?Math.floor(Math.random()*2):_s.gg.b; return [b?\\\"<div style='width:\\\"+_s.gg.l+\\\"em;margin-left:.1em;'>\\\"+(a+c+1)+\\\"</div><div style='width:1em;'>&gt;</div><div style='width:\\\"+_s.gg.l+\\\"em;'>...</div><div style='width:1em;'>&gt;</div><div style='width:\\\"+_s.gg.l+\\\"em;'>\\\"+a+\\\"</div>\\\":\\\"<div style='width:\\\"+_s.gg.l+\\\"em;margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:1em;'>&lt;</div><div style='width:\\\"+_s.gg.l+\\\"em;'>...</div><div style='width:1em;'>&lt;</div><div style='width:\\\"+_s.gg.l+\\\"em;'>\\\"+(a+c+1)+\\\"</div>\\\",vals]}","class":"p02 h12 alpha left","font":1.2]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Trouvez une valeur[/b] vérifiant la double inégalité."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
-        <dct:alternative>t119x</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>te10</dct:identifier>
-        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre 0 et 10 complétant la double inégalité.</dct:title>
-        <dct:description><![CDATA["number":15,"time":0,"input":{"digit":2,"speed":5000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var op=[['&lt;','&#8804;','&lt;','&gt;','&#8805;','&gt;'],['&lt;','&lt;','&#8804;','&gt;','&gt;','&#8805;']],c=Math.floor(Math.random()*6),a=Math.floor(Math.random()*((c%3)==0?9:10)); return [\\\"<div style='width:1.5em;margin-left:.1em;'>\\\"+(c<3?a:(c==3?a+2:a+1))+\\\"</div><div style='width:.6em;'>\\\"+op[0][c]+\\\"</div><div style='width:1.3em;text-align:center'>...</div><div style='width:.6em;'>\\\"+op[1][c]+\\\"</div><div style='width:1.5em;'>\\\"+(c<3?(c==0?a+2:a+1):a)+\\\"</div>\\\",(c==1||c==5?a:a+1)]}","class":"h12 alpha left h12","font":1.1]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>numeration</dct:subject>
-        <dct:educationLevel>1</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>t119x</dct:alternative>
-     </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>te10x</dct:identifier>
-        <dct:title xml:lang="fr-FR">Trouver, en moins de 40 secondes, le nombre compris entre 0 et 10 complétant la double inégalité.</dct:title>
-        <dct:description><![CDATA["number":15,"time":2,"input":{"digit":2,"speed":5000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var op=[['&lt;','&#8804;','&lt;','&gt;','&#8805;','&gt;'],['&lt;','&lt;','&#8804;','&gt;','&gt;','&#8805;']],c=Math.floor(Math.random()*6),a=Math.floor(Math.random()*((c%3)==0?9:10)); return [\\\"<div style='width:1.5em;margin-left:.1em;'>\\\"+(c<3?a:(c==3?a+2:a+1))+\\\"</div><div style='width:.6em;'>\\\"+op[0][c]+\\\"</div><div style='width:1.3em;text-align:center'>...</div><div style='width:.6em;'>\\\"+op[1][c]+\\\"</div><div style='width:1.5em;'>\\\"+(c<3?(c==0?a+2:a+1):a)+\\\"</div>\\\",(c==1||c==5?a:a+1)]}","class":"h12 alpha left h12","font":1.1]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>numeration</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>3</dct:type>
         <dct:alternative>t119x</dct:alternative>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>t119</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, le nombre compris entre 1 et 19 complétant la double inégalité.</dct:title>
-        <dct:description><![CDATA["number":15,"time":0,"input":{"digit":2,"speed":5000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*19), b=Math.floor(Math.random()*2); return [b?\\\"<div style='width:1.5em;margin-left:.1em;'>\\\"+(a+2)+\\\"</div><div style='width:1em;'>&gt;</div><div style='width:1.2em;'>...</div><div style='width:1em;'>&gt;</div><div style='width:1.5em;'>\\\"+a+\\\"</div>\\\":\\\"<div style='width:1.5em;margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:1em;'>&lt;</div><div style='width:1.3em;'>...</div><div style='width:1em;'>&lt;</div><div style='width:1.5em;'>\\\"+(a+2)+\\\"</div>\\\",(a+1)]}","class":"h12 alpha left","font":1.1]]></dct:description>
+        <dct:description><![CDATA["gg":{"c":0,"a":[19,1],"b":0,"l":1.2},"input":{"digit":2,"speed":5000},"font":1.1]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>t119x</dct:alternative>
+        <dct:relation>tm29</dct:relation>
     </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>t119x</dct:identifier>
         <dct:title xml:lang="fr-FR">Trouver, en moins de 40 secondes, le nombre compris entre 1 et 19 complétant la double inégalité.</dct:title>
-        <dct:description><![CDATA["number":15,"time":2,"input":{"digit":2,"speed":5000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var a=Math.floor(Math.random()*19), b=Math.floor(Math.random()*2); return [b?\\\"<div style='width:1.5em;margin-left:.1em;'>\\\"+(a+2)+\\\"</div><div style='width:1em;'>&gt;</div><div style='width:1.2em;'>...</div><div style='width:1em;'>&gt;</div><div style='width:1.5em;'>\\\"+a+\\\"</div>\\\":\\\"<div style='width:1.5em;margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:1em;'>&lt;</div><div style='width:1.3em;'>...</div><div style='width:1em;'>&lt;</div><div style='width:1.5em;'>\\\"+(a+2)+\\\"</div>\\\",(a+1)]}","class":"h12 alpha left","font":1.1]]></dct:description>
+        <dct:description><![CDATA["time":2,"gg":{"c":0,"a":[19,1],"b":0,"l":1.2},"input":{"digit":2,"speed":5000},"font":1.1]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>1</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>t119x</dct:alternative>
+        <dct:relation>tm29</dct:relation>
     </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>tm100</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, l'un des nombres compris entre 2 et 100 complétant la double inégalité.</dct:title>
+        <dct:description><![CDATA["gg":{"c":3,"a":[99,1],"b":2,"l":1.2},"input":{"digit":2,"speed":5000},"font":1]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>t119x</dct:alternative>
+        <dct:relation>tm29</dct:relation>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>tm1k</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, l'un des nombres compris entre 2 et 1 000 complétant la double inégalité.</dct:title>
+        <dct:description><![CDATA["gg":{"c":10,"a":[999,1],"b":2,"l":1.8},"input":{"digit":3,"speed":5000},"font":0.8]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>t119x</dct:alternative>
+        <dct:relation>tm29</dct:relation>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>tm10k</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, l'un des nombres compris entre 2 et 10 000 complétant la double inégalité.</dct:title>
+        <dct:description><![CDATA["gg":{"c":50,"a":[9999,1],"b":2,"l":2.4},"input":{"digit":4,"speed":5000},"font":0.7]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>t119x</dct:alternative>
+        <dct:relation>tm29</dct:relation>
+    </rdf:Description>
+
+	<!-- Not sure about this one -->
 
     <rdf:Description>
         <dct:identifier>te100</dct:identifier>
@@ -884,42 +853,6 @@
         <dct:type>2</dct:type>
         <dct:alternative>t119x</dct:alternative>
      </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>te100x</dct:identifier>
-        <dct:title xml:lang="fr-FR">Trouver, en moins de 40 secondes, le nombre compris entre 0 et 100 complétant la double inégalité.</dct:title>
-        <dct:description><![CDATA["time":2,"input":{"digit":2,"speed":5000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var op=[['&lt;','&#8804;','&lt;','&gt;','&#8805;','&gt;'],['&lt;','&lt;','&#8804;','&gt;','&gt;','&#8805;']],c=Math.floor(Math.random()*6),a=Math.floor(Math.random()*((c%3)==0?98:99)); return [\\\"<div style='width:1.5em;margin-left:.1em;'>\\\"+(c<3?a:(c==3?a+2:a+1))+\\\"</div><div style='width:.6em;'>\\\"+op[0][c]+\\\"</div><div style='width:1.5em;text-align:center'>...</div><div style='width:.6em;'>\\\"+op[1][c]+\\\"</div><div style='width:1.5em;'>\\\"+(c<3?(c==0?a+2:a+1):a)+\\\"</div>\\\",(c==1||c==5?a:a+1)]}","class":"h12 alpha left h12","font":1.1]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>numeration</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>t119x</dct:alternative>
-     </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>tm100</dct:identifier>
-        <dct:title xml:lang="fr-FR">Trouver, sans contrainte de temps, l'un des nombres compris entre 2 et 98 complétant la double inégalité.</dct:title>
-        <dct:description><![CDATA["time":0,"input":{"digit":2,"speed":5000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var c=Math.floor(Math.random()*3)+1,a=Math.floor(Math.random()*(99-c))+1,vals=[]; for (var i=0; i<c; i++) { vals.push(a+1+i); } var b=Math.floor(Math.random()*2); return [b?\\\"<div style='width:1.5em;margin-left:.1em;'>\\\"+(a+c+1)+\\\"</div><div style='width:1em;'>&gt;</div><div style='width:1.5em;'>...</div><div style='width:1em;'>&gt;</div><div style='width:1.5em;'>\\\"+a+\\\"</div>\\\":\\\"<div style='width:1.5em;margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:1em;'>&lt;</div><div style='width:1.5em;'>...</div><div style='width:1em;'>&lt;</div><div style='width:1.5em;'>\\\"+(a+c+1)+\\\"</div>\\\",vals]}","class":"h12 alpha left","font":1]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Trouvez une valeur vérifiant la double inégalité."]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>numeration</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>t119x</dct:alternative>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>tm100x</dct:identifier>
-        <dct:title xml:lang="fr-FR">Trouver, en moins de 40 secondes, l'un des nombres compris entre 2 et 98 complétant la double inégalité.</dct:title>
-        <dct:description><![CDATA["time":2,"input":{"digit":2,"speed":5000},"regexp": { "output": "\\\\.\\\\.\\\\." },"gen":"function() { var c=Math.floor(Math.random()*3)+1,a=Math.floor(Math.random()*(99-c))+1,vals=[]; for (var i=0; i<c; i++) { vals.push(a+1+i); } var b=Math.floor(Math.random()*2); return [b?\\\"<div style='width:1.5em;margin-left:.1em;'>\\\"+(a+c+1)+\\\"</div><div style='width:1em;'>&gt;</div><div style='width:1.5em;'>...</div><div style='width:1em;'>&gt;</div><div style='width:1.5em;'>\\\"+a+\\\"</div>\\\":\\\"<div style='width:1.5em;margin-left:.1em;'>\\\"+a+\\\"</div><div style='width:1em;'>&lt;</div><div style='width:1.5em;'>...</div><div style='width:1em;'>&lt;</div><div style='width:1.5em;'>\\\"+(a+c+1)+\\\"</div>\\\",vals]}","class":"h12 alpha left","font":1]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Trouvez une valeur vérifiant la double inégalité."]]></dct:description>
-        <dct:extent>1</dct:extent>
-        <dct:subject>numeration</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>t119x</dct:alternative>
-    </rdf:Description>
-
     
     <!-- Negative -->
 

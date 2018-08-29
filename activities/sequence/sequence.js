@@ -355,8 +355,8 @@
             var settings = helpers.settings($this);
             clearTimeout(settings.keypadtimer);
             settings.keypadtimer=0;
-			settings.response.value="";
             helpers.check($this,true);
+			settings.response.value="";
         },
         // Check the user entry
         check:function($this, force) {
@@ -390,9 +390,11 @@
                     if (settings.regexp && settings.regexp.output) {
                         var vReg = new RegExp(settings.regexp.output, "g");
                         var value = settings.response.value;
-                        if (vRet && $.isArray(settings.questions[settings.it].response)) {
+                        if (vRet && $.isArray(settings.questions[settings.it].response)
+								 && !settings.regexp.keepval) {
                             value = settings.questions[settings.it].response[0];
                         }
+
                         $(vQuestion).html($(vQuestion).html().replace(vReg, value));
                     }
                     $(vQuestion).removeClass("select").addClass(vRet?"good":"wrong");
