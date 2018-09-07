@@ -194,7 +194,7 @@
     <rdf:Description>
         <dct:identifier>2</dct:identifier>
         <dct:title xml:lang="fr-FR">Faire glisser dans les zones grises, les résultats correspondant aux différentes multiplication par 2.</dct:title>
-        <dct:description><![CDATA["number":2,"errratio":2,"gg":{"a":[0,2],"b":[10,1],"t":true},"background":"res/img/background/landscape/graycarpet01.svg","number":2,"init":{"pos":[[60,300],[210,300],[360,300],[510,300],[135,250],[285,250],[435,250],[585,250],[135,350],[285,350],[435,350],[585,350]],"area":[0,0,100,100]},"decoys":["dd01","dd02","dd03","dd04","dd05","dd06"],"scale":1.5,"url":"desktop/puzzle/list01.svg","gen":"function($this,_s,_id){var val={d:[],push:function(_val){this.d.push(_val);},exist:function(_val){var r=false; for (var id in this.d) { if (this.d[id]==_val) { r=true; }} return r;}},ret={};for (var i=0;i<6;i++) { var a,b; do { a=Math.floor(Math.random()*_s.gg.a[0])+_s.gg.a[1]; b=Math.floor(Math.random()*_s.gg.b[0])+_s.gg.b[1];} while (val.exist(a*b)); val.push(a*b); ret['txt0'+(i+1)]=_s.gg.t?a+'×'+b:a*b; ret['p0'+(i+1)]=_s.gg.t?a*b:a+'×'+b; } for (var i=0;i<6;i++) { var a,b; do { a=_s.gg.t?Math.floor(Math.random()*(_s.gg.a[0]+_s.gg.a[1]-1)*(_s.gg.b[0]+_s.gg.b[1]-1)):Math.floor(Math.random()*_s.gg.a[0])+_s.gg.a[1]; b=_s.gg.t?1:Math.floor(Math.random()*_s.gg.b[0])+_s.gg.b[1]; } while (val.exist(a*b)); val.push(a*b); ret['d0'+(i+1)]=_s.gg.t?a*b:a+'×'+b; } return {'txt':ret,'svgclass':(_s.gg.t?'smalltt':'smallpt')} }","show":["t01"],"same":[["pp01","pp02","pp03","pp04","pp05","pp06"]]]]></dct:description>
+        <dct:description><![CDATA["number":2,"errratio":2,"gg":{"a":[2],"b":[10,1],"t":true},"background":"res/img/background/landscape/graycarpet01.svg","number":2,"init":{"pos":[[60,300],[210,300],[360,300],[510,300],[135,250],[285,250],[435,250],[585,250],[135,350],[285,350],[435,350],[585,350]],"area":[0,0,100,100]},"decoys":["dd01","dd02","dd03","dd04","dd05","dd06"],"scale":1.5,"url":"desktop/puzzle/list01.svg","gen":"function($this,_s,_id){var val={d:[],push:function(_val){this.d.push(_val);},exist:function(_val){var r=false; for (var id in this.d) { if (this.d[id]==_val) { r=true; }} return r;}},ret={};for (var i=0;i<6;i++) { var a,b; do { a=_s.gg.a[Math.floor(Math.random()*_s.gg.a.length)]; b=Math.floor(Math.random()*_s.gg.b[0])+_s.gg.b[1];} while (val.exist(a*b)); val.push(a*b); ret['txt0'+(i+1)]=_s.gg.t?a+'×'+b:a*b; ret['p0'+(i+1)]=_s.gg.t?a*b:a+'×'+b; } for (var i=0;i<6;i++) { var a,b; do { a=_s.gg.t?Math.floor(Math.random()*(_s.gg.a[_s.gg.a.length-1])*(_s.gg.b[0]+_s.gg.b[1]-1)):_s.gg.a[Math.floor(Math.random()*_s.gg.a.length)]; b=_s.gg.t?1:Math.floor(Math.random()*_s.gg.b[0])+_s.gg.b[1]; } while (val.exist(a*b)); val.push(a*b); ret['d0'+(i+1)]=_s.gg.t?a*b:a+'×'+b; } return {'txt':ret,'svgclass':(_s.gg.t?'smalltt':'smallpt')} }","show":["t01"],"same":[["pp01","pp02","pp03","pp04","pp05","pp06"]]]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Faites glisser dans les zones grises, les résultats correspondant aux différentes [b]multiplication[/b]."]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>multiplication</dct:subject>
@@ -204,12 +204,11 @@
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
         <dct:source>res/img/desktop/puzzle/list01.svg</dct:source>
     </rdf:Description>
-
+	
     <rdf:Description>
-        <dct:identifier>3</dct:identifier>
-        <dct:title xml:lang="fr-FR">Faire glisser dans les zones grises, les résultats correspondant aux différentes multiplication par 3.</dct:title>
-        <dct:description><![CDATA["gg":{"a":[0,3],"b":[10,1],"t":true}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Faites glisser dans les zones grises, les résultats correspondant aux différentes [b]multiplication[/b]."]]></dct:description>
+        <dct:identifier>24</dct:identifier>
+        <dct:title xml:lang="fr-FR">Faire glisser dans les zones grises, les résultats correspondant aux différentes multiplication par 2 ou 4.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[2,4,4],"b":[10,1],"t":true}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -219,12 +218,126 @@
         <dct:source>res/img/desktop/puzzle/list01.svg</dct:source>
 		<dct:relation>2</dct:relation>
     </rdf:Description>
+	
+	
+    <rdf:Description>
+        <dct:identifier>24i</dct:identifier>
+        <dct:title xml:lang="fr-FR">Faire glisser dans les zones grises, les multiplications par 2 ou 4 correspondant aux différentes résultats.</dct:title>
+        <dct:description><![CDATA["number":1,"gg":{"a":[2,4],"b":[10,1],"t":false}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:alternative>9</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:source>res/img/desktop/puzzle/list01.svg</dct:source>
+		<dct:relation>2</dct:relation>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>248</dct:identifier>
+        <dct:title xml:lang="fr-FR">Faire glisser dans les zones grises, les résultats correspondant aux différentes multiplication par 2,4 ou 8.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[2,4,4,8,8],"b":[10,1],"t":true}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>9</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+        <dct:source>res/img/desktop/puzzle/list01.svg</dct:source>
+		<dct:relation>2</dct:relation>
+    </rdf:Description>
+	
+	
+    <rdf:Description>
+        <dct:identifier>248i</dct:identifier>
+        <dct:title xml:lang="fr-FR">Faire glisser dans les zones grises, les multiplications par 2,4 ou 8 correspondant aux différentes résultats.</dct:title>
+        <dct:description><![CDATA["number":1,"gg":{"a":[2,4,8],"b":[10,1],"t":false}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:alternative>9</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+        <dct:source>res/img/desktop/puzzle/list01.svg</dct:source>
+		<dct:relation>2</dct:relation>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>3</dct:identifier>
+        <dct:title xml:lang="fr-FR">Faire glisser dans les zones grises, les résultats correspondant aux différentes multiplication par 3.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[3],"b":[10,1],"t":true}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>9</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:source>res/img/desktop/puzzle/list01.svg</dct:source>
+		<dct:relation>2</dct:relation>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>36</dct:identifier>
+        <dct:title xml:lang="fr-FR">Faire glisser dans les zones grises, les résultats correspondant aux différentes multiplication par 3 ou 6.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[3,6,6],"b":[10,1],"t":true}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>9</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:source>res/img/desktop/puzzle/list01.svg</dct:source>
+		<dct:relation>2</dct:relation>
+    </rdf:Description>
+	
+	
+    <rdf:Description>
+        <dct:identifier>36i</dct:identifier>
+        <dct:title xml:lang="fr-FR">Faire glisser dans les zones grises, les multiplications par 3 ou 6 correspondant aux différentes résultats.</dct:title>
+        <dct:description><![CDATA["number":1,"gg":{"a":[3,6,6],"b":[10,1],"t":false}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:alternative>9</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:source>res/img/desktop/puzzle/list01.svg</dct:source>
+		<dct:relation>2</dct:relation>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>369</dct:identifier>
+        <dct:title xml:lang="fr-FR">Faire glisser dans les zones grises, les résultats correspondant aux différentes multiplication par 3,6 ou 9.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[3,6,6,9,9],"b":[10,1],"t":true}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>9</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+        <dct:source>res/img/desktop/puzzle/list01.svg</dct:source>
+		<dct:relation>2</dct:relation>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>369i</dct:identifier>
+        <dct:title xml:lang="fr-FR">Faire glisser dans les zones grises, les multiplications par 3,6 ou 9 correspondant aux différentes résultats.</dct:title>
+        <dct:description><![CDATA["number":1,"gg":{"a":[3,6,9],"b":[10,1],"t":false}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:alternative>9</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+        <dct:source>res/img/desktop/puzzle/list01.svg</dct:source>
+		<dct:relation>2</dct:relation>
+    </rdf:Description>
 
     <rdf:Description>
         <dct:identifier>4</dct:identifier>
         <dct:title xml:lang="fr-FR">Faire glisser dans les zones grises, les résultats correspondant aux différentes multiplication par 4.</dct:title>
-        <dct:description><![CDATA["gg":{"a":[0,4],"b":[10,1],"t":true}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Faites glisser dans les zones grises, les résultats correspondant aux différentes [b]multiplication[/b]."]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[4],"b":[10,1],"t":true}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -238,8 +351,7 @@
     <rdf:Description>
         <dct:identifier>5</dct:identifier>
         <dct:title xml:lang="fr-FR">Faire glisser dans les zones grises, les résultats correspondant aux différentes multiplication par 5.</dct:title>
-        <dct:description><![CDATA["gg":{"a":[0,5],"b":[10,1],"t":true}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Faites glisser dans les zones grises, les résultats correspondant aux différentes [b]multiplication[/b]."]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[5],"b":[10,1],"t":true}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -253,8 +365,7 @@
     <rdf:Description>
         <dct:identifier>25</dct:identifier>
         <dct:title xml:lang="fr-FR">Faire glisser dans les zones grises, les résultats correspondant aux différentes multiplication par 2,3,4 ou 5.</dct:title>
-        <dct:description><![CDATA["gg":{"a":[4,2],"b":[10,1],"t":true}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Faites glisser dans les zones grises, les résultats correspondant aux différentes [b]multiplication[/b]."]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[2,3,4,5],"b":[10,1],"t":true}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -269,8 +380,7 @@
     <rdf:Description>
         <dct:identifier>25i</dct:identifier>
         <dct:title xml:lang="fr-FR">Faire glisser dans les zones grises, les multiplications par 2,3,4 ou 5 correspondant aux différentes résultats.</dct:title>
-        <dct:description><![CDATA["number":1,"gg":{"a":[4,2],"b":[10,1],"t":false}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Faites glisser dans les zones grises, les multiplications correspondant aux différents [b]résultats[/b]."]]></dct:description>
+        <dct:description><![CDATA["number":1,"gg":{"a":[2,3,4,5],"b":[10,1],"t":false}]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -284,8 +394,7 @@
     <rdf:Description>
         <dct:identifier>6</dct:identifier>
         <dct:title xml:lang="fr-FR">Faire glisser dans les zones grises, les résultats correspondant aux différentes multiplication par 6.</dct:title>
-        <dct:description><![CDATA["gg":{"a":[0,6],"b":[10,1],"t":true}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Faites glisser dans les zones grises, les résultats correspondant aux différentes [b]multiplication[/b]."]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[6],"b":[10,1],"t":true}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -299,8 +408,7 @@
     <rdf:Description>
         <dct:identifier>7</dct:identifier>
         <dct:title xml:lang="fr-FR">Faire glisser dans les zones grises, les résultats correspondant aux différentes multiplication par 7.</dct:title>
-        <dct:description><![CDATA["gg":{"a":[0,7],"b":[10,1],"t":true}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Faites glisser dans les zones grises, les résultats correspondant aux différentes [b]multiplication[/b]."]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[7],"b":[10,1],"t":true}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -314,8 +422,7 @@
     <rdf:Description>
         <dct:identifier>8</dct:identifier>
         <dct:title xml:lang="fr-FR">Faire glisser dans les zones grises, les résultats correspondant aux différentes multiplication par 8.</dct:title>
-        <dct:description><![CDATA["gg":{"a":[0,8],"b":[10,1],"t":true}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Faites glisser dans les zones grises, les résultats correspondant aux différentes [b]multiplication[/b]."]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[8],"b":[10,1],"t":true}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -329,8 +436,7 @@
     <rdf:Description>
         <dct:identifier>9</dct:identifier>
         <dct:title xml:lang="fr-FR">Faire glisser dans les zones grises, les résultats correspondant aux différentes multiplication par 9.</dct:title>
-        <dct:description><![CDATA["gg":{"a":[0,9],"b":[10,1],"t":true}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Faites glisser dans les zones grises, les résultats correspondant aux différentes [b]multiplication[/b]."]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[9],"b":[10,1],"t":true}]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>

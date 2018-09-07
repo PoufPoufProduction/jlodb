@@ -7,18 +7,24 @@
     svg#array6x4.idv #lh                { display:inline; stroke:black; }
     svg#array6x4.symh #lv               { display:inline; stroke:red; }
     svg#array6x4.symv #lh               { display:inline; stroke:red; }
+	svg#array6x4.half #ll               { display:inline; stroke:white; stroke-width:4; stroke-opacity:0.8; }
     svg#array6x4 .line                  { fill:none; stroke-width:2; display:none; }
     svg#array6x4.small text             { font-size:16px; }
     svg#array6x4.large text             { font-size:64px; }
     svg#array6x4 text                   { font-size:32px;text-anchor:middle; }
     svg#array6x4 .hl                    { fill:white; fill-opacity:0.2; }
+	svg#array6x4.half .hl				{ display:none; }
+	svg#array6x4.half #bg .half			{ display:none; }
     svg#array6x4 #bg rect               { fill:#ffccaa; stroke:white; stroke-width:4; }
-    svg#array6x4 #bg text               { fill:gray;opacity:0.7; }
+    svg#array6x4 #bg text               { fill:black;opacity:0.7; }
     svg#array6x4 #pieces>g              { cursor:move; display:none; }
     svg#array6x4 #pieces .border        { fill:none;stroke:gray;stroke-width:4; }
     svg#array6x4 #pieces .bg            { fill:#ffccaa; }
+    svg#array6x4.gray #pieces .bg       { fill:gray; }
     svg#array6x4 #pieces .wrong .bg     { fill:red; fill-opacity:0.5; }
     svg#array6x4 #pieces .good .bg      { fill:#0F0; fill-opacity:0.5; }
+	svg#array6x4.border #pieces .wrong .border { stroke:red; stroke-width:6; }
+	svg#array6x4.border #pieces .good .border { stroke:#0F0; }
     svg#array6x4 #pieces text           { fill:gray; }
     svg#array6x4 #target text.bg        { fill:#ccc; }
     svg#array6x4 #trashbin              { display:none; }
@@ -32,127 +38,128 @@
 <g id="bg">
     <g transform="translate(50,80)">
         <rect x="-38" y="-38" height="76" width="76" rx="10" ry="10" class="border"/>
-        <text y="8" id="t00"></text>
         <image id="i00" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        <text y="8" id="t00"></text>
     </g>
     <g transform="translate(140,80)">
         <rect x="-38" y="-38" height="76" width="76" rx="10" ry="10" class="border"/>
-        <text y="8" id="t10"></text>
         <image id="i10" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        <text y="8" id="t10"></text>
     </g>
     <g transform="translate(230,80)">
         <rect x="-38" y="-38" height="76" width="76" rx="10" ry="10" class="border"/>
-        <text y="8" id="t20"></text>
         <image id="i20" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        <text y="8" id="t20"></text>
     </g>
-    <g transform="translate(320,80)">
+    <g transform="translate(320,80)" class="half">
         <rect x="-38" y="-38" height="76" width="76" rx="10" ry="10" class="border"/>
-        <text y="8" id="t30"></text>
         <image id="i30" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        <text y="8" id="t30"></text>
     </g>
-    <g transform="translate(410,80)">
+    <g transform="translate(410,80)" class="half">
         <rect x="-38" y="-38" height="76" width="76" rx="10" ry="10" class="border"/>
-        <text y="8" id="t40"></text>
         <image id="i40" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        <text y="8" id="t40"></text>
     </g>
-    <g transform="translate(500,80)">
+    <g transform="translate(500,80)" class="half">
         <rect x="-38" y="-38" height="76" width="76" rx="10" ry="10" class="border"/>
-        <text y="8" id="t50"></text>
         <image id="i50" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        <text y="8" id="t50"></text>
     </g>
     <g transform="translate(50,170)">
         <rect x="-38" y="-38" height="76" width="76" rx="10" ry="10" class="border"/>
-        <text y="8" id="t01"></text>
         <image id="i01" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        <text y="8" id="t01"></text>
     </g>
     <g transform="translate(140,170)">
         <rect x="-38" y="-38" height="76" width="76" rx="10" ry="10" class="border"/>
-        <text y="8" id="t11"></text>
         <image id="i11" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        <text y="8" id="t11"></text>
     </g>
     <g transform="translate(230,170)">
         <rect x="-38" y="-38" height="76" width="76" rx="10" ry="10" class="border"/>
-        <text y="8" id="t21"></text>
         <image id="i21" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        <text y="8" id="t21"></text>
     </g>
-    <g transform="translate(320,170)">
+    <g transform="translate(320,170)" class="half">
         <rect x="-38" y="-38" height="76" width="76" rx="10" ry="10" class="border"/>
-        <text y="8" id="t31"></text>
         <image id="i31" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        <text y="8" id="t31"></text>
     </g>
-    <g transform="translate(410,170)">
+    <g transform="translate(410,170)" class="half">
         <rect x="-38" y="-38" height="76" width="76" rx="10" ry="10" class="border"/>
-        <text y="8" id="t41"></text>
         <image id="i41" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        <text y="8" id="t41"></text>
     </g>
-    <g transform="translate(500,170)">
+    <g transform="translate(500,170)" class="half">
         <rect x="-38" y="-38" height="76" width="76" rx="10" ry="10" class="border"/>
-        <text y="8" id="t51"></text>
         <image id="i51" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        <text y="8" id="t51"></text>
     </g>
     <g transform="translate(50,260)">
         <rect x="-38" y="-38" height="76" width="76" rx="10" ry="10" class="border"/>
-        <text y="8" id="t02"></text>
         <image id="i02" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        <text y="8" id="t02"></text>
     </g>
     <g transform="translate(140,260)">
         <rect x="-38" y="-38" height="76" width="76" rx="10" ry="10" class="border"/>
-        <text y="8" id="t12"></text>
         <image id="i12" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        <text y="8" id="t12"></text>
     </g>
     <g transform="translate(230,260)">
         <rect x="-38" y="-38" height="76" width="76" rx="10" ry="10" class="border"/>
-        <text y="8" id="t22"></text>
         <image id="i22" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        <text y="8" id="t22"></text>
     </g>
-    <g transform="translate(320,260)">
+    <g transform="translate(320,260)" class="half">
         <rect x="-38" y="-38" height="76" width="76" rx="10" ry="10" class="border"/>
-        <text y="8" id="t32"></text>
         <image id="i32" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        <text y="8" id="t32"></text>
     </g>
-    <g transform="translate(410,260)">
+    <g transform="translate(410,260)" class="half">
         <rect x="-38" y="-38" height="76" width="76" rx="10" ry="10" class="border"/>
-        <text y="8" id="t42"></text>
         <image id="i42" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        <text y="8" id="t42"></text>
     </g>
-    <g transform="translate(500,260)">
+    <g transform="translate(500,260)" class="half">
         <rect x="-38" y="-38" height="76" width="76" rx="10" ry="10" class="border"/>
-        <text y="8" id="t52"></text>
         <image id="i52" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        <text y="8" id="t52"></text>
     </g>
     <g transform="translate(50,350)">
         <rect x="-38" y="-38" height="76" width="76" rx="10" ry="10" class="border"/>
-        <text y="8" id="t03"></text>
         <image id="i03" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        <text y="8" id="t03"></text>
     </g>
     <g transform="translate(140,350)">
         <rect x="-38" y="-38" height="76" width="76" rx="10" ry="10" class="border"/>
-        <text y="8" id="t13"></text>
         <image id="i13" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        <text y="8" id="t13"></text>
     </g>
     <g transform="translate(230,350)">
         <rect x="-38" y="-38" height="76" width="76" rx="10" ry="10" class="border"/>
-        <text y="8" id="t23"></text>
         <image id="i23" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        <text y="8" id="t23"></text>
     </g>
-    <g transform="translate(320,350)">
+    <g transform="translate(320,350)" class="half">
         <rect x="-38" y="-38" height="76" width="76" rx="10" ry="10" class="border"/>
-        <text y="8" id="t33"></text>
         <image id="i33" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        <text y="8" id="t33"></text>
     </g>
-    <g transform="translate(410,350)">
+    <g transform="translate(410,350)" class="half">
         <rect x="-38" y="-38" height="76" width="76" rx="10" ry="10" class="border"/>
-        <text y="8" id="t43"></text>
         <image id="i43" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        <text y="8" id="t43"></text>
     </g>
-    <g transform="translate(500,350)">
+    <g transform="translate(500,350)" class="half">
         <rect x="-38" y="-38" height="76" width="76" rx="10" ry="10" class="border"/>
-        <text y="8" id="t53"></text>
         <image id="i53" transform="translate(-36,-36)" xlink:href="" width="72" height="72" x="0" y="0"/>
+        <text y="8" id="t53"></text>
     </g>
 
     <path d="M 275 0 L 275 640" id="lv" class="line"/>
     <path d="M 0 215 L 640 215" id="lh" class="line"/>
+    <path d="M 290 0 L 290 640" id="ll" class="line"/>
     <rect x="545" y="0" width="95" height="480" class="hl"/>
     
     
