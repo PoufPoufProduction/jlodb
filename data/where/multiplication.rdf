@@ -283,21 +283,50 @@
 	
 	<rdf:Description>
         <dct:identifier>g5</dct:identifier>
-        <dct:title xml:lang="fr-FR">Déplacer un curseur et sélectionner un ensemble de moutons [multiplication de 1 à 5].</dct:title>
-        <dct:description><![CDATA["fx":false,"txt":"function($this){var ii=['u1f3f5','u1f33a','u1f33c','u1f338'], ret={}; for (var i=0; i<5; i++) for (var j=0; j<10; j++) { ret['i'+i+'x'+j]='ext/noto/svg/emoji_'+ii[Math.floor(Math.random()*ii.length)]+'.svg'; } return ret; }","svgclass":"upto5","number":8,"background":"res/img/background/landscape/landscape01.svg","url":"res/img/desktop/mult02.svg","cursor":[{"init":[200,150],"constraint":[30,30],"steps":[0,0.2,0.4,0.6,0.8],"boundaries":[200,150,350,450]}],"gen":"function($this,_s,_i){ var i,j; do { i=Math.floor(Math.random()*5)+1,j=Math.floor(Math.random()*10)+1; } while(i*j<=10); return [(i*j).toString(),i+'x'+j]; }","evaluation":[5,1],"font":2,"onmove":"function($this,_root,_cursors){ var pos=_cursors['cursor'].current,x=Math.round((pos[0]-200)/30),y=Math.round((pos[1]-150)/30); $('.h',_root).attr('class','h'); $('#y'+y,_root).attr('class','s h'); $((x==0?'#y':'#x')+x,_root).attr('class','s h'); $('.sel',_root).attr('width',pos[0]-200).attr('height',pos[1]-150); }","compute":"function($this,_s,_c){ var c=_s.cursors[_c],pos=c.translate,x=Math.round((pos[0]-200)/30),y=Math.round((pos[1]-150)/30),ret=5; if (_s.questions[_s.it][0]==x*y) { } else { ret = 0;} return ret; }"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"[b]Déplacez le curseur rouge[/b] pour encadrer autant de [red]fleurs[/red] que demandées.","fontex":0.8]]></dct:description>
+        <dct:title xml:lang="fr-FR">Déplacer un curseur et sélectionner un ensemble de fleurs [multiplication de 1 à 5].</dct:title>
+        <dct:description><![CDATA["gg":{"a":[2,3,4,5],"b":[10,1]},"svgclass":"upto5","number":8,"cursor":[{"init":[200,150],"constraint":[30,30],"steps":[0,0.2,0.4,0.6,0.8],"boundaries":[200,150,350,450]}]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>g5</dct:alternative>
+		<dct:relation>g10</dct:relation>
+        <dct:source>res/img/desktop/mult02.svg,res/img/background/landscape/landscape01.svg,ext/noto/svg/emoji_u1f3f5.svg,ext/noto/svg/emoji_u1f33a.svg,ext/noto/svg/emoji_u1f33c.svg,ext/noto/svg/emoji_u1f338.svg</dct:source>
+    </rdf:Description>
+
+
+	
+	<rdf:Description>
+        <dct:identifier>g248</dct:identifier>
+        <dct:title xml:lang="fr-FR">Déplacer un curseur et sélectionner un ensemble de fleurs [multiplication par 2,4 ou 8].</dct:title>
+        <dct:description><![CDATA["gg":{"a":[2,4,8],"b":[10,1]},"number":8]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>g5</dct:alternative>
+		<dct:relation>g10</dct:relation>
         <dct:source>res/img/desktop/mult02.svg,res/img/background/landscape/landscape01.svg,ext/noto/svg/emoji_u1f3f5.svg,ext/noto/svg/emoji_u1f33a.svg,ext/noto/svg/emoji_u1f33c.svg,ext/noto/svg/emoji_u1f338.svg</dct:source>
     </rdf:Description>
 	
 	<rdf:Description>
+        <dct:identifier>g369</dct:identifier>
+        <dct:title xml:lang="fr-FR">Déplacer un curseur et sélectionner un ensemble de fleurs [multiplication par 3,6 ou 9].</dct:title>
+        <dct:description><![CDATA["gg":{"a":[3,6,9],"b":[10,1]},"number":8]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>g5</dct:alternative>
+		<dct:relation>g10</dct:relation>
+        <dct:source>res/img/desktop/mult02.svg,res/img/background/landscape/landscape01.svg,ext/noto/svg/emoji_u1f3f5.svg,ext/noto/svg/emoji_u1f33a.svg,ext/noto/svg/emoji_u1f33c.svg,ext/noto/svg/emoji_u1f338.svg</dct:source>
+    </rdf:Description>
+
+	
+	<rdf:Description>
         <dct:identifier>g10</dct:identifier>
-        <dct:title xml:lang="fr-FR">Déplacer un curseur et sélectionner un ensemble de moutons [multiplication de 1 à 10].</dct:title>
-        <dct:description><![CDATA["fx":false,"txt":"function($this){var ii=['u1f3f5','u1f33a','u1f33c','u1f338'], ret={}; for (var i=0; i<10; i++) for (var j=0; j<10; j++) { ret['i'+i+'x'+j]='ext/noto/svg/emoji_'+ii[Math.floor(Math.random()*ii.length)]+'.svg'; } return ret; }","number":8,"background":"res/img/background/landscape/landscape02.svg","url":"res/img/desktop/mult02.svg","cursor":[{"init":[200,150],"constraint":[30,30],"steps":[0,0.2,0.4,0.6,0.8],"boundaries":[200,150,500,450]}],"gen":"function($this,_s,_i){ var i,j; do { i=Math.floor(Math.random()*10)+1,j=Math.floor(Math.random()*10)+1; } while(i*j<=10); return [(i*j).toString(),i+'x'+j]; }","evaluation":[5,1],"font":2,"onmove":"function($this,_root,_cursors){ var pos=_cursors['cursor'].current,x=Math.round((pos[0]-200)/30),y=Math.round((pos[1]-150)/30); $('.h',_root).attr('class','h'); $('#y'+y,_root).attr('class','s h'); $((x==0?'#y':'#x')+x,_root).attr('class','s h'); $('.sel',_root).attr('width',pos[0]-200).attr('height',pos[1]-150); }","compute":"function($this,_s,_c){ var c=_s.cursors[_c],pos=c.translate,x=Math.round((pos[0]-200)/30),y=Math.round((pos[1]-150)/30),ret=5; if (_s.questions[_s.it][0]==x*y) { } else { ret = 0;} return ret; }"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Déplacer un curseur et sélectionner un ensemble de fleurs [multiplication de 1 à 10].</dct:title>
+        <dct:description><![CDATA["gg":{"a":[2,3,4,5,6,7,8,9,10],"b":[10,1]},"number":8,"cursor":[{"init":[200,150],"constraint":[30,30],"steps":[0,0.2,0.4,0.6,0.8],"boundaries":[200,150,500,450]}],"fx":false,"txt":"function($this){var ii=['u1f3f5','u1f33a','u1f33c','u1f338'], ret={}; for (var i=0; i<10; i++) for (var j=0; j<10; j++) { ret['i'+i+'x'+j]='ext/noto/svg/emoji_'+ii[Math.floor(Math.random()*ii.length)]+'.svg'; } return ret; }","background":"res/img/background/landscape/landscape02.svg","url":"res/img/desktop/mult02.svg","gen":"function($this,_s,_i){ var i,j; do { i=_s.gg.a[Math.floor(Math.random()*_s.gg.a.length)],j=Math.floor(Math.random()*_s.gg.b[0])+_s.gg.b[1]; } while(i*j<=10); return [(i*j).toString(),i+'x'+j]; }","evaluation":[5,1],"font":2,"onmove":"function($this,_root,_cursors){ var pos=_cursors['cursor'].current,x=Math.round((pos[0]-200)/30),y=Math.round((pos[1]-150)/30); $('.h',_root).attr('class','h'); $('#y'+y,_root).attr('class','s h'); $((x==0?'#y':'#x')+x,_root).attr('class','s h'); $('.sel',_root).attr('width',pos[0]-200).attr('height',pos[1]-150); }","compute":"function($this,_s,_c){ var c=_s.cursors[_c],pos=c.translate,x=Math.round((pos[0]-200)/30),y=Math.round((pos[1]-150)/30),ret=5; if (_s.questions[_s.it][0]==x*y) { } else { ret = 0;} return ret; }"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"[b]Déplacez le curseur rouge[/b] pour encadrer autant de [red]fleurs[/red] que demandées.","fontex":0.8]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>multiplication</dct:subject>

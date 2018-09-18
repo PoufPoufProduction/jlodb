@@ -513,7 +513,7 @@
     <rdf:Description>
         <dct:identifier>i2</dct:identifier>
         <dct:title xml:lang="fr-FR">Compléter, sans contrainte de temps, la multiplication par 2.</dct:title>
-        <dct:description><![CDATA["gg":[1,2,10,1,1],"number":10,"class":"h12","time":0,"input":{"digit":2,"speed":5000},"regexp": { "output": "\\\\?" },"gen":"function($this,_s,_i){var a=Math.floor(Math.random()*_s.gg[0])+_s.gg[1], b=Math.floor(Math.random()*_s.gg[2])+_s.gg[3],c=(Math.random()<0.5); return ((_s.gg[4]==1)||c)?[a+'×?='+(a*b) ,b]:['?×'+a+'='+(a*b) ,b];}","font":1.5]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[2],"b":[10,1],"c":1},"number":10,"class":"h12","time":0,"input":{"digit":2,"speed":5000},"regexp": { "output": "\\\\?" },"gen":"function($this,_s,_i){var a=_s.gg.a[Math.floor(Math.random()*_s.gg.a.length)], b=Math.floor(Math.random()*_s.gg.b[0])+_s.gg.b[1],c=(Math.random()<0.5); return ((_s.gg.c==1)||c)?[a+'×?='+(a*b) ,b]:['?×'+b+'='+(a*b) ,a];}","font":1.5]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -525,7 +525,7 @@
     <rdf:Description>
         <dct:identifier>i2u</dct:identifier>
         <dct:title xml:lang="fr-FR">Compléter, en moins de 5 secondes par opération, la multiplication par 2.</dct:title>
-        <dct:description><![CDATA["time":5,"timemode":1,"gg":[1,2,10,1,1]]]></dct:description>
+        <dct:description><![CDATA["time":5,"timemode":1,"gg":{"a":[2],"b":[10,1],"c":1}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -538,7 +538,7 @@
     <rdf:Description>
         <dct:identifier>i3</dct:identifier>
         <dct:title xml:lang="fr-FR">Compléter, sans contrainte de temps, la multiplication par 3.</dct:title>
-        <dct:description><![CDATA["gg":[1,3,10,1,1]]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[3],"b":[10,1],"c":1}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -551,7 +551,7 @@
     <rdf:Description>
         <dct:identifier>i3u</dct:identifier>
         <dct:title xml:lang="fr-FR">Compléter, en moins de 5 secondes par opération, la multiplication par 3.</dct:title>
-        <dct:description><![CDATA["time":5,"timemode":1,"gg":[1,3,10,1,1]]]></dct:description>
+        <dct:description><![CDATA["time":5,"timemode":1,"gg":{"a":[3],"b":[10,1],"c":1}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -564,7 +564,7 @@
     <rdf:Description>
         <dct:identifier>i4</dct:identifier>
         <dct:title xml:lang="fr-FR">Compléter, sans contrainte de temps, la multiplication par 4.</dct:title>
-        <dct:description><![CDATA["gg":[1,4,10,1,1]]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[4],"b":[10,1],"c":1}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -577,7 +577,7 @@
     <rdf:Description>
         <dct:identifier>i4u</dct:identifier>
         <dct:title xml:lang="fr-FR">Compléter, en moins de 5 secondes par opération, la multiplication par 4.</dct:title>
-        <dct:description><![CDATA["time":5,"timemode":1,"gg":[1,4,10,1,1]]]></dct:description>
+        <dct:description><![CDATA["time":5,"timemode":1,"gg":{"a":[4],"b":[10,1],"c":1}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -590,7 +590,7 @@
     <rdf:Description>
         <dct:identifier>i5</dct:identifier>
         <dct:title xml:lang="fr-FR">Compléter, sans contrainte de temps, la multiplication par 5.</dct:title>
-        <dct:description><![CDATA["gg":[1,5,10,1,1]]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[5],"b":[10,1],"c":1}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -603,7 +603,7 @@
     <rdf:Description>
         <dct:identifier>i5u</dct:identifier>
         <dct:title xml:lang="fr-FR">Compléter, en moins de 5 secondes par opération, la multiplication par 5.</dct:title>
-        <dct:description><![CDATA["time":5,"timemode":1,"gg":[1,5,10,1,1]]]></dct:description>
+        <dct:description><![CDATA["time":5,"timemode":1,"gg":{"a":[5],"b":[10,1],"c":1}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -617,7 +617,7 @@
     <rdf:Description>
         <dct:identifier>i25</dct:identifier>
         <dct:title xml:lang="fr-FR">Compléter, sans contrainte de temps, la multiplication par 2,3,4 ou 5.</dct:title>
-        <dct:description><![CDATA["gg":[4,2,10,1,1]]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[2,3,4,5],"b":[10,1],"c":1}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -630,7 +630,7 @@
     <rdf:Description>
         <dct:identifier>i25u</dct:identifier>
         <dct:title xml:lang="fr-FR">Compléter, en moins de 5 secondes par opération, la multiplication par 2,3,4 ou 5.</dct:title>
-        <dct:description><![CDATA["time":5,"timemode":1,"gg":[4,2,10,1,1]]]></dct:description>
+        <dct:description><![CDATA["time":5,"timemode":1,"gg":{"a":[2,3,4,5],"b":[10,1],"c":1}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -641,9 +641,113 @@
     </rdf:Description>
 
     <rdf:Description>
+        <dct:identifier>i248</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter, sans contrainte de temps, la multiplication par 2,4 ou 8.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[2,4,8],"b":[10,1],"c":1}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>i9</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+        <dct:relation>i2</dct:relation>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>i248b</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter, sans contrainte de temps, la multiplication par 2,4 ou 8.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[2,4,8],"b":[10,1],"c":0}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>i9</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+        <dct:relation>i2</dct:relation>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>i248u</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter, en moins de 5 secondes par opération, la multiplication par 2,4 ou 8.</dct:title>
+        <dct:description><![CDATA["time":5,"timemode":1,"gg":{"a":[2,4,8],"b":[10,1],"c":1}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>i9</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+        <dct:relation>i2</dct:relation>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>i248bu</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter, en moins de 5 secondes par opération, la multiplication par 2,4 ou 8.</dct:title>
+        <dct:description><![CDATA["time":5,"timemode":1,"gg":{"a":[2,4,8],"b":[10,1],"c":0}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>i9</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+        <dct:relation>i2</dct:relation>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>i369</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter, sans contrainte de temps, la multiplication par 3,6 ou 9.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[3,6,9],"b":[10,1],"c":1}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>i9</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+        <dct:relation>i2</dct:relation>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>i369b</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter, sans contrainte de temps, la multiplication par 3,6 ou 9.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[3,6,9],"b":[10,1],"c":0}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>i9</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+        <dct:relation>i2</dct:relation>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>i369u</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter, en moins de 5 secondes par opération, la multiplication par 3,6 ou 9.</dct:title>
+        <dct:description><![CDATA["time":5,"timemode":1,"gg":{"a":[3,6,9],"b":[10,1],"c":1}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>i9</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+        <dct:relation>i2</dct:relation>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>i369bu</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter, en moins de 5 secondes par opération, la multiplication par 3,6 ou 9.</dct:title>
+        <dct:description><![CDATA["time":5,"timemode":1,"gg":{"a":[3,6,9],"b":[10,1],"c":0}]]></dct:description>
+        <dct:extent>1</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>i9</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+        <dct:relation>i2</dct:relation>
+    </rdf:Description>
+
+    <rdf:Description>
         <dct:identifier>i6</dct:identifier>
         <dct:title xml:lang="fr-FR">Compléter, sans contrainte de temps, la multiplication par 6.</dct:title>
-        <dct:description><![CDATA["gg":[1,6,10,1,1]]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[6],"b":[10,1],"c":1}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -656,7 +760,7 @@
     <rdf:Description>
         <dct:identifier>i6u</dct:identifier>
         <dct:title xml:lang="fr-FR">Compléter, en moins de 5 secondes par opération, la multiplication par 6.</dct:title>
-        <dct:description><![CDATA["time":5,"timemode":1,"gg":[1,6,10,1,1]]]></dct:description>
+        <dct:description><![CDATA["time":5,"timemode":1,"gg":{"a":[6],"b":[10,1],"c":1}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -669,7 +773,7 @@
     <rdf:Description>
         <dct:identifier>i7</dct:identifier>
         <dct:title xml:lang="fr-FR">Compléter, sans contrainte de temps, la multiplication par 7.</dct:title>
-        <dct:description><![CDATA["gg":[1,7,10,1,1]]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[7],"b":[10,1],"c":1}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -682,7 +786,7 @@
     <rdf:Description>
         <dct:identifier>i7u</dct:identifier>
         <dct:title xml:lang="fr-FR">Compléter, en moins de 5 secondes par opération, la multiplication par 7.</dct:title>
-        <dct:description><![CDATA["time":5,"timemode":1,"gg":[1,7,10,1,1]]]></dct:description>
+        <dct:description><![CDATA["time":5,"timemode":1,"gg":{"a":[7],"b":[10,1],"c":1}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -695,7 +799,7 @@
     <rdf:Description>
         <dct:identifier>i8</dct:identifier>
         <dct:title xml:lang="fr-FR">Compléter, sans contrainte de temps, la multiplication par 8.</dct:title>
-        <dct:description><![CDATA["gg":[1,8,10,1,1]]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[8],"b":[10,1],"c":1}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -708,7 +812,7 @@
     <rdf:Description>
         <dct:identifier>i8u</dct:identifier>
         <dct:title xml:lang="fr-FR">Compléter, en moins de 5 secondes par opération, la multiplication par 8.</dct:title>
-        <dct:description><![CDATA["time":5,"timemode":1,"gg":[1,8,10,1,1]]]></dct:description>
+        <dct:description><![CDATA["time":5,"timemode":1,"gg":{"a":[8],"b":[10,1],"c":1}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -721,7 +825,7 @@
     <rdf:Description>
         <dct:identifier>i9</dct:identifier>
         <dct:title xml:lang="fr-FR">Compléter, sans contrainte de temps, la multiplication par 9.</dct:title>
-        <dct:description><![CDATA["gg":[1,9,10,1,1]]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[9],"b":[10,1],"c":1}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -734,7 +838,7 @@
     <rdf:Description>
         <dct:identifier>i9u</dct:identifier>
         <dct:title xml:lang="fr-FR">Compléter, en moins de 5 secondes par opération, la multiplication par 9.</dct:title>
-        <dct:description><![CDATA["time":5,"timemode":1,"gg":[1,9,10,1,1]]]></dct:description>
+        <dct:description><![CDATA["time":5,"timemode":1,"gg":{"a":[9],"b":[10,1],"c":1}]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -747,7 +851,7 @@
     <rdf:Description>
         <dct:identifier>i10</dct:identifier>
         <dct:title xml:lang="fr-FR">Compléter, sans contrainte de temps, la multiplication de 2 nombres compris entre 1 et 10.</dct:title>
-        <dct:description><![CDATA["gg":[10,1,10,1,1],"font":1.2]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[2,3,4,5,6,7,8,9,10],"b":[10,1],"c":1},"font":1.2]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -760,7 +864,7 @@
     <rdf:Description>
         <dct:identifier>i10u</dct:identifier>
         <dct:title xml:lang="fr-FR">Compléter, en moins de 5 secondes par opération, la multiplication de 2 nombres compris entre 1 et 10.</dct:title>
-        <dct:description><![CDATA["time":5,"timemode":1,"gg":[10,1,10,1,1],"font":1.2]]></dct:description>
+        <dct:description><![CDATA["time":5,"timemode":1,"gg":{"a":[2,3,4,5,6,7,8,9,10],"b":[10,1],"c":1},"font":1.2]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -773,7 +877,7 @@
     <rdf:Description>
         <dct:identifier>i10b</dct:identifier>
         <dct:title xml:lang="fr-FR">Compléter, sans contrainte de temps, la multiplication de 2 nombres compris entre 1 et 10.</dct:title>
-        <dct:description><![CDATA["gg":[10,1,10,1,0],"font":1.2]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[2,3,4,5,6,7,8,9,10],"b":[10,1],"c":0},"font":1.2]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -786,7 +890,7 @@
     <rdf:Description>
         <dct:identifier>i10bu</dct:identifier>
         <dct:title xml:lang="fr-FR">Compléter, en moins de 5 secondes par opération, la multiplication de 2 nombres compris entre 1 et 10.</dct:title>
-        <dct:description><![CDATA["time":5,"timemode":1,"gg":[10,1,10,1,0],"font":1.2]]></dct:description>
+        <dct:description><![CDATA["time":5,"timemode":1,"gg":{"a":[2,3,4,5,6,7,8,9,10],"b":[10,1],"c":0},"font":1.2]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -800,9 +904,9 @@
 
     <rdf:Description>
         <dct:identifier>2d3</dct:identifier>
-        <dct:title xml:lang="fr-FR">Compter, sans contrainte de temps, des carrés placés sur une grille de dimension maximale 3x3.</dct:title>
-        <dct:description><![CDATA["gg":[3,1,3,1],"number":8,"time":0,"input":{"digit":2,"speed":5000},"gen":"function($this,_s,_i){var a=Math.floor(Math.random()*_s.gg[0])+_s.gg[1],b=Math.floor(Math.random()*_s.gg[2])+_s.gg[3],c=Math.max(a,b),s=46/c,ret=\\\"<div style='width:1.2em;height:1.2em;margin-left:.3em;'><div style='font-size:.2em;height:1.1em;'><div style='width:1.2em;height:1.2em;float:left;'></div><div style='width:4em;text-align:center;'>\\\"+a+\\\"</div></div><div><div style='padding-top:1.5em;font-size:.2em;width:1.2em;float:left;'>\\"+b+\\\"</div><div style='font-size:.8em;width:1em;height:1em;'><svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;fill-opacity:0.7;stroke:black;stroke-width:0.2;}.wrong rect {fill:red;}.good rect {fill:green;}line {fill:none;stroke:black;stroke-width:0.4;}</style></def><line x1='\\\"+(2+s*(c-a)/2)+\\\"' y1='0' x2='\\\"+(2+s*(c+a)/2)+\\\"' y2='0'/><line y1='\\\"+(2+s*(c-b)/2)+\\\"' x1='0' y2='\\\"+(2+s*(c+b)/2)+\\\"' x2='0'/>\\\";for (var i=0;i<a;i++) for (var j=0;j<b;j++) {ret+=\\\"<rect x='\\\"+(2+(i+(c-a)/2)*s)+\\\"' y='\\\"+(2+(j+(c-b)/2)*s)+\\\"' width='\\\"+s+\\\"' height='\\\"+s+\\\"'/>\\\"; } ret+=\\\"</svg></div></div></div>\\\"; return [ret, a*b];}","class":"alpha blank p01 h12","font":4]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"[b]Dénombrez[/b] les carrés"]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compter, sans contrainte de temps, des fleurs placées sur une grille de dimension maximale 3x3.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[1,2,3],"b":[1,2,3]},"number":8,"time":0,"input":{"digit":2,"speed":5000},"gen":"function($this,_s,_i){var ii=['u1f3f5','u1f33a','u1f33c','u1f338'],a=_s.gg.a[Math.floor(Math.random()*_s.gg.a.length)],b=_s.gg.b[Math.floor(Math.random()*_s.gg.b.length)],c=Math.max(a,b),s=46/c,ret=\\\"<div style='width:1.2em;height:1.2em;margin-left:.3em;'><div style='font-size:.2em;height:1.1em;'><div style='width:1.2em;height:1.2em;float:left;'></div><div style='width:4em;text-align:center;'>\\\"+a+\\\"</div></div><div><div style='padding-top:1.5em;font-size:.2em;width:1.2em;float:left;'>\\"+b+\\\"</div><div style='font-size:.8em;width:1em;height:1em;'><svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='100%' height='100%' viewBox='0 0 48 48'><def><style>rect {fill:#08F;fill-opacity:0.7;stroke:white;stroke-width:0.2;}.wrong rect {fill:red;}.good rect {fill:green;}line {fill:none;stroke:black;stroke-width:0.4;}</style></def><line x1='\\\"+(2+s*(c-a)/2)+\\\"' y1='0' x2='\\\"+(2+s*(c+a)/2)+\\\"' y2='0'/><line y1='\\\"+(2+s*(c-b)/2)+\\\"' x1='0' y2='\\\"+(2+s*(c+b)/2)+\\\"' x2='0'/>\\\";for (var i=0;i<a;i++) for (var j=0;j<b;j++) {ret+=\\\"<rect x='\\\"+(2+(i+(c-a)/2)*s)+\\\"' y='\\\"+(2+(j+(c-b)/2)*s)+\\\"' width='\\\"+s+\\\"' height='\\\"+s+\\\"'/><image xlink:href='ext/noto/svg/emoji_\\\"+ii[Math.floor(Math.random()*ii.length)]+\\\".svg' x='\\\"+(2+(i+(c-a)/2)*s)+\\\"' y='\\\"+(2+(j+(c-b)/2)*s)+\\\"' width='\\\"+s+\\\"' height='\\\"+s+\\\"'/>\\\"; } ret+=\\\"</svg></div></div></div>\\\"; return [ret, a*b];}","class":"alpha blank p01 h12","font":4]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"comment":"[b]Dénombrez[/b] les [red]fleurs[/red]."]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -813,8 +917,47 @@
 
     <rdf:Description>
         <dct:identifier>2d410</dct:identifier>
-        <dct:title xml:lang="fr-FR">Compter, sans contrainte de temps, des carrés placés sur une grille de dimension maximale 4x10.</dct:title>
-        <dct:description><![CDATA["gg":[10,1,4,1],"number":12]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compter, sans contrainte de temps, des fleurs placées sur une grille de dimension maximale 4x10.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[1,2,3,4,5,6,7,8,9,10],"b":[1,2,3,4]},"number":12]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>2d10</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+		<dct:relation>2d3</dct:relation>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>2d24</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compter, sans contrainte de temps, des fleurs placées sur une grille de dimension verticale 2 ou 4.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[1,2,3,4,5,6,7,8,9,10],"b":[2,4]},"number":12]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>2d10</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+		<dct:relation>2d3</dct:relation>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>2d248</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compter, sans contrainte de temps, des fleurs placées sur une grille de dimension verticale 2,4 ou 8.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[1,2,3,4,5,6,7,8,9,10],"b":[2,4,8]},"number":12]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>2d10</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+		<dct:relation>2d3</dct:relation>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>2d369</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compter, sans contrainte de temps, des fleurs placées sur une grille de dimension verticale 3,6 ou 9.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[1,2,3,4,5,6,7,8,9,10],"b":[3,6,9]},"number":12]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -826,8 +969,8 @@
 
     <rdf:Description>
         <dct:identifier>2d5</dct:identifier>
-        <dct:title xml:lang="fr-FR">Compter, sans contrainte de temps, des carrés placés sur une grille de dimension maximale 5x5.</dct:title>
-        <dct:description><![CDATA["gg":[5,1,5,1],"number":10]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compter, sans contrainte de temps, des fleurs placées sur une grille de dimension maximale 5x5.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[1,2,3,4,5],"b":[1,2,3,4,5]},"number":10]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -839,8 +982,8 @@
 
     <rdf:Description>
         <dct:identifier>2d510</dct:identifier>
-        <dct:title xml:lang="fr-FR">Compter, sans contrainte de temps, des carrés placés sur une grille de dimension maximale 5x10.</dct:title>
-        <dct:description><![CDATA["gg":[10,1,5,1],"number":12]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compter, sans contrainte de temps, des fleurs placées sur une grille de dimension maximale 5x10.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[1,2,3,4,5,6,7,8,9,10],"b":[1,2,3,4,5]},"number":12]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -852,8 +995,8 @@
 
     <rdf:Description>
         <dct:identifier>2d510u</dct:identifier>
-        <dct:title xml:lang="fr-FR">Compter, en moins de 5 secondes par opération, des carrés placés sur une grille de dimension maximale 5x10.</dct:title>
-        <dct:description><![CDATA["gg":[10,1,5,1],"time":5,"timemode":1,"number":10]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compter, en moins de 5 secondes par opération, des fleurs placées sur une grille de dimension maximale 5x10.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[1,2,3,4,5,6,7,8,9,10],"b":[1,2,3,4,5]},"time":5,"timemode":1,"number":10]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -864,61 +1007,9 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>2d610</dct:identifier>
-        <dct:title xml:lang="fr-FR">Compter, sans contrainte de temps, des carrés placés sur une grille de dimension maximale 6x10.</dct:title>
-        <dct:description><![CDATA["gg":[10,1,6,1],"number":12]]></dct:description>
-        <dct:extent>2</dct:extent>
-        <dct:subject>multiplication</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>2d10</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
-		<dct:relation>2d3</dct:relation>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>2d710</dct:identifier>
-        <dct:title xml:lang="fr-FR">Compter, sans contrainte de temps, des carrés placés sur une grille de dimension maximale 7x10.</dct:title>
-        <dct:description><![CDATA["gg":[10,1,7,1],"number":12]]></dct:description>
-        <dct:extent>2</dct:extent>
-        <dct:subject>multiplication</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>2d10</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
-		<dct:relation>2d3</dct:relation>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>2d810</dct:identifier>
-        <dct:title xml:lang="fr-FR">Compter, sans contrainte de temps, des carrés placés sur une grille de dimension maximale 8x10.</dct:title>
-        <dct:description><![CDATA["gg":[10,1,8,1],"number":12]]></dct:description>
-        <dct:extent>2</dct:extent>
-        <dct:subject>multiplication</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>2d10</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
-		<dct:relation>2d3</dct:relation>
-    </rdf:Description>
-
-    <rdf:Description>
-        <dct:identifier>2d910</dct:identifier>
-        <dct:title xml:lang="fr-FR">Compter, sans contrainte de temps, des carrés placés sur une grille de dimension maximale 9x10.</dct:title>
-        <dct:description><![CDATA["gg":[10,1,9,1],"number":12]]></dct:description>
-        <dct:extent>2</dct:extent>
-        <dct:subject>multiplication</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>2d10</dct:alternative>
-        <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
-		<dct:relation>2d3</dct:relation>
-    </rdf:Description>
-
-    <rdf:Description>
         <dct:identifier>2d10</dct:identifier>
-        <dct:title xml:lang="fr-FR">Compter, sans contrainte de temps, des carrés placés sur une grille de dimension maximale 10x10.</dct:title>
-        <dct:description><![CDATA["gg":[10,1,10,1],"number":12]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compter, sans contrainte de temps, des fleurs placées sur une grille de dimension maximale 10x10.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[1,2,3,4,5,6,7,8,9,10],"b":[1,2,3,4,5,6,7,8,9,10]},"number":12]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -930,8 +1021,8 @@
 
     <rdf:Description>
         <dct:identifier>2d106</dct:identifier>
-        <dct:title xml:lang="fr-FR">Compter, sans contrainte de temps, des carrés placés sur une grille de dimension maximale 10x10 (et minimale 6x6).</dct:title>
-        <dct:description><![CDATA["gg":[5,6,5,6],"number":12]]></dct:description>
+        <dct:title xml:lang="fr-FR">Compter, sans contrainte de temps, des fleurs placées sur une grille de dimension maximale 10x10 (et minimale 6x6).</dct:title>
+        <dct:description><![CDATA["gg":{"a":[6,7,8,9,10],"b":[6,7,8,9,10]},"number":12]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>multiplication</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
