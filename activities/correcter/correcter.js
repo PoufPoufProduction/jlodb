@@ -1,20 +1,20 @@
 (function($) {
     // Activity default options
     var defaults = {
-        name        : "correcter",                              // The activity name
-        label       : "Correcter",                              // The activity label
-        template    : "template.html",                          // Activity's html template
-        css         : "style.css",                              // Activity's css style sheet
-        lang        : "en-US",                                  // Current localization
-        score       : 1,                                        // The score (from 1 to 5)
-        proba       : 2,                                        // Change a word each 'proba' words
-        style       : "default",                                // Style of the words (default, blank or bold)
-        multiple    : 0,                                        // The multiple occurence separator
-        font        : 1,                                        // The font-size multiplicator
-        first       : false,                                    // Don't choose randomly the wrong words, use the first one
-        background  : "",                               		// Background image
-		commas		: ".,:;\"",									// Commas
-        debug       : true                                     // Debug mode
+        name        : "correcter",         	// The activity name
+        label       : "Correcter",          // The activity label
+        template    : "template.html",      // Activity's html template
+        css         : "style.css",          // Activity's css style sheet
+        lang        : "en-US",              // Current localization
+        score       : 1,                    // The score (from 1 to 5)
+        proba       : 2,                    // Change a word each 'proba' words
+        style       : "default",            // Style of the words (default, blank or bold)
+        multiple    : 0,                    // The multiple occurence separator
+        font        : 1,                    // The font-size multiplicator
+        first       : false,                // Don't choose randomly the wrong words, use the first one
+        background  : "",                   // Background image
+		commas		: ".,:;\"",				// Commas
+        debug       : true                  // Debug mode
     };
 
     

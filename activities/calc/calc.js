@@ -31,6 +31,7 @@
         po          : {},                               // localisation
         nocellref   : false,                            // Cell pointer
         background  : "",                               // Background image
+		toright		: false,							// Automatic move to right
         dev         : false,                            // Editor mode
         debug       : true                              // Debug mode
     };
@@ -1015,9 +1016,11 @@
                     if (settings.dev) { helpers.devcell($this, i+1,j+1,settings.sheet[j][i], true); }
                     else {
                         var cell=0;
-                        if (!settings.nonext && j+1<settings.size[1] &&
-                             settings.sheet[j+1][i].type!="hide" && !settings.sheet[j+1][i].fixed) {
-                            cell=$this.find("#c"+settings.target[1]+"x"+(parseInt(settings.target[2])+1));
+						var n = settings.toright?[1,0]:[0,1];
+                        if (!settings.nonext && i+n[0]<settings.size[0] && j+n[1]<settings.size[1] &&
+                             settings.sheet[j+n[1]][i+n[0]].type!="hide" && !settings.sheet[j+n[1]][i+n[0]].fixed) {
+                            cell=$this.find("#c"+(parseInt(settings.target[1])+n[0])+
+											"x"+(parseInt(settings.target[2])+n[1]));
                         }
                         $this.calc("cell",cell);
                     }
