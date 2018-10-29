@@ -16,6 +16,10 @@
     svg#sentence #tutorial           { display:none; }
     svg#sentence.tutorial #tutorial  { display:inline; }
     svg#sentence #tutorial text      { cursor:auto; font-size:20px;text-anchor:start;fill:#aaa;font-weight:bold; }
+    
+    svg#sentence #legend             { display:none; }
+    svg#sentence.legend #legend      { display:inline; }
+    svg#sentence #legend text        { cursor:auto; font-size:70px;text-anchor:middle;fill:#aaa;font-weight:bold; }
 
     svg#sentence.l1 #l2              { display:none; }
     svg#sentence.l1 #l3              { display:none; }
@@ -28,6 +32,9 @@
 	svg#sentence #areamin			 { display:none; }
 	svg#sentence.areamin #areamax	 { display:none; }
 	svg#sentence.areamin #areamin	 { display:inline; }
+	svg#sentence #areatop			 { display:none; }
+	svg#sentence.areatop #areamax	 { display:none; }
+	svg#sentence.areatop #areatop	 { display:inline; }
 </style>
 </defs>
 
@@ -56,6 +63,7 @@
 <g id="area">
     <rect x="-10" y="320" width="660" height="150" class="box" id="areamax"/>
 	<rect x="-10" y="320" width="660" height="75" class="box" id="areamin"/>
+    <rect x="-10" y="245" width="660" height="150" class="box" id="areatop"/>
 </g>
 
 <g id="tutorial">
@@ -64,6 +72,11 @@
 <path d="M 46.779297 225.76367 C 39.877773 225.76367 34.153311 230.62367 32.830078 237.12305 A 247.11864 31.016949 0 0 0 206.44141 246.10156 A 247.11864 31.016949 0 0 0 378.05859 237.39453 C 376.83989 230.76148 371.06426 225.76367 364.06836 225.76367 L 46.779297 225.76367 z " style="fill:white;fill-opacity:0.1;"/>
 <rect ry="14.237" x="32.542" y="225.762" width="345.762" height="44.745" style="fill:none;stroke:#fff;stroke-width:5;"/>
 <text transform="translate(50,255)" id="tt01"></text>
+</g>
+
+<g id="legend">
+<rect ry="14.237" x="50" y="120" width="300" height="110" style="fill:#333;stroke:#fff;stroke-width:5;"/>
+<text transform="translate(200,200)" id="tt02"></text>
 </g>
 
 <g id="pieces">
