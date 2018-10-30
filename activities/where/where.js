@@ -8,7 +8,7 @@
         number      : 20,                       // Number of questions
         time        : 1,                        // Sequence time reference
         shuffle     : true,                     // Shuffle the questions
-        evaluation  : [4,0.8],                  // The evaluation from the score average (4 for A, 3.5 for B, 3 for C, etc.)
+        evaluation  : [4.5,0.8],                // The evaluation from the score average (4.5 for A, 3.7 for B, 2.9 for C, etc.)
         font        : 1,                        // Font size
         fontex      : 1,
         fx     		: true,                     // Display effects

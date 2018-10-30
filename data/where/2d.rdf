@@ -3,6 +3,20 @@
          xmlns:dct="http://purl.org/dc/terms/">
 
 
+	<!-- table -->
+	<rdf:Description>
+        <dct:identifier>ta</dct:identifier>
+        <dct:title xml:lang="fr-FR">Repérer une position dans une grille.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/grayboard01.svg","number":6,"url":"res/img/desktop/where/grid01.svg","cursor":[{"cid":"cursor","init":[220,170],"steps":[0,0.5,1.5,3.0,5.0],"constraint":[50,50],"boundaries":[220,170,520,420]}],"gen":"function() { var x=Math.floor(Math.random()*7),y=Math.floor(Math.random()*6); return [String.fromCharCode(65+x)+' '+(y+1),'p'+String.fromCharCode(97+x)+(y+1)]; }","svgclass":"positive","font":1.5]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>mathematics</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>ta</dct:alternative>
+        <dct:source>res/img/desktop/where/grid01.svg,res/img/background/landscape/grayboard01.svg</dct:source>
+    </rdf:Description>
+    
+	<!-- plane -->
     <rdf:Description>
         <dct:identifier>ia</dct:identifier>
         <dct:title xml:lang="fr-FR">Repérer, dans le plan, un point à coordonnées entières et positives avec un pas de 1.</dct:title>

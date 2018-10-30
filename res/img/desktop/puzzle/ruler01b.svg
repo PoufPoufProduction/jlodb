@@ -25,12 +25,9 @@
     svg#ruler #bg .c1    { fill:#8e572b;fill-opacity:0.2;stroke:black; }
 	svg#ruler #bg .c2    { fill:white;fill-opacity:0.8; }
     svg#ruler #bg text   { font-size:20px; cursor:auto; }
-	svg#ruler #bg text.t21		{ display:none; }
-	svg#ruler.t21 #bg text.t21	{ display:inline; }
-	svg#ruler.t21 #bg text.t1	{ display:none; }
     
     svg#ruler #elts rect    { fill:#cef; stroke:black;stroke-width:1px;}
-	svg#ruler #elts path    { fill:none; stroke:red;stroke-width:3px;}
+	svg#ruler #elts path    { fill:none; stroke:red;stroke-width:3px;stroke-linecap:round;stroke-linejoin:round;}
 	svg#ruler .shadow				{ fill:black; fill-opacity:0.5; display:none; }
 	svg#ruler .drag .shadow			{ display:inline; }
 	
@@ -78,39 +75,41 @@
     </g>
 </g>
 
+<image transform="translate(0,48)" xlink:href="" width="144" height="144" x="0" y="0" id="help"/>
+
 
 <g id="bg">
-<g transform="translate(55,350)"><circle cx="0" cy="0" r="18" class="c2" id="c01"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1">1</text><text y="8" class="t21">21</text></g>
-<g transform="translate(90,350)"><circle cx="0" cy="0" r="18" class="c2" id="c02"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1">2</text><text y="8" class="t21">22</text></g>
-<g transform="translate(125,350)"><circle cx="0" cy="0" r="18" class="c2" id="c03"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1">3</text><text y="8" class="t21">23</text></g>
-<g transform="translate(160,350)"><circle cx="0" cy="0" r="18" class="c2" id="c04"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1">4</text><text y="8" class="t21">24</text></g>
-<g transform="translate(195,350)"><circle cx="0" cy="0" r="18" class="c2" id="c05"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1">5</text><text y="8" class="t21">25</text></g>
-<g transform="translate(230,350)"><circle cx="0" cy="0" r="18" class="c2" id="c06"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1">6</text><text y="8" class="t21">26</text></g>
-<g transform="translate(265,350)"><circle cx="0" cy="0" r="18" class="c2" id="c07"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1">7</text><text y="8" class="t21">27</text></g>
-<g transform="translate(300,350)"><circle cx="0" cy="0" r="18" class="c2" id="c08"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1">8</text><text y="8" class="t21">28</text></g>
-<g transform="translate(335,350)"><circle cx="0" cy="0" r="18" class="c2" id="c09"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1">9</text><text y="8" class="t21">29</text></g>
-<g transform="translate(370,350)"><circle cx="0" cy="0" r="18" class="c2" id="c10"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1">10</text><text y="8" class="t21">30</text></g>
-<g transform="translate(405,350)"><circle cx="0" cy="0" r="18" class="c2" id="c11"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1">11</text><text y="8" class="t21">31</text></g>
-<g transform="translate(440,350)"><circle cx="0" cy="0" r="18" class="c2" id="c12"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1">12</text><text y="8" class="t21">32</text></g>
-<g transform="translate(475,350)"><circle cx="0" cy="0" r="18" class="c2" id="c13"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1">13</text><text y="8" class="t21">33</text></g>
-<g transform="translate(510,350)"><circle cx="0" cy="0" r="18" class="c2" id="c14"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1">14</text><text y="8" class="t21">34</text></g>
-<g transform="translate(545,350)"><circle cx="0" cy="0" r="18" class="c2" id="c15"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1">15</text><text y="8" class="t21">35</text></g>
+<g transform="translate(55,350)"><circle cx="0" cy="0" r="18" class="c2" id="c01"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1" id="tt1">1</text></g>
+<g transform="translate(90,350)"><circle cx="0" cy="0" r="18" class="c2" id="c02"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1" id="tt2">2</text></g>
+<g transform="translate(125,350)"><circle cx="0" cy="0" r="18" class="c2" id="c03"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1" id="tt3">3</text></g>
+<g transform="translate(160,350)"><circle cx="0" cy="0" r="18" class="c2" id="c04"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1" id="tt4">4</text></g>
+<g transform="translate(195,350)"><circle cx="0" cy="0" r="18" class="c2" id="c05"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1" id="tt5">5</text></g>
+<g transform="translate(230,350)"><circle cx="0" cy="0" r="18" class="c2" id="c06"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1" id="tt6">6</text></g>
+<g transform="translate(265,350)"><circle cx="0" cy="0" r="18" class="c2" id="c07"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1" id="tt7">7</text></g>
+<g transform="translate(300,350)"><circle cx="0" cy="0" r="18" class="c2" id="c08"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1" id="tt8">8</text></g>
+<g transform="translate(335,350)"><circle cx="0" cy="0" r="18" class="c2" id="c09"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1" id="tt9">9</text></g>
+<g transform="translate(370,350)"><circle cx="0" cy="0" r="18" class="c2" id="c10"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1" id="tt10">10</text></g>
+<g transform="translate(405,350)"><circle cx="0" cy="0" r="18" class="c2" id="c11"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1" id="tt11">11</text></g>
+<g transform="translate(440,350)"><circle cx="0" cy="0" r="18" class="c2" id="c12"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1" id="tt12">12</text></g>
+<g transform="translate(475,350)"><circle cx="0" cy="0" r="18" class="c2" id="c13"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1" id="tt13">13</text></g>
+<g transform="translate(510,350)"><circle cx="0" cy="0" r="18" class="c2" id="c14"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1" id="tt14">14</text></g>
+<g transform="translate(545,350)"><circle cx="0" cy="0" r="18" class="c2" id="c15"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1" id="tt15">15</text></g>
 
-<g transform="translate(55,385)"><circle cx="0" cy="0" r="18" class="c2" id="c16"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1">16</text><text y="8" class="t21">36</text></g>
-<g transform="translate(90,385)"><circle cx="0" cy="0" r="18" class="c2" id="c17"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1">17</text><text y="8" class="t21">37</text></g>
-<g transform="translate(125,385)"><circle cx="0" cy="0" r="18" class="c2" id="c18"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1">18</text><text y="8" class="t21">38</text></g>
-<g transform="translate(160,385)"><circle cx="0" cy="0" r="18" class="c2" id="c19"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1">19</text><text y="8" class="t21">39</text></g>
-<g transform="translate(195,385)"><circle cx="0" cy="0" r="18" class="c2" id="c20"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1">20</text><text y="8" class="t21">40</text></g>
-<g transform="translate(230,385)"><circle cx="0" cy="0" r="18" class="c2" id="c21"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1">21</text><text y="8" class="t21">41</text></g>
-<g transform="translate(265,385)"><circle cx="0" cy="0" r="18" class="c2" id="c22"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1">22</text><text y="8" class="t21">42</text></g>
-<g transform="translate(300,385)"><circle cx="0" cy="0" r="18" class="c2" id="c23"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1">23</text><text y="8" class="t21">43</text></g>
-<g transform="translate(335,385)"><circle cx="0" cy="0" r="18" class="c2" id="c24"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1">24</text><text y="8" class="t21">44</text></g>
-<g transform="translate(370,385)"><circle cx="0" cy="0" r="18" class="c2" id="c25"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1">25</text><text y="8" class="t21">45</text></g>
-<g transform="translate(405,385)"><circle cx="0" cy="0" r="18" class="c2" id="c26"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1">26</text><text y="8" class="t21">46</text></g>
-<g transform="translate(440,385)"><circle cx="0" cy="0" r="18" class="c2" id="c27"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1">27</text><text y="8" class="t21">47</text></g>
-<g transform="translate(475,385)"><circle cx="0" cy="0" r="18" class="c2" id="c28"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1">28</text><text y="8" class="t21">48</text></g>
-<g transform="translate(510,385)"><circle cx="0" cy="0" r="18" class="c2" id="c29"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1">29</text><text y="8" class="t21">49</text></g>
-<g transform="translate(545,385)"><circle cx="0" cy="0" r="18" class="c2" id="c30"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1">30</text><text y="8" class="t21">50</text></g>
+<g transform="translate(55,385)"><circle cx="0" cy="0" r="18" class="c2" id="c16"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1" id="tt16">16</text></g>
+<g transform="translate(90,385)"><circle cx="0" cy="0" r="18" class="c2" id="c17"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1" id="tt17">17</text></g>
+<g transform="translate(125,385)"><circle cx="0" cy="0" r="18" class="c2" id="c18"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1" id="tt18">18</text></g>
+<g transform="translate(160,385)"><circle cx="0" cy="0" r="18" class="c2" id="c19"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1" id="tt19">19</text></g>
+<g transform="translate(195,385)"><circle cx="0" cy="0" r="18" class="c2" id="c20"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1" id="tt20">20</text></g>
+<g transform="translate(230,385)"><circle cx="0" cy="0" r="18" class="c2" id="c21"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1" id="tt21">21</text></g>
+<g transform="translate(265,385)"><circle cx="0" cy="0" r="18" class="c2" id="c22"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1" id="tt22">22</text></g>
+<g transform="translate(300,385)"><circle cx="0" cy="0" r="18" class="c2" id="c23"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1" id="tt23">23</text></g>
+<g transform="translate(335,385)"><circle cx="0" cy="0" r="18" class="c2" id="c24"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1" id="tt24">24</text></g>
+<g transform="translate(370,385)"><circle cx="0" cy="0" r="18" class="c2" id="c25"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1" id="tt25">25</text></g>
+<g transform="translate(405,385)"><circle cx="0" cy="0" r="18" class="c2" id="c26"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1" id="tt26">26</text></g>
+<g transform="translate(440,385)"><circle cx="0" cy="0" r="18" class="c2" id="c27"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1" id="tt27">27</text></g>
+<g transform="translate(475,385)"><circle cx="0" cy="0" r="18" class="c2" id="c28"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1" id="tt28">28</text></g>
+<g transform="translate(510,385)"><circle cx="0" cy="0" r="18" class="c2" id="c29"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1" id="tt29">29</text></g>
+<g transform="translate(545,385)"><circle cx="0" cy="0" r="18" class="c2" id="c30"/><circle cx="0" cy="0" r="15" class="c1"/><text y="8" class="t1" id="tt30">30</text></g>
 </g>
 
 
