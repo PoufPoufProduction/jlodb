@@ -6,9 +6,11 @@
         template    : "template.html",                          // Activity's html template
         css         : "style.css",                              // Activity's css style sheet
         lang        : "en-US",                                  // Current localization
-        exercice    : [],                                       // Exercice
+        tips    	: [],                                      	// Level tips
+		glossary	: [],										// Glossary
         background  : "",
-        debug       : false                                     // Debug mode
+		filters		: { people:0, state:0 },					// Tips display filters
+        debug       : true                                      // Debug mode
     };
 
     var regExp = [
@@ -100,15 +102,47 @@
                 // HANDLE BACKGROUND
                 if (settings.background) { $this.children().first().css("background-image","url("+settings.background+")"); }
                 
-                // Optional devmode
-                if (settings.dev) { $this.find("#devmode").show(); }
-
-                // Exercice
-                $this.find("#exercice").html(helpers.format(settings.exercice));
-
+                // BUILD TIPS
+				for (var i=0; i<settings.tips.length; i++) { settings.states[i] = true; }
+				helpers.tips($this);
+				
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
-        }
+        },
+		tips: function($this) {
+			var settings 	= helpers.settings($this);
+			var $page		= 0;
+			var nbtip 		= 0;
+			var nbpage		= 0;
+			
+			$this.find("#hintlist").html("");
+			$this.find("#hinttabs").html("");
+			
+			for (var i=0; i<settings.tips.length; i++) {
+				var t = settings.tips[i];
+				var $elt = $("<div class='tip' id='tip"+i+"'><div class='elt'></div><div class='legend'></div></div>");
+					
+				if (settings.glossary && settings.glossary.length>i) {
+					$elt.find(".legend").html(settings.glossary[i]);
+				}
+				
+				if (true) {
+					if ($page==0) {
+						$page = $("<div class='page' id='p"+nbpage+"'></div>");
+						$this.find("#hinttabs").append("<div class='tab' id='t"+nbpage+"'>"+(nbpage+1)+"</div>");
+						nbpage++;
+						$this.find("#hintlist").append($page);
+					}
+					$page.append($elt);
+				}
+				
+				
+				
+				if ((nbtip++) >= 2) { $page = 0; }
+			}
+			
+			
+		}
     };
 
     // The plugin
@@ -119,7 +153,8 @@
             init: function(options) {
                 // The settings
                 var settings = {
-                    interactive     : false
+                    interactive     : false,
+					states			: []				// TIP STATES
                 };
 
                 return this.each(function() {
