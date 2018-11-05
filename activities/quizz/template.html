@@ -1,0 +1,25 @@
+<div>
+    <div id="board">
+		<div id="grid"></div>
+		<div id="hints">
+			<div id="hintlist">
+			</div>
+		</div>
+    </div>
+    
+    <div id="splashex" ontouchstart="$(this).hide().closest('.quizz').quizz('next');event.preventDefault();"
+                     onclick="$(this).hide().closest('.quizz').quizz('next');"><div>
+        <h1 id="label"></h1>
+    </div></div>
+    
+    <!-- Optional devmode -->
+    <div id="devmode" ontouchstart="$(this).closest('.quizz').quizz('devmode');event.preventDefault();"
+                      onclick="$(this).closest('.quizz').quizz('devmode');" ><img src="res/img/default/white/snapshot.svg"/></div>
+                      
+    <div id="devoutput" ontouchstart="$(this).hide();event.preventDefault();" onclick="$(this).hide();">
+        <textarea ontouchstart="$(this).focus();event.stopPropagation();event.preventDefault();"
+                  onclick="$(this).focus();event.stopPropagation();"></textarea>
+    </div>
+
+</div>
+

@@ -301,12 +301,12 @@
     <rdf:Description>
         <dct:identifier>c10</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer deux nombres compris entre 1 et 10 dont la somme vaut 10.</dct:title>
-        <dct:description><![CDATA["class":"h12","gen":"function(){var a = Math.floor(Math.random()*9)+1, b = 10-a; return [a,b];}","nbvalues":5,"number":4,"len":3.5,"font":1.5]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[9,1],"max":10,"f":1},"class":"h12","gen":"function($this,_s,_id){var a = Math.floor(Math.random()*_s.gg.a[0])+_s.gg.a[1], b = _s.gg.max-a; return [a*_s.gg.f,b*_s.gg.f];}","nbvalues":5,"number":2,"len":3.5,"font":1.5]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Associez chaque valeur à son <b>complément à 10</b>, c'est à dire à la valeur dont l'addition donne 10.","fontex":0.5]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:extent>2</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
+        <dct:type>1</dct:type>
         <dct:alternative>c100</dct:alternative>
         <dct:isPartOf>complement</dct:isPartOf>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
@@ -315,13 +315,14 @@
     <rdf:Description>
         <dct:identifier>c20</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer deux nombres compris entre 1 et 20 dont la somme vaut 20.</dct:title>
-        <dct:description><![CDATA["class":"h12","gen":"function(){var a = Math.floor(Math.random()*19)+1, b = 20-a; return [a,b];}","nbvalues":5,"number":4,"len":3.5,"font":1.5]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[19,1],"max":20,"f":1}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Associez chaque valeur à son <b>complément à 20</b>, c'est à dire à la valeur dont l'addition donne 20.","fontex":0.5]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:extent>2</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c100</dct:alternative>
+        <dct:relation>c10</dct:relation>
         <dct:isPartOf>complement</dct:isPartOf>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
     </rdf:Description>
@@ -329,13 +330,14 @@
     <rdf:Description>
         <dct:identifier>c50</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer deux nombres compris entre 1 et 50 dont la somme vaut 50.</dct:title>
-        <dct:description><![CDATA["class":"h12","gen":"function(){var a = Math.floor(Math.random()*49)+1, b = 50-a; return [a,b];}","nbvalues":5,"number":4,"len":3.5,"font":1.5]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[49,1],"max":50,"f":1}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Associez chaque valeur à son <b>complément à 50</b>, c'est à dire à la valeur dont l'addition donne 50.","fontex":0.5]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:extent>2</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c100</dct:alternative>
+        <dct:relation>c10</dct:relation>
         <dct:isPartOf>complement</dct:isPartOf>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
     </rdf:Description>
@@ -343,13 +345,29 @@
     <rdf:Description>
         <dct:identifier>c100</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer deux nombres compris entre 1 et 100 dont la somme vaut 100.</dct:title>
-        <dct:description><![CDATA["class":"h12","gen":"function(){var a = Math.floor(Math.random()*99)+1, b = 100-a; return [a,b];}","nbvalues":5,"number":4,"len":3.5,"font":1.5]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[99,1],"max":100,"f":1}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Associez chaque valeur à son <b>complément à 100</b>, c'est à dire à la valeur dont l'addition donne 100.","fontex":0.5]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:extent>2</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>c100</dct:alternative>
+        <dct:relation>c10</dct:relation>
+        <dct:isPartOf>complement</dct:isPartOf>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>c100b</dct:identifier>
+        <dct:title xml:lang="fr-FR">Associer deux multiples de 10 compris entre 1 et 100 dont la somme vaut 100.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[9,1],"max":10,"f":10}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Associez chaque valeur à son <b>complément à 100</b>, c'est à dire à la valeur dont l'addition donne 100.","fontex":0.5]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>c100</dct:alternative>
+        <dct:relation>c10</dct:relation>
         <dct:isPartOf>complement</dct:isPartOf>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
     </rdf:Description>
@@ -357,13 +375,14 @@
     <rdf:Description>
         <dct:identifier>c200</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer deux nombres compris entre 1 et 200 dont la somme vaut 200.</dct:title>
-        <dct:description><![CDATA["class":"h12","gen":"function(){var a = Math.floor(Math.random()*199)+1, b = 200-a; return [a,b];}","nbvalues":5,"number":4,"len":3.5,"font":1.5]]></dct:description>
+        <dct:description><![CDATA["gg":{"a":[199,1],"max":20,"f":1}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Associez chaque valeur à son <b>complément à 200</b>, c'est à dire à la valeur dont l'addition donne 200.","fontex":0.5]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:extent>2</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
+        <dct:type>3</dct:type>
         <dct:alternative>c100</dct:alternative>
+        <dct:relation>c10</dct:relation>
         <dct:isPartOf>complement</dct:isPartOf>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
     </rdf:Description>
@@ -371,15 +390,31 @@
     <rdf:Description>
         <dct:identifier>c1k</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer deux nombres compris entre 1 et 1000 dont la somme vaut 1000.</dct:title>
-        <dct:description><![CDATA["class":"h12","gen":"function(){var a = Math.floor(Math.random()*999)+1, b = 1000-a; return [a,b];}","nbvalues":5,"number":4,"len":3.5,"font":1.5]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Associez chaque valeur à son <b>complément à 1000</b>, c'est à dire à la valeur dont l'addition donne 1000.","fontex":0.5]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:description><![CDATA["gg":{"a":[999,1],"max":1000,"f":1}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Associez chaque valeur à son <b>complément à 1 000</b>, c'est à dire à la valeur dont l'addition donne 1 000.","fontex":0.5]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>addition</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>c100</dct:alternative>
+        <dct:relation>c10</dct:relation>
         <dct:isPartOf>complement</dct:isPartOf>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>c1kb</dct:identifier>
+        <dct:title xml:lang="fr-FR">Associer deux multiples de 100 compris entre 1 et 1000 dont la somme vaut 1000.</dct:title>
+        <dct:description><![CDATA["gg":{"a":[9,1],"max":10,"f":100}]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Associez chaque valeur à son <b>complément à 1 000</b>, c'est à dire à la valeur dont l'addition donne 1 000.","fontex":0.5]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>c100</dct:alternative>
+        <dct:relation>c10</dct:relation>
+        <dct:isPartOf>complement</dct:isPartOf>
+        <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
     </rdf:Description>
 
 </rdf:RDF>
