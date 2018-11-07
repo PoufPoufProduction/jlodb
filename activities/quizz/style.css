@@ -4,8 +4,29 @@
                                           width:55%; color:white; text-align:center; border-radius:0 .5em .5em 0;
                                           border:.3em solid white;
                                           -ms-transform: rotate(45deg); -webkit-transform: rotate(45deg); transform: rotate(45deg); }
-.quizz div#board                  { height:12em; width:102%; }
+.quizz div#board                { height:12em; width:102%; }
 .quizz div#grid					{ height:100%; width:70%; float:left; }
-.quizz div#hints				{ height:100%; width:30%; float:left; background-color:rgba(255,255,255,0.5); }
-.quizz div#hintlist				{ height:90%; width:90%; margin:.5em 0; background-color:rgba(150,220,240,0.9); border:.1em solid white;}
-.quizz div#hintlist .tip		{ font-size:0.4em; }
+.quizz div#hints				{ height:100%; width:28%; float:left; background-color:rgba(255,255,255,0.5);border:.1em solid white; border-width:0 0 0 .1em;}
+.quizz div#hintmenu				{ font-size:.9em; margin-top:5%; padding:.1em 0; height:1em; width:105%; background-color:rgba(0,0,0,0.6); }
+.quizz div#hintmenu .icon		{ cursor:pointer; background-image:url("../../res/img/icon/tab/tab00.svg"); border-radius:.5em; overflow:visible; float:left; margin:0 .1em; background-color:gray;}
+.quizz div#hintmenu .icon.s		{ background-color:red; }
+.quizz div#hintlist				{ font-size:0.4em; height:78%; width:110%; background-color:rgba(150,220,240,0.9); }
+.quizz div#hintlist .page		{ display:none; }
+.quizz div#hintlist.small .tip	{ font-size:.5em; }
+.quizz div#hintlist .tip		{ position:relative; margin:.1em; border:.1em solid white; width:10.8em; float:left; cursor:pointer; }
+.quizz div#hintlist .tip .elt	{ width:102%; background-color:rgba(255,255,255,0.5); }
+.quizz div#hintlist .tip .icon	{ float:left; font-size:3.5em; }
+.quizz div#hintlist .tip .legend { font-size:.7em; height:2.8em; }
+.quizz div#hintlist .tip .mask	{ position:absolute;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.8); display:none; }
+
+.quizz div#hinttabs>div			{ font-size:.75em; float:left; width:1.2em; height:1.2em; text-align:center; cursor:pointer; background-color:rgba(100,100,100,0.7); margin:0 .03em; border-radius:0 0 .5em .5em; color:white; }
+.quizz div#hinttabs>div.s		{ color:#246; background-color:rgba(150,220,240,0.9); }
+
+.quizz #phelp                            { width:16em; height:12em; position:absolute;top:0;left:0; background-color:rgba(0,0,0,0.5);
+                                      z-index:2002; cursor:pointer; display:none; }
+.quizz #phelp>div                   { width:90%; height:90%; margin:1em auto; font-size:.5em;  
+                                      background-color:rgba(255,255,255,0.5); border:.3em solid white; }
+.quizz #phelp .h1			{ clear:both; background-color:white; width:100%; text-align:center; font-weight:bold; }
+.quizz #phelp .rule			{ float:left; width:48%; border:.1em solid white; margin:.1em; background-color:rgba(255,255,255,0.7); }
+.quizz #phelp .rule .icon	{ float:left; font-size:3em; }
+.quizz #phelp .rule .label	{ float:left; margin-left:.2em; font-size:.5em; width:75%; text-align:justify; }

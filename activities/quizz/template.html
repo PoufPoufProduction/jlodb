@@ -2,11 +2,68 @@
     <div id="board">
 		<div id="grid"></div>
 		<div id="hints">
-			<div id="hintmenu"></div>
+			<div id="hintmenu">
+			
+				<div class='icon'
+					ontouchstart="$(this).closest('.quizz').quizz('mask',this);event.preventDefault();"
+                    onclick="$(this).closest('.quizz').quizz('mask',this);">
+						<img src="ext/noto/svg/emoji_u2b50.svg" alt=""/></div>
+				<div class='icon'
+					ontouchstart="$(this).closest('.quizz').quizz('filter',this);event.preventDefault();"
+                    onclick="$(this).closest('.quizz').quizz('filter',this);">
+						<img id="filterimg" src="ext/noto/svg/emoji_u1f50d.svg" alt=""/></div>
+				<div class='icon'
+					ontouchstart="$(this).closest('.quizz').find('#phelp').show();event.preventDefault();"
+                    onclick="$(this).closest('.quizz').find('#phelp').show();">
+						<img src="ext/noto/svg/emoji_u2753.svg" alt=""/></div>
+			
+			</div>
 			<div id="hintlist"></div>
 			<div id="hinttabs"></div>
 		</div>
     </div>
+	
+	<div id="phelp" ontouchstart="$(this).hide();event.preventDefault();"
+                  onclick="$(this).hide();"><div>
+		<div id="phelprules">
+			<div id="phelph1" class="h1"></div>
+			<div class="rule">
+				<div class="icon"><img src="res/img/asset/misc/opeq.svg" alt=""/></div>
+				<div class="label" id="heq"></div>
+			</div>
+			<div class="rule">
+				<div class="icon"><img src="res/img/asset/misc/opnot.svg" alt=""/></div>
+				<div class="label" id="hnot"></div>
+			</div>
+			<div class="rule">
+				<div class="icon"><img src="res/img/asset/misc/oplt.svg" alt=""/></div>
+				<div class="label" id="hlt"></div>
+			</div>
+			<div class="rule">
+				<div class="icon"><img src="res/img/asset/misc/opgt.svg" alt=""/></div>
+				<div class="label" id="hgt"></div>
+			</div>
+			<div class="rule">
+				<div class="icon"><img src="res/img/asset/misc/opnext.svg" alt=""/></div>
+				<div class="label" id="hnext"></div>
+			</div>
+			<div class="rule">
+				<div class="icon"><img src="res/img/asset/misc/opfar.svg" alt=""/></div>
+				<div class="label" id="hfar"></div>
+			</div>
+			<div id="phelph2" class="h1"></div>
+			<div class="rule">
+				<div class="icon"><img src="ext/noto/svg/emoji_u2b50.svg" alt=""/></div>
+				<div class="label" id="hmask"></div>
+			</div>
+			<div class="rule">
+				<div class="icon"><img src="ext/noto/svg/emoji_u1f50d.svg" alt=""/></div>
+				<div class="label" id="hfilter"></div>
+			</div>
+		</div>
+	
+	</div>
+	</div>
     
     <div id="splashex" ontouchstart="$(this).hide().closest('.quizz').quizz('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.quizz').quizz('next');"><div>
