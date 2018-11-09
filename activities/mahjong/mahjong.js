@@ -357,7 +357,7 @@
                         }
                         else {
                             if (settings.selected.id!=elt.id) {
-                                
+                                settings.interactive = false;
                                 elt.$html.addClass("s");
                                         
                                 if (settings.selected.value==elt.value) {
@@ -401,6 +401,7 @@
             var settings = helpers.settings($this);
             $this.find(".mjtile.s").removeClass("s");
             settings.selected=0;
+			settings.interactive = true;
         }
     };
 

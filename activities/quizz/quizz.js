@@ -11,6 +11,8 @@
         background  : "",
 		filters		: { people:0, state:0 },					// Tips display filters
 		smalltips	: false,									// If no legend, display tips in small size
+		withnotes	: true,
+		errratio	: 1,
 		res			: {
 			house: [ 	"res/img/asset/misc/house01.svg",
 						"res/img/asset/misc/house05.svg",
@@ -126,6 +128,129 @@
                 // BUILD TIPS
 				for (var i=0; i<settings.tips.length; i++) { settings.states[i] = true; }
 				helpers.tips($this);
+				
+				// BUILD BOARD
+				$this.find("#grid").html("");
+				for (var i=0; i<settings.board[0].value.length; i++) {
+					var $col=$("<div class='col'></div>");
+					$col.css("left",(i*1.4+0.5)+"em");
+					
+					for (var j=0; j<settings.board.length; j++) {
+						var c = settings.board[j];
+						var $elt=$("<div class='elt' id='c"+i+"x"+j+"'></div>");
+						
+						if (c.fixed) {
+							$elt.html("<img src='"+settings.res[c.type][c.value[i]-1]+"' alt=''/>");
+						}
+						else {
+							var $click = $("<div class='result click' id='c"+settings.cells.length+"'></div>")
+							$elt.append($click);
+							settings.cells.push({type:1,value:0,i:i,j:j,type:c.type,k:0,$elt:$click});
+							if (settings.withnotes) {
+								var $notes = $("<div class='notes'></div>");
+								for (var k=0; k<9; k++) {
+									var $note = $("<div class='click' id='c"+settings.cells.length+"'></div>")
+									$notes.append($note);
+									settings.cells.push({type:0,value:0,i:i,j:j,k:k,$elt:$note});
+								}
+								$elt.append($notes);
+							}
+						}
+						
+						$col.append($elt);
+					}
+					
+					$this.find("#grid").append($col);
+				}
+				$this.find(".click").bind("mousedown touchstart", function(_event) {
+					var vEvent = (_event && _event.originalEvent &&
+                                _event.originalEvent.touches && _event.originalEvent.touches.length)?
+                                _event.originalEvent.touches[0]:_event;
+												
+					if (settings.interactive) {
+						settings.current = settings.cells[parseInt($(this).attr("id").substr(1))];
+						settings.key = -1;
+						
+						var line 	= settings.board[settings.current.j];
+						var values 	= [];
+						for (var i in line.value) { values.push(line.value[i]); }
+						values.sort(function(_a,_b){ return (_b<_a); });
+						var nb = values.length;
+						var s = 3/Math.pow(nb,0.5);
+						var l = 1.4/s;
+						
+						$this.find("#keypad .k").detach();
+						settings.keys = [];
+						for (var i=0; i<nb; i++) {
+							var $r = $("<div class='k' id='k"+values[i]+"'></div>");
+							$r.css("top",l*(Math.cos(2*Math.PI*(i/nb)))+"em")
+                              .css("left",l*(Math.sin(2*Math.PI*(i/nb)))+"em")
+							  .css("font-size",s+"em")
+							  .html("<img src='"+settings.res[line.type][values[i]-1]+"' alt=''/>");
+							  
+							settings.keys.push($r);
+							$this.find("#keypad").append($r);
+						}
+						
+						
+						var vTop = vEvent.clientY - $this.offset().top;
+                        var vLeft = vEvent.clientX - $this.offset().left;
+                        $this.find("#keypad").css("top", vTop+"px").css("left", vLeft+"px").show();
+						
+						
+					}
+					
+					_event.preventDefault;
+				});
+				
+                $this.bind("mousemove touchmove", function(event) {
+                    var settings = helpers.settings($this), $keypad = $this.find("#keypad");
+                    if (settings.current) {
+                        var vEvent = (event && event.originalEvent && event.originalEvent.touches &&
+                                    event.originalEvent.touches.length)? event.originalEvent.touches[0]:event;
+                        var vTop = vEvent.clientY;
+                        var vLeft = vEvent.clientX;
+                        var vSize = settings.keys[0].width();
+                        var vAlready = false;
+                        settings.key = -1;
+                        for (var i in settings.keys) {
+                            settings.keys[i].removeClass("s");
+                            if (!vAlready) {
+                                var vOffset = settings.keys[i].offset();
+                                vAlready = ( vTop>=vOffset.top && vLeft>=vOffset.left &&
+                                            vTop<vOffset.top+vSize && vLeft<vOffset.left+vSize );
+                                if (vAlready) { settings.key = i; settings.keys[i].addClass("s"); }
+                            }
+                        }
+                    }
+                    event.preventDefault();
+                });
+				
+				$this.bind("mouseup touchend", function(event) {
+					if (settings.current && settings.key!=-1 ) {
+						var val = parseInt(settings.keys[settings.key].attr("id").substr(1));
+						if (settings.current.value != val) {
+							settings.current.$elt.html("<img src='"+settings.res[settings.current.type][val-1]+"' alt=''/>");
+							settings.current.value = val;
+						}
+						else {
+							settings.current.$elt.html("");
+							settings.current.value = 0;
+						}
+					}
+					$this.find("#keypad").hide(); settings.current = 0; settings.keys = 0;
+                    event.preventDefault();
+				});
+				
+				
+				$this.bind("mouseleave touchleave", function(event) {
+					$this.find("#keypad").hide(); settings.current = 0; settings.keys = 0;
+                    event.preventDefault();
+				});
+				
+				
+				var sz = Math.round(120/Math.max(settings.board[0].value.length*1.4+1,settings.board.length*1.5))/10;
+				$this.find("#grid").css("font-size",sz+"em");
 				
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
@@ -263,6 +388,10 @@
 					filterstate		: 0,				// 0: default, 1: waiting for filter
 					filter			: 0,
 					mask			: false,
+					cells			: [],
+					current			: 0,
+					score			: 5,
+					keys			: [],
 					states			: []				// TIP STATES
                 };
 
@@ -326,7 +455,38 @@
 						settings.filterstate = 1;
 					}
 				}
+			},
+			valid: function() {
+                var $this   = $(this) , settings = helpers.settings($this);
+                if (settings.interactive) {
+                    settings.interactive = false;
+					var wrong = 0;
+					
+					for (var i in settings.cells) {
+						var c = settings.cells[i];
+						if (c.type) {
+							var res = settings.board[c.j].value[c.i];
+							if (res!=c.value) {
+								c.$elt.parent().addClass("wrong");
+								wrong++;
+							}
+						}
+					}
+
+                    var value = (wrong==0)?"good":"wrong";
+                    $this.find("#submit").addClass(value);
+					
+					settings.score = Math.max(0,5-wrong*settings.errratio);
+
+                    $this.find("#effects>div").hide();
+                    if (wrong==0) { $this.find("#effects #good").css("opacity",0).show().animate({opacity:1},500); }
+                    else        { $this.find("#effects #wrong").css("opacity",0).show().animate({opacity:1},500); }
+                    $this.find("#effects").show();
+					
+					setTimeout(function() { helpers.end($this); }, 1500);
+				}
 			}
+					
         };
 
         if (methods[method])    { return methods[method].apply(this, Array.prototype.slice.call(arguments, 1)); } 

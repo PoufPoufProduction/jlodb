@@ -5,7 +5,6 @@
                                           border:.3em solid white;
                                           -ms-transform: rotate(45deg); -webkit-transform: rotate(45deg); transform: rotate(45deg); }
 .quizz div#board                { height:12em; width:102%; }
-.quizz div#grid					{ height:100%; width:70%; float:left; }
 .quizz div#hints				{ height:100%; width:28%; float:left; background-color:rgba(255,255,255,0.5);border:.1em solid white; border-width:0 0 0 .1em;}
 .quizz div#hintmenu				{ font-size:.9em; margin-top:5%; padding:.1em 0; height:1em; width:105%; background-color:rgba(0,0,0,0.6); }
 .quizz div#hintmenu .icon		{ cursor:pointer; background-image:url("../../res/img/icon/tab/tab00.svg"); border-radius:.5em; overflow:visible; float:left; margin:0 .1em; background-color:gray;}
@@ -30,3 +29,32 @@
 .quizz #phelp .rule			{ float:left; width:48%; border:.1em solid white; margin:.1em; background-color:rgba(255,255,255,0.7); }
 .quizz #phelp .rule .icon	{ float:left; font-size:3em; }
 .quizz #phelp .rule .label	{ float:left; margin-left:.2em; font-size:.5em; width:75%; text-align:justify; }
+
+
+
+.quizz div#grid					{ height:100%; width:70%; float:left; position:relative; }
+.quizz div#grid .col			{ position:absolute; top:10%; background-color:white; border-radius:.25em; }
+.quizz div#grid .elt			{ width:1em; height:1em; border:.05em solid gray; background-color:#FEC; margin:.1em; border-radius:.2em; }
+.quizz div#grid .elt.wrong		{ background-color:red; }
+.quizz div#grid .result			{ width:1em; height:1em; cursor:pointer; }
+.quizz div#grid .notes			{ width:1.1em; height:1em; display:none; }
+.quizz div#grid .notes>div		{ margin:0.025em 0 0 0.025em; width:.3em; height:.3em; cursor:pointer; float:left; background-color:rgba(0,0,0,0.1); border-radius:.05em; }
+
+.quizz #keypad                 { position:absolute; overflow:visible; font-size:1em;display:none; }
+.quizz #keypad #bg1            { background-image:url("../../res/img/asset/fx/target02.svg"); font-size:3em; position:absolute; width:1em; height:1em; top:-0.5em; left:-0.5em; font-size:3em; }
+.quizz #keypad div.k    { font-size:1.4em; width:1em; height:1em; overflow:visible;
+                           background-image:url("../../res/img/asset/fx/target01.svg"); border-radius:0.5em;
+                           background-size:100%; background-position:0 0; cursor:pointer;
+                           position:absolute; background-color:rgba(200,235,235,0.8); margin:-0.5em;}
+.quizz #keypad div.k.s         { background-color:rgba(17,95,130,0.8); }
+
+.quizz div#submit                    { font-size:1.5em; height:1em;width:1em; cursor:pointer;
+                                              position:absolute; top:7em; left:0em; z-index:3; }
+.quizz div#submit>img                { display:none; }
+.quizz div#submit #subvalid          { display:inline; }
+.quizz div#submit.good #subvalid     { display:none; }
+.quizz div#submit.wrong #subvalid    { display:none; }
+.quizz div#submit.good #subgood      { display:inline; }
+.quizz div#submit.wrong #subwrong    { display:inline; }
+.quizz #effects                      { width:60%; height:60%; position:absolute; top:5%; left:60%; display:none; }
+.quizz #effects>div                  { font-size:6em; width:1em; height:1em; display:none; }

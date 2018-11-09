@@ -23,6 +23,22 @@
 		</div>
     </div>
 	
+	<div id="submit" ontouchstart="$(this).closest('.quizz').quizz('valid');event.preventDefault();"
+                     onclick="$(this).closest('.quizz').quizz('valid');">
+        <img src="res/img/default/icon/swvalid.svg" id="subvalid" alt=""/>
+        <img src="res/img/default/icon/swgood.svg" id="subgood" alt=""/>
+        <img src="res/img/default/icon/swwrong.svg" id="subwrong" alt=""/>
+    </div>
+
+    <div id="effects">
+        <div id="good"><img src="res/img/default/popup/good01.svg" alt=""/></div>
+        <div id="wrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
+    </div>
+	
+	<div id="keypad">
+		<div id="bg1"></div>
+	</div>
+	
 	<div id="phelp" ontouchstart="$(this).hide();event.preventDefault();"
                   onclick="$(this).hide();"><div>
 		<div id="phelprules">
