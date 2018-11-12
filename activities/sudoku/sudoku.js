@@ -269,13 +269,20 @@
                     var settings = helpers.settings($this), $keypad = $this.find("#keypad");
 
                     if (settings.key!=-1 && settings.keypad) {
-                        var vVal;
-                        if (settings.mapping)   { vVal=settings.$keys[settings.key].find("img").attr("alt"); }
-                        else                    { vVal=settings.$keys[settings.key].text(); }
-                        settings.keypad.html(vVal==0?"":helpers.display($this,vVal));
+                        var vVal,vOld;
+                        if (settings.mapping)   {
+							vOld=settings.keypad.find("img").attr("alt");
+							vVal=settings.$keys[settings.key].find("img").attr("alt");
+						}
+                        else {
+							vOld=settings.keypad.text();
+							vVal=settings.$keys[settings.key].text();
+						}
+
+                        settings.keypad.html(vVal==vOld?"":helpers.display($this,vVal));
                         settings.keypad.closest('td.cell').removeClass("wrong");
                         
-                        if (vVal!=0) {
+                        if (vVal!=vOld) {
                             if (settings.keypad.hasClass("fill")) {
                                 for (var i in settings.highlight) {
                                     if (settings.highlight[i].length>3) {
@@ -476,15 +483,15 @@
                 $(this).find("#grid>table").show();
 
                 // Keypad
-                var nb = settings.nbelts+1;
-                var l = 1.8;
+                var nb = settings.nbelts;
+                var l = 1.9;
                 $this.find("#keypad").addClass("s"+settings.nbelts);
                 if (settings.nbelts==4) { l=1; } else
                 if (settings.nbelts==6) { l=1.4; }
                 for (var i=0; i<nb; i++) {
                     settings.$keys.push($this.find("#keypad #key"+i).css("top",(l*Math.cos(2*Math.PI*(i/nb))-0.5)+"em")
                                        .css("left",(l*Math.sin(2*Math.PI*(i/nb))-0.5)+"em")
-                                       .html(helpers.display($this,i))
+                                       .html(helpers.display($this,i+1))
                                        .show());
                 }
 

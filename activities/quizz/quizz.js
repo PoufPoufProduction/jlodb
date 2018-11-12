@@ -143,18 +143,20 @@
 							$elt.html("<img src='"+settings.res[c.type][c.value[i]-1]+"' alt=''/>");
 						}
 						else {
-							var $click = $("<div class='result click' id='c"+settings.cells.length+"'></div>")
+							var $click = $("<div class='result click' id='c"+settings.cells.length+"x0'></div>")
 							$elt.append($click);
-							settings.cells.push({type:1,value:0,i:i,j:j,type:c.type,k:0,$elt:$click});
+							var cell = {value:0,i:i,j:j,type:c.type,k:0,$elt:$click,notes:[]};
 							if (settings.withnotes) {
 								var $notes = $("<div class='notes'></div>");
 								for (var k=0; k<9; k++) {
-									var $note = $("<div class='click' id='c"+settings.cells.length+"'></div>")
+									var $note = $("<div class='click' id='c"+settings.cells.length+"x"+(k+1)+"'></div>")
 									$notes.append($note);
-									settings.cells.push({type:0,value:0,i:i,j:j,k:k,$elt:$note});
+									cell.notes.push({type:c.type,value:0,i:i,j:j,k:k,$elt:$note,cell:cell});
 								}
 								$elt.append($notes);
 							}
+							
+							settings.cells.push(cell);
 						}
 						
 						$col.append($elt);
@@ -168,35 +170,53 @@
                                 _event.originalEvent.touches[0]:_event;
 												
 					if (settings.interactive) {
-						settings.current = settings.cells[parseInt($(this).attr("id").substr(1))];
+						var attr = $(this).attr("id").substr(1),po = attr.indexOf("x");
+						var id = parseInt(attr.substr(0,po));
+						var no = parseInt(attr.substr(po+1));
 						settings.key = -1;
+						settings.current = settings.cells[id];
+						if (no) { settings.current = settings.current.notes[no-1]; }
 						
-						var line 	= settings.board[settings.current.j];
-						var values 	= [];
-						for (var i in line.value) { values.push(line.value[i]); }
-						values.sort(function(_a,_b){ return (_b<_a); });
-						var nb = values.length;
-						var s = 3/Math.pow(nb,0.5);
-						var l = 1.4/s;
-						
-						$this.find("#keypad .k").detach();
-						settings.keys = [];
-						for (var i=0; i<nb; i++) {
-							var $r = $("<div class='k' id='k"+values[i]+"'></div>");
-							$r.css("top",l*(Math.cos(2*Math.PI*(i/nb)))+"em")
-                              .css("left",l*(Math.sin(2*Math.PI*(i/nb)))+"em")
-							  .css("font-size",s+"em")
-							  .html("<img src='"+settings.res[line.type][values[i]-1]+"' alt=''/>");
-							  
-							settings.keys.push($r);
-							$this.find("#keypad").append($r);
+						if (no && $this.find("#fillmode").hasClass("s")) {
+							settings.current.cell.value = settings.current.value;
+							settings.current.cell.$elt.html("<img src='"+settings.res[settings.current.type][settings.current.value-1]+"' alt=''/>").show().next().hide().closest(".elt").removeClass("wrong");
+							$this.find("#keypad").hide(); settings.current = 0; settings.keys = 0;
+							
+							if (helpers.check($this)==0) {
+								settings.interactive = false;
+								$this.find("#effects").css("opacity",0).show().animate({opacity:1},500);
+								setTimeout(function() { helpers.end($this); }, 1500);
+							}
+							
 						}
+						else {
 						
-						
-						var vTop = vEvent.clientY - $this.offset().top;
-                        var vLeft = vEvent.clientX - $this.offset().left;
-                        $this.find("#keypad").css("top", vTop+"px").css("left", vLeft+"px").show();
-						
+							var line 	= settings.board[settings.current.j];
+							var values 	= [];
+							for (var i in line.value) { values.push(line.value[i]); }
+							values.sort(function(_a,_b){ return (_b<_a); });
+							var nb = values.length;
+							var s = 3/Math.pow(nb,0.5);
+							var l = 1.4/s;
+							
+							$this.find("#keypad .k").detach();
+							settings.keys = [];
+							for (var i=0; i<nb; i++) {
+								var $r = $("<div class='k' id='k"+values[i]+"'></div>");
+								$r.css("top",l*(Math.cos(2*Math.PI*(i/nb)))+"em")
+								  .css("left",l*(Math.sin(2*Math.PI*(i/nb)))+"em")
+								  .css("font-size",s+"em")
+								  .html("<img src='"+settings.res[line.type][values[i]-1]+"' alt=''/>");
+								  
+								settings.keys.push($r);
+								$this.find("#keypad").append($r);
+							}
+							
+							
+							var vTop = vEvent.clientY - $this.offset().top;
+							var vLeft = vEvent.clientX - $this.offset().left;
+							$this.find("#keypad").css("top", vTop+"px").css("left", vLeft+"px").show();
+						}
 						
 					}
 					
@@ -230,12 +250,26 @@
 					if (settings.current && settings.key!=-1 ) {
 						var val = parseInt(settings.keys[settings.key].attr("id").substr(1));
 						if (settings.current.value != val) {
-							settings.current.$elt.html("<img src='"+settings.res[settings.current.type][val-1]+"' alt=''/>");
+							settings.current.$elt.html("<img src='"+settings.res[settings.current.type][val-1]+"' alt=''/>").closest(".elt").removeClass("wrong");
 							settings.current.value = val;
+							
+							if (helpers.check($this)==0) {
+								settings.interactive = false;
+								$this.find("#effects").css("opacity",0).show().animate({opacity:1},500);
+								setTimeout(function() { helpers.end($this); }, 1500);
+							}
+					
+							
 						}
 						else {
 							settings.current.$elt.html("");
 							settings.current.value = 0;
+							var ok = false;
+							for (var i in settings.current.notes) {
+								if (settings.current.notes[i].value) { ok = true; }
+							}
+							if (ok) { settings.current.$elt.hide().next().show(); }
+							
 						}
 					}
 					$this.find("#keypad").hide(); settings.current = 0; settings.keys = 0;
@@ -370,9 +404,22 @@
 			// SHOW PAGE
 			if (nbpage<=1) { $this.find("#hinttabs .icon").hide(); } else { $this.find("#hinttabs .icon").show(); }
 			helpers.tippage($this, Math.min(settings.tippage, Math.max(0,nbpage-1)));
+		},
+		check: function($this, _color) {
+			var settings = helpers.settings($this);
+            var wrong = 0;
 			
-			
+			for (var i in settings.cells) {
+				var c = settings.cells[i];
+				var res = settings.board[c.j].value[c.i];
+				if (res!=c.value) {
+					if (_color) { c.$elt.parent().addClass("wrong"); }
+					wrong++;
+					}
+				}
+			return wrong;
 		}
+		
     };
 
     // The plugin
@@ -456,35 +503,35 @@
 					}
 				}
 			},
-			valid: function() {
+			fill: function(_elt) {
                 var $this   = $(this) , settings = helpers.settings($this);
-                if (settings.interactive) {
-                    settings.interactive = false;
-					var wrong = 0;
+				$this.find("#menu .icon").removeClass("s");
+				$(_elt).addClass("s");
+				
+				for (var i in settings.cells) {
+					var c = settings.cells[i];
+					var ok = true;
+					for (var j in c.notes) { if (c.notes[j].value) { ok = false; } }
 					
-					for (var i in settings.cells) {
-						var c = settings.cells[i];
-						if (c.type) {
-							var res = settings.board[c.j].value[c.i];
-							if (res!=c.value) {
-								c.$elt.parent().addClass("wrong");
-								wrong++;
-							}
-						}
-					}
-
-                    var value = (wrong==0)?"good":"wrong";
-                    $this.find("#submit").addClass(value);
-					
-					settings.score = Math.max(0,5-wrong*settings.errratio);
-
-                    $this.find("#effects>div").hide();
-                    if (wrong==0) { $this.find("#effects #good").css("opacity",0).show().animate({opacity:1},500); }
-                    else        { $this.find("#effects #wrong").css("opacity",0).show().animate({opacity:1},500); }
-                    $this.find("#effects").show();
-					
-					setTimeout(function() { helpers.end($this); }, 1500);
+					if (ok) { c.$elt.show().next().hide(); }
 				}
+			},
+			hint: function(_elt) {
+                var $this   = $(this) , settings = helpers.settings($this);
+				$this.find("#menu .icon").removeClass("s");
+				$(_elt).addClass("s");
+				
+				for (var i in settings.cells) {
+					var c = settings.cells[i];
+					if (c.value==0) { c.$elt.hide().next().show(); }
+				}
+			},
+			help: function() {
+                var $this   = $(this) , settings = helpers.settings($this);
+				settings.score=Math.max(0,settings.score-1);
+				helpers.check($this, true);
+				$this.find("#mask").hide();
+				
 			}
 					
         };

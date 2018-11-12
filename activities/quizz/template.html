@@ -23,22 +23,39 @@
 		</div>
     </div>
 	
-	<div id="submit" ontouchstart="$(this).closest('.quizz').quizz('valid');event.preventDefault();"
-                     onclick="$(this).closest('.quizz').quizz('valid');">
-        <img src="res/img/default/icon/swvalid.svg" id="subvalid" alt=""/>
-        <img src="res/img/default/icon/swgood.svg" id="subgood" alt=""/>
-        <img src="res/img/default/icon/swwrong.svg" id="subwrong" alt=""/>
+	
+	<div id="menu">
+        <div id="fillmode" class="icon s" ontouchstart="$(this).closest('.quizz').quizz('fill',this);event.preventDefault();"
+                         onclick="$(this).closest('.quizz').quizz('fill',this);">
+            <img src="ext/noto/svg/emoji_u1f58b.svg" alt=""/>
+        </div>
+        <div class="icon" ontouchstart="$(this).closest('.quizz').quizz('hint',this);event.preventDefault();"
+                         onclick="$(this).closest('.quizz').quizz('hint',this);">
+                <img src="ext/noto/svg/emoji_u270f.svg" alt=""/>
+        </div>
+        <div class="icon" id="bcheck" ontouchstart="$(this).addClass('s').closest('.quizz').find('#mask').show();event.preventDefault();"
+                 onclick="$(this).addClass('s').closest('.quizz').find('#mask').show();"><img src="ext/noto/svg/emoji_u1f58d.svg" alt=""/>
+        </div>
     </div>
 
-    <div id="effects">
-        <div id="good"><img src="res/img/default/popup/good01.svg" alt=""/></div>
-        <div id="wrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
-    </div>
+    <div id="effects"><img src="res/img/default/popup/good01.svg" alt=""/></div>
 	
 	<div id="keypad">
 		<div id="bg1"></div>
 	</div>
 	
+	
+	<div id="mask"><div>
+		<div id="help"></div>
+		<div>
+			<div class="icon" ontouchstart="$(this).closest('.quizz').find('#bcheck').removeClass('s');$(this).closest('.quizz').quizz('help');event.preventDefault();"
+							  onclick="$(this).closest('.quizz').find('#bcheck').removeClass('s');$(this).closest('.quizz').quizz('help');"><img src="res/img/default/icon/valid01.svg" alt=""/></div>
+			<div class="icon" ontouchstart="$(this).closest('.quizz').find('#bcheck').removeClass('s');$(this).closest('#mask').hide();event.preventDefault();"
+							  onclick="$(this).closest('.quizz').find('#bcheck').removeClass('s');$(this).closest('#mask').hide();"><img src="res/img/default/icon/cancel01.svg" alt=""/></div>
+		</div>
+		<div id="illus"><img src="res/img/default/popup/minus01.svg" alt=""/></div>
+	</div></div>
+
 	<div id="phelp" ontouchstart="$(this).hide();event.preventDefault();"
                   onclick="$(this).hide();"><div>
 		<div id="phelprules">
@@ -67,7 +84,6 @@
 				<div class="icon"><img src="res/img/asset/misc/opfar.svg" alt=""/></div>
 				<div class="label" id="hfar"></div>
 			</div>
-			<div id="phelph2" class="h1"></div>
 			<div class="rule">
 				<div class="icon"><img src="ext/noto/svg/emoji_u2b50.svg" alt=""/></div>
 				<div class="label" id="hmask"></div>
@@ -75,6 +91,14 @@
 			<div class="rule">
 				<div class="icon"><img src="ext/noto/svg/emoji_u1f50d.svg" alt=""/></div>
 				<div class="label" id="hfilter"></div>
+			</div>
+			<div class="rule">
+				<div class="icon"><img src="ext/noto/svg/emoji_u1f58b.svg" alt=""/></div>
+				<div class="label" id="hmark"></div>
+			</div>
+			<div class="rule">
+				<div class="icon"><img src="ext/noto/svg/emoji_u270f.svg" alt=""/></div>
+				<div class="label" id="hhint"></div>
 			</div>
 		</div>
 	
