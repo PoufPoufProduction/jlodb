@@ -1,13 +1,11 @@
 .wordmix                            { background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat; font-size:1em}
-.wordmix div#splashex                 { background-color:rgba(0,0,0,0.3); background-image:url("../../res/img/banners/crossword.svg");
+.wordmix div#splashex                 { background-color:rgba(0,0,0,0.3); background-image:url("../../res/img/banners/wordmix.svg");
                                        }
-.wordmix div#splashex  h1             { position:absolute; top:75%; left:0; font-size:3em; background-color:rgba(70,40,20,0.8);
-                                      width:100%; color:white; text-align:center;  text-transform:uppercase;
-                                      border:.5em solid white; border-width:.2em 0;}
+.wordmix div#splashex  h1        { position:absolute; top:12%; left:50%; font-size:1.6em; background-color:red;
+                                width:65%; color:white; text-align:center; border-radius:0 .5em .5em 0;
+                                border:.3em solid white;
+                -ms-transform: rotate(45deg); -webkit-transform: rotate(45deg); transform: rotate(45deg); }
 
-.wordmix div#splashex #guide          { position:absolute; font-size:1em; top:2%; left:2%; width:35%;text-align:justify;
-                                       border:.5em solid white; padding:.5em;
-                                    background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat; }
 
 .wordmix div#exercice .strong       { color:red; font-weight:bold; border: 1px solid red; border-width:1px 0; }
 .wordmix div#board                  { float:left; width:12em; height:12em;  }
