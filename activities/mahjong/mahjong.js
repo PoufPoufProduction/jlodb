@@ -380,12 +380,7 @@
                                     
                                     
                                 }
-                                else {
-                                    settings.selected.active = false;
-                                    setTimeout(function() {
-                                        helpers.clean($this);
-                                        settings.selected.active = true; }, 300); 
-                                }
+                                else { setTimeout(function() { helpers.clean($this); }, 300); }
                             }
                             else { helpers.clean($this); }
                         }                        

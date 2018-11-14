@@ -25,16 +25,15 @@
 
 
 .sequence div#splashex                  { background-image:url("../../res/img/banners/sequence.svg"); }
-.sequence div#splashex h1               { position:absolute; top:33%; left:50%; font-size:.7em; white-space:nowrap; }
-.sequence div#splashex .guide           { position:absolute; top:42%; left:51%; font-size:.4em; width:25%; font-style:italic;
-                                          text-align:justify; }
-.sequence div#splashex #guide_time      { position:absolute; top:81.5%; left:50%; font-size:.8em; color:#333; font-weight:bold;}
-.sequence div#splashex #guide_number    { position:absolute; top:82%; left:43.5%; font-size:.6em; color:#555;
+.sequence div#splashex  h1        { position:absolute; top:14%; left:50%; font-size:1.4em; background-color:red;
+                                width:65%; color:white; text-align:center; border-radius:0 .5em .5em 0;
+                                border:.3em solid white;
+                -ms-transform: rotate(45deg); -webkit-transform: rotate(45deg); transform: rotate(45deg); }
+.sequence div#splashex #guide_time      { width:1em; height:1em; position:absolute; top:50%; left:0; font-size:7em; display:none; }
+.sequence div#splashex #guide_number:before { content:"×" }
+.sequence div#splashex #guide_number    { position:absolute; top:71%; left:68%; font-size:3em; color:red;
                                           font-weight:bold; width:1.5em; overflow:visible; text-align:center; }
-.sequence div#splash>div                { background-image:url("../../res/img/banners/sequence.svg"); }
-.sequence div#splash .text              { font-size:.4em; width:65%; float:right; }
-.sequence div#splash .text h1           { text-align:right; padding-right:.5em; }
-.sequence div#splash .text p            { margin:.5em; }
+
 .sequence .keypad #values               { background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat; }
 .sequence .keypad #board                { }
 .sequence .svg                          { position:relative; }

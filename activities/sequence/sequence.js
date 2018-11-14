@@ -209,13 +209,13 @@
                 $this.find("#guide_number").html(settings.number);
                 if (!settings.time) {
                     $this.find("#timeval").html("&#xA0;");
-                    $this.find("#guide_time").html("........");
+                    $this.find("#guide_time").hide();
                 }
                 else {
                     var vTime = helpers.formattime(
                         Math.floor(settings.time*(settings.timemode?1:settings.number))*1000);
                     $this.find("#timeval").html(vTime);
-                    $this.find("#guide_time").html((settings.timemode?"× ":"")+vTime);
+                    $this.find("#guide_time").show();
                 }
 
                 if (settings.context.onload) { settings.context.onload($this); }
