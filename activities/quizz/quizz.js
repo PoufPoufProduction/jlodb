@@ -31,7 +31,19 @@
 						"ext/noto/svg/emoji_u1f408.svg",
 						"ext/noto/svg/emoji_u1f407.svg",
 						"ext/noto/svg/emoji_u1f422.svg",
-						"ext/noto/svg/emoji_u1f426.svg"	]
+						"ext/noto/svg/emoji_u1f426.svg"	],
+			sport: [ 	"ext/noto/svg/emoji_u1f3b1.svg",
+						"ext/noto/svg/emoji_u1f3bf.svg",
+						"ext/noto/svg/emoji_u1f3b8.svg",
+						"ext/noto/svg/emoji_u1f3be.svg",
+						"ext/noto/svg/emoji_u1f3ae.svg",
+						"ext/noto/svg/emoji_u1f3a8.svg"	],
+			food: [ 	"ext/noto/svg/emoji_u1f354.svg",
+						"ext/noto/svg/emoji_u1f355.svg",
+						"ext/noto/svg/emoji_u1f363.svg",
+						"ext/noto/svg/emoji_u1f32d.svg",
+						"ext/noto/svg/emoji_u1f35d.svg",
+						"ext/noto/svg/emoji_u1f32e.svg"	]
 		},
         debug       : true                                      // Debug mode
     };
