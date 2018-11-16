@@ -304,6 +304,8 @@
 
                 var vLen = 0;
 
+				$this.find("#guide_number").html(settings.number);
+				
                 // BUILD THE QUESTIONS
                 var vLast = -1, vNew;
                 var vRegexp = (settings.regexp)?new RegExp(settings.regexp.from, "g"):0;

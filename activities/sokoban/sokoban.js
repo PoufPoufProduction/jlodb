@@ -498,7 +498,8 @@
                     }
                     if (settings.score>5) { settings.score = 5; }
                     if (settings.score<0) { settings.score = 0; }
-                    setTimeout(function() { helpers.end($this); }, 6*settings.delay);
+					$this.find("#goal").css("left","110%").show().animate({left:"60%"},500);
+                    setTimeout(function() { helpers.end($this); }, 10*settings.delay);
                 }
                 else {
                     // WAIT FOR USER INPUT

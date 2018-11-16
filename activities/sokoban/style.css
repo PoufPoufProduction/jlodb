@@ -2,14 +2,11 @@
 .sokoban                                { background-image:url("../../res/img/background/landscape/blueboard01.svg"); background-repeat:repeat;}
 
 .sokoban div#splashex                  { background-image:url("../../res/img/banners/sokoban.svg"); color:lime; }
-.sokoban div#splashex h1               { position:absolute; top:45%; left:60%; font-size:1.5em; }
-.sokoban div#splashex .guide           { position:absolute; top:56%; left:45%; font-size:.75em; width:48%;;
-                                          text-align:justify; }
-.sokoban div#splashex #guidelight       { display:none; }
-.sokoban.light div#splashex #guidelight { display:inherit; }
-.sokoban.light div#splashex #guide      { display:none; }
-.sokoban div#splashex #light           { position:absolute; top:74%; left:65%; font-size:1.2em; width:10em; height:1.2em;
-                                          text-align:center; background-color:rgba(0,0,0,0.8); border-radius:.5em 0 0 .5em; display:none; }
+.sokoban div#splashex  h1                 { position:absolute; top:12%; left:58%; font-size:1.7em; background-color:red;
+                                          width:55%; color:white; text-align:center; border-radius:0 .5em .5em 0;
+                                          border:.3em solid white;
+                                          -ms-transform: rotate(45deg); -webkit-transform: rotate(45deg); transform: rotate(45deg); }
+.sokoban div#splashex #light           { position:absolute; top:0; left:1%; font-size:9em; width:1em; height:1em; display:none; }
 .sokoban.light div#splashex #light      { display:inherit; }
 .sokoban #board                         { background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat;
                                           width:11em; height:11em; border-radius:.5em; margin:0.5em 0 0 .25em;
@@ -42,4 +39,6 @@
 .sokoban #menu #keypad .down            { display:none; }
 .sokoban #menu #keypad .s .up           { display:none; }
 .sokoban #menu #keypad .s .down         { display:inherit; }
+
+.sokoban #goal					{ z-index:101; display:none; position:absolute; font-size:6em; width:1em; height:1em; top:0; left:60%; }
 
