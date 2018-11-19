@@ -1,10 +1,11 @@
 .robot .both *                      { overflow:visible; }
 .robot                              { background-image:url("../../res/img/background/landscape/grayboard01.svg"); }
 
-.robot div#splashex                  { background-image:url("../../res/img/banners/it.svg"); color:lime; }
-.robot div#splashex h1               { position:absolute; top:45%; left:80%; font-size:1.5em; }
-.robot div#splashex #guide           { position:absolute; top:54%; left:47%; font-size:.6em; width:50%;
-                                          text-align:justify; }
+.robot div#splashex                  { background-image:url("../../res/img/banners/robot.svg"); color:lime; }
+.robot div#splashex  h1                 { position:absolute; top:10%; left:57%; font-size:2em; background-color:red;
+                                          width:55%; color:white; text-align:center; border-radius:0 .5em .5em 0;
+                                          border:.3em solid white;
+                                          -ms-transform: rotate(45deg); -webkit-transform: rotate(45deg); transform: rotate(45deg); }
 
 .robot #leftpart                    { float:left; width:9em; margin:0.5em 0 0 .25em; }
 

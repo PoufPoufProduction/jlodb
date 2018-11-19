@@ -13,6 +13,7 @@
         group       : "",                                       // Active group
         result      : "",
         init        : "",
+		transform	: {},										// Special transform operations
         font        : 1,                                        // Template font
         loop        : true,                                     // State loop
         illustration: "",                                       // Add an illustration (text or image)
@@ -347,6 +348,9 @@
                                 $(this).text(value);
                             }
                         });
+						for (var t in settings.transform) {
+							$(t,settings.svg.root()).attr("transform", settings.transform[t]);
+						}
                         helpers.fill($this); }
                     });
                 }
