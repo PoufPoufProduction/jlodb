@@ -142,7 +142,6 @@
                 for (var i in settings.objectives) for (var j in settings.objectives[i]) {
                     settings.objectives[i][j].done = false;
                 }
-                $this.find("#gnote").html(settings.number);
 				
 				// INITIAL RADIUS
 				if (settings.radiusrange && $.isArray(settings.radiusrange)) {

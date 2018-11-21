@@ -42,6 +42,9 @@
         svg#grid88.s7 #source g#s6  { display:inline; }
         svg#grid88 #source .source    { fill:gray;stroke:white;stroke-width:4 }
         svg#grid88 #source .s .source  { fill:red; }
+		svg#grid88 #legendalpha { display:none; }
+		svg#grid88.legendalpha #legendalpha { display:inline; }
+		svg#grid88.legendalpha #legendnum { display:none; }
         svg#grid88 #source text                 { text-anchor:start; font-size:11px; }
         svg#grid88 .grid text                 { fill:white;text-anchor:middle; font-size:15px; }
         svg#grid88 .grid rect.wrong { fill:red !important; }
@@ -103,24 +106,46 @@
 
 <g transform="translate(40,40)" id="8x8" class="grid">
     <rect x="-25" y="-25" height="392" width="392" style="fill:black;stroke:white;stroke-width:10"/>
-    <text transform="translate(22,-5)">0</text>
-    <text transform="translate(67,-5)">1</text>
-    <text transform="translate(112,-5)">2</text>
-    <text transform="translate(157,-5)">3</text>
-    <text transform="translate(202,-5)">4</text>
-    <text transform="translate(247,-5)">5</text>
-    <text transform="translate(292,-5)">6</text>
-    <text transform="translate(337,-5)">7</text>
-    
-    
-    <text transform="translate(-10,25)">0</text>
-    <text transform="translate(-10,70)">1</text>
-    <text transform="translate(-10,115)">2</text>
-    <text transform="translate(-10,160)">3</text>
-    <text transform="translate(-10,205)">4</text>
-    <text transform="translate(-10,250)">5</text>
-    <text transform="translate(-10,295)">6</text>
-    <text transform="translate(-10,340)">7</text>
+	<g id="legendnum">
+		<text transform="translate(22,-5)">0</text>
+		<text transform="translate(67,-5)">1</text>
+		<text transform="translate(112,-5)">2</text>
+		<text transform="translate(157,-5)">3</text>
+		<text transform="translate(202,-5)">4</text>
+		<text transform="translate(247,-5)">5</text>
+		<text transform="translate(292,-5)">6</text>
+		<text transform="translate(337,-5)">7</text>
+		
+		
+		<text transform="translate(-10,25)">0</text>
+		<text transform="translate(-10,70)">1</text>
+		<text transform="translate(-10,115)">2</text>
+		<text transform="translate(-10,160)">3</text>
+		<text transform="translate(-10,205)">4</text>
+		<text transform="translate(-10,250)">5</text>
+		<text transform="translate(-10,295)">6</text>
+		<text transform="translate(-10,340)">7</text>
+	</g>
+	
+	<g id="legendalpha">
+		<text transform="translate(22,-5)">A</text>
+		<text transform="translate(67,-5)">B</text>
+		<text transform="translate(112,-5)">C</text>
+		<text transform="translate(157,-5)">D</text>
+		<text transform="translate(202,-5)">E</text>
+		<text transform="translate(247,-5)">F</text>
+		<text transform="translate(292,-5)">G</text>
+		<text transform="translate(337,-5)">H</text>
+		
+		<text transform="translate(-10,25)">1</text>
+		<text transform="translate(-10,70)">2</text>
+		<text transform="translate(-10,115)">3</text>
+		<text transform="translate(-10,160)">4</text>
+		<text transform="translate(-10,205)">5</text>
+		<text transform="translate(-10,250)">6</text>
+		<text transform="translate(-10,295)">7</text>
+		<text transform="translate(-10,340)">8</text>
+	</g>
     
     <rect x="0" y="0" height="45" width="45" class="c"/>
     <rect x="45" y="0" height="45" width="45" class="c"/>

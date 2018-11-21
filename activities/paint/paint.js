@@ -508,6 +508,7 @@
             paint: function($this, _result) {
                 var settings = helpers.settings($this);
                 var o="";
+				if (!settings.dev.data) { o = _result; } else
                 if (settings.dev.data[2]==0) {
                     for (var i=0; i<_result.length; i++) {
                         var line = Math.floor(i/settings.dev.data[0]);

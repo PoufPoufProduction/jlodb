@@ -1,10 +1,9 @@
 .paint>div                     { height:100%; background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat; }
 
 .paint div#splashex                     { background-image:url("../../res/img/banners/paint.svg");}
-
 .paint.picross div#splashex             { background-image:url("../../res/img/banners/picross.svg");}
 .paint div#splashex #picross            { display:none; }
-.paint.picross div#splashex #picross    { display:block; }
+.paint.picross div#splashex #picross    { display:inherit; }
 .paint.picross div#splashex #default    { display:none; }
 
 .paint div#splashex  h1                 { position:absolute; top:10%; left:60%; font-size:2em; background-color:red;

@@ -59,15 +59,15 @@
 .geometry div#text #statement                   { margin:0 .5em; }
 .geometry table#objectives                      { margin-left:1em; }
 .geometry table#objectives div.icon             { width:1em; height:1em; }
-.geometry div#splashex                          { background-image:url("../../res/img/banners/geometry.svg"); color:#432;}
-.geometry div#splashex #splash_dots             { display:none; }
-.geometry div#splashex h1                       { position:absolute; top:28%; left:10%; font-size:1.5em; }
-.geometry div#splashex .guide                   { position:absolute; font-size:.7em; font-weight:bold; font-style:italic; text-align:justify; }
-.geometry div#splashex #guide                   { top:36%; left:8%; width:40%; }
-.geometry div#splashex #guide2                  { top:48%; left:8%; width:32%; }
-.geometry div#splashex #gnote                   { position:absolute; top:73%; left:77%; color:white; font-size:4em; font-weight:bold;
-                                       width:2em; text-align:center; }
-
+.geometry div#splashex                          { background-image:url("../../res/img/banners/geometry.svg");}
+.geometry div#splashex  h1                 { position:absolute; top:15%; left:55%; font-size:1.4em; background-color:red;
+                                          width:55%; color:white; text-align:center; border-radius:0 .5em .5em 0;
+                                          border:.3em solid white;
+                                          -ms-transform: rotate(45deg); -webkit-transform: rotate(45deg); transform: rotate(45deg); }
+.geometry div#splashex #splash_dots 		{ display:none; }
+.geometry.dots div#splashex #splash_dots	{ display:inherit; }
+.geometry.dots div#splashex #splash_default { display:none; }
+										  
 .geometry #zoom  { position:absolute; top:83%; left:1%; width:1.2em; height:1.2em; font-size:1.8em; text-align:center; color:white; font-weight:bold; overflow:visible; display:none; }
 .geometry.nezoom #zoom { top:0; left:83%; }
 
@@ -85,16 +85,8 @@
 .geometry.full  div#board                       { width:100%; height:100%; overflow:hidden;}
 .geometry.full                                  { background-image:none; }
 
-.geometry.dots  div#splashex                    { background-color:rgba(0,0,0,0.3);
-                                                  background-image:url("../../res/img/banners/dots.svg"); color:#432;}
-.geometry.dots  div#splashex #splash_dots       { display:inline; }
-.geometry.dots  div#splashex #splash_default    { display:none; }
-.geometry.dots  div#splashex #label_dots        { position:absolute; top:75%; left:0; font-size:2em; background-color:rgba(70,40,20,0.8);
-                                                  width:100%; color:white; text-align:center;  text-transform:uppercase;
-                                                  border:.5em solid white; border-width:.2em 0;}
-.geometry.dots  div#splashex #guide_dots        { position:absolute; font-size:0.8em; top:2%; left:2%; width:35%;text-align:justify;
-                                                  border:.5em solid white; padding:.5em; font-style: italic;
-                                                  background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat; }
+
+
 												  
 .geometry div#help		{ width:16em; height:12em; background-color:rgba(0,0,0,0.5);position:absolute;top:0;left:0; display:none;  }
 .geometry div#help>div	{ background-color:rgba(255,255,255,0.9); width:80%; height:80%; margin:5% auto; font-size:.3em; border:.2em solid white; cursor:pointer; }

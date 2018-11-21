@@ -1,8 +1,10 @@
 .stories                            { background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat;}
 .stories>div						{ width:16em; height:12em; }
 .stories div#splashex               { background-image:url("../../res/img/banners/stories.svg"); }
-.stories div#splashex h1            { color:#210; position:absolute; top:7%; left:55%; font-size:1.2em;  white-space:nowrap; }
-.stories div#splashex #guide        { color:#210; position:absolute; top:15%; left:50%; font-size:.75em; width:43%; text-align:justify; }
+.stories div#splashex  h1                 { position:absolute; top:15%; left:55%; font-size:1.4em; background-color:red;
+                                          width:55%; color:white; text-align:center; border-radius:0 .5em .5em 0;
+                                          border:.3em solid white;
+                                          -ms-transform: rotate(45deg); -webkit-transform: rotate(45deg); transform: rotate(45deg); }
 .stories div#map					{ margin:.5em; height:11em; width:10em; border:.2em solid white; }
 .stories div#board                  { font-size:1em; height:10em; width:10em; background-color:black; position:relative; }
 .stories .map						{ position:absolute; }

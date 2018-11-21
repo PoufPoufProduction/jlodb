@@ -2,26 +2,113 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dct="http://purl.org/dc/terms/">
 
+	<!-- WITH COORDONATES -->
+	
     <rdf:Description>
-        <dct:identifier>h000</dct:identifier>
-        <dct:title xml:lang="fr-FR">Reproduire le dessin 12x4x2.</dct:title>
-        <dct:description><![CDATA["url":"res/img/desktop/paint/symh12x8.svg","result":"","o":"","data":[{"skip":true},{"toggle":true}],"dev":{"mode":"paint","data":[12,4,0]},"debug":true,"class":"ww table","selected":1]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"t":["Recopiez le dessin du haut sur la","partie basse du quadrillage."]]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:identifier>c01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Colorier les cellules du tableau 8x8 en fonction des coordonnées fournies.</dct:title>
+        <dct:description><![CDATA["svgclass":"legendalpha","errratio":2,"source":["source","s"],"background":"res/img/background/landscape/blueboard01.svg","remove":true,"url":"res/img/desktop/paint/grid01.svg","data":[{"toggle":true}],"canvas":"8x8","selected":0,"result":["         00  00  00  00                  0    0   0000          "],"t":["B2 C2 B3 C3","F2 G2 F3 G3","B6 C7 D7 E7 F7 G6"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez[/b] les différentes cellules suivant les [b]coordonnées[/b] fournies.","fontex":0.8]]></dct:description>
+        <dct:extent>2</dct:extent>
         <dct:subject>mathematics</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:coverage xml:lang="fr-FR">debug</dct:coverage>
-        <dct:alternative>h000</dct:alternative>
-        <dct:source>res/img/desktop/paint/symh12x8.svg,res/img/background/landscape/grayboard01.svg</dct:source>
+        <dct:type>2</dct:type>
+        <dct:alternative>c01</dct:alternative>
+        <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/grid01.svg</dct:source>
     </rdf:Description>
-
+	
+    <rdf:Description>
+        <dct:identifier>c02</dct:identifier>
+        <dct:title xml:lang="fr-FR">Colorier les cellules du tableau 8x8 en fonction des coordonnées fournies.</dct:title>
+        <dct:description><![CDATA["result":["0      0          0  0     00      00     0  0          0      0"],"t":["A1 H1 A8 H8","D4 E4 D5 E5","C3 F3 C6 F6"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>mathematics</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>c01</dct:alternative>
+        <dct:relation>c01</dct:relation>
+        <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/grid01.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>c03</dct:identifier>
+        <dct:title xml:lang="fr-FR">Colorier les cellules du tableau 8x8 en fonction des coordonnées fournies.</dct:title>
+        <dct:description><![CDATA["result":["      00       0   000     0 0     000   0      0 0      0      "],"t":["A7 C7 B6 B8","G1 H1 H2","D3 D4 D5 F3 F4 F5 E3 E5"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>mathematics</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>c01</dct:alternative>
+        <dct:relation>c01</dct:relation>
+        <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/grid01.svg</dct:source>
+    </rdf:Description>
+	
+	
+	<rdf:Description>
+        <dct:identifier>c11</dct:identifier>
+        <dct:title xml:lang="fr-FR">Colorier les cellules du tableau 8x8 en fonction des coordonnées fournies.</dct:title>
+        <dct:description><![CDATA["errratio":2,"source":["source","s"],"background":"res/img/background/landscape/blueboard01.svg","remove":true,"url":"res/img/desktop/paint/grid01.svg","data":[{"toggle":true},{"toggle":true}],"canvas":"8x8","svgclass":"s2 legendalpha","selected":0,"result":[" 0       0111    0111    0111    0       0       0      000     "],"t":["B1 B2 B3 B4 B5 B6 B7","A8 B8 C8","","C2 D2 E2","C3 D3 E3","C4 D4 E4"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez[/b] les différentes cellules suivant les [b]coordonnées[/b] fournies et la couleur [b]demandée[/b].","fontex":0.8]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>mathematics</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>c01</dct:alternative>
+        <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/grid01.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>c12</dct:identifier>
+        <dct:title xml:lang="fr-FR">Colorier les cellules du tableau 8x8 en fonction des coordonnées fournies.</dct:title>
+        <dct:description><![CDATA["result":["         0         1  0          1   1     0  0 0    1    1     "],"t":["B2  A7 D6 G3 G6","","","B5 C8 D3 F5 F7"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>mathematics</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>c01</dct:alternative>
+        <dct:relation>c11</dct:relation>
+        <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/grid01.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>c51</dct:identifier>
+        <dct:title xml:lang="fr-FR">Colorier les cellules du tableau 8x8 en fonction des coordonnées fournies.</dct:title>
+        <dct:description><![CDATA["errratio":2,"source":["source","s"],"background":"res/img/background/landscape/blueboard01.svg","remove":true,"url":"res/img/desktop/paint/grid01.svg","data":[{"toggle":true},{"toggle":true},{"toggle":true},{"toggle":true},{"toggle":true},{"toggle":true}],"canvas":"8x8","svgclass":"s6 legendalpha","selected":0,"result":["           33     3253     52      11    044440    11      11   "],"t":["B6 G6","","","D5 E5","D7 E7","D8 E8","D3 E4","","","C3 F3","D2 E2","","C6 D6","E6 F6","","E3 D4"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Coloriez[/b] les différentes cellules suivant les [b]coordonnées[/b] fournies et la couleur [b]demandée[/b].","fontex":0.8]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>mathematics</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>c01</dct:alternative>
+        <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/grid01.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>c52</dct:identifier>
+        <dct:title xml:lang="fr-FR">Colorier les cellules du tableau 8x8 en fonction des coordonnées fournies.</dct:title>
+        <dct:description><![CDATA["result":["  333    52052  4220224 4300034  33133    444     111           "],"t":["D2 D3","C4 D4 E4","","D5","C7 D7 E7","","B3 C3 C2","E3 F3 F2","","C1 D1 E1","B4 B5 C5","E5 F5 F4","A3 A4","G3 G4","C6 D6 E6","B2","E2",""]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>mathematics</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>c01</dct:alternative>
+        <dct:relation>c51</dct:relation>
+        <dct:source>res/img/background/landscape/blueboard01.svg,res/img/desktop/paint/grid01.svg</dct:source>
+    </rdf:Description>
+		 
+		 
+		 
+	<!-- REPRODUCE -->
+    <!-- DEBUG MODE : "dev":{"mode":"paint"} -->
+	
+	<!-- HORIZONTAL AXIS -->
+	
     <rdf:Description>
         <dct:identifier>h001</dct:identifier>
         <dct:title xml:lang="fr-FR">Reproduire le dessin 12x4x2 [formes géométriques].</dct:title>
         <dct:description><![CDATA["background":"res/img/background/landscape/grayboard01.svg","url":"res/img/desktop/paint/symh12x8.svg","result":"              111  111    1 1  1 1  111 1111 111","o":"              111  111    1 1  1 1  111 1111 111","data":[{"skip":true},{"toggle":true}],"class":"ww table","selected":1]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"t":["Recopiez le dessin du haut sur la","partie basse du quadrillage."]]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:extent>2</dct:extent>
         <dct:subject>mathematics</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
@@ -34,7 +121,7 @@
         <dct:title xml:lang="fr-FR">Reproduire le dessin 12x4x2 [formes géométriques].</dct:title>
         <dct:description><![CDATA["background":"res/img/background/landscape/grayboard01.svg","url":"res/img/desktop/paint/symh12x8.svg","result":"  111    111111 1    11111111 11 111111   11    ","o":"  111    111111 1    11111111 11 111111   11    ","data":[{"skip":true},{"toggle":true}],"class":"ww table","selected":1]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"t":["Recopiez le dessin du haut sur la","partie basse du quadrillage."]]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:extent>2</dct:extent>
         <dct:subject>mathematics</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
@@ -43,25 +130,11 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>h100</dct:identifier>
-        <dct:title xml:lang="fr-FR">Reproduire le dessin 12x4x4.</dct:title>
-        <dct:description><![CDATA["url":"res/img/desktop/paint/symh12x8.svg","result":"","o":"","data":[{"skip":true},{"toggle":true},{"toggle":true},{"toggle":true}],"dev":{"mode":"paint","data":[12,4,0]},"class":"quadri ww table","source":["quadri","q"],"nbcolor":4,"debug":true,"selected":1]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"t":["Recopiez le dessin du haut sur la","partie basse du quadrillage."]]]></dct:description>
-        <dct:extent>2</dct:extent>
-        <dct:subject>symmetry</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:coverage xml:lang="fr-FR">debug</dct:coverage>
-        <dct:alternative>h000</dct:alternative>
-        <dct:source>res/img/desktop/paint/symh12x8.svg</dct:source>
-    </rdf:Description>
-
-    <rdf:Description>
         <dct:identifier>h101</dct:identifier>
         <dct:title xml:lang="fr-FR">Reproduire le dessin 12x4x4 [carrés].</dct:title>
         <dct:description><![CDATA["background":"res/img/background/landscape/grayboard01.svg","url":"res/img/desktop/paint/symh12x8.svg","result":"      33    33  223322  331122  2211  11      11","o":"      33    33  223322  331122  2211  11      11","data":[{"skip":true},{"toggle":true},{"toggle":true},{"toggle":true}],"source":["quadri","q"],"nbcolor":4,"class":"quadri ww table","selected":1]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"t":["Recopiez le dessin du haut sur la","partie basse du quadrillage."]]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:extent>2</dct:extent>
         <dct:subject>mathematics</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
@@ -74,7 +147,7 @@
         <dct:title xml:lang="fr-FR">Reproduire le dessin 12x4x4 [montages].</dct:title>
         <dct:description><![CDATA["background":"res/img/background/landscape/grayboard01.svg","url":"res/img/desktop/paint/symh12x8.svg","result":"   11  11     122112111  12233222111222333332222","o":"   11  11     122112111  12233222111222333332222","data":[{"skip":true},{"toggle":true},{"toggle":true},{"toggle":true}],"source":["quadri","q"],"nbcolor":4,"class":"quadri ww table","selected":1]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"t":["Recopiez le dessin du haut sur la","partie basse du quadrillage."]]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:extent>2</dct:extent>
         <dct:subject>mathematics</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
@@ -87,7 +160,7 @@
         <dct:title xml:lang="fr-FR">Reproduire le dessin 12x4x4 [montages].</dct:title>
         <dct:description><![CDATA["background":"res/img/background/landscape/grayboard01.svg","url":"res/img/desktop/paint/symh12x8.svg","result":"    111     333 131 222 323 111 212 333     222 ","o":"    111     333 131 222 323 111 212 333     222 ","data":[{"skip":true},{"toggle":true},{"toggle":true},{"toggle":true}],"source":["quadri","q"],"nbcolor":4,"class":"quadri ww table","selected":1]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"t":["Recopiez le dessin du haut sur la","partie basse du quadrillage."]]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:extent>2</dct:extent>
         <dct:subject>mathematics</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
@@ -95,26 +168,29 @@
         <dct:source>res/img/desktop/paint/symh12x8.svg,res/img/background/landscape/grayboard01.svg</dct:source>
     </rdf:Description>
 
+	
     <rdf:Description>
-        <dct:identifier>v000</dct:identifier>
-        <dct:title xml:lang="fr-FR">Reproduire le dessin 6x8x2.</dct:title>
-        <dct:description><![CDATA["url":"res/img/desktop/paint/symv12x8.svg","result":"","o":"","data":[{"skip":true},{"toggle":true}],"dev":{"mode":"paint","data":[12,4,0]},"debug":true,"class":"ww table","selected":1]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"t":["Recopiez le dessin à gauche sur la","partie droite du quadrillage."]]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:identifier>h201</dct:identifier>
+        <dct:title xml:lang="fr-FR">Reproduire le dessin 24x8x4 [todo].</dct:title>
+        <dct:description><![CDATA["dev":{"mode":"paint"},"background":"res/img/background/landscape/grayboard01.svg","url":"res/img/desktop/paint/symh24x16.svg","result":"                 333       332  33    3 2222223  3  222  223 3 222    23 32222    23 322222  223  333333333    3131313     3111113     3111113      33333                                       ","o":"                 333       332  33    3 2222223  3  222  223 3 222    23 32222    23 322222  223  333333333    3131313     3111113     3111113      33333                                       ","data":[{"skip":true},{"toggle":true},{"toggle":true},{"toggle":true}],"source":["quadri","q"],"nbcolor":4,"class":"quadri ww table","selected":1]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"t":["Recopiez le dessin du haut sur la","partie basse du quadrillage."]]]></dct:description>
+        <dct:extent>3</dct:extent>
         <dct:subject>mathematics</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:coverage xml:lang="fr-FR">debug</dct:coverage>
-        <dct:alternative>h000</dct:alternative>
-        <dct:source>res/img/desktop/paint/symv12x8.svg</dct:source>
+        <dct:type>2</dct:type>
+        <dct:alternative>h001</dct:alternative>
+        <dct:source>res/img/desktop/paint/symh24x16.svg,res/img/background/landscape/grayboard01.svg</dct:source>
     </rdf:Description>
-
+	
+	
+	<!-- VERTICAL AXIS -->
+	
     <rdf:Description>
         <dct:identifier>v001</dct:identifier>
         <dct:title xml:lang="fr-FR">Reproduire le dessin 6x8x2 [un chateau].</dct:title>
         <dct:description><![CDATA["background":"res/img/background/landscape/grayboard01.svg","url":"res/img/desktop/paint/symv12x8.svg","result":"  111  11111 11111 11111  111    1    111  11111","o":"  111  11111 11111 11111  111    1    111  11111","data":[{"skip":true},{"toggle":true}],"class":"ww table","selected":1]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"t":["Recopiez le dessin à gauche sur la","partie droite du quadrillage."]]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:extent>2</dct:extent>
         <dct:subject>mathematics</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
@@ -127,7 +203,7 @@
         <dct:title xml:lang="fr-FR">Reproduire le dessin 6x8x2 [un pion].</dct:title>
         <dct:description><![CDATA["background":"res/img/background/landscape/grayboard01.svg","url":"res/img/desktop/paint/symv12x8.svg","result":"                  1 1 1 1111111111111 11 11 11 1","o":"                  1 1 1 1111111111111 11 11 11 1","data":[{"skip":true},{"toggle":true}],"class":"ww table","selected":1]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"t":["Recopiez le dessin à gauche sur la","partie droite du quadrillage."]]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:extent>2</dct:extent>
         <dct:subject>mathematics</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
@@ -136,25 +212,11 @@
     </rdf:Description>
 
     <rdf:Description>
-        <dct:identifier>v100</dct:identifier>
-        <dct:title xml:lang="fr-FR">Reproduire le dessin 6x8x4.</dct:title>
-        <dct:description><![CDATA["url":"res/img/desktop/paint/symv12x8.svg","result":"","o":"","data":[{"skip":true},{"toggle":true},{"toggle":true},{"toggle":true}],"dev":{"mode":"paint","data":[12,4,0]},"class":"quadri ww table","source":["quadri","q"],"nbcolor":4,"debug":true,"selected":1]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"t":["Recopiez le dessin à gauche sur la","partie droite du quadrillage."]]]></dct:description>
-        <dct:extent>2</dct:extent>
-        <dct:subject>symmetry</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:coverage xml:lang="fr-FR">debug</dct:coverage>
-        <dct:alternative>h000</dct:alternative>
-        <dct:source>res/img/desktop/paint/symv12x8.svg</dct:source>
-    </rdf:Description>
-
-    <rdf:Description>
         <dct:identifier>v101</dct:identifier>
         <dct:title xml:lang="fr-FR">Reproduire le dessin 6x8x4 [un arbre].</dct:title>
         <dct:description><![CDATA["background":"res/img/background/landscape/grayboard01.svg","url":"res/img/desktop/paint/symv12x8.svg","result":"  22   22222 21222  221    3     3    23  111111","o":"  22   22222 21222  221    3     3    23  111111","data":[{"skip":true},{"toggle":true},{"toggle":true},{"toggle":true}],"source":["quadri","q"],"nbcolor":4,"class":"quadri ww table","selected":1]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"t":["Recopiez le dessin à gauche sur la","partie droite du quadrillage."]]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:extent>2</dct:extent>
         <dct:subject>mathematics</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
@@ -167,13 +229,42 @@
         <dct:title xml:lang="fr-FR">Reproduire le dessin 6x8x4 [un bonhomme].</dct:title>
         <dct:description><![CDATA["background":"res/img/background/landscape/grayboard01.svg","url":"res/img/desktop/paint/symv12x8.svg","result":" 333  32223  222  21112  111   333   2 2  33 33 ","o":" 333  32223  222  21112  111   333   2 2  33 33 ","data":[{"skip":true},{"toggle":true},{"toggle":true},{"toggle":true}],"source":["quadri","q"],"nbcolor":4,"class":"quadri ww table","selected":1]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"t":["Recopiez le dessin à gauche sur la","partie droite du quadrillage."]]]></dct:description>
-        <dct:extent>1</dct:extent>
+        <dct:extent>2</dct:extent>
         <dct:subject>mathematics</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>h001</dct:alternative>
         <dct:source>res/img/desktop/paint/symv12x8.svg,res/img/background/landscape/grayboard01.svg</dct:source>
     </rdf:Description>
+	
+	
+    <rdf:Description>
+        <dct:identifier>v201</dct:identifier>
+        <dct:title xml:lang="fr-FR">Reproduire le dessin 12x16x4 [un champignon].</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/grayboard01.svg","url":"res/img/desktop/paint/symv24x16.svg","result":"                 333       332  33    3 2222223  3  222  223 3 222    23 32222    23 322222  223  333333333    3131313     3111113     3111113      33333                                       ","o":"                 333       332  33    3 2222223  3  222  223 3 222    23 32222    23 322222  223  333333333    3131313     3111113     3111113      33333                                       ","data":[{"skip":true},{"toggle":true},{"toggle":true},{"toggle":true}],"source":["quadri","q"],"nbcolor":4,"class":"quadri ww table","selected":1]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"t":["Recopiez le dessin à gauche sur la","partie droite du quadrillage."]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>mathematics</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>h001</dct:alternative>
+        <dct:source>res/img/desktop/paint/symv24x16.svg,res/img/background/landscape/grayboard01.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>v202</dct:identifier>
+        <dct:title xml:lang="fr-FR">Reproduire le dessin 12x16x4 [todo].</dct:title>
+        <dct:description><![CDATA["dev":{"mode":"paint"},"background":"res/img/background/landscape/grayboard01.svg","url":"res/img/desktop/paint/symv24x16.svg","result":"                 333       332  33    3 2222223  3  222  223 3 222    23 32222    23 322222  223  333333333    3131313     3111113     3111113      33333                                       ","o":"                 333       332  33    3 2222223  3  222  223 3 222    23 32222    23 322222  223  333333333    3131313     3111113     3111113      33333                                       ","data":[{"skip":true},{"toggle":true},{"toggle":true},{"toggle":true}],"source":["quadri","q"],"nbcolor":4,"class":"quadri ww table","selected":1]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"t":["Recopiez le dessin à gauche sur la","partie droite du quadrillage."]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>mathematics</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>h001</dct:alternative>
+        <dct:source>res/img/desktop/paint/symv24x16.svg,res/img/background/landscape/grayboard01.svg</dct:source>
+    </rdf:Description>
+
+	
 
 
 </rdf:RDF>
