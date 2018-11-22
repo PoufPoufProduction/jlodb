@@ -264,6 +264,7 @@
                 if (vValue.txt)      { settings.txt = vValue.txt; }
                 if (vValue.legend)   { settings.legend = vValue.legend; }
                 if (vValue.canvas)   { settings.canvas = vValue.canvas; }
+                if (vValue.o)   	 { settings.o = vValue.o; }
                 settings.scorearg = vValue.scorearg;
             }
             
