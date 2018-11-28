@@ -224,12 +224,16 @@
             for (var i in settings.objectives) {
                 var complete = true;
                 for (var j in settings.objectives[i]) {
-                    if (!settings.objectives[i][j].done) { complete = false; settings.finish = false; }
+					var e = settings.objectives[i][j];
+                    if (!e.done) { complete = false; settings.finish = false; }
+					else {
+						if (e.attr && e.attr.style) { $(e.done.svg).attr("style",e.attr.style); }
+					}
+					
                 }
                 if (complete) {
 					for (var j in settings.objectives[i]) {
 						var e = settings.objectives[i][j];
-						if (e.attr && e.attr.style) { $(e.done.svg).attr("style",e.attr.style); } else
 						if (settings.good && settings.good[e.type] && settings.good[e.type].style ) {
 							$(e.done.svg).attr("style",settings.good[e.type].style);
 						}
