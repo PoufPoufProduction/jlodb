@@ -86,7 +86,9 @@ if [ ! -z $clean ]; then
 	for ac in `cat p_json.tmp | sed -e 's/{\("id":"[^"]*","name"\)/\n{\1/g' -e 's/\],[ ]*"from".*/,/g'` ; do
 		if [ `echo $ac | grep locale | wc -l` -eq 1 ] ; then
 			name=`echo $ac | sed -e 's/{"id":"\([^"]*\)".*/\1/g'`
-			echo $ac | sed  -e 's/.*locale":\(.*\)}},/\1}/g' > $output/standalone/activity/$name.json
+			label=`echo $ac | sed -e 's/.*"label":"\([^"]*\)".*/\1/g'`
+			loc=`echo $ac | sed  -e 's/.*locale":{\(.*\)}},/\1/g'`
+			echo "{\"label\":\"$label\",$loc}"  > $output/standalone/activity/$name.json
 		fi
 	done
 
