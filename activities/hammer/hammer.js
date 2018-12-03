@@ -201,7 +201,7 @@
                     if (!hole.duration) { hole.duration = [4,1]; }
                     settings.emptyholes.push(h);
                 }
-                for (var i=0;i<5;i++) { settings.emptyholes.sort(function() { return Math.random()<0.5; }); }
+                shuffle(settings.emptyholes);
                
                 if (settings.tag) {
                     var value = settings.tag;
@@ -367,7 +367,7 @@
                         sprite.$html.detach();
                         settings.sprites[s] = 0;
                         settings.emptyholes.push(s);
-                        for (var i=0;i<5;i++) { settings.emptyholes.sort(function() { return Math.random()<0.5; }); }
+                        shuffle(settings.emptyholes);
                     }
                     
                 }

@@ -126,7 +126,7 @@
                 }
                 else { settings.data.c52 = []; for (var i=0;i<52;i++) { settings.data.c52.push({value:i});  } }
                 
-                for (var i in settings.data) { for (var k=0;k<50;k++) { settings.data[i].sort(function(){return Math.random()>0.5; }); } }
+                for (var i in settings.data) { shuffle(settings.data[i]); }
                 
                 // Prepare gaming elements
                 $this.find("#board").html("");

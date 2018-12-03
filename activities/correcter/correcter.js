@@ -274,7 +274,7 @@
                         if (settings.dictionary[goodWord]) {
                             for (var i=0; i<settings.dictionary[goodWord].length; i++) { response.push(settings.dictionary[goodWord][i]); }
                         }
-                        response.sort(function() { return (Math.random()<0.5); });
+                        shuffle(response);
                         response.sort(function(_a,_b) {
                             var r={"à":"a","À":"A"};
                             var a=_a,b=_b;

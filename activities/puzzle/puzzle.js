@@ -124,9 +124,7 @@
                 if (settings.boundaries[3]!=-1 && settings.boundaries[3]<settings.area[3]) { settings.area[3] = settings.boundaries[3]; }
 
                 // GENERATE VALUES
-                if (settings.init && settings.init.pos) {
-                    for (var i=0; i<settings.init.pos.length; i++) { settings.init.pos.sort(function(a,b){return 0.5-Math.random(); }); }
-                }
+                if (settings.init && settings.init.pos) { shuffle(settings.init.pos); }
                 if (!settings.gen) {
                     if (settings.id && $.isArray(settings.id[0]))       { settings.number = settings.id.length; }
                     if (settings.values && $.isArray(settings.values))  { settings.number = settings.values.length; }

@@ -181,9 +181,7 @@
 		// PROVIDE RANDOMLY CHOSEN POSITION TO AVAILABLE TILES
 		setpos: function($this, _pos, _random) {
             var settings = helpers.settings($this), tiles=[];
-			
-			if (_random) { for (var i=0; i<10; i++) { _pos.sort(function(){return (Math.random()<0.5); }); } }
-			
+			if (_random) { shuffle(_pos); }
 			for (var i in settings.elts) { if (settings.elts[i].active) { tiles.push(settings.elts[i]); } }
 			if (_pos.length != tiles.length) { console.log("SIZE ISSUE ("+tiles.length+" / "+_pos.length+")"); }
 			else {

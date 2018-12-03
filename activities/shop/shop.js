@@ -482,9 +482,7 @@
                 }
                 if (_wallet[i]) { x=x+cc[i]; }
             }
-            if (_random) {
-                for (var i=0; i<10; i++) { $cc.sort(function(a,b){return 0.5-Math.random(); }); }
-            }
+            if (_random) { shuffle($cc); }
             for (var c in $cc) {
                 $panel.append($cc[c]);
                 helpers.panel.draggable($this, $cc[c],false);

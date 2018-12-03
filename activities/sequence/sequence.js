@@ -174,9 +174,9 @@
                 if (!settings.gen) {
                     var cpt = 0;
                     for (var i=0; i<settings.values.length; i++) { vValueArray.push(settings.values[i]); }
-                    if (settings.shuffle) { for (var i=0;i<50;i++) { vValueArray.sort(function(){return (Math.random()>0.5); }); } }
+                    if (settings.shuffle) { shuffle(vValueArray); }
                     for (var i=0; i<settings.number-settings.values.length; i++) { vValueArray.push(vValueArray[i%settings.values.length]); }
-                    if (settings.shuffle) { for (var i=0;i<50;i++) { vValueArray.sort(function(){return (Math.random()>0.5); }); } }
+                    if (settings.shuffle) { shuffle(vValueArray); }
                 }
 
                 for (var i=0; i<settings.number; i++) {
