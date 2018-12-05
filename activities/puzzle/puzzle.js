@@ -8,6 +8,8 @@
         lang        : "en-US",                                  // Current localization
         constraint  : [0,0],                                    // Grid for pgroup
         rotation    : 0,                                        // Rotation step
+		transform	: {},										// Special transform operations
+		desktop		: [0,0],									// Desktop center
         boundaries  : [-1,-1,-1,-1],                            // Piece move boundaries
         delay       : [1000,3000],                              // Delay before end [good, wrong]
         scale       : 1.2,                                      // The move scale of the pgroup
@@ -200,9 +202,11 @@
                 if (gen.decoys) { settings.decoys = gen.decoys; }
                 if (gen.add)    { settings.add = gen.add; }
                 if (gen.svgclass)    { settings.svgclass = gen.svgclass; }
+                if (gen.transform)    { settings.transform = gen.transform; }
                 if (gen.same)    { settings.same = gen.same; }
                 if (gen.init)	{ settings.init = $.extend(true,{},settings.init,gen.init);}
             }
+			
             
             // PREPARE THE SCREEN
             if (settings.svgclass) {
@@ -231,6 +235,11 @@
                 var show = $.isArray(settings.show[0])?settings.show[settings.puzzleid]:settings.show;
                 for (var i in show) { $("#"+show[i],settings.svg.root()).css("display","inline"); }
             }
+			
+			// UPDATE SOME TRANSFORM
+			for (var t in settings.transform) {
+				$(t,settings.svg.root()).attr("transform", settings.transform[t]);
+			}
 
             // HANDLE STATIC TEXT OR IMAGE IN SVG
             if (settings.txt) {
@@ -482,12 +491,13 @@
                     }
 					
 					// STAY IN DESKTOP
-					if (elt.current.translate[0]<0) 					{ elt.current.translate[0] = 0; }
-					if (elt.current.translate[1]<0) 					{ elt.current.translate[1] = 0; }
-					if (elt.current.translate[0]>settings.width) 		{ elt.current.translate[0] = settings.width; }
+					if (elt.current.translate[0]<settings.desktop[0])	{ elt.current.translate[0] = settings.desktop[0]; }
+					if (elt.current.translate[1]<settings.desktop[1]) 	{ elt.current.translate[1] = settings.desktop[1]; }
+					if (elt.current.translate[0]>settings.desktop[0]+settings.width) 		{ elt.current.translate[0] = settings.desktop[0]+settings.width; }
 					
 					var footer = $this.hasClass("exup")?0.8:1;
-					if (elt.current.translate[1]>3*footer*settings.width/4) 	{ elt.current.translate[1] = 3*footer*settings.width/4; }
+					var max = settings.desktop[1] + 3*footer*settings.width/4;
+					if (elt.current.translate[1]>max) { elt.current.translate[1] = max }
 
                     // CHECK MAGNETIC
                     if (settings.decoyfx || !elt.decoy)

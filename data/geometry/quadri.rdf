@@ -10,7 +10,7 @@
     <rdf:Description>
         <dct:identifier>gsi01</dct:identifier>
         <dct:title xml:lang="fr-FR">Construire un carré depuis quatre points.</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/bluecarpet02.svg","data":[{"type":"mesh", "value":[-210,-70,12,9,70,70],"active":false,"attr":{"style":"stroke-width:0.5;stroke:#dd8833;"}},{"type":"mesh", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:2;stroke:#dd8833;"}},{"type":"grid", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:8;stroke:#dd8833;"}},{"type":"point", "value":[70,70], "active":true},{"type":"point", "value":[70,350], "active":true},{"type":"point", "value":[350,70], "active":true},{"type":"point", "value":[350,350], "active":true}],"number":4,"objectives":[[{"type":"segment", "values":[70,70,350,70],"attr":{"style":"stroke:green;stroke-width:5"}},{"type":"segment", "values":[350,70,350,350],"attr":{"style":"stroke:green;stroke-width:5"}},{"type":"segment", "values":[350,350,70,350],"attr":{"style":"stroke:green;stroke-width:5"}},{"type":"segment", "values":[70,350,70,70],"attr":{"style":"stroke:green;stroke-width:5"}}]],"selected":"segment","available":["segment"],"translate":[105,30],"strokewidth":3,"sizepoint":12,"class":"blank large","locked":true]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/bluecarpet02.svg","data":[{"type":"mesh", "value":[-210,-70,12,9,70,70],"active":false,"attr":{"style":"stroke-width:0.5;stroke:#dd8833;"}},{"type":"mesh", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:2;stroke:#dd8833;"}},{"type":"grid", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:8;stroke:#dd8833;"}},{"type":"points", "value":[70,70,70,350,350,70,350,350], "active":true}],"number":4,"objectives":[[{"type":"segment", "values":[70,70,350,70]},{"type":"segment", "values":[350,70,350,350]},{"type":"segment", "values":[350,350,70,350]},{"type":"segment", "values":[70,350,70,70]}]],"good":{"segment":{"style":"stroke:green;stroke-width:5"}},"selected":"segment","available":["segment"],"translate":[105,30],"strokewidth":3,"sizepoint":12,"class":"blank large","locked":true]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"[b]Reliez[/b] les 4 points pour former un [b]carré[/b].","labels":["Carré"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>geometry</dct:subject>
@@ -24,7 +24,7 @@
     <rdf:Description>
         <dct:identifier>gsi02</dct:identifier>
         <dct:title xml:lang="fr-FR">Construire deux carrés depuis huit points.</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/bluecarpet02.svg","data":[{"type":"mesh", "value":[-210,-70,12,9,70,70],"active":false,"attr":{"style":"stroke-width:0.5;stroke:#dd8833;"}},{"type":"mesh", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:2;stroke:#dd8833;"}},{"type":"grid", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:8;stroke:#dd8833;"}},{"type":"point", "value":[70,70], "active":true},{"type":"point", "value":[70,210], "active":true},{"type":"point", "value":[210,70], "active":true},{"type":"point", "value":[210,210], "active":true},{"type":"point", "value":[210,0], "active":true},{"type":"point", "value":[0,210], "active":true},{"type":"point", "value":[210,420], "active":true},{"type":"point", "value":[420,210], "active":true}],"number":8,"objectives":[[{"type":"segment", "values":[70,70,210,70],"attr":{"style":"stroke:green;stroke-width:5"}},{"type":"segment", "values":[210,70,210,210],"attr":{"style":"stroke:green;stroke-width:5"}},{"type":"segment", "values":[210,210,70,210],"attr":{"style":"stroke:green;stroke-width:5"}},{"type":"segment", "values":[70,210,70,70],"attr":{"style":"stroke:green;stroke-width:5"}}],[{"type":"segment", "values":[210,0,0,210],"attr":{"style":"stroke:blue;stroke-width:5"}},{"type":"segment", "values":[0,210,210,420],"attr":{"style":"stroke:blue;stroke-width:5"}},{"type":"segment", "values":[210,420,420,210],"attr":{"style":"stroke:blue;stroke-width:5"}},{"type":"segment", "values":[420,210,210,0],"attr":{"style":"stroke:blue;stroke-width:5"}}]],"selected":"segment","available":["segment"],"translate":[105,30],"strokewidth":3,"sizepoint":12,"class":"blank large","locked":true]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/bluecarpet02.svg","data":[{"type":"mesh", "value":[-210,-70,12,9,70,70],"active":false,"attr":{"style":"stroke-width:0.5;stroke:#dd8833;"}},{"type":"mesh", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:2;stroke:#dd8833;"}},{"type":"grid", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:8;stroke:#dd8833;"}},{"type":"points", "value":[70,70,70,210,210,70,210,210,210,0,0,210,210,420,420,210], "active":true}],"number":8,"objectives":[[{"type":"segment", "values":[70,70,210,70]},{"type":"segment", "values":[210,70,210,210]},{"type":"segment", "values":[210,210,70,210]},{"type":"segment", "values":[70,210,70,70]}],[{"type":"segment", "values":[210,0,0,210]},{"type":"segment", "values":[0,210,210,420]},{"type":"segment", "values":[210,420,420,210]},{"type":"segment", "values":[420,210,210,0]}]],"good":{"segment":{"style":"stroke:green;stroke-width:5"}},"selected":"segment","available":["segment"],"translate":[105,30],"strokewidth":3,"sizepoint":12,"class":"blank large","locked":true]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"[b]Reliez[/b] les points pour former deux [b]carrés[/b].","labels":["Carré 1","Carré 2"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>geometry</dct:subject>
@@ -38,7 +38,7 @@
     <rdf:Description>
         <dct:identifier>gsi03</dct:identifier>
         <dct:title xml:lang="fr-FR">Construire deux carrés depuis six points.</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/bluecarpet02.svg","data":[{"type":"mesh", "value":[-210,-70,12,9,70,70],"active":false,"attr":{"style":"stroke-width:0.5;stroke:#dd8833;"}},{"type":"mesh", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:2;stroke:#dd8833;"}},{"type":"grid", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:8;stroke:#dd8833;"}},{"type":"point", "value":[0,210], "active":true},{"type":"point", "value":[140,70], "active":true},{"type":"point", "value":[280,210], "active":true},{"type":"point", "value":[140,350], "active":true},{"type":"point", "value":[420,70], "active":true},{"type":"point", "value":[420,350], "active":true}],"number":8,"objectives":[[{"type":"segment", "values":[140,70,420,70],"attr":{"style":"stroke:green;stroke-width:5"}},{"type":"segment", "values":[420,70,420,350],"attr":{"style":"stroke:green;stroke-width:5"}},{"type":"segment", "values":[420,350,140,350],"attr":{"style":"stroke:green;stroke-width:5"}},{"type":"segment", "values":[140,350,140,70],"attr":{"style":"stroke:green;stroke-width:5"}}],[{"type":"segment", "values":[0,210,140,70],"attr":{"style":"stroke:blue;stroke-width:5"}},{"type":"segment", "values":[140,70,280,210],"attr":{"style":"stroke:blue;stroke-width:5"}},{"type":"segment", "values":[280,210,140,350],"attr":{"style":"stroke:blue;stroke-width:5"}},{"type":"segment", "values":[140,350,0,210],"attr":{"style":"stroke:blue;stroke-width:5"}}]],"selected":"segment","available":["segment"],"translate":[105,30],"strokewidth":3,"sizepoint":12,"class":"blank large","locked":true]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/bluecarpet02.svg","data":[{"type":"mesh", "value":[-210,-70,12,9,70,70],"active":false,"attr":{"style":"stroke-width:0.5;stroke:#dd8833;"}},{"type":"mesh", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:2;stroke:#dd8833;"}},{"type":"grid", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:8;stroke:#dd8833;"}},{"type":"points", "value":[0,210,140,70,280,210,140,350,420,70,420,350], "active":true}],"number":8,"objectives":[[{"type":"segment", "values":[140,70,420,70]},{"type":"segment", "values":[420,70,420,350]},{"type":"segment", "values":[420,350,140,350]},{"type":"segment", "values":[140,350,140,70]}],[{"type":"segment", "values":[0,210,140,70]},{"type":"segment", "values":[140,70,280,210]},{"type":"segment", "values":[280,210,140,350]},{"type":"segment", "values":[140,350,0,210]}]],"good":{"segment":{"style":"stroke:green;stroke-width:5"}},"selected":"segment","available":["segment"],"translate":[105,30],"strokewidth":3,"sizepoint":12,"class":"blank large","locked":true]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"[b]Reliez[/b] les points pour former deux [b]carrés[/b].","labels":["Carré 1","Carré 2"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>geometry</dct:subject>
@@ -49,11 +49,10 @@
         <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
     </rdf:Description>
 	
-	
     <rdf:Description>
         <dct:identifier>gsi21</dct:identifier>
         <dct:title xml:lang="fr-FR">Construire un carré depuis deux sommets opposés.</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/bluecarpet02.svg","data":[{"type":"mesh", "value":[-210,-70,12,9,70,70],"active":false,"attr":{"style":"stroke-width:0.5;stroke:#dd8833;"}},{"type":"mesh", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:2;stroke:#dd8833;"}},{"type":"grid", "value":[0,0,7,7,70,70],"active":true,"attr":{"style":"stroke-width:8;stroke:#dd8833;"}},{"type":"point", "value":[140,140], "active":true},{"type":"point", "value":[350,350], "active":true}],"number":4,"objectives":[[{"type":"segment", "values":[140,140,350,140],"attr":{"style":"stroke:green;stroke-width:5"}},{"type":"segment", "values":[350,140,350,350],"attr":{"style":"stroke:green;stroke-width:5"}},{"type":"segment", "values":[350,350,140,350],"attr":{"style":"stroke:green;stroke-width:5"}},{"type":"segment", "values":[140,350,140,140],"attr":{"style":"stroke:green;stroke-width:5"}}]],"selected":"segment","available":["segment"],"translate":[105,30],"strokewidth":3,"sizepoint":12,"class":"blank large","locked":true,"withlimit":true]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/bluecarpet02.svg","data":[{"type":"mesh", "value":[-210,-70,12,9,70,70],"active":false,"attr":{"style":"stroke-width:0.5;stroke:#dd8833;"}},{"type":"mesh", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:2;stroke:#dd8833;"}},{"type":"grid", "value":[0,0,7,7,70,70],"active":true,"attr":{"style":"stroke-width:8;stroke:#dd8833;"}},{"type":"point", "value":[140,140], "active":true},{"type":"point", "value":[350,350], "active":true}],"number":4,"objectives":[[{"type":"segment", "values":[140,140,350,140]},{"type":"segment", "values":[350,140,350,350]},{"type":"segment", "values":[350,350,140,350]},{"type":"segment", "values":[140,350,140,140]}]],"good":{"segment":{"style":"stroke:green;stroke-width:5"}},"selected":"segment","available":["segment"],"translate":[105,30],"strokewidth":3,"sizepoint":12,"class":"blank large","locked":true,"withlimit":true]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"[b]Construisez un carré[/b] depuis les deux sommets [red]opposés[/red] fournis.","labels":["Carré"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>geometry</dct:subject>
@@ -67,7 +66,7 @@
     <rdf:Description>
         <dct:identifier>gsi22</dct:identifier>
         <dct:title xml:lang="fr-FR">Construire un carré depuis deux sommets opposés.</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/bluecarpet02.svg","data":[{"type":"mesh", "value":[-210,-70,12,9,70,70],"active":false,"attr":{"style":"stroke-width:0.5;stroke:#dd8833;"}},{"type":"mesh", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:2;stroke:#dd8833;"}},{"type":"grid", "value":[0,0,7,7,70,70],"active":true,"attr":{"style":"stroke-width:8;stroke:#dd8833;"}},{"type":"point", "value":[210,70], "active":true},{"type":"point", "value":[210,350], "active":true}],"number":4,"objectives":[[{"type":"segment", "values":[210,70,350,210],"attr":{"style":"stroke:green;stroke-width:5"}},{"type":"segment", "values":[350,210,210,350],"attr":{"style":"stroke:green;stroke-width:5"}},{"type":"segment", "values":[210,350,70,210],"attr":{"style":"stroke:green;stroke-width:5"}},{"type":"segment", "values":[70,210,210,70],"attr":{"style":"stroke:green;stroke-width:5"}}]],"selected":"segment","available":["segment"],"translate":[105,30],"strokewidth":3,"sizepoint":12,"class":"blank large","locked":true,"withlimit":true]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/bluecarpet02.svg","data":[{"type":"mesh", "value":[-210,-70,12,9,70,70],"active":false,"attr":{"style":"stroke-width:0.5;stroke:#dd8833;"}},{"type":"mesh", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:2;stroke:#dd8833;"}},{"type":"grid", "value":[0,0,7,7,70,70],"active":true,"attr":{"style":"stroke-width:8;stroke:#dd8833;"}},{"type":"point", "value":[210,70], "active":true},{"type":"point", "value":[210,350], "active":true}],"number":4,"objectives":[[{"type":"segment", "values":[210,70,350,210]},{"type":"segment", "values":[350,210,210,350]},{"type":"segment", "values":[210,350,70,210]},{"type":"segment", "values":[70,210,210,70]}]],"good":{"segment":{"style":"stroke:green;stroke-width:5"}},"selected":"segment","available":["segment"],"translate":[105,30],"strokewidth":3,"sizepoint":12,"class":"blank large","locked":true,"withlimit":true]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"[b]Construisez un carré[/b] depuis les deux sommets [red]opposés[/red] fournis.","labels":["Carré"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>geometry</dct:subject>
@@ -81,7 +80,7 @@
     <rdf:Description>
         <dct:identifier>gsi23</dct:identifier>
         <dct:title xml:lang="fr-FR">Construire un carré depuis deux sommets opposés.</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/bluecarpet02.svg","data":[{"type":"mesh", "value":[-210,-70,12,9,70,70],"active":false,"attr":{"style":"stroke-width:0.5;stroke:#dd8833;"}},{"type":"mesh", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:2;stroke:#dd8833;"}},{"type":"grid", "value":[0,0,7,7,70,70],"active":true,"attr":{"style":"stroke-width:8;stroke:#dd8833;"}},{"type":"point", "value":[70,140], "active":true},{"type":"point", "value":[350,280], "active":true}],"number":4,"objectives":[[{"type":"segment", "values":[70,140,280,70],"attr":{"style":"stroke:green;stroke-width:5"}},{"type":"segment", "values":[280,70,350,280],"attr":{"style":"stroke:green;stroke-width:5"}},{"type":"segment", "values":[350,280,140,350],"attr":{"style":"stroke:green;stroke-width:5"}},{"type":"segment", "values":[140,350,70,140],"attr":{"style":"stroke:green;stroke-width:5"}}]],"selected":"segment","available":["segment"],"translate":[105,30],"strokewidth":3,"sizepoint":12,"class":"blank large","locked":true,"withlimit":true]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/bluecarpet02.svg","data":[{"type":"mesh", "value":[-210,-70,12,9,70,70],"active":false,"attr":{"style":"stroke-width:0.5;stroke:#dd8833;"}},{"type":"mesh", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:2;stroke:#dd8833;"}},{"type":"grid", "value":[0,0,7,7,70,70],"active":true,"attr":{"style":"stroke-width:8;stroke:#dd8833;"}},{"type":"point", "value":[70,140], "active":true},{"type":"point", "value":[350,280], "active":true}],"number":4,"objectives":[[{"type":"segment", "values":[70,140,280,70]},{"type":"segment", "values":[280,70,350,280]},{"type":"segment", "values":[350,280,140,350]},{"type":"segment", "values":[140,350,70,140]}]],"good":{"segment":{"style":"stroke:green;stroke-width:5"}},"selected":"segment","available":["segment"],"translate":[105,30],"strokewidth":3,"sizepoint":12,"class":"blank large","locked":true,"withlimit":true]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"[b]Construisez un carré[/b] depuis les deux sommets [red]opposés[/red] fournis.","labels":["Carré"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>geometry</dct:subject>
@@ -95,7 +94,7 @@
     <rdf:Description>
         <dct:identifier>gsi24</dct:identifier>
         <dct:title xml:lang="fr-FR">Construire un carré depuis deux sommets opposés.</dct:title>
-        <dct:description><![CDATA["background":"res/img/background/landscape/bluecarpet02.svg","data":[{"type":"mesh", "value":[-210,-70,12,9,70,70],"active":false,"attr":{"style":"stroke-width:0.5;stroke:#dd8833;"}},{"type":"mesh", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:2;stroke:#dd8833;"}},{"type":"grid", "value":[0,0,7,7,70,70],"active":true,"attr":{"style":"stroke-width:8;stroke:#dd8833;"}},{"type":"point", "value":[210,70], "active":true},{"type":"point", "value":[140,280], "active":true}],"number":4,"objectives":[[{"type":"segment", "values":[210,70,70,140],"attr":{"style":"stroke:green;stroke-width:5"}},{"type":"segment", "values":[70,140,140,280],"attr":{"style":"stroke:green;stroke-width:5"}},{"type":"segment", "values":[140,280,280,210],"attr":{"style":"stroke:green;stroke-width:5"}},{"type":"segment", "values":[280,210,210,70],"attr":{"style":"stroke:green;stroke-width:5"}}]],"selected":"segment","available":["segment"],"translate":[105,30],"strokewidth":3,"sizepoint":12,"class":"blank large","locked":true,"withlimit":true]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/bluecarpet02.svg","data":[{"type":"mesh", "value":[-210,-70,12,9,70,70],"active":false,"attr":{"style":"stroke-width:0.5;stroke:#dd8833;"}},{"type":"mesh", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:2;stroke:#dd8833;"}},{"type":"grid", "value":[0,0,7,7,70,70],"active":true,"attr":{"style":"stroke-width:8;stroke:#dd8833;"}},{"type":"point", "value":[210,70], "active":true},{"type":"point", "value":[140,280], "active":true}],"number":4,"objectives":[[{"type":"segment", "values":[210,70,70,140]},{"type":"segment", "values":[70,140,140,280]},{"type":"segment", "values":[140,280,280,210]},{"type":"segment", "values":[280,210,210,70]}]],"good":{"segment":{"style":"stroke:green;stroke-width:5"}},"selected":"segment","available":["segment"],"translate":[105,30],"strokewidth":3,"sizepoint":12,"class":"blank large","locked":true,"withlimit":true]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"[b]Construisez un carré[/b] depuis les deux sommets [red]opposés[/red] fournis.","labels":["Carré"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>geometry</dct:subject>
@@ -105,6 +104,107 @@
         <dct:isPartOf>geogrid</dct:isPartOf>
         <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
     </rdf:Description>
+	
+	
+    <rdf:Description>
+        <dct:identifier>gsi61</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver et construire un carré depuis un ensemble de points.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/bluecarpet02.svg","data":[{"type":"mesh", "value":[-210,-70,12,9,70,70],"active":false,"attr":{"style":"stroke-width:0.5;stroke:#dd8833;"}},{"type":"mesh", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:2;stroke:#dd8833;"}},{"type":"grid", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:8;stroke:#dd8833;"}},{"type":"points", "value":[70,70,210,70,210,210,70,210,140,350,350,210,420,70,280,280,140,0,0,420,350,420], "active":true}],"number":4,"objectives":[[{"type":"segment", "values":[70,70,210,70]},{"type":"segment", "values":[210,70,210,210]},{"type":"segment", "values":[210,210,70,210]},{"type":"segment", "values":[70,210,70,70]}]],"good":{"segment":{"style":"stroke:green;stroke-width:5"}},"selected":"segment","available":["segment"],"translate":[105,30],"strokewidth":3,"sizepoint":12,"class":"blank large","locked":true]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"[b]Reliez[/b] les 4 points permettant de former un [b]carré[/b].","labels":["Carré"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>gsi01</dct:alternative>
+        <dct:isPartOf>geogrid</dct:isPartOf>
+        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>gsi62</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver et construire un carré depuis un ensemble de points.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/bluecarpet02.svg","data":[{"type":"mesh", "value":[-210,-70,12,9,70,70],"active":false,"attr":{"style":"stroke-width:0.5;stroke:#dd8833;"}},{"type":"mesh", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:2;stroke:#dd8833;"}},{"type":"grid", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:8;stroke:#dd8833;"}},{"type":"points", "value":[420,420,420,140,140,140,140,420,280,210,70,0,70,350,0,210,280,350,350,70], "active":true}],"number":4,"objectives":[[{"type":"segment", "values":[140,140,420,140]},{"type":"segment", "values":[420,140,420,420]},{"type":"segment", "values":[420,420,140,420]},{"type":"segment", "values":[140,420,140,140]}]],"good":{"segment":{"style":"stroke:green;stroke-width:5"}},"selected":"segment","available":["segment"],"translate":[105,30],"strokewidth":3,"sizepoint":12,"class":"blank large","locked":true]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"[b]Reliez[/b] les 4 points permettant de former un [b]carré[/b].","labels":["Carré"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>gsi01</dct:alternative>
+        <dct:isPartOf>geogrid</dct:isPartOf>
+        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>gsi63</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver et construire un carré depuis un ensemble de points.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/bluecarpet02.svg","data":[{"type":"mesh", "value":[-210,-70,12,9,70,70],"active":false,"attr":{"style":"stroke-width:0.5;stroke:#dd8833;"}},{"type":"mesh", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:2;stroke:#dd8833;"}},{"type":"grid", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:8;stroke:#dd8833;"}},{"type":"points", "value":[210,70,350,210,210,350,70,210,350,0,70,350,420,420], "active":true}],"number":4,"objectives":[[{"type":"segment", "values":[210,70,350,210]},{"type":"segment", "values":[350,210,210,350]},{"type":"segment", "values":[210,350,70,210]},{"type":"segment", "values":[70,210,210,70]}]],"good":{"segment":{"style":"stroke:green;stroke-width:5"}},"selected":"segment","available":["segment"],"translate":[105,30],"strokewidth":3,"sizepoint":12,"class":"blank large","locked":true]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"[b]Reliez[/b] les 4 points permettant de former un [b]carré[/b].","labels":["Carré"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>gsi01</dct:alternative>
+        <dct:isPartOf>geogrid</dct:isPartOf>
+        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>gsi64</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver et construire un carré depuis un ensemble de points.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/bluecarpet02.svg","data":[{"type":"mesh", "value":[-210,-70,12,9,70,70],"active":false,"attr":{"style":"stroke-width:0.5;stroke:#dd8833;"}},{"type":"mesh", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:2;stroke:#dd8833;"}},{"type":"grid", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:8;stroke:#dd8833;"}},{"type":"points", "value":[280,0,420,140,280,280,140,140,140,280,0,350,70,420,420,420,70,140,210,420,210,0,350,140], "active":true}],"number":4,"objectives":[[{"type":"segment", "values":[280,0,420,140]},{"type":"segment", "values":[420,140,280,280]},{"type":"segment", "values":[280,280,140,140]},{"type":"segment", "values":[140,140,280,0]}]],"good":{"segment":{"style":"stroke:green;stroke-width:5"}},"selected":"segment","available":["segment"],"translate":[105,30],"strokewidth":3,"sizepoint":12,"class":"blank large","locked":true]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"[b]Reliez[/b] les 4 points permettant de former un [b]carré[/b].","labels":["Carré"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>gsi01</dct:alternative>
+        <dct:isPartOf>geogrid</dct:isPartOf>
+        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>gsi65</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver et construire un carré depuis un ensemble de points.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/bluecarpet02.svg","data":[{"type":"mesh", "value":[-210,-70,12,9,70,70],"active":false,"attr":{"style":"stroke-width:0.5;stroke:#dd8833;"}},{"type":"mesh", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:2;stroke:#dd8833;"}},{"type":"grid", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:8;stroke:#dd8833;"}},{"type":"points", "value":[420,210,280,280,210,140,350,70,70,350,0,140,210,420,420,140,70,0,280,140,70,210,280,0], "active":true}],"number":4,"objectives":[[{"type":"segment", "values":[420,210,280,280]},{"type":"segment", "values":[280,280,210,140]},{"type":"segment", "values":[210,140,350,70]},{"type":"segment", "values":[350,70,420,210]}]],"good":{"segment":{"style":"stroke:green;stroke-width:5"}},"selected":"segment","available":["segment"],"translate":[105,30],"strokewidth":3,"sizepoint":12,"class":"blank large","locked":true]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"[b]Reliez[/b] les 4 points permettant de former un [b]carré[/b].","labels":["Carré"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>gsi01</dct:alternative>
+        <dct:isPartOf>geogrid</dct:isPartOf>
+        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>gsi66</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver et construire un carré depuis un ensemble de points.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/bluecarpet02.svg","data":[{"type":"mesh", "value":[-210,-70,12,9,70,70],"active":false,"attr":{"style":"stroke-width:0.5;stroke:#dd8833;"}},{"type":"mesh", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:2;stroke:#dd8833;"}},{"type":"grid", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:8;stroke:#dd8833;"}},{"type":"points", "value":[70,140,280,210,210,420,0,350,70,350,350,70,280,0,420,210,350,350,210,210,140,0], "active":true}],"number":4,"objectives":[[{"type":"segment", "values":[70,140,280,210]},{"type":"segment", "values":[280,210,210,420]},{"type":"segment", "values":[210,420,0,350]},{"type":"segment", "values":[0,350,70,140]}]],"good":{"segment":{"style":"stroke:green;stroke-width:5"}},"selected":"segment","available":["segment"],"translate":[105,30],"strokewidth":3,"sizepoint":12,"class":"blank large","locked":true]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"[b]Reliez[/b] les 4 points permettant de former un [b]carré[/b].","labels":["Carré"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>gsi01</dct:alternative>
+        <dct:isPartOf>geogrid</dct:isPartOf>
+        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>gsi67</dct:identifier>
+        <dct:title xml:lang="fr-FR">Trouver et construire un carré depuis un ensemble de points.</dct:title>
+        <dct:description><![CDATA["background":"res/img/background/landscape/bluecarpet02.svg","data":[{"type":"mesh", "value":[-210,-70,12,9,70,70],"active":false,"attr":{"style":"stroke-width:0.5;stroke:#dd8833;"}},{"type":"mesh", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:2;stroke:#dd8833;"}},{"type":"grid", "value":[0,0,7,7,70,70],"active":false,"attr":{"style":"stroke-width:8;stroke:#dd8833;"}},{"type":"points", "value":[140,0,350,140,210,350,0,210,420,350,140,140,350,70,70,420,140,350,280,210], "active":true}],"number":4,"objectives":[[{"type":"segment", "values":[140,0,350,140]},{"type":"segment", "values":[350,140,210,350]},{"type":"segment", "values":[210,350,0,210]},{"type":"segment", "values":[0,210,140,0]}]],"good":{"segment":{"style":"stroke:green;stroke-width:5"}},"selected":"segment","available":["segment"],"translate":[105,30],"strokewidth":3,"sizepoint":12,"class":"blank large","locked":true]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"statement":"[b]Reliez[/b] les 4 points permettant de former un [b]carré[/b].","labels":["Carré"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>gsi01</dct:alternative>
+        <dct:isPartOf>geogrid</dct:isPartOf>
+        <dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
+    </rdf:Description>
+	
+	
 	
 	
 	<!-- GEOGRID: BUILD SQUARE FROM SEGMENTS  -->

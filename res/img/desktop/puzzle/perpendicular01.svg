@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="100%" height="100%" viewBox="0 0 640 480" id="perp01">
+<defs id="defs2385">
+ <style type="text/css">
+
+    svg#perp01 .disable { display:none; }
+	
+    svg#perp01 .result { fill:white; fill-opacity:0; cursor:move; }
+    svg#perp01 .wrong .result { fill:red !important; fill-opacity:0.5; }
+    svg#perp01 .good .result  { fill:#0F0 !important; fill-opacity:0.5; }
+    
+    svg#perp01 #ruler    { cursor:move; }
+
+    svg#perp01 .r1 { fill:white; fill-opacity:0.5; }
+    svg#perp01 .r2 { fill:white; fill-opacity:0.5; }
+    svg#perp01 .r3 { fill:none; stroke:black; stroke-width:1; }
+    svg#perp01 .r4 { fill:none; stroke:black; stroke-width:0.5; }
+    svg#perp01 .r5 { fill:none; stroke:black; stroke-width:1; }
+    svg#perp01 text { font-size:14px;fill:white;opacity:0.7;text-anchor:middle; font-weight:bold; }
+
+	svg#perp01 .shadow				{ fill:black; fill-opacity:0.5; display:none; }
+	svg#perp01 .drag .shadow			{ display:inline; }
+	
+ </style>
+</defs>
+
+<g class="disable">
+    <g id="tt">
+        <circle cx="0" cy="0" r="45" style="fill:gray;"/>
+    </g>
+    <g id="tp">
+        <circle cx="0" cy="0" r="20" style="fill:#8e572b;"/>
+        <circle cx="0" cy="0" r="15" style="fill:#c27642;"/>
+        <circle cx="0" cy="0" r="20" style="fill:none;stroke:#463326;stroke-width:2;"/>
+    </g>
+
+    <g id="border">
+        <circle cx="0" cy="0" r="21" style="fill:none;stroke:black;stroke-width:2"/>
+        <circle cx="0" cy="0" r="17" style="fill:white;fill-opacity:0.6"/>
+    </g>
+</g>
+
+<g id="main" transform="translate(320,220)">
+<g id="mainrot" transform="rotate(0)">
+
+	<line x1="-350" y1="0" x2="350" y2="0" style="fill:none;stroke:white;stroke-width:10;"/> 
+	<line x1="-350" y1="0" x2="350" y2="0" style="fill:none;stroke:red;stroke-width:3;"/> 
+
+	
+	<g transform="translate(-250,0)">
+		<line transform="rotate(0)" id="l01" x1="0" y1="-100" x2="0" y2="100" style="fill:none;stroke:black;stroke-width:5;"/>
+		<use x="-5" y="140" xlink:href="#border"/>
+	</g>
+	<g transform="translate(-150,0)">
+		<line transform="rotate(0)" id="l02" x1="0" y1="-100" x2="0" y2="100" style="fill:none;stroke:black;stroke-width:5;"/>
+		<use x="0" y="145" xlink:href="#border"/>
+	</g>
+	<g transform="translate(-50,0)">
+		<line transform="rotate(0)" id="l03" x1="0" y1="-100" x2="0" y2="100" style="fill:none;stroke:black;stroke-width:5;"/>
+		<use x="-5" y="140" xlink:href="#border"/>
+	</g>
+	<g transform="translate(50,0)">
+		<line transform="rotate(0)" id="l04" x1="0" y1="-100" x2="0" y2="100" style="fill:none;stroke:black;stroke-width:5;"/>
+		<use x="0" y="135" xlink:href="#border"/>
+	</g>
+	<g transform="translate(150,0)">
+		<line transform="rotate(0)" id="l05" x1="0" y1="-100" x2="0" y2="100" style="fill:none;stroke:black;stroke-width:5;"/>
+		<use x="5" y="145" xlink:href="#border"/>
+	</g>
+	<g transform="translate(250,0)">
+		<line transform="rotate(0)" id="l06" x1="0" y1="-100" x2="0" y2="100" style="fill:none;stroke:black;stroke-width:5;"/>
+		<use x="5" y="140" xlink:href="#border"/>
+	</g>
+	
+	<g id="pieces">
+	
+	<g id="ruler" transform="translate(-200,-100)"><g class="rot">
+		<path d="M -80,-100 L -80,60 L 180,60 L -80,-100 z" class="r1"/>
+		<path d="M -80,-100 L -80,60 L 180,60 L 154,44 L -67,44 L -67,-92 L -80,-100 z" class="r1"/>
+		
+		 <g>
+            <path d="M -80,50 L -70,50" class="r4"/>
+            <path d="M -80,40 L -70,40" class="r4"/>
+            <path d="M -80,30 L -70,30" class="r4"/>
+            <path d="M -80,20 L -70,20" class="r4"/>
+            <path d="M -80,10 L -70,10" class="r3"/>
+            <path d="M -80,0 L -70,0" class="r4"/>
+            <path d="M -80,-10 L -70,-10" class="r4"/>
+            <path d="M -80,-20 L -70,-20" class="r4"/>
+            <path d="M -80,-30 L -70,-30" class="r4"/>
+            <path d="M -80,-40 L -70,-40" class="r3"/>
+            <path d="M -80,-50 L -70,-50" class="r4"/>
+            <path d="M -80,-60 L -70,-60" class="r4"/>
+            <path d="M -80,-70 L -70,-70" class="r4"/>
+            <path d="M -80,-80 L -70,-80" class="r4"/>
+            <path d="M -80,-90 L -70,-90" class="r3"/>
+			
+            <path d="M -70,60 L -70,50" class="r4"/>
+            <path d="M -60,60 L -60,50" class="r4"/>
+            <path d="M -50,60 L -50,50" class="r4"/>
+            <path d="M -40,60 L -40,50" class="r4"/>
+            <path d="M -30,60 L -30,50" class="r3"/>
+            <path d="M -20,60 L -20,50" class="r4"/>
+            <path d="M -10,60 L -10,50" class="r4"/>
+            <path d="M 0,60 L 0,50" class="r4"/>
+            <path d="M 10,60 L 10,50" class="r4"/>
+            <path d="M 20,60 L 20,50" class="r3"/>
+            <path d="M 30,60 L 30,50" class="r4"/>
+            <path d="M 40,60 L 40,50" class="r4"/>
+            <path d="M 50,60 L 50,50" class="r4"/>
+            <path d="M 60,60 L 60,50" class="r4"/>
+            <path d="M 70,60 L 70,50" class="r3"/>
+            <path d="M 80,60 L 80,50" class="r4"/>
+            <path d="M 90,60 L 90,50" class="r4"/>
+            <path d="M 100,60 L 100,50" class="r4"/>
+            <path d="M 110,60 L 110,50" class="r4"/>
+            <path d="M 120,60 L 120,50" class="r3"/>
+            <path d="M 130,60 L 130,50" class="r4"/>
+            <path d="M 140,60 L 140,50" class="r4"/>
+            <path d="M 150,60 L 150,50" class="r4"/>
+            <path d="M 160,60 L 160,50" class="r4"/>
+            <path d="M 170,60 L 170,54" class="r3"/>
+        </g>
+        <path d="M -80,-100 L -80,60 L 180,60 L -80,-100 z" class="r5"/>
+        <circle cx="0" cy="0" r="7" style="fill:none;stroke:black;stroke-width:0.5px;"/>
+    </g></g>
+	
+	<g id="pp01" transform="translate(-255,140)"><g class="scale"><g class="rot">
+        <circle transform="translate(-2,4)" cx="0" cy="0" r="20" class="shadow"/>
+        <use x="0" y="0" xlink:href="#tp"/>
+        <circle cx="0" cy="0" r="21" class="result"/>
+    </g></g></g>
+	<g id="pp02" transform="translate(-150,145)"><g class="scale"><g class="rot">
+        <circle transform="translate(-2,4)" cx="0" cy="0" r="20" class="shadow"/>
+        <use x="0" y="0" xlink:href="#tp"/>
+        <circle cx="0" cy="0" r="21" class="result"/>
+    </g></g></g>
+	<g id="pp03" transform="translate(-55,140)"><g class="scale"><g class="rot">
+        <circle transform="translate(-2,4)" cx="0" cy="0" r="20" class="shadow"/>
+        <use x="0" y="0" xlink:href="#tp"/>
+        <circle cx="0" cy="0" r="21" class="result"/>
+    </g></g></g>
+	<g id="pp04" transform="translate(50,135)"><g class="scale"><g class="rot">
+        <circle transform="translate(-2,4)" cx="0" cy="0" r="20" class="shadow"/>
+        <use x="0" y="0" xlink:href="#tp"/>
+        <circle cx="0" cy="0" r="21" class="result"/>
+    </g></g></g>
+	<g id="pp05" transform="translate(155,145)"><g class="scale"><g class="rot">
+        <circle transform="translate(-2,4)" cx="0" cy="0" r="20" class="shadow"/>
+        <use x="0" y="0" xlink:href="#tp"/>
+        <circle cx="0" cy="0" r="21" class="result"/>
+    </g></g></g>
+	<g id="pp06" transform="translate(255,140)"><g class="scale"><g class="rot">
+        <circle transform="translate(-2,4)" cx="0" cy="0" r="20" class="shadow"/>
+        <use x="0" y="0" xlink:href="#tp"/>
+        <circle cx="0" cy="0" r="21" class="result"/>
+    </g></g></g>
+	
+
+	</g>
+</g>
+</g>
+
+
+
+
+
+
+
+
+</svg>
