@@ -21,6 +21,8 @@
 	svg#perp01 .shadow				{ fill:black; fill-opacity:0.5; display:none; }
 	svg#perp01 .drag .shadow			{ display:inline; }
 	
+	svg#perp01 .line		{ display:none; }
+	
  </style>
 </defs>
 
@@ -43,8 +45,23 @@
 <g id="main" transform="translate(320,220)">
 <g id="mainrot" transform="rotate(0)">
 
-	<line x1="-350" y1="0" x2="350" y2="0" style="fill:none;stroke:white;stroke-width:10;"/> 
-	<line x1="-350" y1="0" x2="350" y2="0" style="fill:none;stroke:red;stroke-width:3;"/> 
+
+	<g id="lblue" class="line" transform="translate(0,-40)">
+		<g transform="rotate(-2)">
+			<line x1="-350" y1="0" x2="350" y2="0" style="fill:none;stroke:white;stroke-width:10;"/> 
+			<line x1="-350" y1="0" x2="350" y2="0" style="fill:none;stroke:#00F;stroke-width:3;"/>
+		</g>
+	</g>
+	<g id="lred" class="line">
+		<line x1="-350" y1="0" x2="350" y2="0" style="fill:none;stroke:white;stroke-width:10;"/> 
+		<line x1="-350" y1="0" x2="350" y2="0" style="fill:none;stroke:red;stroke-width:3;"/>
+	</g>
+	<g id="lgreen" class="line" transform="translate(0,40)">
+		<g transform="rotate(2)">
+			<line x1="-350" y1="0" x2="350" y2="0" style="fill:none;stroke:white;stroke-width:10;"/> 
+			<line x1="-350" y1="0" x2="350" y2="0" style="fill:none;stroke:#0F0;stroke-width:3;"/>
+		</g>
+	</g>
 
 	
 	<g transform="translate(-250,0)">
@@ -74,7 +91,7 @@
 	
 	<g id="pieces">
 	
-	<g id="ruler" transform="translate(-200,-100)"><g class="rot">
+	<g id="ruler" transform="translate(-200,-100)"><g id="rulerrot" class="rot">
 		<path d="M -80,-100 L -80,60 L 180,60 L -80,-100 z" class="r1"/>
 		<path d="M -80,-100 L -80,60 L 180,60 L 154,44 L -67,44 L -67,-92 L -80,-100 z" class="r1"/>
 		
