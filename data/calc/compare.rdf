@@ -1,0 +1,259 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dct="http://purl.org/dc/terms/">
+
+	<!-- FRAME NUMBER -->
+		 
+	<rdf:Description>
+        <dct:identifier>f10ka</dct:identifier>
+        <dct:title xml:lang="fr-FR">Encadrer des nombres positifs inférieurs à 10 000 avec une précision de 100.</dct:title>
+        <dct:description><![CDATA["gg":{"n":5,"v":[100],"max":9000,"min":1000,"f":1,"dec":1},"callen":4,"noneg":true,"nodec":true,"background":"res/img/background/landscape/greenboard01.svg","errratio":3,"withtabs":false,"sp":0.05,"font":1,"withbars":false,"all":{"width":1.2,"height":1.2},"cols":{"col0":{"width":0.2},"col1":{"width":3,"background":"#AA8","color":"#FEC","fixed":true},"col2":{"width":0.2,"background":"red"},"col3":{"width":3},"col5":{"width":3,"fixed":true,"color":"#012"},"col7":{"width":3},"col4":{"background":"#AAA","color":"white","fixed":true},"col6":{"background":"#AAA","color":"white","fixed":true}},"rows":{"row0":{"height":0.2}},"gen":"function($this,_s,_i){var ret={};  for (var i=0; i<_s.gg.n; i++) { var v=_s.gg.v[i<_s.gg.v.length?i:Math.floor(Math.random()*_s.gg.v.length)]; ret['c1x'+(i+1)]={'value':v/_s.gg.dec}; ret['c4x'+(i+1)]={'value':'<'}; ret['c6x'+(i+1)]={'value':'<'}; var value=Math.floor(Math.random()*(_s.gg.max-_s.gg.min))+_s.gg.min,v1=Math.floor((value-1)/v)*v,v2=Math.ceil((value+1)/v)*v; ret['c5x'+(i+1)]={'value':value/_s.gg.dec}; if (i<_s.gg.f) { ret['c3x'+(i+1)]={'value':v1/_s.gg.dec, 'fixed':true}; ret['c7x'+(i+1)]={'value':v2/_s.gg.dec, 'fixed':true}; } else { ret['c3x'+(i+1)]={'result':v1/_s.gg.dec}; ret['c7x'+(i+1)]={'result':v2/_s.gg.dec}; } } return {'cells':ret}; }","cells":{"c5x2":{"type":"value","value":2586}},"font":1.3]]></dct:description>
+        <dct:description xml:lang="fr-FR">,"exercice":"[b]Encadrez[/b] chaque nombre avec une [red]précision[/red] de [b]100[/b]."</dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>f10ka</dct:alternative>
+        <dct:source>res/img/background/landscape/greenboard01.svg</dct:source>
+    </rdf:Description>
+		 
+	<rdf:Description>
+        <dct:identifier>f10kb</dct:identifier>
+        <dct:title xml:lang="fr-FR">Encadrer des nombres positifs inférieurs à 10 000 avec une précision de 1 000.</dct:title>
+        <dct:description><![CDATA["gg":{"n":5,"v":[1000],"max":9000,"min":1000,"f":1,"dec":1}]]></dct:description>
+        <dct:description xml:lang="fr-FR">,"exercice":"[b]Encadrez[/b] chaque nombre avec une [red]précision[/red] de [b]1 000[/b]."</dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>f10ka</dct:alternative>
+        <dct:relation>f10ka</dct:relation>
+        <dct:source>res/img/background/landscape/greenboard01.svg</dct:source>
+    </rdf:Description>
+		 
+	<rdf:Description>
+        <dct:identifier>f10kc</dct:identifier>
+        <dct:title xml:lang="fr-FR">Encadrer des nombres positifs inférieurs à 10 000 avec une précision de 10.</dct:title>
+        <dct:description><![CDATA["gg":{"n":5,"v":[10],"max":9000,"min":1000,"f":1,"dec":1}]]></dct:description>
+        <dct:description xml:lang="fr-FR">,"exercice":"[b]Encadrez[/b] chaque nombre avec une [red]précision[/red] de [b]10[/b]."</dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>f10ka</dct:alternative>
+        <dct:relation>f10ka</dct:relation>
+        <dct:source>res/img/background/landscape/greenboard01.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>f10kd</dct:identifier>
+        <dct:title xml:lang="fr-FR">Encadrer des nombres positifs inférieurs à 10 000 avec une précision de 100 ou 1 000.</dct:title>
+        <dct:description><![CDATA["gg":{"n":6,"v":[100,1000],"max":9000,"min":1000,"f":2,"dec":1}]]></dct:description>
+        <dct:description xml:lang="fr-FR">,"exercice":"[b]Encadrez[/b] chaque nombre avec une [red]précision[/red] de [b]100[/b] ou de [b]1 000[/b]."</dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>f10ka</dct:alternative>
+        <dct:relation>f10ka</dct:relation>
+        <dct:source>res/img/background/landscape/greenboard01.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>f10ke</dct:identifier>
+        <dct:title xml:lang="fr-FR">Encadrer des nombres positifs inférieurs à 10 000 avec une précision de 10, 100 ou 1 000.</dct:title>
+        <dct:description><![CDATA["gg":{"n":7,"v":[10,100,1000],"max":9000,"min":1000,"f":3,"dec":1}]]></dct:description>
+        <dct:description xml:lang="fr-FR">,"exercice":"[b]Encadrez[/b] chaque nombre avec une [red]précision[/red] de [b]10[/b], de [b]100[/b] ou de [b]1 000[/b]."</dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>f10ka</dct:alternative>
+        <dct:relation>f10ka</dct:relation>
+        <dct:source>res/img/background/landscape/greenboard01.svg</dct:source>
+    </rdf:Description>
+	
+		
+		
+		 
+	<rdf:Description>
+        <dct:identifier>f1ka</dct:identifier>
+        <dct:title xml:lang="fr-FR">Encadrer des nombres positifs inférieurs à 1 000 avec une précision de 100.</dct:title>
+        <dct:description><![CDATA["gg":{"n":5,"v":[100],"max":900,"min":100,"f":1,"dec":1}]]></dct:description>
+        <dct:description xml:lang="fr-FR">,"exercice":"[b]Encadrez[/b] chaque nombre avec une [red]précision[/red] de [b]100[/b]."</dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>f10ka</dct:alternative>
+        <dct:relation>f10ka</dct:relation>
+        <dct:source>res/img/background/landscape/greenboard01.svg</dct:source>
+    </rdf:Description>
+		 
+	<rdf:Description>
+        <dct:identifier>f1kb</dct:identifier>
+        <dct:title xml:lang="fr-FR">Encadrer des nombres positifs inférieurs à 1 000 avec une précision de 10.</dct:title>
+        <dct:description><![CDATA["gg":{"n":5,"v":[10],"max":900,"min":100,"f":1,"dec":1}]]></dct:description>
+        <dct:description xml:lang="fr-FR">,"exercice":"[b]Encadrez[/b] chaque nombre avec une [red]précision[/red] de [b]10[/b]."</dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>f10ka</dct:alternative>
+        <dct:relation>f10ka</dct:relation>
+        <dct:source>res/img/background/landscape/greenboard01.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>f1kc</dct:identifier>
+        <dct:title xml:lang="fr-FR">Encadrer des nombres positifs inférieurs à 1 000 avec une précision de 10 ou 100.</dct:title>
+        <dct:description><![CDATA["gg":{"n":6,"v":[10,100],"max":900,"min":100,"f":2,"dec":1}]]></dct:description>
+        <dct:description xml:lang="fr-FR">,"exercice":"[b]Encadrez[/b] chaque nombre avec une [red]précision[/red] de [b]10[/b] ou de [b]100[/b]."</dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>f10ka</dct:alternative>
+        <dct:relation>f10ka</dct:relation>
+        <dct:source>res/img/background/landscape/greenboard01.svg</dct:source>
+    </rdf:Description>
+		
+
+
+		 
+	<rdf:Description>
+        <dct:identifier>fn10ka</dct:identifier>
+        <dct:title xml:lang="fr-FR">Encadrer des nombres inférieurs à 10 000 avec une précision de 100.</dct:title>
+        <dct:description><![CDATA["gg":{"n":5,"v":[100],"max":9000,"min":-9000,"f":1,"dec":1},"noneg":false]]></dct:description>
+        <dct:description xml:lang="fr-FR">,"exercice":"[b]Encadrez[/b] chaque nombre avec une [red]précision[/red] de [b]100[/b]."</dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>f10ka</dct:alternative>
+        <dct:relation>f10ka</dct:relation>
+        <dct:source>res/img/background/landscape/greenboard01.svg</dct:source>
+    </rdf:Description>
+		 
+	<rdf:Description>
+        <dct:identifier>fn10kb</dct:identifier>
+        <dct:title xml:lang="fr-FR">Encadrer des nombres inférieurs à 10 000 avec une précision de 1 000.</dct:title>
+        <dct:description><![CDATA["gg":{"n":5,"v":[1000],"max":9000,"min":-9000,"f":1,"dec":1},"noneg":false]]></dct:description>
+        <dct:description xml:lang="fr-FR">,"exercice":"[b]Encadrez[/b] chaque nombre avec une [red]précision[/red] de [b]1 000[/b]."</dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>f10ka</dct:alternative>
+        <dct:relation>f10ka</dct:relation>
+        <dct:source>res/img/background/landscape/greenboard01.svg</dct:source>
+    </rdf:Description>
+		 
+	<rdf:Description>
+        <dct:identifier>fn10kc</dct:identifier>
+        <dct:title xml:lang="fr-FR">Encadrer des nombres inférieurs à 10 000 avec une précision de 10.</dct:title>
+        <dct:description><![CDATA["gg":{"n":5,"v":[10],"max":9000,"min":-9000,"f":1,"dec":1},"noneg":false]]></dct:description>
+        <dct:description xml:lang="fr-FR">,"exercice":"[b]Encadrez[/b] chaque nombre avec une [red]précision[/red] de [b]10[/b]."</dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>f10ka</dct:alternative>
+        <dct:relation>f10ka</dct:relation>
+        <dct:source>res/img/background/landscape/greenboard01.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>fn10kd</dct:identifier>
+        <dct:title xml:lang="fr-FR">Encadrer des nombres inférieurs à 10 000 avec une précision de 100 ou 1 000.</dct:title>
+        <dct:description><![CDATA["gg":{"n":6,"v":[100,1000],"max":9000,"min":-9000,"f":2,"dec":1},"noneg":false]]></dct:description>
+        <dct:description xml:lang="fr-FR">,"exercice":"[b]Encadrez[/b] chaque nombre avec une [red]précision[/red] de [b]100[/b] ou de [b]1 000[/b]."</dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>f10ka</dct:alternative>
+        <dct:relation>f10ka</dct:relation>
+        <dct:source>res/img/background/landscape/greenboard01.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>fn10ke</dct:identifier>
+        <dct:title xml:lang="fr-FR">Encadrer des nombres inférieurs à 10 000 avec une précision de 10, 100 ou 1 000.</dct:title>
+        <dct:description><![CDATA["gg":{"n":7,"v":[10,100,1000],"max":9000,"min":-9000,"f":3,"dec":1},"noneg":false]]></dct:description>
+        <dct:description xml:lang="fr-FR">,"exercice":"[b]Encadrez[/b] chaque nombre avec une [red]précision[/red] de [b]10[/b], de [b]100[/b] ou de [b]1 000[/b]."</dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>f10ka</dct:alternative>
+        <dct:relation>f10ka</dct:relation>
+        <dct:source>res/img/background/landscape/greenboard01.svg</dct:source>
+    </rdf:Description>
+	
+		
+		
+		 
+	<rdf:Description>
+        <dct:identifier>fn1ka</dct:identifier>
+        <dct:title xml:lang="fr-FR">Encadrer des nombres inférieurs à 1 000 avec une précision de 100.</dct:title>
+        <dct:description><![CDATA["gg":{"n":5,"v":[100],"max":900,"min":-900,"f":1,"dec":1},"noneg":false]]></dct:description>
+        <dct:description xml:lang="fr-FR">,"exercice":"[b]Encadrez[/b] chaque nombre avec une [red]précision[/red] de [b]100[/b]."</dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>f10ka</dct:alternative>
+        <dct:relation>f10ka</dct:relation>
+        <dct:source>res/img/background/landscape/greenboard01.svg</dct:source>
+    </rdf:Description>
+		 
+	<rdf:Description>
+        <dct:identifier>fn1kb</dct:identifier>
+        <dct:title xml:lang="fr-FR">Encadrer des nombres inférieurs à 1 000 avec une précision de 10.</dct:title>
+        <dct:description><![CDATA["gg":{"n":5,"v":[10],"max":900,"min":-900,"f":1,"dec":1},"noneg":false]]></dct:description>
+        <dct:description xml:lang="fr-FR">,"exercice":"[b]Encadrez[/b] chaque nombre avec une [red]précision[/red] de [b]10[/b]."</dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>f10ka</dct:alternative>
+        <dct:relation>f10ka</dct:relation>
+        <dct:source>res/img/background/landscape/greenboard01.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>fn1kc</dct:identifier>
+        <dct:title xml:lang="fr-FR">Encadrer des nombres inférieurs à 1 000 avec une précision de 10 ou 100.</dct:title>
+        <dct:description><![CDATA["gg":{"n":6,"v":[10,100],"max":900,"min":-900,"f":2,"dec":1},"noneg":false]]></dct:description>
+        <dct:description xml:lang="fr-FR">,"exercice":"[b]Encadrez[/b] chaque nombre avec une [red]précision[/red] de [b]10[/b] ou de [b]100[/b]."</dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>f10ka</dct:alternative>
+        <dct:relation>f10ka</dct:relation>
+        <dct:source>res/img/background/landscape/greenboard01.svg</dct:source>
+    </rdf:Description>
+		 
+
+	
+	
+	
+	<rdf:Description>
+        <dct:identifier>fd10ka</dct:identifier>
+        <dct:title xml:lang="fr-FR">Encadrer des nombres positifs décimal inférieurs à 100 avec une précision de 0.1, 1 ou 10.</dct:title>
+        <dct:description><![CDATA["gg":{"n":7,"v":[10,100,1000],"max":9000,"min":1000,"f":3,"dec":100}]]></dct:description>
+        <dct:description xml:lang="fr-FR">,"exercice":"[b]Encadrez[/b] chaque nombre avec une [red]précision[/red] de [b]10[/b], de [b]100[/b] ou de [b]1 000[/b]."</dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>f10ka</dct:alternative>
+        <dct:relation>f10ka</dct:relation>
+        <dct:source>res/img/background/landscape/greenboard01.svg</dct:source>
+    </rdf:Description>
+		 
+		 
+</rdf:RDF>
+

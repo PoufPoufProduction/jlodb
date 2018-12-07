@@ -531,15 +531,19 @@
                 }
             }
         },
-        graph: function($this, _val) {
+        graph: function($this, _val, _ratio) {
+			var hh=48, ww=Math.floor(48*_ratio);
             var ret = "<svg xmlns:svg='http://www.w3.org/2000/svg' xmlns='http://www.w3.org/2000/svg' version='1.0' "+
-                    "width='100%' height='100%' viewBox='0 0 48 48' preserveAspectRatio='none' class='graph "+_val.type+"'>"+
+                    "width='100%' height='100%' viewBox='0 0 "+ww+" "+hh+"' preserveAspectRatio='none' class='graph "+_val.type+"'>"+
                     "<def><style>.graph .up {fill:green} .graph .down {fill:red;} "+
                     ".graph path.l {fill:none;stroke:black;stroke-width:0.5px;} .graph path.b {fill:#AEF;} "+
-                    ".graph path.d {fill:none;stroke:black;stroke-width:0.2px;} "+
+                    ".graph path.d {fill:none;stroke:black;stroke-width:1px;} "+
+					".graph line.grid {fill:none;stroke:#dd8833;stroke-width:0.2px; } "+
                     "</style></def>";
-            // get the data
-            var value = [];
+
+			// GET VALUES (AND COMPUTE THEM IF NECESSARY)
+            var value = [];		// NUMERIC VALUES
+			var label = [];		// LABEL VALUES
             for (var i in _val.data) {
                 var mini = Math.min( _val.data[i][0].charCodeAt(0)-64, _val.data[i][1].charCodeAt(0)-64 );
                 var minj = Math.min( parseInt(_val.data[i][0].substr(1)), parseInt(_val.data[i][1].substr(1)) );
@@ -550,47 +554,72 @@
                 for (var jj=minj; jj<=maxj; jj++) for (var ii=mini; ii<=maxi; ii++) {
                     var content = helpers.content($this,ii-1,jj-1);
                     $this.find("#c"+ii+"x"+jj+">div").html(content);
-                    vv = parseFloat(content);
-                    vv = isNaN(vv)?0:vv;
-                    if (first || vv<v.min) { v.min = vv; }
-                    if (first || vv>v.max) { v.max = vv; }
-                    first = false;
-                    v.sum+=vv;
-                    v.val.push(vv);
+					
+					if (typeof(content) == "number")
+					{
+						vv = parseFloat(content);
+						vv = isNaN(vv)?0:vv;
+						if (first || vv<v.min) { v.min = vv; }
+						if (first || vv>v.max) { v.max = vv; }
+						first = false;
+						v.sum+=vv;
+						v.val.push(vv);
+					}
+					else
+					{
+						label.push(content);
+					}
                 }
                 value.push(v);
             }
-            switch (_val.type) {
-                case "bar":
-                    var v = value[0], h, a, nb=v.val.length;
-                    if (v.min>0) { h = v.max;       a = 0; } else
-                    if (v.max<0) { h = -v.min;      a = 1; } else
-                                 { h = v.max-v.min; a = h?Math.abs(v.min)/h:0; }
-                    for (var i=0; i<nb; i++) {
-                        var hh = h?Math.abs(v.val[i])/h:0;
-                        ret+="<rect class='"+(v.val[i]>0?"up":"down")+"' x='"+(48*i/nb)+"' width='"+(48/nb)+"' ";
-                        ret+="y='"+((v.val[i]>0?(1-a-hh):(1-a))*48)+"' height='"+hh*48+"'/>";
-                    }
-                    break;
-                case "fct":
-                    var v = value[0], h, a, nb=v.val.length;
-                    if (v.min>0) { h = v.max;       a = 0; } else
-                    if (v.max<0) { h = -v.min;      a = 1; } else
-                                 { h = v.max-v.min; a = h?Math.abs(v.min)/h:0; }
-                    var path = [];
-                    for (var i=0; i<nb; i++) {
-                        path.push([48*i/(nb-1), 48*(1-a-(h?v.val[i]/h:0))]);
-                    }
-                    ret+="<path class='b' d='M ";
-                    for (var i in path) { ret+=path[i][0]+","+path[i][1]+" "; }
-                    ret+=" 48,"+((1-a)*48)+" 0,"+((1-a)*48)+"'/>";
-                    ret+="<path class='l' d='M ";
-                    for (var i in path) { ret+=path[i][0]+","+path[i][1]+" "; }
-                    ret+="'/>";
-                    ret+="<path class='d' d='M 0,"+((1-a)*48)+" 48,"+((1-a)*48)+"'/>";
-                    ret+="<path class='d' d='M 0,0 0,48'/>";
-                    break;
-            }
+
+			// PREPARE GRAPH (h is the height, a is the x-axis ratio position, nb is the number of values )
+			if (v.max>0) { v.max = v.max*1.1; } else { v.max = v.max/1.1; }
+            var v = value[0], h, a, nb=v.val.length;
+            if (v.min>0) { h = v.max;       a = 0; } else
+            if (v.max<0) { h = -v.min;      a = 1; } else
+                         { h = v.max-v.min; a = h?Math.abs(v.min)/h:0; }
+			if (h) {
+				if (_val.grid) {
+					if (_val.grid[0]) { }
+					else
+					if (_val.grid[1]) {
+						var yy=Math.floor(v.min/_val.grid[1] -1)*_val.grid[1];
+						for (var i=0; i<h/_val.grid[1]+2; i++) {
+							ret+="<line x1='0' x2='"+ww+"' y1='"+hh*(1-a-(yy+i*_val.grid[1])/h)+"' "+
+								 "y2='"+hh*(1-a-(yy+i*_val.grid[1])/h)+"' class='grid'/>";
+						}
+					}
+				}
+
+				// DRAW GRAPH
+				switch (_val.type) {
+					case "bar":
+						for (var i=0; i<nb; i++) {
+							var th = Math.abs(v.val[i]);
+							ret+="<rect class='"+(v.val[i]>0?"up":"down")+"' x='"+(ww*i/nb)+"' width='"+(ww/nb)+"' ";
+							ret+="y='"+((v.val[i]>0?(1-a-th):(1-a))*hh/h+hh)+"' height='"+th*hh/h+"'/>";
+						}
+						break;
+					case "fct":
+						var path = [];
+						for (var i=0; i<nb; i++) {
+							path.push([ww*i/(nb-1), hh*(1-a-(v.val[i]/h))]);
+						}
+						ret+="<path class='b' d='M ";
+						for (var i in path) { ret+=path[i][0]+","+path[i][1]+" "; }
+						ret+=" "+ww+","+((1-a)*hh)+" 0,"+((1-a)*hh)+"'/>";
+						ret+="<path class='l' d='M ";
+						for (var i in path) { ret+=path[i][0]+","+path[i][1]+" "; }
+						ret+="'/>";
+						break;
+				}
+
+				// DRAW AXIS
+				ret+="<path class='d' d='M 0,"+((1-a)*hh)+" "+ww+","+((1-a)*hh)+"'/>";
+				ret+="<path class='d' d='M 0,0 0,"+hh+"'/>";
+			}
+
             ret+="</svg>";
             return ret;
         },
@@ -622,7 +651,7 @@
                     cell.tmp =helpers.format(cell.tmp.toString());
                     break;
                 case "graph" :
-                    cell.tmp = helpers.graph($this,cell.tmp);
+                    cell.tmp = helpers.graph($this,cell.tmp,cell.size[0]/cell.size[1]);
                     break;
             }
             cell.update = true;
