@@ -154,5 +154,40 @@
         <dct:type>2</dct:type>
         <dct:alternative>t001</dct:alternative>
     </rdf:Description>
+	
+	
+	
+	
+    <!-- PARRALEL and PERPENDICULAR -->
+	
+    <rdf:Description>
+        <dct:identifier>pa01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier les droites paralèlles présentes dans la figure.</dct:title>
+        <dct:description><![CDATA["errratio":2,"background":"res/img/background/landscape/bluecarpet01.svg","states":{ "nb":2,"style":[{"background-image":"url('res/img/default/icon/check_unchecked01.svg')"},{"background-image":"url('res/img/default/icon/check_checked01.svg')"}]},"wrong":{"style":{"background-color":"red"}},"illustration":"<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 480 640'><path d='M 30,30 450,30 450,450 30,450 30,30' class='s'/><path d='M 450,30 30,450' class='s'/><path d='M 30,30 345,345' class='s'/><path d='M 450,240 240,450' class='s'/><path d='M 345,345 135,345' class='s'/><path d='M 450,240 345,135' class='s'/><circle cx='30' cy='30' r='6' class='p'/><circle cx='30' cy='450' r='6' class='p'/><circle cx='450' cy='30' r='6' class='p'/><circle cx='450' cy='450' r='6' class='p'/><circle cx='240' cy='240' r='6' class='p'/><circle cx='240' cy='450' r='6' class='p'/><circle cx='450' cy='240' r='6' class='p'/><circle cx='345' cy='345' r='6' class='p'/><circle cx='135' cy='345' r='6' class='p'/><circle cx='345' cy='135' r='6' class='p'/><text transform='translate(5,22)'>A</text><text transform='translate(455,22)'>B</text><text transform='translate(455,480)'>C</text><text transform='translate(5,480)'>D</text><text transform='translate(455,270)'>E</text><text transform='translate(240,480)'>F</text><text transform='translate(230,220)'>G</text><text transform='translate(335,115)'>H</text><text transform='translate(135,380)'>I</text><text transform='translate(345,380)'>J</text></svg>","values":[{"template":"check5r","result":"10010","t":["(AB) (FC)", "(EF) (IJ)","(BC) (IJ)","(HE) (AJ)","(JE) (DF)"]},{"template":"check5r","result":"11011","t":["(HE) (AJ)", "(FJ) (DG)","(BH) (GJ)","(DC) (IJ)","(EC) (AD)"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Validez[/b] lorsque les deux droites sont [b]parallèles[/b]."]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>pa01</dct:alternative>
+		<dct:source>res/img/background/landscape/bluecarpet01.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>pe01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Identifier les droites perpendiculaires présentes dans la figure.</dct:title>
+        <dct:description><![CDATA["values":[{"template":"check5r","result":"10011","t":["(CD) (BC)", "(EH) (DF)","(IJ) (GJ)","(EF) (AJ)","(EH) (BD)"]},{"template":"check5r","result":"01110","t":["(GH) (BE)", "(FJ) (HE)","(BC) (IJ)","(EC) (AB)","(IJ) (EH)"]}]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Validez[/b] lorsque les deux droites sont [b]perpendiculaires[/b]."]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>geometry</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>pa01</dct:alternative>
+        <dct:relation>pa01</dct:relation>
+		<dct:source>res/img/background/landscape/bluecarpet01.svg</dct:source>
+    </rdf:Description>
+	
+	
+	
 
 </rdf:RDF>

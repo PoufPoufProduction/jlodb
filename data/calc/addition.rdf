@@ -1,7 +1,40 @@
 <?xml version="1.0"?>
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dct="http://purl.org/dc/terms/">
-         
+    
+	
+	
+	<!--FILL TABLE -->
+	
+	<rdf:Description>
+        <dct:identifier>f25</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter la table d'addition par 4, 7 et 8.</dct:title>
+        <dct:description><![CDATA["gg":{"t":[4,7,8],"r":0.6,"v":"+","max":10},"toright":true,"pospanel":[70,40],"background":"res/img/background/landscape/blueboard01.svg","checkempty":true,"callen":2,"noneg":true,"nodec":true,"withtabs":false,"sp":0.1,"withbars":false,"all":{"height":1.2,"width":2},"rows":{"row0":{"height":0.2},"row1":{"fixed":true,"background":"#AA8"}},"cols":{"col0":{"width":0.2}},"gen":"function($this,_s,_i) { var cells={'c1x1':{'fixed':true,'value':_s.gg.v,'color':'#FDA'}}; for (var i=0;i<_s.gg.max;i++) { cells['c'+(i+2)+'x1']={'fixed':true,'value':i+1,'background':'#AA8','color':'#FDA'}; }  for (var j=0; j<_s.gg.t.length; j++) { cells['c1x'+(j+2)]={'fixed':true,'value':_s.gg.t[j],'background':'#AA8','color':'#FDA'}; for (var i=1;i<=_s.gg.max;i++) { if (Math.random()<_s.gg.r) { cells['c'+(i+1)+'x'+(j+2)]={'fixed':true, 'value':i+_s.gg.t[j]}; } else { cells['c'+(i+1)+'x'+(j+2)]={'type':'value', 'result':i+_s.gg.t[j], 'color':'#125'}; } } } return {'cells':cells}; }","font":0.9]]></dct:description>
+        <dct:description xml:lang="fr-FR">,"exercice":"[b]Complétez[/b] la table d'addition."</dct:description>
+        <dct:extent>5</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>f25</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:source>res/img/background/landscape/blueboard01.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>f100</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter la table d'addition par 10,20,... 100.</dct:title>
+        <dct:description><![CDATA["gg":{"t":[10,20,30,40,50,60,70,80,90,100],"r":0.9,"v":"0","max":9}]]></dct:description>
+        <dct:extent>5</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>f25</dct:alternative>
+        <dct:relation>f25</dct:relation>
+        <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+        <dct:source>res/img/background/landscape/blueboard01.svg</dct:source>
+    </rdf:Description>
+	
+	<!-- GRID -->
         
     <rdf:Description>
         <dct:identifier>mg24a</dct:identifier>
