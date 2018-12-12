@@ -130,6 +130,139 @@
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
         <dct:source>res/img/background/landscape/greenboard01.svg,res/img/desktop/puzzle/groups2-4.svg</dct:source>
     </rdf:Description>
+	
+	<!-- VERBE A L'INFINITIF -->
+	
+    <rdf:Description>
+        <dct:identifier>_wvi01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Remettre les lettres dans l'ordre pour former le verbe à l'infinitif conjugué au présent de l'indicatif dans la phrase [compter, boire, marcher]</dct:title>
+        <dct:description><![CDATA["gg":[["Ils comptent jusqu'à cent.","compter"],["Le petit chat boit du lait.","boire"], ["Mon ami marche en direction de du centre-ville.","marcher"]],"number":3,"background":"res/img/background/landscape/graycarpet01.svg","decoys":["dd01","dd02","dd03","dd04","dd05","dd06","dd07","dd08","dd09","dd10","dd11","dd12"],"init":{"pos":[[425,60],[495,60],[565,60],[425,130],[495,130],[565,130],[425,200],[495,200],[565,200],[425,270],[495,270],[565,270]]},"url":"desktop/puzzle/word.svg","gen":"function($this,_s,_i){ var e=_s.gg[_i],v={}; for (var i=0;i<12;i++) { if (i<e[1].length) { v['p'+(i<9?'0':'')+(i+1)]=e[1][i]; } else { var c; do { c = String.fromCharCode(97+Math.floor(Math.random()*26)); } while(e[1].indexOf(c)!=-1); v['dd'+(i<9?'0':'')+(i+1)]=c; } } var s={},ss=[]; for (var i=0;i<e[1].length;i++) { var c=e[1][i].toString(); if (s[c]) { s[c].push(i); } else { s[c]=[i]; } } for (var i in s) { var sss=[]; for (var j in s[i]) { sss.push('p'+(s[i][j]<9?'0':'')+(s[i][j]+1)); } ss.push(sss); } return {svgclass:'l'+e[1].length,values:v,ttxt:e[0],same:ss}; }"]]></dct:description>
+        <dct:description xml:lang="fr-FR">,"exercice":"[b]Ecrivez[/b] le verbe de chaque phrase à l'[red]infinitif[/red]."</dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>frgram</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>_wvi01</dct:alternative>
+        <dct:source>res/img/background/landscape/graycarpet01.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>_wvi02</dct:identifier>
+        <dct:title xml:lang="fr-FR">Remettre les lettres dans l'ordre pour former le verbe à l'infinitif conjugué au présent de l'indicatif dans la phrase [sortir, jouer, tracer]</dct:title>
+        <dct:description><![CDATA["gg":[["Les élèves sortent dans la cour de l'école.","sortir"],["Mes cousins jouent très bien du piano.","jouer"], ["Au tableau, le maître trace une ligne brisée.","tracer"]]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>frgram</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>_wvi01</dct:alternative>
+        <dct:relation>_wvi01</dct:relation>
+        <dct:source>res/img/background/landscape/graycarpet01.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>_wvi03</dct:identifier>
+        <dct:title xml:lang="fr-FR">Remettre les lettres dans l'ordre pour former le verbe à l'infinitif conjugué au présent de l'indicatif dans la phrase [utiliser, habiter, couper]</dct:title>
+        <dct:description><![CDATA["gg":[["De nos jours, nous utilisons l'ordinateur pour plein de choses. ","utiliser"],["Mon oncle et ma tante habitent à la campagne.","habiter"], ["Le bûcheron coupe les branches de l'arbre à la tronçonneuse.","couper"]]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>frgram</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>_wvi01</dct:alternative>
+        <dct:relation>_wvi01</dct:relation>
+        <dct:source>res/img/background/landscape/graycarpet01.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>_wvi04</dct:identifier>
+        <dct:title xml:lang="fr-FR">Remettre les lettres dans l'ordre pour former le verbe à l'infinitif conjugué au présent de l'indicatif dans la phrase [démarrer, allumer, penser]</dct:title>
+        <dct:description><![CDATA["gg":[["La voiture de course démarre en trombe.","démarrer"],["Pierrot allume une bougie dans la maisonnette.","allumer"], ["Elle ne pense jamais à mon anniversaire.","penser"]]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>frgram</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>_wvi01</dct:alternative>
+        <dct:relation>_wvi01</dct:relation>
+        <dct:source>res/img/background/landscape/graycarpet01.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>_wvi05</dct:identifier>
+        <dct:title xml:lang="fr-FR">Remettre les lettres dans l'ordre pour former le verbe à l'infinitif conjugué au présent de l'indicatif dans la phrase [venir, mettre, franchir]</dct:title>
+        <dct:description><![CDATA["gg":[["Vous venez chez moi cet après-midi ?","venir"],["Je mets son pyjama neuf après la douche.","mettre"], ["Le sauteur à la perche franchit la barre avec aisance.","franchir"]]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>frgram</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>_wvi01</dct:alternative>
+        <dct:relation>_wvi01</dct:relation>
+        <dct:source>res/img/background/landscape/graycarpet01.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>_wvi06</dct:identifier>
+        <dct:title xml:lang="fr-FR">Remettre les lettres dans l'ordre pour former le verbe à l'infinitif conjugué au présent de l'indicatif dans la phrase [écrire, faire, conduire]</dct:title>
+        <dct:description><![CDATA["gg":[["Tous les soirs, à son bureau, il écrit une lettre à sa fiancée.","écrire"],["Nous faison une dictée difficile.","faisons"], ["Mes frères et moi conduisons une voiture bleue.","conduire"]]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>frgram</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>_wvi01</dct:alternative>
+        <dct:relation>_wvi01</dct:relation>
+        <dct:source>res/img/background/landscape/graycarpet01.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>_wvi07</dct:identifier>
+        <dct:title xml:lang="fr-FR">Remettre les lettres dans l'ordre pour former le verbe à l'infinitif conjugué au présent de l'indicatif dans la phrase [être, avoir, être]</dct:title>
+        <dct:description><![CDATA["gg":[["Je suis satisfait de mes résultats en français.","être"],["J'ai deux chats et un chien.","avoir"], ["L'été est une belle saison.","être"]]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>frgram</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>_wvi01</dct:alternative>
+        <dct:relation>_wvi01</dct:relation>
+        <dct:source>res/img/background/landscape/graycarpet01.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>_wvi08</dct:identifier>
+        <dct:title xml:lang="fr-FR">Remettre les lettres dans l'ordre pour former le verbe à l'infinitif conjugué au présent de l'indicatif dans la phrase [venir, finir, boire]</dct:title>
+        <dct:description><![CDATA["gg":[["Pour les fêtes, mes grands-parents viennent nous voir.","venir"],["Il finit toujours ses devoirs à temps.","finir"], ["Il boit beaucoup d'eau.","boire"]]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>frgram</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>_wvi01</dct:alternative>
+        <dct:relation>_wvi01</dct:relation>
+        <dct:source>res/img/background/landscape/graycarpet01.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>_wvi09</dct:identifier>
+        <dct:title xml:lang="fr-FR">Remettre les lettres dans l'ordre pour former le verbe à l'infinitif conjugué au présent de l'indicatif dans la phrase [regarder, fatiguer, aller]</dct:title>
+        <dct:description><![CDATA["gg":[["Ma mère regarde un film à la télévision.","regarder"],["Tout me fatigue aujourd'hui.","fatiguer"], ["Tous les soirs, je vais au lit vers 21h00.","aller"]]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>frgram</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>_wvi01</dct:alternative>
+        <dct:relation>_wvi01</dct:relation>
+        <dct:source>res/img/background/landscape/graycarpet01.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>_wvi10</dct:identifier>
+        <dct:title xml:lang="fr-FR">Remettre les lettres dans l'ordre pour former le verbe à l'infinitif conjugué au présent de l'indicatif dans la phrase [faire, aller, faire]</dct:title>
+        <dct:description><![CDATA["gg":[["Mon grand-père fait des courses en ce moment.","faire"],["Je pars bientôt pour l'école.","partir"], ["Stop ! Vous faites beaucoup trop de bruit !","faire"]]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>frgram</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>_wvi01</dct:alternative>
+        <dct:relation>_wvi01</dct:relation>
+        <dct:source>res/img/background/landscape/graycarpet01.svg</dct:source>
+    </rdf:Description>
+	
 
 </rdf:RDF>
 
