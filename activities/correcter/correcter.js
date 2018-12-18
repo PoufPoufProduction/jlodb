@@ -14,6 +14,8 @@
         first       : false,                // Don't choose randomly the wrong words, use the first one
         background  : "",                   // Background image
 		commas		: ".,:;\"",				// Commas
+		split		: " ",					// Split
+		errratio	: 1,
         debug       : true                  // Debug mode
     };
 
@@ -101,11 +103,23 @@
                 var content ="";
                 var reg = new RegExp("[ ]", "g");
                 var index = 0;
-
+					
                 // PARSE EACH PARAGRAPH
                 for (var i=0; i<settings.text.length; i++) {
                     content+="<p>";
-                    var text = settings.text[i].split(reg);
+                    var text = [];
+					var inter = [];
+					var word = "";
+					for (var j=0; j<settings.text[i].length; j++) {
+						if (settings.split.indexOf(settings.text[i][j])==-1) {
+							word+=settings.text[i][j];
+						}
+						else if (word.length) {
+							text.push(word); inter.push(settings.text[i][j].toString()); word="";
+						}
+					}
+					if (word.length) { text.push(word); inter.push(""); }
+					
                     // BROWSE EACH WORD
                     for (var j=0; j<text.length; j++) {
 
@@ -155,7 +169,7 @@
                                  index+");event.preventDefault();\"";
                         content+=">"+word+"</span>";
                         if (end<text[j].length) { content+=text[j].substring(end); }
-                        content+=" ";
+                        content+=inter[j];
 
                         // store the good work
                         settings.responses.push(goodWord);
@@ -334,7 +348,7 @@
                     $this.find("#effects").show();
                     $this.find("#submit").addClass(nbErrors?"wrong":"good");
                     
-                    settings.score = 5-nbErrors;
+                    settings.score = 5-nbErrors*settings.errratio;
                     if (settings.score<0) { settings.score = 0; }
                     $(this).find("#valid").hide();
                     setTimeout(function() { helpers.end($this); }, nbErrors?3000:1000);
