@@ -28,7 +28,7 @@ a                  { text-decoration:none; }
 .chapter .overview           { display:none; }
 .chapter .overview.s         { display:inherit; }
 
-.ids                { font-size:0.5em; width:90%; overflow:hidden; border:1px solid black; margin:1px; }
+.ids                { font-size:1em; height:6em; width:90%; border:1px solid black; margin:1px; resize:none; }
     
     </style>
     <script>
@@ -60,7 +60,7 @@ format: function(_text) {
 ids: function(_target, _ids) {
     $.getJSON("api/exercice.php?id="+_ids, function(data) {
         var html="";
-        html+="<div class='ids'>"+_ids+"</div>";
+        html+="<textarea class='ids'>"+_ids+"</textarea>";
         var ids = decodeURIComponent(_ids).split(",");
         for (var i in ids) {
             var e = 0;

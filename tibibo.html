@@ -146,6 +146,7 @@
 #bofooter .bolink:before    { content:"("; }
 #bofooter .bolink:after     { content:")"; }
 #bofooter .bostrong         { font-size:1em; display:inline; }
+#bofooter #mmove>div	{ font-size:.5em; width:2em; text-align:center; margin-top:.3em; font-weight:bold; }
 
 #boeditnode                 { position:absolute; top:0; left:0; width:16em; height:12em; background-color: rgba(0,0,0,0.2); display:none; }
 #boeditnode>div             { position:absolute; font-size:.4em; width:20em; height:21em; top:2em; left:2em;  background-color:rgba(128,120,100,0.9); border:.2em solid white; color:black; border-radius:.5em; background-image:url("res/img/default/pattern/line04.svg"); background-repeat:repeat; }
@@ -741,6 +742,7 @@ var tibibo = {
                     case "mleft"    : tibibo.book.data.nav.left(id);  sav = true; rem = false; break;
                     case "mright"   : tibibo.book.data.nav.right(id); sav = true; rem = false; break;
                     case "medit"    : if (id!=-1) { tibibo.node.edit.open(elt); } upd =false; break;
+					case "mmove"	: tibibo.book.pdata.id=id; $("#mmove>div").html(id); rem = true; upd = false; break;
                     default: tibibo.book.nodeid = id; tra = true; break;
                 }
                 if (rem) { $("#bofooter .s").removeClass("s"); }
@@ -868,11 +870,38 @@ var tibibo = {
     },
     book: {
         data    : { nav : 0, ownerkey : 0, value : "", state:{}, awards:[] },
+		pdata	: { id: -1 },
         nodeid  : -1,
         open: function(_id) {
             console.log("==== open book: "+_id+" ====");
             document.location = "tibibo.html?id="+_id;
         },
+		paste:function() {
+			var iss = $("#bofooter #mmove").hasClass("s");
+			$("#bofooter #oactions .action").removeClass("s");
+			if (this.pdata.id==-1) {
+				$("#bofooter #mmove").toggleClass("s",!iss);
+				if (!iss) { $("#bofooter #mmove>div").html("^C"); }
+			}
+			else {
+				var node = tibibo.book.data.nav.getnode(this.pdata.id);
+				var loop = false;
+				tibibo.book.data.nav.each(node, function(_node) {
+					if (_node.id == tibibo.book.nodeid) { loop = true; }
+				});
+				if (loop) { alert("ERROR: paste operation not authorized"); }
+				else {
+					tibibo.book.data.nav.del(this.pdata.id);
+					var target = tibibo.book.data.nav.getnode(tibibo.book.nodeid);
+					target.children.push(node);
+					tibibo.book.save();
+					tibibo.book.display();
+				}
+				
+				$("#bofooter #mmove>div").html("^C");
+				this.pdata.id = -1;
+			}
+		},
         chapter: function(_id) {
             tibibo.book.nodeid = _id;
             tibibo.book.display();
@@ -1364,6 +1393,9 @@ $(window).ready(function() {
                     onmousedown="$(this).toggleClass('s').siblings().removeClass('s');"
                     ontouchstart="$(this).toggleClass('s').siblings().removeClass('s');event.preventDefault();" >
                     <img src="mods/tibibo/res/img/right.svg"/></div>
+                <div id="mmove" class="icon action" onmousedown="tibibo.book.paste();"
+                    ontouchstart="tibibo.book.paste();event.preventDefault();" ><div>^C</div></div>
+					
                     <!--
                 <div id="mexport" class="icon action"
                     onmousedown="$(this).toggleClass('s').siblings().removeClass('s');"
