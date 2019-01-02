@@ -60,7 +60,7 @@ format: function(_text) {
 ids: function(_target, _ids) {
     $.getJSON("api/exercice.php?id="+_ids, function(data) {
         var html="";
-        html+="<textarea class='ids'>"+_ids+"</textarea>";
+        html+="<textarea class='ids'>"+decodeURIComponent(_ids)+"</textarea>";
         var ids = decodeURIComponent(_ids).split(",");
         for (var i in ids) {
             var e = 0;
