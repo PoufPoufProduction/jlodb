@@ -1,8 +1,92 @@
 <?xml version="1.0"?>
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dct="http://purl.org/dc/terms/">
+		 
+	<!-- READ HOUR -->
+	
+	<rdf:Description>
+        <dct:identifier>r01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire l'heure.</dct:title>
+        <dct:description><![CDATA["pospanel":[75,50],"class":"leftfx","gg":[1,1],"background":"res/img/background/landscape/blueboard01.svg","emptyisnull":true,"toright":true,"errratio":2,"callen":2,"noneg":true,"nodec":true,"withtabs":false,"withbars":false,"sp":0.05,"all":{"width":1.8},"cols":{"col0":{"width":0.2},"col1":{"width":1.2,"height":1.2,"background":"#FEC"},"col4":{"background":"gray","width":0.1,"fixed":true},"col5":{"width":1.2,"height":1.2,"background":"#FEC"}},"rows":{"row0":{"height":0.2},"row1":{"background":"#AAA","color":"white","fixed":true}},"cells":{"c2x1":{"value":"h"},"c3x1":{"value":"min"},"c1x1":{"background":"gray"},"c6x1":{"value":"h"},"c7x1":{"value":"min"},"c5x1":{"background":"gray"}},"gen":"function($this, _s, _id){var ret={}; for (var j=0; j<2; j++) for (var i=0;i<3;i++) { var v=Math.floor(Math.random()*132+12)*5,h=Math.floor(v/60),m=v%60; ret['c'+(1+j*4)+'x'+(i+2)]={'type':'fixed','value':'[img]res/img/clock/clockA'+(h<10?'0':'')+h+(m<10?'0':'')+m+'[/img]'}; if (Math.random()<_s.gg[0]) { ret['c'+(2+j*4)+'x'+(i+2)]={'type':'value','result':h}; } else { ret['c'+(2+j*4)+'x'+(i+2)]={'type':'value','value':h, 'fixed':true}; } if (Math.random()<_s.gg[1]) { ret['c'+(3+j*4)+'x'+(i+2)]={'type':'value','result':m}; } else { ret['c'+(3+j*4)+'x'+(i+2)]={'type':'value','value':m, 'fixed':true}; } } return {'cells':ret}; }","font":2]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Complétez[/b] les [i]heures[/i] et les [i]minutes[/i] du tableau d'après les illustrations correspondantes.","po":{"h":"h","min":"min"}]]></dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>r01</dct:alternative>
+		<dct:source>res/img/background/landscape/blueboard01.svg</dct:source>
+    </rdf:Description>
+	
+	<!-- DURATION CONVERTION AND CALCULATION -->
+	
+	<rdf:Description>
+        <dct:identifier>d01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Calculer et décomposer des durées.</dct:title>
+        <dct:description><![CDATA["pospanel":[75,50],"class":"leftfx","gg":[[0,0,96],[0,64,0],[1,15,0,0,50,0],[0,1,55,0,2,25]],"background":"res/img/background/landscape/blueboard01.svg","emptyisnull":true,"toright":true,"errratio":2,"callen":2,"noneg":true,"nodec":true,"withtabs":false,"withbars":false,"sp":0.05,"cols":{"col0":{"width":0.2},"col1":{"width":11.5,"background":"#FEC"}},"rows":{"row0":{"height":0.2},"row1":{"background":"#AAA","color":"white","fixed":true}},"cells":{"c2x1":{"value":"h"},"c3x1":{"value":"min"},"c4x1":{"value":"s"},"c1x1":{"background":"gray"}},"gen":"function($this, _s, _id){var ret={}; for (var i=0;i<_s.gg.length;i++) { var v='',r=0,j=0,q=_s.gg[i]; while (j<q.length) { r+=3600*q[j]+60*q[j+1]+q[j+2]; if (j) { v+=' + '; } if (q[j]) { v+=q[j]+_s.po['h']+' '; } if (q[j+1]) { v+=q[j+1]+_s.po['min']+' '; } if (q[j+2]) { v+=q[j+2]+_s.po['s']+' '; } j+=3; } ret['c1x'+(i+2)]={'type':'value','value':v}; ret['c2x'+(i+2)]={'type':'value','result':Math.floor(r/3600)}; ret['c3x'+(i+2)]={'type':'value','result':Math.floor(r/60)%60}; ret['c4x'+(i+2)]={'type':'value','result':r%60};} return {'cells':ret}; }","font":1.1]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Calculez[/b] si nécessaire, et [b]décomposez[/b] les durées en [i]heures[/i], [i]minutes[/i] et [i]secondes[/i].","po":{"h":"h","min":"min","s":"s"}]]></dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>d01</dct:alternative>
+		<dct:source>res/img/background/landscape/blueboard01.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>d02</dct:identifier>
+        <dct:title xml:lang="fr-FR">Calculer et décomposer des durées.</dct:title>
+        <dct:description><![CDATA["gg":[[0,0,102,0,2,5],[0,58,17,0,2,55],[1,0,32,0,16,57],[0,38,55,0,34,26]]]]></dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>d01</dct:alternative>
+        <dct:relation>d01</dct:relation>
+		<dct:source>res/img/background/landscape/blueboard01.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>d03</dct:identifier>
+        <dct:title xml:lang="fr-FR">Calculer et décomposer des durées.</dct:title>
+        <dct:description><![CDATA["gg":[[0,1,52,0,3,8],[0,0,122,0,3,28],[1,59,0,0,0,63],[0,0,613]]]]></dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>d01</dct:alternative>
+        <dct:relation>d01</dct:relation>
+		<dct:source>res/img/background/landscape/blueboard01.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>d04</dct:identifier>
+        <dct:title xml:lang="fr-FR">Calculer et décomposer des durées.</dct:title>
+        <dct:description><![CDATA["gg":[[0,378,0],[0,25,32,0,50,47],[1,49,0,3,16,0],[0,0,608,0,55,13]]]]></dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:alternative>d01</dct:alternative>
+        <dct:relation>d01</dct:relation>
+		<dct:source>res/img/background/landscape/blueboard01.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>d05</dct:identifier>
+        <dct:title xml:lang="fr-FR">Calculer et décomposer des durées.</dct:title>
+        <dct:description><![CDATA["gg":[[0,0,2,0,59,59],[1,0,48,0,0,132],[0,23,32,0,39,50],[0,0,75,0,0,215]]]]></dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>d01</dct:alternative>
+        <dct:relation>d01</dct:relation>
+		<dct:source>res/img/background/landscape/blueboard01.svg</dct:source>
+    </rdf:Description>
 
 
+	<!-- CALENDAR QUIZZ -->
+		 
     <rdf:Description>
         <dct:identifier>c01</dct:identifier>
         <dct:title xml:lang="fr-FR">Répondre aux questions à l'aide du calendrier du mois de Mai.</dct:title>

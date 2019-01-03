@@ -32,6 +32,7 @@
         nocellref   : false,                            // Cell pointer
         background  : "",                               // Background image
 		toright		: false,							// Automatic move to right
+		emptyisnull	: false,							// An empty value is dealt as 0
         dev         : false,                            // Editor mode
         debug       : true                              // Debug mode
     };
@@ -207,7 +208,7 @@
                 // GEN
                 if (settings.gen) {
                     var gen = eval('('+settings.gen+')')($this,settings,0);
-                    if (gen.cells) { settings.cells = gen.cells; }
+                    if (gen.cells) { settings.cells = $.extend(true, settings.cells, gen.cells); }
                 }
 
                 // Build the grid
@@ -1157,6 +1158,8 @@
                             if (r.result.toString().length) {
                                 var uservalue = r.value;
                                 if (r.type=="math") { uservalue = $this.find("#c"+(i+1)+"x"+(j+1)).text(); }
+								if (settings.emptyisnull && uservalue.toString().length==0) { uservalue=0; }
+								
                                 if (r.result.toString()!=uservalue.toString()) {
                                     error++;
                                     $this.find("#c"+(i+1)+"x"+(j+1)).addClass("wrong");

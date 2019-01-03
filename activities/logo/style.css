@@ -1,8 +1,10 @@
 .logo                                { background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat;}
-.logo div#splashex                  { background-image:url("../../res/img/banners/it.svg"); color:lime; }
-.logo div#splashex h1               { position:absolute; top:45%; left:80%; font-size:1.5em; }
-.logo div#splashex #guide           { position:absolute; top:53%; left:45%; font-size:.6em; width:52%;
-                                          text-align:justify; }
+.logo div#splashex                  { background-image:url("../../res/img/banners/logo.svg"); color:lime; }
+.logo div#splashex h1                { position:absolute; top:12%; left:50%; font-size:2em; background-color:red;
+                                          width:70%; color:white; text-align:center;
+                                          border:.3em solid white;
+                                          -ms-transform: rotate(45deg); -webkit-transform: rotate(45deg); transform: rotate(45deg); }
+
 .logo div.mask                       { position:absolute; width:7.8em; height:12em; top:0; left:0; display:none; }
 .logo div#export                     { position:absolute; width:16em; height:12em; top:0; left:0; display:none; z-index:2002;}
 .logo div#dbg                        { position:absolute; width:16em; height:12em; top:0; left:0; display:none;
