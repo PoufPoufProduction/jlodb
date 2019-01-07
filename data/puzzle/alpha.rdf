@@ -119,7 +119,7 @@
 	<rdf:Description>
         <dct:identifier>s6</dct:identifier>
         <dct:title xml:lang="fr-FR">Classer les 6 lettres proposés dans l'ordre alphabétiques.</dct:title>
-        <dct:description><![CDATA["gg":6,"number":2,"timg":"res/img/svginventoryicons/book/paper01.svg","background":"res/img/background/landscape/wallpaper02.svg","init":{"pos":[[425,60],[495,60],[565,60],[425,130],[495,130],[565,130],[425,200],[495,200],[565,200],[425,270],[495,270],[565,270]]},"url":"desktop/puzzle/word.svg","gen":"function($this,_s,_i){ var c=[],v={}; for (var i=0; i<26; i++) { c.push(i); } shuffle(c); c.splice(_s.gg,26-_s.gg); c.sort(function(_a,_b) { return (_a>_b); }); for (var i=0;i<_s.gg;i++) { v['p'+(i<9?'0':'')+(i+1)]=String.fromCharCode(65+c[i]); } return { 'values':v, 'svgclass':'l'+_s.gg}; }"]]></dct:description>
+        <dct:description><![CDATA["gg":6,"number":2,"timg":"res/img/svginventoryicons/book/paper01.svg","background":"res/img/background/landscape/wallpaper02.svg","init":{"pos":[[425,60],[495,60],[565,60],[425,130],[495,130],[565,130],[425,200],[495,200],[565,200],[425,270],[495,270],[565,270]]},"url":"desktop/puzzle/word.svg","gen":"function($this,_s,_i){ var c=[],v={}; for (var i=0; i<26; i++) { c.push(i); } shuffle(c); c.splice(_s.gg,26-_s.gg); c.sort(function(_a,_b) { return (_a-_b); }); for (var i=0;i<_s.gg;i++) { v['p'+(i<9?'0':'')+(i+1)]=String.fromCharCode(65+c[i]); } return { 'values':v, 'svgclass':'l'+_s.gg}; }"]]></dct:description>
         <dct:description xml:lang="fr-FR">,"exercice":"[b]Classez[/b] les lettres proposées dans l'[red]ordre alphabétique[/red]."</dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>languages</dct:subject>
