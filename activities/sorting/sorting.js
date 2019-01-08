@@ -29,7 +29,9 @@
         "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
         "\\\[small\\\]([^\\\[]+)\\\[/small\\\]",    "<span style='font-size:.6em;'>$1</span>",
         "\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='icon'><img src='$1'/></div>",
-        "\\\[char\\\]([^\\\[]+)\\\[/char\\\]",      "<div class='char'><img src='$1'/></div>"
+        "\\\[char\\\]([^\\\[]+)\\\[/char\\\]",      "<div class='char'><img src='$1'/></div>",
+        "\\\[icon ([^\\\]]+)\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='icon' style='background-image:url(\"$1\")'><img src='$2'/></div>",
+        "\\\[char ([^\\\]]+)\\\]([^\\\[]+)\\\[/char\\\]",      "<div class='char' style='background-image:url(\"$1\")'><img src='$2'/></div>"
     ];
 
     // private methods

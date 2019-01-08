@@ -7,107 +7,321 @@
 	<rdf:Description>
         <dct:identifier>d01</dct:identifier>
         <dct:title xml:lang="fr-FR">Surligner les heures comprises dans un intervalle de temps.</dct:title>
-        <dct:description><![CDATA["errratio":3,"number":2,"gg":[0,12],"class":"bigl","background":"res/img/background/landscape/grayboard01.svg","gen":"function($this,_s,_id){ var t=[],r='',d=Math.floor(Math.random()*_s.gg[0])+_s.gg[1],min=Math.floor(Math.random()*(144-d)),max=min+d; for (var i=0; i<9; i++) { var c; if (Math.random()<0.5) { do { c=Math.floor(Math.random()*144);} while(c<=min || c>=max); r+='1'; } else { do { c=Math.floor(Math.random()*144);} while(c>=min && c<=max); r+='0'; } t.push('[icon]res/img/clock/clockA'+(c<120?'0':'')+Math.floor(c/12)+((c%12)<2?'0':'')+((c%12)*5)+'.svg[/icon]'); } return {'template':'array3x3r','result':r,'t':t,'legend':'[h1]'+Math.floor(min/12)+':'+((min%12)<2?'0':'')+((min%12)*5)+'[/h1][h1]↓[/h1][h1]'+Math.floor(max/12)+':'+((max%12)<2?'0':'')+((max%12)*5)+'[/h1]'} }","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"red","color":"white"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["errratio":3,"number":2,"gg":[0,12,1],"class":"bigl","background":"res/img/background/landscape/grayboard01.svg","gen":"function($this,_s,_id){ var t=[],r='',d=Math.floor(Math.random()*_s.gg[0])+_s.gg[1],min=Math.floor(Math.random()*(144-d)),max=min+d; for (var i=0; i<9; i++) { var c; if (Math.random()<0.5) { do { c=Math.floor(Math.random()*144);} while(c<=min || c>=max); r+='1'; } else { do { c=Math.floor(Math.random()*144);} while(c>=min && c<=max); r+='0'; } t.push('[icon res/img/clock/swatch0'+_s.gg[2]+'.svg]res/img/clock/clock'+(c<120?'0':'')+Math.floor(c/12)+((c%12)<2?'0':'')+((c%12)*5)+'.svg[/icon]'); } return {'template':'array3x3r','result':r,'t':t,'legend':'[h1]'+Math.floor(min/12)+':'+((min%12)<2?'0':'')+((min%12)*5)+'[/h1][h1]↓[/h1][h1]'+Math.floor(max/12)+':'+((max%12)<2?'0':'')+((max%12)*5)+'[/h1]'} }","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"red","color":"white"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"[b]Surlignez[/b] en <span style='color:red;'><b>ROUGE</b></span>, les heures comprises dans l'intervalle."}]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>time</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>d01</dct:alternative>
-        <dct:source>res/img/clock/clockA*,res/img/background/landscape/grayboard01.svg</dct:source>
+        <dct:source>res/img/clock/*.svg,res/img/background/landscape/grayboard01.svg</dct:source>
     </rdf:Description>
 	
 	<rdf:Description>
         <dct:identifier>d02</dct:identifier>
         <dct:title xml:lang="fr-FR">Surligner les heures comprises dans un intervalle de temps.</dct:title>
-        <dct:description><![CDATA["gg":[0,48]]]></dct:description>
+        <dct:description><![CDATA["gg":[0,48,1]]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>time</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>d01</dct:alternative>
         <dct:relation>d01</dct:relation>
-        <dct:source>res/img/clock/clockA*,res/img/background/landscape/grayboard01.svg</dct:source>
+        <dct:source>res/img/clock/*.svg,res/img/background/landscape/grayboard01.svg</dct:source>
     </rdf:Description>
 	
 	<rdf:Description>
         <dct:identifier>d03</dct:identifier>
         <dct:title xml:lang="fr-FR">Surligner les heures comprises dans un intervalle de temps.</dct:title>
-        <dct:description><![CDATA["gg":[12,24]]]></dct:description>
+        <dct:description><![CDATA["gg":[12,24,1]]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>time</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>d01</dct:alternative>
         <dct:relation>d01</dct:relation>
-        <dct:source>res/img/clock/clockA*,res/img/background/landscape/grayboard01.svg</dct:source>
+        <dct:source>res/img/clock/*.svg,res/img/background/landscape/grayboard01.svg</dct:source>
     </rdf:Description>
 	
 	<rdf:Description>
         <dct:identifier>d04</dct:identifier>
         <dct:title xml:lang="fr-FR">Surligner les heures comprises dans un intervalle de temps.</dct:title>
-        <dct:description><![CDATA["gg":[24,72]]]></dct:description>
+        <dct:description><![CDATA["gg":[24,72,1]]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>time</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>d01</dct:alternative>
         <dct:relation>d01</dct:relation>
-        <dct:source>res/img/clock/clockA*,res/img/background/landscape/grayboard01.svg</dct:source>
+        <dct:source>res/img/clock/*.svg,res/img/background/landscape/grayboard01.svg</dct:source>
+    </rdf:Description>
+	
+	
+	<rdf:Description>
+        <dct:identifier>d11</dct:identifier>
+        <dct:title xml:lang="fr-FR">Surligner les heures comprises dans un intervalle de temps [légende partielle].</dct:title>
+        <dct:description><![CDATA["gg":[0,48,3]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>d01</dct:alternative>
+        <dct:relation>d01</dct:relation>
+        <dct:source>res/img/clock/*.svg,res/img/background/landscape/grayboard01.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>d12</dct:identifier>
+        <dct:title xml:lang="fr-FR">Surligner les heures comprises dans un intervalle de temps [légende partielle].</dct:title>
+        <dct:description><![CDATA["gg":[0,48,3]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>d01</dct:alternative>
+        <dct:relation>d01</dct:relation>
+        <dct:source>res/img/clock/*.svg,res/img/background/landscape/grayboard01.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>d13</dct:identifier>
+        <dct:title xml:lang="fr-FR">Surligner les heures comprises dans un intervalle de temps [légende partielle].</dct:title>
+        <dct:description><![CDATA["gg":[12,24,3]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>d01</dct:alternative>
+        <dct:relation>d01</dct:relation>
+        <dct:source>res/img/clock/*.svg,res/img/background/landscape/grayboard01.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>d14</dct:identifier>
+        <dct:title xml:lang="fr-FR">Surligner les heures comprises dans un intervalle de temps [légende partielle].</dct:title>
+        <dct:description><![CDATA["gg":[24,72,3]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>d01</dct:alternative>
+        <dct:relation>d01</dct:relation>
+        <dct:source>res/img/clock/*.svg,res/img/background/landscape/grayboard01.svg</dct:source>
+    </rdf:Description>
+	
+	
+	<rdf:Description>
+        <dct:identifier>d21</dct:identifier>
+        <dct:title xml:lang="fr-FR">Surligner les heures comprises dans un intervalle de temps [légende masquée].</dct:title>
+        <dct:description><![CDATA["gg":[0,48,4]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>d01</dct:alternative>
+        <dct:relation>d01</dct:relation>
+        <dct:source>res/img/clock/*.svg,res/img/background/landscape/grayboard01.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>d22</dct:identifier>
+        <dct:title xml:lang="fr-FR">Surligner les heures comprises dans un intervalle de temps [légende masquée].</dct:title>
+        <dct:description><![CDATA["gg":[0,48,4]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>d01</dct:alternative>
+        <dct:relation>d01</dct:relation>
+        <dct:source>res/img/clock/*.svg,res/img/background/landscape/grayboard01.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>d23</dct:identifier>
+        <dct:title xml:lang="fr-FR">Surligner les heures comprises dans un intervalle de temps [légende masquée].</dct:title>
+        <dct:description><![CDATA["gg":[12,24,4]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>d01</dct:alternative>
+        <dct:relation>d01</dct:relation>
+        <dct:source>res/img/clock/*.svg,res/img/background/landscape/grayboard01.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>d24</dct:identifier>
+        <dct:title xml:lang="fr-FR">Surligner les heures comprises dans un intervalle de temps [légende masquée].</dct:title>
+        <dct:description><![CDATA["gg":[24,72,4]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>d01</dct:alternative>
+        <dct:relation>d01</dct:relation>
+        <dct:source>res/img/clock/*.svg,res/img/background/landscape/grayboard01.svg</dct:source>
     </rdf:Description>
 	
 	
 	
 	<rdf:Description>
-        <dct:identifier>d11</dct:identifier>
+        <dct:identifier>d51</dct:identifier>
         <dct:title xml:lang="fr-FR">Surligner les heures comprises dans un intervalle de temps.</dct:title>
-        <dct:description><![CDATA["errratio":3,"number":2,"gg":[0,12],"background":"res/img/background/landscape/grayboard01.svg","gen":"function($this,_s,_id){ var t=[],r='',d=Math.floor(Math.random()*_s.gg[0])+_s.gg[1],min=Math.floor(Math.random()*(144-2*d)),v=min+d,max=min+2*d; for (var i=0; i<9; i++) { var c; if (Math.random()<0.5) { do { c=Math.floor(Math.random()*144);} while(c<=min || c>=max); r+='1'; } else { do { c=Math.floor(Math.random()*144);} while(c>=min && c<=max); r+='0'; } t.push('[icon]res/img/clock/clockA'+(c<120?'0':'')+Math.floor(c/12)+((c%12)<2?'0':'')+((c%12)*5)+'.svg[/icon]'); } return {'template':'array3x3r','result':r,'t':t,'legend':'[img]res/img/clock/clockA'+(v<120?'0':'')+Math.floor(v/12)+((v%12)<2?'0':'')+((v%12)*5)+'.svg[/img][h1]±'+Math.floor(d/12)+':'+((d%12)<2?'0':'')+((d%12)*5)+'[/h1]'} }","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"red","color":"white"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
+        <dct:description><![CDATA["errratio":3,"number":2,"gg":[0,12,1],"background":"res/img/background/landscape/grayboard01.svg","gen":"function($this,_s,_id){ var t=[],r='',d=Math.floor(Math.random()*_s.gg[0])+_s.gg[1],min=Math.floor(Math.random()*(144-2*d)),v=min+d,max=min+2*d; for (var i=0; i<9; i++) { var c; if (Math.random()<0.5) { do { c=Math.floor(Math.random()*144);} while(c<=min || c>=max); r+='1'; } else { do { c=Math.floor(Math.random()*144);} while(c>=min && c<=max); r+='0'; } t.push('[icon res/img/clock/swatch0'+_s.gg[2]+'.svg]res/img/clock/clock'+(c<120?'0':'')+Math.floor(c/12)+((c%12)<2?'0':'')+((c%12)*5)+'.svg[/icon]'); } return {'template':'array3x3r','result':r,'t':t,'legend':'[img res/img/clock/swatch0'+_s.gg[2]+'.svg]res/img/clock/clock'+(v<120?'0':'')+Math.floor(v/12)+((v%12)<2?'0':'')+((v%12)*5)+'.svg[/img][h1]±'+Math.floor(d/12)+':'+((d%12)<2?'0':'')+((d%12)*5)+'[/h1]'} }","states":{ "nb":2, "style":[{"background-color":"rgba(255,255,255,0.8)","color":"gray"},{"background-color":"red","color":"white"}]},"wrong":{"style":{"background-color":"black","color":"red"}}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":{"value":"[b]Surlignez[/b] en <span style='color:red;'><b>ROUGE</b></span>, les heures comprises dans l'intervalle."}]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>time</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>d01</dct:alternative>
-        <dct:source>res/img/clock/clockA*,res/img/background/landscape/grayboard01.svg</dct:source>
+        <dct:source>res/img/clock/*.svg,res/img/background/landscape/grayboard01.svg</dct:source>
     </rdf:Description>
 	
 	<rdf:Description>
-        <dct:identifier>d12</dct:identifier>
+        <dct:identifier>d52</dct:identifier>
         <dct:title xml:lang="fr-FR">Surligner les heures comprises dans un intervalle de temps.</dct:title>
-        <dct:description><![CDATA["gg":[0,24]]]></dct:description>
+        <dct:description><![CDATA["gg":[0,24,1]]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>time</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
         <dct:alternative>d01</dct:alternative>
-        <dct:relation>d11</dct:relation>
-        <dct:source>res/img/clock/clockA*,res/img/background/landscape/grayboard01.svg</dct:source>
+        <dct:relation>d51</dct:relation>
+        <dct:source>res/img/clock/*.svg,res/img/background/landscape/grayboard01.svg</dct:source>
     </rdf:Description>
 	
 	<rdf:Description>
-        <dct:identifier>d13</dct:identifier>
+        <dct:identifier>d53</dct:identifier>
         <dct:title xml:lang="fr-FR">Surligner les heures comprises dans un intervalle de temps.</dct:title>
-        <dct:description><![CDATA["gg":[13,6]]]></dct:description>
+        <dct:description><![CDATA["gg":[13,6,1]]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>time</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>4</dct:type>
         <dct:alternative>d01</dct:alternative>
-        <dct:relation>d11</dct:relation>
-        <dct:source>res/img/clock/clockA*,res/img/background/landscape/grayboard01.svg</dct:source>
+        <dct:relation>d51</dct:relation>
+        <dct:source>res/img/clock/*.svg,res/img/background/landscape/grayboard01.svg</dct:source>
     </rdf:Description>
 	
 	<rdf:Description>
-        <dct:identifier>d14</dct:identifier>
+        <dct:identifier>d54</dct:identifier>
         <dct:title xml:lang="fr-FR">Surligner les heures comprises dans un intervalle de temps.</dct:title>
-        <dct:description><![CDATA["gg":[36,12]]]></dct:description>
+        <dct:description><![CDATA["gg":[36,12,1]]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>time</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>5</dct:type>
         <dct:alternative>d01</dct:alternative>
-        <dct:relation>d11</dct:relation>
-        <dct:source>res/img/clock/clockA*,res/img/background/landscape/grayboard01.svg</dct:source>
+        <dct:relation>d51</dct:relation>
+        <dct:source>res/img/clock/*.svg,res/img/background/landscape/grayboard01.svg</dct:source>
+    </rdf:Description>
+	
+	
+	
+	<rdf:Description>
+        <dct:identifier>d61</dct:identifier>
+        <dct:title xml:lang="fr-FR">Surligner les heures comprises dans un intervalle de temps [légende partielle].</dct:title>
+        <dct:description><![CDATA["gg":[0,12,3]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>d01</dct:alternative>
+        <dct:relation>d51</dct:relation>
+        <dct:source>res/img/clock/*.svg,res/img/background/landscape/grayboard01.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>d62</dct:identifier>
+        <dct:title xml:lang="fr-FR">Surligner les heures comprises dans un intervalle de temps [légende partielle].</dct:title>
+        <dct:description><![CDATA["gg":[0,24,3]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>d01</dct:alternative>
+        <dct:relation>d51</dct:relation>
+        <dct:source>res/img/clock/*.svg,res/img/background/landscape/grayboard01.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>d63</dct:identifier>
+        <dct:title xml:lang="fr-FR">Surligner les heures comprises dans un intervalle de temps [légende partielle].</dct:title>
+        <dct:description><![CDATA["gg":[13,6,3]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:alternative>d01</dct:alternative>
+        <dct:relation>d51</dct:relation>
+        <dct:source>res/img/clock/*.svg,res/img/background/landscape/grayboard01.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>d64</dct:identifier>
+        <dct:title xml:lang="fr-FR">Surligner les heures comprises dans un intervalle de temps [légende partielle].</dct:title>
+        <dct:description><![CDATA["gg":[36,12,3]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>5</dct:type>
+        <dct:alternative>d01</dct:alternative>
+        <dct:relation>d51</dct:relation>
+        <dct:source>res/img/clock/*.svg,res/img/background/landscape/grayboard01.svg</dct:source>
+    </rdf:Description>
+	
+	
+	
+	<rdf:Description>
+        <dct:identifier>d71</dct:identifier>
+        <dct:title xml:lang="fr-FR">Surligner les heures comprises dans un intervalle de temps [légende masquée].</dct:title>
+        <dct:description><![CDATA["gg":[0,12,4]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>d01</dct:alternative>
+        <dct:relation>d51</dct:relation>
+        <dct:source>res/img/clock/*.svg,res/img/background/landscape/grayboard01.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>d72</dct:identifier>
+        <dct:title xml:lang="fr-FR">Surligner les heures comprises dans un intervalle de temps [légende masquée].</dct:title>
+        <dct:description><![CDATA["gg":[0,24,4]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>d01</dct:alternative>
+        <dct:relation>d51</dct:relation>
+        <dct:source>res/img/clock/*.svg,res/img/background/landscape/grayboard01.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>d73</dct:identifier>
+        <dct:title xml:lang="fr-FR">Surligner les heures comprises dans un intervalle de temps [légende masquée].</dct:title>
+        <dct:description><![CDATA["gg":[13,6,4]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:alternative>d01</dct:alternative>
+        <dct:relation>d51</dct:relation>
+        <dct:source>res/img/clock/*.svg,res/img/background/landscape/grayboard01.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>d74</dct:identifier>
+        <dct:title xml:lang="fr-FR">Surligner les heures comprises dans un intervalle de temps [légende masquée].</dct:title>
+        <dct:description><![CDATA["gg":[36,12,4]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>5</dct:type>
+        <dct:alternative>d01</dct:alternative>
+        <dct:relation>d51</dct:relation>
+        <dct:source>res/img/clock/*.svg,res/img/background/landscape/grayboard01.svg</dct:source>
     </rdf:Description>
 		 
 	<!-- ASYNCHRONE SENTENCES -->

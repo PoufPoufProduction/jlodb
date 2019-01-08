@@ -5,37 +5,158 @@
     <rdf:Description>
         <dct:identifier>c01</dct:identifier>
         <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, les minutes depuis une horloge à cadran.</dct:title>
-        <dct:description><![CDATA["time":0,"number":15,"regexp":{"output":"\\\\?\\\\?","input": { "from": "(.+) (.+)","to":"<div class='icon' style='font-size:3.6em;float:none;margin:.1em auto;'><img src='res/img/clock/clockA$1.svg' alt=''/></div><div style='font-size:1em;'>$2</div>"}},"input":{"digit":2,"speed":5000},"gen":"function(){var h=Math.floor(Math.random()*12),m=Math.floor(Math.random()*12)*5,hh=h,mm=m; if (hh<10) { hh='0'+hh;} if (mm<10) { mm='0'+mm; } return [ hh.toString()+mm+' '+hh+':??',[mm,m]];}","class":"neg alpha h60","font":0.8]]></dct:description>
+        <dct:description><![CDATA["gg":[1,12,12,1],"time":0,"number":15,"input":{"digit":2,"speed":5000},"gen":"function($this, _s, _id){var h=Math.floor(Math.random()*_s.gg[1]),m=Math.floor(Math.random()*_s.gg[2])*5,hh=h,mm=m,ret,leg; if (hh<10) { hh='0'+hh;} if (mm<10) { mm='0'+mm; } if (Math.random()>_s.gg[3]) { leg = '??:'+mm; ret = [hh,h+12,h]; } else { leg = hh+':??'; ret = [mm,m]; } return [ '<div class=\\\"icon\\\" style=\\\"font-size:3.6em;float:none;margin:.1em auto;background-image:url(res/img/clock/swatch0'+_s.gg[0]+'.svg)\\\"><img src=\\\"res/img/clock/clock'+(hh.toString()+mm)+'.svg\\\" alt=\\\"\\\"/></div><div style=\\\"font-size:1em;\\\">'+leg+'</div>',ret];}","class":"neg alpha h60","font":0.8]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>time</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>2</dct:type>
         <dct:alternative>c01</dct:alternative>
-        <dct:source>res/img/clock/clockA*.svg</dct:source>
+        <dct:source>res/img/clock/*.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>c02</dct:identifier>
         <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, les heures depuis une horloge à cadran.</dct:title>
-        <dct:description><![CDATA["time":0,"number":15,"regexp":{"output":"\\\\?\\\\?","input": { "from": "(.+) (.+)","to":"<div class='icon' style='font-size:3.6em;float:none;margin:.1em auto;'><img src='res/img/clock/clockA$1.svg' alt=''/></div><div style='font-size:1em;'>$2</div>"}},"input":{"digit":2,"speed":5000},"gen":"function(){var h=Math.floor(Math.random()*12),m=Math.floor(Math.random()*12)*5,hh=h,mm=m; if (hh<10) { hh='0'+hh;} if (mm<10) { mm='0'+mm; } return [ hh.toString()+mm+' ??:'+mm,[hh,h+12,h]];}","class":"neg alpha h60","font":0.8]]></dct:description>
+        <dct:description><![CDATA["gg":[1,12,12,0]]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>time</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
+        <dct:type>2</dct:type>
         <dct:alternative>c01</dct:alternative>
-        <dct:source>res/img/clock/clockA*.svg</dct:source>
+        <dct:relation>c01</dct:relation>
+        <dct:source>res/img/clock/*.svg</dct:source>
     </rdf:Description>
     
     <rdf:Description>
         <dct:identifier>c03</dct:identifier>
         <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, les heures ou les minutes depuis une horloge à cadran.</dct:title>
-        <dct:description><![CDATA["time":0,"number":15,"regexp":{"output":"\\\\?\\\\?","input": { "from": "(.+) (.+)","to":"<div class='icon' style='font-size:3.6em;float:none;margin:.1em auto;'><img src='res/img/clock/clockA$1.svg' alt=''/></div><div style='font-size:1em;'>$2</div>"}},"input":{"digit":2,"speed":5000},"gen":"function(){var h=Math.floor(Math.random()*12),m=Math.floor(Math.random()*12)*5,hh=h,mm=m; if (hh<10) { hh='0'+hh;} if (mm<10) { mm='0'+mm; } return Math.random()>0.5?([ hh.toString()+mm+' ??:'+mm,[hh,h+12,h]]):([ hh.toString()+mm+' '+hh+':??',[mm,m]]);}","class":"neg alpha h60","font":0.8]]></dct:description>
+        <dct:description><![CDATA["gg":[1,12,12,0.5]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>c01</dct:alternative>
+        <dct:relation>c01</dct:relation>
+        <dct:source>res/img/clock/*.svg</dct:source>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>c04</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, les heures depuis une horloge à cadran [avec minutes à 0].</dct:title>
+        <dct:description><![CDATA["gg":[1,12,0,0]]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>time</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>c01</dct:alternative>
-        <dct:source>res/img/clock/clockA*.svg</dct:source>
+        <dct:relation>c01</dct:relation>
+        <dct:source>res/img/clock/*.svg</dct:source>
+    </rdf:Description>
+	
+	
+    <rdf:Description>
+        <dct:identifier>c05</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, les minutes depuis une horloge à cadran avec légende partielle.</dct:title>
+        <dct:description><![CDATA["gg":[3,12,12,0]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>c01</dct:alternative>
+        <dct:relation>c01</dct:relation>
+        <dct:source>res/img/clock/*.svg</dct:source>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>c06</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, les heures depuis une horloge à cadran avec légende partielle.</dct:title>
+        <dct:description><![CDATA["gg":[3,12,12,0]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>c01</dct:alternative>
+        <dct:relation>c01</dct:relation>
+        <dct:source>res/img/clock/*.svg</dct:source>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>c07</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, les heures ou les minutes depuis une horloge à cadran avec légende partielle.</dct:title>
+        <dct:description><![CDATA["gg":[3,12,12,0.5]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>c01</dct:alternative>
+        <dct:relation>c01</dct:relation>
+        <dct:source>res/img/clock/*.svg</dct:source>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>c08</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, les heures depuis une horloge à cadran avec légende partielle [avec minutes à 0].</dct:title>
+        <dct:description><![CDATA["gg":[3,12,0,0]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>c01</dct:alternative>
+        <dct:relation>c01</dct:relation>
+        <dct:source>res/img/clock/*.svg</dct:source>
+    </rdf:Description>
+	
+	
+    <rdf:Description>
+        <dct:identifier>c09</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, les minutes depuis une horloge à cadran avec légende masquée.</dct:title>
+        <dct:description><![CDATA["gg":[4,12,12,0]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>c01</dct:alternative>
+        <dct:relation>c01</dct:relation>
+        <dct:source>res/img/clock/*.svg</dct:source>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>c10</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, les heures depuis une horloge à cadran avec légende masquée.</dct:title>
+        <dct:description><![CDATA["gg":[4,12,12,0]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>c01</dct:alternative>
+        <dct:relation>c01</dct:relation>
+        <dct:source>res/img/clock/*.svg</dct:source>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>c11</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, les heures ou les minutes depuis une horloge à cadran avec légende masquée.</dct:title>
+        <dct:description><![CDATA["gg":[4,12,12,0.5]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>c01</dct:alternative>
+        <dct:relation>c01</dct:relation>
+        <dct:source>res/img/clock/*.svg</dct:source>
+    </rdf:Description>
+    
+    <rdf:Description>
+        <dct:identifier>c12</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, les heures depuis une horloge à cadran avec légende masquée [avec minutes à 0].</dct:title>
+        <dct:description><![CDATA["gg":[4,12,0,0]]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>c01</dct:alternative>
+        <dct:relation>c01</dct:relation>
+        <dct:source>res/img/clock/*.svg</dct:source>
     </rdf:Description>
     
 </rdf:RDF>

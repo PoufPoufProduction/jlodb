@@ -6,15 +6,41 @@
 	
 	<rdf:Description>
         <dct:identifier>r01</dct:identifier>
-        <dct:title xml:lang="fr-FR">Lire l'heure.</dct:title>
-        <dct:description><![CDATA["pospanel":[75,50],"class":"leftfx","gg":[1,1],"background":"res/img/background/landscape/blueboard01.svg","emptyisnull":true,"toright":true,"errratio":2,"callen":2,"noneg":true,"nodec":true,"withtabs":false,"withbars":false,"sp":0.05,"all":{"width":1.8},"cols":{"col0":{"width":0.2},"col1":{"width":1.2,"height":1.2,"background":"#FEC"},"col4":{"background":"gray","width":0.1,"fixed":true},"col5":{"width":1.2,"height":1.2,"background":"#FEC"}},"rows":{"row0":{"height":0.2},"row1":{"background":"#AAA","color":"white","fixed":true}},"cells":{"c2x1":{"value":"h"},"c3x1":{"value":"min"},"c1x1":{"background":"gray"},"c6x1":{"value":"h"},"c7x1":{"value":"min"},"c5x1":{"background":"gray"}},"gen":"function($this, _s, _id){var ret={}; for (var j=0; j<2; j++) for (var i=0;i<3;i++) { var v=Math.floor(Math.random()*132+12)*5,h=Math.floor(v/60),m=v%60; ret['c'+(1+j*4)+'x'+(i+2)]={'type':'fixed','value':'[img]res/img/clock/clockA'+(h<10?'0':'')+h+(m<10?'0':'')+m+'[/img]'}; if (Math.random()<_s.gg[0]) { ret['c'+(2+j*4)+'x'+(i+2)]={'type':'value','result':h}; } else { ret['c'+(2+j*4)+'x'+(i+2)]={'type':'value','value':h, 'fixed':true}; } if (Math.random()<_s.gg[1]) { ret['c'+(3+j*4)+'x'+(i+2)]={'type':'value','result':m}; } else { ret['c'+(3+j*4)+'x'+(i+2)]={'type':'value','value':m, 'fixed':true}; } } return {'cells':ret}; }","font":2]]></dct:description>
+        <dct:title xml:lang="fr-FR">Lire l'heure [horloge avec légende complète].</dct:title>
+        <dct:description><![CDATA["pospanel":[75,50],"class":"leftfx","gg":[1,1,1],"background":"res/img/background/landscape/blueboard01.svg","emptyisnull":true,"toright":true,"errratio":2,"callen":2,"noneg":true,"nodec":true,"withtabs":false,"withbars":false,"sp":0.05,"all":{"width":1.8},"cols":{"col0":{"width":0.2},"col1":{"width":1.2,"height":1.2,"background":"#FEC"},"col4":{"background":"gray","width":0.1,"fixed":true},"col5":{"width":1.2,"height":1.2,"background":"#FEC"}},"rows":{"row0":{"height":0.2},"row1":{"background":"#AAA","color":"white","fixed":true}},"cells":{"c2x1":{"value":"h"},"c3x1":{"value":"min"},"c1x1":{"background":"gray"},"c6x1":{"value":"h"},"c7x1":{"value":"min"},"c5x1":{"background":"gray"}},"gen":"function($this, _s, _id){var ret={}; for (var j=0; j<2; j++) for (var i=0;i<3;i++) { var v=Math.floor(Math.random()*132+12)*5,h=Math.floor(v/60),m=v%60; ret['c'+(1+j*4)+'x'+(i+2)]={'type':'fixed','value':'[img res/img/clock/swatch0'+_s.gg[2]+']res/img/clock/clock'+(h<10?'0':'')+h+(m<10?'0':'')+m+'[/img]'}; if (Math.random()<_s.gg[0]) { ret['c'+(2+j*4)+'x'+(i+2)]={'type':'value','result':h}; } else { ret['c'+(2+j*4)+'x'+(i+2)]={'type':'value','value':h, 'fixed':true}; } if (Math.random()<_s.gg[1]) { ret['c'+(3+j*4)+'x'+(i+2)]={'type':'value','result':m}; } else { ret['c'+(3+j*4)+'x'+(i+2)]={'type':'value','value':m, 'fixed':true}; } } return {'cells':ret}; }","font":2]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Complétez[/b] les [i]heures[/i] et les [i]minutes[/i] du tableau d'après les illustrations correspondantes.","po":{"h":"h","min":"min"}]]></dct:description>
         <dct:extent>4</dct:extent>
         <dct:subject>time</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>3</dct:type>
         <dct:alternative>r01</dct:alternative>
-		<dct:source>res/img/background/landscape/blueboard01.svg</dct:source>
+		<dct:source>res/img/background/landscape/blueboard01.svg,res/img/clock/*.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>r02</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire l'heure [horloge avec légende partielle].</dct:title>
+        <dct:description><![CDATA["gg":[1,1,3]]]></dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>r01</dct:alternative>
+        <dct:relation>r01</dct:relation>
+		<dct:source>res/img/background/landscape/blueboard01.svg,res/img/clock/*.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>r03</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire l'heure [horloge avec légende masquée].</dct:title>
+        <dct:description><![CDATA["gg":[1,1,4]]]></dct:description>
+        <dct:extent>4</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>r01</dct:alternative>
+        <dct:relation>r01</dct:relation>
+		<dct:source>res/img/background/landscape/blueboard01.svg,res/img/clock/*.svg</dct:source>
     </rdf:Description>
 	
 	<!-- DURATION CONVERTION AND CALCULATION -->

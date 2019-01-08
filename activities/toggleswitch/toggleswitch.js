@@ -39,7 +39,9 @@
         "\\\[img\\\]([^\\\[]+)\\\[/img\\\]",        "<div style='width:100%'><img src='$1' alt=''/></div>",
         "\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='icon' style='font-size:1.2em;float:left'><img src='$1' alt=''/></div>",
         "\\\[icon2\\\]([^\\\[]+)\\\[/icon2\\\]",    "<div class='icon' style='font-size:2em;float:left'><img src='$1' alt=''/></div>",
-        "\\\[math\\\]([^\\\[]+)\\\[/math\\\]",      "<div class='math'><math>$1</math></div>"
+        "\\\[math\\\]([^\\\[]+)\\\[/math\\\]",      "<div class='math'><math>$1</math></div>",
+        "\\\[img ([^\\\]]+)\\\]([^\\\[]+)\\\[/img\\\]",        "<div style='width:100%;background-image:url(\"$1\")'><img src='$2' alt=''/></div>",
+        "\\\[icon ([^\\\]]+)\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='icon' style='font-size:1.2em;float:left ;background-image:url(\"$1\")'><img src='$2' alt=''/></div>"
     ];
 
     var onClicks = {
