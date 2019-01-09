@@ -1,162 +1,467 @@
 <?xml version="1.0"?>
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:dct="http://purl.org/dc/terms/">
+		 
+		 
+	<!-- READ TIME -->
+	
+    <rdf:Description>
+        <dct:identifier>01</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une heure analogique [heure seule].</dct:title>
+        <dct:description><![CDATA["gg":{"id":1,"d":[0,60,5],"p":[0,0,1]},"time":0,"number":10,"regexp":{"output":"\\\\?\\\\?"},"input":{"digit":2,"speed":5000},"gen":"function($this, _s, _id){ var res=['second','minute','hour'],a=[0,0,0],at=['','',''],p=[]; img ='<div class=\\\"icon\\\" style=\\\"font-size:3.6em;float:none;margin:.1em auto;background-image:url(res/img/clock/swatch0'+_s.gg.id+'.svg)\\\"><svg xmlns:svg=\\\"http://www.w3.org/2000/svg\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\" xmlns:xlink=\\\"http://www.w3.org/1999/xlink\\\" version=\\\"1.0\\\" width=\\\"100%\\\" height=\\\"100%\\\" viewBox=\\\"0 0 48 48\\\">'; for (var i=0; i<3; i++) if (_s.gg.d[i]) { a[i]=Math.floor(Math.random()*(60/_s.gg.d[i]))*_s.gg.d[i]; var av=(i==2?a[i]/5:a[i]); aa=a[i]*6+(i==2?a[1]*0.5:0); img+='<g transform=\\\"translate(24,24)\\\"><image transform=\\\"rotate('+aa+')\\\" xlink:href=\\\"res/img/clock/'+res[i]+'.svg\\\" width=\\\"48\\\" height=\\\"48\\\" x=\\\"-24\\\" y=\\\"-24\\\"/></g>'; at[i]=(av<10?'0':'')+av.toString(); for (var j=0; j<_s.gg.p[i]; j++) { p.push(i); } } var leg='',w=p[Math.floor(Math.random()*p.length)], ret=[at[w],a[w]]; if (w==2) { ret=([at[w],a[w]/5+12,a[w]/5]); } for (var i=2;i>=0;i--) if (_s.gg.d[i]) { if (leg.length) { leg+=':';} leg+=(i==w?'??':at[i]); } return [ img+'</svg></div><div style=\\\"font-size:1em;\\\">'+leg+'</div>',ret];}","class":"neg alpha h60","font":0.9]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>01</dct:alternative>
+        <dct:source>res/img/clock/*.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>02</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une heure analogique [heure avec minutes].</dct:title>
+        <dct:description><![CDATA["gg":{"id":1,"d":[0,15,5],"p":[0,0,1]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>01</dct:alternative>
+        <dct:relation>01</dct:relation>
+        <dct:source>res/img/clock/*.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>03</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une heure analogique [heure avec minutes].</dct:title>
+        <dct:description><![CDATA["gg":{"id":1,"d":[0,5,5],"p":[0,0,1]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>01</dct:alternative>
+        <dct:relation>01</dct:relation>
+        <dct:source>res/img/clock/*.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>04</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une heure analogique [heure seule avec cadran partiellement masqué].</dct:title>
+        <dct:description><![CDATA["gg":{"id":3,"d":[0,60,5],"p":[0,0,1]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>01</dct:alternative>
+        <dct:relation>01</dct:relation>
+        <dct:source>res/img/clock/*.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>05</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une heure analogique [heure seule avec cadran masqué].</dct:title>
+        <dct:description><![CDATA["gg":{"id":4,"d":[0,60,5],"p":[0,0,1]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>01</dct:alternative>
+        <dct:relation>01</dct:relation>
+        <dct:source>res/img/clock/*.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>11</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une heure analogique [minutes seules sur cadran adapté].</dct:title>
+        <dct:description><![CDATA["gg":{"id":5,"d":[0,5,60],"p":[0,1,0]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>01</dct:alternative>
+        <dct:relation>01</dct:relation>
+        <dct:source>res/img/clock/*.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>12</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une heure analogique [minutes seules].</dct:title>
+        <dct:description><![CDATA["gg":{"id":1,"d":[0,5,60],"p":[0,1,0]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>01</dct:alternative>
+        <dct:relation>01</dct:relation>
+        <dct:source>res/img/clock/*.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>13</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une heure analogique [minutes].</dct:title>
+        <dct:description><![CDATA["gg":{"id":1,"d":[0,5,5],"p":[0,1,0]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>01</dct:alternative>
+        <dct:relation>01</dct:relation>
+        <dct:source>res/img/clock/*.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>14</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une heure analogique [minutes avec cadran précis].</dct:title>
+        <dct:description><![CDATA["gg":{"id":1,"d":[0,5,5],"p":[0,1,0]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>01</dct:alternative>
+        <dct:relation>01</dct:relation>
+        <dct:source>res/img/clock/*.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>15</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une heure analogique [minutes avec cadran partiellement masqué].</dct:title>
+        <dct:description><![CDATA["gg":{"id":3,"d":[0,5,5],"p":[0,1,0]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>01</dct:alternative>
+        <dct:relation>01</dct:relation>
+        <dct:source>res/img/clock/*.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>16</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une heure analogique [minutes avec cadran masqué].</dct:title>
+        <dct:description><![CDATA["gg":{"id":4,"d":[0,5,5],"p":[0,1,0]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>01</dct:alternative>
+        <dct:relation>01</dct:relation>
+        <dct:source>res/img/clock/*.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>17</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une heure analogique à la minute près [minutes avec cadran précis].</dct:title>
+        <dct:description><![CDATA["gg":{"id":2,"d":[0,1,5],"p":[0,1,0]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>01</dct:alternative>
+        <dct:relation>01</dct:relation>
+        <dct:source>res/img/clock/*.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>18</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une heure analogique à la minute près [minutes avec cadran partiellement masqué].</dct:title>
+        <dct:description><![CDATA["gg":{"id":3,"d":[0,1,5],"p":[0,1,0]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>01</dct:alternative>
+        <dct:relation>01</dct:relation>
+        <dct:source>res/img/clock/*.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>19</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une heure analogique à la minute près [minutes avec cadran masqué].</dct:title>
+        <dct:description><![CDATA["gg":{"id":4,"d":[0,1,5],"p":[0,1,0]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>01</dct:alternative>
+        <dct:relation>01</dct:relation>
+        <dct:source>res/img/clock/*.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>21</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une heure analogique [heures et minutes].</dct:title>
+        <dct:description><![CDATA["gg":{"id":1,"d":[0,5,5],"p":[0,1,1]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>01</dct:alternative>
+        <dct:relation>01</dct:relation>
+        <dct:source>res/img/clock/*.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>22</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une heure analogique [heures et minutes avec cadran précis].</dct:title>
+        <dct:description><![CDATA["gg":{"id":2,"d":[0,5,5],"p":[0,1,1]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>01</dct:alternative>
+        <dct:relation>01</dct:relation>
+        <dct:source>res/img/clock/*.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>23</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une heure analogique [heures et minutes avec cadran partiellement masqué].</dct:title>
+        <dct:description><![CDATA["gg":{"id":3,"d":[0,5,5],"p":[0,1,1]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>01</dct:alternative>
+        <dct:relation>01</dct:relation>
+        <dct:source>res/img/clock/*.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>24</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une heure analogique [heures et minutes avec cadran masqué].</dct:title>
+        <dct:description><![CDATA["gg":{"id":4,"d":[0,5,5],"p":[0,1,1]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>01</dct:alternative>
+        <dct:relation>01</dct:relation>
+        <dct:source>res/img/clock/*.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>25</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une heure analogique à la minute près [heures et minutes avec cadran précis].</dct:title>
+        <dct:description><![CDATA["gg":{"id":2,"d":[0,1,5],"p":[0,1,1]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>01</dct:alternative>
+        <dct:relation>01</dct:relation>
+        <dct:source>res/img/clock/*.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>26</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une heure analogique à la minute près [heures et minutes avec cadran partiellement masqué].</dct:title>
+        <dct:description><![CDATA["gg":{"id":3,"d":[0,1,5],"p":[0,1,1]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>01</dct:alternative>
+        <dct:relation>01</dct:relation>
+        <dct:source>res/img/clock/*.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>27</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une heure analogique à la minute près [heures et minutes avec cadran masqué].</dct:title>
+        <dct:description><![CDATA["gg":{"id":4,"d":[0,1,5],"p":[0,1,1]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>01</dct:alternative>
+        <dct:relation>01</dct:relation>
+        <dct:source>res/img/clock/*.svg</dct:source>
+    </rdf:Description>
 
+	
+	
     <rdf:Description>
-        <dct:identifier>c01</dct:identifier>
-        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, les minutes depuis une horloge à cadran.</dct:title>
-        <dct:description><![CDATA["gg":[1,12,12,1],"time":0,"number":15,"input":{"digit":2,"speed":5000},"gen":"function($this, _s, _id){var h=Math.floor(Math.random()*_s.gg[1]),m=Math.floor(Math.random()*_s.gg[2])*5,hh=h,mm=m,ret,leg; if (hh<10) { hh='0'+hh;} if (mm<10) { mm='0'+mm; } if (Math.random()>_s.gg[3]) { leg = '??:'+mm; ret = [hh,h+12,h]; } else { leg = hh+':??'; ret = [mm,m]; } return [ '<div class=\\\"icon\\\" style=\\\"font-size:3.6em;float:none;margin:.1em auto;background-image:url(res/img/clock/swatch0'+_s.gg[0]+'.svg)\\\"><img src=\\\"res/img/clock/clock'+(hh.toString()+mm)+'.svg\\\" alt=\\\"\\\"/></div><div style=\\\"font-size:1em;\\\">'+leg+'</div>',ret];}","class":"neg alpha h60","font":0.8]]></dct:description>
+        <dct:identifier>31</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une heure analogique [secondes seules sur cadran adapté].</dct:title>
+        <dct:description><![CDATA["gg":{"id":5,"d":[5,60,60],"p":[1,0,0]}]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>time</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>c01</dct:alternative>
+        <dct:alternative>01</dct:alternative>
+        <dct:relation>01</dct:relation>
         <dct:source>res/img/clock/*.svg</dct:source>
     </rdf:Description>
-    
+	
     <rdf:Description>
-        <dct:identifier>c02</dct:identifier>
-        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, les heures depuis une horloge à cadran.</dct:title>
-        <dct:description><![CDATA["gg":[1,12,12,0]]]></dct:description>
+        <dct:identifier>32</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une heure analogique [secondes seules].</dct:title>
+        <dct:description><![CDATA["gg":{"id":2,"d":[5,60,60],"p":[1,0,0]}]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>time</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>c01</dct:alternative>
-        <dct:relation>c01</dct:relation>
+        <dct:alternative>01</dct:alternative>
+        <dct:relation>01</dct:relation>
         <dct:source>res/img/clock/*.svg</dct:source>
     </rdf:Description>
-    
+	
     <rdf:Description>
-        <dct:identifier>c03</dct:identifier>
-        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, les heures ou les minutes depuis une horloge à cadran.</dct:title>
-        <dct:description><![CDATA["gg":[1,12,12,0.5]]]></dct:description>
+        <dct:identifier>33</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une heure analogique [secondes].</dct:title>
+        <dct:description><![CDATA["gg":{"id":2,"d":[5,5,5],"p":[1,0,0]}]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>time</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>c01</dct:alternative>
-        <dct:relation>c01</dct:relation>
+        <dct:alternative>01</dct:alternative>
+        <dct:relation>01</dct:relation>
         <dct:source>res/img/clock/*.svg</dct:source>
     </rdf:Description>
-    
+	
     <rdf:Description>
-        <dct:identifier>c04</dct:identifier>
-        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, les heures depuis une horloge à cadran [avec minutes à 0].</dct:title>
-        <dct:description><![CDATA["gg":[1,12,0,0]]]></dct:description>
+        <dct:identifier>34</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une heure analogique [secondes sur cadran partiellement masqué].</dct:title>
+        <dct:description><![CDATA["gg":{"id":3,"d":[5,5,5],"p":[1,0,0]}]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>time</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>c01</dct:alternative>
-        <dct:relation>c01</dct:relation>
+        <dct:type>2</dct:type>
+        <dct:alternative>01</dct:alternative>
+        <dct:relation>01</dct:relation>
+        <dct:source>res/img/clock/*.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>35</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une heure analogique [secondes sur cadran masqué].</dct:title>
+        <dct:description><![CDATA["gg":{"id":4,"d":[5,5,5],"p":[1,0,0]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>01</dct:alternative>
+        <dct:relation>01</dct:relation>
+        <dct:source>res/img/clock/*.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>36</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une heure analogique à la seconde près [secondes].</dct:title>
+        <dct:description><![CDATA["gg":{"id":2,"d":[1,5,5],"p":[1,0,0]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>01</dct:alternative>
+        <dct:relation>01</dct:relation>
+        <dct:source>res/img/clock/*.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>37</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une heure analogique à la seconde près [secondes sur cadran partiellement masqué].</dct:title>
+        <dct:description><![CDATA["gg":{"id":3,"d":[1,5,5],"p":[1,0,0]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>01</dct:alternative>
+        <dct:relation>01</dct:relation>
+        <dct:source>res/img/clock/*.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>38</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une heure analogique à la seconde près [secondes sur cadran masqué].</dct:title>
+        <dct:description><![CDATA["gg":{"id":4,"d":[1,5,5],"p":[1,0,0]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>01</dct:alternative>
+        <dct:relation>01</dct:relation>
         <dct:source>res/img/clock/*.svg</dct:source>
     </rdf:Description>
 	
 	
+	
     <rdf:Description>
-        <dct:identifier>c05</dct:identifier>
-        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, les minutes depuis une horloge à cadran avec légende partielle.</dct:title>
-        <dct:description><![CDATA["gg":[3,12,12,0]]]></dct:description>
+        <dct:identifier>41</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une heure analogique [tout].</dct:title>
+        <dct:description><![CDATA["gg":{"id":2,"d":[5,5,5],"p":[1,1,1]}]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>time</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>c01</dct:alternative>
-        <dct:relation>c01</dct:relation>
-        <dct:source>res/img/clock/*.svg</dct:source>
-    </rdf:Description>
-    
-    <rdf:Description>
-        <dct:identifier>c06</dct:identifier>
-        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, les heures depuis une horloge à cadran avec légende partielle.</dct:title>
-        <dct:description><![CDATA["gg":[3,12,12,0]]]></dct:description>
-        <dct:extent>3</dct:extent>
-        <dct:subject>time</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>c01</dct:alternative>
-        <dct:relation>c01</dct:relation>
-        <dct:source>res/img/clock/*.svg</dct:source>
-    </rdf:Description>
-    
-    <rdf:Description>
-        <dct:identifier>c07</dct:identifier>
-        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, les heures ou les minutes depuis une horloge à cadran avec légende partielle.</dct:title>
-        <dct:description><![CDATA["gg":[3,12,12,0.5]]]></dct:description>
-        <dct:extent>3</dct:extent>
-        <dct:subject>time</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>2</dct:type>
-        <dct:alternative>c01</dct:alternative>
-        <dct:relation>c01</dct:relation>
-        <dct:source>res/img/clock/*.svg</dct:source>
-    </rdf:Description>
-    
-    <rdf:Description>
-        <dct:identifier>c08</dct:identifier>
-        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, les heures depuis une horloge à cadran avec légende partielle [avec minutes à 0].</dct:title>
-        <dct:description><![CDATA["gg":[3,12,0,0]]]></dct:description>
-        <dct:extent>3</dct:extent>
-        <dct:subject>time</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>1</dct:type>
-        <dct:alternative>c01</dct:alternative>
-        <dct:relation>c01</dct:relation>
+        <dct:alternative>01</dct:alternative>
+        <dct:relation>01</dct:relation>
         <dct:source>res/img/clock/*.svg</dct:source>
     </rdf:Description>
 	
-	
     <rdf:Description>
-        <dct:identifier>c09</dct:identifier>
-        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, les minutes depuis une horloge à cadran avec légende masquée.</dct:title>
-        <dct:description><![CDATA["gg":[4,12,12,0]]]></dct:description>
-        <dct:extent>3</dct:extent>
-        <dct:subject>time</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>3</dct:type>
-        <dct:alternative>c01</dct:alternative>
-        <dct:relation>c01</dct:relation>
-        <dct:source>res/img/clock/*.svg</dct:source>
-    </rdf:Description>
-    
-    <rdf:Description>
-        <dct:identifier>c10</dct:identifier>
-        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, les heures depuis une horloge à cadran avec légende masquée.</dct:title>
-        <dct:description><![CDATA["gg":[4,12,12,0]]]></dct:description>
-        <dct:extent>3</dct:extent>
-        <dct:subject>time</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>3</dct:type>
-        <dct:alternative>c01</dct:alternative>
-        <dct:relation>c01</dct:relation>
-        <dct:source>res/img/clock/*.svg</dct:source>
-    </rdf:Description>
-    
-    <rdf:Description>
-        <dct:identifier>c11</dct:identifier>
-        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, les heures ou les minutes depuis une horloge à cadran avec légende masquée.</dct:title>
-        <dct:description><![CDATA["gg":[4,12,12,0.5]]]></dct:description>
-        <dct:extent>3</dct:extent>
-        <dct:subject>time</dct:subject>
-        <dct:educationLevel>2</dct:educationLevel>
-        <dct:type>3</dct:type>
-        <dct:alternative>c01</dct:alternative>
-        <dct:relation>c01</dct:relation>
-        <dct:source>res/img/clock/*.svg</dct:source>
-    </rdf:Description>
-    
-    <rdf:Description>
-        <dct:identifier>c12</dct:identifier>
-        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, les heures depuis une horloge à cadran avec légende masquée [avec minutes à 0].</dct:title>
-        <dct:description><![CDATA["gg":[4,12,0,0]]]></dct:description>
+        <dct:identifier>42</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une heure analogique [tout avec cadran partiellement masqué].</dct:title>
+        <dct:description><![CDATA["gg":{"id":3,"d":[5,5,5],"p":[1,1,1]}]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>time</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>2</dct:type>
-        <dct:alternative>c01</dct:alternative>
-        <dct:relation>c01</dct:relation>
+        <dct:alternative>01</dct:alternative>
+        <dct:relation>01</dct:relation>
         <dct:source>res/img/clock/*.svg</dct:source>
     </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>43</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une heure analogique [tout avec cadran masqué].</dct:title>
+        <dct:description><![CDATA["gg":{"id":4,"d":[5,5,5],"p":[1,1,1]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>01</dct:alternative>
+        <dct:relation>01</dct:relation>
+        <dct:source>res/img/clock/*.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>44</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une heure analogique à la seconde près [tout].</dct:title>
+        <dct:description><![CDATA["gg":{"id":2,"d":[1,1,5],"p":[1,1,1]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>01</dct:alternative>
+        <dct:relation>01</dct:relation>
+        <dct:source>res/img/clock/*.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>45</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une heure analogique à la seconde près [tout avec cadran partiellement masqué].</dct:title>
+        <dct:description><![CDATA["gg":{"id":3,"d":[1,1,5],"p":[1,1,1]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>01</dct:alternative>
+        <dct:relation>01</dct:relation>
+        <dct:source>res/img/clock/*.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>46</dct:identifier>
+        <dct:title xml:lang="fr-FR">Lire, sans contrainte de temps, une heure analogique à la seconde près [tout avec cadran masqué].</dct:title>
+        <dct:description><![CDATA["gg":{"id":4,"d":[1,1,5],"p":[1,1,1]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>time</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>01</dct:alternative>
+        <dct:relation>01</dct:relation>
+        <dct:source>res/img/clock/*.svg</dct:source>
+    </rdf:Description>
+	
     
 </rdf:RDF>
