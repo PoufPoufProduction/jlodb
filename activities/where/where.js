@@ -380,8 +380,12 @@
             for (var i in settings.cursors) {
                 var vCursor = settings.cursors[i];
                 if (vCursor.center) {
-                    var vX = vCursor.center[2]*Math.sin(Math.PI*vCursor.effects[0]/180);
-                    var vY = vCursor.center[2]*Math.cos(Math.PI*vCursor.effects[0]/180);
+					var vOffset = 0;
+					if (settings.oneffect) {
+						vOffset = eval('('+settings.oneffect+')')($this, settings.svg.root(), settings.cursors, vCursor);
+					}
+                    var vX = vCursor.center[2]*Math.sin(Math.PI*(parseFloat(vCursor.effects[0])+vOffset)/180);
+                    var vY = vCursor.center[2]*Math.cos(Math.PI*(parseFloat(vCursor.effects[0])+vOffset)/180);
                     settings.effects.push(settings.svg.line($group,
                             vCursor.center[0],vCursor.center[1],vCursor.center[0]+vX,vCursor.center[1]-vY,
                             {fill:"none",stroke:vCursor.color,opacity:vCursor.opacity,strokeWidth:value*5 }));
