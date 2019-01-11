@@ -5,6 +5,7 @@
     <style type="text/css">
         .cursor>g               { display:none; }
         .cursor *               { opacity:1;fill:#d40000;fill-opacity:1;stroke:none;marker:none; cursor:pointer;  }
+		.cursor .drag .hl		{ fill:yellow; }
 
         .results *              { display:none; }
         #result                 { display:none; }
@@ -117,26 +118,26 @@
 <!-- ROUND CURSOR WITH BAR -->
 <g class="cursor">
 <g id="bar">
-    <path d="M 30,0 A 30,30 0 1 1 -30,3.67e-15 A 30,30 0 1 1 30,-7.34e-15 z"/>
     <rect width="640" height="60.66" x="-640" y="-30" style="fill-opacity:0.5;"/>
+    <path d="M 30,0 A 30,30 0 1 1 -30,3.67e-15 A 30,30 0 1 1 30,-7.34e-15 z" class="hl"/>
 </g>
 
 <!-- RECT CURSOR WITH BAR -->
 <g id="rect">
-    <rect width="5" height="60.66" x="-2.5" y="-30"/>
     <rect width="640" height="60.66" x="-640" y="-30" style="fill-opacity:0.5;"/>
+    <rect width="5" height="60.66" x="-2.5" y="-30" class="hl"/>
 </g>
 
 <!-- INTERVAL CURSOR -->
 <g id="interval">
-    <rect width="5" height="60.66" x="-2.5" y="-30"/>
-    <rect width="5" height="60.66" x="-56.5" y="-30"/>
     <rect width="54" height="60.66" x="-54" y="-30" style="fill-opacity:0.5;"/>
+    <rect width="5" height="60.66" x="-2.5" y="-30" class="hl"/>
+    <rect width="5" height="60.66" x="-56.5" y="-30" class="hl"/>
 </g>
 
 <!-- ROUND CURSOR WITHOUT BAR -->
 <g id="round">
-    <path d="M 30,0 A 30,30 0 1 1 -30,3.67e-15 A 30,30 0 1 1 30,-7.34e-15 z"/>
+    <path d="M 30,0 A 30,30 0 1 1 -30,3.67e-15 A 30,30 0 1 1 30,-7.34e-15 z" class="hl"/>
 </g>
 </g>
 
