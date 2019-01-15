@@ -235,13 +235,16 @@
             var settings  = helpers.settings($this);
 			
 			if (settings.legends) {
-				$("#legends>*", settings.svg.root()).hide();
+				$("#legends path", settings.svg.root()).hide();
 				if (_show && settings.legend.id < settings.legends.length) {
 					var value = settings.legends[settings.legend.id];
-					$("#legends #"+value, settings.svg.root()).show();
 					settings.legend.up 		= (value.substr(0,1)=="u");
 					settings.legend.left 	= (value.substr(1,1)=="l");
 					settings.legend.piece 	= value.substr(2);
+					
+					$("#legends #"+(settings.legend.left?"left":"right")+(settings.legend.up?"up":"down"), settings.svg.root()).show();
+					$("#legends #l"+settings.legend.piece, settings.svg.root()).show();
+					
 				}
 				else { settings.legend.piece=0; }
 			}

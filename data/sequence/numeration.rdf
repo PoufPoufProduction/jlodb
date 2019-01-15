@@ -26,7 +26,7 @@
             su          : suanpan (chinese)
             sa          : normal abaque
             u           : unité/dizaine/centaine
-            w           : writing
+            w           : weight
     -->
 
     <!-- DICE: di -->
@@ -2596,5 +2596,85 @@
         <dct:type>2</dct:type>
         <dct:alternative>f1m</dct:alternative>
     </rdf:Description>
+	
+	<!-- weight -->
+	
+	<rdf:Description>
+        <dct:identifier>w20</dct:identifier>
+        <dct:title xml:lang="fr-FR">Calculer, sans contrainte de temps, la somme, inférieure à 20, des masses marquées.</dct:title>
+        <dct:description><![CDATA["gg":20]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>w20</dct:alternative>
+        <dct:relation>w50</dct:relation>
+        <dct:source>res/img/numbers/weight/*.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>w50</dct:identifier>
+        <dct:title xml:lang="fr-FR">Calculer, sans contrainte de temps, la somme, inférieure à 50, des masses marquées.</dct:title>
+        <dct:description><![CDATA["gg":50,"font":1,"input":{"digit":2,"speed":5000},"number":10,"time":0,"gen":"function($this,_s,_i){var nb = Math.floor(Math.random()*_s.gg)+1,v=[1000,500,200,100,50,20,10,5,2,1],i=0,b=nb,ret=''; while(b>0&&i<v.length){ if (v[i]<=b) {b-=v[i]; ret+='[icon][img]res/img/numbers/weight/'+v[i]+'.svg[/img][/icon]';} else {i++;} } return [ret,nb];}","class":"wrong h20 p02"]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>w20</dct:alternative>
+        <dct:source>res/img/numbers/weight/*.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>w100</dct:identifier>
+        <dct:title xml:lang="fr-FR">Calculer, sans contrainte de temps, la somme, inférieure à 100, des masses marquées.</dct:title>
+        <dct:description><![CDATA["gg":100,"input":{"digit":3,"speed":5000}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>w20</dct:alternative>
+        <dct:relation>w50</dct:relation>
+        <dct:source>res/img/numbers/weight/*.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>w500</dct:identifier>
+        <dct:title xml:lang="fr-FR">Calculer, sans contrainte de temps, la somme, inférieure à 500, des masses marquées.</dct:title>
+        <dct:description><![CDATA["gg":500,"input":{"digit":3,"speed":5000}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>w20</dct:alternative>
+        <dct:relation>w50</dct:relation>
+        <dct:source>res/img/numbers/weight/*.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>w1k</dct:identifier>
+        <dct:title xml:lang="fr-FR">Calculer, sans contrainte de temps, la somme, inférieure à 1 000, des masses marquées.</dct:title>
+        <dct:description><![CDATA["gg":1000,"input":{"digit":4,"speed":5000}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>w20</dct:alternative>
+        <dct:relation>w50</dct:relation>
+        <dct:source>res/img/numbers/weight/*.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>w2k</dct:identifier>
+        <dct:title xml:lang="fr-FR">Calculer, sans contrainte de temps, la somme, inférieure à 1 500, des masses marquées.</dct:title>
+        <dct:description><![CDATA["gg":2000,"input":{"digit":4,"speed":5000}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>numeration</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>w20</dct:alternative>
+        <dct:relation>w50</dct:relation>
+        <dct:source>res/img/numbers/weight/*.svg</dct:source>
+    </rdf:Description>
+	
 
 </rdf:RDF>
