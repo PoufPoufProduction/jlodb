@@ -3,6 +3,24 @@
     <div id="exercice"><div></div></div>
     <div id="tag" class="icon"></div>
     <div id="board"></div>
+	
+	<div id="example"><div>
+		<div id="wex" class="ex">
+			<div class="label"
+				ontouchstart="$(this).closest('.hammer').hammer('wex');event.preventDefault();"
+                onclick="$(this).closest('.hammer').hammer('wex');"></div>
+			<div class="fx"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
+			<div class="button"><img src="res/img/icon/click02.svg" alt=""/></div>
+		</div>
+		<div id="gex" class="ex">
+			<div class="label"
+				ontouchstart="$(this).closest('.hammer').hammer('gex');event.preventDefault();"
+                onclick="$(this).closest('.hammer').hammer('gex');"></div>
+			<div class="fx"><img src="res/img/default/popup/good01.svg" alt=""/></div>
+			<div class="button"><img src="res/img/icon/click01.svg" alt=""/></div>
+		</div>
+		
+	</div></div>
     
     <div id="countdown"></div>
 

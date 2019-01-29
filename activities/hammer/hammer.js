@@ -13,6 +13,7 @@
         mode        : "default",
         totaltime   : 40,
         freq        : 1,
+		ex			: [],									// Example
         goodfx      : false,
         background  : "",                                   // Background image
         debug       : true                                     // Debug mode
@@ -22,6 +23,9 @@
         "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
         "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
         "\\\[br\\\]",                               "<br/>",
+        "\\\[txt\\\]([^\\\[]+)\\\[/txt\\\]",      	"<div style='font-size:.8em;margin:.05em auto;text-align:center;'>$1</div>",
+        "\\\[tiny\\\]([^\\\[]+)\\\[/tiny\\\]",      	"<div style='font-size:.25em;margin:1.3em auto;text-align:center;'>$1</div>",
+		"\\\[img\\\]([^\\\[]+)\\\[/img\\\]",      	"<img src='$1' alt=''/>",
         "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
         "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
         "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>"
@@ -401,7 +405,23 @@
                     $this.find(".fx#g"+_holeid).css("opacity",1).show().animate({opacity:0},400,function(){$(this).hide(); });
                 }
             }
-        }
+        },
+		countdown: function($this) {
+            var settings = helpers.settings($this);
+            $this.find("#countdown").show().animate({left:"75%"},500, function() {
+                setTimeout(function() { $this.find("#countdown").html(3); }, 0);
+                setTimeout(function() { $this.find("#countdown").html(2); }, 1000);
+                setTimeout(function() { $this.find("#countdown").html(1); }, 2000);
+                setTimeout(function() {
+                    $this.find("#countdown").animate({left:"120%"},500, function() {
+                        settings.interactive = true;
+                        $(this).hide();
+                        settings.time.begin = Date.now();
+                        helpers.run($this);
+                    });
+                }, 3000);
+            });
+		}
     };
 
     // The plugin
@@ -441,20 +461,38 @@
             },
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                $this.find("#countdown").show().animate({left:"75%"},500, function() {
-                    setTimeout(function() { $this.find("#countdown").html(3); }, 0);
-                    setTimeout(function() { $this.find("#countdown").html(2); }, 1000);
-                    setTimeout(function() { $this.find("#countdown").html(1); }, 2000);
-                    setTimeout(function() {
-                        $this.find("#countdown").animate({left:"120%"},500, function() {
-                            settings.interactive = true;
-                            $(this).hide();
-                            settings.time.begin = Date.now();
-                            helpers.run($this);
-                        });
-                    }, 3000);
-                });
+				if (settings.ex && settings.ex.length) {
+					$this.find("#wex .label").html(helpers.format(settings.ex[0]));
+					$this.find("#gex .label").html(helpers.format(settings.ex[1]));
+					$this.find("#example").show();
+					settings.interactive = true;
+				}
+				else { helpers.countdown($this); }
+				
             },
+			wex: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+				if (settings.interactive) {
+					settings.interactive = false;
+					$this.find("#wex .fx").css("opacity",1).show().animate({opacity:0},800,function() {
+						$(this).hide();
+						settings.interactive = true;
+					});
+				}
+			},
+			gex: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+				if (settings.interactive) {
+					settings.interactive = false;
+					$this.find("#gex .fx").css("opacity",1).show().animate({opacity:0},800,function() {
+						$(this).hide();
+						$this.find("#example").animate({opacity:0},500, function() {
+							$(this).hide();
+							helpers.countdown($this);
+						});
+					});
+				}
+			},
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 helpers.quit($this);

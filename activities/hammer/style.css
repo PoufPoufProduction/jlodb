@@ -38,3 +38,13 @@
 .hammer.classic #elts>div       { opacity:0; }
 
 .hammer #countdown      { position:absolute;width:1.2em; height:1.2em; background-color:rgba(255,255,255,0.9); border-radius:.1em; border:.02em solid black; color:black; text-align:center; top:60%; left:120%; font-size:3em; z-index:5; font-weight:bold; display:none; }
+
+.hammer div#example		{ position:absolute;width:100%;height:100%; display:none; }
+.hammer div#example>div	{ width:80%;height:60%; margin:11% auto; background-image:url("../../res/img/default/pattern/line03.svg"); background-color:rgba(255,255,255,0.5); border:.1em solid black;position:relative; border-radius:.5em; }
+
+.hammer div#example .ex { width:1em; height:1em; position:absolute;overflow:visible;font-size:4em; border:.02em solid black; top:2%; background-color:rgba(255,255,255,0.9); }
+.hammer div#example #wex { left:10%; }
+.hammer div#example #gex { left:50%; }
+.hammer div#example .ex>div { position:absolute;top:0;left:0; width:1em;height:1em;  }
+.hammer div#example .ex .button { font-size:.6em; top:1.5em; left:1em; }
+.hammer div#example .ex .fx { display:none; }

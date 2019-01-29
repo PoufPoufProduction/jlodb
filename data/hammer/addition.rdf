@@ -6,7 +6,7 @@
     <rdf:Description>
         <dct:identifier>c10</dct:identifier>
         <dct:title xml:lang="fr-FR">Cliquez sur les additions exactes et dont la somme est inférieure ou égale à 10.</dct:title>
-        <dct:description><![CDATA["freq":2,"class":"smalllegend","holes":"classic","sprdata":{"d":[{"alignment":"good","type":"embed","gen":"function(){var a=Math.floor(Math.random()*9)+1,b; do {b=Math.floor(Math.random()*10)+1;} while(a+b>10); return {legend:''+a+'+'+b+'='+(a+b)};}"},{"alignment":"wrong","type":"embed","gen":"function(){var a=Math.floor(Math.random()*9)+1,b,c; do {b=Math.floor(Math.random()*10)+1;} while(a+b>10); do { c=Math.floor(Math.random()*10)+1; } while(c==a+b); return {legend:''+a+'+'+b+'='+c};}"}]}]]></dct:description>
+        <dct:description><![CDATA["ex":["[tiny]1+1=3[/tiny]","[tiny]2+2=4[/tiny]"],"freq":2,"class":"smalllegend","holes":"classic","sprdata":{"d":[{"alignment":"good","type":"embed","gen":"function(){var a=Math.floor(Math.random()*9)+1,b; do {b=Math.floor(Math.random()*10)+1;} while(a+b>10); return {legend:''+a+'+'+b+'='+(a+b)};}"},{"alignment":"wrong","type":"embed","gen":"function(){var a=Math.floor(Math.random()*9)+1,b,c; do {b=Math.floor(Math.random()*10)+1;} while(a+b>10); do { c=Math.floor(Math.random()*10)+1; } while(c==a+b); return {legend:''+a+'+'+b+'='+c};}"}]}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Cliquez sur les additions [b]exactes[/b]."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>
@@ -71,7 +71,7 @@
     <rdf:Description>
         <dct:identifier>c20</dct:identifier>
         <dct:title xml:lang="fr-FR">Cliquez sur les additions exactes et dont les opérandes sont inférieures ou égales à 10.</dct:title>
-        <dct:description><![CDATA["freq":2,"class":"smalllegend","holes":"classic","sprdata":{"d":[{"alignment":"good","type":"embed","gen":"function(){var a=Math.floor(Math.random()*10)+1,b=Math.floor(Math.random()*10)+1; return {legend:''+a+'+'+b+'='+(a+b)};}"},{"alignment":"wrong","type":"embed","gen":"function(){var a=Math.floor(Math.random()*10)+1,b=Math.floor(Math.random()*10)+1,c; do { c=Math.floor(Math.random()*5)-2;}while(c==0 || a+b+c<0 || a+b+c>20); return {legend:''+a+'+'+b+'='+(a+b+c)};}"}]}]]></dct:description>
+        <dct:description><![CDATA["ex":["[tiny]1+1=3[/tiny]","[tiny]2+2=4[/tiny]"],"freq":2,"class":"smalllegend","holes":"classic","sprdata":{"d":[{"alignment":"good","type":"embed","gen":"function(){var a=Math.floor(Math.random()*10)+1,b=Math.floor(Math.random()*10)+1; return {legend:''+a+'+'+b+'='+(a+b)};}"},{"alignment":"wrong","type":"embed","gen":"function(){var a=Math.floor(Math.random()*10)+1,b=Math.floor(Math.random()*10)+1,c; do { c=Math.floor(Math.random()*5)-2;}while(c==0 || a+b+c<0 || a+b+c>20); return {legend:''+a+'+'+b+'='+(a+b+c)};}"}]}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Cliquez sur les additions [b]exactes[/b]."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>addition</dct:subject>

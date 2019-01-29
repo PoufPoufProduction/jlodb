@@ -6,7 +6,7 @@
     <rdf:Description>
         <dct:identifier>d2</dct:identifier>
         <dct:title xml:lang="fr-FR">Cliquer sur les nombres pairs compris entre 1 et 10.</dct:title>
-        <dct:description><![CDATA[    "holes":"classic","sprdata":{"d":[{"alignment":"good","type":"embed","gen":"function(){return {legend:Math.floor(Math.random()*5+1)*2};}"},{"alignment":"wrong","type":"embed","gen":"function(){return {legend:Math.floor(Math.random()*5+1)*2-1};}"}]},"tag":"/2"]]></dct:description>
+        <dct:description><![CDATA[    "ex":["[txt]3[/txt]","[txt]6[/txt]"],"gg":5,"holes":"classic","sprdata":{"d":[{"alignment":"good","type":"embed","gen":"function($this,_s,_i){return {legend:Math.floor(Math.random()*_s.gg+1)*2};}"},{"alignment":"wrong","type":"embed","gen":"function($this,_s,_i){return {legend:Math.floor(Math.random()*_s.gg+1)*2-1};}"}]},"tag":"/2"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Cliquez sur les nombres [b]pairs[/b].[br]Un nombre [red]pair[/red] est un nombre divisible [red]en 2 moitiés égales[/red].","fontex":0.8]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>division</dct:subject>
@@ -22,13 +22,14 @@
     <rdf:Description>
         <dct:identifier>d2a</dct:identifier>
         <dct:title xml:lang="fr-FR">Cliquer sur les nombres pairs compris entre 1 et 100.</dct:title>
-        <dct:description><![CDATA[    "holes":"classic","sprdata":{"d":[{"alignment":"good","type":"embed","gen":"function(){return {legend:Math.floor(Math.random()*49+1)*2};}"},{"alignment":"wrong","type":"embed","gen":"function(){return {legend:Math.floor(Math.random()*49+1)*2-1};}"}]},"tag":"/2"]]></dct:description>
+        <dct:description><![CDATA["gg":49]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Cliquez sur les nombres [b]pairs[/b].[br]Un nombre [red]pair[/red] est un nombre dont le [red]chiffre des unités est pair[/red], c'est-à-dire un nombre [red]finissant[/red] par [b]0,2,4,6 ou 8[/b].","fontex":0.8]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>division</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>d2</dct:alternative>
+        <dct:relation>d2</dct:relation>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
     </rdf:Description>
     

@@ -6,7 +6,7 @@
     <rdf:Description>
         <dct:identifier>c10</dct:identifier>
         <dct:title xml:lang="fr-FR">Cliquez sur les soustractions exactes dont les opérandes sont inférieures ou égales à 10.</dct:title>
-        <dct:description><![CDATA["freq":2,"class":"smalllegend","holes":"classic","sprdata":{"d":[{"alignment":"good","type":"embed","gen":"function(){var a=Math.floor(Math.random()*9)+2,b=Math.floor(Math.random()*(a-1))+1; return {legend:''+a+'-'+b+'='+(a-b)};}"},{"alignment":"wrong","type":"embed","gen":"function(){var c,a=Math.floor(Math.random()*9)+2,b=Math.floor(Math.random()*(a-1))+1; do { c=Math.floor(Math.random()*10)+1; } while(c==a-b); return {legend:''+a+'-'+b+'='+c};}"}]}]]></dct:description>
+        <dct:description><![CDATA["ex":["[tiny]6-4=3[/tiny]","[tiny]6-4=2[/tiny]"],"freq":2,"class":"smalllegend","holes":"classic","sprdata":{"d":[{"alignment":"good","type":"embed","gen":"function(){var a=Math.floor(Math.random()*9)+2,b=Math.floor(Math.random()*(a-1))+1; return {legend:''+a+'-'+b+'='+(a-b)};}"},{"alignment":"wrong","type":"embed","gen":"function(){var c,a=Math.floor(Math.random()*9)+2,b=Math.floor(Math.random()*(a-1))+1; do { c=Math.floor(Math.random()*10)+1; } while(c==a-b); return {legend:''+a+'-'+b+'='+c};}"}]}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Cliquez sur les soustractions [b]exactes[/b]."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>subtraction</dct:subject>
@@ -110,7 +110,7 @@
     <rdf:Description>
         <dct:identifier>c20</dct:identifier>
         <dct:title xml:lang="fr-FR">Cliquez sur les soustractions exactes dont la diminuende est inférieure à 20.</dct:title>
-        <dct:description><![CDATA["freq":2,"class":"smalllegend","holes":"classic","sprdata":{"d":[{"alignment":"good","type":"embed","gen":"function(){var a=Math.floor(Math.random()*19)+2,b; do { b=Math.floor(Math.random()*10)+1; } while (b>=a || a-b>10); return {legend:''+a+'-'+b+'='+(a-b)};}"},{"alignment":"wrong","type":"embed","gen":"function(){var a=Math.floor(Math.random()*19)+2,b,c; do { b=Math.floor(Math.random()*10)+1; c=Math.floor(Math.random()*10)+1; } while (b>=a || a-b>10 || c==a-b); return {legend:''+a+'-'+b+'='+c};}"}]}]]></dct:description>
+        <dct:description><![CDATA["ex":["[tiny]6-4=3[/tiny]","[tiny]6-4=2[/tiny]"],"freq":2,"class":"smalllegend","holes":"classic","sprdata":{"d":[{"alignment":"good","type":"embed","gen":"function(){var a=Math.floor(Math.random()*19)+2,b; do { b=Math.floor(Math.random()*10)+1; } while (b>=a || a-b>10); return {legend:''+a+'-'+b+'='+(a-b)};}"},{"alignment":"wrong","type":"embed","gen":"function(){var a=Math.floor(Math.random()*19)+2,b,c; do { b=Math.floor(Math.random()*10)+1; c=Math.floor(Math.random()*10)+1; } while (b>=a || a-b>10 || c==a-b); return {legend:''+a+'-'+b+'='+c};}"}]}]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"Cliquez sur les soustractions [b]exactes[/b]."]]></dct:description>
         <dct:extent>1</dct:extent>
         <dct:subject>subtraction</dct:subject>
