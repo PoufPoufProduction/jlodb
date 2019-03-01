@@ -26,7 +26,7 @@
 #bimain                                 { display:relative; }
 #bitopmenu                              { width:100%; height:1.2em; background-color:gray; font-size:.5em; padding:.1em; }
 #bitopmenu>*                            { float:left; }
-#bitopmenu>select                       { font-size:1em; height:1.2em; width:10em; border:0; padding-left:.5em; background-color:#555; color:white; }
+#bitopmenu>select                       { font-size:1em; height:1.2em; width:9.5em; border:0; padding-left:.5em; background-color:#555; color:white; }
 #bitopmenu>.icon                        { font-size:1em; padding:.1em; cursor:pointer; }
 #bitopmenu>.icon.l                      { margin-left:.5em; background-color:#333;  border-radius:.5em 0 0 .5em;}
 #bitopmenu>.icon.e                      { background-color:#444; }
@@ -73,6 +73,7 @@
 #biscreen #list .drag .eximg>img.snap   { width: 4em; height: 3em; }
 #biscreen #list .drag .extitle          { background-color:white; height:4.5em; border:1px solid black; border-width:1px 0 0 0; font-size:.7em;color:black;text-align:justify;padding:0 .5em; }
 #biscreen #list .drag .exid             { position:absolute; color:black; width:5.5em; background-color:white; top:.3em; left:-0.1em; padding-left:.5em; border-radius:0 .5em .5em 0;border:1px solid black;}
+#bimain #waiting      { position:absolute; top:70%; left:80%; font-size:3em; display:none; }
     </style>
     <script>
 
@@ -308,6 +309,11 @@ var tibibi = {
                 $("#bipopup1").show();
             }
         },
+		export: function() {
+            if ($("#bigcourses").val().length) {
+				window.open('menu.html?id='+encodeURIComponent(tibibi.course.ex),'_blank');
+			}
+		},
         list: function(_val) {
             user.getJSON("mods/tibibi/api/course.php",{action:"list"}, "", function(_data) {
                 $("#bigcourses").html("<option></option>");
@@ -484,7 +490,6 @@ $(window).ready(function() {
         onmenu:  function($this) { $('#activity').jlodb('close', true); },
         onnext:  function($this) { $('#activity').jlodb('close',false);$('#bimenu').menu('next'); } 
     });
-
 });
     </script>
 </head>
@@ -503,6 +508,8 @@ $(window).ready(function() {
 
             <div class="icon l" onclick="tibibi.course.open();" ontouchstart="tibibi.course.open();event.preventDefault();">
                 <img src="res/img/default/white/newcourse.svg"/></div>
+            <div class="icon e" onclick="tibibi.course.export();" ontouchstart="tibibi.course.export();event.preventDefault();">
+                <img src="res/img/default/white/export.svg"/></div>
             <select id="bigcourses" onchange="tibibi.course.load($(this).val(),false,true);"></select>
             <div class="icon e" onclick="tibibi.course.edit();" ontouchstart="tibibi.course.edit();event.preventDefault();">
                 <img src="res/img/default/white/edit.svg"/></div>
@@ -545,7 +552,7 @@ $(window).ready(function() {
                 <div id="bibrowser"></div></div>
         </div>
 
-        <div id="waiting"><div><img src="res/img/default/anim/waiting.svg"/></div></div>
+        <div id="waiting" class="anim12"><div><img src="res/img/default/anim/waiting_red.svg" alt=""/></div></div>
 
         <div id="score"></div>
 

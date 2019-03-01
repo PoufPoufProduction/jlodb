@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>jLoDb</title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="js/jquery.svg.min.js"></script>
+    <script type="text/javascript" src="js/jquery.jlodb.js"></script>
+    <script type="text/javascript" src="js/jquery.jlodb.menu.js"></script>
+    <script type="text/javascript" src="js/jlodb-ext.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/jlodb.css" media="all" />
+	
+	<style>
+		#gmenu        { font-size:1.5em; height:100%; width:100%; }
+		#waiting      { position:absolute; top:70%; left:80%; font-size:3em; display:none; }
+	</style>
+
+    <script>
+
+var standalone = false;
+
+$(window).ready(function() {
+
+	$(window).resize();
+
+    // HANDLE ARGUMENTS
+    var args = {}
+	var ex = [];
+    var a = location.search.substring(1).split('&');
+    for (var i in a) { var p= a[i].split('='); args[p[0]]=p[1]; }
+
+    if (args.id)       	 { ex = decodeURIComponent(args.id).split(","); }
+    if (args.standalone) { standalone = true; }
+    
+
+    $("#score").score({
+        onreload:function($this) { $('#activity').jlodb('reload'); },
+        onmenu:  function($this) { $('#activity').jlodb('close', true); },
+        onnext:  function($this) { $('#activity').jlodb('close',false);$('#gmenu').menu('next'); } 
+    });
+	
+	var state="";
+	for (var i=0; i<ex.length; i++) { state+="."; }
+	
+	$("#gmenu").menu({
+        list    : ex,
+        state   : state,
+        onupdate: function($this, _state) { },
+        onclick : function($this, _args) {
+            $("#waiting").show().find("div").addClass("running");
+            $("#activity").jlodb({
+				standalone : standalone,
+                onstart:    function($this) {
+					$("#gmenu").hide(); $this.parent().show();
+                    $("#waiting").hide().find("div").removeClass("running"); },
+                onfinish:   function($this, _hide) {
+					if (_hide) { $("#gmenu").show(); $this.parent().hide(); }
+                    $("#score").score('hide'); },
+                onscore:    function($this, _ret) {
+                    var isnext = false;
+                    if (_ret.score>=2) { isnext = $("#gmenu").menu('score', _ret.score).menu('more'); }
+                    $("#score #next").toggle(isnext);
+                    $("#score").score('show',_ret.score);
+                    return true; } },
+					_args);
+        }
+    });
+});
+
+</script>
+</head>
+
+<body><div>
+
+<div id="gmenu"></div>
+
+<div class="jlodb" style="display:none;">
+	<div id="quit" ontouchstart="$('#activity').jlodb('quit');event.preventDefault();"
+                   onclick="$('#activity').jlodb('quit');"><img src="res/img/default/icon/nw_quit01.svg"/></div>
+    <div id="activity"></div>
+    <div id="score"></div>
+</div>
+
+<div id="waiting" class="anim12"><div><img src="res/img/default/anim/waiting_red.svg" alt=""/></div></div>
+
+</div>
+</body>
+</html>

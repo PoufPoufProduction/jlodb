@@ -496,7 +496,7 @@
         <dct:relation>0</dct:relation>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
     </rdf:Description>
-
+	
     <rdf:Description>
         <dct:identifier>20</dct:identifier>
         <dct:title xml:lang="fr-FR">Multiplier, sans contrainte de temps, deux nombres compris entre 10 et 20.</dct:title>
@@ -520,6 +520,58 @@
         <dct:alternative>19u</dct:alternative>
         <dct:relation>0</dct:relation>
     </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>98r</dct:identifier>
+        <dct:title xml:lang="fr-FR">Multiplier, sans contrainte de temps, un nombre entre 10 et 40 avec une valeur inférieure à 10, sans retenue.</dct:title>
+        <dct:description><![CDATA["gg":[8,2,30,10,false,100],"number":10,"class":"h12","time":0,"input":{"digit":2,"speed":5000},"gen":"function($this,_s,_i) { var a,b,ok; do { a=Math.floor(Math.random()*_s.gg[0]+_s.gg[1]); b=Math.floor(Math.random()*_s.gg[2]+_s.gg[3]); ok=(_s.gg[4]?true:((a*(b%10)<10)&&((a%10>1)||(b%10>1))))&&(a*b<_s.gg[5]); } while (!ok); return a+'×'+b; }","font":2]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:alternative>19u</dct:alternative>
+        <dct:coverage xml:lang="fr-FR">colonne</dct:coverage>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>98</dct:identifier>
+        <dct:title xml:lang="fr-FR">Multiplier, sans contrainte de temps, un nombre entre 10 et 40 avec une valeur inférieure à 10.</dct:title>
+        <dct:description><![CDATA["gg":[8,2,30,10,true,100]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:alternative>19u</dct:alternative>
+        <dct:relation>98r</dct:relation>
+        <dct:coverage xml:lang="fr-FR">colonne</dct:coverage>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>99r</dct:identifier>
+        <dct:title xml:lang="fr-FR">Multiplier, sans contrainte de temps, un nombre entre 10 et 100 avec une valeur inférieure à 10, sans retenue.</dct:title>
+        <dct:description><![CDATA["gg":[8,2,90,10,false,1000],"input":{"digit":3,"speed":5000}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:alternative>19u</dct:alternative>
+        <dct:relation>98r</dct:relation>
+        <dct:coverage xml:lang="fr-FR">colonne</dct:coverage>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>99</dct:identifier>
+        <dct:title xml:lang="fr-FR">Multiplier, sans contrainte de temps, un nombre entre 10 et 100 avec une valeur inférieure à 10.</dct:title>
+        <dct:description><![CDATA["gg":[8,2,90,10,true,1000],"input":{"digit":3,"speed":5000}]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>multiplication</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:alternative>19u</dct:alternative>
+        <dct:relation>98r</dct:relation>
+        <dct:coverage xml:lang="fr-FR">colonne</dct:coverage>
+    </rdf:Description>
+	
 
     <!-- INVERSE: i[1-9] -->
 
