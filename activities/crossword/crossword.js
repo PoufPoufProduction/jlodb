@@ -11,11 +11,15 @@
         emptyval    : '',                                       // if exist, this cell value has to be empty
         margin      : 0,                                        // Margin value
         horiz       : false,                                    // Only horizontal words
-        hint        : true,                                     // Hint available
         move        : true,                                     // Move after key
         keypad      : "num",                                    // The keypad
         number      : 1,                                        // Number of exercices
-        fontex      : 1,                                        // Font ex
+        fontex      : 1,                                        // Exercice fontsize
+		fonttitle	: 1,										// Title fontsize
+		hex			: 10,										// Exercice height in percent
+		htitle		: 10,										// Title height in percent
+		hfiller		: 0,										// Filler height in percent
+		hdef		: 18,										// Definition height in percent
         errratio    : 1,                                        // Error ratio
         background  : "",                               		// Background image
         debug       : true                                      // Debug mode
@@ -127,21 +131,35 @@
             var fixed = settings.fixed;
 
             if (settings.gen) {
-                var gen = eval('('+settings.gen+')')();
-                settings.values     = gen.data;
-                settings.definition = gen.def; 
-                fixed               = gen.fixed;
+                var gen = eval('('+settings.gen+')')($this, settings, settings.id);
+                if (gen.data) 	{ settings.values     = gen.data; 	}
+                if (gen.def)	{ settings.definition = gen.def; 	}
+                if (gen.fixed)  { fixed               = gen.fixed;	}
             }
-            if (settings.title)            { $this.find("#title").html(settings.title); }
-            if (!settings.exercice)        { $this.addClass("noex"); }
-            if (!settings.definition)      { $this.addClass("nodef"); }
+            if (settings.title) {
+				$this.find("#title").html(helpers.format(settings.title))
+									.css("height",settings.htitle+"%")
+									.css("font-size",settings.fonttitle+"em")
+									.show();
+			}
+			else {
+				$this.find("#title").hide();
+			}
 
+            if (!settings.definition)      { $this.addClass("nodef"); }
+			else { $this.find("#definition").css("height",settings.hdef+"%"); }
+			
+            if (!settings.exercice)        { $this.addClass("noex"); }
+			$this.find("#exercice").css("height",settings.hex+"%");
             $this.find("#exercice>div").css("font-size",settings.fontex+"em");
             if (settings.exercice) {
                 if ($.isArray(settings.exercice)) { $this.find("#exercice>div").html(helpers.format(settings.exercice[settings.id])); }
                 else                              { $this.find("#exercice>div").html(helpers.format(settings.exercice)); }
             }
             
+			if (settings.hfiller) {
+				$this.find("#filler").css("height",settings.hfiller+"%").show();
+			}
 
             // BUILD TABLE
             var rbut = 0.9;
@@ -394,7 +412,7 @@
             },
             mode: function(_elt, _val) {
                 var $this = $(this) , settings = helpers.settings($this);
-                if (settings.hint && settings.mode!=_val) {
+                if (settings.mode!=_val) {
                     settings.mode = _val;
                     settings.elt.pos = [-1,-1];
                     $this.find("#buttons .bg").removeClass("s");
