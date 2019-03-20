@@ -21,8 +21,10 @@
         fontex      : 1,
         groupname   : "paths",
         group       : 0,
+		tips		: 0,
         width       : 640,
         effects     : true,
+		glossary	: 0,
         background  : "",
         debug       : true                                     // Debug mode
     };
@@ -37,6 +39,7 @@
         "\\\[h1\\\]([^\\\[]+)\\\[/h1\\\]",          "<div class='h1'>$1</div>",
         "\\\[small\\\]([^\\\[]+)\\\[/small\\\]",    "<div class='small'>$1</div>",
         "\\\[img\\\]([^\\\[]+)\\\[/img\\\]",        "<div class='img'><img src='$1.svg'/></div>",
+		"\\\[icon ([^\\\]]+)]([^\\\[]+)\\\[/icon\\\]",         "<div class='icon' style='font-size:$1em;float:left'><img src='$2.svg'/></div>",
         "\\\[a\\\]([^\\\[]+)\\\[/a\\\]",            "<div class='icon' style='float:left;margin:.1em;font-size:2em;'><img src='res/img/action/$1.svg'/></div>",
         "\\\[a2\\\]([^\\\[]+)\\\[/a2\\\]",          "<div class='icon' style='float:left;margin:.1em;font-size:4em;'><img src='res/img/action/$1.svg'/></div>"
     ];
@@ -359,27 +362,82 @@
                         _event.preventDefault();
                 });
 
-                // Tips
+                // TIPS HANDLING
                 if (settings.tips) {
+					// BUILD TIPS IF NUMBER VALUE
+					if (typeof(settings.tips)=="number") {
+						var tips  = [];
+						var t     = [];
+						var r     = settings.result.split(",");
+						var slice = r.length/settings.tips;
+						var s	  = slice;
+						var id    = 0;
+						while(id<r.length)
+						{
+							t.push(r[id]);
+							if (id>s) {
+								s+=slice;
+								tips.push(t);
+								t=[r[id]];
+							}
+							id++;
+						}
+						if (t.length>1) { tips.push(t); }
+						settings.tips = tips;
+					}
+					
+					
+					
                     $this.find("#tip>div").html(settings.tips.length).parent().show();
                 }
                 
-                // Locale handling
-
+                // LOCALE HANDLING
                 if (settings.locale) { $.each(settings.locale, function(id,value) {
                     if ($.isArray(value)) {  for (var i in value) { $this.find("#"+id).append("<p>"+value[i]+"</p>"); } }
                     else { $this.find("#"+id).html(value); }
                 }); }
 
+				// FILL TEXTS
                 if (settings.text) {
                     if (typeof(settings.text)=="object") {
-                        for (var i in settings.text) { $("#"+i,settings.svg.root()).text(settings.text[i]); }
+                        for (var i in settings.text) {
+							var txt = settings.text[i];
+							if (settings.glossary && settings.glossary[txt]) { txt = settings.glossary[txt]; }
+							$("#"+i,settings.svg.root()).text(txt);
+						}
                     }
                     else {
                         var gtext = settings.gtext?"#"+settings.gtext+" ":"";
-                        $(gtext+".t",settings.svg.root()).each(function(_i) { if (_i<settings.text.length) $(this).text(settings.text[_i]); });
+                        $(gtext+" text.t",settings.svg.root()).each(function(_i) {
+							if (_i<settings.text.length) {
+								var txt = settings.text[_i];
+								if (settings.glossary && settings.glossary[txt]) { txt = settings.glossary[txt]; }
+								$(this).text(txt);
+							}
+						});
                     }
                 }
+				
+				// FILL IMAGES
+				if (settings.img) {
+                    if (typeof(settings.img)=="object") {
+                        for (var i in settings.img) {
+							var txt = settings.img[i];
+							if (settings.glossary && settings.glossary[txt]) { txt = settings.glossary[txt]; }
+							$("#"+i,settings.svg.root()).attr("xlink:href",txt).show();
+						}
+                    }
+                    else {
+                        var gimg = settings.gimg?"#"+settings.gimg+" ":"";
+                        $(gimg+" image.t",settings.svg.root()).each(function(_i) {
+							if (_i<settings.img.length) {
+								var txt = settings.img[_i];
+								if (settings.glossary && settings.glossary[txt]) { txt = settings.glossary[txt]; }
+								$(this).attr("xlink:href",txt).show();
+							}
+						});
+                    }
+				}
 
                 // Exercice
                 if (settings.exercice && settings.exercice.length) {

@@ -6,10 +6,12 @@
         svg#grid6x7 #cells #line rect.b   { stroke:black; fill:none}
         svg#grid6x7 #cells #line rect.f   { fill:#bdf;}
         svg#grid6x7 #paths                { opacity:0.5; }
-        svg#grid6x7 .t                    { font-size:25px;font-weight:bold;text-align:center;opacity:0.8;
+        svg#grid6x7 .t                    { font-size:25px;font-weight:bold;text-align:center;
                                             text-anchor:middle;fill:black; }
-        svg#grid6x7 #text .t              { font-size:60px; }
+        svg#grid6x7 #text .t              { font-size:60px; opacity:0.8; }
 		svg#grid6x7.small #text .t        { font-size:20px; }
+		
+		svg#grid6x7 #img .t				{ display:none; }
 		
         svg#grid6x7 #tips           { opacity:0.7; }
         svg#grid6x7 #tips line      { fill:none; stroke:yellow; stroke-width:5; stroke-linecap:round; }
@@ -132,6 +134,64 @@
 <use transform="translate(180,360)" xlink:href="#pp" />
 <use transform="translate(240,360)" xlink:href="#pp" />
 <use transform="translate(300,360)" xlink:href="#pp" />
+</g>
+<g id="img">
+	<g>
+		<image id="i00" class="t" xlink:href="" width="58" height="58" x="291" y="21"/>
+		<image id="i01" class="t" xlink:href="" width="58" height="58" x="351" y="21"/>
+		<image id="i02" class="t" xlink:href="" width="58" height="58" x="411" y="21"/>
+		<image id="i03" class="t" xlink:href="" width="58" height="58" x="471" y="21"/>
+		<image id="i04" class="t" xlink:href="" width="58" height="58" x="531" y="21"/>
+		<image id="i05" class="t" xlink:href="" width="58" height="58" x="591" y="21"/>
+	</g>
+	<g transform="translate(0,60)">
+		<image id="i10" class="t" xlink:href="" width="58" height="58" x="291" y="21"/>
+		<image id="i11" class="t" xlink:href="" width="58" height="58" x="351" y="21"/>
+		<image id="i15" class="t" xlink:href="" width="58" height="58" x="411" y="21"/>
+		<image id="i13" class="t" xlink:href="" width="58" height="58" x="471" y="21"/>
+		<image id="i14" class="t" xlink:href="" width="58" height="58" x="531" y="21"/>
+		<image id="i15" class="t" xlink:href="" width="58" height="58" x="591" y="21"/>
+	</g>
+	<g transform="translate(0,120)">
+		<image id="i20" class="t" xlink:href="" width="58" height="58" x="291" y="21"/>
+		<image id="i21" class="t" xlink:href="" width="58" height="58" x="351" y="21"/>
+		<image id="i22" class="t" xlink:href="" width="58" height="58" x="411" y="21"/>
+		<image id="i23" class="t" xlink:href="" width="58" height="58" x="471" y="21"/>
+		<image id="i24" class="t" xlink:href="" width="58" height="58" x="531" y="21"/>
+		<image id="i25" class="t" xlink:href="" width="58" height="58" x="591" y="21"/>
+	</g>
+	<g transform="translate(0,180)">
+		<image id="i30" class="t" xlink:href="" width="58" height="58" x="291" y="21"/>
+		<image id="i31" class="t" xlink:href="" width="58" height="58" x="351" y="21"/>
+		<image id="i32" class="t" xlink:href="" width="58" height="58" x="411" y="21"/>
+		<image id="i33" class="t" xlink:href="" width="58" height="58" x="471" y="21"/>
+		<image id="i34" class="t" xlink:href="" width="58" height="58" x="531" y="21"/>
+		<image id="i35" class="t" xlink:href="" width="58" height="58" x="591" y="21"/>
+	</g>
+	<g transform="translate(0,240)">
+		<image id="i40" class="t" xlink:href="" width="58" height="58" x="291" y="21"/>
+		<image id="i41" class="t" xlink:href="" width="58" height="58" x="351" y="21"/>
+		<image id="i42" class="t" xlink:href="" width="58" height="58" x="411" y="21"/>
+		<image id="i43" class="t" xlink:href="" width="58" height="58" x="471" y="21"/>
+		<image id="i44" class="t" xlink:href="" width="58" height="58" x="531" y="21"/>
+		<image id="i45" class="t" xlink:href="" width="58" height="58" x="591" y="21"/>
+	</g>
+	<g transform="translate(0,300)">
+		<image id="i50" class="t" xlink:href="" width="58" height="58" x="291" y="21"/>
+		<image id="i51" class="t" xlink:href="" width="58" height="58" x="351" y="21"/>
+		<image id="i52" class="t" xlink:href="" width="58" height="58" x="411" y="21"/>
+		<image id="i53" class="t" xlink:href="" width="58" height="58" x="471" y="21"/>
+		<image id="i54" class="t" xlink:href="" width="58" height="58" x="531" y="21"/>
+		<image id="i55" class="t" xlink:href="" width="58" height="58" x="591" y="21"/>
+	</g>
+	<g transform="translate(0,360)">
+		<image id="i60" class="t" xlink:href="" width="58" height="58" x="291" y="21"/>
+		<image id="i61" class="t" xlink:href="" width="58" height="58" x="351" y="21"/>
+		<image id="i62" class="t" xlink:href="" width="58" height="58" x="411" y="21"/>
+		<image id="i63" class="t" xlink:href="" width="58" height="58" x="471" y="21"/>
+		<image id="i64" class="t" xlink:href="" width="58" height="58" x="531" y="21"/>
+		<image id="i65" class="t" xlink:href="" width="58" height="58" x="591" y="21"/>
+	</g>
 </g>
 <g id="text">
     <text id="0" class="t" x="320" y="70" xml:space="preserve"></text>

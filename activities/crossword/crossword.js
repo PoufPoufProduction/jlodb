@@ -29,7 +29,11 @@
         "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
         "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
         "\\\[br\\\]",                               "<br/>",
+		"\\\[n\\\]([^\\\[]+)\\\[/n\\\]",            "<div class='n'>$1</div>",
+		"\\\[n\\\]\\\[/n\\\]",            			"<div class='n'>&nbsp;</div>",
         "\\\[strong\\\]([^\\\[]+)\\\[/strong\\\]",  "<div class='strong'>$1</div>",
+        "\\\[a\\\]([^\\\[]+)\\\[/a\\\]",  			"<div class='a'>$1</div>",
+        "\\\[ad\\\]([^\\\[]+)\\\[/ad\\\]",  		"<div class='ad'>$1</div>",
         "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
         "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
         "\\\[small\\\]([^\\\[]+)\\\[/small\\\]",    "<span style='font-size:.6em;'>$1</span>",
@@ -156,6 +160,10 @@
                 if ($.isArray(settings.exercice)) { $this.find("#exercice>div").html(helpers.format(settings.exercice[settings.id])); }
                 else                              { $this.find("#exercice>div").html(helpers.format(settings.exercice)); }
             }
+			
+			$this.find("#exercice .a").bind("touchstart mousedown", function(_event) {
+				$(this).toggleClass("d"); _event.preventDefault();
+			});
             
 			if (settings.hfiller) {
 				$this.find("#filler").css("height",settings.hfiller+"%").show();
