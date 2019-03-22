@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dct="http://purl.org/dc/terms/">
+
+
+    <rdf:Description>
+        <dct:identifier>s401</dct:identifier>
+        <dct:title xml:lang="fr-FR">Retrouver l'ombre correspondant à une image de référence [fleurs].</dct:title>
+        <dct:description><![CDATA["gg":{"types":4,"name":"flower","t":"array2x2r","n":4},"number":3,"automatic":"one","onclick":"onlyone","background":"res/img/background/landscape/blueboard01.svg","errratio":4,"states":{ "nb":2,"style":[{"background-color":"white"},{"background-color":"orange"}]},"wrong":{"style":{"background-color":"red"}},"gen":"function($this,_s,_i){var ty=(2*Math.floor(Math.random()*_s.gg.types/2)+(_i%2)).toString(),v=shuffle([1,2,3,4,5,6,7,8,9]),vi=Math.floor(Math.random()*_s.gg.n),t=[],r=''; for (var i=0; i<_s.gg.n; i++) { t.push('[img]res/img/ppvc/shape/'+_s.gg.name+ty+v[i]+'b.svg[/img]'); r+=(vi==i?'1':'0');} return {'template':_s.gg.t,'result':r,'t':t,'legend':'[img]res/img/ppvc/shape/'+_s.gg.name+ty+v[vi]+'a.svg[/img]'} }"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Retrouvez[/b] l'ombre correspondant à l'image de référence."]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>game</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>s401</dct:alternative>
+        <dct:source>res/img/background/landscape/blueboard01.svg,res/img/ppvc/shape/flower*.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>s601</dct:identifier>
+        <dct:title xml:lang="fr-FR">Retrouver l'ombre correspondant à une image de référence [fleurs].</dct:title>
+        <dct:description><![CDATA["gg":{"types":4,"name":"flower","t":"array2x3r","n":6},"number":3]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>game</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>s401</dct:alternative>
+        <dct:relation>s401</dct:relation>
+        <dct:source>res/img/background/landscape/blueboard01.svg,res/img/ppvc/shape/flower*.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>s901</dct:identifier>
+        <dct:title xml:lang="fr-FR">Retrouver l'ombre correspondant à une image de référence [fleurs].</dct:title>
+        <dct:description><![CDATA["gg":{"types":4,"name":"flower","t":"array3x3r","n":9},"number":2]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>game</dct:subject>
+        <dct:educationLevel>1</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>s401</dct:alternative>
+        <dct:relation>s401</dct:relation>
+        <dct:source>res/img/background/landscape/blueboard01.svg,res/img/ppvc/shape/flower*.svg</dct:source>
+    </rdf:Description>
+	
+    <rdf:Description>
+        <dct:identifier>s901t</dct:identifier>
+        <dct:title xml:lang="fr-FR">Retrouver l'ombre correspondant à une image de référence [fleurs].</dct:title>
+        <dct:description><![CDATA["time":25,"gg":{"types":4,"name":"flower","t":"array3x3r","n":9},"number":2]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>game</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>s401</dct:alternative>
+        <dct:relation>s401</dct:relation>
+        <dct:source>res/img/background/landscape/blueboard01.svg,res/img/ppvc/shape/flower*.svg</dct:source>
+    </rdf:Description>
+	
+
+    
+    
+    
+</rdf:RDF>

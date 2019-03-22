@@ -262,6 +262,7 @@
                 if (vValue.result)   { settings.result = vValue.result; }
                 if (vValue.t)        { settings.t = vValue.t; }
                 if (vValue.txt)      { settings.txt = vValue.txt; }
+				if (vValue.img)		 { settings.img = vValue.img; }
                 if (vValue.legend)   { settings.legend = vValue.legend; }
                 if (vValue.canvas)   { settings.canvas = vValue.canvas; }
                 if (vValue.o)   	 { settings.o = vValue.o; }
@@ -286,6 +287,14 @@
             if (settings.txt) {
                 for (var i in settings.txt) {
                     if (settings.svg) { $("text#"+i, settings.svg.root()).text(settings.txt[i]); }
+                }
+            }
+            
+            if (settings.img) {
+                for (var i in settings.img) {
+                    if (settings.svg) {
+						$("image#"+i, settings.svg.root()).attr("xlink:href",settings.img[i]).show();
+					}
                 }
             }
             
@@ -451,7 +460,7 @@
                     $elt.html(val);
                 }
                 
-                if (settings.onpaint) { eval('('+settings.onpaint+')')($this, settings,helpers.result($this)); }
+                if (settings.onpaint) { eval('('+settings.onpaint+')')($this, settings, helpers.result($this)); }
             }
         },
         dev: {
