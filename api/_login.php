@@ -3,7 +3,7 @@
 function login($username, $password, &$status, &$textstatus, &$error)
 {
     $filename   = "../conf/jlodb.ini";
-    $_SESSION['admin'] = false;
+    $_SESSION["admin"] = false;
 
     
     // CHECK IF THE CONFIGURATION FILE IS HERE
@@ -21,7 +21,7 @@ function login($username, $password, &$status, &$textstatus, &$error)
              strcmp($ini_array["admin"]["password"], md5($password)) == 0 ) {
             $status = "success";
             $textstatus = "logged successfuly";
-            $_SESSION['admin'] = true;
+            $_SESSION["admin"] = true;
         }
         else {
             $error = 101;

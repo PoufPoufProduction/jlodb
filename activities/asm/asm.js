@@ -14,6 +14,7 @@
         header      : 0,
         footer      : 0,
         font        : 0,                                        // Font-size of the source
+		tips		: [],
         export      : false,                                    // Show code
         debug       : true                                      // Debug mode
     };
@@ -91,7 +92,7 @@
       ["---", null, null, null, null, null, null, null, null, null, null, null, null]
     ];
 
-    var addr = [ null, 'imm', 'zp', 'zpx', 'zpy', 'abs', 'absx', 'absy', 'ind', 'indx', 'indy', 'sngl', 'bra' ];
+    var addr = [ null, 'imm', 'zp', 'zpx', 'zpy', 'abs', 'absx', 'absy', 'ind', 'indx', 'indy', 'impl', 'bra' ];
 
     // private methods
     var helpers = {
@@ -173,6 +174,12 @@
                 });
                 if (settings.font) { $this.find("#detail #source>div").css("font-size",settings.font+"em"); }
 
+                // HANDLE THE TIPS
+                if (settings.tips) {
+                    $this.find("#tip>div").html(settings.tips.length);
+                    $this.find("#ptip .tip1").addClass("s");
+                }
+				
                 // Build the header
                 var headlen = 0;
                 if (settings.header) {
@@ -285,8 +292,9 @@
                         $this.find("#exercice").append("<p>"+(settings.exercice[i].length?helpers.format(settings.exercice[i]):"&#xA0;")+"</p>"); }
                 } else { $this.find("#exercice").html(helpers.format(settings.exercice)); }
 
+				helpers.uphelp($this);
+				
                 // Locale handling
-
                 if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
 
 
@@ -964,7 +972,17 @@
                 if (settings.keytimerid) { clearTimeout(settings.keytimerid); }
                 settings.keytimerid = setTimeout(function() { $this.find("#keypad .s").removeClass("s"); }, 300 );
             }
-        }
+        },
+		uphelp:function($this) {
+            var settings = helpers.settings($this);
+			var nbpages = $this.find("#phelp .phpage").length;
+			settings.hpage=Math.min(Math.max(0,settings.hpage),nbpages-1);
+			$this.find("#phleft").toggleClass("d",(settings.hpage==0));
+			$this.find("#phright").toggleClass("d",(settings.hpage==nbpages-1));
+			
+			$this.find("#phelp .phpage").hide();
+			$this.find("#phelp #ph"+settings.hpage).show();
+		}
     };
 
     // The plugin
@@ -976,6 +994,9 @@
                 // The settings
                 var settings = {
                     score           : 5,
+					interactive		: false,
+					tipid			: 0,
+					hpage			: 0,
                     data : {
                         $this       : 0,
                         compiled    : false,
@@ -1021,6 +1042,7 @@
             },
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
+				settings.interactive = true;
                 $this.find(".mask").hide();
             },
             code: function() {
@@ -1103,7 +1125,36 @@
                 $this.find("#effects").hide();
                 helpers.end($this);
             },
-            stdout: function() { helpers.stdout.splash($(this)); }
+            stdout: function() { helpers.stdout.splash($(this)); },
+            tip: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+                if (settings.tipid<settings.tips.length) {
+                    $this.find("#ptip .tip"+(settings.tipid+1)).removeClass("s").addClass("f")
+                         .find(".content").html(helpers.format(settings.tips[settings.tipid]));
+                         
+                    settings.tipid++;
+                    $this.find("#tip>div").html(settings.tips.length-settings.tipid);
+                    if (settings.tipid<settings.tips.length) { $this.find("#ptip .tip"+(settings.tipid+1)).addClass("s"); }
+                    $this.find("#tipconfirm").hide();
+                    $this.find("#tippopup").css("opacity",1).show()
+                         .animate({opacity:0},1000,function() { $(this).hide(); });
+					settings.score--;
+                }
+            },
+			hnav: function(_elt, _val) {
+                var $this = $(this) , settings = helpers.settings($this);
+				if (!$(_elt).hasClass("d") && settings.interactive)
+				{
+					$(_elt).find(".up").hide();
+					settings.interactive = false; 
+					settings.hpage+=_val;
+					setTimeout(function() {
+						$this.find("#phelp .up").show();
+						settings.interactive = true;
+						helpers.uphelp($this);
+					}, 200);
+				}
+			}
 
         };
 

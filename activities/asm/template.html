@@ -16,7 +16,7 @@
                     <div class="a op" id="bcs">BCS</div>
                     <div class="a op" id="bne">BNE</div>
                     <div class="a op" id="beq">BEQ</div>
-                    <div class="a op" id="brk">BRK</div>
+                    <!-- <div class="a op" id="brk">BRK</div> -->
                     <div class="a op" id="cmp">CMP</div>
                     <div class="a op" id="cpx">CPX</div>
                     <div class="a op" id="cpy">CPY</div>
@@ -151,18 +151,281 @@
             </div>
             <div id="controls">
                 <div id="running" class="anim12"><div><img src="res/img/default/anim/gears01.svg" alt=""/></div></div>
+				
+
                 <div id="buttons">
-                    <div id="speed" ontouchstart="$(this).closest('.asm').asm('speed');event.preventDefault();"
-                                    onclick="$(this).closest('.asm').asm('speed');"><img src="res/img/control/x2.svg" alt=""/></div>
-                    <div id="stop" ontouchstart="$(this).closest('.asm').asm('stop');event.preventDefault();"
-                                   onclick="$(this).closest('.asm').asm('stop');"><img src="res/img/control/stop.svg" alt=""/></div>
-                    <div id="play" ontouchstart="$(this).closest('.asm').asm('play');event.preventDefault();"
-                                   onclick="$(this).closest('.asm').asm('play');"><img src="res/img/control/play.svg" alt=""/></div>
+<div id="lbut">
+<div id="speed" ontouchstart="$(this).closest('.asm').asm('speed');event.preventDefault();"
+                onclick="$(this).closest('.asm').asm('speed');" class="icon">
+    <img src="res/img/control/x2.svg" alt=""/>
+</div>
+<div id="stop" ontouchstart="$(this).closest('.asm').asm('stop');event.preventDefault();"
+               onclick="$(this).closest('.asm').asm('stop');" class="icon">
+    <img src="res/img/control/stop.svg" alt=""/>
+</div>
+<div id="help" ontouchstart="$(this).closest('.asm').find('#phelp').show();event.preventDefault();"
+               onclick="$(this).closest('.asm').find('#phelp').show();" class="icon">
+    <img src="res/img/control/about.svg" alt=""/>
+</div>
+<div id="tip" ontouchstart="$(this).closest('.asm').find('#ptip').show();event.preventDefault();"
+              onclick="$(this).closest('.asm').find('#ptip').show();" class="icon">
+    <img src="res/img/control/tip.svg" alt=""/>
+    <div>0</div>
+</div>
+</div>
+
+
+<div id="play" ontouchstart="$(this).closest('.asm').asm('play');event.preventDefault();"
+               onclick="$(this).closest('.asm').asm('play');" class="icon">
+    <img src="res/img/control/play.svg" alt=""/>
+</div>
                 </div>
             </div>
         </div>
     </div>
-    
+	
+	
+	<div id="ptip" ontouchstart="$(this).hide().find('#tipconfirm').hide();event.preventDefault();" onclick="$(this).hide().find('#tipconfirm').hide();"><div>
+        <div id="tippopup"><img src="res/img/default/popup/minus01.svg" alt=""/></div>
+        <div class="tip tip1" ontouchstart="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();event.preventDefault();" onclick="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();">
+            <div class="label">1</div>
+            <div id="tipc1" class="content"></div>
+        </div>
+        <div class="tip tip2" ontouchstart="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();event.preventDefault();" onclick="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();">
+            <div class="label">2</div>
+            <div id="tipc2" class="content"></div>
+        </div>
+        <div class="tip tip3" ontouchstart="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();event.preventDefault();" onclick="if ($(this).hasClass('s')) $(this).parent().find('#tipconfirm').show();event.stopPropagation();">
+            <div class="label">3</div>
+            <div id="tipc3" class="content"></div>
+        </div>
+        <div id="tipconfirm">
+            <div class="icon"
+                ontouchstart="$(this).closest('.asm').asm('tip');event.stopPropagation();event.preventDefault();"
+                onclick="$(this).closest('.asm').asm('tip');event.stopPropagation();">
+                <img src="res/img/default/icon/valid01.svg" alt=""/></div>
+            <div class="icon" ontouchstart="$(this).parent().hide();event.stopPropagation();event.preventDefault();" onclick="$(this).parent().hide();event.stopPropagation();"><img src="res/img/default/icon/cancel01.svg" alt=""/></div>
+            <div id="tipcc" class="label"></div>
+        </div>
+    </div></div>
+	
+	<div id="phelp"><div><div>
+	
+		<div id="phelpnav">
+			<div class="icon" ontouchstart="$(this).closest('#phelp').hide();event.preventDefault();"
+                  onclick="$(this).closest('#phelp').hide();"><img src="res/img/default/icon/nw_quit01.svg" alt="x"/></div>
+		</div>
+		
+		<div id="phelpbut">
+			<div class="icon" style="float:left;" id="phleft"
+				ontouchstart="$(this).closest('.asm').asm('hnav',this,-1);event.preventDefault();"
+                onclick="$(this).closest('.asm').asm('hnav',this,-1);">
+				<img src="res/img/default/control/left02.svg" alt="" class="up"/>
+                <img src="res/img/default/control/left02a.svg" alt="" class="down"/>
+			</div>
+			<div class="icon" style="float:right;" id="phright"
+				ontouchstart="$(this).closest('.asm').asm('hnav',this,1);event.preventDefault();"
+                onclick="$(this).closest('.asm').asm('hnav',this,1);">
+				<img src="res/img/default/control/right02.svg" alt="" class="up"/>
+                <img src="res/img/default/control/right02a.svg" alt="" class="down"/>
+			</div>
+		</div>
+	
+		<div id="ph0" class="phpage">
+			<div class="h1" id="phint"></div>
+			<div class="phbut">
+				<div class="icon"><img src="res/img/control/x2.svg" alt=""/></div>
+				<div id="phx2"></div>
+			</div>
+			<div class="phbut">
+				<div class="icon"><img src="res/img/control/stop.svg" alt=""/></div>
+				<div id="phstop"></div>
+			</div>
+			<div class="phbut">
+				<div class="icon"><img src="res/img/control/about.svg" alt=""/></div>
+				<div id="phabout"></div>
+			</div>
+			<div class="phbut">
+				<div class="icon"><img src="res/img/control/tip.svg" alt=""/></div>
+				<div id="phtip"></div>
+			</div>
+			<div class="phbut">
+				<div class="icon"><img src="res/img/control/play.svg" alt=""/></div>
+				<div id="phplay"></div>
+			</div>
+			
+			<div class="clear"></div><div class="h1" id="phreg"></div>
+			<div class="phbut b"><div class="icon">A</div><div id="phaba"></div></div>
+			<div class="phbut b"><div class="icon">X</div><div id="phabx"></div></div>
+			<div class="phbut b"><div class="icon">Y</div><div id="phaby"></div></div>
+			<div class="phbut b"><div class="icon">SP</div><div id="phabsp"></div></div>
+			<div class="phbut b"><div class="icon">PC</div><div id="phabpc"></div></div>
+			
+			<div class="clear"></div><div class="h1" id="phflag"></div>
+			<div class="phbut"><div class="icon">N</div><div id="phsign"></div></div>
+			<div class="phbut"><div class="icon">V</div><div id="phover"></div></div>
+			<div class="phbut"><div class="icon">B</div><div id="phbreak"></div></div>
+			<div class="phbut"><div class="icon">D</div><div id="phdec"></div></div>
+			<div class="phbut"><div class="icon">I</div><div id="phinh"></div></div>
+			<div class="phbut"><div class="icon">Z</div><div id="phzero"></div></div>
+			<div class="phbut"><div class="icon">C</div><div id="phcarry"></div></div>
+			
+		</div>
+		
+		
+		<div id="ph1" class="phpage">
+			<div class="h1" id="phadd"></div>
+			
+			<ul>
+			<li><div id="phimm"></div></li>
+			<li><div id="phzer"></div></li>
+			<li><div id="phzerx"></div></li>
+			<li><div id="phabs"></div></li>
+			<li><div id="phabsx"></div></li>
+			<li><div id="phind"></div></li>
+			<li><div id="phindx"></div></li>
+			<li><div id="phindy"></div></li>
+			<li><div id="phimpl"></div></li>
+			<li><div id="phrel"></div></li>
+			</ul>
+			
+		</div>
+	
+		<div id="ph2" class="phpage">
+			<div class="h1" id="phji1"></div>
+			<table>
+			
+			<tr class="h"><td></td><td></td>
+				<td><div class="c">Imm.</div></td>
+				<td><div class="c">Zéro</div></td>
+				<td><div class="c">ZéroX</div></td>
+				<td><div class="c">ZéroY</div></td>
+				<td><div class="c">Abs.</div></td>
+				<td><div class="c">Abs.X</div></td>
+				<td><div class="c">Abs.Y</div></td>
+				<td><div class="c">Ind.</div></td>
+				<td><div class="c">Ind.X</div></td>
+				<td><div class="c">Ind.Y</div></td>
+				<td><div class="c">Impl.</div></td>
+				<td><div class="c">Relat.</div></td>
+				<td><div class="cf">Flags</div></td>
+			</tr>
+			
+			<tr><td><div class="name">ADC</div></td><td><div class="label">Add with carry</div></td><td>69</td><td>65</td><td>75</td><td></td><td>6d</td><td>7d</td><td>79</td><td></td><td>61</td><td>71</td><td></td><td></td><td class="f">S V Z C</td></tr>
+			<tr><td><div class="name">AND</div></td><td><div class="label">bitwise AND with accumulator</div></td><td>29</td><td>25</td><td>35</td><td></td><td>2d</td><td>3d</td><td>39</td><td></td><td>21</td><td>31</td><td></td><td></td><td class="f">S Z</td></tr>
+			<tr><td><div class="name">ASL</div></td><td><div class="label">Arithmetic Shift Left</div></td><td></td><td>06</td><td>16</td><td></td><td>0e</td><td>1e</td><td></td><td></td><td></td><td></td><td>0a</td><td></td><td class="f">S Z C</td></tr>
+			<tr><td><div class="name">BIT</div></td><td><div class="label">Test BITs</div></td><td></td><td>24</td><td></td><td></td><td>2c</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="f">N V Z</td></tr>
+			<tr><td><div class="name">BPL</div></td><td><div class="label">Branch on Plus</div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>10</td><td class="f"></td></tr>
+			<tr><td><div class="name">BMI</div></td><td><div class="label">Branch on Minus</div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>30</td><td class="f"></td></tr>
+			<tr><td><div class="name">BVC</div></td><td><div class="label">Branch on oVerflow Clear</div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>50</td><td class="f"></td></tr>
+			<tr><td><div class="name">BVS</div></td><td><div class="label">Branch on oVerflow Set</div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>70</td><td class="f"></td></tr>
+			<tr><td><div class="name">BCC</div></td><td><div class="label">Branch on Carry Clear</div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>90</td><td class="f"></td></tr>
+			<tr><td><div class="name">BCS</div></td><td><div class="label">Branch on Carry Set</div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>b0</td><td class="f"></td></tr>
+			<tr><td><div class="name">BNE</div></td><td><div class="label">Branch on Not Equal</div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>d0</td><td class="f"></td></tr>
+			<tr><td><div class="name">BEQ</div></td><td><div class="label">Branch on Equal</div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>f0</td><td class="f"></td></tr>
+			<tr><td><div class="name">BRK</div></td><td><div class="label">Break</div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>00</td><td></td><td class="f">B</td></tr>
+			<tr><td><div class="name">CMP</div></td><td><div class="label">Compare accumulator</div></td><td>c9</td><td>c5</td><td>d5</td><td></td><td>cd</td><td>dd</td><td>d9</td><td></td><td>c1</td><td>d1</td><td></td><td></td><td class="f">S Z C</td></tr>
+			<tr><td><div class="name">CPX</div></td><td><div class="label">Compare X register</div></td><td>e0</td><td>e4</td><td></td><td></td><td>ec</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="f">S Z C</td></tr>
+			<tr><td><div class="name">CPY</div></td><td><div class="label">Compare Y register</div></td><td>c0</td><td>c4</td><td></td><td></td><td>cc</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="f">S Z C</td></tr>
+			<tr><td><div class="name">DEC</div></td><td><div class="label">Decrement memory</div></td><td></td><td>c6</td><td>d6</td><td></td><td>ce</td><td>de</td><td></td><td></td><td></td><td></td><td></td><td></td><td class="f">S Z</td></tr>
+			<tr><td><div class="name">EOR</div></td><td><div class="label">Bitwise exclusive OR</div></td><td>49</td><td>45</td><td>55</td><td></td><td>4d</td><td>5d</td><td>59</td><td></td><td>41</td><td>51</td><td></td><td></td><td class="f">S Z</td></tr>
+	  
+			</table>
+
+		</div>
+		
+		
+		<div id="ph3" class="phpage">
+			<div class="h1" id="phji2"></div>
+			<table>
+			
+			<tr class="h"><td></td><td></td>
+				<td><div class="c">Imm.</div></td>
+				<td><div class="c">Zéro</div></td>
+				<td><div class="c">ZéroX</div></td>
+				<td><div class="c">ZéroY</div></td>
+				<td><div class="c">Abs.</div></td>
+				<td><div class="c">Abs.X</div></td>
+				<td><div class="c">Abs.Y</div></td>
+				<td><div class="c">Ind.</div></td>
+				<td><div class="c">Ind.X</div></td>
+				<td><div class="c">Ind.Y</div></td>
+				<td><div class="c">Impl.</div></td>
+				<td><div class="c">Relat.</div></td>
+				<td><div class="cf">Flags</div></td>
+			</tr>
+			
+			<tr><td><div class="name">CLC</div></td><td><div class="label">Clear Carry</div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>18</td><td></td><td class="f">C</td></tr>
+			<tr><td><div class="name">SEC</div></td><td><div class="label">Set Carry</div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>38</td><td></td><td class="f">C</td></tr>
+			<tr><td><div class="name">CLI</div></td><td><div class="label">Clear Interrupt</div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>58</td><td></td><td class="f">I</td></tr>
+			<tr><td><div class="name">SEI</div></td><td><div class="label">Set Interrupt</div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>78</td><td></td><td class="f">I</td></tr>
+			<tr><td><div class="name">CLV</div></td><td><div class="label">Clear Overflow</div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>b8</td><td></td><td class="f">V</td></tr>
+			<tr><td><div class="name">CLD</div></td><td><div class="label">Clear Decimal</div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>d8</td><td></td><td class="f">D</td></tr>
+			<tr><td><div class="name">SED</div></td><td><div class="label">Set Decimal</div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>f8</td><td></td><td class="f">D</td></tr>
+			<tr><td><div class="name">INC</div></td><td><div class="label">Increment Memory</div></td><td></td><td>e6</td><td>f6</td><td></td><td>ee</td><td>fe</td><td></td><td></td><td></td><td></td><td></td><td></td><td class="f">S Z</td></tr>
+			<tr><td><div class="name">JMP</div></td><td><div class="label">Jump</div></td><td></td><td></td><td></td><td></td><td>4c</td><td></td><td></td><td>6c</td><td></td><td></td><td></td><td></td><td></td></tr>
+			<tr><td><div class="name">JSR</div></td><td><div class="label">Jump to SubRoutine</div></td><td></td><td></td><td></td><td></td><td>20</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+			<tr><td><div class="name">LDA</div></td><td><div class="label">Load Accumulator</div></td><td>a9</td><td>a5</td><td>b5</td><td></td><td>ad</td><td>bd</td><td>b9</td><td></td><td>a1</td><td>b1</td><td></td><td></td><td class="f">S Z</td></tr>
+			<tr><td><div class="name">LDX</div></td><td><div class="label">Load X Register</div></td><td>a2</td><td>a6</td><td></td><td>b6</td><td>ae</td><td></td><td>be</td><td></td><td></td><td></td><td></td><td></td><td class="f">S Z</td></tr>
+			<tr><td><div class="name">LDY</div></td><td><div class="label">Load Y Register</div></td><td>a0</td><td>a4</td><td>b4</td><td></td><td>ac</td><td>bc</td><td></td><td></td><td></td><td></td><td></td><td></td><td class="f">S Z</td></tr>
+			<tr><td><div class="name">LSR</div></td><td><div class="label">Logical Shift Right</div></td><td></td><td>46</td><td>56</td><td></td><td>4e</td><td>5e</td><td></td><td></td><td></td><td></td><td>4a</td><td></td><td class="f">S Z C</td></tr>
+			<tr><td><div class="name">NOP</div></td><td><div class="label">No Operation</div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>ea</td><td></td><td></td></tr>
+			<tr><td><div class="name">ORA</div></td><td><div class="label">Bitwise OR with accumulator</div></td><td>09</td><td>05</td><td>15</td><td></td><td>0d</td><td>1d</td><td>19</td><td></td><td>01</td><td>11</td><td></td><td></td><td class="f">S Z</td></tr>
+			<tr><td><div class="name">TAX</div></td><td><div class="label">Transfer A to X</div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>aa</td><td></td><td class="f">S Z</td></tr>
+			<tr><td><div class="name">TXA</div></td><td><div class="label">Transfer X to A</div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>8a</td><td></td><td class="f">S Z</td></tr>
+			<tr><td><div class="name">DEX</div></td><td><div class="label">Decrement X</div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>ca</td><td></td><td class="f">S Z</td></tr>
+			<tr><td><div class="name">INX</div></td><td><div class="label">Increment X</div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>e8</td><td></td><td class="f">S Z</td></tr>
+	  
+			</table>
+
+		</div>
+		
+		
+		
+		<div id="ph4" class="phpage">
+			<div class="h1" id="phji3"></div>
+			<table>
+			
+			<tr class="h"><td></td><td></td>
+				<td><div class="c">Imm.</div></td>
+				<td><div class="c">Zéro</div></td>
+				<td><div class="c">ZéroX</div></td>
+				<td><div class="c">ZéroY</div></td>
+				<td><div class="c">Abs.</div></td>
+				<td><div class="c">Abs.X</div></td>
+				<td><div class="c">Abs.Y</div></td>
+				<td><div class="c">Ind.</div></td>
+				<td><div class="c">Ind.X</div></td>
+				<td><div class="c">Ind.Y</div></td>
+				<td><div class="c">Impl.</div></td>
+				<td><div class="c">Relat.</div></td>
+				<td><div class="cf">Flags</div></td>
+			</tr>
+			
+      <tr><td><div class="name">TAY</div></td><td><div class="label">Transfer A to Y</div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>a8</td><td></td><td class="f">S Z</td></tr>
+<tr><td><div class="name">TYA</div></td><td><div class="label">Transfer Y to A</div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>98</td><td></td><td class="f">S Z</td></tr>
+<tr><td><div class="name">DEY</div></td><td><div class="label">Decrement Y</div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>88</td><td></td><td class="f">S Z</td></tr>
+<tr><td><div class="name">INY</div></td><td><div class="label">Increment Y</div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>c8</td><td></td><td class="f">S Z</td></tr>
+<tr><td><div class="name">ROL</div></td><td><div class="label">Rotate Left</div></td><td></td><td>26</td><td>36</td><td></td><td>2e</td><td>3e</td><td></td><td></td><td></td><td></td><td>2a</td><td></td><td class="f">S Z C</td></tr>
+<tr><td><div class="name">ROR</div></td><td><div class="label">Rotate Right</div></td><td></td><td>66</td><td>76</td><td></td><td>6e</td><td>7e</td><td></td><td></td><td></td><td></td><td>6a</td><td></td><td class="f">S Z C</td></tr>
+<tr><td><div class="name">RTI</div></td><td><div class="label">Return from Interrupt</div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>40</td><td></td><td class="f">all</td></tr>
+<tr><td><div class="name">RTS</div></td><td><div class="label">Return from subroutine</div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>60</td><td></td><td></td></tr>
+<tr><td><div class="name">SBC</div></td><td><div class="label">Subtract with carry</div></td><td>e9</td><td>e5</td><td>f5</td><td></td><td>ed</td><td>fd</td><td>f9</td><td></td><td>e1</td><td>f1</td><td></td><td></td><td class="f">S V Z C</td></tr>
+<tr><td><div class="name">STA</div></td><td><div class="label">Store Accumulator</div></td><td></td><td>85</td><td>95</td><td></td><td>8d</td><td>9d</td><td>99</td><td></td><td>81</td><td>91</td><td></td><td></td><td></td></tr>
+<tr><td><div class="name">TXS</div></td><td><div class="label">Transfer X to stack ptr</div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>9a</td><td></td><td></td></tr>
+<tr><td><div class="name">TSX</div></td><td><div class="label">Transfer stack ptr to X</div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>ba</td><td></td><td></td></tr>
+<tr><td><div class="name">PHA</div></td><td><div class="label">Push accumulator</div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>48</td><td></td><td></td></tr>
+<tr><td><div class="name">PLA</div></td><td><div class="label">Pull accumulator</div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>68</td><td></td><td></td></tr>
+<tr><td><div class="name">PHP</div></td><td><div class="label">Push processor status</div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>08</td><td></td><td></td></tr>
+<tr><td><div class="name">PLP</div></td><td><div class="label">Pull processor status</div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>28</td><td></td><td></td></tr>
+<tr><td><div class="name">STX</div></td><td><div class="label">Store X register</div></td><td></td><td>86</td><td></td><td>96</td><td>8e</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td><div class="name">STY</div></td><td><div class="label">Store Y register</div></td><td></td><td>84</td><td>94</td><td></td><td>8c</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+			</table>
+
+		</div>
+		
+    </div></div></div>
+
     <div id="it">
         <img id="itwrong" src="res/img/asset/misc/it01.svg" alt=""/>
         <img id="itgood" src="res/img/asset/misc/it02.svg" alt=""/>
@@ -188,8 +451,7 @@
 
     <div id="splashex" ontouchstart="$(this).hide().closest('.asm').asm('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.asm').asm('next');"><div>
-            <h1 id="label">asm</h1>
-            <div id="guide">
+            <h1 id="label"></h1>
         </div>
     </div></div>
 
