@@ -8,7 +8,7 @@
         <dct:identifier>001</dct:identifier>
         <dct:title xml:lang="fr-FR">Charger une valeur numérique dans le registre A.</dct:title>
         <dct:description><![CDATA["header":[{"label":"init","value":"","code":"A9A88501A900","rts":false}],"ops":["lda"],"args":[{"value":"01","type":"v"}],"nblines":1,"valid":{"a":"01"},"class":"large"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[strong]La syntaxe de cette activité fait que les valeurs numériques sont toujours précédées du signe #[/strong]","","[b]Chargez la valeur #0x01 dans le registre A.[/b]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[strong]En général, et afin de la différencier d'autres significations, une valeur numérique est précédée du signe #.[/strong]","","[b]Chargez la valeur #0x01 dans le registre A.[/b]"],"tips":["[b]Déplacer[/b] l'instruction [b]LDA[/b] et la valeur [b]#0x01[/b] dans la zone centrale.","Le code attendu est : [code]LDA #0x01[/code]","Il faut [b]cliquer[/b] sur l'icône de lecture en bas à droite pour lancer le programme une fois écrit."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -19,8 +19,8 @@
     <rdf:Description>
         <dct:identifier>002</dct:identifier>
         <dct:title xml:lang="fr-FR">Copier une valeur de la mémoire vers le registre A.</dct:title>
-        <dct:description><![CDATA["header":[{"label":"init","value":"","code":"A9A88501A900","rts":false}],"ops":["lda"],"args":[{"value":"01"}],"nblines":1,"valid":{"a":"A8"},"class":"large"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[strong]Lorsqu'un argument n'est pas précédé du signe #, il ne représente plus une valeur numérique, mais une adresse mémoire.[/strong]","","[b]Chargez la valeur contenue à l'adresse mémoire 0x01 dans le registre A.[/b] Dans le cas présent, la zone mémoire 0x01 contient la valeur 0xA8.","","De plus, il est à noter que la compilation de l'instruction [red]LDA[/red] n'est pas la même suivant le type d'argument:","[code] . A9 = LDA + une valeur numérique[br] . A5 = LDA + une addresse mémoire (ZP)[/code]"]]]></dct:description>
+        <dct:description><![CDATA["header":[{"label":"init","value":"","code":"A9FF8501A900","rts":false}],"ops":["lda"],"args":[{"value":"01"}],"nblines":1,"valid":{"a":"FF"},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[strong]Une valeur sans # ne représente plus une valeur numérique mais une adresse mémoire.[/strong]","","[b]Chargez la valeur contenue à l'adresse mémoire 0x01 dans le registre A.[/b] Dans le cas présent, la [red]zone mémoire 0x01[/red] contient la [red]valeur #0xFF[/red]."],"tips":["[b]Déplacer[/b] l'instruction [b]LDA[/b] et la valeur [b]0x01[/b] dans la zone centrale.","Le code attendu est : [code]LDA 0x01[/code]","Il faut [b]cliquer[/b] sur l'icône de lecture en bas à droite pour lancer le programme une fois écrit."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -31,8 +31,20 @@
     <rdf:Description>
         <dct:identifier>003</dct:identifier>
         <dct:title xml:lang="fr-FR">Copier des valeurs de la mémoire vers les registre A et X.</dct:title>
-        <dct:description><![CDATA["header":[{"label":"init","value":"","code":"A9A88501A900","rts":false}],"ops":["lda","ldx"],"args":[{"value":"01","type":"v"},{"value":"01"}],"nblines":2,"valid":{"a":"A8","x":"01"},"class":"large"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[strong]Les opérateurs LDA,LDX et LDY permettent de charger une valeur numérique dans leur registre respectif mais aussi, suivant l'argument utilisé, de charger une valeur de la mémoire.[/strong]","","Ainsi, [red]LDA #0xA8[/red] charge la valeur numérique 0XA8 dans le registre A tandis que [red]LDA 0xA8[/red] va chercher la valeur contenue dans la zone mémoire 0xA8 et copie celle-ci dans le registre A.","","[strong]La mémoire du processeur est un ensemble de petites cases numérotées de 0x00 à 0xFFFF pouvant chacune contenir un octet.[/strong]","","[b]Chargez la valeur numérique 0x01 dans le registre X et la valeur contenue à l'adresse mémoire 0x01 dans le registre A.[/b]"]]]></dct:description>
+        <dct:description><![CDATA["header":[{"label":"init","value":"","code":"A90F8501A900","rts":false}],"ops":["lda","ldx"],"args":[{"value":"01","type":"v"},{"value":"01"}],"nblines":2,"valid":{"a":"0F","x":"01"},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[strong]Les opérateurs LDA,LDX et LDY permettent de charger une valeur numérique dans leur registre respectif mais aussi de charger une valeur de la mémoire.[/strong]","","Ainsi, [red]LDA #0xA8[/red] charge la valeur numérique [b]#0xA8[/b] dans le registre A tandis que [red]LDA 0xA8[/red] va charger la valeur contenue dans la zone mémoire [b]0xA8[/b] dans le registre A.","","[b]Chargez les valeurs suivantes :[/b]","[code]. #0x01 dans le registre X[br]. 0x01 dans le registre A (ici #0x0F)[/code]"],"tips":["Il est important de bien différencier [b]une valeur[/b] d'[b]une adresse mémoire[/b].","[b]#0x01[/b] est une [red]valeur[/red].[br][b]0x01[/b] est une [red]adresse mémoire[/red].","Le code attendu est :[br][code]LDX #0x01[br]LDA 0x01[/code]"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>004</dct:identifier>
+        <dct:title xml:lang="fr-FR">Copier des valeurs de la mémoire vers les registre A et X.</dct:title>
+        <dct:description><![CDATA["header":[{"label":"init","value":"","code":"A9FF8501A9F08502A900","rts":false}],"ops":["lda","ldx"],"args":[{"value":"01","type":"v"},{"value":"01"},{"value":"02","type":"v"},{"value":"02"}],"nblines":2,"valid":{"a":"ff","x":"f0"},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["La mémoire du processeur 6502 s'étend de [b]0x0000[/b] à [b]0xFFFF[/b] soit [i]64 Kilo-Octets[/i]. Ce sont donc environ 64 000 petites cases (65 536 pour être précis) dans lesquelles il va être possible de stocker un octet, c'est-à-dire une valeur de 0 à 255 (ou de #0x00 à #0xFF).","La zone mémoire s'étendant de [b]0x00[/b] à [b]0xFF[/b] (ou 0x0000 à 0x00FF) est appelée la [b]page zéro[/b]. Elle est plus facilement accessible et doit être privilégiée.","","[b]Chargez les valeurs suivantes :[/b]","[code]. 0x02 dans le registre X (ici #0xF0)[br]. 0x01 dans le registre A (ici #0xFF)[/code]"],"tips":["Il est important de bien différencier [b]une valeur[/b] d'[b]une adresse mémoire[/b].","[b]#0x01[/b] est une [red]valeur[/red].[br][b]0x01[/b] est une [red]adresse mémoire[/red].","Le code attendu est :[br][code]LDX 0x02[br]LDA 0x01[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -44,7 +56,7 @@
         <dct:identifier>005</dct:identifier>
         <dct:title xml:lang="fr-FR">Copier la valeur de la zone mémoire 0xFD vers le registre A et récupérer ainsi un nombre aléatoire.</dct:title>
         <dct:description><![CDATA["ops":["lda"],"args":[{"value":"FD"}],"nblines":1,"valid":{"mem":{"1000":"A5FD"}},"class":"large"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Parmi toutes les adresses accessibles depuis ce simulateur de langage assembleur, certaines d'entre elles ont des [b]comportements spécifiques[/b]. Elles sont d'ailleurs listées dans la sortie standard en haut à droite.","","Ainsi l'adresse mémoire 0xFD contient [b]un nombre aléatoire[/b] constament renouvellé.","","[b]Chargez un nombre aléatoire dans le registre A.[/b]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Parmi toutes les adresses accessibles depuis ce simulateur de langage assembleur, certaines d'entre elles ont des [b]comportements spécifiques[/b]. Elles sont d'ailleurs listées dans la sortie standard en haut à droite.","","Ainsi l'adresse mémoire 0xFD contient [b]un nombre aléatoire[/b] constament renouvellé.","","[b]Chargez un nombre aléatoire dans le registre A[/b] et observez le résultat obtenu."],"tips":["[b]Déplacer[/b] l'instruction [b]LDA[/b] et l'adresse mémoire [b]0xFD[/b] dans la zone centrale.","Le code attendu est : [code]LDA 0xFD[/code]","Il faut [b]cliquer[/b] sur l'icône de lecture en bas à droite pour lancer le programme une fois écrit."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -55,8 +67,8 @@
     <rdf:Description>
         <dct:identifier>006</dct:identifier>
         <dct:title xml:lang="fr-FR">Copier la valeur de la zone mémoire 0x15A6 vers le registre A.</dct:title>
-        <dct:description><![CDATA["header":[{"label":"init","value":"","code":"A9568DA615","rts":false}],"ops":["lda"],"args":[{"value":"15A6"},{"value":"15A6","type":"v"}],"nblines":1,"valid":{"a":"56"},"class":"large"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Avec le processeur 6502, les adresses mémoires sont codées sur [b]2 octets[/b]. Il est donc possible d'accéder de #0000 à #FFFF soit une mémoire disponible de (256*256 = 64Ko).","","[b]Charger dans le registre A la valeur contenue à l'adresse 0x15A6.[/b]"]]]></dct:description>
+        <dct:description><![CDATA["header":[{"label":"init","value":"","code":"A9568DA615A900","rts":false}],"ops":["lda"],"args":[{"value":"15A6"},{"value":"15A6","type":"v"}],"nblines":1,"valid":{"a":"56"},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Les adresses mémoires de la [b]page zéro[/b] sont codées sur [b]1 octet[/b] (de 0x00 à 0xFF). Au-delà, les adresses mémoires sont codées sur 2 octés (de 0x0100 à 0xFFFF).","","[b]Charger dans le registre A la valeur contenue à l'adresse 0x15A6[/b] (ici #0x56)."],"tips":["[b]Déplacer[/b] l'instruction [b]LDA[/b] et l'adresse mémoire [b]0x15A6[/b] dans la zone centrale.","Le code attendu est : [code]LDA 0x15A6[/code]","Il faut [b]cliquer[/b] sur l'icône de lecture en bas à droite pour lancer le programme une fois écrit."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -66,9 +78,9 @@
 
     <rdf:Description>
         <dct:identifier>007</dct:identifier>
-        <dct:title xml:lang="fr-FR">Copier la valeur de la zone mémoire 0x01 vers le registre X et 0x02 vers le registre Y.</dct:title>
-        <dct:description><![CDATA["header":[{"label":"init","value":"","code":"A9038501A9048502A900","rts":false}],"ops":["ldx","ldy"],"args":[{"value":"01"},{"value":"02"}],"nblines":2,"valid":{"x":"03","y":"04"},"class":"large"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["La mémoire d'un processeur peut être vu comme un ensemble de [b]petits paniers numérotés[/b]. Avec le processeur 6502, nous avons 65 536 paniers à disposition, numérotés de 0 (0x00) à 65535 (0xFFFF). Chaque panier peut contenir jusqu'à 255 pommes. [blue]Il est important de bien comprendre la différence entre le numéro du panier (l'adresse mémoire) et le nombre de pommes que contient le panier (la valeur)[/blue].","","[b]Chargez dans le registre X les #0x03 pommes contenues dans le panier 0x01 et dans le registre Y, les #0x04 pommes contenues dans le panier 0x02.[/b]"]]]></dct:description>
+        <dct:title xml:lang="fr-FR">Copier certaines valeurs de la zone mémoire vers les différents registres.</dct:title>
+        <dct:description><![CDATA["header":[{"label":"init","value":"","code":"A9FF8D0215A9F08501A90F8502A900","rts":false}],"ops":["lda","ldx","ldy"],"args":[{"value":"01"},{"value":"01","type":"v"},{"value":"02"},{"value":"02","type":"v"},{"value":"1502"},{"value":"1502","type":"v"}],"nblines":3,"valid":{"a":"FF","x":"0F","y":"01"},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Chargez les valeurs suivantes :[/b]","[code]. 0x02 de la page zéro de la mémoire dans le registre X.[br][br]. la valeur #0x01 dans le registre Y.[br][br]. 0x1502 de la mémoire dans le registre A.[/code]"],"tips":["[b]0x02[/b] et [b]0x1502[/b] sont des [red]adresses mémoires[/red]. [b]#0x01[/b] est un [red]valeur[/red].","[b]#0x01[/b] représente la [b]valeur 1[/b]. [b]0x01[/b] représente la [b]valeur stockée[/b] à l'adresse mémoire [b]0x01[/b].","Le code attendu est :[code]LDX 0x02[br]LDY #0x01[br]LDA 0x1502[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
