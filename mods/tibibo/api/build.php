@@ -48,6 +48,10 @@ if (!$error) {
                             ' (`Book_Name`) ON UPDATE CASCADE ON DELETE CASCADE,'.
                             ' PRIMARY KEY ( `Book_Name`, `User_Key`, `Node_Id` )) ENGINE=InnoDB');
         }
+		
+		
+		$a=mysqli_query($link, "SELECT count(`Book_Name`) FROM `".$_SESSION['prefix']."book`");
+        $nb=mysqli_fetch_array($a);
 
         $status = "success";
     }
@@ -58,6 +62,7 @@ echo '{';
 if (isset($status))             { echo '  "status" : "'.$status.'",'; }
 if (isset($error) && ($error))  { echo '  "error" : '.$error.','; }
 if (isset($textstatus))         { echo '  "textStatus" : "'.$textstatus.'",'; }
+if (isset($nb))         		{ echo '  "nbcourses" : "'.$nb[0].'",'; }
 echo '  "from" : "mods/tibibo/api" }';
 
 

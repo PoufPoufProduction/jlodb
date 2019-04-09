@@ -43,7 +43,7 @@
         #jlcontent>.jlcontent li .icon      { position:absolute; top:0; width:1.5em; height:1.5em; }
         #jlcontentb                         { display:none; }
 
-        #jlodb .iflogged>div    { margin:.3em; }
+        
         #jlodb #buildlog        { font-size:.2em; }
 
         
@@ -69,18 +69,19 @@
         #jlodb #mods #list                  { overflow:auto; height:26em; width:52em; }
         #jlodb #mods .mod                   { clear:both; margin:.5em; }
         #jlodb #mods .mod>div               { float:left; }
-        #jlodb #mods .action                { float:right; color:white; background-color:#555; border-radius:.5em;
-                                              padding:0 1em; margin-right:1em; cursor:pointer; display:none; }
-        #jlodb #mods .action.success        { background-color:green; }
-        #jlodb #mods .action.failed         { background-color:red; }
-        body>div.logged #jlodb #mods .action { display:inherit; }
-        #jlodb #mods .mod .snap          { position:absolute; width:1em; height:1em; font-size:1.5em; cursor:pointer; top:4em;
-                                        left:25.2em; }
+		#jlodb #mods .button				{ float:right; background-color:#555; border-radius:.2em;
+                                              padding:0 .1em; margin-left:.1em; font-size:3em; height:2.3em; width:1em; }
+		#jlodb #mods .button>div			{ width:1em; height:1em; cursor:pointer; }
+		
+        body #jlodb #mods .admin 			{ display:none; }
+        body>div.logged #jlodb #mods .admin { display:inherit; }
+        
         #jlodb #mods .mod .snap.s2          { left:24em; }
-        #jlodb #mods .mod .icon             { font-size:8em; }
+        #jlodb #mods .mod>.icon             { font-size:8em; }
         #jlodb #mods .mod .text             { width:39em; height:7em; text-align:justify; overflow:hidden; vertical-align:top; 
                                               padding:.5em; background-color: #888; border-radius:0.5em; color:white; margin-left:.5em;
                                                 position:relative;}
+		#jlodb #mods .mod.ko .button		{ background-color:#800; }
 
         #jlodb #apps                        { font-size:.25em; text-align:justify; }
         #jlodb #apps .icon                  { width:1em; height:1em; float:left; cursor:pointer; margin:.1em; font-size:5em; }
@@ -129,19 +130,20 @@
         #jlodb .navigation #build           { display:none; }
 
 
-		#jlodb #jladmin					{ font-size:0.5em; }
 		#jlodb #jladmin .label			{ width:8em; float:left; margin-left:.5em; }
 		#jlodb #jladmin input           { background-color:#888; font-size:1em; color:#EEE; width:12em; padding-left:2em;border:0;height:1.2em;margin:0;}
 		
 		#jlodb #jladmin .login          { background-color:#444; font-size:2.4em; color:#EEE; width:1em; height:1em; text-align:center; cursor:pointer; margin:.05em 0 0 .2em; float:left; border-radius:0.5em;  }
-		#jlodb #jladmin .logout         { background-color:#444; color:#EEE; width:25em; height:1.2em; text-align:center; cursor:pointer; }
+		#jlodb #jladmin .logout         { background-color:#444; color:#EEE; width:95%; height:1.2em; text-align:center; cursor:pointer; }
 		
-        #jlodb #jladmin .lang        {  background-color:#555; font-size:1em; float:left; color:#EEE; width:8em; height:1.2em; text-align:center; cursor:pointer; border:0;  }
-		
-        #jlodb #jladmin .install        {  background-color:#888; font-size:1em; float:left; color:#EEE; width:16em; height:1.2em; text-align:center; cursor:pointer;  }
-        #jlodb #jladmin #lockjlodb      { background-color:#555; font-size:1em; float:left; color:#EEE; width:1em; height:1.2em; text-align:center; cursor:pointer;  }
+        #jlodb #jladmin #lockjlodb      { background-color:#555; font-size:1em; float:left; color:#EEE; width:4%; height:1.2em; text-align:center; cursor:pointer;  }
         #jlodb #jladmin #lockjlodb>div   { width:1em;height:1em;margin:0.1em 0; }
 		
+		#jlodb .padmin					{ font-size:0.5em; }
+		#jlodb .padmin .preinstall		{ background-color:#555; font-size:1em; float:left; color:#EEE; width:35%; height:1.2em; text-align:center; cursor:pointer; border:0;  }
+		#jlodb .padmin select.preinstall { width:31%; }
+		#jlodb .padmin .install        {  background-color:#888; font-size:1em; float:left; color:#EEE; width:60%; height:1.2em; text-align:center; cursor:pointer;  }
+		#jlodb .padmin .h1				{ background-color:#444; color:white; width:95%; text-align:center; }
 
         #jlodb #mask                        { position:absolute; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5);
                                               display:none; }
@@ -205,18 +207,26 @@ jlodb = {
                     function(response, status, xhr) {
                         $.getJSON("api/mods.php", function (data) {
                             for (var i=0; i<data.mods.length; i++) {
-                                var html ="<div class='mod' id='"+data.mods[i].id+"'><div class='icon'><a href='"+
+
+								var isOk = jlodb.checkdb[data.mods[i].id];
+                                var html ="<div class='"+(isOk?"mod":"mod ko")
+										+"' id='"+data.mods[i].id+"'><div class='icon'><a href='"+
                                           data.mods[i].id+".html' target='blank'>";
                                 html    +="<img src='mods/"+data.mods[i].id+"/icon.svg' alt=''/></a></div>";
                                 html    +="<div class='text'>";
-                                html    +="<div class='snap' onclick=\"window.open('"+data.mods[i].id+".html',"+
-                                          "'_blank', 'width=640, height=480,toolbar=no,location=no,status=no,menubar=no," +
-                                          "scrollbars=no,resizable=no,status=no,titlebar=no');\">"+
-                                          "<img src='res/img/default/white/snapshot.svg' alt='s'/></div>";
+								html	+="<div class='button'>";
                                 if (data.mods[i].source.length) {
-                                    html+="<div class='action' id='"+data.mods[i].source+
-                                          "' onclick='jlodb.page.mods.build(this);'>+</div>";
+                                    html+="<div class='admin' id='"+data.mods[i].source+
+                                          "' onclick='jlodb.page.mods.admin(\""+data.mods[i].id+"\");'><img src='res/img/default/white/settings.svg' alt='s'/></div>";
                                 }
+								if (isOk)
+								{
+									html    +="<div onclick=\"window.open('"+data.mods[i].id+".html',"+
+											  "'_blank', 'width=640, height=480,toolbar=no,location=no,status=no,menubar=no," +
+											  "scrollbars=no,resizable=no,status=no,titlebar=no');\">"+
+											  "<img src='res/img/default/white/snapshot.svg' alt='s'/></div>";
+								}
+								html	+="</div>";
                                 html    +="<h2>"+data.mods[i].name+"</h2>";
                                 html    +="<p>"+data.mods[i].abstract+"</p></div>";
                                 html    +="</div>";
@@ -225,6 +235,23 @@ jlodb = {
                         });
                 }).show();
             },
+			admin: function(_mod) {
+				$("#jlcontent>div").hide();
+				$("#jlcontenta").load(
+						"mods/"+_mod+"/locale/"+jlodb.checkdb.lang+"/admin.html"+"?debug="+Math.floor(Math.random()*99999), function(response, status, xhr) {
+					$.getJSON("mods/"+_mod+"/api/check.php", function(_data) {
+						$("#nbvalues").html(_data.nbcourses==-1?"---":_data.nbcourses);
+					});
+				}).show();
+			},
+			install: function(_mod) {
+				$("#waiting").show().find("div").addClass("running");
+				$.getJSON("mods/"+_mod+"/api/build.php", function(_data) {
+					$("#waiting").hide().find("div").removeClass("running");
+					jlodb.checkdb[_mod] = data.error?false:true;
+					jlodb.page.mods.admin(_mod);
+				});
+			},
             build: function(_elt) {
                 $.getJSON("mods/"+$(_elt).closest(".mod").attr("id")+"/api/"+$(_elt).attr("id")+".php", function (data) {
                     $(_elt).removeClass("success").removeClass("failed").addClass(data.status);
@@ -335,7 +362,7 @@ jlodb = {
 					var lang = jlodb.checkdb.lang;
 					if (!lang) { lang="zxx"; }
                     $("#jlcontent>div").hide();
-                    $("#jlcontenta").load("locale/"+lang+"/admin.html",function() {
+                    $("#jlcontenta").load("locale/"+lang+"/admin.html"+"?debug="+Math.floor(Math.random()*99999),function() {
                         $("#lockjlodb img").attr("src","res/img/icon/"+(jlodb.checkdb.lock?"lock":"unlock")+".svg");
                     }).show(); });
             },

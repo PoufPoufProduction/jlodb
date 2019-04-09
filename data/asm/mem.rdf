@@ -94,7 +94,7 @@
         <dct:identifier>051</dct:identifier>
         <dct:title xml:lang="fr-FR">En utilisant le registre A, copier la valeur #0xFF vers la zone mémoire 0x01.</dct:title>
         <dct:description><![CDATA["ops":["lda","sta"],"args":[{"value":"FF","type":"v"},{"value":"01"}],"nblines":2,"valid":{"a":"FF","mem":{"01":"FF"}},"class":"large"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Si [red]LDA[/red] copie la valeur contenue dans une zone mémoire vers le registre A, l'opérateur [red]STA[/red] exécute l'opération inverse, c'est à dire, qu'il copie la valeur contenue dans le registre A vers une zone mémoire.","","Ainsi [red]STA 0x01[/red] copie la valeur du registre A vers la zone mémoire d'adresse 0x01.","","[b]Chargez la valeur #0xFF dans le registre A et copiez celle-ci dans la zone mémoire 0x01.[/b]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Si [red]LDA[/red] copie la valeur contenue dans une zone mémoire vers le registre A, l'opérateur [red]STA[/red] exécute l'opération inverse, c'est à dire, qu'il copie la valeur contenue dans le registre A vers une zone mémoire.","","Ainsi [red]STA 0x01[/red] copie la valeur du registre A vers la zone mémoire d'adresse 0x01.","","[b]Chargez la valeur #0xFF dans le registre A et copiez celle-ci dans la zone mémoire 0x01.[/b]"],"tips":["Avant de la copier en mémoire, il faut charger la valeur [b]#0xFF[/b] dans le [b]registre A[/b] avec [b]LDA[/b].","[b]STA 0x01[/b] permet de copier la valeur du [b]registre A[/b] à l'adresse [b]0x01[/b].","Le code attendu est :[code]LDA #0xFF[br]STA 0x01[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -106,7 +106,7 @@
         <dct:identifier>052</dct:identifier>
         <dct:title xml:lang="fr-FR">En utilisant le registre X, copier la valeur #0xFE vers la zone mémoire 0x02.</dct:title>
         <dct:description><![CDATA["ops":["lda","tax","stx"],"args":[{"value":"FE","type":"v"},{"value":"02"}],"nblines":3,"valid":{"mem":{"02":"FE"}},"class":"large"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["L'opérateur [red]STA[/red] copie la valeur contenue dans le registre A vers une zone mémoire. L'opérateur [red]STX[/red] réalise la même opération mais depuis le registre X.","","[b]Affectez la valeur 0xFE à la zone mémoire 0x02.[/b]","","A propos, l'opération [red]STX #0xFE[/red] crée une [b]erreur de compilation[/b] car elle n'a aucun sens : on ne peut transférer le contenu d'un registre sur une valeur numérique ! On ne peut le faire qu'en direction d'une adresse mémoire."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["L'opérateur [red]STA[/red] copie la valeur contenue dans le registre A vers une zone mémoire. L'opérateur [red]STX[/red] réalise la même opération mais depuis le registre X.","","[b]Affectez la valeur 0xFE à la zone mémoire 0x02.[/b]","","A propos, l'opération [red]STX #0xFE[/red] crée une [b]erreur de compilation[/b] car elle n'a aucun sens : on ne peut transférer le contenu d'un registre sur une valeur numérique ! On ne peut le faire qu'en direction d'une adresse mémoire."],"tips":["Avant de la copier en mémoire, il faut charger la valeur [b]#0xFE[/b] dans le [b]registre X[/b] avec [b]LDA[/b] et [b]TAX[/b].","[b]STX 0x02[/b] permet de copier la valeur du [b]registre X[/b] à l'adresse [b]0x02[/b].","Le code attendu est :[code]LDA #0xFE[br]TAX[br]STX 0x02[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -118,7 +118,7 @@
         <dct:identifier>053</dct:identifier>
         <dct:title xml:lang="fr-FR">Copier la valeur du registre A vers le registre Y en passant par une zone de la mémoire.</dct:title>
         <dct:description><![CDATA["header":[{"label":"init","value":"","code":"A912","rts":false}],"ops":["sta","ldy"],"args":[{"value":"15A6"}],"nblines":2,"valid":{"y":"12"},"class":"large"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Copiez la valeur contenue dans le registre A vers le registre Y.[/b]","","Comme [red]TAY[/red] n'est [b]pas disponible[/b], utilisez la zone mémoire [b]0x15A6 comme intermédiaire[/b]."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Copiez la valeur contenue dans le registre A vers le registre Y.[/b]","","Comme [red]TAY[/red] n'est [b]pas disponible[/b] ici, utilisez la zone mémoire [b]0x15A6 comme intermédiaire[/b]."],"tips":["Dans un premier temps, copier la valeur du [b]registre A[/b] dans la zone mémoire [b]0x15A6[/b] avec [b]STA[/b].","Copier ensuite la valeur de la zone mémoire [b]0x15A6[/b] dans le [b]registre Y[/b] avec [b]LDY[/b]","Le code attendu est :[code]STA 0x15A6[br]LDY 0x15A6[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -129,8 +129,8 @@
     <rdf:Description>
         <dct:identifier>054</dct:identifier>
         <dct:title xml:lang="fr-FR">Echanger la valeur du registre A et du registre Y en utilisant une zone de la mémoire.</dct:title>
-        <dct:description><![CDATA["header":[{"label":"init","value":"","code":"A955A066","rts":false}],"ops":["sta","ldy","tay","tya"],"args":[{"value":"01"}],"nblines":3,"valid":{"y":"55","a":"66"},"class":"large"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Echangez la valeur contenue dans le registre A avec celle contenue dans le registre Y.[/b]","","Pour échanger ces 2 valeurs :",". Copier la valeur du registre A dans une [b]variable temporaire[/b]. Ici, la zone mémoire 0x01.",". Transférer la valeur du registre Y vers le registre A. [b]La valeur du registre A est écrasée.[/b] Heureusement elle a été sauvé en 0x01.",". Copier la valeur de la variable temporaire vers le registre Y."]]]></dct:description>
+        <dct:description><![CDATA["header":[{"label":"init","value":"","code":"A955A066","rts":false}],"ops":["sta","ldy","tya"],"args":[{"value":"01"}],"nblines":3,"valid":{"y":"55","a":"66"},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Echangez[/b] les valeurs des [b]registres A et Y[/b] en procédant ainsi :","[br]. [b]Charger[/b] la valeur du registre A dans une [b]variable temporaire[/b]. Ici, la zone [red]mémoire 0x01[/red].","[br]. [b]Transférer[/b] la valeur du registre Y vers le registre A. [b]La valeur du registre A est écrasée.[/b] Heureusement elle a été sauvé en 0x01.","[br]. [b]Charger[/b] la valeur de la variable temporaire dans le registre Y."],"tips":["La démarche à suivre est détaillée dans l'énoncé : [red]chaque point correspond à une commande précise[/red].","L'ordre des commandés à appeler est [b]STA[/b], [b]TYA[/b] et [b]LDY[/b].","Le code attendu est :[code]STA 0x01[br]TYA[br]LDY 0x01[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -142,7 +142,7 @@
         <dct:identifier>055</dct:identifier>
         <dct:title xml:lang="fr-FR">Echanger la valeur du registre A et du registre Y en utilisant une zone de la mémoire.</dct:title>
         <dct:description><![CDATA["header":[{"label":"init","value":"","code":"A911A2FF","rts":false}],"ops":["sta","ldx","tax","txa"],"args":[{"value":"01"}],"nblines":3,"valid":{"x":"11","a":"FF"},"class":"large"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Echangez la valeur contenue dans le registre A avec celle contenue dans le registre X.[/b]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Echangez[/b] les valeurs des [b]registres A et X[/b]"],"tips":["[b]Chargez[/b] la valeur du [b]registre A[/b] dans la zone mémoire [b]0x01[/b]. [b]Transférez[/b] la valeur de [b]X[/b] vers [b]A[/b].","[b]Chargez[/b] la valeur de la zone mémoire [b]0x01[/b] dans le [b]registre X[/b].","Le code attendu est :[code]STA 0x01[br]TXA[br]LDX 0x01[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -154,7 +154,7 @@
         <dct:identifier>056</dct:identifier>
         <dct:title xml:lang="fr-FR">Echanger la valeur du registre A et du registre Y en utilisant une zone de la mémoire.</dct:title>
         <dct:description><![CDATA["header":[{"label":"init","value":"","code":"A933A222","rts":false}],"ops":["stx","lda","tax","txa"],"args":[{"value":"01"}],"nblines":3,"valid":{"x":"33","a":"22"},"class":"large"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Echangez la valeur contenue dans le registre A avec celle contenue dans le registre X.[/b]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Echangez[/b] les valeurs des [b]registres A et X[/b]"],"tips":["[b]Chargez[/b] la valeur du [b]registre X[/b] dans la zone mémoire [b]0x01[/b]. [b]Transférez[/b] la valeur de [b]A[/b] vers [b]X[/b].","[b]Chargez[/b] la valeur de la zone mémoire [b]0x01[/b] dans le [b]registre A[/b].","Le code attendu est :[code]STX 0x01[br]TAX[br]LDA 0x01[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -168,7 +168,7 @@
         <dct:identifier>101</dct:identifier>
         <dct:title xml:lang="fr-FR">En utilisant le registre A, copier la valeur #0x41 vers la zone mémoire 0xFE et afficher ainsi un caractère sur la sortie standard.</dct:title>
         <dct:description><![CDATA["ops":["lda","sta"],"args":[{"value":"41","type":"v"},{"value":"fe"}],"nblines":2,"valid":{"a":"41","mem":{"FE":"41"}},"class":"large"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Il est possible de changer la valeur de n'importe quelle partie de la mémoire (de #0000 à #FFFF). Seulement, il faut être prudent car certains zones mémoires sont déjà utilisées par des fonctionnalités spécifiques.","","[b]Copiez la valeur 0x41 vers la zone mémoire 0xFE et observez ce qu'il se passe sur l'écran en haut à droite.[/b]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["S'il est possible de [b]changer[/b] la valeur de n'importe quelle partie de la [b]mémoire[/b] (de #0000 à #FFFF), il est important de rester prudent car certains zones mémoires sont utilisées par des [b]fonctionnalités spécifiques[/b].","","[b]Copiez[/b] la valeur [b]#0x41[/b] vers la [b]zone mémoire 0xFE[/b] et observez ce qu'il se passe sur l'[b]écran[/b] en haut à droite."],"tips":["Avant de la copier en mémoire, il faut charger la valeur [b]#0x41[/b] dans le [b]registre A[/b] avec [b]LDA[/b].","[b]STA 0xFE[/b] permet de copier la valeur du [b]registre A[/b] à l'adresse [b]0xFE[/b].","Le code attendu est :[code]LDA #0x41[br]STA 0xFE[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -180,7 +180,7 @@
         <dct:identifier>102</dct:identifier>
         <dct:title xml:lang="fr-FR">Envoyer le mot 'ABC' vers la sortie standard.</dct:title>
         <dct:description><![CDATA["ops":["lda","sta"],"args":[{"value":"41","type":"v"},{"value":"42","type":"v"},{"value":"43","type":"v"},{"value":"fe"}],"nblines":6,"valid":{"out":"ABC"},"class":"large"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[strong]Toute valeur stockée à l'adresse mémoire 0xFE est affichée suivant son code ASCII dans la sortie standard en haut à droite.[/strong]","","Le code ASCII fait correspondre un caractère à une valeur. Ainsi A=0x41, B=0x42, C=0x43, etc.","","[b]Affichez ABC dans l'écran de sortie standard.[/b]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[strong]Toute valeur stockée à l'adresse mémoire 0xFE est affichée suivant son code ASCII dans la sortie standard en haut à droite.[/strong]","","Le code ASCII fait correspondre un caractère à une valeur. Ainsi A=#0x41, B=#0x42, C=#0x43, etc.","","[b]Affichez ABC dans l'écran de sortie standard.[/b]"],"tips":["Pour charger une valeur en mémoire, il faut au préalable la [b]charger[/b] dans un registre puis la [b]stocker[/b].","Il faut charger dans le [b]registre A[/b] les valeurs #0x41, #0x42 et #0x43 et les stocker en [b]0xFE[/b].","Le code attendu est :[code]LDA #0x41[br]STA 0xFE[br]LDA #0x42[br]STA 0xFE[br]LDA #0x43[br]STA 0xFE[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -192,7 +192,7 @@
         <dct:identifier>103</dct:identifier>
         <dct:title xml:lang="fr-FR">Envoyer le mot 'HELLO' vers la sortie standard.</dct:title>
         <dct:description><![CDATA["ops":["lda","sta"],"args":[{"value":"45","type":"v"},{"value":"48","type":"v"},{"value":"4C","type":"v"},{"value":"4F","type":"v"},{"value":"fe"}],"nblines":9,"valid":{"out":"HELLO"}]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[code]0x45 = E[br]0x48 = H[br]0x4C = L[br]0x4F = O[/code]","","[b]Ecrivez \\\"HELLO\\\" dans la sortie standard.[/b]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[code]0x45 = E[br]0x48 = H[br]0x4C = L[br]0x4F = O[/code]","","[b]Ecrivez \\\"HELLO\\\" dans la sortie standard.[/b]"],"tips":["Pour charger une valeur en mémoire, il faut au préalable la [b]charger[/b] dans un registre puis la [b]stocker[/b].","Il faut charger dans le [b]registre A[/b] les valeurs #0x48, #0x45, #0x4C et #0x4F et les stocker en [b]0xFE[/b].","[code]LDA #0x48[br]STA 0xFE[br]LDA #0x45[br]STA 0xFE[br]LDA #0x4C[br]STA 0xFE[br]STA 0xFE[br]...[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -207,7 +207,7 @@
         <dct:identifier>151</dct:identifier>
         <dct:title xml:lang="fr-FR">En utilisant le registre A, copier la valeur #0xFF vers certaines zones mémoires d'un écran 16x16x256 et éclairer ainsi les 4 pixels du coin supérieur gauche.</dct:title>
         <dct:description><![CDATA["ops":["lda","sta"],"args":[{"value":"FF","type":"v"},{"value":"0200"},{"value":"0201"},{"value":"0210"},{"value":"0211"}],"nblines":5,"valid":{"mem":{"200":"FFFF","210":"FFFF"}},"class":"large"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[strong]La zone mémoire commençant à l'adresse 0x0200 correspond à l'écran graphique situé à droite.[/strong]","","Les couleurs des pixels de cet écran sont définies grâce aux valeurs stockées dans cette zone mémoire.","","[b]Stockez la valeur 0xFF dans les adresses mémoires suivante : 0x0200, 0x0201, 0x0210, 0x0211.[/b]","","Observez le résultat sur l'écran de droite." ]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[strong]La zone mémoire commençant à l'adresse 0x0200 correspond à l'écran graphique situé à droite.[/strong]","","Les couleurs des pixels de cet écran sont définies grâce aux valeurs stockées dans cette zone mémoire.","","[b]Stockez la valeur #0xFF[/b] dans les adresses mémoires suivante : [b]0x0200, 0x0201, 0x0210, 0x0211[/b].","","[b]Observez[/b] le résultat sur l'écran de droite." ],"tips":["Pour charger une valeur en mémoire, il faut au préalable la [b]charger[/b] dans un registre puis la [b]stocker[/b].","Il faut charger dans le [b]registre A[/b] la valeurs [b]#0xFF[/b] puis la stocker aux adresses demandées.","Le code attendu est :[code]LDA #0xFF[br]STA 0x0200[br]STA 0x0201[br]STA 0x0210[br]STA 0x0211[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -219,7 +219,7 @@
         <dct:identifier>152</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher sur un écran graphique 16x16x256 un dégradé de gris sur 4 pixels.</dct:title>
         <dct:description><![CDATA["ops":["lda","sta"],"args":[{"value":"FF","type":"v"},{"value":"BB","type":"v"},{"value":"66","type":"v"},{"value":"11","type":"v"},{"value":"0200"},{"value":"0201"},{"value":"0202"},{"value":"0203"}],"nblines":8,"valid":{"mem":{"200":"FFBB6611"}},"class":"large"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["L'écran actuel permet d'afficher 256 nuances de gris. Le blanc est codé 0xFF tandisque le noir est égal à 0x00. Toutes les valeurs intermédiaires correspondent à un gris plus ou moins prononcé.","","Sur la première ligne de l'écran, [b]utilisez les différentes nuances de gris ainsi:[/b]","[code]. Blanc (0xFF) sur le premier pixel[br]. Gris clair (0xBB) sur le deuxième[br]. Gris foncé (0x66) sur le troisième[br]. Presque noir (0x11) sur le quatrième[/code]"  ]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["L'écran actuel permet d'afficher [b]256 nuances[/b] de gris. Le [b]blanc[/b] est codé [b]#0xFF[/b] tandisque le noir est égal à [b]#0x00[/b]. Toutes les valeurs intermédiaires correspondent à un gris plus ou moins prononcé.","","Sur la première ligne de l'écran, [b]utilisez les différentes nuances de gris ainsi:[/b]","[code]. Blanc &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(#0xFF) sur le premier pixel[br]. Gris clair &nbsp;&nbsp;(#0xBB) sur le deuxième[br]. Gris foncé &nbsp;&nbsp;(#0x66) sur le troisième[br]. Presque noir (#0x11) sur le quatrième[/code]"],"tips":["Pour charger une valeur en mémoire, il faut au préalable la [b]charger[/b] dans un registre puis la [b]stocker[/b].","Il faut [b]charger[/b] les valeurs [b]#0xFF[/b],  [b]#0xBB[/b], [b]#0x66[/b] et [b]#0x11[/b] et les stocker aux adresses demandées.","Le code débute ainsi :[code]LDA #0xFF[br]STA 0x0200[br]LDA #0xBB[br]STA 0x0201[br]LDA #0x66[br]...[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -230,8 +230,8 @@
     <rdf:Description>
         <dct:identifier>153</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier en blanc les 4 coins d'un écran graphique 16x16x256.</dct:title>
-        <dct:description><![CDATA["ops":["lda","sta"],"args":[{"value":"FF","type":"v"},{"value":"0200"},{"value":"0201"},{"value":"020F"},{"value":"0210"},{"value":"0211"},{"value":"021F"},{"value":"02F0"},{"value":"02FF"}],"nblines":5,"valid":{"mem":{"200":"FF","20F":"FF","2F0":"FF","2FF":"FF"}},"class":"large"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["La zone mémoire de l'écran graphique commence à l'adresse [b]0x0200[/b]. Sa taille varie selon la nature de l'écran. Ici, l'écran permet d'afficher [blue]256 nuances de gris sur une résolution de 16x16[/blue] (d'où le [red]16x16x256[/red] affiché sur la sortie standard). La zone mémoire utilisées est [b]0x0200-0x02FF[/b] et chaque pixel est codé sur [b]1 octet[/b].","","[b]Coloriez en blanc les 4 coins de l'écran.[/b]" ]]]></dct:description>
+        <dct:description><![CDATA["ops":["lda","sta"],"args":[{"value":"FF","type":"v"},{"value":"0200"},{"value":"0201"},{"value":"020F"},{"value":"0210"},{"value":"0211"},{"value":"021F"},{"value":"02F0"},{"value":"02F1"},{"value":"02FF"}],"nblines":5,"valid":{"mem":{"200":"FF","20F":"FF","2F0":"FF","2FF":"FF"}},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["La zone mémoire de l'écran graphique commence à l'adresse [b]0x0200[/b]. Sa taille varie selon la nature de l'écran. Ici, l'écran permet d'afficher [blue]256 nuances de gris sur une résolution de 16x16[/blue] (d'où le [red]16x16x256[/red] affiché sur la sortie standard). La zone mémoire utilisées est [b]0x0200-0x02FF[/b] et chaque pixel est codé sur [b]1 octet[/b].","","[b]Coloriez en blanc les 4 coins de l'écran.[/b]" ],"tips":["Pour charger une valeur en mémoire, il faut au préalable la [b]charger[/b] dans un registre puis la [b]stocker[/b].","Les adresses mémoire des 4 coins de l'écran sont : [b]0x0200[/b], [b]0x020F[/b], [b]0x02F0[/b] et [b]0x02FF[/b].","Le code attendu est :[code]LDA #0xFF[br]STA 0x0200[br]STA 0x020F[br]STA 0x02F0[br]STA 0x02FF[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -243,7 +243,7 @@
         <dct:identifier>161</dct:identifier>
         <dct:title xml:lang="fr-FR">Changer la valeur du premier octet d'un écran graphique 32x32x16.</dct:title>
         <dct:description><![CDATA["ops":["lda","sta"],"args":[{"value":"26","type":"v"},{"value":"0200"}],"nblines":2,"valid":{"mem":{"200":"26"}},"class":"large","model":1]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Ce simulateur d'assembleur propose plusieurs type d'écrans. Cet exercice utilise un écran [b]32x32 avec 16 couleurs[/b] (les spécifications de l'écran sont affichées sur la sortie standard, [b]il est important de bien les lire à chaque fois[/b]). Cela veut dire que chaque pixel de l'écran est codée sur 4 bits (2^4=16) et que donc par conséquent :","[strong]Avec une définition de 32x32x16, 1 octet de la mémoire de l'écran graphique définit 2 pixels de cet écran.[/strong]","","[b]Chargez la valeur #0x26 dans l'octet de début d'adressage de l'écran. Combien de pixels ont été allumés ?[/b]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Ce simulateur d'assembleur propose plusieurs type d'écrans. Cet exercice utilise un écran [b]32x32 avec 16 couleurs[/b] (les spécifications de l'écran sont affichées sur la sortie standard, [b]il est important de bien les lire à chaque fois[/b]). Cela veut dire que chaque pixel de l'écran est codée sur 4 bits (2^4=16) et que donc par conséquent :","[strong]Avec une définition de 32x32x16, 1 octet de la mémoire de l'écran graphique définit 2 pixels de cet écran.[/strong]","","[b]Chargez la valeur #0x26 dans l'octet de début d'adressage de l'écran. Combien de pixels ont été allumés ?[/b]"],"tips":["Pour charger une valeur en mémoire, il faut au préalable la [b]charger[/b] dans un registre puis la [b]stocker[/b].","Il faut toujours bien [b]différencier[/b] une valeur [b]numérique[/b] (avec un [b]#[/b]) d'une [b]adresse mémoire[/b].","Le code attendu est :[code]LDA #0x26[br]STA 0x0200[/code][b]2 pixels[/b] de couleur différente sont alors allumés."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -255,7 +255,7 @@
         <dct:identifier>162</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier en rouge le 2ème pixel d'un écran graphique 32x32x16.</dct:title>
         <dct:description><![CDATA["ops":["lda","sta"],"args":[{"value":"02","type":"v"},{"value":"22","type":"v"},{"value":"20","type":"v"},{"value":"26","type":"v"},{"value":"0200"},{"value":"0201"}],"nblines":2,"valid":{"mem":{"200":"02"}},"class":"large","model":1]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["L'hexadécimal est très utile quand il s'agit de manipuler un écran de 16 couleurs. Un octet est un nombre hexadécimal de [b]2 chiffres[/b], or un octet représente ici [b]2 pixels de l'écran[/b]. On comprend alors que chaque pixel équivaut à un chiffre de la valeur hexadécimale de l'octet.","","Par exemple, la valeur [b]#0x26[/b] dans la mémoire de l'écran représente un premier pixel de [red]couleur 2 (ROUGE)[/red] et un deuxième pixel de [blue]couleur 6 (BLEU)[/blue].","","Si 0 représente [b]la couleur NOIR[/b] (celle par défaut), [b]coloriez le 2ème pixel de l'écran en rouge.[/b]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["L'hexadécimal est très utile quand il s'agit de manipuler un écran de 16 couleurs. Un octet est un nombre hexadécimal de [b]2 chiffres[/b], or un octet représente ici [b]2 pixels de l'écran[/b]. On comprend alors que chaque pixel équivaut à un chiffre de la valeur hexadécimale de l'octet.","","Par exemple, la valeur [b]#0x26[/b] dans la mémoire de l'écran représente un premier pixel de [red]couleur 2 (ROUGE)[/red] et un deuxième pixel de [blue]couleur 6 (BLEU)[/blue].","","Si 0 représente [b]la couleur NOIR[/b] (celle par défaut), [b]coloriez le 2ème pixel de l'écran en rouge.[/b]"],"tips":["Avec [b]16 couleurs[/b], les [b]2 premiers pixels[/b] de l'écran sont définis dans le [b]1er octet[/b] d'adressage ([b]0x0200[/b]).","Le [b]1er pixel[/b] reste noir (donc à [b]0[/b]), le [b]2ème[/b] est rouge (donc [b]2[/b]). La valeur du 1er octet doit donc être [b]#0x02[/b].","Le code attendu est :[code]LDA #0x02[br]STA 0x0200[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -267,19 +267,19 @@
         <dct:identifier>163</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier les 2 derniers pixels de la première ligne d'un écran graphique 32x32x16.</dct:title>
         <dct:description><![CDATA["ops":["lda","sta"],"args":[{"value":"44","type":"v"},{"value":"22","type":"v"},{"value":"40","type":"v"},{"value":"04","type":"v"},{"value":"0200"},{"value":"0201"},{"value":"02FF"},{"value":"020F"}],"nblines":2,"valid":{"mem":{"20F":"44"}},"class":"large","model":1]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Une ligne de l'écran de cet exercice contient 32 pixels. Chaque pixel est codé sur 4 bits soit 1/2 octet. Chaque ligne utilise donc 16 octets (0x0F) de la mémoire.","","[b]Coloriez les 2 derniers pixels de la première ligne en VIOLET (couleur n°4).[/b]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Une ligne de l'écran de cet exercice contient 32 pixels. Chaque pixel est codé sur 4 bits soit 1/2 octet. Chaque ligne utilise donc 16 octets (0x0F) de la mémoire.","","[b]Coloriez les 2 derniers pixels de la première ligne en VIOLET (couleur n°4).[/b]"],"tips":["Avec une résolution 32x32 et un codage 16 couleurs, les 2 derniers pixels de la 1ère ligne sont codés à l'adresse [b]0x020F[/b].","Ces 2 pixels du même octet doivent prendre la [b]valeur 4[/b]. Il faut donc utiliser la valeur [b]#0x44[/b]","Le code attendu est :[code]LDA #0x44[br]STA 0x020F[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
         <dct:alternative>001</dct:alternative>
     </rdf:Description>
-
+	
     <rdf:Description>
         <dct:identifier>164</dct:identifier>
-        <dct:title xml:lang="fr-FR">Colorier les 2 derniers pixels de la dernière ligne d'un écran graphique 32x32x16.</dct:title>
-        <dct:description><![CDATA["ops":["lda","sta"],"args":[{"value":"44","type":"v"},{"value":"22","type":"v"},{"value":"40","type":"v"},{"value":"04","type":"v"},{"value":"02FF"},{"value":"020F"},{"value":"03FF"},{"value":"030F"}],"nblines":2,"valid":{"mem":{"3FF":"44"}},"class":"large","model":1]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Chaque ligne utilise 16 octets de la mémoire. Il y a 32 lignes. Par conséquent, la taille de la zone mémoire allouée à un écran 32x32 en 16 couleurs est : [b]32*16 = 512 octets[/b] (ou [b]0x200[/b] octets en hexadécimal). Donc, si le premier octet de l'écran est [b]0x0200[/b], le dernier est [red]0x0200 + 0x0200 - 1[/red] (-1 car il faut compter l'octet du départ).","","[b]Coloriez les 2 derniers pixels de la dernière ligne en VIOLET (couleur n°4).[/b]"]]]></dct:description>
+        <dct:title xml:lang="fr-FR">Colorier les pixels 2 et 3 de la première ligne d'un écran graphique 32x32x16.</dct:title>
+        <dct:description><![CDATA["ops":["lda","sta"],"args":[{"value":"33","type":"v"},{"value":"03","type":"v"},{"value":"30","type":"v"},{"value":"00","type":"v"},{"value":"0200"},{"value":"0201"},{"value":"02FF"},{"value":"020F"}],"nblines":4,"valid":{"mem":{"200":"0330"}},"class":"large","model":1]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Coloriez[/b] les [b]deuxième[/b] et [b]troisième[/b] pixels de la première ligne en [blue]bleu clair[/blue] (couleur n°3)."],"tips":["Ici, le [b]2ème pixel[/b] appartient au [i]1er octet[/i] tandisque le [b]3ème pixel[/b] est sur le [i]2ème octet[/i].","Pour atteindre chacun de ces pixels, il faut utiliser successivement les valeurs [b]#0x03[/b] et [b]0x30[/b].","Le code attendu est :[code]LDA #0x03[br]STA 0x0200[br]LDA #0x30[br]STA 0x0201[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -289,9 +289,21 @@
 
     <rdf:Description>
         <dct:identifier>165</dct:identifier>
+        <dct:title xml:lang="fr-FR">Colorier les 2 derniers pixels de la dernière ligne d'un écran graphique 32x32x16.</dct:title>
+        <dct:description><![CDATA["ops":["lda","sta"],"args":[{"value":"44","type":"v"},{"value":"22","type":"v"},{"value":"40","type":"v"},{"value":"04","type":"v"},{"value":"02FF"},{"value":"020F"},{"value":"03FF"},{"value":"030F"}],"nblines":2,"valid":{"mem":{"3FF":"44"}},"class":"large","model":1]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Avec une résolution de 32x32 et d'un codage sur 16 couleurs, l'adressage de l'écran s'étend de [b]0x0200[/b] à [b]0x03FF[/b].","","[i]Explication un peu technique[/i] : chaque ligne utilise 16 octets de la mémoire. Il y a 32 lignes. Par conséquent, la taille de la zone mémoire allouée à un écran 32x32 en 16 couleurs est : [b]32*16 = 512 octets[/b] (ou [b]0x200[/b] octets en hexadécimal). Donc, si le premier octet de l'écran est [b]0x0200[/b], le dernier est [red]0x0200 + 0x0200 - 1[/red] soit [b]0x03FF[/b].","","[b]Coloriez les 2 derniers pixels de la dernière ligne en VIOLET (couleur n°4).[/b]"],"tips":["Avec une résolution 32x32 et un codage 16 couleurs, les 2 derniers pixels de l'écran sont codés à l'adresse [b]0x03FF[/b].","Ces 2 pixels du même octet doivent prendre la [b]valeur 4[/b]. Il faut donc utiliser la valeur [b]#0x44[/b]","Le code attendu est :[code]LDA #0x44[br]STA 0x03FF[/code]"]]]></dct:description>
+        <dct:extent>2</dct:extent>
+        <dct:subject>it</dct:subject>
+        <dct:educationLevel>3</dct:educationLevel>
+        <dct:type>1</dct:type>
+        <dct:alternative>001</dct:alternative>
+    </rdf:Description>
+
+    <rdf:Description>
+        <dct:identifier>166</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier les 4 coins d'un écran graphique 32x32x16.</dct:title>
         <dct:description><![CDATA["ops":["lda","sta"],"args":[{"value":"20","type":"v"},{"value":"02","type":"v"},{"value":"22","type":"v"},{"value":"0200"},{"value":"020F"},{"value":"03FF"},{"value":"03F0"}],"nblines":8,"valid":{"mem":{"200":"20","20F":"02","3F0":"20","3FF":"02"}},"class":"large","model":1]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Coloriez le pixel de chaque coin en rouge (couleur n°2).[/b]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Coloriez[/b] le pixel de chaque coin en [red]rouge[/red] (couleur n°2).","","[i]8 lignes sont proposées mais l'exercice peut se faire en 6[/i]."],"tips":["Toutes les adresses mémoires [b]utiles[/b] sont fournies dans l'exercice.","Coloriez le premier pixel des octets [b]0x0200[/b] et [b]0x03F0[/b] et le dernier de [b]0x020F[/b] et [b]0x03FF[/b].","Le code attendu est :[code]LDA #0x20[br]STA 0x0200[br]STA 0x03F0[br]LDA #0x02[br]STA 0x020F[br]STA 0x03FF[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>

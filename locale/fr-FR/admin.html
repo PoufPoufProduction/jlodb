@@ -1,4 +1,4 @@
-<div id="jladmin">
+<div id="jladmin" class="padmin">
 
 <div class="ifnotlogged">
 	<form action="javascript:jlodb.page.admin.perform(true)">
@@ -15,7 +15,7 @@
 <div class="iflogged">
     <div class="logout" onclick="jlodb.page.admin.perform(false);">Déconnexion</div>
     <div>
-        <select class="lang"><option>fr-FR</option></select>
+        <select class="lang preinstall"><option>fr-FR</option></select>
         <div class="install" onclick="jlodb.page.admin.install();">Reconstruire la base</div>
         <div id="lockjlodb" onclick="jlodb.page.admin.lock();"><div><img src="res/img/icon/unlock.svg"/></div></div>
     </div>

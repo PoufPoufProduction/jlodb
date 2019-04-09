@@ -16,9 +16,9 @@ if (!$error) {
         }
         else { $status = "success"; }
 
-        $a=mysqli_query($link, "SELECT count(*) FROM `".$_SESSION['prefix']."activity`");
+        $a=mysqli_query($link, "SELECT count(`Activity_Name`) FROM `".$_SESSION['prefix']."activity`");
         $b=mysqli_fetch_array($a);
-        $a=mysqli_query($link, "SELECT count(*) FROM `".$_SESSION['prefix']."exercice`");
+        $a=mysqli_query($link, "SELECT count(`Exercice_Id`) FROM `".$_SESSION['prefix']."exercice`");
         $c=mysqli_fetch_array($a);
 		
 		$user	= (mysqli_query($link, "SELECT 1 FROM `".$_SESSION['prefix']."user` LIMIT 1"));
