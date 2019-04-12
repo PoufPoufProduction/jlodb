@@ -13,7 +13,6 @@
         nblines     : 5,                                        // Number of lines
         header      : 0,
         footer      : 0,
-        font        : 0,                                        // Font-size of the source
 		tips		: [],
         export      : false,                                    // Show code
         debug       : true                                      // Debug mode
@@ -172,7 +171,6 @@
                             start:function() { settings.data.compiled = false;}});
                     }
                 });
-                if (settings.font) { $this.find("#detail #source>div").css("font-size",settings.font+"em"); }
 
                 // HANDLE THE TIPS
                 if (settings.tips) {

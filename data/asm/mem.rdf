@@ -315,7 +315,7 @@
         <dct:identifier>171</dct:identifier>
         <dct:title xml:lang="fr-FR">Changer la valeur du premier octet d'un écran graphique 48x32x2.</dct:title>
         <dct:description><![CDATA["ops":["lda","sta"],"args":[{"value":"11","type":"v"},{"value":"18","type":"v"},{"value":"81","type":"v"},{"value":"FF","type":"v"},{"value":"0200"}],"nblines":2,"valid":{"mem":{"200":"81"}},"class":"large","model":2]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Cet exercice utilise un écran 48x32 avec 2 couleurs : 0 pour le blanc et 1 pour le noir. C'est une représentation quelque peu inversée puisque la plupart du temps le noir est la couleur 0.","","Cela étant dit, chaque pixel est codé sur 1 bit, par conséquent, [b]1 octet[/b] (qui est égal à 8 bits) représente [b]8 pixels[/b].","","[b]Noircissez le 1er pixel et le 8ème pixel de la première ligne de l'écran.[/b] Par définition, ces 2 pixels appartiennet à [blue]l'octet de début d'adressage de l'écran[/blue]."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Cet exercice utilise un écran de type calculatrice de résolution 48x32 avec 2 couleurs : 0 pour le blanc et 1 pour le noir.","","Chaque pixel est codé sur 1 bit, et par conséquent, [b]1 octet[/b] (qui est égal à 8 bits) représente donc [b]8 pixels[/b].","","[b]Noircissez le 1er pixel et le 8ème pixel de la première ligne de l'écran.[/b] Par définition, ces 2 pixels appartiennet à [blue]l'octet de début d'adressage de l'écran[/blue]."],"tips":["Avec ce type d'écran, une bonne connaissance du [b]binaire[/b] est appréciable.","Il faut utiliser ici la valeur binaire [b]1000 0001[/b], c'est-à-dire [b]#0x81[/b] en hexadécimal.","Le code attendu est :[code]LDA #0x81[br]STA 0x0200[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -327,7 +327,7 @@
         <dct:identifier>172</dct:identifier>
         <dct:title xml:lang="fr-FR">Changer la valeur du dernier octet de la première ligne d'un écran graphique 48x32x2.</dct:title>
         <dct:description><![CDATA["ops":["lda","sta"],"args":[{"value":"FF","type":"v"},{"value":"0200"},{"value":"0201"},{"value":"0202"},{"value":"0203"},{"value":"0204"},{"value":"0205"},{"value":"0206"},{"value":"020F"},{"value":"0210"}],"nblines":2,"valid":{"mem":{"205":"FF"}},"class":"large","model":2]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Dans un écran 48x32 à 2 couleurs, un octet représente 8 pixels. [b]Chargez 0xFF dans le dernier octet de la première ligne pour éclairer les 8 derniers pixels de cette première ligne.[/b]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Dans un écran 48x32 à 2 couleurs, un octet représente 8 pixels.[br][br] [b]Chargez[/b] la valeur [b]#0xFF[/b] dans le dernier octet de la première ligne pour éclairer les [b]8 derniers pixels[/b] de cette [b]première ligne[/b]."],"tips":["1 ligne = 48 pixels[br] 8 pixels = 1 octet[br]Donc [b]1 ligne = 6 octets[/b].","Il faut donc valoriser le [b]6ème octet[/b] de l'écran, soit l'adresse mémoire [b]0x0205[/b].","Le code attendu est :[code]LDA #0xFF[br]STA 0x0205[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -339,7 +339,7 @@
         <dct:identifier>173</dct:identifier>
         <dct:title xml:lang="fr-FR">Noircir la première ligne d'un écran graphique 48x32x2.</dct:title>
         <dct:description><![CDATA["ops":["lda","sta"],"args":[{"value":"FF","type":"v"},{"value":"0200"},{"value":"0201"},{"value":"0202"},{"value":"0203"},{"value":"0204"},{"value":"0205"},{"value":"0206"},{"value":"020F"},{"value":"0210"}],"nblines":7,"valid":{"mem":{"200":"FFFFFFFFFFFF000000000000000000"}},"class":"large","model":2]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Coloriez en noir tous les pixels de la première ligne de l'écran 48x32x2.[/b]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Coloriez en noir[/b] tous les pixels de la [red]première[/red] ligne de l'écran 48x32x2."],"tips":["1 ligne = 48 pixels[br] 8 pixels = 1 octet[br]Donc [b]1 ligne = 6 octets[/b].","La première ligne s'étend donc de [b]0x0200[/b] à [b]0x0205[/b] inclus.","Le code débute ainsi :[code]LDA #0xFF[br]STA 0x0200[br]STA 0x0201[br]STA 0x0202[br]STA 0x0203[br]...[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -351,7 +351,7 @@
         <dct:identifier>174</dct:identifier>
         <dct:title xml:lang="fr-FR">Noircir la deuxième ligne d'un écran graphique 48x32x2.</dct:title>
         <dct:description><![CDATA["ops":["lda","sta"],"args":[{"value":"FF","type":"v"},{"value":"0205"},{"value":"0206"},{"value":"0207"},{"value":"0208"},{"value":"0209"},{"value":"020A"},{"value":"020B"},{"value":"020F"},{"value":"0210"}],"nblines":7,"valid":{"mem":{"200":"000000000000FFFFFFFFFFFF000000"}},"class":"large","model":2]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Coloriez en noir tous les pixels de la deuxième ligne de l'écran 48x32x2.[/b]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Coloriez en noir[/b] tous les pixels de la [red]deuxième[/red] ligne de l'écran 48x32x2."],"tips":["1 ligne = 48 pixels[br] 8 pixels = 1 octet[br]Donc [b]1 ligne = 6 octets[/b].","La deuxième ligne s'étend donc de [b]0x0206[/b] à [b]0x020B[/b] inclus.","Le code débute ainsi :[code]LDA #0xFF[br]STA 0x0206[br]STA 0x0207[br]STA 0x0208[br]STA 0x0209[br]...[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -362,9 +362,9 @@
     <rdf:Description>
         <dct:identifier>175</dct:identifier>
         <dct:title xml:lang="fr-FR">Afficher une trame sur les 2 première lignes d'un écran graphique 48x32x2.</dct:title>
-        <dct:description><![CDATA["ops":["lda","sta"],"args":[{"value":"55","type":"v"},{"value":"AA","type":"v"},{"value":"0200"},{"value":"0201"},{"value":"0202"},{"value":"0203"},{"value":"0204"},{"value":"0205"},{"value":"0206"},{"value":"0207"},{"value":"0208"},{"value":"0209"},{"value":"020A"},{"value":"020B"}],"nblines":14,"valid":{"mem":{"200":"555555555555AAAAAAAAAAAA00"}},"class":"large","model":2,"font":0.9]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Si l'on veut noircir 1 pixel sur 2 dans un écran à 2 couleurs. Sur un octet qui contient 8 pixels, on peut :",". Noircir les pixels n°0, n°2, n°4 et n°6. C'est à dire donner à l'octet la valeur 2^0+2^2+2^4+2^6 soit [b]0x55[/b].",". Noircir les pixels n°1, n°3, n°5 et n°7. Soit 2^1+2^3+2^5+2^7 = [b]0xAA[/b].","","[b]Coloriez la première ligne avec la valeur 0x55 et la deuxième avec la valeur 0xAA.[/b]"]]]></dct:description>
-        <dct:extent>2</dct:extent>
+        <dct:description><![CDATA["ops":["lda","sta"],"args":[{"value":"00","type":"v"},{"value":"55","type":"v"},{"value":"AA","type":"v"},{"value":"0200"},{"value":"0201"},{"value":"0202"},{"value":"0203"},{"value":"0204"},{"value":"0205"},{"value":"0206"},{"value":"0207"},{"value":"0208"},{"value":"0209"},{"value":"020A"},{"value":"020B"}],"nblines":14,"valid":{"mem":{"200":"555555555555AAAAAAAAAAAA00"}},"class":"large smallsource","model":2]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Si l'on veut noircir 1 pixel sur 2 dans un écran à 2 couleurs. Sur un octet qui contient 8 pixels, on peut :","[br]. Noircir les pixels pairs, c'est à dire donner à l'octet la valeur [red]binaire[/red] [b]0101 0101[/b] soit [b]#0x55[/b] en [red]hexadécimal[/red].","[br]. Noircir les pixels impairs. Soit [b]1010 1010[/b] ou [b]#0xAA[/b].","","[b]Coloriez[/b] la [red]première[/red] ligne avec la valeur [b]#0x55[/b] et la [red]deuxième[/red] avec la valeur [b]#0xAA[/b]."],"tips":["La première ligne s'étend donc de [b]0x0200[/b] à [b]0x0205[/b] inclus.","La deuxième ligne s'étend donc de [b]0x0206[/b] à [b]0x020B[/b] inclus.","Le code ressemble à :[code]LDA #0x55[br]STA 0x0200[br]...[br]LDA #0xAA[br]STA 0x0206[br]...[/code]"]]]></dct:description>
+        <dct:extent>5</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
         <dct:type>1</dct:type>
@@ -375,7 +375,7 @@
         <dct:identifier>176</dct:identifier>
         <dct:title xml:lang="fr-FR">Noircir les 4 derniers pixels d'un écran graphique 48x32x2.</dct:title>
         <dct:description><![CDATA["ops":["lda","sta"],"args":[{"value":"FF","type":"v"},{"value":"F0","type":"v"},{"value":"0F","type":"v"},{"value":"02C0"},{"value":"02BF"},{"value":"0200"},{"value":"0201"}],"nblines":2,"valid":{"mem":{"2BF":"0F"}},"class":"large","model":2]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Dans un écran 48x32 à 2 couleurs, une [b]ligne occupe 6 octets de la mémoire[/b] (car chaque octet représente 8 pixels et que 6x8=48). Il y a 32 lignes. La mémoire totale occupée par l'écran est donc 6*32 = 192 octets = [b]0xC0[/b] en hexadécimal.","","Sachant que la mémoire de l'écran commence à 0x200, qu'elle a une taille de 0xC0, [b]noircissez les 4 derniers pixels de l'écran[/b]."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Dans un écran 48x32 à 2 couleurs, une [b]ligne occupe 6 octets de la mémoire[/b] (car chaque octet représente 8 pixels et que 6x8=48). Il y a 32 lignes. La mémoire totale occupée par l'écran est donc 6*32 = 192 octets = [b]0xC0[/b] en hexadécimal.","","Sachant que la mémoire de l'écran commence à 0x200, qu'elle a une taille de 0xC0, [b]noircissez les 4 derniers pixels de l'écran[/b]."],"tips":["La valeur à utiliser ici est [b]0000 1111[/b] en [red]binaire[/red] soit [b]#0x0F[/b] en [red]hexadécimal[/red].","Sachant que le 1er octet de l'écran est [b]0x0200[/b], le dernier est [b]0x02BF[/b].","Le code attendu est :[code]LDA #0x0F[br]STA 0x02BF[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -387,7 +387,7 @@
         <dct:identifier>177</dct:identifier>
         <dct:title xml:lang="fr-FR">Noircir les 4 coins d'un écran graphique 48x32x2.</dct:title>
         <dct:description><![CDATA["ops":["lda","sta"],"args":[{"value":"80","type":"v"},{"value":"01","type":"v"},{"value":"0200"},{"value":"0205"},{"value":"02BA"},{"value":"02BF"}],"nblines":8,"valid":{"mem":{"200":"80","205":"01","2BA":"80","2BF":"01"}},"class":"large","model":2]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Utilisez les valeurs proposées et coloriez en noir les 4 coins de l'écran 48x32x2.[/b]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["En utilisant les valeurs proposées, [b]coloriez[/b] en noir les [b]4 coins[/b] de l'écran 48x32x2."],"tips":["La dernière ligne s'étend de [b]0x02BA[/b] à [b]0x02BF[/b] inclus.","[b]1000 0000[/b] (soit [b]#0x80[/b]) permet d'allumer le [red]premier pixel[/red] d'un octet. [b]0000 0001[/b] (soit [b]#0x01[/b]), le [red]dernier[/red].","Le code attendu est :[code]LDA #0x80[br]STA 0x0200[br]STA 0x02BA[br]LDA #0x01[br]STA 0x0206[br]STA 0x02BF[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -399,7 +399,7 @@
         <dct:identifier>181</dct:identifier>
         <dct:title xml:lang="fr-FR">Changer la valeur du premier octet d'un écran graphique 40x36x4.</dct:title>
         <dct:description><![CDATA["ops":["lda","sta"],"args":[{"value":"1B","type":"v"},{"value":"0200"}],"nblines":2,"valid":{"mem":{"200":"1B"}},"class":"large","model":3]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Autre modèle d'écran, inspiré de celui d'une célèbre console de jeu portable : [red]l'écran 40x36 en quatre couleurs[/red].","","Chaque pixel peut prendre 4 valeurs différentes : 0,1,2,3 (de la couleur la plus sombre à la plus claire) et doit donc être codé sur 2 bits (2^2=4). Un octet de 8 bits représente donc 4 pixels de l'écran (8/2 = 4).","","[b]Chargez la valeur 0x1B dans le premier octet de l'écran[/b]."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Autre modèle d'écran, inspiré de celui d'une célèbre console de jeu portable : [red]l'écran 40x36 en quatre couleurs[/red].","","Chaque pixel peut prendre 4 valeurs différentes : 0,1,2,3 (de la couleur la plus sombre à la plus claire) et doit donc être codé sur 2 bits. Un octet de 8 bits représente donc [b]4 pixels[/b] de l'écran.","","[b]Chargez[/b] la valeur [b]#0x1B[/b] dans le [red]premier[/red] octet de l'écran."],"tips":["[b]Déplacer[/b] l'instruction [b]LDA[/b] et la valeur [b]#0x1B[/b] dans la zone centrale.","[b]Déplacer[/b] l'instruction [b]STA[/b] et l'adresse mémoire [b]0x0200[/b] dans la zone centrale.","Le code attendu est : [code]LDA #0x1B[br]STA 0x0200[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -411,7 +411,7 @@
         <dct:identifier>182</dct:identifier>
         <dct:title xml:lang="fr-FR">Changer la valeur du premier pixel d'un écran graphique 40x36x4.</dct:title>
         <dct:description><![CDATA["ops":["lda","sta"],"args":[{"value":"03","type":"v"},{"value":"0C","type":"v"},{"value":"0D","type":"v"},{"value":"C0","type":"v"},{"value":"D0","type":"v"},{"value":"CC","type":"v"},{"value":"DD","type":"v"},{"value":"FF","type":"v"},{"value":"0200"}],"nblines":2,"valid":{"mem":{"200":"C0"}},"class":"large","model":3]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Dans un affichage à 4 couleurs, chaque pixel est codé sur 2 bits.","","[b]Trouvez la valeur qui permet de ne colorier que le premier pixel de l'écran et lui seul.[/b]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Dans un affichage à 4 couleurs, chaque pixel est codé sur 2 bits.","","En trouvant la bonne valeur, [b]coloriez[/b] en blanc le [red]premier[/red] pixel de l'écran et lui seul."],"tips":["Pour colorier en blanc un premier pixel codé sur 2 bits, il faut utiliser la valeur binaire [b]1100 0000[/b].","[b]1100 0000[/b] vaut [b]#0xC0[/b] en [red]hexadécimal[/red].","Le code attendu est : [code]LDA #0xC0[br]STA 0x0200[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -423,7 +423,7 @@
         <dct:identifier>183</dct:identifier>
         <dct:title xml:lang="fr-FR">Changer la valeur du dernier pixel de la première ligne d'un écran graphique 40x36x4.</dct:title>
         <dct:description><![CDATA["ops":["lda","sta"],"args":[{"value":"03","type":"v"},{"value":"0C","type":"v"},{"value":"0D","type":"v"},{"value":"C0","type":"v"},{"value":"D0","type":"v"},{"value":"CC","type":"v"},{"value":"0209"},{"value":"020A"},{"value":"0210"}],"nblines":2,"valid":{"mem":{"209":"03"}},"class":"large","model":3]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Dans un affichage à 4 couleurs, chaque octet représente 4 pixels. Une ligne de 40 pixels est donc codée sur [b]10 octets[/b].","","[b]Trouvez les valeurs qui permettent de ne colorier que le dernier pixel de la première ligne de l'écran.[/b]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Dans un affichage à 4 couleurs, chaque octet représente 4 pixels. Une ligne de 40 pixels est donc codée sur [b]10 octets[/b].","","[b]Coloriez[/b] en blanc le [b]dernier pixel[/b] de la première ligne de l'écran."],"tips":["La valeur binaire à utiliser est [b]0000 0011[/b] soit [b]#0x03[/b] en [red]hexadécimal[/red].","Le dernier octet de la première ligne est à l'adresse mémoire [b]0x0209[/b].","Le code attendu est : [code]LDA #0x03[br]STA 0x0209[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -435,7 +435,7 @@
         <dct:identifier>184</dct:identifier>
         <dct:title xml:lang="fr-FR">Changer la valeur des 4 derniers pixels d'un écran graphique 40x36x4.</dct:title>
         <dct:description><![CDATA["ops":["lda","sta"],"args":[{"value":"FF","type":"v"},{"value":"0200"},{"value":"0209"},{"value":"0367"},{"value":"0368"},{"value":"0369"}],"nblines":2,"valid":{"mem":{"367":"FF"}},"class":"large","model":3]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Sur un écran 40x36 en 4 couleurs, chaque octet représente 4 pixels. Il y a donc 10 octets par ligne et donc 36*10 = 360 octets = [b]0x168[/b] sont utilisés pour l'ensemble de l'écran.","","[b]Chargez la valeur 0xFF dans le dernier octet de la mémoire de l'écran graphique.[/b]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Sur un écran 40x36 en 4 couleurs, chaque octet représente 4 pixels. Il y a donc 10 octets par ligne et donc 36*10 = 360 octets = [b]0x168[/b] sont utilisés pour l'ensemble de l'écran.","","[b]Chargez la valeur 0xFF dans le dernier octet de la mémoire de l'écran graphique.[/b]"],"tips":["Le premier octet de l'adresse mémoire de l'écran est [b]0x0200[/b].","Avec une longueur de [b]0x0168[/b], le dernier pixel de l'écran est à l'adresse [b]0x0367[/b].","Le code attendu est : [code]LDA #0xFF[br]STA 0x0367[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -447,7 +447,7 @@
         <dct:identifier>185</dct:identifier>
         <dct:title xml:lang="fr-FR">Colorier en blanc les 4 coins d'un écran graphique 40x36x4.</dct:title>
         <dct:description><![CDATA["ops":["lda","sta"],"args":[{"value":"C0","type":"v"},{"value":"03","type":"v"},{"value":"0200"},{"value":"0209"},{"value":"035E"},{"value":"0367"}],"nblines":8,"valid":{"mem":{"200":"C0","209":"03","35E":"C0","367":"03"}},"class":"large","model":3]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Coloriez en blanc les 4 coins de l'écran.[/b]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Coloriez en blanc les 4 coins de l'écran.[/b]"],"tips":["[b]#0xC0[/b] colorie les pixels à gauche tandis que [b]#0x03[/b] colorie ceux de droite.","Toutes les [b]adresses mémoires[/b] utiles sont données de gauche à droite et de bas en haut.","Le code attendu est : [code]LDA #0xC0[br]STA 0x0200[br]STA 0x035E[br]LDA #0x03[br]STA 0x0209[br]STA 0x0367[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -463,7 +463,7 @@
         <dct:identifier>301</dct:identifier>
         <dct:title xml:lang="fr-FR">Copier la valeur de la zone mémoire 0x1000 dans le registre X, et récupérer ainsi la valeur de la première instruction du programme.</dct:title>
         <dct:description><![CDATA["ops":["ldx"],"args":[{"value":"1000"}],"nblines":1,"valid":{"x":"ae"},"class":"large"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[strong]La zone mémoire commençant à l'adresse 0x1000 correspond au code compilée. Celui-là même que vous écrivez à chaque exercice.[/strong]","","[b]Chargez dans le registre X, la valeur contenue à l'adresse 0x1000.[/b]","","Avec cette opération, le registre X va prendre la valeur [b]0xAE[/b]. Cette valeur correspond a la première instruction de votre code. Elle est donc égale au code de compilation de l'opérateur [red]LDX[/red]. [blue]L'opérateur LDX placée sur la première ligne de code charge sa propre valeur compilée ![/blue]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[strong]La zone mémoire commençant à l'adresse 0x1000 correspond au code compilée. Celui-là même que vous écrivez à chaque exercice.[/strong]","","[b]Chargez dans le registre X, la valeur contenue à l'adresse 0x1000.[/b]","","Avec cette opération, le registre X va prendre la valeur [b]#0xAE[/b]. Cette valeur correspond à la compilation de l'instruction [red]LDX[/red] elle-même, lorsqu'elle est utilisée avec une [b]adresse absolue[/b]."],"tips":["[b]Déplacer[/b] l'instruction [b]LDX[/b] et l'adresse mémoire [b]0x1000[/b] dans la zone centrale.","Le code attendu est : [code]LDX 0x1000[/code]","Il faut [b]cliquer[/b] sur l'icône de lecture en bas à droite pour lancer le programme une fois écrit."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -474,8 +474,8 @@
     <rdf:Description>
         <dct:identifier>302</dct:identifier>
         <dct:title xml:lang="fr-FR">Copier la valeur de la zone mémoire 0x1000 dans le registre X, et récupérer ainsi la valeur de l'instruction LDA une fois compilée.</dct:title>
-        <dct:description><![CDATA["header":[{"label":"init","value":"LDA #0xA8","code":"A9A8","rts":false}],"ops":["ldx"],"args":[{"value":"1000"},{"value":"1001"}],"nblines":1,"valid":{"x":"A9"},"class":"large"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["La ligne précompilé 'init' exécute l'instruction [red]LDA #0x48[/red]. [b]Hackez le code pour charger dans le registre X la valeur correspondant à l'instruction LDA une fois compilée.[/b]"]]]></dct:description>
+        <dct:description><![CDATA["header":[{"label":"init","value":"LDA #0x48","code":"A948","rts":false}],"ops":["ldx"],"args":[{"value":"1000"},{"value":"1001"}],"nblines":1,"valid":{"x":"A9"},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["La ligne précompilé 'init' exécute l'instruction [red]LDA #0x48[/red]. [b]Chargez[/b] dans le [b]registre X[/b] la valeur [b]#0xA9[/b] qui correspond à la compilation de l'instruction [b]LDA[/b] lorsqu'elle est utilisée, comme ici, avec une valeur numérique."],"tips":["En cliquant sur le bouton [b]PC[/b], on découvre que le code compilé débute en [b]0x1000[/b] par l'instruction [b]0xA9[/b].","Il vous faut ici charger dans le [b]registre X[/b] le contenu stocké en mémoire à l'adresse [b]0x1000[/b].","Le code attendu est : [code]LDX 0x1000[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -487,7 +487,7 @@
         <dct:identifier>303</dct:identifier>
         <dct:title xml:lang="fr-FR">Copier la valeur de la zone mémoire 0x1001 dans le registre X, et récupérer ainsi la valeur chargée par l'instruction LDA.</dct:title>
         <dct:description><![CDATA["header":[{"label":"init","value":"LDA #0xA8","code":"A9A8","rts":false}],"ops":["ldx"],"args":[{"value":"1000"},{"value":"1001"}],"nblines":1,"valid":{"a":"A8","x":"A8"},"class":"large"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Hackez le code pour charger dans le registre X la valeur contenue dans le registre A.[/b]","","Il est conseillé de cliquer sur le [blue]registre PC[/blue] pour voir le code compilé ainsi que son emplacement mémoire. Pour rappel, l'instruction [red]LDA[/red] suivi d'une valeur numérique à comme valeur une fois compilée [b]0xA9[/b].","","[strong]Ce genre de hack réalisé sur le programme lui-même a une valeur pédagogique certaine, mais cette façon de faire n'est pas conseillée du tout en programmation classique.[/strong]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Chargez[/b] dans le [b]registre X[/b] la valeur stockée dans le [b]registre A[/b] après le code précompilé [i]init[/i].","","Il est conseillé de cliquer sur le [blue]registre PC[/blue] pour voir le code compilé ainsi que son emplacement mémoire. Pour rappel, l'instruction [red]LDA[/red] suivie d'une valeur numérique prend comme code compilée la valeur [b]0xA9[/b]."],"tips":["En cliquant sur le bouton [b]PC[/b], on découvre que le code compilé débute en [b]0x1000[/b] par les instructions [b]0xA9 0XA8[/b].","[b]0xA9[/b] est le code compilé de [b]LDA[/b], [b]0xA8[/b] est son agument stocké à l'adresse [b]0x1001[/b].","Le code attendu est : [code]LDX 0x1001[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -499,7 +499,7 @@
         <dct:identifier>304</dct:identifier>
         <dct:title xml:lang="fr-FR">Envoyer vers la sortie standard une valeur précompilée.</dct:title>
         <dct:description><![CDATA["header":[{"label":"init","value":"","code":"4C041058","rts":false}],"ops":["lda","sta"],"args":[{"value":"fe"},{"value":"1003"}],"nblines":2,"valid":{"a":"58","out":"X"},"class":"large"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[strong]S'il est possible d'accéder à n'importe quelle zone du code source, on peut utiliser cette possibilité pour stocker des informations dans le programme lui-même.[/strong]","","Grâce au code précompilé 'init' un caractère particulier est stocké à l'adresse [b]0x1003[/b]. [b]Affichez cette lettre dans la sortie standard.[/b]" ]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[strong]S'il est possible d'accéder à n'importe quelle zone du code source, on peut utiliser cette possibilité pour stocker des informations dans le programme lui-même.[/strong]","","Grâce au code précompilé 'init' un octet prédéfini est volontairement stocké à l'adresse [b]0x1003[/b].","","[b]Affichez[/b] cette valeur dans la sortie standard."],"tips":["Chargez l'adresse mémoire [b]0x1003[/b] dans le [b]registre A[/b] grâce à l'opération [red]LDA[/red].","Pour afficher une valeur sur la sortie standard, il suffit de stocker cette valeur à l'adresse [b]0xFE[/b].","Le code attendu est : [code]LDA 0x1003[br]STA 0xFE[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -511,7 +511,7 @@
         <dct:identifier>305</dct:identifier>
         <dct:title xml:lang="fr-FR">Envoyer vers la sortie standard 3 valeurs précompilées.</dct:title>
         <dct:description><![CDATA["header":[{"label":"init","value":"","code":"4C0610414243","rts":false}],"ops":["lda","sta"],"args":[{"value":"fe"},{"value":"1003"},{"value":"1004"},{"value":"1005"}],"nblines":6,"valid":{"a":"43","out":"ABC"},"class":"large"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Envoyez successivement vers la sortie standard les octets définis aux adresses 0x1003, 0x1004 et 0x1005.[/b]" ]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Envoyez[/b] successivement vers la sortie standard les octets définis aux adresses [b]0x1003, 0x1004[/b] et [b]0x1005[/b]." ],"tips":["Chargez les différentes adresses mémoires dans le [b]registre A[/b] grâce à l'opération [red]LDA[/red].","Après chaque chargement, stockez la valeur prise par le [b]registre A[/b] dans l'adresse mémoire [b]0xFE[/b].","Le code attendu est : [code]LDA 0x1003[br]STA 0xFE[br]LDA 0x1004[br]STA 0xFE[br]LDA 0x1005[br]STA 0xFE[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -523,7 +523,7 @@
         <dct:identifier>306</dct:identifier>
         <dct:title xml:lang="fr-FR">Envoyer vers l'écran graphique 1 valeur précompilée.</dct:title>
         <dct:description><![CDATA["header":[{"label":"init","value":"","code":"4C041055","rts":false}],"ops":["lda","sta"],"args":[{"value":"200"},{"value":"1003"}],"nblines":2,"valid":{"a":"55","mem":{"200":"55"}},"class":"large","model":2]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Envoyez vers le premier octet de l'écran graphique l'octet défini à l'adresse 0x1003.[/b]" ]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Envoyez[/b] vers le premier octet de l'écran graphique l'octet défini à l'adresse [b]0x1003[/b]." ],"tips":["Chargez l'adresse mémoire [b]0x1003[/b] dans le [b]registre A[/b] grâce à l'opération [red]LDA[/red].","Le premier octet de l'écran graphique est à l'adresse [b]0x0200[/b].","Le code attendu est : [code]LDA 0x1003[br]STA 0x0200[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
