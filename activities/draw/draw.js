@@ -49,7 +49,12 @@
         end: function($this) {
             var settings = helpers.settings($this);
             helpers.unbind($this);
-            settings.context.onquit($this,{'status':'success','score':settings.score});
+			
+			var html = $this.find("#board").html();
+            var vReg = new RegExp("([.][0-9][0-9])[0-9]+","g");
+            html = html.replace(vReg,"$1");
+			
+            settings.context.onquit($this,{'status':'success','score':9});
         },
         format: function(_text) {
             for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
@@ -207,6 +212,7 @@
                         $(this).closest(".action").find(".icon").removeClass("s");
                         $(this).addClass("s");
                         switch ($(this).attr("id")) {
+							case "submit" : settings.interactive = false; helpers.end($this); break;
                             case "path" :   settings.object = "path";   break;
                             case "circle" : settings.object = "circle"; break;
                             case "rect" :   settings.object = "rect";   break;

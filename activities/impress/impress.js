@@ -6,7 +6,8 @@
         template    : "template.html",                          // Activity's html template
         css         : "style.css",                              // Activity's css style sheet
         lang        : "en-US",                                  // Current localization
-        exercice    : [],                                       // Exercice
+		edit		: true,										// Editor mode
+        slides    	: [{type:"title",title:"TITRE",subtitle:"[red]SOUSTITRE[/red]","content":"cool cool cool cool cool cool cool cool cool cool cool cool [b]cool[/b] cool cool cool cool cool",out:"tobottom"},{type:"list",subtitle:"Ma liste de [i]courses[/i]",list:["Je me lève et je te bouscule, tu ne te réveilles pas, comme d'habitude. Ma main carresse tes cheveux, presque malgrè moi comme d'habitude.","Puce 2","Puce 3"],footer:"C'est très intéressant",out:"tobottom",dynamic:true},{type:"img",title:"illustration",src:"res/img/characters/imp_r01.svg",footer:"yop",out:"fade",size:50,dynamic:true},{type:"title",title:"TITRE2",subtitle:"SOUS-TITRE2",out:"fade"},{type:"title",title:"TITRE",subtitle:"[red]SOUSTITRE[/red]","content":"cool cool cool cool cool cool cool cool cool cool cool cool [b]cool[/b] cool cool cool cool cool",out:"tobottom"},{type:"list",subtitle:"Ma liste de [i]courses[/i]",list:["Je me lève et je te bouscule, tu ne te réveilles pas, comme d'habitude. Ma main carresse tes cheveux, presque malgrè moi comme d'habitude.","Puce 2","Puce 3"],footer:"C'est très intéressant",out:"tobottom",dynamic:true},{type:"img",title:"illustration",src:"res/img/characters/imp_r01.svg",footer:"yop",out:"fade",size:50,dynamic:true},{type:"title",title:"TITRE2",subtitle:"SOUS-TITRE2",out:"fade"}],                                       // Slides
         background  : "",
         debug       : false                                     // Debug mode
     };
@@ -44,7 +45,7 @@
         end: function($this) {
             var settings = helpers.settings($this);
             helpers.unbind($this);
-            settings.context.onquit($this,{'status':'success','score':settings.score});
+            settings.context.onquit($this,{'status':'success','score':9});
         },
         // End all timers
         quit: function($this) {
@@ -103,12 +104,148 @@
                 // Optional devmode
                 if (settings.dev) { $this.find("#devmode").show(); }
 
-                // Exercice
-                $this.find("#exercice").html(helpers.format(settings.exercice));
+				// BUILD THE PAGES
+				helpers.build($this);
+				
+				$this.find("#board").bind("touchstart mousedown", function(_event) {
+					if (settings.interactive) {
+						settings.interactive = false;
+						if ($this.find("#board .slide .d").length) {
+							// HANDLE DYNAMIC ELEMENTS
+							$this.find("#board .slide .d").first().animate({opacity:1}, 500, function() { $(this).removeClass("d"); settings.interactive = true; });
+						}
+						else {
+							if (settings.slideid<settings.slides.length) {
+								// MOVE TO NEXT SLIDE
+								helpers.show($this, settings.slideid+1);
+								helpers.hide($this, settings.slideid, function() {
+									settings.slideid++;
+									settings.interactive = true;
+								});
+							}
+							else {
+								if (!settings.edit) { helpers.end($this); }
+								else				  { settings.interactive = true; }
+							}
+						}
+					}
+				});
+				
+				helpers.arrow($this);
+				
+				if (settings.edit) { $this.addClass("edit").addClass("nosplash"); }
+				
+				// SHOW FIRST PAGE
+				helpers.show($this, settings.slideid);
 
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
-        }
+        },
+		build: function($this) {
+            var settings = helpers.settings($this);
+			$this.find("#thumbslides").html("").css("width",(settings.slides.length*36)+"em").css("margin-left",0);
+			for (var i=0; i<settings.slides.length; i++) {
+				$this.find("#thumbslides").append(
+					helpers.slide(settings.slides[i]).attr("id","s"+i)
+					.bind("touchstart mousedown", function(_event) {
+						if (settings.interactive) {
+							helpers.hide($this, settings.slideid, false);
+							settings.slideid = parseInt($(this).attr("id").substr(1));
+							helpers.show($this, settings.slideid);
+						}
+						_event.stopPropagation();
+						_event.preventDefault();
+					})
+				);
+			}
+		},
+		slide: function(_data) {
+			var $slide=$("<div class='slide'></div>").addClass(_data.type);
+			if (_data.title) 	{ $slide.append("<div class='title p'>"+helpers.format(_data.title)+"</div>"); }
+			if (_data.subtitle) { $slide.append("<div class='subtitle p'>"+helpers.format(_data.subtitle)+"</div>"); }
+			if (_data.content) 	{ $slide.append("<div class='content p'>"+helpers.format(_data.content)+"</div>"); }
+					
+			switch(_data.type) {
+				case 'title': break;
+				case 'list':
+					var html="<div class='p'>";
+					for (var i=0; i<_data.list.length; i++) {
+						html+="<div class='li p"+(i&&_data.dynamic?" d":"")+"'>";
+						html+=_data.li?_data.li:"<b>"+i+".</b> ";
+						html+=helpers.format(_data.list[i])+"</div>";
+					}
+					html+="</div>";
+					$slide.append(html);
+				break;
+				case 'img':
+					var size = _data.size?_data.size:100;
+					$slide.append("<div class='"+(_data.dynamic?" d":"")+"' style='width:"+size+"%;margin:0 auto'><img src='"+_data.src+"' alt=''/></div>");
+				break;
+				default:
+				break;
+			}
+			
+			if (_data.footer) 	{ $slide.append("<div class='content p'>"+helpers.format(_data.footer)+"</div>"); }
+			if (_data["class"]) { $slide.addClass(_data["class"]); }
+			return $slide;
+		},
+		clean: function($this) { $this.find("#board").html(""); },
+		show: function($this, _id) {
+            var settings = helpers.settings($this);
+			$this.find("#thumbslides .slide").removeClass("s");
+			if (_id<settings.slides.length) {
+				var slide = settings.slides[_id];
+				var $slide = $this.find("#thumbslides #s"+_id).clone();
+				$this.find("#thumbslides #s"+_id).addClass("s");
+				
+				// SHOW SLIDE
+				$this.find("#board").prepend($slide);
+			}
+			else { $this.find("#end").show(); }
+		},
+		hide: function($this, _id, _cbk) {
+            var settings = helpers.settings($this);
+			console.log(_id+" "+settings.slides.length);
+			if (_id<settings.slides.length) {
+				var slide = settings.slides[_id];
+				if (_cbk && slide.out) {
+					switch (slide.out) {
+						case "fade" :
+							$this.find("#board #s"+_id).animate({opacity:0},1000, function() {
+								$(this).detach(); _cbk();
+							});
+						break;
+						case "toright" :
+							$this.find("#board #s"+_id).animate({left:"100%"},1000, function() {
+								$(this).detach(); _cbk();
+							});
+						break;
+						case "toleft" :
+							$this.find("#board #s"+_id).animate({left:"-100%"},1000, function() {
+								$(this).detach(); _cbk();
+							});
+						break;
+						case "totop" :
+							$this.find("#board #s"+_id).animate({top:"-100%"},1000, function() {
+								$(this).detach(); _cbk();
+							});
+						break;
+						case "tobottom" :
+							$this.find("#board #s"+_id).animate({top:"100%"},1000, function() {
+								$(this).detach(); _cbk();
+							});
+						break;
+						default: $this.find("#board #s"+_id).detach(); break;
+					}
+				}
+				else { $this.find("#board #s"+_id).detach(); }
+			}
+		},
+		arrow:function($this) {
+            var settings = helpers.settings($this);
+			if (settings.offset<=0) { $this.find("#thumbleft").hide(); } else { $this.find("#thumbleft").show(); }
+			if (settings.offset+5>=settings.slides.length) { $this.find("#thumbright").hide(); } else { $this.find("#thumbright").show(); }
+		}
     };
 
     // The plugin
@@ -119,7 +256,9 @@
             init: function(options) {
                 // The settings
                 var settings = {
-                    interactive     : false
+                    interactive     : false,
+					slideid			: 0,
+					offset			: 0
                 };
 
                 return this.each(function() {
@@ -142,6 +281,38 @@
             devmode: function() {
                 var $this = $(this) , settings = helpers.settings($this);
             },
+			thumbnail: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+				if (settings.interactive)
+				{
+					settings.interactive = false;
+					if ($this.find("#thumbhelper").hasClass("s")) {
+						$this.find("#thumbnails").animate({top:"95.5%"}, 800, function() {
+							settings.interactive = true;
+							$this.find("#thumbhelper").removeClass("s");
+						});
+					}
+					else {
+						$this.find("#thumbnails").animate({top:"78%"}, 800, function() {
+							settings.interactive = true;
+							$this.find("#thumbhelper").addClass("s");
+						});
+					}
+				}
+			},
+			arrow: function(_value) {
+                var $this = $(this) , settings = helpers.settings($this);
+				if (settings.interactive)
+				{
+					var newoffset = settings.offset + _value*5;
+					if (newoffset>=0 && newoffset<settings.slides.length+10) {
+						settings.interactive = false;
+						settings.offset = newoffset;
+						$this.find("#thumbslides").animate({"margin-left":(-1*settings.offset*34.5)+"em"}, 800,
+							function() { helpers.arrow($this); settings.interactive = true; } );
+					}
+				}
+			},
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 settings.interactive = true;
@@ -150,7 +321,81 @@
                 var $this = $(this) , settings = helpers.settings($this);
                 helpers.quit($this);
                 settings.context.onquit($this,{'status':'abort'});
-            }
+            },
+			edit: function(_elt) {
+                var $this = $(this) , settings = helpers.settings($this);
+				if (settings.interactive)
+				{
+					settings.interactive = false;
+					$(_elt).addClass("touch");
+					setTimeout(function() { $(_elt).removeClass("touch"); }, 50);
+					setTimeout(function() { settings.interactive = true; }, 800);
+					
+					switch($(_elt).attr("id")) {
+						case 'edel' :
+							if (settings.slideid>=0 && settings.slideid<settings.slides.length) {
+								settings.slides.splice(settings.slideid,1);
+								if (settings.slides.length && settings.slideid>=settings.slides.length) {
+									settings.slideid=settings.slides.length-1; }
+								
+								helpers.build($this);
+								helpers.clean($this);
+								helpers.show($this, settings.slideid);
+								
+								if (settings.offset>0 && settings.offset>=settings.slides.length) {
+									settings.offset-=5;
+									$this.find("#thumbslides").animate({"margin-left":(-1*settings.offset*34.5)+"em"}, 800,
+									function() { helpers.arrow($this); } );
+								}
+								else { helpers.arrow($this); }
+							}
+						break;
+						case 'eleft':
+							if (settings.slideid>0 && settings.slideid<settings.slides.length) {
+								var elt = settings.slides.splice(settings.slideid,1);
+								settings.slideid--;
+								settings.slides.splice(settings.slideid,0,elt[0]);
+								
+								helpers.build($this);
+								helpers.clean($this);
+								helpers.show($this, settings.slideid);
+							}
+						break;
+						case 'eright':
+							if (settings.slideid>=0 && settings.slideid<settings.slides.length-1) {
+								var elt = settings.slides.splice(settings.slideid,1);
+								settings.slideid++;
+								settings.slides.splice(settings.slideid,0,elt[0]);
+								
+								helpers.build($this);
+								helpers.clean($this);
+								helpers.show($this, settings.slideid);
+							}
+						break;
+						case 'eexport':
+							var $export = $("<textarea id='texport' class='export'></textarea>");
+							var $button = $("<div class='l bluekeypad'>OK</div>");
+							$export.val(JSON.stringify(settings.slides));
+							$this.find("#control").html($export).append($button);
+							$button.bind("touchstart mousedown", function(_event) {
+								try {
+									settings.slideid = 0;
+									settings.offset = 0;
+									settings.slides  = jQuery.parseJSON($this.find("#texport").val());
+									
+									helpers.build($this);
+									helpers.clean($this);
+									helpers.show($this, settings.slideid);
+									helpers.arrow($this);
+								}
+								catch (e) { alert(e.message); return; }
+						
+								_event.preventDefault();
+							});
+						break;
+					}
+				}
+			}
         };
 
         if (methods[method])    { return methods[method].apply(this, Array.prototype.slice.call(arguments, 1)); } 

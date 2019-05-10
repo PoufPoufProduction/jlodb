@@ -538,7 +538,7 @@
         <dct:identifier>351</dct:identifier>
         <dct:title xml:lang="fr-FR">Modifier un octet du programme</dct:title>
         <dct:description><![CDATA["header":[{"label":"init","value":"","code":"ea","rts":false}],"ops":["lda","sta"],"args":[{"value":"01","type":"v"},{"value":"1000"}],"nblines":2,"valid":{"a":"01","mem":{"1000":"01"}},"class":"large"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[strong]S'il est possible de récupérer n'importe quelle valeur contenue dans le code source, il est également possible de modifier ces valeurs.[/strong]","","[b]Chargez la valeur 0x01 dans le premier octet du programme c'est à dire à l'adresse 0x1000.[/b]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[strong]S'il est possible de récupérer n'importe quelle valeur contenue dans le code source, il est également possible de modifier ces valeurs.[/strong]","","[b]Stockez[/b] la valeur [b]#0x01[/b] dans le premier octet du programme c'est à dire à l'adresse [b]0x1000[/b]."],"tips":["Chargez la valeur [b]#0x01[/b] dans le [b]registre A[/b] grâce à l'opération [red]LDA[/red].","Stockez cette valeur en [b]0x1000[/b] grâce à l'opération [red]STA[/red].","Le code attendu est : [code]LDA #0x01[br]STA 0x1000[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -549,8 +549,8 @@
     <rdf:Description>
         <dct:identifier>352</dct:identifier>
         <dct:title xml:lang="fr-FR">Hacker une valeur précompilée.</dct:title>
-        <dct:description><![CDATA["header":[{"label":"init","value":"","code":"4C081048454C4C4F","rts":false}],"footer":[{"label":"out","value":"","code":"ad031085fead041085fead051085fead061085fead071085fe","rts":false}],"ops":["lda","sta"],"args":[{"value":"41","type":"v"},{"value":"1007"}],"nblines":2,"valid":{"a":"41","out":"HELLA"},"class":"large"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Le code précompilé 'init' contient la chaine de caractère 'HELLO' que le code 'out' affiche sur la sortie standard. Le but de cet exercice est de hacker le programme pour qu'au final la chaine de caractère affichée soit HELLA.","","Ouvrez le code compilé en cliquant sur le bouton PC. Le caractère 'O' a pour code ASCII 0x4F. On peut le trouver à l'adresse 0x1007 (juste après les 2 'L' de code 0x4c). La valeur ASCII du caracètre 'A' est 0x41. [b]Chargez cette valeur là où se trouve le 'O' et observez le mot affiché sur la sortie standard.[/b]" ]]]></dct:description>
+        <dct:description><![CDATA["header":[{"label":"init","value":"","code":"4C081048454C4C4F","rts":false}],"footer":[{"label":"out","value":"","code":"ad031085fead041085fead051085fead061085fead071085fe","rts":false}],"ops":["lda","sta"],"args":[{"value":"21","type":"v"},{"value":"1007"}],"nblines":2,"valid":{"a":"21","out":"HELL!"},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Sans le modifier, [b]lancez[/b] le code une première fois : le mot [i]HELLO[/i] apparaît sur la sortie standard. [b]Hackez[/b] ce code pour forcer le programme à afficher [i]HELL![/i].","","[b]Observez[/b] le code compilé en cliquant sur le bouton PC. Le caractère 'O' a pour code ASCII 0x4F. On peut le trouver à l'adresse 0x1007 (juste après les 2 'L' de code 0x4c). La valeur ASCII du caracètre '!' est 0x21. [b]Stockez[/b] cette valeur à l'adresse du 'O'." ],"tips":["Chargez la valeur [b]#0x21[/b] dans le [b]registre A[/b] grâce à l'opération [red]LDA[/red].","Stockez cette valeur en [b]0x1007[/b] grâce à l'opération [red]STA[/red].","Le code attendu est : [code]LDA #0x21[br]STA 0x1007[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -561,8 +561,8 @@
     <rdf:Description>
         <dct:identifier>353</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser une zone mémoire pour échanger le contenu des registres X et A.</dct:title>
-        <dct:description><![CDATA["header":[{"label":"init","value":["LDX 0x01","LDA 0x02"],"code":"A201A902EA","rts":false}],"ops":["stx","tax","lda"],"args":[{"value":"1004"}],"nblines":3,"valid":{"a":"01","x":"02"},"class":"large"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Le code 'init' initialise le registre X à 0x01 et le registre A à 0x02. Il définit aussi une zone mémoire d'un octet librement utilisable à l'adresse 0x1004","","[b]Echangez les valeurs des 2 registres A et X en procédant ainsi :[/b]","","[code]. Stockez la valeur du registre X à l'adresse 0x1004[br]. Ecrasez la valeur du registre X en copiant la valeur du registre A vers X[br]. Chargez la valeur de 0x1004 dans le registre A[/code]"]]]></dct:description>
+        <dct:description><![CDATA["header":[{"label":"init","value":["LDX 0x01","LDA 0x02","NOP"],"code":"A201A902EA","rts":false}],"ops":["stx","tax","lda"],"args":[{"value":"1004"}],"nblines":3,"valid":{"a":"01","x":"02"},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["En plus d'initialiser les registres A et X, le code précompilé définit une zone mémoire d'un octet librement utilisable à l'adresse [b]0x1004[/b].","","[b]Echangez[/b] les valeurs des 2 registres A et X.","","[code]. Stocker la valeur du registre X en 0x1004[br]. Copier la valeur du registre A dans X[br]. Charger 0x1004 dans le registre A[/code]"],"tips":["La démarche d'[b]échange de valeurs[/b] est explicitée dans l'exercice.","Vous avez vraiment besoin de la réponse ?","Le code attendu est : [code]STX 0x1004[br]TAX[br]LDA 0x1004[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -573,8 +573,8 @@
     <rdf:Description>
         <dct:identifier>354</dct:identifier>
         <dct:title xml:lang="fr-FR">Utiliser une zone mémoire pour échanger le contenu des registres X et A.</dct:title>
-        <dct:description><![CDATA["header":[{"label":"init","value":["LDX 0x11","LDA 0x22"],"code":"A211A922EA","rts":false}],"ops":["stx","tax","lda"],"args":[{"value":"1004"}],"nblines":3,"valid":{"a":"11","x":"22"},"class":"large"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Le code 'init' initialise le registre X à 0x11 et le registre A à 0x22. Il définit aussi une zone mémoire d'un octet librement utilisable à l'adresse 0x1004","","[b]Echangez les valeurs des 2 registres A et X.[/b]"]]]></dct:description>
+        <dct:description><![CDATA["header":[{"label":"init","value":["LDX 0x11","LDA 0x22","NOP"],"code":"A211A922EA","rts":false}],"ops":["stx","tax","lda"],"args":[{"value":"1004"}],"nblines":3,"valid":{"a":"11","x":"22"},"class":"large"]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["En plus d'initialiser les registres A et X, le code précompilé définit une zone mémoire d'un octet librement utilisable à l'adresse [b]0x1004[/b].","","[b]Echangez[/b] les valeurs des 2 registres A et X."],"tips":["L'échange de valeurs se fait en [b]3 étapes[/b].","[b]1)[/b] X vers 0x1004[br][b]2)[/b] A vers X[br][b]3)[/b] 0x1004 vers A","Le code attendu est : [code]STX 0x1004[br]TAX[br]LDA 0x1004[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -588,7 +588,7 @@
         <dct:identifier>401</dct:identifier>
         <dct:title xml:lang="fr-FR">Créer une zone mémoire utilisable comme variable et y charger la valeur 0x10.</dct:title>
         <dct:description><![CDATA["ops":["sta","lda","nop"],"args":[{"value":"1000"},{"value":"10","type":"v"}],"nblines":3,"valid":{"mem":{"1000":"10A910"}},"class":"large"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Une des manières possibles de créer un zone mémoire librement utilisable est d'utiliser l'instruction [red]NOP[/red] (no operation). Lorsqu'elle est exécutée, celle-ci ne fait rien et le processeur passe à l'instruction suivante. Placé en [b]DEBUT[/b] de programme (c'est à dire à l'adresse 0x1000), cet opérateur permet de [b]réserver[/b] et de [b]protéger[/b] un octet utilisable par le reste du programme. [blue]Ce qui est toujours préférable qu'utiliser un octet au hasard dans la mémoire du processeur.[/blue]","","[b]Utilisez NOP pour créer une zone mémoire et chargez-y la valeur 0x10.[/b]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Une des manières possibles de créer un zone mémoire librement utilisable est d'utiliser l'instruction [red]NOP[/red] (no operation). Lorsqu'elle est exécutée, celle-ci ne fait rien et le processeur passe à l'instruction suivante. Placé en [b]DEBUT[/b] de programme (c'est à dire à l'adresse 0x1000), cet opérateur permet de [b]réserver[/b] et de [b]protéger[/b] un octet utilisable par le reste du programme. [blue]Ce qui est toujours préférable qu'utiliser un octet au hasard dans la mémoire du processeur.[/blue]","","[b]Utilisez[/b] l'instruction NOP pour créer une zone mémoire et [b]chargez-y[/b] la valeur [b]#0x10.[/b]"],"tips":["L'exercice est plutôt simple, vous ne trouvez pas ?","Avez-vous [b]réellement[/b] besoin de la réponse ?","Le code attendu est : [code]NOP[br]LDA #0x10[br]STA 0x1000[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -600,7 +600,7 @@
         <dct:identifier>402</dct:identifier>
         <dct:title xml:lang="fr-FR">Créer une zone mémoire pour échanger le contenu des registres X et A.</dct:title>
         <dct:description><![CDATA["header":[{"label":"init","value":["LDX 0x33","LDA 0x44"],"code":"A233A944","rts":false}],"ops":["stx","tax","lda","nop"],"args":[{"value":"1004"}],"nblines":4,"valid":{"a":"33","x":"44"},"class":"large"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Le code 'init' initialise le registre X à 0x33 et le registre A à 0x44.","","Grâce à l'instruction [red]NOP[/red], [b]créez une zone mémoire librement utilisable en début de programme[/b] (à l'adresse [b]0x1004[/b] puisque les instruction [red]LDX[/red] et [red]LDA[/red] du code précompilé 'init' prennent déjà 4 octets en mémoire) puis [b]échangez les valeurs des 2 registres A et X en utilisant cette zone[/b]."]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["Grâce à l'instruction [red]NOP[/red], [b]créez une zone mémoire librement utilisable en début de programme[/b] afin d'[b]échanger[/b] la valeur des registres A et X.","","Placé au début de votre programme, le code compilé de l'instruction [b]NOP[/b] sera à l'adresse [b]0x1004[/b] puisque les instruction [red]LDX[/red] et [red]LDA[/red] du code précompilé 'init' prennent déjà 4 octets en mémoire."],"tips":["Une fois l'instruction NOP dans le programme, l'échange de valeurs se fait en [b]3 étapes[/b].","[b]1)[/b] X vers 0x1004[br][b]2)[/b] A vers X[br][b]3)[/b] 0x1004 vers A","Le code attendu est : [code]NOP[br]STX 0x1004[br]TAX[br]LDA 0x1004[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
@@ -612,7 +612,7 @@
         <dct:identifier>403</dct:identifier>
         <dct:title xml:lang="fr-FR">Créer deux zones mémoires utilisables comme variables et y charger les valeurs 0x41 et 0x4F.</dct:title>
         <dct:description><![CDATA["ops":["sta","lda","nop"],"args":[{"value":"1000"},{"value":"1001"},{"value":"41","type":"v"},{"value":"4F","type":"v"}],"nblines":6,"valid":{"mem":{"1000":"414FA9"}},"class":"large"]]></dct:description>
-        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Créez deux zones mémoires en DEBUT de programme (c'est à dire aux adresses 0x1000 et 0x1001) et chargez-y respectivement les valeurs 0x41 et 0x4F.[/b]"]]]></dct:description>
+        <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Réservez[/b] deux zones mémoires en DEBUT de programme (c'est à dire aux adresses 0x1000 et 0x1001) et [b]chargez-y[/b] respectivement les valeurs [b]#0x41[/b] et [b]0x4F[/b]."],"tips":["La [b]réservation[/b] d'espace mémoire dans la zone mémoire du code se fait grâce à l'instruction [b]NOP[/b].","[code]NOP[br]NOP[/code] permet de réserver 2 octets.","Le code attendu est : [code]NOP[br]NOP[br]LDA #0x41[br]STA 0x1000[br]LDA #0x4F[br]STA 0x1001[/code]"]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>it</dct:subject>
         <dct:educationLevel>3</dct:educationLevel>
