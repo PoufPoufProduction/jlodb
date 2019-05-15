@@ -6,8 +6,8 @@
         template    : "template.html",                          // Activity's html template
         css         : "style.css",                              // Activity's css style sheet
         lang        : "en-US",                                  // Current localization
-		edit		: true,										// Editor mode
-        slides    	: [{type:"title",title:"TITRE",subtitle:"[red]SOUSTITRE[/red]","content":"cool cool cool cool cool cool cool cool cool cool cool cool [b]cool[/b] cool cool cool cool cool",out:"tobottom"},{type:"list",subtitle:"Ma liste de [i]courses[/i]",list:["Je me lève et je te bouscule, tu ne te réveilles pas, comme d'habitude. Ma main carresse tes cheveux, presque malgrè moi comme d'habitude.","Puce 2","Puce 3"],footer:"C'est très intéressant",out:"tobottom",dynamic:true},{type:"img",title:"illustration",src:"res/img/characters/imp_r01.svg",footer:"yop",out:"fade",size:50,dynamic:true},{type:"title",title:"TITRE2",subtitle:"SOUS-TITRE2",out:"fade"},{type:"title",title:"TITRE",subtitle:"[red]SOUSTITRE[/red]","content":"cool cool cool cool cool cool cool cool cool cool cool cool [b]cool[/b] cool cool cool cool cool",out:"tobottom"},{type:"list",subtitle:"Ma liste de [i]courses[/i]",list:["Je me lève et je te bouscule, tu ne te réveilles pas, comme d'habitude. Ma main carresse tes cheveux, presque malgrè moi comme d'habitude.","Puce 2","Puce 3"],footer:"C'est très intéressant",out:"tobottom",dynamic:true},{type:"img",title:"illustration",src:"res/img/characters/imp_r01.svg",footer:"yop",out:"fade",size:50,dynamic:true},{type:"title",title:"TITRE2",subtitle:"SOUS-TITRE2",out:"fade"}],                                       // Slides
+		edit		: false,									// Editor mode
+        slides    	: [],                                       // Slides
         background  : "",
         debug       : false                                     // Debug mode
     };
@@ -94,15 +94,11 @@
 
                 // LOCALE HANDLING
                 if (settings.locale) { $.each(settings.locale, function(id,value) {
-                    if ($.isArray(value)) {  for (var i in value) { $this.find("#"+id).append("<p>"+value[i]+"</p>"); } }
-                    else { $this.find("#"+id).html(value); }
+					if($.type(value) === "string") { $this.find("#"+id).html(value); }
                 }); }
                 
                 // HANDLE BACKGROUND
                 if (settings.background) { $this.children().first().css("background-image","url("+settings.background+")"); }
-                
-                // Optional devmode
-                if (settings.dev) { $this.find("#devmode").show(); }
 
 				// BUILD THE PAGES
 				helpers.build($this);
@@ -125,15 +121,14 @@
 							}
 							else {
 								if (!settings.edit) { helpers.end($this); }
-								else				  { settings.interactive = true; }
+								else				{ settings.interactive = true; }
 							}
 						}
 					}
 				});
 				
+				$this.find("#thumbslides").css("margin-left",0)
 				helpers.arrow($this);
-				
-				if (settings.edit) { $this.addClass("edit").addClass("nosplash"); }
 				
 				// SHOW FIRST PAGE
 				helpers.show($this, settings.slideid);
@@ -143,7 +138,7 @@
         },
 		build: function($this) {
             var settings = helpers.settings($this);
-			$this.find("#thumbslides").html("").css("width",(settings.slides.length*36)+"em").css("margin-left",0);
+			$this.find("#thumbslides").html("").css("width",(settings.slides.length*36)+"em");
 			for (var i=0; i<settings.slides.length; i++) {
 				$this.find("#thumbslides").append(
 					helpers.slide(settings.slides[i]).attr("id","s"+i)
@@ -171,7 +166,7 @@
 					var html="<div class='p'>";
 					for (var i=0; i<_data.list.length; i++) {
 						html+="<div class='li p"+(i&&_data.dynamic?" d":"")+"'>";
-						html+=_data.li?_data.li:"<b>"+i+".</b> ";
+						html+=_data.li?_data.li:"<b>"+(i+1)+".</b> ";
 						html+=helpers.format(_data.list[i])+"</div>";
 					}
 					html+="</div>";
@@ -197,11 +192,13 @@
 				var slide = settings.slides[_id];
 				var $slide = $this.find("#thumbslides #s"+_id).clone();
 				$this.find("#thumbslides #s"+_id).addClass("s");
-				
-				// SHOW SLIDE
 				$this.find("#board").prepend($slide);
+				
+				if (settings.edit && settings.context && settings.context.onedit) {
+					settings.context.onedit($this, {id:_id, data:settings.slides[_id]});
+				}
 			}
-			else { $this.find("#end").show(); }
+			else { $this.find("#end").show(); $this.find("#control").html(""); }
 		},
 		hide: function($this, _id, _cbk) {
             var settings = helpers.settings($this);
@@ -235,7 +232,7 @@
 								$(this).detach(); _cbk();
 							});
 						break;
-						default: $this.find("#board #s"+_id).detach(); break;
+						default: $this.find("#board #s"+_id).detach(); _cbk(); break;
 					}
 				}
 				else { $this.find("#board #s"+_id).detach(); }
@@ -245,6 +242,20 @@
             var settings = helpers.settings($this);
 			if (settings.offset<=0) { $this.find("#thumbleft").hide(); } else { $this.find("#thumbleft").show(); }
 			if (settings.offset+5>=settings.slides.length) { $this.find("#thumbright").hide(); } else { $this.find("#thumbright").show(); }
+		},
+		update:function($this) {
+            var settings = helpers.settings($this);
+			helpers.build($this);
+			helpers.clean($this);
+			helpers.show($this, settings.slideid);
+			
+			var newOffset = 5*Math.floor(settings.slideid/5);
+			if (newOffset!=settings.offset) {
+				settings.offset=newOffset;
+				$this.find("#thumbslides").animate({"margin-left":(-1*settings.offset*34.5)+"em"}, 800,
+					function() { helpers.arrow($this); } );
+			}
+			else { helpers.arrow($this); }
 		}
     };
 
@@ -260,7 +271,7 @@
 					slideid			: 0,
 					offset			: 0
                 };
-
+				
                 return this.each(function() {
                     var $this = $(this);
                     helpers.unbind($this);
@@ -322,80 +333,8 @@
                 helpers.quit($this);
                 settings.context.onquit($this,{'status':'abort'});
             },
-			edit: function(_elt) {
-                var $this = $(this) , settings = helpers.settings($this);
-				if (settings.interactive)
-				{
-					settings.interactive = false;
-					$(_elt).addClass("touch");
-					setTimeout(function() { $(_elt).removeClass("touch"); }, 50);
-					setTimeout(function() { settings.interactive = true; }, 800);
-					
-					switch($(_elt).attr("id")) {
-						case 'edel' :
-							if (settings.slideid>=0 && settings.slideid<settings.slides.length) {
-								settings.slides.splice(settings.slideid,1);
-								if (settings.slides.length && settings.slideid>=settings.slides.length) {
-									settings.slideid=settings.slides.length-1; }
-								
-								helpers.build($this);
-								helpers.clean($this);
-								helpers.show($this, settings.slideid);
-								
-								if (settings.offset>0 && settings.offset>=settings.slides.length) {
-									settings.offset-=5;
-									$this.find("#thumbslides").animate({"margin-left":(-1*settings.offset*34.5)+"em"}, 800,
-									function() { helpers.arrow($this); } );
-								}
-								else { helpers.arrow($this); }
-							}
-						break;
-						case 'eleft':
-							if (settings.slideid>0 && settings.slideid<settings.slides.length) {
-								var elt = settings.slides.splice(settings.slideid,1);
-								settings.slideid--;
-								settings.slides.splice(settings.slideid,0,elt[0]);
-								
-								helpers.build($this);
-								helpers.clean($this);
-								helpers.show($this, settings.slideid);
-							}
-						break;
-						case 'eright':
-							if (settings.slideid>=0 && settings.slideid<settings.slides.length-1) {
-								var elt = settings.slides.splice(settings.slideid,1);
-								settings.slideid++;
-								settings.slides.splice(settings.slideid,0,elt[0]);
-								
-								helpers.build($this);
-								helpers.clean($this);
-								helpers.show($this, settings.slideid);
-							}
-						break;
-						case 'eexport':
-							var $export = $("<textarea id='texport' class='export'></textarea>");
-							var $button = $("<div class='l bluekeypad'>OK</div>");
-							$export.val(JSON.stringify(settings.slides));
-							$this.find("#control").html($export).append($button);
-							$button.bind("touchstart mousedown", function(_event) {
-								try {
-									settings.slideid = 0;
-									settings.offset = 0;
-									settings.slides  = jQuery.parseJSON($this.find("#texport").val());
-									
-									helpers.build($this);
-									helpers.clean($this);
-									helpers.show($this, settings.slideid);
-									helpers.arrow($this);
-								}
-								catch (e) { alert(e.message); return; }
-						
-								_event.preventDefault();
-							});
-						break;
-					}
-				}
-			}
+			e_settings: function() { return helpers.settings($(this)); },
+			e_update: function() { helpers.update($(this)); }
         };
 
         if (methods[method])    { return methods[method].apply(this, Array.prototype.slice.call(arguments, 1)); } 

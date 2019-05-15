@@ -1,0 +1,55 @@
+<div>
+	<div class="e_column e_elt" id="e_editor">
+		<div id="e_data">
+			<textarea id="eph_exercice"></textarea>
+			<div class="e_goal blue">
+				<select class="e_sep" id="eph_sep1"><option selected="selected">|</option><option>%</option><option>$</option><option>@</option><option>\</option><option>#</option></select>
+				<input type="text" value="" class="e_label" id="eph_goal1"/>
+			</div>
+			<div class="e_goal red">
+				<select class="e_sep" id="eph_sep2"><option>|</option><option selected="selected">%</option><option>$</option><option>@</option><option>\</option><option>#</option></select>
+				<input type="text" value="" class="e_label" id="eph_goal2"/>
+			</div>
+			<div class="e_goal green">
+				<select class="e_sep" id="eph_sep3"><option>|</option><option>%</option><option selected="selected">$</option><option>@</option><option>\</option><option>#</option></select>
+				<input type="text" value="" class="e_label" id="eph_goal3"/>
+			</div>
+			<input type="text" value="" id="eph_size"/>
+			<textarea id="eph_line1" class="e_line"></textarea>
+		</div>
+		<div class="l bluekeypad" 
+			ontouchstart="$(this).closest('.marker_editor').marker_editor('valid',this);event.preventDefault();"
+			onclick="$(this).closest('.marker_editor').marker_editor('valid',this);">OK</div>
+	</div>
+	
+	<div class="e_column e_elt" id="e_control"><div>
+		<textarea id='e_export' class='export'></textarea>
+		<div class='l bluekeypad'
+			ontouchstart="$(this).closest('.marker_editor').marker_editor('import',this);event.preventDefault();"
+			onclick="$(this).closest('.marker_editor').marker_editor('import',this);">
+			OK
+		</div>
+	</div></div>
+	
+	<div class="e_panel e_elt" id="e_screen"><div></div></div>
+
+
+	<div class="e_panel e_elt" id="e_menu"><div>
+		<div id="e_new" class="l bluekeypad"
+			ontouchstart="$(this).closest('.marker_editor').marker_editor('edit',this);event.preventDefault();"
+			onclick="$(this).closest('.marker_editor').marker_editor('edit',this);"></div>
+		<div id="e_get" class="l bluekeypad"
+			ontouchstart="$(this).closest('.marker_editor').marker_editor('edit',this);event.preventDefault();"
+			onclick="$(this).closest('.marker_editor').marker_editor('edit',this);"></div>
+		<div id="e_del" class="l bluekeypad"
+			ontouchstart="$(this).closest('.marker_editor').marker_editor('edit',this);event.preventDefault();"
+			onclick="$(this).closest('.marker_editor').marker_editor('edit',this);"></div>
+		<div id="e_import" class="l bluekeypad"
+			ontouchstart="$(this).closest('.marker_editor').marker_editor('edit',this);event.preventDefault();"
+			onclick="$(this).closest('.marker_editor').marker_editor('edit',this);"></div>
+		<div id="e_submit" class="l bluekeypad"
+			ontouchstart="$(this).closest('.marker_editor').marker_editor('edit',this);event.preventDefault();"
+			onclick="$(this).closest('.marker_editor').marker_editor('edit',this);">jLoDb</div>
+	</div></div>
+</div>
+

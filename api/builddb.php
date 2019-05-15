@@ -45,7 +45,7 @@ if (!$error) {
                             '`Activity_Name`            VARCHAR( 64 )   NOT NULL , '.
                             '`Activity_Title`           VARCHAR( 64 )   NOT NULL , '.
                             '`Activity_Key`             VARCHAR( 4 )    NOT NULL , '.
-                            '`Activity_Description`     TEXT            NOT NULL , '.
+                            '`Activity_Description`     TEXT , '.
                             '`Activity_Source`          TEXT , '.
                             '`Activity_External`        VARCHAR( 255 ) , '.
                             '`Activity_Locale`          TEXT , '.
@@ -68,8 +68,41 @@ if (!$error) {
                        'PRIMARY KEY (  `Exercice_Id` ), '.
                        'FOREIGN KEY ( `Exercice_Activity` ) REFERENCES '.$_SESSION['prefix'].'activity(`Activity_Name`)) '.
                        'ENGINE=InnoDB') &&
-            mysqli_query($link, 'CREATE TABLE `'.$_SESSION['prefix'].'tags` (`Tag` VARCHAR(50) NOT NULL ) ENGINE=InnoDB')
+            mysqli_query($link, 'CREATE TABLE `'.$_SESSION['prefix'].'tags` (`Tag` VARCHAR(50) NOT NULL ) ENGINE=InnoDB') 
             ) {
+				
+			// BUILD THE EDITOR TABLE IF NECESSARY
+			if (!mysqli_query($link, "SELECT * FROM `".$_SESSION['prefix']."editor`")) {
+            mysqli_query($link, 'CREATE TABLE  `'.$_SESSION['prefix'].'editor` ('.
+                            '`Editor_Id`              INT NOT NULL AUTO_INCREMENT, '.
+                            '`Editor_Email`           VARCHAR( 255 ) , '.
+                            '`Editor_Activity`        VARCHAR( 64 ) NOT NULL , '.
+                            '`Editor_Description`     TEXT ,'.
+                            '`Editor_Parameters`      TEXT ,'.
+                            '`Editor_State`           INT , '.
+							'`Editor_Exercice`        VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_bin, '.
+                            '`Editor_Date`            DATETIME DEFAULT NULL, '.
+							'PRIMARY KEY ( `Editor_Id` )) '.
+							'ENGINE=InnoDB');
+			}
+				
+			// BUILD THE REPORT TABLE IF NECESSARY
+			if (!mysqli_query($link, "SELECT * FROM `".$_SESSION['prefix']."report`")) {
+            mysqli_query($link, 'CREATE TABLE  `'.$_SESSION['prefix'].'report` ('.
+                            '`Report_Id`              INT NOT NULL AUTO_INCREMENT , '.
+							'`Report_Exercice`        VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL , '.
+                            '`Report_Description`     TEXT ,'.
+                            '`Report_State`           INT , '.
+                            '`Report_Title`           VARCHAR( 255 )  NOT NULL , '.
+                            '`Report_Level`           INT             NOT NULL , '.
+                            '`Report_Difficulty`      INT             NOT NULL , '.
+                            '`Report_Classification`  VARCHAR( 64 )   NOT NULL , '.
+                            '`Report_Duration`        INT             NOT NULL, '.
+                            '`Report_Tags`            VARCHAR( 128 ) , '.
+                            '`Report_Date`            DATETIME DEFAULT NULL, '.
+							'PRIMARY KEY ( `Report_Id` )) '.
+							'ENGINE=InnoDB');
+			}
 
             // FILL THE ACTIVITY TABLE THANKS TO THE ACTIVITIES.RDF FILE
             $activities = "../activities/activities.rdf";

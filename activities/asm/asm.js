@@ -295,7 +295,8 @@
                 // Locale handling
                 if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
 
-
+				if (settings.edit) { helpers.unbind($this); }
+				
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             },
             speed: function($this) {

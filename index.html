@@ -19,6 +19,8 @@
         #waitingCount                       { position:absolute; top:9em; left:0.5em; font-size:1em; width:2em; text-align:center; color:#800000; display:none; }
         #waitingCount>div                   { font-size:0.7em; }
 
+		#jlodb								{ background-color:#FFFFFF;  }
+		
         #jlheader                           { width:100%; height:2em; overflow:hidden; background-color:#EEEEEE; position:relative; }
         #jlheader img.background            { width:100%; height:100%; position:absolute; }
         #jlheader ul                        { position:absolute; top:.1em; left:15.3em; list-style-type:none;}
@@ -29,19 +31,23 @@
         body>div.logged #jlodb .iflogged    { display:inline; }
         body>div.logged #jlodb .ifnotlogged { display:none; }
         body>div.logged #jlheader           { background-color:#555555; }
-        #jlnav                              { float:left; width:3em; height:9em; overflow:hidden; background-color:#DDDDDD; }
+		
+        #jlnav                              { float:left; width:3em; height:9em; overflow:hidden;
+											  background-color:#DDDDDD; }
         #jlnav ul                           { font-size:.35em; list-style-type: none; }
         #jlnav li div                       { margin:.2em; padding:.1em .1em .1em .3em; cursor:pointer; border-radius:.2em; background-color:#888;color:#DDD; height:1.2em; white-space:nowrap;}
         #jlnav .sub                         { display:none; }
         #jlnav ul.sub                       { font-size:.8em; padding-left:1em; }
+		
         #jlfooter                           { clear:both; width:100%; height:1em; overflow:hidden; background-color:#EEEEEE; position:relative; }
         #jlconsole                          { font-size:.2em; color:#444444; font-family: "Courier New", Courier, mono; position:absolute; top:0; }
-        #jlcontent>div                      { float:left; width:13em; height:9em; overflow:hidden; background-color:#FFFFFF; color:#333333;}
-        #jlcontent>.jlcontent>div.text      { font-size:.3em; }
-        #jlcontent>.jlcontent ul            { list-style-type:none; }
-        #jlcontent>.jlcontent li            { position:relative; margin: .1em 0 .25em .2em; }
-        #jlcontent>.jlcontent li .icon      { position:absolute; top:0; width:1.5em; height:1.5em; }
-        #jlcontentb                         { display:none; }
+		
+		#jlcontent							 { color:#333333; width:81%; height:9em; }
+        #jlcontent #jlcontenta>div.text      { font-size:.3em; }
+        #jlcontent #jlcontenta ul            { list-style-type:none; }
+        #jlcontent #jlcontenta li            { position:relative; margin: .1em 0 .25em .2em; }
+        #jlcontent #jlcontenta li .icon      { position:absolute; top:0; width:1.5em; height:1.5em; }
+        #jlcontent #jlcontentb               { display:none; }
 
         
         #jlodb #buildlog        { font-size:.2em; }
@@ -87,20 +93,7 @@
         #jlodb #apps .icon                  { width:1em; height:1em; float:left; cursor:pointer; margin:.1em; font-size:5em; }
 
         /*-------------------------------------------------- EDITION PAGE ---------------------------------------------------------*/
-        #jlodb #edition textarea            { resize:none; margin:.5em; width:50em; font-size:.25em; }
-        #jlodb #edition .icon               { text-align:center; margin-left:.1em; cursor:pointer; }
-        #jlodb #edition #edargs             { height:20em; }
-        #jlodb #edition #edlabel            { height:4em; background-image:url("res/img/default/pattern/line01.svg"); background-repeat:repeat;}
-        #jlodb #edition #edmenu             { height:1em; font-size:.8em; }
-        #jlodb #edition #edmenu>*           { float:left; }
-        #jlodb #edition #edmenu #edlevel    { background-image:url("res/img/icon/icon.svg"); background-size:100%; }
-        #jlodb #edition #edmenu #edduration { background-image:url("res/img/icon/duration.svg"); background-size:100%; }
-        #jlodb #edition #edmenu select      { height:2em; width:12em; font-size:.5em; margin-left:.1em; text-align:center; }
-        #jlodb #edition #edmenu #edcl       { width:18em; height:4em; font-size:.25em; margin-left:.2em;}
-        #jlodb #edition .edbutton           { width:9em; height:1.25em; font-size:.8em; margin:0 0 0 .1em; border:1px solid black;
-                                              border-radius:.25em; text-align:center; cursor:pointer; }
-        #jlodb #edition #edfooter           { height:1em; font-size:.8em; overflow:visible;}
-        #jlodb #edition #edfooter>*         { float:left; }
+        #jlodb #jlcontentc					{ font-size:0.8em; background-color:#555;width:100%;  }
 
         /*-------------------------------------------------- NAVIGATION PAGES -----------------------------------------------------*/
         #jlodb .navigation                  { font-size:.25em;  }
@@ -145,13 +138,7 @@
 		#jlodb .padmin .install        {  background-color:#888; font-size:1em; float:left; color:#EEE; width:60%; height:1.2em; text-align:center; cursor:pointer;  }
 		#jlodb .padmin .h1				{ background-color:#444; color:white; width:95%; text-align:center; }
 
-        #jlodb #mask                        { position:absolute; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5);
-                                              display:none; }
-        #jlodb #screen                      { position:absolute; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5);
-                                              display:none; }
-        #jlodb #screen>textarea             { font-size:.25em; width:61em; height:40em; margin:3.5em 1em; padding:.5em; background-color:black;
-                                              color:green; overflow:auto;}
-        #jlodb #screen>div                   { position:absolute; top:0; left:0; width:1em; height:1em; cursor:pointer; }
+        
 
     </style>
     <script>
@@ -399,99 +386,25 @@ jlodb = {
             }
         },
         edition: {
-            data: { level: 1, diff:1, duration:0, d:[1,2,3,4,5,7,10,15,20,30,45,60] },
-            level: function(_inc) {
-                if (_inc) { this.data.level=this.data.level%5+1; }
-                $("#jlodb #edition #edlevel").html(this.data.level);
-            },
-            diff: function(_inc) {
-                if (_inc) { this.data.diff=this.data.diff%5+1; }
-                $("#jlodb #edition #eddiff img").attr("src","res/img/numbers/star/star"+this.data.diff+".svg");
-            },
-            duration: function(_inc) {
-                if (_inc) { this.data.duration=(this.data.duration+1)%this.data.d.length; }
-                $("#jlodb #edition #edduration").html(this.data.d[this.data.duration]);
-            },
-            doc: function() {
-                window.open("locale/"+jlodb.checkdb.lang+"/documentation.html","_blank");
-            },
-            classification:function() {
-                $("#jlodb #edition #edclass img").attr("src","res/img/classification/"+$("#jlodb #edition select#edcl").val()+".svg");
-            },
-            activity:function() {
-                $("#jlodb #edition #edactivity img").attr("src","res/img/activity/"+$("#jlodb #edition select#activities").val()+".svg");
-            },
-            open: function(_id) {
+			data:0,
+            get: function(_id) {
                 $.getJSON("api/exercice.php?detail&id="+_id, function(data) {
                     if (data && data.exercices && data.exercices[0]) {
-                        $("#jlodb #edition textarea#edargs").val(JSON.stringify(data.exercices[0].data));
-                        $("#jlodb #edition textarea#edlabel").val(data.exercices[0].label);
-                        jlodb.page.edition.data.level = data.exercices[0].level;    jlodb.page.edition.level(false);
-                        jlodb.page.edition.data.diff = data.exercices[0].diff;      jlodb.page.edition.diff(false);
-                        for (var i in jlodb.page.edition.data.d) {
-                            if (jlodb.page.edition.data.d[i]==data.exercices[0].time) { jlodb.page.edition.data.duration = parseInt(i); } }
-                        jlodb.page.edition.duration(false);
-                        $("#jlodb #edition select#activities").val(data.exercices[0].activity);
-                        jlodb.page.edition.activity();
-
-                        $("#jlodb #edition select#edcl").val(data.exercices[0].classification);
-                        jlodb.page.edition.classification();
-
+						jlodb.page.edition.data = data.exercices[0];
                         jlodb.page.edition.load();
                     }
                 });
             },
-            build: function() {
-                $.getJSON("api/activity.php", function(data) {
-                    $("#jlcontentc").load("locale/"+jlodb.checkdb.lang+"/edition.html"+"?debug="+Math.floor(Math.random()*99999),
-                    function(response, status, xhr) {
-                        $("#jlodb #edition select").html("");
-                        for (var i=0; i<data.activities.length; i++) {
-                            var option = "<option value='"+data.activities[i].id+"'";
-                            option +=">"+data.activities[i].label+"</option>";
-                            $("#jlodb #edition select#activities").append(option);
-                        }
-                        for (var i in jlodb.classification.list) {
-                            var option = "<option value='"+jlodb.classification.list[i].id+"'";
-                            option +=">"+jlodb.classification.list[i].label+"</option>";
-                            $("#jlodb #edition select#edcl").append(option);
-                        }
-                    });
-                });
-            },
             load: function() {
                 $("#jlcontent>div").hide();
-                $("#jlcontentc").show();
-            },
-            submit: function() {
-                $.getJSON("api/activity.php?name="+$("#jlodb #edition select").val(), function(data) {
-                    var json={};
-                    try { json = jQuery.parseJSON($("#jlodb #edition textarea#edargs").val()); }
-                    catch (e) { alert("[JSON ERROR] "+e.message); return; }
-
-                    var args = $.extend({}, json, {locale: data.locale });
-                    jlodb.run({ activity : $("#jlodb #edition select").val(), args: args }, false);
-                });
-            },
-            publish: function() {
-                var json={};
-                try { json = jQuery.parseJSON($("#jlodb #edition textarea#edargs").val()); }
-                catch (e) { alert("[JSON ERROR] "+e.message); return; }
-                var data = JSON.stringify(json).substr(1);
-                data = data.substr(0,data.length-1);
-
-                var rdf="";
-                rdf+="<!-- "+$("#jlodb #edition select#activities").val()+"-->"+"\n";
-                rdf+="<rdf:Description>"+"\n";
-                rdf+="  <dct:title xml:lang=\""+jlodb.checkdb.lang+"\">"+$("#jlodb #edition textarea#edlabel").val()+"</dct:title>"+"\n";
-                rdf+="  <dct:description><![CDATA["+data+"]]></dct:description>"+"\n";
-                rdf+="  <dct:extent>"+jlodb.page.edition.data.d[jlodb.page.edition.data.duration]+"</dct:extent>"+"\n";
-                rdf+="  <dct:subject>"+$("#jlodb #edition select#edcl").val()+"</dct:subject>"+"\n";
-                rdf+="  <dct:educationLevel>"+jlodb.page.edition.data.level+"</dct:educationLevel>"+"\n";
-                rdf+="  <dct:type>"+jlodb.page.edition.data.diff+"</dct:type>"+"\n";
-                rdf+="</rdf:Description>"+"\n";
-
-                alert(rdf);
+				if (this.data) {
+					var name = this.data.activity;
+					$.getScript('editors/'+name+'/'+name+'.js',
+						function() { $("#jlcontentc>div")[name+"_editor"]({args:jlodb.page.edition.data}); });
+				}
+				else { $("#jlcontentc>div").html("Please select an exercice from the browser"); }
+				
+				$("#jlcontentc").show();
             }
         },
         browser: {
@@ -499,25 +412,6 @@ jlodb = {
                 $("#jlcontent>div").hide();
                 $("#jlcontentb").show();
                 $("#jlcontentb").browser("onshow");
-            },
-            ex: function() {
-                var values="";
-                $("#jlcontentb .data .c0 span").each(function(_index) { values+=(_index?",":"")+$(this).text(); });
-                values+="\n\n";
-                $("#jlcontentb .data").each(function() {
-                    var classification = $(this).find(".c1 img").attr("src").substr(23);
-                    classification = classification.substr(0,classification.length-4);
-                    var star = $(this).find(".c5 img").attr("src").substr(17);
-                    star = star.substr(0,star.length-4);
-
-                    values+=$(this).find(".c0 span").text()+"\t"+classification+"\t"+
-                            $(this).find(".c3").text()+"\t"+
-                            $(this).find(".c4").text()+"\t"+
-                            star+"\t"+
-                            $(this).find(".c6").text()+"\n";
-                });
-
-                $("#jlodb #screen").show().find("textarea").val(values);
             }
         }
     },
@@ -576,20 +470,19 @@ jlodb = {
                     $.getJSON("locale/"+data.lang+"/classification.json", function(data) {
                         jlodb.classification.data = $(data);
                         jlodb.classification.build();
-                        jlodb.page.edition.build();
                         jlodb.page.classification.elt=$(data).attr("id");
                         jlodb.page.browser.elt=$(data).attr("id");
 
                         if (results) { jlodb.page.browser.load(results[1]); }
 
                         $("#jlcontentb").browser({
-                          onReady:function($this){
-                            $("#jlcontentb #jbrmenu").append("<div onclick='jlodb.page.browser.ex();'>export</div>");
-                          },
-                          url:jlodb.checkdb.url,
-                          lang:jlodb.checkdb.lang, classification:jlodb.classification.data, context:[
+                          onReady			: function($this){ },
+                          url				: jlodb.checkdb.url,
+                          lang				: jlodb.checkdb.lang,
+						  classification	: jlodb.classification.data,
+						  context			: [
                             { icon:"res/img/default/white/run.svg", process :function(_id){ jlodb.run({id:_id}, false); } },
-                            { icon:"res/img/default/white/edit.svg", process:function(_id){ jlodb.page.edition.open(_id); } },
+                            { icon:"res/img/default/white/edit.svg", process:function(_id){ jlodb.page.edition.get(_id); } },
                             { icon:"res/img/default/white/snapshot.svg", process:function(_id) {
                                 window.open('demo.html?id='+_id,'_blank',
                                     'width=640, height=480,toolbar=no,location=no,status=no,menubar=no,'+
@@ -618,7 +511,7 @@ $(window).ready(function() {
 
 <body><div>
     <div id="jlodb">
-        <div id="page">
+        <div id="jlpage">
             <div id="jlheader">
                 <img src="res/img/banners/jlodb.svg" alt="" class="background" />
                 <ul>
@@ -629,20 +522,14 @@ $(window).ready(function() {
             </div>
 
             <div id="jlnav"></div>
+			
             <div id="jlcontent">
                 <div id="jlcontenta" class="jlcontent"></div>
                 <div id="jlcontentb" class="jlcontent"></div>
-                <div id="jlcontentc" class="jlcontent"></div>
+                <div id="jlcontentc" class="jlcontent"><div></div></div>
             </div>
 
             <div id="jlfooter"><div id="jlconsole">Waiting for server response...</div></div>
-
-        </div>
-        <div id="mask"></div>
-        <div id="screen">
-            <textarea></textarea>
-            <div id="scquit" ontouchstart="$('#jlodb #screen').hide();event.preventDefault();"
-                           onclick="$('#jlodb #screen').hide();"><img src="res/img/default/icon/nw_quit01.svg" alt="x"/></div>
         </div>
     </div>
     <div id="waiting" class="anim12"><div><img src="res/img/default/anim/waiting_red.svg" alt=""/></div></div>

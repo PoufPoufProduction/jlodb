@@ -35,7 +35,7 @@
     <rdf:Description>
         <dct:identifier>10o</dct:identifier>
         <dct:title xml:lang="fr-FR">Soustraire deux nombres compris entre 1 et 10 sur un boulier classique.</dct:title>
-        <dct:description><![CDATA["number":5,"type":"classic","gen":"function(_value){var a=Math.floor(Math.random()*8)+2,b=Math.floor(Math.random()*(a-1))+1; return {\\\"value\\\":[\\\"-\\\",a,b],\\\"init\\\":a}; }"]]></dct:description>
+        <dct:description><![CDATA["number":5,"type":"classic","gen":"function($this,_s,_value){var a=Math.floor(Math.random()*8)+2,b=Math.floor(Math.random()*(a-1))+1; return {\\\"value\\\":[\\\"-\\\",a,b],\\\"init\\\":a}; }"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"fontex":0.8,"exercice":["[b]Effectuez[/b] les [b]soustractions[/b] demandées grâce au boulier."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>subtraction</dct:subject>
@@ -61,7 +61,7 @@
     <rdf:Description>
         <dct:identifier>100ro</dct:identifier>
         <dct:title xml:lang="fr-FR">Soustraire sans retenue deux nombres compris entre 1 et 100 sur un boulier classique.</dct:title>
-        <dct:description><![CDATA["number":5,"type":"classic","gen":"function(_value){var a,b; do { a=Math.floor(Math.random()*88)+12; b=Math.floor(Math.random()*(a-1))+1; } while (a%10<b%10); return {\\\"value\\\":[\\\"-\\\",a,b],\\\"init\\\":a}; }"]]></dct:description>
+        <dct:description><![CDATA["number":5,"type":"classic","gen":"function($this,_s,_value){var a,b; do { a=Math.floor(Math.random()*88)+12; b=Math.floor(Math.random()*(a-1))+1; } while (a%10<b%10); return {\\\"value\\\":[\\\"-\\\",a,b],\\\"init\\\":a}; }"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"fontex":0.8,"exercice":["[b]Effectuez[/b] les [b]soustractions[/b] demandées grâce au boulier."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>subtraction</dct:subject>

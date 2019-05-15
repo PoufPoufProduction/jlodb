@@ -24,6 +24,7 @@
         width       : 640,
         background  : "",
         cumul       : [],
+		edit		: false,									// Editor mode
         debug       : true                                      // Debug mode
     };
 
@@ -135,9 +136,6 @@
                 }
                 
                 // LOCALE HANDLING
-
-                $this.find("#guide").html(settings.locale.guide);
-                //$.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); });
 
                 if (settings.exercice) {
                     $this.find("#exercice #content").html(helpers.format(settings.exercice)).css("font-size",settings.fontex+"em");

@@ -48,7 +48,7 @@
     <rdf:Description>
         <dct:identifier>5o</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner deux nombres dont les opérandes sont compris entre 1 et 5 sur un boulier classique.</dct:title>
-        <dct:description><![CDATA["type":"classic","number":5,"gen":"function(_value){var a=Math.floor(Math.random()*5)+1,b; do { b=Math.floor(Math.random()*5)+1; } while(a+b>=10); return {\\\"value\\\":[\\\"+\\\",a,b]}; }"]]></dct:description>
+        <dct:description><![CDATA["type":"classic","number":5,"gen":"function($this,_s,_value){var a=Math.floor(Math.random()*5)+1,b; do { b=Math.floor(Math.random()*5)+1; } while(a+b>=10); return {\\\"value\\\":[\\\"+\\\",a,b]}; }"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Effectuez[/b] les [red]additions[/red] demandées."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>addition</dct:subject>
@@ -61,7 +61,7 @@
     <rdf:Description>
         <dct:identifier>10o</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner deux nombres dont la somme est comprise entre 2 et 10 sur un boulier classique.</dct:title>
-        <dct:description><![CDATA["type":"classic","number":5,"gen":"function(_value){var a=Math.floor(Math.random()*9)+1,b; do { b=Math.floor(Math.random()*9)+1; } while(a+b>=10); return {\\\"value\\\":[\\\"+\\\",a,b]}; }"]]></dct:description>
+        <dct:description><![CDATA["type":"classic","number":5,"gen":"function($this,_s,_value){var a=Math.floor(Math.random()*9)+1,b; do { b=Math.floor(Math.random()*9)+1; } while(a+b>=10); return {\\\"value\\\":[\\\"+\\\",a,b]}; }"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Effectuez[/b] les [red]additions[/red] demandées."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>addition</dct:subject>
@@ -127,7 +127,7 @@
     <rdf:Description>
         <dct:identifier>20o</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner deux nombres inférieurs à 10 et dont la somme est comprise entre 10 et 19 sur un boulier classique.</dct:title>
-        <dct:description><![CDATA["type":"classic","number":5,"gen":"function(_value){var a=Math.floor(Math.random()*9)+1,b; do { b=Math.floor(Math.random()*9)+1; } while(a+b<10); return {\\\"value\\\":[\\\"+\\\",a,b]}; }"]]></dct:description>
+        <dct:description><![CDATA["type":"classic","number":5,"gen":"function($this,_s,_value){var a=Math.floor(Math.random()*9)+1,b; do { b=Math.floor(Math.random()*9)+1; } while(a+b<10); return {\\\"value\\\":[\\\"+\\\",a,b]}; }"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Effectuez[/b] les [red]additions[/red] demandées."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>addition</dct:subject>
@@ -195,7 +195,7 @@
     <rdf:Description>
         <dct:identifier>s10o</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner deux nombres dont la somme est comprise entre 2 et 9 sur un boulier chinois.</dct:title>
-        <dct:description><![CDATA["number":5,"gen":"function(_value){var a=Math.floor(Math.random()*8)+1, b=Math.floor(Math.random()*(9-a))+1; return {\\\"value\\\":[\\\"+\\\",a,b]}; }"]]></dct:description>
+        <dct:description><![CDATA["number":5,"gen":"function($this,_s,_value){var a=Math.floor(Math.random()*8)+1, b=Math.floor(Math.random()*(9-a))+1; return {\\\"value\\\":[\\\"+\\\",a,b]}; }"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Effectuez[/b] les [red]additions[/red] demandées."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>addition</dct:subject>
@@ -208,7 +208,7 @@
     <rdf:Description>
         <dct:identifier>s100o</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner deux nombres dont la somme est comprise entre 2 et 99 sur un boulier chinois.</dct:title>
-        <dct:description><![CDATA["number":5,"gen":"function(_value){var a=Math.floor(Math.random()*98)+1, b=Math.floor(Math.random()*(99-a))+1; return {\\\"value\\\":[\\\"+\\\",a,b]}; }"]]></dct:description>
+        <dct:description><![CDATA["number":5,"gen":"function($this,_s,_value){var a=Math.floor(Math.random()*98)+1, b=Math.floor(Math.random()*(99-a))+1; return {\\\"value\\\":[\\\"+\\\",a,b]}; }"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Effectuez[/b] les [red]additions[/red] demandées."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>addition</dct:subject>
@@ -220,7 +220,7 @@
     <rdf:Description>
         <dct:identifier>s1ko</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner deux nombres dont la somme est comprise entre 2 et 999 sur un boulier chinois.</dct:title>
-        <dct:description><![CDATA["number":5,"gen":"function(_value){var a=Math.floor(Math.random()*998)+1, b=Math.floor(Math.random()*(999-a))+1; return {\\\"value\\\":[\\\"+\\\",a,b]}; }"]]></dct:description>
+        <dct:description><![CDATA["number":5,"gen":"function($this,_s,_value){var a=Math.floor(Math.random()*998)+1, b=Math.floor(Math.random()*(999-a))+1; return {\\\"value\\\":[\\\"+\\\",a,b]}; }"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Effectuez[/b] les [red]additions[/red] demandées."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>addition</dct:subject>
@@ -232,7 +232,7 @@
     <rdf:Description>
         <dct:identifier>s1ki</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner deux nombres dont la somme est comprise entre 2 et 999 sur un boulier chinois préparé.</dct:title>
-        <dct:description><![CDATA["number":5,"gen":"function(_value){var a=Math.floor(Math.random()*998)+1, b=Math.floor(Math.random()*(999-a))+1; return {\\\"value\\\":[\\\"+\\\",a,b],\\\"init\\\":a}; }"]]></dct:description>
+        <dct:description><![CDATA["number":5,"gen":"function($this,_s,_value){var a=Math.floor(Math.random()*998)+1, b=Math.floor(Math.random()*(999-a))+1; return {\\\"value\\\":[\\\"+\\\",a,b],\\\"init\\\":a}; }"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Effectuez[/b] les [red]additions[/red] demandées."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>addition</dct:subject>
@@ -244,7 +244,7 @@
     <rdf:Description>
         <dct:identifier>s1mo</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner deux nombres dont la somme est comprise entre 2 et 999 999 sur un boulier chinois.</dct:title>
-        <dct:description><![CDATA["number":4,"gen":"function(_value){var a=Math.floor(Math.random()*999998)+1, b=Math.floor(Math.random()*(999999-a))+1; return {\\\"value\\\":[\\\"+\\\",a,b]}; }"]]></dct:description>
+        <dct:description><![CDATA["number":4,"gen":"function($this,_s,_value){var a=Math.floor(Math.random()*999998)+1, b=Math.floor(Math.random()*(999999-a))+1; return {\\\"value\\\":[\\\"+\\\",a,b]}; }"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Effectuez[/b] les [red]additions[/red] demandées."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>addition</dct:subject>
@@ -256,7 +256,7 @@
     <rdf:Description>
         <dct:identifier>s1mi</dct:identifier>
         <dct:title xml:lang="fr-FR">Additioner deux nombres dont la somme est comprise entre 2 et 999 999  sur un boulier chinois préparé.</dct:title>
-        <dct:description><![CDATA["number":4,"gen":"function(_value){var a=Math.floor(Math.random()*999998)+1, b=Math.floor(Math.random()*(999999-a))+1; return {\\\"value\\\":[\\\"+\\\",a,b],\\\"init\\\":a}; }"]]></dct:description>
+        <dct:description><![CDATA["number":4,"gen":"function($this,_s,_value){var a=Math.floor(Math.random()*999998)+1, b=Math.floor(Math.random()*(999999-a))+1; return {\\\"value\\\":[\\\"+\\\",a,b],\\\"init\\\":a}; }"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":["[b]Effectuez[/b] les [red]additions[/red] demandées."]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>addition</dct:subject>

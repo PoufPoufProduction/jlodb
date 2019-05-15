@@ -1,0 +1,20 @@
+<div>
+	<div class="e_column e_elt" id="e_control"><div>
+		<textarea id='e_export' class='export'></textarea>
+		<div class='l bluekeypad'
+			ontouchstart="$(this).closest('.puzzle_editor').puzzle_editor('import',this);event.preventDefault();"
+			onclick="$(this).closest('.puzzle_editor').puzzle_editor('import',this);">
+			OK
+		</div>
+	</div></div>
+	
+	<div class="e_panel e_elt" id="e_screen"><div></div></div>
+
+
+	<div class="e_panel e_elt" id="e_menu"><div>
+		<div id="e_submit" class="l bluekeypad"
+			ontouchstart="$(this).closest('.puzzle_editor').puzzle_editor('edit',this);event.preventDefault();"
+			onclick="$(this).closest('.puzzle_editor').puzzle_editor('edit',this);">jLoDb</div>
+	</div></div>
+</div>
+

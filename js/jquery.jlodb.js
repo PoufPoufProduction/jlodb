@@ -101,10 +101,11 @@ jlodbmaze.prototype = {
         // OVERWRITABLE METHODS
         onevent     : function($this, _begin, _hide)   { if (_begin) { helpers.settings($this).onstart($this); }
                                                          else        { helpers.settings($this).onfinish($this, _hide); } },
-        onstart     : function($this)           { /** START THE ACTIVITY */ },
-        onfinish    : function($this)           { /** FINISH THE ACTIVITY */ },
-        onscore     : function($this, _ret)     { /** HANDLE THE SCORE */ return false; },
-        onexercice  : function($this, _id)      { /** GET THE ID OF THE EXERCICE */ }
+        onstart     : function($this)           		{ /** START THE ACTIVITY */ },
+        onfinish    : function($this)           		{ /** FINISH THE ACTIVITY */ },
+        onscore     : function($this, _ret)     		{ /** HANDLE THE SCORE */ return false; },
+        onexercice  : function($this, _id, _args)     	{ /** GET ID AND ARGS OF THE EXERCICE */ },
+		onedit		: function($this, _args)			{ /** EDIT CALLBACK */ }
 
     };
 
@@ -152,10 +153,11 @@ jlodbmaze.prototype = {
                 if (data.exercices[0].locale) {
                     if (d.locale) { d.locale = $.extend(d.locale, data.exercices[0].locale); }
                     else { d.locale = data.exercices[0].locale; } }
-                if (settings.onexercice) { settings.onexercice($this, data.exercices[0].id, data.exercices[0].activity); }
+                if (settings.onexercice) { settings.onexercice($this, data.exercices[0].id, d); }
 
                 if (data.exercices[0].ext && jlodbext && jlodbext[data.exercices[0].ext]) {
-                    jlodbext[data.exercices[0].ext].js(function() { helpers.run($this,data.exercices[0].activity, d); });
+                    jlodbext[data.exercices[0].ext].js(function() {
+						helpers.run($this,data.exercices[0].activity, d); });
                 }
                 else { helpers.run($this,data.exercices[0].activity, d); }
             }
@@ -209,7 +211,11 @@ jlodbmaze.prototype = {
                             var settings = helpers.settings($this);
                             if (!$this.is(":visible")) { $this.css("opacity",0).show().animate({opacity:1},1000); }
                             settings.onevent($this,true);
-                        }
+                        },
+						onedit: function($this, _args) {
+                            var settings = helpers.settings($this);
+							settings.onedit($this, _args);
+						}
                     }
                 };
 

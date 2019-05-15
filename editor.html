@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>jLoDb</title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="js/jquery.svg.min.js"></script>
+    <script type="text/javascript" src="js/jquery.jlodb.js"></script>
+    <script type="text/javascript" src="js/jlodb-ext.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/jlodb.css" media="all" />
+	<style>
+	#editor_panel { position:absolute; width:100%; height:100%; background-color:rgba(0,0,0,0.6); top:0; left:0; font-size:.5em; display:none; z-index:100; }
+	#editor_panel>div { background-color:rgba(255,255,255,0.9); width:80%; height:80%; margin:5% 10%; border:.1em solid white;  }
+	#editor_panel input { background-color:#333; color:white; border:0; width:80%; margin-left:5%; padding:0 5%;font-size:1em;  }
+	#editor_panel textarea { background-color:#333; color:white; border:0; width:80%; margin-left:5%; padding:0 5%;font-size:0.8em; height:8em; }
+	#editor_panel #editor_data { background-color:#333; color:white; border:0; width:80%; margin-left:5%; padding:0 5%;font-size:.4em; height:15em; }
+	#editor_panel .icon { widht:1em; height:1em; cursor:pointer; font-size:4em; }
+	</style>
+    <script>
+//<![CDATA[
+
+var name = "";
+onsubmit = function(_json) {
+	$("#editor_panel #editor_data").html(_json);
+	$("#editor_panel").show();
+}
+
+send = function() {
+	$.post( "api/editor.php?action=new",
+			{ email: 		$("#editor_email").val(),
+			  description: 	$("#editor_description").val(),
+			  data:			$("#editor_data").val(),
+			  activity:		name })
+	.done(function( data ) { $('#editor_panel').hide(); });
+}
+
+$(window).ready(function() {
+
+	$(window).resize();
+
+    // HANDLE ARGUMENTS
+    var args = {}
+    var a = location.search.substring(1).split('&');
+    for (var i in a) { var p= a[i].split('='); args[p[0]]=p[1]; }
+
+    if (args.id)       {
+		$.getJSON("api/exercice.php?detail&id="+args.id, function(data) {
+            if (data && data.exercices && data.exercices[0]) {
+				var d = data.exercices[0];
+				name = d.activity;
+				$.getScript('editors/'+name+'/'+name+'.js',
+					function() { $("#screen")[name+"_editor"]({args:d,validation:onsubmit}); });
+			}
+        });
+	
+	}
+	else { alert("error"); }
+
+
+});
+
+//]]>
+</script>
+</head>
+
+<body><div>
+<div class="jlodb" style="display:inherit;">
+    <div id="screen" style="width:100%;height:100%"></div>
+
+	<div id="editor_panel"><div>
+		<input id="editor_email" type="text" placeholder="email"/>
+		<textarea id="editor_description" placeholder="description"></textarea>
+		<textarea id="editor_data" id="editor_data"></textarea>
+		<div class="icon" style="margin:.1em;float:right;" onclick="send();">
+			<img src="res/img/default/icon/valid01.svg" alt="x"/>
+		</div>
+		<div class="icon" style="margin:.1em;float:left;" onclick="$('#editor_panel').hide();">
+			<img src="res/img/default/icon/cancel01.svg" alt="x"/>
+		</div>
+	</div></div>
+</div>
+
+</div>
+</body>
+</html>

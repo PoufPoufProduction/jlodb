@@ -145,8 +145,8 @@
 					// PUSH THE LAST WORD
                     $p.append(helpers.word($this,word, lastLetterIsSep?9:8)); word="";
 					$content.append($p);
+					settings.endofline.push(settings.it);
                 }
-
                 helpers.color($this,0);
 				
 				// HANDLE BACKGROUND
@@ -163,11 +163,7 @@
         },
         word: function($this, _word,_t) {
             var settings = helpers.settings($this);
-			
-			var onlysep = true;
-			for (var i in _word) { if (settings.sep.indexOf(_word[i])==-1) { onlysep=false; } }
-			if (onlysep) { console.log(_word+" "+_t); }
-			
+
             var $ret = $("<span id='s"+(settings.it++)+"'>"+_word+"</span>");
 			$ret.bind("mousedown touchstart",function(event) { helpers.mousedown($this, $(this)); event.preventDefault(); });
 			$ret.bind("mousemove", function(event) { helpers.mousemove($this, $(this)); });
@@ -299,6 +295,7 @@
                 var settings = {
                     finish          : false,
                     words           : [],
+					endofline		: [],
                     it              : 0,
                     color           : 0,
                     m               : {
@@ -377,7 +374,27 @@
                 var $this = $(this) , settings = helpers.settings($this);
                 settings.finish = true;
                 settings.context.onquit($this,{'status':'abort'});
-            }
+            },
+			e_get: function() {
+                var $this = $(this) , settings = helpers.settings($this);
+				var ret = [];
+				var line = "", nbline = 0;
+				var current = -1;
+				for (var i=0; i<settings.words.length; i++) {
+					if (current!=settings.words[i][0]) {
+						if (current!=-1) 				{ line+=settings.questions[current].s; }
+						if (settings.words[i][0]!=-1) 	{ line+=settings.questions[settings.words[i][0]].s; }
+						current=settings.words[i][0];
+					}
+					if (i==settings.endofline[nbline]) {
+						ret.push(line); nbline++; line="";
+					}
+					line+=$this.find("#s"+i).html().replace("&nbsp;"," ");
+				}
+				if (current!=-1) 				{ line+=settings.questions[current].s; }
+				ret.push(line);
+				return ret;
+			}
         };
 
         if (methods[method])    { return methods[method].apply(this, Array.prototype.slice.call(arguments, 1)); } 

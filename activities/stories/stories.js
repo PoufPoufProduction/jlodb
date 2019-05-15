@@ -259,9 +259,6 @@
                 
                 // HANDLE BACKGROUND
                 if (settings.background) { $this.children().first().css("background-image","url("+settings.background+")"); }
-                
-                // Optional devmode
-                if (settings.dev) { $this.find("#devmode").show(); }
 				
 				// PREPARE OBJECTS
 				settings.objects = $.extend(true, {}, objectdef, settings.objects);
@@ -1223,10 +1220,6 @@ show: function() {
                         helpers.loader.css($this);
                     }
                 });
-            },
-            devmode: function() {
-                var $this = $(this), settings = helpers.settings($this);
-                $this.find("#devoutput textarea").val("Debug output").parent().show();
             },
             next: function() {
                 var $this = $(this), settings = helpers.settings($this);

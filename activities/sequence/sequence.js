@@ -19,8 +19,9 @@
         strict      : false,                    // Strictly test the values (Not sure is still mandatory)
         decimal     : false,                    // Accept decimal values
         negative    : false,                    // Accept negative values
-        fontex      : 1,                        // exercice font
-        debug       : true                     // Debug mode
+        fontex      : 1,                        // Exercice font
+		edit		: false,					// Editor mode
+        debug       : true                      // Debug mode
     };
 
     var regExp = [
@@ -239,6 +240,8 @@
                 if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
 
                 setTimeout(function() { $this.find("#values ul").show(); helpers.move($this, true);}, 500);
+				
+				if (settings.edit) { helpers.unbind($this); }
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },

@@ -1,65 +1,26 @@
 <div>
-
-	<div id="ui">
-		<div id="board"></div>
+	<div id="board"></div>
 		
-		<div id="end">FIN</div>
+	<div id="end"></div>
 		
-		<div id="thumbnails">
-			<div id="thumbhelper" ontouchstart="$(this).closest('.impress').impress('thumbnail');event.preventDefault();"
-						  onclick="$(this).closest('.impress').impress('thumbnail');"></div>
-			<div id="thumbslides"></div>
-			<div id="thumbleft" class="arrow" ontouchstart="$(this).closest('.impress').impress('arrow',-1);event.preventDefault();"
-						  onclick="$(this).closest('.impress').impress('arrow',-1);">&lt;</div>
-			<div id="thumbright" class="arrow" ontouchstart="$(this).closest('.impress').impress('arrow',1);event.preventDefault();"
-						  onclick="$(this).closest('.impress').impress('arrow',1);">&gt;</div>
-		</div>
-	</div>
-	
-	<div id="menu" class="edit"><div>
-		<div id="enew" class="l d2 bluekeypad"
-			ontouchstart="$(this).closest('.impress').impress('edit',this);event.preventDefault();"
-			onclick="$(this).closest('.impress').impress('edit',this);">Créer</div>
-			
-		<select class="l d2 bluekeypad"><option>Titre</option><option>Texte</option><option>Liste</option></select>
-		
-		<div id="edel" id="edel" class="l bluekeypad"
-			ontouchstart="$(this).closest('.impress').impress('edit',this);event.preventDefault();"
-			onclick="$(this).closest('.impress').impress('edit',this);">Supprimer</div>
-			
-		<div id="eleft" class="l d2 bluekeypad"
-			ontouchstart="$(this).closest('.impress').impress('edit',this);event.preventDefault();"
-			onclick="$(this).closest('.impress').impress('edit',this);">A gauche</div>
-			
-		<div id="eright" class="l d2 bluekeypad"
-			ontouchstart="$(this).closest('.impress').impress('edit',this);event.preventDefault();"
-			onclick="$(this).closest('.impress').impress('edit',this);">A droite</div>
-			
-		<div id="eexport" class="l bluekeypad"
-			ontouchstart="$(this).closest('.impress').impress('edit',this);event.preventDefault();"
-			onclick="$(this).closest('.impress').impress('edit',this);">Importer / Exporter</div>
-
-		<div id="esubmit" class="l bluekeypad"
-			ontouchstart="$(this).closest('.impress').impress('edit',this);event.preventDefault();"
-			onclick="$(this).closest('.impress').impress('edit',this);">Valider</div>
-	</div></div>
-	
-	<div id="control" class="edit">
+	<div id="thumbnails">
+		<div id="thumbhelper"
+			ontouchstart="$(this).closest('.impress').impress('thumbnail');event.preventDefault();"
+			onclick="$(this).closest('.impress').impress('thumbnail');"></div>
+		<div id="thumbslides"></div>
+		<div id="thumbleft" class="arrow"
+			ontouchstart="$(this).closest('.impress').impress('arrow',-1);event.preventDefault();"
+			onclick="$(this).closest('.impress').impress('arrow',-1);">&lt;</div>
+		<div id="thumbright" class="arrow"
+			ontouchstart="$(this).closest('.impress').impress('arrow',1);event.preventDefault();"
+			onclick="$(this).closest('.impress').impress('arrow',1);">&gt;</div>
 	</div>
 
-    <div id="splashex" ontouchstart="$(this).hide().closest('.impress').impress('next');event.preventDefault();"
-                     onclick="$(this).hide().closest('.impress').impress('next');"><div>
+
+    <div id="splashex"
+		ontouchstart="$(this).hide().closest('.impress').impress('next');event.preventDefault();"
+        onclick="$(this).hide().closest('.impress').impress('next');"><div>
         <h1 id="label"></h1>
     </div></div>
-    
-    <!-- Optional devmode -->
-    <div id="devmode" ontouchstart="$(this).closest('.impress').impress('devmode');event.preventDefault();"
-                      onclick="$(this).closest('.impress').impress('devmode');" ><img src="res/img/default/white/snapshot.svg"/></div>
-                      
-    <div id="devoutput" ontouchstart="$(this).hide();event.preventDefault();" onclick="$(this).hide();">
-        <textarea ontouchstart="$(this).focus();event.stopPropagation();event.preventDefault();"
-                  onclick="$(this).focus();event.stopPropagation();"></textarea>
-    </div>
-
 </div>
 

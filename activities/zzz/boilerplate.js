@@ -8,6 +8,7 @@
         lang        : "en-US",                                  // Current localization
         exercice    : [],                                       // Exercice
         background  : "",
+		edit		: false,									// Editor mode
         debug       : false                                     // Debug mode
     };
 
@@ -96,12 +97,11 @@
                     if ($.isArray(value)) {  for (var i in value) { $this.find("#"+id).append("<p>"+value[i]+"</p>"); } }
                     else { $this.find("#"+id).html(value); }
                 }); }
+
+				if (settings.edit) { $this.addClass("edit").addClass("nosplash"); }
                 
                 // HANDLE BACKGROUND
                 if (settings.background) { $this.children().first().css("background-image","url("+settings.background+")"); }
-                
-                // Optional devmode
-                if (settings.dev) { $this.find("#devmode").show(); }
 
                 // Exercice
                 $this.find("#exercice").html(helpers.format(settings.exercice));
@@ -138,10 +138,6 @@
                         helpers.loader.css($this);
                     }
                 });
-            },
-            devmode: function() {
-                var $this = $(this) , settings = helpers.settings($this);
-                $this.find("#devoutput textarea").val("Debug output").parent().show();
             },
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);

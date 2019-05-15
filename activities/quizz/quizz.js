@@ -471,10 +471,6 @@
                     }
                 });
             },
-            devmode: function() {
-                var $this = $(this) , settings = helpers.settings($this);
-                $this.find("#devoutput textarea").val("Debug output").parent().show();
-            },
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 settings.interactive = true;

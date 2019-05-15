@@ -15,6 +15,7 @@
         errratio    : 1,                                        // Ratio error
         reset       : true,                                     // Reset abacus after each question
         background  : "",                                       // Background image
+		edit		: false,									// Editor mode
         debug       : true                                     // Debug mode
     };
 
@@ -127,7 +128,7 @@
                     settings.data = [];
                     var lastvalue = -1;
                     for (var i=0; i<settings.number; i++) {
-                        var v=eval('('+settings.gen+')')(lastvalue);
+                        var v=eval('('+settings.gen+')')($this, settings, lastvalue);
                         settings.data.push(v);
                         lastvalue = v.value;
                     }
@@ -136,50 +137,53 @@
 
                 // Balls
                  $(".b", settings.svg.root()).bind("touchstart mousedown", function(event) {
-                    var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
-                            event.originalEvent.touches[0]:event;
-                    $(".b", settings.svg.root()).each(function() { $(this).attr("class",$(this).attr("class").replace(" m","")); });
-                    
-                    settings.ratio = $this.find("#board").height()/90;
-
-                    var vOk = settings.interactive;
-                    if (settings.data[settings.id].target && $(this).attr("class").indexOf("tgt")==-1) { vOk = false; }
-
-                    if (vOk) {
-                        var row = $(this).attr("id").substr(-1);
-                        settings.mouse.row = (row=='a')?10:parseInt(row);
-                        settings.mouse.col = parseInt($(this).parent().attr("id").substr(1));
-
-                        if (settings.mouse.row>c[settings.type].b[0]) {
-                            settings.mouse.up = (c[settings.type].u[0]-settings.mouse.row<=settings.status[settings.mouse.col][1]);
-                            if (settings.mouse.up) {
-                                for (var i=c[settings.type].u[0]-settings.status[settings.mouse.col][1]; i<=settings.mouse.row; i++) {
-                                    $("#e"+settings.mouse.col+i, settings.svg.root()).attr("class",
-                                        $("#e"+settings.mouse.col+i, settings.svg.root()).attr("class").replace(" up","")+" m"); }
-                            } else {
-                                for (var i=settings.mouse.row; i<=7-settings.status[settings.mouse.col][1]; i++) {
-                                    $("#e"+settings.mouse.col+i, settings.svg.root()).attr("class",
-                                        $("#e"+settings.mouse.col+i, settings.svg.root()).attr("class").replace(" up","")+" m"); }
-                            }
-                        }
-                        else {
-                            settings.mouse.up = (settings.mouse.row>settings.status[settings.mouse.col][0]);
-                            if (settings.mouse.up) {
-                                for (var i=settings.status[settings.mouse.col][0]+1; i<=settings.mouse.row; i++) {
-                                    $("#e"+settings.mouse.col+(i==10?'a':i), settings.svg.root()).attr("class",
-                                        $("#e"+settings.mouse.col+(i==10?'a':i), settings.svg.root()).attr("class").replace(" up","")+" m"); }
-                            } else {
-                                for (var i=settings.mouse.row; i<=settings.status[settings.mouse.col][0]; i++) {
-                                    $("#e"+settings.mouse.col+(i==10?'a':i), settings.svg.root()).attr("class",
-                                      $("#e"+settings.mouse.col+(i==10?'a':i), settings.svg.root()).attr("class").replace(" up","")+" m"  ); }
-                            }
-                        }
-                        settings.mouse.clientY = vEvent.clientY;
-                        settings.mouse.clientX = vEvent.clientX;
-                        settings.mouse.move = 0;
+					if (settings.interactive) {
+						var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
+								event.originalEvent.touches[0]:event;
+						$(".b", settings.svg.root()).each(function() { $(this).attr("class",$(this).attr("class").replace(" m","")); });
 						
+						settings.ratio = $this.find("#board").height()/90;
 
-                    }
+						var vOk = true;
+						if (settings.data[settings.id].target && $(this).attr("class").indexOf("tgt")==-1) {
+							vOk = false; }
+
+						if (vOk) {
+							var row = $(this).attr("id").substr(-1);
+							settings.mouse.row = (row=='a')?10:parseInt(row);
+							settings.mouse.col = parseInt($(this).parent().attr("id").substr(1));
+
+							if (settings.mouse.row>c[settings.type].b[0]) {
+								settings.mouse.up = (c[settings.type].u[0]-settings.mouse.row<=settings.status[settings.mouse.col][1]);
+								if (settings.mouse.up) {
+									for (var i=c[settings.type].u[0]-settings.status[settings.mouse.col][1]; i<=settings.mouse.row; i++) {
+										$("#e"+settings.mouse.col+i, settings.svg.root()).attr("class",
+											$("#e"+settings.mouse.col+i, settings.svg.root()).attr("class").replace(" up","")+" m"); }
+								} else {
+									for (var i=settings.mouse.row; i<=7-settings.status[settings.mouse.col][1]; i++) {
+										$("#e"+settings.mouse.col+i, settings.svg.root()).attr("class",
+											$("#e"+settings.mouse.col+i, settings.svg.root()).attr("class").replace(" up","")+" m"); }
+								}
+							}
+							else {
+								settings.mouse.up = (settings.mouse.row>settings.status[settings.mouse.col][0]);
+								if (settings.mouse.up) {
+									for (var i=settings.status[settings.mouse.col][0]+1; i<=settings.mouse.row; i++) {
+										$("#e"+settings.mouse.col+(i==10?'a':i), settings.svg.root()).attr("class",
+											$("#e"+settings.mouse.col+(i==10?'a':i), settings.svg.root()).attr("class").replace(" up","")+" m"); }
+								} else {
+									for (var i=settings.mouse.row; i<=settings.status[settings.mouse.col][0]; i++) {
+										$("#e"+settings.mouse.col+(i==10?'a':i), settings.svg.root()).attr("class",
+										  $("#e"+settings.mouse.col+(i==10?'a':i), settings.svg.root()).attr("class").replace(" up","")+" m"  ); }
+								}
+							}
+							settings.mouse.clientY = vEvent.clientY;
+							settings.mouse.clientX = vEvent.clientX;
+							settings.mouse.move = 0;
+							
+
+						}
+					}
                     event.preventDefault();
                 });
 
@@ -239,11 +243,11 @@
                             */
                         
                         }
+						helpers.update($this);
+						$(".b", settings.svg.root()).each(function() { $(this).attr("class",$(this).attr("class").replace(" m","")); });
+						settings.mouse.clientY=0;
+						settings.mouse.move = 0;
                     }
-                    helpers.update($this);
-                    $(".b", settings.svg.root()).each(function() { $(this).attr("class",$(this).attr("class").replace(" m","")); });
-                    settings.mouse.clientY=0;
-                    settings.mouse.move = 0;
                 });
 
                 // Exercice
@@ -344,6 +348,7 @@
                 while(val>0) { $("#val1 #b"+i, settings.svg.root()).text(val%10); val = Math.floor(val/10); i++; }
             }
             helpers.update($this);
+			settings.interactive = true;
         }
     };
 
@@ -385,35 +390,38 @@
             },
             valid: function() {
                 var $this = $(this) , settings = helpers.settings($this);
+				if (settings.interactive) {
+					
+					settings.interactive = false;
+					var data = settings.data[settings.id], result = data.result, wrongs = 0;
+					for (var i=0; i<c[settings.type].nb; i++) {
+						var $v = $("#val2 #c"+i, settings.svg.root());
+						if ($v.text()!=(result%10).toString()) {
+							wrongs++;
+							$v.attr("class","err");
+							$("#c"+i+" .b", settings.svg.root()).each(function() {
+								var tmp = $(this).attr("class");
+								$(this).attr("class",tmp+" wrong");
+							});
+						}
+						result=Math.floor(result/10);
+					}
+					settings.id++;
+					settings.wrongs+=wrongs;
 
-                var data = settings.data[settings.id], result = data.result, wrongs = 0;
-                for (var i=0; i<c[settings.type].nb; i++) {
-                    var $v = $("#val2 #c"+i, settings.svg.root());
-                    if ($v.text()!=(result%10).toString()) {
-                        wrongs++;
-                        $v.attr("class","err");
-                        $("#c"+i+" .b", settings.svg.root()).each(function() {
-                            var tmp = $(this).attr("class");
-                            $(this).attr("class",tmp+" wrong");
-                        });
-                    }
-                    result=Math.floor(result/10);
-                }
-                settings.id++;
-                settings.wrongs+=wrongs;
+					$this.find("#good").toggle(!wrongs);
+					$this.find("#wrong").toggle(wrongs);
+					$this.find("#effects").show();
+					$this.find("#submit").addClass(wrongs?"wrong":"good");
 
-                $this.find("#good").toggle(!wrongs);
-                $this.find("#wrong").toggle(wrongs);
-                $this.find("#effects").show();
-                $this.find("#submit").addClass(wrongs?"wrong":"good");
-
-                if (settings.id<settings.data.length) {
-                    setTimeout(function() { helpers.next($this, settings.reset); }, wrong?2000:500);
-                }
-                else {
-                    settings.score = Math.max(0,Math.floor(5-settings.wrongs*settings.errratio));
-                    setTimeout(function() { helpers.end($this); }, wrong?2000:500);
-                }
+					if (settings.id<settings.data.length) {
+						setTimeout(function() { helpers.next($this, settings.reset); }, wrong?2000:500);
+					}
+					else {
+						settings.score = Math.max(0,Math.floor(5-settings.wrongs*settings.errratio));
+						setTimeout(function() { helpers.end($this); }, wrong?2000:500);
+					}
+				}
             },
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
