@@ -10,28 +10,45 @@
 		.label { font-size:.15em; margin-top:.2em; text-align:center; }
 		.link	{ clear:both; font-size:1.5em; border:1px solid gray; border-radius:.2em; margin:.1em; width:98%; padding:.2em; }
 		a		{ color:black; text-decoration:none; }
+		#header { font-size:0.6em; }
 	</style>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+	<script>
+	
+$(window).ready(function() {
+	$.getJSON("api/checkdb.php", function (_check) {
+        if (_check.status=="success") {
+			$.getJSON("locale/"+_check.lang+"/editor.json", function(_json) {
+				for (var i in _json) {	$("#"+i).html(_json[i]); }
+			});
+		}
+	});
+});
+
+	</script>
 </head>
 
 <body>
 
 <div class="link">
-Créez un exercice avec l'aide d'un éditeur ci-dessous puis proposez-le à l'aide du bouton <b>jLoDb</b>. Avant de valider, pensez à rajoutez, si possible, une rapide description et ainsi qu'un email pour être prévenu lorsque l'insertion en base de votre exercice sera effective.
+<div id="header"></div>
 </div>
 
 <div class="link">
-	<a href="editor.html?id=isx"><div class="elt">
-		<div class="icon"><img src="res/img/activity/impress.svg" alt=""/></div>
-		<div class="label">Impress</div>
-	</div></a>
 	<a href="editor.html?id=mrx"><div class="elt">
 		<div class="icon"><img src="res/img/activity/marker.svg" alt=""/></div>
 		<div class="label">Marker</div>
 	</div></a>
-	<a href="editor.html?id=isx"><div class="elt">
+	<a href="editor.html?id=crx"><div class="elt">
 		<div class="icon"><img src="res/img/activity/correcter.svg" alt=""/></div>
 		<div class="label">Correcter</div>
 	</div></a>
+	<a href="editor.html?id=isx"><div class="elt">
+		<div class="icon"><img src="res/img/activity/impress.svg" alt=""/></div>
+		<div class="label">Impress</div>
+	</div></a>
+
+
 	
 	<div style="clear:both"></div>
 </div>

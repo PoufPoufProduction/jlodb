@@ -1,0 +1,44 @@
+<div>
+	<div class="e_column e_elt" id="e_editor">
+		<div id="e_data">
+			<textarea id="eph_text" onkeyup="$(this).closest('.correcter_editor').correcter_editor('onchange');"></textarea>
+			<input type="text" value="" id="eph_proba" class="eph_value" style="display:none"/>
+			<input type="text" value="" id="eph_size" class="eph_value"/>
+			<select id="eph_style" class="eph_value"><option id="e_default" value="default"></option><option id="e_blank" value="blank"></option><option id="e_bold" value="bold"></option></select>
+			<select id="eph_first" class="eph_value"><option id="e_first" value="1"></option><option id="e_notfirst" value="0"></option></select>
+			<div id="e_word">
+				<input type="text" id="eph_word" class="eph_value" readonly/>
+				<select id="eph_local"><option value="0" id="e_local"></option><option value="1" id="e_global"></option></select>
+				<input type="text" id="eph_candidates" class="eph_value"/>
+			</div>
+		</div>
+		<div class="l bluekeypad" 
+			ontouchstart="$(this).closest('.correcter_editor').correcter_editor('valid',this);event.preventDefault();"
+			onclick="$(this).closest('.correcter_editor').correcter_editor('valid',this);">OK</div>
+	</div>
+	
+	<div class="e_column e_elt" id="e_control"><div>
+		<textarea id='e_export' class='export'></textarea>
+		<div class='l bluekeypad'
+			ontouchstart="$(this).closest('.correcter_editor').correcter_editor('import',this);event.preventDefault();"
+			onclick="$(this).closest('.correcter_editor').correcter_editor('import',this);">
+			OK
+		</div>
+	</div></div>
+	
+	<div class="e_panel e_elt" id="e_screen"><div></div></div>
+
+
+	<div class="e_panel e_elt" id="e_menu"><div>
+		<div id="e_display" class="l bluekeypad"
+			ontouchstart="$(this).closest('.correcter_editor').correcter_editor('edit',this);event.preventDefault();"
+			onclick="$(this).closest('.correcter_editor').correcter_editor('edit',this);">Surligner/Masquer</div>
+		<div id="e_import" class="l bluekeypad"
+			ontouchstart="$(this).closest('.correcter_editor').correcter_editor('edit',this);event.preventDefault();"
+			onclick="$(this).closest('.correcter_editor').correcter_editor('edit',this);"></div>
+		<div id="e_submit" class="l bluekeypad"
+			ontouchstart="$(this).closest('.correcter_editor').correcter_editor('edit',this);event.preventDefault();"
+			onclick="$(this).closest('.correcter_editor').correcter_editor('edit',this);">jLoDb</div>
+	</div></div>
+</div>
+

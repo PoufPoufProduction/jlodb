@@ -198,7 +198,7 @@
 
                     // Initialize the action cards
                     for (var j in settings.robots[i].actions) {
-                        var $elt = $($this.find("#tabs #t"+(parseInt(i)+1)+" .code .z").get(parseInt(j)));
+                        var $elt = $($this.find("#tabs #t"+(parseInt(i)+1)+" .rtcode .z").get(parseInt(j)));
                         var $html=$("<div class='a'><img src='res/img/action/"+settings.robots[i].actions[j]+".svg' alt='"+settings.robots[i].actions[j]+"'/></div>");
                         $elt.html($html);
                         $html.draggable({ containment:$this.find("#t"+(parseInt(i)+1)), revert:true, stack:".a"});
@@ -294,7 +294,7 @@
         // UPDATE THE SOURCE CODE DISPLAY
         updatesource: function($this) {
             var settings    = helpers.settings($this);
-            $this.find(".code tr").each(function(_index) {
+            $this.find(".rtcode tr").each(function(_index) {
                 var robotid = Math.floor(_index/9);
                 var rowid = _index%9;
                 $(this).toggle(rowid>=settings.sourceid[robotid]&&rowid<settings.sourceid[robotid]+3);

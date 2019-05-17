@@ -9,12 +9,13 @@
         score       : 1,                    // The score (from 1 to 5)
         proba       : 2,                    // Change a word each 'proba' words
         style       : "default",            // Style of the words (default, blank or bold)
-        multiple    : 0,                    // The multiple occurence separator
+        suffix      : "_",                  // The specific occurence separator
         font        : 1,                    // The font-size multiplicator
         first       : false,                // Don't choose randomly the wrong words, use the first one
         background  : "",                   // Background image
 		commas		: ".,:;\"",				// Commas
 		split		: " ",					// Split
+		highlight	: false,				// Highlight words
 		errratio	: 1,
         debug       : true                  // Debug mode
     };
@@ -158,13 +159,12 @@
                             }
                         }
 
-                        // MULTIPLE OCCURENCE
-                        if (settings.multiple && word.search(settings.multiple)>0)
-                            word = word.substring(0,word.search(settings.multiple));
+                        if (word.indexOf(settings.suffix)!=-1)
+                            word = word.substring(0,word.search(settings.suffix));
 
                         if (begin>0) { content+=text[j].substring(0, begin); }
                         content+="<span class='"+classTxt+
-                                 "' onmousedown=\"$(this).closest('.correcter').correcter('click', this, "+index+");\"";
+                                 "' onmousedown=\"$(this).closest('.correcter').correcter('click', this, "+index+");event.preventDefault();\"";
                         content+=" ontouchstart=\"$(this).closest('.correcter').correcter('click', this, "+
                                  index+");event.preventDefault();\"";
                         content+=">"+word+"</span>";
@@ -190,11 +190,12 @@
                     settings.elt = 0;
                     $this.find("#popup").hide();
                     $this.find("#popup div").removeClass("s");
+					_event.preventDefault();
                 });
 
-                $this.bind("mousemove touchmove", function(event) {
-                    var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
-                                      event.originalEvent.touches[0]:event;
+                $this.bind("mousemove touchmove", function(_event) {
+                    var vEvent = (_event && _event.originalEvent && _event.originalEvent.touches && _event.originalEvent.touches.length)?
+                                      _event.originalEvent.touches[0]:_event;
                     $this.find("#popup div").removeClass("s");
 
                     if (settings.elt && vEvent.clientX>=settings.popup.offset[0] &&
@@ -204,6 +205,7 @@
                         var index = 1+Math.floor(settings.popup.nb*(vEvent.clientY-settings.popup.offset[1])/settings.popup.size[1]);
                         $($this.find("#popup div").get(index)).addClass("s");
                     }
+					_event.preventDefault();
 
                 });
 
@@ -220,10 +222,24 @@
                 if (settings.exercice)  { $this.find("#exercice").html(helpers.format(settings.exercice)); }
                 if (settings.locale)    { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
 
-                $this.children().show()
+                $this.children().show();
+				
+				helpers.highlight($this, settings.highlight);
+				
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
-        }
+        },
+		highlight: function($this, _value) {
+            var settings = helpers.settings($this);
+			settings.highlight=_value;
+			$this.find("#data span.highlight").removeClass("highlight");
+			if (settings.highlight) {
+				$this.find("#data span").each(function(index, value) {
+					var word = settings.responses[index];
+					if (settings.dictionary[word]) { $(this).addClass("highlight"); }
+				});
+			}
+		}
     };
 
     // The plugin
@@ -265,6 +281,18 @@
             click: function(elt, value) {
                 var $this = $(this) , settings = helpers.settings($this), $popup = $(this).find("#popup");
 
+				var goodWord = settings.responses[value];
+                var response = [];
+
+                var word = goodWord;
+                if (word.indexOf(settings.suffix)!=-1) {
+                    word = word.substring(0,word.search(settings.suffix));
+                }
+				
+				if (settings.edit && settings.context && settings.context.onedit) {
+					settings.context.onedit($this, {index:value, real:goodWord, word:word, glossary:settings.dictionary[goodWord]?settings.dictionary[goodWord].join(','):"", words:settings.responses});
+				}
+				
                 if (settings.style=="default" || $(elt).hasClass("blank") || $(elt).hasClass("bold") ) {
                     if (settings.activate) {
                         var posx = $(elt).offset().left-$this.offset().left;
@@ -275,14 +303,6 @@
                               .css("top",(posy-settings.offset[settings.style][1])+"px");
 
                         // Compute the array
-                        var goodWord = settings.responses[value];
-                        var response = [];
-
-                        // MULTIPLE OCCURENCE HANDLING
-                        var word = goodWord;
-                        if (settings.multiple &&  word.search(settings.multiple)>0) {
-                            word = word.substring(0,word.search(settings.multiple));
-                        }
                         response.push(word);
 
                         if (settings.dictionary[goodWord]) {
@@ -332,8 +352,8 @@
                     var nbErrors = 0;
                     $(this).find("#data span").each(function(index, value) {
                         var word = settings.responses[index];
-                        if (settings.multiple && word.search(settings.multiple)>0) {
-                            word = word.substring(0,word.search(settings.multiple));
+                        if (word.indexOf(settings.suffix)!=-1) {
+                            word = word.substring(0,word.indexOf(settings.suffix));
                         }
                         var regTmp = new RegExp("&#8201;","g");
                         word = word.replace(regTmp,String.fromCharCode(8201));
@@ -351,9 +371,18 @@
                     settings.score = 5-nbErrors*settings.errratio;
                     if (settings.score<0) { settings.score = 0; }
                     $(this).find("#valid").hide();
-                    setTimeout(function() { helpers.end($this); }, nbErrors?3000:1000);
+					if (settings.edit) {
+						setTimeout(function() {
+							$this.find("#effects").hide();
+							$this.find("#data span").removeClass("wrong");
+							$this.find("#submit").removeClass("wrong").removeClass("good");
+							settings.activate = true;
+						}, 1500);
+					}
+					else { setTimeout(function() { helpers.end($this); }, nbErrors?3000:1000); }
                 }
-            }
+            },
+            e_highlight: function(_value) { helpers.highlight($(this), _value); }
         };
 
         if (methods[method])    { return methods[method].apply(this, Array.prototype.slice.call(arguments, 1)); } 

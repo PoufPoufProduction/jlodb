@@ -85,28 +85,20 @@
 			}
 			
 			var locked = false;
-			$this.find(".e_linex").detach();
-			for (var i=0; i<_args.data.text.length; i++) {
-				if (!settings.result) {
-					for (var j=0; j<_args.data.questions.length; j++) {
-						if (_args.data.text[i].indexOf(_args.data.questions[j].s)!=-1) { locked = true; }
-					}
-				}
-				if (i) {
-					$this.find("#e_data").append("<textarea class='e_line e_linex' placeholder='"+settings.args.locale.editor.eph_line1+"'>"+_args.data.text[i]+"</textarea>");
-					
-				}
-				else { $this.find("#eph_line1").val(_args.data.text[i]); }
+			var lines = _args.data.text.join('\n');
+			for (var j=0; j<_args.data.questions.length; j++) {
+				if (lines.indexOf(_args.data.questions[j].s)!=-1) { locked = true; }
 			}
+			$this.find("#eph_line1").val(lines);
 			
 			$this.find("#e_data .e_sep").attr("disabled",locked?"disabled":false);
 			
 			if (_args.data.font) { $this.find("#eph_size").val(_args.data.font); }
 		},
 		convert: function($this) {
-			var val={text:[], questions:[], exercice:$this.find("#eph_exercice").val()};
-			$this.find("#e_data .e_line").each(function() {
-				if ($(this).val().length) { val.text.push($(this).val()); } });
+			var val={ text:$this.find("#eph_line1").val().split('\n'),
+					  questions:[], exercice:$this.find("#eph_exercice").val()};
+					  
 			for (var i=0; i<3; i++) {
 				if ($this.find("#eph_goal"+(i+1)).val().length) {
 					val.questions.push({label:$this.find("#eph_goal"+(i+1)).val(), s:$this.find("#eph_sep"+(i+1)).val() });
@@ -151,14 +143,13 @@
 				{
 					var anim = true;
 					switch($(_elt).attr("id")) {
-						case 'e_new' :
-								$this.find("#e_data").append("<textarea class='e_line e_linex' placeholder='"+l.eph_line1+"'></textarea>");
-							break;
 						case 'e_del' :
 							var val = helpers.convert($this);
 							for (var i in val.text) {
-								var vReg = new RegExp("[|]","g");
-								val.text[i]=val.text[i].replace(vReg,"");
+								for (var j=0; j<settings.args.data.questions.length; j++) {
+									var vReg = new RegExp("["+settings.args.data.questions[j].s+"]","g");
+									val.text[i]=val.text[i].replace(vReg,"");
+								}
 							}
 							helpers.import($this, _elt, val, true);
 							anim = false;

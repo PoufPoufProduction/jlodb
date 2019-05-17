@@ -18,6 +18,7 @@
 .correcter div#data span.blank            { border:1px solid gray; padding:0 2px 0 2px; }
 .correcter div#data span.bold             { font-weight:bold; }
 .correcter div#data span.wrong            { background-color:rgba(255,80,65,1.0); color:rgb(220, 240, 256); }
+.correcter div#data span.highlight		  { background-color:yellow; }
 .correcter div#key                        { width:5em; height:5em; margin:0 auto; cursor:pointer; }
 .correcter div#popup                      { position:absolute; top:0; left:0; font-size:.5em; background-color:rgba(255,255,255,1);
                                             border:1px solid black; display:none; padding:5px; z-index:2;}
@@ -35,3 +36,16 @@
 
 .correcter #effects                       { display:none; width:5em; height:5em; position:absolute; top:0.5em; left:10.5em;  z-index:20;}
 .correcter #effects>div                   { font-size:5em; width:1em; height:1em; display:none;}
+
+/*============ EDITOR PANEL =============*/
+
+.correcter_editor #e_editor>div			{ height:94%; }
+.correcter_editor #e_editor textarea		{ font-size:0.5em; background-color:white; color:#444; height:10%; margin-top:1%; border:0; width:93%; padding-left:5%; }
+.correcter_editor #e_editor #eph_text { height:40% }
+
+.correcter_editor #e_editor .eph_value { border: 0; width: 99%; height: 3.2em; font-size: 0.5em; text-align: center; margin-top: 1%; background-color:#FEC; }
+.correcter_editor #e_editor #eph_style { background-color:#CEF; }
+.correcter_editor #e_control 				{ display:none; }
+.correcter_editor #e_word				{ background-color:#444; margin-top:.3em;padding:.1em 0;padding-bottom:.2em; display:none; }
+.correcter_editor #e_editor #eph_word				{ width:80%; font-size:1em; height:1.2em; float:left; }
+.correcter_editor #e_editor #eph_local { font-size:0.6em; width:15%; border:0; height:2em; margin:0; background-color:gray; color:white;  }

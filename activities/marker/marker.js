@@ -152,7 +152,8 @@
 				// HANDLE BACKGROUND
                 if (settings.background) { $this.children().first().css("background-image","url("+settings.background+")"); }
                 $this.bind("mouseup mouseleave touchend touchleave", function() { helpers.mouseup($this); });
-
+				$this.bind("mousedown touchstart", function(_event) { _event.preventDefault(); });
+				
                 if (settings.exercice) { $this.find("#exercice>div").html(helpers.format(settings.exercice)); }
 
                 // Locale handling
@@ -165,7 +166,7 @@
             var settings = helpers.settings($this);
 
             var $ret = $("<span id='s"+(settings.it++)+"'>"+_word+"</span>");
-			$ret.bind("mousedown touchstart",function(event) { helpers.mousedown($this, $(this)); event.preventDefault(); });
+			$ret.bind("mousedown touchstart",function(event) { helpers.mousedown($this, $(this)); event.preventDefault(); event.stopPropagation(); });
 			$ret.bind("mousemove", function(event) { helpers.mousemove($this, $(this)); });
 			$ret.bind("touchmove", function(event) {
 				var vEvent =
@@ -191,7 +192,7 @@
         },
         mousedown:function($this,$elt) {
                 var settings = helpers.settings($this);
-                if (!settings.finish) {
+                if (settings.interactive) {
                     id = parseInt($elt.attr("id").substr(1));
                     settings.m.first = id;
                     settings.m.mode = 0;
@@ -217,7 +218,7 @@
                 var settings = helpers.settings($this);
 
 
-                if (settings.m.first!=-1 && !settings.finish)  {
+                if (settings.m.first!=-1 && settings.interactive)  {
                     var id= parseInt($elt.attr("id").substr(1));
 
                     if (settings.m.order==-1) { settings.m.order=(id>settings.m.first?0:1); }
@@ -293,7 +294,7 @@
             init: function(options) {
                 // The settings
                 var settings = {
-                    finish          : false,
+                    interactive     : false,
                     words           : [],
 					endofline		: [],
                     it              : 0,
@@ -329,29 +330,31 @@
             next: function() { var $this = $(this) , settings = helpers.settings($this); settings.interactive = true; },
             valid: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                if (!settings.finish) {
-                    settings.finish = true;
+                if (settings.interactive) {
+                    settings.interactive = false;
+					
+					var words = $.extend(true, [], settings.words);
                     var nbErrors = 0;
                     // FIND THE WRONG WORDS
-                    for (var i in settings.words) {
-                        if (settings.words[i][2]!=9 && settings.words[i][2]!=settings.words[i][0]) {
+                    for (var i in words) {
+                        if (words[i][2]!=9 && words[i][2]!=words[i][0]) {
                             nbErrors++;
                             $(this).find("#s"+i).addClass("wrong");
-                            settings.words[i][0]=-2;
+                            words[i][0]=-2;
                         }
                     }
-                    for (var i=1;i<settings.words.length-1;i++) {
-                        if (settings.words[i][2]==9) {
+                    for (var i=1;i<words.length-1;i++) {
+                        if (words[i][2]==9) {
 							
 							// SEPARATOR BETWEEN 2 WRONG WORDS BECOMES WRONG TOO
-							if (	(settings.words[i-1][0]==-2 && settings.words[i+1][0]==-2) ||
-									(settings.words[i-1][0]==-2 && settings.words[i+1][2]==9) ||
-									(settings.words[i-1][2]==9 && settings.words[i+1][0]==-2)) {
+							if (	(words[i-1][0]==-2 && words[i+1][0]==-2) ||
+									(words[i-1][0]==-2 && words[i+1][2]==9) ||
+									(words[i-1][2]==9 && words[i+1][0]==-2)) {
 										$(this).find("#s"+i).addClass("wrong");
 							}
 							
 							// SELECTED SEPARATOR BETWEEN TWO NOT SELECTED WORD BECOME WRONG
-							if (settings.words[i][0]>=0 && settings.words[i-1][0]<0 && settings.words[i+1][0]<0) {
+							if (words[i][0]>=0 && words[i-1][0]<0 && words[i+1][0]<0) {
 								$(this).find("#s"+i).addClass("wrong");
 							}
                         }
@@ -363,16 +366,26 @@
                     $this.find("#effects").show();
                     $this.find("#submit").addClass(nbErrors?"wrong":"good");
 					
-                    settings.score = 5 - nbErrors;
-                    if (settings.score<0) { settings.score = 0; }
-                    $(this).find("#valid").hide();
-                    setTimeout(function() { helpers.end($this); }, (settings.score!=5)?3000:500);
+					if (settings.edit) {
+						setTimeout(function() {
+							$this.find("#effects").hide();
+							$this.find("#submit").removeClass("wrong").removeClass("good");
+							$this.find("#data span").removeClass("wrong");
+							settings.interactive = true;
+						}, 1500);
+					}
+					else {
+						settings.score = 5 - nbErrors;
+						if (settings.score<0) { settings.score = 0; }
+						$(this).find("#valid").hide();
+						setTimeout(function() { helpers.end($this); }, (settings.score!=5)?3000:500);
+					}
                 }
             },
             color: function(_val) { helpers.color($(this), _val); },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                settings.finish = true;
+                settings.interactive = false;
                 settings.context.onquit($this,{'status':'abort'});
             },
 			e_get: function() {
