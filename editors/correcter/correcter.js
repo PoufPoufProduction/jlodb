@@ -57,9 +57,10 @@
 					newword = settings.word.word+"_"+(settings.reference++);
 				}
 				else if (!local && settings.word.real!=settings.word.word) {
+					settings.dictionary[settings.word.real]=[];
 					newword = settings.word.word;
 				}
-				
+
 				// FIND POSITION OF THE WORD IN THE Textarea
 				if (newword!=settings.word.real)
 				{
@@ -98,6 +99,9 @@
 				font: $this.find("#eph_size").val()
 			};
 			
+			if ($this.find("#eph_exercice").val().length) {
+				data.exercice = $this.find("#eph_exercice").val();
+			}
 			
 			$this.find("#e_word").hide();
 			settings.word=0;
@@ -141,6 +145,7 @@
 			$this.find("#eph_proba").val(_args.data.proba);
 			$this.find("#eph_style").val(_args.data.style);
 			$this.find("#eph_first").val(_args.data.first?"1":"0");
+			$this.find("#eph_exercice").val(_args.data.exercice);
 		},
 		word: function($this, _args) {
 			var settings = helpers.settings($this);

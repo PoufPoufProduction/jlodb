@@ -58,7 +58,7 @@
 
 
         #jlcontent>.jlcontent .banner     { padding:0 .3em 0 .3em; margin:.5em; line-height:1.4em; }
-        div#home h1             { font-size:1.6em; overflow:visible; }
+        h1             { font-size:1.6em; overflow:visible; }
         div#home #overview      { text-align:right; font-family: "Courier New", Courier, mono; line-height:1em;}
         div#home #overview span { color:black; }
         div#home #right         { font-size:.8em; width:28em; overflow:hidden; float:left; }
@@ -277,9 +277,11 @@ jlodb = {
                 this.name = name;
                 $.getJSON("api/activity.php?name="+name, function(data) {
                     if (data.status=="success") {
+						
                         $("#jlodb #activities .details h1").html(data.label);
                         $("#jlodb #activities .details #number").html(data.exercices);
                         $("#jlodb #activities .details #class").html(data.classification.length);
+						$("#jlodb #activities .details #re_link").attr("href","report.html?activity="+name);
 
                         $("#activities .files").html("");
                         for (var i=0; i<data.files.length; i++) {
@@ -324,6 +326,8 @@ jlodb = {
                 });
                 $.getJSON("api/exercice.php?classification='"+node.node.attr("id")+"'", function(data) {
                         $("#classification #nbexercices").html(data.nb);
+						
+						$("#jlodb #classification .details #re_link").attr("href","report.html?classification="+node.node.attr("id"));
                     });
 
             },
@@ -433,6 +437,12 @@ jlodb = {
             if (_cbk) { _cbk(); }
         });
     },
+	help: function() {
+        $("#jlcontent>div").hide();
+        $("#jlcontenta").show();
+        $("#jlcontenta").load("locale/"+data.lang+"/help.html", function(response, status, xhr) {
+        });
+	},
     // LOAD JLODB HOME'S PAGE
     home        : function() {
         var results = new RegExp('[?]id=([^&]*)').exec(window.location.href);
@@ -483,6 +493,7 @@ jlodb = {
 						  context			: [
                             { icon:"res/img/default/white/run.svg", process :function(_id){ jlodb.run({id:_id}, false); } },
                             { icon:"res/img/default/white/edit.svg", process:function(_id){ jlodb.page.edition.get(_id); } },
+							{ icon:"res/img/default/white/look.svg", process:function(_id){ window.open('report.html?id='+_id,'blank'); } },
                             { icon:"res/img/default/white/snapshot.svg", process:function(_id) {
                                 window.open('demo.html?id='+_id,'_blank',
                                     'width=640, height=480,toolbar=no,location=no,status=no,menubar=no,'+

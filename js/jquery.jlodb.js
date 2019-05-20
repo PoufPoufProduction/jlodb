@@ -105,6 +105,7 @@ jlodbmaze.prototype = {
         onfinish    : function($this)           		{ /** FINISH THE ACTIVITY */ },
         onscore     : function($this, _ret)     		{ /** HANDLE THE SCORE */ return false; },
         onexercice  : function($this, _id, _args)     	{ /** GET ID AND ARGS OF THE EXERCICE */ },
+		onsettings	: function($this, _args)			{ /** GET WHOLE SETTINGS OF THE EXERCICE */ },
 		onedit		: function($this, _args)			{ /** EDIT CALLBACK */ }
 
     };
@@ -154,6 +155,7 @@ jlodbmaze.prototype = {
                     if (d.locale) { d.locale = $.extend(d.locale, data.exercices[0].locale); }
                     else { d.locale = data.exercices[0].locale; } }
                 if (settings.onexercice) { settings.onexercice($this, data.exercices[0].id, d); }
+				if (settings.onsettings) { settings.onsettings($this, data.exercices[0]); }
 
                 if (data.exercices[0].ext && jlodbext && jlodbext[data.exercices[0].ext]) {
                     jlodbext[data.exercices[0].ext].js(function() {
