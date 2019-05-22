@@ -1,0 +1,79 @@
+<div>
+	<div class="e_column e_elt" id="e_editor">
+		<div id="e_data">
+			<textarea id="e_board" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+			<div id="e_help"></div>
+			<div id="e_type" class="e_select">
+				<div class="icon" style="background-color:red" id="e_type0"
+					ontouchstart="$(this).toggleClass('s');event.preventDefault();"
+					onclick="$(this).toggleClass('s')"></div>
+				<div class="icon" style="background-color:blue" id="e_type1"
+					ontouchstart="$(this).toggleClass('s');event.preventDefault();"
+					onclick="$(this).toggleClass('s')"></div>
+				<div class="icon" style="background-color:yellow" id="e_type2"
+					ontouchstart="$(this).toggleClass('s');event.preventDefault();"
+					onclick="$(this).toggleClass('s')"></div>
+				<div class="icon" style="background-color:purple" id="e_type3"
+					ontouchstart="$(this).toggleClass('s');event.preventDefault();"
+					onclick="$(this).toggleClass('s')"></div>
+				<div class="icon" style="background-color:green" id="e_type4"
+					ontouchstart="$(this).toggleClass('s');event.preventDefault();"
+					onclick="$(this).toggleClass('s')"></div>
+				<div class="icon" style="background-color:white" id="e_type5"
+					ontouchstart="$(this).toggleClass('s');event.preventDefault();"
+					onclick="$(this).toggleClass('s')"></div>
+				<div class="icon" style="background-color:orange" id="e_type6"
+					ontouchstart="$(this).toggleClass('s');event.preventDefault();"
+					onclick="$(this).toggleClass('s')"></div>
+			</div>
+			
+			<div id="e_bonus" class="e_select">
+				<div class="icon" style="background-color:gray;color:white" id="e_bonus0"
+					ontouchstart="$(this).toggleClass('s');event.preventDefault();"
+					onclick="$(this).toggleClass('s')">||</div>
+				<div class="icon" style="background-color:gray;color:white" id="e_bonus1"
+					ontouchstart="$(this).toggleClass('s');event.preventDefault();"
+					onclick="$(this).toggleClass('s')">&equiv;</div>
+				<div class="icon" style="background-color:gray;color:white" id="e_bonus2"
+					ontouchstart="$(this).toggleClass('s');event.preventDefault();"
+					onclick="$(this).toggleClass('s')">x</div>
+			</div>
+			
+			<input type="text" value="" id="eph_proba" class="eph_value"/>
+			<input type="text" value="" id="eph_score" class="eph_value"/>
+			
+			<select id="eph_goal"><option id="e_min" value="survive"></option><option id="e_max" value="max"></option></select>
+			<input type="text" value="" id="eph_value" class="eph_value"/>
+			<div id="e_frozen" class="eph_value e_goalex"
+				ontouchstart="$(this).toggleClass('s');event.preventDefault();"
+				onclick="$(this).toggleClass('s')"></div>
+			
+			
+		</div>
+		<div class="l bluekeypad" 
+			ontouchstart="$(this).closest('.jewel_editor').jewel_editor('valid',this);event.preventDefault();"
+			onclick="$(this).closest('.jewel_editor').jewel_editor('valid',this);">OK</div>
+	</div>
+	
+	<div class="e_column e_elt" id="e_control"><div>
+		<textarea id='e_export' class='export'></textarea>
+		<div class='l bluekeypad'
+			ontouchstart="$(this).closest('.jewel_editor').jewel_editor('import',this);event.preventDefault();"
+			onclick="$(this).closest('.jewel_editor').jewel_editor('import',this);">
+			OK
+		</div>
+	</div></div>
+	
+	<div class="e_panel e_elt" id="e_screen"><div></div></div>
+
+
+	<div class="e_panel e_elt" id="e_menu"><div>
+		<div id="e_import" class="l bluekeypad"
+			ontouchstart="$(this).closest('.jewel_editor').jewel_editor('edit',this);event.preventDefault();"
+			onclick="$(this).closest('.jewel_editor').jewel_editor('edit',this);"></div>
+		<div id="e_submit" class="l bluekeypad"
+			ontouchstart="$(this).closest('.jewel_editor').jewel_editor('edit',this);event.preventDefault();"
+			onclick="$(this).closest('.jewel_editor').jewel_editor('edit',this);">→ jLoDb</div>
+	</div></div>
+</div>
+

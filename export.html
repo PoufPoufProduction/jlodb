@@ -73,7 +73,7 @@ ids: function(_target, _ids) {
             
             
             html+="<div class='exercice'><div class='eximg' ";
-            html+="onclick=\"window.open('demo.html?id="+e.id+"','_blank',"+
+            html+="onclick=\"window.open('demo.html?id="+e.id+"','_demo',"+
                       "'width=640, height=480,toolbar=no,location=no,status=no,menubar=no,"+
                       "scrollbars=no,resizable=no,status=no,titlebar=no');\"";
             html+=">";
@@ -90,6 +90,7 @@ ids: function(_target, _ids) {
             html+="<div class='exn'>"+(parseInt(i)+1)+"</div>";
             html+="<div><div class='exid'>"+e.id+"</div>";
             html+="<div class='extitle' ";
+            html+="onclick=\"window.open('report.html?id="+e.id+"','_report');\"";
 			html+=">"+e.label+"</div>";
 			html+="</div>";
             html+="<div class='param'>";

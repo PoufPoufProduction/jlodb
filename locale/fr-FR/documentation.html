@@ -1,266 +1,47 @@
-<!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<div id="jl_doc">
+<h1>Javascript Learning Object Database</h1>
+<h1>Guide de l'utilisateur - en construction</h1>
+<br/>
+<h2>Présentation générale</h2>
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <script type="text/javascript" src="../../js/jquery.min.js"></script>
-    <title>jLoDB - Documentation</title>
-    <style>
-        body        { font-size:12px; }
-        textarea    { resize:none; }
-        .margin     { margin-left:1em; }
-        .button     { cursor:pointer; border:1px solid black; margin:.1em; padding:.1em; border-radius:.25em;
-                      text-align:center;}
-        h3          { padding-left:5em; border:1px solid black; border-width:1px 0 1px 0; }
-    </style>
-    <script>
-var t001 = {
-    process:function() {
-        var d=$("#t001").val().split("|");
-        var l=0,s=0,p=[12,12,12,12],n=[0,0,0,0];
-        for (var i in d) {
-            var si=Math.ceil(d[i].length/3); if (si>5) { si=5;}
-            if (s+si>12) { s=si; l++; } else { s+=si; }
-            p[l]-=si; n[l]++;
-        }
+<p><b>jLoDb</b> ou "<i>Javascript Learning Object Database</i>" est une base de données qui propose tout un ensemble d'<b>activités éducatives libres</b>. Ces activités sont référencées au sein de la base suivant de nombreux critères comme leur niveau, leur difficulté ou leur champ d'application. Un système de tags et de références croisées permet de conserver les synergies entre exercices. L'objectif est ici de pouvoir naviguer facilement parmi des exercices de plus en plus nombreux et d'y retrouver celui de son choix sans trop de difficulté.</p>
 
-        if (p[l]/n[l]>3) { n[l]++; p[l]=n[l]; d.push(" "); }
+<p>Les exercices ou niveaux référencés dans la base sont structurés à l'identique afin de pouvoir être exécutés de façon indifférenciée, depuis la base elle-même ou depuis un logiciel tiers.</p> 
 
-        var ret="";
-        i=0;
-        for (var li=0; li<=l; li++) {
-            s=0;
-            for (var ni=0; ni<n[li]; ni++) {
-                var si=Math.ceil(d[i].length/3); if (si>5) { si=5;}
-                if (ni==n[li]-1) { si=12-s; if (si>5) { si=5; } } else {var o=Math.round(p[li]/(n[li]-ni-1));
-                    if (si+o>5) { o=5-si; } if (o>0) { si+=o; p[li]-=o; } }
-                ret+=(li||ni?",":"")+"\""+(li+1)+"-"+(s<10?"0":"")+s+"-"+si+"\":\""+d[i]+"\"";
-                s+=si; i++;
-            }
-        }
+<p>La base de données dans son intégralité est sous <b>licence GPL-3</b>. Cette intégralité comprend les différents programmes mais aussi les données des différents exercices ainsi que l'ensemble des ressources graphiques.</p>
 
-        ret="{\"svgclass\":\"l"+(l+1)+"\",\"values\":{"+ret+"},\"area\":[220,350,480,450],\"url\":\"desktop/puzzle/sentence.svg\"}";
-        alert(ret);
-    }
-};
+<br/>
+<h2>Installation de la base</h2>
 
-var t002 = {
-    r: function(_val) { return Math.round(_val*100)/100; },
-    process:function() {
-        var d=$("#t002").val();
-        var regexp = new RegExp("([LlMm]*)[ ]([\\\-0-9\\\.]+)[, ]([\\\-0-9\\\.]+)", "g");
-        var data = [];
-        var objectives = [];
-        var i = 1;
-        var last=[0,0];
-        var absolute = true;
-        var c=[];
-        while (match = regexp.exec(d)) {
-            if (match[1][0]=='L' || match[1][0]=='M')       { absolute = true; }
-            else if (match[1][0]=='l' || match[1][0]=='m')  { absolute = false; }
+<p><b>jLoDb est une application web</b> nécessitant, par conséquent, l'utilisation d'un serveur web de type AMP (Apache, MySql, PHP). Les possibilités sont nombreuses mais toutes sont désormais très classiques et sans réelle difficulté.</p>
 
-            if (absolute) { c=[parseFloat(match[2]), parseFloat(match[3])]; }
-            else          { c=[last[0]+parseFloat(match[2]), last[1]+parseFloat(match[3])];}
-  
-            data.push('{"type":"point","value":['+this.r(c[0])+','+this.r(c[1])+'],"id":"'+i+'","idpos":0}');
-            if (i>1) {
-                objectives.push('{"type":"segment","values":['+this.r(last[0])+','+this.r(last[1])+','+this.r(c[0])+','+this.r(c[1])+']}');
-            }
+<h3>Serveurs web</h3>
 
-            last=[c[0], c[1]];
-            i++;
-        }
-        alert('<![CDATA["active":true,"data":['+data.join(',')+'],"number":'+(i-2)+
-              ',"class":"full dots","objectives":[['+objectives.join(',')+']],"selected":"segment"]]>');
-    }
-};
+<h4>AMP</h4>
+<p>Les logiciels Apache, MySql et Php forment un trio très connu dont l'installation a déjà été mainte fois détaillée. Il ne devrait y avoir aucun problème à procéder à leur installation.</p>
 
-var t003 = {
-    process: function() {
-        var svgClass="";
-        var values="";
-        var same=[], issame = false;
-        var img="";
-        var txt = $("#t003").val().split(",");
-        for (var i in txt) {
-            var alpha = false;
-            t = txt[i];
-            if (svgClass.length) { svgClass+=','; img+=','; values+=','; }
-            svgClass+='"l'+t.length+'"';
-            img+='"clipart/animal/pear01.svg"';
-            values+="{";
-            for (var j=0; j<t.length; j++) {
-                if (t[j]>='a' && t[j]<='z') { alpha = true; }
-                if (j!=0) { values+=","; }
-                values+='"p'+(j<9?"0":"")+(j+1)+'":"'+t[j]+'"';
-            }
-            for (var j=0; j<12-t.length; j++) {
-                var c;
-                do { c = String.fromCharCode((alpha?97:65) + Math.floor(Math.random()*26)); } while (t.indexOf(c)!=-1);
-                values+=',"dd0'+(j+1)+'":"'+c+'"';
-            }
-            values+="}";
+<p>Sous Windows, UvWamp est une version locale qui fonctionne sans installation particulière.</p>
 
-            var s = [];
-            for (var j=0; j<t.length; j++) {
-                var val=[];
-                if (t[j]!='#') for (var k=j+1; k<t.length; k++) {
-                    if (t[k]==t[j]) { val.push('p'+(k<9?"0":"")+(k+1)); issame = true; }
-                }
-                if (val.length) { val.push('p'+(j<9?"0":"")+(j+1)); t = t.replace(new RegExp(t[j], 'g'),"#"); s.push(val); }
-                
-            }
-            same.push(s);
+<p>Sous Linux, l'installation peut se faire grâce à la commande suivante :</p>
 
-        }
+<p>sudo install apache2 php libapache2-mod-php mysql-server php-mysql php-xml</p>
 
-    alert('<![CDATA["decoys":["dd01","dd02","dd03","dd04","dd05","dd06","dd07","dd08","dd09"],"init":{"pos":[[425,60],[495,60],[565,60],[425,130],[495,130],[565,130],[425,200],[495,200],[565,200],[425,270],[495,270],[565,270]]},"url":"desktop/puzzle/word.svg",'+
-    '"timg":['+img+'],"svgclass":['+svgClass+'],"values":['+values+']'+
-    ((issame)?',"same":'+JSON.stringify(same):'')+
-    ']]>');
+<h3>Récupération du projet</h3>
 
-    }
-};
-    </script>
-</head>
+<h3>Configuration</h3>
 
-<body>
-    <h1>Guide du développeur jLoDB.</h1>
-    <div>En cours de construction...</div>
-    <h2>Avant propos</h2>
-    <h3>Noms des exercices</h3>
-    <div>
-        <p>Le nom des exercices est formé ainsi : ( S + E ) + FI + ID.</p>
-        <ul>
-        <li>S est la première lettre du nom de l'activité.</li>
-        <li>E est la dernière lettre du nom de l'activité.</li>
-        <li>FI sont les 2 premières lettres du nom du fichier dans lequel est défini l'exercice.</li>
-        <li>ID est l'identifiant de l'exercice.</li>
-        </ul>
-        <p>Ainsi <b>ceac001</b> désigne l'exercice appartenant à l'activité <b>code</b> (ce), définit dans un fichier dont le nom commence par ac (<b>action.rdf</b> en l'occurence) et dont l'identifiant est <b>001</b>.</p>
-        <p>Une exception notable : avec le fichier <b>xx.rdf</b>, la valeur de FI est nulle et l'identifiant doit avoir une longueur maximale de 2.</p>
-    </div>
-    <h2>Création d'activité</h2>
-    <ul>
-        <li>Choisir un nom pertinent pour l'activité tout en respectant certaines contraintes
-            <ul>
-                <li>En anglais</li>
-                <li>La première et dernière lettre du nom de l'activité servent de clé. Leur combinaison doit être <b>unique</b>. Par exemple, <b>se</b> (<i>sequence</i>), <b>mr</b> (<i>marker</i>) ne sont plus disponibles, il n'est donc plus possible de définir des activités avec des noms du type <b>s....e</b> ou <b>m....r</b>.</li>
-                <li>Pour contourner le point précédent, il est possible de tricher un peu avec l'orthographe.</li>
-            </ul>
-        </li>
-        <li>Dans cet exemple, nous choisissons le nom <b>foo</b>
-        <li>Créer l'icône <b>res/img/activity/foo.svg</b> sur la même base que les icônes déjà présent. Un copier-coller est toujours un bon départ.</li>
-        <li>Créer le répertoire <b>data/foo</b> et copier le fichier <b>data/alchemist/xx.svg</b> en <b>data/foo/xx.svg</b>.</li>
-        <li>Copier le repertoire <b>zzz</b> en <b>foo</b>. Renomer <b>boilerplate.js</b> en <b>foo.js</b>. puis dans les trois fichiers, remplacer toutes les références à <b>boilerplate</b> par <b>foo</b>.</li>
-        <li>Dans le fichier <b>activities/activities.rdf</b>, rajouter une entrée pour l'activité <b>foo</b>.</li>
-        <li>Ré-installer la base. L'activité est désormais installée et l'exercice <b>fox</b> est accessible.</li>
-    </ul>
-    <h2>Activités existantes</h2>
-    <h3>Géométrie</h3>
-    <h4>Paramètres</h4>
-    <h4>Alternative : Points à relier</h4>
-    
-    <div class="margin">
-        <ul>
-            <li><b>"svg":"full dots"</b></li>
-        </ul>
-        <div>
-            <p><b>Générateur</b> : entrez l'attribut 'd' du chemin de type svg correspondant au tracé à effectuer.</p>
-            <textarea style="width:30em;height:4em;" id="t002"></textarea>
-            <div class="button" style="width:5em;" onclick="t002.process();">Publier</div>
-        </div>
-    </div>
-    <h3>LOGO</h3>
-    <h4>Paramètres</h4>
-    <ul>
-        <li><b>"a":{}</b> permet de définir les commandes autorisées par l'exercice.
-            <ul>
-                <li><b>"op":[]</b> liste les opérations ["av", "re", "td", "tr", "co", "fo", "ct", "mt", "lc", "bc", "or", "ca", "po", "xx", "yy", "zz", "ii", "jj"]</li>
-                <li><b>"va":[]</b> liste les valeurs ["V000", "V001", "V002", ..., "V090", ..., "V200", ..., "X","Y","Z","I","J","black","white","green","red","blue" ]</li>
-                <li><b>"ma":[]</b> liste les opérations mathématiques ["plus", "minus", "neg", "mult", "div", "modulo", "pow2", "sqrt", "log", "exp", "cos", "sin", "tan", "atan"]</li>
-                <li><b>"cl":[]</b> liste les opérateurs de contrôle ["rep", "call1", "call2", "call3", "fct1", "fct2", "fct3", "if"]</li>
-            </ul>
-        </li>
-        <li><b>"bg":[]</b> liste les éléments présents dans le fond de l'image (grille, indications textuelles, figure en pointillé).</li>
-        <li><b>"result":{}</b> définit les critères d'évaluation de l'exercice.
-            <ul>
-                <li><b>"nb":int</b> définit le nombre de segments à tracer.</li>
-                <li><b>"values":[]</b> liste les segments à tracer. Chaque segment est défini ainsi [x1,y1,x2,y2,couleur].</li>
-                <li><b>"ct":bool</b> (facultatif) précise l'état final de la tortue (caché ou non).</li>
-                <li><b>"bg":int</b> (facultatif) précise la couleur finale du fond de l'écran.</li>
-            </ul>
-        </li>
-    </ul>
-    <h4>Autres</h4>
-    <div class="margin"><p><b>Générateur</b> : <a href="../../demo.html?id=lox"><b>lox</b></a></li></p></div>
-    <h3>Paint</h3>
-    <h4>Alternative : Picross</h4>
-    <div class="margin">
-        <ul>
-            <li><b>"url":"desktop/paint/picross5x5.svg"</b> ou <b>"desktop/paint/picross5x5.svg"</b></li>
-            <li><b>"result","t"</b> fournissent les valeurs de la grille.</li>
-            <li><b>"data":[{"notover":true},{"notover":true,"skip":true}]</b> définit le comportement des couleurs.</li>
-            <li><b>"selected":0</b> La couleur noire est sélectionnée par défaut.</li>
-            <li><b>"class":"picross"</b></li>
-        </ul>
-        <div class="margin"><p><b>Générateur</b> : <a href="../../demo.html?id=ptpia000"><b>ptpia000</b></a> ou <a href="../../demo.html?id=ptpib000"><b>ptpib000</b></a>. Attention : les générateurs ne testent pas l'unicité de la figure.</p></div>
-    </div>
-    <h3>Puzzle</h3>
-    <h4>Paramètres</h4>
-    <ul>
-        <li><b>"number":1</b> indique le nombre de puzzles à réaliser au cours de l'exercice. Le paramètre est automatique mis à jour dans le cas où "id", "values" ou "txt" sont des tableaux.</li>
-        <li><b>"txt":{"id":"value"} ([])</b> permet de mettre à jour les textes du template svg en fonction de leur id respectif.</li>
-        <li><b>"svgclass":"" ([])</b> ajoute une classe à l'image de travail svg</li>
-        <li><b>"show":[] ([])</b> fournit des ids d'éléments (de classe 'hide') à faire apparaître.</li>
-        <li><b>"pieces":"pieces"</b> définit le groupe contenant l'ensemble des pièces du puzzle</li>
-        <li><b>"id":[] ([])</b> définit unitairement les pièces par leur id à la place du paramètre "pieces"</li>
-        <li><b>"decoys":[] ([])</b> définit des fausses pièces par leur id</li>
-        <li><b>"values":{"id":"value"} ([])</b> est un raccourci permettant de définir les pièces du puzzle par leur id et de mettre à jour un text plus bas dans le DOM. Remplace "txt","pieces" et "id"</li>
-        <li><b>"constraint":[0,0]</b> définit une grille de déplacement pour les différentes pièces suivant les 2 axes de l'image (0 représente une absence de contrainte).</li>
-        <li><b>"rotation":0</b> définit le pas de rotation des pièces du puzzle</li>
-        <li><b>"scale":1.2</b> définit l'agrandissement de la pièce du puzzle en cours de déplacement</li>
-        <li><b>"radius":20</b> définit la taille de l'aimant depuis les positions d'arrivées</li>
-        <li><b>"magnetic":[[x,y]]</b> fournit une liste de positions qui vont servir d'aimants (en plus des vraies zones d'arrivée)</li>
-        <li><b>"decoyfx":true</b> précise si l'agrandissement (scale) et le magnétisme s'appliquent aux fausses pièces</li>
-        <li><b>"zhandling":true</b> précise la gestion du z-index (la pièce du puzzle en cours de déplacement passe en premier plan)</li>
-        <li><b>"boundaries":[-1,-1,-1,-1]</b> définit la zone [x1,y1,x2,y2] dans laquelle les pièces du puzzle peuvent être déplacées (-1 représente une absence de limite)</li>
-        <li><b>"init":{..} ([])</b> définit les positions de départ des pièces du puzzles
-            <ul>
-                <li><b>"id":{"piece01":[x,y]}</b> par id</li>
-                <li><b>"pos":[[x,y],[x,y]]</b> par un ensemble de positions possibles choisies aléatoirement</li>
-                <li><b>"area":[0,0,640,480]</b> par zone</li>
-            </ul>
-        </li>
-    </ul>
-    <h4>Alternative : Reconstruction de mots</h4>
-    <div class="margin">
-        <ul>
-            <li><b>"url":"desktop/puzzle/word.svg"</b></li>
-            <li><b>"svgclass"</b> peut prendre les valeurs "l2","l3"..."l11","l12"(valeur par défaut) en fonction du nombre de lettres contenus dans le mot à reconstruire.</li>
-            <li><b>"decoys":["dd01","dd02","dd03","dd04","dd05","dd06","dd07","dd08","dd09"]</b> permet de définir de fausses lettres. Evidemment, elles ne doivent pas être communes avec les lettres du mot en cours.</li>
-            <li><b>"values":{"p01":'Lettre1',"p02":'Lettre2',...,"dd01":'Fausse lettre'}</b>.</li>
-        </ul>
-        <div>
-            <p><b>Générateur</b> : entrez les mots de l'exercice séparés par une virgule.</p>
-            <textarea style="width:30em;height:4em;" id="t003"></textarea>
-            <div class="button" style="width:5em;" onclick="t003.process();">Publier</div>
-        </div>
-    </div>
+<h3>Installation</h3>
 
-    <h4>Alternative : Reconstruction de phrases</h4>
-    <div class="margin">
-        <ul>
-            <li><b>"url":"desktop/puzzle/sentence.svg"</b></li>
-            <li><b>"svgclass"</b> peut prendre les valeurs "l1","l2","l3" ou "l4" en fonction du nombre de lignes nécessaires à l'exercice.</li>
-            <li><b>"values":{"1-00-2":"Mot1","1-02-5":"Mot2","1-07-5":"Mot3"}</b>. L'ensemble des pièces du puzzle sont définies par 3 nombres successifs [numéro de ligne-position-taille]. Ainsi 1-00-2 représente la pièce de taille 2 qui se trouve à la position 0 de la ligne 1.La pièce suivante 1-02-5 se trouve à la position 2 de la ligne 1 (juste derrière la première pièce). La taille des pièces peut être comprise entre 1 et 5 inclus, et la taille d'une ligne est de 12. Par conséquent, la triplette définissant la dernière pièce d'une ligne doit vérifier [position]+[taille] = 12. Dans notre exemple, la dernière pièce est en position 7 et a une taille de 5 ; on a bien 7+5=12 : la ligne est remplie entièrement.</li>
-        </ul>
-        <div>
-            <p><b>Générateur</b> : entrez la phrase en séparant les différentes parties par le caractère | et cliquez sur le bouton de publication. Attention : ce générateur vite codé n'est pas parfait, il est important de bien tester le résultat obtenu avec l'outil d'édition de jlodb.</p>
-            <textarea style="width:30em;height:4em;" id="t001"></textarea>
-            <div class="button" style="width:5em;" onclick="t001.process();">Publier</div>
-        </div>
-    </div>
-</body>
 
-</html>
+<h2>Présentation technique</h2>
+
+
+<h3>Technologie utilisée</h3>
+<h4>Web et HTML</h4>
+<h4>Javascript et jQuery</h4>
+<h4>SVG</h4>
+<h4>PHP</h4>
+
+<h3>Les activités</h3>
+
+</div>

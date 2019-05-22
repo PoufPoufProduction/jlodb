@@ -7,9 +7,8 @@
         css         : "style.css",                              // Activity's css style sheet
         lang        : "en-US",                                  // Current localization
         board       : ["aaaa","aaaa","aaaa","aaaa"],		// grid
-        pjewels     : [1,1,1,1,1,1,1,0,0,0],                // Jewel probability
-        pspecial    : [20,20,20,20,20,20,20,20,20,20],      // Jewel special (horiz or vertical)
-        pbomb       : 0,                                    // Bomb
+        pjewels     : [1,1,1,1,1,1,1,0,0,0],                // Jewel probability by colors
+        pspecial    : 20,      								// Jewel special probability
         specials    : [true, true, true],                   // Jewel horizontal, vertical or local
 		blocked		: true,									// Do not change jewels
 		ref			: 0,									// Reference score
@@ -115,7 +114,15 @@
                 setTimeout(function() { helpers.goals.init($this); }, 100);
 				
                 // BUILD GRID
-                settings.size = [ settings.board[0].length, settings.board.length];
+                settings.size = [ 0, settings.board.length];
+				var vReg = new RegExp(" ","g");
+				for (var j in settings.board) {
+					settings.board[j]=settings.board[j].replace(vReg,'0');
+					settings.size[0]=Math.max(settings.size[0], settings.board[j].length);
+				}
+				for (var j in settings.board) {
+					while (settings.board[j].length<settings.size[0]) { settings.board[j]+="0"; }
+				}
                 var max     = Math.max(settings.size[1], settings.size[0])*1.1;
                 $this.find("#board>div").css("font-size", (12/max)+"em")
                                         .css("margin-left", ((max-settings.size[0])/2)+"em")
@@ -131,17 +138,18 @@
 					}
 					for (var j=0; j<settings.size[1]; j++) for (var i=0; i<settings.size[0]; i++) {
 						if (helpers.fromboard($this, i, j)!='0') {
-							var ok, cell, $bg;
+							var ok, cell, $bg,counter = 0;
 							do {
 								ok = true;
 								cell=helpers.jewel($this, i, j, helpers.fromboard($this, i, j));
 								if (cell.match(helpers.cell($this,i,j-1)) && cell.match(helpers.cell($this,i,j-2))) { ok = false; }
 								if (cell.match(helpers.cell($this,i-1,j)) && cell.match(helpers.cell($this,i-2,j))) { ok = false; }
-							} while(!ok);
+							} while(!ok && ++counter<30);
+							if (counter>=30) { alert("Can not build board - not enough available jewels"); return; }
 							helpers.cell($this,i,j,cell);
 							$this.find("#board>div").append(cell.$html);
 
-
+							// HANDLE NEIGHBOORS TO BUILD RADIUS BACKGROUND
 							var $bg = $("<div class='bg'></div>");
 							var neighboors = ['0','0','0','0'], radius = [];
 							for (var n=0; n<4; n++) { neighboors[n] = helpers.fromboard($this, i+ncells[n][0], j+ncells[n][1]); }
@@ -237,11 +245,11 @@
                     switch(settings.goals[i].type) {
                         case "survive":
                             $this.find("#counter").html(settings.goals[i].value).show();
-                            txt = txt.replace("$1","<span class='l'>"+settings.goals[i].value+"</span>");
+                            txt = txt.replace("$1","<span class='jll'>"+settings.goals[i].value+"</span>");
                             break;
                         case "max":
                             $this.find("#counter").html(settings.goals[i].value).addClass("s").show();
-                            txt = txt.replace("$1","<span class='l'>"+(settings.goals[i].value)+"</span>");
+                            txt = txt.replace("$1","<span class='jll'>"+(settings.goals[i].value)+"</span>");
                             break;
                     }
                     $this.find("#splashex ul").append("<li>"+txt+"</li>");
@@ -692,25 +700,19 @@
             
             switch(value) {
                 case 'A': ret.val = settings.proba[Math.floor(Math.random()*settings.proba.length)]+1; break;
-                case 'a': if (settings.pbomb && Math.floor(Math.random()*settings.pbomb)==0) { ret.val = 41; }
-                          else {
-                              var value = settings.proba[Math.floor(Math.random()*settings.proba.length)];
-                              if (value<10 && (settings.specials[0]||settings.specials[1]||settings.specials[2])) {
-                                if (settings.pspecial[value]&&Math.floor(Math.random()*settings.pspecial[value])==0) {
-                                    var offset = 0;
-                                    do {
-                                        var w = Math.floor(Math.random()*settings.specials.length);
-                                        if (settings.specials[w]) { offset = 10*(w+1); }
-                                    } while (!offset);
-                                    value+=offset; 
-                                }
-                              }
-                              ret.val = value+1;
-                          }
-                          break;
-                case 'b': ret.val = 41; break;
-                case 'd': ret.val = 11; break;
-                case 'D': ret.val = 15; break;
+                case 'a': var value = settings.proba[Math.floor(Math.random()*settings.proba.length)];
+                          if (value<10 && (settings.specials[0]||settings.specials[1]||settings.specials[2])) {
+                            if (settings.pspecial&&Math.floor(Math.random()*settings.pspecial)==0) {
+                                var offset = 0;
+                                do {
+                                   var w = Math.floor(Math.random()*settings.specials.length);
+                                   if (settings.specials[w]) { offset = 10*(w+1); }
+                                } while (!offset);
+                                value+=offset; 
+                            }
+                        }
+                        ret.val = value+1;
+                    break;
                 default : ret.val = parseInt(_val); break;
             }
             ret.$html.append("<div><img src='res/img/"+j[ret.val]+".svg'/></div>");

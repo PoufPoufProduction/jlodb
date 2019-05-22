@@ -216,7 +216,7 @@ var tibibi = {
                 }
                 else if (_action=="exe") {  tibibi.run({id:tibibi.course.ex[tibibi.course.selected]}); }
                 else if (_action=="snapshot") {
-                    window.open('demo.html?id='+tibibi.course.ex[tibibi.course.selected],'_blank',
+                    window.open('demo.html?id='+tibibi.course.ex[tibibi.course.selected],'_demo',
                         'width=640, height=480,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,status=no,titlebar=no');
                 }
                 if (upd) { tibibi.course.update(); }
@@ -311,7 +311,7 @@ var tibibi = {
         },
 		export: function() {
             if ($("#bigcourses").val().length) {
-				window.open('menu.html?id='+encodeURIComponent(tibibi.course.ex),'_blank');
+				window.open('menu.html?id='+encodeURIComponent(tibibi.course.ex),'_menu');
 			}
 		},
         list: function(_val) {
@@ -370,7 +370,7 @@ var tibibi = {
                     } });
         },
         snapshot:function() {
-            window.open('export.html?id='+encodeURIComponent(tibibi.course.ex),'_blank'); 
+            window.open('export.html?id='+encodeURIComponent(tibibi.course.ex),'_export'); 
         },
         overview: function() {
             var html="";
@@ -471,7 +471,7 @@ $(window).ready(function() {
                         tibibi.course.update();
                     } },
                     { icon:"res/img/default/white/snapshot.svg",  process:function(_id) {
-                        window.open('demo.html?id='+_id,'_blank',
+                        window.open('demo.html?id='+_id,'_demo',
                             'width=640, height=480,toolbar=no,location=no,status=no,menubar=no,'+
                             'scrollbars=no,resizable=no,status=no,titlebar=no'); }
                     }

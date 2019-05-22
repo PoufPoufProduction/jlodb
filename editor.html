@@ -33,8 +33,14 @@ send = function() {
 			  description: 	$("#editor_description").val(),
 			  data:			$("#editor_data").val(),
 			  activity:		name })
-	.done(function( data ) { $('#editor_panel').hide(); });
+	.done(function( _data ) {
+		$('#editor_panel').hide();
+		try { _data = jQuery.parseJSON(_data); } catch (e) { alert("[JSON ERROR] "+e.message); return; }
+		if (_data.query) { alert(locale.ed_alert); } else { alert(locale.ed_error);}
+	});
 }
+
+var locale={};
 
 $(window).ready(function() {
 
@@ -51,13 +57,20 @@ $(window).ready(function() {
 				var d = data.exercices[0];
 				name = d.activity;
 				$.getScript('editors/'+name+'/'+name+'.js',
-					function() { $("#screen")[name+"_editor"]({args:d,validation:onsubmit}); });
+					function() {$("#screen")[name+"_editor"]({args:d,validation:onsubmit}); });
 			}
         });
 	
+		$.getJSON("api/checkdb.php", function (_check) {
+        if (_check.status=="success") {
+			$.getJSON("locale/"+_check.lang+"/editor.json", function(_json) {
+				locale = _json;
+			});
+		}});
+	
 	}
 	else { alert("error"); }
-
+	
 
 });
 

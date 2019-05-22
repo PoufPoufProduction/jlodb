@@ -74,7 +74,10 @@ var send = function() {
 				  label: 			$("#re_label").val(),
 				  comment: 			$("#re_comment").val(),
 				  })
-		.done(function( data ) { alert(locale.reh_alert); });
+		.done(function( _data ) {
+			try { _data = jQuery.parseJSON(_data); } catch (e) { alert("[JSON ERROR] "+e.message); return; }
+			if (_data.query) { alert(locale.reh_alert); } else { alert(locale.reh_error);}
+		});
 	}
 }
 var locale={};

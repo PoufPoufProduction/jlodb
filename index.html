@@ -138,7 +138,8 @@
 		#jlodb .padmin .install        {  background-color:#888; font-size:1em; float:left; color:#EEE; width:60%; height:1.2em; text-align:center; cursor:pointer;  }
 		#jlodb .padmin .h1				{ background-color:#444; color:white; width:95%; text-align:center; }
 
-        
+        #jlodb #jl_doc	{ font-size:.3em; height:30em; overflow:auto; }
+		#jlodb #jl_doc p	{ text-align:justify; margin:0 .5em; }
 
     </style>
     <script>
@@ -209,7 +210,7 @@ jlodb = {
 								if (isOk)
 								{
 									html    +="<div onclick=\"window.open('"+data.mods[i].id+".html',"+
-											  "'_blank', 'width=640, height=480,toolbar=no,location=no,status=no,menubar=no," +
+											  "'_mod', 'width=640, height=480,toolbar=no,location=no,status=no,menubar=no," +
 											  "scrollbars=no,resizable=no,status=no,titlebar=no');\">"+
 											  "<img src='res/img/default/white/snapshot.svg' alt='s'/></div>";
 								}
@@ -443,6 +444,12 @@ jlodb = {
         $("#jlcontenta").load("locale/"+data.lang+"/help.html", function(response, status, xhr) {
         });
 	},
+	documentation: function() {
+        $("#jlcontent>div").hide();
+        $("#jlcontenta").show();
+        $("#jlcontenta").load("locale/"+data.lang+"/documentation.html", function(response, status, xhr) {
+        });
+	},
     // LOAD JLODB HOME'S PAGE
     home        : function() {
         var results = new RegExp('[?]id=([^&]*)').exec(window.location.href);
@@ -493,9 +500,9 @@ jlodb = {
 						  context			: [
                             { icon:"res/img/default/white/run.svg", process :function(_id){ jlodb.run({id:_id}, false); } },
                             { icon:"res/img/default/white/edit.svg", process:function(_id){ jlodb.page.edition.get(_id); } },
-							{ icon:"res/img/default/white/look.svg", process:function(_id){ window.open('report.html?id='+_id,'blank'); } },
+							{ icon:"res/img/default/white/look.svg", process:function(_id){ window.open('report.html?id='+_id,'_report'); } },
                             { icon:"res/img/default/white/snapshot.svg", process:function(_id) {
-                                window.open('demo.html?id='+_id,'_blank',
+                                window.open('demo.html?id='+_id,'_demo',
                                     'width=640, height=480,toolbar=no,location=no,status=no,menubar=no,'+
                                     'scrollbars=no,resizable=no,status=no,titlebar=no'); } } ]
                     });
