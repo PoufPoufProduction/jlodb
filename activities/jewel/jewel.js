@@ -120,13 +120,16 @@
 					settings.board[j]=settings.board[j].replace(vReg,'0');
 					settings.size[0]=Math.max(settings.size[0], settings.board[j].length);
 				}
+				
 				for (var j in settings.board) {
 					while (settings.board[j].length<settings.size[0]) { settings.board[j]+="0"; }
 				}
                 var max     = Math.max(settings.size[1], settings.size[0])*1.1;
                 $this.find("#board>div").css("font-size", (12/max)+"em")
                                         .css("margin-left", ((max-settings.size[0])/2)+"em")
-                                        .css("margin-top", ((max-settings.size[1])/2)+"em");
+                                        .css("margin-top", ((max-settings.size[1])/2)+"em")
+										.css("width", settings.size[0]+"em")
+										.css("height",settings.size[1]+"em");
 										
 				do {		
 					$this.find("#board>div").html("");

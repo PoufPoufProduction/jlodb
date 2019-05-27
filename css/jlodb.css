@@ -21,8 +21,9 @@ img                             { border:none; outline: none; pointer-events: no
 svg image                       { pointer-events: none; -khtml-user-select: none; -o-user-select: none; -moz-user-select: none; -webkit-user-select: none; user-select: none;}
 svg use                         { pointer-events: none; }
 body>div                        { border:4px solid white; background-color: black; margin:0 auto; width:16em; height:12em; position:relative; top:-2px; left:-4px; }
-select                          { appearance:none; -webkit-appearance:none; -moz-appearance:none; }
-textarea                        { resize:none; }
+select                          { display: block; appearance:none; -webkit-appearance:none; -moz-appearance:none; }
+input							{ display: block; }
+textarea                        { resize:none;  }
 math                            { display: block; text-align: center; }
 .overflow						{ overflow:visible; }
 .overflow *						{ overflow:visible; }

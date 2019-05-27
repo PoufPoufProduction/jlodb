@@ -1,6 +1,6 @@
 (function($) {
 	var defaults = {
-		name: "marker",
+		name: "sorting",
 		args: {},				// activity arguments
 		validation: false,
 		debug: true
@@ -19,7 +19,7 @@
             $this.load( templatepath, function(response, status, xhr) {
 				settings.$activity = $this.find("#e_screen>div");
 				if (!settings.validation) { $this.find("#e_submit").hide(); }
-				
+
 				if (_args.locale.editor) { $.each(_args.locale.editor, function(id,value) {
 					if($.type(value) === "string") {
 						if (id.indexOf("eph")==-1) { $this.find("#"+id).html(value); }
@@ -34,95 +34,58 @@
             var settings = helpers.settings($this);
 			settings.locale = _args.locale;
 			settings.data = _args.data;
-			
 			$this.find("#e_export").val(JSON.stringify(_args.data));
-			settings.$activity.html("");
-			
+				
 			helpers.update($this, _args);
 			
+			settings.$activity.html("");
 			settings.$activity.jlodb({
-				onedit:		function($activity, _data) 		{ },
+				onedit:		function($activity, _data) 		{  },
 				onstart:    function($activity)       		{ settings.$activity.addClass("nosplash"); },
                 onfinish:   function($activity, _hide)		{ },
                 onscore:    function($activity, _ret) 		{ return true; },
                 onexercice: function($activity, _id, _data)	{ _data.edit = true; } }, _args);
 		},
-		import:function($this, _elt, _args, _launch) {
+		valid: function($this) {
             var settings = helpers.settings($this);
-				
-			if (settings.interactive)
-			{
-				settings.interactive = false;
-				$(_elt).addClass("touch");
-				setTimeout(function() { $(_elt).removeClass("touch"); }, 50);
-				setTimeout(function() { settings.interactive = true; }, 500);
-					
-				try {
-					
-					var args = _args;
-					if (!args) {
-						args = jQuery.parseJSON($this.find("#e_export").val());
-						settings.data = $.extend(true,{},args);
-					}
-					else { $this.find("#e_export").val(JSON.stringify(args)) ;}
-					helpers.update($this, {data: args });
-					if (_launch) {
-						args.edit = true;
-						args.context = { onquit:function() { }, onload:function($t) { $t.addClass("nosplash"); } };
-						args.locale = settings.locale;
-						settings.$activity[settings.name](args);
-					}
+			var data={
+				exercice: $this.find("#eph_exercice").val()
+			};
+			data = $.extend(true,{}, settings.data, data);
+			$this.find("#e_export").val(JSON.stringify(data));
+			helpers.import($this, data);
+		},
+		import: function($this, _args) {
+            var settings = helpers.settings($this);
+			try {
+				var args=_args;
+				if (!args) {
+					args = jQuery.parseJSON($this.find("#e_export").val());
+					settings.data = $.extend(true,{},args);
 				}
-				catch (e) { alert(e.message); return; }
+				args.edit = true;
+				args.highlight = settings.highlight;
+				args.context = { 
+					onedit:		function($activity, _data) { helpers.word($this, _data); },
+					onquit:		function() { },
+					onload:		function($t) { $t.addClass("nosplash"); } };
+				args.locale = settings.locale;
+				helpers.update($this, {data: args });
+				settings.$activity[settings.name](args);
+				settings.haschanged = false;
 			}
+			catch (e) { alert(e.message); return; }
+					
 		},
 		update: function($this, _args) {
             var settings = helpers.settings($this);
 			
-			$this.find("#eph_exercice").html(_args.data.exercice);
-			for (var i=0; i<3; i++) {
-				if (i < _args.data.questions.length) {
-					$this.find("#eph_goal"+(i+1)).val(_args.data.questions[i].label);
-					$this.find("#eph_sep"+(i+1)).val(_args.data.questions[i].s);
-				}
-				else {
-					$this.find("#eph_goal"+(i+1)).val("");
-				}
-			}
-			
-			var locked = false;
-			var lines = _args.data.text.join('\n');
-			for (var j=0; j<_args.data.questions.length; j++) {
-				if (lines.indexOf(_args.data.questions[j].s)!=-1) { locked = true; }
-			}
-			$this.find("#eph_line1").val(lines);
-			
-			$this.find("#e_data .e_sep").attr("disabled",locked?"disabled":false);
-			
-			if (_args.data.font) { $this.find("#eph_size").val(_args.data.font); }
-		},
-		convert: function($this) {
-            var settings = helpers.settings($this);
-			var val={ text:$this.find("#eph_line1").val().split('\n'),
-					  questions:[], exercice:$this.find("#eph_exercice").val()};
-					  
-			for (var i=0; i<3; i++) {
-				if ($this.find("#eph_goal"+(i+1)).val().length) {
-					val.questions.push({label:$this.find("#eph_goal"+(i+1)).val(), s:$this.find("#eph_sep"+(i+1)).val() });
-				}
-				else break;
-			}
-			if ($this.find("#eph_size").val().length) { val.font = $this.find("#eph_size").val(); }
-			
-			val = $.extend(true,{}, settings.data, val);
-			
-			$this.find("#e_export").val(JSON.stringify(val));
-			return val;
+			$this.find("#eph_exercice").val(_args.data.exercice);
 		}
     };
 
     // The plugin
-    $.fn.marker_editor = function(method) {
+    $.fn.sorting_editor = function(method) {
 
         // public methods
         var methods = {
@@ -131,7 +94,7 @@
                 var settings = {
                     interactive     : true,
 					$activity		: 0,				// The activity object
-					editpanel		: true,
+					editpanel		: true,				// Editpanel
 					data			: {},				// Exercice data
 					locale			: ""				// Locale object for relaunch
                 };
@@ -145,33 +108,40 @@
                     helpers.load($this, options.args);
                 });
             },
-			import:function(_elt) { helpers.import($(this), _elt, 0, true); },
+			valid: function(_elt) {
+                var $this = $(this) , settings = helpers.settings($this);
+				
+				if (settings.interactive)
+				{
+					settings.interactive = false;
+					$(_elt).addClass("touch");
+					setTimeout(function() { $(_elt).removeClass("touch"); }, 50);
+					setTimeout(function() { settings.interactive = true; }, 800);
+					helpers.valid($this);
+				}
+			},
+			import:function(_elt) {
+                var $this = $(this) , settings = helpers.settings($this);
+				
+				if (settings.interactive)
+				{
+					settings.interactive = false;
+					$(_elt).addClass("touch");
+					setTimeout(function() { $(_elt).removeClass("touch"); }, 50);
+					setTimeout(function() { settings.interactive = true; }, 800);
+					
+					helpers.import($this,0);
+				}
+			},
 			edit:function(_elt) {
                 var $this = $(this) , settings = helpers.settings($this);
 				var l = settings.args.locale.editor;
 				
 				if (settings.interactive)
 				{
+					
 					var anim = true;
 					switch($(_elt).attr("id")) {
-						case 'e_del' :
-							var val = helpers.convert($this);
-							for (var i in val.text) {
-								for (var j=0; j<settings.args.data.questions.length; j++) {
-									var vReg = new RegExp("["+settings.args.data.questions[j].s+"]","g");
-									val.text[i]=val.text[i].replace(vReg,"");
-								}
-							}
-							helpers.import($this, _elt, val, true);
-							anim = false;
-							break;
-						case 'e_get':
-							var val = helpers.convert($this);
-							val.text = settings.$activity.marker("e_get");
-							helpers.import($this, _elt, val, false);
-							anim = false;
-							
-							break;
 						case 'e_import':
 							if (settings.editpanel) {
 								settings.editpanel = false;
@@ -198,12 +168,7 @@
 						setTimeout(function() { $(_elt).removeClass("touch"); }, 50);
 						setTimeout(function() { settings.interactive = true; }, 500);
 					}
-					
 				}
-			},
-			valid:function(_elt) {
-                var $this = $(this) , settings = helpers.settings($this);
-				helpers.import($this, _elt, helpers.convert($this),true);
 			}
         };
 

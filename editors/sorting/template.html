@@ -1,0 +1,32 @@
+<div>
+	<div class="e_column e_elt" id="e_editor">
+		<div id="e_data">
+			<textarea id="eph_exercice"></textarea>
+		</div>
+		<div class="l bluekeypad" 
+			ontouchstart="$(this).closest('.sorting_editor').sorting_editor('valid',this);event.preventDefault();"
+			onclick="$(this).closest('.sorting_editor').sorting_editor('valid',this);">OK</div>
+	</div>
+	
+	<div class="e_column e_elt" id="e_control"><div>
+		<textarea id='e_export' class='export'></textarea>
+		<div class='l bluekeypad'
+			ontouchstart="$(this).closest('.sorting_editor').sorting_editor('import',this);event.preventDefault();"
+			onclick="$(this).closest('.sorting_editor').sorting_editor('import',this);">
+			OK
+		</div>
+	</div></div>
+	
+	<div class="e_panel e_elt" id="e_screen"><div></div></div>
+
+
+	<div class="e_panel e_elt" id="e_menu"><div>
+		<div id="e_import" class="l bluekeypad"
+			ontouchstart="$(this).closest('.sorting_editor').sorting_editor('edit',this);event.preventDefault();"
+			onclick="$(this).closest('.sorting_editor').sorting_editor('edit',this);"></div>
+		<div id="e_submit" class="l bluekeypad"
+			ontouchstart="$(this).closest('.sorting_editor').sorting_editor('edit',this);event.preventDefault();"
+			onclick="$(this).closest('.sorting_editor').sorting_editor('edit',this);">→ jLoDb</div>
+	</div></div>
+</div>
+

@@ -1,8 +1,8 @@
 <div id="jl_doc">
 <h1>Javascript Learning Object Database</h1>
 <h1>Guide de l'utilisateur - en construction</h1>
-<br/>
-<h2>Présentation générale</h2>
+
+<br/><h2>Présentation générale</h2>
 
 <p><b>jLoDb</b> ou "<i>Javascript Learning Object Database</i>" est une base de données qui propose tout un ensemble d'<b>activités éducatives libres</b>. Ces activités sont référencées au sein de la base suivant de nombreux critères comme leur niveau, leur difficulté ou leur champ d'application. Un système de tags et de références croisées permet de conserver les synergies entre exercices. L'objectif est ici de pouvoir naviguer facilement parmi des exercices de plus en plus nombreux et d'y retrouver celui de son choix sans trop de difficulté.</p>
 
@@ -10,38 +10,103 @@
 
 <p>La base de données dans son intégralité est sous <b>licence GPL-3</b>. Cette intégralité comprend les différents programmes mais aussi les données des différents exercices ainsi que l'ensemble des ressources graphiques.</p>
 
-<br/>
-<h2>Installation de la base</h2>
+<br/><h2>Installation de la base</h2>
 
-<p><b>jLoDb est une application web</b> nécessitant, par conséquent, l'utilisation d'un serveur web de type AMP (Apache, MySql, PHP). Les possibilités sont nombreuses mais toutes sont désormais très classiques et sans réelle difficulté.</p>
+<p><b>jLoDb est une application web</b> nécessitant, par conséquent, l'utilisation d'un serveur web de type AMP (Apache, MySql, PHP). Les possibilités sont nombreuses mais toutes sont désormais très classiques et sans réelle difficulté d'installation et d'utilisation.</p>
 
-<h3>Serveurs web</h3>
+<br/><h3>Serveurs web</h3>
 
 <h4>AMP</h4>
-<p>Les logiciels Apache, MySql et Php forment un trio très connu dont l'installation a déjà été mainte fois détaillée. Il ne devrait y avoir aucun problème à procéder à leur installation.</p>
+<p>Les logiciels <b>Apache</b>, <b>MySql</b> et <b>Php</b> forment un trio applicatif connu dont l'installation a déjà été mainte fois détaillée. Il ne devrait y avoir aucun problème à procéder à leur installation.</p>
 
 <p>Sous Windows, UvWamp est une version locale qui fonctionne sans installation particulière.</p>
 
 <p>Sous Linux, l'installation peut se faire grâce à la commande suivante :</p>
 
-<p>sudo install apache2 php libapache2-mod-php mysql-server php-mysql php-xml</p>
+<p>sudo apt install apache2 php libapache2-mod-php mysql-server php-mysql php-xml</p>
 
-<h3>Récupération du projet</h3>
+<br/><h3>Récupération du projet</h3>
 
-<h3>Configuration</h3>
+<p>Le projet <b>jLoDb</b> est disponible depuis le dépôt <b>GitHub</b> de <i>Pouf-Pouf Production</i> : <a href="https://github.com/PoufPoufProduction/jlodb"><u>https://github.com/PoufPoufProduction/jlodb</u></a>. Il peut être installé grâce à l'archive <b>Zip</b> proposée depuis la page web ou avec la commande <b>git clone https://github.com/PoufPoufProduction/jlodb.git</b>.</p>
+<p>Pour des raisons d'optimisation, toutes les captures d'écrans utilisées comme miniatures dans le navigateur, sont stockées dans un autre projet nommé <b>jlodbPlus</b> et dont la taille dépasse allégrement celle du projet principal. L'utilisation de ce second projet reste facultative et son installation se fait comme précédemment depuis la page <b>GitHub</b> associée : <a href="https://github.com/PoufPoufProduction/jlodbPlus"><u>https://github.com/PoufPoufProduction/jlodbPlus</u></a>.</p>
 
-<h3>Installation</h3>
+<br/><h3>Configuration</h3>
 
+<p>Une fois le projet récupéré et avant de procéder à l'installation, il est nécessaire d'éditer le fichier <b>conf/jlodb.ini</b> afin de configurer cette nouvelle instance du serveur.</p>
+<p>Les paramètres sont les suivants :</p>
+<br/>
+<ul>
+<li><b>[admin]</b> est la section permettant de définir les identifiants de l'administrateur du serveur.</li>
+<li><b>username</b> est le nom de l'administrateur.</li>
+<li><b>password</b> est le mot de passe de l'administrateur haché avec le protocol <b>MD5</b>. Parmi les nombreuses solutions permettant ce genre de cryptage, des sites web comme <a href="https://www.cryptage-md5.com/"><u>https://www.cryptage-md5.com/</u></a> sont tout à fait satisfaisants. Par défaut, le mot de passe est identique au login par défaut, à savoir <i>admin</i>. </li>
+<li><b>email</b> permet de préciser l'e-mail de l'administrateur, mais, pour l'instant, ce paramètre n'est pas utilisé.</li>
+<br/>
+<li><b>[db]</b> est la section qui va détailler les paramètres de connexion à la base de données.</li>
+<li><b>host</b> est l'adresse de la base de données.</li> 
+<li><b>database</b> est le nom de la base de données.</li> 
+<li><b>username</b> est le nom du profil qui va accéder à la base. Il faut bien évidemment veiller à ce que cet utilisateur ait les droits nécessaires.</li> 
+<li><b>password</b> est le mot de passe de cet utilisateur.</li> 
+<li><b>prefix</b> sert à préfixer les noms des différentes tables du projet <b>jLoDb</b>, ce qui est particulièrement utile dans le cas d'une base de données partagées.</li>
+<br/>
+<li><b>[dev]</b> est une section assez technique, sans grand cohérence pour l'instant.</li>
+<li><b>url</b> est le chemin d'accès au projet <b>jlodbPlus</b> qui va fournir les différentes captures d'écrans.</li> 
+<li><b>password</b> est un mot de passe haché en <b>MD5</b> qui permettra à n'importe quel utilisateur identifié d'accéder à des outils d'édition comme la possibilité d'éditer des cahiers d'exercices. Par défaut, le mot de passe est <i>dadada</i>.</li>
+</ul>
 
-<h2>Présentation technique</h2>
+<br/><h3>Installation</h3>
+<p>Une fois le fichier de configuration mis à jour, l'installation se fait depuis la page principale du projet jLoDb. L'icône en forme de clé anglaise en haut à droite de l'écran permet d'accéder à la section d'administration du site. L'idendification se fait en fournissant les informations telles qu'elles sont définies dans le fichier de configuration. Le haut de page devient plus sombre une fois connecté en tant qu'administrateur. Il suffit alors d'utiliser le bouton d'installation pour créer la base de données d'exercices numériques. Lors de cette installation, une langue est demandée, car si toutes les données statiques sont multi-langues, les instances de serveur, elles, sont localisées.</p>
 
+<br/><h2>Présentation technique</h2>
+<br/><h3>Architecture du projet</h3>
+<h4>Au commencement, des données statiques</h4>
+<p>Tous les exercices du projet <b>jLoDb</b> sont définis dans le repértoire <b>data/</b> dans des fichiers au format <b>RDF</b>. Ces définitions statiques sont multi-langues et seront utilisées par le serveur lors de l'installation pour valoriser la base de données. Une fois l'installation faite, ces fichiers n'ont plus réellement d'utilité.</p>
+<h4>Un serveur web sous PHP</h4>
+<p>Le serveur <b>jLoDb</b> fonctionne grâce à un ensemble d'API disponibles dans le répertoire <b>api/</b>. Ces API qui sont implémentées en <b>PHP</b> fournissent différents services permettant d'intéragir avec la base de données et envoient en retour des données au format <b>JSON</b> exclusivement.</p>
+<h4>Une partie cliente HTML et javascript</h4>
+<p>Les activités référencées dans la base <b>jLoDb</b> fonctionnent côté client grâce aux technologies web et sont donc accessibles depuis n'importe quelle navigateur web. Les données HTML, CSS et javascript de chaque activité sont placées dans le repertoire <b>activity/</b> du projet.</p>
+<h4>Des ressources graphiques au format SVG</h4>
+<p>L'ensemble des ressources graphiques se situe dans le répertoire <b>res/img/</b> et toutes ces images sont définies dans un format vectoriel appelé <b>SVG</b>. L'utilisation de ce format permet une indépendance totale vis-à-vis de la résolution finale et <b>jLoDb</b> fonctionne ainsi indifféremment sur un grand écran que sur une petite surface de smartphone. L'utilisation du format <b>SVG</b> offre, du fait de son format descriptif, l'avantage d'être plus facilement utilisable et modifiable par tous mais en plus, il s'intègre aussi parfaitement dans un environnement web où son <b>DOM</b> est accessible et modifiable dynamiquement.</p>
 
-<h3>Technologie utilisée</h3>
-<h4>Web et HTML</h4>
-<h4>Javascript et jQuery</h4>
-<h4>SVG</h4>
-<h4>PHP</h4>
+<br/><h3>Les activités</h3>
+<p>Les activités sont les programmes qui vont exécuter les différents exercices. Chaque activité a ses propres spécificités et toutes proposent des systèmes de jeu très différents. Certaines sont très spécifiques comme <b>abacus</b> qui simule l'utilisation d'un boulier. D'autres sont tout à fait génériques comme <b>sorting</b> qui propose de trier des éléments. Une description précise de ces activités est disponible depuis le menu <b>Navigation/Activités</b>.</p>
+<p>Techniquement, les activités sont des programmes javascript qui sont généralement chargées dynamiquement lors de leur première exécution. Ces activités sont autonomes aussi ce sont elles qui s'occupent de récupérer les éléments nécessaires à leur exécution comme le template html et la feuille de style associée. Toutes les activités sont normalisées, c'est-à-dire qu'elles se lancent de la même façon et qu'elles se terminent aussi de la même façon en fournissant au système appelant une <b>note comprise entre 0 et 5</b>. Ainsi, la page <a href="demo.html"><u>demo.html</u></a> peut proposer aléatoirement n'importe quelle activité de la base, tout comme le bouton <b>Au hasard</b> ci-contre.</p>
 
-<h3>Les activités</h3>
+<br/><h3>Les exercices (ou niveaux)</h3>
+<p>Une activité est un programme qui propose un système de jeu spécifique. Un exercice est une utilisation particulière de ce système de jeu, qui repose sur des paramètres uniques. Leur nombre augmentant rapidement, il est important que les exercices de la base soient parfaitement référencés afin de pouvoir naviguer facilement et d'être capable de retrouver l'exercice de son choix. Pour ce faire, chaque exercice est défini dans un des fichiers <b>RDF</b> du répertoire <b>data/</b>. L'espace de nommage utilisé est <b>Dublin:core</b> et chaque paramètres est représenté par un <b>TAG</b> spécifique pouvant être localisé.</p>
+<ul>
+<li>Un <b>identifiant</b> unique construit selon le format suivant : <b>XXYYZZZ</b> où <b>XX</b> sont les premières et dernières lettres de l'activité, <b>YY</b> sont les 2 premières lettres du fichier de données et <b>ZZZ</b> est une chaîne de caractères spécifique. Ainsi <b>penua01</b> est un niveau issu de l'activité <b>puzzle</b>, défini dans le fichier <b>numeration.rdf</b> et identifié dans ce fichier par la référence <b>a01</b>. Tous les identifiants sont en minuscules afin d'éviter des confusions propres à certains systèmes d'exploitation.</li>
+<li>L'<b>activité</b> associée dont dépend l'exercice.</li>
+<li>Des <b>données</b> au format <b>JSON</b> qui vont être utilisés par l'activité à l'exécution. L'un des points forts du projet <b>jLoDb</b> est qu'il est possible d'inclure du code dans ces données et de déporter ainsi une partie de l'algorithmique dans les exercices eux-mêmes, offrant ainsi de très nombreuses possibilités.</li>
+<li>Une <b>description</b> qui permet de comprendre la teneur de l'exercice. En général et pour plus de cohérence, celle-ci est à l'infinitif.</li>
+<li>Un <b>niveau scolaire</b> spécifique allant de 1 à 5 et représentant respectivement la maternelle, l'école primaire puis secondaire, le lycée et le niveau post-bac.</li>
+<li>La <b>difficulté</b> est peut-être le paramètre le plus difficile à définir. De 1 à 5, sa valeur est souvent subjective et dépend d'autres facteurs comme le niveau scolaire ou la difficulté des niveaux voisins.</li>
+<li>Un <b>temps d'exécution</b> moyen qui permet d'estimer la durée de résolution de l'exercice.</li>
+<li>Un système de <b>Tags</b> permet de créer des reférences comme <b>#CE1</b> pour préciser un niveau scolaire, ou <b>#PPVC</b> pour spécifier une thématique.</li>
+<li>Un système de <b>Référence</b> pour regrouper certains exercices appartenant à une même problématique.</li>
+<li>Une <b>alternative</b> qui permet de regrouper les exercices d'une même famille et de simplifier ainsi l'affichage au sein du navigateur.</li>
+<li>Une liste des <b>ressources</b> graphiques utilisées qui va permettre d'exporter ces exercices.
+<li>Une <b>base technique</b> qui permet de reprendre les <b>données</b> d'un exercice existant, et de limiter ainsi les <b>données</b> de l'exercice courant à son seul différentiel.</li>
+</ul>
+
+<br/><h3>Le navigateur</h3>
+<p>Le navigateur permet à l'utilisateur de retrouver facilement un exercice dans une base en constante expansion. Comme tout navigateur, il est possible de proposer un ensemble de critères de recherche qui vont permettre d'affiner la recherche. Ces paramètres sont les suivants :</p>
+<ul>
+<li>La <b>classification</b> permet de préciser le domaine académique de l'exercice recherché : grammaire française, numération, etc. Cliquer sur la bande supérieure grise permet de faire apparaître ou disparaître le suffixe '+' qui notifie d'une recherche récursive. Ainsi, <b>Numération+</b> propose une recherche dans tous les domaines sous-jacents à la numération, dont les nombres négatifs. Ces mêmes nombres négatifs seront, par contre, exclus d'une recherche conditionnée par <b>Numération</b> (sans le '+'). Petite astuce : cliquer sur la bande inférieure grise permet de changer l'affichage de la fenêtre de classification.</li>
+<li>L'<b>activité</b> permet de filtrer la ou les activités recherchées. Si aucune activité n'est sélectionnée, toutes le sont.</li>
+<li>Le <b>niveau scolaire</b> propose de spécifier un encadrement avec une valeur minimale et une valeur maximale. Il est donc tout à fait possible d'exclure de sa recherche des exercices destinées à un niveau de type maternelle, ou au contraire, de restreindre à un seul public de lycéen(ne)s.</li>
+<li>Le <b>temps moyen</b> de résolution et la <b>difficulté</b> de l'exercice sont deux autres paramètres fonctionnant sur le même principe. A noter qu'il est possible de réinitialiser chacun de ces paramètres en cliquant sur son libellé.</li>
+<li>L'<b>identifiant</b> permet de préciser direcement le nom unique de l'exercice souhaité.</li>
+<li>La <b>référence</b> et le <b>Tag</b> permettent de filtrer la recherche selon des critères thématiques ou techniques.</li>
+<li>Le bouton <b>ALT</b> permet, lorsqu'il est actif, de regrouper les exercices par alternatives. Dans ce cas, seul l'exercice de base est affiché permettant ainsi une meilleure lisibilité des retours de recherche. A noter que lorsqu'un identifiant est fourni, cette option est sans effet.<li>
+<li>Dessous, la valeur par défaut <b>25</b> est le nombre de résultats fournis. En cliquant sur ce nombre, il est possible d'en changer la valeur.</li>
+<li>Le <b>nombre</b> affiché en gros, correspond aux nombres d'exercices correspondant à la recherche en cours. Par défaut, sans critère particulier, il s'agit tout simplement du nombre d'exercices dans la base.</li>
+</ul>
+
+<h3>Les modules</h3>
+<h4>Présentation</h4>
+<p><b>jLoDb</b> est une base de donnée dont l'unique utilité est de référencer et de gérer un certain nombre d'activités et d'exercices. En aucun cas, elle n'est destinée à être utilisée en tant qu'interface cliente pour l'exécution de ces niveaux. <b>jLoDb</b> est un outil d'administration.</p>
+<p>Si elle ne se fait pas depuis la base elle-même, l'interface avec l'utilisateur incombe à des programmes tiers ou <b>modules</b>. Ce sont eux qui vont avoir en charge de proposer les niveaux de la base et de gérer les résultats et la progression de l'utilisateur. Chaque module a ses spécificités et du fait que les exercices sont utilisables à loisir, tout est possible. Il fut un temps où un module, désormais désactivé, proposait un plateau de jeu de type trivial pursuit où chaque case donnait lieu à un exercice de la base. <b>Tibibi</b> est un module qui permet à l'utilisateur de construire ses propres séquences pédagogiques tandis que <b>Tibibo</b> offre la possibilité à chacun de rédiger et de pratiquer des cahiers d'exercices. La création d'un module servant de <b>LMS</b> ou <i>Learning Management System</i> basé sur les exercices de la base est actuellement à l'étude.</p>
+<h4>Tibibi</h4>
+
 
 </div>

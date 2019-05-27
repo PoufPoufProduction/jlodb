@@ -33,6 +33,8 @@
 		launch: function($this, _args) {
             var settings = helpers.settings($this);
 			settings.locale = _args.locale;
+			settings.data = _args.data;
+			
 			$this.find("#e_export").val(JSON.stringify(_args.data));
 			
 			helpers.update($this, _args);
@@ -105,6 +107,7 @@
 			
 			$this.find("#e_word").hide();
 			settings.word=0;
+			data = $.extend(true,{}, settings.data, data);
 			
 			$this.find("#e_export").val(JSON.stringify(data));
 			helpers.import($this, data);
@@ -113,7 +116,12 @@
 		import: function($this, _args) {
             var settings = helpers.settings($this);
 			try {
-				var args = _args?_args:jQuery.parseJSON($this.find("#e_export").val());
+				var args = _args;
+				if (!args) {
+					args = jQuery.parseJSON($this.find("#e_export").val());
+					settings.data = $.extend(true,{},args);
+				}
+				
 				args.edit = true;
 				args.highlight = settings.highlight;
 				args.context = { 
@@ -186,6 +194,7 @@
 					dictionary		: [],
 					haschanged		: false,
 					word			: 0,				// Current word
+					data			: {},				// Exercice data
 					locale			: ""				// Locale object for relaunch
                 };
 
