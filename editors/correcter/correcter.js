@@ -107,7 +107,7 @@
 			
 			$this.find("#e_word").hide();
 			settings.word=0;
-			data = $.extend(true,{}, settings.data, data);
+			data = $.extend({}, settings.data, data);
 			
 			$this.find("#e_export").val(JSON.stringify(data));
 			helpers.import($this, data);
@@ -119,7 +119,7 @@
 				var args = _args;
 				if (!args) {
 					args = jQuery.parseJSON($this.find("#e_export").val());
-					settings.data = $.extend(true,{},args);
+					settings.data = $.extend({},args);
 				}
 				
 				args.edit = true;

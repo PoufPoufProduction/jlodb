@@ -6,8 +6,8 @@
         template    : "template.html",                          // Activity's html template
         css         : "style.css",                              // Activity's css style sheet
         lang        : "en-US",                                  // Current localization
-        number      : 4,                                        // Number of exercices during the same session
-        nbvalues    : 5,                                        // Number of values to be sorted
+        number      : 0,                                        // Number of exercices during the same session
+        nbvalues    : 0,                                        // Number of values to be sorted
         showscore   : true,                                     // Show the score at the end
         debug       : true,                                     // Debug mode
         type        : "swap",                                   // swap: swap 2 elements, move: move all the elements for inserting
@@ -141,14 +141,14 @@
                 if ( ( $.isArray(vValues[0][0]) && settings.type=="swap") ||
                      ( $.isArray(vValues[0]) && settings.type=="move") ) {
 
-                    settings.number = vValues.length;
+                    if (!settings.number) { settings.number = vValues.length; }
                     vValues = vValues[settings.it%vValues.length];
                 }
             }
 
 
             // GET AND COMPUTE THE VALUES
-            var nbvalues = settings.nbvalues;
+            var nbvalues = settings.nbvalues?settings.nbvalues:5;
             if ((!(settings.gen) && (nbvalues>vValues.length)) || (nbvalues==-1) ) {
                 nbvalues = vValues.length;
             }
@@ -331,6 +331,7 @@
 
                     $this.find("#submit").addClass(vGood?"good":"wrong");
                     settings.interactive = false;
+					
                     if (++settings.it >= settings.number) {
                         settings.score = Math.floor(5-settings.errratio*settings.wrong);
                         if (settings.score<0) { settings.score = 0; }

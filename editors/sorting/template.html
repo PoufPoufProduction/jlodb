@@ -1,7 +1,40 @@
 <div>
 	<div class="e_column e_elt" id="e_editor">
 		<div id="e_data">
-			<textarea id="eph_exercice"></textarea>
+			<textarea id="eph_exercice" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+			<input type="text" value="" id="eph_size" class="eph_value"/>
+			<input type="text" value="" id="eph_space" class="eph_value"/>
+			<select id="eph_mode" class="eph_value"><option id="e_match" value="swap"></option><option id="e_sort" value="move"></option></select>
+			<input type="text" value="" id="eph_nbpages" class="eph_value"/>
+			<input type="text" value="" id="eph_nbelts" class="eph_value"/>
+			<div id="e_tabs">
+				<div id="e_tab1"
+				ontouchstart="$(this).closest('.sorting_editor').sorting_editor('tab',this);event.preventDefault();"
+				onclick="$(this).closest('.sorting_editor').sorting_editor('tab',this);">1</div>
+				<div id="e_tab2"
+				ontouchstart="$(this).closest('.sorting_editor').sorting_editor('tab',this);event.preventDefault();"
+				onclick="$(this).closest('.sorting_editor').sorting_editor('tab',this);">2</div>
+				<div id="e_tab3"
+				ontouchstart="$(this).closest('.sorting_editor').sorting_editor('tab',this);event.preventDefault();"
+				onclick="$(this).closest('.sorting_editor').sorting_editor('tab',this);">3</div>
+				<div id="e_tab4"
+				ontouchstart="$(this).closest('.sorting_editor').sorting_editor('tab',this);event.preventDefault();"
+				onclick="$(this).closest('.sorting_editor').sorting_editor('tab',this);">4</div>
+				<div id="e_tab5"
+				ontouchstart="$(this).closest('.sorting_editor').sorting_editor('tab',this);event.preventDefault();"
+				onclick="$(this).closest('.sorting_editor').sorting_editor('tab',this);">5</div>
+				<div id="e_tab6"
+				ontouchstart="$(this).closest('.sorting_editor').sorting_editor('tab',this);event.preventDefault();"
+				onclick="$(this).closest('.sorting_editor').sorting_editor('tab',this);">6</div>
+			</div>
+			<div id="e_pages">
+				<textarea id="e_page1" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+				<textarea id="e_page2" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+				<textarea id="e_page3" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+				<textarea id="e_page4" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+				<textarea id="e_page5" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+				<textarea id="e_page6" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+			</div>
 		</div>
 		<div class="l bluekeypad" 
 			ontouchstart="$(this).closest('.sorting_editor').sorting_editor('valid',this);event.preventDefault();"
@@ -9,7 +42,7 @@
 	</div>
 	
 	<div class="e_column e_elt" id="e_control"><div>
-		<textarea id='e_export' class='export'></textarea>
+		<textarea id='e_export' class='export' autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
 		<div class='l bluekeypad'
 			ontouchstart="$(this).closest('.sorting_editor').sorting_editor('import',this);event.preventDefault();"
 			onclick="$(this).closest('.sorting_editor').sorting_editor('import',this);">

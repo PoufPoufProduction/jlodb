@@ -62,7 +62,7 @@
 					var args = _args;
 					if (!args) {
 						args = jQuery.parseJSON($this.find("#e_export").val());
-						settings.data = $.extend(true,{},args);
+						settings.data = $.extend({},args);
 					}
 					else { $this.find("#e_export").val(JSON.stringify(args)) ;}
 					helpers.update($this, {data: args });
@@ -114,7 +114,7 @@
 			}
 			if ($this.find("#eph_size").val().length) { val.font = $this.find("#eph_size").val(); }
 			
-			val = $.extend(true,{}, settings.data, val);
+			val = $.extend({}, settings.data, val);
 			
 			$this.find("#e_export").val(JSON.stringify(val));
 			return val;

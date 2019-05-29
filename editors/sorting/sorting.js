@@ -41,7 +41,14 @@
 			settings.$activity.html("");
 			settings.$activity.jlodb({
 				onedit:		function($activity, _data) 		{  },
-				onstart:    function($activity)       		{ settings.$activity.addClass("nosplash"); },
+				onstart:    function($activity)       		{
+					settings.$activity.addClass("nosplash");
+					if (_args.data.gen) {
+						$this.find("#e_import").hide();
+						$this.find("#e_editor").hide();
+						$this.find("#e_control").show();
+					}
+				},
                 onfinish:   function($activity, _hide)		{ },
                 onscore:    function($activity, _ret) 		{ return true; },
                 onexercice: function($activity, _id, _data)	{ _data.edit = true; } }, _args);
@@ -49,9 +56,26 @@
 		valid: function($this) {
             var settings = helpers.settings($this);
 			var data={
-				exercice: $this.find("#eph_exercice").val()
+				exercice: $this.find("#eph_exercice").val(),
+				font:     $this.find("#eph_size").val(),
+				len:      $this.find("#eph_space").val(),
+				number:   $this.find("#eph_nbpages").val(),
+				nbvalues: $this.find("#eph_nbelts").val(),
+				type:     $this.find("#eph_mode").val(),
+				values:	  []
 			};
-			data = $.extend(true,{}, settings.data, data);
+			
+			for (var i=0; i<6; i++) {
+				var content = $this.find("#e_pages #e_page"+(i+1)).val();
+				if (content.length) {
+					var page = content.split('\n');
+					if (data.type=="swap") { for (var l in page) { page[l] = page[l].split('|'); } }
+					
+					data.values.push(page);
+				}
+			}
+			data = $.extend({}, settings.data, data);
+			
 			$this.find("#e_export").val(JSON.stringify(data));
 			helpers.import($this, data);
 		},
@@ -79,8 +103,43 @@
 		},
 		update: function($this, _args) {
             var settings = helpers.settings($this);
+			if (_args.data.gen) { return; }
+			
+			var type = _args.data.type?_args.data.type:"swap";
 			
 			$this.find("#eph_exercice").val(_args.data.exercice);
+			$this.find("#eph_size").val(_args.data.font);
+			$this.find("#eph_space").val(_args.data.len);
+			$this.find("#eph_nbpages").val(_args.data.number);
+			$this.find("#eph_nbelts").val(_args.data.nbvalues);
+			$this.find("#eph_mode").val(type);
+			
+			helpers.tabs($this, settings.pageid);
+			
+			
+			$this.find("#e_pages textarea").val("");
+			var values =  _args.data.values;
+			if (type=="swap" && !$.isArray(_args.data.values[0][0])) { values = [_args.data.values]; }
+			
+			for (var i=0; i<values.length; i++) {
+				var content = [];
+				for (var l in values[i]) {
+					if ($.isArray(values[i][l])) { content.push(values[i][l].join('|')); }
+					else						 { content.push(values[i][l]); }
+				}
+				$this.find("#e_pages #e_page"+(i+1)).val(content.join('\n'));
+			}
+			
+		},
+		tabs: function($this, _id) {
+            var settings = helpers.settings($this);
+			
+			settings.pageid=_id;
+			$this.find("#e_pages textarea").hide();
+			$this.find("#e_pages #e_page"+(_id+1)).show();
+			
+			$this.find("#e_tabs>div").removeClass("s");
+			$this.find("#e_tabs #e_tab"+(_id+1)).addClass("s");
 		}
     };
 
@@ -95,6 +154,7 @@
                     interactive     : true,
 					$activity		: 0,				// The activity object
 					editpanel		: true,				// Editpanel
+					pageid			: 0,
 					data			: {},				// Exercice data
 					locale			: ""				// Locale object for relaunch
                 };
@@ -169,7 +229,9 @@
 						setTimeout(function() { settings.interactive = true; }, 500);
 					}
 				}
-			}
+			},
+			tab:function(_elt) { helpers.tabs($(this),parseInt($(_elt).html())-1); }
+			
         };
 
         if (methods[method])    { return methods[method].apply(this, Array.prototype.slice.call(arguments, 1)); } 
