@@ -155,7 +155,6 @@
 #boeditnode #settings       { height:16em; }
 #boeditnode #nodeimg        { font-size:8em; float:left; margin:0.05em; height:1.1em; }
 #boeditnode textarea        { float:right; margin-top:0.8em; padding:.2em; font-size:0.6em; width:17.5em; border:0; background-color:white; border-radius:.5em 0 0 .5em; height:7.5em;  }
-#boeditnode textarea.d      { color:gray; }
 #boeditnode #elabel         { height:3.5em; }
 #boeditnode #tibibi         { clear:both;}
 #boeditnode #tibibi select  { border:0; background-color:white; border-radius:00; float:left; font-size:1em; width:18em; }
@@ -774,13 +773,9 @@ var tibibo = {
                 if (_elt) {
                     // MODIFICATION
                     $("#nodeimg .icon img").attr("src",_elt.src);
-                    
-                    if (_elt.label)         { $("#boeditnode #elabel").val(_elt.label).removeClass("d"); }
-                    else                    { $("#boeditnode #elabel").val(tibibo.locale.default.elabel).addClass("d"); }
-                    if (_elt.comment)       { $("#boeditnode #ecomment").val(_elt.comment).removeClass("d"); }
-                    else                    { $("#boeditnode #ecomment").val(tibibo.locale.default.ecomment).addClass("d"); }
-                    if (_elt.description)   { $("#boeditnode #etibibi").val(_elt.description).removeClass("d"); }
-                    else                    { $("#boeditnode #etibibi").val(tibibo.locale.default.etibibi).addClass("d"); }
+                    $("#boeditnode #elabel").val(_elt.label);
+					$("#boeditnode #ecomment").val(_elt.comment);
+					$("#boeditnode #etibibi").val(_elt.description);
                     tibibo.node.edit.star = _elt.nbstar;
                     tibibo.node.edit.elt = _elt;
                     if (_elt.children.length) { $("#eedit #tibibi").hide(); }
@@ -788,9 +783,9 @@ var tibibo = {
                 else {
                     // CREATION
                     $("#nodeimg .icon img").attr("src","res/img/classification/root.svg");
-                    $("#boeditnode #elabel").val(tibibo.locale.default.elabel).addClass("d");
-                    $("#boeditnode #ecomment").val(tibibo.locale.default.ecomment).addClass("d");
-                    $("#boeditnode #etibibi").val(tibibo.locale.default.etibibi).addClass("d");
+                    $("#boeditnode #elabel").val("").attr("placeholder",tibibo.locale.default.elabel);
+                    $("#boeditnode #ecomment").val("").attr("placeholder",tibibo.locale.default.ecomment);
+                    $("#boeditnode #etibibi").val("").attr("placeholder",tibibo.locale.default.etibibi);
                     tibibo.node.edit.star = 0;
                     tibibo.node.edit.elt = 0;
                 }
@@ -804,7 +799,6 @@ var tibibo = {
                     user.getJSON("mods/tibibi/api/course.php",{value:$("#boeditnode #tibibi select").val()}, "",
                     function(_data) {
                         if (_data && _data.status=="success" && _data.description && _data.description.length>0) {
-                            tibibo.textarea($("#boeditnode #etibibi"));
                             var val = $("#boeditnode #etibibi").val();
                             if (val.length) { val+=','; }
                             val += _data.description;
@@ -821,22 +815,14 @@ var tibibo = {
                     $("#boeditnode .node .star img").attr("src", "res/img/default/icon/menu01st"+(tibibo.node.edit.star-1)+".svg");
                 }
                 
-                var ta = ["elabel","ecomment","etibibi"];
-                for (var t in ta) {
-                    if ($("#boeditnode #"+ta[t]).val().length==0) {
-                        $("#boeditnode #"+ta[t]).val(tibibo.locale.default[ta[t]]).addClass("d");
-                    }
-                }
-
                 $("#boeditnode .node").toggleClass("s", (tibibo.node.edit.star!=0));
                 $("#boeditnode .node").toggleClass("f", 
-                    ($("#boeditnode #tibibi textarea").hasClass("d") ||
-                     $("#boeditnode #tibibi textarea").val().length==0));
+                    ($("#boeditnode #tibibi textarea").val().length==0));
             },
-            update: function() {
-                var label = $("#boeditnode #elabel").hasClass("d")?"":tibibo.helpers.cleantext($("#boeditnode #elabel").val());
-                var comment = $("#boeditnode #ecomment").hasClass("d")?"":tibibo.helpers.cleantext($("#boeditnode #ecomment").val());
-                var desc = $("#boeditnode #etibibi").hasClass("d")?"":$("#boeditnode #etibibi").val();
+            valid: function() {
+                var label = tibibo.helpers.cleantext($("#boeditnode #elabel").val());
+                var comment = tibibo.helpers.cleantext($("#boeditnode #ecomment").val());
+                var desc = $("#boeditnode #etibibi").val();
                 
                 if (tibibo.node.edit.elt) {
                     tibibo.node.edit.elt.src            = $("#nodeimg .icon img").attr("src");
@@ -881,7 +867,7 @@ var tibibo = {
 			$("#bofooter #oactions .action").removeClass("s");
 			if (this.pdata.id==-1) {
 				$("#bofooter #mmove").toggleClass("s",!iss);
-				if (!iss) { $("#bofooter #mmove>div").html("^C"); }
+				if (!iss) { $("#bofooter #mmove>div").html("^X"); }
 			}
 			else {
 				var node = tibibo.book.data.nav.getnode(this.pdata.id);
@@ -898,7 +884,7 @@ var tibibo = {
 					tibibo.book.display();
 				}
 				
-				$("#bofooter #mmove>div").html("^C");
+				$("#bofooter #mmove>div").html("^X");
 				this.pdata.id = -1;
 			}
 		},
@@ -1097,8 +1083,7 @@ var tibibo = {
             }
             $("#bohome").show();
         }
-    },
-    textarea: function(_elt) { if ($(_elt).focus().hasClass("d")) { $(_elt).val("").removeClass("d"); } }
+    }
 };
 
 
@@ -1399,7 +1384,7 @@ $(window).ready(function() {
                     ontouchstart="$(this).toggleClass('s').siblings().removeClass('s');event.preventDefault();" >
                     <img src="mods/tibibo/res/img/right.svg"/></div>
                 <div id="mmove" class="icon action" onmousedown="tibibo.book.paste();"
-                    ontouchstart="tibibo.book.paste();event.preventDefault();" ><div>^C</div></div>
+                    ontouchstart="tibibo.book.paste();event.preventDefault();" ><div>^X</div></div>
 					
                     <!--
                 <div id="mexport" class="icon action"
@@ -1441,12 +1426,8 @@ $(window).ready(function() {
                     <div class="star"><img src="res/img/default/icon/menu01st0.svg"/></div>
             </div>
             <textarea id="elabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
-                    onclick="tibibo.textarea(this);" 
-                    ontouchstart="tibibo.textarea(this);event.preventDefault();"
                     onfocusout="tibibo.node.edit.refresh(false);"></textarea>
             <textarea id="ecomment" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
-                    onclick="tibibo.textarea(this);" 
-                    ontouchstart="tibibo.textarea(this);event.preventDefault();"
                     onfocusout="tibibo.node.edit.refresh(false);"></textarea>
             <div id="tibibi">
                 <select></select>
@@ -1454,8 +1435,6 @@ $(window).ready(function() {
                                   ontouchstart="tibibo.node.edit.tibibi();event.preventDefault();">
                     <img src="res/img/default/white/import.svg"/></div>
                 <textarea id="etibibi" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
-                    onclick="tibibo.textarea(this);" 
-                    ontouchstart="tibibo.textarea(this);event.preventDefault();"
                     onfocusout="tibibo.node.edit.refresh(false);"
                     onkeyup="tibibo.node.edit.refresh(false);"></textarea>
             </div>
@@ -1465,8 +1444,8 @@ $(window).ready(function() {
                                           ontouchstart="tibibo.node.edit.close();event.preventDefault();">
                 <img src="res/img/default/white/cancel02.svg"/>
             </div>
-            <div class="icon" id="evalid" onclick="tibibo.node.edit.update();" 
-                                         ontouchstart="tibibo.node.edit.update();event.preventDefault();">
+            <div class="icon" id="evalid" onclick="tibibo.node.edit.valid();" 
+                                         ontouchstart="tibibo.node.edit.valid();event.preventDefault();">
                 <img src="res/img/default/white/valid02.svg"/>
             </div>
         </div>

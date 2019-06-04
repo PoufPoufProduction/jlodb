@@ -14,9 +14,16 @@ if (!$error) {
 				$description = str_replace("'", "\'", $description);
 			}
 			
-			$ret = mysqli_query($link, "INSERT INTO `".$_SESSION['prefix']."editor` (`Editor_Email`,`Editor_Activity`, `Editor_Description`, `Editor_Parameters`, `Editor_State`, `Editor_Date`) VALUES ('".
+			$query = mysqli_query($link, "INSERT INTO `".$_SESSION['prefix']."editor` (`Editor_Email`,`Editor_Activity`, `Editor_Description`, `Editor_Parameters`, `Editor_State`, `Editor_Date`) VALUES ('".
                 $email."','".$activity."','".$description."','".$data."',0, NOW() )");			
 		}
+	}
+	else {
+		$sql = "SELECT COUNT(`Editor_Id`) FROM `".$_SESSION['prefix']."editor`";  
+		$ret 	= mysqli_query($link, $sql);
+		$count 	= 0;
+		if ($ret) { $count = mysqli_fetch_array($ret); }
+		
 	}
 	$status="success";
 }
@@ -27,7 +34,8 @@ if (isset($status))                     { echo '  "status" : "'.$status.'",'; }
 if (isset($textstatus))                 { echo '  "textStatus" : "'.$textstatus.'",'; }
 if (isset($error) && $error)            { echo '  "error" : '.$error; }
 if (isset($email))                      { echo '  "email": "'.$email.'",'; }
-if (isset($ret))                      	{ echo '  "query": "'.$ret.'",'; }
+if (isset($query))                      { echo '  "query": "'.$query.'",'; }
+if (isset($count))                      { echo '  "count": "'.($count?$count[0]:0).'",'; }
 echo '  "from" : "jlodb/api" }';
 
 ?>

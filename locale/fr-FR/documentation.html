@@ -38,7 +38,7 @@
 <ul>
 <li><b>[admin]</b> est la section permettant de définir les identifiants de l'administrateur du serveur.</li>
 <li><b>username</b> est le nom de l'administrateur.</li>
-<li><b>password</b> est le mot de passe de l'administrateur haché avec le protocol <b>MD5</b>. Parmi les nombreuses solutions permettant ce genre de cryptage, des sites web comme <a href="https://www.cryptage-md5.com/"><u>https://www.cryptage-md5.com/</u></a> sont tout à fait satisfaisants. Par défaut, le mot de passe est identique au login par défaut, à savoir <i>admin</i>. </li>
+<li><b>password</b> est le mot de passe de l'administrateur haché avec le protocole <b>MD5</b>. Parmi les nombreuses solutions permettant ce genre de cryptage, des sites web comme <a href="https://www.cryptage-md5.com/"><u>https://www.cryptage-md5.com/</u></a> sont tout à fait satisfaisants. Par défaut, le mot de passe est identique au login par défaut, à savoir <i>admin</i>. </li>
 <li><b>email</b> permet de préciser l'e-mail de l'administrateur, mais, pour l'instant, ce paramètre n'est pas utilisé.</li>
 <br/>
 <li><b>[db]</b> est la section qui va détailler les paramètres de connexion à la base de données.</li>
@@ -54,22 +54,22 @@
 </ul>
 
 <br/><h3>Installation</h3>
-<p>Une fois le fichier de configuration mis à jour, l'installation se fait depuis la page principale du projet jLoDb. L'icône en forme de clé anglaise en haut à droite de l'écran permet d'accéder à la section d'administration du site. L'idendification se fait en fournissant les informations telles qu'elles sont définies dans le fichier de configuration. Le haut de page devient plus sombre une fois connecté en tant qu'administrateur. Il suffit alors d'utiliser le bouton d'installation pour créer la base de données d'exercices numériques. Lors de cette installation, une langue est demandée, car si toutes les données statiques sont multi-langues, les instances de serveur, elles, sont localisées.</p>
+<p>Une fois le fichier de configuration mis à jour, l'installation se fait depuis la page principale du projet jLoDb. L'icône en forme de clé anglaise en haut à droite de l'écran permet d'accéder à la section d'administration du site. L'identification se fait en fournissant les informations telles qu'elles sont définies dans le fichier de configuration. Le haut de page devient plus sombre une fois connecté en tant qu'administrateur. Il suffit alors d'utiliser le bouton d'installation pour créer la base de données d'exercices numériques. Lors de cette installation, une langue est demandée, car si toutes les données statiques sont multi-langues, les instances de serveur, elles, sont localisées.</p>
 
 <br/><h2>Présentation technique</h2>
 <br/><h3>Architecture du projet</h3>
 <h4>Au commencement, des données statiques</h4>
-<p>Tous les exercices du projet <b>jLoDb</b> sont définis dans le repértoire <b>data/</b> dans des fichiers au format <b>RDF</b>. Ces définitions statiques sont multi-langues et seront utilisées par le serveur lors de l'installation pour valoriser la base de données. Une fois l'installation faite, ces fichiers n'ont plus réellement d'utilité.</p>
+<p>Tous les exercices du projet <b>jLoDb</b> sont définis dans le répertoire <b>data/</b> dans des fichiers au format <b>RDF</b>. Ces définitions statiques sont multi-langues et seront utilisées par le serveur lors de l'installation pour valoriser la base de données. Une fois l'installation faite, ces fichiers n'ont plus réellement d'utilité.</p>
 <h4>Un serveur web sous PHP</h4>
-<p>Le serveur <b>jLoDb</b> fonctionne grâce à un ensemble d'API disponibles dans le répertoire <b>api/</b>. Ces API qui sont implémentées en <b>PHP</b> fournissent différents services permettant d'intéragir avec la base de données et envoient en retour des données au format <b>JSON</b> exclusivement.</p>
+<p>Le serveur <b>jLoDb</b> fonctionne grâce à un ensemble d'API disponibles dans le répertoire <b>api/</b>. Ces API qui sont implémentées en <b>PHP</b> fournissent différents services permettant d'interagir avec la base de données et envoient en retour des données au format <b>JSON</b> exclusivement.</p>
 <h4>Une partie cliente HTML et javascript</h4>
-<p>Les activités référencées dans la base <b>jLoDb</b> fonctionnent côté client grâce aux technologies web et sont donc accessibles depuis n'importe quelle navigateur. Les données HTML, CSS et javascript de chaque activité sont placées dans le repertoire <b>activity/</b> du projet.</p>
+<p>Les activités référencées dans la base <b>jLoDb</b> fonctionnent côté client grâce aux technologies web et sont donc accessibles depuis n'importe quelle navigateur. Les données HTML, CSS et javascript de chaque activité sont placées dans le répertoire <b>activity/</b> du projet.</p>
 <h4>Des ressources graphiques au format SVG</h4>
 <p>L'ensemble des ressources graphiques se situe dans le répertoire <b>res/img/</b> et toutes ces images sont définies dans un format vectoriel appelé <b>SVG</b>. L'utilisation de ce format permet une indépendance totale vis-à-vis de la résolution finale et <b>jLoDb</b> fonctionne aussi bien sur un grand écran que sur une petite surface de smartphone. Seul un format <b>4/3 paysage</b> est imposé. L'utilisation du format <b>SVG</b> offre, du fait de son format descriptif, l'avantage d'être plus facilement utilisable et modifiable par tous mais en plus, il s'intègre parfaitement dans un environnement web où son <b>DOM</b> est accessible et modifiable dynamiquement.</p>
 
 <br/><h3>Les activités</h3>
 <p>Les activités sont les programmes qui vont exécuter les différents exercices. Chaque activité a ses propres spécificités et toutes proposent des systèmes de jeu très différents. Certaines sont très spécifiques comme <b>abacus</b> qui simule l'utilisation d'un boulier. D'autres sont tout à fait génériques comme <b>sorting</b> qui propose de trier des éléments. Une description précise de ces activités est disponible depuis le menu <b>Navigation/Activités</b>.</p>
-<p>Techniquement, les activités sont des programmes javascript qui sont généralement chargées dynamiquement lors de leur première exécution. Ces activités sont autonomes aussi ce sont elles qui s'occupent de récupérer les éléments nécessaires à leur exécution comme le template html et la feuille de style associée. Toutes les activités sont normalisées, c'est-à-dire qu'elles se lancent de la même façon et qu'elles se terminent aussi de la même façon en fournissant au système appelant une <b>note comprise entre 0 et 5</b>. Ainsi, la page <a href="demo.html"><u>demo.html</u></a> peut proposer aléatoirement n'importe quelle activité de la base, tout comme le bouton <b>Au hasard</b> ci-contre.</p>
+<p>Techniquement, les activités sont des programmes javascript qui sont généralement chargées dynamiquement lors de leur première exécution. Ces activités sont autonomes aussi ce sont elles qui s'occupent de récupérer les éléments nécessaires à leur exécution comme le gabarit html et la feuille de style associée. Toutes les activités sont normalisées, c'est-à-dire qu'elles se lancent de la même façon et qu'elles se terminent aussi de la même façon en fournissant au système appelant une <b>note comprise entre 0 et 5</b>. Ainsi, la page <a href="demo.html"><u>demo.html</u></a> peut proposer aléatoirement n'importe quelle activité de la base, tout comme le bouton <b>Au hasard</b> ci-contre.</p>
 
 <br/><h3>Les exercices (ou niveaux)</h3>
 <p>Une activité est un programme qui propose un système de jeu spécifique. Un exercice est une utilisation particulière de ce système de jeu, qui repose sur des paramètres uniques. Leur nombre augmentant rapidement, il est important que les exercices de la base soient parfaitement référencés afin de pouvoir naviguer facilement et d'être capable de retrouver l'exercice de son choix. Pour ce faire, chaque exercice est défini dans un des fichiers <b>RDF</b> du répertoire <b>data/</b>. L'espace de nommage utilisé est <b>Dublin:core</b> et chaque paramètres est représenté par un <b>TAG</b> spécifique pouvant être localisé.</p>
@@ -81,7 +81,7 @@
 <li>Un <b>niveau scolaire</b> spécifique allant de 1 à 5 et représentant respectivement la maternelle, l'école primaire puis secondaire, le lycée et le niveau post-bac.</li>
 <li>La <b>difficulté</b> est peut-être le paramètre le plus difficile à définir. De 1 à 5, sa valeur est souvent subjective et dépend d'autres facteurs comme le niveau scolaire ou la difficulté des niveaux voisins.</li>
 <li>Un <b>temps d'exécution</b> moyen qui permet d'estimer la durée de résolution de l'exercice.</li>
-<li>Un système de <b>Tags</b> permet de créer des reférences comme <b>#CE1</b> pour préciser un niveau scolaire, ou <b>#PPVC</b> pour spécifier une thématique.</li>
+<li>Un système de <b>Tags</b> permet de créer des références comme <b>#CE1</b> pour préciser un niveau scolaire, ou <b>#PPVC</b> pour spécifier une thématique.</li>
 <li>Un système de <b>Référence</b> pour regrouper certains exercices appartenant à une même problématique.</li>
 <li>Une <b>alternative</b> qui permet de regrouper les exercices d'une même famille et de simplifier ainsi l'affichage au sein du navigateur.</li>
 <li>Une liste des <b>ressources</b> graphiques utilisées qui va permettre d'exporter ces exercices.
@@ -91,11 +91,11 @@
 <br/><h3>Le navigateur</h3>
 <p>Le navigateur permet à l'utilisateur de retrouver facilement un exercice dans une base en constante expansion. Comme tout navigateur, il est possible de proposer un ensemble de critères de recherche qui vont permettre d'affiner la recherche. Ces paramètres sont les suivants :</p>
 <ul>
-<li>La <b>classification</b> permet de préciser le domaine académique de l'exercice recherché : grammaire française, numération, etc. <i>Cliquer sur la bande supérieure grise</i> permet de faire apparaître ou disparaître le suffixe '+' qui notifie d'une recherche récursive. Ainsi, <b>Numération+</b> propose une recherche dans tous les domaines sous-jacents à la numération, dont les nombres négatifs. Ces mêmes nombres négatifs seront, par contre, exclus d'une recherche conditionnée par <b>Numération</b> (sans le '+'). Petite astuce : <i>cliquer sur la bande inférieure grise</i> permet de changer l'affichage de cette fenêtre de classification.</li>
+<li>La <b>classification</b> permet de préciser le domaine académique de l'exercice recherché : grammaire française, numération, etc. <i>Cliquer sur la bande supérieure grise</i> permet de faire apparaître ou disparaître le suffixe '+' qui notifie d'une recherche récursive. Ainsi, <b>Numération+</b> propose une recherche dans tous les domaines sous-jacents à la numération, dont les nombres négatifs. Ces mêmes nombres négatifs seront, cependant, exclus d'une recherche conditionnée par <b>Numération</b> (sans le '+'). Petite astuce : <i>cliquer sur la bande inférieure grise</i> permet de changer l'affichage de cette fenêtre de classification.</li>
 <li>L'<b>activité</b> permet de filtrer la ou les activités recherchées. Si aucune activité n'est sélectionnée, toutes le sont.</li>
 <li>Le <b>niveau scolaire</b> propose de spécifier un encadrement avec une valeur minimale et une valeur maximale. Il est donc tout à fait possible d'exclure de sa recherche des exercices destinées à un niveau de type maternelle, ou au contraire, de restreindre à un seul public de lycéen(ne)s.</li>
 <li>Le <b>temps moyen</b> de résolution et la <b>difficulté</b> de l'exercice sont deux autres paramètres fonctionnant sur le même principe. A noter qu'il est possible de réinitialiser chacun de ces paramètres en cliquant sur son libellé.</li>
-<li>L'<b>identifiant</b> permet de préciser direcement le nom unique de l'exercice souhaité.</li>
+<li>L'<b>identifiant</b> permet de préciser directement le nom unique de l'exercice souhaité.</li>
 <li>La <b>référence</b> et le <b>Tag</b> permettent de filtrer la recherche selon des critères thématiques ou techniques.</li>
 <li>Le bouton <b>ALT</b> permet, lorsqu'il est actif, de regrouper les exercices par alternatives. Dans ce cas, seul l'exercice de base est affiché permettant ainsi une meilleure lisibilité des retours de recherche. A noter que lorsqu'un identifiant est fourni, cette option est sans effet.<li>
 <li>Dessous, la valeur par défaut <b>25</b> est le nombre de résultats fournis. En cliquant sur ce nombre, il est possible d'en changer la valeur.</li>
@@ -103,7 +103,7 @@
 </ul>
 <br/>
 <p>La partie inférieure de la fenêtre présente les candidats correspondant aux critères de recherche. Chaque exercice correspond à une ligne commençant par une capture d'écran quand celle-ci est disponible. Sur cette capture d'écran, se superposent l'<b>identifiant</b> de l'exercice ainsi que le nombre d'<b>exercices semblables</b>. En cliquant sur cette image, l'identifiant passe dans les critères de recherche et permet d'obtenir la liste de ces exercices voisins après validation de la recherche. Inversement, les exercices semblables affichent l'identifiant de l'exercice de base dans leur description entre crochets.</p>
-<p>Pour chaque exercice de la liste de résultats, des actions sont proposées en fin de ligne. Ces actions dépendent du contexte et peuvent varier d'un navigateur à l'autre. Pour celui du site principale, les actions proposées sont les suivantes :</p>
+<p>Pour chaque exercice de la liste de résultats, des actions sont proposées en fin de ligne. Ces actions dépendent du contexte et peuvent varier d'un navigateur à l'autre. Pour celui du site principal, les actions proposées sont les suivantes :</p>
 <div class="icon"><img src="res/img/default/white/run.svg" alt=""/></div>
 <p><b>Lancer</b> l'exercice dans la fenêtre courante.</p><div class="clear"></div>
 
@@ -179,6 +179,47 @@
 
 <br/>
 <h4>Tibibo</h4>
-<p>A venir.</p>
+<p><b>Tibibo</b> est un autre service issu de <b>jLoDb</b> qui permet d'utiliser et de créer des cahiers d'exercices. De fait, il propose deux modes de fonctionnement différents : le premier permet à un utilisateur de pratiquer un cahier d'exercices déjà créé par soi-même ou par un autre tandis que le second permet à un rédacteur de construire ses propres cahiers d'exercices.</p>
+<br/>
+<p>Le mode "<i>utilisateur</i>" s'ouvre sur une page d'accueil demandant le nom du cahier à ouvrir. Ce nom est fourni par le créateur du cahier souhaité. Une fois validé, l'utilisateur est dirigé sur la page correspondant à ce cahier dont l'URL finit par <b>?id=XXXX</b> ou <b>XXXX</b> est le nom du cahier. Le lien de ce cahier est, de fait, partageable à loisir.</p>
+<p>Chaque icône de la zone centrale permet d'ouvrir une section qui contiendra d'autres sous-sections ou, pour une section finale, une série d'exercices. La zone supérieure permet de se déplacer dans l'arborescence du cahier et de revenir ainsi vers la section principale.</p>
+<p>La valeur en bas à droite témoigne de la <b>progression de l'utilisateur</b> au sein de ce cahier. Cliquer sur ce <b>pourcentage</b> permet d'ouvrir la fenêtre des <b>récompenses</b>.</p>
+<p>L'icône à côté permet de lancer un exercice <b>aléatoirement</b> parmi l'ensemble des séries d'exercices entamées. Ce bouton permet d'enchaîner des exercices issus de section différentes.</p>
+<p>Le mode "<i>utilisateur</i>" peut se pratiquer en étant identifier ou non. Non-identifié, l'utilisateur a accès à tous les exercices du cahier mais sa progression, c'est-à-dire, l'ensemble des exercices qu'il aura résolues, ne sera pas sauvée d'une fois sur l'autre. Au contraire, l'utilisateur identifié verra sa progression (et le pourcentage correspondant) sauvegardée avec son profil. En contre-partie, celui-ci devra résoudre les niveaux séquentiellement : chaque niveau résolu dévérouillera le niveau suivant.</p>
+<p>A noter également qu'un utilisateur identifié peut accéder depuis la page d'accueil à tous les cahiers d'exercices qu'il a déjà pratiqués et dont la liste lui est fournie.</p>
+<p>L'identification se fait en cliquant sur la fenêtre en haut à droite pour ouvrir la fenêtre de connexion. Le fonctionnement est identique à celui de <b>Tibibi</b> et les comptes sont communs au deux modules : un profil <b>Tibibi</b> est reconnu sur <b>Tibibo</b> et inversement.<p>
+<br/>
+<div class="icon"><img src="res/img/default/white/edit.svg" alt=""/></div>
+<p>Le mode "<i>rédacteur</i>" ne peut se faire qu'en mode identifié. Pour distinguer un simple utilisateur identifié d'un rédacteur, un deuxième mot de passe est demandé après avoir cliqué sur le <b>petit crayon</b> situé près de la photo d'avatar en haut à droite. Ce mot de passe est fourni par l'administrateur du site tel qu'il l'a défini dans le fichier de configuration. Par défaut, ce mot de passe est "<i>dadada</i>".</p>
+<p>Reconnu en tant que tel, le rédacteur dispose désormais sur sa page d'accueil de l'ensemble des cahiers d'exercices qu'il a lui-même rédigés. Par opposition au mode "<i>utilisateur</i>" qui propose la liste des cahiers pratiqués.</p>
+<p>Le rédacteur peut créer un nouveau cahier en entrant dans la zone de texte de la page d'accueil, la description de ce nouveau cahier. Le nom du cahier, c'est-à-dire, son identifiant sera automatiquement construit par le serveur.</p>
+<p>Une fois le cahier ouvert en mode "<i>rédacteur</i>", des boutons supplémentaires apparaissent dans la partie inférieure de la fenêtre.</p>
+
+<div class="icon"><img src="res/img/default/white/newcourse.svg" alt=""/></div>
+<p>Ce bouton permet de créer <b>un nouveau chapitre</b>. Une fenêtre de <i>création/modification</i> s'ouvre alors et permet de définir ce nouveau chapitre et ses différents paramètres (voir plus bas).</p>
+
+<div class="icon"><img src="res/img/default/white/delete.svg" alt=""/></div>
+<p>Cette option permet de supprimer un chapitre sans sous-chapitre. Un premier clic sur ce bouton active la fonctionnalité et entoure l'icone en rouge. Un deuxième clic sur un chapitre le supprime définitivement. En cas de changement d'avis, cliquer sur l'icone activé permet de désactiver cette suppression.</p>
+
+<div class="icon"><img src="res/img/default/white/edit.svg" alt=""/></div>
+<p>Ce bouton fonctionne comme celui de suppression. La différence réside dans le fait qu'au lieu de supprimer le chapitre, cette fonctionnalité ouvre la fenêtre <i>création/modification</i> qui va permettre de modifier les paramètres du chapitre (voir plus bas).</p>
+
+<div class="icon"><img src="res/img/default/white/left.svg" alt=""/></div><div class="icon"><img src="res/img/default/white/right.svg" alt=""/></div>
+<p>Un premier clic sur l'un de ces boutons permet de changer la position d'un chapitre dans la page courante. Contrairement aux précédentes fonctionnalités, ces 2 boutons restent actifs après un déplacement.</p>
+
+<div class="icon"><div style="color:white;font-size:0.7em">^X</div></div>
+<p>Cette dernière fonctionnalité permet de <b>couper</b> un chapitre pour pouvoir le déplacer ailleurs.</p>
+
+<p>Au passage, on peut remarquer que, contrairement au mode "<i>utilisateur</i>", l'identifiant de chaque chapitre est affichée dans la description de celui-ci.</p>
+
+<br/>
+<p>La fenêtre de <i>création/modification</i> permet de définir ou de modifier un chapitre. Les chapitres des cahiers d'exercices <b>Tibibo</b> peuvent être de nature différente : certains servent à structurer le cahier et encapsulent d'autres sous-chapitres, tandis que d'autres sont des chapitres finaux et proposent une série d'exercices issus de la base <b>jLoDb</b>.</p>
+<p>Un chapitre <b>Tibibo</b> se compose d'un certain nombre de paramètres.</p>
+<p>Un <b>icone</b> choisi parmi la liste proposée dans la fenêtre de droite.</p>
+<p>Des <b>étoiles</b> facultatives qui peuvent s'obtenir en cliquant sur l'icone choisi en haut à gauche.</p>
+<p>Un <b>titre</b> qui s'affichera sous l'icône.</p>
+<p>Une courte <b>description</b> facultative qui, pour l'heure, est affichée en bas à droite de l'écran lorsque l'utilisateur entre dans le chapitre.</p>
+<div class="icon"><img src="res/img/default/white/import.svg" alt=""/></div>
+<p>Une <b>liste d'exercices</b> dans le cas d'un chapitre finale. Cette série d'exercices est construite sous la forme d'une liste d'identifiants séparés par une virgule et peut être importée directement depuis <b>Tibibi</b>. Dans le cas d'une modification d'un chapitre ayant déjà des sous-chapitres, cette dernière zone disparaît.</p>
 
 </div>

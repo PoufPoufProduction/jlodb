@@ -23,7 +23,9 @@ var user = {
         if (user.onrequest) { user.onrequest(); }
         if (_post) {
 			$.post(url, _post, function(_data) {
-				try { _data = jQuery.parseJSON(_data); } catch (e) { alert("[JSON ERROR] "+e.message); return; }
+				try {
+					if (typeof(_data)=="string") { _data = jQuery.parseJSON(_data); }
+					} catch (e) { alert("[JSON ERROR] "+e.message); return; }
 				if (user.onreply) { user.onreply(); } if(_data.error==102){location.reload();} else { _cbk(_data); } }, "json");
 		}
         else       { $.getJSON(url, function(_data)     { if (user.onreply) { user.onreply(); } if(_data.error==102){ alert("user error (url: "+url+") :"+_data.error); } else { _cbk(_data); } }); }

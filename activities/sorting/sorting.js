@@ -269,6 +269,7 @@
                 },
                 hoverClass: "switch"
             });
+			$this.find("#mask").hide();
             settings.interactive = true;
         }
     };
@@ -331,6 +332,7 @@
 
                     $this.find("#submit").addClass(vGood?"good":"wrong");
                     settings.interactive = false;
+					$this.find("#mask").show();
 					
                     if (++settings.it >= settings.number) {
                         settings.score = Math.floor(5-settings.errratio*settings.wrong);
@@ -352,6 +354,7 @@
                 var $this = $(this) , settings = helpers.settings($this);
                 if (settings.timer.id) { clearTimeout(settings.timer.id); settings.timer.id=0; }
                 settings.interactive = false;
+				$this.find("#mask").show();
                 settings.context.onquit($this,{'status':'abort'});
             }
         };

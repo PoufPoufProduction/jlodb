@@ -190,10 +190,11 @@
             var nbpgroup              = 0;
             var pgroup                = $.isArray(settings.pieces)?settings.pieces[settings.puzzleid]:settings.pieces;
             
-            // AUTOMATIC GENERATION
+            // AUTOMATIC GENERATION : WHY NOT EXTEND ? DO NOT REMEMBER WELL...
             if (settings.gen) {
                 var gen = eval('('+settings.gen+')')($this,settings,settings.puzzleid);
                 if (gen.values) { settings.values = gen.values; }
+				if (gen.number) { settings.number = gen.number; }
                 if (gen.id)     { settings.id = gen.id; }
                 if (gen.txt)    { settings.txt = gen.txt; }
                 if (gen.ttxt)   { settings.ttxt = gen.ttxt; }
@@ -204,6 +205,7 @@
                 if (gen.transform)    { settings.transform = gen.transform; }
                 if (gen.same)    { settings.same = gen.same; }
                 if (gen.init)	{ settings.init = $.extend(true,{},settings.init,gen.init);}
+				if (gen.magnetic) { settings.magnetic = gen.magnetic; }
             }
 			
             
@@ -534,6 +536,13 @@
                                     [ settings.elts[i].current.translate[0] +settings.radius*1.2*Math.cos(a) ,
                                       settings.elts[i].current.translate[1] +settings.radius*1.2*Math.sin(a) ],
                                       settings.elts[i].current.rotate);
+									  
+								if (settings.zhandling) {
+									var other = settings.elts[i];
+									if (other) {
+										other.$elt.detach().insertBefore(elt.$elt);
+									}
+								}
                             }
                         }
                     }

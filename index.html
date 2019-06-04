@@ -125,6 +125,12 @@
 		
         #jlodb #jladmin #lockjlodb      { background-color:#555; font-size:1em; float:left; color:#EEE; width:4%; height:1.2em; text-align:center; cursor:pointer;  }
         #jlodb #jladmin #lockjlodb>div   { width:1em;height:1em;margin:0.1em 0; }
+
+		
+		#jlodb #jladmin #adco			{ margin-top:.5em; color:#EEE;}
+		#jlodb #jladmin #adco>div		{ float:left; cursor:pointer; }
+		#jlodb #jladmin #adco .label 	{ background-color:#444; padding-right:.25em; text-align:right; margin-left:0; width:5.5em; }
+		#jlodb #jladmin #adco .value	{ float:left; width:2.2em; padding-left:.25em; background-color:#888; }
 		
 		#jlodb .padmin					{ font-size:0.5em; }
 		#jlodb .padmin .preinstall		{ background-color:#555; font-size:1em; float:left; color:#EEE; width:35%; height:1.2em; text-align:center; cursor:pointer; border:0;  }
@@ -352,6 +358,11 @@ jlodb = {
                     $("#jlcontent>div").hide();
                     $("#jlcontenta").load("locale/"+lang+"/admin.html"+"?debug="+Math.floor(Math.random()*99999),function() {
                         $("#lockjlodb img").attr("src","res/img/icon/"+(jlodb.checkdb.lock?"lock":"unlock")+".svg");
+						
+						$.getJSON("api/editor.php", function(_editor) { $("#adnbedits").html(_editor.count); });
+						$.getJSON("api/report.php", function(_report) { $("#adnbreports").html(_report.count); });
+						
+						
                     }).show(); });
             },
             lock: function() {

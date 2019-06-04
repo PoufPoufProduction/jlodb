@@ -24,8 +24,15 @@ if (!$error) {
 			$sql="INSERT INTO `".$_SESSION['prefix']."report` (`Report_Exercice`,`Report_Description`, `Report_State`, `Report_Title`, `Report_Level`, `Report_Difficulty`, `Report_Classification`, `Report_Duration`, `Report_Date`) VALUES ('".
                 $id."','".$comment."',0,'".$label."',".$level.",".$diff.",'".$classification."',".$extend.", NOW() )";
 			
-			$ret = mysqli_query($link,$sql );
+			$query = mysqli_query($link,$sql );
 		}
+	}
+	else {
+		$sql = "SELECT COUNT(`Report_Id`) FROM `".$_SESSION['prefix']."report`";  
+		$ret 	= mysqli_query($link, $sql);
+		$count 	= 0;
+		if ($ret) { $count = mysqli_fetch_array($ret); }
+		
 	}
 	$status="success";
 }
@@ -36,7 +43,8 @@ if (isset($status))                     { echo '  "status" : "'.$status.'",'; }
 if (isset($textstatus))                 { echo '  "textStatus" : "'.$textstatus.'",'; }
 if (isset($error) && $error)            { echo '  "error" : '.$error; }
 if (isset($email))                      { echo '  "email": "'.$email.'",'; }
-if (isset($ret))                      	{ echo '  "query": "'.$ret.'",'; }
+if (isset($query))                      { echo '  "query": "'.$query.'",'; }
+if (isset($count))                      { echo '  "count": "'.($count?$count[0]:0).'",'; }
 echo '  "from" : "jlodb/api" }';
 
 ?>
