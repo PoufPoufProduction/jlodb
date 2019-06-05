@@ -57,7 +57,11 @@ $(window).ready(function() {
 				var d = data.exercices[0];
 				name = d.activity;
 				$.getScript('editors/'+name+'/'+name+'.js',
-					function() {$("#screen")[name+"_editor"]({args:d,validation:onsubmit}); });
+					function() {
+						var arguments = {args:d,validation:onsubmit};
+						if (args.gg) { arguments.gg = true; }
+						$("#screen")[name+"_editor"](arguments);
+					});
 			}
         });
 	
@@ -84,8 +88,8 @@ $(window).ready(function() {
 
 	<div id="editor_panel"><div>
 		<input id="editor_email" type="text" placeholder="email"/>
-		<textarea id="editor_description" placeholder="description"></textarea>
-		<textarea id="editor_data" id="editor_data"></textarea>
+		<textarea id="editor_description" placeholder="description" autocomplete='off' autocorrect='off' autocapitalize='off' spellcheck='false'></textarea>
+		<textarea id="editor_data" id="editor_data" autocomplete='off' autocorrect='off' autocapitalize='off' spellcheck='false' disabled="disabled"></textarea>
 		<div class="icon" style="margin:.1em;float:right;" onclick="send();">
 			<img src="res/img/default/icon/valid01.svg" alt="x"/>
 		</div>

@@ -3,6 +3,7 @@
 		name: "puzzle",
 		args: {},				// activity arguments
 		validation: false,
+		gg: false,				// gg part only
 		debug: true
 	};
    
@@ -30,7 +31,12 @@
 		launch: function($this, _args) {
             var settings = helpers.settings($this);
 			settings.locale = _args.locale;
-			$this.find("#e_export").val(JSON.stringify(_args.data));
+			settings.data = _args.data;
+			
+			if (settings.gg && settings.data.gg) {
+				$this.find("#e_export").val(JSON.stringify(settings.data.gg));
+			}
+			else { $this.find("#e_export").val(JSON.stringify(settings.data)); }
 			settings.$activity.html("");
 			settings.$activity.jlodb({
 				onedit:		function($activity, _data) 		{ },
@@ -51,7 +57,8 @@
                 var settings = {
                     interactive     : true,
 					$activity		: 0,				// The activity object
-					locale			: ""				// Locale object for relaunch
+					locale			: "",				// Locale object for relaunch
+					data			: {}
                 };
 
                 return this.each(function() {
@@ -74,7 +81,12 @@
 					setTimeout(function() { settings.interactive = true; }, 800);
 					
 					try {
-						var args = jQuery.parseJSON($this.find("#e_export").val());
+						var args;
+						if (settings.gg && settings.data.gg) {
+							args = $.extend(true,{},settings.data);
+							args.gg = jQuery.parseJSON($this.find("#e_export").val());
+						}
+						else { args = jQuery.parseJSON($this.find("#e_export").val()); }
 						args.edit = true;
 						args.context = { onquit:function() { }, onload:function($t) { $t.addClass("nosplash"); } };
 						args.locale = settings.locale;
@@ -93,7 +105,21 @@
 					setTimeout(function() { $(_elt).removeClass("touch"); }, 50);
 					setTimeout(function() { settings.interactive = true; }, 800);
 					
-					if (settings.validation) { settings.validation($this.find("#e_export").val()); }
+					if (settings.validation) {
+						try {
+							
+							var args;
+							if (settings.gg && settings.data.gg) {
+								args = $.extend(true,{},settings.data);
+								args.gg = jQuery.parseJSON($this.find("#e_export").val());
+								args = JSON.stringify(args);
+							}
+							else { args = $this.find("#e_export").val(); }
+							
+							settings.validation(args);
+						}
+						catch (e) { alert(e.message); return; }
+					}
 				}
 			}
         };
