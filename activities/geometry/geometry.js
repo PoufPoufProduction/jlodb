@@ -21,14 +21,13 @@
         translate   : [0,0],                    // The translation values
         timerend    : 2000,                     // Timer before display the score panel
         style       : false,                    // The style changing is disable
-        withcancel  : false,                    // Show cancel2 button (for "large" class usage)
+        withcancel  : false,                    // Show cancel2 button (for "full" class usage)
         withzoom    : false,                    // Show id zoom for small dots
         withlimit	: false,					// Limit on segment
         active      : false,                      // Activate all data by default
         background  : "",                       // Add a background
         width		: 640,						// Default with
 		locked		: false,					// The menu is locked
-		dev			: false,					// dev mode
         debug       : true                      // Debug mode
     };
 
@@ -123,16 +122,14 @@
                     settings.controls.action = settings.selected;
                     settings.controls.mask = settings.mask[settings.controls.action][0];
                 }
-				
-				if (settings.dev) { $this.find("#devmode").show(); }
 
                 // MANAGE THE OBJECTIVES
-                if (settings.statement) {
-                    if ($.isArray(settings.statement)) {
-                        var html=""; for (var i in settings.statement) { html+="<div>"+helpers.format(settings.statement[i])+"</div>"; }
+                if (settings.exercice) {
+                    if ($.isArray(settings.exercice)) {
+                        var html=""; for (var i in settings.exercice) { html+="<div>"+helpers.format(settings.exercice[i])+"</div>"; }
                         $this.find("#statement").html(html);
                     }
-                    else { $this.find("#statement").html(helpers.format(settings.statement)); }
+                    else { $this.find("#statement").html(helpers.format(settings.exercice)); }
                 }
                 for (var i in settings.labels) {
                     $this.find("#objectives").append("<tr><td><div class='icon' style='cursor:default;'>"+
@@ -150,7 +147,9 @@
                 }
 
                 // LOCALE HANDLING
-                if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(helpers.format(value)); }); }
+                if (settings.locale) { $.each(settings.locale, function(id,value) {
+					if (typeof(value)=="string") { $this.find("#"+id).html(helpers.format(value)); }
+				}); }
 
                 // LOAD SVG
                 var debug = "";
@@ -310,6 +309,8 @@
             var i           = helpers.utility.XtoI($this, x);                       // THE I AXIS MOUSE COORDINATE
             var j           = helpers.utility.YtoJ($this, y);                       // THE J AXIS MOUSE COORDINATE
             var o           = helpers.closer($this, i, j );
+			
+			settings.controls.pos=[helpers.utility.round(i),helpers.utility.round(j)];
             
             if (settings.withzoom)
             {
@@ -345,6 +346,18 @@
                 settings.controls.current = 0;
                 settings.controls.mask = settings.mask[settings.controls.action][1];
             }
+			
+			if (settings.edit && settings.context && settings.context.onedit) {
+				if (settings.controls.current) {
+					var coord = settings.controls.current.coord;
+					if (settings.controls.current.name=="line" && coord.length==4 ) {
+						coord = helpers.utility.line.topairex(coord[0], coord[1], coord[2], coord[3]);
+					}
+					for (var i in coord) { coord[i] = helpers.utility.round(coord[i]); }
+					settings.context.onedit($this, {type:settings.controls.current.name, value:coord, pos:false});
+				}
+				else { settings.context.onedit($this, {type:"point", value:settings.controls.pos, pos:true}); }
+			}
         },
         mouseup: function($this) {
             var settings    = helpers.settings($this); if (settings.finish) { return; }
@@ -593,30 +606,16 @@
                 var path = settings.svg.createPath();
                 var ret = settings.svg.path(group, path.move(coord[0], coord[1]).line(coord[0]+0.001, coord[1]),attr);
                 $(ret).attr("class","point");
-                if (!attr || attr.display!="none") {
-					var log = "P("+helpers.utility.round(coord[0])+","+helpers.utility.round(coord[1])+")";
-					console.log(log); $this.find("#log").html(log);
-				}
                 return ret;
             },
             circle : function($this, group, coord, attr) {
                 var settings = helpers.settings($this);
 				var ret = settings.svg.circle(group, coord[0], coord[1], coord[2], attr);
-                if (!attr || attr.display!="none") {
-					var log = "C("+helpers.utility.round(coord[0])+","+helpers.utility.round(coord[1])
-								  +","+helpers.utility.round(coord[2])+")";
-					console.log(log); $this.find("#log").html(log);
-				}
                 return ret
             },
             segment : function($this, group, coord, attr) {
                 var settings = helpers.settings($this);
-                var ret = settings.svg.line(group, coord[0], coord[1], coord[2], coord[3], attr);  
-                if (!attr || attr.display!="none") {
-					var pos = helpers.utility.line.topairex(coord[0], coord[1], coord[2], coord[3]);
-					var log = "L("+helpers.utility.round(pos[0])+","+helpers.utility.round(pos[1])+")";
-					console.log(log); $this.find("#log").html(log);
-				}
+                var ret = settings.svg.line(group, coord[0], coord[1], coord[2], coord[3], attr); 
                 return ret;
             },
             line : function($this, group, coord, attr) { return helpers.factory.segment($this, group, coord, attr); }
@@ -947,6 +946,7 @@
                     interactive     : false,
                     small           : false,
                     controls        : {
+						pos			: [0,0],
                         action      : 0,
                         mask        : 0,
                         current     : 0,
@@ -1022,7 +1022,7 @@
             },
             click: function(elt) {
                 var $this = $(this) , settings = helpers.settings($this);
-                if (!settings.locked && !$(elt).hasClass("disable") && !settings.finish) {
+                if ((!settings.locked || settings.edit) && !$(elt).hasClass("disable") && !settings.finish) {
                      $this.find(".action").removeClass("s");
                     if (settings.controls.action != $(elt).attr("id")) {
                         $(elt).addClass("s");
@@ -1087,17 +1087,6 @@
                     for (var i in settings.points) { helpers.check($this, settings.points[i], false); }
                     for (var i in settings.lines) { helpers.check($this, settings.lines[i], false); }
                     for (var i in settings.circles) { helpers.check($this, settings.circles[i], false); }
-                }
-            },
-            devmode: function() {
-                var $this = $(this) , settings = helpers.settings($this);
-                if (settings.dev) {
-					var result = [];
-					for (var i in settings.lines) {
-						result.push("{\"type\":\"segment\", \"values\":["+settings.lines[i].coord.join(",")+"]}");
-					}
-                    $this.find("#devoutput textarea").val(result.join(","));
-                    $this.find("#devoutput").show();
                 }
             },
             quit: function() {

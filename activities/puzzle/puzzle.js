@@ -177,6 +177,10 @@
             for (var i in settings.elts) {
                 helpers.update($this, i, settings.elts[i].origin.translate, settings.elts[i].origin.rotate).hide();
             }
+			if (settings.show) {
+                var show = $.isArray(settings.show[0])?settings.show[settings.puzzleid]:settings.show;
+                for (var i in show) { $("#"+show[i],settings.svg.root()).css("display","none"); }
+            }
             helpers.build($this);
         },
         // Build the question

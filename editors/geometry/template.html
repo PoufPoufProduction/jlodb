@@ -1,0 +1,150 @@
+<div>
+	<div class="e_column e_elt" id="e_editor">
+		<div id="e_data">
+			<textarea id="eph_exercice" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+			<div id="e_buttons">
+				<div id="eb_segment" class="icon"
+					ontouchstart="$(this).toggleClass('s');event.preventDefault();"
+					onclick="$(this).toggleClass('s');"
+					><img src="res/img/icon/geometry/segment.svg" alt=""/></div>
+				<div id="eb_line" class="icon"
+					ontouchstart="$(this).toggleClass('s');event.preventDefault();"
+					onclick="$(this).toggleClass('s');"
+					><img src="res/img/icon/geometry/line.svg" alt=""/></div>
+				<div id="eb_circle" class="icon"
+					ontouchstart="$(this).toggleClass('s');event.preventDefault();"
+					onclick="$(this).toggleClass('s');"
+					><img src="res/img/icon/geometry/circle.svg" alt=""/></div>
+				<div id="eb_bisector" class="icon"
+					ontouchstart="$(this).toggleClass('s');event.preventDefault();"
+					onclick="$(this).toggleClass('s');"
+					><img src="res/img/icon/geometry/bisector.svg" alt=""/></div>
+				<div id="eb_intersection" class="icon"
+					ontouchstart="$(this).toggleClass('s');event.preventDefault();"
+					onclick="$(this).toggleClass('s');"
+					><img src="res/img/icon/geometry/intersection.svg" alt=""/></div>
+				<div id="eb_midpoint" class="icon"
+					ontouchstart="$(this).toggleClass('s');event.preventDefault();"
+					onclick="$(this).toggleClass('s');"
+					><img src="res/img/icon/geometry/midpoint.svg" alt=""/></div>
+				<div id="eb_parallel" class="icon"
+					ontouchstart="$(this).toggleClass('s');event.preventDefault();"
+					onclick="$(this).toggleClass('s');"
+					><img src="res/img/icon/geometry/parallel.svg" alt=""/></div>
+				<div id="eb_perpendicular" class="icon"
+					ontouchstart="$(this).toggleClass('s');event.preventDefault();"
+					onclick="$(this).toggleClass('s');"
+					><img src="res/img/icon/geometry/perpendicular.svg" alt=""/></div>
+				<div id="eb_style" class="icon"
+					ontouchstart="$(this).toggleClass('s');event.preventDefault();"
+					onclick="$(this).toggleClass('s');"
+					><img src="res/img/numbers/dice/dice01big.svg" alt=""/></div>
+				<input type="text" value="" id="eph_number" class="eph_value"/>
+			</div>
+			
+			<select id="eph_class" class="eph_value eph_mid"><option id="ec_default" value="default">Cadrillage</option><option id="ec_blank" value="blank">Pas de cadrillage</option><option id="ec_white" value="white">Fond Blanc</option><option id="ec_black" value="black">Fond noir</option></select>
+			
+			<select id="eph_format" class="eph_value eph_mid"><option id="ec_default" value="default">Format par défaut</option><option id="ec_large" value="large">Format large</option><option id="ec_full" value="full">Plein écran</option></select>
+			<div style="clear:both"></div>
+			
+			<div class="eph_value eph_mid" id="eph_addb"
+			ontouchstart="$(this).closest('.geometry_editor').geometry_editor('add');event.preventDefault();"
+			onclick="$(this).closest('.geometry_editor').geometry_editor('add');">Ajouter</div>
+			<select id="eph_add" class="eph_value eph_mid"><option id="ea_point" value="point">Point</option><option id="ea_segment" value="segment">Segment</option><option id="ea_line" value="line">Ligne</option><option id="ea_circle" value="circle">Cercle</option><option id="ea_mesh" value="mesh">Grille</option><option id="ea_grid" value="grid">Grille de points</option><option id="ea_path" value="path">Chemin</option><option id="ea_pathplus" value="pathplus">Chemin avec points</option></select>
+			<div style="clear:both"></div>
+			
+			
+			<textarea id="eph_data" class="eph_value" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+			
+			<div id="e_tabs">
+				<div id="e_tab1"
+		ontouchstart="$(this).closest('.geometry_editor').geometry_editor('tab',this,1);event.preventDefault();"
+		onclick="$(this).closest('.geometry_editor').geometry_editor('tab',this,1);">1</div>
+				<div id="e_tab2"
+		ontouchstart="$(this).closest('.geometry_editor').geometry_editor('tab',this,2);event.preventDefault();"
+		onclick="$(this).closest('.geometry_editor').geometry_editor('tab',this,2);">2</div>
+				<div id="e_tab3"
+		ontouchstart="$(this).closest('.geometry_editor').geometry_editor('tab',this,3);event.preventDefault();"
+		onclick="$(this).closest('.geometry_editor').geometry_editor('tab',this,3);">3</div>
+				<div id="e_tab4"
+		ontouchstart="$(this).closest('.geometry_editor').geometry_editor('tab',this,4);event.preventDefault();"
+		onclick="$(this).closest('.geometry_editor').geometry_editor('tab',this,4);">4</div>
+				<div id="e_tab5"
+		ontouchstart="$(this).closest('.geometry_editor').geometry_editor('tab',this,5);event.preventDefault();"
+		onclick="$(this).closest('.geometry_editor').geometry_editor('tab',this,5);">5</div>
+			</div>
+			
+			
+			<div id="e_objs">
+				<div id="e_obj1">
+					<textarea class="e_olabel" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+					<textarea class="e_ovalue"  autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+				</div>
+				<div id="e_obj2">
+					<textarea class="e_olabel" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+					<textarea class="e_ovalue"  autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+				</div>
+				<div id="e_obj3">
+					<textarea class="e_olabel" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+					<textarea class="e_ovalue"  autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+				</div>
+				<div id="e_obj4">
+					<textarea class="e_olabel" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+					<textarea class="e_ovalue"  autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+				</div>
+				<div id="e_obj5">
+					<textarea class="e_olabel" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+					<textarea class="e_ovalue"  autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+				</div>
+			</div>
+
+		</div>
+		<div class="l bluekeypad" 
+			ontouchstart="$(this).closest('.geometry_editor').geometry_editor('valid',this);event.preventDefault();"
+			onclick="$(this).closest('.geometry_editor').geometry_editor('valid',this);">OK</div>
+	</div>
+	
+	<div class="e_column e_elt" id="e_control"><div>
+		<textarea id='e_export' class='export' autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+		<div class='l bluekeypad'
+			ontouchstart="$(this).closest('.geometry_editor').geometry_editor('import',this);event.preventDefault();"
+			onclick="$(this).closest('.geometry_editor').geometry_editor('import',this);">
+			OK
+		</div>
+	</div></div>
+	
+	<div class="e_panel e_elt" id="e_screen"><div></div></div>
+
+
+	<div class="e_panel e_elt" id="e_menu"><div>
+		<div class='l' id='e_importelt'>...</div>
+		
+		<div id="e_add" class="l bluekeypad d"
+		ontouchstart="$(this).closest('.geometry_editor').geometry_editor('addelt',this,-1);event.preventDefault();"
+		onclick="$(this).closest('.geometry_editor').geometry_editor('addelt',this,-1);">Ajouter à l'énoncé</div>
+		
+		<div id="e_add1" class="e_addobj l l2 bluekeypad d"
+		ontouchstart="$(this).closest('.geometry_editor').geometry_editor('addelt',this,1);event.preventDefault();"
+		onclick="$(this).closest('.geometry_editor').geometry_editor('addelt',this,1);">→ 1</div>
+		<div id="e_add2" class="e_addobj l l2 bluekeypad d"
+		ontouchstart="$(this).closest('.geometry_editor').geometry_editor('addelt',this,2);event.preventDefault();"
+		onclick="$(this).closest('.geometry_editor').geometry_editor('addelt',this,2);">→ 2</div>
+		<div id="e_add3" class="e_addobj l l2 bluekeypad d"
+		ontouchstart="$(this).closest('.geometry_editor').geometry_editor('addelt',this,3);event.preventDefault();"
+		onclick="$(this).closest('.geometry_editor').geometry_editor('addelt',this,3);">→ 3</div>
+		<div id="e_add4" class="e_addobj l l2 bluekeypad d"
+		ontouchstart="$(this).closest('.geometry_editor').geometry_editor('addelt',this,4);event.preventDefault();"
+		onclick="$(this).closest('.geometry_editor').geometry_editor('addelt',this,4);">→ 4</div>
+		<div id="e_add5" class="e_addobj l l2 bluekeypad d"
+		ontouchstart="$(this).closest('.geometry_editor').geometry_editor('addelt',this,5);event.preventDefault();"
+		onclick="$(this).closest('.geometry_editor').geometry_editor('addelt',this,5);">→ 5</div>
+			
+		<div id="e_import" class="l bluekeypad"
+			ontouchstart="$(this).closest('.geometry_editor').geometry_editor('edit',this);event.preventDefault();"
+			onclick="$(this).closest('.geometry_editor').geometry_editor('edit',this);"></div>
+		<div id="e_submit" class="l bluekeypad"
+			ontouchstart="$(this).closest('.geometry_editor').geometry_editor('edit',this);event.preventDefault();"
+			onclick="$(this).closest('.geometry_editor').geometry_editor('edit',this);">→ jLoDb</div>
+	</div></div>
+</div>
+

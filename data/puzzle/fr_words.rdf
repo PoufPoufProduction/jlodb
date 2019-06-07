@@ -7,7 +7,7 @@
     <rdf:Description>
         <dct:identifier>_wsx</dct:identifier>
         <dct:title xml:lang="fr-FR">Replacer chaque lettre pour reformer correctement les mots proposés.</dct:title>
-        <dct:description><![CDATA["gg":["batEau","voIture","motO","Avion","cYcle"],"background":"res/img/background/landscape/grayboard01.svg","url":"desktop/puzzle/words05.svg","gen":"function($this,_s,_i){var show=[],values={},t={},pos=[]; for (var i=0; i<_s.gg.length; i++) { var w=_s.gg[i]; var off=Math.floor(Math.random()*(13-w.length)); for (var j=0; j<w.length; j++) { var l=w[j],jj=j+off; show.push('b'+i+(jj<9?'0':'')+(jj+1)); if (l==l.toLowerCase()) { show.push('p'+i+(jj<9?'0':'')+(jj+1)); t['t'+i+(jj<9?'0':'')+(jj+1)]=l; } else { values['p'+i+(jj<9?'0':'')+(jj+1)]=l.toLowerCase(); pos.push([50+jj*50,70+i*70]); } } } return {show:show,values:values,txt:t,init:{pos:shuffle(pos)}};}","radius":25]]></dct:description>
+        <dct:description><![CDATA["gg":[["batEau","voIture","motO","Avion","cYcle"]],"background":"res/img/background/landscape/grayboard01.svg","url":"desktop/puzzle/words05.svg","gen":"function($this,_s,_i){var gg=_s.gg[_i],show=[],values={},t={},pos=[]; for (var i=0; i<gg.length; i++) { var w=gg[i]; var off=Math.floor(Math.random()*(13-w.length)); for (var j=0; j<w.length; j++) { var l=w[j],jj=j+off; show.push('b'+i+(jj<9?'0':'')+(jj+1)); if (l==l.toLowerCase()) { show.push('p'+i+(jj<9?'0':'')+(jj+1)); t['t'+i+(jj<9?'0':'')+(jj+1)]=l; } else { values['p'+i+(jj<9?'0':'')+(jj+1)]=l.toLowerCase(); pos.push([50+jj*50,70+i*70]); } } } return {show:show,values:values,txt:t,init:{pos:shuffle(pos)},number:_s.gg.length};}","radius":25]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Déplacez[/b] les lettres pour reformer correctement les mots proposés."]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>frword</dct:subject>
@@ -20,7 +20,7 @@
     <rdf:Description>
         <dct:identifier>_wsa001</dct:identifier>
         <dct:title xml:lang="fr-FR">Replacer chaque lettre pour reformer correctement les mots proposés [cheval,chien,chat,lapin,poule].</dct:title>
-        <dct:description><![CDATA["gg":["cHeVal","ChiEn","chaT","lapIN","pOUle"]]]></dct:description>
+        <dct:description><![CDATA["gg":[["cHeVal","ChiEn","chaT","lapIN","pOUle"]]]]></dct:description>
         <dct:extent>2</dct:extent>
         <dct:subject>frword</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>

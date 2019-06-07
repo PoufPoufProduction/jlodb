@@ -96,3 +96,28 @@
 .geometry div#help .ehelp .label { margin-left:.5em; font-size:.7em; }
 .geometry div#help #hwar { clear:both; }
 
+
+/*============ EDITOR PANEL =============*/
+
+.geometry_editor #e_editor>div			{ height:94%; }
+.geometry_editor #e_editor textarea		{ font-size:0.5em; background-color:white; color:#444; height:10%; margin-top:1%; border:0; width:93%; padding-left:5%; }
+.geometry_editor #e_editor .eph_value { border: 0; width: 98%; height: 2em; font-size: 0.5em; text-align: center; background-color:#FEC; }
+.geometry_editor #e_editor .eph_value.eph_mid { width:49%; float:left; }
+.geometry_editor #e_control 				{ display:none; }
+.geometry_editor #e_buttons .icon			{ background-color:#FEC; margin:.1em; float:left; cursor:pointer; }
+.geometry_editor #e_buttons .icon.s			{ background-color:#F44; }
+.geometry_editor #e_editor #eph_number		{ width:20%; height:1.2em; font-size:0.85em; margin:.1em 0 0 .5em; float:left;  }
+.geometry_editor #e_editor #eph_add		{ background-color:#CCC; }
+.geometry_editor #e_editor #eph_addb	{ background-color:#444; color:white; text-align:right; padding-top:.3em; cursor:pointer; height:1.7em; width:48%; padding-right:1%;   }
+.geometry_editor #e_editor #eph_data  { font-size:0.3em; text-align:left; background-color:white; height:40% }
+
+.geometry_editor #e_menu .d { opacity:0.2; cursor:default; }
+.geometry_editor #e_menu .l.l2			{ width:19%; }
+
+.geometry_editor #e_tabs>div { float:left; width:3em; height:1.2em; text-align:center; background-color:gray; color:white; border-radius:.2em; margin:.1em; cursor:pointer; }
+.geometry_editor #e_tabs>div.s { background-color:red; }
+
+.geometry_editor #e_objs					 { height:27%; }
+.geometry_editor #e_objs>div				 { height:100%; display:none; }
+.geometry_editor #e_editor textarea.e_olabel { background-color:white; height:1.2em; display:block; }
+.geometry_editor #e_editor textarea.e_ovalue { font-size:0.3em; display:block; height:60%; }
