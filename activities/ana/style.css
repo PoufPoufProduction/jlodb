@@ -1,0 +1,41 @@
+.ana                            { background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat;}
+.ana>div						{ position:relative; }
+.ana div#splashex               { background-image:url("../../res/img/banners/ana.svg"); }
+.ana div#splashex h1            { position:absolute; top:15%; left:55%; font-size:1.5em; background-color:red;
+                                  width:55%; color:white; text-align:center; border-radius:0 .5em .5em 0;
+                                  border:.3em solid white; -ms-transform: rotate(45deg);
+								  -webkit-transform: rotate(45deg); transform: rotate(45deg); }
+.ana #aa_board                  { height:12em; width:70%; position:relative; }
+.ana #aa_board .icon			{ position:absolute;
+								  background-image:url("../../res/img/svginventoryicons/background/border/simple01.svg");}
+.ana #aa_board .icon>div		{ font-size:0.8em; text-align:center; color:#444; font-weight:bold; }
+.ana #aa_header					{ height:0.9em; background-color:rgba(0,0,0,0.6); }
+.ana #aa_nav                  	{ position:absolute; top:0; left:70%; height:12em; width:31%;
+								  background-color:rgba(255,255,255,0.7); overflow:visible; }
+.ana #aa_menu					{ padding-left:.1em; width:1.2em; float:left; height:3.4em; 
+								  background-color:rgba(0,0,0,0.2); }
+.ana #aa_menu .icon				{ background-image:url("../../res/img/default/icon/menu02bg.svg");
+								  background-repeat:no-repeat; cursor:pointer; margin:.05em; float:left;
+								  border-radius:.2em;  }
+.ana #aa_menu .icon.s			{  background-color:red;  }
+.ana #aa_snap					{ font-size:3.4em;  }
+.ana #aa_word					{ font-size:0.8em; background-color:rgba(0,0,0,0.6); color:white;
+								  text-align:center; height:1.2em; }
+.ana #aa_keypad					{ position:absolute; font-size:6em; top:46%; left:-26%;
+								  background-image:url("../../res/img/icon/tab/tab00.svg");
+								  background-color:rgba(255,255,255,0.7); 
+								  border-radius:.5em; overflow:visible; }
+								  
+.ana #aa_mask { display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.1); }
+.ana #aa_mask>div { font-size:0.5em; background-color:rgba(255,255,255,0.9); border:3px solid white; border-width:1px 0 1px 0; width:80%; padding:.2em 10%; height:35%; margin:20% auto; }
+.ana #aa_mask .icon { font-size:4em; float:left; margin:.2em .5em; cursor:pointer;  }
+.ana #aa_mask #aa_illus { position:absolute; top:40%; left:70%; font-size:8em; width:1em; height:1em; }
+
+								  
+/*============ EDITOR PANEL =============*/
+
+.ana_editor #e_editor>div			{ height:94%; }
+.ana_editor #e_editor textarea		{ font-size:0.5em; background-color:white; color:#444; height:30%;
+									  margin-top:1%; border:0; width:93%; padding-left:5%; }
+.ana_editor #e_editor textarea#e_glossary	{ height:40%; }
+.ana_editor #e_control 				{ display:none; }
