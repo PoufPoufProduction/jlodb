@@ -7,7 +7,7 @@
         css         : "style.css",                              // Activity's css style sheet
         lang        : "en-US",                                  // Current localization
         exercice    : [],                                       // Exercice
-        background  : "res/img/background/landscape/blueboard01.svg",
+        background  : "",
 		edit		: false,									// Editor mode
         debug       : true                                     // Debug mode
     };
@@ -125,8 +125,8 @@
 					return ret;
 				};
 				var side=[[0,1],[1,0]];
-				for (var i=0; i<settings.board.length; i++) {
-					for (var j=0; j<settings.board[i].length; j++) {
+				for (var j=0; j<settings.board.length; j++) {
+					for (var i=0; i<settings.board[j].length; i++) {
 						if (settings.board[j][i]!=" ") {
 							for (var s=0; s<2; s++) {
 								if (fromboard(i-side[s][0], j-side[s][1])==" ") {
@@ -260,6 +260,8 @@
 						settings.nav.current = 0;
 						settings.nav.line = 0;
 						settings.nav.word = "";
+						
+						if (!helpers.empty($this).length) { helpers.finish($this); }
 					}
 				});
                 
@@ -300,6 +302,26 @@
 				else { elt.$elt.attr("transform","translate("+elt.pos[0]+","+elt.pos[1]+")"); }
 			}
 			if (_cbk) { setTimeout(_cbk, 600); }
+		},
+		empty: function($this) {
+            var settings = helpers.settings($this);
+			var ret = "", empties=[];
+			$this.find("#aa_board .icon>div").each(function(_index) {
+				if (! $(this).html().length) {
+					empties.push($(this).parent().attr("id"));
+				}
+			});
+			
+			if (empties.length) { shuffle(empties); ret = empties[0]; }
+			return ret;
+		},
+		finish: function($this) {
+            var settings = helpers.settings($this);
+			settings.interactive = false;
+			setTimeout(function() {
+				$this.find("#effects").css("opacity",0).show().animate({opacity:1},500);
+				setTimeout(function() { helpers.end($this); }, 1500);
+			},500);
 		}
     };
 
@@ -312,6 +334,7 @@
                 // The settings
                 var settings = {
                     interactive     : false,
+					score			: 5,
 					svg				: 0,
 					nav				: { width:1, offset:[0,0], word:"", current:0, line:0 },
 					keys			: {},
@@ -357,7 +380,14 @@
 			tip: function() {
                 var $this = $(this) , settings = helpers.settings($this);
 				$this.find("#aa_mask").hide();
-				alert("tip");
+				var empty = helpers.empty($this);
+				if (empty) {
+					var pos=empty.split("x");
+					$this.find("#aa_board #"+empty+">div").html(settings.board[pos[1]][pos[0]]);
+					settings.score = Math.max(settings.score-1, 0);
+				}
+				
+				if (!helpers.empty($this).length) { helpers.finish($this); }
 				
 			},
             quit: function() {
