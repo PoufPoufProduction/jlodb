@@ -1,24 +1,19 @@
 .board                            { background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat;}
 .board>div						  { width:110%; }
 .board div#splashex                     { background-image:url("../../res/img/banners/paint2.svg");}
-.board div#splashex  h1                 { position:absolute; top:10%; left:60%; font-size:2em; background-color:red;
-                                          width:55%; color:white; text-align:center; border-radius:0 .5em .5em 0;
-                                          border:.3em solid white;
-                                          -ms-transform: rotate(45deg); -webkit-transform: rotate(45deg); transform: rotate(45deg); }
-
-.board div#splashex #guide   { position:absolute; top:65%; left:68%; width:26%; height:26%; text-align:justify; font-size:.8em;
-                                          background-color:#ccc; color:#333;
-                                          background-image:url("../../res/img/default/pattern/line03.svg"); background-repeat:repeat;
-                                          border-radius:.5em; border:.7em solid white;
-                                          padding:.5em; font-style:italic; font-weight:bold; }
+.board div#splashex h1            { position:absolute; top:15%; left:55%; font-size:1.5em; background-color:red;
+                                  width:55%; color:white; text-align:center; border-radius:0 .5em .5em 0;
+                                  border:.3em solid white; -ms-transform: rotate(45deg);
+								  -webkit-transform: rotate(45deg); transform: rotate(45deg); }
 
 .board div#exercice               { width:100%; height:20%; background-repeat:repeat; font-size:.5em; background-image:url("../../res/img/default/pattern/line01.svg"); text-align:justify; }
 .board div#exercice .strong       { color:red; font-weight:bold; border: 1px solid red; border-width:1px 0; }
 .board div#board                  { height:12em; width:12em; float:left; }
 .board div#board>div			  { width:100%;height:100%; position:relative; }
+.board div#board #bd_bg			  { position:absolute; background-color:white; }
 .board div#board #cursor          { position:absolute; overflow:visible; }
 .board div#board .c				  { position:absolute;width:1.2em;height:1.2em;text-align:center; }
-.board div#board .t				  { position:absolute;font-size:1.2em;width:1em;height:1em; border:1px solid black; cursor:move; }
+.board div#board .t				  { position:absolute;font-size:1.2em;width:1em;height:1em; border:1px solid black; cursor:move; background-color:rgba(128,128,128,0.2); background-image:url("../../res/img/default/pattern/steel01.svg"); background-repeat:repeat; }
 .board.red div#board .t           { border:1px solid red; }
 .board.gray div#board .t          { border:1px solid gray; }
 .board div#board .dragging .t     { background-color:rgba(255,255,0,0.4); }
@@ -60,4 +55,19 @@
 .board div#submit.wrong #subwrong { display:inline; }
 .board div#paint                  { background-image:url("../../res/img/default/icon/se.svg");font-size:1.5em; height:1em;width:1em; cursor:pointer; position:absolute; top:7em; left:7em; z-index:3; }
 
-.board .alert					{ display:none; position:absolute; font-size:6em; width:1em; height:1em; top:2%; left:60%; z-index:3; }
+.board .bd_alert					{ display:none; position:absolute; font-size:6em; width:1em; height:1em; top:2%; left:60%; z-index:3; }
+
+.board .bd_splash				{ position:absolute; width:1em; height:1em; top:0; left:0; display:none;z-index:4; }
+
+			  
+/*============ EDITOR PANEL =============*/
+
+.board_editor #e_editor>div			{ height:94%; }
+.board_editor #e_editor textarea		{ font-size:0.5em; background-color:white; color:#444; height:20%;
+									  margin-top:1%; border:0; width:93%; padding-left:5%; }
+.board_editor #e_editor textarea#e_colors { width:64%; float:left; }
+.board_editor #e_editor #e_goal { float:left; position:relative; width:28%; height:20%; background-color:white; margin-top:1%; margin-left:1%; }
+.board_editor #e_editor #e_goal>div { position:absolute; }
+.board_editor #e_editor input.eph_value { background-color:#CCC; }
+.board_editor #e_editor .eph_value { border: 0; width: 98%; height: 2em; font-size: 0.5em; text-align: center; background-color:#FEC; }
+.board_editor #e_control 				{ display:none; }

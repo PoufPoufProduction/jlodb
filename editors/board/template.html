@@ -1,0 +1,44 @@
+<div>
+
+	<div class="e_column e_elt" id="e_editor">
+		<div id="e_data">
+			<select id="e_mode" class="eph_value"><option value="0" id="e_mode0"></option><option value="1" id="e_mode1"></option><option value="2" id="e_mode2"></option></select>
+			<input type="text" value="" class="eph_value" id="eph_nbsteps"/>
+			<select id="e_brushesfont" class="eph_value"><option value="0" id="e_bf0"></option><option value="5" id="e_bf1"></option><option value="2.5" id="e_bf2"></option><option value="1.7" id="e_bf3"></option><option value="1.2" id="e_bf4"></option></select>
+			<textarea id="e_brushes" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+			<input type="text" value="" class="eph_value" id="eph_size"/>
+			<select id="e_colorsfont" class="eph_value"><option value="0" id="e_cf0"></option><option value="5" id="e_cf1"></option><option value="2.5" id="e_cf2"></option><option value="1.7" id="e_cf3"></option><option value="1.2" id="e_cf4"></option></select>
+			<textarea id="e_colors" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+			<div id="e_goal"></div>
+			<input type="text" value="" class="eph_value" id="eph_color"/>
+		</div>
+		<div class="l bluekeypad" 
+			ontouchstart="$(this).closest('.board_editor').board_editor('valid',this);event.preventDefault();"
+			onclick="$(this).closest('.board_editor').board_editor('valid',this);">OK</div>
+	</div>
+
+	<div class="e_column e_elt" id="e_control"><div>
+		<textarea id='e_export' class='export' autocomplete='off' autocorrect='off' autocapitalize='off' spellcheck='false'></textarea>
+		<div class='l bluekeypad'
+			ontouchstart="$(this).closest('.board_editor').board_editor('import',this);event.preventDefault();"
+			onclick="$(this).closest('.board_editor').board_editor('import',this);">
+			OK
+		</div>
+	</div></div>
+	
+	<div class="e_panel e_elt" id="e_screen"><div></div></div>
+
+
+	<div class="e_panel e_elt" id="e_menu"><div>
+		<div id="e_get" class="l bluekeypad"
+			ontouchstart="$(this).closest('.board_editor').board_editor('edit',this);event.preventDefault();"
+			onclick="$(this).closest('.board_editor').board_editor('edit',this);"></div>
+		<div id="e_import" class="l bluekeypad"
+			ontouchstart="$(this).closest('.board_editor').board_editor('edit',this);event.preventDefault();"
+			onclick="$(this).closest('.board_editor').board_editor('edit',this);"></div>
+		<div id="e_submit" class="l bluekeypad"
+			ontouchstart="$(this).closest('.board_editor').board_editor('edit',this);event.preventDefault();"
+			onclick="$(this).closest('.board_editor').board_editor('edit',this);">→ jLoDb</div>
+	</div></div>
+</div>
+

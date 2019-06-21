@@ -7,10 +7,12 @@
         css         : "style.css",                              // Activity's css style sheet
         lang        : "en-US",                                  // Current localization
         paintmode   : 0,                                        // O:opaque, 1:add, 2:sub, 3:def
-        colors      : [[0,0,0],[255,255,255]],
-        colorsfont  : 1.7,
+		chart		: [{rgb:[0,0,0]},{rgb:[255,255,255]}],
+        colors      : [0,1],
+        colorsfont  : 0,
         brushes     : [[3,3]],
-        brushesfont : 1.7,
+        brushesfont : 0,
+		margin		: 1,
         wrong       : { rgb:[0,0,0], content:"res/img/default/white/cancel02.svg"},
         inside      : true,
         exercice    : [],                                        // Exercice
@@ -113,8 +115,8 @@
                 setTimeout(function() { $this.find("#modes #mmode"+settings.paintmode).show(); }, 100);
                 
                 for (var i=0; i<settings.colors.length; i++ ) {
-                    var c=settings.colors[i];
-                    var $elt = $("<div class='icon' id='c"+i+"' "+
+                    var c=settings.chart[settings.colors[i]<settings.chart.length?settings.colors[i]:0];
+                    var $elt = $("<div class='icon' id='c"+settings.colors[i]+"' "+
                              "style='background-color:rgb("+c.rgb[0]+","+c.rgb[1]+","+c.rgb[2]+")'></div>");
                     if (c.content) {
 						if (c.content.indexOf(".svg")!=-1) 	{ $elt.append("<img src='"+c.content+"' alt=''/>"); }
@@ -188,7 +190,7 @@
                 var createcell=function(_i, _j, _margin, _color) {
                     var cell={
                         $elt:$("<div class='c' id='c"+_i+"x"+_j+"' "+
-                            "style='top:"+(1.2*(_j+_margin[1]))+"em;left:"+(1.2*(_i+_margin[0]))+"em;'></div>"),
+                            "style='top:"+(1.2*(_j+_margin))+"em;left:"+(1.2*(_i+_margin))+"em;'></div>"),
                             color: $.extend(true,{},_color),
                             update: function() {
                                 this.$elt.css("background-color","rgb("+this.color.rgb[0]+","+this.color.rgb[1]+","+this.color.rgb[2]+")");
@@ -205,28 +207,27 @@
                 }
                 
 				// BUILD BOARD
-				if (!settings.board.colors) { settings.board.colors=$.extend({},settings.colors); }
-				else if (settings.board.colormode=="append") {
-					for (var i in settings.colors) { settings.board.colors.unshift(settings.colors[i]); }
-				}
-				if (settings.board.margin && !$.isArray(settings.board.margin)) {
-                    settings.board.margin=[settings.board.margin,settings.board.margin];
-				}
-				var margin=settings.board.margin;
-                settings.brushpos=[margin[0], margin[1], 0];
-				max=Math.max(settings.size[0]+2*margin[0], settings.size[1]+2*margin[1]);
+                settings.brushpos=[settings.margin, settings.margin, 0];
+				max=Math.max(settings.size[0]+2*settings.margin, settings.size[1]+2*settings.margin);
                 
                 if (settings.inside) {
-                    settings.boundaries=[ margin[0], margin[1],
-                                          margin[0]+settings.size[0], margin[1]+settings.size[1]];
+                    settings.boundaries=[ settings.margin, settings.margin,
+                                          settings.margin+settings.size[0], settings.margin+settings.size[1]];
                 }
-                else { settings.boundaries=[ 0, 0, 2*margin[0]+settings.size[0], 2*margin[1]+settings.size[1]]; }
+                else { settings.boundaries=[ 0, 0,
+							2*settings.margin+settings.size[0], 2*settings.margin+settings.size[1]]; }
                 
 				$this.find("#board>div").css("font-size",(10/max)+"em");
+				
+				var $bg = $("<div id='bd_bg'></div>");
+				$bg.css("width",(settings.size[0]*1.2+0.2)+"em").css("height",(settings.size[1]*1.2+0.2)+"em")
+				   .css("top",(settings.margin*1.2-0.1)+"em").css("left",(settings.margin*1.2-0.1)+"em");
+				$this.find("#board>div").append($bg);
+				
                 for (var j=0; j<settings.size[1]; j++) for (var i=0; i<settings.size[0]; i++) {
-					var cid=settings.board.content[i+j*settings.size[0]];
-					if (cid!='.' && settings.board.colors[cid]) {
-                        var elt = createcell(i,j,margin,settings.board.colors[cid]);
+					var cid=settings.init[i+j*settings.size[0]];
+					if (cid!='.') {
+                        var elt = createcell(i,j,settings.margin,settings.chart[cid<settings.chart.length?cid:0]);
                         elt.update();
 						$this.find("#board>div").append(elt.$elt);
                         settings.elts["c"+i+"x"+j]=elt;
@@ -234,17 +235,12 @@
 				}
                 
                 // BUILD MODEL
-                if (!settings.model.colors) { settings.model.colors=$.extend({},settings.colors); }
-				else if (settings.model.colormode=="append") {
-					for (var i=0; i<settings.colors.length; i++) {
-                        settings.model.colors.unshift(settings.colors[settings.colors.length-i-1]); }
-				}
                 max=Math.max(settings.size[0], settings.size[1]);
                 var size=(6/max)/1.2;
                 for (var j=0; j<settings.size[1]; j++) for (var i=0; i<settings.size[0]; i++) {
-					var cid=settings.model.content[i+j*settings.size[0]];
-					if (cid!='.' && settings.model.colors[cid]) {
-                        var m = createcell(i,j,[0,0],settings.model.colors[cid]);
+					var cid=settings.goal[i+j*settings.size[0]];
+					if (cid!='.') {
+                        var m = createcell(i,j,0,settings.chart[cid<settings.chart.length?cid:0]);
                         m.$elt.css("font-size",size+"em");
                         m.update();
                         var elt = settings.elts["c"+i+"x"+j];
@@ -396,7 +392,7 @@
 		},
         updatecolor:function($this, _id) {
 			var settings = helpers.settings($this);
-            var c = settings.colors[_id];
+            var c = settings.chart[_id];
             if (c.number) {
                 $this.find("#colors #c"+_id+" .number").html(c.count);
                 if (c.count) { $this.find("#colors #c"+_id).removeClass("d"); }
@@ -431,25 +427,35 @@
                
                 for (var j=0; j<settings.bitmap.length; j++) for (var i=0; i<settings.bitmap[j].length; i++) {
                     if (settings.bitmap[j][i]) {
-                        helpers.action($this, settings.brushpos[0]+i-settings.board.margin[0],
-                                              settings.brushpos[1]+j-settings.board.margin[1],
-                                              settings.colors[settings.colorid], settings.paintmode);
+                        helpers.action($this, settings.brushpos[0]+i-settings.margin,
+                                              settings.brushpos[1]+j-settings.margin,
+                                              settings.chart[settings.colorid], settings.paintmode);
                     }
                 }
                 
-                if (settings.colors[settings.colorid].number) {
-                    settings.colors[settings.colorid].count--;
+                if (settings.chart[settings.colorid].number) {
+                    settings.chart[settings.colorid].count--;
                     helpers.updatecolor($this, settings.colorid);
                 }
                 if (settings.brushes[settings.brushid].number) {
                     settings.brushes[settings.brushid].count--;
                     helpers.updatebrush($this, settings.brushid);
                 }
-                
-                setTimeout(function() {
-                    $this.find("#board .t").removeClass("touch");
+				
+				var ss=shuffle([1,2,3,4]), nb=Math.min(ss.length, 1+Math.floor(Math.random()*5));
+				for (var i=0; i<nb; i++) {
+					$this.find("#bd_splash"+ss[i])
+						.css("opacity",1)
+						.css("font-size",(4+Math.floor(Math.random()*4))+"em")
+						.css("top",(Math.floor(Math.random()*80)-10)+"%")
+						.css("left",(Math.floor(Math.random()*30)+60)+"%")
+						.show();
+				}
+				setTimeout(function() {
+					$this.find("#board .t").removeClass("touch");
                     settings.interactive = true;
-                },50);
+					$this.find(".bd_splash").animate({opacity:0}, 200, function() { $(this).hide(); });
+				}, 400);
             }
         },
         counter: function($this) {
@@ -465,10 +471,9 @@
 			var settings = helpers.settings($this);
             var elt={brushes:[], colors:[]};
             for (var i in settings.elts) { elt[i]=$.extend({},settings.elts[i].color); }
-            for (var i in settings.colors) { elt.colors.push(settings.colors[i].count); }
+            for (var i in settings.chart) { elt.colors.push(settings.chart[i].count); }
             for (var i in settings.brushes) { elt.brushes.push(settings.brushes[i].count); }
             settings.stack.push(elt);
-
             helpers.counter($this);
         },
         restore: function($this, _data) {
@@ -477,7 +482,7 @@
                 settings.elts[i].color = _data[i];
                 settings.elts[i].update(); }
             for (var i=0; i<_data.colors.length; i++) {
-                settings.colors[i].count = _data.colors[i];
+                settings.chart[i].count = _data.colors[i];
                 helpers.updatecolor($this, i);
             }
             for (var i=0; i<_data.brushes.length; i++) {
@@ -492,9 +497,9 @@
             if (elt) {
                 switch(_paintmode) {
                     case 1:
-                        elt.color.rgb=[ Math.min(elt.color.rgb[0]+_color.rgb[0],255),
-                                        Math.min(elt.color.rgb[1]+_color.rgb[1],255),
-                                        Math.min(elt.color.rgb[2]+_color.rgb[2],255) ];
+                        elt.color.rgb=[ Math.max(elt.color.rgb[0],_color.rgb[0]),
+                                        Math.max(elt.color.rgb[1],_color.rgb[1]),
+                                        Math.max(elt.color.rgb[2],_color.rgb[2]) ];
                         elt.color.content = _color.content;
                         break;
                     case 2:
@@ -549,21 +554,6 @@
                         helpers.loader.css($this);
                     }
                 });
-            },
-            devmode: function() {
-                var $this = $(this) , settings = helpers.settings($this);
-                var ret="";
-                for (var i in settings.elts) {
-                    var r='.';
-                    var c1 = settings.elts[i].color;
-                    for (var j in settings.model.colors) {
-                        var c2 = settings.model.colors[j];
-                        if (c1.rgb && c2.rgb &&
-                            c1.rgb[0]==c2.rgb[0] && c1.rgb[1]==c2.rgb[1] && c1.rgb[2]==c2.rgb[2] ) { r = j; }
-                    }
-                    ret+=r;
-                }
-                $this.find("#devoutput textarea").val("\"content\":\""+ret+"\"").parent().show();
             },
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
@@ -622,7 +612,15 @@
                     helpers.restore($this,data);
                     setTimeout(function() { $this.find("#left1").show();settings.interactive=true; }, 300);
                 }
-            }
+            },
+			e_get:function() {
+                var $this = $(this) , settings = helpers.settings($this);
+				return settings.elts;
+			},
+			e_nb:function() {
+				var $this = $(this) , settings = helpers.settings($this);
+				return settings.stack.length;
+			}
             
         };
 

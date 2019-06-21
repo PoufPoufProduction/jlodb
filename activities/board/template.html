@@ -38,24 +38,19 @@
                      onclick="$(this).closest('.board').board('paint');">
         <img src="res/img/svginventoryicons/pencil/brush01.svg" alt=""/>
     </div>
+	
+	<div class="bd_splash" id="bd_splash1"><img src="res/img/asset/splashes/blue01.svg" alt=""/></div>
+	<div class="bd_splash" id="bd_splash2"><img src="res/img/asset/splashes/red01.svg" alt=""/></div>
+	<div class="bd_splash" id="bd_splash3"><img src="res/img/asset/splashes/green01.svg" alt=""/></div>
+	<div class="bd_splash" id="bd_splash4"><img src="res/img/asset/splashes/yellow01.svg" alt=""/></div>
     
-    <div id="good" class="alert"><img src="res/img/default/popup/good01.svg" alt=""/></div>
-    <div id="wrong" class="alert"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
+    <div id="good" class="bd_alert"><img src="res/img/default/popup/good01.svg" alt=""/></div>
+    <div id="wrong" class="bd_alert"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
     
     <div id="splashex" ontouchstart="$(this).hide().closest('.board').board('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.board').board('next');"><div>
         <h1 id="label"></h1>
-        <div id="guide"></div>
     </div></div>
-    
-    <!-- Optional devmode -->
-    <div id="devmode" ontouchstart="$(this).closest('.board').board('devmode');event.preventDefault();"
-                      onclick="$(this).closest('.board').board('devmode');" ><img src="res/img/default/white/snapshot.svg"/></div>
-                      
-    <div id="devoutput" ontouchstart="$(this).hide();event.preventDefault();" onclick="$(this).hide();">
-        <textarea ontouchstart="$(this).focus();event.stopPropagation();event.preventDefault();"
-                  onclick="$(this).focus();event.stopPropagation();"></textarea>
-    </div>
 
 </div>
 
