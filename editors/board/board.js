@@ -173,7 +173,13 @@
 				var $elt=$("<div></div>");
 				$elt.css("background-color","rgb("+cc.rgb.join(',')+")")
 				    .css("width",step+"%").css("height",step+"%")
-					.css("top",(j*step)+"%").css("left",(i*step)+"%");
+					.css("top",(j*step)+"%").css("left",(i*step)+"%")
+					.css("background-size", "100%");
+					
+				if (cc.content) {
+					if (cc.content.indexOf(".svg")!=-1) { $elt.css("background-image", "url("+cc.content+")"); }
+                    else { $elt.html(cc.content); }
+				}
 				$this.find("#e_goal").append($elt);
 				
 			}

@@ -119,7 +119,7 @@
                     var $elt = $("<div class='icon' id='c"+settings.colors[i]+"' "+
                              "style='background-color:rgb("+c.rgb[0]+","+c.rgb[1]+","+c.rgb[2]+")'></div>");
                     if (c.content) {
-						if (c.content.indexOf(".svg")!=-1) 	{ $elt.append("<img src='"+c.content+"' alt=''/>"); }
+						if (c.content.indexOf(".svg")!=-1) 	{ $elt.css("background-image", "url("+c.content+")"); }
 						else 								{ $elt.append(c.content); }
 					}
 					
@@ -196,7 +196,7 @@
                                 this.$elt.css("background-color","rgb("+this.color.rgb[0]+","+this.color.rgb[1]+","+this.color.rgb[2]+")");
                                 if (this.color.content) {
                                     if (this.color.content.indexOf(".svg")!=-1) {
-                                        this.$elt.html("<img src='"+this.color.content+"' alt=''/>");
+										this.$elt.css("background-image", "url("+this.color.content+")");
                                     }
                                     else { this.$elt.html(this.color.content); }
                                 }

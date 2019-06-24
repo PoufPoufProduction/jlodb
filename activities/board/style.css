@@ -1,8 +1,8 @@
 .board                            { background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat;}
 .board>div						  { width:110%; }
-.board div#splashex                     { background-image:url("../../res/img/banners/paint2.svg");}
-.board div#splashex h1            { position:absolute; top:15%; left:55%; font-size:1.5em; background-color:red;
-                                  width:55%; color:white; text-align:center; border-radius:0 .5em .5em 0;
+.board div#splashex                     { background-image:url("../../res/img/banners/board.svg");}
+.board div#splashex h1            { position:absolute; top:12%; left:48%; font-size:2em; background-color:red;
+                                  width:70%; color:white; text-align:center; border-radius:0 .5em .5em 0;
                                   border:.3em solid white; -ms-transform: rotate(45deg);
 								  -webkit-transform: rotate(45deg); transform: rotate(45deg); }
 
@@ -12,8 +12,8 @@
 .board div#board>div			  { width:100%;height:100%; position:relative; }
 .board div#board #bd_bg			  { position:absolute; background-color:white; }
 .board div#board #cursor          { position:absolute; overflow:visible; }
-.board div#board .c				  { position:absolute;width:1.2em;height:1.2em;text-align:center; }
-.board div#board .t				  { position:absolute;font-size:1.2em;width:1em;height:1em; border:1px solid black; cursor:move; background-color:rgba(128,128,128,0.2); background-image:url("../../res/img/default/pattern/steel01.svg"); background-repeat:repeat; }
+.board div#board .c				  { position:absolute;width:1.2em;height:1.2em;text-align:center;background-size:1.2em; }
+.board div#board .t				  { position:absolute;font-size:1.2em;width:1em;height:1em; border:1px solid black; cursor:move; background-color:rgba(128,128,128,0.2); background-image:url("../../res/img/default/pattern/steel01.svg");}
 .board.red div#board .t           { border:1px solid red; }
 .board.gray div#board .t          { border:1px solid gray; }
 .board div#board .dragging .t     { background-color:rgba(255,255,0,0.4); }
@@ -22,14 +22,14 @@
 .board div#menu .h1               { color:white; border:1px solid white; border-width:0 0 1px 0; padding-left:.5em;}
 .board div#menu #modes span       { font-size:0.8em; float:right; margin-right:.5em; display:none; }
 .board div#menu #colors           { width:110%; margin-top:.1em; }
-.board div#menu #colors .icon     { position:relative;overflow:visible;width:1.2em; height:1.2em; text-align:center; float:left; border-radius:.2em; margin-left:.05em; border:.08em solid gray; cursor:pointer; font-size:0.9em; }
+.board div#menu #colors .icon     { position:relative;overflow:visible;width:1.2em; height:1.2em; text-align:center; float:left; border-radius:.2em; margin-left:.05em; border:.08em solid gray; cursor:pointer; font-size:0.9em; background-size:1.2em;}
 .board div#menu #colors .icon.s   { border-color:black; }
 .board.red div#menu #colors .icon.s   { border-color:red; }
 .board.gray div#menu #colors .icon.s   { border-color:#333; }
 .board div#menu #colors .icon.d   { opacity:0.2; }
 .board div#menu #colors .number	  { border:.2em solid gray; font-size:.25em; position:absolute;top:70%; left:70%;width:1.2em;height:1.2em;text-align:center;background-color:blue;color:white;border-radius:.6em; }
 .board div#menu #brushes          { width:110%; margin-top:.1em; }
-.board div#menu #brushes .icon    { position:relative;overflow:visible;width:1.2em; height:1.2em; float:left; border-radius:.2em; margin-left:.05em; border:.08em solid gray; cursor:pointer; font-size:0.9em; background-color:#AAA; }
+.board div#menu #brushes .icon    { position:relative;overflow:visible;width:1.2em; height:1.2em; float:left; border-radius:.2em; margin-left:.05em; border:.08em solid gray; cursor:pointer; font-size:0.9em; background-color:#AAA;  }
 .board div#menu #brushes .icon.s  { border-color:black; }
 .board.red div#menu #brushes .icon.s  { border-color:red; }
 .board div#menu #brushes .icon.d  { opacity:0.2; }
@@ -45,7 +45,7 @@
 
 .board div#menu #back			  { font-size:1.2em; height:1em; float:left; cursor:pointer; margin-left:.1em; }
 .board div#menu #model		  	  { width:6em; height:6em; margin-top:.3em; border:0.3em solid white; background-color:white; position:relative; }
-.board div#menu #model>div		  { position:absolute;width:1.2em;height:1.2em;text-align:center;}
+.board div#menu #model>div		  { position:absolute;width:1.2em;height:1.2em;text-align:center;background-size:1.2em;}
 .board div#submit                 { font-size:1.5em; height:1em;width:1em; cursor:pointer; position:absolute; top:7em; left:0em; z-index:3; }
 .board div#submit>img             { display:none; }
 .board div#submit #subvalid       { display:inline; }
