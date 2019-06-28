@@ -11,23 +11,6 @@
 .calc div#exercice>div          { margin-left:1em; margin-right:0.5em;}
 .calc div#exercice .strong       { color:red; font-weight:bold; border: 1px solid red; border-width:1px 0; }
 
-.calc.devmode div#detail { display:inherit; }
-.calc div#detail               { width:90%; margin-left:10%; height:5em; font-size:0.4em; background-repeat:repeat; border-radius:1em 0 0 0;
-                        background-image:url("../../res/img/default/pattern/line01.svg"); text-align:justify; display:none; }
-.calc div#detail>div          { margin-left:1em; margin-right:0.5em;}
-.calc div#detail .detdiv    { display:none; }
-.calc div#detail #valid     { float:right; background-color:gray; border-radius:.5em; cursor:pointer; font-size:3em; margin:.2em; }
-
-.calc div#detail .settings     { font-size:.8em; background-color:gray; color:white; margin:.1em; padding:.1em .5em; width:15em; float:left; }
-.calc div#detail .settings.small { width: 2em; }
-.calc div#detail .settings.small .label { width:1em; }
-.calc div#detail .settings.small input { border:0; font-size:1em; width:0.5em; }
-.calc div#detail .label     { width:3em; float:left; overflow:visible; white-space:nowrap; }
-.calc div#detail input          { width:11em; border:0; background-color:rgba(0,0,0,0.2); color:white; padding:0 .5em; }
-
-.calc.devmode div#locale { display:inherit; }
-.calc div#locale { position:absolute; top:1%; left:96%; background-color:gray; border-radius:0.5em; font-size:0.5em; cursor:pointer; display:none; }
-
 .calc div#board                 { height:12.5em; font-size:0.8em; }
 .calc div#board>div             { position:relative; height:120%; width:120%; }
 .calc div#board .cell           { position:absolute; background-color:white; background-size:100%;
@@ -116,7 +99,6 @@
                                   overflow:visible;display:none; }
 .calc #target>div               { width:20px;height:20px;margin-top:-15px;margin-left:-15px; cursor:move;
                                   position:absolute;top:100%;left:100%;background-color:blue; display:none; }
-.calc.auto #target>div          { display:inherit; }
 .calc #target.s                 { border:.1em solid red; }
 .calc #target.s>div             { background-color:red; }
 
@@ -131,20 +113,6 @@
 
 
 
-.calc.devmode div#panel		{ font-size:.6em; left:65%; }
-.calc .mask { position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.4); z-index:200; display:none; }
-.calc .mask>div { background-color:rgba(255,255,255,0.8); width:90%; height:90%; margin:5%; }
-.calc .mask .icon { cursor:pointer; }
-.calc #mask textarea { border:0; font-size:.25em; margin:0 2%; width:95%; height:70%; }
-.calc #mask #import { background-color:gray; width:100%; cursor:pointer; }
-.calc #mask #import .icon { margin:0 auto; }
-
-.calc #glossary .elt { float:left; font-size:.4em; width:16.5em; height:1.3em; background-color:gray; margin:.1em; padding:.1em 0; display:none; }
-.calc #glossary  input { margin-left:.2em; width:12em; border:0; font-size:1em; background-color:rgba(0,0,0,0.4); color:white; padding:0 .4em; float:left; }
-.calc #glossary  input.label { width:2em; }
-
-.calc #glossary #gadd { float:right; background-color:gray; border-radius:.5em; }
-
 .calc #escreen                  { height:1em; color:white; }
 
 #esource                      { width:6em; height:2em; background-color:rgba(84,137,184,0.9); }
@@ -156,3 +124,21 @@
 .calc #eclear                 { top:33em; left:19em;  }
 
 .calc #tip                  { position:absolute; top:1%; left:93%; cursor:help; width:1em; height:1em; display:none; }
+
+
+
+/*============ EDITOR PANEL =============*/
+
+.calc_editor #e_editor>div					{ height:94%; }
+.calc_editor #e_editor textarea#e_exercice	{ height:20%; }
+.calc_editor #e_editor textarea				{ font-size:0.5em; background-color:white; color:#444; height:30%;
+											  margin-top:1%; border:0; width:93%; padding-left:5%; }
+.calc_editor #e_editor input				{ font-size:0.5em; background-color:white; color:#444; height:1.2em;
+											  margin-top:1%; border:0; width:93%; padding-left:5%; }
+.calc_editor #e_control 					{ display:none; }
+
+.calc_editor #e_tabs>div		{ width:1.2em; height:1.2em; float:left; text-align:center; background-color:gray; color:white; cursor:pointer; margin-right:.1em; }
+.calc_editor #e_tabs>div.s		{ background-color:red; }
+.calc_editor .e_tab							{ display:none; height:100%; }
+.calc_editor .e_toggle>div				{ float:left; width:5.2em; text-align:center; margin-right:.1em; margin-top:.1em; background-color:#FEC; cursor:pointer; }
+.calc_editor .e_toggle>div.s				{ background-color: #333; }

@@ -1,0 +1,66 @@
+<div>
+	<div class="e_column e_elt" id="e_editor">
+		<div id="e_data">
+			<div id="e_tabs">
+				<div onclick="$(this).closest('#e_data').find('#e_tabs>div').removeClass('s');$(this).addClass('s').closest('#e_data').find('.e_tab').hide();$(this).closest('#e_data').find('#e_tab1').show();" class="s">1</div>
+				<div onclick="$(this).closest('#e_data').find('#e_tabs>div').removeClass('s');$(this).addClass('s').closest('#e_data').find('.e_tab').hide();$(this).closest('#e_data').find('#e_tab2').show();">2</div>
+				<div id="ee_tabx" onclick="$(this).closest('#e_data').find('#e_tabs>div').removeClass('s');$(this).addClass('s').closest('#e_data').find('.e_tab').hide();$(this).closest('#e_data').find('#e_tabx').show();">+</div>
+			</div>
+			<div class="e_tab" id="e_tab1" style="display:inherit">
+				<textarea id="e_exercice" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+				<div class="e_toggle">
+					<div id="e_neg" onclick="$(this).toggleClass('s');">-1</div>
+					<div id="e_dec" onclick="$(this).toggleClass('s');">0.1</div>
+					<div id="e_len" onclick="$(this).html($(this).html().length>6?'9':$(this).html()+'9');">9</div>
+				</div>
+				<textarea id="e_texts" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+				<textarea id="e_images" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+			</div>
+			<div class="e_tab" id="e_tab2">
+				<input id="eph_size"></input>
+				<input id="eph_font"></input>
+				<input id="eph_sp"></input>
+				<div class="e_toggle">
+					<div id="e_withbars" onclick="$(this).toggleClass('s');">ABC 123</div>
+					<div id="e_withauto" onclick="$(this).toggleClass('s');">auto</div>
+					<div id="e_largepanel" onclick="$(this).toggleClass('s');">Large</div>
+				</div>
+				<input id="eph_pospanel"></input>
+				<textarea id="eph_hide" autocorrect="off" autocapitalize="off" spellcheck="false" style="height:10%"></textarea>
+				<textarea id="eph_tips" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+			</div>
+			<div class="e_tab" id="e_tabx">
+			</div>
+			
+		</div>
+		<div class="l bluekeypad" 
+			ontouchstart="$(this).closest('.calc_editor').calc_editor('valid',this);event.preventDefault();"
+			onclick="$(this).closest('.calc_editor').calc_editor('valid',this);">OK</div>
+	</div>
+
+
+	<div class="e_column e_elt" id="e_control"><div>
+		<textarea id='e_export' class='export' autocomplete='off' autocorrect='off' autocapitalize='off' spellcheck='false'></textarea>
+		<div class='l bluekeypad'
+			ontouchstart="$(this).closest('.calc_editor').calc_editor('import',this);event.preventDefault();"
+			onclick="$(this).closest('.calc_editor').calc_editor('import',this);">
+			OK
+		</div>
+	</div></div>
+	
+	<div class="e_panel e_elt" id="e_screen"><div></div></div>
+
+
+	<div class="e_panel e_elt" id="e_menu"><div>
+		<div id="e_cell" class="l bluekeypad"
+			ontouchstart="$(this).closest('.calc_editor').calc_editor('edit',this);event.preventDefault();"
+			onclick="$(this).closest('.calc_editor').calc_editor('edit',this);"></div>
+		<div id="e_import" class="l bluekeypad"
+			ontouchstart="$(this).closest('.calc_editor').calc_editor('edit',this);event.preventDefault();"
+			onclick="$(this).closest('.calc_editor').calc_editor('edit',this);"></div>
+		<div id="e_submit" class="l bluekeypad"
+			ontouchstart="$(this).closest('.calc_editor').calc_editor('edit',this);event.preventDefault();"
+			onclick="$(this).closest('.calc_editor').calc_editor('edit',this);">→ jLoDb</div>
+	</div></div>
+</div>
+
