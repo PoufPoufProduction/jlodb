@@ -56,7 +56,7 @@
 .calc #phandle #pvalid      { float:left; cursor:pointer; }
 .calc div#pmenu                  { position:absolute; left:-1em; top:0; }
 .calc div#pmenu>div              { background-color:white; border-radius:0.5em; background-image:url("../../res/img/icon/tab/tab00.svg");
-                                  cursor:pointer; overflow:visible;display:none; }
+                                  cursor:pointer; overflow:visible; display:none; }
 .calc div#pmenu>div.s            { background-color:red; }
 
 .calc .alert					{ display:none; position:absolute; font-size:6em; width:1em; height:1em; top:2%; left:60%; }
@@ -135,6 +135,9 @@
 											  margin-top:1%; border:0; width:93%; padding-left:5%; }
 .calc_editor #e_editor input				{ font-size:0.5em; background-color:white; color:#444; height:1.2em;
 											  margin-top:1%; border:0; width:93%; padding-left:5%; }
+.calc_editor #e_editor select				{ font-size:0.5em; background-color:#CEF; color:#444; height:1.6em;
+											  margin-top:1%; border:0; width:98%; padding-left:5%; }
+											  
 .calc_editor #e_control 					{ display:none; }
 
 .calc_editor #e_tabs>div		{ width:1.2em; height:1.2em; float:left; text-align:center; background-color:gray; color:white; cursor:pointer; margin-right:.1em; }

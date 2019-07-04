@@ -51,6 +51,22 @@
             var settings = helpers.settings($this);
 			
 			$this.find("#e_cell").html(_data.type+" ["+_data.pos.join(",")+"]");
+			settings.cell = _data;
+			
+			$this.find("#eph_ccolor").val(_data.elt.color?_data.elt.color:"");
+			$this.find("#eph_cbg").val(_data.elt.background?_data.elt.background:"");
+			$this.find("#eph_cwidth").val(_data.elt.width?_data.elt.width:"");
+			$this.find("#eph_cheight").val(_data.elt.height?_data.elt.height:"");
+			
+			$this.find("#e_type").val(_data.elt.type?_data.elt.type:"value");
+			$this.find("#eph_value").val(_data.elt.value?_data.elt.value:"");
+			
+			$this.find("#e_cfixed").attr("class",_data.elt.fixed?"":"s");
+			$this.find("#e_cresult").attr("class",_data.elt.result?"":"s");
+			
+			$this.find("#eph_bgimg").val(_data.elt.bgimg?_data.elt.bgimg:"");
+			
+			
 		},
 		valid: function($this) {
             var settings = helpers.settings($this);
@@ -84,8 +100,12 @@
 			if ($this.find("#eph_font").val().length) { data.font=parseFloat($this.find("#eph_font").val()); }
 			if ($this.find("#eph_sp").val().length)   { data.sp=parseFloat($this.find("#eph_sp").val()); }
 			if ($this.find("#eph_pospanel").val().length) { data.pospanel=$this.find("#eph_pospanel").val().split(","); }
+			if ($this.find("#eph_size").val().length) { data.size=$this.find("#eph_size").val().split("*"); }
 			
-			if ($this.find("#eph_tips").val().length) { data.tips=$this.find("#eph_tips").val().split("\n"); }
+			try {
+				if ($this.find("#eph_gg").val().length) { data.gg=eval($this.find("#eph_gg").val()); }
+			} catch(e) { alert(e.message); }
+			if ($this.find("#eph_gen").val().length) { data.gen=$this.find("#eph_gen").val(); }
 			
 			if ($this.find("#eph_hide").val().length) {
 				var hides = $this.find("#eph_hide").val().split('\n');
@@ -101,6 +121,41 @@
 			var e_class=[];
 			if (!$this.find("#e_largepanel").hasClass("s")) { e_class.push("largepanel"); }
 			if (e_class.length) { data["class"] = e_class.join(" "); }
+			
+			if (settings.cell) {
+				var elt = {}
+				
+				if ($this.find("#eph_cbg").val().length) 		{ elt.background = $this.find("#eph_cbg").val(); }
+				if ($this.find("#eph_ccolor").val().length) 	{ elt.color = $this.find("#eph_ccolor").val(); }
+				if ($this.find("#eph_cwidth").val().length) 	{ elt.width = parseFloat($this.find("#eph_cwidth").val()); }
+				if ($this.find("#eph_cheight").val().length) 	{ elt.height = parseFloat($this.find("#eph_cheight").val()); }
+
+				var t = {};
+				
+				
+				switch (settings.cell.type) {
+					case "all": settings.data.all = elt; break;
+					case "col": if (!settings.data.cols) { settings.data.cols={}; }
+								settings.data.cols["col"+settings.cell.pos[0]]=elt;
+								break;
+					case "row": if (!settings.data.rows) { settings.data.rows={}; }
+								settings.data.rows["row"+settings.cell.pos[1]]=elt;
+								break;
+					default:	
+						elt.type = $this.find("#e_type").val();
+						if ($this.find("#e_cresult").hasClass("s")) { elt.value = $this.find("#eph_value").val(); }
+						else { elt.result = $this.find("#eph_value").val(); }
+						if (!$this.find("#e_cfixed").hasClass("s")) { elt.fixed = true; }
+						
+						if ($this.find("#eph_bgimg").val()) { elt.bgimg = $this.find("#eph_bgimg").val(); }
+						
+						if (!settings.data.cells) { settings.data.cells={}; }
+						settings.data.cells["c"+settings.cell.pos[0]+"x"+settings.cell.pos[1]]=elt;
+								
+						break;
+				}
+				
+			}
 			
 			data = $.extend({},settings.data,data);
 			
@@ -120,7 +175,7 @@
 				args.edit = true;
 				args.highlight = settings.highlight;
 				args.context = { 
-					onedit:		function($activity, _data) { helpers.edit($this, _data); },
+					onedit:		function($activity, _data) { helpers.onedit($this, _data); },
 					onquit:		function() { },
 					onload:		function($t) { $t.addClass("nosplash"); } };
 				args.locale = settings.locale;
@@ -134,7 +189,7 @@
             var settings = helpers.settings($this);
 			
 			$this.find("#e_exercice").val(_args.data.exercice);
-			$this.find("#e_texts").val(_args.data.txt.join('\n'));
+			$this.find("#e_texts").val(_args.data.txt?_args.data.txt.join('\n'):"");
 			$this.find("#e_neg").attr("class",_args.data.noneg?"s":"");
 			$this.find("#e_dec").attr("class",_args.data.nodec?"s":"");
 			
@@ -160,6 +215,10 @@
 			$this.find("#eph_hide").val(hide.join('\n'));
 			
 			$this.find("#eph_tips").val(_args.data.tips?_args.data.tips.join('\n'):"");
+			
+			
+			$this.find("#eph_gg").val(_args.data.gg?JSON.stringify(_args.data.gg):"");
+			$this.find("#eph_gen").val(_args.data.gen?_args.data.gen:"");
 		}
     };
 
@@ -175,6 +234,7 @@
 					$activity		: 0,				// The activity object
 					editpanel		: true,
 					data			: {},				// Exercice data
+					cell			: 0,				// Current cell
 					locale			: ""				// Locale object for relaunch
                 };
 

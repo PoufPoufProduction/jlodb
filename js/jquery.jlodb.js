@@ -167,14 +167,18 @@ jlodbmaze.prototype = {
             // GET EXERCICE AND LAUNCH
         exercice    : function($this, _args) {
             var settings = helpers.settings($this);
-            if (settings.standalone && _args.id) {
-                $.getJSON("standalone/exercice/"+_args.id+".json", function (exercice) {
-                    $.getJSON("standalone/activity/"+exercice.activity+".json", function (activity) {
-                        exercice.locale=activity;
-                        var data={exercices:[exercice]};
-                        helpers.onexercice($this, data);
-                    });
-                });
+            if (settings.standalone) {
+				if (_args.id) {
+					$.getJSON("standalone/exercice/"+_args.id+".json", function (exercice) {
+						$.getJSON("standalone/activity/"+exercice.activity+".json", function (activity) {
+							exercice.locale=activity;
+							exercice.id=_args.id;
+							var data={exercices:[exercice]};
+							helpers.onexercice($this, data);
+						});
+					});
+				}
+				else { console.log("Id is mandatory on standalone mod"); }
             }
             else {
                 var tmp     = new Date();

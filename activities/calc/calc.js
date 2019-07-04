@@ -39,7 +39,7 @@
     var regExp = [
         "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
         "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
-        "\\\[br\\\]",                               "<br/>",
+        "\\\[br\\\]",                               "<br style='clear:both'/>",
         "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
         "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
         "\\\[green\\\]([^\\\[]+)\\\[/green\\\]",    "<span style='color:green'>$1</span>",
@@ -49,7 +49,7 @@
         "\\\[img\\\]([^\\\[]+)\\\[/img\\\]",        "<div class='image'><img src='$1.svg'/></div>",
         "\\\[img ([^\\\]]+)\\\]([^\\\[]+)\\\[/img\\\]",        "<div class='image' style='background-image:url(\"$1.svg\")'><img src='$2.svg'/></div>",
         "\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='img'><div class='icon'><img src='$1.svg'/></div></div>",
-        "\\\[icon2\\\]([^\\\[]+)\\\[/icon2\\\]",    "<div class='icon' style='float:left;font-size:2em;'><img src='$1.svg'/></div>",
+        "\\\[icon([0-9]+)\\\]([^\\\[]+)\\\[/icon[0-9]*\\\]",    "<div class='icon' style='float:left;font-size:$1em;'><img src='$2.svg'/></div>",
         "\\\[small\\\]([^\\\[]+)\\\[/small\\\]",    "<span style='font-size:0.5em'>$1</span>"
     ];
 
@@ -88,6 +88,7 @@
         format: function(_text) {
             for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
                 var vReg = new RegExp(regExp[i*2],"g");
+				console.log(_text+" "+regExp[i*2]);
                 _text = _text.replace(vReg,regExp[i*2+1]);
             }
             return _text;
@@ -263,37 +264,39 @@
                 var height  = h;
                 var html    = "";
                 
-                html = '<div id="c0x0" class="cell g" style="width:'+(w-settings.sp)+'em;height:'+(h-settings.sp)+'em;top:'+settings.margin[1]+'em;left:'+settings.margin[0]+'em;" ';
+                html = '<div id="c0x0" class="cell g" style="width:'+w+'em;height:'+h+'em;top:'+settings.margin[1]+'em;left:'+settings.margin[0]+'em;" ';
                 if (settings.edit) {
                     html+='onmousedown=\'$(this).closest(".calc").calc("onedit","all",this);\' ';
                     html+='ontouchstart=\'$(this).closest(".calc").calc("onedit","all",0);event.preventDefault();\' ';
                 }
                 html+= '></div>';
                 $board.append(html);
+				width+=settings.sp;
+				height+=settings.sp;
                 for (var i=0; i<settings.size[0]; i++) {
                     w = helpers.value($this,(i+1),0,"width",2);
                     h = helpers.value($this,(i+1),0,"height",1.2);
-                    html = '<div id="c'+i+'x0" class="cell g" style="top:'+settings.margin[1]+'em;left:'+(settings.margin[0]+width)+'em;width:'+(w-settings.sp)+'em;height:'+(h-settings.sp)+'em;" ';
+                    html = '<div id="c'+(i+1)+'x0" class="cell g" style="top:'+settings.margin[1]+'em;left:'+(settings.margin[0]+width)+'em;width:'+w+'em;height:'+h+'em;" ';
                     if (settings.edit) {
                         html+='onmousedown=\'$(this).closest(".calc").calc("onedit","col",this);\' ';
 						html+='ontouchstart=\'$(this).closest(".calc").calc("onedit","col",this);event.preventDefault();\' ';
                     }
                     html+= '>'+(settings.withbars?String.fromCharCode(65 + i):"")+'</div>';
                     $board.append(html);
-                    width+=w;
+                    width+=w+settings.sp;
                 }
                     
                 for (var j=0; j<settings.size[1]; j++) {
                     w = helpers.value($this,0,(j+1),"width",1.2);
                     h = helpers.value($this,0,(j+1),"height",1.2);
-                    html = '<div id="c0x'+j+'" class="cell g" style="top:'+(settings.margin[1]+height)+'em;left:'+settings.margin[0]+'em;width:'+(w-settings.sp)+'em;height:'+(h-settings.sp)+'em;" ';
+                    html = '<div id="c0x'+(j+1)+'" class="cell g" style="top:'+(settings.margin[1]+height)+'em;left:'+settings.margin[0]+'em;width:'+w+'em;height:'+h+'em;" ';
                     if (settings.edit) {
                         html+='onmousedown=\'$(this).closest(".calc").calc("onedit","row",this);\' ';
 						html+='ontouchstart=\'$(this).closest(".calc").calc("onedit","row",this);event.preventDefault();\' ';
                     }
                     html+='>'+(settings.withbars?(j+1):"")+'</div>'
                     $board.append(html);
-                    height+=h;
+                    height+=h+settings.sp;
                 }
 
                 // Copy the grid initialization into settings.sheet[];
@@ -321,7 +324,7 @@
                         var type = helpers.value($this,(i+1),(j+1),"type","");
                         if (type.length) { settings.sheet[j][i].type = type; }
 
-                        settings.sheet[j][i].fixed  = helpers.value($this,(i+1),(j+1),"fixed",(type=="fixed"));
+                        settings.sheet[j][i].fixed  = helpers.value($this,(i+1),(j+1),"fixed",(type=="free"));
                         settings.sheet[j][i].value  = helpers.value($this,(i+1),(j+1),"value","");
                         settings.sheet[j][i].result = helpers.value($this,(i+1),(j+1),"result","");
                         settings.sheet[j][i].opt    = helpers.value($this,(i+1),(j+1),"opt","");
@@ -333,9 +336,9 @@
                     }
                 }
                 
-                var height= helpers.value($this,0,0,"height",1.2);
+                var height= helpers.value($this,0,0,"height",1.2)+settings.sp;
                 for (var j=0; j<settings.size[1]; j++) {
-                    var width = helpers.value($this,0,0,"width",1.2);
+                    var width = helpers.value($this,0,0,"width",1.2)+settings.sp;
                     for (var i=0; i<settings.size[0]; i++) {
                         w = helpers.value($this,(i+1),(j+1),"width",2);
                         h = helpers.value($this,(i+1),(j+1),"height",1.2);
@@ -344,22 +347,22 @@
                             var vClass="cell "+settings.sheet[j][i].type;
                             if (settings.sheet[j][i].opt) { vClass+=" "+settings.sheet[j][i].opt; }
 							settings.sheet[j][i].pos = [width,height];
-							settings.sheet[j][i].size = [w-settings.sp,h-settings.sp];
-                            html = '<div class="'+vClass+'" style="top:'+(settings.margin[1]+height)+'em;left:'+(settings.margin[0]+width)+'em;width:'+(w-settings.sp)+'em;'+
-                                'height:'+(h-settings.sp)+'em;background-color:'+helpers.value($this,(i+1),(j+1),"background","white")+';'+
+							settings.sheet[j][i].size = [w,h];
+                            html = '<div class="'+vClass+'" style="top:'+(settings.margin[1]+height)+'em;left:'+(settings.margin[0]+width)+'em;width:'+w+'em;'+
+                                'height:'+h+'em;background-color:'+helpers.value($this,(i+1),(j+1),"background","white")+';'+
                                 (settings.sheet[j][i].bgimg?"background-image:url('"+settings.sheet[j][i].bgimg+"');":"")+
                                 'color:'+helpers.value($this,(i+1),(j+1),"color","black")+';" ';
                             html+='id="c'+(i+1)+'x'+(j+1)+'" ';
-                            if (!settings.sheet[j][i].fixed || settings.dev) {
+                            if (!settings.sheet[j][i].fixed || settings.edit) {
                                 html+='onmousedown=\'$(this).closest(".calc").calc("cell",this);\' ';
                                 html+='ontouchstart=\'$(this).closest(".calc").calc("cell",this);event.preventDefault();\' ';
                             }
                             html+='><div></div></div>';
                             $board.append(html);
                         }
-                        width+=helpers.value($this,(i+1),0,"width",2);
+                        width+=helpers.value($this,(i+1),0,"width",2)+settings.sp;
                     }
-                    height+=helpers.value($this,0,(j+1),"height",1.2);
+                    height+=helpers.value($this,0,(j+1),"height",1.2)+settings.sp;
                 }
 				helpers.update($this);
 				
@@ -630,7 +633,7 @@
                 case "txt":
                     cell.tmp = cell.tmp.toString().length?settings.txt[cell.tmp]:"";
                     break;
-                case "fixed" :
+                case "free" :
                     if (settings.po && settings.po[cell.tmp]) { cell.tmp = settings.po[cell.tmp]; }
                     cell.tmp =helpers.format(cell.tmp.toString());
                     break;
@@ -751,7 +754,7 @@
                     wrong           : 0,
                     tipid           : 0,
                     auto            : { origin:[], target:[], sheet:[], size:[] },
-					edit			: { id: 0 }
+					intern			: { id: 0 }
                 };
 
                 return this.each(function() {
@@ -774,8 +777,7 @@
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 settings.interactive = true;
-                if (settings.edit) {
-                    for (var i in settings.tabs) { $this.find("#tab"+settings.tabs[i]).show(); } }
+                if (settings.edit) { $this.find("#pmenu .icon").show(); }
             },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
@@ -859,7 +861,7 @@
                                                 }
                                             });
                                             break;
-                                        case "fixed":
+                                        case "free": tab = 0;
                                             break;
                                         default:
                                             var value = c.value.toString();
@@ -868,9 +870,11 @@
                                             break;
                                     }
                                     $this.find("#ppanel>div").hide();
-                                    $this.find("#ppanel #p"+tab).show();
                                     $this.find("#pmenu>div").removeClass("s");
-                                    $this.find("#pmenu #tab"+tab).addClass("s");
+									if (tab) {
+										$this.find("#ppanel #p"+tab).show();
+										$this.find("#pmenu #tab"+tab).addClass("s");
+									}
                                 }
                                 $this.find("#escreen").css("opacity",c.type=="math"?1:0);
                             }
@@ -1012,6 +1016,7 @@
                     else {
                         var cell=0;
 						var n = settings.toright?[1,0]:[0,1];
+						if (settings.edit) { n = [0,0]; }
                         if (!settings.nonext && i+n[0]<settings.size[0] && j+n[1]<settings.size[1] &&
                              settings.sheet[j+n[1]][i+n[0]].type!="hide" && !settings.sheet[j+n[1]][i+n[0]].fixed) {
                             cell=$this.find("#c"+(parseInt(settings.target[1])+n[0])+
@@ -1086,9 +1091,35 @@
                 var $this = $(this) , settings = helpers.settings($this);
 				if (_elt) {
 					var type=["all","col","row"];
-					if (_type=="all") { _type=type[(settings.edit.id++)%type.length]; }
+					var elt={};
+					var pos = $(_elt).attr("id").substr(1).split("x");
+					pos=[parseInt(pos[0]), parseInt(pos[1]) ];
+						
+					if (_type=="all") { _type=type[(settings.intern.id++)%type.length]; }
+					if (_type=="all") { if (settings[_type]) { elt=settings[_type]; } }
+					else {
+						var elts = settings[_type+"s"];
+						if (elts) {
+							var id="c"+pos[0]+"x"+pos[1];
+							if (_type=="col") { id="col"+pos[0]; } else
+							if (_type=="row") { id="row"+pos[1]; }
+							if (elts[id]) { elt = elts[id]; }
+						}
+					}
+					
+					if (_type=="cell") {
+						var cell = settings.sheet[pos[1]-1][pos[0]-1];
+						elt.type = cell.type;
+						elt.value = cell.result?cell.result:cell.value;
+						elt.fixed = cell.fixed;
+						elt.result = (cell.result!=0);
+						
+						if (elt.type=="graph" || elt.type=="math") { elt.value=JSON.stringify(elt.value); }
+					}
+					
+					
 					if (settings.context && settings.context.onedit) {
-						settings.context.onedit($this, { type:_type, pos:$(_elt).attr("id").substr(1).split("x")});
+						settings.context.onedit($this, { type:_type, pos:pos, elt:elt});
 					}
 				}
 			}
