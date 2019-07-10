@@ -298,6 +298,7 @@
             if (settings.exercice) {
                 if ($.type(settings.exercice)=="string") {
                     $this.find("#exercice #content").html(helpers.format(settings.exercice));
+					$this.find("#exercice #content").css("font-size",settings.fontex+"em");
                 } else {
                     $this.find("#exercice #content").html(helpers.format(settings.exercice.value));
                     if (settings.current.tag) {
@@ -316,9 +317,10 @@
             } else
             if (settings.current.exercice) {
                 $this.find("#exercice #content").html(settings.current.comment);
-                $this.find("#exercice").show(); }
+                $this.find("#exercice").show();
+				$this.find("#exercice #content").css("font-size",settings.fontex+"em");
+			}
             else { $this.find("#exercice").hide(); }
-            $this.find("#exercice #content").css("font-size",settings.fontex+"em");
 			
 			// AUTOMATIC VALIDATION
 			if (settings.automatic) {
@@ -452,9 +454,10 @@
                     var wrongs  = 0;
                     if (settings.scorefct) { wrongs = eval('('+settings.scorefct+')')($this, settings.current.elts, settings); }
                     else {
-                        for (var i in settings.current.elts) {
-                            if(!settings.current.result || settings.current.result.length<i ||
-                                settings.current.elts[i].state!=settings.current.result[i]) {
+						var result = "";
+                        for (var i=0; i<settings.current.result.length; i++) {
+							result+=settings.current.elts[i].state;
+                            if( settings.current.elts[i].state!=settings.current.result[i]) {
                                 wrongs++;
 								
 								var state = -1;
@@ -467,6 +470,8 @@
                                 settings.current.elts[i].state = state;
                             }
                         }
+						
+						console.log(result);
                     }
                     
                     for (var i in settings.current.elts) { helpers.refresh($this, settings.current.elts[i]); }

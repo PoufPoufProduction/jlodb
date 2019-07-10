@@ -392,9 +392,6 @@
                     $(this).attr("id","c"+_index);
             });
             
-            if (settings.dev) { $this.find("#devmode").show(); }
-
-
             if (!exercice && settings.values) { exercice = settings.values[settings.id].exercice; }
             if (exercice) {
                 if ($.isArray(exercice)) {
@@ -437,9 +434,15 @@
             
             if (_begin) {
                 settings.color[1] = settings.color[0];
-                if (    c!=-1 && settings.data && settings.data[c] &&
-                        (settings.data[c].toggle||settings.data[c].notover) && c==settings.color[1])
-                    { settings.color[1] = -1; }
+				
+				var id = c;
+				if ( settings.color[1]!=-1 && settings.source ) {
+                    for (var s=0; s<settings.source.length; s++) {
+						if (settings.source[s][0]==settings.color[1]) {id=s; break; }}
+				}
+				if (    c!=-1 && settings.data && settings.data[id] &&
+						(settings.data[id].toggle||settings.data[id].notover) && c==settings.color[1])
+					{  settings.color[1] = -1; }
             }
 
             if (settings.data ) {
@@ -461,79 +464,6 @@
                 }
                 
                 if (settings.onpaint) { eval('('+settings.onpaint+')')($this, settings, helpers.result($this)); }
-            }
-        },
-        dev: {
-            picross: function($this, _result) {
-                var settings = helpers.settings($this);
-                var e="";
-                // vertical
-                for (var i=0; i<settings.dev.data[0]; i++) {
-                    var val=false, nb=0, str="";
-                    for (var j=0; j<settings.dev.data[1]; j++) {
-                        var current = _result[i+j*settings.dev.data[0]];
-                        if (current==" "&&val) { str+=nb>9?String.fromCharCode(55+nb):nb; nb=0; val=false;}
-                        if (current!=" ") { nb++; val=true; }
-                    }
-                    if (val) str+=nb>9?String.fromCharCode(55+nb):nb;
-                    while(str.length<Math.ceil(settings.dev.data[1]/2)) { str=" "+str; }
-                    e+=str;
-                }
-                // horizontal
-                for (var i=0; i<settings.dev.data[1]; i++) {
-                    var val=false, nb=0, str="";
-                    for (var j=0; j<settings.dev.data[0]; j++) {
-                        var current = _result[i*settings.dev.data[0]+j];
-                        if (current==" "&&val) { str+=nb>9?String.fromCharCode(55+nb):nb; nb=0; val=false;}
-                        if (current!=" ") { nb++; val=true; }
-                    }
-                    if (val) str+=nb>9?String.fromCharCode(55+nb):nb;
-                    while(str.length<Math.ceil(settings.dev.data[0]/2)) { str=" "+str; }
-                    e+=str;
-                }
-                // TODO check grid validity
-                return "{\"result\":\""+_result+"\",\"t\":\""+e+"\"}";
-            },
-            bitmap: function($this, _result) {
-                var settings = helpers.settings($this);
-                var e="",h="";
-                for (var j=0; j<settings.dev.data[1]; j++) {
-                    var val=0;
-                    
-                    for (var i=0; i<settings.dev.data[0]; i++) {
-                        var v = _result[j*settings.dev.data[0]+i];
-                        if (v!=' ' && v!=0) {
-                            if (settings.dev.data[2]==2) { val+=(1<<(7-i)); }
-                            else { val+=((parseInt(v)>1)?(1<<((7-i)*2+1)):0)+(parseInt(v)%2?(1<<((7-i)*2)):0); }
-                        }
-                    }
-                    if (e.length) { e+=","; h+=","}
-                    e+="\""+val+"\"";
-
-                    var rc = val.toString(16); while(rc.length<settings.dev.data[2]) { rc="0"+rc; }
-                    h+="\""+rc+"\"";
-                }
-                return "DEC: {\"result\":\""+_result+"\",\"t\":["+e+"]}\nHEX: {\"result\":\""+_result+"\",\"t\":["+h+"]}";
-            },
-            paint: function($this, _result) {
-                var settings = helpers.settings($this);
-                var o="";
-				if (!settings.dev.data) { o = _result; } else
-                if (settings.dev.data[2]==0) {
-                    for (var i=0; i<_result.length; i++) {
-                        var line = Math.floor(i/settings.dev.data[0]);
-                        o+=_result[i%settings.dev.data[0]+(settings.dev.data[1]-line-1)*settings.dev.data[0]];
-                    }
-                }
-                else if (settings.dev.data[2]==1) {
-                    for (var i=0; i<_result.length; i++) {
-                        var line = Math.floor(i/settings.dev.data[0]);
-                        if (line<settings.dev.data[1]) {
-                            o+=_result[(settings.dev.data[0]-i%settings.dev.data[0]-1)+line*settings.dev.data[0]];
-                        }
-                    }
-                }
-                return "{\"result\":\""+_result+"\",\"o\":\""+o+"\"}";
             }
         }
     };
@@ -581,15 +511,6 @@
                 var $this = $(this) , settings = helpers.settings($this);
                 settings.interactive = true;
             },
-            devmode: function() {
-                var $this = $(this) , settings = helpers.settings($this);
-                if (settings.dev) {
-                    var result=helpers.result($this);
-                    if (helpers.dev[settings.dev.mode]) { result = helpers.dev[settings.dev.mode]($this,result); }
-                    $this.find("#devoutput textarea").val(result);
-                    $this.find("#devoutput").show();
-                }
-            },
             tag: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 if (settings.interactive && settings.legend) { $this.find("#legend").toggle(); }
@@ -603,6 +524,8 @@
 
                     var result=helpers.result($this);
                     var nbErrors = 0;
+					
+					if (settings.dev) { console.log(result); }
 
                     if (settings.scorefct) {
                         if (settings.scorefct=="noscore") { settings.score = 5; nbErrors = 0; }

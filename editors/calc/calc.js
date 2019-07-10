@@ -100,7 +100,10 @@
 			if ($this.find("#eph_font").val().length) { data.font=parseFloat($this.find("#eph_font").val()); }
 			if ($this.find("#eph_sp").val().length)   { data.sp=parseFloat($this.find("#eph_sp").val()); }
 			if ($this.find("#eph_pospanel").val().length) { data.pospanel=$this.find("#eph_pospanel").val().split(","); }
-			if ($this.find("#eph_size").val().length) { data.size=$this.find("#eph_size").val().split("*"); }
+			if ($this.find("#eph_size").val().length) { 
+				var vSize=$this.find("#eph_size").val().split("*");
+				data.size = [ parseInt(vSize[0]), parseInt(vSize[1]) ];
+			}
 			
 			try {
 				if ($this.find("#eph_gg").val().length) { data.gg=eval($this.find("#eph_gg").val()); }
@@ -143,8 +146,10 @@
 								break;
 					default:	
 						elt.type = $this.find("#e_type").val();
-						if ($this.find("#e_cresult").hasClass("s")) { elt.value = $this.find("#eph_value").val(); }
-						else { elt.result = $this.find("#eph_value").val(); }
+						var value = $this.find("#eph_value").val();
+						if (elt.type=="graph") { value = JSON.parse(value); }
+						
+						if ($this.find("#e_cresult").hasClass("s")) { elt.value = value; } else { elt.result = value; }
 						if (!$this.find("#e_cfixed").hasClass("s")) { elt.fixed = true; }
 						
 						if ($this.find("#eph_bgimg").val()) { elt.bgimg = $this.find("#eph_bgimg").val(); }

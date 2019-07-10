@@ -2,38 +2,44 @@
 <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="100%" height="100%" viewBox="0 0 640 480" title="0 0 640 480" id="paint">
 <defs id="defs2385">
     <style type="text/css">
-        .c0         { fill:white !important; cursor:pointer; }
-        .c1         { fill:black !important; cursor:pointer; }
+        svg#paint .c0         { fill:white !important; cursor:pointer; }
+        svg#paint .c1         { fill:black !important; cursor:pointer; }
 
-        .a          { fill:white; cursor:pointer; }
-        .w          { fill:red !important; }
-        .s          { fill:#225588 !important;}
-        .bg1        { fill:#5599BB; }
-        .bg2        { fill:#2277BB; }
-        .bg3        { fill:#77CCFF; }
-        .bg4        { fill:#AAEEFF; }
-        .bg5        { stroke:#5599BB; stroke-width:2px; }
+        svg#paint .a          { fill:white; cursor:pointer; }
+        svg#paint .w          { fill:red !important; }
+        svg#paint .s          { fill:#225588 !important;}
+        svg#paint .bg1        { fill:#5599BB; }
+        svg#paint .bg2        { fill:#2277BB; }
+        svg#paint .bg3        { fill:#77CCFF; }
+        svg#paint .bg3s        { stroke:white; stroke-width:10px; fill:none; }
+        svg#paint .bg4        { fill:#AAEEFF; }
+        svg#paint .bg5        { stroke:#5599BB; stroke-width:2px; }
 
-        .bg6        { fill:none; stroke:#44FF66; stroke-width:6px;display:none; }
+        svg#paint .bg6        { fill:none; stroke:#44FF66; stroke-width:6px;display:none; }
 
-        .h06 #col06     { display:none; }
-        .h06 #l05       { display:none; }
-        .h07 #col07     { display:none; }
-        .h07 #l06       { display:none; }
+        .h06 svg#paint #col06     { display:none; }
+        .h06 svg#paint #colb06     { display:none; }
+        .h06 svg#paint #l05       { display:none; }
+        .h07 svg#paint #col07     { display:none; }
+        .h07 svg#paint #colb07     { display:none; }
+        .h07 svg#paint #l06       { display:none; }
 
-        .end.r01 #r01   { display:inline; }
-        .end.r02 #r02   { display:inline; }
-        .end.r03 #r03   { display:inline; }
-        .end.r04 #r04   { display:inline; }
-        .end.r05 #r05   { display:inline; }
-        .end.r06 #r06   { display:inline; }
-        .end.r07 #r07   { display:inline; }
+        .end.r01 svg#paint #r01   { display:inline; }
+        .end.r02 svg#paint #r02   { display:inline; }
+        .end.r03 svg#paint #r03   { display:inline; }
+        .end.r04 svg#paint #r04   { display:inline; }
+        .end.r05 svg#paint #r05   { display:inline; }
+        .end.r06 svg#paint #r06   { display:inline; }
+        .end.r07 svg#paint #r07   { display:inline; }
 
-        text        { font-size:20px;text-anchor:middle;fill:white;font-family:Courier;font-weight:bold; }
+        svg#paint text        { font-size:20px;text-anchor:middle;fill:white;font-family:Courier;font-weight:bold; }
     </style>
 </defs>
 
 <g id="canvas" transform="translate(40,30)">
+    <rect x="-1" y="-1" width="401" height="361" class="bg3s"/>
+    <rect x="400" y="-1" width="80" height="361" class="bg3s" id="colb06"/>
+    <rect x="480" y="-1" width="80" height="361" class="bg3s" id="colb07"/>
     <rect x="-1" y="-1" width="401" height="361" class="bg3"/>
 
     <rect x="0"   y="0" width="79" height="39" class="bg1" id="l0"/>     <text y="30" transform="translate(40,0)" class="t"></text>

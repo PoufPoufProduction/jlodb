@@ -88,7 +88,6 @@
         format: function(_text) {
             for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
                 var vReg = new RegExp(regExp[i*2],"g");
-				console.log(_text+" "+regExp[i*2]);
                 _text = _text.replace(vReg,regExp[i*2+1]);
             }
             return _text;
@@ -267,7 +266,7 @@
                 html = '<div id="c0x0" class="cell g" style="width:'+w+'em;height:'+h+'em;top:'+settings.margin[1]+'em;left:'+settings.margin[0]+'em;" ';
                 if (settings.edit) {
                     html+='onmousedown=\'$(this).closest(".calc").calc("onedit","all",this);\' ';
-                    html+='ontouchstart=\'$(this).closest(".calc").calc("onedit","all",0);event.preventDefault();\' ';
+                    html+='ontouchstart=\'$(this).closest(".calc").calc("onedit","all",this);event.preventDefault();\' ';
                 }
                 html+= '></div>';
                 $board.append(html);
@@ -417,12 +416,19 @@
                                 } else { vOk = false; }
                             }
                         }
+						
+						
+						
 
                         for (var i=0;i<=nbi&&vOk;i++) for (var j=0;j<=nbj&&vOk;j++) {
+							
                             if (!settings.auto.sheet[settings.auto.target[1]+j][settings.auto.target[0]+i]) {
                                 settings.auto.sheet[settings.auto.target[1]+j][settings.auto.target[0]+i] =
                                     helpers.clone(settings.auto.sheet[settings.auto.target[1]][settings.auto.target[0]]);
                                 var c = settings.auto.sheet[settings.auto.target[1]+j][settings.auto.target[0]+i];
+								var o = settings.sheet[settings.auto.target[1]+j][settings.auto.target[0]+i];
+								c.pos = [o.pos[0], o.pos[1]];
+
                                 switch (c.type) {
                                     case "value" : c.value+=j+i; break;
                                     case "math"  : helpers.ref.update(c.value,i,j);
@@ -795,8 +801,10 @@
                     settings.auto.origin = [ vEvent.clientX, vEvent.clientY ];
                     settings.auto.target = [ parseInt(settings.target[1]-1), parseInt(settings.target[2]-1) ];
                     settings.auto.sheet = new Array(settings.size[1]);
+
                     for (var i=0; i<settings.size[1]; i++) { settings.auto.sheet[i]=new Array(settings.size[0]); }
                     settings.auto.sheet[settings.auto.target[1]][settings.auto.target[0]]=helpers.clone(target);
+					
                 }
             },
             cell: function(_cell) {
@@ -1114,7 +1122,8 @@
 						elt.fixed = cell.fixed;
 						elt.result = (cell.result!=0);
 						
-						if (elt.type=="graph" || elt.type=="math") { elt.value=JSON.stringify(elt.value); }
+						if (elt.type=="graph" ) { elt.value=JSON.stringify(elt.value); }
+						if (elt.type=="math" ) { return; }
 					}
 					
 					
