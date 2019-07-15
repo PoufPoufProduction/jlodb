@@ -11,7 +11,7 @@
 		transform	: {},										// Special transform operations
 		desktop		: [0,0],									// Desktop center
         boundaries  : [-1,-1,-1,-1],                            // Piece move boundaries
-        delay       : [1000,3000],                              // Delay before end [good, wrong]
+        delay       : [2000,3000],                              // Delay before end [good, wrong]
         scale       : 1.2,                                      // The move scale of the pgroup
         radius      : 20,                                       // The magnetic radius
         zhandling   : true,                                     // Handle the z-index
@@ -188,6 +188,7 @@
             var settings = helpers.settings($this);
             settings.elts             = {};
             $this.find("#submit").removeClass();
+            $this.find("#effects").hide();
             $this.find(".t").hide();
             var inituse               = [];
             var ids                   = [];
@@ -650,6 +651,13 @@
 					$this.find("#submit").addClass("good");
 					$(settings.svg.root()).attr("class", $(settings.svg.root()).attr("class")+" good");
 				}
+				
+				
+                $this.find("#effects>div").hide();
+                if (!wrongs) { $this.find("#effects #good").css("opacity",0).show().animate({opacity:1},500); }
+                else         { $this.find("#effects #wrong").css("opacity",0).show().animate({opacity:1},500); }
+                $this.find("#effects").show();
+					
                 
                 if ( settings.puzzleid<settings.number ) {
                     setTimeout(function() { helpers.rebuild($this); settings.interactive = true; },
