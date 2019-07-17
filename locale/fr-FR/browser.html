@@ -1,62 +1,53 @@
 <div id="jbrowser">
 <div id="jtab">
     <div class="tab" id="ontab">
-        <div class="label s" onclick="$(this).toggleClass('s'); $(this).closest('.browser').browser('update');"></div>
+        <div class="jheader">
+			<div id="ontoggle" class="brtoggle s">+</div>
+			<div id="onlabel"></div>
+		</div>
         <div class="content"></div>
-        <div class="footer" onclick="$(this).prev().toggleClass('s');"></div>
+		<div id="onmask"></div>
     </div>
-    <div class="tab" id="actab"></div>
-    <div class="tab" id="patab">
-        <div id="p">
-            <div id="p2">
-            <table>
-                <tr><td>
-                    <div id="level" class="slide">
-                        <div class="bar"></div>
-                        <div id="min" class="cursor">1</div>
-                        <div id="max" class="cursor">59</div>
-                    </div>
-                    </td>
-                    <td class="small" onclick="$(this).closest('.browser').browser('slider','level');"><div>Niveau</div></td></tr>
-                <tr><td>
-                    <div id="diff" class="slide">
-                        <div class="bar"></div>
-                        <div id="min" class="cursor"></div>
-                        <div id="max" class="cursor"></div>
-                    </div>
-                    </td>
-                    <td class="small" onclick="$(this).closest('.browser').browser('slider','diff');"><div>Difficulté</div></td></tr>
-                <tr><td>
-                    <div id="extend" class="slide">
-                        <div class="bar"></div>
-                        <div id="min" class="cursor"></div>
-                        <div id="max" class="cursor"></div>
-                    </div>
-                    </td>
-                    <td class="small" onclick="$(this).closest('.browser').browser('slider','extend');"><div>Durée</div></td></tr>
-                <tr><td>
-                    <div class="input"><input type="text" id="exerciceid" onkeyup="$(this).closest('.browser').browser('update');"/></div></td>
-                    <td class="small" onclick="$(this).closest('.browser').browser('id');"><div>Identifiant</div></td>
-                </tr>
-                <tr><td>
-                    <div class="input"><input type="text" id="reference" onkeyup="$(this).closest('.browser').browser('update');"/></div></td>
-                    <td class="small" onclick="$(this).closest('.browser').browser('reference');"><div>Référence</div></td>
-                </tr>
-                <tr><td>
-                    <div class="input"><select id="tags" onchange="$(this).closest('.browser').browser('update');"><option value="-1"></option></select></div></td>
-                    <td class="small" onclick="$(this).closest('.browser').browser('tag');"><div>Tag</div></td>
-                </tr>
-            </table>
-            </div>
-            <div id="jfooter">
-                <div id="jbuttons">
-                    <div id="alternative" onclick="$(this).toggleClass('s');$(this).closest('.browser').browser('update');">ALT</div>
-                    <div id="number" class="s2" onclick="$(this).attr('class','s'+((parseInt($(this).attr('class').substr(-1))+1)%4));$(this).closest('.browser').browser('update');"></div>
-                </div>
-                <div id="jcount">0</div>
-                <div id="jsubmit" onclick="$(this).closest('.browser').browser('submit',false);"><img src="res/img/icon/sesearch.svg"/></div>
-            </div>
-        </div>
+    <div class="tab" id="brargs">
+		<select class="brinput" id="bractivities" onchange="$(this).closest('.browser').browser('update');">
+			<option value="">Toute activité</option>
+		</select>
+		
+		<input class="brinput" type="text" id="exerciceid" onkeyup="$(this).closest('.browser').browser('update');" placeholder="Identifiant"/>
+		
+		<input class="brinput" type="text" id="reference" onkeyup="$(this).closest('.browser').browser('update');" placeholder="Référence"/>
+		
+		<input class="brinput" type="text" id="tags" onkeyup="$(this).closest('.browser').browser('update');" placeholder="Tag"/>
+		
+		<div style="clear:both;"></div>
+		
+		<div id="brcount">0</div>
+		
+		<div class="brparam" id="brlevel">
+			<div class="brpalabel">Niveau</div>
+			<div class="brtoggle">1</div>
+			<div class="brtoggle">2</div>
+			<div class="brtoggle">3</div>
+			<div class="brtoggle">4</div>
+			<div class="brtoggle">5</div>
+		</div>
+		
+		<div class="brparam" id="brdiff">
+			<div class="brpalabel">Difficulté</div>
+			<div class="brtoggle">1</div>
+			<div class="brtoggle">2</div>
+			<div class="brtoggle">3</div>
+			<div class="brtoggle">4</div>
+			<div class="brtoggle">5</div>
+		</div>
+		
+		<div class="brarg brtoggle s" id="bralt">Résultats groupés</div>
+		
+		<div class="brarg s2" id="brnumber" onclick="$(this).attr('class','brarg s'+((parseInt($(this).attr('class').substr(-1))+1)%4));$(this).closest('.browser').browser('update');"></div>
+		
+		
+		<div id="jsubmit" onclick="$(this).closest('.browser').browser('submit',false);"><img src="res/img/icon/sesearch.svg"/></div>
+		
     </div>
 </div>
 <div id="jhstab" onclick="$('#jbrowser').toggleClass('reduce');"></div>

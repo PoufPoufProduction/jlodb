@@ -1,46 +1,63 @@
-#jbrowser                               { font-size:1em; display:none; }
-#jbrowser .tab                          { font-size:1em; width:3.4em; height:3.85em; float:left; border-radius:.2em;
+#jbrowser                               { font-size:1em; display:none; height:100%; }
+#jbrowser .tab                          { font-size:1em; height:3.8em; float:left; border-radius:.2em;
                                           overflow:hidden; margin:.05em 0 .05em .05em; background-color: #DDD;}
-#jbrowser .tab div.icon.s               { background-color:#222222; }
+#jbrowser .tab div.icon.s               { background-color:#222; }
 #jbrowser .tab div.elt                  { font-size:1em; float:left; }
 #jbrowser .tab div.icon                 { padding:.06em; border-radius:.2em; width:1em; height:1em;
                                           overflow:hidden; cursor:pointer; float:left; }
-#jbrowser #actab                        { overflow:auto; }
-#jbrowser #actab table                  { font-size:.74em; }
-#jbrowser #ontab                        { width:3.2em; }
-#jbrowser #ontab .footer                { width:100%; height:1em; background-color:gray; cursor:pointer;}
-#jbrowser #ontab .content               { width:100%; font-size:.95em; height:3.46em;}
-#jbrowser #ontab .content.s div.elt     { float:none; font-size:.5em; cursor:pointer; width:8em; height:1em; }
-#jbrowser #ontab .content.s div.l       { display:inline; }
-#jbrowser #ontab .content div.l         { display:none; margin-left:.5em; font-size:.6em; vertical-align:middle; }
-#jbrowser #ontab .label                 { font-size:.2em; color:white; width:100%; height:1.2em; white-space:nowrap; cursor:pointer;
-                                          padding:.2em 1em;background-color:gray; }
-#jbrowser #ontab .label.s:after         { content:"+"; }
-#jbrowser #patab                        { width:5.8em; padding-left:.1em; }
-#jbrowser #patab #p                     { height:8em; font-size:.5em; }
-#jbrowser #patab #p2                    { height:5.2em; }
-#jbrowser #patab #p2 .small             { cursor:pointer; font-size:0.6em; }
+
+#jbrowser .brtoggle						{ text-align:center; cursor:pointer;
+										  background-color:black; color:white; opacity:0.2; }
+#jbrowser .brtoggle.s					{ background-color:red; opacity:1; }
+										  
+#jbrowser #brargs                       { width:72%; font-size:.4em; height:9.6em; position:relative; }
+#jbrowser .brinput                      {  width:45%; height:1.2em; background-color:#888;
+										  margin:.1em 0 0 2%; color:white; border:0; border-radius:.2em;
+										  padding-left:2%; float:left; font-size:1em;}
+#jbrowser #bractivities					{ width:47%; }
+
+#jbrowser #brargs #brcount				{ float:right; margin-right:2%; font-size:2.8em; }
+
+#jbrowser #brargs .brparam				{ margin-top:.2em; }
+#jbrowser #brargs .brparam>*			{ float:left; }
+#jbrowser #brargs .brparam .brpalabel	{ width: 4.4em; margin-left:.5em; }
+#jbrowser #brargs .brparam .brtoggle	{ width:1.2em; height:1.2em; margin-left:.1em; }
+#jbrowser #brargs .brarg				{ font-size:.8em; width:47%; margin-left:2%; border-radius:.2em; margin-top:.2em; cursor:pointer; }
+
+#jbrowser #brargs #brnumber				{ text-align:center; background-color:gray; color:white; }
+#jbrowser #brargs #brnumber.s0:after    { content:"500"; }
+#jbrowser #brargs #brnumber.s1:after    { content:"100"; }
+#jbrowser #brargs #brnumber.s2:after    { content:"025"; }
+#jbrowser #brargs #brnumber.s3:after    { content:"005"; }
+
+#jbrowser #jsubmit                      { font-size:4em; width:1em; height:1em; position:absolute; top:59%; left:83%; opacity:0.1; }
+.upd #jbrowser #jsubmit                 { cursor:pointer; opacity: 1; }
+
+
+/* CLASSIFICATION */
+#jbrowser #ontab                        { width:25%; position:relative; }
+#jbrowser #ontab #onmask				{ position:absolute; top:0; left:0; width:100%; height:100%; background-color:gray; display:none;  }
+#jbrowser #ontab .content               { width:100%; }
+#jbrowser #ontab .content .elt     	    { float:none; font-size:.4em; width:105%; cursor:pointer; }
+#jbrowser #ontab .content .elt .l       { float:left; margin-left:.5em; font-size:.6em; margin-top:.25em; }
+#jbrowser #ontab .jheader               { font-size:.2em; font-weight:bold; color:white; width:100%; height:2em; white-space:nowrap; background-color:gray; }
+#jbrowser #ontab .jheader #onlabel		{ margin-left:.5em; margin-top:.2em; }
+#jbrowser #ontab .jheader #ontoggle		{ font-size:1.4em; width:1.4em; height:1.4em; margin-right:.5em; float:right;   }
+		
+		
 #jbrowser #jhstab                       { clear:both; margin-left:.5em; width:62.5em; text-align:center; color:white;
                                           height:1.4em; background-color:gray; font-size:.2em; font-weight:bold; cursor:pointer;
                                           border-radius:.5em; }
 #jbrowser #jhstab:after                 { content:"-"; }
 #jbrowser #patab .small div             { height:1.2em; margin-top:0.1em; font-size:0.8em;}
-#jbrowser .slide                        { position:relative; width:8em; height:.6em; margin-top:.15em;
-                                          background-color:#444; border-radius:.5em;}
-#jbrowser .bar                          { width:8em; height:.6em; position:absolute; background-color:#888; border-radius:.5em;}
-#jbrowser .cursor                       { font-size:.5em; width:1.2em; height:1.2em; text-align:center; overflow:hidden; cursor:pointer;
-                                          position:absolute; border-radius:.5em; top:0; background:#222; color:white;}
-#jbrowser .cursor#min                   { left:0; }
-#jbrowser .cursor#max                   { left:14.8em; }
-#jbrowser .input                        { height:0.8em; }
-#jbrowser .input>*                      { font-size:.5em; position:relative; margin-top:.3em; width:14em; background-color:#888;
-                                          color:white; border:0; border-radius:.5em; padding-left:2em;}
-#jbrowser .input #tags                  { width:17em; font-size:0.47em; border-radius:.6em;}
+
+
+
 #jbrowser #jresults                     { width:31.4em; height:9.5em; margin:.2em .15em; font-size:.4em;
                                           background-color:#EEE; clear:both; border-radius:.5em; overflow:auto;
                                           position:relative; }
 #jbrowser #jresults #orderby            { padding-left:1em; font-size:.5em; border:1px solid gray; border-width:0 0 1px 0; }
-#jbrowser #jresults #orderby span		{ float: left; }
+#jbrowser #jresults #orderby span		{ float: left; font-size:1.5em;}
 #jbrowser #jresults #orderby select     { float:left; border:0; background: transparent; width:7em; cursor:pointer; color:black;}
 
 #jbrowser #jresults #jdata>div.elt      { padding:.1em; }
@@ -69,18 +86,10 @@
                                           cursor:pointer; border-radius:.2em; }
 
 
-#jbrowser #jfooter                      { width:100%; font-size:2.5em; position:relative; }
-#jbrowser #jbuttons                     { font-size:0.2em; width:2em; float:left; overflow:visible; margin-top:0.5em; }
-#jbrowser #jbuttons #alternative        { overflow:visible; cursor:pointer; }
-#jbrowser #jbuttons #alternative.s      { opacity:0.2; }
-#jbrowser #jbuttons #number             { cursor:pointer; }
-#jbrowser #jbuttons #number.s0:after    { content:"500"; }
-#jbrowser #jbuttons #number.s1:after    { content:"100"; }
-#jbrowser #jbuttons #number.s2:after    { content:"025"; }
-#jbrowser #jbuttons #number.s3:after    { content:"005"; }
-#jbrowser #jcount                       { font-size:0.9em; margin-left:.1em; }
-#jbrowser #jsubmit                      { width:1em; height:1em; position:absolute; top:0; left:3.65em; opacity:0.1; }
-.upd #jbrowser #jsubmit                 { cursor:pointer; opacity: 1; }
+
+
+
+
 #jbrowser #jbrmenu                      { width:31.5em;  height:1.4em; background-color:gray; color:white;
                                           border-radius:.4em; font-size:.4em; margin-left:.15em;}
 
