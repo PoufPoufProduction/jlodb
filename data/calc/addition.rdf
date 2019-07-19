@@ -3,6 +3,98 @@
          xmlns:dct="http://purl.org/dc/terms/">
     
 	
+	<!--FILL PYRAMID -->
+	
+	<rdf:Description>
+        <dct:identifier>p5a</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter la pyramide d'additions dont la base est inférieure à 10.</dct:title>
+        <dct:description><![CDATA["gg":{"max":10,"show":[0,1,2,3,4,5,7,10]},"pospanel":[75,5],"background":"res/img/background/landscape/yellowboard02.svg","noneg":true,"nodec":true,"withbars":false,"withauto":false,"callen":3,"all":{"width":1.2,"height":1.2},"cols":{"col0":{"width":0.1}},"rows":{"row0":{"height":0.1}},"imgprefix":"","img":[""],"size":[10,5],"font":1.5,"hide":[[2,5,1,1],[4,5,1,1],[6,5,1,1],[8,5,1,1],[10,5,1,1],[1,4,1,1],[3,4,1,1],[5,4,1,1],[7,4,1,1],[9,4,2,1],[1,3,2,1],[4,3,1,1],[6,3,1,1],[8,3,3,1],[1,2,3,1],[5,2,1,1],[7,2,4,1],[1,1,4,1],[6,1,5,1]],"gen":"function(_this,_s,_i) { var cells={}, tnew=[], idx=0; for (var j=5; j>0; j--) { var told=[]; for (var t in tnew) { told.push(tnew[t]); } tnew=[]; for (var i=0; i<j; i++) { var v; if (told.length) { v=told[i]+told[i+1];} else { v=Math.floor(Math.random()*_s.gg.max); } tnew.push(v); var c={width:2.5},isfixed=false; for (var f in _s.gg.show) { if (_s.gg.show[f]==idx) { isfixed=true; }} idx++; if (isfixed) { c.value=v; c.fixed=true; c.background='#CEF'; c.color='#256'; } else { c.type='value'; c.result=v; } cells['c'+((6-j)+i*2)+'x'+j]=c; } } return {cells:cells}}","errratio":2]]></dct:description>
+        <dct:description xml:lang="fr-FR">,"exercice":"[b]Complétez[/b] la pyramide de sorte que la valeur de chaque cellule soit égale à la [b]somme[/b] des 2 valeurs au dessous."</dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>p5a</dct:alternative>
+        <dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>p5b</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter la pyramide d'additions dont la base est inférieure à 10.</dct:title>
+        <dct:description><![CDATA["gg":{"max":10,"show":[0,1,2,3,4]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>2</dct:type>
+        <dct:alternative>p5a</dct:alternative>
+        <dct:relation>p5a</dct:relation>
+        <dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>p5c</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter la pyramide d'additions dont la base est inférieure à 20.</dct:title>
+        <dct:description><![CDATA["gg":{"max":20,"show":[0,1,2,3,4]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>p5a</dct:alternative>
+        <dct:relation>p5a</dct:relation>
+        <dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>p5d</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter la pyramide d'additions dont la base est inférieure à 50.</dct:title>
+        <dct:description><![CDATA["gg":{"max":20,"show":[0,1,2,3,4]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>p5a</dct:alternative>
+        <dct:relation>p5a</dct:relation>
+        <dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>p5l</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter la pyramide d'additions dont la base est inférieure à 10.</dct:title>
+        <dct:description><![CDATA["gg":{"max":10,"show":[0,1,2,3,14]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>3</dct:type>
+        <dct:alternative>p5a</dct:alternative>
+        <dct:relation>p5a</dct:relation>
+        <dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>p5m</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter la pyramide d'additions dont la base est inférieure à 20.</dct:title>
+        <dct:description><![CDATA["gg":{"max":20,"show":[0,1,2,3,14]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>4</dct:type>
+        <dct:alternative>p5a</dct:alternative>
+        <dct:relation>p5a</dct:relation>
+        <dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
+    </rdf:Description>
+	
+	<rdf:Description>
+        <dct:identifier>p5n</dct:identifier>
+        <dct:title xml:lang="fr-FR">Compléter la pyramide d'additions dont la base est inférieure à 50.</dct:title>
+        <dct:description><![CDATA["gg":{"max":50,"show":[0,1,2,3,14]}]]></dct:description>
+        <dct:extent>3</dct:extent>
+        <dct:subject>addition</dct:subject>
+        <dct:educationLevel>2</dct:educationLevel>
+        <dct:type>5</dct:type>
+        <dct:alternative>p5a</dct:alternative>
+        <dct:relation>p5a</dct:relation>
+        <dct:source>res/img/background/landscape/yellowboard02.svg</dct:source>
+    </rdf:Description>
 	
 	<!--FILL TABLE -->
 	
