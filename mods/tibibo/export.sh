@@ -8,27 +8,27 @@ fi
 
 # PARAMETER DEFAULT VALUES
 tibibo=""
-folder="tibibo"
 url="jlodb.poufpoufproduction.fr"
 save="cookie"
 lang="fr-FR"
+version="1.0"
 clean="1"
 
 OPTIND=1
 
-while getopts "h?i:u:f:s:" opt; do
+while getopts "h?i:u:s:v:" opt; do
     case "$opt" in
     h|\?)
-        echo "usage: $0 -i tibibo book id [OPTIONS]"
-        echo "  -f [NAME]   : output folder                [tibibo]"
+        echo "usage: $0 book id [OPTIONS]"
         echo "  -u [URL]    : jlodb website url            [jlodb.poufpoufproduction.fr]"
         echo "  -s          : save mode (cookie|local)     [cookie]"
+        echo "  -v          : version                      [1.0]"
         exit 0
         ;;
     i)  tibibo=$OPTARG ;;
-    f)  folder=$OPTARG ;;
     u)  url=$OPTARG ;;
     s)  save=$OPTARG ;;
+    v)  version=$OPTARG ;;
     esac
 done
 
@@ -42,7 +42,7 @@ IFS=$'\n'
 if [ -z $tibibo ] ; then echo "No tibibo book id"; exit 0; fi
 
 # CLEAN AND PREPARE OUTPUT FOLDER
-output="export/$folder"
+output="export/var/www/tibibo/$tibibo"
 content=$output/standalone/content.json
 
 if [ ! -z $clean ]; then
@@ -78,7 +78,11 @@ if [ ! -z $clean ]; then
 	cp -rf res/img/svginventoryicons/award $output/res/img/svginventoryicons/award
 	cp -f res/img/svginventoryicons/pencil/brush01.svg $output/res/img/svginventoryicons/pencil/
 
-	grep -v gonz.js tibibo.html | sed -e 's/user\.js/standalone\.js/g' -e 's/\(standalone.*\)false/\1true/g'  > $output/index.html
+	grep -v gonz.js tibibo.html | sed -e "s|<title>Tibibo|<title>Tibibo:${tibibo}|g" -e 's/user\.js/standalone\.js/g' -e 's/\(standalone.*\)false/\1true/g'  > $output/index.html
+	inkscape mods/tibibo/locale/$lang/$tibibo.svg -e $output/favicon.ico -h 64 -w 64
+	
+	cp -f LICENSE $output/
+
 
 	# GET ALL ACTIVITY DESCRIPTION
 	echo "+ get activity description"
@@ -102,6 +106,9 @@ if [ ! -z $clean ]; then
 	fi
 
 fi
+
+desc=`cat $content | grep value | sed -e 's|.*value" : "\([^"]*\)".*|\1|g'`
+
 
 # HANDLE EXERCICES
 
@@ -164,5 +171,55 @@ if [ ! `echo $content | grep "[^ ]" | wc -l` -eq 0 ] ; then
 	fi
 fi
 done
+
+# DEBIAN PACKAGE
+output="export/usr/bin"
+mkdir -p $output
+echo "#!/bin/bash" > $output/$tibibo
+echo "set -e" >> $output/$tibibo
+echo "/usr/bin/firefox -profile /usr/share/profiles/tibibo file:///var/www/tibibo/$tibibo/index.html" >> $output/$tibibo
+chmod 755 $output/$tibibo
+
+output="export/usr/share/applications"
+mkdir -p $output
+echo "[Desktop Entry]" > $output/$tibibo.desktop
+echo "Version=$version" >> $output/$tibibo.desktop
+echo "Name=$tibibo" >> $output/$tibibo.desktop
+echo "Comment=$desc" >> $output/$tibibo.desktop
+echo "Exec=$tibibo" >> $output/$tibibo.desktop
+echo "Icon=/var/www/tibibo/$tibibo/favicon.ico" >> $output/$tibibo.desktop
+echo "Terminal=false" >> $output/$tibibo.desktop
+echo "Type=Application" >> $output/$tibibo.desktop
+echo "Categories=Education;" >> $output/$tibibo.desktop
+echo "Keywords=education" >> $output/$tibibo.desktop
+
+output="export/usr/share/profiles/tibibo"
+mkdir -p $output/chrome
+cp -f bin/prefs.js $output
+cp -f bin/userChrome.css $output/chrome
+
+output="export/DEBIAN"
+mkdir -p $output
+echo "Package: $tibibo" > $output/control
+echo "Version: $version" >> $output/control
+echo "Installed-Size: 568" >> $output/control
+echo "Maintainer: Johann C. <johannc@poufpoufproduction.fr>" >> $output/control
+echo "Architecture: all" >> $output/control
+echo "Priority: optional" >> $output/control
+echo "Depends: firefox | firefox-esr" >> $output/control
+echo "Description: $desc" >> $output/control
+
+rm -f $output/md5sums
+touch $output/md5sums
+cd export
+for f in `find var -type f -print` ; do
+	echo "md5sum $f >> ../$output/md5sums"
+	md5sum $f >> ../$output/md5sums
+done
+for f in `find usr -type f -print` ; do
+	md5sum $f >> ../$output/md5sums
+done
+cd ..
+
 
 rm -f p_json.tmp
