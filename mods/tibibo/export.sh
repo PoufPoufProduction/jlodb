@@ -73,6 +73,7 @@ if [ ! -z $clean ]; then
 	for a in "${assets[@]}"; do
 		cp -f $a $output/$a
 	done
+	cp -rf ext/font $output/ext/font
 	cp -f res/img/background/landscape/blueboard01.svg $output/res/img/background/landscape/blueboard01.svg 
 	cp -rf res/img/svginventoryicons/award $output/res/img/svginventoryicons/award
 	cp -f res/img/svginventoryicons/pencil/brush01.svg $output/res/img/svginventoryicons/pencil/
