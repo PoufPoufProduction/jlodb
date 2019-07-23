@@ -175,32 +175,32 @@ done
 # DEBIAN PACKAGE
 output="export/usr/bin"
 mkdir -p $output
-echo "#!/bin/bash" > $output/$tibibo
-echo "set -e" >> $output/$tibibo
-echo "/usr/bin/firefox -profile /usr/share/profiles/tibibo file:///var/www/tibibo/$tibibo/index.html" >> $output/$tibibo
-chmod 755 $output/$tibibo
+echo "#!/bin/bash" > $output/poufpouf_$tibibo
+echo "set -e" >> $output/poufpouf_$tibibo
+echo "/usr/bin/firefox -profile /usr/share/profiles/poufpouf file:///var/www/tibibo/$tibibo/index.html" >> $output/poufpouf_$tibibo
+chmod 755 $output/poufpouf_$tibibo
 
 output="export/usr/share/applications"
 mkdir -p $output
 echo "[Desktop Entry]" > $output/$tibibo.desktop
 echo "Version=$version" >> $output/$tibibo.desktop
-echo "Name=$tibibo" >> $output/$tibibo.desktop
+echo "Name=PoufPouf $tibibo" >> $output/$tibibo.desktop
 echo "Comment=$desc" >> $output/$tibibo.desktop
-echo "Exec=$tibibo" >> $output/$tibibo.desktop
+echo "Exec=poufpouf_$tibibo" >> $output/$tibibo.desktop
 echo "Icon=/var/www/tibibo/$tibibo/favicon.ico" >> $output/$tibibo.desktop
 echo "Terminal=false" >> $output/$tibibo.desktop
 echo "Type=Application" >> $output/$tibibo.desktop
 echo "Categories=Education;" >> $output/$tibibo.desktop
 echo "Keywords=education" >> $output/$tibibo.desktop
 
-output="export/usr/share/profiles/tibibo"
+output="export/usr/share/profiles/poufpouf"
 mkdir -p $output/chrome
 cp -f bin/prefs.js $output
 cp -f bin/userChrome.css $output/chrome
 
 output="export/DEBIAN"
 mkdir -p $output
-echo "Package: $tibibo" > $output/control
+echo "Package: poufpouf$tibibo" > $output/control
 echo "Version: $version" >> $output/control
 echo "Installed-Size: 568" >> $output/control
 echo "Maintainer: Johann C. <johannc@poufpoufproduction.fr>" >> $output/control
@@ -222,8 +222,8 @@ done
 cd ..
 
 dpkg-deb --build export
-echo mv export.deb ${tibibo}_${version}_all.deb
-mv export.deb ${tibibo}_${version}_all.deb
+echo mv export.deb poufpouf${tibibo}_${version}_all.deb
+mv export.deb poufpouf${tibibo}_${version}_all.deb
 
 
 rm -f p_json.tmp
