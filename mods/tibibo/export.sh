@@ -221,5 +221,9 @@ for f in `find usr -type f -print` ; do
 done
 cd ..
 
+dpkg-deb --build export
+echo mv export.deb ${tibibo}_${version}_all.deb
+mv export.deb ${tibibo}_${version}_all.deb
+
 
 rm -f p_json.tmp
