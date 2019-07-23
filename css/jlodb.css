@@ -3,42 +3,37 @@
 
 *                               { margin:0; padding:0; overflow:hidden; outline:none; -webkit-touch-callout: none; -webkit-tap-highlight-color: rgba(0,0,0,0); -webkit-text-size-adjust: none; }
 
-/*
-@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"); 
 
-#fullscr-toggler { display:none!important; }
-*/
 
-/*
 @font-face {
-    font-family: TeXGyreAdventorRegular;
+    font-family: LiberationSans;
 	font-style: normal;
 	font-weight: normal;
-    src: url("../ext/font/texgyreadventor-regular.otf") format("opentype");
+    src: url("../ext/font/liberationsans-regular.ttf") format("truetype");
 }
 @font-face {
-    font-family: TeXGyreAdventorRegular;
+    font-family: LiberationSans;
 	font-style: normal;
 	font-weight: bold;
-    src: url("../ext/font/texgyreadventor-bold.otf") format("opentype");
+    src: url("../ext/font/liberationsans-bold.ttf") format("truetype");
 }
 @font-face {
-    font-family: TeXGyreAdventorRegular;
+    font-family: LiberationSans;
 	font-style: italic;
 	font-weight: normal;
-    src: url("../ext/font/texgyreadventor-italic.otf") format("opentype");
+    src: url("../ext/font/liberationsans-italic.ttf") format("truetype");
 }
 @font-face {
-    font-family: TeXGyreAdventorRegular;
+    font-family: LiberationSans;
 	font-style: italic;
 	font-weight: bold;
-    src: url("../ext/font/texgyreadventor-bolditalic.otf") format("opentype");
+    src: url("../ext/font/liberationsans-bolditalic.ttf") format("truetype");
 }
-*/
-body                            { font-size:20px; background-color:#1a1a1a; overflow:hidden; font-family: TeXGyreAdventorRegular, "Century Gothic", Calibri, Lucida, serif; background-image:url("../res/img/default/background/jlodb01.svg"); background-repeat:repeat; }
+
+body                            { font-size:20px; background-color:#1a1a1a; overflow:hidden; font-family: LiberationSans, serif; background-image:url("../res/img/default/background/jlodb01.svg"); background-repeat:repeat; }
 a                               { color:inherit; text-decoration:none; border:none; outline:none; }
 ul                              { list-style:none; }
-img                             { border:none; outline: none; pointer-events: none; -khtml-user-select: none; -o-user-select: none; -moz-user-select: none; -webkit-user-select: none; user-select: none;}
+img                             { border:none; outline: none; display:block; pointer-events: none; -khtml-user-select: none; -o-user-select: none; -moz-user-select: none; -webkit-user-select: none; user-select: none;}
 svg image                       { pointer-events: none; -khtml-user-select: none; -o-user-select: none; -moz-user-select: none; -webkit-user-select: none; user-select: none;}
 svg use                         { pointer-events: none; }
 body>div                        { border:4px solid white; background-color: black; margin:0 auto; width:16em; height:12em; position:relative; top:-2px; left:-4px; }
