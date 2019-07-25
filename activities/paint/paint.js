@@ -523,19 +523,26 @@
                     settings.interactive = false;
 
                     var result=helpers.result($this);
+					var goal=settings.result;
                     var nbErrors = 0;
-					
-					if (settings.dev) { console.log(result); }
+					var isComputed = false;
 
                     if (settings.scorefct) {
-                        if (settings.scorefct=="noscore") { settings.score = 5; nbErrors = 0; }
+                        if (settings.scorefct=="noscore") { settings.score = 5; isComputed = true;}
                         else {
                             var arg = $.isArray(settings.scorearg)?settings.scorearg[settings.id%settings.canvas.length]:settings.scorearg;
-                            nbErrors = eval('('+settings.scorefct+')')($this,result,arg);
+							var rfct = eval('('+settings.scorefct+')')($this,result,arg);
+							
+							if (typeof(rfct)=="number") {
+								nbErrors = rfct;
+								isComputed = true;
+							}
+							else { goal = rfct; }
                         }
                     }
-                    else {
-                        var r = $.isArray(settings.result)?settings.result[settings.id%settings.result.length]:settings.result;
+                    
+					if (!isComputed) {
+                        var r = $.isArray(goal)?goal[settings.id%settings.result.length]:goal;
 						if (r.indexOf("function")!=-1) {
 							var arg = $.isArray(settings.scorearg)?settings.scorearg[settings.id%settings.canvas.length]:settings.scorearg;
                             r = eval('('+r+')')($this,result,arg);
@@ -550,6 +557,7 @@
                             }
                         }
                     }
+					
                     settings.score-=nbErrors*settings.errratio;
                     
                     $this.find("#legend").hide();

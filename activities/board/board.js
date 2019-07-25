@@ -200,7 +200,10 @@
                                     }
                                     else { this.$elt.html(this.color.content); }
                                 }
-                                else { this.$elt.html(""); }
+                                else {
+									this.$elt.html("");
+									this.$elt.css("background-image", "none");
+								}
                             }
                         };
                     return cell;
