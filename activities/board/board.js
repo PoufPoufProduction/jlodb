@@ -26,9 +26,14 @@
         "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
         "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
         "\\\[br\\\]",                               "<br/>",
+        "\\\[clear\\\]",                            "<div style='clear:both'></div>",
+        "\\\[space\\\]",                            "<div style='float:left;width:1em;'>&nbsp;</div>",
         "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
         "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
-        "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>"
+        "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>",
+		"\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='icon' style='font-size:2.4em;float:left;'>$1</div>",
+		"\\\[mult\\\]([^\\\[]+)\\\[/mult\\\]",      "<div class='bdmult'>$1</div>",
+		"\\\[img\\\]([^\\\[]+)\\\[/img\\\]",        "<img src='$1' alt=''/>"
     ];
 
     // private methods
@@ -240,17 +245,25 @@
                 // BUILD MODEL
                 max=Math.max(settings.size[0], settings.size[1]);
                 var size=(6/max)/1.2;
-                for (var j=0; j<settings.size[1]; j++) for (var i=0; i<settings.size[0]; i++) {
-					var cid=settings.goal[i+j*settings.size[0]];
-					if (cid!='.') {
-                        var m = createcell(i,j,0,settings.chart[cid<settings.chart.length?cid:0]);
-                        m.$elt.css("font-size",size+"em");
-                        m.update();
-                        var elt = settings.elts["c"+i+"x"+j];
-                        if (elt) { elt.result=$.extend({},m.color); }
-						$this.find("#model").append(m.$elt);
+				if (settings.goal) {
+					for (var j=0; j<settings.size[1]; j++) for (var i=0; i<settings.size[0]; i++) {
+						var cid=settings.goal[i+j*settings.size[0]];
+						if (cid!='.') {
+							var m = createcell(i,j,0,settings.chart[cid<settings.chart.length?cid:0]);
+							m.$elt.css("font-size",size+"em");
+							m.update();
+							var elt = settings.elts["c"+i+"x"+j];
+							if (elt) { elt.result=$.extend({},m.color); }
+							$this.find("#model").append(m.$elt);
+						}
 					}
 				}
+				if (settings.comment) {
+					$this.find("#bdcomment>div").append(helpers.format(settings.comment));
+					$this.find("#model").hide();
+					$this.find("#bdcomment").show();
+				}
+				
                 
                 // User interface
                 $this.find("#board").bind("touchstart mousedown", function(event) {
@@ -578,23 +591,44 @@
                     settings.interactive = false;
                     $this.find("#cursor").hide();
                     var nberrors=0;
-                    for (var i in settings.elts) {
-                        var elt=settings.elts[i];
-                        if (elt.color && elt.result) {
-                            if (elt.color.rgb[0] != elt.result.rgb[0] ||
-                                elt.color.rgb[1] != elt.result.rgb[1] ||
-                                elt.color.rgb[2] != elt.result.rgb[2] ||
-                                elt.color.content!= elt.result.content )
-                            {
-                                nberrors++;
-                                if (settings.wrong) {
-                                    elt.color.rgb = settings.wrong.rgb;
-                                    elt.color.content = settings.wrong.content;
-                                    elt.update();
-                                }
-                            }
-                        }
-                    }
+					if (settings.scorefct) {
+						try {
+							var result = eval('('+settings.scorefct+')')($this, settings.elts, settings.scorearg);
+							var cpt=0;
+							for (var i in settings.elts) {
+								if (result[cpt]!='1') {
+									var elt=settings.elts[i];
+									nberrors++;
+									if (elt.color && settings.wrong) {
+										elt.color.rgb = settings.wrong.rgb;
+										elt.color.content = settings.wrong.content;
+										elt.update();
+									}
+								}
+								cpt++;
+							}
+						} catch(e) { alert(e.message); }
+					}
+					else {
+						for (var i in settings.elts) {
+							var elt=settings.elts[i];
+							if (elt.color && elt.result) {
+								if (elt.color.rgb[0] != elt.result.rgb[0] ||
+									elt.color.rgb[1] != elt.result.rgb[1] ||
+									elt.color.rgb[2] != elt.result.rgb[2] ||
+									elt.color.content!= elt.result.content )
+								{
+									nberrors++;
+									if (settings.wrong) {
+										elt.color.rgb = settings.wrong.rgb;
+										elt.color.content = settings.wrong.content;
+										elt.update();
+									}
+								}
+							}
+						}
+					}
+		
                     $this.find("#subvalid").hide();
                     $this.find(nberrors?"#wrong":"#good").show();
                     $this.find(nberrors?"#subwrong":"#subgood").show();

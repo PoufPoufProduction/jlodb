@@ -44,8 +44,11 @@
 .board div#menu #bar.w #cvalue      { color:white; }
 
 .board div#menu #back			  { font-size:1.2em; height:1em; float:left; cursor:pointer; margin-left:.1em; }
-.board div#menu #model		  	  { width:6em; height:6em; margin-top:.3em; border:0.3em solid white; background-color:white; position:relative; }
+.board div#menu .bdgoal		  	  { width:6em; height:6em; margin-top:.3em; border:0.3em solid white; background-color:white; position:relative; }
 .board div#menu #model>div		  { position:absolute;width:1.2em;height:1.2em;text-align:center;background-size:1.2em;}
+.board div#menu #bdcomment		  { display:none; background-color:rgba(255,255,255,0.8); }
+.board div#menu #bdcomment>div	  { font-size:.6em; padding:.2em; }
+.board div#menu #bdcomment .bdmult	{ width:1.2em; height:1em; margin-top:.2em;font-size:2em; float:left; background-color:gray; color:white; border-radius:.4em; text-align:center; padding:0 .1em; }
 .board div#submit                 { font-size:1.5em; height:1em;width:1em; cursor:pointer; position:absolute; top:7em; left:0em; z-index:3; }
 .board div#submit>img             { display:none; }
 .board div#submit #subvalid       { display:inline; }
