@@ -9,25 +9,28 @@ fi
 # PARAMETER DEFAULT VALUES
 tibibo=""
 url="jlodb.poufpoufproduction.fr"
-save="cookie"
+save="cookies"
 lang="fr-FR"
 version="1.0"
+target="default"
 clean="1"
 
 OPTIND=1
 
-while getopts "h?i:u:s:v:" opt; do
+while getopts "h?i:u:s:t:v:" opt; do
     case "$opt" in
     h|\?)
         echo "usage: $0 book id [OPTIONS]"
-        echo "  -u [URL]    : jlodb website url            [jlodb.poufpoufproduction.fr]"
-        echo "  -s          : save mode (cookie|local)     [cookie]"
-        echo "  -v          : version                      [1.0]"
+        echo "  -u [URL]    : jlodb website url             [jlodb.poufpoufproduction.fr]"
+        echo "  -s          : save mode (cookies|local)     [cookies]"
+        echo "  -v          : version                       [1.0]"
+        echo "  -t          : target (default|file|android) [default]"
         exit 0
         ;;
     i)  tibibo=$OPTARG ;;
     u)  url=$OPTARG ;;
     s)  save=$OPTARG ;;
+    t)  target=$OPTARG ;;
     v)  version=$OPTARG ;;
     esac
 done
@@ -78,11 +81,10 @@ if [ ! -z $clean ]; then
 	cp -rf res/img/svginventoryicons/award $output/res/img/svginventoryicons/award
 	cp -f res/img/svginventoryicons/pencil/brush01.svg $output/res/img/svginventoryicons/pencil/
 
-	grep -v gonz.js tibibo.html | sed -e "s|<title>Tibibo|<title>Tibibo:${tibibo}|g" -e 's/user\.js/standalone\.js/g' -e 's/\(standalone.*\)false/\1true/g'  > $output/index.html
+	grep -v gonz.js tibibo.html | sed -e "s|<title>Tibibo|<title>Tibibo:${tibibo}|g" -e 's/user\.js/standalone\.js/g' -e 's/\(standalone.*\)false/\1true/g' -e "s/\(platform.*\)\"default\"/\1\"${target}\"/g" -e "s/\(savemode.*\)\"cookies\"/\1\"${save}\"/g" > $output/index.html
 	inkscape mods/tibibo/locale/$lang/$tibibo.svg -e $output/favicon.ico -h 64 -w 64
 	
 	cp -f LICENSE $output/
-
 
 	# GET ALL ACTIVITY DESCRIPTION
 	echo "+ get activity description"
@@ -175,10 +177,8 @@ done
 # DEBIAN PACKAGE
 output="export/usr/bin"
 mkdir -p $output
-echo "#!/bin/bash" > $output/poufpouf_$tibibo
-echo "set -e" >> $output/poufpouf_$tibibo
-echo "/usr/bin/firefox -profile /usr/share/profiles/poufpouf file:///var/www/tibibo/$tibibo/index.html" >> $output/poufpouf_$tibibo
-chmod 755 $output/poufpouf_$tibibo
+cat mods/tibibo/poufpouf.sh | sed -e "s|%tibibo%|${tibibo}|g" -e "s|%version%|${version}|g"> $output/poufpouf_$tibibo.sh
+chmod 755 $output/poufpouf_$tibibo.sh
 
 output="export/usr/share/applications"
 mkdir -p $output
@@ -186,17 +186,19 @@ echo "[Desktop Entry]" > $output/$tibibo.desktop
 echo "Version=$version" >> $output/$tibibo.desktop
 echo "Name=PoufPouf $tibibo" >> $output/$tibibo.desktop
 echo "Comment=$desc" >> $output/$tibibo.desktop
-echo "Exec=poufpouf_$tibibo" >> $output/$tibibo.desktop
+echo "Exec=poufpouf_$tibibo.sh" >> $output/$tibibo.desktop
 echo "Icon=/var/www/tibibo/$tibibo/favicon.ico" >> $output/$tibibo.desktop
 echo "Terminal=false" >> $output/$tibibo.desktop
 echo "Type=Application" >> $output/$tibibo.desktop
 echo "Categories=Education;" >> $output/$tibibo.desktop
 echo "Keywords=education" >> $output/$tibibo.desktop
 
-output="export/usr/share/profiles/poufpouf"
+output="export/usr/share/doc/poufpouf/firefox"
 mkdir -p $output/chrome
 cp -f bin/prefs.js $output
+chmod 644 $output/pref.js
 cp -f bin/userChrome.css $output/chrome
+chmod 644 $output/chrome/*
 
 output="export/DEBIAN"
 mkdir -p $output
