@@ -23,8 +23,8 @@ else
 fi
 
 if [ $fill -eq 1 ] ; then
-	cp -rf /usr/share/doc/poufpouf/firefox/* ~/.poufpouf/firefox/
+	cp -rf /var/www/tibibo/%tibibo%/doc/* ~/.poufpouf/firefox/
 fi
 
  
-/usr/bin/firefox -profile ~/.poufpouf/firefox file:///var/www/tibibo/%tibibo%/index.html
+/usr/bin/firefox -profile ~/.poufpouf/firefox -new-window file:///var/www/tibibo/%tibibo%/index.html

@@ -17,6 +17,7 @@
 	<script>
 	
 $(window).ready(function() {
+	$.ajaxSetup({ mimeType: "text/plain" });
 	$.getJSON("api/checkdb.php", function (_check) {
         if (_check.status=="success") {
 			$.getJSON("locale/"+_check.lang+"/editor.json", function(_json) {

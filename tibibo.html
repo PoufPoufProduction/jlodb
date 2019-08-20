@@ -29,10 +29,13 @@
 #bomain .devmode            { display:none; }
 #bomain.devmode .usermode   { display:none; }
 #bomain.devmode .devmode    { display:inline; }
-#bomain                     { position:relative; background-image:url('res/img/background/landscape/blueboard01.svg'); }
+#bomain                     { position:relative; background-image:url('res/img/background/landscape/blueboard01.svg'); display:none; }
 
 #bomain #scoreaward         { position:absolute; font-size:4em; top:10%; left:70%; background-image:url("res/img/icon/tab/tab00.svg"); border-radius:.5em; overflow:visible; background-color:#69b5cd;}
 
+#bosplash					{ background-image:url("res/img/default/background/jlodb01.svg"); position:absolute; top:0;left:0; background-color:#0A0A0A; width:100%; height:100%; z-index:5; display:none; }
+#bosplash>div			{ color:white; margin:20% auto; width:75%; height:50%; background-image:url("res/img/banners/jlodb_tibibo.svg"); background-repeat:no-repeat;}
+#bosplash #bolabel			{ font-weight:bold; margin-top:24%; margin-left:1%; font-size:.4em;  }
 
 .topdown                    { font-size:.3em; width:105%; margin:.5em 0 .2em 0; overflow:visible; }
 .topdown>div                { height:3em; border-radius:.25em; float:left; margin-left:1em;  }
@@ -234,6 +237,8 @@ var tibibo = {
 	standalone      : false,
 	savemode		: "cookies",
 	platform		: "default",
+	bookname		: "tibibo",
+	version			: "1.0",
 // ---------------------------------------
 	
     lang            : "",
@@ -242,7 +247,7 @@ var tibibo = {
 	close			: function() {
 		$("#boquitpanel").hide();
 		if (tibibo.platform=="default") { document.location="tibibo.html"; } else
-		if (tibibo.platform=="file")    { window.close(); }
+		if (tibibo.platform=="file")    { window.open('','_parent',''); window.close(); } // DO NOT WORK !
 	},
 	fullscreen      : function() {
 		if (!document.fullscreenElement && !document.mozFullScreenElement &&
@@ -1005,12 +1010,10 @@ var tibibo = {
            
 			
 			// NO FULLSCREEN NOR QUIT BUTTON ON ANDROID EXPORT
-			if (tibibo.platform!="android") {
-				if (tibibo.book.nodeid == tibibo.book.data.nav.root() ) {
-					$("#bofooter #oquit").show();
-				}
-				$("#bofooter #ofullscreen").show();
+			if (tibibo.platform=="default" && tibibo.book.nodeid == tibibo.book.data.nav.root() ) {
+				$("#bofooter #oquit").show();
 			}
+			if (tibibo.platform!="android") { $("#bofooter #ofullscreen").show(); }
 			
             if (user.islogged() && user.settings.devmode ) {
                 if (tibibo.book.data.ownerkey==user.settings.key && !node.description.length) {
@@ -1141,10 +1144,15 @@ $(window).ready(function() {
     for (var i in a) { var p= a[i].split('='); tibibo.args[p[0]]=p[1]; }
     
 	$(window).resize();
+	$.ajaxSetup({ mimeType: "text/plain" });
+	$("#bomain").show();
 
     if (tibibo.standalone) {
-		// FIXED ID AND ARRANGE STUFF
-		tibibo.args.id="content";
+		tibibo.args.id=tibibo.bookname;
+		
+		$("#bolabel").html("Pouf-Pouf Production ["+tibibo.bookname+"-"+tibibo.version+"]");
+		$("#bosplash").show();
+		setTimeout(function() { $("#bosplash").animate({opacity:0}, 1000, function() { $(this).hide(); } ) }, 2000);
 		
         // LOCALISATION
         $.getJSON("standalone/locale.json", function(_locale) {
@@ -1158,7 +1166,7 @@ $(window).ready(function() {
         user.getJSON = function(_url, _args, _post, _cbk, _alert) {
             console.log("+ standalone getJSON: "+_url+" - "+JSON.stringify(_args));
             if (_url.indexOf("book.php")!=-1) {
-                $.getJSON("standalone/"+tibibo.args.id+".json", function(_data) { _cbk(_data); });
+                $.getJSON("standalone/content.json", function(_data) { _cbk(_data); });
             }
             else if (_url.indexOf("tibibo.php")!=-1) {
                 switch(_args.action) {
@@ -1525,6 +1533,8 @@ $(window).ready(function() {
 
       <div id="eimg"></div>
     </div>
+    
+    <div id="bosplash"><div><div id="bolabel"></div></div></div>
 
   </div>
 </body>

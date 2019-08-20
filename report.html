@@ -86,6 +86,7 @@ var locale={};
 $(window).ready(function() {
 
 	$(window).resize();
+	$.ajaxSetup({ mimeType: "text/plain" });
 
     // HANDLE ARGUMENTS
     var args = {}

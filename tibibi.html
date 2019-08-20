@@ -444,6 +444,7 @@ var urlargs = {}
 $(window).ready(function() {
 
 	$(window).resize();
+	$.ajaxSetup({ mimeType: "text/plain" });
 
     // URL ARGUMENTS
     var a = location.search.substring(1).split('&');
