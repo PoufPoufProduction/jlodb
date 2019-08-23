@@ -99,13 +99,13 @@
                 if (settings.context.onload) { settings.context.onload($this); }
 
                 // RESIZE THE TEMPLATE
-                $this.find("#board").addClass(settings.type);
+                $this.find("#sg_board").addClass(settings.type);
                 $this.find("#splashex").addClass(settings.type);
-                $this.find("#interactive>div").css("font-size",settings.font+"em");
+                $this.find("#sg_interactive>div").css("font-size",settings.font+"em");
 
                 // DISPLAY STUFF
-                if (settings.exercice) { $this.find("#exercice>div").html(helpers.format(settings.exercice)); }
-                $this.find("#exercice>div").css("font-size",settings.fontex+"em").show();
+                if (settings.exercice) { $this.find("#sg_exercice>div").html(helpers.format(settings.exercice)); }
+                $this.find("#sg_exercice>div").css("font-size",settings.fontex+"em").show();
 
                 // LOCALE HANDLING
                 if (settings.locale) { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
@@ -199,36 +199,36 @@
                 settings.elts[vSecond] = vTmp;
             }
 
-            $this.find("#interactive #question").html("");
+            $this.find("#sg_question").html("");
             for (var i=0; i<settings.elts.length; i++) {
                 var vLabel = settings.labels[i][0];
                 if (vRegexpQuest) { vLabel=vLabel.replace(vRegexpQuest, settings.regexp.question.to); }
-                var html = "<div class='question' style='background-color:"+settings.bgcolor[0]+";color:"+settings.color[0]+";";
+                var html = "<div class='sg_q' style='background-color:"+settings.bgcolor[0]+";color:"+settings.color[0]+";";
                 if (settings.bg[0].length) { html+="background-image:url("+settings.bg[0]+");" }
                 if (settings.len) { html+="width:"+settings.len+"em;"}
                 html+="'>"+helpers.format(vLabel.toString())+"</div>";
-                $this.find("#interactive #question").append(html);
+                $this.find("#sg_question").append(html);
             }
 
-            $this.find("#interactive #response").html("");
+            $this.find("#sg_response").html("");
             for (var i=0; i<settings.elts.length; i++) {
                 var vValue = settings.elts[i][1];
                 if (vRegexpResp) { vValue=vValue.replace(vRegexpResp, settings.regexp.response.to); }
-                var html = "<div class='response' id='"+i+"'>"+
-                           "<div style='background-color:"+settings.bgcolor[1]+";color:"+settings.color[1]+";";
+                var html = "<div class='sg_r' id='"+i+"'>"+
+                           "<div class='sg_content' style='background-color:"+settings.bgcolor[1]+";color:"+settings.color[1]+";";
                 if (settings.bg[1].length) { html+="background-image:url("+settings.bg[1]+");" }
-                html+="'>"+helpers.format(vValue.toString())+"</div></div>";
-                $this.find("#interactive #response").append(html);
+                html+="'>"+helpers.format(vValue.toString())+"</div><div class='sg_mask'></div></div>";
+                $this.find("#sg_response").append(html);
 
                 settings.elts[i][2] = i;
             }
 
-            $this.find(".response").draggable({containment:"parent", scroll:false, axis:"y", stack:".response",helper:"clone",
+            $this.find(".sg_r").draggable({containment:"parent", scroll:false, axis:"y", stack:".sg_r",helper:"clone",
                 start:function(event, ui) { $(this).addClass("switch"); },
                 stop:function(event, ui) { $(this).removeClass("switch"); }
             });
 
-            $this.find(".response").droppable({
+            $this.find(".sg_r").droppable({
                 drop:function(e, ui) {
                     var eltId   = parseInt(ui.draggable.attr("id"));
                     var dropId  = parseInt($(this).attr("id"));
@@ -239,10 +239,16 @@
                     if (settings.type=="swap") {
                         settings.elts[eltId][2] = settings.elts[dropId][2];
                         settings.elts[dropId][2] = posId;
-
-                        var html=$(this).html();
-                        $(this).html(ui.draggable.html()).attr("id",eltId);
-                        ui.draggable.html(html).attr("id",dropId);
+						
+						$(this).find(".sg_mask").css("opacity",1).show();
+						$(ui.draggable).find(".sg_mask").css("opacity",1).show();
+						
+                        var html=$(this).find(".sg_content").html();
+                        $(this).attr("id",eltId).find(".sg_content").html(ui.draggable.find(".sg_content").html());
+                        ui.draggable.attr("id",dropId).find(".sg_content").html(html);
+						
+						$(this).find(".sg_mask").animate({opacity:0},500,function() { $(this).hide(); } );
+						$(ui.draggable).find(".sg_mask").animate({opacity:0},500,function() { $(this).hide(); } );
                     }
 
                     else {
@@ -250,26 +256,33 @@
 
                             var moveup = (parentId>posId), min = moveup?posId:parentId+1, max = moveup?parentId-1:posId;
                             var vIds = [];
-                            $this.find("#interactive .response").each(function() { vIds.push(parseInt($(this).attr("id"))); });
-                            // UPDATE THE INDEX
+							
+                            $this.find(".sg_r").each(function() { vIds.push(parseInt($(this).attr("id"))); });
+							
                             for (var i=min; i<=max; i++) {
-                                $($this.find("#interactive .response").get(i)).attr("id", vIds[i+(moveup?1:-1)]);
+								var $moved = $($this.find(".sg_r").get(i));
+								var vId = vIds[i+(moveup?1:-1)];
+                                $moved.attr("id", vId);
+								
+								$moved.find(".sg_mask").css("opacity",1).css("background-color","orange").show();
+								$moved.find(".sg_content").html(helpers.format(settings.elts[vId][1]));
+								settings.elts[vId][2] = i;
+								$moved.find(".sg_mask").animate({opacity:0},500,function() { $(this).hide(); } );
                             }
-                            $($this.find("#interactive .response").get(parentId)).attr("id",eltId);
+							
+							var $moved = $($this.find(".sg_r").get(parentId));
+                            $moved.attr("id",eltId);
+							$moved.find(".sg_mask").css("opacity",1).css("background-color","yellow").show();
+							$moved.find(".sg_content").html(helpers.format(settings.elts[eltId][1]));
+							settings.elts[eltId][2] = parentId;
+							$moved.find(".sg_mask").animate({opacity:0},500,function() { $(this).hide(); } );
 
-                            $this.find("#interactive .response").each(function(_index) {
-                                var vId = $(this).attr("id");
-                                if (vId) {
-                                    $(this).children().first().html(helpers.format(settings.elts[vId][1]));
-                                    settings.elts[vId][2] = _index;
-                                }
-                            });
                         }
                     }
                 },
                 hoverClass: "switch"
             });
-			$this.find("#mask").hide();
+			$this.find("#sg_mask").hide();
             settings.interactive = true;
         }
     };
@@ -319,7 +332,7 @@
                 if (settings.interactive) {
 
                     for (var i in settings.elts) {
-                        var elt = $this.find("#interactive .response").get(i);
+                        var elt = $this.find(".sg_r").get(i);
                         var id =  $(elt).attr("id");
                         // COMPARAISON IS DONE ON VALUES NOT ON INDEX BECAUSE VALUES MAY BE NOT UNIQUE
                         if (settings.labels[i][1]!=settings.elts[id][1]) {
@@ -332,7 +345,7 @@
 
                     $this.find("#submit").addClass(vGood?"good":"wrong");
                     settings.interactive = false;
-					$this.find("#mask").show();
+					$this.find("#sg_mask").show();
 					
                     if (++settings.it >= settings.number) {
                         settings.score = Math.floor(5-settings.errratio*settings.wrong);
@@ -354,7 +367,7 @@
                 var $this = $(this) , settings = helpers.settings($this);
                 if (settings.timer.id) { clearTimeout(settings.timer.id); settings.timer.id=0; }
                 settings.interactive = false;
-				$this.find("#mask").show();
+				$this.find("#sg_mask").show();
                 settings.context.onquit($this,{'status':'abort'});
             }
         };

@@ -1,18 +1,18 @@
 <div>
 
-    <div id="board">
-		<div id="mask"></div>
-        <div id="exercice"><div></div></div>
-        <div id="interactive">
-            <div id="question"></div>
-            <div id="response"></div>
+    <div id="sg_board">
+		<div id="sg_mask"></div>
+        <div id="sg_exercice"><div></div></div>
+        <div id="sg_interactive">
+            <div id="sg_question"></div>
+            <div id="sg_response"></div>
         </div>
     </div>
-    <div id="submit" ontouchstart="$(this).closest('.sorting').sorting('check');event.preventDefault();"
-                     onclick="$(this).closest('.sorting').sorting('check');">
-        <img src="res/img/default/icon/swvalid.svg" id="subvalid" alt=""/>
-        <img src="res/img/default/icon/swgood.svg" id="subgood" alt=""/>
-        <img src="res/img/default/icon/swwrong.svg" id="subwrong" alt=""/>
+	
+    <div id="submit" ontouchstart="$(this).closest('.sorting').sorting('check');event.preventDefault();" onclick="$(this).closest('.sorting').sorting('check');">
+        <img src="res/img/default/icon/swvalid.svg" id="valid" alt=""/>
+        <img src="res/img/default/icon/swgood.svg" id="good" alt=""/>
+        <img src="res/img/default/icon/swwrong.svg" id="wrong" alt=""/>
     </div>
 
     <div id="splashex" ontouchstart="$(this).hide().closest('.sorting').sorting('next');event.preventDefault();"

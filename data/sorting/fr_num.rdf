@@ -8,7 +8,7 @@
     <rdf:Description>
         <dct:identifier>_ne50a</dct:identifier>
         <dct:title xml:lang="fr-FR">Classer les différentes valeurs littérales de 1 à 50.</dct:title>
-        <dct:description><![CDATA["errratio":1,"gg":{"nb":7,"a":[50,1],"b":0,"c":0,"val":[]},"nbvalues":7,"number":3,"type":"move","font":0.7]]></dct:description>
+        <dct:description><![CDATA["errratio":1,"gg":{"nb":10,"a":[50,1],"b":0,"c":0,"val":[]},"nbvalues":10,"number":2,"type":"move","font":0.7]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -21,7 +21,7 @@
     <rdf:Description>
         <dct:identifier>_ne100a</dct:identifier>
         <dct:title xml:lang="fr-FR">Classer les différentes valeurs littérales de 1 à 100.</dct:title>
-        <dct:description><![CDATA["errratio":1,"gg":{"nb":7,"a":[99,1],"b":0,"c":0,"val":[]},"nbvalues":7,"number":3,"type":"move","font":0.7]]></dct:description>
+        <dct:description><![CDATA["errratio":1,"gg":{"nb":10,"a":[99,1],"b":0,"c":0,"val":[]},"nbvalues":10,"number":2,"type":"move","font":0.7]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -34,7 +34,7 @@
 	<rdf:Description>
         <dct:identifier>_ne1k</dct:identifier>
         <dct:title xml:lang="fr-FR">Classer les différentes valeurs littérales de 1 et 1,000.</dct:title>
-        <dct:description><![CDATA["errratio":1,"gg":{"nb":7,"a":[100,0],"b":10,"c":0,"val":[]},"nbvalues":7,"number":2,"type":"move","font":0.7]]></dct:description>
+        <dct:description><![CDATA["errratio":1,"gg":{"nb":10,"a":[100,0],"b":10,"c":0,"val":[]},"nbvalues":10,"number":1,"type":"move","font":0.7]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -47,7 +47,7 @@
 	<rdf:Description>
         <dct:identifier>_ne10k</dct:identifier>
         <dct:title xml:lang="fr-FR">Classer les différentes valeurs littérales de 1 et 10,000.</dct:title>
-        <dct:description><![CDATA["errratio":1,"gg":{"nb":7,"a":[100,0],"b":10,"c":10,"val":[]},"nbvalues":7,"number":2,"type":"move","font":0.5,"class":"h12","gen":"function($this,_s,_i){if (_s.gg.val.length==0) { var max=(Math.max(0,_s.gg.c-1))*1000+(Math.max(0,_s.gg.b-1))*100+(_s.gg.a[0]-1),values=['zéro','un','deux','trois','quatre','cinq','six','sept','huit','neuf','dix','onze','douze','treize','quatorze','quinze','seize','dix-sept','dix-huit','dix-neuf','vingt','vingt-et-un','vingt-deux','vingt-trois','vingt-quatre','vingt-cinq','vingt-six','vingt-sept','vingt-huit','vingt-neuf','trente','trente-et-un','trente-deux','trente-trois','trente-quatre','trente-cinq','trente-six','trente-sept','trente-huit','trente-neuf','quarante','quarante-et-un','quarante-deux','quarante-trois','quarante-quatre','quarante-cinq','quarante-six','quarante-sept','quarante-huit','quarante-neuf','cinquante','cinquante-et-un','cinquante-deux','cinquante-trois','cinquante-quatre','cinquante-cinq','cinquante-six','cinquante-sept','cinquante-huit','cinquante-neuf','soixante','soixante-et-un','soixante-deux','soixante-trois','soixante-quatre','soixante-cinq','soixante-six','soixante-sept','soixante-huit','soixante-neuf','soixante-dix','soixante-et-onze','soixante-douze','soixante-treize','soixante-quatorze','soixante-quinze','soixante-seize','soixante-dix-sept','soixante-dix-huit','soixante-dix-neuf','quatre-vingts','quatre-vingt-un','quatre-vingt-deux','quatre-vingt-trois','quatre-vingt-quatre','quatre-vingt-cinq','quatre-vingt-six','quatre-vingt-sept','quatre-vingt-huit','quatre-vingt-neuf','quatre-vingt-dix','quatre-vingt-onze','quatre-vingt-douze','quatre-vingt-treize','quatre-vingt-quatorze','quatre-vingt-quinze','quatre-vingt-seize','quatre-vingt-dix-sept','quatre-vingt-dix-huit','quatre-vingt-dix-neuf'], a = Math.floor(Math.random()*_s.gg.a[0])+_s.gg.a[1], b = Math.floor(Math.random()*_s.gg.b), c = Math.floor(Math.random()*_s.gg.c),val=[]; do { var ok=true,v=Math.floor(Math.random()*max)+_s.gg.a[1]; for (var j in val) { if (val[j]==v) { ok = false; } } if (ok) { val.push(v); } } while(val.length<_s.gg.nb); val.sort(function(a,b){return (a>b);}); for (var j in val) { var a=val[j]%100,b=Math.floor(val[j]/100)%10,c=Math.floor(val[j]/1000); _s.gg.val.push(((c>0)?(c>1?values[c]+'-':'')+'mille':'')+(c>0&&b>0?'-':'')+((b>0)?(b>1?values[b]+'-':'')+'cent'+(a==0&&b>1?'s':''):'')+(a>0&&(c>0||b>0)?'-':'')+((a>0||(b==0&&c==0))?values[a]:''));} } return _s.gg.val[_i]; }"]]></dct:description>
+        <dct:description><![CDATA["errratio":1,"gg":{"nb":10,"a":[100,0],"b":10,"c":10,"val":[]},"nbvalues":10,"number":1,"type":"move","font":0.5,"class":"h12","gen":"function($this,_s,_i){ if (_i==0) { _s.gg.val=[]; } if (_s.gg.val.length==0) { var max=(Math.max(0,_s.gg.c-1))*1000+(Math.max(0,_s.gg.b-1))*100+(_s.gg.a[0]-1),values=['zéro','un','deux','trois','quatre','cinq','six','sept','huit','neuf','dix','onze','douze','treize','quatorze','quinze','seize','dix-sept','dix-huit','dix-neuf','vingt','vingt-et-un','vingt-deux','vingt-trois','vingt-quatre','vingt-cinq','vingt-six','vingt-sept','vingt-huit','vingt-neuf','trente','trente-et-un','trente-deux','trente-trois','trente-quatre','trente-cinq','trente-six','trente-sept','trente-huit','trente-neuf','quarante','quarante-et-un','quarante-deux','quarante-trois','quarante-quatre','quarante-cinq','quarante-six','quarante-sept','quarante-huit','quarante-neuf','cinquante','cinquante-et-un','cinquante-deux','cinquante-trois','cinquante-quatre','cinquante-cinq','cinquante-six','cinquante-sept','cinquante-huit','cinquante-neuf','soixante','soixante-et-un','soixante-deux','soixante-trois','soixante-quatre','soixante-cinq','soixante-six','soixante-sept','soixante-huit','soixante-neuf','soixante-dix','soixante-et-onze','soixante-douze','soixante-treize','soixante-quatorze','soixante-quinze','soixante-seize','soixante-dix-sept','soixante-dix-huit','soixante-dix-neuf','quatre-vingts','quatre-vingt-un','quatre-vingt-deux','quatre-vingt-trois','quatre-vingt-quatre','quatre-vingt-cinq','quatre-vingt-six','quatre-vingt-sept','quatre-vingt-huit','quatre-vingt-neuf','quatre-vingt-dix','quatre-vingt-onze','quatre-vingt-douze','quatre-vingt-treize','quatre-vingt-quatorze','quatre-vingt-quinze','quatre-vingt-seize','quatre-vingt-dix-sept','quatre-vingt-dix-huit','quatre-vingt-dix-neuf'], a = Math.floor(Math.random()*_s.gg.a[0])+_s.gg.a[1], b = Math.floor(Math.random()*_s.gg.b), c = Math.floor(Math.random()*_s.gg.c),val=[]; do { var ok=true,v=Math.floor(Math.random()*max)+_s.gg.a[1]; for (var j in val) { if (val[j]==v) { ok = false; } } if (ok) { val.push(v); } } while(val.length<_s.gg.nb); shuffle(val); for (var j in val) { var a=val[j]%100,b=Math.floor(val[j]/100)%10,c=Math.floor(val[j]/1000); _s.gg.val.push(((c>0)?(c>1?values[c]+'-':'')+'mille':'')+(c>0&&b>0?'-':'')+((b>0)?(b>1?values[b]+'-':'')+'cent'+(a==0&&b>1?'s':''):'')+(a>0&&(c>0||b>0)?'-':'')+((a>0||(b==0&&c==0))?values[a]:''));} } return _s.gg.val[_i]; }"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Classez[/b] ces valeurs de la plus [red]petite[/red] à la plus [red]grande[/red].","fontex":0.5]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -60,7 +60,7 @@
 	<rdf:Description>
         <dct:identifier>_ne100k</dct:identifier>
         <dct:title xml:lang="fr-FR">Classer les différentes valeurs littérales de 1 et 100,000.</dct:title>
-        <dct:description><![CDATA["errratio":1,"gg":{"nb":7,"a":[100,0],"b":10,"c":100,"val":[]},"nbvalues":7,"number":2,"type":"move","font":0.5]]></dct:description>
+        <dct:description><![CDATA["errratio":1,"gg":{"nb":10,"a":[100,0],"b":10,"c":100,"val":[]},"nbvalues":10,"number":1,"type":"move","font":0.5]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>numeration</dct:subject>
         <dct:educationLevel>2</dct:educationLevel>
@@ -84,6 +84,7 @@
         <dct:alternative>_nu10k</dct:alternative>
         <dct:relation>_nu10k</dct:relation>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
+		<dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
     </rdf:Description>
 
 	<rdf:Description>
@@ -97,6 +98,7 @@
         <dct:alternative>_nu10k</dct:alternative>
         <dct:relation>_nu10k</dct:relation>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
+		<dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
     </rdf:Description>
 
 	<rdf:Description>
@@ -110,6 +112,7 @@
         <dct:alternative>_nu10k</dct:alternative>
         <dct:relation>_nu10k</dct:relation>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
+		<dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
     </rdf:Description>
 
 
@@ -124,6 +127,7 @@
         <dct:alternative>_nu10k</dct:alternative>
         <dct:relation>_nu10k</dct:relation>
         <dct:coverage xml:lang="fr-FR">CP</dct:coverage>
+		<dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
     </rdf:Description>
 	
 	<rdf:Description>
@@ -137,12 +141,13 @@
         <dct:alternative>_nu10k</dct:alternative>
         <dct:relation>_nu10k</dct:relation>
         <dct:coverage xml:lang="fr-FR">CE1</dct:coverage>
+		<dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
     </rdf:Description>
 	
 	<rdf:Description>
         <dct:identifier>_nu10k</dct:identifier>
         <dct:title xml:lang="fr-FR">Associer chaque valeur littérale compris entre 1 et 10,000 à sa valeur numérique.</dct:title>
-        <dct:description><![CDATA["errratio":1,"gg":{"a":[100,0],"b":10,"c":10},"nbvalues":6,"number":2,"class":"h12","font":0.6,"len":3,"gen":"function($this,_s,_i){var values=['zéro','un','deux','trois','quatre','cinq','six','sept','huit','neuf','dix','onze','douze','treize','quatorze','quinze','seize','dix-sept','dix-huit','dix-neuf','vingt','vingt-et-un','vingt-deux','vingt-trois','vingt-quatre','vingt-cinq','vingt-six','vingt-sept','vingt-huit','vingt-neuf','trente','trente-et-un','trente-deux','trente-trois','trente-quatre','trente-cinq','trente-six','trente-sept','trente-huit','trente-neuf','quarante','quarante-et-un','quarante-deux','quarante-trois','quarante-quatre','quarante-cinq','quarante-six','quarante-sept','quarante-huit','quarante-neuf','cinquante','cinquante-et-un','cinquante-deux','cinquante-trois','cinquante-quatre','cinquante-cinq','cinquante-six','cinquante-sept','cinquante-huit','cinquante-neuf','soixante','soixante-et-un','soixante-deux','soixante-trois','soixante-quatre','soixante-cinq','soixante-six','soixante-sept','soixante-huit','soixante-neuf','soixante-dix','soixante-et-onze','soixante-douze','soixante-treize','soixante-quatorze','soixante-quinze','soixante-seize','soixante-dix-sept','soixante-dix-huit','soixante-dix-neuf','quatre-vingts','quatre-vingt-un','quatre-vingt-deux','quatre-vingt-trois','quatre-vingt-quatre','quatre-vingt-cinq','quatre-vingt-six','quatre-vingt-sept','quatre-vingt-huit','quatre-vingt-neuf','quatre-vingt-dix','quatre-vingt-onze','quatre-vingt-douze','quatre-vingt-treize','quatre-vingt-quatorze','quatre-vingt-quinze','quatre-vingt-seize','quatre-vingt-dix-sept','quatre-vingt-dix-huit','quatre-vingt-dix-neuf'], a = Math.floor(Math.random()*_s.gg.a[0])+_s.gg.a[1], b = Math.floor(Math.random()*_s.gg.b), c = Math.floor(Math.random()*_s.gg.c); return [c*1000+b*100+a,((c>0)?(c>1?values[c]+'-':'')+'mille':'')+(c>0&&b>0?'-':'')+((b>0)?(b>1?values[b]+'-':'')+'cent'+(a==0&&b>1?'s':''):'')+(a>0&&(c>0||b>0)?'-':'')+((a>0||(b==0&&c==0))?values[a]:'')]; }"]]></dct:description>
+        <dct:description><![CDATA["background":"res/img/background/landscape/bluecarpet02.svg","errratio":1,"gg":{"a":[100,0],"b":10,"c":10},"nbvalues":6,"number":2,"class":"h12","font":0.6,"len":3,"gen":"function($this,_s,_i){var values=['zéro','un','deux','trois','quatre','cinq','six','sept','huit','neuf','dix','onze','douze','treize','quatorze','quinze','seize','dix-sept','dix-huit','dix-neuf','vingt','vingt-et-un','vingt-deux','vingt-trois','vingt-quatre','vingt-cinq','vingt-six','vingt-sept','vingt-huit','vingt-neuf','trente','trente-et-un','trente-deux','trente-trois','trente-quatre','trente-cinq','trente-six','trente-sept','trente-huit','trente-neuf','quarante','quarante-et-un','quarante-deux','quarante-trois','quarante-quatre','quarante-cinq','quarante-six','quarante-sept','quarante-huit','quarante-neuf','cinquante','cinquante-et-un','cinquante-deux','cinquante-trois','cinquante-quatre','cinquante-cinq','cinquante-six','cinquante-sept','cinquante-huit','cinquante-neuf','soixante','soixante-et-un','soixante-deux','soixante-trois','soixante-quatre','soixante-cinq','soixante-six','soixante-sept','soixante-huit','soixante-neuf','soixante-dix','soixante-et-onze','soixante-douze','soixante-treize','soixante-quatorze','soixante-quinze','soixante-seize','soixante-dix-sept','soixante-dix-huit','soixante-dix-neuf','quatre-vingts','quatre-vingt-un','quatre-vingt-deux','quatre-vingt-trois','quatre-vingt-quatre','quatre-vingt-cinq','quatre-vingt-six','quatre-vingt-sept','quatre-vingt-huit','quatre-vingt-neuf','quatre-vingt-dix','quatre-vingt-onze','quatre-vingt-douze','quatre-vingt-treize','quatre-vingt-quatorze','quatre-vingt-quinze','quatre-vingt-seize','quatre-vingt-dix-sept','quatre-vingt-dix-huit','quatre-vingt-dix-neuf'], a = Math.floor(Math.random()*_s.gg.a[0])+_s.gg.a[1], b = Math.floor(Math.random()*_s.gg.b), c = Math.floor(Math.random()*_s.gg.c); return [c*1000+b*100+a,((c>0)?(c>1?values[c]+'-':'')+'mille':'')+(c>0&&b>0?'-':'')+((b>0)?(b>1?values[b]+'-':'')+'cent'+(a==0&&b>1?'s':''):'')+(a>0&&(c>0||b>0)?'-':'')+((a>0||(b==0&&c==0))?values[a]:'')]; }"]]></dct:description>
         <dct:description xml:lang="fr-FR"><![CDATA[,"exercice":"[b]Associez[/b] chaque nombre à sa valeur.","fontex":0.5]]></dct:description>
         <dct:extent>3</dct:extent>
         <dct:subject>numeration</dct:subject>
@@ -150,6 +155,7 @@
         <dct:type>3</dct:type>
         <dct:alternative>_nu10k</dct:alternative>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+		<dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
     </rdf:Description>
 	
 	<rdf:Description>
@@ -163,6 +169,7 @@
         <dct:alternative>_nu10k</dct:alternative>
         <dct:relation>_nu10k</dct:relation>
         <dct:coverage xml:lang="fr-FR">CE2</dct:coverage>
+		<dct:source>res/img/background/landscape/bluecarpet02.svg</dct:source>
     </rdf:Description>
 	
 	

@@ -1,54 +1,31 @@
-.sorting                                { background-image:url("../../res/img/background/landscape/redcarpet01.svg"); background-repeat:repeat; background-size:100%; width:100%; height:100%; }
-.sorting div#splashex                   { background-image:url("../../res/img/banners/sorting.svg"); }
-.sorting div#splashex  h1                 { position:absolute; top:10%; left:60%; font-size:2em; background-color:red;
-                                          width:55%; color:white; text-align:center; border-radius:0 .5em .5em 0;
-                                          border:.3em solid white;
-                                          -ms-transform: rotate(45deg); -webkit-transform: rotate(45deg); transform: rotate(45deg); }
-
-.sorting div#board #mask				{ width:16em; height:12em; position:absolute; display:none; }
-.sorting div#board .icon                { float:left; }
-.sorting div#board .char                { float:left; }
-.sorting div#interactive                { width:200%; }
-.sorting div#interactive>div            { float:left; }
-.sorting div#interactive #response      { width:50%; }
-.sorting div#exercice                   { padding:.1em .5em .1em 2em; font-size:.8em; text-align:justify; min-height:1.2em;
-                                          font-style:italic; background-image:url("../../res/img/default/pattern/line01.svg"); }
-
-.sorting .response                              { height:1em;  cursor:move; white-space:nowrap; margin:.1em 0; width:100%; }
-.sorting .response.switch>div                   { background-color:rgba(255,255,0,0.5) !important; }
-.sorting .response>div                          { padding-left:.2em; }
-.sorting .response.ui-draggable-dragging        { border:5px solid gold; margin-top:2px; }
-.sorting .response.ui-draggable-dragging>div    { display:none; }
-.sorting .response.wrong>div                    { background-color:rgba(255,80,65,1.0) !important;
-                                                  color:rgb(256, 240, 240) !important; background-image:none !important;}
-.sorting .response.good>div                     { background-color:rgba(80,255,65,1.0) !important;
-                                                  color:rgb(0, 80, 20) !important; background-image:none !important; }
-
-.sorting .question                      { height:1em; padding-right:.2em; white-space:nowrap; text-align:right;
-                                          margin:.1em .05em .1em 0; }
-
-
-.sorting div#submit                     { font-size:1.5em; height:1em;width:1em; cursor:pointer; position:absolute;
-                                          top:7em; left:0em; z-index:3; }
-.sorting div#submit>img                 { display:none;     }
-.sorting div#submit #subvalid           { display:inline; }
-.sorting div#submit.good #subvalid      { display:none; }
-.sorting div#submit.wrong #subvalid     { display:none; }
-.sorting div#submit.good #subgood       { display:inline; }
-.sorting div#submit.wrong #subwrong     { display:inline; }
-
-.sorting.h12 .response      { height:1.2em; }
-.sorting.h12 .response>div  { height:1.2em; }
-.sorting.h12 .question      { height:1.2em; }
-
-.sorting.h20 .response      { height:2em; }
-.sorting.h20 .response>div  { height:2em; }
-.sorting.h20 .question      { height:2em; }
-
-
-.sorting.noquestion .question           { display:none; }
-.sorting.sym div#board .question .icon  { float:right; }
-.sorting.sym div#board .question .char  { float:right; }
+.sorting                                    { background-image:url("../../res/img/background/landscape/redcarpet01.svg"); background-repeat:repeat; background-size:100%; width:100%; height:100%; }
+.sorting #splashex                          { background-image:url("../../res/img/banners/sorting.svg"); }
+.sorting #splashex  h1                      { position:absolute; top:10%; left:60%; font-size:2em; background-color:red; width:55%; color:white; text-align:center; border-radius:0 .5em .5em 0; border:.3em solid white; -ms-transform: rotate(45deg); -webkit-transform: rotate(45deg); transform: rotate(45deg); }
+.sorting #sg_mask				            { width:16em; height:12em; position:absolute; display:none; z-index:20; }
+.sorting #sg_board .icon                    { float:left; }
+.sorting #sg_board .char                    { float:left; }
+.sorting #sg_interactive                    { width:200%; }
+.sorting #sg_interactive>div                { float:left; }
+.sorting #sg_response                       { width:50%; }
+.sorting #sg_exercice                       { padding:.1em .5em .1em 2em; font-size:.8em; text-align:justify; min-height:1.2em; font-style:italic; background-image:url("../../res/img/default/pattern/line01.svg"); }
+.sorting .sg_r                              { height:1em;  cursor:move; white-space:nowrap; margin:.1em 0; width:100%; position:relative; }
+.sorting .sg_r.switch>div                   { background-color:rgba(255,255,0,0.5) !important; }
+.sorting .sg_r>div                          { padding-left:.2em; }
+.sorting .sg_r.ui-draggable-dragging        { border:5px solid gold; margin-top:2px; }
+.sorting .sg_r.ui-draggable-dragging>div    { display:none; }
+.sorting .sg_r .sg_mask						{ position:absolute; top:0; left:0; background-color:yellow;height:100%; width:100%; display:none;  }
+.sorting .sg_r.wrong>div                    { background-color:rgba(255,80,65,1.0) !important; color:rgb(256, 240, 240) !important; background-image:none !important;}
+.sorting .sg_r.good>div                     { background-color:rgba(80,255,65,1.0) !important; color:rgb(0, 80, 20) !important; background-image:none !important; }
+.sorting .sg_q                              { height:1em; padding-right:.2em; white-space:nowrap; text-align:right; margin:.1em .05em .1em 0; }
+.sorting.h12 .sg_r                          { height:1.2em; }
+.sorting.h12 .sg_r>div                      { height:1.2em; }
+.sorting.h12 .sg_q                          { height:1.2em; }
+.sorting.h20 .sg_r                          { height:2em; }
+.sorting.h20 .sg_r>div                      { height:2em; }
+.sorting.h20 .sg_q                          { height:2em; }
+.sorting.noquestion .sg_q                   { display:none; }
+.sorting.sym #sg_board .sg_q .icon          { float:right; }
+.sorting.sym #sg_board .sg_q .char          { float:right; }
 
 
 /*============ EDITOR PANEL =============*/

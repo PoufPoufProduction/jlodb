@@ -1,27 +1,26 @@
 <div>
 
-    <div id="board">
-    </div>
+    <div id="cd_board"></div>
 
-    <div id="menu">
-        <div id="title"></div>
-        <div id="exercice"><div></div></div>
-        <div id="definition"></div>
-        <div id="buttons">
-            <div class="bg s">
+    <div id="cd_menu">
+        <div id="cd_title"></div>
+        <div id="cd_ex"><div></div></div>
+        <div id="cd_def"></div>
+        <div id="cd_but">
+            <div class="cd_bg s">
                 <div class="icon" ontouchstart="$(this).closest('.crossword').crossword('mode',this,true);event.preventDefault();"
                                   onclick="$(this).closest('.crossword').crossword('mode',this,true);">
                     <img src="res/img/svginventoryicons/pencil/pen01.svg" alt=""/></div>
             </div>
-            <div class="bg">
+            <div class="cd_bg">
                 <div class="icon" ontouchstart="$(this).closest('.crossword').crossword('mode',this,false);event.preventDefault();"
                                   onclick="$(this).closest('.crossword').crossword('mode',this,false);">
                     <img src="res/img/svginventoryicons/pencil/pencil01.svg" alt=""/></div>
             </div>
         </div>
-		<div id="filler"></div>
-        <div id="input">
-            <div id="abc" class="input abc">
+		<div id="cd_filler"></div>
+        <div id="cd_in">
+            <div id="cd_abc" class="cd_in abc">
                 <table>
                     <tr>
                         <td><div ontouchstart="$(this).closest('.crossword').crossword('key',this);event.preventDefault();"
@@ -92,7 +91,7 @@
                     </tr>
                 </table>
             </div>
-            <div id="fr" class="input abc">
+            <div id="cd_fr" class="cd_in abc">
                 <table>
                     <tr>
                         <td><div ontouchstart="$(this).closest('.crossword').crossword('key',this);event.preventDefault();"
@@ -175,7 +174,7 @@
                     </tr>
                 </table>
             </div>
-            <div id="num" class="input num">
+            <div id="cd_num" class="cd_in num">
                 <table>
                     <tr>
                         <td><div ontouchstart="$(this).closest('.crossword').crossword('key',this);event.preventDefault();"
@@ -208,7 +207,7 @@
                     </tr>
                 </table>
             </div>
-            <div id="num0" class="input num">
+            <div id="cd_num0" class="cd_in num">
                 <table>
                     <tr>
                         <td><div ontouchstart="$(this).closest('.crossword').crossword('key',this);event.preventDefault();"
@@ -248,12 +247,14 @@
 
     <div id="submit" ontouchstart="$(this).closest('.crossword').crossword('valid');event.preventDefault();"
                      onclick="$(this).closest('.crossword').crossword('valid');">
-        <img src="res/img/default/icon/swvalid.svg" alt=""/>
+        <img src="res/img/default/icon/swvalid.svg" id="valid" alt=""/>
+        <img src="res/img/default/icon/swgood.svg" id="good" alt=""/>
+        <img src="res/img/default/icon/swwrong.svg" id="wrong" alt=""/>
     </div>
 
-    <div id="effects">
-        <div id="good"><img src="res/img/default/popup/good01.svg" alt=""/></div>
-        <div id="wrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
+    <div id="cd_effects">
+        <div id="cd_good"><img src="res/img/default/popup/good01.svg" alt=""/></div>
+        <div id="cd_wrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
     </div>
 
     <div id="splashex" ontouchstart="$(this).hide().closest('.crossword').crossword('next');event.preventDefault();"

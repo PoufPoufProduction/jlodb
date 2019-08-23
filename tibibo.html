@@ -149,7 +149,6 @@
 #bofooter #olist .slide     { background-color:#5b6;position:absolute;width:1em;height:1em;top:1em;z-index:1; }
 #bofooter #oquit            { float:right; margin-right:.2em; }
 #bofooter #ofullscreen      { float:right; margin-right:.2em; font-size:3.7em; height:1em; width:1em; border:.1em solid white; background-color:#5b6;}
-#bofooter #ocomment         { float:right; font-size:1em; width:20em; height:5em; }
 #bofooter #oactions         { font-size:2em; }
 #bofooter .action.icon.s    { background-color:#A00; }
 #bofooter .action.icon      { background-image:url("res/img/icon/tab/tab00.svg"); border-radius:.5em; float:left; margin-right:.1em; width:1em; height:1em; }
@@ -1023,25 +1022,6 @@ var tibibo = {
             
             tibibo.book.progress();
             
-            // HANDLE FOOTER COMMENT
-            var comment ="";
-            if (node.comment) {
-                comment=tibibo.helpers.format(node.comment);
-                var res = comment.match(/\[\d*\]/g);
-                for (var i in res) {
-                    var tmp = tibibo.book.data.nav.getnode(res[i].substr(1,res[i].length-2));
-                    if (tmp) {
-                        var html="<span class='bolink'"+
-                            "onclick='tibibo.book.chapter("+res[i]+")' "+
-                            "ontouchstart='tibibo.book.chapter("+res[i]+");event.preventDefault();'"+
-                                ">"+tibibo.helpers.format(tmp.label)+"</span>";
-                            comment = comment.replace(res[i],html);
-                    }
-                }
-            }
-            $("#bofooter #ocomment").html(comment).show();
-            
-
             $("#boframe").show();
             $("#bohome").detach();
         },
@@ -1416,8 +1396,6 @@ $(window).ready(function() {
 			<div class="icon" id="oquit" onmousedown="$('#boquitpanel').show();"
                  ontouchstart="$('#boquitpanel').show();event.preventDefault();" >
                  <img src="res/img/default/icon/cancel01.svg"/></div>
-               
-            <div id="ocomment"></div>
             
             <div id="odelete" class="icon action"
                 onmousedown="$(this).toggleClass('s');"

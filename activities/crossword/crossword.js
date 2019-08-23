@@ -110,11 +110,7 @@
                 // HANDLE BACKGROUND
                 if (settings.background) { $this.children().first().css("background-image","url("+settings.background+")"); }
 
-                // DISPLAY KEYPAD
-                $this.find("#menu #"+settings.keypad).show();
-
                 // Locale handling
-
                 $this.find("#guide").html(settings.guide);
                 $this.find("#guide2").html(settings.guide2);
                 if (settings.locale)    { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
@@ -127,8 +123,11 @@
         },
         build:function($this) {
             var settings = helpers.settings($this);
-            $this.find("#effects>div").hide();
-            $this.find("#effects").hide();
+            $this.find("#cd_effects>div").hide();
+            $this.find("#cd_effects").hide();
+            $this.find("#submit").removeClass();
+
+            $this.find("#cd_"+settings.keypad).show();
 
             if (settings.data)  { settings.values       = $.isArray(settings.data[0])?settings.data[settings.id]:settings.data; }
             if (settings.def)   { settings.definition   = $.isArray(settings.def[0])?settings.def[settings.id]:settings.def; }
@@ -141,32 +140,28 @@
                 if (gen.fixed)  { fixed               = gen.fixed;	}
             }
             if (settings.title) {
-				$this.find("#title").html(helpers.format(settings.title))
-									.css("height",settings.htitle+"%")
-									.css("font-size",settings.fonttitle+"em")
-									.show();
+				$this.find("#cd_title").html(helpers.format(settings.title))
+					.css("height",settings.htitle+"%").css("font-size",settings.fonttitle+"em").show();
 			}
-			else {
-				$this.find("#title").hide();
-			}
+			else { $this.find("#cd_title").hide(); }
 
             if (!settings.definition)      { $this.addClass("nodef"); }
-			else { $this.find("#definition").css("height",settings.hdef+"%"); }
+			else { $this.find("#cd_def").css("height",settings.hdef+"%"); }
 			
             if (!settings.exercice)        { $this.addClass("noex"); }
-			$this.find("#exercice").css("height",settings.hex+"%");
-            $this.find("#exercice>div").css("font-size",settings.fontex+"em");
+			$this.find("#cd_ex").css("height",settings.hex+"%");
+            $this.find("#cd_ex>div").css("font-size",settings.fontex+"em");
             if (settings.exercice) {
-                if ($.isArray(settings.exercice)) { $this.find("#exercice>div").html(helpers.format(settings.exercice[settings.id])); }
-                else                              { $this.find("#exercice>div").html(helpers.format(settings.exercice)); }
+                if ($.isArray(settings.exercice)) { $this.find("#cd_ex>div").html(helpers.format(settings.exercice[settings.id])); }
+                else                              { $this.find("#cd_ex>div").html(helpers.format(settings.exercice)); }
             }
 			
-			$this.find("#exercice .a").bind("touchstart mousedown", function(_event) {
+			$this.find("#cd_ex .a").bind("touchstart mousedown", function(_event) {
 				$(this).toggleClass("d"); _event.preventDefault();
 			});
             
 			if (settings.hfiller) {
-				$this.find("#filler").css("height",settings.hfiller+"%").show();
+				$this.find("#cd_filler").css("height",settings.hfiller+"%").show();
 			}
 
             // BUILD TABLE
@@ -182,13 +177,14 @@
                 html+="<tr>";
                 for (var col in settings.values[row]) {
                     var value=(settings.values[row][col]==settings.empty)?0:Math.floor(Math.random()*2)+1;
-                    html+="<td><div class='bg bg"+value+(settings.horiz?" horiz":"")+"' id='"+col+"x"+row+"'>";
+                    html+="<td><div class='cd_bg cd_bg"+value+(settings.horiz?" horiz":"")+"' id='"+col+"x"+row+"'>";
                     if (value!=0) {
-                        html+="<div class='v'";
+						html+="<div class='anim12 noloop'><div><img src='res/img/asset/anim/bluelight0"+Math.floor(Math.random()*4+1)+".svg' alt=''/></div></div>";
+                        html+="<div class='cd_v'";
                         html+=" onclick='$(this).closest(\".crossword\").crossword(\"click\","+col+","+row+");'";
                         html+=" ontouchstart='$(this).closest(\".crossword\").crossword(\"click\","+col+","+row+");";
                         html+="event.preventDefault();'></div>";
-                        html+="<table class='hint'>";
+                        html+="<table class='cd_hint'>";
                         for (var i=0; i<9; i++) {
                             if (i%3==0) { html+="<tr>"; }
                             html+="<td><div id='c"+i+"'";
@@ -205,12 +201,15 @@
                 html+="</tr>";
             }
             html+="</table>";
-            $this.find("#board").html(html);
+            $this.find("#cd_board").html(html);
 
             // FIXED CELLS
             if (fixed) for (var i in fixed) {
+				var val = settings.values[fixed[i][1]][fixed[i][0]];
                 $elt = $this.find("#"+fixed[i][0]+"x"+fixed[i][1]);
-                $elt.addClass("fixed").find(".v").html(settings.values[fixed[i][1]][fixed[i][0]]);
+                $elt.addClass("cd_fixed");
+				
+				if (val!=settings.emptyval) { $elt.find(".cd_v").html(val); }
             }
         },
         key: function($this, _val) {
@@ -225,18 +224,23 @@
             if (settings.interactive && vOk) {
                 if (settings.mode) {
                     if (settings.elt.pos[0]!=-1 && settings.elt.pos[1]!=-1) {
-                        if (!$this.find("#"+settings.elt.pos[0]+"x"+settings.elt.pos[1]).hasClass("fixed")) {
-                            $this.find("#"+settings.elt.pos[0]+"x"+settings.elt.pos[1]+" .v").html(_val[0]);
-
+						var vElt = $this.find("#"+settings.elt.pos[0]+"x"+settings.elt.pos[1]);
+                        if (!vElt.hasClass("cd_fixed")) {
+							if (vElt.find(".cd_v").html()!=_val[0]) {
+								vElt.find(".cd_v").css("opacity",0).html(_val[0]).animate({opacity:1},800);
+							}
+							vElt.find(".anim12>div").addClass("running").parent().show();
+							setTimeout(function() { vElt.find(".anim12>div").removeClass("running").parent().hide(); }, 1000);
+							
                             // MOVE TO THE NEXT CHARACTER
                             if (settings.move) {
                                 if (settings.elt.horiz) { settings.elt.pos[0]++; } else { settings.elt.pos[1]++; }
-                                $this.find(".l2").removeClass("l2").addClass("l1");
+                                $this.find(".cd_l2").removeClass("cd_l2").addClass("cd_l1");
                                 if ( settings.elt.pos[0]>=settings.values[0].length)  { settings.elt.pos[0] = -1; }
                                 if ( settings.elt.pos[1]>=settings.values.length)     { settings.elt.pos[1] = -1; }
                                 if ( settings.elt.pos[0]!=-1 && settings.elt.pos[1]!=-1) {
                                     var $elt = $this.find("#"+settings.elt.pos[0]+"x"+settings.elt.pos[1]);
-                                    if (!$elt.hasClass("fixed")) { $elt.removeClass("l1").addClass("l2"); }
+                                    if (!$elt.hasClass("cd_fixed")) { $elt.removeClass("cd_l1").addClass("cd_l2"); }
                                 }
                             }
                         }
@@ -250,14 +254,14 @@
                             if (settings.elt.horiz) { settings.elt.pos[0]++; } else { settings.elt.pos[1]++; }
                             if ( settings.elt.pos[0]>=settings.values[0].length)  { settings.elt.pos[0] = -1; }
                             if ( settings.elt.pos[1]>=settings.values.length)     { settings.elt.pos[1] = -1; }
-                            $this.find(".hint div").removeClass("s");
-                            $this.find(".l2").removeClass("l2").addClass("l1");
+                            $this.find(".cd_hint div").removeClass("s");
+                            $this.find(".cd_l2").removeClass("cd_l2").addClass("cd_l1");
                             if ( settings.elt.pos[0]!=-1 && settings.elt.pos[1]!=-1) {
                                 var $elt = $this.find("#"+settings.elt.pos[0]+"x"+settings.elt.pos[1]);
-                                if (!$elt.hasClass("fixed")) {
+                                if (!$elt.hasClass("cd_fixed")) {
                                     settings.elt.hint = $elt.find("#"+settings.elt.hint.attr("id"));
                                     settings.elt.hint.addClass("s");
-                                    $elt.removeClass("l1").addClass("l2");
+                                    $elt.removeClass("cd_l1").addClass("cd_l2");
                                 }
                             }
                         }
@@ -316,8 +320,8 @@
                 if (settings.interactive) {
                     _col = parseInt(_col); _row = parseInt(_row);
 
-                    $this.find(".bg").removeClass("l1").removeClass("l2");
-                    $this.find(".hint div").removeClass("s");
+                    $this.find(".cd_bg").removeClass("cd_l1").removeClass("cd_l2");
+                    $this.find(".cd_hint div").removeClass("s");
 
                     // TOGGLE ORIENTATION
                     if (settings.elt.pos[0]==_col && settings.elt.pos[1]==_row &&
@@ -344,7 +348,7 @@
                     // SHOW CURRENT COL OR ROW
                     for (var i=begin; i<=end; i++) {
                         $this.find("#"+(settings.elt.horiz?i+"x"+_row:_col+"x"+i))
-                            .addClass((i==(settings.elt.horiz?_col:_row))?"l2":"l1");
+                            .addClass((i==(settings.elt.horiz?_col:_row))?"cd_l2":"cd_l1");
                     }
 
                     // GET THE DEFINITION
@@ -361,13 +365,17 @@
 
                     }
 
-                    var $def = $this.find("#definition");
-                    $def.html("<div style='font-size:"+settings.font+"em;'>"+helpers.format(def.toString())+"</div>").toggleClass("center",(def.length<5));
+                    var $def = $this.find("#cd_def");
+                    $def.html("<div style='font-size:"+settings.font+"em;'>"+helpers.format(def.toString())+"</div>").toggleClass("c",(def.length<5));
 
                     if (_hint) {
                         if (settings.mode) {
-                            $(_hint).closest(".bg").find(".v").html($(_hint).html()).show();
-                        }
+							$(_hint).closest(".cd_hint").hide();
+							var vElt = $(_hint).closest(".cd_bg");
+							vElt.find(".cd_v").css("opacity",0).show().html($(_hint).html()).animate({opacity:1},800);
+							vElt.find(".anim12>div").addClass("running").parent().show();
+							setTimeout(function() { vElt.find(".anim12>div").removeClass("running").parent().hide(); }, 1000);
+						}
                         else {
                             $(_hint).addClass("s");
                             settings.elt.pos=[_col,_row]; settings.elt.hint = $(_hint);
@@ -386,11 +394,12 @@
                 var $this = $(this) , settings = helpers.settings($this);
                 var error = 0;
 
-                $this.find(".bg").removeClass("l1").removeClass("l2");
-                $this.find(".bg .v").show();
-                $this.find(".hint div").removeClass("s");
+                $this.find(".cd_bg").removeClass("cd_l1").removeClass("cd_l2");
+                $this.find(".cd_bg .cd_v").show();
+                $this.find(".cd_hint div").removeClass("s");
                 for (var row=0; row<settings.values.length; row++) for (var col=0; col<settings.values[row].length; col++) {
-                    var value = this.find("#"+col+"x"+row+" .v").text();
+                    var value = this.find("#"+col+"x"+row+" .cd_v").text();
+					if (value==" "&&settings.emptyval) { value=settings.emptyval; }
                     if (settings.values[row][col]!=settings.empty &&
                         settings.values[row][col]!=value) {
 
@@ -405,16 +414,16 @@
                 settings.score-=error*settings.errratio;
                 if (settings.score<0) settings.score=0;
 
-                if (error==0) { $this.find("#effects #good").show(); }
-                else          { $this.find("#effects #wrong").show(); }
-                $this.find("#effects").show();
+                if (error==0) { $this.find("#cd_good").show(); }
+                else          { $this.find("#cd_wrong").show(); }
+                $this.find("#cd_effects").show();
+				$this.find("#submit").addClass(error==0?"good":"wrong");
 
                 if (++settings.id<settings.number) {
                     setTimeout(function() { helpers.build($this); }, 1000);
                 }
                 else {
                     settings.interactive = false;
-                    $this.find("#valid").hide();
                     setTimeout(function() { helpers.end($this); }, 1000);
                 }
             },
@@ -423,24 +432,25 @@
                 if (settings.mode!=_val) {
                     settings.mode = _val;
                     settings.elt.pos = [-1,-1];
-                    $this.find("#buttons .bg").removeClass("s");
-                    $this.find(".hint div").removeClass("s");
+                    $this.find("#cd_but .cd_bg").removeClass("s");
+                    $this.find(".cd_hint div").removeClass("s");
                     $(_elt).parent().addClass("s");
-                    $("#board .bg").each( function() {
+                    $("#cd_board .cd_bg").each( function() {
                         $cell = $(this);
                         if (settings.mode) {
                             var hintempty=true;
-                            $cell.find(".hint div").each(function() {
+                            $cell.find(".cd_hint div").each(function() {
                                 var v = $(this).html();
                                 if (v && v.length!=0 && v[0]!=' ' && v!="&#xA0;") { hintempty=false; }
                             });
-                            if (hintempty) { $cell.find(".v").show(); }
+                            if (hintempty) { $cell.find(".cd_v").show(); $cell.find(".cd_hint").hide(); }
 
                         }
                         else {
-                            var $value = $cell.find(".v");
+                            var $value = $cell.find(".cd_v");
                             if ($value && (!$value.html() || $value.html().length==0 || $value.html()[0]==' ' || $value.html()=="&#xA0;")) {
                                  $value.hide();
+								 $cell.find(".cd_hint").show();
                             }
                         }
                     });

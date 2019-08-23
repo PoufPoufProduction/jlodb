@@ -74,6 +74,15 @@ div								{
 #touch01 div                    { position:relative; width:1em; height:12em; margin-top:1em; animation-duration: 0.5s; animation-name:anim; animation-play-state:paused; animation-timing-function:step-start; -webkit-animation-duration: 0.5s; -webkit-animation-name:anim; -webkit-animation-timing-function:step-start; -webkit-animation-play-state:paused; }
 #touch01 div.running            { animation-play-state:running; -webkit-animation-play-state:running; }
 
+#submit                         { font-size:1.5em; height:1em;width:1em; cursor:pointer; position:absolute; top:7em; left:0em; z-index:3; }
+#submit>img                     { display:none;     }
+#submit>#valid                  { display:inline; }
+#submit.good>#valid             { display:none; }
+#submit.good>#good              { display:inline; }
+#submit.wrong>#valid            { display:none; }
+#submit.wrong>#wrong            { display:inline; }
+
+
 #tip                            { position:relative; }
 #tip>div                        { position:absolute; font-size:.25em; top:2.6em; left:2.6em; background-color:#444; color:white; width:1.2em; height:1.2em; text-align:center; border-radius:.5em; overflow:visible;}
 #ptip                           { position:absolute;top:0;left:0; width:16em; height:12em;background-color:rgba(0,0,0,0.5); z-index:100; display:none; }
