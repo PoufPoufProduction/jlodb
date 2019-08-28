@@ -81,7 +81,12 @@ div								{
 #submit.good>#good              { display:inline; }
 #submit.wrong>#valid            { display:none; }
 #submit.wrong>#wrong            { display:inline; }
-
+#effects						{ display:none; width:5em; height:5em; position:absolute; top:0.5em; left:10.5em;  z-index:20;}
+#effects>div					{ font-size:5em; width:1em; height:1em; display:none;}
+#effects.good					{ display:inline; }
+#effects.good>#good				{ display:inline; }
+#effects.wrong					{ display:inline; }
+#effects.wrong>#wrong			{ display:inline; }
 
 #tip                            { position:relative; }
 #tip>div                        { position:absolute; font-size:.25em; top:2.6em; left:2.6em; background-color:#444; color:white; width:1.2em; height:1.2em; text-align:center; border-radius:.5em; overflow:visible;}
@@ -128,8 +133,9 @@ div								{
 #score #menu                    { left:7.7em; }
 #score #next                    { left:8.8em; }
 
-#splashex                       { height:100%; width:100%; top:0; left:0; position:absolute; z-index:2000; cursor: pointer; font-size:.5em; }
+#splashex                       { height:100%; width:100%; top:0; left:0; position:absolute; z-index:2000; cursor: pointer; font-size:.5em; background-color:rgba(0,0,0,0.3);  }
 .nosplash #splashex             { display:none; }
+#splashex  h1                   { position:absolute; top:15%; left:55%; font-size:1.5em; background-color:red; width:55%; color:white; text-align:center; border-radius:0 .5em .5em 0; border:.3em solid white; -ms-transform: rotate(45deg); -webkit-transform: rotate(45deg); transform: rotate(45deg); }
 
 /*============== ACTIVITY EDITOR =======================*/
 .jlodb_editor { background-color:#555; font-size:.5em; position:relative; width:32em; height:24em; }

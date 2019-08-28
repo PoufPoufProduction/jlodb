@@ -1,41 +1,22 @@
-.correcter                                { background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat;}
-.correcter div#splashex            { background-image:url("../../res/img/banners/correcter.svg"); }
-.correcter div#splashex  h1                 { position:absolute; top:15%; left:55%; font-size:1.5em; background-color:red;
-                                          width:55%; color:white; text-align:center; border-radius:0 .5em .5em 0;
-                                          border:.3em solid white;
-                                          -ms-transform: rotate(45deg); -webkit-transform: rotate(45deg); transform: rotate(45deg); }
-.correcter div#splashex #guide     { display:none; }
-.correcter div#exercice                   { background-color:rgba(255,255,255,0.9); padding:.5em .5em .5em 2em; font-size:.45em; text-align:justify; font-style:italic; }
-.correcter div#illustration               { position:absolute; border:1px solid black; top:-0.2em; left: 0.2em; font-size:1.3em;
-                                   width:9em; height:12em; display:none; }
-.correcter div#board                      { margin-top:.5em; height:23.5em; font-size:.5em; position:relative; overflow:visible; }
-.correcter div#data                       { width:90%; overflow:hidden; background-repeat:repeat;
-                                            text-align:justify; padding:2px 5% 2px 5%;
-                                            display:none; background-image:url("../../res/img/default/pattern/line01.svg"); }
-.correcter div#data.fig                   { padding:2px 5% 2px 43%; width:52%; }
-.correcter div#data p                     { margin:.2em 0; overflow:visible; line-height:1.3em; }
-.correcter div#data span                  { cursor:pointer; }
-.correcter div#data span.blank            { border:1px solid gray; padding:0 2px 0 2px; }
-.correcter div#data span.bold             { font-weight:bold; }
-.correcter div#data span.wrong            { background-color:rgba(255,80,65,1.0); color:rgb(220, 240, 256); }
-.correcter div#data span.highlight		  { background-color:yellow; }
-.correcter div#key                        { width:5em; height:5em; margin:0 auto; cursor:pointer; }
-.correcter div#popup                      { position:absolute; top:0; left:0; font-size:.5em; background-color:rgba(255,255,255,1);
-                                            border:1px solid black; display:none; padding:5px; z-index:2;}
-.correcter div#popup .current             { background-color:rgba(255,231,184,0.8); }
-.correcter div#popup div                  { cursor:pointer; }
-.correcter div#popup div.s                { background-color:rgba(255,0,0,0.8); }
-.correcter div#submit                     { font-size:1.5em; height:1em;width:1em; cursor:pointer;
-                                            position:absolute; top:7em; left:0em; z-index:3; }
-.correcter div#submit>img                 { display:none; }
-.correcter div#submit #subvalid           { display:inline; }
-.correcter div#submit.good #subvalid      { display:none; }
-.correcter div#submit.wrong #subvalid     { display:none; }
-.correcter div#submit.good #subgood       { display:inline; }
-.correcter div#submit.wrong #subwrong     { display:inline; }
+.correcter                          { background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat;}
+.correcter #splashex                { background-image:url("../../res/img/banners/correcter.svg"); }
+.correcter #crexercice              { background-color:rgba(255,255,255,0.9); padding:.5em .5em .5em 2em; font-size:.45em; text-align:justify; font-style:italic; }
+.correcter #crfig                   { position:absolute; border:1px solid black; top:-0.2em; left: 0.2em; font-size:1.3em; width:9em; height:12em; display:none; }
+.correcter #crboard                 { margin-top:.5em; height:23.5em; font-size:.5em; position:relative; overflow:visible; }
+.correcter #crdata                  { width:90%; overflow:hidden; background-repeat:repeat; text-align:justify; padding:2px 5% 2px 5%; display:none; background-image:url("../../res/img/default/pattern/line01.svg"); }
+.correcter #crdata.fig              { padding:2px 5% 2px 43%; width:52%; }
+.correcter #crdata p                { margin:.2em 0; overflow:visible; line-height:1.3em; }
+.correcter #crdata span             { cursor:pointer; }
+.correcter #crdata span.blank       { border:1px solid gray; padding:0 2px 0 2px; }
+.correcter #crdata span.bold        { font-weight:bold; }
+.correcter #crdata span.wrong       { background-color:rgba(255,80,65,1.0); color:rgb(220, 240, 256); }
+.correcter #crdata span.highlight   { background-color:yellow; }
+.correcter #crpopup                 { position:absolute; top:0; left:0; font-size:.5em; background-color:rgba(255,255,255,1); border:1px solid black; display:none; padding:5px; z-index:2;}
+.correcter #crpopup .current        { background-color:rgba(255,231,184,0.8); }
+.correcter #crpopup div             { cursor:pointer; }
+.correcter #crpopup div.s           { background-color:rgba(255,0,0,0.8); }
+.correcter .anim12					{ top:0;font-size:3em;margin-top:-0.5em;margin-left:-0.5em; }
 
-.correcter #effects                       { display:none; width:5em; height:5em; position:absolute; top:0.5em; left:10.5em;  z-index:20;}
-.correcter #effects>div                   { font-size:5em; width:1em; height:1em; display:none;}
 
 /*============ EDITOR PANEL =============*/
 

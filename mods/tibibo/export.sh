@@ -78,7 +78,7 @@ if [ -d $output ] ; then
 	echo "+ ERROR: Can not clean $dest/ (rigth issue?)"
 	exit
 fi
-mkdir -p $output/res/img/background/landscape $output/res/img/svginventoryicons/pencil/ $output/res/img/banners/ $output/css $output/ext/noto/svg/
+mkdir -p $output/res/img/background/landscape $output/res/img/svginventoryicons/pencil/ $output/res/img/banners/ $output/css/ $output/ext/noto/svg/
 mkdir -p $output/user $output/mods/tibibo/res/img $output/standalone/exercice $output/standalone/activity $output/activities
 mkdir -p $output/res/img/icon/tab
 
@@ -91,6 +91,7 @@ echo -n "."; cp -rf mods/tibibo/res/img/thumbnail $output/mods/tibibo/res/img/
 echo -n "."; cp -f mods/tibibo/res/img/*.svg $output/mods/tibibo/res/img/
 echo -n "."; cp -f mods/tibibo/icon.svg $output/mods/tibibo/
 echo -n "."; cp -rf js $output/
+echo -n "."; cp -rf ext/js $output/ext/
 echo -n "."; cp -f  css/jlodb.css $output/css/
 echo -n "."; cp -rf user/res $output/user/res
 echo -n "."; cp -f user/standalone* $output/user

@@ -178,32 +178,36 @@
                     content+="</p>";
                 }
 
-                $this.find("#data").html(content);
-                $this.find("#options").css("font-size",settings.font+"em");
-                $this.find("#data").css("font-size",settings.font+"em");
+                $this.find("#crdata").html(content);
+                $this.find("#croptions").css("font-size",settings.font+"em");
+                $this.find("#crdata").css("font-size",settings.font+"em");
 
                 $this.bind("mouseup mouseleave touchend touchleave", function(_event) {
                     if (settings.elt) {
-                        var t = $this.find("#popup div.s").text();
-                        if (t&&t.length) { settings.elt.html(t); }
+                        var t = $this.find("#crpopup div.s").text();
+                        if (t&&t.length) { settings.elt.html(t).css("opacity",0).animate({opacity:1},300); }
+						$this.find(".anim12>div").addClass("running").parent()
+						     .css("top",settings.elt.offset().top-$this.offset().top+settings.elt.height()/2)
+							 .css("left",settings.elt.offset().left-$this.offset().left+settings.elt.width()/2).show();
+						setTimeout(function(){ $this.find(".anim12>div").removeClass("running").parent().hide(); }, 500);
                     }
                     settings.elt = 0;
-                    $this.find("#popup").hide();
-                    $this.find("#popup div").removeClass("s");
+                    $this.find("#crpopup").hide();
+                    $this.find("#crpopup div").removeClass("s");
 					_event.preventDefault();
                 });
 
                 $this.bind("mousemove touchmove", function(_event) {
                     var vEvent = (_event && _event.originalEvent && _event.originalEvent.touches && _event.originalEvent.touches.length)?
                                       _event.originalEvent.touches[0]:_event;
-                    $this.find("#popup div").removeClass("s");
+                    $this.find("#crpopup div").removeClass("s");
 
                     if (settings.elt && vEvent.clientX>=settings.popup.offset[0] &&
                         vEvent.clientX<settings.popup.offset[0]+settings.popup.size[0] &&
                         vEvent.clientY>=settings.popup.offset[1]&&
                         vEvent.clientY<settings.popup.offset[1]+settings.popup.size[1] ) {
                         var index = 1+Math.floor(settings.popup.nb*(vEvent.clientY-settings.popup.offset[1])/settings.popup.size[1]);
-                        $($this.find("#popup div").get(index)).addClass("s");
+                        $($this.find("#crpopup div").get(index)).addClass("s");
                     }
 					_event.preventDefault();
 
@@ -211,15 +215,15 @@
 
                 // fig
                 if (settings.fig) {
-                    if (settings.fig.indexOf("<svg")!=-1)   { $this.find("#illustration").html(settings.fig); }
-                    else                                    { $this.find("#illustration").html("<img src='res/img/"+settings.fig+".svg'/>"); }
-                    $this.find("#illustration").show();
-                    $this.find("#data").addClass("fig");
+                    if (settings.fig.indexOf("<svg")!=-1)   { $this.find("#crfig").html(settings.fig); }
+                    else                                    { $this.find("#crfig").html("<img src='res/img/"+settings.fig+".svg'/>"); }
+                    $this.find("#crfig").show();
+                    $this.find("#crdata").addClass("fig");
                 }
                     
                 // Locale handling
 
-                if (settings.exercice)  { $this.find("#exercice").html(helpers.format(settings.exercice)); }
+                if (settings.exercice)  { $this.find("#crexercice").html(helpers.format(settings.exercice)); }
                 if (settings.locale)    { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
 
                 $this.children().show();
@@ -232,9 +236,9 @@
 		highlight: function($this, _value) {
             var settings = helpers.settings($this);
 			settings.highlight=_value;
-			$this.find("#data span.highlight").removeClass("highlight");
+			$this.find("#crdata span.highlight").removeClass("highlight");
 			if (settings.highlight) {
-				$this.find("#data span").each(function(index, value) {
+				$this.find("#crdata span").each(function(index, value) {
 					var word = settings.responses[index];
 					if (settings.dictionary[word]) { $(this).addClass("highlight"); }
 				});
@@ -279,7 +283,7 @@
                 });
             },
             click: function(elt, value) {
-                var $this = $(this) , settings = helpers.settings($this), $popup = $(this).find("#popup");
+                var $this = $(this) , settings = helpers.settings($this), $popup = $(this).find("#crpopup");
 
 				var goodWord = settings.responses[value];
                 var response = [];
@@ -324,7 +328,7 @@
                         for (var i=0; i<response.length; i++) {
                             if (response[i]!=$(elt).html()) { nb++; content+="<div>"+response[i]+"</div>"; }
                         }
-                        $popup.show().find("#options").html(content);
+                        $popup.show().find("#croptions").html(content);
 
                         settings.popup = { offset   : [$(elt).offset().left, $(elt).offset().top],
                                            size     : [$popup.width(), $popup.height()],
@@ -343,14 +347,14 @@
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 settings.activate = true;
-                $(this).find("#data").show();
+                $(this).find("#crdata").show();
             },
             valid: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 if (settings.activate) {
                     settings.activate = false;
                     var nbErrors = 0;
-                    $(this).find("#data span").each(function(index, value) {
+                    $(this).find("#crdata span").each(function(index, value) {
                         var word = settings.responses[index];
                         if (word.indexOf(settings.suffix)!=-1) {
                             word = word.substring(0,word.indexOf(settings.suffix));
@@ -363,9 +367,7 @@
                         }
                     });
                     
-                    $this.find("#good").toggle(nbErrors==0);
-                    $this.find("#wrong").toggle(nbErrors>0);
-                    $this.find("#effects").show();
+                    $this.find("#effects").addClass(nbErrors?"wrong":"good");
                     $this.find("#submit").addClass(nbErrors?"wrong":"good");
                     
                     settings.score = 5-nbErrors*settings.errratio;
@@ -373,9 +375,9 @@
                     $(this).find("#valid").hide();
 					if (settings.edit) {
 						setTimeout(function() {
-							$this.find("#effects").hide();
-							$this.find("#data span").removeClass("wrong");
-							$this.find("#submit").removeClass("wrong").removeClass("good");
+							$this.find("#crdata span").removeClass("wrong");
+							$this.find("#effects").removeclass();
+							$this.find("#submit").removeClass();
 							settings.activate = true;
 						}, 1500);
 					}

@@ -1,18 +1,13 @@
 <div>
-
-    <div id="popup" onmouseout="$(this).closest('.correcter').correcter('popout', true);"
-                    onmouseover="$(this).closest('.correcter').correcter('popout', false);" >
-        <div id="options"></div>
+    <div id="crpopup"><div id="croptions"></div></div>
+    <div id="crexercice"></div>
+    <div id="crboard">
+        <div id="crfig"></div>
+        <div id="crdata"></div>
     </div>
-
-    <div id="exercice">
-    </div>
-    <div id="board">
-        <div id="illustration"></div>
-        <div id="data"></div>
-    </div>
-    
-    
+	
+    <div class="anim12 flash noloop"><div><img src="res/img/asset/anim/ink01.svg"/></div></div>
+	
     <div id="effects">
         <div id="good"><img src="res/img/default/popup/good01.svg" alt=""/></div>
         <div id="wrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
@@ -20,16 +15,14 @@
 
     <div id="submit" ontouchstart="$(this).closest('.correcter').correcter('valid');event.preventDefault();"
                      onclick="$(this).closest('.correcter').correcter('valid');">
-        <img src="res/img/default/icon/swvalid.svg" id="subvalid" alt=""/>
-        <img src="res/img/default/icon/swgood.svg" id="subgood" alt=""/>
-        <img src="res/img/default/icon/swwrong.svg" id="subwrong" alt=""/>
+        <img src="res/img/default/icon/swvalid.svg" id="valid" alt=""/>
+        <img src="res/img/default/icon/swgood.svg" id="good" alt=""/>
+        <img src="res/img/default/icon/swwrong.svg" id="wrong" alt=""/>
     </div>
 
     <div id="splashex" ontouchstart="$(this).hide().closest('.correcter').correcter('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.correcter').correcter('next');"><div>
-        <h1 id="label">correcter</h1>
-        <div id="guide"></div>
+        <h1 id="label"></h1>
     </div></div>
-
 </div>
 

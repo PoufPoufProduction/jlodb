@@ -123,8 +123,7 @@
         },
         build:function($this) {
             var settings = helpers.settings($this);
-            $this.find("#cd_effects>div").hide();
-            $this.find("#cd_effects").hide();
+            $this.find("#effects").removeClass();
             $this.find("#submit").removeClass();
 
             $this.find("#cd_"+settings.keypad).show();
@@ -414,9 +413,7 @@
                 settings.score-=error*settings.errratio;
                 if (settings.score<0) settings.score=0;
 
-                if (error==0) { $this.find("#cd_good").show(); }
-                else          { $this.find("#cd_wrong").show(); }
-                $this.find("#cd_effects").show();
+                $this.find("#effects").addClass(error==0?"good":"wrong");
 				$this.find("#submit").addClass(error==0?"good":"wrong");
 
                 if (++settings.id<settings.number) {

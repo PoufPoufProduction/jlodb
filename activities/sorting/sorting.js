@@ -134,6 +134,7 @@
             settings.labels = [];
 
             $this.find("#submit").removeClass();
+            $this.find("#effects").removeClass();
 
             // IS THERE MORE THAN ONE PAGE
             var vValues = settings.values;
@@ -344,6 +345,7 @@
                     }
 
                     $this.find("#submit").addClass(vGood?"good":"wrong");
+                    $this.find("#effects").addClass(vGood?"good":"wrong");
                     settings.interactive = false;
 					$this.find("#sg_mask").show();
 					
