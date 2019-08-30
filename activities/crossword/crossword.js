@@ -62,10 +62,10 @@
             $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
-        end: function($this) {
+        end: function($this, _args) {
             var settings = helpers.settings($this);
             helpers.unbind($this);
-            settings.context.onquit($this,{'status':'success','score':settings.score});
+            settings.context.onquit($this,_args);
         },
         format: function(_text) {
             for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
@@ -279,8 +279,8 @@
                 // The settings
                 var settings = {
                     mode    : true,
+					score	: 5,
                     interactive : false,
-                    score   : 5,
                     elt     : {
                         horiz   : true,
                         pos     : [-1,-1],
@@ -311,8 +311,8 @@
             },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                settings.finish = true;
-                settings.context.onquit($this,{'status':'abort'});
+                settings.interactive = false;
+				helpers.end($this,{'status':'abort'});
             },
             click: function(_col,_row, _hint) {
                 var $this = $(this) , settings = helpers.settings($this);
@@ -410,9 +410,7 @@
 
                     }
                 }
-                settings.score-=error*settings.errratio;
-                if (settings.score<0) settings.score=0;
-
+                settings.score=Math.max(0,settings.score-error*settings.errratio);
                 $this.find("#effects").addClass(error==0?"good":"wrong");
 				$this.find("#submit").addClass(error==0?"good":"wrong");
 
@@ -421,7 +419,7 @@
                 }
                 else {
                     settings.interactive = false;
-                    setTimeout(function() { helpers.end($this); }, 1000);
+                    setTimeout(function() { helpers.end($this, {'status':'success','score':settings.score}); }, 1000);
                 }
             },
             mode: function(_elt, _val) {

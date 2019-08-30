@@ -55,10 +55,11 @@
             $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
-        end: function($this) {
+        end: function($this,_args) {
             var settings = helpers.settings($this);
+		    if (settings.timer.id) { clearTimeout(settings.timer.id); settings.timer.id=0; }
             helpers.unbind($this);
-            settings.context.onquit($this,{'status':'success', 'score':settings.score});
+            settings.context.onquit($this,_args);
         },
         format: function(_text) {
             for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
@@ -115,18 +116,6 @@
                 
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
-        },
-        // Update the timer
-        timer:function($this) {
-            var settings = helpers.settings($this);
-            settings.timer.value++;
-            var vS = settings.timer.value%60;
-            var vM = Math.floor(settings.timer.value/60)%60;
-            var vH = Math.floor(settings.timer.value/3600);
-            if (vH>99) { vS=99; vM=99; vH=99; }
-            //$this.find("#time").text((vH<10?"0":"")+vH+(vM<10?":0":":")+vM+(vS<10?":0":":")+vS);
-            if (settings.context.onSeconds) { settings.context.onSeconds(settings.timer.value); }
-            settings.timer.id = setTimeout(function() { helpers.timer($this); }, 1000);
         },
         build:function($this) {
             var settings = helpers.settings($this);
@@ -298,10 +287,6 @@
                 // The settings
                 var settings = {
                     interactive : false,
-                    timer: {                // the general timer
-                        id      : 0,        // the timer id
-                        value   : 0         // the timer value
-                    },
                     labels      : [],       // elements not to sort
                     elts        : [],       // elements to sort
                     it          : 0,
@@ -352,8 +337,7 @@
                     if (++settings.it >= settings.number) {
                         settings.score = Math.floor(5-settings.errratio*settings.wrong);
                         if (settings.score<0) { settings.score = 0; }
-                        clearTimeout(settings.timer.id);
-                        setTimeout(function() { helpers.end($this); }, vGood?1000:2000);
+                        setTimeout(function() { helpers.end($this,{'status':'success', 'score':settings.score}); }, vGood?1000:2000);
 
                     }
                     else {
@@ -361,16 +345,12 @@
                     }
                 }
             },
-            next: function() {
-                helpers.build($(this));
-                helpers.timer($(this));
-            },
+            next: function() { helpers.build($(this)); },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                if (settings.timer.id) { clearTimeout(settings.timer.id); settings.timer.id=0; }
                 settings.interactive = false;
 				$this.find("#sg_mask").show();
-                settings.context.onquit($this,{'status':'abort'});
+                helpers.end($this,{'status':'abort'});
             }
         };
 

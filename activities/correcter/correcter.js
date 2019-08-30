@@ -6,7 +6,6 @@
         template    : "template.html",      // Activity's html template
         css         : "style.css",          // Activity's css style sheet
         lang        : "en-US",              // Current localization
-        score       : 1,                    // The score (from 1 to 5)
         proba       : 2,                    // Change a word each 'proba' words
         style       : "default",            // Style of the words (default, blank or bold)
         suffix      : "_",                  // The specific occurence separator
@@ -17,6 +16,7 @@
 		split		: " ",					// Split
 		highlight	: false,				// Highlight words
 		errratio	: 1,
+		animation   : true,					// Animation
         debug       : true                  // Debug mode
     };
 
@@ -49,11 +49,13 @@
             $(document).unbind("keypress keydown");
             $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
-        // Quit the activity by calling the context callback
-        end: function($this) {
+        // Clear and quit the activity by calling the context callback
+        end: function($this, _args) {
             var settings = helpers.settings($this);
+			settings.interactive = false;
+			if (settings.anim.timeid) { clearTimeout(settings.anim.timeid); }
             helpers.unbind($this);
-            settings.context.onquit($this,{'status':'success','score':settings.score});
+            settings.context.onquit($this, _args);
         },
         format: function(_text) {
             for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
@@ -243,6 +245,31 @@
 					if (settings.dictionary[word]) { $(this).addClass("highlight"); }
 				});
 			}
+		},
+		onanim: function($this) {
+            var settings = helpers.settings($this);
+			var delay = 40;
+			var range = 3;
+			var max = 30;
+			if (settings.anim.elts.length==0) {
+				var lineid = Math.floor(Math.random()*$this.find("#crdata>p").length);
+				$($this.find("#crdata>p").get(lineid)).find("span").each( function() { settings.anim.elts.push($(this)); });
+				settings.anim.index = 0;
+				settings.anim.offset = Math.floor(Math.random()*Math.max(0,settings.anim.elts.length-max));
+			}
+			
+			if (settings.anim.index < Math.min(max,settings.anim.elts.length+range) ) {
+				var idx = settings.anim.offset + settings.anim.index;
+				if (idx<settings.anim.elts.length && settings.anim.index < max-range ) { settings.anim.elts[idx].addClass("light"); }
+				if (idx-range>=0) { settings.anim.elts[idx-range].removeClass("light"); }
+				settings.anim.index++;
+			}
+			else {
+				settings.anim.elts = [];
+				settings.anim.index = 0;
+				delay=Math.floor(Math.random()*8000)+3000;
+			}
+			settings.anim.timeid = setTimeout(function() { helpers.onanim($this); }, delay);
 		}
     };
 
@@ -254,7 +281,7 @@
             init: function(options) {
                 // The settings
                 var settings = {
-                    activate        : false,
+                    interactive     : false,
                     responses       : [],
                     elt             : 0,
                     popup           : {},
@@ -262,7 +289,8 @@
                         "default"   : [6,6],
                         "blank"     : [3,5],
                         "bold"      : [6,7]
-                    }
+                    },
+					anim			: { timeid:0, elts:[], index: 0, offset: 0 }
                 };
 
                 return this.each(function() {
@@ -298,7 +326,7 @@
 				}
 				
                 if (settings.style=="default" || $(elt).hasClass("blank") || $(elt).hasClass("bold") ) {
-                    if (settings.activate) {
+                    if (settings.interactive) {
                         var posx = $(elt).offset().left-$this.offset().left;
                         var posy = $(elt).offset().top-$this.offset().top;
 
@@ -339,20 +367,19 @@
                     }
                 }
             },
-            quit: function() {
-                var $this = $(this) , settings = helpers.settings($this);
-                settings.activate = false;
-                settings.context.onquit($this,{'status':'abort'});
-            },
+            quit: function() { helpers.end($(this), {'status':'abort'}); },
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                settings.activate = true;
+                settings.interactive = true;
+				if (settings.animation) {
+					settings.anim.timeid = setTimeout(function() { helpers.onanim($this); } , 2000);
+				}
                 $(this).find("#crdata").show();
             },
             valid: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                if (settings.activate) {
-                    settings.activate = false;
+                if (settings.interactive) {
+                    settings.interactive = false;
                     var nbErrors = 0;
                     $(this).find("#crdata span").each(function(index, value) {
                         var word = settings.responses[index];
@@ -370,18 +397,17 @@
                     $this.find("#effects").addClass(nbErrors?"wrong":"good");
                     $this.find("#submit").addClass(nbErrors?"wrong":"good");
                     
-                    settings.score = 5-nbErrors*settings.errratio;
-                    if (settings.score<0) { settings.score = 0; }
+                    var score = Math.max(0,5-nbErrors*settings.errratio);
                     $(this).find("#valid").hide();
 					if (settings.edit) {
 						setTimeout(function() {
 							$this.find("#crdata span").removeClass("wrong");
 							$this.find("#effects").removeclass();
 							$this.find("#submit").removeClass();
-							settings.activate = true;
+							settings.interactive = true;
 						}, 1500);
 					}
-					else { setTimeout(function() { helpers.end($this); }, nbErrors?3000:1000); }
+					else { setTimeout(function() { helpers.end($this, {'status':'success','score':score}); }, nbErrors?3000:1000); }
                 }
             },
             e_highlight: function(_value) { helpers.highlight($(this), _value); }
