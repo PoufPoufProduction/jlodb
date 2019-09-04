@@ -1,17 +1,17 @@
 <div>
-    <div id="banner" ontouchstart="$(this).parent().find('#splashex').show();event.preventDefault();"
+    <div id="atbanner" ontouchstart="$(this).parent().find('#splashex').show();event.preventDefault();"
                      onclick="$(this).parent().find('#splashex').show();"><img src='res/img/background/asset/potion01.svg' alt=''/></div>
     
-    <div id="board">
-        <div id="area"></div>
-        <div id="preview"><div id="preview1"></div><div id="preview2"></div></div>
-        <div id="points"><div id="slide"></div><div id="v"></div></div>
-        <div id="counter"></div>
-        <div id="timer"><div></div></div>
+    <div id="atboard">
+        <div id="atarea"></div>
+        <div id="atpreview"><div id="atpreview1"></div><div id="atpreview2"></div></div>
+        <div id="atpoints"><div id="atslide"></div><div id="v"></div></div>
+        <div id="atcounter"></div>
+        <div id="attimer"><div></div></div>
     </div>
    
-    <div id="menu">
-        <div id="overview">
+    <div id="atmenu">
+        <div id="atoverview">
             <table>
                 <tr><td><div><div class='n'>1</div><div class="icon img"></div><div class="icon no"><img src='res/img/default/icon/check_wrong01.svg' alt=''/></div></div></td>
                     <td><div><div class='n'>2</div><div class="icon img"></div><div class="icon no"><img src='res/img/default/icon/check_wrong01.svg' alt=''/></div></div></td>
@@ -27,27 +27,27 @@
                     <td><div><div class='n'>12</div><div class="icon img"></div><div class="icon no"><img src='res/img/default/icon/check_wrong01.svg' alt=''/></div></div></td></tr>
             </table>
         </div>
-        <div id="keypad">
+        <div id="atkeypad">
             <table>
                 <tr><td></td><td>
-                    <div id="up" ontouchstart="$(this).closest('.alchemist').alchemist('click', 'up');event.preventDefault();"
+                    <div id="up" class="control" ontouchstart="$(this).closest('.alchemist').alchemist('click', 'up');event.preventDefault();"
                                  onclick="$(this).closest('.alchemist').alchemist('click', this);">
                         <img src="res/img/default/control/up02.svg" alt="" class="up"/>
                         <img src="res/img/default/control/up02a.svg" alt="" class="down"/>
                     </div>
                 </td><td></td></tr>
                 <tr>
-                    <td><div id="left" ontouchstart="$(this).closest('.alchemist').alchemist('click', 'left');event.preventDefault();"
+                    <td><div id="left" class="control" ontouchstart="$(this).closest('.alchemist').alchemist('click', 'left');event.preventDefault();"
                                        onclick="$(this).closest('.alchemist').alchemist('click', this);">
                             <img src="res/img/default/control/left02.svg" alt="" class="up"/>
                             <img src="res/img/default/control/left02a.svg" alt="" class="down"/>
                         </div></td>
-                    <td><div id="down" ontouchstart="$(this).closest('.alchemist').alchemist('click', 'down');event.preventDefault();"
+                    <td><div id="down" class="control" ontouchstart="$(this).closest('.alchemist').alchemist('click', 'down');event.preventDefault();"
                                        onclick="$(this).closest('.alchemist').alchemist('click', this);">
                             <img src="res/img/default/control/down02.svg" alt="" class="up"/>
                             <img src="res/img/default/control/down02a.svg" alt="" class="down"/>
                         </div></td>
-                    <td><div id="right" ontouchstart="$(this).closest('.alchemist').alchemist('click', 'right');event.preventDefault();"
+                    <td><div id="right" class="control" ontouchstart="$(this).closest('.alchemist').alchemist('click', 'right');event.preventDefault();"
                                        onclick="$(this).closest('.alchemist').alchemist('click', this);">
                             <img src="res/img/default/control/right02.svg" alt="" class="up"/>
                             <img src="res/img/default/control/right02a.svg" alt="" class="down"/>
@@ -57,24 +57,26 @@
         </div>
     </div>
     
-    <div id="newelt">
+    <div id="atnewelt">
         <div id="happylabel" class="label"></div>
         <div id="winlabel" class="label"></div>
         <div id="lostlabel" class="label"></div>
-        <div id="default" class="icon"><img src="res/img/asset/misc/alchemist01.svg" alt=""/></div>
-        <div id="happy" class="icon"><img src="res/img/asset/misc/alchemist02.svg" alt=""/></div>
-        <div id="win" class="icon"><img src="res/img/asset/misc/alchemist03.svg" alt=""/></div>
-        <div id="lost" class="icon"><img src="res/img/asset/misc/alchemist04.svg" alt=""/></div>
+        <div id="atdefault" class="icon"><img src="res/img/asset/misc/alchemist01.svg" alt=""/></div>
+        <div id="athappy" class="icon"><img src="res/img/asset/misc/alchemist02.svg" alt=""/></div>
+        <div id="atwin" class="icon"><img src="res/img/asset/misc/alchemist03.svg" alt=""/></div>
+        <div id="atlost" class="icon"><img src="res/img/asset/misc/alchemist04.svg" alt=""/></div>
     </div>
     
-    <div id="neweltfx">
-        <div id="star05fx" class="anim12 noloop"><div><img src="res/img/default/anim/star05.svg"/></div></div>
-        <div id="star04fx" class="anim12 noloop"><div><img src="res/img/default/anim/star04.svg"/></div></div>
+    <div id="atneweltfx">
+        <div id="atstar05fx" class="anim12 noloop"><div><img src="res/img/default/anim/star05.svg"/></div></div>
+        <div id="atstar04fx" class="anim12 noloop"><div><img src="res/img/default/anim/star04.svg"/></div></div>
     </div>
     
-    <div id="good" class="alert"><img src="res/img/default/popup/alert02.svg" alt=''/></div>
-    <div id="wrong" class="alert"><img src="res/img/default/popup/alert01.svg" alt=''/></div>
-
+    <div id="effects">
+        <div id="good"><img src="res/img/default/popup/good01.svg" alt=""/></div>
+        <div id="wrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
+    </div>
+	
     <div id="splashex" ontouchstart="$(this).hide().closest('.alchemist').alchemist('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.alchemist').alchemist('next');"><div>
         <h1 id="label"></h1>

@@ -388,7 +388,7 @@
             $this.find("#timer").removeClass("err");
             var delta = Date.now()-settings.timer.begin;
             var t = settings.time-Math.floor(delta/1000);
-            $this.find("#timer").html(jlodbtime(t));
+            $this.find("#timer").html(jtools.time.seconds2hhmmss(t));
             if (t<=0) {
                 if (!$this.find("#timer").hasClass("s")) { $this.find("#timer").addClass("s"); }
                 if (Math.abs(t)>=settings.timer.err*settings.time/5) {
@@ -511,7 +511,7 @@
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 if (settings.time) {
-                    $this.find("#timer").removeClass("s").html(jlodbtime(settings.time));
+                    $this.find("#timer").removeClass("s").html(jtools.time.seconds2hhmmss(settings.time));
                     settings.timer.begin = Date.now();
                     settings.timer.id = setTimeout(function() { helpers.timer($this); },200);
                 }

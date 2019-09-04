@@ -22,20 +22,6 @@
         debug       : true                                     // Debug mode
     };
 
-    var regExp = [
-        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
-        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
-        "\\\[br\\\]",                               "<br/>",
-        "\\\[clear\\\]",                            "<div style='clear:both'></div>",
-        "\\\[space\\\]",                            "<div style='float:left;width:1em;'>&nbsp;</div>",
-        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
-        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
-        "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>",
-		"\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='icon' style='font-size:2.4em;float:left;'>$1</div>",
-		"\\\[mult\\\]([^\\\[]+)\\\[/mult\\\]",      "<div class='bdmult'>$1</div>",
-		"\\\[img\\\]([^\\\[]+)\\\[/img\\\]",        "<img src='$1' alt=''/>"
-    ];
-
     // private methods
     var helpers = {
         // @generic: Check the context
@@ -57,22 +43,15 @@
             $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
-        end: function($this) {
+        end: function($this, _args) {
             var settings = helpers.settings($this);
             helpers.unbind($this);
-            settings.context.onquit($this,{'status':'success','score':settings.score});
+            settings.context.onquit($this,_args);
         },
         // End all timers
         quit: function($this) {
             var settings = helpers.settings($this);
             // if (settings.timerid) { clearTimeout(settings.timerid); }
-        },
-        format: function(_text) {
-            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
-                var vReg = new RegExp(regExp[i*2],"g");
-                _text = _text.replace(vReg,regExp[i*2+1]);
-            }
-            return _text;
         },
         loader: {
             css: function($this) {
@@ -117,7 +96,7 @@
                 if (settings.background) { $this.children().first().css("background-image","url("+settings.background+")"); }
                 
                 // PREPARE MODE + COLORS + BRUSHES
-                setTimeout(function() { $this.find("#modes #mmode"+settings.paintmode).show(); }, 100);
+                setTimeout(function() { $this.find("#bdmodes #mmode"+settings.paintmode).show(); }, 100);
                 
                 for (var i=0; i<settings.colors.length; i++ ) {
                     var c=settings.chart[settings.colors[i]<settings.chart.length?settings.colors[i]:0];
@@ -137,10 +116,10 @@
 					
                     if (c.number) { $elt.append("<div class='number'>"+c.number+"</div>"); }
                     c.count=c.number?c.number:-1;
-                    $this.find("#colors").append($elt);
+                    $this.find("#bdcolors").append($elt);
                 }
-                if (settings.colorsfont) { $this.find("#colors").css("font-size",settings.colorsfont+"em"); }
-                else { $this.find("#colors").hide(); $this.find("#mcolor").hide(); }
+                if (settings.colorsfont) { $this.find("#bdcolors").css("font-size",settings.colorsfont+"em"); }
+                else { $this.find("#bdcolors").hide(); $this.find("#mcolor").hide(); }
                 
                 var maxw=0,maxh=0;
                 for (var i in settings.brushes) {
@@ -186,10 +165,10 @@
 						$elt.append("<div class='number'>"+brush.number+"</div>");
 					}
                     brush.count=brush.number?brush.number:-1;
-                    $this.find("#brushes").append($elt);
+                    $this.find("#bdbrushes").append($elt);
                 }
-                if (settings.brushesfont) { $this.find("#brushes").css("font-size",settings.brushesfont+"em");
-                } else { $this.find("#brushes").hide(); $this.find("#mbrush").hide(); }
+                if (settings.brushesfont) { $this.find("#bdbrushes").css("font-size",settings.brushesfont+"em");
+                } else { $this.find("#bdbrushes").hide(); $this.find("#mbrush").hide(); }
 				
                 // BUILD CELL
                 var createcell=function(_i, _j, _margin, _color) {
@@ -225,19 +204,19 @@
                 else { settings.boundaries=[ 0, 0,
 							2*settings.margin+settings.size[0], 2*settings.margin+settings.size[1]]; }
                 
-				$this.find("#board>div").css("font-size",(10/max)+"em");
+				$this.find("#bdboard>div").css("font-size",(10/max)+"em");
 				
-				var $bg = $("<div id='bd_bg'></div>");
+				var $bg = $("<div id='bdbg'></div>");
 				$bg.css("width",(settings.size[0]*1.2+0.2)+"em").css("height",(settings.size[1]*1.2+0.2)+"em")
 				   .css("top",(settings.margin*1.2-0.1)+"em").css("left",(settings.margin*1.2-0.1)+"em");
-				$this.find("#board>div").append($bg);
+				$this.find("#bdboard>div").append($bg);
 				
                 for (var j=0; j<settings.size[1]; j++) for (var i=0; i<settings.size[0]; i++) {
 					var cid=settings.init[i+j*settings.size[0]];
 					if (cid!='.') {
                         var elt = createcell(i,j,settings.margin,settings.chart[cid<settings.chart.length?cid:0]);
                         elt.update();
-						$this.find("#board>div").append(elt.$elt);
+						$this.find("#bdboard>div").append(elt.$elt);
                         settings.elts["c"+i+"x"+j]=elt;
 					}
 				}
@@ -254,19 +233,33 @@
 							m.update();
 							var elt = settings.elts["c"+i+"x"+j];
 							if (elt) { elt.result=$.extend({},m.color); }
-							$this.find("#model").append(m.$elt);
+							$this.find("#bdmodel").append(m.$elt);
 						}
 					}
 				}
 				if (settings.comment) {
-					$this.find("#bdcomment>div").append(helpers.format(settings.comment));
-					$this.find("#model").hide();
+					var regExp = [
+						"\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
+						"\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
+						"\\\[br\\\]",                               "<br/>",
+						"\\\[clear\\\]",                            "<div style='clear:both'></div>",
+						"\\\[space\\\]",                            "<div style='float:left;width:1em;'>&nbsp;</div>",
+						"\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
+						"\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
+						"\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>",
+						"\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='icon' style='font-size:2.4em;float:left;'>$1</div>",
+						"\\\[mult\\\]([^\\\[]+)\\\[/mult\\\]",      "<div class='bdmult'>$1</div>",
+						"\\\[img\\\]([^\\\[]+)\\\[/img\\\]",        "<img src='$1' alt=''/>"
+					];
+	
+					$this.find("#bdcomment>div").append(jtools.format(settings.comment, regExp));
+					$this.find("#bdmodel").hide();
 					$this.find("#bdcomment").show();
 				}
 				
                 
                 // User interface
-                $this.find("#board").bind("touchstart mousedown", function(event) {
+                $this.find("#bdboard").bind("touchstart mousedown", function(event) {
                     if (settings.interactive && settings.brushid!=-1) {
                         var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?event.originalEvent.touches[0]:event;
                         
@@ -276,12 +269,12 @@
                         settings.action.save    = [ settings.brushpos[0], settings.brushpos[1]];
                         settings.action.size    = $(this).find(".t").width();
                         settings.action.dist    = 0;
-                        $this.find("#cursor").addClass("dragging");
+                        $this.find("#bdcursor").addClass("dragging");
                     }
                     event.preventDefault();
                 });
                 
-                $this.find("#board").bind("touchmove mousemove", function(event) {
+                $this.find("#bdboard").bind("touchmove mousemove", function(event) {
                     if (settings.interactive && settings.action.mouse) {
                         var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?event.originalEvent.touches[0]:event;
                         
@@ -310,11 +303,11 @@
                         settings.brushpos[0] = Math.round(vX/settings.action.size);
                         settings.brushpos[1] = Math.round(vY/settings.action.size);
 
-                        $this.find("#cursor").css("top", vY+"px").css("left",vX+"px");
+                        $this.find("#bdcursor").css("top", vY+"px").css("left",vX+"px");
                     }
                 });
                 
-                $this.find("#board").bind("touchend touchleave mouseup mouseleave", function() {
+                $this.find("#bdboard").bind("touchend touchleave mouseup mouseleave", function() {
                     if (settings.interactive && settings.action.mouse) {
                         var now         = new Date();
                         var rotation    = -1;
@@ -323,7 +316,7 @@
                             settings.brushpos[2]=(settings.brushpos[2]+1)%4;
                         }
 
-                        $this.find("#cursor").removeClass("dragging");
+                        $this.find("#bdcursor").removeClass("dragging");
                         helpers.drawbrush($this);
                     }
                     
@@ -342,26 +335,26 @@
         },
         brush: function($this, _id) {
 			var settings = helpers.settings($this);
-			$this.find("#brushes .icon").removeClass("s");
+			$this.find("#bdbrushes .icon").removeClass("s");
 			if (settings.brushid==_id) { settings.brushid=-1; }
 			else {
-				$this.find("#brushes #b"+_id).addClass("s");
+				$this.find("#bdbrushes #b"+_id).addClass("s");
 				settings.brushid=_id;
 			}
 			helpers.drawbrush($this);
 		},
         color: function($this, _id) {
 			var settings = helpers.settings($this);
-			$this.find("#colors .icon").removeClass("s");
+			$this.find("#bdcolors .icon").removeClass("s");
 			if (settings.colorid==_id) { settings.colorid=-1; }
 			else {
-				$this.find("#colors #c"+_id).addClass("s");
+				$this.find("#bdcolors #c"+_id).addClass("s");
 				settings.colorid=_id;
 			}
 		},
 		drawbrush: function($this) {
 			var settings = helpers.settings($this);
-			$this.find("#board #cursor").detach();
+			$this.find("#bdboard #bdcursor").detach();
 			if (settings.brushid!=-1) {
 				var ref=settings.brushdata[settings.brushid];
 				var rotation = settings.brushpos[2];
@@ -372,7 +365,7 @@
                 settings.brushpos[0]=Math.min(settings.brushpos[0],settings.boundaries[2]-size[0]);
                 settings.brushpos[1]=Math.min(settings.brushpos[1],settings.boundaries[3]-size[1]);
                 
-                var $cursor=$("<div id='cursor'></div>");
+                var $cursor=$("<div id='bdcursor'></div>");
                 $cursor.css("left",1.2*settings.brushpos[0]+"em").css("top",1.2*settings.brushpos[1]+"em");
                 
                 for (var j=0; j<size[1]; j++) { var line=[]; for (var i=0; i<size[0]; i++) { line.push(0); } settings.bitmap.push(line); }
@@ -402,7 +395,7 @@
 						
 					}
 				}
-				$this.find("#board>div").append($cursor);
+				$this.find("#bdboard>div").append($cursor);
 				
 			}
 		},
@@ -410,10 +403,10 @@
 			var settings = helpers.settings($this);
             var c = settings.chart[_id];
             if (c.number) {
-                $this.find("#colors #c"+_id+" .number").html(c.count);
-                if (c.count) { $this.find("#colors #c"+_id).removeClass("d"); }
+                $this.find("#bdcolors #c"+_id+" .number").html(c.count);
+                if (c.count) { $this.find("#bdcolors #c"+_id).removeClass("d"); }
                 else {
-                    $this.find("#colors #c"+_id).removeClass("s").addClass("d");
+                    $this.find("#bdcolors #c"+_id).removeClass("s").addClass("d");
                     if (_id==settings.colorid) { settings.colorid=-1; }
                 }
             }
@@ -422,10 +415,10 @@
 			var settings = helpers.settings($this);
             var b = settings.brushes[_id];
             if (b.number) {
-                $this.find("#brushes #b"+_id+" .number").html(b.count);
-                if (b.count) { $this.find("#brushes #b"+_id).removeClass("d"); }
+                $this.find("#bdbrushes #b"+_id+" .number").html(b.count);
+                if (b.count) { $this.find("#bdbrushes #b"+_id).removeClass("d"); }
                 else {
-                    $this.find("#brushes #b"+_id).removeClass("s").addClass("d");
+                    $this.find("#bdbrushes #b"+_id).removeClass("s").addClass("d");
                     if (_id==settings.brushid) {
                         settings.brushid=-1;
                         helpers.drawbrush($this);
@@ -439,7 +432,7 @@
                 helpers.save($this);
                 
                 settings.interactive = false;
-                $this.find("#board .t").addClass("touch");
+                $this.find("#bdboard .t").addClass("touch");
                
                 for (var j=0; j<settings.bitmap.length; j++) for (var i=0; i<settings.bitmap[j].length; i++) {
                     if (settings.bitmap[j][i]) {
@@ -468,7 +461,7 @@
 						.show();
 				}
 				setTimeout(function() {
-					$this.find("#board .t").removeClass("touch");
+					$this.find("#bdboard .t").removeClass("touch");
                     settings.interactive = true;
 					$this.find(".bd_splash").animate({opacity:0}, 200, function() { $(this).hide(); });
 				}, 400);
@@ -477,11 +470,11 @@
         counter: function($this) {
 			var settings = helpers.settings($this);
             var c = settings.stack.length;
-            $this.find("#cvalue").html(c+"/"+settings.nbsteps);
-            $this.find("#slider").css("width",(100*c/settings.nbsteps)+"%");
-            $this.find("#bar").removeClass("w").removeClass("g");
-            if (c==settings.nbsteps) { $this.find("#bar").addClass("g"); } else
-            if (c>settings.nbsteps)  { $this.find("#bar").addClass("w"); }
+            $this.find("#bdvalue").html(c+"/"+settings.nbsteps);
+            $this.find("#bdslider").css("width",(100*c/settings.nbsteps)+"%");
+            $this.find("#bdbar").removeClass("w").removeClass("g");
+            if (c==settings.nbsteps) { $this.find("#bdbar").addClass("g"); } else
+            if (c>settings.nbsteps)  { $this.find("#bdbar").addClass("w"); }
         },
         save: function($this) {
 			var settings = helpers.settings($this);
@@ -578,7 +571,7 @@
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 helpers.quit($this);
-                settings.context.onquit($this,{'status':'abort'});
+                helpers.end($this,{'status':'abort'});
             },
             menu: function(_type, _id) { helpers[_type]($(this), _id.substr(1)); },
             paint: function() {
@@ -589,7 +582,7 @@
                 var $this = $(this) , settings = helpers.settings($this);
                 if (settings.interactive) {
                     settings.interactive = false;
-                    $this.find("#cursor").hide();
+                    $this.find("#bdcursor").hide();
                     var nberrors=0;
 					if (settings.scorefct) {
 						try {
@@ -629,14 +622,13 @@
 						}
 					}
 		
-                    $this.find("#subvalid").hide();
-                    $this.find(nberrors?"#wrong":"#good").show();
-                    $this.find(nberrors?"#subwrong":"#subgood").show();
+                    $this.find("#submit").addClass(nberrors?"wrong":"good");
+					$this.find("#effects").addClass(nberrors?"wrong":"good");
                     
                     if (settings.stack.length>settings.nbsteps) { nberrors++; }
                     settings.score = Math.max(0, Math.round(5 - nberrors*settings.errratio));
                     
-                    setTimeout(function() { helpers.end($this); }, 2000);
+                    setTimeout(function() { helpers.end($this, {'status':'success','score':settings.score}); }, 2000);
                     
                 }
             },
@@ -644,10 +636,10 @@
                 var $this = $(this) , settings = helpers.settings($this);
                 if (settings.interactive && settings.stack.length) {
                     settings.interactive = false;
-                    $this.find("#left1").hide();
+                    $this.find("#bdback").addClass("s");
                     var data=settings.stack.pop();
                     helpers.restore($this,data);
-                    setTimeout(function() { $this.find("#left1").show();settings.interactive=true; }, 300);
+                    setTimeout(function() { $this.find("#bdback").removeClass("s"); settings.interactive=true; }, 300);
                 }
             },
 			e_get:function() {

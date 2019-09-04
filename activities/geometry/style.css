@@ -2,122 +2,74 @@
 .geometry>div									{ width:16em;height:12em; }
 .geometry table                                 { border-collapse:collapse; border-spacing:0;  font-size:1em; }
 .geometry td                                    { margin:0; padding:0; }
-.geometry div#key                               { width:5em; height:5em; margin:0 auto; cursor:pointer; }
-.geometry div#buttons                           { background-color:rgb(53,34,34);overflow:hidden; width:2em;
-                                                  float:left; margin-left:.1em; padding:.05em; margin-top:3.5em; font-size:.9em; }
-.geometry div#actions table                     { }
-.geometry div#actions td                        { width:1em; height:1em; overflow:hidden; background-color:white;}
-.geometry div#actions div.action                { width:1em; height:1em; cursor:pointer;
-                                                  background-image:url('../../res/img/svginventoryicons/background/border/square01.svg'); }
-.geometry div#actions div#about					{ background-color:rgb(53,34,34); cursor:help; }
-.geometry div#actions div#about img				{ opacity:1 !important; }
-.geometry div#actions div.action.a2             { background-image:url('../../res/img/svginventoryicons/background/border/square02.svg'); }
-.geometry div#actions div.action.disable img    { opacity:.3; cursor:default; }
-.geometry div#actions div.action.s              { background-color:rgba(196,184,255,1); }
-.geometry div#actions div.simple                { width:1em; height:1em; cursor:pointer;
-                                                  background-image:url('../../res/img/svginventoryicons/background/border/square01.svg'); }
-.geometry div#actions div.simple.disable *      { opacity:.3; }
-.geometry div#actions div.simple#color div      { width:1em; height:1em; background-color:black; }
-.geometry div#actions #nbelts                   { font-size:.25em; width:4em; text-align:center;}
-.geometry div#actions #cancel                   { margin-left:.4em; font-size:.5em; width:1.3em; text-align:center; }
-.geometry div#actions #cancel img               { opacity:1; }
+.geometry #gybuttons                            { background-color:rgb(53,34,34);overflow:hidden; width:2em; float:left; margin-left:.1em; padding:.05em; margin-top:3.5em; font-size:.9em; }
+.geometry #gyactions table                      { }
+.geometry #gyactions td                         { width:1em; height:1em; overflow:hidden; background-color:white;}
+.geometry #gyactions div.action                 { width:1em; height:1em; cursor:pointer; background-image:url('../../res/img/svginventoryicons/background/border/square01.svg'); }
+.geometry #gyactions #about					    { background-color:rgb(53,34,34); cursor:help; }
+.geometry #gyactions #about img				    { opacity:1 !important; }
+.geometry #gyactions div.action.a2              { background-image:url('../../res/img/svginventoryicons/background/border/square02.svg'); }
+.geometry #gyactions div.action.disable img     { opacity:.3; cursor:default; }
+.geometry #gyactions div.action.s               { background-color:rgba(196,184,255,1); }
+.geometry #gyactions div.simple                 { width:1em; height:1em; cursor:pointer; background-image:url('../../res/img/svginventoryicons/background/border/square01.svg'); }
+.geometry #gyactions div.simple.disable *       { opacity:.3; }
+.geometry #gyactions div.simple#color div       { width:1em; height:1em; background-color:black; }
+.geometry #gyactions #nbelts                    { font-size:.25em; width:4em; text-align:center;}
+.geometry #gyactions #cancel                    { margin-left:.4em; font-size:.5em; width:1.3em; text-align:center; }
+.geometry #gyactions #cancel img                { opacity:1; }
 .geometry #cancel2                              { position:absolute; top:87%; left:89%; font-size:1.5em; width:1em; height:1em; cursor:pointer; display:none; }
-.geometry div#actions #info                     { background-color:white;
-                                                    -webkit-transition: background-color 1000ms ease-in;
-                                                    -moz-transition: background-color 1000ms ease-in;
-                                                    -o-transition: background-color 1000ms ease-in;
-                                                    -ms-transition: background-color 1000ms ease-in;
-                                                    transition: background-color 1000ms ease-in; }
-.geometry div#actions #info.wrong               { background-color:rgb(128,50,50); color:rgb(255,200,200);}
-
-.geometry div#actions #info.touch               { background-color:rgba(100,200,255,0.8);
-                                                    -webkit-transition: none;
-                                                    -moz-transition: none;
-                                                    -o-transition: none;
-                                                    -ms-transition: none;
-                                                    transition: none;}
-.geometry div#actions #info.wrong.touch         { background-color:rgba(40,0,0,1);
-                                                    -webkit-transition: none;
-                                                    -moz-transition: none;
-                                                    -o-transition: none;
-                                                    -ms-transition: none;
-                                                    transition: none;}
-.geometry div#buttons div#log                   { font-size:.2em; color:#555555; height:1em; width:10em; overflow:hidden;
-                                                  white-space: nowrap; opacity:1; }
-.geometry div#boardframe                        { width:13.8em; height:8.7em; overflow:hidden; float:right; margin:.08em;
-                                                  border-radius:.5em; background-image:url("../../res/img/background/book01a.svg");
-                                                  background-repeat:repeat;}
-.geometry div#board                             { width:100%; height:10.35em; overflow:hidden;   }
-.geometry div#text                              { width:45.2em; height:8.8em; overflow:hidden;
-                                  margin:.2em; border-radius:.25em; font-size:.35em; clear:both;
-                                  background-image:url("../../res/img/default/pattern/line01.svg");
-                                  background-repeat:repeat; text-align:justify;  }
-
-.geometry div#text .strong                      { color:red; font-size:.9em; font-weight:bold; border: 1px solid red; border-width:1px 0; }
-.geometry div#text .small                       {font-size:.7em;  }
-
-.geometry div#text #statement                   { margin:0 .5em; }
-.geometry table#objectives                      { margin-left:1em; }
-.geometry table#objectives div.icon             { width:1em; height:1em; }
-.geometry div#splashex                          { background-image:url("../../res/img/banners/geometry.svg");}
-.geometry div#splashex  h1                 { position:absolute; top:15%; left:55%; font-size:1.4em; background-color:red;
-                                          width:55%; color:white; text-align:center; border-radius:0 .5em .5em 0;
-                                          border:.3em solid white;
-                                          -ms-transform: rotate(45deg); -webkit-transform: rotate(45deg); transform: rotate(45deg); }
-.geometry div#splashex #splash_dots 		{ display:none; }
-.geometry.dots div#splashex #splash_dots	{ display:inherit; }
-.geometry.dots div#splashex #splash_default { display:none; }
-										  
-.geometry #zoom  { position:absolute; top:83%; left:1%; width:1.2em; height:1.2em; font-size:1.8em; text-align:center; color:white; font-weight:bold; overflow:visible; display:none; }
-.geometry.nezoom #zoom { top:0; left:83%; }
-
-.geometry.blank div#boardframe                  { background-image:none; background-color:#dcf9f5; }
-.geometry.white div#boardframe                  { background-image:none; background-color:white; }
-.geometry.black div#boardframe                  { background-image:none; background-color:black; }
-.geometry.large div#boardframe                  { height:10.35em; }
-.geometry.hide  div#buttons                     { display:none; }
-.geometry.large div#text                        { height:3.9em; }
+.geometry #gyactions #info                      { background-color:white; -webkit-transition: background-color 1000ms ease-in; -moz-transition: background-color 1000ms ease-in; -o-transition: background-color 1000ms ease-in; -ms-transition: background-color 1000ms ease-in; transition: background-color 1000ms ease-in; }
+.geometry #gyactions #info.wrong                { background-color:rgb(128,50,50); color:rgb(255,200,200);}
+.geometry #gyactions #info.touch                { background-color:rgba(100,200,255,0.8); -webkit-transition: none; -moz-transition: none; -o-transition: none; -ms-transition: none; transition: none;}
+.geometry #gyactions #info.wrong.touch          { background-color:rgba(40,0,0,1); -webkit-transition: none; -moz-transition: none; -o-transition: none; -ms-transition: none; transition: none;}
+.geometry #gyboardframe                         { width:13.8em; height:8.7em; overflow:hidden; float:right; margin:.08em; border-radius:.5em; background-image:url("../../res/img/background/book01a.svg"); background-repeat:repeat;}
+.geometry #gyboard                              { width:100%; height:10.35em; overflow:hidden;   }
+.geometry #gytext                               { width:45.2em; height:8.8em; overflow:hidden; margin:.2em; border-radius:.25em; font-size:.35em; clear:both; background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat; text-align:justify;  }
+.geometry #gystatement                          { margin:0 .5em; }
+.geometry #gygoals                              { margin-left:1em; }
+.geometry #gygoals .icon                        { width:1em; height:1em; }
+.geometry #splashex                             { background-image:url("../../res/img/banners/geometry.svg");}
+.geometry #splashex #splash_dots 		        { display:none; }
+.geometry.dots #splashex #splash_dots	        { display:inherit; }
+.geometry.dots #splashex #splash_default        { display:none; }
+.geometry #gyzoom                               { position:absolute; top:83%; left:1%; width:1.2em; height:1.2em; font-size:1.8em; text-align:center; color:white; font-weight:bold; overflow:visible; display:none; }
+.geometry.nezoom #gyzoom                        { top:0; left:83%; }
+.geometry.blank #gyboardframe                   { background-image:none; background-color:#dcf9f5; }
+.geometry.white #gyboardframe                   { background-image:none; background-color:white; }
+.geometry.black #gyboardframe                   { background-image:none; background-color:black; }
+.geometry.large #gyboardframe                   { height:10.35em; }
+.geometry.hide  #gybuttons                      { display:none; }
+.geometry.large #gytext                         { height:3.9em; }
 .geometry.upcancel #cancel2						{ top:72%; }
+.geometry.full  #gybuttons                      { display:none; }
+.geometry.full  #gytext                         { display:none; }
+.geometry.full  #gyboardframe                   { width:100%; height:100%; margin:0; border-radius:0; background-image:none; }
+.geometry.full  #gyboard                        { width:100%; height:100%; overflow:hidden;}
+.geometry.full                                  { background-image:none; }			  
+.geometry #help		                            { width:16em; height:12em; background-color:rgba(0,0,0,0.5);position:absolute;top:0;left:0; display:none;  }
+.geometry #help>div	                            { background-color:rgba(255,255,255,0.9); width:80%; height:80%; margin:5% auto; font-size:.3em; border:.2em solid white; cursor:pointer; }
+.geometry #help #xhelp                          { font-size:2em; cursor:pointer; }
+.geometry #help .ehelp                          { width:46%; border:.1em solid black; margin:.2em; float:left; height:5em; }
+.geometry #help .ehelp .icon                    { float:left; font-size:5em; margin-right:.1em;  }
+.geometry #help .ehelp .label                   { margin-left:.5em; font-size:.7em; }
+.geometry #help #hwar                           { clear:both; }
 
-.geometry.full  div#buttons                     { display:none; }
-.geometry.full  div#text                        { display:none; }
-.geometry.full  div#boardframe                  { width:100%; height:100%; margin:0; border-radius:0; background-image:none; }
-.geometry.full  div#board                       { width:100%; height:100%; overflow:hidden;}
-.geometry.full                                  { background-image:none; }
-
-
-
-												  
-.geometry div#help		{ width:16em; height:12em; background-color:rgba(0,0,0,0.5);position:absolute;top:0;left:0; display:none;  }
-.geometry div#help>div	{ background-color:rgba(255,255,255,0.9); width:80%; height:80%; margin:5% auto; font-size:.3em; border:.2em solid white; cursor:pointer; }
-.geometry div#help #xhelp { font-size:2em; cursor:pointer; }
-.geometry div#help .ehelp { width:46%; border:.1em solid black; margin:.2em; float:left; height:5em; }
-.geometry div#help .ehelp .icon { float:left; font-size:5em; margin-right:.1em;  }
-.geometry div#help .ehelp .label { margin-left:.5em; font-size:.7em; }
-.geometry div#help #hwar { clear:both; }
-
-
-/*============ EDITOR PANEL =============*/
-
-.geometry_editor #e_editor>div			{ height:94%; }
-.geometry_editor #e_editor textarea		{ font-size:0.5em; background-color:white; color:#444; height:10%; margin-top:1%; border:0; width:93%; padding-left:5%; }
-.geometry_editor #e_editor .eph_value { border: 0; width: 98%; height: 2em; font-size: 0.5em; text-align: center; background-color:#FEC; }
-.geometry_editor #e_editor .eph_value.eph_mid { width:49%; float:left; }
-.geometry_editor #e_control 				{ display:none; }
-.geometry_editor #e_buttons .icon			{ background-color:#FEC; margin:.1em; float:left; cursor:pointer; }
-.geometry_editor #e_buttons .icon.s			{ background-color:#F44; }
-.geometry_editor #e_editor #eph_number		{ width:20%; height:1.2em; font-size:0.85em; margin:.1em 0 0 .5em; float:left;  }
-.geometry_editor #e_editor #eph_add		{ background-color:#CCC; }
-.geometry_editor #e_editor #eph_addb	{ background-color:#444; color:white; text-align:right; padding-top:.3em; cursor:pointer; height:1.7em; width:48%; padding-right:1%;   }
-.geometry_editor #e_editor #eph_data  { font-size:0.3em; text-align:left; background-color:white; height:40% }
-
-.geometry_editor #e_menu .d { opacity:0.2; cursor:default; }
-.geometry_editor #e_menu .l.l2			{ width:19%; }
-
-.geometry_editor #e_tabs>div { float:left; width:3em; height:1.2em; text-align:center; background-color:gray; color:white; border-radius:.2em; margin:.1em; cursor:pointer; }
-.geometry_editor #e_tabs>div.s { background-color:red; }
-
-.geometry_editor #e_objs					 { height:27%; }
-.geometry_editor #e_objs>div				 { height:100%; display:none; }
-.geometry_editor #e_editor textarea.e_olabel { background-color:white; height:1.2em; display:block; }
-.geometry_editor #e_editor textarea.e_ovalue { font-size:0.3em; display:block; height:60%; }
+.geometry_editor #e_editor>div			        { height:94%; }
+.geometry_editor #e_editor textarea		        { font-size:0.5em; background-color:white; color:#444; height:10%; margin-top:1%; border:0; width:93%; padding-left:5%; }
+.geometry_editor #e_editor .eph_value           { border: 0; width: 98%; height: 2em; font-size: 0.5em; text-align: center; background-color:#FEC; }
+.geometry_editor #e_editor .eph_value.eph_mid   { width:49%; float:left; }
+.geometry_editor #e_control 				    { display:none; }
+.geometry_editor #e_buttons .icon			    { background-color:#FEC; margin:.1em; float:left; cursor:pointer; }
+.geometry_editor #e_buttons .icon.s			    { background-color:#F44; }
+.geometry_editor #e_editor #eph_number		    { width:20%; height:1.2em; font-size:0.85em; margin:.1em 0 0 .5em; float:left;  }
+.geometry_editor #e_editor #eph_add		        { background-color:#CCC; }
+.geometry_editor #e_editor #eph_addb	        { background-color:#444; color:white; text-align:right; padding-top:.3em; cursor:pointer; height:1.7em; width:48%; padding-right:1%;   }
+.geometry_editor #e_editor #eph_data            { font-size:0.3em; text-align:left; background-color:white; height:40% }
+.geometry_editor #e_menu .d                     { opacity:0.2; cursor:default; }
+.geometry_editor #e_menu .l.l2			        { width:19%; }
+.geometry_editor #e_tabs>div                    { float:left; width:3em; height:1.2em; text-align:center; background-color:gray; color:white; border-radius:.2em; margin:.1em; cursor:pointer; }
+.geometry_editor #e_tabs>div.s                  { background-color:red; }
+.geometry_editor #e_objs					    { height:27%; }
+.geometry_editor #e_objs>div				    { height:100%; display:none; }
+.geometry_editor #e_editor textarea.e_olabel    { background-color:white; height:1.2em; display:block; }
+.geometry_editor #e_editor textarea.e_ovalue    { font-size:0.3em; display:block; height:60%; }

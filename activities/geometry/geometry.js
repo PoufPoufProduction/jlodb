@@ -31,16 +31,6 @@
         debug       : true                      // Debug mode
     };
 
-    var regExp = [
-        "\\\[br\\\]",            					"<br>",
-        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
-        "\\\[bb\\\](.+)\\\[/bb\\\]",                "<b>$1</b>",
-        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
-        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
-        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
-        "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>",
-        "\\\[small\\\](.+)\\\[/small\\\]",          "<div class='small'>$1</div>"
-    ];
 
     // private methods
     var helpers = {
@@ -63,17 +53,10 @@
             $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
-        end: function($this) {
+        end: function($this, _args) {
             var settings = helpers.settings($this);
             helpers.unbind($this);
-            settings.context.onquit($this,{'status':'success','score':settings.score});
-        },
-        format: function(_text) {
-            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
-                var vReg = new RegExp(regExp[i*2],"g");
-                _text = _text.replace(vReg,regExp[i*2+1]);
-            }
-            return _text;
+            settings.context.onquit($this, _args);
         },
         loader: {
             css: function($this) {
@@ -124,17 +107,11 @@
                 }
 
                 // MANAGE THE OBJECTIVES
-                if (settings.exercice) {
-                    if ($.isArray(settings.exercice)) {
-                        var html=""; for (var i in settings.exercice) { html+="<div>"+helpers.format(settings.exercice[i])+"</div>"; }
-                        $this.find("#statement").html(html);
-                    }
-                    else { $this.find("#statement").html(helpers.format(settings.exercice)); }
-                }
+                if (settings.exercice) { $this.find("#gystatement").html(jtools.instructions(settings.exercice)); }
                 for (var i in settings.labels) {
-                    $this.find("#objectives").append("<tr><td><div class='icon' style='cursor:default;'>"+
+                    $this.find("#gygoals").append("<tr><td><div class='icon' style='cursor:default;'>"+
                         "<img src='res/img/default/icon/check_unchecked01.svg' alt='x'/></div></td><td>&#xA0;"+
-                        helpers.format(settings.labels[i])+"</td></tr>");
+                        jtools.format(settings.labels[i])+"</td></tr>");
                 }
                 for (var i in settings.objectives) for (var j in settings.objectives[i]) {
                     settings.objectives[i][j].done = false;
@@ -148,13 +125,13 @@
 
                 // LOCALE HANDLING
                 if (settings.locale) { $.each(settings.locale, function(id,value) {
-					if (typeof(value)=="string") { $this.find("#"+id).html(helpers.format(value)); }
+					if (typeof(value)=="string") { $this.find("#"+id).html(jtools.format(value)); }
 				}); }
 
                 // LOAD SVG
                 var debug = "";
                 if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
-				settings.board.$html = $this.find("#board");
+				settings.board.$html = $this.find("#gyboard");
                 settings.board.$html.svg();
                 settings.svg = settings.board.$html.svg('get');
                 settings.svg.load(
@@ -237,16 +214,16 @@
 							$(e.done.svg).attr("style",settings.good[e.type].style);
 						}
 					}
-                    $($this.find("#objectives .icon img")[i]).attr("src", "res/img/default/icon/check_checked01.svg");
+                    $($this.find("#gygoals .icon img")[i]).attr("src", "res/img/default/icon/check_checked01.svg");
                 }
             }
             if (settings.finish) {
                 settings.score = helpers.score(settings.histo.length, settings.number);
-                $this.find("#zoom").hide();
+                $this.find("#gyzoom").hide();
                 $this.find("#cancel2").hide();
                 $(settings.svg.root()).attr("class",$(settings.svg.root()).attr("class")+" done");
 
-                setTimeout(function() { helpers.end($this); }, settings.timerend);
+                setTimeout(function() { helpers.end($this, {'status':'success','score':settings.score}); }, settings.timerend);
             }
 
             return ret;
@@ -304,8 +281,8 @@
 			settings.board.pixelWidth = settings.board.$html.width();
             settings.board.pixelHeight = settings.board.$html.height();
 			
-            var x           = event.clientX-$this.find("#board").offset().left;     // THE X AXIS MOUSE PIXEL COORDINATE
-            var y           = event.clientY-$this.find("#board").offset().top;      // THE Y AXIS MOUSE PIXEL COORDINATE
+            var x           = event.clientX-$this.find("#gyboard").offset().left;     // THE X AXIS MOUSE PIXEL COORDINATE
+            var y           = event.clientY-$this.find("#gyboard").offset().top;      // THE Y AXIS MOUSE PIXEL COORDINATE
             var i           = helpers.utility.XtoI($this, x);                       // THE I AXIS MOUSE COORDINATE
             var j           = helpers.utility.YtoJ($this, y);                       // THE J AXIS MOUSE COORDINATE
             var o           = helpers.closer($this, i, j );
@@ -314,7 +291,7 @@
             
             if (settings.withzoom)
             {
-                if (o && o.id) { $this.find("#zoom").html(o.id).show(); } else { $this.find("#zoom").hide(); }
+                if (o && o.id) { $this.find("#gyzoom").html(o.id).show(); } else { $this.find("#gyzoom").hide(); }
             }
             
             if (settings.controls.first) {
@@ -471,9 +448,9 @@
         },
         mouseleave: function($this, event) {
             var settings    = helpers.settings($this); if (settings.finish) { return; }
-            var x           = event.clientX-$this.find("#board").offset().left;
-            var y           = event.clientY-$this.find("#board").offset().top;
-            if (x<0 || y<0 || x>$this.find("#board").width() || y>$this.find("#board").height()) { helpers.restore($this); }
+            var x           = event.clientX-$this.find("#gyboard").offset().left;
+            var y           = event.clientY-$this.find("#gyboard").offset().top;
+            if (x<0 || y<0 || x>$this.find("#gyboard").width() || y>$this.find("#gyboard").height()) { helpers.restore($this); }
         },
         restore: function($this) {
             var settings    = helpers.settings($this);
@@ -916,9 +893,9 @@
             // UPDATE SVG TEXT
             if (settings.text) {
                 if ($.isArray(settings.text)) {
-                    for (var i in settings.text) { $("#text"+i, settings.svg.root()).text(settings.text[i]); }
+                    for (var i in settings.text) { $("#gytext"+i, settings.svg.root()).text(settings.text[i]); }
                 }
-                else { $("#text", settings.svg.root()).text(settings.text); }
+                else { $("#gytext", settings.svg.root()).text(settings.text); }
             }
 
             // UPDATE WORKING COLOR
@@ -1046,16 +1023,16 @@
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
 
-                $(this).find("#board").bind("mousemove", function(e) { helpers.mousemove($this, e); });
-                $(this).find("#board").bind("mousedown", function() { helpers.mousedown($this); });
-                $(this).find("#board").bind("mouseup", function(e) { helpers.mouseup($this); helpers.mousemove($this, e); });
-                $(this).find("#board").mouseleave(function(e) { helpers.mouseleave($this, e); });
+                $(this).find("#gyboard").bind("mousemove", function(e) { helpers.mousemove($this, e); });
+                $(this).find("#gyboard").bind("mousedown", function() { helpers.mousedown($this); });
+                $(this).find("#gyboard").bind("mouseup", function(e) { helpers.mouseup($this); helpers.mousemove($this, e); });
+                $(this).find("#gyboard").mouseleave(function(e) { helpers.mouseleave($this, e); });
 
-                $(this).find("#board").bind("touchmove", function(e) {
+                $(this).find("#gyboard").bind("touchmove", function(e) {
                     helpers.mousemove($this, e.originalEvent.touches[0]); e.preventDefault(); });
-                $(this).find("#board").bind("touchstart", function(e) {
+                $(this).find("#gyboard").bind("touchstart", function(e) {
                     helpers.mousemove($this, e.originalEvent.touches[0]); helpers.mousedown($this); e.preventDefault(); });
-                $(this).find("#board").bind("touchend", function() { helpers.mouseup($this); });
+                $(this).find("#gyboard").bind("touchend", function() { helpers.mouseup($this); });
 
             },
             cancel: function() {
@@ -1082,7 +1059,7 @@
                     }
                     for (var i in settings.objectives) {
                         for (var j in settings.objectives[i]) { settings.objectives[i][j].done = false; }
-                        $($this.find("#objectives .icon img")[i]).attr("src", "res/img/default/icon/check_unchecked01.svg");
+                        $($this.find("#gygoals .icon img")[i]).attr("src", "res/img/default/icon/check_unchecked01.svg");
                     }
                     for (var i in settings.points) { helpers.check($this, settings.points[i], false); }
                     for (var i in settings.lines) { helpers.check($this, settings.lines[i], false); }
@@ -1092,7 +1069,7 @@
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 settings.finish = true;
-                settings.context.onquit($this,{'status':'abort'});
+                helpers.end($this,{'status':'abort'});
             }
         };
 

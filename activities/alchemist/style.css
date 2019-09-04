@@ -1,82 +1,62 @@
 .alchemist                          { width:110% !important; font-size:1.3em;background-image:url("../../res/img/default/pattern/grid01.svg"); background-repeat:repeat;}
-.alchemist table                    { border-collapse:collapse; border-spacing:0;  font-size:1em; }
-.alchemist td                       { margin:0; padding:0; }
-.alchemist #banner                  { float:left; top:0; left:0; height:9.2em; width:1.5em; cursor:help; }
-.alchemist #banner img              { width:100%; height:100%; }
-.alchemist #board                   { border:1px solid #507099; width:6em; border-radius:.2em; background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat; height:9em; margin:2px; overflow:hidden; position:relative; float:left;}
-.alchemist #board #area             { width:6em; height:2.05em; background-color:rgba(255,220,162,0.7);  border-radius:.2em .2em 0 0;}
-.alchemist #board div.empty         { position:absolute; width:1em; height:1em;  background-color:red; opacity:0.5;}
-.alchemist #board div.fill          { position:absolute; width:1em; height:1em;  background-color:yellow; opacity:0.5;}
-.alchemist #board div.score         { position:absolute; width:1em; height:1em; text-align:center; z-index:3; overflow:visible;}
-.alchemist #board div.score>div     { font-weight:bold; color:orange; overflow:visible; }
-.alchemist #board div.crap          { display:none; position:absolute; width:1em; height:1em; z-index:2; background-color:rgba(0,0,0,0.8); border-radius:.5em; }
-.alchemist #board div.effect        { position:absolute; width:1em; height:1em; z-index:2; background-color:yellow; border-radius:.5em; }
-.alchemist #board div.effect.fstone { background-color:brown; }
-.alchemist #board div.effect.fice   { background-color:cyan; border-radius:0;}
-.alchemist #board div.effect.fice2  { background-color:cyan; border-radius:0.5em 0.5em 0 0; }
-.alchemist #board div.effect.fup    { background-color:gray; border-radius:0;}
-.alchemist #board div.effect.fup2   { background-color:gray; border-radius:0.5em 0.5em 0 0; }
-.alchemist #board div.effect.fdel   { background-color:red; border-radius:0;}
-.alchemist #board div.effect.fdel2  { background-color:red; border-radius:0.5em 0.5em 0 0; }
-.alchemist #board div.tile          { position:absolute; width:1em; height:1em; }
-.alchemist #board div.tile>div      { position:absolute; top:0; left:0; width:1em; height:1em; }
-.alchemist #board div.tile .img     { background-image:url("../../res/img/svginventoryicons/background/noborder/transmut01.svg"); }
-.alchemist #board div.tile .ice01   { background-image:url("../../res/img/asset/fx/ice01.svg"); }
-.alchemist #board #timer            { display:none; background-color:gray; position:absolute; opacity:0.5; top:0; left:95.2%; width:1em; height:5.1em; font-size:.4em;}
-.alchemist #board #timer>div        { width:100%; height:0; background-color:red; }
-.alchemist #board.withtime #timer   { display:inherit; }
-.alchemist #board.withtime #points  { left:60%; }
-.alchemist #board #points           { background-color:orange; color:white; border-radius:0 0 0 .5em; position:absolute; font-size:.4em; opacity:0.5; top:0; left:65%; width:5.3em; height:1.2em; font-weight:bold; }
-.alchemist #board #points.s #slide  { background-color:green; }
-.alchemist #board #points>div       { position:absolute; top:0; text-align:center; width:100%;}
-.alchemist #board #points #slide    { background-color:red; height:1.2em; }
-.alchemist #board.withtime #counter { left:79.2%; }
-.alchemist #board #counter          { position:absolute; font-size:.6em; opacity:0.5; top:6%; left:85%; font-weight:bold; text-align:center; border-radius:.5em 0 0 .5em; width:1.6em; height:1.1em; background-color:green; color:white; display:none; }
-.alchemist #board #counter.s        { background-color:red; }
-.alchemist #board #preview          { font-size:0.7em; opacity:0.6; position:absolute; top:0; left: 0;width:2em;height:1em; }
-.alchemist #board #preview div      { width:1em; height:1em; position:absolute;top:0;left:0; }
-.alchemist #board #preview #preview2{ left:1em; }
-.alchemist #menu                    { float:left; width:3em; border:1px solid #507099; overflow:hidden; margin:1px; font-size:1.5em; border-radius:.13em; }
-.alchemist #menu table div          { width:1em; height:1em; overflow:hidden; text-align:center; background-size: 1em; background-repeat:no-repeat; }
-.alchemist #menu #keypad            { width:3em; height:2em; overflow:hidden; background-color:rgba(255,210,140,0.8); }
-.alchemist #menu #keypad div        { width:1em; height:1em; cursor:pointer;}
-.alchemist #menu #keypad .down      { display:none; }
-.alchemist #menu #keypad .s .up     { display:none; }
-.alchemist #menu #keypad .s .down   { display:inherit; }
-.alchemist #overview                { width:3em; height:4em; background-color:rgba(255,220,162,0.8); cursor:pointer;}
-.alchemist #overview td             { position:relative; }
-.alchemist #overview div.n          { position:absolute; font-size:.2em; overflow:visible; font-weight:bold; color:#631;}
-.alchemist #overview div.icon       { position:absolute; top:0; left:0; }
-.alchemist #overview div.icon.no    { display:none; }
-.alchemist #overview div.icon.img   { border-radius:.5em; overflow:visible !important; background-image:url("../../res/img/svginventoryicons/background/noborder/transmut01.svg"); }
-.alchemist #overview div.icon.img.s { background-color:red; }
-.alchemist #overview div.icon.img.f { background-color:yellow; }
-.alchemist #overview div.icon.img img { display:none; }
-.alchemist div#splashex             { background-image:url("../../res/img/banners/alchemist.svg"); }
-.alchemist div#splashex  h1                 { position:absolute; top:10%; left:50%; font-size:1em; background-color:red;
-                                          width:55%; color:white; text-align:center; border-radius:0 .5em .5em 0;
-                                          border:.3em solid white;
-                                          -ms-transform: rotate(45deg); -webkit-transform: rotate(45deg); transform: rotate(45deg); }
-.alchemist div#splashex #goals      { position:absolute; top:25%; left:52%; width:40%; padding:.2em .5em; overflow:visible; height:4em; display:none;}
-.alchemist div#splashex #goallabel  { position:absolute; top:-1.2em; left:-1em; padding:.2em .5em; color:white; background-color:#1f296b; border-radius:.4em; -ms-transform: rotate(-10deg); -webkit-transform: rotate(-10deg); transform: rotate(-10deg); border:.1em solid white; }
-.alchemist div#splashex #withtime   { display:none; position:absolute; top:55%; left:0%; font-size:8em; width:1em; height:1em; }
-.alchemist div#splashex ul          { margin-top:1em; font-size:0.65em; font-style:italic; }
-.alchemist div#splashex li          { margin-bottom:0.2em; height:1.2em; overflow:visible; white-space: nowrap; }
-.alchemist div#splashex .l          { background-color:red; color:white; padding:0 0.5em; border-radius:.5em; }
-.alchemist #buttons #info           { width:.95em; height:.95em; border:1px solid black; background-color:rgba(255,255,255,0.8); cursor: pointer; margin:0 auto; }
-.alchemist #tutorial                { display:none; font-size:.2em; width:15em; height:20em; background-color:rgba(255,255,255,0.8); cursor:pointer; }
-.alchemist #tutorial p              { margin:0 .5em .5em .5em; font-size:.8em; text-align:justify; }
-.alchemist #tutorial>div            { border:1px solid black; width:14em; margin:0 auto; }
-.alchemist #tutorial div.icon       { width:2em; height:2em; display:inline-block; border:0; background-color:transparent; }
-.alchemist .alert					{ z-index:4; display:none;position:absolute; font-size:4em; width:1em; height:1em; top:2%; left:50%; }
-
-
-.alchemist #newelt                  { position:absolute; top:80%; left:-.2em; padding-left:7em; font-size:.5em; width:5em; height:1.2em; background-color:#F56; color:white; white-space:nowrap; border:.2em white solid; border-radius:0 .5em .5em 0; overflow:visible; font-weight:bold; z-index:3; display:none; }
-.alchemist #newelt.lost             { background-color:black; }
-.alchemist #newelt .icon            { position:absolute; top:-0.872em; left:-0.1em; font-size:8em; display:none;}
-.alchemist #newelt .label           { display:none; overflow:visible; }
-
-.alchemist #neweltfx                { position:absolute; top:0.05em; left:5.08em; overflow:visible; font-size:1.5em; display:none; }
-.alchemist #neweltfx>div                { display:inline; }
-.alchemist #neweltfx #star05fx      { font-size:1.5em; margin-top:-.2em; margin-left:-.2em; }
-
+.alchemist #atbanner                { float:left; top:0; left:0; height:9.2em; width:1.5em; cursor:help; }
+.alchemist #atbanner img            { width:100%; height:100%; }
+.alchemist #atboard                 { border:1px solid #507099; width:6em; border-radius:.2em; background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat; height:9em; margin:2px; overflow:hidden; position:relative; float:left;}
+.alchemist #atboard #atarea         { width:6em; height:2.05em; background-color:rgba(255,220,162,0.7);  border-radius:.2em .2em 0 0;}
+.alchemist .atscore                 { position:absolute; width:1em; height:1em; text-align:center; z-index:3; overflow:visible;}
+.alchemist .atscore>div             { font-weight:bold; color:orange; overflow:visible; }
+.alchemist .atcrap                  { display:none; position:absolute; width:1em; height:1em; z-index:2; background-color:rgba(0,0,0,0.8); border-radius:.5em; }
+.alchemist .ateffect                { position:absolute; width:1em; height:1em; z-index:2; background-color:yellow; border-radius:.5em; }
+.alchemist .ateffect.atfstone       { background-color:brown; }
+.alchemist .ateffect.atfice         { background-color:cyan; border-radius:0;}
+.alchemist .ateffect.atfice2        { background-color:cyan; border-radius:0.5em 0.5em 0 0; }
+.alchemist .ateffect.atfup          { background-color:gray; border-radius:0;}
+.alchemist .ateffect.atfup2         { background-color:gray; border-radius:0.5em 0.5em 0 0; }
+.alchemist .ateffect.atfdel         { background-color:red; border-radius:0;}
+.alchemist .ateffect.atfdel2        { background-color:red; border-radius:0.5em 0.5em 0 0; }
+.alchemist .attile                  { position:absolute; width:1em; height:1em; }
+.alchemist .attile>div              { position:absolute; top:0; left:0; width:1em; height:1em; }
+.alchemist .attile .atimg           { background-image:url("../../res/img/svginventoryicons/background/noborder/transmut01.svg"); }
+.alchemist .attile .atice01         { background-image:url("../../res/img/asset/fx/ice01.svg"); }
+.alchemist #attimer                 { display:none; background-color:gray; position:absolute; opacity:0.5; top:0; left:95.2%; width:1em; height:5.1em; font-size:.4em;}
+.alchemist #attimer>div             { width:100%; height:0; background-color:red; }
+.alchemist #atpoints                { background-color:orange; color:white; border-radius:0 0 0 .5em; position:absolute; font-size:.4em; opacity:0.5; top:0; left:65%; width:5.3em; height:1.2em; font-weight:bold; }
+.alchemist #atpoints.s #atslide     { background-color:green; }
+.alchemist #atpoints>div            { position:absolute; top:0; text-align:center; width:100%;}
+.alchemist #atpoints #atslide       { background-color:red; height:1.2em; }
+.alchemist #atcounter               { position:absolute; font-size:.6em; opacity:0.5; top:6%; left:85%; font-weight:bold; text-align:center; border-radius:.5em 0 0 .5em; width:1.6em; height:1.1em; background-color:green; color:white; display:none; }
+.alchemist #atcounter.s             { background-color:red; }
+.alchemist .withtime #attimer       { display:inherit; }
+.alchemist .withtime #atpoints      { left:60%; }
+.alchemist .withtime #atcounter     { left:79.2%; }
+.alchemist #atpreview               { font-size:0.7em; opacity:0.6; position:absolute; top:0; left: 0;width:2em;height:1em; }
+.alchemist #atpreview div           { width:1em; height:1em; position:absolute;top:0;left:0; }
+.alchemist #atpreview #atpreview2   { left:1em; }
+.alchemist #atmenu                  { float:left; width:3em; border:1px solid #507099; overflow:hidden; margin:1px; font-size:1.5em; border-radius:.13em; }
+.alchemist #atmenu table div        { width:1em; height:1em; overflow:hidden; text-align:center; background-size: 1em; background-repeat:no-repeat; }
+.alchemist #atmenu #atkeypad        { width:3em; height:2em; overflow:hidden; background-color:rgba(255,210,140,0.8); }
+.alchemist #atoverview              { width:3em; height:4em; background-color:rgba(255,220,162,0.8); cursor:pointer;}
+.alchemist #atoverview td           { position:relative; }
+.alchemist #atoverview .n           { position:absolute; font-size:.2em; overflow:visible; font-weight:bold; color:#631;}
+.alchemist #atoverview .icon        { position:absolute; top:0; left:0; }
+.alchemist #atoverview .icon.no     { display:none; }
+.alchemist #atoverview .icon.img    { border-radius:.5em; overflow:visible !important; background-image:url("../../res/img/svginventoryicons/background/noborder/transmut01.svg"); }
+.alchemist #atoverview .icon.img.s  { background-color:red; }
+.alchemist #atoverview .icon.img.f  { background-color:yellow; }
+.alchemist #atoverview .icon.img img{ display:none; }
+.alchemist #atnewelt                { position:absolute; top:80%; left:-.2em; padding-left:7em; font-size:.5em; width:5em; height:1.2em; background-color:#F56; color:white; white-space:nowrap; border:.2em white solid; border-radius:0 .5em .5em 0; overflow:visible; font-weight:bold; z-index:3; display:none; }
+.alchemist #atnewelt.lost           { background-color:black; }
+.alchemist #atnewelt .icon          { position:absolute; top:-0.872em; left:-0.1em; font-size:8em; display:none;}
+.alchemist #atnewelt .label         { display:none; overflow:visible; }
+.alchemist #atneweltfx              { position:absolute; top:0.05em; left:5.08em; overflow:visible; font-size:1.5em; display:none; }
+.alchemist #atneweltfx>div          { display:inline; }
+.alchemist #atneweltfx #atstar05fx  { font-size:1.5em; margin-top:-.2em; margin-left:-.2em; }
+.alchemist #splashex                { background-image:url("../../res/img/banners/alchemist.svg"); }
+.alchemist #splashex h1             { top:10%; left:50%; font-size:1em; }
+.alchemist #splashex #goals         { position:absolute; top:25%; left:52%; width:40%; padding:.2em .5em; overflow:visible; height:4em; display:none;}
+.alchemist #splashex #goallabel     { position:absolute; top:-1.2em; left:-1em; padding:.2em .5em; color:white; background-color:#1f296b; border-radius:.4em; -ms-transform: rotate(-10deg); -webkit-transform: rotate(-10deg); transform: rotate(-10deg); border:.1em solid white; }
+.alchemist #splashex #withtime      { display:none; position:absolute; top:55%; left:0%; font-size:8em; width:1em; height:1em; }
+.alchemist #splashex ul             { margin-top:1em; font-size:0.65em; font-style:italic; }
+.alchemist #splashex li             { margin-bottom:0.2em; height:1.2em; overflow:visible; white-space: nowrap; }
+.alchemist #splashex .l             { background-color:red; color:white; padding:0 0.5em; border-radius:.5em; }
+.alchemist #effects					{ z-index:4; top:2%; left:50%; }

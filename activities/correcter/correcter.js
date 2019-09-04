@@ -21,14 +21,6 @@
     };
 
     
-    var regExp = [
-        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
-        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
-        "\\\[br\\\]",                               "<br/>",
-        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
-        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>"
-    ];
-    
     // private methods
     var helpers = {
         // @generic: Check the context
@@ -56,13 +48,6 @@
 			if (settings.anim.timeid) { clearTimeout(settings.anim.timeid); }
             helpers.unbind($this);
             settings.context.onquit($this, _args);
-        },
-        format: function(_text) {
-            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
-                var vReg = new RegExp(regExp[i*2],"g");
-                _text = _text.replace(vReg,regExp[i*2+1]);
-            }
-            return _text;
         },
         loader: {
             css: function($this) {
@@ -215,21 +200,17 @@
 
                 });
 
-                // fig
                 if (settings.fig) {
                     if (settings.fig.indexOf("<svg")!=-1)   { $this.find("#crfig").html(settings.fig); }
                     else                                    { $this.find("#crfig").html("<img src='res/img/"+settings.fig+".svg'/>"); }
                     $this.find("#crfig").show();
                     $this.find("#crdata").addClass("fig");
                 }
-                    
-                // Locale handling
 
-                if (settings.exercice)  { $this.find("#crexercice").html(helpers.format(settings.exercice)); }
+                if (settings.exercice)  { $this.find("#crexercice").html(jtools.format(settings.exercice)); }
                 if (settings.locale)    { $.each(settings.locale, function(id,value) { $this.find("#"+id).html(value); }); }
 
                 $this.children().show();
-				
 				helpers.highlight($this, settings.highlight);
 				
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }

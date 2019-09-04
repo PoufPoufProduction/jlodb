@@ -80,10 +80,10 @@
             $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
-        end: function($this) {
+        end: function($this, _args) {
             var settings = helpers.settings($this);
             helpers.unbind($this);
-            settings.context.onquit($this,{'status':'success','score':settings.score});
+            settings.context.onquit($this,_args);
         },
         format: function(_text) {
             for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
@@ -232,18 +232,18 @@
 
                 // Exercice
                 if ($.isArray(settings.exercice)) {
-                    $this.find("#exercice>div").html("");
-                    for (var i in settings.exercice) { $this.find("#exercice>div").append(
+                    $this.find("#instructions").html("");
+                    for (var i in settings.exercice) { $this.find("#instructions").append(
                         "<p>"+(settings.exercice[i].length?helpers.format(settings.exercice[i]):"&#xA0;")+"</p>"); }
-                } else { $this.find("#exercice>div").html(helpers.format(settings.exercice)); }
-                $this.find("#exercice>div").css("font-size",settings.fontex+"em");
+                } else { $this.find("#instructions").html(helpers.format(settings.exercice)); }
+                $this.find("#instructions").css("font-size",(0.4*settings.fontex)+"em");
 
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
         },
         build: function($this) {
             var settings = helpers.settings($this);
-                var $board = $this.find("#board>div#cc_content");
+                var $board = $this.find("#cccontent");
                 $board.html("").css("font-size", settings.font+"em");
 				$this.find("#target").css("font-size", settings.font+"em");
                 
@@ -787,7 +787,7 @@
             },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                settings.context.onquit($this,{'status':'abort'});
+                helpers.end($this,{'status':'abort'});
             },
             auto: function(event) {
                 var $this = $(this) , settings = helpers.settings($this);
@@ -1070,13 +1070,13 @@
                                 }
                             }
                         }
-                        $this.find("#subvalid").hide();
-                        $this.find("#sub"+(error?"wrong":"good")).show();
+						$this.find("#submit").addClass(error==0?"good":"wrong");
+						$this.find("#effects").addClass(error==0?"good":"wrong");
 
                         settings.score = 5 - error*settings.errratio - settings.wrong;
                         if (settings.score<0) { settings.score = 0; }
-                        $this.find(error==0?"#good":"#wrong").show();
-                        setTimeout(function() { helpers.end($this); } , 2000);
+                        
+                        setTimeout(function() { helpers.end($this, {'status':'success','score':settings.score}); } , 2000);
                     }
                 }
             },

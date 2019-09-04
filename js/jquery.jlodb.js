@@ -19,17 +19,55 @@ shuffle = function(a) {
     return a;
 }
 
+jtools = {
+	format: function(_text, _regexp) {
+		var vRegExp = _regexp || [
+			"\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
+            "\\\[bb\\\](.+)\\\[/bb\\\]",                "<b>$1</b>",
+			"\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
+			"\\\[br\\\]",                               "<br/>",
+            "\\\[o1\\\]([^\\\[]+)\\\[/o1\\\]",          "<span style='opacity:0.5'>$1</span>",
+            "\\\[o2\\\]([^\\\[]+)\\\[/o2\\\]",          "<span style='opacity:0.1'>$1</span>",
+			"\\\[small\\\]([^\\\[]+)\\\[/small\\\]",    "<span style='font-size:0.5em'>$1</span>",
+			"\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
+			"\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
+			"\\\[green\\\]([^\\\[]+)\\\[/green\\\]",    "<span style='color:green'>$1</span>",
+			"\\\[purple\\\]([^\\\[]+)\\\[/purple\\\]",  "<span style='color:purple'>$1</span>",
+			"\\\[orange\\\]([^\\\[]+)\\\[/orange\\\]",  "<span style='color:orange'>$1</span>",
+			"\\\[svg\\\]([^\\\[]+)\\\[/svg\\\]",        "<div class='t_svg'><div><svg width='100%' height='100%' viewBox='0 0 32 32'><rect x='0' y='0' width='32' height='32' style='fill:black'/>$1</svg></div></div>",
+			"\\\[code\\\](.+)\\\[/code\\\]",            "<div class='t_code'>$1</div>",
+			"\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='t_strong'>$1</div>"
+		];
+		var vTxt = _text?_text.toString():"";
+		if (vTxt.length) {
+			for (var j=0; j<3; j++) for (var i=0; i<vRegExp.length/2; i++) {
+				var vReg = new RegExp(vRegExp[i*2],"g");
+				vTxt = vTxt.replace(vReg,vRegExp[i*2+1]);
+			}
+		}
+        return vTxt;
+    },
+	instructions: function(_txt) {
+		var vRet = "";
+		if ($.isArray(_txt)) {
+            for (var i in _txt) { vRet+="<p>"+jtools.format(_txt[i])+"</p>"; }
+        } else { vRet = "<p>"+jtools.format(_txt)+"<p>"; }
+		return vRet;
+	},
+	time: {
+		seconds2hhmmss: function(_seconds) {
+			_seconds=Math.abs(_seconds);
+			var h=Math.floor(_seconds/3600);
+			var m=Math.floor(_seconds/60)%60;
+			var s=_seconds%60;
+			return (h<10?"0":"")+h+":"+(m<10?"0":"")+m+":"+(s<10?"0":"")+s;
+		}
+	}
+}
+
 //================
 // JLODB TOOLS
 //================
-
-jlodbtime = function(_seconds) {
-    _seconds=Math.abs(_seconds);
-    var h=Math.floor(_seconds/3600);
-    var m=Math.floor(_seconds/60)%60;
-    var s=_seconds%60;
-    return (h<10?"0":"")+h+":"+(m<10?"0":"")+m+":"+(s<10?"0":"")+s;
-}
 
 jlodbmaze = function(options) { if (options) for (var p in options) { this[p] = options[p]; } };
 jlodbmaze.prototype = {
@@ -97,7 +135,6 @@ jlodbmaze.prototype = {
     var defaults = {
         debug       : false,
         standalone  : false,
-        url         : "",               // cross platform json (not available for the moment)
         // OVERWRITABLE METHODS
         onevent     : function($this, _begin, _hide)   { if (_begin) { helpers.settings($this).onstart($this); }
                                                          else        { helpers.settings($this).onfinish($this, _hide); } },

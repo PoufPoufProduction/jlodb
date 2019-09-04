@@ -1,50 +1,36 @@
-.calc                            { background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat; position:relative;}
-.calc div#splashex            { background-image:url("../../res/img/banners/calc.svg"); }
-.calc div#splashex  h1                 { position:absolute; top:10%; left:60%; font-size:2em; background-color:red;
-                                          width:55%; color:white; text-align:center; border-radius:0 .5em .5em 0;
-                                          border:.3em solid white;
-                                          -ms-transform: rotate(45deg); -webkit-transform: rotate(45deg); transform: rotate(45deg); }
-.calc div#splashex #guide     { display:none; }
-.calc.devmode div#exercice { display:none; }
-.calc div#exercice               { width:90%; margin-left:10%; height:5em; font-size:0.4em; background-repeat:repeat; border-radius:1em 0 0 0;
-                                   background-image:url("../../res/img/default/pattern/line01.svg"); text-align:justify; }
-.calc div#exercice>div          { margin-left:1em; margin-right:0.5em;}
-.calc div#exercice .strong       { color:red; font-weight:bold; border: 1px solid red; border-width:1px 0; }
-
-.calc div#board                 { height:12.5em; font-size:0.8em; }
-.calc div#board>div             { position:relative; height:120%; width:120%; }
-.calc div#board .cell           { position:absolute; background-color:white; background-size:100%;
-                                   text-align:center; cursor:pointer; }
-.calc div#board .cell.graph>div { width:100%; height:100%; }
-.calc div#board .cell.left      { text-align:left; }
-.calc div#board .cell.left>div  { margin-left:.1em; }
-.calc div#board .cell.f2>div   { font-size:2em; }
-.calc div#board .cell.f15>div   { font-size:1.5em; }
-.calc div#board .cell.f14>div   { font-size:1.4em; }
-.calc div#board .cell.f12>div   { font-size:1.2em; }
-.calc div#board .cell.f08>div   { font-size:0.8em; }
-.calc div#board .cell.f05>div   { font-size:0.5em; }
-.calc div#board .cell.f04>div   { font-size:0.4em; }
-.calc div#board .cell.f03>div   { font-size:0.3em; }
-.calc div#board .cell.f025>div  { font-size:0.25em; }
-.calc div#board .cell.f02>div   { font-size:0.2em; }
-.calc div#board .cell.f015>div  { font-size:0.15em; }
-.calc div#board .cell.vm02>div    { margin-top:0.2em; }
-.calc div#board .cell.vm05>div    { margin-top:0.5em; }
-.calc div#board .cell.vm08>div    { margin-top:0.8em; }
-.calc div#board .cell.vm1>div    { margin-top:1em; }
-.calc div#board .cell.vm12>div    { margin-top:1.2em; }
-.calc div#board .cell.vm2>div    { margin-top:2em; }
-
-.calc div#board .cell.fixed     { cursor:auto; }
-.calc div#board .cell.wrong     { background-color:#A00 !important; color:red !important;}
-.calc div#board .cell.empty     { background-color:#FF0 !important; }
-.calc div#board .cell.g         { background-color:#888; color:#444;cursor:auto; }
-
-.calc div#board .cell.fixed .img       { border:1px solid black; border-width:1px 0 1px 0; margin-top:.5em; }
-.calc div#board .cell.fixed .icon      { font-size:3em; margin:0 auto;}
-.calc div#board .cell.fixed .image  { width:100%; }
-.calc div#board .cell.fixed>div { line-height:1.2em; }
+.calc                               { background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat; position:relative;}
+.calc #splashex                     { background-image:url("../../res/img/banners/calc.svg"); }
+.calc div#ccboard                   { height:16em; font-size:0.8em; }
+.calc div#ccboard>div               { position:relative; height:120%; width:120%; }
+.calc div#ccboard .cell             { position:absolute; background-color:white; background-size:100%; text-align:center; cursor:pointer; }
+.calc div#ccboard .cell.graph>div   { width:100%; height:100%; }
+.calc div#ccboard .cell.left        { text-align:left; }
+.calc div#ccboard .cell.left>div    { margin-left:.1em; }
+.calc div#ccboard .cell.f2>div      { font-size:2em; }
+.calc div#ccboard .cell.f15>div     { font-size:1.5em; }
+.calc div#ccboard .cell.f14>div     { font-size:1.4em; }
+.calc div#ccboard .cell.f12>div     { font-size:1.2em; }
+.calc div#ccboard .cell.f08>div     { font-size:0.8em; }
+.calc div#ccboard .cell.f05>div     { font-size:0.5em; }
+.calc div#ccboard .cell.f04>div     { font-size:0.4em; }
+.calc div#ccboard .cell.f03>div     { font-size:0.3em; }
+.calc div#ccboard .cell.f025>div    { font-size:0.25em; }
+.calc div#ccboard .cell.f02>div     { font-size:0.2em; }
+.calc div#ccboard .cell.f015>div    { font-size:0.15em; }
+.calc div#ccboard .cell.vm02>div    { margin-top:0.2em; }
+.calc div#ccboard .cell.vm05>div    { margin-top:0.5em; }
+.calc div#ccboard .cell.vm08>div    { margin-top:0.8em; }
+.calc div#ccboard .cell.vm1>div     { margin-top:1em; }
+.calc div#ccboard .cell.vm12>div    { margin-top:1.2em; }
+.calc div#ccboard .cell.vm2>div     { margin-top:2em; }
+.calc div#ccboard .cell.fixed       { cursor:auto; }
+.calc div#ccboard .cell.wrong       { background-color:#A00 !important; color:red !important;}
+.calc div#ccboard .cell.empty       { background-color:#FF0 !important; }
+.calc div#ccboard .cell.g           { background-color:#888; color:#444;cursor:auto; }
+.calc div#ccboard .cell.fixed .img  { border:1px solid black; border-width:1px 0 1px 0; margin-top:.5em; }
+.calc div#ccboard .cell.fixed .icon { font-size:3em; margin:0 auto;}
+.calc div#ccboard .cell.fixed .image{ width:100%; }
+.calc div#ccboard .cell.fixed>div   { line-height:1.2em; }
 
 .calc div#panel                 { position:absolute; width:6em; height:8em;
                                   border:0.15em solid white; border-radius:.2em; overflow:visible;display:none; font-size:.6em; }
@@ -95,22 +81,12 @@
 .calc .graykeypad               { background-color:rgba(128,128,128,0.9) !important;} 
 .calc .bluekeypad                { color:white; text-align:center; font-size:1em; cursor:pointer; border:.05em solid white; }
 
-.calc #board>#target            { position:absolute; border:.1em solid blue; margin:-.1em;
+.calc #ccboard>#target            { position:absolute; border:.1em solid blue; margin:-.1em;
                                   overflow:visible;display:none; }
 .calc #target>div               { width:20px;height:20px;margin-top:-15px;margin-left:-15px; cursor:move;
                                   position:absolute;top:100%;left:100%;background-color:blue; display:none; }
 .calc #target.s                 { border:.1em solid red; }
 .calc #target.s>div             { background-color:red; }
-
-.calc div#submit                     { font-size:1.5em; height:1em;width:1em; cursor:pointer;
-                                            position:absolute; top:7em; left:0em; z-index:3; }
-.calc div#submit>img                 { display:none; }
-.calc div#submit #subvalid           { display:inline; }
-.calc div#submit.good #subvalid      { display:none; }
-.calc div#submit.wrong #subvalid     { display:none; }
-.calc div#submit.good #subgood       { display:inline; }
-.calc div#submit.wrong #subwrong     { display:inline; }
-
 
 
 .calc #escreen                  { height:1em; color:white; }

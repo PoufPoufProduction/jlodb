@@ -1,9 +1,9 @@
 <div>
-    <div id="aa_board"><div></div></div>
-	<div id="aa_nav">
-		<div id="aa_header"></div>
-		<div id="aa_menu">
-			<div class="icon" id="aa_check"
+    <div id="aaboard"><div></div></div>
+	<div id="aanav">
+		<div id="aaheader"></div>
+		<div id="aamenu">
+			<div class="icon" id="aacheck"
 				ontouchstart="$(this).closest('.ana').ana('help',this);event.preventDefault();"
                 onclick="$(this).closest('.ana').ana('help',this);">
 				<img src="res/img/default/white/help01.svg" alt="?"/></div>
@@ -12,23 +12,23 @@
                 onclick="$(this).closest('.ana').ana('keys',this);">
 				<img src="res/img/default/white/new.svg" alt="+"/></div>
 		</div>
-		<div id="aa_snap" class="icon"></div>
-		<div id="aa_word"></div>
-		<div id="aa_keypad" class="icon">
-			<svg width="100%" height="100%" viewBox="0 0 48 48" id="aa_svg">
+		<div id="aasnap" class="icon"></div>
+		<div id="aaword"></div>
+		<div id="aakeypad" class="icon">
+			<svg width="100%" height="100%" viewBox="0 0 48 48" id="aasvg">
 				<defs>
 				<style>
-					svg#aa_svg #aa_keys circle { fill:#AAA;stroke:white; }
-					svg#aa_svg #aa_keys .s circle { stroke:red; fill:red; }
-					svg#aa_svg #aa_keys .s text { fill:white; }
-					svg#aa_svg #aa_keys text   { fill:#234;font-size:10px;font-weight:bold;text-anchor:middle; }
-					svg#aa_svg #aa_path line	{ fill:none;stroke:red;stroke-width:2 }
+					svg#aasvg #aakeys circle { fill:#AAA;stroke:white; }
+					svg#aasvg #aakeys .s circle { stroke:red; fill:red; }
+					svg#aasvg #aakeys .s text { fill:white; }
+					svg#aasvg #aakeys text   { fill:#234;font-size:10px;font-weight:bold;text-anchor:middle; }
+					svg#aasvg #aapath line	{ fill:none;stroke:red;stroke-width:2 }
 				</style>
 				</defs>
 				
-				<g id="aa_path"></g>
-				<g id="aa_keys"></g>
-				<circle cx="24" cy="24" r="24" id="aa_handler" style="fill:#aaf;fill-opacity:0.2;cursor:move"/>
+				<g id="aapath"></g>
+				<g id="aakeys"></g>
+				<circle cx="24" cy="24" r="24" id="aahandler" style="fill:#aaf;fill-opacity:0.2;cursor:move"/>
 			</svg>
 		</div>
 	</div>
@@ -38,16 +38,17 @@
         <div id="good"><img src="res/img/default/popup/good01.svg" alt=""/></div>
     </div>
 	
+	<div id="aafx" class="anim12 noloop"><div><img src="res/img/default/anim/star05.svg" alt=""/></div></div>
 	
-	<div id="aa_mask"><div>
-		<div id="aa_help"></div>
+	<div id="aamask"><div>
+		<div id="aahelp"></div>
 		<div>
-			<div class="icon" ontouchstart="$(this).closest('.ana').find('#aa_check').removeClass('s');$(this).closest('.ana').ana('tip');event.preventDefault();"
-							  onclick="$(this).closest('.ana').find('#aa_check').removeClass('s');$(this).closest('.ana').ana('tip');"><img src="res/img/default/icon/valid01.svg" alt=""/></div>
-			<div class="icon" ontouchstart="$(this).closest('.ana').find('#aa_check').removeClass('s');$(this).closest('#aa_mask').hide();event.preventDefault();"
-							  onclick="$(this).closest('.ana').find('#aa_check').removeClass('s');$(this).closest('#aa_mask').hide();"><img src="res/img/default/icon/cancel01.svg" alt=""/></div>
+			<div class="icon" ontouchstart="$(this).closest('.ana').find('#aacheck').removeClass('s');$(this).closest('.ana').ana('tip');event.preventDefault();"
+							  onclick="$(this).closest('.ana').find('#aacheck').removeClass('s');$(this).closest('.ana').ana('tip');"><img src="res/img/default/icon/valid01.svg" alt=""/></div>
+			<div class="icon" ontouchstart="$(this).closest('.ana').find('#aacheck').removeClass('s');$(this).closest('#aamask').hide();event.preventDefault();"
+							  onclick="$(this).closest('.ana').find('#aacheck').removeClass('s');$(this).closest('#aamask').hide();"><img src="res/img/default/icon/cancel01.svg" alt=""/></div>
 		</div>
-		<div id="aa_illus"><img src="res/img/default/popup/minus01.svg" alt=""/></div>
+		<div id="aaillus"><img src="res/img/default/popup/minus01.svg" alt=""/></div>
 	</div></div>
 	
 

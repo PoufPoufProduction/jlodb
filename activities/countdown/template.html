@@ -1,46 +1,47 @@
 <div>
-    <div id="header">
-        <div id="values"></div>
-        <div id="result"><div></div></div>
+    <div id="cnheader">
+        <div id="cnvalues"></div>
+        <div id="cnresult"><div></div></div>
     </div>
 
-    <div id="board">
-        <div id="template" class="line" style="display:none;">
+    <div id="cnboard">
+        <div id="cntemplate" class="line" style="display:none;">
             <div class="r" ontouchstart="$(this).closest('.countdown').countdown('del',this);event.preventDefault();"
                            onclick="$(this).closest('.countdown').countdown('del',this);">
                 <div class="icon"><img src="res/img/default/white/cancel02.svg" alt=""/></div></div>
             <div class="d dd"></div><div class="o oo"><div>+</div></div><div class="d dd"></div><div class="oo">=</div><div class="d c"><div class="icon" ontouchstart="$(this).closest('.countdown').countdown('compute',this);event.preventDefault();"
                            onclick="$(this).closest('.countdown').countdown('compute',this);">
                     <img src="res/img/default/icon/valid02.svg" alt=""/></div></div>
+			<div class="cnmask"></div>
         </div>
 
-        <div id="lines">
+        <div id="cnlines">
         </div>
 
     </div>
 
     <div id="exercice"><div></div></div>
 
-    <div id="keypad">
-        <div id="bg1"></div>
+    <div id="cnkeypad">
+        <div id="cnbg"></div>
         <div class="k" id="plus"  style="top:-1.6em;left:-.5em;"><div>+</div></div>
         <div class="k" id="mult"  style="top:-0.5em;left:0.6em;"><div>×</div></div>
         <div class="k" id="minus" style="top:0.6em;left:-.5em;"><div style="top:-0.2em;">-</div></div>
         <div class="k" id="div"   style="top:-0.5em;left:-1.6em;"><div>/</div></div>
     </div>
     
-    <div id="legend"><div></div></div>
+    <div id="cnlegend"><div></div></div>
 
     <div id="effects">
         <div id="good"><img src="res/img/default/popup/good01.svg" alt=""/></div>
     </div>
 
-    <div id="touch01" ><div><img src="res/img/default/anim/touch01.svg" alt=""/></div></div>
+    <div id="cntouch" class="anim12 noloop center quick"><div><img src="res/img/default/anim/touch01.svg" alt=""/></div></div>
+	<div id="cnfx" class="anim12 noloop flash"><div><img src="res/img/asset/anim/ink01.svg" alt=""/></div></div>
 
     <div id="splashex" ontouchstart="$(this).hide().closest('.countdown').countdown('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.countdown').countdown('next');"><div>
-            <h1 id="label">countdown</h1>
-            <div id="guide"></div>
+            <h1 id="label"></h1>
     </div></div>
 
 </div>

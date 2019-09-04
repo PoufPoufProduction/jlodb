@@ -19,12 +19,12 @@
         debug       : true                                     // Debug mode
     };
 
-    var regExp = [
+    var gRegExp = [
         "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
         "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
         "\\\[br\\\]",                               "<br/>",
         "\\\[txt\\\]([^\\\[]+)\\\[/txt\\\]",      	"<div style='font-size:.8em;margin:.05em auto;text-align:center;'>$1</div>",
-        "\\\[tiny\\\]([^\\\[]+)\\\[/tiny\\\]",      	"<div style='font-size:.25em;margin:1.3em auto;text-align:center;'>$1</div>",
+        "\\\[tiny\\\]([^\\\[]+)\\\[/tiny\\\]",      "<div style='font-size:.25em;margin:1.3em auto;text-align:center;'>$1</div>",
 		"\\\[img\\\]([^\\\[]+)\\\[/img\\\]",      	"<img src='$1' alt=''/>",
         "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
         "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
@@ -66,22 +66,11 @@
             $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
-        end: function($this) {
+        end: function($this, _args) {
             var settings = helpers.settings($this);
             helpers.unbind($this);
-            settings.context.onquit($this,{'status':'success','score':Math.max(0,settings.score)});
-        },
-        // End all timers
-        quit: function($this) {
-            var settings = helpers.settings($this);
             if (settings.timerid) { clearTimeout(settings.timerid); }
-        },
-        format: function(_text) {
-            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
-                var vReg = new RegExp(regExp[i*2],"g");
-                _text = _text.replace(vReg,regExp[i*2+1]);
-            }
-            return _text;
+            settings.context.onquit($this,_args);
         },
         loader: {
             css: function($this) {
@@ -116,7 +105,7 @@
 
                 // Load the template
                 var templatepath = "activities/"+settings.name+"/template/"+settings.board+debug;
-                $this.find("#board").load( templatepath, function(response, status, xhr) { helpers.loader.build($this); });
+                $this.find("#hrboard").load( templatepath, function(response, status, xhr) { helpers.loader.build($this); });
             },
             build: function($this) {
                 var settings = helpers.settings($this);
@@ -215,7 +204,7 @@
                         value="<div style='margin-top:"+m+"em;font-size:"+settings.fonttag+"em;'>"+value+"</div>";
                     }
                     else { value = "<div>"+value+"</div>"; }
-                    $this.find("#tag").html(value).show();
+                    $this.find("#hrtag").html(value).show();
                 }
                 
                 $this.find(".touch").bind("mousedown touchstart", function(event){
@@ -224,7 +213,7 @@
                 });
 
                 // Exercice
-                $this.find("#exercice>div").html(helpers.format(settings.exercice))
+                $this.find("#exercice>div").html(jtools.format(settings.exercice,gRegExp))
                                                .css("font-size",settings.fontex+"em");
 
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
@@ -380,7 +369,7 @@
             if ( settings.score<=0 ||
                 ( d-settings.time.begin>settings.totaltime*1000 && empty ) ) {
                 settings.interactive = false;
-                setTimeout(function() { helpers.end($this); }, 500);
+                setTimeout(function() { helpers.end($this, {'status':'success','score':Math.max(0,settings.score)}); }, 500);
             }
             else { settings.timerid = setTimeout(function() { helpers.run($this); }, 5); }
         },
@@ -408,12 +397,12 @@
         },
 		countdown: function($this) {
             var settings = helpers.settings($this);
-            $this.find("#countdown").show().animate({left:"75%"},500, function() {
-                setTimeout(function() { $this.find("#countdown").html(3); }, 0);
-                setTimeout(function() { $this.find("#countdown").html(2); }, 1000);
-                setTimeout(function() { $this.find("#countdown").html(1); }, 2000);
+            $this.find("#hrcountdown").show().animate({left:"75%"},500, function() {
+                setTimeout(function() { $this.find("#hrcountdown").html(3); }, 0);
+                setTimeout(function() { $this.find("#hrcountdown").html(2); }, 1000);
+                setTimeout(function() { $this.find("#hrcountdown").html(1); }, 2000);
                 setTimeout(function() {
-                    $this.find("#countdown").animate({left:"120%"},500, function() {
+                    $this.find("#hrcountdown").animate({left:"120%"},500, function() {
                         settings.interactive = true;
                         $(this).hide();
                         settings.time.begin = Date.now();
@@ -462,9 +451,9 @@
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
 				if (settings.ex && settings.ex.length) {
-					$this.find("#wex .label").html(helpers.format(settings.ex[0]));
-					$this.find("#gex .label").html(helpers.format(settings.ex[1]));
-					$this.find("#example").show();
+					$this.find("#wex .label").html(jtools.format(settings.ex[0],gRegExp));
+					$this.find("#gex .label").html(jtools.format(settings.ex[1],gRegExp));
+					$this.find("#hrexample").show();
 					settings.interactive = true;
 				}
 				else { helpers.countdown($this); }
@@ -486,7 +475,7 @@
 					settings.interactive = false;
 					$this.find("#gex .fx").css("opacity",1).show().animate({opacity:0},800,function() {
 						$(this).hide();
-						$this.find("#example").animate({opacity:0},500, function() {
+						$this.find("#hrexample").animate({opacity:0},500, function() {
 							$(this).hide();
 							helpers.countdown($this);
 						});
@@ -495,8 +484,7 @@
 			},
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                helpers.quit($this);
-                settings.context.onquit($this,{'status':'abort'});
+                helpers.end($this,{'status':'abort'});
             }
         };
 

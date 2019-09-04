@@ -61,11 +61,10 @@
             $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
-        end: function($this) {
+        end: function($this, _args) {
             var settings = helpers.settings($this);
             helpers.unbind($this);
-            settings.context.onquit($this,
-                {'status':'success', 'score':settings.score, 'points':settings.points, 'pieces':settings.pieces});
+            settings.context.onquit($this, _args);
         },
         loader: {
             css: function($this) {
@@ -99,7 +98,7 @@
                 if (settings.context.onload) { settings.context.onload($this); }
 
                 // overview
-                $this.find("#overview div.icon.img").each(function(_id) {
+                $this.find("#atoverview .icon.img").each(function(_id) {
                     $(this).html("<img src='res/img/svginventoryicons/"+tiles[settings.theme][_id]+".svg'/>");
                 });
 
@@ -108,7 +107,7 @@
                     if (i==settings.bonus[j][0]) { settings.bonus[j][2] = settings.runes[i]; }
                 }
 
-                if (settings.time) { $this.find("#board").addClass("withtime"); $this.find("#withtime").show(); }
+                if (settings.time) { $this.find("#atboard").addClass("withtime"); $this.find("#withtime").show(); }
 
                 // goals handling
                 setTimeout(function() { helpers.goals.init($this); }, 100);
@@ -126,7 +125,7 @@
         // Display the discovered elements
         overview: function($this, _animid) {
             var settings = helpers.settings($this);
-            $this.find("#overview div.img img").each(function(index) {
+            $this.find("#atoverview .img img").each(function(index) {
                 if (index<=settings.level && !$(this).children().length) {
                     $(this).show();
                     if (_animid==index) { $(this).css("opacity",0).animate({opacity:1},800); }
@@ -134,7 +133,7 @@
             });
         },
         effect: function($this, _i, _j, _style) {
-            $("<div class='effect"+(_style?" "+_style:"")+"'></div>").appendTo($this.find("#board")).css("left", _i+"em").css("top", _j+"em")
+            $("<div class='ateffect"+(_style?" "+_style:"")+"'></div>").appendTo($this.find("#atboard")).css("left", _i+"em").css("top", _j+"em")
                 .animate({opacity:0},500,function(){$(this).detach();});
         },
         img : function($this,_val) {
@@ -146,11 +145,11 @@
             var settings = helpers.settings($this);
             var ret = -1;
             if (_elt) {
-                var $img = _elt.find(".img>img");
+                var $img = _elt.find(".atimg>img");
                 if (typeof(_val)!="undefined" ) {
                     _elt.find(".fx").detach();
                     $img.attr("alt",_val).attr("src",helpers.img($this,_val));
-                    if (_val%200>=20&&_val%200<40) {_elt.append("<div class='ice01 fx'></div>"); }
+                    if (_val%200>=20&&_val%200<40) {_elt.append("<div class='atice01 fx'></div>"); }
                 }
                 ret = parseInt($img.attr("alt"));
             }
@@ -158,8 +157,8 @@
         },
         tile: function($this, _i, _j, _val) {
             var settings = helpers.settings($this);
-            var ret = $("<div class='tile'></div>").appendTo($this.find("#board")).css("left", ""+_i+"em").css("top", ""+_j+"em")
-                .append("<div class='img'><img src=''/></div>");
+            var ret = $("<div class='attile'></div>").appendTo($this.find("#atboard")).css("left", ""+_i+"em").css("top", ""+_j+"em")
+                .append("<div class='atimg'><img src=''/></div>");
             helpers.val($this,ret,_val);
             return ret;
         },
@@ -176,7 +175,7 @@
                 for (var j=0; j<settings.bonus.length; j++) {if (Math.random()*100<settings.bonus[j][2]) { val[i] = 100+j; } }
             }
 
-            $this.find("#preview div").each(function(index) { $(this).append(helpers.tile($this,0,0,val[index])); });
+            $this.find("#atpreview div").each(function(index) { $(this).append(helpers.tile($this,0,0,val[index])); });
         },
         addpoints: function($this, _val) {
             var settings = helpers.settings($this);
@@ -184,10 +183,10 @@
             var str="";
             for (var i=0; i<8-settings.points.toString().length; i++) { str+="0"; }
             str+=settings.points;
-            $this.find("#points #v").html(str);
+            $this.find("#atpoints #v").html(str);
             if (settings.ref) {
-                $this.find("#points #slide").width($this.find("#points").width()*Math.min(settings.points/settings.ref,1));
-                if (settings.points>=settings.ref) { $this.find("#points").addClass("s"); }
+                $this.find("#atpoints #atslide").width($this.find("#atpoints").width()*Math.min(settings.points/settings.ref,1));
+                if (settings.points>=settings.ref) { $this.find("#atpoints").addClass("s"); }
             }
         },
         // Detach the preview pair and use it as current tile. Call for a new preview pair
@@ -195,8 +194,8 @@
             var settings = helpers.settings($this);
             settings.tile.posx = 2;
             settings.tile.orientation = 0;
-            settings.tile.div1 = $this.find("#preview1>div").detach().appendTo($this.find("#board")).css("left", "2em").css("top", "1em");
-            settings.tile.div2 = $this.find("#preview2>div").detach().appendTo($this.find("#board")).css("left", "3em").css("top", "1em");
+            settings.tile.div1 = $this.find("#atpreview1>div").detach().appendTo($this.find("#atboard")).css("left", "2em").css("top", "1em");
+            settings.tile.div2 = $this.find("#atpreview2>div").detach().appendTo($this.find("#atboard")).css("left", "3em").css("top", "1em");
             var alt1 = helpers.val($this,settings.tile.div1);
             var alt2 = helpers.val($this,settings.tile.div2);
             helpers.preview($this);
@@ -204,7 +203,7 @@
             settings.pieces+=2;
             settings.bonusdone = false;
             if (settings.time && settings.pieces>2) {
-                $this.find("#timer>div").height(0);
+                $this.find("#attimer>div").height(0);
                 settings.timer.val = Date.now();
                 settings.timer.id = setTimeout(function() { helpers.time($this); }, 50);
             }
@@ -213,7 +212,7 @@
         time: function($this) {
             var settings = helpers.settings($this);
             var val = (Date.now() - settings.timer.val)/1000;
-            $this.find("#timer>div").height($this.find("#timer").height()*Math.min(1,val/settings.time));
+            $this.find("#attimer>div").height($this.find("#attimer").height()*Math.min(1,val/settings.time));
             if (val<settings.time) { settings.timer.id = setTimeout(function() { helpers.time($this); }, 50); }
             else                   {
                 settings.timer.id = 0;
@@ -269,10 +268,10 @@
                 }
                 
                 if (k) {
-                    $this.find("#keypad .s").removeClass("s"); 
-                    $this.find("#keypad #"+k).addClass("s");
+                    $this.find("#atkeypad .s").removeClass("s"); 
+                    $this.find("#atkeypad #"+k).addClass("s");
                     if (settings.keytimerid) { clearTimeout(settings.keytimerid); }
-                    settings.keytimerid = setTimeout(function() { $this.find("#keypad .s").removeClass("s"); }, 300 );
+                    settings.keytimerid = setTimeout(function() { $this.find("#atkeypad .s").removeClass("s"); }, 300 );
                 }
             }
         },
@@ -308,19 +307,19 @@
                         if (Math.random()<0.5) { 
                             settings.board[j][i].detach();
                             settings.board[j][i] = 0;
-                            helpers.effect($this,i,j,"fstone");
+                            helpers.effect($this,i,j,"atfstone");
                             fx=true;
                         }
                         break;
-                    case 102: if (Math.random()<0.5) { helpers.val($this,settings.board[j][i],101); helpers.effect($this,i,j,"fstone"); fx=true; } break;
-                    case 103: if (Math.random()<0.5) { helpers.val($this,settings.board[j][i],102); helpers.effect($this,i,j,"fstone"); fx=true; } break;
-                    case 104: if (Math.random()<0.5) { helpers.val($this,settings.board[j][i],103); helpers.effect($this,i,j,"fstone"); fx=true; } break;
-                    case 105: if (Math.random()<0.5) { helpers.val($this,settings.board[j][i],104); helpers.effect($this,i,j,"fstone"); fx=true; } break;
+                    case 102: if (Math.random()<0.5) { helpers.val($this,settings.board[j][i],101); helpers.effect($this,i,j,"atfstone"); fx=true; } break;
+                    case 103: if (Math.random()<0.5) { helpers.val($this,settings.board[j][i],102); helpers.effect($this,i,j,"atfstone"); fx=true; } break;
+                    case 104: if (Math.random()<0.5) { helpers.val($this,settings.board[j][i],103); helpers.effect($this,i,j,"atfstone"); fx=true; } break;
+                    case 105: if (Math.random()<0.5) { helpers.val($this,settings.board[j][i],104); helpers.effect($this,i,j,"atfstone"); fx=true; } break;
                     case 106:
                         for (var ii=-1;ii<2;ii++)for (var jj=-1;jj<2;jj++) {
                             if (i+ii>=0 && i+ii<=5 && j+jj>=0 && j+jj<=8) {
                                 var v = helpers.val($this,settings.board[j+jj][i+ii]);
-                                helpers.effect($this,i+ii,j+jj,"fup");
+                                helpers.effect($this,i+ii,j+jj,"atfup");
                                 if (v%20>0&&v<100) { helpers.val($this,settings.board[j+jj][i+ii],v-1); }
                             }
                         }
@@ -330,17 +329,17 @@
                     case 107:
                         settings.board[j][i].detach();
                         settings.board[j][i] = 0;
-                        helpers.effect($this,i,j,"fup2");
+                        helpers.effect($this,i,j,"atfup2");
                         if (j<8) for (ii=0;ii<6;ii++) {
                             var v = helpers.val($this,settings.board[j+1][ii]);
-                            helpers.effect($this,ii,j+1,"fup");
+                            helpers.effect($this,ii,j+1,"atfup");
                             if (v%20>0&&v<100) { helpers.val($this,settings.board[j+1][ii],v-1); }
                         }
                         fx=true;break;
                     case 108:
                         for (jj=0;jj<9;jj++) {
                             var v = helpers.val($this,settings.board[jj][i]);
-                            helpers.effect($this,i,jj,"fup");
+                            helpers.effect($this,i,jj,"atfup");
                             if (v%20>0&&v<100) {  helpers.val($this,settings.board[jj][i],v-1); }
                         }
                         settings.board[j][i].detach();
@@ -349,7 +348,7 @@
                     case 109:
                         for (ii=0;ii<6;ii++) {
                             var v = helpers.val($this,settings.board[j][ii]);
-                            helpers.effect($this,ii,j,"fup");
+                            helpers.effect($this,ii,j,"atfup");
                             if (v%20>0&&v<100) {  helpers.val($this,settings.board[j][ii],v-1); }
                         }
                         settings.board[j][i].detach();
@@ -360,7 +359,7 @@
                         for (var ii=-1;ii<2;ii++)for (var jj=-1;jj<2;jj++) {
                             if (i+ii>=0 && i+ii<=5 && j+jj>=0 && j+jj<=8) {
                                 var v = helpers.val($this,settings.board[j+jj][i+ii]);
-                                helpers.effect($this,i+ii,j+jj,"fice");
+                                helpers.effect($this,i+ii,j+jj,"atfice");
                                 if (v>=0&&v<20) { helpers.val($this,settings.board[j+jj][i+ii],v+20); }
                             }
                         }
@@ -370,17 +369,17 @@
                     case 111:
                         settings.board[j][i].detach();
                         settings.board[j][i] = 0;
-                        helpers.effect($this,i,j,"fice2");
+                        helpers.effect($this,i,j,"atfice2");
                         if (j<8) for (ii=0;ii<6;ii++) {
                             var v = helpers.val($this,settings.board[j+1][ii]);
-                            helpers.effect($this,ii,j+1,"fice");
+                            helpers.effect($this,ii,j+1,"atfice");
                             if (v>=0&&v<20) { helpers.val($this,settings.board[j+1][ii],v+20); }
                         }
                         fx=true;break;
                     case 112:
                         for (jj=0;jj<9;jj++) {
                             var v = helpers.val($this,settings.board[jj][i]);
-                            helpers.effect($this,i,jj,"fice");
+                            helpers.effect($this,i,jj,"atfice");
                             if (v>=0&&v<20) {  helpers.val($this,settings.board[jj][i],v+20); }
                         }
                         settings.board[j][i].detach();
@@ -389,7 +388,7 @@
                     case 113:
                         for (ii=0;ii<6;ii++) {
                             var v = helpers.val($this,settings.board[j][ii]);
-                            helpers.effect($this,ii,j,"fice");
+                            helpers.effect($this,ii,j,"atfice");
                             if (v>=0&&v<20) {  helpers.val($this,settings.board[j][ii],v+20); }
                         }
                         settings.board[j][i].detach();
@@ -399,28 +398,28 @@
                     case 114:
                         for (var ii=-1;ii<2;ii++)for (var jj=-1;jj<2;jj++) {
                             if (i+ii>=0 && i+ii<=5 && j+jj>=0 && j+jj<=8) {
-                                helpers.effect($this,i+ii,j+jj,"fdel");
+                                helpers.effect($this,i+ii,j+jj,"atfdel");
                                 if (settings.board[j+jj][i+ii]) { settings.board[j+jj][i+ii].detach(); settings.board[j+jj][i+ii] = 0; }
                             }
                         }
                         fx=true; break;
                     case 115:
                         settings.board[j][i].detach(); settings.board[j][i] = 0;
-                        helpers.effect($this,i,j,"fdel2");
+                        helpers.effect($this,i,j,"atfdel2");
                         if (j<8) for (ii=0;ii<6;ii++) {
-                            helpers.effect($this,ii,j+1,"fdel");
+                            helpers.effect($this,ii,j+1,"atfdel");
                             if (settings.board[j+1][ii]) { settings.board[j+1][ii].detach(); settings.board[j+1][ii] = 0; }
                         }
                         fx=true;break;
                     case 116:
                         for (jj=0;jj<9;jj++) {
-                            helpers.effect($this,i,jj,"fdel");
+                            helpers.effect($this,i,jj,"atfdel");
                             if (settings.board[jj][i]) { settings.board[jj][i].detach(); settings.board[jj][i] = 0; }
                         }
                         fx=true;break;
                     case 117:
                         for (ii=0;ii<6;ii++) {
-                            helpers.effect($this,ii,j,"fdel");
+                            helpers.effect($this,ii,j,"atfdel");
                             if (settings.board[j][ii]) { settings.board[j][ii].detach(); settings.board[j][ii] = 0; }
                         }
                         fx=true;break;
@@ -439,30 +438,30 @@
                     var txt = settings.locale.goaltxt[settings.goals[i].type];
                     switch(settings.goals[i].type) {
                         case "survive":
-                            $this.find("#counter").html(settings.goals[i].value).show();
+                            $this.find("#atcounter").html(settings.goals[i].value).show();
                             txt = txt.replace("$1","<span class='l'>"+settings.goals[i].value+"</span>");
                             break;
                         case "level":
-                            $($this.find("#overview div.icon.img").get(settings.goals[i].value)).addClass("s");
+                            $($this.find("#atoverview .icon.img").get(settings.goals[i].value)).addClass("s");
                             txt = txt.replace("$1","<span class='l'>"+(settings.goals[i].value+1)+"</span>");
                             break;
                         case "max":
-                            $this.find("#counter").html(settings.goals[i].value).addClass("s").show();
+                            $this.find("#atcounter").html(settings.goals[i].value).addClass("s").show();
                             txt = txt.replace("$1","<span class='l'>"+(settings.goals[i].value)+"</span>");
                             break;
                         case "remove":
-                            $($this.find("#overview div.icon.no").get(settings.goals[i].value)).show();
+                            $($this.find("#atoverview .icon.no").get(settings.goals[i].value)).show();
                             txt = txt.replace("$1","<span class='l'>"+(settings.goals[i].value+1)+"</span>");
                             break;
                         case "fill":
-                            $($this.find("#overview div.icon.img").get(settings.goals[i].misc)).addClass("f");
+                            $($this.find("#atoverview .icon.img").get(settings.goals[i].misc)).addClass("f");
                             txt = txt.replace("$1","<span class='l'>"+(settings.goals[i].misc+1)+"</span>");
                         case "empty":
                             for (var j in settings.goals[i].value) {
                                 var v = settings.goals[i].value[j];
                                 for (var ii=v[0]; ii<v[0]+(v.length>2?v[2]:1); ii++)
                                 for (var jj=v[1]; jj<v[1]+(v.length>3?v[3]:1); jj++) {
-                                    $("<div class='"+settings.goals[i].type+"'></div>").prependTo($this.find("#board")).
+                                    $("<div class='"+settings.goals[i].type+"'></div>").prependTo($this.find("#atboard")).
                                         css("left", ii+"em").css("top", (2+jj)+"em");
                                 }
                             }
@@ -481,15 +480,15 @@
                     for (var i in settings.goals) {
                         switch(settings.goals[i].type) {
                             case "survive":
-                                var val = parseInt($this.find("#counter").html());
+                                var val = parseInt($this.find("#atcounter").html());
                                 if (val>1) { if (_update) { val--; } } else { goal++; }
-                                $this.find("#counter").html(val);
+                                $this.find("#atcounter").html(val);
                                 break;
                             case "max":
-                                var val = parseInt($this.find("#counter").html());
+                                var val = parseInt($this.find("#atcounter").html());
                                 goal++;
                                 if (val>1) { if (_update) { val--; } } else { if (_update) { val=0; } ret = s.failed; }
-                                $this.find("#counter").html(val);
+                                $this.find("#atcounter").html(val);
                                 break;
                             case "level":
                                 if (settings.level>=settings.goals[i].value) { goal++; }
@@ -592,8 +591,8 @@
                                 helpers.addpoints($this, point);
                                 var size = 1;
                                 while (tmp>10) { size/=1.2; tmp/=10; }
-                                $("<div class='score'><div style='font-size:"+size+"em;'>"+point+"</div></div>")
-                                    .appendTo($this.find("#board")).css("left", i+"em").css("top", j+"em")
+                                $("<div class='atscore'><div style='font-size:"+size+"em;'>"+point+"</div></div>")
+                                    .appendTo($this.find("#atboard")).css("left", i+"em").css("top", j+"em")
                                     .animate({"opacity":0, "margin-top":"-0.5em" },500,function(){$(this).detach();});
                                 $(settings.board[j][i]).detach(); settings.board[j][i] = 0;
                             }
@@ -603,14 +602,14 @@
                     if (Value>10) { Value = 10; }
                     if (Value==settings.level && !isfrozen ) {
                         settings.level++;
-                        $this.find("#neweltfx").css("top",(0.05+Math.floor(settings.level/3))+"em")
+                        $this.find("#atneweltfx").css("top",(0.05+Math.floor(settings.level/3))+"em")
                                                 .css("left",(5.08+settings.level%3)+"em").show();
-                        $this.find("#neweltfx>div>div").addClass("running");
+                        $this.find("#atneweltfx>div>div").addClass("running");
                         helpers.overview($this,settings.level);
                         helpers.alchemist($this,"happy");
                         setTimeout(function() {
-                            $this.find("#neweltfx").hide();
-                            $this.find("#neweltfx>div>div").removeClass("running");
+                            $this.find("#atneweltfx").hide();
+                            $this.find("#atneweltfx>div>div").removeClass("running");
                             } , 1000);
                     }
 
@@ -622,14 +621,14 @@
         alchemist:function($this, _type) {
             var settings = $this.data("settings");
             settings.alchemist = true;
-            $this.find("#newelt .icon").hide();
-            $this.find("#newelt .label").hide();
-            $this.find("#newelt #default").show();
-            $this.find("#newelt").css("left","-13em").show().animate({left:"-.2em"},400);
-            $this.find("#newelt #"+_type+"label").show();
+            $this.find("#atnewelt .icon").hide();
+            $this.find("#atnewelt .label").hide();
+            $this.find("#atnewelt #atdefault").show();
+            $this.find("#atnewelt").css("left","-13em").show().animate({left:"-.2em"},400);
+            $this.find("#atnewelt #"+_type+"label").show();
             
-            setTimeout(function() { $this.find("#newelt #default").hide(); $this.find("#newelt #"+_type).show();},1000);
-            setTimeout(function() { $this.find("#newelt").animate({left:"-13em"},300,function() { $(this).hide(); settings.alchemist = false; }); } , 1800);
+            setTimeout(function() { $this.find("#atnewelt #default").hide(); $this.find("#atnewelt #at"+_type).show();},1000);
+            setTimeout(function() { $this.find("#atnewelt").animate({left:"-13em"},300,function() { $(this).hide(); settings.alchemist = false; }); } , 1800);
             
         },
         // compute the score
@@ -645,10 +644,10 @@
                 if (d) { settings.waitend=500; }
 				if (l==0) {
                     transmut = true;
-                    $this.find("#wrong").show();
+                    $this.find("#effects").addClass("wrong");
                     setTimeout(function(){helpers.alchemist($this,"lost")},d);
                 } else {
-                    $this.find("#good").show();
+                    $this.find("#effects").addClass("good");
                     setTimeout(function(){helpers.alchemist($this,"win")},d);
                 }
                 if (l==5 && settings.ref) {
@@ -662,6 +661,8 @@
                 l = settings.level-6;
                 if (l>5) { l=5; }
                 if (l<0) { l=0; }
+				
+                $this.find("#effects").addClass("wrong");
                 
                 setTimeout(function(){helpers.alchemist($this,"lost")},d);
             }
@@ -669,12 +670,12 @@
             if (transmut) {
 				for (var j=0; j<9; j++) for (var i=0; i<6; i++)  {
 					if (settings.board[j][i]) {
-						var $elt = $("<div class='crap l"+j+"'></div>")
-							.appendTo($this.find("#board")).css("left", i+"em").css("top", j+"em");
+						var $elt = $("<div class='atcrap l"+j+"'></div>")
+							.appendTo($this.find("#atboard")).css("left", i+"em").css("top", j+"em");
 					}
 				}
 				var l = 0;
-				for (var j=0; j<9; j++) { setTimeout(function() { $this.find(".crap.l"+(l++)).show(); }, j*50); }
+				for (var j=0; j<9; j++) { setTimeout(function() { $this.find(".atcrap.l"+(l++)).show(); }, j*50); }
 			}
             
             return l;
@@ -693,7 +694,9 @@
                 else {
                     settings.interactive = false;
                     settings.score = helpers.score($this);
-                    setTimeout(function() { helpers.end($this); }, 3000+settings.waitend);
+                    setTimeout(function() { helpers.end($this, 
+						{'status':'success', 'score':settings.score,
+						 'points':settings.points, 'pieces':settings.pieces}); }, 3000+settings.waitend);
                 }
             }
         }
@@ -771,7 +774,7 @@
             },
             quit: function() {
                 var $this = $(this) , settings = $this.data("settings");
-                settings.context.onquit($this,
+                helpers.end($this,
                     {'status':'abort', 'score':settings.score, 'points':settings.points, 'pieces':settings.pieces});
             }
         };

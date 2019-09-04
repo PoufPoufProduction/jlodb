@@ -1,45 +1,31 @@
 .impress                            { background-color:#444;}
-.impress div#splashex               { background-image:url("../../res/img/banners/impress.svg"); }
-.impress div#splashex h1            { position:absolute; top:15%; left:52%; font-size:2em; background-color:red;
-                                          width:60%; color:white; text-align:center; border-radius:0 .5em .5em 0;
-                                          border:.3em solid white;
-                                          -ms-transform: rotate(45deg); -webkit-transform: rotate(45deg); transform: rotate(45deg); }
-.impress div#splashex #guide        { position:absolute; top:52%; left:45%; font-size:.75em; width:48%; text-align:justify; }
-.impress div#exercice               { width:100%; height:20%; background-repeat:repeat; font-size:.5em; background-image:url("../../res/img/default/pattern/line01.svg"); text-align:justify; }
-.impress div#exercice .strong       { color:red; font-weight:bold; border: 1px solid red; border-width:1px 0; }
-
-.impress #board						{ font-size:.5em; position:relative; width:32em; height:24em; }
-
-.impress .slide						{ width:32em; height:24em; background-color:white;  }
-.impress .slide .p					{ margin-top:2% }
-.impress .slide .title				{ font-size:2.5em; width:100%; text-align:center; }
-.impress .slide.title .title		{ margin-top:15%; }
-.impress .slide .subtitle			{ font-size:2em; width:100%; text-align:center; }
-.impress .slide .content			{ font-size:1.5em; margin-left:1em; margin-right:1em; }
-.impress .slide .li					{ font-size:1.5em; margin-left:2em; }
-
-.impress #board .slide				{ position:absolute; top:0 }
-.impress #board .slide .d			{ opacity:0; }
-
-.impress #end						{ position:absolute; top:5%; left:60%; width:35%; color:white; text-align:end; display:none; }
-
-.impress #thumbnails				{ position:absolute; top:95.5%; width:100%; height:25%; font-size:.08em;   }
-.impress #thumbnails .slide			{ float:left; border:1px solid black; margin:1em; cursor:pointer; }
-.impress #thumbnails .slide.s		{ border-color:red; background-color:#FDD; }
-.impress #thumbhelper				{ background-color:rgba(100,100,100,0.5); width:100%; height:1.2em; font-size:5em; text-align:center; cursor:pointer; }
-.impress #thumbhelper:before		{ content:'+'; }
-.impress #thumbhelper.s:before		{ content:'-'; }
-.impress #thumbslides				{ margin-left:0; }
-.impress #thumbnails .arrow			{ position:absolute; top:18%; left:0; background-color:rgba(255,255,255,0.6); font-size:20em; width:1em; height:1.3em; text-align:center; cursor:pointer; }
-.impress #thumbnails #thumbright	{ left:90%; }
-
-/*============ EDITOR PANEL =============*/
+.impress #splashex                  { background-image:url("../../res/img/banners/impress.svg"); }
+.impress #isboard                   { font-size:.5em; position:relative; width:32em; height:24em; }
+.impress .slide                     { width:32em; height:24em; background-color:white;  }
+.impress .slide .p                  { margin-top:2% }
+.impress .slide .title              { font-size:2.5em; width:100%; text-align:center; }
+.impress .slide.title .title        { margin-top:15%; }
+.impress .slide .subtitle           { font-size:2em; width:100%; text-align:center; }
+.impress .slide .content            { font-size:1.5em; margin-left:1em; margin-right:1em; }
+.impress .slide .li                 { font-size:1.5em; margin-left:2em; }
+.impress #isboard .slide            { position:absolute; top:0 }
+.impress #isboard .slide .d         { opacity:0; }
+.impress #isend                     { position:absolute; top:5%; left:60%; width:35%; color:white; text-align:end; display:none; }
+.impress #isthumbnails              { position:absolute; top:95.5%; width:100%; height:25%; font-size:.08em;   }
+.impress #isthumbnails .slide       { float:left; border:1px solid black; margin:1em; cursor:pointer; }
+.impress #isthumbnails .slide.s     { border-color:red; background-color:#FDD; }
+.impress #isthumbhelper             { background-color:rgba(100,100,100,0.5); width:100%; height:1.2em; font-size:5em; text-align:center; cursor:pointer; }
+.impress #isthumbhelper:before      { content:'+'; }
+.impress #isthumbhelper.s:before    { content:'-'; }
+.impress #isthumbslides             { margin-left:0; }
+.impress #isthumbnails .arrow       { position:absolute; top:18%; left:0; background-color:rgba(255,255,255,0.6); font-size:20em; width:1em; height:1.3em; text-align:center; cursor:pointer; }
+.impress #isthumbnails #thumbright  { left:90%; }
 
 .impress_editor #e_control #edition { height:94%; }
-.impress_editor #e_control #edition input			{ border:0; width:100%; height:3.2em; font-size:0.5em; text-align:center; margin-top:1%;}
-.impress_editor #e_control #edition select			{ border:0; width:100%; height:3.2em; font-size:0.5em; text-align:center; margin-top:1%;}
-.impress_editor #e_control #edition textarea	{ font-size:0.4em; background-color:white; color:#444; height:15%; margin-top:1%; border:0; }
+.impress_editor #e_control #edition input            { border:0; width:100%; height:3.2em; font-size:0.5em; text-align:center; margin-top:1%;}
+.impress_editor #e_control #edition select            { border:0; width:100%; height:3.2em; font-size:0.5em; text-align:center; margin-top:1%;}
+.impress_editor #e_control #edition textarea    { font-size:0.4em; background-color:white; color:#444; height:15%; margin-top:1%; border:0; }
 .impress_editor #e_control #edition textarea.list { height:6%; }
-.impress_editor #e_control #edition .title 		  { background-color:#FEC; }
-.impress_editor #e_control #edition .content 	{ background-color:#DDD; }
-.impress_editor #e_control #edition .select 	{ background-color:#CEF; }
+.impress_editor #e_control #edition .title           { background-color:#FEC; }
+.impress_editor #e_control #edition .content     { background-color:#DDD; }
+.impress_editor #e_control #edition .select     { background-color:#CEF; }

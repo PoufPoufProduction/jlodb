@@ -16,15 +16,6 @@
         debug       : true                                     // Debug mode
     };
 
-    var regExp = [
-        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
-        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
-        "\\\[br\\\]",                               "<br/>",
-        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
-        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
-        "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>"
-    ];
-
     // private methods
     var helpers = {
         // @generic: Check the context
@@ -46,22 +37,10 @@
             $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
-        end: function($this) {
+        end: function($this, _args) {
             var settings = helpers.settings($this);
             helpers.unbind($this);
-			
-			var html = $this.find("#board").html();
-            var vReg = new RegExp("([.][0-9][0-9])[0-9]+","g");
-            html = html.replace(vReg,"$1");
-			
-            settings.context.onquit($this,{'status':'success','score':9});
-        },
-        format: function(_text) {
-            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
-                var vReg = new RegExp(regExp[i*2],"g");
-                _text = _text.replace(vReg,regExp[i*2+1]);
-            }
-            return _text;
+            settings.context.onquit($this,_args);
         },
         loader: {
             css: function($this) {
@@ -100,14 +79,14 @@
                             (settings.background?"<rect x='0' y='0' width='"+settings.size[0]+"' height='"+settings.size[1]+"' style='stroke:none;fill:"+settings.background+";'/>":"")+
                             "</svg>";
 
-                $this.find("#board").svg();
-                settings.svg = $this.find("#board").svg('get');
+                $this.find("#dwboard").svg();
+                settings.svg = $this.find("#dwboard").svg('get');
                 settings.svg.load(svgContent, { addTo: false, changeSize: true});
 
                 settings.group = settings.svg.group();
                 $(settings.group).attr("id","foreground");
 
-                $this.find("#board").bind("touchstart mousedown", function(_event) {
+                $this.find("#dwboard").bind("touchstart mousedown", function(_event) {
                     var e = (_event && _event.originalEvent &&
                              _event.originalEvent.touches && _event.originalEvent.touches.length)?
                              _event.originalEvent.touches[0]:_event;
@@ -206,13 +185,13 @@
                 });
 
                 // MENU BUTTONS
-                if (settings.nomenu) { $this.find("#menu").hide(); }
+                if (settings.nomenu) { $this.find("#dwmenu").hide(); }
                 else {
-                    $this.find("#menu .icon").bind("mousedown touchstart", function(_event) {
+                    $this.find("#dwmenu .icon").bind("mousedown touchstart", function(_event) {
                         $(this).closest(".action").find(".icon").removeClass("s");
                         $(this).addClass("s");
                         switch ($(this).attr("id")) {
-							case "submit" : settings.interactive = false; helpers.end($this); break;
+							case "submit" : settings.interactive = false; helpers.end($this, {'status':'success','score':9}); break;
                             case "path" :   settings.object = "path";   break;
                             case "circle" : settings.object = "circle"; break;
                             case "rect" :   settings.object = "rect";   break;
@@ -315,7 +294,7 @@
             clean: function() { helpers.clean($(this)); },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                settings.context.onquit($this,{'status':'abort'});
+                helpers.end($this,{'status':'abort'});
             }
         };
 

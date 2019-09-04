@@ -8,17 +8,11 @@
         lang        : "en-US",                                  // Current localization
         number      : 2,                                        // Number of games in case of gen
         fontex      : 1,                                        // exercice font size
-        max         : 1000,                                      // max value
-        debug       : true                                     // Debug mode
+        max         : 1000,                                     // max value
+		maxlines	: 5,										// Nb max lines
+        debug       : true                                      // Debug mode
     };
 
-    var regExp = [
-        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
-        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
-        "\\\[br\\\]",                               "<br/>",
-        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
-        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>"
-    ];
     
     // private methods
     var helpers = {
@@ -41,17 +35,10 @@
             $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
-        end: function($this) {
+        end: function($this, _args) {
             var settings = helpers.settings($this);
             helpers.unbind($this);
-            settings.context.onquit($this,{'status':'success','score':settings.score});
-        },
-        format: function(_text) {
-            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
-                var vReg = new RegExp(regExp[i*2],"g");
-                _text = _text.replace(vReg,regExp[i*2+1]);
-            }
-            return _text;
+            settings.context.onquit($this, _args);
         },
         loader: {
             css: function($this) {
@@ -86,10 +73,10 @@
                 // Send the onLoad callback
                 if (settings.context.onload) { settings.context.onload($this); }
 
-                $this.find("#keypad .k").each(function() { settings.$keys.push($(this)); });
+                $this.find("#cnkeypad .k").each(function() { settings.$keys.push($(this)); });
 
                 $this.bind("mousemove touchmove", function(event) {
-                    var settings = helpers.settings($this), $keypad = $this.find("#keypad");
+                    var settings = helpers.settings($this), $keypad = $this.find("#cnkeypad");
                     if (settings.keypad) {
                         var vEvent = (event && event.originalEvent && event.originalEvent.touches &&
                                     event.originalEvent.touches.length)? event.originalEvent.touches[0]:event;
@@ -117,12 +104,9 @@
                 }
 
                 if (settings.exercice) {
-                    if ($.isArray(settings.exercice)) {
-                        $this.find("#exercice>div").html("");
-                        for (var i in settings.exercice) {
-                            $this.find("#exercice>div").append("<p>"+(settings.exercice[i].length?settings.exercice[i]:"&#xA0;")+"</p>"); }
-                    } else { $this.find("#exercice>div").html(settings.exercice); }
-                    $this.find("#exercice>div").css("font-size",settings.fontex+"em").parent().show();
+					$this.find("#exercice>div")
+						.html(jtools.instructions(settings.exercice))
+						.css("font-size",settings.fontex+"em").parent().show();
                 }
 
                 // Locale handling
@@ -137,28 +121,28 @@
         },
         newline: function($this) {
             var settings = helpers.settings($this);
-            var $lines= $this.find("#board #lines");
+            var $lines= $this.find("#cnboard #cnlines");
             var nb = $lines.children().length;
             if (nb<5) {
                 $lines.find(".r").addClass("rr");
                 $lines.find(".o").addClass("disabled");
                 $lines.find(".dd").droppable({disabled:true});
-                var $line = $this.find("#board #template").clone().css("display","").attr("id","l"+nb);
+                var $line = $this.find("#cnboard #cntemplate").clone().css("display","").attr("id","l"+nb);
                 if (nb==0) $line.find(".r").addClass("rr");
                 if (!settings.op || settings.op.length!=1) {
                     $line.find(".o").bind("touchstart mousedown", function(_event) {
                         if (!$(this).hasClass("disabled")) {
-                            var $keypad = $this.find("#keypad");
-                            var vLeft = $(this).position().left + Math.floor($(this).width()/1.6);
-                            var vTop = $(this).position().top + Math.floor($(this).height()/1.5);
-                            $this.find("#keypad").css("top",vTop+"px").css("left",vLeft+"px").show();
+                            var $keypad = $this.find("#cnkeypad");
+                            var vLeft = $(this).offset().left;
+                            var vTop = $(this).offset().top;
+                            $this.find("#cnkeypad").css("top",vTop+"px").css("left",vLeft+"px").show();
                             settings.keypad = $(this);
                         }
                         _event.preventDefault();
                     });
                 }
                 if (settings.op) {
-                    $line.find(".o>div").html($this.find("#keypad #"+settings.op[0]+">div").text());
+                    $line.find(".o>div").html($this.find("#cnkeypad #"+settings.op[0]+">div").text());
                 }
 
 
@@ -182,14 +166,10 @@
                         $this.find(".t#"+$elt.attr("id")).addClass("tt").draggable({disabled:true})
                         helpers.computable($this);
 
-                        var x           = vEvent.clientX-$this.offset().left;
-                        var y           = vEvent.clientY-$this.offset().top;
-                        var $old        = $this.find("#touch01>div").detach();
-                        var $new        = $old.clone();
-                        $this.find("#touch01").css("left",Math.floor(x - $this.find("#touch01").width()/2)+"px")
-                                            .css("top",Math.floor(y - $this.find("#touch01").height()/2)+"px")
-                                            .append($new.addClass("running")).show();
-                        setTimeout(function(){$this.find("#touch01>div").removeClass("running").parent().hide(); },800);
+                        $this.find("#cntouch>div").addClass("running").parent()
+							.css("left", vEvent.clientX-$this.offset().left)
+                            .css("top", vEvent.clientY-$this.offset().top).show();
+                        setTimeout(function(){$this.find("#cntouch>div").removeClass("running").parent().hide(); },800);
 
                     }});
 
@@ -198,7 +178,7 @@
         },
         computable: function($this) {
             var settings = helpers.settings($this);
-            var $line = $this.find("#board #lines").children().last();
+            var $line = $this.find("#cnboard #cnlines").children().last();
             var vOk = false;
             if($line.find(".t").length>=2)
             {
@@ -226,14 +206,14 @@
         },
         build: function($this) {
             var settings = helpers.settings($this);
-            $this.find("#effects").hide();
-            $this.find("#board #lines").html("");
-            $this.find("#header #result>div").text(settings.data[settings.id].result);
-            $this.find("#header #values").html("");
+            $this.find("#effects").removeClass();
+            $this.find("#cnboard #cnlines").html("");
+            $this.find("#cnheader #cnresult>div").text(settings.data[settings.id].result);
+            $this.find("#cnheader #cnvalues").html("");
             for (var i in settings.data[settings.id].values) {
-                $this.find("#header #values").append(helpers.gett(i,settings.data[settings.id].values[i]));
+                $this.find("#cnheader #cnvalues").append(helpers.gett(i,settings.data[settings.id].values[i]));
             }
-            $this.find(".t").draggable({ containment:$this, helper:"clone", appendTo:$this.find("#board"),
+            $this.find(".t").draggable({ containment:$this, helper:"clone", appendTo:$this.find("#cnboard"),
                             start:function() {} });
 
             $this.bind("touchend touchleave mouseup mouseleave", function(_event) {
@@ -243,21 +223,21 @@
                     helpers.computable($this);
                 }
 
-                $this.find("#keypad").hide();
+                $this.find("#cnkeypad").hide();
             });
             
             if (settings.legend) {
                 var legend = settings.legend;
                 if ($.isArray(legend)) { legend = legend[settings.id%legend.length]; }
-                $this.find("#legend>div").html(helpers.format(legend)).parent().show();
-                $this.find("#legend").draggable({axis:'y',containment:'parent'});
+                $this.find("#cnlegend>div").html(jtools.format(legend)).parent().show();
+				settings.maxlines = Math.min(settings.maxlines, 4);
             }
 
             if (settings.op) {
-                $this.find("#keypad .k").hide();
-                for (var i in settings.op) { $this.find("#keypad #"+settings.op[i]).show(); }
+                $this.find("#cnkeypad .k").hide();
+                for (var i in settings.op) { $this.find("#cnkeypad #"+settings.op[i]).show(); }
             }
-
+			settings.interactive = true;
             helpers.newline($this);
         }
     };
@@ -301,30 +281,38 @@
             },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                settings.context.onquit($this,{'status':'abort'});
+                helpers.end($this,{'status':'abort'});
             },
             del: function(_elt) {
                 var $this = $(this) , settings = helpers.settings($this);
-                if (!$(_elt).hasClass("rr")) {
+                if (!$(_elt).hasClass("rr") && settings.interactive ) {
+					settings.interactive = false;
+					
                     $(_elt).parent().find(".t").each(function() {
                         $this.find(".t#"+$(this).attr("id")).removeClass("tt").draggable({disabled:false});
                     });
 
-                    settings.score=Math.max(settings.score-1,0);
+                    // settings.score=Math.max(settings.score-1,0);
+					
+					$(_elt).parent().find(">div").hide();
+					$(_elt).parent().find(".cnmask").show().animate({opacity:0}, 500,
+						function() {
+							$(this).parent().detach(); 
+							settings.interactive = true;
 
-                    $(_elt).parent().detach();
-                    var $lines  = $this.find("#board #lines");
-                    var nb      = $lines.children().length;
-                    if (nb) {
-                        var $line = $($lines.children().get(nb-1));
-                        if (nb>1) { $line.find(".r").removeClass("rr"); }
-                        $line.find(".dd").droppable({disabled:false});
-                        $line.find(".c .t").detach();
-                        $line.find(".c").removeClass("s").addClass("cc");
-                        $line.find(".o").removeClass("disabled");
-                    }
-                    else    { helpers.newline($this); }
-                    helpers.computable($this);
+							var $lines  = $this.find("#cnboard #cnlines");
+							var nb      = $lines.children().length;
+							if (nb) {
+								var $line = $($lines.children().get(nb-1));
+								if (nb>1) { $line.find(".r").removeClass("rr"); }
+								$line.find(".dd").droppable({disabled:false});
+								$line.find(".c .t").detach();
+								$line.find(".c").removeClass("s").addClass("cc");
+								$line.find(".o").removeClass("disabled");
+							}
+							else    { helpers.newline($this); }
+							helpers.computable($this);
+					});
                 }
             },
             compute: function(_elt) {
@@ -338,15 +326,24 @@
                     $line = $(_elt).closest(".line");
                     var id= 100+parseInt($line.attr("id").substr(1));
                     var $t = $(helpers.gett(id,settings.compute));
-                    if (id<104) { $t.draggable({ containment:$this, helper:"clone", appendTo:$this.find("#board") }); }
+                    if (id<104) { $t.draggable({ containment:$this, helper:"clone", appendTo:$this.find("#cnboard") }); }
                     $(_elt).parent().removeClass("cc").addClass("s").append($t);
+					
+					$this.find("#cnfx>div").addClass("running").parent()
+						.css("top", $line.offset().top - $this.offset().top)
+						.show();
+					setTimeout(function(){ $this.find("#cnfx>div").removeClass("running").parent().hide(); }, 500);
 
                     if (settings.compute == settings.data[settings.id].result) {
-                        $this.find("#effects").show();
+                        $this.find("#effects").addClass("good");
+						settings.interactive = false;
                         if (++settings.id < settings.data.length) { setTimeout(function() {helpers.build($this);}, 1000); }
-                        else                                      { setTimeout(function() {helpers.end($this);}, 1000); }
+                        else                                      { setTimeout(function() {helpers.end($this, {'status':'success','score':settings.score});}, 2000); }
                     }
-                    else { helpers.newline($this); }
+                    else {
+						if ($this.find("#cnboard #cnlines").children().length<settings.maxlines) {
+							helpers.newline($this);
+					} }
                 }
             }
         };

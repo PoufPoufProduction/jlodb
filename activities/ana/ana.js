@@ -42,10 +42,10 @@
             $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
-        end: function($this) {
+        end: function($this, _args) {
             var settings = helpers.settings($this);
             helpers.unbind($this);
-            settings.context.onquit($this,{'status':'success','score':settings.score});
+            settings.context.onquit($this, _args);
         },
         // End all timers
         quit: function($this) {
@@ -104,16 +104,18 @@
 				var h = settings.board.length;
 				var w = 0;
 				for (var i in settings.board) { w = Math.max(w, settings.board[i].length); }
-				$this.find("#aa_board>div").css("font-size",Math.min(12/(1+h),11.3/(1+w))+"em");
+				$this.find("#aaboard>div").css("font-size",Math.min(12/(1+h),11.3/(1+w))+"em");
 
 				for (var i=0; i<settings.board.length; i++) {
 					while (settings.board[i].length < w) { settings.board[i]+=" "; }
 					for (var j=0; j<settings.board[i].length; j++ ) {
 						var l = settings.board[i][j];
 						if (l!=' ') {
-							var $elt = $("<div id='"+j+"x"+i+"' class='icon'><div></div></div>");
+							var $elt = $("<div id='"+j+"x"+i+"' class='icon'><div class='aaval'></div></div>");
+							$elt.append("<div class='anim12 noloop'><div><img src='res/img/asset/anim/bluelight0"+
+								Math.floor(Math.random()*4+1)+".svg' alt=''/></div></div>");
 							$elt.css("top", (i+0.5)+"em").css("left", (j+0.5)+"em");
-							$this.find("#aa_board>div").append($elt);
+							$this.find("#aaboard>div").append($elt);
 						}
 					}
 				}
@@ -147,14 +149,14 @@
 				}
 				
 				// GET KEYS FROM BOARD
-                var elt=$this.find("#aa_keypad svg");
+                var elt=$this.find("#aakeypad svg");
                 elt.svg(); settings.svg = elt.svg('get');
 				
 				for (var i in settings.board) {
 					for (var j in settings.board[i]) {
 						var l = settings.board[i][j];
 						if ( l!=' ' && !settings.keys[l]) {
-							var $elt = $(settings.svg.group($("#aa_keys", settings.svg.root()))).attr("id","g_"+l);
+							var $elt = $(settings.svg.group($("#aakeys", settings.svg.root()))).attr("id","g_"+l);
 							settings.svg.circle($elt, 0, 0, 6);
 							$(settings.svg.text($elt, 0, 0, l)).attr("y","3.8");
 							settings.keys[l] = {
@@ -167,15 +169,15 @@
 				helpers.keys($this, false);
 				
 				// BOARD BEHAVIOUR
-				$("#aa_handler",settings.svg.root()).bind("mousedown touchstart", function(_event) {
+				$("#aahandler",settings.svg.root()).bind("mousedown touchstart", function(_event) {
 					if (settings.interactive) {
 						var vEvent = (_event && _event.originalEvent && _event.originalEvent.touches &&
 									  _event.originalEvent.touches.length)?_event.originalEvent.touches[0]:_event;
 						
-						$("#aa_keys>g",settings.svg.root()).attr("class","");
-						$("#aa_path line",settings.svg.root()).detach();
+						$("#aakeys>g",settings.svg.root()).attr("class","");
+						$("#aapath line",settings.svg.root()).detach();
 						
-						var $keypad = $this.find("#aa_keypad");
+						var $keypad = $this.find("#aakeypad");
 						
 						settings.nav.width = $keypad.width();
 						settings.nav.offset = [ $keypad.offset().left, $keypad.offset().top ];
@@ -185,11 +187,11 @@
 						
 						settings.nav.current = helpers.get($this, pos);
 						settings.nav.word = settings.nav.current.toString();
-						$this.find("#aa_word").html(settings.nav.word);
+						$this.find("#aaword").html(settings.nav.word);
 						if (settings.nav.current) {
 							var k = settings.keys[settings.nav.current];
 							k.$elt.attr("class","s");
-							settings.nav.line = settings.svg.line($("#aa_path", settings.svg.root()),
+							settings.nav.line = settings.svg.line($("#aapath", settings.svg.root()),
 																  k.pos[0], k.pos[1], pos[0], pos[1]);
 						}
 					}
@@ -198,7 +200,7 @@
 					
 				});
 				
-				$("#aa_handler",settings.svg.root()).bind("mousemove touchmove", function(_event) {
+				$("#aahandler",settings.svg.root()).bind("mousemove touchmove", function(_event) {
 					if (settings.interactive && settings.nav.current && settings.nav.line) {
 						var vEvent = (_event && _event.originalEvent && _event.originalEvent.touches &&
 									  _event.originalEvent.touches.length)?_event.originalEvent.touches[0]:_event;
@@ -214,9 +216,9 @@
 								k.$elt.attr("class","s");
 								settings.nav.current = newcurrent;
 								settings.nav.word += newcurrent.toString();
-								$this.find("#aa_word").html(settings.nav.word);
+								$this.find("#aaword").html(settings.nav.word);
 								$(settings.nav.line).attr("x2",k.pos[0]).attr("y2",k.pos[1]);
-								settings.nav.line = settings.svg.line($("#aa_path", settings.svg.root()),
+								settings.nav.line = settings.svg.line($("#aapath", settings.svg.root()),
 																	  k.pos[0], k.pos[1], pos[0], pos[1]);
 							}
 						}
@@ -225,38 +227,50 @@
 					_event.preventDefault();
 				});
 				
-				$("#aa_handler",settings.svg.root()).bind("mouseout touchleave", function(_event) {
+				$("#aahandler",settings.svg.root()).bind("mouseout touchleave", function(_event) {
 					if (settings.interactive && settings.nav.current && settings.nav.line) {
-						$("#aa_keys>g",settings.svg.root()).attr("class","");
-						$("#aa_path line",settings.svg.root()).detach();
+						$("#aakeys>g",settings.svg.root()).attr("class","");
+						$("#aapath line",settings.svg.root()).detach();
 						settings.nav.current = 0;
 						settings.nav.line = 0;
 						settings.nav.word = "";
-						$this.find("#aa_word").html(settings.nav.word);
+						$this.find("#aaword").html(settings.nav.word);
 						
 					}
 				});
 				
-				$("#aa_handler",settings.svg.root()).bind("mouseup touchend", function(_event) {
+				$("#aahandler",settings.svg.root()).bind("mouseup touchend", function(_event) {
 					if (settings.interactive && settings.nav.current && settings.nav.line) {
 						
 						var val="";
+						var imgfx = false;
 						if (settings.glossary && settings.glossary[settings.nav.word]) {
 							val="<img src='"+settings.glossary[settings.nav.word]+"' alt=''/>";
+							imgfx = true;
 						}
-						$this.find("#aa_snap").html(val);
+						$this.find("#aasnap").html(val);
 						
 						var ww=settings.words[settings.nav.word];
 						if (ww) {
 							var side=[[0,1],[1,0]];
 							for (var i=0; i<settings.nav.word.length; i++) {
-								$this.find("#"+(ww[0]+i*side[ww[2]][0])+"x"+(ww[1]+i*side[ww[2]][1])+">div")
-									 .html(settings.nav.word[i]);
+								var $cell = $this.find("#"+(ww[0]+i*side[ww[2]][0])+"x"+(ww[1]+i*side[ww[2]][1]));
+								$cell.find(".aaval").html(settings.nav.word[i]);
+								if (!settings.done[settings.nav.word]) {
+									$cell.find(".anim12>div").addClass("running").parent().show();
+								}
 							}
+							if (!settings.done[settings.nav.word]) {
+								if (imgfx) { $this.find("#aafx>div").addClass("running").parent().show(); }
+								setTimeout(function() { $this.find(".running").removeClass("running").parent().hide(); }, 1000);
+							}
+							
 						}
 						
-						$("#aa_keys>g",settings.svg.root()).attr("class","");
-						$("#aa_path line",settings.svg.root()).detach();
+						settings.done[settings.nav.word] = true;
+						
+						$("#aakeys>g",settings.svg.root()).attr("class","");
+						$("#aapath line",settings.svg.root()).detach();
 						settings.nav.current = 0;
 						settings.nav.line = 0;
 						settings.nav.word = "";
@@ -306,7 +320,7 @@
 		empty: function($this) {
             var settings = helpers.settings($this);
 			var ret = "", empties=[];
-			$this.find("#aa_board .icon>div").each(function(_index) {
+			$this.find("#aaboard .icon>div").each(function(_index) {
 				if (! $(this).html().length) {
 					empties.push($(this).parent().attr("id"));
 				}
@@ -319,8 +333,8 @@
             var settings = helpers.settings($this);
 			settings.interactive = false;
 			setTimeout(function() {
-				$this.find("#effects").css("opacity",0).show().animate({opacity:1},500);
-				setTimeout(function() { helpers.end($this); }, 1500);
+				$this.find("#effects").addClass("good");
+				setTimeout(function() { helpers.end($this, {'status':'success','score':settings.score}); }, 1500);
 			},500);
 		}
     };
@@ -337,6 +351,7 @@
 					score			: 5,
 					svg				: 0,
 					nav				: { width:1, offset:[0,0], word:"", current:0, line:0 },
+					done			: {},
 					keys			: {},
 					words			: {}
                 };
@@ -374,16 +389,16 @@
                 var $this = $(this) , settings = helpers.settings($this);
 				if ( settings.interactive ) {
 					$(_elt).addClass("s");
-					$this.find("#aa_mask").show();
+					$this.find("#aamask").show();
 				}
             },
 			tip: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-				$this.find("#aa_mask").hide();
+				$this.find("#aamask").hide();
 				var empty = helpers.empty($this);
 				if (empty) {
 					var pos=empty.split("x");
-					$this.find("#aa_board #"+empty+">div").html(settings.board[pos[1]][pos[0]]);
+					$this.find("#aaboard #"+empty+">div").html(settings.board[pos[1]][pos[0]]);
 					settings.score = Math.max(settings.score-1, 0);
 				}
 				
@@ -393,7 +408,7 @@
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 helpers.quit($this);
-                settings.context.onquit($this,{'status':'abort'});
+                helpers.end($this,{'status':'abort'});
             }
         };
 

@@ -25,7 +25,7 @@
         debug       : true                                      // Debug mode
     };
 
-    var regExp = [
+    var gRegExp = [
         "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
         "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
         "\\\[br\\\]",                               "<br/>",
@@ -66,13 +66,6 @@
             var settings = helpers.settings($this);
             helpers.unbind($this);
             settings.context.onquit($this,_args);
-        },
-        format: function(_text) {
-            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
-                var vReg = new RegExp(regExp[i*2],"g");
-                _text = _text.replace(vReg,regExp[i*2+1]);
-            }
-            return _text;
         },
         loader: {
             css: function($this) {
@@ -139,7 +132,7 @@
                 if (gen.fixed)  { fixed               = gen.fixed;	}
             }
             if (settings.title) {
-				$this.find("#cd_title").html(helpers.format(settings.title))
+				$this.find("#cd_title").html(jtools.format(settings.title, gRegExp))
 					.css("height",settings.htitle+"%").css("font-size",settings.fonttitle+"em").show();
 			}
 			else { $this.find("#cd_title").hide(); }
@@ -151,8 +144,8 @@
 			$this.find("#cd_ex").css("height",settings.hex+"%");
             $this.find("#cd_ex>div").css("font-size",settings.fontex+"em");
             if (settings.exercice) {
-                if ($.isArray(settings.exercice)) { $this.find("#cd_ex>div").html(helpers.format(settings.exercice[settings.id])); }
-                else                              { $this.find("#cd_ex>div").html(helpers.format(settings.exercice)); }
+                if ($.isArray(settings.exercice)) { $this.find("#cd_ex>div").html(jtools.format(settings.exercice[settings.id], gRegExp)); }
+                else                              { $this.find("#cd_ex>div").html(jtools.format(settings.exercice, gRegExp)); }
             }
 			
 			$this.find("#cd_ex .a").bind("touchstart mousedown", function(_event) {
@@ -365,7 +358,7 @@
                     }
 
                     var $def = $this.find("#cd_def");
-                    $def.html("<div style='font-size:"+settings.font+"em;'>"+helpers.format(def.toString())+"</div>").toggleClass("c",(def.length<5));
+                    $def.html("<div style='font-size:"+settings.font+"em;'>"+jtools.format(def.toString(),gRegExp)+"</div>").toggleClass("c",(def.length<5));
 
                     if (_hint) {
                         if (settings.mode) {

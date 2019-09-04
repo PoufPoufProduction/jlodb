@@ -1,12 +1,12 @@
 <div>
-    <div id="figure"></div>
-    <div id="svg"></div>
-    <div id="exercice" onclick="$(this).closest('.equation').equation('dump');"><div></div></div>
+    <div id="enfigure"></div>
+    <div id="ensvg"></div>
+    <div id="instructions" onclick="$(this).closest('.equation').equation('dump');"></div>
     <div id="submit" ontouchstart="$(this).closest('.equation').equation('submit');event.preventDefault();"
                      onclick="$(this).closest('.equation').equation('submit');">
-        <img src="res/img/default/icon/swvalid.svg" id="subvalid" alt=""/>
-        <img src="res/img/default/icon/swgood.svg" id="subgood" alt=""/>
-        <img src="res/img/default/icon/swwrong.svg" id="subwrong" alt=""/>
+        <img src="res/img/default/icon/swvalid.svg" id="valid" alt=""/>
+        <img src="res/img/default/icon/swgood.svg" id="good" alt=""/>
+        <img src="res/img/default/icon/swwrong.svg" id="wrong" alt=""/>
     </div>
 
     <div id="help" ontouchstart="$(this).next().show();event.preventDefault();" onclick="$(this).next().show();">
@@ -52,6 +52,11 @@
         <div class="help"></div>
         </div>
     </div></div>
+
+    <div id="effects">
+        <div id="good"><img src="res/img/default/popup/good01.svg" alt=""/></div>
+        <div id="wrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
+    </div>
     
     <div id="output" style="width:16em; height:1em;top:0; left:0; position:absolute; background-color:white;opacity:0.8;text-align:center;display:none;"></div>
 

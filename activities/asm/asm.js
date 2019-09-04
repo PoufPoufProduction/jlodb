@@ -18,18 +18,6 @@
         debug       : true                                      // Debug mode
     };
 
-    var regExp = [
-        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
-        "\\\[bb\\\](.+)\\\[/bb\\\]",                "<b>$1</b>",
-        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
-        "\\\[br\\\]",                               "<br/>",
-        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
-        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
-        "\\\[svg\\\]([^\\\[]+)\\\[/svg\\\]",        "<div class='svg'><div><svg width='100%' height='100%' viewBox='0 0 32 32'><rect x='0' y='0' width='32' height='32' style='fill:black'/>$1</svg></div></div>",
-        "\\\[code\\\](.+)\\\[/code\\\]",            "<div class='cc'>$1</div>",
-        "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>"
-    ];
-
     var opcodes = [
       /* Name, Imm,  ZP,   ZPX,  ZPY,  ABS, ABSX, ABSY,  IND, INDX, INDY, SNGL, BRA */
       ["ADC", 0x69, 0x65, 0x75, null, 0x6d, 0x7d, 0x79, null, 0x61, 0x71, null, null],
@@ -114,17 +102,10 @@
             $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
-        end: function($this) {
+        end: function($this, _args) {
             var settings = helpers.settings($this);
             helpers.unbind($this);
-            settings.context.onquit($this,{'status':'success','score':settings.score});
-        },
-        format: function(_text) {
-            for (var j=0; j<5; j++) for (var i=0; i<regExp.length/2; i++) {
-                var vReg = new RegExp(regExp[i*2],"g");
-                _text = _text.replace(vReg,regExp[i*2+1]);
-            }
-            return _text;
+            settings.context.onquit($this, _args);
         },
         loader: {
             css: function($this) {
@@ -159,15 +140,15 @@
 
                 // Build source code
                 if (settings.ops.length) {
-                    $this.find("#source #ops .a").addClass("d");
-                    for (var i in settings.ops) { $this.find("#source #ops #"+settings.ops[i]).removeClass("d"); }
+                    $this.find("#amsource #amops .a").addClass("d");
+                    for (var i in settings.ops) { $this.find("#amsource #amops #"+settings.ops[i]).removeClass("d"); }
                 }
                 for (var i in settings.args) {
-                    $this.find("#source #args").append("<div class='a arg "+settings.args[i].type+"'>"+settings.args[i].value+"</div>");
+                    $this.find("#amsource #args").append("<div class='a arg "+settings.args[i].type+"'>"+settings.args[i].value+"</div>");
                 }
-                $this.find("#source .a").each( function() {
+                $this.find("#amsource .a").each( function() {
                     if (!$(this).hasClass("d")) {
-                        $(this).draggable({ containment:$this, helper:"clone", appendTo:$this.find("#lines"),
+                        $(this).draggable({ containment:$this, helper:"clone", appendTo:$this.find("#amlines"),
                             start:function() { settings.data.compiled = false;}});
                     }
                 });
@@ -191,18 +172,18 @@
                         else { html+=settings.header[i].value; }
                         html +="</div>";
                         html += "<div class='coderts'>"+(settings.header[i].rts?"rts":"")+"</div></div></div>";
-                        $this.find("#code #lines").append(html);
+                        $this.find("#amcode #amlines").append(html);
                         headlen++;
                     }
                 }
 
                 // Prepare the program
                 for (var i=0; i<settings.nblines; i++) {
-                    $this.find("#code #lines").append("<div class='line x"+((i+headlen)%2?" i":"")+"'></div>");
+                    $this.find("#amcode #amlines").append("<div class='line x"+((i+headlen)%2?" i":"")+"'></div>");
                 }
-                $this.find("#code #lines .line.x").droppable({accept:".a",
+                $this.find("#amcode #amlines .line.x").droppable({accept:".a",
                     drop:function(event, ui) {
-                      if (($(this).offset().top+$(this).height()) < ($this.find("#code").offset().top+$this.find("#code").height()+1))
+                      if (($(this).offset().top+$(this).height()) < ($this.find("#amcode").offset().top+$this.find("#amcode").height()+1))
                       {
                         var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
                                     event.originalEvent.touches[0]:event;
@@ -222,17 +203,14 @@
                         if ($elt.hasClass("op")) { $(this).find(".op").detach(); $(this).find(".label").addClass("arg"); } else
                         if ($elt.hasClass("arg")) { $(this).find(".arg").detach(); $(this).find(".label").detach(); }
 
-                        var x           = vEvent.clientX-$this.offset().left;
-                        var y           = vEvent.clientY-$this.offset().top;
-                        var $old        = $this.find("#touch01>div").detach();
-                        var $new        = $old.clone();
-                        $this.find("#touch01").css("left",Math.floor(x - $this.find("#touch01").width()/2)+"px")
-                                              .css("top",Math.floor(y - $this.find("#touch01").height()/2)+"px")
-                                              .append($new.addClass("running")).show();
-                        setTimeout(function(){$this.find("#touch01>div").removeClass("running").parent().hide(); },800);
+                        $this.find("#amtouch>div").addClass("running").parent()
+							.css("left",vEvent.clientX-$this.offset().left)
+                            .css("top", vEvent.clientY-$this.offset().top).show();
+                                             
+                        setTimeout(function(){$this.find("#amtouch>div").removeClass("running").parent().hide(); },500);
 
                         $(this).append($elt);
-                        $elt.draggable({ containment:$this, helper:"clone", appendTo:$this.find("#lines"),
+                        $elt.draggable({ containment:$this, helper:"clone", appendTo:$this.find("#amlines"),
                             start:function() {
                                 settings.data.compiled = false;
                                 $elt.css("opacity",0.2);},
@@ -252,14 +230,11 @@
                         else { html+=settings.footer[i].value; }
                         html +="</div>";
                         html += "<div class='coderts'>"+(settings.footer[i].rts?"rts":"")+"</div></div></div>";
-                        $this.find("#code #lines").append(html);
+                        $this.find("#amcode #amlines").append(html);
                     }
                 }
 
-                var vRunning = Math.floor($this.find("#running").width()/12)*12;
-                $this.find("#running").css("font-size",vRunning+"px");
-
-                var nblines = $this.find("#code #lines .line").length;
+                var nblines = $this.find("#amcode #amlines .line").length;
                 var total, correc;
                 if ($this.hasClass("large"))        { total = 9;  correct =-0.2; }
                 else if ($this.hasClass("huge"))    { total = 8;  correct = 0; }
@@ -267,7 +242,7 @@
                 
                 if (nblines<total) {
                     var html="<div class='filler' style='height:"+((total-nblines)*1.5+correct)+"em;'></div>";
-                    $this.find("#code #lines").append(html);
+                    $this.find("#amcode #amlines").append(html);
                 }
 
                 settings.data.$this = $this;
@@ -283,12 +258,7 @@
                     helpers.stdout.splash($this);
                 }, 100);
                 
-                
-                if ($.isArray(settings.exercice)) {
-                    $this.find("#exercice").html("");
-                    for (var i in settings.exercice) {
-                        $this.find("#exercice").append("<p>"+(settings.exercice[i].length?helpers.format(settings.exercice[i]):"&#xA0;")+"</p>"); }
-                } else { $this.find("#exercice").html(helpers.format(settings.exercice)); }
+				$this.find("#exercice").html(jtools.instructions(settings.exercice));
 
 				helpers.uphelp($this);
 				
@@ -302,7 +272,7 @@
             speed: function($this) {
                 var settings = helpers.settings($this);
                 var src=["debug","x1","x2","x3"];
-                $this.find("#controls #speed img").attr("src","res/img/control/"+src[settings.data.speed]+".svg");
+                $this.find("#amcontrols #speed img").attr("src","res/img/control/"+src[settings.data.speed]+".svg");
             }
         },
         // ASM CONSTANTS AND UTILS
@@ -369,12 +339,12 @@
 
                 var model = this.models[settings.model];
 
-                $this.find("#screens").addClass("s"+settings.model);
+                $this.find("#amscreens").addClass("s"+settings.model);
 
                 settings.screen.s = 640/model[0];
                 settings.screen.h = model[1]*settings.screen.s;
                 
-                var elt=$this.find("#canvas svg");
+                var elt=$this.find("#amcanvas svg");
                 elt.svg();
                 settings.screen.svg = elt.svg('get');
                 settings.screen.g = settings.screen.svg.group();
@@ -598,7 +568,7 @@
                             if (_data.speed!=3 ) this.display(_data);
 
                             if (inside && ( debug || _data.paused))
-                                    { _data.$this.find("#controls #play img").attr("src","res/img/control/play.svg"); }
+                                    { _data.$this.find("#amcontrols #play img").attr("src","res/img/control/play.svg"); }
                             else    {
                                 if (inside && speed) { _data.timer = setTimeout(function() { helpers.process.run(_data) }, speed); }
                                 else                 {
@@ -909,11 +879,11 @@
                     }
                 }
 
-                $this.find("#effects>div").hide();
+                $this.find("#effects").removeClass();
                 $this.find("#it img").hide();
                 if (success && _finished) {
                     $this.find("#it #itgood").show();
-                    $this.find("#effects #good").show();
+                    $this.find("#effects").addClass("good");
                     $this.find("#it").css("left","110%").show().animate({left:"30%"},500, function() {
                         $this.find("#continue").show();
                     });
@@ -921,16 +891,15 @@
                 else {
                     $this.find("#it #itwrong").show();
                     $this.find("#it").css("left","110%").show().animate({left:"30%"},500);
-                    $this.find("#effects #wrong").show();
+                    $this.find("#effects").addClass("wrong");
                     setTimeout(function(){
                         $this.find("#it").animate({left:"110%"},500,function() { $(this).hide(); });
                         helpers.next($this);
                     },2000);
                 }
-                $this.find("#effects").show();
-                $this.find("#controls #play img").attr("src","res/img/control/play.svg");
-                $this.find("#controls").removeClass("running");
-                $this.find("#controls #running div").removeClass("running").parent().hide();
+                $this.find("#amcontrols #play img").attr("src","res/img/control/play.svg");
+                $this.find("#amcontrols").removeClass("running");
+                $this.find("#amcontrols .anim12>div").removeClass("running").parent().hide();
                 settings.data.running = false;
             },
             ca  : function(_data, _value) { return (_data.reg.A==parseInt(_value,16)); },
@@ -955,8 +924,7 @@
             $this.find(".mask").hide();
             $this.find("#check>div").hide();
             $this.find("#check").hide();
-            $this.find("#effects").hide();
-            $this.find("#effects #wrong").hide();
+            $this.find("#effects").removeClass();
             $this.find(".line.x").removeClass("c");
         },
         key:function($this, _value) {
@@ -966,10 +934,10 @@
             if (b) {
                 helpers.memory.set(helpers.settings($this).data, helpers.c.offset.key, _value & 0xff);
                 
-                $this.find("#keypad .s").removeClass("s"); 
-                $this.find("#keypad #"+b).addClass("s");
+                $this.find("#amkeypad .s").removeClass("s"); 
+                $this.find("#amkeypad #"+b).addClass("s");
                 if (settings.keytimerid) { clearTimeout(settings.keytimerid); }
-                settings.keytimerid = setTimeout(function() { $this.find("#keypad .s").removeClass("s"); }, 300 );
+                settings.keytimerid = setTimeout(function() { $this.find("#amkeypad .s").removeClass("s"); }, 300 );
             }
         },
 		uphelp:function($this) {
@@ -1037,7 +1005,7 @@
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 $this.find(".mask").show();
-                settings.context.onquit($this,{'status':'abort'});
+                helpers.end($this,{'status':'abort'});
             },
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
@@ -1077,7 +1045,7 @@
                 if (settings.data.running) {
                     if (settings.data.speed==0 || settings.data.paused ) {
                         settings.data.paused = false;
-                        $this.find("#controls #play img").attr("src","res/img/control/pause.svg");
+                        $this.find("#amcontrols #play img").attr("src","res/img/control/pause.svg");
                         helpers.process.run(settings.data);
                     }
                     else {
@@ -1089,9 +1057,9 @@
                     if (settings.data.compiled) {
                         helpers.stdout.clear($this);
                         $this.find(".mask").show();
-                        $this.find("#controls").addClass("running");
-                        $this.find("#controls #running div").addClass("running").parent().show();
-                        $this.find("#controls #play img").attr("src","res/img/control/pause.svg");
+                        $this.find("#amcontrols").addClass("running");
+                        $this.find("#amcontrols .anim12>div").addClass("running").parent().show();
+                        $this.find("#amcontrols #play img").attr("src","res/img/control/pause.svg");
                         settings.data.running = true;
                         settings.data.paused = false;
                         helpers.screen.clear($this);
@@ -1122,14 +1090,14 @@
                 $this.find("#it").animate({left:"110%"},1000,function() { $(this).hide(); });
                 $this.find("#continue").hide();
                 $this.find("#effects").hide();
-                helpers.end($this);
+                helpers.end($this, {'status':'success','score':settings.score});
             },
             stdout: function() { helpers.stdout.splash($(this)); },
             tip: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 if (settings.tipid<settings.tips.length) {
                     $this.find("#ptip .tip"+(settings.tipid+1)).removeClass("s").addClass("f")
-                         .find(".content").html(helpers.format(settings.tips[settings.tipid]));
+                         .find(".content").html(jtools.format(settings.tips[settings.tipid]));
                          
                     settings.tipid++;
                     $this.find("#tip>div").html(settings.tips.length-settings.tipid);

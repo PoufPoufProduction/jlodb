@@ -10,15 +10,6 @@
         font        : 1, 
         debug       : true                                     // Debug mode
     };
-
-    var regExp = [
-        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
-        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
-        "\\\[br\\\]",                               "<br/>",
-        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
-        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
-        "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>"
-    ];
     
     var topx=function(_x) { return 0.3+_x*2.6; }
     var lefty=function(_y) { return 0.5+_y*1.8; }
@@ -46,24 +37,10 @@
             $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
-        end: function($this) {
+        end: function($this, _args) {
             var settings = helpers.settings($this);
             helpers.unbind($this);
-            settings.context.onquit($this,{'status':'success','score':settings.score});
-        },
-        // End all timers
-        quit: function($this) {
-            var settings = helpers.settings($this);
-            // if (settings.timerid) { clearTimeout(settings.timerid); }
-        },
-        format: function(_text) {
-            if (_text && _text.length) {
-                for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
-                    var vReg = new RegExp(regExp[i*2],"g");
-                    _text = _text.replace(vReg,regExp[i*2+1]);
-                }
-            }
-            return _text;
+            settings.context.onquit($this,_args);
         },
         loader: {
             css: function($this) {
@@ -97,7 +74,7 @@
 
                 // Send the onLoad callback
                 if (settings.context.onload) { settings.context.onload($this); } 
-                $this.find("#board").css("font-size", settings.font+"em");
+                $this.find("#csboard").css("font-size", settings.font+"em");
 
                 // Locale handling
                 if (settings.locale) { $.each(settings.locale, function(id,value) {
@@ -129,7 +106,7 @@
                 for (var i in settings.data) { shuffle(settings.data[i]); }
                 
                 // Prepare gaming elements
-                $this.find("#board").html("");
+                $this.find("#csboard").html("");
                 var elts=["stock","rowstack"];
                 for (var i in elts) {
                     var e = elts[i];
@@ -144,23 +121,20 @@
                 }
                 
                 for (var i in settings.elts) {
-                    if (settings.elts[i].$html) { $this.find("#board").append(settings.elts[i].$html); }
+                    if (settings.elts[i].$html) { $this.find("#csboard").append(settings.elts[i].$html); }
                     settings.elts[i].update();
                 }
                 
                 if (settings.game) {
                     for (var g in settings.game) {
-                        $this.find("#userguide ul").append("<li>"+helpers.format(settings.game[g])+"</li>");
+                        $this.find("#csuserguide ul").append("<li>"+jtools.format(settings.game[g])+"</li>");
                     }
                 }
                 
-                // Optional devmode
-                if (settings.dev) { $this.find("#devmode").show(); }
-
                 // Exercice
-                if (settings.exercice) { $this.find("#exercice").html(helpers.format(settings.exercice)); }
+                if (settings.exercice) { $this.find("#exercice").html(jtools.format(settings.exercice)); }
                 
-                if (settings.showgame) { $this.find("#userguide").show(); }
+                if (settings.showgame) { $this.find("#csuserguide").show(); }
 
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             }
@@ -192,8 +166,8 @@
                         }
                         if (good) {
                             $this.find("#fx>div").addClass("running").parent()
-                                .css("left",($(this).offset().left-$this.find("#board").offset().left)+"px")
-                                .css("top",($(this).offset().top-$this.find("#board").offset().top)+"px")
+                                .css("left",($(this).offset().left-$this.find("#csboard").offset().left)+"px")
+                                .css("top",($(this).offset().top-$this.find("#csboard").offset().top)+"px")
                                 .show();
                             setTimeout(function(){ $this.find("#fx>div").removeClass("running").parent().hide(); },500);
                                 
@@ -271,7 +245,7 @@
                         settings.tomove = [];
                         settings.timerid=0;
                         for (var i=stock.cards.length-1; i>=0; i--) {
-                            var $html=stock.cards[i].$html, $board=$html.closest("#board");
+                            var $html=stock.cards[i].$html, $board=$html.closest("#csboard");
                             var c = stock.cards[i];
                             c.origin = [$html.offset().left - $board.offset().left, $html.offset().top - $board.offset().top];
                             c.$html.css("z-index",100+i);
@@ -368,8 +342,8 @@
                             from.update();
                             
                             $this.find("#fx>div").addClass("running").parent()
-                                .css("left",($(this).offset().left-$this.find("#board").offset().left)+"px")
-                                .css("top",($(this).offset().top-$this.find("#board").offset().top)+"px")
+                                .css("left",($(this).offset().left-$this.find("#csboard").offset().left)+"px")
+                                .css("top",($(this).offset().top-$this.find("#csboard").offset().top)+"px")
                                 .show();
                             setTimeout(function(){ $this.find("#fx>div").removeClass("running").parent().hide(); },500);
                             
@@ -438,7 +412,7 @@
                             card.$html.addClass("blank withimg")
                                       .find(".front").append("<div class='img'><img src='"+card.img+"' alt=''/></div>");
                         }
-                        $this.find("#board").append(card.$html.hide());
+                        $this.find("#csboard").append(card.$html.hide());
                         ret.cards.push(card);
                     }
                 }
@@ -575,11 +549,8 @@
             }
             
             if (success) {
-                settings.score = 5;
-                $this.find("#good").toggle(success);
-                $this.find("#wrong").toggle(!success);
-                $this.find("#effects").show();
-                setTimeout(function() { helpers.end($this); }, 2000);
+				$this.find("#effects").addClass(success?"good":"wrong");
+                setTimeout(function() { helpers.end($this,{'status':'success','score':5}); }, 2000);
             }
         }
     };
@@ -618,19 +589,11 @@
                     }
                 });
             },
-            devmode: function() {
-                var $this = $(this) , settings = helpers.settings($this);
-                $this.find("#devoutput textarea").val("Debug output").parent().show();
-            },
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 settings.interactive = true;
             },
-            quit: function() {
-                var $this = $(this) , settings = helpers.settings($this);
-                helpers.quit($this);
-                settings.context.onquit($this,{'status':'abort'});
-            }
+            quit: function() { helpers.end($(this),{'status':'abort'}); }
         };
 
         if (methods[method])    { return methods[method].apply(this, Array.prototype.slice.call(arguments, 1)); } 

@@ -1,104 +1,70 @@
 .asm .both *                        { overflow:visible; }
 .asm                                { background-color:#CEF;}
-.asm div#splashex                  { background-image:url("../../res/img/banners/asm.svg"); color:lime; }
-.asm div#splashex  h1                 { position:absolute; top:15%; left:57%; font-size:1.2em; background-color:red;
-                                          width:55%; color:white; text-align:center; border-radius:0 .5em .5em 0;
-                                          border:.3em solid white;
-                                          -ms-transform: rotate(45deg); -webkit-transform: rotate(45deg); transform: rotate(45deg); }
-.asm div#board                      { font-size:.5em; width:105%; }
-.asm div#board>div                  { float:left; }
-/*---------------------------------------------------------------------------------------------------------------------------*/
-.asm div#board #screens>*           { font-size:.75em; margin-left:.2em; }
-.asm #screens #output               { width:11.6em; height:5.6em; background-color:#030; color:#0F0; font-weight:bold;
-                                      padding:.2em; line-height:.8em; margin-top:.1em;
-                                      background-image:url("../../res/img/default/pattern/line03.svg"); background-repeat:repeat;}
-.asm #screens #output pre           { overflow:visible; font-family: "Courier New",Courier,monospace; }
-.asm #screens #canvas               { width:12em; height:12em; background-color:black; }
-.asm #screens #canvas>div           { width:12em; height:12em; }
-.asm #screens.s2 #canvas            { height:8em; }
-.asm #screens.s3 #canvas            { height:10.8em; }
-.asm #screens #keypad               { width:12em; height:8em; background-color:white; position:relative; background-image:url("../../res/img/default/control/bg02.svg");  }
-.asm #screens #keypad>div           { position:absolute; z-index:1; width:1em; height:1em; cursor:pointer; font-size:2em; }
-.asm #screens #keypad #left         { top:1.5em; left:0.5em; }
-.asm #screens #keypad #down         { top:2.5em; left:1.5em; }
-.asm #screens #keypad #right        { top:1.5em; left:2.5em; }
-.asm #screens #keypad #up           { top:0.5em; left:1.5em; }
-.asm #screens #keypad #a            { top:1em; left:4.5em; }
-.asm #screens #keypad #b            { top:2.5em; left:4.5em; }
-.asm #screens #keypad .down         { display:none; }
-.asm #screens #keypad .s .up        { display:none; }
-.asm #screens #keypad .s .down      { display:inherit; }
-
-.asm #screens #controls             { width:12em; height:5.5em; background-color:#AAA;
-                                      background-image:url("../../res/img/default/pattern/steel01.svg"); background-repeat:repeat; }
-.asm #screens #controls.running     { background-color:#5BB; }
-.asm #screens.s2 #controls          { height:9.5em; }
-.asm #screens.s3 #controls          { height:6.7em; }
-.asm #screens #buttons              { margin-left:1.2em; margin-top:.3em; }
-.asm #screens #buttons .icon        { font-size:2em; width:1em; height:1em; margin:.1em; float:left; cursor:pointer;}
-.asm #screens #buttons #lbut        { width:4.9em; float:left; }
-.asm #screens #buttons #play        { font-size:4.4em; margin:.05em; }
-/*---------------------------------------------------------------------------------------------------------------------------*/
-.asm div#board #central             { margin-left:.2em; width:45%; }
-.asm div#board #central>*           { font-size:.75em; width:100%;  }
-.asm #central #code                 { height:25em; background-color:black; overflow:auto; margin-top:.1em;
-                                      background-image:url("../../res/img/background/asset/it01.svg"); background-repeat:no-repeat; background-size:100%;}
-.asm #central #code #lines          { font-size:1.5em; }
-.asm #central #code #lines .line.i  { background-color:rgba(100,200,100,0.1); }
-.asm #central #code #lines .line    { position:relative; height:1.5em; background-color:rgba(180,255,180,0.12); }
-.asm #central #code #lines .line.c  { background-color:yellow !important; }
-.asm #central #code #lines .filler  { background-image:url("../../res/img/background/border01.svg"); background-repeat:repeat-x; }
-.asm #central #lines .code          { margin:.1em; background-color:#da5; border-radius:.25em; width:12.25em;
-                                      color:#fea; font-weight:bold; position:absolute; top:0; left:0; background-image:none; }
-.asm #central #lines .code>div      { float:left; }
-.asm #central #lines .codelabel     { width:3.7em; text-align:center; }
-.asm #central #lines .codevalue     { margin-left:1em; font-size:.3em; width:22em; font-family: "Courier New",Courier,monospace;}
-.asm #central #exercice             { width:98% !important; height:9.4em; background-repeat:repeat; padding:1%;
-                                      background-image:url("../../res/img/default/pattern/line01.svg"); text-align:justify;
-                                      font-size:.5em !important;}
-.asm.large #central #exercice       { height:16.8em; }
-.asm.large #central #code           { height:20em; }
-.asm.huge #central #exercice        { height:21.4em; }
-.asm.huge #central #code            { height:17em; }
-
-.asm #central #exercice .svg         { background-color:rgba(0,0,0,0.2); font-size:6em; }
-.asm #central #exercice .svg>div     { width:1em; height:1em; margin:.1em auto; }
-.asm #central #exercice .strong      { color:red; font-weight:bold; border: 1px solid red; border-width:1px 0; }
-
-.asm .cc  							 { background-color:rgba(0,40,0,0.9); color:lime; padding:.5em; margin:.4em 0;font-family: "Courier New",Courier,monospace; }
-.asm .tip .cc						 { padding:.1em .5em; font-size:.6em; }
-
-
-/*---------------------------------------------------------------------------------------------------------------------------*/
-.asm div#board #detail				{ width:22%; }
-.asm div#board #detail>*            { font-size:.75em; margin-left:.1em; width:100%; }
-.asm #detail #source                { height:25em; background-color:#112211; margin-top:.1em; 
-                                      background-image:url("../../res/img/default/pattern/line03.svg"); background-repeat:repeat;}
-.asm #detail #source>div            { clear:both; }
-.asm #detail #source .a             { float:left; }
-.asm #detail #source #header        { font-size:2em; height:1em;}
-.asm #detail #source #header .icon  { float:right; cursor:pointer; margin:.1em; font-size:.8em; }
-.asm #detail #source #ops           { background-color:gray; padding-left:1%; width:110%; }
-.asm.smallsource #detail #source #args	{ font-size:.65em; }
-.asm #detail #source #args          { background-color:#666; height:40%; width:110%; }
-.asm #detail #source .a             { padding:0;  }
-.asm #detail #source #ops  .a       { font-size:.72em; width:2.4em; margin:.05em; color:white; font-weight:bold;border:.1em solid white; border-radius:.2em; background-color:#90cce0; }
-.asm.hide #detail #source #ops .a.d { display:none; }
-.asm #detail #source #ops  .a.d     { cursor:default; opacity:0.3; }
-
-.asm #detail #source #args .a       { margin:.1em; width:4.5em; border:.1em solid white; border-radius:.2em; }
-
-
-.asm #central #code #lines .label       { margin:.1em; background-color:#f88; border-radius:.25em; width:3.8em;
-                                          color:#fee; font-weight:bold; position:absolute; top:0; left:0;}
-.asm #central #code #lines .label.arg   { background-color:#f88; width:5em; color:#fee; left:7.3em;}
-.asm #central #code #lines .op          { margin:.1em; background-color:#90cce0; border-radius:.25em; width:3em;
-                                          color:#eff; font-weight:bold; position:absolute; top:0; left:4em;
-                                          /* text-transform:lowercase; */}
-.asm #central #code #lines .arg         { margin:.1em; background-color:#82ca82; border-radius:.25em; width:5em;
-                                          color:#efe; font-weight:bold; position:absolute; top:0; left:7.3em; }
-.asm .a                                 { text-align:center; font-size:1em; cursor:move; }
-
+.asm #splashex                      { background-image:url("../../res/img/banners/asm.svg"); }
+.asm #amboard                       { font-size:.5em; width:105%; }
+.asm #amboard>div                   { float:left; }
+.asm #amscreens>*                   { font-size:.75em; margin-left:.2em; }
+.asm #amoutput                      { width:11.6em; height:5.6em; background-color:#030; color:#0F0; font-weight:bold; padding:.2em; line-height:.8em; margin-top:.1em; background-image:url("../../res/img/default/pattern/line03.svg"); background-repeat:repeat;}
+.asm #amoutput pre                  { overflow:visible; font-family: "Courier New",Courier,monospace; }
+.asm #amcanvas                      { width:12em; height:12em; background-color:black; }
+.asm #amcanvas>div                  { width:12em; height:12em; }
+.asm #amscreens.s2 #amcanvas        { height:8em; }
+.asm #amscreens.s3 #amcanvas        { height:10.8em; }
+.asm #amkeypad                      { width:12em; height:8em; background-color:white; position:relative; background-image:url("../../res/img/default/control/bg02.svg");  }
+.asm #amkeypad>div                  { position:absolute; font-size:2em; }
+.asm #amkeypad #left                { top:1.5em; left:0.5em; }
+.asm #amkeypad #down                { top:2.5em; left:1.5em; }
+.asm #amkeypad #right               { top:1.5em; left:2.5em; }
+.asm #amkeypad #up                  { top:0.5em; left:1.5em; }
+.asm #amkeypad #a                   { top:1em; left:4.5em; }
+.asm #amkeypad #b                   { top:2.5em; left:4.5em; }
+.asm #amcontrols                    { position:relative; width:12em; height:5.5em; background-color:#AAA; background-image:url("../../res/img/default/pattern/steel01.svg"); background-repeat:repeat; }
+.asm #amcontrols.running            { background-color:#5BB; }
+.asm #amcontrols .anim12			{ font-size:12em; margin-top:-.1em; opacity:0.2; }
+.asm #amscreens.s2 #amcontrols      { height:9.5em; }
+.asm #amscreens.s3 #amcontrols      { height:6.7em; }
+.asm #ambuttons                     { margin-left:1.2em; margin-top:.3em; position:absolute; top:0; }
+.asm #ambuttons .icon               { font-size:2em; width:1em; height:1em; margin:.1em; float:left; cursor:pointer;}
+.asm #ambuttons #lbut               { width:4.9em; float:left; }
+.asm #ambuttons #play               { font-size:4.4em; margin:.05em; }
+.asm #amcentral                     { margin-left:.2em; width:45%; }
+.asm #amcentral>*                   { font-size:.75em; width:100%;  }
+.asm #amcode                        { height:25em; background-color:black; overflow:auto; margin-top:.1em; background-image:url("../../res/img/background/asset/it01.svg"); background-repeat:no-repeat; background-size:100%;}
+.asm #amlines                       { font-size:1.5em; }
+.asm #amlines .line.i               { background-color:rgba(100,200,100,0.1); }
+.asm #amlines .line                 { position:relative; height:1.5em; background-color:rgba(180,255,180,0.12); }
+.asm #amlines .line.c               { background-color:yellow !important; }
+.asm #amlines .filler               { background-image:url("../../res/img/background/border01.svg"); background-repeat:repeat-x; }
+.asm #amlines .code                 { margin:.1em; background-color:#da5; border-radius:.25em; width:12.25em; color:#fea; font-weight:bold; position:absolute; top:0; left:0; background-image:none; }
+.asm #amlines .code>div             { float:left; }
+.asm #amlines .codelabel            { width:3.7em; text-align:center; }
+.asm #amlines .codevalue            { margin-left:1em; font-size:.3em; width:22em; font-family: "Courier New",Courier,monospace;}
+.asm #amcentral #exercice           { width:98% !important; height:9.4em; background-repeat:repeat; padding:1%; background-image:url("../../res/img/default/pattern/line01.svg"); text-align:justify; font-size:.5em !important;}
+.asm.large #amcentral #exercice     { height:16.8em; }
+.asm.large #amcentral #amcode       { height:20em; }
+.asm.huge #amcentral #exercice      { height:21.4em; }
+.asm.huge #amcentral #amcode        { height:17em; }
+.asm .tip .t_code					{ padding:.1em .5em; font-size:.6em; }
+.asm #amdetail				        { width:22%; }
+.asm #amdetail>*                    { font-size:.75em; margin-left:.1em; width:100%; }
+.asm #amsource                      { height:25em; background-color:#112211; margin-top:.1em;  background-image:url("../../res/img/default/pattern/line03.svg"); background-repeat:repeat;}
+.asm #amsource>div                  { clear:both; }
+.asm #amsource .a                   { float:left; }
+.asm #amheader                      { font-size:2em; height:1em;}
+.asm #amheader .icon                { float:right; cursor:pointer; margin:.1em; font-size:.8em; }
+.asm  #amops                        { background-color:gray; padding-left:1%; width:110%; }
+.asm.smallsource #amsource #args	{ font-size:.65em; }
+.asm #amsource #args                { background-color:#666; height:40%; width:110%; }
+.asm #amsource .a                   { padding:0;  }
+.asm #amops .a                      { font-size:.72em; width:2.4em; margin:.05em; color:white; font-weight:bold;border:.1em solid white; border-radius:.2em; background-color:#90cce0; }
+.asm.hide #amops .a.d               { display:none; }
+.asm #amops .a.d                    { cursor:default; opacity:0.3; }
+.asm #amsource #args .a             { margin:.1em; width:4.5em; border:.1em solid white; border-radius:.2em; }
+.asm #amlines .label                { margin:.1em; background-color:#f88; border-radius:.25em; width:3.8em; color:#fee; font-weight:bold; position:absolute; top:0; left:0;}
+.asm #amlines .label.arg            { background-color:#f88; width:5em; color:#fee; left:7.3em;}
+.asm #amlines .op                   { margin:.1em; background-color:#90cce0; border-radius:.25em; width:3em; color:#eff; font-weight:bold; position:absolute; top:0; left:4em; }
+.asm #amlines .arg                  { margin:.1em; background-color:#82ca82; border-radius:.25em; width:5em; color:#efe; font-weight:bold; position:absolute; top:0; left:7.3em; }
+.asm .a                             { text-align:center; font-size:1em; cursor:move; }
 .asm .a.arg                         { background-color:#82ca82; color:#efe; font-weight:bold; }
 .asm .a.arg:before                  { content:'0x'; }
 .asm .a.arg.v:before                { content:'#0x'; }
@@ -115,89 +81,60 @@
 .asm .a.arg.label.i:before          { content:'('; }
 .asm .a.arg.label.ix:before         { content:'('; }
 .asm .a.arg.label.iy:before         { content:'('; }
-
-
 .asm .ui-draggable-dragging         { cursor:none !important; z-index:2; }
-
-
-.asm #detail #register              { height:6.5em; background-color:gray; font-weight:bold; cursor:pointer; position:relative;}
-.asm #detail #register .label       { font-size:.6em; text-align:center; width:100%; }
-.asm #detail #register .value       { background-color:#030; color:#0f0; text-align:center; height:1.4em;}
-.asm #detail #abcs                  { margin:.2em .5em; }
-.asm #detail #abcs>div              { width:2.1em; height:2em; background-color:yellow; border-radius:.5em;
-                                      float:left; margin-right:.1em; }
-.asm #detail #regpc                 { margin-left:.5em; width:8.7em; height:1.2em; background-color:yellow; border-radius:.25em;}
-.asm #detail #regpc .label          { width:2em; margin-top:.5em; float:left; }
-.asm #detail #flags                 { margin:.2em .5em;}
-.asm #detail #flags>div             { width:1em; height:2em; background-color:yellow; border-radius:.25em; float:left;
-                                      margin-right:.1em; }
-.asm #detail #check                 { position:absolute; top:0; height:6.5em; width:10em; display:none; }
-.asm #detail #check>div             { position:absolute; width:1em; height:1em; font-size:2.2em; margin:-.5em; display:none;}
-.asm #detail #check .a              { left:16%; top:25%; }
-.asm #detail #check .x              { left:38%; top:25%;  }
-.asm #detail #check .y              { left:60%; top:25%;  }
-.asm #detail #check .n              { left:10%; top:80%; }
-.asm #detail #check .v              { left:22%; top:80%; }
-.asm #detail #check .d              { left:54%; top:80%; }
-.asm #detail #check .z              { left:76%; top:80%; }
-.asm #detail #check .c              { left:88%; top:80%; }
-
-/*---------------------------------------------------------------------------------------------------------------------------*/
-.asm #effects                       { position:absolute; top:45%; left:10%; display:none; z-index:2;  }
-.asm #effects>div                   { font-size:5em; width:1em; height:1em; display:none; }
-
-
+.asm #amdetail #register            { height:6.5em; background-color:gray; font-weight:bold; cursor:pointer; position:relative;}
+.asm #amdetail #register .label     { font-size:.6em; text-align:center; width:100%; }
+.asm #amdetail #register .value     { background-color:#030; color:#0f0; text-align:center; height:1.4em;}
+.asm #amdetail #abcs                { margin:.2em .5em; }
+.asm #amdetail #abcs>div            { width:2.1em; height:2em; background-color:yellow; border-radius:.5em; float:left; margin-right:.1em; }
+.asm #amdetail #regpc               { margin-left:.5em; width:8.7em; height:1.2em; background-color:yellow; border-radius:.25em;}
+.asm #amdetail #regpc .label        { width:2em; margin-top:.5em; float:left; }
+.asm #amdetail #flags               { margin:.2em .5em;}
+.asm #amdetail #flags>div           { width:1em; height:2em; background-color:yellow; border-radius:.25em; float:left; margin-right:.1em; }
+.asm #amdetail #check               { position:absolute; top:0; height:6.5em; width:10em; display:none; }
+.asm #amdetail #check>div           { position:absolute; width:1em; height:1em; font-size:2.2em; margin:-.5em; display:none;}
+.asm #amdetail #check .a            { left:16%; top:25%; }
+.asm #amdetail #check .x            { left:38%; top:25%;  }
+.asm #amdetail #check .y            { left:60%; top:25%;  }
+.asm #amdetail #check .n            { left:10%; top:80%; }
+.asm #amdetail #check .v            { left:22%; top:80%; }
+.asm #amdetail #check .d            { left:54%; top:80%; }
+.asm #amdetail #check .z            { left:76%; top:80%; }
+.asm #amdetail #check .c            { left:88%; top:80%; }
 .asm .mask                          { position:absolute; top:0; background-color:rgba(0,0,0,0); }
 .asm #m1.mask                       { width:24%; height:78%; position:absolute; left:0;  }
 .asm #m2.mask                       { width:47%; height:100%; position:absolute; left:24%;  }
-
-.asm #binary                        { width:100%; height:100%; position:absolute; top:0; left:0; background-color:rgba(0,0,0,0.8);
-                                      display:none; z-index:2002;}
-.asm #binary>div                    { width:82%; height:80%; margin:5% 10%; background-color:rgba(0,50,10,0.8); color:#0F0;
-                                      font-weight:bold; font-size:.35em;
-                          font-family: "Courier New",Courier,monospace; border-radius:.5em;
-                                      overflow:auto; cursor:pointer;  }
+.asm #binary                        { width:100%; height:100%; position:absolute; top:0; left:0; background-color:rgba(0,0,0,0.8); display:none; z-index:2002;}
+.asm #binary>div                    { width:82%; height:80%; margin:5% 10%; background-color:rgba(0,50,10,0.8); color:#0F0; font-weight:bold; font-size:.35em; font-family: "Courier New",Courier,monospace; border-radius:.5em; overflow:auto; cursor:pointer;  }
 .asm #binary p                      { white-space:nowrap; margin:0 .5em;}
-
-.asm #touch01                          { top:0; left:0; font-size:2em; }
-
+.asm #amtouch                       { font-size:2em; }
 .asm #it                            { position:absolute; width:12em; height:4em; top:60%; left:30%; display:none; z-index:2;  }
 .asm #continue                      { position:absolute; width:16em; height:16em; top:0; left:0; display:none; z-index:2;  }
 .asm #continue>div                  { font-size:3em; position:absolute; top:55%; left:70%; cursor:pointer; border-radius:.5em;}
-
-
-.asm #phelp                            { width:16em; height:12em; position:absolute;top:0;left:0; background-color:rgba(0,0,0,0.5);
-                                      z-index:2002; display:none; }
-.asm #phelp>div                   { width:98%; height:98%; margin:.5em auto; font-size:.3em;  
-                                      background-color:rgba(255,255,255,0.8); position:relative; }
-.asm #phelp .inst              { margin:.1em .2em; }
-.asm #phelp .linst             { background-color:#468; color:white; width:14em; padding:.1em; float:left; margin-right:.2em; }
-.asm #phelp .linst.ex          { background-color:#555; color:#EEE; }
-.asm #phelp .arg                   { float:right; width:2em; background-color:gray; text-align:center; margin-left:.1em; }
-
-
-.asm #phelp table { font-size:.9em; text-align:center; background-color:white; border:.1em solid black; margin:.1em; }
-.asm #phelp table .name			{ background-color:#90cce0; color:white; width:3em; text-align:center; font-weight:bold; }
+.asm #phelp                         { width:16em; height:12em; position:absolute;top:0;left:0; background-color:rgba(0,0,0,0.5); z-index:2002; display:none; }
+.asm #phelp>div                     { width:98%; height:98%; margin:.5em auto; font-size:.3em;   background-color:rgba(255,255,255,0.8); position:relative; }
+.asm #phelp .inst                   { margin:.1em .2em; }
+.asm #phelp .linst                  { background-color:#468; color:white; width:14em; padding:.1em; float:left; margin-right:.2em; }
+.asm #phelp .linst.ex               { background-color:#555; color:#EEE; }
+.asm #phelp .arg                    { float:right; width:2em; background-color:gray; text-align:center; margin-left:.1em; }
+.asm #phelp table                   { font-size:.9em; text-align:center; background-color:white; border:.1em solid black; margin:.1em; }
+.asm #phelp table .name			    { background-color:#90cce0; color:white; width:3em; text-align:center; font-weight:bold; }
 .asm #phelp table .label			{ background-color:gray; color:white; padding-left:.2em; width:16em; font-style:italic; }
-
-.asm #phelp table .c			{ width:3em; font-size:.7em; font-weight:bold; }
-.asm #phelp table .cf			{ width:5em; font-size:.7em; font-weight:bold; }
-.asm #phelp table .f			{ font-size:.7em; }
-.asm #phelp table .h			{ background-color:#82ca82; color:white; }
-
-.asm #phelp #phelpnav	{ position:absolute; top:0; left:0; }
-.asm #phelp #phelpnav .icon { font-size:4em; cursor:pointer; }
-
-.asm #phelp .phpage { position:absolute; top:0; left: 10%; display:none; width:88%; z-index:1; }
-.asm #phelp #ph0 { width:95%; }
-.asm #phelp .phpage .h1 { background-color:gray; color:white; padding-left:1em; width:100%; margin:.5em 0; font-size:1.2em;}
-.asm #phelp #ph0 .h1 { width:90%; }
-.asm #phelp .phpage .clear { clear:both; }
-.asm #phelp .phpage .phbut { width:15em; height:2.9em; border:.1em solid black; padding:.1em; background-color:#afa; float:left; margin:.1em; }
-.asm #phelp .phpage .phbut.b { background-color:#aaf; }
-.asm #phelp .phpage .phbut .icon { float:left; width:1.2em; height:1.2em; font-size:2.4em; padding-right:.2em; text-align:center;  }
-
-.asm #phelp h1		{ font-size:1.1em; }
-.asm #phelp #phelpbut { position:absolute; top:82%; width:100%; font-size:6em;  z-index:2;}
-.asm #phelp #phelpbut .icon { cursor:pointer; margin:.1em; }
-.asm #phelp #phelpbut .icon.d { opacity:0.2; cursor:inherit; }
+.asm #phelp table .c			    { width:3em; font-size:.7em; font-weight:bold; }
+.asm #phelp table .cf			    { width:5em; font-size:.7em; font-weight:bold; }
+.asm #phelp table .f			    { font-size:.7em; }
+.asm #phelp table .h			    { background-color:#82ca82; color:white; }
+.asm #phelp #phelpnav	            { position:absolute; top:0; left:0; }
+.asm #phelp #phelpnav .icon         { font-size:4em; cursor:pointer; }
+.asm #phelp .phpage                 { position:absolute; top:0; left: 10%; display:none; width:88%; z-index:1; }
+.asm #phelp #ph0                    { width:95%; }
+.asm #phelp .phpage .h1             { background-color:gray; color:white; padding-left:1em; width:100%; margin:.5em 0; font-size:1.2em;}
+.asm #phelp #ph0 .h1                { width:90%; }
+.asm #phelp .phpage .clear          { clear:both; }
+.asm #phelp .phpage .phbut          { width:15em; height:2.9em; border:.1em solid black; padding:.1em; background-color:#afa; float:left; margin:.1em; }
+.asm #phelp .phpage .phbut.b        { background-color:#aaf; }
+.asm #phelp .phpage .phbut .icon    { float:left; width:1.2em; height:1.2em; font-size:2.4em; padding-right:.2em; text-align:center;  }
+.asm #phelp h1		                { font-size:1.1em; }
+.asm #phelp #phelpbut               { position:absolute; top:82%; width:100%; font-size:6em;  z-index:2;}
+.asm #phelp #phelpbut .icon         { cursor:pointer; margin:.1em; }
+.asm #phelp #phelpbut .icon.d       { opacity:0.2; cursor:inherit; }

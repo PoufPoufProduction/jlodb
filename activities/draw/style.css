@@ -1,19 +1,13 @@
 .draw                           { }
-.draw div#splashex              { background-image:url("../../res/img/banners/geometry.svg"); }
-.draw div#splashex  h1                 { position:absolute; top:15%; left:55%; font-size:1.4em; background-color:red;
-                                          width:55%; color:white; text-align:center; border-radius:0 .5em .5em 0;
-                                          border:.3em solid white;
-                                          -ms-transform: rotate(45deg); -webkit-transform: rotate(45deg); transform: rotate(45deg); }
-
-.draw div#board                 { width:100%; height:100%; }
-.draw div#menu                  { position:absolute; top:90%; width:100%; height:10%; font-size:0.4em; }
-.draw div#menu .icon            { border-radius:.2em; cursor:pointer; background-color:rgba(200,150,0,0.5); float:left; margin:.1em .1em 0 0; border:.1em solid rgba(255,255,255,0.5);}
-.draw div#menu .icon.s          { border-color:red; }
-.draw div#menu .panel           { margin-left:.2em; }
-.draw div#menu .column          { float:left; }
-.draw div#menu .column.right	{ float:right; }
-
-.draw div#menu .icon.a          { width:1.2em; height:1.2em; font-size:1.95em; border-width:.05em; margin:.05em .05em 0 0; font-weight:bold; text-align:center; }
-.draw div#menu .icon.a.s        { border:.05em solid rgba(255,255,255,0.5); }
-.draw div#menu .icon.d          { opacity:0.5; }
-.draw div#menu .icon.r          { float:right; }
+.draw #splashex                 { background-image:url("../../res/img/banners/geometry.svg"); }
+.draw #dwboard                  { width:100%; height:100%; }
+.draw #dwmenu                   { position:absolute; top:90%; width:100%; height:10%; font-size:0.4em; }
+.draw #dwmenu .icon             { border-radius:.2em; cursor:pointer; background-color:rgba(200,150,0,0.5); float:left; margin:.1em .1em 0 0; border:.1em solid rgba(255,255,255,0.5);}
+.draw #dwmenu .icon.s           { border-color:red; }
+.draw #dwmenu .dwpanel          { margin-left:.2em; }
+.draw #dwmenu .dwcolumn         { float:left; }
+.draw #dwmenu .dwcolumn.right	{ float:right; }
+.draw #dwmenu .icon.a           { width:1.2em; height:1.2em; font-size:1.95em; border-width:.05em; margin:.05em .05em 0 0; font-weight:bold; text-align:center; }
+.draw #dwmenu .icon.a.s         { border:.05em solid rgba(255,255,255,0.5); }
+.draw #dwmenu .icon.d           { opacity:0.5; }
+.draw #dwmenu .icon.r           { float:right; }

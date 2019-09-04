@@ -1,50 +1,34 @@
-.hammer                            { cursor:pointer;}
-.hammer>div                         { width:16em; height:12em; }
-.hammer div#splashex               { background-image:url("../../res/img/banners/hammer.svg"); }
-.hammer div#splashex  h1        { position:absolute; top:14%; left:50%; font-size:1.4em; background-color:red;
-                                width:65%; color:white; text-align:center; border-radius:0 .5em .5em 0;
-                                border:.3em solid white;
-                -ms-transform: rotate(45deg); -webkit-transform: rotate(45deg); transform: rotate(45deg); }
-
-.hammer div#exercice               { font-size:.45em; width:100%; height:3.35em; background-repeat:repeat; background-image:url("../../res/img/default/pattern/line01.svg"); text-align:justify; position:absolute; top:0; }
-.hammer div#exercice>div        { margin:0 18% 0 8%;  }
-.hammer div#tag     { position:absolute; top:1%; left:85%; font-size:2em; z-index:4; border:2px solid black; background-color:rgba(255,255,255,0.5); border-radius:.1em; display:none; text-align:center; }
-.hammer div#tag>div { font-size:.7em; margin-top:.07em; }
-
-.hammer div#board                       { font-size:3.5em; position:absolute; top:0; width:100%; height:100%; overflow:visible;}
-.hammer div#board>* { position:absolute; }
-
-.hammer div#board .elts     { width:1em; height:1em; overflow:visible; position:absolute; }
-.hammer div#board .elts>div { position:absolute;top:0;left:0; }
-.hammer div#board .bg       { width:100%;height:100%;}
-.hammer div#board .bg2      { width:100%;height:100%;top:13%; }
-
-.hammer #board .legend              { font-size:.5em;width:2em;height:1.2em;text-align:center;margin-top:.3em; }
-.hammer #board .icon>div            { position:absolute; top:0; left:0;}
-.hammer #board .embed .label        { width:1.15em; height:1.15em; top:0.08em;left:0.42em; font-size:.5em; color:black; text-align:center; }
-.hammer #board .embed .legend       { width:2.4em; margin-top:.4em; } 
-.hammer.smalllegend #board .embed .legend  { font-size:.25em;width:4.5em;margin-top:1.2em; }  
-.hammer #board .embed.good .label   { color:#080; background-color:rgba(0,255,0,0.4); }
-.hammer #board .embed.wrong .label  { color:#800; background-color:rgba(255,0,0,0.4); }
-
-.hammer #board .fx { display:none; }
-
-
-.hammer #fg01>div   { border:1px solid #609b14; border-width:0 0 1px 0; }
-
-.hammer .classic                           { display:none; }
-.hammer.classic .normal   { display:none; }
-.hammer.classic  .classic { display:inline; }
-.hammer.classic #elts>div       { opacity:0; }
-
-.hammer #countdown      { position:absolute;width:1.2em; height:1.2em; background-color:rgba(255,255,255,0.9); border-radius:.1em; border:.02em solid black; color:black; text-align:center; top:60%; left:120%; font-size:3em; z-index:5; font-weight:bold; display:none; }
-
-.hammer div#example		{ position:absolute;width:100%;height:100%; display:none; }
-.hammer div#example>div	{ width:80%;height:60%; margin:11% auto; background-image:url("../../res/img/default/pattern/line03.svg"); background-color:rgba(255,255,255,0.5); border:.1em solid black;position:relative; border-radius:.5em; }
-
-.hammer div#example .ex { width:1em; height:1em; position:absolute;overflow:visible;font-size:4em; border:.02em solid black; top:2%; background-color:rgba(255,255,255,0.9); }
-.hammer div#example #wex { left:10%; }
-.hammer div#example #gex { left:50%; }
-.hammer div#example .ex>div { position:absolute;top:0;left:0; width:1em;height:1em;  }
-.hammer div#example .ex .button { font-size:.6em; top:1.5em; left:1em; }
-.hammer div#example .ex .fx { display:none; }
+.hammer                                     { cursor:pointer;}
+.hammer>div                                 { width:16em; height:12em; }
+.hammer #splashex                           { background-image:url("../../res/img/banners/hammer.svg"); }
+.hammer #exercice                           { font-size:.45em; width:100%; height:3.35em; background-repeat:repeat; background-image:url("../../res/img/default/pattern/line01.svg"); text-align:justify; position:absolute; top:0; }
+.hammer #exercice>div                       { margin:0 18% 0 8%;  }
+.hammer #hrtag                              { position:absolute; top:1%; left:85%; font-size:2em; z-index:4; border:2px solid black; background-color:rgba(255,255,255,0.5); border-radius:.1em; display:none; text-align:center; }
+.hammer #hrtag>div                          { font-size:.7em; margin-top:.07em; }
+.hammer #hrboard                            { font-size:3.5em; position:absolute; top:0; width:100%; height:100%; overflow:visible;}
+.hammer #hrboard>*                          { position:absolute; }
+.hammer #hrboard .elts                      { width:1em; height:1em; overflow:visible; position:absolute; }
+.hammer #hrboard .elts>div                  { position:absolute;top:0;left:0; }
+.hammer #hrboard .bg                        { width:100%;height:100%;}
+.hammer #hrboard .bg2                       { width:100%;height:100%;top:13%; }
+.hammer #hrboard .legend                    { font-size:.5em;width:2em;height:1.2em;text-align:center;margin-top:.3em; }
+.hammer #hrboard .icon>div                  { position:absolute; top:0; left:0;}
+.hammer #hrboard .embed .label              { width:1.15em; height:1.15em; top:0.08em;left:0.42em; font-size:.5em; color:black; text-align:center; }
+.hammer #hrboard .embed .legend             { width:2.4em; margin-top:.4em; } 
+.hammer.smalllegend #hrboard .embed .legend { font-size:.25em;width:4.5em;margin-top:1.2em; }  
+.hammer #hrboard .embed.good .label         { color:#080; background-color:rgba(0,255,0,0.4); }
+.hammer #hrboard .embed.wrong .label        { color:#800; background-color:rgba(255,0,0,0.4); }
+.hammer #hrboard .fx                        { display:none; }
+.hammer .classic                            { display:none; }
+.hammer.classic .normal                     { display:none; }
+.hammer.classic .classic                    { display:inline; }
+.hammer.classic #elts>div                   { opacity:0; }
+.hammer #hrcountdown                        { position:absolute;width:1.2em; height:1.2em; background-color:rgba(255,255,255,0.9); border-radius:.1em; border:.02em solid black; color:black; text-align:center; top:60%; left:120%; font-size:3em; z-index:5; font-weight:bold; display:none; }
+.hammer #hrexample		                    { position:absolute;width:100%;height:100%; display:none; }
+.hammer #hrexample>div	                    { width:80%;height:60%; margin:11% auto; background-image:url("../../res/img/default/pattern/line03.svg"); background-color:rgba(255,255,255,0.5); border:.1em solid black;position:relative; border-radius:.5em; }
+.hammer #hrexample .ex                      { width:1em; height:1em; position:absolute;overflow:visible;font-size:4em; border:.02em solid black; top:2%; background-color:rgba(255,255,255,0.9); }
+.hammer #hrexample #wex                     { left:10%; }
+.hammer #hrexample #gex                     { left:50%; }
+.hammer #hrexample .ex>div                  { position:absolute;top:0;left:0; width:1em;height:1em;  }
+.hammer #hrexample .ex .button              { font-size:.6em; top:1.5em; left:1em; }
+.hammer #hrexample .ex .fx                  { display:none; }

@@ -1,16 +1,16 @@
 <div>
 
-    <div id="svg"></div>
-    <div id="calc" class="button" ontouchstart="$(this).closest('.balance').balance('calc');event.preventDefault();"
+    <div id="besvg"></div>
+    <div id="becalc" class="bebutton" ontouchstart="$(this).closest('.balance').balance('calc');event.preventDefault();"
                                   onclick="$(this).closest('.balance').balance('calc');">
         <img src="res/img/svginventoryicons/hardware/calculator01.svg" alt=""/></div>
-    <div id="fill" class="button" ontouchstart="$(this).closest('.balance').balance('fill');event.preventDefault();"
+    <div id="befill" class="bebutton" ontouchstart="$(this).closest('.balance').balance('fill');event.preventDefault();"
                                   onclick="$(this).closest('.balance').balance('fill');">
         <img src="res/img/svginventoryicons/action/gears01.svg" alt=""/></div>
 
-    <div id="calculator">
+    <div id="becalculator">
         <table>
-            <tr><td colspan="3"><div id="screen" class="movepanel">0</div></td></tr>
+            <tr><td colspan="3"><div id="bescreen" class="movepanel">0</div></td></tr>
             <tr>
                 <td ontouchstart="$(this).closest('.balance').balance('key', 7, this);event.preventDefault();"
                     onclick="$(this).closest('.balance').balance('key', 7, this);" class="bluekeypad">7</td>
@@ -52,17 +52,12 @@
         </table>
     </div>
 
-
+    <div class="anim12 noloop flash"><div><img src="res/img/default/anim/touch01.svg"/></div></div>
+	
     <div id="effects">
         <div id="good"><img src="res/img/default/popup/good01.svg" alt=""/></div>
         <div id="wrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
     </div>
-
-    <div id="course" ontouchstart="$(this).closest('.balance').balance('course');event.preventDefault();"
-                      onclick="$(this).closest('.balance').balance('course');"><div>
-        <div id="art"></div>
-        <div id="pre"></div>
-    </div></div>
 
     <div id="splashex" ontouchstart="$(this).hide().closest('.balance').balance('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.balance').balance('next');"><div>

@@ -1,68 +1,39 @@
 .countdown                                { background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat;}
 .countdown>div                            { height:12em; }
-.countdown div#splashex                   { background-image:url("../../res/img/banners/countdown.svg"); }
-.countdown div#splashex  h1               { position:absolute; top:51%; left:10%; font-size:1.5em; color:#432;}
-.countdown div#splashex #guide               { position:absolute; top:61%; left:10%; width:50%; color:#321;
-                                               font-size:.7em; font-style:italic; text-align:justify; }
-
-.countdown #header                        { width:100%; font-size:.8em; height:1.4em; padding:.1em 0; background-color:#aaa;
-                                            background-image:url("../../res/img/default/pattern/steel01.svg");
-                                            background-repeat:repeat;}
-.countdown #header #values                { width:13.5em; height:1.3em; float:left; margin-left:2.2em; }
-.countdown #header #values>div            { margin:.1em;  float:left;  }
-.countdown #header #result                { width:3.4em;  color:white;
-                                            background-color:white; border-radius:.1em; text-align:center; font-weight:bold; }
-.countdown #header #result>div            { margin:.1em; height:1.1em; background-color:black;}
-.countdown.noresult #header #result     { display:none; }
-
-.countdown #board                        { margin-top:.2em; height:8em; width:100%; background-color:gray; font-size:1.2em; 
-                                           background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat;}
-
-.countdown #board .line                 { width:100%; height:1.2em; overflow:visible; clear:both; }
-.countdown #board .line>div             { float:left; margin:.1em; }
-.countdown #board .line .r              { width:.8em; height:.8em; background-color:red; margin: .3em 1.6em 0 0;
-                                          border-radius:0 .5em .5em 0; cursor:pointer; }
-.countdown #board .line .r.rr           { background-color:gray; cursor:auto;}
-.countdown #board .line .r>div          { font-size:.7em; color:white; margin:.1em;}
-.countdown #board .line .d              { padding:.1em; border:1px dashed gray; border-radius:.25em; width:2em; height:1.1em; 
-                                          background-color:rgba(255,255,255,0.3); }
-.countdown #board .line .dd.over        { background-color:#FF8877; }
-.countdown #board .line .c .icon        { opacity:0.2; margin:.05em .5em; }
-.countdown #board .line .c.cc .icon     { opacity:0.8; cursor:pointer; }
-.countdown #board .line .c.s .icon      { display:none; }
-.countdown #board .line .oo             { width:1em; text-align:center; font-weight:bold; color:#555; }
-.countdown #board .line .o              { cursor:pointer; border-radius:.5em; border:1px solid gray;
-                                          background-color:rgba(255,255,255,0.3); height:1em; margin-top:.2em;  }
-.countdown #board .line .o>div          { position:relative; top:-.1em; }
-.countdown #board .line .o>div.minus    { top:-.2em; }
-
-.countdown .t                           { width:2em; background-color:rgba(255,255,255,0.8); border-radius:.25em;
-                                          text-align:center; color:#222; height:1.1em; cursor:move; }
-.countdown .t.tt                        { background-color:rgba(200,200,200,0.8); }
-
-.countdown #exercice               { position:absolute; top:80%; left:10%; width:80%; height:20%; font-size:.5em; display:none; }
-.countdown #exercice>div           { color:red; border:1px solid red; border-width:1px 0; }
-
-.countdown #keypad                 { position:absolute; overflow:visible; font-weight:bold; top:2.3em; left:6.45em; display:none;}
-.countdown #keypad div.k           { width:1em; height:1em; overflow:hidden; text-align:center;
-                                     background-image:url("../../res/img/asset/fx/target01.svg"); border-radius:0.5em;
-                                     background-size:100%; color:rgb(17,95,130); background-position:0 0; cursor:pointer;
-                                     position:absolute; background-color:rgba(200,235,235,0.8); }
-.countdown #keypad div.k>div       { position:relative;top:-0.1em; }
-.countdown #keypad div.k.s         { background-color:rgba(17,95,130,0.8); color:rgb(200,235,235); }
-.countdown #keypad #bg1            { background-image:url("../../res/img/asset/fx/target02.svg"); font-size:3em; position:absolute; 
-                                     width:1em; height:1em; top:-0.5em; left:-0.5em; font-size:2.4em; }
-
-.countdown .t.ui-draggable-dragging         { cursor:none !important; background-color:gray; color:white; }
-.countdown #legend                     { position:absolute; font-size:.4em; top:78%; left:0; width:98%; height:5em; opacity:0.95; z-index:4;
-                                     background-image:url("../../res/img/default/pattern/grid01.svg"); background-repeat:repeat; 
-                                     padding:.1em 1em; border:.2em solid gray; border-width:.2em 0 .2em 0; cursor:move; display:none; }
-                                     
-
-
-.countdown #effects                       { width:100%; height:100%; position:absolute; top:0; left:0; background-color:rgba(0,0,0,0);
-                                            display:none; }
-.countdown #effects>div                   { position:relative; top:.1em; left:.1em; font-size:4em; width:1em; height:1em;  }
-
-
-.countdown #touch01                       { top:0; left:0; font-size:2em; }
+.countdown #splashex                      { background-image:url("../../res/img/banners/countdown.svg"); }
+.countdown #cnheader                      { width:100%; font-size:.8em; height:1.4em; padding:.1em 0; background-color:#aaa; background-image:url("../../res/img/default/pattern/steel01.svg"); background-repeat:repeat;}
+.countdown #cnvalues                      { width:13.5em; height:1.3em; float:left; margin-left:2.2em; }
+.countdown #cnvalues>div                  { margin:.1em;  float:left;  }
+.countdown #cnresult                      { width:3.4em;  color:white; background-color:white; border-radius:.1em; text-align:center; font-weight:bold; }
+.countdown #cnresult>div                  { margin:.1em; height:1.1em; background-color:black;}
+.countdown.noresult #cnresult             { display:none; }
+.countdown #cnboard                       { margin-top:.2em; height:8em; width:100%; background-color:gray; font-size:1.2em; background-image:url("../../res/img/default/pattern/line01.svg"); background-repeat:repeat;}
+.countdown #cnboard .line                 { width:100%; height:1.4em; overflow:visible; clear:both; position:relative; }
+.countdown #cnboard .line>div             { float:left; margin:.1em; }
+.countdown #cnboard .line>div.cnmask	  { position:absolute; top:0; left:-2%; background-color:black; width:102%; height:1.4em; display:none; }
+.countdown #cnboard .line .r              { width:.8em; height:.8em; background-color:red; margin: .3em 1.6em 0 0; border-radius:0 .5em .5em 0; cursor:pointer; }
+.countdown #cnboard .line .r.rr           { background-color:gray; cursor:auto;}
+.countdown #cnboard .line .r>div          { font-size:.7em; color:white; margin:.1em;}
+.countdown #cnboard .line .d              { padding:.1em; border:.04em dashed gray; border-radius:.25em; width:2em; height:1.1em;  background-color:rgba(255,255,255,0.3); }
+.countdown #cnboard .line .dd.over        { background-color:#FF8877; }
+.countdown #cnboard .line .c .icon        { opacity:0.2; margin:.05em .5em; }
+.countdown #cnboard .line .c.cc .icon     { opacity:0.8; cursor:pointer; }
+.countdown #cnboard .line .c.s .icon      { display:none; }
+.countdown #cnboard .line .oo             { width:1em; text-align:center; font-weight:bold; color:#555; }
+.countdown #cnboard .line .o              { cursor:pointer; border-radius:.5em; border:1px solid gray; background-color:rgba(255,255,255,0.3); height:1em; margin-top:.2em;  }
+.countdown #cnboard .line .o>div          { position:relative; top:-.1em; }
+.countdown #cnboard .line .o>div.minus    { top:-.2em; }
+.countdown .t                             { width:2em; background-color:rgba(255,255,255,0.8); border-radius:.25em; text-align:center; color:#222; height:1.1em; cursor:move; }
+.countdown .t.tt                          { background-color:rgba(200,200,200,0.8); }
+.countdown #exercice                      { position:absolute; top:80%; left:10%; width:80%; height:20%; font-size:.5em; display:none; }
+.countdown #exercice>div                  { color:red; border:1px solid red; border-width:1px 0; }
+.countdown #cnkeypad                      { position:absolute; overflow:visible; font-weight:bold; margin-top:.3em; margin-left:.6em; display:none;}
+.countdown #cnkeypad div.k                { width:1em; height:1em; overflow:hidden; text-align:center; background-image:url("../../res/img/asset/fx/target01.svg"); border-radius:0.5em; background-size:100%; color:rgb(17,95,130); background-position:0 0; cursor:pointer; position:absolute; background-color:rgba(200,235,235,0.8); }
+.countdown #cnkeypad div.k>div            { position:relative;top:-0.1em; }
+.countdown #cnkeypad div.k.s              { background-color:rgba(17,95,130,0.8); color:rgb(200,235,235); }
+.countdown #cnkeypad #cnbg                { background-image:url("../../res/img/asset/fx/target02.svg"); font-size:3em; position:absolute; width:1em; height:1em; top:-0.5em; left:-0.5em; font-size:2.4em; }
+.countdown .t.ui-draggable-dragging       { cursor:none !important; background-color:gray; color:white; }
+.countdown #cnlegend                      { position:absolute; font-size:.4em; top:78%; left:0; width:98%; height:5em; opacity:0.95; z-index:4; background-image:url("../../res/img/default/pattern/grid01.svg"); background-repeat:repeat;  padding:.1em 1em; border:.2em solid gray; border-width:.2em 0 .2em 0; display:none; }
+.countdown #effects					      { left:5%; }
+.countdown #cntouch                       { font-size:2em; }
+.countdown #cnfx                          { font-size:5em; left:67%; margin-top:-.35em; }

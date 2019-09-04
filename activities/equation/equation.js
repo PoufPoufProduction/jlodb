@@ -45,17 +45,6 @@
         numerator   : 1,
         denominator : 2
     }
-    
-    
-    var regExp = [
-        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
-        "\\\[bb\\\](.+)\\\[/bb\\\]",                "<b>$1</b>",
-        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
-        "\\\[br\\\]",                               "<br/>",
-        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
-        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
-        "\\\[math\\\](.+)\\\[/math\\\]",            "<div class='math'><math>$1</math></div>"
-    ];
 
     // private methods
     var helpers = {
@@ -78,17 +67,10 @@
             $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
-        end: function($this) {
+        end: function($this, _args) {
             var settings = helpers.settings($this);
             helpers.unbind($this);
-            settings.context.onquit($this,{'status':'success', 'score':settings.score});
-        },
-        format: function(_text) {
-            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
-                var vReg = new RegExp(regExp[i*2],"g");
-                _text = _text.replace(vReg,regExp[i*2+1]);
-            }
-            return _text;
+            settings.context.onquit($this, _args);
         },
         loader: {
             css: function($this) {
@@ -121,7 +103,7 @@
             svg:function($this) {
                 var settings = helpers.settings($this),debug = "";
                 if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
-                var elt= $("<div></div>").appendTo($this.find("#svg"));
+                var elt= $("<div></div>").appendTo($this.find("#ensvg"));
                 elt.svg();
                 settings.svg = elt.svg('get');
                 $(settings.svg).attr("class",settings["class"]);
@@ -141,17 +123,11 @@
                 if (settings.background) { $this.children().first().css("background-image","url("+settings.background+")"); }
 
                 // EXERCICE AND FIGURE
-                if (settings.figure && settings.figure.length) { $this.find("#figure").html("<img src='res/img/"+settings.figure+"'/>").show(); }
+                if (settings.figure && settings.figure.length) { $this.find("#enfigure").html("<img src='res/img/"+settings.figure+"'/>").show(); }
                 if (settings.exercice) {
-                    if ($.isArray(settings.exercice)) {
-                        // TODO: remove this part - do not use exercice as array anymore - use [br] instead.
-                        settings.fontex*=0.8;
-                        $this.find("#exercice>div").html("");
-                        for (var i in settings.exercice) { $this.find("#exercice>div").append("<p>"+settings.exercice[i]+"</p>"); }
-                    }
-                    else { $this.find("#exercice>div").html(helpers.format(settings.exercice)); }
+					$this.find("#instructions").css("font-size",(0.4*settings.fontex)+"em")
+						.html(jtools.instructions(settings.exercice));
                 }
-                $this.find("#exercice>div").css("font-size",settings.fontex+"em");
 
                 // HELPS
                 if (!settings.a.all) {
@@ -180,7 +156,7 @@
                         var id=$(this).attr("id").substr(1);
                         $this.find(".help").removeClass("s");
                         $(this).addClass("s");
-                        $this.find("#hcontent").html("").html(helpers.format(settings.locale.hlabel[id]));
+                        $this.find("#hcontent").html("").html(jtools.format(settings.locale.hlabel[id]));
                     }
                     _event.preventDefault();
                 });
@@ -1679,8 +1655,9 @@ helpers.equations.get($this).label();
 	
             settings.score=total>5?0:5-total;
             $this.find("#submit").addClass(total?"wrong":"good");
+            $this.find("#effects").addClass(total?"wrong":"good");
 
-            setTimeout(function() { helpers.end($this)}, 1000);
+            setTimeout(function() { helpers.end($this, {'status':'success', 'score':settings.score})}, 1000);
         },
         addSource: function($this, _source, _elt) {
             var settings    = helpers.settings($this);
@@ -1770,7 +1747,7 @@ helpers.equations.get($this).label();
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 settings.interactive = false;
-                settings.context.onquit($this,{'status':'abort'});
+                helpers.end($this,{'status':'abort'});
             },
             submit: function() { helpers.submit($(this)); },
             dump: function() {

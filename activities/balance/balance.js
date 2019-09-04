@@ -49,11 +49,11 @@
             $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
-        end: function($this) {
+        end: function($this, _args) {
             var settings = helpers.settings($this);
             helpers.unbind($this);
             if (settings.score<0) { settings.score = 0; }
-            settings.context.onquit($this,{'status':'success','score':settings.score});
+            settings.context.onquit($this, _args);
         },
         format: function(_text) {
             for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
@@ -93,7 +93,7 @@
             svg:function($this) {
                 var settings = helpers.settings($this),debug = "";
                 if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
-                var elt= $("<div></div>").appendTo($this.find("#svg"));
+                var elt= $("<div></div>").appendTo($this.find("#besvg"));
                 elt.svg();
                 settings.svg = elt.svg('get');
                 $(settings.svg).attr("class",settings["class"]);
@@ -180,6 +180,10 @@
 
                 $this.bind("touchend touchleave mouseup mouseleave", function(_event) {
                     if (settings.interactive && settings.elt.id) {
+						
+                        var e = (_event && _event.originalEvent &&
+                             _event.originalEvent.touches && _event.originalEvent.touches.length)?
+                             _event.originalEvent.touches[0]:_event;
                         
                         var plate = $(".frontplate.s",settings.svg.root());
                         if (plate.length) {
@@ -191,6 +195,14 @@
 								settings.legend.id++;
 								helpers.legends($this, false);
 							}
+							
+							$this.find(".anim12>div").addClass("running").parent()
+								.css("top", e.clientY-$this.offset().top)
+								.css("left", e.clientX-$this.offset().left)
+								.show(); 
+							setTimeout(function(){ $this.find(".anim12>div").removeClass("running").parent().hide(); }, 500);
+						
+							
                         }
                         else {
                             settings.move.x = settings.origin[settings.elt.id][0];
@@ -202,6 +214,8 @@
 							}
 							
                         }
+						
+						
                         settings.elts[settings.elt.id]=[Math.round(settings.move.x),Math.round(settings.move.y)];
 
                         $("#weights #"+settings.elt.id, settings.svg.root()).attr("transform","translate("+
@@ -218,8 +232,8 @@
 
                 // Handle calculator
                 if (settings.calc) {
-                    $this.find("#calc").show();
-                    $this.find("#calculator").draggable({containment:$this, handle:$this.find("#screen")}).css("position","absolute");
+                    $this.find("#becalc").show();
+                    $this.find("#becalculator").draggable({containment:$this, handle:$this.find("#bescreen")}).css("position","absolute");
                 }
 
                 // Locale handling
@@ -252,18 +266,18 @@
         next: function($this) {
             var settings = helpers.settings($this);
             settings.interactive = false;
-            setTimeout(function(){ $this.find("#good").show(); },500);
+			$this.find("#effects").addClass("good");
             if (++settings.id<settings.number)  { setTimeout(function(){ helpers.build($this); }, 2500); }
-            else                                { setTimeout(function(){ helpers.end($this); }, 2500); }
+            else                                { setTimeout(function(){ helpers.end($this,{'status':'success','score':settings.score}); }, 2500); }
         },
         build: function($this) {
             var settings = helpers.settings($this);
-            $this.find("#effects>div").hide();
+            $this.find("#effects").removeClass();
 
-            $this.find("#calc").removeClass("s").removeClass("available");
-            $this.find("#calculator").hide();
+            $this.find("#becalc").removeClass("s").removeClass("available");
+            $this.find("#becalculator").hide();
 			settings.calculator = 0;
-			$this.find("#screen").html("0");
+			$this.find("#bescreen").html("0");
 
             settings.wleft  = [];
             settings.wright = [];
@@ -349,11 +363,11 @@
             else                            {
                 helpers.position($this);
 				if (settings.diff==0) {
-					if (settings.calc) 	{ $this.find("#calc").addClass("available"); }
+					if (settings.calc) 	{ $this.find("#becalc").addClass("available"); }
 					else 				{ helpers.next($this); }
 				}
-				else { $this.find("#calc").removeClass("available").removeClass("s");
-					   $this.find("#calculator").hide(); }
+				else { $this.find("#becalc").removeClass("available").removeClass("s");
+					   $this.find("#becalculator").hide(); }
             }
         },
         diff: function($this, _anim) {
@@ -394,8 +408,8 @@
                     else {
                         settings.interactive = false;
                         settings.score--;
-                        setTimeout(function(){ $this.find("#wrong").show(); },0);
-                        setTimeout(function(){ $this.find("#wrong").hide(); settings.interactive =true; },1000);
+                        setTimeout(function(){ $this.find("#effects").addClass("wrong"); },0);
+                        setTimeout(function(){ $this.find("#effects").removeClass(); settings.interactive =true; },1000);
                     }
                 }
             }
@@ -406,7 +420,7 @@
                     settings.calculator+=value.toString();
                 }
             }
-            $this.find("#screen").html(settings.calculator.length?settings.calculator:"0");
+            $this.find("#bescreen").html(settings.calculator.length?settings.calculator:"0");
         }
     };
 
@@ -464,16 +478,16 @@
             },
             calc: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-				var $calc = $this.find("#calc");
+				var $calc = $this.find("#becalc");
 				if ($calc.hasClass("available") && settings.interactive) {
 					if ($calc.hasClass("s")) {
 						$calc.removeClass("s");
-						$this.find("#calculator").hide();
+						$this.find("#becalculator").hide();
 					}
 					else {
 						settings.calcreset = true;
 						$calc.addClass("s");
-						$this.find("#calculator").show();
+						$this.find("#becalculator").show();
 					}
 				}
             },

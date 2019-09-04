@@ -1,17 +1,15 @@
 <div>
-    <div id="board"></div>
-    <div id="nav">
-        <div id="comment"><div></div></div>
-        <div id="submit" ontouchstart="$(this).closest('.abacus').abacus('valid');event.preventDefault();"
-                        onclick="$(this).closest('.abacus').abacus('valid');">
-            <img src="res/img/default/icon/swvalid.svg" id="subvalid" alt=""/>
-            <img src="res/img/default/icon/swgood.svg" id="subgood" alt=""/>
-            <img src="res/img/default/icon/swwrong.svg" id="subwrong" alt=""/>
-        </div>
-        <div id="exercice"><div></div></div>
+    <div id="asboard"></div>
+    <div id="instructions"></div>
+	
+	<div id="submit" ontouchstart="$(this).closest('.abacus').abacus('valid');event.preventDefault();"
+                     onclick="$(this).closest('.abacus').abacus('valid');">
+        <img src="res/img/default/icon/swvalid.svg" id="valid" alt=""/>
+        <img src="res/img/default/icon/swgood.svg" id="good" alt=""/>
+        <img src="res/img/default/icon/swwrong.svg" id="wrong" alt=""/>
     </div>
     
-    <div id="fx" class="anim12 quick noloop"><div><img src="res/img/default/anim/star04.svg"/></div></div>
+    <div id="asfx" class="anim12 flash noloop center"><div><img src="res/img/default/anim/touch01.svg"/></div></div>
     
     <div id="effects">
         <div id="good"><img src="res/img/default/popup/good01.svg" alt=""/></div>

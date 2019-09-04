@@ -1,15 +1,12 @@
 <div>
 
     <div id="exercice"></div>
-    <div id="board">
-    </div>
+    <div id="csboard"></div>
 
     <div id="splashex" ontouchstart="$(this).hide().closest('.cards').cards('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.cards').cards('next');"><div>
         <h1 id="label"></h1>
-        <div id="guide"></div>
     </div></div>
-    
     
     <div id="fx" class="anim12 flash noloop"><div><img src="res/img/default/anim/star04.svg"/></div></div>
     
@@ -18,22 +15,15 @@
         <div id="wrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
     </div>
     
-    <div id="help" class="icon" ontouchstart="$(this).next().show();event.preventDefault();" onclick="$(this).next().show();">
+    <div id="cshelp" class="icon" ontouchstart="$(this).next().show();event.preventDefault();" onclick="$(this).next().show();">
         <img src="res/img/default/white/about.svg"/>
     </div>
-    <div id="userguide" ontouchstart="$(this).hide();event.preventDefault();" onclick="$(this).hide();"><div>
-        <div id="description"></div>
+	
+    <div id="csuserguide" ontouchstart="$(this).hide();event.preventDefault();" onclick="$(this).hide();"><div>
+        <div id="csdesc"></div>
         <ul></ul>
     </div></div>
     
-    <!-- Optional devmode -->
-    <div id="devmode" ontouchstart="$(this).closest('.cards').cards('devmode');event.preventDefault();"
-                      onclick="$(this).closest('.cards').cards('devmode');" ><img src="res/img/default/white/snapshot.svg"/></div>
-                      
-    <div id="devoutput" ontouchstart="$(this).hide();event.preventDefault();" onclick="$(this).hide();">
-        <textarea ontouchstart="$(this).focus();event.stopPropagation();event.preventDefault();"
-                  onclick="$(this).focus();event.stopPropagation();"></textarea>
-    </div>
 
 </div>
 

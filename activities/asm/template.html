@@ -1,9 +1,9 @@
 <div>
-    <div id="board">
-        <div id="detail">
-            <div id="source">
-                <div id="header"></div>
-                <div id="ops">
+    <div id="amboard">
+        <div id="amdetail">
+            <div id="amsource">
+                <div id="amheader"></div>
+                <div id="amops">
                     <div class="a op" id="adc">ADC</div>
                     <div class="a op" id="and">AND</div>
                     <div class="a op" id="asl">ASL</div>
@@ -106,79 +106,77 @@
             </div>
         </div>
 
-        <div id="central">
-            <div id="code"><div id="lines"></div></div>
+        <div id="amcentral">
+            <div id="amcode"><div id="amlines"></div></div>
             <div id="exercice"></div>
         </div>
 
-        <div id="screens">
-            <div id="output" ontouchstart="$(this).closest('.asm').asm('stdout');event.preventDefault();"
+        <div id="amscreens">
+            <div id="amoutput" ontouchstart="$(this).closest('.asm').asm('stdout');event.preventDefault();"
                              onclick="$(this).closest('.asm').asm('stdout');"><pre></pre></div>
-            <div id="canvas"><div>
+            <div id="amcanvas"><div>
                     <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.0" width="100%" height="100%" viewBox="0 0 640 640" style="display:inline"></svg>
             </div></div>
-            <div id="keypad">
-                <div id="left"  ontouchstart="$(this).closest('.asm').asm('click', 37);event.preventDefault();"
+            <div id="amkeypad">
+                <div id="left" class="control" ontouchstart="$(this).closest('.asm').asm('click', 37);event.preventDefault();"
                                 onclick="$(this).closest('.asm').asm('click', 37);">
                     <img src="res/img/default/control/left02.svg" alt="" class="up"/>
                     <img src="res/img/default/control/left02a.svg" alt="" class="down"/>
                 </div>
-                <div id="down"  ontouchstart="$(this).closest('.asm').asm('click', 40);event.preventDefault();"
+                <div id="down" class="control" ontouchstart="$(this).closest('.asm').asm('click', 40);event.preventDefault();"
                                 onclick="$(this).closest('.asm').asm('click', 40);">
                     <img src="res/img/default/control/down02.svg" alt="" class="up"/>
                     <img src="res/img/default/control/down02a.svg" alt="" class="down"/>
                 </div>
-                <div id="right" ontouchstart="$(this).closest('.asm').asm('click', 39);event.preventDefault();"
+                <div id="right" class="control" ontouchstart="$(this).closest('.asm').asm('click', 39);event.preventDefault();"
                                 onclick="$(this).closest('.asm').asm('click', 39);">
                     <img src="res/img/default/control/right02.svg" alt="" class="up"/>
                     <img src="res/img/default/control/right02a.svg" alt="" class="down"/>
                 </div>
-                <div id="up"    ontouchstart="$(this).closest('.asm').asm('click', 38);event.preventDefault();"
+                <div id="up" class="control" ontouchstart="$(this).closest('.asm').asm('click', 38);event.preventDefault();"
                                 onclick="$(this).closest('.asm').asm('click', 38);">
                     <img src="res/img/default/control/up02.svg" alt="" class="up"/>
                     <img src="res/img/default/control/up02a.svg" alt="" class="down"/>
                 </div>
-                <div id="a" ontouchstart="$(this).closest('.asm').asm('click', 65);event.preventDefault();"
+                <div id="a" class="control" ontouchstart="$(this).closest('.asm').asm('click', 65);event.preventDefault();"
                                       onclick="$(this).closest('.asm').asm('click', 65);">
                     <img src="res/img/default/control/a02.svg" alt="" class="up"/>
                     <img src="res/img/default/control/a02a.svg" alt="" class="down"/>
                 </div>
-                <div id="b" ontouchstart="$(this).closest('.asm').asm('click', 66);event.preventDefault();"
+                <div id="b" class="control" ontouchstart="$(this).closest('.asm').asm('click', 66);event.preventDefault();"
                                       onclick="$(this).closest('.asm').asm('click', 66);">
                     <img src="res/img/default/control/b02.svg" alt="" class="up"/>
                     <img src="res/img/default/control/b02a.svg" alt="" class="down"/>
                 </div>
             </div>
-            <div id="controls">
-                <div id="running" class="anim12"><div><img src="res/img/default/anim/gears01.svg" alt=""/></div></div>
+            <div id="amcontrols">
+                <div class="anim12"><div><img src="res/img/default/anim/gears01.svg" alt=""/></div></div>
 				
 
-                <div id="buttons">
-<div id="lbut">
-<div id="speed" ontouchstart="$(this).closest('.asm').asm('speed');event.preventDefault();"
-                onclick="$(this).closest('.asm').asm('speed');" class="icon">
-    <img src="res/img/control/x2.svg" alt=""/>
-</div>
-<div id="stop" ontouchstart="$(this).closest('.asm').asm('stop');event.preventDefault();"
-               onclick="$(this).closest('.asm').asm('stop');" class="icon">
-    <img src="res/img/control/stop.svg" alt=""/>
-</div>
-<div id="help" ontouchstart="$(this).closest('.asm').find('#phelp').show();event.preventDefault();"
-               onclick="$(this).closest('.asm').find('#phelp').show();" class="icon">
-    <img src="res/img/control/about.svg" alt=""/>
-</div>
-<div id="tip" ontouchstart="$(this).closest('.asm').find('#ptip').show();event.preventDefault();"
-              onclick="$(this).closest('.asm').find('#ptip').show();" class="icon">
-    <img src="res/img/control/tip.svg" alt=""/>
-    <div>0</div>
-</div>
-</div>
-
-
-<div id="play" ontouchstart="$(this).closest('.asm').asm('play');event.preventDefault();"
-               onclick="$(this).closest('.asm').asm('play');" class="icon">
-    <img src="res/img/control/play.svg" alt=""/>
-</div>
+                <div id="ambuttons">
+					<div id="lbut">
+						<div id="speed" ontouchstart="$(this).closest('.asm').asm('speed');event.preventDefault();"
+										onclick="$(this).closest('.asm').asm('speed');" class="icon">
+							<img src="res/img/control/x2.svg" alt=""/>
+						</div>
+						<div id="stop" ontouchstart="$(this).closest('.asm').asm('stop');event.preventDefault();"
+									   onclick="$(this).closest('.asm').asm('stop');" class="icon">
+							<img src="res/img/control/stop.svg" alt=""/>
+						</div>
+						<div id="help" ontouchstart="$(this).closest('.asm').find('#phelp').show();event.preventDefault();"
+									   onclick="$(this).closest('.asm').find('#phelp').show();" class="icon">
+							<img src="res/img/control/about.svg" alt=""/>
+						</div>
+						<div id="tip" ontouchstart="$(this).closest('.asm').find('#ptip').show();event.preventDefault();"
+									  onclick="$(this).closest('.asm').find('#ptip').show();" class="icon">
+							<img src="res/img/control/tip.svg" alt=""/>
+							<div>0</div>
+						</div>
+					</div>
+					<div id="play" ontouchstart="$(this).closest('.asm').asm('play');event.preventDefault();"
+								   onclick="$(this).closest('.asm').asm('play');" class="icon">
+						<img src="res/img/control/play.svg" alt=""/>
+					</div>
                 </div>
             </div>
         </div>
@@ -436,7 +434,7 @@
         <div id="wrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
     </div>
 
-    <div id="touch01" ><div><img src="res/img/default/anim/touch01.svg" alt=""/></div></div>
+    <div id="amtouch" class="anim12 noloop flash center"><div><img src="res/img/default/anim/touch01.svg" alt=""/></div></div>
 
     <div id="m1" class="mask"></div>
     <div id="m2" class="mask"></div>

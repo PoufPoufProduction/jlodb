@@ -18,20 +18,6 @@
         devmode     : false
     };
 
-    var regExp = [
-        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",                  "<b>$1</b>",
-        "\\\[bb\\\](.+)\\\[/bb\\\]",                  "<b>$1</b>",
-        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",                  "<i>$1</i>",
-        "\\\[br\\\]",                               "<br/>",
-        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
-        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
-        "\\\[o1\\\]([^\\\[]+)\\\[/o1\\\]",          "<span style='opacity:0.5'>$1</span>",
-        "\\\[o2\\\]([^\\\[]+)\\\[/o2\\\]",          "<span style='opacity:0.1'>$1</span>",
-        "\\\[svg\\\]([^\\\[]+)\\\[/svg\\\]",        "<div class='svg'><div><svg width='100%' height='100%' viewBox='0 0 32 32'><rect x='0' y='0' width='32' height='32' style='fill:black'/>$1</svg></div></div>",
-        "\\\[code\\\](.+)\\\[/code\\\]",            "<div class='cc'>$1</div>",
-        "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>"
-    ];
-
     // private methods
     var helpers = {
         // @generic: Check the context
@@ -53,17 +39,10 @@
             $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
-        end: function($this) {
+        end: function($this, _args) {
             var settings = helpers.settings($this);
             helpers.unbind($this);
-            settings.context.onquit($this,{'status':'success','score':settings.score});
-        },
-        format: function(_text) {
-            for (var j=0; j<5; j++) for (var i=0; i<regExp.length/2; i++) {
-                var vReg = new RegExp(regExp[i*2],"g");
-                _text = _text.replace(vReg,regExp[i*2+1]);
-            }
-            return _text;
+            settings.context.onquit($this, _args);
         },
         loader: {
             css: function($this) {
@@ -106,20 +85,20 @@
 
                 // Add specific value
                 for (var i in settings.values) {
-                    $this.find("#ops #va").append("<div class='a va v s c' id='"+i+"'><div class='label'>"+i+"</div></div>");
+                    $this.find("#ceops #ceva").append("<div class='a va v s c' id='"+i+"'><div class='label'>"+i+"</div></div>");
                 }
 
                 for (var i in settings.a) {
                     if (settings.a[i]) {
                         if ($.isArray(settings.a[i])) {
-                            for (var elt in settings.a[i]) { $this.find("#ops #"+i+" #"+settings.a[i][elt]+".a").addClass("s"); }
+                            for (var elt in settings.a[i]) { $this.find("#ceops #ce"+i+" #"+settings.a[i][elt]+".a").addClass("s"); }
                         }
-                        else { $this.find("#ops #"+i+" .a").addClass("s"); }
+                        else { $this.find("#ceops #ce"+i+" .a").addClass("s"); }
                     }
                 }
 
-                $this.find("#ops .a.s").draggable({ containment:$this, helper:"clone", appendTo:$this.find("#lines")});
-                helpers.addline($this,$this.find("#code #lines"));
+                $this.find("#ceops .a.s").draggable({ containment:$this, helper:"clone", appendTo:$this.find("#celines")});
+                helpers.addline($this,$this.find("#cecode #celines"));
                 
                 setTimeout(function() {
                     helpers.screen.init($this);
@@ -132,11 +111,7 @@
                     else { $this.find("#"+id).html(value); }
                 }); }
 
-                if ($.isArray(settings.exercice)) {
-                    $this.find("#exercice #ex").html("");
-                    for (var i in settings.exercice) { $this.find("#exercice #ex").append(
-                        "<p>"+(settings.exercice[i].length?helpers.format(settings.exercice[i]):"&#xA0;")+"</p>"); }
-                } else { $this.find("#exercice #ex").html(helpers.format(settings.exercice)); }
+				$this.find("#exercice #ex").html(jtools.instructions(settings.exercice));
 
                 if (!$this.find("#splashex").is(":visible")) { setTimeout(function() { $this[settings.name]('next'); }, 500); }
             },
@@ -306,7 +281,7 @@
                 },
                 drop:function(event, ui) {
                   $this.find(".over").removeClass("over");
-                  if ($(this).offset().top>=$this.find("#code").offset().top)
+                  if ($(this).offset().top>=$this.find("#cecode").offset().top)
                   {
                     var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
                                     event.originalEvent.touches[0]:event;
@@ -314,14 +289,12 @@
                     $(this).html($elt);
                     helpers.dropvalue($this, $elt);
 
-                    var x           = event.clientX-$this.offset().left;
-                    var y           = event.clientY-$this.offset().top;
-                    var $old        = $this.find("#touch01>div").detach();
-                    var $new        = $old.clone();
-                    $this.find("#touch01").css("left",Math.floor(x - $this.find("#touch01").width()/2)+"px")
-                                          .css("top",Math.floor(y - $this.find("#touch01").height()/2)+"px")
-                                          .append($new.addClass("running")).show();
-                    setTimeout(function(){$this.find("#touch01>div").removeClass("running").parent().hide(); },800);
+                    $this.find("#cetouch>div")
+						.addClass("running").parent()
+						.css("left",event.clientX-$this.offset().left)
+                        .css("top",event.clientY-$this.offset().top)
+                        .show();
+                    setTimeout(function(){$this.find("#cetouch>div").removeClass("running").parent().hide(); },800);
                   }
             }});
         },
@@ -330,8 +303,11 @@
 
             var $html=$_line?$_line:$("<div class='line' id='"+(settings.codeid++)+"'></div>");
             $html.droppable({greedy:true, accept:".o",
+                over: function(event, ui) { $(this).addClass("over"); },
+                out: function(event, ui) { $(this).removeClass("over"); },
                 drop:function(event, ui) {
-                  if ($(this).offset().top>=$this.find("#code").offset().top)
+				  $this.find(".over").removeClass("over");
+                  if ($(this).offset().top>=$this.find("#cecode").offset().top)
                   {
                     var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
                                     event.originalEvent.touches[0]:event;
@@ -339,23 +315,21 @@
                     var ok = !($(this).parent().hasClass("op") && $e.attr("id").substr(0,3)=="fct");
                     if (ok) {
                         $(this).html($e);
-                        var x           = event.clientX-$this.offset().left;
-                        var y           = event.clientY-$this.offset().top;
-                        var $old        = $this.find("#touch01>div").detach();
-                        var $new        = $old.clone();
-                        $this.find("#touch01").css("left",Math.floor(x - $this.find("#touch01").width()/2)+"px")
-                                              .css("top",Math.floor(y - $this.find("#touch01").height()/2)+"px")
-                                              .append($new.addClass("running")).show();
-                        setTimeout(function(){$this.find("#touch01>div").removeClass("running").parent().hide(); },800);
+                        $this.find("#cetouch>div")
+							.addClass("running").parent()
+							.css("left",event.clientX-$this.offset().left)
+							.css("top",event.clientY-$this.offset().top)
+							.show();
+						setTimeout(function(){$this.find("#cetouch>div").removeClass("running").parent().hide(); },800);
 
-                        $this.find("#code").scrollTop(500);
+                        $this.find("#cecode").scrollTop(500);
 
                         // HANDLE LINES
                         var $last = $(this).parent().find(">.line").last();
                         if ($last.html().length) { helpers.addline($this, $(this).parent()); }
 
                         // MAKE THE NEW OPERATION DRAGGABLE
-                        $e.draggable({ containment:$this, helper:"clone", appendTo:$this.find("#code #lines"),
+                        $e.draggable({ containment:$this, helper:"clone", appendTo:$this.find("#cecode #celines"),
                             start:function( event, ui) { ui.helper.removeClass("cc"); $e.css("opacity",0.2);},
                             stop: function( event, ui) { $(this).detach(); } });
 
@@ -569,9 +543,9 @@
             },
             call1: function($this, $elt) {
                 var settings = helpers.settings($this);
-                var ret = ($this.find("#code #fct1").length==1);
+                var ret = ($this.find("#cecode #fct1").length==1);
                 if (ret) {
-                    settings.data.stack.push({$elt:$this.find("#code #fct1 .d.op").children().first(),
+                    settings.data.stack.push({$elt:$this.find("#cecode #fct1 .d.op").children().first(),
                                               $first:0, count:0, sav:{X:settings.data.X, Y:settings.data.Y, Z:settings.data.Z,
                                                                       R:settings.data.R, G:settings.data.G, B:settings.data.B } });
                     helpers.initvar($this,false);
@@ -580,10 +554,10 @@
             },
             call2: function($this, $elt) {
                 var settings = helpers.settings($this);
-                var ret = ($this.find("#code #fct2").length==1);
+                var ret = ($this.find("#cecode #fct2").length==1);
                 if (ret) {
                     var valueX = helpers.process.value.get($this, $elt.find(".d.va").first(), true);
-                    settings.data.stack.push({$elt:$this.find("#code #fct2 .d.op").children().first(),
+                    settings.data.stack.push({$elt:$this.find("#cecode #fct2 .d.op").children().first(),
                                               $first:0, count:0, sav:{X:settings.data.X, Y:settings.data.Y, Z:settings.data.Z,
                                                                       R:settings.data.R, G:settings.data.G, B:settings.data.B } });
                     helpers.initvar($this,false);
@@ -593,11 +567,11 @@
             },
             call3: function($this, $elt) {
                 var settings = helpers.settings($this);
-                var ret = ($this.find("#code #fct3").length==1);
+                var ret = ($this.find("#cecode #fct3").length==1);
                 if (ret) {
                     var valueX = helpers.process.value.get($this, $elt.find(".d.va").first(), true);
                     var valueY = helpers.process.value.get($this, $elt.find(".d.va").first().next(), true);
-                    settings.data.stack.push({$elt:$this.find("#code #fct3 .d.op").children().first(),
+                    settings.data.stack.push({$elt:$this.find("#cecode #fct3 .d.op").children().first(),
                                               $first:0, count:0, sav:{X:settings.data.X, Y:settings.data.Y, Z:settings.data.Z,
                                                                       R:settings.data.R, G:settings.data.G, B:settings.data.B } });
                     helpers.initvar($this,false);
@@ -690,13 +664,13 @@
             settings.data.count = 0;
             settings.data.timer = 0;
             settings.data.lastkey = 0;
-            settings.data.stack=[{$elt:$this.find("#code #lines").children().first(), $first:0, count:1, sav:0}];
+            settings.data.stack=[{$elt:$this.find("#cecode #celines").children().first(), $first:0, count:1, sav:0}];
             settings.data.color = [255,255,255];
             helpers.screen.clear($this);
             helpers.stdout.clear($this);
             settings.sav.stdout = [];
             settings.sav.screen = [];
-            $this.find("#code #lines .line").removeClass("s");
+            $this.find("#cecode #celines .line").removeClass("s");
             $this.find("#mask").show();
         },
         popstack: function($this) {
@@ -729,7 +703,7 @@
                     return;
                 }
 
-                if (speed) {  $this.find("#code #lines .line").removeClass("s"); }
+                if (speed) {  $this.find("#cecode #celines .line").removeClass("s"); }
 
                 if (settings.data.stack.length) {
                     var current = settings.data.stack[settings.data.stack.length-1];
@@ -792,11 +766,10 @@
                 }
             }
 
-            $this.find("#effects>div").hide();
             $this.find("#it .it").hide();
+            $this.find("#effects").addClass(good?"good":"wrong");
             if (good) {
                 $this.find("#it #itgood").show();
-                $this.find("#effects #good").show();
                 $this.find("#it>div").css("left","110%").animate({left:"30%"},500, function() {
                     $this.find("#continue").show();
                 }).parent().show();
@@ -804,7 +777,6 @@
             }
             else {
                 $this.find("#it #itwrong").show();
-                $this.find("#effects #wrong").show();
                 
                 $this.find("#it>div").css("left","110%").animate({left:"30%"},500, function() {
                     var stdout = helpers.stdout.crc32($this);
@@ -850,11 +822,10 @@
         },
         clean: function($this) {
             var settings = helpers.settings($this);
-            $this.find("#effects").hide();
-            $this.find("#effects #wrong").hide();
+            $this.find("#effects").removeClass();
             $this.find("#continue").hide();
             $this.find("#dialog>div").html("").parent().hide();
-            $this.find("#code #lines .line").removeClass("s");
+            $this.find("#cecode #celines .line").removeClass("s");
 
         },
         key:function($this, _value) {
@@ -864,10 +835,10 @@
             if (b) {
                 settings.data.lastkey = _value;
                 
-                $this.find("#keypad .s").removeClass("s"); 
-                $this.find("#keypad #"+b).addClass("s");
+                $this.find("#cekeypad .s").removeClass("s"); 
+                $this.find("#cekeypad #"+b).addClass("s");
                 if (settings.keytimerid) { clearTimeout(settings.keytimerid); }
-                settings.keytimerid = setTimeout(function() { $this.find("#keypad .s").removeClass("s"); }, 300 );
+                settings.keytimerid = setTimeout(function() { $this.find("#cekeypad .s").removeClass("s"); }, 300 );
             }
         }   
     };
@@ -931,9 +902,9 @@
             },
             tab: function(_elt, _id) {
                 var $this = $(this) , settings = helpers.settings($this);
-                $this.find("#source #ops .tab").hide();
-                $this.find("#source #ops #"+_id).show();
-                $this.find("#source #tabs .icon").removeClass("s");
+                $this.find("#cesource #ceops .tab").hide();
+                $this.find("#cesource #ceops #ce"+_id).show();
+                $this.find("#cesource #cetabs .icon").removeClass("s");
                 $(_elt).addClass("s");
             },
             play: function() {
@@ -986,14 +957,14 @@
                 helpers.clean($this);
                 $this.find("#it>div").animate({left:"110%"},1000,function() { 
                     $(this).parent().hide();
-                    if (!settings.interactive) { helpers.end($this); }
+                    if (!settings.interactive) { helpers.end($this, {'status':'success','score':settings.score}); }
                 });
             },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 settings.interactive = false;
                 $this.find("#mask").show();
-                settings.context.onquit($this,{'status':'abort'});
+                helpers.end($this,{'status':'abort'});
             },
             stdout: function() {
                 var $this = $(this) , settings = helpers.settings($this);
@@ -1007,7 +978,7 @@
                 var $this = $(this) , settings = helpers.settings($this);
                 if (settings.tipid<settings.tips.length) {
                     $this.find("#ptip .tip"+(settings.tipid+1)).removeClass("s").addClass("f")
-                         .find(".content").html(helpers.format(settings.tips[settings.tipid]));
+                         .find(".content").html(jtools.format(settings.tips[settings.tipid]));
                          
                     settings.tipid++;
                     $this.find("#tip>div").html(settings.tips.length-settings.tipid);

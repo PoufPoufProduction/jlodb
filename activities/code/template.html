@@ -1,9 +1,9 @@
 <div>
-    <div id="board">
-        <div id="detail">
-            <div id="source">
-                <div id="header"></div>
-                <div id="tabs">
+    <div id="ceboard">
+        <div id="cedetail">
+            <div id="cesource">
+                <div id="ceheader"></div>
+                <div id="cetabs">
                     <div class="icon s" ontouchstart="$(this).closest('.code').code('tab', this, 'op');event.preventDefault();"
                                       onclick="$(this).closest('.code').code('tab', this, 'op');"><img src="res/img/icon/tab/tab00.svg" alt=""/></div>
                     <div class="icon" ontouchstart="$(this).closest('.code').code('tab', this, 'va');event.preventDefault();"
@@ -15,9 +15,9 @@
                     <div class="icon" ontouchstart="$(this).closest('.code').code('tab', this, 'no');event.preventDefault();"
                                       onclick="$(this).closest('.code').code('tab', this, 'no');"><img src="res/img/icon/tab/tab00.svg" alt=""/></div>
                 </div>
-                <div class="filler"></div>
-                <div id="ops"><div>
-                    <div id="op" class="tab">
+                <div class="cefiller"></div>
+                <div id="ceops"><div>
+                    <div id="ceop" class="tab">
                         <div class="a op o" id="draw"><div class="label">DRAW</div><div class="d va"></div><div class="d va"></div><div class="d va"></div><div class="d va"></div><div class="d va"></div></div>
                         <div class="a op o" id="dump"><div class="label">DUMP</div><div class="d va"></div></div>
                         <div class="a op o" id="pixel"><div class="label">PIXEL</div><div class="d va"></div><div class="d va"></div></div>
@@ -41,7 +41,7 @@
                         <div class="a op o" id="call2"><div class="label">F2</div><div class="d va"></div></div>
                         <div class="a op o" id="call3"><div class="label">F3</div><div class="d va"></div><div class="d va"></div></div>
                     </div>
-                    <div id="va" class="tab">
+                    <div id="ceva" class="tab">
                         <div class="a va v" id="V000">0</div>
                         <div class="a va v" id="V001">1</div>
                         <div class="a va v" id="V002">2</div>
@@ -131,7 +131,7 @@
                         <div class="a va v" id="G">G</div>
                         <div class="a va v" id="B">B</div>
                     </div>
-                    <div id="ma" class="tab">
+                    <div id="cema" class="tab">
                         <div class="a ma v" id="plus"><div class="d va"></div><div class="label">+</div><div class="d va"></div></div>
                         <div class="a ma v" id="minus"><div class="d va"></div><div class="label">-</div><div class="d va"></div></div>
                         <div class="a ma v" id="mult"><div class="d va"></div><div class="label">×</div><div class="d va"></div></div>
@@ -169,7 +169,7 @@
                         <div class="a ma v" id="call3"><div class="label">F3</div><div class="d va"></div><div class="d va"></div></div>
                         -->
                     </div>
-                    <div id="cl" class="tab">
+                    <div id="cecl" class="tab">
                         <div class="a cl o" id="rep"><div class="label">REPEAT</div><div class="d va"></div><div class="d op"></div></div>
                         <div class="a cl o" id="fct1"><div class="label">F1()</div><div class="d op"></div></div>
                         <div class="a cl o" id="fct2"><div class="label">F2(X)</div><div class="d op"></div></div>
@@ -183,50 +183,51 @@
             </div>
         </div>
 
-        <div id="central">
-            <div id="code">
-                <div id="lines"></div>
-                <div class="filler"></div>
+        <div id="cecentral">
+            <div id="cecode">
+                <div id="celines"></div>
+                <div class="cefooter"></div>
             </div>
-            <div id="exercice"><div id="toggle" onclick="$(this).closest('.code').toggleClass('exstate');"
-                                    ontouchstart="$(this).closest('.code').toggleClass('exstate');event.preventDefault();"></div>
-                               <div id="ex"></div></div>
+            <div id="exercice">
+				<div id="toggle" onclick="$(this).closest('.code').toggleClass('exstate');" ontouchstart="$(this).closest('.code').toggleClass('exstate');event.preventDefault();"></div>
+                <div id="ex"></div>
+			</div>
         </div>
 
-        <div id="screens">
+        <div id="cescreens">
             <div id="output" ontouchstart="$(this).closest('.code').code('stdout');event.preventDefault();"
                              onclick="$(this).closest('.code').code('stdout');"><pre></pre></div>
             <div id="canvas" ontouchstart="$(this).closest('.code').code('screen');event.preventDefault();"
                              onclick="$(this).closest('.code').code('screen');"><div>
                 <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.0" width="100%" height="100%" viewBox="0 0 640 640" style="display:inline"></svg>
             </div></div>
-            <div id="keypad">
-                <div id="left"  ontouchstart="$(this).closest('.code').code('click', 37);event.preventDefault();"
+            <div id="cekeypad">
+                <div id="left" class="control" ontouchstart="$(this).closest('.code').code('click', 37);event.preventDefault();"
                                 onclick="$(this).closest('.code').code('click', 37);">
                     <img src="res/img/default/control/left02.svg" alt="" class="up"/>
                     <img src="res/img/default/control/left02a.svg" alt="" class="down"/>
                 </div>
-                <div id="down"  ontouchstart="$(this).closest('.code').code('click', 40);event.preventDefault();"
+                <div id="down" class="control" ontouchstart="$(this).closest('.code').code('click', 40);event.preventDefault();"
                                 onclick="$(this).closest('.code').code('click', 40);">
                     <img src="res/img/default/control/down02.svg" alt="" class="up"/>
                     <img src="res/img/default/control/down02a.svg" alt="" class="down"/>
                 </div>
-                <div id="right" ontouchstart="$(this).closest('.code').code('click', 39);event.preventDefault();"
+                <div id="right" class="control" ontouchstart="$(this).closest('.code').code('click', 39);event.preventDefault();"
                                 onclick="$(this).closest('.code').code('click', 39);">
                     <img src="res/img/default/control/right02.svg" alt="" class="up"/>
                     <img src="res/img/default/control/right02a.svg" alt="" class="down"/>
                 </div>
-                <div id="up"    ontouchstart="$(this).closest('.code').code('click', 38);event.preventDefault();"
+                <div id="up" class="control" ontouchstart="$(this).closest('.code').code('click', 38);event.preventDefault();"
                                 onclick="$(this).closest('.code').code('click', 38);">
                     <img src="res/img/default/control/up02.svg" alt="" class="up"/>
                     <img src="res/img/default/control/up02a.svg" alt="" class="down"/>
                 </div>
-                <div id="a" ontouchstart="$(this).closest('.code').code('click', 65);event.preventDefault();"
+                <div id="a" class="control" ontouchstart="$(this).closest('.code').code('click', 65);event.preventDefault();"
                                       onclick="$(this).closest('.code').code('click', 65);">
                     <img src="res/img/default/control/a02.svg" alt="" class="up"/>
                     <img src="res/img/default/control/a02a.svg" alt="" class="down"/>
                 </div>
-                <div id="b" ontouchstart="$(this).closest('.code').code('click', 66);event.preventDefault();"
+                <div id="b" class="control" ontouchstart="$(this).closest('.code').code('click', 66);event.preventDefault();"
                                       onclick="$(this).closest('.code').code('click', 66);">
                     <img src="res/img/default/control/b02.svg" alt="" class="up"/>
                     <img src="res/img/default/control/b02a.svg" alt="" class="down"/>
@@ -275,7 +276,7 @@
         <div id="wrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
     </div>
 
-    <div id="touch01" ><div><img src="res/img/default/anim/touch01.svg" alt=""/></div></div>
+    <div id="cetouch" class="anim12 center noloop quick"><div><img src="res/img/default/anim/touch01.svg" alt=""/></div></div>
 
     <div id="mask" class="mask"></div>
     

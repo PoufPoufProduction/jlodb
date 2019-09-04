@@ -1,170 +1,119 @@
-.code .both *                        { overflow:visible; }
-.code                                { background-color:#AAA;}
-.code div#splashex                  { background-image:url("../../res/img/banners/code.svg"); color:lime; }
-.code div#splashex  h1                 { position:absolute; top:8%; left:57%; font-size:2em; background-color:red;
-                                          width:55%; color:white; text-align:center; border-radius:0 .5em .5em 0;
-                                          border:.3em solid white;
-                                          -ms-transform: rotate(45deg); -webkit-transform: rotate(45deg); transform: rotate(45deg); }
-.code div#board                      { font-size:.5em; width:105%; }
-.code div#board>div                  { float:left; }
-
-/*-----------------------------------------------------------------------------------------------------*/
-.code div#board #screens>*           { font-size:.75em; margin-left:.2em; }
-.code #screens #output               { width:11.6em; height:5.6em; background-color:#030; color:#0F0; font-weight:bold;
-                                      padding:.2em; line-height:.8em;
-                                      background-image:url("../../res/img/default/pattern/line03.svg"); background-repeat:repeat; margin-top:.1em;}
-.code #screens #output pre           { overflow:visible; font-family: "Courier New",Courier,monospace;  }
-.code #screens #canvas               { width:12em; height:12em; background-color:black; }
-.code #screens #canvas>div           { width:12em; height:12em; }
-.code #screens.s2 #canvas            { height:8em; }
-.code #screens.s3 #canvas            { height:10.8em; }
-.code #screens #keypad               { width:12em; height:8em; background-color:white; position:relative; background-image:url("../../res/img/default/control/bg02.svg");  }
-.code #screens #keypad>div           { position:absolute; z-index:1; width:1em; height:1em; cursor:pointer; font-size:2em; }
-.code #screens #keypad #left         { top:1.5em; left:0.5em; }
-.code #screens #keypad #down         { top:2.5em; left:1.5em; }
-.code #screens #keypad #right        { top:1.5em; left:2.5em; }
-.code #screens #keypad #up           { top:0.5em; left:1.5em; }
-.code #screens #keypad #a            { top:1em; left:4.5em; }
-.code #screens #keypad #b            { top:2.5em; left:4.5em; }
-.code #screens #keypad .down         { display:none; }
-.code #screens #keypad .s .up        { display:none; }
-.code #screens #keypad .s .down      { display:inherit; }
-.code #screens #controls             { width:12em; height:5.5em; background-color:#AAA;
-                                      background-image:url("../../res/img/default/pattern/steel01.svg"); background-repeat:repeat; }
-.code #screens #controls.running     { background-color:#5BB; }
-.code #screens.s2 #controls          { height:9.5em; }
-.code #screens.s3 #controls          { height:6.7em; }
-.code #screens #buttons              { margin-left:1.2em; margin-top:.3em; }
-.code #screens #buttons .icon        { font-size:2em; width:1em; height:1em; margin:.1em; float:left; cursor:pointer;}
-.code #screens #buttons #lbut        { width:4.9em; float:left; }
-.code #screens #buttons #play        { font-size:4.4em; margin:.05em; }
-
-/*-----------------------------------------------------------------------------------------------------*/
-.code div#board #central             { height:23.75em; margin-left:.2em; width:45%; }
-.code div#board #central>*           { font-size:.75em; width:100%; }
-.code #central #code                 { height:25.2em; background-color:#222; overflow:auto; background-size:100%;
-                                      background-image:url("../../res/img/background/asset/it01.svg"); background-repeat:no-repeat; margin-top:.1em; }
-.code #central #code #lines          { font-size:1em; }
-.code.small #central #code #lines    { font-size:.7em; }
-.code #central #code #lines .line    { position:relative; width:100%; min-height:1em;
-                                       background-color:rgba(20,40,50,0.9); border:1px solid #334466; border-width:0 0 1px 0;}
-.code #central #code #lines .line.s  { background-color:yellow !important; }
-.code #central #code .filler         { width:100%; height:2em; border:1px solid #334466; border-width:4px 0 0 0;
-                                       background-image:linear-gradient(to bottom, rgba(51,68,102,1), rgba(51,68,102,0)); }
-.code #central #lines .code          { margin:.1em; background-color:#da5; padding:.1em; width:12.25em;
-                                      color:#fea; font-weight:bold; position:absolute; top:0; left:0;}
-.code #central #lines .code>div      { float:left; }
-.code #central #lines .codelabel     { width:3.7em; text-align:center; }
-.code #central #lines .codevalue     { margin-left:1em; font-size:.3em; width:22em; }
-.code #central #exercice             { height:25em; background-repeat:repeat;
-                                      background-image:url("../../res/img/default/pattern/line01.svg"); text-align:justify;
-                                       font-size:.5em !important; }
-.code #central #exercice #ex    { font-size:0.9em; }
-.code #central #exercice #toggle     { height:1em; background-color:rgba(0,0,0,0.2); cursor:pointer; text-align:center; }
-.code #central #exercice #toggle:after  { content:"-"; }
-.code.exstate #central #exercice #toggle:after  { content:"+"; }
-.code #central #exercice #ex         { margin:0 .5em;  }
-.code #central #exercice .svg         { background-color:rgba(0,0,0,0.2); font-size:6em; }
-.code #central #exercice .svg>div     { width:1em; height:1em; margin:.1em auto; }
-.code #central #exercice .cc         { background-color:rgba(0,40,0,0.9); color:lime; padding:.5em; margin:.4em 0; }
-.code #central #exercice .strong    { color:red; font-weight:bold; border: 1px solid red; border-width:1px 0; }
-
-.code.l1 #central #code             { height:20.2em; }
-.code.l2 #central #code             { height:15.3em; }
-
-.code.exstate #central #code         { height:30.8em !important; }
-
-/*-----------------------------------------------------------------------------------------------------*/
-.code div#board #detail				 { width:22%; }
-.code div#board #detail>*            { font-size:.75em; margin-left:.1em; width:100%; }
-.code #detail #source                { height:31.5em; background-color:#121; margin-top:.1em; }
-.code #detail #source>div            { clear:both; }
-.code #detail #source #header        { font-size:2em; height:1em; background-color:#121; position:inherit; }
-.code #detail #source #tabs          { font-size:2em; height:1em; }
-.code #detail #source #tabs .icon    { float:left; border-radius:.5em .5em 0 0; cursor:pointer; background-color:#aee2e6; }
-.code #detail #source #tabs .icon.s  { background-color:red; }
-.code #detail #source .filler        { height:.5em; background-color:white; }
-.code #detail #source #ops           { background-color:white; }
-.code #detail #source #ops>div       { margin:.2em .2em 5em .2em; background-color:#90cce0; height:25em;
-                                      background-image:url("../../res/img/default/pattern/line03.svg"); background-repeat:repeat;}
-.code #detail #source #ops .tab      { font-size:.75em; display:none; }
-.code #detail #source #ops #op       { display:inherit; }
-.code #detail #source .a             { padding:0;  }
-
-
-/*-----------------------------------------------------------------------------------------------------*/
-.code #effects                       { position:absolute; top:45%; left:10%; display:none; z-index:2; }
-.code #effects>div                   { font-size:5em; width:1em; height:1em; display:none; }
-
-.code #mask                          { width:71%; height:100%; position:absolute; left:0; top:0; background-color:rgba(0,0,0,0);
-                                       display:none; }
-
-.code #binary                        { width:100%; height:100%; position:absolute; top:0; left:0; background-color:rgba(0,0,0,0.8);
-                                      display:none;}
-.code #binary>div                    { width:82%; height:80%; margin:5% 10%; background-color:rgba(0,50,10,0.8); color:#0F0;
-                                      font-weight:bold; font-size:.35em;  border-radius:.5em;
-                                      overflow:auto; cursor:pointer;  }
-.code #binary p                      { white-space:nowrap; margin:0 .5em;}
-
-.code #touch01                       { top:0; left:0; font-size:2em; }
-
-
-.code #board  .a                             { cursor:move; min-height:1.2em; margin:.1em; text-align:center; font-size:1em; opacity:0.2; }
-.code #board  .d.va.over                     { background-color:red !important; }
-.code #board  .a.s                           { opacity:1; }
-.code #board  .va.c                          { background-color:#888 !important; }
-.code #board  .ui-draggable-dragging         { cursor:none !important; min-width:3em; }
-.code #board  .va.ui-draggable-dragging      { opacity:0.8 !important; height:1.2em;}
-.code #board  .ma.ui-draggable-dragging      { opacity:0.8 !important; height:1.4em;}
-.code #board  .op.ui-draggable-dragging      { height:1.4em;}
-.code #board  .ui-draggable-dragging .d.op   { display:none; }
-.code #board  .ui-draggable-dragging .d.va   { opacity:0; }
-
-.code #board .d>.a                          { font-size:0.75em; }
-
-.code #board  .op                            { background-color:#446688; color:#DDEEFF; border-radius:.5em; min-width:12.5em; min-height:1.4em; }
-.code #board  .op>.label                     { margin:0 .2em; text-align:right; float:left; width:4em; }
-.code #board  .op>.va                        { margin:.1em; min-width:1.2em;}
-
-.code #board  .va                            { background-color:#777777; color:#EEEEEE; float:left; border-radius:.25em; min-height:1.2em; min-width:2.2em; }
-.code #board  .va>.label                     { margin:0 .4em; }
-.code #board  .va.char .label:before         { content:"'"; }
-.code #board  .va.char .label:after          { content:"'"; }
-
-.code #board  .ma                            { background-color:#555555; color:#EEEEEE; border-radius:.25em; float:left; min-height:1.4em; }
-.code #board  .ma>.va                        { margin:.1em .2em; min-width:1.2em;}
-.code #board  .ma>.label                     { float:left; margin:0 .2em; }
-
-
-
-.code #board .cl                            { background-color:#334466; color:#DDEEFF; border-radius:.5em; min-width:12.5em; height:1.4em;  }
-.code #board .cl>.label                     { margin:0 .2em; text-align:right; float:left; width:4em; }
-.code #board .cl>.label.r                   { width:auto; }
-.code #board .cl>.va                        { margin:.1em; min-width:1.2em; height:1.2em;}
-.code #board .cl>.op                        { float:left; margin:.1em; height:1.2em; min-width:1.8em; border-radius:.25em; }
-.code #lines .cl                        { height:inherit;  }
-.code #lines .cl>.op                 { clear:both; width:98%; border-radius:0; height:auto !important; }
-.code #lines .cl>.label.r            { width:4em; font-size:1em; }
-.code #lines .op>.va                 { min-width:1.8em; }
-.code #lines .cl>.va                 { min-width:1.8em; }
-.code #lines .ma>.va                 { min-width:1.8em; }
-
-.code #it                            { position:absolute; width:100%; height:100%; background-color:transparent; z-index:2;top:0; left:0; display:none; }
-.code #it>div                        { position:absolute; top:60%; left:30%; overflow:visible; }
-.code #it .it                        { display:none; width:12em; height:4em; }
-.code #it #dialog                    { position:absolute; width:18em; height:18em; top:-90%; left:10%; background-image:url("../../res/img/asset/fx/dialog01.svg"); font-size:.4em; display:none; }
-.code #it #dialog>div                { margin:1em; text-align:justify; }
-.code #continue                      { position:absolute; width:16em; height:16em; top:0; left:0; display:none; z-index:2; }
-.code #continue>div                  { font-size:3em; position:absolute; top:55%; left:70%; cursor:pointer; border-radius:.5em; }
-
-.code #phelp                            { width:16em; height:12em; position:absolute;top:0;left:0; background-color:rgba(0,0,0,0.5);
-                                      z-index:2002; cursor:pointer; display:none; }
-.code #phelp>div                   { width:98%; height:98%; margin:.5em auto; font-size:.3em;  
-                                      background-color:rgba(255,255,255,0.8); }
-.code #phelp .inst              { margin:.1em .2em; }
-.code #phelp .linst             { background-color:#468; color:white; width:14em; padding:.1em; float:left; margin-right:.2em; }
-.code #phelp .linst.ex          { background-color:#555; color:#EEE; }
-.code #phelp .arg                   { float:right; width:2em; background-color:gray; text-align:center; margin-left:.1em; }
-.code div#ptip .cc                   { padding:.1em .5em; font-size:.6em; background-color:rgba(0,40,0,0.9); color:lime; padding:.5em; margin:.4em 0; }
+.code .both *                               { overflow:visible; }
+.code                                       { background-color:#AAA;}
+.code #splashex                             { background-image:url("../../res/img/banners/code.svg"); }
+.code #ceboard                              { font-size:.5em; width:105%; }
+.code #ceboard>div                          { float:left; }
+.code #cedetail				                { width:22%; }
+.code #cedetail>*                           { font-size:.75em; margin-left:.1em; width:100%; }
+.code #cesource                             { height:31.5em; background-color:#121; margin-top:.1em; }
+.code #cesource>div                         { clear:both; }
+.code #ceheader                             { font-size:2em; height:1em; background-color:#121; position:inherit; }
+.code #cetabs                               { font-size:2em; height:1em; }
+.code #cetabs .icon                         { float:left; border-radius:.5em .5em 0 0; cursor:pointer; background-color:#aee2e6; }
+.code #cetabs .icon.s                       { background-color:red; }
+.code #cesource .cefiller                   { height:.5em; background-color:white; }
+.code #cesource #ceops                      { background-color:white; }
+.code #cesource #ceops>div                  { margin:.2em .2em 5em .2em; background-color:#90cce0; height:25em; background-image:url("../../res/img/default/pattern/line03.svg"); background-repeat:repeat;}
+.code #cesource #ceops .tab                 { font-size:.75em; display:none; }
+.code #cesource #ceops #ceop                { display:inherit; }
+.code #cesource .a                          { padding:0;  }
+.code #cecentral                            { height:23.75em; margin-left:.2em; width:45%; }
+.code #cecentral>*                          { font-size:.75em; width:100%; }
+.code #cecode                               { height:25.2em; background-color:#222; overflow:auto; background-size:100%; background-image:url("../../res/img/background/asset/it01.svg"); background-repeat:no-repeat; margin-top:.1em; }
+.code.l1 #cecode                            { height:20.2em; }
+.code.l2 #cecode                            { height:15.3em; }
+.code.exstate #cecode                       { height:30.8em !important; }
+.code #cecode #celines                      { font-size:1em; }
+.code.small #cecode #celines                { font-size:.7em; }
+.code #cecode #celines .line                { position:relative; width:100%; min-height:1em; background-color:rgba(20,40,50,0.9); border:1px solid #334466; border-width:0 0 1px 0;}
+.code #cecode #celines .line.over           { background-color:red; }
+.code #cecode #celines .line.s              { background-color:yellow !important; }
+.code #cecode .cefooter                     { width:100%; height:2em; border:1px solid #334466; border-width:4px 0 0 0; background-image:linear-gradient(to bottom, rgba(51,68,102,1), rgba(51,68,102,0)); }
+.code #cecentral #celines .code             { margin:.1em; background-color:#da5; padding:.1em; width:12.25em; color:#fea; font-weight:bold; position:absolute; top:0; left:0;}
+.code #cecentral #celines .code>div         { float:left; }
+.code #cecentral #celines .codelabel        { width:3.7em; text-align:center; }
+.code #cecentral #celines .codevalue        { margin-left:1em; font-size:.3em; width:22em; }
+.code #exercice                             { height:25em; background-repeat:repeat; background-image:url("../../res/img/default/pattern/line01.svg"); text-align:justify; font-size:.5em !important; }
+.code #exercice #ex                         { font-size:0.9em; }
+.code #exercice #toggle                     { height:1em; background-color:rgba(0,0,0,0.2); cursor:pointer; text-align:center; }
+.code #exercice #toggle:after               { content:"-"; }
+.code.exstate #exercice #toggle:after       { content:"+"; }
+.code #exercice #ex                         { margin:0 .5em;  }
+.code #cescreens>*                          { font-size:.75em; margin-left:.2em; }
+.code #cescreens #output                    { width:11.6em; height:5.6em; background-color:#030; color:#0F0; font-weight:bold; padding:.2em; line-height:.8em; background-image:url("../../res/img/default/pattern/line03.svg"); background-repeat:repeat; margin-top:.1em;}
+.code #cescreens #output pre                { overflow:visible; font-family: "Courier New",Courier,monospace;  }
+.code #cescreens #canvas                    { width:12em; height:12em; background-color:black; }
+.code #cescreens #canvas>div                { width:12em; height:12em; }
+.code #cescreens.s2 #canvas                 { height:8em; }
+.code #cescreens.s3 #canvas                 { height:10.8em; }
+.code #cekeypad                             { width:12em; height:8em; background-color:white; position:relative; background-image:url("../../res/img/default/control/bg02.svg");  }
+.code #cekeypad>div                         { position:absolute; z-index:1; font-size:2em; }
+.code #cekeypad #left                       { top:1.5em; left:0.5em; }
+.code #cekeypad #down                       { top:2.5em; left:1.5em; }
+.code #cekeypad #right                      { top:1.5em; left:2.5em; }
+.code #cekeypad #up                         { top:0.5em; left:1.5em; }
+.code #cekeypad #a                          { top:1em; left:4.5em; }
+.code #cekeypad #b                          { top:2.5em; left:4.5em; }
+.code #cescreens #controls                  { width:12em; height:5.5em; background-color:#AAA; background-image:url("../../res/img/default/pattern/steel01.svg"); background-repeat:repeat; }
+.code #cescreens #controls.running          { background-color:#5BB; }
+.code #cescreens.s2 #controls               { height:9.5em; }
+.code #cescreens.s3 #controls               { height:6.7em; }
+.code #cescreens #buttons                   { margin-left:1.2em; margin-top:.3em; }
+.code #cescreens #buttons .icon             { font-size:2em; width:1em; height:1em; margin:.1em; float:left; cursor:pointer;}
+.code #cescreens #buttons #lbut             { width:4.9em; float:left; }
+.code #cescreens #buttons #play             { font-size:4.4em; margin:.05em; }
+.code #effects                              { position:absolute; top:45%; left:10%; display:none; z-index:2; }
+.code #effects>div                          { font-size:5em; width:1em; height:1em; display:none; }
+.code #mask                                 { width:71%; height:100%; position:absolute; left:0; top:0; background-color:rgba(0,0,0,0); display:none; }
+.code #binary                               { width:100%; height:100%; position:absolute; top:0; left:0; background-color:rgba(0,0,0,0.8); display:none;}
+.code #binary>div                           { width:82%; height:80%; margin:5% 10%; background-color:rgba(0,50,10,0.8); color:#0F0; font-weight:bold; font-size:.35em;  border-radius:.5em; overflow:auto; cursor:pointer;  }
+.code #binary p                             { white-space:nowrap; margin:0 .5em;}
+.code #cetouch                              { font-size:2em; }
+.code #ceboard .a                           { cursor:move; min-height:1.2em; margin:.1em; text-align:center; font-size:1em; opacity:0.2; }
+.code #ceboard .d.va.over                   { background-color:red !important; }
+.code #ceboard .a.s                         { opacity:1; }
+.code #ceboard .va.c                        { background-color:#888 !important; }
+.code #ceboard .d>.a                        { font-size:0.75em; }
+.code #ceboard .ui-draggable-dragging       { cursor:none !important; min-width:3em; }
+.code #ceboard .va.ui-draggable-dragging    { opacity:0.8 !important; height:1.2em;}
+.code #ceboard .ma.ui-draggable-dragging    { opacity:0.8 !important; height:1.4em;}
+.code #ceboard .op.ui-draggable-dragging    { height:1.4em;}
+.code #ceboard .ui-draggable-dragging .d.op { display:none; }
+.code #ceboard .ui-draggable-dragging .d.va { opacity:0; }
+.code #ceboard .op                          { background-color:#446688; color:#DDEEFF; border-radius:.5em; min-width:12.5em; min-height:1.4em; }
+.code #ceboard .op>.label                   { margin:0 .2em; text-align:right; float:left; width:4em; }
+.code #ceboard .op>.va                      { margin:.1em; min-width:1.2em;}
+.code #ceboard .va                          { background-color:#777777; color:#EEEEEE; float:left; border-radius:.25em; min-height:1.2em; min-width:2.2em; }
+.code #ceboard .va>.label                   { margin:0 .4em; }
+.code #ceboard .va.char .label:before       { content:"'"; }
+.code #ceboard .va.char .label:after        { content:"'"; }
+.code #ceboard .ma                          { background-color:#555555; color:#EEEEEE; border-radius:.25em; float:left; min-height:1.4em; }
+.code #ceboard .ma>.va                      { margin:.1em .2em; min-width:1.2em;}
+.code #ceboard .ma>.label                   { float:left; margin:0 .2em; }
+.code #ceboard .cl                          { background-color:#334466; color:#DDEEFF; border-radius:.5em; min-width:12.5em; height:1.4em;  }
+.code #ceboard .cl>.label                   { margin:0 .2em; text-align:right; float:left; width:4em; }
+.code #ceboard .cl>.label.r                 { width:auto; }
+.code #ceboard .cl>.va                      { margin:.1em; min-width:1.2em; height:1.2em;}
+.code #ceboard .cl>.op                      { float:left; margin:.1em; height:1.2em; min-width:1.8em; border-radius:.25em; }
+.code #celines .cl                          { height:inherit;  }
+.code #celines .cl>.op                      { clear:both; width:98%; border-radius:0; height:auto !important; }
+.code #celines .cl>.label.r                 { width:4em; font-size:1em; }
+.code #celines .op>.va                      { min-width:1.8em; }
+.code #celines .cl>.va                      { min-width:1.8em; }
+.code #celines .ma>.va                      { min-width:1.8em; }
+.code #it                                   { position:absolute; width:100%; height:100%; background-color:transparent; z-index:2;top:0; left:0; display:none; }
+.code #it>div                               { position:absolute; top:60%; left:30%; overflow:visible; }
+.code #it .it                               { display:none; width:12em; height:4em; }
+.code #it #dialog                           { position:absolute; width:18em; height:18em; top:-90%; left:10%; background-image:url("../../res/img/asset/fx/dialog01.svg"); font-size:.4em; display:none; }
+.code #it #dialog>div                       { margin:1em; text-align:justify; }
+.code #continue                             { position:absolute; width:16em; height:16em; top:0; left:0; display:none; z-index:2; }
+.code #continue>div                         { font-size:3em; position:absolute; top:55%; left:70%; cursor:pointer; border-radius:.5em; }
+.code #phelp                                { width:16em; height:12em; position:absolute;top:0;left:0; background-color:rgba(0,0,0,0.5); z-index:2002; cursor:pointer; display:none; }
+.code #phelp>div                            { width:98%; height:98%; margin:.5em auto; font-size:.3em; background-color:rgba(255,255,255,0.8); }
+.code #phelp .inst                          { margin:.1em .2em; }
+.code #phelp .linst                         { background-color:#468; color:white; width:14em; padding:.1em; float:left; margin-right:.2em; }
+.code #phelp .linst.ex                      { background-color:#555; color:#EEE; }
+.code #phelp .arg                           { float:right; width:2em; background-color:gray; text-align:center; margin-left:.1em; }
+.code #ptip .t_code                         { padding:.1em .5em; font-size:.6em; background-color:rgba(0,40,0,0.9); color:lime; padding:.5em; margin:.4em 0; }
 
 
