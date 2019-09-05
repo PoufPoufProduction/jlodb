@@ -17,15 +17,6 @@
         debug       : true                                  // Debug mode
     };
 
-    var regExp = [
-        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
-        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
-        "\\\[br\\\]",                               "<br/>",
-        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
-        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
-        "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>"
-    ];
-
     var gspeed = 500;
     var ncells = [[-1,0],[0,-1],[1,0],[0,1]];
 	
@@ -52,17 +43,10 @@
             $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
-        end: function($this) {
+        end: function($this, _args) {
             var settings = helpers.settings($this);
             helpers.unbind($this);
-            settings.context.onquit($this,{'status':'success','score':settings.score});
-        },
-        format: function(_text) {
-            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
-                var vReg = new RegExp(regExp[i*2],"g");
-                _text = _text.replace(vReg,regExp[i*2+1]);
-            }
-            return _text;
+            settings.context.onquit($this,_args);
         },
         loader: {
             css: function($this) {
@@ -108,7 +92,7 @@
                 // BUILD THE PROBABILITY VECTOR
                 for (var i=0; i<settings.pjewels.length; i++) for(var j=0; j<settings.pjewels[i]; j++) { settings.proba.push(i); }
 
-                if (settings.time) { $this.find("#time").show(); $this.find("#withtime").show();}
+                if (settings.time) { $this.find("#jltime").show(); $this.find("#withtime").show();}
 
                 // goals handling
                 setTimeout(function() { helpers.goals.init($this); }, 100);
@@ -125,14 +109,14 @@
 					while (settings.board[j].length<settings.size[0]) { settings.board[j]+="0"; }
 				}
                 var max     = Math.max(settings.size[1], settings.size[0])*1.1;
-                $this.find("#board>div").css("font-size", (12/max)+"em")
+                $this.find("#jlboard>div").css("font-size", (12/max)+"em")
                                         .css("margin-left", ((max-settings.size[0])/2)+"em")
                                         .css("margin-top", ((max-settings.size[1])/2)+"em")
 										.css("width", settings.size[0]+"em")
 										.css("height",settings.size[1]+"em");
 										
 				do {		
-					$this.find("#board>div").html("");
+					$this.find("#jlboard>div").html("");
 					settings.tcells=[];
 					for (var j=0; j<settings.size[1]; j++) {
 						var tmp=[];
@@ -150,7 +134,7 @@
 							} while(!ok && ++counter<30);
 							if (counter>=30) { alert("Can not build board - not enough available jewels"); return; }
 							helpers.cell($this,i,j,cell);
-							$this.find("#board>div").append(cell.$html);
+							$this.find("#jlboard>div").append(cell.$html);
 
 							// HANDLE NEIGHBOORS TO BUILD RADIUS BACKGROUND
 							var $bg = $("<div class='bg'></div>");
@@ -158,7 +142,7 @@
 							for (var n=0; n<4; n++) { neighboors[n] = helpers.fromboard($this, i+ncells[n][0], j+ncells[n][1]); }
 							for (var n=0; n<4; n++) { radius.push(neighboors[n]=='0'&&neighboors[(n+1)%4]=='0'?".2em":"0"); }
 							$bg.css("border-radius",radius.join(" ")).css("top",j+"em").css("left",i+"em");
-							$this.find("#board>div").append($bg);
+							$this.find("#jlboard>div").append($bg);
 
 						}
 					}
@@ -247,11 +231,11 @@
                     var txt = settings.locale.goaltxt[settings.goals[i].type];
                     switch(settings.goals[i].type) {
                         case "survive":
-                            $this.find("#counter").html(settings.goals[i].value).show();
+                            $this.find("#jlcounter").html(settings.goals[i].value).show();
                             txt = txt.replace("$1","<span class='jll'>"+settings.goals[i].value+"</span>");
                             break;
                         case "max":
-                            $this.find("#counter").html(settings.goals[i].value).addClass("s").show();
+                            $this.find("#jlcounter").html(settings.goals[i].value).addClass("s").show();
                             txt = txt.replace("$1","<span class='jll'>"+(settings.goals[i].value)+"</span>");
                             break;
                     }
@@ -268,15 +252,15 @@
                     for (var i in settings.goals) {
                         switch(settings.goals[i].type) {
                             case "survive":
-                                var val = parseInt($this.find("#counter").html());
+                                var val = parseInt($this.find("#jlcounter").html());
                                 if (val>1) { if (_update) { val--; } } else { goal++; }
-                                $this.find("#counter").html(val);
+                                $this.find("#jlcounter").html(val);
                                 break;
                             case "max":
-                                var val = parseInt($this.find("#counter").html());
+                                var val = parseInt($this.find("#jlcounter").html());
                                 goal++;
                                 if (val>1) { if (_update) { val--; } } else { if (_update) { val=0; } ret = s.failed; }
-                                $this.find("#counter").html(val);
+                                $this.find("#jlcounter").html(val);
                                 break;
                             case "frozen":
                                 var ok = true;
@@ -355,14 +339,14 @@
                         var $fx = $("<div class='fx'></div>");
                         $fx.css("top",j+"em").css("left",i+"em").css("width",cpx+"em").css("height","1em")
                            .animate({opacity:0}, gspeed*1.5, function() { $(this).detach() });
-                        $this.find("#board>div").append($fx);
+                        $this.find("#jlboard>div").append($fx);
 
                         settings.action.count++;
                         var score = Math.floor(10*(cpx-2)*Math.min(3,0.5+settings.action.count/2));
                         var $score = $("<div class='score'><div>"+score+"</div></div>");
                         $score.css("top",j+"em").css("left",i+"em").css("width",cpx+"em").css("height","1em")
                            .animate({opacity:0, "margin-top":"-1em"}, gspeed*1.5, function() { $(this).detach() });
-                        $this.find("#board>div").append($score);
+                        $this.find("#jlboard>div").append($score);
                         helpers.score($this, score);
                     }
                     if (cpy>2 && cpdely!=cpy) {
@@ -373,14 +357,14 @@
                         var $fx = $("<div class='fx'></div>");
                         $fx.css("top",j+"em").css("left",i+"em").css("width","1em").css("height",cpy+"em")
                            .animate({opacity:0}, gspeed*1.5, function() { $(this).detach() });
-                        $this.find("#board>div").append($fx);
+                        $this.find("#jlboard>div").append($fx);
 
                         settings.action.count++;
                         var score = Math.floor(10*(cpy-2)*Math.min(3,0.5+settings.action.count/2));
                         var $score = $("<div class='score'><div>"+score+"</div></div>");
                         $score.css("top",(j+0.5)+"em").css("left",(i-0.5)+"em").css("width","2em").css("height","1em")
                            .animate({opacity:0, "margin-top":"-1em"}, gspeed*1.5, function() { $(this).detach() });
-                        $this.find("#board>div").append($score);
+                        $this.find("#jlboard>div").append($score);
                         helpers.score($this, score);
                     }
                 }
@@ -404,14 +388,14 @@
             var $fx = $("<div class='fx'></div>");
             $fx.css("top",y+"em").css("left",x+"em").css("width",w+"em").css("height",h+"em")
                 .animate({opacity:0}, gspeed*1.2, function() { $(this).detach() });
-            $this.find("#board>div").append($fx);
+            $this.find("#jlboard>div").append($fx);
 
             settings.action.count++;
             var score = Math.floor(10*w*h*Math.min(3,0.5+settings.action.count/2));
             var $score = $("<div class='score line'><div>"+score+"</div></div>");
             $score.css("top",_cell.pos[1]+"em").css("left",_cell.pos[0]+"em").css("width","2em").css("height","1em")
                   .animate({opacity:0, "margin-top":"-1em"}, gspeed*1.5, function() { $(this).detach() });
-            $this.find("#board>div").append($score);
+            $this.find("#jlboard>div").append($score);
             helpers.score($this, score);
 
             for (var j=_cell.pos[1]-1; j<=_cell.pos[1]+1; j++)
@@ -423,14 +407,14 @@
                 var $fx = $("<div class='fx'></div>");
                 $fx.css("top",_cell.pos[1]+"em").css("left",0).css("width",settings.size[0]+"em").css("height","1em")
                    .animate({opacity:0}, gspeed*1.2, function() { $(this).detach() });
-                $this.find("#board>div").append($fx);
+                $this.find("#jlboard>div").append($fx);
 
                 settings.action.count++;
                 var score = Math.floor(10*settings.size[0]*Math.min(3,0.5+settings.action.count/2));
                 var $score = $("<div class='score line'><div>"+score+"</div></div>");
                 $score.css("top",_cell.pos[1]+"em").css("left",(settings.size[0]/2-0.5)+"em").css("width","2em").css("height","1em")
                       .animate({opacity:0, "margin-top":"-1em"}, gspeed*1.5, function() { $(this).detach() });
-                $this.find("#board>div").append($score);
+                $this.find("#jlboard>div").append($score);
                 helpers.score($this, score);
 
                 for (var i=0; i<settings.size[0]; i++) { var c = helpers.cell($this, i, _cell.pos[1]); if (c) { c.act($this); } }
@@ -439,7 +423,7 @@
                 var $fx = $("<div class='fx'></div>");
                 $fx.css("top",0).css("left",_cell.pos[0]+"em").css("width","1em").css("height",settings.size[1]+"em")
                    .animate({opacity:0}, gspeed*1.2, function() { $(this).detach() });
-                $this.find("#board>div").append($fx);
+                $this.find("#jlboard>div").append($fx);
 
                 
                 settings.action.count++;
@@ -447,7 +431,7 @@
                 var $score = $("<div class='score line'><div>"+score+"</div></div>");
                 $score.css("top",(settings.size[1]/2-0.5)+"em").css("left",(_cell.pos[0]-0.5)+"em").css("width","2em").css("height","1em")
                       .animate({opacity:0, "margin-top":"-1em"}, gspeed*1.5, function() { $(this).detach() });
-                $this.find("#board>div").append($score);
+                $this.find("#jlboard>div").append($score);
                 helpers.score($this, score);
 
                 for (var j=0; j<settings.size[1]; j++) { var c = helpers.cell($this, _cell.pos[0],j); if (c) { c.act($this); } }
@@ -456,15 +440,15 @@
         score: function($this, _val) {
             var settings  = helpers.settings($this);
             settings.points+=_val;
-            $this.find("#scorepanel #points #v").html(settings.points);
+            $this.find("#jlscorepanel #jlpoints #v").html(settings.points);
 			if (settings.ref) {
-				$this.find("#scorepanel #slide").width($this.find("#scorepanel #points").width()*Math.min(1,settings.points/settings.ref));
+				$this.find("#jlscorepanel #jlslide").width($this.find("#jlscorepanel #jlpoints").width()*Math.min(1,settings.points/settings.ref));
                 
                 if (settings.points>=settings.ref && settings.goal) {
                     settings.goal = false;
-                    $this.find("#goal").css("left","-50%").show().animate({left:"-2%"}, 300);
+                    $this.find("#jlgoal").css("left","-50%").show().animate({left:"-2%"}, 300);
                     setTimeout(function() {
-                        $this.find("#goal").animate({left:"-50%"}, 500, function() { $(this).hide(); });
+                        $this.find("#jlgoal").animate({left:"-50%"}, 500, function() { $(this).hide(); });
                     }, 1500);
                 }
 			}
@@ -544,7 +528,7 @@
                 else {
                     var cell=helpers.jewel($this, elt[0], elt[1], 'a').offset(0,-1);
                     helpers.cell($this, elt[0], elt[1], cell);
-                    $this.find("#board>div").append(cell.$html);
+                    $this.find("#jlboard>div").append(cell.$html);
                     cell.reinit(speed);
                     anim=true;
                 }
@@ -559,12 +543,12 @@
 			var finish = false;
 			
 			if (goal==s.success) {
-				setTimeout(function() { $this.find("#good").show(); }, 500);
+				setTimeout(function() { $this.find("#effects").addClass("good"); }, 500);
 				settings.score = 5;
 				finish = true;
 			}
 			else if (goal==s.failed || (helpers.blocked($this)&&settings.blocked)) {
-				setTimeout(function() { $this.find("#wrong").show(); }, 1000);
+				setTimeout(function() { $this.find("#effects").addClass("wrong"); }, 1000);
 				setTimeout(function() { helpers.clear($this); }, 2000);
 				settings.score = settings.goals?0:5;
 				finish = true;
@@ -585,12 +569,12 @@
 																{ settings.score = 5; }
 					}
 				}
-				setTimeout(function() { helpers.end($this);}, 2500);
+				setTimeout(function() { helpers.end($this, {'status':'success','score':settings.score});}, 2500);
 			}
 			else {
 				settings.interactive = true; 
 				if (settings.time) {
-					$this.find("#time>div").width(0);
+					$this.find("#jltime>div").width(0);
 					settings.timer.val = Date.now();
 					settings.timer.id = setTimeout(function() { helpers.time($this); }, 50);
 				}
@@ -609,13 +593,13 @@
 		time: function($this) {
             var settings = helpers.settings($this);
             var val = (Date.now() - settings.timer.val)/1000;
-            $this.find("#time>div").width($this.find("#time").width()*Math.min(1,val/settings.time));
+            $this.find("#jltime>div").width($this.find("#jltime").width()*Math.min(1,val/settings.time));
             if (val<settings.time) { settings.timer.id = setTimeout(function() { helpers.time($this); }, 50); }
             else                   {
                 settings.timer.id = 0;
 				settings.score = 0;
 				settings.interactive = false;
-				setTimeout(function() { $this.find("#wrong").show(); }, 1000);
+				setTimeout(function() { $this.find("#effects").addClass("wrong"); }, 1000);
 				setTimeout(function() { helpers.clear($this); }, 2000);
 				setTimeout(function() { helpers.end($this);}, 2500);
 			}
@@ -726,7 +710,7 @@
                     var e = (_event && _event.originalEvent &&
                              _event.originalEvent.touches && _event.originalEvent.touches.length)?
                              _event.originalEvent.touches[0]:_event;
-                    settings.width = $this.find("#board .cell").first().width();
+                    settings.width = $this.find("#jlboard .cell").first().width();
                     var id      = $(this).css("z-index",3).attr("id");
                     var m       = id.match(/c([0-9]*)x([0-9]*)/);
                     var cell    = helpers.cell($this, m[1], m[2]);
@@ -787,7 +771,7 @@
             },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                settings.context.onquit($this,{'status':'abort'});
+                helpers.end($this,{'status':'abort'});
             }
         };
 

@@ -18,20 +18,6 @@
         debug       : true                                      // Debug mode
     };
 
-    var regExp = [
-        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
-        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
-        "\\\[br\\\]",                               "<br/>",
-        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
-        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
-        "\\\[o1\\\]([^\\\[]+)\\\[/o1\\\]",          "<span style='opacity:0.5'>$1</span>",
-        "\\\[o2\\\]([^\\\[]+)\\\[/o2\\\]",          "<span style='opacity:0.1'>$1</span>",
-        "\\\[icon\\\]([^\\\[]+)\\\[/icon\\\]",      "<div class='icon'><img src='$1' alt=''/></div>",
-        "\\\[svg\\\]([^\\\[]+)\\\[/svg\\\]",        "<div class='svg'><div><svg width='100%' height='100%' viewBox='0 0 32 32'><rect x='0' y='0' width='32' height='32' style='fill:black'/>$1</svg></div></div>",
-        "\\\[code\\\](.+)\\\[/code\\\]",            "<div class='cc'>$1</div>",
-        "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>"
-    ];
-
     // private methods
     var helpers = {
         // @generic: Check the context
@@ -53,17 +39,10 @@
             $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
-        end: function($this) {
+        end: function($this, _args) {
             var settings = helpers.settings($this);
             helpers.unbind($this);
-            settings.context.onquit($this,{'status':'success','score':settings.score});
-        },
-        format: function(_text) {
-            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
-                var vReg = new RegExp(regExp[i*2],"g");
-                _text = _text.replace(vReg,regExp[i*2+1]);
-            }
-            return _text;
+            settings.context.onquit($this,_args);
         },
         crc32: function (_data) {
             var table =
@@ -113,7 +92,7 @@
             svg:function($this) {
                 var settings = helpers.settings($this), debug = "";
                 if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
-                var elt= $this.find("#board");
+                var elt= $this.find("#loboard");
                 elt.svg();
                 settings.svg = elt.svg('get');
                 settings.svg.load( 'res/img/'+settings.url + debug,
@@ -136,32 +115,32 @@
                 if ($.isArray(settings.exercice)) {
                     $this.find("#exercice>div").html("");
                     for (var i in settings.exercice) { $this.find("#exercice>div").append(
-                        "<p>"+(settings.exercice[i].length?helpers.format(settings.exercice[i]):"&#xA0;")+"</p>"); }
-                } else { $this.find("#exercice>div").html(helpers.format(settings.exercice)); }
+                        "<p>"+(settings.exercice[i].length?jtools.format(settings.exercice[i]):"&#xA0;")+"</p>"); }
+                } else { $this.find("#exercice>div").html(jtools.format(settings.exercice)); }
                 $.each(settings.locale.source, function(id,value) { $this.find("#"+id+" .label").html(value); $this.find("#h"+id+" .label").html(value);});
-                $.each(settings.locale, function(id,value) { if (typeof(value)=="string") {$this.find("#"+id).html(helpers.format(value)); }});
+                $.each(settings.locale, function(id,value) { if (typeof(value)=="string") {$this.find("#"+id).html(jtools.format(value)); }});
 
                 for (var i in settings.a) {
                     if (settings.a[i]) {
                         if ($.isArray(settings.a[i])) {
                             for (var elt in settings.a[i]) {
 								if (typeof(settings.a[i][elt])=="string") {
-									$this.find("#panels #"+i+" #"+settings.a[i][elt]+".a").addClass("s");
+									$this.find("#lopanels #"+i+" #"+settings.a[i][elt]+".a").addClass("s");
 								}
 								else {
-									$this.find("#panels #"+i).append(
+									$this.find("#lopanels #"+i).append(
 										"<div class='a va v s' id='V"+settings.a[i][elt].value+"'><div class='label'>"+settings.a[i][elt].label+"</div></div>");
 								}
 							}
                         }
                         else {
-							$this.find("#panels #"+i+" .a").addClass("s");
+							$this.find("#lopanels #"+i+" .a").addClass("s");
 						}
                     }
                 }
 
-                $this.find(".a.s").draggable({ containment:$this, helper:"clone", appendTo:$this.find("#code #lines")});
-                helpers.addline($this,$this.find("#code #lines"));
+                $this.find(".a.s").draggable({ containment:$this, helper:"clone", appendTo:$this.find("#locode #lolines")});
+                helpers.addline($this,$this.find("#locode #lolines"));
 
                 for (var i in settings.bg) {
                     var $clone = $("#background #"+settings.bg[i].type+".hide", settings.svg.root()).clone();
@@ -174,10 +153,8 @@
                     $clone.appendTo($("#background", settings.svg.root()));
                 }
 
-                if (settings.dev) { $this.find("#devmode").show(); }
-				
 				// SLIDER
-				$this.find("#slider>div").draggable({axis:'y',containment:'parent',
+				$this.find("#loslider>div").draggable({axis:'y',containment:'parent',
 					stop: function(event, ui) { helpers.slider.update($this); },
 					start: function(event, ui) {
 						helpers.slider.update($this);
@@ -185,7 +162,7 @@
 					},
 					drag: function(event, ui) {
 						var y = settings.slider.cod*($(this).offset().top-settings.slider.top)/settings.slider.gap;
-						$this.find("#ccode").css("margin-top",-y+"px");
+						$this.find("#loccode").css("margin-top",-y+"px");
 						console.log(y);
 					}
 				});
@@ -200,7 +177,7 @@
             speed: function($this) {
                 var settings = helpers.settings($this);
                 var src=["debug","x1","x2","x3"];
-                $this.find("#controls #speed img").attr("src","res/img/control/"+src[settings.data.speed]+".svg");
+                $this.find("#locontrols #speed img").attr("src","res/img/control/"+src[settings.data.speed]+".svg");
             }
         },
         screen: function($this) {
@@ -242,7 +219,7 @@
                 out: function(event, ui) { $(this).removeClass("over"); },
                 drop:function(event, ui) {
                   $this.find(".over").removeClass("over");
-                  if ($(this).offset().top>=$this.find("#code").offset().top)
+                  if ($(this).offset().top>=$this.find("#locode").offset().top)
                   {
                     var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
                                     event.originalEvent.touches[0]:event;
@@ -250,14 +227,12 @@
                     $(this).html($elt);
                     helpers.dropvalue($this, $elt);
 
-                    var x           = event.clientX-$this.offset().left;
-                    var y           = event.clientY-$this.offset().top;
-                    var $old        = $this.find("#touch01>div").detach();
-                    var $new        = $old.clone();
-                    $this.find("#touch01").css("left",Math.floor(x - $this.find("#touch01").width()/2)+"px")
-                                          .css("top",Math.floor(y - $this.find("#touch01").height()/2)+"px")
-                                          .append($new.addClass("running")).show();
-                    setTimeout(function(){$this.find("#touch01>div").removeClass("running").parent().hide(); },800);
+                    $this.find("#lotouch>div")
+						 .addClass("running").parent()
+						 .css("left",vEvent.clientX-$this.offset().left)
+                         .css("top",vEvent.clientY-$this.offset().top)
+                         .show();
+                    setTimeout(function(){$this.find("#lotouch>div").removeClass("running").parent().hide(); },800);
 
                     $this.find("#submit").removeClass("s");
                   }
@@ -266,18 +241,18 @@
         slider: {
 			update: function($this) {
 				var settings = helpers.settings($this);
-				var h1 = $this.find("#lines").height()+$this.find("#footer").height();
-				var h2 = $this.find("#code").height();
+				var h1 = $this.find("#lolines").height()+$this.find("#lofooter").height();
+				var h2 = $this.find("#locode").height();
 				var sliderheight=Math.min(100, 100*h2/h1);
-                $this.find("#slider>div").css("height",sliderheight+"%");
+                $this.find("#loslider>div").css("height",sliderheight+"%");
 				
-				settings.slider.top		= $this.find("#code").offset().top;
-				settings.slider.gap		= $this.find("#slider").height() - $this.find("#slider>div").height();
-                settings.slider.pos 	= $this.find("#slider>div").offset().top;
+				settings.slider.top		= $this.find("#locode").offset().top;
+				settings.slider.gap		= $this.find("#loslider").height() - $this.find("#loslider>div").height();
+                settings.slider.pos 	= $this.find("#loslider>div").offset().top;
                 settings.slider.cod		= Math.max(0, h1 - h2);
 				
-				var ptop = 100*(settings.slider.pos-settings.slider.top)/$this.find("#slider").height();
-				$this.find("#slider>div").css("top",ptop+"%");
+				var ptop = 100*(settings.slider.pos-settings.slider.top)/$this.find("#loslider").height();
+				$this.find("#loslider>div").css("top",ptop+"%");
 			}
 		},
         addline: function($this, $elt, $_line) {
@@ -289,7 +264,7 @@
                 out: function(event, ui) { $(this).removeClass("over"); },
                 drop:function(event, ui) {
 				  $this.find(".line").removeClass("over");
-                  if ($(this).offset().top>=$this.find("#code").offset().top)
+                  if ($(this).offset().top>=$this.find("#locode").offset().top)
                   {
                     var vEvent = (event && event.originalEvent && event.originalEvent.touches && event.originalEvent.touches.length)?
                                     event.originalEvent.touches[0]:event;
@@ -297,14 +272,12 @@
                     var ok = !($(this).parent().hasClass("op") && $e.attr("id").substr(0,3)=="fct");
                     if (ok) {
                         $(this).html($e);
-                        var x           = event.clientX-$this.offset().left;
-                        var y           = event.clientY-$this.offset().top;
-                        var $old        = $this.find("#touch01>div").detach();
-                        var $new        = $old.clone();
-                        $this.find("#touch01").css("left",Math.floor(x - $this.find("#touch01").width()/2)+"px")
-                                              .css("top",Math.floor(y - $this.find("#touch01").height()/2)+"px")
-                                              .append($new.addClass("running")).show();
-                        setTimeout(function(){$this.find("#touch01>div").removeClass("running").parent().hide(); },800);
+                        $this.find("#lotouch>div")
+						     .addClass("running").parent()
+						     .css("left",vEvent.clientX-$this.offset().left)
+                             .css("top",vEvent.clientY-$this.offset().top)
+                             .show();
+                        setTimeout(function(){$this.find("#lotouch>div").removeClass("running").parent().hide(); },800);
 
                         // HANDLE LINES
 						var nblines = $(this).parent().find(">.line").length;
@@ -314,7 +287,7 @@
 						}
 
                         // MAKE THE NEW OPERATION DRAGGABLE
-                        $e.draggable({ containment:$this, helper:"clone", appendTo:$this.find("#code #lines"),
+                        $e.draggable({ containment:$this, helper:"clone", appendTo:$this.find("#locode #lolines"),
                             start:function( event, ui) { ui.helper.removeClass("cc"); $e.css("opacity",0.2);},
                             stop: function( event, ui) { $(this).detach(); } });
 
@@ -552,9 +525,9 @@
             },
             call1: function($this, $elt) {
                 var settings = helpers.settings($this);
-                var ret = ($this.find("#code #fct1").length==1);
+                var ret = ($this.find("#locode #fct1").length==1);
                 if (ret) {
-                    settings.data.stack.push({$elt:$this.find("#code #fct1 .d.op").children().first(),
+                    settings.data.stack.push({$elt:$this.find("#locode #fct1 .d.op").children().first(),
                                               $first:0, count:0, sav:{X:settings.data.X, Y:settings.data.Y, Z:settings.data.Z} });
                     settings.data.X = 0; settings.data.Y = 0; settings.data.Z = 0;
                 }
@@ -562,10 +535,10 @@
             },
             call2: function($this, $elt) {
                 var settings = helpers.settings($this);
-                var ret = ($this.find("#code #fct2").length==1);
+                var ret = ($this.find("#locode #fct2").length==1);
                 if (ret) {
                     var valueX = helpers.process.value.get($this, $elt.find(".d.va").first());
-                    settings.data.stack.push({$elt:$this.find("#code #fct2 .d.op").children().first(),
+                    settings.data.stack.push({$elt:$this.find("#locode #fct2 .d.op").children().first(),
                                               $first:0, count:0, sav:{X:settings.data.X, Y:settings.data.Y, Z:settings.data.Z } });
                     settings.data.X = valueX;
                     settings.data.Y = 0;
@@ -575,11 +548,11 @@
             },
             call3: function($this, $elt) {
                 var settings = helpers.settings($this);
-                var ret = ($this.find("#code #fct3").length==1);
+                var ret = ($this.find("#locode #fct3").length==1);
                 if (ret) {
                     var valueX = helpers.process.value.get($this, $elt.find(".d.va").first());
                     var valueY = helpers.process.value.get($this, $elt.find(".d.va").first().next());
-                    settings.data.stack.push({$elt:$this.find("#code #fct3 .d.op").children().first(),
+                    settings.data.stack.push({$elt:$this.find("#locode #fct3 .d.op").children().first(),
                                               $first:0, count:0, sav:{X:settings.data.X, Y:settings.data.Y, Z:settings.data.Z } });
                     settings.data.X = valueX;
                     settings.data.Y = valueY;
@@ -619,7 +592,7 @@
             settings.data.count = 0;
             settings.data.timer = 0;
             settings.data.X = 0; settings.data.Y = 0; settings.data.Z = 0; settings.data.I = 0; settings.data.J = 0;
-            settings.data.stack=[{$elt:$this.find("#code #lines").children().first(), $first:0, count:1, sav:0}];
+            settings.data.stack=[{$elt:$this.find("#locode #lolines").children().first(), $first:0, count:1, sav:0}];
             settings.data.pos = [0,0];
             settings.data.cap = 0;
             settings.data.color = 0;
@@ -632,7 +605,7 @@
             $("#rotturtle", settings.svg.root()).attr("class","");
             helpers.process.turtle.upd($this);
 
-            $this.find("#code #lines .line").removeClass("s");
+            $this.find("#locode #lolines .line").removeClass("s");
             $this.find("#submit").removeClass("s");
 
         },
@@ -666,7 +639,7 @@
                     return;
                 }
 
-                if (speed) {  $this.find("#code #lines .line").removeClass("s"); }
+                if (speed) {  $this.find("#locode #lolines .line").removeClass("s"); }
 
                 if (settings.data.stack.length) {
                     var current = settings.data.stack[settings.data.stack.length-1];
@@ -684,7 +657,7 @@
                         else                   { helpers.popstack($this); }
                     }
 
-                    if (debug || settings.data.paused) { $this.find("#controls #play img").attr("src","res/img/control/play.svg"); }
+                    if (debug || settings.data.paused) { $this.find("#locontrols #play img").attr("src","res/img/control/play.svg"); }
                     else {
                         if (speed) { settings.data.timer = setTimeout(function() { helpers.run($this); }, speed); }
                         else {
@@ -698,9 +671,9 @@
         },
         finish: function($this, _stopped) {
             var settings = helpers.settings($this);
-            $this.find(".mask").hide();
-            $this.find("#controls").removeClass("running");
-            $this.find("#controls #play img").attr("src","res/img/control/play.svg");
+            $this.find(".lomask").hide();
+            $this.find("#locontrols").removeClass("running");
+            $this.find("#locontrols #play img").attr("src","res/img/control/play.svg");
             settings.data.running = false;
             settings.data.paused = false;
 
@@ -710,7 +683,7 @@
                 $this.find("#it .it").hide();
                 if (good) {
                     $this.find("#it #itgood").show();
-                    $this.find("#effects #good").show();
+                    $this.find("#effects").addClass("good");
                     $this.find("#it>div").css("left","110%").animate({left:"30%"},500, function() {
                         $this.find("#continue").show();
                     }).parent().show();
@@ -718,7 +691,7 @@
                 }
                 else {
                     $this.find("#it #itwrong").show();
-                    $this.find("#effects #wrong").show();
+                    $this.find("#effects").addClass("wrong");
                     
                     $this.find("#it>div").css("left","110%").animate({left:"30%"},500, function() {
                         
@@ -733,7 +706,7 @@
                         }
                         
                         if (helpid!=-1) {
-                            $this.find("#dialog>div").html(helpers.format(settings.help[helpid].dialog)).parent().show();
+                            $this.find("#dialog>div").html(jtools.format(settings.help[helpid].dialog)).parent().show();
                             $this.find("#continue").show();
                         }
                         else {
@@ -752,11 +725,10 @@
         },
         clean: function($this) {
             var settings = helpers.settings($this);
-            $this.find("#effects").hide();
-            $this.find("#effects #wrong").hide();
+            $this.find("#effects").removeClass();
             $this.find("#continue").hide();
             $this.find("#dialog>div").html("").parent().hide();
-            $this.find("#code #lines .line").removeClass("s");
+            $this.find("#locode #lolines .line").removeClass("s");
 
         },
         check: function($this) {
@@ -863,7 +835,7 @@
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 settings.interactive = false;
-                settings.context.onquit($this,{'status':'abort'});
+                helpers.end($this,{'status':'abort'});
             },
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
@@ -875,7 +847,7 @@
                     if (settings.data.running) {
                         if (settings.data.speed==0 || settings.data.paused ) {
                             settings.data.paused = false;
-                            $this.find("#controls #play img").attr("src","res/img/control/pause.svg");
+                            $this.find("#locontrols #play img").attr("src","res/img/control/pause.svg");
                             helpers.run($this);
                         }
                         else {
@@ -883,9 +855,9 @@
                         }
                     }
                     else {
-                        $this.find(".mask").show();
-                        $this.find("#controls").addClass("running");
-                        $this.find("#controls #play img").attr("src","res/img/control/pause.svg");
+                        $this.find(".lomask").show();
+                        $this.find("#locontrols").addClass("running");
+                        $this.find("#locontrols #play img").attr("src","res/img/control/pause.svg");
                         settings.data.running = true;
                         settings.data.paused = false;
                         helpers.init($this);
@@ -914,6 +886,7 @@
                 }
             },
             devmode: function() {
+				// TODO : MOVE TO THE EDITOR
                 var $this = $(this), settings = helpers.settings($this);
                 var svg = "";
                 
@@ -986,7 +959,7 @@
                 helpers.clean($this);
                 $this.find("#it>div").animate({left:"110%"},1000,function() { 
                     $(this).parent().hide();
-                    if (!settings.interactive) { helpers.end($this); }
+                    if (!settings.interactive) { helpers.end($this, {'status':'success','score':settings.score}); }
                 });
             },
             board: function() {
@@ -1004,7 +977,8 @@
                     }
                     if (text.search("xlink:href")==-1)  { text = text.replace(/href/,'xlink:href'); }
                     text = text.replace(/id="pencil"/, 'id="pencil" style="display:none;"');
-                    $(this).find("#export").html("<img title='export' src='data:image/svg+xml;charset=utf-8,"+
+
+                    $this.find("#loexport").html("<img title='export' src='data:image/svg+xml;charset=utf-8,"+
                                                   encodeURIComponent(text)+"'/>").show();
                 helpers.screen($this);
             },
@@ -1012,7 +986,7 @@
                 var $this = $(this) , settings = helpers.settings($this);
                 if (settings.tipid<settings.tips.length) {
                     $this.find("#ptip .tip"+(settings.tipid+1)).removeClass("s").addClass("f")
-                         .find(".content").html(helpers.format(settings.tips[settings.tipid]));
+                         .find(".content").html(jtools.format(settings.tips[settings.tipid]));
                          
                     settings.tipid++;
                     $this.find("#tip>div").html(settings.tips.length-settings.tipid);

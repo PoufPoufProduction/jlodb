@@ -22,16 +22,6 @@
         debug       : true                                      // Debug mode
     };
 
-
-    
-    var regExp = [
-        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
-        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
-        "\\\[br\\\]",                               "<br/>",
-        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
-        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
-        "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>"
-    ];
     
     var touch = { none:0, ball:1, wall:2, top:3 };
 
@@ -56,25 +46,13 @@
             $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
-        end: function($this) {
+        end: function($this, _args) {
             var settings = helpers.settings($this);
             helpers.unbind($this);
-            helpers.quit($this);
-            settings.context.onquit($this,{'status':'success','score':settings.score});
-        },
-        // End all timers
-        quit: function($this) {
-            var settings = helpers.settings($this);
             settings.interactive = false;
             if (settings.moves.timerid) { clearTimeout(settings.moves.timerid); }
             if (settings.timer.id)      { clearTimeout(settings.timer.id);}
-        },
-        format: function(_text) {
-            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
-                var vReg = new RegExp(regExp[i*2],"g");
-                _text = _text.replace(vReg,regExp[i*2+1]);
-            }
-            return _text;
+            settings.context.onquit($this, _args);
         },
         loader: {
             css: function($this) {
@@ -107,7 +85,7 @@
             svg:function($this) {
                 var settings = helpers.settings($this),debug = "";
                 if (settings.debug) { var tmp = new Date(); debug="?time="+tmp.getTime(); }
-                var elt= $("<div></div>").appendTo($this.find("#board"));
+                var elt= $("<div></div>").appendTo($this.find("#lhboard"));
                 elt.svg();
                 settings.svg = elt.svg('get');
                 settings.svg.load('res/img/desktop/bubble01.svg' + debug,
@@ -316,7 +294,7 @@
                         }
                         
 						// FINISH OR NEXT BUBBLE
-                        if (finish) { settings.score = 5; setTimeout(function() { helpers.end($this);}, 1000 ); }
+                        if (finish) { setTimeout(function() { helpers.end($this, {'status':'success','score':5});}, 1000 ); }
                         else        { setTimeout(function() { helpers.display($this); helpers.run($this);}, 1000 ); }
 
                     }
@@ -579,20 +557,17 @@
                 if (cell) { cell.$svg.attr("class","bubble"); }
             }
             if (count==12-settings.level)   {
-                
                 setTimeout(function(){
                     for (var j=0; j<(12+1); j++) for (var i=0; i<8; i++) {
                         var elt = settings.data[j][i];
                         if (elt) { elt.moveto([elt.pos[0]+(Math.random()-0.5)*200,elt.pos[1]+480],16+j); }
                         
-                        setTimeout(function(){ helpers.end($this)}, 2000);
+                        setTimeout(function(){ helpers.end($this, {'status':'success','score':0})}, 2000);
                     }
-                    
-                    
                 },200);
                 
             }
-            else                            { setTimeout(function(){helpers.failed($this, count+1);},100); }
+            else  { setTimeout(function(){helpers.failed($this, count+1);},100); }
         }
     };
 
@@ -639,8 +614,7 @@
             },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                helpers.quit($this);
-                settings.context.onquit($this,{'status':'abort'});
+                helpers.end($this,{'status':'abort'});
             }
         };
 

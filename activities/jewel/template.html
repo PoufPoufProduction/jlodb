@@ -1,24 +1,23 @@
 <div>
 
-    <div id="leftmenu"></div>
-    <div id="board"><div></div></div>
-    <div id="rightmenu" ontouchstart="$(this).closest('.jewel').find('#splashex').show();event.preventDefault()"
+    <div id="jlleftmenu"></div>
+    <div id="jlboard"><div></div></div>
+    <div id="jlrightmenu" ontouchstart="$(this).closest('.jewel').find('#splashex').show();event.preventDefault()"
                         onclick="$(this).closest('.jewel').find('#splashex').show();">
-        <div id="scorepanel">
-            <div id="sctitle">score</div>
-			<div id="points"><div id="slide"></div><div id="v"></div></div>
+        <div id="jlscorepanel">
+            <div id="jlscore"></div>
+			<div id="jlpoints"><div id="jlslide"></div><div id="v"></div></div>
         </div>
 		
-		<div id="time"><div></div></div>
-		<div id="counter">100</div>
+		<div id="jltime"><div></div></div>
+		<div id="jlcounter">100</div>
     </div>
-	
+    <div id="jlgoal"><img src="res/img/asset/misc/goal01.svg" alt=""/></div>
     
-    <div id="goal"><img src="res/img/asset/misc/goal01.svg" alt=""/></div>
-    
-    <div id="good" class="alert"><img src="res/img/default/popup/good01.svg" alt=""/></div>
-    <div id="wrong" class="alert"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
-    
+    <div id="effects">
+        <div id="good"><img src="res/img/default/popup/good01.svg" alt=""/></div>
+        <div id="wrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
+    </div>
 
     <div id="splashex" ontouchstart="$(this).hide().closest('.jewel').jewel('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.jewel').jewel('next');"><div>

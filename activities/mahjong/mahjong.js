@@ -13,15 +13,6 @@
         shuffle		: true,									// Shuffle remaining tiles when no pair
         debug       : true                                  // Debug mode
     };
-
-    var regExp = [
-        "\\\[b\\\]([^\\\[]+)\\\[/b\\\]",            "<b>$1</b>",
-        "\\\[i\\\]([^\\\[]+)\\\[/i\\\]",            "<i>$1</i>",
-        "\\\[br\\\]",                               "<br/>",
-        "\\\[blue\\\]([^\\\[]+)\\\[/blue\\\]",      "<span style='color:blue'>$1</span>",
-        "\\\[red\\\]([^\\\[]+)\\\[/red\\\]",        "<span style='color:red'>$1</span>",
-        "\\\[strong\\\](.+)\\\[/strong\\\]",        "<div class='strong'>$1</div>"
-    ];
 	
 	var tiles = [];
 
@@ -46,22 +37,10 @@
             $this.unbind("mouseup mousedown mousemove mouseleave touchstart touchmove touchend touchleave");
         },
         // Quit the activity by calling the context callback
-        end: function($this) {
+        end: function($this, _args) {
             var settings = helpers.settings($this);
             helpers.unbind($this);
-            settings.context.onquit($this,{'status':'success','score':settings.score});
-        },
-        // End all timers
-        quit: function($this) {
-            var settings = helpers.settings($this);
-            // if (settings.timerid) { clearTimeout(settings.timerid); }
-        },
-        format: function(_text) {
-            for (var j=0; j<2; j++) for (var i=0; i<regExp.length/2; i++) {
-                var vReg = new RegExp(regExp[i*2],"g");
-                _text = _text.replace(vReg,regExp[i*2+1]);
-            }
-            return _text;
+            settings.context.onquit($this,_args);
         },
         loader: {
             css: function($this) {
@@ -96,7 +75,8 @@
                 // Send the onLoad callback
                 if (settings.context.onload) { settings.context.onload($this); }
 
-                $this.find("#board>div").css("font-size", settings.font+"em");
+                $this.find("#mhboard>div").css("font-size", settings.font+"em");
+				$this.find(".mhfx").css("font-size", (settings.font*3)+"em");
                 $this.find(".target").css("font-size",(Math.floor(1.4*settings.font*10)/10)+"em");
 
                 // Locale handling
@@ -163,10 +143,7 @@
 				
 				if (pos.length>settings.data.length) { alert("SIZE ISSUE (elt: "+settings.data.length+") ("+pos.length+")"); }
 				for (var i=0; i<pos.length; i++) { settings.elts.push(helpers.tile($this, settings.data[i])); }
-				
-                // Optional devmode
-                if (settings.dev) { $this.find("#devmode").show(); }
-                
+
 				var nb=0;
 				do { helpers.setpos($this,pos,true); nb++; } while ( !helpers.simulation($this) && nb<10);
 				if (nb==10) { alert("Error on tiles ("+pos.length+")"); }
@@ -201,7 +178,7 @@
 		// DISPLAY TILES ACCORDING TO THEIR POSITION
         display: function($this,_clear) {
             var settings = helpers.settings($this);
-            if (_clear) { $this.find("#board>div").html(""); }
+            if (_clear) { $this.find("#mhboard>div").html(""); }
 			settings.elts.sort(function(_a,_b) { return (_a.pos[0]>_b.pos[0]); });
             for (var i in settings.elts)
             {
@@ -213,7 +190,7 @@
 							 .css("left",(elt.pos[0]*1.75+elt.pos[2]*0.25+settings.offset[0])+"em")
 							 .css("z-index",elt.zindex);
 					if (settings.mask) { elt.$html.toggleClass("blocked", !elt.free); }
-					if (_clear) {  $this.find("#board>div").append(elt.$html); }
+					if (_clear) {  $this.find("#mhboard>div").append(elt.$html); }
 				}
             }
 		},
@@ -278,13 +255,13 @@
 					do { nb++; helpers.setpos($this, helpers.getpos($this), true); } while ( !helpers.simulation($this) && nb<10);
 					if (nb<10) {
 						gameover = false;
-						$this.find("#shuffle").css("opacity",0).show().animate({opacity:1},300, function() {
-							$this.find(".mjtile").css("opacity",1).animate({opacity:0},500);
+						$this.find("#mhshuffle").css("opacity",0).show().animate({opacity:1},300, function() {
+							$this.find(".mhtile").css("opacity",1).animate({opacity:0},500);
 							setTimeout(function() {
-								$this.find("#shuffle").animate({opacity:0},500, function() {
+								$this.find("#mhshuffle").animate({opacity:0},500, function() {
 									$(this).hide();
 									helpers.endturn($this);
-									$this.find(".mjtile").css("opacity",0).animate({opacity:1},500);
+									$this.find(".mhtile").css("opacity",0).animate({opacity:1},500);
 								});
 							},800);
 						});
@@ -293,8 +270,8 @@
 				
 				if (gameover) {
 					settings.score=0;
-					$this.find("#wrong").show().parent().show();
-					setTimeout(function() {helpers.end($this);}, 1000);
+					$this.find("#effects").addClass("wrong");
+					setTimeout(function() {helpers.end($this, {'status':'success','score':settings.score});}, 1000);
 				}
             }
 			else { settings.interactive=true; helpers.display($this,false); }
@@ -328,7 +305,7 @@
 				}
             };
             
-            ret.$html=$("<div class='mjtile' id='"+ret.id+"'>"+
+            ret.$html=$("<div class='mhtile' id='"+ret.id+"'>"+
                             "<img src='res/img/asset/mahjong/"+(_data.src?_data.src:"void")+".svg' alt='' />"+
                             "<div class='img'></div>"+
                             "<div class='txt'><div></div></div>"+
@@ -361,7 +338,19 @@
                                 if (settings.selected.value==elt.value) {
                                     settings.selected.active = false;
                                     elt.active = false;
-                                        
+									
+									$this.find("#mhfx1>div").addClass("running").parent()
+									     .css("top",  settings.selected.$html.offset().top - $this.offset().top)
+										 .css("left", settings.selected.$html.offset().left - $this.offset().left)
+										 .show();
+									$this.find("#mhfx2>div").addClass("running").parent()
+									     .css("top",  elt.$html.offset().top - $this.offset().top)
+										 .css("left", elt.$html.offset().left - $this.offset().left)
+										 .show();
+									setTimeout(function() {
+										$this.find(".mhfx>div").removeClass("running").parent().hide();
+									},800);
+										 
                                     setTimeout(function() {
                                         
                                         settings.selected.$html.animate({opacity:0}, 200, function() { $(this).detach(); });
@@ -370,7 +359,10 @@
                                         
                                         var finish=true;
 										for (var i in settings.elts) { if (settings.elts[i].active) { finish=false; } }
-										if (finish) { settings.interactive = false; setTimeout(function() { helpers.end($this); }, 1000); }
+										if (finish) {
+											settings.interactive = false;
+											$this.find("#effects").addClass("good");
+											setTimeout(function() { helpers.end($this, {'status':'success','score':settings.score}); }, 1000); }
 										else        { helpers.endturn($this); }
                                     
                                         
@@ -392,7 +384,7 @@
         },
         clean : function($this) {
             var settings = helpers.settings($this);
-            $this.find(".mjtile.s").removeClass("s");
+            $this.find(".mhtile.s").removeClass("s");
             settings.selected=0;
 			settings.interactive = true;
         }
@@ -434,18 +426,13 @@
                     }
                 });
             },
-            devmode: function() {
-                var $this = $(this) , settings = helpers.settings($this);
-                $this.find("#devoutput textarea").val("Debug output").parent().show();
-            },
             next: function() {
                 var $this = $(this) , settings = helpers.settings($this);
                 settings.interactive = true;
             },
             quit: function() {
                 var $this = $(this) , settings = helpers.settings($this);
-                helpers.quit($this);
-                settings.context.onquit($this,{'status':'abort'});
+                helpers.end($this,{'status':'abort'});
             },
             clean: function() { helpers.clean($(this)); },
             hint: function() {
@@ -458,7 +445,7 @@
                         break;
                     }
                 }
-                $this.find("#mask").hide();
+                $this.find("#mhmask").hide();
             }
         };
 

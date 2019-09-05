@@ -1,128 +1,78 @@
-.logo                                { background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat;}
-.logo div#splashex                  { background-image:url("../../res/img/banners/logo.svg"); color:lime; }
-.logo div#splashex h1                { position:absolute; top:12%; left:50%; font-size:2em; background-color:red;
-                                          width:70%; color:white; text-align:center;
-                                          border:.3em solid white;
-                                          -ms-transform: rotate(45deg); -webkit-transform: rotate(45deg); transform: rotate(45deg); }
-
-.logo div.mask                       { position:absolute; width:7.8em; height:12em; top:0; left:0; display:none; }
-.logo div#export                     { position:absolute; width:16em; height:12em; top:0; left:0; display:none; z-index:2002;}
-.logo div#dbg                        { position:absolute; width:16em; height:12em; top:0; left:0; display:none;
-                                       background-color:rgba(0,20,0,0.9); color:green; }
-.logo div#dbg>pre                    { font-size:0.3em; }
-
-.logo div#output>div                 { margin-left:.1em; }
-.logo div#board                      { cursor:crosshair; width:8em; height:6em; margin-top:.1em; }
-.logo div#controls                   { width:8em; height:1em; padding:.1em 0; background-color:#cccccc;
-                                       background-image:url("../../res/img/default/pattern/steel01.svg"); background-repeat:repeat; }
-.logo div#controls.running           { background-color:#5BB; }
-.logo div#controls #debug            { display:none; }
-.logo div#buttons>div                { float:left; margin-left:.2em; cursor:pointer;}
-.logo div#exercice                   { width:7.8em; height:4.5em;
-                                       text-align:justify; background-repeat:repeat; padding:.05em .1em;
-                                      background-image:url("../../res/img/default/pattern/line01.svg"); }
-.logo div#exercice>div               { font-size:.28em; }
-
-.logo div#exercice .svg              { background-color:rgba(0,0,0,0.2); font-size:6em; }
-.logo div#exercice .svg>div          { width:1em; height:1em; margin:.1em auto; }
-.logo div#exercice .strong           { color:red; font-weight:bold; border: 1px solid red; border-width:1px 0; }
-.logo div#exercice .icon			 { display:inline-block; width:1em; height:1em; }
-.logo .cc                            { background-color:rgba(0,40,0,0.9); color:lime; padding:.5em; margin:.4em 0; }
-.logo div#ptip .cc                   { padding:.1em .5em; font-size:.6em; }
-.logo div#ptip>div                   { margin-left:2%; }
-.logo div#ptip #tippopup             { left:45%; }
-
-.logo div#menu                       { float:left; background-color:#90cce0; margin:.1em 0 .1em .1em;
-                                       width:7.7em; height:11.8em; }
-
-.logo div#source                     { margin:.1em .1em 0 .1em; width:10.8em; height:5.8em; background-color:rgba(255,255,255,0.2);
-                                       font-size:.7em; }
-.logo div#tabs                       { float:left; width:1em; background-color:#609cc0; }
-.logo div#tabs>div                   { width:1em; height:1em; background-color:#80bcd0; border-radius:.5em 0 0 .5em;
-                                       cursor:pointer; text-align:center; color:#aaeeff; font-weight:bold; }
-.logo div#tabs>div:first-child       { height:1.8em; }
-.logo div#tabs>div.s                 { background-color:#334466; }
-.logo div#panels                     { background-color:white; }
-.logo div#panels>div                 { width:24em; height:14.2em; overflow:auto; font-size:0.4em; margin:.2em;
-                                       background-color:#90cce0; background-image:url("../../res/img/default/pattern/line03.svg");
-                                       background-repeat:repeat; overflow:visible;}
-
-.logo .op                            { background-color:#446688; color:#DDEEFF; min-height:1.4em;}
-.logo .va                            { background-color:#777777; color:#EEEEEE; min-width:1.8em; min-height:1.2em;}
-.logo .va>.label                     { margin:0 auto; float:none; }
-.logo .ma                            { background-color:#555555; color:#EEEEEE; min-height:1.4em; }
-.logo .cl                            { background-color:#334466; color:#DDEEFF; height:1.4em; }
-.logo .cl>.op                    { height:1.2em; }
-.logo .label                         { margin:0 .1em; text-align:center; float:left; }
-.logo .a                             { margin:.1em; padding:0 .2em; float:left; opacity:0.2; white-space:nowrap;
-                                        border-radius:.25em; cursor:move; display:none; }
-.logo .a.s                           { opacity:1; display:inherit; }
-.logo .d                             { float:left; margin:.1em .1em .1em .2em;  min-height:1.2em; min-width:1.8em; border-radius:.25em; }
-.logo .d.va.over                     { background-color:red !important; }
-.logo .ui-draggable-dragging .d.op   { display:none; }
-.logo .ui-draggable-dragging .d.va   { opacity:0; }
-.logo .ui-draggable-dragging         { min-width:3em; z-index:3; cursor:none !important; }
-.logo .va.ui-draggable-dragging      { opacity:0.8 !important; height:1.2em; min-width:1.8em; }
-.logo .ma.ui-draggable-dragging      { opacity:0.8 !important; height:1.4em;}
-.logo .op.ui-draggable-dragging      { height:1.4em;}
-
-.logo .d>.a                          { font-size:0.75em; }
-
-.logo div#code                       { margin:.22em; width:18.8em; height:18.8em; background-color:#222222;
-                                       overflow:hidden; font-size:0.4em; background-size:90%;
-                                       background-image:url("../../res/img/background/asset/it01.svg"); background-repeat:no-repeat; }
-.logo div#code #ccode				{ width:90%; float:left;}
-.logo div#code #slider				{ width:10%; height:100%; background-color:white; }
-.logo div#code #slider>div			{ width:100%; height:100%; background-color:gray; cursor:move; }
-.logo div#code #slider>div.ui-draggable-dragging	{ background-color:red; }
-
-.logo.fixed div#code #ccode			{ width:100%; }
-.logo.fixed div#code #slider		{ display:none; }
-
-.logo div#code #footer               { width:100%; height:2em; border:1px solid #334466; border-width:4px 0 0 0;
-                                       background-image:linear-gradient(to bottom, rgba(51,68,102,1), rgba(51,68,102,0)); }
-.logo div#code .line                 { width:100%; min-height:1em;
-                                       background-color:rgba(20,40,50,0.9); border:1px solid #334466; border-width:0 0 1px 0;}
-.logo div#code .line.s               { background:yellow; }
-.logo div#code .line.over			 { background:red; }
-
-.logo div#code .line .op             { width:95%; }
-.logo div#code .line .cl             { height:inherit;  }
-.logo div#code .line .cl>.op         { height:auto !important;  }
-.logo div#code .cl.cc                 { width:95%; }
-.logo div#code .cc .d.op              { clear:both; width:98%; border-radius:0; }
-
-
-.logo.big .a						 { font-size:1.5em; }
-.logo.big .d>.a						 { font-size:0.75em; }
-.logo.big div#code .line			 { min-height:2.2em; }
-
-.logo #touch01                          { top:0; left:0; font-size:2em; }
-
-.logo .legend				{ position:absolute; text-align:right; font-size:0.4em; color:gray; display:none; z-index:2; }
-.logo #programzone			 { top:94%; left:20%; width:27%; }
-.logo #depotzone			 { top:30%; left:20%; width:27%; color:white; }
-.logo #screenzone			 { top:1%; left:50%; }
-.logo.legend .legend	{ display:inherit; }
-
-.logo #phelp                            { width:16em; height:12em; position:absolute;top:0;left:0; background-color:rgba(0,0,0,0.5);
-                                      z-index:2002; cursor:pointer; display:none; }
-.logo #phelp>div                   { width:98%; height:98%; margin:.5em auto; font-size:.3em;  
-                                      background-color:rgba(255,255,255,0.8); }
-.logo #phelp .inst              { margin:.1em .2em; }
-.logo #phelp .linst             { background-color:#468; color:white; width:14em; padding:.1em; float:left; margin-right:.2em; }
-.logo #phelp .arg                   { float:right; width:2em; background-color:gray; text-align:center; margin-left:.1em; }
-
-
-.logo #it                            { position:absolute; width:100%; height:100%; background-color:transparent; z-index:2;top:0; left:0; display:none; }
-.logo #it>div                        { position:absolute; top:60%; left:30%; overflow:visible; }
-.logo #it .it                        { display:none; width:12em; height:4em; }
-.logo #it #dialog                    { position:absolute; width:18em; height:18em; top:-90%; left:10%; background-image:url("../../res/img/asset/fx/dialog01.svg"); font-size:.4em; display:none; }
-.logo #it #dialog>div                { margin:1em; text-align:justify; }
-
-.logo #continue                      { position:absolute; width:16em; height:16em; top:0; left:0; display:none; z-index:2;  }
-.logo #continue>div                  { font-size:3em; position:absolute; top:55%; left:70%; cursor:pointer; border-radius:.5em;}
-.logo #effects                       { position:absolute; top:45%; left:10%; display:none; z-index:2;  }
-.logo #effects>div                   { font-size:5em; width:1em; height:1em; }
+.logo                                       { background-image:url("../../res/img/default/pattern/line02.svg"); background-repeat:repeat;}
+.logo #splashex                             { background-image:url("../../res/img/banners/logo.svg"); color:lime; }
+.logo .lomask                               { position:absolute; width:7.8em; height:12em; top:0; left:0; display:none; }
+.logo #loexport                             { position:absolute; width:16em; height:12em; top:0; left:0; display:none; z-index:2002;}
+.logo #loboard                              { cursor:crosshair; width:8em; height:6em; margin-top:.1em; }
+.logo #locontrols                           { width:8em; height:1em; padding:.1em 0; background-color:#cccccc; background-image:url("../../res/img/default/pattern/steel01.svg"); background-repeat:repeat; }
+.logo #locontrols.running                   { background-color:#5BB; }
+.logo #locontrols #debug                    { display:none; }
+.logo #lobuttons>div                        { float:left; margin-left:.2em; cursor:pointer;}
+.logo #exercice                             { width:7.8em; height:4.5em; text-align:justify; background-repeat:repeat; padding:.05em .1em; background-image:url("../../res/img/default/pattern/line01.svg"); }
+.logo #exercice>div                         { font-size:.28em; }
+.logo #ptip .t_code                         { padding:.1em .5em; font-size:.6em; }
+.logo #lomenu                               { float:left; background-color:#90cce0; margin:.1em 0 .1em .1em; width:7.7em; height:11.8em; }
+.logo #losource                             { margin:.1em .1em 0 .1em; width:10.8em; height:5.8em; background-color:rgba(255,255,255,0.2); font-size:.7em; }
+.logo #lotabs                               { float:left; width:1em; background-color:#609cc0; }
+.logo #lotabs>div                           { width:1em; height:1em; background-color:#80bcd0; border-radius:.5em 0 0 .5em; cursor:pointer; text-align:center; color:#aaeeff; font-weight:bold; }
+.logo #lotabs>div:first-child               { height:1.8em; }
+.logo #lotabs>div.s                         { background-color:#334466; }
+.logo #lopanels                             { background-color:white; }
+.logo #lopanels>div                         { width:24em; height:14.2em; overflow:auto; font-size:0.4em; margin:.2em; background-color:#90cce0; background-image:url("../../res/img/default/pattern/line03.svg"); background-repeat:repeat; overflow:visible;}
+.logo .op                                   { background-color:#446688; color:#DDEEFF; min-height:1.4em;}
+.logo .va                                   { background-color:#777777; color:#EEEEEE; min-width:1.8em; min-height:1.2em;}
+.logo .va>.label                            { margin:0 auto; float:none; }
+.logo .ma                                   { background-color:#555555; color:#EEEEEE; min-height:1.4em; }
+.logo .cl                                   { background-color:#334466; color:#DDEEFF; height:1.4em; }
+.logo .cl>.op                               { height:1.2em; }
+.logo .label                                { margin:0 .1em; text-align:center; float:left; }
+.logo .a                                    { margin:.1em; padding:0 .2em; float:left; opacity:0.2; white-space:nowrap; border-radius:.25em; cursor:move; display:none; }
+.logo .a.s                                  { opacity:1; display:inherit; }
+.logo .d                                    { float:left; margin:.1em .1em .1em .2em;  min-height:1.2em; min-width:1.8em; border-radius:.25em; }
+.logo .d.va.over                            { background-color:red !important; }
+.logo .ui-draggable-dragging .d.op          { display:none; }
+.logo .ui-draggable-dragging .d.va          { opacity:0; }
+.logo .ui-draggable-dragging                { min-width:3em; z-index:3; cursor:none !important; }
+.logo .va.ui-draggable-dragging             { opacity:0.8 !important; height:1.2em; min-width:1.8em; }
+.logo .ma.ui-draggable-dragging             { opacity:0.8 !important; height:1.4em;}
+.logo .op.ui-draggable-dragging             { height:1.4em;}
+.logo .d>.a                                 { font-size:0.75em; }
+.logo #locode                               { margin:.22em; width:18.8em; height:18.8em; background-color:#222222; overflow:hidden; font-size:0.4em; background-size:90%; background-image:url("../../res/img/background/asset/it01.svg"); background-repeat:no-repeat; }
+.logo #loccode				                { width:90%; float:left;}
+.logo #loslider				                { width:10%; height:100%; background-color:white; }
+.logo #loslider>div			                { width:100%; height:100%; background-color:gray; cursor:move; }
+.logo #loslider>div.ui-draggable-dragging   { background-color:red; }
+.logo.fixed #loccode			            { width:100%; }
+.logo.fixed #loslider		                { display:none; }
+.logo #lofooter                             { width:100%; height:2em; border:1px solid #334466; border-width:4px 0 0 0; background-image:linear-gradient(to bottom, rgba(51,68,102,1), rgba(51,68,102,0)); }
+.logo #locode .line                         { width:100%; min-height:1em; background-color:rgba(20,40,50,0.9); border:1px solid #334466; border-width:0 0 1px 0;}
+.logo #locode .line.s                       { background:yellow; }
+.logo #locode .line.over			        { background:red; }
+.logo #locode .line .op                     { width:95%; }
+.logo #locode .line .cl                     { height:inherit;  }
+.logo #locode .line .cl>.op                 { height:auto !important;  }
+.logo #locode .cl.cc                        { width:95%; }
+.logo #locode .cc .d.op                     { clear:both; width:98%; border-radius:0; }
+.logo.big .a						        { font-size:1.5em; }
+.logo.big .d>.a						        { font-size:0.75em; }
+.logo.big #locode .line			            { min-height:2.2em; }
+.logo #lotouch                              { font-size:2em; }
+.logo .lolegend                             { position:absolute; text-align:right; font-size:0.4em; color:gray; display:none; z-index:2; }
+.logo #loprogramzone                        { top:94%; left:20%; width:27%; }
+.logo #lodepotzone                          { top:30%; left:20%; width:27%; color:white; }
+.logo #loscreenzone                         { top:1%; left:50%; }
+.logo.legend .lolegend                      { display:inherit; }
+.logo #phelp                                { width:16em; height:12em; position:absolute;top:0;left:0; background-color:rgba(0,0,0,0.5); z-index:2002; cursor:pointer; display:none; }
+.logo #phelp>div                            { width:98%; height:98%; margin:.5em auto; font-size:.3em; background-color:rgba(255,255,255,0.8); }
+.logo #phelp .inst                          { margin:.1em .2em; }
+.logo #phelp .linst                         { background-color:#468; color:white; width:14em; padding:.1em; float:left; margin-right:.2em; }
+.logo #phelp .arg                           { float:right; width:2em; background-color:gray; text-align:center; margin-left:.1em; }
+.logo #it                                   { position:absolute; width:100%; height:100%; background-color:transparent; z-index:2;top:0; left:0; display:none; }
+.logo #it>div                               { position:absolute; top:60%; left:30%; overflow:visible; }
+.logo #it .it                               { display:none; width:12em; height:4em; }
+.logo #it #dialog                           { position:absolute; width:18em; height:18em; top:-90%; left:10%; background-image:url("../../res/img/asset/fx/dialog01.svg"); font-size:.4em; display:none; }
+.logo #it #dialog>div                       { margin:1em; text-align:justify; }
+.logo #continue                             { position:absolute; width:16em; height:16em; top:0; left:0; display:none; z-index:2;  }
+.logo #continue>div                         { font-size:3em; position:absolute; top:55%; left:70%; cursor:pointer; border-radius:.5em;}
+.logo #effects                              { top:45%; left:10%; z-index:2;  }
 
 

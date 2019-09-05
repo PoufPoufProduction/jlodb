@@ -1,19 +1,19 @@
 <div>
 
-  <div id="menu">
-    <div id="source">
-        <div id="tabs">
+  <div id="lomenu">
+    <div id="losource">
+        <div id="lotabs">
             <div></div>
-            <div onclick="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#op').show();"
-                 ontouchstart="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#op').show();event.preventDefault();" class="s"><img src="res/img/icon/tab/tab01.svg" alt=""/></div>
-            <div onclick="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#va').show();"
-                 ontouchstart="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#va').show();event.preventDefault();"><img src="res/img/icon/tab/tab02.svg" alt=""/></div>
-            <div onclick="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#ma').show();"
-                 ontouchstart="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#ma').show();event.preventDefault();"><img src="res/img/icon/tab/tab03.svg" alt=""/></div>
-            <div onclick="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#cl').show();"
-                 ontouchstart="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#panels>div').hide();$(this).parent().parent().find('#cl').show();event.preventDefault();"><img src="res/img/icon/tab/tab04.svg" alt=""/></div>
+            <div onclick="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#lopanels>div').hide();$(this).parent().parent().find('#op').show();"
+                 ontouchstart="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#lopanels>div').hide();$(this).parent().parent().find('#op').show();event.preventDefault();" class="s"><img src="res/img/icon/tab/tab01.svg" alt=""/></div>
+            <div onclick="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#lopanels>div').hide();$(this).parent().parent().find('#va').show();"
+                 ontouchstart="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#lopanels>div').hide();$(this).parent().parent().find('#va').show();event.preventDefault();"><img src="res/img/icon/tab/tab02.svg" alt=""/></div>
+            <div onclick="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#lopanels>div').hide();$(this).parent().parent().find('#ma').show();"
+                 ontouchstart="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#lopanels>div').hide();$(this).parent().parent().find('#ma').show();event.preventDefault();"><img src="res/img/icon/tab/tab03.svg" alt=""/></div>
+            <div onclick="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#lopanels>div').hide();$(this).parent().parent().find('#cl').show();"
+                 ontouchstart="$(this).parent().children().removeClass('s');$(this).addClass('s');$(this).parent().parent().find('#lopanels>div').hide();$(this).parent().parent().find('#cl').show();event.preventDefault();"><img src="res/img/icon/tab/tab04.svg" alt=""/></div>
         </div>
-        <div id="panels">
+        <div id="lopanels">
             <div id="op">
                 <div class="a op o" id="av"><div class="label"></div><div class="d va"></div></div>
                 <div class="a op o" id="re"><div class="label"></div><div class="d va"></div></div>
@@ -139,21 +139,21 @@
             </div>
         </div>
     </div>
-    <div id="code">
-		<div id="ccode">
-			<div id="lines"></div>
-			<div id="footer"></div>
+    <div id="locode">
+		<div id="loccode">
+			<div id="lolines"></div>
+			<div id="lofooter"></div>
 		</div>
-		<div id="slider"><div></div></div>
+		<div id="loslider"><div></div></div>
     </div>
   </div>
   
   
-  <div id="output">
-    <div id="board" ontouchstart="$(this).closest('.logo').logo('board');event.preventDefault();"
+  <div>
+    <div id="loboard" ontouchstart="$(this).closest('.logo').logo('board');event.preventDefault();"
                     onclick="$(this).closest('.logo').logo('board');"></div>
-    <div id="controls">
-      <div id="buttons">
+    <div id="locontrols">
+      <div id="lobuttons">
         <div id="help" ontouchstart="$(this).closest('.logo').find('#phelp').show();event.preventDefault();"
                   onclick="$(this).closest('.logo').find('#phelp').show();" class="icon"><img src="res/img/control/about.svg" alt=""/></div>
         <div id="tip"  ontouchstart="$(this).closest('.logo').find('#ptip').show();event.preventDefault();"
@@ -173,9 +173,9 @@
   </div>
   
   
-  <div id="programzone" class="legend"></div>
-  <div id="depotzone" class="legend"></div>
-  <div id="screenzone" class="legend"></div>
+  <div id="loprogramzone" class="lolegend"></div>
+  <div id="lodepotzone" class="lolegend"></div>
+  <div id="loscreenzone" class="lolegend"></div>
   
   <div id="phelp" ontouchstart="$(this).hide();event.preventDefault();"
                   onclick="$(this).hide();"><div>
@@ -259,9 +259,9 @@
     </div>
   </div></div>
 
-  <div id="touch01" ><div><img src="res/img/default/anim/touch01.svg" alt=""/></div></div>
+  <div id="lotouch" class="anim12 center quick noloop"><div><img src="res/img/default/anim/touch01.svg" alt=""/></div></div>
 
-  <div class="mask"></div>
+  <div class="lomask"></div>
   
     <div id="it"><div>
         <div class="it" id="itwrong"><img src="res/img/asset/misc/it01.svg" alt=""/></div>
@@ -271,6 +271,7 @@
   
     <div id="effects">
         <div id="good"><img src="res/img/default/popup/good01.svg" alt=""/></div>
+        <div id="wrong"><img src="res/img/default/popup/wrong01.svg" alt=""/></div>
     </div>
     
     <div id="continue">
@@ -303,16 +304,8 @@
     </div></div>
     
 
-  <div id="export" ontouchstart="$(this).hide();event.preventDefault();"
-                   onclick="$(this).hide();"></div>
-                   
-    <div id="devmode" ontouchstart="$(this).closest('.logo').logo('devmode');event.preventDefault();"
-                      onclick="$(this).closest('.logo').logo('devmode');" ><img src="res/img/default/white/snapshot.svg" alt=""/></div>
-                      
-    <div id="devoutput" ontouchstart="$(this).hide();event.preventDefault();" onclick="$(this).hide();">
-        <textarea ontouchstart="$(this).focus();event.stopPropagation();event.preventDefault();"
-                  onclick="$(this).focus();event.stopPropagation();"></textarea>
-    </div>
+    <div id="loexport" ontouchstart="$(this).hide();event.preventDefault();" onclick="$(this).hide();"></div>
+                
 
     <div id="splashex" ontouchstart="$(this).hide().closest('.logo').logo('next');event.preventDefault();"
                      onclick="$(this).hide().closest('.logo').logo('next');"><div>

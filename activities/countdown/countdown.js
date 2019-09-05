@@ -133,9 +133,9 @@
                     $line.find(".o").bind("touchstart mousedown", function(_event) {
                         if (!$(this).hasClass("disabled")) {
                             var $keypad = $this.find("#cnkeypad");
-                            var vLeft = $(this).offset().left;
-                            var vTop = $(this).offset().top;
-                            $this.find("#cnkeypad").css("top",vTop+"px").css("left",vLeft+"px").show();
+                            var vLeft = $(this).offset().left - $this.offset().left;
+                            var vTop = $(this).offset().top - $this.offset().top;
+                            $this.find("#cnkeypad").css("top",vTop).css("left",vLeft).show();
                             settings.keypad = $(this);
                         }
                         _event.preventDefault();

@@ -1,32 +1,21 @@
-.mahjong                            { background-image:url("../../res/img/background/landscape/greenboard01.svg");}
-.mahjong div#splashex            { background-image:url("../../res/img/banners/mahjong.svg"); }
-.mahjong div#splashex  h1                 { position:absolute; top:10%; left:60%; font-size:2em; background-color:red;
-                                          width:55%; color:white; text-align:center; border-radius:0 .5em .5em 0;
-                                          border:.3em solid white;
-                                          -ms-transform: rotate(45deg); -webkit-transform: rotate(45deg); transform: rotate(45deg); }
-.mahjong div#splashex #guide     { display:none; }
-
-.mahjong #board                     { font-size:0.5em;}
-.mahjong #board>div                 { position:relative; width:32em; height:24em; }
-.mahjong #board .mjtile             { position:absolute; cursor:pointer; }
-.mahjong #board .mjtile>*           { position:absolute; top:0; left:0; }
-.mahjong #board .mjtile .hg         { width:1.6em; height:2.3em; top:0.1em; left:0.3em; background-color:rgba(255,0,0,0.4); display:none; }
-.mahjong #board .mjtile.s .hg       { display:inherit; background-color:rgba(255,0,0,0.4) !important;}
-.mahjong #board .mjtile.h .hg       { display:inherit; background-color:rgba(255,255,0,0.4); }
-.mahjong #board .mjtile .img        { width:1.6em; height:1.6em; top:0.1em; left:0.3em; display:none; }
-.mahjong #board .mjtile .sub        { top:1.9em; left:0.3em; font-size:0.8em; color:#ba0000; font-weight:bold; width:2.1em; text-align:center; white-space:nowrap; display:none;}
-.mahjong #board .mjtile .txt        { top:-0.1em; left:0.15em; font-size:1.5em; color:#20208c; font-weight:bold; width:1.1em; white-space:nowrap; text-align:center; display:none; }
-.mahjong #board .mjtile .mask		{ display:none;opacity:0.7;background-image:url("../../res/img/asset/mahjong/mask-black.svg"); width:2em; height:2.75em; background-repeat:no-repeat;}
-.mahjong #board .mjtile.blocked	.mask { display:inherit; }
-
-.mahjong #effects                   { width:5em; height:5em; position:absolute; top:0.5em; left:10.5em;  z-index:700; display:none;}
-.mahjong #effects>div               { font-size:5em; width:1em; height:1em; display:none;}
-
-.mahjong #help                      { position:absolute; top:92%; left:94%; cursor:help; font-size:.8em; }
-
-.mahjong #shuffle                   { display:none; background-image:url("../../res/img/default/popup/green01.svg"); background-repeat:no-repeat; position:absolute; top:2%; left:70%; font-size:5em; z-index:1000; }
-.mahjong #shuffle>.icon				{ font-size:.7em; margin:.2em; }
-
-.mahjong #mask { font-size:0.5em; display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.1); z-index:901; }
-.mahjong #mask>div { font-size:1.2em; background-color:rgba(255,255,255,0.9); border:1px solid black; border-width:1px 0 1px 0; width:80%; padding:.2em 10%; height:25%; margin:20% auto; }
-.mahjong #mask .icon { float:left; margin:.2em 2em; background-color:gray; cursor:pointer; font-size:2em; }
+.mahjong                                { background-image:url("../../res/img/background/landscape/greenboard01.svg");}
+.mahjong #splashex                      { background-image:url("../../res/img/banners/mahjong.svg"); }
+.mahjong #mhboard                       { font-size:0.5em;}
+.mahjong #mhboard>div                   { position:relative; width:32em; height:24em; }
+.mahjong #mhboard .mhtile               { position:absolute; cursor:pointer; width:2em; height:2.75em; }
+.mahjong #mhboard .mhtile>*             { position:absolute; top:0; left:0; }
+.mahjong #mhboard .mhtile .hg           { width:1.6em; height:2.3em; top:0.1em; left:0.3em; background-color:rgba(255,0,0,0.4); display:none; }
+.mahjong #mhboard .mhtile.s .hg         { display:inherit; background-color:rgba(255,0,0,0.4) !important;}
+.mahjong #mhboard .mhtile.h .hg         { display:inherit; background-color:rgba(255,255,0,0.4); }
+.mahjong #mhboard .mhtile .img          { width:1.6em; height:1.6em; top:0.1em; left:0.3em; display:none; }
+.mahjong #mhboard .mhtile .sub          { top:1.9em; left:0.3em; font-size:0.8em; color:#ba0000; font-weight:bold; width:2.1em; text-align:center; white-space:nowrap; display:none;}
+.mahjong #mhboard .mhtile .txt          { top:-0.1em; left:0.15em; font-size:1.5em; color:#20208c; font-weight:bold; width:1.1em; white-space:nowrap; text-align:center; display:none; }
+.mahjong #mhboard .mhtile .mask		    { display:none;opacity:0.7;background-image:url("../../res/img/asset/mahjong/mask-black.svg"); width:2em; height:2.75em; background-repeat:no-repeat;}
+.mahjong #mhboard .mhtile.blocked .mask { display:inherit; }
+.mahjong #mhhelp                        { position:absolute; top:92%; left:94%; cursor:help; font-size:.8em; }
+.mahjong #mhshuffle                     { display:none; background-image:url("../../res/img/default/popup/green01.svg"); background-repeat:no-repeat; position:absolute; top:2%; left:70%; font-size:5em; z-index:1000; }
+.mahjong #mhshuffle>.icon				{ font-size:.7em; margin:.2em; }
+.mahjong #mhmask                        { font-size:0.5em; display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.1); z-index:901; }
+.mahjong #mhmask>div                    { font-size:1.2em; background-color:rgba(255,255,255,0.9); border:1px solid black; border-width:1px 0 1px 0; width:80%; padding:.2em 10%; height:25%; margin:20% auto; }
+.mahjong #mhmask .icon                  { float:left; margin:.2em 2em; background-color:gray; cursor:pointer; font-size:2em; }
+.mahjong .mhfx                          { z-index:700; margin-top:-.3em; margin-left:-.3em; }
